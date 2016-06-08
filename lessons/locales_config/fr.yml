@@ -22,7 +22,7 @@
 fr:
   menu:
     languages:
-      lang: "La langue"
+      lang: "Langue"
       en: "Anglais"
       fr: "Français"
       es: "Espanol"
@@ -34,13 +34,13 @@ fr:
       body: "Recevoir des mises à jour sur les nouveaux cours et leçons!"
     about:
       title: "À propos de nous"
-      body: "Les connaissances acquises ici aujourd'hui a été alimenté par la communauté open-source."
+      body: "Les connaissances acquises ici aujourd'hui ont été alimentées par la communauté open-source."
       url_name: "Contribuer et collaborer"
       url: "https://github.com/cindyq/linuxjourney"
     contact:
       title: "Contactez nous"
-      body: "Voir un bug? Toute plainte? Je veux juste envoyer une note?"
-      url_name: "Laissez nous savoir"
+      body: "Vous souhaitez signaler un bug ? Faire une remarque ? Laisser un petit mot ?"
+      url_name: "Écrivez-nous"
       url: "contact@linuxjourney.com"
   courses:
     titles:
