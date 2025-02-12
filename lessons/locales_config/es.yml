@@ -23,9 +23,7 @@ es:
   menu:
     languages:
       lang: "Idioma"
-      en: "Inglés"
-      fr: "Francés"
-      es: "Español"
+      flag: "flags/Spain.png"
   home:
     tagline:
       title: "Si quieres ver esto en tu idioma local. Por favor ayúdanos a traducir."

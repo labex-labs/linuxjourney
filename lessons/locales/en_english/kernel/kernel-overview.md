@@ -10,7 +10,7 @@ The next level is the kernel, which handles process and memory management, devic
 
 And the level that you are familiar with is the user space, the user space includes the shell, the programs that you run, the graphics, etc.
 
-In this course, we'll be focusing on the kernel and learning it's intricacies.
+In this course, we'll be focusing on the kernel and learning its intricacies.
 
 ## Exercise
 

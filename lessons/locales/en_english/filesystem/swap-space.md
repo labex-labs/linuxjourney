@@ -23,7 +23,7 @@ Let's say we wanted to set our partition of /dev/sdb2 to be used for swap space.
 <li>To remove swap: swapoff /dev/sdb2</li>
 </ol>
 
-Generally you should allocated about twice as much swap space as you have memory. But modern systems today are usually pretty powerful enough and have enough RAM as it is.
+Generally you should allocate about twice as much swap space as you have memory. But modern systems today are usually pretty powerful enough and have enough RAM as it is.
 
 ## Exercise
 

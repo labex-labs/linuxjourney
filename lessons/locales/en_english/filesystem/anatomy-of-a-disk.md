@@ -10,7 +10,7 @@ Every disk will have a partition table, this table tells the system how the disk
 
 <b>Partition</b>
 
-Disks are comprised of partitions that help us organize our data. You can have multiple partitions on a disk and they can't overlap each other, if there is space that is not allocated to a partition it is known as free space. The types of partitions depend on your partition table. Inside a partition, you can have a filesystem or dedicate a partition to other things like swap (we'll get to that soon).
+Disks are comprised of partitions that help us organize our data. You can have multiple partitions on a disk and they can't overlap each other. If there is space that is not allocated to a partition, then it is known as free space. The types of partitions depend on your partition table. Inside a partition, you can have a filesystem or dedicate a partition to other things like swap (we'll get to that soon).
 
 <i>MBR</i>
 
@@ -36,9 +36,9 @@ Disks are comprised of partitions that help us organize our data. You can have m
 We know from our previous lesson that a filesystem is an organized collection of files and directories. In its simplest form, it is comprised of a database to manage files and the actual files themselves, however we're going to go into a little more detail. 
 
 <ul>
-<li>Boot block - This is located in the first few sectors of the filesystem, it's not really used the by the filesystem rather it contains information used to boot the operating system. Only one boot block is needed by the operating system, if you have multiple partitions they will have boot blocks but many are unused.</li>
-<li>Super block - This is a single block that comes after the boot block, it contains information about the filesystem, such as the size of the inode table, size of the logical blocks and the size of the filesystem.</li>
-<li>Inode table - Think of this as the database that manages our files (we have a whole lesson on inodes, don't worry). Each file or directory has a unique entry in the inode table and it has various information about the file.</li>
+<li>Boot block - This is located in the first few sectors of the filesystem, and it's not really used the by the filesystem. Rather, it contains information used to boot the operating system. Only one boot block is needed by the operating system. If you have multiple partitions, they will have boot blocks, but many of them are unused.</li>
+<li>Super block - This is a single block that comes after the boot block, and it contains information about the filesystem, such as the size of the inode table, size of the logical blocks and the size of the filesystem.</li>
+<li>Inode table - Think of this as the database that manages our files (we have a whole lesson on inodes, so don't worry). Each file or directory has a unique entry in the inode table and it has various information about the file.</li>
 <li>Data blocks - This is the actual data for the files and directories.</li>
 </ul>
  

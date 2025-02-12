@@ -23,9 +23,7 @@ en:
   menu:
     languages:
       lang: "Language"
-      en: "English"
-      fr: "French"
-      es: "Spanish"
+      flag: "flags/United_States_of_America.png"
   home:
     tagline: 
       title: "Learn the ways of Linux-fu, for free."
@@ -55,9 +53,3 @@ en:
     messages:
       answer_correct: "Correct answer!"
       answer_incorrect: "Not quite, try again"
-    
-  
-      
-      
-
-      

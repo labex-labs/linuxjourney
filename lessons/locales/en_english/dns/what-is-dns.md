@@ -6,7 +6,7 @@ Imagine if every time you wanted to do a search on Google you had to type in htt
 
 DNS is fundamentally a distributed database of hostnames to IP addresses, we manage our database so people know how to get to our site/domain, and somewhere else another person is managing their database so others can get to their domain. These domains are then able to talk to each other and build a massive contact list of the Internet.
 
-In this course, we will go over some basics of DNS, but be weary that DNS is an exhaustive topic and if you really want to get down and dirty with it, you'll need to do some additional research.
+In this course, we will go over some basics of DNS, but be wary that DNS is an exhaustive topic and if you really want to get down and dirty with it, you'll need to do some additional research.
 
 ## Exercise
 

@@ -22,13 +22,11 @@
 fr:
   menu:
     languages:
-      lang: "Langue"
-      en: "Anglais"
-      fr: "Français"
-      es: "Espanol"
+      lang: "Langues"
+      flag: "flags/France.png"
   home:
-    tagline: 
-      title: "Si vous souhaitez voir cette page dans votre langue, aidez -nous à traduire s'il vous plaît."
+    tagline:
+      title: "Si vous souhaitez voir cette page dans votre langue, aidez-nous à la traduire s'il vous plaît."
     subscribe:
       title: "Souscrire"
       body: "Recevoir des mises à jour sur les nouveaux cours et leçons!"
@@ -44,15 +42,14 @@ fr:
       url: "contact@linuxjourney.com"
   courses:
     titles:
-      exercises: "Des exercices"
+      exercises: "Exercices"
       quiz: "Quiz"
   forms:
     buttons:
       check_answer: "Vérifier la réponse"
       continue: "Continuer"
       return: "Retour au menu principal"
-      home: "Page d'accueil"
+      home: "Accueil"
     messages:
       answer_correct: "Bonne réponse!"
       answer_incorrect: "Pas tout à fait, essayez à nouveau"
-      

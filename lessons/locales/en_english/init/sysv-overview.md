@@ -6,7 +6,7 @@ The main purpose of init is to start and stop essential processes on the system.
 
 To find out if you are using the Sys V init implementation, if you have an /etc/inittab file you are most likely running Sys V. 
 
-Sys V starts and stops processes sequentially, so let's say if you wanted to start up a service named foo-b, well before foo-b can work, you have to make sure foo-a is already running. Sys V does that with scripts, these scripts start and stop services for us, we can write our own scripts or most of the time use the ones that are already built in the operating system and are used to load essential services. 
+Sys V starts and stops processes sequentially, so let's say if you wanted to start up a service named foo-a, well before foo-b can work, you have to make sure foo-a is already running. Sys V does that with scripts, these scripts start and stop services for us, we can write our own scripts or most of the time use the ones that are already built in the operating system and are used to load essential services. 
 
 The pros of using this implementation of init, is that it's relatively easy to solve dependencies, since you know foo-a comes before foo-b, however performance isn't great because usually one thing is starting or stopping at a time. 
 

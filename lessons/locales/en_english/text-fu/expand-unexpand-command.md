@@ -6,11 +6,13 @@ In our lesson on the cut command, we had our sample.txt file that contained a ta
 
 <pre>$ expand sample.txt</pre>
 
-Now that file has all TABs converted to spaces.
+The command above will print output with each TAB converted into a group of spaces. To save this output in a file, use output redirection like below.
 
-Similar to expand, we can also convert spaces to TABS with the unexpand command: 
+<pre>$ expand sample.txt > result.txt</pre>
 
-<pre>$ unexpand sample.txt</pre>
+Opposite to expand, we can convert back each group of spaces to a TAB with the unexpand command: 
+
+<pre>$ unexpand -a result.txt</pre>
 
 ## Exercise
 

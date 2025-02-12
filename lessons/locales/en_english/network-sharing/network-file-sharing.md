@@ -6,7 +6,7 @@ You usually are not the only computer on your network, this is especially the ca
 
 In this course we'll go over a couple of different methods to copy data to and from different machines on your network. We'll discuss some simple file copies, then we'll talk about mounting entire directories on your machine that act as a separate drive. 
 
-One simple file sharing tool is the <b>scp</b> command. The scp command stands for secure copy, it works exactly the way the cp command does, but allows you to copy from one host over to another host on the same network. It works via ssh so all your actions are use the same authentication and security as ssh. 
+One simple file sharing tool is the <b>scp</b> command. The scp command stands for secure copy, it works exactly the way the cp command does, but allows you to copy from one host over to another host on the same network. It works via ssh so all your actions are using the same authentication and security as ssh. 
 
 <b>To copy a file over from local host to a remote host</b>
 

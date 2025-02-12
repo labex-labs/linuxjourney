@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-Let's segway into proccess permissions for a bit, remember how I told you that when you run the passwd command with the SUID permission bit enabled you will run the program as root? That is true, however does that mean since you are temporarily root you can modify other user's passwords? Nope fortunately not!
+Let's segway into process permissions for a bit, remember how I told you that when you run the passwd command with the SUID permission bit enabled you will run the program as root? That is true, however does that mean since you are temporarily root you can modify other user's passwords? Nope fortunately not!
 
 This is because of the many UIDs that Linux implements. There are three UIDS associated with every process:
 

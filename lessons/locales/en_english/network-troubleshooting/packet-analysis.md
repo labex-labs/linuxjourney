@@ -2,12 +2,12 @@
 
 ## Lesson Content
 
-Packet analysis can be in a course of it's own, they have books written just on packet analysis, however we will just learn the basics today. There are two extremely populate packet analyzer, Wireshark and tcpdump. These tools scan your network interfaces, capture the packet activity happening, parse and output the information for us to see. It allows us to get into the nitty gritty of network analysis and get into the low level stuff. We'll be using tcpdump since it has a simpler interface, however if you were to pick up packet analysis for your toolbelt, I would recommend looking into Wireshark.
+The subject of packet analysis could fill an entire course of its own and there are many books written just on packet analysis. However, today we will just learn the basics. There are two extremely popular packet analyzers, Wireshark and tcpdump. These tools scan your network interfaces, capture the packet activity, parse the packages and output the information for us to see. They allows us to get into the nitty gritty of network analysis and get into the low level stuff. We'll be using tcpdump since it has a simpler interface, however if you were to pick up packet analysis for your toolbelt, I would recommend looking into Wireshark.
 
 <b>Install tcpdump</b>
 
 <pre>
-$ sudo apt-get install tcpdump
+$ sudo apt install tcpdump
 </pre>
 
 <b>Capture packet data on an interface</b>
@@ -54,7 +54,7 @@ $ sudo tcpdump -w /some/file
 </pre>
 
 
-Some final thoughts, this is merely the tip of packet analysis, there is so much you can look at and we haven't even touched upon going even deeper with Hex and ASCII output. There are plenty of resources online to help you learn more about packet analyzers and I implore you to find them!
+Some final thoughts: we only scraped the surface of the subject of packet analysis. There is so much you can look at and we haven't even touched upon going even deeper with Hex and ASCII output. There are plenty of resources online to help you learn more about packet analyzers and I urge you to find them!
 
 ## Exercise
 

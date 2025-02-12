@@ -12,8 +12,8 @@ Let's go through the basic steps to create a network share that a Windows machin
 
 <b>Install Samba</b>
 
-<pre>$ sudo apt-get update
-$ sudo apt-get install samba</pre>
+<pre>$ sudo apt update
+$ sudo apt install samba</pre>
 
 <b>Setup smb.conf</b>
 

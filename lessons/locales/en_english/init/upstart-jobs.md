@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-Upstart can trigger a lot of events and jobs to run, unfortunately there is not easy to way to see where an event or job originated, so you'll have to poke around the job configurations in /etc/init. Most of the time, you won't ever need to look at the Upstart job configuration files, but you want want to control some specific jobs more easily. There are a lot of useful commands you can use in an Upstart system. 
+Upstart can trigger a lot of events and jobs to run, unfortunately there is no easy way to see where an event or job originated, so you'll have to poke around the job configurations in /etc/init. Most of the time, you won't ever need to look at the Upstart job configuration files, but you will want to control some specific jobs more easily. There are a lot of useful commands you can use in an Upstart system. 
 
 <b>View jobs</b>
 

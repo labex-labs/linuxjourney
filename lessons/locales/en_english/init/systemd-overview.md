@@ -8,7 +8,7 @@ Systemd uses goals to get your system up and running. Basically you have a targe
 
 <ol>
 <li>First, systemd loads it's configuration files, usually located in /etc/systemd/system or /usr/lib/systemd/system</li>
-<li>Then it determines it's boot goal, which is usually default.target</li>
+<li>Then it determines its boot goal, which is usually default.target</li>
 <li>Systemd figures out the dependencies of the boot target and activates them</l>
 </ol>
 

@@ -1,6 +1,10 @@
 # Linux Journey
 
-[Linux Journey](www.linuxjourney.com) is a site dedicated to making learning Linux fun and easy.
+[Linux Journey](https://linuxjourney.com) is a site dedicated to making learning Linux fun and easy.
+
+## Project Hiatus
+
+Due to the overwhelming support for translations, Linux Journey is in the middle of a site overhaul to make it more scalable for translations. Unfortunately, I am a full time professional and full time student so it has taken longer to do the migration than I had hoped. For now, any additional translations/edits/additions will not be added to the site. I'll try my best to finish adding everything that was already committed and will re-visit the project when I have more cycles. Thank you for understanding.
 
 ## Language Support
 

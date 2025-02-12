@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-The traceroute command is used to see how are packets are getting routed. It works by sending packets with increasing TTL values, starting with 1. So the first router gets the packet, and it decrements the TTL value by one, thus dropping the packet. The router sends back an ICMP Time Exceeded message back to us. And then the next packet gets a TTL of 2, so it makes it past the first router, but when it gets to the second router the TTL is 0 and it returns another ICMP Time Exceeded message. Traceroute works this way because as it sends and drops packets it is build a list of routers that the packets traverse, until it finally gets to it's destination and gets an ICMP Echo Reply message. 
+The traceroute command is used to see how packets are getting routed. It works by sending packets with increasing TTL values, starting with 1. So the first router gets the packet, and it decrements the TTL value by one, thus dropping the packet. The router sends back an ICMP Time Exceeded message back to us. And then the next packet gets a TTL of 2, so it makes it past the first router, but when it gets to the second router the TTL is 0 and it returns another ICMP Time Exceeded message. Traceroute works this way because as it sends and drops packets it is build a list of routers that the packets traverse, until it finally gets to its destination and gets an ICMP Echo Reply message. 
 
 Here's a little snippet of a traceroute: 
 
@@ -14,7 +14,7 @@ traceroute to google.com (216.58.216.174), 30 hops max, 60 byte packets
  3  100.64.0.20 (100.64.0.20)  1.501 ms 1.556 ms  0.855 ms                                                                                 
 </pre>
 
-Each line is a router or machine that is between me and my target. It shows the name of the target and it's IP address and the last three columns correspond to the round-trip time of a packet to get to that router. By default, we send three packets along the route.
+Each line is a router or machine that is between me and my target. It shows the name of the target and its IP address and the last three columns correspond to the round-trip time of a packet to get to that router. By default, we send three packets along the route.
 
 ## Exercise
 

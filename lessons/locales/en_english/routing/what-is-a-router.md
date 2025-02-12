@@ -14,6 +14,11 @@ When we route packets, they use similar address "routes", such as to get to netw
 
 As packets move across networks, they travel in hops, a hop is how we roughly measure the distance that the packet must travel to get from the source to the destination. Let's say to I have two routers connecting host A to host B, so therefore we say there are two hops between host A and host B. Each hop is a intermediate device like the routers that we must pass through.
 
+<b>Understanding the basic difference between Switching, Routing & Flooding?</b>
+Packet SWITCHING is basically receiving, processing and forwarding data to the destination device.
+ROUTING is a process of creating the routing table, so that we can do SWITCHING better.
+Before routing, FLOODING was used. If a router don't know which way to send a packet than every incoming packet is sent through every outgoing link except the one it arrived on.
+
 ## Exercise
 
 No exercises for this lesson.

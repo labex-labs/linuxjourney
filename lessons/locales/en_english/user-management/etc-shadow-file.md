@@ -23,7 +23,7 @@ You'll notice that it looks very similar to the contents of /etc/passwd, however
 <li>Reserved field for future use</li>
 </ol>
 
-In most distributions today, user authentication doesn't rely on just the /etc/shadow file, there other other mechanisms in place such as PAM (Pluggable Authentication Modules) that replace authentication.
+In most distributions today, user authentication doesn't rely on just the /etc/shadow file, there are other mechanisms in place such as PAM (Pluggable Authentication Modules) that replace authentication.
 
 ## Exercise
 
