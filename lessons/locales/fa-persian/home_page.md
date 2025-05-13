@@ -1,51 +1,51 @@
-# Home Page
+# صفحه اصلی
 
-## Grasshopper
+## تازه‌کار (Grasshopper)
 
-* Getting Started - What is Linux? Get started with choosing a distribution and installation.
+* شروع کار - لینوکس چیست؟ با انتخاب یک توزیع و نصب آن شروع کنید.
 
-* Command Line - Learn the fundamentals of the command line, navigating files, directories and more.
+* خط فرمان - اصول اولیه خط فرمان، پیمایش در فایل‌ها، دایرکتوری‌ها و موارد دیگر را بیاموزید.
 
-* Text-Fu - Learn basic text manipulation and navigation.
+* فوت و فن متن (Text-Fu) - ویرایش و پیمایش پایه متن را بیاموزید.
 
-* Advanced Text-Fu - Navigate text like a Linux spider monkey with vim and emacs.
+* فوت و فن پیشرفته متن (Advanced Text-Fu) - با استفاده از vim و emacs مانند یک عنکبوت‌میمون لینوکسی در متن پیمایش کنید!
 
-* User Management - Learn about user roles and management.
+* مدیریت کاربران - نقش‌ها و نحوه مدیریت کاربران را بیاموزید.
 
-* Permissions - Learn about permission levels and modifying permissions.
+* مجوزها (Permissions) - سطوح مجوز و نحوه تغییر آنها را بیاموزید.
 
-* Processes - Learn about the running processes on the system.
+* پردازش‌ها (Processes) - فرآیندهای در حال اجرا روی سیستم را بیاموزید.
 
-* Packages - Learn all about the dpkg, apt-get, rpm and yum package management tools.
+* بسته‌ها (Packages) - همه چیز در مورد ابزارهای مدیریت بسته dpkg, apt-get, rpm و yum را بیاموزید.
 
-## Journeyman
+## ماهر (Journeyman)
 
-* Devices - Learn about Linux devices and how they interact with the kernel and user space.
+* دستگاه‌ها (Devices) - نحوه تعامل دستگاه‌های لینوکس با کرنل و فضای کاربری را بیاموزید.
 
-* The Filesystem - Learn about the Linux filesystem, the different types of filesystems, partitioning and more.
+* سیستم فایل (The Filesystem) - سیستم فایل لینوکس، انواع مختلف آن، پارتیشن‌بندی و موارد دیگر را بیاموزید.
 
-* Boot the System - Learn about the stages of the Linux boot process.
+* بوت کردن سیستم (Boot the System) - مراحل فرآیند بوت لینوکس را بیاموزید.
 
-* Kernel - The most important part of the Linux system, learn about how it works and how to configure it.
+* کرنل (Kernel) - مهمترین بخش سیستم لینوکس. نحوه کار و پیکربندی آن را بیاموزید.
 
-* Init - Learn about the different init systems, SysV, Upstart and systemd.
+* اینیت (Init) - سیستم‌های مختلف init شامل SysV, Upstart و systemd را بیاموزید.
 
-* Process Utilization - Learn resource monitoring with top, load averages, iostat and more!
+* استفاده از پردازش (Process Utilization) - پایش منابع با top, میانگین بار سیستم (load averages), iostat و موارد دیگر را بیاموزید!
 
-* Logging - Learn about system logs and the /var/log directory.
+* لاگ‌گیری (Logging) - لاگ‌های سیستم و دایرکتوری /var/log را بیاموزید.
 
-## Networking Nomad
+## کوچ‌گر شبکه (Networking Nomad)
 
-* Network Sharing - Learn about network sharing with rsync, scp, nfs and more.
+* اشتراک‌گذاری شبکه (Network Sharing) - اشتراک‌گذاری شبکه با rsync, scp, nfs و موارد دیگر را بیاموزید.
 
-* Network Basics - Learn about networking basics and the TCP/IP model.
+* مبانی شبکه (Network Basics) - مبانی شبکه و مدل TCP/IP را بیاموزید.
 
-* Subnetting - Learn about subnets and how to do subnet arithmetic!
+* زیرشبکه (Subnetting) - مبانی زیرشبکه و محاسبات مربوط به آن را بیاموزید!
 
-* Routing - Learn how packets are routed across networks!
+* مسیریابی (Routing) - نحوه مسیریابی بسته‌ها در شبکه‌ها را بیاموزید!
 
-* Network Config - Learn about network configuration using Linux tools!
+* پیکربندی شبکه (Network Config) - پیکربندی شبکه با استفاده از ابزارهای لینوکس را بیاموزید!
 
-* Troubleshooting - Learn about common networking tools to help you diagnose and troubleshoot issues!
+* عیب‌یابی (Troubleshooting) - استفاده از ابزارهای متداول شبکه برای تشخیص و رفع مشکلات را بیاموزید!
 
-* DNS - Everything and more that you wanted to know about DNS.
+* DNS - هر آنچه در مورد DNS می‌خواستید بدانید و بیشتر!
