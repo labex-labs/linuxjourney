@@ -4,7 +4,11 @@
 
 Python'i programmeerimiskeeles on olemas väga kasulik tööriist failide teenindamiseks üle HTTP. See on kasulik, kui eesmärgiks on jagada faile kiirelt teistele masinatele võrgus. Selleks peab minema vaid kataloogi, mida on soov jagada ning sisestada:
 
-<pre>$ python -m SimpleHTTPServer</pre>
+<pre>$ python -m http.server</pre>
+
+Kui sa ikka veel Python 2-e kasutad, siis käivita see:
+
+<pre>python -m SimpleHTTPServer</pre>
 
 See käsk seab üles algelise võrguserveri, millele pääseb ligi kohaliku kasutaja IP-aadressiga. Seega ei jäägi muud üle, kui haarata enda masina IP-aadress ja mõnes teises masinas avada veebilehitseja aadressiga *http://IP_AADRESS:8000*. Enda masinas saab vaadata kättesaadavaid faile sisestades veebilehitsejasse *http://localhost:8000.*
 
@@ -12,7 +16,7 @@ Sama saab teha ka kasutades GNU/Linuxiga virtuaalarvutit või kui kasutajal on a
 
 ## Harjutus
 
-Proovida üles seada *SimpleHTTPServer*.
+Proovida üles seada *http.server*.
 
 ## Küsimus
 
@@ -20,4 +24,4 @@ Millise tööriista abil saab üles seada algelise HTTP serveri kasutades *pytho
 
 ## Vastus
 
-*SimpleHTTPServer*
+*http.server*
