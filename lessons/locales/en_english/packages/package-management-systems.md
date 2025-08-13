@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-Ah, the Batmans of package management, these systems come with all the fixins to make package installation, removal and changes easier, including installing package dependencies. Two of the most popular management systems is <b>yum</b> and <b>apt</b>. Yum is exclusive to the Red Hat family and apt is exclusively to the Debian family.
+Ah, the Batmans of package management, these systems come with all the fixins to make package installation, removal and changes easier, including installing package dependencies. Two of the most popular management systems are <b>yum</b> and <b>apt</b>. Yum is exclusive to the Red Hat family and apt is exclusive to the Debian family.
 
 <b>Install a package from a repository</b>
 
