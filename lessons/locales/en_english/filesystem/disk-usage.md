@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-There are a few tools you can used to see the utilization of your disks: 
+There are a few tools you can use to see the utilization of your disks: 
 
 <pre>
 pete@icebox:~$ df -h
