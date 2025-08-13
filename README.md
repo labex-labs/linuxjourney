@@ -2,6 +2,8 @@
 
 [Linux Journey](https://linuxjourney.com) is a site dedicated to making learning Linux fun and easy.
 
+> 2025-08-13 Updated: The linuxjourney project is now maintained by the [LabEx](https://labex.io/) team, and we’ll soon merge old PRs to provide updated content for Linux learners.
+
 ## Project Hiatus
 
 Due to the overwhelming support for translations, Linux Journey is in the middle of a site overhaul to make it more scalable for translations. Unfortunately, I am a full time professional and full time student so it has taken longer to do the migration than I had hoped. For now, any additional translations/edits/additions will not be added to the site. I'll try my best to finish adding everything that was already committed and will re-visit the project when I have more cycles. Thank you for understanding.
