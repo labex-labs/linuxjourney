@@ -32,13 +32,13 @@ fr:
       body: "Recevoir des mises à jour sur les nouveaux cours et leçons!"
     about:
       title: "À propos de nous"
-      body: "Les connaissances acquises ici aujourd'hui ont été conçues par la communauté open-source."
+      body: "Les connaissances acquises ici aujourd'hui ont été alimentées par la communauté open-source."
       url_name: "Contribuer et collaborer"
       url: "https://github.com/cindyq/linuxjourney"
     contact:
-      title: "Contactez-nous"
-      body: "Vous avez trouvé un bug? Vous avez une plainte? Vous voulez juste envoyer un commentaire?"
-      url_name: "Laissez-nous savoir"
+      title: "Contactez nous"
+      body: "Vous souhaitez signaler un bug ? Faire une remarque ? Laisser un petit mot ?"
+      url_name: "Écrivez-nous"
       url: "contact@linuxjourney.com"
   courses:
     titles:
