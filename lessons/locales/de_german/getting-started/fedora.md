@@ -1,6 +1,6 @@
 # Fedora
 
-## Ihalt der Lektion
+## Inhalt der Lektion
 
 <b>Übersicht</b>
 Das Fedora Projekt ist die Community Distribution aus dem Hause Red Hat. Fedora enhält die freie bzw. open-source Software, die die Grundlage für Red Hats Enterprise Linux (RHEL) bildet. RHEL ist also ein Entwicklungszweig von Fedora, der Fedora als upstream Resource benutzt. Sobald die Fedora Änderungen ausführlich getestet sind fließen sie als Update in RHEL ein. So wie Ubuntu Debian als Vorlage nimmt, um darauf basierend weitere Software und Verbesserungen einzupflegen, so tut das auch RHEL mit Fedora als Grundlage.
