@@ -1,0 +1,34 @@
+zh:
+  menu:
+    languages:
+      lang: "语言"
+      flag: "flags/zh.png"
+  home:
+    tagline:
+      title: "免费学习 Linux 功夫之道。"
+    subscribe:
+      title: "订阅"
+      body: "获取新课程和新课时的更新通知！"
+    about:
+      title: "关于我们"
+      body: "今天在这里获得的知识由开源社区提供支持。"
+      url_name: "贡献与协作"
+      url: "https://github.com/cindyq/linuxjourney"
+    contact:
+      title: "联系我们"
+      body: "发现了错误？有投诉？或者只是想发个消息？"
+      url_name: "告诉我们"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
+  courses:
+    titles:
+      exercises: "练习"
+      quiz: "测验"
+  forms:
+    buttons:
+      check_answer: "检查答案"
+      continue: "继续"
+      return: "返回主菜单"
+      home: "首页"
+    messages:
+      answer_correct: "答案正确！"
+      answer_incorrect: "不太对，请再试一次"

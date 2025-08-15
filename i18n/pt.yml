@@ -1,0 +1,34 @@
+pt:
+  menu:
+    languages:
+      lang: "Idioma"
+      flag: "flags/pt.png"
+  home:
+    tagline:
+      title: "Se você quiser ver isto em seu idioma local. Por favor, ajude-nos a traduzir."
+    subscribe:
+      title: "Inscreva-se"
+      body: "Receba atualizações sobre novos cursos e aulas!"
+    about:
+      title: "Sobre Nós"
+      body: "O conhecimento adquirido aqui foi alimentado pela comunidade open-source."
+      url_name: "Contribuir e Colaborar"
+      url: "https://github.com/cindyq/linuxjourney"
+    contact:
+      title: "Contate-nos"
+      body: "Encontrou um bug? Reclamações? Só quer enviar um comentário?"
+      url_name: "Nos informe"
+      url: "contact@linuxjourney.com"
+  courses:
+    titles:
+      exercises: "Exercícios"
+      quiz: "Quiz"
+  forms:
+    buttons:
+      check_answer: "Verificar Resposta"
+      continue: "Continuar"
+      return: "Voltar ao Menu Principal"
+      home: "Página Inicial"
+    messages:
+      answer_correct: "Resposta correta!"
+      answer_incorrect: "Não está correto, tente novamente"
