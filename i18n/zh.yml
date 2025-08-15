@@ -1,8 +1,7 @@
 zh:
   menu:
     languages:
-      lang: "语言"
-      flag: "flags/zh.png"
+      lang: "🇨🇳 中文"
   home:
     tagline:
       title: "免费学习 Linux 功夫之道。"

@@ -1,8 +1,7 @@
 en:
   menu:
     languages:
-      lang: "Language"
-      flag: "flags/en.png"
+      lang: "🇺🇸 English"
   home:
     tagline:
       title: "Learn the ways of Linux-fu, for free."

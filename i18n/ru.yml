@@ -1,8 +1,7 @@
 ru:
   menu:
     languages:
-      lang: "Язык"
-      flag: "flags/ru.png"
+      lang: "🇷🇺 Русский"
   home:
     tagline:
       title: "Изучи Linux-fu, бесплатно."

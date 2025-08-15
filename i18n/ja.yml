@@ -1,8 +1,7 @@
 ja:
   menu:
     languages:
-      lang: "言語"
-      flag: "flags/ja.png"
+      lang: "🇯🇵 日本語"
   home:
     tagline:
       title: "Linux の技を、無料で学ぼう。"

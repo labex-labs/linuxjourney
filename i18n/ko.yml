@@ -1,8 +1,7 @@
 ko:
   menu:
     languages:
-      lang: "언어"
-      flag: "flags/ko.png"
+      lang: "🇰🇷 한국어"
   home:
     tagline:
       title: "리눅스를 무료로 학습하세요."

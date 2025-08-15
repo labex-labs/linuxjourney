@@ -1,8 +1,7 @@
 es:
   menu:
     languages:
-      lang: "Idioma"
-      flag: "flags/es.png"
+      lang: "🇪🇸 Español"
   home:
     tagline:
       title: "Si quieres ver esto en tu idioma local. Por favor ayúdanos a traducir."
