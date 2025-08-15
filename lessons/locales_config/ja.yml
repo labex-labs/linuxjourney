@@ -18,7 +18,7 @@ ja:
       title: "お問い合わせ"
       body: "バグを見つけた？ひとこと言いたい？ちょっとお便りしたい？"
       url_name: "お知らせください"
-      url: "contact@linuxjourney.com"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:
     titles:
       exercises: "練習問題"

@@ -18,7 +18,7 @@ ru:
       title: "Связаться с нами"
       body: "Нашли баг? Жалобы? Просто хотите прислать заметку?"
       url_name: "Дайте нам знать"
-      url: "contact@linuxjourney.com"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:
     titles:
       exercises: "Упражнения"

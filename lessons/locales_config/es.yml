@@ -18,7 +18,7 @@ es:
       title: "Contáctenos"
       body: "¿Ves un error? ¿Alguna queja? ¿Quieres enviar sólo una nota?"
       url_name: "Haznos saber"
-      url: "contact@linuxjourney.com"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:
     titles:
       exercises: "Ejercicios"

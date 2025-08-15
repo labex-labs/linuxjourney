@@ -18,7 +18,7 @@ ko:
       title: "Contact Us"
       body: "버그가 있나요? 불만사항이 있나요? 또는 의견을 보내고 싶나요?"
       url_name: "연락하세요"
-      url: "contact@linuxjourney.com"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:
     titles:
       exercises: "활동하기"
