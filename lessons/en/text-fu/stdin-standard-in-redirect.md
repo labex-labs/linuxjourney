@@ -1,4 +1,8 @@
-# stdin (Standard In)
+---
+title: "stdin (Standard In)"
+description: "Learn about stdin (standard input) redirection in Linux. Understand how to use the '<' operator with files and commands. Explore practical examples and improve your Linux command-line skills."
+keywords: "stdin, standard input, Linux redirection, < operator, Linux tutorial, command line, beginner, guide"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# env (Environment)
+---
+title: "env (Environment)"
+description: "Learn about Linux environment variables with 'env' command. Understand PATH, HOME, and USER variables. Get a beginner's guide to managing your Linux environment."
+keywords: "env command, Linux environment variables, PATH variable, Linux tutorial, beginner Linux, shell variables, Linux guide"
+---
 
 ## Lesson Content
 

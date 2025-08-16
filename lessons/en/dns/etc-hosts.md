@@ -1,4 +1,8 @@
-# /etc/hosts
+---
+title: "/etc/hosts"
+description: "Learn about the /etc/hosts file in Linux, how it maps hostnames to IP addresses, and its role in DNS resolution. Understand basic network configuration."
+keywords: "/etc/hosts, Linux networking, hostname mapping, DNS resolution, Linux tutorial, beginner guide"
+---
 
 ## Lesson Content
 

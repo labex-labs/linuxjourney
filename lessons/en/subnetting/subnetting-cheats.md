@@ -1,4 +1,8 @@
-# Subnetting Cheats
+---
+title: "Subnetting Cheats"
+description: "Learn subnetting basics and binary conversion for networking. Understand IP addresses and subnet masks with this beginner-friendly guide. Start learning now!"
+keywords: "subnetting, binary conversion, IP address, network, Linux networking, beginner, tutorial, guide"
+---
 
 ## Lesson Content
 

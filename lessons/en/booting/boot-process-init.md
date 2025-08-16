@@ -1,4 +1,8 @@
-# Boot Process: Init
+---
+title: "Boot Process: Init"
+description: "Learn about Linux init systems: System V, Upstart, and systemd. Understand their roles in the boot process and how they manage services. Start your Linux journey!"
+keywords: "Linux init, systemd, System V init, Upstart, Linux boot process, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

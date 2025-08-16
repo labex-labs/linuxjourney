@@ -1,4 +1,8 @@
-# Distance Vector Protocols
+---
+title: "Distance Vector Protocols"
+description: "Learn about distance vector protocols like RIP, how they work, and their limitations for network routing. Understand hop count and network efficiency."
+keywords: "distance vector protocols, RIP, routing information protocol, hop count, network routing, Linux networking, beginner guide, tutorial"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# symlinks
+---
+title: "symlinks"
+description: "Learn about Linux symlinks and hard links, including how to create and manage them. Understand their differences and use cases with this beginner-friendly guide."
+keywords: "Linux symlinks, hard links, ln command, symbolic links, Linux file system, Linux tutorial, beginner Linux"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Emacs Manipulate Files
+---
+title: "Emacs Manipulate Files"
+description: "Learn Emacs file manipulation: save, save as, and open files using C-x C-s, C-x C-w, and C-x C-f commands. Master essential Emacs file operations!"
+keywords: "Emacs, Emacs save file, Emacs open file, Emacs tutorial, Linux commands, beginner Emacs, Emacs guide"
+---
 
 ## Lesson Content
 

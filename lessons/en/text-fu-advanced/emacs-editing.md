@@ -1,4 +1,8 @@
-# Emacs Editing
+---
+title: "Emacs Editing"
+description: "Learn Emacs editing basics: navigate text, cut, and paste efficiently. This beginner-friendly guide helps you master essential Emacs commands for Linux."
+keywords: "Emacs, Emacs tutorial, Emacs commands, text editor, Linux editor, Emacs navigation, beginner Emacs, Emacs guide"
+---
 
 ## Lesson Content
 

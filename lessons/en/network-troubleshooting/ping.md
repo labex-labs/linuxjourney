@@ -1,4 +1,8 @@
-# ping
+---
+title: "ping"
+description: "Learn how to use the Linux ping command to test network connectivity and troubleshoot issues. Understand ICMP, TTL, and roundtrip time for effective network diagnostics."
+keywords: "Linux ping, network connectivity, ICMP, TTL, Linux networking, beginner Linux, Linux tutorial, ping command"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Network Basics
+---
+title: "Network Basics"
+description: "Learn Linux network basics: understand WAN, LAN, WLAN, routers, and hosts. Start your networking journey with this beginner's guide!"
+keywords: "Linux network basics, WAN, LAN, WLAN, network tutorial, beginner Linux, networking guide, Linux concepts"
+---
 
 ## Lesson Content
 

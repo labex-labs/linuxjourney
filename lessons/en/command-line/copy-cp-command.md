@@ -1,4 +1,8 @@
-# cp (Copy)
+---
+title: "cp (Copy)"
+description: "Learn how to use the Linux cp command for copying files and directories. Understand options like -r and wildcards. Start your Linux journey today!"
+keywords: "cp command, copy files Linux, Linux tutorial, beginner Linux, cp -r, Linux wildcards, Linux guide"
+---
 
 ## Lesson Content
 

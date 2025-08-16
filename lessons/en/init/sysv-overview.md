@@ -1,4 +1,8 @@
-# System V Overview
+---
+title: "System V Overview"
+description: "Learn about System V init, its runlevels, and how it manages processes in Linux. Understand SysV basics for beginners and intermediate users."
+keywords: "System V, SysV init, Linux runlevels, init system, Linux tutorial, beginner guide, process management"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Vim Saving and Exiting
+---
+title: "Vim Saving and Exiting"
+description: "Learn how to save and exit Vim effectively with essential commands like :w, :q, and :wq. Master basic Vim operations for efficient text editing."
+keywords: "Vim save, Vim exit, Vim commands, :wq, :q!, Linux text editor, Vim tutorial, beginner Vim"
+---
 
 ## Lesson Content
 

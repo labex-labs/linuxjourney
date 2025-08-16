@@ -1,4 +1,8 @@
-# Filesystem Hierarchy
+---
+title: "Filesystem Hierarchy"
+description: "Learn the Linux Filesystem Hierarchy Standard (FHS) and understand key directories like /bin, /etc, and /var. Explore the Linux directory structure."
+keywords: "Linux Filesystem Hierarchy, FHS, Linux directory structure, Linux commands, beginner Linux, Linux tutorial, Linux guide"
+---
 
 ## Lesson Content
 

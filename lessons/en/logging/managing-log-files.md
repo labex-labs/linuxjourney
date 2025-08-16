@@ -1,4 +1,8 @@
-# Managing Log Files
+---
+title: "Managing Log Files"
+description: "Learn how to manage Linux log files efficiently using logrotate. Discover log rotation, compression, and configuration to save disk space. Start learning today!"
+keywords: "logrotate, Linux logs, log management, log rotation, Linux tutorial, beginner, guide, disk space"
+---
 
 ## Lesson Content
 

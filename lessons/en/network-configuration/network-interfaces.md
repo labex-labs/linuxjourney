@@ -1,4 +1,8 @@
-# Network Interfaces
+---
+title: "Network Interfaces"
+description: "Learn about Linux network interfaces, ifconfig, and ip commands. Understand how to configure and manage network settings. Start your Linux networking journey!"
+keywords: "Linux network interfaces, ifconfig, ip command, network configuration, Linux networking, beginner, tutorial, guide"
+---
 
 ## Lesson Content
 

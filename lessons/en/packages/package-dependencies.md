@@ -1,4 +1,8 @@
-# Package Dependencies
+---
+title: "Package Dependencies"
+description: "Learn about Linux package dependencies and why they are crucial for software installation. Understand shared libraries and avoid broken packages. Start your Linux journey!"
+keywords: "Linux package dependencies, shared libraries, Linux packages, package management, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

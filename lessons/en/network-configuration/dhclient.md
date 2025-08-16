@@ -1,4 +1,8 @@
-# dhclient
+---
+title: "dhclient"
+description: "Learn about dhclient, how it obtains IP addresses using DHCP, and manages network leases. Understand dhclient.conf and dhclient.leases files. Linux beginner guide."
+keywords: "dhclient, DHCP, Linux networking, IP address, network configuration, Linux tutorial, beginner guide"
+---
 
 ## Lesson Content
 

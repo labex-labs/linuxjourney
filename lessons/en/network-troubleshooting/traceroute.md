@@ -1,4 +1,8 @@
-# traceroute
+---
+title: "traceroute"
+description: "Learn how to use the Linux traceroute command to trace network routes and troubleshoot connectivity. Understand TTL and packet routing for beginners."
+keywords: "traceroute, Linux networking, network troubleshooting, TTL, Linux commands, beginner, tutorial"
+---
 
 ## Lesson Content
 

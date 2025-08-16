@@ -1,4 +1,8 @@
-# Controlling Terminal
+---
+title: "Controlling Terminal"
+description: "Learn about controlling terminals in Linux, including TTY vs. PTS, and how processes are bound to them. Understand daemon processes. Start your Linux journey!"
+keywords: "controlling terminal, TTY, PTS, Linux terminal, daemon processes, Linux beginner, Linux tutorial, Linux guide"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# file
+---
+title: "file"
+description: "Learn how to use the Linux 'file' command to identify file types and contents. Understand Linux file naming conventions with this beginner-friendly guide."
+keywords: "Linux file command, identify file type, Linux tutorial, file naming, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

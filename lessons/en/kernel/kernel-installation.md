@@ -1,4 +1,8 @@
-# Kernel Installation
+---
+title: "Kernel Installation"
+description: "Learn how to install and manage Linux kernels. Discover kernel versions, use `uname -r`, and apt commands. Start your Linux kernel journey!"
+keywords: "Linux kernel, install kernel, uname -r, apt dist-upgrade, kernel management, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

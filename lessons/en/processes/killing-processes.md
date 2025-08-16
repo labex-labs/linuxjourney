@@ -1,4 +1,8 @@
-# kill (Terminate)
+---
+title: "kill (Terminate)"
+description: "Learn how to use the Linux 'kill' command to terminate processes. Understand SIGTERM, SIGKILL, and other signals for process management. Start learning now!"
+keywords: "kill command, Linux processes, SIGTERM, SIGKILL, Linux tutorial, beginner, process management, Linux guide"
+---
 
 ## Lesson Content
 

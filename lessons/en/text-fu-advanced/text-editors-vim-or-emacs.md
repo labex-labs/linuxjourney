@@ -1,4 +1,8 @@
-# Text Editors
+---
+title: "Text Editors"
+description: "Learn about Linux text editors like Vim and Emacs. Discover their uses and importance for system navigation. Start your Linux text editor journey!"
+keywords: "Linux text editors, Vim, Emacs, Linux commands, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

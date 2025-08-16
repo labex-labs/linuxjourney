@@ -1,4 +1,8 @@
-# pipe and tee
+---
+title: "pipe and tee"
+description: "Learn Linux pipes and tee command for efficient command-line data flow. Understand stdout, stdin, and file output. Improve your Linux skills!"
+keywords: "Linux pipe, tee command, Linux tutorial, stdout, stdin, beginner Linux, command line, Linux guide"
+---
 
 ## Lesson Content
 

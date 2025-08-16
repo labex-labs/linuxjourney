@@ -1,4 +1,8 @@
-# Users and Groups
+---
+title: "Users and Groups"
+description: "Learn about Linux users and groups, understand UIDs, GIDs, and the root user. Discover how to use the sudo command for elevated permissions. Start your Linux journey!"
+keywords: "Linux users, Linux groups, sudo command, root user, Linux permissions, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# tr (Translate)
+---
+title: "tr (Translate)"
+description: "Learn how to use the Linux 'tr' command to translate and delete characters. Understand character translation with examples and exercises. Start your Linux journey!"
+keywords: "tr command, Linux tr, translate characters, delete characters, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

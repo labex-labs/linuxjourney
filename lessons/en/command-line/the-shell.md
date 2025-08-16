@@ -1,4 +1,8 @@
-# The Shell
+---
+title: "The Shell"
+description: "Learn about the Linux shell, Bash, and basic commands like 'echo'. Understand shell prompts and start your Linux journey with this beginner-friendly guide."
+keywords: "Linux shell, Bash, echo command, Linux tutorial, command line, beginner Linux, shell prompt, Linux guide"
+---
 
 ## Lesson Content
 

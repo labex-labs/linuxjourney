@@ -1,4 +1,8 @@
-# System Calls
+---
+title: "System Calls"
+description: "Learn about Linux system calls (syscalls) and how they interact with the kernel. Understand user and kernel modes, and use `strace` for debugging. Start your Linux journey!"
+keywords: "Linux system calls, syscalls, kernel mode, user mode, strace command, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 

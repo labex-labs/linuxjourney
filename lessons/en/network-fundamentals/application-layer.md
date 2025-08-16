@@ -1,4 +1,8 @@
-# Application Layer
+---
+title: "Application Layer"
+description: "Learn about the Application Layer in the TCP/IP model, how it handles data for email (SMTP), and its role in network communication. Understand network layers."
+keywords: "Application Layer, TCP/IP model, SMTP, network layers, Linux networking, beginner tutorial, network communication"
+---
 
 ## Lesson Content
 

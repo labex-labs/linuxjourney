@@ -1,4 +1,8 @@
-# DNS Setup
+---
+title: "DNS Setup"
+description: "Learn about popular DNS servers for Linux like BIND, DNSmasq, and PowerDNS. Discover the best DNS server for your network setup with this beginner-friendly guide."
+keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS server setup, Linux networking, DNS tutorial, beginner"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Border Gateway Protocol
+---
+title: "Border Gateway Protocol"
+description: "Learn about BGP, the Border Gateway Protocol, and how it enables internet routing between autonomous systems. Understand BGP basics for beginners."
+keywords: "BGP, Border Gateway Protocol, internet routing, autonomous systems, Linux networking, BGP tutorial, network protocols, beginner guide"
+---
 
 ## Lesson Content
 

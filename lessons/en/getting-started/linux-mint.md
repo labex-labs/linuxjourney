@@ -1,4 +1,8 @@
-# Linux Mint
+---
+title: "Linux Mint"
+description: "Learn about Linux Mint, its Ubuntu base, package management, and why it's great for beginners. Discover its features and how to get started today!"
+keywords: "Linux Mint, Ubuntu, Linux for beginners, Linux distribution, Linux tutorial, Debian package manager, Linux guide"
+---
 
 ## Lesson Content
 

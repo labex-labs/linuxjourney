@@ -1,4 +1,8 @@
-# cat
+---
+title: "cat"
+description: "Learn how to use the 'cat' command in Linux to view file contents and concatenate files. A beginner-friendly guide to basic Linux commands."
+keywords: "cat command, Linux cat, view file contents, concatenate files, Linux commands, beginner Linux, Linux tutorial, Linux guide"
+---
 
 ## Lesson Content
 

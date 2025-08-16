@@ -1,4 +1,8 @@
-# route
+---
+title: "route"
+description: "Learn how to add and delete network routes using the Linux route and ip commands. Understand routing table management for beginners and intermediate users."
+keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
+---
 
 ## Lesson Content
 

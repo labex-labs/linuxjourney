@@ -1,4 +1,8 @@
-# Anatomy of a Disk
+---
+title: "Anatomy of a Disk"
+description: "Learn about Linux disk partitioning, MBR vs. GPT, and filesystem structure. Understand partitions, tables, and how to organize data. Get started with this beginner guide!"
+keywords: "Linux disk partitioning, MBR, GPT, filesystem structure, Linux partitions, beginner, tutorial, guide"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Process Termination
+---
+title: "Process Termination"
+description: "Learn about Linux process termination, including orphan and zombie processes. Understand _exit and wait system calls for effective process management."
+keywords: "Linux process termination, zombie processes, orphan processes, wait system call, _exit, Linux tutorial, beginner Linux"
+---
 
 ## Lesson Content
 

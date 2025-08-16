@@ -1,4 +1,8 @@
-# grep
+---
+title: "grep"
+description: "Learn how to use the grep command in Linux to search text patterns in files. Discover basic usage, case-insensitive search, and combining with other commands. Start your Linux journey!"
+keywords: "grep command, Linux grep, search files, text processing, Linux tutorial, beginner Linux, grep guide"
+---
 
 ## Lesson Content
 

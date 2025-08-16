@@ -1,4 +1,8 @@
-# Subnet Math
+---
+title: "Subnet Math"
+description: "Learn subnet math basics and how to calculate available hosts on a network. Understand IP addressing and subnet masks for beginners. Start your Linux journey!"
+keywords: "subnet math, IP address, subnet mask, network hosts, binary, Linux networking, beginner tutorial, guide"
+---
 
 ## Lesson Content
 

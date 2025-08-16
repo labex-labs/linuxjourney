@@ -1,4 +1,8 @@
-# DNS Tools
+---
+title: "DNS Tools"
+description: "Learn nslookup and dig commands for DNS queries and troubleshooting on Linux. Understand how to use these essential DNS tools with our beginner-friendly guide."
+keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
+---
 
 ## Lesson Content
 

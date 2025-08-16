@@ -1,4 +1,8 @@
-# lsof and fuser
+---
+title: "lsof and fuser"
+description: "Learn how to use lsof and fuser commands in Linux to identify processes using files. Understand "Device or Resource Busy" errors and manage open files effectively."
+keywords: "lsof, fuser, Linux commands, open files, process management, Linux tutorial, beginner guide, device busy"
+---
 
 ## Lesson Content
 

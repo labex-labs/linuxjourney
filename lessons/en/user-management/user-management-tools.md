@@ -1,4 +1,8 @@
-# User Management Tools
+---
+title: "User Management Tools"
+description: "Learn Linux user management: add, remove, and change passwords with useradd, userdel, and passwd commands. Get started with this beginner-friendly guide!"
+keywords: "Linux user management, adduser, userdel, passwd, Linux tutorial, beginner Linux, user accounts, Linux commands"
+---
 
 ## Lesson Content
 

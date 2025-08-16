@@ -1,4 +1,8 @@
-# Subnets
+---
+title: "Subnets"
+description: "Learn about subnets and subnet masks in Linux networking. Understand network prefixes and how subnets segment traffic. Get started with this beginner-friendly guide!"
+keywords: "subnets, subnet mask, network prefix, Linux networking, IP address, beginner, tutorial, ifconfig"
+---
 
 ## Lesson Content
 

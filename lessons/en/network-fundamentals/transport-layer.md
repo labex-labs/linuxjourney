@@ -1,4 +1,8 @@
-# Transport Layer
+---
+title: "Transport Layer"
+description: "Learn about the Transport Layer in Linux networking, including TCP/UDP protocols, ports, and data segmentation. Understand how data is transferred reliably."
+keywords: "Linux Transport Layer, TCP/UDP, network ports, data segmentation, Linux networking, beginner tutorial, network protocols"
+---
 
 ## Lesson Content
 

@@ -1,4 +1,8 @@
-# Kernel Location
+---
+title: "Kernel Location"
+description: "Learn about Linux kernel location in the /boot directory, understanding vmlinuz, initrd, and System.map. Explore kernel files and manage space effectively."
+keywords: "Linux kernel, /boot directory, vmlinuz, initrd, System.map, Linux beginner, kernel tutorial, Linux guide"
+---
 
 ## Lesson Content
 

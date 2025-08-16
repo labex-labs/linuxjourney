@@ -1,4 +1,8 @@
-# Emacs Exiting and Help
+---
+title: "Emacs Exiting and Help"
+description: "Learn Emacs exiting commands and how to access help. Understand basic Emacs navigation and undo functions in this beginner-friendly tutorial."
+keywords: "Emacs exit, Emacs help, Emacs undo, Emacs tutorial, Linux text editor, beginner guide"
+---
 
 ## Lesson Content
 

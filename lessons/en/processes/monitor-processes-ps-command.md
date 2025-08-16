@@ -1,4 +1,8 @@
-# ps (Processes)
+---
+title: "ps (Processes)"
+description: "Learn about the Linux 'ps' command to view running processes and understand process IDs (PIDs). Get a beginner's guide to process management."
+keywords: "ps command, Linux processes, process ID, PID, Linux tutorial, beginner, guide, top command"
+---
 
 ## Lesson Content
 

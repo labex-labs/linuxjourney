@@ -1,4 +1,8 @@
-# /etc/group
+---
+title: "/etc/group"
+description: "Learn about the /etc/group file in Linux, understanding group management, GID, and user permissions. Essential Linux group file tutorial for beginners."
+keywords: "/etc/group, Linux groups, group management, GID, Linux permissions, Linux tutorial, beginner Linux, Linux guide"
+---
 
 ## Lesson Content
 
