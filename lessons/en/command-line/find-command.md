@@ -30,4 +30,4 @@ What option should I specify for `find` if I want to search by name?
 
 ## Quiz Answer
 
-`-name`
+-name

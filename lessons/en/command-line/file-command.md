@@ -22,4 +22,4 @@ What command can you use to find the file type of a file?
 
 ## Quiz Answer
 
-`file`
+file

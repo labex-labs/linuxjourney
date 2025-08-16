@@ -33,4 +33,4 @@ What is the command to enable swap space on a device?
 
 ## Quiz Answer
 
-`swapon`
+swapon

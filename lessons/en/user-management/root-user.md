@@ -22,4 +22,4 @@ What file shows the users who have access to `sudo`?
 
 ## Quiz Answer
 
-`/etc/sudoers`
+/etc/sudoers

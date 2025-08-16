@@ -27,4 +27,4 @@ What directory is used to view detailed information on devices?
 
 ## Quiz Answer
 
-`/sys`
+/sys

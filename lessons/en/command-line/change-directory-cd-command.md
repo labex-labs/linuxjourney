@@ -50,4 +50,4 @@ If you are in `/home/pete/Pictures` and wanted to go to `/home/pete`, what’s a
 
 ## Quiz Answer
 
-`cd ..`
+cd ..

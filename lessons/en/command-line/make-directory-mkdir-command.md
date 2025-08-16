@@ -24,4 +24,4 @@ What command is used to make a directory?
 
 ## Quiz Answer
 
-`mkdir`
+mkdir

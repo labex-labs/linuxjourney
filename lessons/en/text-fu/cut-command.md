@@ -50,4 +50,4 @@ What command would you use to get the first character of every line in a file?
 
 ## Quiz Answer
 
-`cut -c 1`
+cut -c 1

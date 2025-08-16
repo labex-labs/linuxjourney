@@ -18,4 +18,4 @@ What utility is used to manage logs?
 
 ## Quiz Answer
 
-`logrotate`
+logrotate

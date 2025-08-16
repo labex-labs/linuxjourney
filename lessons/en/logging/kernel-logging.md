@@ -18,4 +18,4 @@ What command can be used to view kernel bootup messages?
 
 ## Quiz Answer
 
-`dmesg`
+dmesg

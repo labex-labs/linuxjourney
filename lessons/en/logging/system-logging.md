@@ -29,4 +29,4 @@ What is the daemon that manages logs on newer Linux systems?
 
 ## Quiz Answer
 
-`rsyslogd`
+rsyslogd

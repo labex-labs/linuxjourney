@@ -76,4 +76,4 @@ What is the command to start a service named peanut.service?
 
 ## Quiz Answer
 
-`sudo systemctl start peanut.service`
+sudo systemctl start peanut.service

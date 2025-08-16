@@ -39,4 +39,4 @@ What would commonly be the device name for the first partition on the second SCS
 
 ## Quiz Answer
 
-`sdb1`
+sdb1

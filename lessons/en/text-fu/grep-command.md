@@ -42,4 +42,4 @@ What command do you use to find a certain pattern?
 
 ## Quiz Answer
 
-`grep`
+grep

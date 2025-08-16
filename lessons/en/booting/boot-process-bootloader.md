@@ -29,4 +29,4 @@ What kernel parameter makes it so you don't see bootup messages?
 
 ## Quiz Answer
 
-`quiet`
+quiet

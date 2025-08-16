@@ -68,4 +68,4 @@ What command would you use to join files named `cat`, `dog`, `cow`?
 
 ## Quiz Answer
 
-`join cat dog cow`
+join cat dog cow

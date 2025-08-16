@@ -24,4 +24,4 @@ Where are device files stored on the system?
 
 ## Quiz Answer
 
-`/dev`
+/dev

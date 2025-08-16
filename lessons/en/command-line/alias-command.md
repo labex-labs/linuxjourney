@@ -32,4 +32,4 @@ What command is used to make an alias?
 
 ## Quiz Answer
 
-`alias`
+alias

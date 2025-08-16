@@ -77,4 +77,4 @@ What command displays the same output as the first line in `top`?
 
 ## Quiz Answer
 
-`uptime`
+uptime

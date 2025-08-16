@@ -58,4 +58,4 @@ What command is used to unload a module?
 
 ## Quiz Answer
 
-`modprobe -r`
+modprobe -r

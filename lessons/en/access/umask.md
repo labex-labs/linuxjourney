@@ -26,4 +26,4 @@ What command is used to change default file permissions?
 
 ## Quiz Answer
 
-`umask`
+umask

@@ -34,4 +34,4 @@ What is the command to clear the terminal?
 
 ## Quiz Answer
 
-`clear`
+clear

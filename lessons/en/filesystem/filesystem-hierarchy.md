@@ -35,4 +35,4 @@ What directory is used to store logs?
 
 ## Quiz Answer
 
-`/var`
+/var

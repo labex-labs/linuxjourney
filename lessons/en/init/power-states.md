@@ -38,6 +38,4 @@ What is the command to power off your system in 4 minutes?
 
 ## Quiz Answer
 
-```bash
 sudo shutdown -h +4
-```

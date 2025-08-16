@@ -53,4 +53,4 @@ What command is used to attach a filesystem?
 
 ## Quiz Answer
 
-`mount`
+mount

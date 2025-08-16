@@ -38,4 +38,4 @@ How do I find what directory you are currently in?
 
 ## Quiz Answer
 
-`pwd`
+pwd

@@ -42,4 +42,4 @@ What command is used to change a password?
 
 ## Quiz Answer
 
-`passwd`
+passwd

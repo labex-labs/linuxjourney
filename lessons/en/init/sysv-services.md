@@ -40,4 +40,4 @@ What is the command to stop a service named `peanut` with Sys V?
 
 ## Quiz Answer
 
-`sudo service peanut stop`
+sudo service peanut stop

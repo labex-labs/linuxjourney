@@ -37,4 +37,4 @@ What is the `dd` option for block size?
 
 ## Quiz Answer
 
-`bs`
+bs

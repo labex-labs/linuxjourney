@@ -66,4 +66,4 @@ How do you see how many inodes are left on your system?
 
 ## Quiz Answer
 
-`df -i`
+df -i

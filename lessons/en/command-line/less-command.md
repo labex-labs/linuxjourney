@@ -29,4 +29,4 @@ How do you quit out of a `less` command?
 
 ## Quiz Answer
 
-`q`
+q

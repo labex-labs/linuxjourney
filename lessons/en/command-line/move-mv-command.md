@@ -50,4 +50,4 @@ How do you rename a file called `cat` to `dog`?
 
 ## Quiz Answer
 
-`mv cat dog`
+mv cat dog

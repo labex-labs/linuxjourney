@@ -34,4 +34,4 @@ What command can you use to view your ARP cache?
 
 ## Quiz Answer
 
-`arp`
+arp

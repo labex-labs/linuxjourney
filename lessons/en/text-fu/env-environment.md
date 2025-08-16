@@ -59,4 +59,4 @@ How do you see your environment variables?
 
 ## Quiz Answer
 
-`env`
+env

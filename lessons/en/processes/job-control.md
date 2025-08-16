@@ -74,4 +74,4 @@ What command is used to list background jobs?
 
 ## Quiz Answer
 
-`jobs`
+jobs

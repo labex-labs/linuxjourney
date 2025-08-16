@@ -24,4 +24,4 @@ What log file is used for user authentication?
 
 ## Quiz Answer
 
-`auth.log`
+auth.log

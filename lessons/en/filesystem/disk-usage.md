@@ -32,4 +32,4 @@ What command is used to show how much space is free on your disk?
 
 ## Quiz Answer
 
-`df`
+df

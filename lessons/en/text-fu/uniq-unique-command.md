@@ -102,4 +102,4 @@ What command would you use to remove duplicates in a file?
 
 ## Quiz Answer
 
-`uniq`
+uniq

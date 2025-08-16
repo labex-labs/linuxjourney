@@ -23,4 +23,4 @@ What is the kernel image called in `/boot`?
 
 ## Quiz Answer
 
-`vmlinuz`
+vmlinuz

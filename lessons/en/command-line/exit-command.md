@@ -28,4 +28,4 @@ How can you exit from the shell?
 
 ## Quiz Answer
 
-`exit`
+exit

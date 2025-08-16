@@ -60,4 +60,4 @@ What is the redirector for stderr?
 
 ## Quiz Answer
 
-`2>`
+2>

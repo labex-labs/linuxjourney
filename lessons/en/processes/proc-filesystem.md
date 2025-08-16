@@ -28,4 +28,4 @@ What filesystem stores process information?
 
 ## Quiz Answer
 
-`/proc`
+/proc

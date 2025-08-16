@@ -42,4 +42,4 @@ What command do you use to run as `root`?
 
 ## Quiz Answer
 
-`sudo`
+sudo

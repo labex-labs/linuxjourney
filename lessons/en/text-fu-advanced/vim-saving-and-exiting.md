@@ -27,4 +27,4 @@ How do you quit out of Vim without saving?
 
 ## Quiz Answer
 
-`:q!`
+:q!

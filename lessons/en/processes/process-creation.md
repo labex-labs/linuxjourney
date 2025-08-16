@@ -26,4 +26,4 @@ What system call creates a new process?
 
 ## Quiz Answer
 
-`fork`
+fork

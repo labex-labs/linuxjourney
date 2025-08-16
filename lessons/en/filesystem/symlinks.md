@@ -75,4 +75,4 @@ What is the command used to make a symlink?
 
 ## Quiz Answer
 
-`ln -s`
+ln -s

@@ -20,4 +20,4 @@ Where is the sources file in a Debian system?
 
 ## Quiz Answer
 
-`/etc/apt/sources.list`
+/etc/apt/sources.list

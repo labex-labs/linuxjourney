@@ -80,4 +80,4 @@ What regular expression would you use to match a single character?
 
 ## Quiz Answer
 
-`.`
+.

@@ -50,4 +50,4 @@ What command is used to list open files and their process information?
 
 ## Quiz Answer
 
-`lsof`
+lsof

@@ -32,4 +32,4 @@ What key is used to search in Vim?
 
 ## Quiz Answer
 
-`/`
+/

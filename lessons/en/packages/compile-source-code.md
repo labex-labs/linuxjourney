@@ -66,4 +66,4 @@ What should you use instead of `make install` ALWAYS?
 
 ## Quiz Answer
 
-`checkinstall`
+checkinstall

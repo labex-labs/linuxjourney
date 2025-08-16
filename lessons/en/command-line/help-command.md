@@ -26,4 +26,4 @@ How do you get quick command-line help for built-in Bash commands?
 
 ## Quiz Answer
 
-`help`
+help

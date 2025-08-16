@@ -44,4 +44,4 @@ What command would you use to get the total number of words in a file and just t
 
 ## Quiz Answer
 
-`wc -w`
+wc -w

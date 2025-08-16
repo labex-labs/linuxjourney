@@ -37,4 +37,4 @@ What command do you use to change user ownership?
 
 ## Quiz Answer
 
-`chown`
+chown

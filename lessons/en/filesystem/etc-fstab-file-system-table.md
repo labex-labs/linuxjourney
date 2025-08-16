@@ -32,4 +32,4 @@ What file is used to define how filesystems should be mounted?
 
 ## Quiz Answer
 
-`/etc/fstab`
+/etc/fstab

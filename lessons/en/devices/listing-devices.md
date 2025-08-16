@@ -32,4 +32,4 @@ What command can be used to view USB devices?
 
 ## Quiz Answer
 
-`lsusb`
+lsusb

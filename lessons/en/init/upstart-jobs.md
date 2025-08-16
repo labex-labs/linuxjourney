@@ -59,6 +59,4 @@ How would I manually restart an Upstart job called `peanuts`?
 
 ## Quiz Answer
 
-```bash
 sudo initctl restart peanuts
-```

@@ -40,4 +40,4 @@ What command can you use to manually log a message?
 
 ## Quiz Answer
 
-`logger`
+logger

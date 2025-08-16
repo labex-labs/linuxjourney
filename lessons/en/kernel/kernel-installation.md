@@ -40,4 +40,4 @@ How do you see the kernel version of your system?
 
 ## Quiz Answer
 
-`uname -r`
+uname -r
