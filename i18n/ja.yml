@@ -1,0 +1,115 @@
+ja:
+  menu:
+    languages:
+      lang: 🇯🇵 日本語
+  home:
+    metadata:
+      title: Linux Journey - 無料の Linux チュートリアルとコースで Linux を学ぼう
+      description: 無料のチュートリアルと初心者向けのコースで Linux を学びましょう。Linux の基本、必須の Linux コマンド、そして Linux を段階的に習得するための実践的なスキルを探求します。今日からあなたの Linux の旅を始めましょう！
+      keywords: Linux チュートリアル、コマンドライン、Linux 初心者、システム管理、Linux ガイド、ネットワーキング、パッケージ管理、Linux コマンド
+    tagline:
+      title: Linux-fu の道を無料で学びましょう。
+    subscribe:
+      title: 購読する
+      body: 新しいコースやレッスンに関する最新情報を受け取りましょう！
+    about:
+      title: 私たちについて
+      body: ここで今日得られた知識は、オープンソースコミュニティによって支えられています。
+      url_name: 貢献と協力
+      url: https://github.com/labex-labs/linuxjourney
+    contact:
+      title: お問い合わせ
+      body: バグを見つけましたか？それとも、ちょっとしたメモを送りたいですか？
+      url_name: お知らせください
+      url: https://github.com/labex-labs/linuxjourney/issues
+  courses:
+    titles:
+      exercises: 演習
+      quiz: クイズ
+  forms:
+    buttons:
+      check_answer: 解答を確認
+      continue: 続ける
+      return: メインメニューに戻る
+      home: ホーム
+    messages:
+      answer_correct: 正解です！
+      answer_incorrect: 惜しい！もう一度試してください
+  outline:
+    grasshopper:
+      title: グラスホッパー
+      lessons:
+        - name: はじめに
+          description: Linux とは？ディストリビューションの選択とインストールから始めましょう。
+          slug: getting-started
+        - name: コマンドライン
+          description: コマンドラインの基本、ファイルやディレクトリの操作などを学びましょう。
+          slug: command-line
+        - name: テキスト操作
+          description: 基本的なテキスト操作とナビゲーションを学びましょう。
+          slug: text-fu
+        - name: 高度なテキスト操作
+          description: Vim と Emacs を使って、Linux のクモザルのようにテキストを操作しましょう。
+          slug: text-fu-advanced
+        - name: ユーザー管理
+          description: ユーザーの役割と管理について学びましょう。
+          slug: user-management
+        - name: パーミッション
+          description: パーミッションレベルとパーミッションの変更について学びましょう。
+          slug: access
+        - name: プロセス
+          description: システム上で実行されているプロセスについて学びましょう。
+          slug: processes
+        - name: パッケージ
+          description:
+            Learn all about the dpkg, apt-get, rpm, and yum package management
+            tools.
+          slug: packages
+    journeyman:
+      title: ジャーニーマン
+      lessons:
+        - name: デバイス
+          description: Linux デバイスと、それらが kernel およびユーザー空間とどのように相互作用するかを学びましょう。
+          slug: devices
+        - name: ファイルシステム
+          description: Linux ファイルシステム、さまざまな種類のファイルシステム、パーティショニングなどについて学びましょう。
+          slug: filesystem
+        - name: システムの起動
+          description: Linux の起動プロセスの段階について学びましょう。
+          slug: booting
+        - name: Kernel
+          description: Linux システムで最も重要な部分。その仕組みと設定方法について学びましょう。
+          slug: kernel
+        - name: Init
+          description: さまざまな init システム（SysV、Upstart、systemd）について学びましょう。
+          slug: init
+        - name: プロセス利用率
+          description: top、load averages、iostat などを使ったリソース監視を学びましょう！
+          slug: process-utilization
+        - name: ロギング
+          description: システムログと/var/log ディレクトリについて学びましょう。
+          slug: logging
+    networking_nomad:
+      title: ネットワーキングノマド
+      lessons:
+        - name: ネットワーク共有
+          description: rsync、scp、nfs などを使ったネットワーク共有について学びましょう。
+          slug: network-sharing
+        - name: ネットワークの基本
+          description: ネットワーキングの基本と TCP/IP モデルについて学びましょう。
+          slug: network-fundamentals
+        - name: サブネット化
+          description: サブネットとサブネット計算の方法を学びましょう！
+          slug: subnetting
+        - name: ルーティング
+          description: パケットがネットワークを介してどのようにルーティングされるかを学びましょう！
+          slug: routing
+        - name: ネットワーク設定
+          description: Linux ツールを使ったネットワーク設定について学びましょう！
+          slug: network-configuration
+        - name: トラブルシューティング
+          description: 問題の診断とトラブルシューティングに役立つ一般的なネットワークツールについて学びましょう！
+          slug: network-troubleshooting
+        - name: DNS
+          description: DNS について知りたかったことすべて、そしてそれ以上を学びましょう。
+          slug: dns

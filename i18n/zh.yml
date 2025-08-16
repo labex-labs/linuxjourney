@@ -1,0 +1,115 @@
+zh:
+  menu:
+    languages:
+      lang: 🇨🇳 简体中文
+  home:
+    metadata:
+      title: Linux Journey - 免费 Linux 教程与课程，学习 Linux
+      description:
+        通过免费教程和新手友好课程学习 Linux。逐步探索 Linux 基础知识、基本 Linux 命令和掌握 Linux 的实用技能。立即开始您的
+        Linux 之旅！
+      keywords: Linux 教程，命令行，Linux 初学者，系统管理，Linux 指南，网络，包管理，Linux 命令
+    tagline:
+      title: 免费学习 Linux 之道。
+    subscribe:
+      title: 订阅
+      body: 获取新课程和新课程的更新！
+    about:
+      title: 关于我们
+      body: 今天在这里获得的知识由开源社区提供支持。
+      url_name: 贡献与协作
+      url: https://github.com/labex-labs/linuxjourney
+    contact:
+      title: 联系我们
+      body: 发现 bug？只想发送一条消息？
+      url_name: 告诉我们
+      url: https://github.com/labex-labs/linuxjourney/issues
+  courses:
+    titles:
+      exercises: 练习
+      quiz: 测验
+  forms:
+    buttons:
+      check_answer: 检查答案
+      continue: 继续
+      return: 返回主菜单
+      home: 主页
+    messages:
+      answer_correct: 回答正确！
+      answer_incorrect: 不完全正确，请再试一次
+  outline:
+    grasshopper:
+      title: 初学者
+      lessons:
+        - name: 入门
+          description: 什么是 Linux？从选择发行版和安装开始。
+          slug: getting-started
+        - name: 命令行
+          description: 学习命令行的基础知识，导航文件、目录等。
+          slug: command-line
+        - name: 文本操作
+          description: 学习基本的文本操作和导航。
+          slug: text-fu
+        - name: 高级文本操作
+          description: 使用 Vim 和 Emacs 像 Linux 蜘蛛猴一样导航文本。
+          slug: text-fu-advanced
+        - name: 用户管理
+          description: 了解用户角色和管理。
+          slug: user-management
+        - name: 权限
+          description: 了解权限级别和修改权限。
+          slug: access
+        - name: 进程
+          description: 了解系统上运行的进程。
+          slug: processes
+        - name: 软件包
+          description: 了解 dpkg、apt-get、rpm 和 yum 包管理工具。
+          slug: packages
+    journeyman:
+      title: 熟练工
+      lessons:
+        - name: 设备
+          description: 了解 Linux 设备以及它们如何与 kernel 和用户空间交互。
+          slug: devices
+        - name: 文件系统
+          description: 了解 Linux filesystem、不同类型的文件系统、分区等。
+          slug: filesystem
+        - name: 启动系统
+          description: 了解 Linux 启动过程的各个阶段。
+          slug: booting
+        - name: 内核
+          description: Linux 系统最重要的部分；了解它的工作原理和如何配置它。
+          slug: kernel
+        - name: 初始化
+          description: 了解不同的 init 系统：SysV、Upstart 和 systemd。
+          slug: init
+        - name: 进程利用率
+          description: 使用 top、load averages、iostat 等工具学习资源监控！
+          slug: process-utilization
+        - name: 日志
+          description: 了解系统日志和 /var/log 目录。
+          slug: logging
+    networking_nomad:
+      title: 网络游侠
+      lessons:
+        - name: 网络共享
+          description: 了解使用 rsync、scp、nfs 等进行网络共享。
+          slug: network-sharing
+        - name: 网络基础
+          description: 了解网络基础知识和 TCP/IP 模型。
+          slug: network-fundamentals
+        - name: 子网划分
+          description: 了解子网以及如何进行子网计算！
+          slug: subnetting
+        - name: 路由
+          description: 了解数据包如何在网络中路由！
+          slug: routing
+        - name: 网络配置
+          description: 了解如何使用 Linux 工具进行网络配置！
+          slug: network-configuration
+        - name: 故障排除
+          description: 了解常用的网络工具，帮助您诊断和排除问题！
+          slug: network-troubleshooting
+        - name: DNS
+          description: 所有您想了解的关于 DNS 的一切及更多。
+          slug: dns

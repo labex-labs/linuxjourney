@@ -1,0 +1,113 @@
+en:
+  menu:
+    languages:
+      lang: "🇺🇸 English"
+  home:
+    metadata:
+      title: "Linux Journey - Learn Linux with Free Linux Tutorial & Course"
+      description: "Learn Linux with free tutorial and beginner-friendly courses. Explore Linux basics, essential Linux commands, and practical skills for mastering Linux step by step. Start your Linux journey today! "
+      keywords: "Linux tutorial, command line, Linux beginner, system administration, Linux guide, networking, package management, Linux commands"
+    tagline:
+      title: "Learn the ways of Linux-fu, for free."
+    subscribe:
+      title: "Subscribe"
+      body: "Get updates about new courses and lessons!"
+    about:
+      title: "About Us"
+      body: "The knowledge gained here today was powered by the open-source community."
+      url_name: "Contribute and Collaborate"
+      url: "https://github.com/labex-labs/linuxjourney"
+    contact:
+      title: "Contact Us"
+      body: "See a bug? Just want to send a note?"
+      url_name: "Let us know"
+      url: "https://github.com/labex-labs/linuxjourney/issues"
+  courses:
+    titles:
+      exercises: "Exercises"
+      quiz: "Quiz"
+  forms:
+    buttons:
+      check_answer: "Check Answer"
+      continue: "Continue"
+      return: "Return to Main Menu"
+      home: "Home"
+    messages:
+      answer_correct: "Correct answer!"
+      answer_incorrect: "Not quite, try again"
+  outline:
+    grasshopper:
+      title: "Grasshopper"
+      lessons:
+        - name: "Getting Started"
+          description: "What is Linux? Get started with choosing a distribution and installation."
+          slug: "getting-started"
+        - name: "Command Line"
+          description: "Learn the fundamentals of the command line, navigating files, directories, and more."
+          slug: "command-line"
+        - name: "Text-Fu"
+          description: "Learn basic text manipulation and navigation."
+          slug: "text-fu"
+        - name: "Advanced Text-Fu"
+          description: "Navigate text like a Linux spider monkey with Vim and Emacs."
+          slug: "text-fu-advanced"
+        - name: "User Management"
+          description: "Learn about user roles and management."
+          slug: "user-management"
+        - name: "Permissions"
+          description: "Learn about permission levels and modifying permissions."
+          slug: "access"
+        - name: "Processes"
+          description: "Learn about the running processes on the system."
+          slug: "processes"
+        - name: "Packages"
+          description: "Learn all about the dpkg, apt-get, rpm, and yum package management tools."
+          slug: "packages"
+    journeyman:
+      title: "Journeyman"
+      lessons:
+        - name: "Devices"
+          description: "Learn about Linux devices and how they interact with the kernel and user space."
+          slug: "devices"
+        - name: "The Filesystem"
+          description: "Learn about the Linux filesystem, the different types of filesystems, partitioning, and more."
+          slug: "filesystem"
+        - name: "Boot the System"
+          description: "Learn about the stages of the Linux boot process."
+          slug: "booting"
+        - name: "Kernel"
+          description: "The most important part of the Linux system; learn about how it works and how to configure it."
+          slug: "kernel"
+        - name: "Init"
+          description: "Learn about the different init systems: SysV, Upstart, and systemd."
+          slug: "init"
+        - name: "Process Utilization"
+          description: "Learn resource monitoring with top, load averages, iostat, and more!"
+          slug: "process-utilization"
+        - name: "Logging"
+          description: "Learn about system logs and the /var/log directory."
+          slug: "logging"
+    networking_nomad:
+      title: "Networking Nomad"
+      lessons:
+        - name: "Network Sharing"
+          description: "Learn about network sharing with rsync, scp, nfs, and more."
+          slug: "network-sharing"
+        - name: "Network Basics"
+          description: "Learn about networking basics and the TCP/IP model."
+          slug: "network-fundamentals"
+        - name: "Subnetting"
+          description: "Learn about subnets and how to do subnet arithmetic!"
+          slug: "subnetting"
+        - name: "Routing"
+          description: "Learn how packets are routed across networks!"
+          slug: "routing"
+        - name: "Network Config"
+          description: "Learn about network configuration using Linux tools!"
+          slug: "network-configuration"
+        - name: "Troubleshooting"
+          description: "Learn about common networking tools to help you diagnose and troubleshoot issues!"
+          slug: "network-troubleshooting"
+        - name: "DNS"
+          description: "Everything and more that you wanted to know about DNS."
+          slug: "dns"
