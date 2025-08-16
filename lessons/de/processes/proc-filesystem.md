@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "/proc-Dateisystem"
 description: "Erfahren Sie mehr über das /proc-Dateisystem in Linux, wie es Prozessinformationen speichert und wie es strukturiert ist. Entdecken Sie Prozessdetails mit diesem wichtigen Linux-Leitfaden."
 keywords: "/proc-Dateisystem, Linux-Prozesse, Prozessinformationen, Linux-Tutorial, Linux für Anfänger, Linux-Leitfaden"

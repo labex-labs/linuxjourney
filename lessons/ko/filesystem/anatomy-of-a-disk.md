@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "디스크의 해부학"
 description: "Linux 디스크 파티셔닝, MBR 대 GPT, 파일 시스템 구조에 대해 알아보세요. 파티션, 테이블, 데이터 구성 방법을 이해하세요. 이 초보자 가이드로 시작하세요!"
 keywords: "Linux 디스크 파티셔닝, MBR, GPT, 파일 시스템 구조, Linux 파티션, 초보자, 튜토리얼, 가이드"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "退出"
 description: "学习如何使用 'exit' 或 'logout' 命令退出 Linux shell。了解初学者的基本 shell 导航。今天就开始你的 Linux 之旅！"
 keywords: "exit 命令，logout 命令，Linux shell, 终端退出，Linux 基础，Linux 初学者，Linux 教程"

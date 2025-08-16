@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "子网"
 description: "了解 Linux 网络中的子网和子网掩码。理解网络前缀以及子网如何分割流量。通过这份适合初学者的指南开始学习！"
 keywords: "子网，子网掩码，网络前缀，Linux 网络，IP 地址，初学者，教程，ifconfig"

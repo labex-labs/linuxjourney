@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Camada de Aplicação"
 description: "Aprenda sobre a Camada de Aplicação no modelo TCP/IP, como ela lida com dados para e-mail (SMTP) e seu papel na comunicação de rede. Entenda as camadas de rede."
 keywords: "Camada de Aplicação, modelo TCP/IP, SMTP, camadas de rede, rede Linux, tutorial para iniciantes, comunicação de rede"

@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "dd"
 description: "Lernen Sie den Linux dd-Befehl zum Kopieren von Daten und zur Erstellung von Disk-Images. Verstehen Sie seine Optionen wie if, of und bs. Beginnen Sie Ihre Reise ins Linux-Datenmanagement!"
 keywords: "dd Befehl, Linux dd, Daten kopieren, Disk-Imaging, Linux Tutorial, Anfänger, Leitfaden, Datensicherung"

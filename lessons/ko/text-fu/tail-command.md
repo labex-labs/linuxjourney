@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "tail"
 description: "`tail` 명령을 사용하여 Linux 에서 파일 끝을 보고 로그를 모니터링하는 방법을 배웁니다. 실시간 업데이트를 위한 `tail -f`를 알아보세요. Linux 여정을 시작하세요!"
 keywords: "tail command, Linux tail, tail -f, 로그 보기, Linux 튜토리얼, Linux 초보자, Linux 가이드"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Controle de Jobs"
 description: "Aprenda o controle de jobs do Linux para gerenciar processos em segundo plano. Entenda os comandos 'jobs', 'bg', 'fg' e 'kill' para uso eficiente do shell. Comece sua jornada no Linux!"
 keywords: "controle de jobs Linux, processos em segundo plano, comando jobs, comando bg, comando fg, comando kill, tutorial Linux, Linux para iniciantes"

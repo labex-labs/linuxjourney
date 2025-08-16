@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Gentoo"
 description: "Découvrez Gentoo Linux, son gestionnaire de paquets Portage et sa grande configurabilité. Découvrez si cette distribution flexible est faite pour votre parcours Linux avancé."
 keywords: "Gentoo Linux, Portage, distribution Linux, tutoriel Gentoo, débutant Linux, guide Linux, configurabilité Gentoo"

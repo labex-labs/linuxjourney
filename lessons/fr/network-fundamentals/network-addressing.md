@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Adressage Réseau"
 description: "Apprenez les bases de l'adressage réseau : adresses MAC vs. IP, et noms d'hôte. Comprenez comment les appareils communiquent sur un réseau. Commencez votre parcours de mise en réseau Linux !"
 keywords: "adressage réseau, adresse MAC, adresse IP, nom d'hôte, mise en réseau Linux, débutant, tutoriel, guide"

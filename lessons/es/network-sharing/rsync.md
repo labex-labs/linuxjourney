@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "rsync"
 description: "Aprenda rsync para una sincronización y copias de seguridad eficientes de archivos en Linux. Comprenda la transferencia de datos remota y local con comandos y opciones de rsync. ¡Mejore sus habilidades en Linux!"
 keywords: "rsync, transferencia de archivos Linux, copia de seguridad de datos, sincronización de archivos, tutorial de Linux, comandos rsync, principiante, guía"

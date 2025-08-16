@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "udev"
 description: "了解 udev，它如何动态管理 Linux 设备文件，并使用 udevadm。理解初学者的设备节点创建。"
 keywords: "udev, udevadm, Linux 设备管理，设备文件，Linux 教程，Linux 初学者，udev 规则，Linux 指南"

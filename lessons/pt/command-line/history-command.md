@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "histórico"
 description: "Aprenda a usar o comando history do Linux, o atalho !! e Ctrl-R para uma recuperação eficiente de comandos. Melhore sua produtividade no terminal com estas dicas essenciais!"
 keywords: "histórico Linux, histórico bash, Ctrl-R, comando clear, tutorial Linux, linha de comando, guia para iniciantes"

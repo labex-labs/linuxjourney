@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "fichier"
 description: "Apprenez à utiliser la commande Linux 'file' pour identifier les types et le contenu des fichiers. Comprenez les conventions de nommage des fichiers Linux avec ce guide convivial pour débutants."
 keywords: "commande Linux file, identifier type de fichier, tutoriel Linux, nommage de fichiers, Linux débutant, guide Linux"

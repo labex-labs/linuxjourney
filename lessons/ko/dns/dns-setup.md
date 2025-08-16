@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "DNS 설정"
 description: "BIND, DNSmasq, PowerDNS 와 같은 Linux 용 인기 DNS 서버에 대해 알아보세요. 이 초보자 친화적인 가이드를 통해 네트워크 설정에 가장 적합한 DNS 서버를 찾아보세요."
 keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS 서버 설정, Linux 네트워킹, DNS 튜토리얼, 초보자"

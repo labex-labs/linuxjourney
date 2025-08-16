@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "文件权限"
 description: "学习 Linux 文件权限：理解 rwx 位、用户、组和其他权限。掌握 `ls -l` 输出，适合初学者。开始你的 Linux 之旅！"
 keywords: "Linux 文件权限，ls -l 命令，rwx 权限，Linux 教程，文件模式，Linux 初学者，Linux 指南"

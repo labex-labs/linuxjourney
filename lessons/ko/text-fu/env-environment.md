@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "env (환경)"
 description: "'env' 명령으로 Linux 환경 변수에 대해 알아보세요. PATH, HOME, USER 변수를 이해하세요. Linux 환경 관리에 대한 초보자 가이드를 얻으세요."
 keywords: "env command, Linux 환경 변수, PATH 변수, Linux 튜토리얼, 초보자 Linux, 셸 변수, Linux 가이드"

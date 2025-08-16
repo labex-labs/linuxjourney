@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "uniq (고유)"
 description: "Linux `uniq` 명령어를 사용하여 텍스트 파일에서 중복된 줄을 제거하는 방법을 배웁니다. -c, -u, -d 와 같은 옵션을 알아보고, `sort`와 결합하여 효과적인 데이터 정리를 수행하는 방법을 알아봅니다."
 keywords: "uniq 명령어, Linux uniq, 중복 제거, sort uniq, Linux 튜토리얼, 텍스트 처리, 초보자 Linux, Linux 가이드"

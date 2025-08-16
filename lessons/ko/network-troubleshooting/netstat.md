@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "netstat"
 description: "Linux 네트워크 분석을 위한 netstat 명령을 배우세요. 이 초보자 친화적인 가이드를 통해 네트워크 연결, 포트 및 소켓을 이해하세요."
 keywords: "netstat, netstat command, Linux networking, network connections, Linux tutorial, beginner, guide"

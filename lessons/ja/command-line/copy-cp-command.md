@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "cp (コピー)"
 description: "Linux の cp コマンドを使ってファイルやディレクトリをコピーする方法を学びましょう。-r やワイルドカードなどのオプションを理解します。今日から Linux の学習を始めましょう！"
 keywords: "cp コマンド，ファイルコピー Linux, Linux チュートリアル，Linux 初心者，cp -r, Linux ワイルドカード，Linux ガイド"

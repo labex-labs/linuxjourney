@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Upstart Overview"
 description: "Learn about Upstart, its event-driven model, and how it manages services in Linux. Understand Upstart job configurations and its role as an init system."
 keywords: "Upstart, init system, Linux services, Ubuntu, SysV, beginner tutorial, Linux guide"

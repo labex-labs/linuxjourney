@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "pipe et tee"
 description: "Apprenez les pipes Linux et la commande tee pour un flux de données efficace en ligne de commande. Comprenez stdout, stdin et la sortie de fichier. Améliorez vos compétences Linux !"
 keywords: "pipe Linux, commande tee, tutoriel Linux, stdout, stdin, Linux pour débutants, ligne de commande, guide Linux"

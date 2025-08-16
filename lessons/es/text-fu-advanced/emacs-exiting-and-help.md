@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Emacs: Salir y Ayuda"
 description: "Aprenda los comandos de salida de Emacs y cómo acceder a la ayuda. Comprenda la navegación básica de Emacs y las funciones de deshacer en este tutorial para principiantes."
 keywords: "salir de Emacs, ayuda de Emacs, deshacer en Emacs, tutorial de Emacs, editor de texto de Linux, guía para principiantes"

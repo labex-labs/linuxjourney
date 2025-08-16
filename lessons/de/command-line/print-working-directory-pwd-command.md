@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "pwd (Aktuelles Arbeitsverzeichnis ausgeben)"
 description: "Erfahren Sie, wie Sie den Befehl 'pwd' in Linux verwenden, um Ihr aktuelles Arbeitsverzeichnis auszugeben. Verstehen Sie Linux-Dateisystempfade und -navigation für Anfänger."
 keywords: "pwd Befehl, Linux Verzeichnis, aktuelles Verzeichnis, Linux Pfad, Linux Tutorial, Linux für Anfänger, Linux Anleitung"

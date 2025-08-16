@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Link-State-Protokolle"
 description: "Erfahren Sie mehr über Link-State-Protokolle wie OSPF für große Netzwerke. Verstehen Sie ihre schnelle Konvergenz und wie sie Routing-Tabellen aktualisieren. Beginnen Sie Ihre Reise in die Linux-Netzwerktechnik!"
 keywords: "Link-State-Protokolle, OSPF, Linux-Netzwerktechnik, Routing-Protokolle, Netzwerktopologie, Anfänger"

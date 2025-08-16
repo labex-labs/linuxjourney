@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Protocolos de Vector de Distancia"
 description: "Aprenda sobre los protocolos de vector de distancia como RIP, cómo funcionan y sus limitaciones para el enrutamiento de red. Comprenda el conteo de saltos y la eficiencia de la red."
 keywords: "protocolos de vector de distancia, RIP, protocolo de información de enrutamiento, conteo de saltos, enrutamiento de red, redes Linux, guía para principiantes, tutorial"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Vim (Vi Melhorado)"
 description: "Aprenda Vim, o poderoso e leve editor de texto Vi aprimorado para Linux. Entenda o uso básico e por que o Vim é essencial para usuários Linux."
 keywords: "Vim, editor Vi, editor de texto Linux, tutorial Vim, comandos Linux, Linux para iniciantes, guia Vim"

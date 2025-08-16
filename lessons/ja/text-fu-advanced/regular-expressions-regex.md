@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "regex（正規表現）"
 description: "Linux のパターンマッチングのための正規表現（regex）を学びます。テキスト操作のための^、$、.、[]などの regex 構文を理解します。grep スキルを向上させましょう！"
 keywords: "正規表現，regex, Linux regex, grep regex, パターンマッチング，regex チュートリアル，Linux コマンド，初心者"

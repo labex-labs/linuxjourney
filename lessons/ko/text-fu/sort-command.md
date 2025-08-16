@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "sort"
 description: "텍스트 파일을 정렬하기 위해 Linux sort 명령을 사용하는 방법을 배우십시오. 역순 및 숫자 정렬과 같은 옵션을 알아보십시오. Linux 명령줄 기술을 향상시키십시오!"
 keywords: "Linux sort 명령어, sort -r, sort -n, Linux 튜토리얼, 명령줄, 초보자 Linux, sort 가이드"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "ping"
 description: "学习如何使用 Linux ping 命令来测试网络连接和排除故障。了解 ICMP、TTL 和往返时间，以进行有效的网络诊断。"
 keywords: "Linux ping, 网络连接，ICMP, TTL, Linux 网络，Linux 初学者，Linux 教程，ping 命令"

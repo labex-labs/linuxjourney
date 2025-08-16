@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "/etc/fstab"
 description: "Aprenda sobre /etc/fstab en Linux, cómo configurar montajes de sistemas de archivos al inicio y gestionar entradas de dispositivos. ¡Comprenda fstab para principiantes!"
 keywords: "/etc/fstab, Linux fstab, montar sistemas de archivos, arranque de Linux, tutorial de fstab, principiante, guía"

@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Umask"
 description: "Apprenez à utiliser la commande `umask` pour contrôler les permissions de fichier par défaut sous Linux. Comprenez les permissions numériques et gérez facilement l'accès aux nouveaux fichiers."
 keywords: "umask, permissions linux, permissions de fichier, commandes linux, linux débutant, tutoriel linux, permissions par défaut"

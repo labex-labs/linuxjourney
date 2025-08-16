@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "ls (List Directories)"
 description: "Learn how to use the 'ls' command in Linux to list directory contents, view hidden files, and understand file details. Improve your Linux command line skills!"
 keywords: "ls command, list directories, Linux tutorial, hidden files, Linux commands, beginner Linux, Linux guide"

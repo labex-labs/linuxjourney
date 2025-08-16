@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Vim Navigation"
 description: "Learn Vim navigation basics using h, j, k, l keys. Understand essential Vim movement for beginners and improve your Linux command line skills."
 keywords: "Vim navigation, Vim tutorial, Linux Vim, Vim movement, Vim basics, beginner Vim, Linux text editor, Vim guide"

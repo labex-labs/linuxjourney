@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "System V Überblick"
 description: "Erfahren Sie mehr über System V init, seine Runlevels und wie es Prozesse in Linux verwaltet. Verstehen Sie die Grundlagen von SysV für Anfänger und fortgeschrittene Benutzer."
 keywords: "System V, SysV init, Linux Runlevels, init System, Linux Tutorial, Anfängerleitfaden, Prozessmanagement"

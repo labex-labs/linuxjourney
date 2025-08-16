@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Camada de Rede"
 description: "Aprenda sobre a camada de Rede no Linux, como os endereços IP roteiam pacotes entre sub-redes e seu papel na transmissão de dados. Comece sua jornada de rede Linux!"
 keywords: "Camada de rede, endereços IP, sub-redes, rede Linux, roteamento de pacotes, iniciante, tutorial, guia"

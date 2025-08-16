@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Édition Emacs"
 description: "Apprenez les bases de l'édition Emacs : naviguer dans le texte, couper et coller efficacement. Ce guide pour débutants vous aide à maîtriser les commandes Emacs essentielles pour Linux."
 keywords: "Emacs, tutoriel Emacs, commandes Emacs, éditeur de texte, éditeur Linux, navigation Emacs, Emacs débutant, guide Emacs"

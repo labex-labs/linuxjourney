@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "tr (转换)"
 description: "学习如何使用 Linux 'tr' 命令来转换和删除字符。通过示例和练习理解字符转换。开始您的 Linux 之旅！"
 keywords: "tr 命令，Linux tr, 转换字符，删除字符，Linux 教程，Linux 初学者，Linux 指南"

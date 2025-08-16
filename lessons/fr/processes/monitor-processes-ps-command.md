@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "ps (Processus)"
 description: "Découvrez la commande Linux 'ps' pour visualiser les processus en cours d'exécution et comprendre les ID de processus (PID). Obtenez un guide pour débutants sur la gestion des processus."
 keywords: "commande ps, processus Linux, ID de processus, PID, tutoriel Linux, débutant, guide, commande top"

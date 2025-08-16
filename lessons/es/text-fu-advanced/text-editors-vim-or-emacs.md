@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Editores de Texto"
 description: "Aprende sobre editores de texto de Linux como Vim y Emacs. Descubre sus usos e importancia para la navegación del sistema. ¡Comienza tu viaje con los editores de texto de Linux!"
 keywords: "editores de texto de Linux, Vim, Emacs, comandos de Linux, tutorial de Linux, Linux para principiantes, guía de Linux"

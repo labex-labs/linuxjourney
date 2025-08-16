@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "cat"
 description: "学习如何在 Linux 中使用 'cat' 命令查看文件内容和连接文件。一份面向初学者的基本 Linux 命令指南。"
 keywords: "cat 命令，Linux cat, 查看文件内容，连接文件，Linux 命令，Linux 初学者，Linux 教程，Linux 指南"

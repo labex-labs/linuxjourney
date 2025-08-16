@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "DNS 프로세스"
 description: "루트 서버부터 권한 있는 DNS 까지 DNS 가 단계별로 작동하는 방식을 배웁니다. 초보자와 중급 사용자를 위한 DNS 조회 프로세스를 이해합니다."
 keywords: "DNS 프로세스, DNS 조회, DNS 작동 방식, DNS 튜토리얼, 초보자 DNS, Linux DNS, TLD, 루트 서버"

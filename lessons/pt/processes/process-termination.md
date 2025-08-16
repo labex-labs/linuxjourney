@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Terminação de Processos"
 description: "Aprenda sobre a terminação de processos Linux, incluindo processos órfãos e zumbis. Entenda as chamadas de sistema _exit e wait para um gerenciamento eficaz de processos."
 keywords: "terminação de processo Linux, processos zumbis, processos órfãos, chamada de sistema wait, _exit, tutorial Linux, Linux para iniciantes"

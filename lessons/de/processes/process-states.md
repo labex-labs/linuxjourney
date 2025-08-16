@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Prozesszustände"
 description: "Lernen Sie Linux-Prozesszustände (R, S, D, Z, T) mit `ps aux`. Verstehen Sie gängige STAT-Codes und verwalten Sie Prozesse effektiv. Starten Sie Ihre Linux-Reise!"
 keywords: "Linux-Prozesszustände, ps aux, Prozessverwaltung, Linux-Tutorial, Linux für Anfänger, STAT-Codes, Linux-Anleitung"

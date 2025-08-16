@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Gestion des fichiers journaux"
 description: "Apprenez à gérer efficacement les fichiers journaux Linux à l'aide de logrotate. Découvrez la rotation des journaux, la compression et la configuration pour économiser de l'espace disque. Commencez à apprendre dès aujourd'hui !"
 keywords: "logrotate, journaux Linux, gestion des journaux, rotation des journaux, tutoriel Linux, débutant, guide, espace disque"

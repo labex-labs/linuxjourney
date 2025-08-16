@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "cat"
 description: "Erfahren Sie, wie Sie den 'cat'-Befehl in Linux verwenden, um Dateiinhalte anzuzeigen und Dateien zu verketten. Eine anfängerfreundliche Anleitung zu grundlegenden Linux-Befehlen."
 keywords: "cat Befehl, Linux cat, Dateiinhalte anzeigen, Dateien verketten, Linux Befehle, Linux für Anfänger, Linux Tutorial, Linux Anleitung"

@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Setgid"
 description: "Linux SGID (Set Group ID) 권한, 작동 방식 및 수정 방법을 알아보세요. 이 중요한 Linux 보안 개념을 이해합니다."
 keywords: "Linux SGID, Set Group ID, Linux permissions, chmod g+s, Linux security, beginner Linux, Linux tutorial"

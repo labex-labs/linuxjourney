@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Processus de démarrage : Init"
 description: "Découvrez les systèmes init de Linux : System V, Upstart et systemd. Comprenez leurs rôles dans le processus de démarrage et comment ils gèrent les services. Commencez votre parcours Linux !"
 keywords: "Linux init, systemd, System V init, Upstart, processus de démarrage Linux, tutoriel Linux, Linux pour débutants, guide Linux"

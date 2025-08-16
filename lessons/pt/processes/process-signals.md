@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Sinais"
 description: "Aprenda sobre os sinais Linux, seu propósito, tipos comuns como SIGINT e SIGKILL, e como os processos os manipulam. Entenda os conceitos básicos de sinais para um melhor controle do Linux."
 keywords: "sinais Linux, SIGKILL, SIGINT, comunicação de processos, tutorial Linux, Linux para iniciantes, guia Linux"

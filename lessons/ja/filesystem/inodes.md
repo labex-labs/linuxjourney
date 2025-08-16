@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Inodes"
 description: "Linux の inode、その構造、およびファイル管理方法について学びます。inode 番号を理解し、`df -i`と`ls -li`を使用して inode の使用状況を確認します。Linux の学習を始めましょう！"
 keywords: "Linux inode, inode チュートリアル，df -i, ls -li, Linux ファイルシステム，Linux 初心者，Linux ガイド"

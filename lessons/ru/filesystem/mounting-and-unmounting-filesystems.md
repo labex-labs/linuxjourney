@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "mount и umount"
 description: "Узнайте, как использовать команды Linux mount и umount для управления файловыми системами. Изучите монтирование, отмонтирование устройств и UUID для начинающих."
 keywords: "Linux mount, umount command, монтирование файловой системы, Linux UUID, Linux для начинающих, учебник по Linux, точка монтирования, руководство по Linux"

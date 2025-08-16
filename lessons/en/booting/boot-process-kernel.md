@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Boot Process: Kernel"
 description: "Learn about the Linux boot process, kernel initialization, and the role of initramfs. Understand how the kernel mounts the root filesystem. Linux boot process guide."
 keywords: "Linux boot process, kernel boot, initramfs, initrd, root filesystem, Linux tutorial, beginner Linux, Linux guide"

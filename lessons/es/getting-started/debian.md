@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Debian"
 description: "Aprende sobre Debian Linux, sus lanzamientos estables y continuos, y la gestión de paquetes. Descubre por qué Debian es un excelente sistema operativo central para usuarios principiantes e intermedios."
 keywords: "Debian, Debian Linux, distribución de Linux, rolling release, gestión de paquetes, tutorial de Linux, Linux para principiantes, guía de Linux"

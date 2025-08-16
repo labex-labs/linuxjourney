@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Anatomía de un Disco"
 description: "Aprenda sobre el particionamiento de discos en Linux, MBR vs. GPT y la estructura del sistema de archivos. Comprenda las particiones, las tablas y cómo organizar los datos. ¡Comience con esta guía para principiantes!"
 keywords: "particionamiento de disco Linux, MBR, GPT, estructura del sistema de archivos, particiones Linux, principiante, tutorial, guía"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "/etc/group"
 description: "Linux の/etc/group ファイルについて学び、グループ管理、GID、ユーザー権限を理解します。初心者向けの必須の Linux グループファイルチュートリアル。"
 keywords: "/etc/group, Linux groups, group management, GID, Linux permissions, Linux tutorial, beginner Linux, Linux guide"

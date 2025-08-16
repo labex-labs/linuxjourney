@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Allgemeine Protokollierung"
 description: "Erfahren Sie mehr über Linux-Protokolldateien wie /var/log/messages und syslog. Verstehen Sie ihre Unterschiede für eine effektive Systemfehlerbehebung. Beginnen Sie Ihre Linux-Reise!"
 keywords: "Linux-Protokolle, syslog, var/log/messages, Linux-Fehlerbehebung, Linux-Anfänger, Linux-Anleitung, Systemprotokolle"

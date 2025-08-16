@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "arp"
 description: "Erfahren Sie mehr über den Linux ARP-Befehl und wie Sie Ihren ARP-Cache anzeigen können. Verstehen Sie die Rolle von ARP in der Netzwerkkommunikation. Ein Leitfaden für Anfänger zu ARP."
 keywords: "Linux ARP, ARP-Cache, ip neighbour show, Netzwerkbefehle, Linux-Netzwerk, Linux für Anfänger, Linux-Tutorial"

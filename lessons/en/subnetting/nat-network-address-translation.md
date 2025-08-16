@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "NAT"
 description: "Learn about NAT (Network Address Translation) in Linux, how it works, and its role in network security. Understand private vs. public IPs. Linux networking guide."
 keywords: "NAT, Network Address Translation, Linux networking, private IP, public IP, Linux tutorial, beginner guide"

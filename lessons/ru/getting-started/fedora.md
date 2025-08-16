@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Fedora"
 description: "Узнайте о Fedora Linux, ее связи с RHEL и управлении пакетами. Узнайте, почему Fedora — отличная бесплатная ОС на базе Red Hat для начинающих и настольных компьютеров."
 keywords: "Fedora Linux, RHEL, Red Hat, учебник по Linux, управление пакетами, Linux для начинающих, руководство по Linux, бесплатная ОС"

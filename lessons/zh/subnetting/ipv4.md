@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "IPv4"
 description: "了解 IPv4 地址、其结构以及如何使用 ifconfig 查找您的 IP。理解 Linux 初学者的网络基础知识。"
 keywords: "IPv4, IP 地址，ifconfig, 网络基础，Linux 网络，初学者，教程，指南"

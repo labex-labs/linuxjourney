@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "arp"
 description: "Découvrez la commande Linux ARP et comment visualiser votre cache ARP. Comprenez le rôle d'ARP dans la communication réseau. Un guide pour débutants sur ARP."
 keywords: "Linux ARP, cache ARP, ip neighbour show, commandes réseau, réseau Linux, Linux pour débutants, tutoriel Linux"

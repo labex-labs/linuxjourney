@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "swap"
 description: "Découvrez l'espace de swap Linux, son fonctionnement, et comment créer et gérer des partitions de swap. Optimisez l'utilisation de la mémoire de votre système avec ce guide !"
 keywords: "swap Linux, mkswap, swapon, swapoff, /etc/fstab, mémoire virtuelle, débutant Linux, tutoriel Linux"

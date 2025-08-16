@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "touch"
 description: "Linux の touch コマンドを使って新しいファイルを作成したり、タイムスタンプを更新したりする方法を学びましょう。この初心者向けのガイドは、ファイル管理を理解するのに役立ちます。"
 keywords: "touch command, ファイル作成，Linux チュートリアル，ファイルタイムスタンプ，初心者向け Linux, Linux ガイド，基本コマンド"

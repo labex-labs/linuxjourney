@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Capa de Enlace"
 description: "Aprende sobre la Link Layer en TCP/IP, cómo ARP resuelve las direcciones MAC y el recorrido de los paquetes. Comprende los fundamentos de la red con este tutorial de redes de Linux."
 keywords: "Link Layer, ARP, TCP/IP, MAC address, fundamentos de red, redes Linux, principiante, tutorial"

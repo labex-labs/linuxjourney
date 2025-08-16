@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Outils de gestion des utilisateurs"
 description: "Apprenez la gestion des utilisateurs Linux : ajouter, supprimer et changer les mots de passe avec les commandes useradd, userdel et passwd. Démarrez avec ce guide convivial pour débutants !"
 keywords: "gestion des utilisateurs Linux, adduser, userdel, passwd, tutoriel Linux, Linux débutant, comptes utilisateurs, commandes Linux"

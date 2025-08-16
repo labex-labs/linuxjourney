@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "파일 공유 개요"
 description: "Linux 파일 공유 및 scp(secure copy) 명령에 대해 알아보세요. 네트워크의 호스트 간에 파일을 전송하세요. 이 초보자 친화적인 가이드로 시작하세요!"
 keywords: "Linux 파일 공유, scp 명령, 보안 복사, 네트워크 파일 전송, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

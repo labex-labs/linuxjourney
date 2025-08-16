@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "pwd (現在の作業ディレクトリを表示)"
 description: "Linux で現在の作業ディレクトリを表示するために「pwd」コマンドを使用する方法を学びます。初心者向けに Linux ファイルシステムパスとナビゲーションを理解します。"
 keywords: "pwd コマンド，Linux ディレクトリ，現在のディレクトリ，Linux パス，Linux チュートリアル，初心者向け Linux, Linux ガイド"

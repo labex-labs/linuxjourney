@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Shell"
 description: "了解 Linux shell、Bash 以及像'echo'这样的基本命令。通过这份适合初学者的指南，理解 shell 提示符并开始你的 Linux 之旅。"
 keywords: "Linux shell, Bash, echo command, Linux tutorial, command line, beginner Linux, shell prompt, Linux guide"

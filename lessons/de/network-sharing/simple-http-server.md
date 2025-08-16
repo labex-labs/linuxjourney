@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Einfacher HTTP-Server"
 description: "Lernen Sie, einen einfachen HTTP-Server mit Pythons http.server-Modul zu erstellen. Teilen Sie Dateien schnell in Ihrem Netzwerk mit diesem anfängerfreundlichen Linux-Tutorial."
 keywords: "http.server, SimpleHTTPServer, Python Webserver, Dateifreigabe, Linux-Tutorial, Anfängerleitfaden"

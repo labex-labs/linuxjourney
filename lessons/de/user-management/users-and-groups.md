@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Benutzer und Gruppen"
 description: "Erfahren Sie mehr über Linux-Benutzer und -Gruppen, verstehen Sie UIDs, GIDs und den Root-Benutzer. Entdecken Sie, wie Sie den sudo-Befehl für erhöhte Berechtigungen verwenden. Beginnen Sie Ihre Linux-Reise!"
 keywords: "Linux-Benutzer, Linux-Gruppen, sudo-Befehl, Root-Benutzer, Linux-Berechtigungen, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"

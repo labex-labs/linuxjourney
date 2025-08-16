@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "cat"
 description: "Apprenez à utiliser la commande 'cat' sous Linux pour visualiser le contenu des fichiers et concaténer des fichiers. Un guide pour débutants sur les commandes Linux de base."
 keywords: "commande cat, Linux cat, visualiser le contenu des fichiers, concaténer des fichiers, commandes Linux, Linux pour débutants, tutoriel Linux, guide Linux"

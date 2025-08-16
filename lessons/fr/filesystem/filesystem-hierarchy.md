@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Hiérarchie du système de fichiers"
 description: "Apprenez le Filesystem Hierarchy Standard (FHS) de Linux et comprenez les répertoires clés comme /bin, /etc et /var. Explorez la structure des répertoires Linux."
 keywords: "Hiérarchie du système de fichiers Linux, FHS, structure des répertoires Linux, commandes Linux, Linux pour débutants, tutoriel Linux, guide Linux"

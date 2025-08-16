@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "DNS プロセス"
 description: "ルートサーバーから権威 DNS まで、DNS がどのように機能するかを段階的に学びます。初心者および中級者向けの DNS ルックアッププロセスを理解します。"
 keywords: "DNS プロセス，DNS ルックアップ，DNS の仕組み，DNS チュートリアル，初心者向け DNS, Linux DNS, TLD, ルートサーバー"

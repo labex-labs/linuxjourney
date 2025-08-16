@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Border Gateway Protocol"
 description: "Erfahren Sie mehr über BGP, das Border Gateway Protocol, und wie es die Internet-Weiterleitung zwischen autonomen Systemen ermöglicht. Verstehen Sie die Grundlagen von BGP für Anfänger."
 keywords: "BGP, Border Gateway Protocol, Internet-Routing, autonome Systeme, Linux-Netzwerk, BGP-Tutorial, Netzwerkprotokolle, Anfängerleitfaden"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "ソフトウェア配布"
 description: "Linux のソフトウェア配布、パッケージマネージャー、および.deb や.rpm などのパッケージタイプについて学びます。Linux システムでのソフトウェア管理方法を理解します。"
 keywords: "Linux ソフトウェア配布，パッケージマネージャー, .deb, .rpm, Linux パッケージ，初心者 Linux, Linux チュートリアル，ソフトウェアインストール"

@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "history"
 description: "Learn how to use Linux history command, !! shortcut, and Ctrl-R for efficient command recall. Improve your terminal productivity with these essential tips!"
 keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"

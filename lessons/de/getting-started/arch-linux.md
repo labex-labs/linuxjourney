@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Arch Linux"
 description: "Erfahren Sie mehr über Arch Linux, sein Rolling-Release-Modell und den Paketmanager Pacman. Verstehen Sie, warum Arch sowohl für Anfänger als auch für fortgeschrittene Benutzer, die Kontrolle suchen, großartig ist."
 keywords: "Arch Linux, Pacman, Linux-Distribution, Rolling Release, Linux-Tutorial, Anfängerleitfaden, leichtgewichtiges Betriebssystem"

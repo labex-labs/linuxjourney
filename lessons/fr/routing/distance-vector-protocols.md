@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Protocoles à Vecteur de Distance"
 description: "Découvrez les protocoles à vecteur de distance comme RIP, leur fonctionnement et leurs limitations pour le routage réseau. Comprenez le nombre de sauts et l'efficacité du réseau."
 keywords: "protocoles à vecteur de distance, RIP, protocole d'information de routage, nombre de sauts, routage réseau, mise en réseau Linux, guide du débutant, tutoriel"

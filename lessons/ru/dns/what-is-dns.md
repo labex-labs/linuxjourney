@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Что такое DNS?"
 description: "Узнайте, что такое DNS и как он преобразует доменные имена в IP-адреса. Изучите эту ключевую концепцию Интернета с помощью нашего руководства по Linux для начинающих."
 keywords: "DNS, Domain Name System, IP address, hostname, Linux networking, beginner, tutorial, guide"

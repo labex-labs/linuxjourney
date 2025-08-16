@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "커널 로깅"
 description: "dmesg 및 kern.log 를 사용하여 Linux 커널 로깅에 대해 알아보세요. 부팅 메시지 및 하드웨어 문제를 이해합니다. 시스템 통찰력을 위해 커널 로그를 탐색합니다."
 keywords: "dmesg, kern.log, Linux 로깅, 커널 메시지, 부팅 로그, Linux 튜토리얼, 초보자 가이드"

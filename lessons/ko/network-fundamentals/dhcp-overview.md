@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "DHCP 개요"
 description: "Linux 에서 DHCP(Dynamic Host Configuration Protocol) 에 대해 알아보세요. DHCP 가 IP 주소를 할당하는 방법과 4 단계 프로세스를 이해하세요. Linux 네트워킹 여정을 시작하세요!"
 keywords: "DHCP, Dynamic Host Configuration Protocol, Linux 네트워킹, IP 주소, DHCP 튜토리얼, 초보자, 가이드"

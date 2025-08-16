@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "udev"
 description: "Learn about udev, how it dynamically manages Linux device files, and use udevadm. Understand device node creation for beginners."
 keywords: "udev, udevadm, Linux device management, device files, Linux tutorial, beginner Linux, udev rules, Linux guide"

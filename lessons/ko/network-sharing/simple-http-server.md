@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "간단한 HTTP 서버"
 description: "Python 의 http.server 모듈을 사용하여 간단한 HTTP 서버를 만드는 방법을 배우세요. 이 초보자 친화적인 Linux 튜토리얼을 통해 네트워크에서 파일을 빠르게 공유하세요."
 keywords: "http.server, SimpleHTTPServer, Python 웹 서버, 파일 공유, Linux 튜토리얼, 초보자 가이드"

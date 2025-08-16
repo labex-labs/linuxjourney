@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "head"
 description: "Learn how to use the Linux 'head' command to view the beginning of files. Understand options like -n for line count. Essential Linux command tutorial."
 keywords: "head command, Linux head, view file beginning, Linux tutorial, Linux commands, beginner Linux, head -n, Linux guide"

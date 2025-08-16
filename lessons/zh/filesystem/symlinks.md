@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "符号链接"
 description: "了解 Linux 符号链接和硬链接，包括如何创建和管理它们。通过这份适合初学者的指南，理解它们之间的区别和用例。"
 keywords: "Linux 符号链接，硬链接，ln 命令，符号链接，Linux 文件系统，Linux 教程，Linux 初学者"

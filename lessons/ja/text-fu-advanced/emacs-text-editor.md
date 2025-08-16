@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Emacs"
 description: "Linux 用の強力で拡張性の高いテキストエディタである Emacs を学びましょう。Emacs の buffers と基本的な使い方を理解します。今日から Emacs の旅を始めましょう！"
 keywords: "Emacs, Linux text editor, Emacs tutorial, Emacs buffers, Linux commands, 初心者，ガイド"

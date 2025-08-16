@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Samba"
 description: "Lernen Sie, Samba-Dateifreigaben unter Linux für Windows und macOS einzurichten. Dieser Anfängerleitfaden behandelt Installation, Konfiguration und den Zugriff auf Freigaben. Legen Sie los!"
 keywords: "Samba, Linux-Dateifreigabe, smb.conf, CIFS, smbclient, Linux-Tutorial, Anfängerleitfaden"

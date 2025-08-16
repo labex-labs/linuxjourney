@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Couche Liaison"
 description: "Découvrez la couche Liaison dans TCP/IP, comment ARP résout les adresses MAC et la traversée des paquets. Comprenez les fondamentaux du réseau avec ce tutoriel de mise en réseau Linux."
 keywords: "Couche Liaison, ARP, TCP/IP, adresse MAC, fondamentaux du réseau, mise en réseau Linux, débutant, tutoriel"

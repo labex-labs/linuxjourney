@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "netstat"
 description: "Aprenda o comando netstat para análise de rede Linux. Entenda conexões de rede, portas e sockets com este guia para iniciantes."
 keywords: "netstat, comando netstat, rede Linux, conexões de rede, tutorial Linux, iniciante, guia"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "syslog"
 description: "Aprenda sobre syslog e rsyslog no Linux, como gerenciar logs do sistema e usar o comando logger. Comece com este tutorial para iniciantes!"
 keywords: "syslog, rsyslog, logs Linux, comando logger, /var/log/syslog, tutorial Linux, Linux para iniciantes, registro de sistema"

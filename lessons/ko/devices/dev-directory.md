@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "/dev 디렉토리"
 description: "Linux 에서 장치 파일이 저장되는 /dev 디렉토리에 대해 알아보세요. 장치 노드와 상호 작용하는 방법을 이해하세요. ls 를 사용하여 /dev 를 탐색하세요. Linux 초보자 가이드."
 keywords: "/dev 디렉토리, Linux 장치 파일, 장치 노드, Linux 튜토리얼, ls /dev, Linux 초보자, Linux 가이드"

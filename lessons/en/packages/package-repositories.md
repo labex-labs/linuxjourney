@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Package Repositories"
 description: "Learn about Linux package repositories and how they manage software. Discover how to find and add package sources like /etc/apt/sources.list for easy installation."
 keywords: "Linux package repositories, apt sources list, /etc/apt/sources.list, Linux packages, beginner Linux, Linux tutorial, package management"

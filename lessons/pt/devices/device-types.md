@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "tipos de dispositivos"
 description: "Aprenda sobre os tipos de dispositivos Linux (character, block, pipe, socket) e como identificá-los usando `ls -l /dev`. Entenda os major/minor device numbers. Tutorial de Linux para iniciantes."
 keywords: "tipos de dispositivos Linux, ls -l /dev, character device, block device, major minor device number, tutorial Linux, guia Linux, iniciante"

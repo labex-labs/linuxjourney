@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "exit"
 description: "Apprenez à quitter le shell Linux en utilisant les commandes 'exit' ou 'logout'. Comprenez la navigation de base du shell pour les débutants. Commencez votre parcours Linux dès aujourd'hui !"
 keywords: "commande exit, commande logout, shell Linux, sortie terminal, bases Linux, Linux débutant, tutoriel Linux"

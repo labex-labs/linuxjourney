@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Édition Vim"
 description: "Apprenez les bases de l'édition Vim : supprimer, modifier, copier et coller du texte efficacement. Maîtrisez les commandes Vim essentielles pour les débutants et améliorez vos compétences en édition de texte sous Linux."
 keywords: "édition Vim, commandes Vim, éditeur de texte Linux, tutoriel Vim, guide Vim, Vim pour débutants, commande dd, suppression Vim"

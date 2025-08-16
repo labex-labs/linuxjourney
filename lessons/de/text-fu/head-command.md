@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "head"
 description: "Erfahren Sie, wie Sie den Linux-Befehl 'head' verwenden, um den Anfang von Dateien anzuzeigen. Verstehen Sie Optionen wie -n für die Zeilenanzahl. Ein unverzichtbares Linux-Befehls-Tutorial."
 keywords: "head Befehl, Linux head, Dateianfang anzeigen, Linux Tutorial, Linux Befehle, Linux für Anfänger, head -n, Linux Anleitung"

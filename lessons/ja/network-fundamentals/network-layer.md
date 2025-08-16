@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "ネットワーク層"
 description: "Linux の Network layer、IP アドレスがサブネット間でパケットをルーティングする方法、およびデータ伝送におけるその役割について学びます。Linux ネットワーキングの旅を始めましょう！"
 keywords: "Network layer, IP addresses, subnets, Linux networking, packet routing, beginner, tutorial, guide"

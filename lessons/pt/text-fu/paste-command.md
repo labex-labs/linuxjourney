@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "paste"
 description: "Aprenda a usar o comando Linux paste para mesclar linhas de arquivos. Descubra delimitadores e combine arquivos com este tutorial essencial do comando Linux."
 keywords: "comando paste Linux, tutorial comando paste, mesclar linhas de arquivo, comandos Linux, Linux para iniciantes, guia Linux"

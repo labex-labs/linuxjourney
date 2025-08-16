@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "rpm 和 dpkg"
 description: "学习使用 rpm 和 dpkg 命令安装、移除和列出软件包。了解.deb 和.rpm 文件的直接包管理。开始您的 Linux 之旅！"
 keywords: "rpm, dpkg, Linux 包管理，.deb, .rpm, Linux 教程，初学者指南，安装包"

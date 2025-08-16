@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Usuários e Grupos"
 description: "Aprenda sobre usuários e grupos Linux, entenda UIDs, GIDs e o usuário root. Descubra como usar o comando sudo para permissões elevadas. Comece sua jornada no Linux!"
 keywords: "usuários Linux, grupos Linux, comando sudo, usuário root, permissões Linux, tutorial Linux, Linux para iniciantes, guia Linux"

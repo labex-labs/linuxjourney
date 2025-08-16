@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Visión general de Upstart"
 description: "Aprenda sobre Upstart, su modelo basado en eventos y cómo gestiona los servicios en Linux. Comprenda las configuraciones de trabajo de Upstart y su papel como sistema init."
 keywords: "Upstart, sistema init, servicios Linux, Ubuntu, SysV, tutorial para principiantes, guía de Linux"

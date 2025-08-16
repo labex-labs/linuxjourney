@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Kernel-Protokollierung"
 description: "Erfahren Sie mehr über die Linux-Kernel-Protokollierung mit dmesg und kern.log. Verstehen Sie Boot-Meldungen und Hardware-Probleme. Erkunden Sie Kernel-Protokolle für Systemeinblicke."
 keywords: "dmesg, kern.log, Linux-Protokollierung, Kernel-Meldungen, Boot-Protokoll, Linux-Tutorial, Anfängerleitfaden"

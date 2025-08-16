@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Capa de red"
 description: "Aprende sobre la capa de red en Linux, cómo las direcciones IP enrutan paquetes a través de subredes y su papel en la transmisión de datos. ¡Comienza tu viaje en redes Linux!"
 keywords: "Capa de red, direcciones IP, subredes, redes Linux, enrutamiento de paquetes, principiante, tutorial, guía"

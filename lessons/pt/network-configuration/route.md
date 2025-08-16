@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "route"
 description: "Aprenda como adicionar e excluir rotas de rede usando os comandos Linux route e ip. Entenda o gerenciamento da tabela de roteamento para usuários iniciantes e intermediários."
 keywords: "comando route, ip route, adicionar rota, excluir rota, rede Linux, tabela de roteamento, tutorial Linux, guia para iniciantes"

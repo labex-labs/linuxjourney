@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "rpm 및 dpkg"
 description: "rpm 및 dpkg 명령을 사용하여 패키지를 설치, 제거 및 나열하는 방법을 배웁니다. .deb 및 .rpm 파일에 대한 직접 패키지 관리를 이해합니다. Linux 여정을 시작하세요!"
 keywords: "rpm, dpkg, Linux 패키지 관리, .deb, .rpm, Linux 튜토리얼, 초보자 가이드, 패키지 설치"

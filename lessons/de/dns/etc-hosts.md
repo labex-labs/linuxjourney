@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "/etc/hosts"
 description: "Erfahren Sie mehr über die Datei /etc/hosts in Linux, wie sie Hostnamen IP-Adressen zuordnet und welche Rolle sie bei der DNS-Auflösung spielt. Verstehen Sie die grundlegende Netzwerkkonfiguration."
 keywords: "/etc/hosts, Linux-Netzwerk, Hostname-Zuordnung, DNS-Auflösung, Linux-Tutorial, Anfängerleitfaden"

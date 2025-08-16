@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "cp (복사)"
 description: "Linux cp 명령을 사용하여 파일과 디렉토리를 복사하는 방법을 배우세요. -r 및 와일드카드와 같은 옵션을 이해하세요. 오늘 Linux 여정을 시작하세요!"
 keywords: "cp command, copy files Linux, Linux tutorial, beginner Linux, cp -r, Linux wildcards, Linux guide"

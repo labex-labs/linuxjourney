@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Modelo TCP/IP"
 description: "Aprenda sobre las capas del modelo TCP/IP: Aplicación, Transporte, Red y Enlace. Comprenda cómo viajan los datos a través de las redes. ¡Comience su viaje en redes Linux!"
 keywords: "modelo TCP/IP, conceptos básicos de redes, redes Linux, TCP, IP, tutorial para principiantes, capas de red, guía"

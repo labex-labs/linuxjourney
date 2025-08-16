@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Systemd の目標"
 description: "systemd ユニットの基本と必須の systemctl コマンドを学びましょう。Linux でサービスを管理し、ステータスを表示し、ユニットを有効にする方法を理解します。あなたの旅を始めましょう！"
 keywords: "systemd, systemctl, Linux サービス，ユニットファイル，初心者，チュートリアル，ガイド，Linux コマンド"

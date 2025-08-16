@@ -1,7 +1,8 @@
 ---
+lang: "ja"
 title: "電源状態"
-description: "Linuxシステムの電源状態、シャットダウン、再起動、停止コマンドについて学びます。Linuxシステムを安全に電源オフまたは再起動する方法を理解します。必須コマンドから始めましょう！"
-keywords: "Linuxシャットダウン, rebootコマンド, haltシステム, Linux電源オフ, Linuxコマンド, 初心者Linux, Linuxチュートリアル, システム状態"
+description: "Linux システムの電源状態、シャットダウン、再起動、停止コマンドについて学びます。Linux システムを安全に電源オフまたは再起動する方法を理解します。必須コマンドから始めましょう！"
+keywords: "Linux シャットダウン，reboot コマンド，halt システム，Linux 電源オフ，Linux コマンド，初心者 Linux, Linux チュートリアル，システム状態"
 ---
 
 ## Lesson Content
@@ -20,7 +21,7 @@ sudo shutdown -h now
 sudo shutdown -h +2
 ```
 
-これは2分後にシステムをシャットダウンします。`shutdown` コマンドで再起動することもできます。
+これは 2 分後にシステムをシャットダウンします。`shutdown` コマンドで再起動することもできます。
 
 ```bash
 sudo shutdown -r now
@@ -38,7 +39,7 @@ sudo reboot
 
 ## Quiz Question
 
-4分後にシステムをシャットオフするコマンドは何ですか？
+4 分後にシステムをシャットオフするコマンドは何ですか？
 
 ## Quiz Answer
 

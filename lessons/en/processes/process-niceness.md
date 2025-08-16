@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "niceness"
 description: "Learn about Linux niceness and process priority. Understand nice and renice commands to manage CPU time for processes. Improve system performance!"
 keywords: "Linux niceness, process priority, nice command, renice command, Linux tutorial, CPU scheduling, beginner Linux, Linux guide"

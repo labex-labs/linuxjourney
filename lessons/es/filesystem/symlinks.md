@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Symlinks"
 description: "Aprende sobre los symlinks y hard links de Linux, incluyendo cómo crearlos y gestionarlos. Comprende sus diferencias y casos de uso con esta guía para principiantes."
 keywords: "Linux symlinks, hard links, comando ln, enlaces simbólicos, sistema de archivos Linux, tutorial de Linux, Linux para principiantes"

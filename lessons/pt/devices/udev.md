@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "udev"
 description: "Aprenda sobre udev, como ele gerencia dinamicamente arquivos de dispositivo Linux e use udevadm. Entenda a criação de nós de dispositivo para iniciantes."
 keywords: "udev, udevadm, gerenciamento de dispositivos Linux, arquivos de dispositivo, tutorial Linux, Linux para iniciantes, regras udev, guia Linux"

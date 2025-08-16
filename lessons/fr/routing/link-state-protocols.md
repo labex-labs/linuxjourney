@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Protocoles à état de liens"
 description: "Découvrez les protocoles à état de liens comme OSPF pour les grands réseaux. Comprenez leur convergence rapide et comment ils mettent à jour les tables de routage. Commencez votre parcours de mise en réseau Linux !"
 keywords: "protocoles à état de liens, OSPF, mise en réseau Linux, protocoles de routage, topologie de réseau, débutant"

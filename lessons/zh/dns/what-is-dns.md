@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "什么是 DNS？"
 description: "了解 DNS 是什么以及它如何将域名转换为 IP 地址。通过我们为初学者准备的 Linux 指南，理解这个核心互联网概念。"
 keywords: "DNS, 域名系统，IP 地址，主机名，Linux 网络，初学者，教程，指南"

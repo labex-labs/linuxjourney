@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "所有権のパーミッション"
 description: "chown コマンドと chgrp コマンドを使用して、Linux でファイルの所有権を変更する方法を学びます。この初心者向けの Linux チュートリアルで、ユーザーとグループのパーミッションを理解しましょう。"
 keywords: "chown, chgrp, Linux ファイルの所有権，Linux パーミッション，Linux コマンド，初心者向け Linux, Linux チュートリアル，Linux ガイド"

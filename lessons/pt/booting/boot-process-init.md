@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Processo de Inicialização: Init"
 description: "Aprenda sobre os sistemas init do Linux: System V, Upstart e systemd. Entenda seus papéis no processo de inicialização e como eles gerenciam serviços. Comece sua jornada no Linux!"
 keywords: "Linux init, systemd, System V init, Upstart, processo de inicialização do Linux, tutorial de Linux, Linux para iniciantes, guia de Linux"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "所有权权限"
 description: "学习如何使用 chown 和 chgrp 命令在 Linux 中更改文件所有权。通过这个适合初学者的 Linux 教程了解用户和组权限。"
 keywords: "chown, chgrp, Linux 文件所有权，Linux 权限，Linux 命令，Linux 初学者，Linux 教程，Linux 指南"

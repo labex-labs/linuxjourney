@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Emacs Buffer Navigation"
 description: "Learn Emacs buffer navigation commands. Switch, close, and split buffers efficiently with this beginner-friendly Emacs tutorial. Improve your workflow!"
 keywords: "Emacs buffer navigation, Emacs commands, C-x b, C-x k, Linux tutorial, Emacs guide, beginner Emacs"

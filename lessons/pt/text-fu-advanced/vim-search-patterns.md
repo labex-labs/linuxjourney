@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Padrões de Busca do Vim"
 description: "Aprenda os padrões de busca do Vim: busca para frente (/) e para trás (?). Navegue pelos resultados com 'n' e 'N'. Melhore suas habilidades no Vim hoje!"
 keywords: "busca Vim, comandos Vim, editor de texto Linux, tutorial Vim, guia Vim, Vim para iniciantes"

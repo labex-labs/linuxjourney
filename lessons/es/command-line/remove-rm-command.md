@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "rm (Eliminar)"
 description: "Aprende a usar el comando `rm` en Linux para eliminar de forma segura archivos y directorios. Comprende opciones como -f, -i, -r y rmdir. ¡Comienza tu viaje en Linux!"
 keywords: "comando rm, eliminar archivos Linux, eliminar directorios, tutorial Linux, Linux para principiantes, rmdir, guía Linux"

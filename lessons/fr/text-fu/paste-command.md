@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "paste"
 description: "Apprenez à utiliser la commande Linux paste pour fusionner les lignes de fichiers. Découvrez les délimiteurs et combinez des fichiers avec ce tutoriel essentiel sur les commandes Linux."
 keywords: "commande Linux paste, tutoriel commande paste, fusionner les lignes de fichiers, commandes Linux, Linux pour débutants, guide Linux"

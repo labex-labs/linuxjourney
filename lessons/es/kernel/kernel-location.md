@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Ubicación del Kernel"
 description: "Aprende sobre la ubicación del kernel de Linux en el directorio /boot, entendiendo vmlinuz, initrd y System.map. Explora los archivos del kernel y gestiona el espacio de forma eficaz."
 keywords: "kernel de Linux, directorio /boot, vmlinuz, initrd, System.map, principiante en Linux, tutorial de kernel, guía de Linux"

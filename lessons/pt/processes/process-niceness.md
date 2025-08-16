@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "niceness"
 description: "Aprenda sobre niceness e prioridade de processo no Linux. Entenda os comandos nice e renice para gerenciar o tempo de CPU para processos. Melhore o desempenho do sistema!"
 keywords: "niceness Linux, prioridade de processo, comando nice, comando renice, tutorial Linux, agendamento de CPU, Linux para iniciantes, guia Linux"

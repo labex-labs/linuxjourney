@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Tabla de Enrutamiento"
 description: "Aprenda a comprender la tabla de enrutamiento de Linux y cómo se enrutan los paquetes usando el comando route. Explore destinos, gateways e interfaces para los conceptos básicos de la red."
 keywords: "tabla de enrutamiento de Linux, comando route, enrutamiento de red, redes Linux, Linux para principiantes, tutorial de Linux, guía de red"

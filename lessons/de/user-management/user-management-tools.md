@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Tools zur Benutzerverwaltung"
 description: "Lernen Sie die Linux-Benutzerverwaltung: Hinzufügen, Entfernen und Ändern von Passwörtern mit den Befehlen useradd, userdel und passwd. Starten Sie mit dieser anfängerfreundlichen Anleitung!"
 keywords: "Linux-Benutzerverwaltung, adduser, userdel, passwd, Linux-Tutorial, Linux für Anfänger, Benutzerkonten, Linux-Befehle"

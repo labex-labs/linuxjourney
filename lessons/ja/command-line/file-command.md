@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "file"
 description: "Linux の`file`コマンドを使用して、ファイルの種類と内容を識別する方法を学びます。この初心者向けのガイドで、Linux のファイル命名規則を理解しましょう。"
 keywords: "Linux file コマンド，ファイルタイプ識別，Linux チュートリアル，ファイル命名，初心者向け Linux, Linux ガイド"

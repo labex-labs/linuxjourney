@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Job Control"
 description: "Learn Linux job control to manage background processes. Understand 'jobs', 'bg', 'fg', and 'kill' commands for efficient shell usage. Start your Linux journey!"
 keywords: "Linux job control, background processes, jobs command, bg command, fg command, kill command, Linux tutorial, beginner Linux"

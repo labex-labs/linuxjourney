@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "ネットワークマネージャー"
 description: "Linux の NetworkManager について、ネットワーク設定を自動化する方法、nm-tool と nmcli コマンドの使用方法を学びます。この初心者向けガイドで始めましょう！"
 keywords: "NetworkManager, nm-tool, nmcli, Linux ネットワーキング，ネットワーク設定，Linux チュートリアル，初心者向けガイド"

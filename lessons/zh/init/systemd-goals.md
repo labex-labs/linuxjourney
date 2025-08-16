@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Systemd 目标"
 description: "学习 systemd 单元基础知识和 essential systemctl 命令。了解如何在 Linux 中管理服务、查看状态和启用单元。开始您的旅程！"
 keywords: "systemd, systemctl, Linux 服务，单元文件，初学者，教程，指南，Linux 命令"

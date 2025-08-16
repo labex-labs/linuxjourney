@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Fedora"
 description: "Fedora Linux、RHEL との関連性、およびパッケージ管理について学びます。Fedora が初心者やデスクトップにとって優れた無料の Red Hat ベース OS である理由を発見してください。"
 keywords: "Fedora Linux, RHEL, Red Hat, Linux チュートリアル，パッケージ管理，初心者向け Linux, Linux ガイド，無料 OS"

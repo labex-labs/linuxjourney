@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "rm (Remove)"
 description: "Learn how to use the `rm` command in Linux to safely delete files and directories. Understand options like -f, -i, -r, and rmdir. Start your Linux journey!"
 keywords: "rm command, delete files Linux, remove directories, Linux tutorial, beginner Linux, rmdir, Linux guide"

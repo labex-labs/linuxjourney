@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Dicas de Subnetting"
 description: "Aprenda os fundamentos do subnetting e a conversão binária para redes. Entenda endereços IP e máscaras de sub-rede com este guia para iniciantes. Comece a aprender agora!"
 keywords: "subnetting, conversão binária, endereço IP, rede, redes Linux, iniciante, tutorial, guia"

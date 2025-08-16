@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "find"
 description: "Linux 'find' 명령어를 사용하여 파일과 디렉토리를 찾는 방법을 배우세요. 기본적인 검색 옵션을 알아보고 Linux 파일 관리 기술을 향상시키세요."
 keywords: "Linux find 명령어, Linux 파일 찾기, Linux 디렉토리 검색, find 명령어 튜토리얼, Linux 파일 관리, 초보자 Linux, Linux 가이드"

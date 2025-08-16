@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Systemd Überblick"
 description: "Lernen Sie die Grundlagen von Systemd: Verstehen Sie Units, Targets und den Boot-Prozess. Entdecken Sie, wie Systemd Dienste und Systemzustände in Linux verwaltet. Beginnen Sie Ihre Reise!"
 keywords: "Systemd, Systemd Units, Systemd Targets, Linux Boot-Prozess, Linux Dienste, Anfänger, Tutorial, Anleitung"

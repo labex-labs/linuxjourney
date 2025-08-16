@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Objetivos de Systemd"
 description: "Aprende los conceptos básicos de las unidades systemd y los comandos esenciales de systemctl. Comprende cómo gestionar servicios, ver estados y habilitar unidades en Linux. ¡Comienza tu viaje!"
 keywords: "systemd, systemctl, servicios de Linux, archivos de unidad, principiante, tutorial, guía, comandos de Linux"

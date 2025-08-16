@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Process States"
 description: "Learn Linux process states (R, S, D, Z, T) using `ps aux`. Understand common STAT codes and manage processes effectively. Start your Linux journey!"
 keywords: "Linux process states, ps aux, process management, Linux tutorial, beginner Linux, STAT codes, Linux guide"

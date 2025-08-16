@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "主页"
 description: "学习 Linux 基础知识、命令行、用户管理和网络。探索从初级到高级的主题，以实现有效的 Linux 系统管理。"
 keywords: "Linux 教程，命令行，Linux 初学者，系统管理，Linux 指南，网络，软件包管理，Linux 命令"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Escolhendo uma Distribuição Linux"
 description: "Aprenda a escolher uma distribuição Linux para suas necessidades. Explore opções populares e entenda o kernel, hardware e espaço do usuário. Comece sua jornada Linux!"
 keywords: "distribuição Linux, escolher Linux, kernel Linux, Linux para iniciantes, guia Linux, instalar Linux, tutorial Linux"

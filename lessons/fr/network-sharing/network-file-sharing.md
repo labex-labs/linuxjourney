@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Aperçu du partage de fichiers"
 description: "Apprenez le partage de fichiers Linux et la commande de copie sécurisée (scp). Transférez des fichiers entre des hôtes sur votre réseau. Démarrez avec ce guide convivial pour débutants !"
 keywords: "Partage de fichiers Linux, commande scp, copie sécurisée, transfert de fichiers réseau, tutoriel Linux, Linux pour débutants, guide Linux"

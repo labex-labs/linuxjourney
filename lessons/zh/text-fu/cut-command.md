@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "cut"
 description: "学习如何使用 Linux `cut` 命令从文件中提取文本。这个初学者友好的教程涵盖了字符和字段剪切。提高您的 Linux 文本处理技能！"
 keywords: "cut 命令，Linux 文本处理，提取文本，Linux 教程，Linux 初学者，cut 示例，Linux 指南"

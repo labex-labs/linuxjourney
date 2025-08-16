@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "磁盘使用情况"
 description: "学习如何使用 df 和 du 命令在 Linux 中检查磁盘使用情况和空闲空间。了解它们的区别以及何时使用。Linux 磁盘管理教程。"
 keywords: "df 命令，du 命令，Linux 磁盘使用，检查空闲空间，Linux 教程，Linux 初学者，磁盘管理，Linux 指南"

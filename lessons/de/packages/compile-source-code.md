@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Quellcode kompilieren"
 description: "Erfahren Sie, wie Sie Quellcode unter Linux mit make, configure und checkinstall kompilieren. Verstehen Sie den Build-Prozess für Anfänger und fortgeschrittene Benutzer."
 keywords: "Quellcode kompilieren, make install, checkinstall, Linux kompilieren, build-essential, Linux Tutorial, Anfängerleitfaden"

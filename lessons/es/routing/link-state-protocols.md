@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Protocolos de Estado de Enlace"
 description: "Aprende sobre protocolos de estado de enlace como OSPF para redes grandes. Comprende su rápida convergencia y cómo actualizan las tablas de enrutamiento. ¡Comienza tu viaje en redes Linux!"
 keywords: "protocolos de estado de enlace, OSPF, redes Linux, protocolos de enrutamiento, topología de red, principiante"

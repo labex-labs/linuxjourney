@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Vim Inserting and Appending Text"
 description: "Learn Vim insert and append modes. Understand 'i', 'a', 'I', 'A', 'o', 'O' commands for efficient text editing. Improve your Vim skills now!"
 keywords: "Vim insert mode, Vim append, Vim commands, Vim tutorial, Linux text editor, beginner Vim, Vim guide, Vim 'i' 'a'"

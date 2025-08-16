@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "프로세스 권한"
 description: "Linux 프로세스 권한에 대해 알아보세요. 실제, 유효, 저장된 사용자 ID 를 포함합니다. UID 가 보안 및 명령 실행에 미치는 영향을 이해하세요. 오늘 학습을 시작하세요!"
 keywords: "Linux 프로세스 권한, 실제 UID, 유효 UID, 저장된 UID, Linux 보안, passwd 명령, Linux 튜토리얼, 초보자 Linux"

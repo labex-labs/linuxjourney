@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "El Shell"
 description: "Aprende sobre el shell de Linux, Bash y comandos básicos como 'echo'. Comprende los prompts del shell y comienza tu viaje en Linux con esta guía para principiantes."
 keywords: "shell de Linux, Bash, comando echo, tutorial de Linux, línea de comandos, Linux para principiantes, prompt del shell, guía de Linux"

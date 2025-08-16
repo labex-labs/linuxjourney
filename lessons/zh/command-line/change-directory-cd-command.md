@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "cd (更改目录)"
 description: "学习如何在 Linux 中使用'cd'命令来导航目录。理解绝对路径、相对路径和有用的快捷方式。开始您的 Linux 之旅！"
 keywords: "cd 命令，更改目录，Linux 路径，绝对路径，相对路径，Linux 教程，Linux 初学者，Linux 导航"

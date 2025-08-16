@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Distribution de logiciels"
 description: "Découvrez la distribution de logiciels Linux, les gestionnaires de paquets et les types de paquets comme .deb et .rpm. Comprenez comment les logiciels sont gérés sur les systèmes Linux."
 keywords: "distribution de logiciels Linux, gestionnaire de paquets, .deb, .rpm, paquets Linux, Linux pour débutants, tutoriel Linux, installation de logiciels"

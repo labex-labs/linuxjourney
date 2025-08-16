@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Gerenciando Arquivos de Log"
 description: "Aprenda a gerenciar arquivos de log do Linux de forma eficiente usando logrotate. Descubra a rotação de logs, compressão e configuração para economizar espaço em disco. Comece a aprender hoje!"
 keywords: "logrotate, logs Linux, gerenciamento de logs, rotação de logs, tutorial Linux, iniciante, guia, espaço em disco"

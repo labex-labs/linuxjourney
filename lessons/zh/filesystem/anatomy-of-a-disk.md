@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "磁盘剖析"
 description: "了解 Linux 磁盘分区、MBR 与 GPT 的区别以及文件系统结构。理解分区、分区表以及如何组织数据。通过此初学者指南开始学习！"
 keywords: "Linux 磁盘分区，MBR, GPT, 文件系统结构，Linux 分区，初学者，教程，指南"

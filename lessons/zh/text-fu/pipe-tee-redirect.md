@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "管道和 tee"
 description: "学习 Linux 管道和 tee 命令，实现高效的命令行数据流。理解 stdout、stdin 和文件输出。提升你的 Linux 技能！"
 keywords: "Linux 管道，tee 命令，Linux 教程，stdout, stdin, Linux 初学者，命令行，Linux 指南"

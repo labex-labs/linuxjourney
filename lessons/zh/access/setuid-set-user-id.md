@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Setuid"
 description: "了解 Linux Setuid (SUID) 权限、它们的工作原理以及如何修改它们。理解 SUID 在 Linux 中安全文件访问的重要性。"
 keywords: "Linux Setuid, SUID, Linux 权限，chmod, passwd 命令，Linux 安全，Linux 初学者，Linux 教程"

@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Ubuntu"
 description: "인기 있는 Linux 배포판인 Ubuntu 에 대해 알아보세요. 그 기능, 패키지 관리, 그리고 데스크톱 및 서버 사용에 왜 좋은지 알아보세요."
 keywords: "Ubuntu, Linux 배포판, Debian, 패키지 관리, Linux 초보자, Ubuntu 튜토리얼, Linux 가이드"

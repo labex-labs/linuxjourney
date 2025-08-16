@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Dateisysteme erstellen"
 description: "Erfahren Sie, wie Sie Dateisysteme unter Linux mit mkfs erstellen. Dieser anfängerfreundliche Leitfaden behandelt ext4 und die Festplattenpartitionierung. Beginnen Sie Ihre Linux-Reise!"
 keywords: "mkfs, Dateisystem erstellen, ext4, Linux-Partitionierung, Linux-Tutorial, Linux für Anfänger, Festplattenverwaltung, Linux-Leitfaden"

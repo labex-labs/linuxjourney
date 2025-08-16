@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "IPv4"
 description: "Apprenez les adresses IPv4, leur structure et comment trouver votre IP en utilisant ifconfig. Comprenez les bases du réseau pour les débutants Linux."
 keywords: "IPv4, adresse IP, ifconfig, bases du réseau, réseau Linux, débutant, tutoriel, guide"

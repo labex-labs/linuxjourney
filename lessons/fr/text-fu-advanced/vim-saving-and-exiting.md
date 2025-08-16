@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Vim Sauvegarder et Quitter"
 description: "Apprenez à sauvegarder et quitter Vim efficacement avec des commandes essentielles comme :w, :q et :wq. Maîtrisez les opérations Vim de base pour une édition de texte efficace."
 keywords: "Vim sauvegarder, Vim quitter, commandes Vim, :wq, :q!, éditeur de texte Linux, tutoriel Vim, Vim débutant"

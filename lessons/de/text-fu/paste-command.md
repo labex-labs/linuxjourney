@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "paste"
 description: "Lernen Sie, wie Sie den Linux-Befehl paste verwenden, um Dateizeilen zusammenzuführen. Entdecken Sie Trennzeichen und kombinieren Sie Dateien mit diesem grundlegenden Linux-Befehls-Tutorial."
 keywords: "Linux paste Befehl, paste Befehl Tutorial, Dateizeilen zusammenführen, Linux Befehle, Linux für Anfänger, Linux Anleitung"

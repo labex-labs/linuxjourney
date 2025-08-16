@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "expand e unexpand"
 description: "Aprenda a converter tabulações em espaços com o comando `expand` e espaços em tabulações com `unexpand`. Melhore a formatação de arquivos de texto com este tutorial de Linux."
 keywords: "comando expand, comando unexpand, tabulações Linux, espaços Linux, formatação de texto, tutorial Linux, Linux para iniciantes, guia Linux"

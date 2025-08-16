@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Processus de démarrage : Noyau"
 description: "Découvrez le processus de démarrage de Linux, l'initialisation du noyau et le rôle d'initramfs. Comprenez comment le noyau monte le système de fichiers racine. Guide du processus de démarrage de Linux."
 keywords: "processus de démarrage Linux, démarrage du noyau, initramfs, initrd, système de fichiers racine, tutoriel Linux, Linux pour débutants, guide Linux"

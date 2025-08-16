@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "exit"
 description: " 'exit' 또는 'logout' 명령어를 사용하여 Linux 셸을 종료하는 방법을 배웁니다. 초보자를 위한 기본적인 셸 탐색을 이해합니다. 오늘 Linux 여정을 시작하세요!"
 keywords: "exit 명령어, logout 명령어, Linux 셸, 터미널 종료, Linux 기본, 초보자 Linux, Linux 튜토리얼"

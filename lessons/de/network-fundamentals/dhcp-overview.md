@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "DHCP-Übersicht"
 description: "Erfahren Sie mehr über DHCP (Dynamic Host Configuration Protocol) in Linux. Verstehen Sie, wie DHCP IP-Adressen zuweist und seinen vierstufigen Prozess. Beginnen Sie Ihre Linux-Netzwerkreise!"
 keywords: "DHCP, Dynamic Host Configuration Protocol, Linux-Netzwerk, IP-Adresse, DHCP-Tutorial, Anfänger, Leitfaden"

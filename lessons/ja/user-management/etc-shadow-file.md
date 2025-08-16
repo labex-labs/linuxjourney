@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "/etc/shadow"
 description: "Linux の/etc/shadow ファイル、そのフィールド、およびユーザーパスワードを保護する方法について学びます。初心者向けの Linux 認証を理解します。"
 keywords: "/etc/shadow, Linux セキュリティ，ユーザー認証，パスワード管理，Linux チュートリアル，初心者ガイド"

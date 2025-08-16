@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Path of a Packet"
 description: "Learn how a packet travels within and outside a network. Understand IP, MAC, ARP, and routing tables for network communication. Start your Linux networking journey!"
 keywords: "packet travel, network communication, ARP, IP address, MAC address, routing table, Linux networking, beginner guide"

@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Emacs 파일 조작"
 description: "Emacs 파일 조작 배우기: C-x C-s, C-x C-w, C-x C-f 명령어를 사용하여 파일 저장, 다른 이름으로 저장, 파일 열기. 필수 Emacs 파일 작업을 마스터하세요!"
 keywords: "Emacs, Emacs 파일 저장, Emacs 파일 열기, Emacs 튜토리얼, Linux 명령어, Emacs 초보자, Emacs 가이드"
@@ -6,7 +7,7 @@ keywords: "Emacs, Emacs 파일 저장, Emacs 파일 열기, Emacs 튜토리얼, 
 
 ## Lesson Content
 
-대부분의 (전부는 아니더라도) Emacs 문서에서 C-[letter] 구문을 볼 수 있습니다. 이는 Ctrl-letter를 누르라는 의미이지만, 줄임말 목적으로 Ctrl을 C로 부를 것입니다. M-[letter]와 같은 구문을 본다면, 이는 Meta 키(가장 일반적으로 Alt 키)를 사용하라는 의미입니다.
+대부분의 (전부는 아니더라도) Emacs 문서에서 C-[letter] 구문을 볼 수 있습니다. 이는 Ctrl-letter 를 누르라는 의미이지만, 줄임말 목적으로 Ctrl 을 C 로 부를 것입니다. M-[letter]와 같은 구문을 본다면, 이는 Meta 키 (가장 일반적으로 Alt 키) 를 사용하라는 의미입니다.
 
 ### 파일 저장
 

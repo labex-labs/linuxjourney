@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "파일 시스템 생성"
 description: "mkfs 를 사용하여 Linux 에서 파일 시스템을 생성하는 방법을 배우세요. 이 초보자 친화적인 가이드는 ext4 및 디스크 파티셔닝을 다룹니다. Linux 여정을 시작하세요!"
 keywords: "mkfs, 파일 시스템 생성, ext4, Linux 파티셔닝, Linux 튜토리얼, 초보자 Linux, 디스크 관리, Linux 가이드"

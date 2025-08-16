@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "/etc/passwd"
 description: "Linux 의 /etc/passwd 파일에 대해 알아보고, 사용자 정보 필드를 이해하며, UID 가 어떻게 작동하는지 알아봅니다. 이 필수 구성 파일을 탐색합니다."
 keywords: "/etc/passwd, Linux 사용자, 사용자 ID, UID, Linux 튜토리얼, 초보자, 가이드, Linux 명령어"

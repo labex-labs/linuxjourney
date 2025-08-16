@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "lsof und fuser"
 description: "Erfahren Sie, wie Sie die Befehle lsof und fuser in Linux verwenden, um Prozesse zu identifizieren, die Dateien nutzen. Verstehen Sie "Device or Resource Busy"-Fehler und verwalten Sie offene Dateien effektiv."
 keywords: "lsof, fuser, Linux-Befehle, offene Dateien, Prozessverwaltung, Linux-Tutorial, Anfängerleitfaden, Gerät besetzt"

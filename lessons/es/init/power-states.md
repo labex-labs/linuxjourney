@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Estados de energía"
 description: "Aprenda los estados de energía del sistema Linux: comandos shutdown, reboot y halt. Entienda cómo apagar o reiniciar su sistema Linux de forma segura. ¡Comience con los comandos esenciales!"
 keywords: "apagado de Linux, comando reboot, sistema halt, apagar Linux, comandos de Linux, Linux para principiantes, tutorial de Linux, estados del sistema"

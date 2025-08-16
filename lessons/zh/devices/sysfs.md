@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "sysfs"
 description: "了解 sysfs，一个用于详细 Linux 设备信息和管理的虚拟文件系统。理解 /sys 与 /dev 的区别。开始你的 Linux 之旅！"
 keywords: "sysfs, /sys 目录，Linux 设备，虚拟文件系统，Linux 教程，初学者指南"

@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Gentoo"
 description: "Erfahren Sie mehr über Gentoo Linux, seinen Portage-Paketmanager und seine hohe Konfigurierbarkeit. Entdecken Sie, ob diese flexible Distribution für Ihre fortgeschrittene Linux-Reise geeignet ist."
 keywords: "Gentoo Linux, Portage, Linux-Distribution, Gentoo-Tutorial, Linux für Anfänger, Linux-Anleitung, Gentoo-Konfigurierbarkeit"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "エイリアス"
 description: "一般的なコマンドの Linux エイリアスを作成および管理する方法を学びます。.bashrc での一時的および永続的なエイリアス設定を発見します。コマンドラインの効率を向上させましょう！"
 keywords: "Linux エイリアス，bash エイリアス，unalias コマンド，.bashrc, Linux チュートリアル，コマンドライン，初心者 Linux, Linux ガイド"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "历史"
 description: "了解 Linux 的历史，从 UNIX 到 Linus Torvalds 和 GNU 项目。为初学者理解其起源和演变。"
 keywords: "Linux 历史，UNIX, GNU 项目，Linus Torvalds, Linux 内核，Linux 初学者，Linux 教程，Linux 指南"

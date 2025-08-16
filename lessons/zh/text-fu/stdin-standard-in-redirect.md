@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "stdin (标准输入)"
 description: "了解 Linux 中 stdin（标准输入）重定向。理解如何将 '<' 运算符与文件和命令一起使用。探索实际示例并提高您的 Linux 命令行技能。"
 keywords: "stdin, 标准输入，Linux 重定向，< 运算符，Linux 教程，命令行，初学者，指南"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "デバイスタイプ"
 description: "Linux のデバイスタイプ（character、block、pipe、socket）と、`ls -l /dev` を使用してそれらを識別する方法について学びます。メジャー/マイナーデバイス番号を理解します。初心者向けの Linux チュートリアル。"
 keywords: "Linux デバイスタイプ，ls -l /dev, character device, block device, major minor device number, Linux チュートリアル，Linux ガイド，初心者"

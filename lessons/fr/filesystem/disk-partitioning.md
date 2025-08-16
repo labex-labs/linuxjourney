@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Partitionnement de disque"
 description: "Apprenez le partitionnement de disque sous Linux à l'aide de parted. Comprenez comment partitionner, sélectionner, afficher et redimensionner des disques. Démarrez avec ce guide convivial pour débutants !"
 keywords: "partitionnement de disque Linux, commande parted, fdisk, gparted, tutoriel Linux, Linux pour débutants, gestion de disque, guide Linux"

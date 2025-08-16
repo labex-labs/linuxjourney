@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "traceroute"
 description: "学习如何使用 Linux traceroute 命令来跟踪网络路由和排查连接问题。了解 TTL 和数据包路由，适合初学者。"
 keywords: "traceroute, Linux 网络，网络故障排除，TTL, Linux 命令，初学者，教程"

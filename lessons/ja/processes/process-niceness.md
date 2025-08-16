@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "niceness"
 description: "Linux の niceness とプロセス優先度について学びます。nice コマンドと renice コマンドを理解し、プロセスの CPU 時間を管理します。システムパフォーマンスを向上させましょう！"
 keywords: "Linux niceness, プロセス優先度，nice コマンド，renice コマンド，Linux チュートリアル，CPU スケジューリング，初心者向け Linux, Linux ガイド"

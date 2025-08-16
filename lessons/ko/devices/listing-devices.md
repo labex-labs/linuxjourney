@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "lsusb, lspci, lsscsi"
 description: "lsusb, lspci, lsscsi 명령을 사용하여 USB, PCI 및 SCSI 장치를 나열하는 방법을 배웁니다. 이 초보자 친화적인 가이드를 통해 Linux 하드웨어를 이해하세요."
 keywords: "lsusb, lspci, lsscsi, Linux commands, device listing, hardware information, Linux tutorial, beginner guide"

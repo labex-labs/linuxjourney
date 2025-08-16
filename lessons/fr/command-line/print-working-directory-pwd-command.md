@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "pwd (Répertoire de travail actuel)"
 description: "Apprenez à utiliser la commande 'pwd' sous Linux pour afficher votre répertoire de travail actuel. Comprenez les chemins du système de fichiers Linux et la navigation pour les débutants."
 keywords: "commande pwd, répertoire Linux, répertoire actuel, chemin Linux, tutoriel Linux, Linux débutant, guide Linux"

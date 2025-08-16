@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "OSI 模型"
 description: "了解 OSI 模型，一个基础的理论网络概念。理解其 7 层以及与 TCP/IP 的关系。针对初学者的必备 Linux 网络指南。"
 keywords: "OSI 模型，网络概念，TCP/IP, Linux 网络，初学者教程，网络层，理论模型"

@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "niceness"
 description: "Узнайте о niceness в Linux и приоритете процессов. Разберитесь с командами nice и renice для управления временем CPU для процессов. Улучшите производительность системы!"
 keywords: "Linux niceness, приоритет процесса, команда nice, команда renice, учебник Linux, планирование CPU, Linux для начинающих, руководство по Linux"

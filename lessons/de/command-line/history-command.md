@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "history"
 description: "Erfahren Sie, wie Sie den Linux-Befehl history, die Verknüpfung !! und Strg-R für den effizienten Abruf von Befehlen verwenden. Verbessern Sie Ihre Terminalproduktivität mit diesen wichtigen Tipps!"
 keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"

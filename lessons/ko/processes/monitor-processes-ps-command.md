@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "ps (프로세스)"
 description: "실행 중인 프로세스를 확인하고 프로세스 ID(PID) 를 이해하기 위해 Linux 'ps' 명령에 대해 알아보세요. 프로세스 관리에 대한 초보자 가이드를 얻으세요."
 keywords: "ps command, Linux processes, process ID, PID, Linux tutorial, beginner, guide, top command"

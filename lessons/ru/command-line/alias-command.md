@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "alias"
 description: "Узнайте, как создавать и управлять alias в Linux для часто используемых команд. Откройте для себя временную и постоянную настройку alias в .bashrc. Повысьте эффективность работы в командной строке!"
 keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"

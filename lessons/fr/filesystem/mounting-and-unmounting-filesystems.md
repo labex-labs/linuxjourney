@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "mount et umount"
 description: "Apprenez à utiliser les commandes Linux mount et umount pour gérer les systèmes de fichiers. Comprenez le montage, le démontage des périphériques et les UUID pour les débutants."
 keywords: "mount Linux, commande umount, monter un système de fichiers, UUID Linux, Linux débutant, tutoriel Linux, point de montage, guide Linux"

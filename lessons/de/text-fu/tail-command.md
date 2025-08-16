@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "tail"
 description: "Erfahren Sie, wie Sie den Befehl `tail` in Linux verwenden, um Dateiendungen anzuzeigen und Protokolle zu überwachen. Entdecken Sie `tail -f` für Echtzeit-Updates. Beginnen Sie Ihre Linux-Reise!"
 keywords: "tail Befehl, Linux tail, tail -f, Protokolle anzeigen, Linux Tutorial, Linux für Anfänger, Linux Anleitung"

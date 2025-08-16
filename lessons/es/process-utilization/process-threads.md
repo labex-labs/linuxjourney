@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Hilos de Procesos"
 description: "Aprende sobre los hilos de procesos de Linux, los conceptos de un solo hilo frente a múltiples hilos, y cómo verlos usando 'ps m'. ¡Comprende los procesos ligeros de manera eficiente!"
 keywords: "hilos de Linux, hilos de procesos, comando ps m, multi-hilo, single-hilo, procesos de Linux, Linux para principiantes, tutorial de Linux"

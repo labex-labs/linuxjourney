@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Setgid"
 description: "了解 Linux SGID（设置组 ID）权限、它们的工作原理以及如何修改它们。理解这个关键的 Linux 安全概念。"
 keywords: "Linux SGID, 设置组 ID, Linux 权限，chmod g+s, Linux 安全，Linux 初学者，Linux 教程"

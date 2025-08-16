@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "跟踪进程：top"
 description: "了解如何使用 Linux `top` 命令监控系统资源和跟踪进程。理解 CPU、内存和进程详细信息以进行性能分析。"
 keywords: "Linux top 命令，监控进程，系统利用率，Linux 性能，初学者，教程，指南"

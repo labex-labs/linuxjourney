@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Nombres de Dispositivos"
 description: "Aprenda los nombres de dispositivos Linux como los dispositivos SCSI (sd), pseudo y PATA (hd). Entienda /dev/sda, /dev/null y más en esta guía para principiantes."
 keywords: "nombres de dispositivos Linux, /dev, dispositivos SCSI, pseudo dispositivos, dispositivos PATA, tutorial de Linux, Linux para principiantes, archivos de dispositivo"

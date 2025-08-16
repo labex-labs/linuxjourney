@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "tail"
 description: "Apprenez à utiliser la commande `tail` sous Linux pour afficher les fins de fichiers et surveiller les journaux. Découvrez `tail -f` pour des mises à jour en temps réel. Commencez votre parcours Linux !"
 keywords: "commande tail, Linux tail, tail -f, afficher les journaux, tutoriel Linux, Linux pour débutants, guide Linux"

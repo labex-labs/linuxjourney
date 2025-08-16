@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Visão Geral do Systemd"
 description: "Aprenda os conceitos básicos do Systemd: entenda unidades, alvos e o processo de inicialização. Descubra como o Systemd gerencia serviços e estados do sistema no Linux. Comece sua jornada!"
 keywords: "Systemd, unidades Systemd, alvos Systemd, processo de inicialização Linux, serviços Linux, iniciante, tutorial, guia"

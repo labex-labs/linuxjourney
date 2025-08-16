@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "expand 및 unexpand"
 description: "`expand` 명령으로 탭을 공백으로, `unexpand` 명령으로 공백을 탭으로 변환하는 방법을 배웁니다. 이 Linux 튜토리얼을 통해 텍스트 파일 서식을 개선하세요."
 keywords: "expand command, unexpand command, Linux 탭, Linux 공백, 텍스트 서식, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

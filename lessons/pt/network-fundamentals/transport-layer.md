@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Camada de Transporte"
 description: "Aprenda sobre a Camada de Transporte em redes Linux, incluindo protocolos TCP/UDP, portas e segmentação de dados. Entenda como os dados são transferidos de forma confiável."
 keywords: "Camada de Transporte Linux, TCP/UDP, portas de rede, segmentação de dados, redes Linux, tutorial para iniciantes, protocolos de rede"

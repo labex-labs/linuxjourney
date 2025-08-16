@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "join und split"
 description: "Lernen Sie, die Linux-Befehle 'join' und 'split' für die Dateimanipulation zu verwenden. Verstehen Sie, wie Dateien nach gemeinsamen Feldern kombiniert und große Dateien effizient aufgeteilt werden. Erhalten Sie praktische Beispiele und Tipps."
 keywords: "Linux join Befehl, Linux split Befehl, Dateimanipulation, Linux Tutorial, Kommandozeile, Linux für Anfänger, Linux Anleitung"

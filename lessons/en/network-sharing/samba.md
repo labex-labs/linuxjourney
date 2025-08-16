@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Samba"
 description: "Learn to set up Samba file shares on Linux for Windows and macOS. This beginner's guide covers installation, configuration, and accessing shares. Get started!"
 keywords: "Samba, Linux file sharing, smb.conf, CIFS, smbclient, Linux tutorial, beginner guide"

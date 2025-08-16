@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "stdin (Entrée Standard)"
 description: "Apprenez la redirection stdin (entrée standard) sous Linux. Comprenez comment utiliser l'opérateur '<' avec les fichiers et les commandes. Explorez des exemples pratiques et améliorez vos compétences en ligne de commande Linux."
 keywords: "stdin, entrée standard, redirection Linux, opérateur <, tutoriel Linux, ligne de commande, débutant, guide"

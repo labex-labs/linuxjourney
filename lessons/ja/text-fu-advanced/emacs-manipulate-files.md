@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Emacs ファイル操作"
 description: "Emacs のファイル操作を学びましょう：C-x C-s、C-x C-w、C-x C-f コマンドを使ってファイルを保存、名前を付けて保存、開く方法。Emacs の必須ファイル操作をマスターしましょう！"
 keywords: "Emacs, Emacs ファイル保存，Emacs ファイルを開く，Emacs チュートリアル，Linux コマンド，Emacs 初心者，Emacs ガイド"

@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "whatis"
 description: "Erfahren Sie, was der Befehl 'whatis' in Linux tut. Erhalten Sie schnell kurze Beschreibungen von Befehlen. Essenziell für Anfänger, um Linux-Befehle zu verstehen."
 keywords: "whatis Befehl, Linux Befehle, Kommandozeile, Linux Tutorial, Linux für Anfänger, Befehlsbeschreibung, Linux Anleitung"

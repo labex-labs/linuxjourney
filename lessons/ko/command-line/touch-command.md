@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "touch"
 description: "Linux touch 명령어를 사용하여 새 파일을 생성하고 타임스탬프를 업데이트하는 방법을 배웁니다. 이 초보자 친화적인 가이드는 파일 관리를 이해하는 데 도움이 됩니다."
 keywords: "touch 명령어, 파일 생성, Linux 튜토리얼, 파일 타임스탬프, 초보자를 위한 Linux, Linux 가이드, 기본 명령어"

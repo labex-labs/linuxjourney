@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Paketabhängigkeiten"
 description: "Erfahren Sie mehr über Linux-Paketabhängigkeiten und warum sie für die Softwareinstallation entscheidend sind. Verstehen Sie shared libraries und vermeiden Sie beschädigte Pakete. Beginnen Sie Ihre Linux-Reise!"
 keywords: "Linux-Paketabhängigkeiten, shared libraries, Linux-Pakete, Paketverwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"

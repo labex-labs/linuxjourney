@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "/etc/fstab"
 description: "Узнайте о /etc/fstab в Linux, как настроить монтирование файловых систем при запуске и управлять записями устройств. Разберитесь с fstab для начинающих!"
 keywords: "/etc/fstab, Linux fstab, монтирование файловых систем, Linux boot, fstab tutorial, beginner, guide"

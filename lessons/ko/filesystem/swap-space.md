@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "swap"
 description: "Linux swap 공간, 작동 방식, swap 파티션 생성 및 관리 방법을 알아보세요. 이 가이드를 통해 시스템의 메모리 사용량을 최적화하세요!"
 keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 가상 메모리, Linux 초보자, Linux 튜토리얼"

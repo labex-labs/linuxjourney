@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Kernel-Speicherort"
 description: "Erfahren Sie mehr über den Speicherort des Linux-Kernels im Verzeichnis /boot und verstehen Sie vmlinuz, initrd und System.map. Erkunden Sie Kernel-Dateien und verwalten Sie den Speicherplatz effektiv."
 keywords: "Linux-Kernel, /boot-Verzeichnis, vmlinuz, initrd, System.map, Linux-Anfänger, Kernel-Tutorial, Linux-Anleitung"

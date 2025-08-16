@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Modificando Permissões"
 description: "Aprenda como usar o comando chmod para modificar permissões de arquivos no Linux. Entenda os modos simbólico e numérico para gerenciamento seguro de arquivos. Comece a aprender agora!"
 keywords: "comando chmod, permissões Linux, permissões de arquivo, tutorial chmod, segurança Linux, Linux para iniciantes, guia Linux, chmod numérico"

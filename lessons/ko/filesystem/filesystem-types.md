@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "파일 시스템 유형"
 description: "ext4, Btrfs, XFS 와 같은 Linux 파일 시스템 유형에 대해 알아보세요. 일관된 데이터 유지를 위한 저널링 및 VFS 를 이해합니다. 이 초보자 가이드에서 일반적인 Linux 파일 시스템을 탐색합니다."
 keywords: "Linux 파일 시스템 유형, ext4, Btrfs, XFS, 저널링, VFS, Linux 튜토리얼, 초보자 가이드"

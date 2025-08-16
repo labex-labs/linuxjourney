@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "NFS"
 description: "Apprenez la configuration du client NFS et le montage automatique dans Linux. Comprenez comment se connecter aux partages de fichiers réseau et utiliser le montage automatique pour un accès transparent."
 keywords: "client NFS, automount, Network File System, réseau Linux, commande mount, tutoriel Linux, débutant"

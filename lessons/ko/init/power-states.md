@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "전원 상태"
 description: "Linux 시스템 전원 상태: shutdown, reboot, halt 명령을 배웁니다. Linux 시스템을 안전하게 전원 끄거나 재시작하는 방법을 이해합니다. 필수 명령으로 시작하세요!"
 keywords: "Linux shutdown, reboot command, halt system, power off Linux, Linux commands, beginner Linux, Linux tutorial, system states"

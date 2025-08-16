@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Upstart-Jobs"
 description: "Lernen Sie, Upstart-Jobs in Linux mit initctl-Befehlen zu verwalten. Verstehen Sie den Job-Status, starten, stoppen und neu starten Sie Dienste. Verbessern Sie Ihre Linux-Systemadministrationsfähigkeiten."
 keywords: "Upstart-Jobs, initctl, Linux-Dienste, Systemadministration, Linux-Tutorial, Anfängerleitfaden"

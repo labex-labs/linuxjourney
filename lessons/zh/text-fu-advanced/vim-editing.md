@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Vim 编辑"
 description: "学习 Vim 编辑基础：高效删除、更改、复制和粘贴文本。掌握初学者必备的 Vim 命令，提高您的 Linux 文本编辑技能。"
 keywords: "Vim 编辑，Vim 命令，Linux 文本编辑器，Vim 教程，Vim 指南，Vim 初学者，dd 命令，Vim 删除"

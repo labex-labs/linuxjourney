@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Creating Filesystems"
 description: "Learn how to create filesystems on Linux using mkfs. This beginner-friendly guide covers ext4 and disk partitioning. Start your Linux journey!"
 keywords: "mkfs, create filesystem, ext4, Linux partitioning, Linux tutorial, beginner Linux, disk management, Linux guide"

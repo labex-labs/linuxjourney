@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "dd"
 description: "Linux の dd コマンドを学習し、データコピーとディスクイメージングに活用しましょう。if、of、bs などのオプションを理解し、Linux データ管理の旅を始めましょう！"
 keywords: "dd コマンド，Linux dd, データコピー, ディスクイメージング，Linux チュートリアル，初心者，ガイド，データバックアップ"

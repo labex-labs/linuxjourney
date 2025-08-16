@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "/proc 파일 시스템"
 description: "Linux 의 /proc 파일 시스템, 프로세스 정보 저장 방식 및 구조에 대해 알아보세요. 이 필수 Linux 가이드를 통해 프로세스 세부 정보를 탐색하세요."
 keywords: "/proc 파일 시스템, Linux 프로세스, 프로세스 정보, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

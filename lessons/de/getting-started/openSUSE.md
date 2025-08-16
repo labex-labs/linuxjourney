@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "openSUSE"
 description: "Erfahren Sie mehr über openSUSE Linux, seine Geschichte, Paketverwaltung (RPM) und Konfigurierbarkeit mit YaST. Entdecken Sie, warum openSUSE großartig für Anfänger ist."
 keywords: "openSUSE, Linux-Distribution, RPM, YaST, Linux für Anfänger, openSUSE Tutorial, Linux-Anleitung"

@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Setgid"
 description: "Узнайте о разрешениях Linux SGID (Set Group ID), как они работают и как их изменять. Разберитесь в этой важнейшей концепции безопасности Linux."
 keywords: "Linux SGID, Set Group ID, разрешения Linux, chmod g+s, безопасность Linux, Linux для начинающих, учебник по Linux"

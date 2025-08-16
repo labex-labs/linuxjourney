@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "stdin (Standardeingabe)"
 description: "Erfahren Sie mehr über die stdin (Standardeingabe)-Umleitung in Linux. Verstehen Sie, wie der Operator '<' mit Dateien und Befehlen verwendet wird. Entdecken Sie praktische Beispiele und verbessern Sie Ihre Linux-Kommandozeilenkenntnisse."
 keywords: "stdin, Standardeingabe, Linux-Umleitung, < Operator, Linux-Tutorial, Kommandozeile, Anfänger, Anleitung"

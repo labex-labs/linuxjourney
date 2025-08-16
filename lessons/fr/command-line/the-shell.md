@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Le Shell"
 description: "Découvrez le shell Linux, Bash et les commandes de base comme 'echo'. Comprenez les invites de shell et commencez votre parcours Linux avec ce guide convivial pour débutants."
 keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de commande, Linux débutant, invite de shell, guide Linux"

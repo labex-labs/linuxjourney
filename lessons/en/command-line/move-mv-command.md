@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "mv (Move)"
 description: "Learn how to use the Linux mv command to move and rename files/directories. Understand its options and prevent overwrites. Start your Linux journey!"
 keywords: "mv command, Linux mv, move files Linux, rename files Linux, Linux tutorial, beginner, Linux guide"

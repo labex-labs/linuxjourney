@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "라우팅 테이블"
 description: "Linux 라우팅 테이블을 이해하고 route 명령을 사용하여 패킷이 어떻게 라우팅되는지 배웁니다. 네트워크 기본 사항을 위해 대상, 게이트웨이 및 인터페이스를 탐색합니다."
 keywords: "Linux 라우팅 테이블, route 명령, 네트워크 라우팅, Linux 네트워킹, Linux 초보자, Linux 튜토리얼, 네트워크 가이드"

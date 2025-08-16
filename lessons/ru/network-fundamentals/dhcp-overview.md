@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Обзор DHCP"
 description: "Узнайте о DHCP (Dynamic Host Configuration Protocol) в Linux. Поймите, как DHCP назначает IP-адреса и его четырехэтапный процесс. Начните свой путь в сетевых технологиях Linux!"
 keywords: "DHCP, Dynamic Host Configuration Protocol, Сеть Linux, IP-адрес, Учебник DHCP, для начинающих, руководство"

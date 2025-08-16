@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Monitoreo de I/O"
 description: "Aprende a usar iostat para el monitoreo de I/O en Linux. Comprende las métricas de uso de CPU y disco con este comando esencial. ¡Mejora el rendimiento del sistema!"
 keywords: "iostat, monitoreo de I/O en Linux, uso de CPU, uso de disco, comandos de Linux, principiante, tutorial, guía"

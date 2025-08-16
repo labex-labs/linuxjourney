@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Visão Geral do DHCP"
 description: "Aprenda sobre DHCP (Dynamic Host Configuration Protocol) no Linux. Entenda como o DHCP atribui endereços IP e seu processo de quatro etapas. Comece sua jornada de rede Linux!"
 keywords: "DHCP, Dynamic Host Configuration Protocol, rede Linux, endereço IP, tutorial DHCP, iniciante, guia"

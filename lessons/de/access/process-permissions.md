@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Prozessberechtigungen"
 description: "Erfahren Sie mehr über Linux-Prozessberechtigungen, einschließlich Real-, Effective- und Saved-User-IDs. Verstehen Sie, wie UIDs die Sicherheit und Befehlsausführung beeinflussen. Beginnen Sie noch heute mit dem Lernen!"
 keywords: "Linux-Prozessberechtigungen, Real UID, Effective UID, Saved UID, Linux-Sicherheit, passwd-Befehl, Linux-Tutorial, Linux für Anfänger"

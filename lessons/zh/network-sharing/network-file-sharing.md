@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "文件共享概述"
 description: "了解 Linux 文件共享和安全复制 (scp) 命令。在网络上的主机之间传输文件。通过这份适合初学者的指南开始学习！"
 keywords: "Linux 文件共享，scp 命令，安全复制，网络文件传输，Linux 教程，Linux 初学者，Linux 指南"

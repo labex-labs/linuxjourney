@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "mv (移动)"
 description: "学习如何使用 Linux mv 命令移动和重命名文件/目录。了解其选项并防止覆盖。开始你的 Linux 之旅！"
 keywords: "mv 命令，Linux mv, 移动文件 Linux, 重命名文件 Linux, Linux 教程，初学者，Linux 指南"

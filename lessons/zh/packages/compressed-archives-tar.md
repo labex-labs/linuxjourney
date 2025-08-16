@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "tar 和 gzip"
 description: "学习在 Linux 中使用 tar 和 gzip 进行文件归档和压缩。了解创建、提取和压缩文件的命令。通过这份初学者指南开始吧！"
 keywords: "tar, gzip, Linux 归档，文件压缩，tar 命令，gzip 命令，Linux 教程，Linux 初学者"

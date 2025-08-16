@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Particionado de Discos"
 description: "Aprende el particionado de discos en Linux usando parted. Entiende cómo particionar, seleccionar, ver y redimensionar discos. ¡Empieza con esta guía para principiantes!"
 keywords: "particionado de disco Linux, comando parted, fdisk, gparted, tutorial Linux, Linux para principiantes, gestión de discos, guía Linux"

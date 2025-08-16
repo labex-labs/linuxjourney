@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "route"
 description: "Aprenda cómo agregar y eliminar rutas de red usando los comandos route e ip de Linux. Comprenda la gestión de tablas de enrutamiento para usuarios principiantes e intermedios."
 keywords: "comando route, ip route, agregar ruta, eliminar ruta, redes Linux, tabla de enrutamiento, tutorial Linux, guía para principiantes"

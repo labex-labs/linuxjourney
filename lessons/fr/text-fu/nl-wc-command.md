@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "wc et nl"
 description: "Apprenez les commandes Linux wc et nl. Comprenez le comptage de mots, la numérotation de lignes et l'analyse de fichiers. Améliorez vos compétences en ligne de commande Linux dès aujourd'hui !"
 keywords: "commande wc, commande nl, comptage de mots Linux, numéros de ligne Linux, analyse de fichiers, tutoriel Linux, Linux pour débutants, guide Linux"

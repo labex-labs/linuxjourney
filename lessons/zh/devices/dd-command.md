@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "dd"
 description: "学习 Linux dd 命令，用于数据复制和磁盘映像。了解其选项，如 if、of 和 bs。开始您的 Linux 数据管理之旅！"
 keywords: "dd 命令，Linux dd, 复制数据，磁盘映像，Linux 教程，初学者，指南，数据备份"

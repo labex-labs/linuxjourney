@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "rm (Entfernen)"
 description: "Erfahren Sie, wie Sie den Befehl `rm` in Linux verwenden, um Dateien und Verzeichnisse sicher zu löschen. Verstehen Sie Optionen wie -f, -i, -r und rmdir. Beginnen Sie Ihre Linux-Reise!"
 keywords: "rm Befehl, Dateien löschen Linux, Verzeichnisse entfernen, Linux Tutorial, Linux für Anfänger, rmdir, Linux Anleitung"

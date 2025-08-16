@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "tr (Traducir)"
 description: "Aprenda a usar el comando 'tr' de Linux para traducir y eliminar caracteres. Comprenda la traducción de caracteres con ejemplos y ejercicios. ¡Comience su viaje en Linux!"
 keywords: "comando tr, Linux tr, traducir caracteres, eliminar caracteres, tutorial de Linux, Linux para principiantes, guía de Linux"

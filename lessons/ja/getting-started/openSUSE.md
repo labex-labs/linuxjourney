@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "openSUSE"
 description: "openSUSE Linux、その歴史、パッケージ管理（RPM）、および YaST による設定可能性について学びます。openSUSE が初心者にとって素晴らしい理由を発見してください。"
 keywords: "openSUSE, Linux ディストリビューション，RPM, YaST, 初心者向け Linux, openSUSE チュートリアル，Linux ガイド"

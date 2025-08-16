@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Boot Process Overview"
 description: "Learn the Linux boot process stages: BIOS, bootloader, kernel, and init. Understand how Linux starts from power-on to login. Essential Linux beginner guide."
 keywords: "Linux boot process, BIOS, bootloader, kernel, init, Linux tutorial, Linux guide, beginner"

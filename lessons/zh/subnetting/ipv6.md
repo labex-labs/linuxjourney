@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "IPv6"
 description: "了解 IPv6、其目的以及它如何补充 IPv4。理解 IPv6 地址及其在连接更多设备到互联网中的作用。"
 keywords: "IPv6, IPv4, IP address, Linux networking, network protocols, 初学者，教程，指南"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "启动过程：内核"
 description: "了解 Linux 启动过程、内核初始化以及 initramfs 的作用。理解内核如何挂载根文件系统。Linux 启动过程指南。"
 keywords: "Linux 启动过程，内核启动，initramfs, initrd, 根文件系统，Linux 教程，Linux 初学者，Linux 指南"

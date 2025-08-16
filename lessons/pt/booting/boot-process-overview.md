@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Visão Geral do Processo de Inicialização"
 description: "Aprenda os estágios do processo de inicialização do Linux: BIOS, bootloader, kernel e init. Entenda como o Linux inicia desde o ligar até o login. Guia essencial para iniciantes em Linux."
 keywords: "processo de inicialização do Linux, BIOS, bootloader, kernel, init, tutorial de Linux, guia de Linux, iniciante"

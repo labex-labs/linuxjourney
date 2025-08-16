@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Gentoo"
 description: "Gentoo Linux、その Portage パッケージマネージャー、および高い設定可能性について学びます。この柔軟なディストリビューションが、あなたの高度な Linux の旅に適しているかどうかを発見してください。"
 keywords: "Gentoo Linux, Portage, Linux ディストリビューション，Gentoo チュートリアル，Linux 初心者，Linux ガイド，Gentoo 設定可能性"

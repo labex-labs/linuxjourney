@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Kernel Logging"
 description: "Learn about Linux kernel logging with dmesg and kern.log. Understand boot messages and hardware issues. Explore kernel logs for system insights."
 keywords: "dmesg, kern.log, Linux logging, kernel messages, boot log, Linux tutorial, beginner guide"

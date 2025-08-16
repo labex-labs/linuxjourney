@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "ファイルシステムの種類"
 description: "ext4、Btrfs、XFS などの Linux ファイルシステムタイプについて学びます。一貫性のあるデータのためのジャーナリングと VFS を理解します。この初心者向けガイドで一般的な Linux ファイルシステムを探求します。"
 keywords: "Linux ファイルシステムタイプ，ext4, Btrfs, XFS, ジャーナリング，VFS, Linux チュートリアル，初心者ガイド"

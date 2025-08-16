@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Upstart の概要"
 description: "Upstart、そのイベント駆動型モデル、および Linux でのサービス管理方法について学びます。Upstart ジョブ構成とその init システムとしての役割を理解します。"
 keywords: "Upstart, init system, Linux services, Ubuntu, SysV, 初心者向けチュートリアル，Linux ガイド"

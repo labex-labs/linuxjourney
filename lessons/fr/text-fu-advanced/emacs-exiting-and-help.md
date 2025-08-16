@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Quitter Emacs et Aide"
 description: "Apprenez les commandes de sortie d'Emacs et comment accéder à l'aide. Comprenez les fonctions de navigation et d'annulation de base d'Emacs dans ce tutoriel convivial pour débutants."
 keywords: "sortie Emacs, aide Emacs, annuler Emacs, tutoriel Emacs, éditeur de texte Linux, guide du débutant"

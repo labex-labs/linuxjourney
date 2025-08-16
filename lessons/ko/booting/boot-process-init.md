@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "부팅 과정: Init"
 description: "Linux init 시스템: System V, Upstart, systemd 에 대해 알아보세요. 부팅 과정에서의 역할과 서비스 관리 방법을 이해하세요. Linux 여정을 시작하세요!"
 keywords: "Linux init, systemd, System V init, Upstart, Linux 부팅 과정, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

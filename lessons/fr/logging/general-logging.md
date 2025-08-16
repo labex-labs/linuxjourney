@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Journalisation générale"
 description: "Découvrez les fichiers journaux Linux comme /var/log/messages et syslog. Comprenez leurs différences pour un dépannage efficace du système. Commencez votre parcours Linux !"
 keywords: "Journaux Linux, syslog, var/log/messages, dépannage Linux, débutant Linux, guide Linux, journaux système"

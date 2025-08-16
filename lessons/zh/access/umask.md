@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Umask"
 description: "学习如何使用 `umask` 命令控制 Linux 中的默认文件权限。了解数字权限并轻松管理新文件访问。"
 keywords: "umask, linux 权限，文件权限，linux 命令，linux 初学者，linux 教程，默认权限"

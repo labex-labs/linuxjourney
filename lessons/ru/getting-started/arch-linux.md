@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Arch Linux"
 description: "Узнайте об Arch Linux, его модели rolling release и менеджере пакетов Pacman. Поймите, почему Arch отлично подходит для новичков и опытных пользователей, стремящихся к контролю."
 keywords: "Arch Linux, Pacman, дистрибутив Linux, rolling release, учебник по Linux, руководство для начинающих, легковесная ОС"

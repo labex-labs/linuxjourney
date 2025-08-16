@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Visión general del proceso de arranque"
 description: "Aprende las etapas del proceso de arranque de Linux: BIOS, bootloader, kernel e init. Comprende cómo Linux se inicia desde el encendido hasta el inicio de sesión. Guía esencial para principiantes de Linux."
 keywords: "proceso de arranque de Linux, BIOS, bootloader, kernel, init, tutorial de Linux, guía de Linux, principiante"

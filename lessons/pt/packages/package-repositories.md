@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Repositórios de Pacotes"
 description: "Aprenda sobre repositórios de pacotes Linux e como eles gerenciam software. Descubra como encontrar e adicionar fontes de pacotes como /etc/apt/sources.list para fácil instalação."
 keywords: "repositórios de pacotes Linux, lista de fontes apt, /etc/apt/sources.list, pacotes Linux, Linux para iniciantes, tutorial de Linux, gerenciamento de pacotes"

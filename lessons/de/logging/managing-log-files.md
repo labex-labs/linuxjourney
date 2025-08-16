@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Verwalten von Protokolldateien"
 description: "Erfahren Sie, wie Sie Linux-Protokolldateien effizient mit logrotate verwalten. Entdecken Sie Protokollrotation, Komprimierung und Konfiguration, um Speicherplatz zu sparen. Beginnen Sie noch heute mit dem Lernen!"
 keywords: "logrotate, Linux-Protokolle, Protokollverwaltung, Protokollrotation, Linux-Tutorial, Anfänger, Leitfaden, Speicherplatz"

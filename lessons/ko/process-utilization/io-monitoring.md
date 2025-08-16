@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "I/O 모니터링"
 description: "Linux I/O 모니터링을 위해 iostat 를 사용하는 방법을 배웁니다. 이 필수 명령어를 통해 CPU 및 디스크 사용량 지표를 이해합니다. 시스템 성능을 향상시키세요!"
 keywords: "iostat, Linux I/O 모니터링, CPU 사용량, 디스크 사용량, Linux 명령어, 초보자, 튜토리얼, 가이드"

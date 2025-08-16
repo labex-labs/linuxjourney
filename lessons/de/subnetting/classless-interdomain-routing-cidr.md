@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "CIDR"
 description: "Lernen Sie die CIDR-Notation für Linux-Netzwerke. Verstehen Sie Subnetzmasken, IP-Adressierung und Host-Berechnung mit diesem anfängerfreundlichen Leitfaden. Verbessern Sie Ihre Netzwerkkenntnisse!"
 keywords: "CIDR, Subnetzmaske, IP-Adressierung, Netzwerkpräfix, Linux-Netzwerke, Anfänger, Tutorial, Leitfaden"

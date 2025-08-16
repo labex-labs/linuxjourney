@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Linux Mint"
 description: "Linux Mint、その Ubuntu ベース、パッケージ管理、そしてなぜ初心者にとって素晴らしいのかを学びましょう。その機能と今日から始める方法を発見してください！"
 keywords: "Linux Mint, Ubuntu, 初心者向け Linux, Linux ディストリビューション，Linux チュートリアル，Debian パッケージマネージャー, Linux ガイド"

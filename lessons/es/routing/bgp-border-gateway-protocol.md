@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Protocolo de Pasarela de Borde"
 description: "Aprende sobre BGP, el Protocolo de Pasarela de Borde, y cómo permite el enrutamiento de internet entre sistemas autónomos. Comprende los conceptos básicos de BGP para principiantes."
 keywords: "BGP, Protocolo de Pasarela de Borde, enrutamiento de internet, sistemas autónomos, redes Linux, tutorial BGP, protocolos de red, guía para principiantes"

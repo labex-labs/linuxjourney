@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "arp"
 description: "Linux の ARP コマンドと ARP キャッシュの表示方法について学びます。ネットワーク通信における ARP の役割を理解しましょう。ARP の初心者向けガイドです。"
 keywords: "Linux ARP, ARP キャッシュ，ip neighbour show, ネットワークコマンド，Linux ネットワーキング，初心者向け Linux, Linux チュートリアル"

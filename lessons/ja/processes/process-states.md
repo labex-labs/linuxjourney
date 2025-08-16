@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "プロセス状態"
 description: "`ps aux` を使用して Linux プロセス状態 (R, S, D, Z, T) を学びましょう。一般的な STAT コードを理解し、プロセスを効果的に管理します。Linux の学習を始めましょう！"
 keywords: "Linux プロセス状態，ps aux, プロセス管理，Linux チュートリアル，Linux 初心者，STAT コード，Linux ガイド"

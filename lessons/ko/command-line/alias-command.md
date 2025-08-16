@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "alias"
 description: "일반적인 명령에 대한 Linux 별칭을 만들고 관리하는 방법을 알아보세요. .bashrc 에서 임시 및 영구 별칭 설정을 알아보세요. 명령줄 효율성을 향상시키세요!"
 keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"

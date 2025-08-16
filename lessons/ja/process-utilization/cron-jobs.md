@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Cron ジョブ"
 description: "cron ジョブで Linux タスクをスケジュールする方法を学びます。crontab の構文を理解し、日常業務のためにスクリプトを自動化します。この初心者向けのガイドから始めましょう！"
 keywords: "cron jobs, crontab, タスクのスケジュール，Linux の自動化，Linux コマンド，初心者向け Linux, Linux チュートリアル，crontab -e"

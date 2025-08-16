@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Modèles de recherche Vim"
 description: "Apprenez les modèles de recherche Vim : recherche avant (/) et arrière (?). Naviguez dans les résultats avec 'n' et 'N'. Améliorez vos compétences Vim dès aujourd'hui !"
 keywords: "recherche Vim, commandes Vim, éditeur de texte Linux, tutoriel Vim, guide Vim, Vim pour débutants"

@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "사용자 및 그룹"
 description: "Linux 사용자 및 그룹에 대해 배우고, UID, GID, 그리고 root 사용자를 이해합니다. sudo 명령을 사용하여 권한을 높이는 방법을 알아봅니다. Linux 여정을 시작하세요!"
 keywords: "Linux 사용자, Linux 그룹, sudo 명령, root 사용자, Linux 권한, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

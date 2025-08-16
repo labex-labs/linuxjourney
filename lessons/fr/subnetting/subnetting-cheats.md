@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Astuces de Subnetting"
 description: "Apprenez les bases du subnetting et la conversion binaire pour le réseautage. Comprenez les adresses IP et les masques de sous-réseau avec ce guide convivial pour débutants. Commencez à apprendre maintenant !"
 keywords: "subnetting, conversion binaire, adresse IP, réseau, réseautage Linux, débutant, tutoriel, guide"

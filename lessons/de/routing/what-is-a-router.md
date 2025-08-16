@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Was ist ein Router?"
 description: "Erfahren Sie, was ein Router ist, wie er funktioniert und welche Rolle er in der Netzwerktechnik spielt. Verstehen Sie Routing, Hops und Paketlieferung für Anfänger."
 keywords: "Router, Netzwerk, Routing, Hops, Paketvermittlung, Linux-Netzwerk, Anfänger-Tutorial, Netzwerk-Leitfaden"

@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "pwd (Print Working Directory)"
 description: "Learn how to use the 'pwd' command in Linux to print your current working directory. Understand Linux filesystem paths and navigation for beginners."
 keywords: "pwd command, Linux directory, current directory, Linux path, Linux tutorial, beginner Linux, Linux guide"

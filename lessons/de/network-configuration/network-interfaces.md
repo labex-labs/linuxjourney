@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Netzwerkschnittstellen"
 description: "Erfahren Sie mehr über Linux-Netzwerkschnittstellen, ifconfig und ip-Befehle. Verstehen Sie, wie Netzwerkeinstellungen konfiguriert und verwaltet werden. Beginnen Sie Ihre Linux-Netzwerkreise!"
 keywords: "Linux-Netzwerkschnittstellen, ifconfig, ip-Befehl, Netzwerkkonfiguration, Linux-Netzwerk, Anfänger, Tutorial, Anleitung"

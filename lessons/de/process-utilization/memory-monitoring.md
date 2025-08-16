@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Speicherüberwachung"
 description: "Lernen Sie, die Linux-Speichernutzung mit vmstat zu überwachen. Verstehen Sie Speicher-, Swap- und CPU-Metriken für die Systemleistung. Beginnen Sie Ihre Linux-Reise!"
 keywords: "vmstat, Linux Speicherüberwachung, Systemleistung, Linux Tutorial, Speichernutzung, Linux für Anfänger, Linux Anleitung"

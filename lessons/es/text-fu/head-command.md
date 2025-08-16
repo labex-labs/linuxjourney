@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "head"
 description: "Aprende a usar el comando 'head' de Linux para ver el principio de los archivos. Entiende opciones como -n para el conteo de líneas. Tutorial esencial de comandos de Linux."
 keywords: "comando head, Linux head, ver inicio de archivo, tutorial Linux, comandos Linux, Linux para principiantes, head -n, guía Linux"

@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "/proc 文件系统"
 description: "了解 Linux 中的 /proc 文件系统，它如何存储进程信息及其结构。通过这份重要的 Linux 指南探索进程详情。"
 keywords: "/proc 文件系统，Linux 进程，进程信息，Linux 教程，Linux 初学者，Linux 指南"

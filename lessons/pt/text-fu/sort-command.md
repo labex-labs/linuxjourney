@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "sort"
 description: "Aprenda a usar o comando sort do Linux para ordenar arquivos de texto. Descubra opções como ordenação inversa e numérica. Melhore suas habilidades na linha de comando do Linux!"
 keywords: "comando sort Linux, sort -r, sort -n, tutorial Linux, linha de comando, Linux para iniciantes, guia sort"

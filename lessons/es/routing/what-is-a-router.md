@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "¿Qué es un router?"
 description: "Aprende qué es un router, cómo funciona y su papel en las redes. Comprende el enrutamiento, los saltos y la entrega de paquetes para principiantes."
 keywords: "router, redes, enrutamiento, saltos, conmutación de paquetes, redes Linux, tutorial para principiantes, guía de red"

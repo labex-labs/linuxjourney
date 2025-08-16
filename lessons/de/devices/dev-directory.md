@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "/dev-Verzeichnis"
 description: "Erfahren Sie mehr über das /dev-Verzeichnis in Linux, wo Gerätedateien gespeichert werden. Verstehen Sie Geräteknoten und wie man mit ihnen interagiert. Erkunden Sie /dev mit ls. Linux-Anfängerhandbuch."
 keywords: "/dev-Verzeichnis, Linux-Gerätedateien, Geräteknoten, Linux-Tutorial, ls /dev, Linux-Anfänger, Linux-Handbuch"

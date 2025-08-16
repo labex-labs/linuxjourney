@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Proceso DNS"
 description: "Aprenda cómo funciona DNS paso a paso, desde los servidores raíz hasta el DNS autoritativo. Comprenda el proceso de búsqueda de DNS para usuarios principiantes e intermedios."
 keywords: "proceso DNS, búsqueda DNS, cómo funciona DNS, tutorial DNS, DNS para principiantes, DNS en Linux, TLD, servidores raíz"

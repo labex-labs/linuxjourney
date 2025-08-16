@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "sysfs"
 description: "Découvrez sysfs, un système de fichiers virtuel pour des informations et une gestion détaillées des périphériques Linux. Comprenez /sys vs /dev. Commencez votre parcours Linux !"
 keywords: "sysfs, répertoire /sys, périphériques Linux, système de fichiers virtuel, tutoriel Linux, guide du débutant"

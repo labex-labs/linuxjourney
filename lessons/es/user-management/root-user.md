@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "root"
 description: "Aprende sobre el usuario root de Linux, el comando su y el archivo /etc/sudoers. Comprende el acceso y los permisos de superusuario en Linux con esta guía para principiantes."
 keywords: "Linux root, comando su, archivo sudoers, permisos de Linux, superusuario, tutorial de Linux, guía para principiantes"

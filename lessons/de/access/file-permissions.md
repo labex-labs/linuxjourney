@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Dateiberechtigungen"
 description: "Lernen Sie Linux-Dateiberechtigungen: Verstehen Sie rwx-Bits, Benutzer-, Gruppen- und andere Berechtigungen. Meistern Sie die `ls -l`-Ausgabe für Anfänger. Beginnen Sie Ihre Linux-Reise!"
 keywords: "Linux-Dateiberechtigungen, ls -l Befehl, rwx Berechtigungen, Linux-Tutorial, Dateimodi, Linux für Anfänger, Linux-Anleitung"

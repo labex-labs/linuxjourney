@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "pwd (현재 작업 디렉토리 출력)"
 description: "Linux 에서 'pwd' 명령어를 사용하여 현재 작업 디렉토리를 출력하는 방법을 배우세요. 초보자를 위한 Linux 파일 시스템 경로 및 탐색을 이해합니다."
 keywords: "pwd 명령어, Linux 디렉토리, 현재 디렉토리, Linux 경로, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

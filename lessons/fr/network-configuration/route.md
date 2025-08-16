@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "route"
 description: "Apprenez à ajouter et supprimer des routes réseau à l'aide des commandes Linux route et ip. Comprenez la gestion de la table de routage pour les utilisateurs débutants et intermédiaires."
 keywords: "commande route, ip route, ajouter route, supprimer route, réseau Linux, table de routage, tutoriel Linux, guide débutant"

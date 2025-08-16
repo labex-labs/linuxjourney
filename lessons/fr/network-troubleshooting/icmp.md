@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "ICMP"
 description: "Découvrez les bases du protocole ICMP, les types de messages et les codes pour le dépannage réseau. Comprenez comment ICMP fonctionne pour déboguer les problèmes réseau."
 keywords: "ICMP, protocole ICMP, dépannage réseau, types ICMP, réseau Linux, débutant, tutoriel, guide"

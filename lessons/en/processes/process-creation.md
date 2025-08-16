@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Process Creation"
 description: "Learn about Linux process creation, fork, and parent/child processes. Understand PID, PPID, and the init process. Get a beginner's guide to Linux process management."
 keywords: "Linux process creation, fork, PID, PPID, init process, Linux processes, beginner, tutorial, guide"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "/etc/group"
 description: "Aprenda sobre o arquivo /etc/group no Linux, entendendo o gerenciamento de grupos, GID e permissões de usuário. Tutorial essencial do arquivo de grupo Linux para iniciantes."
 keywords: "/etc/group, grupos Linux, gerenciamento de grupos, GID, permissões Linux, tutorial Linux, Linux para iniciantes, guia Linux"

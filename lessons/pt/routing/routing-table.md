@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Tabela de Roteamento"
 description: "Aprenda a entender a tabela de roteamento do Linux e como os pacotes são roteados usando o comando route. Explore destinos, gateways e interfaces para os fundamentos de rede."
 keywords: "tabela de roteamento Linux, comando route, roteamento de rede, rede Linux, Linux para iniciantes, tutorial Linux, guia de rede"

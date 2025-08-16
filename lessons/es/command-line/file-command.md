@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "file"
 description: "Aprende a usar el comando 'file' de Linux para identificar tipos y contenidos de archivos. Comprende las convenciones de nomenclatura de archivos de Linux con esta guía para principiantes."
 keywords: "comando file de Linux, identificar tipo de archivo, tutorial de Linux, nomenclatura de archivos, Linux para principiantes, guía de Linux"

@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Capa de Transporte"
 description: "Aprenda sobre la capa de transporte en las redes Linux, incluyendo los protocolos TCP/UDP, puertos y segmentación de datos. Comprenda cómo se transfieren los datos de forma fiable."
 keywords: "Capa de transporte de Linux, TCP/UDP, puertos de red, segmentación de datos, redes de Linux, tutorial para principiantes, protocolos de red"

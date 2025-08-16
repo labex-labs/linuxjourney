@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "cut"
 description: "Learn how to use the Linux `cut` command to extract text from files. This beginner-friendly tutorial covers character and field cutting. Improve your Linux text processing skills!"
 keywords: "cut command, Linux text processing, extract text, Linux tutorial, beginner Linux, cut examples, Linux guide"

@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Monitoramento de Memória"
 description: "Aprenda a monitorar o uso da memória Linux com vmstat. Entenda as métricas de memória, swap e CPU para o desempenho do sistema. Comece sua jornada Linux!"
 keywords: "vmstat, monitoramento de memória Linux, desempenho do sistema, tutorial Linux, uso de memória, Linux para iniciantes, guia Linux"

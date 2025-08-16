@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "커널 설치"
 description: "Linux 커널을 설치하고 관리하는 방법을 배우십시오. 커널 버전을 확인하고, `uname -r` 및 apt 명령을 사용하는 방법을 알아보세요. Linux 커널 여정을 시작하세요!"
 keywords: "Linux kernel, install kernel, uname -r, apt dist-upgrade, kernel management, Linux tutorial, beginner Linux, Linux guide"

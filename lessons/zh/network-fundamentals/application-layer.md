@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "应用层"
 description: "了解 TCP/IP 模型中的应用层，它如何处理电子邮件 (SMTP) 数据，以及它在网络通信中的作用。理解网络层。"
 keywords: "应用层，TCP/IP 模型，SMTP, 网络层，Linux 网络，初学者教程，网络通信"

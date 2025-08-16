@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "터미널 제어"
 description: "TTY 와 PTS 를 포함하여 Linux 에서 터미널을 제어하는 방법과 프로세스가 터미널에 어떻게 바인딩되는지 알아보세요. 데몬 프로세스를 이해하세요. Linux 여정을 시작하세요!"
 keywords: "제어 터미널, TTY, PTS, Linux 터미널, 데몬 프로세스, Linux 초보자, Linux 튜토리얼, Linux 가이드"

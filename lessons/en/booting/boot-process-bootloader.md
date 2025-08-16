@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Boot Process: Bootloader"
 description: "Learn about the Linux bootloader, its functions, and common kernel parameters like initrd and root. Understand GRUB and optimize your Linux boot process."
 keywords: "Linux bootloader, GRUB, kernel parameters, initrd, root filesystem, Linux boot process, Linux tutorial, beginner Linux"

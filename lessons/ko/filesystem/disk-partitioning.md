@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "디스크 파티션"
 description: "parted 를 사용하여 Linux 에서 디스크 파티션을 배우세요. 디스크를 파티션하고, 선택하고, 보고, 크기를 조정하는 방법을 이해하세요. 이 초보자 친화적인 가이드로 시작하세요!"
 keywords: "Linux 디스크 파티션, parted 명령어, fdisk, gparted, Linux 튜토리얼, 초보자 Linux, 디스크 관리, Linux 가이드"

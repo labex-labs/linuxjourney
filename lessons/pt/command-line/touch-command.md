@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "touch"
 description: "Aprenda a usar o comando Linux touch para criar novos arquivos e atualizar carimbos de data/hora. Este guia para iniciantes ajuda você a entender o gerenciamento de arquivos."
 keywords: "comando touch, criar arquivos, tutorial Linux, carimbos de data/hora de arquivos, Linux para iniciantes, guia Linux, comandos básicos"

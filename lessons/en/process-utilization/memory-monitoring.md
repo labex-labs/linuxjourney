@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Memory Monitoring"
 description: "Learn to monitor Linux memory usage with vmstat. Understand memory, swap, and CPU metrics for system performance. Start your Linux journey!"
 keywords: "vmstat, Linux memory monitoring, system performance, Linux tutorial, memory usage, beginner Linux, Linux guide"

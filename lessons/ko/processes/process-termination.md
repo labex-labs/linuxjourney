@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "프로세스 종료"
 description: "고아 및 좀비 프로세스를 포함하여 Linux 프로세스 종료에 대해 알아보세요. 효과적인 프로세스 관리를 위한 _exit 및 wait 시스템 호출을 이해하세요."
 keywords: "Linux 프로세스 종료, 좀비 프로세스, 고아 프로세스, wait 시스템 호출, _exit, Linux 튜토리얼, 초보자 Linux"

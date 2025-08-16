@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Samba"
 description: "Aprende a configurar recursos compartidos de archivos Samba en Linux para Windows y macOS. Esta guía para principiantes cubre la instalación, configuración y acceso a los recursos compartidos. ¡Empieza ya!"
 keywords: "Samba, compartir archivos Linux, smb.conf, CIFS, smbclient, tutorial Linux, guía para principiantes"

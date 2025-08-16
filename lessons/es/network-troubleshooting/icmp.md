@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "ICMP"
 description: "Aprenda los conceptos básicos del protocolo ICMP, los tipos de mensajes y los códigos para la resolución de problemas de red. Comprenda cómo funciona ICMP para depurar problemas de red."
 keywords: "ICMP, protocolo ICMP, resolución de problemas de red, tipos ICMP, redes Linux, principiante, tutorial, guía"

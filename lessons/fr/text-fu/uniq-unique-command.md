@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "uniq (Unique)"
 description: "Apprenez à utiliser la commande Linux `uniq` pour supprimer les lignes en double des fichiers texte. Découvrez des options comme -c, -u, -d, et combinez-les avec `sort` pour un nettoyage efficace des données."
 keywords: "commande uniq, uniq Linux, supprimer les doublons, sort uniq, tutoriel Linux, traitement de texte, Linux pour débutants, guide Linux"

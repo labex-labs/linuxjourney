@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Dateisystemreparatur"
 description: "Lernen Sie, fsck für die Reparatur von Linux-Dateisystemen und die Datenwiederherstellung zu verwenden. Verstehen Sie, wie Sie Festplattenfehler mit diesem wichtigen Befehl überprüfen und beheben können. Beginnen Sie Ihre Linux-Reise!"
 keywords: "fsck, Dateisystemreparatur, Linux-Befehle, Festplattenfehler, Datenwiederherstellung, Linux-Tutorial, Anfängerleitfaden"

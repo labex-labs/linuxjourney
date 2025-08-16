@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Vim 검색 패턴"
 description: "Vim 검색 패턴: 정방향 (/) 및 역방향 (?) 검색을 배웁니다. 'n'과 'N'으로 결과를 탐색합니다. 오늘 Vim 기술을 향상시키세요!"
 keywords: "Vim 검색, Vim 명령, Linux 텍스트 편집기, Vim 튜토리얼, Vim 가이드, 초보자 Vim"

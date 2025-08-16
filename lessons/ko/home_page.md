@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "홈페이지"
 description: "Linux 기본, 명령줄, 사용자 관리 및 네트워킹을 배우세요. 효과적인 Linux 시스템 관리를 위한 초급부터 고급 주제까지 탐색하세요."
 keywords: "Linux 튜토리얼, 명령줄, Linux 초보자, 시스템 관리, Linux 가이드, 네트워킹, 패키지 관리, Linux 명령"

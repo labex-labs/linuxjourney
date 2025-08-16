@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "tail"
 description: "Aprende a usar el comando `tail` en Linux para ver el final de los archivos y monitorear logs. Descubre `tail -f` para actualizaciones en tiempo real. ¡Comienza tu viaje en Linux!"
 keywords: "comando tail, Linux tail, tail -f, ver logs, tutorial Linux, Linux para principiantes, guía Linux"

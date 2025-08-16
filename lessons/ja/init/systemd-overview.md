@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Systemd の概要"
 description: "Systemd の基本を学び、ユニット、ターゲット、起動プロセスを理解します。Systemd が Linux でサービスとシステムの状態をどのように管理するかを発見します。あなたの旅を始めましょう！"
 keywords: "Systemd, Systemd units, Systemd targets, Linux boot process, Linux services, 初心者，チュートリアル，ガイド"

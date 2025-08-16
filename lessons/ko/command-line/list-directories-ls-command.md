@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "ls (디렉토리 나열)"
 description: "Linux 에서 'ls' 명령어를 사용하여 디렉토리 내용을 나열하고, 숨겨진 파일을 보고, 파일 세부 정보를 이해하는 방법을 배우세요. Linux 명령줄 기술을 향상시키세요!"
 keywords: "ls 명령어, 디렉토리 나열, Linux 튜토리얼, 숨겨진 파일, Linux 명령어, 초보자 Linux, Linux 가이드"

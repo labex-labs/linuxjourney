@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Pfad eines Pakets"
 description: "Erfahren Sie, wie ein Paket innerhalb und außerhalb eines Netzwerks reist. Verstehen Sie IP, MAC, ARP und Routing-Tabellen für die Netzwerkkommunikation. Beginnen Sie Ihre Reise in die Linux-Netzwerktechnik!"
 keywords: "Paketreise, Netzwerkkommunikation, ARP, IP-Adresse, MAC-Adresse, Routing-Tabelle, Linux-Netzwerk, Anfängerleitfaden"

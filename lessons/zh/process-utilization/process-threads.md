@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "进程线程"
 description: "了解 Linux 进程线程、单线程与多线程概念，以及如何使用 'ps m' 查看它们。高效理解轻量级进程！"
 keywords: "Linux 线程，进程线程，ps m 命令，多线程，单线程，Linux 进程，Linux 初学者，Linux 教程"

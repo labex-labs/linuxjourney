@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "Gentoo"
 description: "Узнайте о Gentoo Linux, его менеджере пакетов Portage и высокой настраиваемости. Узнайте, подходит ли этот гибкий дистрибутив для вашего продвинутого путешествия в Linux."
 keywords: "Gentoo Linux, Portage, дистрибутив Linux, руководство Gentoo, Linux для начинающих, руководство по Linux, настраиваемость Gentoo"

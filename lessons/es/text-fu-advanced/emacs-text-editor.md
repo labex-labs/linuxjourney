@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Emacs"
 description: "Aprende Emacs, un editor de texto potente y extensible para Linux. Comprende los buffers de Emacs y su uso básico. ¡Comienza tu viaje con Emacs hoy mismo!"
 keywords: "Emacs, editor de texto Linux, tutorial Emacs, buffers Emacs, comandos Linux, principiante, guía"

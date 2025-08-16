@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "内核概述"
 description: "了解 Linux 内核、它在操作系统中的作用以及它如何与硬件和用户空间交互。理解核心操作系统组件。"
 keywords: "Linux 内核，操作系统，硬件交互，用户空间，Linux 教程，初学者指南"

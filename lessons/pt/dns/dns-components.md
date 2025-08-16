@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Componentes DNS"
 description: "Aprenda sobre os componentes do DNS: servidores de nomes, arquivos de zona e registros de recursos. Entenda como o DNS funciona para iniciantes. Comece sua jornada de rede Linux!"
 keywords: "componentes DNS, servidor de nomes, arquivo de zona, registros de recursos, tutorial DNS, rede Linux, guia para iniciantes"

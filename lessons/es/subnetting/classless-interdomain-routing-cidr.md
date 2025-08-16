@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "CIDR"
 description: "Aprenda la notación CIDR para redes Linux. Comprenda las máscaras de subred, el direccionamiento IP y el cálculo de hosts con esta guía para principiantes. ¡Mejore sus habilidades de red!"
 keywords: "CIDR, subnet mask, IP addressing, network prefix, Linux networking, beginner, tutorial, guide"

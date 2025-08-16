@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "File Permissions"
 description: "Learn Linux file permissions: understand rwx bits, user, group, and other permissions. Master `ls -l` output for beginners. Start your Linux journey!"
 keywords: "Linux file permissions, ls -l command, rwx permissions, Linux tutorial, file modes, beginner Linux, Linux guide"

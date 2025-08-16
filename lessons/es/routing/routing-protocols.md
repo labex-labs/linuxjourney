@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Protocolos de Enrutamiento"
 description: "Aprenda sobre los protocolos de enrutamiento como el vector de distancia y el estado de enlace. Comprenda la convergencia de la red y cómo los enrutadores se adaptan a los cambios. ¡Comience su viaje en redes Linux!"
 keywords: "protocolos de enrutamiento, convergencia de red, vector de distancia, estado de enlace, redes Linux, guía para principiantes, tutorial de red"

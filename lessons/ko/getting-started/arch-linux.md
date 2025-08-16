@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "아치 리눅스"
 description: "Arch Linux, 롤링 릴리스 모델 및 Pacman 패키지 관리자에 대해 알아보세요. Arch 가 초보자와 제어를 원하는 고급 사용자에게 왜 훌륭한지 이해하세요."
 keywords: "Arch Linux, Pacman, Linux 배포판, 롤링 릴리스, Linux 튜토리얼, 초보자 가이드, 경량 OS"

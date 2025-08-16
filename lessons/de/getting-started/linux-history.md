@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Geschichte"
 description: "Erfahren Sie mehr über die Geschichte von Linux, von UNIX bis Linus Torvalds und dem GNU-Projekt. Verstehen Sie seine Ursprünge und Entwicklung für Anfänger."
 keywords: "Linux-Geschichte, UNIX, GNU-Projekt, Linus Torvalds, Linux-Kernel, Linux für Anfänger, Linux-Tutorial, Linux-Anleitung"

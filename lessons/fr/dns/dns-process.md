@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Processus DNS"
 description: "Apprenez comment le DNS fonctionne étape par étape, des serveurs racine au DNS faisant autorité. Comprenez le processus de résolution DNS pour les utilisateurs débutants et intermédiaires."
 keywords: "processus DNS, résolution DNS, comment fonctionne le DNS, tutoriel DNS, DNS pour débutants, DNS Linux, TLD, serveurs racine"

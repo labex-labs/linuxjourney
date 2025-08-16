@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Ubuntu"
 description: "Découvrez Ubuntu, une distribution Linux populaire pour les débutants. Explorez ses fonctionnalités, sa gestion des paquets et pourquoi elle est excellente pour une utilisation sur ordinateur de bureau et serveur."
 keywords: "Ubuntu, distribution Linux, Debian, gestion des paquets, débutant Linux, tutoriel Ubuntu, guide Linux"

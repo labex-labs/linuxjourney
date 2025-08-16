@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Ubuntu"
 description: "Erfahren Sie mehr über Ubuntu, eine beliebte Linux-Distribution für Anfänger. Entdecken Sie ihre Funktionen, Paketverwaltung und warum sie sich hervorragend für Desktop- und Servernutzung eignet."
 keywords: "Ubuntu, Linux-Distribution, Debian, Paketverwaltung, Linux-Anfänger, Ubuntu-Tutorial, Linux-Anleitung"

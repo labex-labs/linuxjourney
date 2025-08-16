@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "NFS"
 description: "Linux 에서 NFS 클라이언트 설정 및 자동 마운팅에 대해 알아보세요. 네트워크 파일 공유에 연결하고 자동 마운트를 사용하여 원활하게 액세스하는 방법을 이해합니다."
 keywords: "NFS client, automount, Network File System, Linux networking, mount command, Linux tutorial, beginner"

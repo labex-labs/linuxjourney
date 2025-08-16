@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Serveur HTTP Simple"
 description: "Apprenez à créer un serveur HTTP simple en utilisant le module http.server de Python. Partagez rapidement des fichiers sur votre réseau avec ce tutoriel Linux convivial pour les débutants."
 keywords: "http.server, SimpleHTTPServer, serveur web Python, partage de fichiers, tutoriel Linux, guide du débutant"

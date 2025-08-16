@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "O que é um roteador?"
 description: "Aprenda o que é um roteador, como ele funciona e seu papel na rede. Entenda roteamento, hops e entrega de pacotes para iniciantes."
 keywords: "roteador, rede, roteamento, hops, comutação de pacotes, rede Linux, tutorial para iniciantes, guia de rede"

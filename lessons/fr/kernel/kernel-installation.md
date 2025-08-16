@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Installation du noyau"
 description: "Apprenez à installer et à gérer les noyaux Linux. Découvrez les versions de noyaux, utilisez `uname -r` et les commandes apt. Commencez votre parcours avec le noyau Linux !"
 keywords: "noyau Linux, installer le noyau, uname -r, apt dist-upgrade, gestion du noyau, tutoriel Linux, Linux pour débutants, guide Linux"

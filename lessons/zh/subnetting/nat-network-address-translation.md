@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "NAT"
 description: "了解 Linux 中的 NAT（网络地址转换），它的工作原理及其在网络安全中的作用。理解私有 IP 与公共 IP。Linux 网络指南。"
 keywords: "NAT, 网络地址转换，Linux 网络，私有 IP, 公共 IP, Linux 教程，初学者指南"

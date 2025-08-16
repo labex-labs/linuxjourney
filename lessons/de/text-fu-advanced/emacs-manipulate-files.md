@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Emacs Dateien manipulieren"
 description: "Lernen Sie die Emacs-Dateimanipulation: Speichern, Speichern unter und Öffnen von Dateien mit den Befehlen C-x C-s, C-x C-w und C-x C-f. Meistern Sie die wesentlichen Emacs-Dateioperationen!"
 keywords: "Emacs, Emacs Datei speichern, Emacs Datei öffnen, Emacs Tutorial, Linux Befehle, Emacs für Anfänger, Emacs Anleitung"

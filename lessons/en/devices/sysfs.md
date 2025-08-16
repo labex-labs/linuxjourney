@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "sysfs"
 description: "Learn about sysfs, a virtual filesystem for detailed Linux device information and management. Understand /sys vs /dev. Start your Linux journey!"
 keywords: "sysfs, /sys directory, Linux devices, virtual filesystem, Linux tutorial, beginner guide"

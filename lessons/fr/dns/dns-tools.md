@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Outils DNS"
 description: "Apprenez les commandes nslookup et dig pour les requêtes DNS et le dépannage sur Linux. Comprenez comment utiliser ces outils DNS essentiels avec notre guide pour débutants."
 keywords: "nslookup, commande dig, outils DNS, DNS Linux, dépannage DNS, tutoriel Linux, Linux pour débutants"

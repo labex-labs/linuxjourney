@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "DNS 组件"
 description: "了解 DNS 组件：名称服务器、区域文件和资源记录。了解 DNS 如何为初学者工作。开始您的 Linux 网络之旅！"
 keywords: "DNS 组件，名称服务器，区域文件，资源记录，DNS 教程，Linux 网络，初学者指南"

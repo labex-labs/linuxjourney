@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Registro del sistema"
 description: "Aprenda sobre el registro del sistema Linux, syslog y cómo ver los archivos de registro en /var/log. Comprenda rsyslogd y monitoree los eventos del sistema con esta guía para principiantes."
 keywords: "registro de Linux, syslog, rsyslogd, var log, registros del sistema, tutorial de Linux, guía para principiantes"

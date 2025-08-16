@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "ps (プロセス)"
 description: "Linux の 'ps' コマンドについて学び、実行中のプロセスを表示し、プロセス ID (PID) を理解します。プロセス管理の初心者向けガイドです。"
 keywords: "ps コマンド，Linux プロセス，プロセス ID, PID, Linux チュートリアル，初心者，ガイド，top コマンド"

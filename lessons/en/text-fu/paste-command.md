@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "paste"
 description: "Learn how to use the Linux paste command to merge file lines. Discover delimiters and combine files with this essential Linux command tutorial."
 keywords: "Linux paste command, paste command tutorial, merge file lines, Linux commands, beginner Linux, Linux guide"

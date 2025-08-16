@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "sort"
 description: "Apprenez à utiliser la commande Linux sort pour trier des fichiers texte. Découvrez des options comme le tri inversé et numérique. Améliorez vos compétences en ligne de commande Linux !"
 keywords: "commande Linux sort, sort -r, sort -n, tutoriel Linux, ligne de commande, Linux débutant, guide sort"

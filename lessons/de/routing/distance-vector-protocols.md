@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Distance-Vector-Protokolle"
 description: "Erfahren Sie mehr über Distance-Vector-Protokolle wie RIP, wie sie funktionieren und ihre Einschränkungen für das Netzwerk-Routing. Verstehen Sie Hop-Count und Netzwerkeffizienz."
 keywords: "Distance-Vector-Protokolle, RIP, Routing Information Protocol, Hop-Count, Netzwerk-Routing, Linux-Netzwerk, Anfängerleitfaden, Tutorial"

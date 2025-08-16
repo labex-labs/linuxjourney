@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Configuration DNS"
 description: "Découvrez les serveurs DNS populaires pour Linux comme BIND, DNSmasq et PowerDNS. Découvrez le meilleur serveur DNS pour la configuration de votre réseau grâce à ce guide convivial pour débutants."
 keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, configuration de serveur DNS, réseau Linux, tutoriel DNS, débutant"

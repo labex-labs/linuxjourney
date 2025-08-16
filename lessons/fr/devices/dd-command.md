@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "dd"
 description: "Apprenez la commande Linux dd pour la copie de données et l'imagerie disque. Comprenez ses options comme if, of et bs. Commencez votre parcours de gestion de données Linux !"
 keywords: "commande dd, Linux dd, copier des données, imagerie disque, tutoriel Linux, débutant, guide, sauvegarde de données"

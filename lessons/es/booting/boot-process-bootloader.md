@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Proceso de Arranque: Gestor de Arranque"
 description: "Aprende sobre el gestor de arranque de Linux, sus funciones y parámetros comunes del kernel como initrd y root. Comprende GRUB y optimiza tu proceso de arranque de Linux."
 keywords: "gestor de arranque de Linux, GRUB, parámetros del kernel, initrd, sistema de archivos raíz, proceso de arranque de Linux, tutorial de Linux, Linux para principiantes"

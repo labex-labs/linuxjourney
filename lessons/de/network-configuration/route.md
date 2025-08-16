@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "route"
 description: "Erfahren Sie, wie Sie Netzwerkrouten mit den Linux-Befehlen route und ip hinzufügen und löschen. Verstehen Sie die Verwaltung von Routing-Tabellen für Anfänger und fortgeschrittene Benutzer."
 keywords: "route Befehl, ip route, Route hinzufügen, Route löschen, Linux-Netzwerk, Routing-Tabelle, Linux-Tutorial, Anfängerleitfaden"

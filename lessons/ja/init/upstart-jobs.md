@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "Upstart ジョブ"
 description: "initctl コマンドを使用して Linux で Upstart ジョブを管理する方法を学びます。ジョブのステータス、サービスの開始、停止、再起動を理解します。Linux システム管理スキルを向上させましょう。"
 keywords: "Upstart ジョブ，initctl, Linux サービス，システム管理，Linux チュートリアル，初心者向けガイド"

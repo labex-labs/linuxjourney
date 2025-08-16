@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "System V Dienst"
 description: "Lernen Sie, System V-Dienste mit Befehlszeilentools zu verwalten. Entdecken Sie, wie Sie Dienste auflisten, starten, stoppen und neu starten können, mit diesem anfängerfreundlichen Linux-Tutorial."
 keywords: "System V-Dienste, Linux-Dienste, service-Befehl, SysV init, Linux-Tutorial, Linux für Anfänger, Dienstverwaltung, Linux-Anleitung"

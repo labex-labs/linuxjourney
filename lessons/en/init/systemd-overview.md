@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Systemd Overview"
 description: "Learn Systemd basics: understand units, targets, and boot process. Discover how Systemd manages services and system states in Linux. Start your journey!"
 keywords: "Systemd, Systemd units, Systemd targets, Linux boot process, Linux services, beginner, tutorial, guide"

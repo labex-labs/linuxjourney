@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "/etc/fstab"
 description: "Linux の/etc/fstab について、起動時のファイルシステムのマウント設定方法、デバイスエントリの管理方法を学びます。初心者向けの fstab ガイドです！"
 keywords: "/etc/fstab, Linux fstab, ファイルシステムのマウント，Linux 起動，fstab チュートリアル，初心者，ガイド"

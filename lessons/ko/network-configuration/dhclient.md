@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "dhclient"
 description: "dhclient, DHCP 를 사용하여 IP 주소를 얻는 방법, 네트워크 임대를 관리하는 방법에 대해 알아보세요. dhclient.conf 및 dhclient.leases 파일을 이해합니다. Linux 초보자 가이드."
 keywords: "dhclient, DHCP, Linux 네트워킹, IP 주소, 네트워크 구성, Linux 튜토리얼, 초보자 가이드"

@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Matemáticas de Subredes"
 description: "Aprende los conceptos básicos de las matemáticas de subredes y cómo calcular los hosts disponibles en una red. Comprende el direccionamiento IP y las máscaras de subred para principiantes. ¡Comienza tu viaje en Linux!"
 keywords: "matemáticas de subred, dirección IP, máscara de subred, hosts de red, binario, redes Linux, tutorial para principiantes, guía"

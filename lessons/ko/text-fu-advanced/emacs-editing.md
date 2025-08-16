@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Emacs 편집"
 description: "Emacs 편집의 기본 사항: 텍스트 탐색, 효율적인 잘라내기 및 붙여넣기를 배웁니다. 이 초보자 친화적인 가이드는 Linux 에서 필수 Emacs 명령을 마스터하는 데 도움이 됩니다."
 keywords: "Emacs, Emacs 튜토리얼, Emacs 명령, 텍스트 편집기, Linux 편집기, Emacs 탐색, 초보자 Emacs, Emacs 가이드"

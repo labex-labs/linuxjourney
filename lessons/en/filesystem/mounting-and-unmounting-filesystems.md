@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "mount and umount"
 description: "Learn how to use the Linux mount and umount commands to manage filesystems. Understand device mounting, unmounting, and UUIDs for beginners."
 keywords: "Linux mount, umount command, mount filesystem, Linux UUID, beginner Linux, Linux tutorial, mount point, Linux guide"

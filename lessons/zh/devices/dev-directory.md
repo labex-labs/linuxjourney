@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "/dev 目录"
 description: "了解 Linux 中的 /dev 目录，设备文件存储在此处。理解设备节点以及如何与它们交互。使用 ls 探索 /dev。Linux 初学者指南。"
 keywords: "/dev 目录，Linux 设备文件，设备节点，Linux 教程，ls /dev, Linux 初学者，Linux 指南"

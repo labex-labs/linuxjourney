@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Fedora"
 description: "Aprenda sobre Fedora Linux, su conexión con RHEL y la gestión de paquetes. Descubra por qué Fedora es un excelente sistema operativo gratuito basado en Red Hat para principiantes y escritorios."
 keywords: "Fedora Linux, RHEL, Red Hat, tutorial de Linux, gestión de paquetes, Linux para principiantes, guía de Linux, sistema operativo gratuito"

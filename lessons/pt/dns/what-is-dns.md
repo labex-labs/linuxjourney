@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "O que é DNS?"
 description: "Aprenda o que é DNS e como ele traduz nomes de domínio para endereços IP. Entenda este conceito central da internet com nosso guia Linux para iniciantes."
 keywords: "DNS, Sistema de Nomes de Domínio, endereço IP, hostname, rede Linux, iniciante, tutorial, guia"

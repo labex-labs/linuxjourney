@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "tar et gzip"
 description: "Apprenez à utiliser tar et gzip pour l'archivage et la compression de fichiers sous Linux. Comprenez les commandes pour créer, extraire et compresser des fichiers. Démarrez avec ce guide pour débutants !"
 keywords: "tar, gzip, archivage Linux, compression de fichiers, commande tar, commande gzip, tutoriel Linux, Linux pour débutants"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "lsusb, lspci, lsscsi"
 description: "lsusb、lspci、lsscsi コマンドを使用して、USB、PCI、SCSI デバイスを一覧表示する方法を学びます。この初心者向けのガイドで Linux ハードウェアを理解しましょう。"
 keywords: "lsusb, lspci, lsscsi, Linux commands, device listing, hardware information, Linux tutorial, beginner guide"

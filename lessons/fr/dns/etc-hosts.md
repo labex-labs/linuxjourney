@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "/etc/hosts"
 description: "Découvrez le fichier /etc/hosts sous Linux, comment il mappe les noms d'hôtes aux adresses IP, et son rôle dans la résolution DNS. Comprenez la configuration réseau de base."
 keywords: "/etc/hosts, réseau Linux, mappage de noms d'hôtes, résolution DNS, tutoriel Linux, guide du débutant"

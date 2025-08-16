@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "wc 및 nl"
 description: "wc 및 nl Linux 명령어를 배우세요. 단어 수 세기, 줄 번호 매기기, 파일 분석을 이해하세요. 오늘 Linux 명령줄 기술을 향상시키세요!"
 keywords: "wc 명령어, nl 명령어, Linux 단어 수, Linux 줄 번호, 파일 분석, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

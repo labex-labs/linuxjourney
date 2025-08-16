@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "arp"
 description: "Linux ARP 명령과 ARP 캐시를 확인하는 방법을 알아보세요. 네트워크 통신에서 ARP 의 역할을 이해합니다. ARP 초보자 가이드."
 keywords: "Linux ARP, ARP 캐시, ip neighbour show, 네트워크 명령, Linux 네트워킹, 초보자 Linux, Linux 튜토리얼"

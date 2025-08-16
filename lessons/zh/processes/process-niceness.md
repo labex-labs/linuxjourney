@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "niceness"
 description: "了解 Linux niceness 和进程优先级。理解 nice 和 renice 命令以管理进程的 CPU 时间。提高系统性能！"
 keywords: "Linux niceness, 进程优先级，nice 命令，renice 命令，Linux 教程，CPU 调度，Linux 初学者，Linux 指南"

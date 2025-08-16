@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "/etc/fstab"
 description: "Learn about /etc/fstab in Linux, how to configure filesystem mounts at startup, and manage device entries. Understand fstab for beginners!"
 keywords: "/etc/fstab, Linux fstab, mount filesystems, Linux boot, fstab tutorial, beginner, guide"

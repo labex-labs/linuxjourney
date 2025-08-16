@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "DNS 过程"
 description: "逐步了解 DNS 的工作原理，从根服务器到权威 DNS。帮助初学者和中级用户理解 DNS 查找过程。"
 keywords: "DNS 过程，DNS 查找，DNS 工作原理，DNS 教程，DNS 初学者，Linux DNS, TLD, 根服务器"

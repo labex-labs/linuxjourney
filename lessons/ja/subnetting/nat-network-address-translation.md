@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "NAT"
 description: "Linux における NAT（Network Address Translation）の仕組みとそのネットワークセキュリティにおける役割について学びます。プライベート IP とパブリック IP の違いを理解します。Linux ネットワーキングガイド。"
 keywords: "NAT, ネットワークアドレス変換，Linux ネットワーキング，プライベート IP, パブリック IP, Linux チュートリアル，初心者向けガイド"

@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "join et split"
 description: "Apprenez à utiliser les commandes Linux 'join' et 'split' pour la manipulation de fichiers. Comprenez comment combiner des fichiers par des champs communs et diviser efficacement de gros fichiers. Obtenez des exemples pratiques et des conseils."
 keywords: "commande Linux join, commande Linux split, manipulation de fichiers, tutoriel Linux, ligne de commande, Linux pour débutants, guide Linux"

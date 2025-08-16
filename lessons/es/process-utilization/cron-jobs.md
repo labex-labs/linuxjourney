@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Cron Jobs"
 description: "Aprende a programar tareas en Linux con cron jobs. Comprende la sintaxis de crontab y automatiza scripts para operaciones diarias. ¡Empieza con esta guía para principiantes!"
 keywords: "cron jobs, crontab, programar tareas, automatización Linux, comandos Linux, Linux para principiantes, tutorial Linux, crontab -e"

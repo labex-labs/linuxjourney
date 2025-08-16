@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "cat"
 description: "Linux で'cat'コマンドを使用してファイルの内容を表示し、ファイルを連結する方法を学びます。基本的な Linux コマンドの初心者向けガイド。"
 keywords: "cat command, Linux cat, ファイル内容表示，ファイル連結，Linux コマンド，初心者向け Linux, Linux チュートリアル，Linux ガイド"

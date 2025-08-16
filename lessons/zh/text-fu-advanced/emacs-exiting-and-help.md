@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "Emacs 退出和帮助"
 description: "学习 Emacs 退出命令以及如何获取帮助。本初学者友好教程将帮助您理解基本的 Emacs 导航和撤销功能。"
 keywords: "Emacs 退出，Emacs 帮助，Emacs 撤销，Emacs 教程，Linux 文本编辑器，初学者指南"

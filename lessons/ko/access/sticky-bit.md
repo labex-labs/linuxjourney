@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "스티키 비트"
 description: "Linux 스티키 비트, /tmp 와 같은 공유 디렉토리에서의 목적, 그리고 chmod 를 사용하여 설정하는 방법을 알아보세요. 이 핵심 파일 권한을 이해하세요!"
 keywords: "Linux 스티키 비트, chmod +t, /tmp 디렉토리, Linux 권한, 파일 보안, Linux 튜토리얼, Linux 초보자"

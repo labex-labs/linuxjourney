@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Visão Geral do Kernel"
 description: "Aprenda sobre o kernel Linux, seu papel no sistema operacional e como ele interage com o hardware e o espaço do usuário. Entenda os componentes centrais do SO."
 keywords: "kernel Linux, sistema operacional, interação com hardware, espaço do usuário, tutorial Linux, guia para iniciantes"

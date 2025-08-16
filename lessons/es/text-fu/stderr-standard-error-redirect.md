@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "stderr (Error Estándar)"
 description: "Aprenda sobre la redirección de stderr (error estándar) en Linux. Comprenda 2>, 2>&1, &> y /dev/null para el manejo de errores en Bash. ¡Mejore sus habilidades en la línea de comandos de Linux!"
 keywords: "Linux stderr, error estándar, redirección 2>, 2>&1, redirección &>, /dev/null, manejo de errores Bash, tutorial de Linux, Linux para principiantes"

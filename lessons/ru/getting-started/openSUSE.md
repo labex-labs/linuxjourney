@@ -1,4 +1,5 @@
 ---
+lang: "ru"
 title: "openSUSE"
 description: "Узнайте о openSUSE Linux, его истории, управлении пакетами (RPM) и настраиваемости с помощью YaST. Узнайте, почему openSUSE отлично подходит для начинающих."
 keywords: "openSUSE, дистрибутив Linux, RPM, YaST, Linux для начинающих, руководство openSUSE, руководство по Linux"

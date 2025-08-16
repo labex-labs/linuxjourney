@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Níveis de Privilégio"
 description: "Aprenda sobre os níveis de privilégio do Linux, modo kernel e modo de usuário. Entenda os anéis de proteção e as chamadas de sistema para acesso seguro ao hardware. Comece sua jornada no Linux!"
 keywords: "níveis de privilégio Linux, modo kernel, modo de usuário, anéis de proteção, chamadas de sistema, segurança Linux, Linux para iniciantes, tutorial Linux"

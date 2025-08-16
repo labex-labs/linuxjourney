@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "udev"
 description: "udev 가 Linux 장치 파일을 동적으로 관리하는 방법과 udevadm 사용법을 배웁니다. 초보자를 위한 장치 노드 생성에 대해 이해합니다."
 keywords: "udev, udevadm, Linux 장치 관리, 장치 파일, Linux 튜토리얼, 초보자 Linux, udev 규칙, Linux 가이드"

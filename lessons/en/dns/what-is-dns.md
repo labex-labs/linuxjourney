@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "What is DNS?"
 description: "Learn what DNS is and how it translates domain names to IP addresses. Understand this core internet concept with our beginner-friendly Linux guide."
 keywords: "DNS, Domain Name System, IP address, hostname, Linux networking, beginner, tutorial, guide"

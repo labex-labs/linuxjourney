@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "dhclient"
 description: "Erfahren Sie mehr über dhclient, wie es IP-Adressen mithilfe von DHCP bezieht und Netzwerk-Leases verwaltet. Verstehen Sie die Dateien dhclient.conf und dhclient.leases. Linux-Anfängerleitfaden."
 keywords: "dhclient, DHCP, Linux-Netzwerk, IP-Adresse, Netzwerkkonfiguration, Linux-Tutorial, Anfängerleitfaden"

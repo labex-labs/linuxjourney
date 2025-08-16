@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "ps (进程)"
 description: "了解 Linux 'ps' 命令以查看正在运行的进程并理解进程 ID (PID)。获取进程管理的初学者指南。"
 keywords: "ps 命令，Linux 进程，进程 ID, PID, Linux 教程，初学者，指南，top 命令"

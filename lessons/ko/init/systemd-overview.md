@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Systemd 개요"
 description: "Systemd 의 기본 사항을 배우세요: unit, target, 부팅 프로세스를 이해합니다. Systemd 가 Linux 에서 서비스와 시스템 상태를 어떻게 관리하는지 알아보세요. 여정을 시작하세요!"
 keywords: "Systemd, Systemd unit, Systemd target, Linux 부팅 프로세스, Linux 서비스, 초보자, 튜토리얼, 가이드"

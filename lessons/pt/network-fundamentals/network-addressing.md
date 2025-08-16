@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Endereçamento de Rede"
 description: "Aprenda os conceitos básicos de endereçamento de rede: endereços MAC vs. IP e nomes de host. Entenda como os dispositivos se comunicam em uma rede. Comece sua jornada de rede Linux!"
 keywords: "endereçamento de rede, endereço MAC, endereço IP, nome de host, rede Linux, iniciante, tutorial, guia"

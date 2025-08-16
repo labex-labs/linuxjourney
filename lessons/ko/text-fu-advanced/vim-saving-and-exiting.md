@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "Vim 저장 및 종료"
 description: "Vim 에서 :w, :q, :wq 와 같은 필수 명령을 사용하여 효과적으로 저장하고 종료하는 방법을 배웁니다. 효율적인 텍스트 편집을 위한 기본적인 Vim 작업을 마스터하세요."
 keywords: "Vim 저장, Vim 종료, Vim 명령, :wq, :q!, Linux 텍스트 편집기, Vim 튜토리얼, 초보자 Vim"

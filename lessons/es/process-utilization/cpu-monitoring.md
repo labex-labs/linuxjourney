@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Monitoreo de CPU"
 description: "Aprenda a monitorear la CPU con el comando uptime. Comprenda el promedio de carga, el uso de la CPU y cómo interpretar el rendimiento del sistema para principiantes en Linux."
 keywords: "comando uptime, monitoreo de CPU Linux, promedio de carga, rendimiento del sistema, tutorial Linux, guía para principiantes"

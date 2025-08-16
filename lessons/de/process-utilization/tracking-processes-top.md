@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Prozesse verfolgen: top"
 description: "Erfahren Sie, wie Sie den Linux-Befehl `top` verwenden, um Systemressourcen zu überwachen und Prozesse zu verfolgen. Verstehen Sie CPU-, Speicher- und Prozessdetails für die Leistungsanalyse."
 keywords: "Linux top Befehl, Prozesse überwachen, Systemauslastung, Linux Performance, Anfänger, Tutorial, Anleitung"

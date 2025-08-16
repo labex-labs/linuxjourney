@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "sair"
 description: "Aprenda como sair do shell Linux usando os comandos 'exit' ou 'logout'. Entenda a navegação básica do shell para iniciantes. Comece sua jornada Linux hoje!"
 keywords: "comando exit, comando logout, shell Linux, sair do terminal, conceitos básicos de Linux, Linux para iniciantes, tutorial de Linux"

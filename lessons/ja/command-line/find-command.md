@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: ""find""
 description: "Linux の'find'コマンドを使ってファイルやディレクトリを見つける方法を学びましょう。基本的な検索オプションを発見し、Linux のファイル管理スキルを向上させましょう。"
 keywords: "Linux find コマンド，Linux ファイル検索，Linux ディレクトリ検索，find コマンド チュートリアル，Linux ファイル管理，Linux 初心者，Linux ガイド"

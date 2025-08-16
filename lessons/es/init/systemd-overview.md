@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Visión general de Systemd"
 description: "Aprende los conceptos básicos de Systemd: comprende las units, los targets y el proceso de arranque. Descubre cómo Systemd gestiona los servicios y los estados del sistema en Linux. ¡Comienza tu viaje!"
 keywords: "Systemd, Systemd units, Systemd targets, Linux boot process, Linux services, principiante, tutorial, guía"

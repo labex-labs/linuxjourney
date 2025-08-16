@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "부팅 프로세스: 부트로더"
 description: "Linux 부트로더, 기능, 그리고 initrd 및 root 와 같은 일반적인 커널 매개변수에 대해 알아보세요. GRUB 을 이해하고 Linux 부팅 프로세스를 최적화하세요."
 keywords: "Linux 부트로더, GRUB, 커널 매개변수, initrd, 루트 파일 시스템, Linux 부팅 프로세스, Linux 튜토리얼, 초보자 Linux"

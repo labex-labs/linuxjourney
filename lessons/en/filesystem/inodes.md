@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Inodes"
 description: "Learn about Linux inodes, their structure, and how they manage files. Understand inode numbers and use `df -i` and `ls -li` to check inode usage. Start your Linux journey!"
 keywords: "Linux inodes, inode tutorial, df -i, ls -li, Linux filesystem, beginner Linux, Linux guide"

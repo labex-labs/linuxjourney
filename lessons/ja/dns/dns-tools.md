@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "DNS ツール"
 description: "Linux での DNS クエリとトラブルシューティングのために、nslookup と dig コマンドを学びましょう。これらの必須 DNS ツールの使い方を、初心者向けのガイドで理解してください。"
 keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"

@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "head"
 description: "Linux の 'head' コマンドを使ってファイルの先頭を表示する方法を学びます。行数を指定する -n などのオプションを理解します。必須の Linux コマンドチュートリアル。"
 keywords: "head command, Linux head, view file beginning, Linux tutorial, Linux commands, beginner Linux, head -n, Linux guide"

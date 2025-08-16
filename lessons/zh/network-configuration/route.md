@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "路由"
 description: "学习如何使用 Linux 的 route 和 ip 命令添加和删除网络路由。了解初学者和中级用户的路由表管理。"
 keywords: "route 命令，ip route, 添加路由，删除路由，Linux 网络，路由表，Linux 教程，初学者指南"

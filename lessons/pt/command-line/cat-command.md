@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "cat"
 description: "Aprenda a usar o comando 'cat' no Linux para visualizar o conteúdo de arquivos e concatenar arquivos. Um guia para iniciantes sobre comandos básicos do Linux."
 keywords: "comando cat, Linux cat, visualizar conteúdo de arquivo, concatenar arquivos, comandos Linux, Linux para iniciantes, tutorial Linux, guia Linux"

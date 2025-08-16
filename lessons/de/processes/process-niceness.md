@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Niceness"
 description: "Erfahren Sie mehr über Linux Niceness und Prozesspriorität. Verstehen Sie die Befehle nice und renice, um die CPU-Zeit für Prozesse zu verwalten. Verbessern Sie die Systemleistung!"
 keywords: "Linux Niceness, Prozesspriorität, nice Befehl, renice Befehl, Linux Tutorial, CPU-Scheduling, Linux für Anfänger, Linux Anleitung"

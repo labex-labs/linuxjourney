@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Chamadas de Sistema"
 description: "Aprenda sobre chamadas de sistema Linux (syscalls) e como elas interagem com o kernel. Entenda os modos de usuário e kernel, e use `strace` para depuração. Comece sua jornada no Linux!"
 keywords: "chamadas de sistema Linux, syscalls, modo kernel, modo de usuário, comando strace, tutorial Linux, Linux para iniciantes, guia Linux"

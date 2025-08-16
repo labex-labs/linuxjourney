@@ -1,4 +1,5 @@
 ---
+lang: "ja"
 title: "cut"
 description: "Linux の`cut`コマンドを使ってファイルからテキストを抽出する方法を学びましょう。この初心者向けのチュートリアルでは、文字とフィールドの切り取りについて説明します。Linux のテキスト処理スキルを向上させましょう！"
 keywords: "cut コマンド，Linux テキスト処理，テキスト抽出，Linux チュートリアル，初心者向け Linux, cut の例，Linux ガイド"

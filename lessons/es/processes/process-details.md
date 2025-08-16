@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "Detalles del Proceso"
 description: "Aprende sobre los detalles de los procesos de Linux, cómo el kernel gestiona los recursos y qué son los procesos. Comprende los conceptos de procesos para principiantes."
 keywords: "procesos de Linux, kernel, gestión de procesos, ps aux, tutorial de Linux, guía para principiantes"

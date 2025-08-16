@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Red Hat Enterprise Linux"
 description: "Erfahren Sie mehr über die Grundlagen von Red Hat Enterprise Linux (RHEL), seinen RPM package manager und seine Unternehmensanwendungen. Verstehen Sie die Kernunterschiede und Vorteile von RHEL."
 keywords: "RHEL lernen, Red Hat Enterprise Linux, RHEL Grundlagen, RPM package manager, Linux Server OS, RHEL für Anfänger, RHEL Leitfaden"

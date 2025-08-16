@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "Tipos de Sistema de Arquivos"
 description: "Aprenda sobre os tipos de sistemas de arquivos Linux como ext4, Btrfs e XFS. Entenda o journaling e o VFS para dados consistentes. Explore os sistemas de arquivos Linux comuns neste guia para iniciantes."
 keywords: "tipos de sistema de arquivos Linux, ext4, Btrfs, XFS, journaling, VFS, tutorial Linux, guia para iniciantes"

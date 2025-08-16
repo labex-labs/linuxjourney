@@ -1,4 +1,5 @@
 ---
+lang: "zh"
 title: "rsync"
 description: "学习 rsync 以实现高效的 Linux 文件同步和备份。了解使用 rsync 命令和选项进行远程和本地数据传输。提升您的 Linux 技能！"
 keywords: "rsync, Linux 文件传输，数据备份，文件同步，Linux 教程，rsync 命令，初学者，指南"

@@ -1,4 +1,5 @@
 ---
+lang: "es"
 title: "cd (Cambiar Directorio)"
 description: "Aprende a usar el comando 'cd' en Linux para navegar por directorios. Comprende las rutas absolutas, relativas y atajos útiles. ¡Comienza tu viaje en Linux!"
 keywords: "comando cd, cambiar directorio, rutas Linux, ruta absoluta, ruta relativa, tutorial Linux, Linux para principiantes, navegación Linux"

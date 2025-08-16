@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Linux Mint"
 description: "Erfahren Sie mehr über Linux Mint, seine Ubuntu-Basis, Paketverwaltung und warum es großartig für Anfänger ist. Entdecken Sie seine Funktionen und wie Sie noch heute loslegen können!"
 keywords: "Linux Mint, Ubuntu, Linux für Anfänger, Linux-Distribution, Linux-Tutorial, Debian package manager, Linux-Anleitung"

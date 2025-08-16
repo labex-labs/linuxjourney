@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "ICMP"
 description: "Erfahren Sie mehr über die Grundlagen des ICMP-Protokolls, Nachrichtentypen und Codes zur Netzwerkfehlerbehebung. Verstehen Sie, wie ICMP funktioniert, um Netzwerkprobleme zu debuggen."
 keywords: "ICMP, ICMP-Protokoll, Netzwerkfehlerbehebung, ICMP-Typen, Linux-Netzwerk, Anfänger, Tutorial, Anleitung"

@@ -1,4 +1,5 @@
 ---
+lang: "ko"
 title: "부팅 프로세스: 커널"
 description: "Linux 부팅 프로세스, 커널 초기화, initramfs 의 역할에 대해 알아보세요. 커널이 루트 파일 시스템을 마운트하는 방법을 이해합니다. Linux 부팅 프로세스 가이드."
 keywords: "Linux 부팅 프로세스, 커널 부팅, initramfs, initrd, 루트 파일 시스템, Linux 튜토리얼, 초보자 Linux, Linux 가이드"

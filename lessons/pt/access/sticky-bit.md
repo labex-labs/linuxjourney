@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "O Sticky Bit"
 description: "Aprenda sobre o sticky bit do Linux, seu propósito em diretórios compartilhados como /tmp, e como configurá-lo usando chmod. Entenda esta permissão de arquivo chave!"
 keywords: "Linux sticky bit, chmod +t, diretório /tmp, permissões Linux, segurança de arquivos, tutorial Linux, Linux para iniciantes"

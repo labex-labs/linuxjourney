@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Vim Text einfügen und anhängen"
 description: "Lernen Sie die Vim-Einfüge- und Anhängemodi. Verstehen Sie die Befehle 'i', 'a', 'I', 'A', 'o', 'O' für effiziente Textbearbeitung. Verbessern Sie jetzt Ihre Vim-Fähigkeiten!"
 keywords: "Vim Einfügemodus, Vim anhängen, Vim Befehle, Vim Tutorial, Linux Texteditor, Vim für Anfänger, Vim Anleitung, Vim 'i' 'a'"

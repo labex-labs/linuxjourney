@@ -1,4 +1,5 @@
 ---
+lang: "pt"
 title: "alias"
 description: "Aprenda como criar e gerenciar aliases Linux para comandos comuns. Descubra a configuração de alias temporário e permanente em .bashrc. Melhore sua eficiência na linha de comando!"
 keywords: "alias Linux, alias bash, comando unalias, .bashrc, tutorial Linux, linha de comando, Linux para iniciantes, guia Linux"

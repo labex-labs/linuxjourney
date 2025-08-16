@@ -1,4 +1,5 @@
 ---
+lang: "fr"
 title: "Sous-réseaux"
 description: "Découvrez les sous-réseaux et les masques de sous-réseau dans le réseau Linux. Comprenez les préfixes de réseau et comment les sous-réseaux segmentent le trafic. Démarrez avec ce guide convivial pour débutants !"
 keywords: "sous-réseaux, masque de sous-réseau, préfixe de réseau, réseau Linux, adresse IP, débutant, tutoriel, ifconfig"

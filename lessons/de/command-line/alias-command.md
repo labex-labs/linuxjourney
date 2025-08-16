@@ -1,4 +1,5 @@
 ---
+lang: "de"
 title: "Alias"
 description: "Erfahren Sie, wie Sie Linux-Aliase für gängige Befehle erstellen und verwalten. Entdecken Sie die temporäre und permanente Alias-Einrichtung in .bashrc. Verbessern Sie Ihre Effizienz in der Befehlszeile!"
 keywords: "Linux-Alias, Bash-Alias, unalias-Befehl, .bashrc, Linux-Tutorial, Befehlszeile, Linux für Anfänger, Linux-Anleitung"

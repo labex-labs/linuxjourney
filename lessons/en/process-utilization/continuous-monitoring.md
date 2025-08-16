@@ -1,4 +1,5 @@
 ---
+lang: "en"
 title: "Continuous Monitoring"
 description: "Learn continuous Linux system monitoring with sar. Understand installation, data collection, and how to analyze historical resource usage for performance. Get started!"
 keywords: "sar, sysstat, Linux monitoring, system performance, continuous monitoring, beginner, tutorial, guide"
