@@ -15,7 +15,7 @@ zh:
       url: "https://github.com/cindyq/linuxjourney"
     contact:
       title: "联系我们"
-      body: "发现了错误？有投诉？或者只是想发个消息？"
+      body: "发现了错误？或者只是想发个消息？"
       url_name: "告诉我们"
       url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:

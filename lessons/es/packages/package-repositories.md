@@ -1,0 +1,27 @@
+---
+title: "Repositorios de Paquetes"
+description: "Aprende sobre los repositorios de paquetes de Linux y cómo gestionan el software. Descubre cómo encontrar y añadir fuentes de paquetes como /etc/apt/sources.list para una fácil instalación."
+keywords: "repositorios de paquetes Linux, lista de fuentes apt, /etc/apt/sources.list, paquetes Linux, Linux para principiantes, tutorial de Linux, gestión de paquetes"
+---
+
+## Lesson Content
+
+¿Cómo terminan los paquetes subidos a internet en nuestras computadoras? ¿Vas a la página de descarga de cada paquete que quieres y haces clic en descargar e instalar? Aunque puedes hacer eso, hay una solución mejor: los repositorios de paquetes. Los repositorios son ubicaciones de almacenamiento central para los paquetes. Hay toneladas de repositorios que contienen muchos paquetes, y lo mejor de todo es que todos se encuentran en internet, sin discos de instalación tontos. Tu máquina no sabe dónde buscar estos repositorios a menos que le digas explícitamente dónde buscar.
+
+Por ejemplo, digamos que quiero el software WackyWidgets en mi máquina. WackyWidgets gestiona sus propios repositorios para sus paquetes de widgets. Dentro de este repositorio hay 10 paquetes, como el paquete CoolWidget, el paquete SuperWidget, etc. WackyWidgets aloja este repositorio en un enlace de origen llamado: <http://download.widgets/linux/deb/>
+
+Ahora, en lugar de ir a su sitio web para descargar el paquete directamente, puedes decirle a tu máquina que encuentre el software WackyWidgets desde el enlace de origen.
+
+Tu distribución ya viene con fuentes preaprobadas para obtener paquetes, y así es como instala todos los paquetes base que ves en tu sistema. En un sistema Debian, este archivo de fuentes es el archivo `/etc/apt/sources.list`. Tu máquina sabrá buscar allí y verificar cualquier repositorio de origen que hayas añadido.
+
+## Exercise
+
+No exercises for this lesson.
+
+## Quiz Question
+
+¿Dónde se encuentra el archivo de fuentes en un sistema Debian?
+
+## Quiz Answer
+
+/etc/apt/sources.list
