@@ -8,24 +8,7 @@ A structured learning path from beginner to advanced Linux administration with t
 - **Journeyman** - System internals  
 - **Networking Nomad** - Network administration
 
-## Courses
-
-**Grasshopper (Beginner)**
-
-- Getting Started, Command Line, Text-Fu, User Management
-- Permissions, Processes, Packages
-
-**Journeyman (Intermediate)**  
-
-- Devices, Filesystem, Boot System, Kernel
-- Init Systems, Process Monitoring, Logging
-
-**Networking Nomad (Advanced)**
-
-- Network Fundamentals, Subnetting, Routing
-- Configuration, Troubleshooting, DNS
-
-## Structure
+The repository is organized as follows:
 
 ```plaintext
 ├── i18n/          # Language files
