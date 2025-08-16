@@ -4,7 +4,7 @@
 
 To move around buffers (or files you're visiting), use the following commands:
 
-**Switch buffers**
+### Switch buffers
 
 ```
 C-x b - switch buffer
@@ -12,13 +12,13 @@ C-x right arrow - right-cycle through buffer
 C-x left arrow - left-cycle through buffer
 ```
 
-**Close the buffer**
+### Close the buffer
 
 ```
 C-x k
 ```
 
-**Split the current buffer**
+### Split the current buffer
 
 ```
 C-x 2
@@ -26,7 +26,7 @@ C-x 2
 
 This allows you to see multiple buffers on one screen. To move between these buffers, use: C-x o
 
-**Set a single buffer as the current screen**
+### Set a single buffer as the current screen
 
 ```
 C-x 1

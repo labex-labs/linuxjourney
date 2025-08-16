@@ -4,7 +4,7 @@
 
 In a lot (if not all) of Emacs documentation, you will see the syntax C-[letter]. This just means hit the Ctrl-letter, but for shorthand purposes, we'll call Ctrl with C. If you see syntax such as M-[letter], that means use the Meta key, most commonly the Alt key.
 
-**Saving files**
+### Saving files
 
 ```
 C-x C-s - Save a file
@@ -14,7 +14,7 @@ C-x s - Save all
 
 The save file options will prompt you if you want to save each file.
 
-**Opening a file**
+### Opening a file
 
 ```
 C-x C-f

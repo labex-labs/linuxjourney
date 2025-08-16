@@ -13,7 +13,7 @@ $ ls -l /usr/bin/wall
 
 We can now see that the permission bit is in the group permission set.
 
-**Modifying SGID**
+### Modifying SGID
 
 ```bash
 sudo chmod g+s myfile

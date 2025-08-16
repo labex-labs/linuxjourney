@@ -4,7 +4,7 @@
 
 The OSI model gave birth to what eventually became the TCP/IP model, and this model is actually what the Internet is based on. It is the actual implementation of networking. The TCP/IP model uses the TCP/IP protocol suite, which we commonly refer to as TCP/IP. These protocols work together to specify how data should be gathered, addressed, transmitted, and routed through a network. Using the TCP/IP model, we can see how these protocols are used to show the breakdown of how a packet travels through the network.
 
-**Application Layer**
+### Application Layer
 
 The top layer of the TCP/IP model. It determines how your computer's programs (such as your web browser) interface with the transport layer services to view the data that gets sent or received.
 
@@ -13,7 +13,7 @@ This layer uses:
 - HTTP (Hypertext Transfer Protocol) - used for webpages on the Internet.
 - SMTP (Simple Mail Transfer Protocol) - electronic mail (email) transmission
 
-**Transport Layer**
+### Transport Layer
 
 How data will be transmitted, includes checking the correct ports, the integrity of the data, and basically delivering our packets.
 
@@ -22,7 +22,7 @@ This layer uses:
 - TCP (Transmission Control Protocol) - reliable data delivery
 - UDP (User Datagram Protocol) - unreliable data delivery
 
-**Network Layer**
+### Network Layer
 
 This layer specifies how to move packets between hosts and across networks.
 
@@ -31,7 +31,7 @@ This layer uses:
 - IP (Internet Protocol) - Helps route packets from one machine to another.
 - ICMP (Internet Control Message Protocol) - Helps tell us what is going on, such as error messages and debugging information.
 
-**Link Layer**
+### Link Layer
 
 This layer specifies how to send data across a physical piece of hardware, such as data traveling through Ethernet, fiber, etc.
 

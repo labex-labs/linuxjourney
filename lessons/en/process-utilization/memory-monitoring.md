@@ -13,34 +13,34 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 The fields are as follows:
 
-**procs**
+### procs
 
 - r - Number of processes for run time
 - b - Number of processes in uninterruptible sleep
 
-**memory**
+### memory
 
 - swpd - Amount of virtual memory used
 - free - Amount of free memory
 - buff - Amount of memory used as buffers
 - cache - Amount of memory used as cache
 
-**swap**
+### swap
 
 - si - Amount of memory swapped in from disk
 - so - Amount of memory swapped out to disk
 
-**io**
+### io
 
 - bi - Amount of blocks received in from a block device
 - bo - Amount of blocks sent out to a block device
 
-**system**
+### system
 
 - in - Number of interrupts per second
 - cs - Number of context switches per second
 
-**cpu**
+### cpu
 
 - us - Time spent in user time
 - sy - Time spent in kernel time

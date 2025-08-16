@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-**Well-Known Ports**
+### Well-Known Ports
 
 We've discussed data transmission through ports on our machine; let's look at some well-known ports.
 
@@ -20,7 +20,7 @@ https           443/tcp
 
 The first column is the name of the service, then the port number, and the transport layer protocol it uses.
 
-**netstat**
+### netstat
 
 An extremely useful tool to get detailed information about your network is **netstat**. Netstat displays various network-related information such as network connections, routing tables, information about network interfaces, and more; it's the Swiss Army knife of networking tools. We will focus mostly on one feature netstat has, and that's the status of network connections. Before we look at an example, let's talk about sockets and ports first. A socket is an interface that allows programs to send and receive data, while a port is used to identify which application should send or receive data. The socket address is the combination of the IP address and port. Every connection between a host and destination requires a unique socket. For example, HTTP is a service that runs on port 80; however, we can have many HTTP connections, and to maintain each connection, a socket gets created per connection.
 

@@ -4,13 +4,13 @@
 
 We've already discussed viewing our routing tables with the `route` command. If you want to add or remove routes, you can do so manually.
 
-**Add a new route**
+### Add a new route
 
 ```bash
 sudo route add -net 192.168.2.1/23 gw 10.11.12.3
 ```
 
-**Delete a route**
+### Delete a route
 
 ```bash
 sudo route del -net 192.168.2.1/23
@@ -18,13 +18,13 @@ sudo route del -net 192.168.2.1/23
 
 You can also perform these changes with the **ip** command:
 
-**To add a route**
+### To add a route
 
 ```bash
 ip route add 192.168.2.1/23 via 10.11.12.3
 ```
 
-**To delete a route**
+### To delete a route
 
 ```bash
 $ ip route delete 192.168.2.1/23 via 10.11.12.3

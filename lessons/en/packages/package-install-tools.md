@@ -10,7 +10,7 @@ To install these direct packages, you can use the package management commands: `
 
 Keep in mind that there will be countless times when you need to install, query, or verify a package with one of these tools, so remember these commands.
 
-**Install a package**
+### Install a package
 
 ```bash
 Debian: $ dpkg -i some_deb_package.deb
@@ -19,7 +19,7 @@ RPM: $ rpm -i some_rpm_package.rpm
 
 The `i` stands for install. You can also use the longer format of `--install`.
 
-**Remove a package**
+### Remove a package
 
 ```bash
 Debian: $ dpkg -r some_deb_package.deb
@@ -29,7 +29,7 @@ RPM: $ rpm -e some_rpm_package.rpm
 Debian: `r` for remove
 RPM: `e` for erase
 
-**List installed packages**
+### List installed packages
 
 ```bash
 Debian: $ dpkg -l

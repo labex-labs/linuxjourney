@@ -4,25 +4,25 @@
 
 There are many command-line tools you can use to manage Sys V services.
 
-**List services**
+### List services
 
 ```bash
 service --status-all
 ```
 
-**Start a service**
+### Start a service
 
 ```bash
 sudo service networking start
 ```
 
-**Stop a service**
+### Stop a service
 
 ```bash
 sudo service networking stop
 ```
 
-**Restart a service**
+### Restart a service
 
 ```bash
 sudo service networking restart

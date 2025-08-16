@@ -16,15 +16,15 @@ In this example, we are using ping to check if we can get to <www.google.com>. T
 
 The first part says that we are sending 64-byte packets to 74.125.239.112 (google.com), and the rest show us the details of the trip. By default, it sends a packet per second.
 
-**icmp_seq**
+### icmp_seq
 
 The `icmp_seq` field is used to show the sequence number of packets sent. In this case, I sent out 3 packets, and we can see that 3 packets made it back. If you do a ping and you get some sequence numbers missing, that means some connectivity issue is happening, and not all your packets are getting through. If the sequence number is out of order, your connection is probably very slow, as your packets are exceeding the one-second default.
 
-**ttl**
+### ttl
 
 The Time To Live (TTL) field is used as a hop counter. As you make hops, it decrements the counter by one, and once the hop counter reaches 0, our packet dies. This is meant to give the packet a lifespan; we don't want our packets traveling around forever.
 
-**time**
+### time
 
 The roundtrip time it took from you sending the echo request packet to getting an echo reply.
 

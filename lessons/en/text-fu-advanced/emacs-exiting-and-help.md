@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-**To close out of Emacs**
+### To close out of Emacs
 
 ```
 C-x C-c
@@ -10,13 +10,13 @@ C-x C-c
 
 If you have any open buffers, it will ask you to save before closing out of Emacs.
 
-**Confused?**
+### Confused?
 
 ```
 C-h C-h : help menu
 ```
 
-**Undo**
+### Undo
 
 ```
 C-x u

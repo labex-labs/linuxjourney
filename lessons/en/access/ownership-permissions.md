@@ -4,7 +4,7 @@
 
 In addition to modifying permissions on files, you can also modify the group and user ownership of the file.
 
-**Modify user ownership**
+### Modify user ownership
 
 ```bash
 sudo chown patty myfile
@@ -12,7 +12,7 @@ sudo chown patty myfile
 
 This command will set the owner of `myfile` to `patty`.
 
-**Modify group ownership**
+### Modify group ownership
 
 ```bash
 sudo chgrp whales myfile
@@ -20,7 +20,8 @@ sudo chgrp whales myfile
 
 This command will set the group of `myfile` to `whales`.
 
-**Modify both user and group ownership at the same time**
+### Modify both user and group ownership at the same time
+
 If you add a colon and group name after the user, you can set both the user and group at the same time.
 
 ```bash

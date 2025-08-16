@@ -6,11 +6,11 @@ There are many log files you can view on your system; many important ones can be
 
 There are two general log files you can view to get a glimpse of what your system is doing:
 
-**`/var/log/messages`**
+### `/var/log/messages`
 
 This log contains all non-critical and non-debug messages, including messages logged during boot-up (dmesg), auth, cron, daemon, etc. It is very useful to get a glimpse of how your machine is acting.
 
-**`/var/log/syslog`**
+### `/var/log/syslog`
 
 This logs everything except auth messages; it's extremely useful for debugging errors on your machine.
 

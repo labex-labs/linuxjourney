@@ -13,28 +13,28 @@ sally sells seashells
 by the seashore
 ```
 
-**1. Beginning of a line with ^**
+### 1. Beginning of a line with ^
 
 ```plaintext
 ^by
 would match the line "by the seashore"
 ```
 
-**2. End of a line with $**
+### 2. End of a line with $
 
 ```plaintext
 seashore$
 would match the line "by the seashore"
 ```
 
-**3. Matching any single character with .**
+### 3. Matching any single character with
 
 ```plaintext
 b.
 would match by
 ```
 
-**4. Bracket notation with [] and ()**
+### 4. Bracket notation with [] and ()
 
 This can be a little tricky. Brackets allow us to specify characters found within the bracket.
 

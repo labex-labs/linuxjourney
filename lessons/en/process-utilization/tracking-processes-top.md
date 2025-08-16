@@ -4,7 +4,7 @@
 
 In this course, we'll go over how to read and analyze the resource utilization on your system. This lesson shows some great tools to use when you need to track what a process is doing.
 
-**top**
+### top
 
 We've discussed `top` before, but we're going to dig into the specifics of what it's actually displaying. Remember, `top` is the tool we used to get a real-time view of the system utilization by our processes:
 
@@ -22,7 +22,7 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
 
 Let's go over what this output means. You don't have to memorize this, but come back to this when you need a reference.
 
-**1st line: This is the same information you would see if you ran the `uptime` command (more to come)**
+### 1st line: This is the same information you would see if you ran the `uptime` command (more to come)
 
 The fields are from left to right:
 
@@ -31,9 +31,9 @@ The fields are from left to right:
 3. How many users are currently logged on
 4. System load average (more to come)
 
-**2nd line: Tasks that are running, sleeping, stopped, and zombied**
+### 2nd line: Tasks that are running, sleeping, stopped, and zombied
 
-**3rd line: CPU information**
+### 3rd line: CPU information
 
 1. `us`: user CPU time - Percentage of CPU time spent running users’ processes that aren’t niced.
 2. `sy`: system CPU time - Percentage of CPU time spent running the kernel and kernel processes.
@@ -44,9 +44,9 @@ The fields are from left to right:
 7. `si`: software interrupts - Percentage of CPU time spent serving software interrupts.
 8. `st`: steal time - If you are running virtual machines, this is the percentage of CPU time that was stolen from you for other tasks.
 
-**4th and 5th line: Memory Usage and Swap Usage**
+### 4th and 5th line: Memory Usage and Swap Usage
 
-**Processes List that are Currently in Use**
+### Processes List that are Currently in Use
 
 1. `PID`: ID of the process
 2. `USER`: user that is the owner of the process

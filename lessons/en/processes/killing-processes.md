@@ -18,7 +18,7 @@ kill -9 12445
 
 This will run the `SIGKILL` signal and kill the process.
 
-**Differences between SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP?**
+### Differences between SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP?
 
 These signals all sound reasonably similar, but they do have their differences.
 

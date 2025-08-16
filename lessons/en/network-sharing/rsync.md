@@ -13,19 +13,19 @@ Some commonly-used rsync options:
 - h - human-readable output
 - z - compressed for easier transfer, great for slow connections
 
-**Copy/sync files on the same host**
+### Copy/sync files on the same host
 
 ```bash
 rsync -zvr /my/local/directory/one /my/local/directory/two
 ```
 
-**Copy/sync files to local host from a remote host**
+### Copy/sync files to local host from a remote host
 
 ```bash
 rsync /local/directory username@remotehost.com:/remote/directory
 ```
 
-**Copy/sync files to a remote host from a local host**
+### Copy/sync files to a remote host from a local host
 
 ```bash
 rsync username@remotehost.com:/remote/directory /local/directory

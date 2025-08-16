@@ -2,16 +2,20 @@
 
 ## Lesson Content
 
-**Overview**
+### Overview
+
 Linux Mint is based on Ubuntu. It uses Ubuntu’s software repositories, so the same packages are available on both distributions. Linux Mint is preferred by some over Ubuntu because it does not come with some of the proprietary software that Ubuntu includes, such as Unity.
 
-**Package Management**
+### Package Management
+
 Since Linux Mint is Ubuntu-based, it uses the Debian package manager.
 
-**Configurability**
+### Configurability
+
 Great user interface, great for beginners, and less bloated than Ubuntu. In this course, I will be using Linux Mint, but any other distribution can be used.
 
-**Uses**
+### Uses
+
 Great for desktop and laptop.
 
 ## Exercise

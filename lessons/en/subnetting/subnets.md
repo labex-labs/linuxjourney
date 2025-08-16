@@ -6,7 +6,7 @@ How can I tell if I'm on the same network as Patty? Well, we can just look at th
 
 For example, all hosts with an IP address that starts with 123.45.67 would be on the same subnet. My host has an IP of 123.45.67.8, and Patty's has an IP of 123.45.67.9. The common numbers are my network prefix, and the 8 and 9 are our hosts; therefore, my network is the same as Patty's. A subnet is divided into a network prefix, such as 123.45.67.0, and a subnet mask.
 
-**Subnet Masks**
+### Subnet Masks
 
 Subnet masks determine what part of your IP address is the network portion and what part is the host portion.
 
@@ -26,7 +26,7 @@ Also, when we talk about our subnet, we commonly denote it by the network prefix
 123.234.0.0/255.255.0.0
 ```
 
-**Why?**
+### Why?
 
 Why on earth do we make subnets? Subnetting is used to segment networks and control the flow of traffic within that network. So a host on one subnet can't interact with another host on a different subnet.
 

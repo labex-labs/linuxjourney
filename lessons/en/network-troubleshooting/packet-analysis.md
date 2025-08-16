@@ -4,13 +4,13 @@
 
 The subject of packet analysis could fill an entire course of its own, and there are many books written just on packet analysis. However, today we will just learn the basics. There are two extremely popular packet analyzers: Wireshark and tcpdump. These tools scan your network interfaces, capture the packet activity, parse the packets, and output the information for us to see. They allow us to get into the nitty-gritty of network analysis and delve into the low-level stuff. We'll be using tcpdump since it has a simpler interface; however, if you were to pick up packet analysis for your toolbelt, I would recommend looking into Wireshark.
 
-**Install tcpdump**
+### Install tcpdump
 
 ```bash
 sudo apt install tcpdump
 ```
 
-**Capture packet data on an interface**
+### Capture packet data on an interface
 
 ```plaintext
 pete@icebox:~$ sudo tcpdump -i wlan0
@@ -30,7 +30,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 
 You'll notice a lot of stuff happening when you run a packet capture. Well, that's to be expected; there's a lot of network activity happening in the background. In my above example, I've taken only a snippet of my capture, specifically the time when I decided to ping <www.google.com>.
 
-**Understanding the output**
+### Understanding the output
 
 ```plaintext
 11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
@@ -45,7 +45,7 @@ You'll notice a lot of stuff happening when you run a packet capture. Well, that
 
 As you can see from our tcpdump output, we are sending an ICMP echo request packet to <www.google.com> and getting an ICMP echo reply packet in return! Also, note that different packets will output different information; refer to the manpage to see what those are.
 
-**Writing tcpdump output to a file**
+### Writing tcpdump output to a file
 
 ```bash
 sudo tcpdump -w /some/file

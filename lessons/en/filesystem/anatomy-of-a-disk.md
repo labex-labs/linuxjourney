@@ -4,11 +4,11 @@
 
 Hard disks can be subdivided into partitions, essentially making multiple block devices. Recall such examples as, `/dev/sda1` and `/dev/sda2`. `/dev/sda` is the whole disk, but `/dev/sda1` is the first partition on that disk. Partitions are extremely useful for separating data, and if you need a certain filesystem, you can easily create a partition instead of making the entire disk one filesystem type.
 
-**Partition Table**
+### Partition Table
 
 Every disk will have a partition table. This table tells the system how the disk is partitioned. This table tells you where partitions begin and end, which partitions are bootable, what sectors of the disk are allocated to what partition, etc. There are two main partition table schemes used: Master Boot Record (MBR) and GUID Partition Table (GPT).
 
-**Partition**
+### Partition
 
 Disks are comprised of partitions that help us organize our data. You can have multiple partitions on a disk, and they cannot overlap each other. If there is space that is not allocated to a partition, then it is known as free space. The types of partitions depend on your partition table. Inside a partition, you can have a filesystem or dedicate a partition to other things like swap (we'll get to that soon).
 
@@ -27,7 +27,7 @@ _GPT_
 - Each partition has a globally unique ID (GUID)
 - Used mostly in conjunction with UEFI-based booting (we'll get into details in another course)
 
-**Filesystem Structure**
+### Filesystem Structure
 
 We know from our previous lesson that a filesystem is an organized collection of files and directories. In its simplest form, it is comprised of a database to manage files and the actual files themselves; however, we're going to go into a little more detail.
 

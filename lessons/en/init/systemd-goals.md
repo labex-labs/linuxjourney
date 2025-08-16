@@ -22,43 +22,43 @@ This is a simple service target. At the beginning of the file, we see a section 
 
 Now, let's get into some commands you can use with systemd units:
 
-**List units**
+### List units
 
 ```bash
 systemctl list-units
 ```
 
-**View status of unit**
+### View status of unit
 
 ```bash
 systemctl status networking.service
 ```
 
-**Start a service**
+### Start a service
 
 ```bash
 sudo systemctl start networking.service
 ```
 
-**Stop a service**
+### Stop a service
 
 ```bash
 sudo systemctl stop networking.service
 ```
 
-**Restart a service**
+### Restart a service
 
 ```bash
 sudo systemctl restart networking.service
 ```
 
-**Enable a unit**
+### Enable a unit
 
 ```bash
 sudo systemctl enable networking.service
 ```
 
-**Disable a unit**
+### Disable a unit
 
 ```bash
 sudo systemctl disable networking.service

@@ -2,7 +2,7 @@
 
 ## Lesson Content
 
-**nslookup**
+### nslookup
 
 The "name server lookup" tool is used to query name servers to find information about resource records. Let's find where the name server for google.com is:
 
@@ -16,7 +16,7 @@ Name:   www.google.com
 Address: 216.58.192.4
 ```
 
-**dig**
+### dig
 
 Dig (domain information groper) is a powerful tool for getting information about DNS name servers. It is more flexible than nslookup and great for troubleshooting DNS issues.
 

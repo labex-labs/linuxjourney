@@ -8,7 +8,7 @@ In the link layer, our packet is encapsulated once more into something called a 
 
 Fortunately, we are on the same network, so our packet won't have to travel too far. First, the link layer attaches my source MAC address to the frame header, but it needs to know Patty's MAC address as well. How does it know that, and how do I find it since it's not on the Internet? We use ARP!
 
-**ARP (Address Resolution Protocol)**
+### ARP (Address Resolution Protocol)
 
 ARP finds the MAC address associated with an IP address. ARP is used within the same network. If Patty was not on the same network, we would use a routing system to determine the next router that would receive the packet, and once we were on the same network, we could use ARP.
 
@@ -18,7 +18,7 @@ Now that we have all the necessary data we needâ€”IP address and MAC addressesâ€
 
 And there it is: a simple (or not-so-simple) packet traversal down the TCP/IP layer. Keep in mind that packets don't travel in a one-way fashion like this. We haven't even gotten to Patty's network yet! When traveling through networks, it requires going through the TCP/IP model at least twice before any data is sent or received. In reality, the way this packet looks would be something like this:
 
-**Packet Traversal**
+### Packet Traversal
 
 1. Pete sends Patty an email: this data gets sent to the transport layer.
 2. The transport layer encapsulates the data into a TCP or UDP header to form a segment. The segment attaches the destination and source TCP or UDP port, then the segment is sent to the network layer.

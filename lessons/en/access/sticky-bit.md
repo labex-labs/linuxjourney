@@ -13,7 +13,7 @@ drwxrwxrwx+t 6 root root 4096 Dec 15 11:45 /tmp
 
 You'll see a special permission bit at the end here **t**. This means everyone can add files, write files, and modify files in the `/tmp` directory, but only root can delete the `/tmp` directory.
 
-**Modify sticky bit**
+### Modify sticky bit
 
 ```bash
 sudo chmod +t mydir

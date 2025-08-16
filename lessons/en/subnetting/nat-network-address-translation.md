@@ -8,7 +8,7 @@ NAT makes a device like our router act as an intermediary between the internet a
 
 Think of NAT as a receptionist in a large office. If someone wants to contact you, they only know the number to the whole office. The receptionist would then have to look for your extension number and forward the call to you.
 
-**How does it work?**
+### How does it work?
 
 A simple case would look like this:
 

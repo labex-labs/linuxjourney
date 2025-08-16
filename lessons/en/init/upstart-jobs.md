@@ -4,7 +4,7 @@
 
 Upstart can trigger a lot of events and jobs to run. Unfortunately, there is no easy way to see where an event or job originated, so you'll have to poke around the job configurations in `/etc/init`. Most of the time, you won't ever need to look at the Upstart job configuration files, but you will want to control some specific jobs more easily. There are a lot of useful commands you can use in an Upstart system.
 
-**View jobs**
+### View jobs
 
 ```plaintext
 initctl list
@@ -16,7 +16,7 @@ console stop/waiting
 
 You'll see a list of Upstart jobs with different statuses applied to them. In each line, the job name is the first value, and the second field (before the `/`) is actually the goal of the job. The third value (after the `/`) is the current status. So, we see that our `shutdown` job eventually wants to stop, but it is currently in a state of waiting. The job status and goals will change as you start or stop jobs.
 
-**View specific job**
+### View specific job
 
 ```plaintext
 initctl status networking
@@ -25,25 +25,25 @@ networking start/running
 
 We won't get into the details of how to write an Upstart job configuration; however, we already know that jobs are stopped, started, and restarted in these configurations. These jobs also emit events, so they can start other jobs. We'll go through the manual commands of the Upstart operation, but if you are curious, you should dig into the `.conf` files in more depth.
 
-**Manually start a job**
+### Manually start a job
 
 ```bash
 sudo initctl start networking
 ```
 
-**Manually stop a job**
+### Manually stop a job
 
 ```bash
 sudo initctl stop networking
 ```
 
-**Manually restart a job**
+### Manually restart a job
 
 ```bash
 sudo initctl restart networking
 ```
 
-**Manually emit an event**
+### Manually emit an event
 
 ```bash
 sudo initctl emit some_event

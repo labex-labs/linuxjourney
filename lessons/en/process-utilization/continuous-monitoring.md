@@ -4,13 +4,15 @@
 
 These monitoring tools are good to look at when your machine is having issues, but what about machines that are having issues when you aren't looking? For those, you'll need to use a continuous monitoring tool, something that will collect, report, and save your system activity information. In this lesson, we will go over a great tool to use: **sar**.
 
-**Installing sar**
+### Installing sar
+
 Sar is a tool that is used to do historical analysis on your system. First, make sure you have it installed by installing the `sysstat` package: `sudo apt install sysstat`.
 
-**Setting up data collection**
+### Setting up data collection
+
 Usually, once you install `sysstat`, your system will automatically start collecting data. If it doesn't, you can enable it by modifying the `ENABLED` field in `/etc/default/sysstat`.
 
-**Using sar**
+### Using sar
 
 ```bash
 sudo sar -q

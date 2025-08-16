@@ -4,7 +4,7 @@
 
 Authentication logging can be very useful to look at if you are having issues logging in.
 
-**/var/log/auth.log**
+### /var/log/auth.log
 
 This file contains system authorization logs, such as user logins and the authentication methods used.
 

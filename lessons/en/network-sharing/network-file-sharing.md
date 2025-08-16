@@ -8,19 +8,19 @@ In this course, we'll go over a couple of different methods to copy data to and 
 
 One simple file sharing tool is the **scp** command. The scp command stands for secure copy; it works exactly the way the cp command does, but allows you to copy from one host over to another host on the same network. It works via ssh, so all your actions are using the same authentication and security as ssh.
 
-**To copy a file from a local host to a remote host:**
+### To copy a file from a local host to a remote host
 
 ```bash
 scp myfile.txt username@remotehost.com:/remote/directory
 ```
 
-**To copy a file from a remote host to your local host:**
+### To copy a file from a remote host to your local host
 
 ```bash
 scp username@remotehost.com:/remote/directory/myfile.txt /local/directory
 ```
 
-**To copy a directory from your local host to a remote host:**
+### To copy a directory from your local host to a remote host
 
 ```bash
 scp -r mydir username@remotehost.com:/remote/directory

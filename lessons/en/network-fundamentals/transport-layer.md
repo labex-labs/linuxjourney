@@ -4,17 +4,17 @@
 
 The transport layer helps us transfer our data in a way networks can read it. It breaks our data into chunks that will be transported and put back together in the correct order. These chunks are known as segments. Segments make it easier to transport data across networks.
 
-**Ports**
+### Ports
 
 Even though we know where we are sending our data via IP addresses, they aren't specific enough to send our data to certain processes or services. Services such as HTTP use a communication channel via ports. If we want to send webpage data, we need to send it over the HTTP port (port 80). In addition to forming segments, the transport layer will also attach the source and destination ports to the segment, so when the receiver gets the final packet it will know what port to use.
 
-**UDP**
+### UDP
 
 There are two popular transport protocols: UDP and TCP. We'll briefly discuss UDP and spend most of our time on TCP, since it's the most commonly used.
 
 UDP is not a reliable method of transporting data; in fact, it doesn't really care if you get all of your original data. This may sound terrible, but it does have its uses, such as for media streaming. It's okay if you lose some frames; in return, you get your data a little faster.
 
-**TCP**
+### TCP
 
 TCP provides a reliable, connection-oriented stream of data. TCP uses ports to send data to and from hosts. An application opens up a connection from one port on its host to another port on a remote host. In order to establish the connection, we use the TCP handshake.
 

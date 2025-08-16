@@ -29,23 +29,23 @@ Remember, in the `ls` command, you can see the type of file with the first bit o
 - p - pipe
 - s - socket
 
-**Character Device**
+### Character Device
 
 These devices transfer data, but one character at a time. You'll see a lot of pseudo devices (`/dev/null`) as character devices. These devices aren't really physically connected to the machine, but they allow the operating system greater functionality.
 
-**Block Device**
+### Block Device
 
 These devices transfer data, but in large fixed-sized blocks. You'll most commonly see devices that utilize data blocks as block devices, such as hard drives, file systems, etc.
 
-**Pipe Device**
+### Pipe Device
 
 Named pipes allow two or more processes to communicate with each other. These are similar to character devices, but instead of having output sent to a device, it's sent to another process.
 
-**Socket Device**
+### Socket Device
 
 Socket devices facilitate communication between processes, similar to pipe devices, but they can communicate with many processes at once.
 
-**Device Characterization**
+### Device Characterization
 
 Devices are characterized using two numbers: **major device number** and **minor device number**. You can see these numbers in the `ls` example above; they are separated by a comma. For example, let's say a device had the device numbers: **8, 0**:
 

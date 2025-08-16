@@ -4,7 +4,7 @@
 
 Let's say you plugged in a USB drive and started working on some files. Once you were done, you tried to unmount the USB device and received an error: "Device or Resource Busy." How would you find out which files on the USB drive are still in use? There are two tools you can use for this:
 
-**lsof**
+### lsof
 
 Remember, files aren't just text files, images, etc.; they are everything on the system: disks, pipes, network sockets, devices, etc. To see what is in use by a process, you can use the `lsof` command (short for "list open files"). This will show you a list of all open files and their associated processes.
 
@@ -23,7 +23,7 @@ lsof      5915 pete  cwd    DIR    8,6     4096  131 .
 
 Now I can see which processes are currently holding the device/file open. In our USB example, you can also kill these processes so you can unmount this pesky drive.
 
-**fuser**
+### fuser
 
 Another way to track a process is with the `fuser` command (short for "file user"). This will show you information about the process that is using the file or the file user.
 

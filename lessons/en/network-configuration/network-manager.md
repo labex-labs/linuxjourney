@@ -8,7 +8,7 @@ You'll notice NetworkManager in the form of an applet somewhere on your desktop 
 
 There are also command-line tools to interact with NetworkManager:
 
-**nm-tool**
+### nm-tool
 
 `nm-tool` reports NetworkManager's state and its devices.
 
@@ -39,7 +39,7 @@ State: connected (global)
     DNS:             192.168.22.2
 ```
 
-**nmcli**
+### nmcli
 
 The `nmcli` command allows you to control and modify NetworkManager. See the man page for more details.
 

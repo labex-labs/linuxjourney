@@ -1,120 +1,49 @@
-# Title
+# Vim Editing
 
 ## Lesson Content
 
-This lesson covers the basics of **HTML** and its conversion to **Markdown**. We will explore common HTML tags and their Markdown equivalents.
+Editing in Vim is done from Normal mode using operators and motions. You can delete, change, copy (yank), paste (put), and replace text efficiently.
 
-### What is HTML?
+- Press `Esc` to ensure you are in Normal mode before using these commands.
 
-<p>HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.</p>
+Deletes (operator `d`):
 
-### What is Markdown?
+- `x` – delete the character under the cursor
+- `dw` – delete from cursor to start of next word
+- `d$` – delete from cursor to end of line
+- `dd` – delete the current line
+- Counts apply: `3dd` deletes three lines; `2dw` deletes two words
 
-<p>Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It is often used for writing documentation, blog posts, and README files.</p>
+Changes (operator `c`, delete then enter Insert mode):
 
-### Converting HTML to Markdown
+- `cw` – change word from cursor
+- `c$` – change to the end of the line
+- `cc` – change the whole line
 
-Let's look at some common conversions:
+Yank and Put (copy/paste):
 
-- **Headings:**
-  - `<h1>Heading 1</h1>` becomes `# Heading 1`
-  - `<h2>Heading 2</h2>` becomes `## Heading 2`
-- **Paragraphs:**
-  - `<p>This is a paragraph.</p>` becomes `This is a paragraph.`
-- **Bold Text:**
-  - `<b>Bold Text</b>` or `<strong>Strong Text</strong>` becomes `**Bold Text**` or `**Strong Text**`
-- **Italic Text:**
-  - `<i>Italic Text</i>` or `<em>Emphasized Text</em>` becomes `*Italic Text*` or `*Emphasized Text*`
-- **Lists:**
-  - **Unordered List:**
+- `yw` – yank word
+- `yy` – yank the current line
+- `p` – put (paste) after the cursor or below the line
+- `P` – put (paste) before the cursor or above the line
 
-    ```html
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-    </ul>
-    ```
+Replace and other handy edits:
 
-    becomes
+- `r{char}` – replace the character under cursor with `{char}`
+- `R` – enter Replace mode to overwrite text
+- `J` – join the current line with the next line
+- `.` – repeat the last change
 
-    ```markdown
-    - Item 1
-    - Item 2
-    ```
-
-  - **Ordered List:**
-
-    ```html
-    <ol>
-      <li>First Item</li>
-      <li>Second Item</li>
-    </ol>
-    ```
-
-    becomes
-
-    ```markdown
-    1. First Item
-    2. Second Item
-    ```
-
-- **Code Blocks:**
-  - `<pre><code>print("Hello, World!")</code></pre>` becomes
-
-    ```python
-    print("Hello, World!")
-    ```
-
-- **Links:**
-  - `<a href="https://www.example.com">Example Link</a>` becomes `[Example Link](https://www.example.com)`
-
-Remember to always check the specific Markdown flavor you are using, as there can be slight variations.
+Combine operators with motions for power: `d}` deletes to next paragraph; `caw` changes “a word” (word under cursor including surrounding space).
 
 ## Exercise
 
-Convert the following HTML snippet into proper Markdown syntax:
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Document</title>
-  </head>
-  <body>
-    <h1>Welcome to My Page</h1>
-    <p>
-      This is a simple document demonstrating <b>HTML</b> to
-      <i>Markdown</i> conversion.
-    </p>
-    <p>Here are some features:</p>
-    <ul>
-      <li>Easy to read</li>
-      <li>Simple to write</li>
-      <li>Great for documentation</li>
-    </ul>
-    <p>
-      Visit our <a href="https://github.com/example">GitHub page</a> for more
-      info.
-    </p>
-    <pre><code>
-        function greet(name) {
-            return "Hello, " + name + "!";
-        }
-        console.log(greet("User"));
-    </code></pre>
-  </body>
-</html>
-```
+Open a file with `vim [file]` and try: `dw`, `cw`, `yy` then `p`, `dd`, `J`, and `.` to repeat a change.
 
 ## Quiz Question
 
-Which of the following Markdown syntaxes correctly represents an unordered list item?
-
-A. `<* Item>`
-B. `- Item`
-C. `* Item`
-D. `+ Item`
+Which command deletes the current line in Vim?
 
 ## Quiz Answer
 
-The correct answer is **C. `* Item`**. Both `- Item` and `+ Item` are also commonly accepted for unordered list items in Markdown, but `* Item` is the most universally recognized and standard.
+dd

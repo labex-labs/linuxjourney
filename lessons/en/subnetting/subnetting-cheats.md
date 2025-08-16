@@ -19,7 +19,7 @@ First, memorize your base-2 calculations; just do it:
 - 2^11 = 2048
 - 2^12 = 4096
 
-**Decimal to Binary Chart**
+### Decimal to Binary Chart
 
 ```plaintext
 1   1  1  1  1 1 1 1
@@ -30,7 +30,7 @@ There are lots of reasons why the following chart looks the way it does. If you'
 
 Okay, got these memorized? Let's do a quick decimal to binary conversion:
 
-**Convert 192.168.23.43 to Binary**
+### Convert 192.168.23.43 to Binary
 
 Remember: 128 / 64 / 32 / 16 / 8 / 4 / 2 / 1
 
@@ -40,7 +40,7 @@ Let's walk through converting the first octet to binary, and you'll understand h
 2. 192 - 128 = 64. The next number in the chart is 64. Can you subtract 64 - 64? Yes, so the second bit is 1.
 3. We've run out of numbers to subtract from, so our binary form of 192 is 11000000.
 
-**Convert Binary 11000000 to Decimal**
+### Convert Binary 11000000 to Decimal
 
 For binary to decimal conversion, you add up the numbers that have a 1, so:
 

@@ -4,15 +4,15 @@
 
 The DNS database of the Internet relies on sites and organizations providing part of that database. To do that, they need:
 
-**Name Server**
+### Name Server
 
 We set up DNS via "name servers." Name servers load our DNS settings and configurations and answer any questions from clients or other servers that want to know things like "Who is google.com?". If the name server doesn't know the answer to that query, it will redirect the request to other name servers. Name servers can be "authoritative," meaning they hold the actual DNS records you're looking for, or "recursive," meaning they would ask other servers, and those servers would ask other servers until they found an authoritative server that contained the DNS records. Recursive servers can also have the information we want cached instead of reaching an authoritative server.
 
-**Zone File**
+### Zone File
 
 Inside a name server lives something called zone files. Zone files are how the name server stores information about the domain or how to get to the domain if it doesn't know.
 
-**Resource Records**
+### Resource Records
 
 A zone file is comprised of entries of resource records. Each line is a record and contains information about hosts, name servers, other resources, etc. The fields consist of the following:
 

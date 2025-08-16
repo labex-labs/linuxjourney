@@ -6,7 +6,7 @@ Changing permissions can easily be done with the `chmod` command.
 
 First, pick which permission set you want to change: user, group, or other. You can add or remove permissions with a `+` or `-`. Let's look at some examples.
 
-**Adding permission bit on a file**
+### Adding permission bit on a file
 
 ```bash
 chmod u+x myfile
@@ -14,13 +14,13 @@ chmod u+x myfile
 
 The above command reads like this: change permission on `myfile` by adding the executable permission bit to the user set. So now the user has executable permission on this file!
 
-**Removing permission bit on a file**
+### Removing permission bit on a file
 
 ```bash
 chmod u-x myfile
 ```
 
-**Adding multiple permission bits on a file**
+### Adding multiple permission bits on a file
 
 ```bash
 chmod ug+w

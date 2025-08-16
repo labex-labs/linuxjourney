@@ -2,16 +2,20 @@
 
 ## Lesson Content
 
-**Overview**
+### Overview
+
 openSUSE Linux is created by the openSUSE Project, a community that promotes the use of Linux everywhere, working together in an open, transparent, and friendly manner as part of the worldwide Free and Open Source Software community. openSUSE is the second oldest still-running Linux distribution and shares its base system with SUSE's award-winning SUSE Linux Enterprise products.
 
-**Package Management**
+### Package Management
+
 Uses RPM package manager.
 
-**Configurability**
+### Configurability
+
 openSUSE is a great choice for a new Linux user. It offers an easy-to-use graphical installer/administration application ([YaST](http://yast.github.io/)) and a tidy base system, easy to tinker with. openSUSE includes everything you need to enjoy the internet worry-free of viruses/spyware and to live out your creativity, be it with your photos, videos, music, or code.
 
-**Uses**
+### Uses
+
 openSUSE Leap is fully capable of being used on a desktop PC and laptop.
 
 ## Exercise

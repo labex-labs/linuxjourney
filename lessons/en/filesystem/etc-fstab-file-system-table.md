@@ -4,7 +4,7 @@
 
 When we want to automatically mount filesystems at startup, we can add them to a file called `/etc/fstab` (pronounced "eff es tab," not "eff stab"), short for filesystem table. This file contains a permanent list of filesystems that are mounted.
 
-```
+```plaintext
 pete@icebox:~$ cat /etc/fstab
 UUID=130b882f-7d79-436d-a096-1e594c92bb76 /               ext4    relatime,errors=remount-ro 0       1
 UUID=78d203a0-7c18-49bd-9e07-54f44cdb5726 /home           xfs     relatime        0       2

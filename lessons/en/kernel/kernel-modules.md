@@ -6,13 +6,13 @@ Let's say I have a sweet ride; I invest a lot of time and money into it. I add a
 
 The kernel in itself is a monolithic piece of software. When we want to add support for a new type of keyboard, we don't write this code directly into the kernel code. Just as we wouldn't meld a bike rack to our car (well, maybe some people would do that). Kernel modules are pieces of code that can be loaded and unloaded into the kernel on demand. They allow us to extend the functionality of the kernel without actually adding to the core kernel code. We can also add modules and not have to reboot the system (in most cases).
 
-**View a list of currently loaded modules**
+### View a list of currently loaded modules
 
 ```bash
 lsmod
 ```
 
-**Load a module**
+### Load a module
 
 ```bash
 sudo modprobe bluetooth
@@ -20,13 +20,13 @@ sudo modprobe bluetooth
 
 `modprobe` loads the module from `/lib/modules/(kernel version)/kernel/drivers`. Kernel modules may also have dependencies; `modprobe` loads our module dependencies if they are not already loaded.
 
-**Remove a module**
+### Remove a module
 
 ```bash
 sudo modprobe -r bluetooth
 ```
 
-**Load on bootup**
+### Load on bootup
 
 You can also load modules during system boot, instead of temporarily loading them with `modprobe` (which will be unloaded when you reboot). Just modify the `/etc/modprobe.d` directory and add a configuration file in it like so:
 
@@ -38,7 +38,7 @@ options peanut_butter type=almond
 
 A bit of an outlandish example, but if you had a module named `peanut_butter` and you wanted to add a kernel parameter for `type=almond`, you can have it load on startup using this configuration file. Also, note that kernel modules have their own kernel parameters, so you'll want to read about the module specifically to find out more.
 
-**Do not load on bootup**
+### Do not load on bootup
 
 You can also make sure a module does not load on bootup by adding a configuration file like so:
 

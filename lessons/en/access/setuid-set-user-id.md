@@ -34,7 +34,7 @@ You'll notice a new permission bit here **s**. This permission bit is the SUID. 
 
 That's why we are able to access a protected file like `/etc/shadow` when we run the `passwd` command. Now if you removed that bit, you would see that you will not be able to modify `/etc/shadow` and therefore change your password.
 
-**Modifying SUID**
+### Modifying SUID
 
 Just like regular permissions, there are two ways to modify SUID permissions.
 

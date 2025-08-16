@@ -8,11 +8,11 @@ A process can exit using the `_exit` system call. This will free up the resource
 
 There is another way to terminate a process, and that involves using signals, which we will discuss soon.
 
-**Orphan Processes**
+### Orphan Processes
 
 When a parent process dies before a child process, the kernel knows that it's not going to get a `wait` call, so instead it makes these processes "orphans" and puts them under the care of `init` (remember, mother of all processes). `init` will eventually perform the `wait` system call for these orphans so they can die.
 
-**Zombie Processes**
+### Zombie Processes
 
 What happens when a child terminates and the parent process hasn't called `wait` yet? We still want to be able to see how a child process terminated, so even though the child process finished, the kernel turns the child process into a zombie process. The resources the child process used are still freed up for other processes; however, there is still an entry in the process table for this zombie. Zombie processes also cannot be killed, since they are technically "dead," so you can't use signals to kill them. Eventually, if the parent process calls the `wait` system call, the zombie will disappear; this is known as "reaping." If the parent doesn't perform a `wait` call, `init` will adopt the zombie and automatically perform `wait` and remove the zombie. It can be a bad thing to have too many zombie processes, since they take up space on the process table; if it fills up, it will prevent other processes from running.
 
