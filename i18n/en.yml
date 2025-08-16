@@ -19,7 +19,7 @@ en:
       url: "https://github.com/labex-labs/linuxjourney"
     contact:
       title: "Contact Us"
-      body: "See a bug? Any complaints? Just want to send a note?"
+      body: "See a bug? Just want to send a note?"
       url_name: "Let us know"
       url: "https://github.com/labex-labs/linuxjourney/issues"
   courses:
