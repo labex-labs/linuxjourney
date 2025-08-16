@@ -2,10 +2,6 @@
 
 [Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
 
-> **2025 Update**: Now maintained by [LabEx](https://labex.io/) team.
-
-## About
-
 A structured learning path from beginner to advanced Linux administration with three levels:
 
 - **Grasshopper** - Learn the basics
@@ -29,10 +25,6 @@ A structured learning path from beginner to advanced Linux administration with t
 - Network Fundamentals, Subnetting, Routing
 - Configuration, Troubleshooting, DNS
 
-## Languages
-
-Available in 9 languages: English, Chinese, German, Spanish, French, Japanese, Korean, Portuguese, Russian.
-
 ## Structure
 
 ```plaintext
@@ -53,11 +45,6 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed gu
 - Lesson templates and structure
 - Development workflow
 
-## Links
-
-- **Website**: [linuxjourney.com](https://linuxjourney.com)
-- **Issues**: [GitHub Issues](https://github.com/labex-labs/linuxjourney/issues)
-
 ## License
 
-Content is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+Content is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/). maintained by [LabEx](https://labex.io/) team.
