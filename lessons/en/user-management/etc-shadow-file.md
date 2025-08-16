@@ -2,35 +2,34 @@
 
 ## Lesson Content
 
-The /etc/shadow file is used to store information about user authentication. It requires superuser read permissions.
+The `/etc/shadow` file is used to store information about user authentication. It requires superuser read permissions.
 
-<pre>$ sudo cat /etc/shadow
+```bash
+$ sudo cat /etc/shadow
 
 root:MyEPTEa$6Nonsense:15000:0:99999:7:::
-</pre>
+```
 
-You'll notice that it looks very similar to the contents of /etc/passwd, however in the password field you'll see an encrypted password. The fields are separated by colons as followed:
+You'll notice that it looks very similar to the contents of `/etc/passwd`; however, in the password field, you'll see an encrypted password. The fields are separated by colons as follows:
 
-<ol>
-<li>Username</li>
-<li>Encrypted password</li>
-<li>Date of last password changed - expressed as the number of days since Jan 1, 1970. If there is a 0 that means the user should change their password the next time they login</li>
-<li>Minimum password age - Days that a user will have to wait before being able to change their password again</li>
-<li>Maximum password age - Maximum number of days before a user has to change their password</li>
-<li>Password warning period - Number of days before a password is going to expire</li>
-<li>Password inactivity period - Number of days after a password has expired to allow login with their password</li>
-<li>Account expiration date - date that user will not be able to login</li>
-<li>Reserved field for future use</li>
-</ol>
+1. Username
+2. Encrypted password
+3. Date of last password changed - expressed as the number of days since Jan 1, 1970. If there is a 0, that means the user should change their password the next time they log in.
+4. Minimum password age - Days that a user will have to wait before being able to change their password again.
+5. Maximum password age - Maximum number of days before a user has to change their password.
+6. Password warning period - Number of days before a password is going to expire.
+7. Password inactivity period - Number of days after a password has expired to allow login with their password.
+8. Account expiration date - Date that a user will not be able to log in.
+9. Reserved field for future use.
 
-In most distributions today, user authentication doesn't rely on just the /etc/shadow file, there are other mechanisms in place such as PAM (Pluggable Authentication Modules) that replace authentication.
+In most distributions today, user authentication doesn't rely on just the `/etc/shadow` file; there are other mechanisms in place, such as PAM (Pluggable Authentication Modules), that replace authentication.
 
 ## Exercise
 
-Take a look at the /etc/shadow file
+Take a look at the `/etc/shadow` file.
 
 ## Quiz Question
 
-No questions move along!
+No questions, move along!
 
 ## Quiz Answer

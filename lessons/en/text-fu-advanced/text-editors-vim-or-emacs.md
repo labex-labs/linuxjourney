@@ -2,19 +2,19 @@
 
 ## Lesson Content
 
-If you get a couple of diehard Linux users in a room and ask them what is the best text editor to use, you'll hear a never ending banter about the godliness of either vim or emacs. Don't even try to bring up using a GUI editor if you value your life.
+If you get a couple of diehard Linux users in a room and ask them what the best text editor to use is, you'll hear a never-ending banter about the godliness of either Vim or Emacs. Don't even try to bring up using a GUI editor if you value your life.
 
-Vim and emacs are popular text editors that are installed by default on most Linux distributions and they both have their pros and cons. If you want to get around your system like a ninja, you'll need to pick up one of these text editors to use. They are essentially coding, word document processing and basically all in one editors.
+Vim and Emacs are popular text editors that are installed by default on most Linux distributions, and they both have their pros and cons. If you want to get around your system like a ninja, you'll need to pick up one of these text editors to use. They are essentially coding, word document processing, and basically all-in-one editors.
 
 ## Exercise
 
-Take a little tour of vim and emacs:
+Take a little tour of Vim and Emacs:
 
-<a href="http://www.vim.org/">Vim</a>
-<a href="https://www.gnu.org/software/emacs/">emacs</a>
+[Vim](http://www.vim.org/)
+[Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 
-No questions move along!
+No questions, move along!
 
 ## Quiz Answer

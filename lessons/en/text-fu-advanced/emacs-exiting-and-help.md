@@ -2,25 +2,31 @@
 
 ## Lesson Content
 
-<b>To close out of emacs</b>
+**To close out of Emacs**
 
-<pre>C-x C-c</pre>
+```
+C-x C-c
+```
 
-If you have any open buffers, it will ask you to save it before closing out of emacs.
+If you have any open buffers, it will ask you to save before closing out of Emacs.
 
-<b>Confused?</b>
+**Confused?**
 
-<pre>C-h C-h : help menu</pre>
+```
+C-h C-h : help menu
+```
 
-<b>Undo</b>
+**Undo**
 
-<pre>C-x u</pre>
+```
+C-x u
+```
 
-As you can see Emacs has more moving parts, so the learning curve is a little steeper. In exchange though, you get a very powerful text editor.
+As you can see, Emacs has more moving parts, so the learning curve is a little steeper. In exchange, though, you get a very powerful text editor.
 
 ## Exercise
 
-Visit the Emacs site to learn about more commands. <a href="https://www.gnu.org/software/emacs/">Emacs</a>
+Visit the Emacs site to learn about more commands. [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

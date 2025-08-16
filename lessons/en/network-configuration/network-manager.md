@@ -2,17 +2,17 @@
 
 ## Lesson Content
 
-Of course if you wanted to have your system's networking up and running automatically there is something already in place for that. Most distributions utilize the NetworkManager daemon to configure their networks automatically.
+Of course, if you want your system's networking up and running automatically, there is something already in place for that. Most distributions utilize the NetworkManager daemon to configure their networks automatically.
 
-You'll notice NetworkManager in the form of an applet somewhere on your desktop taskbar if you are using a GUI. As you can see it manages your network's hardware and connection information. For instance on startup, NetworkManager will gather network hardware information, search for connections to wireless, wired, etc. and then activates it.
+You'll notice NetworkManager in the form of an applet somewhere on your desktop taskbar if you are using a GUI. As you can see, it manages your network's hardware and connection information. For instance, on startup, NetworkManager will gather network hardware information, search for connections (wireless, wired, etc.), and then activate them.
 
 There are also command-line tools to interact with NetworkManager:
 
-<b>nm-tool</b>
+**nm-tool**
 
-nm-tools reports NetworkManager's state and it's devices
+`nm-tool` reports NetworkManager's state and its devices.
 
-<pre>
+```plaintext
 pete@icebox:/$ nm-tool
 NetworkManager Tool
 
@@ -37,11 +37,11 @@ State: connected (global)
     Gateway:         192.168.22.2
 
     DNS:             192.168.22.2
-</pre>
+```
 
-<b>nmcli</b>
+**nmcli**
 
-The nmcli command allows you to control and modify NetworkManager, see the manpage for more details.
+The `nmcli` command allows you to control and modify NetworkManager. See the man page for more details.
 
 ## Exercise
 

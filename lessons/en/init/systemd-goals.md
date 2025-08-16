@@ -2,11 +2,11 @@
 
 ## Lesson Content
 
-We won't get into the details of writing systemd unit files. We will however go over a brief overview of a unit file and how to manually control units.
+We won't get into the details of writing systemd unit files. We will, however, go over a brief overview of a unit file and how to manually control units.
 
 Here is a basic service unit file: foobar.service
 
-<pre>
+```
 [Unit]
 Description=My Foobar
 Before=bar.target
@@ -16,39 +16,53 @@ ExecStart=/usr/bin/foobar
 
 [Install]
 WantedBy=multi-user.target
-</pre>
+```
 
-This is a simple service target, at the beginning of the file we see a section for [Unit], this allows us to give our unit file a description as well as control the ordering of when to activate the unit. The next portion is the [Service] section, under here we can start, stop or reload a service. And the [Install] section is used for dependency. This is only the tip of the iceberg for writing systemd files, so I implore you to read up on the subject if you want to know more.
+This is a simple service target. At the beginning of the file, we see a section for `[Unit]`. This allows us to give our unit file a description as well as control the ordering of when to activate the unit. The next portion is the `[Service]` section; under here, we can start, stop, or reload a service. And the `[Install]` section is used for dependencies. This is only the tip of the iceberg for writing systemd files, so I implore you to read up on the subject if you want to know more.
 
 Now, let's get into some commands you can use with systemd units:
 
-<b>List units</b>
+**List units**
 
-<pre>$ systemctl list-units</pre>
+```bash
+systemctl list-units
+```
 
-<b>View status of unit</b>
+**View status of unit**
 
-<pre>$ systemctl status networking.service</pre>
+```bash
+systemctl status networking.service
+```
 
-<b>Start a service</b>
+**Start a service**
 
-<pre>$ sudo systemctl start networking.service</pre>
+```bash
+sudo systemctl start networking.service
+```
 
-<b>Stop a service</b>
+**Stop a service**
 
-<pre>$ sudo systemctl stop networking.service</pre>
+```bash
+sudo systemctl stop networking.service
+```
 
-<b>Restart a service</b>
+**Restart a service**
 
-<pre>$ sudo systemctl restart networking.service</pre>
+```bash
+sudo systemctl restart networking.service
+```
 
-<b>Enable a unit</b>
+**Enable a unit**
 
-<pre>$ sudo systemctl enable networking.service</pre>
+```bash
+sudo systemctl enable networking.service
+```
 
-<b>Disable a unit</b>
+**Disable a unit**
 
-<pre>$ sudo systemctl disable networking.service</pre>
+```bash
+sudo systemctl disable networking.service
+```
 
 Again, you have yet to see how much depth systemd gets into, so read up on it if you want to learn more.
 
@@ -62,4 +76,4 @@ What is the command to start a service named peanut.service?
 
 ## Quiz Answer
 
-sudo systemctl start peanut.service
+`sudo systemctl start peanut.service`

@@ -2,11 +2,11 @@
 
 ## Lesson Content
 
-<b>nslookup</b>
+**nslookup**
 
 The "name server lookup" tool is used to query name servers to find information about resource records. Let's find where the name server for google.com is:
 
-<pre>
+```bash
 pete@icebox:~$ nslookup www.google.com
 Server:         127.0.1.1
 Address:        127.0.1.1#53
@@ -14,13 +14,13 @@ Address:        127.0.1.1#53
 Non-authoritative answer:
 Name:   www.google.com
 Address: 216.58.192.4
-</pre>
+```
 
-<b>dig</b>
+**dig**
 
-Dig (domain information groper) is a powerful tool for getting information about DNS name servers, it is more flexible than nslookup and great for troubleshooting DNS issues.
+Dig (domain information groper) is a powerful tool for getting information about DNS name servers. It is more flexible than nslookup and great for troubleshooting DNS issues.
 
-<pre>
+```bash
 pete@icebox:~$ dig www.google.com
 
 ; <<>> DiG 9.9.5-3-Ubuntu <<>> www.google.com
@@ -45,7 +45,7 @@ www.google.com.         5       IN      A       74.125.239.148
 ;; SERVER: 127.0.1.1#53(127.0.1.1)
 ;; WHEN: Sun Feb 07 10:14:00 PST 2016
 ;; MSG SIZE  rcvd: 123
-</pre>
+```
 
 ## Exercise
 

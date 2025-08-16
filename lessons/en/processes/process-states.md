@@ -2,19 +2,19 @@
 
 ## Lesson Content
 
-Let's take a look at the ps aux command again:
+Let's take a look at the `ps aux` command again:
 
-<pre>$ ps aux</pre>
+```bash
+ps aux
+```
 
-In the STAT column, you'll see lots of values. A linux process can be in a number of different states. The most common state codes you'll see are described below:
+In the STAT column, you'll see many values. A Linux process can be in a number of different states. The most common state codes you'll see are described below:
 
-<ul>
-<li>R: running or runnable, it is just waiting for the CPU to process it</li>
-<li>S: Interruptible sleep, waiting for an event to complete, such as input from the terminal</li>
-<li>D: Uninterruptible sleep, processes that cannot be killed or interrupted with a signal, usually to make them go away you have to reboot or fix the issue</li>
-<li>Z: Zombie, we discussed in a previous lesson that zombies are terminated processes that are waiting to have their statuses collected</li>
-<li>T: Stopped, a process that has been suspended/stopped</li>
-</ul>
+- **R**: Running or runnable; it is just waiting for the CPU to process it.
+- **S**: Interruptible sleep; waiting for an event to complete, such as input from the terminal.
+- **D**: Uninterruptible sleep; processes that cannot be killed or interrupted with a signal. Usually, to make them go away, you have to reboot or fix the issue.
+- **Z**: Zombie; we discussed in a previous lesson that zombies are terminated processes that are waiting to have their statuses collected.
+- **T**: Stopped; a process that has been suspended/stopped.
 
 ## Exercise
 

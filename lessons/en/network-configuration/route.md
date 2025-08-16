@@ -2,41 +2,47 @@
 
 ## Lesson Content
 
-We've already discussed viewing our routing tables with the route command, if you wanted to add or remove routes you can do so manually.
+We've already discussed viewing our routing tables with the `route` command. If you want to add or remove routes, you can do so manually.
 
-<b>Add a new route</b>
+**Add a new route**
 
-<pre>
-$ sudo route add -net 192.168.2.1/23 gw 10.11.12.3
-</pre>
+```bash
+sudo route add -net 192.168.2.1/23 gw 10.11.12.3
+```
 
-<b>Delete a route</b>
+**Delete a route**
 
-<pre>
-$ sudo route del -net 192.168.2.1/23
-</pre>
+```bash
+sudo route del -net 192.168.2.1/23
+```
 
-You can also perform these changes with the <b>ip</b> command:
+You can also perform these changes with the **ip** command:
 
-<b>To add a route</b>
-<pre>
-$ ip route add 192.168.2.1/23 via 10.11.12.3
-</pre>
+**To add a route**
 
-<b>To delete a route</b>
-<pre>
+```bash
+ip route add 192.168.2.1/23 via 10.11.12.3
+```
+
+**To delete a route**
+
+```bash
 $ ip route delete 192.168.2.1/23 via 10.11.12.3
 or
 $ ip route delete 192.168.2.1/23
-</pre>
+```
 
 ## Exercise
 
-There are no exercises for this lesson but you can read more information on commands discussed here in the man pages
+There are no exercises for this lesson, but you can read more information on commands discussed here in the man pages.
 
-<pre>$ man route</pre>
+```bash
+man route
+```
 
-<pre>$ man ip-route</pre>
+```bash
+man ip-route
+```
 
 ## Quiz Question
 

@@ -2,37 +2,31 @@
 
 ## Lesson Content
 
-Systemd is slowly becoming the emerging standard for init. If you have a /usr/lib/systemd directory, you're most likely using systemd.
+Systemd is slowly becoming the emerging standard for init. If you have a `/usr/lib/systemd` directory, you're most likely using systemd.
 
-Systemd uses goals to get your system up and running. Basically you have a target that you want to achieve and this target also has dependencies that we need to achieve. Systemd is extremely flexible and robust, it does not follow a strict sequence to get processes started. Here's what happens during the typical systemd boot:
+Systemd uses goals to get your system up and running. Basically, you have a target that you want to achieve, and this target also has dependencies that need to be met. Systemd is extremely flexible and robust; it does not follow a strict sequence to get processes started. Here's what happens during a typical systemd boot:
 
-<ol>
-<li>First, systemd loads it's configuration files, usually located in /etc/systemd/system or /usr/lib/systemd/system</li>
-<li>Then it determines its boot goal, which is usually default.target</li>
-<li>Systemd figures out the dependencies of the boot target and activates them</l>
-</ol>
+1. First, systemd loads its configuration files, usually located in `/etc/systemd/system` or `/usr/lib/systemd/system`.
+2. Then it determines its boot goal, which is usually `default.target`.
+3. Systemd figures out the dependencies of the boot target and activates them.
 
-Similar to Sys V runlevels, systemd boots into different targets:
+Similar to SysV runlevels, systemd boots into different targets:
 
-<ul>
-<li>poweroff.target - shutdown system</li>
-<li>rescue.target - single user mode</li>
-<li>multi-user.target - multiuser with networking</li>
-<li>graphical.target - multiuser with networking and GUI</li>
-<li>reboot.target - restart</li>
-</ul>
+- `poweroff.target` - shutdown system
+- `rescue.target` - single-user mode
+- `multi-user.target` - multi-user with networking
+- `graphical.target` - multi-user with networking and GUI
+- `reboot.target` - restart
 
-The default boot goal of default.target usually points to the graphical.target.
+The default boot goal of `default.target` usually points to the `graphical.target`.
 
-The main object that systemd works with are known as units. Systemd doesn't just stop and start services, it can mount filesystems, monitor your network sockets, etc and because of that robustness it has different types of units it operates. The most common units are:
+The main objects that systemd works with are known as units. Systemd doesn't just stop and start services; it can mount filesystems, monitor your network sockets, etc. Because of that robustness, it has different types of units it operates. The most common units are:
 
-<ul>
-<li>Service units - these are the services we've been starting and stopping, these unit files end in .service</li>
-<li>Mount units - These mount filesystems, these unit files end in .mount</li>
-<li>Target units - These group together other units, the files end in .target</li>
-</ul>
+- Service units - these are the services we've been starting and stopping; these unit files end in `.service`.
+- Mount units - These mount filesystems; these unit files end in `.mount`.
+- Target units - These group together other units; the files end in `.target`.
 
-For example, let's say we boot into our default.target, well this target groups together the networking.service unit, crond.service unit, etc, so once we activate a single unit, everything below that unit gets activated as well.
+For example, let's say we boot into our `default.target`. This target groups together the `networking.service` unit, `crond.service` unit, etc., so once we activate a single unit, everything below that unit gets activated as well.
 
 ## Exercise
 

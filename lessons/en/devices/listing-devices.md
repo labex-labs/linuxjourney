@@ -2,19 +2,25 @@
 
 ## Lesson Content
 
-Just like we would use the ls command to list files and directories, we can use similar tools that list information about devices.
+Just like we would use the `ls` command to list files and directories, we can use similar tools that list information about devices.
 
-<b>Listing USB Devices</b>
+**Listing USB Devices**
 
-<pre>$ lsusb </pre>
+```bash
+lsusb
+```
 
-<b>Listing PCI Devices</b>
+**Listing PCI Devices**
 
-<pre>$ lspci </pre>
+```bash
+lspci
+```
 
-<b>Listing SCSI Devices</b>
+**Listing SCSI Devices**
 
-<pre>$ lsscsi </pre>
+```bash
+lsscsi
+```
 
 ## Exercise
 
@@ -22,8 +28,8 @@ Try out each of these commands and see the output you receive.
 
 ## Quiz Question
 
-What command can be used to view usb devices?
+What command can be used to view USB devices?
 
 ## Quiz Answer
 
-lsusb
+`lsusb`

@@ -2,20 +2,24 @@
 
 ## Lesson Content
 
-The tr (translate) command allows you to translate a set of characters into another set of characters. Let's try an example of translating all lower case characters to uppercase characters.
+The `tr` (translate) command allows you to translate one set of characters into another set of characters. Let's try an example of translating all lowercase characters to uppercase characters.
 
-<pre>$ tr a-z A-Z
+```bash
+$ tr a-z A-Z
 hello
-HELLO</pre>
+HELLO
+```
 
-As you can see we made the ranges of a-z into A-Z and all text we type that is lowercase gets uppercased.
+As you can see, we made the ranges of `a-z` into `A-Z`, and all text we type that is lowercase gets uppercased.
 
 ## Exercise
 
-Try the following command what happens?
+Try the following command. What happens?
 
-<pre>$ tr -d ello
-hello</pre>
+```bash
+$ tr -d ello
+hello
+```
 
 ## Quiz Question
 
@@ -23,4 +27,4 @@ What command is used to translate characters?
 
 ## Quiz Answer
 
-tr
+`tr`
