@@ -1,33 +1,118 @@
 ko:
   menu:
     languages:
-      lang: "🇰🇷 한국어"
+      lang: 🇰🇷 한국어
   home:
+    metadata:
+      title: Linux Journey - 무료 Linux 튜토리얼 및 강좌로 Linux 배우기
+      description:
+        "Learn Linux with free tutorial and beginner-friendly courses.
+        Explore Linux basics, essential Linux commands, and practical skills for mastering
+        Linux step by step. Start your Linux journey today! "
+      keywords:
+        Linux 튜토리얼, command line, Linux 초보자, system administration, Linux
+        가이드, networking, package management, Linux commands
     tagline:
-      title: "리눅스를 무료로 학습하세요."
+      title: Linux-fu 의 길을 무료로 배우세요.
     subscribe:
-      title: "Subscribe"
-      body: "새로운 강좌와 업데이트 소식을 받으세요."
+      title: 구독하기
+      body: 새로운 강좌 및 레슨에 대한 업데이트를 받으세요!
     about:
-      title: "About Us"
-      body: "이 프로젝트는 오픈소스 커뮤니티의 지원을 받고 있습니다."
-      url_name: "프로젝트에 기여하기"
-      url: "https://github.com/labex-labs/linuxjourney"
+      title: 회사 소개
+      body: 오늘 이곳에서 얻은 지식은 오픈 소스 커뮤니티의 힘으로 만들어졌습니다.
+      url_name: 기여 및 협력
+      url: https://github.com/labex-labs/linuxjourney
     contact:
-      title: "Contact Us"
-      body: "버그가 있나요? 불만사항이 있나요? 또는 의견을 보내고 싶나요?"
-      url_name: "연락하세요"
-      url: "https://github.com/labex-labs/linuxjourney/issues"
+      title: 문의하기
+      body: 버그를 발견하셨나요? 아니면 그냥 메시지를 보내고 싶으신가요?
+      url_name: 저희에게 알려주세요
+      url: https://github.com/labex-labs/linuxjourney/issues
   courses:
     titles:
-      exercises: "활동하기"
-      quiz: "퀴즈"
+      exercises: 연습 문제
+      quiz: 퀴즈
   forms:
     buttons:
-      check_answer: "정답 확인하기"
-      continue: "계속하기"
-      return: "메인 메뉴로 돌아가기"
-      home: "홈"
+      check_answer: 정답 확인
+      continue: 계속
+      return: 메인 메뉴로 돌아가기
+      home: 홈
     messages:
-      answer_correct: "정답!"
-      answer_incorrect: "다시 한번 시도하세요"
+      answer_correct: 정답입니다!
+      answer_incorrect: 아쉽네요, 다시 시도해보세요
+  outline:
+    grasshopper:
+      title: Grasshopper
+      lessons:
+        - name: 시작하기
+          description: Linux 란 무엇인가요? 배포판 선택 및 설치부터 시작하세요.
+          slug: getting-started
+        - name: Command Line
+          description: command line 의 기본, 파일 및 디렉토리 탐색 등을 배우세요.
+          slug: command-line
+        - name: Text-Fu
+          description: 기본 텍스트 조작 및 탐색을 배우세요.
+          slug: text-fu
+        - name: 고급 Text-Fu
+          description: Vim 과 Emacs 로 Linux 거미원숭이처럼 텍스트를 탐색하세요.
+          slug: text-fu-advanced
+        - name: 사용자 관리
+          description: 사용자 역할 및 관리에 대해 배우세요.
+          slug: user-management
+        - name: 권한
+          description: 권한 수준 및 권한 수정에 대해 배우세요.
+          slug: access
+        - name: 프로세스
+          description: 시스템에서 실행 중인 프로세스에 대해 배우세요.
+          slug: processes
+        - name: 패키지
+          description: dpkg, apt-get, rpm, yum package management 도구에 대해 모두 배우세요.
+          slug: packages
+    journeyman:
+      title: Journeyman
+      lessons:
+        - name: 장치
+          description: Linux 장치와 이들이 kernel 및 user space 와 상호 작용하는 방식에 대해 배우세요.
+          slug: devices
+        - name: 파일 시스템
+          description: Linux filesystem, 다양한 유형의 filesystems, partitioning 등에 대해 배우세요.
+          slug: filesystem
+        - name: 시스템 부팅
+          description: Linux boot process 의 단계에 대해 배우세요.
+          slug: booting
+        - name: Kernel
+          description: Linux 시스템의 가장 중요한 부분; 작동 방식과 구성 방법에 대해 배우세요.
+          slug: kernel
+        - name: Init
+          description: "다양한 init 시스템: SysV, Upstart, systemd 에 대해 배우세요."
+          slug: init
+        - name: 프로세스 활용
+          description: top, load averages, iostat 등을 사용하여 리소스 모니터링을 배우세요!
+          slug: process-utilization
+        - name: 로깅
+          description: system logs 및 /var/log 디렉토리에 대해 배우세요.
+          slug: logging
+    networking_nomad:
+      title: 네트워킹 유목민
+      lessons:
+        - name: 네트워크 공유
+          description: rsync, scp, nfs 등을 사용한 network sharing 에 대해 배우세요.
+          slug: network-sharing
+        - name: 네트워크 기본
+          description: networking 기본 및 TCP/IP model 에 대해 배우세요.
+          slug: network-fundamentals
+        - name: 서브넷팅
+          description: subnets 과 subnet arithmetic 을 하는 방법에 대해 배우세요!
+          slug: subnetting
+        - name: 라우팅
+          description: packets 이 networks 를 통해 어떻게 routed 되는지 배우세요!
+          slug: routing
+        - name: 네트워크 구성
+          description: Linux 도구를 사용한 network configuration 에 대해 배우세요!
+          slug: network-configuration
+        - name: 문제 해결
+          description: 문제를 진단하고 troubleshoot 하는 데 도움이 되는 일반적인 networking 도구에 대해 배우세요!
+          slug: network-troubleshooting
+        - name: DNS
+          description: DNS 에 대해 알고 싶었던 모든 것과 그 이상.
+          slug: dns

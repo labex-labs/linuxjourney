@@ -1,33 +1,143 @@
 de:
   menu:
     languages:
-      lang: "🇩🇪 Deutsch"
+      lang: 🇩🇪 Deutsch
   home:
+    metadata:
+      title: Linux Journey – Linux lernen mit kostenlosem Linux-Tutorial & Kurs
+      description:
+        Lernen Sie Linux mit kostenlosen Tutorials und anfängerfreundlichen
+        Kursen. Entdecken Sie die Linux-Grundlagen, wichtige Linux-Befehle und praktische
+        Fähigkeiten, um Linux Schritt für Schritt zu meistern. Beginnen Sie Ihre Linux-Reise
+        noch heute!
+      keywords:
+        Linux-Tutorial, command line, Linux für Anfänger, system administration,
+        Linux-Leitfaden, networking, package management, Linux commands
     tagline:
-      title: "Lerne die Art von Linux kennen, kostenlos"
+      title: Lernen Sie die Wege des Linux-fu, kostenlos.
     subscribe:
-      title: "Abonieren"
-      body: "Erhalte Neuigkeiten zu neuen Kursen und Lektionen!"
+      title: Abonnieren
+      body: Erhalten Sie Updates zu neuen Kursen und Lektionen!
     about:
-      title: "Über uns"
-      body: "Das hier zusammengetragene Wissen entstand durch die Unterstützung der open-source Gemeinde."
-      url_name: "Trage zu diesem Projekt bei"
-      url: "https://github.com/labex-labs/linuxjourney"
+      title: Über uns
+      body: Das hier erworbene Wissen wurde von der Open-Source-Community ermöglicht.
+      url_name: Beitragen und Zusammenarbeiten
+      url: https://github.com/labex-labs/linuxjourney
     contact:
-      title: "Kontaktiere uns"
-      body: "Hast du einen Fehler entdeckt? Hast du Beschwerden? Willst du uns nur ein paar Anmerkungen schicken?"
-      url_name: "Lass es uns wissen"
-      url: "https://github.com/labex-labs/linuxjourney/issues"
+      title: Kontaktieren Sie uns
+      body: Einen Fehler entdeckt? Möchten Sie uns einfach eine Nachricht senden?
+      url_name: Lassen Sie es uns wissen
+      url: https://github.com/labex-labs/linuxjourney/issues
   courses:
     titles:
-      exercises: "Übungen"
-      quiz: "Quiz"
+      exercises: Übungen
+      quiz: Quiz
   forms:
     buttons:
-      check_answer: "Antwort prüfen"
-      continue: "Weiter"
-      return: "Zurück zum Hauptmenü"
-      home: "Start"
+      check_answer: Antwort überprüfen
+      continue: Weiter
+      return: Zurück zum Hauptmenü
+      home: Startseite
     messages:
-      answer_correct: "Richtige Antwort!"
-      answer_incorrect: "Nicht ganz, versuche es noch einmal"
+      answer_correct: Richtige Antwort!
+      answer_incorrect: Nicht ganz, versuchen Sie es noch einmal
+  outline:
+    grasshopper:
+      title: Grasshopper
+      lessons:
+        - name: Erste Schritte
+          description:
+            Was ist Linux? Beginnen Sie mit der Auswahl einer Distribution
+            und der Installation.
+          slug: getting-started
+        - name: Command Line
+          description:
+            Lernen Sie die Grundlagen der command line, das Navigieren in
+            Dateien, Verzeichnissen und mehr.
+          slug: command-line
+        - name: Text-Fu
+          description: Lernen Sie grundlegende Textmanipulation und -navigation.
+          slug: text-fu
+        - name: Fortgeschrittenes Text-Fu
+          description: Navigieren Sie Text wie ein Linux-Spinnenaffe mit Vim und Emacs.
+          slug: text-fu-advanced
+        - name: Benutzerverwaltung
+          description: Lernen Sie Benutzerrollen und -verwaltung kennen.
+          slug: user-management
+        - name: Berechtigungen
+          description:
+            Lernen Sie Berechtigungsstufen und das Ändern von Berechtigungen
+            kennen.
+          slug: access
+        - name: Prozesse
+          description: Lernen Sie die laufenden Prozesse auf dem System kennen.
+          slug: processes
+        - name: Pakete
+          description:
+            Erfahren Sie alles über die Paketverwaltungstools dpkg, apt-get,
+            rpm und yum.
+          slug: packages
+    journeyman:
+      title: Journeyman
+      lessons:
+        - name: Geräte
+          description:
+            Lernen Sie Linux-Geräte kennen und wie sie mit dem kernel und
+            dem user space interagieren.
+          slug: devices
+        - name: Das Dateisystem
+          description:
+            Lernen Sie das Linux filesystem, die verschiedenen Arten von
+            filesystems, partitioning und mehr kennen.
+          slug: filesystem
+        - name: System booten
+          description: Lernen Sie die Phasen des Linux boot process kennen.
+          slug: booting
+        - name: Kernel
+          description:
+            Der wichtigste Teil des Linux-Systems; erfahren Sie, wie es funktioniert
+            und wie Sie es konfigurieren.
+          slug: kernel
+        - name: Init
+          description:
+            "Lernen Sie die verschiedenen init systems kennen: SysV, Upstart
+            und systemd."
+          slug: init
+        - name: Prozessauslastung
+          description:
+            Lernen Sie die Ressourcenüberwachung mit top, load averages,
+            iostat und mehr!
+          slug: process-utilization
+        - name: Protokollierung
+          description: Lernen Sie Systemprotokolle und das Verzeichnis /var/log kennen.
+          slug: logging
+    networking_nomad:
+      title: Networking Nomad
+      lessons:
+        - name: Netzwerkfreigabe
+          description:
+            Lernen Sie die Netzwerkfreigabe mit rsync, scp, nfs und mehr
+            kennen.
+          slug: network-sharing
+        - name: Netzwerkgrundlagen
+          description:
+            Lernen Sie die Grundlagen des networking und das TCP/IP model
+            kennen.
+          slug: network-fundamentals
+        - name: Subnetting
+          description: Lernen Sie subnets und wie man subnet arithmetic durchführt!
+          slug: subnetting
+        - name: Routing
+          description: Lernen Sie, wie packets über Netzwerke geroutet werden!
+          slug: routing
+        - name: Netzwerkkonfiguration
+          description: Lernen Sie die Netzwerkkonfiguration mit Linux-Tools!
+          slug: network-configuration
+        - name: Fehlerbehebung
+          description:
+            Lernen Sie gängige networking tools kennen, die Ihnen bei der
+            Diagnose und Fehlerbehebung helfen!
+          slug: network-troubleshooting
+        - name: DNS
+          description: Alles und mehr, was Sie über DNS wissen wollten.
+          slug: dns
