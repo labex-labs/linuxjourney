@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ファイルシステム階層"
+meta_title: "ファイルシステム階層 - ファイルシステム"
 meta_description: "Linux ファイルシステム階層標準（FHS）を学び、/bin、/etc、/var などの主要なディレクトリを理解します。Linux のディレクトリ構造を探求します。"
 meta_keywords: "Linux ファイルシステム階層，FHS, Linux ディレクトリ構造，Linux コマンド，初心者 Linux, Linux チュートリアル，Linux ガイド"
 ---

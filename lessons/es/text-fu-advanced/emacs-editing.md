@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Edición en Emacs"
+meta_title: "Edición en Emacs - Text-Fu Avanzado"
 meta_description: "Aprende los conceptos básicos de edición en Emacs: navega por el texto, corta y pega de manera eficiente. Esta guía para principiantes te ayuda a dominar los comandos esenciales de Emacs para Linux."
 meta_keywords: "Emacs, tutorial de Emacs, comandos de Emacs, editor de texto, editor de Linux, navegación en Emacs, Emacs para principiantes, guía de Emacs"
 ---

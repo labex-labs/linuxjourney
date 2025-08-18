@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Symlinks"
+meta_title: "Symlinks - Файловая система"
 meta_description: "Узнайте о symlinks и hard links в Linux, включая то, как их создавать и управлять ими. Поймите их различия и варианты использования с помощью этого руководства для начинающих."
 meta_keywords: "Linux symlinks, hard links, ln command, symbolic links, Linux file system, Linux tutorial, beginner Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "rsync"
+meta_title: "rsync - ネットワーク共有"
 meta_description: "効率的な Linux ファイル同期とバックアップのために rsync を学びましょう。rsync コマンドとオプションを使用して、リモートおよびローカルのデータ転送を理解します。Linux スキルを向上させましょう！"
 meta_keywords: "rsync, Linux ファイル転送，データバックアップ，ファイル同期，Linux チュートリアル，rsync コマンド，初心者，ガイド"
 ---

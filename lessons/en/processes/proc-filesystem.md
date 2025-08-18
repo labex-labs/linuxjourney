@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "/proc filesystem"
+meta_title: "/proc filesystem - Processes"
 meta_description: "Learn about the /proc filesystem in Linux, how it stores process information, and its structure. Explore process details with this essential Linux guide."
 meta_keywords: "/proc filesystem, Linux processes, process information, Linux tutorial, beginner Linux, Linux guide"
 ---

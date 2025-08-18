@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "dhclient"
+meta_title: "dhclient - 网络配置"
 meta_description: "了解 dhclient，它如何使用 DHCP 获取 IP 地址，以及管理网络租约。理解 dhclient.conf 和 dhclient.leases 文件。Linux 初学者指南。"
 meta_keywords: "dhclient, DHCP, Linux 网络，IP 地址，网络配置，Linux 教程，初学者指南"
 ---

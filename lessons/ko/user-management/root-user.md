@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "root"
+meta_title: "root - 사용자 관리"
 meta_description: "Linux root 사용자, su 명령, /etc/sudoers 파일에 대해 알아보세요. 이 초보자 가이드를 통해 Linux 의 슈퍼유저 접근 및 권한을 이해하세요."
 meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---

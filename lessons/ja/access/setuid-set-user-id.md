@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Setuid"
+meta_title: "Setuid - パーミッション"
 meta_description: "Linux の Setuid (SUID) パーミッション、その仕組み、および変更方法について学びます。Linux での安全なファイルアクセスにおける SUID を理解します。"
 meta_keywords: "Linux Setuid, SUID, Linux パーミッション，chmod, passwd コマンド，Linux セキュリティ，初心者 Linux, Linux チュートリアル"
 ---

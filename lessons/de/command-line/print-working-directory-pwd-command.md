@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "pwd (Aktuelles Arbeitsverzeichnis ausgeben)"
+meta_title: "pwd (Aktuelles Arbeitsverzeichnis ausgeben) - Command Line"
 meta_description: "Erfahren Sie, wie Sie den Befehl 'pwd' in Linux verwenden, um Ihr aktuelles Arbeitsverzeichnis auszugeben. Verstehen Sie Linux-Dateisystempfade und -navigation für Anfänger."
 meta_keywords: "pwd Befehl, Linux Verzeichnis, aktuelles Verzeichnis, Linux Pfad, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---

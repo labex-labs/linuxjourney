@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Visão Geral do DHCP"
+meta_title: "Visão Geral do DHCP - Noções Básicas de Rede"
 meta_description: "Aprenda sobre DHCP (Dynamic Host Configuration Protocol) no Linux. Entenda como o DHCP atribui endereços IP e seu processo de quatro etapas. Comece sua jornada de rede Linux!"
 meta_keywords: "DHCP, Dynamic Host Configuration Protocol, rede Linux, endereço IP, tutorial DHCP, iniciante, guia"
 ---

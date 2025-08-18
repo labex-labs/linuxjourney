@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "wc y nl"
+meta_title: "wc y nl - Text-Fu"
 meta_description: "Aprenda los comandos de Linux wc y nl. Comprenda el recuento de palabras, la numeración de líneas y el análisis de archivos. ¡Mejore sus habilidades de línea de comandos de Linux hoy mismo!"
 meta_keywords: "comando wc, comando nl, recuento de palabras en Linux, números de línea en Linux, análisis de archivos, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---

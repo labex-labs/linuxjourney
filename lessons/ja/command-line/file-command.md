@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "file"
+meta_title: "file - コマンドライン"
 meta_description: "Linux の`file`コマンドを使用して、ファイルの種類と内容を識別する方法を学びます。この初心者向けのガイドで、Linux のファイル命名規則を理解しましょう。"
 meta_keywords: "Linux file コマンド，ファイルタイプ識別，Linux チュートリアル，ファイル命名，初心者向け Linux, Linux ガイド"
 ---

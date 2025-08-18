@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "I/O-Überwachung"
+meta_title: "I/O-Überwachung - Prozessauslastung"
 meta_description: "Erfahren Sie, wie Sie iostat für die Linux-I/O-Überwachung verwenden. Verstehen Sie CPU- und Festplattennutzungsmetriken mit diesem wichtigen Befehl. Verbessern Sie die Systemleistung!"
 meta_keywords: "iostat, Linux I/O-Überwachung, CPU-Auslastung, Festplattennutzung, Linux-Befehle, Anfänger, Tutorial, Anleitung"
 ---

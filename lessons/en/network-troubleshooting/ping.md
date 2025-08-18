@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "ping"
+meta_title: "ping - Troubleshooting"
 meta_description: "Learn how to use the Linux ping command to test network connectivity and troubleshoot issues. Understand ICMP, TTL, and roundtrip time for effective network diagnostics."
 meta_keywords: "Linux ping, network connectivity, ICMP, TTL, Linux networking, beginner Linux, Linux tutorial, ping command"
 ---

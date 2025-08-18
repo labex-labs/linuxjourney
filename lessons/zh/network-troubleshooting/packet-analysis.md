@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "数据包分析"
+meta_title: "数据包分析 - 故障排除"
 meta_description: "使用 tcpdump 学习数据包分析基础知识。通过这份适合初学者的 Linux 指南，了解网络流量，捕获数据，并解释输出。"
 meta_keywords: "tcpdump, 数据包分析，网络分析，Linux 网络，初学者教程，Wireshark, Linux 命令，网络流量"
 ---

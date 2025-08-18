@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Linux Mint"
+meta_title: "Linux Mint - Getting Started"
 meta_description: "Learn about Linux Mint, its Ubuntu base, package management, and why it's great for beginners. Discover its features and how to get started today!"
 meta_keywords: "Linux Mint, Ubuntu, Linux for beginners, Linux distribution, Linux tutorial, Debian package manager, Linux guide"
 ---

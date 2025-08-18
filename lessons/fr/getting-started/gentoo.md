@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Gentoo"
+meta_title: "Gentoo - Démarrage"
 meta_description: "Découvrez Gentoo Linux, son gestionnaire de paquets Portage et sa grande configurabilité. Découvrez si cette distribution flexible est faite pour votre parcours Linux avancé."
 meta_keywords: "Gentoo Linux, Portage, distribution Linux, tutoriel Gentoo, débutant Linux, guide Linux, configurabilité Gentoo"
 ---

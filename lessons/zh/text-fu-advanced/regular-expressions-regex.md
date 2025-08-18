@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "regex (正则表达式)"
+meta_title: "regex (正则表达式) - 高级文本操作"
 meta_description: "学习 Linux 模式匹配的正则表达式 (regex)。理解正则表达式语法，如 ^、$、. 和 []，用于文本操作。提高您的 grep 技能！"
 meta_keywords: "正则表达式，regex, Linux regex, grep regex, 模式匹配，regex 教程，Linux 命令，初学者"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Umask"
+meta_title: "Umask - Разрешения"
 meta_description: "Узнайте, как использовать команду `umask` для управления разрешениями файлов по умолчанию в Linux. Разберитесь в числовых разрешениях и легко управляйте доступом к новым файлам."
 meta_keywords: "umask, linux permissions, file permissions, linux commands, beginner linux, linux tutorial, default permissions"
 ---

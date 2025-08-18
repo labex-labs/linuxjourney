@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Ownership Permissions"
+meta_title: "Ownership Permissions - Permissions"
 meta_description: "Learn how to change file ownership in Linux using chown and chgrp commands. Understand user and group permissions with this beginner-friendly Linux tutorial."
 meta_keywords: "chown, chgrp, Linux file ownership, Linux permissions, Linux commands, beginner Linux, Linux tutorial, Linux guide"
 ---

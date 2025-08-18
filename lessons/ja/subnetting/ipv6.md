@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "IPv6"
+meta_title: "IPv6 - サブネット化"
 meta_description: "IPv6、その目的、そして IPv4 をどのように補完するかについて学びます。IPv6 アドレス指定と、より多くのデバイスをインターネットに接続する上でのその役割を理解します。"
 meta_keywords: "IPv6, IPv4, IP アドレス，Linux ネットワーキング，ネットワークプロトコル，初心者，チュートリアル，ガイド"
 ---

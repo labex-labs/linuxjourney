@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "cat"
+meta_title: "cat - Command Line"
 meta_description: "Learn how to use the 'cat' command in Linux to view file contents and concatenate files. A beginner-friendly guide to basic Linux commands."
 meta_keywords: "cat command, Linux cat, view file contents, concatenate files, Linux commands, beginner Linux, Linux tutorial, Linux guide"
 ---

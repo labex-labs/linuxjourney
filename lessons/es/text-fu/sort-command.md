@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "sort"
+meta_title: "sort - Text-Fu"
 meta_description: "Aprende a usar el comando sort de Linux para ordenar archivos de texto. Descubre opciones como el orden inverso y numérico. ¡Mejora tus habilidades en la línea de comandos de Linux!"
 meta_keywords: "comando sort de Linux, sort -r, sort -n, tutorial de Linux, línea de comandos, Linux para principiantes, guía de sort"
 ---

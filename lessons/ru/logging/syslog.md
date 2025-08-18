@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "syslog"
+meta_title: "syslog - Ведение журнала"
 meta_description: "Узнайте о syslog и rsyslog в Linux, как управлять системными логами и использовать команду logger. Начните с этого удобного для новичков руководства!"
 meta_keywords: "syslog, rsyslog, логи Linux, команда logger, /var/log/syslog, учебник Linux, Linux для начинающих, системное логирование"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Protocolos de Vetor de Distância"
+meta_title: "Protocolos de Vetor de Distância - Roteamento"
 meta_description: "Aprenda sobre protocolos de vetor de distância como o RIP, como eles funcionam e suas limitações para o roteamento de rede. Entenda a contagem de saltos e a eficiência da rede."
 meta_keywords: "protocolos de vetor de distância, RIP, protocolo de informação de roteamento, contagem de saltos, roteamento de rede, rede Linux, guia para iniciantes, tutorial"
 ---

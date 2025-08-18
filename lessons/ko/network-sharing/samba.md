@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Samba"
+meta_title: "Samba - 네트워크 공유"
 meta_description: "Windows 및 macOS 용 Linux 에서 Samba 파일 공유를 설정하는 방법을 알아보세요. 이 초보자 가이드는 설치, 구성 및 공유 액세스를 다룹니다. 지금 시작하세요!"
 meta_keywords: "Samba, Linux 파일 공유, smb.conf, CIFS, smbclient, Linux 튜토리얼, 초보자 가이드"
 ---

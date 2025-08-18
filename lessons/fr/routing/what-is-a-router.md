@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Qu'est-ce qu'un routeur ?"
+meta_title: "Qu'est-ce qu'un routeur ? - Routage"
 meta_description: "Découvrez ce qu'est un routeur, comment il fonctionne et son rôle dans la mise en réseau. Comprenez le routage, les sauts et la livraison de paquets pour les débutants."
 meta_keywords: "routeur, mise en réseau, routage, sauts, commutation de paquets, réseau Linux, tutoriel pour débutants, guide réseau"
 ---

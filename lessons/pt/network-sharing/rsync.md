@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "rsync"
+meta_title: "rsync - Compartilhamento de Rede"
 meta_description: "Aprenda rsync para sincronização e backups eficientes de arquivos Linux. Entenda a transferência de dados remota e local com comandos e opções rsync. Melhore suas habilidades em Linux!"
 meta_keywords: "rsync, transferência de arquivos Linux, backup de dados, sincronização de arquivos, tutorial Linux, comandos rsync, iniciante, guia"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "kill (Terminar)"
+meta_title: "kill (Terminar) - Procesos"
 meta_description: "Aprende a usar el comando 'kill' de Linux para terminar procesos. Comprende SIGTERM, SIGKILL y otras señales para la gestión de procesos. ¡Empieza a aprender ahora!"
 meta_keywords: "comando kill, procesos Linux, SIGTERM, SIGKILL, tutorial Linux, principiante, gestión de procesos, guía Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "进程创建"
+meta_title: "进程创建 - 进程"
 meta_description: "了解 Linux 进程创建、fork 以及父/子进程。理解 PID、PPID 和 init 进程。获取 Linux 进程管理的初学者指南。"
 meta_keywords: "Linux 进程创建，fork, PID, PPID, init 进程，Linux 进程，初学者，教程，指南"
 ---

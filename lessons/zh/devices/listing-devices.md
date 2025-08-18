@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - 设备"
 meta_description: "学习如何使用 lsusb、lspci 和 lsscsi 命令列出 USB、PCI 和 SCSI 设备。通过这份适合初学者的指南了解您的 Linux 硬件。"
 meta_keywords: "lsusb, lspci, lsscsi, Linux 命令，设备列表，硬件信息，Linux 教程，初学者指南"
 ---

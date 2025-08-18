@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "内核安装"
+meta_title: "内核安装 - 内核"
 meta_description: "学习如何安装和管理 Linux 内核。了解内核版本，使用 `uname -r` 和 apt 命令。开始你的 Linux 内核之旅！"
 meta_keywords: "Linux 内核，安装内核，uname -r, apt dist-upgrade, 内核管理，Linux 教程，Linux 入门，Linux 指南"
 ---

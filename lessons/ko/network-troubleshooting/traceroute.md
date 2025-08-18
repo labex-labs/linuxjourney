@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "traceroute"
+meta_title: "traceroute - 문제 해결"
 meta_description: "Linux traceroute 명령어를 사용하여 네트워크 경로를 추적하고 연결 문제를 해결하는 방법을 배웁니다. 초보자를 위한 TTL 및 패킷 라우팅을 이해합니다."
 meta_keywords: "traceroute, Linux 네트워킹, 네트워크 문제 해결, TTL, Linux 명령어, 초보자, 튜토리얼"
 ---

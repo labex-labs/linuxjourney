@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "スワップ"
+meta_title: "スワップ - ファイルシステム"
 meta_description: "Linux のスワップ領域、その仕組み、スワップパーティションの作成と管理方法について学びます。このガイドでシステムのメモリ使用量を最適化しましょう！"
 meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 仮想メモリ，Linux 初心者，Linux チュートリアル"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Gerätetypen"
+meta_title: "Gerätetypen - Geräte"
 meta_description: "Erfahren Sie mehr über Linux-Gerätetypen (character, block, pipe, socket) und wie Sie diese mit `ls -l /dev` identifizieren können. Verstehen Sie Major/Minor Device Numbers. Linux-Tutorial für Anfänger."
 meta_keywords: "Linux-Gerätetypen, ls -l /dev, character device, block device, major minor device number, Linux-Tutorial, Linux-Anleitung, Anfänger"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Vim (Vi 改进版)"
+meta_title: "Vim (Vi 改进版) - 高级文本操作"
 meta_description: "学习 Vim，这款强大而轻量级的 Vi 改进版 Linux 文本编辑器。了解基本用法以及 Vim 对 Linux 用户至关重要的原因。"
 meta_keywords: "Vim, Vi 编辑器，Linux 文本编辑器，Vim 教程，Linux 命令，Linux 初学者，Vim 指南"
 ---

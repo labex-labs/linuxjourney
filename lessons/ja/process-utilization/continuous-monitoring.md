@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "継続的な監視"
+meta_title: "継続的な監視 - プロセス利用率"
 meta_description: "sar を使用した継続的な Linux システム監視について学びます。インストール、データ収集、およびパフォーマンスのための履歴リソース使用量の分析方法を理解します。始めましょう！"
 meta_keywords: "sar, sysstat, Linux monitoring, system performance, continuous monitoring, beginner, tutorial, guide"
 ---

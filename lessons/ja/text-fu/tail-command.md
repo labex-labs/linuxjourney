@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "tail"
+meta_title: "tail - テキスト操作"
 meta_description: "`tail`コマンドを使って Linux でファイルの末尾を表示し、ログを監視する方法を学びます。リアルタイム更新のための`tail -f`を発見しましょう。Linux の旅を始めましょう！"
 meta_keywords: "tail コマンド，Linux tail, tail -f, ログ表示，Linux チュートリアル，Linux 初心者，Linux ガイド"
 ---

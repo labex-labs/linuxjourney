@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "シェル"
+meta_title: "シェル - コマンドライン"
 meta_description: "Linux シェル、Bash、そして`echo`のような基本的なコマンドについて学びます。シェルプロンプトを理解し、この初心者向けのガイドで Linux の旅を始めましょう。"
 meta_keywords: "Linux シェル，Bash, echo コマンド，Linux チュートリアル，コマンドライン，初心者 Linux, シェルプロンプト，Linux ガイド"
 ---

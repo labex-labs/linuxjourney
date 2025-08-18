@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "テキストエディタ"
+meta_title: "テキストエディタ - 高度なテキスト操作"
 meta_description: "Vim や Emacs のような Linux テキストエディタについて学びましょう。それらの用途とシステムナビゲーションにおける重要性を発見してください。Linux テキストエディタの旅を始めましょう！"
 meta_keywords: "Linux テキストエディタ，Vim, Emacs, Linux コマンド，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---

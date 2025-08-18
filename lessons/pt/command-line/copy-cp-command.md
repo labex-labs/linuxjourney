@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "cp (Copiar)"
+meta_title: "cp (Copiar) - Linha de Comando"
 meta_description: "Aprenda a usar o comando Linux cp para copiar arquivos e diretórios. Entenda opções como -r e curingas. Comece sua jornada Linux hoje!"
 meta_keywords: "comando cp, copiar arquivos Linux, tutorial Linux, Linux para iniciantes, cp -r, curingas Linux, guia Linux"
 ---

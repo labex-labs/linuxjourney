@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Протоколы маршрутизации"
+meta_title: "Протоколы маршрутизации - Маршрутизация"
 meta_description: "Узнайте о протоколах маршрутизации, таких как distance vector и link state. Поймите network convergence и то, как маршрутизаторы адаптируются к изменениям. Начните свой путь в сетевых технологиях Linux!"
 meta_keywords: "протоколы маршрутизации, network convergence, distance vector, link state, сетевые технологии Linux, руководство для начинающих, сетевой учебник"
 ---

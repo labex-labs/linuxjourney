@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "route"
+meta_title: "route - Network Config"
 meta_description: "Learn how to add and delete network routes using the Linux route and ip commands. Understand routing table management for beginners and intermediate users."
 meta_keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
 ---

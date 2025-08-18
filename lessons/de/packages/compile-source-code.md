@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Quellcode kompilieren"
+meta_title: "Quellcode kompilieren - Pakete"
 meta_description: "Erfahren Sie, wie Sie Quellcode unter Linux mit make, configure und checkinstall kompilieren. Verstehen Sie den Build-Prozess für Anfänger und fortgeschrittene Benutzer."
 meta_keywords: "Quellcode kompilieren, make install, checkinstall, Linux kompilieren, build-essential, Linux Tutorial, Anfängerleitfaden"
 ---

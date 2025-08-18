@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Emacs"
+meta_title: "Emacs - Продвинутый Text-Fu"
 meta_description: "Изучите Emacs, мощный и расширяемый текстовый редактор для Linux. Разберитесь с буферами Emacs и базовым использованием. Начните свое путешествие с Emacs сегодня!"
 meta_keywords: "Emacs, текстовый редактор Linux, учебник Emacs, буферы Emacs, команды Linux, для начинающих, руководство"
 ---

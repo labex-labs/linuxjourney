@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Обзор DHCP"
+meta_title: "Обзор DHCP - Основы сети"
 meta_description: "Узнайте о DHCP (Dynamic Host Configuration Protocol) в Linux. Поймите, как DHCP назначает IP-адреса и его четырехэтапный процесс. Начните свой путь в сетевых технологиях Linux!"
 meta_keywords: "DHCP, Dynamic Host Configuration Protocol, Сеть Linux, IP-адрес, Учебник DHCP, для начинающих, руководство"
 ---

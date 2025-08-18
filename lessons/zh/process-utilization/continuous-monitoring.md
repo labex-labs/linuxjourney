@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "持续监控"
+meta_title: "持续监控 - 进程利用率"
 meta_description: "使用 sar 学习持续的 Linux 系统监控。了解安装、数据收集以及如何分析历史资源使用情况以优化性能。立即开始！"
 meta_keywords: "sar, sysstat, Linux 监控，系统性能，持续监控，初学者，教程，指南"
 ---

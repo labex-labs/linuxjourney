@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "traceroute"
+meta_title: "traceroute - Resolución de Problemas"
 meta_description: "Aprenda a usar el comando traceroute de Linux para rastrear rutas de red y solucionar problemas de conectividad. Comprenda TTL y el enrutamiento de paquetes para principiantes."
 meta_keywords: "traceroute, redes Linux, solución de problemas de red, TTL, comandos Linux, principiante, tutorial"
 ---

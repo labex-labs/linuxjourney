@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Disk Usage"
+meta_title: "Disk Usage - The Filesystem"
 meta_description: "Learn how to check disk usage and free space in Linux using the df and du commands. Understand their differences and when to use each. Linux disk management tutorial."
 meta_keywords: "df command, du command, Linux disk usage, check free space, Linux tutorial, beginner Linux, disk management, Linux guide"
 ---

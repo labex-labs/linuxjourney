@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "系统日志记录"
+meta_title: "系统日志记录 - 日志"
 meta_description: "了解 Linux 系统日志记录、syslog 以及如何查看 /var/log 中的日志文件。通过这份初学者指南了解 rsyslogd 并监控系统事件。"
 meta_keywords: "Linux 日志记录，syslog, rsyslogd, var log, 系统日志，Linux 教程，初学者指南"
 ---

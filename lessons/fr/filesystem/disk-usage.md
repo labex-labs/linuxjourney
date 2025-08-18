@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Utilisation du disque"
+meta_title: "Utilisation du disque - Le Filesystem"
 meta_description: "Apprenez à vérifier l'utilisation du disque et l'espace libre sous Linux à l'aide des commandes df et du. Comprenez leurs différences et quand utiliser chacune d'elles. Tutoriel de gestion de disque Linux."
 meta_keywords: "commande df, commande du, utilisation du disque Linux, vérifier l'espace libre, tutoriel Linux, Linux pour débutants, gestion de disque, guide Linux"
 ---

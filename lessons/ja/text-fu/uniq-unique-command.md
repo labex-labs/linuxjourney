@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "uniq (ユニーク)"
+meta_title: "uniq (ユニーク) - テキスト操作"
 meta_description: "Linux の`uniq`コマンドを使用して、テキストファイルから重複する行を削除する方法を学びます。-c、-u、-d などのオプションを発見し、`sort`と組み合わせて効果的なデータクリーンアップを行う方法を学びましょう。"
 meta_keywords: "uniq コマンド，Linux uniq, 重複削除，sort uniq, Linux チュートリアル，テキスト処理，初心者 Linux, Linux ガイド"
 ---

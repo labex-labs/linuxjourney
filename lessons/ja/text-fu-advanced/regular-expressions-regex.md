@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "regex（正規表現）"
+meta_title: "regex（正規表現） - 高度なテキスト操作"
 meta_description: "Linux のパターンマッチングのための正規表現（regex）を学びます。テキスト操作のための^、$、.、[]などの regex 構文を理解します。grep スキルを向上させましょう！"
 meta_keywords: "正規表現，regex, Linux regex, grep regex, パターンマッチング，regex チュートリアル，Linux コマンド，初心者"
 ---

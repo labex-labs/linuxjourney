@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "aide"
+meta_title: "aide - Command Line"
 meta_description: "Apprenez à utiliser la commande 'help' dans Bash pour une assistance rapide en ligne de commande. Comprenez les commandes intégrées et trouvez les options pour les programmes Linux."
 meta_keywords: "commande help Linux, aide Bash, aide ligne de commande, commandes Linux, Linux débutant, tutoriel Linux, tutoriel Bash"
 ---

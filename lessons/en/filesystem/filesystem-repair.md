@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Filesystem Repair"
+meta_title: "Filesystem Repair - The Filesystem"
 meta_description: "Learn to use fsck for Linux filesystem repair and data recovery. Understand how to check and fix disk errors with this essential command. Start your Linux journey!"
 meta_keywords: "fsck, filesystem repair, Linux commands, disk errors, data recovery, Linux tutorial, beginner guide"
 ---

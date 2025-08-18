@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "/proc-Dateisystem"
+meta_title: "/proc-Dateisystem - Prozesse"
 meta_description: "Erfahren Sie mehr über das /proc-Dateisystem in Linux, wie es Prozessinformationen speichert und wie es strukturiert ist. Entdecken Sie Prozessdetails mit diesem wichtigen Linux-Leitfaden."
 meta_keywords: "/proc-Dateisystem, Linux-Prozesse, Prozessinformationen, Linux-Tutorial, Linux für Anfänger, Linux-Leitfaden"
 ---

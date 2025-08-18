@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Vim (Vi Amélioré)"
+meta_title: "Vim (Vi Amélioré) - Text-Fu Avancé"
 meta_description: "Apprenez Vim, l'éditeur de texte Vi amélioré, puissant et léger pour Linux. Comprenez son utilisation de base et pourquoi Vim est essentiel pour les utilisateurs de Linux."
 meta_keywords: "Vim, éditeur Vi, éditeur de texte Linux, tutoriel Vim, commandes Linux, Linux débutant, guide Vim"
 ---

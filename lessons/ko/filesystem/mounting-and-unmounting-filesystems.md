@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "mount 및 umount"
+meta_title: "mount 및 umount - 파일 시스템"
 meta_description: "Linux mount 및 umount 명령을 사용하여 파일 시스템을 관리하는 방법을 배웁니다. 초보자를 위한 장치 마운트, 언마운트 및 UUID 를 이해합니다."
 meta_keywords: "Linux mount, umount command, mount filesystem, Linux UUID, beginner Linux, Linux tutorial, mount point, Linux guide"
 ---

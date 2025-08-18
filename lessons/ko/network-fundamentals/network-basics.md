@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "네트워크 기본 사항"
+meta_title: "네트워크 기본 사항 - 네트워크 기본"
 meta_description: "Linux 네트워크 기본 사항을 배우세요: WAN, LAN, WLAN, 라우터 및 호스트를 이해하세요. 이 초보자 가이드로 네트워킹 여정을 시작하세요!"
 meta_keywords: "Linux 네트워크 기본 사항, WAN, LAN, WLAN, 네트워크 튜토리얼, 초보자 Linux, 네트워킹 가이드, Linux 개념"
 ---

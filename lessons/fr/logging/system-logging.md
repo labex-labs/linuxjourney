@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Journalisation du système"
+meta_title: "Journalisation du système - Logging"
 meta_description: "Découvrez la journalisation système Linux, syslog et comment afficher les fichiers journaux dans /var/log. Comprenez rsyslogd et surveillez les événements système avec ce guide pour débutants."
 meta_keywords: "Journalisation Linux, syslog, rsyslogd, var log, journaux système, tutoriel Linux, guide du débutant"
 ---

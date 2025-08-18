@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Linux Mint"
+meta_title: "Linux Mint - 시작하기"
 meta_description: "Linux Mint, Ubuntu 기반, 패키지 관리, 그리고 초보자에게 좋은 이유에 대해 알아보세요. 그 기능과 오늘 시작하는 방법을 알아보세요!"
 meta_keywords: "Linux Mint, Ubuntu, 초보자를 위한 Linux, Linux 배포판, Linux 튜토리얼, Debian package manager, Linux 가이드"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Boot Process: Kernel"
+meta_title: "Boot Process: Kernel - Boot the System"
 meta_description: "Learn about the Linux boot process, kernel initialization, and the role of initramfs. Understand how the kernel mounts the root filesystem. Linux boot process guide."
 meta_keywords: "Linux boot process, kernel boot, initramfs, initrd, root filesystem, Linux tutorial, beginner Linux, Linux guide"
 ---

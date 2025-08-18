@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "권한 수정"
+meta_title: "권한 수정 - 권한"
 meta_description: "Linux 에서 chmod 명령어를 사용하여 파일 권한을 수정하는 방법을 배웁니다. 안전한 파일 관리를 위한 심볼릭 및 숫자 모드를 이해합니다. 지금 학습을 시작하세요!"
 meta_keywords: "chmod 명령어, Linux 권한, 파일 권한, chmod 튜토리얼, Linux 보안, 초보자 Linux, Linux 가이드, chmod 숫자"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "距离矢量协议"
+meta_title: "距离矢量协议 - 路由"
 meta_description: "了解距离矢量协议（如 RIP）的工作原理及其在网络路由中的局限性。理解跳数和网络效率。"
 meta_keywords: "距离矢量协议，RIP, 路由信息协议，跳数，网络路由，Linux 网络，初学者指南，教程"
 ---

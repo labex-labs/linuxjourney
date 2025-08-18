@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Compilar Código-Fonte"
+meta_title: "Compilar Código-Fonte - Pacotes"
 meta_description: "Aprenda a compilar código-fonte no Linux usando make, configure e checkinstall. Entenda o processo de construção para usuários iniciantes e intermediários."
 meta_keywords: "compilar código-fonte, make install, checkinstall, compilar Linux, build-essential, tutorial Linux, guia para iniciantes"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "sysfs"
+meta_title: "sysfs - Périphériques"
 meta_description: "Découvrez sysfs, un système de fichiers virtuel pour des informations et une gestion détaillées des périphériques Linux. Comprenez /sys vs /dev. Commencez votre parcours Linux !"
 meta_keywords: "sysfs, répertoire /sys, périphériques Linux, système de fichiers virtuel, tutoriel Linux, guide du débutant"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "文本编辑器"
+meta_title: "文本编辑器 - 高级文本操作"
 meta_description: "了解 Vim 和 Emacs 等 Linux 文本编辑器。探索它们的用途以及对系统导航的重要性。开始你的 Linux 文本编辑器之旅！"
 meta_keywords: "Linux 文本编辑器，Vim, Emacs, Linux commands, Linux 教程，Linux 入门，Linux 指南"
 ---

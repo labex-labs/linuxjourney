@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Fedora"
+meta_title: "Fedora - Getting Started"
 meta_description: "Learn about Fedora Linux, its connection to RHEL, and package management. Discover why Fedora is a great free Red Hat-based OS for beginners and desktops."
 meta_keywords: "Fedora Linux, RHEL, Red Hat, Linux tutorial, package management, beginner Linux, Linux guide, free OS"
 ---

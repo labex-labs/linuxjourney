@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "시스템 로깅"
+meta_title: "시스템 로깅 - 로깅"
 meta_description: "Linux 시스템 로깅, syslog, 그리고 /var/log에서 로그 파일을 보는 방법을 배웁니다. rsyslogd 를 이해하고 이 초보자 가이드를 통해 시스템 이벤트를 모니터링하세요."
 meta_keywords: "Linux 로깅, syslog, rsyslogd, var log, 시스템 로그, Linux 튜토리얼, 초보자 가이드"
 ---

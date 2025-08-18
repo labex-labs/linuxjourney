@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "rm (削除)"
+meta_title: "rm (削除) - コマンドライン"
 meta_description: "Linux で`rm`コマンドを使用してファイルやディレクトリを安全に削除する方法を学びます。-f、-i、-r、および rmdir などのオプションを理解しましょう。Linux の学習を始めましょう！"
 meta_keywords: "rm コマンド，ファイル削除 Linux, ディレクトリ削除，Linux チュートリアル，Linux 初心者，rmdir, Linux ガイド"
 ---

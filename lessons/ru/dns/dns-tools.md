@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Инструменты DNS"
+meta_title: "Инструменты DNS - DNS"
 meta_description: "Изучите команды nslookup и dig для DNS-запросов и устранения неполадок в Linux. Узнайте, как использовать эти основные инструменты DNS с нашим руководством для начинающих."
 meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Vim のナビゲーション"
+meta_title: "Vim のナビゲーション - 高度なテキスト操作"
 meta_description: "h、j、k、l キーを使った Vim のナビゲーションの基本を学びます。初心者向けの Vim の基本的な動きを理解し、Linux コマンドラインスキルを向上させます。"
 meta_keywords: "Vim ナビゲーション，Vim チュートリアル，Linux Vim, Vim 移動，Vim の基本，初心者 Vim, Linux テキストエディタ，Vim ガイド"
 ---

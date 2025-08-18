@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "NAT"
+meta_title: "NAT - Subnetting"
 meta_description: "Aprenda sobre NAT (Network Address Translation) en Linux, cómo funciona y su papel en la seguridad de la red. Comprenda las IP privadas vs. públicas. Guía de redes de Linux."
 meta_keywords: "NAT, Network Address Translation, redes Linux, IP privada, IP pública, tutorial Linux, guía para principiantes"
 ---

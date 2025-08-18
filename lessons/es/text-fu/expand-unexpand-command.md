@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "expand y unexpand"
+meta_title: "expand y unexpand - Text-Fu"
 meta_description: "Aprenda a convertir tabulaciones a espacios con el comando `expand` y espacios a tabulaciones con `unexpand`. Mejore el formato de archivos de texto con este tutorial de Linux."
 meta_keywords: "comando expand, comando unexpand, tabulaciones Linux, espacios Linux, formato de texto, tutorial Linux, Linux para principiantes, guía Linux"
 ---

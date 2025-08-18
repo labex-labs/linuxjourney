@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "데비안"
+meta_title: "데비안 - 시작하기"
 meta_description: "Debian Linux, 안정 및 롤링 릴리스, 패키지 관리에 대해 알아보세요. Debian 이 초보자와 중급 사용자에게 훌륭한 핵심 OS 인 이유를 알아보세요."
 meta_keywords: "Debian, Debian Linux, Linux 배포판, 롤링 릴리스, 패키지 관리, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---

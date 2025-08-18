@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Interfaces de Rede"
+meta_title: "Interfaces de Rede - Configuração de Rede"
 meta_description: "Aprenda sobre interfaces de rede Linux, ifconfig e comandos ip. Entenda como configurar e gerenciar configurações de rede. Comece sua jornada de rede Linux!"
 meta_keywords: "interfaces de rede Linux, ifconfig, comando ip, configuração de rede, rede Linux, iniciante, tutorial, guia"
 ---

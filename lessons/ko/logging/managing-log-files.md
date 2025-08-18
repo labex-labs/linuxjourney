@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "로그 파일 관리"
+meta_title: "로그 파일 관리 - 로깅"
 meta_description: "logrotate 를 사용하여 Linux 로그 파일을 효율적으로 관리하는 방법을 배우십시오. 디스크 공간을 절약하기 위한 로그 로테이션, 압축 및 구성을 알아보세요. 오늘 학습을 시작하세요!"
 meta_keywords: "logrotate, Linux 로그, 로그 관리, 로그 로테이션, Linux 튜토리얼, 초보자, 가이드, 디스크 공간"
 ---

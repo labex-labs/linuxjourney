@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Emacs 缓冲区导航"
+meta_title: "Emacs 缓冲区导航 - 高级文本操作"
 meta_description: "学习 Emacs 缓冲区导航命令。通过这个适合初学者的 Emacs 教程，高效地切换、关闭和分割缓冲区。提升您的工作效率！"
 meta_keywords: "Emacs 缓冲区导航，Emacs 命令，C-x b, C-x k, Linux 教程，Emacs 指南，Emacs 初学者"
 ---

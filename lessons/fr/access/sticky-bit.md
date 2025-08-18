@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Le Sticky Bit"
+meta_title: "Le Sticky Bit - Permissions"
 meta_description: "Découvrez le sticky bit de Linux, son but dans les répertoires partagés comme /tmp, et comment le définir en utilisant chmod. Comprenez cette permission de fichier clé !"
 meta_keywords: "sticky bit Linux, chmod +t, répertoire /tmp, permissions Linux, sécurité des fichiers, tutoriel Linux, Linux pour débutants"
 ---

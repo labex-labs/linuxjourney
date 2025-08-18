@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "/etc/group"
+meta_title: "/etc/group - 사용자 관리"
 meta_description: "Linux 의 /etc/group 파일에 대해 알아보고, 그룹 관리, GID, 사용자 권한을 이해합니다. 초보자를 위한 필수 Linux 그룹 파일 튜토리얼입니다."
 meta_keywords: "/etc/group, Linux 그룹, 그룹 관리, GID, Linux 권한, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---

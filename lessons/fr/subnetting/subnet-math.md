@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Calcul de Sous-réseau"
+meta_title: "Calcul de Sous-réseau - Subnetting"
 meta_description: "Apprenez les bases du calcul de sous-réseau et comment calculer les hôtes disponibles sur un réseau. Comprenez l'adressage IP et les masques de sous-réseau pour les débutants. Commencez votre parcours Linux !"
 meta_keywords: "calcul de sous-réseau, adresse IP, masque de sous-réseau, hôtes réseau, binaire, réseau Linux, tutoriel débutant, guide"
 ---

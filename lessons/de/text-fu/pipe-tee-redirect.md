@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "pipe und tee"
+meta_title: "pipe und tee - Text-Fu"
 meta_description: "Lernen Sie Linux-Pipes und den tee-Befehl für einen effizienten Datenfluss in der Befehlszeile. Verstehen Sie stdout, stdin und Dateiausgabe. Verbessern Sie Ihre Linux-Kenntnisse!"
 meta_keywords: "Linux Pipe, tee Befehl, Linux Tutorial, stdout, stdin, Linux für Anfänger, Befehlszeile, Linux Anleitung"
 ---

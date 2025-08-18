@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "控制终端"
+meta_title: "控制终端 - 进程"
 meta_description: "了解 Linux 中控制终端的知识，包括 TTY 与 PTS 的区别，以及进程如何绑定到它们。理解守护进程。开始您的 Linux 之旅！"
 meta_keywords: "控制终端，TTY, PTS, Linux 终端，守护进程，Linux 初学者，Linux 教程，Linux 指南"
 ---

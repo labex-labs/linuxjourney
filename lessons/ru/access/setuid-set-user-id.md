@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Setuid"
+meta_title: "Setuid - Разрешения"
 meta_description: "Узнайте о разрешениях Linux Setuid (SUID), как они работают и как их изменять. Поймите SUID для безопасного доступа к файлам в Linux."
 meta_keywords: "Linux Setuid, SUID, разрешения Linux, chmod, команда passwd, безопасность Linux, Linux для начинающих, учебник по Linux"
 ---

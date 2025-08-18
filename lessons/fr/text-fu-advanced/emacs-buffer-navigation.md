@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Navigation des tampons Emacs"
+meta_title: "Navigation des tampons Emacs - Text-Fu Avancé"
 meta_description: "Apprenez les commandes de navigation des tampons Emacs. Basculez, fermez et divisez les tampons efficacement avec ce tutoriel Emacs convivial pour les débutants. Améliorez votre flux de travail !"
 meta_keywords: "navigation des tampons Emacs, commandes Emacs, C-x b, C-x k, tutoriel Linux, guide Emacs, Emacs débutant"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "less"
+meta_title: "less - コマンドライン"
 meta_description: "Linux の`less`コマンドを使って、テキストファイルを効率的に表示・ナビゲートする方法を学びましょう。この初心者向けガイドで、ページング、検索、終了をマスターしてください。"
 meta_keywords: "less コマンド，Linux less, テキストファイル表示，ファイルナビゲート，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---

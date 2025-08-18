@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Application Layer"
+meta_title: "Application Layer - Network Basics"
 meta_description: "Learn about the Application Layer in the TCP/IP model, how it handles data for email (SMTP), and its role in network communication. Understand network layers."
 meta_keywords: "Application Layer, TCP/IP model, SMTP, network layers, Linux networking, beginner tutorial, network communication"
 ---

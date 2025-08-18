@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Usuários e Grupos"
+meta_title: "Usuários e Grupos - Gerenciamento de Usuários"
 meta_description: "Aprenda sobre usuários e grupos Linux, entenda UIDs, GIDs e o usuário root. Descubra como usar o comando sudo para permissões elevadas. Comece sua jornada no Linux!"
 meta_keywords: "usuários Linux, grupos Linux, comando sudo, usuário root, permissões Linux, tutorial Linux, Linux para iniciantes, guia Linux"
 ---

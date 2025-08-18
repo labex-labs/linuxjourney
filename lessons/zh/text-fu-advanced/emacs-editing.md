@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Emacs 编辑"
+meta_title: "Emacs 编辑 - 高级文本操作"
 meta_description: "学习 Emacs 编辑基础：高效导航文本、剪切和粘贴。这份适合初学者的指南将帮助您掌握 Emacs 在 Linux 中的基本命令。"
 meta_keywords: "Emacs, Emacs 教程，Emacs 命令，文本编辑器，Linux 编辑器，Emacs 导航，Emacs 初学者，Emacs 指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "openSUSE"
+meta_title: "openSUSE - Getting Started"
 meta_description: "Learn about openSUSE Linux, its history, package management (RPM), and configurability with YaST. Discover why openSUSE is great for beginners."
 meta_keywords: "openSUSE, Linux distribution, RPM, YaST, Linux for beginners, openSUSE tutorial, Linux guide"
 ---

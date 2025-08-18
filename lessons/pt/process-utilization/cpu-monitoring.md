@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Monitoramento da CPU"
+meta_title: "Monitoramento da CPU - Utilização de Processos"
 meta_description: "Aprenda o monitoramento da CPU com o comando uptime. Entenda a média de carga, o uso da CPU e como interpretar o desempenho do sistema para iniciantes em Linux."
 meta_keywords: "comando uptime, monitoramento de CPU Linux, média de carga, desempenho do sistema, tutorial Linux, guia para iniciantes"
 ---

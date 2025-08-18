@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Simple HTTP Server"
+meta_title: "Simple HTTP Server - Network Sharing"
 meta_description: "Learn to create a simple HTTP server using Python's http.server module. Quickly share files on your network with this beginner-friendly Linux tutorial."
 meta_keywords: "http.server, SimpleHTTPServer, Python web server, file sharing, Linux tutorial, beginner guide"
 ---

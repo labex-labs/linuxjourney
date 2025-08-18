@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "/etc/hosts"
+meta_title: "/etc/hosts - DNS"
 meta_description: "Aprenda sobre el archivo /etc/hosts en Linux, cómo mapea nombres de host a direcciones IP y su papel en la resolución de DNS. Comprenda la configuración básica de red."
 meta_keywords: "/etc/hosts, redes Linux, mapeo de nombres de host, resolución DNS, tutorial de Linux, guía para principiantes"
 ---

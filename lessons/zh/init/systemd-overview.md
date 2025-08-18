@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Systemd 概述"
+meta_title: "Systemd 概述 - 初始化"
 meta_description: "学习 Systemd 基础知识：理解单元、目标和启动过程。了解 Systemd 如何在 Linux 中管理服务和系统状态。开始您的学习之旅！"
 meta_keywords: "Systemd, Systemd 单元，Systemd 目标，Linux 启动过程，Linux 服务，初学者，教程，指南"
 ---

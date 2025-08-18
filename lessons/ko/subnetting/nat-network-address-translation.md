@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "NAT"
+meta_title: "NAT - 서브넷팅"
 meta_description: "Linux 에서 NAT(네트워크 주소 변환) 에 대해 알아보고, 작동 방식과 네트워크 보안에서의 역할을 이해합니다. 사설 IP 와 공용 IP 를 이해합니다. Linux 네트워킹 가이드."
 meta_keywords: "NAT, 네트워크 주소 변환, Linux 네트워킹, 사설 IP, 공용 IP, Linux 튜토리얼, 초보자 가이드"
 ---

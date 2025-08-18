@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "인증 로깅"
+meta_title: "인증 로깅 - 로깅"
 meta_description: "/var/log/auth.log를 사용하여 Linux 인증 로깅에 대해 알아보세요. 이 필수 가이드를 통해 사용자 로그인을 이해하고 액세스 문제를 해결하세요."
 meta_keywords: "Linux 인증, auth.log, Linux 로깅, 사용자 로그인, Linux 보안, 초급, 튜토리얼, 가이드"
 ---

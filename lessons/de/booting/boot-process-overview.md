@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Übersicht über den Bootvorgang"
+meta_title: "Übersicht über den Bootvorgang - System booten"
 meta_description: "Lernen Sie die Phasen des Linux-Bootvorgangs kennen: BIOS, Bootloader, Kernel und Init. Verstehen Sie, wie Linux vom Einschalten bis zur Anmeldung startet. Ein unverzichtbarer Leitfaden für Linux-Anfänger."
 meta_keywords: "Linux-Bootvorgang, BIOS, Bootloader, Kernel, Init, Linux-Tutorial, Linux-Anleitung, Anfänger"
 ---

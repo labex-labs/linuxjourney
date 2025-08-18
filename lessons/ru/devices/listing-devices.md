@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Устройства"
 meta_description: "Узнайте, как выводить список USB, PCI и SCSI устройств с помощью команд lsusb, lspci и lsscsi. Разберитесь в своем оборудовании Linux с помощью этого руководства для начинающих."
 meta_keywords: "lsusb, lspci, lsscsi, команды Linux, список устройств, информация об оборудовании, учебник по Linux, руководство для начинающих"
 ---

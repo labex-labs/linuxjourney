@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "IPv4"
+meta_title: "IPv4 - 서브넷팅"
 meta_description: "IPv4 주소, 구조 및 ifconfig 를 사용하여 IP 를 찾는 방법을 배웁니다. Linux 초보자를 위한 네트워크 기본 사항을 이해합니다."
 meta_keywords: "IPv4, IP 주소, ifconfig, 네트워크 기본 사항, Linux 네트워킹, 초보자, 튜토리얼, 가이드"
 ---

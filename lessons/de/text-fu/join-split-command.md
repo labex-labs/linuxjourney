@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "join und split"
+meta_title: "join und split - Text-Fu"
 meta_description: "Lernen Sie, die Linux-Befehle 'join' und 'split' für die Dateimanipulation zu verwenden. Verstehen Sie, wie Dateien nach gemeinsamen Feldern kombiniert und große Dateien effizient aufgeteilt werden. Erhalten Sie praktische Beispiele und Tipps."
 meta_keywords: "Linux join Befehl, Linux split Befehl, Dateimanipulation, Linux Tutorial, Kommandozeile, Linux für Anfänger, Linux Anleitung"
 ---

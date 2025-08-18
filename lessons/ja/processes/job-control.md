@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ジョブ制御"
+meta_title: "ジョブ制御 - プロセス"
 meta_description: "Linux のジョブ制御を学び、バックグラウンドプロセスを管理します。「jobs」、「bg」、「fg」、「kill」コマンドを理解して、効率的なシェル使用を実現しましょう。Linux の学習を始めましょう！"
 meta_keywords: "Linux ジョブ制御，バックグラウンドプロセス，jobs コマンド，bg コマンド，fg コマンド，kill コマンド，Linux チュートリアル，初心者 Linux"
 ---

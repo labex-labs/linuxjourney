@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "DHCP Overview"
+meta_title: "DHCP Overview - Network Basics"
 meta_description: "Learn about DHCP (Dynamic Host Configuration Protocol) in Linux. Understand how DHCP assigns IP addresses and its four-step process. Start your Linux networking journey!"
 meta_keywords: "DHCP, Dynamic Host Configuration Protocol, Linux networking, IP address, DHCP tutorial, beginner, guide"
 ---

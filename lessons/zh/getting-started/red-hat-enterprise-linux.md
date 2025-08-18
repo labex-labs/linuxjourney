@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "红帽企业版 Linux"
+meta_title: "红帽企业版 Linux - 入门"
 meta_description: "了解 Red Hat Enterprise Linux (RHEL) 的基础知识、其 RPM 包管理器以及企业用途。理解 RHEL 的核心区别和优势。"
 meta_keywords: "学习 RHEL, Red Hat Enterprise Linux, RHEL 基础，RPM 包管理器，Linux 服务器操作系统，RHEL 初学者，RHEL 指南"
 ---

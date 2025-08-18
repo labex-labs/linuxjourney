@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "sysfs"
+meta_title: "sysfs - デバイス"
 meta_description: "sysfs、Linux デバイスの詳細情報と管理のための仮想ファイルシステムについて学びます。/sys と/dev の違いを理解しましょう。Linux の学習を始めましょう！"
 meta_keywords: "sysfs, /sys ディレクトリ，Linux デバイス，仮想ファイルシステム，Linux チュートリアル，初心者ガイド"
 ---

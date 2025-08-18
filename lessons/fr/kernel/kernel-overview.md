@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Aperçu du noyau"
+meta_title: "Aperçu du noyau - Kernel"
 meta_description: "Découvrez le noyau Linux, son rôle dans le système d'exploitation et comment il interagit avec le matériel et l'espace utilisateur. Comprenez les composants essentiels du système d'exploitation."
 meta_keywords: "noyau Linux, système d'exploitation, interaction matérielle, espace utilisateur, tutoriel Linux, guide du débutant"
 ---

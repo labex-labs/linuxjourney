@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Signaux"
+meta_title: "Signaux - Processus"
 meta_description: "Découvrez les signaux Linux, leur but, les types courants comme SIGINT et SIGKILL, et comment les processus les gèrent. Comprenez les bases des signaux pour un meilleur contrôle de Linux."
 meta_keywords: "signaux Linux, SIGKILL, SIGINT, communication de processus, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

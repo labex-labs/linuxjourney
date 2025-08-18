@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Niveaux de privilège"
+meta_title: "Niveaux de privilège - Kernel"
 meta_description: "Découvrez les niveaux de privilège Linux, le mode noyau et le mode utilisateur. Comprenez les anneaux de protection et les appels système pour un accès sécurisé au matériel. Commencez votre parcours Linux !"
 meta_keywords: "niveaux de privilège Linux, mode noyau, mode utilisateur, anneaux de protection, appels système, sécurité Linux, Linux pour débutants, tutoriel Linux"
 ---

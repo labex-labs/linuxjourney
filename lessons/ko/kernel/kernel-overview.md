@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "커널 개요"
+meta_title: "커널 개요 - Kernel"
 meta_description: "Linux 커널, 운영 체제에서의 역할, 하드웨어 및 사용자 공간과의 상호 작용에 대해 알아보세요. 핵심 OS 구성 요소를 이해합니다."
 meta_keywords: "Linux 커널, 운영 체제, 하드웨어 상호 작용, 사용자 공간, Linux 튜토리얼, 초보자 가이드"
 ---

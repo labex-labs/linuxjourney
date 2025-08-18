@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Arch Linux"
+meta_title: "Arch Linux - はじめに"
 meta_description: "Arch Linux、そのローリングリリースモデル、および Pacman パッケージマネージャーについて学びます。Arch が初心者および制御を求める上級ユーザーにとって優れている理由を理解します。"
 meta_keywords: "Arch Linux, Pacman, Linux ディストリビューション，ローリングリリース，Linux チュートリアル，初心者ガイド，軽量 OS"
 ---

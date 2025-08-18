@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Disk-Partitionierung"
+meta_title: "Disk-Partitionierung - Das Dateisystem"
 meta_description: "Lernen Sie die Disk-Partitionierung in Linux mit parted. Verstehen Sie, wie man Disks partitioniert, auswählt, anzeigt und in der Größe ändert. Beginnen Sie mit diesem anfängerfreundlichen Leitfaden!"
 meta_keywords: "Linux Disk-Partitionierung, parted Befehl, fdisk, gparted, Linux Tutorial, Linux für Anfänger, Disk-Management, Linux Leitfaden"
 ---

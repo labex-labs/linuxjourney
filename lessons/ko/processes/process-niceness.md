@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "niceness"
+meta_title: "niceness - 프로세스"
 meta_description: "Linux niceness 와 프로세스 우선순위에 대해 알아보세요. nice 및 renice 명령을 이해하여 프로세스의 CPU 시간을 관리하세요. 시스템 성능을 향상시키세요!"
 meta_keywords: "Linux niceness, 프로세스 우선순위, nice command, renice command, Linux 튜토리얼, CPU 스케줄링, 초보자 Linux, Linux 가이드"
 ---

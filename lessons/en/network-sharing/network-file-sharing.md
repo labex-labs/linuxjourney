@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "File Sharing Overview"
+meta_title: "File Sharing Overview - Network Sharing"
 meta_description: "Learn about Linux file sharing and secure copy (scp) command. Transfer files between hosts on your network. Get started with this beginner-friendly guide!"
 meta_keywords: "Linux file sharing, scp command, secure copy, network file transfer, Linux tutorial, beginner Linux, Linux guide"
 ---

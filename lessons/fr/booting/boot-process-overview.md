@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Aperçu du processus de démarrage"
+meta_title: "Aperçu du processus de démarrage - Démarrer le Système"
 meta_description: "Apprenez les étapes du processus de démarrage de Linux : BIOS, bootloader, kernel et init. Comprenez comment Linux démarre de la mise sous tension à la connexion. Guide essentiel pour les débutants Linux."
 meta_keywords: "processus de démarrage Linux, BIOS, bootloader, kernel, init, tutoriel Linux, guide Linux, débutant"
 ---

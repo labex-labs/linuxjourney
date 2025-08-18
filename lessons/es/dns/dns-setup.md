@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Configuración de DNS"
+meta_title: "Configuración de DNS - DNS"
 meta_description: "Aprenda sobre servidores DNS populares para Linux como BIND, DNSmasq y PowerDNS. Descubra el mejor servidor DNS para la configuración de su red con esta guía para principiantes."
 meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, configuración de servidor DNS, redes Linux, tutorial DNS, principiante"
 ---

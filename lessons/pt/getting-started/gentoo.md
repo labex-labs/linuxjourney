@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Gentoo"
+meta_title: "Gentoo - Primeiros Passos"
 meta_description: "Aprenda sobre o Gentoo Linux, seu gerenciador de pacotes Portage e sua alta configurabilidade. Descubra se esta distro flexível é ideal para sua jornada avançada no Linux."
 meta_keywords: "Gentoo Linux, Portage, distribuição Linux, tutorial Gentoo, Linux para iniciantes, guia Linux, configurabilidade Gentoo"
 ---

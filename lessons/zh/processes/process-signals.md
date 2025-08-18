@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "信号"
+meta_title: "信号 - 进程"
 meta_description: "了解 Linux 信号、它们的用途、常见的类型如 SIGINT 和 SIGKILL，以及进程如何处理它们。理解信号基础知识以更好地控制 Linux。"
 meta_keywords: "Linux 信号，SIGKILL, SIGINT, 进程通信，Linux 教程，Linux 初学者，Linux 指南"
 ---

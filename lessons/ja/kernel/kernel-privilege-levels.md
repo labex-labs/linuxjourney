@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "特権レベル"
+meta_title: "特権レベル - Kernel"
 meta_description: "Linux の特権レベル、カーネルモード、ユーザーモードについて学びます。保護リングとシステムコールを理解し、安全なハードウェアアクセスを実現します。Linux の学習を始めましょう！"
 meta_keywords: "Linux 特権レベル，カーネルモード，ユーザーモード，保護リング，システムコール，Linux セキュリティ，初心者 Linux, Linux チュートリアル"
 ---

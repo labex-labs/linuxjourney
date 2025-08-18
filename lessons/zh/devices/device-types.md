@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "设备类型"
+meta_title: "设备类型 - 设备"
 meta_description: "了解 Linux 设备类型（字符、块、管道、套接字）以及如何使用 `ls -l /dev` 识别它们。理解主/次设备号。Linux 初学者教程。"
 meta_keywords: "Linux 设备类型，ls -l /dev, 字符设备，块设备，主次设备号，Linux 教程，Linux 指南，初学者"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "grep"
+meta_title: "grep - テキスト操作"
 meta_description: "Linux で grep コマンドを使用してファイル内のテキストパターンを検索する方法を学びます。基本的な使用法、大文字と小文字を区別しない検索、および他のコマンドとの組み合わせを発見します。Linux の旅を始めましょう！"
 meta_keywords: "grep コマンド，Linux grep, ファイル検索，テキスト処理，Linux チュートリアル，初心者 Linux, grep ガイド"
 ---

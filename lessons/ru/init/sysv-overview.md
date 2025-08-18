@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Обзор System V"
+meta_title: "Обзор System V - Init"
 meta_description: "Узнайте о System V init, его уровнях выполнения и о том, как он управляет процессами в Linux. Изучите основы SysV для начинающих и опытных пользователей."
 meta_keywords: "System V, SysV init, уровни выполнения Linux, система init, учебник по Linux, руководство для начинающих, управление процессами"
 ---

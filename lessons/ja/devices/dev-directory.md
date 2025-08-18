@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "/dev ディレクトリ"
+meta_title: "/dev ディレクトリ - デバイス"
 meta_description: "Linux の/dev ディレクトリについて学びましょう。デバイスファイルが保存されている場所です。デバイスノードとそれらとの対話方法を理解します。ls コマンドで/dev を探索します。Linux 初心者向けガイド。"
 meta_keywords: "/dev ディレクトリ，Linux デバイスファイル，デバイスノード，Linux チュートリアル，ls /dev, Linux 初心者，Linux ガイド"
 ---

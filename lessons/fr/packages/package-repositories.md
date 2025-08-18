@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Dépôts de Paquets"
+meta_title: "Dépôts de Paquets - Packages"
 meta_description: "Découvrez les dépôts de paquets Linux et comment ils gèrent les logiciels. Apprenez à trouver et à ajouter des sources de paquets comme /etc/apt/sources.list pour une installation facile."
 meta_keywords: "dépôts de paquets Linux, liste des sources apt, /etc/apt/sources.list, paquets Linux, Linux pour débutants, tutoriel Linux, gestion des paquets"
 ---

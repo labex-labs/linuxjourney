@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "sort"
+meta_title: "sort - Text-Fu"
 meta_description: "Learn how to use the Linux sort command for sorting text files. Discover options like reverse and numerical sorting. Improve your Linux command line skills!"
 meta_keywords: "Linux sort command, sort -r, sort -n, Linux tutorial, command line, beginner Linux, sort guide"
 ---

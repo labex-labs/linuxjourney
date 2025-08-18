@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Border Gateway Protocol"
+meta_title: "Border Gateway Protocol - Roteamento"
 meta_description: "Aprenda sobre BGP, o Border Gateway Protocol, e como ele permite o roteamento na internet entre sistemas autônomos. Entenda os conceitos básicos do BGP para iniciantes."
 meta_keywords: "BGP, Border Gateway Protocol, roteamento de internet, sistemas autônomos, redes Linux, tutorial BGP, protocolos de rede, guia para iniciantes"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "stdout (标准输出)"
+meta_title: "stdout (标准输出) - 文本操作"
 meta_description: "了解 Linux stdout 和 I/O 重定向。了解如何使用 > 和 >> 运算符将命令输出重定向到文件。立即开始您的 Linux 之旅！"
 meta_keywords: "Linux stdout, I/O 重定向，Linux 命令，重定向输出，Linux 教程，Linux 初学者，Linux 指南，shell 脚本"
 ---

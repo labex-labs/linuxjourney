@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Gestión de archivos de registro"
+meta_title: "Gestión de archivos de registro - Registro"
 meta_description: "Aprenda a gestionar los archivos de registro de Linux de forma eficiente utilizando logrotate. Descubra la rotación de registros, la compresión y la configuración para ahorrar espacio en disco. ¡Empiece a aprender hoy mismo!"
 meta_keywords: "logrotate, registros de Linux, gestión de registros, rotación de registros, tutorial de Linux, principiante, guía, espacio en disco"
 ---

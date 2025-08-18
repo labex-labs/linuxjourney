@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "소유권 권한"
+meta_title: "소유권 권한 - 권한"
 meta_description: "chown 및 chgrp 명령을 사용하여 Linux 에서 파일 소유권을 변경하는 방법을 배웁니다. 이 초보자 친화적인 Linux 튜토리얼을 통해 사용자 및 그룹 권한을 이해합니다."
 meta_keywords: "chown, chgrp, Linux 파일 소유권, Linux 권한, Linux 명령, 초보자 Linux, Linux 튜토리얼, Linux 가이드"
 ---

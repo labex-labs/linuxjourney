@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Tarefas Upstart"
+meta_title: "Tarefas Upstart - Init"
 meta_description: "Aprenda a gerenciar tarefas do Upstart no Linux usando comandos initctl. Entenda o status da tarefa, inicie, pare e reinicie serviços. Melhore suas habilidades de administração de sistema Linux."
 meta_keywords: "tarefas Upstart, initctl, serviços Linux, administração de sistema, tutorial Linux, guia para iniciantes"
 ---

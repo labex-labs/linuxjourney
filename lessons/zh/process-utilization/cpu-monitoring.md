@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "CPU 监控"
+meta_title: "CPU 监控 - 进程利用率"
 meta_description: "学习使用 uptime 命令进行 CPU 监控。了解负载平均值、CPU 使用率以及如何为 Linux 初学者解释系统性能。"
 meta_keywords: "uptime 命令，Linux CPU 监控，负载平均值，系统性能，Linux 教程，初学者指南"
 ---

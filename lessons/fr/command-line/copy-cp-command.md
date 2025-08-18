@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "cp (Copier)"
+meta_title: "cp (Copier) - Command Line"
 meta_description: "Apprenez à utiliser la commande Linux cp pour copier des fichiers et des répertoires. Comprenez les options comme -r et les caractères génériques. Commencez votre parcours Linux dès aujourd'hui !"
 meta_keywords: "commande cp, copier des fichiers Linux, tutoriel Linux, Linux pour débutants, cp -r, caractères génériques Linux, guide Linux"
 ---

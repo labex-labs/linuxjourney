@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "man"
+meta_title: "man - Command Line"
 meta_description: "'man' 명령어를 사용하여 Linux 에서 명령어 매뉴얼에 접근하는 방법을 배우세요. 초보자를 위한 필수 Linux 문서를 발견하고 명령줄 기술을 향상시키세요."
 meta_keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
 ---

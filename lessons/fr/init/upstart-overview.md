@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Présentation d'Upstart"
+meta_title: "Présentation d'Upstart - Init"
 meta_description: "Découvrez Upstart, son modèle événementiel et comment il gère les services sous Linux. Comprenez les configurations de job Upstart et son rôle en tant que système init."
 meta_keywords: "Upstart, système init, services Linux, Ubuntu, SysV, tutoriel débutant, guide Linux"
 ---

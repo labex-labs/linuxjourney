@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "tr (Translate)"
+meta_title: "tr (Translate) - テキスト操作"
 meta_description: "Linux の'tr'コマンドを使って文字を変換・削除する方法を学びます。文字変換の例と演習を通して理解を深めましょう。Linux の学習を始めましょう！"
 meta_keywords: "tr command, Linux tr, 文字変換，文字削除，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---

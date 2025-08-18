@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Direccionamiento de Red"
+meta_title: "Direccionamiento de Red - Conceptos Básicos de Red"
 meta_description: "Aprende los conceptos básicos del direccionamiento de red: direcciones MAC vs. IP y nombres de host. Comprende cómo se comunican los dispositivos en una red. ¡Comienza tu viaje en redes Linux!"
 meta_keywords: "direccionamiento de red, dirección MAC, dirección IP, nombre de host, redes Linux, principiante, tutorial, guía"
 ---

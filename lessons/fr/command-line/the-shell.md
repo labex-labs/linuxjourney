@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Le Shell"
+meta_title: "Le Shell - Command Line"
 meta_description: "Découvrez le shell Linux, Bash et les commandes de base comme 'echo'. Comprenez les invites de shell et commencez votre parcours Linux avec ce guide convivial pour débutants."
 meta_keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de commande, Linux débutant, invite de shell, guide Linux"
 ---

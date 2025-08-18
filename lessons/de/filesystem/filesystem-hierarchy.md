@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Dateisystemhierarchie"
+meta_title: "Dateisystemhierarchie - Das Dateisystem"
 meta_description: "Lernen Sie den Linux Filesystem Hierarchy Standard (FHS) und verstehen Sie wichtige Verzeichnisse wie /bin, /etc und /var. Erkunden Sie die Linux-Verzeichnisstruktur."
 meta_keywords: "Linux Dateisystemhierarchie, FHS, Linux Verzeichnisstruktur, Linux Befehle, Linux für Anfänger, Linux Tutorial, Linux Anleitung"
 ---

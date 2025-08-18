@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "/etc/group"
+meta_title: "/etc/group - Gestion des Utilisateurs"
 meta_description: "Découvrez le fichier /etc/group sous Linux, comprenez la gestion des groupes, le GID et les permissions des utilisateurs. Tutoriel essentiel sur le fichier de groupe Linux pour les débutants."
 meta_keywords: "/etc/group, groupes Linux, gestion des groupes, GID, permissions Linux, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

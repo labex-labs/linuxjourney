@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "内存监控"
+meta_title: "内存监控 - 进程利用率"
 meta_description: "学习使用 vmstat 监控 Linux 内存使用情况。了解内存、交换空间和 CPU 指标，以优化系统性能。开始您的 Linux 之旅！"
 meta_keywords: "vmstat, Linux 内存监控，系统性能，Linux 教程，内存使用，Linux 初学者，Linux 指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "소프트웨어 배포"
+meta_title: "소프트웨어 배포 - 패키지"
 meta_description: "Linux 소프트웨어 배포, 패키지 관리자, 그리고 .deb 및 .rpm 과 같은 패키지 유형에 대해 알아보세요. Linux 시스템에서 소프트웨어가 어떻게 관리되는지 이해합니다."
 meta_keywords: "Linux 소프트웨어 배포, 패키지 관리자, .deb, .rpm, Linux 패키지, 초급 Linux, Linux 튜토리얼, 소프트웨어 설치"
 ---

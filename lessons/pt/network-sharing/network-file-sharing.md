@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Visão Geral do Compartilhamento de Arquivos"
+meta_title: "Visão Geral do Compartilhamento de Arquivos - Compartilhamento de Rede"
 meta_description: "Aprenda sobre compartilhamento de arquivos Linux e o comando secure copy (scp). Transfira arquivos entre hosts em sua rede. Comece com este guia para iniciantes!"
 meta_keywords: "compartilhamento de arquivos Linux, comando scp, cópia segura, transferência de arquivos em rede, tutorial Linux, Linux para iniciantes, guia Linux"
 ---

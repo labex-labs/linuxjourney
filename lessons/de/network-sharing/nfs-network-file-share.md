@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "NFS"
+meta_title: "NFS - Netzwerkfreigabe"
 meta_description: "Erfahren Sie mehr über die Einrichtung von NFS-Clients und das automatische Einhängen (Automounting) in Linux. Verstehen Sie, wie Sie sich mit Netzwerkdateifreigaben verbinden und Automount für nahtlosen Zugriff nutzen."
 meta_keywords: "NFS-Client, Automount, Netzwerkdateisystem, Linux-Netzwerk, mount-Befehl, Linux-Tutorial, Anfänger"
 ---

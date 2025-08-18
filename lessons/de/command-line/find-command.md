@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "find"
+meta_title: "find - Command Line"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'find' verwenden, um Dateien und Verzeichnisse zu finden. Entdecken Sie grundlegende Suchoptionen und verbessern Sie Ihre Fähigkeiten im Linux-Dateimanagement."
 meta_keywords: "Linux find Befehl, Dateien finden Linux, Linux Verzeichnissuche, find Befehl Tutorial, Linux Dateimanagement, Linux für Anfänger, Linux Anleitung"
 ---

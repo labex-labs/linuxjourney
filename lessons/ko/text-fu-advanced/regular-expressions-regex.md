@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "regex (정규 표현식)"
+meta_title: "regex (정규 표현식) - 고급 Text-Fu"
 meta_description: "Linux 패턴 매칭을 위한 정규 표현식 (regex) 을 학습합니다. 텍스트 조작을 위한 ^, $, ., []와 같은 regex 구문을 이해합니다. grep 기술을 향상시키세요!"
 meta_keywords: "정규 표현식, regex, Linux regex, grep regex, 패턴 매칭, regex 튜토리얼, Linux 명령어, 초급"
 ---

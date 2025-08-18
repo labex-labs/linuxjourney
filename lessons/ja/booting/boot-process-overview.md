@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "起動プロセスの概要"
+meta_title: "起動プロセスの概要 - システムの起動"
 meta_description: "Linux の起動プロセス（BIOS、ブートローダー、カーネル、init）の各段階を学びます。電源投入からログインまで、Linux がどのように起動するかを理解します。Linux 初心者向けの必須ガイド。"
 meta_keywords: "Linux 起動プロセス，BIOS, ブートローダー, カーネル，init, Linux チュートリアル，Linux ガイド，初心者"
 ---

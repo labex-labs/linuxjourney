@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "stderr (标准错误)"
+meta_title: "stderr (标准错误) - 文本操作"
 meta_description: "了解 Linux stderr（标准错误）重定向。理解 2>、2>&1、&> 和 /dev/null 用于 Bash 中的错误处理。提高您的 Linux 命令行技能！"
 meta_keywords: "Linux stderr, 标准错误，2> 重定向，2>&1, &> 重定向，/dev/null, Bash 错误处理，Linux 教程，Linux 初学者"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "シグナル"
+meta_title: "シグナル - プロセス"
 meta_description: "Linux シグナル、その目的、SIGINT や SIGKILL などの一般的なタイプ、およびプロセスがそれらをどのように処理するかについて学びます。Linux をよりよく制御するために、シグナルの基本を理解してください。"
 meta_keywords: "Linux シグナル，SIGKILL, SIGINT, プロセス間通信，Linux チュートリアル，Linux 初心者，Linux ガイド"
 ---

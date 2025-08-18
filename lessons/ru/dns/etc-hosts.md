@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "/etc/hosts"
+meta_title: "/etc/hosts - DNS"
 meta_description: "Узнайте о файле /etc/hosts в Linux, как он сопоставляет имена хостов с IP-адресами, и его роль в разрешении DNS. Изучите базовую настройку сети."
 meta_keywords: "/etc/hosts, сеть Linux, сопоставление имен хостов, разрешение DNS, учебник по Linux, руководство для начинающих"
 ---

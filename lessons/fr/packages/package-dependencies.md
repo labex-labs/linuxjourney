@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Dépendances de paquets"
+meta_title: "Dépendances de paquets - Packages"
 meta_description: "Découvrez les dépendances de paquets Linux et pourquoi elles sont cruciales pour l'installation de logiciels. Comprenez les bibliothèques partagées et évitez les paquets cassés. Commencez votre parcours Linux !"
 meta_keywords: "dépendances de paquets Linux, bibliothèques partagées, paquets Linux, gestion de paquets, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

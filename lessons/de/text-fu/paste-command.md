@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "paste"
+meta_title: "paste - Text-Fu"
 meta_description: "Lernen Sie, wie Sie den Linux-Befehl paste verwenden, um Dateizeilen zusammenzuführen. Entdecken Sie Trennzeichen und kombinieren Sie Dateien mit diesem grundlegenden Linux-Befehls-Tutorial."
 meta_keywords: "Linux paste Befehl, paste Befehl Tutorial, Dateizeilen zusammenführen, Linux Befehle, Linux für Anfänger, Linux Anleitung"
 ---

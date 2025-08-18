@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "cd (디렉토리 변경)"
+meta_title: "cd (디렉토리 변경) - Command Line"
 meta_description: "Linux 에서 'cd' 명령을 사용하여 디렉토리를 탐색하는 방법을 배웁니다. 절대 경로, 상대 경로 및 유용한 단축키를 이해합니다. Linux 여정을 시작하세요!"
 meta_keywords: "cd command, change directory, Linux paths, absolute path, relative path, Linux tutorial, beginner Linux, Linux navigation"
 ---

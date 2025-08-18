@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Протокол Border Gateway Protocol"
+meta_title: "Протокол Border Gateway Protocol - Маршрутизация"
 meta_description: "Узнайте о BGP, протоколе Border Gateway Protocol, и о том, как он обеспечивает маршрутизацию в интернете между автономными системами. Изучите основы BGP для начинающих."
 meta_keywords: "BGP, Border Gateway Protocol, маршрутизация в интернете, автономные системы, сетевые технологии Linux, учебник по BGP, сетевые протоколы, руководство для начинающих"
 ---

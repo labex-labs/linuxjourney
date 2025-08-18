@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Subnetting Cheats"
+meta_title: "Subnetting Cheats - Subnetting"
 meta_description: "Learn subnetting basics and binary conversion for networking. Understand IP addresses and subnet masks with this beginner-friendly guide. Start learning now!"
 meta_keywords: "subnetting, binary conversion, IP address, network, Linux networking, beginner, tutorial, guide"
 ---

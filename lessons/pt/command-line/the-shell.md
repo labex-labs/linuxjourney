@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "O Shell"
+meta_title: "O Shell - Linha de Comando"
 meta_description: "Aprenda sobre o shell Linux, Bash e comandos básicos como 'echo'. Entenda os prompts do shell e comece sua jornada Linux com este guia amigável para iniciantes."
 meta_keywords: "shell Linux, Bash, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt do shell, guia Linux"
 ---

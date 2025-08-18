@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Couche de Transport"
+meta_title: "Couche de Transport - Bases du Réseau"
 meta_description: "Découvrez la couche de transport dans le réseau Linux, y compris les protocoles TCP/UDP, les ports et la segmentation des données. Comprenez comment les données sont transférées de manière fiable."
 meta_keywords: "Couche de transport Linux, TCP/UDP, ports réseau, segmentation des données, réseau Linux, tutoriel débutant, protocoles réseau"
 ---

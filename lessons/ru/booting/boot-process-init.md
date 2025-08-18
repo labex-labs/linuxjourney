@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Процесс загрузки: Init"
+meta_title: "Процесс загрузки: Init - Загрузка системы"
 meta_description: "Узнайте о системах инициализации Linux: System V, Upstart и systemd. Поймите их роль в процессе загрузки и то, как они управляют службами. Начните свое путешествие в Linux!"
 meta_keywords: "Linux init, systemd, System V init, Upstart, процесс загрузки Linux, учебник по Linux, Linux для начинающих, руководство по Linux"
 ---

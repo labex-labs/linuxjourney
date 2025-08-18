@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Emacs のバッファナビゲーション"
+meta_title: "Emacs のバッファナビゲーション - 高度なテキスト操作"
 meta_description: "Emacs のバッファナビゲーションコマンドを学びましょう。この初心者向けの Emacs チュートリアルで、バッファの切り替え、閉じ方、分割を効率的に行い、ワークフローを改善しましょう！"
 meta_keywords: "Emacs バッファナビゲーション，Emacs コマンド，C-x b, C-x k, Linux チュートリアル，Emacs ガイド，初心者 Emacs"
 ---

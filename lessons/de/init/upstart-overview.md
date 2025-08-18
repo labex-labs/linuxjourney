@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Upstart-Übersicht"
+meta_title: "Upstart-Übersicht - Init"
 meta_description: "Erfahren Sie mehr über Upstart, sein ereignisgesteuertes Modell und wie es Dienste unter Linux verwaltet. Verstehen Sie Upstart-Job-Konfigurationen und seine Rolle als Init-System."
 meta_keywords: "Upstart, Init-System, Linux-Dienste, Ubuntu, SysV, Anfänger-Tutorial, Linux-Anleitung"
 ---

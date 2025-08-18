@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "プロセスの詳細"
+meta_title: "プロセスの詳細 - プロセス"
 meta_description: "Linux プロセスの詳細、kernel がリソースを管理する方法、プロセスとは何かについて学びます。初心者向けのプロセス概念を理解します。"
 meta_keywords: "Linux プロセス，kernel, プロセス管理，ps aux, Linux チュートリアル，初心者ガイド"
 ---

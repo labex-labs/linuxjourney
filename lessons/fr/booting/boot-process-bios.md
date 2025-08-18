@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Processus de démarrage : BIOS"
+meta_title: "Processus de démarrage : BIOS - Démarrer le Système"
 meta_description: "Découvrez le processus de démarrage Linux, le BIOS et le MBR. Comprenez comment votre système démarre avec ce guide convivial pour débutants. Explorez les concepts UEFI !"
 meta_keywords: "processus de démarrage Linux, BIOS, MBR, UEFI, tutoriel Linux, chargeur de démarrage, Linux pour débutants, démarrage du système"
 ---

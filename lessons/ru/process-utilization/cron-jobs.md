@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Задания Cron"
+meta_title: "Задания Cron - Использование процессов"
 meta_description: "Научитесь планировать задачи Linux с помощью заданий cron. Изучите синтаксис crontab и автоматизируйте скрипты для повседневных операций. Начните с этого руководства для начинающих!"
 meta_keywords: "cron jobs, crontab, schedule tasks, Linux automation, Linux commands, beginner Linux, Linux tutorial, crontab -e"
 ---

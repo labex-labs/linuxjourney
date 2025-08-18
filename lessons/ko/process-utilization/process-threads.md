@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "프로세스 스레드"
+meta_title: "프로세스 스레드 - 프로세스 활용"
 meta_description: "Linux 프로세스 스레드, 단일 스레드 및 다중 스레드 개념, 그리고 'ps m'을 사용하여 이를 보는 방법을 배웁니다. 경량 프로세스를 효율적으로 이해하세요!"
 meta_keywords: "Linux 스레드, 프로세스 스레드, ps m 명령, 다중 스레드, 단일 스레드, Linux 프로세스, Linux 초보자, Linux 튜토리얼"
 ---

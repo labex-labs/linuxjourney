@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Process Permissions"
+meta_title: "Process Permissions - Permissions"
 meta_description: "Learn about Linux process permissions, including Real, Effective, and Saved User IDs. Understand how UIDs impact security and command execution. Start learning today!"
 meta_keywords: "Linux process permissions, Real UID, Effective UID, Saved UID, Linux security, passwd command, Linux tutorial, beginner Linux"
 ---

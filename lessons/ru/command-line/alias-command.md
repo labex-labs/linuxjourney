@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "alias"
+meta_title: "alias - Командная строка"
 meta_description: "Узнайте, как создавать и управлять alias в Linux для часто используемых команд. Откройте для себя временную и постоянную настройку alias в .bashrc. Повысьте эффективность работы в командной строке!"
 meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"
 ---

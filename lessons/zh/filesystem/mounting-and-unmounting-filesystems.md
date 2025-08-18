@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "mount 和 umount"
+meta_title: "mount 和 umount - 文件系统"
 meta_description: "学习如何使用 Linux 的 mount 和 umount 命令来管理文件系统。了解设备挂载、卸载以及初学者的 UUID。"
 meta_keywords: "Linux mount, umount 命令，挂载文件系统，Linux UUID, Linux 初学者，Linux 教程，挂载点，Linux 指南"
 ---

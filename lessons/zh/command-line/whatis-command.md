@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "whatis"
+meta_title: "whatis - 命令行"
 meta_description: "了解 Linux 中 'whatis' 命令的功能。快速获取命令的简要描述。对于初学者理解 Linux 命令至关重要。"
 meta_keywords: "whatis 命令，Linux 命令，命令行，Linux 教程，Linux 初学者，命令描述，Linux 指南"
 ---

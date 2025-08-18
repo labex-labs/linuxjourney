@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "/etc/fstab"
+meta_title: "/etc/fstab - Файловая система"
 meta_description: "Узнайте о /etc/fstab в Linux, как настроить монтирование файловых систем при запуске и управлять записями устройств. Разберитесь с fstab для начинающих!"
 meta_keywords: "/etc/fstab, Linux fstab, монтирование файловых систем, Linux boot, fstab tutorial, beginner, guide"
 ---

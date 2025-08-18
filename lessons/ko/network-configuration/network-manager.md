@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "네트워크 관리자"
+meta_title: "네트워크 관리자 - 네트워크 구성"
 meta_description: "Linux 에서 NetworkManager 에 대해 배우고, 네트워크 구성 자동화 방법, nm-tool 및 nmcli 명령 사용법을 익히세요. 이 초보자 가이드로 시작해보세요!"
 meta_keywords: "NetworkManager, nm-tool, nmcli, Linux 네트워킹, 네트워크 구성, Linux 튜토리얼, 초보자 가이드"
 ---

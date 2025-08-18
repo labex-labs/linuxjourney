@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Emacs 종료 및 도움말"
+meta_title: "Emacs 종료 및 도움말 - 고급 Text-Fu"
 meta_description: "Emacs 종료 명령과 도움말 접근 방법을 배웁니다. 이 초보자 친화적인 튜토리얼에서 기본적인 Emacs 탐색 및 실행 취소 기능을 이해합니다."
 meta_keywords: "Emacs 종료, Emacs 도움말, Emacs 실행 취소, Emacs 튜토리얼, Linux 텍스트 편집기, 초보자 가이드"
 ---

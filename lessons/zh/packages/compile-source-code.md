@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "编译源代码"
+meta_title: "编译源代码 - 软件包"
 meta_description: "学习如何在 Linux 中使用 make、configure 和 checkinstall 编译源代码。了解初学者和中级用户的构建过程。"
 meta_keywords: "编译源代码，make install, checkinstall, Linux 编译，build-essential, Linux 教程，初学者指南"
 ---

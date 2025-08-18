@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "tr (Traducir)"
+meta_title: "tr (Traducir) - Text-Fu"
 meta_description: "Aprenda a usar el comando 'tr' de Linux para traducir y eliminar caracteres. Comprenda la traducción de caracteres con ejemplos y ejercicios. ¡Comience su viaje en Linux!"
 meta_keywords: "comando tr, Linux tr, traducir caracteres, eliminar caracteres, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---

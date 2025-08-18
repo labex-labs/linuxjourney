@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Systemd Goals"
+meta_title: "Systemd Goals - Init"
 meta_description: "Learn systemd unit basics and essential systemctl commands. Understand how to manage services, view statuses, and enable units in Linux. Start your journey!"
 meta_keywords: "systemd, systemctl, Linux services, unit files, beginner, tutorial, guide, Linux commands"
 ---

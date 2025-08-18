@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Filesystem Types"
+meta_title: "Filesystem Types - The Filesystem"
 meta_description: "Learn about Linux filesystem types like ext4, Btrfs, and XFS. Understand journaling and VFS for consistent data. Explore common Linux filesystems in this beginner guide."
 meta_keywords: "Linux filesystem types, ext4, Btrfs, XFS, journaling, VFS, Linux tutorial, beginner guide"
 ---

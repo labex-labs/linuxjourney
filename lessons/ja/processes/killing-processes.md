@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "kill (終了)"
+meta_title: "kill (終了) - プロセス"
 meta_description: "Linux の'kill'コマンドを使ってプロセスを終了させる方法を学びましょう。プロセス管理のための SIGTERM、SIGKILL、その他のシグナルを理解します。今すぐ学習を始めましょう！"
 meta_keywords: "kill コマンド，Linux プロセス，SIGTERM, SIGKILL, Linux チュートリアル，初心者，プロセス管理，Linux ガイド"
 ---

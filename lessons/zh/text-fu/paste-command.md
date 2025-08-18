@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "paste"
+meta_title: "paste - 文本操作"
 meta_description: "学习如何使用 Linux paste 命令合并文件行。通过这个重要的 Linux 命令教程，了解分隔符并组合文件。"
 meta_keywords: "Linux paste 命令，paste 命令教程，合并文件行，Linux 命令，Linux 初学者，Linux 指南"
 ---

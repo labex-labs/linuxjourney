@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "whatis"
+meta_title: "whatis - コマンドライン"
 meta_description: "Linux で'whatis'コマンドが何をするかを学びましょう。コマンドの簡単な説明を素早く取得します。Linux コマンドを理解するための初心者にとって不可欠です。"
 meta_keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
 ---

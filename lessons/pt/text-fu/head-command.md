@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "head"
+meta_title: "head - Text-Fu"
 meta_description: "Aprenda a usar o comando 'head' do Linux para visualizar o início dos arquivos. Entenda opções como -n para contagem de linhas. Tutorial essencial de comando Linux."
 meta_keywords: "comando head, Linux head, visualizar início de arquivo, tutorial Linux, comandos Linux, Linux para iniciantes, head -n, guia Linux"
 ---

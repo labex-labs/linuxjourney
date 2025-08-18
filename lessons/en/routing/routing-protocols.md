@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Routing Protocols"
+meta_title: "Routing Protocols - Routing"
 meta_description: "Learn about routing protocols like distance vector and link state. Understand network convergence and how routers adapt to changes. Start your Linux networking journey!"
 meta_keywords: "routing protocols, network convergence, distance vector, link state, Linux networking, beginner guide, network tutorial"
 ---

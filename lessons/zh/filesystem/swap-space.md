@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "swap"
+meta_title: "swap - 文件系统"
 meta_description: "了解 Linux swap 空间、其工作原理以及如何创建和管理 swap 分区。通过本指南优化您的系统内存使用！"
 meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 虚拟内存，Linux 初学者，Linux 教程"
 ---

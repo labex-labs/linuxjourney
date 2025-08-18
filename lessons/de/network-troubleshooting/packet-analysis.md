@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Paketanalyse"
+meta_title: "Paketanalyse - Fehlerbehebung"
 meta_description: "Lernen Sie die Grundlagen der Paketanalyse mit tcpdump. Verstehen Sie den Netzwerkverkehr, erfassen Sie Daten und interpretieren Sie die Ausgabe mit diesem anfängerfreundlichen Linux-Leitfaden."
 meta_keywords: "tcpdump, Paketanalyse, Netzwerkanalyse, Linux-Netzwerk, Anfänger-Tutorial, Wireshark, Linux-Befehle, Netzwerkverkehr"
 ---

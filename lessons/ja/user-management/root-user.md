@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "root"
+meta_title: "root - ユーザー管理"
 meta_description: "Linux の root ユーザー、su コマンド、および/etc/sudoers ファイルについて学びます。この初心者向けガイドで、Linux におけるスーパーユーザーアクセスと権限を理解しましょう。"
 meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---

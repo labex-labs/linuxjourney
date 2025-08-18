@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Что такое DNS?"
+meta_title: "Что такое DNS? - DNS"
 meta_description: "Узнайте, что такое DNS и как он преобразует доменные имена в IP-адреса. Изучите эту ключевую концепцию Интернета с помощью нашего руководства по Linux для начинающих."
 meta_keywords: "DNS, Domain Name System, IP address, hostname, Linux networking, beginner, tutorial, guide"
 ---

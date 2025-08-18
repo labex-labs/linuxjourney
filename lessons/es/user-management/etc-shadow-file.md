@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "/etc/shadow"
+meta_title: "/etc/shadow - Gestión de Usuarios"
 meta_description: "Aprende sobre el archivo /etc/shadow en Linux, sus campos y cómo protege las contraseñas de los usuarios. Comprende la autenticación de Linux para principiantes."
 meta_keywords: "/etc/shadow, seguridad de Linux, autenticación de usuario, gestión de contraseñas, tutorial de Linux, guía para principiantes"
 ---

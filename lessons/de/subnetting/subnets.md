@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Subnetze"
+meta_title: "Subnetze - Subnetting"
 meta_description: "Erfahren Sie mehr über Subnetze und Subnetzmasken in der Linux-Netzwerktechnik. Verstehen Sie Netzwerkpräfixe und wie Subnetze den Datenverkehr segmentieren. Beginnen Sie mit diesem anfängerfreundlichen Leitfaden!"
 meta_keywords: "Subnetze, Subnetzmaske, Netzwerkpräfix, Linux-Netzwerk, IP-Adresse, Anfänger, Tutorial, ifconfig"
 ---

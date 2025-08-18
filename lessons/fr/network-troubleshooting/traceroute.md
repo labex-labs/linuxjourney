@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "traceroute"
+meta_title: "traceroute - Dépannage"
 meta_description: "Apprenez à utiliser la commande Linux traceroute pour tracer les routes réseau et dépanner la connectivité. Comprenez le TTL et le routage des paquets pour les débutants."
 meta_keywords: "traceroute, réseau Linux, dépannage réseau, TTL, commandes Linux, débutant, tutoriel"
 ---

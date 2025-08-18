@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "pwd (Print Working Directory)"
+meta_title: "pwd (Print Working Directory) - Командная строка"
 meta_description: "Узнайте, как использовать команду 'pwd' в Linux для вывода текущего рабочего каталога. Изучите пути файловой системы Linux и навигацию для начинающих."
 meta_keywords: "команда pwd, каталог Linux, текущий каталог, путь Linux, учебник Linux, Linux для начинающих, руководство по Linux"
 ---

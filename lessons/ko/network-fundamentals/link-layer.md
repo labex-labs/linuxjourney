@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "링크 계층"
+meta_title: "링크 계층 - 네트워크 기본"
 meta_description: "TCP/IP의 링크 계층, ARP 가 MAC 주소를 해결하는 방법, 패킷 이동에 대해 알아보세요. 이 Linux 네트워킹 튜토리얼을 통해 네트워크 기본 사항을 이해하세요."
 meta_keywords: "링크 계층, ARP, TCP/IP, MAC 주소, 네트워크 기본 사항, Linux 네트워킹, 초급, 튜토리얼"
 ---

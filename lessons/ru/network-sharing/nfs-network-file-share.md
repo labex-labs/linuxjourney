@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "NFS"
+meta_title: "NFS - Совместное использование сети"
 meta_description: "Узнайте о настройке клиента NFS и автоматическом монтировании в Linux. Поймите, как подключаться к сетевым файловым ресурсам и использовать automount для беспрепятственного доступа."
 meta_keywords: "NFS client, automount, Network File System, Linux networking, mount command, Linux tutorial, beginner"
 ---

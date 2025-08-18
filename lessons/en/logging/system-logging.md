@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "System Logging"
+meta_title: "System Logging - Logging"
 meta_description: "Learn about Linux system logging, syslog, and how to view log files in /var/log. Understand rsyslogd and monitor system events with this beginner guide."
 meta_keywords: "Linux logging, syslog, rsyslogd, var log, system logs, Linux tutorial, beginner guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "젠투"
+meta_title: "젠투 - 시작하기"
 meta_description: "Gentoo Linux, Portage 패키지 관리자, 그리고 높은 구성 가능성에 대해 알아보세요. 이 유연한 배포판이 당신의 고급 Linux 여정에 적합한지 알아보세요."
 meta_keywords: "Gentoo Linux, Portage, Linux 배포판, Gentoo 튜토리얼, Linux 초보자, Linux 가이드, Gentoo 구성 가능성"
 ---

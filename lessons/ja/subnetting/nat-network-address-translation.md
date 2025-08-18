@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "NAT"
+meta_title: "NAT - サブネット化"
 meta_description: "Linux における NAT（Network Address Translation）の仕組みとそのネットワークセキュリティにおける役割について学びます。プライベート IP とパブリック IP の違いを理解します。Linux ネットワーキングガイド。"
 meta_keywords: "NAT, ネットワークアドレス変換，Linux ネットワーキング，プライベート IP, パブリック IP, Linux チュートリアル，初心者向けガイド"
 ---

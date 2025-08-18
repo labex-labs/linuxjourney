@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "启动过程：Init"
+meta_title: "启动过程：Init - 启动系统"
 meta_description: "了解 Linux init 系统：System V、Upstart 和 systemd。理解它们在启动过程中的作用以及如何管理服务。开始您的 Linux 之旅！"
 meta_keywords: "Linux init, systemd, System V init, Upstart, Linux 启动过程，Linux 教程，Linux 初学者，Linux 指南"
 ---

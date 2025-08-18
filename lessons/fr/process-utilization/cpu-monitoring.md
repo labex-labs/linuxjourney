@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Surveillance du CPU"
+meta_title: "Surveillance du CPU - Utilisation des Processus"
 meta_description: "Apprenez la surveillance du CPU avec la commande uptime. Comprenez la moyenne de charge, l'utilisation du CPU et comment interpréter les performances du système pour les débutants Linux."
 meta_keywords: "commande uptime, surveillance CPU Linux, moyenne de charge, performances système, tutoriel Linux, guide du débutant"
 ---

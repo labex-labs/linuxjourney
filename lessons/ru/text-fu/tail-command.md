@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "tail"
+meta_title: "tail - Text-Fu"
 meta_description: "Узнайте, как использовать команду `tail` в Linux для просмотра концов файлов и мониторинга логов. Откройте для себя `tail -f` для обновлений в реальном времени. Начните свой путь в Linux!"
 meta_keywords: "команда tail, Linux tail, tail -f, просмотр логов, учебник Linux, Linux для начинающих, руководство по Linux"
 ---

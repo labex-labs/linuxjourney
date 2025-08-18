@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "ping"
+meta_title: "ping - Fehlerbehebung"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl ping verwenden, um die Netzwerkkonnektivität zu testen und Probleme zu beheben. Verstehen Sie ICMP, TTL und Roundtrip-Zeit für eine effektive Netzwerkdiagnose."
 meta_keywords: "Linux ping, Netzwerkkonnektivität, ICMP, TTL, Linux-Netzwerk, Linux für Anfänger, Linux-Tutorial, ping-Befehl"
 ---

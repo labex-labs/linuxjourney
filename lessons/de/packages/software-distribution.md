@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Softwareverteilung"
+meta_title: "Softwareverteilung - Pakete"
 meta_description: "Erfahren Sie mehr über die Linux-Softwareverteilung, Paketmanager und Pakettypen wie .deb und .rpm. Verstehen Sie, wie Software auf Linux-Systemen verwaltet wird."
 meta_keywords: "Linux-Softwareverteilung, Paketmanager, .deb, .rpm, Linux-Pakete, Linux für Anfänger, Linux-Tutorial, Softwareinstallation"
 ---

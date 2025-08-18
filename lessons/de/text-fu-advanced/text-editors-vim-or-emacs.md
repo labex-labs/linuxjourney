@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Texteditoren"
+meta_title: "Texteditoren - Fortgeschrittenes Text-Fu"
 meta_description: "Erfahren Sie mehr über Linux-Texteditoren wie Vim und Emacs. Entdecken Sie ihre Verwendung und Bedeutung für die Systemnavigation. Beginnen Sie Ihre Reise mit Linux-Texteditoren!"
 meta_keywords: "Linux-Texteditoren, Vim, Emacs, Linux-Befehle, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Fedora"
+meta_title: "Fedora - Erste Schritte"
 meta_description: "Erfahren Sie mehr über Fedora Linux, seine Verbindung zu RHEL und das Paketmanagement. Entdecken Sie, warum Fedora ein großartiges kostenloses Red Hat-basiertes Betriebssystem für Anfänger und Desktops ist."
 meta_keywords: "Fedora Linux, RHEL, Red Hat, Linux-Tutorial, Paketmanagement, Linux für Anfänger, Linux-Anleitung, kostenloses Betriebssystem"
 ---

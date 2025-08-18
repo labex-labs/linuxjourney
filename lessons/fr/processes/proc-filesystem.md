@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Système de fichiers /proc"
+meta_title: "Système de fichiers /proc - Processus"
 meta_description: "Découvrez le système de fichiers /proc dans Linux, comment il stocke les informations de processus et sa structure. Explorez les détails des processus avec ce guide Linux essentiel."
 meta_keywords: "système de fichiers /proc, processus Linux, informations de processus, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

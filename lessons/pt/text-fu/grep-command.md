@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "grep"
+meta_title: "grep - Text-Fu"
 meta_description: "Aprenda a usar o comando grep no Linux para pesquisar padrões de texto em arquivos. Descubra o uso básico, pesquisa que não diferencia maiúsculas de minúsculas e a combinação com outros comandos. Comece sua jornada no Linux!"
 meta_keywords: "comando grep, Linux grep, pesquisar arquivos, processamento de texto, tutorial Linux, Linux para iniciantes, guia grep"
 ---

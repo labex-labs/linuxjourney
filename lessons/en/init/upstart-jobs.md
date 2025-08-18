@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Upstart Jobs"
+meta_title: "Upstart Jobs - Init"
 meta_description: "Learn to manage Upstart jobs in Linux using initctl commands. Understand job status, start, stop, and restart services. Improve your Linux system administration skills."
 meta_keywords: "Upstart jobs, initctl, Linux services, system administration, Linux tutorial, beginner guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "mv (Verschieben)"
+meta_title: "mv (Verschieben) - Command Line"
 meta_description: "Lernen Sie, wie Sie den Linux-Befehl mv zum Verschieben und Umbenennen von Dateien/Verzeichnissen verwenden. Verstehen Sie seine Optionen und verhindern Sie Überschreibungen. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "mv Befehl, Linux mv, Dateien verschieben Linux, Dateien umbenennen Linux, Linux Tutorial, Anfänger, Linux Anleitung"
 ---

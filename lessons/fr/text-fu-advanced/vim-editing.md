@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Édition Vim"
+meta_title: "Édition Vim - Text-Fu Avancé"
 meta_description: "Apprenez les bases de l'édition Vim : supprimer, modifier, copier et coller du texte efficacement. Maîtrisez les commandes Vim essentielles pour les débutants et améliorez vos compétences en édition de texte sous Linux."
 meta_keywords: "édition Vim, commandes Vim, éditeur de texte Linux, tutoriel Vim, guide Vim, Vim pour débutants, commande dd, suppression Vim"
 ---

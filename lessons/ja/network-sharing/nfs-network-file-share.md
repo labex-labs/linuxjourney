@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "NFS"
+meta_title: "NFS - ネットワーク共有"
 meta_description: "Linux での NFS クライアント設定と自動マウントについて学びます。ネットワークファイル共有に接続し、シームレスなアクセスを実現するために自動マウントを使用する方法を理解します。"
 meta_keywords: "NFS クライアント，automount, ネットワークファイルシステム，Linux ネットワーキング，mount コマンド，Linux チュートリアル，初心者"
 ---

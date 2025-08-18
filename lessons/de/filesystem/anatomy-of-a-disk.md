@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Anatomie einer Festplatte"
+meta_title: "Anatomie einer Festplatte - Das Dateisystem"
 meta_description: "Erfahren Sie mehr über Linux-Festplattenpartitionierung, MBR vs. GPT und Dateisystemstruktur. Verstehen Sie Partitionen, Tabellen und wie Daten organisiert werden. Beginnen Sie mit diesem Leitfaden für Anfänger!"
 meta_keywords: "Linux-Festplattenpartitionierung, MBR, GPT, Dateisystemstruktur, Linux-Partitionen, Anfänger, Tutorial, Leitfaden"
 ---

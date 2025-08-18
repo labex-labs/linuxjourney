@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "cp (Copiar)"
+meta_title: "cp (Copiar) - Command Line"
 meta_description: "Aprende a usar el comando cp de Linux para copiar archivos y directorios. Entiende opciones como -r y wildcards. ¡Comienza tu viaje en Linux hoy mismo!"
 meta_keywords: "comando cp, copiar archivos Linux, tutorial Linux, Linux para principiantes, cp -r, wildcards Linux, guía Linux"
 ---

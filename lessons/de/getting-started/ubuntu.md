@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Ubuntu"
+meta_title: "Ubuntu - Erste Schritte"
 meta_description: "Erfahren Sie mehr über Ubuntu, eine beliebte Linux-Distribution für Anfänger. Entdecken Sie ihre Funktionen, Paketverwaltung und warum sie sich hervorragend für Desktop- und Servernutzung eignet."
 meta_keywords: "Ubuntu, Linux-Distribution, Debian, Paketverwaltung, Linux-Anfänger, Ubuntu-Tutorial, Linux-Anleitung"
 ---

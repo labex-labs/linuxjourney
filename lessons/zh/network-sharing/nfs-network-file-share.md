@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "NFS"
+meta_title: "NFS - 网络共享"
 meta_description: "了解 Linux 中 NFS 客户端设置和自动挂载。理解如何连接到网络文件共享以及如何使用自动挂载实现无缝访问。"
 meta_keywords: "NFS 客户端，自动挂载，网络文件系统，Linux 网络，mount 命令，Linux 教程，初学者"
 ---

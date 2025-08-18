@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Red Hat Enterprise Linux"
+meta_title: "Red Hat Enterprise Linux - Начало работы"
 meta_description: "Узнайте об основах Red Hat Enterprise Linux (RHEL), его менеджере пакетов RPM и корпоративном использовании. Поймите основные различия и преимущества RHEL."
 meta_keywords: "Изучить RHEL, Red Hat Enterprise Linux, основы RHEL, менеджер пакетов RPM, серверная ОС Linux, RHEL для начинающих, руководство по RHEL"
 ---

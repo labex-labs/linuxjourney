@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Registro de Autenticação"
+meta_title: "Registro de Autenticação - Registro de Logs"
 meta_description: "Aprenda sobre o registro de autenticação do Linux com /var/log/auth.log. Entenda os logins de usuários e solucione problemas de acesso com este guia essencial."
 meta_keywords: "autenticação Linux, auth.log, registro Linux, login de usuário, segurança Linux, iniciante, tutorial, guia"
 ---

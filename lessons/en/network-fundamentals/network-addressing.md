@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Network Addressing"
+meta_title: "Network Addressing - Network Basics"
 meta_description: "Learn network addressing basics: MAC vs. IP addresses, and hostnames. Understand how devices communicate on a network. Start your Linux networking journey!"
 meta_keywords: "network addressing, MAC address, IP address, hostname, Linux networking, beginner, tutorial, guide"
 ---

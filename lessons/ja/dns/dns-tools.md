@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "DNS ツール"
+meta_title: "DNS ツール - DNS"
 meta_description: "Linux での DNS クエリとトラブルシューティングのために、nslookup と dig コマンドを学びましょう。これらの必須 DNS ツールの使い方を、初心者向けのガイドで理解してください。"
 meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---

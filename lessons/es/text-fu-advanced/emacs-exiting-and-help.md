@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Emacs: Salir y Ayuda"
+meta_title: "Emacs: Salir y Ayuda - Text-Fu Avanzado"
 meta_description: "Aprenda los comandos de salida de Emacs y cómo acceder a la ayuda. Comprenda la navegación básica de Emacs y las funciones de deshacer en este tutorial para principiantes."
 meta_keywords: "salir de Emacs, ayuda de Emacs, deshacer en Emacs, tutorial de Emacs, editor de texto de Linux, guía para principiantes"
 ---

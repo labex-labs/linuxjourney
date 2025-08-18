@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Speicherüberwachung"
+meta_title: "Speicherüberwachung - Prozessauslastung"
 meta_description: "Lernen Sie, die Linux-Speichernutzung mit vmstat zu überwachen. Verstehen Sie Speicher-, Swap- und CPU-Metriken für die Systemleistung. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "vmstat, Linux Speicherüberwachung, Systemleistung, Linux Tutorial, Speichernutzung, Linux für Anfänger, Linux Anleitung"
 ---

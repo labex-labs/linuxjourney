@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Processo de Inicialização: Bootloader"
+meta_title: "Processo de Inicialização: Bootloader - Inicializar o Sistema"
 meta_description: "Aprenda sobre o bootloader Linux, suas funções e parâmetros comuns do kernel como initrd e root. Entenda o GRUB e otimize seu processo de inicialização Linux."
 meta_keywords: "bootloader Linux, GRUB, parâmetros do kernel, initrd, sistema de arquivos root, processo de inicialização Linux, tutorial Linux, Linux para iniciantes"
 ---

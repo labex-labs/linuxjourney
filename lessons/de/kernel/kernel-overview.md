@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Übersicht über den Kernel"
+meta_title: "Übersicht über den Kernel - Kernel"
 meta_description: "Erfahren Sie mehr über den Linux-Kernel, seine Rolle im Betriebssystem und wie er mit Hardware und dem User Space interagiert. Verstehen Sie die Kernkomponenten des Betriebssystems."
 meta_keywords: "Linux-Kernel, Betriebssystem, Hardware-Interaktion, User Space, Linux-Tutorial, Anfängerleitfaden"
 ---

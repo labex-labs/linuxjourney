@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Anatomy of a Disk"
+meta_title: "Anatomy of a Disk - The Filesystem"
 meta_description: "Learn about Linux disk partitioning, MBR vs. GPT, and filesystem structure. Understand partitions, tables, and how to organize data. Get started with this beginner guide!"
 meta_keywords: "Linux disk partitioning, MBR, GPT, filesystem structure, Linux partitions, beginner, tutorial, guide"
 ---

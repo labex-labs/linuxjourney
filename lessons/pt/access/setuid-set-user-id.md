@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Setuid"
+meta_title: "Setuid - Permissões"
 meta_description: "Aprenda sobre as permissões Linux Setuid (SUID), como elas funcionam e como modificá-las. Entenda o SUID para acesso seguro a arquivos no Linux."
 meta_keywords: "Linux Setuid, SUID, permissões Linux, chmod, comando passwd, segurança Linux, Linux para iniciantes, tutorial Linux"
 ---

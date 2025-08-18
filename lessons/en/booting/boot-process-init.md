@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Boot Process: Init"
+meta_title: "Boot Process: Init - Boot the System"
 meta_description: "Learn about Linux init systems: System V, Upstart, and systemd. Understand their roles in the boot process and how they manage services. Start your Linux journey!"
 meta_keywords: "Linux init, systemd, System V init, Upstart, Linux boot process, Linux tutorial, beginner Linux, Linux guide"
 ---

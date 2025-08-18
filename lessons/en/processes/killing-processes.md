@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "kill (Terminate)"
+meta_title: "kill (Terminate) - Processes"
 meta_description: "Learn how to use the Linux 'kill' command to terminate processes. Understand SIGTERM, SIGKILL, and other signals for process management. Start learning now!"
 meta_keywords: "kill command, Linux processes, SIGTERM, SIGKILL, Linux tutorial, beginner, process management, Linux guide"
 ---

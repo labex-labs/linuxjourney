@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "openSUSE"
+meta_title: "openSUSE - Начало работы"
 meta_description: "Узнайте о openSUSE Linux, его истории, управлении пакетами (RPM) и настраиваемости с помощью YaST. Узнайте, почему openSUSE отлично подходит для начинающих."
 meta_keywords: "openSUSE, дистрибутив Linux, RPM, YaST, Linux для начинающих, руководство openSUSE, руководство по Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Serviço System V"
+meta_title: "Serviço System V - Init"
 meta_description: "Aprenda a gerenciar serviços System V usando ferramentas de linha de comando. Descubra como listar, iniciar, parar e reiniciar serviços com este tutorial de Linux para iniciantes."
 meta_keywords: "serviços System V, serviços Linux, comando service, SysV init, tutorial Linux, Linux para iniciantes, gerenciamento de serviços, guia Linux"
 ---

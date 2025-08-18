@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Controlando o Terminal"
+meta_title: "Controlando o Terminal - Processos"
 meta_description: "Aprenda sobre o controle de terminais no Linux, incluindo TTY vs. PTS, e como os processos estão vinculados a eles. Entenda os processos daemon. Comece sua jornada no Linux!"
 meta_keywords: "terminal de controle, TTY, PTS, terminal Linux, processos daemon, iniciante em Linux, tutorial de Linux, guia de Linux"
 ---

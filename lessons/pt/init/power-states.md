@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Estados de Energia"
+meta_title: "Estados de Energia - Init"
 meta_description: "Aprenda os estados de energia do sistema Linux: comandos shutdown, reboot e halt. Entenda como desligar ou reiniciar seu sistema Linux com segurança. Comece com comandos essenciais!"
 meta_keywords: "desligar Linux, comando reboot, sistema halt, desligar Linux, comandos Linux, Linux para iniciantes, tutorial Linux, estados do sistema"
 ---

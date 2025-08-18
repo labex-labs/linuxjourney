@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "cat"
+meta_title: "cat - Command Line"
 meta_description: "Linux 에서 'cat' 명령어를 사용하여 파일 내용을 보고 파일을 연결하는 방법을 배웁니다. 기본적인 Linux 명령어에 대한 초보자 친화적인 가이드입니다."
 meta_keywords: "cat 명령어, Linux cat, 파일 내용 보기, 파일 연결, Linux 명령어, 초보자 Linux, Linux 튜토리얼, Linux 가이드"
 ---

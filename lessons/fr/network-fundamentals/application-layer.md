@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Couche application"
+meta_title: "Couche application - Bases du Réseau"
 meta_description: "Découvrez la couche application dans le modèle TCP/IP, comment elle gère les données pour le courrier électronique (SMTP) et son rôle dans la communication réseau. Comprenez les couches réseau."
 meta_keywords: "Couche application, modèle TCP/IP, SMTP, couches réseau, réseau Linux, tutoriel débutant, communication réseau"
 ---

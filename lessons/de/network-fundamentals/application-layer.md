@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Anwendungsschicht"
+meta_title: "Anwendungsschicht - Netzwerkgrundlagen"
 meta_description: "Erfahren Sie mehr über die Anwendungsschicht im TCP/IP-Modell, wie sie Daten für E-Mails (SMTP) verarbeitet und welche Rolle sie in der Netzwerkkommunikation spielt. Verstehen Sie Netzwerkschichten."
 meta_keywords: "Anwendungsschicht, TCP/IP-Modell, SMTP, Netzwerkschichten, Linux-Netzwerk, Anfänger-Tutorial, Netzwerkkommunikation"
 ---

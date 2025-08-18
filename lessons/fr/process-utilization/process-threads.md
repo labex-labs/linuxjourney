@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Threads de processus"
+meta_title: "Threads de processus - Utilisation des Processus"
 meta_description: "Découvrez les threads de processus Linux, les concepts mono-thread et multi-thread, et comment les visualiser à l'aide de 'ps m'. Comprenez efficacement les processus légers !"
 meta_keywords: "threads Linux, threads de processus, commande ps m, multi-thread, mono-thread, processus Linux, Linux débutant, tutoriel Linux"
 ---

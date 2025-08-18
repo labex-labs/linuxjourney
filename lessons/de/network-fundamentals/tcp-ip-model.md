@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "TCP/IP-Modell"
+meta_title: "TCP/IP-Modell - Netzwerkgrundlagen"
 meta_description: "Erfahren Sie mehr über die Schichten des TCP/IP-Modells: Anwendung, Transport, Netzwerk und Verbindung. Verstehen Sie, wie Daten über Netzwerke übertragen werden. Beginnen Sie Ihre Reise in die Linux-Netzwerktechnik!"
 meta_keywords: "TCP/IP-Modell, Grundlagen der Netzwerktechnik, Linux-Netzwerktechnik, TCP, IP, Anfänger-Tutorial, Netzwerkschichten, Leitfaden"
 ---

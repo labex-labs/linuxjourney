@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "dd"
+meta_title: "dd - Devices"
 meta_description: "Learn the Linux dd command for data copying and disk imaging. Understand its options like if, of, and bs. Start your Linux data management journey!"
 meta_keywords: "dd command, Linux dd, copy data, disk imaging, Linux tutorial, beginner, guide, data backup"
 ---

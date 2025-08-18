@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "wc and nl"
+meta_title: "wc and nl - Text-Fu"
 meta_description: "Learn wc and nl Linux commands. Understand word count, line numbering, and file analysis. Improve your Linux command-line skills today!"
 meta_keywords: "wc command, nl command, Linux word count, Linux line numbers, file analysis, Linux tutorial, beginner Linux, Linux guide"
 ---

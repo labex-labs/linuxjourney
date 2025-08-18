@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Red Hat Enterprise Linux"
+meta_title: "Red Hat Enterprise Linux - 시작하기"
 meta_description: "Red Hat Enterprise Linux (RHEL) 의 기본 사항, RPM 패키지 관리자 및 기업용 활용법에 대해 알아보세요. RHEL 의 핵심 차이점과 이점을 이해합니다."
 meta_keywords: "RHEL 배우기, Red Hat Enterprise Linux, RHEL 기본, RPM 패키지 관리자, Linux 서버 OS, RHEL 초보자, RHEL 가이드"
 ---

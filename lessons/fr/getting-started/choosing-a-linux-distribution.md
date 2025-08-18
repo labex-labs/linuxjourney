@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Choisir une distribution Linux"
+meta_title: "Choisir une distribution Linux - Démarrage"
 meta_description: "Apprenez à choisir une distribution Linux adaptée à vos besoins. Explorez les options populaires et comprenez le noyau, le matériel et l'espace utilisateur. Commencez votre parcours Linux !"
 meta_keywords: "distribution Linux, choisir Linux, noyau Linux, Linux pour débutants, guide Linux, installer Linux, tutoriel Linux"
 ---

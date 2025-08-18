@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "パーミッションの変更"
+meta_title: "パーミッションの変更 - パーミッション"
 meta_description: "Linux で chmod コマンドを使用してファイルパーミッションを変更する方法を学びます。安全なファイル管理のために、シンボリックモードと数値モードを理解しましょう。今すぐ学習を始めましょう！"
 meta_keywords: "chmod コマンド，Linux パーミッション，ファイルパーミッション，chmod チュートリアル，Linux セキュリティ，初心者 Linux, Linux ガイド，chmod 数値"
 ---

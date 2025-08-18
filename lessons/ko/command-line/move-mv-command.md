@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "mv (이동)"
+meta_title: "mv (이동) - Command Line"
 meta_description: "Linux mv 명령을 사용하여 파일/디렉토리를 이동하고 이름을 변경하는 방법을 배웁니다. 옵션을 이해하고 덮어쓰기를 방지합니다. Linux 여정을 시작하세요!"
 meta_keywords: "mv command, Linux mv, 파일 이동 Linux, 파일 이름 변경 Linux, Linux 튜토리얼, 초보자, Linux 가이드"
 ---

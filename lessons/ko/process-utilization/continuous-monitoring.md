@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "지속적인 모니터링"
+meta_title: "지속적인 모니터링 - 프로세스 활용"
 meta_description: "sar 를 사용하여 지속적인 Linux 시스템 모니터링을 배우세요. 설치, 데이터 수집, 그리고 성능을 위한 과거 자원 사용량 분석 방법을 이해하세요. 지금 시작하세요!"
 meta_keywords: "sar, sysstat, Linux 모니터링, 시스템 성능, 지속적인 모니터링, 초보자, 튜토리얼, 가이드"
 ---

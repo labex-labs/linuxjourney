@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "alias"
+meta_title: "alias - Command Line"
 meta_description: "Learn how to create and manage Linux aliases for common commands. Discover temporary and permanent alias setup in .bashrc. Improve your command-line efficiency!"
 meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"
 ---

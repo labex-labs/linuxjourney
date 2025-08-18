@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Kernelmodule"
+meta_title: "Kernelmodule - Kernel"
 meta_description: "Erfahren Sie mehr über Linux-Kernelmodule: wie man sie lädt, entlädt und verwaltet. Verstehen Sie die Befehle `modprobe` und `lsmod` zur Erweiterung der Kernel-Funktionalität. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Linux-Kernelmodule, modprobe, lsmod, Kernel-Verwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---

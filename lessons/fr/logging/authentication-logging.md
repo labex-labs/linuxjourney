@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Journalisation de l'authentification"
+meta_title: "Journalisation de l'authentification - Logging"
 meta_description: "Découvrez la journalisation de l'authentification Linux avec /var/log/auth.log. Comprenez les connexions des utilisateurs et dépannez les problèmes d'accès avec ce guide essentiel."
 meta_keywords: "authentification Linux, auth.log, journalisation Linux, connexion utilisateur, sécurité Linux, débutant, tutoriel, guide"
 ---

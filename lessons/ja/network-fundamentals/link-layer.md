@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "リンク層"
+meta_title: "リンク層 - ネットワークの基本"
 meta_description: "TCP/IPのリンク層、ARPがMACアドレスを解決する方法、およびパケットの移動について学びます。このLinuxネットワーキングチュートリアルでネットワークの基礎を理解しましょう。"
 meta_keywords: "リンク層，ARP, TCP/IP, MAC アドレス，ネットワークの基礎，Linux ネットワーキング，初心者，チュートリアル"
 ---

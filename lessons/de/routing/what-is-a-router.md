@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Was ist ein Router?"
+meta_title: "Was ist ein Router? - Routing"
 meta_description: "Erfahren Sie, was ein Router ist, wie er funktioniert und welche Rolle er in der Netzwerktechnik spielt. Verstehen Sie Routing, Hops und Paketlieferung für Anfänger."
 meta_keywords: "Router, Netzwerk, Routing, Hops, Paketvermittlung, Linux-Netzwerk, Anfänger-Tutorial, Netzwerk-Leitfaden"
 ---

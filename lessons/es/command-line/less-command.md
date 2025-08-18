@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "less"
+meta_title: "less - Command Line"
 meta_description: "Aprenda a usar el comando 'less' de Linux para una visualización y navegación eficiente de archivos de texto. Domine la paginación, la búsqueda y la salida con esta guía para principiantes."
 meta_keywords: "comando less, Linux less, ver archivos de texto, navegar archivos, tutorial Linux, Linux para principiantes, guía Linux"
 ---

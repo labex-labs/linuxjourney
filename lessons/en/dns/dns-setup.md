@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "DNS Setup"
+meta_title: "DNS Setup - DNS"
 meta_description: "Learn about popular DNS servers for Linux like BIND, DNSmasq, and PowerDNS. Discover the best DNS server for your network setup with this beginner-friendly guide."
 meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS server setup, Linux networking, DNS tutorial, beginner"
 ---

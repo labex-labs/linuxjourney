@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "historial"
+meta_title: "historial - Command Line"
 meta_description: "Aprenda a usar el comando history de Linux, el atajo !! y Ctrl-R para una recuperación eficiente de comandos. ¡Mejore su productividad en la terminal con estos consejos esenciales!"
 meta_keywords: "historial de Linux, historial de bash, Ctrl-R, comando clear, tutorial de Linux, línea de comandos, guía para principiantes"
 ---

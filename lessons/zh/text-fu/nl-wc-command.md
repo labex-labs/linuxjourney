@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "wc 和 nl"
+meta_title: "wc 和 nl - 文本操作"
 meta_description: "学习 wc 和 nl Linux 命令。了解字数统计、行编号和文件分析。立即提高您的 Linux 命令行技能！"
 meta_keywords: "wc 命令，nl 命令，Linux 字数统计，Linux 行号，文件分析，Linux 教程，Linux 初学者，Linux 指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Distance Vector Protocols"
+meta_title: "Distance Vector Protocols - Routing"
 meta_description: "Learn about distance vector protocols like RIP, how they work, and their limitations for network routing. Understand hop count and network efficiency."
 meta_keywords: "distance vector protocols, RIP, routing information protocol, hop count, network routing, Linux networking, beginner guide, tutorial"
 ---

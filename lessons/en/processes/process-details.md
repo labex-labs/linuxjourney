@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Process Details"
+meta_title: "Process Details - Processes"
 meta_description: "Learn about Linux process details, how the kernel manages resources, and what processes are. Understand process concepts for beginners."
 meta_keywords: "Linux processes, kernel, process management, ps aux, Linux tutorial, beginner guide"
 ---

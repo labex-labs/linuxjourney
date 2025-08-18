@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "链路状态协议"
+meta_title: "链路状态协议 - 路由"
 meta_description: "了解 OSPF 等链路状态协议在大型网络中的应用。理解它们的快速收敛以及它们如何更新路由表。开始您的 Linux 网络之旅！"
 meta_keywords: "链路状态协议，OSPF, Linux 网络，路由协议，网络拓扑，初学者"
 ---

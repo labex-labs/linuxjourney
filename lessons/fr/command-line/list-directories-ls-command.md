@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "ls (Lister les répertoires)"
+meta_title: "ls (Lister les répertoires) - Command Line"
 meta_description: "Apprenez à utiliser la commande 'ls' sous Linux pour lister le contenu des répertoires, afficher les fichiers cachés et comprendre les détails des fichiers. Améliorez vos compétences en ligne de commande Linux !"
 meta_keywords: "commande ls, lister les répertoires, tutoriel Linux, fichiers cachés, commandes Linux, Linux pour débutants, guide Linux"
 ---

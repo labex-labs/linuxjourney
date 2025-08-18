@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "数据包的路径"
+meta_title: "数据包的路径 - 路由"
 meta_description: "了解数据包如何在网络内部和外部传输。理解 IP、MAC、ARP 和路由表在网络通信中的作用。开始您的 Linux 网络之旅！"
 meta_keywords: "数据包传输，网络通信，ARP, IP 地址，MAC 地址，路由表，Linux 网络，初学者指南"
 ---

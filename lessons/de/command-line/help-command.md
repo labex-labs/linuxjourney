@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "help"
+meta_title: "help - Command Line"
 meta_description: "Erfahren Sie, wie Sie den Befehl 'help' in Bash für schnelle Befehlszeilenhilfe verwenden. Verstehen Sie integrierte Befehle und finden Sie Optionen für Linux-Programme."
 meta_keywords: "Linux help Befehl, Bash help, Befehlszeilenhilfe, Linux Befehle, Linux für Anfänger, Linux Tutorial, Bash Tutorial"
 ---

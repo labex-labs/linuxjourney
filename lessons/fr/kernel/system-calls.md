@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Appels Système"
+meta_title: "Appels Système - Kernel"
 meta_description: "Apprenez-en davantage sur les appels système Linux (syscalls) et leur interaction avec le kernel. Comprenez les modes utilisateur et kernel, et utilisez `strace` pour le débogage. Commencez votre parcours Linux !"
 meta_keywords: "Appels système Linux, syscalls, mode kernel, mode utilisateur, commande strace, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

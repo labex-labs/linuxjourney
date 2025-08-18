@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "openSUSE"
+meta_title: "openSUSE - 시작하기"
 meta_description: "openSUSE Linux, 그 역사, 패키지 관리 (RPM), YaST 를 통한 구성 가능성에 대해 알아보세요. openSUSE 가 초보자에게 좋은 이유를 알아보세요."
 meta_keywords: "openSUSE, Linux 배포판, RPM, YaST, 초보자를 위한 Linux, openSUSE 튜토리얼, Linux 가이드"
 ---

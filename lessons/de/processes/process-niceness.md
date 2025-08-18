@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Niceness"
+meta_title: "Niceness - Prozesse"
 meta_description: "Erfahren Sie mehr über Linux Niceness und Prozesspriorität. Verstehen Sie die Befehle nice und renice, um die CPU-Zeit für Prozesse zu verwalten. Verbessern Sie die Systemleistung!"
 meta_keywords: "Linux Niceness, Prozesspriorität, nice Befehl, renice Befehl, Linux Tutorial, CPU-Scheduling, Linux für Anfänger, Linux Anleitung"
 ---

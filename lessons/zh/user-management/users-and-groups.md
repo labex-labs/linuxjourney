@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "用户和组"
+meta_title: "用户和组 - 用户管理"
 meta_description: "了解 Linux 用户和组，理解 UID、GID 和 root 用户。学习如何使用 sudo 命令提升权限。开始你的 Linux 之旅！"
 meta_keywords: "Linux 用户，Linux 组，sudo 命令，root 用户，Linux 权限，Linux 教程，Linux 入门，Linux 指南"
 ---

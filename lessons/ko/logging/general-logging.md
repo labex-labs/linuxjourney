@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "일반 로깅"
+meta_title: "일반 로깅 - 로깅"
 meta_description: "`/var/log/messages` 및 syslog 와 같은 Linux 로그 파일에 대해 알아보세요. 효과적인 시스템 문제 해결을 위해 이들의 차이점을 이해하세요. Linux 여정을 시작하세요!"
 meta_keywords: "Linux 로그, syslog, var/log/messages, Linux 문제 해결, Linux 초보자, Linux 가이드, 시스템 로그"
 ---

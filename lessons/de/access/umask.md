@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Umask"
+meta_title: "Umask - Berechtigungen"
 meta_description: "Erfahren Sie, wie Sie den Befehl `umask` verwenden, um die Standard-Dateiberechtigungen in Linux zu steuern. Verstehen Sie numerische Berechtigungen und verwalten Sie den Zugriff auf neue Dateien einfach."
 meta_keywords: "umask, linux-berechtigungen, dateiberechtigungen, linux-befehle, linux für anfänger, linux-tutorial, standardberechtigungen"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Netzwerkadressierung"
+meta_title: "Netzwerkadressierung - Netzwerkgrundlagen"
 meta_description: "Lernen Sie die Grundlagen der Netzwerkadressierung: MAC- vs. IP-Adressen und Hostnamen. Verstehen Sie, wie Geräte in einem Netzwerk kommunizieren. Beginnen Sie Ihre Linux-Netzwerkreise!"
 meta_keywords: "Netzwerkadressierung, MAC-Adresse, IP-Adresse, Hostname, Linux-Netzwerk, Anfänger, Tutorial, Anleitung"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "/etc/fstab"
+meta_title: "/etc/fstab - Le Filesystem"
 meta_description: "Découvrez /etc/fstab sous Linux, comment configurer les montages de systèmes de fichiers au démarrage et gérer les entrées de périphériques. Comprenez fstab pour les débutants !"
 meta_keywords: "/etc/fstab, Linux fstab, monter des systèmes de fichiers, démarrage Linux, tutoriel fstab, débutant, guide"
 ---

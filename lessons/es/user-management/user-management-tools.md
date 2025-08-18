@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Herramientas de gestión de usuarios"
+meta_title: "Herramientas de gestión de usuarios - Gestión de Usuarios"
 meta_description: "Aprende la gestión de usuarios en Linux: añadir, eliminar y cambiar contraseñas con los comandos useradd, userdel y passwd. ¡Empieza con esta guía para principiantes!"
 meta_keywords: "gestión de usuarios Linux, adduser, userdel, passwd, tutorial Linux, Linux para principiantes, cuentas de usuario, comandos Linux"
 ---

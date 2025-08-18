@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Trabajos de Upstart"
+meta_title: "Trabajos de Upstart - Init"
 meta_description: "Aprenda a administrar trabajos de Upstart en Linux usando comandos initctl. Comprenda el estado, inicio, detención y reinicio de servicios. Mejore sus habilidades de administración de sistemas Linux."
 meta_keywords: "trabajos de Upstart, initctl, servicios de Linux, administración de sistemas, tutorial de Linux, guía para principiantes"
 ---

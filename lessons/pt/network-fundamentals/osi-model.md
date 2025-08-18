@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Modelo OSI"
+meta_title: "Modelo OSI - Noções Básicas de Rede"
 meta_description: "Aprenda sobre o modelo OSI, um conceito teórico fundamental de rede. Entenda suas 7 camadas e relevância para o TCP/IP. Guia essencial de rede Linux para iniciantes."
 meta_keywords: "modelo OSI, conceitos de rede, TCP/IP, rede Linux, tutorial para iniciantes, camadas de rede, modelo teórico"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "/etc/hosts"
+meta_title: "/etc/hosts - DNS"
 meta_description: "了解 Linux 中的 /etc/hosts 文件，它如何将主机名映射到 IP 地址，以及它在 DNS 解析中的作用。理解基本的网络配置。"
 meta_keywords: "/etc/hosts, Linux 网络，主机名映射，DNS 解析，Linux 教程，初学者指南"
 ---

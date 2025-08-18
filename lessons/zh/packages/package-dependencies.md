@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "软件包依赖项"
+meta_title: "软件包依赖项 - 软件包"
 meta_description: "了解 Linux 软件包依赖项以及它们对软件安装至关重要的原因。理解共享库并避免损坏的软件包。开始您的 Linux 之旅！"
 meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件包管理，Linux 教程，Linux 初学者，Linux 指南"
 ---

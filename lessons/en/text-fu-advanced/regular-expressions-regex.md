@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "regex (Regular Expressions)"
+meta_title: "regex (Regular Expressions) - Advanced Text-Fu"
 meta_description: "Learn regular expressions (regex) for Linux pattern matching. Understand regex syntax like ^, $, ., and [] for text manipulation. Improve your grep skills!"
 meta_keywords: "regular expressions, regex, Linux regex, grep regex, pattern matching, regex tutorial, Linux commands, beginner"
 ---

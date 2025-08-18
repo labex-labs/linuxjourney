@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "网络基础"
+meta_title: "网络基础 - 网络基础"
 meta_description: "学习 Linux 网络基础：理解 WAN、LAN、WLAN、路由器和主机。通过这份初学者指南开始您的网络之旅！"
 meta_keywords: "Linux 网络基础，WAN, LAN, WLAN, 网络教程，Linux 初学者，网络指南，Linux 概念"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "进程详情"
+meta_title: "进程详情 - 进程"
 meta_description: "了解 Linux 进程的详细信息，内核如何管理资源，以及进程是什么。为初学者理解进程概念。"
 meta_keywords: "Linux 进程，内核，进程管理，ps aux, Linux 教程，初学者指南"
 ---

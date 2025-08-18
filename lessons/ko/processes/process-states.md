@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "프로세스 상태"
+meta_title: "프로세스 상태 - 프로세스"
 meta_description: "`ps aux`를 사용하여 Linux 프로세스 상태 (R, S, D, Z, T) 를 학습합니다. 일반적인 STAT 코드를 이해하고 프로세스를 효과적으로 관리합니다. Linux 여정을 시작하세요!"
 meta_keywords: "Linux 프로세스 상태, ps aux, 프로세스 관리, Linux 튜토리얼, 초보자 Linux, STAT 코드, Linux 가이드"
 ---

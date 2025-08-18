@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "tar と gzip"
+meta_title: "tar と gzip - パッケージ"
 meta_description: "Linux で tar と gzip を使用してファイルのアーカイブと圧縮を行う方法を学びます。ファイルの作成、抽出、圧縮のためのコマンドを理解します。この初心者向けガイドから始めましょう！"
 meta_keywords: "tar, gzip, Linux アーカイブ，ファイル圧縮，tar コマンド，gzip コマンド，Linux チュートリアル，初心者 Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "電源状態"
+meta_title: "電源状態 - Init"
 meta_description: "Linux システムの電源状態、シャットダウン、再起動、停止コマンドについて学びます。Linux システムを安全に電源オフまたは再起動する方法を理解します。必須コマンドから始めましょう！"
 meta_keywords: "Linux シャットダウン，reboot コマンド，halt システム，Linux 電源オフ，Linux コマンド，初心者 Linux, Linux チュートリアル，システム状態"
 ---

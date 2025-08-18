@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Registro Geral"
+meta_title: "Registro Geral - Registro de Logs"
 meta_description: "Aprenda sobre arquivos de log do Linux como /var/log/messages e syslog. Entenda suas diferenças para uma solução de problemas eficaz do sistema. Comece sua jornada no Linux!"
 meta_keywords: "Logs do Linux, syslog, var/log/messages, solução de problemas do Linux, iniciante em Linux, guia do Linux, logs do sistema"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Compiler le code source"
+meta_title: "Compiler le code source - Packages"
 meta_description: "Apprenez à compiler le code source sous Linux en utilisant make, configure et checkinstall. Comprenez le processus de construction pour les utilisateurs débutants et intermédiaires."
 meta_keywords: "compiler le code source, make install, checkinstall, compilation Linux, build-essential, tutoriel Linux, guide du débutant"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "syslog"
+meta_title: "syslog - 로깅"
 meta_description: "Linux 에서 syslog 및 rsyslog 에 대해 배우고, 시스템 로그를 관리하는 방법과 logger 명령을 사용하는 방법을 알아보세요. 이 초보자 친화적인 튜토리얼로 시작하세요!"
 meta_keywords: "syslog, rsyslog, Linux 로그, logger command, /var/log/syslog, Linux 튜토리얼, 초보자 Linux, 시스템 로깅"
 ---

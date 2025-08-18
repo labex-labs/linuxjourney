@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "/etc/passwd"
+meta_title: "/etc/passwd - ユーザー管理"
 meta_description: "Linux の/etc/passwd ファイルについて学び、ユーザー情報フィールドと UID の仕組みを理解します。この重要な設定ファイルを探求します。"
 meta_keywords: "/etc/passwd, Linux ユーザー, ユーザーID, UID, Linux チュートリアル，初心者，ガイド，Linux コマンド"
 ---

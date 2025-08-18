@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Berechtigungen ändern"
+meta_title: "Berechtigungen ändern - Berechtigungen"
 meta_description: "Erfahren Sie, wie Sie den Befehl chmod verwenden, um Dateiberechtigungen in Linux zu ändern. Verstehen Sie symbolische und numerische Modi für eine sichere Dateiverwaltung. Beginnen Sie jetzt mit dem Lernen!"
 meta_keywords: "chmod Befehl, Linux Berechtigungen, Dateiberechtigungen, chmod Tutorial, Linux Sicherheit, Linux für Anfänger, Linux Anleitung, chmod numerisch"
 ---

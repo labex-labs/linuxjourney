@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ファイルパーミッション"
+meta_title: "ファイルパーミッション - パーミッション"
 meta_description: "Linux のファイルパーミッションを学びましょう：rwx ビット、ユーザー、グループ、その他のパーミッションを理解します。初心者向けに`ls -l`の出力をマスターしましょう。Linux の学習を始めましょう！"
 meta_keywords: "Linux ファイルパーミッション，ls -l コマンド，rwx パーミッション，Linux チュートリアル，ファイルモード，初心者 Linux, Linux ガイド"
 ---

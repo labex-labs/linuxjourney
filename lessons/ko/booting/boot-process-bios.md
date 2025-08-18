@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "부팅 프로세스: BIOS"
+meta_title: "부팅 프로세스: BIOS - 시스템 부팅"
 meta_description: "Linux 부팅 프로세스, BIOS 및 MBR 에 대해 알아보세요. 이 초보자 친화적인 가이드를 통해 시스템이 어떻게 시작되는지 이해하세요. UEFI 개념을 탐색하세요!"
 meta_keywords: "Linux 부팅 프로세스, BIOS, MBR, UEFI, Linux 튜토리얼, 부트로더, 초보자 Linux, 시스템 시작"
 ---

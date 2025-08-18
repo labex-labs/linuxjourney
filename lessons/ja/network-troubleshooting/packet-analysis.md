@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "パケット解析"
+meta_title: "パケット解析 - トラブルシューティング"
 meta_description: "tcpdump を使用したパケット解析の基本を学びます。この初心者向けの Linux ガイドで、ネットワークトラフィックを理解し、データをキャプチャし、出力を解釈します。"
 meta_keywords: "tcpdump, パケット解析，ネットワーク解析，Linux ネットワーキング，初心者チュートリアル，Wireshark, Linux コマンド，ネットワークトラフィック"
 ---

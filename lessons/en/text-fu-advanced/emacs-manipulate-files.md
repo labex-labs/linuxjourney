@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Emacs Manipulate Files"
+meta_title: "Emacs Manipulate Files - Advanced Text-Fu"
 meta_description: "Learn Emacs file manipulation: save, save as, and open files using C-x C-s, C-x C-w, and C-x C-f commands. Master essential Emacs file operations!"
 meta_keywords: "Emacs, Emacs save file, Emacs open file, Emacs tutorial, Linux commands, beginner Emacs, Emacs guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "スティッキービット"
+meta_title: "スティッキービット - パーミッション"
 meta_description: "Linux のスティッキービット、/tmp のような共有ディレクトリでのその目的、および chmod を使用して設定する方法について学びます。この重要なファイルパーミッションを理解しましょう！"
 meta_keywords: "Linux スティッキービット，chmod +t, /tmp ディレクトリ，Linux パーミッション，ファイルセキュリティ，Linux チュートリアル，初心者 Linux"
 ---

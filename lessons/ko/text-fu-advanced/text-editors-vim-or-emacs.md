@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "텍스트 편집기"
+meta_title: "텍스트 편집기 - 고급 Text-Fu"
 meta_description: "Vim 및 Emacs 와 같은 Linux 텍스트 편집기에 대해 알아보세요. 시스템 탐색을 위한 사용법과 중요성을 알아보세요. Linux 텍스트 편집기 여정을 시작하세요!"
 meta_keywords: "Linux 텍스트 편집기, Vim, Emacs, Linux 명령어, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---

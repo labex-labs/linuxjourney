@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Emacs beenden und Hilfe"
+meta_title: "Emacs beenden und Hilfe - Fortgeschrittenes Text-Fu"
 meta_description: "Lernen Sie Emacs-Beendigungsbefehle und wie Sie auf Hilfe zugreifen. Verstehen Sie grundlegende Emacs-Navigation und Undo-Funktionen in diesem anfängerfreundlichen Tutorial."
 meta_keywords: "Emacs beenden, Emacs Hilfe, Emacs rückgängig machen, Emacs Tutorial, Linux Texteditor, Anfängerleitfaden"
 ---

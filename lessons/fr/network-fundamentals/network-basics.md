@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Bases du réseau"
+meta_title: "Bases du réseau - Bases du Réseau"
 meta_description: "Apprenez les bases du réseau Linux : comprenez le WAN, le LAN, le WLAN, les routeurs et les hôtes. Commencez votre parcours de mise en réseau avec ce guide pour débutants !"
 meta_keywords: "bases réseau Linux, WAN, LAN, WLAN, tutoriel réseau, Linux débutant, guide de mise en réseau, concepts Linux"
 ---

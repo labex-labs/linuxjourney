@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "join 和 split"
+meta_title: "join 和 split - 文本操作"
 meta_description: "学习使用 Linux 的 'join' 和 'split' 命令进行文件操作。了解如何通过共同字段合并文件以及如何高效地拆分大型文件。获取实用示例和技巧。"
 meta_keywords: "Linux join 命令，Linux split 命令，文件操作，Linux 教程，命令行，Linux 初学者，Linux 指南"
 ---

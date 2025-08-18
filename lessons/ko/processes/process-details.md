@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "프로세스 세부 정보"
+meta_title: "프로세스 세부 정보 - 프로세스"
 meta_description: "Linux 프로세스 세부 정보, 커널이 리소스를 관리하는 방법, 프로세스가 무엇인지에 대해 알아보세요. 초보자를 위한 프로세스 개념을 이해합니다."
 meta_keywords: "Linux 프로세스, 커널, 프로세스 관리, ps aux, Linux 튜토리얼, 초보자 가이드"
 ---

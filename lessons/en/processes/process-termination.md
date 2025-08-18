@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Process Termination"
+meta_title: "Process Termination - Processes"
 meta_description: "Learn about Linux process termination, including orphan and zombie processes. Understand _exit and wait system calls for effective process management."
 meta_keywords: "Linux process termination, zombie processes, orphan processes, wait system call, _exit, Linux tutorial, beginner Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "カーネルの場所"
+meta_title: "カーネルの場所 - Kernel"
 meta_description: "/boot ディレクトリ内の Linux カーネルの場所について学び、vmlinuz、initrd、System.map を理解します。カーネルファイルを探索し、スペースを効果的に管理します。"
 meta_keywords: "Linux カーネル，/boot ディレクトリ，vmlinuz, initrd, System.map, Linux 初心者，カーネルチュートリアル，Linux ガイド"
 ---

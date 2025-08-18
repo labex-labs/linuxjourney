@@ -13,7 +13,7 @@ Thank you for your interest in contributing! This guide covers the essential inf
 
 **Content Improvements**
 
-- Fix typos and grammar errors  
+- Fix typos and grammar errors
 - Update outdated information
 - Improve explanations with practical examples
 
@@ -38,6 +38,7 @@ Every lesson must have exactly these 4 sections:
 ---
 lang: "en"
 title: "Lesson Title"
+meta_title: "Lesson Title - Course Name"
 meta_description: "Brief description (under 160 characters)"
 meta_keywords: "relevant, keywords"
 ---
@@ -47,7 +48,9 @@ meta_keywords: "relevant, keywords"
 Use ### headers to organize content:
 
 ### Introduction
-### Basic Concepts  
+
+### Basic Concepts
+
 ### Practical Examples
 
 Keep content clear, practical, and beginner-friendly.
@@ -75,7 +78,7 @@ Provide the correct answer with brief explanation.
 
 **Grasshopper (Beginner):** getting-started, command-line, text-fu, user-management, access, processes, packages
 
-**Journeyman (Intermediate):** devices, filesystem, booting, kernel, init, process-utilization, logging  
+**Journeyman (Intermediate):** devices, filesystem, booting, kernel, init, process-utilization, logging
 
 **Networking Nomad (Advanced):** network-fundamentals, subnetting, routing, network-configuration, troubleshooting, sharing, dns
 
@@ -91,7 +94,7 @@ Provide the correct answer with brief explanation.
 
 ```
 Add new lesson: Process monitoring with top
-Fix typo in filesystem lesson  
+Fix typo in filesystem lesson
 Update German translation for network module
 ```
 

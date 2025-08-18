@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "lsusb, lspci, lssci"
+meta_title: "lsusb, lspci, lssci - Devices"
 meta_description: "Learn how to list USB, PCI, and SCSI devices using lsusb, lspci, and lsscsi commands. Understand your Linux hardware with this beginner-friendly guide."
 meta_keywords: "lsusb, lspci, lsscsi, Linux commands, device listing, hardware information, Linux tutorial, beginner guide"
 ---

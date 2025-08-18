@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Modifying Permissions"
+meta_title: "Modifying Permissions - Permissions"
 meta_description: "Learn how to use the chmod command to modify file permissions in Linux. Understand symbolic and numerical modes for secure file management. Start learning now!"
 meta_keywords: "chmod command, Linux permissions, file permissions, chmod tutorial, Linux security, beginner Linux, Linux guide, chmod numerical"
 ---

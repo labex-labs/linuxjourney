@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "네트워크 인터페이스"
+meta_title: "네트워크 인터페이스 - 네트워크 구성"
 meta_description: "Linux 네트워크 인터페이스, ifconfig, ip 명령에 대해 알아보세요. 네트워크 설정을 구성하고 관리하는 방법을 이해하세요. Linux 네트워킹 여정을 시작하세요!"
 meta_keywords: "Linux 네트워크 인터페이스, ifconfig, ip command, 네트워크 구성, Linux 네트워킹, 초보자, 튜토리얼, 가이드"
 ---

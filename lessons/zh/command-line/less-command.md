@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "less"
+meta_title: "less - 命令行"
 meta_description: "学习如何使用 Linux 的 'less' 命令高效地查看和导航文本文件。通过这份适合初学者的指南，掌握分页、搜索和退出。"
 meta_keywords: "less 命令，Linux less, 查看文本文件，导航文件，Linux 教程，Linux 初学者，Linux 指南"
 ---

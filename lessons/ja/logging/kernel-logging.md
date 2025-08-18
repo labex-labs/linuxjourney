@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "カーネルロギング"
+meta_title: "カーネルロギング - ロギング"
 meta_description: "dmesg と kern.log を使用した Linux カーネルロギングについて学びます。起動メッセージとハードウェアの問題を理解します。システムインサイトのためにカーネルログを探索します。"
 meta_keywords: "dmesg, kern.log, Linux ロギング，カーネルメッセージ，起動ログ，Linux チュートリアル，初心者ガイド"
 ---

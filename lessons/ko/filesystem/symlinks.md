@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "심링크"
+meta_title: "심링크 - 파일 시스템"
 meta_description: "Linux 심링크와 하드 링크에 대해 배우고, 생성 및 관리 방법을 익힙니다. 이 초보자 친화적인 가이드를 통해 차이점과 사용 사례를 이해하세요."
 meta_keywords: "Linux 심링크, 하드 링크, ln 명령어, 심볼릭 링크, Linux 파일 시스템, Linux 튜토리얼, 초보자 Linux"
 ---

@@ -5,7 +5,7 @@
 A structured learning path from beginner to advanced Linux administration with three levels:
 
 - **Grasshopper** - Learn the basics
-- **Journeyman** - System internals  
+- **Journeyman** - System internals
 - **Networking Nomad** - Network administration
 
 The repository is organized as follows:
@@ -24,7 +24,7 @@ The repository is organized as follows:
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
 - Adding new lessons and content
-- Translation guidelines  
+- Translation guidelines
 - Lesson templates and structure
 - Development workflow
 

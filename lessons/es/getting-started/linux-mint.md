@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Linux Mint"
+meta_title: "Linux Mint - Primeros Pasos"
 meta_description: "Aprende sobre Linux Mint, su base Ubuntu, gestión de paquetes y por qué es excelente para principiantes. ¡Descubre sus características y cómo empezar hoy mismo!"
 meta_keywords: "Linux Mint, Ubuntu, Linux para principiantes, distribución de Linux, tutorial de Linux, gestor de paquetes Debian, guía de Linux"
 ---

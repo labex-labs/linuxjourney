@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "mv (Mover)"
+meta_title: "mv (Mover) - Command Line"
 meta_description: "Aprende a usar el comando Linux mv para mover y renombrar archivos/directorios. Comprende sus opciones y evita sobrescrituras. ¡Comienza tu viaje en Linux!"
 meta_keywords: "comando mv, Linux mv, mover archivos Linux, renombrar archivos Linux, tutorial Linux, principiante, guía Linux"
 ---

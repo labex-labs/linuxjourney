@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Компоненты DNS"
+meta_title: "Компоненты DNS - DNS"
 meta_description: "Узнайте о компонентах DNS: name servers, zone files и resource records. Поймите, как работает DNS для начинающих. Начните свой путь в сетевых технологиях Linux!"
 meta_keywords: "компоненты DNS, name server, zone file, resource records, учебник по DNS, сетевые технологии Linux, руководство для начинающих"
 ---

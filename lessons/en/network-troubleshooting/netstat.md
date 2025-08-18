@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "netstat"
+meta_title: "netstat - Troubleshooting"
 meta_description: "Learn netstat command for Linux network analysis. Understand network connections, ports, and sockets with this beginner-friendly guide."
 meta_keywords: "netstat, netstat command, Linux networking, network connections, Linux tutorial, beginner, guide"
 ---

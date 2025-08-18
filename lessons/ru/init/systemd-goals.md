@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Цели Systemd"
+meta_title: "Цели Systemd - Init"
 meta_description: "Изучите основы юнитов systemd и основные команды systemctl. Узнайте, как управлять службами, просматривать статусы и включать юниты в Linux. Начните свой путь!"
 meta_keywords: "systemd, systemctl, службы Linux, файлы юнитов, для начинающих, учебник, руководство, команды Linux"
 ---

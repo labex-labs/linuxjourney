@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Process Threads"
+meta_title: "Process Threads - Process Utilization"
 meta_description: "Learn about Linux process threads, single-threaded vs. multi-threaded concepts, and how to view them using 'ps m'. Understand lightweight processes efficiently!"
 meta_keywords: "Linux threads, process threads, ps m command, multi-threaded, single-threaded, Linux processes, beginner Linux, Linux tutorial"
 ---

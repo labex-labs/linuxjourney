@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "文件系统层次结构"
+meta_title: "文件系统层次结构 - 文件系统"
 meta_description: "学习 Linux 文件系统层次结构标准 (FHS)，并理解 /bin、/etc 和 /var 等关键目录。探索 Linux 目录结构。"
 meta_keywords: "Linux 文件系统层次结构，FHS, Linux 目录结构，Linux 命令，Linux 初学者，Linux 教程，Linux 指南"
 ---

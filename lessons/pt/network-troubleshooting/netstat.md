@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "netstat"
+meta_title: "netstat - Resolução de Problemas"
 meta_description: "Aprenda o comando netstat para análise de rede Linux. Entenda conexões de rede, portas e sockets com este guia para iniciantes."
 meta_keywords: "netstat, comando netstat, rede Linux, conexões de rede, tutorial Linux, iniciante, guia"
 ---

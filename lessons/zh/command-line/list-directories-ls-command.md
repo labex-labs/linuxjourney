@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "ls (列出目录)"
+meta_title: "ls (列出目录) - 命令行"
 meta_description: "学习如何在 Linux 中使用 'ls' 命令来列出目录内容、查看隐藏文件并理解文件详细信息。提高您的 Linux 命令行技能！"
 meta_keywords: "ls 命令，列出目录，Linux 教程，隐藏文件，Linux 命令，Linux 初学者，Linux 指南"
 ---

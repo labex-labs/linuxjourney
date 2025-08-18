@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "netstat"
+meta_title: "netstat - トラブルシューティング"
 meta_description: "Linux ネットワーク分析のための netstat コマンドを学びます。この初心者向けガイドで、ネットワーク接続、ポート、ソケットを理解しましょう。"
 meta_keywords: "netstat, netstat コマンド，Linux ネットワーキング，ネットワーク接続，Linux チュートリアル，初心者，ガイド"
 ---

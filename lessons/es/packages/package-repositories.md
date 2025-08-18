@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Repositorios de Paquetes"
+meta_title: "Repositorios de Paquetes - Paquetes"
 meta_description: "Aprende sobre los repositorios de paquetes de Linux y cómo gestionan el software. Descubre cómo encontrar y añadir fuentes de paquetes como /etc/apt/sources.list para una fácil instalación."
 meta_keywords: "repositorios de paquetes Linux, lista de fuentes apt, /etc/apt/sources.list, paquetes Linux, Linux para principiantes, tutorial de Linux, gestión de paquetes"
 ---

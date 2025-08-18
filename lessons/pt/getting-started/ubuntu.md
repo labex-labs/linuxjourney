@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Ubuntu"
+meta_title: "Ubuntu - Primeiros Passos"
 meta_description: "Aprenda sobre o Ubuntu, uma distribuição Linux popular para iniciantes. Descubra seus recursos, gerenciamento de pacotes e por que é ótimo para uso em desktop e servidor."
 meta_keywords: "Ubuntu, distribuição Linux, Debian, gerenciamento de pacotes, iniciante em Linux, tutorial Ubuntu, guia Linux"
 ---

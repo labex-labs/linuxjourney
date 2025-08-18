@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Boot Process Overview"
+meta_title: "Boot Process Overview - Boot the System"
 meta_description: "Learn the Linux boot process stages: BIOS, bootloader, kernel, and init. Understand how Linux starts from power-on to login. Essential Linux beginner guide."
 meta_keywords: "Linux boot process, BIOS, bootloader, kernel, init, Linux tutorial, Linux guide, beginner"
 ---

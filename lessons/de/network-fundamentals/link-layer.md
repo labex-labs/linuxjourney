@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Link Layer"
+meta_title: "Link Layer - Netzwerkgrundlagen"
 meta_description: "Erfahren Sie mehr über die Link Layer in TCP/IP, wie ARP MAC-Adressen auflöst und die Paketdurchquerung. Verstehen Sie die Grundlagen des Netzwerks mit diesem Linux-Netzwerk-Tutorial."
 meta_keywords: "Link Layer, ARP, TCP/IP, MAC-Adresse, Netzwerk-Grundlagen, Linux-Netzwerk, Anfänger, Tutorial"
 ---

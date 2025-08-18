@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "User Management Tools"
+meta_title: "User Management Tools - User Management"
 meta_description: "Learn Linux user management: add, remove, and change passwords with useradd, userdel, and passwd commands. Get started with this beginner-friendly guide!"
 meta_keywords: "Linux user management, adduser, userdel, passwd, Linux tutorial, beginner Linux, user accounts, Linux commands"
 ---

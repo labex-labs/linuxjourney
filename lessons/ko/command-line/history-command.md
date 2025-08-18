@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "history"
+meta_title: "history - Command Line"
 meta_description: "Linux history 명령어, !! 단축키, Ctrl-R 을 사용하여 효율적으로 명령어를 다시 호출하는 방법을 배우세요. 이 필수 팁으로 터미널 생산성을 향상시키세요!"
 meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
 ---

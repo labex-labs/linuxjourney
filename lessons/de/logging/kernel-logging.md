@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Kernel-Protokollierung"
+meta_title: "Kernel-Protokollierung - Protokollierung"
 meta_description: "Erfahren Sie mehr über die Linux-Kernel-Protokollierung mit dmesg und kern.log. Verstehen Sie Boot-Meldungen und Hardware-Probleme. Erkunden Sie Kernel-Protokolle für Systemeinblicke."
 meta_keywords: "dmesg, kern.log, Linux-Protokollierung, Kernel-Meldungen, Boot-Protokoll, Linux-Tutorial, Anfängerleitfaden"
 ---

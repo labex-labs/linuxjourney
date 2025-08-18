@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Kernel Logging"
+meta_title: "Kernel Logging - Logging"
 meta_description: "Learn about Linux kernel logging with dmesg and kern.log. Understand boot messages and hardware issues. Explore kernel logs for system insights."
 meta_keywords: "dmesg, kern.log, Linux logging, kernel messages, boot log, Linux tutorial, beginner guide"
 ---

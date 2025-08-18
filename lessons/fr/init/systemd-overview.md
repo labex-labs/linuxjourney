@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Présentation de Systemd"
+meta_title: "Présentation de Systemd - Init"
 meta_description: "Apprenez les bases de Systemd : comprenez les unités, les cibles et le processus de démarrage. Découvrez comment Systemd gère les services et les états du système sous Linux. Commencez votre parcours !"
 meta_keywords: "Systemd, unités Systemd, cibles Systemd, processus de démarrage Linux, services Linux, débutant, tutoriel, guide"
 ---

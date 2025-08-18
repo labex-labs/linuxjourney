@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "起動プロセス：BIOS"
+meta_title: "起動プロセス：BIOS - システムの起動"
 meta_description: "Linux の起動プロセス、BIOS、MBR について学びます。この初心者向けのガイドで、システムの起動方法を理解しましょう。UEFI の概念も探求します！"
 meta_keywords: "Linux 起動プロセス，BIOS, MBR, UEFI, Linux チュートリアル，ブートローダー, 初心者 Linux, システム起動"
 ---

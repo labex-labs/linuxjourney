@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Ruta de un Paquete"
+meta_title: "Ruta de un Paquete - Enrutamiento"
 meta_description: "Aprenda cómo viaja un paquete dentro y fuera de una red. Comprenda IP, MAC, ARP y tablas de enrutamiento para la comunicación en red. ¡Comience su viaje en redes Linux!"
 meta_keywords: "viaje de paquetes, comunicación de red, ARP, dirección IP, dirección MAC, tabla de enrutamiento, redes Linux, guía para principiantes"
 ---

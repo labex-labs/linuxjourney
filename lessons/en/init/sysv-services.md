@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "System V Service"
+meta_title: "System V Service - Init"
 meta_description: "Learn to manage System V services using command-line tools. Discover how to list, start, stop, and restart services with this beginner-friendly Linux tutorial."
 meta_keywords: "System V services, Linux services, service command, SysV init, Linux tutorial, beginner Linux, service management, Linux guide"
 ---

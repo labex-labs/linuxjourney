@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "边界网关协议"
+meta_title: "边界网关协议 - 路由"
 meta_description: "了解 BGP（边界网关协议）以及它如何实现自治系统之间的互联网路由。理解 BGP 基础知识，适合初学者。"
 meta_keywords: "BGP, 边界网关协议，互联网路由，自治系统，Linux 网络，BGP 教程，网络协议，初学者指南"
 ---

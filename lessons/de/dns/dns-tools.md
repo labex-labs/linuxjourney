@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "DNS-Tools"
+meta_title: "DNS-Tools - DNS"
 meta_description: "Lernen Sie die Befehle nslookup und dig für DNS-Abfragen und die Fehlerbehebung unter Linux. Verstehen Sie, wie Sie diese wesentlichen DNS-Tools mit unserer anfängerfreundlichen Anleitung verwenden."
 meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---

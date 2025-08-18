@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "env (環境)"
+meta_title: "env (環境) - テキスト操作"
 meta_description: "「env」コマンドを使用して Linux 環境変数について学びます。PATH、HOME、USER 変数について理解します。Linux 環境を管理するための初心者向けガイドを入手してください。"
 meta_keywords: "env command, Linux environment variables, PATH variable, Linux tutorial, beginner Linux, shell variables, Linux guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Festplattennutzung"
+meta_title: "Festplattennutzung - Das Dateisystem"
 meta_description: "Erfahren Sie, wie Sie die Festplattennutzung und den freien Speicherplatz in Linux mit den Befehlen df und du überprüfen. Verstehen Sie deren Unterschiede und wann Sie welchen verwenden sollten. Linux-Festplattenverwaltungstutorial."
 meta_keywords: "df command, du command, Linux Festplattennutzung, freien Speicherplatz überprüfen, Linux Tutorial, Linux für Anfänger, Festplattenverwaltung, Linux Anleitung"
 ---

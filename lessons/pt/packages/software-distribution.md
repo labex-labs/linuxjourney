@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Distribuição de Software"
+meta_title: "Distribuição de Software - Pacotes"
 meta_description: "Aprenda sobre distribuição de software Linux, gerenciadores de pacotes e tipos de pacotes como .deb e .rpm. Entenda como o software é gerenciado em sistemas Linux."
 meta_keywords: "distribuição de software Linux, gerenciador de pacotes, .deb, .rpm, pacotes Linux, Linux para iniciantes, tutorial Linux, instalação de software"
 ---

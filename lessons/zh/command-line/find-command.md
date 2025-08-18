@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "find"
+meta_title: "find - 命令行"
 meta_description: "学习如何使用 Linux 的 'find' 命令来定位文件和目录。探索基本的搜索选项并提高您的 Linux 文件管理技能。"
 meta_keywords: "Linux find 命令，Linux 查找文件，Linux 目录搜索，find 命令教程，Linux 文件管理，Linux 初学者，Linux 指南"
 ---

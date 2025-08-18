@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "ping"
+meta_title: "ping - 故障排除"
 meta_description: "学习如何使用 Linux ping 命令来测试网络连接和排除故障。了解 ICMP、TTL 和往返时间，以进行有效的网络诊断。"
 meta_keywords: "Linux ping, 网络连接，ICMP, TTL, Linux 网络，Linux 初学者，Linux 教程，ping 命令"
 ---

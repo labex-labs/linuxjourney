@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Emacs-Bearbeitung"
+meta_title: "Emacs-Bearbeitung - Fortgeschrittenes Text-Fu"
 meta_description: "Lernen Sie die Grundlagen der Emacs-Bearbeitung: Navigieren Sie effizient durch Text, schneiden Sie ihn aus und fügen Sie ihn ein. Dieser anfängerfreundliche Leitfaden hilft Ihnen, die wesentlichen Emacs-Befehle für Linux zu beherrschen."
 meta_keywords: "Emacs, Emacs-Tutorial, Emacs-Befehle, Texteditor, Linux-Editor, Emacs-Navigation, Emacs für Anfänger, Emacs-Anleitung"
 ---

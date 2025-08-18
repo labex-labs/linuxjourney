@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "mkdir (Créer un répertoire)"
+meta_title: "mkdir (Créer un répertoire) - Command Line"
 meta_description: "Apprenez à utiliser la commande mkdir pour créer des répertoires et des sous-répertoires sous Linux. Ce tutoriel convivial pour les débutants vous aide à organiser efficacement vos fichiers."
 meta_keywords: "mkdir, créer un répertoire, créer un dossier, commandes linux, tutoriel linux, linux débutant, guide linux"
 ---

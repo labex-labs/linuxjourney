@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "regex (Expresiones Regulares)"
+meta_title: "regex (Expresiones Regulares) - Text-Fu Avanzado"
 meta_description: "Aprende expresiones regulares (regex) para la coincidencia de patrones en Linux. Comprende la sintaxis de regex como ^, $, ., y [] para la manipulación de texto. ¡Mejora tus habilidades con grep!"
 meta_keywords: "expresiones regulares, regex, regex de Linux, grep regex, coincidencia de patrones, tutorial de regex, comandos de Linux, principiante"
 ---

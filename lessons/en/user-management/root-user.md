@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "root"
+meta_title: "root - User Management"
 meta_description: "Learn about Linux root user, su command, and /etc/sudoers file. Understand superuser access and permissions in Linux with this beginner guide."
 meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---

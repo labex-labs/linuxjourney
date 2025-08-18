@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Modèles de recherche Vim"
+meta_title: "Modèles de recherche Vim - Text-Fu Avancé"
 meta_description: "Apprenez les modèles de recherche Vim : recherche avant (/) et arrière (?). Naviguez dans les résultats avec 'n' et 'N'. Améliorez vos compétences Vim dès aujourd'hui !"
 meta_keywords: "recherche Vim, commandes Vim, éditeur de texte Linux, tutoriel Vim, guide Vim, Vim pour débutants"
 ---

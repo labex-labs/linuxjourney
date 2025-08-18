@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Emplacement du noyau"
+meta_title: "Emplacement du noyau - Kernel"
 meta_description: "Découvrez l'emplacement du noyau Linux dans le répertoire /boot, en comprenant vmlinuz, initrd et System.map. Explorez les fichiers du noyau et gérez l'espace efficacement."
 meta_keywords: "noyau Linux, répertoire /boot, vmlinuz, initrd, System.map, débutant Linux, tutoriel noyau, guide Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "rm (제거)"
+meta_title: "rm (제거) - Command Line"
 meta_description: "`rm` 명령을 사용하여 Linux 에서 파일과 디렉토리를 안전하게 삭제하는 방법을 배웁니다. -f, -i, -r, rmdir 과 같은 옵션을 이해합니다. Linux 여정을 시작하세요!"
 meta_keywords: "rm 명령, 파일 삭제 Linux, 디렉토리 제거, Linux 튜토리얼, 초보자 Linux, rmdir, Linux 가이드"
 ---

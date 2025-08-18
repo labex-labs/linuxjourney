@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "yum 과 apt"
+meta_title: "yum 과 apt - 패키지"
 meta_description: "Linux 패키지 관리를 위한 yum 과 apt 를 배우세요. 이 초보자 튜토리얼을 통해 Debian/RPM 시스템에서 소프트웨어를 설치, 제거 및 업데이트하세요. 오늘 시작하세요!"
 meta_keywords: "yum, apt, Linux 패키지 관리, apt 튜토리얼, yum 튜토리얼, Linux 명령, 초보자 가이드, 패키지 설치"
 ---

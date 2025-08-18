@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "stderr (표준 에러)"
+meta_title: "stderr (표준 에러) - Text-Fu"
 meta_description: "Linux stderr(표준 에러) 리디렉션에 대해 알아보세요. Bash 에서 에러 처리를 위한 2>, 2>&1, &>, 그리고 /dev/null을 이해하세요. Linux 명령줄 기술을 향상시키세요!"
 meta_keywords: "Linux stderr, 표준 에러, 2> 리디렉션, 2>&1, &> 리디렉션, /dev/null, Bash 에러 처리, Linux 튜토리얼, Linux 초보자"
 ---

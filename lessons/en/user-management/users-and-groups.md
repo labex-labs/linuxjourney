@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Users and Groups"
+meta_title: "Users and Groups - User Management"
 meta_description: "Learn about Linux users and groups, understand UIDs, GIDs, and the root user. Discover how to use the sudo command for elevated permissions. Start your Linux journey!"
 meta_keywords: "Linux users, Linux groups, sudo command, root user, Linux permissions, Linux tutorial, beginner Linux, Linux guide"
 ---

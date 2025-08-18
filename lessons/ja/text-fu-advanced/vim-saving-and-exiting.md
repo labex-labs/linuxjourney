@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Vim の保存と終了"
+meta_title: "Vim の保存と終了 - 高度なテキスト操作"
 meta_description: "Vim を効果的に保存および終了する方法を、:w、:q、:wq などの必須コマンドで学びます。効率的なテキスト編集のために Vim の基本操作を習得します。"
 meta_keywords: "Vim 保存，Vim 終了，Vim コマンド，:wq, :q!, Linux テキストエディタ，Vim チュートリアル，初心者 Vim"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Composants DNS"
+meta_title: "Composants DNS - DNS"
 meta_description: "Découvrez les composants DNS : serveurs de noms, fichiers de zone et enregistrements de ressources. Comprenez comment fonctionne le DNS pour les débutants. Commencez votre parcours de mise en réseau Linux !"
 meta_keywords: "composants DNS, serveur de noms, fichier de zone, enregistrements de ressources, tutoriel DNS, mise en réseau Linux, guide du débutant"
 ---

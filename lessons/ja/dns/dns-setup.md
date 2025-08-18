@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "DNS 設定"
+meta_title: "DNS 設定 - DNS"
 meta_description: "BIND、DNSmasq、PowerDNS など、Linux で人気のある DNS サーバーについて学びましょう。この初心者向けのガイドで、ネットワーク設定に最適な DNS サーバーを見つけてください。"
 meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS サーバー設定，Linux ネットワーキング，DNS チュートリアル，初心者"
 ---

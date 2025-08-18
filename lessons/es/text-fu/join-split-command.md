@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "join y split"
+meta_title: "join y split - Text-Fu"
 meta_description: "Aprenda a usar los comandos 'join' y 'split' de Linux para la manipulación de archivos. Comprenda cómo combinar archivos por campos comunes y dividir archivos grandes de manera eficiente. Obtenga ejemplos prácticos y consejos."
 meta_keywords: "comando Linux join, comando Linux split, manipulación de archivos, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
 ---

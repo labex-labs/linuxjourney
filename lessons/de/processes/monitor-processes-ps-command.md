@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "ps (Prozesse)"
+meta_title: "ps (Prozesse) - Prozesse"
 meta_description: "Erfahren Sie mehr über den Linux-Befehl 'ps', um laufende Prozesse anzuzeigen und Prozess-IDs (PIDs) zu verstehen. Erhalten Sie eine Einführung in die Prozessverwaltung für Anfänger."
 meta_keywords: "ps Befehl, Linux Prozesse, Prozess-ID, PID, Linux Tutorial, Anfänger, Anleitung, top Befehl"
 ---

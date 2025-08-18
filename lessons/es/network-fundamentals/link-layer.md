@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Capa de Enlace"
+meta_title: "Capa de Enlace - Conceptos Básicos de Red"
 meta_description: "Aprende sobre la Link Layer en TCP/IP, cómo ARP resuelve las direcciones MAC y el recorrido de los paquetes. Comprende los fundamentos de la red con este tutorial de redes de Linux."
 meta_keywords: "Link Layer, ARP, TCP/IP, MAC address, fundamentos de red, redes Linux, principiante, tutorial"
 ---

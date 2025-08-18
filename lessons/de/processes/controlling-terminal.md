@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Terminal steuern"
+meta_title: "Terminal steuern - Prozesse"
 meta_description: "Erfahren Sie mehr über die Steuerung von Terminals in Linux, einschließlich TTY vs. PTS, und wie Prozesse an diese gebunden sind. Verstehen Sie Daemon-Prozesse. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Controlling Terminal, TTY, PTS, Linux Terminal, Daemon-Prozesse, Linux-Anfänger, Linux-Tutorial, Linux-Anleitung"
 ---

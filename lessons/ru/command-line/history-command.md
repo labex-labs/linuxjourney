@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "history"
+meta_title: "history - Командная строка"
 meta_description: "Узнайте, как использовать команду Linux history, сокращение !! и Ctrl-R для эффективного вызова команд. Повысьте свою производительность в терминале с помощью этих важных советов!"
 meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
 ---

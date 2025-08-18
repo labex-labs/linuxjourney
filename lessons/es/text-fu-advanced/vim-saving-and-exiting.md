@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Vim: Guardar y Salir"
+meta_title: "Vim: Guardar y Salir - Text-Fu Avanzado"
 meta_description: "Aprende a guardar y salir de Vim de forma efectiva con comandos esenciales como :w, :q y :wq. Domina las operaciones básicas de Vim para una edición de texto eficiente."
 meta_keywords: "Vim guardar, Vim salir, comandos Vim, :wq, :q!, editor de texto Linux, tutorial Vim, Vim para principiantes"
 ---

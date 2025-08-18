@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Noms des périphériques"
+meta_title: "Noms des périphériques - Périphériques"
 meta_description: "Apprenez les noms des périphériques Linux comme les périphériques SCSI (sd), pseudo et PATA (hd). Comprenez /dev/sda, /dev/null et plus encore dans ce guide convivial pour débutants."
 meta_keywords: "noms de périphériques Linux, /dev, périphériques SCSI, pseudo-périphériques, périphériques PATA, tutoriel Linux, Linux pour débutants, fichiers de périphériques"
 ---

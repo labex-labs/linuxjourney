@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "touch"
+meta_title: "touch - 命令行"
 meta_description: "学习如何使用 Linux touch 命令创建新文件和更新时间戳。这份适合初学者的指南帮助您理解文件管理。"
 meta_keywords: "touch 命令，创建文件，Linux 教程，文件时间戳，Linux 初学者，Linux 指南，基本命令"
 ---

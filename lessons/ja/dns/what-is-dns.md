@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "DNS とは？"
+meta_title: "DNS とは？ - DNS"
 meta_description: "DNS とは何か、そしてそれがドメイン名を IP アドレスに変換する方法を学びます。初心者向けの Linux ガイドで、このインターネットの核となる概念を理解しましょう。"
 meta_keywords: "DNS, ドメインネームシステム，IP アドレス，ホスト名，Linux ネットワーキング，初心者，チュートリアル，ガイド"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Reparación del sistema de archivos"
+meta_title: "Reparación del sistema de archivos - El Filesystem"
 meta_description: "Aprende a usar fsck para la reparación del sistema de archivos de Linux y la recuperación de datos. Comprende cómo verificar y corregir errores de disco con este comando esencial. ¡Comienza tu viaje en Linux!"
 meta_keywords: "fsck, reparación del sistema de archivos, comandos de Linux, errores de disco, recuperación de datos, tutorial de Linux, guía para principiantes"
 ---

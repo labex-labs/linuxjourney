@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "kill (종료)"
+meta_title: "kill (종료) - 프로세스"
 meta_description: "Linux 'kill' 명령어를 사용하여 프로세스를 종료하는 방법을 배웁니다. 프로세스 관리를 위한 SIGTERM, SIGKILL 및 기타 신호를 이해합니다. 지금 학습을 시작하세요!"
 meta_keywords: "kill 명령어, Linux 프로세스, SIGTERM, SIGKILL, Linux 튜토리얼, 초보자, 프로세스 관리, Linux 가이드"
 ---

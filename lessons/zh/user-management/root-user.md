@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "root"
+meta_title: "root - 用户管理"
 meta_description: "了解 Linux root 用户、su 命令和 /etc/sudoers 文件。通过这份初学者指南，理解 Linux 中的超级用户访问和权限。"
 meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---

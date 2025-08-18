@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "ping"
+meta_title: "ping - 문제 해결"
 meta_description: "Linux ping 명령을 사용하여 네트워크 연결을 테스트하고 문제를 해결하는 방법을 배웁니다. 효과적인 네트워크 진단을 위해 ICMP, TTL 및 왕복 시간을 이해합니다."
 meta_keywords: "Linux ping, 네트워크 연결, ICMP, TTL, Linux 네트워킹, 초보자 Linux, Linux 튜토리얼, ping 명령"
 ---

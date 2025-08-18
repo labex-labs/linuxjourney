@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Emacs Puffer-Navigation"
+meta_title: "Emacs Puffer-Navigation - Fortgeschrittenes Text-Fu"
 meta_description: "Lernen Sie Emacs-Puffer-Navigationsbefehle. Wechseln, schließen und teilen Sie Puffer effizient mit diesem anfängerfreundlichen Emacs-Tutorial. Verbessern Sie Ihren Workflow!"
 meta_keywords: "Emacs Puffer-Navigation, Emacs Befehle, C-x b, C-x k, Linux Tutorial, Emacs Anleitung, Emacs für Anfänger"
 ---

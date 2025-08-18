@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "内核日志记录"
+meta_title: "内核日志记录 - 日志"
 meta_description: "了解 Linux 内核日志记录，包括 dmesg 和 kern.log。理解启动消息和硬件问题。探索内核日志以获取系统洞察。"
 meta_keywords: "dmesg, kern.log, Linux 日志记录，内核消息，启动日志，Linux 教程，初学者指南"
 ---

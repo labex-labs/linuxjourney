@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Systemd Überblick"
+meta_title: "Systemd Überblick - Init"
 meta_description: "Lernen Sie die Grundlagen von Systemd: Verstehen Sie Units, Targets und den Boot-Prozess. Entdecken Sie, wie Systemd Dienste und Systemzustände in Linux verwaltet. Beginnen Sie Ihre Reise!"
 meta_keywords: "Systemd, Systemd Units, Systemd Targets, Linux Boot-Prozess, Linux Dienste, Anfänger, Tutorial, Anleitung"
 ---

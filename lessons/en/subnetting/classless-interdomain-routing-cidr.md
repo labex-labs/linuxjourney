@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "CIDR"
+meta_title: "CIDR - Subnetting"
 meta_description: "Learn CIDR notation for Linux networking. Understand subnet masks, IP addressing, and host calculation with this beginner-friendly guide. Improve your network skills!"
 meta_keywords: "CIDR, subnet mask, IP addressing, network prefix, Linux networking, beginner, tutorial, guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Vim-Suchmuster"
+meta_title: "Vim-Suchmuster - Fortgeschrittenes Text-Fu"
 meta_description: "Lernen Sie Vim-Suchmuster: Vorwärtssuche (/) und Rückwärtssuche (?). Navigieren Sie mit 'n' und 'N' durch die Ergebnisse. Verbessern Sie noch heute Ihre Vim-Fähigkeiten!"
 meta_keywords: "Vim-Suche, Vim-Befehle, Linux-Texteditor, Vim-Tutorial, Vim-Anleitung, Vim für Anfänger"
 ---

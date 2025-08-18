@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "/etc/hosts"
+meta_title: "/etc/hosts - DNS"
 meta_description: "Linux 의 /etc/hosts 파일, 호스트 이름을 IP 주소에 매핑하는 방법, 그리고 DNS 확인에서의 역할에 대해 알아보세요. 기본적인 네트워크 구성을 이해합니다."
 meta_keywords: "/etc/hosts, Linux 네트워킹, 호스트 이름 매핑, DNS 확인, Linux 튜토리얼, 초보자 가이드"
 ---

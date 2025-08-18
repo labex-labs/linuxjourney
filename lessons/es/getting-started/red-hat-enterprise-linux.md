@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Red Hat Enterprise Linux"
+meta_title: "Red Hat Enterprise Linux - Primeros Pasos"
 meta_description: "Aprende sobre los conceptos básicos de Red Hat Enterprise Linux (RHEL), su gestor de paquetes RPM y sus usos empresariales. Comprende las diferencias y beneficios principales de RHEL."
 meta_keywords: "Aprender RHEL, Red Hat Enterprise Linux, conceptos básicos de RHEL, gestor de paquetes RPM, SO de servidor Linux, RHEL para principiantes, guía de RHEL"
 ---

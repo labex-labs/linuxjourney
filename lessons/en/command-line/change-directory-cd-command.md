@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "cd (Change Directory)"
+meta_title: "cd (Change Directory) - Command Line"
 meta_description: "Learn how to use the 'cd' command in Linux to navigate directories. Understand absolute, relative paths, and useful shortcuts. Start your Linux journey!"
 meta_keywords: "cd command, change directory, Linux paths, absolute path, relative path, Linux tutorial, beginner Linux, Linux navigation"
 ---

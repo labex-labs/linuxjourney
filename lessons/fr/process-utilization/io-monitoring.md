@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Surveillance des E/S"
+meta_title: "Surveillance des E/S - Utilisation des Processus"
 meta_description: "Apprenez à utiliser iostat pour la surveillance des E/S sous Linux. Comprenez les métriques d'utilisation du CPU et du disque avec cette commande essentielle. Améliorez les performances du système !"
 meta_keywords: "iostat, surveillance E/S Linux, utilisation CPU, utilisation disque, commandes Linux, débutant, tutoriel, guide"
 ---

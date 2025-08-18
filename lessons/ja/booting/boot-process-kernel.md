@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ブートプロセス：カーネル"
+meta_title: "ブートプロセス：カーネル - システムの起動"
 meta_description: "Linux のブートプロセス、カーネルの初期化、および initramfs の役割について学びます。カーネルがルートファイルシステムをマウントする方法を理解します。Linux ブートプロセスガイド。"
 meta_keywords: "Linux ブートプロセス，カーネルブート，initramfs, initrd, ルートファイルシステム，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "História"
+meta_title: "História - Primeiros Passos"
 meta_description: "Aprenda sobre a história do Linux, do UNIX a Linus Torvalds e o projeto GNU. Entenda suas origens e evolução para iniciantes."
 meta_keywords: "história do Linux, UNIX, projeto GNU, Linus Torvalds, kernel Linux, Linux para iniciantes, tutorial de Linux, guia de Linux"
 ---

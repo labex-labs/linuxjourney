@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "tail"
+meta_title: "tail - Text-Fu"
 meta_description: "Learn how to use the `tail` command in Linux to view file ends and monitor logs. Discover `tail -f` for real-time updates. Start your Linux journey!"
 meta_keywords: "tail command, Linux tail, tail -f, view logs, Linux tutorial, beginner Linux, Linux guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Ferramentas DNS"
+meta_title: "Ferramentas DNS - DNS"
 meta_description: "Aprenda os comandos nslookup e dig para consultas DNS e solução de problemas no Linux. Entenda como usar essas ferramentas DNS essenciais com nosso guia para iniciantes."
 meta_keywords: "nslookup, comando dig, ferramentas DNS, DNS Linux, solução de problemas DNS, tutorial Linux, Linux para iniciantes"
 ---

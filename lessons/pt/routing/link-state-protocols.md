@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Protocolos de Estado de Link"
+meta_title: "Protocolos de Estado de Link - Roteamento"
 meta_description: "Aprenda sobre protocolos de estado de link como OSPF para grandes redes. Entenda sua rápida convergência e como eles atualizam as tabelas de roteamento. Comece sua jornada de rede Linux!"
 meta_keywords: "protocolos de estado de link, OSPF, rede Linux, protocolos de roteamento, topologia de rede, iniciante"
 ---

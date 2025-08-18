@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "커널 위치"
+meta_title: "커널 위치 - Kernel"
 meta_description: "/boot 디렉토리에서 Linux 커널의 위치를 알아보고, vmlinuz, initrd, System.map 을 이해합니다. 커널 파일을 탐색하고 공간을 효과적으로 관리합니다."
 meta_keywords: "Linux 커널, /boot 디렉토리, vmlinuz, initrd, System.map, Linux 초보자, 커널 튜토리얼, Linux 가이드"
 ---

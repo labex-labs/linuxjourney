@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Padrões de Busca do Vim"
+meta_title: "Padrões de Busca do Vim - Text-Fu Avançado"
 meta_description: "Aprenda os padrões de busca do Vim: busca para frente (/) e para trás (?). Navegue pelos resultados com 'n' e 'N'. Melhore suas habilidades no Vim hoje!"
 meta_keywords: "busca Vim, comandos Vim, editor de texto Linux, tutorial Vim, guia Vim, Vim para iniciantes"
 ---

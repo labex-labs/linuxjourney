@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Upstart 작업"
+meta_title: "Upstart 작업 - Init"
 meta_description: "initctl 명령을 사용하여 Linux 에서 Upstart 작업을 관리하는 방법을 배웁니다. 작업 상태를 이해하고 서비스를 시작, 중지 및 재시작합니다. Linux 시스템 관리 기술을 향상시키세요."
 meta_keywords: "Upstart 작업, initctl, Linux 서비스, 시스템 관리, Linux 튜토리얼, 초보자 가이드"
 ---

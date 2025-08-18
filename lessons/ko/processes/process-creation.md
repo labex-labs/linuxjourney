@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "프로세스 생성"
+meta_title: "프로세스 생성 - 프로세스"
 meta_description: "Linux 프로세스 생성, fork, 부모/자식 프로세스에 대해 알아보세요. PID, PPID, init 프로세스를 이해하세요. Linux 프로세스 관리에 대한 초보자 가이드입니다."
 meta_keywords: "Linux 프로세스 생성, fork, PID, PPID, init 프로세스, Linux 프로세스, 초보자, 튜토리얼, 가이드"
 ---

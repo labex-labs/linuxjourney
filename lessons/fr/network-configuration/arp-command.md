@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "arp"
+meta_title: "arp - Configuration Réseau"
 meta_description: "Découvrez la commande Linux ARP et comment visualiser votre cache ARP. Comprenez le rôle d'ARP dans la communication réseau. Un guide pour débutants sur ARP."
 meta_keywords: "Linux ARP, cache ARP, ip neighbour show, commandes réseau, réseau Linux, Linux pour débutants, tutoriel Linux"
 ---

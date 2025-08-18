@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "DNS-Einrichtung"
+meta_title: "DNS-Einrichtung - DNS"
 meta_description: "Erfahren Sie mehr über beliebte DNS-Server für Linux wie BIND, DNSmasq und PowerDNS. Entdecken Sie mit diesem anfängerfreundlichen Leitfaden den besten DNS-Server für Ihr Netzwerk-Setup."
 meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS-Server-Setup, Linux-Netzwerk, DNS-Tutorial, Anfänger"
 ---

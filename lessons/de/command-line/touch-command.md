@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "touch"
+meta_title: "touch - Command Line"
 meta_description: "Lerne, wie man den Linux-Befehl touch verwendet, um neue Dateien zu erstellen und Zeitstempel zu aktualisieren. Dieser anfängerfreundliche Leitfaden hilft dir, die Dateiverwaltung zu verstehen."
 meta_keywords: "touch command, Dateien erstellen, Linux-Tutorial, Dateizeitstempel, Linux für Anfänger, Linux-Leitfaden, grundlegende Befehle"
 ---

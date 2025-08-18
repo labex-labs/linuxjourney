@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "rpm e dpkg"
+meta_title: "rpm e dpkg - Pacotes"
 meta_description: "Aprenda a instalar, remover e listar pacotes usando os comandos rpm e dpkg. Entenda o gerenciamento direto de pacotes para arquivos .deb e .rpm. Comece sua jornada no Linux!"
 meta_keywords: "rpm, dpkg, gerenciamento de pacotes Linux, .deb, .rpm, tutorial Linux, guia para iniciantes, instalar pacotes"
 ---

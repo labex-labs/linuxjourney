@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "选择 Linux 发行版"
+meta_title: "选择 Linux 发行版 - 入门"
 meta_description: "了解如何根据您的需求选择 Linux 发行版。探索流行的选项并理解内核、硬件和用户空间。开始您的 Linux 之旅！"
 meta_keywords: "Linux 发行版，选择 Linux, Linux 内核，Linux 初学者，Linux 指南，安装 Linux, Linux 教程"
 ---

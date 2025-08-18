@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "sort"
+meta_title: "sort - テキスト操作"
 meta_description: "Linux の sort コマンドを使ってテキストファイルをソートする方法を学びましょう。逆順ソートや数値ソートなどのオプションを発見してください。Linux のコマンドラインスキルを向上させましょう！"
 meta_keywords: "Linux sort コマンド，sort -r, sort -n, Linux チュートリアル，コマンドライン，Linux 初心者，sort ガイド"
 ---

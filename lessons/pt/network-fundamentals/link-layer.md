@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Camada de Enlace"
+meta_title: "Camada de Enlace - Noções Básicas de Rede"
 meta_description: "Aprenda sobre a Camada de Enlace no TCP/IP, como o ARP resolve endereços MAC e a travessia de pacotes. Entenda os fundamentos de rede com este tutorial de rede Linux."
 meta_keywords: "Camada de Enlace, ARP, TCP/IP, endereço MAC, fundamentos de rede, rede Linux, iniciante, tutorial"
 ---

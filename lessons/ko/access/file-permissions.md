@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "파일 권한"
+meta_title: "파일 권한 - 권한"
 meta_description: "Linux 파일 권한을 배우세요: rwx 비트, 사용자, 그룹 및 기타 권한을 이해합니다. 초보자를 위한 `ls -l` 출력 마스터하기. Linux 여정을 시작하세요!"
 meta_keywords: "Linux 파일 권한, ls -l 명령어, rwx 권한, Linux 튜토리얼, 파일 모드, 초보자 Linux, Linux 가이드"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Camada de Aplicação"
+meta_title: "Camada de Aplicação - Noções Básicas de Rede"
 meta_description: "Aprenda sobre a Camada de Aplicação no modelo TCP/IP, como ela lida com dados para e-mail (SMTP) e seu papel na comunicação de rede. Entenda as camadas de rede."
 meta_keywords: "Camada de Aplicação, modelo TCP/IP, SMTP, camadas de rede, rede Linux, tutorial para iniciantes, comunicação de rede"
 ---

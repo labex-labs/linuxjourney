@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Ubuntu"
+meta_title: "Ubuntu - はじめに"
 meta_description: "人気の Linux ディストリビューションである Ubuntu について学びましょう。その機能、パッケージ管理、そしてデスクトップおよびサーバーでの利用に優れている理由を発見してください。"
 meta_keywords: "Ubuntu, Linux ディストリビューション，Debian, パッケージ管理，Linux 初心者，Ubuntu チュートリアル，Linux ガイド"
 ---

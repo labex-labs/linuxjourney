@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "帮助"
+meta_title: "帮助 - 命令行"
 meta_description: "学习如何在 Bash 中使用'help'命令获取快速命令行帮助。了解内置命令并查找 Linux 程序的选项。"
 meta_keywords: "Linux help 命令，Bash help, 命令行帮助，Linux 命令，Linux 初学者，Linux 教程，Bash 教程"
 ---

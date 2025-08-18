@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Emacs"
+meta_title: "Emacs - Text-Fu Avanzado"
 meta_description: "Aprende Emacs, un editor de texto potente y extensible para Linux. Comprende los buffers de Emacs y su uso básico. ¡Comienza tu viaje con Emacs hoy mismo!"
 meta_keywords: "Emacs, editor de texto Linux, tutorial Emacs, buffers Emacs, comandos Linux, principiante, guía"
 ---

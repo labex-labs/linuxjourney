@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Trucos de Subnetting"
+meta_title: "Trucos de Subnetting - Subnetting"
 meta_description: "Aprende los conceptos básicos de subnetting y la conversión binaria para redes. Comprende las IP addresses y subnet masks con esta guía amigable para principiantes. ¡Empieza a aprender ahora!"
 meta_keywords: "subnetting, conversión binaria, IP address, red, Linux networking, principiante, tutorial, guía"
 ---

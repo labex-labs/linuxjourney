@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Criação de Processos"
+meta_title: "Criação de Processos - Processos"
 meta_description: "Aprenda sobre a criação de processos Linux, fork e processos pai/filho. Entenda PID, PPID e o processo init. Obtenha um guia para iniciantes em gerenciamento de processos Linux."
 meta_keywords: "criação de processo Linux, fork, PID, PPID, processo init, processos Linux, iniciante, tutorial, guia"
 ---

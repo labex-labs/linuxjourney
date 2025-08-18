@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "カーネルのインストール"
+meta_title: "カーネルのインストール - Kernel"
 meta_description: "Linux カーネルのインストールと管理方法を学びます。カーネルのバージョン、`uname -r`の使用法、apt コマンドについて解説します。Linux カーネルの学習を始めましょう！"
 meta_keywords: "Linux カーネル，カーネルインストール，uname -r, apt dist-upgrade, カーネル管理，Linux チュートリアル，Linux 初心者，Linux ガイド"
 ---

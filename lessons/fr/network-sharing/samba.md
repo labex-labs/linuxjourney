@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Samba"
+meta_title: "Samba - Partage Réseau"
 meta_description: "Apprenez à configurer des partages de fichiers Samba sur Linux pour Windows et macOS. Ce guide pour débutants couvre l'installation, la configuration et l'accès aux partages. Lancez-vous !"
 meta_keywords: "Samba, partage de fichiers Linux, smb.conf, CIFS, smbclient, tutoriel Linux, guide du débutant"
 ---

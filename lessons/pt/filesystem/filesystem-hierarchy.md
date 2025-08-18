@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Hierarquia do Sistema de Arquivos"
+meta_title: "Hierarquia do Sistema de Arquivos - O Filesystem"
 meta_description: "Aprenda o Filesystem Hierarchy Standard (FHS) do Linux e entenda diretórios chave como /bin, /etc e /var. Explore a estrutura de diretórios do Linux."
 meta_keywords: "Hierarquia do Sistema de Arquivos Linux, FHS, estrutura de diretórios Linux, comandos Linux, Linux para iniciantes, tutorial Linux, guia Linux"
 ---

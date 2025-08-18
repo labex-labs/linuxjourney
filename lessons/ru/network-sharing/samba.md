@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Samba"
+meta_title: "Samba - Совместное использование сети"
 meta_description: "Узнайте, как настроить общие файловые ресурсы Samba в Linux для Windows и macOS. Это руководство для начинающих охватывает установку, настройку и доступ к общим ресурсам. Начните прямо сейчас!"
 meta_keywords: "Samba, общий доступ к файлам Linux, smb.conf, CIFS, smbclient, учебник Linux, руководство для начинающих"
 ---

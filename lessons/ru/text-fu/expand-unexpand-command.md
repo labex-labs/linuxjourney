@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "expand и unexpand"
+meta_title: "expand и unexpand - Text-Fu"
 meta_description: "Научитесь преобразовывать табуляцию в пробелы с помощью команды `expand` и пробелы в табуляцию с помощью `unexpand`. Улучшите форматирование текстовых файлов с помощью этого руководства по Linux."
 meta_keywords: "команда expand, команда unexpand, табуляция Linux, пробелы Linux, форматирование текста, руководство по Linux, Linux для начинающих, руководство по Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Couche Réseau"
+meta_title: "Couche Réseau - Bases du Réseau"
 meta_description: "Découvrez la couche Réseau sous Linux, comment les adresses IP acheminent les paquets à travers les sous-réseaux, et son rôle dans la transmission de données. Commencez votre parcours de mise en réseau Linux !"
 meta_keywords: "Couche Réseau, adresses IP, subnets, mise en réseau Linux, routage de paquets, débutant, tutoriel, guide"
 ---

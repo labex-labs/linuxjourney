@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "IPv6"
+meta_title: "IPv6 - Subnetting"
 meta_description: "Erfahren Sie mehr über IPv6, seinen Zweck und wie es IPv4 ergänzt. Verstehen Sie die IPv6-Adressierung und ihre Rolle bei der Verbindung weiterer Geräte mit dem Internet."
 meta_keywords: "IPv6, IPv4, IP-Adresse, Linux-Netzwerk, Netzwerkprotokolle, Anfänger, Tutorial, Leitfaden"
 ---

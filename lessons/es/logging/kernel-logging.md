@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Registro del Kernel"
+meta_title: "Registro del Kernel - Registro"
 meta_description: "Aprenda sobre el registro del kernel de Linux con dmesg y kern.log. Comprenda los mensajes de arranque y los problemas de hardware. Explore los registros del kernel para obtener información del sistema."
 meta_keywords: "dmesg, kern.log, registro de Linux, mensajes del kernel, registro de arranque, tutorial de Linux, guía para principiantes"
 ---

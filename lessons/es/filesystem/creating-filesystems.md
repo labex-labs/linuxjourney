@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Creando Sistemas de Archivos"
+meta_title: "Creando Sistemas de Archivos - El Filesystem"
 meta_description: "Aprende a crear sistemas de archivos en Linux usando mkfs. Esta guía para principiantes cubre ext4 y el particionamiento de discos. ¡Comienza tu viaje en Linux!"
 meta_keywords: "mkfs, crear sistema de archivos, ext4, particionamiento Linux, tutorial Linux, Linux para principiantes, gestión de discos, guía Linux"
 ---

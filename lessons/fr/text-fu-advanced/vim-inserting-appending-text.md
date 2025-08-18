@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Vim : Insertion et ajout de texte"
+meta_title: "Vim : Insertion et ajout de texte - Text-Fu Avancé"
 meta_description: "Apprenez les modes d'insertion et d'ajout de Vim. Comprenez les commandes 'i', 'a', 'I', 'A', 'o', 'O' pour une édition de texte efficace. Améliorez vos compétences Vim dès maintenant !"
 meta_keywords: "mode insertion Vim, ajout Vim, commandes Vim, tutoriel Vim, éditeur de texte Linux, Vim pour débutants, guide Vim, Vim 'i' 'a"
 ---

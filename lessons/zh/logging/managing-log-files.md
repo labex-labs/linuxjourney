@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "管理日志文件"
+meta_title: "管理日志文件 - 日志"
 meta_description: "学习如何使用 logrotate 有效管理 Linux 日志文件。了解日志轮换、压缩和配置以节省磁盘空间。立即开始学习！"
 meta_keywords: "logrotate, Linux 日志，日志管理，日志轮换，Linux 教程，初学者，指南，磁盘空间"
 ---

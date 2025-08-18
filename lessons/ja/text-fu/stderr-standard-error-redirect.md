@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "stderr (標準エラー)"
+meta_title: "stderr (標準エラー) - テキスト操作"
 meta_description: "Linux の stderr（標準エラー）リダイレクトについて学びます。Bash でのエラー処理のために、2>、2>&1、&>、および/dev/null を理解します。Linux コマンドラインスキルを向上させましょう！"
 meta_keywords: "Linux stderr, 標準エラー, 2> リダイレクト，2>&1, &> リダイレクト，/dev/null, Bash エラー処理，Linux チュートリアル，Linux 初心者"
 ---

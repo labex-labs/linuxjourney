@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "链路层"
+meta_title: "链路层 - 网络基础"
 meta_description: "了解 TCP/IP 中的链路层、ARP 如何解析 MAC 地址以及数据包遍历。通过此 Linux 网络教程了解网络基础知识。"
 meta_keywords: "链路层，ARP, TCP/IP, MAC 地址，网络基础知识，Linux 网络，初学者，教程"
 ---

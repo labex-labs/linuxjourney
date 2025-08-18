@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "用户管理工具"
+meta_title: "用户管理工具 - 用户管理"
 meta_description: "学习 Linux 用户管理：使用 useradd、userdel 和 passwd 命令添加、删除和更改密码。通过这份适合初学者的指南快速入门！"
 meta_keywords: "Linux 用户管理，adduser, userdel, passwd, Linux 教程，Linux 初学者，用户账户，Linux 命令"
 ---

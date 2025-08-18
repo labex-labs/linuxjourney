@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Subnets"
+meta_title: "Subnets - Subnetting"
 meta_description: "Learn about subnets and subnet masks in Linux networking. Understand network prefixes and how subnets segment traffic. Get started with this beginner-friendly guide!"
 meta_keywords: "subnets, subnet mask, network prefix, Linux networking, IP address, beginner, tutorial, ifconfig"
 ---

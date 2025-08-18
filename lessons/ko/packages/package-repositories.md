@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "패키지 저장소"
+meta_title: "패키지 저장소 - 패키지"
 meta_description: "Linux 패키지 저장소와 소프트웨어 관리 방법에 대해 알아보세요. /etc/apt/sources.list와 같은 패키지 소스를 찾고 추가하여 쉽게 설치하는 방법을 알아보세요."
 meta_keywords: "Linux 패키지 저장소, apt sources list, /etc/apt/sources.list, Linux 패키지, Linux 초보자, Linux 튜토리얼, 패키지 관리"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "udev"
+meta_title: "udev - デバイス"
 meta_description: "udev、Linux デバイスファイルの動的な管理方法、および udevadm の使用法について学びます。初心者向けにデバイスノードの作成を理解します。"
 meta_keywords: "udev, udevadm, Linux デバイス管理，デバイスファイル，Linux チュートリアル，初心者 Linux, udev ルール，Linux ガイド"
 ---

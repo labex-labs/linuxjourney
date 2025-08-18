@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "openSUSE"
+meta_title: "openSUSE - Démarrage"
 meta_description: "Découvrez openSUSE Linux, son histoire, sa gestion de paquets (RPM) et sa configurabilité avec YaST. Découvrez pourquoi openSUSE est excellent pour les débutants."
 meta_keywords: "openSUSE, distribution Linux, RPM, YaST, Linux pour débutants, tutoriel openSUSE, guide Linux"
 ---

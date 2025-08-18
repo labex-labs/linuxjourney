@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Modules du noyau"
+meta_title: "Modules du noyau - Kernel"
 meta_description: "Découvrez les modules du noyau Linux : comment les charger, les décharger et les gérer. Comprenez les commandes `modprobe` et `lsmod` pour étendre les fonctionnalités du noyau. Commencez votre parcours Linux !"
 meta_keywords: "modules du noyau Linux, modprobe, lsmod, gestion du noyau, tutoriel Linux, Linux pour débutants, guide Linux"
 ---

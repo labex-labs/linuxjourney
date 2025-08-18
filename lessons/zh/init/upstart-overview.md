@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Upstart 概述"
+meta_title: "Upstart 概述 - 初始化"
 meta_description: "了解 Upstart 及其事件驱动模型，以及它如何在 Linux 中管理服务。理解 Upstart 作业配置及其作为 init 系统的作用。"
 meta_keywords: "Upstart, init 系统，Linux 服务，Ubuntu, SysV, 初学者教程，Linux 指南"
 ---

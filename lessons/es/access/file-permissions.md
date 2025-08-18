@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Permisos de Archivos"
+meta_title: "Permisos de Archivos - Permisos"
 meta_description: "Aprenda los permisos de archivos de Linux: comprenda los bits rwx, los permisos de usuario, grupo y otros. Domine la salida de `ls -l` para principiantes. ¡Comience su viaje en Linux!"
 meta_keywords: "permisos de archivo Linux, comando ls -l, permisos rwx, tutorial Linux, modos de archivo, Linux para principiantes, guía Linux"
 ---

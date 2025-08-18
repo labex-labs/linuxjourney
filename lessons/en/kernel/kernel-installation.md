@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Kernel Installation"
+meta_title: "Kernel Installation - Kernel"
 meta_description: "Learn how to install and manage Linux kernels. Discover kernel versions, use `uname -r`, and apt commands. Start your Linux kernel journey!"
 meta_keywords: "Linux kernel, install kernel, uname -r, apt dist-upgrade, kernel management, Linux tutorial, beginner Linux, Linux guide"
 ---

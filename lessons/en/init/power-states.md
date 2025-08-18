@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Power States"
+meta_title: "Power States - Init"
 meta_description: "Learn Linux system power states: shutdown, reboot, and halt commands. Understand how to safely power off or restart your Linux system. Get started with essential commands!"
 meta_keywords: "Linux shutdown, reboot command, halt system, power off Linux, Linux commands, beginner Linux, Linux tutorial, system states"
 ---

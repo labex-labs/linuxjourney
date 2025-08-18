@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "syslog"
+meta_title: "syslog - Registro"
 meta_description: "Aprenda sobre syslog y rsyslog en Linux, cómo gestionar los registros del sistema y usar el comando logger. ¡Comience con este tutorial para principiantes!"
 meta_keywords: "syslog, rsyslog, registros de Linux, comando logger, /var/log/syslog, tutorial de Linux, Linux para principiantes, registro del sistema"
 ---

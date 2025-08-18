@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "udev"
+meta_title: "udev - Devices"
 meta_description: "Learn about udev, how it dynamically manages Linux device files, and use udevadm. Understand device node creation for beginners."
 meta_keywords: "udev, udevadm, Linux device management, device files, Linux tutorial, beginner Linux, udev rules, Linux guide"
 ---

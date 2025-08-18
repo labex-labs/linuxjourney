@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "起動プロセス：ブートローダー"
+meta_title: "起動プロセス：ブートローダー - システムの起動"
 meta_description: "Linux ブートローダー、その機能、および initrd や root などの一般的なカーネルパラメータについて学びます。GRUB を理解し、Linux の起動プロセスを最適化します。"
 meta_keywords: "Linux ブートローダー, GRUB, カーネルパラメータ，initrd, ルートファイルシステム，Linux 起動プロセス，Linux チュートリアル，初心者 Linux"
 ---

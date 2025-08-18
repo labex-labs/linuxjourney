@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "stdout（標準出力）"
+meta_title: "stdout（標準出力） - テキスト操作"
 meta_description: "Linux の stdout と I/O リダイレクトについて学びましょう。>と>>演算子を使用してコマンド出力をファイルにリダイレクトする方法を理解します。今日から Linux の学習を始めましょう！"
 meta_keywords: "Linux stdout, I/O リダイレクト，Linux コマンド，出力リダイレクト，Linux チュートリアル，初心者向け Linux, Linux ガイド，シェルスクリプト"
 ---

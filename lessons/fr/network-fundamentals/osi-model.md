@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Modèle OSI"
+meta_title: "Modèle OSI - Bases du Réseau"
 meta_description: "Découvrez le modèle OSI, un concept fondamental et théorique de mise en réseau. Comprenez ses 7 couches et sa pertinence par rapport à TCP/IP. Guide essentiel de mise en réseau Linux pour les débutants."
 meta_keywords: "modèle OSI, concepts de mise en réseau, TCP/IP, mise en réseau Linux, tutoriel pour débutants, couches réseau, modèle théorique"
 ---

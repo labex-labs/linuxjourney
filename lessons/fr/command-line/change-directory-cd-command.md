@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "cd (Changer de répertoire)"
+meta_title: "cd (Changer de répertoire) - Command Line"
 meta_description: "Apprenez à utiliser la commande 'cd' sous Linux pour naviguer dans les répertoires. Comprenez les chemins absolus, relatifs et les raccourcis utiles. Commencez votre parcours Linux !"
 meta_keywords: "commande cd, changer de répertoire, chemins Linux, chemin absolu, chemin relatif, tutoriel Linux, Linux pour débutants, navigation Linux"
 ---

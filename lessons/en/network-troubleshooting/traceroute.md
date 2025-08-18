@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "traceroute"
+meta_title: "traceroute - Troubleshooting"
 meta_description: "Learn how to use the Linux traceroute command to trace network routes and troubleshoot connectivity. Understand TTL and packet routing for beginners."
 meta_keywords: "traceroute, Linux networking, network troubleshooting, TTL, Linux commands, beginner, tutorial"
 ---

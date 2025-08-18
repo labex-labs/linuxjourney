@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ユーザー管理ツール"
+meta_title: "ユーザー管理ツール - ユーザー管理"
 meta_description: "Linux のユーザー管理を学びましょう：useradd、userdel、passwd コマンドを使って、ユーザーの追加、削除、パスワードの変更を行います。この初心者向けのガイドで始めましょう！"
 meta_keywords: "Linux ユーザー管理，adduser, userdel, passwd, Linux チュートリアル，初心者 Linux, ユーザーアカウント，Linux コマンド"
 ---

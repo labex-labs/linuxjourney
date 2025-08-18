@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "mkdir (Verzeichnis erstellen)"
+meta_title: "mkdir (Verzeichnis erstellen) - Command Line"
 meta_description: "Erfahren Sie, wie Sie den Befehl mkdir verwenden, um Verzeichnisse und Unterverzeichnisse in Linux zu erstellen. Dieses anfängerfreundliche Tutorial hilft Ihnen, Dateien effizient zu organisieren."
 meta_keywords: "mkdir, Verzeichnis erstellen, Verzeichnis anlegen, Linux-Befehle, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Symlinks"
+meta_title: "Symlinks - Das Dateisystem"
 meta_description: "Erfahren Sie mehr über Linux-Symlinks und Hardlinks, einschließlich deren Erstellung und Verwaltung. Verstehen Sie ihre Unterschiede und Anwendungsfälle mit diesem anfängerfreundlichen Leitfaden."
 meta_keywords: "Linux Symlinks, Hardlinks, ln Befehl, symbolische Links, Linux Dateisystem, Linux Tutorial, Linux für Anfänger"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "head"
+meta_title: "head - Text-Fu"
 meta_description: "Узнайте, как использовать команду Linux 'head' для просмотра начала файлов. Изучите опции, такие как -n для подсчета строк. Важный учебник по командам Linux."
 meta_keywords: "команда head, Linux head, просмотр начала файла, учебник по Linux, команды Linux, Linux для начинающих, head -n, руководство по Linux"
 ---

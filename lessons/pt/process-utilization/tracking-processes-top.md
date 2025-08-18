@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Rastreando processos: top"
+meta_title: "Rastreando processos: top - Utilização de Processos"
 meta_description: "Aprenda a usar o comando `top` do Linux para monitorar recursos do sistema e rastrear processos. Entenda os detalhes de CPU, memória e processos para análise de desempenho."
 meta_keywords: "comando top Linux, monitorar processos, utilização do sistema, desempenho Linux, iniciante, tutorial, guia"
 ---

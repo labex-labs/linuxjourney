@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "IPv4"
+meta_title: "IPv4 - Subnetting"
 meta_description: "Aprende sobre las direcciones IPv4, su estructura y cómo encontrar tu IP usando ifconfig. Comprende los conceptos básicos de red para principiantes en Linux."
 meta_keywords: "IPv4, dirección IP, ifconfig, conceptos básicos de red, redes Linux, principiante, tutorial, guía"
 ---

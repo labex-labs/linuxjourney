@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Descripción general de System V"
+meta_title: "Descripción general de System V - Init"
 meta_description: "Aprenda sobre System V init, sus runlevels y cómo gestiona los procesos en Linux. Comprenda los conceptos básicos de SysV para usuarios principiantes e intermedios."
 meta_keywords: "System V, SysV init, runlevels de Linux, sistema init, tutorial de Linux, guía para principiantes, gestión de procesos"
 ---

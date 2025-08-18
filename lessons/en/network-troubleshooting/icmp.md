@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "ICMP"
+meta_title: "ICMP - Troubleshooting"
 meta_description: "Learn about ICMP protocol basics, message types, and codes for network troubleshooting. Understand how ICMP works to debug network issues."
 meta_keywords: "ICMP, ICMP protocol, network troubleshooting, ICMP types, Linux networking, beginner, tutorial, guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Análisis de Paquetes"
+meta_title: "Análisis de Paquetes - Resolución de Problemas"
 meta_description: "Aprenda los conceptos básicos del análisis de paquetes usando tcpdump. Comprenda el tráfico de red, capture datos e interprete la salida con esta guía de Linux para principiantes."
 meta_keywords: "tcpdump, análisis de paquetes, análisis de red, redes Linux, tutorial para principiantes, Wireshark, comandos Linux, tráfico de red"
 ---

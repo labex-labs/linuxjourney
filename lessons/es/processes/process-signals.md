@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Señales"
+meta_title: "Señales - Procesos"
 meta_description: "Aprende sobre las señales de Linux, su propósito, tipos comunes como SIGINT y SIGKILL, y cómo los procesos las manejan. Comprende los conceptos básicos de las señales para un mejor control de Linux."
 meta_keywords: "señales de Linux, SIGKILL, SIGINT, comunicación de procesos, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---

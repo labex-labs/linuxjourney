@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "进程终止"
+meta_title: "进程终止 - 进程"
 meta_description: "了解 Linux 进程终止，包括孤儿进程和僵尸进程。理解 _exit 和 wait 系统调用以进行有效的进程管理。"
 meta_keywords: "Linux 进程终止，僵尸进程，孤儿进程，wait 系统调用，_exit, Linux 教程，Linux 初学者"
 ---

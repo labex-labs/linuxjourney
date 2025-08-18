@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "wc und nl"
+meta_title: "wc und nl - Text-Fu"
 meta_description: "Lernen Sie die Linux-Befehle wc und nl. Verstehen Sie Wortzählung, Zeilennummerierung und Dateianalyse. Verbessern Sie noch heute Ihre Linux-Kommandozeilenkenntnisse!"
 meta_keywords: "wc Befehl, nl Befehl, Linux Wortzählung, Linux Zeilennummern, Dateianalyse, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---

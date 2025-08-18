@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "内核位置"
+meta_title: "内核位置 - 内核"
 meta_description: "了解 Linux 内核在 /boot 目录中的位置，理解 vmlinuz、initrd 和 System.map。探索内核文件并有效管理空间。"
 meta_keywords: "Linux 内核，/boot 目录，vmlinuz, initrd, System.map, Linux 初学者，内核教程，Linux 指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Upstart Overview"
+meta_title: "Upstart Overview - Init"
 meta_description: "Learn about Upstart, its event-driven model, and how it manages services in Linux. Understand Upstart job configurations and its role as an init system."
 meta_keywords: "Upstart, init system, Linux services, Ubuntu, SysV, beginner tutorial, Linux guide"
 ---

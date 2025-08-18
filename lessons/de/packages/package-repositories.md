@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Paket-Repositories"
+meta_title: "Paket-Repositories - Pakete"
 meta_description: "Erfahren Sie mehr über Linux-Paket-Repositories und wie sie Software verwalten. Entdecken Sie, wie Sie Paketquellen wie /etc/apt/sources.list finden und hinzufügen, um eine einfache Installation zu ermöglichen."
 meta_keywords: "Linux-Paket-Repositories, apt sources list, /etc/apt/sources.list, Linux-Pakete, Linux für Anfänger, Linux-Tutorial, Paketverwaltung"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "root"
+meta_title: "root - Gestión de Usuarios"
 meta_description: "Aprende sobre el usuario root de Linux, el comando su y el archivo /etc/sudoers. Comprende el acceso y los permisos de superusuario en Linux con esta guía para principiantes."
 meta_keywords: "Linux root, comando su, archivo sudoers, permisos de Linux, superusuario, tutorial de Linux, guía para principiantes"
 ---

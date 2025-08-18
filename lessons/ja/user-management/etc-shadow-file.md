@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "/etc/shadow"
+meta_title: "/etc/shadow - ユーザー管理"
 meta_description: "Linux の/etc/shadow ファイル、そのフィールド、およびユーザーパスワードを保護する方法について学びます。初心者向けの Linux 認証を理解します。"
 meta_keywords: "/etc/shadow, Linux セキュリティ，ユーザー認証，パスワード管理，Linux チュートリアル，初心者ガイド"
 ---

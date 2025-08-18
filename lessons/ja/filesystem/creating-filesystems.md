@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ファイルシステムの作成"
+meta_title: "ファイルシステムの作成 - ファイルシステム"
 meta_description: "mkfs を使用して Linux でファイルシステムを作成する方法を学びます。この初心者向けのガイドでは、ext4 とディスクのパーティション分割について説明します。Linux の学習を始めましょう！"
 meta_keywords: "mkfs, ファイルシステム作成，ext4, Linux パーティション分割，Linux チュートリアル，初心者向け Linux, ディスク管理，Linux ガイド"
 ---

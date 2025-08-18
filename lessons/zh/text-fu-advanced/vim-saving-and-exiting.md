@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Vim 保存和退出"
+meta_title: "Vim 保存和退出 - 高级文本操作"
 meta_description: "学习如何使用 `:w`、`:q` 和 `:wq` 等基本命令有效地保存和退出 Vim。掌握基本的 Vim 操作以实现高效的文本编辑。"
 meta_keywords: "Vim 保存，Vim 退出，Vim 命令，:wq, :q!, Linux 文本编辑器，Vim 教程，Vim 初学者"
 ---

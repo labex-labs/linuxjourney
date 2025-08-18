@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "/etc/group"
+meta_title: "/etc/group - Benutzerverwaltung"
 meta_description: "Erfahren Sie mehr über die Datei /etc/group in Linux, verstehen Sie Gruppenverwaltung, GID und Benutzerberechtigungen. Ein grundlegendes Linux-Gruppendatei-Tutorial für Anfänger."
 meta_keywords: "/etc/group, Linux-Gruppen, Gruppenverwaltung, GID, Linux-Berechtigungen, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---

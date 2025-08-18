@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "메모리 모니터링"
+meta_title: "메모리 모니터링 - 프로세스 활용"
 meta_description: "vmstat 를 사용하여 Linux 메모리 사용량을 모니터링하는 방법을 배웁니다. 시스템 성능을 위한 메모리, 스왑 및 CPU 메트릭을 이해합니다. Linux 여정을 시작하세요!"
 meta_keywords: "vmstat, Linux 메모리 모니터링, 시스템 성능, Linux 튜토리얼, 메모리 사용량, 초보자 Linux, Linux 가이드"
 ---

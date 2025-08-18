@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "alias"
+meta_title: "alias - Command Line"
 meta_description: "Apprenez à créer et gérer des alias Linux pour les commandes courantes. Découvrez la configuration d'alias temporaires et permanents dans .bashrc. Améliorez votre efficacité en ligne de commande !"
 meta_keywords: "alias Linux, alias bash, commande unalias, .bashrc, tutoriel Linux, ligne de commande, Linux débutant, guide Linux"
 ---

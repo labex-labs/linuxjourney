@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "DNS 设置"
+meta_title: "DNS 设置 - DNS"
 meta_description: "了解 Linux 上流行的 DNS 服务器，如 BIND、DNSmasq 和 PowerDNS。通过这份适合初学者的指南，发现最适合您网络设置的 DNS 服务器。"
 meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS 服务器设置，Linux 网络，DNS 教程，初学者"
 ---

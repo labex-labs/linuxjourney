@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Emacs Manipular Arquivos"
+meta_title: "Emacs Manipular Arquivos - Text-Fu Avançado"
 meta_description: "Aprenda a manipulação de arquivos no Emacs: salvar, salvar como e abrir arquivos usando os comandos C-x C-s, C-x C-w e C-x C-f. Domine as operações essenciais de arquivo do Emacs!"
 meta_keywords: "Emacs, Emacs salvar arquivo, Emacs abrir arquivo, tutorial Emacs, comandos Linux, Emacs para iniciantes, guia Emacs"
 ---

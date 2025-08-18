@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "I/O 監視"
+meta_title: "I/O 監視 - プロセス利用率"
 meta_description: "iostat を使用した Linux I/O 監視の方法を学びます。この重要なコマンドで CPU とディスク使用量のメトリックを理解しましょう。システムパフォーマンスを向上させます！"
 meta_keywords: "iostat, Linux I/O 監視，CPU 使用率，ディスク使用量，Linux コマンド，初心者，チュートリアル，ガイド"
 ---

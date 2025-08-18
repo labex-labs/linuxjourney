@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "uniq (Eindeutig)"
+meta_title: "uniq (Eindeutig) - Text-Fu"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl `uniq` verwenden, um doppelte Zeilen aus Textdateien zu entfernen. Entdecken Sie Optionen wie -c, -u, -d und kombinieren Sie ihn mit `sort` für eine effektive Datenbereinigung."
 meta_keywords: "uniq Befehl, Linux uniq, Duplikate entfernen, sort uniq, Linux Tutorial, Textverarbeitung, Linux für Anfänger, Linux Anleitung"
 ---

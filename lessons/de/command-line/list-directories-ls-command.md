@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "ls (Verzeichnisse auflisten)"
+meta_title: "ls (Verzeichnisse auflisten) - Command Line"
 meta_description: "Erfahren Sie, wie Sie den 'ls'-Befehl in Linux verwenden, um Verzeichnisinhalte aufzulisten, versteckte Dateien anzuzeigen und Dateidetails zu verstehen. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
 meta_keywords: "ls Befehl, Verzeichnisse auflisten, Linux Tutorial, versteckte Dateien, Linux Befehle, Linux für Anfänger, Linux Anleitung"
 ---

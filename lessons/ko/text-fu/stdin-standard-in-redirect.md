@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "stdin (표준 입력)"
+meta_title: "stdin (표준 입력) - Text-Fu"
 meta_description: "Linux 에서 stdin(표준 입력) 리디렉션에 대해 알아보세요. '<' 연산자를 파일 및 명령과 함께 사용하는 방법을 이해합니다. 실제 예제를 탐색하고 Linux 명령줄 기술을 향상시키세요."
 meta_keywords: "stdin, 표준 입력, Linux 리디렉션, < 연산자, Linux 튜토리얼, 명령줄, 초보자, 가이드"
 ---

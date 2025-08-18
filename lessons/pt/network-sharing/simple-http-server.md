@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Servidor HTTP Simples"
+meta_title: "Servidor HTTP Simples - Compartilhamento de Rede"
 meta_description: "Aprenda a criar um servidor HTTP simples usando o módulo http.server do Python. Compartilhe arquivos rapidamente em sua rede com este tutorial de Linux para iniciantes."
 meta_keywords: "http.server, SimpleHTTPServer, servidor web Python, compartilhamento de arquivos, tutorial Linux, guia para iniciantes"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Inodes"
+meta_title: "Inodes - Файловая система"
 meta_description: "Узнайте о Linux inodes, их структуре и о том, как они управляют файлами. Разберитесь с inode numbers и используйте `df -i` и `ls -li` для проверки использования inodes. Начните свой путь в Linux!"
 meta_keywords: "Linux inodes, inode tutorial, df -i, ls -li, Linux filesystem, beginner Linux, Linux guide"
 ---

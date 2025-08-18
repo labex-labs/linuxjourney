@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ネットワーク層"
+meta_title: "ネットワーク層 - ネットワークの基本"
 meta_description: "Linux の Network layer、IP アドレスがサブネット間でパケットをルーティングする方法、およびデータ伝送におけるその役割について学びます。Linux ネットワーキングの旅を始めましょう！"
 meta_keywords: "Network layer, IP addresses, subnets, Linux networking, packet routing, beginner, tutorial, guide"
 ---

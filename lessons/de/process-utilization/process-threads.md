@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Prozess-Threads"
+meta_title: "Prozess-Threads - Prozessauslastung"
 meta_description: "Erfahren Sie mehr über Linux-Prozess-Threads, Single-Threaded- vs. Multi-Threaded-Konzepte und wie Sie diese mit 'ps m' anzeigen können. Verstehen Sie Lightweight-Prozesse effizient!"
 meta_keywords: "Linux-Threads, Prozess-Threads, ps m Befehl, Multi-Threaded, Single-Threaded, Linux-Prozesse, Linux für Anfänger, Linux-Tutorial"
 ---

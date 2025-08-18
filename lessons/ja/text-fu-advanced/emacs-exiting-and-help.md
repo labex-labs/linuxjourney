@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Emacs の終了とヘルプ"
+meta_title: "Emacs の終了とヘルプ - 高度なテキスト操作"
 meta_description: "Emacs の終了コマンドとヘルプへのアクセス方法を学びます。この初心者向けのチュートリアルで、Emacs の基本的なナビゲーションと元に戻す機能を理解しましょう。"
 meta_keywords: "Emacs 終了，Emacs ヘルプ，Emacs 元に戻す，Emacs チュートリアル，Linux テキストエディタ，初心者ガイド"
 ---

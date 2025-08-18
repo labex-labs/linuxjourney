@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "file"
+meta_title: "file - Command Line"
 meta_description: "Linux 의 'file' 명령을 사용하여 파일 유형과 내용을 식별하는 방법을 배웁니다. 이 초보자 친화적인 가이드를 통해 Linux 파일 명명 규칙을 이해하십시오."
 meta_keywords: "Linux file 명령, 파일 유형 식별, Linux 튜토리얼, 파일 명명, 초보자 Linux, Linux 가이드"
 ---

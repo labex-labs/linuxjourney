@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "env (Environnement)"
+meta_title: "env (Environnement) - Text-Fu"
 meta_description: "Découvrez les variables d'environnement Linux avec la commande 'env'. Comprenez les variables PATH, HOME et USER. Obtenez un guide pour débutants sur la gestion de votre environnement Linux."
 meta_keywords: "commande env, variables d'environnement Linux, variable PATH, tutoriel Linux, Linux pour débutants, variables shell, guide Linux"
 ---

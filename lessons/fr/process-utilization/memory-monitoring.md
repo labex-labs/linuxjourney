@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Surveillance de la mémoire"
+meta_title: "Surveillance de la mémoire - Utilisation des Processus"
 meta_description: "Apprenez à surveiller l'utilisation de la mémoire Linux avec vmstat. Comprenez la mémoire, le swap et les métriques CPU pour la performance du système. Commencez votre parcours Linux !"
 meta_keywords: "vmstat, surveillance mémoire Linux, performance système, tutoriel Linux, utilisation mémoire, Linux débutant, guide Linux"
 ---

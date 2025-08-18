@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Cron Jobs"
+meta_title: "Cron Jobs - Process Utilization"
 meta_description: "Learn to schedule Linux tasks with cron jobs. Understand crontab syntax and automate scripts for daily operations. Get started with this beginner-friendly guide!"
 meta_keywords: "cron jobs, crontab, schedule tasks, Linux automation, Linux commands, beginner Linux, Linux tutorial, crontab -e"
 ---

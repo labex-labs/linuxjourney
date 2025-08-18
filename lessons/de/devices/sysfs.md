@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "sysfs"
+meta_title: "sysfs - Geräte"
 meta_description: "Erfahren Sie mehr über sysfs, ein virtuelles Dateisystem für detaillierte Linux-Geräteinformationen und -verwaltung. Verstehen Sie /sys vs /dev. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "sysfs, /sys directory, Linux devices, virtual filesystem, Linux tutorial, beginner guide"
 ---

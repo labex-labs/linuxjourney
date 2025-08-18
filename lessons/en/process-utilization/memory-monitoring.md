@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Memory Monitoring"
+meta_title: "Memory Monitoring - Process Utilization"
 meta_description: "Learn to monitor Linux memory usage with vmstat. Understand memory, swap, and CPU metrics for system performance. Start your Linux journey!"
 meta_keywords: "vmstat, Linux memory monitoring, system performance, Linux tutorial, memory usage, beginner Linux, Linux guide"
 ---

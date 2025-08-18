@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "ls (Listar Diretórios)"
+meta_title: "ls (Listar Diretórios) - Linha de Comando"
 meta_description: "Aprenda a usar o comando 'ls' no Linux para listar o conteúdo do diretório, visualizar arquivos ocultos e entender os detalhes dos arquivos. Melhore suas habilidades de linha de comando Linux!"
 meta_keywords: "comando ls, listar diretórios, tutorial Linux, arquivos ocultos, comandos Linux, Linux para iniciantes, guia Linux"
 ---

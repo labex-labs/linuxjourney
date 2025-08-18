@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Routing-Protokolle"
+meta_title: "Routing-Protokolle - Routing"
 meta_description: "Erfahren Sie mehr über Routing-Protokolle wie Distanzvektor und Link-State. Verstehen Sie Netzwerkkonvergenz und wie Router sich an Änderungen anpassen. Beginnen Sie Ihre Linux-Netzwerkreise!"
 meta_keywords: "Routing-Protokolle, Netzwerkkonvergenz, Distanzvektor, Link-State, Linux-Netzwerk, Anfängerleitfaden, Netzwerk-Tutorial"
 ---

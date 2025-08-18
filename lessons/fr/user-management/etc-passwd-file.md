@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "/etc/passwd"
+meta_title: "/etc/passwd - Gestion des Utilisateurs"
 meta_description: "Découvrez le fichier /etc/passwd sous Linux, comprenez les champs d'informations utilisateur et le fonctionnement des UID. Explorez ce fichier de configuration essentiel."
 meta_keywords: "/etc/passwd, utilisateurs Linux, ID utilisateur, UID, tutoriel Linux, débutant, guide, commandes Linux"
 ---

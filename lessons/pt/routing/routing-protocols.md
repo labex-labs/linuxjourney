@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Protocolos de Roteamento"
+meta_title: "Protocolos de Roteamento - Roteamento"
 meta_description: "Aprenda sobre protocolos de roteamento como vetor de distância e estado de link. Entenda a convergência de rede e como os roteadores se adaptam às mudanças. Comece sua jornada em redes Linux!"
 meta_keywords: "protocolos de roteamento, convergência de rede, vetor de distância, estado de link, redes Linux, guia para iniciantes, tutorial de rede"
 ---

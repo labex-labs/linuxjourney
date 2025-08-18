@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Netzwerkschicht"
+meta_title: "Netzwerkschicht - Netzwerkgrundlagen"
 meta_description: "Erfahren Sie mehr über die Netzwerkschicht in Linux, wie IP-Adressen Pakete über Subnetze routen und ihre Rolle bei der Datenübertragung. Beginnen Sie Ihre Reise ins Linux-Netzwerk!"
 meta_keywords: "Netzwerkschicht, IP-Adressen, Subnetze, Linux-Netzwerk, Paket-Routing, Anfänger, Tutorial, Leitfaden"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Vim 탐색"
+meta_title: "Vim 탐색 - 고급 Text-Fu"
 meta_description: "h, j, k, l 키를 사용하여 Vim 탐색의 기본 사항을 배웁니다. 초보자를 위한 필수 Vim 이동을 이해하고 Linux 명령줄 기술을 향상시키세요."
 meta_keywords: "Vim 탐색, Vim 튜토리얼, Linux Vim, Vim 이동, Vim 기본, 초보자 Vim, Linux 텍스트 편집기, Vim 가이드"
 ---

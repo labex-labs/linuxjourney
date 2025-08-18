@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Inodes"
+meta_title: "Inodes - Das Dateisystem"
 meta_description: "Erfahren Sie mehr über Linux-Inodes, ihre Struktur und wie sie Dateien verwalten. Verstehen Sie Inode-Nummern und verwenden Sie `df -i` und `ls -li`, um die Inode-Nutzung zu überprüfen. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Linux Inodes, Inode Tutorial, df -i, ls -li, Linux Dateisystem, Linux für Anfänger, Linux Anleitung"
 ---

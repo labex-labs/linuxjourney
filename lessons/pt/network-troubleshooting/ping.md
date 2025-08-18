@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "ping"
+meta_title: "ping - Resolução de Problemas"
 meta_description: "Aprenda a usar o comando ping do Linux para testar a conectividade de rede e solucionar problemas. Entenda ICMP, TTL e tempo de ida e volta para um diagnóstico de rede eficaz."
 meta_keywords: "Linux ping, conectividade de rede, ICMP, TTL, rede Linux, Linux para iniciantes, tutorial Linux, comando ping"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Allgemeine Protokollierung"
+meta_title: "Allgemeine Protokollierung - Protokollierung"
 meta_description: "Erfahren Sie mehr über Linux-Protokolldateien wie /var/log/messages und syslog. Verstehen Sie ihre Unterschiede für eine effektive Systemfehlerbehebung. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Linux-Protokolle, syslog, var/log/messages, Linux-Fehlerbehebung, Linux-Anfänger, Linux-Anleitung, Systemprotokolle"
 ---

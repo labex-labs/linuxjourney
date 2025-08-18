@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "DNS-Prozess"
+meta_title: "DNS-Prozess - DNS"
 meta_description: "Erfahren Sie Schritt für Schritt, wie DNS funktioniert, von Root-Servern bis hin zu autoritativem DNS. Verstehen Sie den DNS-Lookup-Prozess für Anfänger und fortgeschrittene Benutzer."
 meta_keywords: "DNS-Prozess, DNS-Lookup, wie DNS funktioniert, DNS-Tutorial, DNS für Anfänger, Linux DNS, TLD, Root-Server"
 ---

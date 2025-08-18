@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "whatis"
+meta_title: "whatis - Command Line"
 meta_description: "Erfahren Sie, was der Befehl 'whatis' in Linux tut. Erhalten Sie schnell kurze Beschreibungen von Befehlen. Essenziell für Anfänger, um Linux-Befehle zu verstehen."
 meta_keywords: "whatis Befehl, Linux Befehle, Kommandozeile, Linux Tutorial, Linux für Anfänger, Befehlsbeschreibung, Linux Anleitung"
 ---

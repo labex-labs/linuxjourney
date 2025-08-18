@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "システムロギング"
+meta_title: "システムロギング - ロギング"
 meta_description: "Linux のシステムロギング、syslog、および/var/log でのログファイルの表示方法について学びます。rsyslogd を理解し、この初心者向けガイドでシステムイベントを監視します。"
 meta_keywords: "Linux ロギング，syslog, rsyslogd, var log, システムログ，Linux チュートリアル，初心者ガイド"
 ---

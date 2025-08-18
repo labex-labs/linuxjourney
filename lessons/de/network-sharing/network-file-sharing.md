@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Übersicht über die Dateifreigabe"
+meta_title: "Übersicht über die Dateifreigabe - Netzwerkfreigabe"
 meta_description: "Erfahren Sie mehr über die Linux-Dateifreigabe und den Befehl secure copy (scp). Übertragen Sie Dateien zwischen Hosts in Ihrem Netzwerk. Beginnen Sie mit dieser anfängerfreundlichen Anleitung!"
 meta_keywords: "Linux-Dateifreigabe, scp-Befehl, sichere Kopie, Netzwerk-Dateiübertragung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---

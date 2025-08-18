@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "traceroute"
+meta_title: "traceroute - トラブルシューティング"
 meta_description: "Linux の traceroute コマンドを使用してネットワークルートをトレースし、接続の問題をトラブルシューティングする方法を学びます。初心者向けに TTL とパケットルーティングを理解します。"
 meta_keywords: "traceroute, Linux ネットワーキング，ネットワークトラブルシューティング，TTL, Linux コマンド，初心者，チュートリアル"
 ---

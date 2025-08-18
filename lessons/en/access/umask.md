@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Umask"
+meta_title: "Umask - Permissions"
 meta_description: "Learn how to use the `umask` command to control default file permissions in Linux. Understand numerical permissions and manage new file access easily."
 meta_keywords: "umask, linux permissions, file permissions, linux commands, beginner linux, linux tutorial, default permissions"
 ---

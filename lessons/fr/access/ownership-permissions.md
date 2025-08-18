@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Permissions de Propriété"
+meta_title: "Permissions de Propriété - Permissions"
 meta_description: "Apprenez à changer la propriété des fichiers sous Linux en utilisant les commandes chown et chgrp. Comprenez les permissions d'utilisateur et de groupe avec ce tutoriel Linux pour débutants."
 meta_keywords: "chown, chgrp, propriété de fichier Linux, permissions Linux, commandes Linux, Linux débutant, tutoriel Linux, guide Linux"
 ---

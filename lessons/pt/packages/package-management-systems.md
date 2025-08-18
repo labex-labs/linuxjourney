@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "yum e apt"
+meta_title: "yum e apt - Pacotes"
 meta_description: "Aprenda yum e apt para gerenciamento de pacotes Linux. Instale, remova e atualize software em sistemas Debian/RPM com este tutorial para iniciantes. Comece hoje mesmo!"
 meta_keywords: "yum, apt, gerenciamento de pacotes Linux, tutorial apt, tutorial yum, comandos Linux, guia para iniciantes, instalação de pacotes"
 ---

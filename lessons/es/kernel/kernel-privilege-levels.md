@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Niveles de Privilegio"
+meta_title: "Niveles de Privilegio - Kernel"
 meta_description: "Aprende sobre los niveles de privilegio de Linux, el modo kernel y el modo usuario. Comprende los anillos de protección y las llamadas al sistema para un acceso seguro al hardware. ¡Comienza tu viaje en Linux!"
 meta_keywords: "niveles de privilegio de Linux, modo kernel, modo usuario, anillos de protección, llamadas al sistema, seguridad de Linux, Linux para principiantes, tutorial de Linux"
 ---

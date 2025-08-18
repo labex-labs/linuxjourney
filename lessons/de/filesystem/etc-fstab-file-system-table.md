@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "/etc/fstab"
+meta_title: "/etc/fstab - Das Dateisystem"
 meta_description: "Erfahren Sie mehr über /etc/fstab in Linux, wie Sie Dateisystem-Mounts beim Start konfigurieren und Geräteeinträge verwalten. Verstehen Sie fstab für Anfänger!"
 meta_keywords: "/etc/fstab, Linux fstab, Dateisysteme mounten, Linux Boot, fstab Tutorial, Anfänger, Anleitung"
 ---

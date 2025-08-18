@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "CPU-Überwachung"
+meta_title: "CPU-Überwachung - Prozessauslastung"
 meta_description: "Lernen Sie die CPU-Überwachung mit dem uptime-Befehl. Verstehen Sie Load Average, CPU-Auslastung und wie Sie die Systemleistung für Linux-Anfänger interpretieren."
 meta_keywords: "uptime-Befehl, Linux CPU-Überwachung, Load Average, Systemleistung, Linux-Tutorial, Anfängerleitfaden"
 ---

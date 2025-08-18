@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "swap"
+meta_title: "swap - El Filesystem"
 meta_description: "Aprende sobre el espacio swap en Linux, cómo funciona y cómo crear y gestionar particiones swap. ¡Optimiza el uso de la memoria de tu sistema con esta guía!"
 meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, memoria virtual, Linux para principiantes, tutorial de Linux"
 ---

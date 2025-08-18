@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "udev"
+meta_title: "udev - Устройства"
 meta_description: "Узнайте о udev, как он динамически управляет файлами устройств Linux, и используйте udevadm. Поймите создание узлов устройств для начинающих."
 meta_keywords: "udev, udevadm, управление устройствами Linux, файлы устройств, учебник Linux, Linux для начинающих, правила udev, руководство Linux"
 ---

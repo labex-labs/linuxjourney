@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Link State Protocols"
+meta_title: "Link State Protocols - Routing"
 meta_description: "Learn about link state protocols like OSPF for large networks. Understand their fast convergence and how they update routing tables. Start your Linux networking journey!"
 meta_keywords: "link state protocols, OSPF, Linux networking, routing protocols, network topology, beginner"
 ---

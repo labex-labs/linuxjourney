@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Cron Jobs"
+meta_title: "Cron Jobs - Utilização de Processos"
 meta_description: "Aprenda a agendar tarefas Linux com cron jobs. Entenda a sintaxe do crontab e automatize scripts para operações diárias. Comece com este guia para iniciantes!"
 meta_keywords: "cron jobs, crontab, agendar tarefas, automação Linux, comandos Linux, Linux para iniciantes, tutorial Linux, crontab -e"
 ---

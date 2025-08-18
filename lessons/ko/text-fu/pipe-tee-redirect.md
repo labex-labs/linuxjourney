@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "pipe 및 tee"
+meta_title: "pipe 및 tee - Text-Fu"
 meta_description: "효율적인 명령줄 데이터 흐름을 위해 Linux 파이프 및 tee 명령을 배우세요. stdout, stdin 및 파일 출력을 이해하세요. Linux 기술을 향상시키세요!"
 meta_keywords: "Linux pipe, tee command, Linux tutorial, stdout, stdin, beginner Linux, command line, Linux guide"
 ---

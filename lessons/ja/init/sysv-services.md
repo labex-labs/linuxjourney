@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "System V サービス"
+meta_title: "System V サービス - Init"
 meta_description: "コマンドラインツールを使用して System V サービスを管理する方法を学びます。この初心者向けの Linux チュートリアルで、サービスのリスト表示、開始、停止、再起動の方法を発見してください。"
 meta_keywords: "System V サービス，Linux サービス，service コマンド，SysV init, Linux チュートリアル，初心者 Linux, サービス管理，Linux ガイド"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Control de Trabajos"
+meta_title: "Control de Trabajos - Procesos"
 meta_description: "Aprenda el control de trabajos de Linux para gestionar procesos en segundo plano. Comprenda los comandos 'jobs', 'bg', 'fg' y 'kill' para un uso eficiente del shell. ¡Comience su viaje en Linux!"
 meta_keywords: "control de trabajos de Linux, procesos en segundo plano, comando jobs, comando bg, comando fg, comando kill, tutorial de Linux, Linux para principiantes"
 ---

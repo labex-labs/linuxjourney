@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Kernel Modules"
+meta_title: "Kernel Modules - Kernel"
 meta_description: "Learn about Linux kernel modules: how to load, unload, and manage them. Understand `modprobe` and `lsmod` commands for extending kernel functionality. Start your Linux journey!"
 meta_keywords: "Linux kernel modules, modprobe, lsmod, kernel management, Linux tutorial, beginner Linux, Linux guide"
 ---

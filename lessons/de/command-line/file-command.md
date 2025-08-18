@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "file"
+meta_title: "file - Command Line"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'file' verwenden, um Dateitypen und -inhalte zu identifizieren. Verstehen Sie Linux-Dateibenennungskonventionen mit diesem anfängerfreundlichen Leitfaden."
 meta_keywords: "Linux file Befehl, Dateityp identifizieren, Linux Tutorial, Dateibenennung, Linux für Anfänger, Linux Leitfaden"
 ---

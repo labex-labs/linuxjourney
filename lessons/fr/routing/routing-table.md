@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Table de Routage"
+meta_title: "Table de Routage - Routage"
 meta_description: "Apprenez à comprendre la table de routage Linux et comment les paquets sont acheminés à l'aide de la commande route. Explorez les destinations, les passerelles et les interfaces pour les bases du réseau."
 meta_keywords: "table de routage Linux, commande route, routage réseau, mise en réseau Linux, Linux pour débutants, tutoriel Linux, guide réseau"
 ---

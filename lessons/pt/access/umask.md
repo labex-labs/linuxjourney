@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Umask"
+meta_title: "Umask - Permissões"
 meta_description: "Aprenda a usar o comando `umask` para controlar as permissões padrão de arquivos no Linux. Entenda as permissões numéricas e gerencie o acesso a novos arquivos facilmente."
 meta_keywords: "umask, permissões linux, permissões de arquivo, comandos linux, linux para iniciantes, tutorial linux, permissões padrão"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "简单的 HTTP 服务器"
+meta_title: "简单的 HTTP 服务器 - 网络共享"
 meta_description: "学习使用 Python 的 http.server 模块创建一个简单的 HTTP 服务器。通过这个适合初学者的 Linux 教程，快速在你的网络上共享文件。"
 meta_keywords: "http.server, SimpleHTTPServer, Python web server, 文件共享，Linux 教程，初学者指南"
 ---

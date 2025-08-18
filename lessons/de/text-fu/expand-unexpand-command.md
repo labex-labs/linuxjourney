@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "expand und unexpand"
+meta_title: "expand und unexpand - Text-Fu"
 meta_description: "Lernen Sie, Tabulatoren mit dem Befehl `expand` in Leerzeichen und Leerzeichen mit `unexpand` in Tabulatoren umzuwandeln. Verbessern Sie die Formatierung von Textdateien mit diesem Linux-Tutorial."
 meta_keywords: "expand Befehl, unexpand Befehl, Linux Tabulatoren, Linux Leerzeichen, Textformatierung, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---

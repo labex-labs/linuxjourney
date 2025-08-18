@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "路由协议"
+meta_title: "路由协议 - 路由"
 meta_description: "了解距离矢量和链路状态等路由协议。理解网络收敛以及路由器如何适应变化。开始您的 Linux 网络之旅！"
 meta_keywords: "路由协议，网络收敛，距离矢量，链路状态，Linux 网络，初学者指南，网络教程"
 ---

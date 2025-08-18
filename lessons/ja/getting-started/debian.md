@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "Debian"
+meta_title: "Debian - はじめに"
 meta_description: "Debian Linux、その安定版とローリングリリース、およびパッケージ管理について学びます。Debian が初心者から中級者にとって優れたコア OS である理由を発見してください。"
 meta_keywords: "Debian, Debian Linux, Linux ディストリビューション，ローリングリリース，パッケージ管理，Linux チュートリアル，初心者向け Linux, Linux ガイド"
 ---

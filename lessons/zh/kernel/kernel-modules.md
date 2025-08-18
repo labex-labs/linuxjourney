@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "内核模块"
+meta_title: "内核模块 - 内核"
 meta_description: "了解 Linux 内核模块：如何加载、卸载和管理它们。理解 `modprobe` 和 `lsmod` 命令以扩展内核功能。开始您的 Linux 之旅！"
 meta_keywords: "Linux 内核模块，modprobe, lsmod, 内核管理，Linux 教程，Linux 初学者，Linux 指南"
 ---

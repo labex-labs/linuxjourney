@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Gentoo"
+meta_title: "Gentoo - Начало работы"
 meta_description: "Узнайте о Gentoo Linux, его менеджере пакетов Portage и высокой настраиваемости. Узнайте, подходит ли этот гибкий дистрибутив для вашего продвинутого путешествия в Linux."
 meta_keywords: "Gentoo Linux, Portage, дистрибутив Linux, руководство Gentoo, Linux для начинающих, руководство по Linux, настраиваемость Gentoo"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "DNS Components"
+meta_title: "DNS Components - DNS"
 meta_description: "Learn about DNS components: name servers, zone files, and resource records. Understand how DNS works for beginners. Start your Linux networking journey!"
 meta_keywords: "DNS components, name server, zone file, resource records, DNS tutorial, Linux networking, beginner guide"
 ---

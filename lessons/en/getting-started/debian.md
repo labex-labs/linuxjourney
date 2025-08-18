@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Debian"
+meta_title: "Debian - Getting Started"
 meta_description: "Learn about Debian Linux, its stable and rolling releases, and package management. Discover why Debian is a great core OS for beginners and intermediate users."
 meta_keywords: "Debian, Debian Linux, Linux distribution, rolling release, package management, Linux tutorial, beginner Linux, Linux guide"
 ---

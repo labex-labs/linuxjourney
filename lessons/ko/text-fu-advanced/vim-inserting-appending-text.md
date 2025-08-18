@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Vim 텍스트 삽입 및 추가"
+meta_title: "Vim 텍스트 삽입 및 추가 - 고급 Text-Fu"
 meta_description: "Vim 의 삽입 및 추가 모드를 배웁니다. 효율적인 텍스트 편집을 위한 'i', 'a', 'I', 'A', 'o', 'O' 명령을 이해합니다. 지금 바로 Vim 기술을 향상시키세요!"
 meta_keywords: "Vim 삽입 모드, Vim 추가, Vim 명령, Vim 튜토리얼, Linux 텍스트 편집기, 초보자 Vim, Vim 가이드, Vim 'i' 'a"
 ---

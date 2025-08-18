@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "find"
+meta_title: "find - Command Line"
 meta_description: "Apprenez à utiliser la commande Linux 'find' pour localiser des fichiers et des répertoires. Découvrez les options de recherche de base et améliorez vos compétences en gestion de fichiers Linux."
 meta_keywords: "commande Linux find, trouver des fichiers Linux, recherche de répertoire Linux, tutoriel commande find, gestion de fichiers Linux, Linux pour débutants, guide Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "OSI 모델"
+meta_title: "OSI 모델 - 네트워크 기본"
 meta_description: "OSI 모델, 즉 기초적인 이론적 네트워킹 개념에 대해 알아보세요. 7 개 계층과 TCP/IP와의 관련성을 이해합니다. 초보자를 위한 필수 Linux 네트워킹 가이드입니다."
 meta_keywords: "OSI 모델, 네트워킹 개념, TCP/IP, Linux 네트워킹, 초보자 튜토리얼, 네트워크 계층, 이론적 모델"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "システムコール"
+meta_title: "システムコール - Kernel"
 meta_description: "Linux のシステムコール（syscalls）と、それらがカーネルとどのように相互作用するかを学びます。ユーザーモードとカーネルモードを理解し、デバッグのために`strace`を使用します。Linux の学習を始めましょう！"
 meta_keywords: "Linux システムコール，syscalls, カーネルモード，ユーザーモード，strace コマンド，Linux チュートリアル，初心者向け Linux, Linux ガイド"
 ---

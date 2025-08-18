@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "软件包仓库"
+meta_title: "软件包仓库 - 软件包"
 meta_description: "了解 Linux 软件包仓库以及它们如何管理软件。探索如何查找和添加软件包源，例如 /etc/apt/sources.list，以便轻松安装。"
 meta_keywords: "Linux 软件包仓库，apt 源列表，/etc/apt/sources.list, Linux 软件包，Linux 初学者，Linux 教程，软件包管理"
 ---

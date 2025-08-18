@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "/etc/fstab"
+meta_title: "/etc/fstab - 文件系统"
 meta_description: "了解 Linux 中的 /etc/fstab，如何在启动时配置文件系统挂载，以及管理设备条目。理解 fstab，适合初学者！"
 meta_keywords: "/etc/fstab, Linux fstab, 挂载文件系统，Linux 启动，fstab 教程，初学者，指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "cut"
+meta_title: "cut - テキスト操作"
 meta_description: "Linux の`cut`コマンドを使ってファイルからテキストを抽出する方法を学びましょう。この初心者向けのチュートリアルでは、文字とフィールドの切り取りについて説明します。Linux のテキスト処理スキルを向上させましょう！"
 meta_keywords: "cut コマンド，Linux テキスト処理，テキスト抽出，Linux チュートリアル，初心者向け Linux, cut の例，Linux ガイド"
 ---

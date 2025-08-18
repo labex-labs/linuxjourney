@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "OSI モデル"
+meta_title: "OSI モデル - ネットワークの基本"
 meta_description: "OSI モデル、つまり基礎となる理論的なネットワーク概念について学びます。その 7 つの層と TCP/IP との関連性を理解します。初心者向けの必須の Linux ネットワークガイドです。"
 meta_keywords: "OSI モデル，ネットワーク概念，TCP/IP, Linux ネットワーキング，初心者向けチュートリアル，ネットワーク層，理論モデル"
 ---

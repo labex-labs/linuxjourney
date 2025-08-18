@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "/etc/group"
+meta_title: "/etc/group - Управление пользователями"
 meta_description: "Узнайте о файле /etc/group в Linux, понимании управления группами, GID и пользовательских разрешений. Важное руководство по файлу групп Linux для начинающих."
 meta_keywords: "/etc/group, группы Linux, управление группами, GID, разрешения Linux, учебник Linux, Linux для начинающих, руководство по Linux"
 ---

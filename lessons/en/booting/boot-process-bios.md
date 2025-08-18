@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Boot Process: BIOS"
+meta_title: "Boot Process: BIOS - Boot the System"
 meta_description: "Learn about the Linux boot process, BIOS, and MBR. Understand how your system starts up with this beginner-friendly guide. Explore UEFI concepts!"
 meta_keywords: "Linux boot process, BIOS, MBR, UEFI, Linux tutorial, bootloader, beginner Linux, system startup"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Overview of the Kernel"
+meta_title: "Overview of the Kernel - Kernel"
 meta_description: "Learn about the Linux kernel, its role in the operating system, and how it interacts with hardware and user space. Understand core OS components."
 meta_keywords: "Linux kernel, operating system, hardware interaction, user space, Linux tutorial, beginner guide"
 ---

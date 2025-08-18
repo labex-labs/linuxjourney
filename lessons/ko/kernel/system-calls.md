@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "시스템 호출"
+meta_title: "시스템 호출 - Kernel"
 meta_description: "Linux 시스템 호출 (syscalls) 과 커널과의 상호 작용에 대해 알아보세요. 사용자 모드와 커널 모드를 이해하고, 디버깅을 위해 `strace`를 사용하세요. Linux 여정을 시작하세요!"
 meta_keywords: "Linux 시스템 호출, syscalls, 커널 모드, 사용자 모드, strace 명령어, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "stdout (표준 출력)"
+meta_title: "stdout (표준 출력) - Text-Fu"
 meta_description: "Linux stdout 및 I/O redirection 에 대해 알아보세요. > 및 >> 연산자를 사용하여 명령어 출력을 파일로 리디렉션하는 방법을 이해하세요. 오늘 Linux 여정을 시작하세요!"
 meta_keywords: "Linux stdout, I/O redirection, Linux commands, redirect output, Linux tutorial, beginner Linux, Linux guide, shell scripting"
 ---

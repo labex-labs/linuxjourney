@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ディスク使用量"
+meta_title: "ディスク使用量 - ファイルシステム"
 meta_description: "Linux で df コマンドと du コマンドを使用してディスク使用量と空き容量を確認する方法を学びます。それぞれの違いと、いつどちらを使用するかを理解します。Linux ディスク管理チュートリアル。"
 meta_keywords: "df command, du command, Linux ディスク使用量，空き容量確認，Linux チュートリアル，Linux 初心者，ディスク管理，Linux ガイド"
 ---

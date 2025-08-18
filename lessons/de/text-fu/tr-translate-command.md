@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "tr (Übersetzen)"
+meta_title: "tr (Übersetzen) - Text-Fu"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'tr' verwenden, um Zeichen zu übersetzen und zu löschen. Verstehen Sie die Zeichenübersetzung mit Beispielen und Übungen. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "tr Befehl, Linux tr, Zeichen übersetzen, Zeichen löschen, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---

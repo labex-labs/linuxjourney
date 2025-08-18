@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "Signals"
+meta_title: "Signals - Processes"
 meta_description: "Learn about Linux signals, their purpose, common types like SIGINT & SIGKILL, and how processes handle them. Understand signal basics for better Linux control."
 meta_keywords: "Linux signals, SIGKILL, SIGINT, process communication, Linux tutorial, beginner Linux, Linux guide"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "网络寻址"
+meta_title: "网络寻址 - 网络基础"
 meta_description: "学习网络寻址基础知识：MAC 地址、IP 地址和主机名。了解设备如何在网络上通信。开始您的 Linux 网络之旅！"
 meta_keywords: "网络寻址，MAC 地址，IP 地址，主机名，Linux 网络，初学者，教程，指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Permissões de Arquivo"
+meta_title: "Permissões de Arquivo - Permissões"
 meta_description: "Aprenda as permissões de arquivo do Linux: entenda os bits rwx, usuário, grupo e outras permissões. Domine a saída de `ls -l` para iniciantes. Comece sua jornada no Linux!"
 meta_keywords: "permissões de arquivo Linux, comando ls -l, permissões rwx, tutorial Linux, modos de arquivo, Linux para iniciantes, guia Linux"
 ---

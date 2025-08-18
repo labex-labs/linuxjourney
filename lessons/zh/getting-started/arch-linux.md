@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Arch Linux"
+meta_title: "Arch Linux - 入门"
 meta_description: "了解 Arch Linux、其滚动发布模型以及 Pacman 包管理器。理解为什么 Arch 非常适合寻求控制权的初学者和高级用户。"
 meta_keywords: "Arch Linux, Pacman, Linux 发行版，滚动发布，Linux 教程，初学者指南，轻量级操作系统"
 ---

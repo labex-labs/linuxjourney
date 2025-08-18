@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "mkdir (Make Directory)"
+meta_title: "mkdir (Make Directory) - Command Line"
 meta_description: "Learn how to use the mkdir command to create directories and subdirectories in Linux. This beginner-friendly tutorial helps you organize files efficiently."
 meta_keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
 ---

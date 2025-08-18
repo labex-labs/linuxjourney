@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Vim 搜索模式"
+meta_title: "Vim 搜索模式 - 高级文本操作"
 meta_description: "学习 Vim 搜索模式：向前 (/) 和向后 (?) 搜索。使用'n'和'N'导航结果。立即提高您的 Vim 技能！"
 meta_keywords: "Vim 搜索，Vim 命令，Linux 文本编辑器，Vim 教程，Vim 指南，Vim 初学者"
 ---

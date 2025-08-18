@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Fedora"
+meta_title: "Fedora - Начало работы"
 meta_description: "Узнайте о Fedora Linux, ее связи с RHEL и управлении пакетами. Узнайте, почему Fedora — отличная бесплатная ОС на базе Red Hat для начинающих и настольных компьютеров."
 meta_keywords: "Fedora Linux, RHEL, Red Hat, учебник по Linux, управление пакетами, Linux для начинающих, руководство по Linux, бесплатная ОС"
 ---

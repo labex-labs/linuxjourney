@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ユーザーとグループ"
+meta_title: "ユーザーとグループ - ユーザー管理"
 meta_description: "Linux のユーザーとグループについて学び、UID、GID、および root ユーザーを理解します。sudo コマンドを使用して昇格された権限を使用する方法を発見します。Linux の旅を始めましょう！"
 meta_keywords: "Linux ユーザー, Linux グループ，sudo コマンド，root ユーザー, Linux 権限，Linux チュートリアル，初心者向け Linux, Linux ガイド"
 ---

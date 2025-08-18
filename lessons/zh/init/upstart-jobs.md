@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Upstart 作业"
+meta_title: "Upstart 作业 - 初始化"
 meta_description: "学习使用 initctl 命令在 Linux 中管理 Upstart 作业。了解作业状态、启动、停止和重启服务。提升您的 Linux 系统管理技能。"
 meta_keywords: "Upstart 作业，initctl, Linux 服务，系统管理，Linux 教程，初学者指南"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Protocoles de Routage"
+meta_title: "Protocoles de Routage - Routage"
 meta_description: "Découvrez les protocoles de routage comme le vecteur de distance et l'état de lien. Comprenez la convergence du réseau et comment les routeurs s'adaptent aux changements. Commencez votre parcours de mise en réseau Linux !"
 meta_keywords: "protocoles de routage, convergence réseau, vecteur de distance, état de lien, mise en réseau Linux, guide du débutant, tutoriel réseau"
 ---

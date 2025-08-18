@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "mount und umount"
+meta_title: "mount und umount - Das Dateisystem"
 meta_description: "Erfahren Sie, wie Sie die Linux-Befehle mount und umount verwenden, um Dateisysteme zu verwalten. Verstehen Sie das Mounten, Unmounten von Geräten und UUIDs für Anfänger."
 meta_keywords: "Linux mount, umount Befehl, Dateisystem mounten, Linux UUID, Linux für Anfänger, Linux Tutorial, Mountpoint, Linux Anleitung"
 ---

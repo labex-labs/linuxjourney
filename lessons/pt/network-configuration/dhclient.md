@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "dhclient"
+meta_title: "dhclient - Configuração de Rede"
 meta_description: "Aprenda sobre o dhclient, como ele obtém endereços IP usando DHCP e gerencia concessões de rede. Entenda os arquivos dhclient.conf e dhclient.leases. Guia para iniciantes em Linux."
 meta_keywords: "dhclient, DHCP, rede Linux, endereço IP, configuração de rede, tutorial Linux, guia para iniciantes"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Eine Linux-Distribution auswählen"
+meta_title: "Eine Linux-Distribution auswählen - Erste Schritte"
 meta_description: "Erfahren Sie, wie Sie eine Linux-Distribution für Ihre Bedürfnisse auswählen. Entdecken Sie beliebte Optionen und verstehen Sie Kernel, Hardware und User Space. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Linux-Distribution, Linux auswählen, Linux-Kernel, Linux für Anfänger, Linux-Leitfaden, Linux installieren, Linux-Tutorial"
 ---

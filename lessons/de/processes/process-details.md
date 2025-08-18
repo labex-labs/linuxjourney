@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Prozessdetails"
+meta_title: "Prozessdetails - Prozesse"
 meta_description: "Erfahren Sie mehr über Linux-Prozessdetails, wie der Kernel Ressourcen verwaltet und was Prozesse sind. Verstehen Sie Prozesskonzepte für Anfänger."
 meta_keywords: "Linux-Prozesse, Kernel, Prozessverwaltung, ps aux, Linux-Tutorial, Anfängerleitfaden"
 ---

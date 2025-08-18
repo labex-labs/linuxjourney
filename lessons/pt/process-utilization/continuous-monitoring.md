@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Monitoramento Contínuo"
+meta_title: "Monitoramento Contínuo - Utilização de Processos"
 meta_description: "Aprenda o monitoramento contínuo de sistemas Linux com sar. Entenda a instalação, coleta de dados e como analisar o uso histórico de recursos para desempenho. Comece já!"
 meta_keywords: "sar, sysstat, monitoramento Linux, desempenho do sistema, monitoramento contínuo, iniciante, tutorial, guia"
 ---

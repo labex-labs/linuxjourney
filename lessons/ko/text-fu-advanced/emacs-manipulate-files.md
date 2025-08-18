@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Emacs 파일 조작"
+meta_title: "Emacs 파일 조작 - 고급 Text-Fu"
 meta_description: "Emacs 파일 조작 배우기: C-x C-s, C-x C-w, C-x C-f 명령어를 사용하여 파일 저장, 다른 이름으로 저장, 파일 열기. 필수 Emacs 파일 작업을 마스터하세요!"
 meta_keywords: "Emacs, Emacs 파일 저장, Emacs 파일 열기, Emacs 튜토리얼, Linux 명령어, Emacs 초보자, Emacs 가이드"
 ---

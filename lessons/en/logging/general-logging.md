@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "General Logging"
+meta_title: "General Logging - Logging"
 meta_description: "Learn about Linux log files like /var/log/messages and syslog. Understand their differences for effective system troubleshooting. Start your Linux journey!"
 meta_keywords: "Linux logs, syslog, var/log/messages, Linux troubleshooting, Linux beginner, Linux guide, system logs"
 ---

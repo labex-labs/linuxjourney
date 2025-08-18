@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "CPU 모니터링"
+meta_title: "CPU 모니터링 - 프로세스 활용"
 meta_description: "uptime 명령어를 사용하여 CPU 모니터링을 배웁니다. 로드 평균, CPU 사용량, 그리고 Linux 초보자를 위한 시스템 성능 해석 방법을 이해합니다."
 meta_keywords: "uptime 명령어, Linux CPU 모니터링, 로드 평균, 시스템 성능, Linux 튜토리얼, 초보자 가이드"
 ---

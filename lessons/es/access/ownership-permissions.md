@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Permisos de Propiedad"
+meta_title: "Permisos de Propiedad - Permisos"
 meta_description: "Aprende a cambiar la propiedad de archivos en Linux usando los comandos chown y chgrp. Comprende los permisos de usuario y grupo con este tutorial de Linux para principiantes."
 meta_keywords: "chown, chgrp, propiedad de archivos Linux, permisos Linux, comandos Linux, Linux para principiantes, tutorial Linux, guía Linux"
 ---

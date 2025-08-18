@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "grep"
+meta_title: "grep - Text-Fu"
 meta_description: "Apprenez à utiliser la commande grep sous Linux pour rechercher des modèles de texte dans des fichiers. Découvrez l'utilisation de base, la recherche insensible à la casse et la combinaison avec d'autres commandes. Commencez votre parcours Linux !"
 meta_keywords: "commande grep, Linux grep, rechercher des fichiers, traitement de texte, tutoriel Linux, Linux pour débutants, guide grep"
 ---

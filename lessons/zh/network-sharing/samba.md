@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "Samba"
+meta_title: "Samba - 网络共享"
 meta_description: "学习如何在 Linux 上为 Windows 和 macOS 设置 Samba 文件共享。本初学者指南涵盖了安装、配置和访问共享。立即开始！"
 meta_keywords: "Samba, Linux 文件共享，smb.conf, CIFS, smbclient, Linux 教程，初学者指南"
 ---

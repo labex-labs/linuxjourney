@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Conceitos Básicos de Rede"
+meta_title: "Conceitos Básicos de Rede - Noções Básicas de Rede"
 meta_description: "Aprenda os conceitos básicos de rede Linux: entenda WAN, LAN, WLAN, roteadores e hosts. Comece sua jornada de rede com este guia para iniciantes!"
 meta_keywords: "conceitos básicos de rede Linux, WAN, LAN, WLAN, tutorial de rede, Linux para iniciantes, guia de rede, conceitos de Linux"
 ---

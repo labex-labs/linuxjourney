@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "rm (Supprimer)"
+meta_title: "rm (Supprimer) - Command Line"
 meta_description: "Apprenez à utiliser la commande `rm` sous Linux pour supprimer en toute sécurité des fichiers et des répertoires. Comprenez les options comme -f, -i, -r et rmdir. Commencez votre parcours Linux !"
 meta_keywords: "commande rm, supprimer des fichiers Linux, supprimer des répertoires, tutoriel Linux, Linux pour débutants, rmdir, guide Linux"
 ---

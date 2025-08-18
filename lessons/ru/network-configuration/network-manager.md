@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "Network Manager"
+meta_title: "Network Manager - Конфигурация сети"
 meta_description: "Узнайте о NetworkManager в Linux, как он автоматизирует настройку сети, и используйте команды nm-tool и nmcli. Начните с этого руководства для начинающих!"
 meta_keywords: "NetworkManager, nm-tool, nmcli, Linux networking, network configuration, Linux tutorial, beginner guide"
 ---

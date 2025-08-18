@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Geräte"
 meta_description: "Erfahren Sie, wie Sie USB-, PCI- und SCSI-Geräte mit den Befehlen lsusb, lspci und lsscsi auflisten. Verstehen Sie Ihre Linux-Hardware mit dieser anfängerfreundlichen Anleitung."
 meta_keywords: "lsusb, lspci, lsscsi, Linux-Befehle, Geräteauflistung, Hardware-Informationen, Linux-Tutorial, Anfängerleitfaden"
 ---

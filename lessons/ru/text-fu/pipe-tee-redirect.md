@@ -1,6 +1,7 @@
 ---
 lang: "ru"
 title: "pipe и tee"
+meta_title: "pipe и tee - Text-Fu"
 meta_description: "Изучите конвейеры Linux и команду tee для эффективного потока данных в командной строке. Разберитесь с stdout, stdin и выводом в файл. Улучшите свои навыки работы с Linux!"
 meta_keywords: "Linux pipe, tee command, Linux tutorial, stdout, stdin, beginner Linux, command line, Linux guide"
 ---

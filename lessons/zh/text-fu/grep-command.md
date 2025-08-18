@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "grep"
+meta_title: "grep - 文本操作"
 meta_description: "学习如何在 Linux 中使用 grep 命令在文件中搜索文本模式。了解基本用法、不区分大小写搜索以及与其他命令的结合使用。开始您的 Linux 之旅！"
 meta_keywords: "grep 命令，Linux grep, 搜索文件，文本处理，Linux 教程，Linux 初学者，grep 指南"
 ---

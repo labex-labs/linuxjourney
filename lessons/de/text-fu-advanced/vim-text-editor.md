@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "Vim (Vi Improved)"
+meta_title: "Vim (Vi Improved) - Fortgeschrittenes Text-Fu"
 meta_description: "Lernen Sie Vim, den leistungsstarken und leichtgewichtigen Vi Improved Texteditor für Linux. Verstehen Sie die grundlegende Nutzung und warum Vim für Linux-Benutzer unerlässlich ist."
 meta_keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
 ---

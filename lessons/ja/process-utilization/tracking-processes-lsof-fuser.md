@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "lsof と fuser"
+meta_title: "lsof と fuser - プロセス利用率"
 meta_description: "Linux で lsof および fuser コマンドを使用して、ファイルを使用しているプロセスを特定する方法を学びます。「Device or Resource Busy」エラーを理解し、開いているファイルを効果的に管理します。"
 meta_keywords: "lsof, fuser, Linux コマンド，開いているファイル，プロセス管理，Linux チュートリアル，初心者向けガイド，デバイスビジー"
 ---

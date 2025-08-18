@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ディスクパーティション分割"
+meta_title: "ディスクパーティション分割 - ファイルシステム"
 meta_description: "parted を使用して Linux でのディスクパーティション分割を学びましょう。ディスクのパーティション分割、選択、表示、サイズ変更の方法を理解します。この初心者向けのガイドで始めましょう！"
 meta_keywords: "Linux ディスクパーティション分割，parted コマンド，fdisk, gparted, Linux チュートリアル，初心者向け Linux, ディスク管理，Linux ガイド"
 ---

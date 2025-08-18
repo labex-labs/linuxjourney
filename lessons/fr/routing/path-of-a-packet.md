@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Le chemin d'un paquet"
+meta_title: "Le chemin d'un paquet - Routage"
 meta_description: "Apprenez comment un paquet voyage à l'intérieur et à l'extérieur d'un réseau. Comprenez IP, MAC, ARP et les tables de routage pour la communication réseau. Démarrez votre parcours de mise en réseau Linux !"
 meta_keywords: "voyage de paquet, communication réseau, ARP, adresse IP, adresse MAC, table de routage, mise en réseau Linux, guide du débutant"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "Umask"
+meta_title: "Umask - Permisos"
 meta_description: "Aprende a usar el comando `umask` para controlar los permisos de archivo predeterminados en Linux. Comprende los permisos numéricos y gestiona el acceso a nuevos archivos fácilmente."
 meta_keywords: "umask, permisos linux, permisos de archivo, comandos linux, linux para principiantes, tutorial linux, permisos predeterminados"
 ---

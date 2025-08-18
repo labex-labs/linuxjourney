@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "udev"
+meta_title: "udev - Dispositivos"
 meta_description: "Aprende sobre udev, cómo gestiona dinámicamente los archivos de dispositivo de Linux y usa udevadm. Comprende la creación de nodos de dispositivo para principiantes."
 meta_keywords: "udev, udevadm, gestión de dispositivos Linux, archivos de dispositivo, tutorial de Linux, Linux para principiantes, reglas de udev, guía de Linux"
 ---

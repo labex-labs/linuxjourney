@@ -1,6 +1,7 @@
 ---
 lang: "pt"
 title: "Symlinks"
+meta_title: "Symlinks - O Filesystem"
 meta_description: "Aprenda sobre symlinks e hard links no Linux, incluindo como criá-los e gerenciá-los. Entenda suas diferenças e casos de uso com este guia para iniciantes."
 meta_keywords: "Linux symlinks, hard links, comando ln, links simbólicos, sistema de arquivos Linux, tutorial Linux, Linux para iniciantes"
 ---

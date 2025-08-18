@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Cron 작업"
+meta_title: "Cron 작업 - 프로세스 활용"
 meta_description: "cron job 을 사용하여 Linux 작업을 예약하는 방법을 배우세요. crontab 구문을 이해하고 일상적인 작업을 위한 스크립트를 자동화하세요. 이 초보자 친화적인 가이드로 시작하세요!"
 meta_keywords: "cron jobs, crontab, 작업 예약, Linux 자동화, Linux commands, 초보자 Linux, Linux tutorial, crontab -e"
 ---

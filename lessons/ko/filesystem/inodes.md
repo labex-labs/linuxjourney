@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "Inode"
+meta_title: "Inode - 파일 시스템"
 meta_description: "Linux inode, 그 구조, 그리고 파일 관리 방법을 배우세요. inode 번호를 이해하고 `df -i` 및 `ls -li`를 사용하여 inode 사용량을 확인하세요. Linux 여정을 시작하세요!"
 meta_keywords: "Linux inode, inode 튜토리얼, df -i, ls -li, Linux 파일 시스템, Linux 초보자, Linux 가이드"
 ---

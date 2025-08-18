@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "Qu'est-ce que le DNS ?"
+meta_title: "Qu'est-ce que le DNS ? - DNS"
 meta_description: "Apprenez ce qu'est le DNS et comment il traduit les noms de domaine en adresses IP. Comprenez ce concept Internet fondamental avec notre guide Linux pour débutants."
 meta_keywords: "DNS, Système de Noms de Domaine, adresse IP, nom d'hôte, réseau Linux, débutant, tutoriel, guide"
 ---

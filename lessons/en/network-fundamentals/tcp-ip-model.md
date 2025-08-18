@@ -1,6 +1,7 @@
 ---
 lang: "en"
 title: "TCP/IP Model"
+meta_title: "TCP/IP Model - Network Basics"
 meta_description: "Learn about the TCP/IP model layers: Application, Transport, Network, and Link. Understand how data travels across networks. Start your Linux networking journey!"
 meta_keywords: "TCP/IP model, networking basics, Linux networking, TCP, IP, beginner tutorial, network layers, guide"
 ---

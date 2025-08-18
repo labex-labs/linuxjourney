@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "ping"
+meta_title: "ping - トラブルシューティング"
 meta_description: "Linux の ping コマンドを使用して、ネットワーク接続をテストし、問題をトラブルシューティングする方法を学びます。効果的なネットワーク診断のために、ICMP、TTL、および往復時間を理解します。"
 meta_keywords: "Linux ping, ネットワーク接続，ICMP, TTL, Linux ネットワーキング，初心者向け Linux, Linux チュートリアル，ping コマンド"
 ---

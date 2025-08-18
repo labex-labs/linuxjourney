@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "特权级别"
+meta_title: "特权级别 - 内核"
 meta_description: "了解 Linux 特权级别、内核模式和用户模式。理解保护环和系统调用以安全访问硬件。开始你的 Linux 之旅！"
 meta_keywords: "Linux 特权级别，内核模式，用户模式，保护环，系统调用，Linux 安全，Linux 初学者，Linux 教程"
 ---

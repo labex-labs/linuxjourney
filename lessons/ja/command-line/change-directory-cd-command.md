@@ -1,6 +1,7 @@
 ---
 lang: "ja"
 title: "cd (Change Directory)"
+meta_title: "cd (Change Directory) - コマンドライン"
 meta_description: "Linux で`cd`コマンドを使ってディレクトリを移動する方法を学びます。絶対パス、相対パス、便利なショートカットを理解しましょう。Linux の学習を始めましょう！"
 meta_keywords: "cd コマンド，ディレクトリ変更，Linux パス，絶対パス，相対パス，Linux チュートリアル，初心者 Linux, Linux ナビゲーション"
 ---

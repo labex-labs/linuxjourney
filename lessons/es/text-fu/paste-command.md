@@ -1,6 +1,7 @@
 ---
 lang: "es"
 title: "paste"
+meta_title: "paste - Text-Fu"
 meta_description: "Aprende a usar el comando paste de Linux para fusionar líneas de archivos. Descubre delimitadores y combina archivos con este tutorial esencial del comando Linux."
 meta_keywords: "comando paste de Linux, tutorial del comando paste, fusionar líneas de archivos, comandos de Linux, Linux para principiantes, guía de Linux"
 ---

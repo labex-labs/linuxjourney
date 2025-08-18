@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "文件系统类型"
+meta_title: "文件系统类型 - 文件系统"
 meta_description: "了解 Linux 文件系统类型，如 ext4、Btrfs 和 XFS。理解日志记录和 VFS 以实现数据一致性。在本初学者指南中探索常见的 Linux 文件系统。"
 meta_keywords: "Linux 文件系统类型，ext4, Btrfs, XFS, 日志记录，VFS, Linux 教程，初学者指南"
 ---

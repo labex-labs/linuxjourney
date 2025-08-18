@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "cut"
+meta_title: "cut - Text-Fu"
 meta_description: "Lernen Sie, wie Sie den Linux-Befehl `cut` verwenden, um Text aus Dateien zu extrahieren. Dieses anfängerfreundliche Tutorial behandelt das Schneiden von Zeichen und Feldern. Verbessern Sie Ihre Linux-Textverarbeitungsfähigkeiten!"
 meta_keywords: "cut command, Linux Textverarbeitung, Text extrahieren, Linux Tutorial, Linux für Anfänger, cut Beispiele, Linux Anleitung"
 ---

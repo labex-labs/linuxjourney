@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "man"
+meta_title: "man - Command Line"
 meta_description: "Apprenez à utiliser la commande 'man' sous Linux pour accéder aux manuels des commandes. Découvrez la documentation Linux essentielle pour les débutants et améliorez vos compétences en ligne de commande."
 meta_keywords: "commande man, pages man Linux, documentation Linux, tutoriel Linux, guide ligne de commande, Linux pour débutants"
 ---

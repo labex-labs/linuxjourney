@@ -1,6 +1,7 @@
 ---
 lang: "fr"
 title: "udev"
+meta_title: "udev - Périphériques"
 meta_description: "Découvrez udev, comment il gère dynamiquement les fichiers de périphériques Linux, et utilisez udevadm. Comprenez la création de nœuds de périphériques pour les débutants."
 meta_keywords: "udev, udevadm, gestion des périphériques Linux, fichiers de périphériques, tutoriel Linux, Linux pour débutants, règles udev, guide Linux"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "引导过程：引导加载程序"
+meta_title: "引导过程：引导加载程序 - 启动系统"
 meta_description: "了解 Linux 引导加载程序、其功能以及常见的内核参数，如 initrd 和 root。了解 GRUB 并优化您的 Linux 引导过程。"
 meta_keywords: "Linux 引导加载程序，GRUB, 内核参数，initrd, 根文件系统，Linux 引导过程，Linux 教程，Linux 初学者"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "zh"
 title: "电源状态"
+meta_title: "电源状态 - 初始化"
 meta_description: "学习 Linux 系统电源状态：关机、重启和暂停命令。了解如何安全地关闭或重启您的 Linux 系统。开始使用基本命令！"
 meta_keywords: "Linux 关机，重启命令，暂停系统，关闭 Linux, Linux 命令，Linux 初学者，Linux 教程，系统状态"
 ---

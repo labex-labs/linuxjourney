@@ -1,6 +1,7 @@
 ---
 lang: "de"
 title: "swap"
+meta_title: "swap - Das Dateisystem"
 meta_description: "Erfahren Sie mehr über den Linux-Swap-Speicher, wie er funktioniert und wie Sie Swap-Partitionen erstellen und verwalten. Optimieren Sie die Speichernutzung Ihres Systems mit diesem Leitfaden!"
 meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtueller Speicher, Linux Anfänger, Linux Tutorial"
 ---

@@ -1,6 +1,7 @@
 ---
 lang: "ko"
 title: "paste"
+meta_title: "paste - Text-Fu"
 meta_description: "Linux paste 명령어를 사용하여 파일 줄을 병합하는 방법을 배웁니다. 이 필수 Linux 명령어 튜토리얼을 통해 구분 기호를 알아보고 파일을 결합하세요."
 meta_keywords: "Linux paste 명령어, paste 명령어 튜토리얼, 파일 줄 병합, Linux 명령어, 초보자 Linux, Linux 가이드"
 ---
