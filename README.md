@@ -1,17 +1,33 @@
 # Linux Journey
 
-[Linux Journey](https://linuxjourney.com) is a site dedicated to making learning Linux fun and easy.
+[Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
 
-> 2025-08-13 Updated: The linuxjourney project is now maintained by the [LabEx](https://labex.io/) team, and we’ll soon merge old PRs to provide updated content for Linux learners.
+A structured learning path from beginner to advanced Linux administration with three levels:
 
-## Project Hiatus
+- **Grasshopper** - Learn the basics
+- **Journeyman** - System internals
+- **Networking Nomad** - Network administration
 
-Due to the overwhelming support for translations, Linux Journey is in the middle of a site overhaul to make it more scalable for translations. Unfortunately, I am a full time professional and full time student so it has taken longer to do the migration than I had hoped. For now, any additional translations/edits/additions will not be added to the site. I'll try my best to finish adding everything that was already committed and will re-visit the project when I have more cycles. Thank you for understanding.
+The repository is organized as follows:
 
-## Language Support
+```plaintext
+├── i18n/          # Language files
+├── lessons/       # Course content by language
+│   ├── en/        # English lessons
+│   ├── zh/        # Chinese lessons
+│   └── ...        # Other languages
+└── README.md
+```
 
-If you would like to see Linux Journey in your local language, please help us translate. You can fork our repo and add your translations in the respective locales folder.
+## Contributing
 
-## Usage
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
-Linux Journey was created to document the single journey I took to learn Linux, which is far from over. But, everyone's journey is a little different. We can further improve the knowledge of the greater Linux community through contribution and collaboration. Thusly, the text content of Linux Journey has been made free to modify and distribute. For full license terms see: [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/). This license does not include the images, site design and source code which is subject to All Rights Reserved. 
+- Adding new lessons and content
+- Translation guidelines
+- Lesson templates and structure
+- Development workflow
+
+## License
+
+Content is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) and maintained by the [LabEx](https://labex.io/) team.

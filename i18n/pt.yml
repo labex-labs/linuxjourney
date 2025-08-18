@@ -1,0 +1,136 @@
+pt:
+  menu:
+    languages:
+      lang: 🇵🇹 Português
+  home:
+    metadata:
+      title: Linux Journey - Aprenda Linux com Tutorial e Curso Gratuito de Linux
+      description:
+        Aprenda Linux com tutorial gratuito e cursos para iniciantes. Explore
+        os fundamentos do Linux, comandos essenciais do Linux e habilidades práticas
+        para dominar o Linux passo a passo. Comece sua jornada Linux hoje!
+      keywords:
+        Tutorial de Linux, command line, Linux para iniciantes, administração
+        de sistemas, guia de Linux, networking, package management, comandos Linux
+    tagline:
+      title: Aprenda os caminhos do Linux-fu, gratuitamente.
+    subscribe:
+      title: Assinar
+      body: Receba atualizações sobre novos cursos e lições!
+    about:
+      title: Sobre Nós
+      body: O conhecimento adquirido aqui hoje foi impulsionado pela comunidade open-source.
+      url_name: Contribua e Colabore
+      url: https://github.com/labex-labs/linuxjourney
+    contact:
+      title: Entre em Contato
+      body: Encontrou um bug? Quer apenas enviar uma mensagem?
+      url_name: Avise-nos
+      url: https://github.com/labex-labs/linuxjourney/issues
+  courses:
+    titles:
+      exercises: Exercícios
+      quiz: Questionário
+  forms:
+    buttons:
+      check_answer: Verificar Resposta
+      continue: Continuar
+      return: Voltar ao Menu Principal
+      home: Início
+    messages:
+      answer_correct: Resposta correta!
+      answer_incorrect: Não é bem isso, tente novamente
+  outline:
+    grasshopper:
+      title: Gafanhoto
+      lessons:
+        - name: Primeiros Passos
+          description:
+            O que é Linux? Comece escolhendo uma distribuição e fazendo a
+            instalação.
+          slug: getting-started
+        - name: Linha de Comando
+          description:
+            Aprenda os fundamentos da linha de comando, navegando por arquivos,
+            diretórios e muito mais.
+          slug: command-line
+        - name: Text-Fu
+          description: Aprenda manipulação e navegação básica de texto.
+          slug: text-fu
+        - name: Text-Fu Avançado
+          description: Navegue por texto como um macaco-aranha Linux com Vim e Emacs.
+          slug: text-fu-advanced
+        - name: Gerenciamento de Usuários
+          description: Aprenda sobre funções e gerenciamento de usuários.
+          slug: user-management
+        - name: Permissões
+          description: Aprenda sobre níveis de permissão e como modificá-las.
+          slug: access
+        - name: Processos
+          description: Aprenda sobre os processos em execução no sistema.
+          slug: processes
+        - name: Pacotes
+          description:
+            Aprenda tudo sobre as ferramentas de gerenciamento de pacotes
+            dpkg, apt-get, rpm e yum.
+          slug: packages
+    journeyman:
+      title: Jornadeiro
+      lessons:
+        - name: Dispositivos
+          description:
+            Aprenda sobre os dispositivos Linux e como eles interagem com
+            o kernel e o user space.
+          slug: devices
+        - name: O Filesystem
+          description:
+            Aprenda sobre o filesystem Linux, os diferentes tipos de filesystems,
+            particionamento e muito mais.
+          slug: filesystem
+        - name: Inicializar o Sistema
+          description: Aprenda sobre as etapas do processo de boot do Linux.
+          slug: booting
+        - name: Kernel
+          description:
+            A parte mais importante do sistema Linux; aprenda como funciona
+            e como configurá-lo.
+          slug: kernel
+        - name: Init
+          description: "Aprenda sobre os diferentes sistemas init: SysV, Upstart e systemd."
+          slug: init
+        - name: Utilização de Processos
+          description:
+            Aprenda monitoramento de recursos com top, load averages, iostat
+            e muito mais!
+          slug: process-utilization
+        - name: Registro de Logs
+          description: Aprenda sobre os logs do sistema e o diretório /var/log.
+          slug: logging
+    networking_nomad:
+      title: Nômade de Rede
+      lessons:
+        - name: Compartilhamento de Rede
+          description:
+            Aprenda sobre compartilhamento de rede com rsync, scp, nfs e
+            muito mais.
+          slug: network-sharing
+        - name: Noções Básicas de Rede
+          description: Aprenda sobre noções básicas de rede e o modelo TCP/IP.
+          slug: network-fundamentals
+        - name: Subnetting
+          description: Aprenda sobre subnets e como fazer aritmética de subnet!
+          slug: subnetting
+        - name: Roteamento
+          description: Aprenda como os pacotes são roteados através das redes!
+          slug: routing
+        - name: Configuração de Rede
+          description: Aprenda sobre configuração de rede usando ferramentas Linux!
+          slug: network-configuration
+        - name: Resolução de Problemas
+          description:
+            Aprenda sobre ferramentas comuns de rede para ajudar a diagnosticar
+            e resolver problemas!
+          slug: network-troubleshooting
+        - name: DNS
+          description: Tudo e mais que você queria saber sobre DNS.
+          slug: dns
