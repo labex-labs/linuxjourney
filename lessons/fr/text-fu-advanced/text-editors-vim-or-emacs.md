@@ -17,8 +17,8 @@ Vim et Emacs sont des éditeurs de texte populaires qui sont installés par déf
 
 Faites un petit tour de Vim et Emacs :
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

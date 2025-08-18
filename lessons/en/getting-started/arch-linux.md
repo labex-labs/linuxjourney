@@ -27,7 +27,7 @@ Great for desktop and laptop. If you also have a small device such as a Raspberr
 
 ## Exercise
 
-If you're interested in having Arch as your operating system, head over to the installation section and give it a try: <https://www.archlinux.org/>
+If you're interested in having Arch as your operating system, head over to the installation section and give it a try: <https://archlinux.org/>
 
 ## Quiz Questions
 

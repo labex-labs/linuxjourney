@@ -29,7 +29,7 @@ pete@icebox:~$ cat /etc/hosts
 123.45.6.7  www.google.com
 ```
 
-파일을 저장하고 이제 <www.google.com>으로 이동하세요. 문제가 있죠? 음, 그것은 우리가 방금 <www.google.com>을 완전히 잘못된 IP 주소에 매핑했기 때문입니다. 우리 호스트는 IP 주소 매핑을 위해 먼저 로컬을 확인하므로, google.com 을 찾기 위해 DNS 에 도달하지 않습니다.
+파일을 저장하고 이제 `www.google.com`으로 이동하세요. 문제가 있죠? 음, 그것은 우리가 방금 `www.google.com`을 완전히 잘못된 IP 주소에 매핑했기 때문입니다. 우리 호스트는 IP 주소 매핑을 위해 먼저 로컬을 확인하므로, google.com 을 찾기 위해 DNS 에 도달하지 않습니다.
 
 ### /etc/resolv.conf
 

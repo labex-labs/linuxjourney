@@ -17,8 +17,8 @@ Vim and Emacs are popular text editors that are installed by default on most Lin
 
 Take a little tour of Vim and Emacs:
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

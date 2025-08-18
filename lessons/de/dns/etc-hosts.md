@@ -29,7 +29,7 @@ Sehen wir uns ein lustiges Beispiel für `/etc/hosts` an. Ändern Sie die Datei 
 123.45.6.7  www.google.com
 ```
 
-Speichern Sie die Datei und gehen Sie nun zu <www.google.com>. Haben Sie Probleme, nicht wahr? Nun, das liegt daran, dass wir <www.google.com> gerade einer völlig falschen IP-Adresse zugeordnet haben. Da unsere Hosts zuerst lokal nach IP-Adresszuordnungen suchen, erreichen sie DNS nie, um google.com zu finden.
+Speichern Sie die Datei und gehen Sie nun zu `www.google.com`. Haben Sie Probleme, nicht wahr? Nun, das liegt daran, dass wir `www.google.com` gerade einer völlig falschen IP-Adresse zugeordnet haben. Da unsere Hosts zuerst lokal nach IP-Adresszuordnungen suchen, erreichen sie DNS nie, um google.com zu finden.
 
 ### /etc/resolv.conf
 

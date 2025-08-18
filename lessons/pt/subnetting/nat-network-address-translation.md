@@ -19,9 +19,9 @@ Pense no NAT como uma recepcionista em um grande escritório. Se alguém quiser 
 
 Um caso simples seria assim:
 
-1. Patty quer se conectar a <www.google.com>, então sua máquina envia esta solicitação através do roteador.
+1. Patty quer se conectar a `www.google.com`, então sua máquina envia esta solicitação através do roteador.
 2. O roteador pega essa solicitação e abre sua própria conexão para google.com, então ele envia a solicitação de Patty assim que faz uma conexão.
-3. O roteador é o intermediário entre Patty e <www.google.com>. O Google não sabe sobre Patty; em vez disso, tudo o que pode ver é o roteador.
+3. O roteador é o intermediário entre Patty e `www.google.com`. O Google não sabe sobre Patty; em vez disso, tudo o que pode ver é o roteador.
 
 NAT e o roteamento de pacotes em geral podem ficar bem complicados, mas não vamos nos aprofundar nos detalhes.
 

@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-패킷 캡처를 실행하면 많은 일이 일어나는 것을 알 수 있습니다. 이는 예상된 일입니다. 백그라운드에서 많은 네트워크 활동이 발생하고 있습니다. 위 예시에서는 캡처의 일부만 가져왔는데, 특히 <www.google.com>을 ping 하기로 결정한 시점의 스니펫입니다.
+패킷 캡처를 실행하면 많은 일이 일어나는 것을 알 수 있습니다. 이는 예상된 일입니다. 백그라운드에서 많은 네트워크 활동이 발생하고 있습니다. 위 예시에서는 캡처의 일부만 가져왔는데, 특히 `www.google.com`을 ping 하기로 결정한 시점의 스니펫입니다.
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 - `seq`: TCP 패킷의 시작 및 종료 시퀀스 번호입니다.
 - `length`: 바이트 단위의 길이입니다.
 
-tcpdump 출력에서 볼 수 있듯이, 우리는 <www.google.com>으로 ICMP echo request 패킷을 보내고 ICMP echo reply 패킷을 응답으로 받고 있습니다! 또한, 다른 패킷은 다른 정보를 출력한다는 점에 유의하십시오. 자세한 내용은 manpage 를 참조하십시오.
+tcpdump 출력에서 볼 수 있듯이, 우리는 `www.google.com`으로 ICMP echo request 패킷을 보내고 ICMP echo reply 패킷을 응답으로 받고 있습니다! 또한, 다른 패킷은 다른 정보를 출력한다는 점에 유의하십시오. 자세한 내용은 manpage 를 참조하십시오.
 
 ### Writing tcpdump output to a file
 

@@ -29,7 +29,7 @@ Let's see a fun example of `/etc/hosts`. Modify the file and add a line for:
 123.45.6.7  www.google.com
 ```
 
-Save the file and now go to <www.google.com>. Having issues, aren't you? Well, that's because we just mapped <www.google.com> to a completely wrong IP address. Since our hosts first look locally for IP address mappings, it never reaches DNS to find google.com.
+Save the file and now go to `www.google.com`. Having issues, aren't you? Well, that's because we just mapped `www.google.com` to a completely wrong IP address. Since our hosts first look locally for IP address mappings, it never reaches DNS to find google.com.
 
 ### /etc/resolv.conf
 

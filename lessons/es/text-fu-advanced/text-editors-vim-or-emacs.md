@@ -17,8 +17,8 @@ Vim y Emacs son editores de texto populares que se instalan por defecto en la ma
 
 Haz un pequeño recorrido por Vim y Emacs:
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

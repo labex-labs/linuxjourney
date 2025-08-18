@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-当您运行数据包捕获时，您会注意到很多事情发生。这是意料之中的；后台有很多网络活动。在我上面的例子中，我只截取了捕获的一部分，特别是我决定 ping <www.google.com> 的时间。
+当您运行数据包捕获时，您会注意到很多事情发生。这是意料之中的；后台有很多网络活动。在我上面的例子中，我只截取了捕获的一部分，特别是我决定 ping `www.google.com` 的时间。
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 - `seq`: 这是 TCP 数据包的起始和结束序列号。
 - `length`: 长度（字节）。
 
-从我们的 tcpdump 输出中可以看出，我们正在向 <www.google.com> 发送一个 ICMP 回显请求数据包，并收到一个 ICMP 回显回复数据包！另外，请注意，不同的数据包会输出不同的信息；请参阅手册页以了解这些信息。
+从我们的 tcpdump 输出中可以看出，我们正在向 `www.google.com` 发送一个 ICMP 回显请求数据包，并收到一个 ICMP 回显回复数据包！另外，请注意，不同的数据包会输出不同的信息；请参阅手册页以了解这些信息。
 
 ### Writing tcpdump output to a file
 

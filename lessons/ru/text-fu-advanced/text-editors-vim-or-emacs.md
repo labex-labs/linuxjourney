@@ -17,8 +17,8 @@ Vim и Emacs — популярные текстовые редакторы, к�
 
 Совершите небольшую экскурсию по Vim и Emacs:
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

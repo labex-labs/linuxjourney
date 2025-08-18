@@ -19,7 +19,7 @@ PING www.google.com (74.125.239.112) 56(84) bytes of data.
 64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
 ```
 
-在这个例子中，我们使用 ping 来检查是否能访问 <www.google.com>。`-c` 标志（count）用于在达到指定计数后停止发送回显请求数据包。
+在这个例子中，我们使用 ping 来检查是否能访问 `www.google.com`。`-c` 标志（count）用于在达到指定计数后停止发送回显请求数据包。
 
 第一部分表示我们正在向 74.125.239.112 (google.com) 发送 64 字节的数据包，其余部分显示了行程的详细信息。默认情况下，它每秒发送一个数据包。
 

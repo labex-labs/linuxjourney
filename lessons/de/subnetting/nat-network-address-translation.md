@@ -19,9 +19,9 @@ Stellen Sie sich NAT wie eine Empfangsdame in einem großen Büro vor. Wenn jema
 
 Ein einfacher Fall würde so aussehen:
 
-1. Patty möchte sich mit <www.google.com> verbinden, also sendet ihr Gerät diese Anfrage über den Router.
+1. Patty möchte sich mit `www.google.com` verbinden, also sendet ihr Gerät diese Anfrage über den Router.
 2. Der Router nimmt diese Anfrage entgegen und öffnet seine eigene Verbindung zu google.com, dann sendet er Pattys Anfrage, sobald eine Verbindung hergestellt ist.
-3. Der Router ist der Vermittler zwischen Patty und <www.google.com>. Google weiß nichts über Patty; stattdessen kann es nur den Router sehen.
+3. Der Router ist der Vermittler zwischen Patty und `www.google.com`. Google weiß nichts über Patty; stattdessen kann es nur den Router sehen.
 
 NAT und Paket-Routing im Allgemeinen können ziemlich kompliziert werden, aber wir werden nicht auf die Besonderheiten eingehen.
 

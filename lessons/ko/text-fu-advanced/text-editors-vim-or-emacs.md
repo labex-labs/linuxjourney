@@ -17,8 +17,8 @@ Vim 과 Emacs 는 대부분의 Linux 배포판에 기본적으로 설치되는 �
 
 Vim 과 Emacs 를 잠시 살펴보세요:
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

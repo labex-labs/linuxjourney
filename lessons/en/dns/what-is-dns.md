@@ -9,7 +9,7 @@ meta_keywords: "DNS, Domain Name System, IP address, hostname, Linux networking,
 
 ## Lesson Content
 
-Imagine if every time you wanted to do a search on Google you had to type in <http://192.78.12.4> instead of <www.google.com>. Well, without DNS ("Domain Name System"), that's exactly what would happen. Low-level networking only understands the raw IP address to identify a host. DNS allows us humans to keep track of websites and hosts by name instead of an IP address. It's like a contact list for the Internet. If you know someone's name but don’t know their phone number, you can simply look it up in your contacts list.
+Imagine if every time you wanted to do a search on Google you had to type in `http://192.78.12.4` instead of `www.google.com`. Well, without DNS ("Domain Name System"), that's exactly what would happen. Low-level networking only understands the raw IP address to identify a host. DNS allows us humans to keep track of websites and hosts by name instead of an IP address. It's like a contact list for the Internet. If you know someone's name but don’t know their phone number, you can simply look it up in your contacts list.
 
 DNS is fundamentally a distributed database of hostnames to IP addresses. We manage our database so people know how to get to our site/domain, and somewhere else another person is managing their database so others can get to their domain. These domains are then able to talk to each other and build a massive contact list of the Internet.
 

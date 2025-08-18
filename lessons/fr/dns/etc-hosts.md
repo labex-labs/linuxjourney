@@ -29,7 +29,7 @@ Voyons un exemple amusant de `/etc/hosts`. Modifiez le fichier et ajoutez une li
 123.45.6.7  www.google.com
 ```
 
-Enregistrez le fichier et allez maintenant sur <www.google.com>. Vous rencontrez des problèmes, n'est-ce pas ? Eh bien, c'est parce que nous venons de mapper <www.google.com> à une adresse IP complètement erronée. Étant donné que nos hôtes recherchent d'abord localement les correspondances d'adresses IP, ils n'atteignent jamais le DNS pour trouver google.com.
+Enregistrez le fichier et allez maintenant sur `www.google.com`. Vous rencontrez des problèmes, n'est-ce pas ? Eh bien, c'est parce que nous venons de mapper `www.google.com` à une adresse IP complètement erronée. Étant donné que nos hôtes recherchent d'abord localement les correspondances d'adresses IP, ils n'atteignent jamais le DNS pour trouver google.com.
 
 ### /etc/resolv.conf
 

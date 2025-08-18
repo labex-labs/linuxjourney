@@ -29,7 +29,7 @@ pete@icebox:~$ cat /etc/hosts
 123.45.6.7  www.google.com
 ```
 
-ファイルを保存して、<www.google.com> にアクセスしてみてください。問題が発生しましたね？それは、<www.google.com> を完全に間違った IP アドレスにマッピングしたからです。ホストはまず IP アドレスのマッピングをローカルで検索するため、google.com を見つけるために DNS に到達することはありません。
+ファイルを保存して、`www.google.com` にアクセスしてみてください。問題が発生しましたね？それは、`www.google.com` を完全に間違った IP アドレスにマッピングしたからです。ホストはまず IP アドレスのマッピングをローカルで検索するため、google.com を見つけるために DNS に到達することはありません。
 
 ### /etc/resolv.conf
 

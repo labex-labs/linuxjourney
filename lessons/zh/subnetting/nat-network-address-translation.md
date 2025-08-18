@@ -19,9 +19,9 @@ NAT 使我们的路由器等设备充当互联网和私有网络之间的中介�
 
 一个简单的例子是这样的：
 
-1. Patty 想连接到 <www.google.com>，所以她的机器通过路由器发送此请求。
+1. Patty 想连接到 `www.google.com`，所以她的机器通过路由器发送此请求。
 2. 路由器接收该请求并打开自己与 google.com 的连接，然后一旦建立连接就发送 Patty 的请求。
-3. 路由器是 Patty 和 <www.google.com> 之间的中介。Google 不知道 Patty；相反，它只能看到路由器。
+3. 路由器是 Patty 和 `www.google.com` 之间的中介。Google 不知道 Patty；相反，它只能看到路由器。
 
 NAT 和一般的包路由可能会变得相当复杂，但我们不会深入探讨具体细节。
 

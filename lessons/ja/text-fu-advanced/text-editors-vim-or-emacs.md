@@ -17,8 +17,8 @@ Vim と Emacs は、ほとんどの Linux ディストリビューションに�
 
 Vim と Emacs を少し見てみましょう。
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 
