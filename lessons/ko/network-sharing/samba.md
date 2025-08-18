@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "Samba"
 meta_title: "Samba - 네트워크 공유"

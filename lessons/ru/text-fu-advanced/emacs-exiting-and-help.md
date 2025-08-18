@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ru"
 title: "Выход из Emacs и справка"
 meta_title: "Выход из Emacs и справка - Продвинутый Text-Fu"

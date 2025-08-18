@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "継続的な監視"
 meta_title: "継続的な監視 - プロセス利用率"

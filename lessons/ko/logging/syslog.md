@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "syslog"
 meta_title: "syslog - 로깅"

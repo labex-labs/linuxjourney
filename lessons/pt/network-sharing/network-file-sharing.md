@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Visão Geral do Compartilhamento de Arquivos"
 meta_title: "Visão Geral do Compartilhamento de Arquivos - Compartilhamento de Rede"

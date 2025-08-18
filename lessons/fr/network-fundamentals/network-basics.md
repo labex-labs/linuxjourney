@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Bases du réseau"
 meta_title: "Bases du réseau - Bases du Réseau"

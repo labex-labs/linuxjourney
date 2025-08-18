@@ -1,4 +1,7 @@
 ---
+index: 14
+---
+---
 lang: "ja"
 title: ""find""
 meta_description: "Linux の'find'コマンドを使ってファイルやディレクトリを見つける方法を学びましょう。基本的な検索オプションを発見し、Linux のファイル管理スキルを向上させましょう。"

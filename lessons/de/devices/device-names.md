@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Gerätenamen"
 meta_title: "Gerätenamen - Geräte"

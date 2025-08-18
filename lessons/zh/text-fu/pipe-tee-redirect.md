@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "管道和 tee"
 meta_title: "管道和 tee - 文本操作"

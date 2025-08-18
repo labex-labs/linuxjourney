@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "링크 스테이트 프로토콜"
 meta_title: "링크 스테이트 프로토콜 - 라우팅"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "CIDR"
 meta_title: "CIDR - Подсети"

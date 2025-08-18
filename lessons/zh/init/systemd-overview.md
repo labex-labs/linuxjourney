@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "Systemd 概述"
 meta_title: "Systemd 概述 - 初始化"

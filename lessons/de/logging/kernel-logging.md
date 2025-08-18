@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Kernel-Protokollierung"
 meta_title: "Kernel-Protokollierung - Protokollierung"

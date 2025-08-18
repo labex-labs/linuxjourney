@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "シグナル"
 meta_title: "シグナル - プロセス"

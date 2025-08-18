@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "rsync"
 meta_title: "rsync - ネットワーク共有"

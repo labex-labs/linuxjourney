@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "부팅 과정: Init"
 meta_title: "부팅 과정: Init - 시스템 부팅"

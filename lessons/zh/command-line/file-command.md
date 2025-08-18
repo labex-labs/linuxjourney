@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "文件"
 meta_title: "文件 - 命令行"

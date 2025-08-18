@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "mount 和 umount"
 meta_title: "mount 和 umount - 文件系统"

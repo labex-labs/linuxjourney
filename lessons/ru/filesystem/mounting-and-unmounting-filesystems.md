@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "mount и umount"
 meta_title: "mount и umount - Файловая система"

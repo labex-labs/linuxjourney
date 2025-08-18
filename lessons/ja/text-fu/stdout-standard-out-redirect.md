@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "stdout（標準出力）"
 meta_title: "stdout（標準出力） - テキスト操作"

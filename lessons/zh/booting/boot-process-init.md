@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "启动过程：Init"
 meta_title: "启动过程：Init - 启动系统"

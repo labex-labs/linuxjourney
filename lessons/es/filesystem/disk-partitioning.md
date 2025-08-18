@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Particionado de Discos"
 meta_title: "Particionado de Discos - El Filesystem"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "swap"
 meta_title: "swap - 파일 시스템"

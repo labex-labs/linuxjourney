@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "de"
 title: "Arch Linux"
 meta_title: "Arch Linux - Erste Schritte"

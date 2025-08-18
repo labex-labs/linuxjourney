@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "dd"
 meta_title: "dd - 设备"

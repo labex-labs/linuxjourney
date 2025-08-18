@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "de"
 title: "tr (Übersetzen)"
 meta_title: "tr (Übersetzen) - Text-Fu"

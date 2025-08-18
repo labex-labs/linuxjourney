@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Outils de gestion des utilisateurs"
 meta_title: "Outils de gestion des utilisateurs - Gestion des Utilisateurs"

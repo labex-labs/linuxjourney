@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "디스크의 해부학"
 meta_title: "디스크의 해부학 - 파일 시스템"

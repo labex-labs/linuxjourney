@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "fr"
 title: "Inodes"
 meta_title: "Inodes - Le Filesystem"

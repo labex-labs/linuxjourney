@@ -1,4 +1,7 @@
 ---
+index: 2
+---
+---
 lang: "ko"
 title: "lsof 및 fuser"
 meta_description: "Linux 에서 lsof 및 fuser 명령을 사용하여 파일을 사용하는 프로세스를 식별하는 방법을 배웁니다. "Device or Resource Busy" 오류를 이해하고 열린 파일을 효과적으로 관리합니다."

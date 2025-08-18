@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "패키지 저장소"
 meta_title: "패키지 저장소 - 패키지"

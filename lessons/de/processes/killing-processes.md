@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "kill (Beenden)"
 meta_title: "kill (Beenden) - Prozesse"

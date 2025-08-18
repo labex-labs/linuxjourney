@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "OSI 모델"
 meta_title: "OSI 모델 - 네트워크 기본"

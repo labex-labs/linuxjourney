@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Eine Linux-Distribution auswählen"
 meta_title: "Eine Linux-Distribution auswählen - Erste Schritte"

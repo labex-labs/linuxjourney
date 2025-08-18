@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "zh"
 title: "mv (移动)"
 meta_title: "mv (移动) - 命令行"

@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "en"
 title: "Emacs Manipulate Files"
 meta_title: "Emacs Manipulate Files - Advanced Text-Fu"

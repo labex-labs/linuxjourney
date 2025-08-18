@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Monitoreo de Memoria"
 meta_title: "Monitoreo de Memoria - Utilización de Procesos"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "sysfs"
 meta_title: "sysfs - 장치"

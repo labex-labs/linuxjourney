@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "ICMP"
 meta_title: "ICMP - 문제 해결"

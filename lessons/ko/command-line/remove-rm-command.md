@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ko"
 title: "rm (제거)"
 meta_title: "rm (제거) - Command Line"

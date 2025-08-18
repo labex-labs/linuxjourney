@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "ルーティングプロトコル"
 meta_title: "ルーティングプロトコル - ルーティング"

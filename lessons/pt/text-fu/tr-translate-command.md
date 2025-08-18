@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "pt"
 title: "tr (Traduzir)"
 meta_title: "tr (Traduzir) - Text-Fu"

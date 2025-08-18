@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "TCP/IP-Modell"
 meta_title: "TCP/IP-Modell - Netzwerkgrundlagen"

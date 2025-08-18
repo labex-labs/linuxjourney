@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "rpm 및 dpkg"
 meta_title: "rpm 및 dpkg - 패키지"

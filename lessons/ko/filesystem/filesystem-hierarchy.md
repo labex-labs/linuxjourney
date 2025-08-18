@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "파일 시스템 계층 구조"
 meta_title: "파일 시스템 계층 구조 - 파일 시스템"

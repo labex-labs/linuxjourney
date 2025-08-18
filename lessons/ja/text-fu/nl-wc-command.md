@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "ja"
 title: "wc と nl"
 meta_title: "wc と nl - テキスト操作"

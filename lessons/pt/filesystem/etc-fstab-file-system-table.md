@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "pt"
 title: "/etc/fstab"
 meta_title: "/etc/fstab - O Filesystem"

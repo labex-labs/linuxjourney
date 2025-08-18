@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "ディスクの構造"
 meta_title: "ディスクの構造 - ファイルシステム"

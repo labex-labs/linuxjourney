@@ -1,4 +1,7 @@
 ---
+index: 2
+---
+---
 lang: "ru"
 title: "lsof и fuser"
 meta_description: "Узнайте, как использовать команды lsof и fuser в Linux для определения процессов, использующих файлы. Разберитесь с ошибками "Device or Resource Busy" и эффективно управляйте открытыми файлами."

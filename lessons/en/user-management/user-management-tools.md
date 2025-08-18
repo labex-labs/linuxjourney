@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "User Management Tools"
 meta_title: "User Management Tools - User Management"

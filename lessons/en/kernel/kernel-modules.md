@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "Kernel Modules"
 meta_title: "Kernel Modules - Kernel"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "거리 벡터 프로토콜"
 meta_title: "거리 벡터 프로토콜 - 라우팅"

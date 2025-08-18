@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "fr"
 title: "Quitter Emacs et Aide"
 meta_title: "Quitter Emacs et Aide - Text-Fu Avancé"

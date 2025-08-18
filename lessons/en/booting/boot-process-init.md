@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "en"
 title: "Boot Process: Init"
 meta_title: "Boot Process: Init - Boot the System"

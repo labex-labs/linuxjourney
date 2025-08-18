@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Signale"
 meta_title: "Signale - Prozesse"

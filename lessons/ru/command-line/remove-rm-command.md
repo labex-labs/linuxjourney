@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ru"
 title: "rm (Удалить)"
 meta_title: "rm (Удалить) - Командная строка"

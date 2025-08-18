@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Table de Routage"
 meta_title: "Table de Routage - Routage"

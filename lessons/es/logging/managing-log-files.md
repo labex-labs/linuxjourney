@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Gestión de archivos de registro"
 meta_title: "Gestión de archivos de registro - Registro"

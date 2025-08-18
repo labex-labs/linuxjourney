@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "Upstart 概述"
 meta_title: "Upstart 概述 - 初始化"

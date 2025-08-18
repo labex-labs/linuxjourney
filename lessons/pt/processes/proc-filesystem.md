@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "pt"
 title: "Sistema de arquivos /proc"
 meta_title: "Sistema de arquivos /proc - Processos"

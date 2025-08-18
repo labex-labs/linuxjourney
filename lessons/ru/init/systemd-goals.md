@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Цели Systemd"
 meta_title: "Цели Systemd - Init"

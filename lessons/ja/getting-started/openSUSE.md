@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ja"
 title: "openSUSE"
 meta_title: "openSUSE - はじめに"

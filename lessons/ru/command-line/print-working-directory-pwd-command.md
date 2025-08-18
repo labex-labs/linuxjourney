@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "pwd (Print Working Directory)"
 meta_title: "pwd (Print Working Directory) - Командная строка"

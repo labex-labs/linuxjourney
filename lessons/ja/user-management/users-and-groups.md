@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ユーザーとグループ"
 meta_title: "ユーザーとグループ - ユーザー管理"

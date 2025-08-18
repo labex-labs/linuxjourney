@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "dd"
 meta_title: "dd - Geräte"

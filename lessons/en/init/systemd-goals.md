@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "Systemd Goals"
 meta_title: "Systemd Goals - Init"

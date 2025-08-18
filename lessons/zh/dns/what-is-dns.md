@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "什么是 DNS？"
 meta_title: "什么是 DNS？ - DNS"

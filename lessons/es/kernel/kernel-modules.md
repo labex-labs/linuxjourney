@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Módulos del Kernel"
 meta_title: "Módulos del Kernel - Kernel"

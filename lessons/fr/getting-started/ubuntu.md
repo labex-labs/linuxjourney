@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Ubuntu"
 meta_title: "Ubuntu - Démarrage"

@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "fr"
 title: "aide"
 meta_title: "aide - Command Line"

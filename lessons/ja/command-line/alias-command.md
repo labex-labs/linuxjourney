@@ -1,4 +1,5 @@
 ---
+index: 18
 lang: "ja"
 title: "エイリアス"
 meta_title: "エイリアス - コマンドライン"

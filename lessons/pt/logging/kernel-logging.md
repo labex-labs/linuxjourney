@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "Registro do Kernel"
 meta_title: "Registro do Kernel - Registro de Logs"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "udev"
 meta_title: "udev - 设备"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Users and Groups"
 meta_title: "Users and Groups - User Management"

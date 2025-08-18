@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "syslog"
 meta_title: "syslog - 日志"

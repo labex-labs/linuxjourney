@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "/etc/shadow"
 meta_title: "/etc/shadow - Gerenciamento de Usuários"

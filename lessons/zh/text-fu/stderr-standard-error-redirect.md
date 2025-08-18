@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "stderr (标准错误)"
 meta_title: "stderr (标准错误) - 文本操作"

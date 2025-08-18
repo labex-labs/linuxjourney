@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "stdout (표준 출력)"
 meta_title: "stdout (표준 출력) - Text-Fu"

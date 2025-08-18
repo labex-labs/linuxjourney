@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "Подсети"
 meta_title: "Подсети - Подсети"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "dhclient"
 meta_title: "dhclient - 네트워크 구성"

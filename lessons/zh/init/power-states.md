@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "电源状态"
 meta_title: "电源状态 - 初始化"

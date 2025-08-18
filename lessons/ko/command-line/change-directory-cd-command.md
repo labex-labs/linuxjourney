@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "cd (디렉토리 변경)"
 meta_title: "cd (디렉토리 변경) - Command Line"

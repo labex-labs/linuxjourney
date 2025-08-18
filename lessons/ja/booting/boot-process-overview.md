@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "起動プロセスの概要"
 meta_title: "起動プロセスの概要 - システムの起動"

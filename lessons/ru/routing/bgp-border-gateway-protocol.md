@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "Протокол Border Gateway Protocol"
 meta_title: "Протокол Border Gateway Protocol - Маршрутизация"

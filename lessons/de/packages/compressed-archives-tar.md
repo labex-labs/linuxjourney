@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "tar und gzip"
 meta_title: "tar und gzip - Pakete"

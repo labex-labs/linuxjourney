@@ -1,4 +1,7 @@
 ---
+index: 2
+---
+---
 lang: "fr"
 title: "lsof et fuser"
 meta_description: "Apprenez à utiliser les commandes lsof et fuser sous Linux pour identifier les processus utilisant des fichiers. Comprenez les erreurs "Device or Resource Busy" et gérez efficacement les fichiers ouverts."

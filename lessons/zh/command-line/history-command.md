@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "zh"
 title: "历史"
 meta_title: "历史 - 命令行"

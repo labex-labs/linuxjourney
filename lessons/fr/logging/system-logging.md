@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Journalisation du système"
 meta_title: "Journalisation du système - Logging"

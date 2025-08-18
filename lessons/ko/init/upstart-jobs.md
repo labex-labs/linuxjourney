@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "Upstart 작업"
 meta_title: "Upstart 작업 - Init"

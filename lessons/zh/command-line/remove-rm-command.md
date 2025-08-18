@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "zh"
 title: "rm (删除)"
 meta_title: "rm (删除) - 命令行"

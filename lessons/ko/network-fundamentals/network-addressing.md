@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "네트워크 주소 지정"
 meta_title: "네트워크 주소 지정 - 네트워크 기본"

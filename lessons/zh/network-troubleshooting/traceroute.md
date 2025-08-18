@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "traceroute"
 meta_title: "traceroute - 故障排除"

@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "cp (复制)"
 meta_title: "cp (复制) - 命令行"

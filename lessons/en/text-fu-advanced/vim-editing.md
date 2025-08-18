@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "en"
 title: "Vim Editing"
 meta_title: "Vim Editing - Advanced Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "stderr (표준 에러)"
 meta_title: "stderr (표준 에러) - Text-Fu"

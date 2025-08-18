@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "路由表"
 meta_title: "路由表 - 路由"

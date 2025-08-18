@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "zh"
 title: "粘滞位"
 meta_title: "粘滞位 - 权限"

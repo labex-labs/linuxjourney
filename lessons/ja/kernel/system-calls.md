@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "システムコール"
 meta_title: "システムコール - Kernel"

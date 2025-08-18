@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "pt"
 title: "ajuda"
 meta_title: "ajuda - Linha de Comando"

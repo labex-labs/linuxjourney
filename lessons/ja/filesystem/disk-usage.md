@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ja"
 title: "ディスク使用量"
 meta_title: "ディスク使用量 - ファイルシステム"

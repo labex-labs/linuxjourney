@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "DNS ツール"
 meta_title: "DNS ツール - DNS"

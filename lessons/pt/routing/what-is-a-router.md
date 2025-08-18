@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "O que é um roteador?"
 meta_title: "O que é um roteador? - Roteamento"

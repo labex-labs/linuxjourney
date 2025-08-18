@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Permissions de Fichiers"
 meta_title: "Permissions de Fichiers - Permissions"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Controlling Terminal"
 meta_title: "Controlling Terminal - Processes"

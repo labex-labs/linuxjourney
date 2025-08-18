@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "IPv6"
 meta_title: "IPv6 - Подсети"

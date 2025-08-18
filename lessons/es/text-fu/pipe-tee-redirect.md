@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "pipe y tee"
 meta_title: "pipe y tee - Text-Fu"

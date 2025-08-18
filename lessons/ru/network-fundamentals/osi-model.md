@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "Модель OSI"
 meta_title: "Модель OSI - Основы сети"

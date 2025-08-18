@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "es"
 title: "tr (Traducir)"
 meta_title: "tr (Traducir) - Text-Fu"

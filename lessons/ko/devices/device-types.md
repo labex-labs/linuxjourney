@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "장치 유형"
 meta_title: "장치 유형 - 장치"

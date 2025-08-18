@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Distribución de Software"
 meta_title: "Distribución de Software - Paquetes"

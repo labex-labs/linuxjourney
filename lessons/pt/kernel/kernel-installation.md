@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "Instalação do Kernel"
 meta_title: "Instalação do Kernel - Kernel"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "/dev directory"
 meta_title: "/dev directory - Устройства"

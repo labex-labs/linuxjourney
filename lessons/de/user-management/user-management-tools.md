@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Tools zur Benutzerverwaltung"
 meta_title: "Tools zur Benutzerverwaltung - Benutzerverwaltung"

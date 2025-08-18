@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "ルーティングテーブル"
 meta_title: "ルーティングテーブル - ルーティング"

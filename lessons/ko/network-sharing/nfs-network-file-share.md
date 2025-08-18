@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "NFS"
 meta_title: "NFS - 네트워크 공유"

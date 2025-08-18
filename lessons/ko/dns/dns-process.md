@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "DNS 프로세스"
 meta_title: "DNS 프로세스 - DNS"

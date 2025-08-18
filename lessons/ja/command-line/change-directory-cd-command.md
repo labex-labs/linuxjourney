@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "cd (Change Directory)"
 meta_title: "cd (Change Directory) - コマンドライン"

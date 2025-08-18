@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "zh"
 title: "Arch Linux"
 meta_title: "Arch Linux - 入门"

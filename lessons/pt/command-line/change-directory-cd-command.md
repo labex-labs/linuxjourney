@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "cd (Mudar Diretório)"
 meta_title: "cd (Mudar Diretório) - Linha de Comando"

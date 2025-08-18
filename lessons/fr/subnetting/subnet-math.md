@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Calcul de Sous-réseau"
 meta_title: "Calcul de Sous-réseau - Subnetting"

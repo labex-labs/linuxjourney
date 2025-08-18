@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "¿Qué es DNS?"
 meta_title: "¿Qué es DNS? - DNS"

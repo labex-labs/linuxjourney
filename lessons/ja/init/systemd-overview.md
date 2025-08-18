@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "Systemd の概要"
 meta_title: "Systemd の概要 - Init"

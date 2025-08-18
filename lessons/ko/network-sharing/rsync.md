@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "rsync"
 meta_title: "rsync - 네트워크 공유"

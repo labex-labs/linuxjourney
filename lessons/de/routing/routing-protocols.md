@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Routing-Protokolle"
 meta_title: "Routing-Protokolle - Routing"

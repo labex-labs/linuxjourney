@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "Setgid"
 meta_title: "Setgid - パーミッション"

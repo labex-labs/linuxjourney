@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Controlando el Terminal"
 meta_title: "Controlando el Terminal - Procesos"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "内核日志记录"
 meta_title: "内核日志记录 - 日志"

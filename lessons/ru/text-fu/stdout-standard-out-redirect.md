@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "stdout (Стандартный вывод)"
 meta_title: "stdout (Стандартный вывод) - Text-Fu"

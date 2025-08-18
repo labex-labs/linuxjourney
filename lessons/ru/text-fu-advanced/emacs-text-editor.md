@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ru"
 title: "Emacs"
 meta_title: "Emacs - Продвинутый Text-Fu"

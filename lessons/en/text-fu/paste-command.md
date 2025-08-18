@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "en"
 title: "paste"
 meta_title: "paste - Text-Fu"

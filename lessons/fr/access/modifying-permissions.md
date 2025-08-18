@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Modification des permissions"
 meta_title: "Modification des permissions - Permissions"

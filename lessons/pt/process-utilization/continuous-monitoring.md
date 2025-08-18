@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "pt"
 title: "Monitoramento Contínuo"
 meta_title: "Monitoramento Contínuo - Utilização de Processos"

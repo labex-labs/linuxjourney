@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "内核概述"
 meta_title: "内核概述 - 内核"

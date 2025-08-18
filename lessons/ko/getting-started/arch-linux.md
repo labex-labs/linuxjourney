@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ko"
 title: "아치 리눅스"
 meta_title: "아치 리눅스 - 시작하기"

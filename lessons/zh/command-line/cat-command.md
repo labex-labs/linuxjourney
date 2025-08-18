@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "cat"
 meta_title: "cat - 命令行"

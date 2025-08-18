@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "root"
 meta_title: "root - Gestión de Usuarios"

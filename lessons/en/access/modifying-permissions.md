@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Modifying Permissions"
 meta_title: "Modifying Permissions - Permissions"

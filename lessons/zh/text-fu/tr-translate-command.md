@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "zh"
 title: "tr (转换)"
 meta_title: "tr (转换) - 文本操作"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "소유권 권한"
 meta_title: "소유권 권한 - 권한"

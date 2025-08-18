@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ko"
 title: "mkdir (디렉토리 만들기)"
 meta_title: "mkdir (디렉토리 만들기) - Command Line"

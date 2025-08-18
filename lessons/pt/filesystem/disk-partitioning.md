@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "Particionamento de Disco"
 meta_title: "Particionamento de Disco - O Filesystem"

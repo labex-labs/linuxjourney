@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Boot Process: Bootloader"
 meta_title: "Boot Process: Bootloader - Boot the System"

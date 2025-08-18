@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "IPv6"
 meta_title: "IPv6 - 子网划分"

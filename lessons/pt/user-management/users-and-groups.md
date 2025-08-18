@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Usuários e Grupos"
 meta_title: "Usuários e Grupos - Gerenciamento de Usuários"

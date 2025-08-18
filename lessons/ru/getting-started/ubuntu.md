@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Ubuntu"
 meta_title: "Ubuntu - Начало работы"

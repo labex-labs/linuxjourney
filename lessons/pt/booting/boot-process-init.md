@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "pt"
 title: "Processo de Inicialização: Init"
 meta_title: "Processo de Inicialização: Init - Inicializar o Sistema"

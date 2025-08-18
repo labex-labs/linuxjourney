@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Overview of the Kernel"
 meta_title: "Overview of the Kernel - Kernel"

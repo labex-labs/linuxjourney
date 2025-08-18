@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "de"
 title: "Emacs-Bearbeitung"
 meta_title: "Emacs-Bearbeitung - Fortgeschrittenes Text-Fu"

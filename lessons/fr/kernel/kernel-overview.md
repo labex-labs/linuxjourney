@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Aperçu du noyau"
 meta_title: "Aperçu du noyau - Kernel"

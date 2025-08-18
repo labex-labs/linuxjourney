@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Einfacher HTTP-Server"
 meta_title: "Einfacher HTTP-Server - Netzwerkfreigabe"

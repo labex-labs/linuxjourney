@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "de"
 title: "Symlinks"
 meta_title: "Symlinks - Das Dateisystem"

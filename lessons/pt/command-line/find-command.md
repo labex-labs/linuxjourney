@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "pt"
 title: "find"
 meta_title: "find - Linha de Comando"

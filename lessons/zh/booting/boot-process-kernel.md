@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "启动过程：内核"
 meta_title: "启动过程：内核 - 启动系统"

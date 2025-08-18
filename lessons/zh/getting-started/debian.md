@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "Debian"
 meta_title: "Debian - 入门"

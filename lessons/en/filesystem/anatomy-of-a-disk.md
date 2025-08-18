@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Anatomy of a Disk"
 meta_title: "Anatomy of a Disk - The Filesystem"

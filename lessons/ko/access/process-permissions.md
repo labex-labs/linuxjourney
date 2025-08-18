@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "프로세스 권한"
 meta_title: "프로세스 권한 - 권한"

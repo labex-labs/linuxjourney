@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Disk-Partitionierung"
 meta_title: "Disk-Partitionierung - Das Dateisystem"

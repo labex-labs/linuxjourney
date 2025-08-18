@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "認証ロギング"
 meta_title: "認証ロギング - ロギング"

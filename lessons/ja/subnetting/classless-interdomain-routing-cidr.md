@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "CIDR"
 meta_title: "CIDR - サブネット化"

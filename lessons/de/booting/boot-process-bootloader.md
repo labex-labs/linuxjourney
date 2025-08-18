@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Bootvorgang: Bootloader"
 meta_title: "Bootvorgang: Bootloader - System booten"

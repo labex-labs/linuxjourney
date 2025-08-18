@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Prozessdetails"
 meta_title: "Prozessdetails - Prozesse"

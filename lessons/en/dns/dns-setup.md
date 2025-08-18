@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "en"
 title: "DNS Setup"
 meta_title: "DNS Setup - DNS"

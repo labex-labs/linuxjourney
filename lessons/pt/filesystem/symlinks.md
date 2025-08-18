@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "pt"
 title: "Symlinks"
 meta_title: "Symlinks - O Filesystem"

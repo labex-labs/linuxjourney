@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "traceroute"
 meta_title: "traceroute - Resolução de Problemas"

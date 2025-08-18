@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "File Permissions"
 meta_title: "File Permissions - Permissions"

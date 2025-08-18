@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Device Names"
 meta_title: "Device Names - Devices"

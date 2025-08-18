@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "부팅 프로세스: BIOS"
 meta_title: "부팅 프로세스: BIOS - 시스템 부팅"

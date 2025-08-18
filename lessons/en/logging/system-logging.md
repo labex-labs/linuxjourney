@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "System Logging"
 meta_title: "System Logging - Logging"

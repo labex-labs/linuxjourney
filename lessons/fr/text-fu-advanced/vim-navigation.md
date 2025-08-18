@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Navigation Vim"
 meta_title: "Navigation Vim - Text-Fu Avancé"

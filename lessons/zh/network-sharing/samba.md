@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "Samba"
 meta_title: "Samba - 网络共享"

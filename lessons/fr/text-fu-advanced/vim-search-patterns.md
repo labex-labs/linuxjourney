@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Modèles de recherche Vim"
 meta_title: "Modèles de recherche Vim - Text-Fu Avancé"

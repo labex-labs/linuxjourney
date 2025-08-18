@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ja"
 title: "/proc ファイルシステム"
 meta_title: "/proc ファイルシステム - プロセス"

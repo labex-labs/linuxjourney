@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "netstat"
 meta_title: "netstat - Dépannage"

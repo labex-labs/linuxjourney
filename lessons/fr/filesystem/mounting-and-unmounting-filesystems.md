@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "mount et umount"
 meta_title: "mount et umount - Le Filesystem"

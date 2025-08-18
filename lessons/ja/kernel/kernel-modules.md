@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "カーネルモジュール"
 meta_title: "カーネルモジュール - Kernel"

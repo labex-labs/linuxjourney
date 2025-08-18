@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "ru"
 title: "find"
 meta_title: "find - Командная строка"

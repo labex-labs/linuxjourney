@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "stdin (标准输入)"
 meta_title: "stdin (标准输入) - 文本操作"

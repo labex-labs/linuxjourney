@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Network Interfaces"
 meta_title: "Network Interfaces - Network Config"

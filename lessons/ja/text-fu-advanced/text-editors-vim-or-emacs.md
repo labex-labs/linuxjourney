@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "テキストエディタ"
 meta_title: "テキストエディタ - 高度なテキスト操作"

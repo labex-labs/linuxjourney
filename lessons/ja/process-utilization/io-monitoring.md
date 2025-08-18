@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "I/O 監視"
 meta_title: "I/O 監視 - プロセス利用率"

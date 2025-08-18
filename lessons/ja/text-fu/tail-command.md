@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ja"
 title: "tail"
 meta_title: "tail - テキスト操作"

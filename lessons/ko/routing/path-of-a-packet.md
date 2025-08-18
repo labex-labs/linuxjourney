@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "패킷의 경로"
 meta_title: "패킷의 경로 - 라우팅"

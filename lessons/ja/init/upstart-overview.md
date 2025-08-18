@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "Upstart の概要"
 meta_title: "Upstart の概要 - Init"

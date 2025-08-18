@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "General Logging"
 meta_title: "General Logging - Logging"

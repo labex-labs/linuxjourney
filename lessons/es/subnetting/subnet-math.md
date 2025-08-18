@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "Matemáticas de Subredes"
 meta_title: "Matemáticas de Subredes - Subnetting"

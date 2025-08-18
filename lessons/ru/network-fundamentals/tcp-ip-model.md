@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "Модель TCP/IP"
 meta_title: "Модель TCP/IP - Основы сети"

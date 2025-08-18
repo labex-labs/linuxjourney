@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "pt"
 title: "touch"
 meta_title: "touch - Linha de Comando"

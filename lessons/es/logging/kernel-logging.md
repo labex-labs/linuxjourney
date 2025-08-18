@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Registro del Kernel"
 meta_title: "Registro del Kernel - Registro"

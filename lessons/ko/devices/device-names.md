@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "장치 이름"
 meta_title: "장치 이름 - 장치"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "カーネルのインストール"
 meta_title: "カーネルのインストール - Kernel"

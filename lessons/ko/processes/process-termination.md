@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "프로세스 종료"
 meta_title: "프로세스 종료 - 프로세스"

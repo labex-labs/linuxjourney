@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "root"
 meta_title: "root - 사용자 관리"

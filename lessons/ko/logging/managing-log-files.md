@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "로그 파일 관리"
 meta_title: "로그 파일 관리 - 로깅"

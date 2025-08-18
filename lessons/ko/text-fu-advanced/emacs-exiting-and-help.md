@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ko"
 title: "Emacs 종료 및 도움말"
 meta_title: "Emacs 종료 및 도움말 - 고급 Text-Fu"

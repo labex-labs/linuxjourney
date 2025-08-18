@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "traceroute"
 meta_title: "traceroute - 문제 해결"

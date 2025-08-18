@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "stderr (Erreur Standard)"
 meta_title: "stderr (Erreur Standard) - Text-Fu"

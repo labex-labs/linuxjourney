@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "身份验证日志"
 meta_title: "身份验证日志 - 日志"

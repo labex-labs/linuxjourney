@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "서브넷 수학"
 meta_title: "서브넷 수학 - 서브넷팅"

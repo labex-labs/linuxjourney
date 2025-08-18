@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "Setgid"
 meta_title: "Setgid - 권한"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "Vim Inserindo e Anexando Texto"
 meta_title: "Vim Inserindo e Anexando Texto - Text-Fu Avançado"

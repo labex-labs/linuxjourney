@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ja"
 title: "DHCP の概要"
 meta_title: "DHCP の概要 - ネットワークの基本"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "IPv4"
 meta_title: "IPv4 - Подсети"

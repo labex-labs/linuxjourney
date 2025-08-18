@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "es"
 title: "Permisos de Proceso"
 meta_title: "Permisos de Proceso - Permisos"

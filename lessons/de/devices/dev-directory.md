@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "/dev-Verzeichnis"
 meta_title: "/dev-Verzeichnis - Geräte"

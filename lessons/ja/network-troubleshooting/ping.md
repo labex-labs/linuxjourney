@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "ping"
 meta_title: "ping - トラブルシューティング"

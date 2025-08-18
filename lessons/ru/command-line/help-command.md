@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "ru"
 title: "Помощь"
 meta_title: "Помощь - Командная строка"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "Compiler le code source"
 meta_title: "Compiler le code source - Packages"

@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ru"
 title: "Обзор DHCP"
 meta_title: "Обзор DHCP - Основы сети"

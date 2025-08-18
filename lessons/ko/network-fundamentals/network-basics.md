@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "네트워크 기본 사항"
 meta_title: "네트워크 기본 사항 - 네트워크 기본"

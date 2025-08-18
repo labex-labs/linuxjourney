@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "zh"
 title: "Vim 保存和退出"
 meta_title: "Vim 保存和退出 - 高级文本操作"

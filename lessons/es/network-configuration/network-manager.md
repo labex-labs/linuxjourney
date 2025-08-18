@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Network Manager"
 meta_title: "Network Manager - Configuración de Red"

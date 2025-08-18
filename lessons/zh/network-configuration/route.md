@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "路由"
 meta_title: "路由 - 网络配置"

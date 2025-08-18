@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "syslog"
 meta_title: "syslog - Ведение журнала"

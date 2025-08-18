@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "zh"
 title: "join 和 split"
 meta_title: "join 和 split - 文本操作"

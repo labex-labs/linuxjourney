@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "Upstart 作业"
 meta_title: "Upstart 作业 - 初始化"

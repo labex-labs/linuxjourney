@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Allgemeine Protokollierung"
 meta_title: "Allgemeine Protokollierung - Protokollierung"

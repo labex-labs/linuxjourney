@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Dateisystemtypen"
 meta_title: "Dateisystemtypen - Das Dateisystem"

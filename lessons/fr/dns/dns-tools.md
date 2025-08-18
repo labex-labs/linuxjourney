@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Outils DNS"
 meta_title: "Outils DNS - DNS"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "전원 상태"
 meta_title: "전원 상태 - Init"

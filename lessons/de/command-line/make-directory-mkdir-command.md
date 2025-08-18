@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "de"
 title: "mkdir (Verzeichnis erstellen)"
 meta_title: "mkdir (Verzeichnis erstellen) - Command Line"

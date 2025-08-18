@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "root"
 meta_title: "root - Управление пользователями"

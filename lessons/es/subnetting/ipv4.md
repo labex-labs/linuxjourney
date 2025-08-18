@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "IPv4"
 meta_title: "IPv4 - Subnetting"

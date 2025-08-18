@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "syslog"
 meta_title: "syslog - ロギング"

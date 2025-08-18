@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "Upstart ジョブ"
 meta_title: "Upstart ジョブ - Init"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "カーネルの場所"
 meta_title: "カーネルの場所 - Kernel"

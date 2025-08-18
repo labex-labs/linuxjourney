@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "ls (列出目录)"
 meta_title: "ls (列出目录) - 命令行"

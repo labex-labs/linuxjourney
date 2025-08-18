@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "Systemd の目標"
 meta_title: "Systemd の目標 - Init"

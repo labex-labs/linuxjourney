@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "System V 服务"
 meta_title: "System V 服务 - 初始化"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "IPv6"
 meta_title: "IPv6 - サブネット化"

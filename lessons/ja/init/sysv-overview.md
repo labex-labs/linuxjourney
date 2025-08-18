@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "System V の概要"
 meta_title: "System V の概要 - Init"

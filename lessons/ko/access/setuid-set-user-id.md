@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "Setuid"
 meta_title: "Setuid - 권한"

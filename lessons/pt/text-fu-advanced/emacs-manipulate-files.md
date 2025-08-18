@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "pt"
 title: "Emacs Manipular Arquivos"
 meta_title: "Emacs Manipular Arquivos - Text-Fu Avançado"

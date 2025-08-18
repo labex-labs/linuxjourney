@@ -1,4 +1,5 @@
 ---
+index: 18
 lang: "es"
 title: "alias"
 meta_title: "alias - Command Line"

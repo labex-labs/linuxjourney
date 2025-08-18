@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "カーネルの概要"
 meta_title: "カーネルの概要 - Kernel"

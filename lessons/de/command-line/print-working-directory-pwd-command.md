@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "pwd (Aktuelles Arbeitsverzeichnis ausgeben)"
 meta_title: "pwd (Aktuelles Arbeitsverzeichnis ausgeben) - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "pt"
 title: "Localização do Kernel"
 meta_title: "Localização do Kernel - Kernel"

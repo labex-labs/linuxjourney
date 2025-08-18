@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ko"
 title: "심링크"
 meta_title: "심링크 - 파일 시스템"

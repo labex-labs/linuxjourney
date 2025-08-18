@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ru"
 title: "Inodes"
 meta_title: "Inodes - Файловая система"

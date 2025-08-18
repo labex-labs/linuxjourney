@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Registo de Sistema"
 meta_title: "Registo de Sistema - Registro de Logs"

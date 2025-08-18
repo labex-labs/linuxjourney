@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Repositorios de Paquetes"
 meta_title: "Repositorios de Paquetes - Paquetes"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "Служба System V"
 meta_title: "Служба System V - Init"

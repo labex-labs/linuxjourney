@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "en"
 title: "Authentication Logging"
 meta_title: "Authentication Logging - Logging"

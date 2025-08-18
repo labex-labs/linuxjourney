@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Patrones de búsqueda de Vim"
 meta_title: "Patrones de búsqueda de Vim - Text-Fu Avanzado"

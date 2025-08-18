@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "距离矢量协议"
 meta_title: "距离矢量协议 - 路由"

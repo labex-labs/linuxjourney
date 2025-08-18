@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "zh"
 title: "less"
 meta_title: "less - 命令行"

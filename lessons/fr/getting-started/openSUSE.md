@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "fr"
 title: "openSUSE"
 meta_title: "openSUSE - Démarrage"

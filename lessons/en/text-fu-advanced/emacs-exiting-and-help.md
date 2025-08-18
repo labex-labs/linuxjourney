@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "en"
 title: "Emacs Exiting and Help"
 meta_title: "Emacs Exiting and Help - Advanced Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Netzwerkschnittstellen"
 meta_title: "Netzwerkschnittstellen - Netzwerkkonfiguration"

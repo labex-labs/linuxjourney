@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ko"
 title: "프로세스 상태"
 meta_title: "프로세스 상태 - 프로세스"

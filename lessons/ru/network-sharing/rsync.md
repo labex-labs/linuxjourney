@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "rsync"
 meta_title: "rsync - Совместное использование сети"

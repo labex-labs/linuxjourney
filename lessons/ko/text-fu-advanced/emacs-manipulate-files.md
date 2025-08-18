@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "Emacs 파일 조작"
 meta_title: "Emacs 파일 조작 - 고급 Text-Fu"

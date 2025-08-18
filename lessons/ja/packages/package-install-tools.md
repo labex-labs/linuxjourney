@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "rpm と dpkg"
 meta_title: "rpm と dpkg - パッケージ"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "pwd (現在の作業ディレクトリを表示)"
 meta_title: "pwd (現在の作業ディレクトリを表示) - コマンドライン"

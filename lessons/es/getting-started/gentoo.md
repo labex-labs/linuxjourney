@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "es"
 title: "Gentoo"
 meta_title: "Gentoo - Primeros Pasos"

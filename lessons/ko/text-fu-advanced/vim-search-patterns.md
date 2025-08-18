@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "Vim 검색 패턴"
 meta_title: "Vim 검색 패턴 - 고급 Text-Fu"

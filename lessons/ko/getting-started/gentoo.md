@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "젠투"
 meta_title: "젠투 - 시작하기"

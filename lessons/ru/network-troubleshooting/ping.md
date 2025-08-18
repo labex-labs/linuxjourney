@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "ping"
 meta_title: "ping - Устранение неполадок"

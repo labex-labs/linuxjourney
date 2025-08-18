@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "niceness"
 meta_title: "niceness - プロセス"

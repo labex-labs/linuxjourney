@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Texteditoren"
 meta_title: "Texteditoren - Fortgeschrittenes Text-Fu"

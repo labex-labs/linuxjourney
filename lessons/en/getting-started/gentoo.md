@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "en"
 title: "Gentoo"
 meta_title: "Gentoo - Getting Started"

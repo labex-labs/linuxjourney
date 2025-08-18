@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "Sticky Bit"
 meta_title: "Sticky Bit - Разрешения"

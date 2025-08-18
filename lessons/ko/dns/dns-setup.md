@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "DNS 설정"
 meta_title: "DNS 설정 - DNS"

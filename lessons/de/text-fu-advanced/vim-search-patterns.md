@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Vim-Suchmuster"
 meta_title: "Vim-Suchmuster - Fortgeschrittenes Text-Fu"

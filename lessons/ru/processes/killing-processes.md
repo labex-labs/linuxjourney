@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "kill (Завершить)"
 meta_title: "kill (Завершить) - Процессы"

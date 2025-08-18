@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Vim Text einfügen und anhängen"
 meta_title: "Vim Text einfügen und anhängen - Fortgeschrittenes Text-Fu"

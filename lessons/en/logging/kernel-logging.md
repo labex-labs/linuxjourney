@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "Kernel Logging"
 meta_title: "Kernel Logging - Logging"

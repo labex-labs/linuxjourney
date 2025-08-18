@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "ls (Listar Directorios)"
 meta_title: "ls (Listar Directorios) - Command Line"

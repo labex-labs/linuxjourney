@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "de"
 title: "rm (Entfernen)"
 meta_title: "rm (Entfernen) - Command Line"

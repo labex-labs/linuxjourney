@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "内核安装"
 meta_title: "内核安装 - 内核"

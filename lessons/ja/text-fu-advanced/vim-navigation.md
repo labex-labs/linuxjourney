@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "Vim のナビゲーション"
 meta_title: "Vim のナビゲーション - 高度なテキスト操作"

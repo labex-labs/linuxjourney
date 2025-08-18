@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "Fedora"
 meta_title: "Fedora - はじめに"

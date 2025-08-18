@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "Upstart 개요"
 meta_title: "Upstart 개요 - Init"

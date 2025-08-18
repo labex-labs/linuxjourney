@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "Gerenciador de Rede"
 meta_title: "Gerenciador de Rede - Configuração de Rede"

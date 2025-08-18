@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "env (環境)"
 meta_title: "env (環境) - テキスト操作"

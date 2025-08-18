@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "mount と umount"
 meta_title: "mount と umount - ファイルシステム"

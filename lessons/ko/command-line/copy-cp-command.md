@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "cp (복사)"
 meta_title: "cp (복사) - Command Line"

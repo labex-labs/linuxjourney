@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Visão Geral do System V"
 meta_title: "Visão Geral do System V - Init"

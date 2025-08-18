@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "file"
 meta_title: "file - Command Line"

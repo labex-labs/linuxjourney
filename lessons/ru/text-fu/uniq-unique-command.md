@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "ru"
 title: "uniq (Уникальный)"
 meta_title: "uniq (Уникальный) - Text-Fu"

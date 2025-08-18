@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Señales"
 meta_title: "Señales - Procesos"

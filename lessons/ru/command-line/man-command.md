@@ -1,4 +1,5 @@
 ---
+index: 16
 lang: "ru"
 title: "man"
 meta_title: "man - Командная строка"

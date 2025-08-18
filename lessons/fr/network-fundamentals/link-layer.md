@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "fr"
 title: "Couche Liaison"
 meta_title: "Couche Liaison - Bases du Réseau"

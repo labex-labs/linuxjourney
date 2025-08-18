@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "pwd (현재 작업 디렉토리 출력)"
 meta_title: "pwd (현재 작업 디렉토리 출력) - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Permissões de Arquivo"
 meta_title: "Permissões de Arquivo - Permissões"

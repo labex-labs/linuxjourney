@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "네트워크 관리자"
 meta_title: "네트워크 관리자 - 네트워크 구성"

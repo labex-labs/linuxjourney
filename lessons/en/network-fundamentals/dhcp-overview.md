@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "en"
 title: "DHCP Overview"
 meta_title: "DHCP Overview - Network Basics"

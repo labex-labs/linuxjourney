@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "Linux ディストリビューションの選択"
 meta_title: "Linux ディストリビューションの選択 - はじめに"

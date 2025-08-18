@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "stdout (Saída Padrão)"
 meta_title: "stdout (Saída Padrão) - Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "ko"
 title: "wc 및 nl"
 meta_title: "wc 및 nl - Text-Fu"

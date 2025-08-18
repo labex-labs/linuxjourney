@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ko"
 title: "디스크 사용량"
 meta_title: "디스크 사용량 - 파일 시스템"

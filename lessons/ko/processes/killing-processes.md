@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "kill (종료)"
 meta_title: "kill (종료) - 프로세스"

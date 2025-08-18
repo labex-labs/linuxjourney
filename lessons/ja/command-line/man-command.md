@@ -1,4 +1,5 @@
 ---
+index: 16
 lang: "ja"
 title: "man"
 meta_title: "man - コマンドライン"

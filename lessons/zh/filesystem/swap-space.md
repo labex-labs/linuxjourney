@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "zh"
 title: "swap"
 meta_title: "swap - 文件系统"

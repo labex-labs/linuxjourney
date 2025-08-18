@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Setgid"
 meta_title: "Setgid - Разрешения"

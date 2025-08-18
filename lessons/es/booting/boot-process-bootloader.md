@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "Proceso de Arranque: Gestor de Arranque"
 meta_title: "Proceso de Arranque: Gestor de Arranque - Arrancar el Sistema"

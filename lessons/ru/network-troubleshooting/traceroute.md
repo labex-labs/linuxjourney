@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "traceroute"
 meta_title: "traceroute - Устранение неполадок"

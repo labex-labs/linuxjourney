@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "데비안"
 meta_title: "데비안 - 시작하기"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Conceitos Básicos de Rede"
 meta_title: "Conceitos Básicos de Rede - Noções Básicas de Rede"

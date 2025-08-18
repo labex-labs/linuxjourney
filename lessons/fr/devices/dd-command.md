@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "dd"
 meta_title: "dd - Périphériques"

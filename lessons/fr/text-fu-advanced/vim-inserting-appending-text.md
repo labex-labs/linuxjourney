@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Vim : Insertion et ajout de texte"
 meta_title: "Vim : Insertion et ajout de texte - Text-Fu Avancé"

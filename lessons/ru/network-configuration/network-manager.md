@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "Network Manager"
 meta_title: "Network Manager - Конфигурация сети"

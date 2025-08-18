@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "stderr (Стандартный поток ошибок)"
 meta_title: "stderr (Стандартный поток ошибок) - Text-Fu"

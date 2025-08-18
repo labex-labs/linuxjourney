@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "fr"
 title: "niceness"
 meta_title: "niceness - Processus"

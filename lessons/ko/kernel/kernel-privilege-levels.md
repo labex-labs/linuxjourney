@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "권한 수준"
 meta_title: "권한 수준 - Kernel"

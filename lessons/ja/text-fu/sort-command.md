@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ja"
 title: "sort"
 meta_title: "sort - テキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Fedora"
 meta_title: "Fedora - Démarrage"

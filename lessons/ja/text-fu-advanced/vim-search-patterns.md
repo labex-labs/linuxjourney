@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "Vim の検索パターン"
 meta_title: "Vim の検索パターン - 高度なテキスト操作"

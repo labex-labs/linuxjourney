@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "所有权权限"
 meta_title: "所有权权限 - 权限"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "/etc/passwd"
 meta_title: "/etc/passwd - Управление пользователями"

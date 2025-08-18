@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Eligiendo una Distribución de Linux"
 meta_title: "Eligiendo una Distribución de Linux - Primeros Pasos"

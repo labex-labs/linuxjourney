@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "DNS プロセス"
 meta_title: "DNS プロセス - DNS"

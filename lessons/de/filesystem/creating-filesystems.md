@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Dateisysteme erstellen"
 meta_title: "Dateisysteme erstellen - Das Dateisystem"

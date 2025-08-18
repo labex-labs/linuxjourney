@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Bootprozess: Kernel"
 meta_title: "Bootprozess: Kernel - System booten"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "커널 모듈"
 meta_title: "커널 모듈 - Kernel"

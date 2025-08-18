@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ソフトウェア配布"
 meta_title: "ソフトウェア配布 - パッケージ"

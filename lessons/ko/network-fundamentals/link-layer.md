@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "링크 계층"
 meta_title: "링크 계층 - 네트워크 기본"

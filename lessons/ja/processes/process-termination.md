@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "プロセスの終了"
 meta_title: "プロセスの終了 - プロセス"

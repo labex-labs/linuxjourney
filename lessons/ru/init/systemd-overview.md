@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Обзор Systemd"
 meta_title: "Обзор Systemd - Init"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "root"
 meta_title: "root - ユーザー管理"

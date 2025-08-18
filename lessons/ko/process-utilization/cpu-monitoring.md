@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "CPU 모니터링"
 meta_title: "CPU 모니터링 - 프로세스 활용"

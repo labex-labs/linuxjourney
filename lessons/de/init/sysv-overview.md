@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "System V Überblick"
 meta_title: "System V Überblick - Init"

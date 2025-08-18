@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "OSI 模型"
 meta_title: "OSI 模型 - 网络基础"

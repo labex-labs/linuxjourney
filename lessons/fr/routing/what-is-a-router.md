@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Qu'est-ce qu'un routeur ?"
 meta_title: "Qu'est-ce qu'un routeur ? - Routage"

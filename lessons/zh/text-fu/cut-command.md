@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "cut"
 meta_title: "cut - 文本操作"

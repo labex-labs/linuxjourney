@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Сигналы"
 meta_title: "Сигналы - Процессы"

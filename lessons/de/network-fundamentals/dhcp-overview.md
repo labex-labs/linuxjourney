@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "de"
 title: "DHCP-Übersicht"
 meta_title: "DHCP-Übersicht - Netzwerkgrundlagen"

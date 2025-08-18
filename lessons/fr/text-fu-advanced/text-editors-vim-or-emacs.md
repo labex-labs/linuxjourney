@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Éditeurs de texte"
 meta_title: "Éditeurs de texte - Text-Fu Avancé"

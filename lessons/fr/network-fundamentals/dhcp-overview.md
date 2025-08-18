@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "fr"
 title: "Présentation du DHCP"
 meta_title: "Présentation du DHCP - Bases du Réseau"

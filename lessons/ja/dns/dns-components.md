@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "DNS コンポーネント"
 meta_title: "DNS コンポーネント - DNS"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "tar と gzip"
 meta_title: "tar と gzip - パッケージ"

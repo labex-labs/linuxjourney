@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "Prozessberechtigungen"
 meta_title: "Prozessberechtigungen - Berechtigungen"

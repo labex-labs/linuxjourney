@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "File Sharing Overview"
 meta_title: "File Sharing Overview - Network Sharing"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "什么是路由器？"
 meta_title: "什么是路由器？ - 路由"

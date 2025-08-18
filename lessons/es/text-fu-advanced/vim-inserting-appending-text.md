@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Vim: Insertar y Añadir Texto"
 meta_title: "Vim: Insertar y Añadir Texto - Text-Fu Avanzado"

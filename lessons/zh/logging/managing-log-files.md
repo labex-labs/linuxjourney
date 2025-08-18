@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "管理日志文件"
 meta_title: "管理日志文件 - 日志"

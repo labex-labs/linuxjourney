@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "tipos de dispositivos"
 meta_title: "tipos de dispositivos - Dispositivos"

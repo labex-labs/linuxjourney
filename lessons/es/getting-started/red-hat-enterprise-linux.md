@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - Primeros Pasos"

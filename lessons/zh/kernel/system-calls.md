@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "系统调用"
 meta_title: "系统调用 - 内核"

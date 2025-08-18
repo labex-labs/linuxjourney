@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Boot-Prozess: BIOS"
 meta_title: "Boot-Prozess: BIOS - System booten"

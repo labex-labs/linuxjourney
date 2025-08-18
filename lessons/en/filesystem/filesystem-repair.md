@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "en"
 title: "Filesystem Repair"
 meta_title: "Filesystem Repair - The Filesystem"

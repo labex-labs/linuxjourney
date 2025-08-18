@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "openSUSE"
 meta_title: "openSUSE - 시작하기"

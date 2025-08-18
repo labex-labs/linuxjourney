@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "История"
 meta_title: "История - Начало работы"

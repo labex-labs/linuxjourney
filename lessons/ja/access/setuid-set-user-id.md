@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "Setuid"
 meta_title: "Setuid - パーミッション"

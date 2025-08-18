@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "es"
 title: "Capa de Enlace"
 meta_title: "Capa de Enlace - Conceptos Básicos de Red"

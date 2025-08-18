@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "route"
 meta_title: "route - ネットワーク設定"

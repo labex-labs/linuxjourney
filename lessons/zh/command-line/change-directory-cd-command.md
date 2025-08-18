@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "cd (更改目录)"
 meta_title: "cd (更改目录) - 命令行"

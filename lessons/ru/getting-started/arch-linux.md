@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ru"
 title: "Arch Linux"
 meta_title: "Arch Linux - Начало работы"

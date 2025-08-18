@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "Fedora"
 meta_title: "Fedora - Getting Started"

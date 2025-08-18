@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "Netzwerkschicht"
 meta_title: "Netzwerkschicht - Netzwerkgrundlagen"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Herramientas DNS"
 meta_title: "Herramientas DNS - DNS"

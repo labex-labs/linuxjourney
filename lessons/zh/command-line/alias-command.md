@@ -1,4 +1,5 @@
 ---
+index: 18
 lang: "zh"
 title: "别名"
 meta_title: "别名 - 命令行"

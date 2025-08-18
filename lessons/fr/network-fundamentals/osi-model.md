@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Modèle OSI"
 meta_title: "Modèle OSI - Bases du Réseau"

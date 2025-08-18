@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "zh"
 title: "帮助"
 meta_title: "帮助 - 命令行"

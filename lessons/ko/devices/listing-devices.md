@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "lsusb, lspci, lsscsi"
 meta_title: "lsusb, lspci, lsscsi - 장치"

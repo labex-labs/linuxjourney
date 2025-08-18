@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "lsof 和 fuser"
 meta_title: "lsof 和 fuser - 进程利用率"

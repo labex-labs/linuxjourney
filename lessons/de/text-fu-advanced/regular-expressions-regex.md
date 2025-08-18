@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "regex (Reguläre Ausdrücke)"
 meta_title: "regex (Reguläre Ausdrücke) - Fortgeschrittenes Text-Fu"

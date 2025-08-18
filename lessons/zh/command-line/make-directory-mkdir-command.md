@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "zh"
 title: "mkdir (创建目录)"
 meta_title: "mkdir (创建目录) - 命令行"

@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "en"
 title: "join and split"
 meta_title: "join and split - Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Berechtigungen ändern"
 meta_title: "Berechtigungen ändern - Berechtigungen"

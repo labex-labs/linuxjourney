@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ファイル共有の概要"
 meta_title: "ファイル共有の概要 - ネットワーク共有"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "디스크 파티션"
 meta_title: "디스크 파티션 - 파일 시스템"

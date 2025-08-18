@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "패키지 종속성"
 meta_title: "패키지 종속성 - 패키지"

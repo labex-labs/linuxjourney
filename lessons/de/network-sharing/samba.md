@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Samba"
 meta_title: "Samba - Netzwerkfreigabe"

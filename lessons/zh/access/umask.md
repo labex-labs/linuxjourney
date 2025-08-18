@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "Umask"
 meta_title: "Umask - 权限"

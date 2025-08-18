@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "システムロギング"
 meta_title: "システムロギング - ロギング"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "Registro General"
 meta_title: "Registro General - Registro"

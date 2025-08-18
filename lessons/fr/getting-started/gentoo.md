@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "fr"
 title: "Gentoo"
 meta_title: "Gentoo - Démarrage"

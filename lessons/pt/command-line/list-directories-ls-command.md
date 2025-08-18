@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "ls (Listar Diretórios)"
 meta_title: "ls (Listar Diretórios) - Linha de Comando"

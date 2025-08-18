@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "zh"
 title: "sort"
 meta_title: "sort - 文本操作"

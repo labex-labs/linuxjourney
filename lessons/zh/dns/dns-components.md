@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "DNS 组件"
 meta_title: "DNS 组件 - DNS"

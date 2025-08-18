@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ja"
 title: "Emacs のバッファナビゲーション"
 meta_title: "Emacs のバッファナビゲーション - 高度なテキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "ブートプロセス：Init"
 meta_title: "ブートプロセス：Init - システムの起動"

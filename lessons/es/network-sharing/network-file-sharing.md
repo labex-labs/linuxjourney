@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Visión general del uso compartido de archivos"
 meta_title: "Visión general del uso compartido de archivos - Compartir Red"

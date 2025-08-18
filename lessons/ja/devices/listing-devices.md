@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "lsusb, lspci, lsscsi"
 meta_title: "lsusb, lspci, lsscsi - デバイス"

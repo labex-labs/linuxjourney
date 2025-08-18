@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "文件共享概述"
 meta_title: "文件共享概述 - 网络共享"

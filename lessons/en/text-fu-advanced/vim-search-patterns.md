@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "Vim Search Patterns"
 meta_title: "Vim Search Patterns - Advanced Text-Fu"

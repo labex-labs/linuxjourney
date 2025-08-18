@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Fedora"
 meta_title: "Fedora - Начало работы"

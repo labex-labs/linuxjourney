@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "rsync"
 meta_title: "rsync - Netzwerkfreigabe"

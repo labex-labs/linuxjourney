@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Proceso de Arranque: Kernel"
 meta_title: "Proceso de Arranque: Kernel - Arrancar el Sistema"

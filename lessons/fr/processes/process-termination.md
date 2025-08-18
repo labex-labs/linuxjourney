@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Terminaison de processus"
 meta_title: "Terminaison de processus - Processus"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Filesystem Types"
 meta_title: "Filesystem Types - The Filesystem"

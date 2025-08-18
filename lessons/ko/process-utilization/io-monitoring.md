@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "I/O 모니터링"
 meta_title: "I/O 모니터링 - 프로세스 활용"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "/etc/passwd"
 meta_title: "/etc/passwd - 用户管理"

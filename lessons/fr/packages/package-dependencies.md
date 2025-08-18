@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Dépendances de paquets"
 meta_title: "Dépendances de paquets - Packages"

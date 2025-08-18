@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "系统日志记录"
 meta_title: "系统日志记录 - 日志"

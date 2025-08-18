@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Навигация Vim"
 meta_title: "Навигация Vim - Продвинутый Text-Fu"

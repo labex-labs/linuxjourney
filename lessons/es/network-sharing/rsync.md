@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "rsync"
 meta_title: "rsync - Compartir Red"

@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "de"
 title: "Emacs Puffer-Navigation"
 meta_title: "Emacs Puffer-Navigation - Fortgeschrittenes Text-Fu"

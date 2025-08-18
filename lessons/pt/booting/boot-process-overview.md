@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Visão Geral do Processo de Inicialização"
 meta_title: "Visão Geral do Processo de Inicialização - Inicializar o Sistema"

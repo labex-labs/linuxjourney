@@ -1,4 +1,5 @@
 ---
+index: 16
 lang: "pt"
 title: "man"
 meta_title: "man - Linha de Comando"

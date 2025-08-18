@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "Systemd 목표"
 meta_title: "Systemd 목표 - Init"

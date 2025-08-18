@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "软件包仓库"
 meta_title: "软件包仓库 - 软件包"

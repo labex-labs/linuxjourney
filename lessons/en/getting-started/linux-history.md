@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "History"
 meta_title: "History - Getting Started"

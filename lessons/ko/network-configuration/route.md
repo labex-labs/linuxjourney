@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "route"
 meta_title: "route - 네트워크 구성"

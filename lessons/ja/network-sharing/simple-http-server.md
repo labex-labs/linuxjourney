@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "シンプルな HTTP サーバー"
 meta_title: "シンプルな HTTP サーバー - ネットワーク共有"

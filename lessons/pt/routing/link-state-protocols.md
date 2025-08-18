@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "Protocolos de Estado de Link"
 meta_title: "Protocolos de Estado de Link - Roteamento"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "System V 개요"
 meta_title: "System V 개요 - Init"

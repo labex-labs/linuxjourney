@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "en"
 title: "wc and nl"
 meta_title: "wc and nl - Text-Fu"

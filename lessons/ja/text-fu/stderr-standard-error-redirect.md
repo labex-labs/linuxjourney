@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "stderr (標準エラー)"
 meta_title: "stderr (標準エラー) - テキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "CPU 監視"
 meta_title: "CPU 監視 - プロセス利用率"

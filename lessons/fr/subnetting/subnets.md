@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Sous-réseaux"
 meta_title: "Sous-réseaux - Subnetting"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "Network Addressing"
 meta_title: "Network Addressing - Network Basics"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "DNS 구성 요소"
 meta_title: "DNS 구성 요소 - DNS"

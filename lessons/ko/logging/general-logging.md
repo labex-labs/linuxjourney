@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "일반 로깅"
 meta_title: "일반 로깅 - 로깅"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "en"
 title: "Samba"
 meta_title: "Samba - Network Sharing"

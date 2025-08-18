@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "커널 설치"
 meta_title: "커널 설치 - Kernel"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "ps (进程)"
 meta_title: "ps (进程) - 进程"

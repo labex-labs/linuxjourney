@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "regex (正则表达式)"
 meta_title: "regex (正则表达式) - 高级文本操作"

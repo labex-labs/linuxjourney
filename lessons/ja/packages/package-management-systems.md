@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "yum と apt"
 meta_title: "yum と apt - パッケージ"

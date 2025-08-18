@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Настройка DNS"
 meta_title: "Настройка DNS - DNS"

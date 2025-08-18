@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Text Editors"
 meta_title: "Text Editors - Advanced Text-Fu"

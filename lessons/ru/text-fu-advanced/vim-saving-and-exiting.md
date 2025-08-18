@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "Сохранение и выход из Vim"
 meta_title: "Сохранение и выход из Vim - Продвинутый Text-Fu"

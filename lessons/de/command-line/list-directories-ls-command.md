@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "ls (Verzeichnisse auflisten)"
 meta_title: "ls (Verzeichnisse auflisten) - Command Line"

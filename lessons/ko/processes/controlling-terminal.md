@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "터미널 제어"
 meta_title: "터미널 제어 - 프로세스"

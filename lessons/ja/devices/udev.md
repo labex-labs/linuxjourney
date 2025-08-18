@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "udev"
 meta_title: "udev - デバイス"

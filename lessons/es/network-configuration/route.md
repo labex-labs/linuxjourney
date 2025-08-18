@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "route"
 meta_title: "route - Configuración de Red"

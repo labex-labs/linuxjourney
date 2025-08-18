@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ko"
 title: "tr (변환)"
 meta_title: "tr (변환) - Text-Fu"

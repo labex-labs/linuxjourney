@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Kernel-Speicherort"
 meta_title: "Kernel-Speicherort - Kernel"

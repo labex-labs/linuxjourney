@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "en"
 title: "rm (Remove)"
 meta_title: "rm (Remove) - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "사용자 관리 도구"
 meta_title: "사용자 관리 도구 - 사용자 관리"

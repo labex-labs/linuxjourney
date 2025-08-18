@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "NAT"
 meta_title: "NAT - Subnetting"

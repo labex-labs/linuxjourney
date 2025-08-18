@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "서브넷팅 치트 시트"
 meta_title: "서브넷팅 치트 시트 - 서브넷팅"

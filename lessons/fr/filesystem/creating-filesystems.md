@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Création de systèmes de fichiers"
 meta_title: "Création de systèmes de fichiers - Le Filesystem"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "Managing Log Files"
 meta_title: "Managing Log Files - Logging"

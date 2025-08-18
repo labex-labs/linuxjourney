@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Ownership Permissions"
 meta_title: "Ownership Permissions - Permissions"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "fr"
 title: "less"
 meta_title: "less - Command Line"

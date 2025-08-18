@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "device types"
 meta_title: "device types - Devices"

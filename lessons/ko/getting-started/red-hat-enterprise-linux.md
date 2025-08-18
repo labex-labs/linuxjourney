@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - 시작하기"

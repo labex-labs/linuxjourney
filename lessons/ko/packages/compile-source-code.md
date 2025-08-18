@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "소스 코드 컴파일"
 meta_title: "소스 코드 컴파일 - 패키지"

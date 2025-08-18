@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "es"
 title: "Vim: Guardar y Salir"
 meta_title: "Vim: Guardar y Salir - Text-Fu Avanzado"

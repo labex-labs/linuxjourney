@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Netzwerkgrundlagen"
 meta_title: "Netzwerkgrundlagen - Netzwerkgrundlagen"

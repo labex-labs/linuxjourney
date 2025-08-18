@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "dhclient"
 meta_title: "dhclient - Конфигурация сети"

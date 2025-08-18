@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "tar 和 gzip"
 meta_title: "tar 和 gzip - 软件包"

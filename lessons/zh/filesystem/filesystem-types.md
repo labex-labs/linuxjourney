@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "文件系统类型"
 meta_title: "文件系统类型 - 文件系统"

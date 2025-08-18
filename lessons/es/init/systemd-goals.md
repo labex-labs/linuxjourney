@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Objetivos de Systemd"
 meta_title: "Objetivos de Systemd - Init"

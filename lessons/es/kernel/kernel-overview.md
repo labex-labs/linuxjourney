@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Visión general del Kernel"
 meta_title: "Visión general del Kernel - Kernel"

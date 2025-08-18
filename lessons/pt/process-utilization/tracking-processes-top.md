@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Rastreando processos: top"
 meta_title: "Rastreando processos: top - Utilização de Processos"

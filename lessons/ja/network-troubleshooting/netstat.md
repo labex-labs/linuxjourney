@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "netstat"
 meta_title: "netstat - トラブルシューティング"

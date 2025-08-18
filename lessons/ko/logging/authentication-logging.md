@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "인증 로깅"
 meta_title: "인증 로깅 - 로깅"

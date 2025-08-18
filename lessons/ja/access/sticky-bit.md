@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "スティッキービット"
 meta_title: "スティッキービット - パーミッション"

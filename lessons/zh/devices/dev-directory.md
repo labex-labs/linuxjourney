@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "/dev 目录"
 meta_title: "/dev 目录 - 设备"

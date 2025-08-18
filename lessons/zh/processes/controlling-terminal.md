@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "控制终端"
 meta_title: "控制终端 - 进程"

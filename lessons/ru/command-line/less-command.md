@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "less"
 meta_title: "less - Командная строка"

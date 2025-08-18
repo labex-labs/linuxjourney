@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "en"
 title: "Emacs Buffer Navigation"
 meta_title: "Emacs Buffer Navigation - Advanced Text-Fu"

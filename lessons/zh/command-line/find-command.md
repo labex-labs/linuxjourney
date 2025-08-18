@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "zh"
 title: "find"
 meta_title: "find - 命令行"

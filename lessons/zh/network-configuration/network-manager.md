@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "网络管理器"
 meta_title: "网络管理器 - 网络配置"

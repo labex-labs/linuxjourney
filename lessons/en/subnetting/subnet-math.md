@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Subnet Math"
 meta_title: "Subnet Math - Subnetting"

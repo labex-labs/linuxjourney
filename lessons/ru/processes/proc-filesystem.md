@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ru"
 title: "/proc filesystem"
 meta_title: "/proc filesystem - Процессы"

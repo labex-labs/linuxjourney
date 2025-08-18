@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Simple HTTP Server"
 meta_title: "Simple HTTP Server - Network Sharing"

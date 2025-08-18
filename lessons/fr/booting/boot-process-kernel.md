@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Processus de démarrage : Noyau"
 meta_title: "Processus de démarrage : Noyau - Démarrer le Système"

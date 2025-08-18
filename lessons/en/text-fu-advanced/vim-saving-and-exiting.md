@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "en"
 title: "Vim Saving and Exiting"
 meta_title: "Vim Saving and Exiting - Advanced Text-Fu"

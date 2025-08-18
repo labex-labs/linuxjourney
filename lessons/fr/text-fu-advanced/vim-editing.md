@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "Édition Vim"
 meta_title: "Édition Vim - Text-Fu Avancé"

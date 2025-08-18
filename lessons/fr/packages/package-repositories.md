@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Dépôts de Paquets"
 meta_title: "Dépôts de Paquets - Packages"

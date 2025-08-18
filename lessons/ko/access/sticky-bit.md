@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "스티키 비트"
 meta_title: "스티키 비트 - 권한"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "Vim (Vi Improved)"
 meta_title: "Vim (Vi Improved) - Продвинутый Text-Fu"

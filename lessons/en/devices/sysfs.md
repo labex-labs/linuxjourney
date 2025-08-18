@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "sysfs"
 meta_title: "sysfs - Devices"

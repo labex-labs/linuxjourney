@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "syslog"
 meta_title: "syslog - Registro"

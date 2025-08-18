@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "スワップ"
 meta_title: "スワップ - ファイルシステム"

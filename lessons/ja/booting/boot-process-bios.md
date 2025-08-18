@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "起動プロセス：BIOS"
 meta_title: "起動プロセス：BIOS - システムの起動"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "paste"
 meta_title: "paste - 文本操作"

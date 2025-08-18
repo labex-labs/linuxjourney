@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "es"
 title: "uniq (Único)"
 meta_title: "uniq (Único) - Text-Fu"

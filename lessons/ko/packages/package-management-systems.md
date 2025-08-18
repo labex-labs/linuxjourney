@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "yum 과 apt"
 meta_title: "yum 과 apt - 패키지"

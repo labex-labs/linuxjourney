@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "fr"
 title: "Réparation du système de fichiers"
 meta_title: "Réparation du système de fichiers - Le Filesystem"

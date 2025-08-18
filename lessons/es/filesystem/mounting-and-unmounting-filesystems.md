@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "mount y umount"
 meta_title: "mount y umount - El Filesystem"

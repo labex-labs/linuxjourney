@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "Linux Mint"
 meta_title: "Linux Mint - 入门"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "en"
 title: "The Sticky Bit"
 meta_title: "The Sticky Bit - Permissions"

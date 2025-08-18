@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Umask"
 meta_title: "Umask - Permissions"

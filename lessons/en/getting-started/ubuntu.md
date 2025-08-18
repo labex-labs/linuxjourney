@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "en"
 title: "Ubuntu"
 meta_title: "Ubuntu - Getting Started"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "DNS 过程"
 meta_title: "DNS 过程 - DNS"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "进程权限"
 meta_title: "进程权限 - 权限"

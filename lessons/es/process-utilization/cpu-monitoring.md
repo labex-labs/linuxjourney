@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "es"
 title: "Monitoreo de CPU"
 meta_title: "Monitoreo de CPU - Utilización de Procesos"

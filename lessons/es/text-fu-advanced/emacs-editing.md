@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "es"
 title: "Edición en Emacs"
 meta_title: "Edición en Emacs - Text-Fu Avanzado"

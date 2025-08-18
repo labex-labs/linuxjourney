@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "dd"
 meta_title: "dd - 장치"

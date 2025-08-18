@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "zh"
 title: "符号链接"
 meta_title: "符号链接 - 文件系统"

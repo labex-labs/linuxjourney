@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "yum e apt"
 meta_title: "yum e apt - Pacotes"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "Debian"
 meta_title: "Debian - はじめに"

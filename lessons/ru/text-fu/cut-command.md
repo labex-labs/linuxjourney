@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "cut"
 meta_title: "cut - Text-Fu"

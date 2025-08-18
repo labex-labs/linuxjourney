@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "文件系统层次结构"
 meta_title: "文件系统层次结构 - 文件系统"

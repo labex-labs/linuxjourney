@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "cat"
 meta_title: "cat - Command Line"

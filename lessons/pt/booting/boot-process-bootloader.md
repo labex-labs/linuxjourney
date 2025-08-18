@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "Processo de Inicialização: Bootloader"
 meta_title: "Processo de Inicialização: Bootloader - Inicializar o Sistema"

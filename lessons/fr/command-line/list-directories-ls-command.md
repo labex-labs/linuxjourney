@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "ls (Lister les répertoires)"
 meta_title: "ls (Lister les répertoires) - Command Line"

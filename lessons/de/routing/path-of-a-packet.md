@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Pfad eines Pakets"
 meta_title: "Pfad eines Pakets - Routing"

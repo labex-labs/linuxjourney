@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "sysfs"
 meta_title: "sysfs - 设备"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "pwd (Imprimir Diretório de Trabalho)"
 meta_title: "pwd (Imprimir Diretório de Trabalho) - Linha de Comando"

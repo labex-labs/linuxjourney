@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "fr"
 title: "Navigation des tampons Emacs"
 meta_title: "Navigation des tampons Emacs - Text-Fu Avancé"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "시스템 로깅"
 meta_title: "시스템 로깅 - 로깅"

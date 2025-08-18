@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Besitzberechtigungen"
 meta_title: "Besitzberechtigungen - Berechtigungen"

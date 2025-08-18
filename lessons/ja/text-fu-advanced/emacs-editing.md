@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ja"
 title: "Emacs 編集"
 meta_title: "Emacs 編集 - 高度なテキスト操作"

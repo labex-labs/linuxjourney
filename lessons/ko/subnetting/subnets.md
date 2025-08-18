@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "서브넷"
 meta_title: "서브넷 - 서브넷팅"

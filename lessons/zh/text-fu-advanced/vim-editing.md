@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "Vim 编辑"
 meta_title: "Vim 编辑 - 高级文本操作"

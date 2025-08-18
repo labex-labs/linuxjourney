@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Die Shell"
 meta_title: "Die Shell - Command Line"

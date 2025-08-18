@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "env (Окружение)"
 meta_title: "env (Окружение) - Text-Fu"

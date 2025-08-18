@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Paketanalyse"
 meta_title: "Paketanalyse - Fehlerbehebung"

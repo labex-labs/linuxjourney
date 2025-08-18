@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Processus de démarrage : Init"
 meta_title: "Processus de démarrage : Init - Démarrer le Système"

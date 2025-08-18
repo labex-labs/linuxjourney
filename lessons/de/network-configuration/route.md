@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "route"
 meta_title: "route - Netzwerkkonfiguration"

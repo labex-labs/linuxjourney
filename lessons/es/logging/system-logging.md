@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Registro del sistema"
 meta_title: "Registro del sistema - Registro"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "/etc/group"
 meta_title: "/etc/group - Управление пользователями"

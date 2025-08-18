@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "en"
 title: "Debian"
 meta_title: "Debian - Getting Started"

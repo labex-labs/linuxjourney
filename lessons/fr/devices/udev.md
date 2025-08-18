@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "udev"
 meta_title: "udev - Périphériques"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Aperçu du processus de démarrage"
 meta_title: "Aperçu du processus de démarrage - Démarrer le Système"

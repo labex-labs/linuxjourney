@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Diretório /dev"
 meta_title: "Diretório /dev - Dispositivos"

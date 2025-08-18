@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "cd (Cambiar Directorio)"
 meta_title: "cd (Cambiar Directorio) - Command Line"

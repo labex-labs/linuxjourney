@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "ICMP"
 meta_title: "ICMP - Устранение неполадок"

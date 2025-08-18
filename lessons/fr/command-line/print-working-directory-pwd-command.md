@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "pwd (Répertoire de travail actuel)"
 meta_title: "pwd (Répertoire de travail actuel) - Command Line"

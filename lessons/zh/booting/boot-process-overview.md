@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "启动过程概述"
 meta_title: "启动过程概述 - 启动系统"

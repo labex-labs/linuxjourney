@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "特权级别"
 meta_title: "特权级别 - 内核"

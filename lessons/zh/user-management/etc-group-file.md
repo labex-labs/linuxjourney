@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "/etc/group"
 meta_title: "/etc/group - 用户管理"

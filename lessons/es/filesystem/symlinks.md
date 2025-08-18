@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "es"
 title: "Symlinks"
 meta_title: "Symlinks - El Filesystem"

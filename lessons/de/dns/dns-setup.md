@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "DNS-Einrichtung"
 meta_title: "DNS-Einrichtung - DNS"

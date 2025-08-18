@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "route"
 meta_title: "route - Конфигурация сети"

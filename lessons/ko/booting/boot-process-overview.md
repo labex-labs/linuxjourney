@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "부팅 프로세스 개요"
 meta_title: "부팅 프로세스 개요 - 시스템 부팅"

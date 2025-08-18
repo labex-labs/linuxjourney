@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "Состояния питания"
 meta_title: "Состояния питания - Init"

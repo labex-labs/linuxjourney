@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "シェル"
 meta_title: "シェル - コマンドライン"

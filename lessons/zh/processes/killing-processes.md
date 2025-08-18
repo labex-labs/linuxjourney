@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "kill (终止)"
 meta_title: "kill (终止) - 进程"

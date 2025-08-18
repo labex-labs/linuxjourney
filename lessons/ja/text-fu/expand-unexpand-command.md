@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ja"
 title: "expand と unexpand"
 meta_title: "expand と unexpand - テキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "arquivo"
 meta_title: "arquivo - Linha de Comando"

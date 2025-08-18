@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "netstat"
 meta_title: "netstat - 문제 해결"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "/etc/fstab"
 meta_title: "/etc/fstab - Файловая система"

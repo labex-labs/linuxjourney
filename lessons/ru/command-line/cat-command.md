@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "cat"
 meta_title: "cat - Командная строка"

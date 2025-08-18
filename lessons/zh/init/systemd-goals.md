@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "Systemd 目标"
 meta_title: "Systemd 目标 - 初始化"

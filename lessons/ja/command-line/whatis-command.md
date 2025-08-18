@@ -1,4 +1,5 @@
 ---
+index: 17
 lang: "ja"
 title: "whatis"
 meta_title: "whatis - コマンドライン"

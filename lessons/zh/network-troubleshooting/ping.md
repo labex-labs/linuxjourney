@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "ping"
 meta_title: "ping - 故障排除"

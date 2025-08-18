@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ko"
 title: "Inode"
 meta_title: "Inode - 파일 시스템"

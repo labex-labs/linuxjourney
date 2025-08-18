@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "用户管理工具"
 meta_title: "用户管理工具 - 用户管理"

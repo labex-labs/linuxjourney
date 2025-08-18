@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "Vim-Bearbeitung"
 meta_title: "Vim-Bearbeitung - Fortgeschrittenes Text-Fu"

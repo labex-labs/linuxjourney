@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "Ubuntu"
 meta_title: "Ubuntu - はじめに"

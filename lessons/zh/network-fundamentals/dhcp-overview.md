@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "zh"
 title: "DHCP 概述"
 meta_title: "DHCP 概述 - 网络基础"

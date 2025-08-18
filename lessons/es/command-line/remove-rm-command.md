@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "es"
 title: "rm (Eliminar)"
 meta_title: "rm (Eliminar) - Command Line"

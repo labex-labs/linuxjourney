@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "en"
 title: "Process Permissions"
 meta_title: "Process Permissions - Permissions"

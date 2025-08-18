@@ -1,4 +1,5 @@
 ---
+index: 16
 lang: "fr"
 title: "man"
 meta_title: "man - Command Line"

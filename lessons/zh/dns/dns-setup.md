@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "DNS 设置"
 meta_title: "DNS 设置 - DNS"

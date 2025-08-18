@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "en"
 title: "cp (Copy)"
 meta_title: "cp (Copy) - Command Line"

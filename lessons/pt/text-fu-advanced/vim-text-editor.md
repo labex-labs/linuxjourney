@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "Vim (Vi Melhorado)"
 meta_title: "Vim (Vi Melhorado) - Text-Fu Avançado"

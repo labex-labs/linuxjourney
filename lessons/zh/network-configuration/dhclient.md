@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "dhclient"
 meta_title: "dhclient - 网络配置"

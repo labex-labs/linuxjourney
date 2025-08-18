@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "Debian"
 meta_title: "Debian - Начало работы"

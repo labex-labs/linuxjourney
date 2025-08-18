@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "CIDR"
 meta_title: "CIDR - Subnetting"

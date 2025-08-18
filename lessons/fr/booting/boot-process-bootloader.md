@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Processus de démarrage : Chargeur de démarrage"
 meta_title: "Processus de démarrage : Chargeur de démarrage - Démarrer le Système"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "Disk Partitioning"
 meta_title: "Disk Partitioning - The Filesystem"

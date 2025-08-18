@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "/dev 디렉토리"
 meta_title: "/dev 디렉토리 - 장치"

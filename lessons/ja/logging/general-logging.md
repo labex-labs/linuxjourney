@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "一般的なロギング"
 meta_title: "一般的なロギング - ロギング"

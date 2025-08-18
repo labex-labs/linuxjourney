@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Gestion des fichiers journaux"
 meta_title: "Gestion des fichiers journaux - Logging"

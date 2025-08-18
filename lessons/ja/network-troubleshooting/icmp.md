@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ICMP"
 meta_title: "ICMP - トラブルシューティング"

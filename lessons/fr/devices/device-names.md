@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Noms des périphériques"
 meta_title: "Noms des périphériques - Périphériques"

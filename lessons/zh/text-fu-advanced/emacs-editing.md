@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "zh"
 title: "Emacs 编辑"
 meta_title: "Emacs 编辑 - 高级文本操作"

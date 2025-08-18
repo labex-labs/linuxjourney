@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "Обзор Upstart"
 meta_title: "Обзор Upstart - Init"

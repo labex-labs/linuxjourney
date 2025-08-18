@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "信号"
 meta_title: "信号 - 进程"

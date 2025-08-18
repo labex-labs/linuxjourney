@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Subnets"
 meta_title: "Subnets - Subnetting"

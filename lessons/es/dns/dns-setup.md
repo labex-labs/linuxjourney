@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "Configuración de DNS"
 meta_title: "Configuración de DNS - DNS"

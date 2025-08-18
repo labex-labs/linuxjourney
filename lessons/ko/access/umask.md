@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "Umask"
 meta_title: "Umask - 권한"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Journalisation générale"
 meta_title: "Journalisation générale - Logging"

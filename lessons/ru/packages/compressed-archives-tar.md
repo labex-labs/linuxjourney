@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ru"
 title: "tar и gzip"
 meta_title: "tar и gzip - Пакеты"

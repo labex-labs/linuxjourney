@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "en"
 title: "expand and unexpand"
 meta_title: "expand and unexpand - Text-Fu"

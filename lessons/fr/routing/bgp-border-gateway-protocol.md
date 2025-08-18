@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "Border Gateway Protocol"
 meta_title: "Border Gateway Protocol - Routage"

@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ko"
 title: "Emacs 편집"
 meta_title: "Emacs 편집 - 고급 Text-Fu"

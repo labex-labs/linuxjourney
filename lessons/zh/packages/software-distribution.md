@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "软件分发"
 meta_title: "软件分发 - 软件包"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Journalisation du noyau"
 meta_title: "Journalisation du noyau - Logging"

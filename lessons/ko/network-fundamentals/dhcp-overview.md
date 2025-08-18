@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ko"
 title: "DHCP 개요"
 meta_title: "DHCP 개요 - 네트워크 기본"

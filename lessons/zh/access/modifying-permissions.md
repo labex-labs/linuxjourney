@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "修改权限"
 meta_title: "修改权限 - 权限"

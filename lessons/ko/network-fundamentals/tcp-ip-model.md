@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "TCP/IP 모델"
 meta_title: "TCP/IP 모델 - 네트워크 기본"

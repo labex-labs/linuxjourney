@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Hierarquia do Sistema de Arquivos"
 meta_title: "Hierarquia do Sistema de Arquivos - O Filesystem"

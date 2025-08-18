@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "es"
 title: "Herramientas de gestión de usuarios"
 meta_title: "Herramientas de gestión de usuarios - Gestión de Usuarios"

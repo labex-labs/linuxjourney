@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ko"
 title: "join 및 split"
 meta_title: "join 및 split - Text-Fu"

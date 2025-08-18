@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "pt"
 title: "swap"
 meta_title: "swap - O Filesystem"

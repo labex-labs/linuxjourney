@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "yum and apt"
 meta_title: "yum and apt - Packages"

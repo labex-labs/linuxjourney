@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Gerätetypen"
 meta_title: "Gerätetypen - Geräte"

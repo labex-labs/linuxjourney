@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "pt"
 title: "Salvando e Saindo do Vim"
 meta_title: "Salvando e Saindo do Vim - Text-Fu Avançado"

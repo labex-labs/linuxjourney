@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Übersicht über die Dateifreigabe"
 meta_title: "Übersicht über die Dateifreigabe - Netzwerkfreigabe"

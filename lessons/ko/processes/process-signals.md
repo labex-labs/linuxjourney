@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "시그널"
 meta_title: "시그널 - 프로세스"

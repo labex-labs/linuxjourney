@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "swap"
 meta_title: "swap - Файловая система"

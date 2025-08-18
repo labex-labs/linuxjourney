@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "DNS とは？"
 meta_title: "DNS とは？ - DNS"

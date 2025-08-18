@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Distribution de logiciels"
 meta_title: "Distribution de logiciels - Packages"

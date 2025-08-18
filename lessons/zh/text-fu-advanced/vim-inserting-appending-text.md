@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "Vim 插入和附加文本"
 meta_title: "Vim 插入和附加文本 - 高级文本操作"

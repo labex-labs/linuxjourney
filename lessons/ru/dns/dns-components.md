@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "Компоненты DNS"
 meta_title: "Компоненты DNS - DNS"

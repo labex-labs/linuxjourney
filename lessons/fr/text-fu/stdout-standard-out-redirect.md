@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "stdout (Sortie Standard)"
 meta_title: "stdout (Sortie Standard) - Text-Fu"

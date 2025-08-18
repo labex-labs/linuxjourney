@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "Ubuntu"
 meta_title: "Ubuntu - 시작하기"

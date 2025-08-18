@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "Package Dependencies"
 meta_title: "Package Dependencies - Packages"

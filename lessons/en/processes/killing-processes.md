@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "en"
 title: "kill (Terminate)"
 meta_title: "kill (Terminate) - Processes"

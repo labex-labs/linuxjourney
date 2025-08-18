@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "pt"
 title: "rm (Remover)"
 meta_title: "rm (Remover) - Linha de Comando"

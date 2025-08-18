@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "Processo de Inicialização: BIOS"
 meta_title: "Processo de Inicialização: BIOS - Inicializar o Sistema"

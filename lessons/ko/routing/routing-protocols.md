@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "라우팅 프로토콜"
 meta_title: "라우팅 프로토콜 - 라우팅"

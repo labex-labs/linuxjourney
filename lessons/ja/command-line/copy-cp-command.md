@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ja"
 title: "cp (コピー)"
 meta_title: "cp (コピー) - コマンドライン"

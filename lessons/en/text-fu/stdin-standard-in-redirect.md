@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "stdin (Standard In)"
 meta_title: "stdin (Standard In) - Text-Fu"

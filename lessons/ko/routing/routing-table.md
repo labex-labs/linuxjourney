@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "라우팅 테이블"
 meta_title: "라우팅 테이블 - 라우팅"

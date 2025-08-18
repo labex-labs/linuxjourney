@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "IPv6"
 meta_title: "IPv6 - 서브넷팅"

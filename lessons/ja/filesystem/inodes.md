@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ja"
 title: "Inodes"
 meta_title: "Inodes - ファイルシステム"

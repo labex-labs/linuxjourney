@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "网络接口"
 meta_title: "网络接口 - 网络配置"

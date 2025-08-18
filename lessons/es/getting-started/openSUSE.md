@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "es"
 title: "openSUSE"
 meta_title: "openSUSE - Primeros Pasos"

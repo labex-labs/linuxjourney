@@ -1,4 +1,5 @@
 ---
+index: 18
 lang: "ru"
 title: "alias"
 meta_title: "alias - Командная строка"

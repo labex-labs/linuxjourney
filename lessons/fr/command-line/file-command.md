@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "fichier"
 meta_title: "fichier - Command Line"

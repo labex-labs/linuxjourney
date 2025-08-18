@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Netzwerkmanager"
 meta_title: "Netzwerkmanager - Netzwerkkonfiguration"

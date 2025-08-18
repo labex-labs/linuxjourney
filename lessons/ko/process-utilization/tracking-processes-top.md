@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "프로세스 추적: top"
 meta_title: "프로세스 추적: top - 프로세스 활용"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "Setgid"
 meta_title: "Setgid - 权限"

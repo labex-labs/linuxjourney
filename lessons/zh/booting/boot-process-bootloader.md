@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "引导过程：引导加载程序"
 meta_title: "引导过程：引导加载程序 - 启动系统"

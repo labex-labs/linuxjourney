@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "pwd (打印工作目录)"
 meta_title: "pwd (打印工作目录) - 命令行"

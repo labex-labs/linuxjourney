@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "/etc/fstab"
 meta_title: "/etc/fstab - 파일 시스템"

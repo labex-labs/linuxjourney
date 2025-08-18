@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "Package Repositories"
 meta_title: "Package Repositories - Packages"

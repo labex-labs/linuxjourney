@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "ko"
 title: "help"
 meta_title: "help - Command Line"

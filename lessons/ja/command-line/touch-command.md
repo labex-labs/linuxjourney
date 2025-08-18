@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "touch"
 meta_title: "touch - コマンドライン"

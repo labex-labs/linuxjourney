@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "메모리 모니터링"
 meta_title: "메모리 모니터링 - 프로세스 활용"

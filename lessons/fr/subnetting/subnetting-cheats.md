@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Astuces de Subnetting"
 meta_title: "Astuces de Subnetting - Subnetting"

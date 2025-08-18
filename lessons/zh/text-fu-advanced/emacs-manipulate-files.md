@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "Emacs 文件操作"
 meta_title: "Emacs 文件操作 - 高级文本操作"

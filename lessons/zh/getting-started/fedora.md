@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "Fedora"
 meta_title: "Fedora - 入门"

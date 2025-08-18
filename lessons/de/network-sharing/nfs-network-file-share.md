@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "NFS"
 meta_title: "NFS - Netzwerkfreigabe"

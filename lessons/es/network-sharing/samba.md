@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "Samba"
 meta_title: "Samba - Compartir Red"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "rpm и dpkg"
 meta_title: "rpm и dpkg - Пакеты"

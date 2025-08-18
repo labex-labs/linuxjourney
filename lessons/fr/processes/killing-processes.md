@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "kill (Terminer)"
 meta_title: "kill (Terminer) - Processus"

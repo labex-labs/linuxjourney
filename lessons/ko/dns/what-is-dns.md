@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "DNS 란 무엇인가요?"
 meta_title: "DNS 란 무엇인가요? - DNS"

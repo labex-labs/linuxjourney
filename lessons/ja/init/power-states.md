@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "電源状態"
 meta_title: "電源状態 - Init"

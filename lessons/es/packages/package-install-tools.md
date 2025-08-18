@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "rpm y dpkg"
 meta_title: "rpm y dpkg - Paquetes"

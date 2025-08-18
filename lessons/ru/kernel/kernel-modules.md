@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Модули ядра"
 meta_title: "Модули ядра - Ядро"

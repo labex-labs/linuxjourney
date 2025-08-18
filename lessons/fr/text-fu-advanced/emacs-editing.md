@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "fr"
 title: "Édition Emacs"
 meta_title: "Édition Emacs - Text-Fu Avancé"

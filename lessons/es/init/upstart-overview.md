@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "Visión general de Upstart"
 meta_title: "Visión general de Upstart - Init"

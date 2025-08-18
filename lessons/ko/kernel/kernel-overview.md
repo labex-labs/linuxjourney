@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "커널 개요"
 meta_title: "커널 개요 - Kernel"

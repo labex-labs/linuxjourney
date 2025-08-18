@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "regex (정규 표현식)"
 meta_title: "regex (정규 표현식) - 고급 Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "OSI モデル"
 meta_title: "OSI モデル - ネットワークの基本"

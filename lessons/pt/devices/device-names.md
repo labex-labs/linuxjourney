@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "Nomes de Dispositivos"
 meta_title: "Nomes de Dispositivos - Dispositivos"

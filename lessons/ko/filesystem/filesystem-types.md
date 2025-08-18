@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "파일 시스템 유형"
 meta_title: "파일 시스템 유형 - 파일 시스템"

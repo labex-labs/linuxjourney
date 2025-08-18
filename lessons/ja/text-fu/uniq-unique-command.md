@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "ja"
 title: "uniq (ユニーク)"
 meta_title: "uniq (ユニーク) - テキスト操作"

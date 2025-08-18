@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "types de périphériques"
 meta_title: "types de périphériques - Périphériques"

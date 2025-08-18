@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ファイルシステム階層"
 meta_title: "ファイルシステム階層 - ファイルシステム"

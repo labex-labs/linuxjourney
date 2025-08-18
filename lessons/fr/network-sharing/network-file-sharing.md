@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Aperçu du partage de fichiers"
 meta_title: "Aperçu du partage de fichiers - Partage Réseau"

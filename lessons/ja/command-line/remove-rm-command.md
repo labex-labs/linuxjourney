@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ja"
 title: "rm (削除)"
 meta_title: "rm (削除) - コマンドライン"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Filesystem Hierarchy"
 meta_title: "Filesystem Hierarchy - The Filesystem"

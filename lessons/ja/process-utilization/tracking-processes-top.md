@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "プロセスの追跡：top"
 meta_title: "プロセスの追跡：top - プロセス利用率"

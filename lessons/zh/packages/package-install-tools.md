@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "rpm 和 dpkg"
 meta_title: "rpm 和 dpkg - 软件包"

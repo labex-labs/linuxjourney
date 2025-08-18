@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Dateiberechtigungen"
 meta_title: "Dateiberechtigungen - Berechtigungen"

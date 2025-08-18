@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "de"
 title: "Dateisystemreparatur"
 meta_title: "Dateisystemreparatur - Das Dateisystem"

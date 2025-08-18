@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ru"
 title: "Навигация по буферам Emacs"
 meta_title: "Навигация по буферам Emacs - Продвинутый Text-Fu"

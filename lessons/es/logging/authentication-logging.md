@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "Registro de Autenticación"
 meta_title: "Registro de Autenticación - Registro"

@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "ko"
 title: "uniq (고유)"
 meta_title: "uniq (고유) - Text-Fu"

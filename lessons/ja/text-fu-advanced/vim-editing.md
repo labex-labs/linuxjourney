@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "Vim 編集"
 meta_title: "Vim 編集 - 高度なテキスト操作"

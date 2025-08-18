@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "pt"
 title: "mkdir (Criar Diretório)"
 meta_title: "mkdir (Criar Diretório) - Linha de Comando"

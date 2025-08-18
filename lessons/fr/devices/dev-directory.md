@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Répertoire /dev"
 meta_title: "Répertoire /dev - Périphériques"

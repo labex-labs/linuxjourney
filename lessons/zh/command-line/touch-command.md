@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "touch"
 meta_title: "touch - 命令行"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "Link State Protocols"
 meta_title: "Link State Protocols - Routing"

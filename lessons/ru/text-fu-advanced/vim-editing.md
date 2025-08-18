@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "Редактирование в Vim"
 meta_title: "Редактирование в Vim - Продвинутый Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "es"
 title: "salir"
 meta_title: "salir - Command Line"

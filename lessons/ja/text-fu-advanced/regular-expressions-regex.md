@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "regex（正規表現）"
 meta_title: "regex（正規表現） - 高度なテキスト操作"

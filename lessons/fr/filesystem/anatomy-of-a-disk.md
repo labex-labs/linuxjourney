@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Anatomie d'un Disque"
 meta_title: "Anatomie d'un Disque - Le Filesystem"

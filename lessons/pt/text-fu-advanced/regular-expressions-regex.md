@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "regex (Expressões Regulares)"
 meta_title: "regex (Expressões Regulares) - Text-Fu Avançado"

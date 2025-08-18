@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "zh"
 title: "uniq (唯一)"
 meta_title: "uniq (唯一) - 文本操作"

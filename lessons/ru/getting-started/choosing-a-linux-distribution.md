@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "Выбор дистрибутива Linux"
 meta_title: "Выбор дистрибутива Linux - Начало работы"

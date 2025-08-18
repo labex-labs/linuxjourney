@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "es"
 title: "head"
 meta_title: "head - Text-Fu"

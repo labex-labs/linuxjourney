@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "États d'alimentation"
 meta_title: "États d'alimentation - Init"

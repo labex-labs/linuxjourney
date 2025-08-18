@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "通用日志记录"
 meta_title: "通用日志记录 - 日志"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "ping"
 meta_title: "ping - 문제 해결"

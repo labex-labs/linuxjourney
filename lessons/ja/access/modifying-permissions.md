@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "パーミッションの変更"
 meta_title: "パーミッションの変更 - パーミッション"

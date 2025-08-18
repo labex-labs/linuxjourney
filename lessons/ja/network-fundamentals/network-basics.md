@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ネットワークの基本"
 meta_title: "ネットワークの基本 - ネットワークの基本"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "/etc/hosts"
 meta_title: "/etc/hosts - DNS"

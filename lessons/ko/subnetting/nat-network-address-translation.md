@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "NAT"
 meta_title: "NAT - 서브넷팅"

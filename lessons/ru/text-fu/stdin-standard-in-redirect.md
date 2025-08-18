@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ru"
 title: "stdin (Стандартный ввод)"
 meta_title: "stdin (Стандартный ввод) - Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "Tipos de Sistema de Arquivos"
 meta_title: "Tipos de Sistema de Arquivos - O Filesystem"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "라우터란 무엇인가?"
 meta_title: "라우터란 무엇인가? - 라우팅"

@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "de"
 title: "tail"
 meta_title: "tail - Text-Fu"

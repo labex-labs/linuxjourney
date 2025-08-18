@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "Vim 导航"
 meta_title: "Vim 导航 - 高级文本操作"

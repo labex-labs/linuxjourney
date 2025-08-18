@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "Vim (Vi 改进版)"
 meta_title: "Vim (Vi 改进版) - 高级文本操作"

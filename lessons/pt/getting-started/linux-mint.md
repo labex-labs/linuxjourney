@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "pt"
 title: "Linux Mint"
 meta_title: "Linux Mint - Primeiros Passos"

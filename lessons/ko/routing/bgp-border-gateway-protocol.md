@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "Border Gateway Protocol"
 meta_title: "Border Gateway Protocol - 라우팅"

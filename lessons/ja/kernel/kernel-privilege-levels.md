@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "特権レベル"
 meta_title: "特権レベル - Kernel"

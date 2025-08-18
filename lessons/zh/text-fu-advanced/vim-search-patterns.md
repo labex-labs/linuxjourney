@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "Vim 搜索模式"
 meta_title: "Vim 搜索模式 - 高级文本操作"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "env (环境)"
 meta_title: "env (环境) - 文本操作"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Niveles de Privilegio"
 meta_title: "Niveles de Privilegio - Kernel"

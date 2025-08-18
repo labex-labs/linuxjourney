@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "内核位置"
 meta_title: "内核位置 - 内核"

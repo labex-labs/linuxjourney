@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "OSI-Modell"
 meta_title: "OSI-Modell - Netzwerkgrundlagen"

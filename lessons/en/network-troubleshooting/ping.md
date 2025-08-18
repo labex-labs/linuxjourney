@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "ping"
 meta_title: "ping - Troubleshooting"

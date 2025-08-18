@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Boot Process Overview"
 meta_title: "Boot Process Overview - Boot the System"

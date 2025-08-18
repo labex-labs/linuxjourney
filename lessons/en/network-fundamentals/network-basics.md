@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Network Basics"
 meta_title: "Network Basics - Network Basics"

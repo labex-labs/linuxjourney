@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Visión general del proceso de arranque"
 meta_title: "Visión general del proceso de arranque - Arrancar el Sistema"

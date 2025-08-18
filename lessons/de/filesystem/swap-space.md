@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "de"
 title: "swap"
 meta_title: "swap - Das Dateisystem"

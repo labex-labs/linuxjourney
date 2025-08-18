@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Übersicht über den Bootvorgang"
 meta_title: "Übersicht über den Bootvorgang - System booten"

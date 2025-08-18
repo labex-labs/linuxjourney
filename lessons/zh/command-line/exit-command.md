@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "zh"
 title: "退出"
 meta_title: "退出 - 命令行"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "/etc/shadow"
 meta_title: "/etc/shadow - ユーザー管理"

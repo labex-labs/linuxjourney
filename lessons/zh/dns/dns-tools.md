@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "DNS 工具"
 meta_title: "DNS 工具 - DNS"

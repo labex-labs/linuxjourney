@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "ls (ディレクトリを一覧表示)"
 meta_title: "ls (ディレクトリを一覧表示) - コマンドライン"

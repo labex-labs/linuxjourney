@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "sysfs"
 meta_title: "sysfs - Устройства"

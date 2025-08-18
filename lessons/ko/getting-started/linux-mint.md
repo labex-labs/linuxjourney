@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "Linux Mint"
 meta_title: "Linux Mint - 시작하기"

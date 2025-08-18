@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "es"
 title: "historial"
 meta_title: "historial - Command Line"

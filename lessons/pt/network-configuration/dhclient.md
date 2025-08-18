@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "dhclient"
 meta_title: "dhclient - Configuração de Rede"

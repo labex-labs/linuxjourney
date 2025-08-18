@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "커널 위치"
 meta_title: "커널 위치 - Kernel"

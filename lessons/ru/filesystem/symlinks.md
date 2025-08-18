@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ru"
 title: "Symlinks"
 meta_title: "Symlinks - Файловая система"

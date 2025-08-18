@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "traceroute"
 meta_title: "traceroute - Dépannage"

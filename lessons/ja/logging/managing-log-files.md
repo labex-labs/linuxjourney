@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "ログファイルの管理"
 meta_title: "ログファイルの管理 - ロギング"

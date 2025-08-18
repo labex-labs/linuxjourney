@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "边界网关协议"
 meta_title: "边界网关协议 - 路由"

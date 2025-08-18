@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Setuid"
 meta_title: "Setuid - Разрешения"

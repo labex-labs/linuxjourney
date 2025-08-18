@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "启动过程：BIOS"
 meta_title: "启动过程：BIOS - 启动系统"

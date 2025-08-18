@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "Modelo OSI"
 meta_title: "Modelo OSI - Noções Básicas de Rede"

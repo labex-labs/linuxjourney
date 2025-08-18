@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Systemprotokollierung"
 meta_title: "Systemprotokollierung - Protokollierung"

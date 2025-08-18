@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Verwalten von Protokolldateien"
 meta_title: "Verwalten von Protokolldateien - Protokollierung"

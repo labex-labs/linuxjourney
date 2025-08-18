@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "System V 서비스"
 meta_title: "System V 서비스 - Init"

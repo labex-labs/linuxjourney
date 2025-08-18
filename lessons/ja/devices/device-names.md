@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "デバイス名"
 meta_title: "デバイス名 - デバイス"

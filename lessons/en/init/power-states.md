@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "en"
 title: "Power States"
 meta_title: "Power States - Init"

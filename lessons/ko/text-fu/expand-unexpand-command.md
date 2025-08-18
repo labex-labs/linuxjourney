@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "expand 및 unexpand"
 meta_title: "expand 및 unexpand - Text-Fu"

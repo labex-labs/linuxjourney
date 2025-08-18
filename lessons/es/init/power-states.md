@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "es"
 title: "Estados de energía"
 meta_title: "Estados de energía - Init"

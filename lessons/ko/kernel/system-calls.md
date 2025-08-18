@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "시스템 호출"
 meta_title: "시스템 호출 - Kernel"

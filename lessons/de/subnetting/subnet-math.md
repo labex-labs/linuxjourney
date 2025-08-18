@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Subnetz-Mathematik"
 meta_title: "Subnetz-Mathematik - Subnetting"

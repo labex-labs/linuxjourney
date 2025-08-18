@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "Vim でのテキスト挿入と追記"
 meta_title: "Vim でのテキスト挿入と追記 - 高度なテキスト操作"

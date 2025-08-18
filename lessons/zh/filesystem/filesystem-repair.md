@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "文件系统修复"
 meta_title: "文件系统修复 - 文件系统"

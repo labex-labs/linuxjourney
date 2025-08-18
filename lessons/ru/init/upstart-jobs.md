@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "Задания Upstart"
 meta_title: "Задания Upstart - Init"

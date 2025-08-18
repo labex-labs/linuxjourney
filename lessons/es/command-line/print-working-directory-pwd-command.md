@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "pwd (Imprimir Directorio de Trabajo)"
 meta_title: "pwd (Imprimir Directorio de Trabajo) - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "pt"
 title: "sair"
 meta_title: "sair - Linha de Comando"

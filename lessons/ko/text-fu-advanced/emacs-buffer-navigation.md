@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ko"
 title: "Emacs 버퍼 탐색"
 meta_title: "Emacs 버퍼 탐색 - 고급 Text-Fu"

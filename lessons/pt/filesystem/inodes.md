@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "pt"
 title: "Inodes"
 meta_title: "Inodes - O Filesystem"

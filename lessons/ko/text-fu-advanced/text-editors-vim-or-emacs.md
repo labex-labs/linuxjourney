@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "텍스트 편집기"
 meta_title: "텍스트 편집기 - 고급 Text-Fu"

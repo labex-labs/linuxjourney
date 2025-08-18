@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "cut"
 meta_title: "cut - テキスト操作"

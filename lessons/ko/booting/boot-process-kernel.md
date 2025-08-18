@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "부팅 프로세스: 커널"
 meta_title: "부팅 프로세스: 커널 - 시스템 부팅"

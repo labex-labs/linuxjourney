@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "소프트웨어 배포"
 meta_title: "소프트웨어 배포 - 패키지"

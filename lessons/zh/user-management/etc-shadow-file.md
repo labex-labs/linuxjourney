@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "/etc/shadow"
 meta_title: "/etc/shadow - 用户管理"

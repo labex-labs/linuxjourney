@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "cat"
 meta_title: "cat - コマンドライン"

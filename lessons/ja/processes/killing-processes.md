@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "kill (終了)"
 meta_title: "kill (終了) - プロセス"

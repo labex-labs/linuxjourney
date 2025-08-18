@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "端末の制御"
 meta_title: "端末の制御 - プロセス"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "regex (Регулярные выражения)"
 meta_title: "regex (Регулярные выражения) - Продвинутый Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "niceness"
 meta_title: "niceness - 프로세스"

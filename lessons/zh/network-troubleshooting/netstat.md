@@ -1,3 +1,6 @@
+---
+index: 4
+---
 p---
 title: "netstat"
 meta_description: "学习用于 Linux 网络分析的 netstat 命令。通过这份适合初学者的指南，了解网络连接、端口和套接字。"

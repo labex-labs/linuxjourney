@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "路由协议"
 meta_title: "路由协议 - 路由"

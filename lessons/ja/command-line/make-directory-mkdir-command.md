@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ja"
 title: "mkdir (ディレクトリの作成)"
 meta_title: "mkdir (ディレクトリの作成) - コマンドライン"

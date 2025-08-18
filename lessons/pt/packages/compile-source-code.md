@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "pt"
 title: "Compilar Código-Fonte"
 meta_title: "Compilar Código-Fonte - Pacotes"

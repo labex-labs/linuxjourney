@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ja"
 title: "Emacs の終了とヘルプ"
 meta_title: "Emacs の終了とヘルプ - 高度なテキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "Energiezustände"
 meta_title: "Energiezustände - Init"

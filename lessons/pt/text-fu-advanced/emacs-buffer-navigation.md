@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "pt"
 title: "Navegação de Buffer no Emacs"
 meta_title: "Navegação de Buffer no Emacs - Text-Fu Avançado"

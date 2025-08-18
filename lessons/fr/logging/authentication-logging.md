@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Journalisation de l'authentification"
 meta_title: "Journalisation de l'authentification - Logging"

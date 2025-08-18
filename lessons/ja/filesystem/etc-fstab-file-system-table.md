@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "/etc/fstab"
 meta_title: "/etc/fstab - ファイルシステム"

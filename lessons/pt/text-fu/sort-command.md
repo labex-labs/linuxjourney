@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "pt"
 title: "sort"
 meta_title: "sort - Text-Fu"

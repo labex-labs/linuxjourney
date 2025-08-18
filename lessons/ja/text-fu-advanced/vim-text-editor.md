@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "Vim (Vi Improved)"
 meta_title: "Vim (Vi Improved) - 高度なテキスト操作"

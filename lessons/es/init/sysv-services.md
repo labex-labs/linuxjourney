@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Servicio System V"
 meta_title: "Servicio System V - Init"

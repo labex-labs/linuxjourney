@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "niceness"
 meta_title: "niceness - Процессы"

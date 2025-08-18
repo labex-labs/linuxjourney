@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "Umask"
 meta_title: "Umask - Разрешения"

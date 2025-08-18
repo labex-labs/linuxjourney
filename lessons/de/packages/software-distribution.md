@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Softwareverteilung"
 meta_title: "Softwareverteilung - Pakete"

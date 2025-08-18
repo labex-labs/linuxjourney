@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "Software Distribution"
 meta_title: "Software Distribution - Packages"

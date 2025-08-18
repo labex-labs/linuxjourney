@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "stdin (표준 입력)"
 meta_title: "stdin (표준 입력) - Text-Fu"

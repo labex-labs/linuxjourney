@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Speicherüberwachung"
 meta_title: "Speicherüberwachung - Prozessauslastung"

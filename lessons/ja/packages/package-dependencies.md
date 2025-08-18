@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "パッケージの依存関係"
 meta_title: "パッケージの依存関係 - パッケージ"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "env (환경)"
 meta_title: "env (환경) - Text-Fu"

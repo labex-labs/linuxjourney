@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "Vim の保存と終了"
 meta_title: "Vim の保存と終了 - 高度なテキスト操作"

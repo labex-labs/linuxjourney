@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "netstat"
 meta_title: "netstat - Устранение неполадок"

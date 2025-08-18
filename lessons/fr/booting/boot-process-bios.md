@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Processus de démarrage : BIOS"
 meta_title: "Processus de démarrage : BIOS - Démarrer le Système"

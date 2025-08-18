@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ru"
 title: "Emacs: Манипуляции с файлами"
 meta_title: "Emacs: Манипуляции с файлами - Продвинутый Text-Fu"

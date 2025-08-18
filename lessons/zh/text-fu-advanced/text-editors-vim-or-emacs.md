@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "文本编辑器"
 meta_title: "文本编辑器 - 高级文本操作"

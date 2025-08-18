@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "zh"
 title: "Inode"
 meta_title: "Inode - 文件系统"

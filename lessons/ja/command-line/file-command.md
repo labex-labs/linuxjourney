@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "file"
 meta_title: "file - コマンドライン"

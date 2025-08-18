@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "stdin (標準入力)"
 meta_title: "stdin (標準入力) - テキスト操作"

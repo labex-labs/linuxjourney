@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "CPU 监控"
 meta_title: "CPU 监控 - 进程利用率"

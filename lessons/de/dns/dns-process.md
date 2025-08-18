@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "DNS-Prozess"
 meta_title: "DNS-Prozess - DNS"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "de"
 title: "Paketabhängigkeiten"
 meta_title: "Paketabhängigkeiten - Pakete"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "Umask"
 meta_title: "Umask - パーミッション"

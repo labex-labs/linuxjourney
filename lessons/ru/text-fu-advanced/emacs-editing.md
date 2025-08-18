@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ru"
 title: "Редактирование в Emacs"
 meta_title: "Редактирование в Emacs - Продвинутый Text-Fu"

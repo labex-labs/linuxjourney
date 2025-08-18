@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "ps (Procesos)"
 meta_title: "ps (Procesos) - Procesos"

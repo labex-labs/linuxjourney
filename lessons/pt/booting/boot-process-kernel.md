@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "pt"
 title: "Processo de Inicialização: Kernel"
 meta_title: "Processo de Inicialização: Kernel - Inicializar o Sistema"

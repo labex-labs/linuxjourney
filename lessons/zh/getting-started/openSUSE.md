@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "openSUSE"
 meta_title: "openSUSE - 入门"

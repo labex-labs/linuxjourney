@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "Что такое DNS?"
 meta_title: "Что такое DNS? - DNS"

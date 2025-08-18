@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "Ubuntu"
 meta_title: "Ubuntu - 入门"

@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "zh"
 title: "Setuid"
 meta_title: "Setuid - 权限"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "O Shell"
 meta_title: "O Shell - Linha de Comando"

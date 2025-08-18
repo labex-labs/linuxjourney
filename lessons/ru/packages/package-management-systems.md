@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "yum и apt"
 meta_title: "yum и apt - Пакеты"

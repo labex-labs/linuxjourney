@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Conceptos básicos de red"
 meta_title: "Conceptos básicos de red - Conceptos Básicos de Red"

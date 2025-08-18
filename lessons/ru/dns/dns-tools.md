@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "Инструменты DNS"
 meta_title: "Инструменты DNS - DNS"

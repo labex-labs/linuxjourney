@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Setgid"
 meta_title: "Setgid - Permissions"

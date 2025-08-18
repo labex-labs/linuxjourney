@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "DNS 設定"
 meta_title: "DNS 設定 - DNS"

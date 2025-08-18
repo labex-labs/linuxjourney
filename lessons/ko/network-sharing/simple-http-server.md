@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "간단한 HTTP 서버"
 meta_title: "간단한 HTTP 서버 - 네트워크 공유"

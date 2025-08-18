@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "Quellcode kompilieren"
 meta_title: "Quellcode kompilieren - Pakete"

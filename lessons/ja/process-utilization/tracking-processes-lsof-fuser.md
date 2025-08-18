@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "lsof と fuser"
 meta_title: "lsof と fuser - プロセス利用率"

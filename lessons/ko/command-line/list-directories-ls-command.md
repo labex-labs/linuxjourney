@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "ls (디렉토리 나열)"
 meta_title: "ls (디렉토리 나열) - Command Line"

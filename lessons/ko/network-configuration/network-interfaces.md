@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "네트워크 인터페이스"
 meta_title: "네트워크 인터페이스 - 네트워크 구성"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "Shell"
 meta_title: "Shell - 命令行"

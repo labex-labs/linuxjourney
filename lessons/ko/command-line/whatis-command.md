@@ -1,4 +1,5 @@
 ---
+index: 17
 lang: "ko"
 title: "whatis"
 meta_title: "whatis - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "¿Qué es un router?"
 meta_title: "¿Qué es un router? - Enrutamiento"

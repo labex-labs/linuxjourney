@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "dd"
 meta_title: "dd - デバイス"

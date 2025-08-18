@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "de"
 title: "Das Sticky Bit"
 meta_title: "Das Sticky Bit - Berechtigungen"

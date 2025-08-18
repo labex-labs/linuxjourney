@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "カーネルロギング"
 meta_title: "カーネルロギング - ロギング"

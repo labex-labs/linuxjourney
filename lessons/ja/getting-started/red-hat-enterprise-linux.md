@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - はじめに"

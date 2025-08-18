@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Emplacement du noyau"
 meta_title: "Emplacement du noyau - Kernel"

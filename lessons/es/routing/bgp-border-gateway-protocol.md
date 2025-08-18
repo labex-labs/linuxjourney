@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "es"
 title: "Protocolo de Pasarela de Borde"
 meta_title: "Protocolo de Pasarela de Borde - Enrutamiento"

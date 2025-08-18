@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Gestionnaire de Réseau"
 meta_title: "Gestionnaire de Réseau - Configuration Réseau"

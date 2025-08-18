@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "es"
 title: "Historia"
 meta_title: "Historia - Primeros Pasos"

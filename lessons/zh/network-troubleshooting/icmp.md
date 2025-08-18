@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "ICMP"
 meta_title: "ICMP - 故障排除"

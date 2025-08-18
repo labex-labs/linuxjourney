@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "en"
 title: "route"
 meta_title: "route - Network Config"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "페도라"
 meta_title: "페도라 - 시작하기"

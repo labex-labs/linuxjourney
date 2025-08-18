@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ru"
 title: "tr (Перевод)"
 meta_title: "tr (Перевод) - Text-Fu"

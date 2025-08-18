@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ja"
 title: "Emacs ファイル操作"
 meta_title: "Emacs ファイル操作 - 高度なテキスト操作"

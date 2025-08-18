@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "rsync"
 meta_title: "rsync - 网络共享"

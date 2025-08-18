@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "fr"
 title: "Permissions de processus"
 meta_title: "Permissions de processus - Permissions"

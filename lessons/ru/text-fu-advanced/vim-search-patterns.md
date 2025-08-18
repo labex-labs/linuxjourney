@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "Шаблоны поиска Vim"
 meta_title: "Шаблоны поиска Vim - Продвинутый Text-Fu"

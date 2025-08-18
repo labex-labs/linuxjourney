@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "ps (프로세스)"
 meta_title: "ps (프로세스) - 프로세스"

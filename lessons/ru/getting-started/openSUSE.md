@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ru"
 title: "openSUSE"
 meta_title: "openSUSE - Начало работы"

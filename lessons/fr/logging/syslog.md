@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "syslog"
 meta_title: "syslog - Logging"

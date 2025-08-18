@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ru"
 title: "Gentoo"
 meta_title: "Gentoo - Начало работы"

@@ -1,4 +1,5 @@
 ---
+index: 16
 lang: "zh"
 title: "man"
 meta_title: "man - 命令行"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "ICMP"
 meta_title: "ICMP - Resolução de Problemas"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "ps (Процессы)"
 meta_title: "ps (Процессы) - Процессы"

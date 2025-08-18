@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "CIDR"
 meta_title: "CIDR - 서브넷팅"

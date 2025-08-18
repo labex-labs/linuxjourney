@@ -1,4 +1,5 @@
 ---
+index: 14
 lang: "de"
 title: "find"
 meta_title: "find - Command Line"

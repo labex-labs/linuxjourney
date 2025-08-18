@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "de"
 title: "/proc-Dateisystem"
 meta_title: "/proc-Dateisystem - Prozesse"

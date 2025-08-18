@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "pt"
 title: "histórico"
 meta_title: "histórico - Linha de Comando"

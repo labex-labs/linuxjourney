@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ru"
 title: "join и split"
 meta_title: "join и split - Text-Fu"

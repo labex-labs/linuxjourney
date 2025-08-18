@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "Vim 편집"
 meta_title: "Vim 편집 - 고급 Text-Fu"

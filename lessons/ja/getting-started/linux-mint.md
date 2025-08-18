@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "Linux Mint"
 meta_title: "Linux Mint - はじめに"

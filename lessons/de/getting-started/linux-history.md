@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Geschichte"
 meta_title: "Geschichte - Erste Schritte"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "NFS"
 meta_title: "NFS - Совместное использование сети"

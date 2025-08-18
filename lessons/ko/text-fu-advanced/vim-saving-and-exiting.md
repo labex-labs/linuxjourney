@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ko"
 title: "Vim 저장 및 종료"
 meta_title: "Vim 저장 및 종료 - 고급 Text-Fu"

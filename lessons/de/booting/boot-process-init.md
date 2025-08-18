@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Bootprozess: Init"
 meta_title: "Bootprozess: Init - System booten"

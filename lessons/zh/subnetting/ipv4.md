@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "IPv4"
 meta_title: "IPv4 - 子网划分"

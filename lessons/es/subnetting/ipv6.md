@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "es"
 title: "IPv6"
 meta_title: "IPv6 - Subnetting"

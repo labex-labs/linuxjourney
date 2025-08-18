@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "stdout (标准输出)"
 meta_title: "stdout (标准输出) - 文本操作"

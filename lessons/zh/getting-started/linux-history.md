@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "历史"
 meta_title: "历史 - 入门"

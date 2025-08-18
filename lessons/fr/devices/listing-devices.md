@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "lsusb, lspci, lssci"
 meta_title: "lsusb, lspci, lssci - Périphériques"

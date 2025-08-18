@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "ja"
 title: "exit"
 meta_title: "exit - コマンドライン"

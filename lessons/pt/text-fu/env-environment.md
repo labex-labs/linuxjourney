@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "pt"
 title: "env (Ambiente)"
 meta_title: "env (Ambiente) - Text-Fu"

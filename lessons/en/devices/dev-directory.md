@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "en"
 title: "/dev directory"
 meta_title: "/dev directory - Devices"

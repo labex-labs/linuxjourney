@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "tar 및 gzip"
 meta_title: "tar 및 gzip - 패키지"

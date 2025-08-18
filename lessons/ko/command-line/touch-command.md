@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "touch"
 meta_title: "touch - Command Line"

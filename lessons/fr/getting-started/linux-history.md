@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "fr"
 title: "Histoire"
 meta_title: "Histoire - Démarrage"

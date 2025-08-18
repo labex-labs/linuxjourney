@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "NFS"
 meta_title: "NFS - ネットワーク共有"

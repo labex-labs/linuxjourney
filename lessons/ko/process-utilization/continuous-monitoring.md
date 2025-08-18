@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ko"
 title: "지속적인 모니터링"
 meta_title: "지속적인 모니터링 - 프로세스 활용"

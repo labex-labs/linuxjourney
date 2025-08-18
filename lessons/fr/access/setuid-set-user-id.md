@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "fr"
 title: "Setuid"
 meta_title: "Setuid - Permissions"

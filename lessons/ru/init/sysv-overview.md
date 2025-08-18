@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "Обзор System V"
 meta_title: "Обзор System V - Init"

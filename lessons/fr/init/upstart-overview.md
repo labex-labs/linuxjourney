@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Présentation d'Upstart"
 meta_title: "Présentation d'Upstart - Init"

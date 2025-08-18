@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ja"
 title: "history"
 meta_title: "history - コマンドライン"

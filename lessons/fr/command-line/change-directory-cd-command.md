@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "cd (Changer de répertoire)"
 meta_title: "cd (Changer de répertoire) - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "Anatomia de um Disco"
 meta_title: "Anatomia de um Disco - O Filesystem"

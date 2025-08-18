@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "udev"
 meta_title: "udev - Устройства"

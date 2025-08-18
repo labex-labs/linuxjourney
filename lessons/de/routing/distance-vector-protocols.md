@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "Distance-Vector-Protokolle"
 meta_title: "Distance-Vector-Protokolle - Routing"

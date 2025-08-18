@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Routing-Tabelle"
 meta_title: "Routing-Tabelle - Routing"

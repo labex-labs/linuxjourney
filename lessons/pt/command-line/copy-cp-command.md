@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "pt"
 title: "cp (Copiar)"
 meta_title: "cp (Copiar) - Linha de Comando"

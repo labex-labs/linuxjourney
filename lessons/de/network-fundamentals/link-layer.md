@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "de"
 title: "Link Layer"
 meta_title: "Link Layer - Netzwerkgrundlagen"

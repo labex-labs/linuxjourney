@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "Gerenciando Arquivos de Log"
 meta_title: "Gerenciando Arquivos de Log - Registro de Logs"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "역사"
 meta_title: "역사 - 시작하기"

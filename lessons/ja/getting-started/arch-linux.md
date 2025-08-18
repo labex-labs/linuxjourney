@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "ja"
 title: "Arch Linux"
 meta_title: "Arch Linux - はじめに"

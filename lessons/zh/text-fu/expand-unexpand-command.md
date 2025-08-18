@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "expand 和 unexpand"
 meta_title: "expand 和 unexpand - 文本操作"

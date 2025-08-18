@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "DNS-Tools"
 meta_title: "DNS-Tools - DNS"

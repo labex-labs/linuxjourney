@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "NAT"
 meta_title: "NAT - Подсети"

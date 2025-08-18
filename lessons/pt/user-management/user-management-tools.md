@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "Ferramentas de Gerenciamento de Usuários"
 meta_title: "Ferramentas de Gerenciamento de Usuários - Gerenciamento de Usuários"

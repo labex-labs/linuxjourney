@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "head"
 meta_title: "head - テキスト操作"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "es"
 title: "Proceso de arranque: BIOS"
 meta_title: "Proceso de arranque: BIOS - Arrancar el Sistema"

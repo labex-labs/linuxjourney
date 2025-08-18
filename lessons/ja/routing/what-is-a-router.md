@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ja"
 title: "ルーターとは？"
 meta_title: "ルーターとは？ - ルーティング"

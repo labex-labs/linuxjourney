@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "Permissions de Propriété"
 meta_title: "Permissions de Propriété - Permissions"

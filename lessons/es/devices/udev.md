@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "udev"
 meta_title: "udev - Dispositivos"

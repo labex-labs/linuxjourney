@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "fr"
 title: "Vim Sauvegarder et Quitter"
 meta_title: "Vim Sauvegarder et Quitter - Text-Fu Avancé"

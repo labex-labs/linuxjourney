@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "ru"
 title: "exit"
 meta_title: "exit - Командная строка"

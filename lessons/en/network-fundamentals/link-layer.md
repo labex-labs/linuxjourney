@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "en"
 title: "Link Layer"
 meta_title: "Link Layer - Network Basics"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "设备类型"
 meta_title: "设备类型 - 设备"

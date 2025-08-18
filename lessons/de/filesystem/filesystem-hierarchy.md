@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Dateisystemhierarchie"
 meta_title: "Dateisystemhierarchie - Das Dateisystem"

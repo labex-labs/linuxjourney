@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "System V 概述"
 meta_title: "System V 概述 - 初始化"

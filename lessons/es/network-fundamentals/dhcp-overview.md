@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "es"
 title: "Visión general de DHCP"
 meta_title: "Visión general de DHCP - Conceptos Básicos de Red"

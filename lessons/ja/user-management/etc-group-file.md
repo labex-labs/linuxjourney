@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ja"
 title: "/etc/group"
 meta_title: "/etc/group - ユーザー管理"

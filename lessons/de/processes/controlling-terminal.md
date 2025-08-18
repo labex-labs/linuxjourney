@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Terminal steuern"
 meta_title: "Terminal steuern - Prozesse"

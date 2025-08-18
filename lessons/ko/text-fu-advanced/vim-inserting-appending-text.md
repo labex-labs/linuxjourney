@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "Vim 텍스트 삽입 및 추가"
 meta_title: "Vim 텍스트 삽입 및 추가 - 고급 Text-Fu"

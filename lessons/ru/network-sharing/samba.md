@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "Samba"
 meta_title: "Samba - Совместное использование сети"

@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "파일 권한"
 meta_title: "파일 권한 - 권한"

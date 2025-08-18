@@ -1,4 +1,5 @@
 ---
+index: 11
 lang: "ja"
 title: "join と split"
 meta_title: "join と split - テキスト操作"

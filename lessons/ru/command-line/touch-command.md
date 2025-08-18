@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ru"
 title: "touch"
 meta_title: "touch - Командная строка"

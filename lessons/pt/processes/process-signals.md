@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "Sinais"
 meta_title: "Sinais - Processos"

@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "zh"
 title: "wc 和 nl"
 meta_title: "wc 和 nl - 文本操作"

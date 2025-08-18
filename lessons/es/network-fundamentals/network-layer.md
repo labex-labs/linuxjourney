@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "es"
 title: "Capa de red"
 meta_title: "Capa de red - Conceptos Básicos de Red"

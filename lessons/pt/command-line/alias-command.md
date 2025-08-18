@@ -1,4 +1,5 @@
 ---
+index: 18
 lang: "pt"
 title: "alias"
 meta_title: "alias - Linha de Comando"

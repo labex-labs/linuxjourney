@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "파일 공유 개요"
 meta_title: "파일 공유 개요 - 네트워크 공유"

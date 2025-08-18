@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "en"
 title: "symlinks"
 meta_title: "symlinks - The Filesystem"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "de"
 title: "Link-State-Protokolle"
 meta_title: "Link-State-Protokolle - Routing"

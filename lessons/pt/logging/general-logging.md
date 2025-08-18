@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "pt"
 title: "Registro Geral"
 meta_title: "Registro Geral - Registro de Logs"

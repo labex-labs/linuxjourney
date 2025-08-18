@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "udev"
 meta_title: "udev - 장치"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "Installation du noyau"
 meta_title: "Installation du noyau - Kernel"

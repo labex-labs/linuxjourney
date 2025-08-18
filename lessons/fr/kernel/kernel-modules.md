@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "fr"
 title: "Modules du noyau"
 meta_title: "Modules du noyau - Kernel"

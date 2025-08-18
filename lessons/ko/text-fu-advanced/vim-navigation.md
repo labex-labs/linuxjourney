@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "Vim 탐색"
 meta_title: "Vim 탐색 - 고급 Text-Fu"

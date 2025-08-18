@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "es"
 title: "/etc/group"
 meta_title: "/etc/group - Gestión de Usuarios"

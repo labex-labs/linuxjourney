@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "选择 Linux 发行版"
 meta_title: "选择 Linux 发行版 - 入门"

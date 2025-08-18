@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "de"
 title: "rpm und dpkg"
 meta_title: "rpm und dpkg - Pakete"

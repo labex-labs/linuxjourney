@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "de"
 title: "Anatomie einer Festplatte"
 meta_title: "Anatomie einer Festplatte - Das Dateisystem"

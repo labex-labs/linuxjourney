@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "内存监控"
 meta_title: "内存监控 - 进程利用率"

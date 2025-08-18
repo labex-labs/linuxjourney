@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ja"
 title: "シンボリックリンク"
 meta_title: "シンボリックリンク - ファイルシステム"

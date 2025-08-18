@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ko"
 title: "mount 및 umount"
 meta_title: "mount 및 umount - 파일 시스템"

@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "链路状态协议"
 meta_title: "链路状态协议 - 路由"

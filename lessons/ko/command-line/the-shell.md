@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ko"
 title: "셸"
 meta_title: "셸 - Command Line"

@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "zh"
 title: "磁盘剖析"
 meta_title: "磁盘剖析 - 文件系统"

@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ko"
 title: "Linux 배포판 선택하기"
 meta_title: "Linux 배포판 선택하기 - 시작하기"

@@ -1,4 +1,5 @@
 ---
+index: 19
 lang: "ko"
 title: "exit"
 meta_title: "exit - Command Line"

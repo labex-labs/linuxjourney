@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ja"
 title: "サブネット計算"
 meta_title: "サブネット計算 - サブネット化"

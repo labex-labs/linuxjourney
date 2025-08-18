@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ko"
 title: "pipe 및 tee"
 meta_title: "pipe 및 tee - Text-Fu"

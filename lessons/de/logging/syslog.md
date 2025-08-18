@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "syslog"
 meta_title: "syslog - Protokollierung"

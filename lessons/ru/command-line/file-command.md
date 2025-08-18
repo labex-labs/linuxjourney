@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ru"
 title: "file"
 meta_title: "file - Командная строка"

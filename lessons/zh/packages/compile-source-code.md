@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "zh"
 title: "编译源代码"
 meta_title: "编译源代码 - 软件包"

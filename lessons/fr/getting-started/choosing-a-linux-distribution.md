@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "fr"
 title: "Choisir une distribution Linux"
 meta_title: "Choisir une distribution Linux - Démarrage"

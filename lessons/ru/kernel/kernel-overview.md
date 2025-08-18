@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "ru"
 title: "Обзор ядра"
 meta_title: "Обзор ядра - Ядро"

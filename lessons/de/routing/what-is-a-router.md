@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "de"
 title: "Was ist ein Router?"
 meta_title: "Was ist ein Router? - Routing"

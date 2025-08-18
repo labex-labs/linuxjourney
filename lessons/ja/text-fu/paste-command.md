@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ja"
 title: "paste"
 meta_title: "paste - テキスト操作"

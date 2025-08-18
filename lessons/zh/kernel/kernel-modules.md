@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "zh"
 title: "内核模块"
 meta_title: "内核模块 - 内核"

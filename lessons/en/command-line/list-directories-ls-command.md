@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "en"
 title: "ls (List Directories)"
 meta_title: "ls (List Directories) - Command Line"

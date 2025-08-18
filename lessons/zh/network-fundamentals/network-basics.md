@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "网络基础"
 meta_title: "网络基础 - 网络基础"

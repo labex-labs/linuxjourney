@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "pt"
 title: "Interfaces de Rede"
 meta_title: "Interfaces de Rede - Configuração de Rede"

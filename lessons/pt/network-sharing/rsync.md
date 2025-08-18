@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "pt"
 title: "rsync"
 meta_title: "rsync - Compartilhamento de Rede"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "zh"
 title: "红帽企业版 Linux"
 meta_title: "红帽企业版 Linux - 入门"

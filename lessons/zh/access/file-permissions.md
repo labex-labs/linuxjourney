@@ -1,4 +1,5 @@
 ---
+index: 1
 lang: "zh"
 title: "文件权限"
 meta_title: "文件权限 - 权限"

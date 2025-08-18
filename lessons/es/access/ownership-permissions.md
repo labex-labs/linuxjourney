@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "es"
 title: "Permisos de Propiedad"
 meta_title: "Permisos de Propiedad - Permisos"

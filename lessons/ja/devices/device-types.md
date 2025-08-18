@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "デバイスタイプ"
 meta_title: "デバイスタイプ - デバイス"

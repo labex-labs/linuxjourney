@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "pt"
 title: "Emacs: Sair e Ajuda"
 meta_title: "Emacs: Sair e Ajuda - Text-Fu Avançado"

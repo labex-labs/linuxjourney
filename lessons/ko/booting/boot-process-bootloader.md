@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "ko"
 title: "부팅 프로세스: 부트로더"
 meta_title: "부팅 프로세스: 부트로더 - 시스템 부팅"

@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "fr"
 title: "sysfs"
 meta_title: "sysfs - Périphériques"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "zh"
 title: "Gentoo"
 meta_title: "Gentoo - 入门"

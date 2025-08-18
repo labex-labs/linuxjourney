@@ -1,4 +1,5 @@
 ---
+index: 9
 lang: "en"
 title: "Emacs"
 meta_title: "Emacs - Advanced Text-Fu"

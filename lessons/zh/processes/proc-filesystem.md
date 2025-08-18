@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "zh"
 title: "/proc 文件系统"
 meta_title: "/proc 文件系统 - 进程"

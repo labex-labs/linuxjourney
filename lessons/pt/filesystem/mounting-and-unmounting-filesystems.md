@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "pt"
 title: "mount e umount"
 meta_title: "mount e umount - O Filesystem"

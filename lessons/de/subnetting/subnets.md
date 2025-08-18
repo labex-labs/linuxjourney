@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "de"
 title: "Subnetze"
 meta_title: "Subnetze - Subnetting"

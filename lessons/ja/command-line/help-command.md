@@ -1,4 +1,5 @@
 ---
+index: 15
 lang: "ja"
 title: "help"
 meta_title: "help - コマンドライン"

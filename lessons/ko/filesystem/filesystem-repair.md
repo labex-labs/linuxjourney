@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "파일 시스템 복구"
 meta_title: "파일 시스템 복구 - 파일 시스템"

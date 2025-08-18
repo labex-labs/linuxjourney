@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "de"
 title: "Emacs Dateien manipulieren"
 meta_title: "Emacs Dateien manipulieren - Fortgeschrittenes Text-Fu"

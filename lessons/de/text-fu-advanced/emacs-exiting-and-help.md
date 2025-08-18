@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "de"
 title: "Emacs beenden und Hilfe"
 meta_title: "Emacs beenden und Hilfe - Fortgeschrittenes Text-Fu"

@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "less"
 meta_title: "less - コマンドライン"

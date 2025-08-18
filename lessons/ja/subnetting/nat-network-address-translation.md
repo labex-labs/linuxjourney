@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "ja"
 title: "NAT"
 meta_title: "NAT - サブネット化"

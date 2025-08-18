@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "de"
 title: "Vim Speichern und Beenden"
 meta_title: "Vim Speichern und Beenden - Fortgeschrittenes Text-Fu"

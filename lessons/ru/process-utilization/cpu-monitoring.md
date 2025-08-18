@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ru"
 title: "Мониторинг CPU"
 meta_title: "Мониторинг CPU - Использование процессов"

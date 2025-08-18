@@ -1,4 +1,5 @@
 ---
+index: 12
 lang: "ru"
 title: "mkdir (Создать каталог)"
 meta_title: "mkdir (Создать каталог) - Командная строка"

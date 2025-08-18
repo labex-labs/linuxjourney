@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "ja"
 title: "サブネット"
 meta_title: "サブネット - サブネット化"

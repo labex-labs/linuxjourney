@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "de"
 title: "/etc/fstab"
 meta_title: "/etc/fstab - Das Dateisystem"

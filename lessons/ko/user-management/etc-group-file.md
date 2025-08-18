@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "ko"
 title: "/etc/group"
 meta_title: "/etc/group - 사용자 관리"

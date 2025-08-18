@@ -1,4 +1,5 @@
 ---
+index: 13
 lang: "ja"
 title: "tr (Translate)"
 meta_title: "tr (Translate) - テキスト操作"

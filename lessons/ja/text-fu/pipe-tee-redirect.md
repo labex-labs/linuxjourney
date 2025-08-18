@@ -1,4 +1,5 @@
 ---
+index: 4
 lang: "ja"
 title: "pipe と tee"
 meta_title: "pipe と tee - テキスト操作"

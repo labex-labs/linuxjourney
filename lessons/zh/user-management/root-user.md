@@ -1,4 +1,5 @@
 ---
+index: 2
 lang: "zh"
 title: "root"
 meta_title: "root - 用户管理"

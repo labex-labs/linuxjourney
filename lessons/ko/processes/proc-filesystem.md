@@ -1,4 +1,5 @@
 ---
+index: 10
 lang: "ko"
 title: "/proc 파일 시스템"
 meta_title: "/proc 파일 시스템 - 프로세스"

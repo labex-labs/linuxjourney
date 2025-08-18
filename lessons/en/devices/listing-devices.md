@@ -1,4 +1,5 @@
 ---
+index: 6
 lang: "en"
 title: "lsusb, lspci, lssci"
 meta_title: "lsusb, lspci, lssci - Devices"

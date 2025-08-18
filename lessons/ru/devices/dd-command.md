@@ -1,4 +1,5 @@
 ---
+index: 7
 lang: "ru"
 title: "dd"
 meta_title: "dd - Устройства"

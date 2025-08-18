@@ -1,4 +1,5 @@
 ---
+index: 5
 lang: "pt"
 title: "Registro de Autenticação"
 meta_title: "Registro de Autenticação - Registro de Logs"

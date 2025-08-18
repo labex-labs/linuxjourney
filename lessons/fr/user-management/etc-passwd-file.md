@@ -1,4 +1,5 @@
 ---
+index: 3
 lang: "fr"
 title: "/etc/passwd"
 meta_title: "/etc/passwd - Gestion des Utilisateurs"

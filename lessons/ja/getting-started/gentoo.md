@@ -1,4 +1,5 @@
 ---
+index: 8
 lang: "ja"
 title: "Gentoo"
 meta_title: "Gentoo - はじめに"
