@@ -27,7 +27,7 @@ Great for desktop and laptop.
 
 ## Exercise
 
-If you're interested in having Linux Mint as your operating system, head over to the installation section and give it a try: <http://linuxmint.com/>
+If you're interested in having Linux Mint as your operating system, head over to the installation section and give it a try: `http://linuxmint.com`
 
 ## Quiz Questions
 

@@ -27,7 +27,7 @@ Idéal pour les ordinateurs de bureau et portables. Si vous avez également un p
 
 ## Exercise
 
-Si vous êtes intéressé par Arch comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <https://archlinux.org/>
+Si vous êtes intéressé par Arch comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `https://archlinux.org`
 
 ## Quiz Questions
 

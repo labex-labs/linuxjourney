@@ -28,7 +28,7 @@ Great for any platform: desktop, laptop, and server.
 ## Exercise
 
 If you're interested in having Ubuntu as your operating system, head over to the installation section and give it a try:
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

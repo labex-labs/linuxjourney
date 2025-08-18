@@ -27,7 +27,7 @@ Linux 를 처음 시작하고 더 도전적인 길을 택하고 싶다면, Gento
 
 ## Exercise
 
-Gentoo 를 운영 체제로 사용하고 싶다면, 설치 섹션으로 이동하여 시도해 보세요: <https://www.gentoo.org/>
+Gentoo 를 운영 체제로 사용하고 싶다면, 설치 섹션으로 이동하여 시도해 보세요: `https://www.gentoo.org`
 
 ## Quiz Questions
 

@@ -27,7 +27,7 @@ Idéal pour les ordinateurs de bureau et portables.
 
 ## Exercise
 
-Si vous êtes intéressé par Gentoo comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <https://www.gentoo.org/>
+Si vous êtes intéressé par Gentoo comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `https://www.gentoo.org`
 
 ## Quiz Questions
 

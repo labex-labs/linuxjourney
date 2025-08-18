@@ -71,7 +71,7 @@ tar xzf file.tar
 
 If you need help remembering this: e**X**tract all **Z**ee **F**iles!
 
-tar is one of those commands that is so important and yet you never really remember it. Relevant xkcd: <https://xkcd.com/1168/>
+tar is one of those commands that is so important and yet you never really remember it. Relevant xkcd: `https://xkcd.com/1168`
 
 ### Other Utilities
 

@@ -27,7 +27,7 @@ Arch 是一个轻量级、灵活的 Linux 发行版，100% 由社区驱动。与
 
 ## Exercise
 
-如果你有兴趣将 Arch 作为你的操作系统，请前往安装部分尝试一下：<https://archlinux.org/>
+如果你有兴趣将 Arch 作为你的操作系统，请前往安装部分尝试一下：`https://archlinux.org`
 
 ## Quiz Questions
 

@@ -27,7 +27,7 @@ Como o Linux Mint é baseado no Ubuntu, ele usa o Debian package manager.
 
 ## Exercise
 
-Se você estiver interessado em ter o Linux Mint como seu sistema operacional, vá para a seção de instalação e experimente: <http://linuxmint.com/>
+Se você estiver interessado em ter o Linux Mint como seu sistema operacional, vá para a seção de instalação e experimente: `http://linuxmint.com`
 
 ## Quiz Questions
 

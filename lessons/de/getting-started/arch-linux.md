@@ -27,7 +27,7 @@ Hervorragend geeignet für Desktop und Laptop. Wenn Sie auch ein kleines Gerät 
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, Arch als Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: <https://archlinux.org/>
+Wenn Sie daran interessiert sind, Arch als Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: `https://archlinux.org`
 
 ## Quiz Questions
 

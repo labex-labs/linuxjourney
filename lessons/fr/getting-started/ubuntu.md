@@ -28,7 +28,7 @@ Idéal pour toute plateforme : ordinateur de bureau, ordinateur portable et serv
 ## Exercise
 
 Si vous êtes intéressé par Ubuntu comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le :
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

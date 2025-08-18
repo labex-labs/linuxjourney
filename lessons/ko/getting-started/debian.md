@@ -29,7 +29,7 @@ Debian 은 모든 플랫폼에 전반적으로 훌륭한 운영 체제입니다.
 
 ## Exercise
 
-Debian 을 운영 체제로 사용하고 싶다면, 설치 섹션으로 이동하여 시도해 보세요: <https://www.debian.org/>
+Debian 을 운영 체제로 사용하고 싶다면, 설치 섹션으로 이동하여 시도해 보세요: `https://www.debian.org`
 
 ## Quiz Question
 

@@ -27,7 +27,7 @@ Arch 는 100% 커뮤니티 주도로 운영되는 가볍고 유연한 Linux 배�
 
 ## Exercise
 
-Arch 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보세요: <https://archlinux.org/>
+Arch 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보세요: `https://archlinux.org`
 
 ## Quiz Questions
 

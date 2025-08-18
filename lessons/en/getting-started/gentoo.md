@@ -27,7 +27,7 @@ Great for desktop and laptop.
 
 ## Exercise
 
-If you're interested in having Gentoo as your operating system, head over to the installation section and give it a try: <https://www.gentoo.org/>
+If you're interested in having Gentoo as your operating system, head over to the installation section and give it a try: `https://www.gentoo.org`
 
 ## Quiz Questions
 

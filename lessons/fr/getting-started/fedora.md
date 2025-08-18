@@ -27,7 +27,7 @@ Fedora est excellent si vous voulez un système d'exploitation basé sur Red Hat
 
 ## Exercise
 
-Si vous êtes intéressé par Fedora comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <https://getfedora.org/>
+Si vous êtes intéressé par Fedora comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `https://getfedora.org`
 
 ## Quiz Questions
 

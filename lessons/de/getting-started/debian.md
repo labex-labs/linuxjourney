@@ -29,7 +29,7 @@ Debian ist ein insgesamt großartiges Betriebssystem für jede Plattform.
 
 ## Exercise
 
-Wenn Sie Debian als Betriebssystem verwenden möchten, gehen Sie zum Installationsbereich und probieren Sie es aus: <https://www.debian.org/>
+Wenn Sie Debian als Betriebssystem verwenden möchten, gehen Sie zum Installationsbereich und probieren Sie es aus: `https://www.debian.org`
 
 ## Quiz Question
 

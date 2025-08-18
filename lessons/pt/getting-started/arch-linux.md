@@ -27,7 +27,7 @@ Se você quer um sistema operacional leve e realmente quer entender o Linux, use
 
 ## Exercise
 
-Se você está interessado em ter o Arch como seu sistema operacional, vá para a seção de instalação e experimente: <https://archlinux.org/>
+Se você está interessado em ter o Arch como seu sistema operacional, vá para a seção de instalação e experimente: `https://archlinux.org`
 
 ## Quiz Questions
 

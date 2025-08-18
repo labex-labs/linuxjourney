@@ -27,7 +27,7 @@ RHEL 기반 운영 체제는 Debian 기반 운영 체제와 약간 다를 것이
 
 ## Exercise
 
-운영 체제로 RHEL 을 사용하는 데 관심이 있다면, 설치 섹션으로 이동하여 시도해 보세요: <https://www.redhat.com/rhel/>
+운영 체제로 RHEL 을 사용하는 데 관심이 있다면, 설치 섹션으로 이동하여 시도해 보세요: `https://www.redhat.com/rhel`
 
 ## Quiz Questions
 

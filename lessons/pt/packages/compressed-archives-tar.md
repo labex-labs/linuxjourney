@@ -71,7 +71,7 @@ tar xzf file.tar
 
 Se precisar de ajuda para lembrar: e**X**traia todos os ar**Z**uivos!
 
-tar é um daqueles comandos que é tão importante e, no entanto, você nunca realmente se lembra dele. xkcd relevante: <https://xkcd.com/1168/>
+tar é um daqueles comandos que é tão importante e, no entanto, você nunca realmente se lembra dele. xkcd relevante: `https://xkcd.com/1168`
 
 ### Outros Utilitários
 

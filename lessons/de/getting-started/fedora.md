@@ -27,7 +27,7 @@ Fedora ist großartig, wenn Sie ein Red Hat-basiertes Betriebssystem ohne den Pr
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, Fedora als Ihr Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: <https://getfedora.org/>
+Wenn Sie daran interessiert sind, Fedora als Ihr Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: `https://getfedora.org`
 
 ## Quiz Questions
 

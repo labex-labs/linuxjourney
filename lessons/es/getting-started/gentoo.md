@@ -27,7 +27,7 @@ Excelente para computadoras de escritorio y portátiles.
 
 ## Exercise
 
-Si estás interesado en tener Gentoo como tu sistema operativo, dirígete a la sección de instalación e inténtalo: <https://www.gentoo.org/>
+Si estás interesado en tener Gentoo como tu sistema operativo, dirígete a la sección de instalación e inténtalo: `https://www.gentoo.org`
 
 ## Quiz Questions
 

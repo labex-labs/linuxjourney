@@ -28,7 +28,7 @@ Excelente para cualquier plataforma: desktop, laptop y server.
 ## Exercise
 
 Si estás interesado en tener Ubuntu como tu sistema operativo, dirígete a la sección de instalación y pruébalo:
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

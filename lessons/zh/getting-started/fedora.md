@@ -27,7 +27,7 @@ Fedora Project 由 Red Hat 支持，是一个社区驱动的项目，包含开�
 
 ## Exercise
 
-如果您有兴趣将 Fedora 作为您的操作系统，请前往安装部分并尝试一下：<https://getfedora.org/>
+如果您有兴趣将 Fedora 作为您的操作系统，请前往安装部分并尝试一下：`https://getfedora.org`
 
 ## Quiz Questions
 

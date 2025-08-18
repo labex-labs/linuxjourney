@@ -27,7 +27,7 @@ Wie der Name schon sagt, wird es hauptsächlich in Unternehmen eingesetzt. Wenn 
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, RHEL als Ihr Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: <https://www.redhat.com/rhel/>
+Wenn Sie daran interessiert sind, RHEL als Ihr Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: `https://www.redhat.com/rhel`
 
 ## Quiz Questions
 

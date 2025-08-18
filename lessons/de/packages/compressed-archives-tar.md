@@ -71,7 +71,7 @@ tar xzf file.tar
 
 Wenn Sie sich das merken müssen: e**X**tract all **Z**ee **F**iles! (e**X**trahiere alle **Z**-Dateien!)
 
-tar ist einer dieser Befehle, der so wichtig ist und den man sich doch nie wirklich merkt. Relevanter xkcd: <https://xkcd.com/1168/>
+tar ist einer dieser Befehle, der so wichtig ist und den man sich doch nie wirklich merkt. Relevanter xkcd: `https://xkcd.com/1168`
 
 ### Andere Dienstprogramme
 

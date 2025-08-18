@@ -27,7 +27,7 @@ As described by the name, it's mostly used in enterprise, so if you need a solid
 
 ## Exercise
 
-If you're interested in having RHEL as your operating system, head over to the installation section and give it a try: <https://www.redhat.com/rhel/>
+If you're interested in having RHEL as your operating system, head over to the installation section and give it a try: `https://www.redhat.com/rhel`
 
 ## Quiz Questions
 

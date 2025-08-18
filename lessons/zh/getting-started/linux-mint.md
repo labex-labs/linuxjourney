@@ -27,7 +27,7 @@ Linux Mint 基于 Ubuntu。它使用 Ubuntu 的软件仓库，因此在两个发
 
 ## Exercise
 
-如果您有兴趣将 Linux Mint 作为您的操作系统，请前往安装部分并尝试一下：<http://linuxmint.com/>
+如果您有兴趣将 Linux Mint 作为您的操作系统，请前往安装部分并尝试一下：`http://linuxmint.com`
 
 ## Quiz Questions
 

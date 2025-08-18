@@ -27,7 +27,7 @@ Arch — это легковесный и гибкий дистрибутив Li
 
 ## Exercise
 
-If you're interested in having Arch as your operating system, head over to the installation section and give it a try: <https://archlinux.org/>
+If you're interested in having Arch as your operating system, head over to the installation section and give it a try: `https://archlinux.org`
 
 ## Quiz Questions
 

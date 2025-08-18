@@ -27,7 +27,7 @@ Hervorragend für Desktop und Laptop geeignet.
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, Linux Mint als Betriebssystem zu verwenden, besuchen Sie den Installationsbereich und probieren Sie es aus: <http://linuxmint.com/>
+Wenn Sie daran interessiert sind, Linux Mint als Betriebssystem zu verwenden, besuchen Sie den Installationsbereich und probieren Sie es aus: `http://linuxmint.com`
 
 ## Quiz Questions
 

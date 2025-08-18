@@ -29,7 +29,7 @@ Debian est un excellent système d'exploitation global pour n'importe quelle pla
 
 ## Exercise
 
-Si vous êtes intéressé par Debian comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <https://www.debian.org/>
+Si vous êtes intéressé par Debian comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `https://www.debian.org`
 
 ## Quiz Question
 
