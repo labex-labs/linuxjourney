@@ -36,12 +36,20 @@ Every lesson must have exactly these 4 sections:
 
 ```markdown
 ---
+index: 1
 lang: "en"
 title: "Lesson Title"
 meta_title: "Lesson Title - Course Name"
 meta_description: "Brief description (under 160 characters)"
 meta_keywords: "relevant, keywords"
 ---
+
+- `index` is the lesson number in the course. It should be a number and should be unique for each lesson.
+- `lang` is the language of the lesson. It should be a valid ISO 639-1 code.
+- `title` is the title of the lesson.
+- `meta_title` must be the "Lesson Title - Course Name" format.
+- `meta_description` is the description of the lesson. It should be a brief description of the lesson.
+- `meta_keywords` is the keywords of the lesson. It should be a comma-separated list of keywords.
 
 ## Lesson Content
 
