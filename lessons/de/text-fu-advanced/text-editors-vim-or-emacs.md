@@ -17,8 +17,8 @@ Vim und Emacs sind beliebte Texteditoren, die standardmäßig auf den meisten Li
 
 Machen Sie einen kleinen Rundgang durch Vim und Emacs:
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

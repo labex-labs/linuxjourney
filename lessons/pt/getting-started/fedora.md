@@ -27,7 +27,7 @@ O Fedora é ótimo se você deseja um sistema operacional baseado em Red Hat sem
 
 ## Exercise
 
-Se você estiver interessado em ter o Fedora como seu sistema operacional, vá para a seção de instalação e experimente: <https://getfedora.org/>
+Se você estiver interessado em ter o Fedora como seu sistema operacional, vá para a seção de instalação e experimente: `https://getfedora.org`
 
 ## Quiz Questions
 

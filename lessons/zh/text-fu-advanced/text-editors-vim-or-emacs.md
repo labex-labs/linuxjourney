@@ -17,8 +17,8 @@ Vim 和 Emacs 是流行的文本编辑器，它们在大多数 Linux 发行版�
 
 参观一下 Vim 和 Emacs：
 
-[Vim](http://www.vim.org/)
-[Emacs](https://www.gnu.org/software/emacs/)
+- [Vim](http://www.vim.org/)
+- [Emacs](https://www.gnu.org/software/emacs/)
 
 ## Quiz Question
 

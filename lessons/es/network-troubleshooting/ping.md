@@ -19,7 +19,7 @@ PING www.google.com (74.125.239.112) 56(84) bytes of data.
 64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
 ```
 
-En este ejemplo, estamos usando ping para verificar si podemos llegar a <www.google.com>. La bandera `-c` (count) se usa para dejar de enviar paquetes de solicitud de eco una vez que se ha alcanzado el conteo.
+En este ejemplo, estamos usando ping para verificar si podemos llegar a `www.google.com`. La bandera `-c` (count) se usa para dejar de enviar paquetes de solicitud de eco una vez que se ha alcanzado el conteo.
 
 La primera parte dice que estamos enviando paquetes de 64 bytes a 74.125.239.112 (google.com), y el resto nos muestra los detalles del viaje. Por defecto, envía un paquete por segundo.
 

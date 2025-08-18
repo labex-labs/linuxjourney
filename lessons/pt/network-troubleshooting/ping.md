@@ -19,7 +19,7 @@ PING www.google.com (74.125.239.112) 56(84) bytes of data.
 64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
 ```
 
-Neste exemplo, estamos usando o ping para verificar se conseguimos acessar <www.google.com>. A flag `-c` (count) é usada para parar de enviar pacotes de echo request depois que a contagem for atingida.
+Neste exemplo, estamos usando o ping para verificar se conseguimos acessar `www.google.com`. A flag `-c` (count) é usada para parar de enviar pacotes de echo request depois que a contagem for atingida.
 
 A primeira parte diz que estamos enviando pacotes de 64 bytes para 74.125.239.112 (google.com), e o restante nos mostra os detalhes da viagem. Por padrão, ele envia um pacote por segundo.
 

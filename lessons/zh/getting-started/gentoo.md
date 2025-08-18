@@ -27,7 +27,7 @@ Gentoo 使用自己的包管理系统 Portage。Portage 包管理非常模块化
 
 ## Exercise
 
-如果你有兴趣将 Gentoo 作为你的操作系统，请前往安装部分尝试一下：<https://www.gentoo.org/>
+如果你有兴趣将 Gentoo 作为你的操作系统，请前往安装部分尝试一下：`https://www.gentoo.org`
 
 ## Quiz Questions
 

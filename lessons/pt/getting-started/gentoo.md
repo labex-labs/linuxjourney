@@ -27,7 +27,7 @@ Se você está apenas começando com Linux e quer seguir um caminho mais desafia
 
 ## Exercise
 
-Se você está interessado em ter o Gentoo como seu sistema operacional, vá para a seção de instalação e experimente: <https://www.gentoo.org/>
+Se você está interessado em ter o Gentoo como seu sistema operacional, vá para a seção de instalação e experimente: `https://www.gentoo.org`
 
 ## Quiz Questions
 

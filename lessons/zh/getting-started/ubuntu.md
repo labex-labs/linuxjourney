@@ -28,7 +28,7 @@ Ubuntu 是由 Canonical 开发的基于 Debian 的操作系统。因此，它使
 ## Exercise
 
 如果您有兴趣将 Ubuntu 作为您的操作系统，请前往安装部分并尝试一下：
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-Sie werden feststellen, dass viel passiert, wenn Sie eine Paketerfassung durchführen. Nun, das ist zu erwarten; im Hintergrund findet viel Netzwerkaktivität statt. In meinem obigen Beispiel habe ich nur einen Ausschnitt meiner Erfassung genommen, speziell die Zeit, als ich mich entschied, <www.google.com> anzupingen.
+Sie werden feststellen, dass viel passiert, wenn Sie eine Paketerfassung durchführen. Nun, das ist zu erwarten; im Hintergrund findet viel Netzwerkaktivität statt. In meinem obigen Beispiel habe ich nur einen Ausschnitt meiner Erfassung genommen, speziell die Zeit, als ich mich entschied, `www.google.com` anzupingen.
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ Sie werden feststellen, dass viel passiert, wenn Sie eine Paketerfassung durchf�
 - `seq`: Dies ist die Start- und Endsequenznummer des TCP-Pakets.
 - `length`: Länge in Bytes.
 
-Wie Sie aus unserer tcpdump-Ausgabe ersehen können, senden wir ein ICMP echo request-Paket an <www.google.com> und erhalten im Gegenzug ein ICMP echo reply-Paket! Beachten Sie auch, dass verschiedene Pakete unterschiedliche Informationen ausgeben; schlagen Sie in der Manpage nach, um zu sehen, welche das sind.
+Wie Sie aus unserer tcpdump-Ausgabe ersehen können, senden wir ein ICMP echo request-Paket an `www.google.com` und erhalten im Gegenzug ein ICMP echo reply-Paket! Beachten Sie auch, dass verschiedene Pakete unterschiedliche Informationen ausgeben; schlagen Sie in der Manpage nach, um zu sehen, welche das sind.
 
 ### Writing tcpdump output to a file
 

@@ -27,7 +27,7 @@ RHEL 使用与 Debian 不同的包管理器，即 RPM package manager，我们�
 
 ## Exercise
 
-如果你有兴趣将 RHEL 作为你的操作系统，请前往安装部分并尝试一下：<https://www.redhat.com/rhel/>
+如果你有兴趣将 RHEL 作为你的操作系统，请前往安装部分并尝试一下：`https://www.redhat.com/rhel`
 
 ## Quiz Questions
 

@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-Vous remarquerez beaucoup de choses se produire lorsque vous exécutez une capture de paquets. Eh bien, c'est à prévoir ; il y a beaucoup d'activité réseau en arrière-plan. Dans mon exemple ci-dessus, je n'ai pris qu'un extrait de ma capture, spécifiquement le moment où j'ai décidé de faire un ping sur <www.google.com>.
+Vous remarquerez beaucoup de choses se produire lorsque vous exécutez une capture de paquets. Eh bien, c'est à prévoir ; il y a beaucoup d'activité réseau en arrière-plan. Dans mon exemple ci-dessus, je n'ai pris qu'un extrait de ma capture, spécifiquement le moment où j'ai décidé de faire un ping sur `www.google.com`.
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ Vous remarquerez beaucoup de choses se produire lorsque vous exécutez une captu
 - `seq`: C'est le numéro de séquence de début et de fin du paquet TCP.
 - `length`: Longueur en octets.
 
-Comme vous pouvez le voir dans notre sortie tcpdump, nous envoyons un paquet de requête d'écho ICMP à <www.google.com> et recevons un paquet de réponse d'écho ICMP en retour ! Notez également que différents paquets afficheront des informations différentes ; consultez la page de manuel pour voir ce que sont ces informations.
+Comme vous pouvez le voir dans notre sortie tcpdump, nous envoyons un paquet de requête d'écho ICMP à `www.google.com` et recevons un paquet de réponse d'écho ICMP en retour ! Notez également que différents paquets afficheront des informations différentes ; consultez la page de manuel pour voir ce que sont ces informations.
 
 ### Writing tcpdump output to a file
 

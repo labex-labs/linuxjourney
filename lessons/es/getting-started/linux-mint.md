@@ -27,7 +27,7 @@ Excelente para computadoras de escritorio y portátiles.
 
 ## Exercise
 
-Si estás interesado en tener Linux Mint como tu sistema operativo, dirígete a la sección de instalación y pruébalo: <http://linuxmint.com/>
+Si estás interesado en tener Linux Mint como tu sistema operativo, dirígete a la sección de instalación y pruébalo: `http://linuxmint.com`
 
 ## Quiz Questions
 

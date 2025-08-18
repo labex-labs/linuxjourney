@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-You'll notice a lot of stuff happening when you run a packet capture. Well, that's to be expected; there's a lot of network activity happening in the background. In my above example, I've taken only a snippet of my capture, specifically the time when I decided to ping <www.google.com>.
+You'll notice a lot of stuff happening when you run a packet capture. Well, that's to be expected; there's a lot of network activity happening in the background. In my above example, I've taken only a snippet of my capture, specifically the time when I decided to ping `www.google.com`.
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ You'll notice a lot of stuff happening when you run a packet capture. Well, that
 - `seq`: This is the TCP packet's starting and ending sequence number.
 - `length`: Length in bytes.
 
-As you can see from our tcpdump output, we are sending an ICMP echo request packet to <www.google.com> and getting an ICMP echo reply packet in return! Also, note that different packets will output different information; refer to the manpage to see what those are.
+As you can see from our tcpdump output, we are sending an ICMP echo request packet to `www.google.com` and getting an ICMP echo reply packet in return! Also, note that different packets will output different information; refer to the manpage to see what those are.
 
 ### Writing tcpdump output to a file
 

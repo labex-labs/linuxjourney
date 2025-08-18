@@ -28,7 +28,7 @@ Hervorragend geeignet für jede Plattform: Desktop, Laptop und Server.
 ## Exercise
 
 Wenn Sie daran interessiert sind, Ubuntu als Betriebssystem zu verwenden, besuchen Sie den Installationsbereich und probieren Sie es aus:
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

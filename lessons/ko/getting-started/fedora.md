@@ -27,7 +27,7 @@ Fedora 는 비용 부담 없이 Red Hat 기반 운영 체제를 원한다면 훌
 
 ## Exercise
 
-Fedora 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보십시오: <https://getfedora.org/>
+Fedora 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보십시오: `https://getfedora.org`
 
 ## Quiz Questions
 

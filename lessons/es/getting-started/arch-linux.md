@@ -27,7 +27,7 @@ Ideal para ordenadores de escritorio y portátiles. Si también tienes un dispos
 
 ## Exercise
 
-Si estás interesado en tener Arch como tu sistema operativo, dirígete a la sección de instalación y pruébalo: <https://www.archlinux.org/>
+Si estás interesado en tener Arch como tu sistema operativo, dirígete a la sección de instalación y pruébalo: `https://archlinux.org`
 
 ## Quiz Questions
 

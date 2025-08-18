@@ -71,7 +71,7 @@ tar xzf file.tar
 
 기억하는 데 도움이 필요하다면: e**X**tract all **Z**ee **F**iles!
 
-tar 는 매우 중요하지만 항상 기억하기 어려운 명령어 중 하나입니다. 관련 xkcd: <https://xkcd.com/1168/>
+tar 는 매우 중요하지만 항상 기억하기 어려운 명령어 중 하나입니다. 관련 xkcd: `https://xkcd.com/1168`
 
 ### Other Utilities
 

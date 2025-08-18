@@ -29,7 +29,7 @@ Debian 是一个适用于任何平台的总体上出色的操作系统。
 
 ## Exercise
 
-如果您有兴趣将 Debian 作为您的操作系统，请前往安装部分并尝试一下：<https://www.debian.org/>
+如果您有兴趣将 Debian 作为您的操作系统，请前往安装部分并尝试一下：`https://www.debian.org`
 
 ## Quiz Question
 

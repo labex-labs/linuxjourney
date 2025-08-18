@@ -19,9 +19,9 @@ Piense en NAT como una recepcionista en una oficina grande. Si alguien quiere co
 
 Un caso simple se vería así:
 
-1. Patty quiere conectarse a <www.google.com>, por lo que su máquina envía esta solicitud a través del router.
+1. Patty quiere conectarse a `www.google.com`, por lo que su máquina envía esta solicitud a través del router.
 2. El router toma esa solicitud y abre su propia conexión a google.com, luego envía la solicitud de Patty una vez que establece una conexión.
-3. El router es el intermediario entre Patty y <www.google.com>. Google no sabe de Patty; en cambio, todo lo que puede ver es el router.
+3. El router es el intermediario entre Patty y `www.google.com`. Google no sabe de Patty; en cambio, todo lo que puede ver es el router.
 
 NAT y el enrutamiento de paquetes en general pueden volverse bastante complicados, pero no profundizaremos en los detalles.
 

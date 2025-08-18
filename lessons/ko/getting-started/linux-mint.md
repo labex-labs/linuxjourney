@@ -27,7 +27,7 @@ Linux Mint 는 Ubuntu 기반이므로 Debian package manager 를 사용합니다
 
 ## Exercise
 
-Linux Mint 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보세요: <http://linuxmint.com/>
+Linux Mint 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보세요: `http://linuxmint.com`
 
 ## Quiz Questions
 

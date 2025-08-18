@@ -27,7 +27,7 @@ Ideal für Desktop und Laptop.
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, Gentoo als Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: <https://www.gentoo.org/>
+Wenn Sie daran interessiert sind, Gentoo als Betriebssystem zu verwenden, gehen Sie zum Installationsbereich und probieren Sie es aus: `https://www.gentoo.org`
 
 ## Quiz Questions
 

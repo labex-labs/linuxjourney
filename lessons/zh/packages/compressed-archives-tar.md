@@ -71,7 +71,7 @@ tar xzf file.tar
 
 如果您需要帮助记忆这个：e**X**tract all **Z**ee **F**iles！
 
-tar 是那些非常重要但您却从不真正记住的命令之一。相关 xkcd：<https://xkcd.com/1168/>
+tar 是那些非常重要但您却从不真正记住的命令之一。相关 xkcd：`https://xkcd.com/1168`
 
 ### Other Utilities
 

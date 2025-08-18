@@ -28,7 +28,7 @@ Ubuntu 는 Linux 를 시작하려는 초보자에게 훌륭한 선택입니다. 
 ## Exercise
 
 Ubuntu 를 운영 체제로 사용하고 싶다면 설치 섹션으로 이동하여 시도해 보세요:
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

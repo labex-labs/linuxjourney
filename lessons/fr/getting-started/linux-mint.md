@@ -27,7 +27,7 @@ Idéal pour les ordinateurs de bureau et portables.
 
 ## Exercise
 
-Si vous êtes intéressé par Linux Mint comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <http://linuxmint.com/>
+Si vous êtes intéressé par Linux Mint comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `http://linuxmint.com`
 
 ## Quiz Questions
 

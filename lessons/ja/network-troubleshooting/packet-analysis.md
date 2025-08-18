@@ -35,7 +35,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
 ```
 
-パケットキャプチャを実行すると、多くのことが起こっていることに気づくでしょう。それは当然のことです。バックグラウンドでは多くのネットワークアクティビティが発生しています。上記の例では、私が<www.google.com>に ping を打つことにした時のスニペットのみを抜粋しています。
+パケットキャプチャを実行すると、多くのことが起こっていることに気づくでしょう。それは当然のことです。バックグラウンドでは多くのネットワークアクティビティが発生しています。上記の例では、私が`www.google.com`に ping を打つことにした時のスニペットのみを抜粋しています。
 
 ### Understanding the output
 
@@ -50,7 +50,7 @@ listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
 - `seq`: これは TCP パケットの開始および終了シーケンス番号です。
 - `length`: バイト単位の長さです。
 
-tcpdump の出力からわかるように、私たちは<www.google.com>に ICMP echo request パケットを送信し、ICMP echo reply パケットを返してもらっています！また、異なるパケットは異なる情報を出力することにも注意してください。それらが何であるかについては、manpage を参照してください。
+tcpdump の出力からわかるように、私たちは`www.google.com`に ICMP echo request パケットを送信し、ICMP echo reply パケットを返してもらっています！また、異なるパケットは異なる情報を出力することにも注意してください。それらが何であるかについては、manpage を参照してください。
 
 ### Writing tcpdump output to a file
 

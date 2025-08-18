@@ -28,7 +28,7 @@ Ubuntu é uma ótima escolha para um iniciante que deseja entrar no Linux. O Ubu
 ## Exercise
 
 Se você estiver interessado em ter o Ubuntu como seu sistema operacional, vá para a seção de instalação e experimente:
-<http://www.ubuntu.com/>
+`http://www.ubuntu.com`
 
 ## Quiz Questions
 

@@ -71,7 +71,7 @@ tar xzf file.tar
 
 これを覚えるのに役立つヒント：e**X**tract all **Z**ee **F**iles!
 
-tar は非常に重要でありながら、なかなか覚えられないコマンドの一つです。関連する xkcd: <https://xkcd.com/1168/>
+tar は非常に重要でありながら、なかなか覚えられないコマンドの一つです。関連する xkcd: `https://xkcd.com/1168`
 
 ### Other Utilities
 

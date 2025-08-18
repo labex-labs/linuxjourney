@@ -29,7 +29,7 @@ Debian es un sistema operativo excelente en general para cualquier plataforma.
 
 ## Exercise
 
-Si estás interesado en tener Debian como tu sistema operativo, dirígete a la sección de instalación y pruébalo: <https://www.debian.org/>
+Si estás interesado en tener Debian como tu sistema operativo, dirígete a la sección de instalación y pruébalo: `https://www.debian.org`
 
 ## Quiz Question
 

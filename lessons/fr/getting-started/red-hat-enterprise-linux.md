@@ -27,7 +27,7 @@ Comme son nom l'indique, il est principalement utilisé en entreprise, donc si v
 
 ## Exercise
 
-Si vous êtes intéressé par RHEL comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : <https://www.redhat.com/rhel/>
+Si vous êtes intéressé par RHEL comme système d'exploitation, rendez-vous dans la section d'installation et essayez-le : `https://www.redhat.com/rhel`
 
 ## Quiz Questions
 

@@ -19,7 +19,7 @@ PING www.google.com (74.125.239.112) 56(84) bytes of data.
 64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
 ```
 
-Dans cet exemple, nous utilisons ping pour vérifier si nous pouvons atteindre <www.google.com>. L'option `-c` (count) est utilisée pour arrêter l'envoi de paquets de requête d'écho une fois que le nombre a été atteint.
+Dans cet exemple, nous utilisons ping pour vérifier si nous pouvons atteindre `www.google.com`. L'option `-c` (count) est utilisée pour arrêter l'envoi de paquets de requête d'écho une fois que le nombre a été atteint.
 
 La première partie indique que nous envoyons des paquets de 64 octets à 74.125.239.112 (google.com), et le reste nous montre les détails du trajet. Par défaut, il envoie un paquet par seconde.
 

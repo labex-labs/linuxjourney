@@ -29,7 +29,7 @@ pete@icebox:~$ cat /etc/hosts
 123.45.6.7  www.google.com
 ```
 
-保存文件，现在访问 <www.google.com>。是不是遇到问题了？这是因为我们刚刚将 <www.google.com> 映射到了一个完全错误的 IP 地址。由于我们的主机首先在本地查找 IP 地址映射，因此它永远不会到达 DNS 来查找 google.com。
+保存文件，现在访问 `www.google.com`。是不是遇到问题了？这是因为我们刚刚将 `www.google.com` 映射到了一个完全错误的 IP 地址。由于我们的主机首先在本地查找 IP 地址映射，因此它永远不会到达 DNS 来查找 google.com。
 
 ### /etc/resolv.conf
 
