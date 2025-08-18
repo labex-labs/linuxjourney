@@ -1,11 +1,10 @@
 ---
 index: 4
----
-p---
+lang: "zh"
 title: "netstat"
+meta_title: "netstat - 故障排除"
 meta_description: "学习用于 Linux 网络分析的 netstat 命令。通过这份适合初学者的指南，了解网络连接、端口和套接字。"
 meta_keywords: "netstat, netstat 命令，Linux 网络，网络连接，Linux 教程，初学者，指南"
-
 ---
 
 ## Lesson Content

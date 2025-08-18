@@ -6,6 +6,7 @@ meta_title: "lsof und fuser - Prozessauslastung"
 meta_description: "Erfahren Sie, wie Sie die Befehle lsof und fuser in Linux verwenden, um Prozesse zu identifizieren, die Dateien nutzen. Verstehen Sie 'Device or Resource Busy'-Fehler und verwalten Sie offene Dateien effektiv."
 meta_keywords: "lsof, fuser, Linux-Befehle, offene Dateien, Prozessverwaltung, Linux-Tutorial, Anfängerleitfaden, Gerät besetzt"
 ---
+
 ## Lesson Content
 
 Nehmen wir an, Sie haben ein USB-Laufwerk angeschlossen und begonnen, an einigen Dateien zu arbeiten. Nachdem Sie fertig waren, versuchten Sie, das USB-Gerät auszuhängen, und erhielten einen Fehler: "Device or Resource Busy." Wie würden Sie herausfinden, welche Dateien auf dem USB-Laufwerk noch verwendet werden? Dafür gibt es zwei Tools, die Sie verwenden können:

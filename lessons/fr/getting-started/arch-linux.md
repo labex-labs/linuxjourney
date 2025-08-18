@@ -6,6 +6,7 @@ meta_title: "Arch Linux - Démarrage"
 meta_description: "Découvrez Arch Linux, son modèle de 'rolling release' et le gestionnaire de paquets Pacman. Comprenez pourquoi Arch est excellent pour les débutants et les utilisateurs avancés recherchant le contrôle."
 meta_keywords: "Arch Linux, Pacman, distribution Linux, rolling release, tutoriel Linux, guide du débutant, OS léger"
 ---
+
 ## Lesson Content
 
 ### Aperçu
