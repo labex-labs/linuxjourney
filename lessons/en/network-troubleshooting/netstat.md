@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "netstat"
-description: "Learn netstat command for Linux network analysis. Understand network connections, ports, and sockets with this beginner-friendly guide."
-keywords: "netstat, netstat command, Linux networking, network connections, Linux tutorial, beginner, guide"
+meta_description: "Learn netstat command for Linux network analysis. Understand network connections, ports, and sockets with this beginner-friendly guide."
+meta_keywords: "netstat, netstat command, Linux networking, network connections, Linux tutorial, beginner, guide"
 ---
 
 ## Lesson Content

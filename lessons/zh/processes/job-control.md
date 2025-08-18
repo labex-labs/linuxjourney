@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "作业控制"
-description: "学习 Linux 作业控制以管理后台进程。了解 'jobs'、'bg'、'fg' 和 'kill' 命令，以高效使用 shell。开始您的 Linux 之旅！"
-keywords: "Linux 作业控制，后台进程，jobs 命令，bg 命令，fg 命令，kill 命令，Linux 教程，Linux 初学者"
+meta_description: "学习 Linux 作业控制以管理后台进程。了解 'jobs'、'bg'、'fg' 和 'kill' 命令，以高效使用 shell。开始您的 Linux 之旅！"
+meta_keywords: "Linux 作业控制，后台进程，jobs 命令，bg 命令，fg 命令，kill 命令，Linux 教程，Linux 初学者"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "expand 和 unexpand"
-description: "学习使用 `expand` 命令将制表符转换为空格，并使用 `unexpand` 命令将空格转换为制表符。通过本 Linux 教程改进文本文件格式。"
-keywords: "expand 命令，unexpand 命令，Linux 制表符，Linux 空格，文本格式化，Linux 教程，Linux 初学者，Linux 指南"
+meta_description: "学习使用 `expand` 命令将制表符转换为空格，并使用 `unexpand` 命令将空格转换为制表符。通过本 Linux 教程改进文本文件格式。"
+meta_keywords: "expand 命令，unexpand 命令，Linux 制表符，Linux 空格，文本格式化，Linux 教程，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

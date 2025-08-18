@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "udev"
-description: "Erfahren Sie mehr über udev, wie es Linux-Gerätedateien dynamisch verwaltet und udevadm verwendet. Verstehen Sie die Erstellung von Geräteknoten für Anfänger."
-keywords: "udev, udevadm, Linux-Geräteverwaltung, Gerätedateien, Linux-Tutorial, Linux für Anfänger, udev-Regeln, Linux-Anleitung"
+meta_description: "Erfahren Sie mehr über udev, wie es Linux-Gerätedateien dynamisch verwaltet und udevadm verwendet. Verstehen Sie die Erstellung von Geräteknoten für Anfänger."
+meta_keywords: "udev, udevadm, Linux-Geräteverwaltung, Gerätedateien, Linux-Tutorial, Linux für Anfänger, udev-Regeln, Linux-Anleitung"
 ---
 
 ## Lesson Content

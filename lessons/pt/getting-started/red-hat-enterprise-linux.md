@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Red Hat Enterprise Linux"
-description: "Aprenda sobre os conceitos básicos do Red Hat Enterprise Linux (RHEL), seu gerenciador de pacotes RPM e usos empresariais. Entenda as principais diferenças e benefícios do RHEL."
-keywords: "Aprender RHEL, Red Hat Enterprise Linux, conceitos básicos RHEL, gerenciador de pacotes RPM, SO de servidor Linux, RHEL para iniciantes, guia RHEL"
+meta_description: "Aprenda sobre os conceitos básicos do Red Hat Enterprise Linux (RHEL), seu gerenciador de pacotes RPM e usos empresariais. Entenda as principais diferenças e benefícios do RHEL."
+meta_keywords: "Aprender RHEL, Red Hat Enterprise Linux, conceitos básicos RHEL, gerenciador de pacotes RPM, SO de servidor Linux, RHEL para iniciantes, guia RHEL"
 ---
 
 ## Lesson Content

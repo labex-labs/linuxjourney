@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "rpm y dpkg"
-description: "Aprende a instalar, eliminar y listar paquetes usando los comandos rpm y dpkg. Comprende la gestión directa de paquetes para archivos .deb y .rpm. ¡Comienza tu viaje en Linux!"
-keywords: "rpm, dpkg, gestión de paquetes Linux, .deb, .rpm, tutorial de Linux, guía para principiantes, instalar paquetes"
+meta_description: "Aprende a instalar, eliminar y listar paquetes usando los comandos rpm y dpkg. Comprende la gestión directa de paquetes para archivos .deb y .rpm. ¡Comienza tu viaje en Linux!"
+meta_keywords: "rpm, dpkg, gestión de paquetes Linux, .deb, .rpm, tutorial de Linux, guía para principiantes, instalar paquetes"
 ---
 
 ## Lesson Content

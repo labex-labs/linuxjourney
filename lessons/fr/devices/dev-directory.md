@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Répertoire /dev"
-description: "Découvrez le répertoire /dev sous Linux, où les fichiers de périphérique sont stockés. Comprenez les nœuds de périphérique et comment interagir avec eux. Explorez /dev avec ls. Guide pour débutants Linux."
-keywords: "répertoire /dev, fichiers de périphérique Linux, nœuds de périphérique, tutoriel Linux, ls /dev, débutant Linux, guide Linux"
+meta_description: "Découvrez le répertoire /dev sous Linux, où les fichiers de périphérique sont stockés. Comprenez les nœuds de périphérique et comment interagir avec eux. Explorez /dev avec ls. Guide pour débutants Linux."
+meta_keywords: "répertoire /dev, fichiers de périphérique Linux, nœuds de périphérique, tutoriel Linux, ls /dev, débutant Linux, guide Linux"
 ---
 
 ## Lesson Content

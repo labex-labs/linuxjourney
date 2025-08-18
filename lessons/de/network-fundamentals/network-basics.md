@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Netzwerkgrundlagen"
-description: "Lernen Sie die Grundlagen des Linux-Netzwerks: Verstehen Sie WAN, LAN, WLAN, Router und Hosts. Beginnen Sie Ihre Netzwerk-Reise mit diesem Leitfaden für Anfänger!"
-keywords: "Linux-Netzwerkgrundlagen, WAN, LAN, WLAN, Netzwerk-Tutorial, Linux für Anfänger, Netzwerk-Leitfaden, Linux-Konzepte"
+meta_description: "Lernen Sie die Grundlagen des Linux-Netzwerks: Verstehen Sie WAN, LAN, WLAN, Router und Hosts. Beginnen Sie Ihre Netzwerk-Reise mit diesem Leitfaden für Anfänger!"
+meta_keywords: "Linux-Netzwerkgrundlagen, WAN, LAN, WLAN, Netzwerk-Tutorial, Linux für Anfänger, Netzwerk-Leitfaden, Linux-Konzepte"
 ---
 
 ## Lesson Content

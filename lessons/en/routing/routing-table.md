@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Routing Table"
-description: "Learn to understand the Linux routing table and how packets are routed using the route command. Explore destinations, gateways, and interfaces for network basics."
-keywords: "Linux routing table, route command, network routing, Linux networking, beginner Linux, Linux tutorial, network guide"
+meta_description: "Learn to understand the Linux routing table and how packets are routed using the route command. Explore destinations, gateways, and interfaces for network basics."
+meta_keywords: "Linux routing table, route command, network routing, Linux networking, beginner Linux, Linux tutorial, network guide"
 ---
 
 ## Lesson Content

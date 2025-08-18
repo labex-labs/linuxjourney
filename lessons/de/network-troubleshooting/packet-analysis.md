@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Paketanalyse"
-description: "Lernen Sie die Grundlagen der Paketanalyse mit tcpdump. Verstehen Sie den Netzwerkverkehr, erfassen Sie Daten und interpretieren Sie die Ausgabe mit diesem anfängerfreundlichen Linux-Leitfaden."
-keywords: "tcpdump, Paketanalyse, Netzwerkanalyse, Linux-Netzwerk, Anfänger-Tutorial, Wireshark, Linux-Befehle, Netzwerkverkehr"
+meta_description: "Lernen Sie die Grundlagen der Paketanalyse mit tcpdump. Verstehen Sie den Netzwerkverkehr, erfassen Sie Daten und interpretieren Sie die Ausgabe mit diesem anfängerfreundlichen Linux-Leitfaden."
+meta_keywords: "tcpdump, Paketanalyse, Netzwerkanalyse, Linux-Netzwerk, Anfänger-Tutorial, Wireshark, Linux-Befehle, Netzwerkverkehr"
 ---
 
 ## Lesson Content

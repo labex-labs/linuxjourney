@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "패킷 분석"
-description: "tcpdump 를 사용하여 패킷 분석의 기본을 배웁니다. 이 초보자 친화적인 Linux 가이드를 통해 네트워크 트래픽을 이해하고, 데이터를 캡처하며, 출력을 해석합니다."
-keywords: "tcpdump, 패킷 분석, 네트워크 분석, Linux 네트워킹, 초보자 튜토리얼, Wireshark, Linux 명령어, 네트워크 트래픽"
+meta_description: "tcpdump 를 사용하여 패킷 분석의 기본을 배웁니다. 이 초보자 친화적인 Linux 가이드를 통해 네트워크 트래픽을 이해하고, 데이터를 캡처하며, 출력을 해석합니다."
+meta_keywords: "tcpdump, 패킷 분석, 네트워크 분석, Linux 네트워킹, 초보자 튜토리얼, Wireshark, Linux 명령어, 네트워크 트래픽"
 ---
 
 ## Lesson Content

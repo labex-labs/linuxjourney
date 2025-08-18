@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Upstart 개요"
-description: "Upstart, 이벤트 기반 모델, 그리고 Linux 에서 서비스를 관리하는 방법에 대해 알아보세요. Upstart 작업 구성과 init 시스템으로서의 역할을 이해합니다."
-keywords: "Upstart, init 시스템, Linux 서비스, Ubuntu, SysV, 초보자 튜토리얼, Linux 가이드"
+meta_description: "Upstart, 이벤트 기반 모델, 그리고 Linux 에서 서비스를 관리하는 방법에 대해 알아보세요. Upstart 작업 구성과 init 시스템으로서의 역할을 이해합니다."
+meta_keywords: "Upstart, init 시스템, Linux 서비스, Ubuntu, SysV, 초보자 튜토리얼, Linux 가이드"
 ---
 
 ## Lesson Content

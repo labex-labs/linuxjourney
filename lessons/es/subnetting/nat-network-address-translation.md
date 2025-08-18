@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "NAT"
-description: "Aprenda sobre NAT (Network Address Translation) en Linux, cómo funciona y su papel en la seguridad de la red. Comprenda las IP privadas vs. públicas. Guía de redes de Linux."
-keywords: "NAT, Network Address Translation, redes Linux, IP privada, IP pública, tutorial Linux, guía para principiantes"
+meta_description: "Aprenda sobre NAT (Network Address Translation) en Linux, cómo funciona y su papel en la seguridad de la red. Comprenda las IP privadas vs. públicas. Guía de redes de Linux."
+meta_keywords: "NAT, Network Address Translation, redes Linux, IP privada, IP pública, tutorial Linux, guía para principiantes"
 ---
 
 ## Lesson Content

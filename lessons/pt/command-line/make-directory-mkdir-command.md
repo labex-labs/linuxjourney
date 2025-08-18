@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "mkdir (Criar Diretório)"
-description: "Aprenda a usar o comando mkdir para criar diretórios e subdiretórios no Linux. Este tutorial para iniciantes ajuda você a organizar arquivos de forma eficiente."
-keywords: "mkdir, criar diretório, criar diretório, comandos linux, tutorial linux, linux para iniciantes, guia linux"
+meta_description: "Aprenda a usar o comando mkdir para criar diretórios e subdiretórios no Linux. Este tutorial para iniciantes ajuda você a organizar arquivos de forma eficiente."
+meta_keywords: "mkdir, criar diretório, criar diretório, comandos linux, tutorial linux, linux para iniciantes, guia linux"
 ---
 
 ## Lesson Content

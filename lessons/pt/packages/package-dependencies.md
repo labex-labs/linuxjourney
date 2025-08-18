@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Dependências de Pacotes"
-description: "Aprenda sobre as dependências de pacotes Linux e por que elas são cruciais para a instalação de software. Entenda as bibliotecas compartilhadas e evite pacotes quebrados. Comece sua jornada no Linux!"
-keywords: "dependências de pacotes Linux, bibliotecas compartilhadas, pacotes Linux, gerenciamento de pacotes, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda sobre as dependências de pacotes Linux e por que elas são cruciais para a instalação de software. Entenda as bibliotecas compartilhadas e evite pacotes quebrados. Comece sua jornada no Linux!"
+meta_keywords: "dependências de pacotes Linux, bibliotecas compartilhadas, pacotes Linux, gerenciamento de pacotes, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "find"
-description: "Learn how to use the Linux 'find' command to locate files and directories. Discover basic search options and improve your Linux file management skills."
-keywords: "Linux find command, find files Linux, Linux directory search, find command tutorial, Linux file management, beginner Linux, Linux guide"
+meta_description: "Learn how to use the Linux 'find' command to locate files and directories. Discover basic search options and improve your Linux file management skills."
+meta_keywords: "Linux find command, find files Linux, Linux directory search, find command tutorial, Linux file management, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Vim-Bearbeitung"
-description: "Lernen Sie die Grundlagen der Vim-Bearbeitung: Text effizient löschen, ändern, kopieren und einfügen. Meistern Sie wesentliche Vim-Befehle für Anfänger und verbessern Sie Ihre Fähigkeiten zur Textbearbeitung unter Linux."
-keywords: "Vim-Bearbeitung, Vim-Befehle, Linux-Texteditor, Vim-Tutorial, Vim-Anleitung, Vim für Anfänger, dd-Befehl, Vim löschen"
+meta_description: "Lernen Sie die Grundlagen der Vim-Bearbeitung: Text effizient löschen, ändern, kopieren und einfügen. Meistern Sie wesentliche Vim-Befehle für Anfänger und verbessern Sie Ihre Fähigkeiten zur Textbearbeitung unter Linux."
+meta_keywords: "Vim-Bearbeitung, Vim-Befehle, Linux-Texteditor, Vim-Tutorial, Vim-Anleitung, Vim für Anfänger, dd-Befehl, Vim löschen"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Kontinuierliche Überwachung"
-description: "Lernen Sie die kontinuierliche Linux-Systemüberwachung mit sar. Verstehen Sie die Installation, Datenerfassung und wie Sie historische Ressourcennutzung zur Leistungsanalyse nutzen können. Legen Sie los!"
-keywords: "sar, sysstat, Linux-Überwachung, Systemleistung, kontinuierliche Überwachung, Anfänger, Tutorial, Anleitung"
+meta_description: "Lernen Sie die kontinuierliche Linux-Systemüberwachung mit sar. Verstehen Sie die Installation, Datenerfassung und wie Sie historische Ressourcennutzung zur Leistungsanalyse nutzen können. Legen Sie los!"
+meta_keywords: "sar, sysstat, Linux-Überwachung, Systemleistung, kontinuierliche Überwachung, Anfänger, Tutorial, Anleitung"
 ---
 
 ## Lesson Content

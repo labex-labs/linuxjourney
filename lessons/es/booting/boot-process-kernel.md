@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Proceso de Arranque: Kernel"
-description: "Aprende sobre el proceso de arranque de Linux, la inicialización del kernel y el papel de initramfs. Comprende cómo el kernel monta el sistema de archivos raíz. Guía del proceso de arranque de Linux."
-keywords: "proceso de arranque de Linux, arranque del kernel, initramfs, initrd, sistema de archivos raíz, tutorial de Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende sobre el proceso de arranque de Linux, la inicialización del kernel y el papel de initramfs. Comprende cómo el kernel monta el sistema de archivos raíz. Guía del proceso de arranque de Linux."
+meta_keywords: "proceso de arranque de Linux, arranque del kernel, initramfs, initrd, sistema de archivos raíz, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

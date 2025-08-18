@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "DHCP 概述"
-description: "了解 Linux 中的 DHCP（动态主机配置协议）。理解 DHCP 如何分配 IP 地址及其四步过程。开始您的 Linux 网络之旅！"
-keywords: "DHCP, 动态主机配置协议，Linux 网络，IP 地址，DHCP 教程，初学者，指南"
+meta_description: "了解 Linux 中的 DHCP（动态主机配置协议）。理解 DHCP 如何分配 IP 地址及其四步过程。开始您的 Linux 网络之旅！"
+meta_keywords: "DHCP, 动态主机配置协议，Linux 网络，IP 地址，DHCP 教程，初学者，指南"
 ---
 
 ## Lesson Content

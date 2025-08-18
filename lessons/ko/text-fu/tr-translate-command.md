@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "tr (변환)"
-description: "Linux 'tr' 명령어를 사용하여 문자를 변환하고 삭제하는 방법을 배웁니다. 예제와 연습을 통해 문자 변환을 이해합니다. Linux 여정을 시작하세요!"
-keywords: "tr command, Linux tr, 문자 변환, 문자 삭제, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
+meta_description: "Linux 'tr' 명령어를 사용하여 문자를 변환하고 삭제하는 방법을 배웁니다. 예제와 연습을 통해 문자 변환을 이해합니다. Linux 여정을 시작하세요!"
+meta_keywords: "tr command, Linux tr, 문자 변환, 문자 삭제, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---
 
 ## Lesson Content

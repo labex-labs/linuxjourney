@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "alias"
-description: "Aprende a crear y gestionar aliases de Linux para comandos comunes. Descubre la configuración de alias temporales y permanentes en .bashrc. ¡Mejora tu eficiencia en la línea de comandos!"
-keywords: "alias de Linux, alias de bash, comando unalias, .bashrc, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
+meta_description: "Aprende a crear y gestionar aliases de Linux para comandos comunes. Descubre la configuración de alias temporales y permanentes en .bashrc. ¡Mejora tu eficiencia en la línea de comandos!"
+meta_keywords: "alias de Linux, alias de bash, comando unalias, .bashrc, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

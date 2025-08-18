@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "システムロギング"
-description: "Linux のシステムロギング、syslog、および/var/log でのログファイルの表示方法について学びます。rsyslogd を理解し、この初心者向けガイドでシステムイベントを監視します。"
-keywords: "Linux ロギング，syslog, rsyslogd, var log, システムログ，Linux チュートリアル，初心者ガイド"
+meta_description: "Linux のシステムロギング、syslog、および/var/log でのログファイルの表示方法について学びます。rsyslogd を理解し、この初心者向けガイドでシステムイベントを監視します。"
+meta_keywords: "Linux ロギング，syslog, rsyslogd, var log, システムログ，Linux チュートリアル，初心者ガイド"
 ---
 
 ## Lesson Content

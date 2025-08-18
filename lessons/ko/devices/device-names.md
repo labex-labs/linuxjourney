@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "장치 이름"
-description: "SCSI (sd), pseudo, PATA (hd) 장치와 같은 Linux 장치 이름을 배웁니다. 이 초보자 친화적인 가이드에서 /dev/sda, /dev/null 등을 이해합니다."
-keywords: "Linux 장치 이름, /dev, SCSI 장치, pseudo 장치, PATA 장치, Linux 튜토리얼, 초보자 Linux, 장치 파일"
+meta_description: "SCSI (sd), pseudo, PATA (hd) 장치와 같은 Linux 장치 이름을 배웁니다. 이 초보자 친화적인 가이드에서 /dev/sda, /dev/null 등을 이해합니다."
+meta_keywords: "Linux 장치 이름, /dev, SCSI 장치, pseudo 장치, PATA 장치, Linux 튜토리얼, 초보자 Linux, 장치 파일"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "IPv4"
-description: "Learn about IPv4 addresses, their structure, and how to find your IP using ifconfig. Understand network basics for Linux beginners."
-keywords: "IPv4, IP address, ifconfig, network basics, Linux networking, beginner, tutorial, guide"
+meta_description: "Learn about IPv4 addresses, their structure, and how to find your IP using ifconfig. Understand network basics for Linux beginners."
+meta_keywords: "IPv4, IP address, ifconfig, network basics, Linux networking, beginner, tutorial, guide"
 ---
 
 ## Lesson Content

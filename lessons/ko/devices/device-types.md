@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "장치 유형"
-description: "Linux 장치 유형 (character, block, pipe, socket) 과 `ls -l /dev`를 사용하여 이를 식별하는 방법을 배웁니다. major/minor 장치 번호를 이해합니다. 초보자를 위한 Linux 튜토리얼입니다."
-keywords: "Linux 장치 유형, ls -l /dev, character device, block device, major minor device number, Linux 튜토리얼, Linux 가이드, 초보자"
+meta_description: "Linux 장치 유형 (character, block, pipe, socket) 과 `ls -l /dev`를 사용하여 이를 식별하는 방법을 배웁니다. major/minor 장치 번호를 이해합니다. 초보자를 위한 Linux 튜토리얼입니다."
+meta_keywords: "Linux 장치 유형, ls -l /dev, character device, block device, major minor device number, Linux 튜토리얼, Linux 가이드, 초보자"
 ---
 
 ## Lesson Content

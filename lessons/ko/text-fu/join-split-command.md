@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "join 및 split"
-description: "Linux 의 'join' 및 'split' 명령을 사용하여 파일을 조작하는 방법을 배웁니다. 공통 필드를 기준으로 파일을 결합하고 큰 파일을 효율적으로 분할하는 방법을 이해합니다. 실용적인 예제와 팁을 얻으세요."
-keywords: "Linux join 명령, Linux split 명령, 파일 조작, Linux 튜토리얼, 명령줄, 초보자 Linux, Linux 가이드"
+meta_description: "Linux 의 'join' 및 'split' 명령을 사용하여 파일을 조작하는 방법을 배웁니다. 공통 필드를 기준으로 파일을 결합하고 큰 파일을 효율적으로 분할하는 방법을 이해합니다. 실용적인 예제와 팁을 얻으세요."
+meta_keywords: "Linux join 명령, Linux split 명령, 파일 조작, Linux 튜토리얼, 명령줄, 초보자 Linux, Linux 가이드"
 ---
 
 ## Lesson Content

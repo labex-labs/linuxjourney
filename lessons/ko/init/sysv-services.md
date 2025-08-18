@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "System V 서비스"
-description: "명령줄 도구를 사용하여 System V 서비스를 관리하는 방법을 배웁니다. 이 초보자 친화적인 Linux 튜토리얼을 통해 서비스를 나열, 시작, 중지 및 다시 시작하는 방법을 알아보세요."
-keywords: "System V 서비스, Linux 서비스, service 명령, SysV init, Linux 튜토리얼, 초보자 Linux, 서비스 관리, Linux 가이드"
+meta_description: "명령줄 도구를 사용하여 System V 서비스를 관리하는 방법을 배웁니다. 이 초보자 친화적인 Linux 튜토리얼을 통해 서비스를 나열, 시작, 중지 및 다시 시작하는 방법을 알아보세요."
+meta_keywords: "System V 서비스, Linux 서비스, service 명령, SysV init, Linux 튜토리얼, 초보자 Linux, 서비스 관리, Linux 가이드"
 ---
 
 ## Lesson Content

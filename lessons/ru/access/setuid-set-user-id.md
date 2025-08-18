@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Setuid"
-description: "Узнайте о разрешениях Linux Setuid (SUID), как они работают и как их изменять. Поймите SUID для безопасного доступа к файлам в Linux."
-keywords: "Linux Setuid, SUID, разрешения Linux, chmod, команда passwd, безопасность Linux, Linux для начинающих, учебник по Linux"
+meta_description: "Узнайте о разрешениях Linux Setuid (SUID), как они работают и как их изменять. Поймите SUID для безопасного доступа к файлам в Linux."
+meta_keywords: "Linux Setuid, SUID, разрешения Linux, chmod, команда passwd, безопасность Linux, Linux для начинающих, учебник по Linux"
 ---
 
 ## Lesson Content

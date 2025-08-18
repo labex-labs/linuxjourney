@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "rm (Remover)"
-description: "Aprenda como usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
-keywords: "comando rm, excluir arquivos Linux, remover diretórios, tutorial Linux, Linux para iniciantes, rmdir, guia Linux"
+meta_description: "Aprenda como usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
+meta_keywords: "comando rm, excluir arquivos Linux, remover diretórios, tutorial Linux, Linux para iniciantes, rmdir, guia Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Eine Linux-Distribution auswählen"
-description: "Erfahren Sie, wie Sie eine Linux-Distribution für Ihre Bedürfnisse auswählen. Entdecken Sie beliebte Optionen und verstehen Sie Kernel, Hardware und User Space. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Linux-Distribution, Linux auswählen, Linux-Kernel, Linux für Anfänger, Linux-Leitfaden, Linux installieren, Linux-Tutorial"
+meta_description: "Erfahren Sie, wie Sie eine Linux-Distribution für Ihre Bedürfnisse auswählen. Entdecken Sie beliebte Optionen und verstehen Sie Kernel, Hardware und User Space. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux-Distribution, Linux auswählen, Linux-Kernel, Linux für Anfänger, Linux-Leitfaden, Linux installieren, Linux-Tutorial"
 ---
 
 ## Lesson Content

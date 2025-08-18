@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "exit"
-description: "Erfahren Sie, wie Sie die Linux-Shell mit den Befehlen 'exit' oder 'logout' verlassen. Verstehen Sie die grundlegende Shell-Navigation für Anfänger. Beginnen Sie noch heute Ihre Linux-Reise!"
-keywords: "exit Befehl, logout Befehl, Linux Shell, Terminal beenden, Linux Grundlagen, Linux für Anfänger, Linux Tutorial"
+meta_description: "Erfahren Sie, wie Sie die Linux-Shell mit den Befehlen 'exit' oder 'logout' verlassen. Verstehen Sie die grundlegende Shell-Navigation für Anfänger. Beginnen Sie noch heute Ihre Linux-Reise!"
+meta_keywords: "exit Befehl, logout Befehl, Linux Shell, Terminal beenden, Linux Grundlagen, Linux für Anfänger, Linux Tutorial"
 ---
 
 ## Lesson Content

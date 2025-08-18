@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Linux 배포판 선택하기"
-description: "필요에 맞는 Linux 배포판을 선택하는 방법을 배우세요. 인기 있는 옵션을 탐색하고 커널, 하드웨어 및 사용자 공간을 이해하세요. Linux 여정을 시작하세요!"
-keywords: "Linux 배포판, Linux 선택, Linux 커널, 초보자 Linux, Linux 가이드, Linux 설치, Linux 튜토리얼"
+meta_description: "필요에 맞는 Linux 배포판을 선택하는 방법을 배우세요. 인기 있는 옵션을 탐색하고 커널, 하드웨어 및 사용자 공간을 이해하세요. Linux 여정을 시작하세요!"
+meta_keywords: "Linux 배포판, Linux 선택, Linux 커널, 초보자 Linux, Linux 가이드, Linux 설치, Linux 튜토리얼"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "CPU 監視"
-description: "uptime コマンドで CPU 監視を学びましょう。Linux 初心者向けに、load average、CPU 使用率、システムパフォーマンスの解釈方法を理解します。"
-keywords: "uptime コマンド，Linux CPU 監視，load average, システムパフォーマンス，Linux チュートリアル，初心者ガイド"
+meta_description: "uptime コマンドで CPU 監視を学びましょう。Linux 初心者向けに、load average、CPU 使用率、システムパフォーマンスの解釈方法を理解します。"
+meta_keywords: "uptime コマンド，Linux CPU 監視，load average, システムパフォーマンス，Linux チュートリアル，初心者ガイド"
 ---
 
 ## Lesson Content

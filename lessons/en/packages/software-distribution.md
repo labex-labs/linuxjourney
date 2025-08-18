@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Software Distribution"
-description: "Learn about Linux software distribution, package managers, and package types like .deb and .rpm. Understand how software is managed on Linux systems."
-keywords: "Linux software distribution, package manager, .deb, .rpm, Linux packages, beginner Linux, Linux tutorial, software installation"
+meta_description: "Learn about Linux software distribution, package managers, and package types like .deb and .rpm. Understand how software is managed on Linux systems."
+meta_keywords: "Linux software distribution, package manager, .deb, .rpm, Linux packages, beginner Linux, Linux tutorial, software installation"
 ---
 
 ## Lesson Content

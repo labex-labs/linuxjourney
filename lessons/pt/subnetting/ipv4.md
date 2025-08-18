@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "IPv4"
-description: "Aprenda sobre endereços IPv4, sua estrutura e como encontrar seu IP usando ifconfig. Entenda os conceitos básicos de rede para iniciantes em Linux."
-keywords: "IPv4, endereço IP, ifconfig, conceitos básicos de rede, rede Linux, iniciante, tutorial, guia"
+meta_description: "Aprenda sobre endereços IPv4, sua estrutura e como encontrar seu IP usando ifconfig. Entenda os conceitos básicos de rede para iniciantes em Linux."
+meta_keywords: "IPv4, endereço IP, ifconfig, conceitos básicos de rede, rede Linux, iniciante, tutorial, guia"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Процесс загрузки: BIOS"
-description: "Узнайте о процессе загрузки Linux, BIOS и MBR. Поймите, как запускается ваша система, с помощью этого руководства для начинающих. Изучите концепции UEFI!"
-keywords: "процесс загрузки Linux, BIOS, MBR, UEFI, учебник по Linux, bootloader, Linux для начинающих, запуск системы"
+meta_description: "Узнайте о процессе загрузки Linux, BIOS и MBR. Поймите, как запускается ваша система, с помощью этого руководства для начинающих. Изучите концепции UEFI!"
+meta_keywords: "процесс загрузки Linux, BIOS, MBR, UEFI, учебник по Linux, bootloader, Linux для начинающих, запуск системы"
 ---
 
 ## Lesson Content

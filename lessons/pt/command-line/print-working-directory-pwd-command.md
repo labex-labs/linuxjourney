@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "pwd (Imprimir Diretório de Trabalho)"
-description: "Aprenda a usar o comando 'pwd' no Linux para imprimir seu diretório de trabalho atual. Entenda os caminhos do sistema de arquivos Linux e a navegação para iniciantes."
-keywords: "comando pwd, diretório Linux, diretório atual, caminho Linux, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda a usar o comando 'pwd' no Linux para imprimir seu diretório de trabalho atual. Entenda os caminhos do sistema de arquivos Linux e a navegação para iniciantes."
+meta_keywords: "comando pwd, diretório Linux, diretório atual, caminho Linux, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

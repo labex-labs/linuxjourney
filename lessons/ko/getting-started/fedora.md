@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "페도라"
-description: "Fedora Linux, RHEL 과의 연결 및 패키지 관리에 대해 알아보세요. Fedora 가 초보자와 데스크톱 사용자에게 훌륭한 무료 Red Hat 기반 OS 인 이유를 알아보세요."
-keywords: "Fedora Linux, RHEL, Red Hat, Linux 튜토리얼, 패키지 관리, 초보자 Linux, Linux 가이드, 무료 OS"
+meta_description: "Fedora Linux, RHEL 과의 연결 및 패키지 관리에 대해 알아보세요. Fedora 가 초보자와 데스크톱 사용자에게 훌륭한 무료 Red Hat 기반 OS 인 이유를 알아보세요."
+meta_keywords: "Fedora Linux, RHEL, Red Hat, Linux 튜토리얼, 패키지 관리, 초보자 Linux, Linux 가이드, 무료 OS"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Anatomie d'un Disque"
-description: "Découvrez le partitionnement de disque Linux, MBR vs GPT, et la structure du système de fichiers. Comprenez les partitions, les tables et comment organiser les données. Démarrez avec ce guide pour débutants !"
-keywords: "partitionnement de disque Linux, MBR, GPT, structure du système de fichiers, partitions Linux, débutant, tutoriel, guide"
+meta_description: "Découvrez le partitionnement de disque Linux, MBR vs GPT, et la structure du système de fichiers. Comprenez les partitions, les tables et comment organiser les données. Démarrez avec ce guide pour débutants !"
+meta_keywords: "partitionnement de disque Linux, MBR, GPT, structure du système de fichiers, partitions Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content

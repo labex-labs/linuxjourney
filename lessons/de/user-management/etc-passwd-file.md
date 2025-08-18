@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "/etc/passwd"
-description: "Erfahren Sie mehr über die Datei /etc/passwd in Linux, verstehen Sie die Felder der Benutzerinformationen und wie UIDs funktionieren. Erkunden Sie diese essentielle Konfigurationsdatei."
-keywords: "/etc/passwd, Linux-Benutzer, Benutzer-ID, UID, Linux-Tutorial, Anfänger, Anleitung, Linux-Befehle"
+meta_description: "Erfahren Sie mehr über die Datei /etc/passwd in Linux, verstehen Sie die Felder der Benutzerinformationen und wie UIDs funktionieren. Erkunden Sie diese essentielle Konfigurationsdatei."
+meta_keywords: "/etc/passwd, Linux-Benutzer, Benutzer-ID, UID, Linux-Tutorial, Anfänger, Anleitung, Linux-Befehle"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Inode"
-description: "了解 Linux inode、它们的结构以及它们如何管理文件。理解 inode 号，并使用`df -i`和`ls -li`检查 inode 使用情况。开始您的 Linux 之旅！"
-keywords: "Linux inode, inode 教程，df -i, ls -li, Linux 文件系统，Linux 初学者，Linux 指南"
+meta_description: "了解 Linux inode、它们的结构以及它们如何管理文件。理解 inode 号，并使用`df -i`和`ls -li`检查 inode 使用情况。开始您的 Linux 之旅！"
+meta_keywords: "Linux inode, inode 教程，df -i, ls -li, Linux 文件系统，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

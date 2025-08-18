@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Interfaces réseau"
-description: "Découvrez les interfaces réseau Linux, les commandes ifconfig et ip. Comprenez comment configurer et gérer les paramètres réseau. Démarrez votre parcours de mise en réseau Linux !"
-keywords: "interfaces réseau Linux, ifconfig, commande ip, configuration réseau, mise en réseau Linux, débutant, tutoriel, guide"
+meta_description: "Découvrez les interfaces réseau Linux, les commandes ifconfig et ip. Comprenez comment configurer et gérer les paramètres réseau. Démarrez votre parcours de mise en réseau Linux !"
+meta_keywords: "interfaces réseau Linux, ifconfig, commande ip, configuration réseau, mise en réseau Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content

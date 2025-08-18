@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "cd (Verzeichnis wechseln)"
-description: "Lernen Sie, wie Sie den Befehl 'cd' in Linux verwenden, um Verzeichnisse zu navigieren. Verstehen Sie absolute, relative Pfade und nützliche Abkürzungen. Beginnen Sie Ihre Linux-Reise!"
-keywords: "cd Befehl, Verzeichnis wechseln, Linux Pfade, absoluter Pfad, relativer Pfad, Linux Tutorial, Linux für Anfänger, Linux Navigation"
+meta_description: "Lernen Sie, wie Sie den Befehl 'cd' in Linux verwenden, um Verzeichnisse zu navigieren. Verstehen Sie absolute, relative Pfade und nützliche Abkürzungen. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "cd Befehl, Verzeichnis wechseln, Linux Pfade, absoluter Pfad, relativer Pfad, Linux Tutorial, Linux für Anfänger, Linux Navigation"
 ---
 
 ## Lesson Content

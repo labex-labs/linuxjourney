@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "路由表"
-description: "学习理解 Linux 路由表以及如何使用 route 命令路由数据包。探索目标、网关和接口以掌握网络基础知识。"
-keywords: "Linux 路由表，route 命令，网络路由，Linux 网络，Linux 初学者，Linux 教程，网络指南"
+meta_description: "学习理解 Linux 路由表以及如何使用 route 命令路由数据包。探索目标、网关和接口以掌握网络基础知识。"
+meta_keywords: "Linux 路由表，route 命令，网络路由，Linux 网络，Linux 初学者，Linux 教程，网络指南"
 ---
 
 ## Lesson Content

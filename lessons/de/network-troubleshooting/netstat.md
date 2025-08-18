@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "netstat"
-description: "Lernen Sie den netstat-Befehl für die Linux-Netzwerkanalyse. Verstehen Sie Netzwerkverbindungen, Ports und Sockets mit dieser anfängerfreundlichen Anleitung."
-keywords: "netstat, netstat-Befehl, Linux-Netzwerk, Netzwerkverbindungen, Linux-Tutorial, Anfänger, Anleitung"
+meta_description: "Lernen Sie den netstat-Befehl für die Linux-Netzwerkanalyse. Verstehen Sie Netzwerkverbindungen, Ports und Sockets mit dieser anfängerfreundlichen Anleitung."
+meta_keywords: "netstat, netstat-Befehl, Linux-Netzwerk, Netzwerkverbindungen, Linux-Tutorial, Anfänger, Anleitung"
 ---
 
 ## Lesson Content

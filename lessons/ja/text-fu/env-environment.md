@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "env (環境)"
-description: "「env」コマンドを使用して Linux 環境変数について学びます。PATH、HOME、USER 変数について理解します。Linux 環境を管理するための初心者向けガイドを入手してください。"
-keywords: "env command, Linux environment variables, PATH variable, Linux tutorial, beginner Linux, shell variables, Linux guide"
+meta_description: "「env」コマンドを使用して Linux 環境変数について学びます。PATH、HOME、USER 変数について理解します。Linux 環境を管理するための初心者向けガイドを入手してください。"
+meta_keywords: "env command, Linux environment variables, PATH variable, Linux tutorial, beginner Linux, shell variables, Linux guide"
 ---
 
 ## Lesson Content

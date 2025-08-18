@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Journalisation du noyau"
-description: "Apprenez la journalisation du noyau Linux avec dmesg et kern.log. Comprenez les messages de démarrage et les problèmes matériels. Explorez les journaux du noyau pour des informations système."
-keywords: "dmesg, kern.log, journalisation Linux, messages du noyau, journal de démarrage, tutoriel Linux, guide du débutant"
+meta_description: "Apprenez la journalisation du noyau Linux avec dmesg et kern.log. Comprenez les messages de démarrage et les problèmes matériels. Explorez les journaux du noyau pour des informations système."
+meta_keywords: "dmesg, kern.log, journalisation Linux, messages du noyau, journal de démarrage, tutoriel Linux, guide du débutant"
 ---
 
 ## Lesson Content

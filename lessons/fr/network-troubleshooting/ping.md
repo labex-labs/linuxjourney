@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "ping"
-description: "Apprenez à utiliser la commande Linux ping pour tester la connectivité réseau et résoudre les problèmes. Comprenez ICMP, TTL et le temps d'aller-retour pour un diagnostic réseau efficace."
-keywords: "Linux ping, connectivité réseau, ICMP, TTL, réseau Linux, Linux pour débutants, tutoriel Linux, commande ping"
+meta_description: "Apprenez à utiliser la commande Linux ping pour tester la connectivité réseau et résoudre les problèmes. Comprenez ICMP, TTL et le temps d'aller-retour pour un diagnostic réseau efficace."
+meta_keywords: "Linux ping, connectivité réseau, ICMP, TTL, réseau Linux, Linux pour débutants, tutoriel Linux, commande ping"
 ---
 
 ## Lesson Content

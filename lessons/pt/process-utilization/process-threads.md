@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Threads de Processo"
-description: "Aprenda sobre threads de processo Linux, conceitos single-threaded vs. multi-threaded e como visualizá-los usando 'ps m'. Entenda processos leves de forma eficiente!"
-keywords: "threads Linux, threads de processo, comando ps m, multi-threaded, single-threaded, processos Linux, Linux para iniciantes, tutorial Linux"
+meta_description: "Aprenda sobre threads de processo Linux, conceitos single-threaded vs. multi-threaded e como visualizá-los usando 'ps m'. Entenda processos leves de forma eficiente!"
+meta_keywords: "threads Linux, threads de processo, comando ps m, multi-threaded, single-threaded, processos Linux, Linux para iniciantes, tutorial Linux"
 ---
 
 ## Lesson Content

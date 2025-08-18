@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Modèle TCP/IP"
-description: "Découvrez les couches du modèle TCP/IP : Application, Transport, Réseau et Liaison. Comprenez comment les données voyagent à travers les réseaux. Commencez votre parcours de mise en réseau Linux !"
-keywords: "modèle TCP/IP, bases du réseau, réseau Linux, TCP, IP, tutoriel débutant, couches réseau, guide"
+meta_description: "Découvrez les couches du modèle TCP/IP : Application, Transport, Réseau et Liaison. Comprenez comment les données voyagent à travers les réseaux. Commencez votre parcours de mise en réseau Linux !"
+meta_keywords: "modèle TCP/IP, bases du réseau, réseau Linux, TCP, IP, tutoriel débutant, couches réseau, guide"
 ---
 
 ## Lesson Content

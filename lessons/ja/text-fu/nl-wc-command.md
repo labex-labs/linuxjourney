@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "wc と nl"
-description: "wc および nl Linux コマンドを学習します。単語数、行番号付け、ファイル分析を理解します。今すぐ Linux コマンドラインスキルを向上させましょう！"
-keywords: "wc コマンド，nl コマンド，Linux 単語数，Linux 行番号，ファイル分析，Linux チュートリアル，初心者 Linux, Linux ガイド"
+meta_description: "wc および nl Linux コマンドを学習します。単語数、行番号付け、ファイル分析を理解します。今すぐ Linux コマンドラインスキルを向上させましょう！"
+meta_keywords: "wc コマンド，nl コマンド，Linux 単語数，Linux 行番号，ファイル分析，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

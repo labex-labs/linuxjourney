@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Matemática de Sub-rede"
-description: "Aprenda os conceitos básicos de matemática de sub-rede e como calcular hosts disponíveis em uma rede. Entenda o endereçamento IP e as máscaras de sub-rede para iniciantes. Comece sua jornada Linux!"
-keywords: "matemática de sub-rede, endereço IP, máscara de sub-rede, hosts de rede, binário, rede Linux, tutorial para iniciantes, guia"
+meta_description: "Aprenda os conceitos básicos de matemática de sub-rede e como calcular hosts disponíveis em uma rede. Entenda o endereçamento IP e as máscaras de sub-rede para iniciantes. Comece sua jornada Linux!"
+meta_keywords: "matemática de sub-rede, endereço IP, máscara de sub-rede, hosts de rede, binário, rede Linux, tutorial para iniciantes, guia"
 ---
 
 ## Lesson Content

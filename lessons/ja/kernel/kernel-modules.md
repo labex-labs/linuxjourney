@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "カーネルモジュール"
-description: "Linux カーネルモジュールについて学びましょう：ロード、アンロード、管理方法。カーネル機能を拡張するための`modprobe`と`lsmod`コマンドを理解しましょう。あなたの Linux の旅を始めましょう！"
-keywords: "Linux カーネルモジュール，modprobe, lsmod, カーネル管理，Linux チュートリアル，Linux 初心者，Linux ガイド"
+meta_description: "Linux カーネルモジュールについて学びましょう：ロード、アンロード、管理方法。カーネル機能を拡張するための`modprobe`と`lsmod`コマンドを理解しましょう。あなたの Linux の旅を始めましょう！"
+meta_keywords: "Linux カーネルモジュール，modprobe, lsmod, カーネル管理，Linux チュートリアル，Linux 初心者，Linux ガイド"
 ---
 
 ## Lesson Content

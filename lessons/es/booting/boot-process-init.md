@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Proceso de arranque: Init"
-description: "Aprende sobre los sistemas init de Linux: System V, Upstart y systemd. Comprende sus roles en el proceso de arranque y cómo gestionan los servicios. ¡Comienza tu viaje en Linux!"
-keywords: "Linux init, systemd, System V init, proceso de arranque de Linux, tutorial de Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende sobre los sistemas init de Linux: System V, Upstart y systemd. Comprende sus roles en el proceso de arranque y cómo gestionan los servicios. ¡Comienza tu viaje en Linux!"
+meta_keywords: "Linux init, systemd, System V init, proceso de arranque de Linux, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

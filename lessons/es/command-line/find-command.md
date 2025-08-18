@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "find"
-description: "Aprende a usar el comando 'find' de Linux para localizar archivos y directorios. Descubre opciones básicas de búsqueda y mejora tus habilidades de gestión de archivos en Linux."
-keywords: "comando find de Linux, encontrar archivos Linux, búsqueda de directorios Linux, tutorial del comando find, gestión de archivos Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende a usar el comando 'find' de Linux para localizar archivos y directorios. Descubre opciones básicas de búsqueda y mejora tus habilidades de gestión de archivos en Linux."
+meta_keywords: "comando find de Linux, encontrar archivos Linux, búsqueda de directorios Linux, tutorial del comando find, gestión de archivos Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

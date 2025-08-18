@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "IPv6"
-description: "Aprenda sobre IPv6, seu propósito e como ele complementa o IPv4. Entenda o endereçamento IPv6 e seu papel na conexão de mais dispositivos à internet."
-keywords: "IPv6, IPv4, endereço IP, rede Linux, protocolos de rede, iniciante, tutorial, guia"
+meta_description: "Aprenda sobre IPv6, seu propósito e como ele complementa o IPv4. Entenda o endereçamento IPv6 e seu papel na conexão de mais dispositivos à internet."
+meta_keywords: "IPv6, IPv4, endereço IP, rede Linux, protocolos de rede, iniciante, tutorial, guia"
 ---
 
 ## Lesson Content

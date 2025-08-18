@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Registro do Kernel"
-description: "Aprenda sobre o registro do kernel Linux com dmesg e kern.log. Entenda as mensagens de inicialização e problemas de hardware. Explore os logs do kernel para insights do sistema."
-keywords: "dmesg, kern.log, registro Linux, mensagens do kernel, log de inicialização, tutorial Linux, guia para iniciantes"
+meta_description: "Aprenda sobre o registro do kernel Linux com dmesg e kern.log. Entenda as mensagens de inicialização e problemas de hardware. Explore os logs do kernel para insights do sistema."
+meta_keywords: "dmesg, kern.log, registro Linux, mensagens do kernel, log de inicialização, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

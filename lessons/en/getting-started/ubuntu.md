@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Ubuntu"
-description: "Learn about Ubuntu, a popular Linux distribution for beginners. Discover its features, package management, and why it's great for desktop and server use."
-keywords: "Ubuntu, Linux distribution, Debian, package management, Linux beginner, Ubuntu tutorial, Linux guide"
+meta_description: "Learn about Ubuntu, a popular Linux distribution for beginners. Discover its features, package management, and why it's great for desktop and server use."
+meta_keywords: "Ubuntu, Linux distribution, Debian, package management, Linux beginner, Ubuntu tutorial, Linux guide"
 ---
 
 ## Lesson Content

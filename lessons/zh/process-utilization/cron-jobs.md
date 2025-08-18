@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Cron 作业"
-description: "学习使用 cron 作业安排 Linux 任务。了解 crontab 语法并自动化脚本以进行日常操作。通过这份适合初学者的指南开始吧！"
-keywords: "cron jobs, crontab, 安排任务，Linux 自动化，Linux 命令，Linux 初学者，Linux 教程，crontab -e"
+meta_description: "学习使用 cron 作业安排 Linux 任务。了解 crontab 语法并自动化脚本以进行日常操作。通过这份适合初学者的指南开始吧！"
+meta_keywords: "cron jobs, crontab, 安排任务，Linux 自动化，Linux 命令，Linux 初学者，Linux 教程，crontab -e"
 ---
 
 ## Lesson Content

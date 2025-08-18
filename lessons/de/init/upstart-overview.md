@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Upstart-Übersicht"
-description: "Erfahren Sie mehr über Upstart, sein ereignisgesteuertes Modell und wie es Dienste unter Linux verwaltet. Verstehen Sie Upstart-Job-Konfigurationen und seine Rolle als Init-System."
-keywords: "Upstart, Init-System, Linux-Dienste, Ubuntu, SysV, Anfänger-Tutorial, Linux-Anleitung"
+meta_description: "Erfahren Sie mehr über Upstart, sein ereignisgesteuertes Modell und wie es Dienste unter Linux verwaltet. Verstehen Sie Upstart-Job-Konfigurationen und seine Rolle als Init-System."
+meta_keywords: "Upstart, Init-System, Linux-Dienste, Ubuntu, SysV, Anfänger-Tutorial, Linux-Anleitung"
 ---
 
 ## Lesson Content

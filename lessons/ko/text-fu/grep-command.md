@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "grep"
-description: "Linux 에서 grep 명령어를 사용하여 파일에서 텍스트 패턴을 검색하는 방법을 배웁니다. 기본 사용법, 대소문자 구분 없는 검색, 다른 명령어와의 조합을 알아보세요. Linux 여정을 시작하세요!"
-keywords: "grep 명령어, Linux grep, 파일 검색, 텍스트 처리, Linux 튜토리얼, 초보자 Linux, grep 가이드"
+meta_description: "Linux 에서 grep 명령어를 사용하여 파일에서 텍스트 패턴을 검색하는 방법을 배웁니다. 기본 사용법, 대소문자 구분 없는 검색, 다른 명령어와의 조합을 알아보세요. Linux 여정을 시작하세요!"
+meta_keywords: "grep 명령어, Linux grep, 파일 검색, 텍스트 처리, Linux 튜토리얼, 초보자 Linux, grep 가이드"
 ---
 
 ## Lesson Content

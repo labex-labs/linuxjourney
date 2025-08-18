@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Salvando e Saindo do Vim"
-description: "Aprenda a salvar e sair do Vim de forma eficaz com comandos essenciais como :w, :q e :wq. Domine as operações básicas do Vim para uma edição de texto eficiente."
-keywords: "salvar Vim, sair Vim, comandos Vim, :wq, :q!, editor de texto Linux, tutorial Vim, Vim para iniciantes"
+meta_description: "Aprenda a salvar e sair do Vim de forma eficaz com comandos essenciais como :w, :q e :wq. Domine as operações básicas do Vim para uma edição de texto eficiente."
+meta_keywords: "salvar Vim, sair Vim, comandos Vim, :wq, :q!, editor de texto Linux, tutorial Vim, Vim para iniciantes"
 ---
 
 ## Lesson Content

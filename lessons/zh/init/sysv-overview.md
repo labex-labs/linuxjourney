@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "System V 概述"
-description: "了解 System V init、其运行级别以及它如何在 Linux 中管理进程。为初学者和中级用户理解 SysV 基础知识。"
-keywords: "System V, SysV init, Linux 运行级别，init 系统，Linux 教程，初学者指南，进程管理"
+meta_description: "了解 System V init、其运行级别以及它如何在 Linux 中管理进程。为初学者和中级用户理解 SysV 基础知识。"
+meta_keywords: "System V, SysV init, Linux 运行级别，init 系统，Linux 教程，初学者指南，进程管理"
 ---
 
 ## Lesson Content

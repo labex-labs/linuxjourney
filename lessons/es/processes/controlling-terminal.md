@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Controlando el Terminal"
-description: "Aprende sobre el control de terminales en Linux, incluyendo TTY vs. PTS, y cómo los procesos se vinculan a ellos. Comprende los procesos daemon. ¡Comienza tu viaje en Linux!"
-keywords: "terminal de control, TTY, PTS, terminal de Linux, procesos daemon, principiante de Linux, tutorial de Linux, guía de Linux"
+meta_description: "Aprende sobre el control de terminales en Linux, incluyendo TTY vs. PTS, y cómo los procesos se vinculan a ellos. Comprende los procesos daemon. ¡Comienza tu viaje en Linux!"
+meta_keywords: "terminal de control, TTY, PTS, terminal de Linux, procesos daemon, principiante de Linux, tutorial de Linux, guía de Linux"
 ---
 
 ## Lesson Content

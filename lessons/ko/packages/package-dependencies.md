@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "패키지 종속성"
-description: "Linux 패키지 종속성과 소프트웨어 설치에 있어 왜 중요한지 알아보세요. 공유 라이브러리를 이해하고 손상된 패키지를 피하세요. Linux 여정을 시작하세요!"
-keywords: "Linux 패키지 종속성, 공유 라이브러리, Linux 패키지, 패키지 관리, Linux 튜토리얼, Linux 초보자, Linux 가이드"
+meta_description: "Linux 패키지 종속성과 소프트웨어 설치에 있어 왜 중요한지 알아보세요. 공유 라이브러리를 이해하고 손상된 패키지를 피하세요. Linux 여정을 시작하세요!"
+meta_keywords: "Linux 패키지 종속성, 공유 라이브러리, Linux 패키지, 패키지 관리, Linux 튜토리얼, Linux 초보자, Linux 가이드"
 ---
 
 ## Lesson Content

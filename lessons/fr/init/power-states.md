@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "États d'alimentation"
-description: "Apprenez les états d'alimentation du système Linux : commandes shutdown, reboot et halt. Comprenez comment éteindre ou redémarrer votre système Linux en toute sécurité. Démarrez avec les commandes essentielles !"
-keywords: "arrêt Linux, commande de redémarrage, système halt, éteindre Linux, commandes Linux, Linux débutant, tutoriel Linux, états du système"
+meta_description: "Apprenez les états d'alimentation du système Linux : commandes shutdown, reboot et halt. Comprenez comment éteindre ou redémarrer votre système Linux en toute sécurité. Démarrez avec les commandes essentielles !"
+meta_keywords: "arrêt Linux, commande de redémarrage, système halt, éteindre Linux, commandes Linux, Linux débutant, tutoriel Linux, états du système"
 ---
 
 ## Lesson Content

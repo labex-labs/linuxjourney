@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Настройка DNS"
-description: "Узнайте о популярных DNS-серверах для Linux, таких как BIND, DNSmasq и PowerDNS. Откройте для себя лучший DNS-сервер для вашей сетевой настройки с помощью этого руководства для начинающих."
-keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, настройка DNS-сервера, сети Linux, учебник по DNS, для начинающих"
+meta_description: "Узнайте о популярных DNS-серверах для Linux, таких как BIND, DNSmasq и PowerDNS. Откройте для себя лучший DNS-сервер для вашей сетевой настройки с помощью этого руководства для начинающих."
+meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, настройка DNS-сервера, сети Linux, учебник по DNS, для начинающих"
 ---
 
 ## Lesson Content

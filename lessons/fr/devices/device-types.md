@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "types de périphériques"
-description: "Découvrez les types de périphériques Linux (caractère, bloc, tube, socket) et comment les identifier à l'aide de `ls -l /dev`. Comprenez les numéros de périphérique majeur/mineur. Tutoriel Linux pour débutants."
-keywords: "types de périphériques Linux, ls -l /dev, périphérique de caractères, périphérique de blocs, numéro de périphérique majeur mineur, tutoriel Linux, guide Linux, débutant"
+meta_description: "Découvrez les types de périphériques Linux (caractère, bloc, tube, socket) et comment les identifier à l'aide de `ls -l /dev`. Comprenez les numéros de périphérique majeur/mineur. Tutoriel Linux pour débutants."
+meta_keywords: "types de périphériques Linux, ls -l /dev, périphérique de caractères, périphérique de blocs, numéro de périphérique majeur mineur, tutoriel Linux, guide Linux, débutant"
 ---
 
 ## Lesson Content

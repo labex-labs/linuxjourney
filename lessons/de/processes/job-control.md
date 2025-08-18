@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Job-Steuerung"
-description: "Lernen Sie die Linux-Jobsteuerung, um Hintergrundprozesse zu verwalten. Verstehen Sie die Befehle 'jobs', 'bg', 'fg' und 'kill' für eine effiziente Shell-Nutzung. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Linux Job-Steuerung, Hintergrundprozesse, jobs Befehl, bg Befehl, fg Befehl, kill Befehl, Linux Tutorial, Linux für Anfänger"
+meta_description: "Lernen Sie die Linux-Jobsteuerung, um Hintergrundprozesse zu verwalten. Verstehen Sie die Befehle 'jobs', 'bg', 'fg' und 'kill' für eine effiziente Shell-Nutzung. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux Job-Steuerung, Hintergrundprozesse, jobs Befehl, bg Befehl, fg Befehl, kill Befehl, Linux Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Vim 导航"
-description: "学习使用 h、j、k、l 键进行 Vim 导航基础知识。了解初学者必备的 Vim 移动，提高您的 Linux 命令行技能。"
-keywords: "Vim 导航，Vim 教程，Linux Vim, Vim 移动，Vim 基础，初学者 Vim, Linux 文本编辑器，Vim 指南"
+meta_description: "学习使用 h、j、k、l 键进行 Vim 导航基础知识。了解初学者必备的 Vim 移动，提高您的 Linux 命令行技能。"
+meta_keywords: "Vim 导航，Vim 教程，Linux Vim, Vim 移动，Vim 基础，初学者 Vim, Linux 文本编辑器，Vim 指南"
 ---
 
 ## Lesson Content

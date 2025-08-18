@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "사용자 관리 도구"
-description: "Linux 사용자 관리 배우기: useradd, userdel, passwd 명령으로 사용자 추가, 제거 및 암호 변경. 이 초보자 친화적인 가이드로 시작하세요!"
-keywords: "Linux 사용자 관리, adduser, userdel, passwd, Linux 튜토리얼, 초보자 Linux, 사용자 계정, Linux 명령"
+meta_description: "Linux 사용자 관리 배우기: useradd, userdel, passwd 명령으로 사용자 추가, 제거 및 암호 변경. 이 초보자 친화적인 가이드로 시작하세요!"
+meta_keywords: "Linux 사용자 관리, adduser, userdel, passwd, Linux 튜토리얼, 초보자 Linux, 사용자 계정, Linux 명령"
 ---
 
 ## Lesson Content

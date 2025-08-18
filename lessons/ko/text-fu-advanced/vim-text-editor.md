@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Vim (Vi Improved)"
-description: "강력하고 가벼운 Vi 개선 텍스트 편집기인 Vim 을 배우세요. 기본 사용법과 Vim 이 Linux 사용자에게 필수적인 이유를 이해하세요."
-keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
+meta_description: "강력하고 가벼운 Vi 개선 텍스트 편집기인 Vim 을 배우세요. 기본 사용법과 Vim 이 Linux 사용자에게 필수적인 이유를 이해하세요."
+meta_keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
 ---
 
 ## Lesson Content

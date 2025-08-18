@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Gerätenamen"
-description: "Lernen Sie Linux-Gerätenamen wie SCSI- (sd), Pseudo- und PATA-Geräte (hd) kennen. Verstehen Sie /dev/sda, /dev/null und mehr in diesem anfängerfreundlichen Leitfaden."
-keywords: "Linux-Gerätenamen, /dev, SCSI-Geräte, Pseudo-Geräte, PATA-Geräte, Linux-Tutorial, Linux für Anfänger, Gerätedateien"
+meta_description: "Lernen Sie Linux-Gerätenamen wie SCSI- (sd), Pseudo- und PATA-Geräte (hd) kennen. Verstehen Sie /dev/sda, /dev/null und mehr in diesem anfängerfreundlichen Leitfaden."
+meta_keywords: "Linux-Gerätenamen, /dev, SCSI-Geräte, Pseudo-Geräte, PATA-Geräte, Linux-Tutorial, Linux für Anfänger, Gerätedateien"
 ---
 
 ## Lesson Content

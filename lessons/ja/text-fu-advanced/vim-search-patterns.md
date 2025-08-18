@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Vim の検索パターン"
-description: "Vim の検索パターンを学びましょう：順方向 (/) と逆方向 (?) 検索。'n' と 'N' で結果をナビゲートします。今日から Vim スキルを向上させましょう！"
-keywords: "Vim 検索，Vim コマンド，Linux テキストエディタ，Vim チュートリアル，Vim ガイド，初心者 Vim"
+meta_description: "Vim の検索パターンを学びましょう：順方向 (/) と逆方向 (?) 検索。'n' と 'N' で結果をナビゲートします。今日から Vim スキルを向上させましょう！"
+meta_keywords: "Vim 検索，Vim コマンド，Linux テキストエディタ，Vim チュートリアル，Vim ガイド，初心者 Vim"
 ---
 
 ## Lesson Content

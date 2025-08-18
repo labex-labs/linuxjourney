@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "dd"
-description: "데이터 복사 및 디스크 이미징을 위한 Linux dd 명령을 배우십시오. if, of, bs 와 같은 옵션을 이해하십시오. Linux 데이터 관리 여정을 시작하십시오!"
-keywords: "dd 명령, Linux dd, 데이터 복사, 디스크 이미징, Linux 튜토리얼, 초보자, 가이드, 데이터 백업"
+meta_description: "데이터 복사 및 디스크 이미징을 위한 Linux dd 명령을 배우십시오. if, of, bs 와 같은 옵션을 이해하십시오. Linux 데이터 관리 여정을 시작하십시오!"
+meta_keywords: "dd 명령, Linux dd, 데이터 복사, 디스크 이미징, Linux 튜토리얼, 초보자, 가이드, 데이터 백업"
 ---
 
 ## Lesson Content

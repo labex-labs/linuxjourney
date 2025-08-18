@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Systemd-Ziele"
-description: "Lernen Sie die Grundlagen von systemd-Units und wichtige systemctl-Befehle. Verstehen Sie, wie Sie Dienste verwalten, Status anzeigen und Units in Linux aktivieren. Beginnen Sie Ihre Reise!"
-keywords: "systemd, systemctl, Linux-Dienste, Unit-Dateien, Anfänger, Tutorial, Anleitung, Linux-Befehle"
+meta_description: "Lernen Sie die Grundlagen von systemd-Units und wichtige systemctl-Befehle. Verstehen Sie, wie Sie Dienste verwalten, Status anzeigen und Units in Linux aktivieren. Beginnen Sie Ihre Reise!"
+meta_keywords: "systemd, systemctl, Linux-Dienste, Unit-Dateien, Anfänger, Tutorial, Anleitung, Linux-Befehle"
 ---
 
 ## Lesson Content

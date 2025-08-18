@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Subnetting-Tricks"
-description: "Lernen Sie die Grundlagen des Subnetting und der Binärumwandlung für die Netzwerktechnik. Verstehen Sie IP-Adressen und Subnetzmasken mit diesem anfängerfreundlichen Leitfaden. Beginnen Sie jetzt mit dem Lernen!"
-keywords: "Subnetting, Binärumwandlung, IP-Adresse, Netzwerk, Linux-Netzwerk, Anfänger, Tutorial, Leitfaden"
+meta_description: "Lernen Sie die Grundlagen des Subnetting und der Binärumwandlung für die Netzwerktechnik. Verstehen Sie IP-Adressen und Subnetzmasken mit diesem anfängerfreundlichen Leitfaden. Beginnen Sie jetzt mit dem Lernen!"
+meta_keywords: "Subnetting, Binärumwandlung, IP-Adresse, Netzwerk, Linux-Netzwerk, Anfänger, Tutorial, Leitfaden"
 ---
 
 ## Lesson Content

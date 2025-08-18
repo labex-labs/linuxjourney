@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "kill (Beenden)"
-description: "Erfahren Sie, wie Sie den Linux-Befehl 'kill' verwenden, um Prozesse zu beenden. Verstehen Sie SIGTERM, SIGKILL und andere Signale für die Prozessverwaltung. Beginnen Sie jetzt mit dem Lernen!"
-keywords: "kill-Befehl, Linux-Prozesse, SIGTERM, SIGKILL, Linux-Tutorial, Anfänger, Prozessverwaltung, Linux-Anleitung"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'kill' verwenden, um Prozesse zu beenden. Verstehen Sie SIGTERM, SIGKILL und andere Signale für die Prozessverwaltung. Beginnen Sie jetzt mit dem Lernen!"
+meta_keywords: "kill-Befehl, Linux-Prozesse, SIGTERM, SIGKILL, Linux-Tutorial, Anfänger, Prozessverwaltung, Linux-Anleitung"
 ---
 
 ## Lesson Content

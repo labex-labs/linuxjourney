@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "NFS"
-description: "Aprenda sobre la configuración del cliente NFS y el automontaje en Linux. Comprenda cómo conectarse a recursos compartidos de archivos de red y usar el automontaje para un acceso sin interrupciones."
-keywords: "cliente NFS, automount, Network File System, redes Linux, comando mount, tutorial Linux, principiante"
+meta_description: "Aprenda sobre la configuración del cliente NFS y el automontaje en Linux. Comprenda cómo conectarse a recursos compartidos de archivos de red y usar el automontaje para un acceso sin interrupciones."
+meta_keywords: "cliente NFS, automount, Network File System, redes Linux, comando mount, tutorial Linux, principiante"
 ---
 
 ## Lesson Content

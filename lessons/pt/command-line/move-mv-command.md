@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "mv (Mover)"
-description: "Aprenda a usar o comando Linux mv para mover e renomear arquivos/diretórios. Entenda suas opções e evite sobrescrições. Comece sua jornada no Linux!"
-keywords: "comando mv, Linux mv, mover arquivos Linux, renomear arquivos Linux, tutorial Linux, iniciante, guia Linux"
+meta_description: "Aprenda a usar o comando Linux mv para mover e renomear arquivos/diretórios. Entenda suas opções e evite sobrescrições. Comece sua jornada no Linux!"
+meta_keywords: "comando mv, Linux mv, mover arquivos Linux, renomear arquivos Linux, tutorial Linux, iniciante, guia Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Patrones de búsqueda de Vim"
-description: "Aprenda los patrones de búsqueda de Vim: búsqueda hacia adelante (/) y hacia atrás (?). Navegue por los resultados con 'n' y 'N'. ¡Mejore sus habilidades con Vim hoy mismo!"
-keywords: "búsqueda Vim, comandos Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes"
+meta_description: "Aprenda los patrones de búsqueda de Vim: búsqueda hacia adelante (/) y hacia atrás (?). Navegue por los resultados con 'n' y 'N'. ¡Mejore sus habilidades con Vim hoy mismo!"
+meta_keywords: "búsqueda Vim, comandos Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Privilege Levels"
-description: "Learn about Linux privilege levels, kernel mode, and user mode. Understand protection rings and system calls for secure hardware access. Start your Linux journey!"
-keywords: "Linux privilege levels, kernel mode, user mode, protection rings, system calls, Linux security, beginner Linux, Linux tutorial"
+meta_description: "Learn about Linux privilege levels, kernel mode, and user mode. Understand protection rings and system calls for secure hardware access. Start your Linux journey!"
+meta_keywords: "Linux privilege levels, kernel mode, user mode, protection rings, system calls, Linux security, beginner Linux, Linux tutorial"
 ---
 
 ## Lesson Content

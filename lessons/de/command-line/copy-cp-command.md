@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "cp (Kopieren)"
-description: "Erfahren Sie, wie Sie den Linux-Befehl cp zum Kopieren von Dateien und Verzeichnissen verwenden. Verstehen Sie Optionen wie -r und Wildcards. Beginnen Sie noch heute Ihre Linux-Reise!"
-keywords: "cp Befehl, Dateien kopieren Linux, Linux Tutorial, Linux für Anfänger, cp -r, Linux Wildcards, Linux Anleitung"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl cp zum Kopieren von Dateien und Verzeichnissen verwenden. Verstehen Sie Optionen wie -r und Wildcards. Beginnen Sie noch heute Ihre Linux-Reise!"
+meta_keywords: "cp Befehl, Dateien kopieren Linux, Linux Tutorial, Linux für Anfänger, cp -r, Linux Wildcards, Linux Anleitung"
 ---
 
 ## Lesson Content

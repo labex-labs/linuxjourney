@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Компиляция исходного кода"
-description: "Узнайте, как компилировать исходный код в Linux с помощью make, configure и checkinstall. Изучите процесс сборки для начинающих и опытных пользователей."
-keywords: "компиляция исходного кода, make install, checkinstall, компиляция Linux, build-essential, учебник по Linux, руководство для начинающих"
+meta_description: "Узнайте, как компилировать исходный код в Linux с помощью make, configure и checkinstall. Изучите процесс сборки для начинающих и опытных пользователей."
+meta_keywords: "компиляция исходного кода, make install, checkinstall, компиляция Linux, build-essential, учебник по Linux, руководство для начинающих"
 ---
 
 ## Lesson Content

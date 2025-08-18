@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Privilegien-Ebenen"
-description: "Erfahren Sie mehr über Linux-Privilegien-Ebenen, Kernel-Modus und Benutzer-Modus. Verstehen Sie Schutzringe und Systemaufrufe für sicheren Hardware-Zugriff. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Linux-Privilegien-Ebenen, Kernel-Modus, Benutzer-Modus, Schutzringe, Systemaufrufe, Linux-Sicherheit, Linux für Anfänger, Linux-Tutorial"
+meta_description: "Erfahren Sie mehr über Linux-Privilegien-Ebenen, Kernel-Modus und Benutzer-Modus. Verstehen Sie Schutzringe und Systemaufrufe für sicheren Hardware-Zugriff. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux-Privilegien-Ebenen, Kernel-Modus, Benutzer-Modus, Schutzringe, Systemaufrufe, Linux-Sicherheit, Linux für Anfänger, Linux-Tutorial"
 ---
 
 ## Lesson Content

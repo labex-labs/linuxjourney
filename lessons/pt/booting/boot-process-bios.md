@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Processo de Inicialização: BIOS"
-description: "Aprenda sobre o processo de inicialização do Linux, BIOS e MBR. Entenda como seu sistema inicia com este guia amigável para iniciantes. Explore os conceitos de UEFI!"
-keywords: "processo de inicialização do Linux, BIOS, MBR, UEFI, tutorial de Linux, bootloader, Linux para iniciantes, inicialização do sistema"
+meta_description: "Aprenda sobre o processo de inicialização do Linux, BIOS e MBR. Entenda como seu sistema inicia com este guia amigável para iniciantes. Explore os conceitos de UEFI!"
+meta_keywords: "processo de inicialização do Linux, BIOS, MBR, UEFI, tutorial de Linux, bootloader, Linux para iniciantes, inicialização do sistema"
 ---
 
 ## Lesson Content

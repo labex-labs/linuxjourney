@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Fedora"
-description: "Learn about Fedora Linux, its connection to RHEL, and package management. Discover why Fedora is a great free Red Hat-based OS for beginners and desktops."
-keywords: "Fedora Linux, RHEL, Red Hat, Linux tutorial, package management, beginner Linux, Linux guide, free OS"
+meta_description: "Learn about Fedora Linux, its connection to RHEL, and package management. Discover why Fedora is a great free Red Hat-based OS for beginners and desktops."
+meta_keywords: "Fedora Linux, RHEL, Red Hat, Linux tutorial, package management, beginner Linux, Linux guide, free OS"
 ---
 
 ## Lesson Content

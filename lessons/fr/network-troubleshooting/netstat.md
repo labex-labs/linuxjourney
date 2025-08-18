@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "netstat"
-description: "Apprenez la commande netstat pour l'analyse réseau Linux. Comprenez les connexions réseau, les ports et les sockets avec ce guide convivial pour débutants."
-keywords: "netstat, commande netstat, réseau Linux, connexions réseau, tutoriel Linux, débutant, guide"
+meta_description: "Apprenez la commande netstat pour l'analyse réseau Linux. Comprenez les connexions réseau, les ports et les sockets avec ce guide convivial pour débutants."
+meta_keywords: "netstat, commande netstat, réseau Linux, connexions réseau, tutoriel Linux, débutant, guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "启动过程概述"
-description: "了解 Linux 启动过程的阶段：BIOS、bootloader、kernel 和 init。了解 Linux 如何从开机到登录。Linux 初学者必备指南。"
-keywords: "Linux 启动过程，BIOS, bootloader, kernel, init, Linux 教程，Linux 指南，初学者"
+meta_description: "了解 Linux 启动过程的阶段：BIOS、bootloader、kernel 和 init。了解 Linux 如何从开机到登录。Linux 初学者必备指南。"
+meta_keywords: "Linux 启动过程，BIOS, bootloader, kernel, init, Linux 教程，Linux 指南，初学者"
 ---
 
 ## Lesson Content

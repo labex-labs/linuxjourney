@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "启动过程：BIOS"
-description: "了解 Linux 启动过程、BIOS 和 MBR。通过这份适合初学者的指南，了解您的系统如何启动。探索 UEFI 概念！"
-keywords: "Linux 启动过程，BIOS, MBR, UEFI, Linux 教程，引导加载程序，Linux 初学者，系统启动"
+meta_description: "了解 Linux 启动过程、BIOS 和 MBR。通过这份适合初学者的指南，了解您的系统如何启动。探索 UEFI 概念！"
+meta_keywords: "Linux 启动过程，BIOS, MBR, UEFI, Linux 教程，引导加载程序，Linux 初学者，系统启动"
 ---
 
 ## Lesson Content

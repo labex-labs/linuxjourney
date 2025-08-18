@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "传输层"
-description: "了解 Linux 网络中的传输层，包括 TCP/UDP 协议、端口和数据分段。理解数据如何可靠传输。"
-keywords: "Linux 传输层，TCP/UDP, 网络端口，数据分段，Linux 网络，初学者教程，网络协议"
+meta_description: "了解 Linux 网络中的传输层，包括 TCP/UDP 协议、端口和数据分段。理解数据如何可靠传输。"
+meta_keywords: "Linux 传输层，TCP/UDP, 网络端口，数据分段，Linux 网络，初学者教程，网络协议"
 ---
 
 ## Lesson Content

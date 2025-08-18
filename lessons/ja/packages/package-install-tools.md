@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "rpm と dpkg"
-description: "rpm コマンドと dpkg コマンドを使用して、パッケージのインストール、削除、リスト表示を行う方法を学びます。.deb ファイルと.rpm ファイルの直接パッケージ管理を理解します。Linux の学習を始めましょう！"
-keywords: "rpm, dpkg, Linux パッケージ管理，.deb, .rpm, Linux チュートリアル，初心者向けガイド，パッケージのインストール"
+meta_description: "rpm コマンドと dpkg コマンドを使用して、パッケージのインストール、削除、リスト表示を行う方法を学びます。.deb ファイルと.rpm ファイルの直接パッケージ管理を理解します。Linux の学習を始めましょう！"
+meta_keywords: "rpm, dpkg, Linux パッケージ管理，.deb, .rpm, Linux チュートリアル，初心者向けガイド，パッケージのインストール"
 ---
 
 ## Lesson Content

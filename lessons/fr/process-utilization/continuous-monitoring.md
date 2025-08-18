@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Surveillance Continue"
-description: "Apprenez la surveillance continue des systèmes Linux avec sar. Comprenez l'installation, la collecte de données et comment analyser l'utilisation historique des ressources pour la performance. Commencez dès maintenant !"
-keywords: "sar, sysstat, surveillance Linux, performance système, surveillance continue, débutant, tutoriel, guide"
+meta_description: "Apprenez la surveillance continue des systèmes Linux avec sar. Comprenez l'installation, la collecte de données et comment analyser l'utilisation historique des ressources pour la performance. Commencez dès maintenant !"
+meta_keywords: "sar, sysstat, surveillance Linux, performance système, surveillance continue, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content

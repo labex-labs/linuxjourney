@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "设备名称"
-description: "了解 Linux 设备名称，如 SCSI (sd)、伪设备和 PATA (hd) 设备。通过这份适合初学者的指南，理解/dev/sda、/dev/null 等。"
-keywords: "Linux 设备名称，/dev, SCSI 设备，伪设备，PATA 设备，Linux 教程，Linux 入门，设备文件"
+meta_description: "了解 Linux 设备名称，如 SCSI (sd)、伪设备和 PATA (hd) 设备。通过这份适合初学者的指南，理解/dev/sda、/dev/null 等。"
+meta_keywords: "Linux 设备名称，/dev, SCSI 设备，伪设备，PATA 设备，Linux 教程，Linux 入门，设备文件"
 ---
 
 ## Lesson Content

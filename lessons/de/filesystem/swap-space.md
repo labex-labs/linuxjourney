@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "swap"
-description: "Erfahren Sie mehr über den Linux-Swap-Speicher, wie er funktioniert und wie Sie Swap-Partitionen erstellen und verwalten. Optimieren Sie die Speichernutzung Ihres Systems mit diesem Leitfaden!"
-keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtueller Speicher, Linux Anfänger, Linux Tutorial"
+meta_description: "Erfahren Sie mehr über den Linux-Swap-Speicher, wie er funktioniert und wie Sie Swap-Partitionen erstellen und verwalten. Optimieren Sie die Speichernutzung Ihres Systems mit diesem Leitfaden!"
+meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtueller Speicher, Linux Anfänger, Linux Tutorial"
 ---
 
 ## Lesson Content

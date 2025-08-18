@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Emacs 編集"
-description: "Emacs の編集の基本：テキストのナビゲート、カット、効率的なペーストを学びます。この初心者向けのガイドは、Linux で Emacs の必須コマンドを習得するのに役立ちます。"
-keywords: "Emacs, Emacs チュートリアル，Emacs コマンド，テキストエディタ，Linux エディタ，Emacs ナビゲーション，初心者 Emacs, Emacs ガイド"
+meta_description: "Emacs の編集の基本：テキストのナビゲート、カット、効率的なペーストを学びます。この初心者向けのガイドは、Linux で Emacs の必須コマンドを習得するのに役立ちます。"
+meta_keywords: "Emacs, Emacs チュートリアル，Emacs コマンド，テキストエディタ，Linux エディタ，Emacs ナビゲーション，初心者 Emacs, Emacs ガイド"
 ---
 
 ## Lesson Content

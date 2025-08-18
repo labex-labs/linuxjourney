@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Border Gateway Protocol"
-description: "BGP(Border Gateway Protocol) 에 대해 알아보고, 이 프로토콜이 자율 시스템 간 인터넷 라우팅을 어떻게 가능하게 하는지 이해합니다. 초보자를 위한 BGP 기본 사항을 파악합니다."
-keywords: "BGP, Border Gateway Protocol, 인터넷 라우팅, 자율 시스템, Linux 네트워킹, BGP 튜토리얼, 네트워크 프로토콜, 초보자 가이드"
+meta_description: "BGP(Border Gateway Protocol) 에 대해 알아보고, 이 프로토콜이 자율 시스템 간 인터넷 라우팅을 어떻게 가능하게 하는지 이해합니다. 초보자를 위한 BGP 기본 사항을 파악합니다."
+meta_keywords: "BGP, Border Gateway Protocol, 인터넷 라우팅, 자율 시스템, Linux 네트워킹, BGP 튜토리얼, 네트워크 프로토콜, 초보자 가이드"
 ---
 
 ## Lesson Content

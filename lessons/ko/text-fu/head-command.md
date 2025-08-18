@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "head"
-description: "Linux 'head' 명령을 사용하여 파일의 시작 부분을 보는 방법을 배웁니다. 줄 수를 위한 -n 과 같은 옵션을 이해합니다. 필수 Linux 명령 튜토리얼입니다."
-keywords: "head command, Linux head, 파일 시작 보기, Linux 튜토리얼, Linux commands, 초보자 Linux, head -n, Linux 가이드"
+meta_description: "Linux 'head' 명령을 사용하여 파일의 시작 부분을 보는 방법을 배웁니다. 줄 수를 위한 -n 과 같은 옵션을 이해합니다. 필수 Linux 명령 튜토리얼입니다."
+meta_keywords: "head command, Linux head, 파일 시작 보기, Linux 튜토리얼, Linux commands, 초보자 Linux, head -n, Linux 가이드"
 ---
 
 ## Lesson Content

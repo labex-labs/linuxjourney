@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "端末の制御"
-description: "Linux での端末制御について、TTY と PTS の違い、プロセスがどのようにそれらにバインドされるかを含めて学びます。デーモンプロセスを理解します。Linux の旅を始めましょう！"
-keywords: "制御端末，TTY, PTS, Linux 端末，デーモンプロセス，Linux 初心者，Linux チュートリアル，Linux ガイド"
+meta_description: "Linux での端末制御について、TTY と PTS の違い、プロセスがどのようにそれらにバインドされるかを含めて学びます。デーモンプロセスを理解します。Linux の旅を始めましょう！"
+meta_keywords: "制御端末，TTY, PTS, Linux 端末，デーモンプロセス，Linux 初心者，Linux チュートリアル，Linux ガイド"
 ---
 
 ## Lesson Content

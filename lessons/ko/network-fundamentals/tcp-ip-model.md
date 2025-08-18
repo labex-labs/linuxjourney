@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "TCP/IP 모델"
-description: "TCP/IP 모델의 계층 (애플리케이션, 전송, 네트워크, 링크) 에 대해 알아보세요. 데이터가 네트워크를 통해 어떻게 이동하는지 이해하세요. Linux 네트워킹 여정을 시작하세요!"
-keywords: "TCP/IP 모델, 네트워킹 기초, Linux 네트워킹, TCP, IP, 초보자 튜토리얼, 네트워크 계층, 가이드"
+meta_description: "TCP/IP 모델의 계층 (애플리케이션, 전송, 네트워크, 링크) 에 대해 알아보세요. 데이터가 네트워크를 통해 어떻게 이동하는지 이해하세요. Linux 네트워킹 여정을 시작하세요!"
+meta_keywords: "TCP/IP 모델, 네트워킹 기초, Linux 네트워킹, TCP, IP, 초보자 튜토리얼, 네트워크 계층, 가이드"
 ---
 
 ## Lesson Content

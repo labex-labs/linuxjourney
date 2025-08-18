@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "/etc/shadow"
-description: "Linux 의 /etc/shadow 파일, 해당 필드, 그리고 사용자 암호를 보호하는 방법에 대해 알아보세요. 초보자를 위한 Linux 인증을 이해합니다."
-keywords: "/etc/shadow, Linux 보안, 사용자 인증, 암호 관리, Linux 튜토리얼, 초보자 가이드"
+meta_description: "Linux 의 /etc/shadow 파일, 해당 필드, 그리고 사용자 암호를 보호하는 방법에 대해 알아보세요. 초보자를 위한 Linux 인증을 이해합니다."
+meta_keywords: "/etc/shadow, Linux 보안, 사용자 인증, 암호 관리, Linux 튜토리얼, 초보자 가이드"
 ---
 
 ## Lesson Content

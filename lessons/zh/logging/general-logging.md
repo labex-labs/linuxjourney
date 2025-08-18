@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "通用日志记录"
-description: "了解 Linux 日志文件，如 /var/log/messages 和 syslog。理解它们之间的区别，以便有效地进行系统故障排除。开始您的 Linux 之旅！"
-keywords: "Linux 日志，syslog, var/log/messages, Linux 故障排除，Linux 初学者，Linux 指南，系统日志"
+meta_description: "了解 Linux 日志文件，如 /var/log/messages 和 syslog。理解它们之间的区别，以便有效地进行系统故障排除。开始您的 Linux 之旅！"
+meta_keywords: "Linux 日志，syslog, var/log/messages, Linux 故障排除，Linux 初学者，Linux 指南，系统日志"
 ---
 
 ## Lesson Content

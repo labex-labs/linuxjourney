@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "stdout (Standardausgabe)"
-description: "Erfahren Sie mehr über Linux stdout und I/O-Umleitung. Verstehen Sie, wie Sie die Befehlsausgabe mit den Operatoren > und >> in Dateien umleiten. Beginnen Sie Ihre Linux-Reise noch heute!"
-keywords: "Linux stdout, I/O-Umleitung, Linux-Befehle, Ausgabe umleiten, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung, Shell-Skripting"
+meta_description: "Erfahren Sie mehr über Linux stdout und I/O-Umleitung. Verstehen Sie, wie Sie die Befehlsausgabe mit den Operatoren > und >> in Dateien umleiten. Beginnen Sie Ihre Linux-Reise noch heute!"
+meta_keywords: "Linux stdout, I/O-Umleitung, Linux-Befehle, Ausgabe umleiten, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung, Shell-Skripting"
 ---
 
 ## Lesson Content

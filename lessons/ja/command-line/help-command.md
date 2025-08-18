@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "help"
-description: "Bash で 'help' コマンドを使用して、コマンドラインでの迅速な支援を得る方法を学びます。組み込みコマンドを理解し、Linux プログラムのオプションを見つけます。"
-keywords: "Linux help コマンド，Bash help, コマンドラインヘルプ，Linux コマンド，初心者 Linux, Linux チュートリアル，Bash チュートリアル"
+meta_description: "Bash で 'help' コマンドを使用して、コマンドラインでの迅速な支援を得る方法を学びます。組み込みコマンドを理解し、Linux プログラムのオプションを見つけます。"
+meta_keywords: "Linux help コマンド，Bash help, コマンドラインヘルプ，Linux コマンド，初心者 Linux, Linux チュートリアル，Bash チュートリアル"
 ---
 
 ## Lesson Content

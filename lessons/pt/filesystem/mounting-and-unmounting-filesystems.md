@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "mount e umount"
-description: "Aprenda a usar os comandos Linux mount e umount para gerenciar sistemas de arquivos. Entenda a montagem, desmontagem de dispositivos e UUIDs para iniciantes."
-keywords: "Linux mount, comando umount, montar sistema de arquivos, Linux UUID, Linux para iniciantes, tutorial Linux, ponto de montagem, guia Linux"
+meta_description: "Aprenda a usar os comandos Linux mount e umount para gerenciar sistemas de arquivos. Entenda a montagem, desmontagem de dispositivos e UUIDs para iniciantes."
+meta_keywords: "Linux mount, comando umount, montar sistema de arquivos, Linux UUID, Linux para iniciantes, tutorial Linux, ponto de montagem, guia Linux"
 ---
 
 ## Lesson Content

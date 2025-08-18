@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "DNS Process"
-description: "Learn how DNS works step-by-step, from root servers to authoritative DNS. Understand the DNS lookup process for beginners and intermediate users."
-keywords: "DNS process, DNS lookup, how DNS works, DNS tutorial, beginner DNS, Linux DNS, TLD, root servers"
+meta_description: "Learn how DNS works step-by-step, from root servers to authoritative DNS. Understand the DNS lookup process for beginners and intermediate users."
+meta_keywords: "DNS process, DNS lookup, how DNS works, DNS tutorial, beginner DNS, Linux DNS, TLD, root servers"
 ---
 
 ## Lesson Content

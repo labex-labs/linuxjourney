@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "device types"
-description: "Learn about Linux device types (character, block, pipe, socket) and how to identify them using `ls -l /dev`. Understand major/minor device numbers. Linux tutorial for beginners."
-keywords: "Linux device types, ls -l /dev, character device, block device, major minor device number, Linux tutorial, Linux guide, beginner"
+meta_description: "Learn about Linux device types (character, block, pipe, socket) and how to identify them using `ls -l /dev`. Understand major/minor device numbers. Linux tutorial for beginners."
+meta_keywords: "Linux device types, ls -l /dev, character device, block device, major minor device number, Linux tutorial, Linux guide, beginner"
 ---
 
 ## Lesson Content

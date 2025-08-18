@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "/etc/fstab"
-description: "Linux 에서 /etc/fstab에 대해 배우고, 시작 시 파일 시스템 마운트를 구성하고, 장치 항목을 관리하는 방법을 알아보세요. 초보자를 위한 fstab 이해!"
-keywords: "/etc/fstab, Linux fstab, 파일 시스템 마운트, Linux 부팅, fstab 튜토리얼, 초보자, 가이드"
+meta_description: "Linux 에서 /etc/fstab에 대해 배우고, 시작 시 파일 시스템 마운트를 구성하고, 장치 항목을 관리하는 방법을 알아보세요. 초보자를 위한 fstab 이해!"
+meta_keywords: "/etc/fstab, Linux fstab, 파일 시스템 마운트, Linux 부팅, fstab 튜토리얼, 초보자, 가이드"
 ---
 
 ## Lesson Content

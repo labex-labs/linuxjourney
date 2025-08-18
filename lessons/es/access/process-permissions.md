@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Permisos de Proceso"
-description: "Aprende sobre los permisos de proceso de Linux, incluyendo los IDs de Usuario Real, Efectivo y Guardado. Comprende cómo los UIDs impactan la seguridad y la ejecución de comandos. ¡Empieza a aprender hoy mismo!"
-keywords: "permisos de proceso de Linux, UID real, UID efectivo, UID guardado, seguridad de Linux, comando passwd, tutorial de Linux, Linux para principiantes"
+meta_description: "Aprende sobre los permisos de proceso de Linux, incluyendo los IDs de Usuario Real, Efectivo y Guardado. Comprende cómo los UIDs impactan la seguridad y la ejecución de comandos. ¡Empieza a aprender hoy mismo!"
+meta_keywords: "permisos de proceso de Linux, UID real, UID efectivo, UID guardado, seguridad de Linux, comando passwd, tutorial de Linux, Linux para principiantes"
 ---
 
 ## Lesson Content

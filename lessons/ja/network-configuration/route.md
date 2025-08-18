@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "route"
-description: "Linux の route コマンドと ip コマンドを使用して、ネットワークルートを追加および削除する方法を学びます。初心者から中級者向けのルーティングテーブル管理を理解します。"
-keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
+meta_description: "Linux の route コマンドと ip コマンドを使用して、ネットワークルートを追加および削除する方法を学びます。初心者から中級者向けのルーティングテーブル管理を理解します。"
+meta_keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

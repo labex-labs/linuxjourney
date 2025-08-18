@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ブートプロセス：Init"
-description: "Linux の init システム（System V、Upstart、systemd）について学びます。ブートプロセスにおけるそれらの役割と、サービスを管理する方法を理解します。Linux の学習を始めましょう！"
-keywords: "Linux init, systemd, System V init, Upstart, Linux ブートプロセス，Linux チュートリアル，初心者向け Linux, Linux ガイド"
+meta_description: "Linux の init システム（System V、Upstart、systemd）について学びます。ブートプロセスにおけるそれらの役割と、サービスを管理する方法を理解します。Linux の学習を始めましょう！"
+meta_keywords: "Linux init, systemd, System V init, Upstart, Linux ブートプロセス，Linux チュートリアル，初心者向け Linux, Linux ガイド"
 ---
 
 ## Lesson Content

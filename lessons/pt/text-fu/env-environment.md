@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "env (Ambiente)"
-description: "Aprenda sobre as variáveis de ambiente Linux com o comando 'env'. Entenda as variáveis PATH, HOME e USER. Obtenha um guia para iniciantes sobre como gerenciar seu ambiente Linux."
-keywords: "comando env, variáveis de ambiente Linux, variável PATH, tutorial Linux, Linux para iniciantes, variáveis de shell, guia Linux"
+meta_description: "Aprenda sobre as variáveis de ambiente Linux com o comando 'env'. Entenda as variáveis PATH, HOME e USER. Obtenha um guia para iniciantes sobre como gerenciar seu ambiente Linux."
+meta_keywords: "comando env, variáveis de ambiente Linux, variável PATH, tutorial Linux, Linux para iniciantes, variáveis de shell, guia Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ソースコードをコンパイルする"
-description: "make、configure、checkinstall を使用して Linux でソースコードをコンパイルする方法を学びます。初心者および中級者向けのビルドプロセスを理解します。"
-keywords: "ソースコードのコンパイル，make install, checkinstall, Linux コンパイル，build-essential, Linux チュートリアル，初心者向けガイド"
+meta_description: "make、configure、checkinstall を使用して Linux でソースコードをコンパイルする方法を学びます。初心者および中級者向けのビルドプロセスを理解します。"
+meta_keywords: "ソースコードのコンパイル，make install, checkinstall, Linux コンパイル，build-essential, Linux チュートリアル，初心者向けガイド"
 ---
 
 ## Lesson Content

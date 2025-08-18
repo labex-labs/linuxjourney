@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Choosing a Linux Distribution"
-description: "Learn how to choose a Linux distribution for your needs. Explore popular options and understand kernel, hardware, and user space. Start your Linux journey!"
-keywords: "Linux distribution, choose Linux, Linux kernel, beginner Linux, Linux guide, install Linux, Linux tutorial"
+meta_description: "Learn how to choose a Linux distribution for your needs. Explore popular options and understand kernel, hardware, and user space. Start your Linux journey!"
+meta_keywords: "Linux distribution, choose Linux, Linux kernel, beginner Linux, Linux guide, install Linux, Linux tutorial"
 ---
 
 ## Lesson Content

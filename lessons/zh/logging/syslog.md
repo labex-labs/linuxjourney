@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "syslog"
-description: "了解 Linux 中的 syslog 和 rsyslog，如何管理系统日志以及使用 logger 命令。通过这个适合初学者的教程开始学习！"
-keywords: "syslog, rsyslog, Linux 日志，logger 命令，/var/log/syslog, Linux 教程，Linux 初学者，系统日志记录"
+meta_description: "了解 Linux 中的 syslog 和 rsyslog，如何管理系统日志以及使用 logger 命令。通过这个适合初学者的教程开始学习！"
+meta_keywords: "syslog, rsyslog, Linux 日志，logger 命令，/var/log/syslog, Linux 教程，Linux 初学者，系统日志记录"
 ---
 
 ## Lesson Content

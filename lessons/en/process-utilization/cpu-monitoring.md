@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "CPU Monitoring"
-description: "Learn CPU monitoring with the uptime command. Understand load average, CPU usage, and how to interpret system performance for Linux beginners."
-keywords: "uptime command, Linux CPU monitoring, load average, system performance, Linux tutorial, beginner guide"
+meta_description: "Learn CPU monitoring with the uptime command. Understand load average, CPU usage, and how to interpret system performance for Linux beginners."
+meta_keywords: "uptime command, Linux CPU monitoring, load average, system performance, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

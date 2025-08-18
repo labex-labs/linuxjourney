@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "stdin (Entrada Padrão)"
-description: "Aprenda sobre o redirecionamento de stdin (entrada padrão) no Linux. Entenda como usar o operador '<' com arquivos e comandos. Explore exemplos práticos e melhore suas habilidades de linha de comando no Linux."
-keywords: "stdin, entrada padrão, redirecionamento Linux, operador <, tutorial Linux, linha de comando, iniciante, guia"
+meta_description: "Aprenda sobre o redirecionamento de stdin (entrada padrão) no Linux. Entenda como usar o operador '<' com arquivos e comandos. Explore exemplos práticos e melhore suas habilidades de linha de comando no Linux."
+meta_keywords: "stdin, entrada padrão, redirecionamento Linux, operador <, tutorial Linux, linha de comando, iniciante, guia"
 ---
 
 ## Lesson Content

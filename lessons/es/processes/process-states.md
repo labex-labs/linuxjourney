@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Estados de los Procesos"
-description: "Aprenda los estados de los procesos de Linux (R, S, D, Z, T) usando `ps aux`. Comprenda los códigos STAT comunes y gestione los procesos de forma eficaz. ¡Comience su viaje en Linux!"
-keywords: "estados de procesos de Linux, ps aux, gestión de procesos, tutorial de Linux, Linux para principiantes, códigos STAT, guía de Linux"
+meta_description: "Aprenda los estados de los procesos de Linux (R, S, D, Z, T) usando `ps aux`. Comprenda los códigos STAT comunes y gestione los procesos de forma eficaz. ¡Comience su viaje en Linux!"
+meta_keywords: "estados de procesos de Linux, ps aux, gestión de procesos, tutorial de Linux, Linux para principiantes, códigos STAT, guía de Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "歴史"
-description: "UNIX からリーナス・トーバルズ、そして GNU プロジェクトまで、Linux の歴史について学びます。初心者向けにその起源と進化を理解します。"
-keywords: "Linux の歴史，UNIX, GNU プロジェクト，リーナス・トーバルズ，Linux カーネル，初心者向け Linux, Linux チュートリアル，Linux ガイド"
+meta_description: "UNIX からリーナス・トーバルズ、そして GNU プロジェクトまで、Linux の歴史について学びます。初心者向けにその起源と進化を理解します。"
+meta_keywords: "Linux の歴史，UNIX, GNU プロジェクト，リーナス・トーバルズ，Linux カーネル，初心者向け Linux, Linux チュートリアル，Linux ガイド"
 ---
 
 ## Lesson Content

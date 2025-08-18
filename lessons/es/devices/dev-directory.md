@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "directorio /dev"
-description: "Aprende sobre el directorio /dev en Linux, donde se almacenan los archivos de dispositivo. Comprende los nodos de dispositivo y cómo interactuar con ellos. Explora /dev con ls. Guía para principiantes de Linux."
-keywords: "directorio /dev, archivos de dispositivo Linux, nodos de dispositivo, tutorial de Linux, ls /dev, Linux para principiantes, guía de Linux"
+meta_description: "Aprende sobre el directorio /dev en Linux, donde se almacenan los archivos de dispositivo. Comprende los nodos de dispositivo y cómo interactuar con ellos. Explora /dev con ls. Guía para principiantes de Linux."
+meta_keywords: "directorio /dev, archivos de dispositivo Linux, nodos de dispositivo, tutorial de Linux, ls /dev, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

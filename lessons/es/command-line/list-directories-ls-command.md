@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "ls (Listar Directorios)"
-description: "Aprende a usar el comando 'ls' en Linux para listar el contenido de directorios, ver archivos ocultos y entender los detalles de los archivos. ¡Mejora tus habilidades en la línea de comandos de Linux!"
-keywords: "comando ls, listar directorios, tutorial de Linux, archivos ocultos, comandos de Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende a usar el comando 'ls' en Linux para listar el contenido de directorios, ver archivos ocultos y entender los detalles de los archivos. ¡Mejora tus habilidades en la línea de comandos de Linux!"
+meta_keywords: "comando ls, listar directorios, tutorial de Linux, archivos ocultos, comandos de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

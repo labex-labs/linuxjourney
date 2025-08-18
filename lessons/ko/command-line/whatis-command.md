@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "whatis"
-description: "Linux 에서 'whatis' 명령어가 무엇을 하는지 알아보세요. 명령어에 대한 간략한 설명을 빠르게 얻을 수 있습니다. 초보자가 Linux 명령어를 이해하는 데 필수적입니다."
-keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
+meta_description: "Linux 에서 'whatis' 명령어가 무엇을 하는지 알아보세요. 명령어에 대한 간략한 설명을 빠르게 얻을 수 있습니다. 초보자가 Linux 명령어를 이해하는 데 필수적입니다."
+meta_keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Uso do Disco"
-description: "Aprenda a verificar o uso do disco e o espaço livre no Linux usando os comandos df e du. Entenda suas diferenças e quando usar cada um. Tutorial de gerenciamento de disco Linux."
-keywords: "comando df, comando du, uso do disco Linux, verificar espaço livre, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
+meta_description: "Aprenda a verificar o uso do disco e o espaço livre no Linux usando os comandos df e du. Entenda suas diferenças e quando usar cada um. Tutorial de gerenciamento de disco Linux."
+meta_keywords: "comando df, comando du, uso do disco Linux, verificar espaço livre, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
 ---
 
 ## Lesson Content

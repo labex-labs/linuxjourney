@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Terminación de Procesos"
-description: "Aprende sobre la terminación de procesos en Linux, incluyendo procesos huérfanos y zombie. Comprende las llamadas al sistema _exit y wait para una gestión eficaz de procesos."
-keywords: "terminación de procesos Linux, procesos zombie, procesos huérfanos, llamada al sistema wait, _exit, tutorial Linux, Linux para principiantes"
+meta_description: "Aprende sobre la terminación de procesos en Linux, incluyendo procesos huérfanos y zombie. Comprende las llamadas al sistema _exit y wait para una gestión eficaz de procesos."
+meta_keywords: "terminación de procesos Linux, procesos zombie, procesos huérfanos, llamada al sistema wait, _exit, tutorial Linux, Linux para principiantes"
 ---
 
 ## Lesson Content

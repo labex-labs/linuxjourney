@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "链路状态协议"
-description: "了解 OSPF 等链路状态协议在大型网络中的应用。理解它们的快速收敛以及它们如何更新路由表。开始您的 Linux 网络之旅！"
-keywords: "链路状态协议，OSPF, Linux 网络，路由协议，网络拓扑，初学者"
+meta_description: "了解 OSPF 等链路状态协议在大型网络中的应用。理解它们的快速收敛以及它们如何更新路由表。开始您的 Linux 网络之旅！"
+meta_keywords: "链路状态协议，OSPF, Linux 网络，路由协议，网络拓扑，初学者"
 ---
 
 ## Lesson Content

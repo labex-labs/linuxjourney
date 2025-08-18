@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "デバイス名"
-description: "SCSI (sd)、擬似、PATA (hd) デバイスなどの Linux デバイス名を学びます。この初心者向けガイドで、/dev/sda、/dev/null などを理解しましょう。"
-keywords: "Linux デバイス名，/dev, SCSI デバイス，擬似デバイス，PATA デバイス，Linux チュートリアル，初心者向け Linux, デバイスファイル"
+meta_description: "SCSI (sd)、擬似、PATA (hd) デバイスなどの Linux デバイス名を学びます。この初心者向けガイドで、/dev/sda、/dev/null などを理解しましょう。"
+meta_keywords: "Linux デバイス名，/dev, SCSI デバイス，擬似デバイス，PATA デバイス，Linux チュートリアル，初心者向け Linux, デバイスファイル"
 ---
 
 ## Lesson Content

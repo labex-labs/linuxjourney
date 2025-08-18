@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Emacs 文件操作"
-description: "学习 Emacs 文件操作：使用 C-x C-s、C-x C-w 和 C-x C-f 命令保存、另存为和打开文件。掌握基本的 Emacs 文件操作！"
-keywords: "Emacs, Emacs 保存文件，Emacs 打开文件，Emacs 教程，Linux 命令，Emacs 初学者，Emacs 指南"
+meta_description: "学习 Emacs 文件操作：使用 C-x C-s、C-x C-w 和 C-x C-f 命令保存、另存为和打开文件。掌握基本的 Emacs 文件操作！"
+meta_keywords: "Emacs, Emacs 保存文件，Emacs 打开文件，Emacs 教程，Linux 命令，Emacs 初学者，Emacs 指南"
 ---
 
 ## Lesson Content

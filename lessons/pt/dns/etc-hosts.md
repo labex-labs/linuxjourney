@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "/etc/hosts"
-description: "Aprenda sobre o arquivo /etc/hosts no Linux, como ele mapeia nomes de host para endereços IP e seu papel na resolução de DNS. Entenda a configuração básica de rede."
-keywords: "/etc/hosts, rede Linux, mapeamento de hostname, resolução de DNS, tutorial Linux, guia para iniciantes"
+meta_description: "Aprenda sobre o arquivo /etc/hosts no Linux, como ele mapeia nomes de host para endereços IP e seu papel na resolução de DNS. Entenda a configuração básica de rede."
+meta_keywords: "/etc/hosts, rede Linux, mapeamento de hostname, resolução de DNS, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

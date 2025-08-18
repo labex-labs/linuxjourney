@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "join と split"
-description: "Linux の'join'コマンドと'split'コマンドを使用してファイルを操作する方法を学びます。共通のフィールドでファイルを結合し、大きなファイルを効率的に分割する方法を理解します。実用的な例とヒントを得られます。"
-keywords: "Linux join コマンド，Linux split コマンド，ファイル操作，Linux チュートリアル，コマンドライン，初心者 Linux, Linux ガイド"
+meta_description: "Linux の'join'コマンドと'split'コマンドを使用してファイルを操作する方法を学びます。共通のフィールドでファイルを結合し、大きなファイルを効率的に分割する方法を理解します。実用的な例とヒントを得られます。"
+meta_keywords: "Linux join コマンド，Linux split コマンド，ファイル操作，Linux チュートリアル，コマンドライン，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

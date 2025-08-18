@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "What is a router?"
-description: "Learn what a router is, how it works, and its role in networking. Understand routing, hops, and packet delivery for beginners."
-keywords: "router, networking, routing, hops, packet switching, Linux networking, beginner tutorial, network guide"
+meta_description: "Learn what a router is, how it works, and its role in networking. Understand routing, hops, and packet delivery for beginners."
+meta_keywords: "router, networking, routing, hops, packet switching, Linux networking, beginner tutorial, network guide"
 ---
 
 ## Lesson Content

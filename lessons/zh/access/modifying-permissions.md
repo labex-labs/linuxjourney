@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "修改权限"
-description: "学习如何使用 chmod 命令在 Linux 中修改文件权限。了解符号模式和数字模式以进行安全的文件管理。立即开始学习！"
-keywords: "chmod 命令，Linux 权限，文件权限，chmod 教程，Linux 安全，Linux 初学者，Linux 指南，chmod 数字"
+meta_description: "学习如何使用 chmod 命令在 Linux 中修改文件权限。了解符号模式和数字模式以进行安全的文件管理。立即开始学习！"
+meta_keywords: "chmod 命令，Linux 权限，文件权限，chmod 教程，Linux 安全，Linux 初学者，Linux 指南，chmod 数字"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "uniq (Único)"
-description: "Aprende a usar el comando `uniq` de Linux para eliminar líneas duplicadas de archivos de texto. Descubre opciones como -c, -u, -d, y combínalo con `sort` para una limpieza de datos efectiva."
-keywords: "comando uniq, Linux uniq, eliminar duplicados, sort uniq, tutorial Linux, procesamiento de texto, Linux para principiantes, guía Linux"
+meta_description: "Aprende a usar el comando `uniq` de Linux para eliminar líneas duplicadas de archivos de texto. Descubre opciones como -c, -u, -d, y combínalo con `sort` para una limpieza de datos efectiva."
+meta_keywords: "comando uniq, Linux uniq, eliminar duplicados, sort uniq, tutorial Linux, procesamiento de texto, Linux para principiantes, guía Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "rsync"
-description: "Lernen Sie rsync für effiziente Linux-Dateisynchronisation und Backups. Verstehen Sie die Remote- und lokale Datenübertragung mit rsync-Befehlen und -Optionen. Verbessern Sie Ihre Linux-Kenntnisse!"
-keywords: "rsync, Linux-Dateiübertragung, Datensicherung, Dateisynchronisation, Linux-Tutorial, rsync-Befehle, Anfänger, Leitfaden"
+meta_description: "Lernen Sie rsync für effiziente Linux-Dateisynchronisation und Backups. Verstehen Sie die Remote- und lokale Datenübertragung mit rsync-Befehlen und -Optionen. Verbessern Sie Ihre Linux-Kenntnisse!"
+meta_keywords: "rsync, Linux-Dateiübertragung, Datensicherung, Dateisynchronisation, Linux-Tutorial, rsync-Befehle, Anfänger, Leitfaden"
 ---
 
 ## Lesson Content

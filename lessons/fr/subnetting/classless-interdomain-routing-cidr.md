@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "CIDR"
-description: "Apprenez la notation CIDR pour le réseau Linux. Comprenez les masques de sous-réseau, l'adressage IP et le calcul d'hôtes avec ce guide convivial pour débutants. Améliorez vos compétences réseau !"
-keywords: "CIDR, masque de sous-réseau, adressage IP, préfixe réseau, réseau Linux, débutant, tutoriel, guide"
+meta_description: "Apprenez la notation CIDR pour le réseau Linux. Comprenez les masques de sous-réseau, l'adressage IP et le calcul d'hôtes avec ce guide convivial pour débutants. Améliorez vos compétences réseau !"
+meta_keywords: "CIDR, masque de sous-réseau, adressage IP, préfixe réseau, réseau Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content

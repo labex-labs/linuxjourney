@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "syslog"
-description: "Découvrez syslog et rsyslog sous Linux, comment gérer les journaux système et utiliser la commande logger. Démarrez avec ce tutoriel convivial pour débutants !"
-keywords: "syslog, rsyslog, journaux Linux, commande logger, /var/log/syslog, tutoriel Linux, Linux débutant, journalisation système"
+meta_description: "Découvrez syslog et rsyslog sous Linux, comment gérer les journaux système et utiliser la commande logger. Démarrez avec ce tutoriel convivial pour débutants !"
+meta_keywords: "syslog, rsyslog, journaux Linux, commande logger, /var/log/syslog, tutoriel Linux, Linux débutant, journalisation système"
 ---
 
 ## Lesson Content

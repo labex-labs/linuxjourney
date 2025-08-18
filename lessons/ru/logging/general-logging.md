@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Общее ведение журнала"
-description: "Узнайте о файлах журналов Linux, таких как /var/log/messages и syslog. Поймите их различия для эффективного устранения неполадок в системе. Начните свой путь в Linux!"
-keywords: "Журналы Linux, syslog, var/log/messages, устранение неполадок Linux, Linux для начинающих, руководство по Linux, системные журналы"
+meta_description: "Узнайте о файлах журналов Linux, таких как /var/log/messages и syslog. Поймите их различия для эффективного устранения неполадок в системе. Начните свой путь в Linux!"
+meta_keywords: "Журналы Linux, syslog, var/log/messages, устранение неполадок Linux, Linux для начинающих, руководство по Linux, системные журналы"
 ---
 
 ## Lesson Content

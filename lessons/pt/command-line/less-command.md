@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "less"
-description: "Aprenda a usar o comando 'less' do Linux para visualização e navegação eficientes de arquivos de texto. Domine a paginação, pesquisa e saída com este guia para iniciantes."
-keywords: "comando less, Linux less, visualizar arquivos de texto, navegar arquivos, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda a usar o comando 'less' do Linux para visualização e navegação eficientes de arquivos de texto. Domine a paginação, pesquisa e saída com este guia para iniciantes."
+meta_keywords: "comando less, Linux less, visualizar arquivos de texto, navegar arquivos, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

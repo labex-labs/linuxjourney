@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Простой HTTP-сервер"
-description: "Узнайте, как создать простой HTTP-сервер с использованием модуля Python http.server. Быстро делитесь файлами в вашей сети с помощью этого удобного для новичков руководства по Linux."
-keywords: "http.server, SimpleHTTPServer, веб-сервер Python, обмен файлами, руководство по Linux, руководство для начинающих"
+meta_description: "Узнайте, как создать простой HTTP-сервер с использованием модуля Python http.server. Быстро делитесь файлами в вашей сети с помощью этого удобного для новичков руководства по Linux."
+meta_keywords: "http.server, SimpleHTTPServer, веб-сервер Python, обмен файлами, руководство по Linux, руководство для начинающих"
 ---
 
 ## Lesson Content

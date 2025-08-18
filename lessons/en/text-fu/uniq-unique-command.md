@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "uniq (Unique)"
-description: "Learn how to use the Linux `uniq` command to remove duplicate lines from text files. Discover options like -c, -u, -d, and combine with `sort` for effective data cleaning."
-keywords: "uniq command, Linux uniq, remove duplicates, sort uniq, Linux tutorial, text processing, beginner Linux, Linux guide"
+meta_description: "Learn how to use the Linux `uniq` command to remove duplicate lines from text files. Discover options like -c, -u, -d, and combine with `sort` for effective data cleaning."
+meta_keywords: "uniq command, Linux uniq, remove duplicates, sort uniq, Linux tutorial, text processing, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content

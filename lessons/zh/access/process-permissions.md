@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "进程权限"
-description: "了解 Linux 进程权限，包括真实用户 ID (Real UID)、有效用户 ID (Effective UID) 和保存用户 ID (Saved User ID)。理解 UID 如何影响安全性和命令执行。立即开始学习！"
-keywords: "Linux 进程权限，真实用户 ID, 有效用户 ID, 保存用户 ID, Linux 安全，passwd 命令，Linux 教程，Linux 初学者"
+meta_description: "了解 Linux 进程权限，包括真实用户 ID (Real UID)、有效用户 ID (Effective UID) 和保存用户 ID (Saved User ID)。理解 UID 如何影响安全性和命令执行。立即开始学习！"
+meta_keywords: "Linux 进程权限，真实用户 ID, 有效用户 ID, 保存用户 ID, Linux 安全，passwd 命令，Linux 教程，Linux 初学者"
 ---
 
 ## Lesson Content

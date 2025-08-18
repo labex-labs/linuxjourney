@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "软件分发"
-description: "了解 Linux 软件分发、包管理器以及.deb 和.rpm 等包类型。理解 Linux 系统上如何管理软件。"
-keywords: "Linux 软件分发，包管理器，.deb, .rpm, Linux 软件包，Linux 初学者，Linux 教程，软件安装"
+meta_description: "了解 Linux 软件分发、包管理器以及.deb 和.rpm 等包类型。理解 Linux 系统上如何管理软件。"
+meta_keywords: "Linux 软件分发，包管理器，.deb, .rpm, Linux 软件包，Linux 初学者，Linux 教程，软件安装"
 ---
 
 ## Lesson Content

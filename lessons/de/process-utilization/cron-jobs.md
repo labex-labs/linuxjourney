@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Cron-Jobs"
-description: "Lernen Sie, Linux-Aufgaben mit Cron-Jobs zu planen. Verstehen Sie die Crontab-Syntax und automatisieren Sie Skripte für den täglichen Betrieb. Starten Sie mit dieser anfängerfreundlichen Anleitung!"
-keywords: "Cron-Jobs, Crontab, Aufgaben planen, Linux-Automatisierung, Linux-Befehle, Linux für Anfänger, Linux-Tutorial, crontab -e"
+meta_description: "Lernen Sie, Linux-Aufgaben mit Cron-Jobs zu planen. Verstehen Sie die Crontab-Syntax und automatisieren Sie Skripte für den täglichen Betrieb. Starten Sie mit dieser anfängerfreundlichen Anleitung!"
+meta_keywords: "Cron-Jobs, Crontab, Aufgaben planen, Linux-Automatisierung, Linux-Befehle, Linux für Anfänger, Linux-Tutorial, crontab -e"
 ---
 
 ## Lesson Content

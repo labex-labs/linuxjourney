@@ -38,8 +38,8 @@ Every lesson must have exactly these 4 sections:
 ---
 lang: "en"
 title: "Lesson Title"
-description: "Brief description (under 160 characters)"
-keywords: "relevant, keywords"
+meta_description: "Brief description (under 160 characters)"
+meta_keywords: "relevant, keywords"
 ---
 
 ## Lesson Content

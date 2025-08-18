@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "/etc/group"
-description: "了解 Linux 中的 /etc/group 文件，理解组管理、GID 和用户权限。面向初学者的重要 Linux 组文件教程。"
-keywords: "/etc/group, Linux 组，组管理，GID, Linux 权限，Linux 教程，Linux 初学者，Linux 指南"
+meta_description: "了解 Linux 中的 /etc/group 文件，理解组管理、GID 和用户权限。面向初学者的重要 Linux 组文件教程。"
+meta_keywords: "/etc/group, Linux 组，组管理，GID, Linux 权限，Linux 教程，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

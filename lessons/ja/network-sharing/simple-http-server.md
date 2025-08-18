@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "シンプルな HTTP サーバー"
-description: "Python の http.server モジュールを使用してシンプルな HTTP サーバーを作成する方法を学びます。この初心者向けの Linux チュートリアルで、ネットワーク上でファイルを素早く共有しましょう。"
-keywords: "http.server, SimpleHTTPServer, Python web server, ファイル共有，Linux チュートリアル，初心者向けガイド"
+meta_description: "Python の http.server モジュールを使用してシンプルな HTTP サーバーを作成する方法を学びます。この初心者向けの Linux チュートリアルで、ネットワーク上でファイルを素早く共有しましょう。"
+meta_keywords: "http.server, SimpleHTTPServer, Python web server, ファイル共有，Linux チュートリアル，初心者向けガイド"
 ---
 
 ## Lesson Content

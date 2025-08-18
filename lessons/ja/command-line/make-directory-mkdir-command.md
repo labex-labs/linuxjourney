@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "mkdir (ディレクトリの作成)"
-description: "Linux で mkdir コマンドを使用してディレクトリとサブディレクトリを作成する方法を学びます。この初心者向けのチュートリアルは、ファイルを効率的に整理するのに役立ちます。"
-keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
+meta_description: "Linux で mkdir コマンドを使用してディレクトリとサブディレクトリを作成する方法を学びます。この初心者向けのチュートリアルは、ファイルを効率的に整理するのに役立ちます。"
+meta_keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
 ---
 
 ## Lesson Content

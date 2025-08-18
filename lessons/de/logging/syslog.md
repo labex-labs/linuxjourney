@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "syslog"
-description: "Erfahren Sie mehr über syslog und rsyslog in Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Starten Sie mit diesem anfängerfreundlichen Tutorial!"
-keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Linux für Anfänger, Systemprotokollierung"
+meta_description: "Erfahren Sie mehr über syslog und rsyslog in Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Starten Sie mit diesem anfängerfreundlichen Tutorial!"
+meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Linux für Anfänger, Systemprotokollierung"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Setuid"
-description: "Découvrez les permissions Linux Setuid (SUID), leur fonctionnement et comment les modifier. Comprenez le SUID pour un accès sécurisé aux fichiers sous Linux."
-keywords: "Linux Setuid, SUID, permissions Linux, chmod, commande passwd, sécurité Linux, Linux pour débutants, tutoriel Linux"
+meta_description: "Découvrez les permissions Linux Setuid (SUID), leur fonctionnement et comment les modifier. Comprenez le SUID pour un accès sécurisé aux fichiers sous Linux."
+meta_keywords: "Linux Setuid, SUID, permissions Linux, chmod, commande passwd, sécurité Linux, Linux pour débutants, tutoriel Linux"
 ---
 
 ## Lesson Content

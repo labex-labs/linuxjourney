@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Umask"
-description: "`umask` 명령을 사용하여 Linux 에서 기본 파일 권한을 제어하는 방법을 배웁니다. 숫자 권한을 이해하고 새 파일 접근을 쉽게 관리하세요."
-keywords: "umask, linux 권한, 파일 권한, linux 명령어, linux 초보, linux 튜토리얼, 기본 권한"
+meta_description: "`umask` 명령을 사용하여 Linux 에서 기본 파일 권한을 제어하는 방법을 배웁니다. 숫자 권한을 이해하고 새 파일 접근을 쉽게 관리하세요."
+meta_keywords: "umask, linux 권한, 파일 권한, linux 명령어, linux 초보, linux 튜토리얼, 기본 권한"
 ---
 
 ## Lesson Content

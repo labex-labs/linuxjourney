@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "I/O 监控"
-description: "学习如何使用 iostat 进行 Linux I/O 监控。通过这个基本命令了解 CPU 和磁盘使用情况指标。提高系统性能！"
-keywords: "iostat, Linux I/O 监控，CPU 使用率，磁盘使用率，Linux 命令，初学者，教程，指南"
+meta_description: "学习如何使用 iostat 进行 Linux I/O 监控。通过这个基本命令了解 CPU 和磁盘使用情况指标。提高系统性能！"
+meta_keywords: "iostat, Linux I/O 监控，CPU 使用率，磁盘使用率，Linux 命令，初学者，教程，指南"
 ---
 
 ## Lesson Content

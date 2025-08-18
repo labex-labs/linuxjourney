@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "stderr (Standardfehler)"
-description: "Erfahren Sie mehr über die Umleitung von Linux stderr (Standardfehler). Verstehen Sie 2>, 2>&1, &> und /dev/null für die Fehlerbehandlung in Bash. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
-keywords: "Linux stderr, Standardfehler, 2> Umleitung, 2>&1, &> Umleitung, /dev/null, Bash Fehlerbehandlung, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie mehr über die Umleitung von Linux stderr (Standardfehler). Verstehen Sie 2>, 2>&1, &> und /dev/null für die Fehlerbehandlung in Bash. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
+meta_keywords: "Linux stderr, Standardfehler, 2> Umleitung, 2>&1, &> Umleitung, /dev/null, Bash Fehlerbehandlung, Linux Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Processo de Inicialização: Kernel"
-description: "Aprenda sobre o processo de inicialização do Linux, inicialização do kernel e o papel do initramfs. Entenda como o kernel monta o sistema de arquivos raiz. Guia do processo de inicialização do Linux."
-keywords: "processo de inicialização do Linux, inicialização do kernel, initramfs, initrd, sistema de arquivos raiz, tutorial de Linux, Linux para iniciantes, guia de Linux"
+meta_description: "Aprenda sobre o processo de inicialização do Linux, inicialização do kernel e o papel do initramfs. Entenda como o kernel monta o sistema de arquivos raiz. Guia do processo de inicialização do Linux."
+meta_keywords: "processo de inicialização do Linux, inicialização do kernel, initramfs, initrd, sistema de arquivos raiz, tutorial de Linux, Linux para iniciantes, guia de Linux"
 ---
 
 ## Lesson Content

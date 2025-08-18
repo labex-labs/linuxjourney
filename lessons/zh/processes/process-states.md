@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "进程状态"
-description: "使用 `ps aux` 学习 Linux 进程状态 (R, S, D, Z, T)。了解常见的 STAT 代码并有效管理进程。开始您的 Linux 之旅！"
-keywords: "Linux 进程状态，ps aux, 进程管理，Linux 教程，Linux 初学者，STAT 代码，Linux 指南"
+meta_description: "使用 `ps aux` 学习 Linux 进程状态 (R, S, D, Z, T)。了解常见的 STAT 代码并有效管理进程。开始您的 Linux 之旅！"
+meta_keywords: "Linux 进程状态，ps aux, 进程管理，Linux 教程，Linux 初学者，STAT 代码，Linux 指南"
 ---
 
 ## Lesson Content

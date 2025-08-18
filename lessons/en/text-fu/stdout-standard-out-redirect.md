@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "stdout (Standard Out)"
-description: "Learn about Linux stdout and I/O redirection. Understand how to redirect command output to files using > and >> operators. Start your Linux journey today!"
-keywords: "Linux stdout, I/O redirection, Linux commands, redirect output, Linux tutorial, beginner Linux, Linux guide, shell scripting"
+meta_description: "Learn about Linux stdout and I/O redirection. Understand how to redirect command output to files using > and >> operators. Start your Linux journey today!"
+meta_keywords: "Linux stdout, I/O redirection, Linux commands, redirect output, Linux tutorial, beginner Linux, Linux guide, shell scripting"
 ---
 
 ## Lesson Content

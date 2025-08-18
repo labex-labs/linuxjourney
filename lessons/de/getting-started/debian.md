@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Debian"
-description: "Erfahren Sie mehr über Debian Linux, seine stabilen und Rolling Releases und die Paketverwaltung. Entdecken Sie, warum Debian ein großartiges Kernbetriebssystem für Anfänger und fortgeschrittene Benutzer ist."
-keywords: "Debian, Debian Linux, Linux-Distribution, Rolling Release, Paketverwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Leitfaden"
+meta_description: "Erfahren Sie mehr über Debian Linux, seine stabilen und Rolling Releases und die Paketverwaltung. Entdecken Sie, warum Debian ein großartiges Kernbetriebssystem für Anfänger und fortgeschrittene Benutzer ist."
+meta_keywords: "Debian, Debian Linux, Linux-Distribution, Rolling Release, Paketverwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Leitfaden"
 ---
 
 ## Lesson Content

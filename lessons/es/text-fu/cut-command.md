@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "cut"
-description: "Aprende a usar el comando `cut` de Linux para extraer texto de archivos. Este tutorial para principiantes cubre el corte por caracteres y campos. ¡Mejora tus habilidades de procesamiento de texto en Linux!"
-keywords: "comando cut, procesamiento de texto Linux, extraer texto, tutorial Linux, Linux para principiantes, ejemplos cut, guía Linux"
+meta_description: "Aprende a usar el comando `cut` de Linux para extraer texto de archivos. Este tutorial para principiantes cubre el corte por caracteres y campos. ¡Mejora tus habilidades de procesamiento de texto en Linux!"
+meta_keywords: "comando cut, procesamiento de texto Linux, extraer texto, tutorial Linux, Linux para principiantes, ejemplos cut, guía Linux"
 ---
 
 ## Lesson Content

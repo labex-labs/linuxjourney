@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "dd"
-description: "Aprenda el comando dd de Linux para copiar datos e imágenes de disco. Comprenda sus opciones como if, of y bs. ¡Comience su viaje de gestión de datos en Linux!"
-keywords: "comando dd, Linux dd, copiar datos, imágenes de disco, tutorial de Linux, principiante, guía, copia de seguridad de datos"
+meta_description: "Aprenda el comando dd de Linux para copiar datos e imágenes de disco. Comprenda sus opciones como if, of y bs. ¡Comience su viaje de gestión de datos en Linux!"
+meta_keywords: "comando dd, Linux dd, copiar datos, imágenes de disco, tutorial de Linux, principiante, guía, copia de seguridad de datos"
 ---
 
 ## Lesson Content

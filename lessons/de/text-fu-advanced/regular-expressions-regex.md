@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "regex (Reguläre Ausdrücke)"
-description: "Lernen Sie reguläre Ausdrücke (regex) für das Musterabgleich in Linux. Verstehen Sie die Regex-Syntax wie ^, $, ., und [] für die Textmanipulation. Verbessern Sie Ihre grep-Fähigkeiten!"
-keywords: "reguläre Ausdrücke, regex, Linux regex, grep regex, Musterabgleich, regex Tutorial, Linux Befehle, Anfänger"
+meta_description: "Lernen Sie reguläre Ausdrücke (regex) für das Musterabgleich in Linux. Verstehen Sie die Regex-Syntax wie ^, $, ., und [] für die Textmanipulation. Verbessern Sie Ihre grep-Fähigkeiten!"
+meta_keywords: "reguläre Ausdrücke, regex, Linux regex, grep regex, Musterabgleich, regex Tutorial, Linux Befehle, Anfänger"
 ---
 
 ## Lesson Content

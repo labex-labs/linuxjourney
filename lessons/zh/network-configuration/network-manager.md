@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "网络管理器"
-description: "了解 Linux 中的 NetworkManager，它如何自动化网络配置，以及使用 nm-tool 和 nmcli 命令。通过此初学者指南开始学习！"
-keywords: "NetworkManager, nm-tool, nmcli, Linux 网络，网络配置，Linux 教程，初学者指南"
+meta_description: "了解 Linux 中的 NetworkManager，它如何自动化网络配置，以及使用 nm-tool 和 nmcli 命令。通过此初学者指南开始学习！"
+meta_keywords: "NetworkManager, nm-tool, nmcli, Linux 网络，网络配置，Linux 教程，初学者指南"
 ---
 
 ## Lesson Content

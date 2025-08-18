@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "less"
-description: "Linux 의 'less' 명령을 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 방법을 배우세요. 이 초보자 친화적인 가이드를 통해 페이징, 검색 및 종료를 마스터하세요."
-keywords: "less command, Linux less, 텍스트 파일 보기, 파일 탐색, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
+meta_description: "Linux 의 'less' 명령을 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 방법을 배우세요. 이 초보자 친화적인 가이드를 통해 페이징, 검색 및 종료를 마스터하세요."
+meta_keywords: "less command, Linux less, 텍스트 파일 보기, 파일 탐색, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---
 
 ## Lesson Content

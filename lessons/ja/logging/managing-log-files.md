@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ログファイルの管理"
-description: "logrotate を使用して Linux ログファイルを効率的に管理する方法を学びます。ログのローテーション、圧縮、設定について学び、ディスクスペースを節約しましょう。今日から学習を始めましょう！"
-keywords: "logrotate, Linux ログ，ログ管理，ログローテーション，Linux チュートリアル，初心者，ガイド，ディスクスペース"
+meta_description: "logrotate を使用して Linux ログファイルを効率的に管理する方法を学びます。ログのローテーション、圧縮、設定について学び、ディスクスペースを節約しましょう。今日から学習を始めましょう！"
+meta_keywords: "logrotate, Linux ログ，ログ管理，ログローテーション，Linux チュートリアル，初心者，ガイド，ディスクスペース"
 ---
 
 ## Lesson Content

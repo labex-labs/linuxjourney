@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Gerenciador de Rede"
-description: "Aprenda sobre o NetworkManager no Linux, como ele automatiza a configuração de rede e use os comandos nm-tool e nmcli. Comece com este guia para iniciantes!"
-keywords: "NetworkManager, nm-tool, nmcli, rede Linux, configuração de rede, tutorial Linux, guia para iniciantes"
+meta_description: "Aprenda sobre o NetworkManager no Linux, como ele automatiza a configuração de rede e use os comandos nm-tool e nmcli. Comece com este guia para iniciantes!"
+meta_keywords: "NetworkManager, nm-tool, nmcli, rede Linux, configuração de rede, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

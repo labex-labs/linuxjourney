@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "dhclient"
-description: "dhclient、DHCP を使用して IP アドレスを取得し、ネットワークリースを管理する方法について学びます。dhclient.conf および dhclient.leases ファイルについて理解します。Linux 初心者向けガイド。"
-keywords: "dhclient, DHCP, Linux networking, IP address, network configuration, Linux tutorial, beginner guide"
+meta_description: "dhclient、DHCP を使用して IP アドレスを取得し、ネットワークリースを管理する方法について学びます。dhclient.conf および dhclient.leases ファイルについて理解します。Linux 初心者向けガイド。"
+meta_keywords: "dhclient, DHCP, Linux networking, IP address, network configuration, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

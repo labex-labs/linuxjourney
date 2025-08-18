@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "regex (Expressões Regulares)"
-description: "Aprenda expressões regulares (regex) para correspondência de padrões no Linux. Entenda a sintaxe regex como ^, $, ., e [] para manipulação de texto. Melhore suas habilidades com grep!"
-keywords: "expressões regulares, regex, regex Linux, grep regex, correspondência de padrões, tutorial regex, comandos Linux, iniciante"
+meta_description: "Aprenda expressões regulares (regex) para correspondência de padrões no Linux. Entenda a sintaxe regex como ^, $, ., e [] para manipulação de texto. Melhore suas habilidades com grep!"
+meta_keywords: "expressões regulares, regex, regex Linux, grep regex, correspondência de padrões, tutorial regex, comandos Linux, iniciante"
 ---
 
 ## Lesson Content

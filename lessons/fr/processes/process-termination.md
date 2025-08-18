@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Terminaison de processus"
-description: "Découvrez la terminaison des processus Linux, y compris les processus orphelins et zombies. Comprenez les appels système _exit et wait pour une gestion efficace des processus."
-keywords: "terminaison de processus Linux, processus zombies, processus orphelins, appel système wait, _exit, tutoriel Linux, Linux pour débutants"
+meta_description: "Découvrez la terminaison des processus Linux, y compris les processus orphelins et zombies. Comprenez les appels système _exit et wait pour une gestion efficace des processus."
+meta_keywords: "terminaison de processus Linux, processus zombies, processus orphelins, appel système wait, _exit, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content

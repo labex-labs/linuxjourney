@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Vim (Vi Improved)"
-description: "Изучите Vim, мощный и легкий текстовый редактор Vi improved для Linux. Поймите основы использования и почему Vim важен для пользователей Linux."
-keywords: "Vim, Vi editor, текстовый редактор Linux, Vim tutorial, команды Linux, Linux для начинающих, руководство по Vim"
+meta_description: "Изучите Vim, мощный и легкий текстовый редактор Vi improved для Linux. Поймите основы использования и почему Vim важен для пользователей Linux."
+meta_keywords: "Vim, Vi editor, текстовый редактор Linux, Vim tutorial, команды Linux, Linux для начинающих, руководство по Vim"
 ---
 
 ## Lesson Content

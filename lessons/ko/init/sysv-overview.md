@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "System V 개요"
-description: "System V init, 런레벨, 그리고 Linux 에서 프로세스를 관리하는 방법에 대해 알아보세요. 초보자와 중급 사용자를 위한 SysV 기본 사항을 이해합니다."
-keywords: "System V, SysV init, Linux 런레벨, init 시스템, Linux 튜토리얼, 초보자 가이드, 프로세스 관리"
+meta_description: "System V init, 런레벨, 그리고 Linux 에서 프로세스를 관리하는 방법에 대해 알아보세요. 초보자와 중급 사용자를 위한 SysV 기본 사항을 이해합니다."
+meta_keywords: "System V, SysV init, Linux 런레벨, init 시스템, Linux 튜토리얼, 초보자 가이드, 프로세스 관리"
 ---
 
 ## Lesson Content

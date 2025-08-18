@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "tail"
-description: "学习如何在 Linux 中使用 `tail` 命令查看文件末尾并监控日志。了解 `tail -f` 以获取实时更新。开始你的 Linux 之旅！"
-keywords: "tail 命令，Linux tail, tail -f, 查看日志，Linux 教程，Linux 初学者，Linux 指南"
+meta_description: "学习如何在 Linux 中使用 `tail` 命令查看文件末尾并监控日志。了解 `tail -f` 以获取实时更新。开始你的 Linux 之旅！"
+meta_keywords: "tail 命令，Linux tail, tail -f, 查看日志，Linux 教程，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "OSI-Modell"
-description: "Erfahren Sie mehr über das OSI-Modell, ein grundlegendes theoretisches Netzwerkkonzept. Verstehen Sie seine 7 Schichten und die Relevanz für TCP/IP. Ein unverzichtbarer Leitfaden für Linux-Netzwerke für Anfänger."
-keywords: "OSI-Modell, Netzwerkkonzepte, TCP/IP, Linux-Netzwerke, Anfänger-Tutorial, Netzwerkschichten, theoretisches Modell"
+meta_description: "Erfahren Sie mehr über das OSI-Modell, ein grundlegendes theoretisches Netzwerkkonzept. Verstehen Sie seine 7 Schichten und die Relevanz für TCP/IP. Ein unverzichtbarer Leitfaden für Linux-Netzwerke für Anfänger."
+meta_keywords: "OSI-Modell, Netzwerkkonzepte, TCP/IP, Linux-Netzwerke, Anfänger-Tutorial, Netzwerkschichten, theoretisches Modell"
 ---
 
 ## Lesson Content

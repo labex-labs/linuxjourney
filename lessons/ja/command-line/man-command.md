@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "man"
-description: "Linux で「man」コマンドを使ってコマンドマニュアルにアクセスする方法を学びましょう。初心者向けの必須 Linux ドキュメントを発見し、コマンドラインスキルを向上させましょう。"
-keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
+meta_description: "Linux で「man」コマンドを使ってコマンドマニュアルにアクセスする方法を学びましょう。初心者向けの必須 Linux ドキュメントを発見し、コマンドラインスキルを向上させましょう。"
+meta_keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
 ---
 
 ## Lesson Content

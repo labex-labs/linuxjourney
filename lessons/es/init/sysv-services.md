@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Servicio System V"
-description: "Aprende a administrar servicios System V usando herramientas de línea de comandos. Descubre cómo listar, iniciar, detener y reiniciar servicios con este tutorial de Linux para principiantes."
-keywords: "servicios System V, servicios Linux, comando service, SysV init, tutorial Linux, Linux para principiantes, gestión de servicios, guía Linux"
+meta_description: "Aprende a administrar servicios System V usando herramientas de línea de comandos. Descubre cómo listar, iniciar, detener y reiniciar servicios con este tutorial de Linux para principiantes."
+meta_keywords: "servicios System V, servicios Linux, comando service, SysV init, tutorial Linux, Linux para principiantes, gestión de servicios, guía Linux"
 ---
 
 ## Lesson Content

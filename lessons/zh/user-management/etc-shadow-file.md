@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "/etc/shadow"
-description: "了解 Linux 中的 /etc/shadow 文件、其字段以及它如何保护用户密码。帮助初学者理解 Linux 认证。"
-keywords: "/etc/shadow, Linux 安全，用户认证，密码管理，Linux 教程，初学者指南"
+meta_description: "了解 Linux 中的 /etc/shadow 文件、其字段以及它如何保护用户密码。帮助初学者理解 Linux 认证。"
+meta_keywords: "/etc/shadow, Linux 安全，用户认证，密码管理，Linux 教程，初学者指南"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Linux Mint"
-description: "Découvrez Linux Mint, sa base Ubuntu, la gestion des paquets, et pourquoi il est excellent pour les débutants. Découvrez ses fonctionnalités et comment démarrer dès aujourd'hui !"
-keywords: "Linux Mint, Ubuntu, Linux pour débutants, distribution Linux, tutoriel Linux, gestionnaire de paquets Debian, guide Linux"
+meta_description: "Découvrez Linux Mint, sa base Ubuntu, la gestion des paquets, et pourquoi il est excellent pour les débutants. Découvrez ses fonctionnalités et comment démarrer dès aujourd'hui !"
+meta_keywords: "Linux Mint, Ubuntu, Linux pour débutants, distribution Linux, tutoriel Linux, gestionnaire de paquets Debian, guide Linux"
 ---
 
 ## Lesson Content

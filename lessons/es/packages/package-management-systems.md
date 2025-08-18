@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "yum y apt"
-description: "Aprenda yum y apt para la gestión de paquetes de Linux. Instale, elimine y actualice software en sistemas Debian/RPM con este tutorial para principiantes. ¡Empiece hoy mismo!"
-keywords: "yum, apt, gestión de paquetes Linux, tutorial apt, tutorial yum, comandos Linux, guía para principiantes, instalación de paquetes"
+meta_description: "Aprenda yum y apt para la gestión de paquetes de Linux. Instale, elimine y actualice software en sistemas Debian/RPM con este tutorial para principiantes. ¡Empiece hoy mismo!"
+meta_keywords: "yum, apt, gestión de paquetes Linux, tutorial apt, tutorial yum, comandos Linux, guía para principiantes, instalación de paquetes"
 ---
 
 ## Lesson Content

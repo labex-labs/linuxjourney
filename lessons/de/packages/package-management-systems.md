@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "yum und apt"
-description: "Lernen Sie yum und apt für die Linux-Paketverwaltung. Installieren, entfernen und aktualisieren Sie Software auf Debian-/RPM-Systemen mit diesem Tutorial für Anfänger. Starten Sie noch heute!"
-keywords: "yum, apt, Linux-Paketverwaltung, apt-Tutorial, yum-Tutorial, Linux-Befehle, Anfängerleitfaden, Paketinstallation"
+meta_description: "Lernen Sie yum und apt für die Linux-Paketverwaltung. Installieren, entfernen und aktualisieren Sie Software auf Debian-/RPM-Systemen mit diesem Tutorial für Anfänger. Starten Sie noch heute!"
+meta_keywords: "yum, apt, Linux-Paketverwaltung, apt-Tutorial, yum-Tutorial, Linux-Befehle, Anfängerleitfaden, Paketinstallation"
 ---
 
 ## Lesson Content

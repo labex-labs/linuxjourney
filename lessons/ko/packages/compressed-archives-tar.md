@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "tar 및 gzip"
-description: "Linux 에서 tar 와 gzip 을 사용하여 파일 보관 및 압축하는 방법을 배우세요. 파일 생성, 추출 및 압축을 위한 명령어를 이해하세요. 이 초보자 가이드로 시작하세요!"
-keywords: "tar, gzip, Linux 아카이빙, 파일 압축, tar 명령어, gzip 명령어, Linux 튜토리얼, 초보자 Linux"
+meta_description: "Linux 에서 tar 와 gzip 을 사용하여 파일 보관 및 압축하는 방법을 배우세요. 파일 생성, 추출 및 압축을 위한 명령어를 이해하세요. 이 초보자 가이드로 시작하세요!"
+meta_keywords: "tar, gzip, Linux 아카이빙, 파일 압축, tar 명령어, gzip 명령어, Linux 튜토리얼, 초보자 Linux"
 ---
 
 ## Lesson Content

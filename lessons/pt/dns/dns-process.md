@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Processo DNS"
-description: "Aprenda como o DNS funciona passo a passo, desde os servidores raiz até o DNS autoritativo. Entenda o processo de pesquisa de DNS para usuários iniciantes e intermediários."
-keywords: "processo DNS, pesquisa DNS, como o DNS funciona, tutorial DNS, DNS para iniciantes, DNS Linux, TLD, servidores raiz"
+meta_description: "Aprenda como o DNS funciona passo a passo, desde os servidores raiz até o DNS autoritativo. Entenda o processo de pesquisa de DNS para usuários iniciantes e intermediários."
+meta_keywords: "processo DNS, pesquisa DNS, como o DNS funciona, tutorial DNS, DNS para iniciantes, DNS Linux, TLD, servidores raiz"
 ---
 
 ## Lesson Content

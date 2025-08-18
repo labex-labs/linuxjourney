@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "arp"
-description: "了解 Linux ARP 命令以及如何查看 ARP 缓存。理解 ARP 在网络通信中的作用。ARP 初学者指南。"
-keywords: "Linux ARP, ARP 缓存，ip neighbour show, 网络命令，Linux 网络，Linux 初学者，Linux 教程"
+meta_description: "了解 Linux ARP 命令以及如何查看 ARP 缓存。理解 ARP 在网络通信中的作用。ARP 初学者指南。"
+meta_keywords: "Linux ARP, ARP 缓存，ip neighbour show, 网络命令，Linux 网络，Linux 初学者，Linux 教程"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "DNS 구성 요소"
-description: "DNS 구성 요소: 네임 서버, 존 파일, 리소스 레코드에 대해 알아보세요. 초보자를 위한 DNS 작동 방식을 이해하세요. Linux 네트워킹 여정을 시작하세요!"
-keywords: "DNS 구성 요소, 네임 서버, 존 파일, 리소스 레코드, DNS 튜토리얼, Linux 네트워킹, 초보자 가이드"
+meta_description: "DNS 구성 요소: 네임 서버, 존 파일, 리소스 레코드에 대해 알아보세요. 초보자를 위한 DNS 작동 방식을 이해하세요. Linux 네트워킹 여정을 시작하세요!"
+meta_keywords: "DNS 구성 요소, 네임 서버, 존 파일, 리소스 레코드, DNS 튜토리얼, Linux 네트워킹, 초보자 가이드"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "cut"
-description: "Apprenez à utiliser la commande Linux `cut` pour extraire du texte de fichiers. Ce tutoriel convivial pour débutants couvre la découpe par caractères et par champs. Améliorez vos compétences en traitement de texte Linux !"
-keywords: "commande cut, traitement de texte Linux, extraire du texte, tutoriel Linux, Linux pour débutants, exemples cut, guide Linux"
+meta_description: "Apprenez à utiliser la commande Linux `cut` pour extraire du texte de fichiers. Ce tutoriel convivial pour débutants couvre la découpe par caractères et par champs. Améliorez vos compétences en traitement de texte Linux !"
+meta_keywords: "commande cut, traitement de texte Linux, extraire du texte, tutoriel Linux, Linux pour débutants, exemples cut, guide Linux"
 ---
 
 ## Lesson Content

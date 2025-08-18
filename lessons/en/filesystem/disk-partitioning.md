@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Disk Partitioning"
-description: "Learn disk partitioning in Linux using parted. Understand how to partition, select, view, and resize disks. Get started with this beginner-friendly guide!"
-keywords: "Linux disk partitioning, parted command, fdisk, gparted, Linux tutorial, beginner Linux, disk management, Linux guide"
+meta_description: "Learn disk partitioning in Linux using parted. Understand how to partition, select, view, and resize disks. Get started with this beginner-friendly guide!"
+meta_keywords: "Linux disk partitioning, parted command, fdisk, gparted, Linux tutorial, beginner Linux, disk management, Linux guide"
 ---
 
 ## Lesson Content

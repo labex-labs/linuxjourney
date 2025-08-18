@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "시그널"
-description: "Linux 시그널, 그 목적, SIGINT 및 SIGKILL 과 같은 일반적인 유형, 그리고 프로세스가 이를 처리하는 방법에 대해 알아보세요. 더 나은 Linux 제어를 위해 시그널의 기본 사항을 이해하세요."
-keywords: "Linux 시그널, SIGKILL, SIGINT, 프로세스 통신, Linux 튜토리얼, Linux 초보자, Linux 가이드"
+meta_description: "Linux 시그널, 그 목적, SIGINT 및 SIGKILL 과 같은 일반적인 유형, 그리고 프로세스가 이를 처리하는 방법에 대해 알아보세요. 더 나은 Linux 제어를 위해 시그널의 기본 사항을 이해하세요."
+meta_keywords: "Linux 시그널, SIGKILL, SIGINT, 프로세스 통신, Linux 튜토리얼, Linux 초보자, Linux 가이드"
 ---
 
 ## Lesson Content

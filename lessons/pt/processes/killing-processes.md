@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "kill (Encerrar)"
-description: "Aprenda como usar o comando 'kill' do Linux para encerrar processos. Entenda SIGTERM, SIGKILL e outros sinais para gerenciamento de processos. Comece a aprender agora!"
-keywords: "comando kill, processos Linux, SIGTERM, SIGKILL, tutorial Linux, iniciante, gerenciamento de processos, guia Linux"
+meta_description: "Aprenda como usar o comando 'kill' do Linux para encerrar processos. Entenda SIGTERM, SIGKILL e outros sinais para gerenciamento de processos. Comece a aprender agora!"
+meta_keywords: "comando kill, processos Linux, SIGTERM, SIGKILL, tutorial Linux, iniciante, gerenciamento de processos, guia Linux"
 ---
 
 ## Lesson Content

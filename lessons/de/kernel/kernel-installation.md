@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Kernel-Installation"
-description: "Erfahren Sie, wie Sie Linux-Kernel installieren und verwalten. Entdecken Sie Kernel-Versionen, verwenden Sie `uname -r` und apt-Befehle. Beginnen Sie Ihre Linux-Kernel-Reise!"
-keywords: "Linux-Kernel, Kernel installieren, uname -r, apt dist-upgrade, Kernel-Verwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Erfahren Sie, wie Sie Linux-Kernel installieren und verwalten. Entdecken Sie Kernel-Versionen, verwenden Sie `uname -r` und apt-Befehle. Beginnen Sie Ihre Linux-Kernel-Reise!"
+meta_keywords: "Linux-Kernel, Kernel installieren, uname -r, apt dist-upgrade, Kernel-Verwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---
 
 ## Lesson Content

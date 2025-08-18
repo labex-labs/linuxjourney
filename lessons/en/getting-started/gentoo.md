@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Gentoo"
-description: "Learn about Gentoo Linux, its Portage package manager, and high configurability. Discover if this flexible distro is right for your advanced Linux journey."
-keywords: "Gentoo Linux, Portage, Linux distribution, Gentoo tutorial, Linux beginner, Linux guide, Gentoo configurability"
+meta_description: "Learn about Gentoo Linux, its Portage package manager, and high configurability. Discover if this flexible distro is right for your advanced Linux journey."
+meta_keywords: "Gentoo Linux, Portage, Linux distribution, Gentoo tutorial, Linux beginner, Linux guide, Gentoo configurability"
 ---
 
 ## Lesson Content

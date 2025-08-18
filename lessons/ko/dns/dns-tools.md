@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "DNS 도구"
-description: "Linux 에서 DNS 쿼리 및 문제 해결을 위한 nslookup 및 dig 명령을 배웁니다. 이 초보자 친화적인 가이드를 통해 필수 DNS 도구를 사용하는 방법을 이해합니다."
-keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
+meta_description: "Linux 에서 DNS 쿼리 및 문제 해결을 위한 nslookup 및 dig 명령을 배웁니다. 이 초보자 친화적인 가이드를 통해 필수 DNS 도구를 사용하는 방법을 이해합니다."
+meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Vim でのテキスト挿入と追記"
-description: "Vim の挿入モードと追記モードを学びます。効率的なテキスト編集のための 'i'、'a'、'I'、'A'、'o'、'O' コマンドを理解しましょう。今すぐ Vim スキルを向上させましょう！"
-keywords: "Vim insert mode, Vim append, Vim commands, Vim tutorial, Linux text editor, beginner Vim, Vim guide, Vim 'i' 'a"
+meta_description: "Vim の挿入モードと追記モードを学びます。効率的なテキスト編集のための 'i'、'a'、'I'、'A'、'o'、'O' コマンドを理解しましょう。今すぐ Vim スキルを向上させましょう！"
+meta_keywords: "Vim insert mode, Vim append, Vim commands, Vim tutorial, Linux text editor, beginner Vim, Vim guide, Vim 'i' 'a"
 ---
 
 ## Lesson Content

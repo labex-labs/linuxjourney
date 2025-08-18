@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Llamadas al Sistema"
-description: "Aprende sobre las llamadas al sistema de Linux (syscalls) y cómo interactúan con el kernel. Comprende los modos de usuario y kernel, y usa `strace` para depurar. ¡Comienza tu viaje en Linux!"
-keywords: "Llamadas al sistema Linux, syscalls, modo kernel, modo usuario, comando strace, tutorial Linux, Linux para principiantes, guía Linux"
+meta_description: "Aprende sobre las llamadas al sistema de Linux (syscalls) y cómo interactúan con el kernel. Comprende los modos de usuario y kernel, y usa `strace` para depurar. ¡Comienza tu viaje en Linux!"
+meta_keywords: "Llamadas al sistema Linux, syscalls, modo kernel, modo usuario, comando strace, tutorial Linux, Linux para principiantes, guía Linux"
 ---
 
 ## Lesson Content

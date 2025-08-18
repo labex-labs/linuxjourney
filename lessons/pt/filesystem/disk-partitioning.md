@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Particionamento de Disco"
-description: "Aprenda particionamento de disco no Linux usando parted. Entenda como particionar, selecionar, visualizar e redimensionar discos. Comece com este guia para iniciantes!"
-keywords: "Particionamento de disco Linux, comando parted, fdisk, gparted, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
+meta_description: "Aprenda particionamento de disco no Linux usando parted. Entenda como particionar, selecionar, visualizar e redimensionar discos. Comece com este guia para iniciantes!"
+meta_keywords: "Particionamento de disco Linux, comando parted, fdisk, gparted, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
 ---
 
 ## Lesson Content

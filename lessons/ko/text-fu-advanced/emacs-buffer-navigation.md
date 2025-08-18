@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Emacs 버퍼 탐색"
-description: "Emacs 버퍼 탐색 명령을 배우세요. 이 초보자 친화적인 Emacs 튜토리얼을 통해 버퍼를 효율적으로 전환하고, 닫고, 분할하세요. 작업 흐름을 개선하세요!"
-keywords: "Emacs 버퍼 탐색, Emacs 명령, C-x b, C-x k, Linux 튜토리얼, Emacs 가이드, 초보자 Emacs"
+meta_description: "Emacs 버퍼 탐색 명령을 배우세요. 이 초보자 친화적인 Emacs 튜토리얼을 통해 버퍼를 효율적으로 전환하고, 닫고, 분할하세요. 작업 흐름을 개선하세요!"
+meta_keywords: "Emacs 버퍼 탐색, Emacs 명령, C-x b, C-x k, Linux 튜토리얼, Emacs 가이드, 초보자 Emacs"
 ---
 
 ## Lesson Content

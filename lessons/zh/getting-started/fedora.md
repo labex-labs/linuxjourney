@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Fedora"
-description: "了解 Fedora Linux、它与 RHEL 的联系以及包管理。探索为什么 Fedora 是一个适合初学者和桌面用户的优秀免费基于 Red Hat 的操作系统。"
-keywords: "Fedora Linux, RHEL, Red Hat, Linux 教程，包管理，Linux 初学者，Linux 指南，免费操作系统"
+meta_description: "了解 Fedora Linux、它与 RHEL 的联系以及包管理。探索为什么 Fedora 是一个适合初学者和桌面用户的优秀免费基于 Red Hat 的操作系统。"
+meta_keywords: "Fedora Linux, RHEL, Red Hat, Linux 教程，包管理，Linux 初学者，Linux 指南，免费操作系统"
 ---
 
 ## Lesson Content

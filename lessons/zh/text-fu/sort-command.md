@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "sort"
-description: "学习如何使用 Linux sort 命令对文本文件进行排序。探索反向和数值排序等选项。提高你的 Linux 命令行技能！"
-keywords: "Linux sort 命令，sort -r, sort -n, Linux 教程，命令行，Linux 初学者，sort 指南"
+meta_description: "学习如何使用 Linux sort 命令对文本文件进行排序。探索反向和数值排序等选项。提高你的 Linux 命令行技能！"
+meta_keywords: "Linux sort 命令，sort -r, sort -n, Linux 教程，命令行，Linux 初学者，sort 指南"
 ---
 
 ## Lesson Content

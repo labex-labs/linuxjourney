@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "파일 시스템 복구"
-description: "Linux 파일 시스템 복구 및 데이터 복구를 위해 fsck 를 사용하는 방법을 배우세요. 이 필수 명령어를 사용하여 디스크 오류를 확인하고 수정하는 방법을 이해하세요. Linux 여정을 시작하세요!"
-keywords: "fsck, 파일 시스템 복구, Linux 명령어, 디스크 오류, 데이터 복구, Linux 튜토리얼, 초보자 가이드"
+meta_description: "Linux 파일 시스템 복구 및 데이터 복구를 위해 fsck 를 사용하는 방법을 배우세요. 이 필수 명령어를 사용하여 디스크 오류를 확인하고 수정하는 방법을 이해하세요. Linux 여정을 시작하세요!"
+meta_keywords: "fsck, 파일 시스템 복구, Linux 명령어, 디스크 오류, 데이터 복구, Linux 튜토리얼, 초보자 가이드"
 ---
 
 ## Lesson Content

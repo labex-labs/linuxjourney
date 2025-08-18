@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "history"
-description: "Linux の history コマンド、!! ショートカット、Ctrl-R を使った効率的なコマンド呼び出し方法を学びましょう。これらの必須のヒントでターミナルの生産性を向上させましょう！"
-keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
+meta_description: "Linux の history コマンド、!! ショートカット、Ctrl-R を使った効率的なコマンド呼び出し方法を学びましょう。これらの必須のヒントでターミナルの生産性を向上させましょう！"
+meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
 ---
 
 ## Lesson Content

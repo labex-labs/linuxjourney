@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "env (环境)"
-description: "通过 'env' 命令了解 Linux 环境变量。理解 PATH、HOME 和 USER 变量。获取 Linux 环境管理的初学者指南。"
-keywords: "env 命令，Linux 环境变量，PATH 变量，Linux 教程，Linux 初学者，shell 变量，Linux 指南"
+meta_description: "通过 'env' 命令了解 Linux 环境变量。理解 PATH、HOME 和 USER 变量。获取 Linux 环境管理的初学者指南。"
+meta_keywords: "env 命令，Linux 环境变量，PATH 变量，Linux 教程，Linux 初学者，shell 变量，Linux 指南"
 ---
 
 ## Lesson Content

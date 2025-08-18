@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "OSI Model"
-description: "Learn about the OSI model, a foundational theoretical networking concept. Understand its 7 layers and relevance to TCP/IP. Essential Linux networking guide for beginners."
-keywords: "OSI model, networking concepts, TCP/IP, Linux networking, beginner tutorial, network layers, theoretical model"
+meta_description: "Learn about the OSI model, a foundational theoretical networking concept. Understand its 7 layers and relevance to TCP/IP. Essential Linux networking guide for beginners."
+meta_keywords: "OSI model, networking concepts, TCP/IP, Linux networking, beginner tutorial, network layers, theoretical model"
 ---
 
 ## Lesson Content

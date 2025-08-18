@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "/etc/passwd"
-description: "Узнайте о файле /etc/passwd в Linux, поймите поля информации о пользователе и как работают UID. Изучите этот важный конфигурационный файл."
-keywords: "/etc/passwd, пользователи Linux, ID пользователя, UID, учебник по Linux, для начинающих, руководство, команды Linux"
+meta_description: "Узнайте о файле /etc/passwd в Linux, поймите поля информации о пользователе и как работают UID. Изучите этот важный конфигурационный файл."
+meta_keywords: "/etc/passwd, пользователи Linux, ID пользователя, UID, учебник по Linux, для начинающих, руководство, команды Linux"
 ---
 
 ## Lesson Content

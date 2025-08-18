@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "DNS 工具"
-description: "学习 nslookup 和 dig 命令，用于在 Linux 上进行 DNS 查询和故障排除。通过我们为初学者提供的指南，了解如何使用这些基本的 DNS 工具。"
-keywords: "nslookup, dig 命令，DNS 工具，Linux DNS, DNS 故障排除，Linux 教程，Linux 初学者"
+meta_description: "学习 nslookup 和 dig 命令，用于在 Linux 上进行 DNS 查询和故障排除。通过我们为初学者提供的指南，了解如何使用这些基本的 DNS 工具。"
+meta_keywords: "nslookup, dig 命令，DNS 工具，Linux DNS, DNS 故障排除，Linux 教程，Linux 初学者"
 ---
 
 ## Lesson Content

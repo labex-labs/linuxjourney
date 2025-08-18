@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "paste"
-description: "Linux の paste コマンドを使ってファイルの行を結合する方法を学びましょう。この必須の Linux コマンドチュートリアルで、区切り文字を発見し、ファイルを結合しましょう。"
-keywords: "Linux paste コマンド，paste コマンドチュートリアル，ファイル行の結合，Linux コマンド，初心者 Linux, Linux ガイド"
+meta_description: "Linux の paste コマンドを使ってファイルの行を結合する方法を学びましょう。この必須の Linux コマンドチュートリアルで、区切り文字を発見し、ファイルを結合しましょう。"
+meta_keywords: "Linux paste コマンド，paste コマンドチュートリアル，ファイル行の結合，Linux コマンド，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

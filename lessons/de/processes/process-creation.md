@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Prozesserstellung"
-description: "Erfahren Sie mehr über die Prozesserstellung unter Linux, fork und Eltern-/Kindprozesse. Verstehen Sie PID, PPID und den Init-Prozess. Ein Leitfaden für Anfänger zur Linux-Prozessverwaltung."
-keywords: "Linux Prozesserstellung, fork, PID, PPID, Init-Prozess, Linux Prozesse, Anfänger, Tutorial, Leitfaden"
+meta_description: "Erfahren Sie mehr über die Prozesserstellung unter Linux, fork und Eltern-/Kindprozesse. Verstehen Sie PID, PPID und den Init-Prozess. Ein Leitfaden für Anfänger zur Linux-Prozessverwaltung."
+meta_keywords: "Linux Prozesserstellung, fork, PID, PPID, Init-Prozess, Linux Prozesse, Anfänger, Tutorial, Leitfaden"
 ---
 
 ## Lesson Content

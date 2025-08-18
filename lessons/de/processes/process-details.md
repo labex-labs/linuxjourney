@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Prozessdetails"
-description: "Erfahren Sie mehr über Linux-Prozessdetails, wie der Kernel Ressourcen verwaltet und was Prozesse sind. Verstehen Sie Prozesskonzepte für Anfänger."
-keywords: "Linux-Prozesse, Kernel, Prozessverwaltung, ps aux, Linux-Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über Linux-Prozessdetails, wie der Kernel Ressourcen verwaltet und was Prozesse sind. Verstehen Sie Prozesskonzepte für Anfänger."
+meta_keywords: "Linux-Prozesse, Kernel, Prozessverwaltung, ps aux, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

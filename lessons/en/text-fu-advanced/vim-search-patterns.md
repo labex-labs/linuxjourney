@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Vim Search Patterns"
-description: "Learn Vim search patterns: forward (/) and backward (?) search. Navigate results with 'n' and 'N'. Improve your Vim skills today!"
-keywords: "Vim search, Vim commands, Linux text editor, Vim tutorial, Vim guide, beginner Vim"
+meta_description: "Learn Vim search patterns: forward (/) and backward (?) search. Navigate results with 'n' and 'N'. Improve your Vim skills today!"
+meta_keywords: "Vim search, Vim commands, Linux text editor, Vim tutorial, Vim guide, beginner Vim"
 ---
 
 ## Lesson Content

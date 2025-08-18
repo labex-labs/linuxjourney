@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "file"
-description: "Erfahren Sie, wie Sie den Linux-Befehl 'file' verwenden, um Dateitypen und -inhalte zu identifizieren. Verstehen Sie Linux-Dateibenennungskonventionen mit diesem anfängerfreundlichen Leitfaden."
-keywords: "Linux file Befehl, Dateityp identifizieren, Linux Tutorial, Dateibenennung, Linux für Anfänger, Linux Leitfaden"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'file' verwenden, um Dateitypen und -inhalte zu identifizieren. Verstehen Sie Linux-Dateibenennungskonventionen mit diesem anfängerfreundlichen Leitfaden."
+meta_keywords: "Linux file Befehl, Dateityp identifizieren, Linux Tutorial, Dateibenennung, Linux für Anfänger, Linux Leitfaden"
 ---
 
 ## Lesson Content

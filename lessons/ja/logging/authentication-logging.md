@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "認証ロギング"
-description: "Linux の認証ロギングについて、/var/log/auth.log を使って学びましょう。この重要なガイドで、ユーザーログインを理解し、アクセス問題をトラブルシューティングしましょう。"
-keywords: "Linux 認証，auth.log, Linux ロギング，ユーザーログイン，Linux セキュリティ，初心者，チュートリアル，ガイド"
+meta_description: "Linux の認証ロギングについて、/var/log/auth.log を使って学びましょう。この重要なガイドで、ユーザーログインを理解し、アクセス問題をトラブルシューティングしましょう。"
+meta_keywords: "Linux 認証，auth.log, Linux ロギング，ユーザーログイン，Linux セキュリティ，初心者，チュートリアル，ガイド"
 ---
 
 ## Lesson Content

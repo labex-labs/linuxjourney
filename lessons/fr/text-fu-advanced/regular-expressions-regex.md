@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "regex (Expressions Régulières)"
-description: "Apprenez les expressions régulières (regex) pour la correspondance de motifs sous Linux. Comprenez la syntaxe regex comme ^, $, ., et [] pour la manipulation de texte. Améliorez vos compétences grep !"
-keywords: "expressions régulières, regex, regex Linux, grep regex, correspondance de motifs, tutoriel regex, commandes Linux, débutant"
+meta_description: "Apprenez les expressions régulières (regex) pour la correspondance de motifs sous Linux. Comprenez la syntaxe regex comme ^, $, ., et [] pour la manipulation de texte. Améliorez vos compétences grep !"
+meta_keywords: "expressions régulières, regex, regex Linux, grep regex, correspondance de motifs, tutoriel regex, commandes Linux, débutant"
 ---
 
 ## Lesson Content

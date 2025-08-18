@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "ICMP"
-description: "了解 ICMP 协议基础知识、消息类型和代码，用于网络故障排除。理解 ICMP 如何工作以调试网络问题。"
-keywords: "ICMP, ICMP 协议，网络故障排除，ICMP 类型，Linux 网络，初学者，教程，指南"
+meta_description: "了解 ICMP 协议基础知识、消息类型和代码，用于网络故障排除。理解 ICMP 如何工作以调试网络问题。"
+meta_keywords: "ICMP, ICMP 协议，网络故障排除，ICMP 类型，Linux 网络，初学者，教程，指南"
 ---
 
 ## Lesson Content

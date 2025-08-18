@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Types de systèmes de fichiers"
-description: "Découvrez les types de systèmes de fichiers Linux comme ext4, Btrfs et XFS. Comprenez le journaling et le VFS pour des données cohérentes. Explorez les systèmes de fichiers Linux courants dans ce guide pour débutants."
-keywords: "types de systèmes de fichiers Linux, ext4, Btrfs, XFS, journaling, VFS, tutoriel Linux, guide pour débutants"
+meta_description: "Découvrez les types de systèmes de fichiers Linux comme ext4, Btrfs et XFS. Comprenez le journaling et le VFS pour des données cohérentes. Explorez les systèmes de fichiers Linux courants dans ce guide pour débutants."
+meta_keywords: "types de systèmes de fichiers Linux, ext4, Btrfs, XFS, journaling, VFS, tutoriel Linux, guide pour débutants"
 ---
 
 ## Lesson Content

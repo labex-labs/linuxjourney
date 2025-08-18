@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "touch"
-description: "Learn how to use the Linux touch command to create new files and update timestamps. This beginner-friendly guide helps you understand file management."
-keywords: "touch command, create files, Linux tutorial, file timestamps, Linux for beginners, Linux guide, basic commands"
+meta_description: "Learn how to use the Linux touch command to create new files and update timestamps. This beginner-friendly guide helps you understand file management."
+meta_keywords: "touch command, create files, Linux tutorial, file timestamps, Linux for beginners, Linux guide, basic commands"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "stdout (Sortie Standard)"
-description: "Découvrez stdout de Linux et la redirection d'E/S. Comprenez comment rediriger la sortie de commande vers des fichiers à l'aide des opérateurs > et >>. Commencez votre parcours Linux dès aujourd'hui !"
-keywords: "Linux stdout, redirection E/S, commandes Linux, rediriger la sortie, tutoriel Linux, Linux pour débutants, guide Linux, script shell"
+meta_description: "Découvrez stdout de Linux et la redirection d'E/S. Comprenez comment rediriger la sortie de commande vers des fichiers à l'aide des opérateurs > et >>. Commencez votre parcours Linux dès aujourd'hui !"
+meta_keywords: "Linux stdout, redirection E/S, commandes Linux, rediriger la sortie, tutoriel Linux, Linux pour débutants, guide Linux, script shell"
 ---
 
 ## Lesson Content

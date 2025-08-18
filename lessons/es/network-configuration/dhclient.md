@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "dhclient"
-description: "Aprenda sobre dhclient, cómo obtiene direcciones IP usando DHCP y gestiona las concesiones de red. Comprenda los archivos dhclient.conf y dhclient.leases. Guía para principiantes de Linux."
-keywords: "dhclient, DHCP, redes Linux, dirección IP, configuración de red, tutorial de Linux, guía para principiantes"
+meta_description: "Aprenda sobre dhclient, cómo obtiene direcciones IP usando DHCP y gestiona las concesiones de red. Comprenda los archivos dhclient.conf y dhclient.leases. Guía para principiantes de Linux."
+meta_keywords: "dhclient, DHCP, redes Linux, dirección IP, configuración de red, tutorial de Linux, guía para principiantes"
 ---
 
 ## Lesson Content

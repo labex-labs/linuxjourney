@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Link State Protocols"
-description: "Learn about link state protocols like OSPF for large networks. Understand their fast convergence and how they update routing tables. Start your Linux networking journey!"
-keywords: "link state protocols, OSPF, Linux networking, routing protocols, network topology, beginner"
+meta_description: "Learn about link state protocols like OSPF for large networks. Understand their fast convergence and how they update routing tables. Start your Linux networking journey!"
+meta_keywords: "link state protocols, OSPF, Linux networking, routing protocols, network topology, beginner"
 ---
 
 ## Lesson Content

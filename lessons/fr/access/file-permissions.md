@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Permissions de Fichiers"
-description: "Apprenez les permissions de fichiers Linux : comprenez les bits rwx, les permissions utilisateur, groupe et autres. Maîtrisez la sortie de `ls -l` pour les débutants. Commencez votre parcours Linux !"
-keywords: "permissions de fichiers Linux, commande ls -l, permissions rwx, tutoriel Linux, modes de fichiers, Linux pour débutants, guide Linux"
+meta_description: "Apprenez les permissions de fichiers Linux : comprenez les bits rwx, les permissions utilisateur, groupe et autres. Maîtrisez la sortie de `ls -l` pour les débutants. Commencez votre parcours Linux !"
+meta_keywords: "permissions de fichiers Linux, commande ls -l, permissions rwx, tutoriel Linux, modes de fichiers, Linux pour débutants, guide Linux"
 ---
 
 ## Lesson Content

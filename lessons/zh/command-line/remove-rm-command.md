@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "rm (删除)"
-description: "学习如何在 Linux 中使用 `rm` 命令安全地删除文件和目录。了解 -f、-i、-r 和 rmdir 等选项。开始你的 Linux 之旅！"
-keywords: "rm 命令，删除文件 Linux, 删除目录，Linux 教程，Linux 初学者，rmdir, Linux 指南"
+meta_description: "学习如何在 Linux 中使用 `rm` 命令安全地删除文件和目录。了解 -f、-i、-r 和 rmdir 等选项。开始你的 Linux 之旅！"
+meta_keywords: "rm 命令，删除文件 Linux, 删除目录，Linux 教程，Linux 初学者，rmdir, Linux 指南"
 ---
 
 ## Lesson Content

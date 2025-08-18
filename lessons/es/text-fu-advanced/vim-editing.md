@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Edición en Vim"
-description: "Aprende los conceptos básicos de edición en Vim: eliminar, cambiar, copiar y pegar texto de manera eficiente. Domina los comandos esenciales de Vim para principiantes y mejora tus habilidades de edición de texto en Linux."
-keywords: "edición Vim, comandos Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes, comando dd, eliminar en Vim"
+meta_description: "Aprende los conceptos básicos de edición en Vim: eliminar, cambiar, copiar y pegar texto de manera eficiente. Domina los comandos esenciales de Vim para principiantes y mejora tus habilidades de edición de texto en Linux."
+meta_keywords: "edición Vim, comandos Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes, comando dd, eliminar en Vim"
 ---
 
 ## Lesson Content

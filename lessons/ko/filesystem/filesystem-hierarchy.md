@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "파일 시스템 계층 구조"
-description: "Linux Filesystem Hierarchy Standard (FHS) 를 배우고 /bin, /etc, /var 와 같은 주요 디렉토리를 이해합니다. Linux 디렉토리 구조를 탐색합니다."
-keywords: "Linux 파일 시스템 계층, FHS, Linux 디렉토리 구조, Linux 명령어, 초보자 Linux, Linux 튜토리얼, Linux 가이드"
+meta_description: "Linux Filesystem Hierarchy Standard (FHS) 를 배우고 /bin, /etc, /var 와 같은 주요 디렉토리를 이해합니다. Linux 디렉토리 구조를 탐색합니다."
+meta_keywords: "Linux 파일 시스템 계층, FHS, Linux 디렉토리 구조, Linux 명령어, 초보자 Linux, Linux 튜토리얼, Linux 가이드"
 ---
 
 ## Lesson Content

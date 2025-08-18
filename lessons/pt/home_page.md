@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Página Inicial"
-description: "Aprenda os fundamentos do Linux, linha de comando, gerenciamento de usuários e redes. Explore tópicos de iniciante a avançado para uma administração eficaz de sistemas Linux."
-keywords: "tutorial Linux, linha de comando, Linux para iniciantes, administração de sistemas, guia Linux, redes, gerenciamento de pacotes, comandos Linux"
+meta_description: "Aprenda os fundamentos do Linux, linha de comando, gerenciamento de usuários e redes. Explore tópicos de iniciante a avançado para uma administração eficaz de sistemas Linux."
+meta_keywords: "tutorial Linux, linha de comando, Linux para iniciantes, administração de sistemas, guia Linux, redes, gerenciamento de pacotes, comandos Linux"
 ---
 
 ## Grasshopper

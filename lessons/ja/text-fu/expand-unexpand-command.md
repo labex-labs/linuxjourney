@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "expand と unexpand"
-description: "`expand`コマンドでタブをスペースに、`unexpand`コマンドでスペースをタブに変換する方法を学びます。この Linux チュートリアルでテキストファイルのフォーマットを改善しましょう。"
-keywords: "expand command, unexpand command, Linux tabs, Linux spaces, text formatting, Linux tutorial, beginner Linux, Linux guide"
+meta_description: "`expand`コマンドでタブをスペースに、`unexpand`コマンドでスペースをタブに変換する方法を学びます。この Linux チュートリアルでテキストファイルのフォーマットを改善しましょう。"
+meta_keywords: "expand command, unexpand command, Linux tabs, Linux spaces, text formatting, Linux tutorial, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Debian"
-description: "Узнайте о Debian Linux, его стабильных и rolling-релизах, а также об управлении пакетами. Узнайте, почему Debian является отличной базовой ОС для начинающих и опытных пользователей."
-keywords: "Debian, Debian Linux, дистрибутив Linux, rolling release, управление пакетами, учебник по Linux, Linux для начинающих, руководство по Linux"
+meta_description: "Узнайте о Debian Linux, его стабильных и rolling-релизах, а также об управлении пакетами. Узнайте, почему Debian является отличной базовой ОС для начинающих и опытных пользователей."
+meta_keywords: "Debian, Debian Linux, дистрибутив Linux, rolling release, управление пакетами, учебник по Linux, Linux для начинающих, руководство по Linux"
 ---
 
 ## Lesson Content

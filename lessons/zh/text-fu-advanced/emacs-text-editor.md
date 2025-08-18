@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Emacs"
-description: "学习 Emacs，一个强大且可扩展的 Linux 文本编辑器。了解 Emacs 缓冲区和基本用法。立即开始你的 Emacs 之旅！"
-keywords: "Emacs, Linux 文本编辑器，Emacs 教程，Emacs 缓冲区，Linux 命令，初学者，指南"
+meta_description: "学习 Emacs，一个强大且可扩展的 Linux 文本编辑器。了解 Emacs 缓冲区和基本用法。立即开始你的 Emacs 之旅！"
+meta_keywords: "Emacs, Linux 文本编辑器，Emacs 教程，Emacs 缓冲区，Linux 命令，初学者，指南"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Обзор Upstart"
-description: "Узнайте об Upstart, его событийно-ориентированной модели и о том, как он управляет службами в Linux. Разберитесь в конфигурациях заданий Upstart и его роли как системы init."
-keywords: "Upstart, init system, Linux services, Ubuntu, SysV, beginner tutorial, Linux guide"
+meta_description: "Узнайте об Upstart, его событийно-ориентированной модели и о том, как он управляет службами в Linux. Разберитесь в конфигурациях заданий Upstart и его роли как системы init."
+meta_keywords: "Upstart, init system, Linux services, Ubuntu, SysV, beginner tutorial, Linux guide"
 ---
 
 ## Lesson Content

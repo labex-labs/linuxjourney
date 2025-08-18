@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "sort"
-description: "Lernen Sie, wie Sie den Linux-Befehl sort zum Sortieren von Textdateien verwenden. Entdecken Sie Optionen wie umgekehrte und numerische Sortierung. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
-keywords: "Linux sort Befehl, sort -r, sort -n, Linux Tutorial, Befehlszeile, Linux für Anfänger, sort Anleitung"
+meta_description: "Lernen Sie, wie Sie den Linux-Befehl sort zum Sortieren von Textdateien verwenden. Entdecken Sie Optionen wie umgekehrte und numerische Sortierung. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
+meta_keywords: "Linux sort Befehl, sort -r, sort -n, Linux Tutorial, Befehlszeile, Linux für Anfänger, sort Anleitung"
 ---
 
 ## Lesson Content

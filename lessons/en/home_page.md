@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Home Page"
-description: "Learn Linux fundamentals, command line, user management, and networking. Explore beginner to advanced topics for effective Linux system administration."
-keywords: "Linux tutorial, command line, Linux beginner, system administration, Linux guide, networking, package management, Linux commands"
+meta_description: "Learn Linux fundamentals, command line, user management, and networking. Explore beginner to advanced topics for effective Linux system administration."
+meta_keywords: "Linux tutorial, command line, Linux beginner, system administration, Linux guide, networking, package management, Linux commands"
 ---
 
 ## Grasshopper

@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Обзор Systemd"
-description: "Изучите основы Systemd: поймите юниты, цели и процесс загрузки. Узнайте, как Systemd управляет службами и состояниями системы в Linux. Начните свой путь!"
-keywords: "Systemd, юниты Systemd, цели Systemd, процесс загрузки Linux, службы Linux, для начинающих, учебник, руководство"
+meta_description: "Изучите основы Systemd: поймите юниты, цели и процесс загрузки. Узнайте, как Systemd управляет службами и состояниями системы в Linux. Начните свой путь!"
+meta_keywords: "Systemd, юниты Systemd, цели Systemd, процесс загрузки Linux, службы Linux, для начинающих, учебник, руководство"
 ---
 
 ## Lesson Content

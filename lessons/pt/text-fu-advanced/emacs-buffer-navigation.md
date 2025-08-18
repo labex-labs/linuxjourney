@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Navegação de Buffer no Emacs"
-description: "Aprenda os comandos de navegação de buffer do Emacs. Alterne, feche e divida buffers eficientemente com este tutorial de Emacs para iniciantes. Melhore seu fluxo de trabalho!"
-keywords: "navegação de buffer Emacs, comandos Emacs, C-x b, C-x k, tutorial Linux, guia Emacs, Emacs para iniciantes"
+meta_description: "Aprenda os comandos de navegação de buffer do Emacs. Alterne, feche e divida buffers eficientemente com este tutorial de Emacs para iniciantes. Melhore seu fluxo de trabalho!"
+meta_keywords: "navegação de buffer Emacs, comandos Emacs, C-x b, C-x k, tutorial Linux, guia Emacs, Emacs para iniciantes"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "rsync"
-description: "효율적인 Linux 파일 동기화 및 백업을 위해 rsync 를 배우세요. rsync 명령어와 옵션을 사용하여 원격 및 로컬 데이터 전송을 이해하세요. Linux 기술을 향상시키세요!"
-keywords: "rsync, Linux 파일 전송, 데이터 백업, 파일 동기화, Linux 튜토리얼, rsync 명령어, 초보자, 가이드"
+meta_description: "효율적인 Linux 파일 동기화 및 백업을 위해 rsync 를 배우세요. rsync 명령어와 옵션을 사용하여 원격 및 로컬 데이터 전송을 이해하세요. Linux 기술을 향상시키세요!"
+meta_keywords: "rsync, Linux 파일 전송, 데이터 백업, 파일 동기화, Linux 튜토리얼, rsync 명령어, 초보자, 가이드"
 ---
 
 ## Lesson Content

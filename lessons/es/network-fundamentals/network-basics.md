@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Conceptos básicos de red"
-description: "Aprenda los conceptos básicos de la red Linux: comprenda WAN, LAN, WLAN, routers y hosts. ¡Comience su viaje de networking con esta guía para principiantes!"
-keywords: "conceptos básicos de red Linux, WAN, LAN, WLAN, tutorial de red, Linux para principiantes, guía de networking, conceptos de Linux"
+meta_description: "Aprenda los conceptos básicos de la red Linux: comprenda WAN, LAN, WLAN, routers y hosts. ¡Comience su viaje de networking con esta guía para principiantes!"
+meta_keywords: "conceptos básicos de red Linux, WAN, LAN, WLAN, tutorial de red, Linux para principiantes, guía de networking, conceptos de Linux"
 ---
 
 ## Lesson Content

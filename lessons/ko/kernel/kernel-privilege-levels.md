@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "권한 수준"
-description: "Linux 권한 수준, 커널 모드, 사용자 모드에 대해 알아보세요. 보호 링과 안전한 하드웨어 접근을 위한 시스템 호출을 이해하세요. Linux 여정을 시작하세요!"
-keywords: "Linux 권한 수준, 커널 모드, 사용자 모드, 보호 링, 시스템 호출, Linux 보안, Linux 초보자, Linux 튜토리얼"
+meta_description: "Linux 권한 수준, 커널 모드, 사용자 모드에 대해 알아보세요. 보호 링과 안전한 하드웨어 접근을 위한 시스템 호출을 이해하세요. Linux 여정을 시작하세요!"
+meta_keywords: "Linux 권한 수준, 커널 모드, 사용자 모드, 보호 링, 시스템 호출, Linux 보안, Linux 초보자, Linux 튜토리얼"
 ---
 
 ## Lesson Content

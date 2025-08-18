@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Sticky Bit"
-description: "Узнайте о sticky bit в Linux, его назначении в общих каталогах, таких как /tmp, и как установить его с помощью chmod. Разберитесь в этом ключевом разрешении файла!"
-keywords: "Linux sticky bit, chmod +t, каталог /tmp, разрешения Linux, безопасность файлов, учебник по Linux, Linux для начинающих"
+meta_description: "Узнайте о sticky bit в Linux, его назначении в общих каталогах, таких как /tmp, и как установить его с помощью chmod. Разберитесь в этом ключевом разрешении файла!"
+meta_keywords: "Linux sticky bit, chmod +t, каталог /tmp, разрешения Linux, безопасность файлов, учебник по Linux, Linux для начинающих"
 ---
 
 ## Lesson Content

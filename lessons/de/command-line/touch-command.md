@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "touch"
-description: "Lerne, wie man den Linux-Befehl touch verwendet, um neue Dateien zu erstellen und Zeitstempel zu aktualisieren. Dieser anfängerfreundliche Leitfaden hilft dir, die Dateiverwaltung zu verstehen."
-keywords: "touch command, Dateien erstellen, Linux-Tutorial, Dateizeitstempel, Linux für Anfänger, Linux-Leitfaden, grundlegende Befehle"
+meta_description: "Lerne, wie man den Linux-Befehl touch verwendet, um neue Dateien zu erstellen und Zeitstempel zu aktualisieren. Dieser anfängerfreundliche Leitfaden hilft dir, die Dateiverwaltung zu verstehen."
+meta_keywords: "touch command, Dateien erstellen, Linux-Tutorial, Dateizeitstempel, Linux für Anfänger, Linux-Leitfaden, grundlegende Befehle"
 ---
 
 ## Lesson Content

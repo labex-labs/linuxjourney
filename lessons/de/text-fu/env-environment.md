@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "env (Umgebung)"
-description: "Erfahren Sie mehr über Linux-Umgebungsvariablen mit dem Befehl 'env'. Verstehen Sie die Variablen PATH, HOME und USER. Erhalten Sie eine Einführung in die Verwaltung Ihrer Linux-Umgebung."
-keywords: "env Befehl, Linux Umgebungsvariablen, PATH Variable, Linux Tutorial, Linux für Anfänger, Shell Variablen, Linux Anleitung"
+meta_description: "Erfahren Sie mehr über Linux-Umgebungsvariablen mit dem Befehl 'env'. Verstehen Sie die Variablen PATH, HOME und USER. Erhalten Sie eine Einführung in die Verwaltung Ihrer Linux-Umgebung."
+meta_keywords: "env Befehl, Linux Umgebungsvariablen, PATH Variable, Linux Tutorial, Linux für Anfänger, Shell Variablen, Linux Anleitung"
 ---
 
 ## Lesson Content

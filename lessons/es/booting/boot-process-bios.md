@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Proceso de arranque: BIOS"
-description: "Aprenda sobre el proceso de arranque de Linux, BIOS y MBR. Comprenda cómo se inicia su sistema con esta guía para principiantes. ¡Explore los conceptos de UEFI!"
-keywords: "proceso de arranque de Linux, BIOS, MBR, UEFI, tutorial de Linux, bootloader, Linux para principiantes, inicio del sistema"
+meta_description: "Aprenda sobre el proceso de arranque de Linux, BIOS y MBR. Comprenda cómo se inicia su sistema con esta guía para principiantes. ¡Explore los conceptos de UEFI!"
+meta_keywords: "proceso de arranque de Linux, BIOS, MBR, UEFI, tutorial de Linux, bootloader, Linux para principiantes, inicio del sistema"
 ---
 
 ## Lesson Content

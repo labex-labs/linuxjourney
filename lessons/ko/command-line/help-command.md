@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "help"
-description: "Bash 에서 'help' 명령을 사용하여 빠른 명령줄 지원을 받는 방법을 배웁니다. 내장 명령을 이해하고 Linux 프로그램에 대한 옵션을 찾습니다."
-keywords: "Linux help 명령, Bash help, 명령줄 도움말, Linux 명령, 초보자 Linux, Linux 튜토리얼, Bash 튜토리얼"
+meta_description: "Bash 에서 'help' 명령을 사용하여 빠른 명령줄 지원을 받는 방법을 배웁니다. 내장 명령을 이해하고 Linux 프로그램에 대한 옵션을 찾습니다."
+meta_keywords: "Linux help 명령, Bash help, 명령줄 도움말, Linux 명령, 초보자 Linux, Linux 튜토리얼, Bash 튜토리얼"
 ---
 
 ## Lesson Content

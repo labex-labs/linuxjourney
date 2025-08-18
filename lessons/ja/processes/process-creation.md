@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "プロセス作成"
-description: "Linux のプロセス作成、fork、および親子プロセスについて学びます。PID、PPID、および init プロセスを理解します。Linux プロセス管理の初心者向けガイドです。"
-keywords: "Linux プロセス作成，fork, PID, PPID, init プロセス，Linux プロセス，初心者，チュートリアル，ガイド"
+meta_description: "Linux のプロセス作成、fork、および親子プロセスについて学びます。PID、PPID、および init プロセスを理解します。Linux プロセス管理の初心者向けガイドです。"
+meta_keywords: "Linux プロセス作成，fork, PID, PPID, init プロセス，Linux プロセス，初心者，チュートリアル，ガイド"
 ---
 
 ## Lesson Content

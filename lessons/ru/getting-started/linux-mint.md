@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Linux Mint"
-description: "Узнайте о Linux Mint, его основе Ubuntu, управлении пакетами и почему он отлично подходит для новичков. Откройте для себя его особенности и как начать работу сегодня!"
-keywords: "Linux Mint, Ubuntu, Linux для начинающих, дистрибутив Linux, учебник по Linux, менеджер пакетов Debian, руководство по Linux"
+meta_description: "Узнайте о Linux Mint, его основе Ubuntu, управлении пакетами и почему он отлично подходит для новичков. Откройте для себя его особенности и как начать работу сегодня!"
+meta_keywords: "Linux Mint, Ubuntu, Linux для начинающих, дистрибутив Linux, учебник по Linux, менеджер пакетов Debian, руководство по Linux"
 ---
 
 ## Lesson Content

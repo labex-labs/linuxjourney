@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Energiezustände"
-description: "Lernen Sie die Energiezustände von Linux-Systemen kennen: shutdown-, reboot- und halt-Befehle. Verstehen Sie, wie Sie Ihr Linux-System sicher ausschalten oder neu starten. Beginnen Sie mit den wichtigsten Befehlen!"
-keywords: "Linux herunterfahren, reboot Befehl, System anhalten, Linux ausschalten, Linux Befehle, Linux für Anfänger, Linux Tutorial, Systemzustände"
+meta_description: "Lernen Sie die Energiezustände von Linux-Systemen kennen: shutdown-, reboot- und halt-Befehle. Verstehen Sie, wie Sie Ihr Linux-System sicher ausschalten oder neu starten. Beginnen Sie mit den wichtigsten Befehlen!"
+meta_keywords: "Linux herunterfahren, reboot Befehl, System anhalten, Linux ausschalten, Linux Befehle, Linux für Anfänger, Linux Tutorial, Systemzustände"
 ---
 
 ## Lesson Content

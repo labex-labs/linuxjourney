@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "tar e gzip"
-description: "Aprenda a usar tar e gzip para arquivamento e compressão de arquivos no Linux. Entenda os comandos para criar, extrair e comprimir arquivos. Comece com este guia para iniciantes!"
-keywords: "tar, gzip, arquivamento Linux, compressão de arquivos, comando tar, comando gzip, tutorial Linux, Linux para iniciantes"
+meta_description: "Aprenda a usar tar e gzip para arquivamento e compressão de arquivos no Linux. Entenda os comandos para criar, extrair e comprimir arquivos. Comece com este guia para iniciantes!"
+meta_keywords: "tar, gzip, arquivamento Linux, compressão de arquivos, comando tar, comando gzip, tutorial Linux, Linux para iniciantes"
 ---
 
 ## Lesson Content

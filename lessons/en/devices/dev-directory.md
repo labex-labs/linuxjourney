@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "/dev directory"
-description: "Learn about the /dev directory in Linux, where device files are stored. Understand device nodes and how to interact with them. Explore /dev with ls. Linux beginner guide."
-keywords: "/dev directory, Linux device files, device nodes, Linux tutorial, ls /dev, Linux beginner, Linux guide"
+meta_description: "Learn about the /dev directory in Linux, where device files are stored. Understand device nodes and how to interact with them. Explore /dev with ls. Linux beginner guide."
+meta_keywords: "/dev directory, Linux device files, device nodes, Linux tutorial, ls /dev, Linux beginner, Linux guide"
 ---
 
 ## Lesson Content

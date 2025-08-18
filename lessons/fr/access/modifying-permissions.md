@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Modification des permissions"
-description: "Apprenez à utiliser la commande chmod pour modifier les permissions de fichiers sous Linux. Comprenez les modes symboliques et numériques pour une gestion sécurisée des fichiers. Commencez à apprendre maintenant !"
-keywords: "commande chmod, permissions Linux, permissions de fichiers, tutoriel chmod, sécurité Linux, Linux pour débutants, guide Linux, chmod numérique"
+meta_description: "Apprenez à utiliser la commande chmod pour modifier les permissions de fichiers sous Linux. Comprenez les modes symboliques et numériques pour une gestion sécurisée des fichiers. Commencez à apprendre maintenant !"
+meta_keywords: "commande chmod, permissions Linux, permissions de fichiers, tutoriel chmod, sécurité Linux, Linux pour débutants, guide Linux, chmod numérique"
 ---
 
 ## Lesson Content

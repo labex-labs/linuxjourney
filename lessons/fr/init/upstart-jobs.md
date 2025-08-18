@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Tâches Upstart"
-description: "Apprenez à gérer les tâches Upstart sous Linux à l'aide des commandes initctl. Comprenez le statut des tâches, démarrez, arrêtez et redémarrez les services. Améliorez vos compétences en administration de systèmes Linux."
-keywords: "Tâches Upstart, initctl, services Linux, administration système, tutoriel Linux, guide du débutant"
+meta_description: "Apprenez à gérer les tâches Upstart sous Linux à l'aide des commandes initctl. Comprenez le statut des tâches, démarrez, arrêtez et redémarrez les services. Améliorez vos compétences en administration de systèmes Linux."
+meta_keywords: "Tâches Upstart, initctl, services Linux, administration système, tutoriel Linux, guide du débutant"
 ---
 
 ## Lesson Content

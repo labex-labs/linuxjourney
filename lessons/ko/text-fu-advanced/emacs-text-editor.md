@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Emacs"
-description: "Linux 용 강력하고 확장 가능한 텍스트 편집기인 Emacs 를 배우세요. Emacs 버퍼와 기본 사용법을 이해하세요. 오늘 Emacs 여정을 시작하세요!"
-keywords: "Emacs, Linux 텍스트 편집기, Emacs 튜토리얼, Emacs 버퍼, Linux 명령어, 초급, 가이드"
+meta_description: "Linux 용 강력하고 확장 가능한 텍스트 편집기인 Emacs 를 배우세요. Emacs 버퍼와 기본 사용법을 이해하세요. 오늘 Emacs 여정을 시작하세요!"
+meta_keywords: "Emacs, Linux 텍스트 편집기, Emacs 튜토리얼, Emacs 버퍼, Linux 명령어, 초급, 가이드"
 ---
 
 ## Lesson Content

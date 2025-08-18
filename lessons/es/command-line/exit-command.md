@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "salir"
-description: "Aprende cómo salir de la shell de Linux usando los comandos 'exit' o 'logout'. Comprende la navegación básica de la shell para principiantes. ¡Comienza tu viaje en Linux hoy!"
-keywords: "comando exit, comando logout, shell de Linux, salir de la terminal, conceptos básicos de Linux, Linux para principiantes, tutorial de Linux"
+meta_description: "Aprende cómo salir de la shell de Linux usando los comandos 'exit' o 'logout'. Comprende la navegación básica de la shell para principiantes. ¡Comienza tu viaje en Linux hoy!"
+meta_keywords: "comando exit, comando logout, shell de Linux, salir de la terminal, conceptos básicos de Linux, Linux para principiantes, tutorial de Linux"
 ---
 
 ## Lesson Content

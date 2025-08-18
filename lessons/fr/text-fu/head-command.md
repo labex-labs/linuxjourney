@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "head"
-description: "Apprenez à utiliser la commande Linux 'head' pour afficher le début des fichiers. Comprenez les options comme -n pour le nombre de lignes. Tutoriel essentiel sur les commandes Linux."
-keywords: "commande head, Linux head, afficher début fichier, tutoriel Linux, commandes Linux, Linux débutant, head -n, guide Linux"
+meta_description: "Apprenez à utiliser la commande Linux 'head' pour afficher le début des fichiers. Comprenez les options comme -n pour le nombre de lignes. Tutoriel essentiel sur les commandes Linux."
+meta_keywords: "commande head, Linux head, afficher début fichier, tutoriel Linux, commandes Linux, Linux débutant, head -n, guide Linux"
 ---
 
 ## Lesson Content

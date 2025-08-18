@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Arch Linux"
-description: "Aprenda sobre o Arch Linux, seu modelo de rolling release e o gerenciador de pacotes Pacman. Entenda por que o Arch é ótimo para iniciantes e usuários avançados que buscam controle."
-keywords: "Arch Linux, Pacman, distribuição Linux, rolling release, tutorial Linux, guia para iniciantes, SO leve"
+meta_description: "Aprenda sobre o Arch Linux, seu modelo de rolling release e o gerenciador de pacotes Pacman. Entenda por que o Arch é ótimo para iniciantes e usuários avançados que buscam controle."
+meta_keywords: "Arch Linux, Pacman, distribuição Linux, rolling release, tutorial Linux, guia para iniciantes, SO leve"
 ---
 
 ## Lesson Content

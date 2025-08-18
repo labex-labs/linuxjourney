@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Historia"
-description: "Aprende sobre la historia de Linux, desde UNIX hasta Linus Torvalds y el proyecto GNU. Comprende sus orígenes y evolución para principiantes."
-keywords: "historia de Linux, UNIX, proyecto GNU, Linus Torvalds, kernel de Linux, Linux para principiantes, tutorial de Linux, guía de Linux"
+meta_description: "Aprende sobre la historia de Linux, desde UNIX hasta Linus Torvalds y el proyecto GNU. Comprende sus orígenes y evolución para principiantes."
+meta_keywords: "historia de Linux, UNIX, proyecto GNU, Linus Torvalds, kernel de Linux, Linux para principiantes, tutorial de Linux, guía de Linux"
 ---
 
 ## Lesson Content

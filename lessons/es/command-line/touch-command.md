@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "touch"
-description: "Aprende a usar el comando Linux touch para crear nuevos archivos y actualizar las marcas de tiempo. Esta guía para principiantes te ayuda a entender la gestión de archivos."
-keywords: "comando touch, crear archivos, tutorial de Linux, marcas de tiempo de archivos, Linux para principiantes, guía de Linux, comandos básicos"
+meta_description: "Aprende a usar el comando Linux touch para crear nuevos archivos y actualizar las marcas de tiempo. Esta guía para principiantes te ayuda a entender la gestión de archivos."
+meta_keywords: "comando touch, crear archivos, tutorial de Linux, marcas de tiempo de archivos, Linux para principiantes, guía de Linux, comandos básicos"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ユーザーとグループ"
-description: "Linux のユーザーとグループについて学び、UID、GID、および root ユーザーを理解します。sudo コマンドを使用して昇格された権限を使用する方法を発見します。Linux の旅を始めましょう！"
-keywords: "Linux ユーザー, Linux グループ，sudo コマンド，root ユーザー, Linux 権限，Linux チュートリアル，初心者向け Linux, Linux ガイド"
+meta_description: "Linux のユーザーとグループについて学び、UID、GID、および root ユーザーを理解します。sudo コマンドを使用して昇格された権限を使用する方法を発見します。Linux の旅を始めましょう！"
+meta_keywords: "Linux ユーザー, Linux グループ，sudo コマンド，root ユーザー, Linux 権限，Linux チュートリアル，初心者向け Linux, Linux ガイド"
 ---
 
 ## Lesson Content

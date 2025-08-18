@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "sysfs"
-description: "자세한 Linux 장치 정보 및 관리를 위한 가상 파일 시스템인 sysfs 에 대해 알아보세요. /sys 와 /dev 의 차이점을 이해하세요. Linux 여정을 시작하세요!"
-keywords: "sysfs, /sys 디렉토리, Linux 장치, 가상 파일 시스템, Linux 튜토리얼, 초보자 가이드"
+meta_description: "자세한 Linux 장치 정보 및 관리를 위한 가상 파일 시스템인 sysfs 에 대해 알아보세요. /sys 와 /dev 의 차이점을 이해하세요. Linux 여정을 시작하세요!"
+meta_keywords: "sysfs, /sys 디렉토리, Linux 장치, 가상 파일 시스템, Linux 튜토리얼, 초보자 가이드"
 ---
 
 ## Lesson Content

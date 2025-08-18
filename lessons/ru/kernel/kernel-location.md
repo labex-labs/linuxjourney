@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Расположение ядра"
-description: "Узнайте о расположении ядра Linux в каталоге /boot, понимая vmlinuz, initrd и System.map. Изучите файлы ядра и эффективно управляйте пространством."
-keywords: "Ядро Linux, каталог /boot, vmlinuz, initrd, System.map, Linux для начинающих, учебник по ядру, руководство по Linux"
+meta_description: "Узнайте о расположении ядра Linux в каталоге /boot, понимая vmlinuz, initrd и System.map. Изучите файлы ядра и эффективно управляйте пространством."
+meta_keywords: "Ядро Linux, каталог /boot, vmlinuz, initrd, System.map, Linux для начинающих, учебник по ядру, руководство по Linux"
 ---
 
 ## Lesson Content

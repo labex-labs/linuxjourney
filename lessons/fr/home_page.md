@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Page d'accueil"
-description: "Apprenez les fondamentaux de Linux, la ligne de commande, la gestion des utilisateurs et la mise en réseau. Explorez des sujets allant du débutant à l'expert pour une administration efficace des systèmes Linux."
-keywords: "Tutoriel Linux, ligne de commande, Linux débutant, administration système, guide Linux, mise en réseau, gestion de paquets, commandes Linux"
+meta_description: "Apprenez les fondamentaux de Linux, la ligne de commande, la gestion des utilisateurs et la mise en réseau. Explorez des sujets allant du débutant à l'expert pour une administration efficace des systèmes Linux."
+meta_keywords: "Tutoriel Linux, ligne de commande, Linux débutant, administration système, guide Linux, mise en réseau, gestion de paquets, commandes Linux"
 ---
 
 ## Grasshopper

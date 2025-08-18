@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "/etc/hosts"
-description: "Linux の/etc/hosts ファイル、ホスト名を IP アドレスにマッピングする方法、および DNS 解決におけるその役割について学びます。基本的なネットワーク設定を理解します。"
-keywords: "/etc/hosts, Linux ネットワーキング，ホスト名マッピング，DNS 解決，Linux チュートリアル，初心者ガイド"
+meta_description: "Linux の/etc/hosts ファイル、ホスト名を IP アドレスにマッピングする方法、および DNS 解決におけるその役割について学びます。基本的なネットワーク設定を理解します。"
+meta_keywords: "/etc/hosts, Linux ネットワーキング，ホスト名マッピング，DNS 解決，Linux チュートリアル，初心者ガイド"
 ---
 
 ## Lesson Content

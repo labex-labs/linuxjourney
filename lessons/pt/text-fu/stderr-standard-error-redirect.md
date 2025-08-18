@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "stderr (Erro Padrão)"
-description: "Aprenda sobre o redirecionamento de stderr (erro padrão) no Linux. Entenda 2>, 2>&1, &> e /dev/null para tratamento de erros no Bash. Melhore suas habilidades na linha de comando Linux!"
-keywords: "Linux stderr, erro padrão, redirecionamento 2>, 2>&1, redirecionamento &>, /dev/null, tratamento de erros Bash, tutorial Linux, Linux para iniciantes"
+meta_description: "Aprenda sobre o redirecionamento de stderr (erro padrão) no Linux. Entenda 2>, 2>&1, &> e /dev/null para tratamento de erros no Bash. Melhore suas habilidades na linha de comando Linux!"
+meta_keywords: "Linux stderr, erro padrão, redirecionamento 2>, 2>&1, redirecionamento &>, /dev/null, tratamento de erros Bash, tutorial Linux, Linux para iniciantes"
 ---
 
 ## Lesson Content

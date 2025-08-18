@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "wc and nl"
-description: "Learn wc and nl Linux commands. Understand word count, line numbering, and file analysis. Improve your Linux command-line skills today!"
-keywords: "wc command, nl command, Linux word count, Linux line numbers, file analysis, Linux tutorial, beginner Linux, Linux guide"
+meta_description: "Learn wc and nl Linux commands. Understand word count, line numbering, and file analysis. Improve your Linux command-line skills today!"
+meta_keywords: "wc command, nl command, Linux word count, Linux line numbers, file analysis, Linux tutorial, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content

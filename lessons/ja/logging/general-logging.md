@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "一般的なロギング"
-description: "Linux のログファイル（/var/log/messages や syslog など）について学びます。効果的なシステムトラブルシューティングのために、それらの違いを理解しましょう。Linux の学習を始めましょう！"
-keywords: "Linux ログ，syslog, var/log/messages, Linux トラブルシューティング，Linux 初心者，Linux ガイド，システムログ"
+meta_description: "Linux のログファイル（/var/log/messages や syslog など）について学びます。効果的なシステムトラブルシューティングのために、それらの違いを理解しましょう。Linux の学習を始めましょう！"
+meta_keywords: "Linux ログ，syslog, var/log/messages, Linux トラブルシューティング，Linux 初心者，Linux ガイド，システムログ"
 ---
 
 ## Lesson Content

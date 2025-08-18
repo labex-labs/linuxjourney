@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "/dev directory"
-description: "Узнайте о каталоге /dev в Linux, где хранятся файлы устройств. Разберитесь с узлами устройств и способами взаимодействия с ними. Исследуйте /dev с помощью ls. Руководство для начинающих по Linux."
-keywords: "/dev directory, Linux device files, device nodes, Linux tutorial, ls /dev, Linux beginner, Linux guide"
+meta_description: "Узнайте о каталоге /dev в Linux, где хранятся файлы устройств. Разберитесь с узлами устройств и способами взаимодействия с ними. Исследуйте /dev с помощью ls. Руководство для начинающих по Linux."
+meta_keywords: "/dev directory, Linux device files, device nodes, Linux tutorial, ls /dev, Linux beginner, Linux guide"
 ---
 
 ## Lesson Content

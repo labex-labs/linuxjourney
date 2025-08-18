@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "mv (Déplacer)"
-description: "Apprenez à utiliser la commande Linux mv pour déplacer et renommer des fichiers/répertoires. Comprenez ses options et prévenez les écrasements. Commencez votre parcours Linux !"
-keywords: "commande mv, Linux mv, déplacer des fichiers Linux, renommer des fichiers Linux, tutoriel Linux, débutant, guide Linux"
+meta_description: "Apprenez à utiliser la commande Linux mv pour déplacer et renommer des fichiers/répertoires. Comprenez ses options et prévenez les écrasements. Commencez votre parcours Linux !"
+meta_keywords: "commande mv, Linux mv, déplacer des fichiers Linux, renommer des fichiers Linux, tutoriel Linux, débutant, guide Linux"
 ---
 
 ## Lesson Content

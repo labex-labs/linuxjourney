@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Netzwerkmanager"
-description: "Erfahren Sie mehr über NetworkManager in Linux, wie er die Netzwerkkonfiguration automatisiert und verwenden Sie die Befehle nm-tool & nmcli. Starten Sie mit diesem Anfängerleitfaden!"
-keywords: "NetworkManager, nm-tool, nmcli, Linux-Netzwerk, Netzwerkkonfiguration, Linux-Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über NetworkManager in Linux, wie er die Netzwerkkonfiguration automatisiert und verwenden Sie die Befehle nm-tool & nmcli. Starten Sie mit diesem Anfängerleitfaden!"
+meta_keywords: "NetworkManager, nm-tool, nmcli, Linux-Netzwerk, Netzwerkkonfiguration, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

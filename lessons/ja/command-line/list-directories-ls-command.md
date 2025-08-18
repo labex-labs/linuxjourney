@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ls (ディレクトリを一覧表示)"
-description: "Linux で「ls」コマンドを使ってディレクトリの内容を一覧表示し、隠しファイルを表示し、ファイルの詳細を理解する方法を学びます。Linux コマンドラインスキルを向上させましょう！"
-keywords: "ls コマンド，ディレクトリ一覧，Linux チュートリアル，隠しファイル，Linux コマンド，Linux 初心者，Linux ガイド"
+meta_description: "Linux で「ls」コマンドを使ってディレクトリの内容を一覧表示し、隠しファイルを表示し、ファイルの詳細を理解する方法を学びます。Linux コマンドラインスキルを向上させましょう！"
+meta_keywords: "ls コマンド，ディレクトリ一覧，Linux チュートリアル，隠しファイル，Linux コマンド，Linux 初心者，Linux ガイド"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "root"
-description: "Linux の root ユーザー、su コマンド、および/etc/sudoers ファイルについて学びます。この初心者向けガイドで、Linux におけるスーパーユーザーアクセスと権限を理解しましょう。"
-keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
+meta_description: "Linux の root ユーザー、su コマンド、および/etc/sudoers ファイルについて学びます。この初心者向けガイドで、Linux におけるスーパーユーザーアクセスと権限を理解しましょう。"
+meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

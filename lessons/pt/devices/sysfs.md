@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "sysfs"
-description: "Aprenda sobre sysfs, um sistema de arquivos virtual para informações e gerenciamento detalhados de dispositivos Linux. Entenda /sys vs /dev. Comece sua jornada no Linux!"
-keywords: "sysfs, diretório /sys, dispositivos Linux, sistema de arquivos virtual, tutorial Linux, guia para iniciantes"
+meta_description: "Aprenda sobre sysfs, um sistema de arquivos virtual para informações e gerenciamento detalhados de dispositivos Linux. Entenda /sys vs /dev. Comece sua jornada no Linux!"
+meta_keywords: "sysfs, diretório /sys, dispositivos Linux, sistema de arquivos virtual, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

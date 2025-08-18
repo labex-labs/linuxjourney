@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "文件系统修复"
-description: "学习使用 fsck 进行 Linux 文件系统修复和数据恢复。了解如何使用这个基本命令检查和修复磁盘错误。开始你的 Linux 之旅！"
-keywords: "fsck, 文件系统修复，Linux 命令，磁盘错误，数据恢复，Linux 教程，初学者指南"
+meta_description: "学习使用 fsck 进行 Linux 文件系统修复和数据恢复。了解如何使用这个基本命令检查和修复磁盘错误。开始你的 Linux 之旅！"
+meta_keywords: "fsck, 文件系统修复，Linux 命令，磁盘错误，数据恢复，Linux 教程，初学者指南"
 ---
 
 ## Lesson Content

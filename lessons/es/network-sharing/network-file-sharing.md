@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Visión general del uso compartido de archivos"
-description: "Aprende sobre el uso compartido de archivos en Linux y el comando secure copy (scp). Transfiere archivos entre hosts en tu red. ¡Empieza con esta guía para principiantes!"
-keywords: "compartir archivos Linux, comando scp, copia segura, transferencia de archivos en red, tutorial Linux, Linux para principiantes, guía Linux"
+meta_description: "Aprende sobre el uso compartido de archivos en Linux y el comando secure copy (scp). Transfiere archivos entre hosts en tu red. ¡Empieza con esta guía para principiantes!"
+meta_keywords: "compartir archivos Linux, comando scp, copia segura, transferencia de archivos en red, tutorial Linux, Linux para principiantes, guía Linux"
 ---
 
 ## Lesson Content

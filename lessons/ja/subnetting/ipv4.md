@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "IPv4"
-description: "IPv4 アドレス、その構造、および ifconfig を使用して IP を見つける方法について学びます。Linux 初心者向けのネットワークの基本を理解します。"
-keywords: "IPv4, IP アドレス，ifconfig, ネットワークの基本，Linux ネットワーキング，初心者，チュートリアル，ガイド"
+meta_description: "IPv4 アドレス、その構造、および ifconfig を使用して IP を見つける方法について学びます。Linux 初心者向けのネットワークの基本を理解します。"
+meta_keywords: "IPv4, IP アドレス，ifconfig, ネットワークの基本，Linux ネットワーキング，初心者，チュートリアル，ガイド"
 ---
 
 ## Lesson Content

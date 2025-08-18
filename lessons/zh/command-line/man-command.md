@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "man"
-description: "学习如何在 Linux 中使用'man'命令访问命令手册。发现适合初学者的基本 Linux 文档，并提高你的命令行技能。"
-keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
+meta_description: "学习如何在 Linux 中使用'man'命令访问命令手册。发现适合初学者的基本 Linux 文档，并提高你的命令行技能。"
+meta_keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
 ---
 
 ## Lesson Content

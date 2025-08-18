@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Suivi des processus : top"
-description: "Apprenez à utiliser la commande Linux `top` pour surveiller les ressources système et suivre les processus. Comprenez les détails du CPU, de la mémoire et des processus pour l'analyse des performances."
-keywords: "commande Linux top, surveiller les processus, utilisation du système, performances Linux, débutant, tutoriel, guide"
+meta_description: "Apprenez à utiliser la commande Linux `top` pour surveiller les ressources système et suivre les processus. Comprenez les détails du CPU, de la mémoire et des processus pour l'analyse des performances."
+meta_keywords: "commande Linux top, surveiller les processus, utilisation du système, performances Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content

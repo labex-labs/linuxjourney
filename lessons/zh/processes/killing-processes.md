@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "kill (终止)"
-description: "学习如何使用 Linux 'kill' 命令来终止进程。了解 SIGTERM、SIGKILL 和其他用于进程管理的信号。立即开始学习！"
-keywords: "kill 命令，Linux 进程，SIGTERM, SIGKILL, Linux 教程，初学者，进程管理，Linux 指南"
+meta_description: "学习如何使用 Linux 'kill' 命令来终止进程。了解 SIGTERM、SIGKILL 和其他用于进程管理的信号。立即开始学习！"
+meta_keywords: "kill 命令，Linux 进程，SIGTERM, SIGKILL, Linux 教程，初学者，进程管理，Linux 指南"
 ---
 
 ## Lesson Content

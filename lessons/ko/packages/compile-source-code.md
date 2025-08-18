@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "소스 코드 컴파일"
-description: "make, configure, checkinstall 을 사용하여 Linux 에서 소스 코드를 컴파일하는 방법을 배웁니다. 초보자와 중급 사용자를 위한 빌드 프로세스를 이해합니다."
-keywords: "소스 코드 컴파일, make install, checkinstall, Linux 컴파일, build-essential, Linux 튜토리얼, 초보자 가이드"
+meta_description: "make, configure, checkinstall 을 사용하여 Linux 에서 소스 코드를 컴파일하는 방법을 배웁니다. 초보자와 중급 사용자를 위한 빌드 프로세스를 이해합니다."
+meta_keywords: "소스 코드 컴파일, make install, checkinstall, Linux 컴파일, build-essential, Linux 튜토리얼, 초보자 가이드"
 ---
 
 ## Lesson Content

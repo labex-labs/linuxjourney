@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Link Layer"
-description: "Learn about the Link Layer in TCP/IP, how ARP resolves MAC addresses, and packet traversal. Understand network fundamentals with this Linux networking tutorial."
-keywords: "Link Layer, ARP, TCP/IP, MAC address, network fundamentals, Linux networking, beginner, tutorial"
+meta_description: "Learn about the Link Layer in TCP/IP, how ARP resolves MAC addresses, and packet traversal. Understand network fundamentals with this Linux networking tutorial."
+meta_keywords: "Link Layer, ARP, TCP/IP, MAC address, network fundamentals, Linux networking, beginner, tutorial"
 ---
 
 ## Lesson Content

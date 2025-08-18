@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Vim (Vi Improved)"
-description: "強力で軽量な Vi 改良版テキストエディタである Vim を学びます。基本的な使い方と、Vim が Linux ユーザーにとって不可欠である理由を理解します。"
-keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
+meta_description: "強力で軽量な Vi 改良版テキストエディタである Vim を学びます。基本的な使い方と、Vim が Linux ユーザーにとって不可欠である理由を理解します。"
+meta_keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
 ---
 
 ## Lesson Content

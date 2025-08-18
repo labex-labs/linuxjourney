@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Bootprozess: Init"
-description: "Erfahren Sie mehr über Linux-Init-Systeme: System V, Upstart und systemd. Verstehen Sie ihre Rollen im Bootprozess und wie sie Dienste verwalten. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Linux init, systemd, System V init, Upstart, Linux Bootprozess, Linux Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Erfahren Sie mehr über Linux-Init-Systeme: System V, Upstart und systemd. Verstehen Sie ihre Rollen im Bootprozess und wie sie Dienste verwalten. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux init, systemd, System V init, Upstart, Linux Bootprozess, Linux Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---
 
 ## Lesson Content

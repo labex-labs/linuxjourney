@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Vim Editing"
-description: "Learn Vim editing basics: delete, change, copy, and paste text efficiently. Master essential Vim commands for beginners and improve your Linux text editing skills."
-keywords: "Vim editing, Vim commands, Linux text editor, Vim tutorial, Vim guide, beginner Vim, dd command, Vim delete"
+meta_description: "Learn Vim editing basics: delete, change, copy, and paste text efficiently. Master essential Vim commands for beginners and improve your Linux text editing skills."
+meta_keywords: "Vim editing, Vim commands, Linux text editor, Vim tutorial, Vim guide, beginner Vim, dd command, Vim delete"
 ---
 
 ## Lesson Content

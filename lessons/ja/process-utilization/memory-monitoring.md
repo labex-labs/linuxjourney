@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "メモリ監視"
-description: "vmstat を使って Linux のメモリ使用量を監視する方法を学びます。システムパフォーマンスのためのメモリ、スワップ、CPU メトリクスを理解しましょう。あなたの Linux の旅を始めましょう！"
-keywords: "vmstat, Linux メモリ監視，システムパフォーマンス，Linux チュートリアル，メモリ使用量，初心者 Linux, Linux ガイド"
+meta_description: "vmstat を使って Linux のメモリ使用量を監視する方法を学びます。システムパフォーマンスのためのメモリ、スワップ、CPU メトリクスを理解しましょう。あなたの Linux の旅を始めましょう！"
+meta_keywords: "vmstat, Linux メモリ監視，システムパフォーマンス，Linux チュートリアル，メモリ使用量，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "/etc/passwd"
-description: "了解 Linux 中的 /etc/passwd 文件，理解用户信息字段以及 UID 的工作原理。探索这个重要的配置文件。"
-keywords: "/etc/passwd, Linux 用户，用户 ID, UID, Linux 教程，初学者，指南，Linux 命令"
+meta_description: "了解 Linux 中的 /etc/passwd 文件，理解用户信息字段以及 UID 的工作原理。探索这个重要的配置文件。"
+meta_keywords: "/etc/passwd, Linux 用户，用户 ID, UID, Linux 教程，初学者，指南，Linux 命令"
 ---
 
 ## Lesson Content

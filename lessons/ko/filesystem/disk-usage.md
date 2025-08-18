@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "디스크 사용량"
-description: "Linux 에서 df 및 du 명령어를 사용하여 디스크 사용량과 여유 공간을 확인하는 방법을 배웁니다. 이들의 차이점과 각각을 언제 사용해야 하는지 이해합니다. Linux 디스크 관리 튜토리얼."
-keywords: "df command, du command, Linux 디스크 사용량, 여유 공간 확인, Linux 튜토리얼, 초보자 Linux, 디스크 관리, Linux 가이드"
+meta_description: "Linux 에서 df 및 du 명령어를 사용하여 디스크 사용량과 여유 공간을 확인하는 방법을 배웁니다. 이들의 차이점과 각각을 언제 사용해야 하는지 이해합니다. Linux 디스크 관리 튜토리얼."
+meta_keywords: "df command, du command, Linux 디스크 사용량, 여유 공간 확인, Linux 튜토리얼, 초보자 Linux, 디스크 관리, Linux 가이드"
 ---
 
 ## Lesson Content

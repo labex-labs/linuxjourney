@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "cp (复制)"
-description: "学习如何使用 Linux cp 命令复制文件和目录。了解 -r 和通配符等选项。今天就开始您的 Linux 之旅吧！"
-keywords: "cp 命令，复制文件 Linux, Linux 教程，Linux 初学者，cp -r, Linux 通配符，Linux 指南"
+meta_description: "学习如何使用 Linux cp 命令复制文件和目录。了解 -r 和通配符等选项。今天就开始您的 Linux 之旅吧！"
+meta_keywords: "cp 命令，复制文件 Linux, Linux 教程，Linux 初学者，cp -r, Linux 通配符，Linux 指南"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Debian"
-description: "Aprenda sobre o Debian Linux, suas versões estáveis e rolling release, e gerenciamento de pacotes. Descubra por que o Debian é um ótimo sistema operacional central para usuários iniciantes e intermediários."
-keywords: "Debian, Debian Linux, distribuição Linux, rolling release, gerenciamento de pacotes, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda sobre o Debian Linux, suas versões estáveis e rolling release, e gerenciamento de pacotes. Descubra por que o Debian é um ótimo sistema operacional central para usuários iniciantes e intermediários."
+meta_keywords: "Debian, Debian Linux, distribuição Linux, rolling release, gerenciamento de pacotes, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

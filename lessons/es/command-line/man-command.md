@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "man"
-description: "Aprende a usar el comando 'man' en Linux para acceder a los manuales de comandos. Descubre documentación esencial de Linux para principiantes y mejora tus habilidades de línea de comandos."
-keywords: "comando man, páginas man de Linux, documentación de Linux, tutorial de Linux, guía de línea de comandos, Linux para principiantes"
+meta_description: "Aprende a usar el comando 'man' en Linux para acceder a los manuales de comandos. Descubre documentación esencial de Linux para principiantes y mejora tus habilidades de línea de comandos."
+meta_keywords: "comando man, páginas man de Linux, documentación de Linux, tutorial de Linux, guía de línea de comandos, Linux para principiantes"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ホームページ"
-description: "Linux の基本、コマンドライン、ユーザー管理、ネットワーキングを学びます。効果的な Linux システム管理のために、初心者から上級者向けのトピックを探求します。"
-keywords: "Linux チュートリアル，コマンドライン，Linux 初心者，システム管理，Linux ガイド，ネットワーキング，パッケージ管理，Linux コマンド"
+meta_description: "Linux の基本、コマンドライン、ユーザー管理、ネットワーキングを学びます。効果的な Linux システム管理のために、初心者から上級者向けのトピックを探求します。"
+meta_keywords: "Linux チュートリアル，コマンドライン，Linux 初心者，システム管理，Linux ガイド，ネットワーキング，パッケージ管理，Linux コマンド"
 ---
 
 ## Grasshopper

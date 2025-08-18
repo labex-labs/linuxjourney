@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Modelo OSI"
-description: "Aprenda sobre el modelo OSI, un concepto fundamental de red teórico. Comprenda sus 7 capas y su relevancia para TCP/IP. Guía esencial de redes Linux para principiantes."
-keywords: "modelo OSI, conceptos de redes, TCP/IP, redes Linux, tutorial para principiantes, capas de red, modelo teórico"
+meta_description: "Aprenda sobre el modelo OSI, un concepto fundamental de red teórico. Comprenda sus 7 capas y su relevancia para TCP/IP. Guía esencial de redes Linux para principiantes."
+meta_keywords: "modelo OSI, conceptos de redes, TCP/IP, redes Linux, tutorial para principiantes, capas de red, modelo teórico"
 ---
 
 ## Lesson Content

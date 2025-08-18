@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "root"
-description: "Learn about Linux root user, su command, and /etc/sudoers file. Understand superuser access and permissions in Linux with this beginner guide."
-keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
+meta_description: "Learn about Linux root user, su command, and /etc/sudoers file. Understand superuser access and permissions in Linux with this beginner guide."
+meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

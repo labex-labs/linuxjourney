@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "lsusb, lspci, lssci"
-description: "Apprenez à lister les périphériques USB, PCI et SCSI en utilisant les commandes lsusb, lspci et lsscsi. Comprenez votre matériel Linux avec ce guide convivial pour débutants."
-keywords: "lsusb, lspci, lsscsi, commandes Linux, listage de périphériques, informations matérielles, tutoriel Linux, guide du débutant"
+meta_description: "Apprenez à lister les périphériques USB, PCI et SCSI en utilisant les commandes lsusb, lspci et lsscsi. Comprenez votre matériel Linux avec ce guide convivial pour débutants."
+meta_keywords: "lsusb, lspci, lsscsi, commandes Linux, listage de périphériques, informations matérielles, tutoriel Linux, guide du débutant"
 ---
 
 ## Lesson Content

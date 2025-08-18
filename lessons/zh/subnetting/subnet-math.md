@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "子网计算"
-description: "学习子网计算基础知识以及如何计算网络上的可用主机。了解 IP 寻址和子网掩码，适合初学者。开始你的 Linux 之旅！"
-keywords: "子网计算，IP 地址，子网掩码，网络主机，二进制，Linux 网络，初学者教程，指南"
+meta_description: "学习子网计算基础知识以及如何计算网络上的可用主机。了解 IP 寻址和子网掩码，适合初学者。开始你的 Linux 之旅！"
+meta_keywords: "子网计算，IP 地址，子网掩码，网络主机，二进制，Linux 网络，初学者教程，指南"
 ---
 
 ## Lesson Content

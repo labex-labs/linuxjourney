@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Transportschicht"
-description: "Erfahren Sie mehr über die Transportschicht im Linux-Netzwerk, einschließlich TCP/UDP-Protokollen, Ports und Datensegmentierung. Verstehen Sie, wie Daten zuverlässig übertragen werden."
-keywords: "Linux Transportschicht, TCP/UDP, Netzwerk-Ports, Datensegmentierung, Linux-Netzwerk, Anfänger-Tutorial, Netzwerkprotokolle"
+meta_description: "Erfahren Sie mehr über die Transportschicht im Linux-Netzwerk, einschließlich TCP/UDP-Protokollen, Ports und Datensegmentierung. Verstehen Sie, wie Daten zuverlässig übertragen werden."
+meta_keywords: "Linux Transportschicht, TCP/UDP, Netzwerk-Ports, Datensegmentierung, Linux-Netzwerk, Anfänger-Tutorial, Netzwerkprotokolle"
 ---
 
 ## Lesson Content

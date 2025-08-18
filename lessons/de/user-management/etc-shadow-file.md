@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "/etc/shadow"
-description: "Erfahren Sie mehr über die Datei /etc/shadow in Linux, ihre Felder und wie sie Benutzerpasswörter schützt. Verstehen Sie die Linux-Authentifizierung für Anfänger."
-keywords: "/etc/shadow, Linux-Sicherheit, Benutzerauthentifizierung, Passwortverwaltung, Linux-Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über die Datei /etc/shadow in Linux, ihre Felder und wie sie Benutzerpasswörter schützt. Verstehen Sie die Linux-Authentifizierung für Anfänger."
+meta_keywords: "/etc/shadow, Linux-Sicherheit, Benutzerauthentifizierung, Passwortverwaltung, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

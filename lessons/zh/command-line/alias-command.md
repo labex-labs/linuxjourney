@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "别名"
-description: "学习如何为常用命令创建和管理 Linux 别名。了解如何在 .bashrc 中设置临时和永久别名。提高您的命令行效率！"
-keywords: "Linux 别名，bash 别名，unalias 命令，.bashrc, Linux 教程，命令行，Linux 初学者，Linux 指南"
+meta_description: "学习如何为常用命令创建和管理 Linux 别名。了解如何在 .bashrc 中设置临时和永久别名。提高您的命令行效率！"
+meta_keywords: "Linux 别名，bash 别名，unalias 命令，.bashrc, Linux 教程，命令行，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

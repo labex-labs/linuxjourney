@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "exit"
-description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェル操作を理解します。今日から Linux の学習を始めましょう！"
-keywords: "exit command, logout command, Linux shell, terminal exit, Linux basics, beginner Linux, Linux tutorial"
+meta_description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェル操作を理解します。今日から Linux の学習を始めましょう！"
+meta_keywords: "exit command, logout command, Linux shell, terminal exit, Linux basics, beginner Linux, Linux tutorial"
 ---
 
 ## Lesson Content

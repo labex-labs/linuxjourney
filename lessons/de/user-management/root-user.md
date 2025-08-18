@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "root"
-description: "Erfahren Sie mehr über den Linux-Root-Benutzer, den su-Befehl und die Datei /etc/sudoers. Verstehen Sie Superuser-Zugriff und Berechtigungen in Linux mit diesem Anfängerleitfaden."
-keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über den Linux-Root-Benutzer, den su-Befehl und die Datei /etc/sudoers. Verstehen Sie Superuser-Zugriff und Berechtigungen in Linux mit diesem Anfängerleitfaden."
+meta_keywords: "Linux root, su command, sudoers file, Linux permissions, superuser, Linux tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

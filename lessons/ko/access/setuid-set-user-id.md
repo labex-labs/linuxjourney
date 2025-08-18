@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Setuid"
-description: "Linux Setuid (SUID) 권한, 작동 방식 및 수정 방법에 대해 알아보세요. Linux 에서 안전한 파일 접근을 위한 SUID 를 이해합니다."
-keywords: "Linux Setuid, SUID, Linux 권한, chmod, passwd 명령어, Linux 보안, 초보자 Linux, Linux 튜토리얼"
+meta_description: "Linux Setuid (SUID) 권한, 작동 방식 및 수정 방법에 대해 알아보세요. Linux 에서 안전한 파일 접근을 위한 SUID 를 이해합니다."
+meta_keywords: "Linux Setuid, SUID, Linux 권한, chmod, passwd 명령어, Linux 보안, 초보자 Linux, Linux 튜토리얼"
 ---
 
 ## Lesson Content

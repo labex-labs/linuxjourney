@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Network Layer"
-description: "Learn about the Network layer in Linux, how IP addresses route packets across subnets, and its role in data transmission. Start your Linux networking journey!"
-keywords: "Network layer, IP addresses, subnets, Linux networking, packet routing, beginner, tutorial, guide"
+meta_description: "Learn about the Network layer in Linux, how IP addresses route packets across subnets, and its role in data transmission. Start your Linux networking journey!"
+meta_keywords: "Network layer, IP addresses, subnets, Linux networking, packet routing, beginner, tutorial, guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Systemaufrufe"
-description: "Erfahren Sie mehr über Linux-Systemaufrufe (Syscalls) und wie sie mit dem Kernel interagieren. Verstehen Sie den Benutzer- und Kernel-Modus und verwenden Sie `strace` zum Debuggen. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Linux-Systemaufrufe, Syscalls, Kernel-Modus, Benutzer-Modus, strace-Befehl, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Erfahren Sie mehr über Linux-Systemaufrufe (Syscalls) und wie sie mit dem Kernel interagieren. Verstehen Sie den Benutzer- und Kernel-Modus und verwenden Sie `strace` zum Debuggen. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux-Systemaufrufe, Syscalls, Kernel-Modus, Benutzer-Modus, strace-Befehl, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Bootvorgang: Bootloader"
-description: "Erfahren Sie mehr über den Linux-Bootloader, seine Funktionen und gängige Kernel-Parameter wie initrd und root. Verstehen Sie GRUB und optimieren Sie Ihren Linux-Bootvorgang."
-keywords: "Linux Bootloader, GRUB, Kernel-Parameter, initrd, Root-Dateisystem, Linux-Bootvorgang, Linux-Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie mehr über den Linux-Bootloader, seine Funktionen und gängige Kernel-Parameter wie initrd und root. Verstehen Sie GRUB und optimieren Sie Ihren Linux-Bootvorgang."
+meta_keywords: "Linux Bootloader, GRUB, Kernel-Parameter, initrd, Root-Dateisystem, Linux-Bootvorgang, Linux-Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

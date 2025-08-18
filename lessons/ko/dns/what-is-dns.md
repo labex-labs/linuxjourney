@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "DNS 란 무엇인가요?"
-description: "DNS 가 무엇이며 도메인 이름을 IP 주소로 변환하는 방법을 알아보세요. 초보자 친화적인 Linux 가이드를 통해 이 핵심 인터넷 개념을 이해하세요."
-keywords: "DNS, 도메인 이름 시스템, IP 주소, 호스트 이름, Linux 네트워킹, 초보자, 튜토리얼, 가이드"
+meta_description: "DNS 가 무엇이며 도메인 이름을 IP 주소로 변환하는 방법을 알아보세요. 초보자 친화적인 Linux 가이드를 통해 이 핵심 인터넷 개념을 이해하세요."
+meta_keywords: "DNS, 도메인 이름 시스템, IP 주소, 호스트 이름, Linux 네트워킹, 초보자, 튜토리얼, 가이드"
 ---
 
 ## Lesson Content

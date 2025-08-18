@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Inodes"
-description: "Aprende sobre los inodes de Linux, su estructura y cómo gestionan los archivos. Comprende los números de inode y usa `df -i` y `ls -li` para verificar el uso de inodes. ¡Comienza tu viaje en Linux!"
-keywords: "inodes de Linux, tutorial de inode, df -i, ls -li, filesystem de Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende sobre los inodes de Linux, su estructura y cómo gestionan los archivos. Comprende los números de inode y usa `df -i` y `ls -li` para verificar el uso de inodes. ¡Comienza tu viaje en Linux!"
+meta_keywords: "inodes de Linux, tutorial de inode, df -i, ls -li, filesystem de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

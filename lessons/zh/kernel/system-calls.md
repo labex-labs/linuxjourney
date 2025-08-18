@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "系统调用"
-description: "了解 Linux 系统调用 (syscalls) 及其与内核的交互。理解用户模式和内核模式，并使用 `strace` 进行调试。开始您的 Linux 之旅！"
-keywords: "Linux 系统调用，syscalls, 内核模式，用户模式，strace 命令，Linux 教程，Linux 入门，Linux 指南"
+meta_description: "了解 Linux 系统调用 (syscalls) 及其与内核的交互。理解用户模式和内核模式，并使用 `strace` 进行调试。开始您的 Linux 之旅！"
+meta_keywords: "Linux 系统调用，syscalls, 内核模式，用户模式，strace 命令，Linux 教程，Linux 入门，Linux 指南"
 ---
 
 ## Lesson Content

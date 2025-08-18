@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "stdout (Saída Padrão)"
-description: "Aprenda sobre o stdout do Linux e o redirecionamento de I/O. Entenda como redirecionar a saída de comandos para arquivos usando os operadores > e >>. Comece sua jornada no Linux hoje!"
-keywords: "Linux stdout, redirecionamento de I/O, comandos Linux, redirecionar saída, tutorial Linux, Linux para iniciantes, guia Linux, shell scripting"
+meta_description: "Aprenda sobre o stdout do Linux e o redirecionamento de I/O. Entenda como redirecionar a saída de comandos para arquivos usando os operadores > e >>. Comece sua jornada no Linux hoje!"
+meta_keywords: "Linux stdout, redirecionamento de I/O, comandos Linux, redirecionar saída, tutorial Linux, Linux para iniciantes, guia Linux, shell scripting"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "route"
-description: "Linux route 및 ip 명령을 사용하여 네트워크 경로를 추가하고 삭제하는 방법을 배웁니다. 초보자 및 중급 사용자를 위한 라우팅 테이블 관리를 이해합니다."
-keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
+meta_description: "Linux route 및 ip 명령을 사용하여 네트워크 경로를 추가하고 삭제하는 방법을 배웁니다. 초보자 및 중급 사용자를 위한 라우팅 테이블 관리를 이해합니다."
+meta_keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "I/O Monitoring"
-description: "Learn how to use iostat for Linux I/O monitoring. Understand CPU and disk usage metrics with this essential command. Improve system performance!"
-keywords: "iostat, Linux I/O monitoring, CPU usage, disk usage, Linux commands, beginner, tutorial, guide"
+meta_description: "Learn how to use iostat for Linux I/O monitoring. Understand CPU and disk usage metrics with this essential command. Improve system performance!"
+meta_keywords: "iostat, Linux I/O monitoring, CPU usage, disk usage, Linux commands, beginner, tutorial, guide"
 ---
 
 ## Lesson Content

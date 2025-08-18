@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Vim 편집"
-description: "Vim 편집의 기본 사항을 배우세요: 텍스트를 효율적으로 삭제, 변경, 복사, 붙여넣기. 초보자를 위한 필수 Vim 명령을 익히고 Linux 텍스트 편집 기술을 향상시키세요."
-keywords: "Vim 편집, Vim 명령, Linux 텍스트 편집기, Vim 튜토리얼, Vim 가이드, 초보자 Vim, dd 명령, Vim 삭제"
+meta_description: "Vim 편집의 기본 사항을 배우세요: 텍스트를 효율적으로 삭제, 변경, 복사, 붙여넣기. 초보자를 위한 필수 Vim 명령을 익히고 Linux 텍스트 편집 기술을 향상시키세요."
+meta_keywords: "Vim 편집, Vim 명령, Linux 텍스트 편집기, Vim 튜토리얼, Vim 가이드, 초보자 Vim, dd 명령, Vim 삭제"
 ---
 
 ## Lesson Content

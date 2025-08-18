@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "プロセスパーミッション"
-description: "Linux のプロセスパーミッション、Real、Effective、Saved User ID について学びます。UID がセキュリティとコマンド実行にどのように影響するかを理解します。今日から学習を始めましょう！"
-keywords: "Linux プロセスパーミッション，Real UID, Effective UID, Saved UID, Linux セキュリティ，passwd コマンド，Linux チュートリアル，初心者 Linux"
+meta_description: "Linux のプロセスパーミッション、Real、Effective、Saved User ID について学びます。UID がセキュリティとコマンド実行にどのように影響するかを理解します。今日から学習を始めましょう！"
+meta_keywords: "Linux プロセスパーミッション，Real UID, Effective UID, Saved UID, Linux セキュリティ，passwd コマンド，Linux チュートリアル，初心者 Linux"
 ---
 
 ## Lesson Content

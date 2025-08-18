@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Vim Inserindo e Anexando Texto"
-description: "Aprenda os modos de inserção e anexação do Vim. Entenda os comandos 'i', 'a', 'I', 'A', 'o', 'O' para edição de texto eficiente. Melhore suas habilidades com Vim agora!"
-keywords: "Vim modo de inserção, Vim anexar, comandos Vim, tutorial Vim, editor de texto Linux, Vim para iniciantes, guia Vim, Vim 'i' 'a'"
+meta_description: "Aprenda os modos de inserção e anexação do Vim. Entenda os comandos 'i', 'a', 'I', 'A', 'o', 'O' para edição de texto eficiente. Melhore suas habilidades com Vim agora!"
+meta_keywords: "Vim modo de inserção, Vim anexar, comandos Vim, tutorial Vim, editor de texto Linux, Vim para iniciantes, guia Vim, Vim 'i' 'a'"
 ---
 
 ## Lesson Content

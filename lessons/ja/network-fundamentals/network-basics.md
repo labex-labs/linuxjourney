@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ネットワークの基本"
-description: "Linux ネットワークの基本を学びましょう：WAN、LAN、WLAN、ルーター、ホストを理解します。この初心者向けガイドでネットワーキングの旅を始めましょう！"
-keywords: "Linux ネットワークの基本，WAN, LAN, WLAN, ネットワークチュートリアル，初心者向け Linux, ネットワーキングガイド，Linux の概念"
+meta_description: "Linux ネットワークの基本を学びましょう：WAN、LAN、WLAN、ルーター、ホストを理解します。この初心者向けガイドでネットワーキングの旅を始めましょう！"
+meta_keywords: "Linux ネットワークの基本，WAN, LAN, WLAN, ネットワークチュートリアル，初心者向け Linux, ネットワーキングガイド，Linux の概念"
 ---
 
 ## Lesson Content

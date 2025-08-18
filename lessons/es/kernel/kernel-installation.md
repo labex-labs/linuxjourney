@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Instalación del Kernel"
-description: "Aprende a instalar y gestionar kernels de Linux. Descubre las versiones de kernel, usa `uname -r` y los comandos apt. ¡Comienza tu viaje con el kernel de Linux!"
-keywords: "kernel de Linux, instalar kernel, uname -r, apt dist-upgrade, gestión de kernel, tutorial de Linux, Linux para principiantes, guía de Linux"
+meta_description: "Aprende a instalar y gestionar kernels de Linux. Descubre las versiones de kernel, usa `uname -r` y los comandos apt. ¡Comienza tu viaje con el kernel de Linux!"
+meta_keywords: "kernel de Linux, instalar kernel, uname -r, apt dist-upgrade, gestión de kernel, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content

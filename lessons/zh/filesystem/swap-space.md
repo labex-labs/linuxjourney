@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "swap"
-description: "了解 Linux swap 空间、其工作原理以及如何创建和管理 swap 分区。通过本指南优化您的系统内存使用！"
-keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 虚拟内存，Linux 初学者，Linux 教程"
+meta_description: "了解 Linux swap 空间、其工作原理以及如何创建和管理 swap 分区。通过本指南优化您的系统内存使用！"
+meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 虚拟内存，Linux 初学者，Linux 教程"
 ---
 
 ## Lesson Content

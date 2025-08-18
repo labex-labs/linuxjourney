@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "ICMP"
-description: "ICMP 프로토콜의 기본 사항, 메시지 유형 및 네트워크 문제 해결을 위한 코드를 학습합니다. ICMP 가 네트워크 문제를 디버깅하는 방법을 이해합니다."
-keywords: "ICMP, ICMP 프로토콜, 네트워크 문제 해결, ICMP 유형, Linux 네트워킹, 초급, 튜토리얼, 가이드"
+meta_description: "ICMP 프로토콜의 기본 사항, 메시지 유형 및 네트워크 문제 해결을 위한 코드를 학습합니다. ICMP 가 네트워크 문제를 디버깅하는 방법을 이해합니다."
+meta_keywords: "ICMP, ICMP 프로토콜, 네트워크 문제 해결, ICMP 유형, Linux 네트워킹, 초급, 튜토리얼, 가이드"
 ---
 
 ## Lesson Content

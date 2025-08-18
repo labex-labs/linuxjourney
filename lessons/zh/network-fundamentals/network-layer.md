@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "网络层"
-description: "了解 Linux 中的网络层，IP 地址如何跨子网路由数据包，以及它在数据传输中的作用。开始您的 Linux 网络之旅！"
-keywords: "网络层，IP 地址，子网，Linux 网络，数据包路由，初学者，教程，指南"
+meta_description: "了解 Linux 中的网络层，IP 地址如何跨子网路由数据包，以及它在数据传输中的作用。开始您的 Linux 网络之旅！"
+meta_keywords: "网络层，IP 地址，子网，Linux 网络，数据包路由，初学者，教程，指南"
 ---
 
 ## Lesson Content

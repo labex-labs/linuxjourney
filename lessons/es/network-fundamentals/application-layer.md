@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Capa de Aplicación"
-description: "Aprenda sobre la capa de aplicación en el modelo TCP/IP, cómo maneja los datos para el correo electrónico (SMTP) y su papel en la comunicación de red. Comprenda las capas de red."
-keywords: "Capa de aplicación, modelo TCP/IP, SMTP, capas de red, redes Linux, tutorial para principiantes, comunicación de red"
+meta_description: "Aprenda sobre la capa de aplicación en el modelo TCP/IP, cómo maneja los datos para el correo electrónico (SMTP) y su papel en la comunicación de red. Comprenda las capas de red."
+meta_keywords: "Capa de aplicación, modelo TCP/IP, SMTP, capas de red, redes Linux, tutorial para principiantes, comunicación de red"
 ---
 
 ## Lesson Content

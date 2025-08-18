@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Création de systèmes de fichiers"
-description: "Apprenez à créer des systèmes de fichiers sur Linux en utilisant mkfs. Ce guide convivial pour les débutants couvre ext4 et le partitionnement de disque. Commencez votre parcours Linux !"
-keywords: "mkfs, créer un système de fichiers, ext4, partitionnement Linux, tutoriel Linux, Linux pour débutants, gestion de disque, guide Linux"
+meta_description: "Apprenez à créer des systèmes de fichiers sur Linux en utilisant mkfs. Ce guide convivial pour les débutants couvre ext4 et le partitionnement de disque. Commencez votre parcours Linux !"
+meta_keywords: "mkfs, créer un système de fichiers, ext4, partitionnement Linux, tutoriel Linux, Linux pour débutants, gestion de disque, guide Linux"
 ---
 
 ## Lesson Content

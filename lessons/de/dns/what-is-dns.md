@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Was ist DNS?"
-description: "Erfahren Sie, was DNS ist und wie es Domainnamen in IP-Adressen übersetzt. Verstehen Sie dieses zentrale Internetkonzept mit unserem anfängerfreundlichen Linux-Leitfaden."
-keywords: "DNS, Domain Name System, IP-Adresse, Hostname, Linux-Netzwerk, Anfänger, Tutorial, Leitfaden"
+meta_description: "Erfahren Sie, was DNS ist und wie es Domainnamen in IP-Adressen übersetzt. Verstehen Sie dieses zentrale Internetkonzept mit unserem anfängerfreundlichen Linux-Leitfaden."
+meta_keywords: "DNS, Domain Name System, IP-Adresse, Hostname, Linux-Netzwerk, Anfänger, Tutorial, Leitfaden"
 ---
 
 ## Lesson Content

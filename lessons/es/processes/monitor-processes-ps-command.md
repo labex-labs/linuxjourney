@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "ps (Procesos)"
-description: "Aprende sobre el comando 'ps' de Linux para ver los procesos en ejecución y entender los IDs de proceso (PIDs). Obtén una guía para principiantes sobre la gestión de procesos."
-keywords: "comando ps, procesos Linux, ID de proceso, PID, tutorial Linux, principiante, guía, comando top"
+meta_description: "Aprende sobre el comando 'ps' de Linux para ver los procesos en ejecución y entender los IDs de proceso (PIDs). Obtén una guía para principiantes sobre la gestión de procesos."
+meta_keywords: "comando ps, procesos Linux, ID de proceso, PID, tutorial Linux, principiante, guía, comando top"
 ---
 
 ## Lesson Content

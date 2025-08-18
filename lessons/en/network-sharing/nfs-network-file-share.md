@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "NFS"
-description: "Learn about NFS client setup and automounting in Linux. Understand how to connect to network file shares and use automount for seamless access."
-keywords: "NFS client, automount, Network File System, Linux networking, mount command, Linux tutorial, beginner"
+meta_description: "Learn about NFS client setup and automounting in Linux. Understand how to connect to network file shares and use automount for seamless access."
+meta_keywords: "NFS client, automount, Network File System, Linux networking, mount command, Linux tutorial, beginner"
 ---
 
 ## Lesson Content

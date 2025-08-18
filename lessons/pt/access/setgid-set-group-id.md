@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Setgid"
-description: "Aprenda sobre as permissões SGID (Set Group ID) do Linux, como elas funcionam e como modificá-las. Entenda este conceito crucial de segurança do Linux."
-keywords: "Linux SGID, Set Group ID, permissões Linux, chmod g+s, segurança Linux, Linux para iniciantes, tutorial Linux"
+meta_description: "Aprenda sobre as permissões SGID (Set Group ID) do Linux, como elas funcionam e como modificá-las. Entenda este conceito crucial de segurança do Linux."
+meta_keywords: "Linux SGID, Set Group ID, permissões Linux, chmod g+s, segurança Linux, Linux para iniciantes, tutorial Linux"
 ---
 
 ## Lesson Content

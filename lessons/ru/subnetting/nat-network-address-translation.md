@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "NAT"
-description: "Узнайте о NAT (Network Address Translation) в Linux, как он работает и его роль в сетевой безопасности. Разберитесь в частных и публичных IP-адресах. Руководство по сетям Linux."
-keywords: "NAT, Network Address Translation, сети Linux, частный IP, публичный IP, учебник Linux, руководство для начинающих"
+meta_description: "Узнайте о NAT (Network Address Translation) в Linux, как он работает и его роль в сетевой безопасности. Разберитесь в частных и публичных IP-адресах. Руководство по сетям Linux."
+meta_keywords: "NAT, Network Address Translation, сети Linux, частный IP, публичный IP, учебник Linux, руководство для начинающих"
 ---
 
 ## Lesson Content

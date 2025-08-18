@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Navigation Vim"
-description: "Apprenez les bases de la navigation Vim en utilisant les touches h, j, k, l. Comprenez les mouvements essentiels de Vim pour les débutants et améliorez vos compétences en ligne de commande Linux."
-keywords: "navigation Vim, tutoriel Vim, Linux Vim, mouvement Vim, bases Vim, Vim débutant, éditeur de texte Linux, guide Vim"
+meta_description: "Apprenez les bases de la navigation Vim en utilisant les touches h, j, k, l. Comprenez les mouvements essentiels de Vim pour les débutants et améliorez vos compétences en ligne de commande Linux."
+meta_keywords: "navigation Vim, tutoriel Vim, Linux Vim, mouvement Vim, bases Vim, Vim débutant, éditeur de texte Linux, guide Vim"
 ---
 
 ## Lesson Content

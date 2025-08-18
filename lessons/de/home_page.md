@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Startseite"
-description: "Lernen Sie Linux-Grundlagen, Befehlszeile, Benutzerverwaltung und Netzwerke. Entdecken Sie Themen für Anfänger bis Fortgeschrittene für eine effektive Linux-Systemadministration."
-keywords: "Linux-Tutorial, Befehlszeile, Linux-Anfänger, Systemadministration, Linux-Handbuch, Netzwerke, Paketverwaltung, Linux-Befehle"
+meta_description: "Lernen Sie Linux-Grundlagen, Befehlszeile, Benutzerverwaltung und Netzwerke. Entdecken Sie Themen für Anfänger bis Fortgeschrittene für eine effektive Linux-Systemadministration."
+meta_keywords: "Linux-Tutorial, Befehlszeile, Linux-Anfänger, Systemadministration, Linux-Handbuch, Netzwerke, Paketverwaltung, Linux-Befehle"
 ---
 
 ## Grasshopper

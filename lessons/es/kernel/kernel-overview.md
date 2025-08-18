@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Visión general del Kernel"
-description: "Aprende sobre el kernel de Linux, su papel en el sistema operativo y cómo interactúa con el hardware y el espacio de usuario. Comprende los componentes centrales del sistema operativo."
-keywords: "kernel de Linux, sistema operativo, interacción con hardware, espacio de usuario, tutorial de Linux, guía para principiantes"
+meta_description: "Aprende sobre el kernel de Linux, su papel en el sistema operativo y cómo interactúa con el hardware y el espacio de usuario. Comprende los componentes centrales del sistema operativo."
+meta_keywords: "kernel de Linux, sistema operativo, interacción con hardware, espacio de usuario, tutorial de Linux, guía para principiantes"
 ---
 
 ## Lesson Content

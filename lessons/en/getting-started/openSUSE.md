@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "openSUSE"
-description: "Learn about openSUSE Linux, its history, package management (RPM), and configurability with YaST. Discover why openSUSE is great for beginners."
-keywords: "openSUSE, Linux distribution, RPM, YaST, Linux for beginners, openSUSE tutorial, Linux guide"
+meta_description: "Learn about openSUSE Linux, its history, package management (RPM), and configurability with YaST. Discover why openSUSE is great for beginners."
+meta_keywords: "openSUSE, Linux distribution, RPM, YaST, Linux for beginners, openSUSE tutorial, Linux guide"
 ---
 
 ## Lesson Content

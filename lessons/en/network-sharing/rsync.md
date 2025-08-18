@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "rsync"
-description: "Learn rsync for efficient Linux file synchronization and backups. Understand remote and local data transfer with rsync commands and options. Improve your Linux skills!"
-keywords: "rsync, Linux file transfer, data backup, file sync, Linux tutorial, rsync commands, beginner, guide"
+meta_description: "Learn rsync for efficient Linux file synchronization and backups. Understand remote and local data transfer with rsync commands and options. Improve your Linux skills!"
+meta_keywords: "rsync, Linux file transfer, data backup, file sync, Linux tutorial, rsync commands, beginner, guide"
 ---
 
 ## Lesson Content

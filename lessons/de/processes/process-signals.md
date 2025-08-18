@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Signale"
-description: "Erfahren Sie mehr über Linux-Signale, ihren Zweck, gängige Typen wie SIGINT & SIGKILL und wie Prozesse sie handhaben. Verstehen Sie die Grundlagen von Signalen für eine bessere Linux-Kontrolle."
-keywords: "Linux-Signale, SIGKILL, SIGINT, Prozesskommunikation, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Erfahren Sie mehr über Linux-Signale, ihren Zweck, gängige Typen wie SIGINT & SIGKILL und wie Prozesse sie handhaben. Verstehen Sie die Grundlagen von Signalen für eine bessere Linux-Kontrolle."
+meta_keywords: "Linux-Signale, SIGKILL, SIGINT, Prozesskommunikation, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---
 
 ## Lesson Content

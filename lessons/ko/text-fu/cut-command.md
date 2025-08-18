@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "cut"
-description: "Linux `cut` 명령어를 사용하여 파일에서 텍스트를 추출하는 방법을 배웁니다. 이 초보자 친화적인 튜토리얼은 문자 및 필드 자르기를 다룹니다. Linux 텍스트 처리 기술을 향상시키세요!"
-keywords: "cut 명령어, Linux 텍스트 처리, 텍스트 추출, Linux 튜토리얼, 초보자 Linux, cut 예제, Linux 가이드"
+meta_description: "Linux `cut` 명령어를 사용하여 파일에서 텍스트를 추출하는 방법을 배웁니다. 이 초보자 친화적인 튜토리얼은 문자 및 필드 자르기를 다룹니다. Linux 텍스트 처리 기술을 향상시키세요!"
+meta_keywords: "cut 명령어, Linux 텍스트 처리, 텍스트 추출, Linux 튜토리얼, 초보자 Linux, cut 예제, Linux 가이드"
 ---
 
 ## Lesson Content

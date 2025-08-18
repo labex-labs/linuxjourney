@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "cp (Копирование)"
-description: "Узнайте, как использовать команду Linux cp для копирования файлов и каталогов. Изучите такие опции, как -r и wildcards. Начните свое путешествие по Linux сегодня!"
-keywords: "команда cp, копирование файлов Linux, учебник Linux, Linux для начинающих, cp -r, wildcards Linux, руководство Linux"
+meta_description: "Узнайте, как использовать команду Linux cp для копирования файлов и каталогов. Изучите такие опции, как -r и wildcards. Начните свое путешествие по Linux сегодня!"
+meta_keywords: "команда cp, копирование файлов Linux, учебник Linux, Linux для начинающих, cp -r, wildcards Linux, руководство Linux"
 ---
 
 ## Lesson Content

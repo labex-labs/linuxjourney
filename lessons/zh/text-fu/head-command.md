@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "head"
-description: "学习如何使用 Linux 'head' 命令查看文件的开头。了解 -n 等选项以控制行数。必备的 Linux 命令教程。"
-keywords: "head 命令，Linux head, 查看文件开头，Linux 教程，Linux 命令，Linux 初学者，head -n, Linux 指南"
+meta_description: "学习如何使用 Linux 'head' 命令查看文件的开头。了解 -n 等选项以控制行数。必备的 Linux 命令教程。"
+meta_keywords: "head 命令，Linux head, 查看文件开头，Linux 教程，Linux 命令，Linux 初学者，head -n, Linux 指南"
 ---
 
 ## Lesson Content

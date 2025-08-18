@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "셸"
-description: "Linux 셸, Bash, 그리고 'echo'와 같은 기본 명령에 대해 알아보세요. 셸 프롬프트를 이해하고 이 초보자 친화적인 가이드로 Linux 여정을 시작하세요."
-keywords: "Linux 셸, Bash, echo 명령, Linux 튜토리얼, 명령줄, 초보자 Linux, 셸 프롬프트, Linux 가이드"
+meta_description: "Linux 셸, Bash, 그리고 'echo'와 같은 기본 명령에 대해 알아보세요. 셸 프롬프트를 이해하고 이 초보자 친화적인 가이드로 Linux 여정을 시작하세요."
+meta_keywords: "Linux 셸, Bash, echo 명령, Linux 튜토리얼, 명령줄, 초보자 Linux, 셸 프롬프트, Linux 가이드"
 ---
 
 ## Lesson Content

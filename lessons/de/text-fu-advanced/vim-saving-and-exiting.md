@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Vim Speichern und Beenden"
-description: "Erfahren Sie, wie Sie Vim effektiv speichern und beenden, mit wichtigen Befehlen wie :w, :q und :wq. Meistern Sie grundlegende Vim-Operationen für effiziente Textbearbeitung."
-keywords: "Vim speichern, Vim beenden, Vim-Befehle, :wq, :q!, Linux Texteditor, Vim Tutorial, Vim für Anfänger"
+meta_description: "Erfahren Sie, wie Sie Vim effektiv speichern und beenden, mit wichtigen Befehlen wie :w, :q und :wq. Meistern Sie grundlegende Vim-Operationen für effiziente Textbearbeitung."
+meta_keywords: "Vim speichern, Vim beenden, Vim-Befehle, :wq, :q!, Linux Texteditor, Vim Tutorial, Vim für Anfänger"
 ---
 
 ## Lesson Content

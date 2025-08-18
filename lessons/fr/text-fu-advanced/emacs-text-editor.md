@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Emacs"
-description: "Apprenez Emacs, un éditeur de texte puissant et extensible pour Linux. Comprenez les buffers Emacs et l'utilisation de base. Commencez votre parcours Emacs dès aujourd'hui !"
-keywords: "Emacs, éditeur de texte Linux, tutoriel Emacs, buffers Emacs, commandes Linux, débutant, guide"
+meta_description: "Apprenez Emacs, un éditeur de texte puissant et extensible pour Linux. Comprenez les buffers Emacs et l'utilisation de base. Commencez votre parcours Emacs dès aujourd'hui !"
+meta_keywords: "Emacs, éditeur de texte Linux, tutoriel Emacs, buffers Emacs, commandes Linux, débutant, guide"
 ---
 
 ## Lesson Content

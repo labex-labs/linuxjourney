@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "touch"
-description: "Apprenez à utiliser la commande Linux touch pour créer de nouveaux fichiers et mettre à jour les horodatages. Ce guide convivial pour débutants vous aide à comprendre la gestion des fichiers."
-keywords: "commande touch, créer des fichiers, tutoriel Linux, horodatages de fichiers, Linux pour débutants, guide Linux, commandes de base"
+meta_description: "Apprenez à utiliser la commande Linux touch pour créer de nouveaux fichiers et mettre à jour les horodatages. Ce guide convivial pour débutants vous aide à comprendre la gestion des fichiers."
+meta_keywords: "commande touch, créer des fichiers, tutoriel Linux, horodatages de fichiers, Linux pour débutants, guide Linux, commandes de base"
 ---
 
 ## Lesson Content

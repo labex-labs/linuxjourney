@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "mkdir (创建目录)"
-description: "学习如何使用 mkdir 命令在 Linux 中创建目录和子目录。这个适合初学者的教程帮助您高效地组织文件。"
-keywords: "mkdir, 创建目录，linux 命令，linux 教程，linux 初学者，linux 指南"
+meta_description: "学习如何使用 mkdir 命令在 Linux 中创建目录和子目录。这个适合初学者的教程帮助您高效地组织文件。"
+meta_keywords: "mkdir, 创建目录，linux 命令，linux 教程，linux 初学者，linux 指南"
 ---
 
 ## Lesson Content

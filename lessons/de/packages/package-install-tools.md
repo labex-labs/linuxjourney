@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "rpm und dpkg"
-description: "Lernen Sie, Pakete mit den Befehlen rpm und dpkg zu installieren, zu entfernen und aufzulisten. Verstehen Sie die direkte Paketverwaltung für .deb- und .rpm-Dateien. Beginnen Sie Ihre Linux-Reise!"
-keywords: "rpm, dpkg, Linux-Paketverwaltung, .deb, .rpm, Linux-Tutorial, Anfängerleitfaden, Pakete installieren"
+meta_description: "Lernen Sie, Pakete mit den Befehlen rpm und dpkg zu installieren, zu entfernen und aufzulisten. Verstehen Sie die direkte Paketverwaltung für .deb- und .rpm-Dateien. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "rpm, dpkg, Linux-Paketverwaltung, .deb, .rpm, Linux-Tutorial, Anfängerleitfaden, Pakete installieren"
 ---
 
 ## Lesson Content

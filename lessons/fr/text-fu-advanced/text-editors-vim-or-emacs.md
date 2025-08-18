@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Éditeurs de texte"
-description: "Découvrez les éditeurs de texte Linux comme Vim et Emacs. Explorez leurs utilisations et leur importance pour la navigation système. Commencez votre parcours avec les éditeurs de texte Linux !"
-keywords: "éditeurs de texte Linux, Vim, Emacs, commandes Linux, tutoriel Linux, Linux pour débutants, guide Linux"
+meta_description: "Découvrez les éditeurs de texte Linux comme Vim et Emacs. Explorez leurs utilisations et leur importance pour la navigation système. Commencez votre parcours avec les éditeurs de texte Linux !"
+meta_keywords: "éditeurs de texte Linux, Vim, Emacs, commandes Linux, tutoriel Linux, Linux pour débutants, guide Linux"
 ---
 
 ## Lesson Content

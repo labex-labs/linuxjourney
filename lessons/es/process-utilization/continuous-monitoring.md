@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Monitoreo Continuo"
-description: "Aprende el monitoreo continuo de sistemas Linux con sar. Comprende la instalación, la recolección de datos y cómo analizar el uso histórico de recursos para el rendimiento. ¡Empieza ya!"
-keywords: "sar, sysstat, monitoreo de Linux, rendimiento del sistema, monitoreo continuo, principiante, tutorial, guía"
+meta_description: "Aprende el monitoreo continuo de sistemas Linux con sar. Comprende la instalación, la recolección de datos y cómo analizar el uso histórico de recursos para el rendimiento. ¡Empieza ya!"
+meta_keywords: "sar, sysstat, monitoreo de Linux, rendimiento del sistema, monitoreo continuo, principiante, tutorial, guía"
 ---
 
 ## Lesson Content

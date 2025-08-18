@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "mkdir (디렉토리 만들기)"
-description: "Linux 에서 mkdir 명령어를 사용하여 디렉토리와 하위 디렉토리를 만드는 방법을 배웁니다. 이 초보자 친화적인 튜토리얼은 파일을 효율적으로 정리하는 데 도움이 됩니다."
-keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
+meta_description: "Linux 에서 mkdir 명령어를 사용하여 디렉토리와 하위 디렉토리를 만드는 방법을 배웁니다. 이 초보자 친화적인 튜토리얼은 파일을 효율적으로 정리하는 데 도움이 됩니다."
+meta_keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "syslog"
-description: "Linux における syslog と rsyslog、システムログの管理方法、logger コマンドの使用方法について学びます。この初心者向けのチュートリアルで始めましょう！"
-keywords: "syslog, rsyslog, Linux ログ，logger コマンド，/var/log/syslog, Linux チュートリアル，初心者 Linux, システムロギング"
+meta_description: "Linux における syslog と rsyslog、システムログの管理方法、logger コマンドの使用方法について学びます。この初心者向けのチュートリアルで始めましょう！"
+meta_keywords: "syslog, rsyslog, Linux ログ，logger コマンド，/var/log/syslog, Linux チュートリアル，初心者 Linux, システムロギング"
 ---
 
 ## Lesson Content

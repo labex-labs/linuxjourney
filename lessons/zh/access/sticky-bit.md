@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "粘滞位"
-description: "了解 Linux 粘滞位、它在 /tmp 等共享目录中的用途，以及如何使用 chmod 设置它。理解这个关键的文件权限！"
-keywords: "Linux 粘滞位，chmod +t, /tmp 目录，Linux 权限，文件安全，Linux 教程，Linux 初学者"
+meta_description: "了解 Linux 粘滞位、它在 /tmp 等共享目录中的用途，以及如何使用 chmod 设置它。理解这个关键的文件权限！"
+meta_keywords: "Linux 粘滞位，chmod +t, /tmp 目录，Linux 权限，文件安全，Linux 教程，Linux 初学者"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "プロセスの終了"
-description: "Linux プロセスの終了、孤児プロセスとゾンビプロセスについて学びます。効果的なプロセス管理のための_exit および wait システムコールを理解します。"
-keywords: "Linux プロセス終了，ゾンビプロセス，孤児プロセス，wait システムコール，_exit, Linux チュートリアル，Linux 初心者"
+meta_description: "Linux プロセスの終了、孤児プロセスとゾンビプロセスについて学びます。効果的なプロセス管理のための_exit および wait システムコールを理解します。"
+meta_keywords: "Linux プロセス終了，ゾンビプロセス，孤児プロセス，wait システムコール，_exit, Linux チュートリアル，Linux 初心者"
 ---
 
 ## Lesson Content

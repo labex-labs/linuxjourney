@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Routing Protocols"
-description: "Learn about routing protocols like distance vector and link state. Understand network convergence and how routers adapt to changes. Start your Linux networking journey!"
-keywords: "routing protocols, network convergence, distance vector, link state, Linux networking, beginner guide, network tutorial"
+meta_description: "Learn about routing protocols like distance vector and link state. Understand network convergence and how routers adapt to changes. Start your Linux networking journey!"
+meta_keywords: "routing protocols, network convergence, distance vector, link state, Linux networking, beginner guide, network tutorial"
 ---
 
 ## Lesson Content

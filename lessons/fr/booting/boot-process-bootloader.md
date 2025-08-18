@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Processus de démarrage : Chargeur de démarrage"
-description: "Découvrez le chargeur de démarrage Linux, ses fonctions et les paramètres courants du noyau comme initrd et root. Comprenez GRUB et optimisez votre processus de démarrage Linux."
-keywords: "chargeur de démarrage Linux, GRUB, paramètres du noyau, initrd, système de fichiers racine, processus de démarrage Linux, tutoriel Linux, Linux pour débutants"
+meta_description: "Découvrez le chargeur de démarrage Linux, ses fonctions et les paramètres courants du noyau comme initrd et root. Comprenez GRUB et optimisez votre processus de démarrage Linux."
+meta_keywords: "chargeur de démarrage Linux, GRUB, paramètres du noyau, initrd, système de fichiers racine, processus de démarrage Linux, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content

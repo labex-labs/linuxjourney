@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "lsusb, lspci, lsscsi"
-description: "Aprenda a listar dispositivos USB, PCI e SCSI usando os comandos lsusb, lspci e lsscsi. Entenda seu hardware Linux com este guia amigável para iniciantes."
-keywords: "lsusb, lspci, lsscsi, comandos Linux, listagem de dispositivos, informações de hardware, tutorial Linux, guia para iniciantes"
+meta_description: "Aprenda a listar dispositivos USB, PCI e SCSI usando os comandos lsusb, lspci e lsscsi. Entenda seu hardware Linux com este guia amigável para iniciantes."
+meta_keywords: "lsusb, lspci, lsscsi, comandos Linux, listagem de dispositivos, informações de hardware, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

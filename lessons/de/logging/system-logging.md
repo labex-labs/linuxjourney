@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Systemprotokollierung"
-description: "Erfahren Sie mehr über die Linux-Systemprotokollierung, syslog und wie Sie Protokolldateien in /var/log anzeigen können. Verstehen Sie rsyslogd und überwachen Sie Systemereignisse mit diesem Leitfaden für Anfänger."
-keywords: "Linux-Protokollierung, syslog, rsyslogd, var log, Systemprotokolle, Linux-Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über die Linux-Systemprotokollierung, syslog und wie Sie Protokolldateien in /var/log anzeigen können. Verstehen Sie rsyslogd und überwachen Sie Systemereignisse mit diesem Leitfaden für Anfänger."
+meta_keywords: "Linux-Protokollierung, syslog, rsyslogd, var log, Systemprotokolle, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

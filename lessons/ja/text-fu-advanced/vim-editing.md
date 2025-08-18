@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Vim 編集"
-description: "Vim 編集の基本：テキストの削除、変更、コピー、貼り付けを効率的に学びます。初心者向けの必須 Vim コマンドを習得し、Linux のテキスト編集スキルを向上させます。"
-keywords: "Vim 編集，Vim コマンド，Linux テキストエディタ，Vim チュートリアル，Vim ガイド，初心者 Vim, dd コマンド，Vim 削除"
+meta_description: "Vim 編集の基本：テキストの削除、変更、コピー、貼り付けを効率的に学びます。初心者向けの必須 Vim コマンドを習得し、Linux のテキスト編集スキルを向上させます。"
+meta_keywords: "Vim 編集，Vim コマンド，Linux テキストエディタ，Vim チュートリアル，Vim ガイド，初心者 Vim, dd コマンド，Vim 削除"
 ---
 
 ## Lesson Content

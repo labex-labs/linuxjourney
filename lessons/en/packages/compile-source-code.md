@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Compile Source Code"
-description: "Learn how to compile source code in Linux using make, configure, and checkinstall. Understand the build process for beginners and intermediate users."
-keywords: "compile source code, make install, checkinstall, Linux compile, build-essential, Linux tutorial, beginner guide"
+meta_description: "Learn how to compile source code in Linux using make, configure, and checkinstall. Understand the build process for beginners and intermediate users."
+meta_keywords: "compile source code, make install, checkinstall, Linux compile, build-essential, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content

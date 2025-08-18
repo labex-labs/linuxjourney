@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "traceroute"
-description: "Erfahren Sie, wie Sie den Linux-Befehl traceroute verwenden, um Netzwerkrouten zu verfolgen und Konnektivitätsprobleme zu beheben. Verstehen Sie TTL und Paket-Routing für Anfänger."
-keywords: "traceroute, Linux-Netzwerk, Netzwerk-Fehlerbehebung, TTL, Linux-Befehle, Anfänger, Tutorial"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl traceroute verwenden, um Netzwerkrouten zu verfolgen und Konnektivitätsprobleme zu beheben. Verstehen Sie TTL und Paket-Routing für Anfänger."
+meta_keywords: "traceroute, Linux-Netzwerk, Netzwerk-Fehlerbehebung, TTL, Linux-Befehle, Anfänger, Tutorial"
 ---
 
 ## Lesson Content

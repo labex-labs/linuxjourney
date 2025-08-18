@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Модель TCP/IP"
-description: "Узнайте о слоях модели TCP/IP: Application, Transport, Network и Link. Поймите, как данные передаются по сетям. Начните свой путь в сетевых технологиях Linux!"
-keywords: "модель TCP/IP, основы сетей, сети Linux, TCP, IP, руководство для начинающих, сетевые уровни, руководство"
+meta_description: "Узнайте о слоях модели TCP/IP: Application, Transport, Network и Link. Поймите, как данные передаются по сетям. Начните свой путь в сетевых технологиях Linux!"
+meta_keywords: "модель TCP/IP, основы сетей, сети Linux, TCP, IP, руководство для начинающих, сетевые уровни, руководство"
 ---
 
 ## Lesson Content

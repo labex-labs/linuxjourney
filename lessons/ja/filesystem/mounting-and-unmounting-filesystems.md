@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "mount と umount"
-description: "Linux の mount コマンドと umount コマンドを使ってファイルシステムを管理する方法を学びましょう。デバイスのマウント、アンマウント、UUID について初心者向けに理解を深めます。"
-keywords: "Linux mount, umount command, mount filesystem, Linux UUID, beginner Linux, Linux tutorial, mount point, Linux guide"
+meta_description: "Linux の mount コマンドと umount コマンドを使ってファイルシステムを管理する方法を学びましょう。デバイスのマウント、アンマウント、UUID について初心者向けに理解を深めます。"
+meta_keywords: "Linux mount, umount command, mount filesystem, Linux UUID, beginner Linux, Linux tutorial, mount point, Linux guide"
 ---
 
 ## Lesson Content

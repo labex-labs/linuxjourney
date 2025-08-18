@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "テキストエディタ"
-description: "Vim や Emacs のような Linux テキストエディタについて学びましょう。それらの用途とシステムナビゲーションにおける重要性を発見してください。Linux テキストエディタの旅を始めましょう！"
-keywords: "Linux テキストエディタ，Vim, Emacs, Linux コマンド，Linux チュートリアル，初心者 Linux, Linux ガイド"
+meta_description: "Vim や Emacs のような Linux テキストエディタについて学びましょう。それらの用途とシステムナビゲーションにおける重要性を発見してください。Linux テキストエディタの旅を始めましょう！"
+meta_keywords: "Linux テキストエディタ，Vim, Emacs, Linux コマンド，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

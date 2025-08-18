@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "DNS-Komponenten"
-description: "Erfahren Sie mehr über DNS-Komponenten: Name Server, Zone Files und Resource Records. Verstehen Sie, wie DNS für Anfänger funktioniert. Beginnen Sie Ihre Linux-Netzwerkreise!"
-keywords: "DNS-Komponenten, Name Server, Zone File, Resource Records, DNS-Tutorial, Linux-Netzwerk, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über DNS-Komponenten: Name Server, Zone Files und Resource Records. Verstehen Sie, wie DNS für Anfänger funktioniert. Beginnen Sie Ihre Linux-Netzwerkreise!"
+meta_keywords: "DNS-Komponenten, Name Server, Zone File, Resource Records, DNS-Tutorial, Linux-Netzwerk, Anfängerleitfaden"
 ---
 
 ## Lesson Content

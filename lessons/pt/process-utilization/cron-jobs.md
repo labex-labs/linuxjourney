@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Cron Jobs"
-description: "Aprenda a agendar tarefas Linux com cron jobs. Entenda a sintaxe do crontab e automatize scripts para operações diárias. Comece com este guia para iniciantes!"
-keywords: "cron jobs, crontab, agendar tarefas, automação Linux, comandos Linux, Linux para iniciantes, tutorial Linux, crontab -e"
+meta_description: "Aprenda a agendar tarefas Linux com cron jobs. Entenda a sintaxe do crontab e automatize scripts para operações diárias. Comece com este guia para iniciantes!"
+meta_keywords: "cron jobs, crontab, agendar tarefas, automação Linux, comandos Linux, Linux para iniciantes, tutorial Linux, crontab -e"
 ---
 
 ## Lesson Content

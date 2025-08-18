@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "whatis"
-description: "Learn what the 'whatis' command does in Linux. Get brief descriptions of commands quickly. Essential for beginners to understand Linux commands."
-keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
+meta_description: "Learn what the 'whatis' command does in Linux. Get brief descriptions of commands quickly. Essential for beginners to understand Linux commands."
+meta_keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
 ---
 
 ## Lesson Content

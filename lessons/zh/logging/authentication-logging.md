@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "身份验证日志"
-description: "通过 /var/log/auth.log 了解 Linux 身份验证日志。通过这份基本指南，了解用户登录并排查访问问题。"
-keywords: "Linux 身份验证，auth.log, Linux 日志记录，用户登录，Linux 安全，初学者，教程，指南"
+meta_description: "通过 /var/log/auth.log 了解 Linux 身份验证日志。通过这份基本指南，了解用户登录并排查访问问题。"
+meta_keywords: "Linux 身份验证，auth.log, Linux 日志记录，用户登录，Linux 安全，初学者，教程，指南"
 ---
 
 ## Lesson Content

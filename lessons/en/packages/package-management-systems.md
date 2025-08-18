@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "yum and apt"
-description: "Learn yum and apt for Linux package management. Install, remove, and update software on Debian/RPM systems with this beginner tutorial. Get started today!"
-keywords: "yum, apt, Linux package management, apt tutorial, yum tutorial, Linux commands, beginner guide, package install"
+meta_description: "Learn yum and apt for Linux package management. Install, remove, and update software on Debian/RPM systems with this beginner tutorial. Get started today!"
+meta_keywords: "yum, apt, Linux package management, apt tutorial, yum tutorial, Linux commands, beginner guide, package install"
 ---
 
 ## Lesson Content

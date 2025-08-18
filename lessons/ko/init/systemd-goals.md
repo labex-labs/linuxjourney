@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "Systemd 목표"
-description: "systemd 유닛의 기본 사항과 필수 systemctl 명령어를 배우세요. Linux 에서 서비스를 관리하고, 상태를 확인하고, 유닛을 활성화하는 방법을 이해하세요. 여정을 시작하세요!"
-keywords: "systemd, systemctl, Linux 서비스, 유닛 파일, 초보자, 튜토리얼, 가이드, Linux 명령어"
+meta_description: "systemd 유닛의 기본 사항과 필수 systemctl 명령어를 배우세요. Linux 에서 서비스를 관리하고, 상태를 확인하고, 유닛을 활성화하는 방법을 이해하세요. 여정을 시작하세요!"
+meta_keywords: "systemd, systemctl, Linux 서비스, 유닛 파일, 초보자, 튜토리얼, 가이드, Linux 명령어"
 ---
 
 ## Lesson Content

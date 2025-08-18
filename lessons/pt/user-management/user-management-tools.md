@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Ferramentas de Gerenciamento de Usuários"
-description: "Aprenda o gerenciamento de usuários Linux: adicione, remova e altere senhas com os comandos useradd, userdel e passwd. Comece com este guia para iniciantes!"
-keywords: "gerenciamento de usuários Linux, adduser, userdel, passwd, tutorial Linux, Linux para iniciantes, contas de usuário, comandos Linux"
+meta_description: "Aprenda o gerenciamento de usuários Linux: adicione, remova e altere senhas com os comandos useradd, userdel e passwd. Comece com este guia para iniciantes!"
+meta_keywords: "gerenciamento de usuários Linux, adduser, userdel, passwd, tutorial Linux, Linux para iniciantes, contas de usuário, comandos Linux"
 ---
 
 ## Lesson Content

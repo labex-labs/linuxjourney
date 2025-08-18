@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "help"
-description: "Learn how to use the 'help' command in Bash for quick command-line assistance. Understand built-in commands and find options for Linux programs."
-keywords: "Linux help command, Bash help, command line help, Linux commands, beginner Linux, Linux tutorial, Bash tutorial"
+meta_description: "Learn how to use the 'help' command in Bash for quick command-line assistance. Understand built-in commands and find options for Linux programs."
+meta_keywords: "Linux help command, Bash help, command line help, Linux commands, beginner Linux, Linux tutorial, Bash tutorial"
 ---
 
 ## Lesson Content

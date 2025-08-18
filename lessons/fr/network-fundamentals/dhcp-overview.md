@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Présentation du DHCP"
-description: "Découvrez le DHCP (Dynamic Host Configuration Protocol) sous Linux. Comprenez comment DHCP attribue les adresses IP et son processus en quatre étapes. Commencez votre parcours de mise en réseau Linux !"
-keywords: "DHCP, Dynamic Host Configuration Protocol, réseau Linux, adresse IP, tutoriel DHCP, débutant, guide"
+meta_description: "Découvrez le DHCP (Dynamic Host Configuration Protocol) sous Linux. Comprenez comment DHCP attribue les adresses IP et son processus en quatre étapes. Commencez votre parcours de mise en réseau Linux !"
+meta_keywords: "DHCP, Dynamic Host Configuration Protocol, réseau Linux, adresse IP, tutoriel DHCP, débutant, guide"
 ---
 
 ## Lesson Content

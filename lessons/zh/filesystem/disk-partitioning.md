@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "磁盘分区"
-description: "使用 parted 学习 Linux 磁盘分区。了解如何分区、选择、查看和调整磁盘大小。通过这个适合初学者的指南开始吧！"
-keywords: "Linux 磁盘分区，parted 命令，fdisk, gparted, Linux 教程，Linux 初学者，磁盘管理，Linux 指南"
+meta_description: "使用 parted 学习 Linux 磁盘分区。了解如何分区、选择、查看和调整磁盘大小。通过这个适合初学者的指南开始吧！"
+meta_keywords: "Linux 磁盘分区，parted 命令，fdisk, gparted, Linux 教程，Linux 初学者，磁盘管理，Linux 指南"
 ---
 
 ## Lesson Content

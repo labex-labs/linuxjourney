@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Boot-Prozess: BIOS"
-description: "Erfahren Sie mehr über den Linux-Bootprozess, BIOS und MBR. Verstehen Sie, wie Ihr System startet, mit diesem anfängerfreundlichen Leitfaden. Entdecken Sie UEFI-Konzepte!"
-keywords: "Linux-Bootprozess, BIOS, MBR, UEFI, Linux-Tutorial, Bootloader, Linux für Anfänger, Systemstart"
+meta_description: "Erfahren Sie mehr über den Linux-Bootprozess, BIOS und MBR. Verstehen Sie, wie Ihr System startet, mit diesem anfängerfreundlichen Leitfaden. Entdecken Sie UEFI-Konzepte!"
+meta_keywords: "Linux-Bootprozess, BIOS, MBR, UEFI, Linux-Tutorial, Bootloader, Linux für Anfänger, Systemstart"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "Задания Cron"
-description: "Научитесь планировать задачи Linux с помощью заданий cron. Изучите синтаксис crontab и автоматизируйте скрипты для повседневных операций. Начните с этого руководства для начинающих!"
-keywords: "cron jobs, crontab, schedule tasks, Linux automation, Linux commands, beginner Linux, Linux tutorial, crontab -e"
+meta_description: "Научитесь планировать задачи Linux с помощью заданий cron. Изучите синтаксис crontab и автоматизируйте скрипты для повседневных операций. Начните с этого руководства для начинающих!"
+meta_keywords: "cron jobs, crontab, schedule tasks, Linux automation, Linux commands, beginner Linux, Linux tutorial, crontab -e"
 ---
 
 ## Lesson Content

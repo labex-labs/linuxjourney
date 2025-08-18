@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Subnets"
-description: "Aprenda sobre subnets e subnet masks em redes Linux. Entenda os prefixos de rede e como as subnets segmentam o tráfego. Comece com este guia amigável para iniciantes!"
-keywords: "subnets, subnet mask, network prefix, Linux networking, IP address, iniciante, tutorial, ifconfig"
+meta_description: "Aprenda sobre subnets e subnet masks em redes Linux. Entenda os prefixos de rede e como as subnets segmentam o tráfego. Comece com este guia amigável para iniciantes!"
+meta_keywords: "subnets, subnet mask, network prefix, Linux networking, IP address, iniciante, tutorial, ifconfig"
 ---
 
 ## Lesson Content

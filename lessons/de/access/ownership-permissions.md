@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Besitzberechtigungen"
-description: "Erfahren Sie, wie Sie den Dateibesitz in Linux mit den Befehlen chown und chgrp ändern. Verstehen Sie Benutzer- und Gruppenberechtigungen mit diesem anfängerfreundlichen Linux-Tutorial."
-keywords: "chown, chgrp, Linux Dateibesitz, Linux Berechtigungen, Linux Befehle, Linux für Anfänger, Linux Tutorial, Linux Anleitung"
+meta_description: "Erfahren Sie, wie Sie den Dateibesitz in Linux mit den Befehlen chown und chgrp ändern. Verstehen Sie Benutzer- und Gruppenberechtigungen mit diesem anfängerfreundlichen Linux-Tutorial."
+meta_keywords: "chown, chgrp, Linux Dateibesitz, Linux Berechtigungen, Linux Befehle, Linux für Anfänger, Linux Tutorial, Linux Anleitung"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "IPv6"
-description: "IPv6, 그 목적, 그리고 IPv4 를 어떻게 보완하는지 알아보세요. IPv6 주소 지정과 더 많은 장치를 인터넷에 연결하는 데 있어서의 역할을 이해합니다."
-keywords: "IPv6, IPv4, IP address, Linux networking, network protocols, 초보자, 튜토리얼, 가이드"
+meta_description: "IPv6, 그 목적, 그리고 IPv4 를 어떻게 보완하는지 알아보세요. IPv6 주소 지정과 더 많은 장치를 인터넷에 연결하는 데 있어서의 역할을 이해합니다."
+meta_keywords: "IPv6, IPv4, IP address, Linux networking, network protocols, 초보자, 튜토리얼, 가이드"
 ---
 
 ## Lesson Content

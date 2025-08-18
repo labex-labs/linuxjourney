@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "whatis"
-description: "Linux で'whatis'コマンドが何をするかを学びましょう。コマンドの簡単な説明を素早く取得します。Linux コマンドを理解するための初心者にとって不可欠です。"
-keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
+meta_description: "Linux で'whatis'コマンドが何をするかを学びましょう。コマンドの簡単な説明を素早く取得します。Linux コマンドを理解するための初心者にとって不可欠です。"
+meta_keywords: "whatis command, Linux commands, command line, Linux tutorial, Linux for beginners, command description, Linux guide"
 ---
 
 ## Lesson Content

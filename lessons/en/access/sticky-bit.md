@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "The Sticky Bit"
-description: "Learn about the Linux sticky bit, its purpose in shared directories like /tmp, and how to set it using chmod. Understand this key file permission!"
-keywords: "Linux sticky bit, chmod +t, /tmp directory, Linux permissions, file security, Linux tutorial, beginner Linux"
+meta_description: "Learn about the Linux sticky bit, its purpose in shared directories like /tmp, and how to set it using chmod. Understand this key file permission!"
+meta_keywords: "Linux sticky bit, chmod +t, /tmp directory, Linux permissions, file security, Linux tutorial, beginner Linux"
 ---
 
 ## Lesson Content

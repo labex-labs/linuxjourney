@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Routing-Tabelle"
-description: "Lernen Sie, die Linux-Routing-Tabelle zu verstehen und wie Pakete mit dem route-Befehl geroutet werden. Erkunden Sie Ziele, Gateways und Schnittstellen für Netzwerk-Grundlagen."
-keywords: "Linux-Routing-Tabelle, route-Befehl, Netzwerk-Routing, Linux-Netzwerk, Linux für Anfänger, Linux-Tutorial, Netzwerk-Anleitung"
+meta_description: "Lernen Sie, die Linux-Routing-Tabelle zu verstehen und wie Pakete mit dem route-Befehl geroutet werden. Erkunden Sie Ziele, Gateways und Schnittstellen für Netzwerk-Grundlagen."
+meta_keywords: "Linux-Routing-Tabelle, route-Befehl, Netzwerk-Routing, Linux-Netzwerk, Linux für Anfänger, Linux-Tutorial, Netzwerk-Anleitung"
 ---
 
 ## Lesson Content

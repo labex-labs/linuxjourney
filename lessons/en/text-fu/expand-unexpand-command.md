@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "expand and unexpand"
-description: "Learn to convert tabs to spaces with the `expand` command and spaces to tabs with `unexpand`. Improve text file formatting with this Linux tutorial."
-keywords: "expand command, unexpand command, Linux tabs, Linux spaces, text formatting, Linux tutorial, beginner Linux, Linux guide"
+meta_description: "Learn to convert tabs to spaces with the `expand` command and spaces to tabs with `unexpand`. Improve text file formatting with this Linux tutorial."
+meta_keywords: "expand command, unexpand command, Linux tabs, Linux spaces, text formatting, Linux tutorial, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content

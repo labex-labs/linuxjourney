@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Symlinks"
-description: "Erfahren Sie mehr über Linux-Symlinks und Hardlinks, einschließlich deren Erstellung und Verwaltung. Verstehen Sie ihre Unterschiede und Anwendungsfälle mit diesem anfängerfreundlichen Leitfaden."
-keywords: "Linux Symlinks, Hardlinks, ln Befehl, symbolische Links, Linux Dateisystem, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie mehr über Linux-Symlinks und Hardlinks, einschließlich deren Erstellung und Verwaltung. Verstehen Sie ihre Unterschiede und Anwendungsfälle mit diesem anfängerfreundlichen Leitfaden."
+meta_keywords: "Linux Symlinks, Hardlinks, ln Befehl, symbolische Links, Linux Dateisystem, Linux Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

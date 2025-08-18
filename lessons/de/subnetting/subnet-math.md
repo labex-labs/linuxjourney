@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Subnetz-Mathematik"
-description: "Lernen Sie die Grundlagen der Subnetz-Mathematik und wie Sie verfügbare Hosts in einem Netzwerk berechnen. Verstehen Sie IP-Adressierung und Subnetzmasken für Anfänger. Beginnen Sie Ihre Linux-Reise!"
-keywords: "Subnetz-Mathematik, IP-Adresse, Subnetzmaske, Netzwerk-Hosts, Binär, Linux-Netzwerk, Anfänger-Tutorial, Leitfaden"
+meta_description: "Lernen Sie die Grundlagen der Subnetz-Mathematik und wie Sie verfügbare Hosts in einem Netzwerk berechnen. Verstehen Sie IP-Adressierung und Subnetzmasken für Anfänger. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Subnetz-Mathematik, IP-Adresse, Subnetzmaske, Netzwerk-Hosts, Binär, Linux-Netzwerk, Anfänger-Tutorial, Leitfaden"
 ---
 
 ## Lesson Content

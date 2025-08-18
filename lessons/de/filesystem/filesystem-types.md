@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Dateisystemtypen"
-description: "Erfahren Sie mehr über Linux-Dateisystemtypen wie ext4, Btrfs und XFS. Verstehen Sie Journaling und VFS für konsistente Daten. Entdecken Sie gängige Linux-Dateisysteme in diesem Leitfaden für Anfänger."
-keywords: "Linux-Dateisystemtypen, ext4, Btrfs, XFS, Journaling, VFS, Linux-Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie mehr über Linux-Dateisystemtypen wie ext4, Btrfs und XFS. Verstehen Sie Journaling und VFS für konsistente Daten. Entdecken Sie gängige Linux-Dateisysteme in diesem Leitfaden für Anfänger."
+meta_keywords: "Linux-Dateisystemtypen, ext4, Btrfs, XFS, Journaling, VFS, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content

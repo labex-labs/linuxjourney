@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "regex (Regular Expressions)"
-description: "Learn regular expressions (regex) for Linux pattern matching. Understand regex syntax like ^, $, ., and [] for text manipulation. Improve your grep skills!"
-keywords: "regular expressions, regex, Linux regex, grep regex, pattern matching, regex tutorial, Linux commands, beginner"
+meta_description: "Learn regular expressions (regex) for Linux pattern matching. Understand regex syntax like ^, $, ., and [] for text manipulation. Improve your grep skills!"
+meta_keywords: "regular expressions, regex, Linux regex, grep regex, pattern matching, regex tutorial, Linux commands, beginner"
 ---
 
 ## Lesson Content

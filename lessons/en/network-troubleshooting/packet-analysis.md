@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Packet Analysis"
-description: "Learn packet analysis basics using tcpdump. Understand network traffic, capture data, and interpret output with this beginner-friendly Linux guide."
-keywords: "tcpdump, packet analysis, network analysis, Linux networking, beginner tutorial, Wireshark, Linux commands, network traffic"
+meta_description: "Learn packet analysis basics using tcpdump. Understand network traffic, capture data, and interpret output with this beginner-friendly Linux guide."
+meta_keywords: "tcpdump, packet analysis, network analysis, Linux networking, beginner tutorial, Wireshark, Linux commands, network traffic"
 ---
 
 ## Lesson Content

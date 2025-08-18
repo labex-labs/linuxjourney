@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "history"
-description: "Узнайте, как использовать команду Linux history, сокращение !! и Ctrl-R для эффективного вызова команд. Повысьте свою производительность в терминале с помощью этих важных советов!"
-keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
+meta_description: "Узнайте, как использовать команду Linux history, сокращение !! и Ctrl-R для эффективного вызова команд. Повысьте свою производительность в терминале с помощью этих важных советов!"
+meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux tutorial, command line, beginner guide"
 ---
 
 ## Lesson Content

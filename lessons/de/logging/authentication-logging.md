@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Authentifizierungsprotokollierung"
-description: "Erfahren Sie mehr über die Linux-Authentifizierungsprotokollierung mit /var/log/auth.log. Verstehen Sie Benutzeranmeldungen und beheben Sie Zugriffsprobleme mit diesem wichtigen Leitfaden."
-keywords: "Linux-Authentifizierung, auth.log, Linux-Protokollierung, Benutzeranmeldung, Linux-Sicherheit, Anfänger, Tutorial, Leitfaden"
+meta_description: "Erfahren Sie mehr über die Linux-Authentifizierungsprotokollierung mit /var/log/auth.log. Verstehen Sie Benutzeranmeldungen und beheben Sie Zugriffsprobleme mit diesem wichtigen Leitfaden."
+meta_keywords: "Linux-Authentifizierung, auth.log, Linux-Protokollierung, Benutzeranmeldung, Linux-Sicherheit, Anfänger, Tutorial, Leitfaden"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Fedora"
-description: "Découvrez Fedora Linux, son lien avec RHEL et la gestion des paquets. Découvrez pourquoi Fedora est un excellent système d'exploitation gratuit basé sur Red Hat pour les débutants et les ordinateurs de bureau."
-keywords: "Fedora Linux, RHEL, Red Hat, tutoriel Linux, gestion des paquets, Linux pour débutants, guide Linux, OS gratuit"
+meta_description: "Découvrez Fedora Linux, son lien avec RHEL et la gestion des paquets. Découvrez pourquoi Fedora est un excellent système d'exploitation gratuit basé sur Red Hat pour les débutants et les ordinateurs de bureau."
+meta_keywords: "Fedora Linux, RHEL, Red Hat, tutoriel Linux, gestion des paquets, Linux pour débutants, guide Linux, OS gratuit"
 ---
 
 ## Lesson Content

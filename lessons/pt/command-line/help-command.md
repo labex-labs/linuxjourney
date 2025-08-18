@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "ajuda"
-description: "Aprenda a usar o comando 'help' no Bash para assistência rápida na linha de comando. Entenda os comandos integrados e encontre opções para programas Linux."
-keywords: "comando help Linux, Bash help, ajuda linha de comando, comandos Linux, Linux para iniciantes, tutorial Linux, tutorial Bash"
+meta_description: "Aprenda a usar o comando 'help' no Bash para assistência rápida na linha de comando. Entenda os comandos integrados e encontre opções para programas Linux."
+meta_keywords: "comando help Linux, Bash help, ajuda linha de comando, comandos Linux, Linux para iniciantes, tutorial Linux, tutorial Bash"
 ---
 
 ## Lesson Content

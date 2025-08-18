@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "System V の概要"
-description: "System V init、そのランレベル、および Linux でのプロセス管理について学びます。初心者および中級ユーザー向けの SysV の基本を理解します。"
-keywords: "System V, SysV init, Linux ランレベル，init システム，Linux チュートリアル，初心者ガイド，プロセス管理"
+meta_description: "System V init、そのランレベル、および Linux でのプロセス管理について学びます。初心者および中級ユーザー向けの SysV の基本を理解します。"
+meta_keywords: "System V, SysV init, Linux ランレベル，init システム，Linux チュートリアル，初心者ガイド，プロセス管理"
 ---
 
 ## Lesson Content

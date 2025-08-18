@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "ネットワークインターフェース"
-description: "Linux のネットワークインターフェース、ifconfig、および ip コマンドについて学びます。ネットワーク設定の構成と管理方法を理解します。Linux ネットワーキングの旅を始めましょう！"
-keywords: "Linux ネットワークインターフェース，ifconfig, ip コマンド，ネットワーク設定，Linux ネットワーキング，初心者，チュートリアル，ガイド"
+meta_description: "Linux のネットワークインターフェース、ifconfig、および ip コマンドについて学びます。ネットワーク設定の構成と管理方法を理解します。Linux ネットワーキングの旅を始めましょう！"
+meta_keywords: "Linux ネットワークインターフェース，ifconfig, ip コマンド，ネットワーク設定，Linux ネットワーキング，初心者，チュートリアル，ガイド"
 ---
 
 ## Lesson Content

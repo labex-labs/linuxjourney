@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "swap"
-description: "Learn about Linux swap space, how it works, and how to create and manage swap partitions. Optimize your system's memory usage with this guide!"
-keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtual memory, Linux beginner, Linux tutorial"
+meta_description: "Learn about Linux swap space, how it works, and how to create and manage swap partitions. Optimize your system's memory usage with this guide!"
+meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtual memory, Linux beginner, Linux tutorial"
 ---
 
 ## Lesson Content

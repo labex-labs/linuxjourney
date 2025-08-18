@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Das Sticky Bit"
-description: "Erfahren Sie mehr über das Linux Sticky Bit, seinen Zweck in freigegebenen Verzeichnissen wie /tmp und wie Sie es mit chmod setzen. Verstehen Sie diese wichtige Dateiberechtigung!"
-keywords: "Linux Sticky Bit, chmod +t, /tmp Verzeichnis, Linux Berechtigungen, Dateisicherheit, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie mehr über das Linux Sticky Bit, seinen Zweck in freigegebenen Verzeichnissen wie /tmp und wie Sie es mit chmod setzen. Verstehen Sie diese wichtige Dateiberechtigung!"
+meta_keywords: "Linux Sticky Bit, chmod +t, /tmp Verzeichnis, Linux Berechtigungen, Dateisicherheit, Linux Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

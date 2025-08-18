@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "パッケージリポジトリ"
-description: "Linux のパッケージリポジトリと、それらがどのようにソフトウェアを管理するかを学びます。簡単なインストールのために、/etc/apt/sources.list のようなパッケージソースを見つけて追加する方法を発見します。"
-keywords: "Linux パッケージリポジトリ，apt sources list, /etc/apt/sources.list, Linux パッケージ，Linux 初心者，Linux チュートリアル，パッケージ管理"
+meta_description: "Linux のパッケージリポジトリと、それらがどのようにソフトウェアを管理するかを学びます。簡単なインストールのために、/etc/apt/sources.list のようなパッケージソースを見つけて追加する方法を発見します。"
+meta_keywords: "Linux パッケージリポジトリ，apt sources list, /etc/apt/sources.list, Linux パッケージ，Linux 初心者，Linux チュートリアル，パッケージ管理"
 ---
 
 ## Lesson Content

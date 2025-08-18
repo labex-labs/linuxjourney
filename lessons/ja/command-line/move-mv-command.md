@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "mv (移動)"
-description: "Linux の mv コマンドを使ってファイルやディレクトリを移動・名前変更する方法を学びましょう。そのオプションを理解し、上書きを防ぎます。Linux の旅を始めましょう！"
-keywords: "mv コマンド，Linux mv, ファイル移動 Linux, ファイル名変更 Linux, Linux チュートリアル，初心者，Linux ガイド"
+meta_description: "Linux の mv コマンドを使ってファイルやディレクトリを移動・名前変更する方法を学びましょう。そのオプションを理解し、上書きを防ぎます。Linux の旅を始めましょう！"
+meta_keywords: "mv コマンド，Linux mv, ファイル移動 Linux, ファイル名変更 Linux, Linux チュートリアル，初心者，Linux ガイド"
 ---
 
 ## Lesson Content

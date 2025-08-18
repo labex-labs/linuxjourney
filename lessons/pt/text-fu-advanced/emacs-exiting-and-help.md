@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Emacs: Sair e Ajuda"
-description: "Aprenda os comandos de saída do Emacs e como acessar a ajuda. Entenda as funções básicas de navegação e desfazer do Emacs neste tutorial para iniciantes."
-keywords: "sair do Emacs, ajuda do Emacs, desfazer Emacs, tutorial Emacs, editor de texto Linux, guia para iniciantes"
+meta_description: "Aprenda os comandos de saída do Emacs e como acessar a ajuda. Entenda as funções básicas de navegação e desfazer do Emacs neste tutorial para iniciantes."
+meta_keywords: "sair do Emacs, ajuda do Emacs, desfazer Emacs, tutorial Emacs, editor de texto Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

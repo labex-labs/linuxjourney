@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "Umask"
-description: "`umask`コマンドを使用して Linux のデフォルトファイルパーミッションを制御する方法を学びます。数値パーミッションを理解し、新しいファイルアクセスを簡単に管理します。"
-keywords: "umask, linux permissions, ファイルパーミッション，linux commands, 初心者 linux, linux チュートリアル，デフォルトパーミッション"
+meta_description: "`umask`コマンドを使用して Linux のデフォルトファイルパーミッションを制御する方法を学びます。数値パーミッションを理解し、新しいファイルアクセスを簡単に管理します。"
+meta_keywords: "umask, linux permissions, ファイルパーミッション，linux commands, 初心者 linux, linux チュートリアル，デフォルトパーミッション"
 ---
 
 ## Lesson Content

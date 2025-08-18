@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "arp"
-description: "Узнайте о команде Linux ARP и о том, как просматривать ваш ARP-кэш. Поймите роль ARP в сетевой коммуникации. Руководство для начинающих по ARP."
-keywords: "Linux ARP, ARP cache, ip neighbour show, сетевые команды, Linux networking, Linux для начинающих, Linux tutorial"
+meta_description: "Узнайте о команде Linux ARP и о том, как просматривать ваш ARP-кэш. Поймите роль ARP в сетевой коммуникации. Руководство для начинающих по ARP."
+meta_keywords: "Linux ARP, ARP cache, ip neighbour show, сетевые команды, Linux networking, Linux для начинающих, Linux tutorial"
 ---
 
 ## Lesson Content

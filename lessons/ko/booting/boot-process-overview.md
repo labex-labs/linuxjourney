@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "부팅 프로세스 개요"
-description: "Linux 부팅 프로세스 단계: BIOS, bootloader, kernel, init 을 학습합니다. 전원 켜기부터 로그인까지 Linux 가 어떻게 시작되는지 이해합니다. 필수 Linux 초보자 가이드."
-keywords: "Linux 부팅 프로세스, BIOS, bootloader, kernel, init, Linux 튜토리얼, Linux 가이드, 초보자"
+meta_description: "Linux 부팅 프로세스 단계: BIOS, bootloader, kernel, init 을 학습합니다. 전원 켜기부터 로그인까지 Linux 가 어떻게 시작되는지 이해합니다. 필수 Linux 초보자 가이드."
+meta_keywords: "Linux 부팅 프로세스, BIOS, bootloader, kernel, init, Linux 튜토리얼, Linux 가이드, 초보자"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "전송 계층"
-description: "TCP/UDP 프로토콜, 포트, 데이터 분할을 포함하여 Linux 네트워킹의 전송 계층에 대해 알아보세요. 데이터가 안정적으로 전송되는 방식을 이해합니다."
-keywords: "Linux 전송 계층, TCP/UDP, 네트워크 포트, 데이터 분할, Linux 네트워킹, 초보자 튜토리얼, 네트워크 프로토콜"
+meta_description: "TCP/UDP 프로토콜, 포트, 데이터 분할을 포함하여 Linux 네트워킹의 전송 계층에 대해 알아보세요. 데이터가 안정적으로 전송되는 방식을 이해합니다."
+meta_keywords: "Linux 전송 계층, TCP/UDP, 네트워크 포트, 데이터 분할, Linux 네트워킹, 초보자 튜토리얼, 네트워크 프로토콜"
 ---
 
 ## Lesson Content

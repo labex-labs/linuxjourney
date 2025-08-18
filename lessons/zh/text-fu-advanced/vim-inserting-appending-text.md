@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "Vim 插入和附加文本"
-description: "学习 Vim 的插入和附加模式。理解 'i'、'a'、'I'、'A'、'o'、'O' 命令，以实现高效的文本编辑。立即提升你的 Vim 技能！"
-keywords: "Vim 插入模式，Vim 附加，Vim 命令，Vim 教程，Linux 文本编辑器，Vim 初学者，Vim 指南，Vim 'i' 'a'"
+meta_description: "学习 Vim 的插入和附加模式。理解 'i'、'a'、'I'、'A'、'o'、'O' 命令，以实现高效的文本编辑。立即提升你的 Vim 技能！"
+meta_keywords: "Vim 插入模式，Vim 附加，Vim 命令，Vim 教程，Linux 文本编辑器，Vim 初学者，Vim 指南，Vim 'i' 'a'"
 ---
 
 ## Lesson Content

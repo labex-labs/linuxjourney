@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "stdin (標準入力)"
-description: "Linux における stdin（標準入力）のリダイレクトについて学びます。ファイルやコマンドで '<' 演算子を使用する方法を理解します。実践的な例を探求し、Linux コマンドラインスキルを向上させます。"
-keywords: "stdin, 標準入力，Linux リダイレクト，< 演算子，Linux チュートリアル，コマンドライン，初心者，ガイド"
+meta_description: "Linux における stdin（標準入力）のリダイレクトについて学びます。ファイルやコマンドで '<' 演算子を使用する方法を理解します。実践的な例を探求し、Linux コマンドラインスキルを向上させます。"
+meta_keywords: "stdin, 標準入力，Linux リダイレクト，< 演算子，Linux チュートリアル，コマンドライン，初心者，ガイド"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "wc e nl"
-description: "Aprenda os comandos wc e nl do Linux. Entenda a contagem de palavras, numeração de linhas e análise de arquivos. Melhore suas habilidades de linha de comando Linux hoje!"
-keywords: "comando wc, comando nl, contagem de palavras Linux, números de linha Linux, análise de arquivo, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda os comandos wc e nl do Linux. Entenda a contagem de palavras, numeração de linhas e análise de arquivos. Melhore suas habilidades de linha de comando Linux hoje!"
+meta_keywords: "comando wc, comando nl, contagem de palavras Linux, números de linha Linux, análise de arquivo, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

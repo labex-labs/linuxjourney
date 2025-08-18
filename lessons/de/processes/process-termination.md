@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Prozessbeendigung"
-description: "Erfahren Sie mehr über die Prozessbeendigung unter Linux, einschließlich verwaister und Zombie-Prozesse. Verstehen Sie die Systemaufrufe _exit und wait für ein effektives Prozessmanagement."
-keywords: "Linux Prozessbeendigung, Zombie-Prozesse, verwaiste Prozesse, wait Systemaufruf, _exit, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie mehr über die Prozessbeendigung unter Linux, einschließlich verwaister und Zombie-Prozesse. Verstehen Sie die Systemaufrufe _exit und wait für ein effektives Prozessmanagement."
+meta_keywords: "Linux Prozessbeendigung, Zombie-Prozesse, verwaiste Prozesse, wait Systemaufruf, _exit, Linux Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content

@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "DNS-Tools"
-description: "Lernen Sie die Befehle nslookup und dig für DNS-Abfragen und die Fehlerbehebung unter Linux. Verstehen Sie, wie Sie diese wesentlichen DNS-Tools mit unserer anfängerfreundlichen Anleitung verwenden."
-keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
+meta_description: "Lernen Sie die Befehle nslookup und dig für DNS-Abfragen und die Fehlerbehebung unter Linux. Verstehen Sie, wie Sie diese wesentlichen DNS-Tools mit unserer anfängerfreundlichen Anleitung verwenden."
+meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---
 
 ## Lesson Content

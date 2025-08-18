@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "System V 服务"
-description: "学习使用命令行工具管理 System V 服务。通过这个适合初学者的 Linux 教程，了解如何列出、启动、停止和重启服务。"
-keywords: "System V 服务，Linux 服务，service 命令，SysV init, Linux 教程，Linux 初学者，服务管理，Linux 指南"
+meta_description: "学习使用命令行工具管理 System V 服务。通过这个适合初学者的 Linux 教程，了解如何列出、启动、停止和重启服务。"
+meta_keywords: "System V 服务，Linux 服务，service 命令，SysV init, Linux 教程，Linux 初学者，服务管理，Linux 指南"
 ---
 
 ## Lesson Content

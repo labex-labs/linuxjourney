@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "grep"
-description: "Lernen Sie, wie Sie den grep-Befehl in Linux verwenden, um Textmuster in Dateien zu suchen. Entdecken Sie die grundlegende Verwendung, die Groß-/Kleinschreibung ignorierende Suche und die Kombination mit anderen Befehlen. Beginnen Sie Ihre Linux-Reise!"
-keywords: "grep-Befehl, Linux grep, Dateien durchsuchen, Textverarbeitung, Linux-Tutorial, Linux für Anfänger, grep-Anleitung"
+meta_description: "Lernen Sie, wie Sie den grep-Befehl in Linux verwenden, um Textmuster in Dateien zu suchen. Entdecken Sie die grundlegende Verwendung, die Groß-/Kleinschreibung ignorierende Suche und die Kombination mit anderen Befehlen. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "grep-Befehl, Linux grep, Dateien durchsuchen, Textverarbeitung, Linux-Tutorial, Linux für Anfänger, grep-Anleitung"
 ---
 
 ## Lesson Content

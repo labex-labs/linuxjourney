@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "whatis"
-description: "Aprende qué hace el comando 'whatis' en Linux. Obtén descripciones breves de comandos rápidamente. Esencial para que los principiantes entiendan los comandos de Linux."
-keywords: "comando whatis, comandos Linux, línea de comandos, tutorial Linux, Linux para principiantes, descripción de comando, guía Linux"
+meta_description: "Aprende qué hace el comando 'whatis' en Linux. Obtén descripciones breves de comandos rápidamente. Esencial para que los principiantes entiendan los comandos de Linux."
+meta_keywords: "comando whatis, comandos Linux, línea de comandos, tutorial Linux, Linux para principiantes, descripción de comando, guía Linux"
 ---
 
 ## Lesson Content

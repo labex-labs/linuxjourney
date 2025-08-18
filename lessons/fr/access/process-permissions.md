@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Permissions de processus"
-description: "Découvrez les permissions de processus Linux, y compris les ID utilisateur réels, effectifs et sauvegardés. Comprenez comment les UID impactent la sécurité et l'exécution des commandes. Commencez à apprendre dès aujourd'hui !"
-keywords: "permissions de processus Linux, UID réel, UID effectif, UID sauvegardé, sécurité Linux, commande passwd, tutoriel Linux, Linux pour débutants"
+meta_description: "Découvrez les permissions de processus Linux, y compris les ID utilisateur réels, effectifs et sauvegardés. Comprenez comment les UID impactent la sécurité et l'exécution des commandes. Commencez à apprendre dès aujourd'hui !"
+meta_keywords: "permissions de processus Linux, UID réel, UID effectif, UID sauvegardé, sécurité Linux, commande passwd, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content

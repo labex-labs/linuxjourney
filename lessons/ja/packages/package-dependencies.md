@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "パッケージの依存関係"
-description: "Linux のパッケージ依存関係と、それがソフトウェアのインストールにいかに重要であるかを学びます。共有ライブラリを理解し、破損したパッケージを回避します。Linux の学習を始めましょう！"
-keywords: "Linux パッケージ依存関係，共有ライブラリ，Linux パッケージ，パッケージ管理，Linux チュートリアル，初心者 Linux, Linux ガイド"
+meta_description: "Linux のパッケージ依存関係と、それがソフトウェアのインストールにいかに重要であるかを学びます。共有ライブラリを理解し、破損したパッケージを回避します。Linux の学習を始めましょう！"
+meta_keywords: "Linux パッケージ依存関係，共有ライブラリ，Linux パッケージ，パッケージ管理，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

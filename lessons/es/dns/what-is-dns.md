@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "¿Qué es DNS?"
-description: "Aprende qué es DNS y cómo traduce nombres de dominio a direcciones IP. Comprende este concepto central de Internet con nuestra guía de Linux para principiantes."
-keywords: "DNS, Sistema de Nombres de Dominio, dirección IP, nombre de host, redes Linux, principiante, tutorial, guía"
+meta_description: "Aprende qué es DNS y cómo traduce nombres de dominio a direcciones IP. Comprende este concepto central de Internet con nuestra guía de Linux para principiantes."
+meta_keywords: "DNS, Sistema de Nombres de Dominio, dirección IP, nombre de host, redes Linux, principiante, tutorial, guía"
 ---
 
 ## Lesson Content

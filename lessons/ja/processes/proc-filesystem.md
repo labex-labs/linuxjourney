@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "/proc ファイルシステム"
-description: "Linux の/proc ファイルシステム、それがどのようにプロセス情報を保存するか、そしてその構造について学びます。この必須の Linux ガイドでプロセスの詳細を探求しましょう。"
-keywords: "/proc ファイルシステム，Linux プロセス，プロセス情報，Linux チュートリアル，初心者 Linux, Linux ガイド"
+meta_description: "Linux の/proc ファイルシステム、それがどのようにプロセス情報を保存するか、そしてその構造について学びます。この必須の Linux ガイドでプロセスの詳細を探求しましょう。"
+meta_keywords: "/proc ファイルシステム，Linux プロセス，プロセス情報，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content

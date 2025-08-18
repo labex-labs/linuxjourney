@@ -1,8 +1,8 @@
 ---
 lang: "ja"
 title: "pipe と tee"
-description: "効率的なコマンドラインデータフローのために、Linux のパイプと tee コマンドを学びましょう。stdout、stdin、ファイル出力を理解しましょう。Linux スキルを向上させましょう！"
-keywords: "Linux pipe, tee command, Linux tutorial, stdout, stdin, beginner Linux, command line, Linux guide"
+meta_description: "効率的なコマンドラインデータフローのために、Linux のパイプと tee コマンドを学びましょう。stdout、stdin、ファイル出力を理解しましょう。Linux スキルを向上させましょう！"
+meta_keywords: "Linux pipe, tee command, Linux tutorial, stdout, stdin, beginner Linux, command line, Linux guide"
 ---
 
 ## Lesson Content

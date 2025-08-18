@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Tracking processes: top"
-description: "Learn how to use the Linux `top` command to monitor system resources and track processes. Understand CPU, memory, and process details for performance analysis."
-keywords: "Linux top command, monitor processes, system utilization, Linux performance, beginner, tutorial, guide"
+meta_description: "Learn how to use the Linux `top` command to monitor system resources and track processes. Understand CPU, memory, and process details for performance analysis."
+meta_keywords: "Linux top command, monitor processes, system utilization, Linux performance, beginner, tutorial, guide"
 ---
 
 ## Lesson Content

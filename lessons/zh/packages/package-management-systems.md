@@ -1,7 +1,7 @@
 r---
 title: "yum 和 apt"
-description: "学习 yum 和 apt 进行 Linux 软件包管理。通过这个初学者教程，在 Debian/RPM 系统上安装、删除和更新软件。今天就开始吧！"
-keywords: "yum, apt, Linux 软件包管理，apt 教程，yum 教程，Linux 命令，初学者指南，软件包安装"
+meta_description: "学习 yum 和 apt 进行 Linux 软件包管理。通过这个初学者教程，在 Debian/RPM 系统上安装、删除和更新软件。今天就开始吧！"
+meta_keywords: "yum, apt, Linux 软件包管理，apt 教程，yum 教程，Linux 命令，初学者指南，软件包安装"
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "网络接口"
-description: "了解 Linux 网络接口、ifconfig 和 ip 命令。理解如何配置和管理网络设置。开始你的 Linux 网络之旅！"
-keywords: "Linux 网络接口，ifconfig, ip 命令，网络配置，Linux 网络，初学者，教程，指南"
+meta_description: "了解 Linux 网络接口、ifconfig 和 ip 命令。理解如何配置和管理网络设置。开始你的 Linux 网络之旅！"
+meta_keywords: "Linux 网络接口，ifconfig, ip 命令，网络配置，Linux 网络，初学者，教程，指南"
 ---
 
 ## Lesson Content

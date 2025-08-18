@@ -1,8 +1,8 @@
 ---
 lang: "ru"
 title: "История"
-description: "Узнайте об истории Linux, от UNIX до Линуса Торвальдса и проекта GNU. Поймите его истоки и эволюцию для начинающих."
-keywords: "История Linux, UNIX, проект GNU, Линус Торвальдс, ядро Linux, Linux для начинающих, учебник по Linux, руководство по Linux"
+meta_description: "Узнайте об истории Linux, от UNIX до Линуса Торвальдса и проекта GNU. Поймите его истоки и эволюцию для начинающих."
+meta_keywords: "История Linux, UNIX, проект GNU, Линус Торвальдс, ядро Linux, Linux для начинающих, учебник по Linux, руководство по Linux"
 ---
 
 ## Lesson Content

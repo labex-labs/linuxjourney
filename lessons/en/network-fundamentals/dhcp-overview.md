@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "DHCP Overview"
-description: "Learn about DHCP (Dynamic Host Configuration Protocol) in Linux. Understand how DHCP assigns IP addresses and its four-step process. Start your Linux networking journey!"
-keywords: "DHCP, Dynamic Host Configuration Protocol, Linux networking, IP address, DHCP tutorial, beginner, guide"
+meta_description: "Learn about DHCP (Dynamic Host Configuration Protocol) in Linux. Understand how DHCP assigns IP addresses and its four-step process. Start your Linux networking journey!"
+meta_keywords: "DHCP, Dynamic Host Configuration Protocol, Linux networking, IP address, DHCP tutorial, beginner, guide"
 ---
 
 ## Lesson Content

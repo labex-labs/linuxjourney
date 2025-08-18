@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "커널 모듈"
-description: "Linux 커널 모듈에 대해 배우고, 로드, 언로드 및 관리하는 방법을 익힙니다. 커널 기능을 확장하기 위한 `modprobe` 및 `lsmod` 명령어를 이해합니다. Linux 여정을 시작하세요!"
-keywords: "Linux 커널 모듈, modprobe, lsmod, 커널 관리, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
+meta_description: "Linux 커널 모듈에 대해 배우고, 로드, 언로드 및 관리하는 방법을 익힙니다. 커널 기능을 확장하기 위한 `modprobe` 및 `lsmod` 명령어를 이해합니다. Linux 여정을 시작하세요!"
+meta_keywords: "Linux 커널 모듈, modprobe, lsmod, 커널 관리, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
 ---
 
 ## Lesson Content

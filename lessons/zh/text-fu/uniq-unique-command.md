@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "uniq (唯一)"
-description: "学习如何使用 Linux `uniq` 命令从文本文件中删除重复行。探索 -c、-u、-d 等选项，并结合 `sort` 进行有效的数据清理。"
-keywords: "uniq 命令，Linux uniq, 删除重复项，sort uniq, Linux 教程，文本处理，Linux 初学者，Linux 指南"
+meta_description: "学习如何使用 Linux `uniq` 命令从文本文件中删除重复行。探索 -c、-u、-d 等选项，并结合 `sort` 进行有效的数据清理。"
+meta_keywords: "uniq 命令，Linux uniq, 删除重复项，sort uniq, Linux 教程，文本处理，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

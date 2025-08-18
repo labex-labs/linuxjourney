@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "dhclient"
-description: "Découvrez dhclient, comment il obtient des adresses IP en utilisant DHCP et gère les baux réseau. Comprenez les fichiers dhclient.conf et dhclient.leases. Guide pour débutants Linux."
-keywords: "dhclient, DHCP, réseau Linux, adresse IP, configuration réseau, tutoriel Linux, guide du débutant"
+meta_description: "Découvrez dhclient, comment il obtient des adresses IP en utilisant DHCP et gère les baux réseau. Comprenez les fichiers dhclient.conf et dhclient.leases. Guide pour débutants Linux."
+meta_keywords: "dhclient, DHCP, réseau Linux, adresse IP, configuration réseau, tutoriel Linux, guide du débutant"
 ---
 
 ## Lesson Content

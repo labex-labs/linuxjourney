@@ -1,8 +1,8 @@
 ---
 lang: "ko"
 title: "작업 제어"
-description: "Linux 작업 제어를 학습하여 백그라운드 프로세스를 관리하세요. 효율적인 셸 사용을 위해 'jobs', 'bg', 'fg', 'kill' 명령을 이해하세요. Linux 여정을 시작하세요!"
-keywords: "Linux 작업 제어, 백그라운드 프로세스, jobs 명령, bg 명령, fg 명령, kill 명령, Linux 튜토리얼, 초보자 Linux"
+meta_description: "Linux 작업 제어를 학습하여 백그라운드 프로세스를 관리하세요. 효율적인 셸 사용을 위해 'jobs', 'bg', 'fg', 'kill' 명령을 이해하세요. Linux 여정을 시작하세요!"
+meta_keywords: "Linux 작업 제어, 백그라운드 프로세스, jobs 명령, bg 명령, fg 명령, kill 명령, Linux 튜토리얼, 초보자 Linux"
 ---
 
 ## Lesson Content

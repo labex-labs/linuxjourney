@@ -1,8 +1,8 @@
 ---
 lang: "en"
 title: "Authentication Logging"
-description: "Learn about Linux authentication logging with /var/log/auth.log. Understand user logins and troubleshoot access issues with this essential guide."
-keywords: "Linux authentication, auth.log, Linux logging, user login, Linux security, beginner, tutorial, guide"
+meta_description: "Learn about Linux authentication logging with /var/log/auth.log. Understand user logins and troubleshoot access issues with this essential guide."
+meta_keywords: "Linux authentication, auth.log, Linux logging, user login, Linux security, beginner, tutorial, guide"
 ---
 
 ## Lesson Content

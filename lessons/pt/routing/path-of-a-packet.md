@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Caminho de um Pacote"
-description: "Aprenda como um pacote viaja dentro e fora de uma rede. Entenda IP, MAC, ARP e tabelas de roteamento para comunicação em rede. Comece sua jornada de rede Linux!"
-keywords: "viagem de pacote, comunicação de rede, ARP, endereço IP, endereço MAC, tabela de roteamento, rede Linux, guia para iniciantes"
+meta_description: "Aprenda como um pacote viaja dentro e fora de uma rede. Entenda IP, MAC, ARP e tabelas de roteamento para comunicação em rede. Comece sua jornada de rede Linux!"
+meta_keywords: "viagem de pacote, comunicação de rede, ARP, endereço IP, endereço MAC, tabela de roteamento, rede Linux, guia para iniciantes"
 ---
 
 ## Lesson Content

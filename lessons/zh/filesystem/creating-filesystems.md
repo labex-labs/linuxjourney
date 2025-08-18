@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "创建文件系统"
-description: "学习如何使用 mkfs 在 Linux 上创建文件系统。这本面向初学者的指南涵盖了 ext4 和磁盘分区。开始您的 Linux 之旅吧！"
-keywords: "mkfs, 创建文件系统，ext4, Linux 分区，Linux 教程，Linux 初学者，磁盘管理，Linux 指南"
+meta_description: "学习如何使用 mkfs 在 Linux 上创建文件系统。这本面向初学者的指南涵盖了 ext4 和磁盘分区。开始您的 Linux 之旅吧！"
+meta_keywords: "mkfs, 创建文件系统，ext4, Linux 分区，Linux 教程，Linux 初学者，磁盘管理，Linux 指南"
 ---
 
 ## Lesson Content

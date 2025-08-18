@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Présentation de System V"
-description: "Découvrez System V init, ses niveaux d'exécution et comment il gère les processus sous Linux. Comprenez les bases de SysV pour les débutants et les utilisateurs intermédiaires."
-keywords: "System V, SysV init, niveaux d'exécution Linux, système init, tutoriel Linux, guide du débutant, gestion des processus"
+meta_description: "Découvrez System V init, ses niveaux d'exécution et comment il gère les processus sous Linux. Comprenez les bases de SysV pour les débutants et les utilisateurs intermédiaires."
+meta_keywords: "System V, SysV init, niveaux d'exécution Linux, système init, tutoriel Linux, guide du débutant, gestion des processus"
 ---
 
 ## Lesson Content

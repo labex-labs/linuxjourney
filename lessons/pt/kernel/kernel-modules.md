@@ -1,8 +1,8 @@
 ---
 lang: "pt"
 title: "Módulos do Kernel"
-description: "Aprenda sobre os módulos do kernel Linux: como carregá-los, descarregá-los e gerenciá-los. Entenda os comandos `modprobe` e `lsmod` para estender a funcionalidade do kernel. Comece sua jornada no Linux!"
-keywords: "módulos do kernel Linux, modprobe, lsmod, gerenciamento de kernel, tutorial Linux, Linux para iniciantes, guia Linux"
+meta_description: "Aprenda sobre os módulos do kernel Linux: como carregá-los, descarregá-los e gerenciá-los. Entenda os comandos `modprobe` e `lsmod` para estender a funcionalidade do kernel. Comece sua jornada no Linux!"
+meta_keywords: "módulos do kernel Linux, modprobe, lsmod, gerenciamento de kernel, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content

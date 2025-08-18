@@ -1,8 +1,8 @@
 ---
 lang: "es"
 title: "Vim: Insertar y Añadir Texto"
-description: "Aprende los modos de inserción y adición de Vim. Entiende los comandos 'i', 'a', 'I', 'A', 'o', 'O' para una edición de texto eficiente. ¡Mejora tus habilidades con Vim ahora!"
-keywords: "modo de inserción Vim, añadir en Vim, comandos Vim, tutorial Vim, editor de texto Linux, Vim para principiantes, guía Vim, Vim 'i' 'a'"
+meta_description: "Aprende los modos de inserción y adición de Vim. Entiende los comandos 'i', 'a', 'I', 'A', 'o', 'O' para una edición de texto eficiente. ¡Mejora tus habilidades con Vim ahora!"
+meta_keywords: "modo de inserción Vim, añadir en Vim, comandos Vim, tutorial Vim, editor de texto Linux, Vim para principiantes, guía Vim, Vim 'i' 'a'"
 ---
 
 ## Lesson Content

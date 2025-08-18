@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "Tâches Cron"
-description: "Apprenez à planifier des tâches Linux avec les cron jobs. Comprenez la syntaxe crontab et automatisez les scripts pour les opérations quotidiennes. Démarrez avec ce guide convivial pour débutants !"
-keywords: "cron jobs, crontab, planifier des tâches, automatisation Linux, commandes Linux, Linux débutant, tutoriel Linux, crontab -e"
+meta_description: "Apprenez à planifier des tâches Linux avec les cron jobs. Comprenez la syntaxe crontab et automatisez les scripts pour les opérations quotidiennes. Démarrez avec ce guide convivial pour débutants !"
+meta_keywords: "cron jobs, crontab, planifier des tâches, automatisation Linux, commandes Linux, Linux débutant, tutoriel Linux, crontab -e"
 ---
 
 ## Lesson Content

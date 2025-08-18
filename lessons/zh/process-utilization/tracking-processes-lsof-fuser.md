@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "lsof 和 fuser"
-description: "学习如何在 Linux 中使用 lsof 和 fuser 命令来识别正在使用文件的进程。理解“设备或资源忙”错误并有效管理打开的文件。"
-keywords: "lsof, fuser, Linux 命令，打开文件，进程管理，Linux 教程，初学者指南，设备忙"
+meta_description: "学习如何在 Linux 中使用 lsof 和 fuser 命令来识别正在使用文件的进程。理解“设备或资源忙”错误并有效管理打开的文件。"
+meta_keywords: "lsof, fuser, Linux 命令，打开文件，进程管理，Linux 教程，初学者指南，设备忙"
 ---
 
 ## Lesson Content

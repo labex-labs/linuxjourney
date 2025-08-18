@@ -1,8 +1,8 @@
 ---
 lang: "de"
 title: "Die Shell"
-description: "Erfahren Sie mehr über die Linux-Shell, Bash und grundlegende Befehle wie 'echo'. Verstehen Sie Shell-Prompts und beginnen Sie Ihre Linux-Reise mit diesem anfängerfreundlichen Leitfaden."
-keywords: "Linux-Shell, Bash, echo-Befehl, Linux-Tutorial, Befehlszeile, Linux für Anfänger, Shell-Prompt, Linux-Leitfaden"
+meta_description: "Erfahren Sie mehr über die Linux-Shell, Bash und grundlegende Befehle wie 'echo'. Verstehen Sie Shell-Prompts und beginnen Sie Ihre Linux-Reise mit diesem anfängerfreundlichen Leitfaden."
+meta_keywords: "Linux-Shell, Bash, echo-Befehl, Linux-Tutorial, Befehlszeile, Linux für Anfänger, Shell-Prompt, Linux-Leitfaden"
 ---
 
 ## Lesson Content

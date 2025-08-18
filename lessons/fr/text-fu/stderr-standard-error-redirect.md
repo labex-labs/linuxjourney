@@ -1,8 +1,8 @@
 ---
 lang: "fr"
 title: "stderr (Erreur Standard)"
-description: "Apprenez la redirection stderr (erreur standard) sous Linux. Comprenez 2>, 2>&1, &>, et /dev/null pour la gestion des erreurs dans Bash. Améliorez vos compétences en ligne de commande Linux !"
-keywords: "Linux stderr, erreur standard, redirection 2>, 2>&1, redirection &>, /dev/null, gestion des erreurs Bash, tutoriel Linux, Linux pour débutants"
+meta_description: "Apprenez la redirection stderr (erreur standard) sous Linux. Comprenez 2>, 2>&1, &>, et /dev/null pour la gestion des erreurs dans Bash. Améliorez vos compétences en ligne de commande Linux !"
+meta_keywords: "Linux stderr, erreur standard, redirection 2>, 2>&1, redirection &>, /dev/null, gestion des erreurs Bash, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content

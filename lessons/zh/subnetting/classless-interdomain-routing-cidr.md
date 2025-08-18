@@ -1,8 +1,8 @@
 ---
 lang: "zh"
 title: "CIDR"
-description: "学习 Linux 网络中的 CIDR 表示法。通过这个初学者友好的指南，了解子网掩码、IP 寻址和主机计算。提升您的网络技能！"
-keywords: "CIDR, 子网掩码，IP 寻址，网络前缀，Linux 网络，初学者，教程，指南"
+meta_description: "学习 Linux 网络中的 CIDR 表示法。通过这个初学者友好的指南，了解子网掩码、IP 寻址和主机计算。提升您的网络技能！"
+meta_keywords: "CIDR, 子网掩码，IP 寻址，网络前缀，Linux 网络，初学者，教程，指南"
 ---
 
 ## Lesson Content
