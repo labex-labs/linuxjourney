@@ -2,10 +2,10 @@
 index: 3
 lang: "fr"
 title: "Debian"
+meta_title: "Debian - Démarrage"
 meta_description: "Découvrez Debian Linux, ses versions stables et 'rolling release', et la gestion des paquets. Découvrez pourquoi Debian est un excellent système d'exploitation de base pour les débutants et les utilisateurs intermédiaires."
 meta_keywords: "Debian, Debian Linux, distribution Linux, rolling release, gestion des paquets, tutoriel Linux, Linux pour débutants, guide Linux"
 ---
-
 ## Lesson Content
 
 ### Aperçu

@@ -2,10 +2,10 @@
 index: 2
 lang: "es"
 title: "lsof y fuser"
+meta_title: "lsof y fuser - Utilización de Procesos"
 meta_description: "Aprende a usar los comandos lsof y fuser en Linux para identificar procesos que utilizan archivos. Comprende los errores 'Device or Resource Busy' y gestiona los archivos abiertos de forma eficaz."
 meta_keywords: "lsof, fuser, comandos Linux, archivos abiertos, gestión de procesos, tutorial Linux, guía para principiantes, dispositivo ocupado"
 ---
-
 ## Lesson Content
 
 Digamos que conectaste una unidad USB y empezaste a trabajar en algunos archivos. Una vez que terminaste, intentaste desmontar el dispositivo USB y recibiste un error: "Device or Resource Busy" (Dispositivo o Recurso Ocupado). ¿Cómo averiguarías qué archivos de la unidad USB siguen en uso? Hay dos herramientas que puedes usar para esto:

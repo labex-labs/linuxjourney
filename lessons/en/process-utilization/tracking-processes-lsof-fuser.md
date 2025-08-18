@@ -2,10 +2,10 @@
 index: 2
 lang: "en"
 title: "lsof and fuser"
+meta_title: "lsof and fuser - Process Utilization"
 meta_description: "Learn how to use lsof and fuser commands in Linux to identify processes using files. Understand 'Device or Resource Busy' errors and manage open files effectively."
 meta_keywords: "lsof, fuser, Linux commands, open files, process management, Linux tutorial, beginner guide, device busy"
 ---
-
 ## Lesson Content
 
 Let's say you plugged in a USB drive and started working on some files. Once you were done, you tried to unmount the USB device and received an error: "Device or Resource Busy." How would you find out which files on the USB drive are still in use? There are two tools you can use for this:

@@ -2,10 +2,10 @@
 index: 2
 lang: "fr"
 title: "lsof et fuser"
+meta_title: "lsof et fuser - Utilisation des Processus"
 meta_description: "Apprenez à utiliser les commandes lsof et fuser sous Linux pour identifier les processus utilisant des fichiers. Comprenez les erreurs 'Device or Resource Busy' et gérez efficacement les fichiers ouverts."
 meta_keywords: "lsof, fuser, commandes Linux, fichiers ouverts, gestion des processus, tutoriel Linux, guide du débutant, périphérique occupé"
 ---
-
 ## Lesson Content
 
 Disons que vous avez branché une clé USB et commencé à travailler sur des fichiers. Une fois terminé, vous avez essayé de démonter le périphérique USB et avez reçu une erreur : "Device or Resource Busy." Comment feriez-vous pour savoir quels fichiers sur la clé USB sont encore utilisés ? Il existe deux outils que vous pouvez utiliser pour cela :

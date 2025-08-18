@@ -2,10 +2,10 @@
 index: 2
 lang: "ko"
 title: "lsof 및 fuser"
+meta_title: "lsof 및 fuser - 프로세스 활용"
 meta_description: "Linux 에서 lsof 및 fuser 명령을 사용하여 파일을 사용하는 프로세스를 식별하는 방법을 배웁니다. 'Device or Resource Busy' 오류를 이해하고 열린 파일을 효과적으로 관리합니다."
 meta_keywords: "lsof, fuser, Linux 명령, 열린 파일, 프로세스 관리, Linux 튜토리얼, 초보자 가이드, 장치 사용 중"
 ---
-
 ## Lesson Content
 
 USB 드라이브를 연결하고 일부 파일을 작업했다고 가정해 봅시다. 작업이 끝난 후 USB 장치를 마운트 해제하려고 했지만 "Device or Resource Busy" 오류가 발생했습니다. USB 드라이브에서 어떤 파일이 아직 사용 중인지 어떻게 알아낼 수 있을까요? 이를 위해 사용할 수 있는 두 가지 도구가 있습니다:
