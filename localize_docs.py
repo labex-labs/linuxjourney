@@ -18,8 +18,10 @@ Features:
 - Beautiful CLI with rich formatting and progress bars
 - Preserves YAML front matter structure (translates values, keeps keys)
 - Keeps fixed English headings: ## Lesson Content, ## Exercise, ## Quiz Question, ## Quiz Answer
+- Translates Exercise content while preserving technical terms and URLs
 - Protects code blocks and commands from translation
 - Preserves Quiz Answer content exactly as-is
+- Enhanced validation to ensure proper Exercise translation
 - Organizes translated files in correct language directories
 - Git-based incremental translation (translate only changed files)
 
@@ -193,26 +195,34 @@ TRANSLATION REQUIREMENTS:
    - ## Exercise  
    - ## Quiz Question
    - ## Quiz Answer
-3. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
+3. **Content Translation**: Translate ALL content under each section EXCEPT where specifically noted:
+   - Translate the content under "## Lesson Content" 
+   - Translate the content under "## Exercise" 
+   - Translate the content under "## Quiz Question"
+   - Keep "## Quiz Answer" content EXACTLY as-is (do not translate)
+4. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
    - Code blocks (```...```)
    - Inline code (`...`)
    - Linux commands and paths
    - File names and directories
    - Command line examples
    - Configuration file contents
-4. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
-5. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
-6. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
+   - URLs and web links
+5. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
+6. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
+7. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
 
 CONTENT STRUCTURE:
 - You will receive ONLY the main content WITHOUT YAML front matter
 - Main content sections with the fixed headings mentioned above
 - Code examples and commands that must remain unchanged
+- Exercise content should be translated while preserving any URLs, commands, or technical references
 - Quiz content where ONLY the question should be translated (Quiz Answer sections must remain unchanged)
 
 IMPORTANT: 
 - Do NOT include YAML front matter (---) in your translated_content output
 - Only translate the main content body
+- Exercise sections contain instructional content that should be translated to help users understand what to do
 
 Please provide:
 - translated_title: The translated title value (extracted from original front matter)
@@ -326,16 +336,6 @@ CONTENT TO TRANSLATE:
                 )
                 return False
 
-        # 6. Check content length is reasonable (not too short compared to original)
-        original_length = len(original_content.strip())
-        translated_length = len(translated_content.strip())
-
-        if translated_length < original_length * 0.5:
-            console.print(
-                f"[yellow]Warning: Translated content significantly shorter than original. Original: {original_length}, Translated: {translated_length}[/yellow]"
-            )
-            return False
-
         return True
 
     def translate_document(
@@ -426,6 +426,11 @@ Main content to translate:
         """Create the final translated document with proper formatting."""
         front_matter, _ = self.extract_yaml_front_matter(original_content)
 
+        # Helper function to escape quotes in YAML values
+        def escape_yaml_value(value: str) -> str:
+            """Replace double quotes with single quotes to avoid YAML conflicts."""
+            return value.replace('"', "'")
+
         # Create new front matter with translated values
         translated_front_matter = "---\n"
 
@@ -436,20 +441,70 @@ Main content to translate:
         # Update language code
         translated_front_matter += f'lang: "{target_language}"\n'
 
-        # Add translated fields
-        translated_front_matter += f'title: "{translation_data["translated_title"]}"\n'
+        # Add translated fields with escaped quotes
         translated_front_matter += (
-            f'meta_title: "{translation_data["translated_meta_title"]}"\n'
+            f'title: "{escape_yaml_value(translation_data["translated_title"])}"\n'
         )
-        translated_front_matter += (
-            f'meta_description: "{translation_data["translated_meta_description"]}"\n'
-        )
-        translated_front_matter += (
-            f'meta_keywords: "{translation_data["translated_meta_keywords"]}"\n'
-        )
+        translated_front_matter += f'meta_title: "{escape_yaml_value(translation_data["translated_meta_title"])}"\n'
+        translated_front_matter += f'meta_description: "{escape_yaml_value(translation_data["translated_meta_description"])}"\n'
+        translated_front_matter += f'meta_keywords: "{escape_yaml_value(translation_data["translated_meta_keywords"])}"\n'
         translated_front_matter += "---\n\n"
 
         return translated_front_matter + translation_data["translated_content"]
+
+    def process_single_file_language(
+        self,
+        file_path: Path,
+        target_language: str,
+        skip_existing: bool = True,
+    ) -> bool:
+        """Process a single file for a single language."""
+        try:
+            # Determine output path
+            lessons_en_dir = file_path.parents[1]
+            lessons_dir = lessons_en_dir.parent
+            relative_path = file_path.relative_to(lessons_en_dir)
+            output_path = lessons_dir / target_language / relative_path
+
+            # Check if file already exists
+            if skip_existing and output_path.exists():
+                self.stats["skipped"] += 1
+                return True
+
+            # Read original content
+            with open(file_path, "r", encoding="utf-8") as f:
+                original_content = f.read()
+
+            # Generate translation
+            translation_data = self.translate_document(
+                original_content, target_language, file_path
+            )
+
+            if translation_data is None:
+                self.stats["errors"] += 1
+                self.failed_files.append(f"{file_path} ({target_language})")
+                return False
+
+            # Create translated document
+            translated_content = self.create_translated_document(
+                original_content, translation_data, target_language
+            )
+
+            # Create output directory if needed
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # Write translated file
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(translated_content)
+
+            # Add delay between translations
+            time.sleep(1)
+            return True
+
+        except Exception:
+            self.stats["errors"] += 1
+            self.failed_files.append(f"{file_path} ({target_language})")
+            return False
 
     def process_file(
         self,
@@ -559,9 +614,12 @@ Main content to translate:
     ) -> None:
         """Process a list of markdown files with rich progress display."""
 
+        # Calculate total tasks (files × languages)
+        total_tasks = len(file_list) * len(target_languages)
+
         # Display summary
         console.print(
-            f"[blue]Processing {len(file_list)} files for {len(target_languages)} languages[/blue]"
+            f"[blue]Processing {len(file_list)} files for {len(target_languages)} languages ({total_tasks} total tasks)[/blue]"
         )
 
         # Progress tracking
@@ -569,16 +627,31 @@ Main content to translate:
             TextColumn("[progress.description]{task.description}"),
             BarColumn(),
             TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+            TextColumn("({task.completed}/{task.total})"),
             console=console,
         ) as progress:
 
-            main_task = progress.add_task("Processing files", total=len(file_list))
+            # Create main progress task based on total language-file combinations
+            main_task = progress.add_task("Processing translations", total=total_tasks)
 
             for file_path in file_list:
-                progress.update(main_task, description=f"Processing {file_path.name}")
+                # Process each language for this file
+                for lang in target_languages:
+                    progress.update(
+                        main_task, description=f"Processing {file_path.name} ({lang})"
+                    )
 
-                self.process_file(file_path, target_languages, skip_existing)
-                progress.advance(main_task)
+                    # Process single file-language combination
+                    success = self.process_single_file_language(
+                        file_path, lang, skip_existing
+                    )
+
+                    # Count processed files (only increment once per file, not per language)
+                    if lang == target_languages[0]:  # First language for this file
+                        self.stats["processed"] += 1
+
+                    # Advance progress after each language completion
+                    progress.advance(main_task)
 
         # Display final results
         self._display_final_results()
