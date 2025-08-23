@@ -30,10 +30,7 @@ echo Hello World
 
 ## Exercise
 
-Try some other Linux commands and see what they output:
-
-1. `$ date`
-2. `$ whoami`
+For hands-on practice with Linux basic commands, we recommend the interactive course: [Linux Basic Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)
 
 ## Quiz Question
 
