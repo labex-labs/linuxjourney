@@ -263,12 +263,10 @@ class MarkdownParser:
         if current_section == "content":
             sections["content"] = current_content.strip()
 
-        # Clean up content by removing markdown links and formatting for database storage
+        # Clean up content by only removing extra whitespace, preserving markdown formatting
         for key in sections:
             if sections[key]:
-                # Remove markdown links but keep the text
-                sections[key] = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", sections[key])
-                # Remove extra whitespace
+                # Remove extra whitespace only
                 sections[key] = re.sub(r"\n\s*\n\s*\n", "\n\n", sections[key]).strip()
 
         return sections
