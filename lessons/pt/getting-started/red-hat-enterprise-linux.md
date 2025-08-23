@@ -9,25 +9,25 @@ meta_keywords: "Aprender RHEL, Red Hat Enterprise Linux, fundamentos RHEL, geren
 
 ## Lesson Content
 
-### Overview
+### Visão Geral
 
-[**Red Hat Enterprise Linux**](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) (RHEL), comumente referido como RHEL, é desenvolvido pela Red Hat. O RHEL possui regras rígidas para restringir a redistribuição gratuita, embora ainda forneça o código-fonte gratuitamente. É uma distribuição Linux comercial projetada para ambientes empresariais com suporte profissional e estabilidade de longo prazo.
+Red Hat Enterprise Linux (RHEL), comumente referido como RHEL, é desenvolvido pela Red Hat. O RHEL possui regras rígidas para restringir a redistribuição gratuita, embora ainda forneça o código-fonte gratuitamente. É uma distribuição comercial do Linux projetada para ambientes corporativos com suporte profissional e estabilidade de longo prazo.
 
-### Package Management
+### Gerenciamento de Pacotes
 
-RHEL usa um gerenciador de pacotes diferente do Debian, o gerenciador de pacotes RPM, que eventualmente também aprenderemos. O sistema RPM inclui ferramentas YUM e DNF para gerenciamento de pacotes e resolução de dependências.
+O RHEL usa um gerenciador de pacotes diferente do Debian, o gerenciador de pacotes RPM, que eventualmente também aprenderemos. O sistema RPM inclui as ferramentas YUM e DNF para gerenciamento de pacotes e resolução de dependências.
 
-### Configurability
+### Configurabilidade
 
-Sistemas operacionais baseados em RHEL diferirão ligeiramente dos sistemas operacionais baseados em Debian, principalmente no gerenciamento de pacotes. Se você decidir usar o RHEL, provavelmente é melhor se você souber que trabalhará com ele.
+Os sistemas operacionais baseados em RHEL diferirão ligeiramente dos sistemas operacionais baseados em Debian, mais notavelmente no gerenciamento de pacotes. Se você decidir usar o RHEL, provavelmente é melhor se você souber que trabalhará com ele.
 
-### Uses
+### Usos
 
 Como o nome descreve, é usado principalmente em empresas, então se você precisa de um sistema operacional de servidor sólido, este seria uma boa opção. O RHEL é particularmente popular para aplicações de missão crítica, servidores web e sistemas de banco de dados em ambientes corporativos.
 
-### Certification Path
+### Caminho de Certificação
 
-Administradores RHEL podem buscar certificações Red Hat, incluindo RHCSA (Red Hat Certified System Administrator) e RHCE (Red Hat Certified Engineer), que são altamente valorizadas na indústria.
+Administradores de RHEL podem buscar certificações Red Hat, incluindo RHCSA (Red Hat Certified System Administrator) e RHCE (Red Hat Certified Engineer), que são altamente valorizadas na indústria.
 
 ## Exercise
 
@@ -36,9 +36,9 @@ Para treinamento abrangente em RHEL e preparação para certificação, consider
 - Red Hat System Administration (RH124) - Habilidades fundamentais
 - Red Hat System Administration (RH134) - Administração avançada
 - Enterprise Linux Automation with Ansible (RH294)
-- Exercícios práticos para certificação RHCSA
+- Exercícios práticos para a certificação RHCSA
 
-Este caminho de aprendizado inclui 32 habilidades em mais de 90 laboratórios práticos, projetados para administradores de sistema, engenheiros de DevOps e profissionais de TI que buscam a certificação Red Hat.
+Este caminho de aprendizagem inclui 32 habilidades em mais de 90 laboratórios práticos, projetados para administradores de sistema, engenheiros de DevOps e profissionais de TI que buscam a certificação Red Hat.
 
 ## Quiz Questions
 

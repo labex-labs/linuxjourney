@@ -11,17 +11,17 @@ meta_keywords: "Debian, Debian Linux, Linux-Distribution, Rolling Release, Paket
 
 ### Overview
 
-[**Debian**](https://www.debian.org) ist ein Betriebssystem, das vollständig aus freier und Open-Source-Software besteht. Es ist weithin bekannt und wird seit über 20 Jahren entwickelt. Es gibt drei Zweige, die Sie verwenden können: Stable, Testing und Unstable.
+Debian ist ein Betriebssystem, das vollständig aus freier und quelloffener Software besteht. Es ist weithin bekannt und wird seit über 20 Jahren entwickelt. Es gibt drei Zweige, die Sie verwenden können: Stable, Testing und Unstable.
 
-Stable ist ein insgesamt guter Zweig. Testing und Unstable sind Rolling Releases. Das bedeutet, dass alle inkrementellen Änderungen in diesen Zweigen schließlich Stable werden. Wenn Sie beispielsweise das nächste Update von Windows 8 auf Windows 10 erhalten wollten, müssten Sie eine vollständige Windows 10-Installation durchführen. Wenn Sie jedoch die Testing-Version verwenden, erhalten Sie automatisch Updates, bis diese zur nächsten Betriebssystemversion wird, ohne eine vollständige Installation durchführen zu müssen.
+Stable ist ein insgesamt guter Zweig. Testing und Unstable sind Rolling Releases. Das bedeutet, dass alle inkrementellen Änderungen in diesen Zweigen schließlich Stable werden. Wenn Sie beispielsweise das nächste Update von Windows 8 auf Windows 10 erhalten wollten, müssten Sie eine vollständige Windows 10-Installation durchführen. Wenn Sie jedoch die Testing-Version verwenden, erhalten Sie automatisch Updates, bis sie die nächste Betriebssystemversion wird, ohne eine vollständige Installation durchführen zu müssen.
 
 ### Package Management
 
-Debian verwendet auch Debian-Paketverwaltungstools. Jede Linux-Distribution installiert und verwaltet Pakete anders, und sie verwenden unterschiedliche Paketverwaltungstools. Darauf gehen wir in einem späteren Kurs genauer ein.
+Debian verwendet auch Debian-Paketverwaltungstools. Jede Linux-Distribution installiert und verwaltet Pakete anders und verwendet unterschiedliche Paketverwaltungstools. Darauf gehen wir in einem späteren Kurs genauer ein.
 
 ### Configurability
 
-Debian erhält vielleicht nicht die neuesten Updates, ist aber extrem stabil. Wenn Sie ein gutes „Kern“-Betriebssystem wünschen, ist dies das Richtige für Sie.
+Debian erhält möglicherweise nicht die neuesten Updates, ist aber extrem stabil. Wenn Sie ein gutes "Kern"-Betriebssystem wünschen, ist dies das Richtige für Sie.
 
 ### Uses
 
@@ -29,7 +29,7 @@ Debian ist ein insgesamt großartiges Betriebssystem für jede Plattform.
 
 ## Exercise
 
-Üben Sie Ihre Linux-Kenntnisse mit diesem praktischen Lab: [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
+Üben Sie Ihre Linux-Kenntnisse mit diesem praktischen Lab: [Ihr erstes Linux-Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Question
 

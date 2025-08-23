@@ -11,7 +11,7 @@ meta_keywords: "Learn RHEL, Red Hat Enterprise Linux, RHEL basics, RPM package m
 
 ### Overview
 
-[**Red Hat Enterprise Linux**](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) (RHEL), commonly referred to as RHEL, is developed by Red Hat. RHEL has strict rules to restrict free redistribution, although it still provides source code for free. It's a commercial Linux distribution designed for enterprise environments with professional support and long-term stability.
+Red Hat Enterprise Linux (RHEL), commonly referred to as RHEL, is developed by Red Hat. RHEL has strict rules to restrict free redistribution, although it still provides source code for free. It's a commercial Linux distribution designed for enterprise environments with professional support and long-term stability.
 
 ### Package Management
 

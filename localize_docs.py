@@ -29,6 +29,8 @@ Usage Examples:
 1. Translate all files: python localize_docs.py
 2. Translate unstaged changes: python localize_docs.py --git-changes
 3. Translate to specific languages: python localize_docs.py --lang zh es fr
+4. Translate specific file: python localize_docs.py --path lessons/en/getting-started/linux-history.md
+5. Translate specific file to certain languages: python localize_docs.py --path lessons/en/getting-started/linux-history.md --lang zh fr
 """
 
 import os
@@ -129,6 +131,51 @@ class GitChangeDetector:
                 continue
 
         return sorted(english_files)
+
+    @staticmethod
+    def validate_and_filter_files(
+        file_paths: List[Path], script_dir: Path
+    ) -> List[Path]:
+        """Validate and filter specified files to ensure they are English markdown files."""
+        valid_files = []
+        lessons_en_pattern = re.compile(r"lessons[/\\]en[/\\].*\.md$")
+
+        for file_path in file_paths:
+            # Convert to absolute path if relative
+            if not file_path.is_absolute():
+                file_path = script_dir / file_path
+
+            # Check if file exists
+            if not file_path.exists():
+                console.print(
+                    f"[yellow]Warning: File does not exist: {file_path}[/yellow]"
+                )
+                continue
+
+            # Check if it's a markdown file
+            if not file_path.suffix.lower() == ".md":
+                console.print(
+                    f"[yellow]Warning: Not a markdown file: {file_path}[/yellow]"
+                )
+                continue
+
+            # Check if it's in the lessons/en directory
+            try:
+                relative_path = file_path.relative_to(script_dir)
+                if not lessons_en_pattern.search(str(relative_path)):
+                    console.print(
+                        f"[yellow]Warning: File is not in lessons/en directory: {file_path}[/yellow]"
+                    )
+                    continue
+            except ValueError:
+                console.print(
+                    f"[yellow]Warning: File is outside the project directory: {file_path}[/yellow]"
+                )
+                continue
+
+            valid_files.append(file_path)
+
+        return sorted(valid_files)
 
 
 class DocumentLocalizer:
@@ -270,10 +317,8 @@ CONTENT TO TRANSLATE:
 
         for field in meta_fields:
             value = translation_data.get(field, "").strip()
-            if not value or len(value) < 3:
-                console.print(
-                    f"[yellow]Warning: {field} is empty or too short[/yellow]"
-                )
+            if not value:
+                console.print(f"[yellow]Warning: {field} is empty[/yellow]")
                 return False
 
         translated_content = translation_data.get("translated_content", "")
@@ -685,12 +730,28 @@ Main content to translate:
 @click.option(
     "--git-changes", is_flag=True, help="Only translate files with unstaged changes"
 )
-def main(lang: tuple, force: bool, git_changes: bool):
+@click.option(
+    "--path",
+    type=click.Path(exists=True, path_type=Path),
+    help="Specific markdown file or directory to translate",
+)
+def main(lang: tuple, force: bool, git_changes: bool, path: Path):
     """
     Linux Journey AI Localization Script
 
     Translate markdown files to multiple languages using AI while preserving
     code blocks, technical terms, and specific formatting requirements.
+
+    Options:
+    - Default: Translate all files in lessons/en directory
+    - --git-changes: Only translate files with unstaged changes
+    - --path: Translate specific markdown file or directory
+    - --lang: Specify target languages (default: all supported languages)
+    - --force: Overwrite existing translated files
+
+    Examples:
+    python localize_docs.py --path lessons/en/getting-started/linux-history.md
+    python localize_docs.py --path lessons/en/getting-started --lang zh es
     """
 
     console.print("[bold blue]Linux Journey AI Localization[/bold blue]")
@@ -717,8 +778,64 @@ def main(lang: tuple, force: bool, git_changes: bool):
             console.print(f"[red]Error: Directory not found: {en_directory}[/red]")
             sys.exit(1)
 
+        # Check for conflicting options
+        option_count = sum([bool(git_changes), bool(path)])
+        if option_count > 1:
+            console.print(
+                "[red]Error: Cannot use --git-changes and --path options together[/red]"
+            )
+            sys.exit(1)
+
         # Determine which files to process
-        if git_changes:
+        if path:
+            # Convert to absolute path if relative
+            target_path = path if path.is_absolute() else script_dir / path
+
+            if target_path.is_file():
+                # Process single file
+                valid_files = GitChangeDetector.validate_and_filter_files(
+                    [target_path], script_dir
+                )
+
+                if not valid_files:
+                    console.print(
+                        "[red]Error: The specified file is not a valid English markdown file[/red]"
+                    )
+                    sys.exit(1)
+
+                console.print(f"[blue]Processing 1 specified file[/blue]")
+                console.print(f"  • {valid_files[0].relative_to(script_dir)}")
+
+            elif target_path.is_dir():
+                # Process directory
+                markdown_files = localizer.find_markdown_files(target_path)
+                valid_files = GitChangeDetector.validate_and_filter_files(
+                    markdown_files, script_dir
+                )
+
+                if not valid_files:
+                    console.print(
+                        "[red]Error: No valid English markdown files found in the specified directory[/red]"
+                    )
+                    sys.exit(1)
+
+                console.print(
+                    f"[blue]Processing {len(valid_files)} files from directory[/blue]"
+                )
+                for file_path in valid_files[:5]:  # Show first 5 files
+                    console.print(f"  • {file_path.relative_to(script_dir)}")
+                if len(valid_files) > 5:
+                    console.print(f"  ... and {len(valid_files) - 5} more files")
+            else:
+                console.print("[red]Error: The specified path does not exist[/red]")
+                sys.exit(1)
+
+            localizer.process_files_with_progress(
+                valid_files, target_languages, skip_existing=not force
+            )
+
+        elif git_changes:
+            # Process files with unstaged changes
             git_detector = GitChangeDetector(script_dir)
             try:
                 changed_files = git_detector.get_unstaged_files()
