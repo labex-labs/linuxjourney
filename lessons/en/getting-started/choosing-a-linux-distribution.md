@@ -23,7 +23,9 @@ There are many Linux distributions to choose from; we’ll just go over the most
 
 ## Exercise
 
-No exercises for this lesson.
+Try the [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) to get hands-on experience with Linux distributions:
+
+[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

@@ -360,6 +360,11 @@ CONTENT TO TRANSLATE:
         )
         if quiz_answer_match:
             original_quiz_answer = quiz_answer_match.group(1).strip()
+
+            # If original Quiz Answer is empty, skip validation for missing Quiz Answer section
+            if not original_quiz_answer:
+                return True
+
             translated_quiz_match = re.search(
                 r"## Quiz Answer\s*\n(.*?)(?=##|$)", translated_content, re.DOTALL
             )

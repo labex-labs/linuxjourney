@@ -9,7 +9,7 @@ meta_keywords: "Linux 发行版，选择 Linux, Linux 内核，Linux 初学者�
 
 ## Lesson Content
 
-在上一课中，我们了解了 Linux 内核，它每天为数百万设备提供动力。在我们继续之前有一件事：术语“Linux”实际上是一个很大的误称，因为它指的是 Linux 内核。然而，许多发行版使用 Linux 内核，因此通常被称为 Linux 操作系统。
+上一课我们学习了 Linux 内核，它每天为数百万设备提供动力。在我们继续之前有一点需要说明：术语“Linux”实际上是一个相当大的误称，因为它指的是 Linux 内核。然而，许多发行版使用 Linux 内核，因此通常被称为 Linux 操作系统。
 
 一个 Linux 系统分为三个主要部分：
 
@@ -19,14 +19,16 @@ meta_keywords: "Linux 发行版，选择 Linux, Linux 内核，Linux 初学者�
 
 所以，我们需要采取的第一步是在您的机器上安装 Linux。您有许多选项可供选择，本课程将帮助您了解并开始选择一个 Linux 发行版。
 
-有许多 Linux 发行版可供选择；我们将只介绍最流行的选项。
+有许多 Linux 发行版可供选择；我们只介绍最流行的选项。
 
 ## Exercise
 
-No exercises for this lesson.
+尝试 [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) 以获得 Linux 发行版的实践经验：
+
+[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 
-No questions, skip ahead!
+没有问题，跳过！
 
 ## Quiz Answer

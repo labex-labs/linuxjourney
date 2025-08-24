@@ -3,13 +3,13 @@ index: 2
 lang: "pt"
 title: "Escolhendo uma Distribuição Linux"
 meta_title: "Escolhendo uma Distribuição Linux - Primeiros Passos"
-meta_description: "Aprenda a escolher uma distribuição Linux para suas necessidades. Explore opções populares e entenda o kernel, hardware e espaço do usuário. Comece sua jornada Linux!"
+meta_description: "Aprenda como escolher uma distribuição Linux para suas necessidades. Explore opções populares e entenda o kernel, hardware e espaço do usuário. Comece sua jornada Linux!"
 meta_keywords: "distribuição Linux, escolher Linux, kernel Linux, Linux para iniciantes, guia Linux, instalar Linux, tutorial Linux"
 ---
 
 ## Lesson Content
 
-Na lição anterior, aprendemos sobre o kernel Linux, que alimenta milhões de dispositivos diariamente. Uma coisa antes de prosseguirmos: o termo "Linux" é, na verdade, um nome bastante impróprio, pois se refere ao kernel Linux. No entanto, muitas distribuições usam o kernel Linux e, portanto, são comumente conhecidas como sistemas operacionais Linux.
+Na lição anterior, aprendemos sobre o kernel Linux, que alimenta milhões de dispositivos por dia. Uma coisa antes de prosseguirmos: o termo "Linux" é na verdade um nome bastante impróprio, já que se refere ao kernel Linux. No entanto, muitas distribuições usam o kernel Linux e são, portanto, comumente conhecidas como sistemas operacionais Linux.
 
 Um sistema Linux é dividido em três partes principais:
 
@@ -19,14 +19,16 @@ Um sistema Linux é dividido em três partes principais:
 
 Então, o primeiro passo que precisaremos dar é instalar o Linux em sua máquina. Você tem muitas opções para escolher, e este curso o ajudará a se informar e a começar a escolher uma distribuição Linux.
 
-Há muitas distribuições Linux para escolher; abordaremos apenas as opções mais populares.
+Existem muitas distribuições Linux para escolher; abordaremos apenas as opções mais populares.
 
 ## Exercise
 
-No exercises for this lesson.
+Experimente o [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) para obter experiência prática com distribuições Linux:
+
+[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 
-No questions, skip ahead!
+Sem perguntas, pule!
 
 ## Quiz Answer
