@@ -13,6 +13,7 @@ Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
     CLOUDFLARE_ACCOUNT_ID: Your Cloudflare account ID
     CLOUDFLARE_DATABASE_ID: Your D1 database ID (linuxjourney)
+    CLOUDFLARE_KV_NAMESPACE_ID: Your KV namespace ID (optional, for cache clearing)
 """
 
 import os
@@ -39,13 +40,25 @@ console = Console()
 
 
 class CloudflareD1Client:
-    """Client for interacting with Cloudflare D1 database"""
+    """Client for interacting with Cloudflare D1 database and KV store"""
 
-    def __init__(self, api_token: str, account_id: str, database_id: str):
+    def __init__(
+        self,
+        api_token: str,
+        account_id: str,
+        database_id: str,
+        kv_namespace_id: Optional[str] = None,
+    ):
         self.api_token = api_token
         self.account_id = account_id
         self.database_id = database_id
+        self.kv_namespace_id = kv_namespace_id
         self.base_url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}"
+        self.kv_base_url = (
+            f"https://api.cloudflare.com/client/v4/accounts/{account_id}/storage/kv/namespaces/{kv_namespace_id}"
+            if kv_namespace_id
+            else None
+        )
         self.headers = {
             "Authorization": f"Bearer {api_token}",
             "Content-Type": "application/json",
@@ -178,6 +191,20 @@ class CloudflareD1Client:
                 logger.info(
                     f"Updated lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                 )
+
+                # Clear KV cache for this lesson
+                cache_cleared = self.clear_lesson_cache(
+                    lesson_data["lesson_id"], lesson_data["lang"]
+                )
+                if cache_cleared:
+                    logger.info(
+                        f"Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                    )
+                else:
+                    logger.warning(
+                        f"Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                    )
+
                 return True
 
             else:
@@ -189,6 +216,35 @@ class CloudflareD1Client:
         except Exception as e:
             logger.error(
                 f"Failed to update lesson {lesson_data['lesson_id']}: {str(e)}"
+            )
+            return False
+
+    def clear_lesson_cache(self, lesson_id: str, lang: str) -> bool:
+        """Clear KV cache for a specific lesson"""
+        if not self.kv_namespace_id or not self.kv_base_url:
+            logger.warning("KV namespace not configured, skipping cache clearing")
+            return True
+
+        cache_key = f"cache:v1:lessons/{lesson_id}:{lang}"
+
+        try:
+            response = requests.delete(
+                f"{self.kv_base_url}/values/{cache_key}", headers=self.headers
+            )
+
+            # KV DELETE returns 200 even if the key doesn't exist
+            if response.status_code == 200:
+                logger.info(f"Cleared cache for key: {cache_key}")
+                return True
+            else:
+                logger.warning(
+                    f"Failed to clear cache for {cache_key}: {response.status_code} - {response.text}"
+                )
+                return False
+
+        except Exception as e:
+            logger.error(
+                f"Failed to clear cache for {cache_key}: {type(e).__name__}: {str(e)}"
             )
             return False
 
@@ -558,6 +614,7 @@ def main(file_path: str):
     api_token = os.getenv("CLOUDFLARE_API_TOKEN")
     account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
     database_id = os.getenv("CLOUDFLARE_DATABASE_ID")
+    kv_namespace_id = os.getenv("CLOUDFLARE_KV_NAMESPACE_ID")  # Optional
 
     if not all([api_token, account_id, database_id]):
         console.print("[bold red]❌ Missing required environment variables:[/bold red]")
@@ -565,6 +622,17 @@ def main(file_path: str):
         console.print("• CLOUDFLARE_ACCOUNT_ID")
         console.print("• CLOUDFLARE_DATABASE_ID")
         raise click.Abort()
+
+    # Show KV configuration status
+    if kv_namespace_id:
+        console.print("[green]✅ KV cache clearing enabled[/green]")
+    else:
+        console.print(
+            "[yellow]⚠️  KV namespace not configured - cache clearing disabled[/yellow]"
+        )
+        console.print(
+            "[dim]   Set CLOUDFLARE_KV_NAMESPACE_ID to enable cache clearing[/dim]"
+        )
 
     # Initialize parser and client
     parser_instance = MarkdownParser("lessons")
@@ -581,7 +649,7 @@ def main(file_path: str):
     )
 
     # Initialize database client to show comparison
-    db_client = CloudflareD1Client(api_token, account_id, database_id)
+    db_client = CloudflareD1Client(api_token, account_id, database_id, kv_namespace_id)
 
     # Test the connection with a simple query
     console.print("[dim]🔗 Testing database connection...[/dim]")
