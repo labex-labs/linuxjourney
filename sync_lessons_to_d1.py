@@ -98,15 +98,22 @@ class CloudflareD1Client:
 
             if first_result["results"]:
                 row = first_result["results"][0]
+
+                # Helper function to normalize NULL values to empty strings
+                def normalize_value(value):
+                    if value is None:
+                        return ""
+                    return str(value) if value else ""
+
                 return {
-                    "title": row.get("title", ""),
-                    "content": row.get("content", ""),
-                    "exercise_content": row.get("exercise_content", ""),
-                    "quiz_question": row.get("quiz_question", ""),
-                    "quiz_answer": row.get("quiz_answer", ""),
-                    "meta_title": row.get("meta_title", ""),
-                    "meta_description": row.get("meta_description", ""),
-                    "meta_keywords": row.get("meta_keywords", ""),
+                    "title": normalize_value(row.get("title")),
+                    "content": normalize_value(row.get("content")),
+                    "exercise_content": normalize_value(row.get("exercise_content")),
+                    "quiz_question": normalize_value(row.get("quiz_question")),
+                    "quiz_answer": normalize_value(row.get("quiz_answer")),
+                    "meta_title": normalize_value(row.get("meta_title")),
+                    "meta_description": normalize_value(row.get("meta_description")),
+                    "meta_keywords": normalize_value(row.get("meta_keywords")),
                 }
             return None
 
