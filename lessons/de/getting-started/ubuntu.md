@@ -15,7 +15,7 @@ Eine der beliebtesten Linux-Distributionen für Personal Computer ist Ubuntu. Ub
 
 ### Paketverwaltung
 
-Ubuntu ist ein Debian-basiertes Betriebssystem, das von Canonical entwickelt wurde. Daher verwendet es ein Kern-Debian-Paketverwaltungssystem.
+Ubuntu ist ein Debian-basiertes Betriebssystem, das von Canonical entwickelt wurde. Daher verwendet es ein zentrales Debian-Paketverwaltungssystem.
 
 ### Konfigurierbarkeit
 
@@ -27,8 +27,9 @@ Hervorragend geeignet für jede Plattform: Desktop, Laptop und Server.
 
 ## Exercise
 
-Wenn Sie daran interessiert sind, Ubuntu als Betriebssystem zu verwenden, besuchen Sie den Installationsbereich und probieren Sie es aus:
-`http://www.ubuntu.com`
+Üben Sie Ihre Linux-Kenntnisse mit diesem praktischen Lab:
+
+- [Your First Linux Lab](https://labex.io/de/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Questions
 

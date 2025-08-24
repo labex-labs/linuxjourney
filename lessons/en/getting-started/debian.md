@@ -29,7 +29,9 @@ Debian is an overall great operating system for any platform.
 
 ## Exercise
 
-If you're interested in having Debian as your operating system, head over to the installation section and give it a try: `https://www.debian.org`
+Practice your Linux skills with this hands-on lab:
+
+- [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Question
 

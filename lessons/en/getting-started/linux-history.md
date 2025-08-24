@@ -23,12 +23,11 @@ Then in 1991, a young fellow named Linus Torvalds started developing what we now
 
 ## Exercise
 
-Additional reading:
+Ready to get hands-on with Linux? Check out this beginner-friendly course:
 
-- [GNU](https://www.gnu.org/home.en.html)
-- [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson)
-- [Richard Stallman](https://stallman.org/)
-- [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds)
+- **[Linux for Beginners (Hands-on)](https://labex.io/learn/linux)**
+
+This course features 10 interactive hands-on labs designed specifically for beginners with zero Linux experience. Perfect for putting your newfound knowledge about Linux history into practice!
 
 ## Quiz Question
 

@@ -2,7 +2,7 @@
 index: 1
 lang: "de"
 title: "Die Shell"
-meta_title: "Die Shell - Command Line"
+meta_title: "Die Shell - Befehlszeile"
 meta_description: "Erfahren Sie mehr über die Linux-Shell, Bash und grundlegende Befehle wie 'echo'. Verstehen Sie Shell-Prompts und beginnen Sie Ihre Linux-Reise mit diesem anfängerfreundlichen Leitfaden."
 meta_keywords: "Linux-Shell, Bash, echo-Befehl, Linux-Tutorial, Befehlszeile, Linux für Anfänger, Shell-Prompt, Linux-Leitfaden"
 ---
@@ -30,10 +30,7 @@ echo Hello World
 
 ## Exercise
 
-Try some other Linux commands and see what they output:
-
-1. `$ date`
-2. `$ whoami`
+Für praktische Übungen mit grundlegenden Linux-Befehlen empfehlen wir den interaktiven Kurs: [Linux Basic Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)
 
 ## Quiz Question
 

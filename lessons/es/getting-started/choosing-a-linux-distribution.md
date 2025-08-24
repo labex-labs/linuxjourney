@@ -1,8 +1,8 @@
 ---
 index: 2
 lang: "es"
-title: "Eligiendo una Distribución de Linux"
-meta_title: "Eligiendo una Distribución de Linux - Primeros Pasos"
+title: "Elegir una distribución de Linux"
+meta_title: "Elegir una distribución de Linux - Primeros pasos"
 meta_description: "Aprenda a elegir una distribución de Linux para sus necesidades. Explore opciones populares y comprenda el kernel, el hardware y el espacio de usuario. ¡Comience su viaje en Linux!"
 meta_keywords: "distribución de Linux, elegir Linux, kernel de Linux, Linux para principiantes, guía de Linux, instalar Linux, tutorial de Linux"
 ---
@@ -23,10 +23,12 @@ Hay muchas distribuciones de Linux para elegir; solo repasaremos las opciones m�
 
 ## Exercise
 
-No exercises for this lesson.
+Pruebe el [Online Linux Playground](https://labex.io/es/tutorials/linux-online-linux-playground-372915) para obtener experiencia práctica con las distribuciones de Linux:
+
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/es/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 
-No questions, skip ahead!
+¡No hay preguntas, salte!
 
 ## Quiz Answer
