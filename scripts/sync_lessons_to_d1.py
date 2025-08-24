@@ -76,7 +76,7 @@ class CloudflareD1Client:
 
         if response.status_code != 200:
             logger.error(
-                f"Query failed with status {response.status_code}: {response.text}"
+                f"ERROR: Query failed with status {response.status_code}: {response.text}"
             )
             response.raise_for_status()
 
@@ -97,16 +97,22 @@ class CloudflareD1Client:
 
             # Check if result structure is as expected
             if not isinstance(result, dict) or "result" not in result:
-                logger.error(f"Unexpected result structure: {type(result)} - {result}")
+                logger.error(
+                    f"ERROR: Unexpected result structure: {type(result)} - {result}"
+                )
                 return None
 
             if not isinstance(result["result"], list) or len(result["result"]) == 0:
-                logger.error(f"Result array is empty or not a list: {result['result']}")
+                logger.error(
+                    f"ERROR: Result array is empty or not a list: {result['result']}"
+                )
                 return None
 
             first_result = result["result"][0]
             if not isinstance(first_result, dict) or "results" not in first_result:
-                logger.error(f"First result doesn't have 'results' key: {first_result}")
+                logger.error(
+                    f"ERROR: First result doesn't have 'results' key: {first_result}"
+                )
                 return None
 
             if first_result["results"]:
@@ -132,7 +138,7 @@ class CloudflareD1Client:
 
         except Exception as e:
             logger.error(
-                f"Failed to query existing lesson {lesson_id} ({lang}): {type(e).__name__}: {str(e)}"
+                f"ERROR: Failed to query existing lesson {lesson_id} ({lang}): {type(e).__name__}: {str(e)}"
             )
             logger.error(
                 f"Query result structure: {result if 'result' in locals() else 'No result available'}"
@@ -189,7 +195,7 @@ class CloudflareD1Client:
 
                 self.execute_query(update_sql, params)
                 logger.info(
-                    f"Updated lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                    f"SUCCESS: Updated lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                 )
 
                 # Clear KV cache for this lesson
@@ -198,31 +204,33 @@ class CloudflareD1Client:
                 )
                 if cache_cleared:
                     logger.info(
-                        f"Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        f"INFO: Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                     )
                 else:
                     logger.warning(
-                        f"Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        f"WARNING: Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                     )
 
                 return True
 
             else:
                 logger.warning(
-                    f"Lesson not found in database: {lesson_data['lesson_id']} ({lesson_data['lang']}). Skipping."
+                    f"WARNING: Lesson not found in database: {lesson_data['lesson_id']} ({lesson_data['lang']}). Skipping."
                 )
                 return False
 
         except Exception as e:
             logger.error(
-                f"Failed to update lesson {lesson_data['lesson_id']}: {str(e)}"
+                f"ERROR: Failed to update lesson {lesson_data['lesson_id']}: {str(e)}"
             )
             return False
 
     def clear_lesson_cache(self, lesson_id: str, lang: str) -> bool:
         """Clear KV cache for a specific lesson"""
         if not self.kv_namespace_id or not self.kv_base_url:
-            logger.warning("KV namespace not configured, skipping cache clearing")
+            logger.warning(
+                "WARNING: KV namespace not configured, skipping cache clearing"
+            )
             return True
 
         cache_key = f"cache:v1:lessons/{lesson_id}:{lang}"
@@ -234,17 +242,17 @@ class CloudflareD1Client:
 
             # KV DELETE returns 200 even if the key doesn't exist
             if response.status_code == 200:
-                logger.info(f"Cleared cache for key: {cache_key}")
+                logger.info(f"INFO: Cleared cache for key: {cache_key}")
                 return True
             else:
                 logger.warning(
-                    f"Failed to clear cache for {cache_key}: {response.status_code} - {response.text}"
+                    f"WARNING: Failed to clear cache for {cache_key}: {response.status_code} - {response.text}"
                 )
                 return False
 
         except Exception as e:
             logger.error(
-                f"Failed to clear cache for {cache_key}: {type(e).__name__}: {str(e)}"
+                f"ERROR: Failed to clear cache for {cache_key}: {type(e).__name__}: {str(e)}"
             )
             return False
 
@@ -270,7 +278,7 @@ class MarkdownParser:
             body = parts[2].strip()
             return frontmatter or {}, body
         except yaml.YAMLError as e:
-            logger.warning(f"Failed to parse frontmatter: {e}")
+            logger.warning(f"WARNING: Failed to parse frontmatter: {e}")
             return {}, content
 
     def extract_sections(self, content: str) -> Dict[str, str]:
@@ -370,7 +378,7 @@ class MarkdownParser:
             return lesson_data
 
         except Exception as e:
-            logger.error(f"Failed to parse {file_path}: {str(e)}")
+            logger.error(f"ERROR: Failed to parse {file_path}: {str(e)}")
             return None
 
     def get_language_variants(self, file_path: str) -> List[Path]:
@@ -379,7 +387,7 @@ class MarkdownParser:
 
         # Check if the file exists
         if not file_path.exists():
-            logger.error(f"File not found: {file_path}")
+            logger.error(f"ERROR: File not found: {file_path}")
             return []
 
         # Parse the file path to extract course and lesson info
@@ -395,15 +403,19 @@ class MarkdownParser:
                     break
 
             if lessons_idx is None or len(path_parts) < lessons_idx + 4:
-                logger.error(f"Invalid file path format: {file_path}")
-                logger.error("Expected format: lessons/{lang}/{course}/{lesson}.md")
+                logger.error(f"ERROR: Invalid file path format: {file_path}")
+                logger.error(
+                    "ERROR: Expected format: lessons/{lang}/{course}/{lesson}.md"
+                )
                 return []
 
             original_lang = path_parts[lessons_idx + 1]
             course = path_parts[lessons_idx + 2]
             lesson_file = path_parts[lessons_idx + 3]
 
-            logger.info(f"Looking for language variants of: {course}/{lesson_file}")
+            logger.info(
+                f"INFO: Looking for language variants of: {course}/{lesson_file}"
+            )
 
             # Find all language variants
             files = []
@@ -417,14 +429,14 @@ class MarkdownParser:
                     variant_file = lang_dir / course / lesson_file
                     if variant_file.exists():
                         files.append(variant_file)
-                        logger.info(f"Found variant: {variant_file}")
+                        logger.info(f"INFO: Found variant: {variant_file}")
                     else:
-                        logger.warning(f"Missing variant: {variant_file}")
+                        logger.warning(f"WARNING: Missing variant: {variant_file}")
 
             return sorted(files)
 
         except Exception as e:
-            logger.error(f"Error parsing file path {file_path}: {str(e)}")
+            logger.error(f"ERROR: Error parsing file path {file_path}: {str(e)}")
             return []
 
 
@@ -433,30 +445,28 @@ def create_comparison_table(lesson_data: Dict, existing_data: Optional[Dict]) ->
     lesson_id = lesson_data["lesson_id"]
     lang = lesson_data["lang"]
 
-    # Add language flag emoji for better visual identification
-    lang_flags = {
-        "en": "🇺🇸",
-        "zh": "🇨🇳",
-        "ru": "🇷🇺",
-        "pt": "🇧🇷",
-        "es": "🇪🇸",
-        "fr": "🇫🇷",
-        "de": "🇩🇪",
-        "ja": "🇯🇵",
-        "ko": "🇰🇷",
+    # Language codes for identification
+    lang_codes = {
+        "en": "EN",
+        "zh": "ZH",
+        "ru": "RU",
+        "pt": "PT",
+        "es": "ES",
+        "fr": "FR",
+        "de": "DE",
+        "ja": "JA",
+        "ko": "KO",
     }
-    lang_flag = lang_flags.get(lang, "🌐")
+    lang_code = lang_codes.get(lang, lang.upper())
 
     if existing_data is None:
-        table_title = (
-            f"🆕 New Lesson (not in database): {lesson_id} {lang_flag} ({lang})"
-        )
+        table_title = f"NEW: Lesson not in database: {lesson_id} [{lang_code}] ({lang})"
         table = Table(title=table_title)
         table.add_column("Field", style="cyan", min_width=16)
         table.add_column("New Value", style="green", max_width=60)
         table.add_column("Length", style="yellow", min_width=8, justify="right")
     else:
-        table_title = f"🔄 Lesson Comparison: {lesson_id} {lang_flag} ({lang})"
+        table_title = f"COMPARISON: Lesson: {lesson_id} [{lang_code}] ({lang})"
         table = Table(title=table_title)
         table.add_column("Field", style="cyan", min_width=16)
         table.add_column("Current (DB)", style="red", max_width=40)
@@ -514,13 +524,13 @@ def create_comparison_table(lesson_data: Dict, existing_data: Optional[Dict]) ->
             if current_value == new_value:
                 status = "[dim]unchanged[/dim]"
             elif not current_value and new_value:
-                status = "[green]✚ new[/green]"
+                status = "[green]NEW[/green]"
                 new_display = f"[green]{new_display}[/green]"
             elif current_value and not new_value:
-                status = "[red]✖ removed[/red]"
+                status = "[red]REMOVED[/red]"
                 current_display = f"[red]{current_display}[/red]"
             else:
-                status = "[yellow]✎ changed[/yellow]"
+                status = "[yellow]CHANGED[/yellow]"
                 current_display = f"[red]{current_display}[/red]"
                 new_display = f"[green]{new_display}[/green]"
 
@@ -538,7 +548,7 @@ def show_comparison_preview(
 
     console.print("\n")
     console.print(
-        Panel.fit("[bold blue]🔍 Database Comparison Preview[/bold blue]", style="blue")
+        Panel.fit("[bold blue]Database Comparison Preview[/bold blue]", style="blue")
     )
 
     # Parse all files and query database for all language versions
@@ -554,45 +564,45 @@ def show_comparison_preview(
             lesson_data["_existing_data"] = existing_data
             processed_languages.append(lesson_data["lang"])
 
-            console.print(f"\n[bold green]📄 {file_path}[/bold green]")
+            console.print(f"\n[bold green]FILE: {file_path}[/bold green]")
 
             # Create comparison table
             table = create_comparison_table(lesson_data, existing_data)
             console.print(table)
 
         else:
-            console.print(f"\n[bold red]❌ Failed to parse: {file_path}[/bold red]")
+            console.print(f"\n[bold red]ERROR: Failed to parse: {file_path}[/bold red]")
 
     # Show file count summary with language breakdown
     if all_lesson_data:
         total_count = len(all_lesson_data)
         lang_counts = {}
-        lang_flags = {
-            "en": "🇺🇸",
-            "zh": "🇨🇳",
-            "ru": "🇷🇺",
-            "pt": "🇧🇷",
-            "es": "🇪🇸",
-            "fr": "🇫🇷",
-            "de": "🇩🇪",
-            "ja": "🇯🇵",
-            "ko": "🇰🇷",
+        lang_codes = {
+            "en": "EN",
+            "zh": "ZH",
+            "ru": "RU",
+            "pt": "PT",
+            "es": "ES",
+            "fr": "FR",
+            "de": "DE",
+            "ja": "JA",
+            "ko": "KO",
         }
 
         # Count files per language
         for lang in processed_languages:
             lang_counts[lang] = lang_counts.get(lang, 0) + 1
 
-        # Create language summary with flags
+        # Create language summary with codes
         lang_summary = []
         for lang in sorted(lang_counts.keys()):
-            flag = lang_flags.get(lang, "🌐")
+            code = lang_codes.get(lang, lang.upper())
             count = lang_counts[lang]
-            lang_summary.append(f"{flag} {lang}({count})")
+            lang_summary.append(f"{code}({count})")
 
         languages_str = ", ".join(lang_summary)
         console.print(
-            f"\n[dim]📋 Preview shown for: {total_count} file(s) - {languages_str}[/dim]"
+            f"\n[dim]INFO: Preview shown for: {total_count} file(s) - {languages_str}[/dim]"
         )
 
     return all_lesson_data
@@ -606,7 +616,7 @@ def main(file_path: str):
     FILE_PATH: Lesson file path to update (automatically updates all language versions)
     Example: lessons/en/filesystem/anatomy-of-a-disk.md
     """
-    console.print("[bold blue]🚀 Linux Journey Lesson Sync Tool[/bold blue]")
+    console.print("[bold blue]Linux Journey Lesson Sync Tool[/bold blue]")
     console.print(f"Processing: {file_path}")
     console.print()
 
@@ -617,7 +627,9 @@ def main(file_path: str):
     kv_namespace_id = os.getenv("CLOUDFLARE_KV_NAMESPACE_ID")  # Optional
 
     if not all([api_token, account_id, database_id]):
-        console.print("[bold red]❌ Missing required environment variables:[/bold red]")
+        console.print(
+            "[bold red]ERROR: Missing required environment variables:[/bold red]"
+        )
         console.print("• CLOUDFLARE_API_TOKEN")
         console.print("• CLOUDFLARE_ACCOUNT_ID")
         console.print("• CLOUDFLARE_DATABASE_ID")
@@ -625,13 +637,13 @@ def main(file_path: str):
 
     # Show KV configuration status
     if kv_namespace_id:
-        console.print("[green]✅ KV cache clearing enabled[/green]")
+        console.print("[green]INFO: KV cache clearing enabled[/green]")
     else:
         console.print(
-            "[yellow]⚠️  KV namespace not configured - cache clearing disabled[/yellow]"
+            "[yellow]WARNING: KV namespace not configured - cache clearing disabled[/yellow]"
         )
         console.print(
-            "[dim]   Set CLOUDFLARE_KV_NAMESPACE_ID to enable cache clearing[/dim]"
+            "[dim]Set CLOUDFLARE_KV_NAMESPACE_ID to enable cache clearing[/dim]"
         )
 
     # Initialize parser and client
@@ -641,25 +653,27 @@ def main(file_path: str):
     lesson_files = parser_instance.get_language_variants(file_path)
 
     if not lesson_files:
-        console.print("[bold red]❌ No lesson files found matching criteria[/bold red]")
+        console.print(
+            "[bold red]ERROR: No lesson files found matching criteria[/bold red]"
+        )
         raise click.Abort()
 
     console.print(
-        f"[green]✅ Found {len(lesson_files)} lesson files to process[/green]"
+        f"[green]INFO: Found {len(lesson_files)} lesson files to process[/green]"
     )
 
     # Initialize database client to show comparison
     db_client = CloudflareD1Client(api_token, account_id, database_id, kv_namespace_id)
 
     # Test the connection with a simple query
-    console.print("[dim]🔗 Testing database connection...[/dim]")
+    console.print("[dim]INFO: Testing database connection...[/dim]")
     try:
         test_result = db_client.execute_query("SELECT 1 as test")
-        console.print("[dim green]✅ Database connection successful[/dim green]")
+        console.print("[dim green]INFO: Database connection successful[/dim green]")
         logger.debug(f"Test query result: {test_result}")
     except Exception as e:
         console.print(
-            f"[bold red]❌ Database connection failed: {type(e).__name__}: {str(e)}[/bold red]"
+            f"[bold red]ERROR: Database connection failed: {type(e).__name__}: {str(e)}[/bold red]"
         )
         raise click.Abort()
 
@@ -667,18 +681,20 @@ def main(file_path: str):
     all_lesson_data = show_comparison_preview(lesson_files, parser_instance, db_client)
 
     if not all_lesson_data:
-        console.print("[bold red]❌ No valid lesson data found to update[/bold red]")
+        console.print(
+            "[bold red]ERROR: No valid lesson data found to update[/bold red]"
+        )
         raise click.Abort()
 
     # Confirm before proceeding
     console.print()
     if not Confirm.ask(
-        "[bold yellow]⚠️  Do you want to proceed with the update?[/bold yellow]"
+        "[bold yellow]WARNING: Do you want to proceed with the update?[/bold yellow]"
     ):
-        console.print("[yellow]🚫 Update cancelled by user[/yellow]")
+        console.print("[yellow]INFO: Update cancelled by user[/yellow]")
         raise click.Abort()
 
-    console.print("\n[bold green]🔄 Starting database updates...[/bold green]")
+    console.print("\n[bold green]INFO: Starting database updates...[/bold green]")
 
     success_count = 0
     error_count = 0
@@ -692,23 +708,23 @@ def main(file_path: str):
         try:
             if db_client.update_lesson(lesson_data):
                 console.print(
-                    f"[green]✅ Updated: {lesson_id} ({lang}) - {title}[/green]"
+                    f"[green]SUCCESS: Updated: {lesson_id} ({lang}) - {title}[/green]"
                 )
                 success_count += 1
             else:
                 console.print(
-                    f"[yellow]⚠️  Skipped: {lesson_id} ({lang}) - Not found in database[/yellow]"
+                    f"[yellow]WARNING: Skipped: {lesson_id} ({lang}) - Not found in database[/yellow]"
                 )
                 error_count += 1
         except Exception as e:
-            console.print(f"[red]❌ Failed: {lesson_id} ({lang}) - {str(e)}[/red]")
+            console.print(f"[red]ERROR: Failed: {lesson_id} ({lang}) - {str(e)}[/red]")
             error_count += 1
 
     # Show final summary
     console.print()
     summary_panel = Panel.fit(
-        f"[bold green]✅ {success_count} successful[/bold green]  [bold red]❌ {error_count} errors[/bold red]",
-        title="[bold blue]📊 Update Summary[/bold blue]",
+        f"[bold green]SUCCESS: {success_count} successful[/bold green]  [bold red]ERROR: {error_count} errors[/bold red]",
+        title="[bold blue]Update Summary[/bold blue]",
         style="blue",
     )
     console.print(summary_panel)

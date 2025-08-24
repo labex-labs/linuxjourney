@@ -97,8 +97,8 @@ class GitChangeDetector:
             )
             return result.stdout.strip()
         except subprocess.CalledProcessError as e:
-            console.print(f"[red]Git command failed: {' '.join(command)}[/red]")
-            console.print(f"[red]Error: {e.stderr}[/red]")
+            console.print(f"[red]ERROR: Git command failed: {' '.join(command)}[/red]")
+            console.print(f"[red]ERROR: {e.stderr}[/red]")
             raise
 
     def get_unstaged_files(self) -> Set[Path]:
@@ -148,14 +148,14 @@ class GitChangeDetector:
             # Check if file exists
             if not file_path.exists():
                 console.print(
-                    f"[yellow]Warning: File does not exist: {file_path}[/yellow]"
+                    f"[yellow]WARNING: File does not exist: {file_path}[/yellow]"
                 )
                 continue
 
             # Check if it's a markdown file
             if not file_path.suffix.lower() == ".md":
                 console.print(
-                    f"[yellow]Warning: Not a markdown file: {file_path}[/yellow]"
+                    f"[yellow]WARNING: Not a markdown file: {file_path}[/yellow]"
                 )
                 continue
 
@@ -164,12 +164,12 @@ class GitChangeDetector:
                 relative_path = file_path.relative_to(script_dir)
                 if not lessons_en_pattern.search(str(relative_path)):
                     console.print(
-                        f"[yellow]Warning: File is not in lessons/en directory: {file_path}[/yellow]"
+                        f"[yellow]WARNING: File is not in lessons/en directory: {file_path}[/yellow]"
                     )
                     continue
             except ValueError:
                 console.print(
-                    f"[yellow]Warning: File is outside the project directory: {file_path}[/yellow]"
+                    f"[yellow]WARNING: File is outside the project directory: {file_path}[/yellow]"
                 )
                 continue
 
@@ -334,7 +334,7 @@ CONTENT TO TRANSLATE:
         for field in meta_fields:
             value = translation_data.get(field, "").strip()
             if not value:
-                console.print(f"[yellow]Warning: {field} is empty[/yellow]")
+                console.print(f"[yellow]WARNING: {field} is empty[/yellow]")
                 return False
 
         translated_content = translation_data.get("translated_content", "")
@@ -343,7 +343,7 @@ CONTENT TO TRANSLATE:
         for heading in FIXED_HEADINGS:
             if heading not in translated_content:
                 console.print(
-                    f"[yellow]Warning: Missing required heading: {heading}[/yellow]"
+                    f"[yellow]WARNING: Missing required heading: {heading}[/yellow]"
                 )
                 return False
 
@@ -353,7 +353,7 @@ CONTENT TO TRANSLATE:
 
         if original_code_blocks != translated_code_blocks:
             console.print(
-                f"[yellow]Warning: Code block count mismatch. Original: {original_code_blocks}, Translated: {translated_code_blocks}[/yellow]"
+                f"[yellow]WARNING: Code block count mismatch. Original: {original_code_blocks}, Translated: {translated_code_blocks}[/yellow]"
             )
             return False
 
@@ -366,7 +366,7 @@ CONTENT TO TRANSLATE:
             1, original_inline_code * 0.2
         ):
             console.print(
-                f"[yellow]Warning: Inline code count significantly different. Original: {original_inline_code}, Translated: {translated_inline_code}[/yellow]"
+                f"[yellow]WARNING: Inline code count significantly different. Original: {original_inline_code}, Translated: {translated_inline_code}[/yellow]"
             )
             return False
 
@@ -387,7 +387,7 @@ CONTENT TO TRANSLATE:
 
             if not translated_quiz_match:
                 console.print(
-                    "[yellow]Warning: Quiz Answer section missing in translation[/yellow]"
+                    "[yellow]WARNING: Quiz Answer section missing in translation[/yellow]"
                 )
                 return False
 
@@ -398,7 +398,7 @@ CONTENT TO TRANSLATE:
                 "\n", ""
             ) != translated_quiz_answer.replace(" ", "").replace("\n", ""):
                 console.print(
-                    "[yellow]Warning: Quiz Answer content was modified during translation[/yellow]"
+                    "[yellow]WARNING: Quiz Answer content was modified during translation[/yellow]"
                 )
                 return False
 
@@ -690,7 +690,7 @@ Main content to translate:
 
         # Display summary
         console.print(
-            f"[blue]Processing {len(file_list)} files for {len(target_languages)} languages ({total_tasks} total tasks)[/blue]"
+            f"[blue]INFO: Processing {len(file_list)} files for {len(target_languages)} languages ({total_tasks} total tasks)[/blue]"
         )
 
         # Progress tracking
@@ -730,13 +730,13 @@ Main content to translate:
     def _display_final_results(self) -> None:
         """Display final translation results."""
         console.print(
-            f"[green]Completed: {self.stats['processed']} files, {self.stats['skipped']} skipped, {self.stats['errors']} errors, {self.stats['validation_failed']} validation failures[/green]"
+            f"[green]INFO: Completed: {self.stats['processed']} files, {self.stats['skipped']} skipped, {self.stats['errors']} errors, {self.stats['validation_failed']} validation failures[/green]"
         )
 
         if self.failed_files:
             self.save_failed_files()
             console.print(
-                "[yellow]Some translations failed, check failed_localization_files.json[/yellow]"
+                "[yellow]WARNING: Some translations failed, check failed_localization_files.json[/yellow]"
             )
 
 
@@ -786,7 +786,7 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         console.print(
-            "[red]Error: OPENROUTER_API_KEY environment variable not found[/red]"
+            "[red]ERROR: OPENROUTER_API_KEY environment variable not found[/red]"
         )
         sys.exit(1)
 
@@ -801,14 +801,14 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
         en_directory = script_dir / "lessons" / "en"
 
         if not en_directory.exists():
-            console.print(f"[red]Error: Directory not found: {en_directory}[/red]")
+            console.print(f"[red]ERROR: Directory not found: {en_directory}[/red]")
             sys.exit(1)
 
         # Check for conflicting options
         option_count = sum([bool(git_changes), bool(path)])
         if option_count > 1:
             console.print(
-                "[red]Error: Cannot use --git-changes and --path options together[/red]"
+                "[red]ERROR: Cannot use --git-changes and --path options together[/red]"
             )
             sys.exit(1)
 
@@ -825,12 +825,12 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
 
                 if not valid_files:
                     console.print(
-                        "[red]Error: The specified file is not a valid English markdown file[/red]"
+                        "[red]ERROR: The specified file is not a valid English markdown file[/red]"
                     )
                     sys.exit(1)
 
-                console.print(f"[blue]Processing 1 specified file[/blue]")
-                console.print(f"  • {valid_files[0].relative_to(script_dir)}")
+                console.print(f"[blue]INFO: Processing 1 specified file[/blue]")
+                console.print(f"  - {valid_files[0].relative_to(script_dir)}")
 
             elif target_path.is_dir():
                 # Process directory
@@ -841,19 +841,19 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
 
                 if not valid_files:
                     console.print(
-                        "[red]Error: No valid English markdown files found in the specified directory[/red]"
+                        "[red]ERROR: No valid English markdown files found in the specified directory[/red]"
                     )
                     sys.exit(1)
 
                 console.print(
-                    f"[blue]Processing {len(valid_files)} files from directory[/blue]"
+                    f"[blue]INFO: Processing {len(valid_files)} files from directory[/blue]"
                 )
                 for file_path in valid_files[:5]:  # Show first 5 files
-                    console.print(f"  • {file_path.relative_to(script_dir)}")
+                    console.print(f"  - {file_path.relative_to(script_dir)}")
                 if len(valid_files) > 5:
                     console.print(f"  ... and {len(valid_files) - 5} more files")
             else:
-                console.print("[red]Error: The specified path does not exist[/red]")
+                console.print("[red]ERROR: The specified path does not exist[/red]")
                 sys.exit(1)
 
             localizer.process_files_with_progress(
@@ -870,7 +870,9 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
                 )
 
                 if not english_files:
-                    console.print("[yellow]No unstaged files to translate[/yellow]")
+                    console.print(
+                        "[yellow]INFO: No unstaged files to translate[/yellow]"
+                    )
                     return
 
                 localizer.process_files_with_progress(
@@ -890,9 +892,9 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
             )
 
     except KeyboardInterrupt:
-        console.print("[yellow]Interrupted[/yellow]")
+        console.print("[yellow]INFO: Interrupted[/yellow]")
     except Exception as e:
-        console.print(f"[red]Error: {str(e)}[/red]")
+        console.print(f"[red]ERROR: {str(e)}[/red]")
         sys.exit(1)
 
 
