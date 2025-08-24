@@ -2,8 +2,8 @@
 index: 13
 lang: "es"
 title: "rm (Eliminar)"
-meta_title: "rm (Eliminar) - Command Line"
-meta_description: "Aprende a usar el comando `rm` en Linux para eliminar de forma segura archivos y directorios. Comprende opciones como -f, -i, -r y rmdir. ¡Comienza tu viaje en Linux!"
+meta_title: "rm (Eliminar) - Línea de Comandos"
+meta_description: "Aprende a usar el comando `rm` en Linux para eliminar archivos y directorios de forma segura. Comprende opciones como -f, -i, -r y rmdir. ¡Comienza tu viaje en Linux!"
 meta_keywords: "comando rm, eliminar archivos Linux, eliminar directorios, tutorial Linux, Linux para principiantes, rmdir, guía Linux"
 ---
 
@@ -25,19 +25,19 @@ Ahora, si no te importa nada de eso, puedes eliminar un montón de archivos.
 rm -f file1
 ```
 
-La opción `-f` o force le dice a `rm` que elimine todos los archivos, ya sean de solo lectura o no, sin pedir confirmación al usuario (siempre que tengas los permisos adecuados).
+La opción `-f` o force le dice a `rm` que elimine todos los archivos, estén o no protegidos contra escritura, sin pedir confirmación al usuario (siempre que tengas los permisos adecuados).
 
 ```bash
 rm -i file
 ```
 
-Agregar la bandera `-i`, como muchos de los otros comandos, te dará una solicitud sobre si realmente deseas eliminar los archivos o directorios.
+Añadir la bandera `-i`, como muchos de los otros comandos, te dará una pregunta sobre si realmente quieres eliminar los archivos o directorios.
 
 ```bash
 rm -r directory
 ```
 
-No puedes simplemente `rm` un directorio por defecto; necesitarás agregar la bandera `-r` (recursive) para eliminar todos los archivos y cualquier subdirectorio que pueda tener.
+No puedes simplemente `rm` un directorio por defecto; necesitarás añadir la bandera `-r` (recursiva) para eliminar todos los archivos y cualquier subdirectorio que pueda tener.
 
 Puedes eliminar un directorio con el comando `rmdir`.
 
@@ -47,11 +47,14 @@ rmdir directory
 
 ## Exercise
 
-1. Create a file called `-file` (don't forget the dash!).
-2. Remove that file.
+Para practicar con el comando `rm`, prueba este laboratorio interactivo:
+
+- [Linux rm Command: File Removing](https://labex.io/es/labs/linux-linux-rm-command-file-removing-209741)
 
 ## Quiz Question
 
-¿Cómo se elimina un archivo llamado `myfile`?
+¿Cómo eliminas un archivo llamado `myfile`?
 
 ## Quiz Answer
+
+rm myfile

@@ -3,7 +3,7 @@ index: 13
 lang: "pt"
 title: "rm (Remover)"
 meta_title: "rm (Remover) - Linha de Comando"
-meta_description: "Aprenda como usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
+meta_description: "Aprenda a usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
 meta_keywords: "comando rm, excluir arquivos Linux, remover diretórios, tutorial Linux, Linux para iniciantes, rmdir, guia Linux"
 ---
 
@@ -15,9 +15,9 @@ Agora, acho que temos muitos arquivos; vamos remover alguns. Para remover arquiv
 rm file1
 ```
 
-Tenha cuidado ao usar `rm`; não há uma lixeira mágica de onde você possa recuperar arquivos removidos. Uma vez que eles se foram, eles se foram para sempre, então seja cuidadoso.
+Tome cuidado ao usar `rm`; não há uma lixeira mágica de onde você possa recuperar arquivos removidos. Uma vez que eles se foram, eles se foram para sempre, então seja cuidadoso.
 
-Felizmente, existem algumas medidas de segurança em vigor, então o usuário comum não pode simplesmente remover um monte de arquivos importantes. Arquivos protegidos contra gravação solicitarão sua confirmação antes de serem excluídos. Se um diretório for protegido contra gravação, ele também não será facilmente removido.
+Felizmente, existem algumas medidas de segurança em vigor, para que o usuário médio não possa simplesmente remover um monte de arquivos importantes. Arquivos protegidos contra gravação solicitarão confirmação antes de serem excluídos. Se um diretório for protegido contra gravação, ele também não será facilmente removido.
 
 Agora, se você não se importa com nada disso, você pode absolutamente remover um monte de arquivos.
 
@@ -47,11 +47,14 @@ rmdir directory
 
 ## Exercise
 
-1. Crie um arquivo chamado `-file` (não se esqueça do hífen!).
-2. Remova esse arquivo.
+Para prática interativa com o comando `rm`, experimente este laboratório interativo:
+
+- [Linux rm Command: File Removing](https://labex.io/pt/labs/linux-linux-rm-command-file-removing-209741)
 
 ## Quiz Question
 
 Como você remove um arquivo chamado `myfile`?
 
 ## Quiz Answer
+
+rm myfile

@@ -134,7 +134,7 @@ class GitChangeDetector:
 
     @staticmethod
     def validate_and_filter_files(
-        file_paths: List[Path], script_dir: Path
+        file_paths: List[Path], project_root: Path
     ) -> List[Path]:
         """Validate and filter specified files to ensure they are English markdown files."""
         valid_files = []
@@ -143,7 +143,7 @@ class GitChangeDetector:
         for file_path in file_paths:
             # Convert to absolute path if relative
             if not file_path.is_absolute():
-                file_path = script_dir / file_path
+                file_path = project_root / file_path
 
             # Check if file exists
             if not file_path.exists():
@@ -161,7 +161,7 @@ class GitChangeDetector:
 
             # Check if it's in the lessons/en directory
             try:
-                relative_path = file_path.relative_to(script_dir)
+                relative_path = file_path.relative_to(project_root)
                 if not lessons_en_pattern.search(str(relative_path)):
                     console.print(
                         f"[yellow]WARNING: File is not in lessons/en directory: {file_path}[/yellow]"
@@ -798,7 +798,8 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
 
     try:
         script_dir = Path(__file__).parent
-        en_directory = script_dir / "lessons" / "en"
+        project_root = script_dir.parent  # Go up one level from scripts to project root
+        en_directory = project_root / "lessons" / "en"
 
         if not en_directory.exists():
             console.print(f"[red]ERROR: Directory not found: {en_directory}[/red]")
@@ -815,12 +816,12 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
         # Determine which files to process
         if path:
             # Convert to absolute path if relative
-            target_path = path if path.is_absolute() else script_dir / path
+            target_path = path if path.is_absolute() else project_root / path
 
             if target_path.is_file():
                 # Process single file
                 valid_files = GitChangeDetector.validate_and_filter_files(
-                    [target_path], script_dir
+                    [target_path], project_root
                 )
 
                 if not valid_files:
@@ -830,13 +831,13 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
                     sys.exit(1)
 
                 console.print(f"[blue]INFO: Processing 1 specified file[/blue]")
-                console.print(f"  - {valid_files[0].relative_to(script_dir)}")
+                console.print(f"  - {valid_files[0].relative_to(project_root)}")
 
             elif target_path.is_dir():
                 # Process directory
                 markdown_files = localizer.find_markdown_files(target_path)
                 valid_files = GitChangeDetector.validate_and_filter_files(
-                    markdown_files, script_dir
+                    markdown_files, project_root
                 )
 
                 if not valid_files:
@@ -849,7 +850,7 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
                     f"[blue]INFO: Processing {len(valid_files)} files from directory[/blue]"
                 )
                 for file_path in valid_files[:5]:  # Show first 5 files
-                    console.print(f"  - {file_path.relative_to(script_dir)}")
+                    console.print(f"  - {file_path.relative_to(project_root)}")
                 if len(valid_files) > 5:
                     console.print(f"  ... and {len(valid_files) - 5} more files")
             else:
@@ -862,7 +863,7 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
 
         elif git_changes:
             # Process files with unstaged changes
-            git_detector = GitChangeDetector(script_dir)
+            git_detector = GitChangeDetector(project_root)
             try:
                 changed_files = git_detector.get_unstaged_files()
                 english_files = git_detector.filter_english_markdown_files(

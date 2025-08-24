@@ -47,11 +47,14 @@ rmdir directory
 
 ## Exercise
 
-1. Create a file called `-file` (don't forget the dash!).
-2. Remove that file.
+For hands-on practice with the `rm` command, try this interactive lab:
+
+- [Linux rm Command: File Removing](https://labex.io/labs/linux-linux-rm-command-file-removing-209741)
 
 ## Quiz Question
 
 How do you remove a file called `myfile`?
 
 ## Quiz Answer
+
+rm myfile
