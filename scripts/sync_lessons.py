@@ -10,10 +10,10 @@ Usage:
     python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview]
 
 Examples:
-    # Process a single file and its language variants (with preview)
+    # Process a single file and all its language variants (with preview)
     python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md
 
-    # Process all markdown files in a directory (with preview)
+    # Process all markdown files in a directory and all their language variants (with preview)
     python sync_lessons.py --path lessons/en/filesystem/
     python sync_lessons.py --path lessons/
 
@@ -426,6 +426,59 @@ class MarkdownParser:
             logger.error(f"ERROR: Error scanning directory {directory_path}: {str(e)}")
             return []
 
+    def get_all_language_variants_for_directory(
+        self, directory_path: str
+    ) -> List[Path]:
+        """Find all markdown files in directory and get language variants for each"""
+        directory_files = self.find_markdown_files_in_directory(directory_path)
+        all_variants = []
+        processed_lessons = set()  # To avoid duplicates
+
+        for file_path in directory_files:
+            try:
+                # Get the lesson identifier (course + lesson name)
+                path_parts = file_path.parts
+                lessons_idx = None
+                for i, part in enumerate(path_parts):
+                    if part == "lessons":
+                        lessons_idx = i
+                        break
+
+                if lessons_idx is None or len(path_parts) < lessons_idx + 4:
+                    logger.warning(
+                        f"WARNING: Skipping file with invalid path format: {file_path}"
+                    )
+                    continue
+
+                course = path_parts[lessons_idx + 2]
+                lesson_file = path_parts[lessons_idx + 3]
+                lesson_key = f"{course}/{lesson_file}"
+
+                # Skip if we've already processed this lesson
+                if lesson_key in processed_lessons:
+                    continue
+
+                processed_lessons.add(lesson_key)
+
+                # Get all language variants for this lesson
+                variants = self.get_language_variants(str(file_path))
+                all_variants.extend(variants)
+
+                logger.info(
+                    f"INFO: Added {len(variants)} language variants for {lesson_key}"
+                )
+
+            except Exception as e:
+                logger.warning(f"WARNING: Error processing {file_path}: {str(e)}")
+                continue
+
+        # Remove duplicates and sort
+        unique_variants = list(set(all_variants))
+        unique_variants.sort()
+
+        logger.info(f"INFO: Total unique files to process: {len(unique_variants)}")
+        return unique_variants
+
     def get_language_variants(self, file_path: str) -> List[Path]:
         """Get all language variants of a specific lesson file"""
         file_path = Path(file_path)
@@ -670,8 +723,8 @@ def main(path: str, no_preview: bool):
     """Update existing Linux Journey lessons in Cloudflare D1 database.
 
     Use --path to specify either:
-    - A specific lesson file: lessons/en/filesystem/anatomy-of-a-disk.md
-    - A directory: lessons/en/filesystem/ (processes all .md files in directory and subdirectories)
+    - A specific lesson file: lessons/en/filesystem/anatomy-of-a-disk.md (syncs all language variants)
+    - A directory: lessons/en/filesystem/ (processes all .md files and their language variants)
 
     Use --no-preview to skip the comparison preview and proceed directly with synchronization.
     """
@@ -726,9 +779,13 @@ def main(path: str, no_preview: bool):
         lesson_files = parser_instance.get_language_variants(str(path_obj))
 
     elif path_obj.is_dir():
-        # Directory - find all markdown files
-        console.print(f"[blue]INFO: Processing all markdown files in directory[/blue]")
-        lesson_files = parser_instance.find_markdown_files_in_directory(str(path_obj))
+        # Directory - find all markdown files and their language variants
+        console.print(
+            f"[blue]INFO: Processing all markdown files in directory and their language variants[/blue]"
+        )
+        lesson_files = parser_instance.get_all_language_variants_for_directory(
+            str(path_obj)
+        )
 
     else:
         console.print(
