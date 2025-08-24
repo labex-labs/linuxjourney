@@ -14,8 +14,8 @@ En la lección anterior, aprendimos sobre el kernel de Linux, que impulsa millon
 Un sistema Linux se divide en tres partes principales:
 
 - Hardware - Esto incluye todo el hardware en el que se ejecuta su sistema, así como la memoria, la CPU, los discos, etc.
-- Linux Kernel - Como mencionamos anteriormente, el kernel es el núcleo del sistema operativo. Administra el hardware y le dice cómo interactuar con el sistema.
-- User Space - Aquí es donde usuarios como usted interactuarán directamente con el sistema.
+- Linux Kernel - Como discutimos anteriormente, el kernel es el núcleo del sistema operativo. Administra el hardware y le dice cómo interactuar con el sistema.
+- User Space - Aquí es donde los usuarios como usted interactuarán directamente con el sistema.
 
 Entonces, el primer paso que tendremos que dar es instalar Linux en su máquina. Tiene muchas opciones para elegir, y este curso lo ayudará a informarse y a comenzar a elegir una distribución de Linux.
 
@@ -23,9 +23,9 @@ Hay muchas distribuciones de Linux para elegir; solo repasaremos las opciones m�
 
 ## Exercise
 
-Pruebe el [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) para obtener experiencia práctica con las distribuciones de Linux:
+Pruebe el [Online Linux Playground](https://labex.io/es/tutorials/linux-online-linux-playground-372915) para obtener experiencia práctica con las distribuciones de Linux:
 
-[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/es/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

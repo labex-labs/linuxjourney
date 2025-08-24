@@ -27,8 +27,9 @@ Great for any platform: desktop, laptop, and server.
 
 ## Exercise
 
-If you're interested in having Ubuntu as your operating system, head over to the installation section and give it a try:
-`http://www.ubuntu.com`
+Practice your Linux skills with this hands-on lab:
+
+- [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Questions
 

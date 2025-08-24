@@ -3,7 +3,7 @@ index: 4
 lang: "ja"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - はじめに"
-meta_description: "Red Hat Enterprise Linux (RHEL) の基本、RPM パッケージマネージャー、およびエンタープライズでの使用法について学びます。RHEL の主な違いと利点を理解しましょう。"
+meta_description: "Red Hat Enterprise Linux (RHEL) の基本、RPM パッケージマネージャー、およびエンタープライズでの使用法について学びます。RHEL の主な違いと利点を理解します。"
 meta_keywords: "RHEL を学ぶ，Red Hat Enterprise Linux, RHEL の基本，RPM パッケージマネージャー, Linux サーバーOS, 初心者向け RHEL, RHEL ガイド"
 ---
 
@@ -11,15 +11,15 @@ meta_keywords: "RHEL を学ぶ，Red Hat Enterprise Linux, RHEL の基本，RPM 
 
 ### Overview
 
-Red Hat Enterprise Linux (RHEL) は、一般的に RHEL と呼ばれ、Red Hat によって開発されています。RHEL は、ソースコードを無償で提供しているものの、無償再配布を制限する厳格な規則を設けています。これは、プロフェッショナルなサポートと長期的な安定性を備えた、エンタープライズ環境向けに設計された商用 Linux ディストリビューションです。
+Red Hat Enterprise Linux (RHEL) は、一般的に RHEL と呼ばれ、Red Hat によって開発されています。RHEL は、ソースコードを無償で提供しているものの、無償再配布を制限するための厳格な規則を設けています。これは、プロフェッショナルなサポートと長期的な安定性を備えた、エンタープライズ環境向けに設計された商用 Linux ディストリビューションです。
 
 ### Package Management
 
-RHEL は、Debian とは異なるパッケージマネージャーである RPM パッケージマネージャーを使用しており、これについてもいずれ学習します。RPM システムには、パッケージ管理と依存関係解決のための YUM および DNF ツールが含まれています。
+RHEL は、Debian とは異なるパッケージマネージャーである RPM パッケージマネージャーを使用しています。これについてもいずれ学習します。RPM システムには、パッケージ管理と依存関係解決のための YUM および DNF ツールが含まれています。
 
 ### Configurability
 
-RHEL ベースのオペレーティングシステムは、Debian ベースのオペレーティングシステムとは若干異なり、最も顕著な違いはパッケージ管理です。RHEL を使用することにした場合、RHEL を扱うことになることが分かっているなら、それが最善でしょう。
+RHEL ベースのオペレーティングシステムは、Debian ベースのオペレーティングシステムとは、特にパッケージ管理において若干異なります。RHEL を使用することに決めた場合、それを使って作業することになることを知っておくのがおそらく最善です。
 
 ### Uses
 
@@ -31,14 +31,14 @@ RHEL 管理者は、RHCSA (Red Hat Certified System Administrator) および RHC
 
 ## Exercise
 
-包括的な RHEL トレーニングと認定準備のために、**[Red Hat Enterprise Linux Learning Path](https://labex.io/skilltrees/rhel)** を検討してください。これには、以下の構造化されたコースが含まれています。
+包括的な RHEL トレーニングと認定準備のために、**[Red Hat Enterprise Linux Learning Path](https://labex.io/ja/skilltrees/rhel)** を検討してください。これには、以下の構造化されたコースが含まれています。
 
-- Red Hat System Administration (RH124) - 基礎スキル
-- Red Hat System Administration (RH134) - 高度な管理
-- Enterprise Linux Automation with Ansible (RH294)
-- RHCSA 認定練習問題
+- [Red Hat System Administration (RH124)](https://labex.io/ja/courses/red-hat-system-administration-rh124-labs) - 基礎スキル
+- [Red Hat System Administration (RH134)](https://labex.io/ja/courses/red-hat-system-administration-rh134-labs) - 高度な管理
+- [Enterprise Linux Automation with Ansible (RH294)](https://labex.io/ja/courses/red-hat-enterprise-linux-automation-with-ansible-rh294)
+- [RHCSA Certification practice exercises](https://labex.io/ja/courses/rhcsa-certification-exam-practice-exercises)
 
-この学習パスには、システム管理者、DevOps エンジニア、および Red Hat 認定を求める IT プロフェッショナル向けに設計された、90 以上のハンズオンラボにわたる 32 のスキルが含まれています。
+この学習パスには、システム管理者、DevOps エンジニア、および Red Hat 認定資格を求める IT プロフェッショナル向けに設計された、90 以上のハンズオンラボにわたる 32 のスキルが含まれています。
 
 ## Quiz Questions
 

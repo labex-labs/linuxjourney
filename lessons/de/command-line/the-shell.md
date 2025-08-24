@@ -11,9 +11,9 @@ meta_keywords: "Linux-Shell, Bash, echo-Befehl, Linux-Tutorial, Befehlszeile, Li
 
 Die Welt steht Ihnen offen, oder besser gesagt, die Shell steht Ihnen offen. Was ist die Shell? Die Shell ist im Grunde ein Programm, das Ihre Befehle von der Tastatur entgegennimmt und an das Betriebssystem sendet, um sie auszuführen. Wenn Sie schon einmal eine GUI verwendet haben, haben Sie wahrscheinlich Programme wie "Terminal" oder "Konsole" gesehen; dies sind lediglich Programme, die eine Shell für Sie starten. Während dieses gesamten Kurses werden wir die Wunder der Shell kennenlernen.
 
-In diesem Kurs werden wir das Shell-Programm Bash (Bourne Again Shell) verwenden. Fast alle Linux-Distributionen verwenden standardmäßig die Bash-Shell. Es gibt andere Shells, wie `ksh`, `zsh` und `tsch`, aber wir werden uns mit keiner davon befassen.
+In diesem Kurs werden wir das Shell-Programm Bash (Bourne Again Shell) verwenden. Fast alle Linux-Distributionen verwenden standardmäßig die Bash-Shell. Es gibt andere Shells, wie `ksh`, `zsh` und `tsch`, aber auf diese werden wir nicht eingehen.
 
-Lassen Sie uns direkt einsteigen! Je nach Distribution kann sich Ihr Shell-Prompt ändern, aber größtenteils sollte er dem folgenden Format entsprechen:
+Legen wir gleich los! Je nach Distribution kann sich Ihr Shell-Prompt ändern, aber größtenteils sollte er dem folgenden Format entsprechen:
 
 ```plaintext
 username@hostname:current_directory
@@ -30,7 +30,7 @@ echo Hello World
 
 ## Exercise
 
-Für praktische Übungen mit grundlegenden Linux-Befehlen empfehlen wir den interaktiven Kurs: [Linux Basic Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)
+Für praktische Übungen mit grundlegenden Linux-Befehlen empfehlen wir den interaktiven Kurs: [Linux Basic Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)
 
 ## Quiz Question
 

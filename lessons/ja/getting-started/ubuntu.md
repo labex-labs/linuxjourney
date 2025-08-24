@@ -3,7 +3,7 @@ index: 5
 lang: "ja"
 title: "Ubuntu"
 meta_title: "Ubuntu - はじめに"
-meta_description: "人気の Linux ディストリビューションである Ubuntu について学びましょう。その機能、パッケージ管理、そしてデスクトップおよびサーバーでの利用に優れている理由を発見してください。"
+meta_description: "初心者向けの人気の Linux ディストリビューションである Ubuntu について学びましょう。その機能、パッケージ管理、そしてデスクトップおよびサーバーでの使用に優れている理由を発見してください。"
 meta_keywords: "Ubuntu, Linux ディストリビューション，Debian, パッケージ管理，Linux 初心者，Ubuntu チュートリアル，Linux ガイド"
 ---
 
@@ -11,7 +11,7 @@ meta_keywords: "Ubuntu, Linux ディストリビューション，Debian, パッ
 
 ### Overview
 
-パーソナルマシンで最も人気のある Linux ディストリビューションの 1 つが Ubuntu です。Ubuntu は、デフォルトで独自のデスクトップ環境マネージャーである Unity もリリースしています。
+個人用マシンで最も人気のある Linux ディストリビューションの 1 つが Ubuntu です。Ubuntu は、デフォルトで独自のデスクトップ環境マネージャーである Unity もリリースしています。
 
 ### Package Management
 
@@ -27,12 +27,13 @@ Ubuntu は、Linux を始めたい初心者にとって素晴らしい選択肢�
 
 ## Exercise
 
-Ubuntu をオペレーティングシステムとして使用することに興味がある場合は、インストールセクションにアクセスして試してみてください。
-`http://www.ubuntu.com`
+この実践的なラボで Linux スキルを練習しましょう。
+
+- [Your First Linux Lab](https://labex.io/ja/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Questions
 
-Ubuntu はどのオペレーティングシステムをベースにしていますか？
+Ubuntu は何をベースにしたオペレーティングシステムですか？
 
 ## Quiz Answer
 

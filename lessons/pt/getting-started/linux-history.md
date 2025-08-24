@@ -13,9 +13,9 @@ E aí, novato! Então você decidiu mergulhar neste mundo maravilhoso conhecido 
 
 Para saber como o Linux surgiu, vamos voltar ao início, a 1969, onde Ken Thompson e Dennis Ritchie, dos Bell Laboratories, desenvolveram o sistema operacional UNIX. Ele foi posteriormente reescrito em C para torná-lo mais portátil e, eventualmente, tornou-se um sistema operacional amplamente utilizado.
 
-Cerca de uma década depois, Richard Stallman começou a trabalhar no projeto GNU (GNU is Not UNIX). O kernel GNU, chamado Hurd, infelizmente nunca foi concluído. A GNU General Public License (GPL), uma licença de software livre, também foi criada como resultado disso.
+Uma década depois, Richard Stallman começou a trabalhar no projeto GNU (GNU is Not UNIX). O kernel GNU, chamado Hurd, infelizmente nunca foi concluído. A Licença Pública Geral GNU (GPL), uma licença de software livre, também foi criada como resultado disso.
 
-O kernel é a peça mais importante do sistema operacional. Ele permite que o hardware se comunique com o software. Ele também faz muitas outras coisas, mas vamos nos aprofundar nisso em um curso diferente. Por enquanto, saiba apenas que o kernel controla praticamente tudo o que acontece em seu sistema.
+O kernel é a parte mais importante do sistema operacional. Ele permite que o hardware se comunique com o software. Ele também faz muitas outras coisas, mas vamos nos aprofundar nisso em um curso diferente. Por enquanto, saiba apenas que o kernel controla praticamente tudo o que acontece em seu sistema.
 
 Durante esse tempo, outros esforços, como BSD, MINIX, etc., foram desenvolvidos para serem sistemas semelhantes ao UNIX. No entanto, uma coisa que todos esses sistemas semelhantes ao UNIX tinham em comum era a falta de um kernel unificado.
 
@@ -23,9 +23,9 @@ Então, em 1991, um jovem chamado Linus Torvalds começou a desenvolver o que ho
 
 ## Exercise
 
-Pronto para colocar as mãos no Linux? Confira este curso para iniciantes:
+Pronto para colocar as mãos na massa com o Linux? Confira este curso para iniciantes:
 
-- **[Linux for Beginners (Hands-on)](https://labex.io/learn/linux)**
+- **[Linux for Beginners (Hands-on)](https://labex.io/pt/learn/linux)**
 
 Este curso apresenta 10 laboratórios interativos práticos projetados especificamente para iniciantes com zero experiência em Linux. Perfeito para colocar em prática seu novo conhecimento sobre a história do Linux!
 

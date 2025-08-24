@@ -2,14 +2,14 @@
 index: 2
 lang: "de"
 title: "Eine Linux-Distribution auswählen"
-meta_title: "Linux-Distribution auswählen – Erste Schritte"
-meta_description: "Erfahren Sie, wie Sie eine Linux-Distribution für Ihre Bedürfnisse auswählen. Entdecken Sie beliebte Optionen und verstehen Sie Kernel, Hardware und User Space. Beginnen Sie Ihre Linux-Reise!"
+meta_title: "Eine Linux-Distribution auswählen – Erste Schritte"
+meta_description: "Erfahren Sie, wie Sie eine Linux-Distribution für Ihre Bedürfnisse auswählen. Entdecken Sie beliebte Optionen und verstehen Sie Kernel, Hardware und Benutzerbereich. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "Linux-Distribution, Linux auswählen, Linux-Kernel, Linux für Anfänger, Linux-Anleitung, Linux installieren, Linux-Tutorial"
 ---
 
 ## Lesson Content
 
-In der vorherigen Lektion haben wir den Linux-Kernel kennengelernt, der täglich Millionen von Geräten antreibt. Bevor wir fortfahren: Der Begriff „Linux“ ist eigentlich eine Fehlbezeichnung, da er sich auf den Linux-Kernel bezieht. Viele Distributionen verwenden jedoch den Linux-Kernel und werden daher gemeinhin als Linux-Betriebssysteme bezeichnet.
+In der vorherigen Lektion haben wir den Linux-Kernel kennengelernt, der täglich Millionen von Geräten antreibt. Bevor wir fortfahren: Der Begriff "Linux" ist eigentlich eine Fehlbezeichnung, da er sich auf den Linux-Kernel bezieht. Viele Distributionen verwenden jedoch den Linux-Kernel und werden daher gemeinhin als Linux-Betriebssysteme bezeichnet.
 
 Ein Linux-System ist in drei Hauptteile unterteilt:
 
@@ -23,12 +23,12 @@ Es gibt viele Linux-Distributionen zur Auswahl; wir werden nur die beliebtesten 
 
 ## Exercise
 
-Probieren Sie den [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) aus, um praktische Erfahrungen mit Linux-Distributionen zu sammeln:
+Probieren Sie den [Online Linux Playground](https://labex.io/de/tutorials/linux-online-linux-playground-372915) aus, um praktische Erfahrungen mit Linux-Distributionen zu sammeln:
 
-[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/de/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 
-Keine Fragen, überspringen Sie diesen Abschnitt!
+Keine Fragen, weiter geht's!
 
 ## Quiz Answer

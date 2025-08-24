@@ -254,7 +254,7 @@ TRANSLATION REQUIREMENTS:
    - File names and directories
    - Command line examples
    - Configuration file contents
-   - URLs and web links
+   - URLs and web links (keep URLs exactly as they are - DO NOT modify them)
 5. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
 6. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
 7. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
@@ -270,6 +270,7 @@ IMPORTANT:
 - Do NOT include YAML front matter (---) in your translated_content output
 - Only translate the main content body
 - Exercise sections contain instructional content that should be translated to help users understand what to do
+- Keep ALL URLs exactly as they appear in the original content - DO NOT modify any links
 
 Please provide:
 - translated_title: The translated title value (extracted from original front matter)
@@ -301,6 +302,21 @@ CONTENT TO TRANSLATE:
                 front_matter[key] = value
 
         return front_matter, main_content
+
+    def process_labex_links(self, content: str, target_language: str) -> str:
+        """Process LabEx links to add language code for non-English languages."""
+        if target_language == "en":
+            return content
+
+        # Pattern to match LabEx links
+        labex_pattern = r"https://labex\.io/(?!(" + target_language + r")/)"
+
+        # Replace with language-specific links
+        processed_content = re.sub(
+            labex_pattern, f"https://labex.io/{target_language}/", content
+        )
+
+        return processed_content
 
     def validate_translation_quality(
         self, translation_data: Dict[str, str], original_content: str
@@ -481,6 +497,11 @@ Main content to translate:
             """Replace double quotes with single quotes to avoid YAML conflicts."""
             return value.replace('"', "'")
 
+        # Process LabEx links in the translated content
+        processed_content = self.process_labex_links(
+            translation_data["translated_content"], target_language
+        )
+
         # Create new front matter with translated values
         translated_front_matter = "---\n"
 
@@ -500,7 +521,7 @@ Main content to translate:
         translated_front_matter += f'meta_keywords: "{escape_yaml_value(translation_data["translated_meta_keywords"])}"\n'
         translated_front_matter += "---\n\n"
 
-        return translated_front_matter + translation_data["translated_content"]
+        return translated_front_matter + processed_content
 
     def process_single_file_language(
         self,

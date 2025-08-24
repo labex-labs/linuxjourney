@@ -13,9 +13,9 @@ Hey Neuling! Du hast dich also entschieden, in diese wunderbare Welt namens Linu
 
 Um zu erfahren, wie Linux entstand, gehen wir zurück zum Anfang, ins Jahr 1969, wo Ken Thompson und Dennis Ritchie von den Bell Laboratories das Betriebssystem UNIX entwickelten. Es wurde später in C neu geschrieben, um es portabler zu machen, und entwickelte sich schließlich zu einem weit verbreiteten Betriebssystem.
 
-Etwa ein Jahrzehnt später begann Richard Stallman mit der Arbeit am GNU-Projekt (GNU is Not UNIX). Der GNU-Kernel, genannt Hurd, wurde leider nie fertiggestellt. Die GNU General Public License (GPL), eine freie Softwarelizenz, entstand ebenfalls daraus.
+Etwa ein Jahrzehnt später begann Richard Stallman mit der Arbeit am GNU-Projekt (GNU is Not UNIX). Der GNU-Kernel, genannt Hurd, wurde leider nie fertiggestellt. Die GNU General Public License (GPL), eine freie Softwarelizenz, entstand ebenfalls als Ergebnis davon.
 
-Der Kernel ist der wichtigste Bestandteil des Betriebssystems. Er ermöglicht es der Hardware, mit der Software zu kommunizieren. Er erledigt auch eine ganze Reihe anderer Dinge, aber darauf werden wir in einem anderen Kurs eingehen. Im Moment solltest du nur wissen, dass der Kernel so ziemlich alles steuert, was auf deinem System passiert.
+Der Kernel ist der wichtigste Bestandteil des Betriebssystems. Er ermöglicht es der Hardware, mit der Software zu kommunizieren. Er erledigt auch eine ganze Reihe anderer Dinge, aber das werden wir in einem anderen Kurs genauer untersuchen. Vorerst solltest du nur wissen, dass der Kernel so ziemlich alles steuert, was auf deinem System passiert.
 
 In dieser Zeit wurden andere Bemühungen wie BSD, MINIX usw. entwickelt, um UNIX-ähnliche Systeme zu schaffen. Eine Sache, die all diese UNIX-ähnlichen Systeme jedoch gemeinsam hatten, war das Fehlen eines einheitlichen Kernels.
 
@@ -25,9 +25,9 @@ Dann, im Jahr 1991, begann ein junger Mann namens Linus Torvalds mit der Entwick
 
 Bereit, Linux praktisch zu erleben? Schau dir diesen anfängerfreundlichen Kurs an:
 
-- **[Linux for Beginners (Hands-on)](https://labex.io/learn/linux)**
+- **[Linux for Beginners (Hands-on)](https://labex.io/de/learn/linux)**
 
-Dieser Kurs bietet 10 interaktive praktische Labs, die speziell für Anfänger ohne Linux-Erfahrung entwickelt wurden. Perfekt, um dein neu erworbenes Wissen über die Geschichte von Linux in die Praxis umzusetzen!
+Dieser Kurs bietet 10 interaktive praktische Übungen, die speziell für Anfänger ohne Linux-Erfahrung entwickelt wurden. Perfekt, um dein neu erworbenes Wissen über die Linux-Geschichte in die Praxis umzusetzen!
 
 ## Quiz Question
 

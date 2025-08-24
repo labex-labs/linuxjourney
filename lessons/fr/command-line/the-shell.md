@@ -9,9 +9,9 @@ meta_keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de comma
 
 ## Lesson Content
 
-Le monde est à vous, ou plutôt, le shell est à vous. Qu'est-ce que le shell ? Le shell est essentiellement un programme qui prend vos commandes depuis le clavier et les envoie au système d'exploitation pour exécution. Si vous avez déjà utilisé une interface graphique, vous avez probablement vu des programmes tels que "Terminal" ou "Console" ; ce ne sont que des programmes qui lancent un shell pour vous. Tout au long de ce cours, nous allons découvrir les merveilles du shell.
+Le monde est à vous, ou plutôt, le shell est votre huître. Qu'est-ce que le shell ? Le shell est essentiellement un programme qui prend vos commandes du clavier et les envoie au système d'exploitation pour exécution. Si vous avez déjà utilisé une interface graphique, vous avez probablement vu des programmes tels que "Terminal" ou "Console" ; ce ne sont que des programmes qui lancent un shell pour vous. Tout au long de ce cours, nous allons découvrir les merveilles du shell.
 
-Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront le shell Bash par défaut. Il existe d'autres shells disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
+Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront Bash par défaut. Il existe d'autres shells disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
 
 Plongeons directement ! Selon la distribution, votre invite de shell peut changer, mais pour la plupart, elle devrait respecter le format suivant :
 
@@ -30,11 +30,11 @@ echo Hello World
 
 ## Exercise
 
-Pour une pratique concrète des commandes de base Linux, nous recommandons le cours interactif : [Linux Basic Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)
+Pour une pratique concrète des commandes Linux de base, nous recommandons le cours interactif : [Linux Basic Commands Practice Online](https://labex.io/fr/courses/linux-basic-commands-practice-online)
 
 ## Quiz Question
 
-Que devrait être affiché à l'écran lorsque vous tapez `echo Hello World` ?
+Que devrait afficher la commande `echo Hello World` à l'écran ?
 
 ## Quiz Answer
 

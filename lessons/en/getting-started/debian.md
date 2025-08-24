@@ -29,7 +29,9 @@ Debian is an overall great operating system for any platform.
 
 ## Exercise
 
-Practice your Linux skills with this hands-on lab: [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
+Practice your Linux skills with this hands-on lab:
+
+- [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
 
 ## Quiz Question
 
