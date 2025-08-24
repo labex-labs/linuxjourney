@@ -21,6 +21,11 @@ The description gets sourced from the manual page of each command. If you ran `w
 
 Run the `whatis` command on the `less` command.
 
+For additional hands-on practice with file viewing commands, explore these interactive labs:
+
+- [Linux less Command: File Paging](https://labex.io/labs/linux-linux-less-command-file-paging-214301)
+- [Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)
+
 ## Quiz Question
 
 What command can you use to see a small description of a command?

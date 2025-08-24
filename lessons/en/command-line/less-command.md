@@ -30,6 +30,10 @@ Use the following commands to navigate through `less`:
 
 Run `less` on a file, then page up and around the file. Try searching for a specific word. Quickly navigate to the beginning or the end of the file.
 
+For hands-on practice with the `less` command, try this interactive lab:
+
+- [Linux less Command: File Paging](https://labex.io/labs/linux-linux-less-command-file-paging-214301)
+
 ## Quiz Question
 
 How do you quit out of a `less` command?

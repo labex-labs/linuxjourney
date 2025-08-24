@@ -1,10 +1,10 @@
 ---
 index: 19
 lang: "es"
-title: "salir"
-meta_title: "salir - Command Line"
+title: "exit"
+meta_title: "exit - Línea de Comandos"
 meta_description: "Aprende cómo salir de la shell de Linux usando los comandos 'exit' o 'logout'. Comprende la navegación básica de la shell para principiantes. ¡Comienza tu viaje en Linux hoy!"
-meta_keywords: "comando exit, comando logout, shell de Linux, salir de la terminal, conceptos básicos de Linux, Linux para principiantes, tutorial de Linux"
+meta_keywords: "comando exit, comando logout, shell de Linux, salir de terminal, conceptos básicos de Linux, Linux para principiantes, tutorial de Linux"
 ---
 
 ## Lesson Content
@@ -28,6 +28,11 @@ O si estás trabajando desde una GUI de terminal, simplemente puedes cerrar la t
 ## Exercise
 
 Sal de la shell y mira qué sucede. Asegúrate de no necesitar hacer más trabajo en esa shell.
+
+Para una práctica práctica exhaustiva con comandos de Linux, explora estos laboratorios interactivos:
+
+- [Linux Directory Navigation](https://labex.io/es/labs/linux-directory-navigation-387844)
+- [Organizing Files and Directories](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)
 
 ## Quiz Question
 

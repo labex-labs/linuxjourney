@@ -31,6 +31,10 @@ One cool thing to note is that `find` doesn't stop at the directory you are sear
 
 1. Find a file from the root directory that has the word "net" in it.
 
+For hands-on practice with the `find` command, try this interactive lab:
+
+- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
+
 ## Quiz Question
 
 What option should I specify for `find` if I want to search by name?

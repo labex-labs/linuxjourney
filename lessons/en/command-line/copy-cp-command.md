@@ -47,6 +47,10 @@ cp -i mycoolfile /home/pete/Pictures
 
 Copy over a couple of files; be careful not to overwrite anything important.
 
+For hands-on practice with the `cp` command, try this interactive lab:
+
+- [Linux cp Command: File Copying](https://labex.io/labs/linux-linux-cp-command-file-copying-209744)
+
 ## Quiz Question
 
 What flag do you need to specify to copy over a directory?

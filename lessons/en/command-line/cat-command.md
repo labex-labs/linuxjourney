@@ -21,6 +21,10 @@ It’s not great for viewing large files and it’s only meant for short content
 
 Run `cat` on different files and directories. Then try to `cat` multiple files.
 
+For hands-on practice with the `cat` command, try this interactive lab:
+
+- [Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)
+
 ## Quiz Question
 
 What's a good way to see the contents of a file?

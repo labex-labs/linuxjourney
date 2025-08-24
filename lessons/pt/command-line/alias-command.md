@@ -3,19 +3,19 @@ index: 18
 lang: "pt"
 title: "alias"
 meta_title: "alias - Linha de Comando"
-meta_description: "Aprenda como criar e gerenciar aliases Linux para comandos comuns. Descubra a configuração de alias temporário e permanente em .bashrc. Melhore sua eficiência na linha de comando!"
+meta_description: "Aprenda a criar e gerenciar aliases Linux para comandos comuns. Descubra a configuração de alias temporário e permanente em .bashrc. Melhore sua eficiência na linha de comando!"
 meta_keywords: "alias Linux, alias bash, comando unalias, .bashrc, tutorial Linux, linha de comando, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content
 
-Às vezes, digitar comandos pode se tornar muito repetitivo, ou se você precisar digitar um comando longo muitas vezes, é melhor ter um alias que você possa usar para isso. Para criar um alias para um comando, você simplesmente especifica um nome de alias e o define para o comando.
+Às vezes, digitar comandos pode ser muito repetitivo, ou se você precisar digitar um comando longo muitas vezes, é melhor ter um alias que você possa usar para isso. Para criar um alias para um comando, você simplesmente especifica um nome de alias e o define para o comando.
 
 ```bash
 alias foobar='ls -la'
 ```
 
-Agora, em vez de digitar `ls -la`, você pode digitar `foobar`, e ele executará esse comando — algo bem legal. Lembre-se de que este comando não salvará seu alias após a reinicialização, então você precisará adicionar um alias permanente em:
+Agora, em vez de digitar `ls -la`, você pode digitar `foobar`, e ele executará esse comando — muito legal. Lembre-se de que este comando não salvará seu alias após a reinicialização, então você precisará adicionar um alias permanente em:
 
 ```plaintext
 ~/.bashrc
@@ -31,7 +31,12 @@ unalias foobar
 
 ## Exercise
 
-Crie alguns aliases e depois os remova.
+Crie alguns aliases e depois remova-os.
+
+Para prática adicional com os fundamentos da linha de comando Linux, explore estes laboratórios interativos:
+
+- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
+- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

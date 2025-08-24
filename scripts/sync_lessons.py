@@ -7,7 +7,19 @@ It extracts frontmatter, content, exercise, quiz questions and answers from mark
 Only existing lessons are updated - no new records are inserted.
 
 Usage:
-    python sync_lessons_to_d1.py [--dry-run] FILE_PATH
+    python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview]
+
+Examples:
+    # Process a single file and its language variants (with preview)
+    python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md
+
+    # Process all markdown files in a directory (with preview)
+    python sync_lessons.py --path lessons/en/filesystem/
+    python sync_lessons.py --path lessons/
+
+    # Skip preview and sync directly
+    python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --no-preview
+    python sync_lessons.py --path lessons/zh/command-line/ --no-preview
 
 Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
@@ -381,6 +393,39 @@ class MarkdownParser:
             logger.error(f"ERROR: Failed to parse {file_path}: {str(e)}")
             return None
 
+    def find_markdown_files_in_directory(self, directory_path: str) -> List[Path]:
+        """Find all markdown files in a directory and its subdirectories"""
+        directory_path = Path(directory_path)
+
+        if not directory_path.exists():
+            logger.error(f"ERROR: Directory not found: {directory_path}")
+            return []
+
+        if not directory_path.is_dir():
+            logger.error(f"ERROR: Path is not a directory: {directory_path}")
+            return []
+
+        # Find all .md files recursively
+        md_files = []
+        try:
+            for md_file in directory_path.rglob("*.md"):
+                if md_file.is_file():
+                    md_files.append(md_file)
+                    logger.info(f"INFO: Found markdown file: {md_file}")
+
+            if not md_files:
+                logger.warning(
+                    f"WARNING: No markdown files found in directory: {directory_path}"
+                )
+            else:
+                logger.info(f"INFO: Found {len(md_files)} markdown files in directory")
+
+            return sorted(md_files)
+
+        except Exception as e:
+            logger.error(f"ERROR: Error scanning directory {directory_path}: {str(e)}")
+            return []
+
     def get_language_variants(self, file_path: str) -> List[Path]:
         """Get all language variants of a specific lesson file"""
         file_path = Path(file_path)
@@ -609,15 +654,29 @@ def show_comparison_preview(
 
 
 @click.command()
-@click.argument("file_path", type=click.Path(exists=True))
-def main(file_path: str):
+@click.option(
+    "--path",
+    type=click.Path(exists=True),
+    required=True,
+    help="Path to a specific lesson file or directory containing lesson files",
+)
+@click.option(
+    "--no-preview",
+    is_flag=True,
+    default=False,
+    help="Skip the comparison preview and proceed directly with synchronization",
+)
+def main(path: str, no_preview: bool):
     """Update existing Linux Journey lessons in Cloudflare D1 database.
 
-    FILE_PATH: Lesson file path to update (automatically updates all language versions)
-    Example: lessons/en/filesystem/anatomy-of-a-disk.md
+    Use --path to specify either:
+    - A specific lesson file: lessons/en/filesystem/anatomy-of-a-disk.md
+    - A directory: lessons/en/filesystem/ (processes all .md files in directory and subdirectories)
+
+    Use --no-preview to skip the comparison preview and proceed directly with synchronization.
     """
     console.print("[bold blue]Linux Journey Lesson Sync Tool[/bold blue]")
-    console.print(f"Processing: {file_path}")
+    console.print(f"Processing: {path}")
     console.print()
 
     # Check for required environment variables
@@ -649,8 +708,33 @@ def main(file_path: str):
     # Initialize parser and client
     parser_instance = MarkdownParser("lessons")
 
-    # Get lesson files to process - always process specific file and its language variants
-    lesson_files = parser_instance.get_language_variants(file_path)
+    # Determine if path is a file or directory and get files to process
+    path_obj = Path(path)
+    lesson_files = []
+
+    if path_obj.is_file():
+        # Single file - get all language variants
+        if path_obj.suffix.lower() != ".md":
+            console.print(
+                "[bold red]ERROR: File must be a markdown (.md) file[/bold red]"
+            )
+            raise click.Abort()
+
+        console.print(
+            f"[blue]INFO: Processing single file and its language variants[/blue]"
+        )
+        lesson_files = parser_instance.get_language_variants(str(path_obj))
+
+    elif path_obj.is_dir():
+        # Directory - find all markdown files
+        console.print(f"[blue]INFO: Processing all markdown files in directory[/blue]")
+        lesson_files = parser_instance.find_markdown_files_in_directory(str(path_obj))
+
+    else:
+        console.print(
+            "[bold red]ERROR: Path must be either a file or directory[/bold red]"
+        )
+        raise click.Abort()
 
     if not lesson_files:
         console.print(
@@ -677,24 +761,52 @@ def main(file_path: str):
         )
         raise click.Abort()
 
-    # Show comparison with database
-    all_lesson_data = show_comparison_preview(lesson_files, parser_instance, db_client)
+    # Show comparison with database or parse files directly
+    if no_preview:
+        console.print("[blue]INFO: Skipping preview, parsing files directly...[/blue]")
+        all_lesson_data = []
 
-    if not all_lesson_data:
+        # Parse all files without showing comparison
+        for file_path in lesson_files:
+            lesson_data = parser_instance.parse_lesson_file(file_path)
+            if lesson_data:
+                all_lesson_data.append(lesson_data)
+            else:
+                console.print(
+                    f"[bold red]ERROR: Failed to parse: {file_path}[/bold red]"
+                )
+
+        if not all_lesson_data:
+            console.print(
+                "[bold red]ERROR: No valid lesson data found to update[/bold red]"
+            )
+            raise click.Abort()
+
         console.print(
-            "[bold red]ERROR: No valid lesson data found to update[/bold red]"
+            f"[green]INFO: Parsed {len(all_lesson_data)} lesson files successfully[/green]"
         )
-        raise click.Abort()
+        console.print("[bold green]INFO: Starting database updates...[/bold green]")
+    else:
+        # Show comparison with database
+        all_lesson_data = show_comparison_preview(
+            lesson_files, parser_instance, db_client
+        )
 
-    # Confirm before proceeding
-    console.print()
-    if not Confirm.ask(
-        "[bold yellow]WARNING: Do you want to proceed with the update?[/bold yellow]"
-    ):
-        console.print("[yellow]INFO: Update cancelled by user[/yellow]")
-        raise click.Abort()
+        if not all_lesson_data:
+            console.print(
+                "[bold red]ERROR: No valid lesson data found to update[/bold red]"
+            )
+            raise click.Abort()
 
-    console.print("\n[bold green]INFO: Starting database updates...[/bold green]")
+        # Confirm before proceeding
+        console.print()
+        if not Confirm.ask(
+            "[bold yellow]WARNING: Do you want to proceed with the update?[/bold yellow]"
+        ):
+            console.print("[yellow]INFO: Update cancelled by user[/yellow]")
+            raise click.Abort()
+
+        console.print("\n[bold green]INFO: Starting database updates...[/bold green]")
 
     success_count = 0
     error_count = 0

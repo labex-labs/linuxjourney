@@ -1,15 +1,15 @@
 ---
 index: 18
 lang: "ja"
-title: "エイリアス"
-meta_title: "エイリアス - コマンドライン"
+title: "alias"
+meta_title: "alias - コマンドライン"
 meta_description: "一般的なコマンドの Linux エイリアスを作成および管理する方法を学びます。.bashrc での一時的および永続的なエイリアス設定を発見します。コマンドラインの効率を向上させましょう！"
-meta_keywords: "Linux エイリアス，bash エイリアス，unalias コマンド，.bashrc, Linux チュートリアル，コマンドライン，初心者 Linux, Linux ガイド"
+meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"
 ---
 
 ## Lesson Content
 
-コマンドの入力は非常に反復的になることがあり、長いコマンドを何度も入力する必要がある場合は、それに使用できるエイリアスを持つのが最善です。コマンドのエイリアスを作成するには、エイリアス名を指定し、それをコマンドに設定するだけです。
+コマンドを入力するのが非常に面倒になったり、長いコマンドを何度も入力する必要がある場合は、それに対して使用できるエイリアスを持つのが最善です。コマンドのエイリアスを作成するには、エイリアス名を指定し、それをコマンドに設定するだけです。
 
 ```bash
 alias foobar='ls -la'
@@ -21,9 +21,9 @@ alias foobar='ls -la'
 ~/.bashrc
 ```
 
-または類似のファイルに追加します。
+または同様のファイルに追加します。
 
-エイリアスは`unalias`コマンドで削除できます。
+`unalias`コマンドでエイリアスを削除できます。
 
 ```bash
 unalias foobar
@@ -32,6 +32,11 @@ unalias foobar
 ## Exercise
 
 いくつかのエイリアスを作成し、それらを削除してください。
+
+Linux コマンドラインの基本をさらに実践的に練習するには、以下のインタラクティブなラボを探索してください。
+
+- [Linux Directory Navigation](https://labex.io/ja/labs/linux-directory-navigation-387844)
+- [Linux ls Command: Content Listing](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

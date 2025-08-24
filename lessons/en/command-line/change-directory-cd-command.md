@@ -51,6 +51,10 @@ Give them a try!
 
 1. Run the `cd` command without any flags. Where does it take you?
 
+For hands-on practice with the `cd` command, try this interactive lab:
+
+- [Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)
+
 ## Quiz Question
 
 If you are in `/home/pete/Pictures` and wanted to go to `/home/pete`, what’s a good shortcut to use?

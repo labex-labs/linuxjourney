@@ -2,9 +2,9 @@
 index: 6
 lang: "de"
 title: "file"
-meta_title: "file - Command Line"
-meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'file' verwenden, um Dateitypen und -inhalte zu identifizieren. Verstehen Sie Linux-Dateibenennungskonventionen mit diesem anfängerfreundlichen Leitfaden."
-meta_keywords: "Linux file Befehl, Dateityp identifizieren, Linux Tutorial, Dateibenennung, Linux für Anfänger, Linux Leitfaden"
+meta_title: "file - Befehlszeile"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'file' verwenden, um Dateitypen und -inhalte zu identifizieren. Verstehen Sie Linux-Dateibenennungskonventionen mit dieser anfängerfreundlichen Anleitung."
+meta_keywords: "Linux file Befehl, Dateityp identifizieren, Linux Tutorial, Dateibenennung, Linux für Anfänger, Linux Anleitung"
 ---
 
 ## Lesson Content
@@ -13,7 +13,7 @@ In der vorherigen Lektion haben wir `touch` kennengelernt. Lassen Sie uns das no
 
 Unter Linux müssen Dateinamen nicht den Inhalt der Datei widerspiegeln. Sie können eine Datei namens `funny.gif` erstellen, die tatsächlich kein GIF ist.
 
-Um herauszufinden, welche Art von Datei eine Datei ist, können Sie den Befehl `file` verwenden. Er zeigt Ihnen eine Beschreibung des Dateiinhaltes an.
+Um herauszufinden, um welche Art von Datei es sich handelt, können Sie den Befehl `file` verwenden. Er zeigt Ihnen eine Beschreibung des Dateiinhaltes an.
 
 ```bash
 file banana.jpg
@@ -22,6 +22,11 @@ file banana.jpg
 ## Exercise
 
 Führen Sie den Befehl `file` für einige verschiedene Verzeichnisse und Dateien aus und notieren Sie die Ausgabe.
+
+Für zusätzliche praktische Übungen mit Dateivorgängen erkunden Sie diese interaktiven Labs:
+
+- [Linux find Command: File Searching](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)
+- [Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

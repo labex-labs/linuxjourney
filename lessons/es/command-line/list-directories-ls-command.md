@@ -2,8 +2,8 @@
 index: 4
 lang: "es"
 title: "ls (Listar Directorios)"
-meta_title: "ls (Listar Directorios) - Command Line"
-meta_description: "Aprende a usar el comando 'ls' en Linux para listar el contenido de directorios, ver archivos ocultos y entender los detalles de los archivos. ¡Mejora tus habilidades en la línea de comandos de Linux!"
+meta_title: "ls (Listar Directorios) - Línea de Comandos"
+meta_description: "Aprende a usar el comando 'ls' en Linux para listar el contenido de directorios, ver archivos ocultos y entender los detalles de los archivos. ¡Mejora tus habilidades de línea de comandos de Linux!"
 meta_keywords: "comando ls, listar directorios, tutorial de Linux, archivos ocultos, comandos de Linux, Linux para principiantes, guía de Linux"
 ---
 
@@ -18,13 +18,13 @@ ls /home/pete
 
 `ls` es una herramienta bastante útil; también te muestra información detallada sobre los archivos y directorios que estás viendo.
 
-Además, ten en cuenta que no todos los archivos de un directorio serán visibles. Los nombres de archivo que comienzan con `.` están ocultos. Sin embargo, puedes verlos con el comando `ls` y pasarle la bandera `-a` (`a` de all).
+Además, ten en cuenta que no todos los archivos en un directorio serán visibles. Los nombres de archivo que comienzan con `.` están ocultos. Sin embargo, puedes verlos con el comando `ls` y pasándole la bandera `-a` (`a` de all).
 
 ```bash
 ls -a
 ```
 
-También hay otra bandera útil de `ls`, `-l` de long. Esto muestra una lista detallada de archivos en formato largo. Esto te mostrará información detallada, comenzando por la izquierda: permisos de archivo, número de enlaces, nombre del propietario, grupo del propietario, tamaño del archivo, marca de tiempo de la última modificación y nombre del archivo/directorio.
+También hay otra bandera útil de `ls`, `-l` de long. Esto muestra una lista detallada de archivos en un formato largo. Esto te mostrará información detallada, comenzando por la izquierda: permisos de archivo, número de enlaces, nombre del propietario, grupo del propietario, tamaño del archivo, marca de tiempo de la última modificación y nombre del archivo/directorio.
 
 ```bash
 ls -l
@@ -43,7 +43,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Los comandos tienen lo que se llaman banderas (o argumentos u opciones, como quieras llamarlos) para añadir más funcionalidad. Mira cómo añadimos `-a` y `-l`; bueno, puedes añadirlos ambos juntos con `-la`. El orden de las banderas determina el orden en que van. La mayoría de las veces, esto no importa mucho, así que también puedes hacer `ls -al` y seguiría funcionando.
+Los comandos tienen lo que se llaman banderas (o argumentos u opciones, como quieras llamarlos) para añadir más funcionalidad. Observa cómo añadimos `-a` y `-l`; bueno, puedes añadirlos ambos juntos con `-la`. El orden de las banderas determina el orden en que se ejecutan. La mayoría de las veces, esto no importa realmente, así que también puedes hacer `ls -al` y seguiría funcionando.
 
 ```bash
 ls -la
@@ -53,9 +53,13 @@ ls -la
 
 Ejecuta `ls` con diferentes banderas y observa la salida que recibes.
 
+Para practicar con el comando `ls`, prueba este laboratorio interactivo:
+
+- [Linux ls Command: Content Listing](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)
+
 ## Quiz Question
 
-¿Qué comando usarías para ver los archivos ocultos?
+¿Qué comando usarías para ver archivos ocultos?
 
 ## Quiz Answer
 

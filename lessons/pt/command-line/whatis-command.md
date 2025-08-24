@@ -21,6 +21,11 @@ A descrição é obtida da página de manual de cada comando. Se você executar 
 
 Execute o comando `whatis` no comando `less`.
 
+Para prática adicional com comandos de visualização de arquivos, explore estes laboratórios interativos:
+
+- [Linux less Command: File Paging](https://labex.io/pt/labs/linux-linux-less-command-file-paging-214301)
+- [Linux cat Command: File Concatenating](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)
+
 ## Quiz Question
 
 Qual comando você pode usar para ver uma pequena descrição de um comando?

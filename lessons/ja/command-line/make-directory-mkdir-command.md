@@ -1,15 +1,15 @@
 ---
 index: 12
 lang: "ja"
-title: "mkdir (ディレクトリの作成)"
-meta_title: "mkdir (ディレクトリの作成) - コマンドライン"
+title: "mkdir (ディレクトリ作成)"
+meta_title: "mkdir (ディレクトリ作成) - コマンドライン"
 meta_description: "Linux で mkdir コマンドを使用してディレクトリとサブディレクトリを作成する方法を学びます。この初心者向けのチュートリアルは、ファイルを効率的に整理するのに役立ちます。"
-meta_keywords: "mkdir, make directory, create directory, linux commands, linux tutorial, beginner linux, linux guide"
+meta_keywords: "mkdir, ディレクトリ作成，ディレクトリ作成，linux コマンド，linux チュートリアル，初心者 linux, linux ガイド"
 ---
 
 ## Lesson Content
 
-これまで作業してきたこれらすべてのファイルを保存するために、いくつかのディレクトリが必要になります。`mkdir`コマンド（Make Directory）は、そのために役立ちます。これは、まだ存在しない場合にディレクトリを作成します。一度に複数のディレクトリを作成することもできます。
+これまで作業してきたこれらのファイルをすべて保存するために、いくつかのディレクトリが必要になります。`mkdir`コマンド（Make Directory）は、そのために役立ちます。これは、まだ存在しない場合にディレクトリを作成します。同時に複数のディレクトリを作成することもできます。
 
 ```bash
 mkdir books paintings
@@ -25,9 +25,13 @@ mkdir -p books/hemmingway/favorites
 
 いくつかのディレクトリを作成し、そのディレクトリにファイルを移動してください。
 
+`mkdir`コマンドの実践的な練習には、このインタラクティブなラボを試してください。
+
+- [Linux mkdir Command: Directory Creating](https://labex.io/ja/labs/linux-linux-mkdir-command-directory-creating-209739)
+
 ## Quiz Question
 
-ディレクトリを作成するために使用するコマンドは何ですか？
+ディレクトリを作成するために使用されるコマンドは何ですか？
 
 ## Quiz Answer
 

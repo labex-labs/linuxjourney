@@ -37,7 +37,9 @@ Where are you? Where am I? Give it a try.
 
 ## Exercise
 
-No exercises for this lesson.
+For hands-on practice with the `pwd` command, try this interactive lab:
+
+- [Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)
 
 ## Quiz Question
 

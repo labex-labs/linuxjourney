@@ -35,13 +35,13 @@ Você também pode renomear diretórios:
 mv directory1 directory2
 ```
 
-Assim como `cp`, se você `mv` um arquivo ou diretório, ele sobrescreverá qualquer coisa no mesmo diretório. Então você pode usar a flag `-i` para ser solicitado antes de sobrescrever qualquer coisa.
+Assim como `cp`, se você usar `mv` em um arquivo ou diretório, ele sobrescreverá qualquer coisa no mesmo diretório. Então você pode usar a flag `-i` para ser solicitado antes de sobrescrever qualquer coisa.
 
 ```bash
 mv -i directory1 directory2
 ```
 
-Digamos que você quisesse que `mv` um arquivo sobrescrevesse o anterior. Você também pode fazer um backup desse arquivo, e ele simplesmente renomeará a versão antiga com um `~`.
+Digamos que você quisesse usar `mv` em um arquivo para sobrescrever o anterior. Você também pode fazer um backup desse arquivo, e ele apenas renomeará a versão antiga com um `~`.
 
 ```bash
 mv -b directory1 directory2
@@ -50,6 +50,10 @@ mv -b directory1 directory2
 ## Exercise
 
 Renomeie um arquivo e, em seguida, mova esse arquivo para um diretório diferente.
+
+Para prática interativa com o comando `mv`, experimente este laboratório interativo:
+
+- [Linux mv Command: File Moving and Renaming](https://labex.io/pt/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
 
 ## Quiz Question
 

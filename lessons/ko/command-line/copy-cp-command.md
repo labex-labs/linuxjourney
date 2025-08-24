@@ -2,8 +2,8 @@
 index: 10
 lang: "ko"
 title: "cp (복사)"
-meta_title: "cp (복사) - Command Line"
-meta_description: "Linux cp 명령을 사용하여 파일과 디렉토리를 복사하는 방법을 배우세요. -r 및 와일드카드와 같은 옵션을 이해하세요. 오늘 Linux 여정을 시작하세요!"
+meta_title: "cp (복사) - 명령줄"
+meta_description: "Linux cp 명령을 사용하여 파일과 디렉토리를 복사하는 방법을 배우세요. -r 옵션과 와일드카드를 이해하세요. 오늘 Linux 여정을 시작하세요!"
 meta_keywords: "cp command, copy files Linux, Linux tutorial, beginner Linux, cp -r, Linux wildcards, Linux guide"
 ---
 
@@ -37,7 +37,7 @@ cp *.jpg /home/pete/Pictures
 cp -r Pumpkin/ /home/pete/Documents
 ```
 
-한 가지 유의할 점은, 동일한 파일 이름을 가진 디렉토리로 파일을 복사하면, 해당 파일은 복사하는 내용으로 덮어쓰여진다는 것입니다. 실수로 덮어쓰여지는 것을 원치 않는 파일이 있다면 좋지 않습니다. 파일을 덮어쓰기 전에 프롬프트를 표시하려면 `-i` 플래그 (interactive) 를 사용할 수 있습니다.
+한 가지 유의할 점은, 동일한 파일 이름을 가진 디렉토리로 파일을 복사하면, 해당 파일은 복사하려는 내용으로 덮어쓰여진다는 것입니다. 실수로 덮어쓰여지는 것을 원치 않는 파일이 있다면 좋지 않습니다. `-i` 플래그 (대화형) 를 사용하여 파일을 덮어쓰기 전에 프롬프트를 표시하도록 할 수 있습니다.
 
 ```bash
 cp -i mycoolfile /home/pete/Pictures
@@ -45,7 +45,11 @@ cp -i mycoolfile /home/pete/Pictures
 
 ## Exercise
 
-두어 개의 파일을 복사하세요; 중요한 것을 덮어쓰지 않도록 주의하세요.
+몇 개의 파일을 복사하세요. 중요한 것을 덮어쓰지 않도록 주의하세요.
+
+`cp` 명령을 직접 실습하려면 다음 대화형 랩을 시도해 보세요:
+
+- [Linux cp Command: File Copying](https://labex.io/ko/labs/linux-linux-cp-command-file-copying-209744)
 
 ## Quiz Question
 

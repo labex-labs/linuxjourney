@@ -2,14 +2,14 @@
 index: 4
 lang: "de"
 title: "ls (Verzeichnisse auflisten)"
-meta_title: "ls (Verzeichnisse auflisten) - Command Line"
-meta_description: "Erfahren Sie, wie Sie den 'ls'-Befehl in Linux verwenden, um Verzeichnisinhalte aufzulisten, versteckte Dateien anzuzeigen und Dateidetails zu verstehen. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
+meta_title: "ls (Verzeichnisse auflisten) - Befehlszeile"
+meta_description: "Erfahren Sie, wie Sie den Befehl 'ls' in Linux verwenden, um Verzeichnisinhalte aufzulisten, versteckte Dateien anzuzeigen und Dateidetails zu verstehen. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
 meta_keywords: "ls Befehl, Verzeichnisse auflisten, Linux Tutorial, versteckte Dateien, Linux Befehle, Linux für Anfänger, Linux Anleitung"
 ---
 
 ## Lesson Content
 
-Nachdem wir nun wissen, wie man sich im System bewegt, wie finden wir heraus, was uns zur Verfügung steht? Im Moment ist es, als würden wir uns im Dunkeln bewegen. Nun, wir können den wunderbaren `ls`-Befehl verwenden, um Verzeichnisinhalte aufzulisten. Der `ls`-Befehl listet standardmäßig Verzeichnisse und Dateien im aktuellen Verzeichnis auf; Sie können jedoch angeben, welchen Pfad Sie auflisten möchten.
+Nachdem wir nun wissen, wie man sich im System bewegt, wie finden wir heraus, was uns zur Verfügung steht? Im Moment ist es, als würden wir uns im Dunkeln bewegen. Nun, wir können den wunderbaren Befehl `ls` verwenden, um Verzeichnisinhalte aufzulisten. Der Befehl `ls` listet standardmäßig Verzeichnisse und Dateien im aktuellen Verzeichnis auf; Sie können jedoch angeben, welchen Pfad Sie auflisten möchten.
 
 ```bash
 ls
@@ -18,13 +18,13 @@ ls /home/pete
 
 `ls` ist ein sehr nützliches Werkzeug; es zeigt Ihnen auch detaillierte Informationen über die Dateien und Verzeichnisse, die Sie betrachten.
 
-Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem `ls`-Befehl anzeigen und das Flag `-a` (für all) übergeben.
+Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem Befehl `ls` und der Übergabe des Flags `-a` (`a` für alle) anzeigen.
 
 ```bash
 ls -a
 ```
 
-Es gibt noch ein weiteres nützliches `ls`-Flag, `-l` für long. Dies zeigt eine detaillierte Liste von Dateien in einem langen Format an. Dies zeigt Ihnen detaillierte Informationen, beginnend von links: Dateiberechtigungen, Anzahl der Links, Besitzername, Besitzergruppe, Dateigröße, Zeitstempel der letzten Änderung und Datei-/Verzeichnisname.
+Es gibt noch ein weiteres nützliches `ls`-Flag, `-l` für lang. Dies zeigt eine detaillierte Liste von Dateien in einem langen Format an. Dies zeigt Ihnen detaillierte Informationen, beginnend von links: Dateiberechtigungen, Anzahl der Links, Besitzername, Besitzergruppe, Dateigröße, Zeitstempel der letzten Änderung und Datei-/Verzeichnisname.
 
 ```bash
 ls -l
@@ -43,7 +43,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Befehle haben sogenannte Flags (oder Argumente oder Optionen, wie auch immer Sie sie nennen möchten), um weitere Funktionen hinzuzufügen. Sehen Sie, wie wir `-a` und `-l` hinzugefügt haben; nun, Sie können sie beide zusammen mit `-la` hinzufügen. Die Reihenfolge der Flags bestimmt die Reihenfolge, in der sie ausgeführt werden. Meistens spielt dies keine Rolle, sodass Sie auch `ls -al` eingeben können und es würde immer noch funktionieren.
+Befehle haben sogenannte Flags (oder Argumente oder Optionen, wie auch immer Sie sie nennen möchten), um weitere Funktionen hinzuzufügen. Sehen Sie, wie wir `-a` und `-l` hinzugefügt haben; nun, Sie können sie beide zusammen mit `-la` hinzufügen. Die Reihenfolge der Flags bestimmt die Reihenfolge, in der sie ausgeführt werden. Meistens spielt dies keine Rolle, daher können Sie auch `ls -al` verwenden, und es würde immer noch funktionieren.
 
 ```bash
 ls -la
@@ -51,7 +51,11 @@ ls -la
 
 ## Exercise
 
-Führen Sie `ls` mit verschiedenen Flags aus und sehen Sie sich die Ausgabe an, die Sie erhalten.
+Führen Sie `ls` mit verschiedenen Flags aus und sehen Sie sich die erhaltene Ausgabe an.
+
+Für praktische Übungen mit dem `ls`-Befehl probieren Sie dieses interaktive Labor aus:
+
+- [Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

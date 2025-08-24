@@ -33,6 +33,11 @@ unalias foobar
 
 Create a couple of aliases, then remove them.
 
+For additional hands-on practice with Linux command line basics, explore these interactive labs:
+
+- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+
 ## Quiz Question
 
 What command is used to make an alias?

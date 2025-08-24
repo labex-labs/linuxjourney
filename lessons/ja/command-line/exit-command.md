@@ -3,21 +3,21 @@ index: 19
 lang: "ja"
 title: "exit"
 meta_title: "exit - コマンドライン"
-meta_description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェル操作を理解します。今日から Linux の学習を始めましょう！"
-meta_keywords: "exit command, logout command, Linux shell, terminal exit, Linux basics, beginner Linux, Linux tutorial"
+meta_description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェルナビゲーションを理解します。今日から Linux の学習を始めましょう！"
+meta_keywords: "exit コマンド，logout コマンド，Linux シェル，ターミナル終了，Linux の基本，初心者向け Linux, Linux チュートリアル"
 ---
 
 ## Lesson Content
 
-さて、基本をよく理解できましたね。まだ表面をなぞったに過ぎません。ハイハイができるようになった今、次のコースでは歩き方を教えます。
+さて、あなたは基礎をよく頑張りました。まだ表面をなぞったに過ぎません。這うことを学んだ今、次のコースでは歩く方法を教えます。
 
-今のところは、自分を褒めて一休みしてください。シェルから抜けるには、`exit` コマンドを使用できます。
+今のところ、自分を褒めて休憩を取ることができます。シェルから終了するには、`exit`コマンドを使用できます。
 
 ```bash
 exit
 ```
 
-または `logout` コマンドを使用します。
+または`logout`コマンドを使用します。
 
 ```bash
 logout
@@ -27,11 +27,16 @@ logout
 
 ## Exercise
 
-シェルから抜けて、何が起こるか見てみましょう。そのシェルでこれ以上作業する必要がないことを確認してください。
+シェルから終了して、何が起こるか見てみましょう。そのシェルでこれ以上作業する必要がないことを確認してください。
+
+Linux コマンドの実践的な演習については、以下のインタラクティブなラボを探索してください。
+
+- [Linux Directory Navigation](https://labex.io/ja/labs/linux-directory-navigation-387844)
+- [Organizing Files and Directories](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)
 
 ## Quiz Question
 
-シェルから抜けるにはどうすればよいですか？
+シェルから終了するにはどうすればよいですか？
 
 ## Quiz Answer
 

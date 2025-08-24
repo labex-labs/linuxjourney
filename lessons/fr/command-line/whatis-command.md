@@ -2,7 +2,7 @@
 index: 17
 lang: "fr"
 title: "whatis"
-meta_title: "whatis - Command Line"
+meta_title: "whatis - Ligne de commande"
 meta_description: "Apprenez ce que fait la commande 'whatis' sous Linux. Obtenez rapidement de brèves descriptions des commandes. Essentiel pour les débutants afin de comprendre les commandes Linux."
 meta_keywords: "commande whatis, commandes Linux, ligne de commande, tutoriel Linux, Linux pour débutants, description de commande, guide Linux"
 ---
@@ -20,6 +20,11 @@ La description est tirée de la page de manuel de chaque commande. Si vous exéc
 ## Exercise
 
 Exécutez la commande `whatis` sur la commande `less`.
+
+Pour une pratique supplémentaire des commandes de visualisation de fichiers, explorez ces laboratoires interactifs :
+
+- [Linux less Command: File Paging](https://labex.io/fr/labs/linux-linux-less-command-file-paging-214301)
+- [Linux cat Command: File Concatenating](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)
 
 ## Quiz Question
 

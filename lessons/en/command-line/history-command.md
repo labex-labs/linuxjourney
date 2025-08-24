@@ -35,6 +35,11 @@ While we are talking about useful things, one of the most useful features in any
 
 Navigate through your previous command history with the Up and Down keys. Play around with `Ctrl-R` reverse search.
 
+For additional hands-on practice with Linux command line navigation, explore these interactive labs:
+
+- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+
 ## Quiz Question
 
 What is the command to clear the terminal?

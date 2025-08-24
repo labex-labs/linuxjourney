@@ -53,6 +53,10 @@ ls -la
 
 Run `ls` with different flags and see the output you receive.
 
+For hands-on practice with the `ls` command, try this interactive lab:
+
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+
 ## Quiz Question
 
 What command would you use to see hidden files?

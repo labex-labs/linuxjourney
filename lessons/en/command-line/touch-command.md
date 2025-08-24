@@ -27,6 +27,11 @@ There are many other ways to create files that involve other things like redirec
 2. Note the timestamp.
 3. Touch the file and check the timestamp once again.
 
+For additional hands-on practice with file management, explore these interactive labs:
+
+- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
+- [Setting Up a New Project Structure](https://labex.io/labs/linux-setting-up-a-new-project-structure-387859)
+
 ## Quiz Question
 
 How do you create a file called `myfile`?

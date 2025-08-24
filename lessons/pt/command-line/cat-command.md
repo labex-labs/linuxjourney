@@ -21,6 +21,10 @@ Não é ideal para visualizar arquivos grandes e é destinado apenas a conteúdo
 
 Execute `cat` em diferentes arquivos e diretórios. Em seguida, tente `cat` vários arquivos.
 
+Para prática prática com o comando `cat`, experimente este laboratório interativo:
+
+- [Linux cat Command: File Concatenating](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)
+
 ## Quiz Question
 
 Qual é uma boa maneira de ver o conteúdo de um arquivo?

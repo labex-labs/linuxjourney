@@ -18,13 +18,13 @@ ls /home/pete
 
 `ls` é uma ferramenta bastante útil; ele também mostra informações detalhadas sobre os arquivos e diretórios que você está visualizando.
 
-Além disso, observe que nem todos os arquivos em um diretório estarão visíveis. Nomes de arquivos que começam com `.` estão ocultos. Você pode visualizá-los, no entanto, com o comando `ls` e passar a flag `-a` para ele (`a` para all).
+Além disso, observe que nem todos os arquivos em um diretório serão visíveis. Nomes de arquivos que começam com `.` estão ocultos. Você pode visualizá-los, no entanto, com o comando `ls` e passar a flag `-a` para ele (`a` para todos).
 
 ```bash
 ls -a
 ```
 
-Existe também mais uma flag útil do `ls`, `-l` para long. Isso mostra uma lista detalhada de arquivos em um formato longo. Isso mostrará informações detalhadas, começando da esquerda: permissões de arquivo, número de links, nome do proprietário, grupo do proprietário, tamanho do arquivo, carimbo de data/hora da última modificação e nome do arquivo/diretório.
+Existe também mais uma flag útil do `ls`, `-l` para longo. Isso mostra uma lista detalhada de arquivos em um formato longo. Isso mostrará informações detalhadas, começando da esquerda: permissões de arquivo, número de links, nome do proprietário, grupo do proprietário, tamanho do arquivo, carimbo de data/hora da última modificação e nome do arquivo/diretório.
 
 ```bash
 ls -l
@@ -43,7 +43,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Comandos têm o que são chamados de flags (ou argumentos ou opções, como você quiser chamá-los) para adicionar mais funcionalidades. Veja como adicionamos `-a` e `-l`; bem, você pode adicioná-los juntos com `-la`. A ordem das flags determina a ordem em que elas aparecem. Na maioria das vezes, isso realmente não importa, então você também pode fazer `ls -al` e ainda funcionaria.
+Comandos têm o que são chamados de flags (ou argumentos ou opções, como você quiser chamá-los) para adicionar mais funcionalidade. Veja como adicionamos `-a` e `-l`; bem, você pode adicioná-los ambos juntos com `-la`. A ordem das flags determina a ordem em que elas são processadas. Na maioria das vezes, isso não importa muito, então você também pode fazer `ls -al` e ainda funcionaria.
 
 ```bash
 ls -la
@@ -52,6 +52,10 @@ ls -la
 ## Exercise
 
 Execute `ls` com diferentes flags e veja a saída que você recebe.
+
+Para prática prática com o comando `ls`, experimente este laboratório interativo:
+
+- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

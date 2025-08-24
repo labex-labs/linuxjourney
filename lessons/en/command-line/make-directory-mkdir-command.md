@@ -25,6 +25,10 @@ mkdir -p books/hemmingway/favorites
 
 Make a couple of directories and move some files into that directory.
 
+For hands-on practice with the `mkdir` command, try this interactive lab:
+
+- [Linux mkdir Command: Directory Creating](https://labex.io/labs/linux-linux-mkdir-command-directory-creating-209739)
+
 ## Quiz Question
 
 What command is used to make a directory?

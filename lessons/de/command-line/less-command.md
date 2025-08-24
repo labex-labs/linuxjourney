@@ -2,16 +2,16 @@
 index: 8
 lang: "de"
 title: "less"
-meta_title: "less - Command Line"
-meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'less' für effizientes Anzeigen und Navigieren in Textdateien verwenden. Meistern Sie das Paging, Suchen und Beenden mit dieser anfängerfreundlichen Anleitung."
+meta_title: "less - Befehlszeile"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl 'less' für effizientes Anzeigen und Navigieren in Textdateien verwenden. Meistern Sie das Blättern, Suchen und Beenden mit dieser anfängerfreundlichen Anleitung."
 meta_keywords: "less command, Linux less, Textdateien anzeigen, Dateien navigieren, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---
 
 ## Lesson Content
 
-Wenn Sie Textdateien anzeigen, die größer als eine einfache Ausgabe sind, ist `less` mehr. (Es gibt tatsächlich einen Befehl namens `more`, der etwas Ähnliches tut, daher ist dies ironisch.) Der Text wird seitenweise angezeigt, sodass Sie eine Textdatei Seite für Seite navigieren können.
+Wenn Sie Textdateien anzeigen, die größer als eine einfache Ausgabe sind, ist `less` mehr. (Es gibt tatsächlich einen Befehl namens `more`, der etwas Ähnliches tut, was ironisch ist.) Der Text wird seitenweise angezeigt, sodass Sie eine Textdatei Seite für Seite navigieren können.
 
-Sehen Sie sich den Inhalt einer Datei mit `less` an. Sobald Sie sich im `less`-Befehl befinden, können Sie tatsächlich andere Tastaturbefehle verwenden, um in der Datei zu navigieren.
+Schauen Sie sich den Inhalt einer Datei mit `less` an. Sobald Sie sich im `less`-Befehl befinden, können Sie tatsächlich andere Tastaturbefehle verwenden, um in der Datei zu navigieren.
 
 ```bash
 less /home/pete/Documents/text1
@@ -28,7 +28,11 @@ Verwenden Sie die folgenden Befehle, um durch `less` zu navigieren:
 
 ## Exercise
 
-Führen Sie `less` für eine Datei aus, blättern Sie dann in der Datei nach oben und unten. Versuchen Sie, nach einem bestimmten Wort zu suchen. Navigieren Sie schnell zum Anfang oder Ende der Datei.
+Führen Sie `less` für eine Datei aus und blättern Sie dann in der Datei nach oben und unten. Versuchen Sie, nach einem bestimmten Wort zu suchen. Navigieren Sie schnell zum Anfang oder Ende der Datei.
+
+Für praktische Übungen mit dem Befehl `less` probieren Sie dieses interaktive Lab aus:
+
+- [Linux less Command: File Paging](https://labex.io/de/labs/linux-linux-less-command-file-paging-214301)
 
 ## Quiz Question
 

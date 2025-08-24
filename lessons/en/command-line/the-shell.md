@@ -30,7 +30,13 @@ echo Hello World
 
 ## Exercise
 
-For hands-on practice with Linux basic commands, we recommend the interactive course: [Linux Basic Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)
+Try running the `echo` command with different text.
+
+For hands-on practice with Linux basic commands, explore these interactive labs:
+
+- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
+- [Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

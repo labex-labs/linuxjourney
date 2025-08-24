@@ -3,8 +3,8 @@ index: 12
 lang: "pt"
 title: "mkdir (Criar Diretório)"
 meta_title: "mkdir (Criar Diretório) - Linha de Comando"
-meta_description: "Aprenda a usar o comando mkdir para criar diretórios e subdiretórios no Linux. Este tutorial para iniciantes ajuda você a organizar arquivos de forma eficiente."
-meta_keywords: "mkdir, criar diretório, criar diretório, comandos linux, tutorial linux, linux para iniciantes, guia linux"
+meta_description: "Aprenda a usar o comando mkdir para criar diretórios e subdiretórios no Linux. Este tutorial amigável para iniciantes ajuda você a organizar arquivos de forma eficiente."
+meta_keywords: "mkdir, criar diretório, comandos linux, tutorial linux, linux para iniciantes, guia linux"
 ---
 
 ## Lesson Content
@@ -24,6 +24,10 @@ mkdir -p books/hemmingway/favorites
 ## Exercise
 
 Crie alguns diretórios e mova alguns arquivos para esse diretório.
+
+Para prática interativa com o comando `mkdir`, experimente este laboratório interativo:
+
+- [Linux mkdir Command: Directory Creating](https://labex.io/pt/labs/linux-linux-mkdir-command-directory-creating-209739)
 
 ## Quiz Question
 

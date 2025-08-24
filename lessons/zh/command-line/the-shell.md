@@ -3,13 +3,13 @@ index: 1
 lang: "zh"
 title: "Shell"
 meta_title: "Shell - 命令行"
-meta_description: "了解 Linux shell、Bash 以及像'echo'这样的基本命令。理解 shell 提示符，并通过这个适合初学者的指南开始你的 Linux 之旅。"
-meta_keywords: "Linux shell, Bash, echo 命令，Linux 教程，命令行，Linux 初学者，shell 提示符，Linux 指南"
+meta_description: "了解 Linux shell、Bash 以及像'echo'这样的基本命令。理解 shell 提示符，并通过这份适合初学者的指南开始你的 Linux 之旅。"
+meta_keywords: "Linux shell, Bash, echo command, Linux tutorial, command line, beginner Linux, shell prompt, Linux guide"
 ---
 
 ## Lesson Content
 
-世界是你的牡蛎，或者更确切地说，shell 是你的牡蛎。什么是 shell？Shell 基本上是一个程序，它从键盘接收你的命令并将其发送给操作系统执行。如果你曾经使用过图形用户界面（GUI），你可能见过“终端”或“控制台”之类的程序；这些只是为你启动 shell 的程序。在整个课程中，我们将学习 shell 的奇妙之处。
+世界是你的牡蛎，或者更确切地说，shell 是你的牡蛎。什么是 shell？Shell 基本上是一个程序，它从键盘接收你的命令，并将其发送给操作系统执行。如果你曾经使用过 GUI，你可能见过“终端”或“控制台”之类的程序；这些只是为你启动 shell 的程序。在整个课程中，我们将学习 shell 的奇妙之处。
 
 在本课程中，我们将使用 shell 程序 Bash（Bourne Again Shell）。几乎所有的 Linux 发行版都默认使用 Bash shell。还有其他可用的 shell，例如`ksh`、`zsh`和`tsch`，但我们不会涉及这些。
 
@@ -30,7 +30,13 @@ echo Hello World
 
 ## Exercise
 
-为了进行 Linux 基本命令的实践操作，我们推荐交互式课程：[Linux Basic Commands Practice Online](https://labex.io/zh/courses/linux-basic-commands-practice-online)
+尝试使用不同的文本运行`echo`命令。
+
+如需进行 Linux 基本命令的实践操作，请探索以下交互式实验：
+
+- [Linux Directory Navigation](https://labex.io/zh/labs/linux-directory-navigation-387844)
+- [Linux pwd Command: Directory Displaying](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)
+- [Linux ls Command: Content Listing](https://labex.io/zh/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

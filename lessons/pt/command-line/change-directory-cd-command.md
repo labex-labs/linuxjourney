@@ -3,7 +3,7 @@ index: 3
 lang: "pt"
 title: "cd (Mudar Diretório)"
 meta_title: "cd (Mudar Diretório) - Linha de Comando"
-meta_description: "Aprenda a usar o comando 'cd' no Linux para navegar por diretórios. Entenda caminhos absolutos, relativos e atalhos úteis. Comece sua jornada no Linux!"
+meta_description: "Aprenda a usar o comando 'cd' no Linux para navegar em diretórios. Entenda caminhos absolutos, relativos e atalhos úteis. Comece sua jornada no Linux!"
 meta_keywords: "comando cd, mudar diretório, caminhos Linux, caminho absoluto, caminho relativo, tutorial Linux, Linux para iniciantes, navegação Linux"
 ---
 
@@ -13,9 +13,9 @@ Agora que você sabe onde está, vamos ver se conseguimos nos mover um pouco pel
 
 - Caminho absoluto: Este é o caminho a partir do diretório raiz. A raiz é o chefão. O diretório raiz é comumente mostrado como uma barra (`/`). Toda vez que seu caminho começa com `/`, significa que você está começando do diretório raiz. Por exemplo, `/home/pete/Desktop`.
 
-- Caminho relativo: Este é o caminho a partir de onde você está atualmente no sistema de arquivos. Se eu estivesse no local `/home/pete/Documents` e quisesse ir para um diretório dentro de `Documents` chamado `taxes`, não preciso especificar o caminho completo a partir da raiz como `/home/pete/Documents/taxes`; posso simplesmente ir para `taxes/` em vez disso.
+- Caminho relativo: Este é o caminho a partir de onde você está atualmente no sistema de arquivos. Se eu estivesse no local `/home/pete/Documents` e quisesse ir para um diretório dentro de `Documents` chamado `taxes`, não preciso especificar o caminho completo a partir da raiz como `/home/pete/Documents/taxes`; posso simplesmente ir para `taxes/`.
 
-Agora que você sabe como os caminhos funcionam, só precisamos de algo para nos ajudar a mudar para o diretório que queremos. Felizmente, temos `cd` ou “change directory” para fazer isso.
+Agora que você sabe como os caminhos funcionam, só precisamos de algo para nos ajudar a mudar para o diretório que queremos. Felizmente, temos `cd` ou “change directory” (mudar diretório) para fazer isso.
 
 ```bash
 cd /home/pete/Pictures
@@ -33,10 +33,10 @@ Percebeu como eu usei apenas o nome da pasta? É porque eu já estava em `/home/
 
 Pode ser bastante cansativo navegar com caminhos absolutos e relativos o tempo todo. Felizmente, existem alguns atalhos para ajudar você.
 
-- `.` (current directory): Este é o diretório em que você está atualmente.
-- `..` (previous directory): Leva você para o diretório acima do seu atual.
-- `~` (home directory): Este diretório padrão é o seu “home directory”, como `/home/pete`.
-- `-` (previous directory): Isso o levará para o diretório anterior onde você estava.
+- `.` (diretório atual): Este é o diretório em que você está atualmente.
+- `..` (diretório anterior): Leva você para o diretório acima do seu atual.
+- `~` (diretório home): Este diretório padrão é o seu “diretório home”, como `/home/pete`.
+- `-` (diretório anterior): Isso o levará ao diretório anterior onde você estava.
 
 ```bash
 cd .
@@ -45,11 +45,15 @@ cd ~
 cd -
 ```
 
-Experimente!
+Experimente-os!
 
 ## Exercise
 
-1. Run the `cd` command without any flags. Where does it take you?
+1. Execute o comando `cd` sem nenhuma flag. Para onde ele o leva?
+
+Para prática interativa com o comando `cd`, experimente este laboratório:
+
+- [Linux cd Command: Directory Changing](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)
 
 ## Quiz Question
 

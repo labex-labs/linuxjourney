@@ -2,9 +2,9 @@
 index: 16
 lang: "fr"
 title: "man"
-meta_title: "man - Command Line"
-meta_description: "Apprenez à utiliser la commande 'man' sous Linux pour accéder aux manuels des commandes. Découvrez la documentation Linux essentielle pour les débutants et améliorez vos compétences en ligne de commande."
-meta_keywords: "commande man, pages man Linux, documentation Linux, tutoriel Linux, guide ligne de commande, Linux pour débutants"
+meta_title: "man - Ligne de commande"
+meta_description: "Apprenez à utiliser la commande 'man' sous Linux pour accéder aux manuels de commande. Découvrez la documentation Linux essentielle pour les débutants et améliorez vos compétences en ligne de commande."
+meta_keywords: "commande man, pages man Linux, documentation Linux, tutoriel Linux, guide ligne de commande, Linux débutant"
 ---
 
 ## Lesson Content
@@ -22,6 +22,11 @@ Essayez-le sur quelques commandes pour obtenir plus d'informations à leur sujet
 ## Exercise
 
 Exécutez la commande `man` sur la commande `ls`.
+
+Pour une pratique supplémentaire des commandes Linux, explorez ces laboratoires interactifs :
+
+- [Linux ls Command: Content Listing](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)
+- [Linux find Command: File Searching](https://labex.io/fr/labs/linux-linux-find-command-file-searching-219191)
 
 ## Quiz Question
 

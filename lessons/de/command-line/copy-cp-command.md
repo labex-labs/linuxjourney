@@ -2,14 +2,14 @@
 index: 10
 lang: "de"
 title: "cp (Kopieren)"
-meta_title: "cp (Kopieren) - Command Line"
-meta_description: "Erfahren Sie, wie Sie den Linux-Befehl cp zum Kopieren von Dateien und Verzeichnissen verwenden. Verstehen Sie Optionen wie -r und Wildcards. Beginnen Sie noch heute Ihre Linux-Reise!"
+meta_title: "cp (Kopieren) - Befehlszeile"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl cp zum Kopieren von Dateien und Verzeichnissen verwenden. Verstehen Sie Optionen wie -r und Wildcards. Beginnen Sie Ihre Linux-Reise noch heute!"
 meta_keywords: "cp Befehl, Dateien kopieren Linux, Linux Tutorial, Linux für Anfänger, cp -r, Linux Wildcards, Linux Anleitung"
 ---
 
 ## Lesson Content
 
-Fangen wir an, Kopien dieser Dateien zu erstellen. Ähnlich wie beim Kopieren und Einfügen von Dateien in anderen Betriebssystemen bietet uns die Shell eine noch einfachere Möglichkeit dazu.
+Fangen wir an, Kopien dieser Dateien zu erstellen. Ähnlich wie das Kopieren und Einfügen von Dateien in anderen Betriebssystemen bietet uns die Shell eine noch einfachere Möglichkeit dazu.
 
 ```bash
 cp mycoolfile /home/pete/Documents/cooldocs
@@ -31,13 +31,13 @@ Dies kopiert alle Dateien mit der Erweiterung `.jpg` in Ihrem aktuellen Verzeich
 
 Ein nützlicher Befehl ist die Verwendung des Flags `-r`; dies kopiert die Dateien und Verzeichnisse innerhalb eines Verzeichnisses rekursiv.
 
-Versuchen Sie, ein `cp` für ein Verzeichnis, das ein paar Dateien enthält, in Ihr Verzeichnis `Documents` durchzuführen. Hat nicht funktioniert, oder? Nun, das liegt daran, dass Sie die Dateien und Verzeichnisse darin auch mit dem Befehl `-r` kopieren müssen.
+Versuchen Sie, ein `cp` auf ein Verzeichnis, das ein paar Dateien enthält, in Ihr Verzeichnis `Documents` durchzuführen. Hat nicht funktioniert, oder? Nun, das liegt daran, dass Sie die Dateien und Verzeichnisse darin auch mit dem Befehl `-r` kopieren müssen.
 
 ```bash
 cp -r Pumpkin/ /home/pete/Documents
 ```
 
-Eines ist zu beachten: Wenn Sie eine Datei in ein Verzeichnis kopieren, das denselben Dateinamen hat, wird die Datei mit dem überschrieben, was Sie kopieren. Das ist nicht gut, wenn Sie eine Datei haben, die Sie nicht versehentlich überschreiben möchten. Sie können das Flag `-i` (interaktiv) verwenden, um vor dem Überschreiben einer Datei eine Bestätigung anzufordern.
+Eine Sache ist zu beachten: Wenn Sie eine Datei in ein Verzeichnis kopieren, das denselben Dateinamen hat, wird die Datei mit dem überschrieben, was Sie kopieren. Das ist nicht gut, wenn Sie eine Datei haben, die Sie nicht versehentlich überschreiben möchten. Sie können das Flag `-i` (interaktiv) verwenden, um vor dem Überschreiben einer Datei eine Bestätigung anzufordern.
 
 ```bash
 cp -i mycoolfile /home/pete/Pictures
@@ -46,6 +46,10 @@ cp -i mycoolfile /home/pete/Pictures
 ## Exercise
 
 Kopieren Sie ein paar Dateien; achten Sie darauf, nichts Wichtiges zu überschreiben.
+
+Für praktische Übungen mit dem Befehl `cp` probieren Sie dieses interaktive Lab aus:
+
+- [Linux cp Command: File Copying](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)
 
 ## Quiz Question
 

@@ -1,26 +1,26 @@
 ---
 index: 2
 lang: "ja"
-title: "pwd (現在の作業ディレクトリを表示)"
-meta_title: "pwd (現在の作業ディレクトリを表示) - コマンドライン"
-meta_description: "Linux で現在の作業ディレクトリを表示するために「pwd」コマンドを使用する方法を学びます。初心者向けに Linux ファイルシステムパスとナビゲーションを理解します。"
-meta_keywords: "pwd コマンド，Linux ディレクトリ，現在のディレクトリ，Linux パス，Linux チュートリアル，初心者向け Linux, Linux ガイド"
+title: "pwd (Print Working Directory)"
+meta_title: "pwd (Print Working Directory) - コマンドライン"
+meta_description: "Linux で現在の作業ディレクトリを表示するために'pwd'コマンドを使用する方法を学びます。初心者向けに Linux ファイルシステムパスとナビゲーションを理解します。"
+meta_keywords: "pwd コマンド，Linux ディレクトリ，現在のディレクトリ，Linux パス，Linux チュートリアル，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content
 
-Linux では、すべてがファイルです。Linux を深く学ぶにつれて、このことを理解するでしょうが、今のところは、そのことを心に留めておいてください。すべてのファイルは階層的なディレクトリツリーに整理されています。ファイルシステム内の最初のディレクトリは、適切にルートディレクトリと名付けられています。ルートディレクトリには多くのフォルダとファイルがあり、それらはさらに多くのフォルダとファイルを格納できます。ディレクトリツリーがどのように見えるかの例を次に示します。
+Linux では、すべてがファイルです。Linux を深く学ぶにつれて、このことを理解するでしょうが、今はそのことを心に留めておいてください。すべてのファイルは階層的なディレクトリツリーに整理されています。ファイルシステム内の最初のディレクトリは、適切にルートディレクトリと名付けられています。ルートディレクトリには多くのフォルダとファイルがあり、それらはさらに多くのフォルダとファイルを格納できます。ディレクトリツリーがどのように見えるかの例を次に示します。
 
 ```plaintext
 /
 |-- bin
-| |-- file1
-| |-- file2
+|   |-- file1
+|   |-- file2
 |-- etc
-| |-- file3
-| `-- directory1
-|  |-- file4
-|  `-- file5
+|   |-- file3
+|   `-- directory1
+|       |-- file4
+|       `-- file5
 |-- home
 |-- var
 ```
@@ -37,7 +37,9 @@ pwd
 
 ## Exercise
 
-No exercises for this lesson.
+`pwd`コマンドを実際に練習するには、このインタラクティブなラボを試してください。
+
+- [Linux pwd Command: Directory Displaying](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)
 
 ## Quiz Question
 

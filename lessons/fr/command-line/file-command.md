@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "fr"
-title: "fichier"
-meta_title: "fichier - Command Line"
-meta_description: "Apprenez à utiliser la commande Linux 'file' pour identifier les types et le contenu des fichiers. Comprenez les conventions de nommage des fichiers Linux avec ce guide convivial pour débutants."
-meta_keywords: "commande Linux file, identifier type de fichier, tutoriel Linux, nommage de fichiers, Linux débutant, guide Linux"
+title: "file"
+meta_title: "file - Ligne de commande"
+meta_description: "Apprenez à utiliser la commande Linux 'file' pour identifier les types et le contenu des fichiers. Comprenez les conventions de nommage des fichiers Linux avec ce guide pour débutants."
+meta_keywords: "Commande Linux file, identifier le type de fichier, tutoriel Linux, nommage de fichiers, Linux pour débutants, guide Linux"
 ---
 
 ## Lesson Content
@@ -22,6 +22,11 @@ file banana.jpg
 ## Exercise
 
 Exécutez la commande `file` sur quelques répertoires et fichiers différents et notez la sortie.
+
+Pour une pratique supplémentaire des opérations sur les fichiers, explorez ces laboratoires interactifs :
+
+- [Linux find Command: File Searching](https://labex.io/fr/labs/linux-linux-find-command-file-searching-219191)
+- [Linux ls Command: Content Listing](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)
 
 ## Quiz Question
 

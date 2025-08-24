@@ -2,7 +2,7 @@
 index: 19
 lang: "fr"
 title: "exit"
-meta_title: "exit - Command Line"
+meta_title: "exit - Ligne de commande"
 meta_description: "Apprenez à quitter le shell Linux en utilisant les commandes 'exit' ou 'logout'. Comprenez la navigation de base du shell pour les débutants. Commencez votre parcours Linux dès aujourd'hui !"
 meta_keywords: "commande exit, commande logout, shell Linux, sortie terminal, bases Linux, Linux débutant, tutoriel Linux"
 ---
@@ -27,7 +27,12 @@ Ou si vous travaillez à partir d'une interface graphique de terminal, vous pouv
 
 ## Exercise
 
-Exit out of the shell and see what happens. Make sure you don't need to do any more work in that shell.
+Quittez le shell et voyez ce qui se passe. Assurez-vous de ne plus avoir de travail à faire dans ce shell.
+
+Pour une pratique pratique complète des commandes Linux, explorez ces laboratoires interactifs :
+
+- [Linux Directory Navigation](https://labex.io/fr/labs/linux-directory-navigation-387844)
+- [Organizing Files and Directories](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)
 
 ## Quiz Question
 

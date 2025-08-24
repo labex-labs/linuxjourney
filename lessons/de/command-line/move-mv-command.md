@@ -2,9 +2,9 @@
 index: 11
 lang: "de"
 title: "mv (Verschieben)"
-meta_title: "mv (Verschieben) - Command Line"
-meta_description: "Lernen Sie, wie Sie den Linux-Befehl mv zum Verschieben und Umbenennen von Dateien/Verzeichnissen verwenden. Verstehen Sie seine Optionen und verhindern Sie Überschreibungen. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "mv Befehl, Linux mv, Dateien verschieben Linux, Dateien umbenennen Linux, Linux Tutorial, Anfänger, Linux Anleitung"
+meta_title: "mv (Verschieben) - Befehlszeile"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl mv zum Verschieben und Umbenennen von Dateien/Verzeichnissen verwenden. Verstehen Sie seine Optionen und verhindern Sie Überschreibungen. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "mv command, Linux mv, move files Linux, rename files Linux, Linux tutorial, beginner, Linux guide"
 ---
 
 ## Lesson Content
@@ -35,13 +35,13 @@ Sie können auch Verzeichnisse umbenennen:
 mv directory1 directory2
 ```
 
-Wie `cp`, wenn Sie eine Datei oder ein Verzeichnis `mv`en, wird alles im selben Verzeichnis überschrieben. Sie können also das Flag `-i` verwenden, um vor dem Überschreiben eine Bestätigung anzufordern.
+Wie `cp` wird, wenn Sie eine Datei oder ein Verzeichnis mit `mv` verschieben, alles im selben Verzeichnis überschrieben. Sie können also das Flag `-i` verwenden, um vor dem Überschreiben eine Bestätigung anzufordern.
 
 ```bash
 mv -i directory1 directory2
 ```
 
-Angenommen, Sie wollten eine Datei `mv`en, um die vorherige zu überschreiben. Sie können auch ein Backup dieser Datei erstellen, und die alte Version wird einfach mit einem `~` umbenannt.
+Angenommen, Sie wollten eine Datei mit `mv` verschieben, um die vorherige zu überschreiben. Sie können auch eine Sicherungskopie dieser Datei erstellen, und die alte Version wird einfach mit einem `~` umbenannt.
 
 ```bash
 mv -b directory1 directory2
@@ -50,6 +50,10 @@ mv -b directory1 directory2
 ## Exercise
 
 Benennen Sie eine Datei um und verschieben Sie diese Datei dann in ein anderes Verzeichnis.
+
+Für praktische Übungen mit dem `mv`-Befehl probieren Sie dieses interaktive Lab aus:
+
+- [Linux mv Command: File Moving and Renaming](https://labex.io/de/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
 
 ## Quiz Question
 

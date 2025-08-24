@@ -3,13 +3,13 @@ index: 11
 lang: "ja"
 title: "mv (移動)"
 meta_title: "mv (移動) - コマンドライン"
-meta_description: "Linux の mv コマンドを使ってファイルやディレクトリを移動・名前変更する方法を学びましょう。そのオプションを理解し、上書きを防ぎます。Linux の旅を始めましょう！"
+meta_description: "Linux の mv コマンドを使ってファイルやディレクトリを移動・名前変更する方法を学びましょう。そのオプションを理解し、上書きを防ぎましょう。あなたの Linux の旅を始めましょう！"
 meta_keywords: "mv コマンド，Linux mv, ファイル移動 Linux, ファイル名変更 Linux, Linux チュートリアル，初心者，Linux ガイド"
 ---
 
 ## Lesson Content
 
-ファイルを移動したり、名前を変更したりするために使用されます。フラグや機能の点で `cp` コマンドと非常によく似ています。
+ファイルを移動したり、名前を変更したりするために使用されます。フラグと機能の点で `cp` コマンドと非常によく似ています。
 
 ファイルの名前は次のように変更できます。
 
@@ -50,6 +50,10 @@ mv -b directory1 directory2
 ## Exercise
 
 ファイルの名前を変更し、そのファイルを別のディレクトリに移動します。
+
+`mv` コマンドの実践的な練習には、このインタラクティブなラボを試してください。
+
+- [Linux mv Command: File Moving and Renaming](https://labex.io/ja/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
 
 ## Quiz Question
 

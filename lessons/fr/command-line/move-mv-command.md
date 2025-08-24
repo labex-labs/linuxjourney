@@ -2,14 +2,14 @@
 index: 11
 lang: "fr"
 title: "mv (Déplacer)"
-meta_title: "mv (Déplacer) - Command Line"
+meta_title: "mv (Déplacer) - Ligne de commande"
 meta_description: "Apprenez à utiliser la commande Linux mv pour déplacer et renommer des fichiers/répertoires. Comprenez ses options et prévenez les écrasements. Commencez votre parcours Linux !"
-meta_keywords: "commande mv, Linux mv, déplacer des fichiers Linux, renommer des fichiers Linux, tutoriel Linux, débutant, guide Linux"
+meta_keywords: "commande mv, Linux mv, déplacer fichiers Linux, renommer fichiers Linux, tutoriel Linux, débutant, guide Linux"
 ---
 
 ## Lesson Content
 
-Utilisé pour déplacer des fichiers et aussi pour les renommer. Assez similaire à la commande `cp` en termes d'options et de fonctionnalités.
+Utilisé pour déplacer des fichiers et aussi les renommer. Assez similaire à la commande `cp` en termes d'options et de fonctionnalités.
 
 Vous pouvez renommer des fichiers comme ceci :
 
@@ -50,6 +50,10 @@ mv -b directory1 directory2
 ## Exercise
 
 Renommez un fichier, puis déplacez ce fichier vers un répertoire différent.
+
+Pour une pratique concrète de la commande `mv`, essayez ce laboratoire interactif :
+
+- [Linux mv Command: File Moving and Renaming](https://labex.io/fr/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
 
 ## Quiz Question
 

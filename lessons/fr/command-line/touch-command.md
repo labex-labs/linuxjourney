@@ -2,7 +2,7 @@
 index: 5
 lang: "fr"
 title: "touch"
-meta_title: "touch - Command Line"
+meta_title: "touch - Ligne de commande"
 meta_description: "Apprenez à utiliser la commande Linux touch pour créer de nouveaux fichiers et mettre à jour les horodatages. Ce guide convivial pour débutants vous aide à comprendre la gestion des fichiers."
 meta_keywords: "commande touch, créer des fichiers, tutoriel Linux, horodatages de fichiers, Linux pour débutants, guide Linux, commandes de base"
 ---
@@ -17,7 +17,7 @@ touch mysuperduperfile
 
 Et voilà, nouveau fichier !
 
-`touch` est également utilisé pour modifier les horodatages sur les fichiers et répertoires existants. Essayez : faites un `ls -l` sur un fichier et notez l'horodatage, puis `touch` ce fichier, et cela mettra à jour l'horodatage.
+`touch` est également utilisé pour modifier les horodatages sur les fichiers et répertoires existants. Essayez : faites un `ls -l` sur un fichier et notez l'horodatage, puis `touch` ce fichier, et l'horodatage sera mis à jour.
 
 Il existe de nombreuses autres façons de créer des fichiers qui impliquent d'autres choses comme la redirection et les éditeurs de texte, mais nous y reviendrons dans le cours sur la manipulation de texte.
 
@@ -25,7 +25,12 @@ Il existe de nombreuses autres façons de créer des fichiers qui impliquent d'a
 
 1. Créez un nouveau fichier.
 2. Notez l'horodatage.
-3. Touchez le fichier et vérifiez l'horodatage une fois de plus.
+3. Touchez le fichier et vérifiez à nouveau l'horodatage.
+
+Pour une pratique pratique supplémentaire de la gestion des fichiers, explorez ces laboratoires interactifs :
+
+- [Linux Directory Navigation](https://labex.io/fr/labs/linux-directory-navigation-387844)
+- [Setting Up a New Project Structure](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)
 
 ## Quiz Question
 

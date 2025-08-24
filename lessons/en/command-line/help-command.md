@@ -27,6 +27,11 @@ Not all developers who ship executables will conform to this standard, but it’
 
 Run `help` on the `echo` command, `logout` command, and `pwd` command.
 
+For additional hands-on practice with basic Linux commands, explore these interactive labs:
+
+- [Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)
+- [Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)
+
 ## Quiz Question
 
 How do you get quick command-line help for built-in Bash commands?

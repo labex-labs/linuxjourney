@@ -23,6 +23,11 @@ file banana.jpg
 
 Run the `file` command on a few different directories and files and note the output.
 
+For additional hands-on practice with file operations, explore these interactive labs:
+
+- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+
 ## Quiz Question
 
 What command can you use to find the file type of a file?

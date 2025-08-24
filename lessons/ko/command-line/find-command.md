@@ -2,20 +2,20 @@
 index: 14
 lang: "ko"
 title: "find"
-meta_title: "find - Command Line"
+meta_title: "find - 명령줄"
 meta_description: "Linux 'find' 명령어를 사용하여 파일과 디렉토리를 찾는 방법을 배우세요. 기본적인 검색 옵션을 알아보고 Linux 파일 관리 기술을 향상시키세요."
 meta_keywords: "Linux find 명령어, Linux 파일 찾기, Linux 디렉토리 검색, find 명령어 튜토리얼, Linux 파일 관리, 초보자 Linux, Linux 가이드"
 ---
 
 ## Lesson Content
 
-시스템에 있는 이 모든 파일들 때문에 특정 파일을 찾으려고 하면 다소 혼란스러울 수 있습니다. 하지만 이를 위해 사용할 수 있는 명령어가 있습니다: `find`!
+시스템에 있는 이 모든 파일들 때문에 특정 파일을 찾으려고 하면 좀 혼란스러울 수 있습니다. 하지만, 이를 위해 사용할 수 있는 명령어가 있습니다: `find`!
 
 ```bash
 find /home -name puppies.jpg
 ```
 
-`find`를 사용하려면 검색할 디렉토리와 찾을 대상을 지정해야 합니다. 이 경우, 우리는 `puppies.jpg`라는 이름의 파일을 찾으려고 합니다.
+`find`를 사용하려면 검색할 디렉토리와 찾을 대상을 지정해야 합니다. 이 경우, `puppies.jpg`라는 이름의 파일을 찾으려고 합니다.
 
 찾으려는 파일의 유형을 지정할 수 있습니다.
 
@@ -31,9 +31,13 @@ find /home -type d -name MyFolder
 
 1. 루트 디렉토리에서 "net"이라는 단어가 포함된 파일을 찾으세요.
 
+`find` 명령어를 직접 실습하려면 다음 대화형 랩을 시도해 보세요:
+
+- [Linux find Command: File Searching](https://labex.io/ko/labs/linux-linux-find-command-file-searching-219191)
+
 ## Quiz Question
 
-이름으로 검색하려면 `find`에 어떤 옵션을 지정해야 합니까?
+이름으로 검색하려면 `find`에 어떤 옵션을 지정해야 할까요?
 
 ## Quiz Answer
 

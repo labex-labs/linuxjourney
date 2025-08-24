@@ -51,6 +51,10 @@ mv -b directory1 directory2
 
 Rename a file, then move that file to a different directory.
 
+For hands-on practice with the `mv` command, try this interactive lab:
+
+- [Linux mv Command: File Moving and Renaming](https://labex.io/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
+
 ## Quiz Question
 
 How do you rename a file called `cat` to `dog`?

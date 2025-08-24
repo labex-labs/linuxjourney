@@ -23,6 +23,11 @@ Try it out on a few commands to get more information about them.
 
 Run the `man` command on the `ls` command.
 
+For additional hands-on practice with Linux commands, explore these interactive labs:
+
+- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
+
 ## Quiz Question
 
 How do you see the manuals for a command?
