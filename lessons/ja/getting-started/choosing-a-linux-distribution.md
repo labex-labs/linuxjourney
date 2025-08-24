@@ -25,7 +25,7 @@ Linux システムは主に 3 つの部分に分かれています。
 
 [オンライン Linux プレイグラウンド](https://labex.io/tutorials/linux-online-linux-playground-372915)を試して、Linux ディストリビューションの実践的な経験を積んでください。
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

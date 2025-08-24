@@ -25,7 +25,7 @@ meta_keywords: "Linux 发行版，选择 Linux, Linux 内核，Linux 初学者�
 
 尝试 [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) 以获得 Linux 发行版的实践经验：
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

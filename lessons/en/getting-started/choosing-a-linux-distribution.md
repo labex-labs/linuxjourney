@@ -25,7 +25,7 @@ There are many Linux distributions to choose from; we’ll just go over the most
 
 Try the [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) to get hands-on experience with Linux distributions:
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

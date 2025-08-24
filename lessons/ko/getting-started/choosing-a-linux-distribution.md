@@ -25,7 +25,7 @@ Linux 시스템은 세 가지 주요 부분으로 나뉩니다:
 
 Linux 배포판을 직접 경험하려면 [온라인 Linux 플레이그라운드](https://labex.io/tutorials/linux-online-linux-playground-372915)를 사용해 보세요:
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

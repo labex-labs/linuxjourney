@@ -25,7 +25,7 @@ meta_keywords: "Дистрибутив Linux, выбрать Linux, ядро Lin
 
 Попробуйте [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915), чтобы получить практический опыт работы с дистрибутивами Linux:
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 

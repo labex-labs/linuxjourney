@@ -25,7 +25,7 @@ Il existe de nombreuses distributions Linux parmi lesquelles choisir ; nous allo
 
 Essayez le [Online Linux Playground](https://labex.io/tutorials/linux-online-linux-playground-372915) pour acquérir une expérience pratique des distributions Linux :
 
-[![Linux Desktop Environment](https://labex.io/_ipx/_/images/lab/env-desktop.png)](https://labex.io/tutorials/linux-online-linux-playground-372915)
+[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/tutorials/linux-online-linux-playground-372915)
 
 ## Quiz Question
 
