@@ -33,10 +33,10 @@ RHEL administrators can pursue Red Hat certifications including RHCSA (Red Hat C
 
 For comprehensive RHEL training and certification preparation, consider the **[Red Hat Enterprise Linux Learning Path](https://labex.io/skilltrees/rhel)** which offers structured courses including:
 
-- Red Hat System Administration (RH124) - Foundation skills
-- Red Hat System Administration (RH134) - Advanced administration
-- Enterprise Linux Automation with Ansible (RH294)
-- RHCSA Certification practice exercises
+- [Red Hat System Administration (RH124)](https://labex.io/courses/red-hat-system-administration-rh124-labs) - Foundation skills
+- [Red Hat System Administration (RH134)](https://labex.io/courses/red-hat-system-administration-rh134-labs) - Advanced administration
+- [Enterprise Linux Automation with Ansible (RH294)](https://labex.io/courses/red-hat-enterprise-linux-automation-with-ansible-rh294)
+- [RHCSA Certification practice exercises](https://labex.io/courses/rhcsa-certification-exam-practice-exercises)
 
 This learning path includes 32 skills across 90+ hands-on labs, designed for system administrators, DevOps engineers, and IT professionals seeking Red Hat certification.
 
