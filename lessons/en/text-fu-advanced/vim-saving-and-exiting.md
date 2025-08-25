@@ -26,7 +26,11 @@ Whew, that was a lot of information about Vim. Now that you know some basic comm
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text editing with Vim:
+
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating files, editing text, saving files, and navigating with both Vim and Nano. This lab will solidify your understanding of basic Vim operations, including saving and quitting.
+
+This lab will help you apply the concepts in a real scenario and build confidence with text editing in Linux.
 
 ## Quiz Question
 

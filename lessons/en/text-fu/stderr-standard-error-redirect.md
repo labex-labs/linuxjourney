@@ -55,11 +55,11 @@ ls /fake/directory 2> /dev/null
 
 ## Exercise
 
-What is the following command doing?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of input/output redirection:
 
-```bash
-ls /fake/directory >> /dev/null 2>&1
-```
+1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - In this lab, you will learn to redirect input and output in the Linux shell. You will practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like >, >>, 2>, and the tee command.
+
+This lab will help you apply the concepts of I/O redirection in real scenarios and build confidence with managing data streams in Linux.
 
 ## Quiz Question
 

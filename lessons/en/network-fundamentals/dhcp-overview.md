@@ -26,7 +26,13 @@ DHCP gets more involved than this, but this is the gist of it.
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of dynamic IP addressing and network configuration:
+
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Practice using the `ip` command to inspect interfaces and specifically use `dhclient` to obtain a dynamic IP address, directly applying your knowledge of DHCP.
+2. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Learn to use the `ip a` command to identify network addressing information, including the IP addresses assigned by DHCP, and inspect network interfaces.
+3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using `ping` and `ip a`, helping you understand how dynamically assigned IPs function within a network.
+
+These labs will help you apply the concepts of dynamic IP assignment and network configuration in real scenarios and build confidence with Linux networking.
 
 ## Quiz Question
 

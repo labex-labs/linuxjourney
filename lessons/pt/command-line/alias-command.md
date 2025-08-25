@@ -3,7 +3,7 @@ index: 18
 lang: "pt"
 title: "alias"
 meta_title: "alias - Linha de Comando"
-meta_description: "Aprenda a criar e gerenciar aliases Linux para comandos comuns. Descubra a configuração de alias temporário e permanente em .bashrc. Melhore sua eficiência na linha de comando!"
+meta_description: "Aprenda como criar e gerenciar aliases Linux para comandos comuns. Descubra a configuração de alias temporário e permanente em .bashrc. Melhore sua eficiência na linha de comando!"
 meta_keywords: "alias Linux, alias bash, comando unalias, .bashrc, tutorial Linux, linha de comando, Linux para iniciantes, guia Linux"
 ---
 
@@ -31,12 +31,7 @@ unalias foobar
 
 ## Exercise
 
-Crie alguns aliases e depois remova-os.
-
-Para prática adicional com os fundamentos da linha de comando Linux, explore estes laboratórios interativos:
-
-- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

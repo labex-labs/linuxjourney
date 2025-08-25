@@ -33,7 +33,13 @@ ip neighbour show
 
 ## Exercise
 
-Observe what happens to your ARP cache when you reboot your machine and then do something on the network.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of ARP and network layer interaction:
+
+1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` commands to observe how IP addresses are resolved to MAC addresses and how the default gateway handles traffic.
+2. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Learn to use the `ip a` command to identify network addressing information, including MAC and IP addresses, which are fundamental to understanding ARP.
+3. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Practice managing IP addressing using the `ip` command and verify network configuration with `arp` and `traceroute`.
+
+These labs will help you apply the concepts of ARP and network addressing in real scenarios and build confidence with Linux networking.
 
 ## Quiz Question
 

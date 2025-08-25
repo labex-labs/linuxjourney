@@ -4,12 +4,12 @@ lang: "es"
 title: "find"
 meta_title: "find - Línea de Comandos"
 meta_description: "Aprende a usar el comando 'find' de Linux para localizar archivos y directorios. Descubre opciones básicas de búsqueda y mejora tus habilidades de gestión de archivos en Linux."
-meta_keywords: "comando find Linux, encontrar archivos Linux, búsqueda de directorios Linux, tutorial comando find, gestión de archivos Linux, Linux para principiantes, guía Linux"
+meta_keywords: "comando find de Linux, encontrar archivos Linux, búsqueda de directorios Linux, tutorial comando find, gestión de archivos Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content
 
-Con todos estos archivos que tenemos en el sistema, puede ser un poco agitado tratar de encontrar uno específico. Bueno, hay un comando que podemos usar para eso: `find`!
+Con todos estos archivos que tenemos en el sistema, puede ser un poco agitado tratar de encontrar uno específico. Bueno, ¡hay un comando que podemos usar para eso: `find`!
 
 ```bash
 find /home -name puppies.jpg
@@ -29,11 +29,12 @@ Una cosa genial a tener en cuenta es que `find` no se detiene en el directorio q
 
 ## Exercise
 
-1. Encuentra un archivo desde el directorio raíz que contenga la palabra "net".
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión sobre cómo encontrar archivos y directorios en Linux:
 
-Para practicar con el comando `find`, prueba este laboratorio interactivo:
+1. **[Comando find de Linux: Búsqueda de archivos](https://labex.io/es/labs/linux-linux-find-command-file-searching-219191)** - Este laboratorio proporciona una introducción al comando `find`, una utilidad versátil para buscar y localizar archivos y directorios basándose en varios criterios. Practicarás el uso de `find` para localizar archivos específicos.
+2. **[Descubrir recursos críticos del sistema](https://labex.io/es/labs/linux-discover-critical-system-resources-388032)** - Aprende comandos esenciales de Linux para localizar archivos y ejecutables, incluyendo `find`. Practicarás la navegación eficiente del sistema de archivos y el descubrimiento de recursos críticos del sistema.
 
-- [Linux find Command: File Searching](https://labex.io/es/labs/linux-linux-find-command-file-searching-219191)
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza en el uso efectivo del comando `find`.
 
 ## Quiz Question
 

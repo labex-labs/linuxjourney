@@ -35,7 +35,13 @@ patty    IN  A      192.168.0.4
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS and hostname resolution:
+
+1. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Practice installing and configuring a local DNS server (`bind9`), defining zones, and validating your setup.
+2. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to use essential command-line tools (`dig`, `nslookup`) to query various DNS record types and troubleshoot DNS issues.
+3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Understand how to manage local hostname resolution by editing the `/etc/hosts` file, a key skill for development and testing.
+
+These labs will help you apply the concepts of DNS and hostname resolution in real scenarios and build confidence with network services.
 
 ## Quiz Question
 

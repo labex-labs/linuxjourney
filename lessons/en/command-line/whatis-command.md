@@ -19,12 +19,13 @@ The description gets sourced from the manual page of each command. If you ran `w
 
 ## Exercise
 
-Run the `whatis` command on the `less` command.
+Practice makes perfect! While there isn't a specific lab for the `whatis` command, understanding how to find information about commands and files is crucial. Here are some hands-on labs to reinforce your understanding of locating commands and files in Linux:
 
-For additional hands-on practice with file viewing commands, explore these interactive labs:
+1.  **[Linux which Command: Command Locating](https://labex.io/labs/linux-linux-which-command-command-locating-215210)** - Practice using the `which` command to locate executable files and understand command priority in your system's PATH.
+2.  **[Linux whereis Command: File and Command Finding](https://labex.io/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Learn to use `whereis` to find the binary, source, and manual pages for commands, deepening your understanding of how commands are structured.
+3.  **[Discover Critical System Resources](https://labex.io/labs/linux-discover-critical-system-resources-388032)** - This challenge combines `which`, `whereis`, and `find` to help you efficiently navigate the file system and discover important system resources.
 
-- [Linux less Command: File Paging](https://labex.io/labs/linux-linux-less-command-file-paging-214301)
-- [Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)
+These labs will help you apply the concepts of command and file discovery in real scenarios and build confidence with essential Linux utilities.
 
 ## Quiz Question
 

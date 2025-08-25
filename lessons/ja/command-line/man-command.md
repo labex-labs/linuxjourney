@@ -3,30 +3,31 @@ index: 16
 lang: "ja"
 title: "man"
 meta_title: "man - コマンドライン"
-meta_description: "Linux で`man`コマンドを使ってコマンドマニュアルにアクセスする方法を学びましょう。初心者向けの必須 Linux ドキュメントを発見し、コマンドラインスキルを向上させましょう。"
-meta_keywords: "man command, Linux man pages, Linux documentation, Linux tutorial, command line guide, beginner Linux"
+meta_description: "Linuxで`man`コマンドを使用してコマンドマニュアルにアクセスする方法を学びます。初心者向けの必須Linuxドキュメントを発見し、コマンドラインスキルを向上させましょう。"
+meta_keywords: "manコマンド, Linux manページ, Linuxドキュメント, Linuxチュートリアル, コマンドラインガイド, 初心者Linux"
 ---
 
 ## Lesson Content
 
-これらのプログラムのいくつかにマニュアルがあれば、もっと詳しい情報を見ることができるのに、と思いますよね。幸いなことに、それらは存在します！適切に man ページと名付けられており、`man`コマンドを使ってコマンドのマニュアルを見ることができます。
+これらのプログラムのいくつかにマニュアルがあれば、もっと詳しい情報を見ることができるのに、と思いますよね。幸いなことに、それらは存在します！適切にmanページと名付けられており、`man`コマンドでコマンドのマニュアルを見ることができます。
 
 ```bash
 man ls
 ```
 
-man ページは、ほとんどの Linux オペレーティングシステムにデフォルトで組み込まれているマニュアルです。これらはコマンドやシステムに関するその他の側面についてのドキュメントを提供します。
+manページは、デフォルトでほとんどのLinuxオペレーティングシステムに組み込まれているマニュアルです。これらはコマンドやシステムの他の側面に関するドキュメントを提供します。
 
-いくつかのコマンドで試して、それらに関するより多くの情報を得てみましょう。
+いくつかのコマンドで試して、それらに関する詳細情報を取得してください。
 
 ## Exercise
 
-`ls`コマンドで`man`コマンドを実行してください。
+練習は完璧をもたらします！ここでは、基本的なLinuxコマンドの理解を深めるための実践的な演習をいくつか紹介します。これらは、`man`ページを使用してさらに詳しく調べることができます。
 
-Linux コマンドのさらなる実践的な練習のために、これらのインタラクティブなラボを探索してください。
+1. **[Linux ls コマンド: コンテンツのリスト表示](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)** - ファイルやディレクトリの内容をリスト表示および分析する練習をし、その後`man ls`を使用してより多くのオプションを発見してください。
+2. **[Linux pwd コマンド: ディレクトリの表示](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)** - `pwd`コマンドで現在のディレクトリを表示する方法を学び、そのmanページで詳細を調べてください。
+3. **[Linux cd コマンド: ディレクトリの変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - `cd`でファイルシステムをナビゲートする方法を習得し、`man cd`を使用してその様々なテクニックを理解してください。
 
-- [Linux ls Command: Content Listing](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)
-- [Linux find Command: File Searching](https://labex.io/ja/labs/linux-linux-find-command-file-searching-219191)
+これらの演習は、実際のシナリオでコアコンセプトを適用し、必須のLinuxコマンドに自信を持つのに役立ち、`man`を効果的に使用して知識を深める準備を整えます。
 
 ## Quiz Question
 

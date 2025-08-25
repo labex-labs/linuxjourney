@@ -26,7 +26,13 @@ meta_keywords: "packet travel, network communication, ARP, IP address, MAC addre
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of basic Linux file and directory management:
+
+1. **[Basic File Operations in Linux](https://labex.io/labs/linux-basic-file-operations-in-linux-18001)** - Practice navigating the file system, managing files and directories, and using command-line shortcuts in a real Linux environment.
+2. **[File and Directory Operations](https://labex.io/labs/linux-file-and-directory-operations-17997)** - Learn to navigate the directory structure, manage files and folders, and use powerful command-line tools like `ls`, `cd`, `mkdir`, `cp`, `mv`, and `rm`.
+3. **[Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux file system interactions.
 
 ## Quiz Question
 

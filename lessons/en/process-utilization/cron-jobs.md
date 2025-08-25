@@ -35,7 +35,11 @@ crontab -e
 
 ## Exercise
 
-Create a cron job that you want to run at a scheduled time.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of scheduling tasks in Linux:
+
+1. **[Schedule Tasks with at and cron in Linux](https://labex.io/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Practice creating, managing, and removing jobs with `at`, `atq`, `atrm`, and `crontab`, gaining hands-on experience in automating system administration tasks.
+
+This lab will help you apply the concepts in real scenarios and build confidence with task scheduling.
 
 ## Quiz Question
 

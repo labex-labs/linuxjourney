@@ -41,7 +41,13 @@ But wait a minute, what if I want to connect to other hosts like yahoo.com? Then
 
 ## Exercise
 
-Use `ifconfig` to view your subnet mask.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of IP addressing and subnetting:
+
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 addresses, which is fundamental to understanding subnets.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Learn to explore different IP address types and test network reachability, helping you verify if hosts are on the same network.
+3. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, directly applying the concepts of network prefixes and host identification discussed in the lesson.
+
+These labs will help you apply the concepts in real scenarios and build confidence with network addressing and subnetting.
 
 ## Quiz Question
 

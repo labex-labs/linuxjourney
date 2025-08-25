@@ -3,7 +3,7 @@ index: 13
 lang: "pt"
 title: "rm (Remover)"
 meta_title: "rm (Remover) - Linha de Comando"
-meta_description: "Aprenda a usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
+meta_description: "Aprenda como usar o comando `rm` no Linux para excluir arquivos e diretórios com segurança. Entenda as opções como -f, -i, -r e rmdir. Comece sua jornada no Linux!"
 meta_keywords: "comando rm, excluir arquivos Linux, remover diretórios, tutorial Linux, Linux para iniciantes, rmdir, guia Linux"
 ---
 
@@ -15,9 +15,9 @@ Agora, acho que temos muitos arquivos; vamos remover alguns. Para remover arquiv
 rm file1
 ```
 
-Tome cuidado ao usar `rm`; não há uma lixeira mágica de onde você possa recuperar arquivos removidos. Uma vez que eles se foram, eles se foram para sempre, então seja cuidadoso.
+Tenha cuidado ao usar `rm`; não há uma lixeira mágica de onde você possa recuperar arquivos removidos. Uma vez que eles se foram, eles se foram para sempre, então seja cuidadoso.
 
-Felizmente, existem algumas medidas de segurança em vigor, para que o usuário médio não possa simplesmente remover um monte de arquivos importantes. Arquivos protegidos contra gravação solicitarão confirmação antes de serem excluídos. Se um diretório for protegido contra gravação, ele também não será facilmente removido.
+Felizmente, existem algumas medidas de segurança em vigor, então o usuário médio não pode simplesmente remover um monte de arquivos importantes. Arquivos protegidos contra gravação solicitarão sua confirmação antes de excluí-los. Se um diretório estiver protegido contra gravação, ele também não será facilmente removido.
 
 Agora, se você não se importa com nada disso, você pode absolutamente remover um monte de arquivos.
 
@@ -37,7 +37,7 @@ Adicionar a flag `-i`, como muitos dos outros comandos, lhe dará um prompt sobr
 rm -r directory
 ```
 
-Você não pode simplesmente `rm` um diretório por padrão; você precisará adicionar a flag `-r` (recursive) para remover todos os arquivos e quaisquer subdiretórios que ele possa ter.
+Você não pode simplesmente `rm` um diretório por padrão; você precisará adicionar a flag `-r` (recursiva) para remover todos os arquivos e quaisquer subdiretórios que ele possa ter.
 
 Você pode remover um diretório com o comando `rmdir`.
 
@@ -47,9 +47,12 @@ rmdir directory
 
 ## Exercise
 
-Para prática interativa com o comando `rm`, experimente este laboratório interativo:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre a remoção de arquivos e diretórios no Linux:
 
-- [Linux rm Command: File Removing](https://labex.io/pt/labs/linux-linux-rm-command-file-removing-209741)
+1. **[Comando Linux rm: Removendo Arquivos](https://labex.io/pt/labs/linux-linux-rm-command-file-removing-209741)** - Aprenda como usar o comando `rm` para remover arquivos e diretórios, incluindo várias opções como `-r` e `-i`, e pratique a exclusão segura e eficaz de arquivos.
+2. **[Organizando Arquivos e Diretórios](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Pratique habilidades essenciais de gerenciamento de arquivos Linux, incluindo o uso de `rm` para limpar diretórios desnecessários, em um desafio prático.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de arquivos e diretórios no Linux.
 
 ## Quiz Question
 

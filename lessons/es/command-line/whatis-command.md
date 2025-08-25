@@ -9,22 +9,23 @@ meta_keywords: "comando whatis, comandos Linux, línea de comandos, tutorial Lin
 
 ## Lesson Content
 
-¡Uf, hemos aprendido bastantes comandos hasta ahora! Si alguna vez tienes dudas sobre lo que hace un comando, puedes usar el comando `whatis`. El comando `whatis` proporciona una breve descripción de los programas de línea de comandos.
+¡Uf, hemos aprendido bastantes comandos hasta ahora! Si alguna vez dudas sobre lo que hace un comando, puedes usar el comando `whatis`. El comando `whatis` proporciona una breve descripción de los programas de línea de comandos.
 
 ```bash
 whatis cat
 ```
 
-La descripción se obtiene de la página del manual de cada comando. Si ejecutaras `whatis cat`, verías una pequeña descripción con un resumen.
+La descripción se obtiene de la página del manual de cada comando. Si ejecutaras `whatis cat`, verías una pequeña reseña con una breve descripción.
 
 ## Exercise
 
-Ejecuta el comando `whatis` en el comando `less`.
+¡La práctica hace al maestro! Aunque no hay un laboratorio específico para el comando `whatis`, comprender cómo encontrar información sobre comandos y archivos es crucial. Aquí hay algunos laboratorios prácticos para reforzar tu comprensión sobre la localización de comandos y archivos en Linux:
 
-Para práctica adicional con comandos de visualización de archivos, explora estos laboratorios interactivos:
+1.  **[Comando Linux which: Localización de comandos](https://labex.io/es/labs/linux-linux-which-command-command-locating-215210)** - Practica el uso del comando `which` para localizar archivos ejecutables y comprender la prioridad de los comandos en la variable PATH de tu sistema.
+2.  **[Comando Linux whereis: Búsqueda de archivos y comandos](https://labex.io/es/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Aprende a usar `whereis` para encontrar el binario, el código fuente y las páginas del manual de los comandos, profundizando tu comprensión de cómo se estructuran los comandos.
+3.  **[Descubre recursos críticos del sistema](https://labex.io/es/labs/linux-discover-critical-system-resources-388032)** - Este desafío combina `which`, `whereis` y `find` para ayudarte a navegar eficientemente por el sistema de archivos y descubrir recursos importantes del sistema.
 
-- [Linux less Command: File Paging](https://labex.io/es/labs/linux-linux-less-command-file-paging-214301)
-- [Linux cat Command: File Concatenating](https://labex.io/es/labs/linux-linux-cat-command-file-concatenating-210986)
+Estos laboratorios te ayudarán a aplicar los conceptos de descubrimiento de comandos y archivos en escenarios reales y a generar confianza con las utilidades esenciales de Linux.
 
 ## Quiz Question
 

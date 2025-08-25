@@ -11,11 +11,11 @@ meta_keywords: "Gentoo Linux, Portage, distribuição Linux, tutorial Gentoo, Li
 
 ### Visão Geral
 
-O Gentoo oferece uma flexibilidade incrível com o sistema operacional, mas isso tem um preço. Ele é feito para usuários avançados que não se importam em colocar a mão na massa com o sistema.
+Gentoo oferece uma flexibilidade incrível com o sistema operacional, mas isso tem um preço. É feito para usuários avançados que não se importam de colocar as mãos na massa com o sistema.
 
 ### Gerenciamento de Pacotes
 
-O Gentoo usa seu próprio sistema de gerenciamento de pacotes, o Portage. O gerenciamento de pacotes Portage é muito modular e fácil de manter, o que desempenha um grande papel na flexibilidade geral do sistema operacional.
+Gentoo usa seu próprio sistema de gerenciamento de pacotes, Portage. O gerenciamento de pacotes Portage é muito modular e fácil de manter, o que desempenha um grande papel na flexibilidade geral do sistema operacional.
 
 ### Configurabilidade
 
@@ -27,9 +27,15 @@ Se você está apenas começando com Linux e quer seguir um caminho mais desafia
 
 ## Exercise
 
-Se você está interessado em ter o Gentoo como seu sistema operacional, vá para a seção de instalação e experimente: `https://www.gentoo.org`
+Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de arquivos e diretórios Linux:
 
-## Quiz Questions
+1.  **[Operações Básicas de Arquivos](https://labex.io/pt/labs/linux-basic-files-operations-270248)** - Pratique listar arquivos, mudar diretórios e mover/copiar/excluir arquivos e diretórios em um ambiente Linux real.
+2.  **[Arquivos e Diretórios](https://labex.io/pt/labs/linux-files-and-directories-270246)** - Aprenda a navegar no sistema de arquivos, copiar, mover e excluir arquivos e diretórios usando comandos básicos do Linux.
+3.  **[Operações Básicas de Arquivos no Linux](https://labex.io/pt/labs/linux-basic-file-operations-in-linux-18001)** - Aprenda comandos e conceitos essenciais do Linux para navegar no sistema de arquivos, gerenciar arquivos e diretórios e usar atalhos de linha de comando.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com as operações do sistema de arquivos Linux.
+
+## Quiz Question
 
 Qual sistema de gerenciamento de pacotes o Gentoo usa?
 

@@ -13,7 +13,15 @@ Before we can look at some practical networking concepts, we have to go over som
 
 ## Exercise
 
-Read more about the OSI model: [https://en.wikipedia.org/wiki/OSI_model](https://en.wikipedia.org/wiki/OSI_model)
+While the OSI model is theoretical, understanding its influence on practical networking is key. Hands-on practice with fundamental networking commands will help solidify your understanding of how these theoretical models translate into real-world network operations.
+
+Here are some hands-on labs to reinforce your understanding of basic networking concepts:
+
+1.  **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
+2.  **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
+3.  **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` commands to explore how the network and data link layers interact, observing ARP in action and understanding default gateway behavior.
+
+These labs will help you apply foundational networking concepts in real scenarios and build confidence with Linux network administration.
 
 ## Quiz Question
 

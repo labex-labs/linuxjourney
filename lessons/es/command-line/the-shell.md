@@ -9,11 +9,11 @@ meta_keywords: "shell de Linux, Bash, comando echo, tutorial de Linux, línea de
 
 ## Lesson Content
 
-El mundo es tu ostra, o mejor dicho, el shell es tu ostra. ¿Qué es el shell? El shell es básicamente un programa que toma tus comandos del teclado y los envía al sistema operativo para que los ejecute. Si alguna vez has usado una GUI, probablemente hayas visto programas como "Terminal" o "Consola"; estos son solo programas que inician un shell para ti. A lo largo de todo este curso, aprenderemos sobre las maravillas del shell.
+El mundo es tu ostra, o mejor dicho, el shell es tu ostra. ¿Qué es el shell? El shell es básicamente un programa que toma tus comandos del teclado y los envía al sistema operativo para que los ejecute. Si alguna vez has usado una GUI, probablemente hayas visto programas como "Terminal" o "Consola"; estos son simplemente programas que inician un shell para ti. A lo largo de todo este curso, aprenderemos sobre las maravillas del shell.
 
-En este curso, utilizaremos el programa shell Bash (Bourne Again Shell). Casi todas las distribuciones de Linux usarán Bash como shell predeterminado. Hay otros shells disponibles, como `ksh`, `zsh` y `tsch`, pero no nos detendremos en ninguno de ellos.
+En este curso, utilizaremos el programa shell Bash (Bourne Again Shell). Casi todas las distribuciones de Linux usarán Bash como shell predeterminado. Hay otros shells disponibles, como `ksh`, `zsh` y `tsch`, pero no profundizaremos en ninguno de ellos.
 
-¡Vamos a ello! Dependiendo de la distribución, tu prompt de shell podría cambiar, pero en su mayor parte, debería ajustarse al siguiente formato:
+¡Vamos a empezar! Dependiendo de la distribución, tu prompt de shell podría cambiar, pero en su mayor parte, debería adherirse al siguiente formato:
 
 ```plaintext
 username@hostname:current_directory
@@ -30,13 +30,7 @@ echo Hello World
 
 ## Exercise
 
-Intenta ejecutar el comando `echo` con diferentes textos.
-
-Para practicar con los comandos básicos de Linux, explora estos laboratorios interactivos:
-
-- [Linux Directory Navigation](https://labex.io/es/labs/linux-directory-navigation-387844)
-- [Linux pwd Command: Directory Displaying](https://labex.io/es/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux ls Command: Content Listing](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 

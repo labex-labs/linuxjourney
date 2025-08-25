@@ -3,35 +3,41 @@ index: 10
 lang: "ja"
 title: "openSUSE"
 meta_title: "openSUSE - はじめに"
-meta_description: "openSUSE Linux、その歴史、パッケージ管理（RPM）、および YaST による設定可能性について学びます。openSUSE が初心者にとって素晴らしい理由を発見してください。"
-meta_keywords: "openSUSE, Linux ディストリビューション，RPM, YaST, 初心者向け Linux, openSUSE チュートリアル，Linux ガイド"
+meta_description: "openSUSE Linux、その歴史、パッケージ管理（RPM）、YaSTによる設定可能性について学びましょう。openSUSEが初心者にとって素晴らしい理由を発見してください。"
+meta_keywords: "openSUSE, Linuxディストリビューション, RPM, YaST, 初心者向けLinux, openSUSEチュートリアル, Linuxガイド"
 ---
 
 ## Lesson Content
 
-### Overview
+### 概要
 
-openSUSE Linux は、世界中のフリーおよびオープンソースソフトウェアコミュニティの一員として、オープンで透明性があり、友好的な方法で協力し、あらゆる場所での Linux の使用を促進するコミュニティである openSUSE プロジェクトによって作成されています。openSUSE は、現在も稼働している Linux ディストリビューションの中で 2 番目に古く、そのベースシステムは SUSE の受賞歴のある SUSE Linux Enterprise 製品と共有されています。
+openSUSE Linuxは、openSUSEプロジェクトによって作成されています。openSUSEプロジェクトは、世界中のフリーおよびオープンソースソフトウェアコミュニティの一員として、オープンで透明性のある友好的な方法で協力し、あらゆる場所でのLinuxの使用を促進するコミュニティです。openSUSEは、現在も稼働しているLinuxディストリビューションの中で2番目に古く、そのベースシステムはSUSEの受賞歴のあるSUSE Linux Enterprise製品と共有されています。
 
-### Package Management
+### パッケージ管理
 
-RPM package manager を使用します。
+RPMパッケージマネージャーを使用します。
 
-### Configurability
+### 設定可能性
 
-openSUSE は、新しい Linux ユーザーにとって素晴らしい選択肢です。使いやすいグラフィカルなインストーラー/管理アプリケーション（[YaST](http://yast.github.io/)）と、いじりやすいすっきりとしたベースシステムを提供します。openSUSE には、ウイルス/スパイウェアの心配なくインターネットを楽しむために必要なものすべてが含まれており、写真、ビデオ、音楽、コードなど、創造性を発揮できます。
+openSUSEは、新しいLinuxユーザーにとって素晴らしい選択肢です。使いやすいグラフィカルなインストーラー/管理アプリケーション（[YaST](http://yast.github.io/)）と、いじりやすいすっきりとしたベースシステムを提供します。openSUSEには、ウイルス/スパイウェアの心配なくインターネットを楽しむために必要なものすべてが含まれており、写真、ビデオ、音楽、コードなど、創造性を発揮できます。
 
-### Uses
+### 用途
 
-openSUSE Leap は、デスクトップ PC やラップトップで完全に利用できます。
+openSUSE Leapは、デスクトップPCやラップトップで完全に利用できます。
 
 ## Exercise
 
-openSUSE をオペレーティングシステムとして使用することに興味がある場合は、ダウンロードページにアクセスして試してみてください：[software.opensuse.org](https://software.opensuse.org/)
+練習は完璧を導きます！Linuxでのユーザーおよびグループ管理の理解を深めるための実践的なラボをいくつか紹介します。
 
-## Quiz Questions
+1. **[ユーザーアカウント管理](https://labex.io/ja/labs/linux-user-account-management-49)** - このラボでは、新しいユーザーアカウントの作成、ユーザーアカウント管理の変更、ユーザーアカウントの削除など、Linuxプラットフォームでのユーザーアカウントの管理方法を学習します。
+2. **[ジョーカーのトリック](https://labex.io/ja/labs/linux-the-joker-s-trick-270247)** - このチャレンジでは、新しいユーザーアカウントの作成、ユーザーアカウント管理の変更、ユーザーアカウントの削除など、Linuxプラットフォームでユーザーアカウントを管理しようとします。
+3. **[新しいユーザーとグループの追加](https://labex.io/ja/labs/linux-add-new-user-and-group-17987)** - この実践的なチャレンジでは、新しいチームメンバーをサーバー環境に追加するシミュレーションを行います。新しいユーザーアカウントを作成し、カスタムグループを設定し、グループメンバーシップを管理します。
 
-openSUSE の管理/インストールツールの名前は何ですか？
+これらのラボは、実際のシナリオで概念を適用し、Linuxのユーザーおよびグループ管理に自信を持つために役立ちます。
+
+## Quiz Question
+
+openSUSEの管理/インストールツールの名前は何ですか？
 
 ## Quiz Answer
 

@@ -9,7 +9,7 @@ meta_keywords: "comando cat, cat de Linux, ver contenido de archivos, concatenar
 
 ## Lesson Content
 
-Casi hemos terminado de navegar por los archivos, pero primero, aprendamos a leer un archivo. Un comando simple de usar es el comando `cat`, abreviatura de concatenar. No solo muestra el contenido de los archivos, sino que también puede combinar varios archivos y mostrar su salida.
+Casi hemos terminado de navegar por los archivos, pero primero, aprendamos a leer un archivo. Un comando simple de usar es el comando `cat`, abreviatura de concatenar. No solo muestra el contenido de los archivos, sino que también puede combinar múltiples archivos y mostrar su salida.
 
 ```bash
 cat dogfile birdfile
@@ -19,11 +19,12 @@ No es ideal para ver archivos grandes y solo está destinado a contenido corto. 
 
 ## Exercise
 
-Ejecuta `cat` en diferentes archivos y directorios. Luego intenta hacer `cat` de varios archivos.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión sobre la visualización del contenido de archivos:
 
-Para practicar con el comando `cat`, prueba este laboratorio interactivo:
+1. **[Comando cat de Linux: Concatenación de archivos](https://labex.io/es/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprende el comando `cat` para ver, concatenar y manipular archivos de texto, mejorando tus habilidades de línea de comandos para un manejo eficiente de archivos de texto.
+2. **[Visualización de archivos de registro y configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practica el uso de comandos como `cat` para ver y navegar eficientemente por archivos de texto, incluidos los registros del sistema y los archivos de configuración, para extraer información crítica.
 
-- [Linux cat Command: File Concatenating](https://labex.io/es/labs/linux-linux-cat-command-file-concatenating-210986)
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con la visualización del contenido de archivos en Linux.
 
 ## Quiz Question
 

@@ -3,7 +3,7 @@ index: 4
 lang: "fr"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - Premiers pas"
-meta_description: "Découvrez les bases de Red Hat Enterprise Linux (RHEL), son gestionnaire de paquets RPM et ses utilisations en entreprise. Comprenez les principales différences et avantages de RHEL."
+meta_description: "Découvrez les bases de Red Hat Enterprise Linux (RHEL), son gestionnaire de paquets RPM et ses utilisations en entreprise. Comprenez les différences et les avantages fondamentaux de RHEL."
 meta_keywords: "Apprendre RHEL, Red Hat Enterprise Linux, bases RHEL, gestionnaire de paquets RPM, OS serveur Linux, RHEL débutant, guide RHEL"
 ---
 
@@ -15,11 +15,11 @@ Red Hat Enterprise Linux (RHEL), communément appelé RHEL, est développé par 
 
 ### Gestion des paquets
 
-RHEL utilise un gestionnaire de paquets différent de Debian, le gestionnaire de paquets RPM, que nous apprendrons également à connaître. Le système RPM inclut les outils YUM et DNF pour la gestion des paquets et la résolution des dépendances.
+RHEL utilise un gestionnaire de paquets différent de Debian, le gestionnaire de paquets RPM, que nous apprendrons également par la suite. Le système RPM inclut les outils YUM et DNF pour la gestion des paquets et la résolution des dépendances.
 
 ### Configurabilité
 
-Les systèmes d'exploitation basés sur RHEL différeront légèrement des systèmes d'exploitation basés sur Debian, notamment en ce qui concerne la gestion des paquets. Si vous décidez d'opter pour RHEL, il est probablement préférable de savoir que vous travaillerez avec.
+Les systèmes d'exploitation basés sur RHEL différeront légèrement des systèmes d'exploitation basés sur Debian, le plus notablement en matière de gestion des paquets. Si vous décidez d'opter pour RHEL, il est probablement préférable de savoir que vous travaillerez avec.
 
 ### Utilisations
 
@@ -31,16 +31,15 @@ Les administrateurs RHEL peuvent poursuivre des certifications Red Hat, notammen
 
 ## Exercise
 
-Pour une formation RHEL complète et une préparation à la certification, considérez le **[Parcours d'apprentissage Red Hat Enterprise Linux](https://labex.io/fr/skilltrees/rhel)** qui propose des cours structurés, notamment :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes et des permissions de fichiers :
 
-- [Red Hat System Administration (RH124)](https://labex.io/fr/courses/red-hat-system-administration-rh124-labs) - Compétences fondamentales
-- [Red Hat System Administration (RH134)](https://labex.io/fr/courses/red-hat-system-administration-rh134-labs) - Administration avancée
-- [Enterprise Linux Automation with Ansible (RH294)](https://labex.io/fr/courses/red-hat-enterprise-linux-automation-with-ansible-rh294)
-- [RHCSA Certification practice exercises](https://labex.io/fr/courses/rhcsa-certification-exam-practice-exercises)
+1. **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Dans ce laboratoire, vous apprendrez à gérer les comptes utilisateurs sur la plateforme Linux, comme la création de nouveaux comptes utilisateurs, la modification de la gestion des comptes utilisateurs et la suppression d'un compte utilisateur.
+2. **[Groupes d'utilisateurs Linux et permissions de fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de la gestion des utilisateurs et des groupes Linux, y compris la création et la gestion des utilisateurs, l'exploration des appartenances aux groupes, la compréhension des permissions de fichiers et la manipulation de la propriété des fichiers.
+3. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur en créant de nouveaux comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances aux groupes.
 
-Ce parcours d'apprentissage comprend 32 compétences réparties sur plus de 90 laboratoires pratiques, conçus pour les administrateurs système, les ingénieurs DevOps et les professionnels de l'informatique cherchant la certification Red Hat.
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans l'administration des utilisateurs et des groupes et les permissions de fichiers sous Linux.
 
-## Quiz Questions
+## Quiz Question
 
 Quel gestionnaire de paquets RHEL utilise-t-il ?
 

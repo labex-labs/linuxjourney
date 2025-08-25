@@ -28,7 +28,11 @@ When you are done inserting text, press `Esc` to go back to Normal mode.
 
 ## Exercise
 
-Open any text file with `vim [file]` and try: `i`, `a`, `I`, `A`, `o`, `O`, then press `Esc` after each to return to Normal mode.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Vim's text editing capabilities:
+
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating files, editing text, saving files, and navigating with both vi/vim and nano. This lab will help you master the fundamental skills of using Vim's Normal and Insert modes.
+
+This lab will help you apply the concepts in real scenarios and build confidence with text editing in Linux using Vim.
 
 ## Quiz Question
 

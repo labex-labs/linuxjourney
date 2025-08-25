@@ -17,20 +17,18 @@ touch mysuperduperfile
 
 Et voilà, nouveau fichier !
 
-`touch` est également utilisé pour modifier les horodatages sur les fichiers et répertoires existants. Essayez : faites un `ls -l` sur un fichier et notez l'horodatage, puis `touch` ce fichier, et l'horodatage sera mis à jour.
+`touch` est également utilisé pour modifier les horodatages des fichiers et répertoires existants. Essayez : faites un `ls -l` sur un fichier et notez l'horodatage, puis `touch` ce fichier, et il mettra à jour l'horodatage.
 
 Il existe de nombreuses autres façons de créer des fichiers qui impliquent d'autres choses comme la redirection et les éditeurs de texte, mais nous y reviendrons dans le cours sur la manipulation de texte.
 
 ## Exercise
 
-1. Créez un nouveau fichier.
-2. Notez l'horodatage.
-3. Touchez le fichier et vérifiez à nouveau l'horodatage.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la création et de la gestion des objets du système de fichiers :
 
-Pour une pratique pratique supplémentaire de la gestion des fichiers, explorez ces laboratoires interactifs :
+1. **[Commande Linux mkdir : Création de répertoires](https://labex.io/fr/labs/linux-linux-mkdir-command-directory-creating-209739)** - Apprenez à utiliser la commande `mkdir` sous Linux pour créer des répertoires, définir des permissions et organiser votre système de fichiers. Cela vous aidera à comprendre le concept plus large de la création de nouveaux éléments dans le système de fichiers.
+2. **[Mise en place d'une nouvelle structure de projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** - Pratiquez vos compétences en gestion de répertoires Linux en créant une structure de projet spécifique et en y naviguant à l'aide de commandes essentielles comme `mkdir` et `cd`.
 
-- [Linux Directory Navigation](https://labex.io/fr/labs/linux-directory-navigation-387844)
-- [Setting Up a New Project Structure](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)
+Ces laboratoires vous aideront à appliquer les concepts de création et d'organisation du système de fichiers dans des scénarios réels et à renforcer votre confiance avec les commandes Linux.
 
 ## Quiz Question
 

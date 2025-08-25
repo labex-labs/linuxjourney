@@ -37,7 +37,7 @@ sudo reboot
 
 ## Exercise
 
-What do you think is happening with `init` when you shut down your machine?
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

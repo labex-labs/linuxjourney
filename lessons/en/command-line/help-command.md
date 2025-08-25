@@ -25,12 +25,7 @@ Not all developers who ship executables will conform to this standard, but it’
 
 ## Exercise
 
-Run `help` on the `echo` command, `logout` command, and `pwd` command.
-
-For additional hands-on practice with basic Linux commands, explore these interactive labs:
-
-- [Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

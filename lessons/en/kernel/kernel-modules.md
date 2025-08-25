@@ -57,7 +57,9 @@ blacklist peanut_butter
 
 ## Exercise
 
-Unload your Bluetooth module with `modprobe` and see what happens. How will you fix this?
+Practice makes perfect! Here's a hands-on lab to reinforce your understanding of Linux kernel modules:
+
+1. **[Manage Kernel Modules in Linux](https://labex.io/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practice listing, inspecting, loading, and unloading kernel modules, and configuring them to load automatically at boot. This lab will help you apply the concepts in a real scenario and build confidence with kernel module management.
 
 ## Quiz Question
 

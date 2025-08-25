@@ -54,11 +54,13 @@ Let's say you had tons of binaries you wanted to run out of that directory; you 
 
 ## Exercise
 
-What does the following output? Why?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
 
-```bash
-echo $HOME
-```
+1. **[Manage Shell Environment and Configuration in Linux](https://labex.io/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practice creating and managing local and environment variables, understanding inheritance, and making configurations persistent by modifying the `.bashrc` file.
+2. **[Environment Variables in Linux](https://labex.io/labs/linux-environment-variables-in-linux-385274)** - Learn the concept and usage of environment variables, how to create, modify, and manage them, and their role in system configuration.
+3. **[Configure Linux Environment Variables](https://labex.io/labs/linux-configure-linux-environment-variables-437861)** - Get hands-on experience creating, setting, and managing environment variables in a Linux system.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing your Linux shell environment.
 
 ## Quiz Question
 

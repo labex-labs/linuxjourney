@@ -19,7 +19,11 @@ Simple as that! The **mkfs** (make filesystem) tool allows us to specify the typ
 
 ## Exercise
 
-Make an ext4 filesystem on the USB drive.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of managing Linux filesystems:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use fdisk to create a new partition, format it with ext4 (using `mkfs`), mount it, configure persistent mounting in /etc/fstab, and create a swap partition, all on a safe secondary virtual disk.
+
+This lab will help you apply the concepts of creating and managing filesystems in real scenarios and build confidence with disk management in Linux.
 
 ## Quiz Question
 

@@ -25,7 +25,12 @@ Each line represents a router or machine that is between you and your target. It
 
 ## Exercise
 
-Run the `traceroute` command on your machine and observe the output.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network path discovery and troubleshooting:
+
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Practice using the `ip` command to configure network settings and verify connectivity with `traceroute`.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` work to understand network layer interactions, which are foundational to how `traceroute` operates.
+
+These labs will help you apply the concepts of network diagnostics in real scenarios and build confidence with Linux networking tools.
 
 ## Quiz Question
 

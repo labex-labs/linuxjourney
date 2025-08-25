@@ -21,12 +21,11 @@ As you can see, we made the ranges of `a-z` into `A-Z`, and all text we type tha
 
 ## Exercise
 
-Try the following command. What happens?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of character translation and text processing:
 
-```bash
-$ tr -d ello
-hello
-```
+1. **[Linux tr Command: Character Translating](https://labex.io/labs/linux-linux-tr-command-character-translating-219198)** - Learn the Linux `tr` command for character-level transformations in text streams. You'll practice translating characters, deleting specific characters, working with character classes, and squeezing repeated characters.
+
+This lab will help you apply the concepts of text manipulation in real scenarios and build confidence with the `tr` command.
 
 ## Quiz Question
 

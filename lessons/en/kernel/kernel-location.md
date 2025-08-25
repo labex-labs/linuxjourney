@@ -22,7 +22,11 @@ If your `/boot` directory runs out of space, you can always delete old versions 
 
 ## Exercise
 
-Go into your boot directory and see what files are in there.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Linux boot process and kernel management:
+
+1. **[Customize the GRUB2 Boot Menu in Linux](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practice modifying the GRUB2 configuration, which directly impacts how your Linux system boots and selects kernel versions. This lab will help you understand the practical implications of the files discussed in the `/boot` directory.
+
+This lab will help you apply the concepts in real scenarios and build confidence with Linux kernel and boot management.
 
 ## Quiz Question
 

@@ -41,7 +41,13 @@ This should return all files ending with `.txt` in `somedir`.
 
 ## Exercise
 
-You may have heard of `egrep` or `fgrep`; these are deprecated `grep` calls and have since been replaced by `grep -E` and `grep -F`. Read the `grep` manpage to learn more.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text searching and pattern matching with `grep`:
+
+1. **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Practice basic searches, display line numbers, use anchors, and harness both basic and extended regular expressions for complex pattern matching with `grep`.
+2. **[Linux grep Command: Pattern Searching](https://labex.io/labs/linux-linux-grep-command-pattern-searching-219192)** - Learn to use `grep` for searching and matching patterns within text files, and explore regular expressions to define complex search patterns.
+3. **[Needle in the Haystack](https://labex.io/labs/linux-needle-in-the-haystack-388109)** - Learn the power of the `grep` command to search for specific patterns, count occurrences, extract unique values, and combine multiple search criteria across various log files.
+
+These labs will help you apply the concepts in real scenarios and build confidence with `grep` and regular expressions.
 
 ## Quiz Question
 

@@ -9,28 +9,23 @@ meta_keywords: "comando help Linux, Bash help, ajuda linha de comando, comandos 
 
 ## Lesson Content
 
-O Linux possui algumas ótimas ferramentas integradas para ajudar você a entender como usar um comando ou verificar quais flags estão disponíveis para um comando. Uma ferramenta, `help`, é um comando Bash integrado que fornece ajuda para outros comandos Bash (por exemplo, `echo`, `logout`, `pwd`).
+O Linux possui algumas ótimas ferramentas integradas para ajudá-lo a entender como usar um comando ou verificar quais flags estão disponíveis para um comando. Uma ferramenta, `help`, é um comando Bash integrado que fornece ajuda para outros comandos Bash (por exemplo, `echo`, `logout`, `pwd`).
 
 ```bash
 help echo
 ```
 
-Isso fornecerá uma descrição e as opções que você pode usar quando quiser executar `echo`. Para outros programas executáveis, é convenção ter uma opção chamada `--help` ou algo similar.
+Isso lhe dará uma descrição e as opções que você pode usar quando quiser executar `echo`. Para outros programas executáveis, é convenção ter uma opção chamada `--help` ou algo semelhante.
 
 ```bash
 echo --help
 ```
 
-Nem todos os desenvolvedores que distribuem executáveis seguirão este padrão, mas é provavelmente sua melhor chance de encontrar alguma ajuda sobre um programa.
+Nem todos os desenvolvedores que distribuem executáveis seguirão este padrão, mas é provavelmente sua melhor aposta para encontrar alguma ajuda sobre um programa.
 
 ## Exercise
 
-Execute `help` nos comandos `echo`, `logout` e `pwd`.
-
-Para prática adicional com comandos básicos do Linux, explore estes laboratórios interativos:
-
-- [Linux pwd Command: Directory Displaying](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux cd Command: Directory Changing](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

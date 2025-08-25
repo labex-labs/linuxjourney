@@ -33,11 +33,13 @@ You should see the output of `ls` on your screen, and if you open up the `peanut
 
 ## Exercise
 
-Try the following commands:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of input/output redirection and pipelines:
 
-```bash
-ls | tee peanuts.txt banan.txt
-```
+1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like `>`, `>>`, `2>`, and the `tee` command.
+2. **[Sequence Control and Pipeline](https://labex.io/labs/linux-sequence-control-and-pipeline-17994)** - Learn to control command execution sequences, utilize pipelines, and leverage powerful text processing tools like `cut`, `grep`, `wc`, `sort`, and `uniq`.
+3. **[Data Stream Redirection](https://labex.io/labs/linux-data-stream-redirection-17995)** - Learn the art of Linux stream redirection, including manipulating standard input, output, and error streams, combining outputs, and utilizing `/dev/null`.
+
+These labs will help you apply the concepts of piping and redirection in real scenarios and build confidence with command-line data manipulation.
 
 ## Quiz Question
 

@@ -26,7 +26,7 @@ Let's say you use the NFS server quite often and you want to keep it permanently
 
 ## Exercise
 
-Read the manpage for NFS to learn more.
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

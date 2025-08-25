@@ -26,7 +26,13 @@ When observing load average, you have to take the number of cores into account. 
 
 ## Exercise
 
-Check the load average of your system and see what it's doing.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of monitoring Linux system performance and CPU load:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with and inspecting processes, and monitoring resources with tools like `ps` and `top`, which directly relates to understanding CPU load.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use the `top` command for real-time system monitoring, including sorting processes and filtering, providing a deeper dive into CPU and process activity.
+3. **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to monitor and analyze system memory usage, which is often a critical factor alongside CPU load in overall system performance.
+
+These labs will help you apply the concepts of system monitoring and resource management in real scenarios and build confidence with analyzing system performance.
 
 ## Quiz Question
 

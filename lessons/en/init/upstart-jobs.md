@@ -58,7 +58,11 @@ sudo initctl emit some_event
 
 ## Exercise
 
-Observe your list of Upstart jobs. Now, change the job state with one of the commands we learned today. What do you notice afterwards?
+Practice makes perfect! While there are no specific labs for Upstart, understanding how to schedule and manage tasks is crucial for controlling system processes. Here's a hands-on lab to reinforce your understanding of task management:
+
+1. **[Schedule Tasks with at and cron in Linux](https://labex.io/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Practice creating, managing, and removing one-time and recurring jobs, which are fundamental concepts related to how services and tasks are managed in Linux environments like those handled by Upstart.
+
+This lab will help you apply the concepts of task automation in real scenarios and build confidence with managing system operations.
 
 ## Quiz Question
 

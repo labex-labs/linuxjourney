@@ -21,7 +21,11 @@ Now that you know what commands to run as the superuser, the question is how do 
 
 ## Exercise
 
-Open up the `/etc/sudoers` file and see what superuser permissions other users on the machine have.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of superuser access and privileges:
+
+1. **[Configure User Accounts and Sudo Privileges in Linux](https://labex.io/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Practice enforcing password policies, locking and unlocking user accounts, securing the root account, and granting administrative permissions, directly relating to the management of superuser access.
+
+This lab will help you apply the concepts in real scenarios and build confidence with managing user privileges and superuser access.
 
 ## Quiz Question
 

@@ -3,37 +3,41 @@ index: 5
 lang: "ja"
 title: "Ubuntu"
 meta_title: "Ubuntu - はじめに"
-meta_description: "初心者向けの人気の Linux ディストリビューションである Ubuntu について学びましょう。その機能、パッケージ管理、そしてデスクトップおよびサーバーでの使用に優れている理由を発見してください。"
-meta_keywords: "Ubuntu, Linux ディストリビューション，Debian, パッケージ管理，Linux 初心者，Ubuntu チュートリアル，Linux ガイド"
+meta_description: "初心者向けの人気のLinuxディストリビューションであるUbuntuについて学びましょう。その機能、パッケージ管理、そしてデスクトップおよびサーバーでの使用に優れている理由を発見してください。"
+meta_keywords: "Ubuntu, Linuxディストリビューション, Debian, パッケージ管理, Linux初心者, Ubuntuチュートリアル, Linuxガイド"
 ---
 
 ## Lesson Content
 
-### Overview
+### 概要
 
-個人用マシンで最も人気のある Linux ディストリビューションの 1 つが Ubuntu です。Ubuntu は、デフォルトで独自のデスクトップ環境マネージャーである Unity もリリースしています。
+個人用マシンで最も人気のあるLinuxディストリビューションの1つがUbuntuです。Ubuntuは、デフォルトで独自のデスクトップ環境マネージャーであるUnityもリリースしています。
 
-### Package Management
+### パッケージ管理
 
-Ubuntu は Canonical によって開発された Debian ベースのオペレーティングシステムです。そのため、コアとなる Debian パッケージ管理システムを使用しています。
+UbuntuはCanonicalによって開発されたDebianベースのオペレーティングシステムです。そのため、コアとなるDebianパッケージ管理システムを使用しています。
 
-### Configurability
+### 設定の容易さ
 
-Ubuntu は、Linux を始めたい初心者にとって素晴らしい選択肢です。Ubuntu は使いやすさと優れたユーザーインターフェース体験を提供し、それが幅広い採用につながっています。広く使用され、サポートされており、使いやすさの点で macOS や Windows などの他のオペレーティングシステムに最も似ています。
+Ubuntuは、Linuxを始めたい初心者にとって素晴らしい選択肢です。Ubuntuは使いやすさと優れたユーザーインターフェース体験を提供し、それが広く採用される理由となっています。広く使用され、サポートされており、使いやすさの点でmacOSやWindowsなどの他のオペレーティングシステムに最も似ています。
 
-### Uses
+### 用途
 
 デスクトップ、ラップトップ、サーバーなど、あらゆるプラットフォームに最適です。
 
 ## Exercise
 
-この実践的なラボで Linux スキルを練習しましょう。
+練習あるのみ！ユーザーとグループの管理に関する理解を深めるための実践的なラボをいくつか紹介します。
 
-- [Your First Linux Lab](https://labex.io/ja/labs/linux-your-first-linux-lab-270253)
+1. **[ユーザーアカウント管理](https://labex.io/ja/labs/linux-user-account-management-49)** - このラボでは、新しいユーザーアカウントの作成、ユーザーアカウント管理の変更、ユーザーアカウントの削除など、Linuxプラットフォームでのユーザーアカウントの管理方法を学びます。
+2. **[ジョーカーのトリック](https://labex.io/ja/labs/linux-the-joker-s-trick-270247)** - このチャレンジでは、新しいユーザーアカウントの作成、ユーザーアカウント管理の変更、ユーザーアカウントの削除など、Linuxプラットフォームでユーザーアカウントを管理しようとします。
+3. **[新しいユーザーとグループの追加](https://labex.io/ja/labs/linux-add-new-user-and-group-17987)** - この実践的なチャレンジでは、サーバー環境に新しいチームメンバーを追加するシミュレーションを行います。新しいユーザーアカウントを作成し、カスタムグループを設定し、グループメンバーシップを管理します。
 
-## Quiz Questions
+これらのラボは、実際のシナリオで概念を適用し、Linuxのユーザーおよびグループ管理に自信をつけるのに役立ちます。
 
-Ubuntu は何をベースにしたオペレーティングシステムですか？
+## Quiz Question
+
+Ubuntuはどのオペレーティングシステムをベースにしていますか？
 
 ## Quiz Answer
 

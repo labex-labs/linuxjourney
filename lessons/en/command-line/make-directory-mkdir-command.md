@@ -23,11 +23,12 @@ mkdir -p books/hemmingway/favorites
 
 ## Exercise
 
-Make a couple of directories and move some files into that directory.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of directory creation and management:
 
-For hands-on practice with the `mkdir` command, try this interactive lab:
+1. **[Linux mkdir Command: Directory Creating](https://labex.io/labs/linux-linux-mkdir-command-directory-creating-209739)** - Learn how to use the `mkdir` command in Linux to create directories, set permissions, and organize your file system. This lab covers basic and advanced usage, including creating nested directories.
+2. **[Setting Up a New Project Structure](https://labex.io/labs/linux-setting-up-a-new-project-structure-387859)** - Practice your Linux directory management skills by creating a specific project structure and navigating through it using essential commands like `mkdir` and `cd`.
 
-- [Linux mkdir Command: Directory Creating](https://labex.io/labs/linux-linux-mkdir-command-directory-creating-209739)
+These labs will help you apply the concepts in real scenarios and build confidence with creating and organizing directories in Linux.
 
 ## Quiz Question
 

@@ -66,7 +66,11 @@ See the manpage for a list of socket states, but here are a few:
 
 ## Exercise
 
-Look at the manpage for `netstat` and learn all the features it has to offer.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of network interface settings:
+
+1. **[Examine Network Interface Settings with ethtool in Linux](https://labex.io/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Learn to use the `ethtool` command to examine and manage network interface settings, including viewing and setting interface speed and duplex, and analyzing link modes to troubleshoot physical layer network issues.
+
+This lab will help you apply the concepts in real scenarios and build confidence with managing network interfaces.
 
 ## Quiz Question
 

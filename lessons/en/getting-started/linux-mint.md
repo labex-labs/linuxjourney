@@ -27,9 +27,15 @@ Great for desktop and laptop.
 
 ## Exercise
 
-If you're interested in having Linux Mint as your operating system, head over to the installation section and give it a try: `http://linuxmint.com`
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user and group management:
 
-## Quiz Questions
+1. **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - Practice creating new user accounts, modifying user account management, and deleting user accounts in a real Linux environment.
+2. **[The Joker's Trick](https://labex.io/labs/linux-the-joker-s-trick-270247)** - Learn to manage user accounts by creating, modifying, and deleting them, simulating a real-world scenario.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - Learn to create new user accounts, set up custom groups, and manage group memberships, essential for system administration.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux user and group administration.
+
+## Quiz Question
 
 What is Linux Mint based on?
 

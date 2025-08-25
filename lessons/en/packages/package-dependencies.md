@@ -17,7 +17,13 @@ We will dig more into shared libraries in the filesystem course, so for now just
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux packages, dependencies, and shared libraries:
+
+1. **[Manage Shared Libraries in Linux](https://labex.io/labs/comptia-manage-shared-libraries-in-linux-590867)** - Practice identifying, locating, and managing shared libraries, which are crucial dependencies for many applications.
+2. **[Managing Packages with RPM in Linux](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Learn to manage software packages on RPM-based systems, including querying package information and understanding dependencies.
+3. **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Gain experience with YUM to inspect installed packages, explore repositories, and manage updates, all of which involve handling package dependencies.
+
+These labs will help you apply the concepts of package management and dependency resolution in real scenarios and build confidence with Linux software installation.
 
 ## Quiz Question
 

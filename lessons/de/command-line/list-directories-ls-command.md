@@ -18,13 +18,13 @@ ls /home/pete
 
 `ls` ist ein sehr nützliches Werkzeug; es zeigt Ihnen auch detaillierte Informationen über die Dateien und Verzeichnisse, die Sie betrachten.
 
-Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem Befehl `ls` und der Übergabe des Flags `-a` (`a` für alle) anzeigen.
+Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem Befehl `ls` anzeigen, indem Sie das Flag `-a` (für all) übergeben.
 
 ```bash
 ls -a
 ```
 
-Es gibt noch ein weiteres nützliches `ls`-Flag, `-l` für lang. Dies zeigt eine detaillierte Liste von Dateien in einem langen Format an. Dies zeigt Ihnen detaillierte Informationen, beginnend von links: Dateiberechtigungen, Anzahl der Links, Besitzername, Besitzergruppe, Dateigröße, Zeitstempel der letzten Änderung und Datei-/Verzeichnisname.
+Es gibt noch ein weiteres nützliches `ls`-Flag, `-l` für lang. Dies zeigt eine detaillierte Liste von Dateien in einem langen Format. Dies zeigt Ihnen detaillierte Informationen, beginnend von links: Dateiberechtigungen, Anzahl der Links, Besitzername, Besitzergruppe, Dateigröße, Zeitstempel der letzten Änderung und Datei-/Verzeichnisname.
 
 ```bash
 ls -l
@@ -43,7 +43,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Befehle haben sogenannte Flags (oder Argumente oder Optionen, wie auch immer Sie sie nennen möchten), um weitere Funktionen hinzuzufügen. Sehen Sie, wie wir `-a` und `-l` hinzugefügt haben; nun, Sie können sie beide zusammen mit `-la` hinzufügen. Die Reihenfolge der Flags bestimmt die Reihenfolge, in der sie ausgeführt werden. Meistens spielt dies keine Rolle, daher können Sie auch `ls -al` verwenden, und es würde immer noch funktionieren.
+Befehle haben sogenannte Flags (oder Argumente oder Optionen, wie auch immer Sie sie nennen möchten), um weitere Funktionen hinzuzufügen. Sehen Sie, wie wir `-a` und `-l` hinzugefügt haben; nun, Sie können sie beide zusammen mit `-la` hinzufügen. Die Reihenfolge der Flags bestimmt die Reihenfolge, in der sie ausgeführt werden. Meistens spielt das keine Rolle, daher können Sie auch `ls -al` verwenden, und es würde immer noch funktionieren.
 
 ```bash
 ls -la
@@ -51,11 +51,11 @@ ls -la
 
 ## Exercise
 
-Führen Sie `ls` mit verschiedenen Flags aus und sehen Sie sich die erhaltene Ausgabe an.
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis des `ls`-Befehls zu vertiefen:
 
-Für praktische Übungen mit dem `ls`-Befehl probieren Sie dieses interaktive Labor aus:
+- **[Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie die Verwendung des `ls`-Befehls, um Datei- und Verzeichnisinhalte effizient aufzulisten und zu analysieren. Sie lernen verschiedene Optionen für detaillierte Auflistungen, die Anzeige versteckter Dateien, menschenlesbare Größen und Sortiertechniken, um Ihre Befehlszeilenkenntnisse zu verbessern.
 
-- [Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)
+Dieses Labor wird Ihnen helfen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Verzeichnisauflistung unter Linux aufzubauen.
 
 ## Quiz Question
 

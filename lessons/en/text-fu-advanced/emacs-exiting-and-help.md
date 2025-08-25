@@ -33,7 +33,13 @@ As you can see, Emacs has more moving parts, so the learning curve is a little s
 
 ## Exercise
 
-Visit the Emacs site to learn about more commands. [Emacs](https://www.gnu.org/software/emacs/)
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file and directory management:
+
+1. **[Manage Files and Directories in Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practice using commands like `mkdir`, `rm`, `cp`, and `mv` to create, remove, copy, and move files and directories in a Linux command-line environment.
+2. **[Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
+3. **[File and Directory Operations](https://labex.io/labs/linux-file-and-directory-operations-17997)** - Learn essential Linux file system operations by navigating the directory structure, managing files and folders, and using powerful command-line tools like `ls`, `cd`, `mkdir`, `cp`, `mv`, `cat`, `nano`, `head`, and `tail`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing files and directories in Linux.
 
 ## Quiz Question
 

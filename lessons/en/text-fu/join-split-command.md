@@ -67,7 +67,13 @@ This will split it into different files. By default, it will split them once the
 
 ## Exercise
 
-Join two files with a different number of lines in each file. What happens?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of joining and manipulating text files:
+
+1. **[Linux join Command: File Joining](https://labex.io/labs/linux-linux-join-command-file-joining-219193)** - This lab provides a direct, hands-on introduction to the `join` command, allowing you to practice merging lines from two sorted text files based on a common field, just as discussed in the lesson.
+2. **[Processing Employees Data](https://labex.io/labs/linux-processing-employees-data-388132)** - Apply your knowledge of `join` and other powerful Linux command-line utilities like `awk` to combine and process data from multiple sources, simulating a real-world data analysis scenario.
+3. **[Sequence Control and Pipeline](https://labex.io/labs/linux-sequence-control-and-pipeline-17994)** - Enhance your command-line efficiency and data manipulation skills by learning to control command execution sequences, utilize pipelines, and leverage powerful text processing tools, which complements the data combining capabilities of `join`.
+
+These labs will help you apply the concepts of text file manipulation and data combining in real scenarios and build confidence with Linux command-line tools.
 
 ## Quiz Question
 

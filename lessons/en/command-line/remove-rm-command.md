@@ -47,9 +47,12 @@ rmdir directory
 
 ## Exercise
 
-For hands-on practice with the `rm` command, try this interactive lab:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file and directory removal in Linux:
 
-- [Linux rm Command: File Removing](https://labex.io/labs/linux-linux-rm-command-file-removing-209741)
+1. **[Linux rm Command: File Removing](https://labex.io/labs/linux-linux-rm-command-file-removing-209741)** - Learn how to use the `rm` command for removing files and directories, including various options like `-r` and `-i`, and practice safe and effective file deletion.
+2. **[Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills, including using `rm` to clean up unnecessary directories, in a practical challenge.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing files and directories in Linux.
 
 ## Quiz Question
 

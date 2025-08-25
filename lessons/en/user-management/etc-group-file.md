@@ -26,7 +26,13 @@ Very similar to the `/etc/passwd` file, the `/etc/group` fields are as follows:
 
 ## Exercise
 
-Run the command `groups`. What do you see?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux user and group management:
+
+1. **[Manage Linux User Accounts with useradd, usermod, and userdel](https://labex.io/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practice the complete lifecycle of user administration, from creating and securing new accounts to modifying and deleting them.
+2. **[Manage Linux Groups with groupadd, usermod, and groupdel](https://labex.io/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Gain hands-on experience with core command-line utilities for group administration, including `groupadd`, `usermod`, and `groupdel`.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - Simulate adding new team members to a server environment by creating new user accounts, setting up custom groups, and managing group memberships.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux user and group management.
 
 ## Quiz Question
 

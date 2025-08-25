@@ -51,11 +51,12 @@ dog
 
 ## Exercise
 
-The real power of `sort` comes with its ability to be combined with other commands. Try the following command and see what happens:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the `sort` command and text processing:
 
-```bash
-ls /etc | sort -rn
-```
+1. **[Linux sort Command: Text Sorting](https://labex.io/labs/linux-linux-sort-command-text-sorting-219196)** - This lab provides a direct introduction to the `sort` command, allowing you to practice sorting lines of text files in various ways, including ascending and descending order.
+2. **[Word Count and Sorting](https://labex.io/labs/linux-word-count-and-sorting-388125)** - In this challenge, you'll apply your knowledge of sorting along with word counting to analyze text data, helping you find frequent patterns and sort data efficiently.
+
+These labs will help you apply the concepts in real scenarios and build confidence with text manipulation and sorting in Linux.
 
 ## Quiz Question
 

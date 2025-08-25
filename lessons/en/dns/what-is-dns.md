@@ -17,7 +17,13 @@ In this course, we will go over some basics of DNS, but be wary that DNS is an e
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS and hostname resolution:
+
+1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Learn to use essential Linux tools like `dig` and `nslookup` to query various DNS record types, helping you understand how hostnames are resolved to IP addresses.
+2. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/linux-manage-local-hostname-resolution-in-linux)** - Practice editing the `/etc/hosts` file to manage local hostname resolution, a fundamental skill for controlling how your Linux system resolves names without relying on external DNS servers.
+3. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Gain hands-on experience by setting up and configuring your own local authoritative DNS server using `bind9`, allowing you to delve deeper into how DNS zones and records are managed.
+
+These labs will help you apply the concepts in real scenarios and build confidence with DNS and hostname resolution in a Linux environment.
 
 ## Quiz Question
 

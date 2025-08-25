@@ -33,7 +33,12 @@ In most distributions today, user authentication doesn't rely on just the `/etc/
 
 ## Exercise
 
-Take a look at the `/etc/shadow` file.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user authentication and password management in Linux:
+
+1. **[Manage Linux User Accounts with useradd, usermod, and userdel](https://labex.io/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practice the complete lifecycle of user administration, from creating and securing new accounts with `useradd` and `passwd` to modifying and deleting them.
+2. **[Configure User Accounts and Sudo Privileges in Linux](https://labex.io/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Learn essential techniques for managing user accounts and sudo privileges, including enforcing password policies and securing accounts.
+
+These labs will help you apply the concepts of user and password management in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

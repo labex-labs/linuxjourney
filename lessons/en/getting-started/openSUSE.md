@@ -27,9 +27,15 @@ openSUSE Leap is fully capable of being used on a desktop PC and laptop.
 
 ## Exercise
 
-If you're interested in having openSUSE as your operating system, head over to the download page and give it a try: [software.opensuse.org](https://software.opensuse.org/)
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user and group management in Linux:
 
-## Quiz Questions
+1. **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - In this lab, you will learn how to manage user accounts in the Linux platform, such as creating new user accounts, modifying user account management, and deleting a user account.
+2. **[The Joker's Trick](https://labex.io/labs/linux-the-joker-s-trick-270247)** - In this challenge, you will try to manage user accounts in the Linux platform, including creating new user accounts, modifying user account management, and deleting user accounts.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this hands-on challenge, you'll simulate adding new team members to a server environment. You'll create new user accounts, set up custom groups, and manage group memberships.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux user and group administration.
+
+## Quiz Question
 
 What is the name of openSUSE's Administration/Installation Tool?
 

@@ -75,11 +75,13 @@ And those are some basic regular expressions.
 
 ## Exercise
 
-Try to combine regular expressions with `grep` and search through some files.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of regular expressions and pattern matching:
 
-```bash
-grep [regular expression here] [file]
-```
+1.  **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - In this lab, you will learn to search for text in files on a Linux system using the `grep` command. You will perform basic searches, display line numbers, use anchors like `^` and `$` to match line positions, and harness both basic and extended regular expressions for complex pattern matching.
+2.  **[Text Processing and Regular Expressions](https://labex.io/labs/linux-text-processing-and-regular-expressions-18003)** - Learn the powerful text processing tools grep, sed, and awk. Learn to use regular expressions for efficient text manipulation and pattern matching in Linux.
+3.  **[Extracting Mails and Numbers](https://labex.io/labs/linux-extracting-mails-and-numbers-17991)** - In this challenge, you will learn how to use grep and regular expressions to extract email addresses and numbers from a file, demonstrating essential Linux text processing skills.
+
+These labs will help you apply the concepts in real scenarios and build confidence with regular expressions and text processing.
 
 ## Quiz Question
 

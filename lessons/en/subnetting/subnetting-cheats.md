@@ -55,7 +55,11 @@ For binary to decimal conversion, you add up the numbers that have a 1, so:
 
 ## Exercise
 
-Look at your IP address and subnet mask and see how many hosts you can have on your subnet.
+Practice makes perfect! While subnet math is often automated in the real world, understanding the underlying binary conversions is crucial for interviews and a deeper grasp of networking. Here's a hands-on lab to reinforce your understanding:
+
+1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion by using Python in a Linux terminal to convert IP addresses, translate CIDR masks, and calculate network details.
+
+This lab will help you apply the concepts of binary conversion and subnetting in a practical scenario and build confidence with network addressing fundamentals.
 
 ## Quiz Question
 

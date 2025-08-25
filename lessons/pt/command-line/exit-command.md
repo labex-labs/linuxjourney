@@ -9,7 +9,7 @@ meta_keywords: "comando exit, comando logout, shell Linux, sair do terminal, con
 
 ## Lesson Content
 
-Bem, você fez um bom trabalho ao passar pelos conceitos básicos. Apenas arranhamos a superfície; agora que você aprendeu a engatinhar, no próximo conjunto de cursos, vou te ensinar a andar.
+Bem, você fez um bom trabalho ao passar pelos conceitos básicos. Nós apenas arranhamos a superfície; agora que você aprendeu a engatinhar, no próximo conjunto de cursos, vou te ensinar a andar.
 
 Por enquanto, você pode se parabenizar e fazer uma pausa. Para sair do shell, você pode usar o comando `exit`:
 
@@ -27,12 +27,7 @@ Ou se você estiver trabalhando em uma GUI de terminal, pode simplesmente fechar
 
 ## Exercise
 
-Saia do shell e veja o que acontece. Certifique-se de que você não precisa fazer mais nenhum trabalho nesse shell.
-
-Para prática abrangente e prática com comandos Linux, explore estes laboratórios interativos:
-
-- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
-- [Organizing Files and Directories](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

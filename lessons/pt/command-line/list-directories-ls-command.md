@@ -3,7 +3,7 @@ index: 4
 lang: "pt"
 title: "ls (Listar Diretórios)"
 meta_title: "ls (Listar Diretórios) - Linha de Comando"
-meta_description: "Aprenda a usar o comando 'ls' no Linux para listar o conteúdo do diretório, visualizar arquivos ocultos e entender os detalhes dos arquivos. Melhore suas habilidades de linha de comando Linux!"
+meta_description: "Aprenda a usar o comando 'ls' no Linux para listar o conteúdo do diretório, visualizar arquivos ocultos e entender os detalhes dos arquivos. Melhore suas habilidades de linha de comando no Linux!"
 meta_keywords: "comando ls, listar diretórios, tutorial Linux, arquivos ocultos, comandos Linux, Linux para iniciantes, guia Linux"
 ---
 
@@ -16,7 +16,7 @@ ls
 ls /home/pete
 ```
 
-`ls` é uma ferramenta bastante útil; ele também mostra informações detalhadas sobre os arquivos e diretórios que você está visualizando.
+`ls` é uma ferramenta bastante útil; também mostra informações detalhadas sobre os arquivos e diretórios que você está visualizando.
 
 Além disso, observe que nem todos os arquivos em um diretório serão visíveis. Nomes de arquivos que começam com `.` estão ocultos. Você pode visualizá-los, no entanto, com o comando `ls` e passar a flag `-a` para ele (`a` para todos).
 
@@ -43,7 +43,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Comandos têm o que são chamados de flags (ou argumentos ou opções, como você quiser chamá-los) para adicionar mais funcionalidade. Veja como adicionamos `-a` e `-l`; bem, você pode adicioná-los ambos juntos com `-la`. A ordem das flags determina a ordem em que elas são processadas. Na maioria das vezes, isso não importa muito, então você também pode fazer `ls -al` e ainda funcionaria.
+Comandos têm o que são chamados de flags (ou argumentos ou opções, como você quiser chamá-los) para adicionar mais funcionalidade. Veja como adicionamos `-a` e `-l`; bem, você pode adicioná-los juntos com `-la`. A ordem das flags determina a ordem em que elas são executadas. Na maioria das vezes, isso realmente não importa, então você também pode fazer `ls -al` e ainda funcionaria.
 
 ```bash
 ls -la
@@ -51,11 +51,11 @@ ls -la
 
 ## Exercise
 
-Execute `ls` com diferentes flags e veja a saída que você recebe.
+A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão do comando `ls`:
 
-Para prática prática com o comando `ls`, experimente este laboratório interativo:
+- **[Comando Linux ls: Listagem de Conteúdo](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)** - Pratique o uso do comando `ls` para listar e analisar eficientemente o conteúdo de arquivos e diretórios. Você aprenderá várias opções para listagens detalhadas, exibição de arquivos ocultos, tamanhos legíveis por humanos e técnicas de classificação para aprimorar suas habilidades de linha de comando.
 
-- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
+Este laboratório o ajudará a aplicar os conceitos em um cenário real e a construir confiança com a listagem de diretórios no Linux.
 
 ## Quiz Question
 

@@ -75,7 +75,11 @@ Again, you have yet to see how much depth systemd gets into, so read up on it if
 
 ## Exercise
 
-View the unit statuses and start and stop a few services. What do you observe?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of managing processes, which are often controlled by systemd services:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`. This lab will give you practical experience with the runtime effects of systemd unit management.
+
+These labs will help you apply the concepts in real scenarios and build confidence with process management in Linux.
 
 ## Quiz Question
 

@@ -15,7 +15,7 @@ Let's say you were on your home network and I'm working from Starbucks. I want t
 
 ## Exercise
 
-No exercises for this lesson.
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

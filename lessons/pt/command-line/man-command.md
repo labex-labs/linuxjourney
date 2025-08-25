@@ -9,7 +9,7 @@ meta_keywords: "comando man, páginas man Linux, documentação Linux, tutorial 
 
 ## Lesson Content
 
-Puxa, eu gostaria que alguns desses programas tivessem um manual para que pudéssemos ver mais informações sobre eles. Bem, felizmente eles têm! Chamadas apropriadamente de páginas man, você pode ver os manuais de um comando com o comando `man`.
+Puxa, eu gostaria que alguns desses programas tivessem um manual para que pudéssemos ver mais informações sobre eles. Bem, felizmente eles têm! Aptamente chamadas de páginas man, você pode ver os manuais de um comando com o comando `man`.
 
 ```bash
 man ls
@@ -21,12 +21,13 @@ Experimente em alguns comandos para obter mais informações sobre eles.
 
 ## Exercise
 
-Execute o comando `man` no comando `ls`.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos comandos Linux fundamentais, que você pode explorar ainda mais usando as páginas `man`:
 
-Para prática adicional com comandos Linux, explore estes laboratórios interativos:
+1. **[Comando Linux ls: Listagem de Conteúdo](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)** - Pratique listar e analisar o conteúdo de arquivos e diretórios e, em seguida, use `man ls` para descobrir mais opções.
+2. **[Comando Linux pwd: Exibição de Diretório](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - Aprenda o comando `pwd` para exibir seu diretório atual e explore sua página man para detalhes.
+3. **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Domine a navegação em seu sistema de arquivos com `cd` e use `man cd` para entender suas várias técnicas.
 
-- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
-- [Linux find Command: File Searching](https://labex.io/pt/labs/linux-linux-find-command-file-searching-219191)
+Esses laboratórios o ajudarão a aplicar conceitos essenciais em cenários reais e a construir confiança com comandos Linux essenciais, preparando-o para usar `man` de forma eficaz para aprofundar seu conhecimento.
 
 ## Quiz Question
 

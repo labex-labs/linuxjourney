@@ -101,7 +101,13 @@ paper
 
 ## Exercise
 
-What result would you get if you tried `uniq -uc`?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text processing with `uniq` and `sort`:
+
+1. **[Linux uniq Command: Duplicate Filtering](https://labex.io/labs/linux-linux-uniq-command-duplicate-filtering-219199)** - Learn how to use the Linux `uniq` command in combination with `sort` to identify, filter, and analyze duplicate lines in text files.
+2. **[Linux sort Command: Text Sorting](https://labex.io/labs/linux-linux-sort-command-text-sorting-219196)** - Practice using the `sort` command to organize lines of text files, a crucial step before using `uniq` effectively.
+3. **[Word Count and Sorting](https://labex.io/labs/linux-word-count-and-sorting-388125)** - Learn the essential Linux text processing tools `wc` (word count) and `sort` in this hands-on challenge. Learn to count lines, words, and characters, find frequent patterns, and sort data efficiently for various text analysis tasks.
+
+These labs will help you apply the concepts in real scenarios and build confidence with text processing and data manipulation in Linux.
 
 ## Quiz Question
 

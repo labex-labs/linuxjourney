@@ -22,7 +22,13 @@ The data and information that gets transmitted through networks are known as pac
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Hands-on experience is crucial for understanding networking fundamentals. Here are some labs to reinforce your understanding of network components and how hosts communicate:
+
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice identifying network addressing information for hosts, including MAC and IP addresses, using the `ip a` command.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Learn to test network reachability and identify different IP address types, essential for understanding how hosts connect.
+3. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Understand how hosts interact on a network by observing the Address Resolution Protocol (ARP) and testing connectivity with `ping`.
+
+These labs will help you apply the concepts of hosts, addressing, and basic connectivity in real scenarios and build confidence with fundamental networking.
 
 ## Quiz Question
 

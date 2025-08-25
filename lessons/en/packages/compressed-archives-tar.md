@@ -79,7 +79,13 @@ Throughout your journey with Linux, you'll encounter other archive and compressi
 
 ## Exercise
 
-Familiarize yourself with the tar documentation and look at the other options available in the manpage.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file archiving and compression:
+
+1. **[File Packaging and Compression](https://labex.io/labs/linux-file-packaging-and-compression-385413)** - Learn essential Linux file compression and packaging techniques using tools like tar, gzip, and zip.
+2. **[Create and Restore a Backup with tar in Linux](https://labex.io/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Gain hands-on experience creating and restoring file system backups using the tar command.
+3. **[Backup System Log](https://labex.io/labs/linux-backup-system-log-17989)** - Learn the essential skill of backing up system log files using the tar command and date formatting.
+
+These labs will help you apply the concepts of archiving and compression in real scenarios and build confidence with managing files in Linux.
 
 ## Quiz Question
 

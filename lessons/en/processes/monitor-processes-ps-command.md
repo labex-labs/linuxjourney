@@ -61,7 +61,12 @@ top
 
 ## Exercise
 
-Use the `ps` command with different flags and see how the output changes.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and their monitoring:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice essential skills for managing and monitoring processes on a Linux system, including interacting with foreground/background processes, inspecting with `ps`, monitoring with `top`, and terminating with `kill`.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use the Linux `top` command for real-time system monitoring, including sorting processes, adjusting update intervals, and filtering by user.
+
+These labs will help you apply the concepts of process identification and monitoring in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

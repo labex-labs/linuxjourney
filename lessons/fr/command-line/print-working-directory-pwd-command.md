@@ -9,7 +9,7 @@ meta_keywords: "commande pwd, répertoire Linux, répertoire actuel, chemin Linu
 
 ## Lesson Content
 
-Tout dans Linux est un fichier. En approfondissant Linux, vous comprendrez cela, mais pour l'instant, gardez cela à l'esprit. Chaque fichier est organisé dans une arborescence de répertoires hiérarchique. Le premier répertoire du système de fichiers est nommé à juste titre le répertoire racine. Le répertoire racine contient de nombreux dossiers et fichiers, qui peuvent stocker d'autres dossiers et fichiers, etc. Voici un exemple de ce à quoi ressemble l'arborescence des répertoires :
+Tout dans Linux est un fichier. En approfondissant Linux, vous comprendrez cela, mais pour l'instant, gardez cela à l'esprit. Chaque fichier est organisé dans une arborescence de répertoires hiérarchique. Le premier répertoire du système de fichiers est judicieusement nommé le répertoire racine. Le répertoire racine contient de nombreux dossiers et fichiers, qui peuvent stocker plus de dossiers et de fichiers, etc. Voici un exemple de ce à quoi ressemble l'arborescence des répertoires :
 
 ```plaintext
 /
@@ -27,7 +27,7 @@ Tout dans Linux est un fichier. En approfondissant Linux, vous comprendrez cela,
 
 L'emplacement de ces fichiers et répertoires est appelé chemins. Si vous aviez un dossier nommé `home` avec un dossier à l'intérieur nommé `pete` et un autre dossier dans ce dossier appelé `Movies`, ce chemin ressemblerait à ceci : `/home/pete/Movies`. Plutôt simple, n'est-ce pas ?
 
-La navigation dans le système de fichiers, tout comme dans la vie réelle, est utile si vous savez où vous êtes et où vous allez. Pour savoir où vous êtes, vous pouvez utiliser la commande `pwd`. Cette commande signifie "print working directory" (afficher le répertoire de travail) et elle vous indique simplement dans quel répertoire vous vous trouvez. Notez que le chemin part du répertoire racine.
+La navigation dans le système de fichiers, tout comme dans la vie réelle, est utile si vous savez où vous êtes et où vous allez. Pour voir où vous êtes, vous pouvez utiliser la commande `pwd`. Cette commande signifie "print working directory" (afficher le répertoire de travail) et elle vous montre simplement dans quel répertoire vous vous trouvez. Notez que le chemin part du répertoire racine.
 
 ```bash
 pwd
@@ -37,13 +37,17 @@ Où êtes-vous ? Où suis-je ? Essayez.
 
 ## Exercise
 
-Pour une pratique concrète de la commande `pwd`, essayez ce laboratoire interactif :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans le système de fichiers Linux et l'identification de votre emplacement actuel :
 
-- [Linux pwd Command: Directory Displaying](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)
+1. **[Commande Linux pwd : Affichage du répertoire](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)** - Ce laboratoire offre un aperçu ciblé et une utilisation pratique de la commande `pwd`, s'alignant directement avec l'introduction de la leçon sur la recherche de votre répertoire actuel.
+2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant à travers divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
+3. **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
+
+Ces laboratoires vous aideront à appliquer les concepts de hiérarchie du système de fichiers et de navigation dans des scénarios réels et à renforcer votre confiance avec les commandes Linux essentielles.
 
 ## Quiz Question
 
-Comment puis-je trouver le répertoire dans lequel je me trouve actuellement ?
+Comment puis-je savoir dans quel répertoire je me trouve actuellement ?
 
 ## Quiz Answer
 

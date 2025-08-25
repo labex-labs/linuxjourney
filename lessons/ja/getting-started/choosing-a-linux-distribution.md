@@ -1,31 +1,29 @@
 ---
 index: 2
 lang: "ja"
-title: "Linux ディストリビューションの選択"
-meta_title: "Linux ディストリビューションの選択 - はじめに"
-meta_description: "ニーズに合った Linux ディストリビューションの選び方を学びましょう。人気のオプションを探り、kernel、ハードウェア、ユーザー空間を理解します。Linux の旅を始めましょう！"
-meta_keywords: "Linux ディストリビューション，Linux を選ぶ，Linux kernel, 初心者向け Linux, Linux ガイド，Linux インストール，Linux チュートリアル"
+title: "Linuxディストリビューションの選択"
+meta_title: "Linuxディストリビューションの選択 - 入門"
+meta_description: "ニーズに合ったLinuxディストリビューションの選び方を学びましょう。人気のオプションを探り、カーネル、ハードウェア、ユーザー空間を理解しましょう。Linuxの旅を始めましょう！"
+meta_keywords: "Linuxディストリビューション, Linuxを選ぶ, Linuxカーネル, 初心者向けLinux, Linuxガイド, Linuxインストール, Linuxチュートリアル"
 ---
 
 ## Lesson Content
 
-前回のレッスンでは、毎日何百万ものデバイスを動かしている Linux kernel について学びました。先に進む前に一つ注意点があります。「Linux」という用語は、実際には Linux kernel を指すため、かなり不適切な表現です。しかし、多くのディストリビューションは Linux kernel を使用しているため、一般的に Linux オペレーティングシステムとして知られています。
+前回のレッスンでは、毎日何百万ものデバイスを動かしているLinuxカーネルについて学びました。先に進む前に一つだけ："Linux"という用語は、実際にはLinuxカーネルを指すため、かなり誤解を招く表現です。しかし、多くのディストリビューションはLinuxカーネルを使用しており、そのため一般的にLinuxオペレーティングシステムとして知られています。
 
-Linux システムは主に 3 つの部分に分かれています。
+Linuxシステムは主に3つの部分に分かれています。
 
 - Hardware - これには、システムが動作するすべてのハードウェア、メモリ、CPU、ディスクなどが含まれます。
-- Linux Kernel - 上記で説明したように、kernel はオペレーティングシステムの核です。ハードウェアを管理し、システムとどのように相互作用するかを指示します。
+- Linux Kernel - 上記で説明したように、カーネルはオペレーティングシステムの核です。ハードウェアを管理し、システムとの相互作用方法を指示します。
 - User Space - これは、あなたのようなユーザーがシステムと直接対話する場所です。
 
-したがって、最初に行う必要があるのは、お使いのマシンに Linux をインストールすることです。選択肢はたくさんあり、このコースは情報を提供し、Linux ディストリビューションの選択を開始するのに役立ちます。
+したがって、最初に行う必要があるのは、お使いのマシンにLinuxをインストールすることです。選択肢はたくさんあり、このコースはLinuxディストリビューションの選択について情報を提供し、始めるのに役立ちます。
 
-選択できる Linux ディストリビューションはたくさんあります。ここでは、最も人気のあるオプションについて説明します。
+選択できるLinuxディストリビューションはたくさんありますが、ここでは最も人気のあるオプションのみを取り上げます。
 
 ## Exercise
 
-[Online Linux Playground](https://labex.io/ja/tutorials/linux-online-linux-playground-372915)を試して、Linux ディストリビューションの実践的な経験を積んでください。
-
-[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/ja/tutorials/linux-online-linux-playground-372915)
+このトピックに関する特定のラボはありませんが、関連するLinuxスキルと概念を練習するために、包括的な[Linux学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 

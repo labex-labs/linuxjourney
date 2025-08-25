@@ -61,7 +61,12 @@ One thing to note: it's not a great idea to be changing permissions willy-nilly.
 
 ## Exercise
 
-Change some basic text file permissions and see the bits changing as you do an `ls -l`.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux file permissions:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including understanding file permissions and manipulating file ownership. This lab provides practical experience in securing a multi-user Linux environment.
+2. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this challenge, you'll simulate adding new team members to a server environment, creating new user accounts, setting up custom groups, and managing group memberships, which often involves setting appropriate permissions.
+
+These labs will help you apply the concepts of user, group, and other permissions in real scenarios and build confidence with managing access in Linux.
 
 ## Quiz Question
 

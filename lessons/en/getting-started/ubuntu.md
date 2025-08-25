@@ -27,11 +27,15 @@ Great for any platform: desktop, laptop, and server.
 
 ## Exercise
 
-Practice your Linux skills with this hands-on lab:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user and group management:
 
-- [Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)
+1. **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - In this lab, you will learn how to manage user accounts in the Linux platform, such as creating new user accounts, modifying user account management, and deleting a user account.
+2. **[The Joker's Trick](https://labex.io/labs/linux-the-joker-s-trick-270247)** - In this challenge, you will try to manage the user account in the Linux platform, such as creating new user accounts, modifying the user account management, and deleting a user account.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this hands-on challenge, you'll simulate adding new team members to a server environment. You'll create new user accounts, set up custom groups, and manage group memberships.
 
-## Quiz Questions
+These labs will help you apply the concepts in real scenarios and build confidence with Linux user and group administration.
+
+## Quiz Question
 
 What operating system is Ubuntu based on?
 

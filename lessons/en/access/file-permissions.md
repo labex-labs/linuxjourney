@@ -35,7 +35,13 @@ So in the above example, we see that the user pete has read, write, and execute 
 
 ## Exercise
 
-Use the `ls -l` command on multiple files and recite their permissions, user, and group.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux file permissions, users, and groups:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including creating users, exploring group memberships, understanding file permissions, and manipulating file ownership.
+2. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - Practice creating new user accounts, setting up custom groups, and managing group memberships, simulating real-world system administration tasks.
+3. **[Find a File](https://labex.io/labs/linux-find-a-file-17993)** - Apply your knowledge of file permissions by finding a specific file and setting its access authority, ensuring you're the only authorized user.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing permissions and users in Linux.
 
 ## Quiz Question
 

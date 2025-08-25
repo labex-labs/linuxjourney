@@ -61,7 +61,13 @@ As you can see, the SUID is denoted by a 4 and prepended to the permission set. 
 
 ## Exercise
 
-Look at the permissions for `/etc/passwd` in detail. Do you notice anything else? Files with SUID enabled are also easily distinguishable.
+Practice makes perfect! Understanding how file permissions, user groups, and special bits like SUID work is crucial for managing and securing Linux systems. Hands-on experience will solidify your knowledge.
+
+Here is a hands-on lab to reinforce your understanding of file permissions and user management:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Practice creating and managing users and groups, understanding file permissions, and manipulating file ownership. This lab provides the foundational knowledge necessary to grasp how SUID leverages these concepts for elevated access.
+
+This lab will help you apply the concepts in a real scenario and build confidence with Linux user and file management.
 
 ## Quiz Question
 

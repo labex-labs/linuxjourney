@@ -23,14 +23,12 @@ There are many other ways to create files that involve other things like redirec
 
 ## Exercise
 
-1. Create a new file.
-2. Note the timestamp.
-3. Touch the file and check the timestamp once again.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of creating and managing file system objects:
 
-For additional hands-on practice with file management, explore these interactive labs:
+1. **[Linux mkdir Command: Directory Creating](https://labex.io/labs/linux-linux-mkdir-command-directory-creating-209739)** - Learn how to use the `mkdir` command in Linux to create directories, set permissions, and organize your file system. This will help you understand the broader concept of creating new items in the file system.
+2. **[Setting Up a New Project Structure](https://labex.io/labs/linux-setting-up-a-new-project-structure-387859)** - Practice your Linux directory management skills by creating a specific project structure and navigating through it using essential commands like `mkdir` and `cd`.
 
-- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
-- [Setting Up a New Project Structure](https://labex.io/labs/linux-setting-up-a-new-project-structure-387859)
+These labs will help you apply the concepts of file system creation and organization in real scenarios and build confidence with Linux commands.
 
 ## Quiz Question
 

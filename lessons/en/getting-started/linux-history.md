@@ -1,8 +1,8 @@
 ---
 index: 1
 lang: "en"
-title: "History"
-meta_title: "History - Getting Started"
+title: "Linux History"
+meta_title: "Linux History - Getting Started"
 meta_description: "Learn about the history of Linux, from UNIX to Linus Torvalds and the GNU project. Understand its origins and evolution for beginners."
 meta_keywords: "Linux history, UNIX, GNU project, Linus Torvalds, Linux kernel, beginner Linux, Linux tutorial, Linux guide"
 ---
@@ -23,11 +23,13 @@ Then in 1991, a young fellow named Linus Torvalds started developing what we now
 
 ## Exercise
 
-Ready to get hands-on with Linux? Check out this beginner-friendly course:
+Practice makes perfect! Since this lesson introduces you to the world of Linux, getting hands-on with the command line is the best way to solidify your understanding and build confidence. Here are some hands-on labs to help you take your first steps:
 
-- **[Linux for Beginners (Hands-on)](https://labex.io/learn/linux)**
+1.  **[Getting Started with Linux](https://labex.io/labs/linux-getting-started-with-linux-446315)** - Begin your Linux journey by learning essential terminal commands like `echo`, `date`, and basic calculations. Perfect for complete beginners.
+2.  **[Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)** - This introductory lab guides you through the classic "Hello, World!" program in Linux and teaches you some fundamental commands.
+3.  **[Create Personalized Terminal Greeting](https://labex.io/labs/linux-create-personalized-terminal-greeting-446322)** - A quick and fun challenge to use basic Linux terminal commands to create an engaging welcome message.
 
-This course features 10 interactive hands-on labs designed specifically for beginners with zero Linux experience. Perfect for putting your newfound knowledge about Linux history into practice!
+These labs will help you apply the foundational concepts in a real Linux environment and build confidence with the command line.
 
 ## Quiz Question
 

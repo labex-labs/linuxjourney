@@ -26,7 +26,11 @@ device            ext_range          range     sda5       subsystem
 
 ## Exercise
 
-Check out the contents of the `/sys` directory and see what files are located in there.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of hardware device exploration in Linux:
+
+1. **[Explore Hardware Devices in Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861)** - Practice identifying and inspecting hardware devices within a Linux environment, similar to how the `/sys` filesystem provides device information.
+
+This lab will help you apply the concepts of understanding system hardware and its representation in Linux, building confidence with device exploration.
 
 ## Quiz Question
 

@@ -31,7 +31,11 @@ will find the pretty words in the text file.
 
 ## Exercise
 
-Play with the search key. Open a text file in Vim with: `vim [textfile]` and start searching!
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text editing and searching in Linux:
+
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating, editing, saving, and navigating text files with Vim and Nano. This lab will help you become proficient with essential text editing tools, including search functionalities.
+
+This lab will help you apply the concepts in real scenarios and build confidence with text file manipulation in Linux.
 
 ## Quiz Question
 

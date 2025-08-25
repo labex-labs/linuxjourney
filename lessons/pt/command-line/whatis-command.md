@@ -15,16 +15,17 @@ Ufa, já aprendemos muitos comandos até agora! Se você estiver em dúvida sobr
 whatis cat
 ```
 
-A descrição é obtida da página de manual de cada comando. Se você executar `whatis cat`, verá uma pequena descrição com um breve resumo.
+A descrição é obtida da página de manual de cada comando. Se você executasse `whatis cat`, veria um pequeno trecho com uma breve descrição.
 
 ## Exercise
 
-Execute o comando `whatis` no comando `less`.
+A prática leva à perfeição! Embora não haja um laboratório específico para o comando `whatis`, entender como encontrar informações sobre comandos e arquivos é crucial. Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre a localização de comandos e arquivos no Linux:
 
-Para prática adicional com comandos de visualização de arquivos, explore estes laboratórios interativos:
+1.  **[Comando Linux which: Localizando Comandos](https://labex.io/pt/labs/linux-linux-which-command-command-locating-215210)** - Pratique o uso do comando `which` para localizar arquivos executáveis e entender a prioridade de comandos no PATH do seu sistema.
+2.  **[Comando Linux whereis: Encontrando Arquivos e Comandos](https://labex.io/pt/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Aprenda a usar `whereis` para encontrar o binário, a fonte e as páginas de manual para comandos, aprofundando sua compreensão de como os comandos são estruturados.
+3.  **[Descobrir Recursos Críticos do Sistema](https://labex.io/pt/labs/linux-discover-critical-system-resources-388032)** - Este desafio combina `which`, `whereis` e `find` para ajudá-lo a navegar eficientemente pelo sistema de arquivos e descobrir recursos importantes do sistema.
 
-- [Linux less Command: File Paging](https://labex.io/pt/labs/linux-linux-less-command-file-paging-214301)
-- [Linux cat Command: File Concatenating](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)
+Esses laboratórios o ajudarão a aplicar os conceitos de descoberta de comandos e arquivos em cenários reais e a construir confiança com utilitários essenciais do Linux.
 
 ## Quiz Question
 

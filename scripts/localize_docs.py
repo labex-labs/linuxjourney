@@ -18,7 +18,8 @@ Features:
 - Beautiful CLI with rich formatting and progress bars
 - Preserves YAML front matter structure (translates values, keeps keys)
 - Keeps fixed English headings: ## Lesson Content, ## Exercise, ## Quiz Question, ## Quiz Answer
-- Translates Exercise content while preserving technical terms and URLs
+- Translates all other headings (###, ####, etc.) while preserving structure
+- Translates Exercise content while preserving technical terms and URLs (translates link descriptions but keeps URLs unchanged)
 - Protects code blocks and commands from translation
 - Preserves Quiz Answer content exactly as-is
 - Enhanced validation to ensure proper Exercise translation
@@ -242,22 +243,26 @@ TRANSLATION REQUIREMENTS:
    - ## Exercise  
    - ## Quiz Question
    - ## Quiz Answer
-3. **Content Translation**: Translate ALL content under each section EXCEPT where specifically noted:
+3. **Other Headings**: Translate ALL other headings (###, ####, etc.) that are not in the fixed headings list above
+4. **Content Translation**: Translate ALL content under each section EXCEPT where specifically noted:
    - Translate the content under "## Lesson Content" 
    - Translate the content under "## Exercise" 
    - Translate the content under "## Quiz Question"
    - Keep "## Quiz Answer" content EXACTLY as-is (do not translate)
-4. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
+5. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
    - Code blocks (```...```)
    - Inline code (`...`)
    - Linux commands and paths
    - File names and directories
    - Command line examples
    - Configuration file contents
-   - URLs and web links (keep URLs exactly as they are - DO NOT modify them)
-5. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
-6. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
-7. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
+6. **Link Translation**: For markdown links in format [description](URL):
+   - Translate the link description text to {target_language}
+   - Keep URLs exactly as they are - DO NOT modify any URLs
+   - Example: [Getting Started](https://example.com) should become [开始使用](https://example.com) in Chinese
+7. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
+8. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
+9. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
 
 CONTENT STRUCTURE:
 - You will receive ONLY the main content WITHOUT YAML front matter
@@ -270,7 +275,7 @@ IMPORTANT:
 - Do NOT include YAML front matter (---) in your translated_content output
 - Only translate the main content body
 - Exercise sections contain instructional content that should be translated to help users understand what to do
-- Keep ALL URLs exactly as they appear in the original content - DO NOT modify any links
+- For markdown links [description](URL): translate the description text but keep URLs exactly as they appear - DO NOT modify any URLs
 
 Please provide:
 - translated_title: The translated title value (extracted from original front matter)
@@ -339,9 +344,9 @@ CONTENT TO TRANSLATE:
 
         translated_content = translation_data.get("translated_content", "")
 
-        # 2. Check that fixed headings are preserved
+        # 2. Check that fixed headings are preserved (only check those that exist in original)
         for heading in FIXED_HEADINGS:
-            if heading not in translated_content:
+            if heading in original_content and heading not in translated_content:
                 console.print(
                     f"[yellow]WARNING: Missing required heading: {heading}[/yellow]"
                 )

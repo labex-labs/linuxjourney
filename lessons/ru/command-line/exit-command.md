@@ -3,7 +3,7 @@ index: 19
 lang: "ru"
 title: "exit"
 meta_title: "exit - Командная строка"
-meta_description: "Узнайте, как выйти из оболочки Linux с помощью команд 'exit' или 'logout'. Изучите основы навигации по оболочке для начинающих. Начните свое путешествие в Linux сегодня!"
+meta_description: "Узнайте, как выйти из оболочки Linux с помощью команд 'exit' или 'logout'. Изучите базовую навигацию по оболочке для начинающих. Начните свой путь в Linux сегодня!"
 meta_keywords: "команда exit, команда logout, оболочка Linux, выход из терминала, основы Linux, Linux для начинающих, учебник по Linux"
 ---
 
@@ -27,12 +27,7 @@ logout
 
 ## Exercise
 
-Выйдите из оболочки и посмотрите, что произойдет. Убедитесь, что вам больше не нужно работать в этой оболочке.
-
-Для всесторонней практической отработки команд Linux изучите эти интерактивные лаборатории:
-
-- [Linux Directory Navigation](https://labex.io/ru/labs/linux-directory-navigation-387844)
-- [Organizing Files and Directories](https://labex.io/ru/labs/linux-organizing-files-and-directories-387877)
+Хотя для этой темы нет конкретных лабораторных работ, мы рекомендуем изучить всеобъемлющий [Путь обучения Linux](https://labex.io/ru/learn/linux), чтобы попрактиковаться в связанных навыках и концепциях Linux.
 
 ## Quiz Question
 

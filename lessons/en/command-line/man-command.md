@@ -21,12 +21,13 @@ Try it out on a few commands to get more information about them.
 
 ## Exercise
 
-Run the `man` command on the `ls` command.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of fundamental Linux commands, which you can then explore further using `man` pages:
 
-For additional hands-on practice with Linux commands, explore these interactive labs:
+1. **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Practice listing and analyzing file and directory contents, and then use `man ls` to discover more options.
+2. **[Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)** - Learn the `pwd` command to display your current directory, and explore its man page for details.
+3. **[Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)** - Master navigating your file system with `cd`, and use `man cd` to understand its various techniques.
 
-- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
-- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
+These labs will help you apply core concepts in real scenarios and build confidence with essential Linux commands, preparing you to effectively use `man` to deepen your knowledge.
 
 ## Quiz Question
 

@@ -18,7 +18,11 @@ Now you may notice, the mouse is nowhere in use here. To navigate a text documen
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text editor navigation and usage:
+
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating files, editing text, saving files, and navigating with both Vim and Nano in a real Linux environment.
+
+This lab will help you apply the concepts in real scenarios and build confidence with text editing in Linux.
 
 ## Quiz Question
 
