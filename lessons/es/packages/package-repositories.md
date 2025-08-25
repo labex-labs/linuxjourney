@@ -25,7 +25,7 @@ Tu distribución ya viene con fuentes preaprobadas para obtener paquetes, y así
 2. **[Instalación y eliminación de paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Aprende a actualizar el sistema, instalar y eliminar paquetes en un sistema basado en Debian, solidificando tu comprensión de cómo los gestores de paquetes interactúan con los repositorios.
 3. **[Consultar y actualizar paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explora cómo gestionar paquetes de software en sistemas Linux basados en RHEL usando YUM, proporcionando una perspectiva más amplia sobre la gestión de paquetes en diferentes distribuciones.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de repositorios de paquetes y gestión de software en escenarios reales y a desarrollar confianza con las tareas de administración del sistema.
+Estos laboratorios te ayudarán a aplicar los conceptos de repositorios de paquetes y gestión de software en escenarios reales y a generar confianza con las tareas de administración del sistema.
 
 ## Quiz Question
 
