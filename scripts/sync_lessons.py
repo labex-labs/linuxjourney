@@ -7,7 +7,7 @@ It extracts frontmatter, content, exercise, quiz questions and answers from mark
 Only existing lessons are updated - no new records are inserted.
 
 Usage:
-    python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview]
+    python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview] [--lang LANGUAGE]
 
 Examples:
     # Process a single file and all its language variants (with preview)
@@ -17,9 +17,13 @@ Examples:
     python sync_lessons.py --path lessons/en/filesystem/
     python sync_lessons.py --path lessons/
 
+    # Process only specific language files
+    python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --lang zh
+    python sync_lessons.py --path lessons/ --lang en
+
     # Skip preview and sync directly
     python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --no-preview
-    python sync_lessons.py --path lessons/zh/command-line/ --no-preview
+    python sync_lessons.py --path lessons/zh/command-line/ --no-preview --lang zh
 
 Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
@@ -49,6 +53,9 @@ logger = logging.getLogger(__name__)
 
 # Initialize rich console
 console = Console()
+
+# Supported languages
+SUPPORTED_LANGUAGES = ["en", "zh", "es", "fr", "de", "ja", "ru", "ko", "pt"]
 
 
 class CloudflareD1Client:
@@ -427,7 +434,7 @@ class MarkdownParser:
             return []
 
     def get_all_language_variants_for_directory(
-        self, directory_path: str
+        self, directory_path: str, target_lang: Optional[str] = None
     ) -> List[Path]:
         """Find all markdown files in directory and get language variants for each"""
         directory_files = self.find_markdown_files_in_directory(directory_path)
@@ -461,7 +468,7 @@ class MarkdownParser:
                 processed_lessons.add(lesson_key)
 
                 # Get all language variants for this lesson
-                variants = self.get_language_variants(str(file_path))
+                variants = self.get_language_variants(str(file_path), target_lang)
                 all_variants.extend(variants)
 
                 logger.info(
@@ -479,7 +486,7 @@ class MarkdownParser:
         logger.info(f"INFO: Total unique files to process: {len(unique_variants)}")
         return unique_variants
 
-    def get_language_variants(self, file_path: str) -> List[Path]:
+    def get_language_variants(self, file_path: str, target_lang: Optional[str] = None) -> List[Path]:
         """Get all language variants of a specific lesson file"""
         file_path = Path(file_path)
 
@@ -524,12 +531,19 @@ class MarkdownParser:
             # Get all language directories
             for lang_dir in lessons_root.iterdir():
                 if lang_dir.is_dir():
+                    lang_code = lang_dir.name
+                    
+                    # If target_lang is specified, only process that language
+                    if target_lang and lang_code != target_lang:
+                        continue
+                        
                     variant_file = lang_dir / course / lesson_file
                     if variant_file.exists():
                         files.append(variant_file)
                         logger.info(f"INFO: Found variant: {variant_file}")
                     else:
-                        logger.warning(f"WARNING: Missing variant: {variant_file}")
+                        if not target_lang or lang_code == target_lang:
+                            logger.warning(f"WARNING: Missing variant: {variant_file}")
 
             return sorted(files)
 

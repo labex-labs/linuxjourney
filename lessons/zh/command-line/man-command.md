@@ -4,7 +4,7 @@ lang: "zh"
 title: "man"
 meta_title: "man - 命令行"
 meta_description: "学习如何在 Linux 中使用 'man' 命令访问命令手册。为初学者发现必要的 Linux 文档并提高你的命令行技能。"
-meta_keywords: "man 命令, Linux man pages, Linux 文档, Linux 教程, 命令行指南, Linux 初学者"
+meta_keywords: "man 命令，Linux man pages, Linux 文档，Linux 教程，命令行指南，Linux 初学者"
 ---
 
 ## Lesson Content

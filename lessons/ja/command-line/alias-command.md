@@ -3,7 +3,7 @@ index: 18
 lang: "ja"
 title: "alias"
 meta_title: "alias - コマンドライン"
-meta_description: "一般的なコマンドのLinuxエイリアスを作成および管理する方法を学びます。.bashrcでの一時的および永続的なエイリアス設定を発見します。コマンドラインの効率を向上させましょう！"
+meta_description: "一般的なコマンドの Linux エイリアスを作成および管理する方法を学びます。.bashrc での一時的および永続的なエイリアス設定を発見します。コマンドラインの効率を向上させましょう！"
 meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"
 ---
 
@@ -31,7 +31,7 @@ unalias foobar
 
 ## Exercise
 
-このトピックに関する特定のラボはありませんが、関連するLinuxスキルと概念を練習するために、包括的な[Linux学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 

@@ -4,7 +4,7 @@ lang: "zh"
 title: "cd (更改目录)"
 meta_title: "cd (更改目录) - 命令行"
 meta_description: "学习如何在 Linux 中使用 'cd' 命令导航目录。了解绝对路径、相对路径和有用的快捷方式。开始您的 Linux 之旅！"
-meta_keywords: "cd 命令, 更改目录, Linux 路径, 绝对路径, 相对路径, Linux 教程, Linux 初学者, Linux 导航"
+meta_keywords: "cd 命令，更改目录，Linux 路径，绝对路径，相对路径，Linux 教程，Linux 初学者，Linux 导航"
 ---
 
 ## Lesson Content

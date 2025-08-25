@@ -4,7 +4,7 @@ lang: "zh"
 title: "help"
 meta_title: "help - 命令行"
 meta_description: "了解如何在 Bash 中使用 'help' 命令获取快速命令行帮助。理解内置命令并查找 Linux 程序的选项。"
-meta_keywords: "Linux help 命令, Bash help, 命令行帮助, Linux 命令, Linux 初学者, Linux 教程, Bash 教程"
+meta_keywords: "Linux help 命令，Bash help, 命令行帮助，Linux 命令，Linux 初学者，Linux 教程，Bash 教程"
 ---
 
 ## Lesson Content
@@ -32,4 +32,5 @@ edges --help
 如何获取内置 Bash 命令的快速命令行帮助？
 
 ## Quiz Answer
+
 help

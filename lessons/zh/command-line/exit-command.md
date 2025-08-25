@@ -4,7 +4,7 @@ lang: "zh"
 title: "exit"
 meta_title: "exit - 命令行"
 meta_description: "了解如何使用 'exit' 或 'logout' 命令退出 Linux shell。理解初学者的基本 shell 导航。立即开始你的 Linux 之旅！"
-meta_keywords: "exit 命令, logout 命令, Linux shell, 终端退出, Linux 基础, Linux 初学者, Linux 教程"
+meta_keywords: "exit 命令，logout 命令，Linux shell, 终端退出，Linux 基础，Linux 初学者，Linux 教程"
 ---
 
 ## Lesson Content

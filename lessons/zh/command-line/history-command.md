@@ -4,7 +4,7 @@ lang: "zh"
 title: "history"
 meta_title: "history - 命令行"
 meta_description: "学习如何使用 Linux history 命令、!! 快捷方式和 Ctrl-R 来高效地召回命令。通过这些基本技巧提高您的终端生产力！"
-meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux 教程, 命令行, 初学者指南"
+meta_keywords: "Linux history, bash history, Ctrl-R, clear command, Linux 教程，命令行，初学者指南"
 ---
 
 ## Lesson Content

@@ -3,8 +3,8 @@ index: 13
 lang: "ja"
 title: "rm (削除)"
 meta_title: "rm (削除) - コマンドライン"
-meta_description: "Linuxで`rm`コマンドを使用してファイルやディレクトリを安全に削除する方法を学びます。-f、-i、-r、rmdirなどのオプションを理解しましょう。Linuxの学習を始めましょう！"
-meta_keywords: "rmコマンド, ファイル削除 Linux, ディレクトリ削除, Linuxチュートリアル, Linux初心者, rmdir, Linuxガイド"
+meta_description: "Linux で`rm`コマンドを使用してファイルやディレクトリを安全に削除する方法を学びます。-f、-i、-r、rmdir などのオプションを理解しましょう。Linux の学習を始めましょう！"
+meta_keywords: "rm コマンド，ファイル削除 Linux, ディレクトリ削除，Linux チュートリアル，Linux 初心者，rmdir, Linux ガイド"
 ---
 
 ## Lesson Content
@@ -25,7 +25,7 @@ rm file1
 rm -f file1
 ```
 
-`-f`またはforceオプションは、`rm`に、書き込み保護されているかどうかにかかわらず、ユーザーにプロンプトを表示せずにすべてのファイルを削除するように指示します（適切な権限がある限り）。
+`-f`または force オプションは、`rm`に、書き込み保護されているかどうかにかかわらず、ユーザーにプロンプトを表示せずにすべてのファイルを削除するように指示します（適切な権限がある限り）。
 
 ```bash
 rm -i file
@@ -47,12 +47,12 @@ rmdir directory
 
 ## Exercise
 
-練習は完璧をもたらします！ここでは、Linuxでのファイルとディレクトリの削除に関する理解を深めるための実践的なラボをいくつか紹介します。
+練習は完璧をもたらします！ここでは、Linux でのファイルとディレクトリの削除に関する理解を深めるための実践的なラボをいくつか紹介します。
 
 1. **[Linux rm Command: File Removing](https://labex.io/ja/labs/linux-linux-rm-command-file-removing-209741)** - `-r`や`-i`などのさまざまなオプションを含め、ファイルやディレクトリを削除するための`rm`コマンドの使用方法を学び、安全かつ効果的なファイル削除を練習します。
-2. **[Organizing Files and Directories](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - 実践的な課題で、不要なディレクトリをクリーンアップするために`rm`を使用するなど、Linuxの基本的なファイル管理スキルを練習します。
+2. **[Organizing Files and Directories](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - 実践的な課題で、不要なディレクトリをクリーンアップするために`rm`を使用するなど、Linux の基本的なファイル管理スキルを練習します。
 
-これらのラボは、実際のシナリオで概念を適用し、Linuxでのファイルとディレクトリの管理に自信をつけるのに役立ちます。
+これらのラボは、実際のシナリオで概念を適用し、Linux でのファイルとディレクトリの管理に自信をつけるのに役立ちます。
 
 ## Quiz Question
 

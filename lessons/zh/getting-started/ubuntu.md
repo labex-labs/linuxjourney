@@ -4,7 +4,7 @@ lang: "zh"
 title: "Ubuntu"
 meta_title: "Ubuntu - 入门"
 meta_description: "了解 Ubuntu，一个适合初学者的流行 Linux 发行版。探索其功能、包管理以及它为何非常适合桌面和服务器使用。"
-meta_keywords: "Ubuntu, Linux 发行版, Debian, 包管理, Linux 初学者, Ubuntu 教程, Linux 指南"
+meta_keywords: "Ubuntu, Linux 发行版，Debian, 包管理，Linux 初学者，Ubuntu 教程，Linux 指南"
 ---
 
 ## Lesson Content

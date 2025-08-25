@@ -4,7 +4,7 @@ lang: "ja"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - 入門"
 meta_description: "Red Hat Enterprise Linux (RHEL) の基本、その RPM パッケージマネージャー、およびエンタープライズでの使用について学びます。RHEL の主な違いと利点を理解します。"
-meta_keywords: "RHEL を学ぶ, Red Hat Enterprise Linux, RHEL の基本, RPM パッケージマネージャー, Linux サーバー OS, 初心者向け RHEL, RHEL ガイド"
+meta_keywords: "RHEL を学ぶ，Red Hat Enterprise Linux, RHEL の基本，RPM パッケージマネージャー, Linux サーバー OS, 初心者向け RHEL, RHEL ガイド"
 ---
 
 ## Lesson Content

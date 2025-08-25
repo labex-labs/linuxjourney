@@ -4,7 +4,7 @@ lang: "zh"
 title: "Shell"
 meta_title: "Shell - 命令行"
 meta_description: "了解 Linux shell、Bash 和基本命令，如 'echo'。理解 shell 提示符，并通过这个适合初学者的指南开始您的 Linux 之旅。"
-meta_keywords: "Linux shell, Bash, echo 命令, Linux 教程, 命令行, Linux 初学者, shell 提示符, Linux 指南"
+meta_keywords: "Linux shell, Bash, echo 命令，Linux 教程，命令行，Linux 初学者，shell 提示符，Linux 指南"
 ---
 
 ## Lesson Content

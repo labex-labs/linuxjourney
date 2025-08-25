@@ -4,7 +4,7 @@ lang: "zh"
 title: "Gentoo"
 meta_title: "Gentoo - 入门"
 meta_description: "了解 Gentoo Linux、其 Portage 包管理器以及高度可配置性。探索这个灵活的发行版是否适合您的高级 Linux 之旅。"
-meta_keywords: "Gentoo Linux, Portage, Linux 发行版, Gentoo 教程, Linux 初学者, Linux 指南, Gentoo 可配置性"
+meta_keywords: "Gentoo Linux, Portage, Linux 发行版，Gentoo 教程，Linux 初学者，Linux 指南，Gentoo 可配置性"
 ---
 
 ## Lesson Content

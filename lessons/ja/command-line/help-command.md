@@ -3,13 +3,13 @@ index: 15
 lang: "ja"
 title: "help"
 meta_title: "help - コマンドライン"
-meta_description: "Bashで'help'コマンドを使用して、コマンドラインでの迅速な支援を得る方法を学びます。組み込みコマンドを理解し、Linuxプログラムのオプションを見つけます。"
-meta_keywords: "Linux helpコマンド, Bash help, コマンドラインヘルプ, Linuxコマンド, Linux初心者, Linuxチュートリアル, Bashチュートリアル"
+meta_description: "Bash で'help'コマンドを使用して、コマンドラインでの迅速な支援を得る方法を学びます。組み込みコマンドを理解し、Linux プログラムのオプションを見つけます。"
+meta_keywords: "Linux help コマンド，Bash help, コマンドラインヘルプ，Linux コマンド，Linux 初心者，Linux チュートリアル，Bash チュートリアル"
 ---
 
 ## Lesson Content
 
-Linuxには、コマンドの使用方法を理解したり、コマンドで利用可能なフラグを確認したりするのに役立つ優れた組み込みツールがいくつかあります。そのうちの1つである`help`は、他のBashコマンド（例：`echo`、`logout`、`pwd`）のヘルプを提供する組み込みのBashコマンドです。
+Linux には、コマンドの使用方法を理解したり、コマンドで利用可能なフラグを確認したりするのに役立つ優れた組み込みツールがいくつかあります。そのうちの 1 つである`help`は、他の Bash コマンド（例：`echo`、`logout`、`pwd`）のヘルプを提供する組み込みの Bash コマンドです。
 
 ```bash
 help echo
@@ -25,11 +25,11 @@ echo --help
 
 ## Exercise
 
-このトピックに関する特定のラボはありませんが、関連するLinuxスキルと概念を練習するために、包括的な[Linux学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 
-組み込みのBashコマンドのコマンドラインヘルプを素早く取得するにはどうすればよいですか？
+組み込みの Bash コマンドのコマンドラインヘルプを素早く取得するにはどうすればよいですか？
 
 ## Quiz Answer
 

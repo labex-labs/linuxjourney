@@ -4,7 +4,7 @@ lang: "zh"
 title: "Linux Mint"
 meta_title: "Linux Mint - 入门"
 meta_description: "了解 Linux Mint、其 Ubuntu 基础、软件包管理以及它为何非常适合初学者。探索其功能以及如何立即开始使用！"
-meta_keywords: "Linux Mint, Ubuntu, Linux 初学者, Linux 发行版, Linux 教程, Debian 包管理器, Linux 指南"
+meta_keywords: "Linux Mint, Ubuntu, Linux 初学者，Linux 发行版，Linux 教程，Debian 包管理器，Linux 指南"
 ---
 
 ## Lesson Content

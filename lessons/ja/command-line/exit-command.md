@@ -3,8 +3,8 @@ index: 19
 lang: "ja"
 title: "exit"
 meta_title: "exit - コマンドライン"
-meta_description: "「exit」または「logout」コマンドを使用してLinuxシェルを終了する方法を学びます。初心者向けの基本的なシェルナビゲーションを理解します。今日からLinuxの旅を始めましょう！"
-meta_keywords: "exitコマンド, logoutコマンド, Linuxシェル, ターミナル終了, Linuxの基本, 初心者向けLinux, Linuxチュートリアル"
+meta_description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェルナビゲーションを理解します。今日から Linux の旅を始めましょう！"
+meta_keywords: "exit コマンド，logout コマンド，Linux シェル，ターミナル終了，Linux の基本，初心者向け Linux, Linux チュートリアル"
 ---
 
 ## Lesson Content
@@ -23,11 +23,11 @@ exit
 logout
 ```
 
-あるいは、ターミナルGUIで作業している場合は、ターミナルを閉じるだけでも構いません。次のコースでお会いしましょう！
+あるいは、ターミナル GUI で作業している場合は、ターミナルを閉じるだけでも構いません。次のコースでお会いしましょう！
 
 ## Exercise
 
-このトピックに関する特定のラボはありませんが、関連するLinuxスキルと概念を練習するために、包括的な[Linux学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 

@@ -4,7 +4,7 @@ lang: "zh"
 title: "pwd (打印工作目录)"
 meta_title: "pwd (打印工作目录) - 命令行"
 meta_description: "学习如何在 Linux 中使用 'pwd' 命令来打印当前工作目录。了解 Linux 文件系统路径和导航，适合初学者。"
-meta_keywords: "pwd 命令, Linux 目录, 当前目录, Linux 路径, Linux 教程, Linux 初学者, Linux 指南"
+meta_keywords: "pwd 命令，Linux 目录，当前目录，Linux 路径，Linux 教程，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

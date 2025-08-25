@@ -4,7 +4,7 @@ lang: "zh"
 title: "openSUSE"
 meta_title: "openSUSE - 入门"
 meta_description: "了解 openSUSE Linux、其历史、包管理 (RPM) 以及 YaST 的可配置性。了解为什么 openSUSE 非常适合初学者。"
-meta_keywords: "openSUSE, Linux 发行版, RPM, YaST, Linux 初学者, openSUSE 教程, Linux 指南"
+meta_keywords: "openSUSE, Linux 发行版，RPM, YaST, Linux 初学者，openSUSE 教程，Linux 指南"
 ---
 
 ## Lesson Content

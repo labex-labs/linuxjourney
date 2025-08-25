@@ -4,7 +4,7 @@ lang: "zh"
 title: "Debian"
 meta_title: "Debian - 入门"
 meta_description: "了解 Debian Linux、其稳定版和滚动发布版以及包管理。探索为什么 Debian 是初学者和中级用户的绝佳核心操作系统。"
-meta_keywords: "Debian, Debian Linux, Linux 发行版, 滚动发布, 包管理, Linux 教程, Linux 初学者, Linux 指南"
+meta_keywords: "Debian, Debian Linux, Linux 发行版，滚动发布，包管理，Linux 教程，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

@@ -4,7 +4,7 @@ lang: "zh"
 title: "file"
 meta_title: "file - 命令行"
 meta_description: "学习如何使用 Linux 'file' 命令来识别文件类型和内容。通过这份适合初学者的指南了解 Linux 文件命名约定。"
-meta_keywords: "Linux file 命令, 识别文件类型, Linux 教程, 文件命名, Linux 初学者, Linux 指南"
+meta_keywords: "Linux file 命令，识别文件类型，Linux 教程，文件命名，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content

@@ -4,7 +4,7 @@ lang: "zh"
 title: "alias"
 meta_title: "alias - 命令行"
 meta_description: "了解如何为常用命令创建和管理 Linux 别名。探索 .bashrc 中临时和永久别名的设置。提高您的命令行效率！"
-meta_keywords: "Linux 别名, bash 别名, unalias 命令, .bashrc, Linux 教程, 命令行, Linux 初学者, Linux 指南"
+meta_keywords: "Linux 别名，bash 别名，unalias 命令，.bashrc, Linux 教程，命令行，Linux 初学者，Linux 指南"
 ---
 
 ## Lesson Content
