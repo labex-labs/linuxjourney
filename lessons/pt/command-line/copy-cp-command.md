@@ -3,7 +3,7 @@ index: 10
 lang: "pt"
 title: "cp (Copiar)"
 meta_title: "cp (Copiar) - Linha de Comando"
-meta_description: "Aprenda a usar o comando Linux cp para copiar arquivos e diretórios. Entenda opções como -r e curingas. Comece sua jornada Linux hoje!"
+meta_description: "Aprenda a usar o comando cp do Linux para copiar arquivos e diretórios. Entenda opções como -r e curingas. Comece sua jornada no Linux hoje!"
 meta_keywords: "comando cp, copiar arquivos Linux, tutorial Linux, Linux para iniciantes, cp -r, curingas Linux, guia Linux"
 ---
 
@@ -17,7 +17,7 @@ cp mycoolfile /home/pete/Documents/cooldocs
 
 `mycoolfile` é o arquivo que você deseja copiar, e `/home/pete/Documents/cooldocs` é para onde você está copiando o arquivo.
 
-Você pode copiar vários arquivos e diretórios, bem como usar curingas. Um curinga é um caractere que pode ser substituído por uma seleção baseada em padrão, dando-lhe mais flexibilidade nas buscas. Você pode usar curingas em todos os comandos para maior flexibilidade.
+Você pode copiar vários arquivos e diretórios, bem como usar curingas. Um curinga é um caractere que pode ser substituído por uma seleção baseada em padrão, dando-lhe mais flexibilidade nas pesquisas. Você pode usar curingas em todos os comandos para maior flexibilidade.
 
 - `*` o curinga dos curingas, é usado para representar todos os caracteres únicos ou qualquer string.
 - `?` usado para representar um caractere
@@ -45,11 +45,12 @@ cp -i mycoolfile /home/pete/Pictures
 
 ## Exercise
 
-Copie alguns arquivos; tenha cuidado para não sobrescrever nada importante.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre como copiar arquivos e diretórios no Linux:
 
-Para prática interativa com o comando `cp`, experimente este laboratório interativo:
+1. **[Comando Linux cp: Cópia de Arquivos](https://labex.io/pt/labs/linux-linux-cp-command-file-copying-209744)** - Pratique o uso básico, opções avançadas como cópia recursiva, preservação de atributos e uso de curingas para copiar arquivos e diretórios de forma eficiente.
+2. **[Organizando Arquivos e Diretórios](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Pratique habilidades essenciais de gerenciamento de arquivos Linux usando os comandos `cp`, `mv` e `rm` para organizar uma estrutura de projeto, mover arquivos e limpar diretórios desnecessários.
 
-- [Linux cp Command: File Copying](https://labex.io/pt/labs/linux-linux-cp-command-file-copying-209744)
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com a cópia e o gerenciamento de arquivos no Linux.
 
 ## Quiz Question
 

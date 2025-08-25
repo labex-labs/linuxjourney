@@ -3,15 +3,15 @@ index: 6
 lang: "de"
 title: "DNS-Tools"
 meta_title: "DNS-Tools - DNS"
-meta_description: "Lernen Sie die Befehle nslookup und dig für DNS-Abfragen und die Fehlerbehebung unter Linux. Verstehen Sie, wie Sie diese wesentlichen DNS-Tools mit unserer anfängerfreundlichen Anleitung verwenden."
-meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
+meta_description: "Lernen Sie die Befehle nslookup und dig für DNS-Abfragen und Fehlerbehebung unter Linux. Verstehen Sie, wie Sie diese wichtigen DNS-Tools mit unserem anfängerfreundlichen Leitfaden verwenden."
+meta_keywords: "nslookup, dig Befehl, DNS-Tools, Linux DNS, DNS-Fehlerbehebung, Linux-Tutorial, Linux für Anfänger"
 ---
 
 ## Lesson Content
 
 ### nslookup
 
-Das Tool "name server lookup" wird verwendet, um Namensserver abzufragen und Informationen über Ressourceneinträge zu finden. Lassen Sie uns herausfinden, wo sich der Namensserver für google.com befindet:
+Das Tool "name server lookup" wird verwendet, um Namensserver abzufragen und Informationen über Ressourcendatensätze zu finden. Lassen Sie uns herausfinden, wo sich der Namensserver für google.com befindet:
 
 ```bash
 pete@icebox:~$ nslookup www.google.com
@@ -56,7 +56,11 @@ www.google.com.         5       IN      A       74.125.239.148
 
 ## Exercise
 
-Lesen Sie die Manpage für dig.
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis der Netzwerkschnittstelleneinstellungen zu vertiefen:
+
+1. **[Netzwerkschnittstelleneinstellungen mit ethtool in Linux untersuchen](https://labex.io/de/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** – Lernen Sie, den Befehl `ethtool` zu verwenden, um Netzwerkschnittstelleneinstellungen zu untersuchen und zu verwalten, einschließlich des Anzeigens und Festlegens von Schnittstellengeschwindigkeit und Duplex sowie der Analyse von Verbindungsmodi zur Fehlerbehebung bei Problemen auf der physikalischen Netzwerkschicht.
+
+Dieses Labor wird Ihnen helfen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit Netzwerkschnittstellen aufzubauen.
 
 ## Quiz Question
 

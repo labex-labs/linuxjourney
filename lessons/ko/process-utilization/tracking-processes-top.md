@@ -9,11 +9,11 @@ meta_keywords: "Linux top 명령, 프로세스 모니터링, 시스템 활용, L
 
 ## Lesson Content
 
-이 과정에서는 시스템의 리소스 사용량을 읽고 분석하는 방법을 다룹니다. 이 단원에서는 프로세스가 무엇을 하고 있는지 추적해야 할 때 사용할 수 있는 훌륭한 도구들을 보여줍니다.
+이 과정에서는 시스템의 리소스 사용량을 읽고 분석하는 방법을 다룹니다. 이 단원에서는 프로세스가 무엇을 하는지 추적해야 할 때 사용할 수 있는 훌륭한 도구들을 보여줍니다.
 
 ### top
 
-`top`에 대해 이전에 논의했지만, 이번에는 `top`이 실제로 무엇을 표시하는지 구체적으로 살펴보겠습니다. `top`은 프로세스에 의한 시스템 사용량을 실시간으로 볼 수 있도록 사용했던 도구임을 기억하십시오:
+`top`에 대해 이전에 논의했지만, 실제로 무엇을 표시하는지 자세히 살펴보겠습니다. `top`은 프로세스별 시스템 사용량을 실시간으로 볼 때 사용했던 도구임을 기억하십시오:
 
 ```plaintext
 top - 18:06:26 up 6 days,  4:07,  2 users,  load average: 0.92, 0.62, 0.59
@@ -27,9 +27,9 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
  6926 patty    20   0  935888 163456  25576 S   4.3  0.5   5:28.13 chrome
 ```
 
-이 출력의 의미를 살펴보겠습니다. 이것을 모두 외울 필요는 없지만, 참고 자료가 필요할 때 다시 돌아오십시오.
+이 출력의 의미를 살펴보겠습니다. 이것을 외울 필요는 없지만, 참고 자료가 필요할 때 다시 돌아오십시오.
 
-### 1st line: This is the same information you would see if you ran the `uptime` command (more to come)
+### 1 행: `uptime` 명령을 실행했을 때 볼 수 있는 것과 동일한 정보입니다
 
 필드는 왼쪽에서 오른쪽으로 다음과 같습니다:
 
@@ -38,33 +38,33 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
 3. 현재 로그인한 사용자 수
 4. 시스템 로드 평균 (추가 설명 예정)
 
-### 2nd line: Tasks that are running, sleeping, stopped, and zombied
+### 2 행: 실행 중, 대기 중, 중지됨, 좀비 상태의 작업
 
-### 3rd line: CPU information
+### 3 행: CPU 정보
 
-1. `us`: user CPU time - nice 되지 않은 사용자 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
-2. `sy`: system CPU time - 커널 및 커널 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
-3. `ni`: nice CPU time - nice 된 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
-4. `id`: CPU idle time - 유휴 상태로 소요된 CPU 시간의 백분율.
-5. `wa`: I/O wait - I/O 를 기다리는 데 소요된 CPU 시간의 백분율. 이 값이 낮으면 디스크 또는 네트워크 I/O 문제가 아닐 가능성이 높습니다.
-6. `hi`: hardware interrupts - 하드웨어 인터럽트를 처리하는 데 소요된 CPU 시간의 백분율.
-7. `si`: software interrupts - 소프트웨어 인터럽트를 처리하는 데 소요된 CPU 시간의 백분율.
-8. `st`: steal time - 가상 머신을 실행하는 경우, 다른 작업을 위해 당신에게서 도난당한 CPU 시간의 백분율입니다.
+1. `us`: 사용자 CPU 시간 - nice 값이 적용되지 않은 사용자 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
+2. `sy`: 시스템 CPU 시간 - 커널 및 커널 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
+3. `ni`: nice CPU 시간 - nice 값이 적용된 프로세스를 실행하는 데 소요된 CPU 시간의 백분율.
+4. `id`: CPU 유휴 시간 - 유휴 상태로 소요된 CPU 시간의 백분율.
+5. `wa`: I/O 대기 - I/O 를 기다리는 데 소요된 CPU 시간의 백분율. 이 값이 낮으면 문제는 디스크 또는 네트워크 I/O 가 아닐 가능성이 높습니다.
+6. `hi`: 하드웨어 인터럽트 - 하드웨어 인터럽트를 처리하는 데 소요된 CPU 시간의 백분율.
+7. `si`: 소프트웨어 인터럽트 - 소프트웨어 인터럽트를 처리하는 데 소요된 CPU 시간의 백분율.
+8. `st`: 스틸 시간 - 가상 머신을 실행하는 경우, 다른 작업을 위해 CPU 시간을 빼앗긴 백분율입니다.
 
-### 4th and 5th line: Memory Usage and Swap Usage
+### 4 행 및 5 행: 메모리 사용량 및 스왑 사용량
 
-### Processes List that are Currently in Use
+### 현재 사용 중인 프로세스 목록
 
 1. `PID`: 프로세스 ID
 2. `USER`: 프로세스 소유자 사용자
 3. `PR`: 프로세스 우선순위
 4. `NI`: nice 값
-5. `VIRT`: 프로세스가 사용한 가상 메모리
-6. `RES`: 프로세스가 사용한 물리적 메모리
+5. `VIRT`: 프로세스가 사용하는 가상 메모리
+6. `RES`: 프로세스가 사용하는 물리적 메모리
 7. `SHR`: 프로세스의 공유 메모리
-8. `S`: 프로세스 상태를 나타냅니다: `S`=sleep, `R`=running, `Z`=zombie, `D`=uninterruptible, `T`=stopped
-9. `%CPU`: 이 프로세스가 사용한 CPU 의 백분율
-10. `%MEM`: 이 프로세스가 사용한 RAM 의 백분율
+8. `S`: 프로세스 상태를 나타냅니다: `S`=대기, `R`=실행 중, `Z`=좀비, `D`=중단 불가능, `T`=중지됨
+9. `%CPU`: 이 프로세스가 사용한 CPU 백분율
+10. `%MEM`: 이 프로세스가 사용한 RAM 백분율
 11. `TIME+`: 이 프로세스의 총 활동 시간
 12. `COMMAND`: 프로세스 이름
 
@@ -76,7 +76,13 @@ top -p 1
 
 ## Exercise
 
-`top` 명령을 사용하여 어떤 프로세스가 가장 많은 리소스를 사용하는지 확인해 보십시오.
+연습이 완벽을 만듭니다! 다음은 Linux 리소스 활용 및 프로세스 관리에 대한 이해를 강화하기 위한 실습 랩입니다:
+
+1. **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 실제 Linux 환경에서 프로세스와 상호 작용하고, 검사하고, 모니터링하고, 종료하는 연습을 합니다.
+2. **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top` 명령을 사용하여 CPU 사용량, 메모리 및 실행 중인 프로세스를 실시간으로 모니터링하는 방법을 배웁니다.
+3. **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - `free` 명령을 사용하여 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 배웁니다.
+
+이 랩들은 실제 시나리오에서 개념을 적용하고 시스템 모니터링 및 프로세스 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

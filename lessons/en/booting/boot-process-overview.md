@@ -33,7 +33,11 @@ There it is, the (very) simple explanation of the Linux boot process. We will go
 
 ## Exercise
 
-Reboot your system and see if you can spot each step as your machine boots up.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Linux boot process:
+
+1. **[Customize the GRUB2 Boot Menu in Linux](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practice modifying the GRUB2 boot menu, a critical component in the Linux boot sequence.
+
+This lab will help you apply the concepts in real scenarios and build confidence with managing the Linux boot environment.
 
 ## Quiz Question
 

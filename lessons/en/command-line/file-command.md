@@ -21,12 +21,13 @@ file banana.jpg
 
 ## Exercise
 
-Run the `file` command on a few different directories and files and note the output.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of inspecting file content and properties:
 
-For additional hands-on practice with file operations, explore these interactive labs:
+1. **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Learn the Linux `ls` command to efficiently list and analyze file and directory contents, which often precedes or follows using the `file` command to understand what's in your directories.
+2. **[Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)** - Practice viewing and manipulating text files, a common task after identifying a file's type.
+3. **[Linux more Command: File Scrolling](https://labex.io/labs/linux-linux-more-command-file-scrolling-214299)** - Enhance your command-line skills for navigating and exploring large text files, building on the ability to identify file types and then inspect their content.
 
-- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
-- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+These labs will help you apply the concepts of file inspection and content viewing in real scenarios and build confidence with managing files in Linux.
 
 ## Quiz Question
 

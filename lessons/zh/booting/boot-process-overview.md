@@ -3,27 +3,27 @@ index: 1
 lang: "zh"
 title: "启动过程概述"
 meta_title: "启动过程概述 - 启动系统"
-meta_description: "了解 Linux 启动过程的阶段：BIOS、bootloader、kernel 和 init。了解 Linux 如何从开机到登录。Linux 初学者必备指南。"
-meta_keywords: "Linux 启动过程，BIOS, bootloader, kernel, init, Linux 教程，Linux 指南，初学者"
+meta_description: "了解 Linux 启动过程的阶段：BIOS、引导加载程序、内核和 init。了解 Linux 如何从开机到登录启动。Linux 初学者必备指南。"
+meta_keywords: "Linux 启动过程，BIOS, 引导加载程序，内核，init, Linux 教程，Linux 指南，初学者"
 ---
 
 ## Lesson Content
 
-既然我们已经对 Linux 的一些重要组件有了相当好的理解，那么让我们通过学习系统如何启动来将它们整合在一起。当你打开你的机器时，它会做一些很酷的事情，比如显示徽标屏幕，运行一些不同的消息，然后最后，你会看到一个登录窗口。实际上，从你按下电源按钮到你登录之间，发生了大量的事情，我们将在本课程中讨论这些。
+既然我们已经对 Linux 的一些重要组件有了很好的理解，那么让我们通过学习系统如何启动来将它们整合在一起。当你打开机器时，它会做一些很酷的事情，比如显示徽标屏幕，运行一些不同的消息，然后最后，你会看到一个登录窗口。实际上，从你按下电源按钮到你登录之间，发生了大量的事情，我们将在本课程中讨论这些。
 
-Linux 启动过程可以分为 4 个简单的阶段：
+Linux 启动过程可以分为 4 个简单阶段：
 
 ### 1. BIOS
 
-BIOS（“基本输入/输出系统”的缩写）初始化硬件，并通过加电自检 (POST) 确保所有硬件都准备就绪。BIOS 的主要工作是加载 bootloader。
+BIOS（“基本输入/输出系统”的缩写）初始化硬件并通过加电自检 (POST) 确保所有硬件都正常运行。BIOS 的主要工作是加载引导加载程序。
 
-### 2. Bootloader
+### 2. 引导加载程序
 
-bootloader 将 kernel 加载到内存中，然后使用一组 kernel 参数启动 kernel。最常见的 bootloader 之一是 GRUB，它是一个通用的 Linux 标准。
+引导加载程序将内核加载到内存中，然后使用一组内核参数启动内核。最常见的引导加载程序之一是 GRUB，它是通用的 Linux 标准。
 
-### 3. Kernel
+### 3. 内核
 
-当 kernel 加载后，它会立即初始化设备和内存。kernel 的主要工作是加载 init 进程。
+当内核加载后，它会立即初始化设备和内存。内核的主要工作是加载 init 进程。
 
 ### 4. Init
 
@@ -33,7 +33,11 @@ bootloader 将 kernel 加载到内存中，然后使用一组 kernel 参数启�
 
 ## Exercise
 
-Reboot your system and see if you can spot each step as your machine boots up.
+熟能生巧！以下是一些动手实验，以加深您对 Linux 启动过程的理解：
+
+1. **[在 Linux 中自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 练习修改 GRUB2 引导菜单，这是 Linux 引导序列中的关键组件。
+
+本实验将帮助您在实际场景中应用概念，并增强管理 Linux 引导环境的信心。
 
 ## Quiz Question
 

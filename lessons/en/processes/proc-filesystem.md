@@ -27,7 +27,11 @@ You should see process state information as well as more detailed information. T
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and system monitoring:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with process management and system observation.
 
 ## Quiz Question
 

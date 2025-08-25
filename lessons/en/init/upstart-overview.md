@@ -44,7 +44,12 @@ The way that Upstart works is that:
 
 ## Exercise
 
-If you are running Upstart, see if you can make sense of the job configurations in `/etc/init`.
+Practice makes perfect! While Upstart is an older init system, understanding how processes are managed and tasks are scheduled is crucial for any Linux administrator. Here are some hands-on labs to reinforce your understanding of process management and task automation, which are foundational to how init systems operate:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`. This lab helps you understand the lifecycle of processes, which init systems like Upstart manage.
+2. **[Schedule Tasks with at and cron in Linux](https://labex.io/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Learn to schedule one-time jobs with `at` and recurring tasks with `cron`. This provides practical experience with task automation, a core function that init systems facilitate for system services.
+
+These labs will help you apply the concepts of process control and task automation in real scenarios, building confidence in managing a Linux system, regardless of the specific init system in use.
 
 ## Quiz Question
 

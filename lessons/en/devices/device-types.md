@@ -60,7 +60,13 @@ The major device number represents the device driver that is used, in this case 
 
 ## Exercise
 
-Look at your `/dev` directory and find out what types of devices you can see.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux device files and their management:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating and managing disk partitions and filesystems, which are fundamental block devices in Linux.
+2. **[Explore Hardware Devices in Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861)** - Learn to identify and inspect various hardware devices, understanding how they are represented in the `/dev` directory.
+3. **[Create and Activate a Swap File in Linux](https://labex.io/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Gain hands-on experience with creating and activating a swap file, which functions as a virtual memory device.
+
+These labs will help you apply the concepts of device interaction and management in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

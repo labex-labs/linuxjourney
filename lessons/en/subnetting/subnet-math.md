@@ -22,7 +22,13 @@ The IP address is masked by our subnet mask. When you see a 1, it is masked, and
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of IP addressing and subnetting:
+
+1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential skills for network configuration and planning.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Deepen your understanding of various IP address types and how to verify network reachability using Linux commands.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apply your knowledge by simulating network configurations and testing connectivity between different IP subnets in a practical environment.
+
+These labs will help you apply the concepts of IP addressing, subnet masks, and host calculation in real scenarios and build confidence with network fundamentals.
 
 ## Quiz Question
 

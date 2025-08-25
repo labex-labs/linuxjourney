@@ -37,7 +37,13 @@ The roundtrip time it took from you sending the echo request packet to getting a
 
 ## Exercise
 
-Do a ping on a website and look at the output you receive.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network connectivity and the `ping` command:
+
+1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` to explore network and data link layer interactions and observe how the default gateway handles remote traffic.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilize `ping` and `ip a` to test the local TCP/IP stack, verify public internet connectivity, and explore network reachability.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign static IP addresses with `ip addr` and test connectivity with `ping` on the same and different subnets.
+
+These labs will help you apply the concepts of network reachability and the `ping` command in real scenarios and build confidence with network diagnostics in Linux.
 
 ## Quiz Question
 

@@ -1,8 +1,8 @@
 ---
 index: 12
 lang: "pt"
-title: "Symlinks"
-meta_title: "Symlinks - O Filesystem"
+title: "symlinks"
+meta_title: "symlinks - O Sistema de Arquivos"
 meta_description: "Aprenda sobre symlinks e hard links no Linux, incluindo como criá-los e gerenciá-los. Entenda suas diferenças e casos de uso com este guia para iniciantes."
 meta_keywords: "Linux symlinks, hard links, comando ln, links simbólicos, sistema de arquivos Linux, tutorial Linux, Linux para iniciantes"
 ---
@@ -37,7 +37,7 @@ total 12
 93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
 ```
 
-Você pode ver que eu criei um link simbólico chamado `myfilelink` que aponta para `myfile`. Links simbólicos são denotados por `->`. Observe, no entanto, como obtive um novo número de inode; symlinks são apenas arquivos que apontam para nomes de arquivos. Quando você modifica um symlink, o arquivo também é modificado. Números de inode são únicos para sistemas de arquivos; você não pode ter dois números de inode iguais em um único sistema de arquivos, o que significa que você não pode referenciar um arquivo em um sistema de arquivos diferente pelo seu número de inode. No entanto, se você usar symlinks, eles não usam números de inode; eles usam nomes de arquivos, então podem ser referenciados entre diferentes sistemas de arquivos.
+Você pode ver que eu criei um link simbólico chamado `myfilelink` que aponta para `myfile`. Links simbólicos são denotados por `->`. Observe, no entanto, como obtive um novo número de inode; symlinks são apenas arquivos que apontam para nomes de arquivos. Quando você modifica um symlink, o arquivo também é modificado. Os números de inode são únicos para os sistemas de arquivos; você não pode ter dois números de inode iguais em um único sistema de arquivos, o que significa que você não pode referenciar um arquivo em um sistema de arquivos diferente pelo seu número de inode. No entanto, se você usar symlinks, eles não usam números de inode; eles usam nomes de arquivos, então podem ser referenciados entre diferentes sistemas de arquivos.
 
 ### Hardlinks
 
@@ -54,7 +54,7 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-Um hardlink apenas cria outro arquivo com um link para o mesmo inode. Então, se eu modificasse o conteúdo de `myfile2` ou `myhardlink`, a mudança seria vista em ambos. Mas se eu excluísse `myfile2`, o arquivo ainda estaria acessível através de `myhardlink`. É aqui que nossa contagem de links no comando `ls` entra em jogo. A contagem de links é o número de hardlinks que um inode possui. Quando você remove um arquivo, ele diminuirá essa contagem de links. O inode só é excluído quando todos os hardlinks para o inode foram excluídos. Quando você cria um arquivo, sua contagem de links é 1 porque é o único arquivo que está apontando para aquele inode. Ao contrário dos symlinks, os hardlinks não abrangem sistemas de arquivos porque os inodes são únicos para o sistema de arquivos.
+Um hardlink apenas cria outro arquivo com um link para o mesmo inode. Então, se eu modificasse o conteúdo de `myfile2` ou `myhardlink`, a mudança seria vista em ambos. Mas se eu excluísse `myfile2`, o arquivo ainda estaria acessível através de `myhardlink`. É aqui que nossa contagem de links no comando `ls` entra em jogo. A contagem de links é o número de hardlinks que um inode possui. Quando você remove um arquivo, ele diminuirá essa contagem de links. O inode só é excluído quando todos os hardlinks para o inode foram excluídos. Quando você cria um arquivo, sua contagem de links é 1 porque é o único arquivo que aponta para aquele inode. Ao contrário dos symlinks, os hardlinks não abrangem sistemas de arquivos porque os inodes são únicos para o sistema de arquivos.
 
 ### Criando um symlink
 
@@ -74,7 +74,12 @@ Semelhante à criação de um symlink, exceto que desta vez você omite o `-s`.
 
 ## Exercise
 
-Brinque com a criação de symlinks e hardlinks. Exclua alguns e veja o que acontece.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre gerenciamento de arquivos, links e inodes:
+
+1. **[Gerenciar Arquivos e Diretórios no Linux](https://labex.io/pt/labs/comptia-manage-files-and-directories-in-linux-590835)** - Pratique a criação, cópia, movimentação e remoção de arquivos e diretórios, e aprenda especificamente sobre links simbólicos e hard links, e como analisar inodes.
+2. **[Navegar no Sistema de Arquivos no Linux](https://labex.io/pt/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos essenciais como `pwd`, `cd` e `ls` para se mover eficientemente pelo sistema de arquivos Linux, uma habilidade fundamental para entender onde os arquivos e seus inodes residem.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de gerenciamento de arquivos e links em cenários reais e a construir confiança com o sistema de arquivos Linux.
 
 ## Quiz Question
 

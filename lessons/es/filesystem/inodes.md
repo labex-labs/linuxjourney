@@ -1,41 +1,41 @@
 ---
 index: 11
 lang: "es"
-title: "Inodes"
-meta_title: "Inodes - El Filesystem"
-meta_description: "Aprende sobre los inodes de Linux, su estructura y cómo gestionan los archivos. Comprende los números de inode y usa `df -i` y `ls -li` para verificar el uso de inodes. ¡Comienza tu viaje en Linux!"
-meta_keywords: "inodes de Linux, tutorial de inode, df -i, ls -li, filesystem de Linux, Linux para principiantes, guía de Linux"
+title: "Inodos"
+meta_title: "Inodos - El sistema de archivos"
+meta_description: "Aprende sobre los inodos de Linux, su estructura y cómo gestionan los archivos. Comprende los números de inodo y usa `df -i` y `ls -li` para verificar el uso de inodos. ¡Comienza tu viaje en Linux!"
+meta_keywords: "inodos de Linux, tutorial de inodos, df -i, ls -li, sistema de archivos de Linux, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content
 
-¿Recuerdas cómo nuestro filesystem se compone de todos nuestros archivos reales y una base de datos que gestiona estos archivos? La base de datos se conoce como la tabla de inodes.
+¿Recuerdas cómo nuestro sistema de archivos se compone de todos nuestros archivos reales y una base de datos que gestiona estos archivos? La base de datos se conoce como tabla de inodos.
 
-### ¿Qué es un inode?
+### ¿Qué es un inodo?
 
-Un inode (index node) es una entrada en esta tabla, y hay uno por cada archivo. Describe todo sobre el archivo, como:
+Un inodo (nodo índice) es una entrada en esta tabla, y hay uno por cada archivo. Describe todo sobre el archivo, como:
 
-- File type - regular file, directory, character device, etc.
-- Owner
-- Group
-- Access permissions
-- Timestamps - mtime (time of last file modification), ctime (time of last attribute change), atime (time of last access)
-- Number of hardlinks to the file
-- Size of the file
-- Number of blocks allocated to the file
-- Pointers to the data blocks of the file - ¡lo más importante!
+- Tipo de archivo: archivo regular, directorio, dispositivo de caracteres, etc.
+- Propietario
+- Grupo
+- Permisos de acceso
+- Marcas de tiempo: mtime (hora de la última modificación del archivo), ctime (hora del último cambio de atributo), atime (hora del último acceso)
+- Número de enlaces duros al archivo
+- Tamaño del archivo
+- Número de bloques asignados al archivo
+- Punteros a los bloques de datos del archivo, ¡lo más importante!
 
-Básicamente, los inodes almacenan todo sobre el archivo, ¡excepto el filename y el archivo en sí!
+Básicamente, los inodos almacenan todo sobre el archivo, ¡excepto el nombre del archivo y el archivo en sí!
 
-### ¿Cuándo se crean los inodes?
+### ¿Cuándo se crean los inodos?
 
-Cuando se crea un filesystem, también se asigna espacio para los inodes. Los algoritmos determinan cuánto espacio de inode necesitas, dependiendo del volumen del disco y más. Probablemente en algún momento de tu vida hayas visto errores por problemas de falta de espacio en disco. Lo mismo puede ocurrir con los inodes (aunque es menos común); puedes quedarte sin inodes y, por lo tanto, no poder crear más archivos. Recuerda, el almacenamiento de datos depende tanto de los datos como de la base de datos (inodes).
+Cuando se crea un sistema de archivos, también se asigna espacio para los inodos. Los algoritmos determinan cuánto espacio de inodos necesitas dependiendo del volumen del disco y más. Probablemente en algún momento de tu vida hayas visto errores por problemas de falta de espacio en disco. Lo mismo puede ocurrir también con los inodos (aunque es menos común); puedes quedarte sin inodos y, por lo tanto, no poder crear más archivos. Recuerda, el almacenamiento de datos depende tanto de los datos como de la base de datos (inodos).
 
-Para ver cuántos inodes quedan en tu sistema, usa el comando `df -i`.
+Para ver cuántos inodos quedan en tu sistema, usa el comando `df -i`.
 
-### Información del Inode
+### Información del inodo
 
-Los inodes se identifican por números. Cuando se crea un archivo, se le asigna un número de inode, y el número se asigna en orden secuencial. Sin embargo, a veces puedes notar que cuando creas un nuevo archivo, obtiene un número de inode que es más bajo que otros. Esto se debe a que una vez que los inodes se eliminan, pueden ser reutilizados por otros archivos. Para ver los números de inode, ejecuta `ls -li`:
+Los inodos se identifican por números. Cuando se crea un archivo, se le asigna un número de inodo, y el número se asigna en orden secuencial. Sin embargo, a veces puedes notar que cuando creas un nuevo archivo, obtiene un número de inodo que es más bajo que otros. Esto se debe a que una vez que los inodos se eliminan, pueden ser reutilizados por otros archivos. Para ver los números de inodo, ejecuta `ls -li`:
 
 ```bash
 pete@icebox:~$ ls -li
@@ -43,9 +43,9 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-El primer campo de este comando lista el número de inode.
+El primer campo de este comando lista el número de inodo.
 
-También puedes ver información detallada sobre un archivo con `stat`; también te da información sobre el inode.
+También puedes ver información detallada sobre un archivo con `stat`; también te da información sobre el inodo.
 
 ```bash
 pete@icebox:~$ stat ~/Desktop/
@@ -59,17 +59,23 @@ Change: 2016-01-20 20:13:06.191675843 -0800
  Birth: -
 ```
 
-### ¿Cómo localizan los inodes los archivos?
+### ¿Cómo localizan los inodos los archivos?
 
-Sabemos que nuestros datos están en algún lugar del disco. Desafortunadamente, probablemente no se almacenaron secuencialmente, por lo que tenemos que usar inodes. Los inodes apuntan a los data blocks reales de tus archivos. En un filesystem típico (no todos funcionan igual), cada inode contiene 15 pointers. Los primeros 12 pointers apuntan directamente a los data blocks. El 13º pointer apunta a un block que contiene pointers a más blocks, el 14º pointer apunta a otro block anidado de pointers, ¡y el 15º pointer apunta de nuevo a otro block de pointers! Confuso, ¡lo sé! La razón por la que esto se hace de esta manera es para mantener la estructura del inode igual para cada inode, pero poder referenciar archivos de diferentes tamaños. Si tuvieras un archivo pequeño, podrías encontrarlo más rápido con los primeros 12 direct pointers; los archivos más grandes se pueden encontrar con los nidos de pointers. De cualquier manera, la estructura del inode es la misma.
+Sabemos que nuestros datos están en algún lugar del disco. Desafortunadamente, probablemente no se almacenaron secuencialmente, por lo que tenemos que usar inodos. Los inodos apuntan a los bloques de datos reales de tus archivos. En un sistema de archivos típico (no todos funcionan igual), cada inodo contiene 15 punteros. Los primeros 12 punteros apuntan directamente a los bloques de datos. El puntero número 13 apunta a un bloque que contiene punteros a más bloques, el puntero número 14 apunta a otro bloque anidado de punteros, ¡y el puntero número 15 apunta de nuevo a otro bloque de punteros! Confuso, ¡lo sé! La razón por la que se hace de esta manera es para mantener la estructura del inodo igual para cada inodo, pero poder referenciar archivos de diferentes tamaños. Si tuvieras un archivo pequeño, podrías encontrarlo más rápido con los primeros 12 punteros directos; los archivos más grandes se pueden encontrar con los nidos de punteros. De cualquier manera, la estructura del inodo es la misma.
 
 ## Exercise
 
-Observe some inode numbers for different files. Which ones are usually created first?
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del sistema de archivos de Linux y la gestión de archivos:
+
+1. **[Gestionar archivos y directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practica la creación, eliminación, copia y movimiento de archivos y directorios, y explora la creación de enlaces simbólicos y duros mientras analizas los inodos.
+2. **[Navegar por el sistema de archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Aprende las habilidades fundamentales para navegar por el sistema de archivos de Linux usando comandos esenciales de shell como `pwd`, `cd` y `ls`.
+3. **[Encontrar archivos y comandos en Linux](https://labex.io/es/labs/comptia-find-files-and-commands-in-linux-590834)** - Domina las técnicas esenciales para localizar archivos y comandos en Linux usando `find`, `locate`, `whereis`, `which` y `type`.
+
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza con la gestión del sistema de archivos de Linux.
 
 ## Quiz Question
 
-¿Cómo se ve cuántos inodes quedan en tu sistema?
+¿Cómo ves cuántos inodos quedan en tu sistema?
 
 ## Quiz Answer
 

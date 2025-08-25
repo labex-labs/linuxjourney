@@ -3,8 +3,8 @@ index: 6
 lang: "fr"
 title: "Setgid"
 meta_title: "Setgid - Permissions"
-meta_description: "Apprenez-en davantage sur les permissions Linux SGID (Set Group ID), leur fonctionnement et comment les modifier. Comprenez ce concept crucial de sécurité Linux."
-meta_keywords: "Linux SGID, Set Group ID, permissions Linux, chmod g+s, sécurité Linux, Linux débutant, tutoriel Linux"
+meta_description: "Découvrez les permissions SGID (Set Group ID) de Linux, leur fonctionnement et comment les modifier. Comprenez ce concept crucial de sécurité Linux."
+meta_keywords: "Linux SGID, Set Group ID, permissions Linux, chmod g+s, sécurité Linux, Linux pour débutants, tutoriel Linux"
 ---
 
 ## Lesson Content
@@ -20,7 +20,7 @@ $ ls -l /usr/bin/wall
 
 Nous pouvons maintenant voir que le bit de permission se trouve dans l'ensemble des permissions de groupe.
 
-### Modifying SGID
+### Modification du SGID
 
 ```bash
 sudo chmod g+s myfile
@@ -31,7 +31,12 @@ La représentation numérique pour SGID est 2.
 
 ## Exercise
 
-Pas d'exercices pour cette leçon.
+C'est en forgeant qu'on devient forgeron ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des permissions d'utilisateur, de groupe et de fichier sous Linux :
+
+1. **[Permissions d'utilisateur, de groupe et de fichier Linux](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de gestion des utilisateurs et des groupes Linux, y compris la création et la gestion des utilisateurs, l'exploration des appartenances aux groupes, la compréhension des permissions de fichier et la manipulation de la propriété des fichiers.
+2. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Entraînez-vous à créer de nouveaux comptes d'utilisateur, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, en simulant des tâches d'administration système réelles.
+
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec les permissions Linux et la gestion des utilisateurs.
 
 ## Quiz Question
 

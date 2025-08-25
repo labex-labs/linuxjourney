@@ -2,14 +2,14 @@
 index: 4
 lang: "fr"
 title: "Partitionnement de disque"
-meta_title: "Partitionnement de disque - Le Filesystem"
-meta_description: "Apprenez le partitionnement de disque sous Linux à l'aide de parted. Comprenez comment partitionner, sélectionner, afficher et redimensionner des disques. Démarrez avec ce guide convivial pour débutants !"
-meta_keywords: "partitionnement de disque Linux, commande parted, fdisk, gparted, tutoriel Linux, Linux pour débutants, gestion de disque, guide Linux"
+meta_title: "Partitionnement de disque - Le système de fichiers"
+meta_description: "Apprenez le partitionnement de disque sous Linux en utilisant parted. Comprenez comment partitionner, sélectionner, afficher et redimensionner des disques. Démarrez avec ce guide convivial pour débutants !"
+meta_keywords: "partitionnement de disque Linux, commande parted, fdisk, gparted, tutoriel Linux, Linux débutant, gestion de disque, guide Linux"
 ---
 
 ## Lesson Content
 
-Faisons des choses pratiques avec les systèmes de fichiers en travaillant sur une clé USB. Si vous n'en avez pas, pas de soucis, vous pouvez toujours suivre ces prochaines leçons.
+Faisons des choses pratiques avec les systèmes de fichiers en parcourant le processus sur une clé USB. Si vous n'en avez pas, pas de soucis, vous pouvez toujours suivre ces quelques leçons.
 
 Tout d'abord, nous devrons partitionner notre disque. De nombreux outils sont disponibles pour ce faire :
 
@@ -18,9 +18,9 @@ Tout d'abord, nous devrons partitionner notre disque. De nombreux outils sont di
 - gparted - c'est la version GUI de parted
 - gdisk - fdisk, mais il ne prend pas en charge MBR, seulement GPT
 
-Utilisons parted pour notre partitionnement. Disons que je connecte le périphérique USB et que le nom du périphérique est /dev/sdb2.
+Utilisons parted pour notre partitionnement. Supposons que je connecte le périphérique USB et que le nom du périphérique soit /dev/sdb2.
 
-### Launch parted
+### Lancer parted
 
 ```bash
 sudo parted
@@ -28,15 +28,15 @@ sudo parted
 
 Vous entrerez dans l'outil parted ; ici, vous pouvez exécuter des commandes pour partitionner votre périphérique.
 
-### Select the device
+### Sélectionner le périphérique
 
 ```bash
 select /dev/sdb2
 ```
 
-Pour sélectionner le périphérique avec lequel vous allez travailler, sélectionnez-le par son nom de périphérique.
+Pour sélectionner le périphérique avec lequel vous travaillerez, sélectionnez-le par son nom de périphérique.
 
-### View current partition table
+### Afficher la table de partition actuelle
 
 ```plaintext
 (parted) print
@@ -54,7 +54,7 @@ Number  Start   End     Size    Type      File system     Flags
 
 Ici, vous verrez les partitions disponibles sur le périphérique. Les points de **début** et de **fin** sont l'endroit où les partitions occupent de l'espace sur le disque dur ; vous voudrez trouver un bon emplacement de début et de fin pour vos partitions.
 
-### Partition the device
+### Partitionner le périphérique
 
 ```bash
 mkpart primary 123 4567
@@ -62,9 +62,9 @@ mkpart primary 123 4567
 
 Maintenant, choisissez simplement un point de début et de fin et créez la partition ; vous devrez spécifier le type de partition en fonction de la table que vous avez utilisée.
 
-### Resize a partition
+### Redimensionner une partition
 
-Vous pouvez également redimensionner une partition si vous n'avez pas d'espace.
+Vous pouvez également redimensionner une partition si vous n'avez plus d'espace.
 
 ```bash
 resize 2 1245 3456
@@ -76,7 +76,11 @@ Parted est un outil très puissant, et vous devez être prudent lorsque vous par
 
 ## Exercise
 
-Partitionnez une clé USB avec la moitié du disque en ext4 et l'autre moitié en espace libre.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du partitionnement de disque Linux et de la gestion des systèmes de fichiers :
+
+1. [Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition d'échange, le tout sur un disque virtuel secondaire sécurisé.
+
+Ce laboratoire vous aidera à appliquer les concepts de partitionnement de disque et de gestion des systèmes de fichiers dans un scénario réel et à renforcer votre confiance avec ces compétences essentielles d'administration Linux.
 
 ## Quiz Question
 

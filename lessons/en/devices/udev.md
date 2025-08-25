@@ -29,7 +29,11 @@ udevadm info --query=all --name=/dev/sda
 
 ## Exercise
 
-Run the `udevadm` command given and check out the output.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of hardware interaction and device management in Linux:
+
+1. **[Explore Hardware Devices in Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861)** - In this lab, you will learn the essential skills to explore, identify, and inspect hardware devices within a Linux environment. You will gain hands-on experience with powerful command-line utilities to understand how the operating system interacts with physical components, which is crucial for understanding device nodes and udev's role.
+
+This lab will help you apply the concepts in real scenarios and build confidence with Linux hardware management.
 
 ## Quiz Question
 

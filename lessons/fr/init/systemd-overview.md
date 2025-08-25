@@ -9,7 +9,7 @@ meta_keywords: "Systemd, unités Systemd, cibles Systemd, processus de démarrag
 
 ## Lesson Content
 
-Systemd est lentement en train de devenir le standard émergent pour init. Si vous avez un répertoire `/usr/lib/systemd`, vous utilisez très probablement systemd.
+Systemd est en train de devenir progressivement la norme émergente pour init. Si vous avez un répertoire `/usr/lib/systemd`, vous utilisez très probablement systemd.
 
 Systemd utilise des objectifs pour démarrer votre système. En gros, vous avez une cible que vous voulez atteindre, et cette cible a également des dépendances qui doivent être satisfaites. Systemd est extrêmement flexible et robuste ; il ne suit pas une séquence stricte pour démarrer les processus. Voici ce qui se passe lors d'un démarrage systemd typique :
 
@@ -20,9 +20,9 @@ Systemd utilise des objectifs pour démarrer votre système. En gros, vous avez 
 Similaire aux niveaux d'exécution SysV, systemd démarre dans différentes cibles :
 
 - `poweroff.target` - éteindre le système
-- `rescue.target` - mode utilisateur unique
+- `rescue.target` - mode mono-utilisateur
 - `multi-user.target` - multi-utilisateur avec réseau
-- `graphical.target` - multi-utilisateur avec réseau et GUI
+- `graphical.target` - multi-utilisateur avec réseau et interface graphique
 - `reboot.target` - redémarrer
 
 L'objectif de démarrage par défaut de `default.target` pointe généralement vers le `graphical.target`.
@@ -33,11 +33,11 @@ Les principaux objets avec lesquels systemd travaille sont appelés unités. Sys
 - Unités de montage - Celles-ci montent des systèmes de fichiers ; ces fichiers d'unité se terminent par `.mount`.
 - Unités cibles - Celles-ci regroupent d'autres unités ; les fichiers se terminent par `.target`.
 
-Par exemple, supposons que nous démarrions dans notre `default.target`. Cette cible regroupe l'unité `networking.service`, l'unité `crond.service`, etc., donc une fois que nous activons une seule unité, tout ce qui se trouve en dessous de cette unité est également activé.
+Par exemple, supposons que nous démarrions dans notre `default.target`. Cette cible regroupe l'unité `networking.service`, l'unité `crond.service`, etc., donc une fois que nous activons une seule unité, tout ce qui se trouve sous cette unité est également activé.
 
 ## Exercise
 
-No exercises for this lesson.
+Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux connexes.
 
 ## Quiz Question
 

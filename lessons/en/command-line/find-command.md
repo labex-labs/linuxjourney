@@ -29,11 +29,12 @@ One cool thing to note is that `find` doesn't stop at the directory you are sear
 
 ## Exercise
 
-1. Find a file from the root directory that has the word "net" in it.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of finding files and directories in Linux:
 
-For hands-on practice with the `find` command, try this interactive lab:
+1. **[Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)** - This lab provides an introduction to the `find` command, a versatile utility for searching and locating files and directories based on various criteria. You'll practice using `find` to locate specific files.
+2. **[Discover Critical System Resources](https://labex.io/labs/linux-discover-critical-system-resources-388032)** - Learn essential Linux commands for locating files and executables, including `find`. You'll practice efficiently navigating the file system and discovering critical system resources.
 
-- [Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)
+These labs will help you apply the concepts in real scenarios and build confidence with using the `find` command effectively.
 
 ## Quiz Question
 

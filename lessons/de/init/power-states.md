@@ -3,13 +3,13 @@ index: 7
 lang: "de"
 title: "Energiezustände"
 meta_title: "Energiezustände - Init"
-meta_description: "Lernen Sie die Energiezustände von Linux-Systemen kennen: shutdown-, reboot- und halt-Befehle. Verstehen Sie, wie Sie Ihr Linux-System sicher ausschalten oder neu starten. Beginnen Sie mit den wichtigsten Befehlen!"
-meta_keywords: "Linux herunterfahren, reboot Befehl, System anhalten, Linux ausschalten, Linux Befehle, Linux für Anfänger, Linux Tutorial, Systemzustände"
+meta_description: "Lernen Sie die Linux-Systemzustände kennen: Befehle zum Herunterfahren, Neustarten und Anhalten. Verstehen Sie, wie Sie Ihr Linux-System sicher ausschalten oder neu starten können. Beginnen Sie mit den wichtigsten Befehlen!"
+meta_keywords: "Linux herunterfahren, Neustart-Befehl, System anhalten, Linux ausschalten, Linux-Befehle, Linux für Anfänger, Linux-Tutorial, Systemzustände"
 ---
 
 ## Lesson Content
 
-Es ist kaum zu glauben, dass wir noch nicht über Möglichkeiten gesprochen haben, den Systemzustand über die Befehlszeile zu steuern. Wenn wir über `init` sprechen, diskutieren wir nicht nur die Modi, die unser System starten, sondern auch die, die es stoppen.
+Es ist kaum zu glauben, dass wir noch keine Möglichkeiten besprochen haben, den Systemzustand über die Befehlszeile zu steuern. Wenn wir über `init` sprechen, diskutieren wir nicht nur die Modi, die unser System starten, sondern auch die, die es stoppen.
 
 Um Ihr System herunterzufahren:
 
@@ -37,7 +37,7 @@ sudo reboot
 
 ## Exercise
 
-Was glauben Sie, geschieht mit `init`, wenn Sie Ihren Computer herunterfahren?
+Obwohl es keine spezifischen Labs zu diesem Thema gibt, empfehlen wir Ihnen, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 

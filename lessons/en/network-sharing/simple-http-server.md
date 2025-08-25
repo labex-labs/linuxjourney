@@ -25,7 +25,13 @@ This sets up a basic web server that you can access via the localhost address. S
 
 ## Exercise
 
-Try setting up an `http.server`!
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network connectivity and IP addressing, which are essential for sharing files over a network:
+
+1. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice identifying different IP address types and testing network reachability, crucial for ensuring your Python HTTP server is accessible.
+2. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Learn to use the `ip a` command to find your machine's IP address, a necessary step before accessing your shared files from another device.
+3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Learn to manage local hostname resolution in Linux by editing the /etc/hosts file, a key skill for web development and network testing.
+
+These labs will help you apply the concepts in real scenarios and build confidence with basic network operations in Linux.
 
 ## Quiz Question
 

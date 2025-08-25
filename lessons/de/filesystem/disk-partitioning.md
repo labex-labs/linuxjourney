@@ -1,26 +1,26 @@
 ---
 index: 4
 lang: "de"
-title: "Disk-Partitionierung"
-meta_title: "Disk-Partitionierung - Das Dateisystem"
-meta_description: "Lernen Sie die Disk-Partitionierung in Linux mit parted. Verstehen Sie, wie man Disks partitioniert, auswählt, anzeigt und in der Größe ändert. Beginnen Sie mit diesem anfängerfreundlichen Leitfaden!"
-meta_keywords: "Linux Disk-Partitionierung, parted Befehl, fdisk, gparted, Linux Tutorial, Linux für Anfänger, Disk-Management, Linux Leitfaden"
+title: "Festplattenpartitionierung"
+meta_title: "Festplattenpartitionierung - Das Dateisystem"
+meta_description: "Lernen Sie die Festplattenpartitionierung in Linux mit parted. Verstehen Sie, wie man Festplatten partitioniert, auswählt, anzeigt und in der Größe ändert. Beginnen Sie mit diesem anfängerfreundlichen Leitfaden!"
+meta_keywords: "Linux Festplattenpartitionierung, parted Befehl, fdisk, gparted, Linux Tutorial, Linux für Anfänger, Festplattenverwaltung, Linux Leitfaden"
 ---
 
 ## Lesson Content
 
-Lassen Sie uns praktische Dinge mit Dateisystemen tun, indem wir den Prozess auf einem USB-Laufwerk durcharbeiten. Wenn Sie keines haben, keine Sorge, Sie können trotzdem die nächsten paar Lektionen verfolgen.
+Lassen Sie uns etwas Praktisches mit Dateisystemen tun, indem wir den Prozess auf einem USB-Laufwerk durcharbeiten. Wenn Sie keines haben, keine Sorge, Sie können die nächsten paar Lektionen trotzdem verfolgen.
 
-Zuerst müssen wir unsere Disk partitionieren. Es gibt viele Tools, um dies zu tun:
+Zuerst müssen wir unsere Festplatte partitionieren. Es gibt viele Tools, um dies zu tun:
 
-- fdisk – grundlegendes Befehlszeilen-Partitionierungstool; es unterstützt kein GPT
-- parted – dies ist ein Befehlszeilen-Tool, das sowohl MBR- als auch GPT-Partitionierung unterstützt
-- gparted – dies ist die GUI-Version von parted
-- gdisk – fdisk, aber es unterstützt kein MBR, nur GPT
+- fdisk - grundlegendes Befehlszeilen-Partitionierungstool; es unterstützt kein GPT
+- parted - dies ist ein Befehlszeilen-Tool, das sowohl MBR- als auch GPT-Partitionierung unterstützt
+- gparted - dies ist die GUI-Version von parted
+- gdisk - fdisk, aber es unterstützt kein MBR, nur GPT
 
-Lassen Sie uns parted für unsere Partitionierung verwenden. Nehmen wir an, ich schließe das USB-Gerät an und wir sehen, dass der Gerätename /dev/sdb2 ist.
+Verwenden wir parted für unsere Partitionierung. Nehmen wir an, ich schließe das USB-Gerät an und wir sehen, dass der Gerätename /dev/sdb2 ist.
 
-### Launch parted
+### parted starten
 
 ```bash
 sudo parted
@@ -28,7 +28,7 @@ sudo parted
 
 Sie werden in das parted-Tool gelangen; hier können Sie Befehle ausführen, um Ihr Gerät zu partitionieren.
 
-### Select the device
+### Gerät auswählen
 
 ```bash
 select /dev/sdb2
@@ -36,7 +36,7 @@ select /dev/sdb2
 
 Um das Gerät auszuwählen, mit dem Sie arbeiten möchten, wählen Sie es anhand seines Gerätenamens aus.
 
-### View current partition table
+### Aktuelle Partitionstabelle anzeigen
 
 ```plaintext
 (parted) print
@@ -52,17 +52,17 @@ Number  Start   End     Size    Type      File system     Flags
  6      7381MB  21.5GB  14.1GB  logical   xfs
 ```
 
-Hier sehen Sie die verfügbaren Partitionen auf dem Gerät. Die **start**- und **end**-Punkte sind die Stellen, an denen die Partitionen Speicherplatz auf der Festplatte belegen; Sie sollten eine gute Start- und Endposition für Ihre Partitionen finden.
+Hier sehen Sie die verfügbaren Partitionen auf dem Gerät. Die **Start-** und **Endpunkte** sind die Stellen, an denen die Partitionen Speicherplatz auf der Festplatte belegen; Sie sollten einen guten Start- und Endpunkt für Ihre Partitionen finden.
 
-### Partition the device
+### Gerät partitionieren
 
 ```bash
 mkpart primary 123 4567
 ```
 
-Wählen Sie nun einfach einen Start- und Endpunkt und erstellen Sie die Partition; Sie müssen den Partitionstyp angeben, abhängig von der verwendeten Tabelle.
+Wählen Sie nun einfach einen Start- und Endpunkt und erstellen Sie die Partition; Sie müssen den Partitionstyp angeben, je nachdem, welche Tabelle Sie verwendet haben.
 
-### Resize a partition
+### Eine Partition in der Größe ändern
 
 Sie können eine Partition auch in der Größe ändern, wenn Sie keinen Platz haben.
 
@@ -70,13 +70,17 @@ Sie können eine Partition auch in der Größe ändern, wenn Sie keinen Platz ha
 resize 2 1245 3456
 ```
 
-Wählen Sie die Partitionsnummer und dann die Start- und Endpunkte, auf die Sie sie ändern möchten.
+Wählen Sie die Partitionsnummer und dann die Start- und Endpunkte, auf die Sie sie in der Größe ändern möchten.
 
-Parted ist ein sehr mächtiges Tool, und Sie sollten vorsichtig sein, wenn Sie Ihre Disks partitionieren.
+Parted ist ein sehr mächtiges Tool, und Sie sollten vorsichtig sein, wenn Sie Ihre Festplatten partitionieren.
 
 ## Exercise
 
-Partitionieren Sie ein USB-Laufwerk, wobei die Hälfte des Laufwerks als ext4 und die andere Hälfte als freier Speicherplatz dient.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Festplattenpartitionierung und Dateisystemverwaltung zu vertiefen:
+
+1. [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845) – In diesem Lab lernen Sie, Festplattenpartitionen und Dateisysteme in Linux zu verwalten. Sie verwenden fdisk, um eine neue Partition zu erstellen, sie mit ext4 zu formatieren, sie zu mounten, die persistente Einhängung in /etc/fstab zu konfigurieren und eine Swap-Partition zu erstellen, alles auf einer sicheren sekundären virtuellen Festplatte.
+
+Dieses Lab hilft Ihnen, die Konzepte der Festplattenpartitionierung und Dateisystemverwaltung in einem realen Szenario anzuwenden und Vertrauen in diese wesentlichen Linux-Administrationsfähigkeiten aufzubauen.
 
 ## Quiz Question
 

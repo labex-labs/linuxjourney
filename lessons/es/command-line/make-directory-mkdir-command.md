@@ -23,15 +23,16 @@ mkdir -p books/hemmingway/favorites
 
 ## Exercise
 
-Crea un par de directorios y mueve algunos archivos a ese directorio.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la creación y gestión de directorios:
 
-Para practicar con el comando `mkdir`, prueba este laboratorio interactivo:
+1. **[Comando mkdir de Linux: Creación de directorios](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)** - Aprende a usar el comando `mkdir` en Linux para crear directorios, establecer permisos y organizar tu sistema de archivos. Este laboratorio cubre el uso básico y avanzado, incluida la creación de directorios anidados.
+2. **[Configuración de una nueva estructura de proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios de Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
 
-- [Linux mkdir Command: Directory Creating](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a generar confianza al crear y organizar directorios en Linux.
 
 ## Quiz Question
 
-¿Qué comando se utiliza para crear un directorio?
+¿Qué comando se usa para crear un directorio?
 
 ## Quiz Answer
 

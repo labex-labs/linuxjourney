@@ -2,14 +2,14 @@
 index: 7
 lang: "es"
 title: "/etc/fstab"
-meta_title: "/etc/fstab - El Filesystem"
-meta_description: "Aprenda sobre /etc/fstab en Linux, cómo configurar montajes de sistemas de archivos al inicio y gestionar entradas de dispositivos. ¡Comprenda fstab para principiantes!"
-meta_keywords: "/etc/fstab, Linux fstab, montar sistemas de archivos, arranque de Linux, tutorial de fstab, principiante, guía"
+meta_title: "/etc/fstab - El sistema de archivos"
+meta_description: "Aprenda sobre /etc/fstab en Linux, cómo configurar los montajes del sistema de archivos al inicio y gestionar las entradas de los dispositivos. ¡Comprenda fstab para principiantes!"
+meta_keywords: "/etc/fstab, Linux fstab, montar sistemas de archivos, arranque de Linux, tutorial fstab, principiante, guía"
 ---
 
 ## Lesson Content
 
-Cuando queremos montar automáticamente sistemas de archivos al inicio, podemos añadirlos a un archivo llamado `/etc/fstab` (pronunciado "eff es tab," no "eff stab"), abreviatura de tabla de sistemas de archivos. Este archivo contiene una lista permanente de los sistemas de archivos que se montan.
+Cuando queremos montar automáticamente sistemas de archivos al inicio, podemos añadirlos a un archivo llamado `/etc/fstab` (pronunciado "eff es tab", no "eff stab"), abreviatura de tabla de sistemas de archivos. Este archivo contiene una lista permanente de los sistemas de archivos que se montan.
 
 ```plaintext
 pete@icebox:~$ cat /etc/fstab
@@ -20,18 +20,23 @@ UUID=22c3d34b-467e-467c-b44d-f03803c2c526 none            swap    sw            
 
 Cada línea representa un sistema de archivos; los campos son:
 
-- UUID - Device identifier
-- Mount point - Directorio donde se monta el sistema de archivos
-- Filesystem type
-- Options - Otras opciones de montaje; ver la página man para más detalles
-- Dump - Usado por la utilidad dump para decidir cuándo hacer una copia de seguridad; por defecto, debe ser 0
-- Pass - Usado por fsck para decidir en qué orden deben ser comprobados los sistemas de archivos; si el valor es 0, no será comprobado
+- UUID - Identificador del dispositivo
+- Punto de montaje - Directorio donde se monta el sistema de archivos
+- Tipo de sistema de archivos
+- Opciones - Otras opciones de montaje; consulte la página man para más detalles
+- Dump - Utilizado por la utilidad dump para decidir cuándo hacer una copia de seguridad; por defecto debe ser 0
+- Pass - Utilizado por fsck para decidir en qué orden deben comprobarse los sistemas de archivos; si el valor es 0, no se comprobará
 
-Para añadir una entrada, simplemente modifique directamente el archivo `/etc/fstab` usando la sintaxis de entrada anterior. Tenga cuidado al modificar este archivo; podría complicar un poco su vida si se equivoca.
+Para añadir una entrada, simplemente modifique directamente el archivo `/etc/fstab` utilizando la sintaxis de entrada anterior. Tenga cuidado al modificar este archivo; podría complicarle un poco la vida si se equivoca.
 
 ## Exercise
 
-Añada la unidad USB en la que hemos estado trabajando como una entrada en `/etc/fstab`. Cuando reinicie, debería seguir viéndola montada.
+¡La práctica hace al maestro! La experiencia práctica es crucial para comprender cómo gestionar los sistemas de archivos y asegurarse de que se montan correctamente al inicio del sistema. Aquí tiene algunos laboratorios prácticos para reforzar su comprensión de la gestión de sistemas de archivos de Linux y el archivo `/etc/fstab`:
+
+1. **[Gestionar particiones y sistemas de archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación de particiones, su formato, su montaje y la configuración del montaje persistente utilizando `/etc/fstab`.
+2. **[Crear y activar un archivo de intercambio en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda la tarea administrativa esencial de crear y activar un archivo de intercambio (swap file), que a menudo implica entradas en `/etc/fstab`.
+
+Estos laboratorios le ayudarán a aplicar los conceptos de montaje y configuración de sistemas de archivos en escenarios reales y a generar confianza en la gestión de recursos de disco en Linux.
 
 ## Quiz Question
 

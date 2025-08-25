@@ -33,12 +33,7 @@ While we are talking about useful things, one of the most useful features in any
 
 ## Exercise
 
-Navigate through your previous command history with the Up and Down keys. Play around with `Ctrl-R` reverse search.
-
-For additional hands-on practice with Linux command line navigation, explore these interactive labs:
-
-- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

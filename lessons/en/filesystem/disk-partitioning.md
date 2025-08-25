@@ -76,7 +76,11 @@ Parted is a very powerful tool, and you should be careful when partitioning your
 
 ## Exercise
 
-Partition a USB drive with half of the drive as ext4 and the other half as free space.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux disk partitioning and filesystem management:
+
+1. [Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use fdisk to create a new partition, format it with ext4, mount it, configure persistent mounting in /etc/fstab, and create a swap partition, all on a safe secondary virtual disk.
+
+This lab will help you apply the concepts of disk partitioning and filesystem management in a real scenario and build confidence with these essential Linux administration skills.
 
 ## Quiz Question
 

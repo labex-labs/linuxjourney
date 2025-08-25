@@ -3,8 +3,8 @@ index: 6
 lang: "fr"
 title: "Outils DNS"
 meta_title: "Outils DNS - DNS"
-meta_description: "Apprenez les commandes nslookup et dig pour les requêtes DNS et le dépannage sur Linux. Comprenez comment utiliser ces outils DNS essentiels avec notre guide pour débutants."
-meta_keywords: "nslookup, commande dig, outils DNS, DNS Linux, dépannage DNS, tutoriel Linux, Linux pour débutants"
+meta_description: "Apprenez les commandes nslookup et dig pour les requêtes DNS et le dépannage sous Linux. Comprenez comment utiliser ces outils DNS essentiels avec notre guide convivial pour débutants."
+meta_keywords: "nslookup, commande dig, outils DNS, DNS Linux, dépannage DNS, tutoriel Linux, Linux débutant"
 ---
 
 ## Lesson Content
@@ -39,14 +39,20 @@ pete@icebox:~$ dig www.google.com
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; MBZ: 0005 , udp: 512
 ;; QUESTION SECTION:
-;www.google.com.                        IN      A
+;www.google.com.
+IN      A
 
 ;; ANSWER SECTION:
-www.google.com.         5       IN      A       74.125.239.147
-www.google.com.         5       IN      A       74.125.239.144
-www.google.com.         5       IN      A       74.125.239.146
-www.google.com.         5       IN      A       74.125.239.145
-www.google.com.         5       IN      A       74.125.239.148
+www.google.com.
+5       IN      A       74.125.239.147
+www.google.com.
+5       IN      A       74.125.239.144
+www.google.com.
+5       IN      A       74.125.239.146
+www.google.com.
+5       IN      A       74.125.239.145
+www.google.com.
+5       IN      A       74.125.239.148
 
 ;; Query time: 27 msec
 ;; SERVER: 127.0.1.1#53(127.0.1.1)
@@ -56,7 +62,11 @@ www.google.com.         5       IN      A       74.125.239.148
 
 ## Exercise
 
-Lisez la page de manuel pour dig.
+La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des paramètres d'interface réseau :
+
+1. **[Examiner les paramètres d'interface réseau avec ethtool sous Linux](https://labex.io/fr/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Apprenez à utiliser la commande `ethtool` pour examiner et gérer les paramètres d'interface réseau, y compris l'affichage et la définition de la vitesse et du duplex de l'interface, et l'analyse des modes de liaison pour dépanner les problèmes de réseau de la couche physique.
+
+Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des interfaces réseau.
 
 ## Quiz Question
 

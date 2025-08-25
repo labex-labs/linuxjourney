@@ -1,8 +1,8 @@
 ---
 index: 10
 lang: "es"
-title: "Sistema de archivos /proc"
-meta_title: "Sistema de archivos /proc - Procesos"
+title: "/proc filesystem"
+meta_title: "/proc filesystem - Procesos"
 meta_description: "Aprende sobre el sistema de archivos /proc en Linux, cómo almacena la información de los procesos y su estructura. Explora los detalles de los procesos con esta guía esencial de Linux."
 meta_keywords: "sistema de archivos /proc, procesos de Linux, información de procesos, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
@@ -17,7 +17,7 @@ ls /proc
 
 Deberías ver múltiples valores aquí; hay subdirectorios para cada PID. Si buscaras un PID en la salida de `ps`, podrías encontrarlo en el directorio `/proc`.
 
-Continúa y entra en uno de los procesos y mira ese archivo:
+Continúa e ingresa a uno de los procesos y mira ese archivo:
 
 ```bash
 cat /proc/12345/status
@@ -27,7 +27,11 @@ Deberías ver información del estado del proceso, así como información más d
 
 ## Exercise
 
-No exercises for this lesson.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de los procesos de Linux y la monitorización del sistema:
+
+1. **[Administrar y Monitorizar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para administrar y monitorizar procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer y segundo plano, inspeccionarlos con `ps`, monitorizar recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza con la gestión de procesos y la observación del sistema.
 
 ## Quiz Question
 

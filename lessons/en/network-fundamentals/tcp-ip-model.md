@@ -48,7 +48,13 @@ In the following lessons, we will dive through each of these layers and discuss 
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the TCP/IP model and network fundamentals:
+
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice identifying key network addressing information like MAC and IP addresses using the `ip a` command, which is fundamental to understanding the network and data link layers of the TCP/IP model.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands demonstrate the interaction between the network and data link layers, providing practical insight into how devices communicate within the TCP/IP stack.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Gain hands-on experience simulating network connectivity between Linux nodes, assigning IP addresses, and testing communication, directly applying concepts related to the network layer of the TCP/IP model.
+
+These labs will help you apply the concepts of the TCP/IP model in real scenarios and build confidence with network configuration and troubleshooting.
 
 ## Quiz Question
 

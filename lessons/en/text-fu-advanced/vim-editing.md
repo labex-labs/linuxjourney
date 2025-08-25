@@ -45,7 +45,11 @@ Combine operators with motions for power: `d}` deletes to next paragraph; `caw` 
 
 ## Exercise
 
-Open a file with `vim [file]` and try: `dw`, `cw`, `yy` then `p`, `dd`, `J`, and `.` to repeat a change.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of text editing in Vim:
+
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating files, editing text, saving files, and navigating with both vi/vim and nano. This lab will help you master the fundamental editing commands discussed, such as deleting, changing, yanking, and putting text.
+
+This lab will help you apply the concepts in real scenarios and build confidence with text editing in Linux.
 
 ## Quiz Question
 

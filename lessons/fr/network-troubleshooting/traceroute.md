@@ -9,7 +9,7 @@ meta_keywords: "traceroute, réseau Linux, dépannage réseau, TTL, commandes Li
 
 ## Lesson Content
 
-La commande `traceroute` est utilisée pour voir comment les paquets sont acheminés. Elle fonctionne en envoyant des paquets avec des valeurs TTL (Time To Live) croissantes, en commençant par 1. Ainsi, le premier routeur reçoit le paquet et décrémente la valeur TTL de un, abandonnant ainsi le paquet. Le routeur nous renvoie un message ICMP Time Exceeded. Ensuite, le paquet suivant reçoit un TTL de 2, il passe donc le premier routeur, mais lorsqu'il arrive au deuxième routeur, le TTL est de 0, et il renvoie un autre message ICMP Time Exceeded. Traceroute fonctionne de cette manière car, en envoyant et en abandonnant des paquets, il construit une liste de routeurs que les paquets traversent jusqu'à ce qu'il atteigne finalement sa destination et reçoive un message ICMP Echo Reply.
+La commande `traceroute` est utilisée pour voir comment les paquets sont acheminés. Elle fonctionne en envoyant des paquets avec des valeurs TTL (Time To Live) croissantes, en commençant par 1. Ainsi, le premier routeur reçoit le paquet et décrémente la valeur TTL de un, abandonnant ainsi le paquet. Le routeur nous renvoie un message ICMP Time Exceeded. Ensuite, le paquet suivant reçoit un TTL de 2, il passe donc le premier routeur, mais lorsqu'il arrive au second routeur, le TTL est de 0, et il renvoie un autre message ICMP Time Exceeded. Traceroute fonctionne de cette manière car en envoyant et en abandonnant des paquets, il construit une liste de routeurs que les paquets traversent jusqu'à ce qu'il atteigne finalement sa destination et reçoive un message ICMP Echo Reply.
 
 Voici un petit extrait d'un traceroute :
 
@@ -25,7 +25,12 @@ Chaque ligne représente un routeur ou une machine qui se trouve entre vous et v
 
 ## Exercise
 
-Exécutez la commande `traceroute` sur votre machine et observez la sortie.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la découverte de chemins réseau et du dépannage :
+
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour configurer les paramètres réseau et vérifier la connectivité avec `traceroute`.
+2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment `ping` et `arp` fonctionnent pour comprendre les interactions de la couche réseau, qui sont fondamentales pour le fonctionnement de `traceroute`.
+
+Ces laboratoires vous aideront à appliquer les concepts de diagnostic réseau dans des scénarios réels et à renforcer votre confiance avec les outils de mise en réseau Linux.
 
 ## Quiz Question
 

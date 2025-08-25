@@ -4,12 +4,12 @@ lang: "ko"
 title: "touch"
 meta_title: "touch - 명령줄"
 meta_description: "Linux touch 명령어를 사용하여 새 파일을 만들고 타임스탬프를 업데이트하는 방법을 배우세요. 이 초보자 친화적인 가이드는 파일 관리를 이해하는 데 도움이 됩니다."
-meta_keywords: "touch command, create files, Linux tutorial, file timestamps, Linux for beginners, Linux guide, basic commands"
+meta_keywords: "touch 명령어, 파일 생성, Linux 튜토리얼, 파일 타임스탬프, 초보자를 위한 Linux, Linux 가이드, 기본 명령어"
 ---
 
 ## Lesson Content
 
-파일을 만드는 방법을 배워봅시다. 아주 간단한 방법은 `touch` 명령어를 사용하는 것입니다. `touch`를 사용하면 비어 있는 새 파일을 만들 수 있습니다.
+파일을 만드는 방법을 배워봅시다. 매우 간단한 방법은 `touch` 명령어를 사용하는 것입니다. `touch`를 사용하면 비어 있는 새 파일을 만들 수 있습니다.
 
 ```bash
 touch mysuperduperfile
@@ -23,14 +23,12 @@ touch mysuperduperfile
 
 ## Exercise
 
-1. 새 파일을 만듭니다.
-2. 타임스탬프를 확인합니다.
-3. 파일을 touch 하고 타임스탬프를 다시 확인합니다.
+연습하면 완벽해집니다! 파일 시스템 객체 생성 및 관리에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-파일 관리 실습을 위해 다음 대화형 랩을 살펴보세요:
+1. **[Linux mkdir 명령어: 디렉터리 생성](https://labex.io/ko/labs/linux-linux-mkdir-command-directory-creating-209739)** - Linux 에서 `mkdir` 명령어를 사용하여 디렉터리를 생성하고, 권한을 설정하고, 파일 시스템을 구성하는 방법을 배웁니다. 이는 파일 시스템에서 새 항목을 생성하는 더 넓은 개념을 이해하는 데 도움이 될 것입니다.
+2. **[새 프로젝트 구조 설정](https://labex.io/ko/labs/linux-setting-up-a-new-project-structure-387859)** - `mkdir` 및 `cd`와 같은 필수 명령어를 사용하여 특정 프로젝트 구조를 생성하고 탐색함으로써 Linux 디렉터리 관리 기술을 연습합니다.
 
-- [Linux Directory Navigation](https://labex.io/ko/labs/linux-directory-navigation-387844)
-- [Setting Up a New Project Structure](https://labex.io/ko/labs/linux-setting-up-a-new-project-structure-387859)
+이러한 랩은 실제 시나리오에서 파일 시스템 생성 및 구성 개념을 적용하고 Linux 명령어에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

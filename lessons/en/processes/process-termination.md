@@ -25,7 +25,11 @@ What happens when a child terminates and the parent process hasn't called `wait`
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and their management:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`. This lab will give you practical experience with the lifecycle of processes, including how to terminate them.
+
+This lab will help you apply the concepts of process management and termination in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

@@ -1,21 +1,21 @@
 ---
 index: 1
 lang: "pt"
-title: "Registo de Sistema"
-meta_title: "Registo de Sistema - Registro de Logs"
-meta_description: "Aprenda sobre o registo de sistema Linux, syslog e como visualizar ficheiros de log em /var/log. Compreenda o rsyslogd e monitorize eventos do sistema com este guia para iniciantes."
-meta_keywords: "Registo Linux, syslog, rsyslogd, var log, logs de sistema, tutorial Linux, guia para iniciantes"
+title: "Registro de Sistema"
+meta_title: "Registro de Sistema - Logging"
+meta_description: "Aprenda sobre o registro de sistema Linux, syslog e como visualizar arquivos de log em /var/log. Entenda rsyslogd e monitore eventos do sistema com este guia para iniciantes."
+meta_keywords: "Registro Linux, syslog, rsyslogd, var log, logs do sistema, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content
 
-Os serviços, kernel, daemons, etc., no seu sistema estão constantemente a fazer algo. Estes dados são, na verdade, enviados para serem guardados no seu sistema na forma de logs. Isto permite-nos ter um diário legível por humanos dos eventos que estão a acontecer no nosso sistema. Estes dados são geralmente mantidos no diretório `/var`; o diretório `/var` é onde guardamos os nossos dados variáveis, como os logs!
+Os serviços, kernel, daemons, etc., em seu sistema estão constantemente fazendo algo. Esses dados são realmente enviados para serem salvos em seu sistema na forma de logs. Isso nos permite ter um diário legível por humanos dos eventos que estão acontecendo em nosso sistema. Esses dados geralmente são mantidos no diretório `/var`; o diretório `/var` é onde mantemos nossos dados variáveis, como logs!
 
-Como é que estas mensagens são recebidas no seu sistema? Existe um serviço chamado syslog que envia esta informação para o registador de sistema.
+Como essas mensagens são recebidas em seu sistema? Existe um serviço chamado syslog que envia essas informações para o registrador do sistema.
 
-O Syslog contém, na verdade, muitos componentes. Um dos importantes é um daemon em execução chamado `syslogd` (distribuições Linux mais recentes usam `rsyslogd`), que espera que ocorram mensagens de evento e filtra as que quer saber. Dependendo do que deve fazer com essa mensagem, ele irá enviá-la para um ficheiro, para a sua consola, ou não fazer nada com ela.
+syslog na verdade contém muitos componentes. Um dos importantes é um daemon em execução chamado `syslogd` (distribuições Linux mais recentes usam `rsyslogd`), que espera que mensagens de evento ocorram e filtra as que deseja saber. Dependendo do que ele deve fazer com essa mensagem, ele a enviará para um arquivo, para o seu console ou não fará nada com ela.
 
-Poder-se-ia pensar que este registador de sistema é o local centralizado para gerir logs, mas infelizmente, não é. Verá muitas aplicações que escrevem as suas próprias regras de logging e geram diferentes ficheiros de log. No entanto, em geral, o formato dos logs deve incluir um carimbo de data/hora e os detalhes do evento.
+Você pensaria que este registrador de sistema é o local centralizado para gerenciar logs, mas, infelizmente, não é. Você verá muitos aplicativos que escrevem suas próprias regras de log e geram diferentes arquivos de log. No entanto, em geral, o formato dos logs deve incluir um carimbo de data/hora e os detalhes do evento.
 
 Aqui está um exemplo de uma linha do syslog:
 
@@ -24,15 +24,21 @@ pete@icebox:~$ less /var/log/syslog
 Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 ```
 
-Aqui podemos ver que a 27 de janeiro às 07:41:32, o nosso serviço cron executou a tarefa `cron.weekly`. Pode ver todas as mensagens de evento que o syslog recolhe no ficheiro `/var/log/syslog`.
+Aqui podemos ver que em 27 de janeiro às 07:41:32, nosso serviço cron executou o trabalho `cron.weekly`. Você pode visualizar todas as mensagens de evento que o syslog coleta no arquivo `/var/log/syslog`.
 
 ## Exercise
 
-Observe o seu ficheiro `/var/log/syslog` e veja o que mais está a acontecer na sua máquina.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos logs do Linux e da visualização de arquivos:
+
+1. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Aprenda habilidades essenciais da linha de comando Linux para visualizar e navegar eficientemente em arquivos de texto, incluindo logs do sistema e arquivos de configuração. Pratique o uso de comandos como `cat`, `more` e `less` para extrair informações críticas de vários tipos de arquivo.
+2. **[Comando Linux tail: Exibição do Final do Arquivo](https://labex.io/pt/labs/linux-linux-tail-command-file-end-display-214303)** - Aprenda o comando Linux `tail` para visualizar e monitorar o final dos arquivos de texto. Isso é particularmente útil para análise de log em tempo real.
+3. **[Pesquisar Texto com grep no Linux](https://labex.io/pt/labs/comptia-search-text-with-grep-in-linux-590841)** - Neste laboratório, você aprenderá a pesquisar texto em arquivos em um sistema Linux usando o comando `grep`. Isso é inestimável para encontrar entradas específicas em grandes arquivos de log.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de gerenciamento e análise de arquivos de log em cenários reais e a construir confiança com o monitoramento do sistema Linux.
 
 ## Quiz Question
 
-Qual é o daemon que gere os logs em sistemas Linux mais recentes?
+Qual é o daemon que gerencia logs em sistemas Linux mais recentes?
 
 ## Quiz Answer
 

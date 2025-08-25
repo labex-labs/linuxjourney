@@ -35,7 +35,11 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 ## Exercise
 
-Try to copy a file over with scp from one machine to another.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of secure network file transfer:
+
+1. **[Secure Remote Access in Linux with SSH](https://labex.io/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - Practice key-based authentication, securely transferring files with `scp`, and creating SSH tunnels for port forwarding.
+
+This lab will help you apply the concepts of secure remote access and file transfer in a real scenario and build confidence with `scp`.
 
 ## Quiz Question
 

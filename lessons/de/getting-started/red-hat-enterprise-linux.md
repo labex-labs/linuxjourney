@@ -3,44 +3,43 @@ index: 4
 lang: "de"
 title: "Red Hat Enterprise Linux"
 meta_title: "Red Hat Enterprise Linux - Erste Schritte"
-meta_description: "Erfahren Sie mehr über die Grundlagen von Red Hat Enterprise Linux (RHEL), seinen RPM-Paketmanager und seine Unternehmensanwendungen. Verstehen Sie die Kernunterschiede und Vorteile von RHEL."
+meta_description: "Erfahren Sie mehr über die Grundlagen von Red Hat Enterprise Linux (RHEL), seinen RPM-Paketmanager und seine Verwendung in Unternehmen. Verstehen Sie die Kernunterschiede und Vorteile von RHEL."
 meta_keywords: "RHEL lernen, Red Hat Enterprise Linux, RHEL Grundlagen, RPM Paketmanager, Linux Server OS, RHEL für Anfänger, RHEL Anleitung"
 ---
 
 ## Lesson Content
 
-### Overview
+### Überblick
 
-Red Hat Enterprise Linux (RHEL), oft als RHEL bezeichnet, wird von Red Hat entwickelt. RHEL hat strenge Regeln, um die freie Weitergabe einzuschränken, obwohl es den Quellcode weiterhin kostenlos zur Verfügung stellt. Es ist eine kommerzielle Linux-Distribution, die für Unternehmensumgebungen mit professionellem Support und langfristiger Stabilität konzipiert ist.
+Red Hat Enterprise Linux (RHEL), oft als RHEL bezeichnet, wird von Red Hat entwickelt. RHEL hat strenge Regeln, die die freie Weiterverbreitung einschränken, obwohl es den Quellcode weiterhin kostenlos zur Verfügung stellt. Es ist eine kommerzielle Linux-Distribution, die für Unternehmensumgebungen mit professionellem Support und langfristiger Stabilität konzipiert ist.
 
-### Package Management
+### Paketverwaltung
 
-RHEL verwendet einen anderen Paketmanager als Debian, den RPM-Paketmanager, den wir später auch kennenlernen werden. Das RPM-System umfasst die Tools YUM und DNF für die Paketverwaltung und Abhängigkeitsauflösung.
+RHEL verwendet einen anderen Paketmanager als Debian, den RPM-Paketmanager, den wir schließlich auch kennenlernen werden. Das RPM-System umfasst YUM- und DNF-Tools für die Paketverwaltung und Abhängigkeitsauflösung.
 
-### Configurability
+### Konfigurierbarkeit
 
-RHEL-basierte Betriebssysteme unterscheiden sich geringfügig von Debian-basierten Betriebssystemen, am deutlichsten in der Paketverwaltung. Wenn Sie sich für RHEL entscheiden, ist es wahrscheinlich am besten, wenn Sie wissen, dass Sie damit arbeiten werden.
+RHEL-basierte Betriebssysteme unterscheiden sich geringfügig von Debian-basierten Betriebssystemen, am auffälligsten in der Paketverwaltung. Wenn Sie sich für RHEL entscheiden, ist es wahrscheinlich am besten, wenn Sie wissen, dass Sie damit arbeiten werden.
 
-### Uses
+### Verwendungszwecke
 
 Wie der Name schon sagt, wird es hauptsächlich in Unternehmen eingesetzt. Wenn Sie also ein solides Server-Betriebssystem benötigen, wäre dies eine gute Wahl. RHEL ist besonders beliebt für geschäftskritische Anwendungen, Webserver und Datenbanksysteme in Unternehmensumgebungen.
 
-### Certification Path
+### Zertifizierungspfad
 
 RHEL-Administratoren können Red Hat-Zertifizierungen wie RHCSA (Red Hat Certified System Administrator) und RHCE (Red Hat Certified Engineer) erwerben, die in der Branche hoch geschätzt werden.
 
 ## Exercise
 
-Für eine umfassende RHEL-Schulung und Zertifizierungsvorbereitung sollten Sie den **[Red Hat Enterprise Linux Lernpfad](https://labex.io/de/skilltrees/rhel)** in Betracht ziehen, der strukturierte Kurse bietet, darunter:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzer- und Gruppenverwaltung sowie der Dateiberechtigungen zu vertiefen:
 
-- [Red Hat System Administration (RH124)](https://labex.io/de/courses/red-hat-system-administration-rh124-labs) – Grundlegende Fähigkeiten
-- [Red Hat System Administration (RH134)](https://labex.io/de/courses/red-hat-system-administration-rh134-labs) – Fortgeschrittene Administration
-- [Enterprise Linux Automation with Ansible (RH294)](https://labex.io/de/courses/red-hat-enterprise-linux-automation-with-ansible-rh294)
-- [RHCSA Certification practice exercises](https://labex.io/de/courses/rhcsa-certification-exam-practice-exercises)
+1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. neue Benutzerkonten erstellen, die Benutzerkontenverwaltung ändern und ein Benutzerkonto löschen.
+2. **[Linux-Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie grundlegende Konzepte der Linux-Benutzer- und Gruppenverwaltung, einschließlich des Erstellens und Verwaltens von Benutzern, des Erkundens von Gruppenmitgliedschaften, des Verständnisses von Dateiberechtigungen und des Manipulierens von Dateibesitz.
+3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, indem Sie neue Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Gruppenmitgliedschaften verwalten.
 
-Dieser Lernpfad umfasst 32 Fähigkeiten in über 90 praktischen Labs, die für Systemadministratoren, DevOps-Ingenieure und IT-Experten entwickelt wurden, die eine Red Hat-Zertifizierung anstreben.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Gruppenadministration sowie Dateiberechtigungen unter Linux aufzubauen.
 
-## Quiz Questions
+## Quiz Question
 
 Welchen Paketmanager verwendet RHEL?
 

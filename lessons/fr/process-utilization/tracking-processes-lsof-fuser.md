@@ -2,18 +2,18 @@
 index: 2
 lang: "fr"
 title: "lsof et fuser"
-meta_title: "lsof et fuser - Utilisation des Processus"
-meta_description: "Apprenez à utiliser les commandes lsof et fuser sous Linux pour identifier les processus utilisant des fichiers. Comprenez les erreurs 'Device or Resource Busy' et gérez efficacement les fichiers ouverts."
+meta_title: "lsof et fuser - Utilisation des processus"
+meta_description: "Apprenez à utiliser les commandes lsof et fuser sous Linux pour identifier les processus utilisant des fichiers. Comprenez les erreurs « Périphérique ou ressource occupée » et gérez efficacement les fichiers ouverts."
 meta_keywords: "lsof, fuser, commandes Linux, fichiers ouverts, gestion des processus, tutoriel Linux, guide du débutant, périphérique occupé"
 ---
 
 ## Lesson Content
 
-Disons que vous avez branché une clé USB et commencé à travailler sur des fichiers. Une fois terminé, vous avez essayé de démonter le périphérique USB et avez reçu une erreur : "Device or Resource Busy." Comment feriez-vous pour savoir quels fichiers sur la clé USB sont encore utilisés ? Il existe deux outils que vous pouvez utiliser pour cela :
+Supposons que vous ayez branché une clé USB et commencé à travailler sur des fichiers. Une fois terminé, vous avez essayé de démonter le périphérique USB et avez reçu une erreur : « Périphérique ou ressource occupée ». Comment savoir quels fichiers sur la clé USB sont encore utilisés ? Il existe deux outils que vous pouvez utiliser pour cela :
 
 ### lsof
 
-N'oubliez pas que les fichiers ne sont pas seulement des fichiers texte, des images, etc. ; ils sont tout sur le système : disques, pipes, sockets réseau, périphériques, etc. Pour voir ce qui est utilisé par un processus, vous pouvez utiliser la commande `lsof` (abréviation de "list open files"). Cela vous montrera une liste de tous les fichiers ouverts et de leurs processus associés.
+N'oubliez pas que les fichiers ne sont pas seulement des fichiers texte, des images, etc. ; ils sont tout sur le système : disques, tuyaux, sockets réseau, périphériques, etc. Pour voir ce qui est utilisé par un processus, vous pouvez utiliser la commande `lsof` (abréviation de « list open files »). Cela vous montrera une liste de tous les fichiers ouverts et de leurs processus associés.
 
 ```bash
 pete@icebox:~$ lsof .
@@ -28,11 +28,11 @@ lsof      5914 pete  cwd    DIR    8,6     4096  131 .
 lsof      5915 pete  cwd    DIR    8,6     4096  131 .
 ```
 
-Maintenant, je peux voir quels processus maintiennent le périphérique/fichier ouvert. Dans notre exemple USB, vous pouvez également tuer ces processus afin de pouvoir démonter ce disque gênant.
+Maintenant, je peux voir quels processus maintiennent actuellement le périphérique/fichier ouvert. Dans notre exemple USB, vous pouvez également tuer ces processus afin de pouvoir démonter cette clé récalcitrante.
 
 ### fuser
 
-Une autre façon de suivre un processus est avec la commande `fuser` (abréviation de "file user"). Cela vous montrera des informations sur le processus qui utilise le fichier ou l'utilisateur du fichier.
+Une autre façon de suivre un processus est d'utiliser la commande `fuser` (abréviation de « file user »). Cela vous montrera des informations sur le processus qui utilise le fichier ou l'utilisateur du fichier.
 
 ```bash
 pete@icebox:~$ fuser -v .
@@ -49,7 +49,11 @@ Nous pouvons voir quels processus utilisent actuellement notre répertoire `/hom
 
 ## Exercise
 
-Lisez les pages de manuel pour `lsof` et `fuser`. Il y a beaucoup d'informations que nous n'avons pas couvertes qui vous permettent d'avoir une plus grande flexibilité avec ces outils.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus et du dépannage des conflits de ressources :
+
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à identifier et à gérer les processus qui pourraient retenir des ressources, comme des fichiers sur une clé USB.
+
+Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans l'identification et la gestion des processus système.
 
 ## Quiz Question
 

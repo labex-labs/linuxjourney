@@ -15,7 +15,13 @@ One of the common link state protocols is OSPF (Open Shortest Path First). It on
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Understanding how routing protocols work is crucial for network management. While direct labs on OSPF are not available in this set, building a strong foundation in network configuration and connectivity is essential. Here are some hands-on labs to reinforce your understanding of network fundamentals:
+
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Practice configuring static and dynamic IP addresses, and verifying network settings, which are fundamental to any routing setup.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn to use `ping` and `arp` to understand how devices communicate at the network and data link layers, providing insight into network reachability.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes and practice assigning IP addresses and testing connectivity across different subnets, which helps visualize network topology and routing concepts.
+
+These labs will help you apply the concepts of network configuration and connectivity in real scenarios, building a solid foundation for understanding more advanced routing protocols like OSPF.
 
 ## Quiz Question
 

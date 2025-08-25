@@ -27,9 +27,15 @@ Great for desktop and laptop.
 
 ## Exercise
 
-If you're interested in having Gentoo as your operating system, head over to the installation section and give it a try: `https://www.gentoo.org`
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux file and directory management:
 
-## Quiz Questions
+1. **[Basic Files Operations](https://labex.io/labs/linux-basic-files-operations-270248)** - Practice listing files, changing directories, and moving/copying/deleting files and directories in a real Linux environment.
+2. **[Files and Directories](https://labex.io/labs/linux-files-and-directories-270246)** - Learn to navigate the file system, copy, move, and delete files and directories using basic Linux commands.
+3. **[Basic File Operations in Linux](https://labex.io/labs/linux-basic-file-operations-in-linux-18001)** - Learn essential Linux commands and concepts to navigate the file system, manage files and directories, and use command-line shortcuts.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux file system operations.
+
+## Quiz Question
 
 What package management system does Gentoo use?
 

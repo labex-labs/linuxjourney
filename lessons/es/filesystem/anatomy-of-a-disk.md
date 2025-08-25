@@ -2,48 +2,48 @@
 index: 3
 lang: "es"
 title: "Anatomía de un Disco"
-meta_title: "Anatomía de un Disco - El Filesystem"
-meta_description: "Aprenda sobre el particionamiento de discos en Linux, MBR vs. GPT y la estructura del sistema de archivos. Comprenda las particiones, las tablas y cómo organizar los datos. ¡Comience con esta guía para principiantes!"
+meta_title: "Anatomía de un Disco - El Sistema de Archivos"
+meta_description: "Aprenda sobre el particionamiento de discos Linux, MBR vs. GPT y la estructura del sistema de archivos. Comprenda las particiones, tablas y cómo organizar los datos. ¡Comience con esta guía para principiantes!"
 meta_keywords: "particionamiento de disco Linux, MBR, GPT, estructura del sistema de archivos, particiones Linux, principiante, tutorial, guía"
 ---
 
 ## Lesson Content
 
-Los discos duros pueden subdividirse en particiones, creando esencialmente múltiples dispositivos de bloque. Recuerde ejemplos como `/dev/sda1` y `/dev/sda2`. `/dev/sda` es el disco completo, pero `/dev/sda1` es la primera partición de ese disco. Las particiones son extremadamente útiles para separar datos, y si necesita un determinado filesystem, puede crear fácilmente una partición en lugar de hacer que todo el disco sea de un solo tipo de filesystem.
+Los discos duros pueden subdividirse en particiones, creando esencialmente múltiples dispositivos de bloque. Recordemos ejemplos como `/dev/sda1` y `/dev/sda2`. `/dev/sda` es el disco completo, pero `/dev/sda1` es la primera partición de ese disco. Las particiones son extremadamente útiles para separar datos, y si necesita un determinado sistema de archivos, puede crear fácilmente una partición en lugar de hacer que todo el disco sea de un solo tipo de sistema de archivos.
 
-### Partition Table
+### Tabla de Particiones
 
-Cada disco tendrá una partition table. Esta tabla le dice al sistema cómo está particionado el disco. Esta tabla le indica dónde comienzan y terminan las particiones, qué particiones son bootable, qué sectores del disco están asignados a qué partición, etc. Se utilizan dos esquemas principales de partition table: Master Boot Record (MBR) y GUID Partition Table (GPT).
+Cada disco tendrá una tabla de particiones. Esta tabla le dice al sistema cómo está particionado el disco. Esta tabla le indica dónde comienzan y terminan las particiones, qué particiones son arrancables, qué sectores del disco están asignados a qué partición, etc. Se utilizan dos esquemas principales de tabla de particiones: Master Boot Record (MBR) y GUID Partition Table (GPT).
 
-### Partition
+### Partición
 
-Los discos están compuestos por particiones que nos ayudan a organizar nuestros datos. Puede tener múltiples particiones en un disco, y no pueden superponerse entre sí. Si hay espacio que no está asignado a una partición, se conoce como free space. Los tipos de particiones dependen de su partition table. Dentro de una partición, puede tener un filesystem o dedicar una partición a otras cosas como swap (lo veremos pronto).
+Los discos están compuestos por particiones que nos ayudan a organizar nuestros datos. Puede tener múltiples particiones en un disco, y no pueden superponerse entre sí. Si hay espacio que no está asignado a una partición, se conoce como espacio libre. Los tipos de particiones dependen de su tabla de particiones. Dentro de una partición, puede tener un sistema de archivos o dedicar una partición a otras cosas como swap (pronto llegaremos a eso).
 
 _MBR_
 
-- Partition table tradicional, se usaba como estándar
-- Puede tener primary, extended y logical partitions
-- MBR tiene un límite de cuatro primary partitions
-- Se pueden crear particiones adicionales convirtiendo una primary partition en una extended partition (solo puede haber una extended partition en un disco). Luego, dentro de la extended partition, se añaden logical partitions. Las logical partitions se usan como cualquier otra partición. Es tonto, lo sé.
+- Tabla de particiones tradicional, se usaba como estándar
+- Puede tener particiones primarias, extendidas y lógicas
+- MBR tiene un límite de cuatro particiones primarias
+- Se pueden crear particiones adicionales convirtiendo una partición primaria en una partición extendida (solo puede haber una partición extendida en un disco). Luego, dentro de la partición extendida, se añaden particiones lógicas. Las particiones lógicas se usan como cualquier otra partición. Tonto, lo sé.
 - Soporta discos de hasta 2 terabytes
 
 _GPT_
 
 - GUID Partition Table (GPT) se está convirtiendo en el nuevo estándar para el particionamiento de discos
-- Tiene un solo tipo de partición, y se pueden crear muchas de ellas
-- Cada partición tiene un Globally Unique ID (GUID)
-- Se usa principalmente en conjunto con el arranque basado en UEFI (entraremos en detalles en otro curso)
+- Tiene un solo tipo de partición, y se pueden hacer muchas de ellas
+- Cada partición tiene un ID globalmente único (GUID)
+- Se usa principalmente junto con el arranque basado en UEFI (entraremos en detalles en otro curso)
 
-### Filesystem Structure
+### Estructura del Sistema de Archivos
 
-Sabemos por nuestra lección anterior que un filesystem es una colección organizada de files y directories. En su forma más simple, se compone de una database para gestionar files y los files en sí mismos; sin embargo, vamos a entrar en un poco más de detalle.
+Sabemos por nuestra lección anterior que un sistema de archivos es una colección organizada de archivos y directorios. En su forma más simple, se compone de una base de datos para administrar archivos y los archivos en sí; sin embargo, vamos a entrar en un poco más de detalle.
 
-- Boot block - Esto se encuentra en los primeros sectores del filesystem, y realmente no es utilizado por el filesystem. Más bien, contiene información utilizada para arrancar el operating system. El operating system solo necesita un boot block. Si tiene múltiples particiones, tendrán boot blocks, pero muchos de ellos no se utilizan.
-- Super block - Este es un single block que viene después del boot block, y contiene información sobre el filesystem, como el size de la inode table, size de los logical blocks, y el size del filesystem.
-- Inode table - Piense en esto como la database que gestiona nuestros files (tenemos una lección completa sobre inodes, así que no se preocupe). Cada file o directory tiene una unique entry en la inode table, y tiene diversa información sobre el file.
-- Data blocks - Esta es la actual data para los files y directories.
+- Boot block - Esto se encuentra en los primeros sectores del sistema de archivos, y realmente no es utilizado por el sistema de archivos. Más bien, contiene información utilizada para arrancar el sistema operativo. El sistema operativo solo necesita un boot block. Si tiene varias particiones, tendrán boot blocks, pero muchos de ellos no se utilizan.
+- Super block - Este es un solo bloque que viene después del boot block, y contiene información sobre el sistema de archivos, como el tamaño de la tabla de inodos, el tamaño de los bloques lógicos y el tamaño del sistema de archivos.
+- Inode table - Piense en esto como la base de datos que administra nuestros archivos (tenemos una lección completa sobre inodos, así que no se preocupe). Cada archivo o directorio tiene una entrada única en la tabla de inodos, y tiene diversa información sobre el archivo.
+- Data blocks - Estos son los datos reales de los archivos y directorios.
 
-Echemos un vistazo a las diferentes partition tables. A continuación se muestra un ejemplo de una partición que utiliza la tabla de particiones MBR (msdos). Puede ver las primary, extended y logical partitions en la máquina.
+Echemos un vistazo a las diferentes tablas de particiones. A continuación se muestra un ejemplo de una partición que utiliza la tabla de particiones MBR (msdos). Puede ver las particiones primarias, extendidas y lógicas en la máquina.
 
 ```plaintext
 pete@icebox:~$ sudo parted -l
@@ -59,7 +59,7 @@ Number  Start   End     Size    Type      File system     Flags
  6      7381MB  21.5GB  14.1GB  logical   xfs
 ```
 
-Este ejemplo es GPT, usando solo un unique ID para las particiones.
+Este ejemplo es GPT, usando solo un ID único para las particiones.
 
 ```plaintext
 Model: Thumb Drive (scsi)
@@ -74,7 +74,11 @@ Number  Start   End     Size     File system  Name        Flags
 
 ## Exercise
 
-Ejecute **parted -l** en su máquina y evalúe sus resultados.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del particionamiento de discos y los sistemas de archivos:
+
+1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación de nuevas particiones, formateándolas con sistemas de archivos como ext4, montándolas y configurando el montaje persistente en `/etc/fstab`.
+
+Este laboratorio le ayudará a aplicar los conceptos de administración de discos en escenarios reales y a generar confianza con el almacenamiento de Linux.
 
 ## Quiz Question
 

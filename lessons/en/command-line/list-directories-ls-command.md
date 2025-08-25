@@ -51,11 +51,11 @@ ls -la
 
 ## Exercise
 
-Run `ls` with different flags and see the output you receive.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of the `ls` command:
 
-For hands-on practice with the `ls` command, try this interactive lab:
+- **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Practice using the `ls` command to efficiently list and analyze file and directory contents. You'll learn various options for detailed listings, hidden file display, human-readable sizes, and sorting techniques to enhance your command-line skills.
 
-- [Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)
+This lab will help you apply the concepts in a real scenario and build confidence with directory listing in Linux.
 
 ## Quiz Question
 

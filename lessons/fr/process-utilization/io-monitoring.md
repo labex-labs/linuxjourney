@@ -2,9 +2,9 @@
 index: 5
 lang: "fr"
 title: "Surveillance des E/S"
-meta_title: "Surveillance des E/S - Utilisation des Processus"
+meta_title: "Surveillance des E/S - Utilisation des processus"
 meta_description: "Apprenez à utiliser iostat pour la surveillance des E/S sous Linux. Comprenez les métriques d'utilisation du CPU et du disque avec cette commande essentielle. Améliorez les performances du système !"
-meta_keywords: "iostat, surveillance E/S Linux, utilisation CPU, utilisation disque, commandes Linux, débutant, tutoriel, guide"
+meta_keywords: "iostat, surveillance des E/S Linux, utilisation du CPU, utilisation du disque, commandes Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content
@@ -27,7 +27,7 @@ La première partie concerne les informations CPU :
 - **%user** - Affiche le pourcentage d'utilisation du CPU qui s'est produit lors de l'exécution au niveau utilisateur (application).
 - **%nice** - Affiche le pourcentage d'utilisation du CPU qui s'est produit lors de l'exécution au niveau utilisateur avec une priorité nice.
 - **%system** - Affiche le pourcentage d'utilisation du CPU qui s'est produit lors de l'exécution au niveau système (noyau).
-- **%iowait** - Affiche le pourcentage de temps pendant lequel le ou les CPU étaient inactifs, période durant laquelle le système avait une requête d'E/S disque en attente.
+- **%iowait** - Affiche le pourcentage de temps pendant lequel le ou les CPU étaient inactifs alors que le système avait une requête d'E/S disque en attente.
 - **%steal** - Affiche le pourcentage de temps passé en attente involontaire par le ou les CPU virtuels pendant que l'hyperviseur servait un autre processeur virtuel.
 - **%idle** - Affiche le pourcentage de temps pendant lequel le ou les CPU étaient inactifs et le système n'avait pas de requête d'E/S disque en attente.
 
@@ -41,11 +41,17 @@ La deuxième partie concerne l'utilisation du disque :
 
 ## Exercise
 
-Utilisez iostat pour visualiser votre utilisation du disque.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la surveillance du système et de l'utilisation du disque :
+
+1. **[Commande Linux df : Rapports d'espace disque](https://labex.io/fr/labs/linux-linux-df-command-disk-space-reporting-219188)** - Entraînez-vous à rapporter l'utilisation de l'espace disque sur les systèmes de fichiers montés, un aspect clé de la surveillance.
+2. **[Commande Linux du : Estimation de l'espace fichier](https://labex.io/fr/labs/linux-linux-du-command-file-space-estimating-219190)** - Apprenez à estimer l'utilisation de l'espace disque pour les répertoires et sous-répertoires, complétant les informations d'E/S disque de `iostat`.
+3. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Explorez la surveillance du système en temps réel, y compris l'utilisation du CPU et de la mémoire, ce qui fournit un contexte plus large pour les métriques CPU vues dans `iostat`.
+
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la surveillance des ressources du système Linux.
 
 ## Quiz Question
 
-Quelle commande peut être utilisée pour visualiser l'utilisation des E/S et du CPU ?
+Quelle commande peut être utilisée pour afficher l'utilisation des E/S et du CPU ?
 
 ## Quiz Answer
 

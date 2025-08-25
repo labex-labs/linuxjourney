@@ -1,15 +1,15 @@
 ---
 index: 7
 lang: "pt"
-title: "Edição no Vim"
-meta_title: "Edição no Vim - Text-Fu Avançado"
-meta_description: "Aprenda os conceitos básicos de edição no Vim: deletar, alterar, copiar e colar texto de forma eficiente. Domine os comandos essenciais do Vim para iniciantes e melhore suas habilidades de edição de texto no Linux."
+title: "Edição Vim"
+meta_title: "Edição Vim - Text-Fu Avançado"
+meta_description: "Aprenda os conceitos básicos de edição do Vim: deletar, alterar, copiar e colar texto de forma eficiente. Domine os comandos essenciais do Vim para iniciantes e melhore suas habilidades de edição de texto no Linux."
 meta_keywords: "edição Vim, comandos Vim, editor de texto Linux, tutorial Vim, guia Vim, Vim para iniciantes, comando dd, deletar Vim"
 ---
 
 ## Lesson Content
 
-Editar no Vim é feito a partir do modo Normal usando operadores e movimentos. Você pode deletar, alterar, copiar (yank), colar (put) e substituir texto de forma eficiente.
+A edição no Vim é feita a partir do modo Normal usando operadores e movimentos. Você pode deletar, alterar, copiar (yank), colar (put) e substituir texto de forma eficiente.
 
 - Pressione `Esc` para garantir que você esteja no modo Normal antes de usar esses comandos.
 
@@ -45,7 +45,11 @@ Combine operadores com movimentos para ter poder: `d}` deleta até o próximo pa
 
 ## Exercise
 
-Abra um arquivo com `vim [file]` e tente: `dw`, `cw`, `yy` então `p`, `dd`, `J`, e `.` para repetir uma alteração.
+A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão da edição de texto no Vim:
+
+1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a dominar os comandos de edição fundamentais discutidos, como deletar, alterar, copiar e colar texto.
+
+Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança na edição de texto no Linux.
 
 ## Quiz Question
 

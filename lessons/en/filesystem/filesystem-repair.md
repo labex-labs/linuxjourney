@@ -19,7 +19,11 @@ sudo fsck /dev/sda
 
 ## Exercise
 
-Look at the manpage for fsck to see what else it can do.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux filesystems and their management:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In this lab, you'll gain practical experience with creating, formatting, and mounting partitions, which is crucial for understanding how filesystems are structured and maintained. This foundational knowledge will help you better grasp concepts like filesystem integrity and recovery.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux filesystem administration.
 
 ## Quiz Question
 

@@ -49,7 +49,11 @@ We can see which processes are currently using our `/home/pete` directory. The `
 
 ## Exercise
 
-Read the man pages for `lsof` and `fuser`. There is a lot of information that we didn't cover that allows you to have greater flexibility with these tools.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of managing processes and troubleshooting resource conflicts:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`. This lab will help you identify and manage processes that might be holding onto resources, like files on a USB drive.
+
+This lab will help you apply the concepts in real scenarios and build confidence with identifying and managing system processes.
 
 ## Quiz Question
 

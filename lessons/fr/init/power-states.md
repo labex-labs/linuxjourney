@@ -4,7 +4,7 @@ lang: "fr"
 title: "États d'alimentation"
 meta_title: "États d'alimentation - Init"
 meta_description: "Apprenez les états d'alimentation du système Linux : commandes shutdown, reboot et halt. Comprenez comment éteindre ou redémarrer votre système Linux en toute sécurité. Démarrez avec les commandes essentielles !"
-meta_keywords: "arrêt Linux, commande de redémarrage, système halt, éteindre Linux, commandes Linux, Linux débutant, tutoriel Linux, états du système"
+meta_keywords: "arrêt Linux, commande reboot, système halt, éteindre Linux, commandes Linux, Linux débutant, tutoriel Linux, états du système"
 ---
 
 ## Lesson Content
@@ -37,7 +37,7 @@ sudo reboot
 
 ## Exercise
 
-Que pensez-vous qu'il se passe avec `init` lorsque vous éteignez votre machine ?
+Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux connexes.
 
 ## Quiz Question
 

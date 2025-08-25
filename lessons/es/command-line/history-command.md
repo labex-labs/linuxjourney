@@ -3,25 +3,25 @@ index: 9
 lang: "es"
 title: "history"
 meta_title: "history - Línea de Comandos"
-meta_description: "Aprenda a usar el comando history de Linux, el atajo !! y Ctrl-R para una recuperación eficiente de comandos. ¡Mejore su productividad en la terminal con estos consejos esenciales!"
+meta_description: "Aprende a usar el comando history de Linux, el atajo !! y Ctrl-R para una recuperación eficiente de comandos. ¡Mejora tu productividad en la terminal con estos consejos esenciales!"
 meta_keywords: "historial de Linux, historial de bash, Ctrl-R, comando clear, tutorial de Linux, línea de comandos, guía para principiantes"
 ---
 
 ## Lesson Content
 
-En su shell, hay un historial de los comandos que ingresó previamente. De hecho, puede revisar estos comandos. Esto es bastante útil cuando desea encontrar y ejecutar un comando que usó anteriormente sin tener que escribirlo de nuevo.
+En tu shell, hay un historial de los comandos que ingresaste previamente. Puedes revisar estos comandos. Esto es bastante útil cuando quieres encontrar y ejecutar un comando que usaste anteriormente sin tener que escribirlo de nuevo.
 
 ```bash
 history
 ```
 
-¿Quiere ejecutar el mismo comando que hizo antes? Simplemente presione la flecha hacia arriba.
+¿Quieres ejecutar el mismo comando que hiciste antes? Simplemente presiona la flecha hacia arriba.
 
-¿Quiere ejecutar el comando anterior sin escribirlo de nuevo? Use `!!`. Si escribió `cat file1` y quiere ejecutarlo de nuevo, en realidad solo puede escribir `!!` y ejecutará el último comando que ejecutó.
+¿Quieres ejecutar el comando anterior sin escribirlo de nuevo? Usa `!!`. Si escribiste `cat file1` y quieres ejecutarlo de nuevo, puedes simplemente escribir `!!` y ejecutará el último comando que corriste.
 
-Otro atajo del historial es `Ctrl-R`. Este es el comando de búsqueda inversa. Si presiona `Ctrl-R` y comienza a escribir partes del comando que desea, le mostrará coincidencias. Puede navegar por ellas presionando la tecla `Ctrl-R` de nuevo. Una vez que encuentre el comando que desea usar de nuevo, simplemente presione la tecla Enter.
+Otro atajo del historial es `Ctrl-R`. Este es el comando de búsqueda inversa. Si presionas `Ctrl-R` y empiezas a escribir partes del comando que quieres, te mostrará las coincidencias. Puedes navegar a través de ellas presionando la tecla `Ctrl-R` de nuevo. Una vez que encuentres el comando que quieres usar de nuevo, simplemente presiona la tecla Enter.
 
-Nuestra terminal se está llenando un poco, ¿no? Hagamos una pequeña limpieza. Use el comando `clear` para limpiar su pantalla.
+Nuestra terminal se está desordenando un poco, ¿no? Hagamos una pequeña limpieza. Usa el comando `clear` para limpiar tu pantalla.
 
 ```bash
 clear
@@ -29,16 +29,11 @@ clear
 
 Ahí, eso se ve mejor, ¿verdad?
 
-Mientras hablamos de cosas útiles, una de las características más útiles en cualquier entorno de línea de comandos es el autocompletado con tabulador. Si comienza a escribir el principio de un comando, archivo, directorio, etc., y presiona la tecla Tab, se autocompletará según lo que encuentre en el directorio que está buscando, siempre y cuando no tenga otros archivos que comiencen con esas letras. Por ejemplo, si intentara ejecutar el comando `chrome`, puede escribir `chr` y presionar Tab, y se autocompletará a `chrome`.
+Mientras hablamos de cosas útiles, una de las características más útiles en cualquier entorno de línea de comandos es la completación por tabulación. Si empiezas a escribir el comienzo de un comando, archivo, directorio, etc., y presionas la tecla Tab, se autocompletará basándose en lo que encuentre en el directorio que estás buscando, siempre y cuando no tengas otros archivos que empiecen con esas letras. Por ejemplo, si intentaras ejecutar el comando `chrome`, puedes escribir `chr` y presionar Tab, y se autocompletará a `chrome`.
 
 ## Exercise
 
-Navegue por su historial de comandos anterior con las teclas Arriba y Abajo. Juegue con la búsqueda inversa `Ctrl-R`.
-
-Para práctica adicional con la navegación de la línea de comandos de Linux, explore estos laboratorios interactivos:
-
-- [Linux Directory Navigation](https://labex.io/es/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 

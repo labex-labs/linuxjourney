@@ -23,13 +23,13 @@ Normally, in the `cat` command, you send a file to it and that file becomes the 
 
 ## Exercise
 
-Try out a couple of commands:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of input and output redirection in Linux:
 
-```bash
-echo < peanuts.txt > banana.txt
-ls < peanuts.txt > banana.txt
-pwd < peanuts.txt > banana.txt
-```
+1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like >, >>, 2>, and the tee command.
+2. **[Data Stream Redirection](https://labex.io/labs/linux-data-stream-redirection-17995)** - Learn the art of Linux stream redirection. Manipulate standard input, output, and error streams, combine outputs, and utilize /dev/null for advanced file operations.
+3. **[Sequence Control and Pipeline](https://labex.io/labs/linux-sequence-control-and-pipeline-17994)** - Learn to control command execution sequences and utilize pipelines, which are fundamental to directing output from one command as input to another.
+
+These labs will help you apply the concepts of input and output redirection in real scenarios and build confidence with shell scripting and data manipulation.
 
 ## Quiz Question
 

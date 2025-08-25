@@ -15,10 +15,11 @@ Vim and Emacs are popular text editors that are installed by default on most Lin
 
 ## Exercise
 
-Take a little tour of Vim and Emacs:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux text editors:
 
-- [Vim](http://www.vim.org/)
-- [Emacs](https://www.gnu.org/software/emacs/)
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating files, editing text, saving files, and navigating with both vi/vim and nano, essential skills for any Linux user.
+
+This lab will help you apply the concepts of using command-line text editors in real scenarios and build confidence with these powerful tools.
 
 ## Quiz Question
 

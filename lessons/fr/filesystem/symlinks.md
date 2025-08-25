@@ -1,10 +1,10 @@
 ---
 index: 12
 lang: "fr"
-title: "symlinks"
-meta_title: "symlinks - Le Filesystem"
-meta_description: "Apprenez-en davantage sur les symlinks et les hard links Linux, y compris comment les créer et les gérer. Comprenez leurs différences et leurs cas d'utilisation avec ce guide convivial pour débutants."
-meta_keywords: "symlinks Linux, hard links, commande ln, liens symboliques, système de fichiers Linux, tutoriel Linux, Linux pour débutants"
+title: "Liens symboliques"
+meta_title: "Liens symboliques - Le système de fichiers"
+meta_description: "Découvrez les liens symboliques et physiques Linux, y compris comment les créer et les gérer. Comprenez leurs différences et leurs cas d'utilisation avec ce guide convivial pour débutants."
+meta_keywords: "Liens symboliques Linux, liens physiques, commande ln, liens symboliques, système de fichiers Linux, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content
@@ -17,11 +17,11 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-Vous avez peut-être remarqué que nous avons ignoré le troisième champ de la commande `ls` ; ce champ est le nombre de liens. Le nombre de liens est le nombre total de liens physiques (hard links) qu'un fichier possède. Eh bien, cela ne signifie rien pour vous pour l'instant, alors discutons d'abord des liens.
+Vous avez peut-être remarqué que nous avons survolé le troisième champ de la commande `ls` ; ce champ est le nombre de liens. Le nombre de liens est le nombre total de liens physiques qu'un fichier possède. Eh bien, cela ne signifie rien pour vous pour l'instant, alors discutons d'abord des liens.
 
-### Symlinks
+### Liens symboliques (Symlinks)
 
-Dans le système d'exploitation Windows, il existe des éléments appelés raccourcis. Les raccourcis ne sont que des alias vers d'autres fichiers. Si vous faites quelque chose au fichier original, vous pourriez potentiellement casser le raccourci. Sous Linux, l'équivalent des raccourcis sont les liens symboliques (ou soft links ou symlinks). Les symlinks nous permettent de lier à un autre fichier par son nom de fichier. Un autre type de lien trouvé sous Linux est les liens physiques (hard links) ; ce sont en fait un autre fichier avec un lien vers un inode. Voyons ce que je veux dire en pratique, en commençant par les symlinks.
+Dans le système d'exploitation Windows, il existe des choses appelées raccourcis. Les raccourcis ne sont que des alias vers d'autres fichiers. Si vous faites quelque chose au fichier original, vous pourriez potentiellement casser le raccourci. Sous Linux, l'équivalent des raccourcis sont les liens symboliques (ou liens souples ou symlinks). Les symlinks nous permettent de lier à un autre fichier par son nom de fichier. Un autre type de lien trouvé sous Linux est les liens physiques (hard links) ; ce sont en fait un autre fichier avec un lien vers un inode. Voyons ce que je veux dire en pratique, en commençant par les symlinks.
 
 ```bash
 pete@icebox:~/Desktop$ echo 'myfile' > myfile
@@ -39,9 +39,9 @@ total 12
 
 Vous pouvez voir que j'ai créé un lien symbolique nommé `myfilelink` qui pointe vers `myfile`. Les liens symboliques sont indiqués par `->`. Remarquez cependant que j'ai obtenu un nouveau numéro d'inode ; les symlinks ne sont que des fichiers qui pointent vers des noms de fichiers. Lorsque vous modifiez un symlink, le fichier est également modifié. Les numéros d'inode sont uniques aux systèmes de fichiers ; vous ne pouvez pas avoir deux fois le même numéro d'inode dans un seul système de fichiers, ce qui signifie que vous ne pouvez pas référencer un fichier dans un système de fichiers différent par son numéro d'inode. Cependant, si vous utilisez des symlinks, ils n'utilisent pas de numéros d'inode ; ils utilisent des noms de fichiers, ils peuvent donc être référencés à travers différents systèmes de fichiers.
 
-### Hardlinks
+### Liens physiques (Hardlinks)
 
-Voyons un exemple de hardlink :
+Voyons un exemple de lien physique :
 
 ```bash
 pete@icebox:~/Desktop$ ln myfile2 myhardlink
@@ -54,9 +54,9 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-Un hardlink crée simplement un autre fichier avec un lien vers le même inode. Donc, si je modifiais le contenu de `myfile2` ou `myhardlink`, le changement serait visible sur les deux. Mais si je supprimais `myfile2`, le fichier serait toujours accessible via `myhardlink`. C'est là que notre nombre de liens dans la commande `ls` entre en jeu. Le nombre de liens est le nombre de hardlinks qu'un inode possède. Lorsque vous supprimez un fichier, cela diminue ce nombre de liens. L'inode n'est supprimé que lorsque tous les hardlinks vers l'inode ont été supprimés. Lorsque vous créez un fichier, son nombre de liens est de 1 car c'est le seul fichier qui pointe vers cet inode. Contrairement aux symlinks, les hardlinks ne s'étendent pas sur plusieurs systèmes de fichiers car les inodes sont uniques au système de fichiers.
+Un lien physique crée simplement un autre fichier avec un lien vers le même inode. Donc, si je modifiais le contenu de `myfile2` ou `myhardlink`, le changement serait visible sur les deux. Mais si je supprimais `myfile2`, le fichier serait toujours accessible via `myhardlink`. C'est ici que notre nombre de liens dans la commande `ls` entre en jeu. Le nombre de liens est le nombre de liens physiques qu'un inode possède. Lorsque vous supprimez un fichier, cela diminue ce nombre de liens. L'inode n'est supprimé que lorsque tous les liens physiques vers l'inode ont été supprimés. Lorsque vous créez un fichier, son nombre de liens est de 1 car c'est le seul fichier qui pointe vers cet inode. Contrairement aux symlinks, les liens physiques ne s'étendent pas sur les systèmes de fichiers car les inodes sont uniques au système de fichiers.
 
-### Creating a symlink
+### Création d'un lien symbolique
 
 ```bash
 ln -s myfile mylink
@@ -64,7 +64,7 @@ ln -s myfile mylink
 
 Pour créer un lien symbolique, vous utilisez la commande `ln` avec `-s` pour symbolique, et vous spécifiez un fichier cible puis un nom de lien.
 
-### Creating a hardlink
+### Création d'un lien physique
 
 ```bash
 ln somefile somelink
@@ -74,11 +74,16 @@ Similaire à la création d'un symlink, sauf que cette fois vous omettez le `-s`
 
 ## Exercise
 
-Amusez-vous à créer des symlinks et des hardlinks. Supprimez-en quelques-uns et voyez ce qui se passe.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des fichiers, des liens et des inodes :
+
+1. **[Gérer les fichiers et les répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Entraînez-vous à créer, copier, déplacer et supprimer des fichiers et des répertoires, et apprenez spécifiquement sur les liens symboliques et physiques, et comment analyser les inodes.
+2. **[Naviguer dans le système de fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Maîtrisez les commandes essentielles comme `pwd`, `cd` et `ls` pour vous déplacer efficacement dans le système de fichiers Linux, une compétence fondamentale pour comprendre où résident les fichiers et leurs inodes.
+
+Ces laboratoires vous aideront à appliquer les concepts de gestion de fichiers et de liens dans des scénarios réels et à renforcer votre confiance avec le système de fichiers Linux.
 
 ## Quiz Question
 
-Quelle est la commande utilisée pour créer un symlink ?
+Quelle est la commande utilisée pour créer un lien symbolique ?
 
 ## Quiz Answer
 

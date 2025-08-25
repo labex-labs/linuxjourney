@@ -9,7 +9,7 @@ meta_keywords: "Commande Linux file, identifier le type de fichier, tutoriel Lin
 
 ## Lesson Content
 
-Lors de la leçon précédente, nous avons appris à utiliser `touch`. Revenons-y un instant. Avez-vous remarqué que le nom de fichier ne respectait pas les conventions de nommage standard, comme vous l'avez probablement vu avec d'autres systèmes d'exploitation tels que Windows ? Normalement, vous vous attendriez à ce qu'un fichier nommé `banana.jpeg` soit un fichier image JPEG.
+Dans la leçon précédente, nous avons appris à utiliser `touch`. Revenons-y un instant. Avez-vous remarqué que le nom de fichier ne respectait pas les conventions de nommage standard, comme vous l'avez probablement vu avec d'autres systèmes d'exploitation tels que Windows ? Normalement, vous vous attendriez à ce qu'un fichier nommé `banana.jpeg` soit un fichier image JPEG.
 
 Sous Linux, les noms de fichiers ne sont pas tenus de représenter le contenu du fichier. Vous pouvez créer un fichier nommé `funny.gif` qui n'est pas réellement un GIF.
 
@@ -21,16 +21,17 @@ file banana.jpg
 
 ## Exercise
 
-Exécutez la commande `file` sur quelques répertoires et fichiers différents et notez la sortie.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'inspection du contenu et des propriétés des fichiers :
 
-Pour une pratique supplémentaire des opérations sur les fichiers, explorez ces laboratoires interactifs :
+1. **[Commande Linux ls : Liste de contenu](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)** - Apprenez la commande Linux `ls` pour lister et analyser efficacement le contenu des fichiers et des répertoires, ce qui précède ou suit souvent l'utilisation de la commande `file` pour comprendre ce qui se trouve dans vos répertoires.
+2. **[Commande Linux cat : Concaténation de fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Entraînez-vous à visualiser et à manipuler des fichiers texte, une tâche courante après avoir identifié le type d'un fichier.
+3. **[Commande Linux more : Défilement de fichiers](https://labex.io/fr/labs/linux-linux-more-command-file-scrolling-214299)** - Améliorez vos compétences en ligne de commande pour naviguer et explorer de grands fichiers texte, en vous appuyant sur la capacité à identifier les types de fichiers et à inspecter leur contenu.
 
-- [Linux find Command: File Searching](https://labex.io/fr/labs/linux-linux-find-command-file-searching-219191)
-- [Linux ls Command: Content Listing](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)
+Ces laboratoires vous aideront à appliquer les concepts d'inspection de fichiers et de visualisation de contenu dans des scénarios réels et à renforcer votre confiance dans la gestion des fichiers sous Linux.
 
 ## Quiz Question
 
-Quelle commande pouvez-vous utiliser pour trouver le type d'un fichier ?
+Quelle commande pouvez-vous utiliser pour trouver le type de fichier d'un fichier ?
 
 ## Quiz Answer
 

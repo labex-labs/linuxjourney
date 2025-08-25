@@ -3,15 +3,15 @@ index: 4
 lang: "pt"
 title: "sysfs"
 meta_title: "sysfs - Dispositivos"
-meta_description: "Aprenda sobre sysfs, um sistema de arquivos virtual para informações e gerenciamento detalhados de dispositivos Linux. Entenda /sys vs /dev. Comece sua jornada no Linux!"
+meta_description: "Aprenda sobre sysfs, um sistema de arquivos virtual para informações e gerenciamento detalhados de dispositivos Linux. Entenda /sys vs /dev. Comece sua jornada Linux!"
 meta_keywords: "sysfs, diretório /sys, dispositivos Linux, sistema de arquivos virtual, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content
 
-Sysfs foi criado há muito tempo para gerenciar melhor os dispositivos em nosso sistema, uma tarefa que o diretório `/dev` não conseguiu realizar adequadamente. Sysfs é um sistema de arquivos virtual, na maioria das vezes montado no diretório `/sys`. Ele nos fornece informações mais detalhadas do que seríamos capazes de ver no diretório `/dev`. Ambos os diretórios, `/sys` e `/dev`, parecem muito semelhantes e são em alguns aspectos, mas eles têm grandes diferenças. Basicamente, o diretório `/dev` é simples; ele permite que outros programas acessem os próprios dispositivos, enquanto o sistema de arquivos `/sys` é usado para visualizar informações e gerenciar o dispositivo.
+O Sysfs foi criado há muito tempo para gerenciar melhor os dispositivos em nosso sistema, uma tarefa que o diretório `/dev` não conseguiu realizar adequadamente. O Sysfs é um sistema de arquivos virtual, geralmente montado no diretório `/sys`. Ele nos fornece informações mais detalhadas do que seríamos capazes de ver no diretório `/dev`. Ambos os diretórios, `/sys` e `/dev`, parecem muito semelhantes e são em alguns aspectos, mas eles têm grandes diferenças. Basicamente, o diretório `/dev` é simples; ele permite que outros programas acessem os próprios dispositivos, enquanto o sistema de arquivos `/sys` é usado para visualizar informações e gerenciar o dispositivo.
 
-O sistema de arquivos `/sys` basicamente contém todas as informações para todos os dispositivos em seu sistema, como o fabricante e o modelo, onde o dispositivo está conectado, o estado do dispositivo, a hierarquia dos dispositivos e muito mais. Os arquivos que você vê aqui não são nós de dispositivo, então você realmente não interage com dispositivos a partir do diretório `/sys`; em vez disso, você está gerenciando dispositivos.
+O sistema de arquivos `/sys` basicamente contém todas as informações para todos os dispositivos em seu sistema, como o fabricante e o modelo, onde o dispositivo está conectado, o estado do dispositivo, a hierarquia dos dispositivos e muito mais. Os arquivos que você vê aqui não são nós de dispositivo, então você realmente não interage com os dispositivos a partir do diretório `/sys`; em vez disso, você está gerenciando dispositivos.
 
 Veja o conteúdo do diretório `/sys`:
 
@@ -26,7 +26,11 @@ device            ext_range          range     sda5       subsystem
 
 ## Exercise
 
-Verifique o conteúdo do diretório `/sys` e veja quais arquivos estão localizados lá.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da exploração de dispositivos de hardware no Linux:
+
+1. **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Pratique a identificação e inspeção de dispositivos de hardware em um ambiente Linux, de forma semelhante a como o sistema de arquivos `/sys` fornece informações sobre dispositivos.
+
+Este laboratório o ajudará a aplicar os conceitos de compreensão do hardware do sistema e sua representação no Linux, construindo confiança na exploração de dispositivos.
 
 ## Quiz Question
 

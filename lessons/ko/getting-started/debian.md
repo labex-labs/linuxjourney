@@ -13,7 +13,7 @@ meta_keywords: "Debian, Debian Linux, Linux 배포판, 롤링 릴리스, 패키�
 
 Debian 은 전적으로 자유 및 오픈 소스 소프트웨어로 구성된 운영 체제입니다. 널리 알려져 있으며 20 년 이상 개발되어 왔습니다. Stable, Testing, Unstable 의 세 가지 브랜치를 사용할 수 있습니다.
 
-Stable 은 전반적으로 좋은 브랜치입니다. Testing 과 Unstable 은 롤링 릴리스입니다. 이는 해당 브랜치의 모든 증분 변경 사항이 결국 Stable 이 된다는 것을 의미합니다. 예를 들어, Windows 8 에서 Windows 10 으로 다음 업데이트를 받으려면 완전한 Windows 10 설치를 해야 합니다. 그러나 Testing 릴리스를 사용하면 전체 설치를 할 필요 없이 다음 운영 체제 릴리스가 될 때까지 자동으로 업데이트를 받게 됩니다.
+Stable 은 전반적으로 좋은 브랜치입니다. Testing 과 Unstable 은 롤링 릴리스입니다. 이는 해당 브랜치의 모든 증분 변경 사항이 결국 Stable 이 된다는 의미입니다. 예를 들어, Windows 8 에서 Windows 10 으로 다음 업데이트를 받으려면 완전한 Windows 10 설치를 해야 합니다. 그러나 Testing 릴리스를 사용하면 전체 설치를 할 필요 없이 다음 운영 체제 릴리스가 될 때까지 자동으로 업데이트를 받게 됩니다.
 
 ### 패키지 관리
 
@@ -29,9 +29,13 @@ Debian 은 모든 플랫폼에 전반적으로 훌륭한 운영 체제입니다.
 
 ## Exercise
 
-이 실습 랩으로 Linux 기술을 연습하세요:
+연습이 완벽을 만듭니다! 다음은 Linux 파일 및 디렉토리 관리에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-- [Your First Linux Lab](https://labex.io/ko/labs/linux-your-first-linux-lab-270253)
+1. **[기본 파일 작업](https://labex.io/ko/labs/linux-basic-files-operations-270248)** - 실제 Linux 환경에서 파일 나열, 디렉토리 변경, 파일 및 디렉토리 이동/복사/삭제를 연습합니다.
+2. **[파일 및 디렉토리](https://labex.io/ko/labs/linux-files-and-directories-270246)** - 기본 Linux 명령을 사용하여 파일 시스템을 탐색하고 파일 및 디렉토리를 복사, 이동 및 삭제하는 방법을 배웁니다.
+3. **[Linux 의 기본 파일 작업](https://labex.io/ko/labs/linux-basic-file-operations-in-linux-18001)** - 파일 시스템을 탐색하고 파일 및 디렉토리를 관리하며 와일드카드를 사용하는 데 필요한 필수 Linux 명령 및 개념을 배웁니다.
+
+이러한 랩은 실제 시나리오에 개념을 적용하고 Linux 파일 시스템 작업에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

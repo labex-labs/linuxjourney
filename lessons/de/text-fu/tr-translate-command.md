@@ -9,7 +9,7 @@ meta_keywords: "tr Befehl, Linux tr, Zeichen übersetzen, Zeichen löschen, Linu
 
 ## Lesson Content
 
-Der `tr` (translate) Befehl ermöglicht es Ihnen, einen Zeichensatz in einen anderen Zeichensatz zu übersetzen. Versuchen wir ein Beispiel, bei dem alle Kleinbuchstaben in Großbuchstaben übersetzt werden.
+Der Befehl `tr` (translate) ermöglicht es Ihnen, einen Zeichensatz in einen anderen Zeichensatz zu übersetzen. Versuchen wir ein Beispiel, bei dem alle Kleinbuchstaben in Großbuchstaben übersetzt werden.
 
 ```bash
 $ tr a-z A-Z
@@ -17,20 +17,19 @@ hello
 HELLO
 ```
 
-Wie Sie sehen können, haben wir die Bereiche von `a-z` in `A-Z` umgewandelt, und jeder Text, den wir eingeben und der klein geschrieben ist, wird groß geschrieben.
+Wie Sie sehen können, haben wir die Bereiche von `a-z` in `A-Z` umgewandelt, und jeder Text, den wir in Kleinbuchstaben eingeben, wird in Großbuchstaben umgewandelt.
 
 ## Exercise
 
-Probieren Sie den folgenden Befehl aus. Was passiert?
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Zeichenübersetzung und Textverarbeitung zu vertiefen:
 
-```bash
-$ tr -d ello
-hello
-```
+1. **[Linux tr Befehl: Zeichenübersetzung](https://labex.io/de/labs/linux-linux-tr-command-character-translating-219198)** - Lernen Sie den Linux-Befehl `tr` für zeichenbasierte Transformationen in Textströmen. Sie üben das Übersetzen von Zeichen, das Löschen spezifischer Zeichen, das Arbeiten mit Zeichenklassen und das Komprimieren wiederholter Zeichen.
+
+Dieses Lab hilft Ihnen, die Konzepte der Textmanipulation in realen Szenarien anzuwenden und Vertrauen in den `tr`-Befehl aufzubauen.
 
 ## Quiz Question
 
-Welcher Befehl wird verwendet, um Zeichen zu übersetzen?
+Welcher Befehl wird zum Übersetzen von Zeichen verwendet?
 
 ## Quiz Answer
 

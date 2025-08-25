@@ -23,9 +23,11 @@ When you run the `umask` command, it will apply that default set of permissions 
 
 ## Exercise
 
-1. Create a new file, then note its permissions.
-2. Modify the `umask` and then create another new file.
-3. Check the permissions once more on the new file. What do you expect to see?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file permissions and how they relate to default settings:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Practice creating and managing users, exploring group memberships, understanding file permissions, and manipulating file ownership. This lab provides practical experience in securing a multi-user Linux environment, which is crucial for understanding how `umask` influences new file permissions.
+
+This lab will help you apply the concepts of file permissions in real scenarios and build confidence with managing access in Linux.
 
 ## Quiz Question
 

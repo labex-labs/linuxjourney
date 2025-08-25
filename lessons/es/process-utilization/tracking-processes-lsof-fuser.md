@@ -3,17 +3,17 @@ index: 2
 lang: "es"
 title: "lsof y fuser"
 meta_title: "lsof y fuser - Utilización de Procesos"
-meta_description: "Aprende a usar los comandos lsof y fuser en Linux para identificar procesos que utilizan archivos. Comprende los errores 'Device or Resource Busy' y gestiona los archivos abiertos de forma eficaz."
+meta_description: "Aprende a usar los comandos lsof y fuser en Linux para identificar procesos que usan archivos. Comprende los errores de 'Dispositivo o Recurso Ocupado' y gestiona los archivos abiertos de forma eficaz."
 meta_keywords: "lsof, fuser, comandos Linux, archivos abiertos, gestión de procesos, tutorial Linux, guía para principiantes, dispositivo ocupado"
 ---
 
 ## Lesson Content
 
-Digamos que conectaste una unidad USB y empezaste a trabajar en algunos archivos. Una vez que terminaste, intentaste desmontar el dispositivo USB y recibiste un error: "Device or Resource Busy" (Dispositivo o Recurso Ocupado). ¿Cómo averiguarías qué archivos de la unidad USB siguen en uso? Hay dos herramientas que puedes usar para esto:
+Digamos que conectaste una unidad USB y empezaste a trabajar en algunos archivos. Una vez que terminaste, intentaste desmontar el dispositivo USB y recibiste un error: "Dispositivo o recurso ocupado". ¿Cómo averiguarías qué archivos de la unidad USB todavía están en uso? Hay dos herramientas que puedes usar para esto:
 
 ### lsof
 
-Recuerda, los archivos no son solo archivos de texto, imágenes, etc.; son todo en el sistema: discos, pipes, sockets de red, dispositivos, etc. Para ver qué está en uso por un proceso, puedes usar el comando `lsof` (abreviatura de "list open files"). Esto te mostrará una lista de todos los archivos abiertos y sus procesos asociados.
+Recuerda, los archivos no son solo archivos de texto, imágenes, etc.; son todo en el sistema: discos, tuberías, sockets de red, dispositivos, etc. Para ver qué está en uso por un proceso, puedes usar el comando `lsof` (abreviatura de "list open files"). Esto te mostrará una lista de todos los archivos abiertos y sus procesos asociados.
 
 ```bash
 pete@icebox:~$ lsof .
@@ -49,7 +49,11 @@ Podemos ver qué procesos están usando actualmente nuestro directorio `/home/pe
 
 ## Exercise
 
-Lee las páginas man de `lsof` y `fuser`. Hay mucha información que no cubrimos que te permite tener mayor flexibilidad con estas herramientas.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión de procesos y la resolución de conflictos de recursos:
+
+1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practica la interacción con procesos en primer y segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top` y terminándolos con `kill`. Este laboratorio te ayudará a identificar y gestionar procesos que podrían estar reteniendo recursos, como archivos en una unidad USB.
+
+Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a desarrollar confianza en la identificación y gestión de procesos del sistema.
 
 ## Quiz Question
 

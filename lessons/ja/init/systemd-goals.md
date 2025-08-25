@@ -9,9 +9,9 @@ meta_keywords: "systemd, systemctl, Linux サービス，ユニットファイ�
 
 ## Lesson Content
 
-systemd のユニットファイルを記述する詳細には立ち入りません。しかし、ユニットファイルの簡単な概要と、ユニットを手動で制御する方法について説明します。
+systemd のユニットファイル作成の詳細には立ち入りません。しかし、ユニットファイルの簡単な概要と、ユニットを手動で制御する方法について説明します。
 
-基本的なサービスユニットファイルは次のとおりです：foobar.service
+以下は基本的なサービスユニットファイルです：foobar.service
 
 ```
 [Unit]
@@ -25,57 +25,61 @@ ExecStart=/usr/bin/foobar
 WantedBy=multi-user.target
 ```
 
-これはシンプルなサービスターゲットです。ファイルの冒頭には、`[Unit]`セクションがあります。これにより、ユニットファイルに説明を付けたり、ユニットをアクティブにする順序を制御したりできます。次の部分は`[Service]`セクションです。ここには、サービスの開始、停止、再読み込みを行うことができます。そして、`[Install]`セクションは依存関係に使用されます。これは systemd ファイルの記述のほんの一部に過ぎないので、もっと知りたい場合はこの主題について調べてみることをお勧めします。
+これはシンプルなサービスターゲットです。ファイルの冒頭には`[Unit]`セクションがあります。これにより、ユニットファイルに説明を付けたり、ユニットをアクティブにする順序を制御したりできます。次の部分は`[Service]`セクションです。ここには、サービスの開始、停止、または再読み込みを行うことができます。そして、`[Install]`セクションは依存関係のために使用されます。これは systemd ファイルの作成のほんの一部に過ぎないので、さらに詳しく知りたい場合は、このテーマについて調べてみることをお勧めします。
 
 それでは、systemd ユニットで使用できるいくつかのコマンドを見ていきましょう。
 
-### List units
+### ユニットを一覧表示する
 
 ```bash
 systemctl list-units
 ```
 
-### View status of unit
+### ユニットのステータスを表示する
 
 ```bash
 systemctl status networking.service
 ```
 
-### Start a service
+### サービスを開始する
 
 ```bash
 sudo systemctl start networking.service
 ```
 
-### Stop a service
+### サービスを停止する
 
 ```bash
 sudo systemctl stop networking.service
 ```
 
-### Restart a service
+### サービスを再起動する
 
 ```bash
 sudo systemctl restart networking.service
 ```
 
-### Enable a unit
+### ユニットを有効にする
 
 ```bash
 sudo systemctl enable networking.service
 ```
 
-### Disable a unit
+### ユニットを無効にする
 
 ```bash
 sudo systemctl disable networking.service
 ```
 
-繰り返しになりますが、systemd がどれほど奥深いかについてはまだ見ていませんので、もっと学びたい場合は調べてみてください。
+繰り返しになりますが、systemd がいかに奥深いか、まだその全貌は見ていません。もっと学びたい場合は、ぜひ調べてみてください。
 
 ## Exercise
 
-ユニットのステータスを表示し、いくつかのサービスを開始および停止してください。何が観察されますか？
+習うより慣れろ！systemd サービスによって制御されることが多いプロセスの管理に関する理解を深めるための実践的な演習をいくつか紹介します。
+
+1. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - フォアグラウンドプロセスとバックグラウンドプロセスとの対話、`ps`による検査、`top`によるリソース監視、`renice`による優先度調整、`kill`による終了を練習します。この演習は、systemd ユニット管理の実行時効果に関する実践的な経験を提供します。
+
+これらの演習は、概念を実際のシナリオに適用し、Linux でのプロセス管理に自信をつけるのに役立ちます。
 
 ## Quiz Question
 

@@ -3,13 +3,13 @@ index: 5
 lang: "de"
 title: "Samba"
 meta_title: "Samba - Netzwerkfreigabe"
-meta_description: "Lernen Sie, Samba-Dateifreigaben unter Linux für Windows und macOS einzurichten. Dieser Anfängerleitfaden behandelt Installation, Konfiguration und den Zugriff auf Freigaben. Legen Sie los!"
+meta_description: "Lernen Sie, Samba-Dateifreigaben unter Linux für Windows und macOS einzurichten. Dieser Leitfaden für Anfänger behandelt Installation, Konfiguration und Zugriff auf Freigaben. Legen Sie los!"
 meta_keywords: "Samba, Linux-Dateifreigabe, smb.conf, CIFS, smbclient, Linux-Tutorial, Anfängerleitfaden"
 ---
 
 ## Lesson Content
 
-In den frühen Tagen des Computings wurde es notwendig, dass Windows-Maschinen Dateien mit Linux-Maschinen teilen konnten; so entstand das Server Message Block (SMB)-Protokoll. SMB wurde zum Teilen von Dateien zwischen Windows-Betriebssystemen verwendet (macOS verfügt ebenfalls über Dateifreigabe mit SMB) und wurde später in Form des Common Internet File System (CIFS)-Protokolls bereinigt und optimiert.
+In den frühen Tagen der Computer wurde es notwendig, dass Windows-Maschinen Dateien mit Linux-Maschinen teilen konnten; so entstand das Server Message Block (SMB) Protokoll. SMB wurde zum Teilen von Dateien zwischen Windows-Betriebssystemen verwendet (macOS bietet ebenfalls Dateifreigabe mit SMB) und wurde später in Form des Common Internet File System (CIFS) Protokolls bereinigt und optimiert.
 
 Samba nennen wir die Linux-Dienstprogramme, um mit CIFS unter Linux zu arbeiten. Neben der Dateifreigabe können Sie auch Ressourcen wie Drucker freigeben.
 
@@ -17,54 +17,54 @@ Samba nennen wir die Linux-Dienstprogramme, um mit CIFS unter Linux zu arbeiten.
 
 Gehen wir die grundlegenden Schritte durch, um eine Netzwerkfreigabe zu erstellen, auf die eine Windows-Maschine zugreifen kann:
 
-### Install Samba
+### Samba installieren
 
 ```bash
 sudo apt update
 sudo apt install samba
 ```
 
-### Setup smb.conf
+### smb.conf einrichten
 
-Die Konfigurationsdatei für Samba befindet sich unter `/etc/samba/smb.conf`. Diese Datei sollte dem System mitteilen, welche Verzeichnisse freigegeben werden sollen, deren Zugriffsrechte und weitere Optionen. Die Standard-`smb.conf` enthält bereits viele auskommentierte Codes, und Sie können diese als Beispiel verwenden, um Ihre eigenen Konfigurationen zu schreiben.
+Die Konfigurationsdatei für Samba befindet sich unter `/etc/samba/smb.conf`. Diese Datei sollte dem System mitteilen, welche Verzeichnisse freigegeben werden sollen, deren Zugriffsrechte und weitere Optionen. Die Standard-`smb.conf` enthält bereits viele auskommentierte Codes, die Sie als Beispiel für Ihre eigenen Konfigurationen verwenden können.
 
 ```bash
 sudo vi /etc/samba/smb.conf
 ```
 
-### Set up a password for Samba
+### Ein Passwort für Samba einrichten
 
 ```bash
 sudo smbpasswd -a [username]
 ```
 
-### Create a shared directory
+### Ein freigegebenes Verzeichnis erstellen
 
 ```bash
 mkdir /my/directory/to/share
 ```
 
-### Restart the Samba service
+### Den Samba-Dienst neu starten
 
 ```bash
 sudo service smbd restart
 ```
 
-### Accessing a Samba share via Windows
+### Auf eine Samba-Freigabe über Windows zugreifen
 
-In Windows, just type the network connection in the Run prompt: `\\HOST\sharename`.
+In Windows geben Sie einfach die Netzwerkverbindung in der Ausführen-Eingabeaufforderung ein: `\\HOST\sharename`.
 
-### Accessing a Samba/Windows share via Linux
+### Auf eine Samba-/Windows-Freigabe über Linux zugreifen
 
 ```bash
 smbclient //HOST/directory -U user
 ```
 
-The Samba package includes a command-line tool called **smbclient** that you can use to access any Windows or Samba server. Once you're connected to the share, you can navigate and transfer files.
+Das Samba-Paket enthält ein Befehlszeilentool namens **smbclient**, mit dem Sie auf jeden Windows- oder Samba-Server zugreifen können. Sobald Sie mit der Freigabe verbunden sind, können Sie navigieren und Dateien übertragen.
 
-### Attach a Samba share to your system
+### Eine Samba-Freigabe an Ihr System anhängen
 
-Instead of transferring files one by one, you can just mount the network share on your system.
+Anstatt Dateien einzeln zu übertragen, können Sie die Netzwerkfreigabe einfach in Ihr System einbinden.
 
 ```bash
 sudo mount -t cifs servername:directory mountpoint -o user=username,pass=password
@@ -72,7 +72,7 @@ sudo mount -t cifs servername:directory mountpoint -o user=username,pass=passwor
 
 ## Exercise
 
-Richten Sie eine Samba-Freigabe ein. Falls Sie keine haben, öffnen Sie `smb.conf` und machen Sie sich mit den Optionen in der Konfigurationsdatei vertraut.
+Obwohl es keine spezifischen Labs für dieses Thema gibt, empfehlen wir Ihnen, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 

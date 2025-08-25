@@ -1,15 +1,15 @@
 ---
 index: 3
 lang: "de"
-title: "Upstart-Übersicht"
-meta_title: "Upstart-Übersicht - Init"
-meta_description: "Erfahren Sie mehr über Upstart, sein ereignisgesteuertes Modell und wie es Dienste unter Linux verwaltet. Verstehen Sie Upstart-Job-Konfigurationen und seine Rolle als Init-System."
+title: "Upstart Übersicht"
+meta_title: "Upstart Übersicht - Init"
+meta_description: "Erfahren Sie mehr über Upstart, sein ereignisgesteuertes Modell und wie es Dienste in Linux verwaltet. Verstehen Sie Upstart-Job-Konfigurationen und seine Rolle als Init-System."
 meta_keywords: "Upstart, Init-System, Linux-Dienste, Ubuntu, SysV, Anfänger-Tutorial, Linux-Anleitung"
 ---
 
 ## Lesson Content
 
-Upstart wurde von Canonical entwickelt und war daher eine Zeit lang die Init-Implementierung unter Ubuntu; auf modernen Ubuntu-Installationen wird jedoch inzwischen systemd verwendet. Upstart wurde geschaffen, um die Probleme von SysV zu verbessern, wie z. B. starre Startprozesse, Blockieren von Aufgaben usw. Das ereignis- und auftragsgesteuerte Modell von Upstart ermöglicht es, auf Ereignisse zu reagieren, sobald sie auftreten.
+Upstart wurde von Canonical entwickelt und war daher eine Zeit lang die Init-Implementierung unter Ubuntu; auf modernen Ubuntu-Installationen wird jedoch inzwischen systemd verwendet. Upstart wurde entwickelt, um die Probleme von SysV zu verbessern, wie z. B. strikte Startprozesse, Blockierung von Aufgaben usw. Das ereignis- und auftragsgesteuerte Modell von Upstart ermöglicht es, auf Ereignisse zu reagieren, sobald sie eintreten.
 
 Um herauszufinden, ob Sie Upstart verwenden, ist das Vorhandensein eines Verzeichnisses `/usr/share/upstart` ein ziemlich guter Indikator.
 
@@ -33,7 +33,7 @@ start on runlevel [235]
 stop on runlevel [0]
 ```
 
-Das bedeutet, dass die Netzwerkeinrichtung auf Runlevel 2, 3 oder 5 gestartet und auf Runlevel 0 beendet wird. Es gibt viele Möglichkeiten, die Konfigurationsdatei zu schreiben, und das werden Sie feststellen, wenn Sie sich die verschiedenen verfügbaren Job-Konfigurationen ansehen.
+Das bedeutet, dass die Netzwerkkonfiguration auf den Runlevels 2, 3 oder 5 gestartet und auf Runlevel 0 beendet wird. Es gibt viele Möglichkeiten, die Konfigurationsdatei zu schreiben, und das werden Sie feststellen, wenn Sie sich die verschiedenen verfügbaren Job-Konfigurationen ansehen.
 
 Die Funktionsweise von Upstart ist wie folgt:
 
@@ -44,11 +44,16 @@ Die Funktionsweise von Upstart ist wie folgt:
 
 ## Exercise
 
-Wenn Sie Upstart verwenden, versuchen Sie, die Job-Konfigurationen in `/etc/init` zu verstehen.
+Übung macht den Meister! Obwohl Upstart ein älteres Init-System ist, ist das Verständnis, wie Prozesse verwaltet und Aufgaben geplant werden, für jeden Linux-Administrator entscheidend. Hier sind einige praktische Übungen, um Ihr Verständnis von Prozessmanagement und Aufgabenautomatisierung zu vertiefen, die grundlegend für die Funktionsweise von Init-Systemen sind:
+
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, deren Überprüfung mit `ps`, die Ressourcenüberwachung mit `top` und deren Beendigung mit `kill`. Dieses Lab hilft Ihnen, den Lebenszyklus von Prozessen zu verstehen, die von Init-Systemen wie Upstart verwaltet werden.
+2. **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** – Lernen Sie, einmalige Jobs mit `at` und wiederkehrende Aufgaben mit `cron` zu planen. Dies bietet praktische Erfahrung mit der Aufgabenautomatisierung, einer Kernfunktion, die Init-Systeme für Systemdienste ermöglichen.
+
+Diese Labs helfen Ihnen, die Konzepte der Prozesskontrolle und Aufgabenautomatisierung in realen Szenarien anzuwenden und Vertrauen in die Verwaltung eines Linux-Systems aufzubauen, unabhängig vom verwendeten Init-System.
 
 ## Quiz Question
 
-Was ist die von Ubuntu verwendete Init-Implementierung?
+Welche Init-Implementierung wird von Ubuntu verwendet?
 
 ## Quiz Answer
 

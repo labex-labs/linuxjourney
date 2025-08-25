@@ -65,7 +65,11 @@ This command will essentially "make install" and build a `.deb` package and inst
 
 ## Exercise
 
-Find a source code program (from a trusted site) and install from source.
+Practice makes perfect! Here's a hands-on lab to reinforce your understanding of building software from source:
+
+1. **[Build Software from Source Code in Linux](https://labex.io/labs/comptia-build-software-from-source-code-in-linux-590853)** - Practice the fundamental process of building and installing software from its source code, including using `configure`, `make`, and `make install`.
+
+This lab will help you apply the concepts in a real scenario and build confidence with compiling software.
 
 ## Quiz Question
 

@@ -73,7 +73,11 @@ kill %1
 
 ## Exercise
 
-Move some jobs between the background and the foreground.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of managing processes in Linux:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, monitoring resources, and terminating processes, directly addressing the scenario of long-running commands.
+
+This lab will help you apply the concepts in real scenarios and build confidence with process management.
 
 ## Quiz Question
 

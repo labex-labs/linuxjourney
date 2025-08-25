@@ -65,7 +65,13 @@ We know our data is out there on the disk somewhere. Unfortunately, it probably 
 
 ## Exercise
 
-Observe some inode numbers for different files. Which ones are usually created first?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Linux filesystem and file management:
+
+1. **[Manage Files and Directories in Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practice creating, removing, copying, and moving files and directories, and explore creating symbolic and hard links while analyzing inodes.
+2. **[Navigate the Filesystem in Linux](https://labex.io/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Learn the fundamental skills to navigate the Linux filesystem using essential shell commands like `pwd`, `cd`, and `ls`.
+3. **[Find Files and Commands in Linux](https://labex.io/labs/comptia-find-files-and-commands-in-linux-590834)** - Master essential techniques for locating files and commands in Linux using `find`, `locate`, `whereis`, `which`, and `type`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux filesystem management.
 
 ## Quiz Question
 

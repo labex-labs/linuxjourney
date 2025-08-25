@@ -37,7 +37,12 @@ sudo chown patty:whales myfile
 
 ## Exercise
 
-Modify the group and user of some test files. Afterward, take a look at the permissions with `ls -l`.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file ownership and permissions:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including understanding file permissions and manipulating file ownership. This lab provides practical experience in securing a multi-user Linux environment.
+2. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this challenge, you'll simulate adding new team members to a server environment by creating new user accounts, setting up custom groups, and managing group memberships. This will test your skills in Linux user and group administration.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing file ownership and permissions in Linux.
 
 ## Quiz Question
 

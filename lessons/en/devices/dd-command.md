@@ -36,7 +36,12 @@ Our `backup.img` file is 10M; however, we are saying in this command to copy ove
 
 ## Exercise
 
-Use the `dd` command to make a backup of your drive and set the output to a `.img` file.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of data manipulation and disk management in Linux:
+
+1. **[Create and Restore a Backup with tar in Linux](https://labex.io/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Practice creating and restoring file system backups, a critical skill related to data integrity and recovery, which `dd` can also be used for.
+2. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Learn to manage disk partitions and filesystems, including creating, formatting, and mounting, which are fundamental concepts when working with tools like `dd` for disk imaging.
+
+These labs will help you apply the concepts of data handling and disk operations in real scenarios and build confidence with system administration tasks.
 
 ## Quiz Question
 

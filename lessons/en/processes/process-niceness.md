@@ -35,7 +35,11 @@ renice 10 -p 3245
 
 ## Exercise
 
-What processes aren't very nice, and why?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux process management and scheduling:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`.
+
+This lab will help you apply the concepts of process scheduling and niceness in real scenarios and build confidence with managing processes in Linux.
 
 ## Quiz Question
 

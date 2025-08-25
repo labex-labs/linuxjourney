@@ -3,13 +3,13 @@ index: 2
 lang: "pt"
 title: "lsof e fuser"
 meta_title: "lsof e fuser - Utilização de Processos"
-meta_description: "Aprenda a usar os comandos lsof e fuser no Linux para identificar processos que estão usando arquivos. Entenda os erros 'Device or Resource Busy' e gerencie arquivos abertos de forma eficaz."
+meta_description: "Aprenda a usar os comandos lsof e fuser no Linux para identificar processos que usam arquivos. Entenda os erros 'Dispositivo ou Recurso Ocupado' e gerencie arquivos abertos de forma eficaz."
 meta_keywords: "lsof, fuser, comandos Linux, arquivos abertos, gerenciamento de processos, tutorial Linux, guia para iniciantes, dispositivo ocupado"
 ---
 
 ## Lesson Content
 
-Digamos que você conectou um pendrive USB e começou a trabalhar em alguns arquivos. Depois de terminar, você tentou desmontar o dispositivo USB e recebeu um erro: "Device or Resource Busy" (Dispositivo ou Recurso Ocupado). Como você descobriria quais arquivos no pendrive USB ainda estão em uso? Existem duas ferramentas que você pode usar para isso:
+Digamos que você conectou um pendrive USB e começou a trabalhar em alguns arquivos. Depois de terminar, você tentou desmontar o dispositivo USB e recebeu um erro: "Dispositivo ou Recurso Ocupado". Como você descobriria quais arquivos no pendrive USB ainda estão em uso? Existem duas ferramentas que você pode usar para isso:
 
 ### lsof
 
@@ -28,7 +28,7 @@ lsof      5914 pete  cwd    DIR    8,6     4096  131 .
 lsof      5915 pete  cwd    DIR    8,6     4096  131 .
 ```
 
-Agora posso ver quais processos estão atualmente mantendo o dispositivo/arquivo aberto. Em nosso exemplo de USB, você também pode encerrar esses processos para poder desmontar essa unidade incômoda.
+Agora posso ver quais processos estão atualmente mantendo o dispositivo/arquivo aberto. Em nosso exemplo de USB, você também pode encerrar esses processos para poder desmontar este drive problemático.
 
 ### fuser
 
@@ -49,7 +49,11 @@ Podemos ver quais processos estão atualmente usando nosso diretório `/home/pet
 
 ## Exercise
 
-Leia as páginas man para `lsof` e `fuser`. Há muitas informações que não abordamos que permitem maior flexibilidade com essas ferramentas.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre o gerenciamento de processos e a solução de conflitos de recursos:
+
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e encerrando-os com `kill`. Este laboratório o ajudará a identificar e gerenciar processos que podem estar retendo recursos, como arquivos em um pendrive USB.
+
+Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança na identificação e gerenciamento de processos do sistema.
 
 ## Quiz Question
 

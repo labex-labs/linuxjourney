@@ -9,25 +9,31 @@ meta_keywords: "网络寻址，MAC 地址，IP 地址，主机名，Linux 网络
 
 ## Lesson Content
 
-在深入了解数据包如何在网络中传输之前，我们必须熟悉一些术语。当你邮寄一封信时，你必须知道它是寄给谁的，以及它来自哪里。数据包也需要同样的信息。我们的主机和其他主机通过 MAC（媒体访问控制）地址和 IP 地址来识别。为了方便我们人类，我们使用主机名来识别主机。
+Before we jump into seeing how a packet moves across a network, we have to familiarize ourselves with some terminology. When you mail a letter, you must know who it is being sent to and where it is coming from. Packets need the same information. Our hosts and other hosts are identified using MAC (Media Access Control) addresses and IP addresses. To make it easier on us humans, we use hostnames to identify a host.
 
-### MAC Addresses
+### MAC 地址
 
-MAC 地址是作为硬件地址使用的唯一标识符。这个地址永远不会改变。当你想访问互联网时，你的机器需要有一个名为网络接口卡（network interface card）的设备。这个网络适配器有自己的硬件地址，用于识别你的机器。以太网设备的 MAC 地址看起来像这样：`00:C4:B5:45:B2:43`。MAC 地址在网络适配器制造时就被赋予。每个制造商都有一个组织唯一标识符（OUI）来识别他们是制造商。这个 OUI 由 MAC 地址的前 3 个字节表示。例如，戴尔（Dell）的 OUI 是 `00-14-22`，所以戴尔的网络适配器可能有一个 MAC 地址，例如：`00-14-22-34-B2-C2`。
+A MAC address is a unique identifier used as a hardware address. This address will never change. When you want to get access to the Internet, your machine needs to have a device called a network interface card. This network adapter has its own hardware address that's used to identify your machine. A MAC address for an Ethernet device looks something like this: `00:C4:B5:45:B2:43`. MAC addresses are given to network adapters when they are manufactured. Each manufacturer has an Organizationally Unique Identifier (OUI) to identify them as the manufacturer. This OUI is denoted by the first 3 bytes of the MAC address. For example, Dell has `00-14-22`, so a network adapter from Dell could have a MAC address like: `00-14-22-34-B2-C2`.
 
-### IP Addresses
+### IP 地址
 
-IP 地址用于识别网络上的设备。它们与硬件无关，并且语法可能因您使用的是 IPv4 还是 IPv6 而异（稍后会详细介绍）。目前，我们假设您使用的是 IPv4，因此典型的 IP 地址看起来像：`10.24.12.4`。IP 地址用于网络的软件方面。任何时候系统连接到互联网，它都应该有一个 IP 地址。如果您的网络发生变化，它们也可能发生变化，并且在整个互联网上是唯一的（一旦我们了解了 NAT，情况就不总是这样了）。
+An IP address is used to identify a device on a network. They are hardware independent and can vary in syntax depending on if you are using IPv4 or IPv6 (more on this later). For now, we'll assume you are using IPv4, so a typical IP address would look like: `10.24.12.4`. IP addresses are used with the software side of networking. Anytime a system is connected to the Internet, it should have an IP address. They can also change if your network changes and are unique to the entire Internet (this isn't always the case once we learn about NAT).
 
-请记住，数据包在网络中传输需要软件和硬件，因此我们为每个数据包提供了两个标识符：MAC（硬件）和 IP（软件）。
+Remember, it takes both software and hardware to move packets across networks, so we have two identifiers for each: MAC (hardware) and IP (software).
 
-### Hostnames
+### 主机名
 
-识别机器的最后一种方法是通过主机名。主机名将您的 IP 地址与一个人类可读的名称关联起来。您不必记住 `192.12.41.4`，只需记住 `myhost.com` 即可。
+One last way to identify your machines is through hostnames. Hostnames take your IP address and allow you to tie that address to a human-readable name. Instead of remembering `192.12.41.4`, you can just remember `myhost.com`.
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network identifiers like MAC addresses, IP addresses, and hostnames:
+
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
+2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using `ping` and `ip a`.
+3. **[管理 Linux 中的本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Learn to manage local hostname resolution by editing the `/etc/hosts` file and testing your changes.
+
+These labs will help you apply the concepts in real scenarios and build confidence with fundamental Linux networking.
 
 ## Quiz Question
 

@@ -76,7 +76,13 @@ top -p 1
 
 ## Exercise
 
-Play around with the `top` command and see what processes are using the most resources.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux resource utilization and process management:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with, inspecting, monitoring, and terminating processes in a real Linux environment.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use the `top` command to monitor CPU usage, memory, and running processes in real-time.
+3. **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to use the `free` command to monitor and analyze system memory usage.
+
+These labs will help you apply the concepts in real scenarios and build confidence with system monitoring and process management.
 
 ## Quiz Question
 

@@ -40,7 +40,7 @@ rsync username@remotehost.com:/remote/directory /local/directory
 
 ## Exercise
 
-Use rsync to sync a directory to another directory. Be sure not to overwrite an important directory!
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

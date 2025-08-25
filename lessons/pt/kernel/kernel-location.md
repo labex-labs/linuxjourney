@@ -4,7 +4,7 @@ lang: "pt"
 title: "Localização do Kernel"
 meta_title: "Localização do Kernel - Kernel"
 meta_description: "Aprenda sobre a localização do kernel Linux no diretório /boot, entendendo vmlinuz, initrd e System.map. Explore os arquivos do kernel e gerencie o espaço de forma eficaz."
-meta_keywords: "kernel Linux, diretório /boot, vmlinuz, initrd, System.map, iniciante em Linux, tutorial de kernel, guia Linux"
+meta_keywords: "Kernel Linux, diretório /boot, vmlinuz, initrd, System.map, Linux para iniciantes, tutorial de kernel, guia Linux"
 ---
 
 ## Lesson Content
@@ -22,7 +22,11 @@ Se o seu diretório `/boot` ficar sem espaço, você sempre pode excluir versõe
 
 ## Exercise
 
-Entre no seu diretório boot e veja quais arquivos estão lá.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do processo de inicialização do Linux e do gerenciamento do kernel:
+
+1. **[Personalize o Menu de Inicialização GRUB2 no Linux](https://labex.io/pt/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Pratique a modificação da configuração do GRUB2, o que afeta diretamente como seu sistema Linux inicializa e seleciona as versões do kernel. Este laboratório o ajudará a entender as implicações práticas dos arquivos discutidos no diretório `/boot`.
+
+Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança com o kernel Linux e o gerenciamento de inicialização.
 
 ## Quiz Question
 

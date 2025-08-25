@@ -4,12 +4,12 @@ lang: "es"
 title: "alias"
 meta_title: "alias - Línea de Comandos"
 meta_description: "Aprende a crear y gestionar alias de Linux para comandos comunes. Descubre cómo configurar alias temporales y permanentes en .bashrc. ¡Mejora tu eficiencia en la línea de comandos!"
-meta_keywords: "Linux alias, bash alias, comando unalias, .bashrc, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
+meta_keywords: "alias de Linux, alias de bash, comando unalias, .bashrc, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
 ---
 
 ## Lesson Content
 
-A veces, escribir comandos puede volverse muy repetitivo, o si necesitas escribir un comando largo muchas veces, lo mejor es tener un alias que puedas usar para eso. Para crear un alias para un comando, simplemente especificas un nombre de alias y lo asignas al comando.
+A veces, escribir comandos puede volverse muy repetitivo, o si necesitas escribir un comando largo muchas veces, lo mejor es tener un alias que puedas usar para ello. Para crear un alias para un comando, simplemente especificas un nombre de alias y lo asignas al comando.
 
 ```bash
 alias foobar='ls -la'
@@ -31,12 +31,7 @@ unalias foobar
 
 ## Exercise
 
-Crea un par de alias y luego elimínalos.
-
-Para practicar más a fondo los conceptos básicos de la línea de comandos de Linux, explora estos laboratorios interactivos:
-
-- [Linux Directory Navigation](https://labex.io/es/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 

@@ -25,7 +25,7 @@ Tudo no Linux é um arquivo. À medida que você se aprofunda no Linux, você en
 |-- var
 ```
 
-A localização desses arquivos e diretórios é referida como caminhos. Se você tivesse uma pasta chamada `home` com uma pasta dentro dela chamada `pete` e outra pasta nessa pasta chamada `Movies`, esse caminho se pareceria com isto: `/home/pete/Movies`. Bem simples, não é?
+A localização desses arquivos e diretórios é referida como caminhos. Se você tivesse uma pasta chamada `home` com uma pasta dentro dela chamada `pete` e outra pasta dentro dessa pasta chamada `Movies`, esse caminho se pareceria com isto: `/home/pete/Movies`. Bem simples, não é?
 
 A navegação do sistema de arquivos, assim como na vida real, é útil se você sabe onde está e para onde está indo. Para ver onde você está, você pode usar o comando `pwd`. Este comando significa "print working directory" (imprimir diretório de trabalho) e ele apenas mostra em qual diretório você está. Observe que o caminho se origina do diretório raiz.
 
@@ -37,9 +37,13 @@ Onde você está? Onde estou? Experimente.
 
 ## Exercise
 
-Para prática prática com o comando `pwd`, experimente este laboratório interativo:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da navegação do sistema de arquivos Linux e da identificação de sua localização atual:
 
-- [Linux pwd Command: Directory Displaying](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)
+1. **[Comando Linux pwd: Exibição de Diretório](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - Este laboratório oferece uma visão geral focada e uso prático do comando `pwd`, alinhando-se diretamente com a introdução da lição sobre como encontrar seu diretório atual.
+2. **[Navegação de Diretório Linux](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Coloque suas habilidades básicas de linha de comando Linux à prova navegando por vários diretórios, solidificando sua compreensão de caminhos e da estrutura do sistema de arquivos.
+3. **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Aprenda a navegar eficientemente em seu sistema de arquivos usando o comando `cd`, compreendendo diferentes técnicas para mudar de diretório e explorar a estrutura de arquivos.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de hierarquia e navegação do sistema de arquivos em cenários reais e a construir confiança com comandos essenciais do Linux.
 
 ## Quiz Question
 

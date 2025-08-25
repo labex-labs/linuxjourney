@@ -33,7 +33,7 @@ Once this connection is established, data can be exchanged over a TCP connection
 
 ## Exercise
 
-No exercises for this lesson.
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

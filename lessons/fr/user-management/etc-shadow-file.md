@@ -2,7 +2,7 @@
 index: 4
 lang: "fr"
 title: "/etc/shadow"
-meta_title: "/etc/shadow - Gestion des Utilisateurs"
+meta_title: "/etc/shadow - Gestion des utilisateurs"
 meta_description: "Découvrez le fichier /etc/shadow sous Linux, ses champs et comment il sécurise les mots de passe des utilisateurs. Comprenez l'authentification Linux pour les débutants."
 meta_keywords: "/etc/shadow, sécurité Linux, authentification utilisateur, gestion des mots de passe, tutoriel Linux, guide du débutant"
 ---
@@ -17,7 +17,7 @@ $ sudo cat /etc/shadow
 root:MyEPTEa$6Nonsense:15000:0:99999:7:::
 ```
 
-Vous remarquerez qu'il ressemble beaucoup au contenu de `/etc/passwd`; cependant, dans le champ du mot de passe, vous verrez un mot de passe chiffré. Les champs sont séparés par des deux-points comme suit :
+Vous remarquerez qu'il ressemble beaucoup au contenu de `/etc/passwd` ; cependant, dans le champ du mot de passe, vous verrez un mot de passe chiffré. Les champs sont séparés par des deux-points comme suit :
 
 1. Nom d'utilisateur
 2. Mot de passe chiffré
@@ -29,11 +29,16 @@ Vous remarquerez qu'il ressemble beaucoup au contenu de `/etc/passwd`; cependant
 8. Date d'expiration du compte - Date à laquelle un utilisateur ne pourra plus se connecter.
 9. Champ réservé pour une utilisation future.
 
-Dans la plupart des distributions actuelles, l'authentification des utilisateurs ne repose pas uniquement sur le fichier `/etc/shadow`; d'autres mécanismes sont en place, tels que PAM (Pluggable Authentication Modules), qui remplacent l'authentification.
+Dans la plupart des distributions actuelles, l'authentification des utilisateurs ne repose pas uniquement sur le fichier `/etc/shadow` ; d'autres mécanismes sont en place, tels que PAM (Pluggable Authentication Modules), qui remplacent l'authentification.
 
 ## Exercise
 
-Jetez un œil au fichier `/etc/shadow`.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'authentification des utilisateurs et de la gestion des mots de passe sous Linux :
+
+1. **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratiquez le cycle de vie complet de l'administration des utilisateurs, de la création et la sécurisation de nouveaux comptes avec `useradd` et `passwd` à leur modification et suppression.
+2. **[Configurer les comptes utilisateurs et les privilèges Sudo sous Linux](https://labex.io/fr/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Apprenez les techniques essentielles pour gérer les comptes utilisateurs et les privilèges sudo, y compris l'application des politiques de mot de passe et la sécurisation des comptes.
+
+Ces laboratoires vous aideront à appliquer les concepts de gestion des utilisateurs et des mots de passe dans des scénarios réels et à renforcer votre confiance en l'administration des systèmes Linux.
 
 ## Quiz Question
 

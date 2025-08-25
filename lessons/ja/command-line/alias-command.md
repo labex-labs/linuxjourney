@@ -9,21 +9,21 @@ meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutoria
 
 ## Lesson Content
 
-コマンドを入力するのが非常に面倒になったり、長いコマンドを何度も入力する必要がある場合は、それに対して使用できるエイリアスを持つのが最善です。コマンドのエイリアスを作成するには、エイリアス名を指定し、それをコマンドに設定するだけです。
+コマンドの入力が非常に反復的になったり、長いコマンドを何度も入力する必要がある場合、それにはエイリアスを使用するのが最善です。コマンドのエイリアスを作成するには、エイリアス名を指定し、それをコマンドに設定するだけです。
 
 ```bash
 alias foobar='ls -la'
 ```
 
-これで、`ls -la`と入力する代わりに、`foobar`と入力するだけでそのコマンドが実行されます。これは非常に便利です。このコマンドは再起動後にエイリアスを保存しないことに注意してください。そのため、再起動後もエイリアスを保持したい場合は、永続的なエイリアスを以下に追加する必要があります。
+これで、`ls -la` と入力する代わりに `foobar` と入力するだけで、そのコマンドが実行されます。これは非常に便利です。このコマンドは再起動後にエイリアスを保存しないことに注意してください。そのため、再起動後もエイリアスを保持したい場合は、永続的なエイリアスを以下に追加する必要があります。
 
 ```plaintext
 ~/.bashrc
 ```
 
-または同様のファイルに追加します。
+または類似のファイルに追加します。
 
-`unalias`コマンドでエイリアスを削除できます。
+`unalias` コマンドでエイリアスを削除できます。
 
 ```bash
 unalias foobar
@@ -31,12 +31,7 @@ unalias foobar
 
 ## Exercise
 
-いくつかのエイリアスを作成し、それらを削除してください。
-
-Linux コマンドラインの基本をさらに実践的に練習するには、以下のインタラクティブなラボを探索してください。
-
-- [Linux Directory Navigation](https://labex.io/ja/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 

@@ -9,7 +9,7 @@ meta_keywords: "/etc/shadow, Linux セキュリティ，ユーザー認証，パ
 
 ## Lesson Content
 
-`/etc/shadow` ファイルは、ユーザー認証に関する情報を保存するために使用されます。スーパーユーザーの読み取り権限が必要です。
+`/etc/shadow` ファイルは、ユーザー認証に関する情報を保存するために使用されます。これにはスーパーユーザーの読み取り権限が必要です。
 
 ```bash
 $ sudo cat /etc/shadow
@@ -17,7 +17,7 @@ $ sudo cat /etc/shadow
 root:MyEPTEa$6Nonsense:15000:0:99999:7:::
 ```
 
-これは `/etc/passwd` の内容と非常によく似ていることに気づくでしょう。ただし、パスワードフィールドには暗号化されたパスワードが表示されます。フィールドはコロンで区切られており、以下の通りです。
+`/etc/passwd` の内容と非常によく似ていることに気づくでしょう。ただし、パスワードフィールドには暗号化されたパスワードが表示されます。フィールドはコロンで区切られており、以下の通りです。
 
 1. ユーザー名
 2. 暗号化されたパスワード
@@ -29,14 +29,19 @@ root:MyEPTEa$6Nonsense:15000:0:99999:7:::
 8. アカウント有効期限 - ユーザーがログインできなくなる日付。
 9. 将来の使用のために予約されたフィールド。
 
-今日のほとんどのディストリビューションでは、ユーザー認証は `/etc/shadow` ファイルだけに依存していません。PAM (Pluggable Authentication Modules) のような他のメカニズムが認証を置き換えています。
+今日のほとんどのディストリビューションでは、ユーザー認証は `/etc/shadow` ファイルだけに依存していません。PAM (Pluggable Authentication Modules) のような、認証を置き換える他のメカニズムが導入されています。
 
 ## Exercise
 
-`/etc/shadow` ファイルを見てみましょう。
+練習は完璧をもたらします！Linux でのユーザー認証とパスワード管理の理解を深めるための実践的な演習をいくつか紹介します。
+
+1. **[useradd、usermod、userdel を使用して Linux ユーザーアカウントを管理する](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - `useradd` と `passwd` を使用して新しいアカウントを作成し保護することから、それらを変更および削除することまで、ユーザー管理の完全なライフサイクルを練習します。
+2. **[Linux でユーザーアカウントと Sudo 権限を設定する](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - パスワードポリシーの適用やアカウントの保護など、ユーザーアカウントと sudo 権限を管理するための重要なテクニックを学びます。
+
+これらの演習は、実際のシナリオでユーザーとパスワード管理の概念を適用し、Linux システム管理に自信を持つために役立ちます。
 
 ## Quiz Question
 
-質問はありません、次に進みましょう！
+質問はありません、次へ進んでください！
 
 ## Quiz Answer

@@ -2,16 +2,16 @@
 index: 2
 lang: "es"
 title: "route"
-meta_title: "route - Configuración de Red"
-meta_description: "Aprenda cómo agregar y eliminar rutas de red usando los comandos route e ip de Linux. Comprenda la gestión de tablas de enrutamiento para usuarios principiantes e intermedios."
-meta_keywords: "comando route, ip route, agregar ruta, eliminar ruta, redes Linux, tabla de enrutamiento, tutorial Linux, guía para principiantes"
+meta_title: "route - Configuración de red"
+meta_description: "Aprenda a añadir y eliminar rutas de red utilizando los comandos route e ip de Linux. Comprenda la gestión de la tabla de enrutamiento para usuarios principiantes e intermedios."
+meta_keywords: "comando route, ip route, añadir ruta, eliminar ruta, redes Linux, tabla de enrutamiento, tutorial Linux, guía para principiantes"
 ---
 
 ## Lesson Content
 
 Ya hemos hablado de ver nuestras tablas de enrutamiento con el comando `route`. Si desea agregar o eliminar rutas, puede hacerlo manualmente.
 
-### Agregar una nueva ruta
+### Añadir una nueva ruta
 
 ```bash
 sudo route add -net 192.168.2.1/23 gw 10.11.12.3
@@ -25,7 +25,7 @@ sudo route del -net 192.168.2.1/23
 
 También puede realizar estos cambios con el comando **ip**:
 
-### Para agregar una ruta
+### Para añadir una ruta
 
 ```bash
 ip route add 192.168.2.1/23 via 10.11.12.3
@@ -41,15 +41,12 @@ $ ip route delete 192.168.2.1/23
 
 ## Exercise
 
-No hay ejercicios para esta lección, pero puede leer más información sobre los comandos discutidos aquí en las páginas man.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y el direccionamiento IP:
 
-```bash
-man route
-```
+1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Practique la configuración de una IP estática, el establecimiento de una puerta de enlace predeterminada y la verificación de la configuración de red utilizando el comando `ip`.
+2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo la puerta de enlace predeterminada maneja el tráfico remoto y observe las interacciones de la capa de red.
 
-```bash
-man ip-route
-```
+Estos laboratorios le ayudarán a aplicar los conceptos de direccionamiento IP y enrutamiento en escenarios reales y a generar confianza con las redes Linux.
 
 ## Quiz Question
 

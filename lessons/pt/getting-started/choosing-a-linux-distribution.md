@@ -9,7 +9,7 @@ meta_keywords: "distribuição Linux, escolher Linux, kernel Linux, Linux para i
 
 ## Lesson Content
 
-Na lição anterior, aprendemos sobre o kernel Linux, que alimenta milhões de dispositivos por dia. Uma coisa antes de prosseguirmos: o termo "Linux" é, na verdade, um nome bastante impróprio, pois se refere ao kernel Linux. No entanto, muitas distribuições usam o kernel Linux e, portanto, são comumente conhecidas como sistemas operacionais Linux.
+Na lição anterior, aprendemos sobre o kernel Linux, que alimenta milhões de dispositivos por dia. Uma coisa antes de prosseguirmos: o termo "Linux" é na verdade um nome bastante impróprio, já que se refere ao kernel Linux. No entanto, muitas distribuições usam o kernel Linux e, portanto, são comumente conhecidas como sistemas operacionais Linux.
 
 Um sistema Linux é dividido em três partes principais:
 
@@ -23,9 +23,7 @@ Existem muitas distribuições Linux para escolher; abordaremos apenas as opçõ
 
 ## Exercise
 
-Experimente o [Online Linux Playground](https://labex.io/pt/tutorials/linux-online-linux-playground-372915) para obter experiência prática com distribuições Linux:
-
-[![Linux Desktop Environment](https://tutorial-screenshot.getvm.io/env-desktop.webp)](https://labex.io/pt/tutorials/linux-online-linux-playground-372915)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

@@ -3,7 +3,7 @@ index: 19
 lang: "de"
 title: "exit"
 meta_title: "exit - Befehlszeile"
-meta_description: "Erfahren Sie, wie Sie die Linux-Shell mit den Befehlen 'exit' oder 'logout' verlassen. Verstehen Sie die grundlegende Shell-Navigation für Anfänger. Beginnen Sie Ihre Linux-Reise noch heute!"
+meta_description: "Erfahren Sie, wie Sie die Linux-Shell mit den Befehlen 'exit' oder 'logout' verlassen. Verstehen Sie die grundlegende Shell-Navigation für Anfänger. Beginnen Sie noch heute Ihre Linux-Reise!"
 meta_keywords: "exit command, logout command, Linux shell, terminal exit, Linux basics, beginner Linux, Linux tutorial"
 ---
 
@@ -27,12 +27,7 @@ Oder wenn Sie in einer Terminal-GUI arbeiten, können Sie das Terminal einfach s
 
 ## Exercise
 
-Verlassen Sie die Shell und sehen Sie, was passiert. Stellen Sie sicher, dass Sie in dieser Shell keine weitere Arbeit erledigen müssen.
-
-Für umfassende praktische Übungen mit Linux-Befehlen erkunden Sie diese interaktiven Labs:
-
-- [Linux Directory Navigation](https://labex.io/de/labs/linux-directory-navigation-387844)
-- [Organizing Files and Directories](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)
+Obwohl es keine spezifischen Labs für dieses Thema gibt, empfehlen wir, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 

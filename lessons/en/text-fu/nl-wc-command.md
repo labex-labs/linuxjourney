@@ -43,7 +43,13 @@ $ nl file1.txt
 
 ## Exercise
 
-How would you get the total count of lines using the `nl` command without searching through the entire output? Hint: Use some of the other commands you learned in this course.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text counting and line numbering in Linux:
+
+1. **[Linux wc Command: Text Counting](https://labex.io/labs/linux-linux-wc-command-text-counting-219200)** - Practice counting words, lines, and characters in text files using the `wc` command.
+2. **[Linux nl Command: Line Numbering](https://labex.io/labs/linux-linux-nl-command-line-numbering-210988)** - Learn to number lines in text files with the `nl` command.
+3. **[Word Count and Sorting](https://labex.io/labs/linux-word-count-and-sorting-388125)** - Apply your knowledge of `wc` to count lines, words, and characters, and combine it with sorting for practical text analysis tasks.
+
+These labs will help you apply the concepts in real scenarios and build confidence with text processing in Linux.
 
 ## Quiz Question
 

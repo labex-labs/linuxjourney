@@ -24,11 +24,11 @@ sda               0.17         3.49         1.92     385106     212417
 
 Der erste Teil sind die CPU-Informationen:
 
-- **%user** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Benutzerebene (Anwendung) auftrat.
-- **%nice** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Benutzerebene mit nice-Priorität auftrat.
-- **%system** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Systemebene (Kernel) auftrat.
+- **%user** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Benutzerebene (Anwendung) aufgetreten ist.
+- **%nice** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Benutzerebene mit Nice-Priorität aufgetreten ist.
+- **%system** – Zeigt den Prozentsatz der CPU-Auslastung an, der bei der Ausführung auf Systemebene (Kernel) aufgetreten ist.
 - **%iowait** – Zeigt den Prozentsatz der Zeit an, in der die CPU oder CPUs im Leerlauf waren, während das System eine ausstehende Disk-I/O-Anforderung hatte.
-- **%steal** – Zeigt den Prozentsatz der Zeit an, die die virtuelle CPU oder CPUs unfreiwillig wartend verbrachten, während der Hypervisor einen anderen virtuellen Prozessor bediente.
+- **%steal** – Zeigt den Prozentsatz der Zeit an, die die virtuelle CPU oder CPUs im unfreiwilligen Wartezustand verbracht haben, während der Hypervisor einen anderen virtuellen Prozessor bediente.
 - **%idle** – Zeigt den Prozentsatz der Zeit an, in der die CPU oder CPUs im Leerlauf waren und das System keine ausstehende Disk-I/O-Anforderung hatte.
 
 Der zweite Teil ist die Festplattenauslastung:
@@ -41,7 +41,13 @@ Der zweite Teil ist die Festplattenauslastung:
 
 ## Exercise
 
-Verwenden Sie iostat, um Ihre Festplattennutzung anzuzeigen.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Systemüberwachung und Festplattennutzung zu vertiefen:
+
+1. **[Linux df Befehl: Festplattenspeicherberichte](https://labex.io/de/labs/linux-linux-df-command-disk-space-reporting-219188)** – Üben Sie das Berichten der Festplattenspeichernutzung auf gemounteten Dateisystemen, ein Schlüsselaspekt der Überwachung.
+2. **[Linux du Befehl: Dateispeicher schätzen](https://labex.io/de/labs/linux-linux-du-command-file-space-estimating-219190)** – Lernen Sie, die Festplattenspeichernutzung für Verzeichnisse und Unterverzeichnisse zu schätzen, was die Disk-I/O-Informationen von `iostat` ergänzt.
+3. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Erkunden Sie die Echtzeit-Systemüberwachung, einschließlich CPU- und Speichernutzung, die einen breiteren Kontext für die in `iostat` angezeigten CPU-Metriken bietet.
+
+Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Überwachung von Linux-Systemressourcen aufzubauen.
 
 ## Quiz Question
 

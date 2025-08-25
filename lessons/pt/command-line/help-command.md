@@ -4,7 +4,7 @@ lang: "pt"
 title: "help"
 meta_title: "help - Linha de Comando"
 meta_description: "Aprenda a usar o comando 'help' no Bash para assistência rápida na linha de comando. Entenda os comandos integrados e encontre opções para programas Linux."
-meta_keywords: "comando help Linux, Bash help, ajuda linha de comando, comandos Linux, Linux para iniciantes, tutorial Linux, tutorial Bash"
+meta_keywords: "comando help Linux, help Bash, ajuda linha de comando, comandos Linux, Linux para iniciantes, tutorial Linux, tutorial Bash"
 ---
 
 ## Lesson Content
@@ -15,7 +15,7 @@ O Linux possui algumas ótimas ferramentas integradas para ajudar você a entend
 help echo
 ```
 
-Isso fornecerá uma descrição e as opções que você pode usar quando quiser executar `echo`. Para outros programas executáveis, é convenção ter uma opção chamada `--help` ou algo similar.
+Isso lhe dará uma descrição e as opções que você pode usar quando quiser executar `echo`. Para outros programas executáveis, é convenção ter uma opção chamada `--help` ou algo similar.
 
 ```bash
 echo --help
@@ -25,12 +25,7 @@ Nem todos os desenvolvedores que distribuem executáveis seguirão este padrão,
 
 ## Exercise
 
-Execute `help` nos comandos `echo`, `logout` e `pwd`.
-
-Para prática adicional com comandos básicos do Linux, explore estes laboratórios interativos:
-
-- [Linux pwd Command: Directory Displaying](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux cd Command: Directory Changing](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

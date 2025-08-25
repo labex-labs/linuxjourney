@@ -3,13 +3,13 @@ index: 3
 lang: "es"
 title: "Hilos de Procesos"
 meta_title: "Hilos de Procesos - Utilización de Procesos"
-meta_description: "Aprende sobre los hilos de procesos de Linux, los conceptos de un solo hilo frente a múltiples hilos, y cómo verlos usando 'ps m'. ¡Comprende los procesos ligeros de manera eficiente!"
-meta_keywords: "hilos de Linux, hilos de procesos, comando ps m, multi-hilo, single-hilo, procesos de Linux, Linux para principiantes, tutorial de Linux"
+meta_description: "Aprende sobre los hilos de procesos de Linux, los conceptos de un solo hilo vs. múltiples hilos, y cómo verlos usando 'ps m'. ¡Comprende los procesos ligeros de manera eficiente!"
+meta_keywords: "hilos de Linux, hilos de procesos, comando ps m, multi-hilo, un solo hilo, procesos de Linux, Linux para principiantes, tutorial de Linux"
 ---
 
 ## Lesson Content
 
-Es posible que hayas oído hablar de los términos procesos de un solo hilo (single-threaded) y de múltiples hilos (multi-threaded). Los hilos son muy similares a los procesos, ya que se utilizan para ejecutar el mismo programa; a menudo se les denomina procesos ligeros. Si un proceso tiene un hilo, es de un solo hilo, y si un proceso tiene más de un hilo, es de múltiples hilos. Sin embargo, todos los procesos tienen al menos un hilo.
+Es posible que hayas oído hablar de los términos procesos de un solo hilo (single-threaded) y de múltiples hilos (multi-threaded). Los hilos son muy similares a los procesos, en el sentido de que se utilizan para ejecutar el mismo programa; a menudo se les denomina procesos ligeros. Si un proceso tiene un hilo, es de un solo hilo, y si un proceso tiene más de un hilo, es de múltiples hilos. Sin embargo, todos los procesos tienen al menos un hilo.
 
 Los procesos operan con sus propios recursos de sistema aislados; sin embargo, los hilos pueden compartir estos recursos entre sí fácilmente, lo que facilita su comunicación. A veces, es más eficiente tener una aplicación de múltiples hilos que una aplicación de múltiples procesos.
 
@@ -30,7 +30,11 @@ Los procesos se indican con cada PID, y debajo de los procesos están sus hilos 
 
 ## Exercise
 
-Ejecuta el comando `ps m` y mira qué procesos tienes en ejecución que son de múltiples hilos.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de los procesos de Linux y su gestión:
+
+1. **[Gestionar y Monitorizar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para gestionar y monitorizar procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer y segundo plano, inspeccionarlos con `ps`, monitorizar recursos con `top`, ajustar la prioridad con `renice`, y terminarlos con `kill`.
+
+Este laboratorio te ayudará a aplicar los conceptos de gestión de procesos en escenarios reales y a ganar confianza en la monitorización de la actividad del sistema.
 
 ## Quiz Question
 

@@ -47,7 +47,13 @@ sar -q /var/log/sysstat/sa02
 
 ## Exercise
 
-Install sar on your system and start collecting and analyzing your system resource utilization.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of system monitoring and resource analysis:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use various options with the `top` command to sort processes, adjust update intervals, filter by user, and focus on active processes to effectively monitor system performance.
+3. **[Linux df Command: Disk Space Reporting](https://labex.io/labs/linux-linux-df-command-disk-space-reporting-219188)** - This lab introduces the `df` command in Linux, a utility that displays information about disk space usage on mounted file systems, which is a key aspect of system monitoring.
+
+These labs will help you apply the concepts of system resource monitoring in real scenarios and build confidence with analyzing system activity.
 
 ## Quiz Question
 

@@ -3,7 +3,7 @@ index: 11
 lang: "es"
 title: "mv (Mover)"
 meta_title: "mv (Mover) - Línea de Comandos"
-meta_description: "Aprende a usar el comando Linux mv para mover y renombrar archivos/directorios. Comprende sus opciones y evita sobrescrituras. ¡Comienza tu viaje en Linux!"
+meta_description: "Aprende a usar el comando mv de Linux para mover y renombrar archivos/directorios. Comprende sus opciones y evita sobrescrituras. ¡Comienza tu viaje en Linux!"
 meta_keywords: "comando mv, Linux mv, mover archivos Linux, renombrar archivos Linux, tutorial Linux, principiante, guía Linux"
 ---
 
@@ -41,7 +41,7 @@ Al igual que `cp`, si usas `mv` para un archivo o directorio, sobrescribirá cua
 mv -i directory1 directory2
 ```
 
-Supongamos que querías usar `mv` para sobrescribir el archivo anterior. También puedes hacer una copia de seguridad de ese archivo, y simplemente renombrará la versión antigua con un `~`.
+Supongamos que querías usar `mv` para sobrescribir un archivo anterior. También puedes hacer una copia de seguridad de ese archivo, y simplemente renombrará la versión antigua con un `~`.
 
 ```bash
 mv -b directory1 directory2
@@ -49,15 +49,16 @@ mv -b directory1 directory2
 
 ## Exercise
 
-Renombra un archivo y luego muévelo a un directorio diferente.
+¡La práctica hace al maestro! La experiencia práctica es crucial para dominar comandos de Linux como `mv`. Estos laboratorios te ayudarán a solidificar tu comprensión sobre cómo mover y renombrar archivos y directorios en un entorno real:
 
-Para practicar con el comando `mv`, prueba este laboratorio interactivo:
+1. **[Comando Linux mv: Mover y Renombrar Archivos](https://labex.io/es/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - Practica el uso del comando `mv` para mover y renombrar archivos y directorios, incluyendo la comprensión de sus diversas opciones y comportamientos.
+2. **[Organizando Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Aplica tus conocimientos de `mv` (junto con `cp` y `rm`) en un desafío práctico para organizar una estructura de proyecto, mover archivos y limpiar directorios.
 
-- [Linux mv Command: File Moving and Renaming](https://labex.io/es/labs/linux-linux-mv-command-file-moving-and-renaming-209743)
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza en la gestión de archivos y directorios utilizando el comando `mv`.
 
 ## Quiz Question
 
-¿Cómo renombras un archivo llamado `cat` a `dog`?
+¿Cómo se renombra un archivo llamado `cat` a `dog`?
 
 ## Quiz Answer
 

@@ -15,17 +15,21 @@ Um processo pode sair usando a chamada de sistema `_exit`. Isso liberará os rec
 
 Existe outra maneira de encerrar um processo, e isso envolve o uso de sinais, que discutiremos em breve.
 
-### Orphan Processes
+### Processos Órfãos
 
 Quando um processo pai morre antes de um processo filho, o kernel sabe que não receberá uma chamada `wait`, então, em vez disso, ele torna esses processos "órfãos" e os coloca sob os cuidados de `init` (lembre-se, a mãe de todos os processos). O `init` eventualmente executará a chamada de sistema `wait` para esses órfãos para que eles possam morrer.
 
-### Zombie Processes
+### Processos Zumbis
 
-O que acontece quando um filho termina e o processo pai ainda não chamou `wait`? Ainda queremos ser capazes de ver como um processo filho terminou, então, embora o processo filho tenha terminado, o kernel transforma o processo filho em um processo zumbi. Os recursos que o processo filho usou ainda são liberados para outros processos; no entanto, ainda há uma entrada na tabela de processos para este zumbi. Processos zumbis também não podem ser mortos, já que estão tecnicamente "mortos", então você não pode usar sinais para matá-los. Eventualmente, se o processo pai chamar a chamada de sistema `wait`, o zumbi desaparecerá; isso é conhecido como "reaping". Se o pai não executar uma chamada `wait`, o `init` adotará o zumbi e executará automaticamente `wait` e removerá o zumbi. Pode ser ruim ter muitos processos zumbis, pois eles ocupam espaço na tabela de processos; se ela encher, impedirá que outros processos sejam executados.
+O que acontece quando um filho termina e o processo pai ainda não chamou `wait`? Ainda queremos ser capazes de ver como um processo filho terminou, então, embora o processo filho tenha terminado, o kernel transforma o processo filho em um processo zumbi. Os recursos que o processo filho usou ainda são liberados para outros processos; no entanto, ainda há uma entrada na tabela de processos para este zumbi. Processos zumbis também não podem ser mortos, já que estão tecnicamente "mortos", então você não pode usar sinais para matá-los. Eventualmente, se o processo pai chamar a chamada de sistema `wait`, o zumbi desaparecerá; isso é conhecido como "reaping" (colheita). Se o pai não executar uma chamada `wait`, o `init` adotará o zumbi e automaticamente executará `wait` e removerá o zumbi. Pode ser ruim ter muitos processos zumbis, pois eles ocupam espaço na tabela de processos; se ela encher, impedirá que outros processos sejam executados.
 
 ## Exercise
 
-No exercises for this lesson.
+Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos processos Linux e seu gerenciamento:
+
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top`, ajustando a prioridade com `renice` e encerrando-os com `kill`. Este laboratório lhe dará experiência prática com o ciclo de vida dos processos, incluindo como encerrá-los.
+
+Este laboratório o ajudará a aplicar os conceitos de gerenciamento e terminação de processos em cenários reais e a construir confiança na administração de sistemas Linux.
 
 ## Quiz Question
 

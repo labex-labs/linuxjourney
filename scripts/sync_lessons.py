@@ -7,7 +7,7 @@ It extracts frontmatter, content, exercise, quiz questions and answers from mark
 Only existing lessons are updated - no new records are inserted.
 
 Usage:
-    python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview]
+    python sync_lessons.py --path FILE_OR_DIRECTORY [--no-preview] [--lang LANGUAGE]
 
 Examples:
     # Process a single file and all its language variants (with preview)
@@ -17,9 +17,16 @@ Examples:
     python sync_lessons.py --path lessons/en/filesystem/
     python sync_lessons.py --path lessons/
 
+    # Process only specific language files
+    python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --lang zh
+    python sync_lessons.py --path lessons/ --lang en
+
     # Skip preview and sync directly
     python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --no-preview
-    python sync_lessons.py --path lessons/zh/command-line/ --no-preview
+    python sync_lessons.py --path lessons/zh/command-line/ --no-preview --lang zh
+
+    # Skip cache clearing
+    python sync_lessons.py --path lessons/en/filesystem/ --skip-cache-clear
 
 Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
@@ -50,6 +57,9 @@ logger = logging.getLogger(__name__)
 # Initialize rich console
 console = Console()
 
+# Supported languages
+SUPPORTED_LANGUAGES = ["en", "zh", "es", "fr", "de", "ja", "ru", "ko", "pt"]
+
 
 class CloudflareD1Client:
     """Client for interacting with Cloudflare D1 database and KV store"""
@@ -60,11 +70,13 @@ class CloudflareD1Client:
         account_id: str,
         database_id: str,
         kv_namespace_id: Optional[str] = None,
+        skip_cache_clear: bool = False,
     ):
         self.api_token = api_token
         self.account_id = account_id
         self.database_id = database_id
         self.kv_namespace_id = kv_namespace_id
+        self.skip_cache_clear = skip_cache_clear
         self.base_url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}"
         self.kv_base_url = (
             f"https://api.cloudflare.com/client/v4/accounts/{account_id}/storage/kv/namespaces/{kv_namespace_id}"
@@ -210,17 +222,22 @@ class CloudflareD1Client:
                     f"SUCCESS: Updated lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                 )
 
-                # Clear KV cache for this lesson
-                cache_cleared = self.clear_lesson_cache(
-                    lesson_data["lesson_id"], lesson_data["lang"]
-                )
-                if cache_cleared:
-                    logger.info(
-                        f"INFO: Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                # Clear KV cache for this lesson (if not skipped)
+                if not self.skip_cache_clear:
+                    cache_cleared = self.clear_lesson_cache(
+                        lesson_data["lesson_id"], lesson_data["lang"]
                     )
+                    if cache_cleared:
+                        logger.info(
+                            f"INFO: Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        )
+                    else:
+                        logger.warning(
+                            f"WARNING: Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        )
                 else:
-                    logger.warning(
-                        f"WARNING: Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                    logger.info(
+                        f"INFO: Cache clearing skipped for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                     )
 
                 return True
@@ -427,7 +444,7 @@ class MarkdownParser:
             return []
 
     def get_all_language_variants_for_directory(
-        self, directory_path: str
+        self, directory_path: str, target_lang: Optional[str] = None
     ) -> List[Path]:
         """Find all markdown files in directory and get language variants for each"""
         directory_files = self.find_markdown_files_in_directory(directory_path)
@@ -461,7 +478,7 @@ class MarkdownParser:
                 processed_lessons.add(lesson_key)
 
                 # Get all language variants for this lesson
-                variants = self.get_language_variants(str(file_path))
+                variants = self.get_language_variants(str(file_path), target_lang)
                 all_variants.extend(variants)
 
                 logger.info(
@@ -479,7 +496,9 @@ class MarkdownParser:
         logger.info(f"INFO: Total unique files to process: {len(unique_variants)}")
         return unique_variants
 
-    def get_language_variants(self, file_path: str) -> List[Path]:
+    def get_language_variants(
+        self, file_path: str, target_lang: Optional[str] = None
+    ) -> List[Path]:
         """Get all language variants of a specific lesson file"""
         file_path = Path(file_path)
 
@@ -524,18 +543,60 @@ class MarkdownParser:
             # Get all language directories
             for lang_dir in lessons_root.iterdir():
                 if lang_dir.is_dir():
+                    lang_code = lang_dir.name
+
+                    # If target_lang is specified, only process that language
+                    if target_lang and lang_code != target_lang:
+                        continue
+
                     variant_file = lang_dir / course / lesson_file
                     if variant_file.exists():
                         files.append(variant_file)
                         logger.info(f"INFO: Found variant: {variant_file}")
                     else:
-                        logger.warning(f"WARNING: Missing variant: {variant_file}")
+                        if not target_lang or lang_code == target_lang:
+                            logger.warning(f"WARNING: Missing variant: {variant_file}")
 
             return sorted(files)
 
         except Exception as e:
             logger.error(f"ERROR: Error parsing file path {file_path}: {str(e)}")
             return []
+
+    def filter_files_by_language(
+        self, files: List[Path], target_lang: str
+    ) -> List[Path]:
+        """Filter files to only include those of the specified language"""
+        filtered_files = []
+
+        for file_path in files:
+            try:
+                # Extract language from file path
+                # Expected format: lessons/{lang}/{course}/{lesson}.md
+                path_parts = file_path.parts
+
+                # Find the lessons directory index
+                lessons_idx = None
+                for i, part in enumerate(path_parts):
+                    if part == "lessons":
+                        lessons_idx = i
+                        break
+
+                if lessons_idx is None or len(path_parts) < lessons_idx + 2:
+                    continue
+
+                file_lang = path_parts[lessons_idx + 1]
+
+                if file_lang == target_lang:
+                    filtered_files.append(file_path)
+
+            except Exception as e:
+                logger.warning(
+                    f"WARNING: Error extracting language from {file_path}: {str(e)}"
+                )
+                continue
+
+        return filtered_files
 
 
 def create_comparison_table(lesson_data: Dict, existing_data: Optional[Dict]) -> Table:
@@ -719,17 +780,34 @@ def show_comparison_preview(
     default=False,
     help="Skip the comparison preview and proceed directly with synchronization",
 )
-def main(path: str, no_preview: bool):
+@click.option(
+    "--lang",
+    type=click.Choice(SUPPORTED_LANGUAGES),
+    help="Only synchronize files for the specified language (e.g., en, zh, es)",
+)
+@click.option(
+    "--skip-cache-clear",
+    is_flag=True,
+    default=False,
+    help="Skip clearing KV cache after updating lessons",
+)
+def main(path: str, no_preview: bool, lang: Optional[str], skip_cache_clear: bool):
     """Update existing Linux Journey lessons in Cloudflare D1 database.
 
     Use --path to specify either:
-    - A specific lesson file: lessons/en/filesystem/anatomy-of-a-disk.md (syncs all language variants)
-    - A directory: lessons/en/filesystem/ (processes all .md files and their language variants)
+    - A specific lesson file: lessons/en/filesystem/anatomy-of-a-disk.md (syncs all language variants or specific language)
+    - A directory: lessons/en/filesystem/ (processes all .md files and their language variants or specific language)
 
+    Use --lang to only synchronize files for a specific language (e.g., en, zh, es).
     Use --no-preview to skip the comparison preview and proceed directly with synchronization.
+    Use --skip-cache-clear to skip clearing KV cache after updating lessons.
     """
     console.print("[bold blue]Linux Journey Lesson Sync Tool[/bold blue]")
     console.print(f"Processing: {path}")
+    if lang:
+        console.print(f"Language filter: {lang}")
+    if skip_cache_clear:
+        console.print(f"Cache clearing: disabled")
     console.print()
 
     # Check for required environment variables
@@ -748,7 +826,11 @@ def main(path: str, no_preview: bool):
         raise click.Abort()
 
     # Show KV configuration status
-    if kv_namespace_id:
+    if skip_cache_clear:
+        console.print(
+            "[yellow]INFO: KV cache clearing disabled (--skip-cache-clear)[/yellow]"
+        )
+    elif kv_namespace_id:
         console.print("[green]INFO: KV cache clearing enabled[/green]")
     else:
         console.print(
@@ -773,19 +855,41 @@ def main(path: str, no_preview: bool):
             )
             raise click.Abort()
 
-        console.print(
-            f"[blue]INFO: Processing single file and its language variants[/blue]"
-        )
-        lesson_files = parser_instance.get_language_variants(str(path_obj))
+        if lang:
+            console.print(
+                f"[blue]INFO: Processing single file for language: {lang}[/blue]"
+            )
+        else:
+            console.print(
+                f"[blue]INFO: Processing single file and its language variants[/blue]"
+            )
+        lesson_files = parser_instance.get_language_variants(str(path_obj), lang)
 
     elif path_obj.is_dir():
         # Directory - find all markdown files and their language variants
-        console.print(
-            f"[blue]INFO: Processing all markdown files in directory and their language variants[/blue]"
-        )
-        lesson_files = parser_instance.get_all_language_variants_for_directory(
-            str(path_obj)
-        )
+        if lang:
+            console.print(
+                f"[blue]INFO: Processing all markdown files in directory for language: {lang}[/blue]"
+            )
+            # If a specific language is requested and the path is a language-specific directory,
+            # process files directly. Otherwise, get language variants.
+            if str(path_obj).endswith(f"/{lang}") or f"/{lang}/" in str(path_obj):
+                # Path is already language-specific
+                lesson_files = parser_instance.find_markdown_files_in_directory(
+                    str(path_obj)
+                )
+            else:
+                # Get language variants and filter
+                lesson_files = parser_instance.get_all_language_variants_for_directory(
+                    str(path_obj), lang
+                )
+        else:
+            console.print(
+                f"[blue]INFO: Processing all markdown files in directory and their language variants[/blue]"
+            )
+            lesson_files = parser_instance.get_all_language_variants_for_directory(
+                str(path_obj)
+            )
 
     else:
         console.print(
@@ -794,17 +898,29 @@ def main(path: str, no_preview: bool):
         raise click.Abort()
 
     if not lesson_files:
-        console.print(
-            "[bold red]ERROR: No lesson files found matching criteria[/bold red]"
-        )
+        if lang:
+            console.print(
+                f"[bold red]ERROR: No lesson files found for language '{lang}' matching criteria[/bold red]"
+            )
+        else:
+            console.print(
+                "[bold red]ERROR: No lesson files found matching criteria[/bold red]"
+            )
         raise click.Abort()
 
-    console.print(
-        f"[green]INFO: Found {len(lesson_files)} lesson files to process[/green]"
-    )
+    if lang:
+        console.print(
+            f"[green]INFO: Found {len(lesson_files)} lesson files to process for language '{lang}'[/green]"
+        )
+    else:
+        console.print(
+            f"[green]INFO: Found {len(lesson_files)} lesson files to process[/green]"
+        )
 
     # Initialize database client to show comparison
-    db_client = CloudflareD1Client(api_token, account_id, database_id, kv_namespace_id)
+    db_client = CloudflareD1Client(
+        api_token, account_id, database_id, kv_namespace_id, skip_cache_clear
+    )
 
     # Test the connection with a simple query
     console.print("[dim]INFO: Testing database connection...[/dim]")

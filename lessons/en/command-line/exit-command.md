@@ -27,12 +27,7 @@ Or if you are working out of a terminal GUI, you can just close the terminal. Se
 
 ## Exercise
 
-Exit out of the shell and see what happens. Make sure you don't need to do any more work in that shell.
-
-For comprehensive hands-on practice with Linux commands, explore these interactive labs:
-
-- [Linux Directory Navigation](https://labex.io/labs/linux-directory-navigation-387844)
-- [Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

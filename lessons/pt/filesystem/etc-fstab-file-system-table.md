@@ -2,14 +2,14 @@
 index: 7
 lang: "pt"
 title: "/etc/fstab"
-meta_title: "/etc/fstab - O Filesystem"
+meta_title: "/etc/fstab - O Sistema de Arquivos"
 meta_description: "Aprenda sobre /etc/fstab no Linux, como configurar montagens de sistema de arquivos na inicialização e gerenciar entradas de dispositivos. Entenda o fstab para iniciantes!"
 meta_keywords: "/etc/fstab, Linux fstab, montar sistemas de arquivos, inicialização Linux, tutorial fstab, iniciante, guia"
 ---
 
 ## Lesson Content
 
-Quando queremos montar automaticamente sistemas de arquivos na inicialização, podemos adicioná-los a um arquivo chamado `/etc/fstab` (pronuncia-se "éfe és táb", não "éfe stáb"), abreviação de tabela de sistema de arquivos. Este arquivo contém uma lista permanente de sistemas de arquivos que são montados.
+Quando queremos montar automaticamente sistemas de arquivos na inicialização, podemos adicioná-los a um arquivo chamado `/etc/fstab` (pronuncia-se "eff es tab"), abreviação de tabela de sistema de arquivos. Este arquivo contém uma lista permanente de sistemas de arquivos que são montados.
 
 ```plaintext
 pete@icebox:~$ cat /etc/fstab
@@ -21,17 +21,22 @@ UUID=22c3d34b-467e-467c-b44d-f03803c2c526 none            swap    sw            
 Cada linha representa um sistema de arquivos; os campos são:
 
 - UUID - Identificador do dispositivo
-- Mount point - Diretório onde o sistema de arquivos é montado
-- Filesystem type
-- Options - Outras opções de montagem; veja a página man para mais detalhes
-- Dump - Usado pelo utilitário dump para decidir quando fazer um backup; você deve apenas usar o valor padrão 0
+- Ponto de montagem - Diretório onde o sistema de arquivos é montado
+- Tipo de sistema de arquivos
+- Opções - Outras opções de montagem; veja a página man para mais detalhes
+- Dump - Usado pelo utilitário dump para decidir quando fazer um backup; você deve apenas usar 0 como padrão
 - Pass - Usado pelo fsck para decidir a ordem em que os sistemas de arquivos devem ser verificados; se o valor for 0, ele não será verificado
 
-Para adicionar uma entrada, basta modificar diretamente o arquivo `/etc/fstab` usando a sintaxe de entrada acima. Tenha cuidado ao modificar este arquivo; você pode potencialmente dificultar um pouco sua vida se cometer erros.
+Para adicionar uma entrada, basta modificar diretamente o arquivo `/etc/fstab` usando a sintaxe de entrada acima. Tenha cuidado ao modificar este arquivo; você pode potencialmente dificultar um pouco sua vida se cometer um erro.
 
 ## Exercise
 
-Adicione o pendrive em que estamos trabalhando como uma entrada em `/etc/fstab`. Ao reiniciar, você ainda deverá vê-lo montado.
+A prática leva à perfeição! A experiência prática é crucial para entender como gerenciar sistemas de arquivos e garantir que eles sejam montados corretamente na inicialização do sistema. Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de sistemas de arquivos Linux e do arquivo `/etc/fstab`:
+
+1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação de partições, sua formatação, montagem e configuração de montagem persistente usando `/etc/fstab`.
+2. **[Criar e Ativar um Arquivo Swap no Linux](https://labex.io/pt/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda a tarefa administrativa essencial de criar e ativar um arquivo swap, o que frequentemente envolve entradas em `/etc/fstab`.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de montagem e configuração de sistemas de arquivos em cenários reais e a construir confiança no gerenciamento de recursos de disco no Linux.
 
 ## Quiz Question
 

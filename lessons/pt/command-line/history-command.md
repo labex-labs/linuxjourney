@@ -4,18 +4,18 @@ lang: "pt"
 title: "history"
 meta_title: "history - Linha de Comando"
 meta_description: "Aprenda a usar o comando history do Linux, o atalho !! e Ctrl-R para recuperação eficiente de comandos. Melhore sua produtividade no terminal com estas dicas essenciais!"
-meta_keywords: "histórico do Linux, histórico do bash, Ctrl-R, comando clear, tutorial de Linux, linha de comando, guia para iniciantes"
+meta_keywords: "histórico Linux, histórico bash, Ctrl-R, comando clear, tutorial Linux, linha de comando, guia para iniciantes"
 ---
 
 ## Lesson Content
 
-No seu shell, existe um histórico dos comandos que você inseriu anteriormente. Você pode realmente consultar esses comandos. Isso é bastante útil quando você deseja encontrar e executar um comando que usou anteriormente sem digitá-lo novamente.
+No seu shell, há um histórico dos comandos que você inseriu anteriormente. Você pode realmente consultar esses comandos. Isso é bastante útil quando você deseja encontrar e executar um comando que usou anteriormente sem digitá-lo novamente.
 
 ```bash
 history
 ```
 
-Quer executar o mesmo comando que você fez antes? Basta pressionar a seta para cima.
+Quer executar o mesmo comando que você executou antes? Basta pressionar a seta para cima.
 
 Quer executar o comando anterior sem digitá-lo novamente? Use `!!`. Se você digitou `cat file1` e quer executá-lo novamente, você pode simplesmente digitar `!!` e ele executará o último comando que você executou.
 
@@ -29,16 +29,11 @@ clear
 
 Pronto, parece melhor, não parece?
 
-Enquanto estamos falando de coisas úteis, uma das características mais úteis em qualquer ambiente de linha de comando é o preenchimento automático por tabulação. Se você começar a digitar o início de um comando, arquivo, diretório, etc., e pressionar a tecla Tab, ele completará automaticamente com base no que encontrar no diretório em que você está pesquisando, desde que você não tenha outros arquivos que comecem com essas letras. Por exemplo, se você estivesse tentando executar o comando `chrome`, você pode digitar `chr` e pressionar Tab, e ele completará automaticamente para `chrome`.
+Enquanto estamos falando de coisas úteis, uma das características mais úteis em qualquer ambiente de linha de comando é o preenchimento automático por tabulação. Se você começar a digitar o início de um comando, arquivo, diretório, etc., e pressionar a tecla Tab, ele fará o preenchimento automático com base no que encontrar no diretório que você está pesquisando, desde que você não tenha outros arquivos que comecem com essas letras. Por exemplo, se você estivesse tentando executar o comando `chrome`, você pode digitar `chr` e pressionar Tab, e ele fará o preenchimento automático para `chrome`.
 
 ## Exercise
 
-Navegue pelo seu histórico de comandos anteriores com as teclas Para Cima e Para Baixo. Experimente a busca reversa `Ctrl-R`.
-
-Para prática adicional com a navegação na linha de comando Linux, explore estes laboratórios interativos:
-
-- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
-- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

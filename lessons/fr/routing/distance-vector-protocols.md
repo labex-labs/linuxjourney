@@ -1,9 +1,9 @@
 ---
 index: 5
 lang: "fr"
-title: "Protocoles à Vecteur de Distance"
-meta_title: "Protocoles à Vecteur de Distance - Routage"
-meta_description: "Découvrez les protocoles à vecteur de distance comme RIP, leur fonctionnement et leurs limitations pour le routage réseau. Comprenez le nombre de sauts et l'efficacité du réseau."
+title: "Protocoles à vecteur de distance"
+meta_title: "Protocoles à vecteur de distance - Routage"
+meta_description: "Découvrez les protocoles à vecteur de distance comme RIP, leur fonctionnement et leurs limites pour le routage réseau. Comprenez le nombre de sauts et l'efficacité du réseau."
 meta_keywords: "protocoles à vecteur de distance, RIP, protocole d'information de routage, nombre de sauts, routage réseau, mise en réseau Linux, guide du débutant, tutoriel"
 ---
 
@@ -17,7 +17,13 @@ L'un des protocoles à vecteur de distance courants est RIP (Routing Information
 
 ## Exercise
 
-Pas d'exercices pour cette leçon.
+C'est en forgeant qu'on devient forgeron ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage et de la connectivité réseau :
+
+1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Entraînez-vous à utiliser `ping` et `arp` pour comprendre comment les appareils se découvrent mutuellement et comment le trafic est acheminé au niveau de la couche réseau.
+2. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP et à tester la connectivité entre des nœuds Linux simulés, en observant comment les sous-réseaux IP influencent la communication réseau.
+3. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Acquérez une expérience pratique de la configuration des adresses IP statiques et dynamiques et de la définition des passerelles par défaut, qui sont des composants essentiels du routage réseau.
+
+Ces laboratoires vous aideront à appliquer les concepts d'adressage et de connectivité réseau dans des scénarios réels, en construisant une base solide pour comprendre comment fonctionnent les protocoles de routage.
 
 ## Quiz Question
 

@@ -23,16 +23,11 @@ Ou o comando `logout`:
 logout
 ```
 
-Ou se você estiver trabalhando em uma GUI de terminal, pode simplesmente fechar o terminal. Até o próximo curso!
+Ou se você estiver trabalhando em uma GUI de terminal, pode simplesmente fechar o terminal. Nos vemos no próximo curso!
 
 ## Exercise
 
-Saia do shell e veja o que acontece. Certifique-se de que você não precisa fazer mais nenhum trabalho nesse shell.
-
-Para prática abrangente e prática com comandos Linux, explore estes laboratórios interativos:
-
-- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
-- [Organizing Files and Directories](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

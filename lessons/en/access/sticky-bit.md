@@ -32,7 +32,13 @@ The numerical representation for the sticky bit is **1**.
 
 ## Exercise
 
-What other files and directories do you think have a sticky bit enabled?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux file permissions and their impact on file and directory management:
+
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Practice creating and managing users and groups, understanding file permissions, and manipulating file ownership. This lab provides the foundational knowledge for understanding how special permissions like the sticky bit function.
+2. **[Delete and Move Files](https://labex.io/labs/linux-delete-and-move-files-7777)** - Learn how to delete and move files in Linux systems. This lab will help you understand the practical implications of permissions, including how they can restrict these actions.
+3. **[Find a File](https://labex.io/labs/linux-find-a-file-17993)** - Practice locating files and setting access authority. This lab reinforces the importance of file permissions and how they control access and modification.
+
+These labs will help you apply the concepts of file permissions in real scenarios and build confidence with managing file access in Linux.
 
 ## Quiz Question
 

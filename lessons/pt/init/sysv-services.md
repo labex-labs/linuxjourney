@@ -11,35 +11,40 @@ meta_keywords: "serviços System V, serviços Linux, comando service, SysV init,
 
 Existem muitas ferramentas de linha de comando que você pode usar para gerenciar serviços Sys V.
 
-### List services
+### Listar serviços
 
 ```bash
 service --status-all
 ```
 
-### Start a service
+### Iniciar um serviço
 
 ```bash
 sudo service networking start
 ```
 
-### Stop a service
+### Parar um serviço
 
 ```bash
 sudo service networking stop
 ```
 
-### Restart a service
+### Reiniciar um serviço
 
 ```bash
 sudo service networking restart
 ```
 
-Esses comandos não são específicos para sistemas init Sys V; você pode usá-los para gerenciar serviços Upstart também. Como o Linux está tentando se afastar dos scripts init Sys V mais tradicionais, ainda existem coisas em vigor para ajudar nessa transição.
+Esses comandos não são específicos para sistemas de inicialização Sys V; você pode usá-los para gerenciar serviços Upstart também. Como o Linux está tentando se afastar dos scripts de inicialização Sys V mais tradicionais, ainda há coisas em vigor para ajudar nessa transição.
 
 ## Exercise
 
-Gerencie alguns serviços e altere seus estados. O que você observa?
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de processos e tarefas, que são fundamentais para gerenciar serviços no Linux:
+
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação, inspeção, monitoramento e encerramento de processos em um ambiente Linux real.
+2. **[Agendar Tarefas com at e cron no Linux](https://labex.io/pt/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Aprenda a automatizar tarefas usando `at` para trabalhos únicos e `cron` para tarefas recorrentes, uma habilidade chave para a automação de serviços.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de operações do sistema.
 
 ## Quiz Question
 

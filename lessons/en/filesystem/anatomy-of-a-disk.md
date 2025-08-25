@@ -74,7 +74,11 @@ Number  Start   End     Size     File system  Name        Flags
 
 ## Exercise
 
-Run **parted -l** on your machine and evaluate your results.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of disk partitioning and filesystems:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating new partitions, formatting them with filesystems like ext4, mounting them, and configuring persistent mounting in `/etc/fstab`.
+
+This lab will help you apply the concepts of disk management in real scenarios and build confidence with Linux storage.
 
 ## Quiz Question
 

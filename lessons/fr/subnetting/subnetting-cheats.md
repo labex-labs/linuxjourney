@@ -1,15 +1,15 @@
 ---
 index: 4
 lang: "fr"
-title: "Astuces de Subnetting"
-meta_title: "Astuces de Subnetting - Subnetting"
-meta_description: "Apprenez les bases du subnetting et la conversion binaire pour le réseautage. Comprenez les adresses IP et les masques de sous-réseau avec ce guide convivial pour débutants. Commencez à apprendre maintenant !"
-meta_keywords: "subnetting, conversion binaire, adresse IP, réseau, réseautage Linux, débutant, tutoriel, guide"
+title: "Astuces de sous-réseau"
+meta_title: "Astuces de sous-réseau - Sous-réseau"
+meta_description: "Apprenez les bases du sous-réseau et la conversion binaire pour le réseautage. Comprenez les adresses IP et les masques de sous-réseau avec ce guide convivial pour débutants. Commencez à apprendre maintenant !"
+meta_keywords: "sous-réseau, conversion binaire, adresse IP, réseau, réseau Linux, débutant, tutoriel, guide"
 ---
 
 ## Lesson Content
 
-Je déteste devoir ajouter cette section. Dans le monde réel, vous n'auriez très probablement jamais à faire de calculs de sous-réseau à la main. Cependant, si vous étiez interviewé à ce sujet, vous devrez savoir comment convertir vers et depuis la forme binaire pour le subnetting. Heureusement, il existe des astuces arithmétiques que vous pouvez mémoriser.
+Je déteste devoir ajouter cette section. Dans le monde réel, il est fort probable que vous n'auriez jamais à faire de calculs de sous-réseau à la main. Cependant, si vous étiez interviewé à ce sujet, vous devrez savoir comment convertir vers et depuis la forme binaire pour le sous-réseau. Heureusement, il existe des astuces arithmétiques que vous pouvez mémoriser.
 
 Tout d'abord, mémorisez vos calculs en base 2 ; faites-le simplement :
 
@@ -26,7 +26,7 @@ Tout d'abord, mémorisez vos calculs en base 2 ; faites-le simplement :
 - 2^11 = 2048
 - 2^12 = 4096
 
-### Decimal to Binary Chart
+### Tableau de conversion décimal-binaire
 
 ```plaintext
 1   1  1  1  1 1 1 1
@@ -35,19 +35,19 @@ Tout d'abord, mémorisez vos calculs en base 2 ; faites-le simplement :
 
 Il y a de nombreuses raisons pour lesquelles le tableau suivant se présente de cette manière. Si vous êtes curieux de savoir comment cela fonctionne, il existe de nombreuses ressources en ligne.
 
-Ok, vous avez mémorisé cela ? Faisons une conversion rapide du décimal au binaire :
+Ok, vous les avez mémorisés ? Faisons une conversion rapide du décimal au binaire :
 
-### Convert 192.168.23.43 to Binary
+### Convertir 192.168.23.43 en binaire
 
 Rappelez-vous : 128 / 64 / 32 / 16 / 8 / 4 / 2 / 1
 
-Voyons comment convertir le premier octet en binaire, et vous comprendrez comment le reste fonctionne.
+Passons en revue la conversion du premier octet en binaire, et vous comprendrez comment le reste fonctionne.
 
 1. Pouvez-vous soustraire 192 - 128 ? Oui, donc le premier bit est 1.
 2. 192 - 128 = 64. Le nombre suivant dans le tableau est 64. Pouvez-vous soustraire 64 - 64 ? Oui, donc le deuxième bit est 1.
 3. Nous n'avons plus de nombres à soustraire, donc notre forme binaire de 192 est 11000000.
 
-### Convert Binary 11000000 to Decimal
+### Convertir le binaire 11000000 en décimal
 
 Pour la conversion du binaire au décimal, vous additionnez les nombres qui ont un 1, donc :
 
@@ -55,7 +55,11 @@ Pour la conversion du binaire au décimal, vous additionnez les nombres qui ont 
 
 ## Exercise
 
-Regardez votre adresse IP et votre masque de sous-réseau et voyez combien d'hôtes vous pouvez avoir sur votre sous-réseau.
+La pratique rend parfait ! Bien que les calculs de sous-réseau soient souvent automatisés dans le monde réel, comprendre les conversions binaires sous-jacentes est crucial pour les entretiens et une compréhension plus approfondie du réseau. Voici un laboratoire pratique pour renforcer votre compréhension :
+
+1. **[Effectuer le sous-réseau IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseau IP et la conversion binaire en utilisant Python dans un terminal Linux pour convertir des adresses IP, traduire des masques CIDR et calculer les détails du réseau.
+
+Ce laboratoire vous aidera à appliquer les concepts de conversion binaire et de sous-réseau dans un scénario pratique et à renforcer votre confiance dans les fondamentaux de l'adressage réseau.
 
 ## Quiz Question
 

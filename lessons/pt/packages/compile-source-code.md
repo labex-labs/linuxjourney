@@ -11,7 +11,7 @@ meta_keywords: "compilar código-fonte, make install, checkinstall, compilar Lin
 
 Frequentemente, você encontrará um pacote obscuro que vem apenas na forma de código-fonte puro. Você precisará usar alguns comandos para compilar e instalar esse pacote de código-fonte em seu sistema.
 
-Primeiro, você precisará ter o software para instalar as ferramentas que permitirão compilar o código-fonte.
+Primeiro, você precisará ter software para instalar as ferramentas que permitirão compilar o código-fonte.
 
 ```bash
 sudo apt install build-essential
@@ -27,9 +27,9 @@ Antes de fazer qualquer coisa, dê uma olhada no arquivo `README` ou `INSTALL` d
 
 Dependendo do método de compilação que o desenvolvedor usou, você terá que usar comandos diferentes, como `cmake` ou algo mais.
 
-No entanto, na maioria das vezes você verá a compilação básica `make`, então discutiremos isso:
+No entanto, o mais comum é a compilação básica com `make`, então vamos discutir isso:
 
-Dentro do conteúdo do pacote haverá um script `configure`. Este script verifica as dependências em seu sistema e, se você estiver perdendo algo, verá um erro e precisará corrigir essas dependências.
+Dentro do conteúdo do pacote haverá um script `configure`. Este script verifica as dependências em seu sistema e, se estiver faltando algo, você verá um erro e precisará corrigir essas dependências.
 
 ```bash
 ./configure
@@ -41,7 +41,7 @@ O `./` permite executar um script no diretório atual.
 make
 ```
 
-Dentro do conteúdo do pacote, há um arquivo chamado `Makefile` que contém regras para construir o software. Quando você executa o comando `make`, ele olha para este arquivo para construir o software.
+Dentro do conteúdo do pacote, há um arquivo chamado `Makefile` que contém regras para construir o software. Quando você executa o comando `make`, ele procura este arquivo para construir o software.
 
 ```bash
 sudo make install
@@ -65,11 +65,15 @@ Este comando essencialmente fará um "make install" e construirá um pacote `.de
 
 ## Exercise
 
-Encontre um programa de código-fonte (de um site confiável) e instale a partir do código-fonte.
+A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão sobre a construção de software a partir do código-fonte:
+
+1. **[Construir Software a Partir do Código-Fonte no Linux](https://labex.io/pt/labs/comptia-build-software-from-source-code-in-linux-590853)** - Pratique o processo fundamental de construção e instalação de software a partir de seu código-fonte, incluindo o uso de `configure`, `make` e `make install`.
+
+Este laboratório o ajudará a aplicar os conceitos em um cenário real e a construir confiança na compilação de software.
 
 ## Quiz Question
 
-O que você deve usar SEMPRE em vez de `make install`?
+O que você deve usar em vez de `make install` SEMPRE?
 
 ## Quiz Answer
 

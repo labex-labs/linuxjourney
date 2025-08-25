@@ -41,7 +41,13 @@ Now you'll be able to see the contents of the file!
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux users, groups, and `sudo`:
+
+1. **[Manage Linux User Accounts with useradd, usermod, and userdel](https://labex.io/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practice the complete lifecycle of user administration, from creating and securing new accounts to modifying and deleting them.
+2. **[Manage Linux Groups with groupadd, usermod, and groupdel](https://labex.io/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Gain hands-on experience with core command-line utilities for group administration, including creating new groups, modifying user memberships, and removing groups.
+3. **[Configure User Accounts and Sudo Privileges in Linux](https://labex.io/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Learn essential techniques for managing user accounts and `sudo` privileges to enhance the security of a Linux system, including granting administrative permissions.
+
+These labs will help you apply the concepts of user and group management, and the use of `sudo`, in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

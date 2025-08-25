@@ -18,7 +18,8 @@ Features:
 - Beautiful CLI with rich formatting and progress bars
 - Preserves YAML front matter structure (translates values, keeps keys)
 - Keeps fixed English headings: ## Lesson Content, ## Exercise, ## Quiz Question, ## Quiz Answer
-- Translates Exercise content while preserving technical terms and URLs
+- Translates all other headings (###, ####, etc.) while preserving structure
+- Translates Exercise content while preserving technical terms and URLs (translates link descriptions but keeps URLs unchanged)
 - Protects code blocks and commands from translation
 - Preserves Quiz Answer content exactly as-is
 - Enhanced validation to ensure proper Exercise translation
@@ -31,6 +32,8 @@ Usage Examples:
 3. Translate to specific languages: python localize_docs.py --lang zh es fr
 4. Translate specific file: python localize_docs.py --path lessons/en/getting-started/linux-history.md
 5. Translate specific file to certain languages: python localize_docs.py --path lessons/en/getting-started/linux-history.md --lang zh fr
+6. Retry failed translations: python localize_docs.py --failed-files
+7. Skip validation and save directly: python localize_docs.py --skip-validation
 """
 
 import os
@@ -177,6 +180,61 @@ class GitChangeDetector:
 
         return sorted(valid_files)
 
+    @staticmethod
+    def load_failed_files(failed_files_path: Path) -> Dict[str, List[str]]:
+        """Load failed files from JSON and return file-to-languages mapping."""
+        if not failed_files_path.exists():
+            console.print(
+                f"[yellow]WARNING: Failed files list not found: {failed_files_path}[/yellow]"
+            )
+            return {}
+
+        try:
+            with open(failed_files_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            failed_entries = data.get("failed_files", [])
+            file_lang_map = {}
+
+            for entry in failed_entries:
+                # Parse format: "filepath (language)"
+                if " (" in entry and entry.endswith(")"):
+                    file_path_str, lang_part = entry.rsplit(" (", 1)
+                    language = lang_part[:-1]  # Remove closing parenthesis
+
+                    # Convert to Path object
+                    file_path = Path(file_path_str)
+
+                    if file_path not in file_lang_map:
+                        file_lang_map[file_path] = []
+                    file_lang_map[file_path].append(language)
+
+            console.print(
+                f"[blue]INFO: Loaded {len(failed_entries)} failed translations from {failed_files_path}[/blue]"
+            )
+            return file_lang_map
+
+        except (json.JSONDecodeError, KeyError) as e:
+            console.print(f"[red]ERROR: Failed to parse {failed_files_path}: {e}[/red]")
+            return {}
+
+    @staticmethod
+    def filter_files_by_failed_list(
+        files: List[Path],
+        failed_file_map: Dict[Path, List[str]],
+        target_languages: List[str],
+    ) -> List[Path]:
+        """Filter files to only include those that have failed translations for target languages."""
+        filtered_files = []
+
+        for file_path in files:
+            # Check if this file has any failed translations for our target languages
+            failed_langs = failed_file_map.get(file_path, [])
+            if any(lang in failed_langs for lang in target_languages):
+                filtered_files.append(file_path)
+
+        return sorted(filtered_files)
+
 
 class DocumentLocalizer:
     """Class to handle document localization using OpenRouter API."""
@@ -186,10 +244,12 @@ class DocumentLocalizer:
         api_key: str,
         site_url: str = "https://linuxjourney.com",
         site_name: str = "Linux Journey",
+        skip_validation: bool = False,
     ):
         self.client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=api_key)
         self.site_url = site_url
         self.site_name = site_name
+        self.skip_validation = skip_validation
         self.max_retries = 3
         self.retry_delay = 2.0
         self.stats = {"processed": 0, "errors": 0, "skipped": 0, "validation_failed": 0}
@@ -242,22 +302,26 @@ TRANSLATION REQUIREMENTS:
    - ## Exercise  
    - ## Quiz Question
    - ## Quiz Answer
-3. **Content Translation**: Translate ALL content under each section EXCEPT where specifically noted:
+3. **Other Headings**: Translate ALL other headings (###, ####, etc.) that are not in the fixed headings list above
+4. **Content Translation**: Translate ALL content under each section EXCEPT where specifically noted:
    - Translate the content under "## Lesson Content" 
    - Translate the content under "## Exercise" 
    - Translate the content under "## Quiz Question"
    - Keep "## Quiz Answer" content EXACTLY as-is (do not translate)
-4. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
+5. **Code Protection**: ABSOLUTELY DO NOT translate ANY content inside:
    - Code blocks (```...```)
    - Inline code (`...`)
    - Linux commands and paths
    - File names and directories
    - Command line examples
    - Configuration file contents
-   - URLs and web links (keep URLs exactly as they are - DO NOT modify them)
-5. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
-6. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
-7. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
+6. **Link Translation**: For markdown links in format [description](URL):
+   - Translate the link description text to {target_language}
+   - Keep URLs exactly as they are - DO NOT modify any URLs
+   - Example: [Getting Started](https://example.com) should become [开始使用](https://example.com) in Chinese
+7. **Quiz Answer**: Keep ALL content under "## Quiz Answer" section EXACTLY as-is - ABSOLUTELY DO NOT translate, modify, or change anything in Quiz Answer sections
+8. **Technical Terms**: Keep ALL Linux-specific terms, commands, file names, and technical keywords in English
+9. **Natural Translation**: Make the translation sound natural and educational in {target_language} while preserving all technical accuracy
 
 CONTENT STRUCTURE:
 - You will receive ONLY the main content WITHOUT YAML front matter
@@ -270,7 +334,7 @@ IMPORTANT:
 - Do NOT include YAML front matter (---) in your translated_content output
 - Only translate the main content body
 - Exercise sections contain instructional content that should be translated to help users understand what to do
-- Keep ALL URLs exactly as they appear in the original content - DO NOT modify any links
+- For markdown links [description](URL): translate the description text but keep URLs exactly as they appear - DO NOT modify any URLs
 
 Please provide:
 - translated_title: The translated title value (extracted from original front matter)
@@ -339,9 +403,9 @@ CONTENT TO TRANSLATE:
 
         translated_content = translation_data.get("translated_content", "")
 
-        # 2. Check that fixed headings are preserved
+        # 2. Check that fixed headings are preserved (only check those that exist in original)
         for heading in FIXED_HEADINGS:
-            if heading not in translated_content:
+            if heading in original_content and heading not in translated_content:
                 console.print(
                     f"[yellow]WARNING: Missing required heading: {heading}[/yellow]"
                 )
@@ -464,8 +528,11 @@ Main content to translate:
 
                         if all(key in translation_data for key in required_fields):
                             # Validate translation quality and completeness
-                            if self.validate_translation_quality(
-                                translation_data, main_content
+                            if (
+                                self.skip_validation
+                                or self.validate_translation_quality(
+                                    translation_data, main_content
+                                )
                             ):
                                 return translation_data
                             else:
@@ -761,7 +828,24 @@ Main content to translate:
     type=click.Path(exists=True, path_type=Path),
     help="Specific markdown file or directory to translate",
 )
-def main(lang: tuple, force: bool, git_changes: bool, path: Path):
+@click.option(
+    "--failed-files",
+    is_flag=True,
+    help="Retry translations for files listed in failed_localization_files.json",
+)
+@click.option(
+    "--skip-validation",
+    is_flag=True,
+    help="Skip translation validation and save documents directly",
+)
+def main(
+    lang: tuple,
+    force: bool,
+    git_changes: bool,
+    path: Path,
+    failed_files: bool,
+    skip_validation: bool,
+):
     """
     Linux Journey AI Localization Script
 
@@ -772,12 +856,16 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
     - Default: Translate all files in lessons/en directory
     - --git-changes: Only translate files with unstaged changes
     - --path: Translate specific markdown file or directory
+    - --failed-files: Retry translations for files listed in failed_localization_files.json
     - --lang: Specify target languages (default: all supported languages)
     - --force: Overwrite existing translated files
+    - --skip-validation: Skip translation validation and save documents directly
 
     Examples:
     python localize_docs.py --path lessons/en/getting-started/linux-history.md
     python localize_docs.py --path lessons/en/getting-started --lang zh es
+    python localize_docs.py --failed-files --lang zh es
+    python localize_docs.py --skip-validation --lang zh
     """
 
     console.print("[bold blue]Linux Journey AI Localization[/bold blue]")
@@ -794,7 +882,7 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
     target_languages = list(lang) if lang else list(LANGUAGE_NAMES.keys())
 
     # Create localizer
-    localizer = DocumentLocalizer(api_key)
+    localizer = DocumentLocalizer(api_key, skip_validation=skip_validation)
 
     try:
         script_dir = Path(__file__).parent
@@ -806,10 +894,10 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
             sys.exit(1)
 
         # Check for conflicting options
-        option_count = sum([bool(git_changes), bool(path)])
+        option_count = sum([bool(git_changes), bool(path), bool(failed_files)])
         if option_count > 1:
             console.print(
-                "[red]ERROR: Cannot use --git-changes and --path options together[/red]"
+                "[red]ERROR: Cannot use --git-changes, --path, and --failed-files options together[/red]"
             )
             sys.exit(1)
 
@@ -860,6 +948,102 @@ def main(lang: tuple, force: bool, git_changes: bool, path: Path):
             localizer.process_files_with_progress(
                 valid_files, target_languages, skip_existing=not force
             )
+
+        elif failed_files:
+            # Process files from failed_localization_files.json
+            failed_files_path = project_root / "failed_localization_files.json"
+            failed_file_map = GitChangeDetector.load_failed_files(failed_files_path)
+
+            if not failed_file_map:
+                console.print("[yellow]INFO: No failed files to process[/yellow]")
+                return
+
+            # Get all markdown files in the en directory
+            all_markdown_files = localizer.find_markdown_files(en_directory)
+
+            # Filter to only include files that failed for our target languages
+            files_to_process = GitChangeDetector.filter_files_by_failed_list(
+                all_markdown_files, failed_file_map, target_languages
+            )
+
+            if not files_to_process:
+                console.print(
+                    f"[yellow]INFO: No failed files found for languages: {', '.join(target_languages)}[/yellow]"
+                )
+                return
+
+            console.print(
+                f"[blue]INFO: Processing {len(files_to_process)} files that previously failed translation[/blue]"
+            )
+            for file_path in files_to_process[:5]:  # Show first 5 files
+                failed_langs = failed_file_map.get(file_path, [])
+                relevant_langs = [
+                    lang for lang in failed_langs if lang in target_languages
+                ]
+                console.print(
+                    f"  - {file_path.relative_to(project_root)} ({', '.join(relevant_langs)})"
+                )
+            if len(files_to_process) > 5:
+                console.print(f"  ... and {len(files_to_process) - 5} more files")
+
+            # Create a custom process function that only processes failed language combinations
+            def process_files_for_failed_only(files, target_langs):
+                """Process files but only for languages that previously failed."""
+                # Calculate total tasks based on actual failed combinations
+                total_tasks = 0
+                for file_path in files:
+                    failed_langs = failed_file_map.get(file_path, [])
+                    relevant_langs = [
+                        lang for lang in failed_langs if lang in target_langs
+                    ]
+                    total_tasks += len(relevant_langs)
+
+                console.print(
+                    f"[blue]INFO: Processing {len(files)} files for {total_tasks} failed language combinations[/blue]"
+                )
+
+                # Use progress tracking
+                with Progress(
+                    TextColumn("[progress.description]{task.description}"),
+                    BarColumn(),
+                    TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+                    TextColumn("({task.completed}/{task.total})"),
+                    console=console,
+                ) as progress:
+
+                    main_task = progress.add_task(
+                        "Processing failed translations", total=total_tasks
+                    )
+
+                    for file_path in files:
+                        failed_langs = failed_file_map.get(file_path, [])
+                        relevant_langs = [
+                            lang for lang in failed_langs if lang in target_langs
+                        ]
+
+                        for lang in relevant_langs:
+                            progress.update(
+                                main_task,
+                                description=f"Retrying {file_path.name} ({lang})",
+                            )
+
+                            # Process single file-language combination
+                            localizer.process_single_file_language(
+                                file_path, lang, skip_existing=not force
+                            )
+
+                            # Advance progress
+                            progress.advance(main_task)
+
+                        # Only count processed files once
+                        if relevant_langs:
+                            localizer.stats["processed"] += 1
+
+                # Display final results
+                localizer._display_final_results()
+
+            # Process the failed files
+            process_files_for_failed_only(files_to_process, target_languages)
 
         elif git_changes:
             # Process files with unstaged changes

@@ -31,7 +31,12 @@ Both of these commands are so similar in syntax it can be hard to remember which
 
 ## Exercise
 
-Look at your disk usage and free space with both `du` and `df`.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of disk space management and utilization in Linux:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating, formatting, and mounting filesystems, which are the underlying structures reported by `df` and `du`.
+2. **[Create and Activate a Swap File in Linux](https://labex.io/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Learn to manage virtual memory on disk, a critical aspect of system resource management that impacts disk space.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing disk resources.
 
 ## Quiz Question
 

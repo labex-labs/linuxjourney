@@ -39,7 +39,12 @@ These commands aren't specific to Sys V init systems; you can use them to manage
 
 ## Exercise
 
-Manage a couple of services and change their states. What do you observe?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of process and task management, which are fundamental to managing services in Linux:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with, inspecting, monitoring, and terminating processes in a real Linux environment.
+2. **[Schedule Tasks with at and cron in Linux](https://labex.io/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Learn to automate tasks using `at` for one-time jobs and `cron` for recurring tasks, a key skill for service automation.
+
+These labs will help you apply the concepts in real scenarios and build confidence with managing system operations.
 
 ## Quiz Question
 

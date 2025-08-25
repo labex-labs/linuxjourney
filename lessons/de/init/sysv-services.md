@@ -35,15 +35,20 @@ sudo service networking stop
 sudo service networking restart
 ```
 
-Diese Befehle sind nicht spezifisch für Sys V-Init-Systeme; Sie können sie auch zur Verwaltung von Upstart-Diensten verwenden. Da Linux versucht, sich von den traditionelleren Sys V-Init-Skripten zu lösen, gibt es immer noch Mechanismen, die diesen Übergang unterstützen.
+Diese Befehle sind nicht spezifisch für Sys V Init-Systeme; Sie können sie auch zur Verwaltung von Upstart-Diensten verwenden. Da Linux versucht, von den traditionelleren Sys V Init-Skripten wegzukommen, gibt es immer noch Mechanismen, die diesen Übergang unterstützen.
 
 ## Exercise
 
-Verwalten Sie ein paar Dienste und ändern Sie deren Zustände. Was beobachten Sie?
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Prozess- und Aufgabenmanagements zu vertiefen, die für die Verwaltung von Diensten unter Linux von grundlegender Bedeutung sind:
+
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit, die Überprüfung, Überwachung und Beendigung von Prozessen in einer echten Linux-Umgebung.
+2. **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** – Lernen Sie, Aufgaben mit `at` für einmalige Jobs und `cron` für wiederkehrende Aufgaben zu automatisieren, eine Schlüsselkompetenz für die Dienstautomatisierung.
+
+Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Systemoperationen aufzubauen.
 
 ## Quiz Question
 
-Was ist der Befehl, um einen Dienst namens `peanut` mit Sys V zu stoppen?
+Wie lautet der Befehl, um einen Dienst namens `peanut` mit Sys V zu stoppen?
 
 ## Quiz Answer
 

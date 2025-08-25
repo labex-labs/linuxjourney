@@ -14,7 +14,7 @@ Systemd está lentamente se tornando o padrão emergente para init. Se você tem
 Systemd usa metas para colocar seu sistema em funcionamento. Basicamente, você tem um alvo que deseja alcançar, e esse alvo também tem dependências que precisam ser atendidas. Systemd é extremamente flexível e robusto; ele não segue uma sequência estrita para iniciar processos. Veja o que acontece durante uma inicialização típica do systemd:
 
 1. Primeiro, o systemd carrega seus arquivos de configuração, geralmente localizados em `/etc/systemd/system` ou `/usr/lib/systemd/system`.
-2. Em seguida, ele determina seu objetivo de inicialização, que geralmente é `default.target`.
+2. Em seguida, ele determina sua meta de inicialização, que geralmente é `default.target`.
 3. O Systemd descobre as dependências do alvo de inicialização e as ativa.
 
 Semelhante aos runlevels do SysV, o systemd inicializa em diferentes alvos:
@@ -23,21 +23,21 @@ Semelhante aos runlevels do SysV, o systemd inicializa em diferentes alvos:
 - `rescue.target` - modo de usuário único
 - `multi-user.target` - multiusuário com rede
 - `graphical.target` - multiusuário com rede e GUI
-- `reboot.target` - reinicia
+- `reboot.target` - reiniciar
 
-O objetivo de inicialização padrão de `default.target` geralmente aponta para o `graphical.target`.
+A meta de inicialização padrão de `default.target` geralmente aponta para o `graphical.target`.
 
-Os principais objetos com os quais o systemd trabalha são conhecidos como unidades. O Systemd não apenas para e inicia serviços; ele pode montar sistemas de arquivos, monitorar seus sockets de rede, etc. Por causa dessa robustez, ele tem diferentes tipos de unidades com as quais opera. As unidades mais comuns são:
+Os principais objetos com os quais o systemd trabalha são conhecidos como unidades. O Systemd não apenas para e inicia serviços; ele pode montar sistemas de arquivos, monitorar seus sockets de rede, etc. Por causa dessa robustez, ele possui diferentes tipos de unidades com as quais opera. As unidades mais comuns são:
 
-- Service units - estes são os serviços que temos iniciado e parado; esses arquivos de unidade terminam em `.service`.
-- Mount units - Estes montam sistemas de arquivos; esses arquivos de unidade terminam em `.mount`.
-- Target units - Estes agrupam outras unidades; os arquivos terminam em `.target`.
+- Unidades de serviço - são os serviços que temos iniciado e parado; esses arquivos de unidade terminam em `.service`.
+- Unidades de montagem - Montam sistemas de arquivos; esses arquivos de unidade terminam em `.mount`.
+- Unidades de destino - Agrupam outras unidades; os arquivos terminam em `.target`.
 
 Por exemplo, digamos que inicializamos em nosso `default.target`. Este alvo agrupa a unidade `networking.service`, a unidade `crond.service`, etc., então, uma vez que ativamos uma única unidade, tudo abaixo dessa unidade também é ativado.
 
 ## Exercise
 
-No exercises for this lesson.
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

@@ -3,8 +3,8 @@ index: 1
 lang: "pt"
 title: "O Shell"
 meta_title: "O Shell - Linha de Comando"
-meta_description: "Aprenda sobre o shell Linux, Bash e comandos básicos como 'echo'. Entenda os prompts do shell e comece sua jornada no Linux com este guia para iniciantes."
-meta_keywords: "shell Linux, Bash, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt de shell, guia Linux"
+meta_description: "Aprenda sobre o shell Linux, Bash e comandos básicos como 'echo'. Entenda os prompts do shell e comece sua jornada Linux com este guia amigável para iniciantes."
+meta_keywords: "shell Linux, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt de shell, guia Linux"
 ---
 
 ## Lesson Content
@@ -20,7 +20,7 @@ username@hostname:current_directory
 pete@icebox:/home/pete $
 ```
 
-Percebe o `$` no final do prompt? Diferentes shells terão prompts diferentes. No nosso caso, o `$` é para um usuário normal usando Bash, Bourne ou Korn shell. Você não adiciona o símbolo do prompt ao digitar o comando; apenas saiba que ele está lá.
+Observe o `$` no final do prompt? Diferentes shells terão prompts diferentes. No nosso caso, o `$` é para um usuário normal usando Bash, Bourne ou Korn shell. Você não adiciona o símbolo do prompt ao digitar o comando; apenas saiba que ele está lá.
 
 Vamos começar com um comando simples, `echo`. O comando `echo` apenas imprime os argumentos de texto na tela.
 
@@ -30,13 +30,7 @@ echo Hello World
 
 ## Exercise
 
-Experimente executar o comando `echo` com textos diferentes.
-
-Para prática prática com comandos básicos do Linux, explore estes laboratórios interativos:
-
-- [Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)
-- [Linux pwd Command: Directory Displaying](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux ls Command: Content Listing](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

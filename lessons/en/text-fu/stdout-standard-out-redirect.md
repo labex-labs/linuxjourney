@@ -45,13 +45,11 @@ This will append "Hello World" to the end of the `peanuts.txt` file. If the file
 
 ## Exercise
 
-Try a couple of commands:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of I/O redirection:
 
-```bash
-ls -l /var/log > myoutput.txt
-echo Hello World > rm
-> somefile.txt
-```
+1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like `>`, `>>`, `2>`, and the `tee` command.
+
+This lab will help you apply the concepts in real scenarios and build confidence with I/O redirection.
 
 ## Quiz Question
 

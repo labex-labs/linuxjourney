@@ -72,7 +72,7 @@ sudo mount -t cifs servername:directory mountpoint -o user=username,pass=passwor
 
 ## Exercise
 
-Set up a Samba share. If you don't have one, open `smb.conf` and familiarize yourself with the options in the config file.
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

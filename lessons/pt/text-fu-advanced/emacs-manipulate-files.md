@@ -9,7 +9,7 @@ meta_keywords: "Emacs, Emacs salvar arquivo, Emacs abrir arquivo, tutorial Emacs
 
 ## Lesson Content
 
-Em grande parte (se não toda) da documentação do Emacs, você verá a sintaxe C-[letra]. Isso significa apenas pressionar Ctrl-letra, mas para fins de abreviação, chamaremos Ctrl de C. Se você vir uma sintaxe como M-[letra], isso significa usar a tecla Meta, mais comumente a tecla Alt.
+Em grande parte (se não em toda) da documentação do Emacs, você verá a sintaxe C-[letra]. Isso significa apenas pressionar Ctrl-letra, mas para fins de abreviação, chamaremos Ctrl de C. Se você vir uma sintaxe como M-[letra], isso significa usar a tecla Meta, mais comumente a tecla Alt.
 
 ### Salvando arquivos
 
@@ -31,7 +31,7 @@ Isso solicitará que você digite um nome de arquivo para abrir. Se você não t
 
 ## Exercise
 
-Brinque com a abertura e o salvamento de arquivos.
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

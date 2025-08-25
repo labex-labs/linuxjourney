@@ -43,7 +43,13 @@ RPM: yum info package_name
 
 ## Exercise
 
-Run through each of these package commands and see the output you receive.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux package management:
+
+1. **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Practice managing software packages on RHEL-based Linux systems using YUM, including inspecting, updating, and exploring repositories.
+2. **[Software Installation on Linux](https://labex.io/labs/linux-software-installation-on-linux-18005)** - Learn various methods to install and manage software on Ubuntu systems, including using apt, dpkg, and handling .deb files.
+3. **[Installing and Removing Packages](https://labex.io/labs/linux-installing-and-removing-packages-385380)** - Practice updating the system, installing and removing packages, and optimizing software configuration on a Debian-based system using `apt`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux package management.
 
 ## Quiz Question
 

@@ -48,7 +48,11 @@ RPM: `q` for query and `a` for all
 
 ## Exercise
 
-Find a program that you want to install on your system, like Google Chrome, and install it using one of these commands.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of direct package management:
+
+1. **[Managing Packages with RPM in Linux](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Gain hands-on experience querying package info, verifying integrity, listing dependencies, simulating removal, and inspecting RPM package contents with `rpm` and related tools.
+
+This lab will help you apply the concepts of managing individual package files in a real scenario and build confidence with these essential Linux tools.
 
 ## Quiz Question
 

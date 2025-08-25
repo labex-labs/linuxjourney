@@ -9,11 +9,11 @@ meta_keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de comma
 
 ## Lesson Content
 
-Le monde est à vous, ou plutôt, le shell est à vous. Qu'est-ce que le shell ? Le shell est essentiellement un programme qui prend vos commandes depuis le clavier et les envoie au système d'exploitation pour les exécuter. Si vous avez déjà utilisé une interface graphique, vous avez probablement vu des programmes tels que "Terminal" ou "Console" ; ce ne sont que des programmes qui lancent un shell pour vous. Tout au long de ce cours, nous allons découvrir les merveilles du shell.
+Le monde est à vous, ou plutôt, le shell est à vous. Qu'est-ce que le shell ? Le shell est fondamentalement un programme qui prend vos commandes du clavier et les envoie au système d'exploitation pour les exécuter. Si vous avez déjà utilisé une interface graphique, vous avez probablement vu des programmes tels que "Terminal" ou "Console" ; ce ne sont que des programmes qui lancent un shell pour vous. Tout au long de ce cours, nous allons découvrir les merveilles du shell.
 
-Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront le shell Bash par défaut. D'autres shells sont disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
+Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront le shell Bash par défaut. Il existe d'autres shells disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
 
-Allons-y ! Selon la distribution, votre invite de shell peut changer, mais pour la plupart, elle devrait respecter le format suivant :
+Plongeons directement ! Selon la distribution, votre invite de shell peut changer, mais pour la plupart, elle devrait respecter le format suivant :
 
 ```plaintext
 username@hostname:current_directory
@@ -30,17 +30,11 @@ echo Hello World
 
 ## Exercise
 
-Essayez d'exécuter la commande `echo` avec un texte différent.
-
-Pour une pratique concrète des commandes Linux de base, explorez ces laboratoires interactifs :
-
-- [Linux Directory Navigation](https://labex.io/fr/labs/linux-directory-navigation-387844)
-- [Linux pwd Command: Directory Displaying](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux ls Command: Content Listing](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)
+Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux connexes.
 
 ## Quiz Question
 
-Que devrait afficher l'écran lorsque vous tapez `echo Hello World` ?
+Que devrait être affiché à l'écran lorsque vous tapez `echo Hello World` ?
 
 ## Quiz Answer
 

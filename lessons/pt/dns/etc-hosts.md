@@ -4,7 +4,7 @@ lang: "pt"
 title: "/etc/hosts"
 meta_title: "/etc/hosts - DNS"
 meta_description: "Aprenda sobre o arquivo /etc/hosts no Linux, como ele mapeia nomes de host para endereços IP e seu papel na resolução de DNS. Entenda a configuração básica de rede."
-meta_keywords: "/etc/hosts, rede Linux, mapeamento de hostname, resolução de DNS, tutorial Linux, guia para iniciantes"
+meta_keywords: "/etc/hosts, rede Linux, mapeamento de nome de host, resolução de DNS, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content
@@ -13,7 +13,7 @@ Antes que nossa máquina realmente acesse o DNS para fazer uma consulta, ela pri
 
 ### /etc/hosts
 
-O arquivo `/etc/hosts` contém mapeamentos de alguns nomes de host para endereços IP. Os campos são bastante autoexplicativos: há um para o endereço IP, o nome do host e, em seguida, quaisquer aliases para o host.
+O arquivo `/etc/hosts` contém mapeamentos de alguns nomes de host para endereços IP. Os campos são bastante autoexplicativos: há um para o endereço IP, o nome do host e, em seguida, quaisquer apelidos para o host.
 
 ```plaintext
 pete@icebox:~$ cat /etc/hosts
@@ -29,7 +29,7 @@ Vamos ver um exemplo divertido de `/etc/hosts`. Modifique o arquivo e adicione u
 123.45.6.7  www.google.com
 ```
 
-Salve o arquivo e agora vá para `www.google.com`. Está tendo problemas, não está? Bem, isso porque acabamos de mapear `www.google.com` para um endereço IP completamente errado. Como nossos hosts primeiro procuram localmente por mapeamentos de endereço IP, ele nunca alcança o DNS para encontrar google.com.
+Salve o arquivo e agora vá para `www.google.com`. Está tendo problemas, não está? Bem, isso porque acabamos de mapear `www.google.com` para um endereço IP completamente errado. Como nossos hosts primeiro procuram localmente por mapeamentos de endereço IP, ele nunca chega ao DNS para encontrar google.com.
 
 ### /etc/resolv.conf
 
@@ -44,7 +44,12 @@ search localdomain
 
 ## Exercise
 
-No exercises for this lesson.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da resolução de nomes de host locais e consultas DNS:
+
+1. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Pratique a edição do arquivo `/etc/hosts` para gerenciar a resolução de nome de host local, um passo fundamental antes das consultas DNS.
+2. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a consultar registros DNS usando ferramentas essenciais do Linux como `dig` e `nslookup` para entender como sua máquina resolve nomes externos.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com a resolução de nomes de host e DNS.
 
 ## Quiz Question
 

@@ -9,7 +9,7 @@ meta_keywords: "comando uniq, Linux uniq, remover duplicatas, sort uniq, tutoria
 
 ## Lesson Content
 
-O comando `uniq` (unique) é outra ferramenta útil para analisar texto.
+O comando `uniq` (único) é outra ferramenta útil para analisar texto.
 
 Digamos que você tivesse um arquivo com muitas duplicatas:
 
@@ -60,7 +60,7 @@ paper
 article
 ```
 
-**Note**: `uniq` não detecta linhas duplicadas a menos que sejam adjacentes. Por exemplo:
+**Nota**: `uniq` não detecta linhas duplicadas a menos que sejam adjacentes. Por exemplo:
 
 Digamos que você tivesse um arquivo com duplicatas que não são adjacentes:
 
@@ -101,7 +101,13 @@ paper
 
 ## Exercise
 
-Que resultado você obteria se tentasse `uniq -uc`?
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do processamento de texto com `uniq` e `sort`:
+
+1. **[Comando Linux uniq: Filtragem de Duplicatas](https://labex.io/pt/labs/linux-linux-uniq-command-duplicate-filtering-219199)** - Aprenda a usar o comando Linux `uniq` em combinação com `sort` para identificar, filtrar e analisar linhas duplicadas em arquivos de texto.
+2. **[Comando Linux sort: Classificação de Texto](https://labex.io/pt/labs/linux-linux-sort-command-text-sorting-219196)** - Pratique o uso do comando `sort` para organizar linhas de arquivos de texto, um passo crucial antes de usar `uniq` de forma eficaz.
+3. **[Contagem e Classificação de Palavras](https://labex.io/pt/labs/linux-word-count-and-sorting-388125)** - Aprenda as ferramentas essenciais de processamento de texto do Linux `wc` (contagem de palavras) e `sort` neste desafio prático. Aprenda a contar linhas, palavras e caracteres, encontrar padrões frequentes e classificar dados de forma eficiente para várias tarefas de análise de texto.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o processamento de texto e manipulação de dados no Linux.
 
 ## Quiz Question
 

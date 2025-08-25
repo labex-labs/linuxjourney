@@ -56,7 +56,12 @@ The fields are as follows:
 
 ## Exercise
 
-Look at your memory usage with vmstat.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of system and memory monitoring:
+
+1. **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to monitor and analyze system memory usage, understanding various display formats and total memory consumption.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to monitor system performance in real-time, including processes, CPU, and memory usage, using various options for sorting and filtering.
+
+These labs will help you apply the concepts of system resource monitoring in real scenarios and build confidence with analyzing Linux system performance.
 
 ## Quiz Question
 

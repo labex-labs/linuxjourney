@@ -37,7 +37,7 @@ sudo reboot
 
 ## Exercise
 
-O que você acha que está acontecendo com `init` quando você desliga sua máquina?
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 

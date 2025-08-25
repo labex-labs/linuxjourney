@@ -42,7 +42,11 @@ The **df** command reports file system disk space usage and other details about 
 
 ## Exercise
 
-Do a little bit of research online on the other filesystem types: ReiserFS, ZFS, JFS, and others you can find.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of Linux filesystems and partitions:
+
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating a new partition, formatting it, mounting it, and configuring persistent mounting, all fundamental skills related to managing different filesystem implementations.
+
+This lab will help you apply the concepts in real scenarios and build confidence with managing disk storage in Linux.
 
 ## Quiz Question
 

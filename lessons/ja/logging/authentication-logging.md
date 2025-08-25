@@ -9,7 +9,7 @@ meta_keywords: "Linux 認証，auth.log, Linux ロギング，ユーザーログ
 
 ## Lesson Content
 
-認証ロギングは、ログインに問題がある場合に確認すると非常に役立ちます。
+認証ロギングは、ログインに問題がある場合に非常に役立ちます。
 
 ### /var/log/auth.log
 
@@ -23,11 +23,15 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 ## Exercise
 
-ログインに数回失敗した後、成功するログインを試行してください。その後、何が起こったかを確認するために `/var/log/auth.log` ファイルを調べます。
+練習は完璧を導きます！ユーザー認証とアカウント管理の理解を深めるための実践的なラボをいくつか紹介します。
+
+1. **[Linux でユーザーアカウントと Sudo 権限を設定する](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - パスワードポリシーの適用、ユーザーアカウントのロック/ロック解除、root アカウントの保護、管理者権限の付与を練習します。これらはすべて認証セキュリティを理解するために不可欠です。
+
+これらのラボは、実際のシナリオで概念を適用し、Linux のユーザーおよびセキュリティ管理に自信を持つために役立ちます。
 
 ## Quiz Question
 
-ユーザー認証にはどのログファイルが使用されますか？
+ユーザー認証に使用されるログファイルは何ですか？
 
 ## Quiz Answer
 

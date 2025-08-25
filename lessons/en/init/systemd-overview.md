@@ -37,7 +37,7 @@ For example, let's say we boot into our `default.target`. This target groups tog
 
 ## Exercise
 
-No exercises for this lesson.
+While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
 
 ## Quiz Question
 

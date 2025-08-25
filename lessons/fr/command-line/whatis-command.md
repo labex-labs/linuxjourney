@@ -19,12 +19,13 @@ La description est tirée de la page de manuel de chaque commande. Si vous exéc
 
 ## Exercise
 
-Exécutez la commande `whatis` sur la commande `less`.
+La pratique rend parfait ! Bien qu'il n'y ait pas de laboratoire spécifique pour la commande `whatis`, comprendre comment trouver des informations sur les commandes et les fichiers est crucial. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la localisation des commandes et des fichiers sous Linux :
 
-Pour une pratique supplémentaire des commandes de visualisation de fichiers, explorez ces laboratoires interactifs :
+1. **[Commande Linux which : Localisation de commandes](https://labex.io/fr/labs/linux-linux-which-command-command-locating-215210)** - Entraînez-vous à utiliser la commande `which` pour localiser les fichiers exécutables et comprendre la priorité des commandes dans le PATH de votre système.
+2. **[Commande Linux whereis : Recherche de fichiers et de commandes](https://labex.io/fr/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Apprenez à utiliser `whereis` pour trouver le binaire, la source et les pages de manuel des commandes, approfondissant ainsi votre compréhension de la structure des commandes.
+3. **[Découvrir les ressources système critiques](https://labex.io/fr/labs/linux-discover-critical-system-resources-388032)** - Ce défi combine `which`, `whereis` et `find` pour vous aider à naviguer efficacement dans le système de fichiers et à découvrir les ressources système importantes.
 
-- [Linux less Command: File Paging](https://labex.io/fr/labs/linux-linux-less-command-file-paging-214301)
-- [Linux cat Command: File Concatenating](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)
+Ces laboratoires vous aideront à appliquer les concepts de découverte de commandes et de fichiers dans des scénarios réels et à renforcer votre confiance avec les utilitaires Linux essentiels.
 
 ## Quiz Question
 

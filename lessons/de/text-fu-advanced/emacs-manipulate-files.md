@@ -2,14 +2,14 @@
 index: 10
 lang: "de"
 title: "Emacs Dateien manipulieren"
-meta_title: "Emacs Dateien manipulieren - Fortgeschrittenes Text-Fu"
+meta_title: "Emacs Dateien manipulieren - Fortgeschrittene Text-Fu"
 meta_description: "Lernen Sie die Emacs-Dateimanipulation: Speichern, Speichern unter und Öffnen von Dateien mit den Befehlen C-x C-s, C-x C-w und C-x C-f. Meistern Sie die wesentlichen Emacs-Dateioperationen!"
 meta_keywords: "Emacs, Emacs Datei speichern, Emacs Datei öffnen, Emacs Tutorial, Linux Befehle, Emacs für Anfänger, Emacs Anleitung"
 ---
 
 ## Lesson Content
 
-In vielen (wenn nicht allen) Emacs-Dokumentationen sehen Sie die Syntax C-[Buchstabe]. Das bedeutet einfach, Strg-Buchstabe zu drücken, aber zur Abkürzung nennen wir Strg einfach C. Wenn Sie eine Syntax wie M-[Buchstabe] sehen, bedeutet das, die Meta-Taste zu verwenden, meistens die Alt-Taste.
+In vielen (wenn nicht allen) Emacs-Dokumentationen sehen Sie die Syntax C-[Buchstabe]. Das bedeutet einfach, Strg-[Buchstabe] zu drücken, aber der Kürze halber nennen wir Strg einfach C. Wenn Sie eine Syntax wie M-[Buchstabe] sehen, bedeutet das, die Meta-Taste zu verwenden, meistens die Alt-Taste.
 
 ### Dateien speichern
 
@@ -31,11 +31,11 @@ Dies fordert Sie auf, einen Dateinamen zum Öffnen einzugeben. Wenn Sie keine be
 
 ## Exercise
 
-Spielen Sie mit dem Öffnen und Speichern von Dateien herum.
+Obwohl es keine spezifischen Labs zu diesem Thema gibt, empfehlen wir, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 
-Welcher Befehl wird zum Öffnen einer Datei verwendet?
+Welcher Befehl wird verwendet, um eine Datei zu öffnen?
 
 ## Quiz Answer
 

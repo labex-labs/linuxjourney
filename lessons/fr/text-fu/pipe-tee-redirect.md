@@ -33,15 +33,17 @@ Vous devriez voir la sortie de `ls` sur votre écran, et si vous ouvrez le fichi
 
 ## Exercise
 
-Try the following commands:
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la redirection d'entrée/sortie et des pipelines :
 
-```bash
-ls | tee peanuts.txt banan.txt
-```
+1. **[Redirection d'entrée et de sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs comme `>`, `>>`, `2>`, et la commande `tee`.
+2. **[Contrôle de séquence et pipeline](https://labex.io/fr/labs/linux-sequence-control-and-pipeline-17994)** - Apprenez à contrôler les séquences d'exécution des commandes, à utiliser les pipelines et à exploiter de puissants outils de traitement de texte comme `cut`, `grep`, `wc`, `sort` et `uniq`.
+3. **[Redirection de flux de données](https://labex.io/fr/labs/linux-data-stream-redirection-17995)** - Apprenez l'art de la redirection de flux Linux, y compris la manipulation des flux d'entrée, de sortie et d'erreur standard, la combinaison des sorties et l'utilisation de `/dev/null`.
+
+Ces laboratoires vous aideront à appliquer les concepts de piping et de redirection dans des scénarios réels et à renforcer votre confiance dans la manipulation des données en ligne de commande.
 
 ## Quiz Question
 
-Quelle touche représente l'opérateur de pipe ?
+Quelle touche représente l'opérateur pipe ?
 
 ## Quiz Answer
 

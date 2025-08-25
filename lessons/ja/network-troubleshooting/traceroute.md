@@ -3,13 +3,13 @@ index: 3
 lang: "ja"
 title: "traceroute"
 meta_title: "traceroute - トラブルシューティング"
-meta_description: "Linux の traceroute コマンドを使用してネットワークルートをトレースし、接続の問題をトラブルシューティングする方法を学びます。初心者向けに TTL とパケットルーティングを理解します。"
+meta_description: "Linux の traceroute コマンドを使用して、ネットワークルートをトレースし、接続の問題をトラブルシューティングする方法を学びます。初心者向けに TTL とパケットルーティングを理解します。"
 meta_keywords: "traceroute, Linux ネットワーキング，ネットワークトラブルシューティング，TTL, Linux コマンド，初心者，チュートリアル"
 ---
 
 ## Lesson Content
 
-`traceroute`コマンドは、パケットがどのようにルーティングされるかを確認するために使用されます。これは、TTL (Time To Live) 値を 1 から始めて徐々に増やしながらパケットを送信することで機能します。そのため、最初のルーターはパケットを受信し、TTL 値を 1 つ減らしてパケットを破棄します。ルーターは ICMP Time Exceeded メッセージを私たちに送り返します。次に、次のパケットは TTL が 2 になるため、最初のルーターを通過しますが、2 番目のルーターに到達すると TTL が 0 になり、別の ICMP Time Exceeded メッセージを返します。Traceroute はこのように機能します。パケットを送信して破棄するにつれて、最終的に目的地に到達して ICMP Echo Reply メッセージを受信するまで、パケットが通過するルーターのリストを構築します。
+`traceroute`コマンドは、パケットがどのようにルーティングされるかを確認するために使用されます。これは、TTL（Time To Live）値を 1 から始めて徐々に増やしながらパケットを送信することで機能します。したがって、最初のルーターはパケットを受信し、TTL 値を 1 つ減らしてパケットを破棄します。ルーターは ICMP Time Exceeded メッセージを私たちに送り返します。次に、次のパケットは TTL が 2 になり、最初のルーターを通過しますが、2 番目のルーターに到達すると TTL は 0 になり、別の ICMP Time Exceeded メッセージを返します。Traceroute はこのように機能します。パケットを送信および破棄するにつれて、最終的に目的地に到達し、ICMP Echo Reply メッセージを受信するまで、パケットが通過するルーターのリストを構築します。
 
 以下は traceroute の短いスニペットです。
 
@@ -25,11 +25,16 @@ traceroute to google.com (216.58.216.174), 30 hops max, 60 byte packets
 
 ## Exercise
 
-お使いのマシンで`traceroute`コマンドを実行し、出力を観察してください。
+練習は完璧をもたらします！ネットワークパスの発見とトラブルシューティングの理解を深めるための実践的なラボをいくつか紹介します。
+
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip`コマンドを使用してネットワーク設定を構成し、`traceroute`で接続を確認する練習をします。
+2. **[Linux で ping と arp によるネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`がどのように機能するかを学び、`traceroute`がどのように動作するかの基礎となるネットワーク層の相互作用を理解します。
+
+これらのラボは、実際のシナリオでネットワーク診断の概念を適用し、Linux ネットワークツールに自信を持つのに役立ちます。
 
 ## Quiz Question
 
-ネットワークをホップする際に 1 つずつ減らされるものは何ですか？
+ネットワークをホップする際に 1 つずつ減っていくものは何ですか？
 
 ## Quiz Answer
 

@@ -46,7 +46,11 @@ Some signals are unblockable; one example is the SIGKILL signal. The KILL signal
 
 ## Exercise
 
-No exercises for this lesson.
+Practice makes perfect! Here is a hands-on lab to reinforce your understanding of processes and how signals are used to interact with them:
+
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`. Terminating processes with `kill` is a direct application of sending signals.
+
+This lab will help you apply the concepts of process management and the underlying use of signals in real scenarios and build confidence with Linux system administration.
 
 ## Quiz Question
 

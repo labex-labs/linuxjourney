@@ -34,7 +34,13 @@ Go ahead and do an `ls -l /` to see the directories listed under the root direct
 
 ## Exercise
 
-Look inside your `/usr` directory. What kind of information is located there?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Linux filesystem:
+
+1. **[Navigate the Filesystem in Linux](https://labex.io/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Practice using essential shell commands like `pwd`, `cd`, and `ls` to move between directories and explore the filesystem.
+2. **[Manage Files and Directories in Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835)** - Learn to create, remove, copy, and move files and directories, and understand symbolic and hard links.
+3. **[Find Files and Commands in Linux](https://labex.io/labs/comptia-find-files-and-commands-in-linux-590834)** - Master techniques for locating files and commands using `find`, `locate`, `whereis`, `which`, and `type`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with Linux filesystem management.
 
 ## Quiz Question
 

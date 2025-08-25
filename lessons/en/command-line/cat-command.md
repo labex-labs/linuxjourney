@@ -19,11 +19,12 @@ It’s not great for viewing large files and it’s only meant for short content
 
 ## Exercise
 
-Run `cat` on different files and directories. Then try to `cat` multiple files.
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of viewing file contents:
 
-For hands-on practice with the `cat` command, try this interactive lab:
+1. **[Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)** - Learn the `cat` command for viewing, concatenating, and manipulating text files, enhancing your command-line skills for efficient text file handling.
+2. **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice using commands like `cat` to efficiently view and navigate text files, including system logs and configuration files, to extract critical information.
 
-- [Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)
+These labs will help you apply the concepts in real scenarios and build confidence with file content viewing in Linux.
 
 ## Quiz Question
 

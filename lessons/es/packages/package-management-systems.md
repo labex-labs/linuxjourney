@@ -25,7 +25,7 @@ Debian: $ apt remove package_name
 RPM: $ yum erase package_name
 ```
 
-### Actualización de paquetes para un repositorio
+### Actualizar paquetes para un repositorio
 
 Siempre es una buena práctica actualizar sus repositorios de paquetes para que estén al día antes de instalar y actualizar un paquete.
 
@@ -43,11 +43,17 @@ RPM: yum info package_name
 
 ## Exercise
 
-Ejecute cada uno de estos comandos de paquete y vea la salida que recibe.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión de paquetes de Linux:
+
+1. **[Consultar y actualizar paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Practique la gestión de paquetes de software en sistemas Linux basados en RHEL usando YUM, incluyendo la inspección, actualización y exploración de repositorios.
+2. **[Instalación de software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Aprenda varios métodos para instalar y gestionar software en sistemas Ubuntu, incluyendo el uso de apt, dpkg y el manejo de archivos .deb.
+3. **[Instalación y eliminación de paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Practique la actualización del sistema, la instalación y eliminación de paquetes, y la optimización de la configuración de software en un sistema basado en Debian usando `apt`.
+
+Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con la gestión de paquetes de Linux.
 
 ## Quiz Question
 
-¿Qué comando se utiliza para mostrar información de paquetes en un sistema Debian?
+¿Qué comando se utiliza para mostrar información de un paquete en un sistema Debian?
 
 ## Quiz Answer
 

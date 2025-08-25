@@ -4,12 +4,12 @@ lang: "es"
 title: "Emacs Manipular Archivos"
 meta_title: "Emacs Manipular Archivos - Text-Fu Avanzado"
 meta_description: "Aprende la manipulación de archivos en Emacs: guardar, guardar como y abrir archivos usando los comandos C-x C-s, C-x C-w y C-x C-f. ¡Domina las operaciones esenciales de archivos en Emacs!"
-meta_keywords: "Emacs, guardar archivo Emacs, abrir archivo Emacs, tutorial Emacs, comandos Linux, Emacs para principiantes, guía Emacs"
+meta_keywords: "Emacs, Emacs guardar archivo, Emacs abrir archivo, tutorial Emacs, comandos Linux, Emacs para principiantes, guía Emacs"
 ---
 
 ## Lesson Content
 
-En mucha (si no toda) la documentación de Emacs, verás la sintaxis C-[letra]. Esto simplemente significa presionar Ctrl-letra, pero para abreviar, llamaremos a Ctrl con C. Si ves sintaxis como M-[letra], eso significa usar la tecla Meta, que comúnmente es la tecla Alt.
+En mucha (si no toda) la documentación de Emacs, verás la sintaxis C-[letra]. Esto solo significa presionar Ctrl-letra, pero para abreviar, llamaremos a Ctrl con C. Si ves una sintaxis como M-[letra], eso significa usar la tecla Meta, que comúnmente es la tecla Alt.
 
 ### Guardar archivos
 
@@ -31,7 +31,7 @@ Esto te pedirá que escribas un nombre de archivo para abrir. Si no tienes un ar
 
 ## Exercise
 
-Experimenta abriendo y guardando archivos.
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 

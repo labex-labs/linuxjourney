@@ -31,16 +31,15 @@ RHEL administrators can pursue Red Hat certifications including RHCSA (Red Hat C
 
 ## Exercise
 
-For comprehensive RHEL training and certification preparation, consider the **[Red Hat Enterprise Linux Learning Path](https://labex.io/skilltrees/rhel)** which offers structured courses including:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user and group management and file permissions:
 
-- [Red Hat System Administration (RH124)](https://labex.io/courses/red-hat-system-administration-rh124-labs) - Foundation skills
-- [Red Hat System Administration (RH134)](https://labex.io/courses/red-hat-system-administration-rh134-labs) - Advanced administration
-- [Enterprise Linux Automation with Ansible (RH294)](https://labex.io/courses/red-hat-enterprise-linux-automation-with-ansible-rh294)
-- [RHCSA Certification practice exercises](https://labex.io/courses/rhcsa-certification-exam-practice-exercises)
+1. **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - In this lab, you will learn how to manage user accounts in the Linux platform, such as creating new user accounts, modifying user account management, and deleting a user account.
+2. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including creating and managing users, exploring group memberships, understanding file permissions, and manipulating file ownership.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this challenge, you'll simulate adding new team members to a server environment by creating new user accounts, setting up custom groups, and managing group memberships.
 
-This learning path includes 32 skills across 90+ hands-on labs, designed for system administrators, DevOps engineers, and IT professionals seeking Red Hat certification.
+These labs will help you apply the concepts in real scenarios and build confidence with user and group administration and file permissions in Linux.
 
-## Quiz Questions
+## Quiz Question
 
 What package manager does RHEL use?
 

@@ -3,7 +3,7 @@ index: 15
 lang: "ja"
 title: "help"
 meta_title: "help - コマンドライン"
-meta_description: "Bash で'help'コマンドを使用して、コマンドラインで素早くアシスタンスを得る方法を学びます。組み込みコマンドを理解し、Linux プログラムのオプションを見つけます。"
+meta_description: "Bash で'help'コマンドを使用して、コマンドラインでの迅速な支援を得る方法を学びます。組み込みコマンドを理解し、Linux プログラムのオプションを見つけます。"
 meta_keywords: "Linux help コマンド，Bash help, コマンドラインヘルプ，Linux コマンド，Linux 初心者，Linux チュートリアル，Bash チュートリアル"
 ---
 
@@ -21,20 +21,15 @@ help echo
 echo --help
 ```
 
-実行可能ファイルを配布するすべての開発者がこの標準に準拠するわけではありませんが、プログラムに関するヘルプを見つけるにはおそらくこれが最善の方法です。
+実行可能ファイルを配布するすべての開発者がこの標準に準拠するわけではありませんが、プログラムに関するヘルプを見つけるには、これが最も良い方法でしょう。
 
 ## Exercise
 
-`echo`コマンド、`logout`コマンド、および`pwd`コマンドで`help`を実行してください。
-
-基本的な Linux コマンドの追加のハンズオン練習については、これらのインタラクティブなラボを探索してください。
-
-- [Linux pwd Command: Directory Displaying](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)
-- [Linux cd Command: Directory Changing](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 
-組み込みの Bash コマンドのコマンドラインヘルプをすばやく取得するにはどうすればよいですか？
+組み込みの Bash コマンドのコマンドラインヘルプを素早く取得するにはどうすればよいですか？
 
 ## Quiz Answer
 

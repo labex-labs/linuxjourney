@@ -3,7 +3,7 @@ index: 15
 lang: "de"
 title: "wc und nl"
 meta_title: "wc und nl - Text-Fu"
-meta_description: "Lernen Sie die Linux-Befehle wc und nl. Verstehen Sie Wortzählung, Zeilennummerierung und Dateianalyse. Verbessern Sie noch heute Ihre Linux-Kommandozeilenkenntnisse!"
+meta_description: "Lernen Sie die Linux-Befehle wc und nl. Verstehen Sie Wortzählung, Zeilennummerierung und Dateianalyse. Verbessern Sie noch heute Ihre Linux-Befehlszeilenkenntnisse!"
 meta_keywords: "wc Befehl, nl Befehl, Linux Wortzählung, Linux Zeilennummern, Dateianalyse, Linux Tutorial, Linux für Anfänger, Linux Anleitung"
 ---
 
@@ -25,7 +25,7 @@ $ wc -l /etc/passwd
 96
 ```
 
-Ein weiterer Befehl, den Sie verwenden können, um die Zeilenanzahl in einer Datei zu überprüfen, ist der Befehl `nl` (number lines).
+Ein weiterer Befehl, den Sie verwenden können, um die Anzahl der Zeilen in einer Datei zu überprüfen, ist der Befehl `nl` (number lines).
 
 ```plaintext
 file1.txt
@@ -43,7 +43,13 @@ $ nl file1.txt
 
 ## Exercise
 
-Wie würden Sie die Gesamtzahl der Zeilen mit dem Befehl `nl` ermitteln, ohne die gesamte Ausgabe durchsuchen zu müssen? Tipp: Verwenden Sie einige der anderen Befehle, die Sie in diesem Kurs gelernt haben.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Textzählung und Zeilennummerierung unter Linux zu vertiefen:
+
+1. **[Linux wc Befehl: Textzählung](https://labex.io/de/labs/linux-linux-wc-command-text-counting-219200)** – Üben Sie das Zählen von Wörtern, Zeilen und Zeichen in Textdateien mit dem Befehl `wc`.
+2. **[Linux nl Befehl: Zeilennummerierung](https://labex.io/de/labs/linux-linux-nl-command-line-numbering-210988)** – Lernen Sie, Zeilen in Textdateien mit dem Befehl `nl` zu nummerieren.
+3. **[Wortzählung und Sortierung](https://labex.io/de/labs/linux-word-count-and-sorting-388125)** – Wenden Sie Ihr Wissen über `wc` an, um Zeilen, Wörter und Zeichen zu zählen, und kombinieren Sie es mit der Sortierung für praktische Textanalyseaufgaben.
+
+Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Textverarbeitung unter Linux aufzubauen.
 
 ## Quiz Question
 

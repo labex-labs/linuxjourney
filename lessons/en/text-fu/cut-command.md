@@ -43,13 +43,13 @@ This will change the TAB delimiter to a ";" delimiter, and since we are cutting 
 
 ## Exercise
 
-What does the following command do? Why?
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text processing with `cut` and other related commands:
 
-```bash
-cut -c 5-10 sample.txt
-cut -c 5- sample.txt
-cut -c -5 sample.txt
-```
+1. **[Linux cut Command: Text Cutting](https://labex.io/labs/linux-linux-cut-command-text-cutting-219187)** - This lab provides a direct, hands-on introduction to the `cut` command, allowing you to practice extracting specific columns or fields from text files, just as discussed in the lesson.
+2. **[Simple Text Processing](https://labex.io/labs/linux-simple-text-processing-18004)** - Expand your text manipulation skills by using powerful commands like `tr`, `col`, `join`, and `paste` to efficiently process and analyze text data.
+3. **[Sequence Control and Pipeline](https://labex.io/labs/linux-sequence-control-and-pipeline-17994)** - Enhance your command-line efficiency by learning to control command execution sequences, utilize pipelines, and leverage powerful text processing tools like `cut`, `grep`, `wc`, `sort`, and `uniq`.
+
+These labs will help you apply the concepts in real scenarios and build confidence with text processing in Linux.
 
 ## Quiz Question
 

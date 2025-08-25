@@ -4,7 +4,7 @@ lang: "de"
 title: "man"
 meta_title: "man - Befehlszeile"
 meta_description: "Erfahren Sie, wie Sie den Befehl 'man' in Linux verwenden, um auf Befehlshandbücher zuzugreifen. Entdecken Sie wichtige Linux-Dokumentation für Anfänger und verbessern Sie Ihre Befehlszeilenkenntnisse."
-meta_keywords: "man Befehl, Linux man pages, Linux Dokumentation, Linux Tutorial, Befehlszeilen-Anleitung, Linux für Anfänger"
+meta_keywords: "man Befehl, Linux manpages, Linux Dokumentation, Linux Tutorial, Befehlszeilenhandbuch, Linux für Anfänger"
 ---
 
 ## Lesson Content
@@ -17,20 +17,21 @@ man ls
 
 Manpages sind Handbücher, die standardmäßig in den meisten Linux-Betriebssystemen integriert sind. Sie bieten Dokumentation über Befehle und andere Aspekte des Systems.
 
-Probieren Sie es bei einigen Befehlen aus, um weitere Informationen darüber zu erhalten.
+Probieren Sie es mit einigen Befehlen aus, um weitere Informationen darüber zu erhalten.
 
 ## Exercise
 
-Führen Sie den Befehl `man` für den Befehl `ls` aus.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis grundlegender Linux-Befehle zu festigen, die Sie dann mithilfe von `man`-Seiten weiter erkunden können:
 
-Für zusätzliche praktische Übungen mit Linux-Befehlen erkunden Sie diese interaktiven Labs:
+1. **[Linux ls Befehl: Inhaltsauflistung](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie das Auflisten und Analysieren von Datei- und Verzeichnisinhalten und verwenden Sie dann `man ls`, um weitere Optionen zu entdecken.
+2. **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Lernen Sie den Befehl `pwd`, um Ihr aktuelles Verzeichnis anzuzeigen, und erkunden Sie dessen Manpage für Details.
+3. **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Meistern Sie die Navigation in Ihrem Dateisystem mit `cd` und verwenden Sie `man cd`, um seine verschiedenen Techniken zu verstehen.
 
-- [Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)
-- [Linux find Command: File Searching](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)
+Diese Übungen helfen Ihnen, Kernkonzepte in realen Szenarien anzuwenden und Vertrauen in wesentliche Linux-Befehle aufzubauen, wodurch Sie darauf vorbereitet werden, `man` effektiv zur Vertiefung Ihres Wissens einzusetzen.
 
 ## Quiz Question
 
-Wie sehen Sie die Handbücher für einen Befehl?
+Wie können Sie die Handbücher für einen Befehl einsehen?
 
 ## Quiz Answer
 
