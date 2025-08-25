@@ -25,6 +25,9 @@ Examples:
     python sync_lessons.py --path lessons/en/filesystem/anatomy-of-a-disk.md --no-preview
     python sync_lessons.py --path lessons/zh/command-line/ --no-preview --lang zh
 
+    # Skip cache clearing
+    python sync_lessons.py --path lessons/en/filesystem/ --skip-cache-clear
+
 Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
     CLOUDFLARE_ACCOUNT_ID: Your Cloudflare account ID
@@ -67,11 +70,13 @@ class CloudflareD1Client:
         account_id: str,
         database_id: str,
         kv_namespace_id: Optional[str] = None,
+        skip_cache_clear: bool = False,
     ):
         self.api_token = api_token
         self.account_id = account_id
         self.database_id = database_id
         self.kv_namespace_id = kv_namespace_id
+        self.skip_cache_clear = skip_cache_clear
         self.base_url = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/d1/database/{database_id}"
         self.kv_base_url = (
             f"https://api.cloudflare.com/client/v4/accounts/{account_id}/storage/kv/namespaces/{kv_namespace_id}"
@@ -217,17 +222,22 @@ class CloudflareD1Client:
                     f"SUCCESS: Updated lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                 )
 
-                # Clear KV cache for this lesson
-                cache_cleared = self.clear_lesson_cache(
-                    lesson_data["lesson_id"], lesson_data["lang"]
-                )
-                if cache_cleared:
-                    logger.info(
-                        f"INFO: Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                # Clear KV cache for this lesson (if not skipped)
+                if not self.skip_cache_clear:
+                    cache_cleared = self.clear_lesson_cache(
+                        lesson_data["lesson_id"], lesson_data["lang"]
                     )
+                    if cache_cleared:
+                        logger.info(
+                            f"INFO: Cache cleared for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        )
+                    else:
+                        logger.warning(
+                            f"WARNING: Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                        )
                 else:
-                    logger.warning(
-                        f"WARNING: Failed to clear cache for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
+                    logger.info(
+                        f"INFO: Cache clearing skipped for lesson: {lesson_data['lesson_id']} ({lesson_data['lang']})"
                     )
 
                 return True
@@ -775,7 +785,13 @@ def show_comparison_preview(
     type=click.Choice(SUPPORTED_LANGUAGES),
     help="Only synchronize files for the specified language (e.g., en, zh, es)",
 )
-def main(path: str, no_preview: bool, lang: Optional[str]):
+@click.option(
+    "--skip-cache-clear",
+    is_flag=True,
+    default=False,
+    help="Skip clearing KV cache after updating lessons",
+)
+def main(path: str, no_preview: bool, lang: Optional[str], skip_cache_clear: bool):
     """Update existing Linux Journey lessons in Cloudflare D1 database.
 
     Use --path to specify either:
@@ -784,11 +800,14 @@ def main(path: str, no_preview: bool, lang: Optional[str]):
 
     Use --lang to only synchronize files for a specific language (e.g., en, zh, es).
     Use --no-preview to skip the comparison preview and proceed directly with synchronization.
+    Use --skip-cache-clear to skip clearing KV cache after updating lessons.
     """
     console.print("[bold blue]Linux Journey Lesson Sync Tool[/bold blue]")
     console.print(f"Processing: {path}")
     if lang:
         console.print(f"Language filter: {lang}")
+    if skip_cache_clear:
+        console.print(f"Cache clearing: disabled")
     console.print()
 
     # Check for required environment variables
@@ -807,7 +826,11 @@ def main(path: str, no_preview: bool, lang: Optional[str]):
         raise click.Abort()
 
     # Show KV configuration status
-    if kv_namespace_id:
+    if skip_cache_clear:
+        console.print(
+            "[yellow]INFO: KV cache clearing disabled (--skip-cache-clear)[/yellow]"
+        )
+    elif kv_namespace_id:
         console.print("[green]INFO: KV cache clearing enabled[/green]")
     else:
         console.print(
@@ -895,7 +918,9 @@ def main(path: str, no_preview: bool, lang: Optional[str]):
         )
 
     # Initialize database client to show comparison
-    db_client = CloudflareD1Client(api_token, account_id, database_id, kv_namespace_id)
+    db_client = CloudflareD1Client(
+        api_token, account_id, database_id, kv_namespace_id, skip_cache_clear
+    )
 
     # Test the connection with a simple query
     console.print("[dim]INFO: Testing database connection...[/dim]")
