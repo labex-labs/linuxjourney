@@ -9,7 +9,7 @@ meta_keywords: "yum, apt, Linux-Paketverwaltung, apt-Tutorial, yum-Tutorial, Lin
 
 ## Lesson Content
 
-Ah, die Batmans der Paketverwaltung! Diese Systeme bieten alle notwendigen Funktionen, um die Installation, Entfernung und Änderung von Paketen zu vereinfachen, einschließlich der Installation von Paketabhängigkeiten. Zwei der beliebtesten Verwaltungssysteme sind **yum** und **apt**. Yum ist exklusiv für die Red Hat-Familie, und apt ist exklusiv für die Debian-Familie.
+Ah, die Batmans der Paketverwaltung! Diese Systeme bieten alle Funktionen, um die Installation, Entfernung und Änderung von Paketen zu erleichtern, einschließlich der Installation von Paketabhängigkeiten. Zwei der beliebtesten Verwaltungssysteme sind **yum** und **apt**. Yum ist exklusiv für die Red Hat-Familie, und apt ist exklusiv für die Debian-Familie.
 
 ### Installieren Sie ein Paket aus einem Repository
 
@@ -18,7 +18,7 @@ Debian: $ apt install package_name
 RPM: $ yum install package_name
 ```
 
-### Entfernen Sie ein Paket
+### Ein Paket entfernen
 
 ```bash
 Debian: $ apt remove package_name
@@ -43,7 +43,13 @@ RPM: yum info package_name
 
 ## Exercise
 
-Führen Sie jeden dieser Paketbefehle aus und sehen Sie sich die Ausgabe an, die Sie erhalten.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Paketverwaltung zu vertiefen:
+
+1. **[Pakete mit YUM in Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Üben Sie die Verwaltung von Softwarepaketen auf RHEL-basierten Linux-Systemen mit YUM, einschließlich der Überprüfung, Aktualisierung und Erkundung von Repositories.
+2. **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Lernen Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen, einschließlich der Verwendung von apt, dpkg und der Handhabung von .deb-Dateien.
+3. **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Üben Sie das Aktualisieren des Systems, das Installieren und Entfernen von Paketen und das Optimieren der Softwarekonfiguration auf einem Debian-basierten System mit `apt`.
+
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Paketverwaltung aufzubauen.
 
 ## Quiz Question
 

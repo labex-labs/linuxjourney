@@ -9,7 +9,7 @@ meta_keywords: "Vim, editor Vi, editor de texto Linux, tutorial Vim, comandos Li
 
 ## Lesson Content
 
-Vim significa Vi Improved. Tal como su nombre lo indica, es una versión mejorada del editor de texto Vi.
+Vim significa Vi Improved (Vi Mejorado). Tal como su nombre lo sugiere, es una versión mejorada del editor de texto Vi.
 
 Es súper ligero; abrir y editar un archivo con Vim es rápido y fácil. También está casi siempre disponible. Si inicias una distribución de Linux al azar, lo más probable es que Vim esté instalado por defecto.
 
@@ -21,7 +21,11 @@ vim
 
 ## Exercise
 
-No hay ejercicios para esta lección.
+¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de la edición de texto en Linux:
+
+1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación de archivos, la edición de texto, el guardado de archivos y la navegación con Vim y Nano en un entorno Linux real.
+
+Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a desarrollar confianza con los editores de texto de Linux.
 
 ## Quiz Question
 

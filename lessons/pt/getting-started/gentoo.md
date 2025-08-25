@@ -11,7 +11,7 @@ meta_keywords: "Gentoo Linux, Portage, distribuição Linux, tutorial Gentoo, Li
 
 ### Visão Geral
 
-Gentoo oferece uma flexibilidade incrível com o sistema operacional, mas isso tem um preço. É feito para usuários avançados que não se importam de colocar as mãos na massa com o sistema.
+Gentoo oferece uma flexibilidade incrível com o sistema operacional, mas isso tem um preço. É feito para usuários avançados que não se importam de colocar a mão na massa com o sistema.
 
 ### Gerenciamento de Pacotes
 
@@ -27,11 +27,11 @@ Se você está apenas começando com Linux e quer seguir um caminho mais desafia
 
 ## Exercise
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de arquivos e diretórios Linux:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de arquivos e diretórios no Linux:
 
-1.  **[Operações Básicas de Arquivos](https://labex.io/pt/labs/linux-basic-files-operations-270248)** - Pratique listar arquivos, mudar diretórios e mover/copiar/excluir arquivos e diretórios em um ambiente Linux real.
-2.  **[Arquivos e Diretórios](https://labex.io/pt/labs/linux-files-and-directories-270246)** - Aprenda a navegar no sistema de arquivos, copiar, mover e excluir arquivos e diretórios usando comandos básicos do Linux.
-3.  **[Operações Básicas de Arquivos no Linux](https://labex.io/pt/labs/linux-basic-file-operations-in-linux-18001)** - Aprenda comandos e conceitos essenciais do Linux para navegar no sistema de arquivos, gerenciar arquivos e diretórios e usar atalhos de linha de comando.
+1. **[Operações Básicas de Arquivos](https://labex.io/pt/labs/linux-basic-files-operations-270248)** - Pratique listar arquivos, mudar diretórios e mover/copiar/excluir arquivos e diretórios em um ambiente Linux real.
+2. **[Arquivos e Diretórios](https://labex.io/pt/labs/linux-files-and-directories-270246)** - Aprenda a navegar no sistema de arquivos, copiar, mover e excluir arquivos e diretórios usando comandos básicos do Linux.
+3. **[Operações Básicas de Arquivos no Linux](https://labex.io/pt/labs/linux-basic-file-operations-in-linux-18001)** - Aprenda comandos e conceitos essenciais do Linux para navegar no sistema de arquivos, gerenciar arquivos e diretórios e usar atalhos de linha de comando.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com as operações do sistema de arquivos Linux.
 

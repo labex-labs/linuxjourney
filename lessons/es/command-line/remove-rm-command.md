@@ -2,14 +2,14 @@
 index: 13
 lang: "es"
 title: "rm (Eliminar)"
-meta_title: "rm (Eliminar) - Línea de comandos"
+meta_title: "rm (Eliminar) - Línea de Comandos"
 meta_description: "Aprende a usar el comando `rm` en Linux para eliminar de forma segura archivos y directorios. Comprende opciones como -f, -i, -r y rmdir. ¡Comienza tu viaje en Linux!"
 meta_keywords: "comando rm, eliminar archivos Linux, eliminar directorios, tutorial Linux, Linux para principiantes, rmdir, guía Linux"
 ---
 
 ## Lesson Content
 
-Ahora, creo que tenemos demasiados archivos; vamos a eliminar algunos. Para eliminar archivos, puedes usar el comando `rm`. El comando `rm` (remove) se usa para eliminar archivos y directorios.
+Ahora, creo que tenemos demasiados archivos; eliminemos algunos. Para eliminar archivos, puedes usar el comando `rm`. El comando `rm` (remove) se usa para eliminar archivos y directorios.
 
 ```bash
 rm file1

@@ -17,7 +17,7 @@ touch mysuperduperfile
 
 ¡Y listo, nuevo archivo!
 
-`touch` también se usa para cambiar las marcas de tiempo en archivos y directorios existentes. Inténtalo: haz un `ls -l` en un archivo y anota la marca de tiempo, luego `touch` ese archivo, y actualizará la marca de tiempo.
+`touch` también se usa para cambiar las marcas de tiempo en archivos y directorios existentes. Pruébalo: haz un `ls -l` en un archivo y anota la marca de tiempo, luego `touch` ese archivo, y actualizará la marca de tiempo.
 
 Hay muchas otras formas de crear archivos que involucran otras cosas como la redirección y los editores de texto, pero llegaremos a eso en el curso de Manipulación de Texto.
 
@@ -26,9 +26,9 @@ Hay muchas otras formas de crear archivos que involucran otras cosas como la red
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión sobre la creación y gestión de objetos del sistema de archivos:
 
 1. **[Comando Linux mkdir: Creación de directorios](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)** - Aprende a usar el comando `mkdir` en Linux para crear directorios, establecer permisos y organizar tu sistema de archivos. Esto te ayudará a comprender el concepto más amplio de crear nuevos elementos en el sistema de archivos.
-2. **[Configuración de una nueva estructura de proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios en Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
+2. **[Configuración de una nueva estructura de proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios de Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de creación y organización del sistema de archivos en escenarios reales y a desarrollar confianza con los comandos de Linux.
+Estos laboratorios te ayudarán a aplicar los conceptos de creación y organización del sistema de archivos en escenarios reales y a generar confianza con los comandos de Linux.
 
 ## Quiz Question
 

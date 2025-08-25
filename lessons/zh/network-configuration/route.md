@@ -1,9 +1,9 @@
 ---
 index: 2
 lang: "zh"
-title: "路由"
-meta_title: "路由 - 网络配置"
-meta_description: "学习如何使用 Linux 的 route 和 ip 命令添加和删除网络路由。了解初学者和中级用户的路由表管理。"
+title: "route"
+meta_title: "route - 网络配置"
+meta_description: "学习如何使用 Linux 的 route 和 ip 命令添加和删除网络路由。了解面向初学者和中级用户的路由表管理。"
 meta_keywords: "route 命令，ip route, 添加路由，删除路由，Linux 网络，路由表，Linux 教程，初学者指南"
 ---
 
@@ -41,15 +41,12 @@ $ ip route delete 192.168.2.1/23
 
 ## Exercise
 
-本课程没有练习，但您可以在手册页中阅读更多关于此处讨论的命令的信息。
+熟能生巧！这里有一些动手实验，以加强您对网络路由和 IP 地址的理解：
 
-```bash
-man route
-```
+1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习配置静态 IP、设置默认网关以及使用 `ip` 命令验证网络配置。
+2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解默认网关如何处理远程流量并观察网络层交互。
 
-```bash
-man ip-route
-```
+这些实验将帮助您在实际场景中应用 IP 地址和路由的概念，并增强您对 Linux 网络的信心。
 
 ## Quiz Question
 

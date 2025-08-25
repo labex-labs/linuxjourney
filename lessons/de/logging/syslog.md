@@ -3,7 +3,7 @@ index: 2
 lang: "de"
 title: "syslog"
 meta_title: "syslog - Protokollierung"
-meta_description: "Erfahren Sie mehr über syslog und rsyslog in Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Starten Sie mit diesem anfängerfreundlichen Tutorial!"
+meta_description: "Erfahren Sie mehr über syslog und rsyslog in Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Beginnen Sie mit diesem anfängerfreundlichen Tutorial!"
 meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Linux für Anfänger, Systemprotokollierung"
 ---
 
@@ -39,7 +39,13 @@ Schauen Sie nun in Ihr `/var/log/syslog`, und Sie sollten diesen Eintrag in Ihre
 
 ## Exercise
 
-Sehen Sie sich Ihre Konfigurationsdatei `/etc/rsyslog.d` an und prüfen Sie, was sonst noch über den System-Logger protokolliert wird.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Protokollierung und Dateianzeige zu vertiefen:
+
+1. **[Protokoll- und Konfigurationsdateien in Linux anzeigen](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Üben Sie grundlegende Linux-Befehlszeilenkenntnisse, um Textdateien, einschließlich Systemprotokolle und Konfigurationsdateien, effizient anzuzeigen und zu navigieren.
+2. **[Linux tail Befehl: Dateiende anzeigen](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** – Lernen Sie den Linux-Befehl `tail` zum Anzeigen und Überwachen des Endes von Textdateien, was besonders nützlich für die Echtzeit-Protokollanalyse ist.
+3. **[Text mit grep in Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** – Lernen Sie, nach bestimmten Textmustern in Dateien zu suchen, eine unschätzbare Fähigkeit, um Protokolleinträge zu durchsuchen und wichtige Informationen zu finden.
+
+Diese Übungen helfen Ihnen, die Konzepte der Protokollverwaltung und Dateiprüfung in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
 
 ## Quiz Question
 

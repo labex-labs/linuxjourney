@@ -4,7 +4,7 @@ lang: "ja"
 title: "Linux ディストリビューションの選択"
 meta_title: "Linux ディストリビューションの選択 - 入門"
 meta_description: "ニーズに合った Linux ディストリビューションの選び方を学びましょう。人気のオプションを探り、カーネル、ハードウェア、ユーザー空間を理解しましょう。Linux の旅を始めましょう！"
-meta_keywords: "Linux ディストリビューション，Linux を選ぶ，Linux カーネル，初心者向け Linux, Linux ガイド，Linux インストール，Linux チュートリアル"
+meta_keywords: "Linux ディストリビューション，Linux を選ぶ，Linux カーネル，初心者 Linux, Linux ガイド，Linux インストール，Linux チュートリアル"
 ---
 
 ## Lesson Content

@@ -35,13 +35,13 @@ Você também pode renomear diretórios:
 mv directory1 directory2
 ```
 
-Assim como `cp`, se você `mv` um arquivo ou diretório, ele sobrescreverá qualquer coisa no mesmo diretório. Então você pode usar o sinalizador `-i` para ser solicitado antes de sobrescrever qualquer coisa.
+Assim como `cp`, se você `mv` um arquivo ou diretório, ele sobrescreverá qualquer coisa no mesmo diretório. Então você pode usar o sinalizador `-i` para ser avisado antes de sobrescrever qualquer coisa.
 
 ```bash
 mv -i directory1 directory2
 ```
 
-Digamos que você quisesse `mv` um arquivo para sobrescrever o anterior. Você também pode fazer um backup desse arquivo, e ele apenas renomeará a versão antiga com um `~`.
+Digamos que você queira `mv` um arquivo para sobrescrever o anterior. Você também pode fazer um backup desse arquivo, e ele apenas renomeará a versão antiga com um `~`.
 
 ```bash
 mv -b directory1 directory2

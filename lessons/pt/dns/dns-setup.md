@@ -9,11 +9,11 @@ meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, configuração de servidor D
 
 ## Lesson Content
 
-Não abordaremos a configuração de um servidor DNS, pois isso seria um tutorial bastante longo. Em vez disso, aqui está uma lista de comparação rápida de servidores DNS populares para usar com Linux.
+Não vamos abordar a configuração de um servidor DNS, pois isso seria um tutorial bastante longo. Em vez disso, aqui está uma lista de comparação rápida de servidores DNS populares para usar com Linux.
 
 ### BIND
 
-O servidor DNS mais popular na Internet, é o padrão usado nas distribuições Linux. Foi originalmente desenvolvido na Universidade da Califórnia em Berkeley, daí o nome BIND (Berkeley Internet Name Domain). Se você precisa de poder e flexibilidade completos, não há como errar com o BIND.
+O servidor DNS mais popular na Internet, é o padrão usado com as distribuições Linux. Foi originalmente desenvolvido na Universidade da Califórnia em Berkeley, daí o nome BIND (Berkeley Internet Name Domain). Se você precisa de poder e flexibilidade completos, não há como errar com o BIND.
 
 ### DNSmasq
 
@@ -23,11 +23,16 @@ Leve e muito mais fácil de configurar do que o BIND. Se você quer simplicidade
 
 Completo e semelhante ao BIND, ele oferece um pouco mais de flexibilidade com as opções. Ele lê informações de vários bancos de dados, como MySQL, PostgreSQL, etc., para uma administração mais fácil. Só porque o BIND tem sido a maneira como fazemos as coisas, não significa que deva permanecer assim.
 
-Esta não é uma lista completa, mas deve lhe dar uma ideia de onde procurar se você estiver configurando seu próprio servidor DNS.
+Esta não é uma lista completa, mas deve dar uma ideia de onde procurar se você estiver configurando seu próprio servidor DNS.
 
 ## Exercise
 
-No exercises for this lesson.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de DNS no Linux:
+
+1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Aprenda a usar ferramentas essenciais de linha de comando como `dig` e `nslookup` para consultar vários tipos de registros DNS e solucionar problemas de resolução de DNS.
+2. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Ganhe experiência prática instalando e configurando o `bind9` para configurar seu próprio servidor DNS autoritativo local, definindo zonas e testando a resolução.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de DNS no Linux.
 
 ## Quiz Question
 

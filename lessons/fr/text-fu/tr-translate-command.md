@@ -4,7 +4,7 @@ lang: "fr"
 title: "tr (Traduire)"
 meta_title: "tr (Traduire) - Text-Fu"
 meta_description: "Apprenez à utiliser la commande Linux 'tr' pour traduire et supprimer des caractères. Comprenez la traduction de caractères avec des exemples et des exercices. Commencez votre parcours Linux !"
-meta_keywords: "commande tr, Linux tr, traduire des caractères, supprimer des caractères, tutoriel Linux, Linux pour débutants, guide Linux"
+meta_keywords: "commande tr, Linux tr, traduire caractères, supprimer caractères, tutoriel Linux, Linux débutant, guide Linux"
 ---
 
 ## Lesson Content
@@ -21,12 +21,11 @@ Comme vous pouvez le voir, nous avons transformé les plages de `a-z` en `A-Z`, 
 
 ## Exercise
 
-Essayez la commande suivante. Que se passe-t-il ?
+C'est en forgeant qu'on devient forgeron ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la traduction de caractères et du traitement de texte :
 
-```bash
-$ tr -d ello
-hello
-```
+1. **[Commande Linux tr : Traduction de caractères](https://labex.io/fr/labs/linux-linux-tr-command-character-translating-219198)** - Apprenez la commande Linux `tr` pour les transformations au niveau des caractères dans les flux de texte. Vous pratiquerez la traduction de caractères, la suppression de caractères spécifiques, l'utilisation de classes de caractères et la compression de caractères répétés.
+
+Ce laboratoire vous aidera à appliquer les concepts de manipulation de texte dans des scénarios réels et à renforcer votre confiance avec la commande `tr`.
 
 ## Quiz Question
 

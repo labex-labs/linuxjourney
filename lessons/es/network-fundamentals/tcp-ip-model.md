@@ -2,16 +2,16 @@
 index: 3
 lang: "es"
 title: "Modelo TCP/IP"
-meta_title: "Modelo TCP/IP - Conceptos Básicos de Red"
+meta_title: "Modelo TCP/IP - Fundamentos de Redes"
 meta_description: "Aprenda sobre las capas del modelo TCP/IP: Aplicación, Transporte, Red y Enlace. Comprenda cómo viajan los datos a través de las redes. ¡Comience su viaje en redes Linux!"
-meta_keywords: "modelo TCP/IP, conceptos básicos de redes, redes Linux, TCP, IP, tutorial para principiantes, capas de red, guía"
+meta_keywords: "modelo TCP/IP, fundamentos de redes, redes Linux, TCP, IP, tutorial para principiantes, capas de red, guía"
 ---
 
 ## Lesson Content
 
-El modelo OSI dio origen a lo que finalmente se convirtió en el modelo TCP/IP, y este modelo es en realidad la base de Internet. Es la implementación real de la red. El modelo TCP/IP utiliza el conjunto de protocolos TCP/IP, al que comúnmente nos referimos como TCP/IP. Estos protocolos trabajan juntos para especificar cómo se deben recopilar, direccionar, transmitir y enrutar los datos a través de una red. Usando el modelo TCP/IP, podemos ver cómo se utilizan estos protocolos para mostrar el desglose de cómo un paquete viaja a través de la red.
+El modelo OSI dio origen a lo que eventualmente se convirtió en el modelo TCP/IP, y este modelo es en realidad la base de Internet. Es la implementación real de la red. El modelo TCP/IP utiliza el conjunto de protocolos TCP/IP, al que comúnmente nos referimos como TCP/IP. Estos protocolos trabajan juntos para especificar cómo se deben recopilar, direccionar, transmitir y enrutar los datos a través de una red. Usando el modelo TCP/IP, podemos ver cómo se utilizan estos protocolos para mostrar el desglose de cómo un paquete viaja a través de la red.
 
-### Application Layer
+### Capa de Aplicación
 
 La capa superior del modelo TCP/IP. Determina cómo los programas de su computadora (como su navegador web) interactúan con los servicios de la capa de transporte para ver los datos que se envían o reciben.
 
@@ -20,35 +20,41 @@ Esta capa utiliza:
 - HTTP (Hypertext Transfer Protocol) - utilizado para páginas web en Internet.
 - SMTP (Simple Mail Transfer Protocol) - transmisión de correo electrónico.
 
-### Transport Layer
+### Capa de Transporte
 
 Cómo se transmitirán los datos, incluye la verificación de los puertos correctos, la integridad de los datos y, básicamente, la entrega de nuestros paquetes.
 
 Esta capa utiliza:
 
-- TCP (Transmission Control Protocol) - entrega de datos confiable
-- UDP (User Datagram Protocol) - entrega de datos no confiable
+- TCP (Transmission Control Protocol) - entrega de datos confiable.
+- UDP (User Datagram Protocol) - entrega de datos no confiable.
 
-### Network Layer
+### Capa de Red
 
 Esta capa especifica cómo mover paquetes entre hosts y a través de redes.
 
 Esta capa utiliza:
 
 - IP (Internet Protocol) - Ayuda a enrutar paquetes de una máquina a otra.
-- ICMP (Internet Control Message Protocol) - Ayuda a decirnos qué está sucediendo, como mensajes de error e información de depuración.
+- ICMP (Internet Control Message Protocol) - Ayuda a informarnos qué está sucediendo, como mensajes de error e información de depuración.
 
-### Link Layer
+### Capa de Enlace
 
-Esta capa especifica cómo enviar datos a través de una pieza física de hardware, como datos que viajan a través de Ethernet, fibra, etc.
+Esta capa especifica cómo enviar datos a través de un componente físico de hardware, como datos que viajan a través de Ethernet, fibra, etc.
 
 Las listas anteriores de protocolos que utiliza cada capa no son exhaustivas, y encontrará muchos otros protocolos que entran en juego.
 
-En las siguientes lecciones, profundizaremos en cada una de estas capas y discutiremos cómo nuestro paquete atraviesa la red a los ojos del modelo TCP/IP (hay muchas perspectivas sobre cómo un paquete viaja a través de las redes; no las veremos todas, pero tenga en cuenta que existen).
+En las siguientes lecciones, profundizaremos en cada una de estas capas y discutiremos cómo nuestro paquete atraviesa la red desde la perspectiva del modelo TCP/IP (existen muchas perspectivas sobre cómo un paquete viaja a través de las redes; no las veremos todas, pero tenga en cuenta que existen).
 
 ## Exercise
 
-No exercises for this lesson.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del modelo TCP/IP y los fundamentos de la red:
+
+1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique la identificación de información clave de direccionamiento de red como direcciones MAC e IP usando el comando `ip a`, que es fundamental para comprender las capas de red y de enlace de datos del modelo TCP/IP.
+2. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` demuestran la interacción entre las capas de red y de enlace de datos, proporcionando una visión práctica de cómo se comunican los dispositivos dentro de la pila TCP/IP.
+3. **[Simular Conectividad de la Capa de Red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Obtenga experiencia práctica simulando la conectividad de red entre nodos Linux, asignando direcciones IP y probando la comunicación, aplicando directamente conceptos relacionados con la capa de red del modelo TCP/IP.
+
+Estos laboratorios le ayudarán a aplicar los conceptos del modelo TCP/IP en escenarios reales y a generar confianza con la configuración y resolución de problemas de red.
 
 ## Quiz Question
 

@@ -9,7 +9,7 @@ meta_keywords: "Linux-Authentifizierung, auth.log, Linux-Protokollierung, Benutz
 
 ## Lesson Content
 
-Die Authentifizierungsprotokollierung kann sehr nützlich sein, wenn Sie Probleme beim Anmelden haben.
+Authentifizierungsprotokolle können sehr nützlich sein, wenn Sie Probleme beim Anmelden haben.
 
 ### /var/log/auth.log
 
@@ -23,7 +23,11 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 ## Exercise
 
-Führen Sie einige fehlgeschlagene Anmeldeversuche und anschließend einen erfolgreichen durch. Überprüfen Sie danach Ihre Datei `/var/log/auth.log`, um zu sehen, was passiert ist.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzerauthentifizierung und Kontoverwaltung zu vertiefen:
+
+1. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Üben Sie das Erzwingen von Passwortrichtlinien, das Sperren/Entsperren von Benutzerkonten, das Sichern des Root-Kontos und das Erteilen von Administratorberechtigungen, die alle für das Verständnis der Authentifizierungssicherheit entscheidend sind.
+
+Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Sicherheitsverwaltung aufzubauen.
 
 ## Quiz Question
 

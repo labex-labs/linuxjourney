@@ -25,9 +25,9 @@ Luego, en 1991, un joven llamado Linus Torvalds comenzó a desarrollar lo que ho
 
 ¡La práctica hace al maestro! Dado que esta lección te introduce al mundo de Linux, familiarizarte con la línea de comandos es la mejor manera de consolidar tu comprensión y generar confianza. Aquí tienes algunos laboratorios prácticos para ayudarte a dar tus primeros pasos:
 
-1.  **[Primeros pasos con Linux](https://labex.io/es/labs/linux-getting-started-with-linux-446315)** - Comienza tu viaje en Linux aprendiendo comandos esenciales de la terminal como `echo`, `date` y cálculos básicos. Perfecto para principiantes absolutos.
-2.  **[Tu primer laboratorio de Linux](https://labex.io/es/labs/linux-your-first-linux-lab-270253)** - Este laboratorio introductorio te guía a través del clásico programa "Hello, World!" en Linux y te enseña algunos comandos fundamentales.
-3.  **[Crear saludo personalizado de terminal](https://labex.io/es/labs/linux-create-personalized-terminal-greeting-446322)** - Un desafío rápido y divertido para usar comandos básicos de la terminal de Linux y crear un mensaje de bienvenida atractivo.
+1. **[Primeros pasos con Linux](https://labex.io/es/labs/linux-getting-started-with-linux-446315)** - Comienza tu viaje en Linux aprendiendo comandos esenciales de la terminal como `echo`, `date` y cálculos básicos. Perfecto para principiantes absolutos.
+2. **[Tu primer laboratorio de Linux](https://labex.io/es/labs/linux-your-first-linux-lab-270253)** - Este laboratorio introductorio te guía a través del clásico programa "Hello, World!" en Linux y te enseña algunos comandos fundamentales.
+3. **[Crear un saludo de terminal personalizado](https://labex.io/es/labs/linux-create-personalized-terminal-greeting-446322)** - Un desafío rápido y divertido para usar comandos básicos de la terminal de Linux y crear un mensaje de bienvenida atractivo.
 
 Estos laboratorios te ayudarán a aplicar los conceptos fundamentales en un entorno Linux real y a generar confianza con la línea de comandos.
 

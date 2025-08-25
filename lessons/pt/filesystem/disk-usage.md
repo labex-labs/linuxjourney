@@ -2,14 +2,14 @@
 index: 9
 lang: "pt"
 title: "Uso do Disco"
-meta_title: "Uso do Disco - O Filesystem"
-meta_description: "Aprenda a verificar o uso do disco e o espaço livre no Linux usando os comandos df e du. Entenda suas diferenças e quando usar cada um. Tutorial de gerenciamento de disco Linux."
+meta_title: "Uso do Disco - O Sistema de Arquivos"
+meta_description: "Aprenda como verificar o uso do disco e o espaço livre no Linux usando os comandos df e du. Entenda suas diferenças e quando usar cada um. Tutorial de gerenciamento de disco Linux."
 meta_keywords: "comando df, comando du, uso do disco Linux, verificar espaço livre, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
 ---
 
 ## Lesson Content
 
-Existem algumas ferramentas que você pode usar para ver a utilização dos seus discos:
+Existem algumas ferramentas que você pode usar para ver a utilização de seus discos:
 
 ```bash
 pete@icebox:~$ df -h
@@ -31,11 +31,16 @@ Ambos os comandos são tão semelhantes na sintaxe que pode ser difícil lembrar
 
 ## Exercise
 
-Verifique o uso do disco e o espaço livre com `du` e `df`.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento e utilização do espaço em disco no Linux:
+
+1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação, formatação e montagem de sistemas de arquivos, que são as estruturas subjacentes relatadas por `df` e `du`.
+2. **[Criar e Ativar um Arquivo Swap no Linux](https://labex.io/pt/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda a gerenciar a memória virtual em disco, um aspecto crítico do gerenciamento de recursos do sistema que impacta o espaço em disco.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de recursos de disco.
 
 ## Quiz Question
 
-Qual comando é usado para mostrar quanto espaço está livre no seu disco?
+Qual comando é usado para mostrar quanto espaço está livre em seu disco?
 
 ## Quiz Answer
 

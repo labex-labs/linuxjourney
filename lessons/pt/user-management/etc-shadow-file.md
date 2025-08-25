@@ -25,15 +25,20 @@ Você notará que ele se parece muito com o conteúdo de `/etc/passwd`; no entan
 4. Idade mínima da senha - Dias que um usuário terá que esperar antes de poder alterar sua senha novamente.
 5. Idade máxima da senha - Número máximo de dias antes que um usuário tenha que alterar sua senha.
 6. Período de aviso de senha - Número de dias antes que uma senha expire.
-7. Período de inatividade da senha - Número de dias após uma senha ter expirado para permitir o login com sua senha.
+7. Período de inatividade da senha - Número de dias após a expiração de uma senha para permitir o login com sua senha.
 8. Data de expiração da conta - Data em que um usuário não poderá fazer login.
 9. Campo reservado para uso futuro.
 
-Na maioria das distribuições atuais, a autenticação do usuário não depende apenas do arquivo `/etc/shadow`; existem outros mecanismos em vigor, como o PAM (Pluggable Authentication Modules), que substituem a autenticação.
+Na maioria das distribuições atuais, a autenticação do usuário não depende apenas do arquivo `/etc/shadow`; existem outros mecanismos em vigor, como PAM (Pluggable Authentication Modules), que substituem a autenticação.
 
 ## Exercise
 
-Observe o arquivo `/etc/shadow`.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da autenticação de usuário e gerenciamento de senhas no Linux:
+
+1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas com `useradd` e `passwd` até a modificação e exclusão delas.
+2. **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo, incluindo a aplicação de políticas de senha e a proteção de contas.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de gerenciamento de usuários e senhas em cenários reais e a construir confiança com a administração de sistemas Linux.
 
 ## Quiz Question
 

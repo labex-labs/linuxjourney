@@ -3,7 +3,7 @@ index: 11
 lang: "fr"
 title: "mv (Déplacer)"
 meta_title: "mv (Déplacer) - Ligne de commande"
-meta_description: "Apprenez à utiliser la commande Linux mv pour déplacer et renommer des fichiers/répertoires. Comprenez ses options et évitez les écrasements. Commencez votre parcours Linux !"
+meta_description: "Apprenez à utiliser la commande Linux mv pour déplacer et renommer des fichiers/répertoires. Comprenez ses options et prévenez les écrasements. Commencez votre parcours Linux !"
 meta_keywords: "commande mv, Linux mv, déplacer fichiers Linux, renommer fichiers Linux, tutoriel Linux, débutant, guide Linux"
 ---
 
@@ -49,7 +49,7 @@ mv -b directory1 directory2
 
 ## Exercise
 
-La pratique rend parfait ! L'expérience pratique est cruciale pour maîtriser les commandes Linux comme `mv`. Ces laboratoires vous aideront à solidifier votre compréhension du déplacement et du renommage de fichiers et de répertoires dans un environnement réel :
+La pratique rend parfait ! L'expérience pratique est cruciale pour maîtriser les commandes Linux comme `mv`. Ces laboratoires vous aideront à consolider votre compréhension du déplacement et du renommage de fichiers et de répertoires dans un environnement réel :
 
 1. **[Commande Linux mv : Déplacement et renommage de fichiers](https://labex.io/fr/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - Entraînez-vous à utiliser la commande `mv` pour déplacer et renommer des fichiers et des répertoires, y compris la compréhension de ses différentes options et comportements.
 2. **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Appliquez vos connaissances de `mv` (ainsi que `cp` et `rm`) dans un défi pratique pour organiser une structure de projet, déplacer des fichiers et nettoyer des répertoires.

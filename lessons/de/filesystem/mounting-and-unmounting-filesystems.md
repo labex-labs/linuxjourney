@@ -3,7 +3,7 @@ index: 6
 lang: "de"
 title: "mount und umount"
 meta_title: "mount und umount - Das Dateisystem"
-meta_description: "Erfahren Sie, wie Sie die Linux-Befehle mount und umount verwenden, um Dateisysteme zu verwalten. Verstehen Sie das Mounten, Unmounten von Geräten und UUIDs für Anfänger."
+meta_description: "Erfahren Sie, wie Sie die Linux-Befehle mount und umount verwenden, um Dateisysteme zu verwalten. Verstehen Sie das Mounten und Unmounten von Geräten sowie UUIDs für Anfänger."
 meta_keywords: "Linux mount, umount Befehl, Dateisystem mounten, Linux UUID, Linux für Anfänger, Linux Tutorial, Mountpoint, Linux Anleitung"
 ---
 
@@ -17,7 +17,7 @@ Erstellen Sie zuerst den Mountpoint; in unserem Fall **mkdir /mydrive**.
 sudo mount -t ext4 /dev/sdb2 /mydrive
 ```
 
-So einfach ist das! Wenn wir jetzt zu /mydrive gehen, können wir den Inhalt unseres Dateisystems sehen. Das **-t** gibt den Typ des Dateisystems an, dann haben wir den Gerätestandort, dann den Mountpoint.
+So einfach ist das! Wenn wir jetzt zu /mydrive gehen, können wir den Inhalt unseres Dateisystems sehen. Das **-t** gibt den Typ des Dateisystems an, dann haben wir den Gerätestandort und dann den Mountpoint.
 
 Um ein Gerät von einem Mountpoint zu unmounten:
 
@@ -42,7 +42,7 @@ pete@icebox:~$ sudo blkid
 /dev/sda6: UUID="78d203a0-7c18-49bd-9e07-54f44cdb5726" TYPE="xfs"
 ```
 
-Wir können unsere Gerätenamen, die entsprechenden Dateisystemtypen und ihre UUIDs sehen. Wenn wir nun etwas mounten möchten, können wir Folgendes verwenden:
+Wir können unsere Gerätenamen, ihre entsprechenden Dateisystemtypen und ihre UUIDs sehen. Wenn wir nun etwas mounten möchten, können wir Folgendes verwenden:
 
 ```bash
 sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mydrive
@@ -52,7 +52,11 @@ Meistens müssen Sie Geräte nicht über ihre UUIDs mounten; es ist viel einfach
 
 ## Exercise
 
-Look at the manpage for `mount` and `umount` and see what other options you can use.
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis der Verwaltung von Linux-Dateisystemen zu vertiefen:
+
+- **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – In diesem Labor lernen Sie, Festplattenpartitionen und Dateisysteme in Linux zu verwalten. Sie verwenden fdisk, um eine neue Partition zu erstellen, sie mit ext4 zu formatieren, sie zu mounten, die persistente Einbindung in /etc/fstab zu konfigurieren und eine Swap-Partition zu erstellen, alles auf einer sicheren sekundären virtuellen Festplatte.
+
+Dieses Labor wird Ihnen helfen, die Konzepte des Mountens und Unmountens in realen Szenarien anzuwenden und Vertrauen in die Dateisystemverwaltung aufzubauen.
 
 ## Quiz Question
 

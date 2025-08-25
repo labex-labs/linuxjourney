@@ -1,15 +1,15 @@
 ---
 index: 8
 lang: "ja"
-title: "スワップ"
-meta_title: "スワップ - ファイルシステム"
+title: "swap"
+meta_title: "swap - ファイルシステム"
 meta_description: "Linux のスワップ領域、その仕組み、スワップパーティションの作成と管理方法について学びます。このガイドでシステムのメモリ使用量を最適化しましょう！"
-meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 仮想メモリ，Linux 初心者，Linux チュートリアル"
+meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, virtual memory, Linux beginner, Linux tutorial"
 ---
 
 ## Lesson Content
 
-前回の例で、パーティションテーブルの表示方法を説明しました。その例、特に次の行をもう一度見てみましょう。
+以前の例で、パーティションテーブルの表示方法を説明しました。その例、特に次の行を再確認しましょう。
 
 ```
 Number  Start   End     Size    Type      File system     Flags
@@ -20,19 +20,23 @@ Number  Start   End     Size    Type      File system     Flags
 
 ### スワップ領域にパーティションを使用する
 
-パーティション `/dev/sdb2` をスワップ領域として使用したいとします。
+パーティション `/dev/sdb2` をスワップ領域として使用したいとしましょう。
 
-1. まず、パーティションに何も入っていないことを確認します。
+1. まず、パーティションに何もデータがないことを確認します。
 2. `mkswap /dev/sdb2` を実行して、スワップ領域を初期化します。
 3. `swapon /dev/sdb2` を実行します。これにより、スワップデバイスが有効になります。
 4. スワップパーティションを起動時に永続化させたい場合は、`/etc/fstab` ファイルにエントリを追加する必要があります。`sw` は使用するファイルシステムタイプです。
 5. スワップを削除するには：`swapoff /dev/sdb2`。
 
-一般的に、スワップ領域はメモリの約 2 倍を割り当てるべきです。しかし、今日の最新システムは通常、十分に強力で、十分な RAM を搭載しています。
+一般的に、スワップ領域はメモリの約 2 倍を割り当てるべきです。しかし、今日の最新のシステムは通常、十分に強力で、十分な RAM を搭載しています。
 
 ## Exercise
 
-USB ドライブの空き領域をスワップ領域としてパーティション分割してください。
+練習は完璧をもたらします！Linux のスワップ領域と仮想メモリ管理の理解を深めるための実践的なラボをいくつか紹介します。
+
+1. **[Linux でスワップファイルを作成してアクティブ化する](https://labex.io/ja/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - システムの仮想メモリを管理するための重要なスキルである、スワップファイルの作成とアクティブ化を練習します。
+
+このラボは、スワップパーティションの概念を実際のシナリオに適用し、システムリソース管理に自信をつけるのに役立ちます。
 
 ## Quiz Question
 

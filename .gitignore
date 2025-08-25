@@ -1,2 +1,3 @@
 tmp/
 scripts/update_exercises.py
+failed_localization_files.json

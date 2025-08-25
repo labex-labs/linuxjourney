@@ -3,7 +3,7 @@ index: 3
 lang: "ja"
 title: "cd (Change Directory)"
 meta_title: "cd (Change Directory) - コマンドライン"
-meta_description: "Linux でディレクトリを移動するために 'cd' コマンドを使用する方法を学びます。絶対パス、相対パス、および便利なショートカットを理解します。Linux の学習を始めましょう！"
+meta_description: "Linux でディレクトリを移動するために 'cd' コマンドを使用する方法を学びます。絶対パス、相対パス、および便利なショートカットを理解します。Linux の旅を始めましょう！"
 meta_keywords: "cd コマンド，ディレクトリ変更，Linux パス，絶対パス，相対パス，Linux チュートリアル，初心者 Linux, Linux ナビゲーション"
 ---
 
@@ -21,9 +21,9 @@ meta_keywords: "cd コマンド，ディレクトリ変更，Linux パス，絶�
 cd /home/pete/Pictures
 ```
 
-これで、ディレクトリの場所が `/home/pete/Pictures` に変更されました。
+これで、ディレクトリの場所を `/home/pete/Pictures` に変更しました。
 
-このディレクトリの中に `Hawaii` というフォルダがあります。そのフォルダには次のように移動できます。
+このディレクトリから、`Hawaii` という名前のフォルダがあります。そのフォルダには次のように移動できます。
 
 ```bash
 cd Hawaii
@@ -49,13 +49,13 @@ cd -
 
 ## Exercise
 
-練習は完璧をもたらします！Linux ディレクトリナビゲーションの理解を深めるための実践的なラボをいくつか紹介します。
+練習は完璧をもたらします！Linux ディレクトリナビゲーションの理解を深めるための実践的な演習をいくつか紹介します。
 
-1.  **[Linux cd Command: Directory Changing](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - Linux の `cd` コマンドを学び、ファイルシステムを効率的にナビゲートする方法、ディレクトリ変更の様々なテクニック、パスの理解、ファイル構造の探索について学びます。
-2.  **[Linux Directory Navigation](https://labex.io/ja/labs/linux-directory-navigation-387844)** - 基本的な Linux コマンドラインスキルを試して、必須コマンドを使ってディレクトリをナビゲートします。
-3.  **[Setting Up a New Project Structure](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)** - `mkdir` や `cd` などの必須コマンドを使って、特定のプロジェクト構造を作成し、それをナビゲートすることで、Linux ディレクトリ管理スキルを練習します。
+1. **[Linux cd コマンド：ディレクトリの変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - Linux の `cd` コマンドを学び、ファイルシステムを効率的にナビゲートする方法、ディレクトリ変更の様々なテクニック、パスの理解、ファイル構造の探索について学びます。
+2. **[Linux ディレクトリナビゲーション](https://labex.io/ja/labs/linux-directory-navigation-387844)** - 必須コマンドを使用してディレクトリをナビゲートすることで、基本的な Linux コマンドラインスキルを試します。
+3. **[新しいプロジェクト構造のセットアップ](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)** - `mkdir` や `cd` などの必須コマンドを使用して、特定のプロジェクト構造を作成し、その中をナビゲートすることで、Linux ディレクトリ管理スキルを練習します。
 
-これらのラボは、実際のシナリオで概念を適用し、Linux ファイルシステムのナビゲートに自信をつけるのに役立ちます。
+これらの演習は、実際のシナリオで概念を適用し、Linux ファイルシステムのナビゲートに自信をつけるのに役立ちます。
 
 ## Quiz Question
 

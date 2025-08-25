@@ -2,18 +2,18 @@
 index: 4
 lang: "pt"
 title: "netstat"
-meta_title: "netstat - Resolução de Problemas"
-meta_description: "Aprenda o comando netstat para análise de rede Linux. Entenda conexões de rede, portas e sockets com este guia para iniciantes."
+meta_title: "netstat - Solução de Problemas"
+meta_description: "Aprenda o comando netstat para análise de rede Linux. Entenda conexões de rede, portas e sockets com este guia amigável para iniciantes."
 meta_keywords: "netstat, comando netstat, rede Linux, conexões de rede, tutorial Linux, iniciante, guia"
 ---
 
 ## Lesson Content
 
-### Portas Bem Conhecidas
+### Portas Conhecidas
 
-Discutimos a transmissão de dados através de portas em nossa máquina; vamos dar uma olhada em algumas portas bem conhecidas.
+Discutimos a transmissão de dados através de portas em nossa máquina; vamos ver algumas portas conhecidas.
 
-Você pode obter uma lista de portas bem conhecidas consultando o arquivo **/etc/services**:
+Você pode obter uma lista de portas conhecidas consultando o arquivo **/etc/services**:
 
 ```plaintext
 ftp             21/tcp
@@ -29,7 +29,7 @@ A primeira coluna é o nome do serviço, depois o número da porta e o protocolo
 
 ### netstat
 
-Uma ferramenta extremamente útil para obter informações detalhadas sobre sua rede é o **netstat**. O netstat exibe várias informações relacionadas à rede, como conexões de rede, tabelas de roteamento, informações sobre interfaces de rede e muito mais; é o canivete suíço das ferramentas de rede. Vamos nos concentrar principalmente em um recurso que o netstat possui, que é o status das conexões de rede. Antes de vermos um exemplo, vamos falar primeiro sobre sockets e portas. Um socket é uma interface que permite que programas enviem e recebam dados, enquanto uma porta é usada para identificar qual aplicativo deve enviar ou receber dados. O endereço do socket é a combinação do endereço IP e da porta. Cada conexão entre um host e um destino requer um socket exclusivo. Por exemplo, HTTP é um serviço que roda na porta 80; no entanto, podemos ter muitas conexões HTTP e, para manter cada conexão, um socket é criado por conexão.
+Uma ferramenta extremamente útil para obter informações detalhadas sobre sua rede é o **netstat**. O Netstat exibe várias informações relacionadas à rede, como conexões de rede, tabelas de roteamento, informações sobre interfaces de rede e muito mais; é o canivete suíço das ferramentas de rede. Focaremos principalmente em um recurso que o netstat possui, que é o status das conexões de rede. Antes de vermos um exemplo, vamos falar primeiro sobre sockets e portas. Um socket é uma interface que permite que programas enviem e recebam dados, enquanto uma porta é usada para identificar qual aplicativo deve enviar ou receber dados. O endereço do socket é a combinação do endereço IP e da porta. Cada conexão entre um host e um destino requer um socket exclusivo. Por exemplo, HTTP é um serviço que roda na porta 80; no entanto, podemos ter muitas conexões HTTP, e para manter cada conexão, um socket é criado por conexão.
 
 ```bash
 pete@icebox:~$ netstat -at
@@ -56,9 +56,9 @@ As colunas são as seguintes, da esquerda para a direita:
 - **Foreign Address**: Host conectado remotamente.
 - **State**: O estado do socket.
 
-Consulte a manpage para uma lista de estados de socket, mas aqui estão alguns:
+Consulte a manpage para obter uma lista de estados de socket, mas aqui estão alguns:
 
-- **LISTENING**: O socket está aguardando conexões de entrada. Lembre-se, quando fazemos uma conexão TCP, nosso destino precisa estar nos escutando antes que possamos nos conectar.
+- **LISTENING**: O socket está aguardando conexões de entrada. Lembre-se, quando fazemos uma conexão TCP, nosso destino precisa estar aguardando por nós antes que possamos nos conectar.
 - **SYN_SENT**: O socket está tentando ativamente estabelecer uma conexão.
 - **ESTABLISHED**: O socket tem uma conexão estabelecida.
 - **CLOSE_WAIT**: O host remoto foi desligado e estamos esperando o socket fechar.
@@ -66,7 +66,11 @@ Consulte a manpage para uma lista de estados de socket, mas aqui estão alguns:
 
 ## Exercise
 
-Consulte a manpage para `netstat` e aprenda todos os recursos que ele tem a oferecer.
+A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão das configurações da interface de rede:
+
+1. **[Examine as configurações da interface de rede com ethtool no Linux](https://labex.io/pt/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprenda a usar o comando `ethtool` para examinar e gerenciar as configurações da interface de rede, incluindo a visualização e configuração da velocidade e duplex da interface, e a análise dos modos de link para solucionar problemas de rede na camada física.
+
+Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de interfaces de rede.
 
 ## Quiz Question
 

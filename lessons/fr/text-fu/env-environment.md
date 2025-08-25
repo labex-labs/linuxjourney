@@ -48,17 +48,19 @@ $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
 ```
 
-Ceci renvoie une liste de chemins séparés par un deux-points que votre système recherche lorsqu'il exécute une commande. Supposons que vous téléchargiez et installiez manuellement un paquet depuis Internet et que vous le placiez dans un répertoire non standard, et que vous vouliez exécuter cette commande. Vous tapez `$ coolcommand`, et l'invite indique "command not found". Eh bien, c'est idiot ; vous regardez le binaire dans un dossier et savez qu'il existe. Ce qui se passe, c'est que la variable `$PATH` ne vérifie pas ce répertoire pour ce binaire, donc elle génère une erreur.
+Ceci renvoie une liste de chemins séparés par un deux-points que votre système recherche lorsqu'il exécute une commande. Supposons que vous téléchargiez et installiez manuellement un paquet depuis Internet et que vous le placiez dans un répertoire non standard, et que vous vouliez exécuter cette commande. Vous tapez `$ coolcommand`, et l'invite dit "command not found". Eh bien, c'est absurde ; vous regardez le binaire dans un dossier et savez qu'il existe. Ce qui se passe, c'est que la variable `$PATH` ne vérifie pas ce répertoire pour ce binaire, donc elle génère une erreur.
 
-Disons que vous aviez des tonnes de binaires que vous vouliez exécuter à partir de ce répertoire ; vous pouvez simplement modifier la variable PATH pour inclure ce répertoire dans votre variable d'environnement PATH.
+Supposons que vous ayez des tonnes de binaires que vous vouliez exécuter à partir de ce répertoire ; vous pouvez simplement modifier la variable PATH pour inclure ce répertoire dans votre variable d'environnement PATH.
 
 ## Exercise
 
-Qu'est-ce que la commande suivante affiche ? Pourquoi ?
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des variables d'environnement Linux :
 
-```bash
-echo $HOME
-```
+1. **[Gérer l'environnement et la configuration du shell sous Linux](https://labex.io/fr/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Entraînez-vous à créer et gérer des variables locales et d'environnement, à comprendre l'héritage et à rendre les configurations persistantes en modifiant le fichier `.bashrc`.
+2. **[Variables d'environnement sous Linux](https://labex.io/fr/labs/linux-environment-variables-in-linux-385274)** - Apprenez le concept et l'utilisation des variables d'environnement, comment les créer, les modifier et les gérer, ainsi que leur rôle dans la configuration du système.
+3. **[Configurer les variables d'environnement Linux](https://labex.io/fr/labs/linux-configure-linux-environment-variables-437861)** - Acquérez une expérience pratique de la création, de la définition et de la gestion des variables d'environnement dans un système Linux.
+
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion de votre environnement de shell Linux.
 
 ## Quiz Question
 

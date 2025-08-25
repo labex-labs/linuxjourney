@@ -3,20 +3,20 @@ index: 8
 lang: "ko"
 title: "swap"
 meta_title: "swap - 파일 시스템"
-meta_description: "Linux swap 공간, 작동 방식, swap 파티션 생성 및 관리 방법을 알아보세요. 이 가이드를 통해 시스템의 메모리 사용량을 최적화하세요!"
+meta_description: "Linux swap 공간, 작동 방식, swap 파티션 생성 및 관리 방법에 대해 알아보세요. 이 가이드를 통해 시스템의 메모리 사용량을 최적화하세요!"
 meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, 가상 메모리, Linux 초보자, Linux 튜토리얼"
 ---
 
 ## Lesson Content
 
-이전 예제에서 파티션 테이블을 보는 방법을 보여드렸습니다. 해당 예제를 다시 살펴보겠습니다. 특히 다음 줄을 살펴보세요:
+이전 예제에서 파티션 테이블을 보는 방법을 보여드렸습니다. 그 예제를 다시 살펴보겠습니다. 특히 다음 줄을 살펴보겠습니다.
 
 ```
 Number  Start   End     Size    Type      File system     Flags
  5      6861MB  7380MB  519MB   logical   linux-swap(v1)
 ```
 
-이 swap 파티션은 무엇일까요? swap 은 시스템에 가상 메모리를 할당하는 데 사용됩니다. 메모리가 부족할 경우, 시스템은 이 파티션을 사용하여 유휴 프로세스의 메모리 조각을 디스크로 "스왑"하여 메모리 부족으로 인해 시스템이 느려지는 것을 방지합니다.
+이 swap 파티션은 무엇일까요? swap 은 시스템에 가상 메모리를 할당하는 데 사용하는 것입니다. 메모리가 부족할 때 시스템은 이 파티션을 사용하여 유휴 프로세스의 메모리 조각을 디스크로 "스왑"하여 메모리 부족으로 인해 시스템이 느려지지 않도록 합니다.
 
 ### swap 공간으로 파티션 사용하기
 
@@ -32,7 +32,11 @@ Number  Start   End     Size    Type      File system     Flags
 
 ## Exercise
 
-USB 드라이브의 여유 공간을 swap 공간으로 파티션하십시오.
+연습이 완벽을 만듭니다! 다음은 Linux swap 공간 및 가상 메모리 관리에 대한 이해를 강화하기 위한 실습 랩입니다.
+
+1. **[Linux 에서 스왑 파일 생성 및 활성화](https://labex.io/ko/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 시스템의 가상 메모리를 관리하는 데 중요한 기술인 스왑 파일을 생성하고 활성화하는 연습을 합니다.
+
+이 랩은 실제 시나리오에서 swap 파티션의 개념을 적용하고 시스템 리소스 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

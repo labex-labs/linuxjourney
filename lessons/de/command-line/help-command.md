@@ -9,7 +9,7 @@ meta_keywords: "Linux help Befehl, Bash help, Befehlszeilenhilfe, Linux Befehle,
 
 ## Lesson Content
 
-Linux verfügt über einige großartige integrierte Tools, die Ihnen helfen zu verstehen, wie man einen Befehl verwendet oder welche Flags für einen Befehl verfügbar sind. Ein Tool, `help`, ist ein integrierter Bash-Befehl, der Hilfe für andere Bash-Befehle (z.B. `echo`, `logout`, `pwd`) bietet.
+Linux verfügt über einige großartige integrierte Tools, die Ihnen helfen zu verstehen, wie ein Befehl verwendet wird oder welche Flags für einen Befehl verfügbar sind. Ein Tool, `help`, ist ein integrierter Bash-Befehl, der Hilfe für andere Bash-Befehle (z. B. `echo`, `logout`, `pwd`) bietet.
 
 ```bash
 help echo

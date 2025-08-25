@@ -9,7 +9,7 @@ meta_keywords: "Linux 历史，UNIX, GNU 项目，Linus Torvalds, Linux 内核�
 
 ## Lesson Content
 
-嘿，菜鸟！你决定一头扎进这个美妙的 Linux 世界了吗？那么，你最好系好安全带，因为这将是一条漫长而艰难的道路。我的名字是 Penguin Pete，我将引导你完成这段旅程。让我们从 Linux 的一些背景故事开始。
+嘿，菜鸟！你决定一头扎进这个美妙的 Linux 世界了吗？那么，你最好系好安全带，因为这将是一条漫长而艰难的道路。我的名字是企鹅皮特，我将引导你完成这段旅程。让我们从 Linux 的一些背景故事开始。
 
 要了解 Linux 是如何诞生的，让我们回到 1969 年，贝尔实验室的 Ken Thompson 和 Dennis Ritchie 开发了 UNIX 操作系统。它后来用 C 语言重写，使其更具可移植性，并最终成为一个广泛使用的操作系统。
 
@@ -25,15 +25,15 @@ meta_keywords: "Linux 历史，UNIX, GNU 项目，Linus Torvalds, Linux 内核�
 
 熟能生巧！由于本课程将你引入 Linux 世界，因此亲自动手使用命令行是巩固理解和建立信心的最佳方式。这里有一些动手实验可以帮助你迈出第一步：
 
-1.  **[Linux 入门](https://labex.io/zh/labs/linux-getting-started-with-linux-446315)** - 通过学习`echo`、`date`等基本终端命令和基本计算，开始你的 Linux 之旅。非常适合完全的初学者。
-2.  **[你的第一个 Linux 实验](https://labex.io/zh/labs/linux-your-first-linux-lab-270253)** - 这个入门实验将引导你完成 Linux 中经典的“Hello, World!”程序，并教你一些基本命令。
-3.  **[创建个性化终端问候语](https://labex.io/zh/labs/linux-create-personalized-terminal-greeting-446322)** - 一个快速有趣的挑战，使用基本的 Linux 终端命令来创建引人入胜的欢迎消息。
+1. **[Linux 入门](https://labex.io/zh/labs/linux-getting-started-with-linux-446315)** - 通过学习`echo`、`date`等基本终端命令和基本计算，开始你的 Linux 之旅。非常适合完全的初学者。
+2. **[你的第一个 Linux 实验](https://labex.io/zh/labs/linux-your-first-linux-lab-270253)** - 这个入门实验将引导你完成 Linux 中经典的“Hello, World!”程序，并教你一些基本命令。
+3. **[创建个性化终端问候语](https://labex.io/zh/labs/linux-create-personalized-terminal-greeting-446322)** - 一个快速有趣的挑战，使用基本的 Linux 终端命令来创建引人入胜的欢迎消息。
 
 这些实验将帮助你在真实的 Linux 环境中应用基础概念，并建立使用命令行的信心。
 
 ## Quiz Question
 
-谁开发了 Linux 内核？
+Linux 内核是由谁开发的？
 
 ## Quiz Answer
 

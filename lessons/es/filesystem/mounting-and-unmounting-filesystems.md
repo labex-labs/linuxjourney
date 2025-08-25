@@ -2,9 +2,9 @@
 index: 6
 lang: "es"
 title: "mount y umount"
-meta_title: "mount y umount - El Filesystem"
-meta_description: "Aprenda a usar los comandos mount y umount de Linux para administrar sistemas de archivos. Comprenda el montaje, desmontaje de dispositivos y UUID para principiantes."
-meta_keywords: "Linux mount, umount command, mount filesystem, Linux UUID, Linux para principiantes, tutorial de Linux, punto de montaje, guía de Linux"
+meta_title: "mount y umount - El sistema de archivos"
+meta_description: "Aprenda a usar los comandos mount y umount de Linux para administrar sistemas de archivos. Comprenda el montaje, desmontaje y UUID de dispositivos para principiantes."
+meta_keywords: "Linux mount, comando umount, montar sistema de archivos, Linux UUID, Linux para principiantes, tutorial de Linux, punto de montaje, guía de Linux"
 ---
 
 ## Lesson Content
@@ -17,7 +17,7 @@ Primero, cree el punto de montaje; en nuestro caso, **mkdir /mydrive**.
 sudo mount -t ext4 /dev/sdb2 /mydrive
 ```
 
-¡Tan simple como eso! Ahora, cuando vamos a /mydrive, podemos ver el contenido de nuestro sistema de archivos. El **-t** especifica el tipo de sistema de archivos, luego tenemos la ubicación del dispositivo, y luego el punto de montaje.
+¡Tan simple como eso! Ahora, cuando vamos a /mydrive, podemos ver el contenido de nuestro sistema de archivos. El **-t** especifica el tipo de sistema de archivos, luego tenemos la ubicación del dispositivo y luego el punto de montaje.
 
 Para desmontar un dispositivo de un punto de montaje:
 
@@ -48,11 +48,15 @@ Podemos ver los nombres de nuestros dispositivos, sus tipos de sistema de archiv
 sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mydrive
 ```
 
-La mayoría de las veces, no necesitará montar dispositivos a través de sus UUID; es mucho más fácil usar el nombre del dispositivo, y a menudo el sistema operativo sabrá cómo montar dispositivos comunes como las unidades USB. Sin embargo, si necesita montar automáticamente un sistema de archivos al inicio, como si agregara un disco duro secundario, querrá usar el UUID, y lo veremos en la próxima lección.
+La mayoría de las veces, no necesitará montar dispositivos a través de sus UUID; es mucho más fácil usar el nombre del dispositivo, y a menudo el sistema operativo sabrá cómo montar dispositivos comunes como unidades USB. Sin embargo, si necesita montar automáticamente un sistema de archivos al inicio, como si agregara un disco duro secundario, querrá usar el UUID, y lo veremos en la próxima lección.
 
 ## Exercise
 
-Examine la página del manual para `mount` y `umount` y vea qué otras opciones puede usar.
+¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de la gestión de sistemas de archivos Linux:
+
+- **[Administrar particiones y sistemas de archivos Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, aprenderá a administrar particiones de disco y sistemas de archivos en Linux. Usará fdisk para crear una nueva partición, formatearla con ext4, montarla, configurar el montaje persistente en /etc/fstab y crear una partición de intercambio, todo en un disco virtual secundario seguro.
+
+Este laboratorio le ayudará a aplicar los conceptos de montaje y desmontaje en escenarios reales y a generar confianza en la gestión de sistemas de archivos.
 
 ## Quiz Question
 

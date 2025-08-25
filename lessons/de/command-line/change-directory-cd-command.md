@@ -2,7 +2,7 @@
 index: 3
 lang: "de"
 title: "cd (Verzeichnis wechseln)"
-meta_title: "cd (Change Directory) - Befehlszeile"
+meta_title: "cd (Verzeichnis wechseln) - Befehlszeile"
 meta_description: "Erfahren Sie, wie Sie den 'cd'-Befehl in Linux verwenden, um Verzeichnisse zu navigieren. Verstehen Sie absolute, relative Pfade und nützliche Abkürzungen. Beginnen Sie Ihre Linux-Reise!"
 meta_keywords: "cd Befehl, Verzeichnis wechseln, Linux Pfade, absoluter Pfad, relativer Pfad, Linux Tutorial, Linux für Anfänger, Linux Navigation"
 ---
@@ -51,11 +51,11 @@ Probieren Sie sie aus!
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Verzeichnisnavigation zu vertiefen:
 
-1.  **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Lernen Sie den Linux `cd`-Befehl, um Ihr Dateisystem effizient zu navigieren, einschließlich verschiedener Techniken zum Wechseln von Verzeichnissen, zum Verständnis von Pfaden und zur Erkundung der Dateistruktur.
-2.  **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Stellen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse auf die Probe, indem Sie mit wichtigen Befehlen durch Verzeichnisse navigieren.
-3.  **[Einrichten einer neuen Projektstruktur](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** - Üben Sie Ihre Linux-Verzeichnisverwaltungsfähigkeiten, indem Sie eine bestimmte Projektstruktur erstellen und mit wichtigen Befehlen wie `mkdir` und `cd` durch diese navigieren.
+1. **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Lernen Sie den Linux `cd`-Befehl, um Ihr Dateisystem effizient zu navigieren, einschließlich verschiedener Techniken zum Wechseln von Verzeichnissen, zum Verständnis von Pfaden und zum Erkunden der Dateistruktur.
+2. **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Stellen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse auf die Probe, indem Sie mit wichtigen Befehlen durch Verzeichnisse navigieren.
+3. **[Einrichten einer neuen Projektstruktur](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** - Üben Sie Ihre Linux-Verwaltungsfähigkeiten, indem Sie eine spezifische Projektstruktur erstellen und diese mit wichtigen Befehlen wie `mkdir` und `cd` navigieren.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Navigation im Linux-Dateisystem aufzubauen.
+Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Navigation im Linux-Dateisystem aufzubauen.
 
 ## Quiz Question
 

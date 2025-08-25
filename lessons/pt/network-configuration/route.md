@@ -4,7 +4,7 @@ lang: "pt"
 title: "route"
 meta_title: "route - Configuração de Rede"
 meta_description: "Aprenda como adicionar e excluir rotas de rede usando os comandos Linux route e ip. Entenda o gerenciamento da tabela de roteamento para usuários iniciantes e intermediários."
-meta_keywords: "comando route, ip route, adicionar rota, excluir rota, rede Linux, tabela de roteamento, tutorial Linux, guia para iniciantes"
+meta_keywords: "comando route, ip route, adicionar rota, excluir rota, redes Linux, tabela de roteamento, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content
@@ -41,15 +41,12 @@ $ ip route delete 192.168.2.1/23
 
 ## Exercise
 
-Não há exercícios para esta lição, mas você pode ler mais informações sobre os comandos discutidos aqui nas páginas man.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre roteamento de rede e endereçamento IP:
 
-```bash
-man route
-```
+1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Pratique a configuração de um IP estático, a definição de um gateway padrão e a verificação da configuração de rede usando o comando `ip`.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como o gateway padrão lida com o tráfego remoto e observe as interações da camada de rede.
 
-```bash
-man ip-route
-```
+Esses laboratórios o ajudarão a aplicar os conceitos de endereçamento IP e roteamento em cenários reais e a construir confiança com redes Linux.
 
 ## Quiz Question
 

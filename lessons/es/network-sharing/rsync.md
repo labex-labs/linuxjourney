@@ -2,37 +2,37 @@
 index: 2
 lang: "es"
 title: "rsync"
-meta_title: "rsync - Compartir Red"
+meta_title: "rsync - Compartir en red"
 meta_description: "Aprenda rsync para una sincronización y copias de seguridad eficientes de archivos en Linux. Comprenda la transferencia de datos remota y local con comandos y opciones de rsync. ¡Mejore sus habilidades en Linux!"
 meta_keywords: "rsync, transferencia de archivos Linux, copia de seguridad de datos, sincronización de archivos, tutorial de Linux, comandos rsync, principiante, guía"
 ---
 
 ## Lesson Content
 
-Otra herramienta utilizada para copiar datos de diferentes hosts es rsync (abreviatura de sincronización remota). Rsync es muy similar a scp, pero tiene una diferencia importante. Rsync utiliza un algoritmo especial que verifica de antemano si ya hay datos a los que está copiando y solo copiará las diferencias. Por ejemplo, digamos que estaba copiando un archivo y su red se interrumpió; por lo tanto, su copia se detuvo a mitad de camino. En lugar de volver a copiar todo desde el principio, rsync solo copiará las partes que no se copiaron.
+Otra herramienta utilizada para copiar datos de diferentes hosts es rsync (abreviatura de sincronización remota). Rsync es muy similar a scp, pero tiene una diferencia importante. Rsync utiliza un algoritmo especial que verifica de antemano si ya hay datos que está copiando y solo copiará las diferencias. Por ejemplo, digamos que estaba copiando un archivo y su red se interrumpió; por lo tanto, su copia se detuvo a mitad de camino. En lugar de volver a copiar todo desde el principio, rsync solo copiará las partes que no se copiaron.
 
-También verifica la integridad de un archivo que está copiando con checksums. Estas pequeñas optimizaciones permiten una mayor flexibilidad en la transferencia de archivos y hacen que rsync sea ideal para la sincronización de directorios de forma remota y local, copias de seguridad de datos, grandes transferencias de datos y más.
+También verifica la integridad de un archivo que está copiando con sumas de verificación. Estas pequeñas optimizaciones permiten una mayor flexibilidad en la transferencia de archivos y hacen que rsync sea ideal para la sincronización de directorios de forma remota y local, copias de seguridad de datos, grandes transferencias de datos y más.
 
 Algunas opciones de rsync de uso común:
 
-- v - verbose output
-- r - recursive into directories
-- h - human-readable output
-- z - compressed for easier transfer, great for slow connections
+- v - salida detallada
+- r - recursivo en directorios
+- h - salida legible para humanos
+- z - comprimido para una transferencia más fácil, ideal para conexiones lentas
 
-### Copy/sync files on the same host
+### Copiar/sincronizar archivos en el mismo host
 
 ```bash
 rsync -zvr /my/local/directory/one /my/local/directory/two
 ```
 
-### Copy/sync files to local host from a remote host
+### Copiar/sincronizar archivos en el host local desde un host remoto
 
 ```bash
 rsync /local/directory username@remotehost.com:/remote/directory
 ```
 
-### Copy/sync files to a remote host from a local host
+### Copiar/sincronizar archivos en un host remoto desde un host local
 
 ```bash
 rsync username@remotehost.com:/remote/directory /local/directory
@@ -40,7 +40,7 @@ rsync username@remotehost.com:/remote/directory /local/directory
 
 ## Exercise
 
-Use rsync para sincronizar un directorio con otro directorio. ¡Asegúrese de no sobrescribir un directorio importante!
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 

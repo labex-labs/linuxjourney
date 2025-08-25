@@ -4,7 +4,7 @@ lang: "es"
 title: "root"
 meta_title: "root - Gestión de Usuarios"
 meta_description: "Aprende sobre el usuario root de Linux, el comando su y el archivo /etc/sudoers. Comprende el acceso y los permisos de superusuario en Linux con esta guía para principiantes."
-meta_keywords: "Linux root, comando su, archivo sudoers, permisos de Linux, superusuario, tutorial de Linux, guía para principiantes"
+meta_keywords: "Linux root, comando su, archivo sudoers, permisos Linux, superusuario, tutorial Linux, guía para principiantes"
 ---
 
 ## Lesson Content
@@ -21,7 +21,11 @@ Ahora que sabes qué comandos ejecutar como superusuario, la pregunta es ¿cómo
 
 ## Exercise
 
-Open up the `/etc/sudoers` file and see what superuser permissions other users on the machine have.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del acceso y los privilegios de superusuario:
+
+1. **[Configurar cuentas de usuario y privilegios Sudo en Linux](https://labex.io/es/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Practica la aplicación de políticas de contraseña, el bloqueo y desbloqueo de cuentas de usuario, la seguridad de la cuenta root y la concesión de permisos administrativos, lo que se relaciona directamente con la gestión del acceso de superusuario.
+
+Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a generar confianza en la gestión de privilegios de usuario y acceso de superusuario.
 
 ## Quiz Question
 

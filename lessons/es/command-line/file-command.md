@@ -23,7 +23,7 @@ file banana.jpg
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la inspección del contenido y las propiedades de los archivos:
 
-1. **[Comando ls de Linux: Listado de Contenido](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)** - Aprende el comando `ls` de Linux para listar y analizar de manera eficiente el contenido de archivos y directorios, lo que a menudo precede o sigue al uso del comando `file` para entender lo que hay en tus directorios.
+1. **[Comando ls de Linux: Listado de Contenido](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)** - Aprende el comando `ls` de Linux para listar y analizar eficientemente el contenido de archivos y directorios, lo que a menudo precede o sigue al uso del comando `file` para entender lo que hay en tus directorios.
 2. **[Comando cat de Linux: Concatenación de Archivos](https://labex.io/es/labs/linux-linux-cat-command-file-concatenating-210986)** - Practica la visualización y manipulación de archivos de texto, una tarea común después de identificar el tipo de un archivo.
 3. **[Comando more de Linux: Desplazamiento de Archivos](https://labex.io/es/labs/linux-linux-more-command-file-scrolling-214299)** - Mejora tus habilidades de línea de comandos para navegar y explorar archivos de texto grandes, basándote en la capacidad de identificar tipos de archivos y luego inspeccionar su contenido.
 

@@ -3,7 +3,7 @@ index: 7
 lang: "pt"
 title: "cat"
 meta_title: "cat - Linha de Comando"
-meta_description: "Aprenda como usar o comando 'cat' no Linux para visualizar o conteúdo de arquivos e concatenar arquivos. Um guia para iniciantes sobre comandos básicos do Linux."
+meta_description: "Aprenda a usar o comando 'cat' no Linux para visualizar o conteúdo de arquivos e concatenar arquivos. Um guia para iniciantes sobre comandos básicos do Linux."
 meta_keywords: "comando cat, cat Linux, visualizar conteúdo de arquivo, concatenar arquivos, comandos Linux, Linux para iniciantes, tutorial Linux, guia Linux"
 ---
 

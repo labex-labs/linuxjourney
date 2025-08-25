@@ -3,7 +3,7 @@ index: 16
 lang: "ko"
 title: "man"
 meta_title: "man - 명령줄"
-meta_description: "Linux에서 'man' 명령어를 사용하여 명령어 설명서에 액세스하는 방법을 배우세요. 초보자를 위한 필수 Linux 문서를 발견하고 명령줄 기술을 향상시키세요."
+meta_description: "Linux 에서 'man' 명령어를 사용하여 명령어 설명서에 액세스하는 방법을 배우세요. 초보자를 위한 필수 Linux 문서를 발견하고 명령줄 기술을 향상시키세요."
 meta_keywords: "man 명령어, Linux man 페이지, Linux 문서, Linux 튜토리얼, 명령줄 가이드, 초보자 Linux"
 ---
 

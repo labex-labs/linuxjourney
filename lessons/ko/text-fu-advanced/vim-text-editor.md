@@ -2,9 +2,9 @@
 index: 3
 lang: "ko"
 title: "Vim (Vi Improved)"
-meta_title: "Vim (Vi Improved) - 고급 Text-Fu"
-meta_description: "강력하고 가벼운 Vi 개선 텍스트 편집기인 Vim 을 배우세요. 기본 사용법과 Vim 이 Linux 사용자에게 필수적인 이유를 이해하세요."
-meta_keywords: "Vim, Vi editor, Linux text editor, Vim tutorial, Linux commands, beginner Linux, Vim guide"
+meta_title: "Vim (Vi Improved) - 고급 텍스트 기술"
+meta_description: "강력하고 가벼운 Vi 개선 텍스트 편집기인 Vim 을 Linux 에서 배우세요. 기본 사용법과 Vim 이 Linux 사용자에게 필수적인 이유를 이해하세요."
+meta_keywords: "Vim, Vi 편집기, Linux 텍스트 편집기, Vim 튜토리얼, Linux 명령어, 초보자 Linux, Vim 가이드"
 ---
 
 ## Lesson Content
@@ -21,10 +21,14 @@ vim
 
 ## Exercise
 
-이 수업에는 연습 문제가 없습니다.
+연습이 완벽을 만듭니다! 다음은 Linux 에서 텍스트 편집에 대한 이해를 강화하기 위한 실습입니다:
+
+1. **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 실제 Linux 환경에서 Vim 과 Nano 를 사용하여 파일 생성, 텍스트 편집, 파일 저장 및 탐색을 연습합니다.
+
+이 실습은 실제 시나리오에서 개념을 적용하고 Linux 텍스트 편집기에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-질문이 없습니다. 다음으로 넘어가세요!
+질문이 없습니다. 계속 진행하세요!
 
 ## Quiz Answer

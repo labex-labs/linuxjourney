@@ -9,17 +9,17 @@ meta_keywords: "sar, sysstat, monitoramento Linux, desempenho do sistema, monito
 
 ## Lesson Content
 
-Essas ferramentas de monitoramento são boas para consultar quando sua máquina está com problemas, mas e as máquinas que estão com problemas quando você não está olhando? Para essas, você precisará usar uma ferramenta de monitoramento contínuo, algo que coletará, relatará e salvará as informações de atividade do seu sistema. Nesta lição, abordaremos uma ótima ferramenta para usar: o **sar**.
+Essas ferramentas de monitoramento são boas para verificar quando sua máquina está com problemas, mas e as máquinas que estão com problemas quando você não está olhando? Para essas, você precisará usar uma ferramenta de monitoramento contínuo, algo que coletará, relatará e salvará as informações de atividade do seu sistema. Nesta lição, abordaremos uma ótima ferramenta para usar: o **sar**.
 
-### Installing sar
+### Instalando o sar
 
-Sar é uma ferramenta usada para fazer análise histórica em seu sistema. Primeiro, certifique-se de tê-lo instalado instalando o pacote `sysstat`: `sudo apt install sysstat`.
+Sar é uma ferramenta usada para fazer análises históricas em seu sistema. Primeiro, certifique-se de tê-lo instalado instalando o pacote `sysstat`: `sudo apt install sysstat`.
 
-### Setting up data collection
+### Configurando a coleta de dados
 
 Normalmente, depois de instalar o `sysstat`, seu sistema começará automaticamente a coletar dados. Se não o fizer, você pode habilitá-lo modificando o campo `ENABLED` em `/etc/default/sysstat`.
 
-### Using sar
+### Usando o sar
 
 ```bash
 sudo sar -q
@@ -47,7 +47,13 @@ sar -q /var/log/sysstat/sa02
 
 ## Exercise
 
-Instale o sar em seu sistema e comece a coletar e analisar a utilização dos recursos do seu sistema.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre monitoramento de sistema e análise de recursos:
+
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e encerrando-os com `kill`.
+2. **[Comando Linux top: Monitoramento de Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar várias opções com o comando `top` para classificar processos, ajustar intervalos de atualização, filtrar por usuário e focar em processos ativos para monitorar efetivamente o desempenho do sistema.
+3. **[Comando Linux df: Relatório de Espaço em Disco](https://labex.io/pt/labs/linux-linux-df-command-disk-space-reporting-219188)** - Este laboratório apresenta o comando `df` no Linux, um utilitário que exibe informações sobre o uso do espaço em disco em sistemas de arquivos montados, que é um aspecto chave do monitoramento do sistema.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de monitoramento de recursos do sistema em cenários reais e a construir confiança na análise da atividade do sistema.
 
 ## Quiz Question
 

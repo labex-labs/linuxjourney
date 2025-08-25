@@ -4,20 +4,20 @@ lang: "ja"
 title: "exit"
 meta_title: "exit - コマンドライン"
 meta_description: "「exit」または「logout」コマンドを使用して Linux シェルを終了する方法を学びます。初心者向けの基本的なシェルナビゲーションを理解します。今日から Linux の旅を始めましょう！"
-meta_keywords: "exit コマンド，logout コマンド，Linux シェル，ターミナル終了，Linux の基本，初心者向け Linux, Linux チュートリアル"
+meta_keywords: "exit command, logout command, Linux shell, terminal exit, Linux basics, beginner Linux, Linux tutorial"
 ---
 
 ## Lesson Content
 
 基本的な内容をよく理解できましたね。まだ表面をなぞっただけですが、ハイハイを覚えた今、次のコースでは歩き方を教えます。
 
-今は、自分を褒めて一休みしてください。シェルを終了するには、`exit` コマンドを使用します。
+今は、自分を褒めて一休みしてください。シェルから抜けるには、`exit`コマンドを使います。
 
 ```bash
 exit
 ```
 
-または `logout` コマンドを使用します。
+または`logout`コマンドです。
 
 ```bash
 logout
@@ -31,7 +31,7 @@ logout
 
 ## Quiz Question
 
-シェルから終了するにはどうすればよいですか？
+シェルから抜けるにはどうすればよいですか？
 
 ## Quiz Answer
 

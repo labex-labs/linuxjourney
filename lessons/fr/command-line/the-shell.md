@@ -3,17 +3,17 @@ index: 1
 lang: "fr"
 title: "Le Shell"
 meta_title: "Le Shell - Ligne de Commande"
-meta_description: "Découvrez le shell Linux, Bash et les commandes de base comme 'echo'. Comprenez les invites de shell et commencez votre parcours Linux avec ce guide convivial pour débutants."
-meta_keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de commande, Linux débutant, invite de shell, guide Linux"
+meta_description: "Découvrez le shell Linux, Bash, et les commandes de base comme 'echo'. Comprenez les invites de shell et commencez votre parcours Linux avec ce guide convivial pour débutants."
+meta_keywords: "shell Linux, Bash, commande echo, tutoriel Linux, ligne de commande, Linux pour débutants, invite de shell, guide Linux"
 ---
 
 ## Lesson Content
 
 Le monde est à vous, ou plutôt, le shell est à vous. Qu'est-ce que le shell ? Le shell est fondamentalement un programme qui prend vos commandes du clavier et les envoie au système d'exploitation pour les exécuter. Si vous avez déjà utilisé une interface graphique, vous avez probablement vu des programmes tels que "Terminal" ou "Console" ; ce ne sont que des programmes qui lancent un shell pour vous. Tout au long de ce cours, nous allons découvrir les merveilles du shell.
 
-Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront le shell Bash par défaut. D'autres shells sont disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
+Dans ce cours, nous utiliserons le programme shell Bash (Bourne Again Shell). Presque toutes les distributions Linux utiliseront le shell Bash par défaut. Il existe d'autres shells disponibles, tels que `ksh`, `zsh` et `tsch`, mais nous n'aborderons aucun d'entre eux.
 
-Passons directement à l'action ! Selon la distribution, votre invite de shell peut changer, mais pour la plupart, elle devrait respecter le format suivant :
+Plongeons directement ! Selon la distribution, votre invite de shell peut changer, mais pour la plupart, elle devrait respecter le format suivant :
 
 ```plaintext
 username@hostname:current_directory

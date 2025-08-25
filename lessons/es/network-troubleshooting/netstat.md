@@ -2,18 +2,18 @@
 index: 4
 lang: "es"
 title: "netstat"
-meta_title: "netstat - Resolución de Problemas"
-meta_description: "Aprende el comando netstat para el análisis de redes Linux. Comprende las conexiones de red, puertos y sockets con esta guía para principiantes."
+meta_title: "netstat - Solución de problemas"
+meta_description: "Aprende el comando netstat para el análisis de redes en Linux. Comprende las conexiones de red, puertos y sockets con esta guía para principiantes."
 meta_keywords: "netstat, comando netstat, redes Linux, conexiones de red, tutorial Linux, principiante, guía"
 ---
 
 ## Lesson Content
 
-### Puertos Bien Conocidos
+### Puertos Conocidos
 
-Hemos hablado de la transmisión de datos a través de puertos en nuestra máquina; veamos algunos puertos bien conocidos.
+Hemos hablado de la transmisión de datos a través de puertos en nuestra máquina; veamos algunos puertos conocidos.
 
-Puedes obtener una lista de puertos bien conocidos consultando el archivo **/etc/services**:
+Puedes obtener una lista de puertos conocidos consultando el archivo **/etc/services**:
 
 ```plaintext
 ftp             21/tcp
@@ -45,7 +45,7 @@ tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
 tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
 ```
 
-El comando `netstat -a` muestra los sockets de escucha y no escucha para las conexiones de red; el flag `-t` muestra solo las conexiones TCP.
+El comando `netstat -a` muestra los sockets de escucha y no escucha para las conexiones de red; la bandera `-t` muestra solo las conexiones TCP.
 
 Las columnas son las siguientes de izquierda a derecha:
 
@@ -56,17 +56,21 @@ Las columnas son las siguientes de izquierda a derecha:
 - **Foreign Address**: Host conectado remotamente.
 - **State**: El estado del socket.
 
-Consulta la página man para obtener una lista de los estados de los sockets, pero aquí hay algunos:
+Consulta la página del manual para obtener una lista de los estados de los sockets, pero aquí hay algunos:
 
-- **LISTENING**: El socket está escuchando conexiones entrantes. Recuerda, cuando hacemos una conexión TCP, nuestro destino debe estar escuchándonos antes de que podamos conectarnos.
+- **LISTENING**: El socket está escuchando conexiones entrantes. Recuerda, cuando hacemos una conexión TCP, nuestro destino debe estar escuchando para que podamos conectarnos.
 - **SYN_SENT**: El socket está intentando activamente establecer una conexión.
 - **ESTABLISHED**: El socket tiene una conexión establecida.
 - **CLOSE_WAIT**: El host remoto se ha cerrado y estamos esperando que el socket se cierre.
-- **TIME_WAIT**: El socket está esperando después de cerrarse para manejar los paquetes que aún están en la red.
+- **TIME_WAIT**: El socket está esperando después del cierre para manejar paquetes que aún están en la red.
 
 ## Exercise
 
-Consulta la página man de `netstat` y aprende todas las características que ofrece.
+¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de la configuración de la interfaz de red:
+
+1. **[Examinar la configuración de la interfaz de red con ethtool en Linux](https://labex.io/es/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprende a usar el comando `ethtool` para examinar y administrar la configuración de la interfaz de red, incluyendo la visualización y configuración de la velocidad y el dúplex de la interfaz, y el análisis de los modos de enlace para solucionar problemas de red de la capa física.
+
+Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a desarrollar confianza en la gestión de interfaces de red.
 
 ## Quiz Question
 

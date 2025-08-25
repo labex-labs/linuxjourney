@@ -51,9 +51,9 @@ Experimente-os!
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da navegação de diretórios Linux:
 
-1.  **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Aprenda o comando Linux `cd` para navegar eficientemente em seu sistema de arquivos, incluindo várias técnicas para mudar diretórios, entender caminhos e explorar a estrutura de arquivos.
-2.  **[Navegação de Diretório Linux](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Teste suas habilidades básicas de linha de comando Linux navegando por diretórios usando comandos essenciais.
-3.  **[Configurando uma Nova Estrutura de Projeto](https://labex.io/pt/labs/linux-setting-up-a-new-project-structure-387859)** - Pratique suas habilidades de gerenciamento de diretórios Linux criando uma estrutura de projeto específica e navegando por ela usando comandos essenciais como `mkdir` e `cd`.
+1. **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Aprenda o comando Linux `cd` para navegar eficientemente em seu sistema de arquivos, incluindo várias técnicas para mudar diretórios, entender caminhos e explorar a estrutura de arquivos.
+2. **[Navegação de Diretório Linux](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Teste suas habilidades básicas de linha de comando Linux navegando por diretórios usando comandos essenciais.
+3. **[Configurando uma Nova Estrutura de Projeto](https://labex.io/pt/labs/linux-setting-up-a-new-project-structure-387859)** - Pratique suas habilidades de gerenciamento de diretórios Linux criando uma estrutura de projeto específica e navegando por ela usando comandos essenciais como `mkdir` e `cd`.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança na navegação do sistema de arquivos Linux.
 

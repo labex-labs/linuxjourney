@@ -3,7 +3,7 @@ index: 9
 lang: "ja"
 title: "Arch Linux"
 meta_title: "Arch Linux - 入門"
-meta_description: "Arch Linux、そのローリングリリースモデル、および Pacman パッケージマネージャーについて学びましょう。Arch が初心者から高度なユーザーまで、なぜ優れた選択肢であるかを理解します。"
+meta_description: "Arch Linux、そのローリングリリースモデル、および Pacman パッケージマネージャーについて学びましょう。Arch が初心者および制御を求める上級ユーザーにとってなぜ優れているのかを理解してください。"
 meta_keywords: "Arch Linux, Pacman, Linux ディストリビューション，ローリングリリース，Linux チュートリアル，初心者ガイド，軽量 OS"
 ---
 
@@ -23,7 +23,7 @@ Arch は独自のパッケージマネージャーである Pacman を使用し�
 
 ### 用途
 
-デスクトップやラップトップに最適です。Raspberry Pi のような小型デバイスを持っていて、そこに軽量な OS をインストールする必要がある場合でも、Arch を選べば間違いありません。
+デスクトップやノートパソコンに最適です。Raspberry Pi のような小型デバイスを持っていて、そこに軽量な OS をインストールする必要がある場合でも、Arch を選べば間違いありません。
 
 ## Exercise
 
@@ -31,9 +31,9 @@ Arch は独自のパッケージマネージャーである Pacman を使用し�
 
 1. **[Linux 入門](https://labex.io/ja/labs/linux-getting-started-with-linux-446315)** - 必須のターミナルコマンドと基本的なシステム操作を学び、Linux の旅を始めましょう。
 2. **[Linux での基本的なファイル操作](https://labex.io/ja/labs/linux-basic-file-operations-in-linux-18001)** - ファイルシステムのナビゲート、ファイルの管理、コマンドラインショートカットの使用方法を学びます。
-3. **[ファイルとディレクトリの操作](https://labex.io/ja/labs/linux-file-and-directory-operations-17997)** - `ls`、`cd`、`mkdir`、`cp`、`mv`などのコマンドを使用してファイルやフォルダを管理するなど、Linux ファイルシステムの基本的な操作を練習します。
+3. **[ファイルとディレクトリの操作](https://labex.io/ja/labs/linux-file-and-directory-operations-17997)** - `ls`、`cd`、`mkdir`、`cp`、`mv`などのコマンドを使用してファイルやフォルダーを管理するなど、Linux ファイルシステムの基本的な操作を練習します。
 
-これらのラボは、実際のシナリオで概念を適用し、Linux コマンドラインとファイルシステムに対する自信を築くのに役立ちます。
+これらのラボは、実際のシナリオで概念を適用し、Linux コマンドラインとファイルシステムに自信を持つために役立ちます。
 
 ## Quiz Question
 

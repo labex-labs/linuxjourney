@@ -1,17 +1,17 @@
 ---
 index: 1
 lang: "de"
-title: "Übersicht über den Bootvorgang"
-meta_title: "Übersicht über den Bootvorgang - System booten"
-meta_description: "Lernen Sie die Phasen des Linux-Bootvorgangs kennen: BIOS, Bootloader, Kernel und Init. Verstehen Sie, wie Linux vom Einschalten bis zur Anmeldung startet. Ein unverzichtbarer Leitfaden für Linux-Anfänger."
-meta_keywords: "Linux-Bootvorgang, BIOS, Bootloader, Kernel, Init, Linux-Tutorial, Linux-Anleitung, Anfänger"
+title: "Bootvorgang Überblick"
+meta_title: "Bootvorgang Überblick - Das System booten"
+meta_description: "Lernen Sie die Phasen des Linux-Bootvorgangs kennen: BIOS, Bootloader, Kernel und Init. Verstehen Sie, wie Linux vom Einschalten bis zur Anmeldung startet. Ein unverzichtbarer Linux-Anfängerleitfaden."
+meta_keywords: "Linux-Bootvorgang, BIOS, Bootloader, Kernel, Init, Linux-Tutorial, Linux-Leitfaden, Anfänger"
 ---
 
 ## Lesson Content
 
-Nachdem wir nun ein ziemlich gutes Verständnis einiger wichtiger Komponenten von Linux gewonnen haben, wollen wir sie zusammensetzen, indem wir lernen, wie das System bootet. Wenn Sie Ihren Rechner einschalten, tut er einige nette Dinge, wie das Anzeigen des Logo-Bildschirms, das Durchlaufen verschiedener Meldungen, und am Ende werden Sie mit einem Anmeldefenster aufgefordert. Nun, es passiert tatsächlich eine Menge zwischen dem Drücken des Netzschalters und dem Anmelden, und wir werden diese in diesem Kurs besprechen.
+Nachdem wir nun ein ziemlich gutes Verständnis einiger wichtiger Komponenten von Linux erlangt haben, wollen wir sie alle zusammenfügen, indem wir lernen, wie das System bootet. Wenn Sie Ihren Rechner einschalten, macht er einige nette Dinge, wie das Anzeigen des Logo-Bildschirms, das Durchlaufen verschiedener Meldungen, und am Ende werden Sie mit einem Anmeldefenster aufgefordert. Nun, es passiert tatsächlich eine Menge Zeug zwischen dem Drücken des Netzschalters und dem Anmelden, und wir werden diese in diesem Kurs besprechen.
 
-Der Linux-Bootvorgang kann in 4 einfache Phasen unterteilt werden:
+Der Linux-Bootvorgang lässt sich in 4 einfache Phasen unterteilen:
 
 ### 1. BIOS
 
@@ -27,13 +27,17 @@ Wenn der Kernel geladen ist, initialisiert er sofort Geräte und Speicher. Die H
 
 ### 4. Init
 
-Denken Sie daran, der init-Prozess ist der erste Prozess, der gestartet wird. Init startet und stoppt wesentliche Dienstprozesse auf dem System. Es gibt drei Hauptimplementierungen von init in Linux-Distributionen. Wir werden sie kurz durchgehen und dann in einem anderen Kurs tiefer darauf eingehen.
+Denken Sie daran, der init-Prozess ist der erste Prozess, der gestartet wird. Init startet und stoppt wesentliche Dienstprozesse auf dem System. Es gibt drei Hauptimplementierungen von init in Linux-Distributionen. Wir werden sie kurz behandeln und dann in einem anderen Kurs näher darauf eingehen.
 
-Das ist sie, die (sehr) einfache Erklärung des Linux-Bootvorgangs. Wir werden in den nächsten Lektionen detaillierter auf diese Phasen eingehen.
+Das ist sie, die (sehr) einfache Erklärung des Linux-Bootvorgangs. In den nächsten Lektionen werden wir detaillierter auf diese Phasen eingehen.
 
 ## Exercise
 
-Starten Sie Ihr System neu und versuchen Sie, jeden Schritt zu erkennen, während Ihr Rechner hochfährt.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Linux-Bootvorgangs zu vertiefen:
+
+1. **[Das GRUB2-Bootmenü in Linux anpassen](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** – Üben Sie das Ändern des GRUB2-Bootmenüs, einer kritischen Komponente in der Linux-Bootsequenz.
+
+Dieses Lab hilft Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit der Linux-Bootumgebung aufzubauen.
 
 ## Quiz Question
 

@@ -20,7 +20,7 @@ $ ls -l /usr/bin/wall
 
 Agora podemos ver que o bit de permissão está no conjunto de permissões do grupo.
 
-### Modifying SGID
+### Modificando SGID
 
 ```bash
 sudo chmod g+s myfile
@@ -31,7 +31,12 @@ A representação numérica para SGID é 2.
 
 ## Exercise
 
-No exercises for this lesson.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das permissões de usuário, grupo e arquivo do Linux:
+
+1. **[Permissões de Usuário, Grupo e Arquivo do Linux](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuário e grupo do Linux, incluindo a criação e gerenciamento de usuários, exploração de associações de grupo, compreensão de permissões de arquivo e manipulação de propriedade de arquivo.
+2. **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Pratique a criação de novas contas de usuário, configuração de grupos personalizados e gerenciamento de associações de grupo, simulando tarefas de administração de sistema do mundo real.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com as permissões e o gerenciamento de usuários do Linux.
 
 ## Quiz Question
 

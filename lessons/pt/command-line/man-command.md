@@ -23,7 +23,7 @@ Experimente em alguns comandos para obter mais informações sobre eles.
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos comandos Linux fundamentais, que você pode explorar ainda mais usando as páginas `man`:
 
-1. **[Comando Linux ls: Listagem de Conteúdo](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)** - Pratique listar e analisar o conteúdo de arquivos e diretórios e, em seguida, use `man ls` para descobrir mais opções.
+1. **[Comando Linux ls: Listagem de Conteúdo](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)** - Pratique listar e analisar o conteúdo de arquivos e diretórios, e então use `man ls` para descobrir mais opções.
 2. **[Comando Linux pwd: Exibição de Diretório](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - Aprenda o comando `pwd` para exibir seu diretório atual e explore sua página man para detalhes.
 3. **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Domine a navegação em seu sistema de arquivos com `cd` e use `man cd` para entender suas várias técnicas.
 

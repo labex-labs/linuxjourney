@@ -23,7 +23,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 ### procs
 
 - r - 런타임 프로세스 수
-- b - 중단할 수 없는 절전 모드의 프로세스 수
+- b - 중단할 수 없는 절전 모드에 있는 프로세스 수
 
 ### memory
 
@@ -56,7 +56,12 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 ## Exercise
 
-vmstat 를 사용하여 메모리 사용량을 확인하십시오.
+연습하면 완벽해집니다! 시스템 및 메모리 모니터링에 대한 이해를 높이기 위한 실습 랩입니다:
+
+1. **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 다양한 표시 형식과 총 메모리 소비를 이해하며 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 배웁니다.
+2. **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 정렬 및 필터링을 위한 다양한 옵션을 사용하여 프로세스, CPU, 메모리 사용량을 포함한 시스템 성능을 실시간으로 모니터링하는 방법을 배웁니다.
+
+이 랩은 실제 시나리오에서 시스템 리소스 모니터링 개념을 적용하고 Linux 시스템 성능 분석에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

@@ -3,7 +3,7 @@ index: 12
 lang: "de"
 title: "sort"
 meta_title: "sort - Text-Fu"
-meta_description: "Lernen Sie, wie Sie den Linux-Befehl sort zum Sortieren von Textdateien verwenden. Entdecken Sie Optionen wie umgekehrte und numerische Sortierung. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
+meta_description: "Erfahren Sie, wie Sie den Linux-Befehl sort zum Sortieren von Textdateien verwenden. Entdecken Sie Optionen wie umgekehrte und numerische Sortierung. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
 meta_keywords: "Linux sort Befehl, sort -r, sort -n, Linux Tutorial, Befehlszeile, Linux für Anfänger, sort Anleitung"
 ---
 
@@ -51,11 +51,12 @@ dog
 
 ## Exercise
 
-Die wahre Stärke von `sort` liegt in seiner Fähigkeit, mit anderen Befehlen kombiniert zu werden. Probieren Sie den folgenden Befehl aus und sehen Sie, was passiert:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des `sort`-Befehls und der Textverarbeitung zu vertiefen:
 
-```bash
-ls /etc | sort -rn
-```
+1. **[Linux sort Befehl: Textsortierung](https://labex.io/de/labs/linux-linux-sort-command-text-sorting-219196)** - Dieses Lab bietet eine direkte Einführung in den `sort`-Befehl, sodass Sie das Sortieren von Textdateizeilen auf verschiedene Weisen üben können, einschließlich aufsteigender und absteigender Reihenfolge.
+2. **[Wortzählung und Sortierung](https://labex.io/de/labs/linux-word-count-and-sorting-388125)** - In dieser Herausforderung wenden Sie Ihr Wissen über Sortierung zusammen mit der Wortzählung an, um Textdaten zu analysieren, was Ihnen hilft, häufige Muster zu finden und Daten effizient zu sortieren.
+
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Textmanipulation und Sortierung unter Linux aufzubauen.
 
 ## Quiz Question
 

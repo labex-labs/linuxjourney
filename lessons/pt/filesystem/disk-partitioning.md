@@ -2,14 +2,14 @@
 index: 4
 lang: "pt"
 title: "Particionamento de Disco"
-meta_title: "Particionamento de Disco - O Filesystem"
+meta_title: "Particionamento de Disco - O Sistema de Arquivos"
 meta_description: "Aprenda particionamento de disco no Linux usando parted. Entenda como particionar, selecionar, visualizar e redimensionar discos. Comece com este guia para iniciantes!"
-meta_keywords: "Particionamento de disco Linux, comando parted, fdisk, gparted, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
+meta_keywords: "particionamento de disco Linux, comando parted, fdisk, gparted, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
 ---
 
 ## Lesson Content
 
-Vamos fazer algumas coisas práticas com sistemas de arquivos, trabalhando com o processo em uma unidade USB. Se você não tiver uma, não se preocupe, você ainda pode acompanhar estas próximas duas lições.
+Vamos fazer algumas coisas práticas com sistemas de arquivos, trabalhando o processo em uma unidade USB. Se você não tiver uma, não se preocupe, você ainda pode acompanhar as próximas lições.
 
 Primeiro, precisaremos particionar nosso disco. Existem muitas ferramentas disponíveis para fazer isso:
 
@@ -18,9 +18,9 @@ Primeiro, precisaremos particionar nosso disco. Existem muitas ferramentas dispo
 - gparted - esta é a versão GUI do parted
 - gdisk - fdisk, mas não suporta MBR, apenas GPT
 
-Vamos usar parted para fazer nosso particionamento. Digamos que eu conecte o dispositivo USB e vemos que o nome do dispositivo é /dev/sdb2.
+Vamos usar o parted para fazer nosso particionamento. Digamos que eu conecte o dispositivo USB e vejamos que o nome do dispositivo é /dev/sdb2.
 
-### Launch parted
+### Iniciar parted
 
 ```bash
 sudo parted
@@ -28,7 +28,7 @@ sudo parted
 
 Você entrará na ferramenta parted; aqui você pode executar comandos para particionar seu dispositivo.
 
-### Select the device
+### Selecionar o dispositivo
 
 ```bash
 select /dev/sdb2
@@ -36,7 +36,7 @@ select /dev/sdb2
 
 Para selecionar o dispositivo com o qual você trabalhará, selecione-o pelo nome do dispositivo.
 
-### View current partition table
+### Visualizar tabela de partição atual
 
 ```plaintext
 (parted) print
@@ -54,15 +54,15 @@ Number  Start   End     Size    Type      File system     Flags
 
 Aqui você verá as partições disponíveis no dispositivo. Os pontos de **início** e **fim** são onde as partições ocupam espaço no disco rígido; você vai querer encontrar um bom local de início e fim para suas partições.
 
-### Partition the device
+### Particionar o dispositivo
 
 ```bash
 mkpart primary 123 4567
 ```
 
-Agora, basta escolher um ponto de início e fim e fazer a partição; você precisará especificar o tipo de partição dependendo da tabela que você usou.
+Agora, basta escolher um ponto de início e fim e criar a partição; você precisará especificar o tipo de partição dependendo da tabela que você usou.
 
-### Resize a partition
+### Redimensionar uma partição
 
 Você também pode redimensionar uma partição se não tiver espaço.
 
@@ -76,7 +76,11 @@ Parted é uma ferramenta muito poderosa, e você deve ter cuidado ao particionar
 
 ## Exercise
 
-Particione uma unidade USB com metade da unidade como ext4 e a outra metade como espaço livre.
+Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre particionamento de disco e gerenciamento de sistemas de arquivos no Linux:
+
+1. [Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Neste laboratório, você aprenderá a gerenciar partições de disco e sistemas de arquivos no Linux. Você usará o fdisk para criar uma nova partição, formatá-la com ext4, montá-la, configurar a montagem persistente em /etc/fstab e criar uma partição swap, tudo em um disco virtual secundário seguro.
+
+Este laboratório o ajudará a aplicar os conceitos de particionamento de disco e gerenciamento de sistemas de arquivos em um cenário real e a construir confiança com essas habilidades essenciais de administração Linux.
 
 ## Quiz Question
 

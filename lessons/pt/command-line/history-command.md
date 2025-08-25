@@ -15,7 +15,7 @@ No seu shell, há um histórico dos comandos que você inseriu anteriormente. Vo
 history
 ```
 
-Quer executar o mesmo comando que você fez antes? Basta pressionar a seta para cima.
+Quer executar o mesmo comando que você executou antes? Basta pressionar a seta para cima.
 
 Quer executar o comando anterior sem digitá-lo novamente? Use `!!`. Se você digitou `cat file1` e quer executá-lo novamente, você pode simplesmente digitar `!!` e ele executará o último comando que você executou.
 
@@ -29,7 +29,7 @@ clear
 
 Pronto, parece melhor, não parece?
 
-Enquanto estamos falando de coisas úteis, uma das características mais úteis em qualquer ambiente de linha de comando é o preenchimento automático por tabulação. Se você começar a digitar o início de um comando, arquivo, diretório, etc., e pressionar a tecla Tab, ele completará automaticamente com base no que encontrar no diretório em que você está pesquisando, desde que você não tenha outros arquivos que comecem com essas letras. Por exemplo, se você estivesse tentando executar o comando `chrome`, você pode digitar `chr` e pressionar Tab, e ele completará automaticamente para `chrome`.
+Enquanto estamos falando de coisas úteis, uma das características mais úteis em qualquer ambiente de linha de comando é o preenchimento automático por tabulação. Se você começar a digitar o início de um comando, arquivo, diretório, etc., e pressionar a tecla Tab, ele fará o preenchimento automático com base no que encontrar no diretório que você está pesquisando, desde que você não tenha outros arquivos que comecem com essas letras. Por exemplo, se você estivesse tentando executar o comando `chrome`, você pode digitar `chr` e pressionar Tab, e ele fará o preenchimento automático para `chrome`.
 
 ## Exercise
 

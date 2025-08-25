@@ -3,13 +3,13 @@ index: 4
 lang: "fr"
 title: "/etc/hosts"
 meta_title: "/etc/hosts - DNS"
-meta_description: "Découvrez le fichier /etc/hosts sous Linux, comment il mappe les noms d'hôtes aux adresses IP, et son rôle dans la résolution DNS. Comprenez la configuration réseau de base."
+meta_description: "Découvrez le fichier /etc/hosts sous Linux, comment il mappe les noms d'hôtes aux adresses IP et son rôle dans la résolution DNS. Comprenez la configuration réseau de base."
 meta_keywords: "/etc/hosts, réseau Linux, mappage de noms d'hôtes, résolution DNS, tutoriel Linux, guide du débutant"
 ---
 
 ## Lesson Content
 
-Avant que notre machine ne contacte le DNS pour effectuer une requête, elle consulte d'abord localement sur nos machines.
+Avant que notre machine ne contacte le DNS pour effectuer une requête, elle consulte d'abord ses fichiers locaux.
 
 ### /etc/hosts
 
@@ -21,7 +21,7 @@ pete@icebox:~$ cat /etc/hosts
 127.0.1.1       icebox
 ```
 
-Vous verrez généralement votre adresse localhost listée par défaut dans ce fichier. Vous pouvez également gérer l'accès aux hôtes en modifiant les fichiers `/etc/hosts.deny` ou `/etc/hosts.allow`. Cependant, si vous étiez soucieux de la sécurité, ce n'est pas vraiment la bonne approche, et vous devriez plutôt modifier vos règles de pare-feu.
+Vous verrez généralement votre adresse localhost listée par défaut dans ce fichier. Vous pouvez également gérer l'accès aux hôtes en modifiant les fichiers `/etc/hosts.deny` ou `/etc/hosts.allow`. Cependant, si vous étiez soucieux de la sécurité, ce n'est pas vraiment la bonne approche, et vous devriez plutôt modifier les règles de votre pare-feu.
 
 Voyons un exemple amusant de `/etc/hosts`. Modifiez le fichier et ajoutez une ligne pour :
 
@@ -44,7 +44,12 @@ search localdomain
 
 ## Exercise
 
-Pas d'exercices pour cette leçon.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la résolution de noms d'hôtes locaux et des requêtes DNS :
+
+1. **[Gérer la résolution de noms d'hôtes locaux sous Linux](https://labex.io/fr/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à modifier le fichier `/etc/hosts` pour gérer la résolution de noms d'hôtes locaux, une étape clé avant les requêtes DNS.
+2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS à l'aide d'outils Linux essentiels comme `dig` et `nslookup` pour comprendre comment votre machine résout les noms externes.
+
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en matière de résolution de noms d'hôtes et de DNS.
 
 ## Quiz Question
 

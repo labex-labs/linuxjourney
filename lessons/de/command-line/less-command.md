@@ -31,14 +31,15 @@ Verwenden Sie die folgenden Befehle, um durch `less` zu navigieren:
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Anzeigens und Navigierens von Textdateien in Linux zu vertiefen:
 
 1. **[Linux less Befehl: Dateiseitenumbruch](https://labex.io/de/labs/linux-linux-less-command-file-paging-214301)** - Lernen Sie den Linux-Befehl 'less' für effizientes Anzeigen und Navigieren von Textdateien, einschließlich Suche, Zeilennummern und Musterabgleich.
-2. **[Linux more Befehl: Dateiscrolling](https://labex.io/de/labs/linux-linux-more-command-file-scrolling-214299)** - Lernen Sie den Linux-Befehl 'more' für effizientes Anzeigen von Textdateien, einschließlich grundlegender Verwendung, Starten ab bestimmten Zeilen und Anpassen der Anzeige.
-3. **[Anzeigen von Log- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Lernen Sie wesentliche Linux-Befehlszeilenkenntnisse für das effiziente Anzeigen und Navigieren von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, mithilfe von Befehlen wie `cat`, `more` und `less`.
+2. **[Linux more Befehl: Dateiscrolling](https://labex.io/de/labs/linux-linux-more-command-file-scrolling-214299)** - Lernen Sie den Linux-Befehl 'more' für effizientes Anzeigen von Textdateien, einschließlich grundlegender Verwendung, Starten von bestimmten Zeilen und Anpassen der Anzeige.
+3. **[Anzeigen von Log- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Lernen Sie grundlegende Linux-Befehlszeilenkenntnisse für das effiziente Anzeigen und Navigieren von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, mithilfe von Befehlen wie `cat`, `more` und `less`.
 
 Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Textdateimanipulation und -navigation aufzubauen.
 
 ## Quiz Question
 
-Wie beendet man einen `less`-Befehl?
+Wie beenden Sie einen `less`-Befehl?
 
 ## Quiz Answer
+
 q

@@ -23,7 +23,7 @@ cd /home/pete/Pictures
 
 J'ai donc maintenant changé mon emplacement de répertoire pour `/home/pete/Pictures`.
 
-Maintenant, à partir de ce répertoire, j'ai un dossier à l'intérieur appelé `Hawaii`. Je peux naviguer vers ce dossier avec :
+Maintenant, depuis ce répertoire, j'ai un dossier à l'intérieur appelé `Hawaii`. Je peux naviguer vers ce dossier avec :
 
 ```bash
 cd Hawaii
@@ -51,9 +51,9 @@ Essayez-les !
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans les répertoires Linux :
 
-1.  **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez la commande Linux `cd` pour naviguer efficacement dans votre système de fichiers, y compris diverses techniques pour changer de répertoire, comprendre les chemins et explorer la structure des fichiers.
-2.  **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant dans les répertoires à l'aide de commandes essentielles.
-3.  **[Mise en place d'une nouvelle structure de projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** - Pratiquez vos compétences en gestion de répertoires Linux en créant une structure de projet spécifique et en y naviguant à l'aide de commandes essentielles comme `mkdir` et `cd`.
+1. **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez la commande Linux `cd` pour naviguer efficacement dans votre système de fichiers, y compris diverses techniques pour changer de répertoire, comprendre les chemins et explorer la structure des fichiers.
+2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant dans les répertoires à l'aide de commandes essentielles.
+3. **[Mise en place d'une nouvelle structure de projet](https://labex.io/fr/labs/linux-setting-up-a-new-project-structure-387859)** - Pratiquez vos compétences en gestion de répertoires Linux en créant une structure de projet spécifique et en y naviguant à l'aide de commandes essentielles comme `mkdir` et `cd`.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la navigation du système de fichiers Linux.
 

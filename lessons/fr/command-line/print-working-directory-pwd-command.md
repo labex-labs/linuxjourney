@@ -43,7 +43,7 @@ La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer 
 2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant à travers divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
 3. **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
 
-Ces laboratoires vous aideront à appliquer les concepts de hiérarchie du système de fichiers et de navigation dans des scénarios réels et à renforcer votre confiance avec les commandes Linux essentielles.
+Ces laboratoires vous aideront à appliquer les concepts de hiérarchie et de navigation du système de fichiers dans des scénarios réels et à renforcer votre confiance avec les commandes Linux essentielles.
 
 ## Quiz Question
 

@@ -27,9 +27,9 @@ Unser Terminal wird etwas unübersichtlich, nicht wahr? Lassen Sie uns ein wenig
 clear
 ```
 
-So, das sieht besser aus, nicht wahr?
+So, das sieht besser aus, oder?
 
-Wo wir gerade von nützlichen Dingen sprechen: Eine der nützlichsten Funktionen in jeder Befehlszeilenumgebung ist die Tab-Vervollständigung. Wenn Sie den Anfang eines Befehls, einer Datei, eines Verzeichnisses usw. eingeben und die Tab-Taste drücken, wird es automatisch vervollständigt, basierend auf dem, was es im durchsuchten Verzeichnis findet, solange Sie keine anderen Dateien haben, die mit diesen Buchstaben beginnen. Wenn Sie beispielsweise versuchen würden, den Befehl `chrome` auszuführen, können Sie `chr` eingeben und Tab drücken, und es wird zu `chrome` vervollständigt.
+Wo wir gerade über nützliche Dinge sprechen: Eine der nützlichsten Funktionen in jeder Befehlszeilenumgebung ist die Tab-Vervollständigung. Wenn Sie den Anfang eines Befehls, einer Datei, eines Verzeichnisses usw. eingeben und die Tab-Taste drücken, wird es automatisch vervollständigt, basierend auf dem, was es im durchsuchten Verzeichnis findet, solange Sie keine anderen Dateien haben, die mit diesen Buchstaben beginnen. Wenn Sie beispielsweise versuchen würden, den Befehl `chrome` auszuführen, können Sie `chr` eingeben und Tab drücken, und es wird zu `chrome` vervollständigt.
 
 ## Exercise
 

@@ -14,13 +14,13 @@ Linux では、すべてがファイルです。Linux を深く学ぶにつれ�
 ```plaintext
 /
 |-- bin
-|	|-- file1
-|	|-- file2
+| |-- file1
+| |-- file2
 |-- etc
-|	|-- file3
-|	`-- directory1
-|		|-- file4
-|		`-- file5
+| |-- file3
+| `-- directory1
+|  |-- file4
+|  `-- file5
 |-- home
 |-- var
 ```
@@ -39,11 +39,11 @@ pwd
 
 練習は完璧をもたらします！Linux ファイルシステムのナビゲーションと現在の場所の特定に関する理解を深めるための実践的な演習をいくつか紹介します。
 
-1.  **[Linux pwd コマンド：ディレクトリ表示](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)** - この演習では、`pwd` コマンドの概要と実践的な使用法に焦点を当て、現在のディレクトリを見つけるというレッスンの導入と直接的に一致しています。
-2.  **[Linux ディレクトリナビゲーション](https://labex.io/ja/labs/linux-directory-navigation-387844)** - 基本的な Linux コマンドラインスキルを試して、さまざまなディレクトリをナビゲートし、パスとファイルシステム構造の理解を深めます。
-3.  **[Linux cd コマンド：ディレクトリ変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - `cd` コマンドを使用してファイルシステムを効率的にナビゲートし、ディレクトリを変更したりファイル構造を探索したりするさまざまなテクニックを理解します。
+1. **[Linux pwd コマンド：ディレクトリ表示](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)** - この演習では、`pwd` コマンドの概要と実践的な使用法に焦点を当て、現在のディレクトリを見つけるというレッスンの導入に直接関連しています。
+2. **[Linux ディレクトリナビゲーション](https://labex.io/ja/labs/linux-directory-navigation-387844)** - 基本的な Linux コマンドラインスキルを試して、さまざまなディレクトリをナビゲートし、パスとファイルシステム構造の理解を固めます。
+3. **[Linux cd コマンド：ディレクトリ変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - `cd` コマンドを使用してファイルシステムを効率的にナビゲートする方法を学び、ディレクトリを変更し、ファイル構造を探索するためのさまざまなテクニックを理解します。
 
-これらの演習は、ファイルシステムの階層とナビゲーションの概念を実際のシナリオに適用し、必須の Linux コマンドに自信を持つために役立ちます。
+これらの演習は、ファイルシステムの階層とナビゲーションの概念を実際のシナリオに適用し、Linux の重要なコマンドに自信を持つために役立ちます。
 
 ## Quiz Question
 

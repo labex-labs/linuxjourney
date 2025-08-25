@@ -1,15 +1,15 @@
 ---
 index: 8
 lang: "es"
-title: "Vim: Guardar y Salir"
-meta_title: "Vim: Guardar y Salir - Text-Fu Avanzado"
-meta_description: "Aprende a guardar y salir de Vim de forma efectiva con comandos esenciales como :w, :q y :wq. Domina las operaciones básicas de Vim para una edición de texto eficiente."
-meta_keywords: "Vim guardar, Vim salir, comandos Vim, :wq, :q!, editor de texto Linux, tutorial Vim, Vim para principiantes"
+title: "Guardar y salir de Vim"
+meta_title: "Guardar y salir de Vim - Text-Fu Avanzado"
+meta_description: "Aprenda a guardar y salir de Vim de forma eficaz con comandos esenciales como :w, :q y :wq. Domine las operaciones básicas de Vim para una edición de texto eficiente."
+meta_keywords: "guardar Vim, salir Vim, comandos Vim, :wq, :q!, editor de texto Linux, tutorial Vim, Vim para principiantes"
 ---
 
 ## Lesson Content
 
-Ahora que has terminado de editar, es hora de guardar y salir de Vim:
+Ahora que ha terminado de editar, es hora de guardar y salir de Vim:
 
 - `:w` - escribe o guarda el archivo
 - `:q` - sale de Vim
@@ -17,20 +17,24 @@ Ahora que has terminado de editar, es hora de guardar y salir de Vim:
 - `:q!` - sale de Vim sin guardar el archivo
 - `ZZ` - equivalente a `:wq`, pero un carácter más rápido
 
-- `u` - deshace tu última acción
-- `Ctrl-r` - rehace tu última acción
+- `u` - deshace su última acción
+- `Ctrl-r` - rehace su última acción
 
-Puede que no creas que `ZZ` es necesario, pero eventualmente verás que tus dedos pueden tender a inclinarse hacia esto en lugar de `:wq`.
+Puede que no crea que `ZZ` es necesario, pero eventualmente verá que sus dedos pueden tender a inclinarse hacia esto en lugar de `:wq`.
 
-Uf, eso fue mucha información sobre Vim. Ahora que conoces algunos comandos básicos y navegación, puedes empezar a editar algunos archivos de texto. Hay muchas más opciones que puedes usar en Vim para aumentar tu habilidad para dominar este editor de texto; dirígete a la guía en línea de Vim para echar un vistazo.
+Uf, eso fue mucha información sobre Vim. Ahora que conoce algunos comandos básicos y navegación, puede comenzar a editar algunos archivos de texto. Hay muchas más opciones que puede usar en Vim para aumentar su capacidad de dominar este editor de texto; diríjase a la guía en línea de Vim para echar un vistazo.
 
 ## Exercise
 
-No exercises for this lesson.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la edición de texto con Vim:
+
+1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practique la creación de archivos, la edición de texto, el guardado de archivos y la navegación con Vim y Nano. Este laboratorio solidificará su comprensión de las operaciones básicas de Vim, incluyendo guardar y salir.
+
+Este laboratorio le ayudará a aplicar los conceptos en un escenario real y a generar confianza con la edición de texto en Linux.
 
 ## Quiz Question
 
-¿Cómo sales de Vim sin guardar?
+¿Cómo se sale de Vim sin guardar?
 
 ## Quiz Answer
 

@@ -25,7 +25,7 @@ touch mysuperduperfile
 
 練習は完璧をもたらします！ファイルシステムオブジェクトの作成と管理の理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux mkdir コマンド：ディレクトリの作成](https://labex.io/ja/labs/linux-linux-mkdir-command-directory-creating-209739)** - Linux で`mkdir`コマンドを使用してディレクトリを作成し、パーミッションを設定し、ファイルシステムを整理する方法を学びます。これにより、ファイルシステムに新しい項目を作成するというより広範な概念を理解するのに役立ちます。
+1. **[Linux mkdir コマンド：ディレクトリの作成](https://labex.io/ja/labs/linux-linux-mkdir-command-directory-creating-209739)** - Linux で`mkdir`コマンドを使用してディレクトリを作成し、パーミッションを設定し、ファイルシステムを整理する方法を学びます。これは、ファイルシステムに新しい項目を作成するというより広い概念を理解するのに役立ちます。
 2. **[新しいプロジェクト構造のセットアップ](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)** - `mkdir`や`cd`などの必須コマンドを使用して、特定のプロジェクト構造を作成し、その中を移動することで、Linux ディレクトリ管理スキルを練習します。
 
 これらの演習は、ファイルシステム作成と整理の概念を実際のシナリオに適用し、Linux コマンドに自信を持つのに役立ちます。

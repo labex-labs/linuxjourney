@@ -2,14 +2,14 @@
 index: 3
 lang: "es"
 title: "traceroute"
-meta_title: "traceroute - Resolución de Problemas"
+meta_title: "traceroute - Solución de problemas"
 meta_description: "Aprenda a usar el comando traceroute de Linux para rastrear rutas de red y solucionar problemas de conectividad. Comprenda TTL y el enrutamiento de paquetes para principiantes."
 meta_keywords: "traceroute, redes Linux, solución de problemas de red, TTL, comandos Linux, principiante, tutorial"
 ---
 
 ## Lesson Content
 
-El comando `traceroute` se utiliza para ver cómo se enrutan los paquetes. Funciona enviando paquetes con valores de TTL (Time To Live) crecientes, comenzando con 1. Así, el primer enrutador recibe el paquete y decrementa el valor de TTL en uno, descartando el paquete. El enrutador nos envía de vuelta un mensaje ICMP Time Exceeded. Luego, el siguiente paquete obtiene un TTL de 2, por lo que pasa el primer enrutador, pero cuando llega al segundo enrutador, el TTL es 0, y devuelve otro mensaje ICMP Time Exceeded. Traceroute funciona de esta manera porque a medida que envía y descarta paquetes, construye una lista de enrutadores que los paquetes atraviesan hasta que finalmente llega a su destino y recibe un mensaje ICMP Echo Reply.
+El comando `traceroute` se utiliza para ver cómo se enrutan los paquetes. Funciona enviando paquetes con valores de TTL (Time To Live) crecientes, comenzando con 1. Así, el primer enrutador recibe el paquete y decrementa el valor TTL en uno, descartando así el paquete. El enrutador nos devuelve un mensaje ICMP Time Exceeded. Luego, el siguiente paquete obtiene un TTL de 2, por lo que pasa el primer enrutador, pero cuando llega al segundo enrutador, el TTL es 0, y devuelve otro mensaje ICMP Time Exceeded. Traceroute funciona de esta manera porque a medida que envía y descarta paquetes, construye una lista de enrutadores que los paquetes atraviesan hasta que finalmente llega a su destino y recibe un mensaje ICMP Echo Reply.
 
 Aquí hay un pequeño fragmento de un traceroute:
 
@@ -25,11 +25,16 @@ Cada línea representa un enrutador o máquina que se encuentra entre usted y su
 
 ## Exercise
 
-Ejecute el comando `traceroute` en su máquina y observe la salida.
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del descubrimiento de rutas de red y la resolución de problemas:
+
+1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Practique el uso del comando `ip` para configurar los ajustes de red y verificar la conectividad con `traceroute`.
+2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo funcionan `ping` y `arp` para comprender las interacciones de la capa de red, que son fundamentales para el funcionamiento de `traceroute`.
+
+Estos laboratorios le ayudarán a aplicar los conceptos de diagnóstico de red en escenarios reales y a generar confianza con las herramientas de red de Linux.
 
 ## Quiz Question
 
-¿Qué se decrementa en uno al dar saltos a través de la red?
+¿Qué se decrementa en uno al hacer saltos a través de la red?
 
 ## Quiz Answer
 

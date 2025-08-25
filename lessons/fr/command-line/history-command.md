@@ -15,7 +15,7 @@ Dans votre shell, il y a un historique des commandes que vous avez précédemmen
 history
 ```
 
-Vous voulez exécuter la même commande que précédemment ? Appuyez simplement sur la flèche vers le haut.
+Vous voulez exécuter la même commande que vous avez utilisée précédemment ? Appuyez simplement sur la flèche vers le haut.
 
 Vous voulez exécuter la commande précédente sans la retaper ? Utilisez `!!`. Si vous avez tapé `cat file1` et que vous voulez l'exécuter à nouveau, vous pouvez simplement taper `!!` et cela exécutera la dernière commande que vous avez lancée.
 

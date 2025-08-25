@@ -29,9 +29,9 @@ Linux を始めたばかりで、より挑戦的な道を歩みたいのであ�
 
 習うより慣れろ！Linux のファイルとディレクトリ管理の理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[基本的なファイル操作](https://labex.io/ja/labs/linux-basic-files-operations-270248)** - 実際の Linux 環境で、ファイルのリスト表示、ディレクトリの変更、ファイルやディレクトリの移動/コピー/削除を練習します。
-2.  **[ファイルとディレクトリ](https://labex.io/ja/labs/linux-files-and-directories-270246)** - 基本的な Linux コマンドを使用して、ファイルシステムをナビゲートし、ファイルやディレクトリをコピー、移動、削除する方法を学びます。
-3.  **[Linux での基本的なファイル操作](https://labex.io/ja/labs/linux-basic-file-operations-in-linux-18001)** - ファイルシステムをナビゲートし、ファイルとディレクトリを管理し、コマンドラインショートカットを使用するための必須の Linux コマンドと概念を学びます。
+1. **[基本的なファイル操作](https://labex.io/ja/labs/linux-basic-files-operations-270248)** - 実際の Linux 環境で、ファイルのリスト表示、ディレクトリの変更、ファイルやディレクトリの移動/コピー/削除を練習します。
+2. **[ファイルとディレクトリ](https://labex.io/ja/labs/linux-files-and-directories-270246)** - 基本的な Linux コマンドを使用して、ファイルシステムをナビゲートし、ファイルやディレクトリをコピー、移動、削除する方法を学びます。
+3. **[Linux での基本的なファイル操作](https://labex.io/ja/labs/linux-basic-file-operations-in-linux-18001)** - ファイルシステムをナビゲートし、ファイルとディレクトリを管理し、コマンドラインショートカットを使用するための必須の Linux コマンドと概念を学びます。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux ファイルシステム操作に自信をつけるのに役立ちます。
 

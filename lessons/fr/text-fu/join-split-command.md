@@ -32,7 +32,7 @@ $ join file1.txt file2.txt
 3 Mary Sue
 ```
 
-Voyez-vous comment elle a joint mes fichiers ? Ils sont joints par le premier champ par défaut, et les champs doivent être identiques. S'ils ne le sont pas, vous pouvez les trier. Dans ce cas, les fichiers sont joints via 1, 2, 3.
+Voyez-vous comment cela a joint mes fichiers ? Ils sont joints par le premier champ par défaut, et les champs doivent être identiques. S'ils ne le sont pas, vous pouvez les trier. Dans ce cas, les fichiers sont joints via 1, 2, 3.
 
 Comment joindrions-nous les fichiers suivants ?
 
@@ -67,7 +67,13 @@ Cela le divisera en différents fichiers. Par défaut, il les divisera une fois 
 
 ## Exercise
 
-Joignez deux fichiers avec un nombre de lignes différent dans chaque fichier. Que se passe-t-il ?
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la jonction et de la manipulation de fichiers texte :
+
+1. **[Commande Linux join : Jonction de fichiers](https://labex.io/fr/labs/linux-linux-join-command-file-joining-219193)** - Ce laboratoire offre une introduction directe et pratique à la commande `join`, vous permettant de vous entraîner à fusionner des lignes de deux fichiers texte triés basés sur un champ commun, comme discuté dans la leçon.
+2. **[Traitement des données des employés](https://labex.io/fr/labs/linux-processing-employees-data-388132)** - Appliquez vos connaissances de `join` et d'autres puissants utilitaires de ligne de commande Linux comme `awk` pour combiner et traiter des données provenant de plusieurs sources, simulant un scénario d'analyse de données réel.
+3. **[Contrôle de séquence et pipeline](https://labex.io/fr/labs/linux-sequence-control-and-pipeline-17994)** - Améliorez votre efficacité en ligne de commande et vos compétences en manipulation de données en apprenant à contrôler les séquences d'exécution des commandes, à utiliser les pipelines et à exploiter de puissants outils de traitement de texte, ce qui complète les capacités de combinaison de données de `join`.
+
+Ces laboratoires vous aideront à appliquer les concepts de manipulation de fichiers texte et de combinaison de données dans des scénarios réels et à renforcer votre confiance avec les outils de ligne de commande Linux.
 
 ## Quiz Question
 

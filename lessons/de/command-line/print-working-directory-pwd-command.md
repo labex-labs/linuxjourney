@@ -25,7 +25,7 @@ Alles in Linux ist eine Datei. Wenn Sie tiefer in Linux eintauchen, werden Sie d
 |-- var
 ```
 
-Der Speicherort dieser Dateien und Verzeichnisse wird als Pfade bezeichnet. Wenn Sie einen Ordner namens `home` mit einem Unterordner namens `pete` und einem weiteren Unterordner namens `Movies` hätten, würde dieser Pfad so aussehen: `/home/pete/Movies`. Ziemlich einfach, oder?
+Der Speicherort dieser Dateien und Verzeichnisse wird als Pfade bezeichnet. Wenn Sie einen Ordner namens `home` mit einem darin befindlichen Ordner namens `pete` und einem weiteren Ordner in diesem Ordner namens `Movies` hätten, würde dieser Pfad so aussehen: `/home/pete/Movies`. Ziemlich einfach, oder?
 
 Die Navigation im Dateisystem ist, ähnlich wie im echten Leben, hilfreich, wenn Sie wissen, wo Sie sind und wohin Sie gehen. Um zu sehen, wo Sie sind, können Sie den Befehl `pwd` verwenden. Dieser Befehl bedeutet "print working directory" (Arbeitsverzeichnis ausgeben) und zeigt Ihnen einfach an, in welchem Verzeichnis Sie sich befinden. Beachten Sie, dass der Pfad vom Stammverzeichnis ausgeht.
 
@@ -37,7 +37,7 @@ Wo sind Sie? Wo bin ich? Probieren Sie es aus.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateisystemnavigation und der Identifizierung Ihres aktuellen Standorts zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateisystemnavigation und der Identifizierung Ihres aktuellen Standorts zu festigen:
 
 1. **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Dieses Lab bietet einen fokussierten Überblick und die praktische Anwendung des `pwd`-Befehls, der direkt mit der Einführung der Lektion zum Auffinden Ihres aktuellen Verzeichnisses übereinstimmt.
 2. **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Stellen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse auf die Probe, indem Sie durch verschiedene Verzeichnisse navigieren und so Ihr Verständnis von Pfaden und der Dateisystemstruktur festigen.
@@ -50,4 +50,5 @@ Diese Labs helfen Ihnen, die Konzepte der Dateisystemhierarchie und -navigation 
 Wie finde ich heraus, in welchem Verzeichnis ich mich gerade befinde?
 
 ## Quiz Answer
+
 pwd

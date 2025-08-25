@@ -1,15 +1,15 @@
 ---
 index: 11
 lang: "fr"
-title: "Contrôle des Jobs"
-meta_title: "Contrôle des Jobs - Processus"
+title: "Contrôle des jobs"
+meta_title: "Contrôle des jobs - Processus"
 meta_description: "Apprenez le contrôle des jobs Linux pour gérer les processus en arrière-plan. Comprenez les commandes 'jobs', 'bg', 'fg' et 'kill' pour une utilisation efficace du shell. Commencez votre parcours Linux !"
-meta_keywords: "Contrôle des jobs Linux, processus en arrière-plan, commande jobs, commande bg, commande fg, commande kill, tutoriel Linux, Linux pour débutants"
+meta_keywords: "contrôle des jobs Linux, processus en arrière-plan, commande jobs, commande bg, commande fg, commande kill, tutoriel Linux, Linux pour débutants"
 ---
 
 ## Lesson Content
 
-Disons que vous travaillez sur une seule fenêtre de terminal et que vous exécutez une commande qui prend une éternité. Vous ne pouvez pas interagir avec le shell tant qu'elle n'est pas terminée. Cependant, nous voulons continuer à travailler sur nos machines, nous avons donc besoin que ce shell soit ouvert. Heureusement, nous pouvons contrôler la façon dont nos processus s'exécutent avec les jobs :
+Supposons que vous travailliez sur une seule fenêtre de terminal et que vous exécutiez une commande qui prend une éternité. Vous ne pouvez pas interagir avec le shell tant qu'elle n'est pas terminée. Cependant, nous voulons continuer à travailler sur nos machines, nous avons donc besoin que ce shell soit ouvert. Heureusement, nous pouvons contrôler la façon dont nos processus s'exécutent avec les jobs :
 
 ### Envoyer un job en arrière-plan
 
@@ -57,7 +57,7 @@ pete@icebox ~ $ jobs
 
 ### Déplacer un job de l'arrière-plan vers le premier plan
 
-Pour sortir un job de l'arrière-plan, spécifiez simplement l'ID du job que vous voulez. Si vous exécutez `fg` sans aucune option, il ramènera le job en arrière-plan le plus récent (le job avec le signe + à côté).
+Pour sortir un job de l'arrière-plan, spécifiez simplement l'ID du job que vous souhaitez. Si vous exécutez `fg` sans aucune option, il ramènera le job en arrière-plan le plus récent (le job avec le signe + à côté).
 
 ```bash
 fg %1
@@ -73,7 +73,11 @@ kill %1
 
 ## Exercise
 
-Déplacez des jobs entre l'arrière-plan et le premier plan.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus sous Linux :
+
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à surveiller les ressources et à terminer les processus, en abordant directement le scénario des commandes de longue durée.
+
+Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en la gestion des processus.
 
 ## Quiz Question
 

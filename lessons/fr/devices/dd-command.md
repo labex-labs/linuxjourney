@@ -9,7 +9,7 @@ meta_keywords: "commande dd, Linux dd, copier des données, imagerie disque, tut
 
 ## Lesson Content
 
-L'outil `dd` est super utile pour convertir et copier des données. Il lit l'entrée à partir d'un fichier ou d'un flux de données et l'écrit dans un fichier ou un flux de données.
+L'outil `dd` est super utile pour convertir et copier des données. Il lit l'entrée d'un fichier ou d'un flux de données et l'écrit dans un fichier ou un flux de données.
 
 Considérez la commande suivante :
 
@@ -21,10 +21,10 @@ Cette commande copie le contenu de `backup.img` vers `/dev/sdb`. Elle copiera le
 
 - `if=file` - Fichier d'entrée ; lit à partir d'un fichier au lieu de l'entrée standard.
 - `of=file` - Fichier de sortie ; écrit dans un fichier au lieu de la sortie standard.
-- `bs=bytes` - Taille de bloc ; il lit et écrit ce nombre d'octets de données à la fois. Vous pouvez utiliser différentes métriques de taille en indiquant la taille avec un `k` pour kilooctet, `m` pour mégaoctet, etc., donc 1024 octets équivaut à 1k.
+- `bs=bytes` - Taille de bloc ; il lit et écrit ce nombre d'octets de données à la fois. Vous pouvez utiliser différentes métriques de taille en désignant la taille avec un `k` pour kilooctet, `m` pour mégaoctet, etc., donc 1024 octets est 1k.
 - `count=number` - Nombre de blocs à copier.
 
-Vous verrez des commandes `dd` qui utilisent l'option `count`. Habituellement, avec `dd`, si vous voulez copier un fichier d'un mégaoctet, vous voudrez généralement que ce fichier fasse un mégaoctet une fois la copie terminée. Supposons que vous exécutiez la commande suivante :
+Vous verrez des commandes `dd` qui utilisent l'option `count`. Habituellement, avec `dd`, si vous voulez copier un fichier d'un mégaoctet, vous voudrez généralement voir ce fichier comme un mégaoctet une fois la copie terminée. Supposons que vous exécutiez la commande suivante :
 
 ```bash
 dd if=/home/pete/backup.img of=/dev/sdb bs=1M count=2
@@ -36,7 +36,12 @@ Notre fichier `backup.img` fait 10M ; cependant, nous disons dans cette commande
 
 ## Exercise
 
-Utilisez la commande `dd` pour faire une sauvegarde de votre lecteur et définissez la sortie sur un fichier `.img`.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la manipulation des données et de la gestion des disques sous Linux :
+
+1. **[Créer et Restaurer une Sauvegarde avec tar sous Linux](https://labex.io/fr/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Entraînez-vous à créer et restaurer des sauvegardes de systèmes de fichiers, une compétence essentielle liée à l'intégrité et à la récupération des données, pour laquelle `dd` peut également être utilisé.
+2. **[Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Apprenez à gérer les partitions de disque et les systèmes de fichiers, y compris la création, le formatage et le montage, qui sont des concepts fondamentaux lorsque vous travaillez avec des outils comme `dd` pour l'imagerie disque.
+
+Ces laboratoires vous aideront à appliquer les concepts de manipulation des données et d'opérations sur disque dans des scénarios réels et à renforcer votre confiance dans les tâches d'administration système.
 
 ## Quiz Question
 

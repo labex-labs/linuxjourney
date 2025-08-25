@@ -9,7 +9,7 @@ meta_keywords: "chmod Befehl, Linux Berechtigungen, Dateiberechtigungen, chmod T
 
 ## Lesson Content
 
-Das Ändern von Berechtigungen kann einfach mit dem Befehl `chmod` durchgeführt werden.
+Berechtigungen können einfach mit dem Befehl `chmod` geändert werden.
 
 Wählen Sie zuerst aus, welchen Berechtigungssatz Sie ändern möchten: Benutzer, Gruppe oder Andere. Sie können Berechtigungen mit einem `+` oder `-` hinzufügen oder entfernen. Schauen wir uns einige Beispiele an.
 
@@ -19,7 +19,7 @@ Wählen Sie zuerst aus, welchen Berechtigungssatz Sie ändern möchten: Benutzer
 chmod u+x myfile
 ```
 
-Der obige Befehl liest sich so: Ändere die Berechtigung für `myfile`, indem du das ausführbare Berechtigungsbit zum Benutzersatz hinzufügst. Der Benutzer hat nun also die Ausführungsberechtigung für diese Datei!
+Der obige Befehl liest sich wie folgt: Ändere die Berechtigung für `myfile`, indem das ausführbare Berechtigungsbit zum Benutzersatz hinzugefügt wird. So hat der Benutzer nun die Ausführungsberechtigung für diese Datei!
 
 ### Entfernen eines Berechtigungsbits von einer Datei
 
@@ -33,7 +33,7 @@ chmod u-x myfile
 chmod ug+w
 ```
 
-Es gibt eine weitere Möglichkeit, Berechtigungen im numerischen Format zu ändern. Diese Methode ermöglicht es Ihnen, Berechtigungen auf einmal zu ändern. Anstatt r, w oder x zur Darstellung von Berechtigungen zu verwenden, verwenden Sie eine numerische Darstellung für einen einzelnen Berechtigungssatz. Es ist also nicht notwendig, die Gruppe mit `g` oder den Benutzer mit `u` anzugeben.
+Es gibt eine weitere Möglichkeit, Berechtigungen im numerischen Format zu ändern. Diese Methode ermöglicht es Ihnen, Berechtigungen auf einmal zu ändern. Anstatt r, w oder x zur Darstellung von Berechtigungen zu verwenden, verwenden Sie eine numerische Darstellung für einen einzelnen Berechtigungssatz. Es ist also nicht nötig, die Gruppe mit `g` oder den Benutzer mit `u` anzugeben.
 
 Die numerischen Darstellungen sind unten aufgeführt:
 
@@ -49,7 +49,7 @@ chmod 755 myfile
 
 Können Sie erraten, welche Berechtigungen wir dieser Datei geben? Lassen Sie uns dies aufschlüsseln: `755` deckt die Berechtigungen für alle Sätze ab. Die erste Zahl (7) repräsentiert die Benutzerberechtigungen, die zweite Zahl (5) repräsentiert die Gruppenberechtigungen und die letzte 5 repräsentiert die Berechtigungen für Andere.
 
-Warten Sie mal, 7 und 5 waren oben nicht aufgeführt. Woher bekommen wir diese Zahlen? Denken Sie daran, wir kombinieren jetzt alle Berechtigungen zu einer Zahl, also müssen Sie etwas rechnen.
+Warten Sie mal, 7 und 5 waren oben nicht aufgeführt. Woher bekommen wir diese Zahlen? Denken Sie daran, wir kombinieren jetzt alle Berechtigungen zu einer Zahl, also müssen Sie etwas Mathematik anwenden.
 
 7 = 4 + 2 + 1, also ist 7 die Benutzerberechtigung, und sie hat Lese-, Schreib- und Ausführungsberechtigungen.
 
@@ -57,15 +57,20 @@ Warten Sie mal, 7 und 5 waren oben nicht aufgeführt. Woher bekommen wir diese Z
 
 5 = 4 + 1, und alle anderen Benutzer haben Lese- und Ausführungsberechtigungen.
 
-Eines ist zu beachten: Es ist keine gute Idee, Berechtigungen willkürlich zu ändern. Sie könnten möglicherweise eine sensible Datei für jedermann zur Änderung freigeben. Oftmals möchten Sie jedoch berechtigterweise Berechtigungen ändern; seien Sie einfach vorsichtig, wenn Sie den Befehl `chmod` verwenden.
+Eine Sache ist zu beachten: Es ist keine gute Idee, Berechtigungen willkürlich zu ändern. Sie könnten möglicherweise eine sensible Datei für jedermann zur Änderung freigeben. Oftmals möchten Sie jedoch berechtigterweise Berechtigungen ändern; seien Sie einfach vorsichtig, wenn Sie den Befehl `chmod` verwenden.
 
 ## Exercise
 
-Change some basic text file permissions and see the bits changing as you do an `ls -l`.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateiberechtigungen zu vertiefen:
+
+1. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie grundlegende Konzepte der Linux-Benutzer- und Gruppenverwaltung, einschließlich des Verständnisses von Dateiberechtigungen und der Manipulation von Dateibesitz. Dieses Labor bietet praktische Erfahrung in der Sicherung einer Multi-User-Linux-Umgebung.
+2. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, das Erstellen neuer Benutzerkonten, das Einrichten benutzerdefinierter Gruppen und das Verwalten von Gruppenmitgliedschaften, was oft das Festlegen geeigneter Berechtigungen beinhaltet.
+
+Diese Labs helfen Ihnen, die Konzepte von Benutzer-, Gruppen- und anderen Berechtigungen in realen Szenarien anzuwenden und Vertrauen im Umgang mit der Zugriffsverwaltung in Linux aufzubauen.
 
 ## Quiz Question
 
-Welche Zahl repräsentiert die Leseberechtigung bei Verwendung des numerischen Formats?
+Welche Zahl repräsentiert die Leseberechtigung im numerischen Format?
 
 ## Quiz Answer
 

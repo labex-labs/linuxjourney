@@ -3,7 +3,7 @@ index: 1
 lang: "ru"
 title: "Отслеживание процессов: top"
 meta_title: "Отслеживание процессов: top - Использование процессов"
-meta_description: "Узнайте, как использовать команду Linux `top` для мониторинга системных ресурсов и отслеживания процессов. Разберитесь с деталями CPU, памяти и процессов для анализа производительности."
+meta_description: "Узнайте, как использовать команду Linux `top` для мониторинга системных ресурсов и отслеживания процессов. Изучите детали ЦП, памяти и процессов для анализа производительности."
 meta_keywords: "Команда Linux top, мониторинг процессов, использование системы, производительность Linux, для начинающих, учебник, руководство"
 ---
 
@@ -29,44 +29,44 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
 
 Давайте разберем, что означает этот вывод. Вам не нужно это запоминать, но возвращайтесь к этому, когда вам понадобится справка.
 
-### 1st line: This is the same information you would see if you ran the `uptime` command (more to come)
+### 1-я строка: Это та же информация, которую вы увидели бы, если бы запустили команду `uptime` (подробнее далее)
 
 Поля слева направо:
 
-1. Current time
-2. How long the system has been running
-3. How many users are currently logged on
-4. System load average (more to come)
+1. Текущее время
+2. Время работы системы
+3. Количество текущих пользователей
+4. Средняя загрузка системы (подробнее далее)
 
-### 2nd line: Tasks that are running, sleeping, stopped, and zombied
+### 2-я строка: Задачи, которые выполняются, спят, остановлены и зомбированы
 
-### 3rd line: CPU information
+### 3-я строка: Информация о ЦП
 
-1. `us`: user CPU time - Percentage of CPU time spent running users’ processes that aren’t niced.
-2. `sy`: system CPU time - Percentage of CPU time spent running the kernel and kernel processes.
-3. `ni`: nice CPU time - Percentage of CPU time spent running niced processes.
-4. `id`: CPU idle time - Percentage of CPU time that is spent idle.
-5. `wa`: I/O wait - Percentage of CPU time that is spent waiting for I/O. If this value is low, the problem probably isn’t disk or network I/O.
-6. `hi`: hardware interrupts - Percentage of CPU time spent serving hardware interrupts.
-7. `si`: software interrupts - Percentage of CPU time spent serving software interrupts.
-8. `st`: steal time - If you are running virtual machines, this is the percentage of CPU time that was stolen from you for other tasks.
+1. `us`: время ЦП пользователя - Процент времени ЦП, затраченного на выполнение пользовательских процессов, которые не были "nice".
+2. `sy`: системное время ЦП - Процент времени ЦП, затраченного на выполнение ядра и процессов ядра.
+3. `ni`: "nice" время ЦП - Процент времени ЦП, затраченного на выполнение процессов с измененным приоритетом ("niced").
+4. `id`: время простоя ЦП - Процент времени ЦП, которое находится в простое.
+5. `wa`: ожидание ввода/вывода - Процент времени ЦП, затраченного на ожидание ввода/вывода. Если это значение низкое, проблема, вероятно, не в дисковом или сетевом вводе/выводе.
+6. `hi`: аппаратные прерывания - Процент времени ЦП, затраченного на обслуживание аппаратных прерываний.
+7. `si`: программные прерывания - Процент времени ЦП, затраченного на обслуживание программных прерываний.
+8. `st`: время кражи - Если вы используете виртуальные машины, это процент времени ЦП, которое было "украдено" у вас для других задач.
 
-### 4th and 5th line: Memory Usage and Swap Usage
+### 4-я и 5-я строки: Использование памяти и использование файла подкачки
 
-### Processes List that are Currently in Use
+### Список процессов, которые в настоящее время используются
 
-1. `PID`: ID of the process
-2. `USER`: user that is the owner of the process
-3. `PR`: Priority of process
-4. `NI`: The nice value
-5. `VIRT`: Virtual memory used by the process
-6. `RES`: Physical memory used by the process
-7. `SHR`: Shared memory of the process
-8. `S`: Indicates the status of the process: `S`=sleep, `R`=running, `Z`=zombie, `D`=uninterruptible, `T`=stopped
-9. `%CPU`: this is the percent of CPU used by this process
-10. `%MEM`: percentage of RAM used by this process
-11. `TIME+`: total time of activity of this process
-12. `COMMAND`: name of the process
+1. `PID`: ID процесса
+2. `USER`: пользователь, являющийся владельцем процесса
+3. `PR`: Приоритет процесса
+4. `NI`: Значение "nice"
+5. `VIRT`: Виртуальная память, используемая процессом
+6. `RES`: Физическая память, используемая процессом
+7. `SHR`: Общая память процесса
+8. `S`: Указывает статус процесса: `S`=sleep (сон), `R`=running (выполняется), `Z`=zombie (зомби), `D`=uninterruptible (непрерываемый), `T`=stopped (остановлен)
+9. `%CPU`: это процент ЦП, используемый этим процессом
+10. `%MEM`: процент ОЗУ, используемый этим процессом
+11. `TIME+`: общее время активности этого процесса
+12. `COMMAND`: имя процесса
 
 Вы также можете указать ID процесса, если хотите отслеживать только определенные процессы:
 
@@ -76,7 +76,13 @@ top -p 1
 
 ## Exercise
 
-Поэкспериментируйте с командой `top` и посмотрите, какие процессы используют больше всего ресурсов.
+Практика ведет к совершенству! Вот несколько практических заданий, чтобы закрепить ваше понимание использования ресурсов Linux и управления процессами:
+
+1. **[Управление и мониторинг процессов Linux](https://labex.io/ru/labs/comptia-manage-and-monitor-linux-processes-590864)** - Практикуйтесь во взаимодействии, проверке, мониторинге и завершении процессов в реальной среде Linux.
+2. **[Команда Linux top: мониторинг системы в реальном времени](https://labex.io/ru/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Научитесь использовать команду `top` для мониторинга использования ЦП, памяти и запущенных процессов в реальном времени.
+3. **[Команда Linux free: мониторинг системной памяти](https://labex.io/ru/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Научитесь использовать команду `free` для мониторинга и анализа использования системной памяти.
+
+Эти задания помогут вам применить концепции в реальных сценариях и обрести уверенность в мониторинге системы и управлении процессами.
 
 ## Quiz Question
 

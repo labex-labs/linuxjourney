@@ -9,7 +9,7 @@ meta_keywords: "cp 命令，复制文件 Linux, Linux 教程，Linux 初学者�
 
 ## Lesson Content
 
-让我们开始复制这些文件。就像在其他操作系统中复制和粘贴文件一样，shell 为我们提供了一种更简单的方法。
+让我们开始复制这些文件。与在其他操作系统中复制和粘贴文件非常相似，shell 为我们提供了一种更简单的方法来完成此操作。
 
 ```bash
 cp mycoolfile /home/pete/Documents/cooldocs
@@ -31,13 +31,13 @@ cp *.jpg /home/pete/Pictures
 
 一个有用的命令是使用 `-r` 标志；这将递归复制目录中的文件和目录。
 
-尝试对包含几个文件的目录执行 `cp` 命令到您的 `Documents` 目录。没有成功，对吗？那是因为您需要使用 `-r` 命令同时复制其中的文件和目录。
+尝试对包含几个文件的目录执行 `cp` 操作到您的 `Documents` 目录。没成功，是吗？那是因为您还需要使用 `-r` 命令复制其中的文件和目录。
 
 ```bash
 cp -r Pumpkin/ /home/pete/Documents
 ```
 
-需要注意的一点是，如果您将文件复制到具有相同文件名的目录中，则该文件将被您复制过去的内容覆盖。如果您有一个不想被意外覆盖的文件，这可不是什么好事。您可以使用 `-i` 标志（交互式）在覆盖文件之前提示您。
+需要注意的一点是，如果您将文件复制到具有相同文件名的目录中，则该文件将被您复制的内容覆盖。如果您有一个不想被意外覆盖的文件，这可不是什么好事。您可以使用 `-i` 标志（交互式）在覆盖文件之前提示您。
 
 ```bash
 cp -i mycoolfile /home/pete/Pictures
@@ -45,7 +45,7 @@ cp -i mycoolfile /home/pete/Pictures
 
 ## Exercise
 
-熟能生巧！这里有一些动手实验来巩固您对 Linux 中复制文件和目录的理解：
+熟能生巧！以下是一些动手实验，可帮助您加深对 Linux 中复制文件和目录的理解：
 
 1. **[Linux cp 命令：文件复制](https://labex.io/zh/labs/linux-linux-cp-command-file-copying-209744)** - 练习基本用法、递归复制、保留属性和使用通配符等高级选项，以高效复制文件和目录。
 2. **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用 `cp`、`mv` 和 `rm` 命令来组织项目结构、移动文件和清理不必要的目录，练习基本的 Linux 文件管理技能。

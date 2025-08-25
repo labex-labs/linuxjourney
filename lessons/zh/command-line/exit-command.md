@@ -27,7 +27,7 @@ logout
 
 ## Exercise
 
-虽然本主题没有特定的实验，但我们建议探索全面的 [Linux 学习路径](https://labex.io/zh/learn/linux) 来练习相关的 Linux 技能和概念。
+虽然本主题没有具体的实验，但我们建议探索全面的 [Linux 学习路径](https://labex.io/zh/learn/linux) 来练习相关的 Linux 技能和概念。
 
 ## Quiz Question
 

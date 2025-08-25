@@ -15,15 +15,15 @@ Puh, wir haben bisher schon einige Befehle gelernt! Wenn Sie jemals unsicher sin
 whatis cat
 ```
 
-Die Beschreibung stammt aus der Handbuchseite jedes Befehls. Wenn Sie `whatis cat` ausführen würden, sähen Sie einen kleinen Text mit einer kurzen Beschreibung.
+Die Beschreibung stammt aus der Handbuchseite jedes Befehls. Wenn Sie `whatis cat` ausführen würden, würden Sie einen kleinen Text mit einer kurzen Beschreibung sehen.
 
 ## Exercise
 
 Übung macht den Meister! Obwohl es kein spezifisches Lab für den Befehl `whatis` gibt, ist es entscheidend zu verstehen, wie man Informationen über Befehle und Dateien findet. Hier sind einige praktische Labs, um Ihr Verständnis für das Auffinden von Befehlen und Dateien in Linux zu vertiefen:
 
-1.  **[Linux which Befehl: Befehlssuche](https://labex.io/de/labs/linux-linux-which-command-command-locating-215210)** - Üben Sie die Verwendung des Befehls `which`, um ausführbare Dateien zu finden und die Befehlspriorität im PATH Ihres Systems zu verstehen.
-2.  **[Linux whereis Befehl: Datei- und Befehlssuche](https://labex.io/de/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Lernen Sie, `whereis` zu verwenden, um die Binär-, Quell- und Handbuchseiten für Befehle zu finden und so Ihr Verständnis für den Aufbau von Befehlen zu vertiefen.
-3.  **[Kritische Systemressourcen entdecken](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** - Diese Herausforderung kombiniert `which`, `whereis` und `find`, um Ihnen zu helfen, das Dateisystem effizient zu navigieren und wichtige Systemressourcen zu entdecken.
+1. **[Linux which Befehl: Befehlssuche](https://labex.io/de/labs/linux-linux-which-command-command-locating-215210)** - Üben Sie die Verwendung des Befehls `which`, um ausführbare Dateien zu finden und die Befehlspriorität im PATH Ihres Systems zu verstehen.
+2. **[Linux whereis Befehl: Datei- und Befehlssuche](https://labex.io/de/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Lernen Sie, `whereis` zu verwenden, um die Binär-, Quell- und Handbuchseiten für Befehle zu finden und so Ihr Verständnis für den Aufbau von Befehlen zu vertiefen.
+3. **[Kritische Systemressourcen entdecken](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** - Diese Herausforderung kombiniert `which`, `whereis` und `find`, um Ihnen zu helfen, das Dateisystem effizient zu navigieren und wichtige Systemressourcen zu entdecken.
 
 Diese Labs helfen Ihnen, die Konzepte der Befehls- und Dateisuche in realen Szenarien anzuwenden und Vertrauen in die wesentlichen Linux-Dienstprogramme aufzubauen.
 

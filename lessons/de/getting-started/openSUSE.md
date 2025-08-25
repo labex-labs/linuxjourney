@@ -19,7 +19,7 @@ Verwendet den RPM-Paketmanager.
 
 ### Konfigurierbarkeit
 
-openSUSE ist eine ausgezeichnete Wahl für neue Linux-Benutzer. Es bietet eine benutzerfreundliche grafische Installations-/Administrationsanwendung ([YaST](http://yast.github.io/)) und ein aufgeräumtes Basissystem, das leicht zu modifizieren ist. openSUSE enthält alles, was Sie brauchen, um das Internet sorgenfrei vor Viren/Spyware zu genießen und Ihre Kreativität auszuleben, sei es mit Ihren Fotos, Videos, Musik oder Code.
+openSUSE ist eine ausgezeichnete Wahl für neue Linux-Benutzer. Es bietet eine benutzerfreundliche grafische Installations-/Administrationsanwendung ([YaST](http://yast.github.io/)) und ein aufgeräumtes Basissystem, das leicht anzupassen ist. openSUSE enthält alles, was Sie brauchen, um das Internet sorgenfrei vor Viren/Spyware zu genießen und Ihre Kreativität auszuleben, sei es mit Ihren Fotos, Videos, Musik oder Code.
 
 ### Verwendungszwecke
 
@@ -30,7 +30,7 @@ openSUSE Leap ist voll funktionsfähig für den Einsatz auf Desktop-PCs und Lapt
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzer- und Gruppenverwaltung in Linux zu vertiefen:
 
 1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. neue Benutzerkonten erstellen, die Benutzerkontenverwaltung ändern und ein Benutzerkonto löschen.
-2. **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
+2. **[Der Joker-Trick](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
 3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Gruppenadministration aufzubauen.

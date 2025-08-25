@@ -25,19 +25,23 @@ kill -9 12445
 
 Esto ejecutará la señal `SIGKILL` y terminará el proceso.
 
-### Differences between SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP?
+### ¿Diferencias entre SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP?
 
 Todas estas señales suenan razonablemente similares, pero tienen sus diferencias.
 
-- SIGHUP - Hangup, se envía a un proceso cuando se cierra el terminal de control. Por ejemplo, si cerraste una ventana de terminal que tenía un proceso ejecutándose en ella, recibirías una señal `SIGHUP`. Así que, básicamente, te han colgado.
+- SIGHUP - Hangup (colgar), se envía a un proceso cuando se cierra el terminal de control. Por ejemplo, si cerraste una ventana de terminal que tenía un proceso ejecutándose en ella, recibirías una señal `SIGHUP`. Así que, básicamente, te han "colgado".
 - SIGINT - Es una señal de interrupción, por lo que puedes usar Ctrl-C, y el sistema intentará terminar el proceso de forma elegante.
 - SIGTERM - Termina el proceso, pero le permite hacer alguna limpieza primero.
-- SIGKILL - Termina el proceso, mátalo con fuego, no hace ninguna limpieza.
+- SIGKILL - Termina el proceso, lo termina con fuego, no hace ninguna limpieza.
 - SIGSTOP - Detiene/suspende un proceso.
 
 ## Exercise
 
-Kill some processes using different signals.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión y terminación de procesos:
+
+1. **[Gestionar y Monitorizar Procesos Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para gestionar y monitorizar procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer y segundo plano, inspeccionarlos con `ps`, monitorizar recursos con `top`, ajustar la prioridad con `renice`, y terminarlos con `kill`.
+
+Este laboratorio te ayudará a aplicar los conceptos de control y terminación de procesos en escenarios reales y a construir confianza en la gestión de procesos Linux.
 
 ## Quiz Question
 

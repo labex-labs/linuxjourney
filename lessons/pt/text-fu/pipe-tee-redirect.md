@@ -3,13 +3,13 @@ index: 4
 lang: "pt"
 title: "pipe e tee"
 meta_title: "pipe e tee - Text-Fu"
-meta_description: "Aprenda sobre pipes e o comando tee do Linux para um fluxo de dados eficiente na linha de comando. Entenda stdout, stdin e saída de arquivo. Melhore suas habilidades em Linux!"
+meta_description: "Aprenda pipes e o comando tee do Linux para um fluxo de dados eficiente na linha de comando. Entenda stdout, stdin e saída de arquivo. Melhore suas habilidades em Linux!"
 meta_keywords: "pipe Linux, comando tee, tutorial Linux, stdout, stdin, Linux para iniciantes, linha de comando, guia Linux"
 ---
 
 ## Lesson Content
 
-Vamos agora para um pouco de encanamento, não literalmente, mas de certa forma. Vamos tentar um comando:
+Vamos entrar em um pouco de encanamento agora, não realmente, mas de certa forma. Vamos tentar um comando:
 
 ```bash
 ls -la /etc
@@ -33,11 +33,13 @@ Você deve ver a saída de `ls` na sua tela, e se você abrir o arquivo `peanuts
 
 ## Exercise
 
-Try the following commands:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do redirecionamento de entrada/saída e pipelines:
 
-```bash
-ls | tee peanuts.txt banan.txt
-```
+1. **[Redirecionando Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Pratique o controle do fluxo de dados de comandos manipulando a saída padrão (stdout), erro padrão (stderr) e entrada padrão (stdin) usando operadores como `>`, `>>`, `2>` e o comando `tee`.
+2. **[Controle de Sequência e Pipeline](https://labex.io/pt/labs/linux-sequence-control-and-pipeline-17994)** - Aprenda a controlar sequências de execução de comandos, utilizar pipelines e aproveitar ferramentas poderosas de processamento de texto como `cut`, `grep`, `wc`, `sort` e `uniq`.
+3. **[Redirecionamento de Fluxo de Dados](https://labex.io/pt/labs/linux-data-stream-redirection-17995)** - Aprenda a arte do redirecionamento de fluxo no Linux, incluindo a manipulação de fluxos de entrada, saída e erro padrão, combinando saídas e utilizando `/dev/null`.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de piping e redirecionamento em cenários reais e a construir confiança na manipulação de dados na linha de comando.
 
 ## Quiz Question
 

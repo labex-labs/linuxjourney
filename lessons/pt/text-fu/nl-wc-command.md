@@ -16,7 +16,7 @@ $ wc /etc/passwd
  96     265    5925 /etc/passwd
 ```
 
-Ele exibe o número de linhas, número de palavras e número de bytes, respectivamente.
+Ele exibe o número de linhas, o número de palavras e o número de bytes, respectivamente.
 
 Para ver apenas a contagem de um determinado campo, use as opções `-l`, `-w` ou `-c`, respectivamente.
 
@@ -43,7 +43,13 @@ $ nl file1.txt
 
 ## Exercise
 
-Como você obteria a contagem total de linhas usando o comando `nl` sem pesquisar toda a saída? Dica: Use alguns dos outros comandos que você aprendeu neste curso.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da contagem de texto e numeração de linhas no Linux:
+
+1. **[Comando Linux wc: Contagem de Texto](https://labex.io/pt/labs/linux-linux-wc-command-text-counting-219200)** - Pratique a contagem de palavras, linhas e caracteres em arquivos de texto usando o comando `wc`.
+2. **[Comando Linux nl: Numeração de Linhas](https://labex.io/pt/labs/linux-linux-nl-command-line-numbering-210988)** - Aprenda a numerar linhas em arquivos de texto com o comando `nl`.
+3. **[Contagem de Palavras e Classificação](https://labex.io/pt/labs/linux-word-count-and-sorting-388125)** - Aplique seu conhecimento de `wc` para contar linhas, palavras e caracteres, e combine-o com a classificação para tarefas práticas de análise de texto.
+
+Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o processamento de texto no Linux.
 
 ## Quiz Question
 

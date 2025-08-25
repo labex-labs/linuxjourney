@@ -9,7 +9,7 @@ meta_keywords: "comando pwd, directorio Linux, directorio actual, ruta Linux, tu
 
 ## Lesson Content
 
-Todo en Linux es un archivo. A medida que te adentres en Linux, lo entenderás, pero por ahora, tenlo en cuenta. Cada archivo está organizado en un árbol de directorios jerárquico. El primer directorio en el sistema de archivos se llama apropiadamente directorio raíz. El directorio raíz tiene muchas carpetas y archivos, que pueden almacenar más carpetas y archivos, etc. Aquí hay un ejemplo de cómo se ve el árbol de directorios:
+Todo en Linux es un archivo. A medida que te adentres en Linux, entenderás esto, pero por ahora, tenlo en cuenta. Cada archivo está organizado en un árbol de directorios jerárquico. El primer directorio en el sistema de archivos se llama apropiadamente directorio raíz. El directorio raíz tiene muchas carpetas y archivos, que pueden almacenar más carpetas y archivos, etc. Aquí hay un ejemplo de cómo se ve el árbol de directorios:
 
 ```plaintext
 /
@@ -27,7 +27,7 @@ Todo en Linux es un archivo. A medida que te adentres en Linux, lo entenderás, 
 
 La ubicación de estos archivos y directorios se conoce como rutas. Si tuvieras una carpeta llamada `home` con una carpeta dentro de ella llamada `pete` y otra carpeta dentro de esa carpeta llamada `Movies`, esa ruta se vería así: `/home/pete/Movies`. Bastante simple, ¿verdad?
 
-La navegación del sistema de archivos, al igual que en la vida real, es útil si sabes dónde estás y adónde vas. Para ver dónde estás, puedes usar el comando `pwd`. Este comando significa "print working directory" (imprimir directorio de trabajo) y simplemente te muestra en qué directorio te encuentras. Ten en cuenta que la ruta se origina en el directorio raíz.
+La navegación del sistema de archivos, al igual que en la vida real, es útil si sabes dónde estás y a dónde vas. Para ver dónde estás, puedes usar el comando `pwd`. Este comando significa "print working directory" (imprimir directorio de trabajo) y simplemente te muestra en qué directorio te encuentras. Ten en cuenta que la ruta se origina en el directorio raíz.
 
 ```bash
 pwd

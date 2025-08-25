@@ -29,9 +29,9 @@ Ideal para escritorio y portátil.
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión de archivos y directorios en Linux:
 
-1.  **[Operaciones básicas de archivos](https://labex.io/es/labs/linux-basic-files-operations-270248)** - Practica listar archivos, cambiar directorios y mover/copiar/eliminar archivos y directorios en un entorno Linux real.
-2.  **[Archivos y directorios](https://labex.io/es/labs/linux-files-and-directories-270246)** - Aprende a navegar por el sistema de archivos, copiar, mover y eliminar archivos y directorios usando comandos básicos de Linux.
-3.  **[Operaciones básicas de archivos en Linux](https://labex.io/es/labs/linux-basic-file-operations-in-linux-18001)** - Aprende comandos y conceptos esenciales de Linux para navegar por el sistema de archivos, gestionar archivos y directorios, y usar atajos de línea de comandos.
+1. **[Operaciones básicas de archivos](https://labex.io/es/labs/linux-basic-files-operations-270248)** - Practica listar archivos, cambiar directorios y mover/copiar/eliminar archivos y directorios en un entorno Linux real.
+2. **[Archivos y directorios](https://labex.io/es/labs/linux-files-and-directories-270246)** - Aprende a navegar por el sistema de archivos, copiar, mover y eliminar archivos y directorios usando comandos básicos de Linux.
+3. **[Operaciones básicas de archivos en Linux](https://labex.io/es/labs/linux-basic-file-operations-in-linux-18001)** - Aprende comandos y conceptos esenciales de Linux para navegar por el sistema de archivos, gestionar archivos y directorios, y usar atajos de línea de comandos.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las operaciones del sistema de archivos de Linux.
 

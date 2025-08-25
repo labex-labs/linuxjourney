@@ -20,43 +20,48 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 Die Felder sind wie folgt:
 
-### procs
+### Prozesse
 
-- r - Anzahl der Prozesse für die Laufzeit
-- b - Anzahl der Prozesse im ununterbrechbaren Schlafzustand
+- r – Anzahl der Prozesse für die Laufzeit
+- b – Anzahl der Prozesse im ununterbrechbaren Schlafzustand
 
-### memory
+### Speicher
 
-- swpd - Menge des verwendeten virtuellen Speichers
-- free - Menge des freien Speichers
-- buff - Menge des als Puffer verwendeten Speichers
-- cache - Menge des als Cache verwendeten Speichers
+- swpd – Genutzter virtueller Speicher
+- free – Freier Speicher
+- buff – Als Puffer genutzter Speicher
+- cache – Als Cache genutzter Speicher
 
-### swap
+### Swap
 
-- si - Menge des von der Festplatte eingelagerten Speichers (swapped in)
-- so - Menge des auf die Festplatte ausgelagerten Speichers (swapped out)
+- si – Von der Festplatte eingelagerter Speicher
+- so – Auf die Festplatte ausgelagerter Speicher
 
-### io
+### I/O
 
-- bi - Menge der von einem Blockgerät empfangenen Blöcke
-- bo - Menge der an ein Blockgerät gesendeten Blöcke
+- bi – Anzahl der von einem Blockgerät empfangenen Blöcke
+- bo – Anzahl der an ein Blockgerät gesendeten Blöcke
 
-### system
+### System
 
-- in - Anzahl der Interrupts pro Sekunde
-- cs - Anzahl der Kontextwechsel pro Sekunde
+- in – Anzahl der Interrupts pro Sekunde
+- cs – Anzahl der Kontextwechsel pro Sekunde
 
-### cpu
+### CPU
 
-- us - Zeit, die im Benutzer-Modus verbracht wurde
-- sy - Zeit, die im Kernel-Modus verbracht wurde
-- id - Zeit, die im Leerlauf verbracht wurde
-- wa - Zeit, die auf I/O gewartet wurde
+- us – Zeit im Benutzerbereich
+- sy – Zeit im Kernelbereich
+- id – Zeit im Leerlauf
+- wa – Zeit, die auf I/O gewartet wurde
 
 ## Exercise
 
-Betrachten Sie Ihre Speichernutzung mit vmstat.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der System- und Speicherüberwachung zu vertiefen:
+
+1. **[Linux free Befehl: System-Speicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, die System-Speichernutzung zu überwachen und zu analysieren, verschiedene Anzeigeformate und den gesamten Speicherverbrauch zu verstehen.
+2. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, die Systemleistung in Echtzeit zu überwachen, einschließlich Prozesse, CPU- und Speichernutzung, unter Verwendung verschiedener Optionen zum Sortieren und Filtern.
+
+Diese Übungen helfen Ihnen, die Konzepte der Systemressourcenüberwachung in realen Szenarien anzuwenden und Vertrauen in die Analyse der Linux-Systemleistung aufzubauen.
 
 ## Quiz Question
 

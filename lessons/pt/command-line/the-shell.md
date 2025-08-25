@@ -4,7 +4,7 @@ lang: "pt"
 title: "O Shell"
 meta_title: "O Shell - Linha de Comando"
 meta_description: "Aprenda sobre o shell Linux, Bash e comandos básicos como 'echo'. Entenda os prompts do shell e comece sua jornada Linux com este guia amigável para iniciantes."
-meta_keywords: "shell Linux, Bash, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt de shell, guia Linux"
+meta_keywords: "shell Linux, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt de shell, guia Linux"
 ---
 
 ## Lesson Content
@@ -13,7 +13,7 @@ O mundo é seu, ou melhor, o shell é seu. O que é o shell? O shell é basicame
 
 Neste curso, usaremos o programa shell Bash (Bourne Again Shell). Quase todas as distribuições Linux terão o shell Bash como padrão. Existem outros shells disponíveis, como `ksh`, `zsh` e `tsch`, mas não abordaremos nenhum deles.
 
-Vamos direto ao assunto! Dependendo da distribuição, seu prompt de shell pode mudar, mas na maioria das vezes, ele deve seguir o seguinte formato:
+Vamos direto ao ponto! Dependendo da distribuição, seu prompt de shell pode mudar, mas na maioria das vezes, ele deve seguir o seguinte formato:
 
 ```plaintext
 username@hostname:current_directory

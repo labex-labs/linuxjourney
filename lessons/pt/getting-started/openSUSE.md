@@ -11,7 +11,7 @@ meta_keywords: "openSUSE, distribuição Linux, RPM, YaST, Linux para iniciantes
 
 ### Visão Geral
 
-openSUSE Linux é criado pelo Projeto openSUSE, uma comunidade que promove o uso do Linux em todos os lugares, trabalhando juntos de forma aberta, transparente e amigável como parte da comunidade mundial de Software Livre e de Código Aberto. openSUSE é a segunda distribuição Linux mais antiga ainda em execução e compartilha seu sistema base com os produtos SUSE Linux Enterprise, premiados da SUSE.
+openSUSE Linux é criado pelo Projeto openSUSE, uma comunidade que promove o uso do Linux em todos os lugares, trabalhando em conjunto de forma aberta, transparente e amigável como parte da comunidade mundial de Software Livre e de Código Aberto. openSUSE é a segunda distribuição Linux mais antiga ainda em execução e compartilha sua base de sistema com os produtos SUSE Linux Enterprise, premiados da SUSE.
 
 ### Gerenciamento de Pacotes
 

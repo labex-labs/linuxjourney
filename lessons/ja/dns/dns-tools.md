@@ -3,7 +3,7 @@ index: 6
 lang: "ja"
 title: "DNS ツール"
 meta_title: "DNS ツール - DNS"
-meta_description: "Linux での DNS クエリとトラブルシューティングのために、nslookup と dig コマンドを学びましょう。これらの必須 DNS ツールの使い方を、初心者向けのガイドで理解してください。"
+meta_description: "Linux で DNS クエリとトラブルシューティングのために nslookup と dig コマンドを学びましょう。これらの必須 DNS ツールを初心者向けのガイドで使う方法を理解してください。"
 meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting, Linux tutorial, beginner Linux"
 ---
 
@@ -11,7 +11,7 @@ meta_keywords: "nslookup, dig command, DNS tools, Linux DNS, DNS troubleshooting
 
 ### nslookup
 
-「name server lookup」ツールは、ネームサーバーにクエリを実行してリソースレコードに関する情報を見つけるために使用されます。google.com のネームサーバーがどこにあるかを見てみましょう。
+「ネームサーバー検索」ツールは、ネームサーバーにクエリを実行してリソースレコードに関する情報を見つけるために使用されます。google.com のネームサーバーがどこにあるか調べてみましょう。
 
 ```bash
 pete@icebox:~$ nslookup www.google.com
@@ -25,7 +25,7 @@ Address: 216.58.192.4
 
 ### dig
 
-Dig (domain information groper) は、DNS ネームサーバーに関する情報を取得するための強力なツールです。nslookup よりも柔軟で、DNS の問題をトラブルシューティングするのに優れています。
+Dig (domain information groper) は、DNS ネームサーバーに関する情報を取得するための強力なツールです。nslookup よりも柔軟で、DNS のトラブルシューティングに非常に役立ちます。
 
 ```bash
 pete@icebox:~$ dig www.google.com
@@ -56,7 +56,11 @@ www.google.com.         5       IN      A       74.125.239.148
 
 ## Exercise
 
-dig の manpage を読んでください。
+練習は完璧をもたらします！ネットワークインターフェース設定の理解を深めるための実践的なラボです。
+
+1. **[Linux で ethtool を使ってネットワークインターフェース設定を調べる](https://labex.io/ja/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` コマンドを使用して、ネットワークインターフェース設定を調べ、管理する方法を学びます。これには、インターフェースの速度とデュプレックスの表示と設定、物理層のネットワーク問題のトラブルシューティングのためのリンクモードの分析が含まれます。
+
+このラボは、実際のシナリオで概念を適用し、ネットワークインターフェースの管理に自信をつけるのに役立ちます。
 
 ## Quiz Question
 

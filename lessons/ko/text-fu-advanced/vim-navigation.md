@@ -2,7 +2,7 @@
 index: 5
 lang: "ko"
 title: "Vim 탐색"
-meta_title: "Vim 탐색 - 고급 Text-Fu"
+meta_title: "Vim 탐색 - 고급 텍스트 기술"
 meta_description: "h, j, k, l 키를 사용하여 Vim 탐색의 기본 사항을 배웁니다. 초보자를 위한 필수 Vim 이동을 이해하고 Linux 명령줄 기술을 향상시키세요."
 meta_keywords: "Vim 탐색, Vim 튜토리얼, Linux Vim, Vim 이동, Vim 기본, 초보자 Vim, Linux 텍스트 편집기, Vim 가이드"
 ---
@@ -18,7 +18,11 @@ meta_keywords: "Vim 탐색, Vim 튜토리얼, Linux Vim, Vim 이동, Vim 기본,
 
 ## Exercise
 
-이 수업에는 연습 문제가 없습니다.
+연습이 완벽을 만듭니다! 다음은 텍스트 편집기 탐색 및 사용에 대한 이해를 강화하기 위한 실습 랩입니다:
+
+1. **[Vim 및 Nano 로 Linux 에서 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 실제 Linux 환경에서 Vim 과 Nano 를 사용하여 파일 생성, 텍스트 편집, 파일 저장 및 탐색을 연습합니다.
+
+이 랩은 실제 시나리오에 개념을 적용하고 Linux 에서 텍스트 편집에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

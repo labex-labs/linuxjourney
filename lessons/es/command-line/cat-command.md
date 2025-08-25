@@ -9,7 +9,7 @@ meta_keywords: "comando cat, cat de Linux, ver contenido de archivos, concatenar
 
 ## Lesson Content
 
-Casi hemos terminado de navegar por los archivos, pero primero, aprendamos a leer un archivo. Un comando simple de usar es el comando `cat`, abreviatura de concatenar. No solo muestra el contenido de los archivos, sino que también puede combinar múltiples archivos y mostrar su salida.
+Casi hemos terminado de navegar por los archivos, pero primero, aprendamos a leer un archivo. Un comando simple de usar es el comando `cat`, abreviatura de concatenar. No solo muestra el contenido de los archivos, sino que también puede combinar varios archivos y mostrar su salida.
 
 ```bash
 cat dogfile birdfile

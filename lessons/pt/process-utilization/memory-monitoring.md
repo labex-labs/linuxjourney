@@ -23,9 +23,9 @@ Os campos são os seguintes:
 ### procs
 
 - r - Número de processos para tempo de execução
-- b - Número de processos em suspensão ininterrupta
+- b - Número de processos em sono ininterrupto
 
-### memory
+### memória
 
 - swpd - Quantidade de memória virtual usada
 - free - Quantidade de memória livre
@@ -34,29 +34,34 @@ Os campos são os seguintes:
 
 ### swap
 
-- si - Quantidade de memória trocada do disco (swapped in)
-- so - Quantidade de memória trocada para o disco (swapped out)
+- si - Quantidade de memória trocada do disco
+- so - Quantidade de memória trocada para o disco
 
 ### io
 
 - bi - Quantidade de blocos recebidos de um dispositivo de bloco
 - bo - Quantidade de blocos enviados para um dispositivo de bloco
 
-### system
+### sistema
 
 - in - Número de interrupções por segundo
 - cs - Número de trocas de contexto por segundo
 
 ### cpu
 
-- us - Tempo gasto em user time
-- sy - Tempo gasto em kernel time
+- us - Tempo gasto em tempo de usuário
+- sy - Tempo gasto em tempo de kernel
 - id - Tempo gasto ocioso
 - wa - Tempo gasto esperando por IO
 
 ## Exercise
 
-Observe o uso da sua memória com o vmstat.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do monitoramento de sistema e memória:
+
+1. **[Comando Linux free: Monitorando a Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorar e analisar o uso da memória do sistema, compreendendo vários formatos de exibição e o consumo total de memória.
+2. **[Comando Linux top: Monitoramento do Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a monitorar o desempenho do sistema em tempo real, incluindo processos, CPU e uso de memória, usando várias opções para classificação e filtragem.
+
+Esses laboratórios o ajudarão a aplicar os conceitos de monitoramento de recursos do sistema em cenários reais e a construir confiança na análise do desempenho do sistema Linux.
 
 ## Quiz Question
 

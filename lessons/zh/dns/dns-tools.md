@@ -3,7 +3,7 @@ index: 6
 lang: "zh"
 title: "DNS 工具"
 meta_title: "DNS 工具 - DNS"
-meta_description: "学习 nslookup 和 dig 命令，用于在 Linux 上进行 DNS 查询和故障排除。通过我们为初学者提供的指南，了解如何使用这些基本的 DNS 工具。"
+meta_description: "学习 nslookup 和 dig 命令，用于 Linux 上的 DNS 查询和故障排除。通过我们为初学者提供的指南，了解如何使用这些基本的 DNS 工具。"
 meta_keywords: "nslookup, dig 命令，DNS 工具，Linux DNS, DNS 故障排除，Linux 教程，Linux 初学者"
 ---
 
@@ -56,11 +56,15 @@ www.google.com.         5       IN      A       74.125.239.148
 
 ## Exercise
 
-阅读 dig 的手册页。
+熟能生巧！这是一个动手实验，旨在巩固您对网络接口设置的理解：
+
+1. **[使用 Linux 中的 ethtool 检查网络接口设置](https://labex.io/zh/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - 学习使用 `ethtool` 命令检查和管理网络接口设置，包括查看和设置接口速度和双工模式，以及分析链路模式以排除物理层网络问题。
+
+本实验将帮助您在实际场景中应用这些概念，并增强管理网络接口的信心。
 
 ## Quiz Question
 
-哪个工具用于获取有关 DNS 名称服务器的详细信息？
+什么工具用于获取有关 DNS 名称服务器的详细信息？
 
 ## Quiz Answer
 

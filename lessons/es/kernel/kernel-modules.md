@@ -9,17 +9,17 @@ meta_keywords: "módulos del kernel de Linux, modprobe, lsmod, gestión del kern
 
 ## Lesson Content
 
-Digamos que tengo un coche increíble; invierto mucho tiempo y dinero en él. Le añado un alerón, un enganche, un portabicicletas y otras cosas aleatorias. Estos componentes no cambian la funcionalidad principal del coche, y puedo quitarlos y ponerlos muy fácilmente. El kernel utiliza el mismo concepto con los módulos del kernel.
+Digamos que tengo un coche genial; invierto mucho tiempo y dinero en él. Le añado un alerón, un enganche, un portabicicletas y otras cosas aleatorias. Estos componentes no cambian la funcionalidad principal del coche, y puedo quitarlos y ponerlos muy fácilmente. El kernel utiliza el mismo concepto con los módulos del kernel.
 
-El kernel en sí mismo es una pieza de software monolítica. Cuando queremos añadir soporte para un nuevo tipo de teclado, no escribimos este código directamente en el código del kernel. Al igual que no fusionaríamos un portabicicletas a nuestro coche (bueno, quizás algunas personas lo harían). Los módulos del kernel son piezas de código que pueden cargarse y descargarse en el kernel bajo demanda. Nos permiten extender la funcionalidad del kernel sin añadir realmente al código central del kernel. También podemos añadir módulos y no tener que reiniciar el sistema (en la mayoría de los casos).
+El kernel en sí mismo es una pieza de software monolítica. Cuando queremos añadir soporte para un nuevo tipo de teclado, no escribimos este código directamente en el código del kernel. Al igual que no fusionaríamos un portabicicletas a nuestro coche (bueno, quizás algunas personas sí lo harían). Los módulos del kernel son piezas de código que pueden cargarse y descargarse en el kernel bajo demanda. Nos permiten extender la funcionalidad del kernel sin añadir realmente al código central del kernel. También podemos añadir módulos y no tener que reiniciar el sistema (en la mayoría de los casos).
 
-### View a list of currently loaded modules
+### Ver una lista de módulos cargados actualmente
 
 ```bash
 lsmod
 ```
 
-### Load a module
+### Cargar un módulo
 
 ```bash
 sudo modprobe bluetooth
@@ -27,13 +27,13 @@ sudo modprobe bluetooth
 
 `modprobe` carga el módulo desde `/lib/modules/(kernel version)/kernel/drivers`. Los módulos del kernel también pueden tener dependencias; `modprobe` carga las dependencias de nuestro módulo si aún no están cargadas.
 
-### Remove a module
+### Eliminar un módulo
 
 ```bash
 sudo modprobe -r bluetooth
 ```
 
-### Load on bootup
+### Cargar al inicio
 
 También puedes cargar módulos durante el arranque del sistema, en lugar de cargarlos temporalmente con `modprobe` (que se descargarán al reiniciar). Simplemente modifica el directorio `/etc/modprobe.d` y añade un archivo de configuración en él de la siguiente manera:
 
@@ -43,9 +43,9 @@ pete@icebox:~$ /etc/modprobe.d/peanutbutter.conf
 options peanut_butter type=almond
 ```
 
-Un ejemplo un tanto extravagante, pero si tuvieras un módulo llamado `peanut_butter` y quisieras añadir un parámetro del kernel para `type=almond`, puedes hacer que se cargue al inicio usando este archivo de configuración. Además, ten en cuenta que los módulos del kernel tienen sus propios parámetros del kernel, por lo que querrás leer específicamente sobre el módulo para obtener más información.
+Un ejemplo un poco extravagante, pero si tuvieras un módulo llamado `peanut_butter` y quisieras añadir un parámetro del kernel para `type=almond`, puedes hacer que se cargue al inicio usando este archivo de configuración. Además, ten en cuenta que los módulos del kernel tienen sus propios parámetros del kernel, por lo que querrás leer sobre el módulo específicamente para obtener más información.
 
-### Do not load on bootup
+### No cargar al inicio
 
 También puedes asegurarte de que un módulo no se cargue al inicio añadiendo un archivo de configuración de la siguiente manera:
 
@@ -57,7 +57,9 @@ blacklist peanut_butter
 
 ## Exercise
 
-Descarga tu módulo Bluetooth con `modprobe` y mira qué sucede. ¿Cómo solucionarás esto?
+¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de los módulos del kernel de Linux:
+
+1. **[Administrar módulos del kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practica listar, inspeccionar, cargar y descargar módulos del kernel, y configurarlos para que se carguen automáticamente al inicio. Este laboratorio te ayudará a aplicar los conceptos en un escenario real y a ganar confianza con la gestión de módulos del kernel.
 
 ## Quiz Question
 

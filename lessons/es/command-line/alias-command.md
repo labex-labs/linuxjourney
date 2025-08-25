@@ -9,13 +9,13 @@ meta_keywords: "alias de Linux, alias de bash, comando unalias, .bashrc, tutoria
 
 ## Lesson Content
 
-A veces, escribir comandos puede volverse muy repetitivo, o si necesitas escribir un comando largo muchas veces, es mejor tener un alias que puedas usar para eso. Para crear un alias para un comando, simplemente especificas un nombre de alias y lo asignas al comando.
+A veces, escribir comandos puede volverse muy repetitivo, o si necesitas escribir un comando largo muchas veces, lo mejor es tener un alias que puedas usar para ello. Para crear un alias para un comando, simplemente especificas un nombre de alias y lo asignas al comando.
 
 ```bash
 alias foobar='ls -la'
 ```
 
-Ahora, en lugar de escribir `ls -la`, puedes escribir `foobar`, y ejecutará ese comando, bastante ingenioso. Ten en cuenta que este comando no guardará tu alias después de reiniciar, por lo que deberás agregar un alias permanente en:
+Ahora, en lugar de escribir `ls -la`, puedes escribir `foobar`, y ejecutará ese comando, algo bastante ingenioso. Ten en cuenta que este comando no guardará tu alias después de reiniciar, por lo que deberás agregar un alias permanente en:
 
 ```plaintext
 ~/.bashrc
@@ -35,7 +35,7 @@ Aunque no hay laboratorios específicos para este tema, recomendamos explorar la
 
 ## Quiz Question
 
-¿Qué comando se usa para crear un alias?
+¿Qué comando se utiliza para crear un alias?
 
 ## Quiz Answer
 

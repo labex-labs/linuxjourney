@@ -2,24 +2,24 @@
 index: 9
 lang: "es"
 title: "Arch Linux"
-meta_title: "Arch Linux - Primeros pasos"
-meta_description: "Aprende sobre Arch Linux, su modelo de lanzamiento continuo y el gestor de paquetes Pacman. Comprende por qué Arch es excelente para principiantes y usuarios avanzados que buscan control."
+meta_title: "Arch Linux - Primeros Pasos"
+meta_description: "Aprende sobre Arch Linux, su modelo de lanzamiento continuo y el gestor de paquetes Pacman. Entiende por qué Arch es excelente para principiantes y usuarios avanzados que buscan control."
 meta_keywords: "Arch Linux, Pacman, distribución de Linux, rolling release, tutorial de Linux, guía para principiantes, sistema operativo ligero"
 ---
 
 ## Lesson Content
 
-### Descripción general
+### Resumen
 
-Arch es una distribución de Linux ligera y flexible impulsada al 100% por la comunidad. Similar a Debian, Arch utiliza un modelo de lanzamiento continuo (rolling release), por lo que las actualizaciones incrementales eventualmente se convierten en la versión estable. Realmente necesitas ensuciarte las manos para comprender el sistema y sus funciones, pero a cambio, obtienes un control completo y total de tu sistema.
+Arch es una distribución de Linux ligera y flexible impulsada al 100% por la comunidad. Similar a Debian, Arch utiliza un modelo de lanzamiento continuo (rolling release), por lo que las actualizaciones incrementales eventualmente se convierten en la versión estable. Realmente necesitas ensuciarte las manos para entender el sistema y sus funciones, pero a cambio, obtienes un control completo y total de tu sistema.
 
-### Gestión de paquetes
+### Gestión de Paquetes
 
 Utiliza su propio gestor de paquetes, Pacman, para instalar, actualizar y gestionar paquetes.
 
 ### Configurabilidad
 
-Si quieres un sistema operativo ligero y realmente quieres entender Linux, ¡usa Arch! Hay una pequeña curva de aprendizaje, pero para los usuarios hardcore de Linux, esta es una excelente opción.
+Si quieres un sistema operativo ligero y realmente quieres entender Linux, ¡usa Arch! Hay una pequeña curva de aprendizaje, pero para los usuarios hardcore de Linux, esta es una gran elección.
 
 ### Usos
 

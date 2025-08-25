@@ -25,9 +25,9 @@ Dann, im Jahr 1991, begann ein junger Mann namens Linus Torvalds mit der Entwick
 
 Übung macht den Meister! Da diese Lektion dich in die Welt von Linux einführt, ist die praktische Arbeit mit der Kommandozeile der beste Weg, um dein Verständnis zu festigen und Vertrauen aufzubauen. Hier sind einige praktische Labs, die dir helfen, deine ersten Schritte zu machen:
 
-1.  **[Erste Schritte mit Linux](https://labex.io/de/labs/linux-getting-started-with-linux-446315)** - Beginne deine Linux-Reise, indem du grundlegende Terminalbefehle wie `echo`, `date` und grundlegende Berechnungen lernst. Perfekt für absolute Anfänger.
-2.  **[Dein erstes Linux-Lab](https://labex.io/de/labs/linux-your-first-linux-lab-270253)** - Dieses einführende Lab führt dich durch das klassische „Hello, World!“-Programm in Linux und lehrt dich einige grundlegende Befehle.
-3.  **[Personalisierte Terminal-Begrüßung erstellen](https://labex.io/de/labs/linux-create-personalized-terminal-greeting-446322)** - Eine schnelle und unterhaltsame Herausforderung, um grundlegende Linux-Terminalbefehle zu verwenden und eine ansprechende Willkommensnachricht zu erstellen.
+1. **[Erste Schritte mit Linux](https://labex.io/de/labs/linux-getting-started-with-linux-446315)** - Beginne deine Linux-Reise, indem du grundlegende Terminalbefehle wie `echo`, `date` und grundlegende Berechnungen lernst. Perfekt für absolute Anfänger.
+2. **[Dein erstes Linux-Lab](https://labex.io/de/labs/linux-your-first-linux-lab-270253)** - Dieses einführende Lab führt dich durch das klassische „Hello, World!“-Programm in Linux und lehrt dich einige grundlegende Befehle.
+3. **[Personalisierte Terminal-Begrüßung erstellen](https://labex.io/de/labs/linux-create-personalized-terminal-greeting-446322)** - Eine schnelle und unterhaltsame Herausforderung, um grundlegende Linux-Terminalbefehle zu verwenden und eine ansprechende Willkommensnachricht zu erstellen.
 
 Diese Labs helfen dir, die grundlegenden Konzepte in einer echten Linux-Umgebung anzuwenden und Vertrauen in die Kommandozeile aufzubauen.
 

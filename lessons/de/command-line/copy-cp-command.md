@@ -4,7 +4,7 @@ lang: "de"
 title: "cp (Kopieren)"
 meta_title: "cp (Kopieren) - Befehlszeile"
 meta_description: "Erfahren Sie, wie Sie den Linux-Befehl cp zum Kopieren von Dateien und Verzeichnissen verwenden. Verstehen Sie Optionen wie -r und Wildcards. Beginnen Sie noch heute Ihre Linux-Reise!"
-meta_keywords: "cp Befehl, Dateien kopieren Linux, Linux Tutorial, Linux für Anfänger, cp -r, Linux Wildcards, Linux Guide"
+meta_keywords: "cp Befehl, Dateien kopieren Linux, Linux Tutorial, Linux für Anfänger, cp -r, Linux Wildcards, Linux Anleitung"
 ---
 
 ## Lesson Content
@@ -17,9 +17,9 @@ cp mycoolfile /home/pete/Documents/cooldocs
 
 `mycoolfile` ist die Datei, die Sie kopieren möchten, und `/home/pete/Documents/cooldocs` ist der Ort, an den Sie die Datei kopieren.
 
-Sie können mehrere Dateien und Verzeichnisse kopieren sowie Wildcards verwenden. Eine Wildcard ist ein Zeichen, das für eine musterbasierte Auswahl eingesetzt werden kann, was Ihnen mehr Flexibilität bei Suchen bietet. Sie können Wildcards in jedem Befehl für mehr Flexibilität verwenden.
+Sie können mehrere Dateien und Verzeichnisse kopieren sowie Wildcards verwenden. Ein Wildcard ist ein Zeichen, das durch eine musterbasierte Auswahl ersetzt werden kann, was Ihnen mehr Flexibilität bei Suchen bietet. Sie können Wildcards in jedem Befehl für mehr Flexibilität verwenden.
 
-- `*` die Wildcard der Wildcards, sie wird verwendet, um alle einzelnen Zeichen oder beliebige Zeichenketten darzustellen.
+- `*` der Wildcard der Wildcards, er wird verwendet, um alle einzelnen Zeichen oder beliebige Zeichenketten darzustellen.
 - `?` wird verwendet, um ein Zeichen darzustellen
 - `[]` wird verwendet, um jedes Zeichen innerhalb der Klammern darzustellen
 
@@ -48,9 +48,9 @@ cp -i mycoolfile /home/pete/Pictures
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Kopierens von Dateien und Verzeichnissen in Linux zu vertiefen:
 
 1. **[Linux cp Command: File Copying](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)** – Üben Sie die grundlegende Verwendung, erweiterte Optionen wie rekursives Kopieren, Beibehalten von Attributen und die Verwendung von Wildcards, um Dateien und Verzeichnisse effizient zu kopieren.
-2. **[Organizing Files and Directories](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** – Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
+2. **[Organizing Files and Directories](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** – Üben Sie grundlegende Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen beim Kopieren und Verwalten von Dateien in Linux aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Dateikopierung und -verwaltung unter Linux aufzubauen.
 
 ## Quiz Question
 

@@ -2,8 +2,8 @@
 index: 6
 lang: "pt"
 title: "mount e umount"
-meta_title: "mount e umount - O Filesystem"
-meta_description: "Aprenda a usar os comandos Linux mount e umount para gerenciar sistemas de arquivos. Entenda a montagem, desmontagem de dispositivos e UUIDs para iniciantes."
+meta_title: "mount e umount - O Sistema de Arquivos"
+meta_description: "Aprenda a usar os comandos mount e umount do Linux para gerenciar sistemas de arquivos. Entenda a montagem, desmontagem de dispositivos e UUIDs para iniciantes."
 meta_keywords: "Linux mount, comando umount, montar sistema de arquivos, Linux UUID, Linux para iniciantes, tutorial Linux, ponto de montagem, guia Linux"
 ---
 
@@ -17,7 +17,7 @@ Primeiro, crie o ponto de montagem; em nosso caso, **mkdir /mydrive**.
 sudo mount -t ext4 /dev/sdb2 /mydrive
 ```
 
-Simples assim! Agora, quando vamos para /mydrive, podemos ver o conteúdo do nosso sistema de arquivos. O **-t** especifica o tipo de sistema de arquivos, então temos o local do dispositivo, e depois o ponto de montagem.
+Simples assim! Agora, quando vamos para /mydrive, podemos ver o conteúdo do nosso sistema de arquivos. O **-t** especifica o tipo de sistema de arquivos, depois temos o local do dispositivo e, em seguida, o ponto de montagem.
 
 Para desmontar um dispositivo de um ponto de montagem:
 
@@ -31,7 +31,7 @@ ou
 sudo umount /dev/sdb2
 ```
 
-Lembre-se de que o kernel nomeia os dispositivos na ordem em que os encontra. E se o nome do nosso dispositivo mudar por algum motivo depois de montá-lo? Bem, felizmente, você pode usar o ID universalmente único (UUID) de um dispositivo em vez de um nome.
+Lembre-se de que o kernel nomeia os dispositivos na ordem em que os encontra. E se o nome do nosso dispositivo mudar por algum motivo depois de montá-lo? Bem, felizmente, você pode usar o ID universalmente exclusivo (UUID) de um dispositivo em vez de um nome.
 
 Para visualizar os UUIDs em seu sistema para dispositivos de bloco:
 
@@ -52,7 +52,11 @@ Na maioria das vezes, você não precisará montar dispositivos via seus UUIDs; 
 
 ## Exercise
 
-Look at the manpage for `mount` and `umount` and see what other options you can use.
+A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão sobre o gerenciamento de sistemas de arquivos Linux:
+
+- **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Neste laboratório, você aprenderá a gerenciar partições de disco e sistemas de arquivos no Linux. Você usará o fdisk para criar uma nova partição, formatá-la com ext4, montá-la, configurar a montagem persistente em /etc/fstab e criar uma partição swap, tudo em um disco virtual secundário seguro.
+
+Este laboratório o ajudará a aplicar os conceitos de montagem e desmontagem em cenários reais e a construir confiança com o gerenciamento de sistemas de arquivos.
 
 ## Quiz Question
 

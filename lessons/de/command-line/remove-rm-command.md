@@ -15,7 +15,7 @@ Ich denke, wir haben jetzt zu viele Dateien; lassen Sie uns einige entfernen. Um
 rm file1
 ```
 
-Seien Sie vorsichtig bei der Verwendung von `rm`; es gibt keinen magischen Papierkorb, aus dem Sie entfernte Dateien wiederherstellen können. Sobald sie weg sind, sind sie für immer weg, seien Sie also vorsichtig.
+Seien Sie vorsichtig bei der Verwendung von `rm`; es gibt keinen magischen Papierkorb, aus dem Sie entfernte Dateien wiederherstellen können. Sobald sie weg sind, sind sie für immer weg, also seien Sie vorsichtig.
 
 Glücklicherweise gibt es einige Sicherheitsmaßnahmen, sodass der durchschnittliche Benutzer nicht einfach eine Reihe wichtiger Dateien entfernen kann. Schreibgeschützte Dateien werden Sie vor dem Löschen zur Bestätigung auffordern. Wenn ein Verzeichnis schreibgeschützt ist, wird es ebenfalls nicht einfach entfernt.
 

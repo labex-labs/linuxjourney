@@ -9,7 +9,7 @@ meta_keywords: "autenticación Linux, auth.log, registro Linux, inicio de sesió
 
 ## Lesson Content
 
-La autenticación de registros puede ser muy útil si tienes problemas para iniciar sesión.
+La autenticación de registro puede ser muy útil si tienes problemas para iniciar sesión.
 
 ### /var/log/auth.log
 
@@ -23,7 +23,11 @@ Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for us
 
 ## Exercise
 
-Realiza algunos intentos de inicio de sesión fallidos y luego uno exitoso. Después, examina tu archivo `/var/log/auth.log` para ver qué ocurrió.
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la autenticación de usuarios y la gestión de cuentas:
+
+1. **[Configurar Cuentas de Usuario y Privilegios Sudo en Linux](https://labex.io/es/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Practica la aplicación de políticas de contraseñas, el bloqueo/desbloqueo de cuentas de usuario, la seguridad de la cuenta root y la concesión de permisos administrativos, todo lo cual es fundamental para comprender la seguridad de la autenticación.
+
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza con la gestión de usuarios y seguridad en Linux.
 
 ## Quiz Question
 

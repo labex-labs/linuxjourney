@@ -9,7 +9,7 @@ meta_keywords: "commande cp, copier fichiers Linux, tutoriel Linux, Linux début
 
 ## Lesson Content
 
-Commençons à faire des copies de ces fichiers. Tout comme copier-coller des fichiers dans d'autres systèmes d'exploitation, le shell nous offre un moyen encore plus simple de le faire.
+Commençons par faire des copies de ces fichiers. Tout comme la copie et le collage de fichiers dans d'autres systèmes d'exploitation, le shell nous offre un moyen encore plus simple de le faire.
 
 ```bash
 cp mycoolfile /home/pete/Documents/cooldocs
@@ -27,11 +27,11 @@ Vous pouvez copier plusieurs fichiers et répertoires, ainsi qu'utiliser des car
 cp *.jpg /home/pete/Pictures
 ```
 
-Ceci copiera tous les fichiers avec l'extension `.jpg` de votre répertoire actuel vers le répertoire `Pictures`.
+Cela copiera tous les fichiers avec l'extension `.jpg` dans votre répertoire actuel vers le répertoire `Pictures`.
 
-Une commande utile est d'utiliser l'option `-r`; cela copiera récursivement les fichiers et répertoires à l'intérieur d'un répertoire.
+Une commande utile est d'utiliser l'option `-r`; cela copiera récursivement les fichiers et les répertoires à l'intérieur d'un répertoire.
 
-Essayez de faire un `cp` sur un répertoire qui contient quelques fichiers vers votre répertoire `Documents`. Cela n'a pas fonctionné, n'est-ce pas ? Eh bien, c'est parce que vous devrez également copier les fichiers et répertoires à l'intérieur avec la commande `-r`.
+Essayez de faire un `cp` sur un répertoire qui contient quelques fichiers vers votre répertoire `Documents`. Ça n'a pas marché, n'est-ce pas ? Eh bien, c'est parce que vous devrez également copier les fichiers et les répertoires à l'intérieur avec la commande `-r`.
 
 ```bash
 cp -r Pumpkin/ /home/pete/Documents
@@ -47,8 +47,8 @@ cp -i mycoolfile /home/pete/Pictures
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la copie de fichiers et de répertoires sous Linux :
 
-1. **[Commande Linux cp : Copie de fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** - Entraînez-vous à l'utilisation de base, aux options avancées comme la copie récursive, la préservation des attributs et l'utilisation de caractères génériques pour copier efficacement des fichiers et des répertoires.
-2. **[Organisation des fichiers et répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Entraînez-vous aux compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer les répertoires inutiles.
+1. **[Commande Linux cp : Copie de fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** - Pratiquez l'utilisation de base, les options avancées comme la copie récursive, la préservation des attributs et l'utilisation de caractères génériques pour copier efficacement des fichiers et des répertoires.
+2. **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Pratiquez les compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer les répertoires inutiles.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la copie et la gestion de fichiers sous Linux.
 

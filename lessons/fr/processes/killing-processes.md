@@ -25,19 +25,23 @@ kill -9 12445
 
 Ceci exécutera le signal `SIGKILL` et tuera le processus.
 
-### Differences between SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP?
+### Différences entre SIGHUP, SIGINT, SIGTERM, SIGKILL, SIGSTOP ?
 
 Ces signaux semblent tous raisonnablement similaires, mais ils ont leurs différences.
 
-- SIGHUP - Hangup, envoyé à un processus lorsque le terminal de contrôle est fermé. Par exemple, si vous fermiez une fenêtre de terminal qui avait un processus en cours d'exécution, vous recevriez un signal `SIGHUP`. Donc, en gros, vous avez été raccroché.
-- SIGINT - Est un signal d'interruption, vous pouvez donc utiliser Ctrl-C, et le système essaiera de tuer le processus gracieusement.
-- SIGTERM - Tue le processus, mais lui permet de faire un peu de nettoyage d'abord.
+- SIGHUP - Hangup (raccrochage), envoyé à un processus lorsque le terminal de contrôle est fermé. Par exemple, si vous fermiez une fenêtre de terminal qui avait un processus en cours d'exécution, vous recevriez un signal `SIGHUP`. Donc, en gros, vous avez été raccroché.
+- SIGINT - Est un signal d'interruption, vous pouvez donc utiliser Ctrl-C, et le système essaiera de tuer le processus proprement.
+- SIGTERM - Tue le processus, mais lui permet de faire un nettoyage d'abord.
 - SIGKILL - Tue le processus, le tue avec le feu, ne fait aucun nettoyage.
 - SIGSTOP - Arrête/suspend un processus.
 
 ## Exercise
 
-Terminez des processus en utilisant différents signaux.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion et de la terminaison des processus :
+
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus de premier plan et d'arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
+
+Ce laboratoire vous aidera à appliquer les concepts de contrôle et de terminaison des processus dans des scénarios réels et à renforcer votre confiance dans la gestion des processus Linux.
 
 ## Quiz Question
 

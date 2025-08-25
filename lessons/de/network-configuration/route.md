@@ -9,7 +9,7 @@ meta_keywords: "route Befehl, ip route, Route hinzufügen, Route löschen, Linux
 
 ## Lesson Content
 
-Wir haben bereits besprochen, wie man Routing-Tabellen mit dem Befehl `route` anzeigt. Wenn Sie Routen hinzufügen oder entfernen möchten, können Sie dies manuell tun.
+Wir haben bereits die Anzeige unserer Routing-Tabellen mit dem Befehl `route` besprochen. Wenn Sie Routen hinzufügen oder entfernen möchten, können Sie dies manuell tun.
 
 ### Eine neue Route hinzufügen
 
@@ -23,7 +23,7 @@ sudo route add -net 192.168.2.1/23 gw 10.11.12.3
 sudo route del -net 192.168.2.1/23
 ```
 
-Sie können diese Änderungen auch mit dem Befehl **ip** durchführen:
+Sie können diese Änderungen auch mit dem Befehl **ip** vornehmen:
 
 ### Eine Route hinzufügen
 
@@ -41,19 +41,16 @@ $ ip route delete 192.168.2.1/23
 
 ## Exercise
 
-Für diese Lektion gibt es keine Übungen, aber Sie können weitere Informationen zu den hier besprochenen Befehlen in den Manpages nachlesen.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu vertiefen:
 
-```bash
-man route
-```
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Üben Sie das Konfigurieren einer statischen IP, das Festlegen eines Standard-Gateways und das Überprüfen der Netzwerkkonfiguration mit dem Befehl `ip`.
+2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr handhabt und beobachten Sie Netzwerkschicht-Interaktionen.
 
-```bash
-man ip-route
-```
+Diese Übungen helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
 
 ## Quiz Question
 
-Was ist das Befehls-Flag, um eine Route zu löschen?
+Was ist das Befehls-Flag zum Löschen einer Route?
 
 ## Quiz Answer
 

@@ -2,18 +2,18 @@
 index: 1
 lang: "de"
 title: "regex (Reguläre Ausdrücke)"
-meta_title: "regex (Reguläre Ausdrücke) - Fortgeschrittenes Text-Fu"
-meta_description: "Lernen Sie reguläre Ausdrücke (regex) für das Musterabgleich in Linux. Verstehen Sie die Regex-Syntax wie ^, $, ., und [] für die Textmanipulation. Verbessern Sie Ihre grep-Fähigkeiten!"
+meta_title: "regex (Reguläre Ausdrücke) - Fortgeschrittene Text-Fu"
+meta_description: "Lernen Sie reguläre Ausdrücke (regex) für den Musterabgleich unter Linux. Verstehen Sie die Regex-Syntax wie ^, $, . und [] für die Textmanipulation. Verbessern Sie Ihre grep-Fähigkeiten!"
 meta_keywords: "reguläre Ausdrücke, regex, Linux regex, grep regex, Musterabgleich, regex Tutorial, Linux Befehle, Anfänger"
 ---
 
 ## Lesson Content
 
-Reguläre Ausdrücke sind ein mächtiges Werkzeug für die musterbasierte Auswahl. Sie verwenden spezielle Notationen, ähnlich denen, die wir bereits kennengelernt haben, wie das `*`-Platzhalterzeichen.
+Reguläre Ausdrücke sind ein mächtiges Werkzeug für die musterbasierte Auswahl. Sie verwenden spezielle Notationen, die denen ähneln, denen wir bereits begegnet sind, wie dem `*`-Platzhalter.
 
-Wir werden einige der gängigsten regulären Ausdrücke durchgehen; diese sind in fast jeder Programmiersprache universell einsetzbar.
+Wir werden einige der gebräuchlichsten regulären Ausdrücke durchgehen; diese sind in fast jeder Programmiersprache universell einsetzbar.
 
-Wir werden diesen Satz als unseren Test-String verwenden:
+Wir werden diesen Satz als Teststring verwenden:
 
 ```plaintext
 sally sells seashells
@@ -50,7 +50,7 @@ d[iou]g
 would match: dig, dog, dug
 ```
 
-Der vorherige Anker-Tag `^`, wenn er in einer Klammer verwendet wird, bedeutet alles außer den Zeichen innerhalb der Klammer.
+Der vorherige Anker-Tag `^` bedeutet, wenn er in einer Klammer verwendet wird, alles außer den Zeichen innerhalb der Klammer.
 
 ```plaintext
 d[^i]g
@@ -75,11 +75,13 @@ Und das sind einige grundlegende reguläre Ausdrücke.
 
 ## Exercise
 
-Versuchen Sie, reguläre Ausdrücke mit `grep` zu kombinieren und einige Dateien zu durchsuchen.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von regulären Ausdrücken und Musterabgleich zu vertiefen:
 
-```bash
-grep [regular expression here] [file]
-```
+1. **[Text mit grep in Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, Text in Dateien auf einem Linux-System mit dem Befehl `grep` zu suchen. Sie werden grundlegende Suchen durchführen, Zeilennummern anzeigen, Anker wie `^` und `$` verwenden, um Zeilenpositionen abzugleichen, und sowohl grundlegende als auch erweiterte reguläre Ausdrücke für komplexe Musterabgleiche nutzen.
+2. **[Textverarbeitung und reguläre Ausdrücke](https://labex.io/de/labs/linux-text-processing-and-regular-expressions-18003)** - Lernen Sie die leistungsstarken Textverarbeitungswerkzeuge grep, sed und awk. Lernen Sie, reguläre Ausdrücke für effiziente Textmanipulation und Musterabgleich in Linux zu verwenden.
+3. **[Extrahieren von E-Mails und Nummern](https://labex.io/de/labs/linux-extracting-mails-and-numbers-17991)** - In dieser Herausforderung lernen Sie, wie Sie grep und reguläre Ausdrücke verwenden, um E-Mail-Adressen und Nummern aus einer Datei zu extrahieren, und demonstrieren dabei grundlegende Linux-Textverarbeitungsfähigkeiten.
+
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit regulären Ausdrücken und der Textverarbeitung aufzubauen.
 
 ## Quiz Question
 

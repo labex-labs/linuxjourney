@@ -3,13 +3,13 @@ index: 6
 lang: "ja"
 title: "メモリ監視"
 meta_title: "メモリ監視 - プロセス利用率"
-meta_description: "vmstat を使って Linux のメモリ使用量を監視する方法を学びます。システムパフォーマンスのためのメモリ、スワップ、CPU メトリクスを理解しましょう。あなたの Linux の旅を始めましょう！"
+meta_description: "vmstat で Linux のメモリ使用量を監視する方法を学びます。システムパフォーマンスのためのメモリ、スワップ、CPU メトリックを理解します。Linux の旅を始めましょう！"
 meta_keywords: "vmstat, Linux メモリ監視，システムパフォーマンス，Linux チュートリアル，メモリ使用量，初心者 Linux, Linux ガイド"
 ---
 
 ## Lesson Content
 
-CPU 監視や I/O 監視に加えて、**vmstat**を使ってメモリ使用量を監視できます。
+CPU 監視や I/O 監視に加えて、**vmstat**を使用してメモリ使用量を監視できます。
 
 ```bash
 pete@icebox:~$ vmstat
@@ -23,7 +23,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 ### procs
 
 - r - 実行中のプロセス数
-- b - 割り込み不可能なスリープ状態にあるプロセス数
+- b - 割り込み不可能なスリープ状態のプロセス数
 
 ### memory
 
@@ -40,7 +40,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 ### io
 
 - bi - ブロックデバイスから受信したブロックの量
-- bo - ブロックデバイスに送信したブロックの量
+- bo - ブロックデバイスに送信されたブロックの量
 
 ### system
 
@@ -56,11 +56,16 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 ## Exercise
 
-vmstat でメモリ使用量を確認してください。
+練習あるのみ！システムおよびメモリ監視の理解を深めるための実践的なラボをいくつか紹介します。
+
+1. **[Linux free コマンド：システムメモリの監視](https://labex.io/ja/labs/linux-linux-free-command-monitoring-system-memory-388496)** - システムメモリの使用状況を監視および分析し、さまざまな表示形式と総メモリ消費量を理解する方法を学びます。
+2. **[Linux top コマンド：リアルタイムシステム監視](https://labex.io/ja/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - プロセス、CPU、メモリ使用量を含むシステムパフォーマンスをリアルタイムで監視し、ソートとフィルタリングのためのさまざまなオプションを使用する方法を学びます。
+
+これらのラボは、実際のシナリオでシステムリソース監視の概念を適用し、Linux システムパフォーマンスの分析に自信をつけるのに役立ちます。
 
 ## Quiz Question
 
-メモリ使用率を確認するために使用されるツールは何ですか？
+メモリ使用率を表示するために使用されるツールは何ですか？
 
 ## Quiz Answer
 

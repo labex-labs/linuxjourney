@@ -9,9 +9,9 @@ meta_keywords: "traceroute, Linux-Netzwerk, Netzwerk-Fehlerbehebung, TTL, Linux-
 
 ## Lesson Content
 
-Der Befehl `traceroute` wird verwendet, um zu sehen, wie Pakete geroutet werden. Er funktioniert, indem er Pakete mit zunehmenden TTL-Werten (Time To Live) sendet, beginnend mit 1. Der erste Router empfängt das Paket und dekrementiert den TTL-Wert um eins, wodurch das Paket verworfen wird. Der Router sendet uns dann eine ICMP Time Exceeded-Nachricht zurück. Das nächste Paket erhält dann einen TTL von 2, so dass es den ersten Router passiert, aber wenn es den zweiten Router erreicht, ist der TTL 0, und es sendet eine weitere ICMP Time Exceeded-Nachricht zurück. Traceroute funktioniert auf diese Weise, weil es beim Senden und Verwerfen von Paketen eine Liste von Routern erstellt, die die Pakete durchlaufen, bis es schließlich sein Ziel erreicht und eine ICMP Echo Reply-Nachricht empfängt.
+Der Befehl `traceroute` wird verwendet, um zu sehen, wie Pakete geroutet werden. Er funktioniert, indem er Pakete mit steigenden TTL-Werten (Time To Live) sendet, beginnend mit 1. Der erste Router empfängt das Paket und dekrementiert den TTL-Wert um eins, wodurch das Paket verworfen wird. Der Router sendet uns eine ICMP Time Exceeded-Nachricht zurück. Das nächste Paket erhält dann eine TTL von 2, so dass es den ersten Router passiert, aber wenn es den zweiten Router erreicht, ist die TTL 0, und es sendet eine weitere ICMP Time Exceeded-Nachricht zurück. Traceroute funktioniert auf diese Weise, weil es beim Senden und Verwerfen von Paketen eine Liste von Routern erstellt, die die Pakete durchlaufen, bis es schließlich sein Ziel erreicht und eine ICMP Echo Reply-Nachricht empfängt.
 
-Hier ist ein kleiner Ausschnitt eines traceroute:
+Hier ist ein kleiner Ausschnitt eines Traceroutes:
 
 ```bash
 $ traceroute google.com
@@ -25,7 +25,12 @@ Jede Zeile stellt einen Router oder eine Maschine dar, die sich zwischen Ihnen u
 
 ## Exercise
 
-Führen Sie den Befehl `traceroute` auf Ihrem Computer aus und beobachten Sie die Ausgabe.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Netzwerfpfad-Erkennung und Fehlerbehebung zu vertiefen:
+
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Üben Sie die Verwendung des Befehls `ip` zur Konfiguration von Netzwerkeinstellungen und zur Überprüfung der Konnektivität mit `traceroute`.
+2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie `ping` und `arp` funktionieren, um Netzwerkschicht-Interaktionen zu verstehen, die grundlegend für die Funktionsweise von `traceroute` sind.
+
+Diese Labs helfen Ihnen, die Konzepte der Netzwerkdiagnose in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerktools aufzubauen.
 
 ## Quiz Question
 

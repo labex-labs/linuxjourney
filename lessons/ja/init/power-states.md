@@ -3,8 +3,8 @@ index: 7
 lang: "ja"
 title: "電源状態"
 meta_title: "電源状態 - Init"
-meta_description: "Linux システムの電源状態、シャットダウン、再起動、停止コマンドについて学びます。Linux システムを安全に電源オフまたは再起動する方法を理解します。必須コマンドから始めましょう！"
-meta_keywords: "Linux シャットダウン，reboot コマンド，halt システム，Linux 電源オフ，Linux コマンド，初心者 Linux, Linux チュートリアル，システム状態"
+meta_description: "Linux システムの電源状態：シャットダウン、再起動、および停止コマンドについて学びます。Linux システムを安全に電源オフまたは再起動する方法を理解します。必須コマンドから始めましょう！"
+meta_keywords: "Linux shutdown, reboot command, halt system, power off Linux, Linux commands, beginner Linux, Linux tutorial, system states"
 ---
 
 ## Lesson Content
@@ -17,7 +17,7 @@ meta_keywords: "Linux シャットダウン，reboot コマンド，halt シス�
 sudo shutdown -h now
 ```
 
-このコマンドはシステムを停止（電源オフ）します。いつ実行するか時間を指定する必要があります。システムをその時間でシャットダウンする分数を追加できます。
+このコマンドはシステムを停止（電源オフ）します。いつ実行したいかを時間を指定する必要があります。分単位で時間を追加すると、その時間後にシステムがシャットダウンします。
 
 ```bash
 sudo shutdown -h +2
@@ -37,11 +37,11 @@ sudo reboot
 
 ## Exercise
 
-マシンをシャットダウンするとき、`init` で何が起こっていると思いますか？
+このトピックに関する特定のラボはありませんが、関連する Linux スキルと概念を練習するために、包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探索することをお勧めします。
 
 ## Quiz Question
 
-4 分後にシステムをシャットオフするコマンドは何ですか？
+4 分後にシステムをシャットダウンするコマンドは何ですか？
 
 ## Quiz Answer
 

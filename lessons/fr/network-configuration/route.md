@@ -41,15 +41,12 @@ $ ip route delete 192.168.2.1/23
 
 ## Exercise
 
-Il n'y a pas d'exercices pour cette leçon, mais vous pouvez lire plus d'informations sur les commandes discutées ici dans les pages de manuel.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage réseau et de l'adressage IP :
 
-```bash
-man route
-```
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à configurer une IP statique, à définir une passerelle par défaut et à vérifier la configuration réseau à l'aide de la commande `ip`.
+2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment la passerelle par défaut gère le trafic distant et observez les interactions de la couche réseau.
 
-```bash
-man ip-route
-```
+Ces laboratoires vous aideront à appliquer les concepts d'adressage IP et de routage dans des scénarios réels et à renforcer votre confiance en matière de mise en réseau Linux.
 
 ## Quiz Question
 

@@ -25,7 +25,7 @@ touch mysuperduperfile
 
 熟能生巧！以下是一些动手实验，以巩固您对创建和管理文件系统对象的理解：
 
-1. **[Linux mkdir 命令：目录创建](https://labex.io/zh/labs/linux-linux-mkdir-command-directory-creating-209739)** - 学习如何在 Linux 中使用 `mkdir` 命令创建目录、设置权限以及组织文件系统。这将帮助您理解在文件系统中创建新项目的更广泛概念。
+1. **[Linux mkdir 命令：目录创建](https://labex.io/zh/labs/linux-linux-mkdir-command-directory-creating-209739)** - 学习如何在 Linux 中使用 `mkdir` 命令创建目录、设置权限并组织文件系统。这将帮助您理解在文件系统中创建新项目的更广泛概念。
 2. **[设置新项目结构](https://labex.io/zh/labs/linux-setting-up-a-new-project-structure-387859)** - 通过创建特定的项目结构并使用 `mkdir` 和 `cd` 等基本命令进行导航，练习您的 Linux 目录管理技能。
 
 这些实验将帮助您在实际场景中应用文件系统创建和组织的概念，并增强您使用 Linux 命令的信心。

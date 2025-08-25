@@ -3,7 +3,7 @@ index: 5
 lang: "ko"
 title: "Samba"
 meta_title: "Samba - 네트워크 공유"
-meta_description: "Windows 및 macOS 용 Linux 에서 Samba 파일 공유를 설정하는 방법을 알아보세요. 이 초보자 가이드는 설치, 구성 및 공유 액세스를 다룹니다. 지금 시작하세요!"
+meta_description: "Windows 및 macOS 용 Linux 에서 Samba 파일 공유를 설정하는 방법을 배웁니다. 이 초보자 가이드는 설치, 구성 및 공유 액세스를 다룹니다. 시작하세요!"
 meta_keywords: "Samba, Linux 파일 공유, smb.conf, CIFS, smbclient, Linux 튜토리얼, 초보자 가이드"
 ---
 
@@ -15,16 +15,16 @@ Samba 는 Linux 에서 CIFS 와 함께 작동하는 Linux 유틸리티를 지칭
 
 ### Samba 로 네트워크 공유 생성
 
-Windows 머신이 액세스할 수 있는 네트워크 공유를 생성하는 기본 단계를 살펴보겠습니다:
+Windows 머신이 액세스할 수 있는 네트워크 공유를 생성하는 기본 단계를 살펴보겠습니다.
 
-### Install Samba
+### Samba 설치
 
 ```bash
 sudo apt update
 sudo apt install samba
 ```
 
-### Setup smb.conf
+### smb.conf 설정
 
 Samba 의 구성 파일은 `/etc/samba/smb.conf`에 있습니다. 이 파일은 공유할 디렉토리, 액세스 권한 및 기타 옵션을 시스템에 알려야 합니다. 기본 `smb.conf`에는 이미 많은 주석 처리된 코드가 포함되어 있으며, 이를 예시로 사용하여 자신만의 구성을 작성할 수 있습니다.
 
@@ -32,29 +32,29 @@ Samba 의 구성 파일은 `/etc/samba/smb.conf`에 있습니다. 이 파일은 
 sudo vi /etc/samba/smb.conf
 ```
 
-### Set up a password for Samba
+### Samba 암호 설정
 
 ```bash
 sudo smbpasswd -a [username]
 ```
 
-### Create a shared directory
+### 공유 디렉토리 생성
 
 ```bash
 mkdir /my/directory/to/share
 ```
 
-### Restart the Samba service
+### Samba 서비스 재시작
 
 ```bash
 sudo service smbd restart
 ```
 
-### Accessing a Samba share via Windows
+### Windows 를 통해 Samba 공유 액세스
 
 Windows 에서 실행 프롬프트에 네트워크 연결을 입력하기만 하면 됩니다: `\\HOST\sharename`.
 
-### Accessing a Samba/Windows share via Linux
+### Linux 를 통해 Samba/Windows 공유 액세스
 
 ```bash
 smbclient //HOST/directory -U user
@@ -62,9 +62,9 @@ smbclient //HOST/directory -U user
 
 Samba 패키지에는 모든 Windows 또는 Samba 서버에 액세스하는 데 사용할 수 있는 **smbclient**라는 명령줄 도구가 포함되어 있습니다. 공유에 연결되면 파일을 탐색하고 전송할 수 있습니다.
 
-### Attach a Samba share to your system
+### Samba 공유를 시스템에 연결
 
-파일을 하나씩 전송하는 대신, 네트워크 공유를 시스템에 마운트할 수 있습니다.
+파일을 하나씩 전송하는 대신 네트워크 공유를 시스템에 마운트할 수 있습니다.
 
 ```bash
 sudo mount -t cifs servername:directory mountpoint -o user=username,pass=password
@@ -72,7 +72,7 @@ sudo mount -t cifs servername:directory mountpoint -o user=username,pass=passwor
 
 ## Exercise
 
-Samba 공유를 설정하십시오. 공유가 없다면, `smb.conf`를 열고 구성 파일의 옵션들을 숙지하십시오.
+이 주제에 대한 특정 랩은 없지만, 관련 Linux 기술 및 개념을 연습하기 위해 포괄적인 [Linux 학습 경로](https://labex.io/ko/learn/linux)를 탐색하는 것을 권장합니다.
 
 ## Quiz Question
 

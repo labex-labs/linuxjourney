@@ -1,9 +1,9 @@
 ---
 index: 4
 lang: "ja"
-title: "Vim の検索パターン"
-meta_title: "Vim の検索パターン - 高度なテキスト操作"
-meta_description: "Vim の検索パターンを学びましょう：順方向 (/) と逆方向 (?) 検索。'n' と 'N' で結果をナビゲートします。今日から Vim スキルを向上させましょう！"
+title: "Vim 検索パターン"
+meta_title: "Vim 検索パターン - 高度なテキスト操作"
+meta_description: "Vim の検索パターンを学びましょう：順方向 (/) と逆方向 (?) 検索。'n' と 'N' で結果をナビゲートします。Vim スキルを今日から向上させましょう！"
 meta_keywords: "Vim 検索，Vim コマンド，Linux テキストエディタ，Vim チュートリアル，Vim ガイド，初心者 Vim"
 ---
 
@@ -31,11 +31,15 @@ will find the pretty words in the text file.
 
 ## Exercise
 
-検索キーを試してみてください。`vim [textfile]`で Vim でテキストファイルを開き、検索を開始してください！
+練習は完璧をもたらします！Linux でのテキスト編集と検索の理解を深めるための実践的なラボをいくつか紹介します。
+
+1. **[Vim と Nano で Linux のテキストファイルを編集する](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Vim と Nano を使用してテキストファイルの作成、編集、保存、ナビゲートを練習します。このラボは、検索機能を含む必須のテキスト編集ツールに習熟するのに役立ちます。
+
+このラボは、実際のシナリオで概念を適用し、Linux でのテキストファイル操作に自信をつけるのに役立ちます。
 
 ## Quiz Question
 
-Vim で検索するために使用されるキーは何ですか？
+Vim で検索に使用するキーは何ですか？
 
 ## Quiz Answer
 

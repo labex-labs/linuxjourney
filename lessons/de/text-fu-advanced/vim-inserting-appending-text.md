@@ -2,16 +2,16 @@
 index: 6
 lang: "de"
 title: "Vim Text einfügen und anhängen"
-meta_title: "Vim Text einfügen und anhängen - Fortgeschrittenes Text-Fu"
-meta_description: "Lernen Sie die Vim-Einfüge- und Anhängemodi. Verstehen Sie die Befehle 'i', 'a', 'I', 'A', 'o', 'O' für effiziente Textbearbeitung. Verbessern Sie jetzt Ihre Vim-Fähigkeiten!"
-meta_keywords: "Vim Einfügemodus, Vim anhängen, Vim Befehle, Vim Tutorial, Linux Texteditor, Vim für Anfänger, Vim Anleitung, Vim 'i' 'a'"
+meta_title: "Vim Text einfügen und anhängen - Fortgeschrittene Textbearbeitung"
+meta_description: "Lernen Sie die Vim-Modi zum Einfügen und Anhängen. Verstehen Sie die Befehle 'i', 'a', 'I', 'A', 'o', 'O' für effiziente Textbearbeitung. Verbessern Sie jetzt Ihre Vim-Fähigkeiten!"
+meta_keywords: "Vim Einfügemodus, Vim Anhängen, Vim Befehle, Vim Tutorial, Linux Texteditor, Vim für Anfänger, Vim Anleitung, Vim 'i' 'a'"
 ---
 
 ## Lesson Content
 
 Vim hat zwei Hauptmodi, die Sie häufig verwenden werden: den Normalmodus (für Befehle) und den Einfügemodus (zum Eingeben von Text).
 
-- Drücken Sie `Esc`, um jederzeit in den Normalmodus zurückzukehren.
+- Drücken Sie jederzeit `Esc`, um in den Normalmodus zurückzukehren.
 
 Wechseln Sie auf verschiedene Weisen in den Einfügemodus, je nachdem, wo Sie tippen möchten:
 
@@ -28,7 +28,11 @@ Wenn Sie mit dem Einfügen von Text fertig sind, drücken Sie `Esc`, um in den N
 
 ## Exercise
 
-Open any text file with `vim [file]` and try: `i`, `a`, `I`, `A`, `o`, `O`, then press `Esc` after each to return to Normal mode.
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Textbearbeitungsfunktionen von Vim zu vertiefen:
+
+1. **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** – Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation mit vi/vim und nano. Dieses Lab hilft Ihnen, die grundlegenden Fähigkeiten der Verwendung von Vims Normal- und Einfügemodus zu meistern.
+
+Dieses Lab hilft Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Textbearbeitung unter Linux mit Vim aufzubauen.
 
 ## Quiz Question
 

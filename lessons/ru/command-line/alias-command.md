@@ -38,4 +38,5 @@ unalias foobar
 Какая команда используется для создания псевдонима?
 
 ## Quiz Answer
+
 alias

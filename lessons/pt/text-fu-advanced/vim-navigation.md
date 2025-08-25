@@ -1,9 +1,9 @@
 ---
 index: 5
 lang: "pt"
-title: "Navegação no Vim"
-meta_title: "Navegação no Vim - Text-Fu Avançado"
-meta_description: "Aprenda os conceitos básicos de navegação do Vim usando as teclas h, j, k, l. Entenda o movimento essencial do Vim para iniciantes e melhore suas habilidades na linha de comando Linux."
+title: "Navegação Vim"
+meta_title: "Navegação Vim - Text-Fu Avançado"
+meta_description: "Aprenda os conceitos básicos de navegação do Vim usando as teclas h, j, k, l. Entenda o movimento essencial do Vim para iniciantes e melhore suas habilidades na linha de comando do Linux."
 meta_keywords: "Navegação Vim, tutorial Vim, Linux Vim, movimento Vim, conceitos básicos Vim, Vim para iniciantes, editor de texto Linux, guia Vim"
 ---
 
@@ -18,7 +18,11 @@ Agora você deve notar, o mouse não é usado aqui. Para navegar em um documento
 
 ## Exercise
 
-No exercises for this lesson.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da navegação e uso do editor de texto:
+
+1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com Vim e Nano em um ambiente Linux real.
+
+Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança na edição de texto no Linux.
 
 ## Quiz Question
 

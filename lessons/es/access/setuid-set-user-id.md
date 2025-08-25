@@ -13,13 +13,13 @@ Hay muchos casos en los que los usuarios normales necesitan acceso elevado para 
 
 Veamos un ejemplo:
 
-Digamos que quiero cambiar mi contraseña, ¿sencillo verdad? Solo uso el comando `passwd`:
+Digamos que quiero cambiar mi contraseña, ¿sencillo verdad? Simplemente uso el comando `passwd`:
 
 ```bash
 passwd
 ```
 
-¿Qué está haciendo el comando `passwd`? Está modificando un par de archivos, pero lo más importante es que está modificando el archivo `/etc/shadow`. Veamos ese archivo por un segundo:
+¿Qué está haciendo el comando `passwd`? Está modificando un par de archivos, pero lo más importante es que está modificando el archivo `/etc/shadow`. Echemos un vistazo a ese archivo por un segundo:
 
 ```bash
 $ ls -l /etc/shadow
@@ -39,9 +39,9 @@ $ ls -l /usr/bin/passwd
 
 Notarás un nuevo bit de permiso aquí **s**. Este bit de permiso es el SUID. Cuando un archivo tiene este permiso establecido, permite a los usuarios que iniciaron el programa obtener el permiso del propietario del archivo, así como el permiso de ejecución, en este caso root. Así que, esencialmente, mientras un usuario está ejecutando el comando `passwd`, lo está ejecutando como root.
 
-Por eso podemos acceder a un archivo protegido como `/etc/shadow` cuando ejecutamos el comando `passwd`. Ahora, si eliminas ese bit, verás que no podrás modificar `/etc/shadow` y, por lo tanto, cambiar tu contraseña.
+Es por eso que podemos acceder a un archivo protegido como `/etc/shadow` cuando ejecutamos el comando `passwd`. Ahora, si eliminas ese bit, verás que no podrás modificar `/etc/shadow` y, por lo tanto, cambiar tu contraseña.
 
-### Modifying SUID
+### Modificación de SUID
 
 Al igual que los permisos regulares, hay dos formas de modificar los permisos SUID.
 
@@ -61,7 +61,13 @@ Como puedes ver, el SUID se denota con un 4 y se antepone al conjunto de permiso
 
 ## Exercise
 
-Look at the permissions for `/etc/passwd` in detail. Do you notice anything else? Files with SUID enabled are also easily distinguishable.
+¡La práctica hace al maestro! Comprender cómo funcionan los permisos de archivo, los grupos de usuarios y los bits especiales como SUID es crucial para administrar y proteger los sistemas Linux. La experiencia práctica solidificará tus conocimientos.
+
+Aquí tienes un laboratorio práctico para reforzar tu comprensión de los permisos de archivo y la gestión de usuarios:
+
+1. **[Grupos de usuarios y permisos de archivos de Linux](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Practica la creación y gestión de usuarios y grupos, la comprensión de los permisos de archivo y la manipulación de la propiedad de los archivos. Este laboratorio proporciona el conocimiento fundamental necesario para comprender cómo SUID aprovecha estos conceptos para un acceso elevado.
+
+Este laboratorio te ayudará a aplicar los conceptos en un escenario real y a generar confianza con la gestión de usuarios y archivos de Linux.
 
 ## Quiz Question
 

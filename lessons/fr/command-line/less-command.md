@@ -9,7 +9,7 @@ meta_keywords: "commande less, Linux less, visualiser fichiers texte, naviguer f
 
 ## Lesson Content
 
-Si vous visualisez des fichiers texte plus grands qu'une simple sortie, `less` est plus efficace. (Il existe en fait une commande appelée `more` qui fait quelque chose de similaire, ce qui est ironique.) Le texte est affiché de manière paginée, vous pouvez donc naviguer dans un fichier texte page par page.
+Si vous visualisez des fichiers texte plus grands qu'une simple sortie, `less` est plus. (Il existe en fait une commande appelée `more` qui fait quelque chose de similaire, ce qui est ironique.) Le texte est affiché de manière paginée, vous pouvez donc naviguer dans un fichier texte page par page.
 
 Allez-y et examinez le contenu d'un fichier avec `less`. Une fois que vous êtes dans la commande `less`, vous pouvez utiliser d'autres commandes clavier pour naviguer dans le fichier.
 
@@ -23,8 +23,8 @@ Utilisez les commandes suivantes pour naviguer dans `less` :
 - `Page up`, `Page down`, `Up` et `Down` - Naviguez à l'aide des touches fléchées et des touches de page.
 - `g` - Se déplace au début du fichier texte.
 - `G` - Se déplace à la fin du fichier texte.
-- `/search` - Vous pouvez rechercher un texte spécifique dans le document texte. Faites précéder les mots que vous souhaitez rechercher de `/`.
-- `h` - Si vous avez besoin d'aide sur l'utilisation de `less` pendant que vous êtes dans `less`, utilisez l'aide.
+- `/search` - Vous pouvez rechercher un texte spécifique à l'intérieur du document texte. Faites précéder les mots que vous souhaitez rechercher de `/`.
+- `h` - Si vous avez besoin d'un peu d'aide sur l'utilisation de `less` pendant que vous êtes dans `less`, utilisez l'aide.
 
 ## Exercise
 

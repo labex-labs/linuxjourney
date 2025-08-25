@@ -3,7 +3,7 @@ index: 4
 lang: "de"
 title: "ls (Verzeichnisse auflisten)"
 meta_title: "ls (Verzeichnisse auflisten) - Befehlszeile"
-meta_description: "Erfahren Sie, wie Sie den Befehl 'ls' in Linux verwenden, um Verzeichnisinhalte aufzulisten, versteckte Dateien anzuzeigen und Dateidetails zu verstehen. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
+meta_description: "Erfahren Sie, wie Sie den 'ls'-Befehl in Linux verwenden, um Verzeichnisinhalte aufzulisten, versteckte Dateien anzuzeigen und Dateidetails zu verstehen. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
 meta_keywords: "ls Befehl, Verzeichnisse auflisten, Linux Tutorial, versteckte Dateien, Linux Befehle, Linux für Anfänger, Linux Anleitung"
 ---
 
@@ -18,7 +18,7 @@ ls /home/pete
 
 `ls` ist ein sehr nützliches Werkzeug; es zeigt Ihnen auch detaillierte Informationen über die Dateien und Verzeichnisse, die Sie betrachten.
 
-Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem Befehl `ls` anzeigen, indem Sie das Flag `-a` (für all) übergeben.
+Beachten Sie auch, dass nicht alle Dateien in einem Verzeichnis sichtbar sind. Dateinamen, die mit `.` beginnen, sind versteckt. Sie können sie jedoch mit dem Befehl `ls` anzeigen und ihm das Flag `-a` übergeben (`a` für alle).
 
 ```bash
 ls -a
@@ -53,7 +53,7 @@ ls -la
 
 Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis des `ls`-Befehls zu vertiefen:
 
-- **[Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie die Verwendung des `ls`-Befehls, um Datei- und Verzeichnisinhalte effizient aufzulisten und zu analysieren. Sie lernen verschiedene Optionen für detaillierte Auflistungen, die Anzeige versteckter Dateien, menschenlesbare Größen und Sortiertechniken, um Ihre Befehlszeilenkenntnisse zu verbessern.
+- **[Linux ls Befehl: Inhaltsauflistung](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie die Verwendung des `ls`-Befehls, um Datei- und Verzeichnisinhalte effizient aufzulisten und zu analysieren. Sie lernen verschiedene Optionen für detaillierte Auflistungen, die Anzeige versteckter Dateien, menschenlesbare Größen und Sortiertechniken, um Ihre Befehlszeilenkenntnisse zu verbessern.
 
 Dieses Labor wird Ihnen helfen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Verzeichnisauflistung unter Linux aufzubauen.
 

@@ -43,7 +43,13 @@ $ nl file1.txt
 
 ## Exercise
 
-Comment obtiendriez-vous le nombre total de lignes en utilisant la commande `nl` sans parcourir toute la sortie ? Indice : Utilisez certaines des autres commandes que vous avez apprises dans ce cours.
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du comptage de texte et de la numérotation de lignes sous Linux :
+
+1. **[Commande Linux wc : Comptage de texte](https://labex.io/fr/labs/linux-linux-wc-command-text-counting-219200)** - Entraînez-vous à compter les mots, les lignes et les caractères dans les fichiers texte à l'aide de la commande `wc`.
+2. **[Commande Linux nl : Numérotation de lignes](https://labex.io/fr/labs/linux-linux-nl-command-line-numbering-210988)** - Apprenez à numéroter les lignes dans les fichiers texte avec la commande `nl`.
+3. **[Comptage de mots et tri](https://labex.io/fr/labs/linux-word-count-and-sorting-388125)** - Appliquez vos connaissances de `wc` pour compter les lignes, les mots et les caractères, et combinez-les avec le tri pour des tâches pratiques d'analyse de texte.
+
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans le traitement de texte sous Linux.
 
 ## Quiz Question
 

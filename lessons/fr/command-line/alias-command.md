@@ -4,12 +4,12 @@ lang: "fr"
 title: "alias"
 meta_title: "alias - Ligne de commande"
 meta_description: "Apprenez à créer et gérer des alias Linux pour les commandes courantes. Découvrez la configuration d'alias temporaires et permanents dans .bashrc. Améliorez votre efficacité en ligne de commande !"
-meta_keywords: "alias Linux, alias bash, commande unalias, .bashrc, tutoriel Linux, ligne de commande, Linux pour débutants, guide Linux"
+meta_keywords: "alias Linux, alias bash, commande unalias, .bashrc, tutoriel Linux, ligne de commande, Linux débutant, guide Linux"
 ---
 
 ## Lesson Content
 
-Parfois, la saisie de commandes peut devenir très répétitive, ou si vous devez taper une longue commande plusieurs fois, il est préférable d'avoir un alias que vous pouvez utiliser pour cela. Pour créer un alias pour une commande, il vous suffit de spécifier un nom d'alias et de le définir sur la commande.
+Parfois, taper des commandes peut devenir très répétitif, ou si vous devez taper une longue commande plusieurs fois, il est préférable d'avoir un alias que vous pouvez utiliser pour cela. Pour créer un alias pour une commande, il vous suffit de spécifier un nom d'alias et de le définir sur la commande.
 
 ```bash
 alias foobar='ls -la'
@@ -21,7 +21,7 @@ Maintenant, au lieu de taper `ls -la`, vous pouvez taper `foobar`, et cela exéc
 ~/.bashrc
 ```
 
-ou des fichiers similaires si vous voulez qu'il persiste après un redémarrage.
+ou des fichiers similaires si vous souhaitez qu'il persiste après un redémarrage.
 
 Vous pouvez supprimer des alias avec la commande `unalias` :
 

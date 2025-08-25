@@ -15,7 +15,7 @@ Ahora que sabes dónde estás, veamos si podemos movernos un poco por el sistema
 
 - Ruta relativa: Esta es la ruta desde donde te encuentras actualmente en el sistema de archivos. Si estuviera en la ubicación `/home/pete/Documents` y quisiera ir a un directorio dentro de `Documents` llamado `taxes`, no tengo que especificar la ruta completa desde la raíz como `/home/pete/Documents/taxes`; puedo simplemente ir a `taxes/` en su lugar.
 
-Ahora que sabes cómo funcionan las rutas, solo necesitamos algo que nos ayude a cambiar al directorio que queremos. Afortunadamente, tenemos `cd` o “change directory” para hacer eso.
+Ahora que sabes cómo funcionan las rutas, solo necesitamos algo que nos ayude a cambiar al directorio que queremos. Afortunadamente, tenemos `cd` o “cambiar directorio” para hacer eso.
 
 ```bash
 cd /home/pete/Pictures
@@ -36,7 +36,7 @@ Puede ser bastante agotador navegar con rutas absolutas y relativas todo el tiem
 - `.` (directorio actual): Este es el directorio en el que te encuentras actualmente.
 - `..` (directorio anterior): Te lleva al directorio superior al actual.
 - `~` (directorio de inicio): Este directorio por defecto es tu “directorio de inicio”, como `/home/pete`.
-- `-` (directorio previo): Esto te llevará al directorio anterior en el que estabas.
+- `-` (directorio anterior): Esto te llevará al directorio anterior en el que estuviste.
 
 ```bash
 cd .
@@ -51,9 +51,9 @@ cd -
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la navegación de directorios en Linux:
 
-1.  **[Comando Linux cd: Cambio de Directorio](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Aprende el comando Linux `cd` para navegar eficientemente por tu sistema de archivos, incluyendo varias técnicas para cambiar directorios, comprender rutas y explorar la estructura de archivos.
-2.  **[Navegación de Directorios en Linux](https://labex.io/es/labs/linux-directory-navigation-387844)** - Pon a prueba tus habilidades básicas de línea de comandos de Linux navegando a través de directorios usando comandos esenciales.
-3.  **[Configuración de una Nueva Estructura de Proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios en Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
+1. **[Comando cd de Linux: Cambio de Directorio](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Aprende el comando `cd` de Linux para navegar eficientemente por tu sistema de archivos, incluyendo varias técnicas para cambiar directorios, comprender rutas y explorar la estructura de archivos.
+2. **[Navegación de Directorios en Linux](https://labex.io/es/labs/linux-directory-navigation-387844)** - Pon a prueba tus habilidades básicas de línea de comandos de Linux navegando a través de directorios usando comandos esenciales.
+3. **[Configuración de una Nueva Estructura de Proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios en Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a construir confianza al navegar por el sistema de archivos de Linux.
 

@@ -33,7 +33,7 @@ Prática leva à perfeição! Aqui estão alguns laboratórios práticos para re
 2. **[O Truque do Coringa](https://labex.io/pt/labs/linux-the-joker-s-trick-270247)** - Neste desafio, você tentará gerenciar a conta de usuário na plataforma Linux, como criar novas contas de usuário, modificar o gerenciamento da conta de usuário e excluir uma conta de usuário.
 3. **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio prático, você simulará a adição de novos membros da equipe a um ambiente de servidor. Você criará novas contas de usuário, configurará grupos personalizados e gerenciará associações de grupo.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com a administração de usuários e grupos no Linux.
+Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança com a administração de usuários e grupos no Linux.
 
 ## Quiz Question
 

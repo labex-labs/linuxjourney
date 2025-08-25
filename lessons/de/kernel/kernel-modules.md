@@ -1,17 +1,17 @@
 ---
 index: 6
 lang: "de"
-title: "Kernelmodule"
-meta_title: "Kernelmodule - Kernel"
-meta_description: "Erfahren Sie mehr über Linux-Kernelmodule: wie man sie lädt, entlädt und verwaltet. Verstehen Sie die Befehle `modprobe` und `lsmod` zur Erweiterung der Kernel-Funktionalität. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "Linux-Kernelmodule, modprobe, lsmod, Kernel-Verwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+title: "Kernel-Module"
+meta_title: "Kernel-Module - Kernel"
+meta_description: "Erfahren Sie mehr über Linux-Kernel-Module: wie man sie lädt, entlädt und verwaltet. Verstehen Sie die Befehle `modprobe` und `lsmod` zur Erweiterung der Kernel-Funktionalität. Beginnen Sie Ihre Linux-Reise!"
+meta_keywords: "Linux-Kernel-Module, modprobe, lsmod, Kernel-Verwaltung, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
 ---
 
 ## Lesson Content
 
-Nehmen wir an, ich habe ein tolles Auto; ich investiere viel Zeit und Geld hinein. Ich füge einen Spoiler, eine Anhängerkupplung, einen Fahrradträger und andere zufällige Dinge hinzu. Diese Komponenten ändern die Kernfunktionalität des Autos nicht wirklich, und ich kann sie sehr einfach entfernen und hinzufügen. Der Kernel verwendet dasselbe Konzept mit Kernelmodulen.
+Nehmen wir an, ich habe ein tolles Auto; ich investiere viel Zeit und Geld hinein. Ich füge einen Spoiler, eine Anhängerkupplung, einen Fahrradträger und andere zufällige Dinge hinzu. Diese Komponenten ändern nicht wirklich die Kernfunktionalität des Autos, und ich kann sie sehr einfach entfernen und hinzufügen. Der Kernel verwendet dasselbe Konzept mit Kernel-Modulen.
 
-Der Kernel selbst ist ein monolithisches Softwarestück. Wenn wir Unterstützung für einen neuen Tastaturtyp hinzufügen möchten, schreiben wir diesen Code nicht direkt in den Kernelcode. So wie wir keinen Fahrradträger an unser Auto schweißen würden (nun, vielleicht würden das manche Leute tun). Kernelmodule sind Codestücke, die bei Bedarf in den Kernel geladen und entladen werden können. Sie ermöglichen es uns, die Funktionalität des Kernels zu erweitern, ohne tatsächlich den Kern-Kernelcode zu erweitern. Wir können auch Module hinzufügen und müssen das System nicht neu starten (in den meisten Fällen).
+Der Kernel selbst ist ein monolithisches Softwarestück. Wenn wir Unterstützung für einen neuen Tastaturtyp hinzufügen möchten, schreiben wir diesen Code nicht direkt in den Kernel-Code. So wie wir einen Fahrradträger nicht an unser Auto schweißen würden (nun, vielleicht würden das manche Leute tun). Kernel-Module sind Codestücke, die bei Bedarf in den Kernel geladen und entladen werden können. Sie ermöglichen es uns, die Funktionalität des Kernels zu erweitern, ohne tatsächlich den Kern-Kernel-Code zu erweitern. Wir können auch Module hinzufügen und müssen das System nicht neu starten (in den meisten Fällen).
 
 ### Eine Liste der aktuell geladenen Module anzeigen
 
@@ -25,7 +25,7 @@ lsmod
 sudo modprobe bluetooth
 ```
 
-`modprobe` lädt das Modul aus `/lib/modules/(kernel version)/kernel/drivers`. Kernelmodule können auch Abhängigkeiten haben; `modprobe` lädt unsere Modulabhängigkeiten, falls sie noch nicht geladen sind.
+`modprobe` lädt das Modul aus `/lib/modules/(kernel version)/kernel/drivers`. Kernel-Module können auch Abhängigkeiten haben; `modprobe` lädt unsere Modulabhängigkeiten, falls sie noch nicht geladen sind.
 
 ### Ein Modul entfernen
 
@@ -43,7 +43,7 @@ pete@icebox:~$ /etc/modprobe.d/peanutbutter.conf
 options peanut_butter type=almond
 ```
 
-Ein etwas ausgefallenes Beispiel, aber wenn Sie ein Modul namens `peanut_butter` hätten und einen Kernelparameter für `type=almond` hinzufügen wollten, können Sie es mit dieser Konfigurationsdatei beim Start laden lassen. Beachten Sie auch, dass Kernelmodule ihre eigenen Kernelparameter haben, daher sollten Sie sich speziell über das Modul informieren, um mehr zu erfahren.
+Ein etwas ausgefallenes Beispiel, aber wenn Sie ein Modul namens `peanut_butter` hätten und einen Kernel-Parameter für `type=almond` hinzufügen wollten, können Sie es mit dieser Konfigurationsdatei beim Start laden lassen. Beachten Sie auch, dass Kernel-Module ihre eigenen Kernel-Parameter haben, daher sollten Sie speziell über das Modul lesen, um mehr zu erfahren.
 
 ### Nicht beim Booten laden
 
@@ -57,7 +57,9 @@ blacklist peanut_butter
 
 ## Exercise
 
-Entladen Sie Ihr Bluetooth-Modul mit `modprobe` und sehen Sie, was passiert. Wie werden Sie das beheben?
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Linux-Kernel-Modulen zu vertiefen:
+
+1. **[Kernel-Module in Linux verwalten](https://labex.io/de/labs/comptia-manage-kernel-modules-in-linux-590865)** - Üben Sie das Auflisten, Inspizieren, Laden und Entladen von Kernel-Modulen und deren Konfiguration zum automatischen Laden beim Booten. Dieses Labor hilft Ihnen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Verwaltung von Kernel-Modulen aufzubauen.
 
 ## Quiz Question
 

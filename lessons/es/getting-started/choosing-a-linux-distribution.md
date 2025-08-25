@@ -4,7 +4,7 @@ lang: "es"
 title: "Elegir una distribución de Linux"
 meta_title: "Elegir una distribución de Linux - Primeros pasos"
 meta_description: "Aprenda a elegir una distribución de Linux para sus necesidades. Explore opciones populares y comprenda el kernel, el hardware y el espacio de usuario. ¡Comience su viaje en Linux!"
-meta_keywords: "Distribución de Linux, elegir Linux, kernel de Linux, Linux para principiantes, guía de Linux, instalar Linux, tutorial de Linux"
+meta_keywords: "distribución de Linux, elegir Linux, kernel de Linux, Linux para principiantes, guía de Linux, instalar Linux, tutorial de Linux"
 ---
 
 ## Lesson Content

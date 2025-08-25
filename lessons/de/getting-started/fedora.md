@@ -29,9 +29,9 @@ Fedora ist großartig, wenn Sie ein Red Hat-basiertes Betriebssystem ohne den Pr
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Datei- und Verzeichnisverwaltung zu vertiefen:
 
-1.  **[Grundlegende Dateioperationen](https://labex.io/de/labs/linux-basic-files-operations-270248)** - Üben Sie das Auflisten von Dateien, das Wechseln von Verzeichnissen und das Verschieben/Kopieren/Löschen von Dateien und Verzeichnissen in einer echten Linux-Umgebung.
-2.  **[Dateien und Verzeichnisse](https://labex.io/de/labs/linux-files-and-directories-270246)** - Lernen Sie, das Dateisystem zu navigieren, Dateien und Verzeichnisse mit grundlegenden Linux-Befehlen zu kopieren, zu verschieben und zu löschen.
-3.  **[Grundlegende Dateioperationen in Linux](https://labex.io/de/labs/linux-basic-file-operations-in-linux-18001)** - Lernen Sie grundlegende Linux-Befehle und Konzepte, um das Dateisystem zu navigieren, Dateien und Verzeichnisse zu verwalten und Befehlszeilen-Shortcuts zu verwenden.
+1. **[Grundlegende Dateioperationen](https://labex.io/de/labs/linux-basic-files-operations-270248)** - Üben Sie das Auflisten von Dateien, das Wechseln von Verzeichnissen und das Verschieben/Kopieren/Löschen von Dateien und Verzeichnissen in einer echten Linux-Umgebung.
+2. **[Dateien und Verzeichnisse](https://labex.io/de/labs/linux-files-and-directories-270246)** - Lernen Sie, das Dateisystem zu navigieren, Dateien und Verzeichnisse mit grundlegenden Linux-Befehlen zu kopieren, zu verschieben und zu löschen.
+3. **[Grundlegende Dateioperationen in Linux](https://labex.io/de/labs/linux-basic-file-operations-in-linux-18001)** - Lernen Sie grundlegende Linux-Befehle und Konzepte, um das Dateisystem zu navigieren, Dateien und Verzeichnisse zu verwalten und Befehlszeilen-Shortcuts zu verwenden.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in Linux-Dateisystemoperationen aufzubauen.
 

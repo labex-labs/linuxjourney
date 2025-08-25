@@ -25,9 +25,9 @@ Then in 1991, a young fellow named Linus Torvalds started developing what we now
 
 Practice makes perfect! Since this lesson introduces you to the world of Linux, getting hands-on with the command line is the best way to solidify your understanding and build confidence. Here are some hands-on labs to help you take your first steps:
 
-1.  **[Getting Started with Linux](https://labex.io/labs/linux-getting-started-with-linux-446315)** - Begin your Linux journey by learning essential terminal commands like `echo`, `date`, and basic calculations. Perfect for complete beginners.
-2.  **[Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)** - This introductory lab guides you through the classic "Hello, World!" program in Linux and teaches you some fundamental commands.
-3.  **[Create Personalized Terminal Greeting](https://labex.io/labs/linux-create-personalized-terminal-greeting-446322)** - A quick and fun challenge to use basic Linux terminal commands to create an engaging welcome message.
+1. **[Getting Started with Linux](https://labex.io/labs/linux-getting-started-with-linux-446315)** - Begin your Linux journey by learning essential terminal commands like `echo`, `date`, and basic calculations. Perfect for complete beginners.
+2. **[Your First Linux Lab](https://labex.io/labs/linux-your-first-linux-lab-270253)** - This introductory lab guides you through the classic "Hello, World!" program in Linux and teaches you some fundamental commands.
+3. **[Create Personalized Terminal Greeting](https://labex.io/labs/linux-create-personalized-terminal-greeting-446322)** - A quick and fun challenge to use basic Linux terminal commands to create an engaging welcome message.
 
 These labs will help you apply the foundational concepts in a real Linux environment and build confidence with the command line.
 

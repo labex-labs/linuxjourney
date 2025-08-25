@@ -2,7 +2,7 @@
 index: 7
 lang: "fr"
 title: "Linux Mint"
-meta_title: "Linux Mint - Premiers pas"
+meta_title: "Linux Mint - Démarrer"
 meta_description: "Découvrez Linux Mint, sa base Ubuntu, sa gestion des paquets et pourquoi il est excellent pour les débutants. Découvrez ses fonctionnalités et comment démarrer dès aujourd'hui !"
 meta_keywords: "Linux Mint, Ubuntu, Linux pour débutants, distribution Linux, tutoriel Linux, gestionnaire de paquets Debian, guide Linux"
 ---
@@ -31,7 +31,7 @@ La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer 
 
 1. **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Entraînez-vous à créer de nouveaux comptes utilisateurs, à modifier la gestion des comptes utilisateurs et à supprimer des comptes utilisateurs dans un environnement Linux réel.
 2. **[Le tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Apprenez à gérer les comptes utilisateurs en les créant, les modifiant et les supprimant, simulant un scénario réel.
-3. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Apprenez à créer de nouveaux comptes utilisateurs, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, essentiels pour l'administration système.
+3. **[Ajouter un nouvel utilisateur et groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Apprenez à créer de nouveaux comptes utilisateurs, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, essentiels pour l'administration système.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans l'administration des utilisateurs et des groupes sous Linux.
 

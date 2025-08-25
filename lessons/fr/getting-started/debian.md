@@ -31,9 +31,9 @@ Debian est un excellent système d'exploitation global pour n'importe quelle pla
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des fichiers et des répertoires sous Linux :
 
-1.  **[Opérations de fichiers de base](https://labex.io/fr/labs/linux-basic-files-operations-270248)** - Entraînez-vous à lister les fichiers, à changer de répertoire et à déplacer/copier/supprimer des fichiers et des répertoires dans un environnement Linux réel.
-2.  **[Fichiers et répertoires](https://labex.io/fr/labs/linux-files-and-directories-270246)** - Apprenez à naviguer dans le système de fichiers, à copier, déplacer et supprimer des fichiers et des répertoires à l'aide des commandes Linux de base.
-3.  **[Opérations de fichiers de base sous Linux](https://labex.io/fr/labs/linux-basic-file-operations-in-linux-18001)** - Apprenez les commandes et concepts Linux essentiels pour naviguer dans le système de fichiers, gérer les fichiers et les répertoires, et utiliser les caractères génériques.
+1. **[Opérations de fichiers de base](https://labex.io/fr/labs/linux-basic-files-operations-270248)** - Entraînez-vous à lister les fichiers, à changer de répertoire et à déplacer/copier/supprimer des fichiers et des répertoires dans un environnement Linux réel.
+2. **[Fichiers et répertoires](https://labex.io/fr/labs/linux-files-and-directories-270246)** - Apprenez à naviguer dans le système de fichiers, à copier, déplacer et supprimer des fichiers et des répertoires à l'aide des commandes Linux de base.
+3. **[Opérations de fichiers de base sous Linux](https://labex.io/fr/labs/linux-basic-file-operations-in-linux-18001)** - Apprenez les commandes et concepts Linux essentiels pour naviguer dans le système de fichiers, gérer les fichiers et les répertoires, et utiliser les caractères génériques.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans les opérations du système de fichiers Linux.
 

@@ -41,9 +41,9 @@ Now look inside your `/var/log/syslog`, and you should see this entry in your lo
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux logging and file viewing:
 
-1.  **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice essential Linux command-line skills for efficiently viewing and navigating text files, including system logs and configuration files.
-2.  **[Linux tail Command: File End Display](https://labex.io/labs/linux-linux-tail-command-file-end-display-214303)** - Learn the Linux `tail` command for viewing and monitoring the end of text files, which is particularly useful for real-time log analysis.
-3.  **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Learn to search for specific text patterns within files, an invaluable skill for sifting through log entries to find critical information.
+1. **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice essential Linux command-line skills for efficiently viewing and navigating text files, including system logs and configuration files.
+2. **[Linux tail Command: File End Display](https://labex.io/labs/linux-linux-tail-command-file-end-display-214303)** - Learn the Linux `tail` command for viewing and monitoring the end of text files, which is particularly useful for real-time log analysis.
+3. **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Learn to search for specific text patterns within files, an invaluable skill for sifting through log entries to find critical information.
 
 These labs will help you apply the concepts of log management and file inspection in real scenarios and build confidence with Linux system administration.
 

@@ -9,7 +9,7 @@ meta_keywords: "comando exit, comando logout, shell Linux, sair do terminal, con
 
 ## Lesson Content
 
-Bem, você fez um bom trabalho ao passar pelos conceitos básicos. Nós apenas arranhamos a superfície; agora que você aprendeu a engatinhar, no próximo conjunto de cursos, vou te ensinar a andar.
+Bem, você fez um bom trabalho ao passar pelos conceitos básicos. Apenas arranhamos a superfície; agora que você aprendeu a engatinhar, no próximo conjunto de cursos, vou te ensinar a andar.
 
 Por enquanto, você pode se parabenizar e fazer uma pausa. Para sair do shell, você pode usar o comando `exit`:
 
@@ -23,7 +23,7 @@ Ou o comando `logout`:
 logout
 ```
 
-Ou se você estiver trabalhando em uma GUI de terminal, pode simplesmente fechar o terminal. Até o próximo curso!
+Ou se você estiver trabalhando em uma GUI de terminal, pode simplesmente fechar o terminal. Nos vemos no próximo curso!
 
 ## Exercise
 
