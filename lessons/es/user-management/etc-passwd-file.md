@@ -21,7 +21,7 @@ Este archivo te muestra una lista de usuarios e información detallada sobre ell
 root:x:0:0:root:/root:/bin/bash
 ```
 
-Cada línea muestra información de un usuario; lo más común es que veas al usuario root como la primera línea. Hay muchos campos separados por dos puntos que te dan información adicional sobre el usuario. Veámoslos todos:
+Cada línea muestra información de usuario para un usuario; lo más común es que veas al usuario root como la primera línea. Hay muchos campos separados por dos puntos que te dan información adicional sobre el usuario. Veámoslos todos:
 
 1. **Nombre de usuario**
 2. **Contraseña del usuario** - La contraseña no se almacena realmente en este archivo; generalmente se almacena en el archivo `/etc/shadow`. Hablaremos más sobre `/etc/shadow` en la próxima lección, pero por ahora, debes saber que contiene contraseñas de usuario cifradas. Puedes ver muchos símbolos diferentes en este campo: si ves una "x", significa que la contraseña se almacena en el archivo `/etc/shadow`; un "*" significa que el usuario no tiene acceso de inicio de sesión; y si hay un campo en blanco, significa que el usuario no tiene contraseña.
@@ -29,11 +29,11 @@ Cada línea muestra información de un usuario; lo más común es que veas al us
 4. **El ID de grupo**
 5. **Campo GECOS** - Se utiliza para dejar comentarios generales sobre el usuario o la cuenta, como su nombre real o número de teléfono. Está delimitado por comas.
 6. **Directorio de inicio del usuario**
-7. **Shell del usuario** - Probablemente verás que muchos usuarios tienen bash como su shell predeterminado.
+7. **Shell del usuario** - Probablemente verás que muchos usuarios tienen bash como shell predeterminado.
 
 Normalmente, en la página de configuración de un usuario, esperarías ver solo usuarios humanos. Sin embargo, notarás que `/etc/passwd` contiene otros usuarios. Recuerda que los usuarios solo están en el sistema para ejecutar procesos con diferentes permisos. A veces queremos ejecutar procesos con permisos predeterminados. Por ejemplo, el usuario `daemon` se utiliza para procesos demonio.
 
-Además, cabe señalar que puedes editar el archivo `/etc/passwd` manualmente si deseas agregar usuarios y modificar información con la herramienta `vipw`. Sin embargo, es mejor dejar este tipo de cosas a las herramientas que discutiremos en una lección posterior, como `useradd` y `userdel`.
+Además, cabe señalar que puedes editar el archivo `/etc/passwd` manualmente si deseas agregar usuarios y modificar información con la herramienta `vipw`. Sin embargo, este tipo de cosas es mejor dejarlas a las herramientas que discutiremos en una lección posterior, como `useradd` y `userdel`.
 
 ## Exercise
 
@@ -51,4 +51,4 @@ Si un usuario no tiene acceso de inicio de sesión, ¿cómo se indica eso en `/e
 
 ## Quiz Answer
 
--
+*

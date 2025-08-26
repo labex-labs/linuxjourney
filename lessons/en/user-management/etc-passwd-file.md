@@ -51,4 +51,4 @@ If a user doesn't have login access, how is that denoted in `/etc/passwd`?
 
 ## Quiz Answer
 
--
+*

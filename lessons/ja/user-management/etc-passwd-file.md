@@ -3,7 +3,7 @@ index: 3
 lang: "ja"
 title: "/etc/passwd"
 meta_title: "/etc/passwd - ユーザー管理"
-meta_description: "Linux の/etc/passwd ファイルについて学び、ユーザー情報フィールドと UID の仕組みを理解します。この重要な設定ファイルを探求しましょう。"
+meta_description: "Linux の/etc/passwd ファイルについて学び、ユーザー情報フィールドと UID の仕組みを理解します。この重要な設定ファイルを探ります。"
 meta_keywords: "/etc/passwd, Linux ユーザー, ユーザーID, UID, Linux チュートリアル，初心者，ガイド，Linux コマンド"
 ---
 
@@ -24,10 +24,10 @@ root:x:0:0:root:/root:/bin/bash
 各行は 1 人のユーザーのユーザー情報を表示します。最も一般的には、root ユーザーが最初の行として表示されます。コロンで区切られた多くのフィールドがあり、ユーザーに関する追加情報を示しています。それらすべてを見てみましょう。
 
 1. **ユーザー名**
-2. **ユーザーのパスワード** - パスワードは実際にはこのファイルには保存されていません。通常は`/etc/shadow`ファイルに保存されています。`/etc/shadow`については次のレッスンで詳しく説明しますが、今のところ、暗号化されたユーザーパスワードが含まれていることを知っておいてください。このフィールドにはさまざまな記号が表示されます。「x」が表示されている場合は、パスワードが`/etc/shadow`ファイルに保存されていることを意味します。「*」はユーザーにログインアクセスがないことを意味します。空白のフィールドがある場合は、ユーザーにパスワードがないことを意味します。
+2. **ユーザーのパスワード** - パスワードはこのファイルには実際には保存されていません。通常は`/etc/shadow`ファイルに保存されています。`/etc/shadow`については次のレッスンで詳しく説明しますが、今のところ、暗号化されたユーザーパスワードが含まれていることを知っておいてください。このフィールドにはさまざまな記号が表示されます。「x」が表示されている場合は、パスワードが`/etc/shadow`ファイルに保存されていることを意味します。「*」はユーザーにログインアクセスがないことを意味します。空白のフィールドがある場合は、ユーザーにパスワードがないことを意味します。
 3. **ユーザーID** - ご覧のとおり、root の UID は 0 です。
 4. **グループ ID**
-5. **GECOS フィールド** - これは、ユーザーやアカウントに関するコメント（実名や電話番号など）を残すために一般的に使用されます。カンマ区切りです。
+5. **GECOS フィールド** - これは、ユーザーやアカウントに関するコメント（実名や電話番号など）を残すために一般的に使用されます。コンマで区切られています。
 6. **ユーザーのホームディレクトリ**
 7. **ユーザーのシェル** - 多くのユーザーがシェルとして bash をデフォルトにしているのを見かけるでしょう。
 
@@ -39,8 +39,8 @@ root:x:0:0:root:/root:/bin/bash
 
 練習は完璧をもたらします！Linux ユーザーアカウントとその管理の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[useradd、usermod、および userdel で Linux ユーザーアカウントを管理する](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、変更と削除まで、ユーザー管理の完全なライフサイクルを練習します。
-2. **[groupadd、usermod、および groupdel で Linux グループを管理する](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成やユーザーメンバーシップの変更など、グループ管理のためのコアコマンドラインユーティリティを実践的に体験します。
+1. **[useradd、usermod、および userdel で Linux ユーザーアカウントを管理する](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、それらの変更と削除まで、ユーザー管理の完全なライフサイクルを練習します。
+2. **[groupadd、usermod、および groupdel で Linux グループを管理する](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成やユーザーメンバーシップの変更など、グループ管理のための主要なコマンドラインユーティリティを実践的に体験します。
 3. **[Linux でユーザーアカウントと Sudo 権限を設定する](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux システムのセキュリティを強化するために、ユーザーアカウントと sudo 権限を管理するための重要なテクニックを学びます。
 
 これらのラボは、ユーザーID とアカウント管理の概念を実際のシナリオに適用し、Linux ユーザー管理に自信を持つのに役立ちます。
@@ -51,4 +51,4 @@ root:x:0:0:root:/root:/bin/bash
 
 ## Quiz Answer
 
--
+*
