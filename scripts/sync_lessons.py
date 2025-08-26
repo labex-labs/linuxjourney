@@ -28,6 +28,9 @@ Examples:
     # Skip cache clearing
     python sync_lessons.py --path lessons/en/filesystem/ --skip-cache-clear
 
+    # Clear all lesson caches and exit
+    python sync_lessons.py --clear-all-cache
+
 Environment Variables Required:
     CLOUDFLARE_API_TOKEN: Your Cloudflare API token
     CLOUDFLARE_ACCOUNT_ID: Your Cloudflare account ID
@@ -284,6 +287,97 @@ class CloudflareD1Client:
                 f"ERROR: Failed to clear cache for {cache_key}: {type(e).__name__}: {str(e)}"
             )
             return False
+
+    def list_kv_keys_by_prefix(self, prefix: str) -> List[str]:
+        """List all KV keys with a specific prefix"""
+        if not self.kv_namespace_id or not self.kv_base_url:
+            logger.warning("WARNING: KV namespace not configured, cannot list keys")
+            return []
+
+        try:
+            # Use Cloudflare API to list keys with prefix
+            params = {"prefix": prefix}
+            response = requests.get(
+                f"{self.kv_base_url}/keys", headers=self.headers, params=params
+            )
+
+            if response.status_code != 200:
+                logger.error(
+                    f"ERROR: Failed to list keys: {response.status_code} - {response.text}"
+                )
+                return []
+
+            data = response.json()
+            if not data.get("success", False):
+                logger.error(f"ERROR: API returned error: {data}")
+                return []
+
+            keys = []
+            for key_info in data.get("result", []):
+                keys.append(key_info["name"])
+
+            logger.info(f"INFO: Found {len(keys)} keys with prefix '{prefix}'")
+            return keys
+
+        except Exception as e:
+            logger.error(
+                f"ERROR: Failed to list keys with prefix '{prefix}': {type(e).__name__}: {str(e)}"
+            )
+            return []
+
+    def clear_all_lesson_caches(self) -> Tuple[int, int]:
+        """Clear all KV cache entries with prefix 'cache:v1:lessons'
+
+        Returns:
+            Tuple[int, int]: (success_count, error_count)
+        """
+        if not self.kv_namespace_id or not self.kv_base_url:
+            logger.warning(
+                "WARNING: KV namespace not configured, skipping cache clearing"
+            )
+            return 0, 0
+
+        prefix = "cache:v1:lessons"
+        logger.info(f"INFO: Listing all cache keys with prefix '{prefix}'...")
+
+        # Get all keys with the prefix
+        cache_keys = self.list_kv_keys_by_prefix(prefix)
+
+        if not cache_keys:
+            logger.info("INFO: No cache keys found to clear")
+            return 0, 0
+
+        logger.info(f"INFO: Found {len(cache_keys)} cache keys to clear")
+
+        success_count = 0
+        error_count = 0
+
+        # Delete each key
+        for cache_key in cache_keys:
+            try:
+                response = requests.delete(
+                    f"{self.kv_base_url}/values/{cache_key}", headers=self.headers
+                )
+
+                if response.status_code == 200:
+                    logger.info(f"INFO: Cleared cache key: {cache_key}")
+                    success_count += 1
+                else:
+                    logger.warning(
+                        f"WARNING: Failed to clear cache key {cache_key}: {response.status_code} - {response.text}"
+                    )
+                    error_count += 1
+
+            except Exception as e:
+                logger.error(
+                    f"ERROR: Failed to clear cache key {cache_key}: {type(e).__name__}: {str(e)}"
+                )
+                error_count += 1
+
+        logger.info(
+            f"INFO: Cache clearing completed - Success: {success_count}, Errors: {error_count}"
+        )
+        return success_count, error_count
 
 
 class MarkdownParser:
@@ -771,8 +865,8 @@ def show_comparison_preview(
 @click.option(
     "--path",
     type=click.Path(exists=True),
-    required=True,
-    help="Path to a specific lesson file or directory containing lesson files",
+    required=False,
+    help="Path to a specific lesson file or directory containing lesson files (not required for --clear-all-cache)",
 )
 @click.option(
     "--no-preview",
@@ -791,7 +885,19 @@ def show_comparison_preview(
     default=False,
     help="Skip clearing KV cache after updating lessons",
 )
-def main(path: str, no_preview: bool, lang: Optional[str], skip_cache_clear: bool):
+@click.option(
+    "--clear-all-cache",
+    is_flag=True,
+    default=False,
+    help="Clear all lesson cache entries (cache:v1:lessons prefix) and exit",
+)
+def main(
+    path: str,
+    no_preview: bool,
+    lang: Optional[str],
+    skip_cache_clear: bool,
+    clear_all_cache: bool,
+):
     """Update existing Linux Journey lessons in Cloudflare D1 database.
 
     Use --path to specify either:
@@ -801,8 +907,99 @@ def main(path: str, no_preview: bool, lang: Optional[str], skip_cache_clear: boo
     Use --lang to only synchronize files for a specific language (e.g., en, zh, es).
     Use --no-preview to skip the comparison preview and proceed directly with synchronization.
     Use --skip-cache-clear to skip clearing KV cache after updating lessons.
+    Use --clear-all-cache to clear all lesson cache entries (cache:v1:lessons prefix) and exit.
     """
     console.print("[bold blue]Linux Journey Lesson Sync Tool[/bold blue]")
+
+    # Handle clear-all-cache option first
+    if clear_all_cache:
+        console.print(
+            "[bold cyan]Cache Clearing Mode: Clearing all lesson caches[/bold cyan]"
+        )
+        console.print()
+
+        # Check for required environment variables for KV operations
+        api_token = os.getenv("CLOUDFLARE_API_TOKEN")
+        account_id = os.getenv("CLOUDFLARE_ACCOUNT_ID")
+        kv_namespace_id = os.getenv("CLOUDFLARE_KV_NAMESPACE_ID")
+
+        if not all([api_token, account_id, kv_namespace_id]):
+            console.print(
+                "[bold red]ERROR: Missing required environment variables for cache clearing:[/bold red]"
+            )
+            console.print("• CLOUDFLARE_API_TOKEN")
+            console.print("• CLOUDFLARE_ACCOUNT_ID")
+            console.print("• CLOUDFLARE_KV_NAMESPACE_ID")
+            raise click.Abort()
+
+        # Initialize database client (we only need it for KV operations)
+        db_client = CloudflareD1Client(
+            api_token,
+            account_id,
+            "",
+            kv_namespace_id,
+            False,  # Empty database_id since we only use KV
+        )
+
+        # Test the KV connection by trying to list keys
+        console.print("[dim]INFO: Testing KV connection...[/dim]")
+        try:
+            test_keys = db_client.list_kv_keys_by_prefix("cache:v1:lessons")
+            console.print(
+                f"[dim green]INFO: KV connection successful, found {len(test_keys)} cache keys[/dim green]"
+            )
+        except Exception as e:
+            console.print(
+                f"[bold red]ERROR: KV connection failed: {type(e).__name__}: {str(e)}[/bold red]"
+            )
+            raise click.Abort()
+
+        # Confirm before clearing all caches
+        if test_keys:
+            console.print(
+                f"\n[yellow]WARNING: This will clear {len(test_keys)} cache entries with prefix 'cache:v1:lessons'[/yellow]"
+            )
+            if not Confirm.ask(
+                "[bold yellow]Do you want to proceed with clearing all lesson caches?[/bold yellow]"
+            ):
+                console.print("[yellow]INFO: Cache clearing cancelled by user[/yellow]")
+                raise click.Abort()
+        else:
+            console.print("[green]INFO: No cache entries found to clear[/green]")
+            return
+
+        # Clear all caches
+        console.print("\n[bold green]INFO: Starting cache clearing...[/bold green]")
+        success_count, error_count = db_client.clear_all_lesson_caches()
+
+        # Show final summary
+        console.print()
+        if error_count == 0:
+            summary_panel = Panel.fit(
+                f"[bold green]SUCCESS: Cleared {success_count} cache entries[/bold green]",
+                title="[bold blue]Cache Clearing Summary[/bold blue]",
+                style="green",
+            )
+        else:
+            summary_panel = Panel.fit(
+                f"[bold green]SUCCESS: {success_count} cleared[/bold green]  [bold red]ERROR: {error_count} errors[/bold red]",
+                title="[bold blue]Cache Clearing Summary[/bold blue]",
+                style="blue",
+            )
+        console.print(summary_panel)
+
+        if error_count > 0:
+            raise click.Abort()
+
+        return  # Exit after clearing caches
+
+    # Validate that path is provided for normal operations
+    if not path:
+        console.print(
+            "[bold red]ERROR: --path is required for lesson synchronization (only optional for --clear-all-cache)[/bold red]"
+        )
+        raise click.Abort()
+
     console.print(f"Processing: {path}")
     if lang:
         console.print(f"Language filter: {lang}")
