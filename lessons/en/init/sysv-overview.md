@@ -38,7 +38,7 @@ K10updates  K80openvpn
 
 We see that when we switch to runlevel 0 or shutdown mode, our machine will try to run a script to kill the updates services and then OpenVPN. To find out what runlevel your machine is booting into, you can see the default runlevel in the `/etc/inittab` file. You can also change your default runlevel in this file.
 
-One thing to note: System V is slowly getting replaced, maybe not today, or even years from now. However, you may see runlevels come up in other init implementations. This is primarily to support those services that are only started or stopped using System V init scripts.
+One thing to note: System V has largely been replaced by systemd in most modern Linux distributions. However, you may see runlevels come up in other init implementations. This is primarily to support those services that are only started or stopped using System V init scripts.
 
 ## Exercise
 

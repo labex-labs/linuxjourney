@@ -5,10 +5,6 @@ on:
     branches: [master]
     paths:
       - "lessons/**/*.md"
-  pull_request:
-    branches: [master]
-    paths:
-      - "lessons/**/*.md"
   workflow_dispatch:
     inputs:
       sync_path:
@@ -47,6 +43,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: linuxjourney
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -78,10 +75,12 @@ jobs:
           # Get list of changed files
           if [[ "${{ github.event_name }}" == "push" ]]; then
             # For push events, compare current commit with previous commit
-            CHANGED_FILES=$(git diff --name-only HEAD~1..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
-          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            # For PR events, compare target branch with source branch
-            CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
+            if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+              CHANGED_FILES=$(git diff --name-only HEAD~1..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
+            else
+              # If HEAD~1 doesn't exist (first commit), get all lesson files
+              CHANGED_FILES=$(git diff --name-only --diff-filter=A HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
+            fi
           elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ -n "${{ github.event.inputs.sync_path }}" ]]; then
             # For manual trigger with specified path, use the specified path
             SYNC_PATH="${{ github.event.inputs.sync_path }}"

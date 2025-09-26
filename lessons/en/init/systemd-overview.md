@@ -9,7 +9,7 @@ meta_keywords: "Systemd, Systemd units, Systemd targets, Linux boot process, Lin
 
 ## Lesson Content
 
-Systemd is slowly becoming the emerging standard for init. If you have a `/usr/lib/systemd` directory, you're most likely using systemd.
+Systemd is the standard init system in most modern Linux distributions. If you have a `/usr/lib/systemd` directory, you're most likely using systemd.
 
 Systemd uses goals to get your system up and running. Basically, you have a target that you want to achieve, and this target also has dependencies that need to be met. Systemd is extremely flexible and robust; it does not follow a strict sequence to get processes started. Here's what happens during a typical systemd boot:
 
