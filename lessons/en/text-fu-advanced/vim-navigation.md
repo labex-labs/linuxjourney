@@ -12,8 +12,8 @@ meta_keywords: "Vim navigation, Vim tutorial, Linux Vim, Vim movement, Vim basic
 Now you may notice, the mouse is nowhere in use here. To navigate a text document in Vim, use the following keys:
 
 - `h` or the left arrow - will move you left one character
-- `j` or the up arrow - will move you up one line
-- `k` or the down arrow - will move you down one line
+- `j` or the down arrow - will move you down one line
+- `k` or the up arrow - will move you up one line
 - `l` or the right arrow - will move you right one character
 
 ## Exercise

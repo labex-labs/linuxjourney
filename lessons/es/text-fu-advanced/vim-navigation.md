@@ -2,31 +2,31 @@
 index: 5
 lang: "es"
 title: "Navegación en Vim"
-meta_title: "Navegación en Vim - Text-Fu Avanzado"
-meta_description: "Aprende los conceptos básicos de navegación de Vim usando las teclas h, j, k, l. Comprende el movimiento esencial de Vim para principiantes y mejora tus habilidades en la línea de comandos de Linux."
-meta_keywords: "navegación Vim, tutorial Vim, Linux Vim, movimiento Vim, conceptos básicos Vim, Vim para principiantes, editor de texto Linux, guía Vim"
+meta_title: "Navegación en Vim - Fu Avanzado de Texto"
+meta_description: "Aprenda los conceptos básicos de navegación en Vim usando las teclas h, j, k, l. Comprenda el movimiento esencial de Vim para principiantes y mejore sus habilidades en la línea de comandos de Linux."
+meta_keywords: "Navegación Vim, tutorial Vim, Vim Linux, movimiento Vim, conceptos básicos de Vim, Vim para principiantes, editor de texto Linux, guía Vim"
 ---
 
 ## Lesson Content
 
-Ahora, habrás notado que el ratón no se usa aquí. Para navegar por un documento de texto en Vim, usa las siguientes teclas:
+Ahora puede notar que el ratón no se utiliza aquí. Para navegar por un documento de texto en Vim, utilice las siguientes teclas:
 
-- `h` o la flecha izquierda - te moverá un carácter a la izquierda
-- `j` o la flecha hacia arriba - te moverá una línea hacia arriba
-- `k` o la flecha hacia abajo - te moverá una línea hacia abajo
-- `l` o la flecha derecha - te moverá un carácter a la derecha
+- `h` o la flecha izquierda: le moverá un carácter a la izquierda
+- `j` o la flecha hacia abajo: le moverá una línea hacia abajo
+- `k` o la flecha hacia arriba: le moverá una línea hacia arriba
+- `l` o la flecha derecha: le moverá un carácter a la derecha
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la navegación y el uso del editor de texto:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la navegación y el uso del editor de texto:
 
-1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación de archivos, la edición de texto, el guardado de archivos y la navegación con Vim y Nano en un entorno Linux real.
+1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practique la creación de archivos, la edición de texto, el guardado de archivos y la navegación con Vim y Nano en un entorno Linux real.
 
-Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a desarrollar confianza con la edición de texto en Linux.
+Este laboratorio le ayudará a aplicar los conceptos en escenarios reales y a ganar confianza con la edición de texto en Linux.
 
 ## Quiz Question
 
-¿Qué letra se usa para moverse hacia abajo?
+¿Qué letra se utiliza para moverse hacia abajo?
 
 ## Quiz Answer
 
