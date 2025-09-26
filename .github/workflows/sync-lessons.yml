@@ -25,6 +25,7 @@ jobs:
     env:
       LABEX_USERNAME: ${{ secrets.LABEX_USERNAME }}
       LABEX_PASSWORD: ${{ secrets.LABEX_PASSWORD }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
       WORKSPACE: ${{ github.workspace }}
 
     steps:
@@ -40,6 +41,7 @@ jobs:
         with:
           repository: labex-labs/labex-auto
           path: labex-auto
+          token: ${{ env.GH_TOKEN }}
 
       - name: Checkout linuxjourney (for getting changed files)
         uses: actions/checkout@v4
