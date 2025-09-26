@@ -35,7 +35,7 @@ Let's actually see logging in action; you can manually send a log with the `logg
 logger -s Hello
 ```
 
-Now look inside your `/var/log/syslog`, and you should see this entry in your logs!
+Now look inside your `/var/log/syslog`, and you should see this entry in your logs.
 
 ## Exercise
 

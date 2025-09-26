@@ -3,8 +3,8 @@ index: 2
 lang: "de"
 title: "syslog"
 meta_title: "syslog - Protokollierung"
-meta_description: "Erfahren Sie mehr über syslog und rsyslog in Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Beginnen Sie mit diesem anfängerfreundlichen Tutorial!"
-meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Linux für Anfänger, Systemprotokollierung"
+meta_description: "Erfahren Sie mehr über syslog und rsyslog unter Linux, wie Sie Systemprotokolle verwalten und den logger-Befehl verwenden. Beginnen Sie mit diesem anfängerfreundlichen Tutorial!"
+meta_keywords: "syslog, rsyslog, Linux-Protokolle, logger-Befehl, /var/log/syslog, Linux-Tutorial, Anfänger-Linux, Systemprotokollierung"
 ---
 
 ## Lesson Content
@@ -27,29 +27,29 @@ mail.*                          -/var/log/mail.log
 #user.*                         -/var/log/user.log
 ```
 
-Diese Regeln für Protokolldateien werden durch den Selektor in der linken Spalte und die Aktion in der rechten Spalte gekennzeichnet. Die Aktion sagt uns, wohin die Protokollinformationen gesendet werden sollen: an eine Datei, Konsole usw. Denken Sie daran, dass nicht jede Anwendung und jeder Dienst rsyslog zur Verwaltung ihrer Protokolle verwendet. Wenn Sie also genau wissen möchten, was protokolliert wird, müssen Sie in diesem Verzeichnis nachsehen.
+Diese Regeln für Protokolldateien werden durch den Selektor in der linken Spalte und die Aktion in der rechten Spalte gekennzeichnet. Die Aktion teilt uns mit, wohin die Protokollinformationen gesendet werden sollen: in eine Datei, auf die Konsole usw. Denken Sie daran, dass nicht jede Anwendung und jeder Dienst rsyslog zur Verwaltung seiner Protokolle verwendet. Wenn Sie also genau wissen möchten, was protokolliert wird, müssen Sie in dieses Verzeichnis schauen.
 
-Sehen wir uns die Protokollierung in Aktion an; Sie können ein Protokoll manuell mit dem Befehl `logger` senden:
+Sehen wir uns die Protokollierung in Aktion an; Sie können manuell ein Protokoll mit dem Befehl `logger` senden:
 
 ```bash
 logger -s Hello
 ```
 
-Schauen Sie nun in Ihr `/var/log/syslog`, und Sie sollten diesen Eintrag in Ihren Protokollen sehen!
+Schauen Sie nun in Ihre `/var/log/syslog`, und Sie sollten diesen Eintrag in Ihren Protokollen sehen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Protokollierung und Dateianzeige zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Protokollierung und der Dateiansicht zu festigen:
 
-1. **[Protokoll- und Konfigurationsdateien in Linux anzeigen](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Üben Sie grundlegende Linux-Befehlszeilenkenntnisse, um Textdateien, einschließlich Systemprotokolle und Konfigurationsdateien, effizient anzuzeigen und zu navigieren.
-2. **[Linux tail Befehl: Dateiende anzeigen](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** – Lernen Sie den Linux-Befehl `tail` zum Anzeigen und Überwachen des Endes von Textdateien, was besonders nützlich für die Echtzeit-Protokollanalyse ist.
-3. **[Text mit grep in Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** – Lernen Sie, nach bestimmten Textmustern in Dateien zu suchen, eine unschätzbare Fähigkeit, um Protokolleinträge zu durchsuchen und wichtige Informationen zu finden.
+1. **[Anzeigen von Protokoll- und Konfigurationsdateien unter Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie wesentliche Linux-Befehlszeilenfähigkeiten für die effiziente Anzeige und Navigation von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien.
+2. **[Linux tail Befehl: Anzeige des Dateiende](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux-Befehl `tail` kennen, um das Ende von Textdateien anzuzeigen und zu überwachen, was besonders nützlich für die Echtzeit-Protokollanalyse ist.
+3. **[Text mit grep unter Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - Lernen Sie, nach bestimmten Textmustern in Dateien zu suchen, eine unschätzbare Fähigkeit, um Protokolleinträge nach wichtigen Informationen zu durchsuchen.
 
-Diese Übungen helfen Ihnen, die Konzepte der Protokollverwaltung und Dateiprüfung in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte des Protokollmanagements und der Dateiinspektion in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
 
 ## Quiz Question
 
-Welchen Befehl können Sie verwenden, um eine Nachricht manuell zu protokollieren?
+Welchen Befehl können Sie verwenden, um manuell eine Nachricht zu protokollieren?
 
 ## Quiz Answer
 
