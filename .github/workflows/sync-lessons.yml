@@ -9,10 +9,10 @@ on:
     branches: [master]
     paths:
       - "lessons/**/*.md"
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
     inputs:
       sync_path:
-        description: "指定要同步的文档路径 (例如：lessons/en/logging/syslog.md)，留空则同步所有变更文档"
+        description: "Path to sync specific lesson file (e.g., lessons/en/logging/syslog.md). Leave empty to sync all changed files."
         required: false
         default: ""
         type: string
@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p $WORKSPACE
           rm -rf "$WORKSPACE/labex-auto"
-          echo "工作目录已清理完成"
+          echo "Workspace cleaned"
           ls -la $WORKSPACE
 
       - name: Checkout labex-auto
@@ -62,75 +62,75 @@ jobs:
         run: |
           for var in LABEX_USERNAME LABEX_PASSWORD; do
             if [ -z "${!var}" ]; then
-              echo "错误: 缺少环境变量 $var"
+              echo "Error: Missing environment variable $var"
               exit 1
             fi
           done
-          echo "所有必需的环境变量已设置"
+          echo "All required environment variables are set"
 
       - name: Get changed lesson files
         id: changed-files
         run: |
           cd linuxjourney
 
-          # 获取变更的文件列表
+          # Get list of changed files
           if [[ "${{ github.event_name }}" == "push" ]]; then
-            # 对于 push 事件，比较当前提交和前一个提交
+            # For push events, compare current commit with previous commit
             CHANGED_FILES=$(git diff --name-only HEAD~1..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
           elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            # 对于 PR 事件，比较目标分支和源分支
+            # For PR events, compare target branch with source branch
             CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}..HEAD -- 'lessons/**/*.md' | tr '\n' ' ')
           elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ -n "${{ github.event.inputs.sync_path }}" ]]; then
-            # 对于手动触发且指定了路径，直接使用指定路径
+            # For manual trigger with specified path, use the specified path
             SYNC_PATH="${{ github.event.inputs.sync_path }}"
             if [[ -f "$SYNC_PATH" ]] && [[ "$SYNC_PATH" =~ ^lessons/.*\.md$ ]]; then
               CHANGED_FILES="$SYNC_PATH"
             else
-              echo "错误: 指定路径不存在或不是有效的 lessons 文档：$SYNC_PATH"
-              echo "路径应该以 'lessons/' 开头并以 '.md' 结尾"
+              echo "Error: Specified path does not exist or is not a valid lesson document: $SYNC_PATH"
+              echo "Path should start with 'lessons/' and end with '.md'"
               exit 1
             fi
           else
-            # 对于手动触发且未指定路径，获取所有 lessons 下的 md 文件
+            # For manual trigger without specified path, get all md files in lessons directory
             CHANGED_FILES=$(find lessons -name "*.md" | tr '\n' ' ')
           fi
 
-          echo "变更的文档文件: $CHANGED_FILES"
+          echo "Changed files: $CHANGED_FILES"
           echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
 
       - name: Sync changed lessons to LabEx
         run: |
           cd labex-auto
 
-          # 获取变更文件列表
+          # Get list of changed files
           CHANGED_FILES="${{ steps.changed-files.outputs.changed_files }}"
 
           if [ -z "$CHANGED_FILES" ]; then
-            echo "没有变更的文档文件，跳过同步"
+            echo "No changed files, skipping sync"
             exit 0
           fi
 
-          echo "开始同步变更的文档到 LabEx..."
-          echo "执行时间: $(date)"
+          echo "Starting sync of changed documents to LabEx..."
+          echo "Execution time: $(date)"
 
-          # 对每个变更的文档执行同步
+          # Sync each changed document
           SYNC_COUNT=0
           FAILED_FILES=""
           SUCCESS_FILES=""
 
           for file in $CHANGED_FILES; do
             if [ -f "../linuxjourney/$file" ]; then
-              echo "同步文档: $file"
+              echo "Syncing document: $file"
               if labex-auto labex sync linuxjourney --path "$file"; then
-                SUCCESS_FILES="$SUCCESS_FILES\n- ✅ $file"
+                SUCCESS_FILES="$SUCCESS_FILES\n- $file"
                 SYNC_COUNT=$((SYNC_COUNT + 1))
               else
-                FAILED_FILES="$FAILED_FILES\n- ❌ $file"
+                FAILED_FILES="$FAILED_FILES\n- $file"
               fi
             fi
           done
 
-          # 保存同步结果到输出
+          # Save sync results to output
           echo "sync_count=$SYNC_COUNT" >> $GITHUB_OUTPUT
           echo "success_files<<EOF" >> $GITHUB_OUTPUT
           echo -e "$SUCCESS_FILES" >> $GITHUB_OUTPUT
@@ -146,49 +146,49 @@ jobs:
           FAILED_FILES="${{ steps.sync-lessons.outputs.failed_files }}"
           CHANGED_FILES="${{ steps.changed-files.outputs.changed_files }}"
 
-          # 生成 GitHub Actions summary
+          # Generate GitHub Actions summary
           {
-            echo "## 📚 LabEx 文档同步报告"
+            echo "## LabEx Lesson Sync Report"
             echo ""
-            echo "### 📊 同步统计"
-            echo "- **同步文档数量**: $SYNC_COUNT"
-            echo "- **触发类型**: ${{ github.event_name }}"
-            echo "- **执行时间**: $(date)"
+            echo "### Statistics"
+            echo "- Files synced: $SYNC_COUNT"
+            echo "- Trigger: ${{ github.event_name }}"
+            echo "- Time: $(date)"
             echo ""
 
             if [ -n "$CHANGED_FILES" ]; then
-              echo "### 📋 检测到的变更文件"
+              echo "### Changed Files"
               for file in $CHANGED_FILES; do
-                echo "- 📄 $file"
+                echo "- $file"
               done
               echo ""
             fi
 
             if [ -n "$SUCCESS_FILES" ]; then
-              echo "### ✅ 同步成功的文件"
+              echo "### Successfully Synced"
               echo "$SUCCESS_FILES"
               echo ""
             fi
 
             if [ -n "$FAILED_FILES" ]; then
-              echo "### ❌ 同步失败的文件"
+              echo "### Failed to Sync"
               echo "$FAILED_FILES"
               echo ""
             fi
 
-            echo "### 🔗 相关链接"
-            echo "- [查看本次提交](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})"
-            echo "- [查看 Actions 日志](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+            echo "### Links"
+            echo "- [Commit](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})"
+            echo "- [Action Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
             echo ""
 
             if [ -n "$FAILED_FILES" ]; then
-              echo "⚠️  **注意**: 部分文件同步失败，请检查上述失败文件列表。"
+              echo "**Warning**: Some files failed to sync. Please check the failed files list above."
             else
-              echo "🎉 **同步完成**: 所有检测到的文档已成功同步到 LabEx！"
+              echo "**Completed**: All detected documents have been successfully synced to LabEx."
             fi
           } >> $GITHUB_STEP_SUMMARY
 
       - name: Notify completion
         run: |
-          echo "文档同步任务完成"
-          echo "完成时间: $(date)"
+          echo "Sync task completed"
+          echo "Completion time: $(date)"
