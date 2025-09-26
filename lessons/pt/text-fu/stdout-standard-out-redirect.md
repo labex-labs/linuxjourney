@@ -57,4 +57,4 @@ Qual redirecionador você usa para anexar a saída a um arquivo?
 
 ## Quiz Answer
 
-> >
+>>
