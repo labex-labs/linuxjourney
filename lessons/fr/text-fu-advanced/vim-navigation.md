@@ -9,7 +9,7 @@ meta_keywords: "Navigation Vim, Tutoriel Vim, Vim Linux, Mouvement Vim, Bases Vi
 
 ## Lesson Content
 
-Vous remarquerez peut-être que la souris n'est utilisée nulle part ici. Pour naviguer dans un document texte sous Vim, utilisez les touches suivantes :
+Vous remarquerez peut-être que la souris n'est pas utilisée ici. Pour naviguer dans un document texte dans Vim, utilisez les touches suivantes :
 
 - `h` ou la flèche gauche - vous déplacera d'un caractère vers la gauche
 - `j` ou la flèche du bas - vous déplacera d'une ligne vers le bas
@@ -20,7 +20,7 @@ Vous remarquerez peut-être que la souris n'est utilisée nulle part ici. Pour n
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation et de l'utilisation de l'éditeur de texte :
 
-1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à éditer du texte, à sauvegarder des fichiers et à naviguer avec Vim et Nano dans un environnement Linux réel.
+1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à modifier du texte, à sauvegarder des fichiers et à naviguer avec Vim et Nano dans un environnement Linux réel.
 
 Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à gagner en confiance avec l'édition de texte sous Linux.
 
@@ -30,4 +30,4 @@ Quelle lettre est utilisée pour se déplacer vers le bas ?
 
 ## Quiz Answer
 
-k
+j
