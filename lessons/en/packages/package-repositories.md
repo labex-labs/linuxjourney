@@ -17,6 +17,12 @@ Now, instead of going to their website to download the package directly, you can
 
 Your distribution already comes with pre-approved sources to get packages from, and this is how it installs all the base packages you see on your system. On a Debian system, this sources file is the `/etc/apt/sources.list` file. Your machine will know to look there and check for any source repositories you added.
 
+> **Note:** On older Debian/Ubuntu systems, repositories are listed in `/etc/apt/sources.list`.  
+> On newer Ubuntu versions (22.04 and above), sources have been migrated to structured files in `/etc/apt/sources.list.d/`, such as `ubuntu.sources`.  
+> Both formats are supported by `apt`, but you may see either depending on your system.
+
+
+
 ## Exercise
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux package management and repositories:
