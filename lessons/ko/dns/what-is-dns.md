@@ -19,9 +19,9 @@ DNS 는 근본적으로 호스트 이름과 IP 주소의 분산 데이터베이�
 
 연습이 완벽을 만듭니다! 다음은 DNS 및 호스트 이름 확인에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - `dig` 및 `nslookup`과 같은 필수 Linux 도구를 사용하여 다양한 DNS 레코드 유형을 쿼리하는 방법을 배우고, 호스트 이름이 IP 주소로 확인되는 방식을 이해하는 데 도움이 됩니다.
-2. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/linux-manage-local-hostname-resolution-in-linux)** - `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 연습을 합니다. 이는 외부 DNS 서버에 의존하지 않고 Linux 시스템이 이름을 확인하는 방법을 제어하는 ​​기본적인 기술입니다.
-3. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - `bind9`를 사용하여 자신만의 로컬 권한 있는 DNS 서버를 설정하고 구성하여 DNS 영역 및 레코드가 관리되는 방식에 대해 더 깊이 탐구할 수 있는 실습 경험을 얻습니다.
+1. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig` 및 `nslookup`과 같은 필수 Linux 도구를 사용하여 다양한 DNS 레코드 유형을 쿼리하는 방법을 배우고, 호스트 이름이 IP 주소로 확인되는 방식을 이해하는 데 도움이 됩니다.
+2. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 연습을 합니다. 이는 외부 DNS 서버에 의존하지 않고 Linux 시스템이 이름을 확인하는 방법을 제어하는 ​​기본적인 기술입니다.
+3. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - `bind9`를 사용하여 자신만의 로컬 권한 있는 DNS 서버를 설정하고 구성하여 DNS 영역 및 레코드가 관리되는 방식에 대해 더 깊이 탐구할 수 있는 실습 경험을 얻습니다.
 
 이러한 랩은 실제 시나리오에 개념을 적용하고 Linux 환경에서 DNS 및 호스트 이름 확인에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

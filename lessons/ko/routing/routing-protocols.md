@@ -19,9 +19,9 @@ meta_keywords: "라우팅 프로토콜, 네트워크 컨버전스, 거리 벡터
 
 연습이 완벽을 만듭니다! 다음은 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정, 네트워크 구성 확인을 연습하여 라우팅 테이블이 어떻게 구축되고 활용되는지 이해하는 데 중요합니다.
-2. **[Linux 에서 ping 및 arp 를 이용한 네트워크 계층 상호작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 네트워크 계층에서 장치들이 어떻게 상호작용하는지 배우고, ARP 를 관찰하며 기본 게이트웨이가 원격 트래픽을 어떻게 처리하는지 파악하여 라우팅 프로토콜이 관리하는 메커니즘에 대한 통찰력을 얻습니다.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고, IP 주소를 할당하며, 서브넷 간 연결을 테스트하여 네트워크 변경 및 라우팅 결정과 관련된 개념을 직접 적용합니다.
+1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정, 네트워크 구성 확인을 연습하여 라우팅 테이블이 어떻게 구축되고 활용되는지 이해하는 데 중요합니다.
+2. **[Linux 에서 ping 및 arp 를 이용한 네트워크 계층 상호작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 네트워크 계층에서 장치들이 어떻게 상호작용하는지 배우고, ARP 를 관찰하며 기본 게이트웨이가 원격 트래픽을 어떻게 처리하는지 파악하여 라우팅 프로토콜이 관리하는 메커니즘에 대한 통찰력을 얻습니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고, IP 주소를 할당하며, 서브넷 간 연결을 테스트하여 네트워크 변경 및 라우팅 결정과 관련된 개념을 직접 적용합니다.
 
 이러한 랩은 실제 시나리오에서 네트워크 구성 및 연결 개념을 적용하는 데 도움이 되며, 라우팅 프로토콜이 자동화하는 기본 요소에 대한 자신감을 구축할 것입니다.
 

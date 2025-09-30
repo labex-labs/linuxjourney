@@ -28,9 +28,9 @@ DHCP es más complejo que esto, pero esta es la esencia.
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del direccionamiento IP dinámico y la configuración de red:
 
-1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Practica el uso del comando `ip` para inspeccionar interfaces y, específicamente, usa `dhclient` para obtener una dirección IP dinámica, aplicando directamente tus conocimientos de DHCP.
-2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IP asignadas por DHCP, e inspeccionar interfaces de red.
-3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explora el direccionamiento IP y la accesibilidad de la red usando `ping` e `ip a`, lo que te ayudará a comprender cómo funcionan las IP asignadas dinámicamente dentro de una red.
+1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practica el uso del comando `ip` para inspeccionar interfaces y, específicamente, usa `dhclient` para obtener una dirección IP dinámica, aplicando directamente tus conocimientos de DHCP.
+2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IP asignadas por DHCP, e inspeccionar interfaces de red.
+3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explora el direccionamiento IP y la accesibilidad de la red usando `ping` e `ip a`, lo que te ayudará a comprender cómo funcionan las IP asignadas dinámicamente dentro de una red.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de asignación dinámica de IP y configuración de red en escenarios reales y a generar confianza con las redes Linux.
 

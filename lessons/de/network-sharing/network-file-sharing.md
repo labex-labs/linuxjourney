@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis der sicheren Netzwerkdateiverwaltung zu vertiefen:
 
-1. **[Sicherer Fernzugriff in Linux mit SSH](https://labex.io/de/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** – Üben Sie schlüsselbasierte Authentifizierung, sicheres Übertragen von Dateien mit `scp` und das Erstellen von SSH-Tunneln für die Portweiterleitung.
+1. **[Sicherer Fernzugriff in Linux mit SSH](https://labex.io/de/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** – Üben Sie schlüsselbasierte Authentifizierung, sicheres Übertragen von Dateien mit `scp` und das Erstellen von SSH-Tunneln für die Portweiterleitung.
 
 Dieses Labor wird Ihnen helfen, die Konzepte des sicheren Fernzugriffs und der Dateiübertragung in einem realen Szenario anzuwenden und Vertrauen in `scp` aufzubauen.
 

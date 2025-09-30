@@ -46,8 +46,8 @@ search localdomain
 
 熟能生巧！这里有一些动手实验来巩固您对本地主机名解析和 DNS 查询的理解：
 
-1. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - 练习编辑 `/etc/hosts` 文件以管理本地主机名解析，这是 DNS 查询之前的关键一步。
-2. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用 `dig` 和 `nslookup` 等基本 Linux 工具查询 DNS 记录，以了解您的机器如何解析外部名称。
+1. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 练习编辑 `/etc/hosts` 文件以管理本地主机名解析，这是 DNS 查询之前的关键一步。
+2. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用 `dig` 和 `nslookup` 等基本 Linux 工具查询 DNS 记录，以了解您的机器如何解析外部名称。
 
 这些实验将帮助您在实际场景中应用概念，并增强对主机名解析和 DNS 的信心。
 

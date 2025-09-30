@@ -29,8 +29,8 @@ Esta não é uma lista completa, mas deve dar uma ideia de onde procurar se voc�
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de DNS no Linux:
 
-1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Aprenda a usar ferramentas essenciais de linha de comando como `dig` e `nslookup` para consultar vários tipos de registros DNS e solucionar problemas de resolução de DNS.
-2. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Ganhe experiência prática instalando e configurando o `bind9` para configurar seu próprio servidor DNS autoritativo local, definindo zonas e testando a resolução.
+1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a usar ferramentas essenciais de linha de comando como `dig` e `nslookup` para consultar vários tipos de registros DNS e solucionar problemas de resolução de DNS.
+2. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Ganhe experiência prática instalando e configurando o `bind9` para configurar seu próprio servidor DNS autoritativo local, definindo zonas e testando a resolução.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de DNS no Linux.
 

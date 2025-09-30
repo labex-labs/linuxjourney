@@ -29,8 +29,8 @@ meta_keywords: "Linux DNS, BIND, DNSmasq, PowerDNS, DNS 服务器设置，Linux 
 
 熟能生巧！这里有一些动手实验，以加强您对 Linux 中 DNS 的理解：
 
-1. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - 学习使用 `dig` 和 `nslookup` 等基本命令行工具来查询各种 DNS 记录类型并解决 DNS 解析问题。
-2. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - 通过安装和配置 `bind9` 来设置您自己的本地权威 DNS 服务器，定义区域并测试解析，从而获得实践经验。
+1. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用 `dig` 和 `nslookup` 等基本命令行工具来查询各种 DNS 记录类型并解决 DNS 解析问题。
+2. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 通过安装和配置 `bind9` 来设置您自己的本地权威 DNS 服务器，定义区域并测试解析，从而获得实践经验。
 
 这些实验将帮助您在实际场景中应用概念，并增强您在 Linux 中进行 DNS 管理的信心。
 

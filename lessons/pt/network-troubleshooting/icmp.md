@@ -32,9 +32,9 @@ Essas mensagens farão mais sentido à medida que usarmos algumas ferramentas de
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do ICMP e da solução de problemas de rede:
 
-1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` para explorar como as camadas de rede e de enlace de dados interagem, aplicando diretamente conceitos relacionados à função do ICMP no teste de conectividade.
-2. **[Explore Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique o uso de `ping` para testar a acessibilidade da rede e diagnosticar problemas de conectividade, reforçando a aplicação prática das mensagens ICMP.
-3. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP e testar a conectividade com `ping` em um ambiente simulado, ajudando você a entender como as configurações de rede afetam a entrega de pacotes.
+1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` para explorar como as camadas de rede e de enlace de dados interagem, aplicando diretamente conceitos relacionados à função do ICMP no teste de conectividade.
+2. **[Explore Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique o uso de `ping` para testar a acessibilidade da rede e diagnosticar problemas de conectividade, reforçando a aplicação prática das mensagens ICMP.
+3. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP e testar a conectividade com `ping` em um ambiente simulado, ajudando você a entender como as configurações de rede afetam a entrega de pacotes.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de ICMP e diagnóstico de rede em cenários reais e a construir confiança na solução de problemas de rede.
 

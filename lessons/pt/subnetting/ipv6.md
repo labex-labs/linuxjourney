@@ -19,9 +19,9 @@ Já ouvimos o termo IPv6 aqui e ali, mas o que é? Todo dispositivo que se conec
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do endereçamento IPv6 e sua interação com o IPv4:
 
-1. **[Configurar e Verificar Endereços IPv6 no Linux](https://labex.io/pt/labs/linux-configure-and-verify-ipv6-addresses-in-linux-592858)** - Pratique a atribuição de endereços IPv6 estáticos e o teste de conectividade usando os comandos `ip` e `ping6`.
-2. **[Realizar Consultas DNS IPv6 no Linux](https://labex.io/pt/labs/linux-perform-ipv6-dns-lookups-in-linux-592862)** - Aprenda a consultar registros AAAA e verificar a resolução DNS IPv6 usando `dig`, `nslookup` e `ping6`.
-3. **[Configurar um Túnel 6to4 IPv4 para IPv6 no Linux](https://labex.io/pt/labs/linux-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - Ganhe experiência prática configurando um túnel 6to4 para habilitar a conectividade IPv6 sobre uma rede IPv4 existente.
+1. **[Configurar e Verificar Endereços IPv6 no Linux](https://labex.io/pt/labs/comptia-configure-and-verify-ipv6-addresses-in-linux-592858)** - Pratique a atribuição de endereços IPv6 estáticos e o teste de conectividade usando os comandos `ip` e `ping6`.
+2. **[Realizar Consultas DNS IPv6 no Linux](https://labex.io/pt/labs/comptia-perform-ipv6-dns-lookups-in-linux-592862)** - Aprenda a consultar registros AAAA e verificar a resolução DNS IPv6 usando `dig`, `nslookup` e `ping6`.
+3. **[Configurar um Túnel 6to4 IPv4 para IPv6 no Linux](https://labex.io/pt/labs/comptia-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - Ganhe experiência prática configurando um túnel 6to4 para habilitar a conectividade IPv6 sobre uma rede IPv4 existente.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de IPv6 em cenários reais e a construir confiança na configuração e solução de problemas de rede.
 

@@ -27,9 +27,9 @@ python -m SimpleHTTPServer
 
 熟能生巧！以下是一些动手实验，旨在加强你对网络连接和 IP 寻址的理解，这对于通过网络共享文件至关重要：
 
-1. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习识别不同的 IP 地址类型并测试网络可达性，这对于确保你的 Python HTTP 服务器可访问至关重要。
-2. **[识别 Linux 中的 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令查找你机器的 IP 地址，这是从另一台设备访问共享文件之前的必要步骤。
-3. **[管理 Linux 中的本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 /etc/hosts 文件来管理 Linux 中的本地主机名解析，这是 Web 开发和网络测试的关键技能。
+1. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习识别不同的 IP 地址类型并测试网络可达性，这对于确保你的 Python HTTP 服务器可访问至关重要。
+2. **[识别 Linux 中的 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令查找你机器的 IP 地址，这是从另一台设备访问共享文件之前的必要步骤。
+3. **[管理 Linux 中的本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 /etc/hosts 文件来管理 Linux 中的本地主机名解析，这是 Web 开发和网络测试的关键技能。
 
 这些实验将帮助你在实际场景中应用这些概念，并增强你在 Linux 中进行基本网络操作的信心。
 

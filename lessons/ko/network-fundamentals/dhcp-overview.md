@@ -28,9 +28,9 @@ DHCP 는 이보다 더 복잡하지만, 이것이 핵심입니다.
 
 연습하면 완벽해집니다! 동적 IP 주소 지정 및 네트워크 구성에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 인터페이스를 검사하고 특히 `dhclient`를 사용하여 동적 IP 주소를 얻는 연습을 통해 DHCP 지식을 직접 적용합니다.
-2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 DHCP 에 의해 할당된 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하고 네트워크 인터페이스를 검사하는 방법을 배웁니다.
-3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 동적으로 할당된 IP 가 네트워크 내에서 어떻게 작동하는지 이해하는 데 도움을 줍니다.
+1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 인터페이스를 검사하고 특히 `dhclient`를 사용하여 동적 IP 주소를 얻는 연습을 통해 DHCP 지식을 직접 적용합니다.
+2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 DHCP 에 의해 할당된 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하고 네트워크 인터페이스를 검사하는 방법을 배웁니다.
+3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 동적으로 할당된 IP 가 네트워크 내에서 어떻게 작동하는지 이해하는 데 도움을 줍니다.
 
 이러한 랩은 동적 IP 할당 및 네트워크 구성 개념을 실제 시나리오에 적용하고 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

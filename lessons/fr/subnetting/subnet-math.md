@@ -24,9 +24,9 @@ L'adresse IP est masquée par notre masque de sous-réseau. Quand vous voyez un 
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et du sous-réseautage :
 
-1. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, compétences essentielles pour la configuration et la planification de réseau.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
+1. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, compétences essentielles pour la configuration et la planification de réseau.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
+3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP, de masques de sous-réseau et de calcul d'hôtes dans des scénarios réels et à renforcer votre confiance avec les fondamentaux du réseau.
 

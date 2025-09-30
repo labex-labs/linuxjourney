@@ -27,9 +27,9 @@ python -m SimpleHTTPServer
 
 練習は完璧をもたらします！ここでは、ネットワーク経由でファイルを共有するために不可欠な、ネットワーク接続と IP アドレスの理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux での IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 異なる IP アドレスの種類を特定し、ネットワークの到達可能性をテストする練習をします。これは、Python HTTP サーバーがアクセス可能であることを確認するために重要です。
-2. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用してマシンの IP アドレスを見つける方法を学びます。これは、別のデバイスから共有ファイルにアクセスする前に必要な手順です。
-3. **[Linux でローカルホスト名の解決を管理する](https://labex.io/ja/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - /etc/hosts ファイルを編集して Linux でローカルホスト名の解決を管理する方法を学びます。これは、Web 開発とネットワークテストのための重要なスキルです。
+1. **[Linux での IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 異なる IP アドレスの種類を特定し、ネットワークの到達可能性をテストする練習をします。これは、Python HTTP サーバーがアクセス可能であることを確認するために重要です。
+2. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用してマシンの IP アドレスを見つける方法を学びます。これは、別のデバイスから共有ファイルにアクセスする前に必要な手順です。
+3. **[Linux でローカルホスト名の解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - /etc/hosts ファイルを編集して Linux でローカルホスト名の解決を管理する方法を学びます。これは、Web 開発とネットワークテストのための重要なスキルです。
 
 これらの演習は、実際のシナリオで概念を適用し、Linux での基本的なネットワーク操作に自信をつけるのに役立ちます。
 

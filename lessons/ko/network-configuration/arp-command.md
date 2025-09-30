@@ -35,9 +35,9 @@ ip neighbour show
 
 연습이 완벽을 만듭니다! ARP 및 네트워크 계층 상호 작용에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령을 사용하여 IP 주소가 MAC 주소로 어떻게 확인되는지, 그리고 기본 게이트웨이가 트래픽을 어떻게 처리하는지 관찰합니다.
-2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하는 방법을 배웁니다. 이는 ARP 를 이해하는 데 기본적입니다.
-3. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 IP 주소 지정을 관리하고 `arp` 및 `traceroute`로 네트워크 구성을 확인하는 연습을 합니다.
+1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령을 사용하여 IP 주소가 MAC 주소로 어떻게 확인되는지, 그리고 기본 게이트웨이가 트래픽을 어떻게 처리하는지 관찰합니다.
+2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하는 방법을 배웁니다. 이는 ARP 를 이해하는 데 기본적입니다.
+3. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 IP 주소 지정을 관리하고 `arp` 및 `traceroute`로 네트워크 구성을 확인하는 연습을 합니다.
 
 이 랩들은 실제 시나리오에서 ARP 및 네트워크 주소 지정 개념을 적용하고 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

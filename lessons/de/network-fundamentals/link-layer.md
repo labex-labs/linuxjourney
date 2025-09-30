@@ -40,9 +40,9 @@ Und da ist es: eine einfache (oder nicht ganz so einfache) Paketdurchquerung dur
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Link Layer, MAC-Adressen und ARP zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC-Adressen, auf einem Linux-System zu identifizieren.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie die Befehle `ping` und `arp` zusammenarbeiten, um IP-Adressen in MAC-Adressen aufzulösen und Netzwerkschicht-Interaktionen zu verstehen.
-3. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Sammeln Sie praktische Erfahrungen beim Erfassen und Überprüfen von Ethernet-Frames, einschließlich MAC-Adressen, um Low-Level-Netzwerkkommunikation zu verstehen.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC-Adressen, auf einem Linux-System zu identifizieren.
+2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie die Befehle `ping` und `arp` zusammenarbeiten, um IP-Adressen in MAC-Adressen aufzulösen und Netzwerkschicht-Interaktionen zu verstehen.
+3. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Sammeln Sie praktische Erfahrungen beim Erfassen und Überprüfen von Ethernet-Frames, einschließlich MAC-Adressen, um Low-Level-Netzwerkkommunikation zu verstehen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerk-Grundlagen auf der Link Layer aufzubauen.
 

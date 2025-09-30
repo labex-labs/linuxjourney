@@ -17,9 +17,9 @@ En la capa de red, recibe el segmento que viene de la capa de transporte y encap
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la capa de red, el direccionamiento IP y las subredes:
 
-1. **[Simular conectividad de capa de red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Practique la asignación de direcciones IP estáticas y la prueba de conectividad dentro y entre diferentes subredes usando contenedores Docker.
-2. **[Realizar subredes IP y conversión binaria en la terminal de Linux](https://labex.io/es/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine las subredes IP y la conversión binaria, incluido el cálculo de hosts y subredes utilizables, directamente en la terminal de Linux.
-3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore varios tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red usando `ping` e `ip a`.
+1. **[Simular conectividad de capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Practique la asignación de direcciones IP estáticas y la prueba de conectividad dentro y entre diferentes subredes usando contenedores Docker.
+2. **[Realizar subredes IP y conversión binaria en la terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine las subredes IP y la conversión binaria, incluido el cálculo de hosts y subredes utilizables, directamente en la terminal de Linux.
+3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore varios tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red usando `ping` e `ip a`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de direccionamiento IP y subredes en escenarios reales y a generar confianza con los fundamentos de la capa de red.
 

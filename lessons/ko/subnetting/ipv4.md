@@ -34,9 +34,9 @@ eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
 
 연습이 완벽을 만듭니다! 다음은 Linux 에서 IP 주소 지정 및 네트워크 식별에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 IPv4 및 IPv6 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`와 같은 명령을 사용하여 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트합니다.
-3. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP 주소와 네트워크가 비트 수준에서 어떻게 구성되는지에 대한 더 깊은 이해를 위해 필수적인 IP 서브넷팅 및 이진 변환을 마스터합니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 IPv4 및 IPv6 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`와 같은 명령을 사용하여 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트합니다.
+3. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP 주소와 네트워크가 비트 수준에서 어떻게 구성되는지에 대한 더 깊은 이해를 위해 필수적인 IP 서브넷팅 및 이진 변환을 마스터합니다.
 
 이 실습들은 실제 시나리오에서 IP 주소 지정 개념을 적용하고 Linux 에서 네트워크 구성 및 문제 해결에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

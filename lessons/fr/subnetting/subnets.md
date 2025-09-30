@@ -43,9 +43,9 @@ Mais attendez une minute, et si je veux me connecter à d'autres hôtes comme ya
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et du sous-réseautage :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4, ce qui est fondamental pour comprendre les sous-réseaux.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Apprenez à explorer différents types d'adresses IP et à tester la joignabilité du réseau, ce qui vous aidera à vérifier si les hôtes sont sur le même réseau.
-3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, en appliquant directement les concepts de préfixes réseau et d'identification d'hôte abordés dans la leçon.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4, ce qui est fondamental pour comprendre les sous-réseaux.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Apprenez à explorer différents types d'adresses IP et à tester la joignabilité du réseau, ce qui vous aidera à vérifier si les hôtes sont sur le même réseau.
+3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, en appliquant directement les concepts de préfixes réseau et d'identification d'hôte abordés dans la leçon.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en matière d'adressage réseau et de sous-réseautage.
 

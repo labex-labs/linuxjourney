@@ -29,8 +29,8 @@ DNS サーバーのセットアップについては、非常に長いチュー�
 
 練習は完璧をもたらします！Linux での DNS の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[dig と nslookup で Linux の DNS レコードをクエリする](https://labex.io/ja/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - `dig`や`nslookup`などの必須コマンドラインツールを使用して、さまざまな DNS レコードタイプをクエリし、DNS 解決の問題をトラブルシューティングする方法を学びます。
-2. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - `bind9`をインストールして設定し、独自のローカル権威 DNS サーバーをセットアップし、ゾーンを定義し、解決をテストすることで、実践的な経験を積みます。
+1. **[dig と nslookup で Linux の DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig`や`nslookup`などの必須コマンドラインツールを使用して、さまざまな DNS レコードタイプをクエリし、DNS 解決の問題をトラブルシューティングする方法を学びます。
+2. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - `bind9`をインストールして設定し、独自のローカル権威 DNS サーバーをセットアップし、ゾーンを定義し、解決をテストすることで、実践的な経験を積みます。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux での DNS 管理に自信を築くのに役立ちます。
 

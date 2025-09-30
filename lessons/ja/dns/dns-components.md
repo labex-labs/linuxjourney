@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 練習は完璧をもたらします！DNS とホスト名解決の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - ローカル DNS サーバー (`bind9`) のインストールと設定、ゾーンの定義、およびセットアップの検証を練習します。
-2. **[dig と nslookup を使用して Linux で DNS レコードをクエリする](https://labex.io/ja/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 必須のコマンドラインツール (`dig`, `nslookup`) を使用して、さまざまな DNS レコードタイプをクエリし、DNS の問題をトラブルシューティングする方法を学びます。
-3. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - 開発とテストの重要なスキルである `/etc/hosts` ファイルを編集して、ローカルホスト名解決を管理する方法を理解します。
+1. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - ローカル DNS サーバー (`bind9`) のインストールと設定、ゾーンの定義、およびセットアップの検証を練習します。
+2. **[dig と nslookup を使用して Linux で DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 必須のコマンドラインツール (`dig`, `nslookup`) を使用して、さまざまな DNS レコードタイプをクエリし、DNS の問題をトラブルシューティングする方法を学びます。
+3. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 開発とテストの重要なスキルである `/etc/hosts` ファイルを編集して、ローカルホスト名解決を管理する方法を理解します。
 
 これらのラボは、DNS とホスト名解決の概念を実際のシナリオに適用し、ネットワークサービスに対する自信を築くのに役立ちます。
 

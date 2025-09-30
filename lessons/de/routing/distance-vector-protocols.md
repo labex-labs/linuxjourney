@@ -19,9 +19,9 @@ Eines der gängigen Distanzvektorprotokolle ist RIP (Routing Information Protoco
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerk-Routing und Konnektivität zu vertiefen:
 
-1. **[Erkunden Sie die Interaktion der Netzwerkschicht mit ping und arp in Linux](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Üben Sie die Verwendung von `ping` und `arp`, um zu verstehen, wie Geräte einander erkennen und wie der Datenverkehr auf der Netzwerkschicht geroutet wird.
-2. **[Simulieren Sie die Konnektivität der Netzwerkschicht in Linux](https://labex.io/de/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, IP-Adressen zuzuweisen und die Konnektivität zwischen simulierten Linux-Knoten zu testen, wobei Sie beobachten, wie IP-Subnetze die Netzwerkkommunikation beeinflussen.
-3. **[Verwalten Sie die IP-Adressierung in Linux](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Sammeln Sie praktische Erfahrungen beim Konfigurieren statischer und dynamischer IP-Adressen und beim Festlegen von Standard-Gateways, die wesentliche Komponenten des Netzwerk-Routings sind.
+1. **[Erkunden Sie die Interaktion der Netzwerkschicht mit ping und arp in Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Üben Sie die Verwendung von `ping` und `arp`, um zu verstehen, wie Geräte einander erkennen und wie der Datenverkehr auf der Netzwerkschicht geroutet wird.
+2. **[Simulieren Sie die Konnektivität der Netzwerkschicht in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, IP-Adressen zuzuweisen und die Konnektivität zwischen simulierten Linux-Knoten zu testen, wobei Sie beobachten, wie IP-Subnetze die Netzwerkkommunikation beeinflussen.
+3. **[Verwalten Sie die IP-Adressierung in Linux](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Sammeln Sie praktische Erfahrungen beim Konfigurieren statischer und dynamischer IP-Adressen und beim Festlegen von Standard-Gateways, die wesentliche Komponenten des Netzwerk-Routings sind.
 
 Diese Übungen helfen Ihnen, die Konzepte der Netzwerkadressierung und Konnektivität in realen Szenarien anzuwenden und eine starke Grundlage für das Verständnis der Funktionsweise von Routing-Protokollen zu schaffen.
 

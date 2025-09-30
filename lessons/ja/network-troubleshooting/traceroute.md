@@ -27,8 +27,8 @@ traceroute to google.com (216.58.216.174), 30 hops max, 60 byte packets
 
 練習は完璧をもたらします！ネットワークパスの発見とトラブルシューティングの理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip`コマンドを使用してネットワーク設定を構成し、`traceroute`で接続を確認する練習をします。
-2. **[Linux で ping と arp によるネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`がどのように機能するかを学び、`traceroute`がどのように動作するかの基礎となるネットワーク層の相互作用を理解します。
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip`コマンドを使用してネットワーク設定を構成し、`traceroute`で接続を確認する練習をします。
+2. **[Linux で ping と arp によるネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`がどのように機能するかを学び、`traceroute`がどのように動作するかの基礎となるネットワーク層の相互作用を理解します。
 
 これらのラボは、実際のシナリオでネットワーク診断の概念を適用し、Linux ネットワークツールに自信を持つのに役立ちます。
 

@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 練習は完璧をもたらします！ネットワークインターフェースと IP アドレスの理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の MAC、IPv4、IPv6 アドレスを含むネットワークアドレス情報を特定する練習をします。
-2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定し、`ip`コマンドを使用してネットワーク設定を確認する方法を学びます。
-3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、`ping`と`ip a`を使用してネットワークの到達可能性をテストします。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の MAC、IPv4、IPv6 アドレスを含むネットワークアドレス情報を特定する練習をします。
+2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定し、`ip`コマンドを使用してネットワーク設定を確認する方法を学びます。
+3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、`ping`と`ip a`を使用してネットワークの到達可能性をテストします。
 
 これらのラボは、ネットワークインターフェースの識別と IP アドレスの概念を実際のシナリオに適用し、Linux ネットワークに対する自信を築くのに役立ちます。
 

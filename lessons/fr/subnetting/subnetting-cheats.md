@@ -57,7 +57,7 @@ Pour la conversion du binaire au décimal, vous additionnez les nombres qui ont 
 
 La pratique rend parfait ! Bien que les calculs de sous-réseau soient souvent automatisés dans le monde réel, comprendre les conversions binaires sous-jacentes est crucial pour les entretiens et une compréhension plus approfondie du réseau. Voici un laboratoire pratique pour renforcer votre compréhension :
 
-1. **[Effectuer le sous-réseau IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseau IP et la conversion binaire en utilisant Python dans un terminal Linux pour convertir des adresses IP, traduire des masques CIDR et calculer les détails du réseau.
+1. **[Effectuer le sous-réseau IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseau IP et la conversion binaire en utilisant Python dans un terminal Linux pour convertir des adresses IP, traduire des masques CIDR et calculer les détails du réseau.
 
 Ce laboratoire vous aidera à appliquer les concepts de conversion binaire et de sous-réseau dans un scénario pratique et à renforcer votre confiance dans les fondamentaux de l'adressage réseau.
 

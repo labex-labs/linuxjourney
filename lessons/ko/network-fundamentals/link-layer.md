@@ -40,9 +40,9 @@ ARP 는 IP 주소와 연결된 MAC 주소를 찾습니다. ARP 는 동일한 네
 
 연습하면 완벽해집니다! 다음은 링크 계층, MAC 주소 및 ARP 에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 IP 주소를 MAC 주소로 확인하고 네트워크 계층 상호 작용을 이해하기 위해 어떻게 함께 작동하는지 알아봅니다.
-3. **[Linux 에서 tcpdump 로 이더넷 프레임 분석](https://labex.io/ko/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - MAC 주소를 포함한 이더넷 프레임을 캡처하고 검사하여 낮은 수준의 네트워크 통신을 이해하는 실습 경험을 얻습니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 IP 주소를 MAC 주소로 확인하고 네트워크 계층 상호 작용을 이해하기 위해 어떻게 함께 작동하는지 알아봅니다.
+3. **[Linux 에서 tcpdump 로 이더넷 프레임 분석](https://labex.io/ko/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - MAC 주소를 포함한 이더넷 프레임을 캡처하고 검사하여 낮은 수준의 네트워크 통신을 이해하는 실습 경험을 얻습니다.
 
 이러한 랩은 실제 시나리오에 개념을 적용하고 링크 계층에서 네트워크 기본 사항에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

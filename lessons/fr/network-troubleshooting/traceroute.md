@@ -27,8 +27,8 @@ Chaque ligne représente un routeur ou une machine qui se trouve entre vous et v
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la découverte de chemins réseau et du dépannage :
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour configurer les paramètres réseau et vérifier la connectivité avec `traceroute`.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment `ping` et `arp` fonctionnent pour comprendre les interactions de la couche réseau, qui sont fondamentales pour le fonctionnement de `traceroute`.
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour configurer les paramètres réseau et vérifier la connectivité avec `traceroute`.
+2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment `ping` et `arp` fonctionnent pour comprendre les interactions de la couche réseau, qui sont fondamentales pour le fonctionnement de `traceroute`.
 
 Ces laboratoires vous aideront à appliquer les concepts de diagnostic réseau dans des scénarios réels et à renforcer votre confiance avec les outils de mise en réseau Linux.
 

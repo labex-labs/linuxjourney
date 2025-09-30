@@ -54,9 +54,9 @@ O comando `nmcli` permite controlar e modificar o NetworkManager. Veja a página
 
 A prática leva à perfeição! Embora o NetworkManager automatize grande parte da configuração de rede, entender os comandos e conceitos subjacentes que ele gerencia é crucial para a solução de problemas e administração avançada. Aqui estão alguns laboratórios práticos para reforçar sua compreensão da identificação e gerenciamento de rede no Linux:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir gateways padrão e verificar configurações de rede usando o comando `ip` e `dhclient`.
-3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para entender como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e como os gateways padrão lidam com o tráfego.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
+2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir gateways padrão e verificar configurações de rede usando o comando `ip` e `dhclient`.
+3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para entender como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e como os gateways padrão lidam com o tráfego.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de identificação e configuração de rede em cenários reais e a construir confiança com os fundamentos de rede do Linux.
 

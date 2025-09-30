@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 연습이 완벽을 만듭니다! 다음은 DNS 및 호스트 이름 확인에 대한 이해를 강화하기 위한 실습 랩입니다.
 
-1. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 로컬 DNS 서버 (`bind9`) 를 설치 및 구성하고, 존을 정의하고, 설정을 검증하는 연습을 합니다.
-2. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 필수 명령줄 도구 (`dig`, `nslookup`) 를 사용하여 다양한 DNS 레코드 유형을 쿼리하고 DNS 문제를 해결하는 방법을 배웁니다.
-3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - 개발 및 테스트를 위한 핵심 기술인 `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 방법을 이해합니다.
+1. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - 로컬 DNS 서버 (`bind9`) 를 설치 및 구성하고, 존을 정의하고, 설정을 검증하는 연습을 합니다.
+2. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 필수 명령줄 도구 (`dig`, `nslookup`) 를 사용하여 다양한 DNS 레코드 유형을 쿼리하고 DNS 문제를 해결하는 방법을 배웁니다.
+3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 개발 및 테스트를 위한 핵심 기술인 `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 방법을 이해합니다.
 
 이러한 랩은 실제 시나리오에서 DNS 및 호스트 이름 확인 개념을 적용하고 네트워크 서비스에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

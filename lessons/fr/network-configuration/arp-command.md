@@ -35,9 +35,9 @@ ip neighbour show
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension d'ARP et de l'interaction de la couche réseau :
 
-1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez les commandes `ping` et `arp` pour observer comment les adresses IP sont résolues en adresses MAC et comment la passerelle par défaut gère le trafic.
-2. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, qui sont fondamentales pour comprendre ARP.
-3. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à gérer l'adressage IP à l'aide de la commande `ip` et vérifiez la configuration réseau avec `arp` et `traceroute`.
+1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez les commandes `ping` et `arp` pour observer comment les adresses IP sont résolues en adresses MAC et comment la passerelle par défaut gère le trafic.
+2. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, qui sont fondamentales pour comprendre ARP.
+3. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à gérer l'adressage IP à l'aide de la commande `ip` et vérifiez la configuration réseau avec `arp` et `traceroute`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'ARP et d'adressage réseau dans des scénarios réels et à renforcer votre confiance en matière de mise en réseau Linux.
 

@@ -19,9 +19,9 @@ Une astuce simple consiste à soustraire l'adresse CIDR (23) du nombre total de 
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du CIDR, de l'adressage IP et du sous-réseautage :
 
-1. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris la traduction des masques CIDR et le calcul des hôtes utilisables.
-2. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP statiques et observez comment les sous-réseaux IP régissent la communication réseau directe dans un environnement simulé.
-3. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et l'accessibilité réseau à l'aide de commandes comme `ping` et `ip a` pour tester différents types d'IP et la connectivité.
+1. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris la traduction des masques CIDR et le calcul des hôtes utilisables.
+2. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP statiques et observez comment les sous-réseaux IP régissent la communication réseau directe dans un environnement simulé.
+3. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et l'accessibilité réseau à l'aide de commandes comme `ping` et `ip a` pour tester différents types d'IP et la connectivité.
 
 Ces laboratoires vous aideront à appliquer les concepts de CIDR et d'adressage IP dans des scénarios réels et à renforcer votre confiance dans la configuration réseau.
 

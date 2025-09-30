@@ -17,9 +17,9 @@ OSI モデルは理論的なものですが、それが実践的なネットワ�
 
 基本的なネットワークの概念を強化するための実践的なラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の MAC アドレスや IP アドレスを含むネットワークアドレス情報を特定する練習をします。
-2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定し、`ip` コマンドを使用してネットワーク構成を確認する方法を学びます。
-3. **[Linux で ping と arp を使用してネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` および `arp` コマンドを使用して、ネットワーク層とデータリンク層がどのように相互作用するかを探り、ARP の動作を観察し、デフォルトゲートウェイの動作を理解します。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の MAC アドレスや IP アドレスを含むネットワークアドレス情報を特定する練習をします。
+2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定し、`ip` コマンドを使用してネットワーク構成を確認する方法を学びます。
+3. **[Linux で ping と arp を使用してネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` および `arp` コマンドを使用して、ネットワーク層とデータリンク層がどのように相互作用するかを探り、ARP の動作を観察し、デフォルトゲートウェイの動作を理解します。
 
 これらのラボは、基本的なネットワークの概念を実際のシナリオに適用し、Linux ネットワーク管理に自信を持つのに役立ちます。
 

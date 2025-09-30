@@ -31,9 +31,9 @@ meta_keywords: "路由器，网络，路由，跳数，数据包交换，Linux �
 
 熟能生巧！这里有一些动手实验，可以加深你对网络连接和路由的理解：
 
-1. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习测试本地 TCP/IP 堆栈，识别私有和公共 IP，并验证网络可达性，这些都是理解路由器如何促进通信的关键。
-2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 命令如何帮助你观察网络层和数据链路层如何交互，以及默认网关（路由器）如何处理远程流量。
-3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 使用 Docker 模拟网络节点并分配 IP 地址，然后测试连接以了解 IP 子网和路由如何管理网络通信。
+1. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习测试本地 TCP/IP 堆栈，识别私有和公共 IP，并验证网络可达性，这些都是理解路由器如何促进通信的关键。
+2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 命令如何帮助你观察网络层和数据链路层如何交互，以及默认网关（路由器）如何处理远程流量。
+3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 使用 Docker 模拟网络节点并分配 IP 地址，然后测试连接以了解 IP 子网和路由如何管理网络通信。
 
 这些实验将帮助你将网络通信、IP 寻址和路由在实际场景中的作用等概念付诸实践，从而增强你对网络基础知识的信心。
 

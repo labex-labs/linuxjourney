@@ -29,9 +29,9 @@ Uma última maneira de identificar suas máquinas é através de nomes de host. 
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos identificadores de rede, como endereços MAC, endereços IP e nomes de host:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP e teste a acessibilidade da rede usando `ping` e `ip a`.
-3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts` e testando suas alterações.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
+2. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP e teste a acessibilidade da rede usando `ping` e `ip a`.
+3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts` e testando suas alterações.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com os fundamentos de rede do Linux.
 

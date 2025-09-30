@@ -40,9 +40,9 @@ E aí está: uma travessia de pacote simples (ou nem tão simples) pela camada T
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da Camada de Enlace, endereços MAC e ARP:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC, em um sistema Linux.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` funcionam juntos para resolver endereços IP para endereços MAC e entender as interações da camada de rede.
-3. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Obtenha experiência prática na captura e inspeção de quadros Ethernet, incluindo endereços MAC, para entender as comunicações de rede de baixo nível.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC, em um sistema Linux.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` funcionam juntos para resolver endereços IP para endereços MAC e entender as interações da camada de rede.
+3. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Obtenha experiência prática na captura e inspeção de quadros Ethernet, incluindo endereços MAC, para entender as comunicações de rede de baixo nível.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com os fundamentos de rede na Camada de Enlace.
 

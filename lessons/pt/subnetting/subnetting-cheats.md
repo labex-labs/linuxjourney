@@ -57,7 +57,7 @@ Para a conversão de binário para decimal, você soma os números que têm um 1
 
 A prática leva à perfeição! Embora a matemática de sub-rede seja frequentemente automatizada no mundo real, entender as conversões binárias subjacentes é crucial para entrevistas e para uma compreensão mais profunda de redes. Aqui está um laboratório prático para reforçar seu entendimento:
 
-1. **[Realizar Subnetting IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
+1. **[Realizar Subnetting IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
 
 Este laboratório o ajudará a aplicar os conceitos de conversão binária e subnetting em um cenário prático e a construir confiança com os fundamentos de endereçamento de rede.
 

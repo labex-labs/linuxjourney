@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerkschnittstellen und IP-Adressierung zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC-, IPv4- und IPv6-Adressen auf einem Linux-System, zu identifizieren.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway einzurichten und Netzwerkkonfigurationen mit dem Befehl `ip` zu überprüfen.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit mit `ping` und `ip a`.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC-, IPv4- und IPv6-Adressen auf einem Linux-System, zu identifizieren.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway einzurichten und Netzwerkkonfigurationen mit dem Befehl `ip` zu überprüfen.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit mit `ping` und `ip a`.
 
 Diese Labs helfen Ihnen, die Konzepte der Netzwerkschnittstellenidentifikation und IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
 

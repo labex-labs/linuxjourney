@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de las interfaces de red y el direccionamiento IP:
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluyendo direcciones MAC, IPv4 e IPv6 en un sistema Linux.
-2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada y verificar las configuraciones de red usando el comando `ip`.
-3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red usando `ping` e `ip a`.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluyendo direcciones MAC, IPv4 e IPv6 en un sistema Linux.
+2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada y verificar las configuraciones de red usando el comando `ip`.
+3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red usando `ping` e `ip a`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de identificación de interfaz de red y direccionamiento IP en escenarios reales y a generar confianza con las redes Linux.
 

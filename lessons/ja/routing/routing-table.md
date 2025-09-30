@@ -46,9 +46,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 練習あるのみ！ネットワークルーティングと IP アドレスの理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、IP アドレスやネットワークインターフェースを含むネットワークアドレス情報を特定する練習をします。これらはルーティングテーブルの主要なコンポーネントです。
-2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - IP アドレスの管理、静的 IP の設定、デフォルトゲートウェイの設定、ネットワーク構成の検証方法を学びます。これらはルーティングテーブルで見つかるエントリに直接関連しています。
-3. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` と `ip a` を使用して IP アドレスとネットワーク到達可能性を探ります。これにより、異なる IP タイプがどのように相互作用し、ネットワーク到達可能性がどのように決定されるかを理解するのに役立ちます。これはルーティングの決定に反映されます。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、IP アドレスやネットワークインターフェースを含むネットワークアドレス情報を特定する練習をします。これらはルーティングテーブルの主要なコンポーネントです。
+2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - IP アドレスの管理、静的 IP の設定、デフォルトゲートウェイの設定、ネットワーク構成の検証方法を学びます。これらはルーティングテーブルで見つかるエントリに直接関連しています。
+3. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` と `ip a` を使用して IP アドレスとネットワーク到達可能性を探ります。これにより、異なる IP タイプがどのように相互作用し、ネットワーク到達可能性がどのように決定されるかを理解するのに役立ちます。これはルーティングの決定に反映されます。
 
 これらのラボは、実際のシナリオで概念を適用し、ネットワーク構成とトラブルシューティングに自信を持つために役立ちます。
 

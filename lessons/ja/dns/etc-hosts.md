@@ -46,8 +46,8 @@ search localdomain
 
 練習は完璧をもたらします！ローカルホスト名の解決と DNS クエリの理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux でローカルホスト名の解決を管理する](https://labex.io/ja/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - DNS クエリの前に重要なステップである、`/etc/hosts`ファイルを編集してローカルホスト名の解決を管理する練習をします。
-2. **[dig と nslookup を使用して Linux で DNS レコードをクエリする](https://labex.io/ja/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig`や`nslookup`といった Linux の必須ツールを使用して DNS レコードをクエリし、マシンがどのように外部名を解決するかを理解する方法を学びます。
+1. **[Linux でローカルホスト名の解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - DNS クエリの前に重要なステップである、`/etc/hosts`ファイルを編集してローカルホスト名の解決を管理する練習をします。
+2. **[dig と nslookup を使用して Linux で DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig`や`nslookup`といった Linux の必須ツールを使用して DNS レコードをクエリし、マシンがどのように外部名を解決するかを理解する方法を学びます。
 
 これらの演習は、実際のシナリオで概念を適用し、ホスト名の解決と DNS に対する自信を築くのに役立ちます。
 

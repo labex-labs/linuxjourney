@@ -19,7 +19,7 @@ Zuerst beginnen wir in der Anwendungsschicht. Wenn wir unsere E-Mail über unser
 
 Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Netzwerkschichten und Ports zu vertiefen:
 
-1. **[Netzwerkports und -sitzungen mit netstat in Linux analysieren](https://labex.io/de/labs/linux-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** – In diesem Labor lernen Sie, wie Sie den Befehl `netstat` verwenden, um Netzwerkaktivitäten zu analysieren, und grundlegende Konzepte wie Netzwerkports, Sockets und aktive Verbindungen zu erkunden. Dies gibt Ihnen praktische Einblicke, wie Dienste über das Netzwerk kommunizieren, was direkt mit den besprochenen Konzepten der Transportschicht zusammenhängt.
+1. **[Netzwerkports und -sitzungen mit netstat in Linux analysieren](https://labex.io/de/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** – In diesem Labor lernen Sie, wie Sie den Befehl `netstat` verwenden, um Netzwerkaktivitäten zu analysieren, und grundlegende Konzepte wie Netzwerkports, Sockets und aktive Verbindungen zu erkunden. Dies gibt Ihnen praktische Einblicke, wie Dienste über das Netzwerk kommunizieren, was direkt mit den besprochenen Konzepten der Transportschicht zusammenhängt.
 
 Dieses Labor wird Ihnen helfen, die Konzepte der Netzwerkkommunikation und Portnutzung in einer realen Linux-Umgebung anzuwenden und Ihr Vertrauen in das Verständnis zu stärken, wie Anwendungen mit dem Netzwerk-Stack interagieren.
 

@@ -31,9 +31,9 @@ Agora enviamos uma requisição final para o servidor DNS que realmente tem o re
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da resolução e gerenciamento de DNS:
 
-1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Aprenda a consultar registros DNS como A, PTR e MX, e identificar seu servidor DNS padrão, essencial para a solução de problemas de rede.
-2. **[Configurar um Servidor DNS Autoridade Local no Linux](https://labex.io/pt/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Ganhe experiência prática instalando e configurando um servidor DNS autoridade local, definindo zonas e testando a resolução de DNS.
-3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/linux-manage-local-hostname-resolution-in-linux)** - Pratique o gerenciamento da resolução de nome de host local editando o arquivo `/etc/hosts`, uma habilidade chave para desenvolvimento web e testes de rede.
+1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a consultar registros DNS como A, PTR e MX, e identificar seu servidor DNS padrão, essencial para a solução de problemas de rede.
+2. **[Configurar um Servidor DNS Autoridade Local no Linux](https://labex.io/pt/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Ganhe experiência prática instalando e configurando um servidor DNS autoridade local, definindo zonas e testando a resolução de DNS.
+3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Pratique o gerenciamento da resolução de nome de host local editando o arquivo `/etc/hosts`, uma habilidade chave para desenvolvimento web e testes de rede.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com DNS.
 

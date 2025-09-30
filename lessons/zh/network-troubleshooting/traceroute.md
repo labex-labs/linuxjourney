@@ -27,8 +27,8 @@ traceroute to google.com (216.58.216.174), 30 hops max, 60 byte packets
 
 熟能生巧！以下是一些动手实验，以巩固您对网络路径发现和故障排除的理解：
 
-1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令配置网络设置并使用 `traceroute` 验证连接。
-2. **[使用 ping 和 arp 在 Linux 中探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 如何工作以理解网络层交互，这是 `traceroute` 运行的基础。
+1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令配置网络设置并使用 `traceroute` 验证连接。
+2. **[使用 ping 和 arp 在 Linux 中探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 如何工作以理解网络层交互，这是 `traceroute` 运行的基础。
 
 这些实验将帮助您在实际场景中应用网络诊断概念，并增强您使用 Linux 网络工具的信心。
 

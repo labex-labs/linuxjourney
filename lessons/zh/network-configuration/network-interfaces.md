@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 熟能生巧！这里有一些动手实验来巩固您对网络接口和 IP 寻址的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 MAC、IPv4 和 IPv6 地址。
-2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 学习配置静态和动态 IP 地址，设置默认网关，并使用 `ip` 命令验证网络配置。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型（私有、公共、多播）并使用 `ping` 和 `ip a` 测试网络可达性。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 MAC、IPv4 和 IPv6 地址。
+2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习配置静态和动态 IP 地址，设置默认网关，并使用 `ip` 命令验证网络配置。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型（私有、公共、多播）并使用 `ping` 和 `ip a` 测试网络可达性。
 
 这些实验将帮助您在实际场景中应用网络接口识别和 IP 寻址的概念，并增强您对 Linux 网络的信心。
 

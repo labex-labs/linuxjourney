@@ -19,9 +19,9 @@ En este curso, repasaremos algunos conceptos básicos de DNS, pero ten en cuenta
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de DNS y la resolución de nombres de host:
 
-1. **[Consultar registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Aprende a usar herramientas esenciales de Linux como `dig` y `nslookup` para consultar varios tipos de registros DNS, lo que te ayudará a comprender cómo se resuelven los nombres de host en direcciones IP.
-2. **[Administrar la resolución local de nombres de host en Linux](https://labex.io/es/labs/linux-manage-local-hostname-resolution-in-linux)** - Practica la edición del archivo `/etc/hosts` para administrar la resolución local de nombres de host, una habilidad fundamental para controlar cómo tu sistema Linux resuelve nombres sin depender de servidores DNS externos.
-3. **[Configurar un servidor DNS autoritativo local en Linux](https://labex.io/es/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Adquiere experiencia práctica configurando tu propio servidor DNS autoritativo local usando `bind9`, lo que te permitirá profundizar en cómo se gestionan las zonas y los registros DNS.
+1. **[Consultar registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprende a usar herramientas esenciales de Linux como `dig` y `nslookup` para consultar varios tipos de registros DNS, lo que te ayudará a comprender cómo se resuelven los nombres de host en direcciones IP.
+2. **[Administrar la resolución local de nombres de host en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practica la edición del archivo `/etc/hosts` para administrar la resolución local de nombres de host, una habilidad fundamental para controlar cómo tu sistema Linux resuelve nombres sin depender de servidores DNS externos.
+3. **[Configurar un servidor DNS autoritativo local en Linux](https://labex.io/es/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Adquiere experiencia práctica configurando tu propio servidor DNS autoritativo local usando `bind9`, lo que te permitirá profundizar en cómo se gestionan las zonas y los registros DNS.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con DNS y la resolución de nombres de host en un entorno Linux.
 

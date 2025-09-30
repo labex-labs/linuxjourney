@@ -39,9 +39,9 @@ O tempo de ida e volta que levou desde o envio do pacote de requisição de eco 
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da conectividade de rede e do comando `ping`:
 
-1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para explorar as interações da camada de rede e de enlace de dados e observe como o gateway padrão lida com o tráfego remoto.
-2. **[Explore Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilize `ping` e `ip a` para testar a pilha TCP/IP local, verificar a conectividade com a internet pública e explorar a acessibilidade da rede.
-3. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos com `ip addr` e teste a conectividade com `ping` na mesma sub-rede e em sub-redes diferentes.
+1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para explorar as interações da camada de rede e de enlace de dados e observe como o gateway padrão lida com o tráfego remoto.
+2. **[Explore Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilize `ping` e `ip a` para testar a pilha TCP/IP local, verificar a conectividade com a internet pública e explorar a acessibilidade da rede.
+3. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos com `ip addr` e teste a conectividade com `ping` na mesma sub-rede e em sub-redes diferentes.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de acessibilidade de rede e o comando `ping` em cenários reais e a construir confiança com o diagnóstico de rede no Linux.
 

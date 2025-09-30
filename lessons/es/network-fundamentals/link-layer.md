@@ -40,9 +40,9 @@ Y ahí está: un recorrido de paquete simple (o no tan simple) a través de la c
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la Capa de Enlace, las direcciones MAC y ARP:
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC, en un sistema Linux.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` trabajan juntos para resolver direcciones IP a direcciones MAC y comprender las interacciones de la capa de red.
-3. **[Analizar tramas Ethernet con tcpdump en Linux](https://labex.io/es/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Obtenga experiencia práctica capturando e inspeccionando tramas Ethernet, incluidas las direcciones MAC, para comprender las comunicaciones de red de bajo nivel.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC, en un sistema Linux.
+2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` trabajan juntos para resolver direcciones IP a direcciones MAC y comprender las interacciones de la capa de red.
+3. **[Analizar tramas Ethernet con tcpdump en Linux](https://labex.io/es/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Obtenga experiencia práctica capturando e inspeccionando tramas Ethernet, incluidas las direcciones MAC, para comprender las comunicaciones de red de bajo nivel.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con los fundamentos de la red en la Capa de Enlace.
 

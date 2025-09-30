@@ -19,9 +19,9 @@ meta_keywords: "IPv6, IPv4, IP-адрес, сеть Linux, сетевые про
 
 Практика ведет к совершенству! Вот несколько практических заданий для закрепления вашего понимания адресации IPv6 и ее взаимодействия с IPv4:
 
-1. **[Настройка и проверка адресов IPv6 в Linux](https://labex.io/ru/labs/linux-configure-and-verify-ipv6-addresses-in-linux-592858)** - Практикуйтесь в назначении статических адресов IPv6 и проверке подключения с помощью команд `ip` и `ping6`.
-2. **[Выполнение поиска DNS IPv6 в Linux](https://labex.io/ru/labs/linux-perform-ipv6-dns-lookups-in-linux-592862)** - Научитесь запрашивать записи AAAA и проверять разрешение DNS IPv6 с помощью `dig`, `nslookup` и `ping6`.
-3. **[Настройка туннеля IPv4-to-IPv6 6to4 в Linux](https://labex.io/ru/labs/linux-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - Получите практический опыт настройки туннеля 6to4 для обеспечения подключения IPv6 через существующую сеть IPv4.
+1. **[Настройка и проверка адресов IPv6 в Linux](https://labex.io/ru/labs/comptia-configure-and-verify-ipv6-addresses-in-linux-592858)** - Практикуйтесь в назначении статических адресов IPv6 и проверке подключения с помощью команд `ip` и `ping6`.
+2. **[Выполнение поиска DNS IPv6 в Linux](https://labex.io/ru/labs/comptia-perform-ipv6-dns-lookups-in-linux-592862)** - Научитесь запрашивать записи AAAA и проверять разрешение DNS IPv6 с помощью `dig`, `nslookup` и `ping6`.
+3. **[Настройка туннеля IPv4-to-IPv6 6to4 в Linux](https://labex.io/ru/labs/comptia-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - Получите практический опыт настройки туннеля 6to4 для обеспечения подключения IPv6 через существующую сеть IPv4.
 
 Эти лабораторные работы помогут вам применить концепции IPv6 в реальных сценариях и обрести уверенность в настройке и устранении неполадок сети.
 

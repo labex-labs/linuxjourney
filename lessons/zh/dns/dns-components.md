@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 熟能生巧！以下是一些动手实验，可帮助您加深对 DNS 和主机名解析的理解：
 
-1. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 练习安装和配置本地 DNS 服务器 (`bind9`)，定义区域，并验证您的设置。
-2. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用基本命令行工具 (`dig`, `nslookup`) 查询各种 DNS 记录类型并排除 DNS 问题。
-3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - 了解如何通过编辑 `/etc/hosts` 文件来管理本地主机名解析，这是开发和测试的关键技能。
+1. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - 练习安装和配置本地 DNS 服务器 (`bind9`)，定义区域，并验证您的设置。
+2. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用基本命令行工具 (`dig`, `nslookup`) 查询各种 DNS 记录类型并排除 DNS 问题。
+3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 了解如何通过编辑 `/etc/hosts` 文件来管理本地主机名解析，这是开发和测试的关键技能。
 
 这些实验将帮助您在实际场景中应用 DNS 和主机名解析的概念，并增强您对网络服务的信心。
 

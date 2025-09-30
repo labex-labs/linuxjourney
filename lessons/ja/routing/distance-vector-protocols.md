@@ -19,9 +19,9 @@ meta_keywords: "ディスタンスベクタープロトコル，RIP, ルーテ�
 
 練習は完璧をもたらします！ネットワークルーティングと接続性に関する理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で ping と arp を使ったネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用して、デバイスが互いをどのように発見し、トラフィックがネットワーク層でどのようにルーティングされるかを理解する練習をします。
-2. **[Linux でネットワーク層の接続性をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - IP アドレスを割り当て、シミュレートされた Linux ノード間の接続性をテストする方法を学び、IP サブネットがネットワーク通信にどのように影響するかを観察します。
-3. **[Linux で IP アドレス管理を行う](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定する実践的な経験を積みます。これらはネットワークルーティングの重要なコンポーネントです。
+1. **[Linux で ping と arp を使ったネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用して、デバイスが互いをどのように発見し、トラフィックがネットワーク層でどのようにルーティングされるかを理解する練習をします。
+2. **[Linux でネットワーク層の接続性をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - IP アドレスを割り当て、シミュレートされた Linux ノード間の接続性をテストする方法を学び、IP サブネットがネットワーク通信にどのように影響するかを観察します。
+3. **[Linux で IP アドレス管理を行う](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスを設定し、デフォルトゲートウェイを設定する実践的な経験を積みます。これらはネットワークルーティングの重要なコンポーネントです。
 
 これらのラボは、ネットワークアドレス指定と接続性の概念を実際のシナリオに適用するのに役立ち、ルーティングプロトコルがどのように機能するかを理解するための強力な基盤を築きます。
 

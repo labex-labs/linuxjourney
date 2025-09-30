@@ -34,9 +34,9 @@ eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
 
 練習は完璧をもたらします！Linux での IP アドレス指定とネットワーク識別の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の IPv4 および IPv6 アドレスを含むネットワークアドレス情報を特定する練習をします。
-2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` や `ip a` などのコマンドを使用して、さまざまな IP アドレスの種類を探索し、ネットワークの到達可能性をテストします。
-3. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP アドレスとネットワークがビットレベルでどのように構成されているかをより深く理解するために不可欠な、IP サブネット化とバイナリ変換を習得します。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の IPv4 および IPv6 アドレスを含むネットワークアドレス情報を特定する練習をします。
+2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` や `ip a` などのコマンドを使用して、さまざまな IP アドレスの種類を探索し、ネットワークの到達可能性をテストします。
+3. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP アドレスとネットワークがビットレベルでどのように構成されているかをより深く理解するために不可欠な、IP サブネット化とバイナリ変換を習得します。
 
 これらのラボは、実際のシナリオで IP アドレス指定の概念を適用し、Linux でのネットワーク構成とトラブルシューティングに自信を持つのに役立ちます。
 

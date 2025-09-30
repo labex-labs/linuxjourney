@@ -31,9 +31,9 @@ DNS 를 사용하여 호스트가 도메인 (catzontheinterwebz.com) 을 찾는 
 
 연습이 완벽을 만듭니다! 다음은 DNS 확인 및 관리에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[dig 및 nslookup 을 사용하여 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - A, PTR, MX 와 같은 DNS 레코드를 쿼리하고 기본 DNS 서버를 식별하는 방법을 배우세요. 이는 네트워크 문제 해결에 필수적입니다.
-2. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - 로컬 권한 있는 DNS 서버를 설치 및 구성하고, 존을 정의하고, DNS 확인을 테스트하여 실습 경험을 쌓으세요.
-3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/linux-manage-local-hostname-resolution-in-linux)** - `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 연습을 하세요. 이는 웹 개발 및 네트워크 테스트에 중요한 기술입니다.
+1. **[dig 및 nslookup 을 사용하여 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - A, PTR, MX 와 같은 DNS 레코드를 쿼리하고 기본 DNS 서버를 식별하는 방법을 배우세요. 이는 네트워크 문제 해결에 필수적입니다.
+2. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 로컬 권한 있는 DNS 서버를 설치 및 구성하고, 존을 정의하고, DNS 확인을 테스트하여 실습 경험을 쌓으세요.
+3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts` 파일을 편집하여 로컬 호스트 이름 확인을 관리하는 연습을 하세요. 이는 웹 개발 및 네트워크 테스트에 중요한 기술입니다.
 
 이러한 실습은 실제 시나리오에 개념을 적용하고 DNS 에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

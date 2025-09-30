@@ -31,9 +31,9 @@ As packets move across networks, they travel in hops. A hop is how we roughly me
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network connectivity and routing:
 
-1. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice testing the local TCP/IP stack, identifying private and public IPs, and verifying network reachability, which are key to understanding how a router facilitates communication.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands help you observe how the network and data link layers interact, and how the default gateway (router) handles remote traffic.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes and assign IP addresses, then test connectivity to understand how IP subnets and routing govern network communication.
+1. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice testing the local TCP/IP stack, identifying private and public IPs, and verifying network reachability, which are key to understanding how a router facilitates communication.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands help you observe how the network and data link layers interact, and how the default gateway (router) handles remote traffic.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes and assign IP addresses, then test connectivity to understand how IP subnets and routing govern network communication.
 
 These labs will help you apply the concepts of network communication, IP addressing, and the role of routing in real scenarios, building confidence with network fundamentals.
 

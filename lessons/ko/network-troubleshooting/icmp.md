@@ -32,9 +32,9 @@ ICMP(Internet Control Message Protocol) 는 TCP/IP 프로토콜 스위트의 일
 
 연습이 완벽을 만듭니다! ICMP 및 네트워크 문제 해결에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`을 사용하여 네트워크 및 데이터 링크 계층이 어떻게 상호 작용하는지 탐색하고, 연결 테스트에서 ICMP 의 기능과 관련된 개념을 직접 적용합니다.
-2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`을 사용하여 네트워크 도달 가능성을 테스트하고 연결 문제를 진단하는 연습을 통해 ICMP 메시지의 실제 적용을 강화합니다.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 시뮬레이션 환경에서 IP 주소를 할당하고 `ping`으로 연결을 테스트하는 방법을 배우며, 네트워크 구성이 패킷 전달에 어떻게 영향을 미치는지 이해하는 데 도움이 됩니다.
+1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`을 사용하여 네트워크 및 데이터 링크 계층이 어떻게 상호 작용하는지 탐색하고, 연결 테스트에서 ICMP 의 기능과 관련된 개념을 직접 적용합니다.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`을 사용하여 네트워크 도달 가능성을 테스트하고 연결 문제를 진단하는 연습을 통해 ICMP 메시지의 실제 적용을 강화합니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 시뮬레이션 환경에서 IP 주소를 할당하고 `ping`으로 연결을 테스트하는 방법을 배우며, 네트워크 구성이 패킷 전달에 어떻게 영향을 미치는지 이해하는 데 도움이 됩니다.
 
 이러한 랩은 실제 시나리오에서 ICMP 및 네트워크 진단 개념을 적용하고 네트워크 문제 해결에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

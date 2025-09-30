@@ -40,9 +40,9 @@ Et voilà : un parcours de paquet simple (ou pas si simple) à travers la couche
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la couche de liaison, des adresses MAC et d'ARP :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, sur un système Linux.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` fonctionnent ensemble pour résoudre les adresses IP en adresses MAC et comprendre les interactions de la couche réseau.
-3. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Acquérez une expérience pratique de la capture et de l'inspection des trames Ethernet, y compris les adresses MAC, pour comprendre les communications réseau de bas niveau.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, sur un système Linux.
+2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` fonctionnent ensemble pour résoudre les adresses IP en adresses MAC et comprendre les interactions de la couche réseau.
+3. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Acquérez une expérience pratique de la capture et de l'inspection des trames Ethernet, y compris les adresses MAC, pour comprendre les communications réseau de bas niveau.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec les fondamentaux du réseau au niveau de la couche de liaison.
 

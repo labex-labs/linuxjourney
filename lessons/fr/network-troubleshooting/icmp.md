@@ -32,9 +32,9 @@ Ces messages prendront plus de sens à mesure que nous utiliserons certains outi
 
 C'est en forgeant qu'on devient forgeron ! Voici quelques laboratoires pratiques pour renforcer votre compréhension d'ICMP et du dépannage réseau :
 
-1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez `ping` pour explorer comment les couches réseau et liaison de données interagissent, en appliquant directement les concepts liés à la fonction d'ICMP dans le test de connectivité.
-2. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Entraînez-vous à utiliser `ping` pour tester l'accessibilité du réseau et diagnostiquer les problèmes de connectivité, renforçant ainsi l'application pratique des messages ICMP.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP et à tester la connectivité avec `ping` dans un environnement simulé, vous aidant à comprendre comment les configurations réseau affectent la livraison des paquets.
+1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez `ping` pour explorer comment les couches réseau et liaison de données interagissent, en appliquant directement les concepts liés à la fonction d'ICMP dans le test de connectivité.
+2. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Entraînez-vous à utiliser `ping` pour tester l'accessibilité du réseau et diagnostiquer les problèmes de connectivité, renforçant ainsi l'application pratique des messages ICMP.
+3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP et à tester la connectivité avec `ping` dans un environnement simulé, vous aidant à comprendre comment les configurations réseau affectent la livraison des paquets.
 
 Ces laboratoires vous aideront à appliquer les concepts d'ICMP et de diagnostic réseau dans des scénarios réels et à renforcer votre confiance dans le dépannage des problèmes réseau.
 

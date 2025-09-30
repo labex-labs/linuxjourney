@@ -35,9 +35,9 @@ ip neighbour show
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de ARP y la interacción de la capa de red:
 
-1. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Usa los comandos `ping` y `arp` para observar cómo las direcciones IP se resuelven en direcciones MAC y cómo la puerta de enlace predeterminada maneja el tráfico.
-2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, que son fundamentales para comprender ARP.
-3. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Practica la administración del direccionamiento IP usando el comando `ip` y verifica la configuración de red con `arp` y `traceroute`.
+1. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Usa los comandos `ping` y `arp` para observar cómo las direcciones IP se resuelven en direcciones MAC y cómo la puerta de enlace predeterminada maneja el tráfico.
+2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, que son fundamentales para comprender ARP.
+3. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practica la administración del direccionamiento IP usando el comando `ip` y verifica la configuración de red con `arp` y `traceroute`.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de ARP y direccionamiento de red en escenarios reales y a generar confianza con las redes Linux.
 

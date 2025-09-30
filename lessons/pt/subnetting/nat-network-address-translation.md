@@ -29,9 +29,9 @@ NAT e o roteamento de pacotes em geral podem ser bem complicados, mas não vamos
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre endereçamento de rede e conectividade, que são fundamentais para entender conceitos como NAT:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4 e IPv6, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar o endereçamento IP configurando IPs estáticos e dinâmicos, e verificando a configuração de rede, o que ajuda a entender como os dispositivos obtêm seus endereços.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereço IP (privado, público, multicast) e teste a acessibilidade da rede, fornecendo um contexto prático de como a NAT distingue entre endereços internos e externos.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4 e IPv6, em um sistema Linux.
+2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar o endereçamento IP configurando IPs estáticos e dinâmicos, e verificando a configuração de rede, o que ajuda a entender como os dispositivos obtêm seus endereços.
+3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereço IP (privado, público, multicast) e teste a acessibilidade da rede, fornecendo um contexto prático de como a NAT distingue entre endereços internos e externos.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança na configuração e solução de problemas de rede no Linux.
 

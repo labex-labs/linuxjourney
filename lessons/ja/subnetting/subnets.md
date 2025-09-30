@@ -43,9 +43,9 @@ Google で「binary to decimal calculator」と入力し、11111111 を 10 進�
 
 練習は完璧をもたらします！IP アドレスとサブネットの理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、サブネットを理解する上で不可欠な IPv4 アドレスを含むネットワークアドレス情報を特定する練習をします。
-2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類を探索し、ネットワークの到達可能性をテストする方法を学び、ホストが同じネットワーク上にあるかどうかを確認するのに役立ちます。
-3. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP サブネット化とバイナリ変換を習得し、レッスンで説明したネットワークプレフィックスとホスト識別の概念を直接適用します。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、サブネットを理解する上で不可欠な IPv4 アドレスを含むネットワークアドレス情報を特定する練習をします。
+2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類を探索し、ネットワークの到達可能性をテストする方法を学び、ホストが同じネットワーク上にあるかどうかを確認するのに役立ちます。
+3. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - IP サブネット化とバイナリ変換を習得し、レッスンで説明したネットワークプレフィックスとホスト識別の概念を直接適用します。
 
 これらの演習は、実際のシナリオで概念を適用し、ネットワークアドレスとサブネットに関する自信を築くのに役立ちます。
 

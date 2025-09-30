@@ -68,7 +68,7 @@ tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
 
 연습이 완벽을 만듭니다! 다음은 네트워크 인터페이스 설정에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 ethtool 로 네트워크 인터페이스 설정 검사](https://labex.io/ko/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` 명령을 사용하여 네트워크 인터페이스 설정을 검사하고 관리하는 방법을 배우십시오. 여기에는 인터페이스 속도 및 이중 모드 보기 및 설정, 물리 계층 네트워크 문제 해결을 위한 링크 모드 분석이 포함됩니다.
+1. **[Linux 에서 ethtool 로 네트워크 인터페이스 설정 검사](https://labex.io/ko/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` 명령을 사용하여 네트워크 인터페이스 설정을 검사하고 관리하는 방법을 배우십시오. 여기에는 인터페이스 속도 및 이중 모드 보기 및 설정, 물리 계층 네트워크 문제 해결을 위한 링크 모드 분석이 포함됩니다.
 
 이 실습은 실제 시나리오에 개념을 적용하고 네트워크 인터페이스 관리 능력을 향상시키는 데 도움이 될 것입니다.
 

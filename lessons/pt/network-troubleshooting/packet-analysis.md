@@ -64,7 +64,7 @@ Algumas considerações finais: apenas arranhamos a superfície do assunto da an
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da análise de pacotes:
 
-1. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Pratique a captura e inspeção de quadros Ethernet, gerando tráfego e analisando cabeçalhos de quadros e endereços MAC usando `tcpdump`.
+1. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Pratique a captura e inspeção de quadros Ethernet, gerando tráfego e analisando cabeçalhos de quadros e endereços MAC usando `tcpdump`.
 
 Este laboratório o ajudará a aplicar os conceitos de análise de pacotes em um cenário real e a construir confiança com a solução de problemas de rede.
 

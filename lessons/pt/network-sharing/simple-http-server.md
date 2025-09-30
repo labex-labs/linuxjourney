@@ -27,9 +27,9 @@ Isso configura um servidor web básico que você pode acessar via endereço loca
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da conectividade de rede e endereçamento IP, que são essenciais para compartilhar arquivos em uma rede:
 
-1. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique a identificação de diferentes tipos de endereço IP e o teste de acessibilidade de rede, crucial para garantir que seu servidor HTTP Python esteja acessível.
-2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para encontrar o endereço IP da sua máquina, um passo necessário antes de acessar seus arquivos compartilhados de outro dispositivo.
-3. **[Gerenciar Resolução de Hostname Local no Linux](https://labex.io/pt/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de hostname local no Linux editando o arquivo /etc/hosts, uma habilidade chave para desenvolvimento web e testes de rede.
+1. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique a identificação de diferentes tipos de endereço IP e o teste de acessibilidade de rede, crucial para garantir que seu servidor HTTP Python esteja acessível.
+2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para encontrar o endereço IP da sua máquina, um passo necessário antes de acessar seus arquivos compartilhados de outro dispositivo.
+3. **[Gerenciar Resolução de Hostname Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de hostname local no Linux editando o arquivo /etc/hosts, uma habilidade chave para desenvolvimento web e testes de rede.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com operações básicas de rede no Linux.
 

@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS and hostname resolution:
 
-1. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Pratique a instalação e configuração de um servidor DNS local (`bind9`), definindo zonas e validando sua configuração.
-2. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a usar ferramentas essenciais de linha de comando (`dig`, `nslookup`) para consultar vários tipos de registros DNS e solucionar problemas de DNS.
-3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Entenda como gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts`, uma habilidade fundamental para desenvolvimento e testes.
+1. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Pratique a instalação e configuração de um servidor DNS local (`bind9`), definindo zonas e validando sua configuração.
+2. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a usar ferramentas essenciais de linha de comando (`dig`, `nslookup`) para consultar vários tipos de registros DNS e solucionar problemas de DNS.
+3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Entenda como gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts`, uma habilidade fundamental para desenvolvimento e testes.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de DNS e resolução de nome de host em cenários reais e a construir confiança com os serviços de rede.
 

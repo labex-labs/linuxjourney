@@ -19,9 +19,9 @@ Um truque simples é subtrair o endereço CIDR (23) do número total de bits que
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de CIDR, endereçamento IP e sub-redes:
 
-1. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, incluindo a tradução de máscaras CIDR e o cálculo de hosts utilizáveis.
-2. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos e observe como as sub-redes IP governam a comunicação direta de rede em um ambiente simulado.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando comandos como `ping` e `ip a` para testar vários tipos de IP e conectividade.
+1. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, incluindo a tradução de máscaras CIDR e o cálculo de hosts utilizáveis.
+2. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos e observe como as sub-redes IP governam a comunicação direta de rede em um ambiente simulado.
+3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando comandos como `ping` e `ip a` para testar vários tipos de IP e conectividade.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de CIDR e endereçamento IP em cenários reais e a construir confiança com a configuração de rede.
 

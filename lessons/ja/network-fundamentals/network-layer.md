@@ -17,9 +17,9 @@ meta_keywords: "ネットワーク層，IP アドレス，サブネット，Linu
 
 練習は完璧をもたらします！ネットワーク層、IP アドレス指定、およびサブネットの理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux でネットワーク層接続をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker コンテナを使用して、静的 IP アドレスの割り当てと、異なるサブネット内およびサブネット間の接続テストを練習します。
-2. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux ターミナルで直接、使用可能なホストとサブネットの計算を含む IP サブネット化とバイナリ変換を習得します。
-3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を使用して、さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、ネットワーク到達可能性をテストします。
+1. **[Linux でネットワーク層接続をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker コンテナを使用して、静的 IP アドレスの割り当てと、異なるサブネット内およびサブネット間の接続テストを練習します。
+2. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux ターミナルで直接、使用可能なホストとサブネットの計算を含む IP サブネット化とバイナリ変換を習得します。
+3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を使用して、さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、ネットワーク到達可能性をテストします。
 
 これらのラボは、IP アドレス指定とサブネット化の概念を実際のシナリオに適用し、ネットワーク層の基礎に自信を築くのに役立ちます。
 

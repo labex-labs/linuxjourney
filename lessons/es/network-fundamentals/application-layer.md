@@ -19,7 +19,7 @@ Primero, comenzamos en la capa de aplicación. Cuando enviamos nuestro correo el
 
 ¡La práctica hace al maestro! Aquí tiene un laboratorio práctico para reforzar su comprensión de las capas de red y los puertos:
 
-1. **[Analizar puertos y sesiones de red con netstat en Linux](https://labex.io/es/labs/linux-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - En este laboratorio, aprenderá a usar el comando `netstat` para analizar la actividad de la red, explorando conceptos fundamentales como puertos de red, sockets y conexiones activas. Esto le dará una visión práctica de cómo se comunican los servicios a través de la red, relacionándose directamente con los conceptos de la capa de transporte discutidos.
+1. **[Analizar puertos y sesiones de red con netstat en Linux](https://labex.io/es/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - En este laboratorio, aprenderá a usar el comando `netstat` para analizar la actividad de la red, explorando conceptos fundamentales como puertos de red, sockets y conexiones activas. Esto le dará una visión práctica de cómo se comunican los servicios a través de la red, relacionándose directamente con los conceptos de la capa de transporte discutidos.
 
 Este laboratorio le ayudará a aplicar los conceptos de comunicación de red y uso de puertos en un entorno Linux real, aumentando su confianza en la comprensión de cómo las aplicaciones interactúan con la pila de red.
 

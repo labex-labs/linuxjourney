@@ -39,9 +39,9 @@ El tiempo de ida y vuelta que tardó desde que enviaste el paquete de solicitud 
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la conectividad de red y el comando `ping`:
 
-1. **[Explora la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Usa `ping` y `arp` para explorar las interacciones de la capa de red y de enlace de datos y observa cómo la puerta de enlace predeterminada maneja el tráfico remoto.
-2. **[Explora los tipos de direcciones IP y la accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Utiliza `ping` e `ip a` para probar la pila TCP/IP local, verificar la conectividad a Internet pública y explorar la accesibilidad de la red.
-3. **[Simula la conectividad de la capa de red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprende a asignar direcciones IP estáticas con `ip addr` y prueba la conectividad con `ping` en la misma subred y en subredes diferentes.
+1. **[Explora la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Usa `ping` y `arp` para explorar las interacciones de la capa de red y de enlace de datos y observa cómo la puerta de enlace predeterminada maneja el tráfico remoto.
+2. **[Explora los tipos de direcciones IP y la accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utiliza `ping` e `ip a` para probar la pila TCP/IP local, verificar la conectividad a Internet pública y explorar la accesibilidad de la red.
+3. **[Simula la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprende a asignar direcciones IP estáticas con `ip addr` y prueba la conectividad con `ping` en la misma subred y en subredes diferentes.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de accesibilidad de red y el comando `ping` en escenarios reales y a generar confianza con el diagnóstico de red en Linux.
 

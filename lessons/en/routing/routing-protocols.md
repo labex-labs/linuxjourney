@@ -19,9 +19,9 @@ Before we talk about the protocols, we should go over a term used in routing kno
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
 
-1. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Practice configuring static and dynamic IP addresses, setting a default gateway, and verifying network configurations, which are crucial for understanding how routing tables are built and utilized.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how devices interact at the network layer, observing ARP and how the default gateway handles remote traffic, providing insight into the mechanisms routing protocols manage.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes, assign IP addresses, and test connectivity across subnets, directly applying concepts related to network changes and routing decisions.
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring static and dynamic IP addresses, setting a default gateway, and verifying network configurations, which are crucial for understanding how routing tables are built and utilized.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how devices interact at the network layer, observing ARP and how the default gateway handles remote traffic, providing insight into the mechanisms routing protocols manage.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes, assign IP addresses, and test connectivity across subnets, directly applying concepts related to network changes and routing decisions.
 
 These labs will help you apply the concepts of network configuration and connectivity in real scenarios, building confidence with the foundational elements that routing protocols automate.
 

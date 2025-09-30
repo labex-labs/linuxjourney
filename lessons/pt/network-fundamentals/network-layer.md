@@ -17,9 +17,9 @@ Na camada de Rede, ela recebe o segmento vindo da camada de Transporte e encapsu
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar a sua compreensão da camada de Rede, endereçamento IP e sub-redes:
 
-1. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Pratique a atribuição de endereços IP estáticos e o teste de conectividade dentro e entre diferentes sub-redes usando contêineres Docker.
-2. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, incluindo o cálculo de hosts utilizáveis e sub-redes, diretamente no terminal Linux.
-3. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore vários tipos de endereços IP (privado, público, multicast) e teste a acessibilidade da rede usando `ping` e `ip a`.
+1. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Pratique a atribuição de endereços IP estáticos e o teste de conectividade dentro e entre diferentes sub-redes usando contêineres Docker.
+2. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, incluindo o cálculo de hosts utilizáveis e sub-redes, diretamente no terminal Linux.
+3. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore vários tipos de endereços IP (privado, público, multicast) e teste a acessibilidade da rede usando `ping` e `ip a`.
 
 Estes laboratórios irão ajudá-lo a aplicar os conceitos de endereçamento IP e sub-redes em cenários reais e a construir confiança com os fundamentos da camada de Rede.
 

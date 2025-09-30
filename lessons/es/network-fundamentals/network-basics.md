@@ -24,9 +24,9 @@ Los datos y la información que se transmiten a través de las redes se conocen 
 
 ¡La práctica hace al maestro! La experiencia práctica es crucial para comprender los fundamentos de las redes. Aquí hay algunos laboratorios para reforzar su comprensión de los componentes de la red y cómo se comunican los hosts:
 
-1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique la identificación de información de direccionamiento de red para hosts, incluyendo direcciones MAC e IP, usando el comando `ip a`.
-2. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a probar la accesibilidad de la red e identificar diferentes tipos de direcciones IP, esenciales para comprender cómo se conectan los hosts.
-3. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Comprenda cómo interactúan los hosts en una red observando el Protocolo de Resolución de Direcciones (ARP) y probando la conectividad con `ping`.
+1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique la identificación de información de direccionamiento de red para hosts, incluyendo direcciones MAC e IP, usando el comando `ip a`.
+2. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a probar la accesibilidad de la red e identificar diferentes tipos de direcciones IP, esenciales para comprender cómo se conectan los hosts.
+3. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Comprenda cómo interactúan los hosts en una red observando el Protocolo de Resolución de Direcciones (ARP) y probando la conectividad con `ping`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de hosts, direccionamiento y conectividad básica en escenarios reales y a desarrollar confianza con las redes fundamentales.
 

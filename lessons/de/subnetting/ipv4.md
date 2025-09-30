@@ -34,9 +34,9 @@ Wie Sie sehen können, lautet meine IPv4-Adresse: 192.168.1.129
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von IP-Adressierung und Netzwerkidentifikation in Linux zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen und testen Sie die Netzwerkerreichbarkeit mit Befehlen wie `ping` und `ip a`.
-3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, unerlässlich für ein tieferes Verständnis, wie IP-Adressen und Netzwerke auf Bitebene strukturiert sind.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen und testen Sie die Netzwerkerreichbarkeit mit Befehlen wie `ping` und `ip a`.
+3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, unerlässlich für ein tieferes Verständnis, wie IP-Adressen und Netzwerke auf Bitebene strukturiert sind.
 
 Diese Übungen helfen Ihnen, die Konzepte der IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und Fehlerbehebung in Linux aufzubauen.
 

@@ -29,9 +29,9 @@ NAT und die Paketweiterleitung im Allgemeinen können ziemlich kompliziert werde
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerkadressierung und Konnektivität zu vertiefen, die grundlegend für das Verständnis von Konzepten wie NAT sind:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** - Lernen Sie, die IP-Adressierung durch Konfigurieren statischer und dynamischer IPs zu verwalten und die Netzwerkkonfiguration zu überprüfen, was zum Verständnis beiträgt, wie Geräte ihre Adressen erhalten.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit, um einen praktischen Kontext dafür zu erhalten, wie NAT zwischen internen und externen Adressen unterscheidet.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, die IP-Adressierung durch Konfigurieren statischer und dynamischer IPs zu verwalten und die Netzwerkkonfiguration zu überprüfen, was zum Verständnis beiträgt, wie Geräte ihre Adressen erhalten.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit, um einen praktischen Kontext dafür zu erhalten, wie NAT zwischen internen und externen Adressen unterscheidet.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und Fehlerbehebung unter Linux aufzubauen.
 

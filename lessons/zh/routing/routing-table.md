@@ -46,9 +46,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 熟能生巧！以下是一些动手实验，以巩固您对网络路由和 IP 寻址的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令识别网络寻址信息，包括 IP 地址和网络接口，它们是路由表的关键组成部分。
-2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 学习管理 IP 寻址、配置静态 IP、设置默认网关以及验证网络配置，这些都与路由表中找到的条目直接相关。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 寻址和网络可达性，帮助您了解不同 IP 类型如何交互以及如何确定网络可达性，这反映在路由决策中。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令识别网络寻址信息，包括 IP 地址和网络接口，它们是路由表的关键组成部分。
+2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习管理 IP 寻址、配置静态 IP、设置默认网关以及验证网络配置，这些都与路由表中找到的条目直接相关。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 寻址和网络可达性，帮助您了解不同 IP 类型如何交互以及如何确定网络可达性，这反映在路由决策中。
 
 这些实验将帮助您在实际场景中应用概念，并增强网络配置和故障排除的信心。
 

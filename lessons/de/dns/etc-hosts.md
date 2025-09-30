@@ -46,8 +46,8 @@ search localdomain
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der lokalen Hostnamenauflösung und von DNS-Abfragen zu vertiefen:
 
-1. **[Lokale Hostnamenauflösung in Linux verwalten](https://labex.io/de/labs/linux-manage-local-hostname-resolution-in-linux-592792)** – Üben Sie das Bearbeiten der Datei `/etc/hosts`, um die lokale Hostnamenauflösung zu verwalten, ein wichtiger Schritt vor DNS-Abfragen.
-2. **[DNS-Einträge in Linux mit dig und nslookup abfragen](https://labex.io/de/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** – Lernen Sie, DNS-Einträge mit wichtigen Linux-Tools wie `dig` und `nslookup` abzufragen, um zu verstehen, wie Ihre Maschine externe Namen auflöst.
+1. **[Lokale Hostnamenauflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** – Üben Sie das Bearbeiten der Datei `/etc/hosts`, um die lokale Hostnamenauflösung zu verwalten, ein wichtiger Schritt vor DNS-Abfragen.
+2. **[DNS-Einträge in Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** – Lernen Sie, DNS-Einträge mit wichtigen Linux-Tools wie `dig` und `nslookup` abzufragen, um zu verstehen, wie Ihre Maschine externe Namen auflöst.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Hostnamenauflösung und DNS aufzubauen.
 

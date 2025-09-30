@@ -24,9 +24,9 @@ meta_keywords: "Linux ネットワークの基本，WAN, LAN, WLAN, ネットワ
 
 練習は完璧をもたらします！実践的な経験は、ネットワーキングの基礎を理解するために不可欠です。ネットワークコンポーネントとホストがどのように通信するかについての理解を深めるためのラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、MAC アドレスや IP アドレスを含むホストのネットワークアドレス情報を特定する練習をします。
-2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - ネットワークの到達可能性をテストし、異なる IP アドレスの種類を特定する方法を学び、ホストがどのように接続するかを理解するために不可欠です。
-3. **[Linux で ping と arp によるネットワーク層の相互作用を探索する](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - ARP (Address Resolution Protocol) を観察し、`ping` で接続をテストすることで、ホストがネットワーク上でどのように相互作用するかを理解します。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、MAC アドレスや IP アドレスを含むホストのネットワークアドレス情報を特定する練習をします。
+2. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - ネットワークの到達可能性をテストし、異なる IP アドレスの種類を特定する方法を学び、ホストがどのように接続するかを理解するために不可欠です。
+3. **[Linux で ping と arp によるネットワーク層の相互作用を探索する](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - ARP (Address Resolution Protocol) を観察し、`ping` で接続をテストすることで、ホストがネットワーク上でどのように相互作用するかを理解します。
 
 これらのラボは、ホスト、アドレス指定、および基本的な接続の概念を実際のシナリオに適用し、基本的なネットワーキングに自信をつけるのに役立ちます。
 

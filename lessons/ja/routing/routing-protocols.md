@@ -19,9 +19,9 @@ meta_keywords: "ルーティングプロトコル，ネットワークコンバ�
 
 練習は完璧をもたらします！ネットワークルーティングと IP アドレス指定の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスの設定、デフォルトゲートウェイの設定、ネットワーク構成の検証を練習します。これらは、ルーティングテーブルがどのように構築され、利用されるかを理解するために不可欠です。
-2. **[Linux で ping と arp によるネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - デバイスがネットワーク層でどのように相互作用するかを学び、ARP とデフォルトゲートウェイがリモートトラフィックをどのように処理するかを観察し、ルーティングプロトコルが管理するメカニズムへの洞察を提供します。
-3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスを割り当て、サブネット間の接続をテストします。これにより、ネットワークの変更とルーティングの決定に関連する概念を直接適用できます。
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスの設定、デフォルトゲートウェイの設定、ネットワーク構成の検証を練習します。これらは、ルーティングテーブルがどのように構築され、利用されるかを理解するために不可欠です。
+2. **[Linux で ping と arp によるネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - デバイスがネットワーク層でどのように相互作用するかを学び、ARP とデフォルトゲートウェイがリモートトラフィックをどのように処理するかを観察し、ルーティングプロトコルが管理するメカニズムへの洞察を提供します。
+3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスを割り当て、サブネット間の接続をテストします。これにより、ネットワークの変更とルーティングの決定に関連する概念を直接適用できます。
 
 これらのラボは、実際のシナリオでネットワーク構成と接続の概念を適用するのに役立ち、ルーティングプロトコルが自動化する基本的な要素に対する自信を築きます。
 

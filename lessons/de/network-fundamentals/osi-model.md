@@ -17,9 +17,9 @@ Obwohl das OSI-Modell theoretisch ist, ist das Verständnis seines Einflusses au
 
 Hier sind einige praktische Übungen, um Ihr Verständnis grundlegender Netzwerkkonzepte zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mit dem Befehl `ip` zu überprüfen.
-3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie die Befehle `ping` und `arp`, um zu untersuchen, wie die Netzwerk- und Datenverbindungsschichten interagieren, beobachten Sie ARP in Aktion und verstehen Sie das Verhalten des Standard-Gateways.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mit dem Befehl `ip` zu überprüfen.
+3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie die Befehle `ping` und `arp`, um zu untersuchen, wie die Netzwerk- und Datenverbindungsschichten interagieren, beobachten Sie ARP in Aktion und verstehen Sie das Verhalten des Standard-Gateways.
 
 Diese Labs helfen Ihnen, grundlegende Netzwerkkonzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkadministration aufzubauen.
 

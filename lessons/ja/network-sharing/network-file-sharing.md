@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 練習は完璧をもたらします！セキュアなネットワークファイル転送の理解を深めるための実践的な演習です。
 
-1. **[SSH を使用した Linux でのセキュアなリモートアクセス](https://labex.io/ja/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - キーベース認証、`scp` を使用したファイルのセキュアな転送、ポートフォワーディングのための SSH トンネルの作成を練習します。
+1. **[SSH を使用した Linux でのセキュアなリモートアクセス](https://labex.io/ja/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - キーベース認証、`scp` を使用したファイルのセキュアな転送、ポートフォワーディングのための SSH トンネルの作成を練習します。
 
 この演習は、セキュアなリモートアクセスとファイル転送の概念を実際のシナリオに適用し、`scp` の自信を深めるのに役立ちます。
 

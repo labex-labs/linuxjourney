@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 연습하면 완벽해집니다! 다음은 네트워크 인터페이스 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC, IPv4 및 IPv6 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 고정 및 동적 IP 주소를 구성하고, 기본 게이트웨이를 설정하고, 네트워크 구성을 확인하는 방법을 배웁니다.
-3. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 다양한 IP 주소 유형 (사설, 공용, 멀티캐스트) 을 탐색하고 네트워크 연결 가능성을 테스트합니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC, IPv4 및 IPv6 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 고정 및 동적 IP 주소를 구성하고, 기본 게이트웨이를 설정하고, 네트워크 구성을 확인하는 방법을 배웁니다.
+3. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 다양한 IP 주소 유형 (사설, 공용, 멀티캐스트) 을 탐색하고 네트워크 연결 가능성을 테스트합니다.
 
 이러한 랩은 실제 시나리오에서 네트워크 인터페이스 식별 및 IP 주소 지정 개념을 적용하고 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

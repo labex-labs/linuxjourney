@@ -24,9 +24,9 @@ Die Daten und Informationen, die über Netzwerke übertragen werden, werden als 
 
 Übung macht den Meister! Praktische Erfahrung ist entscheidend für das Verständnis der Grundlagen der Netzwerktechnik. Hier sind einige Labs, um Ihr Verständnis der Netzwerkkomponenten und der Kommunikation von Hosts zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie das Identifizieren von Netzwerkadressierungsinformationen für Hosts, einschließlich MAC- und IP-Adressen, mithilfe des Befehls `ip a`.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Lernen Sie, die Netzwerkerreichbarkeit zu testen und verschiedene IP-Adresstypen zu identifizieren, was für das Verständnis der Host-Verbindung unerlässlich ist.
-3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verstehen Sie, wie Hosts in einem Netzwerk interagieren, indem Sie das Address Resolution Protocol (ARP) beobachten und die Konnektivität mit `ping` testen.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie das Identifizieren von Netzwerkadressierungsinformationen für Hosts, einschließlich MAC- und IP-Adressen, mithilfe des Befehls `ip a`.
+2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Lernen Sie, die Netzwerkerreichbarkeit zu testen und verschiedene IP-Adresstypen zu identifizieren, was für das Verständnis der Host-Verbindung unerlässlich ist.
+3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verstehen Sie, wie Hosts in einem Netzwerk interagieren, indem Sie das Address Resolution Protocol (ARP) beobachten und die Konnektivität mit `ping` testen.
 
 Diese Labs helfen Ihnen, die Konzepte von Hosts, Adressierung und grundlegender Konnektivität in realen Szenarien anzuwenden und Vertrauen in die grundlegende Netzwerktechnik aufzubauen.
 

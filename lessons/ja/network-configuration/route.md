@@ -43,8 +43,8 @@ $ ip route delete 192.168.2.1/23
 
 練習は完璧をもたらします！ネットワークルーティングと IP アドレス指定の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的 IP の設定、デフォルトゲートウェイの設定、`ip` コマンドを使用したネットワーク設定の確認を練習します。
-2. **[Linux での ping と arp によるネットワーク層の相互作用の探索](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - デフォルトゲートウェイがリモートトラフィックをどのように処理するかを学び、ネットワーク層の相互作用を観察します。
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的 IP の設定、デフォルトゲートウェイの設定、`ip` コマンドを使用したネットワーク設定の確認を練習します。
+2. **[Linux での ping と arp によるネットワーク層の相互作用の探索](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - デフォルトゲートウェイがリモートトラフィックをどのように処理するかを学び、ネットワーク層の相互作用を観察します。
 
 これらのラボは、IP アドレス指定とルーティングの概念を実際のシナリオに適用し、Linux ネットワーキングに自信を持つために役立ちます。
 

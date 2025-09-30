@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du DNS et de la résolution de noms d'hôtes :
 
-1. **[Configurer un serveur DNS autoritaire local sous Linux](https://labex.io/fr/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Entraînez-vous à installer et configurer un serveur DNS local (`bind9`), à définir des zones et à valider votre configuration.
-2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à utiliser les outils de ligne de commande essentiels (`dig`, `nslookup`) pour interroger différents types d'enregistrements DNS et dépanner les problèmes DNS.
-3. **[Gérer la résolution de noms d'hôtes locale sous Linux](https://labex.io/fr/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Comprenez comment gérer la résolution de noms d'hôtes locale en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement et les tests.
+1. **[Configurer un serveur DNS autoritaire local sous Linux](https://labex.io/fr/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Entraînez-vous à installer et configurer un serveur DNS local (`bind9`), à définir des zones et à valider votre configuration.
+2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à utiliser les outils de ligne de commande essentiels (`dig`, `nslookup`) pour interroger différents types d'enregistrements DNS et dépanner les problèmes DNS.
+3. **[Gérer la résolution de noms d'hôtes locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Comprenez comment gérer la résolution de noms d'hôtes locale en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement et les tests.
 
 Ces laboratoires vous aideront à appliquer les concepts de DNS et de résolution de noms d'hôtes dans des scénarios réels et à renforcer votre confiance avec les services réseau.
 

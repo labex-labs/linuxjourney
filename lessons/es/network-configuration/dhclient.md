@@ -23,9 +23,9 @@ sudo dhclient
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del direccionamiento IP dinámico y la configuración de red:
 
-1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Practique el uso de `dhclient` para obtener una dirección IP dinámica y verificar la configuración de red en un entorno Linux real.
-2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a inspeccionar interfaces de red e identificar direcciones MAC e IP, que son fundamentales para comprender cómo DHCP asigna direcciones.
-3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Pruebe la accesibilidad de la red y explore diferentes tipos de direcciones IP, basándose en su comprensión de cómo funcionan las direcciones IP en una red.
+1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique el uso de `dhclient` para obtener una dirección IP dinámica y verificar la configuración de red en un entorno Linux real.
+2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a inspeccionar interfaces de red e identificar direcciones MAC e IP, que son fundamentales para comprender cómo DHCP asigna direcciones.
+3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pruebe la accesibilidad de la red y explore diferentes tipos de direcciones IP, basándose en su comprensión de cómo funcionan las direcciones IP en una red.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de DHCP y direccionamiento IP en escenarios reales y a generar confianza con la configuración de red en Linux.
 

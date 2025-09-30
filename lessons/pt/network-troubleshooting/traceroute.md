@@ -27,8 +27,8 @@ Cada linha representa um roteador ou máquina que está entre você e seu destin
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da descoberta de caminhos de rede e solução de problemas:
 
-1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para configurar as configurações de rede e verificar a conectividade com `traceroute`.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como `ping` e `arp` funcionam para entender as interações da camada de rede, que são fundamentais para o funcionamento do `traceroute`.
+1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para configurar as configurações de rede e verificar a conectividade com `traceroute`.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como `ping` e `arp` funcionam para entender as interações da camada de rede, que são fundamentais para o funcionamento do `traceroute`.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de diagnóstico de rede em cenários reais e a construir confiança com as ferramentas de rede do Linux.
 

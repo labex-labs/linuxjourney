@@ -46,9 +46,9 @@ C'est l'interface par laquelle notre paquet va sortir. `eth0` désigne général
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage réseau et de l'adressage IP :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP et les interfaces réseau, qui sont des composants clés d'une table de routage.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Apprenez à gérer l'adressage IP, à configurer des IP statiques, à définir des passerelles par défaut et à vérifier les configurations réseau, en relation directe avec les entrées trouvées dans une table de routage.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les différents types d'IP interagissent et comment la joignabilité réseau est déterminée, ce qui est reflété dans les décisions de routage.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP et les interfaces réseau, qui sont des composants clés d'une table de routage.
+2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à gérer l'adressage IP, à configurer des IP statiques, à définir des passerelles par défaut et à vérifier les configurations réseau, en relation directe avec les entrées trouvées dans une table de routage.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les différents types d'IP interagissent et comment la joignabilité réseau est déterminée, ce qui est reflété dans les décisions de routage.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en matière de configuration et de dépannage réseau.
 

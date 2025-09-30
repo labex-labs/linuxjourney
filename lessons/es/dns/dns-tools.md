@@ -58,7 +58,7 @@ www.google.com.         5       IN      A       74.125.239.148
 
 ¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de la configuración de la interfaz de red:
 
-1. **[Examinar la configuración de la interfaz de red con ethtool en Linux](https://labex.io/es/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprende a usar el comando `ethtool` para examinar y administrar la configuración de la interfaz de red, incluyendo la visualización y configuración de la velocidad y el dúplex de la interfaz, y el análisis de los modos de enlace para solucionar problemas de red de la capa física.
+1. **[Examinar la configuración de la interfaz de red con ethtool en Linux](https://labex.io/es/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprende a usar el comando `ethtool` para examinar y administrar la configuración de la interfaz de red, incluyendo la visualización y configuración de la velocidad y el dúplex de la interfaz, y el análisis de los modos de enlace para solucionar problemas de red de la capa física.
 
 Este laboratorio te ayudará a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión de interfaces de red.
 

@@ -50,9 +50,9 @@ Nas lições seguintes, vamos aprofundar cada uma dessas camadas e discutir como
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do modelo TCP/IP e dos fundamentos de rede:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique a identificação de informações chave de endereçamento de rede, como endereços MAC e IP, usando o comando `ip a`, que é fundamental para entender as camadas de rede e de enlace de dados do modelo TCP/IP.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` demonstram a interação entre as camadas de rede e de enlace de dados, fornecendo uma visão prática de como os dispositivos se comunicam dentro da pilha TCP/IP.
-3. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Ganhe experiência prática simulando a conectividade de rede entre nós Linux, atribuindo endereços IP e testando a comunicação, aplicando diretamente conceitos relacionados à camada de rede do modelo TCP/IP.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique a identificação de informações chave de endereçamento de rede, como endereços MAC e IP, usando o comando `ip a`, que é fundamental para entender as camadas de rede e de enlace de dados do modelo TCP/IP.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` demonstram a interação entre as camadas de rede e de enlace de dados, fornecendo uma visão prática de como os dispositivos se comunicam dentro da pilha TCP/IP.
+3. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Ganhe experiência prática simulando a conectividade de rede entre nós Linux, atribuindo endereços IP e testando a comunicação, aplicando diretamente conceitos relacionados à camada de rede do modelo TCP/IP.
 
 Esses laboratórios o ajudarão a aplicar os conceitos do modelo TCP/IP em cenários reais e a construir confiança com a configuração e solução de problemas de rede.
 

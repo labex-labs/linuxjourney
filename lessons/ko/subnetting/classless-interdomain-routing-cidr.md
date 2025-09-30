@@ -19,9 +19,9 @@ IP 주소는 4 바이트 또는 32 비트로 구성된다는 것을 기억하십
 
 연습하면 완벽해집니다! CIDR, IP 주소 지정 및 서브넷팅에 대한 이해를 강화하기 위한 실습 랩은 다음과 같습니다.
 
-1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - CIDR 마스크 변환 및 사용 가능한 호스트 계산을 포함하여 IP 서브넷팅 및 이진 변환을 마스터합니다.
-2. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 시뮬레이션된 환경에서 고정 IP 주소를 할당하고 IP 서브넷이 직접 네트워크 통신을 어떻게 제어하는지 관찰하는 방법을 배웁니다.
-3. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`와 같은 명령을 사용하여 다양한 IP 유형 및 연결을 테스트하여 IP 주소 지정 및 네트워크 연결 가능성을 탐색합니다.
+1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - CIDR 마스크 변환 및 사용 가능한 호스트 계산을 포함하여 IP 서브넷팅 및 이진 변환을 마스터합니다.
+2. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 시뮬레이션된 환경에서 고정 IP 주소를 할당하고 IP 서브넷이 직접 네트워크 통신을 어떻게 제어하는지 관찰하는 방법을 배웁니다.
+3. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`와 같은 명령을 사용하여 다양한 IP 유형 및 연결을 테스트하여 IP 주소 지정 및 네트워크 연결 가능성을 탐색합니다.
 
 이러한 랩은 실제 시나리오에서 CIDR 및 IP 주소 지정 개념을 적용하고 네트워크 구성에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

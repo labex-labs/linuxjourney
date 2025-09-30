@@ -31,9 +31,9 @@ DNS を使ってホストがドメイン (catzontheinterwebz.com) を見つけ�
 
 練習は完璧をもたらします！DNS 解決と管理の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[dig と nslookup で Linux の DNS レコードをクエリする](https://labex.io/ja/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - A、PTR、MX などの DNS レコードをクエリし、デフォルトの DNS サーバーを特定する方法を学びます。これはネットワークトラブルシューティングに不可欠です。
-2. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - ローカル権威 DNS サーバーをインストールおよび設定し、ゾーンを定義し、DNS 解決をテストすることで、実践的な経験を積みます。
-3. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/linux-manage-local-hostname-resolution-in-linux)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する練習をします。これは Web 開発とネットワークテストの重要なスキルです。
+1. **[dig と nslookup で Linux の DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - A、PTR、MX などの DNS レコードをクエリし、デフォルトの DNS サーバーを特定する方法を学びます。これはネットワークトラブルシューティングに不可欠です。
+2. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - ローカル権威 DNS サーバーをインストールおよび設定し、ゾーンを定義し、DNS 解決をテストすることで、実践的な経験を積みます。
+3. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する練習をします。これは Web 開発とネットワークテストの重要なスキルです。
 
 これらのラボは、実際のシナリオで概念を適用し、DNS に対する自信を築くのに役立ちます。
 

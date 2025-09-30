@@ -31,9 +31,9 @@ meta_keywords: "DNS 过程，DNS 查找，DNS 工作原理，DNS 教程，DNS �
 
 熟能生巧！以下是一些动手实验，以巩固您对 DNS 解析和管理的理解：
 
-1. **[在 Linux 中使用 dig 和 nslookup 查询 DNS 记录](https://labex.io/zh/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - 学习查询 A、PTR 和 MX 等 DNS 记录，并识别您的默认 DNS 服务器，这对于网络故障排除至关重要。
-2. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - 通过安装和配置本地权威 DNS 服务器、定义区域和测试 DNS 解析来获得实践经验。
-3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux)** - 练习通过编辑 `/etc/hosts` 文件来管理本地主机名解析，这是 Web 开发和网络测试的关键技能。
+1. **[在 Linux 中使用 dig 和 nslookup 查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习查询 A、PTR 和 MX 等 DNS 记录，并识别您的默认 DNS 服务器，这对于网络故障排除至关重要。
+2. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 通过安装和配置本地权威 DNS 服务器、定义区域和测试 DNS 解析来获得实践经验。
+3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 练习通过编辑 `/etc/hosts` 文件来管理本地主机名解析，这是 Web 开发和网络测试的关键技能。
 
 这些实验将帮助您在实际场景中应用概念，并增强对 DNS 的信心。
 

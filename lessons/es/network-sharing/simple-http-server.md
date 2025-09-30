@@ -27,9 +27,9 @@ Esto configura un servidor web básico al que puedes acceder a través de la dir
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la conectividad de red y el direccionamiento IP, que son esenciales para compartir archivos a través de una red:
 
-1. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Practica la identificación de diferentes tipos de direcciones IP y la prueba de la accesibilidad de la red, crucial para asegurar que tu servidor HTTP de Python sea accesible.
-2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para encontrar la dirección IP de tu máquina, un paso necesario antes de acceder a tus archivos compartidos desde otro dispositivo.
-3. **[Gestionar la resolución de nombres de host local en Linux](https://labex.io/es/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Aprende a gestionar la resolución de nombres de host local en Linux editando el archivo /etc/hosts, una habilidad clave para el desarrollo web y las pruebas de red.
+1. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practica la identificación de diferentes tipos de direcciones IP y la prueba de la accesibilidad de la red, crucial para asegurar que tu servidor HTTP de Python sea accesible.
+2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprende a usar el comando `ip a` para encontrar la dirección IP de tu máquina, un paso necesario antes de acceder a tus archivos compartidos desde otro dispositivo.
+3. **[Gestionar la resolución de nombres de host local en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprende a gestionar la resolución de nombres de host local en Linux editando el archivo /etc/hosts, una habilidad clave para el desarrollo web y las pruebas de red.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza con las operaciones básicas de red en Linux.
 

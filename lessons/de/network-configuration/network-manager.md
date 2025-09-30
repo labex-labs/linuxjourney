@@ -54,9 +54,9 @@ Der Befehl `nmcli` ermöglicht Ihnen die Steuerung und Änderung von NetworkMana
 
 Übung macht den Meister! Während NetworkManager einen Großteil der Netzwerkkonfiguration automatisiert, ist das Verständnis der zugrunde liegenden Befehle und Konzepte, die es verwaltet, entscheidend für die Fehlerbehebung und fortgeschrittene Administration. Hier sind einige praktische Übungen, um Ihr Verständnis der Netzwerkidentifikation und -verwaltung in Linux zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, Standard-Gateways festzulegen und Netzwerkkonfigurationen mit dem Befehl `ip` und `dhclient` zu überprüfen.
-3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping` und `arp`, um zu verstehen, wie Netzwerk- und Datenverbindungsschichten interagieren, beobachten Sie ARP in Aktion und wie Standard-Gateways den Datenverkehr handhaben.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, Standard-Gateways festzulegen und Netzwerkkonfigurationen mit dem Befehl `ip` und `dhclient` zu überprüfen.
+3. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping` und `arp`, um zu verstehen, wie Netzwerk- und Datenverbindungsschichten interagieren, beobachten Sie ARP in Aktion und wie Standard-Gateways den Datenverkehr handhaben.
 
 Diese Übungen helfen Ihnen, die Konzepte der Netzwerkidentifikation und -konfiguration in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Linux-Netzwerktechnik aufzubauen.
 

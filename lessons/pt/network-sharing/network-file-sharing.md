@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão da transferência segura de arquivos em rede:
 
-1. **[Acesso Remoto Seguro no Linux com SSH](https://labex.io/pt/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - Pratique a autenticação baseada em chave, a transferência segura de arquivos com `scp` e a criação de túneis SSH para encaminhamento de portas.
+1. **[Acesso Remoto Seguro no Linux com SSH](https://labex.io/pt/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - Pratique a autenticação baseada em chave, a transferência segura de arquivos com `scp` e a criação de túneis SSH para encaminhamento de portas.
 
 Este laboratório o ajudará a aplicar os conceitos de acesso remoto seguro e transferência de arquivos em um cenário real e a construir confiança com `scp`.
 

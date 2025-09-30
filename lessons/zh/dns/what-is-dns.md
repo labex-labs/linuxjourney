@@ -19,9 +19,9 @@ DNS 本质上是一个分布式的主机名到 IP 地址的数据库。我们管
 
 熟能生巧！以下是一些动手实验，以加强你对 DNS 和主机名解析的理解：
 
-1. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - 学习使用 `dig` 和 `nslookup` 等基本 Linux 工具来查询各种 DNS 记录类型，帮助你理解主机名如何解析为 IP 地址。
-2. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/linux-manage-local-hostname-resolution-in-linux)** - 练习编辑 `/etc/hosts` 文件来管理本地主机名解析，这是控制你的 Linux 系统如何在不依赖外部 DNS 服务器的情况下解析名称的基本技能。
-3. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - 通过使用 `bind9` 设置和配置你自己的本地权威 DNS 服务器来获得实践经验，让你更深入地了解 DNS 区域和记录是如何管理的。
+1. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用 `dig` 和 `nslookup` 等基本 Linux 工具来查询各种 DNS 记录类型，帮助你理解主机名如何解析为 IP 地址。
+2. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 练习编辑 `/etc/hosts` 文件来管理本地主机名解析，这是控制你的 Linux 系统如何在不依赖外部 DNS 服务器的情况下解析名称的基本技能。
+3. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 通过使用 `bind9` 设置和配置你自己的本地权威 DNS 服务器来获得实践经验，让你更深入地了解 DNS 区域和记录是如何管理的。
 
 这些实验将帮助你在实际场景中应用概念，并在 Linux 环境中建立对 DNS 和主机名解析的信心。
 

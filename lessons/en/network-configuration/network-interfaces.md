@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network interfaces and IP addressing:
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC, IPv4, and IPv6 addresses on a Linux system.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability using `ping` and `ip a`.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC, IPv4, and IPv6 addresses on a Linux system.
+2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
+3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability using `ping` and `ip a`.
 
 These labs will help you apply the concepts of network interface identification and IP addressing in real scenarios and build confidence with Linux networking.
 

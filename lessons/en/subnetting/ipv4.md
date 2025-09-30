@@ -34,9 +34,9 @@ As you can see, my IPv4 address is: 192.168.1.129
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of IP addressing and network identification in Linux:
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
-2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using commands like `ping` and `ip a`.
-3. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential for a deeper understanding of how IP addresses and networks are structured at the bit level.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using commands like `ping` and `ip a`.
+3. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential for a deeper understanding of how IP addresses and networks are structured at the bit level.
 
 These labs will help you apply the concepts of IP addressing in real scenarios and build confidence with network configuration and troubleshooting in Linux.
 

@@ -40,9 +40,9 @@ ARP 查找与 IP 地址关联的 MAC 地址。ARP 在同一网络内使用。如
 
 熟能生巧！以下是一些动手实验，以巩固您对链路层、MAC 地址和 ARP 的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 MAC 地址。
-2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 命令如何协同工作以将 IP 地址解析为 MAC 地址，并理解网络层交互。
-3. **[在 Linux 中使用 tcpdump 分析以太网帧](https://labex.io/zh/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - 获得捕获和检查以太网帧（包括 MAC 地址）的实践经验，以理解低级网络通信。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 MAC 地址。
+2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解 `ping` 和 `arp` 命令如何协同工作以将 IP 地址解析为 MAC 地址，并理解网络层交互。
+3. **[在 Linux 中使用 tcpdump 分析以太网帧](https://labex.io/zh/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - 获得捕获和检查以太网帧（包括 MAC 地址）的实践经验，以理解低级网络通信。
 
 这些实验将帮助您在实际场景中应用概念，并增强对链路层网络基础知识的信心。
 

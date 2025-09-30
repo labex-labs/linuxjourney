@@ -31,9 +31,9 @@ Now we send a final request to the DNS server that actually has the record we wa
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS resolution and management:
 
-1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Learn to query DNS records like A, PTR, and MX, and identify your default DNS server, essential for network troubleshooting.
-2. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Gain hands-on experience by installing and configuring a local authoritative DNS server, defining zones, and testing DNS resolution.
-3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/linux-manage-local-hostname-resolution-in-linux)** - Practice managing local hostname resolution by editing the `/etc/hosts` file, a key skill for web development and network testing.
+1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to query DNS records like A, PTR, and MX, and identify your default DNS server, essential for network troubleshooting.
+2. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Gain hands-on experience by installing and configuring a local authoritative DNS server, defining zones, and testing DNS resolution.
+3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practice managing local hostname resolution by editing the `/etc/hosts` file, a key skill for web development and network testing.
 
 These labs will help you apply the concepts in real scenarios and build confidence with DNS.
 

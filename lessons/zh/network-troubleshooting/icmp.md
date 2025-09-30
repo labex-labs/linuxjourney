@@ -32,9 +32,9 @@ meta_keywords: "ICMP, ICMP 协议，网络故障排除，ICMP 类型，Linux 网
 
 熟能生巧！这里有一些动手实验来巩固您对 ICMP 和网络故障排除的理解：
 
-1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 探索网络层和数据链路层如何交互，直接应用与 ICMP 在测试连接性中的功能相关的概念。
-2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习使用 `ping` 测试网络可达性并诊断连接问题，巩固 ICMP 消息的实际应用。
-3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 学习在模拟环境中分配 IP 地址并使用 `ping` 测试连接，帮助您理解网络配置如何影响数据包传输。
+1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 探索网络层和数据链路层如何交互，直接应用与 ICMP 在测试连接性中的功能相关的概念。
+2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 练习使用 `ping` 测试网络可达性并诊断连接问题，巩固 ICMP 消息的实际应用。
+3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习在模拟环境中分配 IP 地址并使用 `ping` 测试连接，帮助您理解网络配置如何影响数据包传输。
 
 这些实验将帮助您在实际场景中应用 ICMP 和网络诊断的概念，并增强解决网络问题的信心。
 

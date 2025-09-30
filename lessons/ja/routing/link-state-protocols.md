@@ -17,9 +17,9 @@ meta_keywords: "リンクステートプロトコル，OSPF, Linux ネットワ�
 
 練習は完璧をもたらします！ルーティングプロトコルがどのように機能するかを理解することは、ネットワーク管理にとって非常に重要です。このセットには OSPF に関する直接的なラボはありませんが、ネットワーク構成と接続性の強力な基盤を構築することが不可欠です。ネットワークの基礎を理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスの構成、およびネットワーク設定の確認を練習します。これらは、あらゆるルーティング設定の基本です。
-2. **[Linux で ping と arp を使用したネットワーク層の相互作用の探索](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用して、デバイスがネットワーク層とデータリンク層でどのように通信するかを理解し、ネットワークの到達可能性に関する洞察を得る方法を学びます。
-3. **[Linux でのネットワーク層接続のシミュレーション](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスの割り当てと異なるサブネット間の接続テストを練習します。これは、ネットワークトポロジとルーティングの概念を視覚化するのに役立ちます。
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的および動的 IP アドレスの構成、およびネットワーク設定の確認を練習します。これらは、あらゆるルーティング設定の基本です。
+2. **[Linux で ping と arp を使用したネットワーク層の相互作用の探索](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用して、デバイスがネットワーク層とデータリンク層でどのように通信するかを理解し、ネットワークの到達可能性に関する洞察を得る方法を学びます。
+3. **[Linux でのネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスの割り当てと異なるサブネット間の接続テストを練習します。これは、ネットワークトポロジとルーティングの概念を視覚化するのに役立ちます。
 
 これらのラボは、ネットワーク構成と接続性の概念を実際のシナリオに適用し、OSPF のようなより高度なルーティングプロトコルを理解するための強固な基盤を構築するのに役立ちます。
 

@@ -46,9 +46,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 연습이 완벽을 만듭니다! 다음은 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 IP 주소 및 네트워크 인터페이스를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다. 이는 라우팅 테이블의 핵심 구성 요소입니다.
-2. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - IP 주소 지정을 관리하고, 고정 IP 를 구성하고, 기본 게이트웨이를 설정하고, 네트워크 구성을 확인하는 방법을 배웁니다. 이는 라우팅 테이블에서 찾을 수 있는 항목과 직접 관련이 있습니다.
-3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 다양한 IP 유형이 어떻게 상호 작용하고 네트워크 도달 가능성이 어떻게 결정되는지 이해하는 데 도움이 됩니다. 이는 라우팅 결정에 반영됩니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 IP 주소 및 네트워크 인터페이스를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다. 이는 라우팅 테이블의 핵심 구성 요소입니다.
+2. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - IP 주소 지정을 관리하고, 고정 IP 를 구성하고, 기본 게이트웨이를 설정하고, 네트워크 구성을 확인하는 방법을 배웁니다. 이는 라우팅 테이블에서 찾을 수 있는 항목과 직접 관련이 있습니다.
+3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 다양한 IP 유형이 어떻게 상호 작용하고 네트워크 도달 가능성이 어떻게 결정되는지 이해하는 데 도움이 됩니다. 이는 라우팅 결정에 반영됩니다.
 
 이러한 실습은 실제 시나리오에 개념을 적용하고 네트워크 구성 및 문제 해결에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

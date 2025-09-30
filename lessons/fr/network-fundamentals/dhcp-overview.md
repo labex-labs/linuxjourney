@@ -28,9 +28,9 @@ Le DHCP est plus complexe que cela, mais c'est l'essentiel.
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP dynamique et de la configuration réseau :
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour inspecter les interfaces et utilisez spécifiquement `dhclient` pour obtenir une adresse IP dynamique, en appliquant directement vos connaissances du DHCP.
-2. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP attribuées par DHCP, et inspecter les interfaces réseau.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les adresses IP attribuées dynamiquement fonctionnent au sein d'un réseau.
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour inspecter les interfaces et utilisez spécifiquement `dhclient` pour obtenir une adresse IP dynamique, en appliquant directement vos connaissances du DHCP.
+2. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP attribuées par DHCP, et inspecter les interfaces réseau.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les adresses IP attribuées dynamiquement fonctionnent au sein d'un réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts d'attribution IP dynamique et de configuration réseau dans des scénarios réels et à renforcer votre confiance en matière de réseau Linux.
 

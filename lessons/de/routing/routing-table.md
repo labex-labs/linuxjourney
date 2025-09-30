@@ -46,9 +46,9 @@ Dies ist die Schnittstelle, über die unser Paket gesendet wird. `eth0` steht no
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen zu identifizieren, einschließlich IP-Adressen und Netzwerkschnittstellen, die Schlüsselkomponenten einer Routing-Tabelle sind.
-2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** - Lernen Sie, die IP-Adressierung zu verwalten, statische IPs zu konfigurieren, Standard-Gateways festzulegen und Netzwerkkonfigurationen zu überprüfen, was direkt mit den Einträgen in einer Routing-Tabelle zusammenhängt.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und Netzwerkerreichbarkeit mit `ping` und `ip a`, um zu verstehen, wie verschiedene IP-Typen interagieren und wie die Netzwerkerreichbarkeit bestimmt wird, was sich in Routing-Entscheidungen widerspiegelt.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen zu identifizieren, einschließlich IP-Adressen und Netzwerkschnittstellen, die Schlüsselkomponenten einer Routing-Tabelle sind.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, die IP-Adressierung zu verwalten, statische IPs zu konfigurieren, Standard-Gateways festzulegen und Netzwerkkonfigurationen zu überprüfen, was direkt mit den Einträgen in einer Routing-Tabelle zusammenhängt.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und Netzwerkerreichbarkeit mit `ping` und `ip a`, um zu verstehen, wie verschiedene IP-Typen interagieren und wie die Netzwerkerreichbarkeit bestimmt wird, was sich in Routing-Entscheidungen widerspiegelt.
 
 Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und -fehlerbehebung aufzubauen.
 

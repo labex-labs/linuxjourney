@@ -29,9 +29,9 @@ NAT と一般的なパケットルーティングはかなり複雑になる可�
 
 練習は完璧をもたらします！ここでは、NAT のような概念を理解するための基礎となる、ネットワークアドレス指定と接続性に関する理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の IPv4 および IPv6 アドレスを含むネットワークアドレス指定情報を特定する練習をします。
-2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - 静的 IP と動的 IP を設定し、ネットワーク構成を確認することで IP アドレスの管理方法を学びます。これは、デバイスがアドレスを取得する方法を理解するのに役立ちます。
-3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、ネットワークの到達可能性をテストします。これにより、NAT が内部アドレスと外部アドレスをどのように区別するかについて実践的な文脈が提供されます。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の IPv4 および IPv6 アドレスを含むネットワークアドレス指定情報を特定する練習をします。
+2. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - 静的 IP と動的 IP を設定し、ネットワーク構成を確認することで IP アドレスの管理方法を学びます。これは、デバイスがアドレスを取得する方法を理解するのに役立ちます。
+3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類（プライベート、パブリック、マルチキャスト）を探索し、ネットワークの到達可能性をテストします。これにより、NAT が内部アドレスと外部アドレスをどのように区別するかについて実践的な文脈が提供されます。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux でのネットワーク構成とトラブルシューティングに自信をつけるのに役立ちます。
 

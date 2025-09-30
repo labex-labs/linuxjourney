@@ -24,9 +24,9 @@ La dirección IP está enmascarada por nuestra máscara de subred. Cuando ves un
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del direccionamiento IP y el subnetting:
 
-1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, habilidades esenciales para la configuración y planificación de redes.
-2. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Profundiza tu comprensión de varios tipos de direcciones IP y cómo verificar la accesibilidad de la red usando comandos de Linux.
-3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aplica tus conocimientos simulando configuraciones de red y probando la conectividad entre diferentes subredes IP en un entorno práctico.
+1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, habilidades esenciales para la configuración y planificación de redes.
+2. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Profundiza tu comprensión de varios tipos de direcciones IP y cómo verificar la accesibilidad de la red usando comandos de Linux.
+3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aplica tus conocimientos simulando configuraciones de red y probando la conectividad entre diferentes subredes IP en un entorno práctico.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de direccionamiento IP, máscaras de subred y cálculo de hosts en escenarios reales y a construir confianza con los fundamentos de red.
 

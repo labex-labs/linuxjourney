@@ -31,9 +31,9 @@ A medida que los paquetes se mueven a través de las redes, viajan en saltos. Un
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la conectividad de red y el enrutamiento:
 
-1. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Practica la prueba de la pila TCP/IP local, la identificación de IPs privadas y públicas, y la verificación de la accesibilidad de la red, que son clave para entender cómo un router facilita la comunicación.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprende cómo los comandos `ping` y `arp` te ayudan a observar cómo interactúan las capas de red y de enlace de datos, y cómo la puerta de enlace predeterminada (router) maneja el tráfico remoto.
-3. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Usa Docker para simular nodos de red y asignar direcciones IP, luego prueba la conectividad para entender cómo las subredes IP y el enrutamiento rigen la comunicación de red.
+1. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practica la prueba de la pila TCP/IP local, la identificación de IPs privadas y públicas, y la verificación de la accesibilidad de la red, que son clave para entender cómo un router facilita la comunicación.
+2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprende cómo los comandos `ping` y `arp` te ayudan a observar cómo interactúan las capas de red y de enlace de datos, y cómo la puerta de enlace predeterminada (router) maneja el tráfico remoto.
+3. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Usa Docker para simular nodos de red y asignar direcciones IP, luego prueba la conectividad para entender cómo las subredes IP y el enrutamiento rigen la comunicación de red.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de comunicación de red, direccionamiento IP y el papel del enrutamiento en escenarios reales, construyendo confianza con los fundamentos de la red.
 

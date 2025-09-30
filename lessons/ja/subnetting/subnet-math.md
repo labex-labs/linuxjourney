@@ -24,9 +24,9 @@ IP アドレスはサブネットマスクによってマスクされます。1 
 
 練習は完璧をもたらします！IP アドレスとサブネット化の理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - ネットワーク設定と計画に不可欠なスキルである IP サブネット化とバイナリ変換を習得します。
-2. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類と、Linux コマンドを使用してネットワークの到達可能性を確認する方法について理解を深めます。
-3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 実際の環境でネットワーク構成をシミュレートし、異なる IP サブネット間の接続をテストすることで、知識を応用します。
+1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - ネットワーク設定と計画に不可欠なスキルである IP サブネット化とバイナリ変換を習得します。
+2. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類と、Linux コマンドを使用してネットワークの到達可能性を確認する方法について理解を深めます。
+3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 実際の環境でネットワーク構成をシミュレートし、異なる IP サブネット間の接続をテストすることで、知識を応用します。
 
 これらの演習は、IP アドレス、サブネットマスク、ホスト計算の概念を実際のシナリオに適用し、ネットワークの基礎に対する自信を築くのに役立ちます。
 

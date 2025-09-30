@@ -28,9 +28,9 @@ O DHCP é mais complexo do que isso, mas esta é a essência.
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do endereçamento IP dinâmico e da configuração de rede:
 
-1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para inspecionar interfaces e, especificamente, use `dhclient` para obter um endereço IP dinâmico, aplicando diretamente seu conhecimento de DHCP.
-2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para identificar informações de endereçamento de rede, incluindo os endereços IP atribuídos pelo DHCP, e inspecionar interfaces de rede.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como os IPs atribuídos dinamicamente funcionam dentro de uma rede.
+1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para inspecionar interfaces e, especificamente, use `dhclient` para obter um endereço IP dinâmico, aplicando diretamente seu conhecimento de DHCP.
+2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para identificar informações de endereçamento de rede, incluindo os endereços IP atribuídos pelo DHCP, e inspecionar interfaces de rede.
+3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como os IPs atribuídos dinamicamente funcionam dentro de uma rede.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de atribuição dinâmica de IP e configuração de rede em cenários reais e a construir confiança com a rede Linux.
 

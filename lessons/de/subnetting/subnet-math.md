@@ -24,9 +24,9 @@ Die IP-Adresse wird durch unsere Subnetzmaske maskiert. Wenn Sie eine 1 sehen, i
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von IP-Adressierung und Subnetting zu vertiefen:
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, wesentliche Fähigkeiten für die Netzwerkkonfiguration und -planung.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Vertiefen Sie Ihr Verständnis verschiedener IP-Adresstypen und wie Sie die Netzwerkerreichbarkeit mit Linux-Befehlen überprüfen können.
-3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Wenden Sie Ihr Wissen an, indem Sie Netzwerkkonfigurationen simulieren und die Konnektivität zwischen verschiedenen IP-Subnetzen in einer praktischen Umgebung testen.
+1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, wesentliche Fähigkeiten für die Netzwerkkonfiguration und -planung.
+2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Vertiefen Sie Ihr Verständnis verschiedener IP-Adresstypen und wie Sie die Netzwerkerreichbarkeit mit Linux-Befehlen überprüfen können.
+3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Wenden Sie Ihr Wissen an, indem Sie Netzwerkkonfigurationen simulieren und die Konnektivität zwischen verschiedenen IP-Subnetzen in einer praktischen Umgebung testen.
 
 Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung, Subnetzmasken und Host-Berechnung in realen Szenarien anzuwenden und Vertrauen in die Netzwerk-Grundlagen aufzubauen.
 

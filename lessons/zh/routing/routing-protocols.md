@@ -19,9 +19,9 @@ meta_keywords: "路由协议，网络收敛，距离矢量，链路状态，Linu
 
 熟能生巧！以下是一些动手实验，可帮助您巩固对网络路由和 IP 寻址的理解：
 
-1. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习配置静态和动态 IP 地址，设置默认网关，并验证网络配置，这对于理解路由表如何构建和使用至关重要。
-2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解设备如何在网络层进行交互，观察 ARP 以及默认网关如何处理远程流量，从而深入了解路由协议管理的机制。
-3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 使用 Docker 模拟网络节点，分配 IP 地址，并测试跨子网的连接，直接应用与网络变化和路由决策相关的概念。
+1. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习配置静态和动态 IP 地址，设置默认网关，并验证网络配置，这对于理解路由表如何构建和使用至关重要。
+2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解设备如何在网络层进行交互，观察 ARP 以及默认网关如何处理远程流量，从而深入了解路由协议管理的机制。
+3. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 使用 Docker 模拟网络节点，分配 IP 地址，并测试跨子网的连接，直接应用与网络变化和路由决策相关的概念。
 
 这些实验将帮助您在实际场景中应用网络配置和连接的概念，从而对路由协议自动化的基本要素建立信心。
 

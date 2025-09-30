@@ -34,9 +34,9 @@ Como puedes ver, mi dirección IPv4 es: 192.168.1.129
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del direccionamiento IP y la identificación de redes en Linux:
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practica el uso del comando `ip a` para identificar información de direccionamiento de red, incluyendo direcciones IPv4 e IPv6, en un sistema Linux.
-2. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explora diferentes tipos de direcciones IP y prueba la accesibilidad de la red usando comandos como `ping` e `ip a`.
-3. **[Realizar subnetting IP y conversión binaria en la terminal de Linux](https://labex.io/es/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, esenciales para una comprensión más profunda de cómo se estructuran las direcciones IP y las redes a nivel de bit.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practica el uso del comando `ip a` para identificar información de direccionamiento de red, incluyendo direcciones IPv4 e IPv6, en un sistema Linux.
+2. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explora diferentes tipos de direcciones IP y prueba la accesibilidad de la red usando comandos como `ping` e `ip a`.
+3. **[Realizar subnetting IP y conversión binaria en la terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, esenciales para una comprensión más profunda de cómo se estructuran las direcciones IP y las redes a nivel de bit.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de direccionamiento IP en escenarios reales y a ganar confianza con la configuración y resolución de problemas de red en Linux.
 

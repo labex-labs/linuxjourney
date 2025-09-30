@@ -39,9 +39,9 @@ Die Roundtrip-Zeit, die vom Senden des Echo-Anfragepakets bis zum Empfang einer 
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Netzwerkkonnektivität und des `ping`-Befehls zu vertiefen:
 
-1. **[Erkunden Sie die Interaktion der Netzwerkschicht mit ping und arp in Linux](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie `ping` und `arp`, um Interaktionen der Netzwerk- und Datenverbindungsschicht zu erkunden und zu beobachten, wie das Standard-Gateway den Remote-Verkehr verarbeitet.
-2. **[Erkunden Sie IP-Adresstypen und Erreichbarkeit in Linux](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Nutzen Sie `ping` und `ip a`, um den lokalen TCP/IP-Stack zu testen, die öffentliche Internetverbindung zu überprüfen und die Netzwerkerreichbarkeit zu erkunden.
-3. **[Simulieren Sie die Netzwerkschichtkonnektivität in Linux](https://labex.io/de/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, statische IP-Adressen mit `ip addr` zuzuweisen und die Konnektivität mit `ping` in denselben und verschiedenen Subnetzen zu testen.
+1. **[Erkunden Sie die Interaktion der Netzwerkschicht mit ping und arp in Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie `ping` und `arp`, um Interaktionen der Netzwerk- und Datenverbindungsschicht zu erkunden und zu beobachten, wie das Standard-Gateway den Remote-Verkehr verarbeitet.
+2. **[Erkunden Sie IP-Adresstypen und Erreichbarkeit in Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Nutzen Sie `ping` und `ip a`, um den lokalen TCP/IP-Stack zu testen, die öffentliche Internetverbindung zu überprüfen und die Netzwerkerreichbarkeit zu erkunden.
+3. **[Simulieren Sie die Netzwerkschichtkonnektivität in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, statische IP-Adressen mit `ip addr` zuzuweisen und die Konnektivität mit `ping` in denselben und verschiedenen Subnetzen zu testen.
 
 Diese Übungen helfen Ihnen, die Konzepte der Netzwerkerreichbarkeit und des `ping`-Befehls in realen Szenarien anzuwenden und Vertrauen in die Netzwerkdiagnose unter Linux aufzubauen.
 

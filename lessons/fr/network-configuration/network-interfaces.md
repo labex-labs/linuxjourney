@@ -80,9 +80,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des interfaces réseau et de l'adressage IP :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, IPv4 et IPv6 sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau à l'aide de `ping` et `ip a`.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, IPv4 et IPv6 sur un système Linux.
+2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau à l'aide de `ping` et `ip a`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'identification d'interface réseau et d'adressage IP dans des scénarios réels et à renforcer votre confiance en matière de mise en réseau Linux.
 

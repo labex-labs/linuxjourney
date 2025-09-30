@@ -43,8 +43,8 @@ $ ip route delete 192.168.2.1/23
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage réseau et de l'adressage IP :
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à configurer une IP statique, à définir une passerelle par défaut et à vérifier la configuration réseau à l'aide de la commande `ip`.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment la passerelle par défaut gère le trafic distant et observez les interactions de la couche réseau.
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à configurer une IP statique, à définir une passerelle par défaut et à vérifier la configuration réseau à l'aide de la commande `ip`.
+2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment la passerelle par défaut gère le trafic distant et observez les interactions de la couche réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP et de routage dans des scénarios réels et à renforcer votre confiance en matière de mise en réseau Linux.
 

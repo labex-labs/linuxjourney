@@ -19,9 +19,9 @@ L'un des protocoles à vecteur de distance courants est RIP (Routing Information
 
 C'est en forgeant qu'on devient forgeron ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage et de la connectivité réseau :
 
-1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Entraînez-vous à utiliser `ping` et `arp` pour comprendre comment les appareils se découvrent mutuellement et comment le trafic est acheminé au niveau de la couche réseau.
-2. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP et à tester la connectivité entre des nœuds Linux simulés, en observant comment les sous-réseaux IP influencent la communication réseau.
-3. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Acquérez une expérience pratique de la configuration des adresses IP statiques et dynamiques et de la définition des passerelles par défaut, qui sont des composants essentiels du routage réseau.
+1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Entraînez-vous à utiliser `ping` et `arp` pour comprendre comment les appareils se découvrent mutuellement et comment le trafic est acheminé au niveau de la couche réseau.
+2. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP et à tester la connectivité entre des nœuds Linux simulés, en observant comment les sous-réseaux IP influencent la communication réseau.
+3. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Acquérez une expérience pratique de la configuration des adresses IP statiques et dynamiques et de la définition des passerelles par défaut, qui sont des composants essentiels du routage réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage et de connectivité réseau dans des scénarios réels, en construisant une base solide pour comprendre comment fonctionnent les protocoles de routage.
 

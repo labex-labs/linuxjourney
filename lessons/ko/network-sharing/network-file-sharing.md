@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 연습은 완벽을 만듭니다! 다음은 보안 네트워크 파일 전송에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 SSH 를 사용한 보안 원격 액세스](https://labex.io/ko/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - 키 기반 인증, `scp`를 사용한 파일 보안 전송, 포트 포워딩을 위한 SSH 터널 생성 연습.
+1. **[Linux 에서 SSH 를 사용한 보안 원격 액세스](https://labex.io/ko/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - 키 기반 인증, `scp`를 사용한 파일 보안 전송, 포트 포워딩을 위한 SSH 터널 생성 연습.
 
 이 랩은 실제 시나리오에서 보안 원격 액세스 및 파일 전송 개념을 적용하고 `scp`에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

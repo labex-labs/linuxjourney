@@ -31,9 +31,9 @@ meta_keywords: "라우터, 네트워킹, 라우팅, 홉, 패킷 스위칭, Linux
 
 연습이 완벽을 만듭니다! 다음은 네트워크 연결 및 라우팅에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 로컬 TCP/IP 스택 테스트, 사설 및 공용 IP 식별, 네트워크 도달 가능성 확인을 연습하여 라우터가 통신을 어떻게 촉진하는지 이해하는 데 핵심적인 내용을 다룹니다.
-2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 네트워크 및 데이터 링크 계층이 어떻게 상호 작용하는지, 그리고 기본 게이트웨이 (라우터) 가 원격 트래픽을 어떻게 처리하는지 관찰하는 데 어떻게 도움이 되는지 배웁니다.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고 IP 주소를 할당한 다음, 연결을 테스트하여 IP 서브넷 및 라우팅이 네트워크 통신을 어떻게 제어하는지 이해합니다.
+1. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 로컬 TCP/IP 스택 테스트, 사설 및 공용 IP 식별, 네트워크 도달 가능성 확인을 연습하여 라우터가 통신을 어떻게 촉진하는지 이해하는 데 핵심적인 내용을 다룹니다.
+2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 네트워크 및 데이터 링크 계층이 어떻게 상호 작용하는지, 그리고 기본 게이트웨이 (라우터) 가 원격 트래픽을 어떻게 처리하는지 관찰하는 데 어떻게 도움이 되는지 배웁니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고 IP 주소를 할당한 다음, 연결을 테스트하여 IP 서브넷 및 라우팅이 네트워크 통신을 어떻게 제어하는지 이해합니다.
 
 이러한 랩은 네트워크 통신, IP 주소 지정 및 실제 시나리오에서 라우팅의 역할에 대한 개념을 적용하는 데 도움이 되며, 네트워크 기본 사항에 대한 자신감을 키워줄 것입니다.
 

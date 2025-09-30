@@ -57,7 +57,7 @@ meta_keywords: "서브넷팅, 이진 변환, IP 주소, 네트워크, Linux 네�
 
 연습하면 완벽해집니다! 서브넷 계산은 실제 세계에서 종종 자동화되지만, 기본 이진 변환을 이해하는 것은 면접과 네트워킹에 대한 더 깊은 이해를 위해 중요합니다. 다음은 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux 터미널에서 Python 을 사용하여 IP 주소를 변환하고, CIDR 마스크를 번역하고, 네트워크 세부 정보를 계산하여 IP 서브넷팅 및 이진 변환을 마스터하세요.
+1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux 터미널에서 Python 을 사용하여 IP 주소를 변환하고, CIDR 마스크를 번역하고, 네트워크 세부 정보를 계산하여 IP 서브넷팅 및 이진 변환을 마스터하세요.
 
 이 랩은 이진 변환 및 서브넷팅 개념을 실제 시나리오에 적용하고 네트워크 주소 지정 기본 사항에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

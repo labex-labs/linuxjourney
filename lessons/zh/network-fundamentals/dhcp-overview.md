@@ -28,9 +28,9 @@ DHCP 比这更复杂，但这只是它的要点。
 
 熟能生巧！以下是一些动手实验，以加强您对动态 IP 寻址和网络配置的理解：
 
-1. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令检查接口，并专门使用 `dhclient` 获取动态 IP 地址，直接应用您对 DHCP 的知识。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令识别网络寻址信息，包括 DHCP 分配的 IP 地址，并检查网络接口。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 寻址和网络可达性，帮助您了解动态分配的 IP 如何在网络中发挥作用。
+1. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令检查接口，并专门使用 `dhclient` 获取动态 IP 地址，直接应用您对 DHCP 的知识。
+2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令识别网络寻址信息，包括 DHCP 分配的 IP 地址，并检查网络接口。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 寻址和网络可达性，帮助您了解动态分配的 IP 如何在网络中发挥作用。
 
 这些实验将帮助您在实际场景中应用动态 IP 分配和网络配置的概念，并增强您对 Linux 网络的信心。
 

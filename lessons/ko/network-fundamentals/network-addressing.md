@@ -29,9 +29,9 @@ IP 주소는 네트워크의 장치를 식별하는 데 사용됩니다. 하드�
 
 연습이 완벽을 만듭니다! 다음은 MAC 주소, IP 주소 및 호스트 이름과 같은 네트워크 식별자에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 및 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트합니다.
-3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts` 파일을 편집하고 변경 사항을 테스트하여 로컬 호스트 이름 확인을 관리하는 방법을 배웁니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 및 IP 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트합니다.
+3. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts` 파일을 편집하고 변경 사항을 테스트하여 로컬 호스트 이름 확인을 관리하는 방법을 배웁니다.
 
 이 실습은 실제 시나리오에 개념을 적용하고 기본적인 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

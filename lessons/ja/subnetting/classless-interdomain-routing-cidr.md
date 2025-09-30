@@ -19,9 +19,9 @@ IP アドレスは 4 バイト、つまり 32 ビットで構成されている�
 
 練習は完璧をもたらします！CIDR、IP アドレス指定、サブネット化の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - CIDR マスクの変換や使用可能なホストの計算を含む、IP サブネット化とバイナリ変換を習得します。
-2. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 静的 IP アドレスを割り当て、シミュレートされた環境で IP サブネットが直接ネットワーク通信をどのように制御するかを観察する方法を学びます。
-3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` や `ip a` などのコマンドを使用して、さまざまな IP タイプと接続性をテストし、IP アドレス指定とネットワーク到達可能性を探索します。
+1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - CIDR マスクの変換や使用可能なホストの計算を含む、IP サブネット化とバイナリ変換を習得します。
+2. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 静的 IP アドレスを割り当て、シミュレートされた環境で IP サブネットが直接ネットワーク通信をどのように制御するかを観察する方法を学びます。
+3. **[Linux で IP アドレスの種類と到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` や `ip a` などのコマンドを使用して、さまざまな IP タイプと接続性をテストし、IP アドレス指定とネットワーク到達可能性を探索します。
 
 これらのラボは、CIDR と IP アドレス指定の概念を実際のシナリオに適用し、ネットワーク設定に自信を持つのに役立ちます。
 

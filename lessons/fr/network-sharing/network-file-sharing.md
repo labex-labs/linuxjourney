@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension du transfert de fichiers réseau sécurisé :
 
-1. **[Accès à distance sécurisé sous Linux avec SSH](https://labex.io/fr/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - Pratiquez l'authentification par clé, le transfert sécurisé de fichiers avec `scp` et la création de tunnels SSH pour le transfert de port.
+1. **[Accès à distance sécurisé sous Linux avec SSH](https://labex.io/fr/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - Pratiquez l'authentification par clé, le transfert sécurisé de fichiers avec `scp` et la création de tunnels SSH pour le transfert de port.
 
 Ce laboratoire vous aidera à appliquer les concepts d'accès à distance sécurisé et de transfert de fichiers dans un scénario réel et à renforcer votre confiance avec `scp`.
 

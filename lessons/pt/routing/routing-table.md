@@ -46,9 +46,9 @@ Esta é a interface pela qual nosso pacote sairá. eth0 geralmente significa o p
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre roteamento de rede e endereçamento IP:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IP e interfaces de rede, que são componentes chave de uma tabela de roteamento.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar o endereçamento IP, configurar IPs estáticos, definir gateways padrão e verificar configurações de rede, diretamente relacionados às entradas encontradas em uma tabela de roteamento.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como diferentes tipos de IP interagem e como a acessibilidade da rede é determinada, o que se reflete nas decisões de roteamento.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IP e interfaces de rede, que são componentes chave de uma tabela de roteamento.
+2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar o endereçamento IP, configurar IPs estáticos, definir gateways padrão e verificar configurações de rede, diretamente relacionados às entradas encontradas em uma tabela de roteamento.
+3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como diferentes tipos de IP interagem e como a acessibilidade da rede é determinada, o que se reflete nas decisões de roteamento.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com a configuração e solução de problemas de rede.
 

@@ -17,9 +17,9 @@ meta_keywords: "링크 스테이트 프로토콜, OSPF, Linux 네트워킹, 라�
 
 연습이 완벽을 만듭니다! 라우팅 프로토콜이 어떻게 작동하는지 이해하는 것은 네트워크 관리에 매우 중요합니다. 이 세트에는 OSPF 에 대한 직접적인 실습은 없지만, 네트워크 구성 및 연결에 대한 강력한 기반을 구축하는 것이 필수적입니다. 다음은 네트워크 기본 사항에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - 모든 라우팅 설정의 기본이 되는 고정 및 동적 IP 주소를 구성하고 네트워크 설정을 확인하는 연습을 합니다.
-2. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`를 사용하여 장치가 네트워크 및 데이터 링크 계층에서 어떻게 통신하는지 이해하고 네트워크 도달 가능성에 대한 통찰력을 얻습니다.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고 IP 주소를 할당하고 다른 서브넷 간의 연결을 테스트하는 연습을 하여 네트워크 토폴로지 및 라우팅 개념을 시각화하는 데 도움이 됩니다.
+1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 모든 라우팅 설정의 기본이 되는 고정 및 동적 IP 주소를 구성하고 네트워크 설정을 확인하는 연습을 합니다.
+2. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`를 사용하여 장치가 네트워크 및 데이터 링크 계층에서 어떻게 통신하는지 이해하고 네트워크 도달 가능성에 대한 통찰력을 얻습니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker 를 사용하여 네트워크 노드를 시뮬레이션하고 IP 주소를 할당하고 다른 서브넷 간의 연결을 테스트하는 연습을 하여 네트워크 토폴로지 및 라우팅 개념을 시각화하는 데 도움이 됩니다.
 
 이러한 실습은 실제 시나리오에서 네트워크 구성 및 연결 개념을 적용하는 데 도움이 되며, OSPF 와 같은 고급 라우팅 프로토콜을 이해하기 위한 견고한 기반을 구축할 것입니다.
 

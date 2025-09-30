@@ -29,8 +29,8 @@ Dies ist keine vollständige Liste, aber sie sollte Ihnen eine Vorstellung davon
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von DNS unter Linux zu vertiefen:
 
-1. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Lernen Sie, wichtige Befehlszeilentools wie `dig` und `nslookup` zu verwenden, um verschiedene DNS-Eintragstypen abzufragen und Probleme bei der DNS-Auflösung zu beheben.
-2. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Sammeln Sie praktische Erfahrungen, indem Sie `bind9` installieren und konfigurieren, um Ihren eigenen lokalen autoritativen DNS-Server einzurichten, Zonen zu definieren und die Auflösung zu testen.
+1. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Lernen Sie, wichtige Befehlszeilentools wie `dig` und `nslookup` zu verwenden, um verschiedene DNS-Eintragstypen abzufragen und Probleme bei der DNS-Auflösung zu beheben.
+2. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Sammeln Sie praktische Erfahrungen, indem Sie `bind9` installieren und konfigurieren, um Ihren eigenen lokalen autoritativen DNS-Server einzurichten, Zonen zu definieren und die Auflösung zu testen.
 
 Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die DNS-Verwaltung unter Linux aufzubauen.
 

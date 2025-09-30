@@ -29,9 +29,9 @@ Eine letzte Möglichkeit, Ihre Maschinen zu identifizieren, sind Hostnamen. Host
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerkidentifikatoren wie MAC-Adressen, IP-Adressen und Hostnamen zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
-3. **[Lokale Hostnamenauflösung in Linux verwalten](https://labex.io/de/labs/linux-manage-local-hostname-resolution-in-linux-592792)** – Lernen Sie, die lokale Hostnamenauflösung zu verwalten, indem Sie die Datei `/etc/hosts` bearbeiten und Ihre Änderungen testen.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
+3. **[Lokale Hostnamenauflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** – Lernen Sie, die lokale Hostnamenauflösung zu verwalten, indem Sie die Datei `/etc/hosts` bearbeiten und Ihre Änderungen testen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die grundlegende Linux-Vernetzung aufzubauen.
 

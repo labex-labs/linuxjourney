@@ -32,9 +32,9 @@ meta_keywords: "ICMP, ICMP プロトコル，ネットワークトラブルシ�
 
 練習は完璧をもたらします！ICMP とネットワークトラブルシューティングの理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で ping と arp を使ったネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`を使用して、ネットワーク層とデータリンク層がどのように相互作用するかを探り、接続テストにおける ICMP の機能に関連する概念を直接適用します。
-2. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`を使用してネットワークの到達可能性をテストし、接続の問題を診断する練習を行い、ICMP メッセージの実践的な適用を強化します。
-3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - シミュレートされた環境で IP アドレスを割り当て、`ping`で接続をテストする方法を学び、ネットワーク構成がパケット配信にどのように影響するかを理解するのに役立ちます。
+1. **[Linux で ping と arp を使ったネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`を使用して、ネットワーク層とデータリンク層がどのように相互作用するかを探り、接続テストにおける ICMP の機能に関連する概念を直接適用します。
+2. **[Linux で IP アドレスの種類と到達可能性を探る](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`を使用してネットワークの到達可能性をテストし、接続の問題を診断する練習を行い、ICMP メッセージの実践的な適用を強化します。
+3. **[Linux でネットワーク層の接続をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - シミュレートされた環境で IP アドレスを割り当て、`ping`で接続をテストする方法を学び、ネットワーク構成がパケット配信にどのように影響するかを理解するのに役立ちます。
 
 これらのラボは、ICMP とネットワーク診断の概念を実際のシナリオに適用し、ネットワークの問題をトラブルシューティングする自信を築くのに役立ちます。
 

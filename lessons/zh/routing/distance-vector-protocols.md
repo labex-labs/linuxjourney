@@ -19,9 +19,9 @@ RIP (Routing Information Protocol) 是常见的距离矢量协议之一。它每
 
 熟能生巧！以下是一些动手实验，以巩固您对网络路由和连接的理解：
 
-1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 练习使用 `ping` 和 `arp` 来理解设备如何相互发现以及流量如何在网络层路由。
-2. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 学习分配 IP 地址并测试模拟 Linux 节点之间的连接，观察 IP 子网如何影响网络通信。
-3. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 获得配置静态和动态 IP 地址以及设置默认网关的实践经验，这些都是网络路由的重要组成部分。
+1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 练习使用 `ping` 和 `arp` 来理解设备如何相互发现以及流量如何在网络层路由。
+2. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习分配 IP 地址并测试模拟 Linux 节点之间的连接，观察 IP 子网如何影响网络通信。
+3. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 获得配置静态和动态 IP 地址以及设置默认网关的实践经验，这些都是网络路由的重要组成部分。
 
 这些实验将帮助您在实际场景中应用网络寻址和连接的概念，为理解路由协议的功能打下坚实的基础。
 

@@ -46,8 +46,8 @@ search localdomain
 
 연습이 완벽을 만듭니다! 다음은 로컬 호스트 이름 확인 및 DNS 쿼리에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - DNS 쿼리 전의 핵심 단계인 로컬 호스트 이름 확인을 관리하기 위해 `/etc/hosts` 파일을 편집하는 연습을 합니다.
-2. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 컴퓨터가 외부 이름을 확인하는 방법을 이해하기 위해 `dig` 및 `nslookup`과 같은 필수 Linux 도구를 사용하여 DNS 레코드를 쿼리하는 방법을 배웁니다.
+1. **[Linux 에서 로컬 호스트 이름 확인 관리](https://labex.io/ko/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - DNS 쿼리 전의 핵심 단계인 로컬 호스트 이름 확인을 관리하기 위해 `/etc/hosts` 파일을 편집하는 연습을 합니다.
+2. **[dig 및 nslookup 으로 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 컴퓨터가 외부 이름을 확인하는 방법을 이해하기 위해 `dig` 및 `nslookup`과 같은 필수 Linux 도구를 사용하여 DNS 레코드를 쿼리하는 방법을 배웁니다.
 
 이 실습들은 실제 시나리오에서 개념을 적용하고 호스트 이름 확인 및 DNS 에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

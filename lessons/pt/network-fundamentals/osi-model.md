@@ -17,9 +17,9 @@ Embora o modelo OSI seja teórico, entender sua influência na rede prática é 
 
 Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos conceitos básicos de rede:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir um gateway padrão e verificar configurações de rede usando o comando `ip`.
-3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use os comandos `ping` e `arp` para explorar como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e entendendo o comportamento do gateway padrão.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
+2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir um gateway padrão e verificar configurações de rede usando o comando `ip`.
+3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use os comandos `ping` e `arp` para explorar como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e entendendo o comportamento do gateway padrão.
 
 Esses laboratórios o ajudarão a aplicar conceitos fundamentais de rede em cenários reais e a construir confiança na administração de rede Linux.
 

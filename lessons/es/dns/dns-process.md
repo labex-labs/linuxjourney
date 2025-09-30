@@ -31,9 +31,9 @@ Ahora enviamos una solicitud final al servidor DNS que realmente tiene el regist
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la resolución y gestión de DNS:
 
-1. **[Consultar Registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Aprenda a consultar registros DNS como A, PTR y MX, e identifique su servidor DNS predeterminado, esencial para la resolución de problemas de red.
-2. **[Configurar un Servidor DNS Autorizado Local en Linux](https://labex.io/es/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Obtenga experiencia práctica instalando y configurando un servidor DNS autorizado local, definiendo zonas y probando la resolución DNS.
-3. **[Administrar la Resolución de Nombres de Host Local en Linux](https://labex.io/es/labs/linux-manage-local-hostname-resolution-in-linux)** - Practique la administración de la resolución de nombres de host local editando el archivo `/etc/hosts`, una habilidad clave para el desarrollo web y las pruebas de red.
+1. **[Consultar Registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a consultar registros DNS como A, PTR y MX, e identifique su servidor DNS predeterminado, esencial para la resolución de problemas de red.
+2. **[Configurar un Servidor DNS Autorizado Local en Linux](https://labex.io/es/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Obtenga experiencia práctica instalando y configurando un servidor DNS autorizado local, definiendo zonas y probando la resolución DNS.
+3. **[Administrar la Resolución de Nombres de Host Local en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practique la administración de la resolución de nombres de host local editando el archivo `/etc/hosts`, una habilidad clave para el desarrollo web y las pruebas de red.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con DNS.
 

@@ -32,9 +32,9 @@ These messages will make more sense as we use some network troubleshooting tools
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of ICMP and network troubleshooting:
 
-1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` to explore how the network and data link layers interact, directly applying concepts related to ICMP's function in testing connectivity.
-2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice using `ping` to test network reachability and diagnose connectivity issues, reinforcing the practical application of ICMP messages.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign IP addresses and test connectivity with `ping` in a simulated environment, helping you understand how network configurations affect packet delivery.
+1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` to explore how the network and data link layers interact, directly applying concepts related to ICMP's function in testing connectivity.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practice using `ping` to test network reachability and diagnose connectivity issues, reinforcing the practical application of ICMP messages.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign IP addresses and test connectivity with `ping` in a simulated environment, helping you understand how network configurations affect packet delivery.
 
 These labs will help you apply the concepts of ICMP and network diagnostics in real scenarios and build confidence with troubleshooting network issues.
 

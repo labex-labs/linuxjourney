@@ -29,9 +29,9 @@ NAT 和一般的包路由可能会变得相当复杂，但我们不会深入探�
 
 熟能生巧！这里有一些动手实验，以加强你对网络寻址和连接的理解，这些是理解 NAT 等概念的基础：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 IPv4 和 IPv6 地址。
-2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 学习通过配置静态和动态 IP 以及验证网络配置来管理 IP 寻址，这有助于理解设备如何获取其地址。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型（私有、公共、多播）并测试网络可达性，为 NAT 如何区分内部和外部地址提供实际背景。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 IPv4 和 IPv6 地址。
+2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习通过配置静态和动态 IP 以及验证网络配置来管理 IP 寻址，这有助于理解设备如何获取其地址。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型（私有、公共、多播）并测试网络可达性，为 NAT 如何区分内部和外部地址提供实际背景。
 
 这些实验将帮助你在实际场景中应用这些概念，并增强在 Linux 中进行网络配置和故障排除的信心。
 

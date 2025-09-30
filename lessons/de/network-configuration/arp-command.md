@@ -35,9 +35,9 @@ ip neighbour show
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von ARP und der Interaktion auf der Netzwerkschicht zu vertiefen:
 
-1. **[Erkunden Sie die Netzwerkschicht-Interaktion mit ping und arp in Linux](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie die Befehle `ping` und `arp`, um zu beobachten, wie IP-Adressen in MAC-Adressen aufgelöst werden und wie das Standard-Gateway den Datenverkehr handhabt.
-2. **[Identifizieren Sie MAC- und IP-Adressen in Linux](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkkonfigurationsinformationen, einschließlich MAC- und IP-Adressen, zu identifizieren, die für das Verständnis von ARP grundlegend sind.
-3. **[Verwalten Sie die IP-Adressierung in Linux](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Üben Sie die Verwaltung der IP-Adressierung mit dem Befehl `ip` und überprüfen Sie die Netzwerkkonfiguration mit `arp` und `traceroute`.
+1. **[Erkunden Sie die Netzwerkschicht-Interaktion mit ping und arp in Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Verwenden Sie die Befehle `ping` und `arp`, um zu beobachten, wie IP-Adressen in MAC-Adressen aufgelöst werden und wie das Standard-Gateway den Datenverkehr handhabt.
+2. **[Identifizieren Sie MAC- und IP-Adressen in Linux](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkkonfigurationsinformationen, einschließlich MAC- und IP-Adressen, zu identifizieren, die für das Verständnis von ARP grundlegend sind.
+3. **[Verwalten Sie die IP-Adressierung in Linux](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie die Verwaltung der IP-Adressierung mit dem Befehl `ip` und überprüfen Sie die Netzwerkkonfiguration mit `arp` und `traceroute`.
 
 Diese Übungen helfen Ihnen, die Konzepte von ARP und der Netzwerkadressierung in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
 

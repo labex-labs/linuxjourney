@@ -46,8 +46,8 @@ search localdomain
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la résolution de noms d'hôtes locaux et des requêtes DNS :
 
-1. **[Gérer la résolution de noms d'hôtes locaux sous Linux](https://labex.io/fr/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à modifier le fichier `/etc/hosts` pour gérer la résolution de noms d'hôtes locaux, une étape clé avant les requêtes DNS.
-2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS à l'aide d'outils Linux essentiels comme `dig` et `nslookup` pour comprendre comment votre machine résout les noms externes.
+1. **[Gérer la résolution de noms d'hôtes locaux sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à modifier le fichier `/etc/hosts` pour gérer la résolution de noms d'hôtes locaux, une étape clé avant les requêtes DNS.
+2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS à l'aide d'outils Linux essentiels comme `dig` et `nslookup` pour comprendre comment votre machine résout les noms externes.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en matière de résolution de noms d'hôtes et de DNS.
 

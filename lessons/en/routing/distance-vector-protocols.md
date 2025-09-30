@@ -19,9 +19,9 @@ One of the common distance vector protocols is RIP (Routing Information Protocol
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and connectivity:
 
-1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practice using `ping` and `arp` to understand how devices discover each other and how traffic is routed at the network layer.
-2. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign IP addresses and test connectivity between simulated Linux nodes, observing how IP subnets influence network communication.
-3. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Gain hands-on experience configuring static and dynamic IP addresses and setting default gateways, which are essential components of network routing.
+1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practice using `ping` and `arp` to understand how devices discover each other and how traffic is routed at the network layer.
+2. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign IP addresses and test connectivity between simulated Linux nodes, observing how IP subnets influence network communication.
+3. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Gain hands-on experience configuring static and dynamic IP addresses and setting default gateways, which are essential components of network routing.
 
 These labs will help you apply the concepts of network addressing and connectivity in real scenarios, building a strong foundation for understanding how routing protocols function.
 

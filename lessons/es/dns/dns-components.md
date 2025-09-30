@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de DNS y la resolución de nombres de host:
 
-1. **[Configurar un servidor DNS autoritativo local en Linux](https://labex.io/es/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Practica la instalación y configuración de un servidor DNS local (`bind9`), la definición de zonas y la validación de tu configuración.
-2. **[Consultar registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprende a usar herramientas esenciales de línea de comandos (`dig`, `nslookup`) para consultar varios tipos de registros DNS y solucionar problemas de DNS.
-3. **[Administrar la resolución local de nombres de host en Linux](https://labex.io/es/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Comprende cómo administrar la resolución local de nombres de host editando el archivo `/etc/hosts`, una habilidad clave para el desarrollo y las pruebas.
+1. **[Configurar un servidor DNS autoritativo local en Linux](https://labex.io/es/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Practica la instalación y configuración de un servidor DNS local (`bind9`), la definición de zonas y la validación de tu configuración.
+2. **[Consultar registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprende a usar herramientas esenciales de línea de comandos (`dig`, `nslookup`) para consultar varios tipos de registros DNS y solucionar problemas de DNS.
+3. **[Administrar la resolución local de nombres de host en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Comprende cómo administrar la resolución local de nombres de host editando el archivo `/etc/hosts`, una habilidad clave para el desarrollo y las pruebas.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de DNS y resolución de nombres de host en escenarios reales y a generar confianza con los servicios de red.
 

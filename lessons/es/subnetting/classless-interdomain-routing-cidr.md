@@ -19,9 +19,9 @@ Un truco simple es restar la dirección CIDR (23) del número total de bits que 
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de CIDR, direccionamiento IP y subredes:
 
-1. **[Realizar Subredes IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine las subredes IP y la conversión binaria, incluyendo la traducción de máscaras CIDR y el cálculo de hosts utilizables.
-2. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP rigen la comunicación de red directa en un entorno simulado.
-3. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la accesibilidad de la red utilizando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
+1. **[Realizar Subredes IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine las subredes IP y la conversión binaria, incluyendo la traducción de máscaras CIDR y el cálculo de hosts utilizables.
+2. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP rigen la comunicación de red directa en un entorno simulado.
+3. **[Explorar Tipos de Direcciones IP y Accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la accesibilidad de la red utilizando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de CIDR y direccionamiento IP en escenarios reales y a generar confianza con la configuración de red.
 

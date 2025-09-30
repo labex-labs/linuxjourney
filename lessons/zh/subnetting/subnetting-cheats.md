@@ -57,7 +57,7 @@ meta_keywords: "子网划分，二进制转换，IP 地址，网络，Linux 网�
 
 熟能生巧！虽然子网计算在现实世界中通常是自动化的，但理解底层的二进制转换对于面试和更深入地掌握网络至关重要。这是一个动手实验，以巩固你的理解：
 
-1. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 通过在 Linux 终端中使用 Python 转换 IP 地址、翻译 CIDR 掩码和计算网络详细信息，掌握 IP 子网划分和二进制转换。
+1. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 通过在 Linux 终端中使用 Python 转换 IP 地址、翻译 CIDR 掩码和计算网络详细信息，掌握 IP 子网划分和二进制转换。
 
 这个实验将帮助你在实际场景中应用二进制转换和子网划分的概念，并建立对网络寻址基础知识的信心。
 

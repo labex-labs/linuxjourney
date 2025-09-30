@@ -34,9 +34,9 @@ Comme vous pouvez le voir, mon adresse IPv4 est : 192.168.1.129
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et de l'identification réseau sous Linux :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4 et IPv6, sur un système Linux.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez la joignabilité du réseau à l'aide de commandes comme `ping` et `ip a`.
-3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, essentiels pour une compréhension plus approfondie de la structure des adresses IP et des réseaux au niveau du bit.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4 et IPv6, sur un système Linux.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez la joignabilité du réseau à l'aide de commandes comme `ping` et `ip a`.
+3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, essentiels pour une compréhension plus approfondie de la structure des adresses IP et des réseaux au niveau du bit.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP dans des scénarios réels et à renforcer votre confiance dans la configuration et le dépannage réseau sous Linux.
 

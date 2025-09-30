@@ -64,7 +64,7 @@ Algunas reflexiones finales: solo hemos arañado la superficie del tema del aná
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del análisis de paquetes:
 
-1. **[Analizar tramas Ethernet con tcpdump en Linux](https://labex.io/es/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Practique la captura e inspección de tramas Ethernet, la generación de tráfico y el análisis de encabezados de tramas y direcciones MAC usando `tcpdump`.
+1. **[Analizar tramas Ethernet con tcpdump en Linux](https://labex.io/es/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Practique la captura e inspección de tramas Ethernet, la generación de tráfico y el análisis de encabezados de tramas y direcciones MAC usando `tcpdump`.
 
 Este laboratorio le ayudará a aplicar los conceptos de análisis de paquetes en un escenario real y a generar confianza con la resolución de problemas de red.
 

@@ -28,9 +28,9 @@ DHCP はこれよりも複雑ですが、これがその要点です。
 
 練習は完璧をもたらします！動的 IP アドレス割り当てとネットワーク設定の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` コマンドを使用してインターフェースを検査し、特に `dhclient` を使用して動的 IP アドレスを取得する練習をすることで、DHCP の知識を直接適用します。
-2. **[Linux での MAC および IP アドレスの特定](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、DHCP によって割り当てられた IP アドレスを含むネットワークアドレス情報を特定し、ネットワークインターフェースを検査する方法を学びます。
-3. **[Linux での IP アドレスの種類と到達可能性の探索](https://labex.io/ja/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` と `ip a` を使用して IP アドレスとネットワーク到達可能性を探索し、動的に割り当てられた IP がネットワーク内でどのように機能するかを理解するのに役立ちます。
+1. **[Linux での IP アドレス管理](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` コマンドを使用してインターフェースを検査し、特に `dhclient` を使用して動的 IP アドレスを取得する練習をすることで、DHCP の知識を直接適用します。
+2. **[Linux での MAC および IP アドレスの特定](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、DHCP によって割り当てられた IP アドレスを含むネットワークアドレス情報を特定し、ネットワークインターフェースを検査する方法を学びます。
+3. **[Linux での IP アドレスの種類と到達可能性の探索](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` と `ip a` を使用して IP アドレスとネットワーク到達可能性を探索し、動的に割り当てられた IP がネットワーク内でどのように機能するかを理解するのに役立ちます。
 
 これらのラボは、動的 IP 割り当てとネットワーク設定の概念を実際のシナリオに適用し、Linux ネットワーキングに自信をつけるのに役立ちます。
 

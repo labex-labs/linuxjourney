@@ -31,9 +31,9 @@ Nous envoyons maintenant une dernière requête au serveur DNS qui possède rée
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la résolution et de la gestion DNS :
 
-1. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Apprenez à interroger les enregistrements DNS comme A, PTR et MX, et à identifier votre serveur DNS par défaut, essentiel pour le dépannage réseau.
-2. **[Configurer un serveur DNS local faisant autorité sous Linux](https://labex.io/fr/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Acquérez une expérience pratique en installant et en configurant un serveur DNS local faisant autorité, en définissant des zones et en testant la résolution DNS.
-3. **[Gérer la résolution de nom d'hôte local sous Linux](https://labex.io/fr/labs/linux-manage-local-hostname-resolution-in-linux)** - Entraînez-vous à gérer la résolution de nom d'hôte local en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement web et les tests réseau.
+1. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS comme A, PTR et MX, et à identifier votre serveur DNS par défaut, essentiel pour le dépannage réseau.
+2. **[Configurer un serveur DNS local faisant autorité sous Linux](https://labex.io/fr/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Acquérez une expérience pratique en installant et en configurant un serveur DNS local faisant autorité, en définissant des zones et en testant la résolution DNS.
+3. **[Gérer la résolution de nom d'hôte local sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à gérer la résolution de nom d'hôte local en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement web et les tests réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec DNS.
 

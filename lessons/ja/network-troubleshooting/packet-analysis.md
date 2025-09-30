@@ -64,7 +64,7 @@ sudo tcpdump -w /some/file
 
 練習は完璧を導きます！パケット解析の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で tcpdump を使ってイーサネットフレームを解析する](https://labex.io/ja/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump`を使用して、イーサネットフレームのキャプチャと検査、トラフィックの生成、フレームヘッダーと MAC アドレスの解析を練習します。
+1. **[Linux で tcpdump を使ってイーサネットフレームを解析する](https://labex.io/ja/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump`を使用して、イーサネットフレームのキャプチャと検査、トラフィックの生成、フレームヘッダーと MAC アドレスの解析を練習します。
 
 このラボは、実際のシナリオでパケット解析の概念を適用し、ネットワークトラブルシューティングに自信をつけるのに役立ちます。
 

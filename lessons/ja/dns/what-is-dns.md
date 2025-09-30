@@ -19,9 +19,9 @@ DNS は基本的に、ホスト名と IP アドレスの分散データベース
 
 練習は完璧をもたらします！DNS とホスト名解決の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[dig と nslookup を使って Linux で DNS レコードをクエリする](https://labex.io/ja/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - `dig`や`nslookup`といった必須の Linux ツールを使って様々な DNS レコードタイプをクエリする方法を学び、ホスト名が IP アドレスに解決される仕組みを理解するのに役立ちます。
-2. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/linux-manage-local-hostname-resolution-in-linux)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する練習をします。これは、外部 DNS サーバーに依存せずに Linux システムが名前を解決する方法を制御するための基本的なスキルです。
-3. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - `bind9`を使用して独自のローカル権威 DNS サーバーをセットアップおよび設定することで実践的な経験を積み、DNS ゾーンとレコードがどのように管理されるかを深く掘り下げることができます。
+1. **[dig と nslookup を使って Linux で DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig`や`nslookup`といった必須の Linux ツールを使って様々な DNS レコードタイプをクエリする方法を学び、ホスト名が IP アドレスに解決される仕組みを理解するのに役立ちます。
+2. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する練習をします。これは、外部 DNS サーバーに依存せずに Linux システムが名前を解決する方法を制御するための基本的なスキルです。
+3. **[Linux でローカル権威 DNS サーバーをセットアップする](https://labex.io/ja/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - `bind9`を使用して独自のローカル権威 DNS サーバーをセットアップおよび設定することで実践的な経験を積み、DNS ゾーンとレコードがどのように管理されるかを深く掘り下げることができます。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux 環境での DNS とホスト名解決に自信を持つために役立ちます。
 

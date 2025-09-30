@@ -35,9 +35,9 @@ ip neighbour show
 
 練習は完璧をもたらします！ARP とネットワーク層の相互作用の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Linux で ping と arp を使ってネットワーク層の相互作用を探る](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` と `arp` コマンドを使用して、IP アドレスが MAC アドレスにどのように解決されるか、およびデフォルトゲートウェイがトラフィックをどのように処理するかを観察します。
-2. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、ARP を理解する上で不可欠な MAC アドレスや IP アドレスを含むネットワークアドレス情報を特定する方法を学びます。
-3. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` コマンドを使用して IP アドレスの管理を練習し、`arp` と `traceroute` でネットワーク設定を確認します。
+1. **[Linux で ping と arp を使ってネットワーク層の相互作用を探る](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` と `arp` コマンドを使用して、IP アドレスが MAC アドレスにどのように解決されるか、およびデフォルトゲートウェイがトラフィックをどのように処理するかを観察します。
+2. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、ARP を理解する上で不可欠な MAC アドレスや IP アドレスを含むネットワークアドレス情報を特定する方法を学びます。
+3. **[Linux で IP アドレスを管理する](https://labex.io/ja/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` コマンドを使用して IP アドレスの管理を練習し、`arp` と `traceroute` でネットワーク設定を確認します。
 
 これらのラボは、ARP とネットワークアドレスの概念を実際のシナリオに適用し、Linux ネットワーキングに自信をつけるのに役立ちます。
 

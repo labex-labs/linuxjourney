@@ -27,8 +27,8 @@ traceroute to google.com (216.58.216.174), 30 hops max, 60 byte packets
 
 연습이 완벽을 만듭니다! 네트워크 경로 검색 및 문제 해결에 대한 이해를 강화하기 위한 실습 랩이 있습니다:
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - `ip` 명령어를 사용하여 네트워크 설정을 구성하고 `traceroute`로 연결을 확인하는 연습을 합니다.
-2. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`가 어떻게 작동하여 네트워크 계층 상호 작용을 이해하는지 배우고, 이는 `traceroute`가 작동하는 방식의 기초가 됩니다.
+1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령어를 사용하여 네트워크 설정을 구성하고 `traceroute`로 연결을 확인하는 연습을 합니다.
+2. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`가 어떻게 작동하여 네트워크 계층 상호 작용을 이해하는지 배우고, 이는 `traceroute`가 작동하는 방식의 기초가 됩니다.
 
 이러한 랩은 실제 시나리오에서 네트워크 진단 개념을 적용하고 Linux 네트워킹 도구에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

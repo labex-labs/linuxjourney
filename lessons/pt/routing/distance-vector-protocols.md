@@ -19,9 +19,9 @@ Um dos protocolos de vetor de distância comuns é o RIP (Routing Information Pr
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre roteamento e conectividade de rede:
 
-1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Pratique o uso de `ping` e `arp` para entender como os dispositivos se descobrem e como o tráfego é roteado na camada de rede.
-2. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP e testar a conectividade entre nós Linux simulados, observando como as sub-redes IP influenciam a comunicação de rede.
-3. **[Gerencie o Endereçamento IP no Linux](https://labex.io/pt/labs/linux-manage-ip-addressing-in-linux-592736)** - Ganhe experiência prática configurando endereços IP estáticos e dinâmicos e definindo gateways padrão, que são componentes essenciais do roteamento de rede.
+1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Pratique o uso de `ping` e `arp` para entender como os dispositivos se descobrem e como o tráfego é roteado na camada de rede.
+2. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP e testar a conectividade entre nós Linux simulados, observando como as sub-redes IP influenciam a comunicação de rede.
+3. **[Gerencie o Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Ganhe experiência prática configurando endereços IP estáticos e dinâmicos e definindo gateways padrão, que são componentes essenciais do roteamento de rede.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de endereçamento e conectividade de rede em cenários reais, construindo uma base sólida para entender como os protocolos de roteamento funcionam.
 

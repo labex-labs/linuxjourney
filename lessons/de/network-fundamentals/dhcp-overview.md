@@ -28,9 +28,9 @@ DHCP ist komplexer als das, aber das ist die Essenz davon.
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der dynamischen IP-Adressierung und Netzwerkkonfiguration zu vertiefen:
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls, um Schnittstellen zu inspizieren und speziell `dhclient` zu verwenden, um eine dynamische IP-Adresse zu erhalten, wodurch Sie Ihr Wissen über DHCP direkt anwenden.
-2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkkonfigurationsinformationen, einschließlich der von DHCP zugewiesenen IP-Adressen, zu identifizieren und Netzwerkschnittstellen zu inspizieren.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und Netzwerk-Erreichbarkeit mit `ping` und `ip a`, was Ihnen hilft zu verstehen, wie dynamisch zugewiesene IPs innerhalb eines Netzwerks funktionieren.
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls, um Schnittstellen zu inspizieren und speziell `dhclient` zu verwenden, um eine dynamische IP-Adresse zu erhalten, wodurch Sie Ihr Wissen über DHCP direkt anwenden.
+2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkkonfigurationsinformationen, einschließlich der von DHCP zugewiesenen IP-Adressen, zu identifizieren und Netzwerkschnittstellen zu inspizieren.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und Netzwerk-Erreichbarkeit mit `ping` und `ip a`, was Ihnen hilft zu verstehen, wie dynamisch zugewiesene IPs innerhalb eines Netzwerks funktionieren.
 
 Diese Übungen helfen Ihnen, die Konzepte der dynamischen IP-Zuweisung und Netzwerkkonfiguration in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
 

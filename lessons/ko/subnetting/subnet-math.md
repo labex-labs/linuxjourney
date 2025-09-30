@@ -24,9 +24,9 @@ IP 주소는 서브넷 마스크에 의해 마스킹됩니다. 1 이 보이면 �
 
 연습이 완벽을 만듭니다! 다음은 IP 주소 지정 및 서브넷팅에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 네트워크 구성 및 계획에 필수적인 IP 서브넷팅 및 이진 변환을 마스터하세요.
-2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형과 Linux 명령을 사용하여 네트워크 도달 가능성을 확인하는 방법을 심층적으로 이해하세요.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 실제 환경에서 네트워크 구성을 시뮬레이션하고 다른 IP 서브넷 간의 연결을 테스트하여 지식을 적용하세요.
+1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 네트워크 구성 및 계획에 필수적인 IP 서브넷팅 및 이진 변환을 마스터하세요.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형과 Linux 명령을 사용하여 네트워크 도달 가능성을 확인하는 방법을 심층적으로 이해하세요.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 실제 환경에서 네트워크 구성을 시뮬레이션하고 다른 IP 서브넷 간의 연결을 테스트하여 지식을 적용하세요.
 
 이 실습들은 실제 시나리오에서 IP 주소 지정, 서브넷 마스크 및 호스트 계산 개념을 적용하고 네트워크 기본 사항에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

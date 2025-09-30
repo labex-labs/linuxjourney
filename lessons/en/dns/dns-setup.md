@@ -29,8 +29,8 @@ This isn't a complete list, but it should give you an idea of where to look if y
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS in Linux:
 
-1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - Learn to use essential command-line tools like `dig` and `nslookup` to query various DNS record types and troubleshoot DNS resolution issues.
-2. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - Gain practical experience by installing and configuring `bind9` to set up your own local authoritative DNS server, defining zones, and testing resolution.
+1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to use essential command-line tools like `dig` and `nslookup` to query various DNS record types and troubleshoot DNS resolution issues.
+2. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Gain practical experience by installing and configuring `bind9` to set up your own local authoritative DNS server, defining zones, and testing resolution.
 
 These labs will help you apply the concepts in real scenarios and build confidence with DNS management in Linux.
 

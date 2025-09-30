@@ -35,9 +35,9 @@ ip neighbour show
 
 熟能生巧！以下是一些动手实验，可帮助您巩固对 ARP 和网络层交互的理解：
 
-1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 命令观察 IP 地址如何解析为 MAC 地址以及默认网关如何处理流量。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令识别网络寻址信息，包括 MAC 和 IP 地址，这些信息是理解 ARP 的基础。
-3. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令管理 IP 寻址，并使用 `arp` 和 `traceroute` 验证网络配置。
+1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 命令观察 IP 地址如何解析为 MAC 地址以及默认网关如何处理流量。
+2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令识别网络寻址信息，包括 MAC 和 IP 地址，这些信息是理解 ARP 的基础。
+3. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令管理 IP 寻址，并使用 `arp` 和 `traceroute` 验证网络配置。
 
 这些实验将帮助您在实际场景中应用 ARP 和网络寻址的概念，并增强您对 Linux 网络的信心。
 

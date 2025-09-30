@@ -27,9 +27,9 @@ Dies richtet einen grundlegenden Webserver ein, auf den Sie über die Localhost-
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerkkonnektivität und IP-Adressierung zu vertiefen, die für die Freigabe von Dateien über ein Netzwerk unerlässlich sind:
 
-1. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Üben Sie das Identifizieren verschiedener IP-Adresstypen und das Testen der Netzwerkerreichbarkeit, entscheidend, um sicherzustellen, dass Ihr Python HTTP-Server zugänglich ist.
-2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, den Befehl `ip a` zu verwenden, um die IP-Adresse Ihrer Maschine zu finden, ein notwendiger Schritt, bevor Sie von einem anderen Gerät auf Ihre freigegebenen Dateien zugreifen.
-3. **[Lokale Hostnamen-Auflösung in Linux verwalten](https://labex.io/de/labs/linux-manage-local-hostname-resolution-in-linux-592792)** – Lernen Sie, die lokale Hostnamen-Auflösung in Linux durch Bearbeiten der Datei /etc/hosts zu verwalten, eine Schlüsselkompetenz für die Webentwicklung und Netzwerktests.
+1. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Üben Sie das Identifizieren verschiedener IP-Adresstypen und das Testen der Netzwerkerreichbarkeit, entscheidend, um sicherzustellen, dass Ihr Python HTTP-Server zugänglich ist.
+2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, den Befehl `ip a` zu verwenden, um die IP-Adresse Ihrer Maschine zu finden, ein notwendiger Schritt, bevor Sie von einem anderen Gerät auf Ihre freigegebenen Dateien zugreifen.
+3. **[Lokale Hostnamen-Auflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** – Lernen Sie, die lokale Hostnamen-Auflösung in Linux durch Bearbeiten der Datei /etc/hosts zu verwalten, eine Schlüsselkompetenz für die Webentwicklung und Netzwerktests.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in grundlegende Netzwerkoperationen in Linux aufzubauen.
 

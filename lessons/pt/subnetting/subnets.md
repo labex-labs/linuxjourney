@@ -43,9 +43,9 @@ Mas espere um minuto, e se eu quiser me conectar a outros hosts como yahoo.com? 
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de endereçamento IP e subnetting:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4, o que é fundamental para entender sub-redes.
-2. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a explorar diferentes tipos de endereço IP e testar a acessibilidade da rede, ajudando você a verificar se os hosts estão na mesma rede.
-3. **[Realizar Subnetting IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária, aplicando diretamente os conceitos de prefixos de rede e identificação de host discutidos na lição.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4, o que é fundamental para entender sub-redes.
+2. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a explorar diferentes tipos de endereço IP e testar a acessibilidade da rede, ajudando você a verificar se os hosts estão na mesma rede.
+3. **[Realizar Subnetting IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária, aplicando diretamente os conceitos de prefixos de rede e identificação de host discutidos na lição.
 
 Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com endereçamento de rede e subnetting.
 

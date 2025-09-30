@@ -29,9 +29,9 @@ La NAT et le routage de paquets en général peuvent devenir assez complexes, ma
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage réseau et de la connectivité, qui sont fondamentaux pour comprendre des concepts comme la NAT :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4 et IPv6, sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Apprenez à gérer l'adressage IP en configurant des adresses IP statiques et dynamiques, et en vérifiant la configuration réseau, ce qui aide à comprendre comment les appareils obtiennent leurs adresses.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau, offrant un contexte pratique pour la façon dont la NAT distingue les adresses internes et externes.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4 et IPv6, sur un système Linux.
+2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à gérer l'adressage IP en configurant des adresses IP statiques et dynamiques, et en vérifiant la configuration réseau, ce qui aide à comprendre comment les appareils obtiennent leurs adresses.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau, offrant un contexte pratique pour la façon dont la NAT distingue les adresses internes et externes.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la configuration et le dépannage réseau sous Linux.
 

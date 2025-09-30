@@ -43,8 +43,8 @@ $ ip route delete 192.168.2.1/23
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu vertiefen:
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Üben Sie das Konfigurieren einer statischen IP, das Festlegen eines Standard-Gateways und das Überprüfen der Netzwerkkonfiguration mit dem Befehl `ip`.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr handhabt und beobachten Sie Netzwerkschicht-Interaktionen.
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie das Konfigurieren einer statischen IP, das Festlegen eines Standard-Gateways und das Überprüfen der Netzwerkkonfiguration mit dem Befehl `ip`.
+2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr handhabt und beobachten Sie Netzwerkschicht-Interaktionen.
 
 Diese Übungen helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
 

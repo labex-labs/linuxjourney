@@ -17,9 +17,9 @@ In der Netzwerkschicht empfängt sie das von der Transportschicht kommende Segme
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Netzwerkschicht, der IP-Adressierung und der Subnetze zu vertiefen:
 
-1. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie das Zuweisen statischer IP-Adressen und das Testen der Konnektivität innerhalb und zwischen verschiedenen Subnetzen mithilfe von Docker-Containern.
-2. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit mit `ping` und `ip a`.
+1. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie das Zuweisen statischer IP-Adressen und das Testen der Konnektivität innerhalb und zwischen verschiedenen Subnetzen mithilfe von Docker-Containern.
+2. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit mit `ping` und `ip a`.
 
 Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Subnettings in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Netzwerkschicht aufzubauen.
 

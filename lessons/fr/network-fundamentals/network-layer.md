@@ -17,9 +17,9 @@ Dans la couche réseau, elle reçoit le segment provenant de la couche transport
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la couche réseau, de l'adressage IP et des sous-réseaux :
 
-1. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Entraînez-vous à attribuer des adresses IP statiques et à tester la connectivité au sein et entre différents sous-réseaux à l'aide de conteneurs Docker.
-2. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris le calcul des hôtes utilisables et des sous-réseaux, directement dans le terminal Linux.
-3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau à l'aide de `ping` et `ip a`.
+1. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Entraînez-vous à attribuer des adresses IP statiques et à tester la connectivité au sein et entre différents sous-réseaux à l'aide de conteneurs Docker.
+2. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris le calcul des hôtes utilisables et des sous-réseaux, directement dans le terminal Linux.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez la joignabilité du réseau à l'aide de `ping` et `ip a`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP et de sous-réseautage dans des scénarios réels et à renforcer votre confiance dans les fondamentaux de la couche réseau.
 

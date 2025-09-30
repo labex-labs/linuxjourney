@@ -19,7 +19,7 @@ Tout d'abord, nous commençons par la couche application. Lorsque nous envoyons 
 
 C'est en forgeant qu'on devient forgeron ! Voici un laboratoire pratique pour renforcer votre compréhension des couches réseau et des ports :
 
-1. **[Analyser les ports et sessions réseau avec netstat sous Linux](https://labex.io/fr/labs/linux-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Dans ce laboratoire, vous apprendrez à utiliser la commande `netstat` pour analyser l'activité réseau, en explorant des concepts fondamentaux tels que les ports réseau, les sockets et les connexions actives. Cela vous donnera un aperçu pratique de la façon dont les services communiquent sur le réseau, en relation directe avec les concepts de la couche transport abordés.
+1. **[Analyser les ports et sessions réseau avec netstat sous Linux](https://labex.io/fr/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Dans ce laboratoire, vous apprendrez à utiliser la commande `netstat` pour analyser l'activité réseau, en explorant des concepts fondamentaux tels que les ports réseau, les sockets et les connexions actives. Cela vous donnera un aperçu pratique de la façon dont les services communiquent sur le réseau, en relation directe avec les concepts de la couche transport abordés.
 
 Ce laboratoire vous aidera à appliquer les concepts de communication réseau et d'utilisation des ports dans un environnement Linux réel, renforçant ainsi votre confiance dans la compréhension de la façon dont les applications interagissent avec la pile réseau.
 

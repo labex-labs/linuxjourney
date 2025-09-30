@@ -64,7 +64,7 @@ sudo tcpdump -w /some/file
 
 연습이 완벽을 만듭니다! 다음은 패킷 분석에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[Linux 에서 tcpdump 로 이더넷 프레임 분석하기](https://labex.io/ko/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump`를 사용하여 이더넷 프레임을 캡처하고 검사하고, 트래픽을 생성하고, 프레임 헤더 및 MAC 주소를 분석하는 연습을 합니다.
+1. **[Linux 에서 tcpdump 로 이더넷 프레임 분석하기](https://labex.io/ko/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump`를 사용하여 이더넷 프레임을 캡처하고 검사하고, 트래픽을 생성하고, 프레임 헤더 및 MAC 주소를 분석하는 연습을 합니다.
 
 이 랩은 실제 시나리오에서 패킷 분석 개념을 적용하고 네트워크 문제 해결에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

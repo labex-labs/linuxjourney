@@ -19,9 +19,9 @@ IPv6 という言葉をあちこちで耳にしますが、それは一体何で
 
 練習は完璧をもたらします！IPv6 アドレス指定とその IPv4 との相互作用の理解を深めるための実践的な演習をいくつか紹介します。
 
-1. **[Linux で IPv6 アドレスを設定および確認する](https://labex.io/ja/labs/linux-configure-and-verify-ipv6-addresses-in-linux-592858)** - `ip`コマンドと`ping6`コマンドを使用して、静的 IPv6 アドレスを割り当て、接続をテストする練習をします。
-2. **[Linux で IPv6 DNS ルックアップを実行する](https://labex.io/ja/labs/linux-perform-ipv6-dns-lookups-in-linux-592862)** - `dig`、`nslookup`、`ping6`を使用して、AAAA レコードをクエリし、IPv6 DNS 解決を確認する方法を学びます。
-3. **[Linux で IPv4-to-IPv6 6to4 トンネルを設定する](https://labex.io/ja/labs/linux-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - 既存の IPv4 ネットワーク上で IPv6 接続を可能にする 6to4 トンネルを設定する実践的な経験を積みます。
+1. **[Linux で IPv6 アドレスを設定および確認する](https://labex.io/ja/labs/comptia-configure-and-verify-ipv6-addresses-in-linux-592858)** - `ip`コマンドと`ping6`コマンドを使用して、静的 IPv6 アドレスを割り当て、接続をテストする練習をします。
+2. **[Linux で IPv6 DNS ルックアップを実行する](https://labex.io/ja/labs/comptia-perform-ipv6-dns-lookups-in-linux-592862)** - `dig`、`nslookup`、`ping6`を使用して、AAAA レコードをクエリし、IPv6 DNS 解決を確認する方法を学びます。
+3. **[Linux で IPv4-to-IPv6 6to4 トンネルを設定する](https://labex.io/ja/labs/comptia-configure-an-ipv4-to-ipv6-6to4-tunnel-in-linux-592867)** - 既存の IPv4 ネットワーク上で IPv6 接続を可能にする 6to4 トンネルを設定する実践的な経験を積みます。
 
 これらの演習は、実際のシナリオで IPv6 の概念を適用し、ネットワーク構成とトラブルシューティングに自信をつけるのに役立ちます。
 

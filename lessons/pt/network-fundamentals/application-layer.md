@@ -19,7 +19,7 @@ Primeiro, começamos na camada de aplicação. Quando enviamos nosso e-mail atra
 
 Prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão das camadas e portas de rede:
 
-1. **[Analisar Portas e Sessões de Rede com netstat no Linux](https://labex.io/pt/labs/linux-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Neste laboratório, você aprenderá como usar o comando `netstat` para analisar a atividade da rede, explorando conceitos fundamentais como portas de rede, sockets e conexões ativas. Isso lhe dará uma visão prática de como os serviços se comunicam pela rede, relacionando-se diretamente com os conceitos da camada de transporte discutidos.
+1. **[Analisar Portas e Sessões de Rede com netstat no Linux](https://labex.io/pt/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Neste laboratório, você aprenderá como usar o comando `netstat` para analisar a atividade da rede, explorando conceitos fundamentais como portas de rede, sockets e conexões ativas. Isso lhe dará uma visão prática de como os serviços se comunicam pela rede, relacionando-se diretamente com os conceitos da camada de transporte discutidos.
 
 Este laboratório o ajudará a aplicar os conceitos de comunicação de rede e uso de portas em um ambiente Linux real, construindo sua confiança na compreensão de como os aplicativos interagem com a pilha de rede.
 

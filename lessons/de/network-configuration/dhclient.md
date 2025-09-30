@@ -23,9 +23,9 @@ sudo dhclient
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der dynamischen IP-Adressierung und Netzwerkkonfiguration zu vertiefen:
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/linux-manage-ip-addressing-in-linux-592736)** – Üben Sie die Verwendung von `dhclient`, um eine dynamische IP-Adresse zu erhalten und die Netzwerkkonfiguration in einer echten Linux-Umgebung zu überprüfen.
-2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, Netzwerkschnittstellen zu inspizieren und MAC- und IP-Adressen zu identifizieren, die grundlegend für das Verständnis sind, wie DHCP Adressen zuweist.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Testen Sie die Netzwerkerreichbarkeit und erkunden Sie verschiedene IP-Adresstypen, um Ihr Verständnis der Funktionsweise von IP-Adressen in einem Netzwerk zu vertiefen.
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie die Verwendung von `dhclient`, um eine dynamische IP-Adresse zu erhalten und die Netzwerkkonfiguration in einer echten Linux-Umgebung zu überprüfen.
+2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Lernen Sie, Netzwerkschnittstellen zu inspizieren und MAC- und IP-Adressen zu identifizieren, die grundlegend für das Verständnis sind, wie DHCP Adressen zuweist.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Testen Sie die Netzwerkerreichbarkeit und erkunden Sie verschiedene IP-Adresstypen, um Ihr Verständnis der Funktionsweise von IP-Adressen in einem Netzwerk zu vertiefen.
 
 Diese Übungen helfen Ihnen, die Konzepte von DHCP und IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration unter Linux aufzubauen.
 

@@ -17,9 +17,9 @@ meta_keywords: "네트워크 계층, IP 주소, 서브넷, Linux 네트워킹, �
 
 연습이 완벽을 만듭니다! 다음은 네트워크 계층, IP 주소 지정 및 서브넷에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Docker 컨테이너를 사용하여 정적 IP 주소를 할당하고 동일한 서브넷 및 다른 서브넷 내에서 연결을 테스트하는 연습을 합니다.
-2. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux 터미널에서 직접 사용 가능한 호스트 및 서브넷 계산을 포함하여 IP 서브넷팅 및 이진 변환을 마스터합니다.
-3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형 (사설, 공용, 멀티캐스트) 을 탐색하고 `ping` 및 `ip a`를 사용하여 네트워크 도달 가능성을 테스트합니다.
+1. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker 컨테이너를 사용하여 정적 IP 주소를 할당하고 동일한 서브넷 및 다른 서브넷 내에서 연결을 테스트하는 연습을 합니다.
+2. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux 터미널에서 직접 사용 가능한 호스트 및 서브넷 계산을 포함하여 IP 서브넷팅 및 이진 변환을 마스터합니다.
+3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형 (사설, 공용, 멀티캐스트) 을 탐색하고 `ping` 및 `ip a`를 사용하여 네트워크 도달 가능성을 테스트합니다.
 
 이 실습은 실제 시나리오에서 IP 주소 지정 및 서브넷팅 개념을 적용하고 네트워크 계층의 기본 사항에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

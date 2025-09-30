@@ -57,7 +57,7 @@ meta_keywords: "サブネット化，バイナリ変換，IP アドレス，ネ�
 
 練習は完璧をもたらします！サブネット計算は実世界では自動化されることが多いですが、面接やネットワーキングのより深い理解のためには、基礎となるバイナリ変換を理解することが重要です。ここでは、理解を深めるための実践的な演習を紹介します。
 
-1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux ターミナルで Python を使用して IP アドレスを変換し、CIDR マスクを翻訳し、ネットワークの詳細を計算することで、IP サブネット化とバイナリ変換を習得します。
+1. **[Linux ターミナルで IP サブネット化とバイナリ変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Linux ターミナルで Python を使用して IP アドレスを変換し、CIDR マスクを翻訳し、ネットワークの詳細を計算することで、IP サブネット化とバイナリ変換を習得します。
 
 この演習は、バイナリ変換とサブネット化の概念を実践的なシナリオで適用し、ネットワークアドレス指定の基礎に自信をつけるのに役立ちます。
 

@@ -64,7 +64,7 @@ sudo tcpdump -w /some/file
 
 熟能生巧！以下是一些动手实验，以巩固您对数据包分析的理解：
 
-1. **[在 Linux 中使用 tcpdump 分析以太网帧](https://labex.io/zh/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - 练习捕获和检查以太网帧，生成流量，并使用 `tcpdump` 分析帧头和 MAC 地址。
+1. **[在 Linux 中使用 tcpdump 分析以太网帧](https://labex.io/zh/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - 练习捕获和检查以太网帧，生成流量，并使用 `tcpdump` 分析帧头和 MAC 地址。
 
 本实验将帮助您在实际场景中应用数据包分析的概念，并增强网络故障排除的信心。
 

@@ -64,7 +64,7 @@ Einige abschließende Gedanken: Wir haben das Thema Paketanalyse nur oberflächl
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Paketanalyse zu vertiefen:
 
-1. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Üben Sie das Erfassen und Überprüfen von Ethernet-Frames, das Generieren von Datenverkehr und das Analysieren von Frame-Headern und MAC-Adressen mit `tcpdump`.
+1. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Üben Sie das Erfassen und Überprüfen von Ethernet-Frames, das Generieren von Datenverkehr und das Analysieren von Frame-Headern und MAC-Adressen mit `tcpdump`.
 
 Dieses Lab hilft Ihnen, die Konzepte der Paketanalyse in einem realen Szenario anzuwenden und Vertrauen in die Netzwerk-Fehlerbehebung aufzubauen.
 

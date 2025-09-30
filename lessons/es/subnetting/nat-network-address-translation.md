@@ -29,9 +29,9 @@ NAT y el enrutamiento de paquetes en general pueden ser bastante complicados, pe
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del direccionamiento de red y la conectividad, que son fundamentales para comprender conceptos como NAT:
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4 e IPv6, en un sistema Linux.
-2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a administrar el direccionamiento IP configurando IPs estáticas y dinámicas, y verificando la configuración de red, lo que ayuda a comprender cómo los dispositivos obtienen sus direcciones.
-3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red, proporcionando un contexto práctico de cómo NAT distingue entre direcciones internas y externas.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4 e IPv6, en un sistema Linux.
+2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a administrar el direccionamiento IP configurando IPs estáticas y dinámicas, y verificando la configuración de red, lo que ayuda a comprender cómo los dispositivos obtienen sus direcciones.
+3. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multidifusión) y pruebe la accesibilidad de la red, proporcionando un contexto práctico de cómo NAT distingue entre direcciones internas y externas.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con la configuración y resolución de problemas de red en Linux.
 

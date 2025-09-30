@@ -24,9 +24,9 @@ meta_keywords: "Linux 네트워크 기본 사항, WAN, LAN, WLAN, 네트워크 �
 
 연습이 완벽을 만듭니다! 실습 경험은 네트워킹 기본 사항을 이해하는 데 중요합니다. 다음은 네트워크 구성 요소와 호스트가 통신하는 방식에 대한 이해를 강화하기 위한 몇 가지 실습입니다.
 
-1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 호스트의 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 네트워크 연결 가능성을 테스트하고 다양한 IP 주소 유형을 식별하는 방법을 배우며, 이는 호스트가 연결되는 방식을 이해하는 데 필수적입니다.
-3. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - ARP(Address Resolution Protocol) 를 관찰하고 `ping`으로 연결을 테스트하여 호스트가 네트워크에서 상호 작용하는 방식을 이해합니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 호스트의 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 유형 및 연결 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 네트워크 연결 가능성을 테스트하고 다양한 IP 주소 유형을 식별하는 방법을 배우며, 이는 호스트가 연결되는 방식을 이해하는 데 필수적입니다.
+3. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - ARP(Address Resolution Protocol) 를 관찰하고 `ping`으로 연결을 테스트하여 호스트가 네트워크에서 상호 작용하는 방식을 이해합니다.
 
 이러한 실습은 실제 시나리오에서 호스트, 주소 지정 및 기본 연결 개념을 적용하고 기본적인 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

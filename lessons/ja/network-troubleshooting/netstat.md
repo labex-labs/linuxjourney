@@ -68,7 +68,7 @@ tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
 
 練習は完璧をもたらします！ネットワークインターフェース設定の理解を深めるための実践的なラボです。
 
-1. **[Linux で ethtool を使用してネットワークインターフェース設定を調べる](https://labex.io/ja/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` コマンドを使用して、ネットワークインターフェース設定の調査と管理（インターフェース速度とデュプレックスの表示と設定、物理層のネットワーク問題をトラブルシューティングするためのリンクモードの分析など）を学びます。
+1. **[Linux で ethtool を使用してネットワークインターフェース設定を調べる](https://labex.io/ja/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` コマンドを使用して、ネットワークインターフェース設定の調査と管理（インターフェース速度とデュプレックスの表示と設定、物理層のネットワーク問題をトラブルシューティングするためのリンクモードの分析など）を学びます。
 
 このラボは、実際のシナリオで概念を適用し、ネットワークインターフェースの管理に自信を持つのに役立ちます。
 

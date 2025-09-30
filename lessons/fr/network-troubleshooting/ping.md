@@ -39,9 +39,9 @@ Le temps aller-retour qu'il a fallu entre l'envoi du paquet de requête d'écho 
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la connectivité réseau et de la commande `ping` :
 
-1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez `ping` et `arp` pour explorer les interactions des couches réseau et liaison de données et observer comment la passerelle par défaut gère le trafic distant.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilisez `ping` et `ip a` pour tester la pile TCP/IP locale, vérifier la connectivité Internet publique et explorer la joignabilité du réseau.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP statiques avec `ip addr` et à tester la connectivité avec `ping` sur les mêmes sous-réseaux et sur des sous-réseaux différents.
+1. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez `ping` et `arp` pour explorer les interactions des couches réseau et liaison de données et observer comment la passerelle par défaut gère le trafic distant.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilisez `ping` et `ip a` pour tester la pile TCP/IP locale, vérifier la connectivité Internet publique et explorer la joignabilité du réseau.
+3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apprenez à attribuer des adresses IP statiques avec `ip addr` et à tester la connectivité avec `ping` sur les mêmes sous-réseaux et sur des sous-réseaux différents.
 
 Ces laboratoires vous aideront à appliquer les concepts de joignabilité réseau et la commande `ping` dans des scénarios réels et à renforcer votre confiance dans le diagnostic réseau sous Linux.
 

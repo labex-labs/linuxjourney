@@ -40,9 +40,9 @@ ARP находит MAC-адрес, связанный с IP-адресом. ARP 
 
 Практика ведет к совершенству! Вот несколько практических заданий для закрепления вашего понимания канального уровня, MAC-адресов и ARP:
 
-1. **[Определение MAC- и IP-адресов в Linux](https://labex.io/ru/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Попрактикуйтесь в использовании команды `ip a` для определения информации о сетевых адресах, включая MAC-адреса, в системе Linux.
-2. **[Изучение взаимодействия сетевого уровня с ping и arp в Linux](https://labex.io/ru/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Узнайте, как команды `ping` и `arp` работают вместе для разрешения IP-адресов в MAC-адреса и понимания взаимодействий сетевого уровня.
-3. **[Анализ Ethernet-кадров с помощью tcpdump в Linux](https://labex.io/ru/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Получите практический опыт захвата и проверки Ethernet-кадров, включая MAC-адреса, для понимания низкоуровневых сетевых коммуникаций.
+1. **[Определение MAC- и IP-адресов в Linux](https://labex.io/ru/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Попрактикуйтесь в использовании команды `ip a` для определения информации о сетевых адресах, включая MAC-адреса, в системе Linux.
+2. **[Изучение взаимодействия сетевого уровня с ping и arp в Linux](https://labex.io/ru/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Узнайте, как команды `ping` и `arp` работают вместе для разрешения IP-адресов в MAC-адреса и понимания взаимодействий сетевого уровня.
+3. **[Анализ Ethernet-кадров с помощью tcpdump в Linux](https://labex.io/ru/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Получите практический опыт захвата и проверки Ethernet-кадров, включая MAC-адреса, для понимания низкоуровневых сетевых коммуникаций.
 
 Эти лабораторные работы помогут вам применить концепции в реальных сценариях и укрепить уверенность в основах сети на канальном уровне.
 

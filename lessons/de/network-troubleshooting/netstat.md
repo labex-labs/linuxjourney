@@ -68,7 +68,7 @@ Eine Liste der Socket-Zustände finden Sie in der Manpage, hier sind jedoch eini
 
 Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis der Netzwerkschnittstelleneinstellungen zu vertiefen:
 
-1. **[Netzwerkschnittstelleneinstellungen mit ethtool in Linux untersuchen](https://labex.io/de/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** – Lernen Sie, den Befehl `ethtool` zu verwenden, um Netzwerkschnittstelleneinstellungen zu untersuchen und zu verwalten, einschließlich des Anzeigens und Festlegens von Schnittstellengeschwindigkeit und Duplex sowie der Analyse von Link-Modi zur Fehlerbehebung bei Problemen auf der physikalischen Schicht des Netzwerks.
+1. **[Netzwerkschnittstelleneinstellungen mit ethtool in Linux untersuchen](https://labex.io/de/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** – Lernen Sie, den Befehl `ethtool` zu verwenden, um Netzwerkschnittstelleneinstellungen zu untersuchen und zu verwalten, einschließlich des Anzeigens und Festlegens von Schnittstellengeschwindigkeit und Duplex sowie der Analyse von Link-Modi zur Fehlerbehebung bei Problemen auf der physikalischen Schicht des Netzwerks.
 
 Dieses Labor wird Ihnen helfen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit Netzwerkschnittstellen aufzubauen.
 

@@ -19,9 +19,9 @@ Ein einfacher Trick ist, die CIDR-Adresse (23) von der Gesamtzahl der Bits, die 
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von CIDR, IP-Adressierung und Subnetting zu vertiefen:
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Übersetzung von CIDR-Masken und der Berechnung nutzbarer Hosts.
-2. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, statische IP-Adressen zuzuweisen und zu beobachten, wie IP-Subnetze die direkte Netzwerkkommunikation in einer simulierten Umgebung steuern.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie IP-Adressierung und Netzwerk-Erreichbarkeit mithilfe von Befehlen wie `ping` und `ip a`, um verschiedene IP-Typen und Konnektivität zu testen.
+1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Übersetzung von CIDR-Masken und der Berechnung nutzbarer Hosts.
+2. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Lernen Sie, statische IP-Adressen zuzuweisen und zu beobachten, wie IP-Subnetze die direkte Netzwerkkommunikation in einer simulierten Umgebung steuern.
+3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie IP-Adressierung und Netzwerk-Erreichbarkeit mithilfe von Befehlen wie `ping` und `ip a`, um verschiedene IP-Typen und Konnektivität zu testen.
 
 Diese Labs helfen Ihnen, die Konzepte von CIDR und IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration aufzubauen.
 

@@ -17,9 +17,9 @@ Si bien el modelo OSI es teórico, comprender su influencia en las redes prácti
 
 Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los conceptos básicos de redes:
 
-1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, en un sistema Linux.
-2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada y verificar las configuraciones de red usando el comando `ip`.
-3. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use los comandos `ping` y `arp` para explorar cómo interactúan las capas de red y de enlace de datos, observando ARP en acción y comprendiendo el comportamiento de la puerta de enlace predeterminada.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, en un sistema Linux.
+2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada y verificar las configuraciones de red usando el comando `ip`.
+3. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use los comandos `ping` y `arp` para explorar cómo interactúan las capas de red y de enlace de datos, observando ARP en acción y comprendiendo el comportamiento de la puerta de enlace predeterminada.
 
 Estos laboratorios le ayudarán a aplicar conceptos fundamentales de redes en escenarios reales y a generar confianza con la administración de redes en Linux.
 

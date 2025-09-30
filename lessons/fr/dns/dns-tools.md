@@ -64,7 +64,7 @@ www.google.com.
 
 La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des paramètres d'interface réseau :
 
-1. **[Examiner les paramètres d'interface réseau avec ethtool sous Linux](https://labex.io/fr/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Apprenez à utiliser la commande `ethtool` pour examiner et gérer les paramètres d'interface réseau, y compris l'affichage et la définition de la vitesse et du duplex de l'interface, et l'analyse des modes de liaison pour dépanner les problèmes de réseau de la couche physique.
+1. **[Examiner les paramètres d'interface réseau avec ethtool sous Linux](https://labex.io/fr/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Apprenez à utiliser la commande `ethtool` pour examiner et gérer les paramètres d'interface réseau, y compris l'affichage et la définition de la vitesse et du duplex de l'interface, et l'analyse des modes de liaison pour dépanner les problèmes de réseau de la couche physique.
 
 Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des interfaces réseau.
 

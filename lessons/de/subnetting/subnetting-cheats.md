@@ -57,7 +57,7 @@ Für die Binär-zu-Dezimal-Umwandlung addieren Sie die Zahlen, die eine 1 haben,
 
 Übung macht den Meister! Während Subnetz-Mathematik in der realen Welt oft automatisiert wird, ist das Verständnis der zugrunde liegenden Binärkonvertierungen entscheidend für Interviews und ein tieferes Verständnis der Netzwerktechnik. Hier ist ein praktisches Labor, um Ihr Verständnis zu vertiefen:
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie Python in einem Linux-Terminal verwenden, um IP-Adressen zu konvertieren, CIDR-Masken zu übersetzen und Netzwerkdetails zu berechnen.
+1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie Python in einem Linux-Terminal verwenden, um IP-Adressen zu konvertieren, CIDR-Masken zu übersetzen und Netzwerkdetails zu berechnen.
 
 Dieses Labor wird Ihnen helfen, die Konzepte der Binärkonvertierung und des Subnettings in einem praktischen Szenario anzuwenden und Vertrauen in die Grundlagen der Netzwerkadressierung aufzubauen.
 

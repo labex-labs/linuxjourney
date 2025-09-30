@@ -43,8 +43,8 @@ $ ip route delete 192.168.2.1/23
 
 熟能生巧！这里有一些动手实验，以加强您对网络路由和 IP 地址的理解：
 
-1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 练习配置静态 IP、设置默认网关以及使用 `ip` 命令验证网络配置。
-2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解默认网关如何处理远程流量并观察网络层交互。
+1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习配置静态 IP、设置默认网关以及使用 `ip` 命令验证网络配置。
+2. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 了解默认网关如何处理远程流量并观察网络层交互。
 
 这些实验将帮助您在实际场景中应用 IP 地址和路由的概念，并增强您对 Linux 网络的信心。
 

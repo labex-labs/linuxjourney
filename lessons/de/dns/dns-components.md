@@ -37,9 +37,9 @@ patty    IN  A      192.168.0.4
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von DNS und Hostnamenauflösung zu vertiefen:
 
-1. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/linux-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Üben Sie die Installation und Konfiguration eines lokalen DNS-Servers (`bind9`), das Definieren von Zonen und das Validieren Ihrer Einrichtung.
-2. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Lernen Sie, wichtige Befehlszeilentools (`dig`, `nslookup`) zu verwenden, um verschiedene DNS-Eintragstypen abzufragen und DNS-Probleme zu beheben.
-3. **[Lokale Hostnamenauflösung unter Linux verwalten](https://labex.io/de/labs/linux-manage-local-hostname-resolution-in-linux-592792)** - Verstehen Sie, wie Sie die lokale Hostnamenauflösung durch Bearbeiten der Datei `/etc/hosts` verwalten, eine wichtige Fähigkeit für Entwicklung und Tests.
+1. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Üben Sie die Installation und Konfiguration eines lokalen DNS-Servers (`bind9`), das Definieren von Zonen und das Validieren Ihrer Einrichtung.
+2. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Lernen Sie, wichtige Befehlszeilentools (`dig`, `nslookup`) zu verwenden, um verschiedene DNS-Eintragstypen abzufragen und DNS-Probleme zu beheben.
+3. **[Lokale Hostnamenauflösung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Verstehen Sie, wie Sie die lokale Hostnamenauflösung durch Bearbeiten der Datei `/etc/hosts` verwalten, eine wichtige Fähigkeit für Entwicklung und Tests.
 
 Diese Übungen helfen Ihnen, die Konzepte von DNS und Hostnamenauflösung in realen Szenarien anzuwenden und Vertrauen in Netzwerkdienste aufzubauen.
 

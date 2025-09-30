@@ -29,9 +29,9 @@ NAT and packet routing in general can get pretty ugly, but we won't dive into th
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network addressing and connectivity, which are foundational to understanding concepts like NAT:
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing by configuring static and dynamic IPs, and verifying network configuration, which helps in understanding how devices get their addresses.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability, providing a practical context for how NAT distinguishes between internal and external addresses.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
+2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing by configuring static and dynamic IPs, and verifying network configuration, which helps in understanding how devices get their addresses.
+3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability, providing a practical context for how NAT distinguishes between internal and external addresses.
 
 These labs will help you apply the concepts in real scenarios and build confidence with network configuration and troubleshooting in Linux.
 

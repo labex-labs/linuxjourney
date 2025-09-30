@@ -19,9 +19,9 @@ meta_keywords: "거리 벡터 프로토콜, RIP, 라우팅 정보 프로토콜, 
 
 연습이 완벽을 만듭니다! 다음은 네트워크 라우팅 및 연결성에 대한 이해를 강화하기 위한 실습입니다:
 
-1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`를 사용하여 장치가 서로를 검색하는 방법과 네트워크 계층에서 트래픽이 라우팅되는 방법을 이해하는 연습을 합니다.
-2. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - IP 주소를 할당하고 시뮬레이션된 Linux 노드 간의 연결을 테스트하여 IP 서브넷이 네트워크 통신에 미치는 영향을 관찰하는 방법을 배웁니다.
-3. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/linux-manage-ip-addressing-in-linux-592736)** - 네트워크 라우팅의 필수 구성 요소인 고정 및 동적 IP 주소를 구성하고 기본 게이트웨이를 설정하는 실습 경험을 얻습니다.
+1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp`를 사용하여 장치가 서로를 검색하는 방법과 네트워크 계층에서 트래픽이 라우팅되는 방법을 이해하는 연습을 합니다.
+2. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - IP 주소를 할당하고 시뮬레이션된 Linux 노드 간의 연결을 테스트하여 IP 서브넷이 네트워크 통신에 미치는 영향을 관찰하는 방법을 배웁니다.
+3. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 네트워크 라우팅의 필수 구성 요소인 고정 및 동적 IP 주소를 구성하고 기본 게이트웨이를 설정하는 실습 경험을 얻습니다.
 
 이러한 실습은 실제 시나리오에서 네트워크 주소 지정 및 연결성 개념을 적용하는 데 도움이 되며, 라우팅 프로토콜이 작동하는 방식을 이해하기 위한 강력한 기반을 구축할 것입니다.
 

@@ -17,9 +17,9 @@ Bien que le modèle OSI soit théorique, comprendre son influence sur la mise en
 
 Voici quelques laboratoires pratiques pour renforcer votre compréhension des concepts de base de la mise en réseau :
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/linux-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
-3. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez les commandes `ping` et `arp` pour explorer comment les couches réseau et liaison de données interagissent, en observant ARP en action et en comprenant le comportement de la passerelle par défaut.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
+2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
+3. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez les commandes `ping` et `arp` pour explorer comment les couches réseau et liaison de données interagissent, en observant ARP en action et en comprenant le comportement de la passerelle par défaut.
 
 Ces laboratoires vous aideront à appliquer les concepts fondamentaux de la mise en réseau dans des scénarios réels et à renforcer votre confiance dans l'administration réseau Linux.
 

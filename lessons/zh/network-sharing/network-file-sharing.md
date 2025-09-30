@@ -37,7 +37,7 @@ scp -r mydir username@remotehost.com:/remote/directory
 
 熟能生巧！这是一个动手实验，旨在加深您对安全网络文件传输的理解：
 
-1. **[使用 SSH 在 Linux 中进行安全远程访问](https://labex.io/zh/labs/linux-secure-remote-access-in-linux-with-ssh-592816)** - 练习基于密钥的身份验证，使用 `scp` 安全传输文件，并创建 SSH 隧道进行端口转发。
+1. **[使用 SSH 在 Linux 中进行安全远程访问](https://labex.io/zh/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - 练习基于密钥的身份验证，使用 `scp` 安全传输文件，并创建 SSH 隧道进行端口转发。
 
 本实验将帮助您在实际场景中应用安全远程访问和文件传输的概念，并增强您使用 `scp` 的信心。
 

@@ -19,7 +19,7 @@ meta_keywords: "应用层，TCP/IP 模型，SMTP, 网络层，Linux 网络，初
 
 熟能生巧！这是一个动手实验，旨在巩固您对网络层和端口的理解：
 
-1. **[使用 netstat 在 Linux 中分析网络端口和会话](https://labex.io/zh/labs/linux-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - 在此实验中，您将学习如何使用 `netstat` 命令分析网络活动，探索网络端口、套接字和活动连接等基本概念。这将使您对服务如何在网络上通信有实际的了解，直接与所讨论的传输层概念相关。
+1. **[使用 netstat 在 Linux 中分析网络端口和会话](https://labex.io/zh/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - 在此实验中，您将学习如何使用 `netstat` 命令分析网络活动，探索网络端口、套接字和活动连接等基本概念。这将使您对服务如何在网络上通信有实际的了解，直接与所讨论的传输层概念相关。
 
 本实验将帮助您在真实的 Linux 环境中应用网络通信和端口使用的概念，从而增强您对应用程序如何与网络堆栈交互的理解。
 

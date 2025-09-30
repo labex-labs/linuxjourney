@@ -43,9 +43,9 @@ Aber Moment mal, was ist, wenn ich mich mit anderen Hosts wie yahoo.com verbinde
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von IP-Adressierung und Subnetting zu vertiefen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4-Adressen, zu identifizieren, was grundlegend für das Verständnis von Subnetzen ist.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Lernen Sie, verschiedene IP-Adresstypen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob Hosts im selben Netzwerk sind.
-3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie die in der Lektion besprochenen Konzepte von Netzwerkpräfixen und Host-Identifikation direkt anwenden.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4-Adressen, zu identifizieren, was grundlegend für das Verständnis von Subnetzen ist.
+2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Lernen Sie, verschiedene IP-Adresstypen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob Hosts im selben Netzwerk sind.
+3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie die in der Lektion besprochenen Konzepte von Netzwerkpräfixen und Host-Identifikation direkt anwenden.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerkadressierung und das Subnetting aufzubauen.
 

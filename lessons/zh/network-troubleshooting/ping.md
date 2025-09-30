@@ -39,9 +39,9 @@ Time To Live (TTL) 字段用作跳数计数器。每经过一次跳跃，计数�
 
 熟能生巧！以下是一些动手实验，以巩固您对网络连接和 `ping` 命令的理解：
 
-1. **[使用 ping 和 arp 探索 Linux 中的网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 探索网络和数据链路层交互，并观察默认网关如何处理远程流量。
-2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 利用 `ping` 和 `ip a` 测试本地 TCP/IP 堆栈，验证公共互联网连接，并探索网络可达性。
-3. **[模拟 Linux 中的网络层连接](https://labex.io/zh/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - 学习使用 `ip addr` 分配静态 IP 地址，并在相同和不同子网中通过 `ping` 测试连接。
+1. **[使用 ping 和 arp 探索 Linux 中的网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 探索网络和数据链路层交互，并观察默认网关如何处理远程流量。
+2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 利用 `ping` 和 `ip a` 测试本地 TCP/IP 堆栈，验证公共互联网连接，并探索网络可达性。
+3. **[模拟 Linux 中的网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习使用 `ip addr` 分配静态 IP 地址，并在相同和不同子网中通过 `ping` 测试连接。
 
 这些实验将帮助您在实际场景中应用网络可达性和 `ping` 命令的概念，并增强您在 Linux 中进行网络诊断的信心。
 

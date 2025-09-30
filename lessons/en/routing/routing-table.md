@@ -46,9 +46,9 @@ This is the interface that our packet will be going out of. eth0 usually stands 
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IP addresses and network interfaces, which are key components of a routing table.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/linux-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing, configure static IPs, set default gateways, and verify network configurations, directly relating to the entries found in a routing table.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using `ping` and `ip a`, helping you understand how different IP types interact and how network reachability is determined, which is reflected in routing decisions.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IP addresses and network interfaces, which are key components of a routing table.
+2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to manage IP addressing, configure static IPs, set default gateways, and verify network configurations, directly relating to the entries found in a routing table.
+3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using `ping` and `ip a`, helping you understand how different IP types interact and how network reachability is determined, which is reflected in routing decisions.
 
 These labs will help you apply the concepts in real scenarios and build confidence with network configuration and troubleshooting.
 

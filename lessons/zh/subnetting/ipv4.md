@@ -34,9 +34,9 @@ eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
 
 熟能生巧！以下是一些动手实验，旨在加强您对 Linux 中 IP 寻址和网络识别的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 IPv4 和 IPv6 地址。
-2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 等命令测试网络可达性。
-3. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，这对于更深入地理解 IP 地址和网络在位级别的结构至关重要。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令在 Linux 系统上识别网络寻址信息，包括 IPv4 和 IPv6 地址。
+2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 等命令测试网络可达性。
+3. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，这对于更深入地理解 IP 地址和网络在位级别的结构至关重要。
 
 这些实验将帮助您在实际场景中应用 IP 寻址的概念，并增强您在 Linux 中进行网络配置和故障排除的信心。
 

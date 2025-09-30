@@ -54,9 +54,9 @@ State: connected (global)
 
 熟能生巧！虽然 NetworkManager 自动化了大部分网络配置，但理解它所管理的底层命令和概念对于故障排除和高级管理至关重要。以下是一些动手实验，以加强你对 Linux 中网络识别和管理的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令识别 Linux 系统上的网络寻址信息，包括 MAC 和 IP 地址。
-2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/linux-manage-ip-addressing-in-linux-592736)** - 学习配置静态和动态 IP 地址，设置默认网关，并使用 `ip` 命令和 `dhclient` 验证网络配置。
-3. **[使用 ping 和 arp 在 Linux 中探索网络层交互](https://labex.io/zh/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 来理解网络层和数据链路层如何交互，观察 ARP 的实际作用以及默认网关如何处理流量。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令识别 Linux 系统上的网络寻址信息，包括 MAC 和 IP 地址。
+2. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 学习配置静态和动态 IP 地址，设置默认网关，并使用 `ip` 命令和 `dhclient` 验证网络配置。
+3. **[使用 ping 和 arp 在 Linux 中探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 来理解网络层和数据链路层如何交互，观察 ARP 的实际作用以及默认网关如何处理流量。
 
 这些实验将帮助你在实际场景中应用网络识别和配置的概念，并建立对 Linux 网络基础知识的信心。
 

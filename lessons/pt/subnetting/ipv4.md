@@ -34,9 +34,9 @@ Como você pode ver, meu endereço IPv4 é: 192.168.1.129
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre endereçamento IP e identificação de rede no Linux:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4 e IPv6, em um sistema Linux.
-2. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/linux-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereço IP e teste a acessibilidade da rede usando comandos como `ping` e `ip a`.
-3. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/linux-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, essenciais para uma compreensão mais profunda de como os endereços IP e as redes são estruturados no nível de bits.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4 e IPv6, em um sistema Linux.
+2. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereço IP e teste a acessibilidade da rede usando comandos como `ping` e `ip a`.
+3. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária, essenciais para uma compreensão mais profunda de como os endereços IP e as redes são estruturados no nível de bits.
 
 Esses laboratórios o ajudarão a aplicar os conceitos de endereçamento IP em cenários reais e a construir confiança com a configuração e solução de problemas de rede no Linux.
 

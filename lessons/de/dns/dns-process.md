@@ -31,9 +31,9 @@ Nun senden wir eine letzte Anfrage an den DNS-Server, der tatsächlich den gewü
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der DNS-Auflösung und -Verwaltung zu vertiefen:
 
-1. **[DNS-Einträge in Linux mit dig und nslookup abfragen](https://labex.io/de/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** – Lernen Sie, DNS-Einträge wie A, PTR und MX abzufragen und Ihren Standard-DNS-Server zu identifizieren, was für die Netzwerk-Fehlerbehebung unerlässlich ist.
-2. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** – Sammeln Sie praktische Erfahrungen, indem Sie einen lokalen autoritativen DNS-Server installieren und konfigurieren, Zonen definieren und die DNS-Auflösung testen.
-3. **[Lokale Hostnamen-Auflösung in Linux verwalten](https://labex.io/de/labs/linux-manage-local-hostname-resolution-in-linux)** – Üben Sie die Verwaltung der lokalen Hostnamen-Auflösung durch Bearbeiten der Datei `/etc/hosts`, eine wichtige Fähigkeit für die Webentwicklung und Netzwerktests.
+1. **[DNS-Einträge in Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** – Lernen Sie, DNS-Einträge wie A, PTR und MX abzufragen und Ihren Standard-DNS-Server zu identifizieren, was für die Netzwerk-Fehlerbehebung unerlässlich ist.
+2. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** – Sammeln Sie praktische Erfahrungen, indem Sie einen lokalen autoritativen DNS-Server installieren und konfigurieren, Zonen definieren und die DNS-Auflösung testen.
+3. **[Lokale Hostnamen-Auflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** – Üben Sie die Verwaltung der lokalen Hostnamen-Auflösung durch Bearbeiten der Datei `/etc/hosts`, eine wichtige Fähigkeit für die Webentwicklung und Netzwerktests.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit DNS aufzubauen.
 

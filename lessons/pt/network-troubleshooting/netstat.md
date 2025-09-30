@@ -68,7 +68,7 @@ Consulte a manpage para obter uma lista de estados de socket, mas aqui estão al
 
 A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão das configurações da interface de rede:
 
-1. **[Examine as configurações da interface de rede com ethtool no Linux](https://labex.io/pt/labs/linux-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprenda a usar o comando `ethtool` para examinar e gerenciar as configurações da interface de rede, incluindo a visualização e configuração da velocidade e duplex da interface, e a análise dos modos de link para solucionar problemas de rede na camada física.
+1. **[Examine as configurações da interface de rede com ethtool no Linux](https://labex.io/pt/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Aprenda a usar o comando `ethtool` para examinar e gerenciar as configurações da interface de rede, incluindo a visualização e configuração da velocidade e duplex da interface, e a análise dos modos de link para solucionar problemas de rede na camada física.
 
 Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de interfaces de rede.
 

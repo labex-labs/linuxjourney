@@ -19,9 +19,9 @@ Uno de los protocolos de vector de distancia comunes es RIP (Routing Information
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento y la conectividad de red:
 
-1. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practique el uso de `ping` y `arp` para comprender cómo los dispositivos se descubren entre sí y cómo se enruta el tráfico en la capa de red.
-2. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/linux-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP y probar la conectividad entre nodos Linux simulados, observando cómo las subredes IP influyen en la comunicación de red.
-3. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/linux-manage-ip-addressing-in-linux-592736)** - Obtenga experiencia práctica configurando direcciones IP estáticas y dinámicas y estableciendo puertas de enlace predeterminadas, que son componentes esenciales del enrutamiento de red.
+1. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practique el uso de `ping` y `arp` para comprender cómo los dispositivos se descubren entre sí y cómo se enruta el tráfico en la capa de red.
+2. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP y probar la conectividad entre nodos Linux simulados, observando cómo las subredes IP influyen en la comunicación de red.
+3. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Obtenga experiencia práctica configurando direcciones IP estáticas y dinámicas y estableciendo puertas de enlace predeterminadas, que son componentes esenciales del enrutamiento de red.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de direccionamiento y conectividad de red en escenarios reales, construyendo una base sólida para comprender cómo funcionan los protocolos de enrutamiento.
 

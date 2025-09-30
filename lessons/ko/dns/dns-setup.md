@@ -29,8 +29,8 @@ BIND 와 유사하게 모든 기능을 갖추고 있으며, 옵션에서 약간 
 
 연습은 완벽을 만듭니다! 다음은 Linux 에서 DNS 에 대한 이해를 강화하기 위한 실습 랩입니다:
 
-1. **[dig 및 nslookup 을 사용하여 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/linux-query-dns-records-in-linux-with-dig-and-nslookup)** - `dig` 및 `nslookup`과 같은 필수 명령줄 도구를 사용하여 다양한 DNS 레코드 유형을 쿼리하고 DNS 확인 문제를 해결하는 방법을 배웁니다.
-2. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/linux-set-up-a-local-authoritative-dns-server-on-linux)** - `bind9`를 설치하고 구성하여 자신만의 로컬 권한 있는 DNS 서버를 설정하고, 영역을 정의하고, 확인을 테스트하는 실질적인 경험을 얻습니다.
+1. **[dig 및 nslookup 을 사용하여 Linux 에서 DNS 레코드 쿼리](https://labex.io/ko/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig` 및 `nslookup`과 같은 필수 명령줄 도구를 사용하여 다양한 DNS 레코드 유형을 쿼리하고 DNS 확인 문제를 해결하는 방법을 배웁니다.
+2. **[Linux 에 로컬 권한 있는 DNS 서버 설정](https://labex.io/ko/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - `bind9`를 설치하고 구성하여 자신만의 로컬 권한 있는 DNS 서버를 설정하고, 영역을 정의하고, 확인을 테스트하는 실질적인 경험을 얻습니다.
 
 이러한 랩은 실제 시나리오에 개념을 적용하고 Linux 에서 DNS 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

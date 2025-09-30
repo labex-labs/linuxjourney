@@ -40,9 +40,9 @@ ARP は、IP アドレスに関連付けられた MAC アドレスを見つけ�
 
 練習は完璧をもたらします！リンク層、MAC アドレス、ARP の理解を深めるための実践的なラボをいくつか紹介します。
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/ja/labs/linux-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の MAC アドレスを含むネットワークアドレス情報を識別する練習をします。
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/ja/labs/linux-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` と `arp` コマンドがどのように連携して IP アドレスを MAC アドレスに解決し、ネットワーク層の相互作用を理解するかを学びます。
-3. **[Analyze Ethernet Frames with tcpdump in Linux](https://labex.io/ja/labs/linux-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump` を使用してイーサネットフレーム（MAC アドレスを含む）をキャプチャおよび検査し、低レベルのネットワーク通信を理解する実践的な経験を積みます。
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` コマンドを使用して、Linux システム上の MAC アドレスを含むネットワークアドレス情報を識別する練習をします。
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` と `arp` コマンドがどのように連携して IP アドレスを MAC アドレスに解決し、ネットワーク層の相互作用を理解するかを学びます。
+3. **[Analyze Ethernet Frames with tcpdump in Linux](https://labex.io/ja/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - `tcpdump` を使用してイーサネットフレーム（MAC アドレスを含む）をキャプチャおよび検査し、低レベルのネットワーク通信を理解する実践的な経験を積みます。
 
 これらのラボは、概念を実際のシナリオに適用し、リンク層でのネットワークの基礎に対する自信を築くのに役立ちます。
 
