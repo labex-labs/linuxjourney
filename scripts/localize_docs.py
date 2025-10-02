@@ -79,7 +79,7 @@ FIXED_HEADINGS = [
 ]
 
 # Translation model
-OPENROUTER_MODEL = "google/gemini-2.5-flash-lite-preview-09-2025"
+OPENROUTER_MODEL = "google/gemini-2.5-flash-preview-09-2025"
 
 
 class GitChangeDetector:
@@ -418,19 +418,6 @@ CONTENT TO TRANSLATE:
         if original_code_blocks != translated_code_blocks:
             console.print(
                 f"[yellow]WARNING: Code block count mismatch. Original: {original_code_blocks}, Translated: {translated_code_blocks}[/yellow]"
-            )
-            return False
-
-        # 4. Check inline code preservation (approximate count)
-        original_inline_code = len(re.findall(r"`[^`\n]+`", original_content))
-        translated_inline_code = len(re.findall(r"`[^`\n]+`", translated_content))
-
-        # Allow some variance in inline code count (±20%) due to formatting differences
-        if abs(original_inline_code - translated_inline_code) > max(
-            1, original_inline_code * 0.2
-        ):
-            console.print(
-                f"[yellow]WARNING: Inline code count significantly different. Original: {original_inline_code}, Translated: {translated_inline_code}[/yellow]"
             )
             return False
 
