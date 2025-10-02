@@ -9,23 +9,27 @@ meta_keywords: "repositórios de pacotes Linux, lista de fontes apt, /etc/apt/so
 
 ## Lesson Content
 
-Como os pacotes enviados para a internet chegam aos nossos computadores? Você vai para a página de download de cada pacote que deseja e clica em baixar e instalar? Embora você possa fazer isso, há uma solução melhor: repositórios de pacotes. Repositórios são locais de armazenamento central para pacotes. Existem toneladas de repositórios contendo muitos pacotes e, o melhor de tudo, todos eles são encontrados na internet — sem discos de instalação bobos. Sua máquina não sabe onde procurar esses repositórios, a menos que você explicitamente diga a ela onde procurar.
+Como os pacotes carregados na internet chegam aos nossos computadores? Você acessa a página de download de cada pacote que deseja e clica em baixar e instalar? Embora você possa fazer isso, existe uma solução melhor: repositórios de pacotes. Repositórios são locais de armazenamento central para pacotes. Existem inúmeros repositórios contendo muitos pacotes e, o melhor de tudo, todos são encontrados na internet — sem discos de instalação bobos. Sua máquina não sabe onde procurar esses repositórios, a menos que você diga explicitamente onde procurar.
 
 Por exemplo, digamos que eu queira o Docker Software na minha máquina. O Docker gerencia seus próprios repositórios para seus pacotes de contêineres. Dentro deste repositório, existem vários pacotes, como o pacote `docker-ce`, o pacote `docker-ce-cli`, o pacote `containerd.io`, etc. O Docker hospeda este repositório em um link de origem chamado: `https://download.docker.com/linux/ubuntu`
 
 Agora, em vez de ir ao site deles para baixar o pacote diretamente, você pode dizer à sua máquina para encontrar o software Docker a partir do link de origem.
 
-Sua distribuição já vem com fontes pré-aprovadas para obter pacotes, e é assim que ela instala todos os pacotes base que você vê em seu sistema. Em um sistema Debian, este arquivo de fontes é o arquivo `/etc/apt/sources.list`. Sua máquina saberá onde procurar e verificar quaisquer repositórios de origem que você adicionou.
+Sua distribuição já vem com fontes pré-aprovadas para obter pacotes, e é assim que ela instala todos os pacotes base que você vê em seu sistema. Em um sistema Debian, este arquivo de fontes é o arquivo `/etc/apt/sources.list`. Sua máquina saberá procurar lá e verificar quaisquer repositórios de origem que você adicionou.
+
+> **Nota:** Em sistemas Debian/Ubuntu mais antigos, os repositórios são configurados em `/etc/apt/sources.list`, enquanto as versões mais recentes do Ubuntu (22.04+) usam arquivos estruturados em `/etc/apt/sources.list.d/` como `ubuntu.sources`. Ambos os formatos são suportados pelo `apt`.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de pacotes e repositórios Linux:
+### Prática com Repositórios de Pacotes
 
-1. **[Instalação de Software no Linux](https://labex.io/pt/labs/linux-software-installation-on-linux-18005)** - Pratique vários métodos para instalar e gerenciar software em sistemas Ubuntu, incluindo o uso de `apt` e o manuseio de arquivos `.deb`, diretamente relacionados ao conceito de `sources.list`.
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre gerenciamento de pacotes e repositórios Linux:
+
+1. **[Instalação de Software no Linux](https://labex.io/pt/labs/linux-software-installation-on-linux-18005)** - Pratique vários métodos para instalar e gerenciar software em sistemas Ubuntu, incluindo o uso de `apt` e o manuseio de arquivos `.deb`, relacionando-se diretamente com o conceito de `sources.list`.
 2. **[Instalando e Removendo Pacotes](https://labex.io/pt/labs/linux-installing-and-removing-packages-385380)** - Aprenda a atualizar o sistema, instalar e remover pacotes em um sistema baseado em Debian, solidificando sua compreensão de como os gerenciadores de pacotes interagem com os repositórios.
 3. **[Consultar e Atualizar Pacotes com YUM no Linux](https://labex.io/pt/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore como gerenciar pacotes de software em sistemas Linux baseados em RHEL usando `YUM`, fornecendo uma perspectiva mais ampla sobre o gerenciamento de pacotes em diferentes distribuições.
 
-Esses laboratórios o ajudarão a aplicar os conceitos de repositórios de pacotes e gerenciamento de software em cenários reais e a construir confiança com as tarefas de administração do sistema.
+Estes laboratórios ajudarão você a aplicar os conceitos de repositórios de pacotes e gerenciamento de software em cenários reais e a construir confiança com tarefas de administração de sistema.
 
 ## Quiz Question
 
