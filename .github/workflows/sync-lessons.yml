@@ -122,7 +122,7 @@ jobs:
           for file in $CHANGED_FILES; do
             if [ -f "../linuxjourney/$file" ]; then
               echo "Syncing document: $file"
-              if labex-auto labex sync linuxjourney --path "../linuxjourney/$file"; then
+              if labex sync linuxjourney --path "../linuxjourney/$file"; then
                 SUCCESS_FILES="$SUCCESS_FILES\n- $file"
                 SYNC_COUNT=$((SYNC_COUNT + 1))
               else
