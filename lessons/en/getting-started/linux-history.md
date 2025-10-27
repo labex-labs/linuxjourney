@@ -13,6 +13,8 @@ Hey rookie! So you decided to dive into this wonderful world known as Linux? Wel
 
 To learn about how Linux came to be, let’s go back to the beginning, to 1969, where Ken Thompson and Dennis Ritchie of Bell Laboratories developed the UNIX operating system. It was later rewritten in C to make it more portable and eventually became a widely used operating system.
 
+![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
+
 A decade or so later, Richard Stallman started working on the GNU (GNU is Not UNIX) project. The GNU kernel, called Hurd, unfortunately never came to completion. The GNU General Public License (GPL), a free software license, was also created as a result of this.
 
 The kernel is the most important piece in the operating system. It allows the hardware to talk to the software. It also does a whole lot of other things, but we’ll dig into that in a different course. For now, just know that the kernel controls pretty much everything that happens on your system.
@@ -33,7 +35,7 @@ These labs will help you apply the foundational concepts in a real Linux environ
 
 ## Quiz Question
 
-Who developed the Linux kernel?
+Who developed the Linux kernel? (English Name)
 
 ## Quiz Answer
 
