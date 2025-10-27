@@ -15,13 +15,17 @@ To learn about how Linux came to be, let’s go back to the beginning, to 1969, 
 
 ![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-A decade or so later, Richard Stallman started working on the GNU (GNU is Not UNIX) project. The GNU kernel, called Hurd, unfortunately never came to completion. The GNU General Public License (GPL), a free software license, was also created as a result of this.
+About a decade later, Richard Stallman started working on the GNU (GNU is Not UNIX) project. The GNU kernel, called Hurd, unfortunately never came to completion. The GNU General Public License (GPL), a free software license, was also created as a result of this.
 
-The kernel is the most important piece in the operating system. It allows the hardware to talk to the software. It also does a whole lot of other things, but we’ll dig into that in a different course. For now, just know that the kernel controls pretty much everything that happens on your system.
+The kernel is the most important part of the operating system. It allows the hardware to talk to the software. It also does a whole lot of other things, but we’ll dig into that in a different course. For now, just know that the kernel controls pretty much everything that happens on your system.
 
 During this time, other efforts such as BSD, MINIX, etc., were developed to be UNIX-like systems. However, one thing that all these UNIX-like systems had in common was the lack of a unified kernel.
 
-Then in 1991, a young fellow named Linus Torvalds started developing what we now know today as the Linux kernel.
+Then in 1991, a young man named Linus Torvalds started developing what we now know today as the Linux kernel.
+
+![Linus Torvalds in 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
+
+_Linus Torvalds in 2018 (Source: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
 ## Exercise
 

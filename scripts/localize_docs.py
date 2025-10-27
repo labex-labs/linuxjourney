@@ -79,7 +79,7 @@ FIXED_HEADINGS = [
 ]
 
 # Translation model
-OPENROUTER_MODEL = "google/gemini-2.5-flash-lite-preview-09-2025"
+OPENROUTER_MODEL = "google/gemini-2.5-flash-preview-09-2025"
 
 
 class GitChangeDetector:
