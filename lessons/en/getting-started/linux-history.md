@@ -39,7 +39,7 @@ These labs will help you apply the foundational concepts in a real Linux environ
 
 ## Quiz Question
 
-Who developed the Linux kernel? (English Name)
+Who developed the Linux kernel? (Answer in English)
 
 ## Quiz Answer
 
