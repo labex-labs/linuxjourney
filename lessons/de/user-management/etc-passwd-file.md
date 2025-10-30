@@ -3,52 +3,65 @@ index: 3
 lang: "de"
 title: "/etc/passwd"
 meta_title: "/etc/passwd - Benutzerverwaltung"
-meta_description: "Erfahren Sie mehr über die Datei /etc/passwd in Linux, verstehen Sie die Felder der Benutzerinformationen und wie UIDs funktionieren. Erkunden Sie diese essentielle Konfigurationsdatei."
-meta_keywords: "/etc/passwd, Linux-Benutzer, Benutzer-ID, UID, Linux-Tutorial, Anfänger, Leitfaden, Linux-Befehle"
+meta_description: "Ein umfassender Leitfaden zur /etc/passwd-Datei unter Linux. Erfahren Sie, wie Sie Benutzerdatenfelder interpretieren, UIDs verstehen und Beispiele wie root:x:0:0:root:/root:/bin/bash sehen."
+meta_keywords: "/etc/passwd, /etc/passwd in linux, root:x:0:0:root:/root:/bin/bash, Benutzer-ID, UID, Benutzerverwaltung, Linux Tutorial"
 ---
 
 ## Lesson Content
 
-Denken Sie daran, dass Benutzernamen nicht wirklich Identifikationen für Benutzer sind. Das System verwendet eine Benutzer-ID (UID), um einen Benutzer zu identifizieren. Um herauszufinden, welche Benutzer welcher ID zugeordnet sind, sehen Sie sich die Datei `/etc/passwd` an.
+Unter Linux sind Benutzernamen menschenlesbare Bezeichnungen, aber das System identifiziert Benutzer anhand einer eindeutigen Benutzer-ID (UID). Die Zuordnung zwischen Benutzernamen und UIDs wird in der Datei `/etc/passwd` gespeichert, einer kritischen Komponente für die Benutzerverwaltung.
+
+Um ihren Inhalt anzuzeigen, können Sie einen einfachen Befehl verwenden:
 
 ```bash
 cat /etc/passwd
 ```
 
-Diese Datei zeigt Ihnen eine Liste der Benutzer und detaillierte Informationen über sie. Zum Beispiel sieht die erste Zeile in dieser Datei höchstwahrscheinlich so aus:
+Diese Datei zeigt eine Liste aller Systembenutzer und detaillierte Informationen über sie an. Jede Zeile repräsentiert ein einzelnes Benutzerkonto.
+
+### Die Felder von /etc/passwd aufschlüsseln
+
+A-typische Zeile in dieser Datei, oft die allererste, sieht wie folgt aus:
 
 ```plaintext
 root:x:0:0:root:/root:/bin/bash
 ```
 
-Jede Zeile zeigt Benutzerinformationen für einen Benutzer an; am häufigsten sehen Sie den root-Benutzer als erste Zeile. Es gibt viele durch Doppelpunkte getrennte Felder, die Ihnen zusätzliche Informationen über den Benutzer geben. Schauen wir uns alle an:
+Dieser Eintrag für den Benutzer `root` enthält sieben durch Doppelpunkte (`:`) getrennte Felder. Das Verständnis der Struktur von `/etc/passwd` unter Linux ist der Schlüssel zur Verwaltung von Benutzern. Lassen Sie uns jedes Feld aufschlüsseln:
 
-1. **Benutzername**
-2. **Benutzerpasswort** – Das Passwort wird nicht wirklich in dieser Datei gespeichert; es wird normalerweise in der Datei `/etc/shadow` gespeichert. Wir werden in der nächsten Lektion mehr über `/etc/shadow` besprechen, aber vorerst sollten Sie wissen, dass es verschlüsselte Benutzerpasswörter enthält. Sie können viele verschiedene Symbole in diesem Feld sehen: Wenn Sie ein „x“ sehen, bedeutet dies, dass das Passwort in der Datei `/etc/shadow` gespeichert ist; ein „*“ bedeutet, dass der Benutzer keinen Anmeldezugriff hat; und wenn das Feld leer ist, bedeutet dies, dass der Benutzer kein Passwort hat.
-3. **Die Benutzer-ID** – Wie Sie sehen können, hat root die UID 0.
-4. **Die Gruppen-ID**
-5. **GECOS-Feld** – Dies wird verwendet, um allgemeine Kommentare über den Benutzer oder das Konto zu hinterlassen, wie z. B. den richtigen Namen oder die Telefonnummer. Es ist durch Kommas getrennt.
-6. **Home-Verzeichnis des Benutzers**
-7. **Shell des Benutzers** – Sie werden wahrscheinlich sehen, dass viele Benutzer standardmäßig bash als Shell verwenden.
+1.  **Benutzername**: Der Anmeldename des Benutzers (z. B. `root`).
+2.  **Passwort**: Ein Platzhalter für das verschlüsselte Passwort des Benutzers. Das tatsächliche Passwort wird aus Sicherheitsgründen hier nicht gespeichert.
+    - Ein `x` zeigt an, dass das verschlüsselte Passwort in der Datei `/etc/shadow` gespeichert ist.
+    - Ein `*` (Sternchen) bedeutet, dass das Konto gesperrt ist und nicht für die Anmeldung verwendet werden kann.
+    - Ein leeres Feld bedeutet, dass der Benutzer kein Passwort hat.
+3.  **Benutzer-ID (UID)**: Die eindeutige numerische Kennung für den Benutzer. Der Benutzer `root` hat immer eine UID von `0`.
+4.  **Gruppen-ID (GID)**: Die numerische Kennung für die primäre Gruppe des Benutzers.
+5.  **GECOS-Feld**: Ein Kommentarfeld, das traditionell zusätzliche Informationen wie den vollständigen Namen des Benutzers, die Telefonnummer oder den Bürositz enthält. Es ist durch Kommas getrennt.
+6.  **Home-Verzeichnis**: Der absolute Pfad zum Home-Verzeichnis des Benutzers (z. B. `/root`).
+7.  **Standard-Shell**: Der Standard-Kommandozeileninterpreter des Benutzers, der bei der Anmeldung ausgeführt wird (z. B. `/bin/bash`).
 
-Normalerweise würden Sie auf der Einstellungsseite eines Benutzers nur menschliche Benutzer erwarten. Sie werden jedoch feststellen, dass `/etc/passwd` andere Benutzer enthält. Denken Sie daran, dass Benutzer im System wirklich nur dazu da sind, Prozesse mit unterschiedlichen Berechtigungen auszuführen. Manchmal möchten wir Prozesse mit vorbestimmten Berechtigungen ausführen. Zum Beispiel wird der `daemon`-Benutzer für Daemon-Prozesse verwendet.
+### Systembenutzer und spezielle Konten
 
-Es sollte auch beachtet werden, dass Sie die Datei `/etc/passwd` manuell bearbeiten können, wenn Sie Benutzer hinzufügen und Informationen mit dem Tool `vipw` ändern möchten. Solche Dinge überlässt man jedoch am besten den Tools, die wir in einer späteren Lektion besprechen werden, wie `useradd` und `userdel`.
+Wenn Sie die Datei `/etc/passwd` überprüfen, werden Ihnen viele Konten auffallen, die nicht zu menschlichen Benutzern gehören. Dies sind Systemkonten, die verwendet werden, um bestimmte Dienste oder Prozesse mit eingeschränkten Berechtigungen auszuführen, was die Systemsicherheit erhöht. Zum Beispiel wird der Benutzer `daemon` zur Ausführung von Hintergrundprozessen (Daemons) verwendet.
+
+### Bearbeiten der Datei /etc/passwd
+
+Obwohl Sie die Datei `/etc/passwd` technisch gesehen direkt mit einem Texteditor oder dem Befehl `vipw` bearbeiten können, wird dies dringend abgeraten. Manuelle Bearbeitungen können leicht Syntaxfehler verursachen, was Sie potenziell vom System aussperren oder zu Instabilität führen kann.
+
+Es ist immer sicherer und zuverlässiger, dedizierte Befehlszeilen-Dienstprogramme wie `useradd`, `usermod` und `userdel` zur Verwaltung von Benutzerkonten zu verwenden. Diese Tools sind dafür konzipiert, die Datei korrekt zu ändern und alle zugehörigen Konfigurationen zu verwalten.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Benutzerkonten und deren Verwaltung zu vertiefen:
+Um Ihr Wissen zu festigen, probieren Sie diese praktischen Übungen aus. Sie helfen Ihnen, die Konzepte von Benutzer-IDs und Kontoverwaltung in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzeradministration aufzubauen.
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** – Üben Sie den gesamten Lebenszyklus der Benutzerverwaltung, vom Erstellen und Sichern neuer Konten bis zum Ändern und Löschen.
-2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** – Sammeln Sie praktische Erfahrungen mit den wichtigsten Befehlszeilen-Dienstprogrammen für die Gruppenverwaltung, einschließlich des Erstellens neuer Gruppen und des Änderns von Benutzerzugehörigkeiten.
-3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen, um die Sicherheit eines Linux-Systems zu verbessern.
-
-Diese Übungen helfen Ihnen, die Konzepte von Benutzer-IDs und Kontoverwaltung in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzerverwaltung aufzubauen.
+1.  **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
+2.  **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit grundlegenden Befehlszeilen-Dienstprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen und der Änderung von Benutzerzuordnungen.
+3.  **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen.
 
 ## Quiz Question
 
-Wenn ein Benutzer keinen Anmeldezugriff hat, wie wird das in `/etc/passwd` gekennzeichnet?
+Wenn ein Benutzerkonto gesperrt ist und nicht zur Anmeldung verwendet werden kann, wie wird dies im Passwortfeld der Datei `/etc/passwd` gekennzeichnet? Antworten Sie nur mit dem erforderlichen Zeichen.
 
 ## Quiz Answer
 
-*
+-
