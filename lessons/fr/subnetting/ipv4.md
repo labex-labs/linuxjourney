@@ -3,23 +3,31 @@ index: 1
 lang: "fr"
 title: "IPv4"
 meta_title: "IPv4 - Sous-réseautage"
-meta_description: "Découvrez les adresses IPv4, leur structure et comment trouver votre IP à l'aide d'ifconfig. Comprenez les bases du réseau pour les débutants Linux."
-meta_keywords: "IPv4, adresse IP, ifconfig, bases du réseau, réseau Linux, débutant, tutoriel, guide"
+meta_description: "Découvrez la meilleure façon d'apprendre le réseau Linux en comprenant les adresses IPv4. Ce guide pour débutants couvre la structure IP et comment trouver votre IP en utilisant la ligne de commande."
+meta_keywords: "IPv4, adresse IP, linux débutant, meilleure façon d'apprendre linux, ligne de commande linux pour débutants, ifconfig, ip addr, bases réseau"
 ---
 
 ## Lesson Content
 
-Nous savons donc que les hôtes réseau ont une adresse unique à laquelle ils peuvent être trouvés. Ces adresses sont appelées adresses IP. Une adresse IPv4 ressemble à ceci :
+Chaque appareil connecté à un réseau possède une adresse unique, connue sous le nom d'adresse IP (Internet Protocol). Pour ce cours, nous nous concentrerons sur les adresses IPv4, qui sont le type le plus courant que vous rencontrerez. Les comprendre est un élément essentiel de l'apprentissage du réseautage sous Linux.
+
+Une adresse IPv4 est un nombre de 32 bits généralement représenté dans un format lisible par l'homme, comme ceci :
 
 ```
 204.23.124.23
 ```
 
-Cette adresse contient en fait deux parties : la partie réseau qui nous indique sur quel réseau elle se trouve, et la partie hôte qui nous indique quel hôte sur ce réseau elle est. Pour ce cours, nous discuterons principalement des adresses IPv4, qui sont ce que vous verrez couramment lorsque vous ferez référence aux adresses IP.
+Cette adresse contient deux parties distinctes : la partie **réseau**, qui identifie le réseau spécifique sur lequel se trouve l'appareil, et la partie **hôte**, qui identifie l'appareil spécifique sur ce réseau.
 
-Une adresse IP est séparée en octets par des points. Il y a donc 4 octets dans une adresse IPv4. Si vous avez quelques notions d'informatique, un octet est de 8 bits, et 8 bits équivalent en fait à 1 octet, nous disons donc aussi qu'une adresse IPv4 a 4 octets. Nous utilisons fréquemment les bits lorsque nous traitons des sous-réseaux et des adresses IP.
+### La structure d'une adresse IP
 
-Vous pouvez afficher votre adresse IP avec la commande `ifconfig -a` :
+Une adresse IPv4 est divisée en quatre sections séparées par des points. Chaque section est appelée un **octet**. En informatique, un octet est un groupe de 8 bits, et puisque 8 bits équivalent à 1 octet, une adresse IPv4 fait 4 octets de long. Cette structure est fondamentale, et la maîtriser est l'une des `meilleures ressources pour apprendre la ligne de commande linux pour débutants` en réseautage.
+
+### Trouver votre adresse IP sous Linux
+
+Pour tout utilisateur `débutant sous linux`, l'une des premières tâches consiste à trouver l'adresse IP du système. Vous pouvez le faire à l'aide d'outils en ligne de commande.
+
+La commande traditionnelle pour cela est `ifconfig`. Bien qu'elle soit encore présente sur de nombreux systèmes, elle est considérée comme un outil hérité.
 
 ```bash
 pete@icebox:~$ ifconfig -a
@@ -28,17 +36,35 @@ eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
           inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
 ```
 
-Comme vous pouvez le voir, mon adresse IPv4 est : 192.168.1.129
+Dans la sortie ci-dessus, l'adresse IPv4 est `192.168.1.129`.
+
+### L'approche moderne avec ip addr
+
+La `meilleure façon d'apprendre le réseautage linux` aujourd'hui implique l'utilisation de la commande moderne `ip`. La commande `ip addr` a remplacé `ifconfig` et est la norme sur la plupart des distributions Linux actuelles.
+
+```bash
+pete@icebox:~$ ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
+       valid_lft 85646sec preferred_lft 85646sec
+```
+
+Ici, vous pouvez trouver la même adresse IPv4, `192.168.1.129`, répertoriée à côté de `inet` pour l'interface `eth0`.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et de l'identification réseau sous Linux :
+Exercez-vous avec ces laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et de l'identification du réseau sous Linux :
 
 1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4 et IPv6, sur un système Linux.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez la joignabilité du réseau à l'aide de commandes comme `ping` et `ip a`.
-3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, essentiels pour une compréhension plus approfondie de la structure des adresses IP et des réseaux au niveau du bit.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez la joignabilité du réseau à l'aide de commandes telles que `ping` et `ip a`.
+3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, essentiels pour une compréhension plus approfondie de la manière dont les adresses IP et les réseaux sont structurés au niveau du bit.
 
-Ces laboratoires vous aideront à appliquer les concepts d'adressage IP dans des scénarios réels et à renforcer votre confiance dans la configuration et le dépannage réseau sous Linux.
+Ces laboratoires vous aideront à appliquer les concepts d'adressage IP dans des scénarios réels et à gagner en confiance avec la configuration et le dépannage réseau sous Linux.
 
 ## Quiz Question
 
