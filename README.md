@@ -99,6 +99,22 @@ Learn basic text manipulation and navigation.
 
 Navigate text like a Linux spider monkey with Vim and Emacs.
 
+**Lessons:**
+
+- [regex (Regular Expressions)](https://labex.io/lesson/regular-expressions-regex)
+- [Text Editors](https://labex.io/lesson/text-editors-vim-or-emacs)
+- [Vim (Vi Improved)](https://labex.io/lesson/vim-text-editor)
+- [Vim Search Patterns](https://labex.io/lesson/vim-search-patterns)
+- [Vim Navigation](https://labex.io/lesson/vim-navigation)
+- [Vim Inserting and Appending Text](https://labex.io/lesson/vim-inserting-appending-text)
+- [Vim Editing](https://labex.io/lesson/vim-editing)
+- [Vim Saving and Exiting](https://labex.io/lesson/vim-saving-and-exiting)
+- [Emacs](https://labex.io/lesson/emacs-text-editor)
+- [Emacs Manipulate Files](https://labex.io/lesson/emacs-manipulate-files)
+- [Emacs Buffer Navigation](https://labex.io/lesson/emacs-buffer-navigation)
+- [Emacs Editing](https://labex.io/lesson/emacs-editing)
+- [Emacs Exiting and Help](https://labex.io/lesson/emacs-exiting-and-help)
+
 ### User Management
 
 ![User Management](https://labex.io/images/linuxjourney/courses/user-management.png)
@@ -119,6 +135,17 @@ Learn about user roles and management.
 ![Permissions](https://labex.io/images/linuxjourney/courses/permissions.png)
 
 Learn about permission levels and modifying permissions.
+
+**Lessons:**
+
+- [File Permissions](https://labex.io/lesson/file-permissions)
+- [Modifying Permissions](https://labex.io/lesson/modifying-permissions)
+- [Ownership Permissions](https://labex.io/lesson/ownership-permissions)
+- [Umask](https://labex.io/lesson/umask)
+- [Setuid](https://labex.io/lesson/setuid-set-user-id)
+- [Setgid](https://labex.io/lesson/setgid-set-group-id)
+- [Process Permissions](https://labex.io/lesson/process-permissions)
+- [The Sticky Bit](https://labex.io/lesson/sticky-bit)
 
 ### Processes
 
@@ -200,6 +227,14 @@ Learn about the Linux filesystem, the different types of filesystems, partitioni
 ![Boot the System](https://labex.io/images/linuxjourney/courses/boot-system.png)
 
 Learn about the stages of the Linux boot process.
+
+**Lessons:**
+
+- [Boot Process Overview](https://labex.io/lesson/boot-process-overview)
+- [Boot Process: BIOS](https://labex.io/lesson/boot-process-bios)
+- [Boot Process: Bootloader](https://labex.io/lesson/boot-process-bootloader)
+- [Boot Process: Kernel](https://labex.io/lesson/boot-process-kernel)
+- [Boot Process: Init](https://labex.io/lesson/boot-process-init)
 
 ### Kernel
 
@@ -286,6 +321,18 @@ Learn about network sharing with rsync, scp, nfs, and more.
 
 Learn about networking basics and the TCP/IP model.
 
+**Lessons:**
+
+- [Network Basics](https://labex.io/lesson/network-basics)
+- [OSI Model](https://labex.io/lesson/osi-model)
+- [TCP/IP Model](https://labex.io/lesson/tcp-ip-model)
+- [Network Addressing](https://labex.io/lesson/network-addressing)
+- [Application Layer](https://labex.io/lesson/application-layer)
+- [Transport Layer](https://labex.io/lesson/transport-layer)
+- [Network Layer](https://labex.io/lesson/network-layer)
+- [Link Layer](https://labex.io/lesson/link-layer)
+- [DHCP Overview](https://labex.io/lesson/dhcp-overview)
+
 ### Subnetting
 
 ![Subnetting](https://labex.io/images/linuxjourney/courses/subnetting.png)
@@ -324,11 +371,27 @@ Learn how packets are routed across networks!
 
 Learn about network configuration using Linux tools!
 
+**Lessons:**
+
+- [Network Interfaces](https://labex.io/lesson/network-interfaces)
+- [route](https://labex.io/lesson/route)
+- [dhclient](https://labex.io/lesson/dhclient)
+- [Network Manager](https://labex.io/lesson/network-manager)
+- [arp](https://labex.io/lesson/arp-command)
+
 ### Troubleshooting
 
 ![Troubleshooting](https://labex.io/images/linuxjourney/courses/troubleshooting.png)
 
 Learn about common networking tools to help you diagnose and troubleshoot issues!
+
+**Lessons:**
+
+- [ICMP](https://labex.io/lesson/icmp)
+- [ping](https://labex.io/lesson/ping)
+- [traceroute](https://labex.io/lesson/traceroute)
+- [netstat](https://labex.io/lesson/netstat)
+- [Packet Analysis](https://labex.io/lesson/packet-analysis)
 
 ### DNS
 
