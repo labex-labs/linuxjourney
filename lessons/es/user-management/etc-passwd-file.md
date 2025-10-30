@@ -64,4 +64,4 @@ Si una cuenta de usuario está bloqueada y no se puede utilizar para iniciar ses
 
 ## Quiz Answer
 
--
+`*`

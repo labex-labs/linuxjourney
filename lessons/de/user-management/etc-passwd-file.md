@@ -64,4 +64,4 @@ Wenn ein Benutzerkonto gesperrt ist und nicht zur Anmeldung verwendet werden kan
 
 ## Quiz Answer
 
--
+`*`

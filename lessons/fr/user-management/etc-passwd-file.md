@@ -64,4 +64,4 @@ Si un compte utilisateur est verrouillé et ne peut pas être utilisé pour la c
 
 ## Quiz Answer
 
--
+`*`

@@ -64,4 +64,4 @@ Se uma conta de usuário for bloqueada e não puder ser usada para login, como i
 
 ## Quiz Answer
 
--
+`*`

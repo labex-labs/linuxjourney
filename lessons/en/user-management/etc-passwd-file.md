@@ -64,4 +64,4 @@ If a user account is locked and cannot be used for login, how is this denoted in
 
 ## Quiz Answer
 
--
+`*`

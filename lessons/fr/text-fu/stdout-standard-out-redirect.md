@@ -3,58 +3,62 @@ index: 1
 lang: "fr"
 title: "stdout (Sortie Standard)"
 meta_title: "stdout (Sortie Standard) - Text-Fu"
-meta_description: "Découvrez stdout et la redirection d'E/S sous Linux. Comprenez comment rediriger la sortie des commandes vers des fichiers à l'aide des opérateurs > et >>. Commencez votre parcours Linux dès aujourd'hui !"
-meta_keywords: "Linux stdout, redirection E/S, commandes Linux, rediriger sortie, tutoriel Linux, Linux débutant, guide Linux, script shell"
+meta_description: "Commencez votre apprentissage de Linux en maîtrisant la sortie standard (stdout) et la redirection d'E/S. Cette leçon explique comment rediriger la sortie des commandes vers des fichiers en utilisant les opérateurs > et >>, une compétence fondamentale pour tout utilisateur Linux."
+meta_keywords: "Linux, apprendre Linux, stdout, redirection E/S, sortie standard, rediriger sortie, bash, script shell, commandes Linux, tutoriel Linux"
 ---
 
 ## Lesson Content
 
-Nous sommes maintenant familiarisés avec de nombreuses commandes et leur sortie, ce qui nous amène à notre prochain sujet : les flux d'E/S (entrée/sortie). Exécutons la commande suivante, et nous discuterons de son fonctionnement.
+Alors que vous continuez à apprendre Linux, vous avez vu comment les commandes produisent des sorties. Cela nous amène au sujet important des flux E/S (entrée/sortie), en particulier la sortie standard ou **stdout**. Explorons ce concept en exécutant la commande suivante :
 
 ```bash
-echo Hello World > peanuts.txt
+echo Bonjour Monde > cacahuetes.txt
 ```
 
-Que s'est-il passé ? Eh bien, vérifiez le répertoire où vous avez exécuté cette commande, et, ô surprise, vous devriez voir un fichier nommé `peanuts.txt`. Regardez à l'intérieur de ce fichier, et vous devriez voir le texte "Hello World". Beaucoup de choses se sont passées en une seule commande, alors décomposons-la.
+Après avoir exécuté ceci, vous trouverez un nouveau fichier nommé `cacahuetes.txt` dans votre répertoire actuel. Si vous consultez son contenu, vous verrez le texte "Bonjour Monde". Décortiquons ce qui s'est passé.
 
-Tout d'abord, décomposons la première partie :
+### Comprendre la Sortie Standard (stdout)
+
+Premièrement, considérons la commande sans le caractère spécial :
 
 ```bash
-echo Hello World
+echo Bonjour Monde
 ```
 
-Nous savons que cela affiche "Hello World" à l'écran, mais comment ? Les processus utilisent les flux d'E/S pour recevoir des entrées et renvoyer des sorties. Par défaut, la commande `echo` prend l'entrée (entrée standard ou stdin) du clavier et renvoie la sortie (sortie standard ou stdout) à l'écran. C'est pourquoi, lorsque vous tapez `echo Hello World` dans votre shell, vous obtenez "Hello World" à l'écran. Cependant, la redirection d'E/S nous permet de modifier ce comportement par défaut, nous offrant une plus grande flexibilité de fichier.
+Par défaut, de nombreuses commandes envoient leurs résultats à la **stdout**, qui est l'écran de votre terminal. C'est pourquoi `echo Bonjour Monde` affiche le texte directement dans votre shell. Les processus utilisent des flux E/S pour recevoir des entrées (entrée standard ou stdin) et envoyer des sorties. La redirection E/S nous permet de modifier ce comportement par défaut, nous donnant un plus grand contrôle sur nos données.
 
-Passons à la partie suivante de la commande :
+### Rediriger stdout avec >
+
+Le caractère `>` est un opérateur de redirection. Il intercepte les données se dirigeant vers la **stdout** et les envoie vers une nouvelle destination.
 
 ```bash
 >
 ```
 
-Le `>` est un opérateur de redirection qui nous permet de changer la destination de la sortie standard. Il nous permet d'envoyer la sortie de `echo Hello World` vers un fichier au lieu de l'écran. Si le fichier n'existe pas déjà, il le créera pour nous. Cependant, s'il existe, il l'écrasera (vous pouvez ajouter un drapeau de shell pour empêcher cela, selon le shell que vous utilisez).
+Dans notre exemple, il envoie la sortie de `echo Bonjour Monde` vers un fichier au lieu de l'écran. Si le fichier n'existe pas, il sera créé. **Attention**, car si le fichier existe déjà, cet opérateur écrasera complètement son contenu.
 
-Et c'est fondamentalement ainsi que fonctionne la redirection de stdout !
+### Ajouter stdout avec >>
 
-Eh bien, disons que je ne voulais pas écraser mon `peanuts.txt`. Heureusement, il existe également un opérateur de redirection pour cela : `>>`.
+Et si vous souhaitez ajouter à un fichier sans effacer son contenu ? Pour cela, nous utilisons l'opérateur `>>`.
 
 ```bash
-echo Hello World >> peanuts.txt
+echo Bonjour Monde >> cacahuetes.txt
 ```
 
-Cela ajoutera "Hello World" à la fin du fichier `peanuts.txt`. Si le fichier n'existe pas déjà, il le créera pour nous, tout comme le redirecteur `>` !
+Cet opérateur ajoute la sortie à la fin du fichier spécifié. Si le fichier n'existe pas déjà, il sera créé, tout comme l'opérateur `>` . Maîtriser la redirection de la **stdout** est une étape fondamentale dans votre parcours Linux.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la redirection d'E/S :
+Pour consolider votre compréhension de la redirection E/S, essayez ce laboratoire pratique :
 
-1. **[Redirection de l'entrée et de la sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs comme `>`, `>>`, `2>`, et la commande `tee`.
+1.  **[Redirection de l'entrée et de la sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs tels que `>`, `>>`, `2>` et la commande `tee`.
 
-Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec la redirection d'E/S.
+Ce laboratoire vous aidera à appliquer ces concepts dans des scénarios réels et à gagner en confiance avec la redirection E/S.
 
 ## Quiz Question
 
-Quel redirecteur utilisez-vous pour ajouter une sortie à un fichier ?
+Quel redireceteur utilisez-vous pour ajouter la sortie à un fichier ?
 
 ## Quiz Answer
 
->>
+`>>`
