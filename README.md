@@ -27,8 +27,6 @@ The repository is organized as follows:
 
 What is Linux? Get started with choosing a distribution and installation.
 
-**Lessons:**
-
 - [Linux History](https://labex.io/lesson/linux-history)
 - [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution)
 - [Debian](https://labex.io/lesson/debian)
@@ -45,8 +43,6 @@ What is Linux? Get started with choosing a distribution and installation.
 ![Command Line](https://labex.io/images/linuxjourney/courses/command-line.png)
 
 Learn the fundamentals of the command line, navigating files, directories, and more.
-
-**Lessons:**
 
 - [The Shell](https://labex.io/lesson/the-shell)
 - [pwd (Print Working Directory)](https://labex.io/lesson/print-working-directory-pwd-command)
@@ -74,8 +70,6 @@ Learn the fundamentals of the command line, navigating files, directories, and m
 
 Learn basic text manipulation and navigation.
 
-**Lessons:**
-
 - [stdout (Standard Out)](https://labex.io/lesson/stdout-standard-out-redirect)
 - [stdin (Standard In)](https://labex.io/lesson/stdin-standard-in-redirect)
 - [stderr (Standard Error)](https://labex.io/lesson/stderr-standard-error-redirect)
@@ -99,8 +93,6 @@ Learn basic text manipulation and navigation.
 
 Navigate text like a Linux spider monkey with Vim and Emacs.
 
-**Lessons:**
-
 - [regex (Regular Expressions)](https://labex.io/lesson/regular-expressions-regex)
 - [Text Editors](https://labex.io/lesson/text-editors-vim-or-emacs)
 - [Vim (Vi Improved)](https://labex.io/lesson/vim-text-editor)
@@ -121,8 +113,6 @@ Navigate text like a Linux spider monkey with Vim and Emacs.
 
 Learn about user roles and management.
 
-**Lessons:**
-
 - [Users and Groups](https://labex.io/lesson/users-and-groups)
 - [root](https://labex.io/lesson/root-user)
 - [/etc/passwd](https://labex.io/lesson/etc-passwd-file)
@@ -135,8 +125,6 @@ Learn about user roles and management.
 ![Permissions](https://labex.io/images/linuxjourney/courses/permissions.png)
 
 Learn about permission levels and modifying permissions.
-
-**Lessons:**
 
 - [File Permissions](https://labex.io/lesson/file-permissions)
 - [Modifying Permissions](https://labex.io/lesson/modifying-permissions)
@@ -152,8 +140,6 @@ Learn about permission levels and modifying permissions.
 ![Processes](https://labex.io/images/linuxjourney/courses/processes.png)
 
 Learn about the running processes on the system.
-
-**Lessons:**
 
 - [ps (Processes)](https://labex.io/lesson/monitor-processes-ps-command)
 - [Controlling Terminal](https://labex.io/lesson/controlling-terminal)
@@ -173,8 +159,6 @@ Learn about the running processes on the system.
 
 Learn all about the dpkg, apt-get, rpm, and yum package management tools.
 
-**Lessons:**
-
 - [Software Distribution](https://labex.io/lesson/software-distribution)
 - [Package Repositories](https://labex.io/lesson/package-repositories)
 - [tar and gzip](https://labex.io/lesson/compressed-archives-tar)
@@ -191,8 +175,6 @@ Learn all about the dpkg, apt-get, rpm, and yum package management tools.
 
 Learn about Linux devices and how they interact with the kernel and user space.
 
-**Lessons:**
-
 - [/dev directory](https://labex.io/lesson/dev-directory)
 - [device types](https://labex.io/lesson/device-types)
 - [Device Names](https://labex.io/lesson/device-names)
@@ -206,8 +188,6 @@ Learn about Linux devices and how they interact with the kernel and user space.
 ![The Filesystem](https://labex.io/images/linuxjourney/courses/filesystem.png)
 
 Learn about the Linux filesystem, the different types of filesystems, partitioning, and more.
-
-**Lessons:**
 
 - [Filesystem Hierarchy](https://labex.io/lesson/filesystem-hierarchy)
 - [Filesystem Types](https://labex.io/lesson/filesystem-types)
@@ -228,8 +208,6 @@ Learn about the Linux filesystem, the different types of filesystems, partitioni
 
 Learn about the stages of the Linux boot process.
 
-**Lessons:**
-
 - [Boot Process Overview](https://labex.io/lesson/boot-process-overview)
 - [Boot Process: BIOS](https://labex.io/lesson/boot-process-bios)
 - [Boot Process: Bootloader](https://labex.io/lesson/boot-process-bootloader)
@@ -241,8 +219,6 @@ Learn about the stages of the Linux boot process.
 ![Kernel](https://labex.io/images/linuxjourney/courses/kernel.png)
 
 The most important part of the Linux system; learn about how it works and how to configure it.
-
-**Lessons:**
 
 - [Overview of the Kernel](https://labex.io/lesson/kernel-overview)
 - [Privilege Levels](https://labex.io/lesson/kernel-privilege-levels)
@@ -257,8 +233,6 @@ The most important part of the Linux system; learn about how it works and how to
 
 Learn about the different init systems: SysV, Upstart, and systemd.
 
-**Lessons:**
-
 - [System V Overview](https://labex.io/lesson/sysv-overview)
 - [System V Service](https://labex.io/lesson/sysv-services)
 - [Upstart Overview](https://labex.io/lesson/upstart-overview)
@@ -272,8 +246,6 @@ Learn about the different init systems: SysV, Upstart, and systemd.
 ![Process Utilization](https://labex.io/images/linuxjourney/courses/process-utilization.png)
 
 Learn resource monitoring with top, load averages, iostat, and more!
-
-**Lessons:**
 
 - [Tracking processes: top](https://labex.io/lesson/tracking-processes-top)
 - [lsof and fuser](https://labex.io/lesson/tracking-processes-lsof-fuser)
@@ -290,8 +262,6 @@ Learn resource monitoring with top, load averages, iostat, and more!
 
 Learn about system logs and the /var/log directory.
 
-**Lessons:**
-
 - [System Logging](https://labex.io/lesson/system-logging)
 - [syslog](https://labex.io/lesson/syslog)
 - [General Logging](https://labex.io/lesson/general-logging)
@@ -307,8 +277,6 @@ Learn about system logs and the /var/log directory.
 
 Learn about network sharing with rsync, scp, nfs, and more.
 
-**Lessons:**
-
 - [File Sharing Overview](https://labex.io/lesson/network-file-sharing)
 - [rsync](https://labex.io/lesson/rsync)
 - [Simple HTTP Server](https://labex.io/lesson/simple-http-server)
@@ -320,8 +288,6 @@ Learn about network sharing with rsync, scp, nfs, and more.
 ![Network Basics](https://labex.io/images/linuxjourney/courses/network-basics.png)
 
 Learn about networking basics and the TCP/IP model.
-
-**Lessons:**
 
 - [Network Basics](https://labex.io/lesson/network-basics)
 - [OSI Model](https://labex.io/lesson/osi-model)
@@ -339,8 +305,6 @@ Learn about networking basics and the TCP/IP model.
 
 Learn about subnets and how to do subnet arithmetic!
 
-**Lessons:**
-
 - [IPv4](https://labex.io/lesson/ipv4)
 - [Subnets](https://labex.io/lesson/subnets)
 - [Subnet Math](https://labex.io/lesson/subnet-math)
@@ -354,8 +318,6 @@ Learn about subnets and how to do subnet arithmetic!
 ![Routing](https://labex.io/images/linuxjourney/courses/routing.png)
 
 Learn how packets are routed across networks!
-
-**Lessons:**
 
 - [What is a router?](https://labex.io/lesson/what-is-a-router)
 - [Routing Table](https://labex.io/lesson/routing-table)
@@ -371,8 +333,6 @@ Learn how packets are routed across networks!
 
 Learn about network configuration using Linux tools!
 
-**Lessons:**
-
 - [Network Interfaces](https://labex.io/lesson/network-interfaces)
 - [route](https://labex.io/lesson/route)
 - [dhclient](https://labex.io/lesson/dhclient)
@@ -385,8 +345,6 @@ Learn about network configuration using Linux tools!
 
 Learn about common networking tools to help you diagnose and troubleshoot issues!
 
-**Lessons:**
-
 - [ICMP](https://labex.io/lesson/icmp)
 - [ping](https://labex.io/lesson/ping)
 - [traceroute](https://labex.io/lesson/traceroute)
@@ -398,8 +356,6 @@ Learn about common networking tools to help you diagnose and troubleshoot issues
 ![DNS](https://labex.io/images/linuxjourney/courses/dns.png)
 
 Everything and more that you wanted to know about DNS.
-
-**Lessons:**
 
 - [What is DNS?](https://labex.io/lesson/what-is-dns)
 - [DNS Components](https://labex.io/lesson/dns-components)
