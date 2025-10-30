@@ -3,26 +3,33 @@ index: 1
 lang: "pt"
 title: "O Shell"
 meta_title: "O Shell - Linha de Comando"
-meta_description: "Aprenda sobre o shell Linux, Bash e comandos básicos como 'echo'. Entenda os prompts do shell e comece sua jornada Linux com este guia amigável para iniciantes."
-meta_keywords: "shell Linux, comando echo, tutorial Linux, linha de comando, Linux para iniciantes, prompt de shell, guia Linux"
+meta_description: "Comece sua jornada no Linux aprendendo sobre o shell do Linux. Este guia aborda os conceitos básicos da linha de comando, o shell Bash e introduz comandos básicos do Linux para iniciantes, como 'echo'."
+meta_keywords: "shell linux, jornada linux, comandos linux, comandos básicos linux para iniciantes, shell bash, linha de comando, comando echo, jornada linux"
 ---
 
 ## Lesson Content
 
-O mundo é seu, ou melhor, o shell é seu. O que é o shell? O shell é basicamente um programa que recebe seus comandos do teclado e os envia para o sistema operacional para serem executados. Se você já usou uma GUI, provavelmente já viu programas como "Terminal" ou "Console"; estes são apenas programas que iniciam um shell para você. Ao longo de todo este curso, aprenderemos sobre as maravilhas do shell.
+### O que é o Shell do Linux
 
-Neste curso, usaremos o programa shell Bash (Bourne Again Shell). Quase todas as distribuições Linux terão o shell Bash como padrão. Existem outros shells disponíveis, como `ksh`, `zsh` e `tsch`, mas não abordaremos nenhum deles.
+Bem-vindo à sua **jornada no Linux**! O primeiro passo é entender o **shell do Linux**. O shell é um programa poderoso que aceita os comandos que você digita e os passa ao sistema operacional para execução. Se você já usou uma interface gráfica do usuário (GUI), talvez tenha encontrado aplicativos como "Terminal" ou "Console". Estes são simplesmente programas que abrem uma sessão de shell para você. Ao longo deste curso, exploraremos as capacidades do shell e os muitos **comandos do Linux** disponíveis.
 
-Vamos direto ao ponto! Dependendo da distribuição, seu prompt de shell pode mudar, mas na maioria das vezes, ele deve seguir o seguinte formato:
+### Entendendo o Bash
+
+Para este curso, focaremos no programa Bash (Bourne Again Shell). O Bash é o shell padrão para a maioria das distribuições Linux, tornando-o uma ferramenta essencial para aprender. Embora existam outros shells como `ksh`, `zsh` e `tsch`, dominar o Bash fornece uma base sólida para trabalhar com qualquer sistema Linux.
+
+### O Prompt do Shell
+
+Ao abrir um terminal, você será saudado pelo prompt do shell. Sua aparência pode variar entre as distribuições, mas geralmente segue este formato: `usuario@hostname:diretorio_atual$`.
 
 ```plaintext
-username@hostname:current_directory
 pete@icebox:/home/pete $
 ```
 
-Observe o `$` no final do prompt? Diferentes shells terão prompts diferentes. No nosso caso, o `$` é para um usuário normal usando Bash, Bourne ou Korn shell. Você não adiciona o símbolo do prompt ao digitar o comando; apenas saiba que ele está lá.
+O símbolo `$` no final indica que o shell está pronto para aceitar comandos de um usuário regular. Você não digita este símbolo ao inserir comandos; ele é puramente informativo.
 
-Vamos começar com um comando simples, `echo`. O comando `echo` apenas imprime os argumentos de texto na tela.
+### Seu Primeiro Comando Linux
+
+Vamos começar com um dos **comandos básicos do Linux para iniciantes**: `echo`. Este comando é direto — ele simplesmente exibe, ou "ecoa", o texto que você fornece como argumentos de volta para o terminal.
 
 ```bash
 echo Hello World
@@ -30,11 +37,11 @@ echo Hello World
 
 ## Exercise
 
-Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+Recomendamos explorar o abrangente [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Caminho de Aprendizagem do Shell](https://labex.io/pt/learn/shell) para praticar habilidades e conceitos relacionados.
 
 ## Quiz Question
 
-O que deve ser exibido na tela ao digitar `echo Hello World`?
+Qual é a saída exata para a tela quando você digita `echo Hello World`? Por favor, responda em inglês, prestando muita atenção às letras maiúsculas e aos espaços.
 
 ## Quiz Answer
 

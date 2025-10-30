@@ -3,26 +3,33 @@ index: 1
 lang: "zh"
 title: "Shell"
 meta_title: "Shell - 命令行"
-meta_description: "了解 Linux shell、Bash 和基本命令，如 'echo'。理解 shell 提示符，并通过这个适合初学者的指南开始您的 Linux 之旅。"
-meta_keywords: "Linux shell, Bash, echo 命令，Linux 教程，命令行，Linux 初学者，shell 提示符，Linux 指南"
+meta_description: "通过学习 Linux Shell 开始您的 Linux 之旅。本指南涵盖命令行、Bash Shell 的基础知识，并介绍适合初学者的基本 Linux 命令，如 'echo'。"
+meta_keywords: "linux shell, linux 之旅，linux 命令，初学者基础 linux 命令，bash shell, 命令行，echo 命令"
 ---
 
 ## Lesson Content
 
-世界是你的牡蛎，或者说，shell 是你的牡蛎。什么是 shell？Shell 基本上是一个程序，它从键盘接收你的命令并将其发送给操作系统执行。如果你曾经使用过 GUI，你可能见过“终端”或“控制台”之类的程序；这些只是为你启动 shell 的程序。在整个课程中，我们将学习 shell 的奇妙之处。
+### 什么是 Linux Shell
 
-在本课程中，我们将使用 shell 程序 Bash (Bourne Again Shell)。几乎所有的 Linux 发行版都将默认使用 Bash shell。还有其他可用的 shell，例如 `ksh`、`zsh` 和 `tsch`，但我们不会涉及这些。
+欢迎来到您的 **Linux 之旅**！第一步是了解 **Linux Shell**。Shell 是一个强大的程序，它接收您输入的命令并将其传递给操作系统执行。如果您使用过图形用户界面 (GUI)，您可能遇到过像“终端”或“控制台”这样的应用程序。这些程序只是为您打开一个 Shell 会话。在整个课程中，我们将探索 Shell 的功能以及许多可用的 **Linux 命令**。
 
-让我们直接开始吧！根据发行版的不同，你的 shell 提示符可能会有所不同，但大多数情况下，它应该遵循以下格式：
+### 理解 Bash
+
+在本课程中，我们将重点关注 Bash (Bourne Again Shell) 程序。Bash 是大多数 Linux 发行版的默认 Shell，使其成为一项必学的基本工具。虽然存在像 `ksh`、`zsh` 和 `tsch` 这样的其他 Shell，但掌握 Bash 为使用任何 Linux 系统打下了坚实的基础。
+
+### Shell 提示符
+
+打开终端时，您会看到 Shell 提示符。它的外观在不同发行版之间可能有所不同，但通常遵循以下格式：`username@hostname:current_directory$`。
 
 ```plaintext
-username@hostname:current_directory
 pete@icebox:/home/pete $
 ```
 
-注意到提示符末尾的 `$` 了吗？不同的 shell 会有不同的提示符。在我们的例子中，`$` 表示使用 Bash、Bourne 或 Korn shell 的普通用户。你输入命令时不需要添加提示符符号；只需知道它在那里即可。
+末尾的 `$` 符号表示 Shell 已准备好接受来自普通用户的命令。输入命令时，您不需要输入此符号；它仅供参考。
 
-让我们从一个简单的命令 `echo` 开始。`echo` 命令只是将文本参数打印到显示器上。
+### 您的第一个 Linux 命令
+
+让我们从最**适合初学者的基本 Linux 命令**之一开始：`echo`。这个命令很简单——它只是将您提供的文本作为参数回显（或“复述”）到终端上。
 
 ```bash
 echo Hello World
@@ -30,11 +37,11 @@ echo Hello World
 
 ## Exercise
 
-虽然本主题没有具体的实验，但我们建议探索全面的 [Linux 学习路径](https://labex.io/zh/learn/linux) 来练习相关的 Linux 技能和概念。
+我们建议您探索全面的 [![Shell 学习路径](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell 学习路径](https://labex.io/zh/learn/shell)，以练习相关的技能和概念。
 
 ## Quiz Question
 
-当您输入 `echo Hello World` 时，显示器上应该输出什么？
+当您输入 `echo Hello World` 时，显示的确切输出是什么？请用英语回答，注意大小写和空格。
 
 ## Quiz Answer
 
