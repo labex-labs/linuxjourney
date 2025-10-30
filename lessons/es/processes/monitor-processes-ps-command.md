@@ -2,16 +2,20 @@
 index: 1
 lang: "es"
 title: "ps (Procesos)"
-meta_title: "ps (Procesos) - Procesos"
-meta_description: "Aprende sobre el comando 'ps' de Linux para ver los procesos en ejecución y entender los ID de proceso (PIDs). Obtén una guía para principiantes sobre la gestión de procesos."
-meta_keywords: "comando ps, procesos Linux, ID de proceso, PID, tutorial Linux, principiante, guía, comando top"
+meta_title: "ps (Procesos) - Procesos del Sistema"
+meta_description: "Explora el comando ps de Linux con nuestra guía completa. Aprende a usar el comando ps -ef en Linux y otras opciones para ver procesos en ejecución, entender los PIDs y gestionar tareas del sistema. Un comienzo perfecto para tu viaje en Linux."
+meta_keywords: "comando ps, ps -ef linux, comando ps -ef, linux ps -ef, ps -e linux, procesos linux, ID de proceso, PID, comando top, viaje linux"
 ---
 
 ## Lesson Content
 
-Los procesos son los programas que se están ejecutando en tu máquina. Son gestionados por el kernel, y cada proceso tiene un ID asociado llamado **ID de proceso (PID)**. Este PID se asigna en el orden en que se crean los procesos.
+### Entendiendo los Procesos de Linux
 
-Ejecuta el comando `ps` para ver una lista de los procesos en ejecución:
+Los procesos son los programas que se están ejecutando actualmente en su máquina. El kernel de Linux los administra, y a cada proceso se le asigna un número único llamado **identificador de proceso (PID)**. Los PID generalmente se asignan secuencialmente a medida que se crean nuevos procesos.
+
+### Uso Básico del Comando ps
+
+Para obtener un vistazo de sus procesos activos, simplemente ejecute el comando `ps`. Esto proporciona una instantánea rápida de los procesos asociados con su sesión de terminal actual.
 
 ```plaintext
 $ ps
@@ -21,39 +25,48 @@ PID        TTY     STAT   TIME          CMD
 51224    pts/4    R+        00:00:00     ps
 ```
 
-Esto te muestra una instantánea rápida de los procesos actuales:
+Esta salida muestra algunos detalles clave:
 
-- PID: ID de proceso
-- TTY: Terminal de control asociada con el proceso (entraremos en detalle sobre esto más adelante)
-- STAT: Código de estado del proceso
-- TIME: Tiempo total de uso de la CPU
-- CMD: Nombre del ejecutable/comando
+- **PID**: El identificador de proceso único.
+- **TTY**: La terminal de control para el proceso.
+- **STAT**: El estado actual del proceso.
+- **TIME**: El tiempo total de CPU que ha utilizado el proceso.
+- **CMD**: El comando que inició el proceso.
 
-Si miras la página man de `ps`, verás que hay muchas opciones de comando que puedes pasar. Variarán dependiendo de las opciones que quieras usar: BSD, GNU o Unix. En mi opinión, el estilo BSD es más popular, así que usaremos ese. Si tienes curiosidad, la diferencia entre los estilos es la cantidad de guiones que usas y las banderas.
+### Explorando ps con Opciones Estilo BSD
+
+El comando `ps` es muy versátil, con muchas opciones que caen en diferentes estilos de sintaxis (BSD, System V, GNU). El estilo BSD, que no usa un guion para las opciones, es bastante común. Una combinación popular es `ps aux`:
 
 ```bash
 ps aux
 ```
 
-La **a** muestra todos los procesos en ejecución, incluidos los que son ejecutados por otros usuarios. La **u** muestra más detalles sobre los procesos. Y finalmente, la **x** lista todos los procesos que no tienen un TTY asociado. Estos programas mostrarán un `?` en el campo TTY; son más comunes en procesos demonio que se inician como parte del arranque del sistema.
+Aquí está lo que significan estas opciones:
 
-Notarás que ahora estás viendo muchos más campos. No es necesario memorizarlos todos; en un curso posterior sobre procesos avanzados, repasaremos algunos de ellos nuevamente:
+- **a**: Muestra todos los procesos de todos los usuarios.
+- **u**: Proporciona un formato detallado y orientado al usuario.
+- **x**: Incluye procesos que no están adjuntos a ninguna terminal. Estos a menudo incluyen demonios del sistema que comienzan al arrancar y muestran un `?` en la columna TTY.
 
-- USER: El usuario efectivo (aquel cuyo acceso estamos utilizando)
-- PID: ID de proceso
-- %CPU: Tiempo de CPU utilizado dividido por el tiempo que el proceso ha estado en ejecución
-- %MEM: Relación entre el tamaño del conjunto residente del proceso y la memoria física de la máquina
-- VSZ: Uso de memoria virtual de todo el proceso
-- RSS: Tamaño del conjunto residente, la memoria física no intercambiada que ha utilizado una tarea
-- TTY: Terminal de control asociada con el proceso
-- STAT: Código de estado del proceso
-- START: Hora de inicio del proceso
-- TIME: Tiempo total de uso de la CPU
-- COMMAND: Nombre del ejecutable/comando
+Este comando ofrece una salida mucho más rica con columnas adicionales como `USER`, `%CPU`, `%MEM`, `VSZ` y `RSS`. Por ahora, nos centraremos en PID, STAT y COMMAND.
 
-El comando `ps` puede ser un poco complicado de ver. Por ahora, los campos que más veremos son PID, STAT y COMMAND.
+### Usando el Comando ps -ef en Linux
 
-Otro comando muy útil es el comando **top**. `top` te da información en tiempo real sobre los procesos que se ejecutan en tu sistema en lugar de una instantánea. Por defecto, obtendrás una actualización cada 10 segundos. `top` es una herramienta extremadamente útil para ver qué procesos están consumiendo muchos de tus recursos.
+Otra sintaxis extremadamente popular es el estilo System V. Frecuentemente verá el **comando ps -ef** utilizado por los administradores de sistemas. Esta es una forma poderosa de obtener una imagen completa de todo lo que se ejecuta en su sistema.
+
+```bash
+ps -ef
+```
+
+El comando **ps -ef linux** proporciona una lista completa de todos los procesos.
+
+- **-e**: Selecciona cada proceso en el sistema.
+- **-f**: Muestra una lista de "formato completo", que incluye detalles como UID, PPID (Identificador de Proceso Padre), C (Utilización de CPU) y STIME (hora de inicio).
+
+Muchos usuarios prefieren `ps -ef` sobre `ps aux` por su vista jerárquica clara e información detallada. Al solucionar problemas en un sistema Linux, ejecutar **linux ps -ef** es a menudo uno de los primeros pasos para diagnosticar problemas. Una variación más simple, `ps -e linux`, también listará todos los procesos pero en un formato menos detallado.
+
+### Monitoreo en Tiempo Real con top
+
+Mientras que `ps` le da una instantánea, el comando `top` proporciona una vista dinámica y en tiempo real de los procesos en su sistema. Es una excelente herramienta para identificar qué procesos están consumiendo más CPU o memoria. Por defecto, la pantalla se actualiza cada pocos segundos.
 
 ```bash
 top
@@ -61,16 +74,16 @@ top
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de los procesos de Linux y su monitoreo:
+La práctica es clave para dominar los comandos de Linux. Los siguientes laboratorios prácticos le ayudarán a reforzar su comprensión de la monitorización y gestión de procesos:
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practica habilidades esenciales para administrar y monitorear procesos en un sistema Linux, incluyendo la interacción con procesos en primer plano/segundo plano, la inspección con `ps`, el monitoreo con `top` y la terminación con `kill`.
-2. **[Comando top de Linux: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprende a usar el comando `top` de Linux para el monitoreo del sistema en tiempo real, incluyendo la clasificación de procesos, el ajuste de los intervalos de actualización y el filtrado por usuario.
+1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique habilidades esenciales para administrar y monitorear procesos en un sistema Linux, incluida la interacción con procesos en primer plano/segundo plano, la inspección con `ps`, el monitoreo con `top` y la terminación con `kill`.
+2. **[Comando Linux top: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar el comando Linux `top` para el monitoreo del sistema en tiempo real, incluida la clasificación de procesos, el ajuste de los intervalos de actualización y el filtrado por usuario.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de identificación y monitoreo de procesos en escenarios reales y a desarrollar confianza con la administración de sistemas Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos de identificación y monitoreo de procesos en escenarios del mundo real, aumentando su confianza como administrador de sistemas Linux.
 
 ## Quiz Question
 
-¿Qué bandera de `ps` se utiliza para ver información detallada sobre los procesos?
+¿Qué indicador de `ps`, cuando se usa con los indicadores `a` y `x`, se utiliza para ver información detallada y orientada al usuario sobre los procesos? Responda con una sola letra minúscula en inglés.
 
 ## Quiz Answer
 
