@@ -3,27 +3,33 @@ index: 1
 lang: "de"
 title: "Benutzer und Gruppen"
 meta_title: "Benutzer und Gruppen - Benutzerverwaltung"
-meta_description: "Erfahren Sie mehr über Linux-Benutzer und -Gruppen, verstehen Sie UIDs, GIDs und den Root-Benutzer. Entdecken Sie, wie Sie den sudo-Befehl für erhöhte Berechtigungen verwenden. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "Linux-Benutzer, Linux-Gruppen, sudo-Befehl, Root-Benutzer, Linux-Berechtigungen, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Ein Schlüsselaspekt der Linux-Grundlagen ist das Verständnis der Benutzer- und Gruppenverwaltung. Dieser Leitfaden behandelt Linux-Benutzer und -Gruppen, den Root-Superuser und die Verwendung des sudo-Befehls für erweiterte Berechtigungen. Eine der besten Linux-Tutorial-Lektionen für Anfänger."
+meta_keywords: "linux benutzer und gruppen, linux grundlagen, sudo, root benutzer, UID, GID, benutzerverwaltung, bestes linux tutorial, schnellster weg zu linux fortgeschritten"
 ---
 
 ## Lesson Content
 
-In jedem traditionellen Betriebssystem gibt es Benutzer und Gruppen. Sie existieren ausschließlich für den Zugriff und die Berechtigungen. Wenn ein Prozess ausgeführt wird, läuft er als der Eigentümer dieses Prozesses, sei es Jane oder Bob. Dateizugriff und -besitz sind ebenfalls berechtigungsabhängig. Man möchte nicht, dass Jane Bobs Dokumente sieht und umgekehrt.
+In jedem Multi-User-Betriebssystem ist die Verwaltung von Benutzern und Gruppen ein fundamentales Konzept. Dies ist ein Kernbestandteil der **Grundlagen von Linux** und dient der Zugriffskontrolle und Berechtigungsverwaltung. Wenn ein Prozess ausgeführt wird, läuft er unter dem Benutzer, der ihn gestartet hat. Ebenso hängen Dateizugriff und Eigentümerschaft von Berechtigungen ab, was verhindert, dass ein Benutzer auf die privaten Dokumente eines anderen zugreift.
 
-Jeder Benutzer hat sein eigenes Home-Verzeichnis, in dem seine benutzerspezifischen Dateien gespeichert sind. Dies befindet sich normalerweise unter `/home/username`, kann aber in verschiedenen Distributionen variieren.
+### Die Grundlagen von Linux-Benutzern und -Gruppen
 
-Das System verwendet Benutzer-IDs (UID), um Benutzer zu verwalten. Benutzernamen sind die benutzerfreundliche Art, Benutzer mit einer Identifikation zu verknüpfen, aber das System identifiziert Benutzer anhand ihrer UID. Das System verwendet auch Gruppen, um Berechtigungen zu verwalten. Gruppen sind einfach Sätze von Benutzern mit Berechtigungen, die von dieser Gruppe festgelegt werden; sie werden vom System mit ihrer Gruppen-ID (GID) identifiziert.
+Jeder Benutzer auf einem Linux-System erhält ein persönliches Home-Verzeichnis, das sich typischerweise unter `/home/benutzername` befindet. Dieses Verzeichnis speichert die benutzerspezifischen Dateien und Konfigurationen, obwohl der genaue Pfad zwischen verschiedenen Linux-Distributionen variieren kann.
 
-Unter Linux haben Sie zusätzlich zu den normalen Menschen, die das System nutzen, auch Benutzer. Manchmal sind diese Benutzer System-Daemons, die kontinuierlich Prozesse ausführen, um das System funktionsfähig zu halten. Einer der wichtigsten Benutzer ist `root` oder `superuser`. `root` ist der mächtigste Benutzer im System; `root` kann auf jede Datei zugreifen und jeden Prozess starten und beenden. Aus diesem Grund kann es gefährlich sein, ständig als `root` zu operieren; Sie könnten potenziell systemkritische Dateien entfernen. Glücklicherweise, wenn `root`-Zugriff benötigt wird und ein Benutzer `root`-Zugriff hat, kann er stattdessen einen Befehl als `root` mit dem `sudo`-Befehl ausführen. Der `sudo`-Befehl (superuser do) wird verwendet, um einen Befehl mit `root`-Zugriff auszuführen. Wir werden in einer späteren Lektion genauer darauf eingehen, wie ein Benutzer `root`-Zugriff erhält.
+Das System identifiziert Benutzer anhand einer Benutzer-ID (UID) und Gruppen anhand einer Gruppen-ID (GID). Während wir für Menschen lesbare Benutzernamen verwenden, verlässt sich das Betriebssystem bei allen berechtigungsbezogenen Aufgaben auf diese eindeutigen numerischen IDs. Gruppen sind im Grunde Sammlungen von Benutzern, was die Verwaltung von Berechtigungen für mehrere Konten gleichzeitig vereinfacht.
 
-Versuchen Sie, eine geschützte Datei wie `/etc/shadow` anzuzeigen:
+### Der Superuser und der Sudo-Befehl
+
+Innerhalb der Hierarchie der **Linux-Benutzer und -Gruppen** steht ein Benutzer über allen anderen: `root`, auch bekannt als der Superuser. Der `root`-Benutzer verfügt über unbegrenzte Macht und kann auf jede Datei zugreifen und jeden Prozess verwalten. Die kontinuierliche Arbeit als `root` ist riskant, da ein einfacher Fehler das System beschädigen könnte.
+
+Um dieses Risiko zu mindern, können autorisierte Benutzer Befehle mit Root-Rechten mithilfe des Befehls `sudo` (superuser do) ausführen. Dies ermöglicht administrative Aufgaben, ohne sich als `root`-Benutzer anmelden zu müssen. Das Verständnis, wie man `sudo` korrekt verwendet, ist unerlässlich für jeden, der die `schnellste Methode für fortgeschrittene Linux`-Kenntnisse anstrebt.
+
+Versuchen wir, eine geschützte Datei wie `/etc/shadow` anzuzeigen, die die verschlüsselten Benutzerpasswörter speichert.
 
 ```bash
 cat /etc/shadow
 ```
 
-Beachten Sie, dass Sie eine Fehlermeldung "Berechtigung verweigert" erhalten. Sehen Sie sich die Berechtigungen an mit:
+Sie erhalten eine Fehlermeldung „Permission denied“ (Zugriff verweigert). Untersuchen wir nun die Berechtigungen der Datei:
 
 ```bash
 $ ls -la /etc/shadow
@@ -31,27 +37,27 @@ $ ls -la /etc/shadow
 -rw-r----- 1 root shadow 1134 Dec 1 11:45 /etc/shadow
 ```
 
-Wir haben die Berechtigungen noch nicht durchgenommen, aber hier ist es so, dass `root` der Eigentümer der Datei ist, und Sie `root`-Zugriff benötigen oder Teil der `shadow`-Gruppe sein müssen, um den Inhalt zu lesen. Führen Sie nun den Befehl mit `sudo` aus:
+Obwohl wir Berechtigungen später im Detail behandeln werden, zeigt diese Ausgabe, dass nur der `root`-Benutzer und Mitglieder der Gruppe `shadow` diese Datei lesen dürfen. Führen Sie den Befehl nun erneut mit `sudo` aus:
 
 ```bash
 sudo cat /etc/shadow
 ```
 
-Jetzt können Sie den Inhalt der Datei sehen!
+Dieses Mal werden Sie zur Eingabe Ihres Passworts aufgefordert, und nach erfolgreicher Authentifizierung wird der Inhalt der Datei angezeigt.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Benutzern, -Gruppen und `sudo` zu vertiefen:
+Während es viele Apps zum Erlernen von Linux gibt, ist praktische Übung unerlässlich. Hier sind einige Labs, um Ihr Verständnis von Linux-Benutzern, Gruppen und `sudo` zu festigen:
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** – Üben Sie den gesamten Lebenszyklus der Benutzerverwaltung, vom Erstellen und Sichern neuer Konten bis zum Ändern und Löschen.
-2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** – Sammeln Sie praktische Erfahrungen mit den wichtigsten Befehlszeilenprogrammen für die Gruppenverwaltung, einschließlich des Erstellens neuer Gruppen, des Änderns von Benutzerzugehörigkeiten und des Entfernens von Gruppen.
-3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und `sudo`-Berechtigungen, um die Sicherheit eines Linux-Systems zu verbessern, einschließlich der Vergabe administrativer Berechtigungen.
+1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
+2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit den zentralen Befehlszeilenprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen, der Änderung von Benutzerzuordnungen und der Entfernung von Gruppen.
+3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und `sudo`-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen, einschließlich der Gewährung administrativer Berechtigungen.
 
-Diese Übungen helfen Ihnen, die Konzepte der Benutzer- und Gruppenverwaltung und die Verwendung von `sudo` in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte der Benutzer- und Gruppenverwaltung sowie die Verwendung von `sudo` in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.
 
 ## Quiz Question
 
-Welchen Befehl verwenden Sie, um als `root` auszuführen?
+Welcher Befehl ermöglicht es Ihnen, einen einzelnen Befehl mit `root`-Berechtigungen auszuführen? (Bitte antworten Sie auf Englisch, nur in Kleinbuchstaben)
 
 ## Quiz Answer
 
