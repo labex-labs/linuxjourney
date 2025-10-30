@@ -2,90 +2,93 @@
 index: 1
 lang: "ko"
 title: "정규 표현식 (Regular Expressions)"
-meta_title: "정규 표현식 (regex) - 고급 텍스트 기술"
-meta_description: "Linux 패턴 일치를 위한 정규 표현식 (regex) 을 배우세요. 텍스트 조작을 위한 ^, $, ., []와 같은 regex 구문을 이해하세요. grep 기술을 향상시키세요!"
-meta_keywords: "정규 표현식, regex, Linux regex, grep regex, 패턴 일치, regex 튜토리얼, Linux 명령, 초보자"
+meta_title: "정규 표현식 (Regex) - 고급 텍스트 기술"
+meta_description: "정규 표현식 (regex) 가이드로 리눅스 기초를 마스터하세요. ^, $, []와 같은 구문을 사용하여 패턴 매칭을 배우세요. 이는 리눅스 텍스트 조작을 배우고 기술을 향상시키는 가장 좋은 방법 중 하나입니다."
+meta_keywords: "정규 표현식 리눅스, regex, 리눅스 기초, 패턴 매칭, grep, 텍스트 처리, 리눅스 배우기, 리눅스 튜토리얼, 리눅스 고급으로 가는 가장 빠른 길"
 ---
 
 ## Lesson Content
 
-정규 표현식은 패턴 기반 선택을 위한 강력한 도구입니다. 이는 `*` 와일드카드와 같이 이미 접했던 특수 표기법을 사용합니다.
+정규 표현식 (Regular Expressions), 줄여서 regex 는 패턴 기반 텍스트 선택을 위한 강력한 도구입니다. 이를 이해하는 것은 Linux 에서 텍스트 조작을 마스터하는 데 필수적입니다. Linux 를 배우기 위한 많은 앱이 있지만, `regular expression linux`와 같은 핵심 개념을 파고드는 것이 Linux 고급 숙련도로 가는 가장 빠른 길입니다. 정규 표현식은 `*`와 같은 와일드카드와 유사한 특수 표기법을 사용합니다.
 
-가장 일반적인 정규 표현식 몇 가지를 살펴보겠습니다. 이들은 거의 모든 프로그래밍 언어에서 보편적으로 사용됩니다.
-
-다음 구문을 테스트 문자열로 사용하겠습니다:
+거의 모든 프로그래밍 언어에서 보편적으로 사용되는 가장 일반적인 regex 연산자들을 살펴보겠습니다. 다음 텍스트를 예제로 사용하겠습니다:
 
 ```plaintext
 sally sells seashells
 by the seashore
 ```
 
-### 1. ^를 사용한 줄의 시작
+### 줄의 시작에 고정하기
+
+캐럿 `^` 기호는 줄의 시작과 일치합니다. 이 기호는 패턴이 시작 부분에만 나타나도록 보장합니다.
 
 ```plaintext
 ^by
-would match the line "by the seashore"
 ```
 
-### 2. $를 사용한 줄의 끝
+이 패턴은 "by the seashore" 줄과는 일치하지만 "sally sells seashells" 줄과는 일치하지 않습니다.
+
+### 줄의 끝에 고정하기
+
+달러 `$` 기호는 줄의 끝과 일치합니다. 이는 `^` 앵커의 대응되는 기호입니다.
 
 ```plaintext
 seashore$
-would match the line "by the seashore"
 ```
 
-### 3. .를 사용한 모든 단일 문자 일치
+이 패턴은 줄이 "seashore"로 끝나기 때문에 "by the seashore" 줄과 일치합니다.
+
+### 모든 단일 문자 일치시키기
+
+마침표 `.`는 모든 단일 문자와 일치하는 와일드카드입니다.
 
 ```plaintext
 b.
-would match by
 ```
 
-### 4. [] 및 () 를 사용한 대괄호 표기법
+예제에서 이것은 "by"와 일치합니다.
 
-이것은 약간 까다로울 수 있습니다. 대괄호를 사용하면 대괄호 안에 있는 문자를 지정할 수 있습니다.
+### 문자 집합을 위한 대괄호 사용하기
+
+대괄호 `[]`를 사용하면 일치시킬 문자 집합을 지정할 수 있습니다. 이는 `.` 와일드카드보다 더 많은 제어를 제공합니다.
 
 ```plaintext
-d[iou]g
-would match: dig, dog, dug
+s[ae]lls
 ```
 
-이전 앵커 태그 `^`는 대괄호 안에서 사용될 때 대괄호 안의 문자를 제외한 모든 것을 의미합니다.
+이것은 "sells"와 일치하며 "salls"와도 일치합니다.
+
+또한 대괄호를 사용하여 일치시키지 않을 문자를 지정할 수도 있습니다. 캐럿 `^`가 대괄호 안에 첫 번째 문자로 오면, 해당 집합을 부정하여 나열된 문자를 _제외한_ 모든 문자와 일치합니다.
 
 ```plaintext
-d[^i]g
-would match: dog and dug but not dig
+s[^e]lls
 ```
 
-대괄호는 또한 범위를 사용하여 사용하려는 문자 수를 늘릴 수 있습니다.
+이것은 "sells"가 아닌 "salls"와 일치합니다.
+
+마지막으로, 대괄호는 범위를 지원하여 대량의 문자 집합을 효율적으로 정의합니다.
 
 ```plaintext
 d[a-c]g
-will match patterns like dag, dbg, and dcg
 ```
 
-하지만 대괄호는 대소문자를 구분하므로 주의하십시오:
+이 패턴은 "dag", "dbg", "dcg"와 일치합니다. 범위는 대소문자를 구분한다는 점에 유의하십시오. 예를 들어, `[a-c]`는 `A`, `B`, 또는 `C`와 일치하지 않습니다.
 
-```plaintext
-d[A-C]g
-will match dAg, dBg and dCg but not dag, dbg and dcg
-```
-
-이것이 몇 가지 기본적인 정규 표현식입니다.
+이러한 연산자들을 배우는 것은 Linux 명령줄 효율성을 배우는 가장 좋은 방법 중 하나입니다.
 
 ## Exercise
 
-연습이 완벽을 만듭니다! 다음은 정규 표현식과 패턴 일치에 대한 이해를 강화하기 위한 실습 랩입니다:
+지식을 실습에 적용해 보세요. 정규 표현식과 패턴 일치에 대한 이해를 강화하기 위한 실습 랩이 여기에 있습니다:
 
-1. **[Linux 에서 grep 으로 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령을 사용하여 Linux 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 기본 검색을 수행하고, 줄 번호를 표시하고, `^` 및 `$`와 같은 앵커를 사용하여 줄 위치를 일치시키고, 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식을 모두 활용합니다.
-2. **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - 강력한 텍스트 처리 도구인 grep, sed, awk 를 배웁니다. Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 정규 표현식을 사용하는 방법을 배웁니다.
-3. **[메일 및 숫자 추출](https://labex.io/ko/labs/linux-extracting-mails-and-numbers-17991)** - 이 챌린지에서는 grep 과 정규 표현식을 사용하여 파일에서 이메일 주소와 숫자를 추출하는 방법을 배우고, 필수적인 Linux 텍스트 처리 기술을 시연합니다.
+1.  **[Linux 에서 grep 으로 텍스트 검색하기](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령을 사용하여 Linux 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 기본 검색을 수행하고, 줄 번호를 표시하고, 줄 위치 일치를 위해 `^` 및 `$`와 같은 앵커를 사용하며, 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식을 모두 활용합니다.
+2.  **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - 강력한 텍스트 처리 도구인 grep, sed 및 awk 를 배웁니다. Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 정규 표현식을 사용하는 방법을 배웁니다.
+3.  **[메일 및 숫자 추출](https://labex.io/ko/labs/linux-extracting-mails-and-numbers-17991)** - 이 챌린지에서는 grep 과 정규 표현식을 사용하여 파일에서 이메일 주소와 숫자를 추출하는 방법을 배우며 필수적인 Linux 텍스트 처리 기술을 시연합니다.
 
-이러한 랩은 실제 시나리오에 개념을 적용하고 정규 표현식 및 텍스트 처리에 대한 자신감을 키우는 데 도움이 될 것입니다.
+이러한 랩들은 실제 시나리오에서 개념을 적용하고 정규 표현식 및 텍스트 처리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-단일 문자를 일치시키려면 어떤 정규 표현식을 사용하시겠습니까?
+모든 단일 문자와 일치시키려면 어떤 정규 표현식을 사용해야 합니까?
 
 ## Quiz Answer
 
