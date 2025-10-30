@@ -2,3 +2,4 @@ tmp/
 scripts/update_exercises.py
 failed_localization_files.json
 .DS_Store
+generate_toc.py
