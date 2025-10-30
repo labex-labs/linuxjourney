@@ -21,7 +21,7 @@ The repository is organized as follows:
 
 ## Grasshopper
 
-### [Getting Started](/lesson/linux-history)
+### Getting Started
 
 ![Getting Started](https://labex.io/images/linuxjourney/courses/getting-started.png)
 
@@ -40,7 +40,7 @@ What is Linux? Get started with choosing a distribution and installation.
 - [Arch Linux](https://labex.io/lesson/arch-linux)
 - [openSUSE](https://labex.io/lesson/openSUSE)
 
-### [Command Line](/lesson/the-shell)
+### Command Line
 
 ![Command Line](https://labex.io/images/linuxjourney/courses/command-line.png)
 
@@ -68,7 +68,7 @@ Learn the fundamentals of the command line, navigating files, directories, and m
 - [alias](https://labex.io/lesson/alias-command)
 - [exit](https://labex.io/lesson/exit-command)
 
-### [Text-Fu](/lesson/stdout-standard-out-redirect)
+### Text-Fu
 
 ![Text-Fu](https://labex.io/images/linuxjourney/courses/text-fu.png)
 
@@ -93,13 +93,13 @@ Learn basic text manipulation and navigation.
 - [wc and nl](https://labex.io/lesson/nl-wc-command)
 - [grep](https://labex.io/lesson/grep-command)
 
-### [Advanced Text-Fu](/lesson/regular-expressions-regex)
+### Advanced Text-Fu
 
 ![Advanced Text-Fu](https://labex.io/images/linuxjourney/courses/advanced-text-fu.png)
 
 Navigate text like a Linux spider monkey with Vim and Emacs.
 
-### [User Management](/lesson/users-and-groups)
+### User Management
 
 ![User Management](https://labex.io/images/linuxjourney/courses/user-management.png)
 
@@ -114,13 +114,13 @@ Learn about user roles and management.
 - [/etc/group](https://labex.io/lesson/etc-group-file)
 - [User Management Tools](https://labex.io/lesson/user-management-tools)
 
-### [Permissions](/lesson/file-permissions)
+### Permissions
 
 ![Permissions](https://labex.io/images/linuxjourney/courses/permissions.png)
 
 Learn about permission levels and modifying permissions.
 
-### [Processes](/lesson/monitor-processes-ps-command)
+### Processes
 
 ![Processes](https://labex.io/images/linuxjourney/courses/processes.png)
 
@@ -140,7 +140,7 @@ Learn about the running processes on the system.
 - [/proc filesystem](https://labex.io/lesson/proc-filesystem)
 - [Job Control](https://labex.io/lesson/job-control)
 
-### [Packages](/lesson/software-distribution)
+### Packages
 
 ![Packages](https://labex.io/images/linuxjourney/courses/packages.png)
 
@@ -158,7 +158,7 @@ Learn all about the dpkg, apt-get, rpm, and yum package management tools.
 
 ## Journeyman
 
-### [Devices](/lesson/dev-directory)
+### Devices
 
 ![Devices](https://labex.io/images/linuxjourney/courses/devices.png)
 
@@ -174,7 +174,7 @@ Learn about Linux devices and how they interact with the kernel and user space.
 - [lsusb, lspci, lssci](https://labex.io/lesson/listing-devices)
 - [dd](https://labex.io/lesson/dd-command)
 
-### [The Filesystem](/lesson/filesystem-hierarchy)
+### The Filesystem
 
 ![The Filesystem](https://labex.io/images/linuxjourney/courses/filesystem.png)
 
@@ -195,13 +195,13 @@ Learn about the Linux filesystem, the different types of filesystems, partitioni
 - [Inodes](https://labex.io/lesson/inodes)
 - [symlinks](https://labex.io/lesson/symlinks)
 
-### [Boot the System](/lesson/boot-process-overview)
+### Boot the System
 
 ![Boot the System](https://labex.io/images/linuxjourney/courses/boot-system.png)
 
 Learn about the stages of the Linux boot process.
 
-### [Kernel](/lesson/kernel-overview)
+### Kernel
 
 ![Kernel](https://labex.io/images/linuxjourney/courses/kernel.png)
 
@@ -216,7 +216,7 @@ The most important part of the Linux system; learn about how it works and how to
 - [Kernel Location](https://labex.io/lesson/kernel-location)
 - [Kernel Modules](https://labex.io/lesson/kernel-modules)
 
-### [Init](/lesson/sysv-overview)
+### Init
 
 ![Init](https://labex.io/images/linuxjourney/courses/init.png)
 
@@ -232,7 +232,7 @@ Learn about the different init systems: SysV, Upstart, and systemd.
 - [Systemd Goals](https://labex.io/lesson/systemd-goals)
 - [Power States](https://labex.io/lesson/power-states)
 
-### [Process Utilization](/lesson/tracking-processes-top)
+### Process Utilization
 
 ![Process Utilization](https://labex.io/images/linuxjourney/courses/process-utilization.png)
 
@@ -249,7 +249,7 @@ Learn resource monitoring with top, load averages, iostat, and more!
 - [Continuous Monitoring](https://labex.io/lesson/continuous-monitoring)
 - [Cron Jobs](https://labex.io/lesson/cron-jobs)
 
-### [Logging](/lesson/system-logging)
+### Logging
 
 ![Logging](https://labex.io/images/linuxjourney/courses/logging.png)
 
@@ -266,7 +266,7 @@ Learn about system logs and the /var/log directory.
 
 ## Networking Nomad
 
-### [Network Sharing](/lesson/network-file-sharing)
+### Network Sharing
 
 ![Network Sharing](https://labex.io/images/linuxjourney/courses/network-sharing.png)
 
@@ -280,13 +280,13 @@ Learn about network sharing with rsync, scp, nfs, and more.
 - [NFS](https://labex.io/lesson/nfs-network-file-share)
 - [Samba](https://labex.io/lesson/samba)
 
-### [Network Basics](/lesson/network-basics)
+### Network Basics
 
 ![Network Basics](https://labex.io/images/linuxjourney/courses/network-basics.png)
 
 Learn about networking basics and the TCP/IP model.
 
-### [Subnetting](/lesson/ipv4)
+### Subnetting
 
 ![Subnetting](https://labex.io/images/linuxjourney/courses/subnetting.png)
 
@@ -302,7 +302,7 @@ Learn about subnets and how to do subnet arithmetic!
 - [NAT](https://labex.io/lesson/nat-network-address-translation)
 - [IPv6](https://labex.io/lesson/ipv6)
 
-### [Routing](/lesson/what-is-a-router)
+### Routing
 
 ![Routing](https://labex.io/images/linuxjourney/courses/routing.png)
 
@@ -318,19 +318,19 @@ Learn how packets are routed across networks!
 - [Link State Protocols](https://labex.io/lesson/link-state-protocols)
 - [Border Gateway Protocol](https://labex.io/lesson/bgp-border-gateway-protocol)
 
-### [Network Config](/lesson/network-interfaces)
+### Network Config
 
 ![Network Config](https://labex.io/images/linuxjourney/courses/network-config.png)
 
 Learn about network configuration using Linux tools!
 
-### [Troubleshooting](/lesson/icmp)
+### Troubleshooting
 
 ![Troubleshooting](https://labex.io/images/linuxjourney/courses/troubleshooting.png)
 
 Learn about common networking tools to help you diagnose and troubleshoot issues!
 
-### [DNS](/lesson/what-is-dns)
+### DNS
 
 ![DNS](https://labex.io/images/linuxjourney/courses/dns.png)
 
@@ -345,7 +345,7 @@ Everything and more that you wanted to know about DNS.
 - [DNS Setup](https://labex.io/lesson/dns-setup)
 - [DNS Tools](https://labex.io/lesson/dns-tools)
 
-
+## Contributing
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
