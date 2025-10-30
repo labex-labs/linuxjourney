@@ -3,25 +3,29 @@ index: 1
 lang: "de"
 title: "Linux-Geschichte"
 meta_title: "Linux-Geschichte - Erste Schritte"
-meta_description: "Erfahren Sie mehr über die Geschichte von Linux, von UNIX bis zu Linus Torvalds und dem GNU-Projekt. Verstehen Sie seine Ursprünge und Entwicklung für Anfänger."
-meta_keywords: "Linux-Geschichte, UNIX, GNU-Projekt, Linus Torvalds, Linux-Kernel, Linux für Anfänger, Linux-Tutorial, Linux-Anleitung"
+meta_description: "Beginnen Sie Ihre Linux-Reise mit der Erkundung der Geschichte von Linux. Erfahren Sie mehr über seine Ursprünge aus UNIX, das GNU-Projekt und die Entwicklung des Linux-Kernels durch Linus Torvalds."
+meta_keywords: "geschichte von linux, linux geschichte, linux reise, UNIX, GNU-Projekt, Linus Torvalds, Linux-Kernel, Anfänger Linux"
 ---
 
 ## Lesson Content
 
-Hey Neuling! Du hast dich also entschieden, in diese wunderbare Welt namens Linux einzutauchen? Nun, du solltest dich anschnallen, denn es wird ein langer und harter Weg. Mein Name ist Pinguin Pete, und ich bin hier, um dich auf dieser Reise zu begleiten. Beginnen wir mit ein wenig Hintergrundwissen über Linux.
+Willkommen auf Ihrer **Linux-Reise**! Wenn Sie bereit sind, in die mächtige Welt von Linux einzutauchen, sind Sie hier genau richtig. Mein Name ist Pinguin Pete und ich werde Ihr Führer sein. Um zu beginnen, werfen wir einen Blick auf eine kurze **Geschichte von Linux**.
 
-Um zu erfahren, wie Linux entstanden ist, gehen wir zurück zum Anfang, ins Jahr 1969, als Ken Thompson und Dennis Ritchie von Bell Laboratories das Betriebssystem UNIX entwickelten. Es wurde später in C neu geschrieben, um es portabler zu machen, und entwickelte sich schließlich zu einem weit verbreiteten Betriebssystem.
+### Die Vorgänger von Linux
+
+Um zu verstehen, wie Linux entstanden ist, müssen wir ins Jahr 1969 zurückgehen, als Ken Thompson und Dennis Ritchie von Bell Laboratories das Betriebssystem UNIX entwickelten. Es wurde später in der Programmiersprache C neu geschrieben, was es portabel machte und zu seiner weiten Verbreitung führte.
 
 ![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-Etwa ein Jahrzehnt später begann Richard Stallman mit der Arbeit am GNU-Projekt (GNU is Not UNIX). Der GNU-Kernel, genannt Hurd, wurde leider nie fertiggestellt. Die GNU General Public License (GPL), eine freie Softwarelizenz, wurde ebenfalls als Ergebnis dessen geschaffen.
+Über ein Jahrzehnt später initiierte Richard Stallman das GNU-Projekt (ein rekursives Akronym für „GNU's Not UNIX“). Das Ziel war es, ein vollständig freies und quelloffenes UNIX-ähnliches Betriebssystem zu schaffen. Obwohl das GNU-Projekt viele wesentliche Komponenten hervorbrachte, einschließlich der GNU General Public License (GPL), war sein eigener Kernel namens Hurd nicht rechtzeitig fertiggestellt.
 
-Der Kernel ist der wichtigste Teil des Betriebssystems. Er ermöglicht es der Hardware, mit der Software zu kommunizieren. Er erledigt auch eine ganze Reihe anderer Dinge, aber darauf werden wir in einem anderen Kurs eingehen. Im Moment solltest du nur wissen, dass der Kernel so ziemlich alles steuert, was auf deinem System passiert.
+### Die Rolle des Kernels
 
-Während dieser Zeit wurden andere Bemühungen wie BSD, MINIX, etc., entwickelt, um UNIX-ähnliche Systeme zu schaffen. Eine Sache, die all diese UNIX-ähnlichen Systeme jedoch gemeinsam hatten, war das Fehlen eines vereinheitlichten Kernels.
+Der Kernel ist die Kernkomponente eines Betriebssystems. Er fungiert als Brücke, die der Hardware ermöglicht, mit der Software zu kommunizieren. Der Kernel verwaltet Systemressourcen wie die CPU, den Speicher und die Peripheriegeräte. Im Wesentlichen steuert der Kernel alles, was auf Ihrem System geschieht. Während andere UNIX-ähnliche Systeme wie BSD und MINIX entwickelt wurden, fehlte ihnen allen ein frei verfügbarer und einheitlicher Kernel.
 
-Im Jahr 1991 begann dann ein junger Mann namens Linus Torvalds mit der Entwicklung dessen, was wir heute als den Linux-Kernel kennen.
+### Die Geburt des Linux-Kernels
+
+Dies bringt uns ins Jahr 1991, als ein finnischer Student namens Linus Torvalds begann, als persönliches Projekt einen neuen Kernel zu entwickeln. Dieser Kernel, den wir heute als Linux-Kernel kennen, füllte das fehlende Puzzleteil des GNU-Betriebssystems. Die Kombination der GNU-Werkzeuge und des Linux-Kernels schuf das vollständige, quelloffene Betriebssystem, das heute weit verbreitet ist. Dieser Meilenstein war ein entscheidender Moment in der **Geschichte von Linux**.
 
 ![Linus Torvalds in 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 
@@ -29,17 +33,17 @@ _Linus Torvalds im Jahr 2018 (Quelle: [Wikipedia](https://en.wikipedia.org/wiki/
 
 ## Exercise
 
-Übung macht den Meister! Da diese Lektion dich in die Welt von Linux einführt, ist die praktische Arbeit mit der Kommandozeile der beste Weg, dein Verständnis zu festigen und Vertrauen aufzubauen. Hier sind einige praktische Labs, die dir helfen, deine ersten Schritte zu machen:
+Der beste Weg zu lernen ist durch Tun. Um Ihre **Linux-Reise** zu beginnen, probieren Sie diese praktischen Labs aus, um grundlegende Befehle zu üben und Ihr Selbstvertrauen in der Kommandozeilenumgebung aufzubauen.
 
-1. **[Erste Schritte mit Linux](https://labex.io/de/labs/linux-getting-started-with-linux-446315)** - Beginne deine Linux-Reise, indem du grundlegende Terminalbefehle wie `echo`, `date` und grundlegende Berechnungen lernst. Perfekt für absolute Anfänger.
-2. **[Dein erstes Linux Lab](https://labex.io/de/labs/linux-your-first-linux-lab-270253)** - Dieses einführende Lab führt dich durch das klassische "Hello, World!"-Programm in Linux und lehrt dich einige grundlegende Befehle.
-3. **[Erstelle eine personalisierte Terminal-Begrüßung](https://labex.io/de/labs/linux-create-personalized-terminal-greeting-446322)** - Eine schnelle und unterhaltsame Herausforderung, um grundlegende Linux-Terminalbefehle zu verwenden und eine ansprechende Willkommensnachricht zu erstellen.
+1. **[Erste Schritte mit Linux](https://labex.io/de/labs/linux-getting-started-with-linux-446315)** - Beginnen Sie Ihre Linux-Reise, indem Sie wesentliche Terminalbefehle wie `echo`, `date` und einfache Berechnungen erlernen. Perfekt für absolute Anfänger.
+2. **[Ihr erstes Linux Lab](https://labex.io/de/labs/linux-your-first-linux-lab-270253)** - Dieses Einführungslabor führt Sie durch das klassische „Hello, World!“-Programm in Linux und lehrt Sie einige grundlegende Befehle.
+3. **[Erstellen Sie eine personalisierte Terminal-Begrüßung](https://labex.io/de/labs/linux-create-personalized-terminal-greeting-446322)** - Eine schnelle und unterhaltsame Herausforderung, bei der Sie grundlegende Linux-Terminalbefehle verwenden, um eine ansprechende Willkommensnachricht zu erstellen.
 
-Diese Labs helfen dir, die grundlegenden Konzepte in einer echten Linux-Umgebung anzuwenden und Vertrauen in die Kommandozeile aufzubauen.
+Diese Labs helfen Ihnen, grundlegende Konzepte in einer realen Linux-Umgebung anzuwenden.
 
 ## Quiz Question
 
-Wer hat den Linux-Kernel entwickelt? (Antworte auf Englisch)
+Wer hat den Linux-Kernel entwickelt? Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.
 
 ## Quiz Answer
 

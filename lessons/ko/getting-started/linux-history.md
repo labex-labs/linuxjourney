@@ -1,45 +1,49 @@
 ---
 index: 1
 lang: "ko"
-title: "Linux 역사"
-meta_title: "Linux 역사 - 시작하기"
-meta_description: "UNIX 부터 Linus Torvalds 및 GNU 프로젝트에 이르기까지 Linux 의 역사에 대해 알아보세요. 초보자를 위한 기원과 진화를 이해합니다."
-meta_keywords: "Linux 역사, UNIX, GNU 프로젝트, Linus Torvalds, Linux 커널, 초보자 Linux, Linux 튜토리얼, Linux 가이드"
+title: "리눅스 역사"
+meta_title: "리눅스 역사 - 시작하기"
+meta_description: "리눅스의 역사를 탐구하며 리눅스 여정을 시작하세요. UNIX, GNU 프로젝트, 그리고 리누스 토발즈에 의한 리눅스 커널 생성에 대해 알아보세요."
+meta_keywords: "리눅스 역사, 리눅스 입문, UNIX, GNU 프로젝트, 리누스 토발즈, 리눅스 커널, 초보자 리눅스"
 ---
 
 ## Lesson Content
 
-이봐, 신참! 이 멋진 리눅스라는 세계에 뛰어들기로 결정했나요? 그렇다면 단단히 준비하는 것이 좋을 것입니다. 길고 험난한 여정이 될 테니까요. 제 이름은 펭귄 피트 (Penguin Pete) 이며, 이 여정을 안내하기 위해 여기에 왔습니다. 리눅스에 대한 약간의 배경 이야기부터 시작하겠습니다.
+여러분의 **리눅스 여정**에 오신 것을 환영합니다! 강력한 리눅스의 세계로 뛰어들 준비가 되셨다면, 제대로 찾아오셨습니다. 제 이름은 펭귄 피트이며, 여러분의 가이드가 되어 드리겠습니다. 시작하기 위해, **리눅스 역사**에 대해 간략히 살펴보겠습니다.
 
-리눅스가 어떻게 탄생했는지 알아보기 위해 1969 년으로 거슬러 올라가 봅시다. 벨 연구소 (Bell Laboratories) 의 Ken Thompson 과 Dennis Ritchie 가 UNIX 운영 체제를 개발했습니다. 이후 이식성을 높이기 위해 C 언어로 다시 작성되었고, 결국 널리 사용되는 운영 체제가 되었습니다.
+### 리눅스의 선구자들
+
+리눅스가 어떻게 만들어졌는지 이해하려면, 1969 년 벨 연구소의 켄 톰슨 (Ken Thompson) 과 데니스 리치 (Dennis Ritchie) 가 UNIX 운영체제를 개발했던 때로 거슬러 올라가야 합니다. 이후 UNIX 는 C 프로그래밍 언어로 재작성되었고, 이는 이식성을 높여 널리 채택되는 계기가 되었습니다.
 
 ![Timeline of Unix](https://file.labex.io/images/ed9c245d-e8be-4287-bf34-67750b042542.jpg)
 
-약 10 년 후, Richard Stallman 은 GNU(GNU is Not UNIX) 프로젝트 작업을 시작했습니다. Hurd 라고 불리는 GNU 커널은 안타깝게도 완성되지 못했습니다. 이 프로젝트의 결과로 자유 소프트웨어 라이선스인 GNU General Public License (GPL) 도 만들어졌습니다.
+10 여 년 후, 리처드 스톨만 (Richard Stallman) 은 GNU(재귀 약어로 "GNU's Not UNIX"를 의미) 프로젝트를 시작했습니다. 목표는 완전히 자유롭고 오픈 소스인 UNIX 와 유사한 운영체제를 만드는 것이었습니다. GNU 프로젝트는 GNU 일반 공중 사용 허가서 (GPL) 를 포함하여 많은 필수 구성 요소를 생산했지만, 자체 커널인 Hurd 는 제때 완성되지 못했습니다.
 
-커널은 운영 체제의 가장 중요한 부분입니다. 하드웨어가 소프트웨어와 통신할 수 있도록 합니다. 또한 다른 많은 일들을 수행하지만, 이에 대해서는 다른 과정에서 자세히 다룰 것입니다. 지금은 커널이 시스템에서 발생하는 거의 모든 것을 제어한다는 것만 알아두세요.
+### 커널의 역할
 
-이 기간 동안 BSD, MINIX 등과 같은 다른 노력들이 UNIX 와 유사한 시스템으로 개발되었습니다. 그러나 이러한 모든 UNIX 유사 시스템이 공통적으로 가지고 있던 한 가지는 통일된 커널의 부족이었습니다.
+커널은 운영체제의 핵심 구성 요소입니다. 이는 하드웨어가 소프트웨어와 통신할 수 있도록 하는 다리 역할을 합니다. 커널은 CPU, 메모리 및 주변 장치와 같은 시스템 리소스를 관리합니다. 본질적으로 커널은 시스템에서 일어나는 모든 것을 제어합니다. BSD 및 MINIX 와 같은 다른 UNIX 유사 시스템들이 개발되고 있었지만, 이들 모두에게는 자유롭게 사용할 수 있고 통일된 커널이 부족했습니다.
 
-그러다가 1991 년, Linus Torvalds 라는 젊은이가 오늘날 우리가 Linux 커널이라고 알고 있는 것을 개발하기 시작했습니다.
+### 리눅스 커널의 탄생
+
+이제 1991 년으로 돌아가 보겠습니다. 핀란드 학생이었던 리누스 토발즈 (Linus Torvalds) 가 개인 프로젝트로 새로운 커널 개발을 시작했습니다. 우리가 현재 리눅스 커널로 알고 있는 이 커널은 GNU 운영체제에서 빠져 있던 조각을 채워주었습니다. GNU 도구와 리눅스 커널의 결합은 오늘날 널리 사용되는 완전한 오픈 소스 운영체제를 만들어냈습니다. 이 이정표는 **리눅스 역사**에서 중추적인 순간이었습니다.
 
 ![Linus Torvalds in 2018](https://file.labex.io/images/3e1311fd-b8ca-45e7-8d02-9aac6377bb36.jpg)
 
-_2018 년의 Linus Torvalds (출처: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
+_2018 년의 리누스 토발즈 (출처: [Wikipedia](https://en.wikipedia.org/wiki/Linus_Torvalds))_
 
 ## Exercise
 
-연습이 완벽을 만듭니다! 이 강의는 여러분을 Linux 의 세계로 안내하므로, 명령줄을 직접 다루는 것이 이해를 확고히 하고 자신감을 키우는 가장 좋은 방법입니다. 다음은 첫걸음을 내딛는 데 도움이 되는 실습 랩입니다.
+배우는 가장 좋은 방법은 직접 해보는 것입니다. **리눅스 여정**을 시작하려면, 다음 실습 랩 (hands-on labs) 을 시도하여 기본 명령어를 연습하고 명령줄 환경에 대한 자신감을 키워보세요.
 
-1. **[Linux 시작하기](https://labex.io/ko/labs/linux-getting-started-with-linux-446315)** - `echo`, `date`와 같은 필수 터미널 명령과 기본 계산을 배우면서 Linux 여정을 시작하세요. 완전 초보자에게 완벽합니다.
-2. **[첫 번째 Linux 랩](https://labex.io/ko/labs/linux-your-first-linux-lab-270253)** - 이 입문 랩은 Linux 에서 고전적인 "Hello, World!" 프로그램을 안내하고 몇 가지 기본 명령을 가르쳐줍니다.
-3. **[개인화된 터미널 인사말 만들기](https://labex.io/ko/labs/linux-create-personalized-terminal-greeting-446322)** - 기본 Linux 터미널 명령을 사용하여 매력적인 환영 메시지를 만드는 빠르고 재미있는 도전입니다.
+1. **[리눅스 시작하기](https://labex.io/ko/labs/linux-getting-started-with-linux-446315)** - `echo`, `date`와 같은 필수 터미널 명령어 및 기본 계산을 배우면서 리눅스 여정을 시작하세요. 완전 초보자에게 적합합니다.
+2. **[첫 번째 리눅스 랩](https://labex.io/ko/labs/linux-your-first-linux-lab-270253)** - 이 입문 랩은 리눅스에서 고전적인 "Hello, World!" 프로그램을 안내하고 몇 가지 기본 명령어를 가르쳐 줍니다.
+3. **[개인 맞춤형 터미널 인사말 만들기](https://labex.io/ko/labs/linux-create-personalized-terminal-greeting-446322)** - 간단하고 재미있는 도전 과제로, 기본 리눅스 터미널 명령어를 사용하여 매력적인 환영 메시지를 만듭니다.
 
-이 랩들은 실제 Linux 환경에서 기초 개념을 적용하고 명령줄에 대한 자신감을 키우는 데 도움이 될 것입니다.
+이 랩들은 실제 리눅스 환경에서 기본 개념을 적용하는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-Who developed the Linux kernel? (Answer in English)
+리눅스 커널을 개발한 사람은 누구입니까? 영어로 답하고 대소문자에 유의하십시오.
 
 ## Quiz Answer
 
