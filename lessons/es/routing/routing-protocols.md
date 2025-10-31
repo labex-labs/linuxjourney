@@ -3,31 +3,39 @@ index: 4
 lang: "es"
 title: "Protocolos de Enrutamiento"
 meta_title: "Protocolos de Enrutamiento - Enrutamiento"
-meta_description: "Aprende sobre protocolos de enrutamiento como vector de distancia y estado de enlace. Comprende la convergencia de red y cómo los routers se adaptan a los cambios. ¡Comienza tu viaje en redes Linux!"
-meta_keywords: "protocolos de enrutamiento, convergencia de red, vector de distancia, estado de enlace, redes Linux, guía para principiantes, tutorial de red"
+meta_description: "Explore los fundamentos de los protocolos de enrutamiento en redes Linux. Esta guía cubre protocolos de vector distancia y estado de enlace, convergencia de red, y cómo los routers construyen y mantienen tablas de enrutamiento. Un tutorial perfecto para principiantes."
+meta_keywords: "protocolos de enrutamiento, convergencia de red, vector distancia, estado de enlace, redes linux, tabla de enrutamiento, tutorial de red, guía para principiantes, comunicación de router"
 ---
 
 ## Lesson Content
 
-Sería un fastidio tener que configurar manualmente las rutas en una tabla de enrutamiento para cada dispositivo de su red. En su lugar, utilizamos lo que se conoce como protocolos de enrutamiento. Los protocolos de enrutamiento ayudan a nuestro sistema a adaptarse a los cambios de la red; aprenden diferentes rutas, las incorporan a la tabla de enrutamiento y luego enrutan nuestros paquetes de esa manera. Hay dos tipos principales de protocolos de enrutamiento: protocolos de vector de distancia y protocolos de estado de enlace.
+Configurar rutas manualmente en una tabla de enrutamiento para cada dispositivo en una red grande sería una tarea increíblemente tediosa. Para automatizar este proceso, utilizamos **protocolos de enrutamiento** dinámicos. Estos protocolos permiten a los enrutadores adaptarse automáticamente a los cambios de la red aprendiendo diferentes rutas, construyéndolas en la tabla de enrutamiento y reenviando paquetes en consecuencia. Hay dos tipos principales de protocolos de enrutamiento: vector distancia y estado de enlace.
 
-### Convergencia
+### Protocolos de Vector Distancia
 
-Antes de hablar de los protocolos, debemos repasar un término utilizado en el enrutamiento conocido como convergencia. Al utilizar protocolos de enrutamiento, los routers se comunican con otros routers para recopilar e intercambiar información sobre la red. Cuando se ponen de acuerdo sobre cómo debe ser una red, cada tabla de enrutamiento traza la topología completa de la red, "convergiendo" así. Cuando algo ocurre en la topología de la red, la convergencia se romperá temporalmente hasta que todos los routers estén al tanto de este cambio.
+Los protocolos de vector distancia operan bajo el principio de "enrutamiento por rumor". Cada enrutador comparte su tabla de enrutamiento completa con sus vecinos conectados directamente a intervalos regulares. Cuando un enrutador recibe una tabla de enrutamiento de un vecino, actualiza la suya con cualquier ruta nueva o mejor. La "distancia" generalmente se mide con una métrica como el conteo de saltos. Este método es simple, pero puede ser lento para converger y es susceptible a bucles de enrutamiento. Un ejemplo de protocolo de vector distancia es el Protocolo de Información de Enrutamiento (RIP).
+
+### Protocolos de Estado de Enlace
+
+En contraste, los protocolos de **estado de enlace** proporcionan a cada enrutador un mapa completo de la topología de la red. En lugar de compartir toda su tabla de enrutamiento, los enrutadores envían información sobre el estado de sus propios enlaces (por ejemplo, vecinos conectados y el costo de la conexión) a todos los demás enrutadores de la red. Usando esta información, cada enrutador puede construir de forma independiente un mapa idéntico de la red y calcular la mejor ruta a cada destino. Este enfoque conduce a una **convergencia de red** más rápida y es más escalable que los protocolos de vector distancia. Un ejemplo es el protocolo Open Shortest Path First (OSPF).
+
+### Convergencia de Red
+
+Antes de discutir más a fondo los protocolos, es importante comprender un concepto clave en el enrutamiento conocido como **convergencia de red**. Cuando se utilizan protocolos de enrutamiento, los enrutadores se comunican para recopilar e intercambiar información. La convergencia es el estado en el que todos los enrutadores tienen una visión consistente y precisa de la topología de la red. Cuando cada tabla de enrutamiento mapea correctamente toda la red, se considera que la red está "convergida". Si ocurre un cambio, como la caída de un enlace, la convergencia se rompe temporalmente hasta que todos los enrutadores se enteran del cambio y actualizan sus tablas de enrutamiento.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del enrutamiento de red y el direccionamiento IP:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y el direccionamiento IP:
 
-1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practica la configuración de direcciones IP estáticas y dinámicas, el establecimiento de una puerta de enlace predeterminada y la verificación de las configuraciones de red, que son cruciales para comprender cómo se construyen y utilizan las tablas de enrutamiento.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprende cómo interactúan los dispositivos en la capa de red, observando ARP y cómo la puerta de enlace predeterminada maneja el tráfico remoto, proporcionando información sobre los mecanismos que gestionan los protocolos de enrutamiento.
-3. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utiliza Docker para simular nodos de red, asignar direcciones IP y probar la conectividad entre subredes, aplicando directamente conceptos relacionados con los cambios de red y las decisiones de enrutamiento.
+1.  **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique la configuración de direcciones IP estáticas y dinámicas, el establecimiento de una puerta de enlace predeterminada y la verificación de configuraciones de red, que son cruciales para comprender cómo se construyen y utilizan las tablas de enrutamiento.
+2.  **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo interactúan los dispositivos en la capa de red, observando ARP y cómo la puerta de enlace predeterminada maneja el tráfico remoto, lo que proporciona información sobre los mecanismos que gestionan los protocolos de enrutamiento.
+3.  **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilice Docker para simular nodos de red, asignar direcciones IP y probar la conectividad a través de subredes, aplicando directamente conceptos relacionados con los cambios de red y las decisiones de enrutamiento.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de configuración y conectividad de red en escenarios reales, generando confianza con los elementos fundamentales que automatizan los protocolos de enrutamiento.
+Estos laboratorios le ayudarán a aplicar los conceptos de configuración y conectividad de red en escenarios reales, aumentando la confianza con los elementos fundamentales que automatizan los protocolos de enrutamiento.
 
 ## Quiz Question
 
-¿Cuál es el término utilizado cuando todas las tablas de enrutamiento conocen la topología de la red?
+What is the term for the state where all routing tables on a network agree on the network topology? (Please answer in English, paying attention to capitalization.)
 
 ## Quiz Answer
 

@@ -1,47 +1,55 @@
 ---
 index: 5
 lang: "es"
-title: "Visión general de Systemd"
-meta_title: "Visión general de Systemd - Init"
-meta_description: "Aprenda los conceptos básicos de Systemd: comprenda las unidades, los objetivos (targets) y el proceso de arranque. Descubra cómo Systemd gestiona los servicios y los estados del sistema en Linux. ¡Comience su viaje!"
-meta_keywords: "Systemd, unidades de Systemd, objetivos de Systemd, proceso de arranque de Linux, servicios de Linux, principiante, tutorial, guía"
+title: "Resumen de Systemd"
+meta_title: "Systemd: Visión General - Sistema Init"
+meta_description: "Aprenda los fundamentos del sistema init systemd. Esta guía cubre cómo systemd (o system d) usa unidades y objetivos para gestionar el arranque y los servicios del sistema Linux. Comprenda los conceptos centrales del estándar moderno para la inicialización de Linux."
+meta_keywords: "systemd, system d, sistema init, unidades systemd, objetivos systemd, arranque linux, servicios linux, gestión de sistemas, principiante, tutorial"
 ---
 
 ## Lesson Content
 
-Systemd es el sistema init estándar en la mayoría de las distribuciones modernas de Linux. Si tiene un directorio `/usr/lib/systemd`, lo más probable es que esté utilizando systemd.
+### ¿Qué es Systemd?
 
-Systemd utiliza objetivos (targets) para poner su sistema en funcionamiento. Básicamente, usted tiene un objetivo que desea alcanzar, y este objetivo también tiene dependencias que deben cumplirse. Systemd es extremadamente flexible y robusto; no sigue una secuencia estricta para iniciar los procesos. Esto es lo que sucede durante un arranque típico de systemd:
+Systemd es el sistema init y gestor de servicios predeterminado para la mayoría de las distribuciones modernas de Linux. Es responsable de inicializar el sistema en el orden correcto después de que el kernel ha sido cargado. Una forma sencilla de comprobar si su sistema lo utiliza es ver si existe el directorio `/usr/lib/systemd`. Si existe, es probable que esté ejecutando un sistema administrado por **systemd**.
 
-1. Primero, systemd carga sus archivos de configuración, generalmente ubicados en `/etc/systemd/system` o `/usr/lib/systemd/system`.
-2. Luego determina su objetivo de arranque, que suele ser `default.target`.
-3. Systemd calcula las dependencias del objetivo de arranque y las activa.
+### El Proceso de Arranque de Systemd
 
-De forma similar a los niveles de ejecución de SysV, systemd arranca en diferentes objetivos:
+En lugar de scripts secuenciales rígidos, **systemd** utiliza el concepto de "metas" (goals) para llevar su sistema a un estado funcional. Identifica una meta principal, o `target` (objetivo), y trabaja para satisfacer sus dependencias. Este enfoque permite una mayor flexibilidad y paralelización durante el inicio. Un proceso de arranque típico administrado por **systemd** sigue estos pasos:
 
-- `poweroff.target` - apagar el sistema
-- `rescue.target` - modo de un solo usuario
-- `multi-user.target` - multiusuario con red
-- `graphical.target` - multiusuario con red e interfaz gráfica (GUI)
-- `reboot.target` - reiniciar
+1. **systemd** primero carga sus archivos de configuración desde directorios como `/etc/systemd/system` y `/usr/lib/systemd/system`.
+2. Luego identifica la meta de arranque predeterminada, que suele ser un enlace simbólico llamado `default.target`.
+3. Finalmente, **systemd** resuelve todas las dependencias para este objetivo y activa las unidades necesarias para lograr el estado del sistema deseado.
 
-El objetivo de arranque predeterminado de `default.target` generalmente apunta a `graphical.target`.
+### Entendiendo los Objetivos (Targets) de Systemd
 
-Los objetos principales con los que trabaja systemd se conocen como unidades. Systemd no solo detiene e inicia servicios; puede montar sistemas de archivos, monitorear sus sockets de red, etc. Debido a esta robustez, tiene diferentes tipos de unidades con las que opera. Las unidades más comunes son:
+Los objetivos (`Targets`) en **systemd** son análogos a los niveles de ejecución (runlevels) en el sistema init SysV más antiguo. Representan diferentes estados en los que puede estar el sistema. Los objetivos comunes incluyen:
 
-- Unidades de servicio (`Service units`) - estos son los servicios que hemos estado iniciando y deteniendo; estos archivos de unidad terminan en `.service`.
-- Unidades de montaje (`Mount units`) - estas montan sistemas de archivos; estos archivos de unidad terminan en `.mount`.
-- Unidades de objetivo (`Target units`) - estas agrupan otras unidades; los archivos terminan en `.target`.
+- `poweroff.target`: Apaga el sistema.
+- `rescue.target`: Arranca en un shell de usuario único para mantenimiento.
+- `multi-user.target`: Un entorno multiusuario estándar con red pero sin interfaz gráfica.
+- `graphical.target`: Un entorno multiusuario completo con red y una interfaz gráfica de usuario (GUI).
+- `reboot.target`: Reinicia el sistema.
 
-Por ejemplo, digamos que arrancamos en nuestro `default.target`. Este objetivo agrupa la unidad `networking.service`, la unidad `crond.service`, etc., por lo que una vez que activamos una sola unidad, todo lo que está debajo de esa unidad también se activa.
+El `default.target` es un enlace simbólico que apunta al objetivo en el que el sistema arrancará por defecto, a menudo `graphical.target` en sistemas de escritorio.
+
+### Concepto Central: Unidades de Systemd
+
+Los objetos fundamentales que **systemd** administra se denominan "unidades". Una unidad es un archivo de configuración que describe un recurso o un servicio. El poder de la arquitectura de **system d** radica en su capacidad para administrar varios tipos de recursos, no solo servicios. Cada tipo de unidad se identifica por su extensión de archivo. Los tipos más comunes son:
+
+- **Unidades de servicio (`.service`):** Estas administran demonios o servicios del sistema, como un servidor web o una base de datos.
+- **Unidades de montaje (`.mount`):** Estas controlan los puntos de montaje del sistema de archivos.
+- **Unidades de objetivo (`.target`):** Se utilizan para agrupar otras unidades, creando puntos de sincronización durante el arranque.
+
+Por ejemplo, cuando el sistema arranca en `graphical.target`, esa unidad de objetivo asegura que todas sus dependencias, como `multi-user.target` y varias unidades de servicio como `network.service`, se inicien primero.
 
 ## Exercise
 
-Aunque no hay laboratorios específicos para este tema, recomendamos explorar la [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) completa para practicar habilidades y conceptos relacionados con Linux.
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 
-¿Qué unidad se utiliza para agrupar otras unidades?
+¿Qué unidad se utiliza para agrupar otras unidades? Por favor, responda con una sola palabra en inglés en minúsculas.
 
 ## Quiz Answer
 

@@ -1,22 +1,24 @@
 ---
 index: 6
 lang: "pt"
-title: "Metas do Systemd"
-meta_title: "Metas do Systemd - Init"
-meta_description: "Aprenda os fundamentos das unidades systemd e os comandos essenciais do systemctl. Entenda como gerenciar serviços, visualizar status e habilitar unidades no Linux. Comece sua jornada!"
-meta_keywords: "systemd, systemctl, serviços Linux, arquivos de unidade, iniciante, tutorial, guia, comandos Linux"
+title: "Objetivos do Systemd"
+meta_title: "Objetivos do Systemd - Init"
+meta_description: "Explore os objetivos do systemd e aprenda a gerenciar serviços Linux usando comandos essenciais do systemctl. Este guia abrange o básico dos arquivos de unidade systemd, como iniciar, parar e habilitar serviços, e visualizar seu status."
+meta_keywords: "systemd, systemctl, serviços Linux, arquivos de unidade, objetivos systemd, gerenciamento de serviços, unidades systemd, iniciante, tutorial, guia, comandos Linux"
 ---
 
 ## Lesson Content
 
-Não entraremos em detalhes sobre como escrever arquivos de unidade systemd. No entanto, faremos uma breve visão geral de um arquivo de unidade e como controlar unidades manualmente.
+Esta lição fornece uma visão geral fundamental dos arquivos de unidade systemd e como gerenciá-los com `systemctl`, a principal ferramenta para controlar o sistema init. Abordaremos a estrutura básica de um arquivo de unidade e os comandos essenciais para gerenciar serviços Linux.
 
-Aqui está um arquivo de unidade de serviço básico: foobar.service
+### Entendendo um Arquivo de Unidade Systemd
+
+A unit file (arquivo de unidade) do systemd é um arquivo de texto simples que descreve um serviço, um ponto de montagem, um dispositivo ou outro recurso que o systemd pode gerenciar. Aqui está um exemplo básico de um arquivo de unidade de serviço chamado `foobar.service`:
 
 ```
 [Unit]
-Description=My Foobar
-Before=bar.target
+Description=Meu Serviço Foobar
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/foobar
@@ -25,65 +27,85 @@ ExecStart=/usr/bin/foobar
 WantedBy=multi-user.target
 ```
 
-Este é um alvo de serviço simples. No início do arquivo, vemos uma seção para `[Unit]`. Isso nos permite dar uma descrição ao nosso arquivo de unidade, bem como controlar a ordem de ativação da unidade. A próxima parte é a seção `[Service]`; aqui, podemos iniciar, parar ou recarregar um serviço. E a seção `[Install]` é usada para dependências. Esta é apenas a ponta do iceberg para escrever arquivos systemd, então eu o imploro a ler sobre o assunto se quiser saber mais.
+Este arquivo de serviço simples é dividido em seções:
 
-Agora, vamos ver alguns comandos que você pode usar com unidades systemd:
+- **[Unit]**: Esta seção contém metadados e informações de dependência. A diretiva `Description` fornece um nome legível para a unidade. Diretivas como `After` e `Before` controlam a ordem de inicialização, garantindo que esta unidade inicie após a rede estar disponível.
+- **[Service]**: Esta seção define como gerenciar o serviço. A diretiva `ExecStart` é crucial, pois especifica o comando a ser executado para iniciar o serviço. Outras diretivas como `ExecStop` e `ExecReload` podem definir como parar ou recarregar o serviço.
+- **[Install]**: Esta seção define o comportamento da unidade quando ela é habilitada ou desabilitada com `systemctl`. A diretiva `WantedBy` informa ao systemd para iniciar este serviço como parte de um alvo específico, como o `multi-user.target` para uma inicialização padrão não gráfica.
 
-### Listar unidades
+Este é apenas um vislumbre dos arquivos de unidade systemd. Para configurações mais avançadas, é altamente recomendada uma leitura adicional sobre o tópico.
+
+### Comandos Essenciais do Systemctl
+
+Agora, vamos explorar os comandos essenciais do `systemctl` que você usará para interagir com as unidades systemd e gerenciar serviços Linux.
+
+### Listando Unidades Systemd
+
+Para ver todas as unidades ativas que o systemd está gerenciando atualmente, use o comando `list-units`.
 
 ```bash
 systemctl list-units
 ```
 
-### Ver status da unidade
+### Verificando o Status de uma Unidade
+
+Para visualizar o status detalhado de uma unidade específica, incluindo se ela está ativa, habilitada e suas entradas de log mais recentes, use o comando `status`.
 
 ```bash
 systemctl status networking.service
 ```
 
-### Iniciar um serviço
+### Gerenciando Estados de Serviço
+
+Você pode controlar o estado de execução de um serviço usando `start`, `stop` e `restart`.
+
+Para iniciar um serviço imediatamente:
 
 ```bash
 sudo systemctl start networking.service
 ```
 
-### Parar um serviço
+Para parar um serviço em execução:
 
 ```bash
 sudo systemctl stop networking.service
 ```
 
-### Reiniciar um serviço
+Para parar e depois iniciar o serviço novamente:
 
 ```bash
 sudo systemctl restart networking.service
 ```
 
-### Habilitar uma unidade
+### Habilitando e Desabilitando Serviços
+
+Habilitar um serviço cria um link simbólico que o conecta ao processo de inicialização, garantindo que ele inicie automaticamente. Desabilitá-lo remove esse link.
+
+Para habilitar um serviço para iniciar na inicialização:
 
 ```bash
 sudo systemctl enable networking.service
 ```
 
-### Desabilitar uma unidade
+Para desabilitar um serviço de iniciar na inicialização:
 
 ```bash
 sudo systemctl disable networking.service
 ```
 
-Novamente, você ainda não viu a profundidade que o systemd atinge, então leia sobre ele se quiser aprender mais.
+Estes comandos são os blocos de construção para o gerenciamento de serviços em sistemas Linux modernos. Dominá-los é um passo fundamental em sua jornada Linux.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre o gerenciamento de processos, que são frequentemente controlados por serviços systemd:
+A prática é fundamental para dominar novas habilidades. Este laboratório prático ajudará a reforçar sua compreensão do gerenciamento de processos, que são frequentemente controlados por serviços systemd:
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top`, ajustando a prioridade com `renice` e encerrando-os com `kill`. Este laboratório lhe dará experiência prática com os efeitos em tempo de execução do gerenciamento de unidades systemd.
+1.  **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro plano e em segundo plano, inspecionando-os com `ps`, monitorando recursos com `top`, ajustando a prioridade com `renice` e terminando-os com `kill`. Este laboratório lhe dará experiência prática com os efeitos em tempo de execução do gerenciamento de unidades systemd.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de processos no Linux.
+Este laboratório o ajudará a aplicar esses conceitos em um cenário do mundo real e a construir confiança no gerenciamento de processos no Linux.
 
 ## Quiz Question
 
-Qual é o comando para iniciar um serviço chamado peanut.service?
+What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
 
 ## Quiz Answer
 

@@ -1,17 +1,19 @@
 ---
 index: 4
 lang: "zh"
-title: "Upstart 作业"
-meta_title: "Upstart 作业 - Init"
-meta_description: "学习使用 initctl 命令在 Linux 中管理 Upstart 作业。了解作业状态、启动、停止和重启服务。提高您的 Linux 系统管理技能。"
-meta_keywords: "Upstart 作业，initctl, Linux 服务，系统管理，Linux 教程，初学者指南"
+title: "Upstart 任务"
+meta_title: "Upstart 任务 - Init"
+meta_description: "Linux 环境下使用 Upstart 任务管理服务的指南。学习使用 initctl 工具在 upstart Linux 系统上列出、启动、停止和重启任务。"
+meta_keywords: "Upstart 任务，initctl, upstart linux, Linux 服务，系统管理，init 系统，Linux 教程"
 ---
 
 ## Lesson Content
 
-Upstart 可以触发许多事件和作业运行。不幸的是，没有简单的方法可以查看事件或作业的来源，因此您必须在 `/etc/init` 中仔细检查作业配置。大多数情况下，您根本不需要查看 Upstart 作业配置文件，但您会希望更轻松地控制某些特定作业。在 Upstart 系统中，您可以使用许多有用的命令。
+Upstart 是一个基于事件的初始化系统，用于某些 **upstart linux** 发行版，以在系统启动和运行时管理服务和任务。它通过一套作业（jobs）和事件（events）来运作。虽然追踪每个事件的来源可能很复杂，通常需要您检查 `/etc/init` 中的作业配置文件，但更常见的是您需要直接从命令行管理这些作业。`initctl` 实用程序为此目的提供了一套命令。
 
-### 查看作业
+### 查看作业状态
+
+要查看所有已知 Upstart 作业及其当前状态的列表，请使用 `list` 命令。
 
 ```plaintext
 initctl list
@@ -21,36 +23,40 @@ console stop/waiting
 ...
 ```
 
-您将看到一个 Upstart 作业列表，它们具有不同的状态。在每一行中，作业名称是第一个值，第二个字段（在 `/` 之前）实际上是作业的目标。第三个值（在 `/` 之后）是当前状态。因此，我们看到 `shutdown` 作业最终想要停止，但它目前处于等待状态。作业状态和目标将随着您启动或停止作业而改变。
+输出显示作业名称、其目标（goal）和当前状态。在示例 `shutdown stop/waiting` 中，作业名称是 `shutdown`，其目标是 `stop`，当前状态是 `waiting`。当您与它们交互时，作业状态和目标将会改变。
 
-### 查看特定作业
+要检查特定作业的状态，请使用 `status` 命令。
 
 ```plaintext
 initctl status networking
 networking start/running
 ```
 
-我们不会深入探讨如何编写 Upstart 作业配置的细节；但是，我们已经知道这些配置中的作业是停止、启动和重新启动的。这些作业还会发出事件，因此它们可以启动其他作业。我们将介绍 Upstart 操作的手动命令，但如果您好奇，应该更深入地研究 `.conf` 文件。
+### 手动控制作业
 
-### 手动启动作业
+虽然 `/etc/init` 中的作业配置文件定义了作业如何启动、停止以及如何与事件交互，但您可以使用 `initctl` 手动覆盖这些操作。这对于故障排除或执行管理任务非常有用。
+
+要手动启动一个作业：
 
 ```bash
 sudo initctl start networking
 ```
 
-### 手动停止作业
+要手动停止一个作业：
 
 ```bash
 sudo initctl stop networking
 ```
 
-### 手动重启作业
+要手动重启一个作业，这是停止然后启动它的便捷快捷方式：
 
 ```bash
 sudo initctl restart networking
 ```
 
-### 手动发出事件
+### 发出自定义事件
+
+Upstart 作业由事件触发。您也可以手动“发出”（emit）一个事件，这对于触发自定义作业或用于测试目的非常有用。任何配置为在 `some_event` 上启动的作业都将由以下命令触发。
 
 ```bash
 sudo initctl emit some_event
@@ -58,15 +64,15 @@ sudo initctl emit some_event
 
 ## Exercise
 
-熟能生巧！虽然 Upstart 没有特定的实验，但了解如何调度和管理任务对于控制系统进程至关重要。这是一个动手实验，旨在加强您对任务管理的理解：
+实践造就完美！虽然 Upstart 没有特定的实验环境，但了解如何调度和管理任务对于控制系统进程至关重要。这是一个强化您对任务管理理解的动手实验：
 
-1. **[在 Linux 中使用 at 和 cron 调度任务](https://labex.io/zh/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 练习创建、管理和删除一次性任务和重复性任务，这些是与 Linux 环境（如 Upstart 处理的环境）中服务和任务管理方式相关的基本概念。
+1. **[在 Linux 中使用 at 和 cron 调度任务](https://labex.io/zh/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 练习创建、管理和删除一次性任务和定期任务，这些是与 Upstart 等 Linux 环境中服务和任务管理方式相关的基本概念。
 
-本实验将帮助您在实际场景中应用任务自动化概念，并增强管理系统操作的信心。
+此实验将帮助您在实际场景中应用任务自动化的概念，并增强管理系统操作的信心。
 
 ## Quiz Question
 
-我将如何手动重启一个名为 `peanuts` 的 Upstart 作业？
+您将如何手动重启一个名为 `peanuts` 的 Upstart 作业？请提供完整的命令。（注意：答案区分大小写，并且必须是英文。）
 
 ## Quiz Answer
 

@@ -3,17 +3,34 @@ index: 5
 lang: "en"
 title: "Distance Vector Protocols"
 meta_title: "Distance Vector Protocols - Routing"
-meta_description: "Learn about distance vector protocols like RIP, how they work, and their limitations for network routing. Understand hop count and network efficiency."
-meta_keywords: "distance vector protocols, RIP, routing information protocol, hop count, network routing, Linux networking, beginner guide, tutorial"
+meta_description: "A beginner guide to distance vector protocols in network routing. This tutorial explains how protocols like RIP use hop count to determine routes and covers their limitations for modern Linux networking."
+meta_keywords: "distance vector protocols, network routing, RIP, routing information protocol, hop count, Linux networking, beginner guide, tutorial"
 ---
 
 ## Lesson Content
 
-Distance vector protocols determine the path to other networks using the hop count a packet takes across the network. For example, if network A is 3 hops away and network B is next to network A, then we assume network B must be 4 hops away. In distance vector protocols, the next route would be the one with the least number of hops.
+Distance vector protocols are a fundamental category of routing protocols used in computer networks. They determine the best path for data packets based on distance, which is typically measured by **hop count**. In this type of **network routing**, each router maintains a table of the "distance" to all known networks.
 
-Distance vector protocols are great for small networks. However, when networks start to scale, it takes longer for the routers to converge because they periodically send the entire routing table out to every router. Another downside to distance vector protocols is efficiency; they choose routes that are closer in hops, but this may not always be the most efficient route.
+### How Distance Vector Protocols Work
 
-One of the common distance vector protocols is RIP (Routing Information Protocol). It broadcasts the routing table to every router in the network every 30 seconds. For a large network, this can consume significant resources. Because of this, RIP limits its hop count to 15.
+The core principle of a distance vector protocol is straightforward: routers share their routing information with their immediate neighbors. This process is sometimes called "routing by rumor." For example, if Router A knows it is 3 hops away from Network X, and Router B is a direct neighbor of Router A, Router B can infer that it is 4 hops away from Network X via Router A. When multiple paths to the same destination exist, the protocol will always choose the path with the lowest **hop count**.
+
+### Advantages and Disadvantages
+
+**Distance vector protocols** are simple to configure and work well in small, stable networks. However, they have significant limitations that make them less suitable for larger, more complex environments.
+
+One major downside is slow convergence. Routers periodically broadcast their entire routing table to their neighbors, which can consume significant bandwidth and processing power, especially as the network grows. If a network change occurs, it can take a long time for that information to propagate to all routers.
+
+Another key disadvantage is that the shortest path in terms of **hop count** is not always the most efficient. A path with fewer hops might have slower links (e.g., 10 Mbps) compared to a path with more hops that uses faster links (e.g., 1 Gbps). Distance vector protocols are generally unaware of link speed, leading to suboptimal routing decisions.
+
+### RIP A Common Example
+
+One of the most well-known **distance vector protocols** is the **Routing Information Protocol (RIP)**. It is a classic example that clearly demonstrates the principles and limitations of this protocol family.
+
+- **Periodic Updates:** RIP broadcasts its entire routing table to all neighbors every 30 seconds.
+- **Hop Count Limit:** To prevent routing loops and control network traffic, RIP enforces a maximum **hop count** of 15. Any route that requires 16 hops is considered unreachable.
+
+Because of these characteristics, RIP is rarely used in modern production networks but serves as an excellent learning tool in a **beginner guide** to **Linux networking** and routing concepts.
 
 ## Exercise
 

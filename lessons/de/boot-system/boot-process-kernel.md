@@ -1,35 +1,41 @@
 ---
 index: 4
 lang: "de"
-title: "Bootvorgang: Kernel"
-meta_title: "Bootvorgang: Kernel - Das System booten"
-meta_description: "Erfahren Sie mehr über den Linux-Bootvorgang, die Kernel-Initialisierung und die Rolle von initramfs. Verstehen Sie, wie der Kernel das Root-Dateisystem mountet. Leitfaden zum Linux-Bootvorgang."
-meta_keywords: "Linux-Bootvorgang, Kernel-Boot, initramfs, initrd, Root-Dateisystem, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+title: "Boot-Prozess: Kernel"
+meta_title: "Boot-Prozess: Kernel – System starten"
+meta_description: "Erkunden Sie den Linux-Kernel-Bootprozess. Erfahren Sie, wie initramfs Treiber von einem temporären Dateisystem lädt, um die endgültige Boot-Root-Partition einzuhängen. Verstehen Sie die Schritte von der Kernel-Ladung bis zur Ausführung von init."
+meta_keywords: "Boot-Root, initramfs, Kernel-Boot, Boot-Partition, initramfs Ubuntu, /etc/default/grub, Linux-Bootprozess, Root-Dateisystem, Kernel-Initialisierung"
 ---
 
 ## Lesson Content
 
-Nachdem unser Bootloader nun die notwendigen Parameter übergeben hat, wollen wir sehen, wie er startet:
+Sobald der Bootloader den Kernel in den Speicher geladen und die notwendigen Parameter übergeben hat, übernimmt der Kernel die Kontrolle über das System. Lassen Sie uns untersuchen, was als Nächstes geschieht.
 
-### Initrd vs Initramfs
+### Kernel-Initialisierung und das Initramfs
 
-Es gibt ein kleines Henne-Ei-Problem, wenn wir über den Kernel-Boot sprechen. Der Kernel verwaltet die Hardware unseres Systems; jedoch sind nicht alle Treiber dem Kernel während des Bootvorgangs verfügbar. Wir sind also auf ein temporäres Root-Dateisystem angewiesen, das nur die wesentlichen Module enthält, die der Kernel benötigt, um auf den Rest der Hardware zuzugreifen. In älteren Linux-Versionen wurde diese Aufgabe der initrd (initial ramdisk) zugewiesen. Der Kernel mountete die initrd, holte die notwendigen Boot-Treiber, und wenn er mit dem Laden alles Notwendigen fertig war, ersetzte er die initrd durch das eigentliche Root-Dateisystem. Heutzutage haben wir etwas namens initramfs; dies ist ein temporäres Root-Dateisystem, das in den Kernel selbst integriert ist, um alle notwendigen Treiber für das echte Root-Dateisystem zu laden, sodass das Auffinden der initrd-Datei nicht mehr nötig ist.
+Eine klassische Herausforderung beim Booten besteht darin, dass der Kernel Treiber benötigt, um auf Hardwaregeräte zuzugreifen, diese Treiber sich aber oft auf einem Speichergerät befinden, auf das der Kernel noch nicht zugreifen kann. Um dieses Problem zu lösen, verwendet Linux ein temporäres Root-Dateisystem.
 
-### Das Root-Dateisystem mounten
+In älteren Systemen wurde dies durch eine `initrd` (initial RAM disk) gehandhabt. Der Kernel lud dieses Plattenabbild, fand die notwendigen Treiber und wechselte dann zum eigentlichen Root-Dateisystem. Moderne Systeme, einschließlich Distributionen wie Ubuntu, verwenden `initramfs` (initial RAM filesystem). Im Gegensatz zu `initrd` ist `initramfs` ein `cpio`-Archiv, das direkt im Speicher in ein temporäres Dateisystem entpackt wird. Dieser Ansatz ist effizienter, da der Aufwand für die Erstellung und das Einhängen eines Blockgeräts entfällt. Das `initramfs` enthält nur die wesentlichen Module, die der Kernel benötigt, um auf die eigentliche `boot partition` und andere Hardware zuzugreifen.
 
-Nun hat der Kernel alle Module, die er benötigt, um ein Root-Gerät zu erstellen und die Root-Partition zu mounten. Bevor es weitergeht, wird die Root-Partition zunächst im Nur-Lese-Modus gemountet, damit fsck sicher ausgeführt werden und die Systemintegrität überprüfen kann. Danach wird das Root-Dateisystem im Lese-Schreib-Modus erneut gemountet. Dann lokalisiert der Kernel das init-Programm und führt es aus.
+### Einhängen des Boot-Root-Dateisystems
+
+Mit den aus dem `initramfs` geladenen Treibern kann der Kernel nun das Haupt-`boot root`-Dateisystem lokalisieren und einhängen. Der Speicherort dieses Dateisystems wird dem Kernel typischerweise als Parameter vom Bootloader übergeben, was in Dateien wie `/etc/default/grub` konfiguriert werden kann.
+
+Zuerst hängt der Kernel die `boot root`-Partition im Nur-Lese-Modus ein. Dies ist eine Sicherheitsmaßnahme, die es dem Dienstprogramm `fsck` (file system check) ermöglicht, die Integrität des Dateisystems zu überprüfen, ohne Datenkorruption zu riskieren. Nachdem die Überprüfung erfolgreich abgeschlossen wurde, hängt der Kernel das Dateisystem im Lese-/Schreibmodus erneut ein.
+
+Schließlich, wenn das Root-Dateisystem vollständig verfügbar ist, startet der Kernel das allererste Benutzerprogramm: `init`. Dieses Programm ist dafür verantwortlich, den Rest des Systems hochzufahren.
 
 ## Exercise
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis des Linux-Bootvorgangs zu vertiefen:
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis des Linux-Bootvorgangs zu festigen:
 
-- **[Das GRUB2-Bootmenü in Linux anpassen](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** – Lernen Sie, das GRUB2-Bootmenü zu ändern, einschließlich der Änderung des Timeouts und des Standardeintrags, und wenden Sie diese Änderungen an. Dieses Labor wird Ihnen helfen zu verstehen, wie der Bootloader konfiguriert werden kann.
+- **[Anpassen des GRUB2 Boot-Menüs unter Linux](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Lernen Sie, wie Sie das GRUB2 Boot-Menü anpassen, einschließlich der Änderung des Timeouts und des Standardeintrags, und wie Sie diese Änderungen anwenden. Dieses Labor hilft Ihnen zu verstehen, wie der Bootloader konfiguriert werden kann.
 
-Dieses Labor wird Ihnen helfen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Linux-Bootkonfiguration aufzubauen.
+Dieses Labor hilft Ihnen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Linux-Bootkonfiguration aufzubauen.
 
 ## Quiz Question
 
-Was wird in modernen Systemen verwendet, um ein temporäres Root-Dateisystem zu laden?
+What is used in modern systems to load a temporary root filesystem? Please answer in English, using only lowercase letters.
 
 ## Quiz Answer
 

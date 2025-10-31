@@ -1,25 +1,35 @@
 ---
 index: 7
 lang: "pt"
-title: "Border Gateway Protocol"
-meta_title: "Border Gateway Protocol - Roteamento"
-meta_description: "Aprenda sobre BGP, o Border Gateway Protocol, e como ele permite o roteamento na internet entre sistemas autônomos. Entenda os conceitos básicos do BGP para iniciantes."
-meta_keywords: "BGP, Border Gateway Protocol, roteamento de internet, sistemas autônomos, redes Linux, tutorial BGP, protocolos de rede, guia para iniciantes"
+title: "Protocolo de Gateway de Borda"
+meta_title: "Protocolo de Gateway de Borda - Roteamento"
+meta_description: "Explore os fundamentos do Protocolo de Gateway de Borda (BGP), o protocolo central que possibilita o roteamento na internet. Aprenda como o BGP facilita a comunicação entre sistemas autônomos e os princípios do roteamento do protocolo de gateway de borda."
+meta_keywords: "BGP, Protocolo de Gateway de Borda, roteamento de protocolo de gateway de borda, roteamento de internet, sistemas autônomos, rede Linux, tutorial BGP, protocolos de rede"
 ---
 
 ## Lesson Content
 
-O último protocolo importante que discutiremos é o BGP. O BGP é basicamente como a internet funciona. Ele é usado para coletar e trocar informações de roteamento entre sistemas autônomos. Pense em um sistema autônomo como um provedor de serviços de internet, uma empresa, uma universidade, qualquer organização, etc. Sem o BGP, esses sistemas não saberiam como se comunicar; eles estariam isolados. Em vez de rotear dentro desses sistemas autônomos, o BGP roteia entre eles.
+### A Espinha Dorsal da Internet
 
-Digamos que você esteja na sua rede doméstica e eu esteja trabalhando no Starbucks. Eu quero me comunicar com você, então envio um e-mail. O pacote de rede viaja pela rede do Starbucks, salta por lá e passa pelas tabelas de roteamento da rede do Starbucks até finalmente chegar a um ponto na fronteira da rede do Starbucks e passá-lo para um roteador Border Gateway. Este roteador contém as informações para o meu pacote sair da rede do Starbucks e atravessar outras redes.
+O último protocolo importante que abordaremos é o Border Gateway Protocol (BGP). O BGP é o protocolo fundamental que permite que a internet funcione, gerenciando como os pacotes de dados são roteados através de sua vasta coleção de redes. Ele é especificamente projetado para trocar informações de roteamento e alcançabilidade entre diferentes Sistemas Autônomos (AS).
+
+### O que é um Sistema Autônomo?
+
+Um Sistema Autônomo (AS) é uma grande rede ou um grupo de redes gerenciado por uma única entidade administrativa. Exemplos incluem provedores de serviços de internet (ISPs), grandes corporações, universidades e agências governamentais. Sem o BGP, esses sistemas estariam isolados e incapazes de se comunicar entre si. Enquanto outros protocolos gerenciam o roteamento _dentro_ de um AS, o BGP é responsável pelo roteamento _entre_ eles.
+
+### O Processo de Roteamento do Border Gateway Protocol
+
+A função principal do BGP é o **roteamento do Border Gateway Protocol**. Vamos considerar um exemplo. Imagine que você está em sua rede doméstica e um amigo está usando o Wi-Fi em uma cafeteria. Quando seu amigo lhe envia uma mensagem, o pacote de dados primeiro viaja pela rede local da cafeteria. Ele segue as tabelas de roteamento internas até atingir um roteador de "fronteira" na borda dessa rede.
+
+Esse roteador de fronteira usa o BGP para determinar o melhor caminho para o pacote sair de seu próprio AS e viajar através de outros sistemas autônomos para, eventualmente, alcançar o AS da sua rede doméstica. O BGP não apenas encontra um caminho; ele toma decisões de política para encontrar o caminho _melhor_ com base em regras configuradas por administradores de rede, garantindo uma troca de dados eficiente e confiável em toda a internet global.
 
 ## Exercise
 
-Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Trilha de Aprendizagem do Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 
-Qual protocolo basicamente faz a internet funcionar?
+Qual protocolo basicamente faz a internet funcionar? Por favor, responda usando a sigla em inglês em letras maiúsculas.
 
 ## Quiz Answer
 

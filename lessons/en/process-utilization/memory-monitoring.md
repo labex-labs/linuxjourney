@@ -3,13 +3,17 @@ index: 6
 lang: "en"
 title: "Memory Monitoring"
 meta_title: "Memory Monitoring - Process Utilization"
-meta_description: "Learn to monitor Linux memory usage with vmstat. Understand memory, swap, and CPU metrics for system performance. Start your Linux journey!"
-meta_keywords: "vmstat, Linux memory monitoring, system performance, Linux tutorial, memory usage, beginner Linux, Linux guide"
+meta_description: "Master Linux memory monitoring with the vmstat command. This guide explains how to use this powerful memory utilization monitor to analyze system performance metrics."
+meta_keywords: "memory monitoring, memory utilization monitor, vmstat, linux memory, system performance, memory usage, linux tutorial"
 ---
 
 ## Lesson Content
 
-In addition to CPU monitoring and I/O monitoring, you can monitor your memory usage with **vmstat**.
+Effective system administration requires keeping a close eye on resource usage, and **memory monitoring** is a critical part of this process. When a system runs low on memory, its performance can degrade significantly. Linux provides several tools to help you track memory consumption, and one of the most versatile is `vmstat`.
+
+### Introduction to vmstat
+
+The `vmstat` (virtual memory statistics) command is a powerful **memory utilization monitor** that reports information about processes, memory, paging, block I/O, traps, and CPU activity. Running it without any arguments provides a snapshot of the system's current state since the last boot.
 
 ```bash
 pete@icebox:~$ vmstat
@@ -18,41 +22,44 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
 ```
 
-The fields are as follows:
+The output is organized into several columns. Let's break down what each field means.
 
-### procs
+### Procs
 
-- r - Number of processes for run time
-- b - Number of processes in uninterruptible sleep
+- `r`: The number of runnable processes waiting for run time.
+- `b`: The number of processes in uninterruptible sleep, typically waiting for I/O.
 
-### memory
+### Memory
 
-- swpd - Amount of virtual memory used
-- free - Amount of free memory
-- buff - Amount of memory used as buffers
-- cache - Amount of memory used as cache
+- `swpd`: The amount of virtual memory used (in kilobytes).
+- `free`: The amount of idle memory (in kilobytes).
+- `buff`: The amount of memory used as buffers.
+- `cache`: The amount of memory used as a page cache.
 
-### swap
+### Swap
 
-- si - Amount of memory swapped in from disk
-- so - Amount of memory swapped out to disk
+- `si`: The amount of memory swapped in from disk per second (in kilobytes). High values indicate the system is low on physical memory.
+- `so`: The amount of memory swapped out to disk per second (in kilobytes). This should ideally be zero.
 
-### io
+### IO
 
-- bi - Amount of blocks received in from a block device
-- bo - Amount of blocks sent out to a block device
+- `bi`: Blocks received from a block device (blocks/s).
+- `bo`: Blocks sent to a block device (blocks/s).
 
-### system
+### System
 
-- in - Number of interrupts per second
-- cs - Number of context switches per second
+- `in`: The number of interrupts per second, including the clock.
+- `cs`: The number of context switches per second.
 
-### cpu
+### CPU
 
-- us - Time spent in user time
-- sy - Time spent in kernel time
-- id - Time spent idle
-- wa - Time spent waiting for IO
+These are percentages of total CPU time.
+
+- `us`: Time spent running non-kernel code (user time).
+- `sy`: Time spent running kernel code (system time).
+- `id`: Time spent idle.
+- `wa`: Time spent waiting for I/O.
+- `st`: Time stolen from a virtual machine (for virtualized environments).
 
 ## Exercise
 
@@ -65,7 +72,7 @@ These labs will help you apply the concepts of system resource monitoring in rea
 
 ## Quiz Question
 
-What tool is used to view memory utilization?
+What tool is used to view memory utilization? (Please answer in English, paying attention to case sensitivity).
 
 ## Quiz Answer
 

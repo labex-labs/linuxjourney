@@ -2,35 +2,41 @@
 index: 4
 lang: "es"
 title: "NFS"
-meta_title: "NFS - Compartir en red"
-meta_description: "Aprenda sobre la configuración del cliente NFS y el montaje automático en Linux. Comprenda cómo conectarse a recursos compartidos de archivos de red y usar el montaje automático para un acceso sin interrupciones."
-meta_keywords: "cliente NFS, automount, Network File System, redes Linux, comando mount, tutorial Linux, principiante"
+meta_title: "NFS - Compartición de Red"
+meta_description: "Descubra cómo usar el Sistema de Archivos de Red (NFS) en Linux. Esta lección cubre la configuración de un cliente NFS, el uso del comando mount y la configuración de automount para acceso fluido a recursos compartidos de red."
+meta_keywords: "NFS, cliente NFS, automount, Sistema de Archivos de Red, redes Linux, comando mount, tutorial Linux, principiante"
 ---
 
 ## Lesson Content
 
-El recurso compartido de archivos de red más estándar para Linux es NFS (Network File System). NFS permite que un servidor comparta directorios y archivos con uno o más clientes a través de la red.
+El protocolo más estándar para compartir archivos en red en Linux es NFS, que significa **Network File System** (Sistema de Archivos de Red). NFS permite que un servidor comparta sus directorios y archivos con una o más máquinas cliente a través de una red, haciendo que parezcan recursos locales.
 
-No entraremos en los detalles de cómo crear un servidor NFS, ya que puede ser complejo; sin embargo, discutiremos la configuración de clientes NFS.
+Esta lección se centrará en la configuración de un **cliente NFS**, ya que configurar un servidor NFS puede ser un proceso más complejo.
 
-### Configuración del cliente NFS
+### Montaje de una Carpeta Compartida NFS
+
+Para conectarse a una carpeta compartida NFS, primero debe asegurarse de que el servicio cliente NFS se esté ejecutando. Luego, puede usar el comando `mount` para adjuntar el directorio remoto a un punto de montaje local en su sistema.
 
 ```bash
 sudo service nfsclient start
-sudo mount server:/directory /mount_directory
+sudo mount servidor:/directorio /directorio_montaje
 ```
 
-### Montaje automático
+En este ejemplo, `servidor:/directorio` es la carpeta compartida remota a la que desea acceder, y `/directorio_montaje` es el directorio local donde se montará la carpeta compartida.
 
-Supongamos que usa el servidor NFS con bastante frecuencia y desea mantenerlo montado permanentemente. Normalmente, podría pensar en editar el archivo `/etc/fstab`, pero es posible que no siempre obtenga una conexión al servidor, y eso puede causar problemas al iniciar. En su lugar, lo que desea hacer es configurar el montaje automático para que pueda conectarse al servidor NFS cuando lo necesite. Esto se hace con la herramienta **automount** o, en versiones recientes de Linux, **amd**. Cuando se accede a un archivo en un directorio especificado, automount buscará el servidor remoto y lo montará automáticamente.
+### Uso de Automount para NFS
+
+Si accede frecuentemente a una carpeta compartida NFS, podría considerar hacer el montaje permanente. Si bien agregar una entrada al archivo `/etc/fstab` es un método común para unidades locales, puede causar retrasos significativos en el arranque o incluso fallos si la conexión de red o el servidor NFS no están disponibles durante el inicio.
+
+Una mejor solución para las carpetas compartidas de red es **automount**. Este servicio, administrado por la herramienta `automount` o su implementación moderna `amd`, monta dinámicamente un sistema de archivos bajo demanda. Cuando se accede a un archivo o directorio dentro de una ruta especificada, automount se conecta automáticamente al servidor remoto y monta la carpeta compartida. Esto asegura un acceso fluido cuando es necesario sin afectar el proceso de arranque del sistema.
 
 ## Exercise
 
-Si bien no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
+Aunque no hay laboratorios específicos para este tema, recomendamos explorar la [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) completa para practicar las habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 
-¿Qué herramienta se utiliza para gestionar los puntos de montaje automáticamente?
+What tool is used to manage mount points automatically? Please answer in English, and note that the answer is case-sensitive.
 
 ## Quiz Answer
 

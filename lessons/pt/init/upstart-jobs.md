@@ -1,17 +1,19 @@
 ---
 index: 4
 lang: "pt"
-title: "Tarefas Upstart"
-meta_title: "Tarefas Upstart - Init"
-meta_description: "Aprenda a gerenciar tarefas Upstart no Linux usando comandos initctl. Entenda o status da tarefa, inicie, pare e reinicie serviços. Melhore suas habilidades de administração de sistema Linux."
-meta_keywords: "tarefas Upstart, initctl, serviços Linux, administração de sistema, tutorial Linux, guia para iniciantes"
+title: "Empregos Upstart"
+meta_title: "Empregos Upstart - Init"
+meta_description: "Um guia para gerenciar serviços com empregos Upstart em um ambiente Linux. Aprenda a usar o utilitário initctl para listar, iniciar, parar e reiniciar trabalhos em um sistema Linux upstart."
+meta_keywords: "Empregos Upstart, initctl, upstart linux, serviços Linux, administração de sistema, sistema init, tutorial Linux"
 ---
 
 ## Lesson Content
 
-O Upstart pode acionar muitos eventos e tarefas para serem executados. Infelizmente, não há uma maneira fácil de ver de onde um evento ou tarefa se originou, então você terá que investigar as configurações de tarefas em `/etc/init`. Na maioria das vezes, você nunca precisará olhar para os arquivos de configuração de tarefas do Upstart, mas você vai querer controlar algumas tarefas específicas mais facilmente. Existem muitos comandos úteis que você pode usar em um sistema Upstart.
+O Upstart é um sistema init baseado em eventos usado em algumas distribuições **upstart linux** para gerenciar serviços e tarefas durante a inicialização e enquanto o sistema está em execução. Ele opera através de um sistema de jobs (tarefas) e eventos. Embora rastrear a origem de cada evento possa ser complexo, muitas vezes exigindo que você explore as configurações de jobs em `/etc/init`, você mais comumente precisará gerenciar esses jobs diretamente da linha de comando. O utilitário `initctl` fornece um conjunto de comandos para esse fim.
 
-### Visualizar tarefas
+### Visualizando o Status do Job
+
+Para ver uma lista de todos os jobs Upstart conhecidos e seus estados atuais, use o comando `list`.
 
 ```plaintext
 initctl list
@@ -21,36 +23,40 @@ console stop/waiting
 ...
 ```
 
-Você verá uma lista de tarefas do Upstart com diferentes status aplicados a elas. Em cada linha, o nome da tarefa é o primeiro valor, e o segundo campo (antes do `/`) é na verdade o objetivo da tarefa. O terceiro valor (depois do `/`) é o status atual. Assim, vemos que nossa tarefa `shutdown` eventualmente quer parar, mas está atualmente em estado de espera. O status e os objetivos da tarefa mudarão à medida que você iniciar ou parar tarefas.
+A saída exibe o nome do job, seu objetivo (goal) e seu status atual. No exemplo `shutdown stop/waiting`, o nome do job é `shutdown`, seu objetivo é `stop` e seu status atual é `waiting`. O status e os objetivos do job mudarão conforme você interage com eles.
 
-### Visualizar tarefa específica
+Para verificar o status de um job específico, use o comando `status`.
 
 ```plaintext
 initctl status networking
 networking start/running
 ```
 
-Não entraremos em detalhes sobre como escrever uma configuração de tarefa do Upstart; no entanto, já sabemos que as tarefas são paradas, iniciadas e reiniciadas nessas configurações. Essas tarefas também emitem eventos, então elas podem iniciar outras tarefas. Abordaremos os comandos manuais da operação do Upstart, mas se você estiver curioso, deve aprofundar-se nos arquivos `.conf`.
+### Controlando Jobs Manualmente
 
-### Iniciar uma tarefa manualmente
+Embora os arquivos de configuração de jobs em `/etc/init` definam como os jobs iniciam, param e interagem com eventos, você pode anular manualmente essas ações usando `initctl`. Isso é útil para solução de problemas ou para realizar tarefas administrativas.
+
+Para iniciar um job manualmente:
 
 ```bash
 sudo initctl start networking
 ```
 
-### Parar uma tarefa manualmente
+Para parar um job manualmente:
 
 ```bash
 sudo initctl stop networking
 ```
 
-### Reiniciar uma tarefa manualmente
+Para reiniciar um job manualmente, que é um atalho conveniente para pará-lo e depois iniciá-lo:
 
 ```bash
 sudo initctl restart networking
 ```
 
-### Emitir um evento manualmente
+### Emitindo Eventos Personalizados
+
+Jobs Upstart são acionados por eventos. Você também pode "emitir" um evento manualmente, o que pode ser útil para acionar jobs personalizados ou para fins de teste. Qualquer job configurado para iniciar em `some_event` seria acionado pelo seguinte comando.
 
 ```bash
 sudo initctl emit some_event
@@ -58,15 +64,15 @@ sudo initctl emit some_event
 
 ## Exercise
 
-Practice makes perfect! While there are no specific labs for Upstart, understanding how to schedule and manage tasks is crucial for controlling system processes. Here's a hands-on lab to reinforce your understanding of task management:
+A prática leva à perfeição! Embora não existam laboratórios específicos para Upstart, entender como agendar e gerenciar tarefas é crucial para controlar processos do sistema. Aqui está um laboratório prático para reforçar sua compreensão do gerenciamento de tarefas:
 
-1. **[Agendar Tarefas com at e cron no Linux](https://labex.io/pt/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Pratique a criação, gerenciamento e remoção de tarefas únicas e recorrentes, que são conceitos fundamentais relacionados a como os serviços e tarefas são gerenciados em ambientes Linux como os tratados pelo Upstart.
+1. **[Agendar Tarefas com at e cron no Linux](https://labex.io/pt/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Pratique a criação, gerenciamento e remoção de jobs únicos e recorrentes, que são conceitos fundamentais relacionados à forma como serviços e tarefas são gerenciados em ambientes Linux como os tratados pelo Upstart.
 
-This lab will help you apply the concepts of task automation in real scenarios and build confidence with managing system operations.
+Este laboratório ajudará você a aplicar os conceitos de automação de tarefas em cenários reais e a ganhar confiança no gerenciamento de operações do sistema.
 
 ## Quiz Question
 
-Como eu reiniciaria manualmente uma tarefa Upstart chamada `peanuts`?
+Como você reiniciaria manualmente um job Upstart chamado `peanuts`? Por favor, forneça o comando completo. (Nota: A resposta diferencia maiúsculas de minúsculas e deve estar em inglês.)
 
 ## Quiz Answer
 
