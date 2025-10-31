@@ -3,41 +3,41 @@ index: 5
 lang: "pt"
 title: "Processo de Inicialização: Init"
 meta_title: "Processo de Inicialização: Init - Inicialize o Sistema"
-meta_description: "Aprenda sobre os sistemas init do Linux: System V, Upstart e systemd. Entenda seus papéis no processo de inicialização e como eles gerenciam serviços. Comece sua jornada no Linux!"
-meta_keywords: "Linux init, systemd, System V init, processo de inicialização do Linux, tutorial de Linux, Linux para iniciantes, guia de Linux"
+meta_description: "Explore o núcleo do processo de inicialização do Linux neste guia para iniciantes. Aprenda sobre os diferentes sistemas init do Linux, incluindo o tradicional System V, Upstart e o padrão moderno, systemd. Entenda como esses sistemas iniciam e gerenciam serviços em sua máquina."
+meta_keywords: "init Linux, systemd, System V init, Upstart, processo de inicialização Linux, tutorial Linux, Linux para iniciantes, guia Linux"
 ---
 
 ## Lesson Content
 
-Discutimos o init em lições anteriores e sabemos que é o primeiro processo a ser iniciado, e ele inicia todos os outros serviços essenciais em nosso sistema. Mas como?
+Como aprendemos, o processo `init` é o primeiro processo a ser executado durante o processo de inicialização (boot) do Linux. Ele é o pai de todos os outros processos e é responsável por iniciar os serviços essenciais que tornam seu sistema utilizável. Mas como ele realiza isso?
 
-Existem, na verdade, três implementações principais de init no Linux:
+Existem três grandes implementações do sistema init do Linux, cada uma com uma abordagem diferente para gerenciar serviços.
 
-### System V init (sysv)
+### System V Init
 
-Este é o sistema init tradicional. Ele inicia e para processos sequencialmente com base em scripts de inicialização. O estado da máquina é denotado por runlevels; cada runlevel inicia ou para uma máquina de uma maneira diferente.
+O System V init, frequentemente chamado de `sysvinit`, é o sistema init tradicional do Linux. Ele segue um procedimento de inicialização sequencial definido por scripts. O estado do sistema é gerenciado através de _runlevels_ (níveis de execução), onde cada _runlevel_ (ex: modo de usuário único, modo multiusuário com rede) tem um conjunto específico de serviços para iniciar ou parar. Este foi o padrão por muito tempo no processo de boot clássico do Linux.
 
 ### Upstart
 
-Este é o init que você encontrará em instalações mais antigas do Ubuntu. O Upstart usa a ideia de jobs e eventos e funciona iniciando jobs que executam certas ações em resposta a eventos.
+Encontrado em versões mais antigas do Ubuntu, o Upstart é um sistema init baseado em eventos. Ele se afastou do modelo estritamente sequencial do System V. Em vez disso, o Upstart inicia e para serviços (chamados _jobs_) em resposta a eventos do sistema, como um dispositivo de rede se tornando disponível. Isso permite tempos de inicialização mais flexíveis e rápidos.
 
-### Systemd
+### systemd
 
-Este é o novo padrão para init; é orientado a objetivos. Basicamente, você tem um objetivo que deseja alcançar, e o systemd tenta satisfazer as dependências do objetivo para completá-lo.
+O padrão moderno para o sistema init do Linux é o `systemd`. É um sistema orientado a objetivos que gerencia dependências de forma agressiva. Em vez de apenas iniciar uma lista de serviços, você define um estado alvo (como uma interface gráfica), e o `systemd` trabalha para satisfazer todas as dependências desse alvo, frequentemente iniciando serviços em paralelo para acelerar significativamente o processo de boot.
 
-Temos um curso inteiro sobre sistemas Init onde vamos nos aprofundar em cada um desses sistemas em mais detalhes.
+Temos um curso inteiro sobre Sistemas Init onde mergulharemos em cada um desses sistemas com mais detalhes.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos processos Linux e como o sistema os gerencia:
+Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos processos Linux e como o sistema os gerencia:
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e terminando-os com `kill`. Este laboratório o ajudará a entender o ciclo de vida e o controle dos processos, que são fundamentais para como o `init` opera.
+1.  **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e terminando-os com `kill`. Este laboratório ajudará você a entender o ciclo de vida e o controle dos processos, que são fundamentais para o funcionamento do `init`.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de processos Linux.
+Estes laboratórios ajudarão você a aplicar esses conceitos em cenários do mundo real e a ganhar confiança no gerenciamento de processos Linux.
 
 ## Quiz Question
 
-Qual é o padrão mais recente para init?
+Qual é o padrão mais recente para init? (Responda apenas com letras minúsculas em inglês)
 
 ## Quiz Answer
 

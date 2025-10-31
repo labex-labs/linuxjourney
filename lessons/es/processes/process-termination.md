@@ -3,37 +3,48 @@ index: 5
 lang: "es"
 title: "Terminación de Procesos"
 meta_title: "Terminación de Procesos - Procesos"
-meta_description: "Aprende sobre la terminación de procesos en Linux, incluyendo procesos huérfanos y zombie. Comprende las llamadas al sistema _exit y wait para una gestión eficaz de los procesos."
-meta_keywords: "terminación de procesos Linux, procesos zombie, procesos huérfanos, llamada al sistema wait, _exit, tutorial Linux, Linux para principiantes"
+meta_description: "Explore la terminación de procesos en Linux, la llamada al sistema wait, y las diferencias clave en el debate sobre procesos zombis vs. huérfanos. Aprenda a gestionar los estados de los procesos hijos de linux kill para un sistema estable."
+meta_keywords: "Terminación de procesos Linux, proceso zombi, proceso huérfano, proceso zombi vs huérfano, linux kill proceso hijo, llamada al sistema wait, _exit, gestión de procesos"
 ---
 
 ## Lesson Content
 
-Ahora que sabemos lo que sucede cuando se crea un proceso, ¿qué ocurre cuando ya no lo necesitamos? Ten en cuenta que a veces Linux puede ponerse un poco oscuro...
+### El Proceso de Terminación
 
-Un proceso puede salir usando la llamada al sistema `_exit`. Esto liberará los recursos que ese proceso estaba usando para su reasignación. Así que cuando un proceso está listo para terminar, le informa al kernel por qué está terminando con algo llamado estado de terminación. Lo más común es que un estado de 0 signifique que el proceso se ejecutó con éxito. Sin embargo, eso no es suficiente para terminar completamente un proceso. El proceso padre tiene que reconocer la terminación del proceso hijo usando la llamada al sistema `wait`, y lo que esto hace es verificar el estado de terminación del proceso hijo. Sé que es espantoso pensarlo, pero la llamada `wait` es una necesidad; después de todo, ¿qué padre no querría saber cómo murió su hijo?
+Una vez que se crea un proceso, ¿cómo finaliza? La terminación de un proceso es una parte crítica del ciclo de vida del proceso, asegurando que los recursos del sistema se gestionen de manera efectiva.
 
-Hay otra forma de terminar un proceso, y eso implica el uso de señales, lo cual discutiremos pronto.
+Un proceso típicamente termina al llamar a la llamada al sistema `_exit`. Esta acción indica al kernel que el proceso ha finalizado y que sus recursos, como la memoria y los descriptores de archivos, pueden ser recuperados. Al salir, el proceso proporciona un estado de terminación al kernel, que es un valor entero. Por convención, un estado de 0 indica una ejecución exitosa, mientras que un valor distinto de cero señala un error.
 
-### Procesos Huérfanos
+Sin embargo, llamar a `_exit` no borra inmediatamente el proceso. El proceso padre debe reconocer la terminación de su hijo utilizando la llamada al sistema `wait`. Esta llamada permite al padre recuperar el estado de terminación del hijo. Este mecanismo de dos pasos es esencial para la limpieza adecuada de los procesos. Otra forma de `linux kill child process` (terminar proceso hijo en Linux) es mediante el uso de señales, un tema que exploraremos en una lección posterior.
 
-Cuando un proceso padre muere antes que un proceso hijo, el kernel sabe que no va a recibir una llamada `wait`, así que en su lugar convierte a estos procesos en "huérfanos" y los pone bajo el cuidado de `init` (recuerda, la madre de todos los procesos). `init` eventualmente realizará la llamada al sistema `wait` para estos huérfanos para que puedan morir.
+### Procesos Huérfanos (Orphan Processes)
 
-### Procesos Zombie
+¿Qué sucede si un proceso padre termina antes que su hijo? El proceso hijo se convierte en un "huérfano" (orphan). Dado que su padre original ya no puede llamar a `wait`, el kernel interviene. El proceso huérfano es adoptado inmediatamente por un proceso especial del sistema, típicamente `init` (ID de proceso 1), que se considera el ancestro de todos los procesos. El proceso `init` asume entonces el papel de padre, llamando periódicamente a `wait` para recopilar el estado de terminación de cualquiera de sus hijos adoptados, permitiéndoles terminar limpiamente.
 
-¿Qué sucede cuando un hijo termina y el proceso padre aún no ha llamado a `wait`? Todavía queremos poder ver cómo terminó un proceso hijo, así que aunque el proceso hijo haya terminado, el kernel convierte al proceso hijo en un proceso zombie. Los recursos que usó el proceso hijo aún se liberan para otros procesos; sin embargo, todavía hay una entrada en la tabla de procesos para este zombie. Los procesos zombie tampoco pueden ser eliminados, ya que técnicamente están "muertos", por lo que no puedes usar señales para matarlos. Eventualmente, si el proceso padre llama a la llamada al sistema `wait`, el zombie desaparecerá; esto se conoce como "recolección". Si el padre no realiza una llamada `wait`, `init` adoptará al zombie y automáticamente realizará `wait` y eliminará al zombie. Puede ser malo tener demasiados procesos zombie, ya que ocupan espacio en la tabla de procesos; si se llena, impedirá que otros procesos se ejecuten.
+### Procesos Zombis (Zombie Processes)
+
+Ocurre un escenario diferente cuando un proceso hijo termina, pero su padre aún no ha llamado a `wait`. En este estado, el hijo se convierte en un proceso "zombi". El kernel libera la mayoría de los recursos del zombi, pero mantiene una entrada en la tabla de procesos. Esta entrada contiene el ID del proceso y el estado de terminación, esperando a que el padre lo recoja.
+
+Los procesos zombis ya están muertos, por lo que no consumen tiempo de CPU. No se pueden terminar con señales porque no se están ejecutando. El proceso por el cual el padre llama a `wait` para limpiar un zombi se denomina "reaping" (cosecha). Si el proceso padre nunca llama a `wait`, estos zombis pueden acumularse. Aunque unos pocos son inofensivos, un gran número puede llenar la tabla de procesos, impidiendo la creación de nuevos procesos. En casos en que el proceso padre también termina, `init` adoptará y cosechará al zombi.
+
+### Proceso Zombi vs Huérfano
+
+Comprender la diferencia entre un `zombie vs orphan process` (proceso zombi vs huérfano) es clave para diagnosticar problemas relacionados con los procesos.
+
+- Un **proceso huérfano** es un proceso activo y en ejecución cuyo padre ha muerto. Es adoptado por `init` y continúa ejecutándose hasta que finaliza.
+- Un **proceso zombi** es un proceso muerto que ha completado su ejecución pero aún tiene una entrada en la tabla de procesos. Está esperando que su proceso padre lea su estado de salida.
+
+En resumen, un huérfano está vivo pero sin padre, mientras que un zombi está muerto pero aún no ha sido completamente cosechado por su padre.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de los procesos de Linux y su gestión:
+Para aplicar estos conceptos, intente el siguiente laboratorio práctico:
 
-1. **[Gestionar y Monitorizar Procesos Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practica la interacción con procesos en primer y segundo plano, inspeccionándolos con `ps`, monitorizando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio te dará experiencia práctica con el ciclo de vida de los procesos, incluyendo cómo terminarlos.
-
-Este laboratorio te ayudará a aplicar los conceptos de gestión y terminación de procesos en escenarios reales y a desarrollar confianza en la administración de sistemas Linux.
+1. **[Gestionar y Monitorizar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitorizando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio proporciona experiencia práctica con el ciclo de vida del proceso, incluida la forma de terminarlos y observar sus estados.
 
 ## Quiz Question
 
-¿Cuál es el estado de terminación más común para un proceso que se ejecuta con éxito?
+¿Cuál es el estado de terminación más común para un proceso que tiene éxito?
 
 ## Quiz Answer
 

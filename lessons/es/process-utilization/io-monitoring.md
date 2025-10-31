@@ -1,15 +1,17 @@
 ---
 index: 5
 lang: "es"
-title: "Monitoreo de E/S"
-meta_title: "Monitoreo de E/S - Utilización de Procesos"
-meta_description: "Aprende a usar iostat para el monitoreo de E/S en Linux. Comprende las métricas de uso de CPU y disco con este comando esencial. ¡Mejora el rendimiento del sistema!"
-meta_keywords: "iostat, monitoreo de E/S en Linux, uso de CPU, uso de disco, comandos de Linux, principiante, tutorial, guía"
+title: "Monitorización de E/S"
+meta_title: "Monitorización de E/S - Utilización de Procesos"
+meta_description: "Domina la monitorización de E/S en Linux con el comando iostat. Esta guía explica cómo analizar métricas de uso de CPU y disco para optimizar el rendimiento de tu sistema."
+meta_keywords: "monitorización de e/s, iostat, monitorización de e/s linux, uso de cpu, uso de disco, rendimiento del sistema, iowait, comandos linux"
 ---
 
 ## Lesson Content
 
-Podemos monitorear el uso de la CPU, así como el uso del disco, con una herramienta útil conocida como **iostat**.
+La **monitorización de E/S** (I/O) eficaz es crucial para mantener un sistema Linux sano y receptivo. Una potente herramienta de línea de comandos para esta tarea es **iostat**, que proporciona informes detallados tanto de la actividad de la CPU como del disco.
+
+Ejecutar el comando `iostat` genera una instantánea de las métricas de rendimiento de su sistema.
 
 ```bash
 pete@icebox:~$ iostat
@@ -22,36 +24,42 @@ Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
 sda               0.17         3.49         1.92     385106     212417
 ```
 
-La primera parte es la información de la CPU:
+La salida se divide en dos secciones principales. Vamos a desglosarlas.
 
-- **%user** - Muestra el porcentaje de utilización de la CPU que ocurrió mientras se ejecutaba a nivel de usuario (aplicación).
-- **%nice** - Muestra el porcentaje de utilización de la CPU que ocurrió mientras se ejecutaba a nivel de usuario con prioridad nice.
-- **%system** - Muestra el porcentaje de utilización de la CPU que ocurrió mientras se ejecutaba a nivel de sistema (kernel).
-- **%iowait** - Muestra el porcentaje de tiempo que la CPU o CPUs estuvieron inactivas durante el cual el sistema tenía una solicitud de E/S de disco pendiente.
-- **%steal** - Muestra el porcentaje de tiempo que la CPU o CPUs virtuales pasaron en espera involuntaria mientras el hipervisor estaba atendiendo a otro procesador virtual.
-- **%idle** - Muestra el porcentaje de tiempo que la CPU o CPUs estuvieron inactivas y el sistema no tenía una solicitud de E/S de disco pendiente.
+### Comprensión de las Métricas de la CPU
 
-La segunda parte es la utilización del disco:
+El primer informe detalla la utilización de la CPU, proporcionando información sobre cómo el procesador está empleando su tiempo.
 
-- **tps** - Indica el número de transferencias por segundo que se emitieron al dispositivo. Una transferencia es una solicitud de E/S al dispositivo. Múltiples solicitudes lógicas pueden combinarse en una única solicitud de E/S al dispositivo. Una transferencia es de tamaño indeterminado.
-- **kB_read/s** - Indica la cantidad de datos leídos del dispositivo, expresada en kilobytes por segundo.
-- **kB_wrtn/s** - Indica la cantidad de datos escritos en el dispositivo, expresada en kilobytes por segundo.
-- **kB_read** - El número total de kilobytes leídos.
-- **kB_wrtn** - El número total de kilobytes escritos.
+- **%user**: Porcentaje de tiempo de CPU dedicado a ejecutar procesos a nivel de usuario.
+- **%nice**: Porcentaje de tiempo de CPU dedicado a procesos a nivel de usuario con una prioridad modificada (nice).
+- **%system**: Porcentaje de tiempo de CPU dedicado a ejecutar procesos a nivel de sistema (kernel).
+- **%iowait**: Porcentaje de tiempo que la CPU estuvo inactiva mientras esperaba a que se completara una solicitud de E/S de disco pendiente. Los valores altos aquí pueden indicar un cuello de botella en el almacenamiento.
+- **%steal**: En un entorno virtualizado, este es el porcentaje de tiempo que una CPU virtual espera a una CPU real mientras el hipervisor atiende a otro procesador virtual.
+- **%idle**: Porcentaje de tiempo que la CPU estuvo inactiva y no esperó ninguna solicitud de E/S de disco.
+
+### Análisis de la Utilización del Disco
+
+El segundo informe se centra en la **monitorización de E/S** a nivel de dispositivo, mostrando cómo se transfieren los datos hacia y desde sus dispositivos de almacenamiento.
+
+- **tps**: Transferencias por segundo emitidas al dispositivo. Una transferencia es una solicitud de E/S, y varias solicitudes lógicas pueden combinarse en una sola.
+- **kB_read/s**: La cantidad de datos leídos desde el dispositivo, expresada en kilobytes por segundo.
+- **kB_wrtn/s**: La cantidad de datos escritos en el dispositivo, expresada en kilobytes por segundo.
+- **kB_read**: El número total de kilobytes leídos desde el dispositivo desde el último reinicio.
+- **kB_wrtn**: El número total de kilobytes escritos en el dispositivo desde el último reinicio.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del monitoreo del sistema y el uso del disco:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la monitorización del sistema y el uso del disco:
 
-1. **[Comando Linux df: Informe de espacio en disco](https://labex.io/es/labs/linux-linux-df-command-disk-space-reporting-219188)** - Practica la generación de informes sobre el uso del espacio en disco en sistemas de archivos montados, un aspecto clave del monitoreo.
-2. **[Comando Linux du: Estimación del espacio de archivos](https://labex.io/es/labs/linux-linux-du-command-file-space-estimating-219190)** - Aprende a estimar el uso del espacio en disco para directorios y subdirectorios, complementando la información de E/S de disco de `iostat`.
-3. **[Comando Linux top: Monitoreo del sistema en tiempo real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Explora el monitoreo del sistema en tiempo real, incluyendo el uso de CPU y memoria, lo que proporciona un contexto más amplio para las métricas de CPU vistas en `iostat`.
+1. **[Comando Linux df: Informes de Espacio en Disco](https://labex.io/es/labs/linux-linux-df-command-disk-space-reporting-219188)** - Practique la generación de informes sobre el uso del espacio en disco en sistemas de archivos montados, un aspecto clave de la monitorización.
+2. **[Comando Linux du: Estimación del Espacio en Archivos](https://labex.io/es/labs/linux-linux-du-command-file-space-estimating-219190)** - Aprenda a estimar el uso del espacio en disco para directorios y subdirectorios, complementando la información de E/S de disco de `iostat`.
+3. **[Comando Linux top: Monitorización del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Explore la monitorización del sistema en tiempo real, incluido el uso de CPU y memoria, lo que proporciona un contexto más amplio para las métricas de CPU vistas en `iostat`.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a generar confianza en el monitoreo de los recursos del sistema Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la monitorización de los recursos del sistema Linux.
 
 ## Quiz Question
 
-¿Qué comando se puede usar para ver el uso de E/S y CPU?
+¿Qué comando se puede utilizar para ver el uso de E/S y CPU? (Por favor, responda solo con caracteres ingleses en minúsculas)
 
 ## Quiz Answer
 

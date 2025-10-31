@@ -1,34 +1,51 @@
 ---
 index: 3
 lang: "fr"
-title: "Calcul de sous-réseau"
-meta_title: "Calcul de sous-réseau - Sous-réseautage"
-meta_description: "Apprenez les bases du calcul de sous-réseau et comment calculer les hôtes disponibles sur un réseau. Comprenez l'adressage IP et les masques de sous-réseau pour les débutants. Commencez votre parcours Linux !"
-meta_keywords: "calcul de sous-réseau, adresse IP, masque de sous-réseau, hôtes réseau, binaire, réseau Linux, tutoriel débutant, guide"
+title: "Math des Sous-réseaux"
+meta_title: "Math des Sous-réseaux - Sous-réseautage"
+meta_description: "Maîtrisez les fondamentaux du calcul des sous-réseaux. Ce guide explique comment effectuer les calculs de masque de sous-réseau pour déterminer le nombre d'hôtes disponibles sur votre réseau. Apprenez les concepts essentiels d'adressage IP et de binaire pour le réseau Linux."
+meta_keywords: "math sous-réseau, calcul masque sous-réseau, adresse IP, masque de sous-réseau, hôtes réseau, binaire, réseau Linux, calcul hôte, tutoriel débutant"
 ---
 
 ## Lesson Content
 
-Nous savons donc que les masques de sous-réseau sont importants pour déterminer le nombre d'hôtes que nous pouvons avoir sur notre sous-réseau. Mais combien d'hôtes cela représente-t-il ?
+Pour déterminer le nombre d'hôtes qu'un sous-réseau peut prendre en charge, vous devez comprendre quelques notions de base sur les **calculs de sous-réseaux**. Le masque de sous-réseau est la clé de ce calcul.
 
-Supposons que j'aie une adresse IP de **192.168.1.0** et un masque de sous-réseau de **255.255.255.0**. Maintenant, alignons ces nombres sous forme binaire. Pour l'instant, utilisez une calculatrice en ligne pour convertir ces valeurs du décimal au binaire.
+### Le Rôle du Masque de Sous-Réseau
+
+Prenons une adresse IP de **192.168.1.0** avec un masque de sous-réseau de **255.255.255.0**. La fonction principale du masque de sous-réseau est de distinguer la partie réseau de l'adresse de la partie hôte.
+
+Pour voir comment cela fonctionne, nous pouvons convertir ces valeurs sous leur forme binaire.
 
 ```
 192.168.1.165  = 11000000.10101000.00000001.10100101
 255.255.255.0  = 11111111.11111111.11111111.00000000
 ```
 
-L'adresse IP est masquée par notre masque de sous-réseau. Quand vous voyez un 1, il est masqué, et nous faisons comme si nous ne le voyions pas. Donc, les seuls hôtes possibles que nous pouvons avoir proviennent de la région `00000000`. Rappelez-vous, `11111111` en binaire est égal à 255. Nous comptons également 0 comme un numéro d'hôte, il y a donc 256 options possibles. Cependant, il peut sembler que nous ayons 256 options possibles, mais nous soustrayons en fait 2 hôtes car nous devons tenir compte de l'adresse de diffusion et de l'adresse du sous-réseau, ce qui nous laisse 254 hôtes possibles sur notre sous-réseau. Nous savons donc que nous pouvons avoir des hôtes avec des adresses IP allant de 192.168.1.1 à 192.168.1.254.
+### Effectuer les Calculs du Masque de Sous-Réseau
+
+Dans la représentation binaire ci-dessus, les `1` dans le masque de sous-réseau correspondent à la partie réseau de l'adresse IP. Cette partie est "masquée" ou fixe. Les `0` dans le masque de sous-réseau correspondent à la partie hôte, qui représente la plage d'adresses que vous pouvez attribuer aux périphériques.
+
+Dans notre exemple, la partie hôte est `00000000`. Il s'agit d'un champ de 8 bits, et avec 8 bits, vous pouvez créer 2^8, soit 256, combinaisons uniques (de 0 à 255).
+
+### Calcul des Hôtes Disponibles
+
+Bien qu'il y ait 256 combinaisons possibles, toutes ne peuvent pas être attribuées aux hôtes. Dans tout sous-réseau, deux adresses sont réservées :
+
+1.  **Adresse Réseau :** La première adresse, où tous les bits hôtes sont à `0` (ex: 192.168.1.0).
+2.  **Adresse de Diffusion (Broadcast) :** La dernière adresse, où tous les bits hôtes sont à `1` (ex: 192.168.1.255).
+
+Par conséquent, le nombre réel d'hôtes utilisables est de 256 - 2 = 254. Cela signifie que pour le réseau `192.168.1.0` avec un masque `255.255.255.0`, vous pouvez attribuer des adresses IP de `192.168.1.1` à `192.168.1.254`. Ce calcul fondamental fait partie intégrante des **calculs de sous-réseaux**.
 
 ## Exercise
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et du sous-réseautage :
 
-1. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, compétences essentielles pour la configuration et la planification de réseau.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
+1.  **[Effectuer le Sous-réseautage IP et la Conversion Binaire dans le Terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, des compétences essentielles pour la configuration et la planification réseau.
+2.  **[Explorer les Types d'Adresses IP et la Joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
+3.  **[Simuler la Connectivité de la Couche Réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
 
-Ces laboratoires vous aideront à appliquer les concepts d'adressage IP, de masques de sous-réseau et de calcul d'hôtes dans des scénarios réels et à renforcer votre confiance avec les fondamentaux du réseau.
+Ces laboratoires vous aideront à appliquer les concepts d'adressage IP, de masque de sous-réseau et de calcul d'hôtes dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseau.
 
 ## Quiz Question
 

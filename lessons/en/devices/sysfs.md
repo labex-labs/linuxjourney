@@ -3,17 +3,32 @@ index: 4
 lang: "en"
 title: "sysfs"
 meta_title: "sysfs - Devices"
-meta_description: "Learn about sysfs, a virtual filesystem for detailed Linux device information and management. Understand /sys vs /dev. Start your Linux journey!"
-meta_keywords: "sysfs, /sys directory, Linux devices, virtual filesystem, Linux tutorial, beginner guide"
+meta_description: "Explore what sysfs is and its role in the Linux sys system. This guide explains the linux /sys directory, a virtual filesystem for device information, and contrasts it with /dev."
+meta_keywords: "sysfs, what is sysfs, /sys, linux /sys, linux sys, sys system, virtual filesystem, linux devices, /dev"
 ---
 
 ## Lesson Content
 
-Sysfs was created long ago to better manage devices on our system, a task the `/dev` directory failed to do adequately. Sysfs is a virtual filesystem, most often mounted to the `/sys` directory. It gives us more detailed information than what we would be able to see in the `/dev` directory. Both directories, `/sys` and `/dev`, seem very similar and they are in some regards, but they do have major differences. Basically, the `/dev` directory is simple; it allows other programs to access devices themselves, while the `/sys` filesystem is used to view information and manage the device.
+The `sysfs` filesystem was introduced to provide a better way to manage devices on a Linux system, a task for which the `/dev` directory was not fully equipped. Understanding **what is /sys in Linux** is key to modern system administration.
 
-The `/sys` filesystem basically contains all the information for all devices on your system, such as the manufacturer and model, where the device is plugged in, the state of the device, the hierarchy of devices, and more. The files you see here aren't device nodes, so you don't really interact with devices from the `/sys` directory; rather, you are managing devices.
+### What is sysfs?
 
-Take a look at the contents of the `/sys` directory:
+`sysfs` is a virtual filesystem, typically mounted at `/sys`, that exports information about kernel objects, hardware devices, and drivers from the kernel's device model to userspace. Unlike files on a physical disk, the files and directories within `/sys` are generated on the fly and represent the current state of the **sys system**.
+
+### The Role of the linux /sys Directory
+
+The primary purpose of the **linux /sys** directory is to provide a structured view of all the devices on your system. It contains detailed information such as the manufacturer and model, where the device is plugged in, its current state, and its position in the device hierarchy.
+
+The files you see here are not device nodes like those in `/dev`. You don't directly interact with the device itself through `/sys`; rather, you use it to view information and manage the device's attributes.
+
+### sysfs vs. /dev
+
+While `/sys` and `/dev` both relate to devices, they serve different functions.
+
+- The `/dev` directory provides device nodes, which are special files that allow programs to access the devices themselves.
+- The `/sys` filesystem is used to view information about and manage the devices. It exposes the underlying device model.
+
+For example, let's inspect the contents of a block device directory within `/sys`:
 
 ```bash
 pete@icebox:~$ ls /sys/block/sda
@@ -23,6 +38,8 @@ capability        events_async       power     sda1       slaves
 dev               events_poll_msecs  queue     sda2       stat
 device            ext_range          range     sda5       subsystem
 ```
+
+This output shows various attributes and subdirectories related to the `sda` hard drive, offering a much more detailed view than `/dev/sda` alone.
 
 ## Exercise
 
@@ -34,7 +51,7 @@ This lab will help you apply the concepts of understanding system hardware and i
 
 ## Quiz Question
 
-What directory is used to view detailed information on devices?
+What directory is used to view detailed information on devices? Please answer in English.
 
 ## Quiz Answer
 

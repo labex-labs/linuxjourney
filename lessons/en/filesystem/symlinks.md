@@ -3,13 +3,13 @@ index: 12
 lang: "en"
 title: "symlinks"
 meta_title: "symlinks - The Filesystem"
-meta_description: "Learn about Linux symlinks and hard links, including how to create and manage them. Understand their differences and use cases with this beginner-friendly guide."
-meta_keywords: "Linux symlinks, hard links, ln command, symbolic links, Linux file system, Linux tutorial, beginner Linux"
+meta_description: "Explore Linux symlinks (symbolic links) and hard links. Learn how to create them with the ln command, check the link count in linux with ls, and understand the difference when you ls symlink and hard link outputs."
+meta_keywords: "Linux symlinks, hard links, ln command, symbolic links, ls symlink, link count in linux, ls symlinks, ls links, Linux file system, Linux tutorial"
 ---
 
 ## Lesson Content
 
-Let's use a previous example of inode information:
+When you list files in detail, you see a lot of information. Let's look at a previous example of inode information from the `ls -li` command:
 
 ```plaintext
 pete@icebox:~$ ls -li
@@ -17,11 +17,17 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-You may have noticed that we've been glossing over the third field in the `ls` command; that field is the link count. The link count is the total number of hard links a file has. Well, that doesn't mean anything to you right now, so let's discuss links first.
+We've previously glossed over the third field in this output. This field is the link count.
 
-### Symlinks
+### The Link Count in Linux
 
-In the Windows operating system, there are things known as shortcuts. Shortcuts are just aliases to other files. If you do something to the original file, you could potentially break the shortcut. In Linux, the equivalent of shortcuts are symbolic links (or soft links or symlinks). Symlinks allow us to link to another file by its filename. Another type of link found in Linux is hard links; these are actually another file with a link to an inode. Let's see what I mean in practice, starting with symlinks.
+The **link count in linux** is the total number of hard links a file has. To understand what this means, we first need to discuss what links are. In Linux, there are two types of links: symbolic links (symlinks) and hard links.
+
+### Understanding Symlinks
+
+In the Windows operating system, you have shortcuts, which are essentially aliases that point to other files. In Linux, the equivalent is a symbolic link, also known as a soft link or **symlink**. A symlink is a special type of file that points to another file or directory by its name.
+
+Let's see this in practice. We'll create a few files and then a symlink.
 
 ```bash
 pete@icebox:~/Desktop$ echo 'myfile' > myfile
@@ -37,11 +43,13 @@ total 12
 93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
 ```
 
-You can see that I've made a symbolic link named `myfilelink` that points to `myfile`. Symbolic links are denoted by `->`. Notice how I got a new inode number, though; symlinks are just files that point to filenames. When you modify a symlink, the file also gets modified. Inode numbers are unique to filesystems; you can't have two of the same inode number in a single filesystem, meaning you can't reference a file in a different filesystem by its inode number. However, if you use symlinks, they do not use inode numbers; they use filenames, so they can be referenced across different filesystems.
+Here, we've created a symbolic link named `myfilelink` that points to `myfile`. When you use `ls` to view an `ls symlink`, it's clearly identified by the `l` at the beginning of the permissions string and the `->` symbol pointing to the target. Notice that the symlink has its own unique inode number (93403). Because symlinks point to filenames rather than inodes, they can span across different filesystems.
 
-### Hardlinks
+### Understanding Hard Links
 
-Let's see an example of a hardlink:
+The other type of link is a hard link. A hard link creates another file entry that points directly to the same inode as the original file.
+
+Let's create a hard link for `myfile2`:
 
 ```bash
 pete@icebox:~/Desktop$ ln myfile2 myhardlink
@@ -54,36 +62,38 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-A hardlink just creates another file with a link to the same inode. So if I modified the contents of `myfile2` or `myhardlink`, the change would be seen on both. But if I deleted `myfile2`, the file would still be accessible through `myhardlink`. Here is where our link count in the `ls` command comes into play. The link count is the number of hardlinks that an inode has. When you remove a file, it will decrease that link count. The inode only gets deleted when all hardlinks to the inode have been deleted. When you create a file, its link count is 1 because it is the only file that is pointing to that inode. Unlike symlinks, hardlinks do not span filesystems because inodes are unique to the filesystem.
+Notice that `myhardlink` shares the exact same inode number (93401) as `myfile2`. The link count for both files has also increased to 2. This is because two file entries now point to the same inode. If you modify the contents of `myfile2`, the changes will be reflected in `myhardlink`, and vice versa. If you delete `myfile2`, the file's data will still be accessible through `myhardlink`. The inode and its data are only removed from the disk when the link count drops to zero. Because hard links point to inodes, which are unique within a single filesystem, they cannot span across different filesystems.
 
-### Creating a symlink
+### Creating Symlinks and Hard Links
 
-```bash
-ln -s myfile mylink
-```
+You can create both types of links using the `ln` command. The syntax is straightforward.
 
-To create a symbolic link, you use the `ln` command with `-s` for symbolic, and you specify a target file and then a link name.
-
-### Creating a hardlink
+To create a symbolic link, use the `-s` flag:
 
 ```bash
-ln somefile somelink
+ln -s /path/to/original /path/to/link
 ```
 
-Similar to a symlink creation, except this time you leave out the `-s`.
+To create a hard link, omit the `-s` flag:
+
+```bash
+ln /path/to/original /path/to/link
+```
+
+Using `ls symlinks` or general `ls links` commands with the `-l` option is essential for managing and identifying these different file types.
 
 ## Exercise
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of file management, links, and inodes:
 
-1. **[Manage Files and Directories in Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practice creating, copying, moving, and removing files and directories, and specifically learn about symbolic and hard links, and how to analyze inodes.
-2. **[Navigate the Filesystem in Linux](https://labex.io/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Master essential commands like `pwd`, `cd`, and `ls` to efficiently move through the Linux filesystem, a foundational skill for understanding where files and their inodes reside.
+1.  **[Manage Files and Directories in Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practice creating, copying, moving, and removing files and directories, and specifically learn about symbolic and hard links, and how to analyze inodes.
+2.  **[Navigate the Filesystem in Linux](https://labex.io/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Master essential commands like `pwd`, `cd`, and `ls` to efficiently move through the Linux filesystem, a foundational skill for understanding where files and their inodes reside.
 
 These labs will help you apply the concepts of file management and links in real scenarios and build confidence with the Linux filesystem.
 
 ## Quiz Question
 
-What is the command used to make a symlink?
+What is the command and its primary option used to create a symlink? Your answer must be in English and is case-sensitive. Please include the space between the command and the option.
 
 ## Quiz Answer
 

@@ -3,43 +3,51 @@ index: 6
 lang: "en"
 title: "cut"
 meta_title: "cut - Text-Fu"
-meta_description: "Learn how to use the Linux `cut` command to extract text from files. This beginner-friendly tutorial covers character and field cutting. Improve your Linux text processing skills!"
-meta_keywords: "cut command, Linux text processing, extract text, Linux tutorial, beginner Linux, cut examples, Linux guide"
+meta_description: "Learn how to use the Linux `cut` command to extract specific sections of text from files. This guide covers cutting by character and field (`cut f`), including how to cut f with custom delimiters. Perfect for mastering Linux text processing."
+meta_keywords: "cut command, Linux text processing, extract text, cut f, how to cut f, Linux tutorial, cut examples, Linux guide, field cutting"
 ---
 
 ## Lesson Content
 
-We're going to learn a couple of useful commands that you can use to process text. Before we get started, let's create a file that we'll be working with. Copy and paste the following command; once you do that, add a TAB in between "lazy" and "dog" (hold down Ctrl-v + TAB).
+We're going to learn a couple of useful commands for processing text. Before we begin, let's create a file to work with. Copy and paste the following command. After pasting, you will need to add a literal TAB character between "lazy" and "dog" (you can often do this by pressing Ctrl-v then TAB).
 
 ```bash
 echo 'The quick brown; fox jumps over the lazy  dog' > sample.txt
 ```
 
-The first command we'll be learning about is the `cut` command. It extracts portions of text from a file.
+The first command we'll explore is `cut`, which extracts portions of text from a file.
 
-To extract contents by a list of characters:
+### Cutting by Character
+
+You can extract content based on character position using the `-c` flag.
 
 ```bash
 cut -c 5 sample.txt
 ```
 
-This outputs the 5th character in each line of the file. In this case, it is "q"; note that the space also counts as a character.
+This command outputs the 5th character from each line of the file. In our case, the output is "q". Note that spaces also count as characters.
 
-To extract the contents by a field, we'll need to do a little modification:
+### Cutting by Field with cut f
+
+A more powerful feature is cutting by fields. The `cut f` syntax, using the `-f` flag, allows you to extract text based on field position. By default, `cut` uses the TAB character as a delimiter, meaning everything separated by a TAB is considered a distinct field.
+
+Let's see how to cut f based on fields:
 
 ```bash
 cut -f 2 sample.txt
 ```
 
-The `-f` or field flag cuts text based on fields. By default, it uses TABs as delimiters, so everything separated by a TAB is considered a field. You should see "dog" as your output.
+Since we inserted a TAB between "lazy" and "dog", this command treats "dog" as the second field. Your output should be "dog".
 
-You can combine the field flag with the delimiter flag to extract the contents by a custom delimiter:
+### Using Custom Delimiters
+
+You can also combine the field flag with the delimiter flag (`-d`) to specify a custom delimiter. This is useful when working with files that use characters like commas or semicolons to separate data.
 
 ```bash
 cut -f 1 -d ";" sample.txt
 ```
 
-This will change the TAB delimiter to a ";" delimiter, and since we are cutting the first field, the result should be "The quick brown".
+This command changes the delimiter from a TAB to a semicolon (`;`). Since we are cutting the first field (`-f 1`), the result will be "The quick brown".
 
 ## Exercise
 

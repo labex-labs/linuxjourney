@@ -3,31 +3,57 @@ index: 18
 lang: "fr"
 title: "alias"
 meta_title: "alias - Ligne de commande"
-meta_description: "Apprenez à créer et gérer des alias Linux pour les commandes courantes. Découvrez la configuration d'alias temporaires et permanents dans .bashrc. Améliorez votre efficacité en ligne de commande !"
-meta_keywords: "alias Linux, alias bash, commande unalias, .bashrc, tutoriel Linux, ligne de commande, Linux débutant, guide Linux"
+meta_description: "Apprenez à créer et gérer un alias de commande sous Linux pour optimiser votre flux de travail. Ce guide couvre la création d'alias temporaires et permanents via la commande alias et le fichier .bashrc."
+meta_keywords: "alias linux, commande alias linux, alias de commande linux, alias commande bash, bash alias, commande unalias, .bashrc, ligne de commande, tutoriel Linux"
 ---
 
 ## Lesson Content
 
-Parfois, taper des commandes peut devenir très répétitif, ou si vous devez taper une longue commande plusieurs fois, il est préférable d'avoir un alias que vous pouvez utiliser pour cela. Pour créer un alias pour une commande, il vous suffit de spécifier un nom d'alias et de le définir sur la commande.
+Taper des commandes longues ou répétitives peut être fastidieux. Heureusement, vous pouvez créer un raccourci, ou un **alias Linux**, pour rendre votre expérience de ligne de commande plus efficace. La commande `alias` vous permet de définir un nom personnalisé pour n'importe quelle commande ou séquence de commandes.
+
+### Création d'un alias temporaire
+
+Pour créer un alias temporaire qui dure pour votre session de terminal actuelle, il vous suffit de spécifier un nom et de l'affecter à la chaîne de commande.
+
+Par exemple, pour créer un alias nommé `ll` pour la commande `ls -la`, vous utiliseriez la syntaxe `alias command linux` comme suit :
 
 ```bash
-alias foobar='ls -la'
+alias ll='ls -la'
 ```
 
-Maintenant, au lieu de taper `ls -la`, vous pouvez taper `foobar`, et cela exécutera cette commande — plutôt astucieux. Gardez à l'esprit que cette commande ne sauvegardera pas votre alias après un redémarrage, vous devrez donc ajouter un alias permanent dans :
+Maintenant, au lieu de taper `ls -la`, vous pouvez simplement taper `ll`, et cela exécutera la même commande. C'est une manière simple mais puissante de personnaliser votre shell.
 
-```plaintext
-~/.bashrc
-```
+### Rendre un alias permanent
 
-ou des fichiers similaires si vous souhaitez qu'il persiste après un redémarrage.
+Un alias temporaire disparaîtra une fois que vous fermerez votre terminal ou redémarrerez votre système. Pour rendre un **command alias in linux** permanent, vous devez l'ajouter au fichier de configuration de votre shell. Pour le shell Bash, ce fichier est généralement `~/.bashrc`.
 
-Vous pouvez supprimer des alias avec la commande `unalias` :
+1. Ouvrez le fichier dans un éditeur de texte : `nano ~/.bashrc`
+2. Ajoutez votre définition d'alias au fichier, exactement comme vous l'avez tapée sur la ligne de commande :
 
 ```bash
-unalias foobar
+alias ll='ls -la'
+alias update='sudo apt update && sudo apt upgrade'
 ```
+
+3. Enregistrez le fichier et quittez l'éditeur.
+
+Pour que les modifications prennent effet, vous devez soit fermer et rouvrir votre terminal, soit indiquer au shell de recharger le fichier de configuration en utilisant la commande `source` :
+
+```bash
+source ~/.bashrc
+```
+
+Votre **linux command alias** sera désormais disponible chaque fois que vous ouvrirez une nouvelle session de terminal.
+
+### Suppression d'un alias
+
+Si vous n'avez plus besoin d'un alias, vous pouvez le supprimer avec la commande `unalias`. Cela le supprimera de votre session actuelle.
+
+```bash
+unalias ll
+```
+
+Pour supprimer un alias permanent, vous devez également supprimer sa définition de votre fichier `~/.bashrc`.
 
 ## Exercise
 
@@ -35,7 +61,7 @@ Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous rec
 
 ## Quiz Question
 
-Quelle commande est utilisée pour créer un alias ?
+Quelle commande est utilisée pour créer un alias ? Veuillez répondre en anglais minuscule.
 
 ## Quiz Answer
 

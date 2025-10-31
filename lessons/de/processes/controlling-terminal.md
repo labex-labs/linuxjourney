@@ -1,33 +1,45 @@
 ---
 index: 2
 lang: "de"
-title: "Terminal steuern"
-meta_title: "Terminal steuern - Prozesse"
-meta_description: "Erfahren Sie mehr über die Steuerung von Terminals in Linux, einschließlich TTY vs. PTS, und wie Prozesse an diese gebunden sind. Verstehen Sie Daemon-Prozesse. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "steuerndes Terminal, TTY, PTS, Linux-Terminal, Daemon-Prozesse, Linux-Anfänger, Linux-Tutorial, Linux-Anleitung"
+title: "Steuerndes Terminal"
+meta_title: "Steuerndes Terminal - Prozesse"
+meta_description: "Erkunden Sie das Konzept eines steuernden Terminals unter Linux. Erfahren Sie, was ein TTY ist, der Unterschied zwischen TTY und PTS und wie Sie die Ausgabe von 'ps tty' verwenden, um Prozesse ohne steuerndes Terminal, wie Daemons, zu identifizieren."
+meta_keywords: "steuerndes Terminal, ps tty, was ist tty, ps verwenden, TTY, PTS, Linux Terminal, Daemon Prozess, Linux Prozesse"
 ---
 
 ## Lesson Content
 
-Wir haben besprochen, dass es im `ps`-Output ein TTY-Feld gibt. Das TTY ist das Terminal, das den Befehl ausgeführt hat.
+Wenn Sie laufende Prozesse untersuchen, werden Sie ein Feld `TTY` in der Ausgabe des `ps`-Befehls bemerken. Dieses Feld ist wichtig, da es das **steuernde Terminal** angibt, das den Befehl ausgeführt hat. Das Verständnis dieses Konzepts ist der Schlüssel zur effektiven Prozessverwaltung.
 
-Es gibt zwei Arten von Terminals: reguläre **Terminalgeräte** und **Pseudoterminalgeräte**. Ein reguläres Terminalgerät ist ein natives Terminalgerät, in das Sie tippen und Ausgaben an Ihr System senden können. Das klingt wie die Terminalanwendung, die Sie gestartet haben, um zu Ihrer Shell zu gelangen, aber das ist es nicht.
+### Was ist ein TTY
 
-Wir werden einen kleinen Exkurs machen, damit Sie dies in Aktion sehen können. Drücken Sie Strg-Alt-F1, um in TTY1 (die erste virtuelle Konsole) zu gelangen. Sie werden bemerken, dass Sie nichts außer dem Terminal haben – keine Grafiken usw. Dies wird als reguläres Terminalgerät betrachtet. Sie können dies mit Strg-Alt-F7 beenden.
+TTY ist eine Abkürzung für „Teletype“, was historisch ein physisches Gerät zur Interaktion mit einem Computer war. In modernen Linux-Systemen bezieht sich ein TTY auf das Terminal, das die Standardeingabe und -ausgabe für einen Prozess bereitstellt.
 
-Ein Pseudoterminal ist das, woran Sie gewöhnt sind zu arbeiten. Sie emulieren Terminals mit dem Shell-Terminalfenster und werden durch PTS gekennzeichnet. Wenn Sie sich `ps` noch einmal ansehen, sehen Sie Ihren Shell-Prozess unter `pts/*`.
+Es gibt zwei Haupttypen von Terminals, denen Sie begegnen werden: Terminalgeräte und Pseudo-Terminalgeräte.
 
-Okay, nun zurück zum steuernden Terminal: Prozesse sind normalerweise an ein steuerndes Terminal gebunden. Wenn Sie beispielsweise ein Programm in Ihrem Shell-Fenster, wie `find`, ausgeführt und das Fenster geschlossen hätten, würde Ihr Prozess ebenfalls damit beendet werden.
+### Terminalgeräte im Vergleich zu Pseudo-Terminals
 
-Es gibt Prozesse wie Daemon-Prozesse, die spezielle Prozesse sind, die im Wesentlichen das System am Laufen halten. Sie starten oft beim Systemstart und werden normalerweise beendet, wenn das System heruntergefahren wird. Sie laufen im Hintergrund, und da wir nicht möchten, dass diese speziellen Prozesse beendet werden, sind sie nicht an ein steuerndes Terminal gebunden. Im `ps`-Output wird das TTY als **?** aufgeführt, was bedeutet, dass es kein steuerndes Terminal hat.
+A true terminal device (echtes Terminalgerät) ist eine native Konsole, die es Ihnen ermöglicht, Befehle einzugeben und die Ausgabe direkt zu sehen. Sie können dies erleben, indem Sie zu einer virtuellen Konsole wechseln. Auf vielen Systemen können Sie `Strg-Alt-F1` drücken, um auf TTY1 zuzugreifen. Sie sehen eine Anmeldeaufforderung in einer rein textbasierten Umgebung, ohne grafische Oberfläche. Dies ist ein klassisches Terminalgerät. Um zu Ihrer grafischen Sitzung zurückzukehren, können Sie typischerweise `Strg-Alt-F7` verwenden (die genaue Tastenkombination kann variieren).
+
+A pseudo-terminal (PTS), auf Deutsch Pseudo-Terminal, ist hingegen das, was Sie am häufigsten verwenden. Wenn Sie eine Terminalanwendung innerhalb Ihrer grafischen Desktop-Umgebung öffnen, verwenden Sie ein PTS. Diese emulieren ein Terminal in einem Fenster. Wenn Sie die `ps tty`-Ausgabe für Ihre Shell überprüfen, sehen Sie deren TTY als `pts/*` aufgeführt.
+
+### Die Rolle des steuernden Terminals
+
+Die meisten Prozesse sind an ein **steuerndes Terminal** gebunden. Das bedeutet, dass der Lebenszyklus des Prozesses mit der Terminal-Sitzung verknüpft ist, die ihn gestartet hat. Wenn Sie beispielsweise ein Programm wie `find` in Ihrem Terminalfenster ausführen und dieses Fenster dann schließen, wird auch der `find`-Prozess beendet.
+
+### Prozesse ohne steuerndes Terminal
+
+Einige Prozesse, bekannt als Daemons, sind dafür konzipiert, im Hintergrund zu laufen und Systemdienste zu verwalten. Diese Prozesse starten oft beim Systemstart und werden erst beim Herunterfahren beendet.
+
+Um zu verhindern, dass sie versehentlich beendet werden, sind Daemons nicht an ein **steuerndes Terminal** angeschlossen. Wenn Sie lernen, **wie man ps verwendet**, um diese Prozesse zu untersuchen, sehen Sie ein Fragezeichen (`?`) in der TTY-Spalte. Dieses `?` signalisiert, dass der Prozess kein steuerndes Terminal hat und unabhängig von einer Benutzersitzung läuft.
 
 ## Exercise
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Linux-Prozessen und deren Interaktion mit Terminals zu vertiefen:
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Linux-Prozessen und deren Interaktion mit Terminals zu festigen:
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - In diesem Labor lernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden erkunden, wie Sie mit Vordergrund- und Hintergrundprozessen interagieren, diese mit `ps` inspizieren, Ressourcen mit `top` überwachen, die Priorität mit `renice` anpassen und sie mit `kill` beenden.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - In diesem Labor erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden untersuchen, wie man mit Vordergrund- und Hintergrundprozessen interagiert, sie mit `ps` inspiziert, Ressourcen mit `top` überwacht, die Priorität mit `renice` anpasst und sie mit `kill` beendet.
 
-Dieses Labor wird Ihnen helfen, die Konzepte der Prozessverwaltung in realen Szenarien anzuwenden und Vertrauen in das Verständnis zu gewinnen, wie Prozesse ablaufen und mit dem System interagieren.
+Dieses Labor hilft Ihnen, die Konzepte der Prozessverwaltung in realen Szenarien anzuwenden und Vertrauen in das Verständnis dafür zu gewinnen, wie Prozesse laufen und mit dem System interagieren.
 
 ## Quiz Question
 

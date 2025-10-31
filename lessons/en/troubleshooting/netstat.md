@@ -3,17 +3,15 @@ index: 4
 lang: "en"
 title: "netstat"
 meta_title: "netstat - Troubleshooting"
-meta_description: "Learn netstat command for Linux network analysis. Understand network connections, ports, and sockets with this beginner-friendly guide."
-meta_keywords: "netstat, netstat command, Linux networking, network connections, Linux tutorial, beginner, guide"
+meta_description: "Master the linux netstat command to analyze network connections, ports, and sockets. This guide covers common states like SYN_SENT and netstat close_wait for effective troubleshooting."
+meta_keywords: "linux netstat, netstat, netstat command, syn_sent netstat, netstat close_wait, network connections, linux networking, network analysis, linux tutorial"
 ---
 
 ## Lesson Content
 
 ### Well-Known Ports
 
-We've discussed data transmission through ports on our machine; let's look at some well-known ports.
-
-You can get a list of well-known ports by looking at the file **/etc/services**:
+We've discussed how data is transmitted through ports on our machine. Let's look at some common, well-known ports. You can find a list of these ports in the **/etc/services** file:
 
 ```plaintext
 ftp             21/tcp
@@ -25,11 +23,15 @@ https           443/tcp
 ..etc..
 ```
 
-The first column is the name of the service, then the port number, and the transport layer protocol it uses.
+The first column shows the service name, followed by its assigned port number and the transport layer protocol it uses.
 
-### netstat
+### Introduction to linux netstat
 
-An extremely useful tool to get detailed information about your network is **netstat**. Netstat displays various network-related information such as network connections, routing tables, information about network interfaces, and more; it's the Swiss Army knife of networking tools. We will focus mostly on one feature netstat has, and that's the status of network connections. Before we look at an example, let's talk about sockets and ports first. A socket is an interface that allows programs to send and receive data, while a port is used to identify which application should send or receive data. The socket address is the combination of the IP address and port. Every connection between a host and destination requires a unique socket. For example, HTTP is a service that runs on port 80; however, we can have many HTTP connections, and to maintain each connection, a socket gets created per connection.
+An extremely useful tool for gathering detailed network information is **netstat**. The `linux netstat` command displays a wide range of network-related data, including active network connections, routing tables, and interface statistics. It is often called the Swiss Army knife of networking tools.
+
+This lesson will focus on using `netstat` to check the status of network connections. Before we dive into an example, let's clarify the difference between sockets and ports. A **port** is a numerical identifier used to direct data to a specific application. A **socket** is an endpoint for communication, allowing programs to send and receive data. The socket address is the unique combination of an IP address and a port number. Every connection between a host and a destination requires a unique socket. For example, while the HTTP service runs on port 80, multiple HTTP connections can exist simultaneously, and a unique socket is created for each one.
+
+Let's examine the output of `netstat -at`:
 
 ```bash
 pete@icebox:~$ netstat -at
@@ -45,24 +47,28 @@ tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
 tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
 ```
 
-The `netstat -a` command shows the listening and non-listening sockets for network connections; the `-t` flag shows only TCP connections.
+The `netstat -a` command displays all listening and non-listening sockets, while the `-t` flag filters the output to show only TCP connections.
 
-The columns are as follows from left to right:
+The columns are as follows:
 
-- **Proto**: Protocol used, TCP or UDP.
-- **Recv-Q**: Data that is queued to be received.
-- **Send-Q**: Data that is queued to be sent.
-- **Local Address**: Locally connected host.
-- **Foreign Address**: Remotely connected host.
-- **State**: The state of the socket.
+- **Proto**: The protocol used (e.g., TCP or UDP).
+- **Recv-Q**: The queue of data waiting to be received.
+- **Send-Q**: The queue of data waiting to be sent.
+- **Local Address**: The address of the local host.
+- **Foreign Address**: The address of the remote host.
+- **State**: The current state of the socket.
 
-See the manpage for a list of socket states, but here are a few:
+### Understanding Connection States
 
-- **LISTENING**: The socket is listening for incoming connections. Remember, when we make a TCP connection, our destination has to be listening for us before we can connect.
-- **SYN_SENT**: The socket is actively attempting to establish a connection.
-- **ESTABLISHED**: The socket has an established connection.
-- **CLOSE_WAIT**: The remote host has shut down, and we're waiting for the socket to close.
-- **TIME_WAIT**: The socket is waiting after close to handle packets still in the network.
+The **State** column provides crucial information about the status of a connection. Here are a few common states you will encounter:
+
+- **LISTENING**: The socket is waiting for incoming connections. For a TCP connection to be made, the destination must be listening.
+- **SYN_SENT**: When using `netstat`, a `SYN_SENT` state indicates the socket is actively attempting to establish a connection.
+- **ESTABLISHED**: The socket has a fully established connection.
+- **CLOSE_WAIT**: The `netstat close_wait` state means the remote host has shut down, and the local system is waiting for the application to close the socket.
+- **TIME_WAIT**: The socket is waiting after closing to handle any packets that might still be in the network.
+
+You can see a full list of socket states in the `netstat` man page.
 
 ## Exercise
 

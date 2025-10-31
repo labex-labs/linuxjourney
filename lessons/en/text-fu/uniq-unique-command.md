@@ -3,18 +3,19 @@ index: 14
 lang: "en"
 title: "uniq (Unique)"
 meta_title: "uniq (Unique) - Text-Fu"
-meta_description: "Learn how to use the Linux `uniq` command to remove duplicate lines from text files. Discover options like -c, -u, -d, and combine with `sort` for effective data cleaning."
-meta_keywords: "uniq command, Linux uniq, remove duplicates, sort uniq, Linux tutorial, text processing, beginner Linux, Linux guide"
+meta_description: "Explore the uniq command in Linux to filter and remove duplicate adjacent lines from text. Learn how to use the uniq linux tool with options like -c, -u, -d, and combine it with sort for powerful text processing."
+meta_keywords: "uniq command, Linux uniq, uniq linux, remove duplicates, sort uniq, text processing, data cleaning, Linux tutorial"
 ---
 
 ## Lesson Content
 
-The `uniq` (unique) command is another useful tool for parsing text.
+The `uniq` (unique) command is an essential tool for text processing in Linux. It helps you filter and manage duplicate lines within a text file, but it's important to understand how it works to use it effectively.
 
-Let's say you had a file with lots of duplicates:
+### Basic Duplicate Removal
+
+The primary function of the `uniq` command is to remove duplicate adjacent lines. Imagine you have a file named `reading.txt` with the following content:
 
 ```plaintext
-reading.txt
 book
 book
 paper
@@ -24,7 +25,7 @@ article
 magazine
 ```
 
-And you wanted to remove the duplicates; well, you can use the `uniq` command:
+To remove the repeated lines, you can run the `uniq` command:
 
 ```bash
 $ uniq reading.txt
@@ -34,24 +35,30 @@ article
 magazine
 ```
 
-Let's get the count of how many occurrences of a line:
+As you can see, `uniq` outputs a version of the file with the duplicate adjacent lines removed.
+
+### Advanced Filtering Options
+
+The `uniq` command also provides several options for more detailed analysis.
+
+To count the occurrences of each line, use the `-c` (count) flag:
 
 ```bash
 $ uniq -c reading.txt
-2 book
-2 paper
-2 article
-1 magazine
+      2 book
+      2 paper
+      2 article
+      1 magazine
 ```
 
-Let's just get unique values:
+To display only the lines that are not repeated (i.e., are unique), use the `-u` (unique) flag:
 
 ```bash
 $ uniq -u reading.txt
 magazine
 ```
 
-Let's just get duplicate values:
+Conversely, to display only the lines that are repeated, use the `-d` (duplicated) flag:
 
 ```bash
 $ uniq -d reading.txt
@@ -60,12 +67,13 @@ paper
 article
 ```
 
-**Note**: `uniq` does not detect duplicate lines unless they are adjacent. For example:
+### The Importance of Sorting
 
-Let's say you had a file with duplicates that are not adjacent:
+A critical detail about the **uniq linux** command is that it only detects duplicate lines if they are directly adjacent to each other. If the duplicates are scattered throughout the file, `uniq` will not identify them.
+
+Consider this version of `reading.txt` where duplicates are not adjacent:
 
 ```plaintext
-reading.txt
 book
 paper
 book
@@ -74,10 +82,11 @@ article
 magazine
 article
 ```
+
+Running `uniq` on this file will produce a surprising result:
 
 ```bash
 $ uniq reading.txt
-reading.txt
 book
 paper
 book
@@ -87,9 +96,7 @@ magazine
 article
 ```
 
-The result returned by `uniq` will contain all the entries, unlike the very first example.
-
-To overcome this limitation of `uniq`, we can use `sort` in combination with `uniq`:
+No lines were removed because no two identical lines were next to each other. To solve this, you must first sort the file's contents. By piping the output of `sort` into `uniq`, you ensure that all identical lines become adjacent, allowing `uniq` to work correctly. This combination is a powerful and common pattern in shell scripting.
 
 ```bash
 $ sort reading.txt | uniq
@@ -98,6 +105,8 @@ book
 magazine
 paper
 ```
+
+This command first sorts the lines alphabetically, then `uniq` filters out the duplicates, giving you a clean list of unique entries.
 
 ## Exercise
 
@@ -111,7 +120,7 @@ These labs will help you apply the concepts in real scenarios and build confiden
 
 ## Quiz Question
 
-What command would you use to remove duplicates in a file?
+What command would you use to remove adjacent duplicate lines in a file? Please answer using only the command name in lowercase English letters.
 
 ## Quiz Answer
 

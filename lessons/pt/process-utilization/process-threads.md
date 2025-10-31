@@ -2,20 +2,26 @@
 index: 3
 lang: "pt"
 title: "Threads de Processo"
-meta_title: "Threads de Processo - Utilização de Processos"
-meta_description: "Aprenda sobre threads de processo Linux, conceitos single-threaded vs. multi-threaded e como visualizá-los usando 'ps m'. Entenda processos leves de forma eficiente!"
-meta_keywords: "threads Linux, threads de processo, comando ps m, multi-threaded, single-threaded, processos Linux, Linux para iniciantes, tutorial Linux"
+meta_title: "Threads de Processo - Utilização do Processo"
+meta_description: "Um guia sobre threads de processos no Linux. Aprenda a diferença entre processos de thread único e multi-thread e como usar o comando ps para exibir threads."
+meta_keywords: "threads Linux, threads de processo, ps mostrar threads, ps m, multi-thread, thread único, processo leve, gerenciamento de processos Linux"
 ---
 
 ## Lesson Content
 
-Você pode ter ouvido falar dos termos processos single-threaded e multi-threaded. Threads são muito semelhantes a processos, no sentido de que são usados para executar o mesmo programa; eles são frequentemente referidos como processos leves. Se um processo tem uma thread, ele é single-threaded, e se um processo tem mais de uma thread, ele é multi-threaded. No entanto, todos os processos têm pelo menos uma thread.
+### O Que São Threads de Processo?
 
-Processos operam com seus próprios recursos de sistema isolados; no entanto, threads podem compartilhar esses recursos entre si facilmente, tornando mais fácil a comunicação entre eles. Às vezes, é mais eficiente ter uma aplicação multi-threaded do que uma aplicação multi-processo.
+You may have heard the terms single-threaded and multi-threaded. Threads are units of execution within a process and are often called "lightweight processes." While processes operate with their own isolated system resources, threads within the same process can share these resources, such as memory. This shared-resource model makes communication between threads much faster and more efficient than communication between separate processes.
 
-Basicamente, digamos que você abra o LibreOffice Writer e o Chrome; cada um é seu próprio processo separado. Agora você entra no Writer e começa a editar texto. Quando você edita o texto, ele é salvo automaticamente. Esses dois "processos leves" paralelos de salvar e editar são threads.
+### Single-Threaded vs. Multi-Threaded
 
-Para visualizar as threads de um processo, você pode usar:
+Every process has at least one thread. A process with only one thread is called single-threaded, while a process with more than one is multi-threaded.
+
+For example, when you use a modern text editor, it might run as a single process. However, within that process, one thread could be managing your keyboard input, while another thread runs in the background to perform spell-checking or auto-saving. This concurrent execution makes the application feel more responsive. Using multiple threads is often more efficient than launching multiple processes for related tasks.
+
+### How to Show Threads with ps
+
+To inspect running processes and their threads, you can use the `ps` command. While `ps` has many options, a common way to **show threads** is with the `m` flag.
 
 ```plaintext
 pete@icebox:~$ ps m
@@ -26,15 +32,17 @@ pete@icebox:~$ ps m
     - -        R+     0:00 -
 ```
 
-Os processos são denotados por cada PID, e abaixo dos processos estão suas threads (denotadas por um `--`). Assim, você pode ver que os processos acima são ambos single-threaded.
+### Interpreting the Output
+
+In the output above, the lines with a `PID` (Process ID) represent the main process. The lines directly underneath, which have a dash (`-`) instead of a `PID`, represent the threads belonging to that process. In this example, both the `bash` and `ps m` processes are single-threaded, as each has only one main thread listed.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos processos Linux e seu gerenciamento:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and their management:
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Neste laboratório, você aprenderá habilidades essenciais para gerenciar e monitorar processos em um sistema Linux. Você explorará como interagir com processos em primeiro e segundo plano, inspecioná-los com `ps`, monitorar recursos com `top`, ajustar a prioridade com `renice` e terminá-los com `kill`.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Neste laboratório, você aprenderá habilidades essenciais para gerenciar e monitorar processos em um sistema Linux. Você explorará como interagir com processos em primeiro plano e em segundo plano, inspecioná-los com `ps`, monitorar recursos com `top`, ajustar a prioridade com `renice` e terminá-los com `kill`.
 
-Este laboratório o ajudará a aplicar os conceitos de gerenciamento de processos em cenários reais e a construir confiança no monitoramento da atividade do sistema.
+This lab will help you apply the concepts of process management in real scenarios and build confidence with monitoring system activity.
 
 ## Quiz Question
 

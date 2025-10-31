@@ -3,57 +3,67 @@ index: 11
 lang: "ko"
 title: "Emacs 버퍼 탐색"
 meta_title: "Emacs 버퍼 탐색 - 고급 텍스트 기술"
-meta_description: "Emacs 버퍼 탐색 명령을 배우십시오. 이 초보자 친화적인 Emacs 튜토리얼을 통해 버퍼를 효율적으로 전환, 닫기 및 분할하십시오. 워크플로우를 개선하십시오!"
-meta_keywords: "Emacs 버퍼 탐색, Emacs 명령, C-x b, C-x k, Linux 튜토리얼, Emacs 가이드, 초보자 Emacs"
+meta_description: "Emacs 버퍼 탐색에 대한 종합 가이드입니다. 필수 Emacs 명령어를 사용하여 버퍼를 효율적으로 전환하고, 창을 분할하며, 작업 흐름을 관리하는 방법을 배우세요. emacs switch buffer 명령을 마스터하고 텍스트 편집 기술을 향상시키세요."
+meta_keywords: "emacs 탐색, emacs 버퍼 전환, emacs 버퍼 관리, emacs 명령어, C-x b, C-x k, C-x 2, 텍스트 편집기, 리눅스"
 ---
 
 ## Lesson Content
 
-버퍼 (또는 방문 중인 파일) 사이를 이동하려면 다음 명령을 사용하십시오:
+Emacs 에서 "버퍼 (buffer)"는 텍스트를 편집할 수 있는 임시 작업 공간입니다. 파일을 열면 Emacs 는 파일 내용을 버퍼로 로드합니다. 또한 `*scratch*` 버퍼와 같이 파일에 해당하지 않는 버퍼를 가질 수도 있습니다. 이러한 버퍼를 효율적으로 관리하는 것이 원활한 워크플로우의 핵심입니다. 버퍼 간의 **emacs 탐색**을 마스터하면 편집 프로세스가 크게 빨라집니다.
 
-### 버퍼 전환
+### 버퍼 간 전환
+
+다양한 열린 버퍼 사이를 이동하려면 여러 명령을 사용할 수 있습니다. **emacs 버퍼 전환**을 위한 기본 명령을 사용하면 열고자 하는 버퍼의 이름을 묻는 메시지가 표시됩니다.
 
 ```
-C-x b - switch buffer
-C-x right arrow - right-cycle through buffer
-C-x left arrow - left-cycle through buffer
+C-x b - 이름으로 다른 버퍼로 전환
+C-x right arrow - 다음 버퍼로 순환
+C-x left arrow - 이전 버퍼로 순환
+```
+
+### 버퍼 창 관리
+
+Emacs 는 화면 (또는 "프레임") 을 여러 창으로 분할하여 여러 버퍼를 한 번에 볼 수 있도록 합니다.
+
+```
+C-x 2 - 현재 창을 수직으로 분할
+```
+
+이 명령은 위아래로 두 개의 창을 생성하여 두 개의 버퍼를 동시에 볼 수 있게 합니다. 이 창들 사이에서 커서를 이동하려면 다음을 사용합니다.
+
+```
+C-x o - 다른 창으로 이동
+```
+
+분할 화면 보기를 마쳤고 단일 창으로 돌아가고 싶을 때 다음 명령을 사용할 수 있습니다. 이 명령은 현재 창을 화면의 유일한 창으로 만듭니다.
+
+```
+C-x 1 - 다른 모든 창 닫기
 ```
 
 ### 버퍼 닫기
 
-```
-C-x k
-```
-
-### 현재 버퍼 분할
+파일이나 임시 버퍼 작업을 마쳤을 때 작업 공간을 깔끔하게 유지하기 위해 닫을 수 있습니다.
 
 ```
-C-x 2
+C-x k - 현재 버퍼를 킬(닫기)
 ```
 
-이렇게 하면 한 화면에서 여러 버퍼를 볼 수 있습니다. 이 버퍼들 사이를 이동하려면 다음을 사용하십시오: C-x o
-
-### 단일 버퍼를 현재 화면으로 설정
-
-```
-C-x 1
-```
-
-`screen` 또는 `tmux`와 같은 터미널 멀티플렉서를 사용해 본 적이 있다면, 버퍼 명령이 매우 익숙하게 느껴질 것입니다.
+`screen`이나 `tmux`와 같은 터미널 멀티플렉서를 사용해 본 적이 있다면, 이러한 버퍼 관리 명령이 매우 친숙하게 느껴질 것입니다.
 
 ## Exercise
 
-연습이 완벽을 만듭니다! 텍스트 파일과 버퍼를 탐색하고 조작하는 이해를 강화하기 위한 실습 랩입니다:
+버퍼 및 텍스트 파일 조작에 대한 이해를 공고히 하기 위해 다음 실습 랩을 시도해 보세요. 이는 실제 시나리오에서 이러한 개념을 적용하는 데 도움이 될 것입니다.
 
-1. **[Linux 에서 Vim 및 Nano 로 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 버퍼 작업에 필수적인 Vim 및 Nano 편집기 내에서 텍스트를 생성, 편집, 저장 및 탐색하는 연습을 하십시오.
-2. **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배우십시오. 이는 버퍼 콘텐츠와 상호 작용하는 방식에 직접 적용됩니다.
-3. **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`, `more`, `less`와 같은 명령어를 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 연습을 하십시오. 이는 버퍼와 유사한 콘텐츠를 검토하는 실제 시나리오를 시뮬레이션합니다.
+1.  **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 버퍼 작업에 필수적인 Vim 및 Nano 편집기 내에서 텍스트 생성, 편집, 저장 및 탐색을 연습합니다.
+2.  **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배워 버퍼 내용과 상호 작용하는 방식에 직접 적용합니다.
+3.  **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`, `more`, `less`와 같은 명령을 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 방법을 연습하여 버퍼와 유사한 콘텐츠를 검토하는 실제 시나리오를 시뮬레이션합니다.
 
-이러한 랩은 실제 시나리오에 개념을 적용하고 Linux 에서 텍스트 파일 및 버퍼 조작에 대한 자신감을 키우는 데 도움이 될 것입니다.
+이러한 랩은 Linux 에서 텍스트 파일 및 버퍼 조작에 대한 자신감을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-버퍼를 어떻게 종료합니까?
+버퍼를 킬 (kill) 하는 방법은 무엇입니까? 정확한 키 바인딩을 영어로, 대소문자를 구분하여 답변하십시오.
 
 ## Quiz Answer
 

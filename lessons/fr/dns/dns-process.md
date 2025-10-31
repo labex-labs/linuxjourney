@@ -3,43 +3,43 @@ index: 3
 lang: "fr"
 title: "Processus DNS"
 meta_title: "Processus DNS - DNS"
-meta_description: "Apprenez comment DNS fonctionne étape par étape, des serveurs racine au DNS faisant autorité. Comprenez le processus de recherche DNS pour les utilisateurs débutants et intermédiaires."
-meta_keywords: "processus DNS, recherche DNS, comment fonctionne DNS, tutoriel DNS, DNS débutant, DNS Linux, TLD, serveurs racine"
+meta_description: "Explorez le processus de résolution DNS étape par étape, des serveurs racine au serveur DNS faisant autorité. Comprenez comment un serveur Linux trouve un domaine, un concept crucial pour les environnements de production et l'hébergement de domaines."
+meta_keywords: "processus DNS, recherche DNS, résolution de domaine, dns linux, serveur de production, hébergement de domaine, serveur dns, TLD, serveurs racine, dns faisant autorité"
 ---
 
 ## Lesson Content
 
-Examinons un exemple de la façon dont votre hôte trouve un domaine (catzontheinterwebz.com) avec DNS. Essentiellement, nous descendons l'entonnoir jusqu'à ce que nous atteignions le serveur DNS qui connaît ce domaine.
+Explorons comment un ordinateur, tel qu'un `serveur Linux`, trouve un `domaine` comme `catzontheinterwebz.com` en utilisant le DNS. Le processus fonctionne comme un entonnoir, réduisant la recherche jusqu'à ce que nous atteignions le `serveur DNS` spécifique qui détient la réponse.
 
-### Serveur DNS local
+### La Requête Initiale
 
-Tout d'abord, notre hôte demande : « Où est catzontheinterwebz.com ? » Notre serveur DNS local ne le sait pas, alors il va commencer par le haut de l'entonnoir pour demander aux serveurs racine. Gardez à l'esprit que notre hôte ne fait pas ces requêtes pour trouver directement catzontheinterwebz.com ; la plupart des utilisateurs parlent à un serveur DNS récursif fourni par leurs FAI, et ce serveur est ensuite chargé de trouver l'emplacement de catzontheinterwebz.com.
+D'abord, votre hôte demande à son serveur DNS récursif configuré : « Où se trouve `catzontheinterwebz.com` ? » Ce serveur récursif, souvent fourni par votre FAI, ne connaît probablement pas la réponse directement. Il commence donc le processus de résolution en contactant la plus haute autorité : les serveurs Root (Racine). Cette étape initiale est la même, que vous naviguiez depuis chez vous ou qu'un `serveur de production` communique avec une API.
 
-### Serveurs racine
+### Serveurs Root (Racine)
 
-Il existe 13 serveurs racine pour Internet. Ils sont mis en miroir et distribués dans le monde entier pour gérer les requêtes DNS pour Internet, il y a donc en réalité des centaines de serveurs qui fonctionnent. Ils sont contrôlés par différentes organisations et contiennent des informations sur les domaines de premier niveau. Les domaines de premier niveau sont ce que vous connaissez comme les adresses .org, .com, .net, etc. Ainsi, le serveur racine ne sait pas où se trouve catzontheinterwebz.com, mais il nous dit de demander au serveur DNS de domaine de premier niveau .com à une adresse IP qu'il nous donne.
+La hiérarchie DNS d'Internet commence par 13 serveurs Root logiques, qui sont répliqués sur des centaines d'emplacements physiques à travers le monde. Ces serveurs ne connaissent pas l'adresse IP de chaque `domaine`, mais ils savent qui gère les domaines de premier niveau (TLD) comme `.com`, `.org` et `.net`. Lorsqu'on lui demande `catzontheinterwebz.com`, un serveur Root répondra : « Je ne sais pas, mais vous devriez demander au serveur TLD `.com` », et fournira son adresse IP.
 
-### Domaine de premier niveau
+### Serveurs TLD (Domaine de Premier Niveau)
 
-Nous envoyons donc maintenant une autre requête au serveur de noms qui connaît les adresses ".com" et lui demandons s'il sait où se trouve catzontheinterwebz.com. Le TLD n'a pas catzontheinterwebz.com dans ses fichiers de zone, mais il voit un enregistrement pour le serveur de noms de catzontheinterwebz.com. Il nous donne donc l'adresse IP de ce serveur de noms et nous dit de regarder là.
+Ensuite, le serveur récursif envoie une nouvelle requête au serveur TLD `.com`, demandant à nouveau l'emplacement de `catzontheinterwebz.com`. Le travail du serveur TLD est d'indiquer les serveurs de noms faisant autorité corrects pour ce `domaine` spécifique. Il ne possède pas l'adresse IP finale, mais il sait quel `serveur DNS` est responsable du `domaine`, un détail souvent configuré via votre fournisseur d'`hébergement de domaine`. Le serveur TLD répond avec l'adresse IP de ce serveur de noms faisant autorité.
 
-### Serveur DNS faisant autorité
+### Serveur DNS Faisant Autorité
 
-Nous envoyons maintenant une dernière requête au serveur DNS qui possède réellement l'enregistrement que nous voulons. Le serveur de noms voit qu'il a un fichier de zone pour catzontheinterwebz.com, et il y a un enregistrement de ressource pour 'www' pour cet hôte. Il nous donne ensuite l'adresse IP de cet hôte, et nous pouvons enfin voir des chats sur Internet.
+Enfin, le serveur récursif envoie une dernière requête au `serveur DNS` faisant autorité. C'est le serveur qui détient les enregistrements DNS réels pour le `domaine` `catzontheinterwebz.com`. Ce serveur consulte ses enregistrements, trouve l'enregistrement 'A' pour l'hôte et renvoie l'adresse IP finale. C'est une étape critique pour quiconque met un site web ou une application en ligne, car ce serveur fournit le lien définitif entre le nom de `domaine` et l'adresse IP du `serveur de production`. Avec l'adresse IP en main, votre ordinateur peut maintenant se connecter et récupérer le contenu.
 
 ## Exercise
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la résolution et de la gestion DNS :
 
 1. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à interroger les enregistrements DNS comme A, PTR et MX, et à identifier votre serveur DNS par défaut, essentiel pour le dépannage réseau.
-2. **[Configurer un serveur DNS local faisant autorité sous Linux](https://labex.io/fr/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Acquérez une expérience pratique en installant et en configurant un serveur DNS local faisant autorité, en définissant des zones et en testant la résolution DNS.
-3. **[Gérer la résolution de nom d'hôte local sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Entraînez-vous à gérer la résolution de nom d'hôte local en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement web et les tests réseau.
+2. **[Configurer un serveur DNS faisant autorité local sous Linux](https://labex.io/fr/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Acquérir une expérience pratique en installant et configurant un serveur DNS faisant autorité local, en définissant des zones et en testant la résolution DNS.
+3. **[Gérer la résolution de noms d'hôte locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - S'exercer à gérer la résolution de noms d'hôte locaux en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement web et les tests réseau.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec DNS.
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec le DNS.
 
 ## Quiz Question
 
-Quelle est l'abréviation des serveurs de noms où se trouvent les adresses .com, .net, .org, etc. ?
+Quelle est l'abréviation des serveurs de noms où se trouvent les adresses .com, .net, .org, etc. ? Veuillez répondre en utilisant uniquement des lettres majuscules anglaises.
 
 ## Quiz Answer
 

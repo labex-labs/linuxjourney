@@ -1,43 +1,53 @@
 ---
 index: 6
 lang: "fr"
-title: "Couche de transport"
-meta_title: "Couche de transport - Bases du réseau"
-meta_description: "Découvrez la couche de transport dans le réseau Linux, y compris les protocoles TCP/UDP, les ports et la segmentation des données. Comprenez comment les données sont transférées de manière fiable."
-meta_keywords: "Couche de transport Linux, TCP/UDP, ports réseau, segmentation des données, réseau Linux, tutoriel pour débutants, protocoles réseau"
+title: "Couche Transport"
+meta_title: "Couche Transport - Bases Réseau"
+meta_description: "Explorez la Couche Transport dans le réseau Linux. Cette leçon couvre les protocoles clés comme TCP et UDP, la fonction des ports réseau, la segmentation des données et la poignée de main TCP pour un transfert de données fiable."
+meta_keywords: "Couche Transport Linux, TCP, UDP, poignée de main TCP, ports réseau, segmentation des données, réseau Linux, protocoles réseau, transfert de données fiable"
 ---
 
 ## Lesson Content
 
-La couche de transport nous aide à transférer nos données d'une manière que les réseaux peuvent lire. Elle divise nos données en morceaux qui seront transportés et réassemblés dans le bon ordre. Ces morceaux sont appelés segments. Les segments facilitent le transport des données à travers les réseaux.
+La couche transport est une partie fondamentale du réseautage Linux responsable de la communication de bout en bout et du transfert de données fiable entre les applications sur différents hôtes. Elle prépare les données pour le transport sur le réseau d'une manière structurée et gérable.
 
-### Ports
+### Segmentation des Données
 
-Même si nous savons où nous envoyons nos données via les adresses IP, elles ne sont pas assez spécifiques pour envoyer nos données à certains processus ou services. Des services tels que HTTP utilisent un canal de communication via des ports. Si nous voulons envoyer des données de page web, nous devons les envoyer via le port HTTP (port 80). En plus de former des segments, la couche de transport attachera également les ports source et destination au segment, de sorte que lorsque le récepteur recevra le paquet final, il saura quel port utiliser.
+L'une des fonctions principales de la couche transport est la segmentation des données. Elle divise de grandes quantités de données en morceaux plus petits et plus gérables appelés segments. Ce processus rend le transfert de données plus efficace et résilient. Si un segment est perdu ou corrompu pendant la transmission, seule cette petite partie doit être renvoyée, et non l'ensemble des données. Une fois que les segments arrivent à destination, la couche transport les réassemble dans le bon ordre.
 
-### UDP
+### Comprendre les Ports Réseau
 
-Il existe deux protocoles de transport populaires : UDP et TCP. Nous discuterons brièvement d'UDP et passerons la majeure partie de notre temps sur TCP, car c'est le plus couramment utilisé.
+Alors que les adresses IP identifient l'hôte correct sur un réseau, elles ne spécifient pas quelle application ou quel service doit recevoir les données. C'est là qu'interviennent les ports réseau. Des services comme HTTP (trafic web) ou SMTP (e-mail) écoutent sur des ports spécifiques et bien connus. Par exemple, HTTP utilise généralement le port 80. La couche transport attache les numéros de port source et de destination à chaque segment, garantissant que les données sont livrées au processus correct sur l'hôte récepteur.
 
-UDP n'est pas une méthode fiable de transport de données ; en fait, il ne se soucie pas vraiment si vous recevez toutes vos données originales. Cela peut sembler terrible, mais il a ses utilisations, comme pour le streaming multimédia. Ce n'est pas grave si vous perdez quelques images ; en retour, vous obtenez vos données un peu plus rapidement.
+### Protocoles de Transport Principaux TCP et UDP
 
-### TCP
+Il existe deux protocoles de transport principaux utilisés dans les réseaux modernes : TCP (Transmission Control Protocol) et UDP (User Datagram Protocol). Nous allons brièvement aborder UDP puis nous concentrer sur TCP, car il est le plus largement utilisé pour la communication fiable.
 
-TCP fournit un flux de données fiable et orienté connexion. TCP utilise des ports pour envoyer et recevoir des données vers et depuis des hôtes. Une application ouvre une connexion d'un port sur son hôte à un autre port sur un hôte distant. Pour établir la connexion, nous utilisons la poignée de main TCP.
+### UDP (User Datagram Protocol)
 
-- Le client (processus de connexion) envoie un segment SYN au serveur pour demander une connexion.
-- Le serveur envoie au client un segment SYN-ACK pour accuser réception de la demande de connexion du client.
-- Le client envoie un ACK au serveur pour accuser réception de la demande de connexion du serveur.
+UDP est un protocole sans connexion qui offre une méthode de transport de données rapide mais non fiable. Il ne garantit pas que tous les segments arriveront ou qu'ils arriveront dans le bon ordre. Bien que cela puisse sembler être un inconvénient, UDP est très efficace pour les applications où la vitesse est plus critique que la précision parfaite, comme le streaming vidéo en direct ou les jeux en ligne. La perte de quelques images vidéo est souvent un compromis acceptable pour un flux plus fluide et plus rapide.
 
-Une fois cette connexion établie, les données peuvent être échangées via une connexion TCP. Les données sont envoyées en différents segments et sont suivies avec des numéros de séquence TCP afin qu'elles puissent être organisées dans le bon ordre lorsqu'elles sont livrées. Dans notre exemple d'e-mail, la couche de transport attache le port de destination (25) au port source de l'hôte source.
+### TCP (Transmission Control Protocol)
+
+TCP fournit un flux de données fiable et orienté connexion. Avant que toute donnée ne soit échangée, TCP établit une connexion formelle entre les deux hôtes pour s'assurer qu'ils sont tous deux prêts à communiquer.
+
+### La Poignée de Main TCP
+
+Pour établir une connexion, TCP utilise un processus appelé la poignée de main en trois étapes :
+
+1.  **SYN** : Le client envoie un segment SYN (synchroniser) au serveur pour initier une connexion.
+2.  **SYN-ACK** : Le serveur répond avec un segment SYN-ACK (synchroniser-acquitter) pour accuser réception de la demande du client.
+3.  **ACK** : Le client renvoie un segment ACK (acquitter) au serveur, confirmant que la connexion est établie.
+
+Une fois la poignée de main terminée, les données peuvent être échangées de manière fiable. TCP utilise des numéros de séquence pour suivre chaque segment, permettant à l'hôte récepteur de les réassembler dans le bon ordre et de demander la retransmission de tout segment manquant. Dans notre exemple de courrier électronique, la couche transport attacherait le port de destination pour SMTP (port 25) et un port source de l'hôte client à chaque segment.
 
 ## Exercise
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux connexes.
+Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'Apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux associés.
 
 ## Quiz Question
 
-Qu'est-ce qu'un protocole de transport fiable ?
+What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
 
 ## Quiz Answer
 

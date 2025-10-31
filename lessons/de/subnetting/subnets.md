@@ -3,55 +3,55 @@ index: 2
 lang: "de"
 title: "Subnetze"
 meta_title: "Subnetze - Subnetting"
-meta_description: "Erfahren Sie mehr über Subnetze und Subnetzmasken in der Linux-Vernetzung. Verstehen Sie Netzwerkpräfixe und wie Subnetze den Datenverkehr segmentieren. Beginnen Sie mit diesem anfängerfreundlichen Leitfaden!"
-meta_keywords: "Subnetze, Subnetzmaske, Netzwerkpräfix, Linux-Netzwerk, IP-Adresse, Anfänger, Tutorial, ifconfig"
+meta_description: "Meistern Sie die Grundlagen von Linux-Subnetzen und Subnetzmasken. Dieser Leitfaden erklärt Subnetting, Subnetze, Netzwerkpräfixe und wie man die Netzwerksegmentierung in einer Subnetz-Linux-Umgebung verwaltet."
+meta_keywords: "subnet linux, linux subnetz, linux subnetzmaske, subnetting subnetze, subnetze, subnetzmaske, netzwerkpräfix, Linux-Netzwerk, IP-Adresse"
 ---
 
 ## Lesson Content
 
-Wie kann ich feststellen, ob ich im selben Netzwerk wie Patty bin? Nun, wir können einfach das Subnetz betrachten, kurz für Subnetwork. Ein Subnetz ist eine Gruppe von Hosts mit IP-Adressen, die auf eine bestimmte Weise ähnlich sind. Diese Hosts befinden sich normalerweise in räumlicher Nähe zueinander, und Sie können Daten einfach zu und von Hosts im selben Subnetz senden. Stellen Sie es sich vor wie das Senden von Post im selben Postleitzahlenbereich; es ist viel einfacher, als Post in einen anderen Bundesstaat zu senden.
+Wie können Sie feststellen, ob sich zwei Computer im selben Netzwerk befinden? Die Antwort liegt im Verständnis des Subnetzes, kurz für Subnetzwerk. Ein Subnetz ist eine logische Unterteilung eines IP-Netzwerks, die Hosts mit ähnlichen IP-Adressen gruppiert. Diese Hosts befinden sich typischerweise in räumlicher Nähe, was einen effizienten Datentransfer zwischen ihnen ermöglicht. Stellen Sie es sich wie das Versenden von Post innerhalb derselben Postleitzahl vor; es ist viel schneller und einfacher, als es in einen anderen Bundesstaat zu senden.
 
-Zum Beispiel wären alle Hosts mit einer IP-Adresse, die mit 123.45.67 beginnt, im selben Subnetz. Mein Host hat eine IP von 123.45.67.8, und Pattys hat eine IP von 123.45.67.9. Die gemeinsamen Zahlen sind mein Netzwerkpräfix, und die 8 und 9 sind unsere Hosts; daher ist mein Netzwerk dasselbe wie Pattys. Ein Subnetz ist in ein Netzwerkpräfix, wie 123.45.67.0, und eine Subnetzmaske unterteilt.
+Damit ein Host zu einem **linux subnet** gehört, wird seine IP-Adresse in zwei Teile unterteilt: ein Netzwerkpräfix und eine Host-Kennung. Wenn ein Host beispielsweise die IP 192.168.1.8 und ein anderer 192.168.1.9 hat, teilen sie sich wahrscheinlich dasselbe Netzwerkpräfix. Der gemeinsame Teil identifiziert das Netzwerk, während die eindeutigen Zahlen (8 und 9) die einzelnen Hosts identifizieren.
 
-### Subnetzmasken
+### Verständnis der Linux-Subnetzmaske
 
-Subnetzmasken bestimmen, welcher Teil Ihrer IP-Adresse der Netzwerkanteil und welcher Teil der Hostanteil ist.
-
-Eine typische Subnetzmaske kann so aussehen:
+Eine **linux subnet mask** bestimmt, welcher Teil einer IP-Adresse der Netzwerkanteil und welcher der Host-Anteil ist. Eine typische Subnetzmaske sieht wie folgt aus:
 
 ```plaintext
 255.255.255.0
 ```
 
-Der 255-Teil ist tatsächlich unsere Maske. Um dies etwas einfacher zu verstehen, erinnern Sie sich, wie wir jedes Oktett als 8 Bits bezeichnen? In der Informatik wird ein Bit durch eine 0 oder eine 1 in Binärform dargestellt. Wenn Binärzahlen verwendet werden, bedeutet 1 an und 0 aus. Was ergeben also 8 Nullen oder Einsen?
+Um dies zu verstehen, müssen wir in Binär denken. Jede Zahl in einer IP-Adresse oder Subnetzmaske ist ein Oktett und repräsentiert 8 Bits. In Binär bedeutet eine `1` „an“ und eine `0` „aus“. Wenn Sie die Binärzahl `11111111` in Dezimal umwandeln, erhalten Sie 255. Das bedeutet, ein Oktett kann von 0 (`00000000`) bis 255 (`11111111`) reichen.
 
-Geben Sie bei Google "binary to decimal calculator" ein und konvertieren Sie 11111111 in eine Dezimalform. Was erhalten Sie? 255! Ein Oktett reicht also von 0 bis 255. Wenn wir also eine Subnetzmaske von 255.255.255.0 und eine IP-Adresse von 192.168.1.0 hätten, wie viele Hosts wären dann in diesem Subnetz? Die Antwort darauf finden wir in unserer Lektion über Subnetz-Mathematik.
+Die `255`er in der Maske „maskieren“ den Netzwerkanteil der IP-Adresse aus. Bei einer Maske von `255.255.255.0` und einer IP von `192.168.1.8` ist also der Teil `192.168.1` das Netzwerk und `8` der Host. Wir bezeichnen eine **subnet linux**-Konfiguration oft durch ihr Netzwerkpräfix gefolgt von der Subnetzmaske, wie z. B. `192.168.1.0/255.255.255.0`.
 
-Auch wenn wir über unser Subnetz sprechen, bezeichnen wir es üblicherweise durch das Netzwerkpräfix gefolgt von der Subnetzmaske:
+### Der Zweck von Subnetting Subnets
 
-```plaintext
-123.234.0.0/255.255.0.0
-```
+Warum erstellen wir Subnetze? Die Praxis des **subnetting subnets** ist entscheidend für die effektive Organisation und Verwaltung von Netzwerken. Sie beinhaltet die Aufteilung eines größeren Netzwerks in kleinere, besser handhabbare Segmente. Dies bietet mehrere wichtige Vorteile:
 
-### Warum?
+- **Verbesserte Leistung:** Durch die Segmentierung eines Netzwerks reduzieren Sie das Volumen des Broadcast-Verkehrs innerhalb jedes Subnetzes, was zu weniger Überlastung und besserer Gesamtleistung führt.
+- **Erhöhte Sicherheit:** Subnetze ermöglichen es Ihnen, verschiedene Teile Ihres Netzwerks zu isolieren. Ein Host in einem Subnetz kann ohne Router nicht direkt mit einem Host in einem anderen interagieren, wodurch eine Sicherheitsgrenze entsteht. Sie können Zugriffsregeln auf dem Router implementieren, um den Datenverkehr zwischen Subnetzen zu steuern.
+- **Vereinfachte Verwaltung:** Die Aufteilung eines großen Netzwerks in kleinere logische Einheiten erleichtert die Verwaltung, Fehlerbehebung und Anwendung von Netzwerkrichtlinien.
 
-Warum um alles in der Welt erstellen wir Subnetze? Subnetting wird verwendet, um Netzwerke zu segmentieren und den Datenfluss innerhalb dieses Netzwerks zu steuern. So kann ein Host in einem Subnetz nicht mit einem anderen Host in einem anderen Subnetz interagieren.
+### Verbinden von Subnetzen
 
-Aber Moment mal, was ist, wenn ich mich mit anderen Hosts wie yahoo.com verbinden möchte? Dann müssen Sie Subnetze miteinander verbinden. Um Subnetze zu verbinden, müssen Sie nur die Hosts finden, die mit mehr als einem Subnetz verbunden sind. Wenn zum Beispiel mein Host unter 192.168.1.129 mit einem lokalen Netzwerk von 192.168.1.129/24 verbunden ist, kann er alle Hosts in diesem Netzwerk erreichen. Um Hosts im restlichen Internet zu erreichen, muss er über den Router kommunizieren. Traditionell befindet sich der Router in den meisten Netzwerken mit einer Subnetzmaske von 255.255.255.0 normalerweise an Adresse 1 des Subnetzes, also 192.168.1.1. Dieser Router wird nun einen Port haben, der ihn mit einem anderen Subnetz verbindet (mehr dazu im Routing-Kurs). Bestimmte IP-Adressen (private Netzwerke) sind für das Internet nicht sichtbar, und wir haben Dinge wie NAT (mehr dazu später).
+Was ist, wenn Sie sich mit Hosts in einem anderen Netzwerk verbinden müssen, wie z. B. yahoo.com? Um verschiedene Subnetze zu verbinden, benötigen Sie ein Gerät, das mit mehr als einem Subnetz verbunden ist: einen Router.
+
+Zum Beispiel kann ein Host unter `192.168.1.129` in einem Netzwerk mit einer Maske von `255.255.255.0` jeden anderen Host im Netzwerk `192.168.1.0` erreichen. Um auf das Internet zuzugreifen, muss er den Verkehr über sein Gateway senden, welches der Router ist. In vielen Heimnetzwerken ist die Adresse des Routers oft die `.1` des Subnetzes (z. B. `192.168.1.1`). Dieser Router verfügt über eine weitere Verbindung zu einem anderen Subnetz (wie dem Netzwerk Ihres ISP), was die Kommunikation mit dem weiteren Internet ermöglicht.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von IP-Adressierung und Subnetting zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von IP-Adressierung und Subnetting zu festigen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich IPv4-Adressen, zu identifizieren, was grundlegend für das Verständnis von Subnetzen ist.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Lernen Sie, verschiedene IP-Adresstypen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob Hosts im selben Netzwerk sind.
-3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie die in der Lektion besprochenen Konzepte von Netzwerkpräfixen und Host-Identifikation direkt anwenden.
+1.  **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung zu identifizieren, einschließlich IPv4-Adressen, was grundlegend für das Verständnis von Subnetzen ist.
+2.  **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Lernen Sie, verschiedene IP-Adress-Typen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob sich Hosts im selben Netzwerk befinden.
+3.  **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung und wenden Sie die im Unterricht besprochenen Konzepte von Netzwerkpräfixen und Host-Identifizierung direkt an.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerkadressierung und das Subnetting aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen im Umgang mit Netzwerkadressierung und Subnetting aufzubauen.
 
 ## Quiz Question
 
-Wahr oder falsch, ein Subnetz besteht aus einer Subnetzmaske und einem Netzwerkpräfix.
+Ein Subnetz wird durch ein Netzwerkpräfix und eine Subnetzmaske definiert. Wahr oder Falsch? (Bitte antworten Sie mit 'True' oder 'False'. Die Antwort ist groß-/kleingeschrieben und muss auf Englisch sein.)
 
 ## Quiz Answer
 

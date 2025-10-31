@@ -3,37 +3,41 @@ index: 5
 lang: "de"
 title: "env (Umgebung)"
 meta_title: "env (Umgebung) - Text-Fu"
-meta_description: "Erfahren Sie mehr über Linux-Umgebungsvariablen mit dem Befehl 'env'. Verstehen Sie die Variablen PATH, HOME und USER. Erhalten Sie eine Einführung in die Verwaltung Ihrer Linux-Umgebung."
-meta_keywords: "env Befehl, Linux Umgebungsvariablen, PATH Variable, Linux Tutorial, Linux für Anfänger, Shell Variablen, Linux Anleitung"
+meta_description: "Erfahren Sie, was der env-Befehl in Linux bewirkt. Diese Anleitung erklärt, wie Sie Linux-Umgebungsvariablen wie PATH, HOME und USER mit dem env-Linux-Befehl anzeigen und verwenden."
+meta_keywords: "env, linux env, env linux, env befehl linux, linux env befehl, was macht env in linux, umgebungsvariablen, PATH variable, shell variablen"
 ---
 
 ## Lesson Content
 
-Führen Sie den folgenden Befehl aus:
+Ihr Linux-System verwendet Umgebungsvariablen, um Informationen zu speichern, auf die die Shell und andere Prozesse zugreifen können. Diese Variablen enthalten nützliche Daten zu Ihrer Benutzersitzung und Systemkonfiguration.
+
+### Grundlegende Umgebungsvariablen untersuchen
+
+Sie können den Wert einer bestimmten Variablen anzeigen, indem Sie deren Namen ein `$`-Symbol voranstellen. Führen Sie beispielsweise den folgenden Befehl aus:
 
 ```bash
 echo $HOME
 ```
 
-Sie sollten den Pfad zu Ihrem Home-Verzeichnis sehen; meiner sieht so aus: /home/pete.
+Dieser Befehl zeigt den Pfad zu Ihrem Home-Verzeichnis an, der etwa so aussehen könnte wie `/home/pete`.
 
-Was ist mit diesem Befehl?
+Versuchen Sie es nun mit einem weiteren:
 
 ```bash
 echo $USER
 ```
 
-Sie sollten Ihren Benutzernamen sehen!
+Dies gibt Ihren aktuellen Benutzernamen aus. Aber woher stammen diese Informationen? Sie sind in der Umgebung Ihrer Shell gespeichert.
 
-Woher kommen diese Informationen? Sie stammen aus Ihren Umgebungsvariablen. Sie können diese anzeigen, indem Sie Folgendes eingeben:
+### Was macht env unter Linux
+
+Um alle Umgebungsvariablen anzuzeigen, die derzeit für Ihre Sitzung festgelegt sind, können Sie den Befehl `env` verwenden. Der `linux env command` ist ein grundlegendes Werkzeug zur Überprüfung der Konfiguration Ihrer Shell.
 
 ```bash
 env
 ```
 
-Dies gibt eine ganze Menge Informationen über die Umgebungsvariablen aus, die Sie derzeit gesetzt haben. Diese Variablen enthalten nützliche Informationen, die die Shell und andere Prozesse verwenden können.
-
-Hier ist ein kurzes Beispiel:
+Wenn Sie den Befehl `env` ausführen, wird eine Liste von Schlüssel-Wert-Paaren ausgegeben. Hier ist ein kurzes Beispiel dafür, was Sie sehen könnten:
 
 ```plaintext
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
@@ -41,30 +45,35 @@ PWD=/home/user
 USER=pete
 ```
 
-Eine besonders wichtige Variable ist die PATH-Variable. Sie können auf diese Variablen zugreifen, indem Sie ein `$` vor den Variablennamen setzen, wie hier:
+Das Verständnis von `linux env` ist entscheidend für die effektive Verwaltung Ihres Systems.
+
+### Die Bedeutung der PATH-Variable
+
+Eine der wichtigsten Variablen in Ihrer `env linux`-Ausgabe ist `PATH`. Sie können deren Inhalt gezielt mit folgendem Befehl anzeigen:
 
 ```bash
-$ echo $PATH
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
+echo $PATH
 ```
 
-Dies gibt eine Liste von Pfaden zurück, die durch einen Doppelpunkt getrennt sind und die Ihr System durchsucht, wenn es einen Befehl ausführt. Nehmen wir an, Sie laden ein Paket manuell aus dem Internet herunter und installieren es in einem nicht standardmäßigen Verzeichnis, und Sie möchten diesen Befehl ausführen. Sie geben `$ coolcommand` ein, und die Eingabeaufforderung sagt "command not found". Nun, das ist albern; Sie sehen das Binary in einem Ordner und wissen, dass es existiert. Was passiert, ist, dass die `$PATH`-Variable dieses Verzeichnis nicht nach diesem Binary durchsucht, daher wird ein Fehler ausgegeben.
+Dieser Befehl gibt eine durch Doppelpunkte getrennte Liste von Verzeichnissen zurück. Wenn Sie einen Befehl eingeben, durchsucht Ihr System diese Verzeichnisse, um die entsprechende ausführbare Datei zu finden.
 
-Nehmen wir an, Sie hätten tonnenweise Binaries, die Sie aus diesem Verzeichnis ausführen wollten; Sie können einfach die PATH-Variable ändern, um dieses Verzeichnis in Ihre PATH-Umgebungsvariable aufzunehmen.
+Stellen Sie sich vor, Sie installieren manuell ein Programm in einem nicht standardmäßigen Verzeichnis wie `/opt/coolapp/bin`. Wenn Sie versuchen, es durch Eingabe von `coolcommand` auszuführen, erhalten Sie möglicherweise eine Fehlermeldung „command not found“. Dies geschieht, weil das Verzeichnis, das Ihr Programm enthält, nicht in der `PATH`-Variable aufgeführt ist, sodass die Shell nicht weiß, wo sie danach suchen soll.
+
+Um dies zu beheben, können Sie die `PATH`-Variable ändern, um das neue Verzeichnis einzuschließen. Indem Sie Ihr benutzerdefiniertes Verzeichnis zu `PATH` hinzufügen, ermöglichen Sie der Shell, Ihre Programme von überall im Terminal zu finden und auszuführen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Umgebungsvariablen zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Umgebungsvariablen zu festigen:
 
-1. **[Shell-Umgebung und Konfiguration in Linux verwalten](https://labex.io/de/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** – Üben Sie das Erstellen und Verwalten von lokalen und Umgebungsvariablen, das Verständnis der Vererbung und das dauerhafte Speichern von Konfigurationen durch Ändern der Datei `.bashrc`.
-2. **[Umgebungsvariablen in Linux](https://labex.io/de/labs/linux-environment-variables-in-linux-385274)** – Lernen Sie das Konzept und die Verwendung von Umgebungsvariablen, wie man sie erstellt, ändert und verwaltet und welche Rolle sie bei der Systemkonfiguration spielen.
-3. **[Linux-Umgebungsvariablen konfigurieren](https://labex.io/de/labs/linux-configure-linux-environment-variables-437861)** – Sammeln Sie praktische Erfahrungen beim Erstellen, Festlegen und Verwalten von Umgebungsvariablen in einem Linux-System.
+1.  **[Shell-Umgebung und Konfiguration unter Linux verwalten](https://labex.io/de/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** – Üben Sie das Erstellen und Verwalten lokaler Variablen und Umgebungsvariablen, das Verständnis der Vererbung und das dauerhaftes Speichern von Konfigurationen durch Bearbeiten der `.bashrc`-Datei.
+2.  **[Umgebungsvariablen unter Linux](https://labex.io/de/labs/linux-environment-variables-in-linux-385274)** – Lernen Sie das Konzept und die Verwendung von Umgebungsvariablen kennen, wie man sie erstellt, ändert und verwaltet und welche Rolle sie bei der Systemkonfiguration spielen.
+3.  **[Linux-Umgebungsvariablen konfigurieren](https://labex.io/de/labs/linux-configure-linux-environment-variables-437861)** – Sammeln Sie praktische Erfahrungen beim Erstellen, Festlegen und Verwalten von Umgebungsvariablen in einem Linux-System.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit Ihrer Linux-Shell-Umgebung aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung Ihrer Linux-Shell-Umgebung aufzubauen.
 
 ## Quiz Question
 
-Wie sehen Sie Ihre Umgebungsvariablen?
+Welcher Befehl zeigt alle Ihre aktuellen Umgebungsvariablen an? (Bitte antworten Sie auf Englisch, verwenden Sie nur den Befehlsnamen in Kleinbuchstaben).
 
 ## Quiz Answer
 

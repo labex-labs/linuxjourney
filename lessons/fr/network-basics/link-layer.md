@@ -1,54 +1,56 @@
 ---
 index: 8
 lang: "fr"
-title: "Couche de liaison"
-meta_title: "Couche de liaison - Bases du réseau"
-meta_description: "Apprenez-en davantage sur la couche de liaison dans TCP/IP, comment ARP résout les adresses MAC et le parcours des paquets. Comprenez les fondamentaux du réseau avec ce tutoriel de mise en réseau Linux."
-meta_keywords: "Couche de liaison, ARP, TCP/IP, adresse MAC, fondamentaux du réseau, mise en réseau Linux, débutant, tutoriel"
+title: "Couche Liaison de Données"
+meta_title: "Couche Liaison de Données - Bases Réseau"
+meta_description: "Explorez les fondamentaux de la couche liaison de données du TCP/IP. Apprenez comment l'en-tête de la couche liaison est construit, comment l'ARP résout les adresses IP en adresses MAC, et le processus de traversée des paquets sur un réseau local."
+meta_keywords: "couche liaison de données, en-tête couche liaison, ARP, TCP/IP, adresse MAC, fondamentaux réseau, réseau Linux, traversée de paquets, protocole de résolution d'adresse"
 ---
 
 ## Lesson Content
 
-Au bas du modèle TCP/IP se trouve la couche de liaison (Link Layer). Cette couche est spécifique au matériel.
+La **Couche Liaison de Données** (Link Layer) est la couche fondamentale du modèle TCP/IP, responsable des communications sur le segment de réseau local. Cette couche est spécifique au matériel, traitant directement avec les cartes d'interface réseau et l'adressage physique.
 
-Dans la couche de liaison, notre paquet est encapsulé une fois de plus dans ce qu'on appelle une trame. L'en-tête de la trame attache les adresses MAC source et destination de nos hôtes, des sommes de contrôle et des séparateurs de paquets afin que le récepteur puisse savoir quand un paquet se termine.
+### Trames et En-tête de la Couche Liaison de Données
 
-Heureusement, nous sommes sur le même réseau, donc notre paquet n'aura pas à voyager trop loin. Tout d'abord, la couche de liaison attache mon adresse MAC source à l'en-tête de la trame, mais elle a également besoin de connaître l'adresse MAC de Patty. Comment le sait-elle, et comment la trouver puisque ce n'est pas sur Internet ? Nous utilisons ARP !
+Au niveau de la **couche liaison de données**, le paquet provenant de la couche réseau est encapsulé dans une structure appelée trame. Une partie cruciale de ce processus est l'ajout de l'**en-tête de la couche liaison de données**. Cet en-tête contient les adresses MAC source et destination des hôtes, des sommes de contrôle pour la détection d'erreurs, et des séparateurs de paquets, qui permettent au périphérique récepteur d'identifier où une trame se termine et où la suivante commence.
 
-### ARP (Address Resolution Protocol)
+Pour construire l'**en-tête de la couche liaison de données**, le système a besoin des adresses MAC source et destination. Bien que l'adresse MAC source soit connue, l'adresse MAC de destination pour une IP sur le même réseau local doit être découverte. C'est là qu'intervient le Protocole de Résolution d'Adresse (ARP).
 
-ARP trouve l'adresse MAC associée à une adresse IP. ARP est utilisé au sein du même réseau. Si Patty n'était pas sur le même réseau, nous utiliserions un système de routage pour déterminer le routeur suivant qui recevrait le paquet, et une fois que nous serions sur le même réseau, nous pourrions utiliser ARP.
+### ARP (Protocole de Résolution d'Adresse)
 
-Une fois que nous sommes sur le même réseau, les systèmes utilisent d'abord la table de recherche ARP qui stocke des informations sur les adresses IP associées à quelle adresse MAC. Si la valeur n'est pas présente, alors ARP est utilisé. Ensuite, le système enverra un message de diffusion au réseau en utilisant le protocole ARP pour savoir quel hôte a l'IP 10.10.1.4. Un message de diffusion est un message spécial qui est envoyé à tous les hôtes d'un réseau (nommé à juste titre pour l'envoi d'une diffusion). Toute machine avec l'adresse IP demandée répondra avec un paquet ARP contenant l'adresse IP et l'adresse MAC.
+ARP est un protocole de la **couche liaison de données** utilisé pour trouver l'adresse MAC associée à une adresse IP spécifique au sein du même réseau. Si l'hôte de destination se trouvait sur un réseau différent, le paquet serait envoyé à une passerelle par défaut (routeur), et ARP serait utilisé pour trouver l'adresse MAC du routeur.
 
-Maintenant que nous avons toutes les données nécessaires — adresse IP et adresses MAC — notre couche de liaison transmet cette trame via notre carte d'interface réseau, vers le périphérique suivant, et trouve le réseau de Patty. Cette étape est un peu plus complexe que la façon dont je viens de l'expliquer, mais nous discuterons de plus de détails dans le cours sur le routage.
+Les systèmes consultent d'abord leur table de recherche ARP, qui met en cache les mappages IP vers adresse MAC connus. Si l'adresse requise n'est pas dans le cache, le système diffuse une requête ARP à l'ensemble du réseau. Ce message spécial demande quel hôte possède une adresse IP spécifique, par exemple, 10.10.1.4. L'hôte possédant cette adresse IP enverra une réponse ARP contenant son adresse IP et son adresse MAC.
 
-Et voilà : un parcours de paquet simple (ou pas si simple) à travers la couche TCP/IP. Gardez à l'esprit que les paquets ne voyagent pas de manière unidirectionnelle comme cela. Nous ne sommes même pas encore arrivés au réseau de Patty ! Lors du transit à travers les réseaux, il faut passer par le modèle TCP/IP au moins deux fois avant que des données ne soient envoyées ou reçues. En réalité, l'apparence de ce paquet serait quelque chose comme ceci :
+Avec toutes les adresses IP et MAC nécessaires, la **couche liaison de données** peut maintenant acheminer la trame via la carte d'interface réseau. Le voyage d'un paquet est un processus en plusieurs étapes d'encapsulation et de désencapsulation lorsqu'il monte et descend dans la pile TCP/IP aux extrémités d'envoi et de réception.
 
-### Parcours du paquet
+### Parcours du Paquet
 
-1. Pete envoie un e-mail à Patty : ces données sont envoyées à la couche de transport.
-2. La couche de transport encapsule les données dans un en-tête TCP ou UDP pour former un segment. Le segment attache le port TCP ou UDP de destination et de source, puis le segment est envoyé à la couche réseau.
-3. La couche réseau encapsule le segment TCP à l'intérieur d'un paquet IP ; elle attache l'adresse IP source et destination. Ensuite, elle route le paquet vers la couche de liaison.
-4. Le paquet atteint ensuite le matériel physique de Pete et est encapsulé dans une trame. Les adresses MAC source et destination sont ajoutées à la trame.
-5. Patty reçoit cette trame de données via sa couche physique et vérifie chaque trame pour l'intégrité des données, puis désencapsule le contenu de la trame et envoie le paquet IP à la couche réseau.
-6. La couche réseau lit le paquet pour trouver l'IP source et destination qui avait été précédemment attachée. Elle vérifie si son IP est la même que l'IP de destination, ce qui est le cas ! Elle désencapsule le paquet et envoie le segment à la couche de transport.
-7. La couche de transport désencapsule les segments, vérifie les numéros de port TCP ou UDP, et établit une connexion avec la couche application basée sur ces numéros de port.
-8. La couche application reçoit les données de la couche de transport sur le port spécifié et les présente à Patty sous la forme du message e-mail final.
+Voici une description étape par étape du voyage d'un paquet d'un expéditeur (Pete) à un destinataire (Patty) :
+
+1. Pete envoie un e-mail à Patty. Ces données sont envoyées à la couche transport.
+2. La couche transport encapsule les données dans un en-tête TCP ou UDP pour former un segment. Elle attache les ports de destination et source, puis envoie le segment à la couche réseau.
+3. La couche réseau encapsule le segment dans un paquet IP et attache les adresses IP source et destination. Elle achemine ensuite le paquet vers la **couche liaison de données**.
+4. Le paquet atteint la **couche liaison de données**, où il est encapsulé dans une trame. L'**en-tête de la couche liaison de données**, contenant les adresses MAC source et destination, est ajouté.
+5. Patty reçoit cette trame de données via sa couche physique, vérifie l'intégrité des données de la trame, puis la désencapsule et envoie le paquet IP à sa couche réseau.
+6. La couche réseau lit le paquet pour trouver les adresses IP source et destination. Elle confirme que l'adresse IP de destination correspond à la sienne, désencapsule le paquet et envoie le segment à la couche transport.
+7. La couche transport désencapsule le segment, vérifie les numéros de port TCP ou UDP, et établit une connexion avec la couche application en fonction de ces ports.
+8. La couche application reçoit les données de la couche transport sur le port spécifié et les présente à Patty comme le message e-mail final.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la couche de liaison, des adresses MAC et d'ARP :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la Couche Liaison de Données, des adresses MAC et d'ARP :
 
 1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, sur un système Linux.
 2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` fonctionnent ensemble pour résoudre les adresses IP en adresses MAC et comprendre les interactions de la couche réseau.
-3. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Acquérez une expérience pratique de la capture et de l'inspection des trames Ethernet, y compris les adresses MAC, pour comprendre les communications réseau de bas niveau.
+3. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Acquérir une expérience pratique en capturant et en inspectant les trames Ethernet, y compris les adresses MAC, pour comprendre les communications réseau de bas niveau.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec les fondamentaux du réseau au niveau de la couche de liaison.
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseau au niveau de la Couche Liaison de Données.
 
 ## Quiz Question
 
-Qu'est-ce qui est utilisé pour trouver l'adresse MAC sur le même réseau ?
+Quel protocole est utilisé pour trouver l'adresse MAC d'un hôte sur le même réseau local ? (Veuillez répondre avec l'acronyme anglais en lettres majuscules).
 
 ## Quiz Answer
 

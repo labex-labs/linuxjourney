@@ -3,17 +3,21 @@ index: 3
 lang: "en"
 title: "Process Details"
 meta_title: "Process Details - Processes"
-meta_description: "Learn about Linux process details, how the kernel manages resources, and what processes are. Understand process concepts for beginners."
-meta_keywords: "Linux processes, kernel, process management, ps aux, Linux tutorial, beginner guide"
+meta_description: "Explore the fundamentals of Linux process details. This guide for beginners explains what a process is, how the Linux kernel handles process management, and allocates system resources like CPU and memory."
+meta_keywords: "Linux process, process details, kernel, process management, system resources, ps aux, CPU, memory, Linux tutorial, beginner guide"
 ---
 
 ## Lesson Content
 
-Before we get into more practical applications of processes, we have to first understand what they are and how they work. This part can get confusing since we are diving into the nitty-gritty, so feel free to come back to this lesson if you don't want to learn about it now.
+Before diving into the practical applications of process management, it's essential to understand what Linux processes are and how they function. This topic can seem complex as we explore the details, so feel free to revisit this lesson later if needed.
 
-A process, as we said before, is a running program on the system. More precisely, it's the system allocating memory, CPU, and I/O to make the program run. A process is an instance of a running program. Go ahead and open 3 terminal windows. In two windows, run the `cat` command without passing any options (the `cat` process will stay open as a process because it expects stdin). Now in the third window run: `ps aux | grep cat`. You'll see that there are two processes for `cat`, even though they are calling the same program.
+### What is a Linux Process
 
-The kernel is in charge of processes. When we run a program, the kernel loads up the code of the program in memory, determines and allocates resources, and then keeps tabs on each process. It knows:
+A process is a program in execution. More precisely, it is an instance of a running program to which the system has allocated resources like memory, CPU time, and I/O. For example, if you open three terminal windows, run the `cat` command in two of them without any arguments (it will wait for standard input, keeping the process active), and then use the third window to run `ps aux | grep cat`, you will see two distinct `cat` processes. Each is a separate instance of the same program, with its own unique process ID and resource allocation.
+
+### The Kernel's Role in Process Management
+
+The Linux kernel is responsible for all process management. When you execute a program, the kernel loads its code into memory, allocates necessary system resources, and begins tracking it as a process. The kernel maintains detailed information for each process, including:
 
 - The status of the process
 - The resources the process is using and receives
@@ -21,7 +25,7 @@ The kernel is in charge of processes. When we run a program, the kernel loads up
 - Signal handling (more on that later)
 - And basically everything else
 
-All processes are trying to get a taste of that sweet resource pie. It's the kernel's job to make sure that processes get the right amount of resources depending on process demands. When a process ends, the resources it used are now freed up for other processes.
+All active processes compete for system resources. The kernel acts as a scheduler, ensuring that each process receives a fair share of resources based on its priority and needs. When a process completes its task or is terminated, the kernel reclaims the resources it was using, making them available for other processes.
 
 ## Exercise
 
@@ -35,7 +39,7 @@ These labs will help you apply the concepts in real scenarios and build confiden
 
 ## Quiz Question
 
-What manages and controls processes?
+What manages and controls all Linux processes? Please answer in a single English word, all lowercase.
 
 ## Quiz Answer
 

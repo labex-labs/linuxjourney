@@ -3,46 +3,59 @@ index: 8
 lang: "de"
 title: "Das Sticky Bit"
 meta_title: "Das Sticky Bit - Berechtigungen"
-meta_description: "Erfahren Sie mehr über das Linux Sticky Bit, seinen Zweck in freigegebenen Verzeichnissen wie /tmp und wie Sie es mit chmod setzen. Verstehen Sie diese wichtige Dateiberechtigung!"
-meta_keywords: "Linux Sticky Bit, chmod +t, /tmp Verzeichnis, Linux Berechtigungen, Dateisicherheit, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erkunden Sie den Zweck des Sticky Bits in Linux- und Unix-Dateiberechtigungen. Erfahren Sie, wie das Sticky Bit Dateien in gemeinsam genutzten Verzeichnissen wie /tmp schützt und wie man es mit chmod setzt."
+meta_keywords: "sticky bit, sticky bit linux, unix dateiberechtigungen sticky bit, chmod +t, /tmp verzeichnis, dateiberechtigungen, linux sicherheit"
 ---
 
 ## Lesson Content
 
-Ein letztes spezielles Berechtigungsbit, über das ich sprechen möchte, ist das Sticky Bit.
+Jenseits der Standardberechtigungen Lesen, Schreiben und Ausführen bietet Linux spezielle Berechtigungen für eine erweiterte Zugriffskontrolle. Die letzte dieser speziellen Berechtigungen, die wir behandeln, ist das **Sticky Bit** (klebriges Bit).
 
-Dieses Berechtigungsbit "klebt eine Datei/ein Verzeichnis", was bedeutet, dass nur der Eigentümer oder der Root-Benutzer die Datei löschen oder ändern kann. Dies ist sehr nützlich für freigegebene Verzeichnisse. Sehen Sie sich das folgende Beispiel an:
+### Was ist das Sticky Bit?
+
+Das Sticky Bit ist eine Berechtigungseinstellung, die auf ein Verzeichnis angewendet werden kann. Wenn das Sticky Bit für ein Verzeichnis gesetzt ist, können Dateien in diesem Verzeichnis nur vom Besitzer der Datei, dem Besitzer des Verzeichnisses oder dem Root-Benutzer gelöscht oder umbenannt werden. Dies ist besonders nützlich für gemeinsam genutzte Verzeichnisse, in denen mehrere Benutzer ihre eigenen Dateien erstellen und verwalten müssen, ohne andere zu beeinträchtigen. Dieses Konzept ist ein Schlüsselbestandteil der Verwaltung von **Unix-Dateiberechtigungen mit Sticky Bit**.
+
+### Ein praktisches Beispiel: Das /tmp-Verzeichnis
+
+Ein häufiger Anwendungsfall für das **Sticky Bit unter Linux** ist das `/tmp`-Verzeichnis, ein für alle beschreibbarer Ort für temporäre Dateien. Untersuchen wir seine Berechtigungen:
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwx+t 6 root root 4096 Dec 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dez 15 11:45 /tmp
 ```
 
-Sie sehen hier am Ende ein spezielles Berechtigungsbit **t**. Das bedeutet, dass jeder Dateien im Verzeichnis `/tmp` hinzufügen, schreiben und ändern kann, aber nur root das Verzeichnis `/tmp` löschen kann.
+Beachten Sie das `t` am Ende der Berechtigungszeichenfolge (`rwxrwxrwt`). Dieses `t` zeigt an, dass das Sticky Bit gesetzt ist. Aus diesem Grund kann zwar jeder Benutzer Dateien in `/tmp` erstellen, aber er kann keine von anderen Benutzern erstellten Dateien löschen oder verschieben. Dies verhindert, dass ein Benutzer die Arbeit eines anderen in diesem gemeinsam genutzten Bereich stört.
 
-### Sticky Bit ändern
+### So setzen Sie das Sticky Bit
+
+You können das Sticky Bit mit dem `chmod`-Befehl auf zwei Arten setzen: symbolischer Modus oder oktaler (numerischer) Modus.
+
+Um das Sticky Bit im symbolischen Modus hinzuzufügen:
 
 ```bash
-sudo chmod +t mydir
-
-sudo chmod 1755 mydir
+chmod +t mein_gemeinsames_verzeichnis
 ```
 
-Die numerische Darstellung für das Sticky Bit ist **1**.
+Um Berechtigungen im oktalen Modus festzulegen, stellen Sie der Standard-dreistelligen Berechtigungsziffer eine **1** voran. Die numerische Darstellung für das Sticky Bit ist **1**.
+
+```bash
+# Dies setzt die Berechtigungen auf rwxr-xr-x mit dem Sticky Bit
+chmod 1755 mein_gemeinsames_verzeichnis
+```
+
+Das Verständnis des Sticky Bits ist entscheidend für die Verwaltung von Multi-User-Umgebungen und die effektive Sicherung gemeinsam genutzter Verzeichnisse.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateiberechtigungen und deren Auswirkungen auf die Datei- und Verzeichnisverwaltung zu vertiefen:
+Um Ihr Verständnis von Dateiberechtigungen, einschließlich spezieller Berechtigungen wie dem Sticky Bit, zu festigen, versuchen Sie diese praktischen Labs. Sie helfen Ihnen zu sehen, wie diese Konzepte in realen Szenarien angewendet werden.
 
-1. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Üben Sie das Erstellen und Verwalten von Benutzern und Gruppen, das Verständnis von Dateiberechtigungen und das Manipulieren des Dateibesitzes. Dieses Labor vermittelt das grundlegende Wissen, um zu verstehen, wie spezielle Berechtigungen wie das Sticky Bit funktionieren.
-2. **[Dateien löschen und verschieben](https://labex.io/de/labs/linux-delete-and-move-files-7777)** - Erfahren Sie, wie Sie Dateien in Linux-Systemen löschen und verschieben. Dieses Labor hilft Ihnen, die praktischen Auswirkungen von Berechtigungen zu verstehen, einschließlich der Art und Weise, wie sie diese Aktionen einschränken können.
-3. **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** - Üben Sie das Auffinden von Dateien und das Festlegen von Zugriffsrechten. Dieses Labor unterstreicht die Bedeutung von Dateiberechtigungen und wie sie den Zugriff und die Änderung steuern.
-
-Diese Labore helfen Ihnen, die Konzepte der Dateiberechtigungen in realen Szenarien anzuwenden und Vertrauen in die Verwaltung des Dateizugriffs unter Linux aufzubauen.
+1.  **[Linux-Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Üben Sie das Erstellen von Benutzern und Gruppen sowie die Manipulation von Dateibesitz und Berechtigungen. Dieses Lab bietet eine Grundlage für das Verständnis der Funktionsweise spezieller Berechtigungen.
+2.  **[Dateien löschen und verschieben](https://labex.io/de/labs/linux-delete-and-move-files-7777)** – Lernen Sie, wie man Dateien löscht und verschiebt, und sehen Sie, wie Berechtigungen, einschließlich des Sticky Bits auf einem Verzeichnis, diese Aktionen einschränken können.
+3.  **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** – Üben Sie das Auffinden von Dateien und das Festlegen von Zugriffskontrollen, um die Bedeutung von Dateiberechtigungen bei der Verwaltung des Dateizugriffs und der Änderung zu verstärken.
 
 ## Quiz Question
 
-Welches Symbol repräsentiert das Sticky Bit?
+Welches einzelne Zeichen in der Berechtigungszeichenfolge stellt in einer langen Verzeichnisauflistung (ls -l) dar, dass das Sticky Bit gesetzt ist? Bitte antworten Sie mit einem einzelnen Kleinbuchstaben aus dem Englischen.
 
 ## Quiz Answer
 

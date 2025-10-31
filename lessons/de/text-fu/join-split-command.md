@@ -1,17 +1,21 @@
 ---
 index: 11
 lang: "de"
-title: "join und split"
-meta_title: "join und split - Text-Fu"
-meta_description: "Lernen Sie, die Linux-Befehle 'join' und 'split' zur Dateimanipulation zu verwenden. Verstehen Sie, wie Dateien nach gemeinsamen Feldern zusammengeführt und große Dateien effizient aufgeteilt werden. Erhalten Sie praktische Beispiele und Tipps."
-meta_keywords: "Linux join Befehl, Linux split Befehl, Dateimanipulation, Linux Tutorial, Befehlszeile, Linux für Anfänger, Linux Anleitung"
+title: "Verbinden und Aufteilen"
+meta_title: "Verbinden und Aufteilen - Text-Fu"
+meta_description: "Meistern Sie die Verwendung der Linux-Befehle join und split. Lernen Sie, Dateien effizient anhand gemeinsamer Felder zu verbinden und große Dateien in kleinere Teile aufzuteilen. Diese Anleitung behandelt, welchen Befehl Sie verwenden würden, um Dateien wie katze, hund, kuh zu verbinden, und andere praktische Beispiele."
+meta_keywords: "linux dateien verbinden, welchen befehl würden sie verwenden um dateien zu verbinden, linux join befehl, linux split befehl, dateimanipulation, kommandozeile, textverarbeitung"
 ---
 
 ## Lesson Content
 
-Der Befehl `join` ermöglicht es Ihnen, mehrere Dateien anhand eines gemeinsamen Feldes zusammenzuführen:
+In Linux ist die Verwaltung und Bearbeitung von Textdateien eine häufige Aufgabe. Zwei leistungsstarke Dienstprogramme hierfür sind `join` und `split`. Der Befehl `join` führt Zeilen aus zwei Dateien basierend auf einem gemeinsamen Feld zusammen, während `split` eine große Datei in kleinere, besser handhabbare Teile zerlegt.
 
-Nehmen wir an, ich hätte zwei Dateien, die ich zusammenführen wollte:
+### Dateien nach einem gemeinsamen Feld zusammenfügen
+
+Der Befehl `join` ist ein grundlegendes Werkzeug, wenn Sie **linux join files** (Linux-Dateien zusammenfügen) müssen. Standardmäßig kombiniert er Zeilen aus zwei sortierten Dateien basierend auf dem identischen ersten Feld.
+
+Stellen Sie sich zum Beispiel vor, Sie haben zwei Dateien, die Sie zusammenführen möchten:
 
 ```plaintext
 file1.txt
@@ -25,6 +29,8 @@ file2.txt
 3 Sue
 ```
 
+Mit dem Befehl `join` können Sie sie einfach kombinieren:
+
 ```bash
 $ join file1.txt file2.txt
 1 John Doe
@@ -32,9 +38,11 @@ $ join file1.txt file2.txt
 3 Mary Sue
 ```
 
-Sehen Sie, wie meine Dateien zusammengeführt wurden? Sie werden standardmäßig nach dem ersten Feld zusammengeführt, und die Felder müssen identisch sein. Wenn nicht, können Sie sie sortieren. In diesem Fall werden die Dateien über 1, 2, 3 zusammengeführt.
+Wie Sie sehen, wurden die Dateien mithilfe des gemeinsamen ersten Feldes (1, 2, 3) zusammengefügt. Damit `join` korrekt funktioniert, müssen die Verknüpfungsfelder in beiden Dateien sortiert sein.
 
-Wie würden wir die folgenden Dateien zusammenführen?
+### Angabe unterschiedlicher Verknüpfungsfelder
+
+Was ist, wenn das gemeinsame Feld nicht die erste Spalte ist? Sie können `join` mitteilen, welche Felder verwendet werden sollen. Betrachten Sie diese Dateien:
 
 ```plaintext
 file1.txt
@@ -48,7 +56,7 @@ file2.txt
 3 Sue
 ```
 
-Um diese Datei zusammenzuführen, müssen Sie angeben, welche Felder Sie zusammenführen. In diesem Fall möchten wir Feld 2 in `file1.txt` und Feld 1 in `file2.txt`, daher würde der Befehl so aussehen:
+Hier müssen wir das zweite Feld von `file1.txt` und das erste Feld von `file2.txt` verknüpfen. Der Befehl würde lauten:
 
 ```bash
 $ join -1 2 -2 1 file1.txt file2.txt
@@ -57,27 +65,31 @@ $ join -1 2 -2 1 file1.txt file2.txt
 3 Mary Sue
 ```
 
-`-1` bezieht sich auf `file1.txt` und `-2` auf `file2.txt`. Ziemlich clever. Sie können eine Datei auch mit dem Befehl `split` in verschiedene Dateien aufteilen:
+Die Option `-1 2` gibt das Feld 2 der ersten Datei an, und `-2 1` gibt das Feld 1 der zweiten Datei an.
+
+### Aufteilen großer Dateien
+
+Der Befehl `split` macht das Gegenteil von `join`; er teilt eine große Datei in kleinere auf.
 
 ```bash
-split somefile
+$ split somefile
 ```
 
-Dies wird sie in verschiedene Dateien aufteilen. Standardmäßig werden sie aufgeteilt, sobald sie eine Grenze von 1000 Zeilen erreichen. Die Dateien werden standardmäßig `x**` genannt.
+Standardmäßig teilt dieser Befehl `somefile` in neue Dateien auf, sobald eine Grenze von 1000 Zeilen erreicht ist. Die Ausgabedateien werden als `xaa`, `xab` usw. benannt. Sie können dieses Verhalten anpassen, indem Sie beispielsweise mit der Option `-l` eine andere Zeilenanzahl angeben oder mit der Option `-b` nach Dateigröße aufteilen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Zusammenführens und Manipulierens von Textdateien zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis für das Zusammenfügen und Bearbeiten von Textdateien zu festigen:
 
-1. **[Linux join Command: File Joining](https://labex.io/de/labs/linux-linux-join-command-file-joining-219193)** – Dieses Lab bietet eine direkte, praktische Einführung in den Befehl `join`, die es Ihnen ermöglicht, das Zusammenführen von Zeilen aus zwei sortierten Textdateien basierend auf einem gemeinsamen Feld zu üben, genau wie in der Lektion besprochen.
-2. **[Processing Employees Data](https://labex.io/de/labs/linux-processing-employees-data-388132)** – Wenden Sie Ihr Wissen über `join` und andere leistungsstarke Linux-Befehlszeilen-Dienstprogramme wie `awk` an, um Daten aus mehreren Quellen zu kombinieren und zu verarbeiten, wodurch ein reales Datenanalyseszenario simuliert wird.
-3. **[Sequence Control and Pipeline](https://labex.io/de/labs/linux-sequence-control-and-pipeline-17994)** – Verbessern Sie Ihre Befehlszeileneffizienz und Datenmanipulationsfähigkeiten, indem Sie lernen, Befehlsausführungssequenzen zu steuern, Pipelines zu nutzen und leistungsstarke Textverarbeitungswerkzeuge einzusetzen, was die Datenkombinationsfähigkeiten von `join` ergänzt.
+1. **[Linux join Befehl: Dateizusammenführung](https://labex.io/de/labs/linux-linux-join-command-file-joining-219193)** - Dieses Labor bietet eine direkte, praktische Einführung in den Befehl `join`, mit dem Sie das Zusammenführen von Zeilen aus zwei sortierten Textdateien basierend auf einem gemeinsamen Feld üben können, genau wie in der Lektion besprochen.
+2. **[Verarbeitung von Mitarbeiterdaten](https://labex.io/de/labs/linux-processing-employees-data-388132)** - Wenden Sie Ihr Wissen über `join` und andere leistungsstarke Linux-Kommandozeilen-Dienstprogramme wie `awk` an, um Daten aus mehreren Quellen zu kombinieren und zu verarbeiten und so ein reales Datenanalyseszenario zu simulieren.
+3. **[Sequenzsteuerung und Pipeline](https://labex.io/de/labs/linux-sequence-control-and-pipeline-17994)** - Verbessern Sie Ihre Effizienz in der Kommandozeile und Ihre Fähigkeiten zur Datenmanipulation, indem Sie lernen, Befehlsausführungssequenzen zu steuern, Pipelines zu nutzen und leistungsstarke Textverarbeitungswerkzeuge einzusetzen, was die Datenkombinationsfähigkeiten von `join` ergänzt.
 
-Diese Labs helfen Ihnen, die Konzepte der Textdateimanipulation und Datenkombination in realen Szenarien anzuwenden und Vertrauen in Linux-Befehlszeilenwerkzeuge aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte der Textdateibearbeitung und Datenkombination in realen Szenarien anzuwenden und Vertrauen in Linux-Kommandozeilen-Tools aufzubauen.
 
 ## Quiz Question
 
-Welchen Befehl würden Sie verwenden, um Dateien namens `cat`, `dog`, `cow` zusammenzuführen?
+Welchen Befehl würden Sie verwenden, um Dateien namens `cat`, `dog`, `cow` zusammenzufügen? Bitte geben Sie den vollständigen Befehl in englischer Sprache an. Der Befehl und die Dateinamen sollten in Kleinbuchstaben sein.
 
 ## Quiz Answer
 

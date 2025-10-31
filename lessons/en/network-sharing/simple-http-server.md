@@ -3,25 +3,37 @@ index: 3
 lang: "en"
 title: "Simple HTTP Server"
 meta_title: "Simple HTTP Server - Network Sharing"
-meta_description: "Learn to create a simple HTTP server using Python's http.server module. Quickly share files on your network with this beginner-friendly Linux tutorial."
-meta_keywords: "http.server, SimpleHTTPServer, Python web server, file sharing, Linux tutorial, beginner guide"
+meta_description: "Learn how to quickly set up a simple HTTP server in Linux using Python's http.server module. This guide explains how to create a simple Linux web server for easy file sharing across your network."
+meta_keywords: "linux simple http server, simple http server linux, simple linux web server, python http.server, what is python simplehttpserver, file sharing, network server"
 ---
 
 ## Lesson Content
 
-Python has a super useful tool for serving files over HTTP. This is great if you just want to create a quick network share that other machines on your network can access. To do that, just go to the directory you want to share and run:
+Python includes a built-in module that allows you to instantly create a web server, which is incredibly useful for sharing files over a network. Setting up a **linux simple http server** is a straightforward process that requires just a single command.
+
+### Starting a Simple HTTP Server in Linux
+
+To get started, navigate to the directory you wish to share using your terminal. Once you are in the desired directory, you can start a **simple http server linux** environment with the following command if you are using Python 3:
 
 ```bash
 python -m http.server
 ```
 
-Or, if you are still on Python 2:
+This command launches a basic web server, making the contents of your current directory accessible over HTTP.
+
+### Legacy Method for Python 2
+
+For older systems that still use Python 2, the command is slightly different. The module was previously named `SimpleHTTPServer`. If you've ever wondered **what is python simplehttpserver**, it is simply the Python 2 equivalent of the `http.server` module. You can run it with:
 
 ```bash
 python -m SimpleHTTPServer
 ```
 
-This sets up a basic web server that you can access via the localhost address. So, grab the IP address of the machine you ran this on, and then on another machine, access it in the browser with: `http://IP_ADDRESS:8000`. On your own machine, you can view the files available by typing: `http://localhost:8000` in your web browser.
+### Accessing Your Simple Linux Web Server
+
+After running the command, your **simple linux web server** will be active. You can access the shared files from another machine on the same network by opening a web browser and navigating to `http://IP_ADDRESS:8000`, replacing `IP_ADDRESS` with the local IP of the machine running the server.
+
+To view the files on the same machine, you can use the localhost address: `http://localhost:8000`.
 
 ## Exercise
 
@@ -35,7 +47,7 @@ These labs will help you apply the concepts in real scenarios and build confiden
 
 ## Quiz Question
 
-What tool can you use to create a simple HTTP server with Python?
+For Python 3, what is the name of the module used to create a simple HTTP server? (Please answer in English, paying attention to case sensitivity).
 
 ## Quiz Answer
 

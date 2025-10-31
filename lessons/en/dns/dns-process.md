@@ -3,29 +3,29 @@ index: 3
 lang: "en"
 title: "DNS Process"
 meta_title: "DNS Process - DNS"
-meta_description: "Learn how DNS works step-by-step, from root servers to authoritative DNS. Understand the DNS lookup process for beginners and intermediate users."
-meta_keywords: "DNS process, DNS lookup, how DNS works, DNS tutorial, beginner DNS, Linux DNS, TLD, root servers"
+meta_description: "Explore the step-by-step DNS resolution process, from root servers to the authoritative DNS server. Understand how a Linux server finds a domain, a crucial concept for production environments and domain hosting."
+meta_keywords: "DNS process, DNS lookup, domain resolution, linux dns, production server, domain hosting, dns server, TLD, root servers, authoritative dns"
 ---
 
 ## Lesson Content
 
-Let's look at an example of how your host finds a domain (catzontheinterwebz.com) with DNS. Essentially, we funnel our way down until we reach the DNS server that knows of that domain.
+Let's explore how a computer, such as a `Linux server`, finds a `domain` like `catzontheinterwebz.com` using DNS. The process works like a funnel, narrowing down the search until we reach the specific `DNS server` that holds the answer.
 
-### Local DNS Server
+### The Initial Query
 
-First, our host asks, "Where is catzontheinterwebz.com?" Our local DNS server doesn't know, so it goes and starts from the top of the funnel to ask the Root Servers. Keep in mind that our host is not making these requests to find catzontheinterwebz.com directly; most users talk to a recursive DNS server provided by their ISPs, and that server is then tasked with finding the location of catzontheinterwebz.com.
+First, your host asks its configured recursive DNS server, "Where is `catzontheinterwebz.com`?" This recursive server, often provided by your ISP, likely doesn't know the answer directly. So, it begins the resolution process by contacting the highest authority: the Root Servers. This initial step is the same whether you're browsing from home or a `production server` is communicating with an API.
 
 ### Root Servers
 
-There are 13 Root Servers for the Internet. They are mirrored and distributed around the world to handle DNS requests for the Internet, so there are really hundreds of servers that are working. They are controlled by different organizations and contain information about Top-Level Domains. Top-level domains are what you know as .org, .com, .net, etc., addresses. So the Root Server doesn't know where catzontheinterwebz.com is, but it tells us to ask the .com Top-Level Domain DNS Server at an IP address it gives us.
+The internet's DNS hierarchy starts with 13 logical Root Servers, which are mirrored across hundreds of physical locations worldwide. These servers don't know the IP address for every `domain`, but they know who manages the Top-Level Domains (TLDs) like `.com`, `.org`, and `.net`. When asked about `catzontheinterwebz.com`, a Root Server will respond, "I don't know, but you should ask the `.com` TLD server," and provide its IP address.
 
-### Top-Level Domain
+### Top-Level Domain Servers
 
-So now we send another request to the name server that knows about ".com" addresses and ask if it knows where catzontheinterwebz.com is. The TLD doesn't have catzontheinterwebz.com in its zone files, but it does see a record for the name server for catzontheinterwebz.com. So it gives us the IP address of that name server and tells us to look there.
+Next, the recursive server sends a new query to the `.com` TLD server, again asking for the location of `catzontheinterwebz.com`. The TLD server's job is to point to the correct authoritative name servers for that specific `domain`. It doesn't have the final IP address, but it knows which `DNS server` is responsible for the `domain`, a detail often configured through your `domain hosting` provider. The TLD server replies with the IP address of that authoritative name server.
 
 ### Authoritative DNS Server
 
-Now we send a final request to the DNS server that actually has the record we want. The name server sees that it has a zone file for catzontheinterwebz.com, and there is a resource record for 'www' for this host. It then gives us the IP address of this host, and we can finally see some cats on the Internet.
+Finally, the recursive server sends one last request to the authoritative `DNS server`. This is the server that holds the actual DNS records for the `catzontheinterwebz.com` `domain`. This server checks its records, finds the 'A' record for the host, and returns the final IP address. This is a critical step for anyone `making` a website or application live, as this server provides the definitive link between the `domain` name and the `production server`'s IP address. With the IP address in hand, your computer can now connect and retrieve the content.
 
 ## Exercise
 
@@ -39,7 +39,7 @@ These labs will help you apply the concepts in real scenarios and build confiden
 
 ## Quiz Question
 
-What is the abbreviation for the nameservers where .com, .net, .org, etc., addresses are found?
+What is the abbreviation for the nameservers where .com, .net, .org, etc., addresses are found? Please answer using only uppercase English letters.
 
 ## Quiz Answer
 

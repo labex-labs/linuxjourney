@@ -2,42 +2,52 @@
 index: 6
 lang: "es"
 title: "Capa de Transporte"
-meta_title: "Capa de Transporte - Conceptos Básicos de Redes"
-meta_description: "Aprenda sobre la capa de transporte en redes Linux, incluyendo protocolos TCP/UDP, puertos y segmentación de datos. Comprenda cómo se transfieren los datos de forma fiable."
-meta_keywords: "Capa de Transporte Linux, TCP/UDP, puertos de red, segmentación de datos, redes Linux, tutorial para principiantes, protocolos de red"
+meta_title: "Capa de Transporte - Fundamentos de Red"
+meta_description: "Explore la Capa de Transporte en redes Linux. Esta lección cubre protocolos clave como TCP y UDP, la función de los puertos de red, segmentación de datos y el handshake TCP para transferencia fiable."
+meta_keywords: "Capa de Transporte Linux, TCP, UDP, handshake TCP, puertos de red, segmentación de datos, redes Linux, protocolos de red, transferencia de datos fiable"
 ---
 
 ## Lesson Content
 
-La capa de transporte nos ayuda a transferir nuestros datos de una manera que las redes puedan leerlos. Divide nuestros datos en fragmentos que serán transportados y vueltos a unir en el orden correcto. Estos fragmentos se conocen como segmentos. Los segmentos facilitan el transporte de datos a través de las redes.
+La capa de transporte es una parte fundamental de la red de Linux responsable de la comunicación de extremo a extremo y la transferencia fiable de datos entre aplicaciones en diferentes hosts. Prepara los datos para su transporte a través de la red de una manera estructurada y manejable.
 
-### Puertos
+### Segmentación de Datos
 
-Aunque sabemos a dónde enviamos nuestros datos a través de direcciones IP, no son lo suficientemente específicas para enviar nuestros datos a ciertos procesos o servicios. Servicios como HTTP utilizan un canal de comunicación a través de puertos. Si queremos enviar datos de páginas web, necesitamos enviarlos a través del puerto HTTP (puerto 80). Además de formar segmentos, la capa de transporte también adjuntará los puertos de origen y destino al segmento, para que cuando el receptor reciba el paquete final sepa qué puerto usar.
+Una de las funciones principales de la capa de transporte es la segmentación de datos. Descompone grandes cantidades de datos en fragmentos más pequeños y manejables llamados segmentos. Este proceso hace que la transferencia de datos sea más eficiente y resiliente. Si se pierde o corrompe un segmento durante la transmisión, solo ese pequeño trozo necesita ser reenviado, no todo el conjunto de datos. Una vez que los segmentos llegan a su destino, la capa de transporte los vuelve a ensamblar en el orden correcto.
 
-### UDP
+### Comprensión de los Puertos de Red
 
-Hay dos protocolos de transporte populares: UDP y TCP. Discutiremos brevemente UDP y dedicaremos la mayor parte de nuestro tiempo a TCP, ya que es el más utilizado.
+Mientras que las direcciones IP identifican el host correcto en una red, no especifican qué aplicación o servicio debe recibir los datos. Aquí es donde entran en juego los puertos de red. Servicios como HTTP (tráfico web) o SMTP (correo electrónico) escuchan en puertos específicos y bien conocidos. Por ejemplo, HTTP utiliza típicamente el puerto 80. La capa de transporte adjunta números de puerto de origen y destino a cada segmento, asegurando que los datos se entreguen al proceso correcto en el host receptor.
 
-UDP no es un método fiable para transportar datos; de hecho, realmente no le importa si recibes todos tus datos originales. Esto puede sonar terrible, pero tiene sus usos, como para la transmisión de medios. Está bien si pierdes algunos fotogramas; a cambio, obtienes tus datos un poco más rápido.
+### Protocolos Centrales de Transporte TCP y UDP
 
-### TCP
+Hay dos protocolos de transporte principales utilizados en las redes modernas: TCP (Protocolo de Control de Transmisión) y UDP (Protocolo de Datagramas de Usuario). Cubriremos brevemente UDP y luego nos centraremos en TCP, ya que es el más utilizado para la comunicación fiable.
 
-TCP proporciona un flujo de datos fiable y orientado a la conexión. TCP utiliza puertos para enviar y recibir datos de los hosts. Una aplicación abre una conexión desde un puerto en su host a otro puerto en un host remoto. Para establecer la conexión, utilizamos el "handshake" de TCP.
+### UDP (Protocolo de Datagramas de Usuario)
 
-- El cliente (proceso de conexión) envía un segmento SYN al servidor para solicitar una conexión.
-- El servidor envía al cliente un segmento SYN-ACK para reconocer la solicitud de conexión del cliente.
-- El cliente envía un ACK al servidor para reconocer la solicitud de conexión del servidor.
+UDP es un protocolo sin conexión que ofrece un método rápido pero no fiable para transportar datos. No garantiza que todos los segmentos lleguen o que lleguen en el orden correcto. Aunque esto pueda parecer una desventaja, UDP es muy eficaz para aplicaciones donde la velocidad es más crítica que la precisión perfecta, como la transmisión de video en vivo o los juegos en línea. Perder algunos fotogramas de video es a menudo una compensación aceptable para una transmisión más fluida y rápida.
 
-Una vez establecida esta conexión, los datos pueden intercambiarse a través de una conexión TCP. Los datos se envían en diferentes segmentos y se rastrean con números de secuencia TCP para que puedan organizarse en el orden correcto cuando se entregan. En nuestro ejemplo de correo electrónico, la capa de transporte adjunta el puerto de destino (25) al puerto de origen del host de origen.
+### TCP (Protocolo de Control de Transmisión)
+
+TCP proporciona un flujo de datos fiable y orientado a la conexión. Antes de que se intercambien datos, TCP establece una conexión formal entre los dos hosts para asegurar que ambos estén listos para comunicarse.
+
+### El Handshake TCP
+
+Para establecer una conexión, TCP utiliza un proceso llamado handshake de tres vías:
+
+1.  **SYN**: El cliente envía un segmento SYN (sincronizar) al servidor para iniciar una conexión.
+2.  **SYN-ACK**: El servidor responde con un segmento SYN-ACK (sincronizar-confirmar) para acusar recibo de la solicitud del cliente.
+3.  **ACK**: El cliente envía un segmento ACK (confirmar) de vuelta al servidor, confirmando que la conexión está establecida.
+
+Una vez completado el handshake, los datos pueden intercambiarse de forma fiable. TCP utiliza números de secuencia para rastrear cada segmento, lo que permite al host receptor volver a ensamblarlos en el orden correcto y solicitar la retransmisión de cualquier segmento faltante. En nuestro ejemplo de correo electrónico, la capa de transporte adjuntaría el puerto de destino para SMTP (puerto 25) y un puerto de origen del host cliente a cada segmento.
 
 ## Exercise
 
-Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
+Si bien no hay laboratorios específicos para este tema, recomendamos explorar la ruta de aprendizaje integral de Linux [Linux Learning Path](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 
-¿Cuál es un protocolo de transporte fiable?
+What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
 
 ## Quiz Answer
 

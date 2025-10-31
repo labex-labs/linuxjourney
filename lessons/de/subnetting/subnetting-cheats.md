@@ -1,17 +1,17 @@
 ---
 index: 4
 lang: "de"
-title: "Subnetting Cheats"
-meta_title: "Subnetting Cheats - Subnetting"
-meta_description: "Lernen Sie die Grundlagen des Subnetting und der Binärkonvertierung für die Netzwerktechnik. Verstehen Sie IP-Adressen und Subnetzmasken mit diesem anfängerfreundlichen Leitfaden. Beginnen Sie jetzt mit dem Lernen!"
-meta_keywords: "Subnetting, Binärkonvertierung, IP-Adresse, Netzwerk, Linux-Netzwerk, Anfänger, Tutorial, Leitfaden"
+title: "Subnetz-Spickzettel"
+meta_title: "Subnetz-Spickzettel - Subnetting"
+meta_description: "Meistern Sie Subnetting mit unserem Leitfaden zu Spickzetteln für die Binärkonvertierung. Lernen Sie, die 128+64+32+16+8+4+2+1-Tabelle zu verwenden, um IP-Adressen schnell von Dezimal in Binär und zurück umzuwandeln. Unerlässlich für Netzwerk-Interviews und Zertifizierungen."
+meta_keywords: "subnetting, binärkonvertierung, IP-Adresse, netzwerk, Linux-Netzwerk, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, dezimal zu binär, subnetz-mathematik, tutorial, leitfaden"
 ---
 
 ## Lesson Content
 
-Ich hasse es, diesen Abschnitt hinzufügen zu müssen. In der realen Welt müssten Sie höchstwahrscheinlich niemals Subnetz-Mathematik von Hand durchführen. Wenn Sie jedoch dazu interviewt würden, müssten Sie wissen, wie man für das Subnetting in und aus der Binärform umrechnet. Glücklicherweise gibt es einige arithmetische Tricks, die Sie sich merken können.
+In der modernen Netzwerktechnik werden Sie selten Subnetz-Mathematik von Hand durchführen, da Tools und Rechner diesen Prozess automatisieren. Das Verständnis der manuellen Umwandlung zwischen Dezimal und Binär ist jedoch entscheidend für Netzwerkinterviews, Zertifizierungsprüfungen und um ein tieferes Verständnis dafür zu entwickeln, wie die IP-Adressierung funktioniert. Diese Lektion bietet einige einfache "Spickzettel" (Cheats), die Ihnen helfen, dies zu meistern.
 
-Merken Sie sich zuerst Ihre Basis-2-Berechnungen; tun Sie es einfach:
+Zuerst ist es sehr vorteilhaft, sich die Basis-2-Berechnungen einzuprägen, da sie die Grundlage der Binärmathematik bilden.
 
 - 2^1 = 2
 - 2^2 = 4
@@ -21,49 +21,49 @@ Merken Sie sich zuerst Ihre Basis-2-Berechnungen; tun Sie es einfach:
 - 2^6 = 64
 - 2^7 = 128
 - 2^8 = 256
-- 2^9 = 512
-- 2^10 = 1024
-- 2^11 = 2048
-- 2^12 = 4096
 
-### Dezimal-zu-Binär-Tabelle
+### Die Binärkonvertierungstabelle
+
+Um Zahlen einfach umzuwandeln, verwenden wir eine Tabelle, die den Wert jedes Bits in einem 8-Bit-Oktett einer IP-Adresse darstellt.
 
 ```plaintext
 1   1  1  1  1 1 1 1
 128 64 32 16 8 4 2 1
 ```
 
-Es gibt viele Gründe, warum die folgende Tabelle so aussieht, wie sie aussieht. Wenn Sie neugierig sind, wie sie funktioniert, gibt es viele Online-Ressourcen.
+Diese Tabelle ist Ihr primäres Werkzeug. Jede Zahl entspricht der Position eines Bits. Die volle Summe, `128+64+32+16+8+4+2+1`, ergibt 255, was der höchstmögliche Wert in einem Oktett ist.
 
-Okay, haben Sie diese auswendig gelernt? Machen wir eine schnelle Dezimal-zu-Binär-Umwandlung:
+### Dezimal zu Binär Konvertierung
 
-### 192.168.23.43 in Binär umwandeln
+Nehmen wir an, wir konvertieren die IP-Adresse `192.168.23.43` in Binär. Wir gehen das erste Oktett, `192`, durch, um den Prozess zu demonstrieren. Wir verwenden die Werte aus unserer Tabelle: `128 64 32 16 8 4 2 1`.
 
-Denken Sie daran: 128 / 64 / 32 / 16 / 8 / 4 / 2 / 1
+1.  Beginnen Sie mit der Zahl `192`. Können Sie 128 davon abziehen? Ja (192 - 128 = 64). Das erste Bit ist also **1**.
+2.  Unsere neue Zahl ist `64`. Können Sie den nächsten Wert, 64, davon abziehen? Ja (64 - 64 = 0). Das zweite Bit ist **1**.
+3.  Unser Restbetrag ist nun `0`. Wir können 32, 16, 8, 4, 2 oder 1 nicht abziehen. Daher sind die restlichen Bits alle **0**.
 
-Gehen wir die Umwandlung des ersten Oktetts in Binär durch, und Sie werden verstehen, wie der Rest funktioniert.
+Die Binärform von 192 ist `11000000`. Sie können diese gleiche Subtraktionsmethode auf die anderen Oktette anwenden.
 
-1. Können Sie 192 - 128 subtrahieren? Ja, also ist das erste Bit 1.
-2. 192 - 128 = 64. Die nächste Zahl in der Tabelle ist 64. Können Sie 64 - 64 subtrahieren? Ja, also ist das zweite Bit 1.
-3. Uns sind die Zahlen zum Subtrahieren ausgegangen, also ist unsere Binärform von 192 11000000.
+### Binär zu Dezimal Konvertierung
 
-### Binär 11000000 in Dezimal umwandeln
+Um von Binär zurück zu Dezimal zu konvertieren, addieren Sie einfach die Werte aus der Tabelle, bei denen im Binärwert eine `1` steht. Konvertieren wir `11000000` zurück in Dezimal.
 
-Für die Binär-zu-Dezimal-Umwandlung addieren Sie die Zahlen, die eine 1 haben, also:
+Wenn wir die Tabelle `128 64 32 16 8 4 2 1` betrachten, sind die ersten beiden Bits `1`. Das bedeutet, wir addieren die ersten beiden Werte:
 
-128 + 64 + 0 + 0 + 0 + 0 + 0 + 0 = 192!
+`128 + 64 = 192`
+
+Da alle anderen Bits `0` sind, addieren wir keine weiteren Werte. Die Formel `128 + 64 + 0 + 0 + 0 + 0 + 0 + 0` ergibt 192. So einfach ist das!
 
 ## Exercise
 
-Übung macht den Meister! Während Subnetz-Mathematik in der realen Welt oft automatisiert wird, ist das Verständnis der zugrunde liegenden Binärkonvertierungen entscheidend für Interviews und ein tieferes Verständnis der Netzwerktechnik. Hier ist ein praktisches Labor, um Ihr Verständnis zu vertiefen:
+Übung macht den Meister! Obwohl Subnetz-Mathematik in der realen Welt oft automatisiert wird, ist das Verständnis der zugrunde liegenden Binärkonvertierungen für Interviews und ein tieferes Verständnis von Netzwerken entscheidend. Hier ist ein praktisches Labor, um Ihr Verständnis zu festigen:
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie Python in einem Linux-Terminal verwenden, um IP-Adressen zu konvertieren, CIDR-Masken zu übersetzen und Netzwerkdetails zu berechnen.
+1.  **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie Python in einem Linux-Terminal verwenden, um IP-Adressen zu konvertieren, CIDR-Masken zu übersetzen und Netzwerkdetails zu berechnen.
 
-Dieses Labor wird Ihnen helfen, die Konzepte der Binärkonvertierung und des Subnettings in einem praktischen Szenario anzuwenden und Vertrauen in die Grundlagen der Netzwerkadressierung aufzubauen.
+Dieses Labor hilft Ihnen, die Konzepte der Binärkonvertierung und des Subnettings in einem praktischen Szenario anzuwenden und Selbstvertrauen bei den Grundlagen der Netzwerkadressierung aufzubauen.
 
 ## Quiz Question
 
-Was ist die binäre Umwandlung von 123?
+Was ist die Binärkonvertierung von 123? Bitte geben Sie die Antwort in englischen Zeichen (Zahlen) an.
 
 ## Quiz Answer
 

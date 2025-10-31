@@ -1,41 +1,49 @@
 ---
 index: 2
 lang: "de"
-title: "Bootprozess: BIOS"
-meta_title: "Bootprozess: BIOS - System starten"
-meta_description: "Erfahren Sie mehr über den Linux-Bootprozess, BIOS und MBR. Verstehen Sie, wie Ihr System startet, mit dieser anfängerfreundlichen Anleitung. Entdecken Sie UEFI-Konzepte!"
-meta_keywords: "Linux-Bootprozess, BIOS, MBR, UEFI, Linux-Tutorial, Bootloader, Linux für Anfänger, Systemstart"
+title: "Bootvorgang: BIOS"
+meta_title: "Bootvorgang: BIOS - System starten"
+meta_description: "Entdecken Sie den ersten Schritt des Linux-Bootvorgangs: das BIOS. Erfahren Sie, wie es den Bootloader über MBR oder GPT findet, und verstehen Sie die Rolle von UEFI. Diese Anleitung erklärt den Systemstart und berührt, wie man für die Konfiguration ins BIOS bootet."
+meta_keywords: "Linux Bootvorgang, BIOS, MBR, UEFI, BIOS in Linux, BIOS Linux, ins BIOS booten, Bootloader, Systemstart"
 ---
 
 ## Lesson Content
 
-### BIOS
+Der erste Schritt im Linux-Bootvorgang ist das BIOS (Basic Input/Output System), das beim Hochfahren wichtige Systemintegritätsprüfungen durchführt. Das BIOS ist eine Firmware, die üblicherweise in IBM PC-kompatiblen Computern zu finden ist, welche die Mehrheit der heute verwendeten Computer ausmachen.
 
-Der erste Schritt im Linux-Bootprozess ist das BIOS, das Systemintegritätsprüfungen durchführt. Das BIOS ist eine Firmware, die am häufigsten in IBM PC-kompatiblen Computern vorkommt, dem heute dominierenden Computertyp. Sie haben wahrscheinlich die BIOS-Firmware verwendet, um die Bootreihenfolge Ihrer Festplatten zu ändern, die Systemzeit zu überprüfen, die MAC-Adresse Ihres Computers usw. Das Hauptziel des BIOS ist es, den System-Bootloader zu finden.
+### Die Rolle des BIOS unter Linux
 
-Sobald das BIOS die Festplatte hochfährt, sucht es nach dem Boot-Block, um herauszufinden, wie das System gestartet werden soll. Je nachdem, wie Sie Ihre Festplatte partitionieren, wird es den Master Boot Record (MBR) oder GPT suchen. Der MBR befindet sich im ersten Sektor der Festplatte, den ersten 512 Bytes. Der MBR enthält den Code, um ein anderes Programm irgendwo auf der Festplatte zu laden; dieses Programm lädt wiederum unseren Bootloader.
+Wenn Sie Ihren Computer einschalten, ist das **BIOS unter Linux**-Systemen die erste Software, die ausgeführt wird. Seine Hauptfunktion besteht darin, die Systemhardware wie CPU, Speicher und Festplatten zu initialisieren und zu testen. Sie haben wahrscheinlich schon einmal mit der BIOS-Firmware interagiert, um die Boot-Reihenfolge zu ändern, die Systemzeit zu überprüfen oder die MAC-Adresse Ihres Geräts anzuzeigen. Nachdem die Hardwareprüfungen abgeschlossen sind, besteht das Hauptziel des **bios linux**-Prozesses darin, den System-Bootloader zu lokalisieren und die Kontrolle an ihn zu übergeben.
 
-Wenn Sie Ihre Festplatte mit GPT partitioniert haben, ändert sich der Speicherort des Bootloaders ein wenig.
+### Wie das BIOS den Bootloader findet
 
-### UEFI
+Sobald das BIOS die Festplatte initialisiert hat, sucht es nach einem Boot-Block, um festzustellen, wie das Betriebssystem gestartet werden soll. Der Ort, den es überprüft, hängt vom Partitionierungsschema der Festplatte ab: Master Boot Record (MBR) oder GUID Partition Table (GPT).
 
-Es gibt eine andere Möglichkeit, Ihr System zu starten, anstatt BIOS zu verwenden, und das ist mit UEFI (steht für "Unified Extensible Firmware Interface"). UEFI wurde als Nachfolger von BIOS entwickelt; die meisten heutigen Hardwareprodukte werden mit integrierter UEFI-Firmware geliefert. Macintosh-Computer verwenden EFI-Booting schon seit Jahren, und Windows hat die meisten seiner Dinge auf UEFI-Booting umgestellt. Das GPT-Format war für die Verwendung mit EFI vorgesehen. Sie benötigen nicht unbedingt EFI, wenn Sie eine GPT-Festplatte booten. Der erste Sektor einer GPT-Festplatte ist für einen "schützenden MBR" reserviert, um das Booten einer BIOS-basierten Maschine zu ermöglichen.
+Der MBR befindet sich in den ersten 512 Bytes der Festplatte. Dieser kleine Abschnitt enthält den anfänglichen Boot-Code und die Partitionstabelle. Der Code des MBR ist dafür verantwortlich, ein anderes Programm zu laden, welches wiederum unseren eigentlichen Bootloader lädt. Wenn Sie eine GPT-partitionierte Festplatte verwenden, ist der Prozess etwas anders.
 
-UEFI speichert alle Informationen zum Start in einer `.efi`-Datei. Diese Datei wird auf einer speziellen Partition namens EFI System Partition auf der Hardware gespeichert. Innerhalb dieser Partition befindet sich der Bootloader. UEFI bietet viele Verbesserungen gegenüber der traditionellen BIOS-Firmware. Da wir jedoch Linux verwenden, verwendet die Mehrheit von uns BIOS. Daher werden alle diese Lektionen von dieser Prämisse ausgehen.
+### Wie man ins BIOS bootet
+
+Viele Benutzer müssen wissen, **wie man ins BIOS bootet**, um Hardwareeinstellungen zu konfigurieren. Die Methode hierfür beinhaltet typischerweise das Drücken einer bestimmten Taste (wie F2, F10, DEL oder ESC) unmittelbar nach dem Einschalten des Computers. Zu wissen, **wie man ins bios bootet**, ist für Aufgaben wie das Ändern der Boot-Gerätepriorität oder das Aktivieren der Virtualisierungstechnologie unerlässlich. Die genaue Taste variiert je nach Hersteller, daher müssen Sie möglicherweise die Dokumentation Ihres Computers konsultieren.
+
+### Der Aufstieg von UEFI
+
+Eine Alternative zum traditionellen BIOS ist UEFI (Unified Extensible Firmware Interface). Als Nachfolger des BIOS konzipiert, ist UEFI heute auf den meisten modernen Geräten Standard. Es speichert alle Startinformationen in einer `.efi`-Datei, die sich auf einer dedizierten EFI System Partition (ESP) befindet. Diese Partition enthält den Bootloader für das installierte Betriebssystem.
+
+UEFI bietet viele Verbesserungen gegenüber dem BIOS, darunter schnellere Bootzeiten und Unterstützung für größere Festplatten. Obwohl das GPT-Format für UEFI entwickelt wurde, sorgt ein "schützender MBR" auf GPT-Festplatten für Abwärtskompatibilität, wodurch es möglich ist, von ihnen auf älteren BIOS-basierten Maschinen zu booten. Obwohl viele Linux-Systeme heute UEFI verwenden, konzentriert sich dieser Leitfaden auf den traditionellen BIOS-Bootvorgang zum grundlegenden Verständnis.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Benutzer- und Gruppenverwaltung zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Linux Benutzer- und Gruppenverwaltung zu festigen:
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** – Üben Sie den gesamten Lebenszyklus der Benutzerverwaltung, vom Erstellen und Sichern neuer Konten bis zum Ändern und Löschen.
-2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** – Sammeln Sie praktische Erfahrungen mit Befehlszeilenprogrammen für die Gruppenverwaltung, einschließlich des Erstellens neuer Gruppen, des Änderns von Benutzerzugehörigkeiten und des Entfernens von Gruppen.
-3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen, um die Sicherheit eines Linux-Systems zu verbessern.
+1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
+2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit Befehlszeilenprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen, der Änderung von Benutzerzuordnungen und der Entfernung von Gruppen.
+3. **[Benutzerkonten und Sudo-Berechtigungen unter Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen.
 
-Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Gruppenverwaltung unter Linux aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Gruppenverwaltung unter Linux aufzubauen.
 
 ## Quiz Question
 
-Was lädt das BIOS?
+Was lädt das BIOS? Bitte antworten Sie in einem einzigen Wort, auf Englisch und in Kleinbuchstaben.
 
 ## Quiz Answer
 

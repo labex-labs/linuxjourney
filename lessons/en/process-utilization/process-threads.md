@@ -3,19 +3,25 @@ index: 3
 lang: "en"
 title: "Process Threads"
 meta_title: "Process Threads - Process Utilization"
-meta_description: "Learn about Linux process threads, single-threaded vs. multi-threaded concepts, and how to view them using 'ps m'. Understand lightweight processes efficiently!"
-meta_keywords: "Linux threads, process threads, ps m command, multi-threaded, single-threaded, Linux processes, beginner Linux, Linux tutorial"
+meta_description: "A guide to Linux process threads. Learn the difference between single-threaded and multi-threaded processes and how to use the ps command to show threads."
+meta_keywords: "Linux threads, process threads, ps show threads, ps m, multi-threaded, single-threaded, lightweight process, Linux process management"
 ---
 
 ## Lesson Content
 
-You may have heard of the terms single-threaded and multi-threaded processes. Threads are very similar to processes, in that they are used to execute the same program; they are often referred to as lightweight processes. If a process has one thread, it is single-threaded, and if a process has more than one thread, it is multi-threaded. However, all processes have at least one thread.
+### What Are Process Threads?
 
-Processes operate with their own isolated system resources; however, threads can share these resources among each other easily, making it easier for them to communicate. At times, it is more efficient to have a multi-threaded application than a multi-process application.
+You may have heard the terms single-threaded and multi-threaded. Threads are units of execution within a process and are often called "lightweight processes." While processes operate with their own isolated system resources, threads within the same process can share these resources, such as memory. This shared-resource model makes communication between threads much faster and more efficient than communication between separate processes.
 
-Basically, let's say you open LibreOffice Writer and Chrome; each is its own separate process. Now you go inside Writer and start editing text. When you edit the text, it gets automatically saved. These two parallel "lightweight processes" of saving and editing are threads.
+### Single-Threaded vs. Multi-Threaded
 
-To view process threads, you can use:
+Every process has at least one thread. A process with only one thread is called single-threaded, while a process with more than one is multi-threaded.
+
+For example, when you use a modern text editor, it might run as a single process. However, within that process, one thread could be managing your keyboard input, while another thread runs in the background to perform spell-checking or auto-saving. This concurrent execution makes the application feel more responsive. Using multiple threads is often more efficient than launching multiple processes for related tasks.
+
+### How to Show Threads with ps
+
+To inspect running processes and their threads, you can use the `ps` command. While `ps` has many options, a common way to **show threads** is with the `m` flag.
 
 ```plaintext
 pete@icebox:~$ ps m
@@ -26,7 +32,9 @@ pete@icebox:~$ ps m
     - -        R+     0:00 -
 ```
 
-The processes are denoted with each PID, and underneath the processes are their threads (denoted by a `--`). So you can see that the processes above are both single-threaded.
+### Interpreting the Output
+
+In the output above, the lines with a `PID` (Process ID) represent the main process. The lines directly underneath, which have a dash (`-`) instead of a `PID`, represent the threads belonging to that process. In this example, both the `bash` and `ps m` processes are single-threaded, as each has only one main thread listed.
 
 ## Exercise
 

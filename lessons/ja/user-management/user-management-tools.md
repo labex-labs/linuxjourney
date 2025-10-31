@@ -3,55 +3,57 @@ index: 6
 lang: "ja"
 title: "ユーザー管理ツール"
 meta_title: "ユーザー管理ツール - ユーザー管理"
-meta_description: "Linux ユーザー管理を学ぶ：useradd、userdel、passwd コマンドでユーザーの追加、削除、パスワード変更を行います。この初心者向けガイドで始めましょう！"
-meta_keywords: "Linux ユーザー管理，adduser, userdel, passwd, Linux チュートリアル，初心者 Linux, ユーザーアカウント，Linux コマンド"
+meta_description: "Linux のユーザー管理を、必須のコマンドラインツールで習得しましょう。このガイドでは、Linux でのアカウント管理に useradd、userdel、passwd を使用する方法を解説します。初心者にも最適です。"
+meta_keywords: "linux ユーザー管理，linux アカウント管理 コマンドラインツール，useradd, userdel, passwd, linux アカウント，linux ユーザー 管理"
 ---
 
 ## Lesson Content
 
-ほとんどのエンタープライズ環境では、ユーザー、アカウント、パスワードを管理するために管理システムを使用します。しかし、単一のマシンコンピュータでは、ユーザーを管理するために実行できる便利なコマンドがあります。
+多くのエンタープライズ環境では専用の ID 管理システムに依存していますが、単一のマシン上で**Linux ユーザー管理**の基本を理解することは極めて重要なスキルです。いくつかのユーティリティが**Linux でアカウントを管理するためのコマンドラインツール**として機能し、ターミナルからの効率的な管理を可能にします。
 
 ### ユーザーの追加
 
-`adduser` または `useradd` コマンドを使用できます。`adduser` コマンドには、ホームディレクトリの作成など、より便利な機能が含まれています。新しいユーザーを追加するための設定ファイルがあり、デフォルトのユーザーに何を割り当てるかに応じてカスタマイズできます。
+新しいユーザーを作成するには、`useradd`コマンドを使用します。これは、`/etc/default/useradd`にあるデフォルト値に基づいて新しいユーザーアカウントを作成する低レベルのユーティリティです。システムによっては、より対話的でユーザーフレンドリーなスクリプトである`adduser`を提供している場合もありますが、`useradd`が普遍的な標準です。
 
 ```bash
 sudo useradd bob
 ```
 
-上記のコマンドは、bob の `/etc/passwd` にエントリを作成し、デフォルトのグループを設定し、`/etc/shadow` ファイルにエントリを追加します。
+このコマンドを実行すると、ユーザー"bob"のエントリが`/etc/passwd`ファイルに追加され、デフォルトのグループメンバーシップが設定され、パスワード情報を安全に保存するための対応するエントリが`/etc/shadow`ファイルに作成されます。
 
 ### ユーザーの削除
 
-ユーザーを削除するには、`userdel` コマンドを使用します。
+ユーザーアカウントを削除するには、`userdel`コマンドを使用できます。このコマンドは、システムのユーザーアカウントファイルからユーザーのエントリを削除することにより、`useradd`によって行われた変更を効果的に元に戻します。
 
 ```bash
 sudo userdel bob
 ```
 
-これは基本的に、`useradd` によって行われたファイル変更を元に戻すために最善を尽くします。
+デフォルトでは、このコマンドはユーザーのホームディレクトリを削除しない場合があります。ホームディレクトリとメールスプールも削除されるようにするには、`-r`フラグ（`userdel -r bob`）を使用できます。
 
 ### パスワードの変更
+
+`passwd`コマンドは、ユーザーのパスワードを設定または変更するために使用されます。一般ユーザーは、このコマンドを実行して自分のパスワードを変更できます。root ユーザーは、任意のユーザーのパスワードを変更するために実行できます。
 
 ```bash
 passwd bob
 ```
 
-これにより、自分自身または他のユーザー（root の場合）のパスワードを変更できます。
+管理者が実行した場合、システムは古いパスワードを尋ねることなく、指定されたユーザーの新しいパスワード入力を求めます。これは**Linux ユーザー管理**における基本的なタスクです。
 
 ## Exercise
 
-習うより慣れろ！ここでは、Linux でのユーザーおよびアカウント管理の理解を深めるための実践的な演習をいくつか紹介します。
+練習あるのみです！Linux でのユーザーおよびアカウント管理の理解を深めるための実践的なラボを以下に示します。
 
-1. **[useradd、usermod、および userdel で Linux ユーザーアカウントを管理する](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、変更と削除まで、ユーザー管理の完全なライフサイクルを練習します。
-2. **[groupadd、usermod、および groupdel で Linux グループを管理する](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - グループの追加、変更、削除を含む、グループ管理のためのコアコマンドラインユーティリティの実践的な経験を積みます。
-3. **[Linux でユーザーアカウントと Sudo 権限を設定する](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux システムのセキュリティを強化するために、ユーザーアカウントと sudo 権限を管理するための重要なテクニックを学びます。
+1. **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、変更および削除まで、ユーザー管理のライフサイクル全体を練習します。
+2. **[groupadd、usermod、groupdel を使用した Linux グループの管理](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - グループの追加、変更、削除を含む、グループ管理のコアコマンドラインユーティリティに関する実践的な経験を積みます。
+3. **[Linux でのユーザーアカウントと sudo 権限の設定](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux システムのセキュリティを強化するために、ユーザーアカウントと sudo 権限を管理するための必須テクニックを学びます。
 
-これらの演習は、実際のシナリオで概念を適用し、Linux のユーザーおよびグループ管理に自信を持つのに役立ちます。
+これらのラボは、実際のシナリオで概念を適用し、Linux のユーザーおよびグループ管理に対する自信を構築するのに役立ちます。
 
 ## Quiz Question
 
-パスワードを変更するために使用されるコマンドは何ですか？
+パスワードを変更するために使用されるコマンドは何ですか？コマンド名を小文字の英字のみで回答してください。
 
 ## Quiz Answer
 

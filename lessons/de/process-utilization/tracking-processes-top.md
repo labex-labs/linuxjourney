@@ -3,17 +3,17 @@ index: 1
 lang: "de"
 title: "Prozesse verfolgen: top"
 meta_title: "Prozesse verfolgen: top - Prozessauslastung"
-meta_description: "Erfahren Sie, wie Sie den Linux-Befehl `top` verwenden, um Systemressourcen zu überwachen und Prozesse zu verfolgen. Verstehen Sie CPU-, Speicher- und Prozessdetails für die Leistungsanalyse."
-meta_keywords: "Linux top Befehl, Prozesse überwachen, Systemauslastung, Linux-Leistung, Anfänger, Tutorial, Anleitung"
+meta_description: "Entdecken Sie den besten Weg, Linux zu lernen, indem Sie den Befehl `top` meistern. Dieser Leitfaden erklärt, wie Sie Systemressourcen überwachen, Prozesse verfolgen und Metriken wie VIRT und RES verstehen. Ein wesentlicher Bestandteil des Verständnisses der Funktionsweise von Linux."
+meta_keywords: "Linux top Befehl, Prozesse überwachen, Systemauslastung, wie linux funktioniert, linux top virt res, bester weg linux lernen, linux performance, prozessverwaltung, kostenlose online linux schulung mit zertifikat"
 ---
 
 ## Lesson Content
 
-In diesem Kurs werden wir besprechen, wie man die Ressourcennutzung auf Ihrem System liest und analysiert. Diese Lektion zeigt einige großartige Tools, die Sie verwenden können, wenn Sie verfolgen müssen, was ein Prozess tut.
+Zu verstehen, wie man die Ressourcennutzung liest und analysiert, ist eine entscheidende Fähigkeit für jeden Linux-Benutzer. Viele halten die Beherrschung von Befehlszeilenwerkzeugen für den **besten Weg, Linux** von Grund auf zu lernen, da sie tiefe Einblicke geben, **wie Linux funktioniert**. Diese Lektion stellt `top` vor, ein leistungsstarkes Dienstprogramm zur Verfolgung dessen, was Ihre Prozesse in Echtzeit tun.
 
-### top
+### Die top-Anweisung verstehen
 
-Wir haben `top` bereits besprochen, aber wir werden uns die Besonderheiten dessen, was es tatsächlich anzeigt, genauer ansehen. Denken Sie daran, `top` ist das Tool, das wir verwendet haben, um eine Echtzeitansicht der Systemauslastung durch unsere Prozesse zu erhalten:
+Wir haben `top` bereits kurz erwähnt, aber jetzt tauchen wir in die Details dessen ein, was es anzeigt. Der Befehl `top` bietet eine dynamische Echtzeitansicht der Prozesse und der Systemauslastung auf Ihrem Rechner.
 
 ```plaintext
 top - 18:06:26 up 6 days,  4:07,  2 users,  load average: 0.92, 0.62, 0.59
@@ -27,48 +27,50 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
  6926 patty    20   0  935888 163456  25576 S   4.3  0.5   5:28.13 chrome
 ```
 
-Lassen Sie uns durchgehen, was diese Ausgabe bedeutet. Sie müssen sich das nicht merken, aber kommen Sie darauf zurück, wenn Sie eine Referenz benötigen.
+Gehen wir durch, was diese Ausgabe bedeutet. Sie müssen sich dies nicht merken, aber Sie können diese Lektion als Referenz verwenden.
 
-### 1. Zeile: Dies ist dieselbe Information, die Sie sehen würden, wenn Sie den Befehl `uptime` ausführen würden (mehr dazu folgt)
+### Systemübersicht
 
-Die Felder sind von links nach rechts:
+Die ersten Zeilen geben eine allgemeine Zusammenfassung des Systemzustands.
 
-1. Aktuelle Uhrzeit
-2. Wie lange das System bereits läuft
-3. Wie viele Benutzer aktuell angemeldet sind
-4. Systemlastdurchschnitt (mehr dazu folgt)
+- **1. Zeile**: Dies sind dieselben Informationen, die Sie sehen würden, wenn Sie den Befehl `uptime` ausführen würden. Sie zeigt die aktuelle Uhrzeit, die Systemlaufzeit, die Anzahl der angemeldeten Benutzer und die Systemlastdurchschnitte der letzten 1, 5 und 15 Minuten an.
+- **2. Zeile**: Eine Zusammenfassung aller Aufgaben (Prozesse), kategorisiert als laufend, schlafend, gestoppt oder Zombie.
 
-### 2. Zeile: Aufgaben, die laufen, schlafen, gestoppt und Zombie sind
+### CPU-Auslastungsaufschlüsselung
 
-### 3. Zeile: CPU-Informationen
+Die dritte Zeile detailliert die CPU-Auslastung.
 
-1. `us`: Benutzer-CPU-Zeit – Prozentsatz der CPU-Zeit, die für die Ausführung von Benutzerprozessen aufgewendet wird, die nicht „niced“ sind.
-2. `sy`: System-CPU-Zeit – Prozentsatz der CPU-Zeit, die für die Ausführung des Kernels und der Kernel-Prozesse aufgewendet wird.
-3. `ni`: Nice-CPU-Zeit – Prozentsatz der CPU-Zeit, die für die Ausführung von „niced“ Prozessen aufgewendet wird.
-4. `id`: CPU-Leerlaufzeit – Prozentsatz der CPU-Zeit, die im Leerlauf verbracht wird.
-5. `wa`: I/O-Wartezeit – Prozentsatz der CPU-Zeit, die auf I/O wartet. Wenn dieser Wert niedrig ist, liegt das Problem wahrscheinlich nicht an der Festplatten- oder Netzwerk-I/O.
-6. `hi`: Hardware-Interrupts – Prozentsatz der CPU-Zeit, die für die Bearbeitung von Hardware-Interrupts aufgewendet wird.
-7. `si`: Software-Interrupts – Prozentsatz der CPU-Zeit, die für die Bearbeitung von Software-Interrupts aufgewendet wird.
-8. `st`: Steal Time – Wenn Sie virtuelle Maschinen betreiben, ist dies der Prozentsatz der CPU-Zeit, der Ihnen für andere Aufgaben gestohlen wurde.
+- `us`: Prozentsatz der CPU-Zeit, die für das Ausführen von Benutzerprozessen aufgewendet wird, die nicht "niced" sind.
+- `sy`: Prozentsatz der CPU-Zeit, die für die Ausführung des Kernels und seiner Prozesse aufgewendet wird.
+- `ni`: Prozentsatz der CPU-Zeit, die für das Ausführen von "niced" (niedrig priorisierten) Benutzerprozessen aufgewendet wird.
+- `id`: Prozentsatz der CPU-Zeit, die untätig ist.
+- `wa`: Prozentsatz der CPU-Zeit, die auf den Abschluss von E/A-Vorgängen wartet. Ein hoher Wert kann auf einen Engpass bei der Festplatte oder im Netzwerk hindeuten.
+- `hi`: Prozentsatz der CPU-Zeit, die für die Behandlung von Hardware-Interrupts aufgewendet wird.
+- `si`: Prozentsatz der CPU-Zeit, die für die Behandlung von Software-Interrupts aufgewendet wird.
+- `st`: "Steal Time". In virtualisierten Umgebungen ist dies der Prozentsatz der CPU-Zeit, den eine virtuelle CPU auf eine reale CPU wartet, während der Hypervisor einen anderen virtuellen Prozessor bedient.
 
-### 4. und 5. Zeile: Speichernutzung und Swap-Nutzung
+### Speicher- und Swap-Informationen
 
-### Liste der aktuell verwendeten Prozesse
+Die vierte und fünfte Zeile zeigen die Nutzung des Speicher- und Swap-Speichers an. Dies umfasst die Gesamt-, die verwendete und die freie Menge.
 
-1. `PID`: ID des Prozesses
-2. `USER`: Benutzer, der der Eigentümer des Prozesses ist
-3. `PR`: Priorität des Prozesses
-4. `NI`: Der Nice-Wert
-5. `VIRT`: Virtueller Speicher, der vom Prozess verwendet wird
-6. `RES`: Physischer Speicher, der vom Prozess verwendet wird
-7. `SHR`: Gemeinsamer Speicher des Prozesses
-8. `S`: Zeigt den Status des Prozesses an: `S`=sleep, `R`=running, `Z`=zombie, `D`=uninterruptible, `T`=stopped
-9. `%CPU`: Dies ist der Prozentsatz der CPU, der von diesem Prozess verwendet wird
-10. `%MEM`: Prozentsatz des RAM, der von diesem Prozess verwendet wird
-11. `TIME+`: Gesamtzeit der Aktivität dieses Prozesses
-12. `COMMAND`: Name des Prozesses
+### Die Prozessliste
 
-Sie können auch eine Prozess-ID angeben, wenn Sie nur bestimmte Prozesse verfolgen möchten:
+Der Hauptteil von `top` ist eine Liste der ressourcenintensivsten Prozesse.
+
+- `PID`: Die eindeutige Prozess-ID.
+- `USER`: Der Benutzer, dem der Prozess gehört.
+- `PR`: Die Scheduling-Priorität des Prozesses.
+- `NI`: Der "nice"-Wert, der seine Priorität beeinflusst.
+- `VIRT`: Virtueller Speicher, der vom Prozess verwendet wird. Dies ist die Gesamtmenge an Speicher, auf die der Prozess zugreifen kann.
+- `RES`: Resident Memory (Arbeitsspeicher), der vom Prozess verwendet wird. Dies ist der nicht ausgelagerte physische Speicher, den eine Aufgabe nutzt. Das Verständnis des Unterschieds zwischen **linux top virt res** ist der Schlüssel zur Speicheranalyse.
+- `SHR`: Gemeinsam genutzter Speicher, der vom Prozess verwendet wird.
+- `S`: Der Status des Prozesses: `S`=schlafend, `R`=laufend, `Z`=Zombie, `D`=nicht unterbrechbarer Schlaf, `T`=gestoppt.
+- `%CPU`: Der Prozentsatz der CPU-Zeit, die dieser Prozess seit der letzten Aktualisierung verwendet hat.
+- `%MEM`: Der Prozentsatz des physischen RAMs, der von diesem Prozess verwendet wird.
+- `TIME+`: Die gesamte CPU-Zeit, die der Prozess seit seiner Erstellung verbraucht hat.
+- `COMMAND`: Der Befehlsname oder die Befehlszeile, die den Prozess gestartet hat.
+
+You can also monitor a specific process by its ID, which is useful for focused troubleshooting:
 
 ```bash
 top -p 1
@@ -76,17 +78,15 @@ top -p 1
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Ressourcennutzung und des Prozessmanagements zu vertiefen:
+Übung ist für die Beherrschung unerlässlich. Diese praktischen Labs sind einige der **besten Ressourcen, um Linux** Prozessmanagement zu lernen, und bieten eine praktische Umgebung, um das Gelernte anzuwenden.
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion, Inspektion, Überwachung und Beendigung von Prozessen in einer echten Linux-Umgebung.
-2. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, den Befehl `top` zu verwenden, um die CPU-Auslastung, den Speicher und laufende Prozesse in Echtzeit zu überwachen.
-3. **[Linux free Befehl: System-Speicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, den Befehl `free` zu verwenden, um die System-Speichernutzung zu überwachen und zu analysieren.
-
-Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Systemüberwachung und das Prozessmanagement aufzubauen.
+1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit, Inspektion, Überwachung und Beendigung von Prozessen in einer realen Linux-Umgebung.
+2.  **[Linux top-Befehl: Systemüberwachung in Echtzeit](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Lernen Sie, den `top`-Befehl zu verwenden, um CPU-Auslastung, Speicher und laufende Prozesse in Echtzeit zu überwachen.
+3.  **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Lernen Sie, den `free`-Befehl zu verwenden, um die Systemspeichernutzung zu überwachen und zu analysieren.
 
 ## Quiz Question
 
-Welcher Befehl zeigt dieselbe Ausgabe wie die erste Zeile in `top` an?
+Welcher Befehl zeigt dieselbe Ausgabe wie die erste Zeile in `top`? Bitte antworten Sie nur mit dem kleingeschriebenen englischen Befehlsnamen.
 
 ## Quiz Answer
 

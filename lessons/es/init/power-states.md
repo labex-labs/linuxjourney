@@ -1,47 +1,57 @@
 ---
 index: 7
 lang: "es"
-title: "Estados de energía"
-meta_title: "Estados de energía - Init"
-meta_description: "Aprenda los estados de energía del sistema Linux: comandos de apagado, reinicio y detención. Entienda cómo apagar o reiniciar su sistema Linux de forma segura. ¡Comience con los comandos esenciales!"
-meta_keywords: "apagado Linux, comando reiniciar, detener sistema, apagar Linux, comandos Linux, Linux para principiantes, tutorial Linux, estados del sistema"
+title: "Estados de Energía"
+meta_title: "Estados de Energía - Init"
+meta_description: "Aprenda a gestionar los estados de energía del sistema Linux. Esta guía cubre los comandos esenciales de apagado, reinicio y detención para apagar o reiniciar su sistema Linux de forma segura. Domine estos comandos fundamentales de Linux para la administración del sistema."
+meta_keywords: "estados de energía linux, comando shutdown, comando reboot, comando halt, apagar linux, reiniciar linux, administración de sistemas linux, linux para principiantes, comandos linux, systemd, init"
 ---
 
 ## Lesson Content
 
-Es difícil creer que aún no hayamos discutido formas de controlar el estado de su sistema a través de la línea de comandos. Al hablar de `init`, no solo discutimos los modos que inician nuestro sistema, sino también los que lo detienen.
+Gestionar correctamente el estado de energía de su sistema Linux es una habilidad fundamental. Si bien puede usar una interfaz gráfica, la línea de comandos ofrece opciones potentes y flexibles para apagar o reiniciar su máquina. Estos procesos están vinculados al sistema de inicialización del sistema, como `init` o `systemd`, que administra diferentes estados operativos, incluyendo el inicio y el apagado.
 
-Para apagar su sistema:
+### Apagado del Sistema
+
+El comando principal para administrar los estados de energía es `shutdown`. Para apagar su sistema Linux inmediatamente, puede usar el comando `shutdown` con la bandera `-h` (halt/detener) y el argumento de tiempo `now` (ahora). Se requieren privilegios administrativos, por lo que deberá usar `sudo`.
 
 ```bash
 sudo shutdown -h now
 ```
 
-Este comando detendrá el sistema (lo apagará). También debe especificar un momento en el que desea que esto ocurra. Puede agregar un tiempo en minutos que apagará el sistema en esa cantidad de tiempo.
+La bandera `-h` indica al sistema que se detenga después de apagar los servicios. En la mayoría del hardware moderno, esto apagará completamente la máquina. También puede programar un apagado para un momento futuro. Para apagar el sistema en un número específico de minutos, use el formato `+m`:
 
 ```bash
 sudo shutdown -h +2
 ```
 
-Esto apagará su sistema en dos minutos. También puede reiniciar con el comando `shutdown`:
+Este comando apagará su sistema en dos minutos, lo cual es útil para advertir a otros usuarios o permitir que los procesos en segundo plano finalicen correctamente.
+
+### Reinicio del Sistema
+
+Para reiniciar su sistema Linux, puede usar el comando `shutdown` con la bandera `-r` (reboot/reiniciar).
 
 ```bash
 sudo shutdown -r now
 ```
 
-O simplemente use el comando `reboot`:
+Una alternativa más directa y comúnmente utilizada es el comando `reboot`, que logra el mismo objetivo de reiniciar el sistema de forma segura.
 
 ```bash
 sudo reboot
 ```
 
+### Comandos de Energía Alternativos
+
+Para un control más directo, también puede encontrar los comandos `halt` y `poweroff`. En muchas distribuciones Linux modernas, estos son esencialmente atajos que llaman al comando `shutdown`. Por ejemplo, ejecutar `poweroff` es a menudo equivalente a ejecutar `shutdown -h now`.
+
 ## Exercise
 
-Aunque no hay laboratorios específicos para este tema, le recomendamos explorar la completa [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
+Siéntase libre de practicar estos comandos en una máquina virtual. Para ejercicios más guiados, explore la [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) integral para practicar una amplia gama de habilidades de Linux.
 
 ## Quiz Question
 
-¿Cuál es el comando para apagar su sistema en 4 minutos?
+¿Cuál es el comando completo, incluyendo `sudo`, para programar un apagado del sistema en 4 minutos? Por favor, proporcione el comando completo en inglés, prestando atención al espaciado y las mayúsculas.
 
 ## Quiz Answer
 

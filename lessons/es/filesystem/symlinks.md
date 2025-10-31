@@ -1,15 +1,15 @@
 ---
 index: 12
 lang: "es"
-title: "symlinks"
-meta_title: "symlinks - El sistema de archivos"
-meta_description: "Aprende sobre los symlinks y enlaces duros de Linux, incluyendo cómo crearlos y gestionarlos. Comprende sus diferencias y casos de uso con esta guía para principiantes."
-meta_keywords: "Linux symlinks, enlaces duros, comando ln, enlaces simbólicos, sistema de archivos Linux, tutorial Linux, Linux para principiantes"
+title: "Enlaces simbólicos"
+meta_title: "Enlaces simbólicos - El Sistema de Archivos"
+meta_description: "Explora los enlaces simbólicos (symlinks) y enlaces duros de Linux. Aprende a crearlos con el comando ln, verificar el conteo de enlaces en Linux con ls, y entiende la diferencia en las salidas de ls para enlaces simbólicos y duros."
+meta_keywords: "Enlaces simbólicos Linux, enlaces duros, comando ln, enlaces simbólicos, ls enlace simbólico, conteo de enlaces en linux, ls enlaces simbólicos, ls enlaces, sistema de archivos Linux, tutorial Linux"
 ---
 
 ## Lesson Content
 
-Usemos un ejemplo anterior de información de inodo:
+Cuando lista archivos en detalle, ve mucha información. Veamos un ejemplo anterior de información de inodo del comando `ls -li`:
 
 ```plaintext
 pete@icebox:~$ ls -li
@@ -17,11 +17,17 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-Es posible que hayas notado que hemos estado pasando por alto el tercer campo en el comando `ls`; ese campo es el recuento de enlaces. El recuento de enlaces es el número total de enlaces duros que tiene un archivo. Bueno, eso no significa nada para ti ahora mismo, así que primero hablemos de los enlaces.
+Anteriormente pasamos por alto el tercer campo en esta salida. Este campo es el recuento de enlaces.
 
-### Enlaces simbólicos (Symlinks)
+### El Recuento de Enlaces en Linux
 
-En el sistema operativo Windows, existen cosas conocidas como accesos directos. Los accesos directos son solo alias a otros archivos. Si haces algo al archivo original, podrías romper el acceso directo. En Linux, el equivalente a los accesos directos son los enlaces simbólicos (o enlaces blandos o symlinks). Los symlinks nos permiten enlazar a otro archivo por su nombre de archivo. Otro tipo de enlace que se encuentra en Linux son los enlaces duros; estos son en realidad otro archivo con un enlace a un inodo. Veamos qué quiero decir en la práctica, comenzando con los symlinks.
+El **recuento de enlaces en linux** es el número total de enlaces físicos (hard links) que tiene un archivo. Para entender lo que esto significa, primero debemos discutir qué son los enlaces. En Linux, hay dos tipos de enlaces: enlaces simbólicos (symlinks) y enlaces físicos (hard links).
+
+### Entendiendo los Symlinks
+
+En el sistema operativo Windows, tiene accesos directos, que son esencialmente alias que apuntan a otros archivos. En Linux, el equivalente es un enlace simbólico, también conocido como enlace suave o **symlink**. Un symlink es un tipo especial de archivo que apunta a otro archivo o directorio por su nombre.
+
+Veamos esto en la práctica. Crearemos algunos archivos y luego un symlink.
 
 ```bash
 pete@icebox:~/Desktop$ echo 'myfile' > myfile
@@ -37,11 +43,13 @@ total 12
 93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
 ```
 
-Puedes ver que he creado un enlace simbólico llamado `myfilelink` que apunta a `myfile`. Los enlaces simbólicos se denotan con `->`. Sin embargo, fíjate cómo obtuve un nuevo número de inodo; los symlinks son solo archivos que apuntan a nombres de archivo. Cuando modificas un symlink, el archivo también se modifica. Los números de inodo son únicos para los sistemas de archivos; no puedes tener dos números de inodo iguales en un solo sistema de archivos, lo que significa que no puedes referenciar un archivo en un sistema de archivos diferente por su número de inodo. Sin embargo, si usas symlinks, no usan números de inodo; usan nombres de archivo, por lo que pueden ser referenciados a través de diferentes sistemas de archivos.
+Aquí, hemos creado un enlace simbólico llamado `myfilelink` que apunta a `myfile`. Cuando usa `ls` para ver un `ls symlink`, se identifica claramente por la `l` al principio de la cadena de permisos y el símbolo `->` que apunta al destino. Tenga en cuenta que el symlink tiene su propio número de inodo único (93403). Debido a que los symlinks apuntan a nombres de archivo en lugar de inodos, pueden abarcar diferentes sistemas de archivos.
 
-### Enlaces duros (Hardlinks)
+### Entendiendo los Enlaces Físicos (Hard Links)
 
-Veamos un ejemplo de un enlace duro:
+El otro tipo de enlace es un enlace físico. Un enlace físico crea otra entrada de archivo que apunta directamente al mismo inodo que el archivo original.
+
+Creemos un enlace físico para `myfile2`:
 
 ```bash
 pete@icebox:~/Desktop$ ln myfile2 myhardlink
@@ -54,36 +62,38 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-Un enlace duro simplemente crea otro archivo con un enlace al mismo inodo. Así que si modificara el contenido de `myfile2` o `myhardlink`, el cambio se vería en ambos. Pero si eliminara `myfile2`, el archivo seguiría siendo accesible a través de `myhardlink`. Aquí es donde entra en juego nuestro recuento de enlaces en el comando `ls`. El recuento de enlaces es el número de enlaces duros que tiene un inodo. Cuando eliminas un archivo, ese recuento de enlaces disminuirá. El inodo solo se elimina cuando se han eliminado todos los enlaces duros al inodo. Cuando creas un archivo, su recuento de enlaces es 1 porque es el único archivo que apunta a ese inodo. A diferencia de los symlinks, los enlaces duros no se extienden a través de sistemas de archivos porque los inodos son únicos para el sistema de archivos.
+Observe que `myhardlink` comparte el número de inodo exacto (93401) que `myfile2`. El recuento de enlaces para ambos archivos también ha aumentado a 2. Esto se debe a que dos entradas de archivo ahora apuntan al mismo inodo. Si modifica el contenido de `myfile2`, los cambios se reflejarán en `myhardlink`, y viceversa. Si elimina `myfile2`, los datos del archivo seguirán siendo accesibles a través de `myhardlink`. El inodo y sus datos solo se eliminan del disco cuando el recuento de enlaces llega a cero. Debido a que los enlaces físicos apuntan a inodos, que son únicos dentro de un solo sistema de archivos, no pueden abarcar diferentes sistemas de archivos.
 
-### Creación de un enlace simbólico
+### Creación de Symlinks y Enlaces Físicos
 
-```bash
-ln -s myfile mylink
-```
+Puede crear ambos tipos de enlaces utilizando el comando `ln`. La sintaxis es sencilla.
 
-Para crear un enlace simbólico, usas el comando `ln` con `-s` para simbólico, y especificas un archivo de destino y luego un nombre de enlace.
-
-### Creación de un enlace duro
+Para crear un enlace simbólico, use la opción `-s`:
 
 ```bash
-ln somefile somelink
+ln -s /ruta/al/original /ruta/al/enlace
 ```
 
-Similar a la creación de un symlink, excepto que esta vez omites el `-s`.
+Para crear un enlace físico, omita la opción `-s`:
+
+```bash
+ln /ruta/al/original /ruta/al/enlace
+```
+
+Usar los comandos `ls symlinks` o `ls links` generales con la opción `-l` es esencial para administrar e identificar estos diferentes tipos de archivos.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión de archivos, enlaces e inodos:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración de archivos, enlaces e inodos:
 
-1. **[Gestionar archivos y directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practica la creación, copia, movimiento y eliminación de archivos y directorios, y aprende específicamente sobre enlaces simbólicos y duros, y cómo analizar inodos.
-2. **[Navegar por el sistema de archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domina comandos esenciales como `pwd`, `cd` y `ls` para moverte eficientemente por el sistema de archivos de Linux, una habilidad fundamental para entender dónde residen los archivos y sus inodos.
+1.  **[Administrar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practique la creación, copia, movimiento y eliminación de archivos y directorios, y aprenda específicamente sobre enlaces simbólicos y físicos, y cómo analizar inodos.
+2.  **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos esenciales como `pwd`, `cd` y `ls` para moverse eficientemente por el sistema de archivos de Linux, una habilidad fundamental para comprender dónde residen los archivos y sus inodos.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de gestión de archivos y enlaces en escenarios reales y a construir confianza con el sistema de archivos de Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos de administración de archivos y enlaces en escenarios reales y a ganar confianza con el sistema de archivos de Linux.
 
 ## Quiz Question
 
-¿Cuál es el comando utilizado para crear un symlink?
+¿Cuál es el comando y su opción principal utilizada para crear un symlink? Su respuesta debe estar en inglés y distingue entre mayúsculas y minúsculas. Por favor, incluya el espacio entre el comando y la opción.
 
 ## Quiz Answer
 

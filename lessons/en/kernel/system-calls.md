@@ -3,23 +3,35 @@ index: 3
 lang: "en"
 title: "System Calls"
 meta_title: "System Calls - Kernel"
-meta_description: "Learn about Linux system calls (syscalls) and how they interact with the kernel. Understand user and kernel modes, and use `strace` for debugging. Start your Linux journey!"
-meta_keywords: "Linux system calls, syscalls, kernel mode, user mode, strace command, Linux tutorial, beginner Linux, Linux guide"
+meta_description: "Explore the fundamentals of a system call in Linux. Learn how user-space processes use system calls (syscalls) to request services from the kernel, switch modes, and how the syscall table works. Use `strace` to see system calls in action."
+meta_keywords: "system call linux, system calls, syscall table, kernel mode, user mode, strace, linux kernel, syscall API"
 ---
 
 ## Lesson Content
 
-Remember Britney in the previous lesson? Let's say we want to see her and get some drinks together. How do we get from standing outside in the crowds of people to inside her innermost circle? We would use system calls. System calls are like the VIP passes that get you to a secret side door that leads directly to Britney.
+Imagine you are at a large concert. To get from the general audience area to the exclusive backstage, you can't just walk through. You need a special pass that grants you access through a specific, guarded door. In the world of computing, **system calls** are those special passes.
 
-System calls (syscalls) provide user-space processes a way to request the kernel to do something for us. The kernel makes certain services available through the system call API. These services allow us to read or write to a file, modify memory usage, modify our network, etc. The amount of services is fixed, so you can't be adding system calls willy-nilly. Your system already has a table of what system calls exist, and each system call has a unique ID.
+### What Are System Calls?
 
-I won't get into specifics of system calls, as that will require you to know a bit of C, but the basics are that when you call a program like `ls`, the code inside this program contains a system call wrapper (so not the actual system call yet). Inside this wrapper, it invokes the system call which will execute a trap. This trap then gets caught by the system call handler and then references the system call in the system call table. Let's say we are trying to call the `stat()` system call; it's identified by a syscall ID, and the purpose of the `stat()` system call is to query the status of a file. Now remember, you were running the `ls` program in non-privileged mode. So now it sees you're trying to make a syscall, it then switches you over to kernel mode. There it does lots of things, but most importantly, it looks up your syscall number, finds it in a table based on the syscall ID, and then executes the function you wanted to run. Once it's done, it will return back to user mode, and your process will receive a return status if it was successful or if it had an error. The inner workings of syscalls get really detailed; I would recommend looking at information online if you want to learn more.
+System calls, often abbreviated as syscalls, provide a way for user-space processes to request services directly from the kernel. The kernel exposes a set of services through the system call API. These services are essential for operations like reading or writing to a file, managing memory, or handling network connections. The number of available system calls is fixed; you cannot add new ones arbitrarily. Your system maintains a `syscall table` where each system call is registered with a unique ID.
 
-You can actually view the system calls that a process makes with the `strace` command. The `strace` command is useful for debugging how a program executed.
+### The System Call Mechanism in Linux
+
+When you run a program like `ls`, the code within it doesn't execute the **system call linux** command directly. Instead, it uses a library function, which acts as a wrapper. This wrapper function sets up the necessary parameters and then triggers a software interrupt, or a "trap."
+
+This trap signals the processor to switch from the non-privileged user mode to the privileged kernel mode. Once in kernel mode, a system call handler takes over. It uses the unique ID to look up the requested function in the `syscall table` and then executes it. For example, the `stat()` system call, used to query a file's status, is found and run this way. After the kernel completes the task, it switches the context back to user mode and returns a status code to your process, indicating success or an error.
+
+### Viewing System Calls with strace
+
+You can observe the system calls a process makes in real-time using the `strace` command. This tool is incredibly useful for debugging and understanding how a program interacts with the kernel.
+
+To see the system calls made by the `ls` command, you would run:
 
 ```bash
 strace ls
 ```
+
+This will output a detailed list of every system call `ls` performs during its execution.
 
 ## Exercise
 
@@ -33,7 +45,7 @@ These labs will help you apply the concepts of file system interaction in real s
 
 ## Quiz Question
 
-What is used to switch from user mode to kernel mode?
+What is used to switch from user mode to kernel mode? Please answer in English, using two words.
 
 ## Quiz Answer
 

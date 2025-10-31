@@ -1,41 +1,67 @@
 ---
 index: 18
 lang: "ko"
-title: "alias"
-meta_title: "alias - 명령줄"
-meta_description: "일반적인 명령에 대한 Linux 별칭을 생성하고 관리하는 방법을 배웁니다. .bashrc 에서 임시 및 영구 별칭 설정을 발견하세요. 명령줄 효율성을 향상시키세요!"
-meta_keywords: "Linux alias, bash alias, unalias command, .bashrc, Linux tutorial, command line, beginner Linux, Linux guide"
+title: "별칭"
+meta_title: "별칭 - 명령줄"
+meta_description: "작업 흐름을 간소화하기 위해 Linux 에서 명령 별칭을 생성하고 관리하는 방법을 알아보세요. 이 가이드는 alias 명령과 .bashrc 파일을 사용하여 임시 및 영구 별칭을 만드는 방법을 다룹니다."
+meta_keywords: "리눅스 별칭, alias 명령어 리눅스, 리눅스 명령 별칭, 리눅스 명령어 별칭, bash 별칭, unalias 명령어, .bashrc, 명령줄, 리눅스 튜토리얼"
 ---
 
 ## Lesson Content
 
-때로는 명령을 입력하는 것이 매우 반복적이거나, 긴 명령을 여러 번 입력해야 하는 경우 해당 명령에 사용할 수 있는 별칭 (alias) 을 사용하는 것이 가장 좋습니다. 명령에 대한 별칭을 생성하려면 별칭 이름을 지정하고 해당 명령으로 설정하면 됩니다.
+길거나 반복적인 명령어를 입력하는 것은 지루할 수 있습니다. 다행히도, **Linux 별칭 (alias)**을 만들어 명령줄 경험을 더욱 효율적으로 만들 수 있습니다. `alias` 명령어는 모든 명령어 또는 명령어 시퀀스에 대해 사용자 지정 이름을 정의할 수 있게 해줍니다.
+
+### 임시 별칭 생성
+
+현재 터미널 세션 동안 유지되는 임시 별칭을 만들려면, 단순히 이름과 명령 문자열을 지정하여 동일하게 설정하면 됩니다.
+
+예를 들어, `ls -la` 명령어에 대해 `ll`이라는 별칭을 만들려면, 다음과 같이 `alias command linux` 구문을 사용합니다.
 
 ```bash
-alias foobar='ls -la'
+alias ll='ls -la'
 ```
 
-이제 `ls -la`를 입력하는 대신 `foobar`를 입력하면 해당 명령이 실행됩니다. 정말 멋진 기능이죠. 이 명령은 재부팅 후 별칭을 저장하지 않으므로 재부팅 후에도 유지하려면 다음 파일에 영구 별칭을 추가해야 합니다.
+이제 `ls -la`를 입력하는 대신 `ll`만 입력하면 동일한 명령어가 실행됩니다. 이는 셸을 사용자 지정하는 간단하면서도 강력한 방법입니다.
 
-```plaintext
-~/.bashrc
-```
+### 별칭 영구화
 
-또는 유사한 파일에 추가해야 합니다.
+임시 별칭은 터미널을 닫거나 시스템을 재부팅하면 사라집니다. **linux 명령어 별칭**을 영구적으로 만들려면 셸의 구성 파일에 추가해야 합니다. Bash 셸의 경우, 이 파일은 일반적으로 `~/.bashrc`입니다.
 
-`unalias` 명령으로 별칭을 제거할 수 있습니다:
+1. 텍스트 편집기에서 파일을 엽니다: `nano ~/.bashrc`
+2. 명령줄에서 입력했던 것처럼 별칭 정의를 파일에 추가합니다:
 
 ```bash
-unalias foobar
+alias ll='ls -la'
+alias update='sudo apt update && sudo apt upgrade'
 ```
+
+3. 파일을 저장하고 편집기를 종료합니다.
+
+변경 사항을 적용하려면 터미널을 닫았다가 다시 열거나, `source` 명령어를 사용하여 셸이 구성 파일을 다시 로드하도록 알려야 합니다.
+
+```bash
+source ~/.bashrc
+```
+
+이제 **Linux 명령어 별칭**은 새 터미널 세션을 시작할 때마다 사용할 수 있습니다.
+
+### 별칭 제거
+
+더 이상 별칭이 필요하지 않은 경우, `unalias` 명령어로 제거할 수 있습니다. 이렇게 하면 현재 세션에서 제거됩니다.
+
+```bash
+unalias ll
+```
+
+영구적인 별칭을 제거하려면 `~/.bashrc` 파일에서 해당 정의도 삭제해야 합니다.
 
 ## Exercise
 
-이 주제에 대한 특정 랩은 없지만, 관련 Linux 기술 및 개념을 연습하기 위해 포괄적인 [Linux 학습 경로](https://labex.io/ko/learn/linux)를 탐색하는 것을 권장합니다.
+이 주제에 대한 특정 실습은 없지만, 관련 Linux 기술 및 개념을 연습하기 위해 종합적인 [Linux 학습 경로](https://labex.io/ko/learn/linux)를 탐색하는 것을 권장합니다.
 
 ## Quiz Question
 
-별칭을 만드는 데 사용되는 명령은 무엇입니까?
+별칭을 만드는 데 사용되는 명령어는 무엇입니까? 소문자 영어로 답하십시오.
 
 ## Quiz Answer
 

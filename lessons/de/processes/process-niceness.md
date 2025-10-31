@@ -1,33 +1,48 @@
 ---
 index: 8
 lang: "de"
-title: "Niceness"
-meta_title: "Niceness - Prozesse"
-meta_description: "Erfahren Sie mehr über Linux Niceness und Prozesspriorität. Verstehen Sie die Befehle nice und renice, um die CPU-Zeit für Prozesse zu verwalten. Verbessern Sie die Systemleistung!"
-meta_keywords: "Linux Niceness, Prozesspriorität, nice Befehl, renice Befehl, Linux Tutorial, CPU-Planung, Linux für Anfänger, Linux Anleitung"
+title: "Nettigkeit"
+meta_title: "Nettigkeit - Prozesse"
+meta_description: "Erfahren Sie, was die Nettigkeit (Niceness) unter Linux ist und wie sie die Prozesspriorität beeinflusst. Diese Lektion erklärt die Linux-Prozess-Nettigkeit und die Verwendung der Befehle nice und renice zur Verwaltung der CPU-Planung und Verbesserung der Systemleistung."
+meta_keywords: "niceness linux, linux niceness, was ist niceness in linux, linux prozess niceness, niceness von prozess, prozesspriorität, nice befehl, renice befehl, cpu-planung"
 ---
 
 ## Lesson Content
 
-Wenn Sie mehrere Dinge gleichzeitig auf Ihrem Computer ausführen, wie zum Beispiel Chrome, Microsoft Word oder Photoshop, mag es so aussehen, als würden diese Prozesse gleichzeitig laufen, aber das stimmt nicht ganz.
+Wenn Sie mehrere Anwendungen auf Ihrem Computer ausführen, scheint es, als würden sie alle gleichzeitig laufen. In Wirklichkeit schaltet die CPU schnell zwischen ihnen um und gibt jedem Prozess eine kleine Menge an Verarbeitungszeit.
 
-Prozesse nutzen die CPU für eine kurze Zeitspanne, die als Zeitscheibe bezeichnet wird. Dann pausieren sie für Millisekunden, und ein anderer Prozess erhält eine kleine Zeitscheibe. Standardmäßig erfolgt die Prozessplanung nach dem Round-Robin-Verfahren. Jeder Prozess erhält genügend Zeitscheiben, bis er die Verarbeitung abgeschlossen hat. Der Kernel übernimmt all diese Prozesswechsel, und das macht er die meiste Zeit ziemlich gut.
+### Wie die CPU Prozesse verwaltet
 
-Prozesse können nicht selbst entscheiden, wann und wie lange sie CPU-Zeit erhalten. Wenn sich alle Prozesse normal verhalten würden, würden sie jeweils (ungefähr) die gleiche Menge an CPU-Zeit erhalten. Es gibt jedoch eine Möglichkeit, den Prozessplanungsalgorithmus des Kernels mit einem Nice-Wert zu beeinflussen. Niceness ist ein ziemlich seltsamer Name, aber es bedeutet, dass Prozesse eine Zahl haben, um ihre Priorität für die CPU zu bestimmen. Eine hohe Zahl bedeutet, dass der Prozess "nett" ist und eine niedrigere Priorität für die CPU hat, und eine niedrige oder negative Zahl bedeutet, dass der Prozess nicht sehr "nett" ist und so viel CPU wie möglich erhalten möchte.
+Jedem Prozess wird eine kleine Menge an CPU-Zeit zugewiesen, die als "Zeitscheibe" (time slice) bezeichnet wird. Nach seiner Zeitscheibe wird ein Prozess angehalten, und die CPU wechselt zum nächsten. Standardmäßig plant der Linux-Kernel Prozesse in einer Round-Robin-Methode, um sicherzustellen, dass jeder Prozess einen fairen Anteil an CPU-Zeit erhält, bis er abgeschlossen ist. Der Scheduler des Kernels ist sehr effizient bei der Verwaltung dieser schnellen Wechsel.
+
+### Was ist Niceness unter Linux
+
+Obwohl Prozesse ihre CPU-Zeit nicht direkt steuern können, können Sie die Scheduling-Entscheidungen des Kernels beeinflussen. Dies geschieht durch die Anpassung des **linux niceness**-Wertes eines Prozesses. Der Begriff "Niceness" (Nettigkeit) bezieht sich darauf, wie "nett" ein Prozess zu anderen Prozessen auf dem System ist.
+
+Die **Niceness eines Prozesses** wird durch eine Zahl zwischen -20 (höchste Priorität) und 19 (niedrigste Priorität) dargestellt.
+
+- Ein hoher Niceness-Wert (z. B. 19) bedeutet, dass der Prozess sehr "nett" ist und eine niedrige Priorität hat, wodurch er CPU-Zeit an andere abgibt.
+- Ein niedriger oder negativer Niceness-Wert (z. B. -20) bedeutet, dass der Prozess nicht "nett" ist und mehr CPU-Zeit beansprucht, was ihm eine höhere Priorität einräumt.
+
+Das Verständnis der **linux process niceness** ist der Schlüssel zur effektiven Verwaltung von Systemressourcen.
+
+### Anpassen der Prozesspriorität
+
+Sie können den aktuellen Niceness-Level laufender Prozesse mit dem Befehl `top` anzeigen. Achten Sie auf die Spalte `NI`, die den Niceness-Wert anzeigt.
 
 ```bash
 top
 ```
 
-Sie sehen jetzt eine Spalte für `NI`; das ist der Niceness-Level eines Prozesses.
+Um den **niceness linux**-Wert zu steuern, können Sie die Befehle `nice` und `renice` verwenden.
 
-Um den Niceness-Level zu ändern, können Sie die Befehle `nice` und `renice` verwenden:
+Verwenden Sie den Befehl `nice`, um einen neuen Prozess mit einem bestimmten Niceness-Level zu starten. Der folgende Befehl startet beispielsweise `apt upgrade` mit einer Niceness von 5.
 
 ```bash
 nice -n 5 apt upgrade
 ```
 
-Der Befehl `nice` wird verwendet, um die Priorität für einen neuen Prozess festzulegen. Der Befehl `renice` wird verwendet, um die Priorität für einen bestehenden Prozess festzulegen.
+Um die Priorität eines bereits laufenden Prozesses zu ändern, verwenden Sie den Befehl `renice`. Der folgende Befehl ändert die Niceness eines Prozesses mit der PID 3245 auf 10.
 
 ```bash
 renice 10 -p 3245
@@ -35,15 +50,15 @@ renice 10 -p 3245
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Linux-Prozessmanagements und der -Planung zu vertiefen:
+Wenden Sie Ihr Wissen in diesem praktischen Labor an, um Ihr Verständnis für die Verwaltung und Planung von Linux-Prozessen zu festigen:
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, deren Überprüfung mit `ps`, die Überwachung von Ressourcen mit `top`, die Anpassung der Priorität mit `renice` und deren Beendigung mit `kill`.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top`, passen Sie die Priorität mit `renice` an und beenden Sie sie mit `kill`.
 
-Dieses Labor wird Ihnen helfen, die Konzepte der Prozessplanung und Niceness in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Prozessen unter Linux aufzubauen.
+Dieses Labor hilft Ihnen, die Konzepte der Prozessplanung und Niceness in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Prozessen unter Linux aufzubauen.
 
 ## Quiz Question
 
-Wenn ich möchte, dass ein Prozess mehr CPU-Priorität erhält, verwende ich dann eine niedrigere oder höhere Nice-Zahl?
+Wenn Sie möchten, dass ein Prozess mehr CPU-Priorität erhält, sollten Sie eine niedrigere oder höhere "nice"-Zahl verwenden? Bitte antworten Sie in einem einzigen englischen Wort, alles kleingeschrieben.
 
 ## Quiz Answer
 

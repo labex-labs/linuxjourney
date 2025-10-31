@@ -3,37 +3,49 @@ index: 3
 lang: "de"
 title: "Systemaufrufe"
 meta_title: "Systemaufrufe - Kernel"
-meta_description: "Erfahren Sie mehr über Linux-Systemaufrufe (Syscalls) und wie sie mit dem Kernel interagieren. Verstehen Sie den Benutzer- und Kernelmodus und verwenden Sie `strace` zum Debuggen. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "Linux-Systemaufrufe, Syscalls, Kernelmodus, Benutzermodus, strace-Befehl, Linux-Tutorial, Linux für Anfänger, Linux-Anleitung"
+meta_description: "Erkunden Sie die Grundlagen eines Systemaufrufs unter Linux. Erfahren Sie, wie Prozesse im Benutzermodus Systemaufrufe (Syscalls) verwenden, um Dienste vom Kernel anzufordern, Modi zu wechseln und wie die Syscall-Tabelle funktioniert. Nutzen Sie `strace`, um Systemaufrufe in Aktion zu sehen."
+meta_keywords: "system call linux, systemaufrufe, syscall tabelle, kernel modus, benutzer modus, strace, linux kernel, syscall API"
 ---
 
 ## Lesson Content
 
-Erinnern Sie sich an Britney aus der vorherigen Lektion? Nehmen wir an, wir wollen sie sehen und ein paar Drinks zusammen nehmen. Wie kommen wir vom Stehen draußen in der Menschenmenge in ihren innersten Kreis? Wir würden Systemaufrufe verwenden. Systemaufrufe sind wie die VIP-Pässe, die Sie zu einer geheimen Seitentür führen, die direkt zu Britney führt.
+Stellen Sie sich vor, Sie befinden sich auf einem großen Konzert. Um vom allgemeinen Zuschauerbereich zur exklusiven Backstage zu gelangen, können Sie nicht einfach hineinspazieren. Sie benötigen einen speziellen Ausweis, der Ihnen den Zugang durch eine bestimmte, bewachte Tür gewährt. In der Welt der Computer sind **Systemaufrufe** (System Calls) diese speziellen Ausweise.
 
-Systemaufrufe (syscalls) bieten Prozessen im Benutzerbereich eine Möglichkeit, den Kernel aufzufordern, etwas für uns zu tun. Der Kernel stellt bestimmte Dienste über die Systemaufruf-API zur Verfügung. Diese Dienste ermöglichen es uns, eine Datei zu lesen oder zu schreiben, die Speichernutzung zu ändern, unser Netzwerk zu ändern usw. Die Anzahl der Dienste ist festgelegt, sodass Sie nicht willkürlich Systemaufrufe hinzufügen können. Ihr System verfügt bereits über eine Tabelle der vorhandenen Systemaufrufe, und jeder Systemaufruf hat eine eindeutige ID.
+### Was sind Systemaufrufe?
 
-Ich werde nicht auf die Besonderheiten von Systemaufrufen eingehen, da Sie dafür ein wenig C kennen müssten, aber die Grundlagen sind, dass, wenn Sie ein Programm wie `ls` aufrufen, der Code in diesem Programm einen Systemaufruf-Wrapper enthält (also noch nicht den eigentlichen Systemaufruf). Innerhalb dieses Wrappers ruft er den Systemaufruf auf, der einen Trap ausführt. Dieser Trap wird dann vom Systemaufruf-Handler abgefangen und verweist dann auf den Systemaufruf in der Systemaufruftabelle. Nehmen wir an, wir versuchen, den Systemaufruf `stat()` aufzurufen; er wird durch eine Syscall-ID identifiziert, und der Zweck des Systemaufrufs `stat()` ist es, den Status einer Datei abzufragen. Nun, erinnern Sie sich, Sie haben das Programm `ls` im nicht-privilegierten Modus ausgeführt. Es sieht also, dass Sie versuchen, einen Syscall zu machen, und schaltet Sie dann in den Kernel-Modus um. Dort tut es viele Dinge, aber am wichtigsten ist, dass es Ihre Syscall-Nummer nachschlägt, sie in einer Tabelle basierend auf der Syscall-ID findet und dann die Funktion ausführt, die Sie ausführen wollten. Sobald dies geschehen ist, kehrt es in den Benutzermodus zurück, und Ihr Prozess erhält einen Rückgabestatus, ob er erfolgreich war oder ob ein Fehler aufgetreten ist. Die inneren Abläufe von Syscalls werden sehr detailliert; ich würde empfehlen, online nach Informationen zu suchen, wenn Sie mehr erfahren möchten.
+Systemaufrufe, oft als Syscalls abgekürzt, bieten Benutzerprozessen eine Möglichkeit, Dienste direkt vom Kernel anzufordern. Der Kernel stellt eine Reihe von Diensten über die Systemaufruf-API bereit. Diese Dienste sind wesentlich für Operationen wie das Lesen oder Schreiben in eine Datei, die Speicherverwaltung oder die Handhabung von Netzwerkverbindungen. Die Anzahl der verfügbaren Systemaufrufe ist festgelegt; Sie können nicht willkürlich neue hinzufügen. Ihr System führt eine `Syscall-Tabelle` (syscall table), in der jeder Systemaufruf mit einer eindeutigen ID registriert ist.
 
-Sie können die Systemaufrufe, die ein Prozess macht, tatsächlich mit dem Befehl `strace` anzeigen. Der Befehl `strace` ist nützlich, um zu debuggen, wie ein Programm ausgeführt wurde.
+### Der Systemaufruf-Mechanismus unter Linux
+
+Wenn Sie ein Programm wie `ls` ausführen, führt der darin enthaltene Code den Befehl **Systemaufruf Linux** nicht direkt aus. Stattdessen verwendet er eine Bibliotheksfunktion, die als Wrapper fungiert. Diese Wrapper-Funktion richtet die notwendigen Parameter ein und löst dann eine Software-Unterbrechung oder eine „Trap“ aus.
+
+Diese Trap signalisiert dem Prozessor, vom nicht-privilegierten Benutzermodus in den privilegierten Kernelmodus zu wechseln. Im Kernelmodus übernimmt ein Systemaufruf-Handler die Steuerung. Er verwendet die eindeutige ID, um die angeforderte Funktion in der `Syscall-Tabelle` nachzuschlagen und führt sie dann aus. Beispielsweise wird der Systemaufruf `stat()`, der zur Abfrage des Status einer Datei verwendet wird, auf diese Weise gefunden und ausgeführt. Nachdem der Kernel die Aufgabe abgeschlossen hat, schaltet er den Kontext zurück in den Benutzermodus und gibt einen Statuscode an Ihren Prozess zurück, der Erfolg oder einen Fehler anzeigt.
+
+### Systemaufrufe mit strace anzeigen
+
+Sie können die Systemaufrufe, die ein Prozess tätigt, in Echtzeit mit dem Befehl `strace` beobachten. Dieses Tool ist unglaublich nützlich für das Debugging und das Verständnis, wie ein Programm mit dem Kernel interagiert.
+
+Um die Systemaufrufe des `ls`-Befehls anzuzeigen, würden Sie Folgendes ausführen:
 
 ```bash
 strace ls
 ```
 
+Dies gibt eine detaillierte Liste jedes Systemaufrufs aus, den `ls` während seiner Ausführung durchführt.
+
 ## Exercise
 
-Übung macht den Meister! Obwohl die inneren Abläufe von Systemaufrufen komplex sind, ist das Verständnis, wie Benutzerbereichsprogramme mit dem Kernel interagieren, von grundlegender Bedeutung. Der beste Weg, diese Interaktion zu verstehen, ist das Üben mit Befehlen, die diese zugrunde liegenden Operationen ausführen. Hier sind einige praktische Übungen, um Ihr Verständnis der Dateisysteminteraktionen zu vertiefen, die stark auf Systemaufrufen basieren:
+Übung macht den Meister! Obwohl die internen Abläufe von Systemaufrufen komplex sind, ist das Verständnis, wie Benutzerbereichsprogramme mit dem Kernel interagieren, grundlegend. Der beste Weg, diese Interaktion zu erfassen, ist das Üben mit Befehlen, die diese zugrunde liegenden Operationen durchführen. Hier sind einige praktische Labs, um Ihr Verständnis der Dateisysteminteraktionen zu festigen, die stark von Systemaufrufen abhängen:
 
-1. **[Dateisystem in Linux navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Üben Sie grundlegende Befehle wie `ls`, `cd` und `pwd`, um sich in Ihrem Linux-Dateisystem zu bewegen und es zu inspizieren, wobei Sie direkt mit den Dateisystemdiensten des Kernels interagieren.
-2. **[Dateien und Verzeichnisse in Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** - Lernen Sie, Dateien und Verzeichnisse mit Befehlen wie `mkdir`, `rm`, `cp` und `mv` zu erstellen, zu entfernen, zu kopieren und zu verschieben, die alle Systemaufrufe zur Ausführung ihrer Aktionen beinhalten.
-3. **[Dateien und Befehle in Linux finden](https://labex.io/de/labs/comptia-find-files-and-commands-in-linux-590834)** - Meistern Sie Techniken zum Auffinden von Dateien und Befehlen mit `find`, `whereis` und `which`, was weiter veranschaulicht, wie Benutzerbefehle Kernel-Dienste nutzen, um mit dem Dateisystem zu interagieren.
+1. **[Navigieren Sie im Dateisystem unter Linux](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** – Üben Sie wesentliche Befehle wie `ls`, `cd` und `pwd`, um sich in Ihrem Linux-Dateisystem zu bewegen und es zu inspizieren, wobei Sie direkt die Dateisystemdienste des Kernels nutzen.
+2. **[Verwalten Sie Dateien und Verzeichnisse unter Linux](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** – Lernen Sie, Dateien und Verzeichnisse mit Befehlen wie `mkdir`, `rm`, `cp` und `mv` zu erstellen, zu entfernen, zu kopieren und zu verschieben, die alle Systemaufrufe zur Ausführung ihrer Aktionen benötigen.
+3. **[Finden Sie Dateien und Befehle unter Linux](https://labex.io/de/labs/comptia-find-files-and-commands-in-linux-590834)** – Meistern Sie Techniken zum Auffinden von Dateien und Befehlen mit `find`, `whereis` und `which`, was weiter veranschaulicht, wie Benutzerbefehle Kernel-Dienste nutzen, um mit dem Dateisystem zu interagieren.
 
-Diese Labs helfen Ihnen, die Konzepte der Dateisysteminteraktion in realen Szenarien anzuwenden und Vertrauen in grundlegende Linux-Operationen aufzubauen, die implizit auf Systemaufrufen basieren.
+Diese Labs helfen Ihnen, die Konzepte der Dateisysteminteraktion in realen Szenarien anzuwenden und Vertrauen in grundlegende Linux-Operationen aufzubauen, die implizit auf Systemaufrufen beruhen.
 
 ## Quiz Question
 
-Was wird verwendet, um vom Benutzermodus in den Kernelmodus zu wechseln?
+What is used to switch from user mode to kernel mode? Please answer in English, using two words.
 
 ## Quiz Answer
 

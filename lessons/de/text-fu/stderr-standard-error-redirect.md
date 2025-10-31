@@ -3,67 +3,94 @@ index: 3
 lang: "de"
 title: "stderr (Standardfehler)"
 meta_title: "stderr (Standardfehler) - Text-Fu"
-meta_description: "Erfahren Sie mehr über Linux stderr (Standardfehler) Umleitung. Verstehen Sie 2>, 2>&1, &> und /dev/null für die Fehlerbehandlung in Bash. Verbessern Sie Ihre Linux-Befehlszeilenkenntnisse!"
-meta_keywords: "Linux stderr, Standardfehler, 2> Umleitung, 2>&1, &> Umleitung, /dev/null, Bash Fehlerbehandlung, Linux Tutorial, Linux für Anfänger"
+meta_description: "Erfahren Sie, wie Sie Standardfehler (stderr) unter Linux verwalten. Dieser Leitfaden behandelt stderr-Umleitung, den stderr-Dateideskriptor (2) und wie man stderr mithilfe von 2>, 2>&1 und &> in eine Datei oder nach /dev/null umleitet."
+meta_keywords: "stderr, Standardfehler Linux, stderr Dateideskriptor, stderr Datei, Linux Standardfehler, stderr umleiten, 2>, 2>&1, &>, /dev/null, Bash Fehlerbehandlung"
 ---
 
 ## Lesson Content
 
-Versuchen wir nun etwas anderes. Versuchen wir, den Inhalt eines Verzeichnisses aufzulisten, das auf Ihrem System nicht existiert, und leiten die Ausgabe wieder in die Datei `peanuts.txt` um.
+Erkunden wir, was passiert, wenn ein Befehl einen Fehler erzeugt. Versuchen Sie, den Inhalt eines nicht existierenden Verzeichnisses aufzulisten und die Ausgabe in eine Datei namens `peanuts.txt` umzuleiten.
 
 ```bash
 ls /fake/directory > peanuts.txt
 ```
 
-Was Sie sehen sollten, ist:
+Anstelle eines sauberen Prompts sehen Sie eine Fehlermeldung auf Ihrem Bildschirm:
 
 ```plaintext
 ls: cannot access /fake/directory: No such file or directory
 ```
 
-Jetzt denken Sie wahrscheinlich, sollte diese Nachricht nicht an die Datei gesendet worden sein? Hier ist tatsächlich ein weiterer E/A-Stream im Spiel, der Standardfehler (stderr) genannt wird. Standardmäßig sendet stderr seine Ausgabe ebenfalls an den Bildschirm; es ist ein völlig anderer Stream als stdout. Sie müssen seine Ausgabe also auf eine andere Weise umleiten.
+Sie fragen sich vielleicht, warum diese Meldung nicht an die Datei gesendet wurde. Das liegt daran, dass ein anderer I/O-Stream beteiligt ist: **Standardfehler** oder **stderr**.
 
-Leider ist der Redirector nicht so schön wie die Verwendung von `<` oder `>`, aber er ist ziemlich nah dran. Wir müssen Dateideskriptoren verwenden. Ein Dateideskriptor ist eine nicht-negative Zahl, die verwendet wird, um auf eine Datei oder einen Stream zuzugreifen. Wir werden dies später ausführlich behandeln, aber vorerst sollten Sie wissen, dass der Dateideskriptor für stdin, stdout und stderr 0, 1 bzw. 2 ist.
+### Was ist Standardfehler (Standard Error) in Linux?
 
-Wenn wir nun unseren stderr in die Datei umleiten möchten, können wir dies tun:
+In Linux ist `stderr` ein Standard-Ausgabestrom, den Programme verwenden, um Fehlermeldungen und Diagnosen zu senden. Er ist vollständig getrennt vom Standardausgabe (`stdout`) -Stream, der für normale Programmausgaben verwendet wird. Standardmäßig senden sowohl `stdout` als auch `stderr` ihre Ausgaben an Ihren Terminalbildschirm, weshalb Sie die Fehlermeldung direkt sehen.
+
+Um `stderr` zu steuern, benötigen Sie eine andere Umleitungsmethode.
+
+### Verständnis von Dateideskriptoren
+
+Um I/O-Streams wie `stdin`, `stdout` und `stderr` zu verwalten, verwendet das System Dateideskriptoren. Ein **Dateideskriptor** ist eine nicht-negative Zahl, die der Kernel verwendet, um eine geöffnete Datei oder einen Stream zu identifizieren. Die Standard-Dateideskriptoren sind:
+
+- `0`: stdin (Standardeingabe)
+- `1`: stdout (Standardausgabe)
+- `2`: stderr (Standardfehler)
+
+Die Zahl `2` ist der dedizierte **stderr-Dateideskriptor**, und wir können sie verwenden, um zu steuern, wohin Fehlermeldungen gesendet werden.
+
+### Umleitung von stderr in eine Datei
+
+Um `stderr` in eine Datei umzuleiten, verwenden Sie den Dateideskriptor `2` gefolgt vom `>` -Operator. Dieser Befehl sendet alle Fehlermeldungen in die angegebene **stderr-Datei**.
 
 ```bash
 ls /fake/directory 2> peanuts.txt
 ```
 
-Sie sollten nur die stderr-Nachrichten in `peanuts.txt` sehen.
+Jetzt bleibt Ihr Terminal stumm, und die Fehlermeldung befindet sich in `peanuts.txt`.
 
-Was ist, wenn ich sowohl stderr als auch stdout in der Datei `peanuts.txt` sehen möchte? Dies ist auch mit Dateideskriptoren möglich:
+### Kombination von stdout und stderr
 
-```bash
-ls /fake/directory > peanuts.txt 2>&1
-```
-
-Dies sendet die Ergebnisse von `ls /fake/directory` an die Datei `peanuts.txt` und leitet dann stderr über `2>&1` an stdout um. Die Reihenfolge der Operationen ist hier wichtig; `2>&1` sendet stderr an das, worauf stdout zeigt. In diesem Fall zeigt stdout auf eine Datei, daher sendet `2>&1` stderr ebenfalls an eine Datei. Wenn Sie also die Datei `peanuts.txt` öffnen, sollten Sie sowohl stderr als auch stdout sehen. In unserem Fall gibt der obige Befehl nur stderr aus.
-
-Es gibt eine kürzere Möglichkeit, sowohl stdout als auch stderr in eine Datei umzuleiten:
+Was ist, wenn Sie sowohl normale Ausgabe als auch Fehlermeldungen in derselben Datei erfassen möchten? Dies können Sie erreichen, indem Sie beide Streams umleiten.
 
 ```bash
-ls /fake/directory &> peanuts.txt
+ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 ```
 
-Was ist, wenn ich all diesen Müll nicht will und stderr-Nachrichten komplett loswerden möchte? Nun, Sie können die Ausgabe auch in eine spezielle Datei namens `/dev/null` umleiten, und sie wird jede Eingabe verwerfen.
+Lassen Sie uns das aufschlüsseln:
+
+1.  `> peanuts.txt` leitet `stdout` (Dateideskriptor 1) in die Datei `peanuts.txt` um.
+2.  `2>&1` leitet `stderr` (Dateideskriptor 2) an denselben Ort um, auf den `stdout` (Dateideskriptor 1) gerade zeigt.
+
+Die Reihenfolge ist wichtig. `2>&1` sendet `stderr` an das aktuelle Ziel von `stdout`. In diesem Fall zeigt `stdout` auf eine Datei, daher wird auch `stderr` an diese Datei gesendet.
+
+Eine modernere und kürzere Methode, sowohl `stdout` als auch `stderr` umzuleiten, ist die Verwendung von `&>`.
+
+```bash
+ls /fake/directory /etc/passwd &> peanuts.txt
+```
+
+### Verwerfen von Fehlermeldungen
+
+Manchmal möchten Sie einen Befehl ausführen und alle potenziellen Fehlermeldungen komplett ignorieren. Dazu können Sie `stderr` in eine spezielle Datei namens `/dev/null` umleiten, die alle Daten, die in sie geschrieben werden, verwirft.
 
 ```bash
 ls /fake/directory 2> /dev/null
 ```
 
+Dieser Befehl wird ausgeführt, und jede Fehlerausgabe von `stderr` wird an `/dev/null` gesendet und verworfen, wodurch Ihr Bildschirm sauber bleibt.
+
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Ein-/Ausgabeumleitung zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Ein-/Ausgabeumleitung zu festigen:
 
-1. **[Ein- und Ausgabe in Linux umleiten](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** – In diesem Lab lernen Sie, Ein- und Ausgabe in der Linux-Shell umzuleiten. Sie üben die Steuerung des Datenflusses von Befehlen, indem Sie die Standardausgabe (stdout), den Standardfehler (stderr) und die Standardeingabe (stdin) mit Operatoren wie >, >>, 2> und dem Befehl tee manipulieren.
+1. **[Umleitung von Eingabe und Ausgabe in Linux](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - In diesem Lab lernen Sie, Eingabe und Ausgabe in der Linux-Shell umzuleiten. Sie üben die Steuerung des Datenflusses von Befehlen, indem Sie Standardausgabe (stdout), Standardfehler (stderr) und Standardeingabe (stdin) mithilfe von Operatoren wie >, >>, 2> und dem tee-Befehl manipulieren.
 
-Dieses Lab hilft Ihnen, die Konzepte der E/A-Umleitung in realen Szenarien anzuwenden und Vertrauen im Umgang mit Datenströmen in Linux aufzubauen.
+Dieses Lab hilft Ihnen, die Konzepte der I/O-Umleitung in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Datenströmen in Linux aufzubauen.
 
 ## Quiz Question
 
-Was ist der Redirector für stderr?
+Welcher Operator wird verwendet, um den `stderr`-Stream umzuleiten? Bitte geben Sie den genauen Operator in Ihrer Antwort an.
 
 ## Quiz Answer
 

@@ -1,19 +1,19 @@
 ---
 index: 11
 lang: "pt"
-title: "Controle de Jobs"
-meta_title: "Controle de Jobs - Processos"
-meta_description: "Aprenda o controle de jobs do Linux para gerenciar processos em segundo plano. Entenda os comandos 'jobs', 'bg', 'fg' e 'kill' para uso eficiente do shell. Comece sua jornada no Linux!"
-meta_keywords: "controle de jobs Linux, processos em segundo plano, comando jobs, comando bg, comando fg, comando kill, tutorial Linux, Linux para iniciantes"
+title: "Controle de Tarefas"
+meta_title: "Controle de Tarefas - Processos"
+meta_description: "Explore nosso tutorial Linux sobre controle de tarefas para gerenciar processos em segundo plano de forma eficaz. Aprenda a usar os comandos jobs, bg, fg e kill para multitarefas poderosas no shell."
+meta_keywords: "controle de tarefas Linux, processos em segundo plano, comando jobs, comando bg, comando fg, comando kill, tutorial Linux, Linux para iniciantes"
 ---
 
 ## Lesson Content
 
-Digamos que você esteja trabalhando em uma única janela de terminal e executando um comando que está demorando uma eternidade. Você não pode interagir com o shell até que ele seja concluído. No entanto, queremos continuar trabalhando em nossas máquinas, então precisamos que esse shell esteja aberto. Felizmente, podemos controlar como nossos processos são executados com os jobs:
+No Linux, você frequentemente encontra comandos que demoram muito para serem concluídos. Em vez de esperar e deixar seu terminal inutilizável, você pode usar o **controle de jobs do Linux** para gerenciar essas tarefas. Este recurso poderoso permite executar e gerenciar múltiplos **processos em segundo plano** dentro de uma única sessão de shell, melhorando significativamente seu fluxo de trabalho.
 
-### Enviando um job para o segundo plano
+### Executando um Comando em Segundo Plano
 
-Adicionar um e comercial (`&`) ao comando o executará em segundo plano para que você ainda possa usar seu shell. Vejamos um exemplo:
+Para iniciar um processo diretamente em segundo plano, basta adicionar um e comercial (`&`) ao final do seu comando. Isso retorna imediatamente o prompt do seu shell, permitindo que você continue trabalhando enquanto o comando é executado.
 
 ```bash
 sleep 1000 &
@@ -21,9 +21,9 @@ sleep 1001 &
 sleep 1002 &
 ```
 
-### Visualizar todos os jobs em segundo plano
+### Listando Jobs em Segundo Plano
 
-Agora você pode visualizar os jobs que acabou de enviar para o segundo plano.
+Você pode visualizar todos os jobs sendo executados em segundo plano usando o comando `jobs`.
 
 ```bash
 $ jobs
@@ -33,11 +33,11 @@ $ jobs
 [3]+   Running     sleep 1002 &
 ```
 
-Isso mostrará o ID do job na primeira coluna, depois o status e o comando que foi executado. O **+** ao lado do ID do job significa que é o job em segundo plano mais recente que foi iniciado. O job com o **-** é o segundo comando mais recente.
+A saída fornece o ID do job na primeira coluna, seu status e o comando original. O símbolo `+` indica o job em segundo plano iniciado mais recentemente, enquanto o símbolo `-` marca o segundo job mais recente.
 
-### Enviando um job existente para o segundo plano
+### Gerenciando Processos Ativos
 
-Se você já executou um job e deseja enviá-lo para o segundo plano, não precisa terminá-lo e começar de novo. Primeiro, suspenda o job com Ctrl-Z, depois execute o comando **bg** para enviá-lo para o segundo plano.
+E se um comando já estiver sendo executado em primeiro plano e você decidir que precisa do seu terminal de volta? Você não precisa pará-lo. Primeiro, suspenda o processo em execução pressionando `Ctrl-Z`. Em seguida, use o comando `bg` para enviar esse job suspenso para o segundo plano.
 
 ```bash
 pete@icebox ~ $ sleep 1003
@@ -46,42 +46,37 @@ pete@icebox ~ $ sleep 1003
 
 pete@icebox ~ $ bg
 [4]+    sleep 1003 &
-
-pete@icebox ~ $ jobs
-
-[1]    Running     sleep 1000 &
-[2]    Running     sleep 1001 &
-[3]-   Running     sleep 1002 &
-[4]+   Running     sleep 1003 &
 ```
 
-### Movendo um job do segundo plano para o primeiro plano
+Agora, o processo `sleep 1003` está sendo executado como um job em segundo plano, e você pode verificar isso com o comando `jobs`.
 
-Para mover um job para fora do segundo plano, basta especificar o ID do job desejado. Se você executar `fg` sem nenhuma opção, ele trará de volta o job em segundo plano mais recente (o job com o sinal + ao lado).
+### Trazendo um Job para Primeiro Plano
+
+Para trazer um processo em segundo plano de volta para o primeiro plano, use o comando `fg`. Você pode especificar um job específico pelo seu ID (ex: `fg %1`). Se você executar o comando `fg` sem argumentos, ele trará o job em segundo plano mais recente (aquele marcado com `+`) para o primeiro plano.
 
 ```bash
 fg %1
 ```
 
-### Matar jobs em segundo plano
+### Terminando Jobs em Segundo Plano
 
-Semelhante a mover jobs para fora do segundo plano, você pode usar a mesma forma para matar os processos usando seus IDs de Job.
+Se você precisar parar um processo em segundo plano, pode usar o comando `kill`. Semelhante ao comando `fg`, você referencia o job usando seu ID prefixado com um sinal de porcentagem (`%`). Esta é uma função chave do controle de jobs do Linux.
 
 ```bash
 kill %1
 ```
 
+Dominar esses comandos é essencial para qualquer usuário Linux iniciante que deseja realizar multitarefas de forma eficiente no shell.
+
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre o gerenciamento de processos no Linux:
+Para colocar seu conhecimento sobre controle de jobs do Linux em prática, tente este laboratório prático. Ele o ajudará a solidificar sua compreensão sobre o gerenciamento de processos em primeiro e segundo plano.
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, monitoramento de recursos e encerramento de processos, abordando diretamente o cenário de comandos de longa duração.
-
-Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de processos.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro e segundo plano, monitoramento de recursos e terminação de processos, abordando diretamente o cenário de comandos de longa execução.
 
 ## Quiz Question
 
-Qual comando é usado para listar os jobs em segundo plano?
+What command is used to list background jobs? (Please answer in English, using only lowercase letters.)
 
 ## Quiz Answer
 

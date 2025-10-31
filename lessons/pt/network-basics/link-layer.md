@@ -3,52 +3,54 @@ index: 8
 lang: "pt"
 title: "Camada de Enlace"
 meta_title: "Camada de Enlace - Fundamentos de Rede"
-meta_description: "Aprenda sobre a Camada de Enlace no TCP/IP, como o ARP resolve endereços MAC e a travessia de pacotes. Entenda os fundamentos de rede com este tutorial de rede Linux."
-meta_keywords: "Camada de Enlace, ARP, TCP/IP, endereço MAC, fundamentos de rede, rede Linux, iniciante, tutorial"
+meta_description: "Explore os fundamentos da camada de enlace do TCP/IP. Aprenda como o cabeçalho da camada de enlace é construído, como o ARP resolve endereços IP para endereços MAC e o processo de travessia de pacotes em uma rede local."
+meta_keywords: "camada de enlace, cabeçalho camada de enlace, ARP, TCP/IP, endereço MAC, fundamentos de rede, rede Linux, travessia de pacotes, protocolo de resolução de endereços"
 ---
 
 ## Lesson Content
 
-Na parte inferior do modelo TCP/IP, encontra-se a Camada de Enlace. Esta camada é específica do hardware.
+A **Camada de Enlace** (Link Layer) é a camada fundamental do modelo TCP/IP, responsável pelas comunicações no segmento de rede local. Esta camada é específica de hardware, lidando diretamente com as placas de interface de rede e o endereçamento físico.
 
-Na camada de enlace, nosso pacote é encapsulado mais uma vez em algo chamado quadro. O cabeçalho do quadro anexa os endereços MAC de origem e destino de nossos hosts, somas de verificação e separadores de pacote para que o receptor possa saber quando um pacote termina.
+### Quadros (Frames) e o Cabeçalho da Camada de Enlace
 
-Felizmente, estamos na mesma rede, então nosso pacote não terá que viajar muito longe. Primeiro, a camada de enlace anexa meu endereço MAC de origem ao cabeçalho do quadro, mas também precisa saber o endereço MAC de Patty. Como ela sabe disso, e como eu o encontro, já que não está na Internet? Usamos ARP!
+Na **camada de enlace**, o pacote da camada de rede é encapsulado em uma estrutura chamada quadro (frame). Uma parte crucial deste processo é a adição do **cabeçalho da camada de enlace**. Este cabeçalho contém os endereços MAC de origem e destino dos hosts, somas de verificação (checksums) para detecção de erros e separadores de pacotes, que permitem ao dispositivo receptor identificar onde um quadro termina e o próximo começa.
 
-### ARP (Protocolo de Resolução de Endereços)
+Para construir o **cabeçalho da camada de enlace**, o sistema precisa dos endereços MAC de origem e destino. Embora o endereço MAC de origem seja conhecido, o endereço MAC de destino para um IP na mesma rede local precisa ser descoberto. É aqui que entra o Protocolo de Resolução de Endereços (ARP).
 
-O ARP encontra o endereço MAC associado a um endereço IP. O ARP é usado dentro da mesma rede. Se Patty não estivesse na mesma rede, usaríamos um sistema de roteamento para determinar o próximo roteador que receberia o pacote, e uma vez que estivéssemos na mesma rede, poderíamos usar o ARP.
+### ARP (Address Resolution Protocol)
 
-Uma vez que estamos na mesma rede, os sistemas primeiro usam a tabela de pesquisa ARP que armazena informações sobre quais endereços IP estão associados a qual endereço MAC. Se o valor não estiver lá, então o ARP é usado. Então o sistema enviará uma mensagem de broadcast para a rede usando o protocolo ARP para descobrir qual host tem o IP 10.10.1.4. Uma mensagem de broadcast é uma mensagem especial que é enviada para todos os hosts em uma rede (apropriadamente nomeada para enviar um broadcast). Qualquer máquina com o endereço IP solicitado responderá com um pacote ARP contendo o endereço IP e o endereço MAC.
+ARP é um protocolo da **camada de enlace** usado para encontrar o endereço MAC associado a um endereço IP específico dentro da mesma rede. Se o host de destino estivesse em uma rede diferente, o pacote seria enviado para um gateway padrão (roteador), e o ARP seria usado para encontrar o endereço MAC do roteador.
 
-Agora que temos todos os dados necessários — endereço IP e endereços MAC — nossa camada de enlace encaminha este quadro através de nossa placa de interface de rede, para o próximo dispositivo, e encontra a rede de Patty. Este passo é um pouco mais complexo do que eu acabei de explicar, mas discutiremos mais detalhes no curso de Roteamento.
+Os sistemas primeiro consultam sua tabela de pesquisa ARP, que armazena em cache os mapeamentos conhecidos de IP para endereço MAC. Se o endereço necessário não estiver no cache, o sistema transmite uma solicitação ARP para toda a rede. Esta mensagem especial pergunta qual host possui um endereço IP específico, por exemplo, 10.10.1.4. O host com esse endereço IP enviará uma resposta ARP contendo seu endereço IP e MAC.
 
-E aí está: uma travessia de pacote simples (ou nem tão simples) pela camada TCP/IP. Tenha em mente que os pacotes não viajam de forma unidirecional como esta. Ainda nem chegamos à rede de Patty! Ao viajar por redes, é necessário passar pelo modelo TCP/IP pelo menos duas vezes antes que qualquer dado seja enviado ou recebido. Na realidade, a aparência deste pacote seria algo assim:
+Com todos os endereços IP e MAC necessários, a **camada de enlace** pode agora encaminhar o quadro através da placa de interface de rede. A jornada de um pacote é um processo de múltiplas etapas de encapsulamento e desencapsulamento à medida que ele sobe e desce na pilha TCP/IP nas extremidades de envio e recebimento.
 
-### Travessia de Pacotes
+### Travessia do Pacote
 
-1. Pete envia um e-mail para Patty: esses dados são enviados para a camada de transporte.
-2. A camada de transporte encapsula os dados em um cabeçalho TCP ou UDP para formar um segmento. O segmento anexa a porta TCP ou UDP de destino e origem, então o segmento é enviado para a camada de rede.
-3. A camada de rede encapsula o segmento TCP dentro de um pacote IP; ela anexa o endereço IP de origem e destino. Em seguida, roteia o pacote para a camada de enlace.
-4. O pacote então atinge o hardware físico de Pete e é encapsulado em um quadro. Os endereços MAC de origem e destino são adicionados ao quadro.
-5. Patty recebe este quadro de dados através de sua camada física e verifica cada quadro quanto à integridade dos dados, então desencapsula o conteúdo do quadro e envia o pacote IP para a camada de rede.
-6. A camada de rede lê o pacote para encontrar o IP de origem e destino que foi anexado anteriormente. Ela verifica se seu IP é o mesmo que o IP de destino, o que é! Ela desencapsula o pacote e envia o segmento para a camada de transporte.
-7. A camada de transporte desencapsula os segmentos, verifica os números de porta TCP ou UDP e faz uma conexão com a camada de aplicação com base nesses números de porta.
-8. A camada de aplicação recebe os dados da camada de transporte na porta que foi especificada e os apresenta a Patty na forma da mensagem de e-mail final.
+Aqui está um detalhamento passo a passo de como um pacote viaja de um remetente (Pete) para um destinatário (Patty):
+
+1. Pete envia um e-mail para Patty. Esses dados são enviados para a camada de transporte.
+2. A camada de transporte encapsula os dados em um cabeçalho TCP ou UDP para formar um segmento. Ela anexa as portas de destino e origem e envia o segmento para a camada de rede.
+3. A camada de rede encapsula o segmento dentro de um pacote IP e anexa os endereços IP de origem e destino. Em seguida, roteia o pacote para a **camada de enlace**.
+4. O pacote chega à **camada de enlace**, onde é encapsulado em um quadro. O **cabeçalho da camada de enlace**, contendo os endereços MAC de origem e destino, é adicionado.
+5. Patty recebe este quadro de dados através de sua camada física, verifica a integridade dos dados do quadro, desencapsula-o e envia o pacote IP para sua camada de rede.
+6. A camada de rede lê o pacote para encontrar os endereços IP de origem e destino. Confirma que o IP de destino corresponde ao seu, desencapsula o pacote e envia o segmento para a camada de transporte.
+7. A camada de transporte desencapsula o segmento, verifica os números de porta TCP ou UDP e estabelece uma conexão com a camada de aplicação com base nessas portas.
+8. A camada de aplicação recebe os dados da camada de transporte na porta especificada e os apresenta a Patty como a mensagem de e-mail final.
 
 ## Exercise
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da Camada de Enlace, endereços MAC e ARP:
 
 1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC, em um sistema Linux.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` funcionam juntos para resolver endereços IP para endereços MAC e entender as interações da camada de rede.
-3. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Obtenha experiência prática na captura e inspeção de quadros Ethernet, incluindo endereços MAC, para entender as comunicações de rede de baixo nível.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` trabalham juntos para resolver endereços IP para endereços MAC e entender as interações da camada de rede.
+3. **[Analisar Quadros Ethernet com tcpdump no Linux](https://labex.io/pt/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Ganhe experiência prática capturando e inspecionando quadros Ethernet, incluindo endereços MAC, para entender as comunicações de rede de baixo nível.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com os fundamentos de rede na Camada de Enlace.
+Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança com os fundamentos de rede na Camada de Enlace.
 
 ## Quiz Question
 
-O que é usado para encontrar o endereço MAC na mesma rede?
+Qual protocolo é usado para encontrar o endereço MAC de um host na mesma rede local? (Por favor, responda com a sigla em inglês em letras maiúsculas).
 
 ## Quiz Answer
 

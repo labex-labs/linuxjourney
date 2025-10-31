@@ -1,59 +1,67 @@
 ---
 index: 6
 lang: "es"
-title: "cut"
-meta_title: "cut - Text-Fu"
-meta_description: "Aprende a usar el comando `cut` de Linux para extraer texto de archivos. Este tutorial para principiantes cubre el corte por caracteres y campos. ¡Mejora tus habilidades de procesamiento de texto en Linux!"
-meta_keywords: "comando cut, procesamiento de texto Linux, extraer texto, tutorial Linux, Linux para principiantes, ejemplos cut, guía Linux"
+title: "cortar"
+meta_title: "cortar - Text-Fu"
+meta_description: "Aprenda a usar el comando Linux `cut` para extraer secciones específicas de texto de archivos. Esta guía cubre el corte por carácter y campo (`cut f`), incluido cómo cortar f con delimitadores personalizados. Perfecto para dominar el procesamiento de texto en Linux."
+meta_keywords: "comando cut, procesamiento de texto Linux, extraer texto, cut f, cómo usar cut f, tutorial Linux, ejemplos de cut, guía Linux, corte por campo"
 ---
 
 ## Lesson Content
 
-Vamos a aprender un par de comandos útiles que puedes usar para procesar texto. Antes de empezar, vamos a crear un archivo con el que trabajaremos. Copia y pega el siguiente comando; una vez que lo hagas, añade un TAB entre "lazy" y "dog" (mantén pulsado Ctrl-v + TAB).
+Vamos a aprender un par de comandos útiles para procesar texto. Antes de empezar, creemos un archivo con el que trabajar. Copia y pega el siguiente comando. Después de pegar, deberás añadir un carácter TAB literal entre "lazy" y "dog" (a menudo puedes hacerlo presionando Ctrl-v y luego TAB).
 
 ```bash
 echo 'The quick brown; fox jumps over the lazy  dog' > sample.txt
 ```
 
-El primer comando que aprenderemos es el comando `cut`. Extrae porciones de texto de un archivo.
+El primer comando que exploraremos es `cut`, que extrae porciones de texto de un archivo.
 
-Para extraer contenido por una lista de caracteres:
+### Cortar por Carácter
+
+Puedes extraer contenido basado en la posición del carácter usando la opción `-c`.
 
 ```bash
 cut -c 5 sample.txt
 ```
 
-Esto muestra el quinto carácter de cada línea del archivo. En este caso, es "q"; ten en cuenta que el espacio también cuenta como un carácter.
+Este comando muestra el 5º carácter de cada línea del archivo. En nuestro caso, la salida es "q". Ten en cuenta que los espacios también cuentan como caracteres.
 
-Para extraer el contenido por un campo, tendremos que hacer una pequeña modificación:
+### Cortar por Campo con cut f
+
+Una característica más potente es cortar por campos. La sintaxis `cut f`, usando la opción `-f`, te permite extraer texto basado en la posición del campo. Por defecto, `cut` utiliza el carácter TAB como delimitador, lo que significa que todo lo separado por un TAB se considera un campo distinto.
+
+Veamos cómo cortar f basado en campos:
 
 ```bash
 cut -f 2 sample.txt
 ```
 
-El flag `-f` o de campo corta el texto basándose en campos. Por defecto, usa TABs como delimitadores, por lo que todo lo separado por un TAB se considera un campo. Deberías ver "dog" como tu salida.
+Dado que insertamos un TAB entre "lazy" y "dog", este comando trata a "dog" como el segundo campo. Tu salida debería ser "dog".
 
-Puedes combinar el flag de campo con el flag de delimitador para extraer el contenido por un delimitador personalizado:
+### Usar Delimitadores Personalizados
+
+También puedes combinar la opción de campo con la opción de delimitador (`-d`) para especificar un delimitador personalizado. Esto es útil cuando trabajas con archivos que usan caracteres como comas o punto y coma para separar datos.
 
 ```bash
 cut -f 1 -d ";" sample.txt
 ```
 
-Esto cambiará el delimitador TAB por un delimitador ";", y como estamos cortando el primer campo, el resultado debería ser "The quick brown".
+Este comando cambia el delimitador de TAB a punto y coma (";"). Como estamos cortando el primer campo (`-f 1`), el resultado será "The quick brown".
 
 ## Exercise
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del procesamiento de texto con `cut` y otros comandos relacionados:
 
-1. **[Comando cut de Linux: Corte de texto](https://labex.io/es/labs/linux-linux-cut-command-text-cutting-219187)** - Este laboratorio proporciona una introducción directa y práctica al comando `cut`, permitiéndote practicar la extracción de columnas o campos específicos de archivos de texto, tal como se discutió en la lección.
-2. **[Procesamiento de texto simple](https://labex.io/es/labs/linux-simple-text-processing-18004)** - Amplía tus habilidades de manipulación de texto utilizando comandos potentes como `tr`, `col`, `join` y `paste` para procesar y analizar datos de texto de manera eficiente.
-3. **[Control de secuencia y tuberías](https://labex.io/es/labs/linux-sequence-control-and-pipeline-17994)** - Mejora tu eficiencia en la línea de comandos aprendiendo a controlar las secuencias de ejecución de comandos, utilizar tuberías y aprovechar herramientas potentes de procesamiento de texto como `cut`, `grep`, `wc`, `sort` y `uniq`.
+1. **[Comando cut de Linux: Corte de Texto](https://labex.io/es/labs/linux-linux-cut-command-text-cutting-219187)** - Este laboratorio proporciona una introducción práctica y directa al comando `cut`, permitiéndote practicar la extracción de columnas o campos específicos de archivos de texto, tal como se discutió en la lección.
+2. **[Procesamiento Simple de Texto](https://labex.io/es/labs/linux-simple-text-processing-18004)** - Expande tus habilidades de manipulación de texto utilizando comandos potentes como `tr`, `col`, `join` y `paste` para procesar y analizar datos de texto de manera eficiente.
+3. **[Control de Secuencia y Tubería (Pipeline)](https://labex.io/es/labs/linux-sequence-control-and-pipeline-17994)** - Mejora tu eficiencia en la línea de comandos aprendiendo a controlar secuencias de ejecución de comandos, utilizar tuberías (pipelines) y aprovechar herramientas potentes de procesamiento de texto como `cut`, `grep`, `wc`, `sort` y `uniq`.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con el procesamiento de texto en Linux.
 
 ## Quiz Question
 
-¿Qué comando usarías para obtener el primer carácter de cada línea en un archivo?
+¿Qué comando usarías para obtener el primer carácter de cada línea de un archivo?
 
 ## Quiz Answer
 

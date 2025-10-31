@@ -2,81 +2,103 @@
 index: 5
 lang: "es"
 title: "Samba"
-meta_title: "Samba - Compartir en red"
-meta_description: "Aprende a configurar recursos compartidos de archivos Samba en Linux para Windows y macOS. Esta guía para principiantes cubre la instalación, configuración y acceso a recursos compartidos. ¡Empieza ya!"
-meta_keywords: "Samba, compartir archivos Linux, smb.conf, CIFS, smbclient, tutorial Linux, guía para principiantes"
+meta_title: "Samba - Compartición de Red"
+meta_description: "Aprenda a configurar un recurso compartido de red Samba en Linux. Esta guía cubre el protocolo Samba, instalación, configuración y uso de clientes smb linux para conectarse a los recursos."
+meta_keywords: "Samba, smb linux, linux smb, red samba, protocolo samba, smb samba, compartir archivos, smb.conf, cifs, smbclient, tutorial linux"
 ---
 
 ## Lesson Content
 
-En los primeros días de la informática, se hizo necesario que las máquinas Windows compartieran archivos con las máquinas Linux; así nació el protocolo Server Message Block (SMB). SMB se utilizaba para compartir archivos entre sistemas operativos Windows (macOS también tiene uso compartido de archivos con SMB) y posteriormente se limpió y optimizó en forma del protocolo Common Internet File System (CIFS).
+Durante décadas, un desafío principal en entornos con sistemas operativos mixtos ha sido compartir archivos entre máquinas Windows y Linux. La solución que surgió es el protocolo Server Message Block (SMB). Originalmente desarrollado para Windows, el **protocolo samba** fue refinado posteriormente en un dialecto conocido como Common Internet File System (CIFS). Hoy en día, los sistemas modernos utilizan versiones más nuevas de SMB, pero los términos a menudo se usan juntos.
 
-Samba es lo que llamamos las utilidades de Linux para trabajar con CIFS en Linux. Además de compartir archivos, también puedes compartir recursos como impresoras.
+Samba es el potente conjunto de software que implementa el protocolo **SMB/CIFS** en Linux y otros sistemas tipo Unix. Es la clave para la integración **smb linux**, permitiendo que un servidor Linux actúe como servidor de archivos e impresión para clientes Windows, macOS y otros clientes Linux, creando una **red samba** fluida. La relación entre **smb samba** es sencilla: Samba es el software que habla el lenguaje SMB.
 
-### Crear un recurso compartido de red con Samba
+### Instalación de Samba en Linux
 
-Repasemos los pasos básicos para crear un recurso compartido de red al que una máquina Windows pueda acceder:
-
-### Instalar Samba
+Para comenzar, necesita instalar el paquete Samba. El comando varía dependiendo del gestor de paquetes de su distribución Linux. Para sistemas basados en Debian como Ubuntu, use lo siguiente:
 
 ```bash
 sudo apt update
 sudo apt install samba
 ```
 
-### Configurar smb.conf
+### Configuración de un Recurso Compartido de Samba
 
-El archivo de configuración para Samba se encuentra en `/etc/samba/smb.conf`. Este archivo debe indicar al sistema qué directorios deben compartirse, sus permisos de acceso y más opciones. El `smb.conf` predeterminado ya viene con mucho código comentado, y puedes usarlo como ejemplo para escribir tus propias configuraciones.
+El archivo de configuración principal para Samba se encuentra en `/etc/samba/smb.conf`. Este archivo dicta qué directorios se comparten, quién puede acceder a ellos y sus permisos. El archivo predeterminado contiene muchos ejemplos comentados que sirven como una excelente referencia.
+
+Recorramos los pasos para configurar un recurso compartido básico.
+
+Primero, abra el archivo de configuración en un editor de texto:
 
 ```bash
-sudo vi /etc/samba/smb.conf
+sudo nano /etc/samba/smb.conf
 ```
 
-### Establecer una contraseña para Samba
+Al final del archivo, agregue una nueva sección para su recurso compartido. El nombre entre corchetes será el nombre del recurso compartido visible en la red.
+
+```ini
+[myshare]
+    comment = Mi Primer Recurso Compartido de Samba
+    path = /my/directory/to/share
+    read only = no
+    browsable = yes
+```
+
+Luego, cree el directorio que especificó en la configuración:
+
+```bash
+mkdir -p /my/directory/to/share
+```
+
+Finalmente, necesita configurar una contraseña específica para el acceso a Samba. Samba mantiene su propia base de datos de contraseñas, que es independiente de las contraseñas de usuario del sistema.
 
 ```bash
 sudo smbpasswd -a [username]
 ```
 
-### Crear un directorio compartido
+Reemplace `[username]` con un usuario de Linux existente en su sistema. Se le pedirá que cree una nueva contraseña para ese usuario para el acceso a Samba.
 
-```bash
-mkdir /my/directory/to/share
-```
+### Gestión del Servicio Samba
 
-### Reiniciar el servicio Samba
+Después de realizar cambios en el archivo `smb.conf`, debe reiniciar el servicio Samba para que surtan efecto.
 
 ```bash
 sudo service smbd restart
 ```
 
-### Acceder a un recurso compartido de Samba a través de Windows
+### Acceso a Recursos Compartidos de Samba
 
-En Windows, simplemente escribe la conexión de red en el símbolo del sistema Ejecutar: `\\HOST\sharename`.
+Una vez que su recurso compartido esté configurado, los clientes en la red pueden acceder a él.
 
-### Acceder a un recurso compartido de Samba/Windows a través de Linux
+**Desde Windows:**
+Abra el cuadro de diálogo Ejecutar (Win + R) o el Explorador de archivos y escriba la ruta de red: `\\HOST\sharename`, donde `HOST` es la dirección IP o el nombre de host de su máquina Linux.
 
-```bash
-smbclient //HOST/directory -U user
-```
-
-El paquete Samba incluye una herramienta de línea de comandos llamada **smbclient** que puedes usar para acceder a cualquier servidor Windows o Samba. Una vez que estés conectado al recurso compartido, puedes navegar y transferir archivos.
-
-### Adjuntar un recurso compartido de Samba a tu sistema
-
-En lugar de transferir archivos uno por uno, puedes simplemente montar el recurso compartido de red en tu sistema.
+**Desde Linux:**
+El paquete Samba incluye una herramienta de línea de comandos llamada **smbclient** que le permite interactuar con cualquier recurso compartido **linux smb** o de Windows.
 
 ```bash
-sudo mount -t cifs servername:directory mountpoint -o user=username,pass=password
+smbclient //HOST/myshare -U username
 ```
+
+Después de conectarse, obtendrá un indicador `smb: \>` donde puede usar comandos como `ls`, `get` y `put` para administrar archivos.
+
+### Montaje de un Recurso Compartido de Samba
+
+Para un acceso más permanente, puede montar el recurso compartido de red directamente en su sistema de archivos, haciendo que parezca un directorio local.
+
+```bash
+sudo mount -t cifs //SERVER/sharename /mnt/mountpoint -o user=username,pass=password
+```
+
+Este comando utiliza el tipo de sistema de archivos `cifs` para adjuntar el recurso compartido remoto a un punto de montaje local.
 
 ## Exercise
 
-Aunque no hay laboratorios específicos para este tema, recomendamos explorar la completa [Ruta de aprendizaje de Linux](https://labex.io/es/learn/linux) para practicar habilidades y conceptos relacionados con Linux.
+Intente configurar un recurso compartido simple de Samba en su propia máquina Linux. Cree un directorio, configúrelo en `smb.conf` e intente acceder a él usando `smbclient` desde la misma máquina para probar la configuración. Para una práctica más práctica, explore la [Ruta de Aprendizaje de Linux](https://labex.io/es/learn/linux) completa para practicar habilidades y conceptos relacionados con Linux.
 
 ## Quiz Question
 
-¿Cuál es el último protocolo utilizado para la transferencia de archivos entre Windows y Linux?
+¿Cuál es el nombre del protocolo, un dialecto temprano de SMB, que se desarrolló para compartir archivos? Por favor, responda en inglés, prestando atención a las mayúsculas.
 
 ## Quiz Answer
 

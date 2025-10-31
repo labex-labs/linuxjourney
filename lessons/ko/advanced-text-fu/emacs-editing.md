@@ -3,46 +3,50 @@ index: 12
 lang: "ko"
 title: "Emacs 편집"
 meta_title: "Emacs 편집 - 고급 텍스트 기술"
-meta_description: "Emacs 편집의 기본 사항을 배웁니다: 텍스트 탐색, 효율적인 잘라내기 및 붙여넣기. 이 초보자 친화적인 가이드는 Linux 에서 필수 Emacs 명령을 마스터하는 데 도움이 됩니다."
-meta_keywords: "Emacs, Emacs 튜토리얼, Emacs 명령, 텍스트 편집기, Linux 편집기, Emacs 탐색, 초보자 Emacs, Emacs 가이드"
+meta_description: "이 초보자용 가이드로 Emacs 편집의 기본 사항을 마스터하세요. 강력한 Linux 텍스트 편집기인 Emacs 에서 텍스트 탐색, 자르기, 붙여넣기를 위한 필수 명령어를 배웁니다."
+meta_keywords: "Emacs, Emacs 튜토리얼, Emacs 명령어, 텍스트 편집기, Linux 편집기, Emacs 탐색, 초보자 Emacs, Emacs 가이드"
 ---
 
 ## Lesson Content
 
-### 텍스트 탐색
+Emacs 는 Linux 및 기타 Unix 계열 시스템에서 널리 사용되는 강력하고 확장 가능한 텍스트 편집기입니다. 이 초보자용 Emacs 가이드에서는 몇 가지 기본적인 편집 명령어를 소개합니다. Emacs 용어에서 `C-`는 `Ctrl` 키를, `M-`는 일반적으로 `Alt` 키인 `Meta` 키를 나타냅니다.
+
+### Emacs 텍스트 탐색
+
+Home, End 및 화살표 키와 같은 표준 탐색 키도 예상대로 작동하지만, Emacs 는 텍스트를 이동하기 위한 더 효율적인 명령어를 제공하며, Emacs 는 이를 "버퍼"에 저장합니다. Emacs 탐색을 마스터하는 것은 능숙해지기 위한 핵심 단계입니다.
+
+다음은 커서를 이동하기 위한 필수 Emacs 명령어입니다.
 
 ```
-C-up arrow: move up one paragraph
-C-down arrow: move down one paragraph
-C-left arrow: move one word left
-C-right arrow: move one word right
-M->: move to the end of the buffer
+C-위쪽 화살표: 단락 하나 위로 이동
+C-아래쪽 화살표: 단락 하나 아래로 이동
+C-왼쪽 화살표: 단어 하나 왼쪽으로 이동
+C-오른쪽 화살표: 단어 하나 오른쪽으로 이동
+M->: 버퍼 끝으로 이동
 ```
-
-텍스트 탐색 시, 일반적인 텍스트 버튼 (Home, End, Page Up, Page Down, 화살표 키 등) 은 정상적으로 작동합니다.
 
 ### 잘라내기 및 붙여넣기
 
-Emacs 에서 잘라내기 (kill) 또는 붙여넣기 (yank) 를 하려면 먼저 텍스트를 선택할 수 있어야 합니다. 텍스트를 선택하려면 커서를 잘라내거나 붙여넣을 위치로 이동한 다음 `C-space key`를 누릅니다. 그런 다음 탐색 키를 사용하여 원하는 텍스트를 선택할 수 있습니다. 이제 다음과 같이 잘라내고 붙여넣을 수 있습니다:
+Emacs 에서 잘라내기는 "킬링 (killing)"이라고 하고 붙여넣기는 "앵킹 (yanking)"이라고 합니다. 이러한 작업을 수행하려면 먼저 텍스트 영역을 선택해야 합니다.
+
+텍스트 선택을 시작하려면 원하는 영역의 시작 부분으로 커서를 이동하고 `C-space`를 누릅니다. 이렇게 하면 "마크"가 설정됩니다. 그런 다음 탐색 명령어를 사용하여 선택하려는 영역의 끝으로 커서를 이동합니다. 마크와 현재 커서 위치 사이의 영역이 강조 표시됩니다.
+
+영역을 선택했으면 다음 명령어를 사용할 수 있습니다.
 
 ```
-C-w: cut
-C-y: yank
+C-w: 선택된 영역 킬(잘라내기)
+C-y: 마지막으로 킬된 텍스트 앵크(붙여넣기)
 ```
+
+이러한 기본 명령어는 Emacs 텍스트 편집기 편집의 기초를 형성합니다.
 
 ## Exercise
 
-연습이 완벽을 만듭니다! 다음은 Linux 사용자 및 그룹 관리에 대한 이해를 강화하기 위한 실습 랩입니다:
-
-1. **[useradd, usermod, userdel 을 사용하여 Linux 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 새 계정 생성 및 보안 설정부터 수정 및 삭제에 이르기까지 사용자 관리의 전체 수명 주기를 연습합니다.
-2. **[groupadd, usermod, groupdel 을 사용하여 Linux 그룹 관리](https://labex.io/ko/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 새 그룹 생성, 사용자 멤버십 수정, 그룹 제거를 포함하여 그룹 관리를 위한 핵심 명령줄 유틸리티를 직접 경험해 봅니다.
-3. **[Linux 에서 사용자 계정 및 Sudo 권한 구성](https://labex.io/ko/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - 암호 정책 적용 및 관리 권한 부여를 포함하여 Linux 시스템의 보안을 강화하기 위한 사용자 계정 및 sudo 권한 관리의 필수 기술을 배웁니다.
-
-이러한 랩은 실제 시나리오에 개념을 적용하고 Linux 에서 사용자 및 그룹 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
+Emacs 명령어를 배우는 가장 좋은 방법은 연습하는 것입니다. `emacs my_practice_file.txt`를 사용하여 새 텍스트 파일을 열고 이 강의에서 다룬 탐색, 선택, 잘라내기 및 붙여넣기 명령어를 시도해 보세요. 버퍼를 돌아다니고 텍스트를 조작하는 데 익숙해지세요.
 
 ## Quiz Question
 
-버퍼의 끝으로 이동하려면 어떻게 해야 합니까?
+버퍼 끝으로 이동하려면 어떻게 해야 합니까? 강의에 표시된 키 조합 형식만 사용하여 답변하십시오 (예: C-w). 대소문자를 구분합니다.
 
 ## Quiz Answer
 

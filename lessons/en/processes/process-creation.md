@@ -3,25 +3,33 @@ index: 4
 lang: "en"
 title: "Process Creation"
 meta_title: "Process Creation - Processes"
-meta_description: "Learn about Linux process creation, fork, and parent/child processes. Understand PID, PPID, and the init process. Get a beginner's guide to Linux process management."
-meta_keywords: "Linux process creation, fork, PID, PPID, init process, Linux processes, beginner, tutorial, guide"
+meta_description: "Explore the fundamentals of process creation in Linux. This guide covers the fork and execve system calls, parent/child relationships (PID and PPID), and the role of the init process. Learn how to create a process in Linux and understand the core concepts of process creation in the operating system."
+meta_keywords: "process creation in linux, linux process creation, create a process in linux, process creation in operating system, process creation, fork, execve, PID, PPID, init process, Linux processes"
 ---
 
 ## Lesson Content
 
-Again, this lesson and the next are purely informational to let you see what's under the hood. Feel free to circle back to this once you've worked with processes a bit more.
+This lesson explores the fundamental concepts of how new processes are started on a Linux system. Understanding this mechanism provides insight into the inner workings of the operating system.
 
-When a new process is created, an existing process basically clones itself using something called the `fork` system call (system calls will be discussed very far into the future). The `fork` system call creates a mostly identical child process. This child process takes on a new process ID (PID), and the original process becomes its parent process and has something called a parent process ID **PPID**. Afterwards, the child process can either continue to use the same program its parent was using before or, more often, use the `execve` system call to launch a new program. This system call destroys the memory management that the kernel put into place for that process and sets up new ones for the new program.
+### The Fork and Exec Model
 
-We can see this in action:
+The primary mechanism for **process creation in Linux** involves an existing process cloning itself using the `fork` system call. The `fork` call creates a nearly identical child process. This new child process receives its own unique Process ID (PID), while the original process becomes its parent, identified by a Parent Process ID (**PPID**).
+
+After forking, the child process can either continue running the same program as its parent or, more commonly, use the `execve` system call to load and run a new program. The `execve` call effectively replaces the process's memory space with that of the new program, allowing a different task to begin. This two-step "fork-exec" model is a cornerstone of how you **create a process in Linux**.
+
+### Observing Parent-Child Relationships
+
+We can observe this parent-child relationship in action using the `ps` command:
 
 ```bash
 ps l
 ```
 
-The `l` option gives us a "long format" or even more detailed view of our running processes. You'll see a column labeled **PPID**; this is the parent ID. Now look at your terminal; you'll see a process running that is your shell. So on my system, I have a process running `bash`. Now remember when you ran the `ps l` command, you were running it from the process that was running `bash`. You'll see that the **PID** of the `bash` shell is the **PPID** of the `ps l` command.
+The `l` option provides a "long format" view, showing more detail about running processes. You will see a column labeled **PPID**, which stands for Parent Process ID. Look at the process for your current shell (e.g., `bash`). When you run the `ps l` command, you'll notice that the **PID** of your shell process matches the **PPID** of the `ps l` process. This is because your shell forked itself to create the `ps` process.
 
-So if every process has to have a parent and they are just forks of each other, there must be a mother of all processes, right? You are correct. When the system boots up, the kernel creates a process called **init**; it has a PID of 1. The `init` process can't be terminated unless the system shuts down. It runs with root privileges and runs many processes that keep the system running. We will take a closer look at `init` in the system bootup course; for now, just know it is the process that spawns all other processes.
+### The Init Process
+
+If every process is a child of another, there must be an original ancestor. This is the `init` process. When the system boots, the kernel creates `init` as the very first user-space process, assigning it a PID of 1. The `init` process is the ultimate parent of all other processes and runs with root privileges to manage the system. It cannot be terminated until the system shuts down and is responsible for spawning many of the services that keep the system running.
 
 ## Exercise
 
@@ -33,7 +41,7 @@ This lab will help you apply the concepts of process IDs, parent process IDs, an
 
 ## Quiz Question
 
-What system call creates a new process?
+What system call creates a new process? (Please answer in a single lowercase English word.)
 
 ## Quiz Answer
 

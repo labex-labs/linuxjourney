@@ -3,37 +3,41 @@ index: 5
 lang: "pt"
 title: "env (Ambiente)"
 meta_title: "env (Ambiente) - Text-Fu"
-meta_description: "Aprenda sobre variáveis de ambiente Linux com o comando 'env'. Entenda as variáveis PATH, HOME e USER. Obtenha um guia para iniciantes para gerenciar seu ambiente Linux."
-meta_keywords: "comando env, variáveis de ambiente Linux, variável PATH, tutorial Linux, Linux para iniciantes, variáveis de shell, guia Linux"
+meta_description: "Explore o que o comando env faz no Linux. Este guia explica como visualizar e usar variáveis de ambiente do Linux como PATH, HOME e USER com o comando env."
+meta_keywords: "env, env linux, comando env linux, o que o env faz no linux, variáveis de ambiente, variável PATH, variáveis de shell"
 ---
 
 ## Lesson Content
 
-Execute o seguinte comando:
+Seu sistema Linux usa variáveis de ambiente para armazenar informações que o shell e outros processos podem acessar. Essas variáveis contêm dados úteis sobre sua sessão de usuário e configuração do sistema.
+
+### Explorando Variáveis de Ambiente Básicas
+
+You can view the value of a specific variable by prefixing its name with a `$` symbol. For example, run the following command:
 
 ```bash
 echo $HOME
 ```
 
-Você deverá ver o caminho para o seu diretório home; o meu se parece com /home/pete.
+This command will display the path to your home directory, which might look something like `/home/pete`.
 
-E este comando?
+Now, try another one:
 
 ```bash
 echo $USER
 ```
 
-Você deverá ver seu nome de usuário!
+This will output your current username. But where does this information come from? It's stored in your shell's environment.
 
-De onde vem essa informação? Ela vem das suas variáveis de ambiente. Você pode visualizá-las digitando:
+### O que o env faz no Linux
+
+To see all the environment variables currently set for your session, you can use the `env` command. The `linux env command` is a fundamental tool for inspecting your shell's configuration.
 
 ```bash
 env
 ```
 
-Isso exibe uma grande quantidade de informações sobre as variáveis de ambiente que você tem atualmente definidas. Essas variáveis contêm informações úteis que o shell e outros processos podem usar.
-
-Aqui está um pequeno exemplo:
+Running the `env` command will output a list of key-value pairs. Here is a short example of what you might see:
 
 ```plaintext
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
@@ -41,30 +45,35 @@ PWD=/home/user
 USER=pete
 ```
 
-Uma variável particularmente importante é a variável PATH. Você pode acessar essas variáveis colocando um `$` na frente do nome da variável, assim:
+Understanding the `linux env` is crucial for managing your system effectively.
+
+### A Importância da Variável PATH
+
+One of the most important variables in your `env linux` output is `PATH`. You can view its contents specifically with:
 
 ```bash
-$ echo $PATH
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
+echo $PATH
 ```
 
-Isso retorna uma lista de caminhos separados por dois pontos que seu sistema pesquisa ao executar um comando. Digamos que você baixe e instale manualmente um pacote da internet e o coloque em um diretório não padrão, e você queira executar esse comando. Você digita `$ coolcommand`, e o prompt diz "command not found". Bem, isso é bobo; você está olhando para o binário em uma pasta e sabe que ele existe. O que está acontecendo é que a variável `$PATH` não verifica esse diretório para este binário, então está lançando um erro.
+This command returns a colon-separated list of directories. When you type a command, your system searches through these directories to find the corresponding executable file.
 
-Digamos que você tivesse muitos binários que queria executar a partir desse diretório; você pode simplesmente modificar a variável PATH para incluir esse diretório em sua variável de ambiente PATH.
+Imagine you manually install a program in a non-standard directory like `/opt/coolapp/bin`. If you try to run it by typing `coolcommand`, you might get a "command not found" error. This happens because the directory containing your program is not listed in the `PATH` variable, so the shell doesn't know where to look for it.
+
+To fix this, you can modify the `PATH` variable to include the new directory. By adding your custom directory to `PATH`, you enable the shell to find and execute your programs from anywhere in the terminal.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das variáveis de ambiente Linux:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
 
-1. **[Gerenciar Ambiente de Shell e Configuração no Linux](https://labex.io/pt/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Pratique a criação e o gerenciamento de variáveis locais e de ambiente, compreendendo a herança e tornando as configurações persistentes modificando o arquivo `.bashrc`.
-2. **[Variáveis de Ambiente no Linux](https://labex.io/pt/labs/linux-environment-variables-in-linux-385274)** - Aprenda o conceito e o uso das variáveis de ambiente, como criá-las, modificá-las e gerenciá-las, e seu papel na configuração do sistema.
-3. **[Configurar Variáveis de Ambiente Linux](https://labex.io/pt/labs/linux-configure-linux-environment-variables-437861)** - Obtenha experiência prática na criação, definição e gerenciamento de variáveis de ambiente em um sistema Linux.
+1.  **[Gerenciar Ambiente e Configuração do Shell no Linux](https://labex.io/pt/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Pratique a criação e o gerenciamento de variáveis locais e de ambiente, entendendo a herança e tornando as configurações persistentes modificando o arquivo `.bashrc`.
+2.  **[Variáveis de Ambiente no Linux](https://labex.io/pt/labs/linux-environment-variables-in-linux-385274)** - Aprenda o conceito e o uso de variáveis de ambiente, como criá-las, modificá-las e gerenciá-las, e seu papel na configuração do sistema.
+3.  **[Configurar Variáveis de Ambiente do Linux](https://labex.io/pt/labs/linux-configure-linux-environment-variables-437861)** - Obtenha experiência prática criando, definindo e gerenciando variáveis de ambiente em um sistema Linux.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento do seu ambiente de shell Linux.
+These labs will help you apply the concepts in real scenarios and build confidence with managing your Linux shell environment.
 
 ## Quiz Question
 
-Como você vê suas variáveis de ambiente?
+Which command displays all of your current environment variables? (Please answer in English, using only the lowercase command name)
 
 ## Quiz Answer
 
