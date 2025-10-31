@@ -2,30 +2,50 @@
 index: 5
 lang: "de"
 title: "Anwendungsschicht"
-meta_title: "Anwendungsschicht - Grundlagen des Netzwerks"
-meta_description: "Erfahren Sie mehr über die Anwendungsschicht im TCP/IP-Modell, wie sie Daten für E-Mails (SMTP) verarbeitet und welche Rolle sie bei der Netzwerkkommunikation spielt. Verstehen Sie Netzwerkschichten."
-meta_keywords: "Anwendungsschicht, TCP/IP-Modell, SMTP, Netzwerkschichten, Linux-Netzwerk, Anfänger-Tutorial, Netzwerkkommunikation"
+meta_title: "Anwendungsschicht - Netzwerk Grundlagen"
+meta_description: "Erkunden Sie die Anwendungsschicht, die oberste Schicht des TCP/IP-Modells. Erfahren Sie, was ein Anwendungsschichtprotokoll ist, sehen Sie ein Beispiel mit SMTP und verstehen Sie, wie der Anwendungsschicht-Header Daten für die Netzwerkkommunikation vorbereitet."
+meta_keywords: "Anwendungsschicht, die Anwendungsschicht, Anwendungsschichtprotokoll, Beispiel für Anwendungsschichtprotokoll, Anwendungsschicht-Header, TCP/IP-Modell, SMTP, Netzwerkprotokolle"
 ---
 
 ## Lesson Content
 
-Nehmen wir an, ich wollte Patty eine E-Mail senden. Wir werden jede der TCP/IP-Schichten durchgehen, um dies in Aktion zu sehen.
+Im TCP/IP-Modell ist die Netzwerkkommunikation in verschiedene Schichten unterteilt, und wir beginnen ganz oben mit der **Anwendungsschicht** (Application Layer). Dies ist die Schicht, mit der Sie am direktesten interagieren, da sie für die Bereitstellung von Netzwerkdiensten für Benutzeranwendungen wie Webbrowser und E-Mail-Clients verantwortlich ist.
 
-Denken Sie daran, dass Pakete zur Übertragung von Daten über Netzwerke verwendet werden. Ein Paket besteht aus einem Header und einer Nutzlast. Der Header enthält Informationen darüber, wohin das Paket geht und woher es kam. Die Nutzlast sind die tatsächlichen Daten, die übertragen werden. Während unser Paket das Netzwerk durchläuft, fügt jede Schicht dem Header des Pakets ein wenig Informationen hinzu. Beachten Sie auch, dass verschiedene Schichten einen anderen Begriff für unser „Paket“ verwenden. In der Transportschicht kapseln wir unsere Daten im Wesentlichen in ein Segment, und in der Verbindungsschicht bezeichnen wir dies als Frame, aber wissen Sie einfach, dass „Paket“ in Bezug auf dasselbe verwendet werden kann.
+### Die Rolle der Anwendungsschicht
 
-Zuerst beginnen wir in der Anwendungsschicht. Wenn wir unsere E-Mail über unseren E-Mail-Client senden, kapselt die Anwendungsschicht diese Daten. Die Anwendungsschicht kommuniziert mit der Transportschicht über einen bestimmten Port und sendet über diesen Port ihre Daten. Wir möchten eine E-Mail über das Anwendungsschichtprotokoll SMTP (Simple Mail Transfer Protocol) senden. Die Daten werden über unser Transportprotokoll gesendet, das eine Verbindung zu diesem Port öffnet (Port 25 wird für SMTP verwendet). So werden diese Daten über diesen Port gesendet, und diese Daten werden an die Transportschicht gesendet, um in Segmente gekapselt zu werden.
+**Die Anwendungsschicht** fungiert als Schnittstelle zwischen der Software auf einem Gerät und dem Netzwerk selbst. Wenn Sie eine E-Mail senden, eine Website durchsuchen oder eine Datei übertragen, ist es die Anwendungsschicht, die den Prozess initiiert. Ihre Hauptaufgabe besteht darin, Benutzerdaten vorzubereiten und eingehende Daten in einem benutzerfreundlichen Format darzustellen.
+
+### Was ist ein Anwendungsschichtprotokoll
+
+Zur Verwaltung der Kommunikation verwendet die Anwendungsschicht spezifische Protokolle. Was also **ist ein Anwendungsschichtprotokoll**? Es ist ein Satz von Regeln, der definiert, wie Anwendungen Daten über das Netzwerk austauschen. Verschiedene Aufgaben verwenden unterschiedliche Protokolle. Zum Beispiel verwendet das Surfen im Web HTTP oder HTTPS, Dateiübertragungen verwenden möglicherweise FTP, und das Senden von E-Mails verwendet typischerweise SMTP (Simple Mail Transfer Protocol). Jedes Protokoll stellt sicher, dass sowohl der Absender als auch der Empfänger das Format und die Bedeutung der Nachrichten verstehen.
+
+### Ein Beispiel für ein Anwendungsschichtprotokoll
+
+Nehmen wir eine E-Mail als **Beispiel für ein Anwendungsschichtprotokoll** in Aktion. Stellen Sie sich vor, Sie senden eine E-Mail an einen Freund.
+
+1. Sie verfassen Ihre Nachricht in einem E-Mail-Client.
+2. Wenn Sie auf „Senden“ klicken, übergibt der E-Mail-Client (die Anwendung) die Daten an die Anwendungsschicht.
+3. Die Anwendungsschicht verwendet das SMTP-Protokoll, um die E-Mail korrekt zu formatieren.
+
+### Datenkapselung und der Anwendungsschicht-Header
+
+Bevor Daten an die nächste Schicht (die Transportschicht) gesendet werden, müssen sie vorbereitet werden. Dieser Prozess wird Kapselung genannt. Die Anwendungsschicht fügt den Rohdaten einen **Anwendungsschicht-Header** hinzu. Dieser Header enthält protokollspezifische Informationen, die die empfangende Anwendung benötigt, um die Daten zu verstehen.
+
+Die Kombination aus Header und Ihren Daten wird zur Nutzlast für die nächste Schicht. Während Daten den Netzwerk-Stack durchlaufen, fügt jede Schicht ihren eigenen Header hinzu. Obwohl wir oft den allgemeinen Begriff „Paket“ verwenden, um Daten zu beschreiben, die über ein Netzwerk gesendet werden, haben verschiedene Schichten spezifische Namen für die Dateneinheit. Auf der Transportschicht ist es ein „Segment“ und auf der Linkschicht ein „Frame“.
+
+In unserem E-Mail-Beispiel werden die SMTP-formatierten Daten über einen bestimmten Port (Port 25 für SMTP) an die Transportschicht übergeben, wo sie für ihre Reise durch das Netzwerk weiter gekapselt werden.
 
 ## Exercise
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Netzwerkschichten und Ports zu vertiefen:
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis von Netzwerkschichten und Ports zu festigen:
 
-1. **[Netzwerkports und -sitzungen mit netstat in Linux analysieren](https://labex.io/de/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** – In diesem Labor lernen Sie, wie Sie den Befehl `netstat` verwenden, um Netzwerkaktivitäten zu analysieren, und grundlegende Konzepte wie Netzwerkports, Sockets und aktive Verbindungen zu erkunden. Dies gibt Ihnen praktische Einblicke, wie Dienste über das Netzwerk kommunizieren, was direkt mit den besprochenen Konzepten der Transportschicht zusammenhängt.
+1. **[Netzwerkports und -sitzungen mit netstat unter Linux analysieren](https://labex.io/de/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** – In diesem Labor lernen Sie, wie Sie den Befehl `netstat` verwenden, um die Netzwerkaktivität zu analysieren und grundlegende Konzepte wie Netzwerkports, Sockets und aktive Verbindungen zu untersuchen. Dies gibt Ihnen praktische Einblicke, wie Dienste über das Netzwerk kommunizieren, was direkt mit den diskutierten Konzepten der Transportschicht zusammenhängt.
 
-Dieses Labor wird Ihnen helfen, die Konzepte der Netzwerkkommunikation und Portnutzung in einer realen Linux-Umgebung anzuwenden und Ihr Vertrauen in das Verständnis zu stärken, wie Anwendungen mit dem Netzwerk-Stack interagieren.
+Dieses Labor hilft Ihnen, die Konzepte der Netzwerkkommunikation und der Portnutzung in einer realen Linux-Umgebung anzuwenden und Ihr Vertrauen in das Verständnis der Interaktion von Anwendungen mit dem Netzwerk-Stack zu stärken.
 
 ## Quiz Question
 
-Welche Schicht wird verwendet, um die Paketdaten in einem benutzerfreundlichen Format darzustellen?
+What layer is used to present the packet data in a user-friendly format? (Please answer in English and pay attention to capitalization.)
 
 ## Quiz Answer
 

@@ -3,21 +3,27 @@ index: 4
 lang: "en"
 title: "Boot Process: Kernel"
 meta_title: "Boot Process: Kernel - Boot the System"
-meta_description: "Learn about the Linux boot process, kernel initialization, and the role of initramfs. Understand how the kernel mounts the root filesystem. Linux boot process guide."
-meta_keywords: "Linux boot process, kernel boot, initramfs, initrd, root filesystem, Linux tutorial, beginner Linux, Linux guide"
+meta_description: "Explore the Linux kernel boot process. Learn how initramfs loads drivers from a temporary filesystem to mount the final boot root partition. Understand the steps from kernel loading to executing init."
+meta_keywords: "boot root, initramfs, kernel boot, boot partition, initramfs ubuntu, /etc/default/grub, Linux boot process, root filesystem, kernel initialization"
 ---
 
 ## Lesson Content
 
-So now that our bootloader has passed on the necessary parameters, let's see how it gets started:
+Once the bootloader has loaded the kernel into memory and passed the necessary parameters, the kernel takes control of the system. Let's explore what happens next.
 
-### Initrd vs Initramfs
+### Kernel Initialization and the Initramfs
 
-There is a bit of a chicken-and-egg problem when we talk about the kernel boot-up. The kernel manages our system's hardware; however, not all drivers are available to the kernel during boot-up. So we depend on a temporary root filesystem that contains just the essential modules the kernel needs to access the rest of the hardware. In older versions of Linux, this job was given to the initrd (initial ramdisk). The kernel would mount the initrd, get the necessary boot-up drivers, then when it was done loading everything it needed, it would replace the initrd with the actual root filesystem. These days, we have something called the initramfs; this is a temporary root filesystem that is built into the kernel itself to load all the necessary drivers for the real root filesystem, so there's no more locating the initrd file.
+A classic challenge during boot-up is that the kernel needs drivers to access hardware devices, but those drivers often reside on a storage device that the kernel can't access yet. To solve this, Linux uses a temporary root filesystem.
 
-### Mounting the root filesystem
+In older systems, this was handled by an `initrd` (initial RAM disk). The kernel would load this disk image, find the necessary drivers, and then switch to the real root filesystem. Modern systems, including distributions like Ubuntu, use `initramfs` (initial RAM filesystem). Unlike `initrd`, `initramfs` is a `cpio` archive that is unpacked into a temporary filesystem directly in memory. This approach is more efficient as it avoids the overhead of creating and mounting a block device. The `initramfs` contains just the essential modules the kernel needs to access the actual `boot partition` and other hardware.
 
-Now the kernel has all the modules it needs to create a root device and mount the root partition. Before going any further, the root partition is actually mounted in read-only mode first so that fsck can run safely and check for system integrity. Afterwards, it remounts the root filesystem in read-write mode. Then the kernel locates the init program and executes it.
+### Mounting the Boot Root Filesystem
+
+With the drivers loaded from `initramfs`, the kernel can now locate and mount the main `boot root` filesystem. The location of this filesystem is typically passed as a parameter by the bootloader, which can be configured in files like `/etc/default/grub`.
+
+First, the kernel mounts the `boot root` partition in read-only mode. This is a safety measure that allows the `fsck` (file system check) utility to run and verify the integrity of the filesystem without risking data corruption. After the check completes successfully, the kernel remounts the filesystem in read-write mode.
+
+Finally, with the root filesystem fully available, the kernel starts the very first user-space program: `init`. This program is responsible for bringing the rest of the system online.
 
 ## Exercise
 
@@ -29,7 +35,7 @@ This lab will help you apply the concepts in a real scenario and build confidenc
 
 ## Quiz Question
 
-What is used in modern systems to load a temporary root filesystem?
+What is used in modern systems to load a temporary root filesystem? Please answer in English, using only lowercase letters.
 
 ## Quiz Answer
 

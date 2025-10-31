@@ -3,33 +3,39 @@ index: 4
 lang: "fr"
 title: "Processus de démarrage : Noyau"
 meta_title: "Processus de démarrage : Noyau - Démarrer le système"
-meta_description: "Découvrez le processus de démarrage de Linux, l'initialisation du noyau et le rôle de l'initramfs. Comprenez comment le noyau monte le système de fichiers racine. Guide du processus de démarrage de Linux."
-meta_keywords: "processus de démarrage Linux, démarrage du noyau, initramfs, initrd, système de fichiers racine, tutoriel Linux, Linux débutant, guide Linux"
+meta_description: "Explorez le processus de démarrage du noyau Linux. Apprenez comment initramfs charge les pilotes à partir d'un système de fichiers temporaire pour monter la partition racine de démarrage finale. Comprenez les étapes du chargement du noyau à l'exécution d'init."
+meta_keywords: "racine de démarrage, initramfs, démarrage noyau, partition de démarrage, initramfs ubuntu, /etc/default/grub, processus de démarrage Linux, système de fichiers racine, initialisation du noyau"
 ---
 
 ## Lesson Content
 
-Maintenant que notre chargeur de démarrage a transmis les paramètres nécessaires, voyons comment il démarre :
+Une fois que le chargeur de démarrage a chargé le noyau en mémoire et lui a transmis les paramètres nécessaires, le noyau prend le contrôle du système. Explorons ce qui se passe ensuite.
 
-### Initrd vs Initramfs
+### Initialisation du Noyau et l'Initramfs
 
-Il y a un peu un problème de la poule et de l'œuf lorsque nous parlons du démarrage du noyau. Le noyau gère le matériel de notre système ; cependant, tous les pilotes ne sont pas disponibles pour le noyau pendant le démarrage. Nous dépendons donc d'un système de fichiers racine temporaire qui contient uniquement les modules essentiels dont le noyau a besoin pour accéder au reste du matériel. Dans les anciennes versions de Linux, ce travail était confié à l'initrd (initial ramdisk). Le noyau montait l'initrd, obtenait les pilotes de démarrage nécessaires, puis, une fois qu'il avait fini de charger tout ce dont il avait besoin, il remplaçait l'initrd par le système de fichiers racine réel. De nos jours, nous avons ce qu'on appelle l'initramfs ; c'est un système de fichiers racine temporaire qui est intégré au noyau lui-même pour charger tous les pilotes nécessaires au véritable système de fichiers racine, il n'y a donc plus besoin de localiser le fichier initrd.
+Un défi classique lors du démarrage est que le noyau a besoin de pilotes pour accéder aux périphériques matériels, mais ces pilotes résident souvent sur un périphérique de stockage auquel le noyau ne peut pas encore accéder. Pour résoudre ce problème, Linux utilise un système de fichiers racine temporaire.
 
-### Montage du système de fichiers racine
+Dans les systèmes plus anciens, cela était géré par un `initrd` (initial RAM disk). Le noyau chargeait cette image disque, trouvait les pilotes nécessaires, puis basculait vers le véritable système de fichiers racine. Les systèmes modernes, y compris les distributions comme Ubuntu, utilisent `initramfs` (initial RAM filesystem). Contrairement à `initrd`, `initramfs` est une archive `cpio` qui est décompressée dans un système de fichiers temporaire directement en mémoire. Cette approche est plus efficace car elle évite la surcharge liée à la création et au montage d'un périphérique bloc. L'`initramfs` contient uniquement les modules essentiels dont le noyau a besoin pour accéder à la partition de démarrage réelle (`boot partition`) et à d'autres matériels.
 
-Maintenant, le noyau a tous les modules dont il a besoin pour créer un périphérique racine et monter la partition racine. Avant d'aller plus loin, la partition racine est d'abord montée en mode lecture seule afin que fsck puisse s'exécuter en toute sécurité et vérifier l'intégrité du système. Ensuite, il remonte le système de fichiers racine en mode lecture-écriture. Ensuite, le noyau localise le programme init et l'exécute.
+### Montage du Système de Fichiers Racine de Démarrage
+
+Avec les pilotes chargés depuis l'`initramfs`, le noyau peut maintenant localiser et monter le système de fichiers racine de démarrage principal (`boot root`). L'emplacement de ce système de fichiers est généralement transmis comme paramètre par le chargeur de démarrage, ce qui peut être configuré dans des fichiers comme `/etc/default/grub`.
+
+Premièrement, le noyau monte la partition racine de démarrage (`boot root`) en lecture seule. C'est une mesure de sécurité qui permet à l'utilitaire `fsck` (vérification du système de fichiers) de s'exécuter et de vérifier l'intégrité du système de fichiers sans risquer la corruption des données. Une fois la vérification terminée avec succès, le noyau remonte le système de fichiers en mode lecture-écriture.
+
+Enfin, le système de fichiers racine étant entièrement disponible, le noyau démarre le tout premier programme de l'espace utilisateur : `init`. Ce programme est responsable de la mise en ligne du reste du système.
 
 ## Exercise
 
-La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension du processus de démarrage de Linux :
+La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension du processus de démarrage Linux :
 
 - **[Personnaliser le menu de démarrage GRUB2 sous Linux](https://labex.io/fr/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Apprenez à modifier le menu de démarrage GRUB2, y compris la modification du délai d'attente et de l'entrée par défaut, et l'application de ces changements. Ce laboratoire vous aidera à comprendre comment le chargeur de démarrage peut être configuré.
 
-Ce laboratoire vous aidera à appliquer les concepts dans un scénario réel et à renforcer votre confiance dans la configuration du démarrage de Linux.
+Ce laboratoire vous aidera à appliquer les concepts dans un scénario réel et à gagner en confiance avec la configuration du démarrage Linux.
 
 ## Quiz Question
 
-Qu'est-ce qui est utilisé dans les systèmes modernes pour charger un système de fichiers racine temporaire ?
+What is used in modern systems to load a temporary root filesystem? Please answer in English, using only lowercase letters.
 
 ## Quiz Answer
 

@@ -3,21 +3,25 @@ index: 4
 lang: "en"
 title: "Network Manager"
 meta_title: "Network Manager - Network Config"
-meta_description: "Learn about NetworkManager in Linux, how it automates network configuration, and use nm-tool & nmcli commands. Get started with this beginner guide!"
-meta_keywords: "NetworkManager, nm-tool, nmcli, Linux networking, network configuration, Linux tutorial, beginner guide"
+meta_description: "Discover the role of the NetworkManager daemon in modern Linux network management. Learn how this tool automates network configuration and how to interact with it using nm-tool and the powerful nmcli command-line utility."
+meta_keywords: "NetworkManager, nm-tool, nmcli, network manager linux, networkmanager linux, linux network manager, linux network management, network configuration, Linux networking"
 ---
 
 ## Lesson Content
 
-Of course, if you want your system's networking up and running automatically, there is something already in place for that. Most distributions utilize the NetworkManager daemon to configure their networks automatically.
+For a system's networking to be configured automatically, a service is typically already in place. Most modern Linux distributions utilize the NetworkManager daemon for this purpose, making it a cornerstone of **linux network management**.
 
-You'll notice NetworkManager in the form of an applet somewhere on your desktop taskbar if you are using a GUI. As you can see, it manages your network's hardware and connection information. For instance, on startup, NetworkManager will gather network hardware information, search for connections (wireless, wired, etc.), and then activate them.
+### What is Network Manager in Linux?
 
-There are also command-line tools to interact with NetworkManager:
+If you are using a graphical user interface (GUI), you will likely notice the **Network Manager Linux** service as an applet on your desktop's taskbar. This tool manages your network hardware and connection information. For example, upon startup, NetworkManager gathers information about network hardware, searches for available connections (such as wireless or wired networks), and then activates them to get you online.
 
-### nm-tool
+### Command-Line Interaction
 
-`nm-tool` reports NetworkManager's state and its devices.
+While the GUI applet is convenient, there are also powerful command-line tools to interact with the **networkmanager linux** service. These are essential for server administration and scripting.
+
+### Using nm-tool
+
+The `nm-tool` command reports NetworkManager's current state and a list of its managed devices. Note that `nm-tool` is considered deprecated on many modern systems in favor of `nmcli`.
 
 ```plaintext
 pete@icebox:/$ nm-tool
@@ -46,9 +50,9 @@ State: connected (global)
     DNS:             192.168.22.2
 ```
 
-### nmcli
+### The Modern nmcli Tool
 
-The `nmcli` command allows you to control and modify NetworkManager. See the man page for more details.
+The `nmcli` command is the primary command-line utility for controlling and modifying the **Linux Network Manager**. It allows you to view status, manage connections, and configure network devices directly from the terminal. For a complete list of its capabilities, refer to its man page (`man nmcli`).
 
 ## Exercise
 
@@ -62,7 +66,7 @@ These labs will help you apply the concepts of network identification and config
 
 ## Quiz Question
 
-What is the command to view NetworkManager information?
+What is the command to view a summary of NetworkManager's state and devices as shown in the lesson? Please answer using only the English command name in lowercase.
 
 ## Quiz Answer
 

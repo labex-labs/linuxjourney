@@ -3,33 +3,29 @@ index: 1
 lang: "pt"
 title: "O Shell"
 meta_title: "O Shell - Linha de Comando"
-meta_description: "Comece sua jornada no Linux aprendendo sobre o shell do Linux. Este guia aborda os conceitos básicos da linha de comando, o shell Bash e introduz comandos básicos do Linux para iniciantes, como 'echo'."
-meta_keywords: "shell linux, jornada linux, comandos linux, comandos básicos linux para iniciantes, shell bash, linha de comando, comando echo, jornada linux"
+meta_description: "Comece sua jornada Linux aprendendo sobre o poderoso shell Linux. Esta lição apresenta a linha de comando, o shell Bash e alguns comandos básicos do Linux para iniciantes, como 'echo'."
+meta_keywords: "shell linux, comandos linux, comandos básicos linux para iniciantes, jornada linux, shell bash, linha de comando, shell de comandos linux, comando echo"
 ---
 
 ## Lesson Content
 
 ### O que é o Shell do Linux
 
-Bem-vindo à sua **jornada no Linux**! O primeiro passo é entender o **shell do Linux**. O shell é um programa poderoso que aceita os comandos que você digita e os passa ao sistema operacional para execução. Se você já usou uma interface gráfica do usuário (GUI), talvez tenha encontrado aplicativos como "Terminal" ou "Console". Estes são simplesmente programas que abrem uma sessão de shell para você. Ao longo deste curso, exploraremos as capacidades do shell e os muitos **comandos do Linux** disponíveis.
+Bem-vindo à sua jornada Linux! O primeiro passo é entender o shell do Linux. Um shell é um programa poderoso que atua como uma interface, aceitando os comandos que você digita e os passando para o sistema operacional para execução. Se você já usou uma interface gráfica do usuário (GUI), talvez tenha encontrado aplicativos como "Terminal" ou "Console". Estes são simplesmente programas que abrem uma sessão do shell Linux para você. Ao longo deste curso, exploraremos as capacidades do shell e os muitos comandos Linux disponíveis.
 
-### Entendendo o Bash
+### Interagindo com o Shell Bash
 
-Para este curso, focaremos no programa Bash (Bourne Again Shell). O Bash é o shell padrão para a maioria das distribuições Linux, tornando-o uma ferramenta essencial para aprender. Embora existam outros shells como `ksh`, `zsh` e `tsch`, dominar o Bash fornece uma base sólida para trabalhar com qualquer sistema Linux.
-
-### O Prompt do Shell
-
-Ao abrir um terminal, você será saudado pelo prompt do shell. Sua aparência pode variar entre as distribuições, mas geralmente segue este formato: `usuario@hostname:diretorio_atual$`.
+Para este curso, focaremos no programa Bash (Bourne Again Shell), que é o shell Linux padrão na maioria dos sistemas. Ao abrir um terminal, você será saudado pelo prompt do shell. Sua aparência pode variar, mas geralmente se parece com isto: `nome_do_usuario@nome_do_host:diretorio_atual$`.
 
 ```plaintext
 pete@icebox:/home/pete $
 ```
 
-O símbolo `$` no final indica que o shell está pronto para aceitar comandos de um usuário regular. Você não digita este símbolo ao inserir comandos; ele é puramente informativo.
+O símbolo `$` indica que o shell está pronto para aceitar sua entrada. Você não digita este símbolo ao inserir comandos; ele é puramente informativo. Embora existam outros shells como `ksh`, `zsh` e `tcsh`, dominar o Bash fornece uma base sólida para usar o shell de comandos Linux em qualquer sistema.
 
 ### Seu Primeiro Comando Linux
 
-Vamos começar com um dos **comandos básicos do Linux para iniciantes**: `echo`. Este comando é direto — ele simplesmente exibe, ou "ecoa", o texto que você fornece como argumentos de volta para o terminal.
+Vamos começar com um dos comandos Linux mais básicos para iniciantes: `echo`. Este comando é direto — ele simplesmente exibe, ou "ecoa", o texto que você fornece como argumentos de volta para o terminal. Este é um exemplo fundamental de como os comandos Linux funcionam e um ótimo começo para sua jornada Linux.
 
 ```bash
 echo Hello World

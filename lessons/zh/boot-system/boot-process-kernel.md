@@ -2,34 +2,40 @@
 index: 4
 lang: "zh"
 title: "启动过程：内核"
-meta_title: "启动过程：内核 - 启动系统"
-meta_description: "了解 Linux 启动过程、内核初始化和 initramfs 的作用。理解内核如何挂载根文件系统。Linux 启动过程指南。"
-meta_keywords: "Linux 启动过程，内核启动，initramfs, initrd, 根文件系统，Linux 教程，Linux 初学者，Linux 指南"
+meta_title: "启动过程：内核 - 引导系统"
+meta_description: "探索 Linux 内核的启动过程。了解 initramfs 如何从临时文件系统加载驱动程序以挂载最终的启动根分区。理解从内核加载到执行 init 的步骤。"
+meta_keywords: "启动根，initramfs, 内核启动，启动分区，initramfs ubuntu, /etc/default/grub, Linux 启动过程，根文件系统，内核初始化"
 ---
 
 ## Lesson Content
 
-So now that our bootloader has passed on the necessary parameters, let's see how it gets started:
+一旦引导加载程序将内核加载到内存中并将必要的参数传递过去，内核就会接管系统的控制权。让我们探索接下来会发生什么。
 
-### Initrd 与 Initramfs
+### 内核初始化与 Initramfs
 
-当我们谈论内核启动时，会遇到一个“先有鸡还是先有蛋”的问题。内核管理我们系统的硬件；然而，并非所有驱动程序在启动时都可供内核使用。因此，我们依赖一个临时根文件系统，其中只包含内核访问其余硬件所需的必要模块。在旧版本的 Linux 中，这项工作由 initrd (initial ramdisk) 完成。内核会挂载 initrd，获取必要的启动驱动程序，然后当它加载完所需的一切后，它会用实际的根文件系统替换 initrd。现在，我们有了一种叫做 initramfs 的东西；这是一个内置于内核本身的临时根文件系统，用于加载真实根文件系统所需的所有驱动程序，因此不再需要定位 initrd 文件。
+启动过程中的一个经典挑战是：内核需要驱动程序才能访问硬件设备，但这些驱动程序通常驻留在内核尚无法访问的存储设备上。为了解决这个问题，Linux 使用了一个临时的根文件系统。
 
-### 挂载根文件系统
+在旧系统中，这是由 `initrd`（初始 RAM 磁盘）处理的。内核会加载这个磁盘映像，找到必要的驱动程序，然后切换到真正的根文件系统。现代系统，包括 Ubuntu 等发行版，使用 `initramfs`（初始 RAM 文件系统）。与 `initrd` 不同，`initramfs` 是一个 `cpio` 归档文件，直接在内存中解压到一个临时文件系统中。这种方法更有效率，因为它避免了创建和挂载块设备的开销。`initramfs` 只包含内核访问实际的 `boot partition`（引导分区）和其他硬件所需的必要模块。
 
-现在内核拥有了创建根设备和挂载根分区所需的所有模块。在进一步操作之前，根分区实际上首先以只读模式挂载，以便 fsck 可以安全运行并检查系统完整性。之后，它会以读写模式重新挂载根文件系统。然后内核找到 init 程序并执行它。
+### 挂载引导根文件系统
+
+加载了来自 `initramfs` 的驱动程序后，内核现在可以定位并挂载主要的 `boot root`（引导根）文件系统。该文件系统的位置通常由引导加载程序作为参数传递，该参数可以在 `/etc/default/grub` 等文件中进行配置。
+
+首先，内核以只读模式挂载 `boot root` 分区。这是一种安全措施，允许 `fsck`（文件系统检查）实用程序运行并验证文件系统的完整性，而不会有数据损坏的风险。检查成功完成后，内核会以读写模式重新挂载文件系统。
+
+最后，当根文件系统完全可用后，内核启动第一个用户空间程序：`init`。该程序负责使系统的其余部分联机。
 
 ## Exercise
 
-熟能生巧！这是一个动手实验，旨在加深您对 Linux 启动过程的理解：
+实践造就完美！这是一个实践实验，用于巩固您对 Linux 启动过程的理解：
 
-- **[在 Linux 中自定义 GRUB2 启动菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 学习修改 GRUB2 启动菜单，包括更改超时和默认条目，并应用这些更改。本实验将帮助您了解如何配置引导加载程序。
+- **[在 Linux 中自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 学习修改 GRUB2 引导菜单，包括更改超时和默认条目，并应用这些更改。此实验将帮助您了解如何配置引导加载程序。
 
-本实验将帮助您在实际场景中应用这些概念，并增强您对 Linux 启动配置的信心。
+此实验将帮助您在真实场景中应用这些概念，并建立对 Linux 启动配置的信心。
 
 ## Quiz Question
 
-现代系统中使用什么来加载临时根文件系统？
+在现代系统中，什么被用来加载一个临时的根文件系统？请用英文回答，只使用小写字母。
 
 ## Quiz Answer
 

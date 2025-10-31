@@ -3,20 +3,22 @@ index: 6
 lang: "fr"
 title: "Objectifs de Systemd"
 meta_title: "Objectifs de Systemd - Init"
-meta_description: "Apprenez les bases des unités systemd et les commandes systemctl essentielles. Comprenez comment gérer les services, afficher les statuts et activer les unités sous Linux. Commencez votre parcours !"
-meta_keywords: "systemd, systemctl, services Linux, fichiers d'unité, débutant, tutoriel, guide, commandes Linux"
+meta_description: "Explorez les objectifs de systemd et apprenez à gérer les services Linux avec les commandes systemctl essentielles. Ce guide couvre les bases des fichiers d'unité systemd, comment démarrer, arrêter et activer les services, et visualiser leur état."
+meta_keywords: "systemd, systemctl, services Linux, fichiers d'unité, objectifs systemd, gestion des services, unités systemd, débutant, tutoriel, guide, commandes Linux"
 ---
 
 ## Lesson Content
 
-Nous n'entrerons pas dans les détails de l'écriture des fichiers d'unité systemd. Cependant, nous allons passer en revue un bref aperçu d'un fichier d'unité et comment contrôler manuellement les unités.
+Cette leçon fournit un aperçu fondamental des fichiers d'unité systemd et comment les gérer avec `systemctl`, l'outil principal pour contrôler le système d'initialisation (init). Nous aborderons la structure de base d'un fichier d'unité et les commandes essentielles pour gérer les services Linux.
 
-Voici un fichier d'unité de service de base : foobar.service
+### Comprendre un Fichier d'Unité Systemd
+
+A un fichier d'unité systemd est un fichier texte simple qui décrit un service, un point de montage, un périphérique ou une autre ressource que systemd peut gérer. Voici un exemple de base d'un fichier d'unité de service nommé `foobar.service` :
 
 ```
 [Unit]
-Description=My Foobar
-Before=bar.target
+Description=Mon Service Foobar
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/foobar
@@ -25,65 +27,85 @@ ExecStart=/usr/bin/foobar
 WantedBy=multi-user.target
 ```
 
-Ceci est une cible de service simple. Au début du fichier, nous voyons une section pour `[Unit]`. Cela nous permet de donner une description à notre fichier d'unité ainsi que de contrôler l'ordre d'activation de l'unité. La partie suivante est la section `[Service]` ; ici, nous pouvons démarrer, arrêter ou recharger un service. Et la section `[Install]` est utilisée pour les dépendances. Ce n'est que la pointe de l'iceberg pour l'écriture de fichiers systemd, je vous implore donc de vous renseigner sur le sujet si vous voulez en savoir plus.
+Ce fichier de service simple est divisé en sections :
 
-Maintenant, passons à quelques commandes que vous pouvez utiliser avec les unités systemd :
+- **[Unit]** : Cette section contient les métadonnées et les informations de dépendance. La directive `Description` fournit un nom lisible par l'homme pour l'unité. Des directives comme `After` et `Before` contrôlent l'ordre de démarrage, garantissant que cette unité démarre après que le réseau soit disponible.
+- **[Service]** : Cette section définit comment gérer le service. La directive `ExecStart` est cruciale, car elle spécifie la commande à exécuter pour démarrer le service. D'autres directives comme `ExecStop` et `ExecReload` peuvent définir comment arrêter ou recharger le service.
+- **[Install]** : Cette section définit le comportement de l'unité lorsqu'elle est activée ou désactivée avec `systemctl`. La directive `WantedBy` indique à systemd de démarrer ce service dans le cadre d'une cible spécifique, telle que `multi-user.target` pour un démarrage standard non graphique.
 
-### Lister les unités
+Ceci n'est qu'un aperçu des fichiers d'unité systemd. Pour des configurations plus avancées, une lecture approfondie sur le sujet est fortement recommandée.
+
+### Commandes Systemctl Essentielles
+
+Explorons maintenant les commandes `systemctl` essentielles que vous utiliserez pour interagir avec les unités systemd et gérer les services Linux.
+
+### Lister les Unités Systemd
+
+Pour voir toutes les unités actives que systemd gère actuellement, utilisez la commande `list-units`.
 
 ```bash
 systemctl list-units
 ```
 
-### Afficher le statut d'une unité
+### Vérifier le Statut d'une Unité
+
+Pour afficher l'état détaillé d'une unité spécifique, y compris si elle est active, activée, et ses dernières entrées de journal, utilisez la commande `status`.
 
 ```bash
 systemctl status networking.service
 ```
 
-### Démarrer un service
+### Gérer les États des Services
+
+Vous pouvez contrôler l'état d'exécution d'un service en utilisant `start`, `stop` et `restart`.
+
+Pour démarrer un service immédiatement :
 
 ```bash
 sudo systemctl start networking.service
 ```
 
-### Arrêter un service
+Pour arrêter un service en cours d'exécution :
 
 ```bash
 sudo systemctl stop networking.service
 ```
 
-### Redémarrer un service
+Pour arrêter puis redémarrer le service :
 
 ```bash
 sudo systemctl restart networking.service
 ```
 
-### Activer une unité
+### Activer et Désactiver les Services
+
+Activer un service crée un lien symbolique qui l'accroche au processus de démarrage, garantissant qu'il démarre automatiquement. Le désactiver supprime ce lien.
+
+Pour activer un service afin qu'il démarre au démarrage :
 
 ```bash
 sudo systemctl enable networking.service
 ```
 
-### Désactiver une unité
+Pour désactiver un service afin qu'il ne démarre pas au démarrage :
 
 ```bash
 sudo systemctl disable networking.service
 ```
 
-Encore une fois, vous n'avez pas encore vu la profondeur de systemd, alors renseignez-vous si vous voulez en savoir plus.
+Ces commandes sont les éléments de base de la gestion des services sur les systèmes Linux modernes. Les maîtriser est une étape clé dans votre parcours Linux.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus, qui sont souvent contrôlés par les services systemd :
+La pratique est essentielle pour maîtriser de nouvelles compétences. Ce laboratoire pratique vous aidera à renforcer votre compréhension de la gestion des processus, qui sont souvent contrôlés par les services systemd :
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice` et à les terminer avec `kill`. Ce laboratoire vous donnera une expérience pratique des effets d'exécution de la gestion des unités systemd.
+1.  **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice`, et à les terminer avec `kill`. Ce laboratoire vous donnera une expérience pratique des effets d'exécution de la gestion des unités systemd.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des processus sous Linux.
+Ce laboratoire vous aidera à appliquer ces concepts dans un scénario réel et à renforcer votre confiance dans la gestion des processus sous Linux.
 
 ## Quiz Question
 
-Quelle est la commande pour démarrer un service nommé peanut.service ?
+What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
 
 ## Quiz Answer
 

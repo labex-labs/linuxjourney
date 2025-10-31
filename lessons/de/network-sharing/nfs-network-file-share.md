@@ -3,34 +3,40 @@ index: 4
 lang: "de"
 title: "NFS"
 meta_title: "NFS - Netzwerkfreigabe"
-meta_description: "Erfahren Sie mehr über die Einrichtung von NFS-Clients und das automatische Einhängen in Linux. Verstehen Sie, wie Sie sich mit Netzwerk-Dateifreigaben verbinden und Automount für nahtlosen Zugriff verwenden."
-meta_keywords: "NFS-Client, Automount, Network File System, Linux-Netzwerk, mount-Befehl, Linux-Tutorial, Anfänger"
+meta_description: "Erfahren Sie, wie Sie das Network File System (NFS) unter Linux verwenden. Diese Lektion behandelt die Einrichtung eines NFS-Clients, die Verwendung des mount-Befehls und die Konfiguration von automount für nahtlosen Zugriff auf Netzwerkfreigaben."
+meta_keywords: "NFS, NFS-Client, automount, Network File System, Linux-Netzwerk, mount-Befehl, Linux-Tutorial, Anfänger"
 ---
 
 ## Lesson Content
 
-Das gängigste Netzwerk-Dateisystem für Linux ist NFS (Network File System). NFS ermöglicht es einem Server, Verzeichnisse und Dateien mit einem oder mehreren Clients über das Netzwerk zu teilen.
+Das gängigste Protokoll für die Netzwerkdateifreigabe in Linux ist NFS, was für **Network File System** steht. NFS ermöglicht es einem Server, seine Verzeichnisse und Dateien über ein Netzwerk mit einem oder mehreren Client-Rechnern zu teilen, sodass diese erscheinen, als wären sie lokale Ressourcen.
 
-Wir werden nicht auf die Details der Erstellung eines NFS-Servers eingehen, da dies komplex werden kann; wir werden jedoch die Einrichtung von NFS-Clients besprechen.
+Diese Lektion konzentriert sich auf die Konfiguration eines **NFS-Clients**, da die Einrichtung eines NFS-Servers ein komplexerer Prozess sein kann.
 
-### NFS-Client einrichten
+### Einhängen einer NFS-Freigabe
+
+Um sich mit einer NFS-Freigabe zu verbinden, müssen Sie zunächst sicherstellen, dass der NFS-Client-Dienst ausgeführt wird. Anschließend können Sie den `mount`-Befehl verwenden, um das Remote-Verzeichnis an einen lokalen Einhängepunkt auf Ihrem System anzuhängen.
 
 ```bash
 sudo service nfsclient start
 sudo mount server:/directory /mount_directory
 ```
 
-### Automatisches Einhängen (Automounting)
+In diesem Beispiel ist `server:/directory` die Remote-Freigabe, auf die Sie zugreifen möchten, und `/mount_directory` ist das lokale Verzeichnis, in dem die Freigabe eingehängt wird.
 
-Nehmen wir an, Sie verwenden den NFS-Server sehr oft und möchten ihn dauerhaft eingehängt lassen. Normalerweise würden Sie vielleicht denken, dass Sie die Datei `/etc/fstab` bearbeiten würden, aber Sie erhalten möglicherweise nicht immer eine Verbindung zum Server, und das kann beim Booten zu Problemen führen. Stattdessen sollten Sie das automatische Einhängen (Automounting) einrichten, damit Sie bei Bedarf eine Verbindung zum NFS-Server herstellen können. Dies geschieht mit dem Tool **automount** oder, in neueren Linux-Versionen, **amd**. Wenn auf eine Datei in einem bestimmten Verzeichnis zugegriffen wird, sucht automount den Remote-Server und hängt ihn automatisch ein.
+### Verwendung von Automount für NFS
+
+Wenn Sie häufig auf eine NFS-Freigabe zugreifen, sollten Sie in Erwägung ziehen, das Einhängen dauerhaft zu machen. Obwohl das Hinzufügen eines Eintrags in die Datei `/etc/fstab` eine gängige Methode für lokale Laufwerke ist, kann dies zu erheblichen Startverzögerungen oder sogar Fehlern führen, wenn die Netzwerkverbindung oder der NFS-Server beim Systemstart nicht verfügbar ist.
+
+Andererseits ist **automount** eine bessere Lösung für Netzwerkfreigaben. Dieser Dienst, der vom `automount`-Tool oder seiner modernen Implementierung `amd` verwaltet wird, hängt ein Dateisystem bei Bedarf dynamisch ein. Wenn auf eine Datei oder ein Verzeichnis innerhalb eines angegebenen Pfades zugegriffen wird, verbindet sich automount automatisch mit dem Remote-Server und hängt die Freigabe ein. Dies gewährleistet bei Bedarf einen nahtlosen Zugriff, ohne den Startvorgang des Systems zu beeinträchtigen.
 
 ## Exercise
 
-Obwohl es keine spezifischen Labs zu diesem Thema gibt, empfehlen wir Ihnen, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und Konzepte zu üben.
 
 ## Quiz Question
 
-Welches Tool wird verwendet, um Mount-Punkte automatisch zu verwalten?
+What tool is used to manage mount points automatically? Please answer in English, and note that the answer is case-sensitive.
 
 ## Quiz Answer
 
