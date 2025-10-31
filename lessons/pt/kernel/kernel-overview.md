@@ -31,9 +31,9 @@ Neste curso, mergulharemos fundo no kernel, desmistificando suas complexidades. 
 
 Para colocar a teoria em prática, experimente estes laboratórios práticos. Eles reforçarão sua compreensão do kernel Linux e sua interação com os componentes do sistema:
 
-1.  **[Gerenciar Módulos do Kernel no Linux](https://labex.io/pt/labs/comptia-manage-kernel-modules-in-linux-590865)** - Pratique listar, inspecionar, carregar e descarregar módulos do kernel e configurá-los para carregamento automático na inicialização.
-2.  **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprenda a identificar e inspecionar dispositivos de hardware em um ambiente Linux usando utilitários de linha de comando.
-3.  **[Gerenciar Partições e Sistemas de Arquivos do Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Ganhe experiência prática na criação de partições, formatação de sistemas de arquivos, montagem deles e configuração de montagem persistente, tudo gerenciado pelo kernel.
+1. **[Gerenciar Módulos do Kernel no Linux](https://labex.io/pt/labs/comptia-manage-kernel-modules-in-linux-590865)** - Pratique listar, inspecionar, carregar e descarregar módulos do kernel e configurá-los para carregamento automático na inicialização.
+2. **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprenda a identificar e inspecionar dispositivos de hardware em um ambiente Linux usando utilitários de linha de comando.
+3. **[Gerenciar Partições e Sistemas de Arquivos do Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Ganhe experiência prática na criação de partições, formatação de sistemas de arquivos, montagem deles e configuração de montagem persistente, tudo gerenciado pelo kernel.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de interação do kernel com hardware e recursos do sistema em cenários reais e a construir confiança com a administração Linux de baixo nível.
 

@@ -86,8 +86,8 @@ Die Verwendung der Befehle `ls symlinks` oder allgemeiner `ls links` mit der Opt
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Dateiverwaltung, Links und Inodes zu festigen:
 
-1.  **[Dateien und Verzeichnisse unter Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** – Üben Sie das Erstellen, Kopieren, Verschieben und Entfernen von Dateien und Verzeichnissen und lernen Sie speziell symbolische und Hardlinks kennen und wie man Inodes analysiert.
-2.  **[Im Dateisystem unter Linux navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** – Meistern Sie wesentliche Befehle wie `pwd`, `cd` und `ls`, um sich effizient durch das Linux-Dateisystem zu bewegen, eine grundlegende Fähigkeit, um zu verstehen, wo sich Dateien und ihre Inodes befinden.
+1. **[Dateien und Verzeichnisse unter Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** – Üben Sie das Erstellen, Kopieren, Verschieben und Entfernen von Dateien und Verzeichnissen und lernen Sie speziell symbolische und Hardlinks kennen und wie man Inodes analysiert.
+2. **[Im Dateisystem unter Linux navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** – Meistern Sie wesentliche Befehle wie `pwd`, `cd` und `ls`, um sich effizient durch das Linux-Dateisystem zu bewegen, eine grundlegende Fähigkeit, um zu verstehen, wo sich Dateien und ihre Inodes befinden.
 
 Diese Labs helfen Ihnen, die Konzepte der Dateiverwaltung und Links in realen Szenarien anzuwenden und Vertrauen in das Linux-Dateisystem aufzubauen.
 

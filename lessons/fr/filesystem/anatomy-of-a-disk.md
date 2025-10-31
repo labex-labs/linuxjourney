@@ -78,7 +78,7 @@ Number  Start   End     Size     File system  Name        Flags
 
 Pour renforcer votre compréhension du partitionnement de disque et des systèmes de fichiers, nous vous recommandons ce laboratoire pratique :
 
-1.  **[Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer de nouvelles partitions, à les formater avec des systèmes de fichiers comme ext4, à les monter et à configurer le montage persistant dans `/etc/fstab`.
+1. **[Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer de nouvelles partitions, à les formater avec des systèmes de fichiers comme ext4, à les monter et à configurer le montage persistant dans `/etc/fstab`.
 
 Ce laboratoire vous aidera à appliquer les concepts de gestion de disque dans des scénarios réels et à gagner en confiance avec le stockage Linux.
 

@@ -43,9 +43,9 @@ O campo `time` mede o tempo de ida e volta (roundtrip time)—a duração que o 
 
 A prática é essencial para dominar o diagnóstico de rede. Estes laboratórios práticos ajudarão a reforçar sua compreensão do comando `ping`:
 
-1.  **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para explorar interações das camadas de rede e de enlace de dados e observar como o gateway padrão lida com tráfego remoto.
-2.  **[Explore Tipos de Endereço IP e Alcance no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilize `ping` e `ip a` para testar a pilha TCP/IP local, verificar a conectividade com a internet pública e explorar o alcance da rede.
-3.  **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos com `ip addr` e testar a conectividade com `ping` na mesma sub-rede e em sub-redes diferentes.
+1. **[Explore a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` e `arp` para explorar interações das camadas de rede e de enlace de dados e observar como o gateway padrão lida com tráfego remoto.
+2. **[Explore Tipos de Endereço IP e Alcance no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilize `ping` e `ip a` para testar a pilha TCP/IP local, verificar a conectividade com a internet pública e explorar o alcance da rede.
+3. **[Simule a Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos com `ip addr` e testar a conectividade com `ping` na mesma sub-rede e em sub-redes diferentes.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de alcance de rede e o comando `ping` em cenários do mundo real, aumentando sua confiança com o diagnóstico de rede no Linux.
 

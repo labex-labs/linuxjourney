@@ -51,7 +51,7 @@ echo Hello World >> peanuts.txt
 
 为了巩固你对 I/O 重定向的理解，请尝试以下实践实验：
 
-1.  **[在 Linux 中重定向输入和输出](https://labex.io/zh/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 通过使用 `>`、`>>`、`2>` 等运算符以及 `tee` 命令来操作标准输出 (stdout)、标准错误 (stderr) 和标准输入 (stdin)，练习控制命令的数据流。
+1. **[在 Linux 中重定向输入和输出](https://labex.io/zh/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 通过使用 `>`、`>>`、`2>` 等运算符以及 `tee` 命令来操作标准输出 (stdout)、标准错误 (stderr) 和标准输入 (stdin)，练习控制命令的数据流。
 
 这个实验将帮助你在实际场景中应用这些概念，并增强你对 I/O 重定向的信心。
 

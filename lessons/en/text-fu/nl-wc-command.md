@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 The output displays three numbers followed by the filename. From left to right, these numbers represent:
 
-1.  The number of lines.
-2.  The number of words (the Linux word count).
-3.  The number of bytes.
+1. The number of lines.
+2. The number of words (the Linux word count).
+3. The number of bytes.
 
 ### Getting Specific Counts
 
@@ -57,9 +57,9 @@ Using the `nl` command, you can easily add Linux line numbers:
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 Both `wc` and `nl` are essential commands for everyday text processing on the Linux command line.
@@ -68,9 +68,9 @@ Both `wc` and `nl` are essential commands for everyday text processing on the Li
 
 To master these commands, hands-on practice is key. Try these exercises to solidify your skills in text counting and line numbering on Linux:
 
-1.  **[Linux wc Command: Text Counting](https://labex.io/labs/linux-linux-wc-command-text-counting-219200)** - Practice counting words, lines, and characters in text files using the `wc` command.
-2.  **[Linux nl Command: Line Numbering](https://labex.io/labs/linux-linux-nl-command-line-numbering-210988)** - Learn to number lines in text files with the `nl` command.
-3.  **[Word Count and Sorting](https://labex.io/labs/linux-word-count-and-sorting-388125)** - Apply your knowledge of `wc` to count lines, words, and characters, and combine it with sorting for practical text analysis tasks.
+1. **[Linux wc Command: Text Counting](https://labex.io/labs/linux-linux-wc-command-text-counting-219200)** - Practice counting words, lines, and characters in text files using the `wc` command.
+2. **[Linux nl Command: Line Numbering](https://labex.io/labs/linux-linux-nl-command-line-numbering-210988)** - Learn to number lines in text files with the `nl` command.
+3. **[Word Count and Sorting](https://labex.io/labs/linux-word-count-and-sorting-388125)** - Apply your knowledge of `wc` to count lines, words, and characters, and combine it with sorting for practical text analysis tasks.
 
 These labs will help you apply the concepts in real-world scenarios and build confidence with text processing in Linux.
 

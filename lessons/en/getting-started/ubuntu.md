@@ -29,9 +29,9 @@ Ubuntu is a fantastic choice for beginners. It offers a smooth out-of-the-box ex
 
 Practice is key to mastering Linux. Here are some hands-on labs to reinforce your understanding of user and group management:
 
-1.  **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - In this lab, you will learn to manage user accounts on the Linux platform, including creating, modifying, and deleting user accounts.
-2.  **[The Joker's Trick](https://labex.io/labs/linux-the-joker-s-trick-270247)** - In this challenge, you will practice managing user accounts by creating new users, modifying their properties, and removing them from the system.
-3.  **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this hands-on challenge, you'll simulate adding new team members to a server by creating user accounts, setting up custom groups, and managing memberships.
+1. **[User Account Management](https://labex.io/labs/linux-user-account-management-49)** - In this lab, you will learn to manage user accounts on the Linux platform, including creating, modifying, and deleting user accounts.
+2. **[The Joker's Trick](https://labex.io/labs/linux-the-joker-s-trick-270247)** - In this challenge, you will practice managing user accounts by creating new users, modifying their properties, and removing them from the system.
+3. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this hands-on challenge, you'll simulate adding new team members to a server by creating user accounts, setting up custom groups, and managing memberships.
 
 These labs will help you apply concepts in real-world scenarios and build confidence with Linux administration.
 

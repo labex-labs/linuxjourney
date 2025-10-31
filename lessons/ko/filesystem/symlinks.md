@@ -86,8 +86,8 @@ ln /path/to/original /path/to/link
 
 연습이 완벽을 만듭니다! 파일 관리, 링크 및 inode 에 대한 이해를 강화하기 위한 몇 가지 실습 랩이 있습니다.
 
-1.  **[Linux 에서 파일 및 디렉터리 관리](https://labex.io/ko/labs/comptia-manage-files-and-directories-in-linux-590835)** - 파일 및 디렉터리 생성, 복사, 이동 및 제거를 연습하고, 특히 심볼릭 링크 및 하드 링크에 대해 알아보고 inode 를 분석하는 방법을 배웁니다.
-2.  **[Linux 파일 시스템 탐색](https://labex.io/ko/labs/comptia-navigate-the-filesystem-in-linux-590971)** - `pwd`, `cd`, `ls`와 같은 필수 명령을 마스터하여 Linux 파일 시스템을 효율적으로 이동하며, 파일과 inode 가 위치한 곳을 이해하기 위한 기본 기술을 익힙니다.
+1. **[Linux 에서 파일 및 디렉터리 관리](https://labex.io/ko/labs/comptia-manage-files-and-directories-in-linux-590835)** - 파일 및 디렉터리 생성, 복사, 이동 및 제거를 연습하고, 특히 심볼릭 링크 및 하드 링크에 대해 알아보고 inode 를 분석하는 방법을 배웁니다.
+2. **[Linux 파일 시스템 탐색](https://labex.io/ko/labs/comptia-navigate-the-filesystem-in-linux-590971)** - `pwd`, `cd`, `ls`와 같은 필수 명령을 마스터하여 Linux 파일 시스템을 효율적으로 이동하며, 파일과 inode 가 위치한 곳을 이해하기 위한 기본 기술을 익힙니다.
 
 이 랩들은 파일 관리 및 링크 개념을 실제 시나리오에 적용하고 Linux 파일 시스템에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

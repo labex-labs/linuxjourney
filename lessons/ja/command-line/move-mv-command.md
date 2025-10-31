@@ -79,8 +79,8 @@ mv -t /somedirectory file_1 file_2
 
 練習あるのみです！ `mv` のような Linux コマンドを習得するには、実践的な経験が不可欠です。これらのラボは、実際の環境でファイルやディレクトリを移動および名前変更することについての理解を深めるのに役立ちます。
 
-1.  **[Linux mv コマンド：ファイルの移動と名前変更](https://labex.io/ja/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - `mv` コマンドを使用してファイルやディレクトリを移動および名前変更する方法、およびそのさまざまなオプションと動作を理解するための演習を行います。
-2.  **[ファイルの整理とディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - プロジェクト構造の整理、ファイルの移動、ディレクトリのクリーンアップのための実践的な課題で、`mv` (および `cp` と `rm`) の知識を適用します。
+1. **[Linux mv コマンド：ファイルの移動と名前変更](https://labex.io/ja/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - `mv` コマンドを使用してファイルやディレクトリを移動および名前変更する方法、およびそのさまざまなオプションと動作を理解するための演習を行います。
+2. **[ファイルの整理とディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - プロジェクト構造の整理、ファイルの移動、ディレクトリのクリーンアップのための実践的な課題で、`mv` (および `cp` と `rm`) の知識を適用します。
 
 これらのラボは、実際のシナリオで概念を適用し、`mv` コマンドを使用したファイルおよびディレクトリ管理への自信を構築するのに役立ちます。
 

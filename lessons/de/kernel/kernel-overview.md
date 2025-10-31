@@ -31,9 +31,9 @@ In diesem Kurs werden wir tief in den Kernel eintauchen und seine Komplexität e
 
 Um Theorie in die Praxis umzusetzen, probieren Sie diese praktischen Labs aus. Sie werden Ihr Verständnis des Linux-Kernels und seiner Interaktion mit Systemkomponenten vertiefen:
 
-1.  **[Kernelmodule in Linux verwalten](https://labex.io/de/labs/comptia-manage-kernel-modules-in-linux-590865)** - Üben Sie das Auflisten, Inspizieren, Laden und Entladen von Kernelmodulen sowie deren Konfiguration für das automatische Laden beim Booten.
-2.  **[Hardwaregeräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** - Lernen Sie, Hardwaregeräte in einer Linux-Umgebung mithilfe von Befehlszeilen-Dienstprogrammen zu identifizieren und zu inspizieren.
-3.  **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Sammeln Sie praktische Erfahrungen beim Erstellen von Partitionen, Formatieren von Dateisystemen, Einhängen und Konfigurieren des persistenten Einhängens, alles verwaltet durch den Kernel.
+1. **[Kernelmodule in Linux verwalten](https://labex.io/de/labs/comptia-manage-kernel-modules-in-linux-590865)** - Üben Sie das Auflisten, Inspizieren, Laden und Entladen von Kernelmodulen sowie deren Konfiguration für das automatische Laden beim Booten.
+2. **[Hardwaregeräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** - Lernen Sie, Hardwaregeräte in einer Linux-Umgebung mithilfe von Befehlszeilen-Dienstprogrammen zu identifizieren und zu inspizieren.
+3. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Sammeln Sie praktische Erfahrungen beim Erstellen von Partitionen, Formatieren von Dateisystemen, Einhängen und Konfigurieren des persistenten Einhängens, alles verwaltet durch den Kernel.
 
 Diese Labs helfen Ihnen, die Konzepte der Kernel-Interaktion mit Hardware und Systemressourcen in realen Szenarien anzuwenden und Vertrauen in die Low-Level-Linux-Administration aufzubauen.
 

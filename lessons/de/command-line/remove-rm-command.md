@@ -69,8 +69,8 @@ Der Befehl `rmdir` ist nur erfolgreich, wenn das Verzeichnis vollständig leer i
 
 Übung macht den Meister. Hier sind einige praktische Übungen, um Ihr Verständnis für das Entfernen von Dateien und Verzeichnissen in Linux zu festigen:
 
-1.  **[Linux rm Befehl: Dateientfernung](https://labex.io/de/labs/linux-linux-rm-command-file-removing-209741)** - Lernen Sie, wie Sie den `rm`-Befehl zum Entfernen von Dateien und Verzeichnissen verwenden, einschließlich verschiedener Optionen wie `-r` und `-i`, und üben Sie das sichere und effektive Löschen von Dateien.
-2.  **[Dateien und Verzeichnisse organisieren](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** - Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, einschließlich der Verwendung des `rm`-Befehls zum Bereinigen unnötiger Verzeichnisse, in einer praktischen Herausforderung.
+1. **[Linux rm Befehl: Dateientfernung](https://labex.io/de/labs/linux-linux-rm-command-file-removing-209741)** - Lernen Sie, wie Sie den `rm`-Befehl zum Entfernen von Dateien und Verzeichnissen verwenden, einschließlich verschiedener Optionen wie `-r` und `-i`, und üben Sie das sichere und effektive Löschen von Dateien.
+2. **[Dateien und Verzeichnisse organisieren](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** - Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, einschließlich der Verwendung des `rm`-Befehls zum Bereinigen unnötiger Verzeichnisse, in einer praktischen Herausforderung.
 
 Diese Labs helfen Ihnen, diese Konzepte in realen Szenarien anzuwenden und Vertrauen in den `linux rm command` aufzubauen.
 

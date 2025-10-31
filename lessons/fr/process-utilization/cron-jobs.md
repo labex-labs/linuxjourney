@@ -49,7 +49,7 @@ Une fois que vous avez ajouté la définition de votre tâche et enregistré le 
 
 La pratique rend parfait ! Ce laboratoire pratique vous aidera à renforcer votre compréhension de la façon de `planifier des tâches` sous Linux.
 
-1.  **[Planifier des tâches avec at et cron sous Linux](https://labex.io/fr/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Entraînez-vous à créer, gérer et supprimer des tâches avec `at`, `atq`, `atrm` et `crontab`, en acquérant une expérience pratique dans l'automatisation des tâches d'administration système.
+1. **[Planifier des tâches avec at et cron sous Linux](https://labex.io/fr/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Entraînez-vous à créer, gérer et supprimer des tâches avec `at`, `atq`, `atrm` et `crontab`, en acquérant une expérience pratique dans l'automatisation des tâches d'administration système.
 
 Ce laboratoire vous aidera à appliquer les concepts de cette leçon dans un scénario réel et à renforcer votre confiance dans l'`automatisation Linux`.
 

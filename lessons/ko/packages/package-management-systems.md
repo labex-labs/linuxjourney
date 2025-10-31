@@ -53,9 +53,9 @@ RPM: $ yum info package_name
 
 연습이 완벽을 만듭니다! Linux 패키지 관리에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 에서 YUM 을 사용하여 패키지 쿼리 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 RHEL 기반 Linux 시스템에서 소프트웨어 패키지를 관리하는 방법을 연습합니다. 여기에는 검사, 업데이트 및 저장소 탐색이 포함됩니다.
-2.  **[Linux 에서 소프트웨어 설치](https://labex.io/ko/labs/linux-software-installation-on-linux-18005)** - apt, dpkg 사용 및 .deb 파일 처리 등 Ubuntu 시스템에서 소프트웨어를 설치하고 관리하는 다양한 방법을 배웁니다.
-3.  **[패키지 설치 및 제거](https://labex.io/ko/labs/linux-installing-and-removing-packages-385380)** - `apt`를 사용하여 Debian 기반 시스템에서 시스템 업데이트, 패키지 설치 및 제거, 소프트웨어 구성 최적화를 연습합니다.
+1. **[Linux 에서 YUM 을 사용하여 패키지 쿼리 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 RHEL 기반 Linux 시스템에서 소프트웨어 패키지를 관리하는 방법을 연습합니다. 여기에는 검사, 업데이트 및 저장소 탐색이 포함됩니다.
+2. **[Linux 에서 소프트웨어 설치](https://labex.io/ko/labs/linux-software-installation-on-linux-18005)** - apt, dpkg 사용 및 .deb 파일 처리 등 Ubuntu 시스템에서 소프트웨어를 설치하고 관리하는 다양한 방법을 배웁니다.
+3. **[패키지 설치 및 제거](https://labex.io/ko/labs/linux-installing-and-removing-packages-385380)** - `apt`를 사용하여 Debian 기반 시스템에서 시스템 업데이트, 패키지 설치 및 제거, 소프트웨어 구성 최적화를 연습합니다.
 
 이 랩들은 실제 시나리오에 개념을 적용하고 Linux 패키지 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

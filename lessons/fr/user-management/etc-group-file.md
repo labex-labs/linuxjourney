@@ -29,10 +29,10 @@ root:*:0:pete
 
 Similaire au fichier `/etc/passwd`, chaque ligne du fichier `/etc/group` représente un seul groupe et contient quatre champs séparés par des deux-points (`:`).
 
-1.  **Nom du groupe** : Le nom unique du groupe.
-2.  **Mot de passe du groupe** : Ce champ est une fonctionnalité héritée et est rarement utilisé. Les systèmes modernes utilisent des outils comme `sudo` pour les privilèges élevés au lieu des mots de passe de groupe. Vous verrez généralement un espace réservé comme un astérisque (`*`) ou un 'x'.
-3.  **Identifiant de groupe (GID)** : Un identifiant numérique unique pour le groupe. Le système utilise souvent le GID en interne au lieu du nom du groupe.
-4.  **Liste des utilisateurs** : Une liste séparée par des virgules des noms d'utilisateur qui sont membres de ce groupe.
+1. **Nom du groupe** : Le nom unique du groupe.
+2. **Mot de passe du groupe** : Ce champ est une fonctionnalité héritée et est rarement utilisé. Les systèmes modernes utilisent des outils comme `sudo` pour les privilèges élevés au lieu des mots de passe de groupe. Vous verrez généralement un espace réservé comme un astérisque (`*`) ou un 'x'.
+3. **Identifiant de groupe (GID)** : Un identifiant numérique unique pour le groupe. Le système utilise souvent le GID en interne au lieu du nom du groupe.
+4. **Liste des utilisateurs** : Une liste séparée par des virgules des noms d'utilisateur qui sont membres de ce groupe.
 
 Dans l'exemple `root:*:0:pete`, le nom du groupe est `root`, il n'y a pas de mot de passe, le GID est `0`, et l'utilisateur `pete` en est membre.
 
@@ -40,9 +40,9 @@ Dans l'exemple `root:*:0:pete`, le nom du groupe est `root`, il n'y a pas de mot
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes sous Linux :
 
-1.  **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Entraînez-vous au cycle de vie complet de l'administration des utilisateurs, de la création et de la sécurisation des nouveaux comptes à leur modification et suppression.
-2.  **[Gérer les groupes Linux avec groupadd, usermod et groupdel](https://labex.io/fr/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Acquérir une expérience pratique avec les utilitaires de ligne de commande essentiels pour l'administration des groupes, y compris `groupadd`, `usermod` et `groupdel`.
-3.  **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Simulez l'ajout de nouveaux membres d'équipe à un environnement serveur en créant de nouveaux comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances aux groupes.
+1. **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Entraînez-vous au cycle de vie complet de l'administration des utilisateurs, de la création et de la sécurisation des nouveaux comptes à leur modification et suppression.
+2. **[Gérer les groupes Linux avec groupadd, usermod et groupdel](https://labex.io/fr/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Acquérir une expérience pratique avec les utilitaires de ligne de commande essentiels pour l'administration des groupes, y compris `groupadd`, `usermod` et `groupdel`.
+3. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Simulez l'ajout de nouveaux membres d'équipe à un environnement serveur en créant de nouveaux comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances aux groupes.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des utilisateurs et des groupes sous Linux.
 

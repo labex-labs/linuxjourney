@@ -45,9 +45,9 @@ Une règle générale pour une bonne **performance du système** est de mainteni
 
 Afin d'acquérir une expérience pratique avec la **surveillance du CPU sous Linux** et l'analyse de la **performance du système**, essayez ces laboratoires pratiques. Ils vous aideront à appliquer les concepts de **charge moyenne** et d'**utilisation des processus** dans des scénarios réels.
 
-1.  **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir et à inspecter les processus, et à surveiller les ressources avec des outils comme `ps` et `top`, ce qui est directement lié à la compréhension de la charge CPU.
-2.  **[Commande Linux top : Surveillance du Système en Temps Réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour la surveillance du système en temps réel, y compris le tri des processus et le filtrage, offrant une analyse plus approfondie de l'activité CPU et des processus.
-3.  **[Commande Linux free : Surveillance de la Mémoire Système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à surveiller et à analyser l'utilisation de la mémoire système, qui est souvent un facteur critique parallèlement à la charge CPU dans la performance globale du système.
+1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir et à inspecter les processus, et à surveiller les ressources avec des outils comme `ps` et `top`, ce qui est directement lié à la compréhension de la charge CPU.
+2. **[Commande Linux top : Surveillance du Système en Temps Réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour la surveillance du système en temps réel, y compris le tri des processus et le filtrage, offrant une analyse plus approfondie de l'activité CPU et des processus.
+3. **[Commande Linux free : Surveillance de la Mémoire Système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à surveiller et à analyser l'utilisation de la mémoire système, qui est souvent un facteur critique parallèlement à la charge CPU dans la performance globale du système.
 
 ## Quiz Question
 

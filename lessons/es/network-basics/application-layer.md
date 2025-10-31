@@ -23,9 +23,9 @@ Para gestionar la comunicación, la capa de aplicación utiliza protocolos espec
 
 Usemos un correo electrónico como **ejemplo de protocolo de capa de aplicación** en acción. Imagina que le estás enviando un correo electrónico a un amigo.
 
-1.  Redactas tu mensaje en un cliente de correo electrónico.
-2.  Cuando presionas "Enviar", el cliente de correo electrónico (la aplicación) entrega los datos a la capa de aplicación.
-3.  La capa de aplicación utiliza el protocolo SMTP para formatear el correo electrónico correctamente.
+1. Redactas tu mensaje en un cliente de correo electrónico.
+2. Cuando presionas "Enviar", el cliente de correo electrónico (la aplicación) entrega los datos a la capa de aplicación.
+3. La capa de aplicación utiliza el protocolo SMTP para formatear el correo electrónico correctamente.
 
 ### Encapsulación de Datos y la Cabecera de Capa de Aplicación
 
@@ -39,7 +39,7 @@ En nuestro ejemplo de correo electrónico, los datos formateados con SMTP se pas
 
 ¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de las capas de red y los puertos:
 
-1.  **[Analizar Puertos y Sesiones de Red con netstat en Linux](https://labex.io/es/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - En este laboratorio, aprenderás a usar el comando `netstat` para analizar la actividad de red, explorando conceptos fundamentales como puertos de red, sockets y conexiones activas. Esto te dará una visión práctica de cómo se comunican los servicios a través de la red, relacionándose directamente con los conceptos de la capa de transporte discutidos.
+1. **[Analizar Puertos y Sesiones de Red con netstat en Linux](https://labex.io/es/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - En este laboratorio, aprenderás a usar el comando `netstat` para analizar la actividad de red, explorando conceptos fundamentales como puertos de red, sockets y conexiones activas. Esto te dará una visión práctica de cómo se comunican los servicios a través de la red, relacionándose directamente con los conceptos de la capa de transporte discutidos.
 
 Este laboratorio te ayudará a aplicar los conceptos de comunicación de red y uso de puertos en un entorno Linux real, aumentando tu confianza para entender cómo interactúan las aplicaciones con la pila de red.
 

@@ -48,7 +48,7 @@ Hello World, how are you?
 
 为了将您的知识付诸实践，请尝试以下动手实验。它将帮助您巩固对字符翻译和文本处理的理解。
 
-1.  **[Linux tr 命令：字符翻译](https://labex.io/zh/labs/linux-linux-tr-command-character-translating-219198)** - 学习 Linux `tr` 命令，用于文本流中的字符级转换。您将练习翻译字符、删除特定字符、使用字符类以及挤压重复字符。
+1. **[Linux tr 命令：字符翻译](https://labex.io/zh/labs/linux-linux-tr-command-character-translating-219198)** - 学习 Linux `tr` 命令，用于文本流中的字符级转换。您将练习翻译字符、删除特定字符、使用字符类以及挤压重复字符。
 
 此实验将帮助您在实际场景中应用文本操作概念，并增强对 `tr` 命令的信心。
 

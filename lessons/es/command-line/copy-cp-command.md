@@ -79,8 +79,8 @@ Este comando demuestra cómo usar `linux cp -p` para copiar `miarchivomolon` pre
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la copia de archivos y directorios en Linux:
 
-1.  **[Comando cp de Linux: Copia de Archivos](https://labex.io/es/labs/linux-linux-cp-command-file-copying-209744)** - Practica el uso básico, opciones avanzadas como la copia recursiva, la preservación de atributos y el uso de comodines para copiar archivos y directorios eficientemente.
-2.  **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practica habilidades esenciales de gestión de archivos de Linux usando los comandos `cp`, `mv` y `rm` para organizar una estructura de proyecto, mover archivos y limpiar directorios innecesarios.
+1. **[Comando cp de Linux: Copia de Archivos](https://labex.io/es/labs/linux-linux-cp-command-file-copying-209744)** - Practica el uso básico, opciones avanzadas como la copia recursiva, la preservación de atributos y el uso de comodines para copiar archivos y directorios eficientemente.
+2. **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practica habilidades esenciales de gestión de archivos de Linux usando los comandos `cp`, `mv` y `rm` para organizar una estructura de proyecto, mover archivos y limpiar directorios innecesarios.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la copia y gestión de archivos en Linux.
 

@@ -80,9 +80,9 @@ d[a-c]g
 
 知識を実践に移しましょう。正規表現とパターンマッチングの理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux での grep を使用したテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - このラボでは、`grep`コマンドを使用して Linux システム上のファイル内のテキストを検索する方法を学びます。基本的な検索の実行、行番号の表示、`^`や`$`などのアンカーを使用した行位置の一致、および複雑なパターンマッチングのための基本および拡張正規表現の活用を行います。
-2.  **[テキスト処理と正規表現](https://labex.io/ja/labs/linux-text-processing-and-regular-expressions-18003)** - 強力なテキスト処理ツールである grep、sed、awk を学びます。Linux で効率的なテキスト操作とパターンマッチングのために正規表現を使用する方法を学びます。
-3.  **[メールアドレスと数字の抽出](https://labex.io/ja/labs/linux-extracting-mails-and-numbers-17991)** - このチャレンジでは、grep と正規表現を使用してファイルから E メールアドレスと数字を抽出する方法を学び、Linux の基本的なテキスト処理スキルを実証します。
+1. **[Linux での grep を使用したテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - このラボでは、`grep`コマンドを使用して Linux システム上のファイル内のテキストを検索する方法を学びます。基本的な検索の実行、行番号の表示、`^`や`$`などのアンカーを使用した行位置の一致、および複雑なパターンマッチングのための基本および拡張正規表現の活用を行います。
+2. **[テキスト処理と正規表現](https://labex.io/ja/labs/linux-text-processing-and-regular-expressions-18003)** - 強力なテキスト処理ツールである grep、sed、awk を学びます。Linux で効率的なテキスト操作とパターンマッチングのために正規表現を使用する方法を学びます。
+3. **[メールアドレスと数字の抽出](https://labex.io/ja/labs/linux-extracting-mails-and-numbers-17991)** - このチャレンジでは、grep と正規表現を使用してファイルから E メールアドレスと数字を抽出する方法を学び、Linux の基本的なテキスト処理スキルを実証します。
 
 これらのラボは、実際のシナリオで概念を適用し、正規表現とテキスト処理に対する自信を築くのに役立ちます。
 

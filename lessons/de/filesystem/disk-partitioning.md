@@ -92,7 +92,7 @@ Dieser Befehl ändert die Größe der Partition Nummer 1, sodass sie bei der 800
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Festplattenpartitionierung und Dateisystemverwaltung zu festigen:
 
-1.  [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In diesem Lab lernen Sie, Festplattenpartitionen und Dateisysteme unter Linux zu verwalten. Sie verwenden fdisk, um eine neue Partition zu erstellen, diese mit ext4 zu formatieren, sie einzubinden, die dauerhafte Einhängung in /etc/fstab zu konfigurieren und eine Swap-Partition zu erstellen – alles auf einer sicheren sekundären virtuellen Festplatte.
+1. [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In diesem Lab lernen Sie, Festplattenpartitionen und Dateisysteme unter Linux zu verwalten. Sie verwenden fdisk, um eine neue Partition zu erstellen, diese mit ext4 zu formatieren, sie einzubinden, die dauerhafte Einhängung in /etc/fstab zu konfigurieren und eine Swap-Partition zu erstellen – alles auf einer sicheren sekundären virtuellen Festplatte.
 
 Dieses Lab hilft Ihnen, die Konzepte der Festplattenpartitionierung und Dateisystemverwaltung in einem realen Szenario anzuwenden und Vertrauen in diese wesentlichen Linux-Administrationsfähigkeiten aufzubauen.
 

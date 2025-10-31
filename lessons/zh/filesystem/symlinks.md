@@ -86,8 +86,8 @@ ln /path/to/original /path/to/link
 
 熟能生巧！这里有一些实践操作实验，以加强你对文件管理、链接和 inode 的理解：
 
-1.  **[在 Linux 中管理文件和目录](https://labex.io/zh/labs/comptia-manage-files-and-directories-in-linux-590835)** - 练习创建、复制、移动和删除文件和目录，并专门学习符号链接和硬链接，以及如何分析 inode。
-2.  **[在 Linux 中导航文件系统](https://labex.io/zh/labs/comptia-navigate-the-filesystem-in-linux-590971)** - 掌握 `pwd`、`cd` 和 `ls` 等基本命令，以高效地在 Linux 文件系统中移动，这是理解文件及其 inode 位置的基础技能。
+1. **[在 Linux 中管理文件和目录](https://labex.io/zh/labs/comptia-manage-files-and-directories-in-linux-590835)** - 练习创建、复制、移动和删除文件和目录，并专门学习符号链接和硬链接，以及如何分析 inode。
+2. **[在 Linux 中导航文件系统](https://labex.io/zh/labs/comptia-navigate-the-filesystem-in-linux-590971)** - 掌握 `pwd`、`cd` 和 `ls` 等基本命令，以高效地在 Linux 文件系统中移动，这是理解文件及其 inode 位置的基础技能。
 
 这些实验将帮助你在真实场景中应用文件管理和链接的概念，并增强你对 Linux 文件系统的信心。
 

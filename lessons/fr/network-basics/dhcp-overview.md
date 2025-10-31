@@ -32,10 +32,10 @@ Chaque réseau physique doit disposer de son propre serveur DHCP pour rationalis
 
 Le processus par lequel un appareil obtient une adresse IP via DHCP implique un échange en quatre étapes, souvent mémorisé par l'acronyme DORA :
 
-1.  **DHCP Discover (Découverte DHCP) :** L'appareil client diffuse un message `DISCOVER` sur le réseau pour trouver un serveur DHCP disponible.
-2.  **DHCP Offer (Offre DHCP) :** Tout serveur DHCP qui reçoit le message de découverte peut répondre avec un message `OFFER`. Ce message contient une adresse IP proposée, un masque de sous-réseau, une adresse de passerelle et une durée de bail.
-3.  **DHCP Request (Requête DHCP) :** Le client reçoit une ou plusieurs offres et en choisit une. Il diffuse ensuite un message `REQUEST` pour informer tous les serveurs DHCP de l'offre qu'il a acceptée.
-4.  **DHCP Acknowledgment (ACK) (Accusé de réception DHCP) :** Le serveur qui a fait l'offre acceptée envoie un message `ACK` final au client, confirmant le bail et finalisant la configuration.
+1. **DHCP Discover (Découverte DHCP) :** L'appareil client diffuse un message `DISCOVER` sur le réseau pour trouver un serveur DHCP disponible.
+2. **DHCP Offer (Offre DHCP) :** Tout serveur DHCP qui reçoit le message de découverte peut répondre avec un message `OFFER`. Ce message contient une adresse IP proposée, un masque de sous-réseau, une adresse de passerelle et une durée de bail.
+3. **DHCP Request (Requête DHCP) :** Le client reçoit une ou plusieurs offres et en choisit une. Il diffuse ensuite un message `REQUEST` pour informer tous les serveurs DHCP de l'offre qu'il a acceptée.
+4. **DHCP Acknowledgment (ACK) (Accusé de réception DHCP) :** Le serveur qui a fait l'offre acceptée envoie un message `ACK` final au client, confirmant le bail et finalisant la configuration.
 
 Bien que le protocole complet soit plus complexe, ces quatre étapes représentent le cœur de la manière dont le DHCP configure dynamiquement les hôtes sur un réseau.
 
@@ -43,9 +43,9 @@ Bien que le protocole complet soit plus complexe, ces quatre étapes représente
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP dynamique et de la configuration réseau :
 
-1.  **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour inspecter les interfaces et utilisez spécifiquement `dhclient` pour obtenir une adresse IP dynamique, appliquant directement vos connaissances sur le DHCP.
-2.  **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP attribuées par DHCP, et inspectez les interfaces réseau.
-3.  **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité du réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les adresses IP attribuées dynamiquement fonctionnent au sein d'un réseau.
+1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour inspecter les interfaces et utilisez spécifiquement `dhclient` pour obtenir une adresse IP dynamique, appliquant directement vos connaissances sur le DHCP.
+2. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Apprenez à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IP attribuées par DHCP, et inspectez les interfaces réseau.
+3. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez l'adressage IP et la joignabilité du réseau à l'aide de `ping` et `ip a`, ce qui vous aidera à comprendre comment les adresses IP attribuées dynamiquement fonctionnent au sein d'un réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts d'attribution d'IP dynamique et de configuration réseau dans des scénarios réels et à renforcer votre confiance en matière de mise en réseau sous Linux.
 

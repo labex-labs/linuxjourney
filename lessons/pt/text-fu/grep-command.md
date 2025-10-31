@@ -38,6 +38,7 @@ Sem o `-e`, o `grep` trataria `-v` como a opção "inverter correspondência". O
 You pode modificar o comportamento do `grep` com várias flags para refinar seus resultados de pesquisa.
 
 - **Pesquisa Insensível a Maiúsculas/Minúsculas**: Use a flag `-i` para tornar sua pesquisa insensível a maiúsculas/minúsculas.
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **Mostrar Apenas a Correspondência**: Se você quiser ver apenas a parte exata da linha que corresponde ao padrão, use a flag `grep -o`.
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ Como você pode ver, o `grep` é uma ferramenta versátil e poderosa para qualqu
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de pesquisa de texto e correspondência de padrões com `grep`:
 
-1.  **[Pesquisar Texto com grep no Linux](https://labex.io/pt/labs/comptia-search-text-with-grep-in-linux-590841)** - Pratique pesquisas básicas, exiba números de linha, use âncoras e utilize expressões regulares básicas e estendidas para correspondência de padrões complexos com `grep`.
-2.  **[Comando Linux grep: Pesquisa de Padrões](https://labex.io/pt/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprenda a usar o `grep` para pesquisar e corresponder padrões em arquivos de texto e explore expressões regulares para definir padrões de pesquisa complexos.
-3.  **[Agulha no Palheiro](https://labex.io/pt/labs/linux-needle-in-the-haystack-388109)** - Aprenda o poder do comando `grep` para procurar padrões específicos, contar ocorrências, extrair valores exclusivos e combinar vários critérios de pesquisa em vários arquivos de log.
+1. **[Pesquisar Texto com grep no Linux](https://labex.io/pt/labs/comptia-search-text-with-grep-in-linux-590841)** - Pratique pesquisas básicas, exiba números de linha, use âncoras e utilize expressões regulares básicas e estendidas para correspondência de padrões complexos com `grep`.
+2. **[Comando Linux grep: Pesquisa de Padrões](https://labex.io/pt/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprenda a usar o `grep` para pesquisar e corresponder padrões em arquivos de texto e explore expressões regulares para definir padrões de pesquisa complexos.
+3. **[Agulha no Palheiro](https://labex.io/pt/labs/linux-needle-in-the-haystack-388109)** - Aprenda o poder do comando `grep` para procurar padrões específicos, contar ocorrências, extrair valores exclusivos e combinar vários critérios de pesquisa em vários arquivos de log.
 
 Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com `grep` e expressões regulares.
 

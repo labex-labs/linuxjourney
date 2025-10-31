@@ -43,9 +43,9 @@ yahoo.com のような別のネットワーク上のホストに接続する必�
 
 練習あるのみです！IP アドレス指定とサブネット化の理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、サブネットを理解するための基本である IPv4 アドレスを含むネットワークアドレッシング情報を特定する練習をします。
-2.  **[Linux で IP アドレスタイプと到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスタイプを探索し、ネットワーク到達性をテストする方法を学び、ホストが同じネットワーク上にあるかどうかを確認するのに役立ちます。
-3.  **[Linux ターミナルで IP サブネット化と 2 進数変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - レッスンで説明されているネットワークプレフィックスとホスト識別子の概念を直接適用して、IP サブネット化と 2 進数変換を習得します。
+1. **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、サブネットを理解するための基本である IPv4 アドレスを含むネットワークアドレッシング情報を特定する練習をします。
+2. **[Linux で IP アドレスタイプと到達可能性を探索する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスタイプを探索し、ネットワーク到達性をテストする方法を学び、ホストが同じネットワーク上にあるかどうかを確認するのに役立ちます。
+3. **[Linux ターミナルで IP サブネット化と 2 進数変換を実行する](https://labex.io/ja/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - レッスンで説明されているネットワークプレフィックスとホスト識別子の概念を直接適用して、IP サブネット化と 2 進数変換を習得します。
 
 これらのラボは、実際のシナリオで概念を適用し、ネットワークアドレッシングとサブネット化に対する自信を築くのに役立ちます。
 

@@ -55,9 +55,9 @@ Se você já usou um multiplexador de terminal como `screen` ou `tmux`, notará 
 
 Para solidificar sua compreensão da manipulação de buffers e arquivos de texto, experimente estes laboratórios práticos. Eles ajudarão você a aplicar esses conceitos em cenários do mundo real.
 
-1.  **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique criar, editar, salvar e navegar por texto dentro dos editores Vim e Nano, que são cruciais para trabalhar com buffers.
-2.  **[Comando cat do Linux: Concatenação de Arquivos](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprenda a visualizar, concatenar e manipular arquivos de texto, aplicando diretamente à forma como você pode interagir com o conteúdo do buffer.
-3.  **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique o uso de comandos como `cat`, `more` e `less` para visualizar e navegar eficientemente por arquivos de texto, simulando cenários do mundo real de exame de conteúdo semelhante a buffer.
+1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique criar, editar, salvar e navegar por texto dentro dos editores Vim e Nano, que são cruciais para trabalhar com buffers.
+2. **[Comando cat do Linux: Concatenação de Arquivos](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprenda a visualizar, concatenar e manipular arquivos de texto, aplicando diretamente à forma como você pode interagir com o conteúdo do buffer.
+3. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique o uso de comandos como `cat`, `more` e `less` para visualizar e navegar eficientemente por arquivos de texto, simulando cenários do mundo real de exame de conteúdo semelhante a buffer.
 
 Estes laboratórios ajudarão você a ganhar confiança na manipulação de arquivos de texto e buffers no Linux.
 

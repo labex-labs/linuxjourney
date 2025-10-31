@@ -29,16 +29,16 @@ root:x:0:0:root:/root:/bin/bash
 
 Dieser Eintrag für den Benutzer `root` enthält sieben durch Doppelpunkte (`:`) getrennte Felder. Das Verständnis der Struktur von `/etc/passwd` unter Linux ist der Schlüssel zur Verwaltung von Benutzern. Lassen Sie uns jedes Feld aufschlüsseln:
 
-1.  **Benutzername**: Der Anmeldename des Benutzers (z. B. `root`).
-2.  **Passwort**: Ein Platzhalter für das verschlüsselte Passwort des Benutzers. Das tatsächliche Passwort wird aus Sicherheitsgründen hier nicht gespeichert.
+1. **Benutzername**: Der Anmeldename des Benutzers (z. B. `root`).
+2. **Passwort**: Ein Platzhalter für das verschlüsselte Passwort des Benutzers. Das tatsächliche Passwort wird aus Sicherheitsgründen hier nicht gespeichert.
     - Ein `x` zeigt an, dass das verschlüsselte Passwort in der Datei `/etc/shadow` gespeichert ist.
     - Ein `*` (Sternchen) bedeutet, dass das Konto gesperrt ist und nicht für die Anmeldung verwendet werden kann.
     - Ein leeres Feld bedeutet, dass der Benutzer kein Passwort hat.
-3.  **Benutzer-ID (UID)**: Die eindeutige numerische Kennung für den Benutzer. Der Benutzer `root` hat immer eine UID von `0`.
-4.  **Gruppen-ID (GID)**: Die numerische Kennung für die primäre Gruppe des Benutzers.
-5.  **GECOS-Feld**: Ein Kommentarfeld, das traditionell zusätzliche Informationen wie den vollständigen Namen des Benutzers, die Telefonnummer oder den Bürositz enthält. Es ist durch Kommas getrennt.
-6.  **Home-Verzeichnis**: Der absolute Pfad zum Home-Verzeichnis des Benutzers (z. B. `/root`).
-7.  **Standard-Shell**: Der Standard-Kommandozeileninterpreter des Benutzers, der bei der Anmeldung ausgeführt wird (z. B. `/bin/bash`).
+3. **Benutzer-ID (UID)**: Die eindeutige numerische Kennung für den Benutzer. Der Benutzer `root` hat immer eine UID von `0`.
+4. **Gruppen-ID (GID)**: Die numerische Kennung für die primäre Gruppe des Benutzers.
+5. **GECOS-Feld**: Ein Kommentarfeld, das traditionell zusätzliche Informationen wie den vollständigen Namen des Benutzers, die Telefonnummer oder den Bürositz enthält. Es ist durch Kommas getrennt.
+6. **Home-Verzeichnis**: Der absolute Pfad zum Home-Verzeichnis des Benutzers (z. B. `/root`).
+7. **Standard-Shell**: Der Standard-Kommandozeileninterpreter des Benutzers, der bei der Anmeldung ausgeführt wird (z. B. `/bin/bash`).
 
 ### Systembenutzer und spezielle Konten
 
@@ -54,9 +54,9 @@ Es ist immer sicherer und zuverlässiger, dedizierte Befehlszeilen-Dienstprogram
 
 Um Ihr Wissen zu festigen, probieren Sie diese praktischen Übungen aus. Sie helfen Ihnen, die Konzepte von Benutzer-IDs und Kontoverwaltung in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzeradministration aufzubauen.
 
-1.  **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
-2.  **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit grundlegenden Befehlszeilen-Dienstprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen und der Änderung von Benutzerzuordnungen.
-3.  **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen.
+1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
+2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit grundlegenden Befehlszeilen-Dienstprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen und der Änderung von Benutzerzuordnungen.
+3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen.
 
 ## Quiz Question
 

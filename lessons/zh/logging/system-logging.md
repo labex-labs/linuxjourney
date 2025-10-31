@@ -38,9 +38,9 @@ Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 
 实践是掌握的关键。以下动手实验是**学习 Linux 资源**中关于日志管理和文件查看技能的最佳实践。
 
-1.  **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 学习使用`cat`、`more`和`less`等命令从各种文件类型中提取关键信息，掌握高效查看和导航文本文件（包括系统日志和配置文件）的基本 Linux 命令行技能。
-2.  **[Linux tail 命令：文件末尾显示](https://labex.io/zh/labs/linux-linux-tail-command-file-end-display-214303)** - 学习使用 Linux `tail`命令来查看和监控文本文件的末尾。这对于实时日志分析特别有用。
-3.  **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 在此实验中，您将学习如何使用`grep`命令在 Linux 系统中的文件中搜索文本。这对于在大型日志文件中查找特定条目非常有价值。
+1. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 学习使用`cat`、`more`和`less`等命令从各种文件类型中提取关键信息，掌握高效查看和导航文本文件（包括系统日志和配置文件）的基本 Linux 命令行技能。
+2. **[Linux tail 命令：文件末尾显示](https://labex.io/zh/labs/linux-linux-tail-command-file-end-display-214303)** - 学习使用 Linux `tail`命令来查看和监控文本文件的末尾。这对于实时日志分析特别有用。
+3. **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 在此实验中，您将学习如何使用`grep`命令在 Linux 系统中的文件中搜索文本。这对于在大型日志文件中查找特定条目非常有价值。
 
 这些实验将帮助您在实际场景中应用日志文件管理和分析的概念，并增强您对 Linux 系统监控的信心。
 

@@ -17,9 +17,9 @@ Systemd is the default init system and service manager for most modern Linux dis
 
 Instead of rigid sequential scripts, **systemd** uses the concept of "goals" to bring your system to a functional state. It identifies a primary goal, or `target`, and works to satisfy its dependencies. This approach allows for greater flexibility and parallelization during startup. A typical boot process managed by **systemd** follows these steps:
 
-1.  **systemd** first loads its configuration files from directories like `/etc/systemd/system` and `/usr/lib/systemd/system`.
-2.  It then identifies the default boot goal, which is typically a symbolic link named `default.target`.
-3.  Finally, **systemd** resolves all dependencies for this target and activates the necessary units to achieve the desired system state.
+1. **systemd** first loads its configuration files from directories like `/etc/systemd/system` and `/usr/lib/systemd/system`.
+2. It then identifies the default boot goal, which is typically a symbolic link named `default.target`.
+3. Finally, **systemd** resolves all dependencies for this target and activates the necessary units to achieve the desired system state.
 
 ### Understanding Systemd Targets
 

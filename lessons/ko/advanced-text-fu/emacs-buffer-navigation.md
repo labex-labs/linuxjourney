@@ -55,9 +55,9 @@ C-x k - 현재 버퍼를 킬(닫기)
 
 버퍼 및 텍스트 파일 조작에 대한 이해를 공고히 하기 위해 다음 실습 랩을 시도해 보세요. 이는 실제 시나리오에서 이러한 개념을 적용하는 데 도움이 될 것입니다.
 
-1.  **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 버퍼 작업에 필수적인 Vim 및 Nano 편집기 내에서 텍스트 생성, 편집, 저장 및 탐색을 연습합니다.
-2.  **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배워 버퍼 내용과 상호 작용하는 방식에 직접 적용합니다.
-3.  **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`, `more`, `less`와 같은 명령을 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 방법을 연습하여 버퍼와 유사한 콘텐츠를 검토하는 실제 시나리오를 시뮬레이션합니다.
+1. **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 버퍼 작업에 필수적인 Vim 및 Nano 편집기 내에서 텍스트 생성, 편집, 저장 및 탐색을 연습합니다.
+2. **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배워 버퍼 내용과 상호 작용하는 방식에 직접 적용합니다.
+3. **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`, `more`, `less`와 같은 명령을 사용하여 텍스트 파일을 효율적으로 보고 탐색하는 방법을 연습하여 버퍼와 유사한 콘텐츠를 검토하는 실제 시나리오를 시뮬레이션합니다.
 
 이러한 랩은 Linux 에서 텍스트 파일 및 버퍼 조작에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

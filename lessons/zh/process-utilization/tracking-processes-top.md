@@ -80,9 +80,9 @@ top -p 1
 
 实践是掌握的关键。这些动手实验是学习 Linux 进程管理**最佳资源**之一，提供了一个实际环境来应用您所学到的知识。
 
-1.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在真实的 Linux 环境中练习与进程交互、检查、监控和终止进程。
-2.  **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用 `top` 命令实时监控 CPU 使用率、内存和运行中的进程。
-3.  **[Linux free 命令：监控系统内存](https://labex.io/zh/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 学习使用 `free` 命令来监控和分析系统内存使用情况。
+1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在真实的 Linux 环境中练习与进程交互、检查、监控和终止进程。
+2. **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用 `top` 命令实时监控 CPU 使用率、内存和运行中的进程。
+3. **[Linux free 命令：监控系统内存](https://labex.io/zh/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 学习使用 `free` 命令来监控和分析系统内存使用情况。
 
 ## Quiz Question
 

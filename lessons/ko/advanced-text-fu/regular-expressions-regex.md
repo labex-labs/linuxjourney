@@ -80,9 +80,9 @@ d[a-c]g
 
 지식을 실습에 적용해 보세요. 정규 표현식과 패턴 일치에 대한 이해를 강화하기 위한 실습 랩이 여기에 있습니다:
 
-1.  **[Linux 에서 grep 으로 텍스트 검색하기](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령을 사용하여 Linux 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 기본 검색을 수행하고, 줄 번호를 표시하고, 줄 위치 일치를 위해 `^` 및 `$`와 같은 앵커를 사용하며, 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식을 모두 활용합니다.
-2.  **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - 강력한 텍스트 처리 도구인 grep, sed 및 awk 를 배웁니다. Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 정규 표현식을 사용하는 방법을 배웁니다.
-3.  **[메일 및 숫자 추출](https://labex.io/ko/labs/linux-extracting-mails-and-numbers-17991)** - 이 챌린지에서는 grep 과 정규 표현식을 사용하여 파일에서 이메일 주소와 숫자를 추출하는 방법을 배우며 필수적인 Linux 텍스트 처리 기술을 시연합니다.
+1. **[Linux 에서 grep 으로 텍스트 검색하기](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령을 사용하여 Linux 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 기본 검색을 수행하고, 줄 번호를 표시하고, 줄 위치 일치를 위해 `^` 및 `$`와 같은 앵커를 사용하며, 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식을 모두 활용합니다.
+2. **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - 강력한 텍스트 처리 도구인 grep, sed 및 awk 를 배웁니다. Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 정규 표현식을 사용하는 방법을 배웁니다.
+3. **[메일 및 숫자 추출](https://labex.io/ko/labs/linux-extracting-mails-and-numbers-17991)** - 이 챌린지에서는 grep 과 정규 표현식을 사용하여 파일에서 이메일 주소와 숫자를 추출하는 방법을 배우며 필수적인 Linux 텍스트 처리 기술을 시연합니다.
 
 이러한 랩들은 실제 시나리오에서 개념을 적용하고 정규 표현식 및 텍스트 처리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

@@ -35,9 +35,9 @@ Esto convierte a `head` en uno de los **comandos de Linux** más útiles para in
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la visualización del principio de archivos y la manipulación general de archivos de texto:
 
-1.  **[Comando Linux head: Visualización del Principio de Archivo](https://labex.io/es/labs/linux-linux-head-command-file-beginning-display-214302)** - Este laboratorio te guiará en el uso del comando `head` para mostrar las líneas iniciales de archivos de texto, incluyendo la modificación del número de líneas.
-2.  **[Visualización de Archivos de Registro y Configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practica habilidades esenciales de la línea de comandos de Linux para ver y navegar eficientemente por archivos de texto, incluidos registros del sistema y archivos de configuración, que a menudo requieren comandos como `head`.
-3.  **[Detección Rápida de Amenazas](https://labex.io/es/labs/linux-rapid-threat-detection-387930)** - Aplica tu conocimiento de `head` (y `tail`) para extraer y analizar rápidamente entradas de registro recientes, simulando análisis de ciberseguridad del mundo real.
+1. **[Comando Linux head: Visualización del Principio de Archivo](https://labex.io/es/labs/linux-linux-head-command-file-beginning-display-214302)** - Este laboratorio te guiará en el uso del comando `head` para mostrar las líneas iniciales de archivos de texto, incluyendo la modificación del número de líneas.
+2. **[Visualización de Archivos de Registro y Configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practica habilidades esenciales de la línea de comandos de Linux para ver y navegar eficientemente por archivos de texto, incluidos registros del sistema y archivos de configuración, que a menudo requieren comandos como `head`.
+3. **[Detección Rápida de Amenazas](https://labex.io/es/labs/linux-rapid-threat-detection-387930)** - Aplica tu conocimiento de `head` (y `tail`) para extraer y analizar rápidamente entradas de registro recientes, simulando análisis de ciberseguridad del mundo real.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la visualización y el análisis de archivos de texto en Linux.
 

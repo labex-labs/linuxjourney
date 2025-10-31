@@ -99,7 +99,7 @@ Estos comandos son los bloques de construcción para la administración de servi
 
 La práctica es clave para dominar nuevas habilidades. Este laboratorio práctico le ayudará a reforzar su comprensión de la administración de procesos, que a menudo son controlados por servicios systemd:
 
-1.  **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio le brindará experiencia práctica con los efectos en tiempo de ejecución de la administración de unidades systemd.
+1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top`, ajustando la prioridad con `renice` y terminándolos con `kill`. Este laboratorio le brindará experiencia práctica con los efectos en tiempo de ejecución de la administración de unidades systemd.
 
 Este laboratorio le ayudará a aplicar estos conceptos en un escenario del mundo real y a ganar confianza con la administración de procesos en Linux.
 

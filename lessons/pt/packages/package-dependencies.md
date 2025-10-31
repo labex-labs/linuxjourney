@@ -29,8 +29,8 @@ O gerenciamento eficaz de pacotes visa garantir que essas dependências sejam at
 
 Aplique seu conhecimento com estes laboratórios práticos, que ajudarão a reforçar sua compreensão sobre pacotes Linux, dependências e bibliotecas compartilhadas:
 
-1.  **[Gerenciar Bibliotecas Compartilhadas no Linux](https://labex.io/pt/labs/comptia-manage-shared-libraries-in-linux-590867)** - Pratique a identificação, localização e gerenciamento de bibliotecas compartilhadas, que são dependências cruciais para muitos aplicativos.
-2.  **[Gerenciando Pacotes com RPM no Linux](https://labex.io/pt/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Aprenda a gerenciar pacotes de software em sistemas baseados em RPM, incluindo a consulta de informações de pacotes e a compreensão de dependências.
-3.  **[Consultar e Atualizar Pacotes com YUM no Linux](https://labex.io/pt/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Ganhe experiência com o YUM para inspecionar pacotes instalados, explorar repositórios e gerenciar atualizações, tudo o que envolve o manuseio de dependências de pacotes.
+1. **[Gerenciar Bibliotecas Compartilhadas no Linux](https://labex.io/pt/labs/comptia-manage-shared-libraries-in-linux-590867)** - Pratique a identificação, localização e gerenciamento de bibliotecas compartilhadas, que são dependências cruciais para muitos aplicativos.
+2. **[Gerenciando Pacotes com RPM no Linux](https://labex.io/pt/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Aprenda a gerenciar pacotes de software em sistemas baseados em RPM, incluindo a consulta de informações de pacotes e a compreensão de dependências.
+3. **[Consultar e Atualizar Pacotes com YUM no Linux](https://labex.io/pt/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Ganhe experiência com o YUM para inspecionar pacotes instalados, explorar repositórios e gerenciar atualizações, tudo o que envolve o manuseio de dependências de pacotes.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de gerenciamento de pacotes e resolução de dependências em cenários do mundo real, aumentando sua confiança na instalação de software Linux.

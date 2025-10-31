@@ -35,9 +35,9 @@ TCP provides a reliable, connection-oriented stream of data. Before any data is 
 
 To establish a connection, TCP uses a process called the three-way handshake:
 
-1.  **SYN**: The client sends a SYN (synchronize) segment to the server to initiate a connection.
-2.  **SYN-ACK**: The server responds with a SYN-ACK (synchronize-acknowledge) segment to acknowledge the client's request.
-3.  **ACK**: The client sends an ACK (acknowledge) segment back to the server, confirming the connection is established.
+1. **SYN**: The client sends a SYN (synchronize) segment to the server to initiate a connection.
+2. **SYN-ACK**: The server responds with a SYN-ACK (synchronize-acknowledge) segment to acknowledge the client's request.
+3. **ACK**: The client sends an ACK (acknowledge) segment back to the server, confirming the connection is established.
 
 Once the handshake is complete, data can be exchanged reliably. TCP uses sequence numbers to track each segment, allowing the receiving host to reassemble them in the correct order and request re-transmission of any missing segments. In our email example, the transport layer would attach the destination port for SMTP (port 25) and a source port from the client host to each segment.
 

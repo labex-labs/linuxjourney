@@ -32,8 +32,8 @@ En nuestro ejemplo, la porción de host es `00000000`. Este es un campo de 8 bit
 
 Aunque hay 256 combinaciones posibles, no todas pueden asignarse a hosts. En cualquier subred, dos direcciones están reservadas:
 
-1.  **Dirección de Red:** La primera dirección, donde todos los bits de host son `0` (ejemplo: 192.168.1.0).
-2.  **Dirección de Broadcast:** La última dirección, donde todos los bits de host son `1` (ejemplo: 192.168.1.255).
+1. **Dirección de Red:** La primera dirección, donde todos los bits de host son `0` (ejemplo: 192.168.1.0).
+2. **Dirección de Broadcast:** La última dirección, donde todos los bits de host son `1` (ejemplo: 192.168.1.255).
 
 Por lo tanto, el número real de hosts utilizables es 256 - 2 = 254. Esto significa que para la red `192.168.1.0` con una máscara `255.255.255.0`, puedes asignar direcciones IP desde `192.168.1.1` hasta `192.168.1.254`. Este cálculo central es una parte fundamental de las **matemáticas de subredes**.
 
@@ -41,9 +41,9 @@ Por lo tanto, el número real de hosts utilizables es 256 - 2 = 254. Esto signif
 
 ¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de direccionamiento IP y subredes:
 
-1.  **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, habilidades esenciales para la configuración y planificación de redes.
-2.  **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Profundiza tu comprensión de varios tipos de direcciones IP y cómo verificar la capacidad de alcance de la red usando comandos de Linux.
-3.  **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aplica tus conocimientos simulando configuraciones de red y probando la conectividad entre diferentes subredes IP en un entorno práctico.
+1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, habilidades esenciales para la configuración y planificación de redes.
+2. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Profundiza tu comprensión de varios tipos de direcciones IP y cómo verificar la capacidad de alcance de la red usando comandos de Linux.
+3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aplica tus conocimientos simulando configuraciones de red y probando la conectividad entre diferentes subredes IP en un entorno práctico.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de direccionamiento IP, máscaras de subred y cálculo de hosts en escenarios del mundo real y a ganar confianza con los fundamentos de red.
 

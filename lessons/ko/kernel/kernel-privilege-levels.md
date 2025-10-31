@@ -44,9 +44,9 @@ x86 컴퓨터 아키텍처 표준에는 두 가지 주요 수준이 있습니다
 
 연습이 완벽을 만듭니다! 사용자 공간, 커널 공간 및 권한 수준의 이론적 개념을 이해하는 것이 중요하지만, 실습 경험은 이러한 개념이 실제 리눅스 관리에서 어떻게 나타나는지 이해하는 데 도움이 됩니다. 다음은 사용자 수준 작업이 기본 시스템과 상호 작용하는 방식을 이해하는 데 도움이 되는 몇 가지 실습 랩입니다.
 
-1.  **[useradd, usermod 및 userdel 을 사용하여 리눅스 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 사용자 계정 생성, 수정 및 삭제를 연습합니다. 이는 사용자 공간에서 작동하며 특권 작업을 위해 커널 상호 작용이 필요한 엔터티를 관리하는 것과 직접적으로 관련이 있습니다.
-2.  **[리눅스에서 파일 및 디렉터리 권한 관리](https://labex.io/ko/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - 파일 및 디렉터리에 대한 접근을 제어하는 방법을 배웁니다. 이는 사용자의 권한을 기반으로 커널이 권한을 적용하는 핵심 보안 개념입니다.
-3.  **[리눅스 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 프로세스와 상호 작용하고 모니터링하는 방법을 탐색합니다. 프로세스는 리소스 관리 및 실행을 위해 커널에 시스템 호출을 하는 사용자 공간 애플리케이션입니다.
+1. **[useradd, usermod 및 userdel 을 사용하여 리눅스 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 사용자 계정 생성, 수정 및 삭제를 연습합니다. 이는 사용자 공간에서 작동하며 특권 작업을 위해 커널 상호 작용이 필요한 엔터티를 관리하는 것과 직접적으로 관련이 있습니다.
+2. **[리눅스에서 파일 및 디렉터리 권한 관리](https://labex.io/ko/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - 파일 및 디렉터리에 대한 접근을 제어하는 방법을 배웁니다. 이는 사용자의 권한을 기반으로 커널이 권한을 적용하는 핵심 보안 개념입니다.
+3. **[리눅스 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 프로세스와 상호 작용하고 모니터링하는 방법을 탐색합니다. 프로세스는 리소스 관리 및 실행을 위해 커널에 시스템 호출을 하는 사용자 공간 애플리케이션입니다.
 
 이러한 랩은 리눅스 시스템과의 사용자 상호 작용에 개념을 적용하는 데 도움이 될 것이며, 여기서 리소스 관리 및 권한 적용에 대한 커널의 역할이 가장 중요하며 기본적인 리눅스 관리 작업에 대한 자신감을 구축할 수 있습니다.
 

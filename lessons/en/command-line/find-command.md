@@ -43,8 +43,8 @@ A key feature of the `find command linux` users appreciate is its recursive natu
 
 Practice is key to mastering the `find command in linux`. These hands-on labs will help you reinforce your understanding of finding files and directories:
 
-1.  **[Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)** - This lab provides an introduction to the `find` command, a versatile utility for searching and locating files and directories based on various criteria. You'll practice using `find` to locate specific files.
-2.  **[Discover Critical System Resources](https://labex.io/labs/linux-discover-critical-system-resources-388032)** - Learn essential Linux commands for locating files and executables, including `find`. You'll practice efficiently navigating the file system and discovering critical system resources.
+1. **[Linux find Command: File Searching](https://labex.io/labs/linux-linux-find-command-file-searching-219191)** - This lab provides an introduction to the `find` command, a versatile utility for searching and locating files and directories based on various criteria. You'll practice using `find` to locate specific files.
+2. **[Discover Critical System Resources](https://labex.io/labs/linux-discover-critical-system-resources-388032)** - Learn essential Linux commands for locating files and executables, including `find`. You'll practice efficiently navigating the file system and discovering critical system resources.
 
 These labs will help you apply the concepts in real scenarios and build confidence with using the `find` command effectively.
 

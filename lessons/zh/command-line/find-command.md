@@ -43,8 +43,8 @@ find /home -type d -name MyFolder
 
 实践是掌握 `find 命令在 linux` 中的关键。这些动手实验将帮助您巩固对查找文件和目录的理解：
 
-1.  **[Linux find 命令：文件搜索](https://labex.io/zh/labs/linux-linux-find-command-file-searching-219191)** - 此实验介绍了 `find` 命令，这是一个用于根据各种标准搜索和定位文件和目录的多功能实用程序。您将练习使用 `find` 来定位特定文件。
-2.  **[发现关键系统资源](https://labex.io/zh/labs/linux-discover-critical-system-resources-388032)** - 学习定位文件和可执行文件的基本 Linux 命令，包括 `find`。您将练习高效地导航文件系统并发现关键系统资源。
+1. **[Linux find 命令：文件搜索](https://labex.io/zh/labs/linux-linux-find-command-file-searching-219191)** - 此实验介绍了 `find` 命令，这是一个用于根据各种标准搜索和定位文件和目录的多功能实用程序。您将练习使用 `find` 来定位特定文件。
+2. **[发现关键系统资源](https://labex.io/zh/labs/linux-discover-critical-system-resources-388032)** - 学习定位文件和可执行文件的基本 Linux 命令，包括 `find`。您将练习高效地导航文件系统并发现关键系统资源。
 
 这些实验将帮助您在实际场景中应用这些概念，并建立有效使用 `find` 命令的信心。
 

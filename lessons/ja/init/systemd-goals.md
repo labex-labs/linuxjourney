@@ -99,7 +99,7 @@ sudo systemctl disable networking.service
 
 実践が新しいスキルを習得する鍵となります。このハンズオンラボは、systemd サービスによって制御されることが多いプロセスの管理に関する理解を深めるのに役立ちます。
 
-1.  **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - フォアグラウンドおよびバックグラウンドプロセスとの対話、`ps`を使用した検査、`top`を使用したリソースの監視、`renice`を使用した優先度の調整、`kill`を使用した終了の練習をします。このラボは、systemd ユニット管理の実行時効果に関する実践的な経験を提供します。
+1. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - フォアグラウンドおよびバックグラウンドプロセスとの対話、`ps`を使用した検査、`top`を使用したリソースの監視、`renice`を使用した優先度の調整、`kill`を使用した終了の練習をします。このラボは、systemd ユニット管理の実行時効果に関する実践的な経験を提供します。
 
 ## Quiz Question
 

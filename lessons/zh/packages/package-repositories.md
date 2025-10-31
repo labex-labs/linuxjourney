@@ -33,9 +33,9 @@ meta_keywords: "Linux 软件包仓库，apt 软件源列表，/etc/apt/sources.l
 
 熟能生巧！以下是一些实践实验，以加强你对 Linux 软件包管理和存储库的理解：
 
-1.  **[在 Linux 上安装软件](https://labex.io/zh/labs/linux-software-installation-on-linux-18005)** - 练习在 Ubuntu 系统上安装和管理软件的各种方法，包括使用 apt 和处理.deb 文件，这与 `sources.list` 的概念直接相关。
-2.  **[安装和删除软件包](https://labex.io/zh/labs/linux-installing-and-removing-packages-385380)** - 学习在基于 Debian 的系统上更新系统、安装和删除软件包，巩固你对软件包管理器如何与存储库交互的理解。
-3.  **[使用 YUM 在 Linux 中查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 探索如何使用 YUM 在基于 RHEL 的 Linux 系统上管理软件包，从而对不同发行版之间的软件包管理有更广泛的认识。
+1. **[在 Linux 上安装软件](https://labex.io/zh/labs/linux-software-installation-on-linux-18005)** - 练习在 Ubuntu 系统上安装和管理软件的各种方法，包括使用 apt 和处理.deb 文件，这与 `sources.list` 的概念直接相关。
+2. **[安装和删除软件包](https://labex.io/zh/labs/linux-installing-and-removing-packages-385380)** - 学习在基于 Debian 的系统上更新系统、安装和删除软件包，巩固你对软件包管理器如何与存储库交互的理解。
+3. **[使用 YUM 在 Linux 中查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 探索如何使用 YUM 在基于 RHEL 的 Linux 系统上管理软件包，从而对不同发行版之间的软件包管理有更广泛的认识。
 
 这些实验将帮助你在实际场景中应用软件包存储库和软件管理的概念，并增强你对系统管理任务的信心。
 

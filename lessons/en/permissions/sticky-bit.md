@@ -49,9 +49,9 @@ Understanding the sticky bit is essential for managing multi-user environments a
 
 To solidify your understanding of file permissions, including special permissions like the sticky bit, try these hands-on labs. They will help you see how these concepts apply in real-world scenarios.
 
-1.  **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Practice creating users and groups, and manipulating file ownership and permissions. This lab provides a foundation for understanding how special permissions function.
-2.  **[Delete and Move Files](https://labex.io/labs/linux-delete-and-move-files-7777)** - Learn how to delete and move files, and see how permissions, including the sticky bit on a directory, can restrict these actions.
-3.  **[Find a File](https://labex.io/labs/linux-find-a-file-17993)** - Practice locating files and setting access controls, reinforcing the importance of file permissions in managing file access and modification.
+1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Practice creating users and groups, and manipulating file ownership and permissions. This lab provides a foundation for understanding how special permissions function.
+2. **[Delete and Move Files](https://labex.io/labs/linux-delete-and-move-files-7777)** - Learn how to delete and move files, and see how permissions, including the sticky bit on a directory, can restrict these actions.
+3. **[Find a File](https://labex.io/labs/linux-find-a-file-17993)** - Practice locating files and setting access controls, reinforcing the importance of file permissions in managing file access and modification.
 
 ## Quiz Question
 

@@ -54,8 +54,8 @@ Für eine vollständige Liste der Funktionen können Sie jederzeit die `cat manu
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Anzeige von Dateiinhalten zu festigen:
 
-1.  **[Linux cat Befehl: Dateiverkettung](https://labex.io/de/labs/linux-linux-cat-command-file-concatenating-210986)** - Lernen Sie den `cat`-Befehl zum Anzeigen, Verketten und Bearbeiten von Textdateien kennen und verbessern Sie Ihre Kommandozeilenfähigkeiten für die effiziente Textdateiverwaltung.
-2.  **[Anzeigen von Protokoll- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie die Verwendung von Befehlen wie `cat`, um Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, effizient anzuzeigen und zu durchsuchen, um kritische Informationen zu extrahieren.
+1. **[Linux cat Befehl: Dateiverkettung](https://labex.io/de/labs/linux-linux-cat-command-file-concatenating-210986)** - Lernen Sie den `cat`-Befehl zum Anzeigen, Verketten und Bearbeiten von Textdateien kennen und verbessern Sie Ihre Kommandozeilenfähigkeiten für die effiziente Textdateiverwaltung.
+2. **[Anzeigen von Protokoll- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie die Verwendung von Befehlen wie `cat`, um Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, effizient anzuzeigen und zu durchsuchen, um kritische Informationen zu extrahieren.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Anzeige von Dateiinhalten unter Linux aufzubauen.
 

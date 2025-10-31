@@ -33,9 +33,9 @@ man ページは、コマンドオプションを理解するのに特に役立�
 
 実践がコマンドラインを習得する鍵です。これらの実践的なラボは、基本的なコマンドに関するスキルを強化するのに役立ちます。完了したら、`man`コマンドを使用して各ツールの完全な可能性を探ってください。
 
-1.  **[Linux ls コマンド：コンテンツのリスト表示](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)** - ファイルとディレクトリの内容のリスト表示と分析を練習し、その後`man ls`を使用してその他のオプションを発見します。
-2.  **[Linux pwd コマンド：ディレクトリの表示](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)** - 現在のディレクトリを表示するために`pwd`コマンドを学習し、詳細についてはその man ページを調べます。
-3.  **[Linux cd コマンド：ディレクトリの変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - `cd`を使用してファイルシステム内を移動するのに習熟し、`man cd`を使用してそのさまざまなテクニックを理解します。
+1. **[Linux ls コマンド：コンテンツのリスト表示](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)** - ファイルとディレクトリの内容のリスト表示と分析を練習し、その後`man ls`を使用してその他のオプションを発見します。
+2. **[Linux pwd コマンド：ディレクトリの表示](https://labex.io/ja/labs/linux-linux-pwd-command-directory-displaying-209734)** - 現在のディレクトリを表示するために`pwd`コマンドを学習し、詳細についてはその man ページを調べます。
+3. **[Linux cd コマンド：ディレクトリの変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - `cd`を使用してファイルシステム内を移動するのに習熟し、`man cd`を使用してそのさまざまなテクニックを理解します。
 
 これらのラボは、コアコンセプトを実際のシナリオに適用し、不可欠な Linux コマンドに対する自信を構築するのに役立ち、`man`を効果的に使用して知識を深める準備を整えます。
 

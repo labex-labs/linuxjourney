@@ -53,8 +53,8 @@ Die Beherrschung des Befehls `ip route` ist eine Schlüsselqualifikation für je
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu festigen:
 
-1.  **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Konfiguration einer statischen IP, das Festlegen eines Standard-Gateways und die Überprüfung der Netzwerkkonfiguration mit dem Befehl `ip`.
-2.  **[Netzwerkschicht-Interaktion mit ping und arp unter Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr verarbeitet, und beobachten Sie Interaktionen auf Netzwerkschichtebene.
+1. **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Konfiguration einer statischen IP, das Festlegen eines Standard-Gateways und die Überprüfung der Netzwerkkonfiguration mit dem Befehl `ip`.
+2. **[Netzwerkschicht-Interaktion mit ping und arp unter Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr verarbeitet, und beobachten Sie Interaktionen auf Netzwerkschichtebene.
 
 Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
 

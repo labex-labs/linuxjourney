@@ -73,7 +73,7 @@ Les deux outils sont essentiels pour tout utilisateur Linux. Familiarisez-vous a
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus et du dépannage des conflits de ressources :
 
-1.  **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à identifier et à gérer les processus qui pourraient conserver des ressources, comme les fichiers sur une clé USB.
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à identifier et à gérer les processus qui pourraient conserver des ressources, comme les fichiers sur une clé USB.
 
 Ce laboratoire vous aidera à appliquer ces concepts dans des scénarios réels et à renforcer votre confiance dans l'identification et la gestion des processus système.
 

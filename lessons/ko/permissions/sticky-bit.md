@@ -49,9 +49,9 @@ chmod 1755 my_shared_dir
 
 스티키 비트와 같은 특수 권한을 포함하여 파일 권한에 대한 이해를 공고히 하기 위해 다음 실습 랩을 시도해 보십시오. 이는 실제 시나리오에서 이러한 개념이 어떻게 적용되는지 확인하는 데 도움이 될 것입니다.
 
-1.  **[Linux 사용자 그룹 및 파일 권한](https://labex.io/ko/labs/linux-linux-user-group-and-file-permissions-18002)** - 사용자 및 그룹 생성, 파일 소유권 및 권한 조작을 연습합니다. 이 랩은 특수 권한이 작동하는 방식에 대한 기초를 제공합니다.
-2.  **[파일 삭제 및 이동](https://labex.io/ko/labs/linux-delete-and-move-files-7777)** - 파일 삭제 및 이동 방법을 배우고 디렉터리의 스티키 비트를 포함한 권한이 이러한 작업을 어떻게 제한할 수 있는지 확인합니다.
-3.  **[파일 찾기](https://labex.io/ko/labs/linux-find-a-file-17993)** - 파일 찾기 및 액세스 제어 설정을 연습하여 파일 액세스 및 수정을 관리하는 데 있어 파일 권한의 중요성을 강화합니다.
+1. **[Linux 사용자 그룹 및 파일 권한](https://labex.io/ko/labs/linux-linux-user-group-and-file-permissions-18002)** - 사용자 및 그룹 생성, 파일 소유권 및 권한 조작을 연습합니다. 이 랩은 특수 권한이 작동하는 방식에 대한 기초를 제공합니다.
+2. **[파일 삭제 및 이동](https://labex.io/ko/labs/linux-delete-and-move-files-7777)** - 파일 삭제 및 이동 방법을 배우고 디렉터리의 스티키 비트를 포함한 권한이 이러한 작업을 어떻게 제한할 수 있는지 확인합니다.
+3. **[파일 찾기](https://labex.io/ko/labs/linux-find-a-file-17993)** - 파일 찾기 및 액세스 제어 설정을 연습하여 파일 액세스 및 수정을 관리하는 데 있어 파일 권한의 중요성을 강화합니다.
 
 ## Quiz Question
 

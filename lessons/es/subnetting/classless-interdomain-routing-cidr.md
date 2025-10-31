@@ -23,9 +23,9 @@ Una dirección IPv4 consta de 4 bytes, lo que suma un total de 32 bits. El prefi
 
 Tomemos el ejemplo `123.12.24.0/23`. Esto significa que los primeros 23 bits son el prefijo de red. Para encontrar el número de hosts disponibles:
 
-1.  Reste el prefijo CIDR del número total de bits (32): `32 - 23 = 9`. Esto deja 9 bits para la porción de host.
-2.  Calcule el número total de direcciones en la subred: `2^9 = 512`.
-3.  Reste 2 del total. Una dirección está reservada para la red en sí, y una es para la dirección de difusión. Esto deja `512 - 2 = 510` direcciones de host utilizables.
+1. Reste el prefijo CIDR del número total de bits (32): `32 - 23 = 9`. Esto deja 9 bits para la porción de host.
+2. Calcule el número total de direcciones en la subred: `2^9 = 512`.
+3. Reste 2 del total. Una dirección está reservada para la red en sí, y una es para la dirección de difusión. Esto deja `512 - 2 = 510` direcciones de host utilizables.
 
 Otro ejemplo común es una red `/30`, que proporciona `32 - 30 = 2` bits de host. Esto da como resultado `2^2 = 4` direcciones totales, dejando solo 2 direcciones utilizables, lo que la hace ideal para enlaces punto a punto.
 
@@ -33,8 +33,8 @@ Otro ejemplo común es una red `/30`, que proporciona `32 - 30 = 2` bits de host
 
 Para dominar estos conceptos, practique con algunos laboratorios prácticos que refuercen su comprensión de CIDR, direccionamiento IP y **cidr subnetting**:
 
-1.  **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine el subnetting IP y la conversión binaria, incluida la traducción de máscaras CIDR y el cálculo de hosts utilizables.
-2.  **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP gobiernan la comunicación directa de red en un entorno simulado.
-3.  **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la alcanzabilidad de la red usando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
+1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine el subnetting IP y la conversión binaria, incluida la traducción de máscaras CIDR y el cálculo de hosts utilizables.
+2. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP gobiernan la comunicación directa de red en un entorno simulado.
+3. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la alcanzabilidad de la red usando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de CIDR y direccionamiento IP en escenarios del mundo real y a ganar confianza con la configuración de red.

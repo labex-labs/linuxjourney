@@ -80,9 +80,9 @@ top -p 1
 
 習得には実践が不可欠です。これらのハンズオンラボは、学んだことを実践的に応用できる環境を提供するため、Linux プロセス管理を学ぶための**最良のリソース**の一部です。
 
-1.  **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - 実際の Linux 環境でプロセスを操作、検査、監視、終了する練習をします。
-2.  **[Linux top コマンド：リアルタイムシステム監視](https://labex.io/ja/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top`コマンドを使用して、CPU 使用率、メモリ、実行中のプロセスをリアルタイムで監視する方法を学びます。
-3.  **[Linux free コマンド：システムメモリの監視](https://labex.io/ja/labs/linux-linux-free-command-monitoring-system-memory-388496)** - `free`コマンドを使用して、システムメモリの使用状況を監視および分析する方法を学びます。
+1. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - 実際の Linux 環境でプロセスを操作、検査、監視、終了する練習をします。
+2. **[Linux top コマンド：リアルタイムシステム監視](https://labex.io/ja/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top`コマンドを使用して、CPU 使用率、メモリ、実行中のプロセスをリアルタイムで監視する方法を学びます。
+3. **[Linux free コマンド：システムメモリの監視](https://labex.io/ja/labs/linux-linux-free-command-monitoring-system-memory-388496)** - `free`コマンドを使用して、システムメモリの使用状況を監視および分析する方法を学びます。
 
 ## Quiz Question
 

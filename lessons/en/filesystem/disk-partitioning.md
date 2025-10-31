@@ -92,7 +92,7 @@ This command resizes partition number 1 to end at the 8000MB mark.
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux disk partitioning and filesystem management:
 
-1.  [Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use fdisk to create a new partition, format it with ext4, mount it, configure persistent mounting in /etc/fstab, and create a swap partition, all on a safe secondary virtual disk.
+1. [Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use fdisk to create a new partition, format it with ext4, mount it, configure persistent mounting in /etc/fstab, and create a swap partition, all on a safe secondary virtual disk.
 
 This lab will help you apply the concepts of disk partitioning and filesystem management in a real scenario and build confidence with these essential Linux administration skills.
 

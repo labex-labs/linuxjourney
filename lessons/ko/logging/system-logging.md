@@ -38,9 +38,9 @@ Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 
 **연습**이 숙달에 필수적입니다. 다음 실습 랩은 **리눅스 학습을 위한 최고의 리소스** 중 일부이며, 리눅스 로그 관리 및 파일 보기 기술을 다룹니다.
 
-1.  **[리눅스에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 시스템 로그 및 구성 파일을 포함하여 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 리눅스 명령줄 기술을 배웁니다. `cat`, `more`, `less`와 같은 명령을 사용하여 다양한 파일 형식에서 중요한 정보를 추출하는 연습을 합니다.
-2.  **[리눅스 tail 명령어: 파일 끝 표시](https://labex.io/ko/labs/linux-linux-tail-command-file-end-display-214303)** - 텍스트 파일의 끝을 보고 모니터링하기 위해 리눅스 `tail` 명령어를 배웁니다. 이는 실시간 로그 분석에 특히 유용합니다.
-3.  **[리눅스에서 grep 으로 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령어를 사용하여 리눅스 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 이는 대용량 로그 파일 내에서 특정 항목을 찾는 데 매우 중요합니다.
+1. **[리눅스에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 시스템 로그 및 구성 파일을 포함하여 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 리눅스 명령줄 기술을 배웁니다. `cat`, `more`, `less`와 같은 명령을 사용하여 다양한 파일 형식에서 중요한 정보를 추출하는 연습을 합니다.
+2. **[리눅스 tail 명령어: 파일 끝 표시](https://labex.io/ko/labs/linux-linux-tail-command-file-end-display-214303)** - 텍스트 파일의 끝을 보고 모니터링하기 위해 리눅스 `tail` 명령어를 배웁니다. 이는 실시간 로그 분석에 특히 유용합니다.
+3. **[리눅스에서 grep 으로 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 이 랩에서는 `grep` 명령어를 사용하여 리눅스 시스템의 파일에서 텍스트를 검색하는 방법을 배웁니다. 이는 대용량 로그 파일 내에서 특정 항목을 찾는 데 매우 중요합니다.
 
 이러한 랩은 로그 파일 관리 및 분석 개념을 실제 시나리오에 적용하고 리눅스 시스템 모니터링에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

@@ -73,7 +73,7 @@ Beide Tools sind für jeden Linux-Benutzer unerlässlich. Machen Sie sich mit ih
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis für die Verwaltung von Prozessen und die Behebung von Ressourcenkonflikten zu festigen:
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, deren Überprüfung mit `ps`, die Überwachung von Ressourcen mit `top` und deren Beendigung mit `kill`. Dieses Labor hilft Ihnen dabei, Prozesse zu identifizieren und zu verwalten, die möglicherweise Ressourcen wie Dateien auf einem USB-Laufwerk blockieren.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, deren Überprüfung mit `ps`, die Überwachung von Ressourcen mit `top` und deren Beendigung mit `kill`. Dieses Labor hilft Ihnen dabei, Prozesse zu identifizieren und zu verwalten, die möglicherweise Ressourcen wie Dateien auf einem USB-Laufwerk blockieren.
 
 Dieses Labor hilft Ihnen, diese Konzepte in realen Szenarien anzuwenden und Vertrauen beim Identifizieren und Verwalten von Systemprozessen aufzubauen.
 

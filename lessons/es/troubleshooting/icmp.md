@@ -38,9 +38,9 @@ Estos mensajes le resultarán más familiares a medida que exploremos las herram
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de ICMP y la solución de problemas de red:
 
-1.  **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilice `ping` para explorar cómo interactúan las capas de red y de enlace de datos, aplicando directamente los conceptos relacionados con la función de ICMP para probar la conectividad.
-2.  **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practique el uso de `ping` para probar la alcanzabilidad de la red y diagnosticar problemas de conectividad, reforzando la aplicación práctica de los mensajes ICMP.
-3.  **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP y probar la conectividad con `ping` en un entorno simulado, ayudándole a comprender cómo las configuraciones de red afectan la entrega de paquetes.
+1. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilice `ping` para explorar cómo interactúan las capas de red y de enlace de datos, aplicando directamente los conceptos relacionados con la función de ICMP para probar la conectividad.
+2. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practique el uso de `ping` para probar la alcanzabilidad de la red y diagnosticar problemas de conectividad, reforzando la aplicación práctica de los mensajes ICMP.
+3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP y probar la conectividad con `ping` en un entorno simulado, ayudándole a comprender cómo las configuraciones de red afectan la entrega de paquetes.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de ICMP y diagnóstico de red en escenarios reales y a ganar confianza con la solución de problemas de red.
 

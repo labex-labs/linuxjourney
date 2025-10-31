@@ -37,9 +37,9 @@ This chart is your primary tool. Each number corresponds to a bit's position. Th
 
 Let's convert the IP address `192.168.23.43` to binary. We'll walk through the first octet, `192`, to demonstrate the process. We use the values from our chart: `128 64 32 16 8 4 2 1`.
 
-1.  Start with the number `192`. Can you subtract 128 from it? Yes (192 - 128 = 64). So, the first bit is **1**.
-2.  Our new number is `64`. Can you subtract the next value, 64, from it? Yes (64 - 64 = 0). The second bit is **1**.
-3.  Our remainder is now `0`. We cannot subtract 32, 16, 8, 4, 2, or 1. Therefore, the remaining bits are all **0**.
+1. Start with the number `192`. Can you subtract 128 from it? Yes (192 - 128 = 64). So, the first bit is **1**.
+2. Our new number is `64`. Can you subtract the next value, 64, from it? Yes (64 - 64 = 0). The second bit is **1**.
+3. Our remainder is now `0`. We cannot subtract 32, 16, 8, 4, 2, or 1. Therefore, the remaining bits are all **0**.
 
 The binary form of 192 is `11000000`. You can apply this same subtraction method to the other octets.
 
@@ -57,7 +57,7 @@ Since all other bits are `0`, we don't add any other values. The formula `128 + 
 
 Practice makes perfect! While subnet math is often automated in the real world, understanding the underlying binary conversions is crucial for interviews and a deeper grasp of networking. Here's a hands-on lab to reinforce your understanding:
 
-1.  **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion by using Python in a Linux terminal to convert IP addresses, translate CIDR masks, and calculate network details.
+1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion by using Python in a Linux terminal to convert IP addresses, translate CIDR masks, and calculate network details.
 
 This lab will help you apply the concepts of binary conversion and subnetting in a practical scenario and build confidence with network addressing fundamentals.
 

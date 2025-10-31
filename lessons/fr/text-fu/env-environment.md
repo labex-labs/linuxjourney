@@ -65,9 +65,9 @@ Pour corriger cela, vous pouvez modifier la variable `PATH` pour inclure le nouv
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des variables d'environnement Linux :
 
-1.  **[Gérer l'environnement et la configuration du shell sous Linux](https://labex.io/fr/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Entraînez-vous à créer et gérer des variables locales et d'environnement, à comprendre l'héritage et à rendre les configurations persistantes en modifiant le fichier `.bashrc`.
-2.  **[Variables d'environnement sous Linux](https://labex.io/fr/labs/linux-environment-variables-in-linux-385274)** - Apprenez le concept et l'utilisation des variables d'environnement, comment les créer, les modifier et les gérer, ainsi que leur rôle dans la configuration du système.
-3.  **[Configurer les variables d'environnement Linux](https://labex.io/fr/labs/linux-configure-linux-environment-variables-437861)** - Acquérir une expérience pratique en créant, définissant et gérant des variables d'environnement dans un système Linux.
+1. **[Gérer l'environnement et la configuration du shell sous Linux](https://labex.io/fr/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Entraînez-vous à créer et gérer des variables locales et d'environnement, à comprendre l'héritage et à rendre les configurations persistantes en modifiant le fichier `.bashrc`.
+2. **[Variables d'environnement sous Linux](https://labex.io/fr/labs/linux-environment-variables-in-linux-385274)** - Apprenez le concept et l'utilisation des variables d'environnement, comment les créer, les modifier et les gérer, ainsi que leur rôle dans la configuration du système.
+3. **[Configurer les variables d'environnement Linux](https://labex.io/fr/labs/linux-configure-linux-environment-variables-437861)** - Acquérir une expérience pratique en créant, définissant et gérant des variables d'environnement dans un système Linux.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion de votre environnement shell Linux.
 

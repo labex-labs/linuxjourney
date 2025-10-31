@@ -79,8 +79,8 @@ Cette commande montre comment utiliser `linux cp -p` pour copier `monfichiercool
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la copie de fichiers et de répertoires sous Linux :
 
-1.  **[Commande cp Linux : Copie de Fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** - Entraînez-vous à l'utilisation de base, aux options avancées comme la copie récursive, la préservation des attributs et l'utilisation des jokers pour copier efficacement des fichiers et des répertoires.
-2.  **[Organisation des Fichiers et Répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Entraînez-vous aux compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer les répertoires inutiles.
+1. **[Commande cp Linux : Copie de Fichiers](https://labex.io/fr/labs/linux-linux-cp-command-file-copying-209744)** - Entraînez-vous à l'utilisation de base, aux options avancées comme la copie récursive, la préservation des attributs et l'utilisation des jokers pour copier efficacement des fichiers et des répertoires.
+2. **[Organisation des Fichiers et Répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Entraînez-vous aux compétences essentielles de gestion de fichiers Linux en utilisant les commandes `cp`, `mv` et `rm` pour organiser une structure de projet, déplacer des fichiers et nettoyer les répertoires inutiles.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la copie et la gestion des fichiers sous Linux.
 

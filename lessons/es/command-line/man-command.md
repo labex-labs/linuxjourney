@@ -33,9 +33,9 @@ Las páginas man son particularmente útiles para comprender las opciones de los
 
 La práctica es clave para dominar la línea de comandos. Estos laboratorios prácticos le ayudarán a reforzar sus habilidades con comandos fundamentales. Después de completarlos, use el comando `man` para explorar todo el potencial de cada herramienta.
 
-1.  **[Comando ls de Linux: Listado de Contenido](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)** - Practique listar y analizar el contenido de archivos y directorios, y luego use `man ls` para descubrir más opciones.
-2.  **[Comando pwd de Linux: Visualización de Directorios](https://labex.io/es/labs/linux-linux-pwd-command-directory-displaying-209734)** - Aprenda el comando `pwd` para mostrar su directorio actual y explore su página man para obtener detalles.
-3.  **[Comando cd de Linux: Cambio de Directorio](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Domine la navegación por su sistema de archivos con `cd` y use `man cd` para comprender sus diversas técnicas.
+1. **[Comando ls de Linux: Listado de Contenido](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)** - Practique listar y analizar el contenido de archivos y directorios, y luego use `man ls` para descubrir más opciones.
+2. **[Comando pwd de Linux: Visualización de Directorios](https://labex.io/es/labs/linux-linux-pwd-command-directory-displaying-209734)** - Aprenda el comando `pwd` para mostrar su directorio actual y explore su página man para obtener detalles.
+3. **[Comando cd de Linux: Cambio de Directorio](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Domine la navegación por su sistema de archivos con `cd` y use `man cd` para comprender sus diversas técnicas.
 
 Estos laboratorios le ayudarán a aplicar conceptos centrales en escenarios reales y a ganar confianza con los comandos esenciales de Linux, preparándolo para usar eficazmente `man` para profundizar su conocimiento.
 

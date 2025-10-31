@@ -69,8 +69,8 @@ La commande `rmdir` ne réussira que si le répertoire est complètement vide, c
 
 La pratique est essentielle. Voici quelques exercices pratiques pour consolider votre compréhension de la suppression de fichiers et de répertoires sous Linux :
 
-1.  **[Commande rm Linux : Suppression de fichiers](https://labex.io/fr/labs/linux-linux-rm-command-file-removing-209741)** - Apprenez à utiliser la commande `rm` pour supprimer des fichiers et des répertoires, y compris diverses options telles que `-r` et `-i`, et pratiquez la suppression de fichiers sûre et efficace.
-2.  **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Entraînez-vous aux compétences essentielles de gestion de fichiers Linux, y compris l'utilisation de la commande `rm` pour nettoyer les répertoires inutiles, dans un défi pratique.
+1. **[Commande rm Linux : Suppression de fichiers](https://labex.io/fr/labs/linux-linux-rm-command-file-removing-209741)** - Apprenez à utiliser la commande `rm` pour supprimer des fichiers et des répertoires, y compris diverses options telles que `-r` et `-i`, et pratiquez la suppression de fichiers sûre et efficace.
+2. **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Entraînez-vous aux compétences essentielles de gestion de fichiers Linux, y compris l'utilisation de la commande `rm` pour nettoyer les répertoires inutiles, dans un défi pratique.
 
 Ces laboratoires vous aideront à appliquer ces concepts dans des scénarios réels et à renforcer votre confiance avec la `commande rm sous linux`.
 

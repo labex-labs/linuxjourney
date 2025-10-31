@@ -78,7 +78,7 @@ Number  Start   End     Size     File system  Name        Flags
 
 Um Ihr Verständnis von Festplattenpartitionierung und Dateisystemen zu festigen, empfehlen wir dieses praktische Labor:
 
-1.  **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Üben Sie das Erstellen neuer Partitionen, deren Formatierung mit Dateisystemen wie ext4, deren Einhängen und die Konfiguration des persistenten Einhängens in `/etc/fstab`.
+1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Üben Sie das Erstellen neuer Partitionen, deren Formatierung mit Dateisystemen wie ext4, deren Einhängen und die Konfiguration des persistenten Einhängens in `/etc/fstab`.
 
 Dieses Labor hilft Ihnen, Konzepte des Speichermanagements in realen Szenarien anzuwenden und Selbstvertrauen im Umgang mit Linux-Speicher aufzubauen.
 

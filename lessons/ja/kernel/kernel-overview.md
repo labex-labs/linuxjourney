@@ -31,9 +31,9 @@ Linux オペレーティングシステムは、3 つの異なる抽象化レベ
 
 理論を実践に移すために、これらのハンズオンラボを試してみてください。これらは、Linux カーネルとそのシステムコンポーネントとの相互作用についての理解を深めるのに役立ちます。
 
-1.  **[Linux でカーネルモジュールを管理する](https://labex.io/ja/labs/comptia-manage-kernel-modules-in-linux-590865)** - カーネルモジュールのリスト表示、検査、ロード、アンロード、および起動時の自動ロードのための設定を練習します。
-2.  **[Linux でハードウェアデバイスを探索する](https://labex.io/ja/labs/comptia-explore-hardware-devices-in-linux-590861)** - コマンドラインユーティリティを使用して、Linux 環境内のハードウェアデバイスを識別および検査する方法を学びます。
-3.  **[Linux パーティションとファイルシステムを管理する](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - カーネルによって管理される、パーティションの作成、ファイルシステムのフォーマット、マウント、および永続的なマウントの設定に関する実践的な経験を積みます。
+1. **[Linux でカーネルモジュールを管理する](https://labex.io/ja/labs/comptia-manage-kernel-modules-in-linux-590865)** - カーネルモジュールのリスト表示、検査、ロード、アンロード、および起動時の自動ロードのための設定を練習します。
+2. **[Linux でハードウェアデバイスを探索する](https://labex.io/ja/labs/comptia-explore-hardware-devices-in-linux-590861)** - コマンドラインユーティリティを使用して、Linux 環境内のハードウェアデバイスを識別および検査する方法を学びます。
+3. **[Linux パーティションとファイルシステムを管理する](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - カーネルによって管理される、パーティションの作成、ファイルシステムのフォーマット、マウント、および永続的なマウントの設定に関する実践的な経験を積みます。
 
 これらのラボは、ハードウェアおよびシステムリソースとのカーネルの相互作用の概念を実際のシナリオに適用し、低レベルの Linux 管理に対する自信を築くのに役立ちます。
 

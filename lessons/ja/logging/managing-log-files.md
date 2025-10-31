@@ -34,9 +34,9 @@ meta_keywords: "logrotate, Linux ログ，ログ管理，ログローテーシ�
 
 練習あるのみです！ログファイル管理および関連するシステム管理タスクの理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux でログファイルと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `logrotate`のようなツールによって管理されるシステムログや設定ファイルを含むテキストファイルを効率的に表示および移動するための、必須の Linux コマンドラインスキルを練習します。
-2.  **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - サイバーセキュリティ分析のための必須の Linux コマンドラインスキルを学びます。`tail`および`head`コマンドを使用して最新のログエントリを迅速に抽出し分析し、高リスクな技術環境における迅速な脅威検出をシミュレートします。
-3.  **[tar を使用した Linux でのバックアップの作成と復元](https://labex.io/ja/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - システム管理タスクのハンズオン経験を積みます。古いログのアーカイブの一部となることが多いディレクトリのバックアップを行います。
+1. **[Linux でログファイルと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `logrotate`のようなツールによって管理されるシステムログや設定ファイルを含むテキストファイルを効率的に表示および移動するための、必須の Linux コマンドラインスキルを練習します。
+2. **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - サイバーセキュリティ分析のための必須の Linux コマンドラインスキルを学びます。`tail`および`head`コマンドを使用して最新のログエントリを迅速に抽出し分析し、高リスクな技術環境における迅速な脅威検出をシミュレートします。
+3. **[tar を使用した Linux でのバックアップの作成と復元](https://labex.io/ja/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - システム管理タスクのハンズオン経験を積みます。古いログのアーカイブの一部となることが多いディレクトリのバックアップを行います。
 
 これらのラボは、概念を実際のシナリオに適用し、Linux でのログファイルの管理と対話に対する自信を構築するのに役立ちます。
 

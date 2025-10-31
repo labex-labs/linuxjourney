@@ -37,9 +37,9 @@ Esta tabla es tu herramienta principal. Cada número corresponde a la posición 
 
 Vamos a convertir la dirección IP `192.168.23.43` a binario. Analizaremos el primer octeto, `192`, para demostrar el proceso. Usamos los valores de nuestra tabla: `128 64 32 16 8 4 2 1`.
 
-1.  Comienza con el número `192`. ¿Puedes restarle 128? Sí (192 - 128 = 64). Por lo tanto, el primer bit es **1**.
-2.  Nuestro nuevo número es `64`. ¿Puedes restarle el siguiente valor, 64? Sí (64 - 64 = 0). El segundo bit es **1**.
-3.  Nuestro resto es ahora `0`. No podemos restar 32, 16, 8, 4, 2 ni 1. Por lo tanto, los bits restantes son todos **0**.
+1. Comienza con el número `192`. ¿Puedes restarle 128? Sí (192 - 128 = 64). Por lo tanto, el primer bit es **1**.
+2. Nuestro nuevo número es `64`. ¿Puedes restarle el siguiente valor, 64? Sí (64 - 64 = 0). El segundo bit es **1**.
+3. Nuestro resto es ahora `0`. No podemos restar 32, 16, 8, 4, 2 ni 1. Por lo tanto, los bits restantes son todos **0**.
 
 La forma binaria de 192 es `11000000`. Puedes aplicar este mismo método de resta a los otros octetos.
 
@@ -57,7 +57,7 @@ Como todos los demás bits son `0`, no sumamos ningún otro valor. La fórmula `
 
 ¡La práctica hace al maestro! Aunque los cálculos de subredes a menudo se automatizan en el mundo real, comprender las conversiones binarias subyacentes es crucial para las entrevistas y una comprensión más profunda del networking. Aquí tienes un laboratorio práctico para reforzar tu comprensión:
 
-1.  **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria utilizando Python en una terminal de Linux para convertir direcciones IP, traducir máscaras CIDR y calcular detalles de red.
+1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria utilizando Python en una terminal de Linux para convertir direcciones IP, traducir máscaras CIDR y calcular detalles de red.
 
 Este laboratorio te ayudará a aplicar los conceptos de conversión binaria y subnetting en un escenario práctico y a ganar confianza con los fundamentos del direccionamiento de red.
 

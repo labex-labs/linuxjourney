@@ -51,7 +51,7 @@ Cet opérateur ajoute la sortie à la fin du fichier spécifié. Si le fichier n
 
 Pour consolider votre compréhension de la redirection E/S, essayez ce laboratoire pratique :
 
-1.  **[Redirection de l'entrée et de la sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs tels que `>`, `>>`, `2>` et la commande `tee`.
+1. **[Redirection de l'entrée et de la sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs tels que `>`, `>>`, `2>` et la commande `tee`.
 
 Ce laboratoire vous aidera à appliquer ces concepts dans des scénarios réels et à gagner en confiance avec la redirection E/S.
 

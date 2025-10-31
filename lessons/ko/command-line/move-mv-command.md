@@ -79,8 +79,8 @@ mv -t /somedirectory file_1 file_2
 
 연습이 완벽하게 만듭니다! `mv`와 같은 Linux 명령어를 마스터하는 데는 실습 경험이 중요합니다. 이 실습들은 실제 환경에서 파일 및 디렉터리를 이동하고 이름을 바꾸는 `mv` 명령어에 대한 이해를 확고히 하는 데 도움이 될 것입니다.
 
-1.  **[Linux mv 명령어: 파일 이동 및 이름 바꾸기](https://labex.io/ko/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - `mv` 명령어를 사용하여 파일 및 디렉터리의 이름을 바꾸고 이동하는 방법, 다양한 옵션 및 동작 이해에 대해 연습합니다.
-2.  **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - `mv`(및 `cp`, `rm`) 지식을 실제 과제에 적용하여 프로젝트 구조를 정리하고, 파일을 이동하고, 디렉터리를 정리합니다.
+1. **[Linux mv 명령어: 파일 이동 및 이름 바꾸기](https://labex.io/ko/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - `mv` 명령어를 사용하여 파일 및 디렉터리의 이름을 바꾸고 이동하는 방법, 다양한 옵션 및 동작 이해에 대해 연습합니다.
+2. **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - `mv`(및 `cp`, `rm`) 지식을 실제 과제에 적용하여 프로젝트 구조를 정리하고, 파일을 이동하고, 디렉터리를 정리합니다.
 
 이 실습들은 실제 시나리오에서 개념을 적용하고 `mv` 명령어를 사용한 파일 및 디렉터리 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

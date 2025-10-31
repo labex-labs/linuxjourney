@@ -27,15 +27,15 @@ Now, instead of typing `ls -la`, you can just type `ll`, and it will execute the
 
 A temporary alias will disappear once you close your terminal or reboot your system. To make a `command alias in linux` permanent, you need to add it to your shell's configuration file. For the Bash shell, this file is typically `~/.bashrc`.
 
-1.  Open the file in a text editor: `nano ~/.bashrc`
-2.  Add your alias definition to the file, just as you typed it on the command line:
+1. Open the file in a text editor: `nano ~/.bashrc`
+2. Add your alias definition to the file, just as you typed it on the command line:
 
 ```bash
 alias ll='ls -la'
 alias update='sudo apt update && sudo apt upgrade'
 ```
 
-3.  Save the file and exit the editor.
+3. Save the file and exit the editor.
 
 For the changes to take effect, you must either close and reopen your terminal or tell the shell to reload the configuration file using the `source` command:
 

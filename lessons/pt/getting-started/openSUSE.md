@@ -29,9 +29,9 @@ Com seu instalador amigável e o centro de controle YaST integrado, o openSUSE �
 
 Para ganhar mais experiência prática com sistemas Linux, experimente estes laboratórios práticos. Eles cobrem tarefas administrativas fundamentais que são úteis em qualquer distribuição Linux, incluindo openSUSE.
 
-1.  **[Gerenciamento de Contas de Usuário](https://labex.io/pt/labs/linux-user-account-management-49)** - Neste laboratório, você aprenderá a gerenciar contas de usuário na plataforma Linux, como criar novas contas de usuário, modificar o gerenciamento de contas de usuário e excluir uma conta de usuário.
-2.  **[O Truque do Coringa](https://labex.io/pt/labs/linux-the-joker-s-trick-270247)** - Neste desafio, você tentará gerenciar contas de usuário na plataforma Linux, incluindo a criação de novas contas de usuário, modificação do gerenciamento de contas de usuário e exclusão de contas de usuário.
-3.  **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio prático, você simulará a adição de novos membros da equipe a um ambiente de servidor. Você criará novas contas de usuário, configurará grupos personalizados e gerenciará a associação a grupos.
+1. **[Gerenciamento de Contas de Usuário](https://labex.io/pt/labs/linux-user-account-management-49)** - Neste laboratório, você aprenderá a gerenciar contas de usuário na plataforma Linux, como criar novas contas de usuário, modificar o gerenciamento de contas de usuário e excluir uma conta de usuário.
+2. **[O Truque do Coringa](https://labex.io/pt/labs/linux-the-joker-s-trick-270247)** - Neste desafio, você tentará gerenciar contas de usuário na plataforma Linux, incluindo a criação de novas contas de usuário, modificação do gerenciamento de contas de usuário e exclusão de contas de usuário.
+3. **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio prático, você simulará a adição de novos membros da equipe a um ambiente de servidor. Você criará novas contas de usuário, configurará grupos personalizados e gerenciará a associação a grupos.
 
 ## Quiz Question
 

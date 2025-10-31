@@ -23,9 +23,9 @@ An IPv4 address consists of 4 bytes, which is a total of 32 bits. The CIDR prefi
 
 Let's take the example `123.12.24.0/23`. This means the first 23 bits are the network prefix. To find the number of available hosts:
 
-1.  Subtract the CIDR prefix from the total number of bits (32): `32 - 23 = 9`. This leaves 9 bits for the host portion.
-2.  Calculate the total number of addresses in the subnet: `2^9 = 512`.
-3.  Subtract 2 from the total. One address is reserved for the network itself, and one is for the broadcast address. This leaves `512 - 2 = 510` usable host addresses.
+1. Subtract the CIDR prefix from the total number of bits (32): `32 - 23 = 9`. This leaves 9 bits for the host portion.
+2. Calculate the total number of addresses in the subnet: `2^9 = 512`.
+3. Subtract 2 from the total. One address is reserved for the network itself, and one is for the broadcast address. This leaves `512 - 2 = 510` usable host addresses.
 
 Another common example is a `/30` network, which provides `32 - 30 = 2` host bits. This results in `2^2 = 4` total addresses, leaving just 2 usable addresses, making it ideal for point-to-point links.
 
@@ -33,9 +33,9 @@ Another common example is a `/30` network, which provides `32 - 30 = 2` host bit
 
 To master these concepts, practice with some hands-on labs that reinforce your understanding of CIDR, IP addressing, and **cidr subnetting**:
 
-1.  **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, including translating CIDR masks and calculating usable hosts.
-2.  **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign static IP addresses and observe how IP subnets govern direct network communication in a simulated environment.
-3.  **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using commands like `ping` and `ip a` to test various IP types and connectivity.
+1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, including translating CIDR masks and calculating usable hosts.
+2. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign static IP addresses and observe how IP subnets govern direct network communication in a simulated environment.
+3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore IP addressing and network reachability using commands like `ping` and `ip a` to test various IP types and connectivity.
 
 These labs will help you apply the concepts of CIDR and IP addressing in real-world scenarios and build confidence with network configuration.
 

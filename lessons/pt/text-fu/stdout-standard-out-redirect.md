@@ -51,7 +51,7 @@ Este operador anexa a saída ao final do arquivo especificado. Se o arquivo aind
 
 Para solidificar sua compreensão do redirecionamento de E/S, experimente este laboratório prático:
 
-1.  **[Redirecionando Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Pratique o controle do fluxo de dados dos comandos manipulando a saída padrão (stdout), erro padrão (stderr) e entrada padrão (stdin) usando operadores como `>`, `>>`, `2>` e o comando `tee`.
+1. **[Redirecionando Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Pratique o controle do fluxo de dados dos comandos manipulando a saída padrão (stdout), erro padrão (stderr) e entrada padrão (stdin) usando operadores como `>`, `>>`, `2>` e o comando `tee`.
 
 Este laboratório o ajudará a aplicar esses conceitos em cenários do mundo real e a ganhar confiança com o redirecionamento de E/S.
 

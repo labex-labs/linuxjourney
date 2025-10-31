@@ -33,9 +33,9 @@ Também é prática comum adicionar novas configurações de repositório no dir
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre repositórios e gestão de pacotes Linux:
 
-1.  **[Instalação de Software no Linux](https://labex.io/pt/labs/linux-software-installation-on-linux-18005)** - Pratique vários métodos para instalar e gerenciar software em sistemas Ubuntu, incluindo o uso do apt e o manuseio de arquivos .deb, relacionando-se diretamente ao conceito de `sources.list`.
-2.  **[Instalando e Removendo Pacotes](https://labex.io/pt/labs/linux-installing-and-removing-packages-385380)** - Aprenda a atualizar o sistema, instalar e remover pacotes em um sistema baseado em Debian, solidificando sua compreensão de como os gerenciadores de pacotes interagem com os repositórios.
-3.  **[Consultar e Atualizar Pacotes com YUM no Linux](https://labex.io/pt/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore como gerenciar pacotes de software em sistemas Linux baseados em RHEL usando YUM, fornecendo uma perspectiva mais ampla sobre a gestão de pacotes em diferentes distribuições.
+1. **[Instalação de Software no Linux](https://labex.io/pt/labs/linux-software-installation-on-linux-18005)** - Pratique vários métodos para instalar e gerenciar software em sistemas Ubuntu, incluindo o uso do apt e o manuseio de arquivos .deb, relacionando-se diretamente ao conceito de `sources.list`.
+2. **[Instalando e Removendo Pacotes](https://labex.io/pt/labs/linux-installing-and-removing-packages-385380)** - Aprenda a atualizar o sistema, instalar e remover pacotes em um sistema baseado em Debian, solidificando sua compreensão de como os gerenciadores de pacotes interagem com os repositórios.
+3. **[Consultar e Atualizar Pacotes com YUM no Linux](https://labex.io/pt/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore como gerenciar pacotes de software em sistemas Linux baseados em RHEL usando YUM, fornecendo uma perspectiva mais ampla sobre a gestão de pacotes em diferentes distribuições.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de repositórios de pacotes e gestão de software em cenários reais e a ganhar confiança com tarefas de administração de sistemas.
 

@@ -46,7 +46,7 @@ meta_keywords: "vim 追加，vim 追加与插入的区别，vim 插入与追加�
 
 实践是掌握 Vim 的关键。以下实验提供了一个实践环境，以加强您对 Vim 文本编辑功能的理解。
 
-1.  **[在 Linux 中使用 Vim 和 Nano 编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习使用 vi/vim 和 nano 创建文件、编辑文本、保存文件和导航。此实验将帮助您掌握使用 Vim 普通模式和插入模式的基本技能。
+1. **[在 Linux 中使用 Vim 和 Nano 编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习使用 vi/vim 和 nano 创建文件、编辑文本、保存文件和导航。此实验将帮助您掌握使用 Vim 普通模式和插入模式的基本技能。
 
 在实际场景中应用这些概念将帮助您建立使用 Linux 中 Vim 进行文本编辑的信心。
 

@@ -19,9 +19,9 @@ Systemd é o sistema init e gerenciador de serviços padrão para a maioria das 
 
 Em vez de scripts sequenciais rígidos, o **systemd** usa o conceito de "metas" (goals) para colocar seu sistema em um estado funcional. Ele identifica uma meta principal, ou `target`, e trabalha para satisfazer suas dependências. Essa abordagem permite maior flexibilidade e paralelização durante a inicialização. Um processo de boot típico gerenciado pelo **systemd** segue estas etapas:
 
-1.  O **systemd** primeiro carrega seus arquivos de configuração de diretórios como `/etc/systemd/system` e `/usr/lib/systemd/system`.
-2.  Em seguida, ele identifica a meta de boot padrão, que geralmente é um link simbólico chamado `default.target`.
-3.  Finalmente, o **systemd** resolve todas as dependências para este alvo e ativa as unidades necessárias para atingir o estado de sistema desejado.
+1. O **systemd** primeiro carrega seus arquivos de configuração de diretórios como `/etc/systemd/system` e `/usr/lib/systemd/system`.
+2. Em seguida, ele identifica a meta de boot padrão, que geralmente é um link simbólico chamado `default.target`.
+3. Finalmente, o **systemd** resolve todas as dependências para este alvo e ativa as unidades necessárias para atingir o estado de sistema desejado.
 
 ### Entendendo os Alvos (Targets) do Systemd
 

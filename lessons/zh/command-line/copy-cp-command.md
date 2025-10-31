@@ -79,8 +79,8 @@ cp -p mycoolfile /home/pete/backups/
 
 熟能生巧！以下是一些实践练习，以加强您对在 Linux 中复制文件和目录的理解：
 
-1.  **[Linux cp 命令：文件复制](https://labex.io/zh/labs/linux-linux-cp-command-file-copying-209744)** - 练习基本用法、递归复制、保留属性等高级选项，以及使用通配符高效地复制文件和目录。
-2.  **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用 `cp`、`mv` 和 `rm` 命令来组织项目结构、移动文件和清理不必要的目录，练习基本的 Linux 文件管理技能。
+1. **[Linux cp 命令：文件复制](https://labex.io/zh/labs/linux-linux-cp-command-file-copying-209744)** - 练习基本用法、递归复制、保留属性等高级选项，以及使用通配符高效地复制文件和目录。
+2. **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用 `cp`、`mv` 和 `rm` 命令来组织项目结构、移动文件和清理不必要的目录，练习基本的 Linux 文件管理技能。
 
 这些实验将帮助您在实际场景中应用这些概念，并增强您对 Linux 中文件复制和管理的信心。
 

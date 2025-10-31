@@ -29,9 +29,9 @@ Ubuntu ist eine fantastische Wahl für Anfänger. Es bietet ein reibungsloses "O
 
 Übung macht den Meister beim Erlernen von Linux. Hier sind einige praktische Labs, um Ihr Verständnis für die Benutzer- und Gruppenverwaltung zu festigen:
 
-1.  **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich der Erstellung, Änderung und Löschung von Benutzerkonten.
-2.  **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung üben Sie die Verwaltung von Benutzerkonten, indem Sie neue Benutzer erstellen, deren Eigenschaften ändern und sie vom System entfernen.
-3.  **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einem Server, indem Sie Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Mitgliedschaften verwalten.
+1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich der Erstellung, Änderung und Löschung von Benutzerkonten.
+2. **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung üben Sie die Verwaltung von Benutzerkonten, indem Sie neue Benutzer erstellen, deren Eigenschaften ändern und sie vom System entfernen.
+3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einem Server, indem Sie Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Mitgliedschaften verwalten.
 
 Diese Labs helfen Ihnen, Konzepte in realen Szenarien anzuwenden und Selbstvertrauen in die Linux-Administration aufzubauen.
 

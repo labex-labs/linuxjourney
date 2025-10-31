@@ -53,9 +53,9 @@ pwd
 
 实践造就完美！以下是一些实践操作实验，以加强您对 Linux 文件系统导航和识别当前位置的理解：
 
-1.  **[Linux pwd 命令：目录显示](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 此实验提供了对 `pwd` 命令的集中概述和实际用法，直接与课程中介绍的查找当前目录的内容相符。
-2.  **[Linux 目录导航](https://labex.io/zh/labs/linux-directory-navigation-387844)** - 通过在各种目录中导航来测试您的基本 Linux 命令行技能，巩固您对路径和文件系统结构的理解。
-3.  **[Linux cd 命令：目录更改](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 学习如何使用 `cd` 命令高效地导航文件系统，理解更改目录和探索文件结构的不同技术。
+1. **[Linux pwd 命令：目录显示](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 此实验提供了对 `pwd` 命令的集中概述和实际用法，直接与课程中介绍的查找当前目录的内容相符。
+2. **[Linux 目录导航](https://labex.io/zh/labs/linux-directory-navigation-387844)** - 通过在各种目录中导航来测试您的基本 Linux 命令行技能，巩固您对路径和文件系统结构的理解。
+3. **[Linux cd 命令：目录更改](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 学习如何使用 `cd` 命令高效地导航文件系统，理解更改目录和探索文件结构的不同技术。
 
 这些实验将帮助您在实际场景中应用文件系统层次结构和导航的概念，并增强对基本 Linux 命令的信心。
 

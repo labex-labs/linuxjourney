@@ -68,9 +68,9 @@ Die Hauptnummer (8) identifiziert den Treiber, der für das Gerät verantwortlic
 
 Um das Gelernte über **Linux-Geräte** anzuwenden, empfehlen wir die folgenden praktischen Übungen. Diese Übungen helfen Ihnen, Vertrauen in die Geräteinteraktion und -verwaltung in realen Szenarien aufzubauen.
 
-1.  **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen und Verwalten von Festplattenpartitionen und Dateisystemen, die grundlegende Blockgeräte in Linux sind.
-2.  **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte zu identifizieren und zu inspizieren und zu verstehen, wie sie im Verzeichnis `/dev` dargestellt werden.
-3.  **[Eine Swap-Datei in Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** – Sammeln Sie praktische Erfahrungen beim Erstellen und Aktivieren einer Swap-Datei, die als virtuelles Speichergerät fungiert.
+1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen und Verwalten von Festplattenpartitionen und Dateisystemen, die grundlegende Blockgeräte in Linux sind.
+2. **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte zu identifizieren und zu inspizieren und zu verstehen, wie sie im Verzeichnis `/dev` dargestellt werden.
+3. **[Eine Swap-Datei in Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** – Sammeln Sie praktische Erfahrungen beim Erstellen und Aktivieren einer Swap-Datei, die als virtuelles Speichergerät fungiert.
 
 ## Quiz Question
 

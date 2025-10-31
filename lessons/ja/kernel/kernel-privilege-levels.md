@@ -44,9 +44,9 @@ Linux アーキテクチャの基本的な側面は、ユーザースペース�
 
 練習あるのみです！ユーザースペース、カーネルスペース、特権レベルの理論的概念を理解することは不可欠ですが、実践的な経験は、これらの概念が Linux 管理の実践でどのように現れるかを定着させるのに役立ちます。システム基盤とのユーザーインタラクションがどのように機能するかを強化するためのハンズオンラボを次に示します。
 
-1.  **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - ユーザースペースで動作し、特権アクションのためにカーネルとの対話を必要とするエンティティの管理に直接関連する、ユーザーアカウントの作成、変更、削除を練習します。
-2.  **[Linux におけるファイルとディレクトリの権限の管理](https://labex.io/ja/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - ファイルとディレクトリへのアクセスを制御する方法を学びます。これは、ユーザーの特権に基づいてカーネルが権限を強制することに依存する、中核的なセキュリティ概念です。
-3.  **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - プロセスとの対話と監視の方法を探ります。プロセスは、リソース管理と実行のためにカーネルにシステムコールを行うユーザースペースアプリケーションです。
+1. **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - ユーザースペースで動作し、特権アクションのためにカーネルとの対話を必要とするエンティティの管理に直接関連する、ユーザーアカウントの作成、変更、削除を練習します。
+2. **[Linux におけるファイルとディレクトリの権限の管理](https://labex.io/ja/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - ファイルとディレクトリへのアクセスを制御する方法を学びます。これは、ユーザーの特権に基づいてカーネルが権限を強制することに依存する、中核的なセキュリティ概念です。
+3. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - プロセスとの対話と監視の方法を探ります。プロセスは、リソース管理と実行のためにカーネルにシステムコールを行うユーザースペースアプリケーションです。
 
 これらのラボは、カーネルがリソース管理と特権の強制において極めて重要である Linux システムとのユーザーインタラクションの概念を適用し、基本的な Linux 管理タスクに対する自信を構築するのに役立ちます。
 

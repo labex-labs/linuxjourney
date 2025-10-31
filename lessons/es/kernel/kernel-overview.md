@@ -31,9 +31,9 @@ En este curso, profundizaremos en el kernel, desmitificando sus complejidades. E
 
 Para poner la teoría en práctica, prueba estos laboratorios prácticos. Reforzarán tu comprensión del kernel de Linux y su interacción con los componentes del sistema:
 
-1.  **[Administrar Módulos del Kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practica listar, inspeccionar, cargar y descargar módulos del kernel, y configurarlos para su carga automática al inicio.
-2.  **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprende a identificar e inspeccionar dispositivos de hardware dentro de un entorno Linux usando utilidades de línea de comandos.
-3.  **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Adquiere experiencia práctica creando particiones, formateando sistemas de archivos, montándolos y configurando el montaje persistente, todo gestionado por el kernel.
+1. **[Administrar Módulos del Kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practica listar, inspeccionar, cargar y descargar módulos del kernel, y configurarlos para su carga automática al inicio.
+2. **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprende a identificar e inspeccionar dispositivos de hardware dentro de un entorno Linux usando utilidades de línea de comandos.
+3. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Adquiere experiencia práctica creando particiones, formateando sistemas de archivos, montándolos y configurando el montaje persistente, todo gestionado por el kernel.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de interacción del kernel con el hardware y los recursos del sistema en escenarios reales y a ganar confianza con la administración de bajo nivel de Linux.
 

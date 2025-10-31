@@ -53,8 +53,8 @@ Mastering the `ip route` command is a key skill for any Linux administrator resp
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and IP addressing:
 
-1.  **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring a static IP, setting a default gateway, and verifying network configuration using the `ip` command.
-2.  **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how the default gateway handles remote traffic and observe network layer interactions.
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring a static IP, setting a default gateway, and verifying network configuration using the `ip` command.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how the default gateway handles remote traffic and observe network layer interactions.
 
 These labs will help you apply the concepts of IP addressing and routing in real scenarios and build confidence with Linux networking.
 

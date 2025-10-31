@@ -35,8 +35,8 @@ You might know software by names like Chrome or Firefox, but on a technical leve
 
 지식을 적용하기 위해 다음 실습 랩을 권장합니다. 이 랩들은 이 강의에서 다룬 개념에 대한 실질적인 경험을 제공합니다.
 
-1.  **[리눅스에서 RPM 을 사용한 패키지 관리](https://labex.io/ko/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 레드햇 기반 시스템에서 RPM 패키지 정보 조회, 무결성 확인 및 내용 검사를 통해 실습 경험을 쌓으십시오.
-2.  **[리눅스에서 YUM 을 사용한 패키지 조회 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 RHEL 기반 리눅스 시스템에서 소프트웨어 패키지를 관리하는 방법을 배우고, 저장소 검사, 업데이트 및 탐색을 포함합니다.
-3.  **[리눅스에서 소스 코드로부터 소프트웨어 빌드](https://labex.io/ko/labs/comptia-build-software-from-source-code-in-linux-590853)** - 패키지 관리자를 통해 사용할 수 없는 애플리케이션에 필수적인 기술인 소스 코드로부터 소프트웨어를 빌드하고 설치하는 기본 프로세스를 이해하십시오.
+1. **[리눅스에서 RPM 을 사용한 패키지 관리](https://labex.io/ko/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 레드햇 기반 시스템에서 RPM 패키지 정보 조회, 무결성 확인 및 내용 검사를 통해 실습 경험을 쌓으십시오.
+2. **[리눅스에서 YUM 을 사용한 패키지 조회 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 RHEL 기반 리눅스 시스템에서 소프트웨어 패키지를 관리하는 방법을 배우고, 저장소 검사, 업데이트 및 탐색을 포함합니다.
+3. **[리눅스에서 소스 코드로부터 소프트웨어 빌드](https://labex.io/ko/labs/comptia-build-software-from-source-code-in-linux-590853)** - 패키지 관리자를 통해 사용할 수 없는 애플리케이션에 필수적인 기술인 소스 코드로부터 소프트웨어를 빌드하고 설치하는 기본 프로세스를 이해하십시오.
 
 이 랩들은 패키지 관리 및 소프트웨어 설치 개념을 실제 시나리오에 적용하고 리눅스 시스템 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.

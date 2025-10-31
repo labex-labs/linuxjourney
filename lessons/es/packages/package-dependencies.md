@@ -29,9 +29,9 @@ La gestión eficaz de paquetes consiste en garantizar que se cumplan estas depen
 
 Aplique sus conocimientos con estos laboratorios prácticos, que le ayudarán a reforzar su comprensión de los paquetes de Linux, las dependencias y las bibliotecas compartidas:
 
-1.  **[Gestionar Bibliotecas Compartidas en Linux](https://labex.io/es/labs/comptia-manage-shared-libraries-in-linux-590867)** - Practique la identificación, localización y gestión de bibliotecas compartidas, que son dependencias cruciales para muchas aplicaciones.
-2.  **[Gestión de Paquetes con RPM en Linux](https://labex.io/es/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Aprenda a gestionar paquetes de software en sistemas basados en RPM, incluyendo la consulta de información de paquetes y la comprensión de las dependencias.
-3.  **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Adquiera experiencia con YUM para inspeccionar paquetes instalados, explorar repositorios y gestionar actualizaciones, todo lo cual implica manejar dependencias de paquetes.
+1. **[Gestionar Bibliotecas Compartidas en Linux](https://labex.io/es/labs/comptia-manage-shared-libraries-in-linux-590867)** - Practique la identificación, localización y gestión de bibliotecas compartidas, que son dependencias cruciales para muchas aplicaciones.
+2. **[Gestión de Paquetes con RPM en Linux](https://labex.io/es/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Aprenda a gestionar paquetes de software en sistemas basados en RPM, incluyendo la consulta de información de paquetes y la comprensión de las dependencias.
+3. **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Adquiera experiencia con YUM para inspeccionar paquetes instalados, explorar repositorios y gestionar actualizaciones, todo lo cual implica manejar dependencias de paquetes.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de gestión de paquetes y resolución de dependencias en escenarios del mundo real, aumentando su confianza con la instalación de software en Linux.
 

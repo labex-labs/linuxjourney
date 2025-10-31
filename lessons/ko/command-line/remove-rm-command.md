@@ -69,8 +69,8 @@ rmdir directory
 
 실습이 중요합니다. Linux 에서 파일 및 디렉터리 제거에 대한 이해를 공고히 하기 위한 실습 과제는 다음과 같습니다.
 
-1.  **[Linux rm 명령어: 파일 제거](https://labex.io/ko/labs/linux-linux-rm-command-file-removing-209741)** - `rm` 명령어를 사용하여 파일과 디렉터리를 제거하는 방법, `-r` 및 `-i`와 같은 다양한 옵션 사용법을 배우고 안전하고 효과적인 파일 삭제를 연습합니다.
-2.  **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - 실제 과제를 통해 필요 없는 디렉터리를 정리하기 위해 `rm` 명령어를 사용하는 것을 포함하여 필수적인 Linux 파일 관리 기술을 연습합니다.
+1. **[Linux rm 명령어: 파일 제거](https://labex.io/ko/labs/linux-linux-rm-command-file-removing-209741)** - `rm` 명령어를 사용하여 파일과 디렉터리를 제거하는 방법, `-r` 및 `-i`와 같은 다양한 옵션 사용법을 배우고 안전하고 효과적인 파일 삭제를 연습합니다.
+2. **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - 실제 과제를 통해 필요 없는 디렉터리를 정리하기 위해 `rm` 명령어를 사용하는 것을 포함하여 필수적인 Linux 파일 관리 기술을 연습합니다.
 
 이러한 실습은 실제 시나리오에서 이러한 개념을 적용하고 `linux rm command`에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

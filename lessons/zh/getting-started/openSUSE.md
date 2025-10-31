@@ -29,9 +29,9 @@ openSUSE 的一个突出特点是 YaST（Yet another Setup Tool，又一个设�
 
 为了获得更多关于 Linux 系统的实践经验，请尝试以下动手实验。它们涵盖了在任何 Linux 发行版（包括 openSUSE）上都很有用的基本管理任务。
 
-1.  **[用户账户管理](https://labex.io/zh/labs/linux-user-account-management-49)** - 在此实验中，您将学习如何在 Linux 平台上管理用户账户，例如创建新用户账户、修改用户账户管理以及删除用户账户。
-2.  **[小丑的把戏](https://labex.io/zh/labs/linux-the-joker-s-trick-270247)** - 在此挑战中，您将尝试管理 Linux 平台上的用户账户，包括创建新用户账户、修改用户账户管理以及删除用户账户。
-3.  **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此动手挑战中，您将模拟向服务器环境添加新的团队成员。您将创建新的用户账户、设置自定义组以及管理组成员身份。
+1. **[用户账户管理](https://labex.io/zh/labs/linux-user-account-management-49)** - 在此实验中，您将学习如何在 Linux 平台上管理用户账户，例如创建新用户账户、修改用户账户管理以及删除用户账户。
+2. **[小丑的把戏](https://labex.io/zh/labs/linux-the-joker-s-trick-270247)** - 在此挑战中，您将尝试管理 Linux 平台上的用户账户，包括创建新用户账户、修改用户账户管理以及删除用户账户。
+3. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此动手挑战中，您将模拟向服务器环境添加新的团队成员。您将创建新的用户账户、设置自定义组以及管理组成员身份。
 
 ## Quiz Question
 

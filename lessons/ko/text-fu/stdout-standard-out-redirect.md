@@ -51,7 +51,7 @@ echo Hello World >> peanuts.txt
 
 I/O 리디렉션에 대한 이해를 공고히 하기 위해 다음 실습 랩을 시도해 보세요:
 
-1.  **[Linux 에서 입력 및 출력 리디렉션](https://labex.io/ko/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`, `>>`, `2>`와 같은 연산자와 `tee` 명령어를 사용하여 표준 출력 (stdout), 표준 오류 (stderr), 표준 입력 (stdin) 을 조작하여 명령어 데이터 흐름을 제어하는 연습을 합니다.
+1. **[Linux 에서 입력 및 출력 리디렉션](https://labex.io/ko/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`, `>>`, `2>`와 같은 연산자와 `tee` 명령어를 사용하여 표준 출력 (stdout), 표준 오류 (stderr), 표준 입력 (stdin) 을 조작하여 명령어 데이터 흐름을 제어하는 연습을 합니다.
 
 이 랩은 이러한 개념을 실제 시나리오에 적용하고 I/O 리디렉션에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

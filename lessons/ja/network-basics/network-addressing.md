@@ -27,9 +27,9 @@ IP アドレスはコンピューターにとっては効果的ですが、人�
 
 練習あるのみ！MAC アドレス、IP アドレス、ホスト名などのネットワーク識別子への理解を深めるための実践的なラボを次に示します。
 
-1.  **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の MAC アドレスと IP アドレスを含むネットワークアドレッシング情報を特定する練習をします。
-2.  **[Linux で IP アドレスの種類と到達可能性を調査する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類を調査し、`ping`と`ip a`を使用してネットワークの到達可能性をテストします。
-3.  **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する方法を学び、変更をテストします。
+1. **[Linux で MAC アドレスと IP アドレスを識別する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して、Linux システム上の MAC アドレスと IP アドレスを含むネットワークアドレッシング情報を特定する練習をします。
+2. **[Linux で IP アドレスの種類と到達可能性を調査する](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - さまざまな IP アドレスの種類を調査し、`ping`と`ip a`を使用してネットワークの到達可能性をテストします。
+3. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts`ファイルを編集してローカルホスト名解決を管理する方法を学び、変更をテストします。
 
 これらのラボは、実際のシナリオで概念を適用し、基本的な Linux ネットワーキングに対する自信を構築するのに役立ちます。
 

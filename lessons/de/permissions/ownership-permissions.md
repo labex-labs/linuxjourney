@@ -45,8 +45,8 @@ Dieser einzelne Befehl weist der Datei `myfile` die Benutzerbesitzerschaft `patt
 
 Um Ihr Verständnis der **Linux-Dateiberechtigung** zu festigen, empfehlen wir Ihnen, diese praktischen Labs zu üben. Sie bieten reale Szenarien für die Anwendung der Befehle `chown` und `chgrp`.
 
-1.  **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Lernen Sie wesentliche Linux-Konzepte zur Benutzer- und Gruppenverwaltung kennen, einschließlich des Verständnisses von Dateiberechtigungen und der Manipulation der Dateiberechtigung. Dieses Lab bietet praktische Erfahrung bei der Sicherung einer Multi-User-Linux-Umgebung.
-2.  **[Neuen Benutzer und neue Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** – In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, indem Sie neue Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Gruppenmitgliedschaften verwalten. Dies testet Ihre Fähigkeiten in der Linux-Benutzer- und Gruppenadministration.
+1. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Lernen Sie wesentliche Linux-Konzepte zur Benutzer- und Gruppenverwaltung kennen, einschließlich des Verständnisses von Dateiberechtigungen und der Manipulation der Dateiberechtigung. Dieses Lab bietet praktische Erfahrung bei der Sicherung einer Multi-User-Linux-Umgebung.
+2. **[Neuen Benutzer und neue Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** – In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, indem Sie neue Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Gruppenmitgliedschaften verwalten. Dies testet Ihre Fähigkeiten in der Linux-Benutzer- und Gruppenadministration.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung der Dateiberechtigung und Berechtigungen unter Linux aufzubauen.
 

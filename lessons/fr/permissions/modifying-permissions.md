@@ -74,8 +74,8 @@ Bien que `chmod` soit essentiel, il est crucial de l'utiliser avec prudence. Mod
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des permissions de fichiers Linux :
 
-1.  **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de gestion des utilisateurs et des groupes sous Linux, y compris la compréhension des permissions de fichiers et la manipulation de la propriété des fichiers. Ce laboratoire offre une expérience pratique pour sécuriser un environnement Linux multi-utilisateur.
-2.  **[Ajouter un Nouvel Utilisateur et un Nouveau Groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur, en créant de nouveaux comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances aux groupes, ce qui implique souvent de définir les permissions appropriées.
+1. **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Apprenez les concepts essentiels de gestion des utilisateurs et des groupes sous Linux, y compris la compréhension des permissions de fichiers et la manipulation de la propriété des fichiers. Ce laboratoire offre une expérience pratique pour sécuriser un environnement Linux multi-utilisateur.
+2. **[Ajouter un Nouvel Utilisateur et un Nouveau Groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur, en créant de nouveaux comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances aux groupes, ce qui implique souvent de définir les permissions appropriées.
 
 Ces laboratoires vous aideront à appliquer les concepts de permissions utilisateur, groupe et autres dans des scénarios réels et à renforcer votre confiance dans la gestion des accès sous Linux.
 

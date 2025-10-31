@@ -38,6 +38,7 @@ Ohne `-e` würde `grep` `-v` als Option "invert match" (umgekehrte Übereinstimm
 Sie können das Verhalten von `grep` mit verschiedenen Flags modifizieren, um Ihre Suchergebnisse zu verfeinern.
 
 - **Groß-/Kleinschreibung ignorieren**: Verwenden Sie das Flag `-i`, um Ihre Suche unabhängig von Groß- und Kleinschreibung durchzuführen.
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **Nur die Übereinstimmung anzeigen**: Wenn Sie nur den genauen Teil der Zeile sehen möchten, der dem Muster entspricht, verwenden Sie das Flag `grep -o`.
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ Wie Sie sehen, ist `grep` ein vielseitiges und leistungsstarkes Werkzeug für je
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Textsuche und des Pattern Matchings mit `grep` zu festigen:
 
-1.  **[Text mit grep in Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - Üben Sie grundlegende Suchen, zeigen Sie Zeilennummern an, verwenden Sie Anker und nutzen Sie sowohl einfache als auch erweiterte reguläre Ausdrücke für komplexes Pattern Matching mit `grep`.
-2.  **[Linux grep Befehl: Mustersuche](https://labex.io/de/labs/linux-linux-grep-command-pattern-searching-219192)** - Lernen Sie, `grep` zur Suche und zum Abgleichen von Mustern in Textdateien zu verwenden, und erkunden Sie reguläre Ausdrücke zur Definition komplexer Suchmuster.
-3.  **[Nadel im Heuhaufen](https://labex.io/de/labs/linux-needle-in-the-haystack-388109)** - Lernen Sie die Leistungsfähigkeit des `grep`-Befehls kennen, um nach bestimmten Mustern zu suchen, Vorkommen zu zählen, eindeutige Werte zu extrahieren und mehrere Suchkriterien in verschiedenen Protokolldateien zu kombinieren.
+1. **[Text mit grep in Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - Üben Sie grundlegende Suchen, zeigen Sie Zeilennummern an, verwenden Sie Anker und nutzen Sie sowohl einfache als auch erweiterte reguläre Ausdrücke für komplexes Pattern Matching mit `grep`.
+2. **[Linux grep Befehl: Mustersuche](https://labex.io/de/labs/linux-linux-grep-command-pattern-searching-219192)** - Lernen Sie, `grep` zur Suche und zum Abgleichen von Mustern in Textdateien zu verwenden, und erkunden Sie reguläre Ausdrücke zur Definition komplexer Suchmuster.
+3. **[Nadel im Heuhaufen](https://labex.io/de/labs/linux-needle-in-the-haystack-388109)** - Lernen Sie die Leistungsfähigkeit des `grep`-Befehls kennen, um nach bestimmten Mustern zu suchen, Vorkommen zu zählen, eindeutige Werte zu extrahieren und mehrere Suchkriterien in verschiedenen Protokolldateien zu kombinieren.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen im Umgang mit `grep` und regulären Ausdrücken aufzubauen.
 

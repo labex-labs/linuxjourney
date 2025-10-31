@@ -99,7 +99,7 @@ sudo systemctl disable networking.service
 
 연습이 새로운 기술을 익히는 열쇠입니다. 이 실습 랩은 systemd 서비스에 의해 종종 제어되는 프로세스 관리에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 전경 및 백그라운드 프로세스와 상호 작용하고, `ps`로 검사하고, `top`으로 리소스를 모니터링하고, `renice`로 우선순위를 조정하고, `kill`로 종료하는 연습을 합니다. 이 랩은 systemd 유닛 관리의 런타임 효과에 대한 실질적인 경험을 제공할 것입니다.
+1. **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 전경 및 백그라운드 프로세스와 상호 작용하고, `ps`로 검사하고, `top`으로 리소스를 모니터링하고, `renice`로 우선순위를 조정하고, `kill`로 종료하는 연습을 합니다. 이 랩은 systemd 유닛 관리의 런타임 효과에 대한 실질적인 경험을 제공할 것입니다.
 
 이 랩은 이러한 개념을 실제 시나리오에 적용하고 Linux 에서 프로세스 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

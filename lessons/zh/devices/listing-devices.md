@@ -41,7 +41,7 @@ lssci
 
 为了加强您对在 Linux 中探索硬件设备的理解，请尝试以下实践实验：
 
-1.  **[在 Linux 中探索硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 在此实验中，您将学习在 Linux 环境中探索、识别和检查硬件设备的基本技能。您将获得使用强大的命令行实用程序的实践经验，以了解操作系统如何与物理组件交互。
+1. **[在 Linux 中探索硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 在此实验中，您将学习在 Linux 环境中探索、识别和检查硬件设备的基本技能。您将获得使用强大的命令行实用程序的实践经验，以了解操作系统如何与物理组件交互。
 
 此实验将帮助您在现实场景中应用这些概念，并建立管理设备信息的信心。
 

@@ -38,6 +38,7 @@ grep -e "-v" /path/to/some/file.conf
 您可以使用各种标志修改 `grep` 的行为，以优化您的搜索结果。
 
 - **不区分大小写的搜索**：使用 `-i` 标志使搜索不区分大小写。
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **仅显示匹配项**：如果您只想查看行中与模式精确匹配的部分，请使用 `grep -o` 标志。
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ ls /somedir | grep '.txt$'
 
 熟能生巧！以下是一些实践操作实验，以加强您对使用 `grep` 进行文本搜索和模式匹配的理解：
 
-1.  **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 练习基本搜索、显示行号、使用锚点，并利用基本和扩展正则表达式进行复杂的 `grep` 模式匹配。
-2.  **[Linux grep 命令：模式搜索](https://labex.io/zh/labs/linux-linux-grep-command-pattern-searching-219192)** - 学习如何使用 `grep` 搜索和匹配文本文件中的模式，并探索正则表达式以定义复杂的搜索模式。
-3.  **[大海捞针](https://labex.io/zh/labs/linux-needle-in-the-haystack-388109)** - 学习 `grep` 命令的强大功能，用于搜索特定模式、计算出现次数、提取唯一值以及跨各种日志文件组合多个搜索条件。
+1. **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 练习基本搜索、显示行号、使用锚点，并利用基本和扩展正则表达式进行复杂的 `grep` 模式匹配。
+2. **[Linux grep 命令：模式搜索](https://labex.io/zh/labs/linux-linux-grep-command-pattern-searching-219192)** - 学习如何使用 `grep` 搜索和匹配文本文件中的模式，并探索正则表达式以定义复杂的搜索模式。
+3. **[大海捞针](https://labex.io/zh/labs/linux-needle-in-the-haystack-388109)** - 学习 `grep` 命令的强大功能，用于搜索特定模式、计算出现次数、提取唯一值以及跨各种日志文件组合多个搜索条件。
 
 这些实验将帮助您在实际场景中应用这些概念，并增强您对 `grep` 和正则表达式的信心。
 

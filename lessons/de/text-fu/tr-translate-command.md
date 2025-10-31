@@ -48,7 +48,7 @@ In diesem Fall ersetzte `tr -s ' '` Sequenzen von mehreren Leerzeichen durch ein
 
 Um Ihr Wissen in die Praxis umzusetzen, versuchen Sie das folgende praktische Labor. Es wird Ihnen helfen, Ihr Verständnis der Zeichenübersetzung und Textverarbeitung zu festigen.
 
-1.  **[Linux tr Befehl: Zeichenübersetzung](https://labex.io/de/labs/linux-linux-tr-command-character-translating-219198)** - Lernen Sie den Linux `tr`-Befehl für zeichenweise Transformationen in Textströmen kennen. Sie üben das Übersetzen von Zeichen, das Löschen bestimmter Zeichen, die Arbeit mit Zeichenklassen und das Quetschen wiederholter Zeichen.
+1. **[Linux tr Befehl: Zeichenübersetzung](https://labex.io/de/labs/linux-linux-tr-command-character-translating-219198)** - Lernen Sie den Linux `tr`-Befehl für zeichenweise Transformationen in Textströmen kennen. Sie üben das Übersetzen von Zeichen, das Löschen bestimmter Zeichen, die Arbeit mit Zeichenklassen und das Quetschen wiederholter Zeichen.
 
 Dieses Labor hilft Ihnen, die Konzepte der Textmanipulation in realen Szenarien anzuwenden und Vertrauen in den `tr`-Befehl aufzubauen.
 

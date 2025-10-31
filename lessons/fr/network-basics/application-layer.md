@@ -39,7 +39,7 @@ Dans notre exemple d'e-mail, les données formatées SMTP sont transmises à la 
 
 La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des couches réseau et des ports :
 
-1.  **[Analyser les Ports et Sessions Réseau avec netstat sous Linux](https://labex.io/fr/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Dans ce laboratoire, vous apprendrez à utiliser la commande `netstat` pour analyser l'activité réseau, en explorant des concepts fondamentaux tels que les ports réseau, les sockets et les connexions actives. Cela vous donnera un aperçu pratique de la manière dont les services communiquent sur le réseau, en lien direct avec les concepts de couche transport abordés.
+1. **[Analyser les Ports et Sessions Réseau avec netstat sous Linux](https://labex.io/fr/labs/comptia-analyze-network-ports-and-sessions-with-netstat-in-linux-592741)** - Dans ce laboratoire, vous apprendrez à utiliser la commande `netstat` pour analyser l'activité réseau, en explorant des concepts fondamentaux tels que les ports réseau, les sockets et les connexions actives. Cela vous donnera un aperçu pratique de la manière dont les services communiquent sur le réseau, en lien direct avec les concepts de couche transport abordés.
 
 Ce laboratoire vous aidera à appliquer les concepts de communication réseau et d'utilisation des ports dans un environnement Linux réel, renforçant votre confiance dans la compréhension de la manière dont les applications interagissent avec la pile réseau.
 

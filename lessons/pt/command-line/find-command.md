@@ -43,8 +43,8 @@ Uma característica fundamental que os usuários do `comando find linux` aprecia
 
 A prática é fundamental para dominar o `comando find no linux`. Estes laboratórios práticos ajudarão você a reforçar sua compreensão de como encontrar arquivos e diretórios:
 
-1.  **[Comando find do Linux: Pesquisa de Arquivos](https://labex.io/pt/labs/linux-linux-find-command-file-searching-219191)** - Este laboratório fornece uma introdução ao comando `find`, uma utilidade versátil para pesquisar e localizar arquivos e diretórios com base em vários critérios. Você praticará o uso do `find` para localizar arquivos específicos.
-2.  **[Descubra Recursos Críticos do Sistema](https://labex.io/pt/labs/linux-discover-critical-system-resources-388032)** - Aprenda comandos essenciais do Linux para localizar arquivos e executáveis, incluindo `find`. Você praticará a navegação eficiente pelo sistema de arquivos e a descoberta de recursos críticos do sistema.
+1. **[Comando find do Linux: Pesquisa de Arquivos](https://labex.io/pt/labs/linux-linux-find-command-file-searching-219191)** - Este laboratório fornece uma introdução ao comando `find`, uma utilidade versátil para pesquisar e localizar arquivos e diretórios com base em vários critérios. Você praticará o uso do `find` para localizar arquivos específicos.
+2. **[Descubra Recursos Críticos do Sistema](https://labex.io/pt/labs/linux-discover-critical-system-resources-388032)** - Aprenda comandos essenciais do Linux para localizar arquivos e executáveis, incluindo `find`. Você praticará a navegação eficiente pelo sistema de arquivos e a descoberta de recursos críticos do sistema.
 
 Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança no uso eficaz do comando `find`.
 

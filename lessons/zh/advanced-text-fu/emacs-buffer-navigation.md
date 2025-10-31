@@ -55,9 +55,9 @@ C-x k - 杀死（关闭）当前缓冲区
 
 为了巩固你对缓冲区和文本文件操作的理解，请尝试以下动手实验。它们将帮助你在实际场景中应用这些概念。
 
-1.  **[在 Linux 中使用 Vim 和 Nano 编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习在 Vim 和 Nano 编辑器中创建、编辑、保存和导航文本，这对处理缓冲区至关重要。
-2.  **[Linux cat 命令：文件连接](https://labex.io/zh/labs/linux-linux-cat-command-file-concatenating-210986)** - 学习查看、连接和操作文本文件，这直接关系到你可能如何与缓冲区内容交互。
-3.  **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习使用 `cat`、`more` 和 `less` 等命令来高效地查看和导航文本文件，模拟检查类似缓冲区的内容的实际场景。
+1. **[在 Linux 中使用 Vim 和 Nano 编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习在 Vim 和 Nano 编辑器中创建、编辑、保存和导航文本，这对处理缓冲区至关重要。
+2. **[Linux cat 命令：文件连接](https://labex.io/zh/labs/linux-linux-cat-command-file-concatenating-210986)** - 学习查看、连接和操作文本文件，这直接关系到你可能如何与缓冲区内容交互。
+3. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习使用 `cat`、`more` 和 `less` 等命令来高效地查看和导航文本文件，模拟检查类似缓冲区的内容的实际场景。
 
 这些实验将帮助你建立在 Linux 中进行文本文件和缓冲区操作的信心。
 

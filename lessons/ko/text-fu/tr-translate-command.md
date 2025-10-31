@@ -48,7 +48,7 @@ Hello World, how are you?
 
 지식을 실제로 적용해 보기 위해 다음 실습 랩을 시도해 보세요. 이는 문자 변환 및 텍스트 처리에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[Linux tr 명령어: 문자 변환](https://labex.io/ko/labs/linux-linux-tr-command-character-translating-219198)** - 텍스트 스트림에서 문자 수준 변환을 위한 Linux `tr` 명령어를 학습합니다. 문자를 변환하고, 특정 문자를 삭제하고, 문자 클래스를 사용하고, 반복되는 문자를 압축하는 연습을 하게 됩니다.
+1. **[Linux tr 명령어: 문자 변환](https://labex.io/ko/labs/linux-linux-tr-command-character-translating-219198)** - 텍스트 스트림에서 문자 수준 변환을 위한 Linux `tr` 명령어를 학습합니다. 문자를 변환하고, 특정 문자를 삭제하고, 문자 클래스를 사용하고, 반복되는 문자를 압축하는 연습을 하게 됩니다.
 
 이 랩은 실제 시나리오에서 텍스트 조작 개념을 적용하고 `tr` 명령어에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

@@ -46,7 +46,7 @@ Consejo: Puedes anteponer un número a estos comandos para repetirlos. Por ejemp
 
 La práctica es esencial para dominar Vim. El siguiente laboratorio proporciona un entorno práctico para reforzar tu comprensión de las capacidades de edición de texto de Vim.
 
-1.  **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación de archivos, la edición de texto, el guardado de archivos y la navegación con vi/vim y nano. Este laboratorio te ayudará a dominar las habilidades fundamentales del uso de los modos Normal e Insertar de Vim.
+1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación de archivos, la edición de texto, el guardado de archivos y la navegación con vi/vim y nano. Este laboratorio te ayudará a dominar las habilidades fundamentales del uso de los modos Normal e Insertar de Vim.
 
 Aplicar estos conceptos en escenarios reales te ayudará a ganar confianza con la edición de texto en Linux usando Vim.
 

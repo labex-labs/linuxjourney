@@ -80,9 +80,9 @@ top -p 1
 
 Übung ist für die Beherrschung unerlässlich. Diese praktischen Labs sind einige der **besten Ressourcen, um Linux** Prozessmanagement zu lernen, und bieten eine praktische Umgebung, um das Gelernte anzuwenden.
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit, Inspektion, Überwachung und Beendigung von Prozessen in einer realen Linux-Umgebung.
-2.  **[Linux top-Befehl: Systemüberwachung in Echtzeit](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Lernen Sie, den `top`-Befehl zu verwenden, um CPU-Auslastung, Speicher und laufende Prozesse in Echtzeit zu überwachen.
-3.  **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Lernen Sie, den `free`-Befehl zu verwenden, um die Systemspeichernutzung zu überwachen und zu analysieren.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit, Inspektion, Überwachung und Beendigung von Prozessen in einer realen Linux-Umgebung.
+2. **[Linux top-Befehl: Systemüberwachung in Echtzeit](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Lernen Sie, den `top`-Befehl zu verwenden, um CPU-Auslastung, Speicher und laufende Prozesse in Echtzeit zu überwachen.
+3. **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Lernen Sie, den `free`-Befehl zu verwenden, um die Systemspeichernutzung zu überwachen und zu analysieren.
 
 ## Quiz Question
 

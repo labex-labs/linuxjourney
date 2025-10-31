@@ -44,9 +44,9 @@ Apect of the Linux architecture is the separation between user space and the ker
 
 实践造就完美！理解用户空间、内核空间和权限级别的理论概念至关重要，但动手实践有助于巩固这些概念如何在实际的 Linux 管理中体现。以下是一些实践实验，以加强您对用户级别操作如何与底层系统交互的理解：
 
-1.  **[使用 useradd, usermod 和 userdel 管理 Linux 用户账户](https://labex.io/zh/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 练习创建、修改和删除用户账户，这直接关系到管理在用户空间中运行并需要内核交互以执行特权操作的实体。
-2.  **[管理 Linux 中的文件和目录权限](https://labex.io/zh/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - 学习控制对文件和目录的访问权限，这是一个核心安全概念，它依赖于内核根据用户权限来强制执行权限。
-3.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 探索如何与进程交互和监控进程，进程是向内核发出系统调用以进行资源管理和执行的用户空间应用程序。
+1. **[使用 useradd, usermod 和 userdel 管理 Linux 用户账户](https://labex.io/zh/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 练习创建、修改和删除用户账户，这直接关系到管理在用户空间中运行并需要内核交互以执行特权操作的实体。
+2. **[管理 Linux 中的文件和目录权限](https://labex.io/zh/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - 学习控制对文件和目录的访问权限，这是一个核心安全概念，它依赖于内核根据用户权限来强制执行权限。
+3. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 探索如何与进程交互和监控进程，进程是向内核发出系统调用以进行资源管理和执行的用户空间应用程序。
 
 这些实验将帮助您应用用户与 Linux 系统交互的概念，其中内核在管理资源和强制执行权限方面的作用至关重要，并增强您对基本 Linux 管理任务的信心。
 

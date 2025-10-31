@@ -80,9 +80,9 @@ top -p 1
 
 La práctica es esencial para el dominio. Estos laboratorios prácticos son algunos de los **mejores recursos para aprender Linux** sobre gestión de procesos, proporcionando un entorno práctico para aplicar lo aprendido.
 
-1.  **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción, inspección, monitoreo y terminación de procesos en un entorno Linux real.
-2.  **[Comando top de Linux: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar el comando `top` para monitorear el uso de CPU, la memoria y los procesos en ejecución en tiempo real.
-3.  **[Comando free de Linux: Monitoreo de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar el comando `free` para monitorear y analizar el uso de la memoria del sistema.
+1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción, inspección, monitoreo y terminación de procesos en un entorno Linux real.
+2. **[Comando top de Linux: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar el comando `top` para monitorear el uso de CPU, la memoria y los procesos en ejecución en tiempo real.
+3. **[Comando free de Linux: Monitoreo de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar el comando `free` para monitorear y analizar el uso de la memoria del sistema.
 
 ## Quiz Question
 

@@ -59,8 +59,8 @@ ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 
 Analicemos esto:
 
-1.  `> peanuts.txt` redirige `stdout` (descriptor de archivo 1) al archivo `peanuts.txt`.
-2.  `2>&1` redirige `stderr` (descriptor de archivo 2) a la misma ubicación a la que apunta actualmente `stdout` (descriptor de archivo 1).
+1. `> peanuts.txt` redirige `stdout` (descriptor de archivo 1) al archivo `peanuts.txt`.
+2. `2>&1` redirige `stderr` (descriptor de archivo 2) a la misma ubicación a la que apunta actualmente `stdout` (descriptor de archivo 1).
 
 El orden es importante. `2>&1` envía `stderr` al destino actual de `stdout`. En este caso, `stdout` apunta a un archivo, por lo que `stderr` también se envía a ese archivo.
 

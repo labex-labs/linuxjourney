@@ -57,7 +57,7 @@ Vim 에서 복사는 "양킹 (yanking)"(연산자 `y`) 이라고 하고, 붙여�
 
 지식을 실제로 적용해 보기 위해 다음 실습 랩을 권장합니다. 이 랩은 이 Vim 튜토리얼에서 논의된 기본 편집 명령을 숙달하는 데 도움이 될 것입니다.
 
-1.  **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집하기](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 파일 생성, 텍스트 편집, 파일 저장 및 vi/vim과 nano 를 사용한 탐색을 연습합니다. 이 랩은 삭제, 변경, 양킹, 풋팅과 같은 개념을 실제 시나리오에 적용하는 데 도움이 될 것입니다.
+1. **[Vim 및 Nano 를 사용하여 Linux 에서 텍스트 파일 편집하기](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 파일 생성, 텍스트 편집, 파일 저장 및 vi/vim과 nano 를 사용한 탐색을 연습합니다. 이 랩은 삭제, 변경, 양킹, 풋팅과 같은 개념을 실제 시나리오에 적용하는 데 도움이 될 것입니다.
 
 ## Quiz Question
 

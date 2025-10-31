@@ -45,8 +45,8 @@ Este único comando atribui a propriedade do usuário a `patty` e a propriedade 
 
 Para solidificar sua compreensão sobre a **propriedade de arquivos Linux**, recomendamos praticar com estes laboratórios práticos. Eles fornecem cenários do mundo real para aplicar os comandos `chown` e `chgrp`.
 
-1.  **[Grupo de Usuários e Permissões de Arquivo Linux](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuários e grupos no Linux, incluindo a compreensão de permissões de arquivos e a manipulação da propriedade de arquivos. Este laboratório oferece experiência prática na proteção de um ambiente Linux multiusuário.
-2.  **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio, você simulará a adição de novos membros da equipe a um ambiente de servidor criando novas contas de usuário, configurando grupos personalizados e gerenciando associações de grupo. Isso testará suas habilidades em administração de usuários e grupos no Linux.
+1. **[Grupo de Usuários e Permissões de Arquivo Linux](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuários e grupos no Linux, incluindo a compreensão de permissões de arquivos e a manipulação da propriedade de arquivos. Este laboratório oferece experiência prática na proteção de um ambiente Linux multiusuário.
+2. **[Adicionar Novo Usuário e Grupo](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio, você simulará a adição de novos membros da equipe a um ambiente de servidor criando novas contas de usuário, configurando grupos personalizados e gerenciando associações de grupo. Isso testará suas habilidades em administração de usuários e grupos no Linux.
 
 Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança no gerenciamento da propriedade de arquivos e permissões no Linux.
 

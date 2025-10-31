@@ -69,8 +69,8 @@ rmdir directory
 
 実践が鍵となります。Linux でのファイルとディレクトリの削除に関する理解を深めるための実践的な演習を以下に示します。
 
-1.  **[Linux rm コマンド：ファイル削除](https://labex.io/ja/labs/linux-linux-rm-command-file-removing-209741)** - `rm`コマンドを使用してファイルやディレクトリを削除する方法、`-r`や`-i`などのさまざまなオプション、安全かつ効果的なファイル削除の練習方法を学びます。
-2.  **[ファイルの整理とディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - 実際の課題で`rm`コマンドを使用して不要なディレクトリをクリーンアップするなど、必須の Linux ファイル管理スキルを練習します。
+1. **[Linux rm コマンド：ファイル削除](https://labex.io/ja/labs/linux-linux-rm-command-file-removing-209741)** - `rm`コマンドを使用してファイルやディレクトリを削除する方法、`-r`や`-i`などのさまざまなオプション、安全かつ効果的なファイル削除の練習方法を学びます。
+2. **[ファイルの整理とディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - 実際の課題で`rm`コマンドを使用して不要なディレクトリをクリーンアップするなど、必須の Linux ファイル管理スキルを練習します。
 
 これらのラボは、これらの概念を実世界のシナリオに応用し、`linux rm command`に対する自信を構築するのに役立ちます。
 

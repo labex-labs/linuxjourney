@@ -53,9 +53,9 @@ Onde você está? Onde estou? Tente para ver seu próprio diretório de trabalho
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da navegação no sistema de arquivos Linux e da identificação de sua localização atual:
 
-1.  **[Comando Linux pwd: Exibição de Diretório](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - Este laboratório fornece uma visão focada e uso prático do comando `pwd`, alinhando-se diretamente com a introdução da lição sobre como encontrar seu diretório atual.
-2.  **[Navegação de Diretório Linux](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Coloque suas habilidades básicas de linha de comando Linux à prova, navegando por vários diretórios, solidificando sua compreensão de caminhos e da estrutura do sistema de arquivos.
-3.  **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Aprenda a navegar eficientemente em seu sistema de arquivos usando o comando `cd`, entendendo diferentes técnicas para mudar de diretório e explorar a estrutura de arquivos.
+1. **[Comando Linux pwd: Exibição de Diretório](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - Este laboratório fornece uma visão focada e uso prático do comando `pwd`, alinhando-se diretamente com a introdução da lição sobre como encontrar seu diretório atual.
+2. **[Navegação de Diretório Linux](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Coloque suas habilidades básicas de linha de comando Linux à prova, navegando por vários diretórios, solidificando sua compreensão de caminhos e da estrutura do sistema de arquivos.
+3. **[Comando Linux cd: Mudança de Diretório](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Aprenda a navegar eficientemente em seu sistema de arquivos usando o comando `cd`, entendendo diferentes técnicas para mudar de diretório e explorar a estrutura de arquivos.
 
 Esses laboratórios ajudarão você a aplicar os conceitos de hierarquia e navegação do sistema de arquivos em cenários reais e a ganhar confiança com comandos essenciais do Linux.
 

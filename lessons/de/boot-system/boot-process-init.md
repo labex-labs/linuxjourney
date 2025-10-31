@@ -31,7 +31,7 @@ Wir haben einen ganzen Kurs über Init-Systeme, in dem wir uns detaillierter mit
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Prozessen und deren Verwaltung durch das System zu festigen:
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top` und beenden Sie sie mit `kill`. Dieses Lab hilft Ihnen, den Lebenszyklus und die Steuerung von Prozessen zu verstehen, was für die Funktionsweise von `init` von grundlegender Bedeutung ist.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top` und beenden Sie sie mit `kill`. Dieses Lab hilft Ihnen, den Lebenszyklus und die Steuerung von Prozessen zu verstehen, was für die Funktionsweise von `init` von grundlegender Bedeutung ist.
 
 Diese Labs helfen Ihnen, diese Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Prozessverwaltung aufzubauen.
 

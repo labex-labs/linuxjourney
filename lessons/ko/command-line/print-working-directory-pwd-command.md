@@ -53,9 +53,9 @@ pwd
 
 연습이 완벽을 만듭니다! 리눅스 파일 시스템 탐색 및 현재 위치 식별에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[리눅스 pwd 명령어: 디렉토리 표시](https://labex.io/ko/labs/linux-linux-pwd-command-directory-displaying-209734)** - 이 랩은 현재 디렉토리를 찾는 이 강의의 소개와 직접적으로 일치하는 `pwd` 명령어의 집중적인 개요와 실제 사용법을 제공합니다.
-2.  **[리눅스 디렉토리 탐색](https://labex.io/ko/labs/linux-directory-navigation-387844)** - 다양한 디렉토리를 탐색하며 기본적인 리눅스 명령줄 기술을 테스트하고 경로 및 파일 시스템 구조에 대한 이해를 공고히 하십시오.
-3.  **[리눅스 cd 명령어: 디렉토리 변경](https://labex.io/ko/labs/linux-linux-cd-command-directory-changing-209733)** - `cd` 명령어를 사용하여 파일 시스템을 효율적으로 탐색하고, 디렉토리를 변경하고 파일 구조를 탐색하는 다양한 기술을 이해하십시오.
+1. **[리눅스 pwd 명령어: 디렉토리 표시](https://labex.io/ko/labs/linux-linux-pwd-command-directory-displaying-209734)** - 이 랩은 현재 디렉토리를 찾는 이 강의의 소개와 직접적으로 일치하는 `pwd` 명령어의 집중적인 개요와 실제 사용법을 제공합니다.
+2. **[리눅스 디렉토리 탐색](https://labex.io/ko/labs/linux-directory-navigation-387844)** - 다양한 디렉토리를 탐색하며 기본적인 리눅스 명령줄 기술을 테스트하고 경로 및 파일 시스템 구조에 대한 이해를 공고히 하십시오.
+3. **[리눅스 cd 명령어: 디렉토리 변경](https://labex.io/ko/labs/linux-linux-cd-command-directory-changing-209733)** - `cd` 명령어를 사용하여 파일 시스템을 효율적으로 탐색하고, 디렉토리를 변경하고 파일 구조를 탐색하는 다양한 기술을 이해하십시오.
 
 이 랩들은 파일 시스템 계층 구조 및 탐색 개념을 실제 시나리오에 적용하고 필수 리눅스 명령어에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

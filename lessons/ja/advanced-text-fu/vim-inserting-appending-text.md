@@ -46,7 +46,7 @@ Vim では、主に 2 つのモードで作業します。コマンドを実行�
 
 練習は Vim を習得するために不可欠です。次のラボは、Vim のテキスト編集機能への理解を深めるための実践的な環境を提供します。
 
-1.  **[Edit Text Files in Linux with Vim and Nano](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - ファイルの作成、テキストの編集、ファイルの保存、vi/vim と nano の両方を使ったナビゲーションを練習します。このラボは、Vim のノーマルモードとインサートモードを使用するための基本的なスキルを習得するのに役立ちます。
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - ファイルの作成、テキストの編集、ファイルの保存、vi/vim と nano の両方を使ったナビゲーションを練習します。このラボは、Vim のノーマルモードとインサートモードを使用するための基本的なスキルを習得するのに役立ちます。
 
 これらの概念を実際のシナリオに応用することで、Vim を使った Linux でのテキスト編集に対する自信がつくでしょう。
 

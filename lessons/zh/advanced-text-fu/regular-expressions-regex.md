@@ -80,9 +80,9 @@ d[a-c]g
 
 将你的知识付诸实践。这里有一些实践实验，以加强你对正则表达式和模式匹配的理解：
 
-1.  **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 在此实验中，你将学习如何使用 `grep` 命令在 Linux 系统上的文件中搜索文本。你将执行基本搜索、显示行号、使用 `^` 和 `$` 等锚点来匹配行位置，并利用基本和扩展正则表达式进行复杂的模式匹配。
-2.  **[文本处理与正则表达式](https://labex.io/zh/labs/linux-text-processing-and-regular-expressions-18003)** - 学习强大的文本处理工具 grep、sed 和 awk。学习在 Linux 中使用正则表达式进行高效的文本操作和模式匹配。
-3.  **[提取邮件和数字](https://labex.io/zh/labs/linux-extracting-mails-and-numbers-17991)** - 在此挑战中，你将学习如何使用 grep 和正则表达式从文件中提取电子邮件地址和数字，展示基本的 Linux 文本处理技能。
+1. **[在 Linux 中使用 grep 搜索文本](https://labex.io/zh/labs/comptia-search-text-with-grep-in-linux-590841)** - 在此实验中，你将学习如何使用 `grep` 命令在 Linux 系统上的文件中搜索文本。你将执行基本搜索、显示行号、使用 `^` 和 `$` 等锚点来匹配行位置，并利用基本和扩展正则表达式进行复杂的模式匹配。
+2. **[文本处理与正则表达式](https://labex.io/zh/labs/linux-text-processing-and-regular-expressions-18003)** - 学习强大的文本处理工具 grep、sed 和 awk。学习在 Linux 中使用正则表达式进行高效的文本操作和模式匹配。
+3. **[提取邮件和数字](https://labex.io/zh/labs/linux-extracting-mails-and-numbers-17991)** - 在此挑战中，你将学习如何使用 grep 和正则表达式从文件中提取电子邮件地址和数字，展示基本的 Linux 文本处理技能。
 
 这些实验将帮助你在真实场景中应用这些概念，并增强你对正则表达式和文本处理的信心。
 

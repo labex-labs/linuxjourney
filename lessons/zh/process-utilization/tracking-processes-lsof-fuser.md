@@ -73,7 +73,7 @@ sudo fuser -k /mnt/usb
 
 实践出真知！以下是一些实践实验，以加强您对管理进程和解决资源冲突的理解：
 
-1.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，并使用 `kill` 终止它们。此实验将帮助您识别和管理可能占用资源的进程，例如 USB 驱动器上的文件。
+1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，并使用 `kill` 终止它们。此实验将帮助您识别和管理可能占用资源的进程，例如 USB 驱动器上的文件。
 
 此实验将帮助您在实际场景中应用这些概念，并建立识别和管理系统进程的信心。
 

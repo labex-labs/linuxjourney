@@ -72,7 +72,7 @@ L'option `-1 2` spécifie le champ 2 du premier fichier, et `-2 1` spécifie le 
 La commande `split` fait l'inverse de `join` ; elle divise un fichier volumineux en fichiers plus petits.
 
 ```bash
-$ split somefile
+split somefile
 ```
 
 Par défaut, cette commande divise `somefile` en nouveaux fichiers dès qu'une limite de 1000 lignes est atteinte. Les fichiers de sortie sont nommés `xaa`, `xab`, et ainsi de suite. Vous pouvez personnaliser ce comportement, par exemple, en spécifiant un nombre de lignes différent avec l'option `-l` ou en divisant par taille de fichier avec l'option `-b`.

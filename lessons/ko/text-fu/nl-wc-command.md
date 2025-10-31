@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 출력에는 파일 이름 앞에 세 개의 숫자가 표시됩니다. 왼쪽부터 이 숫자들은 다음을 나타냅니다.
 
-1.  줄 (라인) 수.
-2.  단어 수 (리눅스 단어 수).
-3.  바이트 수.
+1. 줄 (라인) 수.
+2. 단어 수 (리눅스 단어 수).
+3. 바이트 수.
 
 ### 특정 개수 얻기
 
@@ -57,9 +57,9 @@ turtles
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 `wc`와 `nl` 모두 리눅스 명령줄에서 일상적인 텍스트 처리를 위한 필수 명령어입니다.
@@ -68,9 +68,9 @@ $ nl file1.txt
 
 이러한 명령어를 숙달하려면 실습이 중요합니다. 리눅스에서 텍스트 계산 및 줄 번호 매기기 기술을 확고히 하기 위해 다음 연습 문제를 시도해 보세요.
 
-1.  **[Linux wc 명령어: 텍스트 계산](https://labex.io/ko/labs/linux-linux-wc-command-text-counting-219200)** - `wc` 명령어를 사용하여 텍스트 파일의 단어, 줄 및 문자 수를 연습합니다.
-2.  **[Linux nl 명령어: 줄 번호 매기기](https://labex.io/ko/labs/linux-linux-nl-command-line-numbering-210988)** - `nl` 명령어로 텍스트 파일의 줄에 번호를 매기는 방법을 배웁니다.
-3.  **[단어 수 세기 및 정렬](https://labex.io/ko/labs/linux-word-count-and-sorting-388125)** - `wc` 지식을 적용하여 줄, 단어, 문자를 계산하고 정렬과 결합하여 실제적인 텍스트 분석 작업을 수행합니다.
+1. **[Linux wc 명령어: 텍스트 계산](https://labex.io/ko/labs/linux-linux-wc-command-text-counting-219200)** - `wc` 명령어를 사용하여 텍스트 파일의 단어, 줄 및 문자 수를 연습합니다.
+2. **[Linux nl 명령어: 줄 번호 매기기](https://labex.io/ko/labs/linux-linux-nl-command-line-numbering-210988)** - `nl` 명령어로 텍스트 파일의 줄에 번호를 매기는 방법을 배웁니다.
+3. **[단어 수 세기 및 정렬](https://labex.io/ko/labs/linux-word-count-and-sorting-388125)** - `wc` 지식을 적용하여 줄, 단어, 문자를 계산하고 정렬과 결합하여 실제적인 텍스트 분석 작업을 수행합니다.
 
 이 실습들은 실제 시나리오에서 개념을 적용하고 리눅스 텍스트 처리 능력을 키우는 데 도움이 될 것입니다.
 

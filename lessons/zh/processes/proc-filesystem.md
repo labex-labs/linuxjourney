@@ -43,7 +43,7 @@ cat /proc/12345/status
 
 实践造就完美！以下是一些实践实验，以加强您对 Linux 进程和系统监控的理解：
 
-1.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在此实验中，您将学习管理和监控 Linux 系统进程的基本技能。您将探索如何与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。
+1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在此实验中，您将学习管理和监控 Linux 系统进程的基本技能。您将探索如何与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。
 
 这些实验将帮助您在真实场景中应用这些概念，并建立进程管理和系统观察的信心。
 

@@ -35,7 +35,7 @@ BIOS（Basic Input/Output System）またはその最新の後継である UEFI�
 
 理解を深めるために、このハンズオンラボを試すことをお勧めします。これは、Linux ブートプロセスについて学んだことを適用するための実践的な環境を提供します。
 
-1.  **[Linux で GRUB2 ブートメニューをカスタマイズする](https://labex.io/ja/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Linux ブートシーケンスの重要なコンポーネントである GRUB2 ブートメニューの変更を練習します。
+1. **[Linux で GRUB2 ブートメニューをカスタマイズする](https://labex.io/ja/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Linux ブートシーケンスの重要なコンポーネントである GRUB2 ブートメニューの変更を練習します。
 
 ## Quiz Question
 

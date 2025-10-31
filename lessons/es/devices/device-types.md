@@ -68,9 +68,9 @@ El número principal (8) identifica el controlador responsable del dispositivo. 
 
 Para aplicar lo que ha aprendido sobre **dispositivos Linux**, recomendamos los siguientes laboratorios prácticos. Estos ejercicios le ayudarán a ganar confianza con la interacción y gestión de dispositivos en escenarios del mundo real.
 
-1.  **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación y gestión de particiones de disco y sistemas de archivos, que son dispositivos de bloque fundamentales en Linux.
-2.  **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprenda a identificar e inspeccionar varios dispositivos de hardware, comprendiendo cómo se representan en el directorio `/dev`.
-3.  **[Crear y Activar un Archivo de Intercambio (Swap) en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Obtenga experiencia práctica en la creación y activación de un archivo de intercambio, que funciona como un dispositivo de memoria virtual.
+1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación y gestión de particiones de disco y sistemas de archivos, que son dispositivos de bloque fundamentales en Linux.
+2. **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - Aprenda a identificar e inspeccionar varios dispositivos de hardware, comprendiendo cómo se representan en el directorio `/dev`.
+3. **[Crear y Activar un Archivo de Intercambio (Swap) en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Obtenga experiencia práctica en la creación y activación de un archivo de intercambio, que funciona como un dispositivo de memoria virtual.
 
 ## Quiz Question
 

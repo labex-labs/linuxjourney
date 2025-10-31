@@ -32,10 +32,10 @@ Cada red física debe tener su propio servidor DHCP para optimizar el proceso de
 
 El proceso por el cual un dispositivo obtiene una dirección IP a través de DHCP implica un intercambio de cuatro pasos, a menudo recordado por el acrónimo DORA:
 
-1.  **DHCP Discover (Descubrimiento):** El dispositivo cliente transmite un mensaje `DISCOVER` a través de la red para encontrar un servidor DHCP disponible.
-2.  **DHCP Offer (Oferta):** Cualquier servidor DHCP que reciba el mensaje de descubrimiento puede responder con un mensaje `OFFER`. Este mensaje contiene una dirección IP propuesta, máscara de subred, dirección de puerta de enlace y duración del arrendamiento.
-3.  **DHCP Request (Solicitud):** El cliente recibe una o más ofertas y elige una. Luego transmite un mensaje `REQUEST` para informar a todos los servidores DHCP qué oferta ha aceptado.
-4.  **DHCP Acknowledgment (ACK) (Acuse de Recibo):** El servidor que realizó la oferta aceptada envía un mensaje `ACK` final al cliente, confirmando el arrendamiento y finalizando la configuración.
+1. **DHCP Discover (Descubrimiento):** El dispositivo cliente transmite un mensaje `DISCOVER` a través de la red para encontrar un servidor DHCP disponible.
+2. **DHCP Offer (Oferta):** Cualquier servidor DHCP que reciba el mensaje de descubrimiento puede responder con un mensaje `OFFER`. Este mensaje contiene una dirección IP propuesta, máscara de subred, dirección de puerta de enlace y duración del arrendamiento.
+3. **DHCP Request (Solicitud):** El cliente recibe una o más ofertas y elige una. Luego transmite un mensaje `REQUEST` para informar a todos los servidores DHCP qué oferta ha aceptado.
+4. **DHCP Acknowledgment (ACK) (Acuse de Recibo):** El servidor que realizó la oferta aceptada envía un mensaje `ACK` final al cliente, confirmando el arrendamiento y finalizando la configuración.
 
 Aunque el protocolo completo es más complejo, estos cuatro pasos representan el núcleo de cómo DHCP configura dinámicamente los hosts en una red.
 
@@ -43,9 +43,9 @@ Aunque el protocolo completo es más complejo, estos cuatro pasos representan el
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del direccionamiento IP dinámico y la configuración de red:
 
-1.  **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique el uso del comando `ip` para inspeccionar interfaces y use específicamente `dhclient` para obtener una dirección IP dinámica, aplicando directamente su conocimiento de DHCP.
-2.  **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IP asignadas por DHCP, e inspeccionar interfaces de red.
-3.  **[Explorar tipos de direcciones IP y capacidad de alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la capacidad de alcance de la red usando `ping` e `ip a`, lo que le ayudará a comprender cómo funcionan las IP asignadas dinámicamente dentro de una red.
+1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique el uso del comando `ip` para inspeccionar interfaces y use específicamente `dhclient` para obtener una dirección IP dinámica, aplicando directamente su conocimiento de DHCP.
+2. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar el comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IP asignadas por DHCP, e inspeccionar interfaces de red.
+3. **[Explorar tipos de direcciones IP y capacidad de alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la capacidad de alcance de la red usando `ping` e `ip a`, lo que le ayudará a comprender cómo funcionan las IP asignadas dinámicamente dentro de una red.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de asignación de IP dinámica y configuración de red en escenarios reales y a ganar confianza con la red Linux.
 

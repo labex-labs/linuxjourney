@@ -65,9 +65,9 @@ echo $PATH
 
 熟能生巧！以下是一些实践操作实验，以加强您对 Linux 环境变量的理解：
 
-1.  **[在 Linux 中管理 Shell 环境和配置](https://labex.io/zh/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - 练习创建和管理本地变量和环境变量，理解继承，并通过修改 `.bashrc` 文件使配置持久化。
-2.  **[Linux 中的环境变量](https://labex.io/zh/labs/linux-environment-variables-in-linux-385274)** - 学习环境变量的概念和用法，如何创建、修改和管理它们，以及它们在系统配置中的作用。
-3.  **[配置 Linux 环境变量](https://labex.io/zh/labs/linux-configure-linux-environment-variables-437861)** - 在 Linux 系统中亲手实践创建、设置和管理环境变量。
+1. **[在 Linux 中管理 Shell 环境和配置](https://labex.io/zh/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - 练习创建和管理本地变量和环境变量，理解继承，并通过修改 `.bashrc` 文件使配置持久化。
+2. **[Linux 中的环境变量](https://labex.io/zh/labs/linux-environment-variables-in-linux-385274)** - 学习环境变量的概念和用法，如何创建、修改和管理它们，以及它们在系统配置中的作用。
+3. **[配置 Linux 环境变量](https://labex.io/zh/labs/linux-configure-linux-environment-variables-437861)** - 在 Linux 系统中亲手实践创建、设置和管理环境变量。
 
 这些实验将帮助您在实际场景中应用这些概念，并建立管理 Linux shell 环境的信心。
 

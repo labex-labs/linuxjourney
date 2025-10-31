@@ -99,7 +99,7 @@ Diese Befehle sind die Bausteine für die Dienstverwaltung auf modernen Linux-Sy
 
 Übung ist der Schlüssel zum Erlernen neuer Fähigkeiten. Dieses praktische Labor hilft Ihnen, Ihr Verständnis für die Verwaltung von Prozessen zu festigen, die oft von systemd-Diensten gesteuert werden:
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top`, passen Sie die Priorität mit `renice` an und beenden Sie sie mit `kill`. Dieses Labor vermittelt Ihnen praktische Erfahrung mit den Laufzeitauswirkungen der systemd Unit-Verwaltung.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top`, passen Sie die Priorität mit `renice` an und beenden Sie sie mit `kill`. Dieses Labor vermittelt Ihnen praktische Erfahrung mit den Laufzeitauswirkungen der systemd Unit-Verwaltung.
 
 Dieses Labor hilft Ihnen, diese Konzepte in einem realen Szenario anzuwenden und Selbstvertrauen in die Prozessverwaltung unter Linux aufzubauen.
 

@@ -38,6 +38,7 @@ Sans `-e`, `grep` traiterait `-v` comme l'option "inverser la correspondance". L
 Vous pouvez modifier le comportement de `grep` avec divers drapeaux pour affiner vos résultats de recherche.
 
 - **Recherche insensible à la casse** : Utilisez le drapeau `-i` pour rendre votre recherche insensible à la casse.
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **Afficher uniquement la correspondance** : Si vous souhaitez uniquement voir la partie exacte de la ligne qui correspond au modèle, utilisez le drapeau `grep -o`.
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ Comme vous pouvez le constater, `grep` est un outil polyvalent et puissant pour 
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la recherche de texte et de la correspondance de modèles avec `grep` :
 
-1.  **[Rechercher du texte avec grep sous Linux](https://labex.io/fr/labs/comptia-search-text-with-grep-in-linux-590841)** - Entraînez-vous aux recherches de base, à l'affichage des numéros de ligne, à l'utilisation des ancres, et exploitez les expressions régulières de base et étendues pour une correspondance de modèles complexe avec `grep`.
-2.  **[Commande Linux grep : Recherche de modèles](https://labex.io/fr/labs/linux-linux-grep-command-pattern-searching-219192)** - Apprenez à utiliser `grep` pour rechercher et faire correspondre des modèles dans des fichiers texte, et explorez les expressions régulières pour définir des modèles de recherche complexes.
-3.  **[Aiguille dans la botte de foin](https://labex.io/fr/labs/linux-needle-in-the-haystack-388109)** - Découvrez la puissance de la commande `grep` pour rechercher des modèles spécifiques, compter les occurrences, extraire des valeurs uniques et combiner plusieurs critères de recherche dans divers fichiers journaux.
+1. **[Rechercher du texte avec grep sous Linux](https://labex.io/fr/labs/comptia-search-text-with-grep-in-linux-590841)** - Entraînez-vous aux recherches de base, à l'affichage des numéros de ligne, à l'utilisation des ancres, et exploitez les expressions régulières de base et étendues pour une correspondance de modèles complexe avec `grep`.
+2. **[Commande Linux grep : Recherche de modèles](https://labex.io/fr/labs/linux-linux-grep-command-pattern-searching-219192)** - Apprenez à utiliser `grep` pour rechercher et faire correspondre des modèles dans des fichiers texte, et explorez les expressions régulières pour définir des modèles de recherche complexes.
+3. **[Aiguille dans la botte de foin](https://labex.io/fr/labs/linux-needle-in-the-haystack-388109)** - Découvrez la puissance de la commande `grep` pour rechercher des modèles spécifiques, compter les occurrences, extraire des valeurs uniques et combiner plusieurs critères de recherche dans divers fichiers journaux.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec `grep` et les expressions régulières.
 

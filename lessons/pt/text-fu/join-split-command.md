@@ -72,7 +72,7 @@ A flag `-1 2` especifica o campo 2 do primeiro arquivo, e `-2 1` especifica o ca
 O comando `split` faz o oposto de juntar; ele divide um arquivo grande em arquivos menores.
 
 ```bash
-$ split somefile
+split somefile
 ```
 
 Por padrão, este comando divide `somefile` em novos arquivos assim que um limite de 1000 linhas é atingido. Os arquivos de saída são nomeados `xaa`, `xab`, e assim por diante. Você pode personalizar esse comportamento, por exemplo, especificando uma contagem de linhas diferente com a flag `-l` ou dividindo por tamanho de arquivo com a flag `-b`.

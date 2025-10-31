@@ -88,9 +88,9 @@ Auffindbar sind diese Dateien häufig unter `/etc/network/interfaces`. Die Datei
 
 Wenden Sie Ihr Wissen mit diesen praktischen Übungen an. Sie helfen Ihnen, Ihr Verständnis von Netzwerkschnittstellen und IP-Adressierung zu festigen.
 
-1.  **[MAC- und IP-Adressen unter Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkadressinformationen, einschließlich MAC-, IPv4- und IPv6-Adressen auf einem Linux-System, zu identifizieren.
-2.  **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mithilfe des `ip`-Befehls zu überprüfen.
-3.  **[IP-Adress-Typen und Erreichbarkeit unter Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
+1. **[MAC- und IP-Adressen unter Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkadressinformationen, einschließlich MAC-, IPv4- und IPv6-Adressen auf einem Linux-System, zu identifizieren.
+2. **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mithilfe des `ip`-Befehls zu überprüfen.
+3. **[IP-Adress-Typen und Erreichbarkeit unter Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mit `ping` und `ip a`.
 
 Diese Labs helfen Ihnen, die Konzepte der Netzwerkschnittstellenidentifikation und IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
 

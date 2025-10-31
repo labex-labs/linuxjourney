@@ -36,9 +36,9 @@ Todos os dados transmitidos por essas redes, de páginas da web a e-mails, são 
 
 A prática leva à perfeição! A experiência prática é crucial para dominar os conceitos de **fundamentos de rede**. Os laboratórios a seguir ajudarão a reforçar sua compreensão dos componentes de rede e como os hosts se comunicam:
 
-1.  **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique a identificação de informações de endereçamento de rede para hosts, incluindo endereços MAC e IP, usando o comando `ip a`.
-2.  **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a testar a acessibilidade da rede e identificar diferentes tipos de endereços IP, essenciais para entender como os hosts se conectam.
-3.  **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Entenda como os hosts interagem em uma rede observando o Protocolo de Resolução de Endereços (ARP) e testando a conectividade com `ping`.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique a identificação de informações de endereçamento de rede para hosts, incluindo endereços MAC e IP, usando o comando `ip a`.
+2. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a testar a acessibilidade da rede e identificar diferentes tipos de endereços IP, essenciais para entender como os hosts se conectam.
+3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Entenda como os hosts interagem em uma rede observando o Protocolo de Resolução de Endereços (ARP) e testando a conectividade com `ping`.
 
 Esses laboratórios ajudarão você a aplicar os conceitos de hosts, endereçamento e conectividade básica em cenários reais e a construir confiança com os fundamentos de rede.
 

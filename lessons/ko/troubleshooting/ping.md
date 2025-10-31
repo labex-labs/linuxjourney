@@ -43,9 +43,9 @@ Time To Live (TTL) 필드는 패킷의 홉 카운터 역할을 합니다. 패킷
 
 네트워크 진단을 마스터하려면 연습이 필수적입니다. 다음 실습 랩은 `ping` 명령어에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`과 `arp`를 사용하여 네트워크 및 데이터 링크 계층 상호 작용을 탐색하고 기본 게이트웨이가 원격 트래픽을 처리하는 방식을 관찰합니다.
-2.  **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`과 `ip a`를 활용하여 로컬 TCP/IP 스택을 테스트하고, 공용 인터넷 연결을 확인하며, 네트워크 도달 가능성을 탐색합니다.
-3.  **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`를 사용하여 정적 IP 주소를 할당하고 동일 및 다른 서브넷에서 `ping`으로 연결을 테스트하는 방법을 배웁니다.
+1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`과 `arp`를 사용하여 네트워크 및 데이터 링크 계층 상호 작용을 탐색하고 기본 게이트웨이가 원격 트래픽을 처리하는 방식을 관찰합니다.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`과 `ip a`를 활용하여 로컬 TCP/IP 스택을 테스트하고, 공용 인터넷 연결을 확인하며, 네트워크 도달 가능성을 탐색합니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`를 사용하여 정적 IP 주소를 할당하고 동일 및 다른 서브넷에서 `ping`으로 연결을 테스트하는 방법을 배웁니다.
 
 이 랩들은 네트워크 도달 가능성 및 `ping` 명령어 개념을 실제 시나리오에 적용하여 Linux 에서 네트워크 진단에 대한 자신감을 높이는 데 도움이 될 것입니다.
 

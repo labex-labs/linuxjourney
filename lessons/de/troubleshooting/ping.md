@@ -43,9 +43,9 @@ Das Feld `time` misst die Roundtrip-Zeit – die Dauer, die das Paket benötigte
 
 Übung ist unerlässlich, um Netzwerkdiagnosen zu meistern. Diese praktischen Labs helfen, Ihr Verständnis des `ping`-Befehls zu festigen:
 
-1.  **[Erkunden Sie die Interaktion auf der Netzwerkebene mit ping und arp unter Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping` und `arp`, um Interaktionen auf der Netzwerk- und Datenverbindungsschicht zu untersuchen und zu beobachten, wie das Standard-Gateway den Datenverkehr zu entfernten Zielen verarbeitet.
-2.  **[Erkunden Sie IP-Adresstypen und Erreichbarkeit unter Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Nutzen Sie `ping` und `ip a`, um den lokalen TCP/IP-Stack zu testen, die öffentliche Internetverbindung zu überprüfen und die Netzwerkerreichbarkeit zu erkunden.
-3.  **[Simulieren Sie die Konnektivität auf der Netzwerkebene unter Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, statische IP-Adressen mit `ip addr` zuzuweisen und die Konnektivität mit `ping` im selben und in verschiedenen Subnetzen zu testen.
+1. **[Erkunden Sie die Interaktion auf der Netzwerkebene mit ping und arp unter Linux](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping` und `arp`, um Interaktionen auf der Netzwerk- und Datenverbindungsschicht zu untersuchen und zu beobachten, wie das Standard-Gateway den Datenverkehr zu entfernten Zielen verarbeitet.
+2. **[Erkunden Sie IP-Adresstypen und Erreichbarkeit unter Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Nutzen Sie `ping` und `ip a`, um den lokalen TCP/IP-Stack zu testen, die öffentliche Internetverbindung zu überprüfen und die Netzwerkerreichbarkeit zu erkunden.
+3. **[Simulieren Sie die Konnektivität auf der Netzwerkebene unter Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, statische IP-Adressen mit `ip addr` zuzuweisen und die Konnektivität mit `ping` im selben und in verschiedenen Subnetzen zu testen.
 
 Diese Labs helfen Ihnen, die Konzepte der Netzwerkerreichbarkeit und des `ping`-Befehls in realen Szenarien anzuwenden und Ihr Vertrauen in die Netzwerkdiagnose unter Linux zu stärken.
 

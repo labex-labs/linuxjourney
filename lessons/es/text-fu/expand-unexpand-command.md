@@ -45,9 +45,9 @@ Por defecto, `unexpand` solo convierte los espacios iniciales en cada línea. La
 
 Para dominar la manipulación de texto y la redirección en Linux, la práctica es clave. Los siguientes laboratorios prácticos ayudarán a reforzar su comprensión:
 
-1.  **[Redirección de Entrada y Salida en Linux](https://labex.io/es/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practique el control del flujo de datos desde comandos manipulando la salida estándar (stdout), el error estándar (stderr) y la entrada estándar (stdin) usando operadores como `>` y `>>`.
-2.  **[Procesamiento Simple de Texto](https://labex.io/es/labs/linux-simple-text-processing-18004)** - Aprenda a usar comandos potentes como `tr`, `col`, `join` y `paste` para manipular y analizar datos de texto de manera eficiente, mejorando sus habilidades de línea de comandos para el procesamiento de datos.
-3.  **[Procesamiento de Texto y Expresiones Regulares](https://labex.io/es/labs/linux-text-processing-and-regular-expressions-18003)** - Aprenda las potentes herramientas de procesamiento de texto `grep`, `sed` y `awk`, y use expresiones regulares para una manipulación de texto y coincidencia de patrones eficientes en Linux.
+1. **[Redirección de Entrada y Salida en Linux](https://labex.io/es/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practique el control del flujo de datos desde comandos manipulando la salida estándar (stdout), el error estándar (stderr) y la entrada estándar (stdin) usando operadores como `>` y `>>`.
+2. **[Procesamiento Simple de Texto](https://labex.io/es/labs/linux-simple-text-processing-18004)** - Aprenda a usar comandos potentes como `tr`, `col`, `join` y `paste` para manipular y analizar datos de texto de manera eficiente, mejorando sus habilidades de línea de comandos para el procesamiento de datos.
+3. **[Procesamiento de Texto y Expresiones Regulares](https://labex.io/es/labs/linux-text-processing-and-regular-expressions-18003)** - Aprenda las potentes herramientas de procesamiento de texto `grep`, `sed` y `awk`, y use expresiones regulares para una manipulación de texto y coincidencia de patrones eficientes en Linux.
 
 Completar estos laboratorios le ayudará a aplicar los conceptos de transformación de texto y manipulación de archivos en escenarios del mundo real, aumentando su confianza con las herramientas esenciales de la línea de comandos de Linux.
 

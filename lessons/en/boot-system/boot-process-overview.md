@@ -35,7 +35,7 @@ This provides a high-level overview of the **booting process linux** follows. We
 
 To solidify your understanding, we recommend trying this hands-on lab. It provides a practical environment to apply what you've learned about the Linux boot process.
 
-1.  **[Customize the GRUB2 Boot Menu in Linux](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practice modifying the GRUB2 boot menu, a critical component in the Linux boot sequence.
+1. **[Customize the GRUB2 Boot Menu in Linux](https://labex.io/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practice modifying the GRUB2 boot menu, a critical component in the Linux boot sequence.
 
 ## Quiz Question
 

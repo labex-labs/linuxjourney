@@ -55,9 +55,9 @@ C-x k - 現在のバッファをキル（閉じる）
 
 バッファとテキストファイルの操作に関する理解を深めるために、以下のハンズオンラボを試してください。これらは、実際のシナリオでこれらの概念を適用するのに役立ちます。
 
-1.  **[Linux で Vim と Nano を使用してテキストファイルを編集する](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - バッファを扱う上で不可欠な、Vim と Nano エディタ内でのテキストの作成、編集、保存、ナビゲーションを練習します。
-2.  **[Linux cat コマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - テキストファイルの表示、連結、操作を学び、バッファの内容を操作する方法に直接応用します。
-3.  **[Linux でログファイルと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`、`more`、`less`などのコマンドを使用してテキストファイルを効率的に表示およびナビゲートする練習をし、バッファのようなコンテンツを検査する現実世界のシナリオをシミュレートします。
+1. **[Linux で Vim と Nano を使用してテキストファイルを編集する](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - バッファを扱う上で不可欠な、Vim と Nano エディタ内でのテキストの作成、編集、保存、ナビゲーションを練習します。
+2. **[Linux cat コマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - テキストファイルの表示、連結、操作を学び、バッファの内容を操作する方法に直接応用します。
+3. **[Linux でログファイルと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`、`more`、`less`などのコマンドを使用してテキストファイルを効率的に表示およびナビゲートする練習をし、バッファのようなコンテンツを検査する現実世界のシナリオをシミュレートします。
 
 これらのラボは、Linux でのテキストファイルとバッファ操作に対する自信を構築するのに役立ちます。
 

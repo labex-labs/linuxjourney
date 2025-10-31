@@ -54,8 +54,8 @@ cat > newfile.txt
 
 实践造就完美！以下是一些实践操作，以加强您对查看文件内容的理解：
 
-1.  **[Linux cat 命令：文件连接](https://labex.io/zh/labs/linux-linux-cat-command-file-concatenating-210986)** - 学习使用`cat`命令来查看、连接和操作文本文件，增强您在命令行中高效处理文本文件的技能。
-2.  **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习使用`cat`等命令来高效查看和导航文本文件，包括系统日志和配置文件，以提取关键信息。
+1. **[Linux cat 命令：文件连接](https://labex.io/zh/labs/linux-linux-cat-command-file-concatenating-210986)** - 学习使用`cat`命令来查看、连接和操作文本文件，增强您在命令行中高效处理文本文件的技能。
+2. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习使用`cat`等命令来高效查看和导航文本文件，包括系统日志和配置文件，以提取关键信息。
 
 这些实验将帮助您在实际场景中应用这些概念，并建立在 Linux 中查看文件内容方面的信心。
 

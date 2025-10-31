@@ -43,9 +43,9 @@ Zum Beispiel kann ein Host unter `192.168.1.129` in einem Netzwerk mit einer Mas
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von IP-Adressierung und Subnetting zu festigen:
 
-1.  **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung zu identifizieren, einschließlich IPv4-Adressen, was grundlegend für das Verständnis von Subnetzen ist.
-2.  **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Lernen Sie, verschiedene IP-Adress-Typen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob sich Hosts im selben Netzwerk befinden.
-3.  **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung und wenden Sie die im Unterricht besprochenen Konzepte von Netzwerkpräfixen und Host-Identifizierung direkt an.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung zu identifizieren, einschließlich IPv4-Adressen, was grundlegend für das Verständnis von Subnetzen ist.
+2. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Lernen Sie, verschiedene IP-Adress-Typen zu erkunden und die Netzwerkerreichbarkeit zu testen, um zu überprüfen, ob sich Hosts im selben Netzwerk befinden.
+3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung und wenden Sie die im Unterricht besprochenen Konzepte von Netzwerkpräfixen und Host-Identifizierung direkt an.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen im Umgang mit Netzwerkadressierung und Subnetting aufzubauen.
 

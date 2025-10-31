@@ -35,9 +35,9 @@ head -n 15 /var/log/syslog
 
 연습이 완벽함을 만듭니다! 파일 시작 부분을 보고 일반적인 텍스트 파일 조작에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[리눅스 head 명령어: 파일 시작 표시](https://labex.io/ko/labs/linux-linux-head-command-file-beginning-display-214302)** - 이 랩은 `head` 명령어를 사용하여 텍스트 파일의 초기 줄을 표시하는 방법과 줄 수를 수정하는 방법을 안내합니다.
-2.  **[리눅스에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 시스템 로그 및 구성 파일과 같이 종종 `head`와 같은 명령어가 필요한 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 리눅스 명령줄 기술을 연습합니다.
-3.  **[신속한 위협 탐지](https://labex.io/ko/labs/linux-rapid-threat-detection-387930)** - `head`(및 `tail`) 지식을 적용하여 최근 로그 항목을 신속하게 추출하고 분석하여 실제 사이버 보안 분석을 시뮬레이션합니다.
+1. **[리눅스 head 명령어: 파일 시작 표시](https://labex.io/ko/labs/linux-linux-head-command-file-beginning-display-214302)** - 이 랩은 `head` 명령어를 사용하여 텍스트 파일의 초기 줄을 표시하는 방법과 줄 수를 수정하는 방법을 안내합니다.
+2. **[리눅스에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 시스템 로그 및 구성 파일과 같이 종종 `head`와 같은 명령어가 필요한 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 리눅스 명령줄 기술을 연습합니다.
+3. **[신속한 위협 탐지](https://labex.io/ko/labs/linux-rapid-threat-detection-387930)** - `head`(및 `tail`) 지식을 적용하여 최근 로그 항목을 신속하게 추출하고 분석하여 실제 사이버 보안 분석을 시뮬레이션합니다.
 
 이 랩들은 실제 시나리오에서 개념을 적용하고 리눅스에서 텍스트 파일 보기 및 분석에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

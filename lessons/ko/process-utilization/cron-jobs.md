@@ -49,7 +49,7 @@ crontab -e
 
 연습이 완벽하게 만듭니다! 이 실습 랩은 Linux 에서 `작업을 예약`하는 방법에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[Linux 에서 at 및 cron 으로 작업 예약](https://labex.io/ko/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - `at`, `atq`, `atrm`, 및 `crontab`을 사용하여 작업을 생성, 관리 및 제거하는 연습을 통해 시스템 관리 작업을 자동화하는 실습 경험을 얻으십시오.
+1. **[Linux 에서 at 및 cron 으로 작업 예약](https://labex.io/ko/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - `at`, `atq`, `atrm`, 및 `crontab`을 사용하여 작업을 생성, 관리 및 제거하는 연습을 통해 시스템 관리 작업을 자동화하는 실습 경험을 얻으십시오.
 
 이 랩은 실제 시나리오에서 이 강의의 개념을 적용하고 `Linux 자동화`에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

@@ -35,8 +35,8 @@ Die Beherrschung der Werkzeuge zur Verwaltung dieser Pakete ist der **beste Weg,
 
 Um Ihr Wissen anzuwenden, empfehlen wir diese praktischen Übungen (Labs). Sie bieten praktische Erfahrung mit den in dieser Lektion behandelten Konzepten.
 
-1.  **[Pakete mit RPM unter Linux verwalten](https://labex.io/de/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Sammeln Sie praktische Erfahrung beim Abfragen von Paketinformationen, Überprüfen der Integrität und Untersuchen des Inhalts von RPM-Paketen auf Red Hat-basierten Systemen.
-2.  **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Lernen Sie, Softwarepakete auf RHEL-basierten Linux-Systemen mit YUM zu verwalten, einschließlich der Überprüfung, Aktualisierung und Erkundung von Repositories.
-3.  **[Software aus Quellcode unter Linux erstellen](https://labex.io/de/labs/comptia-build-software-from-source-code-in-linux-590853)** - Verstehen Sie den grundlegenden Prozess des Erstellens und Installierens von Software aus ihrem Quellcode, eine entscheidende Fähigkeit für Anwendungen, die nicht über Paketmanager verfügbar sind.
+1. **[Pakete mit RPM unter Linux verwalten](https://labex.io/de/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Sammeln Sie praktische Erfahrung beim Abfragen von Paketinformationen, Überprüfen der Integrität und Untersuchen des Inhalts von RPM-Paketen auf Red Hat-basierten Systemen.
+2. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Lernen Sie, Softwarepakete auf RHEL-basierten Linux-Systemen mit YUM zu verwalten, einschließlich der Überprüfung, Aktualisierung und Erkundung von Repositories.
+3. **[Software aus Quellcode unter Linux erstellen](https://labex.io/de/labs/comptia-build-software-from-source-code-in-linux-590853)** - Verstehen Sie den grundlegenden Prozess des Erstellens und Installierens von Software aus ihrem Quellcode, eine entscheidende Fähigkeit für Anwendungen, die nicht über Paketmanager verfügbar sind.
 
 Diese Labs helfen Ihnen, die Konzepte der Paketverwaltung und Softwareinstallation in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemadministration aufzubauen.

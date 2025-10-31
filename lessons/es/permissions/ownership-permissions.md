@@ -45,8 +45,8 @@ Este único comando asigna la propiedad de usuario a `patty` y la propiedad de g
 
 Para solidificar su comprensión de la **propiedad de archivos en Linux**, le recomendamos practicar con estos laboratorios prácticos. Proporcionan escenarios del mundo real para aplicar los comandos `chown` y `chgrp`.
 
-1.  **[Grupo de Usuarios y Permisos de Archivos de Linux](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceptos esenciales de gestión de usuarios y grupos de Linux, incluida la comprensión de los permisos de archivos y la manipulación de la propiedad de archivos. Este laboratorio proporciona experiencia práctica en la protección de un entorno Linux multiusuario.
-2.  **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío, simulará la adición de nuevos miembros del equipo a un entorno de servidor creando nuevas cuentas de usuario, configurando grupos personalizados y gestionando las membresías de grupo. Esto pondrá a prueba sus habilidades en la administración de usuarios y grupos de Linux.
+1. **[Grupo de Usuarios y Permisos de Archivos de Linux](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceptos esenciales de gestión de usuarios y grupos de Linux, incluida la comprensión de los permisos de archivos y la manipulación de la propiedad de archivos. Este laboratorio proporciona experiencia práctica en la protección de un entorno Linux multiusuario.
+2. **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío, simulará la adición de nuevos miembros del equipo a un entorno de servidor creando nuevas cuentas de usuario, configurando grupos personalizados y gestionando las membresías de grupo. Esto pondrá a prueba sus habilidades en la administración de usuarios y grupos de Linux.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión de la propiedad de archivos y los permisos en Linux.
 

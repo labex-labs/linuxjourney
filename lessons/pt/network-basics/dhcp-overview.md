@@ -32,10 +32,10 @@ Toda rede física deve ter seu próprio servidor DHCP para otimizar o processo d
 
 O processo de um dispositivo obter um endereço IP via DHCP envolve uma troca de quatro etapas, frequentemente lembrada pelo acrônimo DORA:
 
-1.  **DHCP Discover (Descoberta):** O dispositivo cliente transmite uma mensagem `DISCOVER` pela rede para encontrar um servidor DHCP disponível.
-2.  **DHCP Offer (Oferta):** Qualquer servidor DHCP que receba a mensagem de descoberta pode responder com uma mensagem `OFFER`. Esta mensagem contém um endereço IP proposto, máscara de sub-rede, endereço de gateway e duração do aluguel.
-3.  **DHCP Request (Solicitação):** O cliente recebe uma ou mais ofertas e escolhe uma. Em seguida, ele transmite uma mensagem `REQUEST` para informar a todos os servidores DHCP qual oferta ele aceitou.
-4.  **DHCP Acknowledgment (ACK) (Confirmação):** O servidor que fez a oferta aceita envia uma mensagem final `ACK` ao cliente, confirmando o aluguel e finalizando a configuração.
+1. **DHCP Discover (Descoberta):** O dispositivo cliente transmite uma mensagem `DISCOVER` pela rede para encontrar um servidor DHCP disponível.
+2. **DHCP Offer (Oferta):** Qualquer servidor DHCP que receba a mensagem de descoberta pode responder com uma mensagem `OFFER`. Esta mensagem contém um endereço IP proposto, máscara de sub-rede, endereço de gateway e duração do aluguel.
+3. **DHCP Request (Solicitação):** O cliente recebe uma ou mais ofertas e escolhe uma. Em seguida, ele transmite uma mensagem `REQUEST` para informar a todos os servidores DHCP qual oferta ele aceitou.
+4. **DHCP Acknowledgment (ACK) (Confirmação):** O servidor que fez a oferta aceita envia uma mensagem final `ACK` ao cliente, confirmando o aluguel e finalizando a configuração.
 
 Embora o protocolo completo seja mais complexo, estas quatro etapas representam o cerne de como o DHCP configura hosts dinamicamente em uma rede.
 
@@ -43,9 +43,9 @@ Embora o protocolo completo seja mais complexo, estas quatro etapas representam 
 
 Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre endereçamento IP dinâmico e configuração de rede:
 
-1.  **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para inspecionar interfaces e use especificamente o `dhclient` para obter um endereço IP dinâmico, aplicando diretamente seu conhecimento de DHCP.
-2.  **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para identificar informações de endereçamento de rede, incluindo os endereços IP atribuídos pelo DHCP, e inspecionar interfaces de rede.
-3.  **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como os IPs atribuídos dinamicamente funcionam dentro de uma rede.
+1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique o uso do comando `ip` para inspecionar interfaces e use especificamente o `dhclient` para obter um endereço IP dinâmico, aplicando diretamente seu conhecimento de DHCP.
+2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para identificar informações de endereçamento de rede, incluindo os endereços IP atribuídos pelo DHCP, e inspecionar interfaces de rede.
+3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade da rede usando `ping` e `ip a`, ajudando você a entender como os IPs atribuídos dinamicamente funcionam dentro de uma rede.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de atribuição de IP dinâmico e configuração de rede em cenários reais e a ganhar confiança com redes Linux.
 

@@ -65,9 +65,9 @@ echo $PATH
 
 練習あるのみです！Linux 環境変数への理解を深めるための実践的なラボをいくつかご紹介します。
 
-1.  **[Linux におけるシェル環境と構成の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数の作成と管理、継承の理解、`.bashrc` ファイルの変更による構成の永続化を練習します。
-2.  **[Linux の環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念と使用法、作成、変更、管理方法、およびシステム構成における役割について学習します。
-3.  **[Linux 環境変数の設定](https://labex.io/ja/labs/linux-configure-linux-environment-variables-437861)** - Linux システムで環境変数を作成、設定、管理するハンズオン経験を積みます。
+1. **[Linux におけるシェル環境と構成の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数の作成と管理、継承の理解、`.bashrc` ファイルの変更による構成の永続化を練習します。
+2. **[Linux の環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念と使用法、作成、変更、管理方法、およびシステム構成における役割について学習します。
+3. **[Linux 環境変数の設定](https://labex.io/ja/labs/linux-configure-linux-environment-variables-437861)** - Linux システムで環境変数を作成、設定、管理するハンズオン経験を積みます。
 
 これらのラボは、概念を実際のシナリオに適用し、Linux シェル環境の管理に対する自信を構築するのに役立ちます。
 

@@ -35,9 +35,9 @@ TCP fournit un flux de données fiable et orienté connexion. Avant que toute do
 
 Pour établir une connexion, TCP utilise un processus appelé la poignée de main en trois étapes :
 
-1.  **SYN** : Le client envoie un segment SYN (synchroniser) au serveur pour initier une connexion.
-2.  **SYN-ACK** : Le serveur répond avec un segment SYN-ACK (synchroniser-acquitter) pour accuser réception de la demande du client.
-3.  **ACK** : Le client renvoie un segment ACK (acquitter) au serveur, confirmant que la connexion est établie.
+1. **SYN** : Le client envoie un segment SYN (synchroniser) au serveur pour initier une connexion.
+2. **SYN-ACK** : Le serveur répond avec un segment SYN-ACK (synchroniser-acquitter) pour accuser réception de la demande du client.
+3. **ACK** : Le client renvoie un segment ACK (acquitter) au serveur, confirmant que la connexion est établie.
 
 Une fois la poignée de main terminée, les données peuvent être échangées de manière fiable. TCP utilise des numéros de séquence pour suivre chaque segment, permettant à l'hôte récepteur de les réassembler dans le bon ordre et de demander la retransmission de tout segment manquant. Dans notre exemple de courrier électronique, la couche transport attacherait le port de destination pour SMTP (port 25) et un port source de l'hôte client à chaque segment.
 

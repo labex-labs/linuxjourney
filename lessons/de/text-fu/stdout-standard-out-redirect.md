@@ -51,7 +51,7 @@ Dieser Operator hängt die Ausgabe an das Ende der angegebenen Datei an. Wenn di
 
 Um Ihr Verständnis der I/O-Umleitung zu festigen, versuchen Sie dieses praktische Labor:
 
-1.  **[Eingabe und Ausgabe in Linux umleiten](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie die Standardausgabe (stdout), die Standardfehlerausgabe (stderr) und die Standardeingabe (stdin) mithilfe von Operatoren wie `>`, `>>`, `2>` und dem `tee`-Befehl manipulieren.
+1. **[Eingabe und Ausgabe in Linux umleiten](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie die Standardausgabe (stdout), die Standardfehlerausgabe (stderr) und die Standardeingabe (stdin) mithilfe von Operatoren wie `>`, `>>`, `2>` und dem `tee`-Befehl manipulieren.
 
 Dieses Labor hilft Ihnen, diese Konzepte in realen Szenarien anzuwenden und Selbstvertrauen bei der I/O-Umleitung aufzubauen.
 

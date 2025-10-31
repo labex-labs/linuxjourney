@@ -51,7 +51,7 @@ echo Hello World >> peanuts.txt
 
 I/O リダイレクトの理解を深めるために、この実践的なラボを試してください。
 
-1.  **[Linux における入出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`, `>>`, `2>`などの演算子や`tee`コマンドを使用して、標準出力 (stdout)、標準エラー (stderr)、標準入力 (stdin) を操作することにより、コマンドからのデータフローを制御する練習をします。
+1. **[Linux における入出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`, `>>`, `2>`などの演算子や`tee`コマンドを使用して、標準出力 (stdout)、標準エラー (stderr)、標準入力 (stdin) を操作することにより、コマンドからのデータフローを制御する練習をします。
 
 このラボは、これらの概念を実世界のシナリオに適用し、I/O リダイレクトに対する自信を構築するのに役立ちます。
 

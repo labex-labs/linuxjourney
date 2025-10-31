@@ -54,8 +54,8 @@ cat > newfile.txt
 
 연습이 완벽함을 만듭니다! 파일 내용을 보는 이해도를 높이기 위한 실습 랩이 있습니다.
 
-1.  **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - `cat` 명령어를 사용하여 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배우고, 효율적인 텍스트 파일 처리를 위한 명령줄 기술을 향상시키십시오.
-2.  **[Linux 에서 로그 및 설정 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`과 같은 명령어를 사용하여 시스템 로그 및 설정 파일을 포함한 텍스트 파일을 효율적으로 보고 탐색하여 중요한 정보를 추출하는 연습을 하십시오.
+1. **[Linux cat 명령어: 파일 연결](https://labex.io/ko/labs/linux-linux-cat-command-file-concatenating-210986)** - `cat` 명령어를 사용하여 텍스트 파일을 보고, 연결하고, 조작하는 방법을 배우고, 효율적인 텍스트 파일 처리를 위한 명령줄 기술을 향상시키십시오.
+2. **[Linux 에서 로그 및 설정 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`과 같은 명령어를 사용하여 시스템 로그 및 설정 파일을 포함한 텍스트 파일을 효율적으로 보고 탐색하여 중요한 정보를 추출하는 연습을 하십시오.
 
 이 랩들은 실제 시나리오에서 개념을 적용하고 Linux 에서 파일 내용 보기에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

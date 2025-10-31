@@ -38,6 +38,7 @@ grep -e "-v" /path/to/some/file.conf
 さまざまなフラグを使用して `grep` の動作を変更し、検索結果を絞り込むことができます。
 
 - **大文字・小文字を区別しない検索**: `-i` フラグを使用して、検索を大文字・小文字を区別しないようにします。
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **一致部分のみ表示**: パターンに一致した行の正確な部分のみを表示したい場合は、`grep -o` フラグを使用します。
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ ls /somedir | grep '.txt$'
 
 練習あるのみです！テキスト検索とパターンマッチングにおける `grep` の理解を深めるための実践的なラボをいくつかご紹介します。
 
-1.  **[Linux での grep によるテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - 基本的な検索、行番号の表示、アンカーの使用、そして複雑なパターンマッチングのための基本正規表現と拡張正規表現の両方を活用する練習をします。
-2.  **[Linux grep コマンド：パターン検索](https://labex.io/ja/labs/linux-linux-grep-command-pattern-searching-219192)** - テキストファイル内でのパターンの検索とマッチングに `grep` を使用する方法を学び、複雑な検索パターンを定義するために正規表現を探求します。
-3.  **[干し草の中の針](https://labex.io/ja/labs/linux-needle-in-the-haystack-388109)** - `grep` コマンドの力を活用して、特定のパターンを検索し、出現回数をカウントし、一意の値を抽出し、さまざまなログファイルにわたって複数の検索条件を組み合わせる方法を学びます。
+1. **[Linux での grep によるテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - 基本的な検索、行番号の表示、アンカーの使用、そして複雑なパターンマッチングのための基本正規表現と拡張正規表現の両方を活用する練習をします。
+2. **[Linux grep コマンド：パターン検索](https://labex.io/ja/labs/linux-linux-grep-command-pattern-searching-219192)** - テキストファイル内でのパターンの検索とマッチングに `grep` を使用する方法を学び、複雑な検索パターンを定義するために正規表現を探求します。
+3. **[干し草の中の針](https://labex.io/ja/labs/linux-needle-in-the-haystack-388109)** - `grep` コマンドの力を活用して、特定のパターンを検索し、出現回数をカウントし、一意の値を抽出し、さまざまなログファイルにわたって複数の検索条件を組み合わせる方法を学びます。
 
 これらのラボは、概念を実際のシナリオに適用し、`grep` と正規表現に対する自信を築くのに役立ちます。
 

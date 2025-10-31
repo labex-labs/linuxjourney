@@ -38,6 +38,7 @@ grep -e "-v" /path/to/some/file.conf
 다양한 플래그를 사용하여 `grep`의 동작을 수정하여 검색 결과를 세분화할 수 있습니다.
 
 - **대소문자 구분 없는 검색**: `-i` 플래그를 사용하여 검색을 대소문자 구분 없이 만듭니다.
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **일치 항목만 표시**: 패턴과 일치하는 줄의 정확한 부분만 보려면 `grep -o` 플래그를 사용합니다.
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ ls /somedir | grep '.txt$'
 
 연습이 완벽을 만듭니다! `grep`을 사용한 텍스트 검색 및 패턴 일치에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 에서 grep 으로 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 기본 검색, 줄 번호 표시, 앵커 사용, 그리고 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식 모두 활용하는 방법을 연습합니다.
-2.  **[Linux grep 명령어: 패턴 검색](https://labex.io/ko/labs/linux-linux-grep-command-pattern-searching-219192)** - 텍스트 파일 내에서 패턴을 검색하고 일치시키는 데 `grep`을 사용하는 방법을 배우고, 복잡한 검색 패턴을 정의하기 위해 정규 표현식을 탐색합니다.
-3.  **[건초 더미 속 바늘 찾기](https://labex.io/ko/labs/linux-needle-in-the-haystack-388109)** - 특정 패턴 검색, 발생 횟수 계산, 고유 값 추출, 그리고 다양한 로그 파일에 걸쳐 여러 검색 기준 결합을 위해 `grep` 명령어의 강력함을 배웁니다.
+1. **[Linux 에서 grep 으로 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 기본 검색, 줄 번호 표시, 앵커 사용, 그리고 복잡한 패턴 일치를 위해 기본 및 확장 정규 표현식 모두 활용하는 방법을 연습합니다.
+2. **[Linux grep 명령어: 패턴 검색](https://labex.io/ko/labs/linux-linux-grep-command-pattern-searching-219192)** - 텍스트 파일 내에서 패턴을 검색하고 일치시키는 데 `grep`을 사용하는 방법을 배우고, 복잡한 검색 패턴을 정의하기 위해 정규 표현식을 탐색합니다.
+3. **[건초 더미 속 바늘 찾기](https://labex.io/ko/labs/linux-needle-in-the-haystack-388109)** - 특정 패턴 검색, 발생 횟수 계산, 고유 값 추출, 그리고 다양한 로그 파일에 걸쳐 여러 검색 기준 결합을 위해 `grep` 명령어의 강력함을 배웁니다.
 
 이 랩들은 실제 시나리오에서 개념을 적용하고 `grep` 및 정규 표현식에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

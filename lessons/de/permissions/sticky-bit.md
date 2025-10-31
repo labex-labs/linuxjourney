@@ -49,9 +49,9 @@ Das Verständnis des Sticky Bits ist entscheidend für die Verwaltung von Multi-
 
 Um Ihr Verständnis von Dateiberechtigungen, einschließlich spezieller Berechtigungen wie dem Sticky Bit, zu festigen, versuchen Sie diese praktischen Labs. Sie helfen Ihnen zu sehen, wie diese Konzepte in realen Szenarien angewendet werden.
 
-1.  **[Linux-Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Üben Sie das Erstellen von Benutzern und Gruppen sowie die Manipulation von Dateibesitz und Berechtigungen. Dieses Lab bietet eine Grundlage für das Verständnis der Funktionsweise spezieller Berechtigungen.
-2.  **[Dateien löschen und verschieben](https://labex.io/de/labs/linux-delete-and-move-files-7777)** – Lernen Sie, wie man Dateien löscht und verschiebt, und sehen Sie, wie Berechtigungen, einschließlich des Sticky Bits auf einem Verzeichnis, diese Aktionen einschränken können.
-3.  **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** – Üben Sie das Auffinden von Dateien und das Festlegen von Zugriffskontrollen, um die Bedeutung von Dateiberechtigungen bei der Verwaltung des Dateizugriffs und der Änderung zu verstärken.
+1. **[Linux-Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Üben Sie das Erstellen von Benutzern und Gruppen sowie die Manipulation von Dateibesitz und Berechtigungen. Dieses Lab bietet eine Grundlage für das Verständnis der Funktionsweise spezieller Berechtigungen.
+2. **[Dateien löschen und verschieben](https://labex.io/de/labs/linux-delete-and-move-files-7777)** – Lernen Sie, wie man Dateien löscht und verschiebt, und sehen Sie, wie Berechtigungen, einschließlich des Sticky Bits auf einem Verzeichnis, diese Aktionen einschränken können.
+3. **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** – Üben Sie das Auffinden von Dateien und das Festlegen von Zugriffskontrollen, um die Bedeutung von Dateiberechtigungen bei der Verwaltung des Dateizugriffs und der Änderung zu verstärken.
 
 ## Quiz Question
 

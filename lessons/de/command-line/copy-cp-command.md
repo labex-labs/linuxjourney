@@ -79,8 +79,8 @@ Dieser Befehl zeigt, wie `linux cp -p` verwendet wird, um `mycoolfile` zu kopier
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis für das Kopieren von Dateien und Verzeichnissen in Linux zu festigen:
 
-1.  **[Linux cp Befehl: Dateikopieren](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)** - Üben Sie die grundlegende Verwendung, erweiterte Optionen wie rekursives Kopieren, Beibehalten von Attributen und die Verwendung von Wildcards, um Dateien und Verzeichnisse effizient zu kopieren.
-2.  **[Dateien und Verzeichnisse organisieren](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** - Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
+1. **[Linux cp Befehl: Dateikopieren](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)** - Üben Sie die grundlegende Verwendung, erweiterte Optionen wie rekursives Kopieren, Beibehalten von Attributen und die Verwendung von Wildcards, um Dateien und Verzeichnisse effizient zu kopieren.
+2. **[Dateien und Verzeichnisse organisieren](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** - Üben Sie wesentliche Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in das Kopieren und Verwalten von Dateien in Linux aufzubauen.
 

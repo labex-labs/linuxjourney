@@ -65,9 +65,9 @@ echo $PATH
 
 연습이 완벽함을 만듭니다! Linux 환경 변수에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 에서 셸 환경 및 구성 관리](https://labex.io/ko/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - 로컬 및 환경 변수 생성 및 관리, 상속 이해, `.bashrc` 파일을 수정하여 구성을 영구적으로 만드는 방법을 연습합니다.
-2.  **[Linux 의 환경 변수](https://labex.io/ko/labs/linux-environment-variables-in-linux-385274)** - 환경 변수의 개념과 사용법, 환경 변수 생성, 수정 및 관리 방법, 시스템 구성에서의 역할에 대해 알아봅니다.
-3.  **[Linux 환경 변수 구성](https://labex.io/ko/labs/linux-configure-linux-environment-variables-437861)** - Linux 시스템에서 환경 변수를 생성, 설정 및 관리하는 실습 경험을 얻습니다.
+1. **[Linux 에서 셸 환경 및 구성 관리](https://labex.io/ko/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - 로컬 및 환경 변수 생성 및 관리, 상속 이해, `.bashrc` 파일을 수정하여 구성을 영구적으로 만드는 방법을 연습합니다.
+2. **[Linux 의 환경 변수](https://labex.io/ko/labs/linux-environment-variables-in-linux-385274)** - 환경 변수의 개념과 사용법, 환경 변수 생성, 수정 및 관리 방법, 시스템 구성에서의 역할에 대해 알아봅니다.
+3. **[Linux 환경 변수 구성](https://labex.io/ko/labs/linux-configure-linux-environment-variables-437861)** - Linux 시스템에서 환경 변수를 생성, 설정 및 관리하는 실습 경험을 얻습니다.
 
 이 랩들은 실제 시나리오에 개념을 적용하고 Linux 셸 환경 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

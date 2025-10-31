@@ -35,9 +35,9 @@ head -n 15 /var/log/syslog
 
 練習あるのみです！ファイルの先頭を表示することや、一般的なテキストファイル操作の理解を深めるための実践的なラボを以下に示します。
 
-1.  **[Linux head コマンド：ファイル先頭表示](https://labex.io/ja/labs/linux-linux-head-command-file-beginning-display-214302)** - このラボでは、`head`コマンドを使用して、行数を変更する場合も含め、テキストファイルの先頭行を表示する方法をガイドします。
-2.  **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルなど、`head`のようなコマンドを必要とすることが多いテキストファイルを効率的に表示・ナビゲートするための、必須の Linux コマンドラインスキルを練習します。
-3.  **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - `head`（および`tail`）の知識を応用して、最近のログエントリを素早く抽出し分析し、現実世界のサイバーセキュリティ分析をシミュレートします。
+1. **[Linux head コマンド：ファイル先頭表示](https://labex.io/ja/labs/linux-linux-head-command-file-beginning-display-214302)** - このラボでは、`head`コマンドを使用して、行数を変更する場合も含め、テキストファイルの先頭行を表示する方法をガイドします。
+2. **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルなど、`head`のようなコマンドを必要とすることが多いテキストファイルを効率的に表示・ナビゲートするための、必須の Linux コマンドラインスキルを練習します。
+3. **[迅速な脅威検出](https://labex.io/ja/labs/linux-rapid-threat-detection-387930)** - `head`（および`tail`）の知識を応用して、最近のログエントリを素早く抽出し分析し、現実世界のサイバーセキュリティ分析をシミュレートします。
 
 これらのラボは、概念を実際のシナリオに適用し、Linux でのテキストファイルの表示と分析に対する自信を構築するのに役立ちます。
 

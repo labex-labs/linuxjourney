@@ -43,9 +43,9 @@ Time To Live (TTL) フィールドは、パケットのホップカウンター�
 
 ネットワーク診断を習得するには実践が不可欠です。これらのハンズオンラボは、`ping`コマンドの理解を深めるのに役立ちます。
 
-1.  **[Linux における ping と arp を使用したネットワーク層の相互作用の探求](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用してネットワーク層とデータリンク層の相互作用を探り、デフォルトゲートウェイがリモートトラフィックをどのように処理するかを観察します。
-2.  **[Linux における IP アドレスタイプと到達可能性の探求](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を利用してローカル TCP/IP スタックをテストし、パブリックインターネット接続を確認し、ネットワーク到達可能性を探ります。
-3.  **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`で静的 IP アドレスを割り当て、同じサブネット内および異なるサブネット内での`ping`による接続性をテストする方法を学びます。
+1. **[Linux における ping と arp を使用したネットワーク層の相互作用の探求](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`と`arp`を使用してネットワーク層とデータリンク層の相互作用を探り、デフォルトゲートウェイがリモートトラフィックをどのように処理するかを観察します。
+2. **[Linux における IP アドレスタイプと到達可能性の探求](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`と`ip a`を利用してローカル TCP/IP スタックをテストし、パブリックインターネット接続を確認し、ネットワーク到達可能性を探ります。
+3. **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`で静的 IP アドレスを割り当て、同じサブネット内および異なるサブネット内での`ping`による接続性をテストする方法を学びます。
 
 これらのラボは、ネットワーク到達可能性と`ping`コマンドの概念を実世界のシナリオに応用するのに役立ち、Linux でのネットワーク診断に対する自信を構築します。
 

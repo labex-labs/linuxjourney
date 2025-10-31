@@ -32,8 +32,8 @@ meta_keywords: "서브넷 계산, 서브넷 마스크 계산, IP 주소, 서브�
 
 256 가지의 가능한 조합이 있지만, 이들 모두를 호스트에 할당할 수는 없습니다. 모든 서브넷에서 두 개의 주소는 예약됩니다.
 
-1.  **네트워크 주소:** 모든 호스트 비트가 `0`인 첫 번째 주소 (예: 192.168.1.0).
-2.  **브로드캐스트 주소:** 모든 호스트 비트가 `1`인 마지막 주소 (예: 192.168.1.255).
+1. **네트워크 주소:** 모든 호스트 비트가 `0`인 첫 번째 주소 (예: 192.168.1.0).
+2. **브로드캐스트 주소:** 모든 호스트 비트가 `1`인 마지막 주소 (예: 192.168.1.255).
 
 따라서 실제 사용 가능한 호스트 수는 256 - 2 = 254 개입니다. 이는 `255.255.255.0` 마스크를 사용하는 `192.168.1.0` 네트워크의 경우 `192.168.1.1`부터 `192.168.1.254`까지의 IP 주소를 할당할 수 있음을 의미합니다. 이 핵심 계산은 **서브넷 계산**의 기본 부분입니다.
 
@@ -41,9 +41,9 @@ meta_keywords: "서브넷 계산, 서브넷 마스크 계산, IP 주소, 서브�
 
 연습이 완벽을 만듭니다! IP 주소 지정 및 서브넷팅에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 네트워크 구성 및 계획에 필수적인 IP 서브넷팅 및 이진 변환을 마스터하세요.
-2.  **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형에 대한 이해를 심화하고 Linux 명령을 사용하여 네트워크 도달 가능성을 확인하는 방법을 알아보세요.
-3.  **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 실용적인 환경에서 네트워크 구성을 시뮬레이션하고 다른 IP 서브넷 간의 연결을 테스트하여 지식을 적용해 보세요.
+1. **[Linux 터미널에서 IP 서브넷팅 및 이진 변환 수행](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 네트워크 구성 및 계획에 필수적인 IP 서브넷팅 및 이진 변환을 마스터하세요.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형에 대한 이해를 심화하고 Linux 명령을 사용하여 네트워크 도달 가능성을 확인하는 방법을 알아보세요.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 실용적인 환경에서 네트워크 구성을 시뮬레이션하고 다른 IP 서브넷 간의 연결을 테스트하여 지식을 적용해 보세요.
 
 이 랩들은 IP 주소 지정, 서브넷 마스크 및 호스트 계산 개념을 실제 시나리오에 적용하고 네트워크 기본 사항에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

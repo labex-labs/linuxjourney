@@ -54,8 +54,8 @@ Pour une liste complète des fonctionnalités, vous pouvez toujours consulter la
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la visualisation du contenu des fichiers :
 
-1.  **[Commande cat Linux : Concaténation de Fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Apprenez la commande `cat` pour visualiser, concaténer et manipuler des fichiers texte, améliorant ainsi vos compétences en ligne de commande pour une gestion efficace des fichiers texte.
-2.  **[Visualisation des Fichiers Journaux et de Configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser des commandes comme `cat` pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, afin d'extraire des informations critiques.
+1. **[Commande cat Linux : Concaténation de Fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Apprenez la commande `cat` pour visualiser, concaténer et manipuler des fichiers texte, améliorant ainsi vos compétences en ligne de commande pour une gestion efficace des fichiers texte.
+2. **[Visualisation des Fichiers Journaux et de Configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser des commandes comme `cat` pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, afin d'extraire des informations critiques.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la visualisation du contenu des fichiers sous Linux.
 

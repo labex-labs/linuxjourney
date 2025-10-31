@@ -34,9 +34,9 @@ meta_keywords: "数据包路径，网络通信，ARP, IP 地址，MAC 地址，�
 
 实践造就完美！以下是一些实践实验，以加强您对基本 Linux 文件和目录管理的理解：
 
-1.  **[Linux 中的基本文件操作](https://labex.io/zh/labs/linux-basic-file-operations-in-linux-18001)** - 在真实的 Linux 环境中练习文件系统导航、文件和目录管理以及命令行快捷键的使用。
-2.  **[文件和目录操作](https://labex.io/zh/labs/linux-file-and-directory-operations-17997)** - 学习目录结构导航、文件和文件夹管理，以及使用`ls`、`cd`、`mkdir`、`cp`、`mv`和`rm`等强大的命令行工具。
-3.  **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用`cp`、`mv`和`rm`命令来组织项目结构、移动文件和清理不必要的目录，来练习基本的 Linux 文件管理技能。
+1. **[Linux 中的基本文件操作](https://labex.io/zh/labs/linux-basic-file-operations-in-linux-18001)** - 在真实的 Linux 环境中练习文件系统导航、文件和目录管理以及命令行快捷键的使用。
+2. **[文件和目录操作](https://labex.io/zh/labs/linux-file-and-directory-operations-17997)** - 学习目录结构导航、文件和文件夹管理，以及使用`ls`、`cd`、`mkdir`、`cp`、`mv`和`rm`等强大的命令行工具。
+3. **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用`cp`、`mv`和`rm`命令来组织项目结构、移动文件和清理不必要的目录，来练习基本的 Linux 文件管理技能。
 
 这些实验将帮助您在实际场景中应用概念，并建立对 Linux 文件系统交互的信心。
 

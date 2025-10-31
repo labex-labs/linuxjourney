@@ -40,7 +40,7 @@ sudo mkfs -t ext4 /dev/sdb2
 
 연습은 Linux 기술을 숙달하는 열쇠입니다. 이 실습 랩은 Linux 파일 시스템 관리에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[Linux 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 이 랩에서는 Linux 에서 디스크 파티션 및 파일 시스템을 관리하는 방법을 배웁니다. `fdisk`를 사용하여 새 파티션을 생성하고, `ext4`로 포맷하고 (`mkfs` 사용), 마운트하고, `/etc/fstab`에 영구 마운트를 구성하고, 안전한 보조 가상 디스크에 스왑 파티션을 생성하게 됩니다.
+1. **[Linux 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 이 랩에서는 Linux 에서 디스크 파티션 및 파일 시스템을 관리하는 방법을 배웁니다. `fdisk`를 사용하여 새 파티션을 생성하고, `ext4`로 포맷하고 (`mkfs` 사용), 마운트하고, `/etc/fstab`에 영구 마운트를 구성하고, 안전한 보조 가상 디스크에 스왑 파티션을 생성하게 됩니다.
 
 이 랩은 실제 시나리오에서 파일 시스템 생성 및 관리 개념을 적용하고 Linux 디스크 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

@@ -29,9 +29,9 @@ Avec son installateur convivial et son centre de contrôle YaST intégré, openS
 
 Pour acquérir une expérience plus pratique avec les systèmes Linux, essayez ces laboratoires pratiques. Ils couvrent des tâches administratives fondamentales utiles sur n'importe quelle distribution Linux, y compris openSUSE.
 
-1.  **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Dans ce laboratoire, vous apprendrez à gérer les comptes utilisateurs sur la plateforme Linux, comme la création de nouveaux comptes utilisateurs, la modification de la gestion des comptes utilisateurs et la suppression d'un compte utilisateur.
-2.  **[Le tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Dans ce défi, vous tenterez de gérer les comptes utilisateurs sur la plateforme Linux, y compris la création de nouveaux comptes utilisateurs, la modification de la gestion des comptes utilisateurs et la suppression de comptes utilisateurs.
-3.  **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi pratique, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur. Vous créerez de nouveaux comptes utilisateurs, configurerez des groupes personnalisés et gérerez les appartenances aux groupes.
+1. **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Dans ce laboratoire, vous apprendrez à gérer les comptes utilisateurs sur la plateforme Linux, comme la création de nouveaux comptes utilisateurs, la modification de la gestion des comptes utilisateurs et la suppression d'un compte utilisateur.
+2. **[Le tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Dans ce défi, vous tenterez de gérer les comptes utilisateurs sur la plateforme Linux, y compris la création de nouveaux comptes utilisateurs, la modification de la gestion des comptes utilisateurs et la suppression de comptes utilisateurs.
+3. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi pratique, vous simulerez l'ajout de nouveaux membres d'équipe à un environnement serveur. Vous créerez de nouveaux comptes utilisateurs, configurerez des groupes personnalisés et gérerez les appartenances aux groupes.
 
 ## Quiz Question
 

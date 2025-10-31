@@ -69,8 +69,8 @@ rmdir directory
 
 实践是关键。以下是一些动手练习，以巩固您对 Linux 中文件和目录删除的理解：
 
-1.  **[Linux rm 命令：文件删除](https://labex.io/zh/labs/linux-linux-rm-command-file-removing-209741)** - 学习如何使用 `rm` 命令删除文件和目录，包括 `-r` 和 `-i` 等各种选项，并练习安全有效地删除文件。
-2.  **[整理文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 在实际挑战中，练习基本的 Linux 文件管理技能，包括使用 `rm` 命令清理不必要的目录。
+1. **[Linux rm 命令：文件删除](https://labex.io/zh/labs/linux-linux-rm-command-file-removing-209741)** - 学习如何使用 `rm` 命令删除文件和目录，包括 `-r` 和 `-i` 等各种选项，并练习安全有效地删除文件。
+2. **[整理文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 在实际挑战中，练习基本的 Linux 文件管理技能，包括使用 `rm` 命令清理不必要的目录。
 
 这些实验将帮助您在现实场景中应用这些概念，并增强对 `linux rm command` 的信心。
 

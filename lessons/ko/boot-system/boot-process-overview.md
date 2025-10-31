@@ -35,7 +35,7 @@ BIOS(Basic Input/Output System) 또는 그 현대적 후속 기술인 UEFI(Unifi
 
 이해도를 높이기 위해 실습 랩을 시도해 보시는 것을 권장합니다. 이는 리눅스 부팅 프로세스에 대해 배운 내용을 적용할 수 있는 실제 환경을 제공합니다.
 
-1.  **[리눅스에서 GRUB2 부트 메뉴 사용자 지정하기](https://labex.io/ko/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 리눅스 부팅 시퀀스의 중요한 구성 요소인 GRUB2 부트 메뉴를 수정하는 연습을 해보세요.
+1. **[리눅스에서 GRUB2 부트 메뉴 사용자 지정하기](https://labex.io/ko/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 리눅스 부팅 시퀀스의 중요한 구성 요소인 GRUB2 부트 메뉴를 수정하는 연습을 해보세요.
 
 ## Quiz Question
 

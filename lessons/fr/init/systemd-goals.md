@@ -99,7 +99,7 @@ Ces commandes sont les éléments de base de la gestion des services sur les sys
 
 La pratique est essentielle pour maîtriser de nouvelles compétences. Ce laboratoire pratique vous aidera à renforcer votre compréhension de la gestion des processus, qui sont souvent contrôlés par les services systemd :
 
-1.  **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice`, et à les terminer avec `kill`. Ce laboratoire vous donnera une expérience pratique des effets d'exécution de la gestion des unités systemd.
+1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice`, et à les terminer avec `kill`. Ce laboratoire vous donnera une expérience pratique des effets d'exécution de la gestion des unités systemd.
 
 Ce laboratoire vous aidera à appliquer ces concepts dans un scénario réel et à renforcer votre confiance dans la gestion des processus sous Linux.
 

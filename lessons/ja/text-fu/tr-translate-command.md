@@ -48,7 +48,7 @@ Hello World, how are you?
 
 知識を実践に移すために、次のハンズオンラボを試してください。これは、文字変換とテキスト処理の理解を深めるのに役立ちます。
 
-1.  **[Linux tr コマンド：文字変換](https://labex.io/ja/labs/linux-linux-tr-command-character-translating-219198)** - テキストストリーム内の文字レベルの変換のための Linux `tr`コマンドを学習します。文字の変換、特定の文字の削除、文字クラスの操作、繰り返される文字の圧縮を練習します。
+1. **[Linux tr コマンド：文字変換](https://labex.io/ja/labs/linux-linux-tr-command-character-translating-219198)** - テキストストリーム内の文字レベルの変換のための Linux `tr`コマンドを学習します。文字の変換、特定の文字の削除、文字クラスの操作、繰り返される文字の圧縮を練習します。
 
 このラボは、テキスト操作の概念を実際のシナリオに適用し、`tr`コマンドに対する自信を構築するのに役立ちます。
 

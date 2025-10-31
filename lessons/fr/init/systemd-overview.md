@@ -17,9 +17,9 @@ Systemd est le système d'initialisation (init system) et le gestionnaire de ser
 
 Au lieu de scripts séquentiels rigides, **systemd** utilise le concept d'"objectifs" (goals) pour amener votre système à un état fonctionnel. Il identifie un objectif principal, ou `target` (cible), et travaille à satisfaire ses dépendances. Cette approche permet une plus grande flexibilité et parallélisation lors du démarrage. Un processus de démarrage typique géré par **systemd** suit ces étapes :
 
-1.  **systemd** charge d'abord ses fichiers de configuration à partir de répertoires comme `/etc/systemd/system` et `/usr/lib/systemd/system`.
-2.  Il identifie ensuite l'objectif de démarrage par défaut, qui est généralement un lien symbolique nommé `default.target`.
-3.  Enfin, **systemd** résout toutes les dépendances de cette cible et active les unités nécessaires pour atteindre l'état système souhaité.
+1. **systemd** charge d'abord ses fichiers de configuration à partir de répertoires comme `/etc/systemd/system` et `/usr/lib/systemd/system`.
+2. Il identifie ensuite l'objectif de démarrage par défaut, qui est généralement un lien symbolique nommé `default.target`.
+3. Enfin, **systemd** résout toutes les dépendances de cette cible et active les unités nécessaires pour atteindre l'état système souhaité.
 
 ### Comprendre les Cibles (Targets) de Systemd
 

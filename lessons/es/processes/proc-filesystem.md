@@ -43,7 +43,7 @@ Al acceder directamente a los archivos dentro de `/proc`, puede recopilar métri
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los procesos de Linux y el monitoreo del sistema:
 
-1.  **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderá habilidades esenciales para administrar y monitorear procesos en un sistema Linux. Explorará cómo interactuar con procesos en primer plano y en segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderá habilidades esenciales para administrar y monitorear procesos en un sistema Linux. Explorará cómo interactuar con procesos en primer plano y en segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la administración de procesos y la observación del sistema.
 

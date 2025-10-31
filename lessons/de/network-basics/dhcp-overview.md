@@ -32,10 +32,10 @@ Jedes physische Netzwerk sollte seinen eigenen DHCP-Server haben, um den Prozess
 
 Der Prozess, bei dem ein Gerät über DHCP eine IP-Adresse erhält, beinhaltet einen Vier-Schritte-Austausch, der oft durch das Akronym DORA in Erinnerung behalten wird:
 
-1.  **DHCP Discover (Entdecken):** Das Client-Gerät sendet eine `DISCOVER`-Nachricht als Broadcast über das Netzwerk, um einen verfügbaren DHCP-Server zu finden.
-2.  **DHCP Offer (Angebot):** Jeder DHCP-Server, der die Entdeckungsnachricht empfängt, kann mit einer `OFFER`-Nachricht antworten. Diese Nachricht enthält eine vorgeschlagene IP-Adresse, Subnetzmaske, Gateway-Adresse und die Gültigkeitsdauer des Leases.
-3.  **DHCP Request (Anforderung):** Der Client empfängt ein oder mehrere Angebote und wählt eines aus. Er sendet dann eine `REQUEST`-Nachricht als Broadcast, um alle DHCP-Server darüber zu informieren, welches Angebot er angenommen hat.
-4.  **DHCP Acknowledgment (ACK) (Bestätigung):** Der Server, der das angenommene Angebot gemacht hat, sendet eine abschließende `ACK`-Nachricht an den Client, um den Lease zu bestätigen und die Konfiguration abzuschließen.
+1. **DHCP Discover (Entdecken):** Das Client-Gerät sendet eine `DISCOVER`-Nachricht als Broadcast über das Netzwerk, um einen verfügbaren DHCP-Server zu finden.
+2. **DHCP Offer (Angebot):** Jeder DHCP-Server, der die Entdeckungsnachricht empfängt, kann mit einer `OFFER`-Nachricht antworten. Diese Nachricht enthält eine vorgeschlagene IP-Adresse, Subnetzmaske, Gateway-Adresse und die Gültigkeitsdauer des Leases.
+3. **DHCP Request (Anforderung):** Der Client empfängt ein oder mehrere Angebote und wählt eines aus. Er sendet dann eine `REQUEST`-Nachricht als Broadcast, um alle DHCP-Server darüber zu informieren, welches Angebot er angenommen hat.
+4. **DHCP Acknowledgment (ACK) (Bestätigung):** Der Server, der das angenommene Angebot gemacht hat, sendet eine abschließende `ACK`-Nachricht an den Client, um den Lease zu bestätigen und die Konfiguration abzuschließen.
 
 Obwohl das vollständige Protokoll komplexer ist, stellen diese vier Schritte den Kern dessen dar, wie DHCP Hosts in einem Netzwerk dynamisch konfiguriert.
 
@@ -43,9 +43,9 @@ Obwohl das vollständige Protokoll komplexer ist, stellen diese vier Schritte de
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von dynamischer IP-Adressierung und Netzwerkkonfiguration zu festigen:
 
-1.  **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls, um Schnittstellen zu überprüfen, und verwenden Sie speziell `dhclient`, um eine dynamische IP-Adresse zu beziehen, wobei Sie Ihr Wissen über DHCP direkt anwenden.
-2.  **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkadressinformationen, einschließlich der von DHCP zugewiesenen IP-Adressen, zu identifizieren und Netzwerkschnittstellen zu überprüfen.
-3.  **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`, um zu verstehen, wie dynamisch zugewiesene IPs innerhalb eines Netzwerks funktionieren.
+1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls, um Schnittstellen zu überprüfen, und verwenden Sie speziell `dhclient`, um eine dynamische IP-Adresse zu beziehen, wobei Sie Ihr Wissen über DHCP direkt anwenden.
+2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkadressinformationen, einschließlich der von DHCP zugewiesenen IP-Adressen, zu identifizieren und Netzwerkschnittstellen zu überprüfen.
+3. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`, um zu verstehen, wie dynamisch zugewiesene IPs innerhalb eines Netzwerks funktionieren.
 
 Diese Labs helfen Ihnen, die Konzepte der dynamischen IP-Zuweisung und Netzwerkkonfiguration in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
 

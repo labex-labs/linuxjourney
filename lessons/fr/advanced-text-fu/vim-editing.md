@@ -57,7 +57,7 @@ La combinaison d'opérateurs avec différents mouvements débloque tout le poten
 
 Pour mettre vos connaissances en pratique, nous vous recommandons le laboratoire pratique suivant. Il vous aidera à maîtriser les commandes d'édition fondamentales abordées dans ce tutoriel Vim.
 
-1.  **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à modifier du texte, à sauvegarder des fichiers et à naviguer avec vi/vim et nano. Ce laboratoire vous aidera à appliquer des concepts tels que la suppression, la modification, le yanking et le putting de texte dans des scénarios réels.
+1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à modifier du texte, à sauvegarder des fichiers et à naviguer avec vi/vim et nano. Ce laboratoire vous aidera à appliquer des concepts tels que la suppression, la modification, le yanking et le putting de texte dans des scénarios réels.
 
 ## Quiz Question
 

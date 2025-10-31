@@ -45,9 +45,9 @@ unexpand -a result.txt
 
 Linux 에서 텍스트 조작 및 리디렉션을 마스터하려면 연습이 중요합니다. 다음 실습 랩은 이해도를 높이는 데 도움이 될 것입니다.
 
-1.  **[Linux 에서 입력 및 출력 리디렉션](https://labex.io/ko/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>` 및 `>>`와 같은 연산자를 사용하여 표준 출력 (stdout), 표준 오류 (stderr), 표준 입력 (stdin) 을 조작하여 명령의 데이터 흐름을 제어하는 연습을 합니다.
-2.  **[간단한 텍스트 처리](https://labex.io/ko/labs/linux-simple-text-processing-18004)** - 데이터 처리를 위한 명령줄 기술을 향상시키기 위해 `tr`, `col`, `join`, `paste`와 같은 강력한 명령을 사용하여 텍스트 데이터를 효율적으로 조작하고 분석하는 방법을 배웁니다.
-3.  **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 강력한 텍스트 처리 도구인 `grep`, `sed`, `awk`를 배우고 정규 표현식을 사용합니다.
+1. **[Linux 에서 입력 및 출력 리디렉션](https://labex.io/ko/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>` 및 `>>`와 같은 연산자를 사용하여 표준 출력 (stdout), 표준 오류 (stderr), 표준 입력 (stdin) 을 조작하여 명령의 데이터 흐름을 제어하는 연습을 합니다.
+2. **[간단한 텍스트 처리](https://labex.io/ko/labs/linux-simple-text-processing-18004)** - 데이터 처리를 위한 명령줄 기술을 향상시키기 위해 `tr`, `col`, `join`, `paste`와 같은 강력한 명령을 사용하여 텍스트 데이터를 효율적으로 조작하고 분석하는 방법을 배웁니다.
+3. **[텍스트 처리 및 정규 표현식](https://labex.io/ko/labs/linux-text-processing-and-regular-expressions-18003)** - Linux 에서 효율적인 텍스트 조작 및 패턴 일치를 위해 강력한 텍스트 처리 도구인 `grep`, `sed`, `awk`를 배우고 정규 표현식을 사용합니다.
 
 이러한 랩을 완료하면 텍스트 변환 및 파일 조작 개념을 실제 시나리오에 적용하는 데 도움이 되며, 필수적인 Linux 명령줄 도구에 대한 자신감을 쌓을 수 있습니다.
 

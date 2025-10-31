@@ -41,7 +41,7 @@ lssci
 
 Pour renforcer votre compréhension de l'exploration des périphériques matériels sous Linux, essayez le laboratoire pratique suivant :
 
-1.  **[Explorer les périphériques matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour explorer, identifier et inspecter les périphériques matériels dans un environnement Linux. Vous acquerrez une expérience pratique avec de puissants utilitaires en ligne de commande pour comprendre comment le système d'exploitation interagit avec les composants physiques.
+1. **[Explorer les périphériques matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour explorer, identifier et inspecter les périphériques matériels dans un environnement Linux. Vous acquerrez une expérience pratique avec de puissants utilitaires en ligne de commande pour comprendre comment le système d'exploitation interagit avec les composants physiques.
 
 Ce laboratoire vous aidera à appliquer ces concepts dans un scénario réel et à renforcer votre confiance dans la gestion des informations relatives aux périphériques.
 

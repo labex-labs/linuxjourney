@@ -49,9 +49,9 @@ ls -la /etc | tee etc_listing.txt | grep "conf"
 
 This command does three things:
 
-1.  It lists the contents of the `/etc` directory.
-2.  It pipes that output to `tee`, which saves a copy to `etc_listing.txt` and also passes it along.
-3.  The output from `tee` is then piped to `grep`, which filters for lines containing "conf".
+1. It lists the contents of the `/etc` directory.
+2. It pipes that output to `tee`, which saves a copy to `etc_listing.txt` and also passes it along.
+3. The output from `tee` is then piped to `grep`, which filters for lines containing "conf".
 
 Mastering these commands will significantly improve your efficiency on the command line.
 

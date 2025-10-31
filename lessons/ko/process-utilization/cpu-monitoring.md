@@ -45,9 +45,9 @@ user@machine:~$ uptime
 
 실습을 통해 **Linux CPU 모니터링** 및 **시스템 성능** 분석 경험을 쌓으려면 다음 핸즈온 랩을 시도해 보세요. 이 랩들은 실제 시나리오에서 **로드 평균** 및 **프로세스 활용도** 개념을 적용하는 데 도움이 될 것입니다.
 
-1.  **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - `ps` 및 `top`과 같은 도구를 사용하여 프로세스를 검사하고 리소스를 모니터링하는 연습을 통해 CPU 부하 이해와 직접적으로 연결됩니다.
-2.  **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top` 명령어를 사용하여 실시간 시스템 모니터링, 프로세스 정렬 및 필터링 방법을 학습하여 CPU 및 프로세스 활동을 더 깊이 파고듭니다.
-3.  **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 학습합니다. 메모리는 전반적인 시스템 성능에서 CPU 부하와 함께 중요한 요소인 경우가 많습니다.
+1. **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - `ps` 및 `top`과 같은 도구를 사용하여 프로세스를 검사하고 리소스를 모니터링하는 연습을 통해 CPU 부하 이해와 직접적으로 연결됩니다.
+2. **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top` 명령어를 사용하여 실시간 시스템 모니터링, 프로세스 정렬 및 필터링 방법을 학습하여 CPU 및 프로세스 활동을 더 깊이 파고듭니다.
+3. **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 학습합니다. 메모리는 전반적인 시스템 성능에서 CPU 부하와 함께 중요한 요소인 경우가 많습니다.
 
 ## Quiz Question
 

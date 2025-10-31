@@ -33,9 +33,9 @@ Linux Mint wurde hauptsächlich für Desktop- und Laptop-Computer entwickelt. De
 
 Um Ihr Wissen in einem praktischen Umfeld anzuwenden, empfehlen wir die folgenden praktischen Übungen (Labs). Diese Übungen behandeln grundlegende Fähigkeiten zur Benutzer- und Gruppenverwaltung, die für jeden Linux-Administrator unerlässlich sind.
 
-1.  **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - Üben Sie das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen von Benutzerkonten in einer echten Linux-Umgebung.
-2.  **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - Lernen Sie die Verwaltung von Benutzerkonten kennen, indem Sie diese erstellen, ändern und löschen, um ein reales Szenario zu simulieren.
-3.  **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - Lernen Sie, neue Benutzerkonten zu erstellen, benutzerdefinierte Gruppen einzurichten und Gruppenmitgliedschaften zu verwalten, was für die Systemadministration unerlässlich ist.
+1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - Üben Sie das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen von Benutzerkonten in einer echten Linux-Umgebung.
+2. **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - Lernen Sie die Verwaltung von Benutzerkonten kennen, indem Sie diese erstellen, ändern und löschen, um ein reales Szenario zu simulieren.
+3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - Lernen Sie, neue Benutzerkonten zu erstellen, benutzerdefinierte Gruppen einzurichten und Gruppenmitgliedschaften zu verwalten, was für die Systemadministration unerlässlich ist.
 
 Diese Labs helfen Ihnen, Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Gruppenverwaltung aufzubauen.
 

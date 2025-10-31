@@ -53,9 +53,9 @@ Où êtes-vous ? Où suis-je ? Essayez pour voir votre propre répertoire de tra
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans le système de fichiers Linux et de l'identification de votre emplacement actuel :
 
-1.  **[Commande Linux pwd : Affichage de Répertoire](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)** - Ce laboratoire fournit un aperçu ciblé et une utilisation pratique de la commande `pwd`, s'alignant directement sur l'introduction de la leçon pour trouver votre répertoire actuel.
-2.  **[Navigation dans les Répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant dans divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
-3.  **[Commande Linux cd : Changement de Répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
+1. **[Commande Linux pwd : Affichage de Répertoire](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)** - Ce laboratoire fournit un aperçu ciblé et une utilisation pratique de la commande `pwd`, s'alignant directement sur l'introduction de la leçon pour trouver votre répertoire actuel.
+2. **[Navigation dans les Répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant dans divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
+3. **[Commande Linux cd : Changement de Répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
 
 Ces laboratoires vous aideront à appliquer les concepts de hiérarchie du système de fichiers et de navigation dans des scénarios réels et à gagner en confiance avec les commandes Linux essentielles.
 

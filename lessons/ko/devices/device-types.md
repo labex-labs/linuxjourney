@@ -68,9 +68,9 @@ prw-r--r--   1 root root           0 Dec 20 20:13 fdata
 
 배운 **리눅스 장치**에 대해 적용하기 위해 다음 실습 랩을 권장합니다. 이 연습들은 실제 시나리오에서 장치 상호 작용 및 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 
-1.  **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 리눅스에서 기본 블록 장치인 디스크 파티션 및 파일 시스템 생성 및 관리를 연습합니다.
-2.  **[리눅스에서 하드웨어 장치 탐색](https://labex.io/ko/labs/comptia-explore-hardware-devices-in-linux-590861)** - 다양한 하드웨어 장치를 식별하고 검사하는 방법을 배우고 `/dev` 디렉터리에서 이들이 어떻게 표현되는지 이해합니다.
-3.  **[리눅스에서 스왑 파일 생성 및 활성화](https://labex.io/ko/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 가상 메모리 장치로 작동하는 스왑 파일을 생성하고 활성화하는 실습 경험을 얻습니다.
+1. **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 리눅스에서 기본 블록 장치인 디스크 파티션 및 파일 시스템 생성 및 관리를 연습합니다.
+2. **[리눅스에서 하드웨어 장치 탐색](https://labex.io/ko/labs/comptia-explore-hardware-devices-in-linux-590861)** - 다양한 하드웨어 장치를 식별하고 검사하는 방법을 배우고 `/dev` 디렉터리에서 이들이 어떻게 표현되는지 이해합니다.
+3. **[리눅스에서 스왑 파일 생성 및 활성화](https://labex.io/ko/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 가상 메모리 장치로 작동하는 스왑 파일을 생성하고 활성화하는 실습 경험을 얻습니다.
 
 ## Quiz Question
 

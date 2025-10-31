@@ -53,8 +53,8 @@ Dominar o comando `ip route` é uma habilidade fundamental para qualquer adminis
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de roteamento de rede e endereçamento IP:
 
-1.  **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique a configuração de um IP estático, a definição de um gateway padrão e a verificação da configuração de rede usando o comando `ip`.
-2.  **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como o gateway padrão lida com o tráfego remoto e observe as interações da camada de rede.
+1. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Pratique a configuração de um IP estático, a definição de um gateway padrão e a verificação da configuração de rede usando o comando `ip`.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como o gateway padrão lida com o tráfego remoto e observe as interações da camada de rede.
 
 Esses laboratórios ajudarão você a aplicar os conceitos de endereçamento IP e roteamento em cenários reais e a construir confiança com a rede Linux.
 

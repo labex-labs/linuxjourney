@@ -32,10 +32,10 @@ DHCP 를 사용하면 다음과 같은 상당한 이점이 있습니다.
 
 장치가 DHCP 를 통해 IP 주소를 얻는 프로세스에는 종종 약어 DORA 로 기억되는 4 단계 교환이 포함됩니다.
 
-1.  **DHCP 디스커버 (Discover):** 클라이언트 장치는 사용 가능한 DHCP 서버를 찾기 위해 네트워크 전체에 `DISCOVER` 메시지를 브로드캐스트합니다.
-2.  **DHCP 오퍼 (Offer):** 디스커버 메시지를 수신한 모든 DHCP 서버는 `OFFER` 메시지로 응답할 수 있습니다. 이 메시지에는 제안된 IP 주소, 서브넷 마스크, 게이트웨이 주소 및 임대 기간이 포함됩니다.
-3.  **DHCP 요청 (Request):** 클라이언트는 하나 이상의 오퍼를 수신하고 하나를 선택합니다. 그런 다음 수락한 오퍼를 모든 DHCP 서버에 알리기 위해 `REQUEST` 메시지를 브로드캐스트합니다.
-4.  **DHCP 승인 (ACK):** 수락된 오퍼를 보낸 서버는 최종 `ACK` 메시지를 클라이언트에 보내 임대를 확인하고 구성을 완료합니다.
+1. **DHCP 디스커버 (Discover):** 클라이언트 장치는 사용 가능한 DHCP 서버를 찾기 위해 네트워크 전체에 `DISCOVER` 메시지를 브로드캐스트합니다.
+2. **DHCP 오퍼 (Offer):** 디스커버 메시지를 수신한 모든 DHCP 서버는 `OFFER` 메시지로 응답할 수 있습니다. 이 메시지에는 제안된 IP 주소, 서브넷 마스크, 게이트웨이 주소 및 임대 기간이 포함됩니다.
+3. **DHCP 요청 (Request):** 클라이언트는 하나 이상의 오퍼를 수신하고 하나를 선택합니다. 그런 다음 수락한 오퍼를 모든 DHCP 서버에 알리기 위해 `REQUEST` 메시지를 브로드캐스트합니다.
+4. **DHCP 승인 (ACK):** 수락된 오퍼를 보낸 서버는 최종 `ACK` 메시지를 클라이언트에 보내 임대를 확인하고 구성을 완료합니다.
 
 전체 프로토콜은 더 복잡하지만, 이 네 단계는 DHCP 가 네트워크에서 호스트를 동적으로 구성하는 핵심을 나타냅니다.
 
@@ -43,9 +43,9 @@ DHCP 를 사용하면 다음과 같은 상당한 이점이 있습니다.
 
 연습이 완벽을 만듭니다! 동적 IP 주소 지정 및 네트워크 구성을 이해하는 데 도움이 되는 몇 가지 실습 랩이 있습니다.
 
-1.  **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 인터페이스를 검사하고 특히 `dhclient`를 사용하여 동적 IP 주소를 얻는 방법을 연습하여 DHCP 지식을 직접 적용합니다.
-2.  **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 DHCP 가 할당한 IP 주소를 포함하여 네트워크 주소 정보를 식별하고 네트워크 인터페이스를 검사하는 방법을 알아봅니다.
-3.  **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 동적으로 할당된 IP 가 네트워크 내에서 어떻게 작동하는지 이해하는 데 도움을 받습니다.
+1. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 인터페이스를 검사하고 특히 `dhclient`를 사용하여 동적 IP 주소를 얻는 방법을 연습하여 DHCP 지식을 직접 적용합니다.
+2. **[Linux 에서 MAC 및 IP 주소 식별](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 DHCP 가 할당한 IP 주소를 포함하여 네트워크 주소 정보를 식별하고 네트워크 인터페이스를 검사하는 방법을 알아봅니다.
+3. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping` 및 `ip a`를 사용하여 IP 주소 지정 및 네트워크 도달 가능성을 탐색하여 동적으로 할당된 IP 가 네트워크 내에서 어떻게 작동하는지 이해하는 데 도움을 받습니다.
 
 이러한 랩은 동적 IP 할당 및 네트워크 구성 개념을 실제 시나리오에 적용하고 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

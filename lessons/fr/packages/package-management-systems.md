@@ -53,9 +53,9 @@ RPM: $ yum info nom_du_paquet
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des paquets sous Linux :
 
-1.  **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Entraînez-vous à gérer les paquets logiciels sur les systèmes Linux basés sur RHEL en utilisant YUM, y compris l'inspection, la mise à jour et l'exploration des dépôts.
-2.  **[Installation de Logiciels sous Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005)** - Apprenez différentes méthodes pour installer et gérer des logiciels sur les systèmes Ubuntu, y compris l'utilisation d'apt, dpkg et la gestion des fichiers .deb.
-3.  **[Installation et Suppression de Paquets](https://labex.io/fr/labs/linux-installing-and-removing-packages-385380)** - Entraînez-vous à mettre à jour le système, à installer et supprimer des paquets, et à optimiser la configuration logicielle sur un système basé sur Debian en utilisant `apt`.
+1. **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Entraînez-vous à gérer les paquets logiciels sur les systèmes Linux basés sur RHEL en utilisant YUM, y compris l'inspection, la mise à jour et l'exploration des dépôts.
+2. **[Installation de Logiciels sous Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005)** - Apprenez différentes méthodes pour installer et gérer des logiciels sur les systèmes Ubuntu, y compris l'utilisation d'apt, dpkg et la gestion des fichiers .deb.
+3. **[Installation et Suppression de Paquets](https://labex.io/fr/labs/linux-installing-and-removing-packages-385380)** - Entraînez-vous à mettre à jour le système, à installer et supprimer des paquets, et à optimiser la configuration logicielle sur un système basé sur Debian en utilisant `apt`.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la gestion des paquets sous Linux.
 

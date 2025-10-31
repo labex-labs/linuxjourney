@@ -19,13 +19,13 @@ The OSI (Open Systems Interconnection) model is a conceptual framework used to u
 
 This model shows how a data packet traverses through a network across seven different layers:
 
-1.  Physical
-2.  Data Link
-3.  Network
-4.  Transport
-5.  Session
-6.  Presentation
-7.  Application
+1. Physical
+2. Data Link
+3. Network
+4. Transport
+5. Session
+6. Presentation
+7. Application
 
 While we won't detail the specifics of each layer, knowing they exist is crucial for contextualizing network processes.
 
@@ -39,9 +39,9 @@ While the OSI model is theoretical, understanding its influence on practical net
 
 Here are some hands-on labs to reinforce your understanding of basic networking concepts:
 
-1.  **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
-2.  **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
-3.  **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` commands to explore how the network and data link layers interact, observing ARP in action and understanding default gateway behavior.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
+2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
+3. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` commands to explore how the network and data link layers interact, observing ARP in action and understanding default gateway behavior.
 
 These labs will help you apply foundational networking concepts in real scenarios and build confidence with Linux network administration.
 

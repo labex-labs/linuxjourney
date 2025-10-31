@@ -45,9 +45,9 @@ Eine allgemeine Regel für gute **Systemleistung** ist, Ihren Load Average unter
 
 Um praktische Erfahrungen mit dem **Linux CPU Monitoring** und der Analyse der **Systemleistung** zu sammeln, probieren Sie diese praktischen Labs aus. Sie helfen Ihnen, die Konzepte von **Load Average** und **Prozessauslastung** in realen Szenarien anzuwenden.
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit und die Inspektion von Prozessen sowie die Überwachung von Ressourcen mit Tools wie `ps` und `top`, was direkt mit dem Verständnis der CPU-Last zusammenhängt.
-2.  **[Linux top-Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, den `top`-Befehl für die Echtzeit-Systemüberwachung zu verwenden, einschließlich des Sortierens und Filterns von Prozessen, was einen tieferen Einblick in die CPU- und Prozessaktivität bietet.
-3.  **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, die Systemspeichernutzung zu überwachen und zu analysieren, was oft ein kritischer Faktor neben der CPU-Last für die Gesamtleistung des Systems ist.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit und die Inspektion von Prozessen sowie die Überwachung von Ressourcen mit Tools wie `ps` und `top`, was direkt mit dem Verständnis der CPU-Last zusammenhängt.
+2. **[Linux top-Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, den `top`-Befehl für die Echtzeit-Systemüberwachung zu verwenden, einschließlich des Sortierens und Filterns von Prozessen, was einen tieferen Einblick in die CPU- und Prozessaktivität bietet.
+3. **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, die Systemspeichernutzung zu überwachen und zu analysieren, was oft ein kritischer Faktor neben der CPU-Last für die Gesamtleistung des Systems ist.
 
 ## Quiz Question
 

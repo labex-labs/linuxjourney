@@ -41,7 +41,7 @@ lssci
 
 Para reforzar tu comprensión sobre la exploración de dispositivos de hardware en Linux, prueba el siguiente laboratorio práctico:
 
-1.  **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - En este laboratorio, aprenderás las habilidades esenciales para explorar, identificar e inspeccionar dispositivos de hardware dentro de un entorno Linux. Obtendrás experiencia práctica con potentes utilidades de línea de comandos para comprender cómo el sistema operativo interactúa con los componentes físicos.
+1. **[Explorar Dispositivos de Hardware en Linux](https://labex.io/es/labs/comptia-explore-hardware-devices-in-linux-590861)** - En este laboratorio, aprenderás las habilidades esenciales para explorar, identificar e inspeccionar dispositivos de hardware dentro de un entorno Linux. Obtendrás experiencia práctica con potentes utilidades de línea de comandos para comprender cómo el sistema operativo interactúa con los componentes físicos.
 
 Este laboratorio te ayudará a aplicar estos conceptos en un escenario del mundo real y a ganar confianza en la gestión de la información de los dispositivos.
 

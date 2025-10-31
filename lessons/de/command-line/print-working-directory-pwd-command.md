@@ -53,9 +53,9 @@ Wo sind Sie? Wo bin ich? Probieren Sie es aus, um Ihr eigenes aktuelles Arbeitsv
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateisystemnavigation und der Ermittlung Ihres aktuellen Standorts zu festigen:
 
-1.  **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Dieses Labor bietet einen fokussierten Überblick und die praktische Anwendung des `pwd`-Befehls, der direkt auf die Einführung der Lektion zur Ermittlung Ihres aktuellen Verzeichnisses eingeht.
-2.  **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Testen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse, indem Sie durch verschiedene Verzeichnisse navigieren, um Ihr Verständnis von Pfaden und der Dateisystemstruktur zu festigen.
-3.  **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Lernen Sie, effizient durch Ihr Dateisystem zu navigieren, indem Sie den `cd`-Befehl verwenden, und verstehen Sie verschiedene Techniken zum Wechseln von Verzeichnissen und zum Erkunden der Dateistruktur.
+1. **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Dieses Labor bietet einen fokussierten Überblick und die praktische Anwendung des `pwd`-Befehls, der direkt auf die Einführung der Lektion zur Ermittlung Ihres aktuellen Verzeichnisses eingeht.
+2. **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Testen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse, indem Sie durch verschiedene Verzeichnisse navigieren, um Ihr Verständnis von Pfaden und der Dateisystemstruktur zu festigen.
+3. **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Lernen Sie, effizient durch Ihr Dateisystem zu navigieren, indem Sie den `cd`-Befehl verwenden, und verstehen Sie verschiedene Techniken zum Wechseln von Verzeichnissen und zum Erkunden der Dateistruktur.
 
 Diese Labs helfen Ihnen, die Konzepte der Dateisystemhierarchie und Navigation in realen Szenarien anzuwenden und Vertrauen in wesentliche Linux-Befehle aufzubauen.
 

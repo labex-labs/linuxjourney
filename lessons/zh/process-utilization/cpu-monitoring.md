@@ -45,9 +45,9 @@ pete@icebox:~$ uptime
 
 为了获得 **Linux CPU 监控** 和分析 **系统性能** 的实践经验，请尝试以下动手实验。它们将帮助您在现实场景中应用 **负载平均值** 和 **进程利用率** 的概念。
 
-1.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习使用 `ps` 和 `top` 等工具与进程交互和检查进程，并监控资源，这直接关系到理解 CPU 负载。
-2.  **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用 `top` 命令进行实时系统监控，包括排序进程和过滤，从而深入了解 CPU 和进程活动。
-3.  **[Linux free 命令：监控系统内存](https://labex.io/zh/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 学习监控和分析系统内存使用情况，内存通常是与 CPU 负载一起影响整体系统性能的关键因素。
+1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习使用 `ps` 和 `top` 等工具与进程交互和检查进程，并监控资源，这直接关系到理解 CPU 负载。
+2. **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用 `top` 命令进行实时系统监控，包括排序进程和过滤，从而深入了解 CPU 和进程活动。
+3. **[Linux free 命令：监控系统内存](https://labex.io/zh/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 学习监控和分析系统内存使用情况，内存通常是与 CPU 负载一起影响整体系统性能的关键因素。
 
 ## Quiz Question
 
