@@ -53,7 +53,7 @@ If the command executes successfully (exit code 0), the process exists. If it fa
 
 To apply what you've learned, try this hands-on lab to reinforce your understanding of process management and termination:
 
-1.  **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - In this lab, you will learn essential skills for managing and monitoring processes on a Linux system. You will explore how to interact with foreground and background processes, inspect them with `ps`, monitor resources with `top`, adjust priority with `renice`, and terminate them with `kill`.
 
 This lab will help you apply the concepts of process control and termination in real scenarios and build confidence with managing Linux processes.
 

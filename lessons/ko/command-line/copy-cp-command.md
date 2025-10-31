@@ -79,8 +79,8 @@ cp -p mycoolfile /home/pete/backups/
 
 연습이 완벽을 만듭니다! Linux 에서 파일 및 디렉터리 복사에 대한 이해를 강화하기 위한 실습 랩이 있습니다:
 
-1.  **[Linux cp 명령어: 파일 복사](https://labex.io/ko/labs/linux-linux-cp-command-file-copying-209744)** - 기본 사용법, 재귀적 복사, 속성 보존과 같은 고급 옵션 및 와일드카드를 사용하여 파일과 디렉터리를 효율적으로 복사하는 방법을 연습합니다.
-2.  **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - `cp`, `mv`, `rm` 명령어를 사용하여 프로젝트 구조를 정리하고, 파일을 이동하고, 불필요한 디렉터리를 정리하여 필수적인 Linux 파일 관리 기술을 연습합니다.
+1. **[Linux cp 명령어: 파일 복사](https://labex.io/ko/labs/linux-linux-cp-command-file-copying-209744)** - 기본 사용법, 재귀적 복사, 속성 보존과 같은 고급 옵션 및 와일드카드를 사용하여 파일과 디렉터리를 효율적으로 복사하는 방법을 연습합니다.
+2. **[파일 및 디렉터리 정리](https://labex.io/ko/labs/linux-organizing-files-and-directories-387877)** - `cp`, `mv`, `rm` 명령어를 사용하여 프로젝트 구조를 정리하고, 파일을 이동하고, 불필요한 디렉터리를 정리하여 필수적인 Linux 파일 관리 기술을 연습합니다.
 
 이 랩들은 실제 시나리오에서 개념을 적용하고 Linux 에서 파일 복사 및 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

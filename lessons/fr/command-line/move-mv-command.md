@@ -79,8 +79,8 @@ Maîtriser la `mv command` est essentiel pour une gestion efficace des fichiers 
 
 La pratique rend parfait ! L'expérience pratique est cruciale pour maîtriser les commandes Linux comme `mv`. Ces laboratoires vous aideront à consolider votre compréhension du déplacement et du renommage des fichiers et des répertoires dans un environnement réel :
 
-1.  **[Commande mv Linux : Déplacement et renommage de fichiers](https://labex.io/fr/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - Entraînez-vous à utiliser la commande `mv` pour déplacer et renommer des fichiers et des répertoires, y compris la compréhension de ses diverses options et comportements.
-2.  **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Appliquez vos connaissances de `mv` (ainsi que `cp` et `rm`) dans un défi pratique pour organiser une structure de projet, déplacer des fichiers et nettoyer des répertoires.
+1. **[Commande mv Linux : Déplacement et renommage de fichiers](https://labex.io/fr/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - Entraînez-vous à utiliser la commande `mv` pour déplacer et renommer des fichiers et des répertoires, y compris la compréhension de ses diverses options et comportements.
+2. **[Organisation des fichiers et des répertoires](https://labex.io/fr/labs/linux-organizing-files-and-directories-387877)** - Appliquez vos connaissances de `mv` (ainsi que `cp` et `rm`) dans un défi pratique pour organiser une structure de projet, déplacer des fichiers et nettoyer des répertoires.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des fichiers et des répertoires à l'aide de la commande `mv`.
 

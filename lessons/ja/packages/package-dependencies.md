@@ -29,8 +29,8 @@ Linux では、これらの重要な依存関係は通常、他のパッケー�
 
 Linux パッケージ、依存関係、および共有ライブラリの理解を深めるのに役立つ、実践的なラボで知識を適用してください。
 
-1.  **[Linux で共有ライブラリを管理する](https://labex.io/ja/labs/comptia-manage-shared-libraries-in-linux-590867)** - 多くのアプリケーションにとって重要な依存関係である共有ライブラリを識別、検索、管理する練習をします。
-2.  **[Linux で RPM を使用してパッケージを管理する](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - RPM ベースのシステムでソフトウェアパッケージを管理する方法を学びます。これには、パッケージ情報の照会や依存関係の理解が含まれます。
-3.  **[Linux で YUM を使用してパッケージを照会および更新する](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して、インストールされているパッケージを検査し、リポジトリを探索し、更新を管理する経験を積みます。これらすべてがパッケージ依存関係の処理に関わってきます。
+1. **[Linux で共有ライブラリを管理する](https://labex.io/ja/labs/comptia-manage-shared-libraries-in-linux-590867)** - 多くのアプリケーションにとって重要な依存関係である共有ライブラリを識別、検索、管理する練習をします。
+2. **[Linux で RPM を使用してパッケージを管理する](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - RPM ベースのシステムでソフトウェアパッケージを管理する方法を学びます。これには、パッケージ情報の照会や依存関係の理解が含まれます。
+3. **[Linux で YUM を使用してパッケージを照会および更新する](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して、インストールされているパッケージを検査し、リポジトリを探索し、更新を管理する経験を積みます。これらすべてがパッケージ依存関係の処理に関わってきます。
 
 これらのラボは、実際のシナリオでパッケージ管理と依存関係解決の概念を適用し、Linux ソフトウェアインストールの自信を高めるのに役立ちます。

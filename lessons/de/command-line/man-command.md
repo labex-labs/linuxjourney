@@ -33,9 +33,9 @@ Man Pages sind besonders nützlich, um Befehlsoptionen zu verstehen. Wenn Sie be
 
 Übung ist der Schlüssel zur Beherrschung der Kommandozeile. Diese praktischen Labs helfen Ihnen, Ihre Fähigkeiten mit grundlegenden Befehlen zu festigen. Nachdem Sie sie abgeschlossen haben, verwenden Sie den Befehl `man`, um das volle Potenzial jedes Werkzeugs zu erkunden.
 
-1.  **[Linux ls Befehl: Inhaltsauflistung](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie das Auflisten und Analysieren von Datei- und Verzeichnisinhalten und verwenden Sie dann `man ls`, um weitere Optionen zu entdecken.
-2.  **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Lernen Sie den Befehl `pwd`, um Ihr aktuelles Verzeichnis anzuzeigen, und sehen Sie sich dessen Manpage für Details an.
-3.  **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Meistern Sie die Navigation in Ihrem Dateisystem mit `cd` und verwenden Sie `man cd`, um seine verschiedenen Techniken zu verstehen.
+1. **[Linux ls Befehl: Inhaltsauflistung](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** - Üben Sie das Auflisten und Analysieren von Datei- und Verzeichnisinhalten und verwenden Sie dann `man ls`, um weitere Optionen zu entdecken.
+2. **[Linux pwd Befehl: Verzeichnisanzeige](https://labex.io/de/labs/linux-linux-pwd-command-directory-displaying-209734)** - Lernen Sie den Befehl `pwd`, um Ihr aktuelles Verzeichnis anzuzeigen, und sehen Sie sich dessen Manpage für Details an.
+3. **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Meistern Sie die Navigation in Ihrem Dateisystem mit `cd` und verwenden Sie `man cd`, um seine verschiedenen Techniken zu verstehen.
 
 Diese Labs helfen Ihnen, Kernkonzepte in realen Szenarien anzuwenden und Selbstvertrauen mit wesentlichen Linux-Befehlen aufzubauen, was Sie darauf vorbereitet, `man` effektiv zu nutzen, um Ihr Wissen zu vertiefen.
 

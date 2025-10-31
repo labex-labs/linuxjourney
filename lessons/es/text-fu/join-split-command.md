@@ -72,7 +72,7 @@ La bandera `-1 2` especifica el campo 2 del primer archivo, y `-2 1` especifica 
 El comando `split` hace lo contrario de unir; divide un archivo grande en archivos más pequeños.
 
 ```bash
-$ split somefile
+split somefile
 ```
 
 Por defecto, este comando divide `somefile` en nuevos archivos una vez que se alcanza un límite de 1000 líneas. Los archivos de salida se nombran `xaa`, `xab`, y así sucesivamente. Puedes personalizar este comportamiento, por ejemplo, especificando un recuento de líneas diferente con la bandera `-l` o dividiendo por tamaño de archivo con la bandera `-b`.

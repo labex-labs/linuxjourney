@@ -46,7 +46,7 @@ Tipp: Sie können diesen Befehlen eine Zahl voranstellen, um sie zu wiederholen.
 
 Übung ist unerlässlich, um Vim zu meistern. Das folgende Labor bietet eine praktische Umgebung, um Ihr Verständnis der Textbearbeitungsfunktionen von Vim zu festigen.
 
-1.  **[Edit Text Files in Linux with Vim and Nano](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, die grundlegenden Fähigkeiten zur Verwendung des Normal- und Einfügemodus von Vim zu meistern.
+1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, die grundlegenden Fähigkeiten zur Verwendung des Normal- und Einfügemodus von Vim zu meistern.
 
 Die Anwendung dieser Konzepte in realen Szenarien hilft Ihnen, Vertrauen in die Textbearbeitung unter Linux mit Vim aufzubauen.
 

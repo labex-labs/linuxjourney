@@ -54,8 +54,8 @@ Para uma lista completa de funcionalidades, você pode sempre consultar a págin
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da visualização de conteúdo de arquivos:
 
-1.  **[Comando cat Linux: Concatenação de Arquivos](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprenda o comando `cat` para visualizar, concatenar e manipular arquivos de texto, aprimorando suas habilidades de linha de comando para o manuseio eficiente de arquivos de texto.
-2.  **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique o uso de comandos como `cat` para visualizar e navegar eficientemente em arquivos de texto, incluindo logs do sistema e arquivos de configuração, para extrair informações críticas.
+1. **[Comando cat Linux: Concatenação de Arquivos](https://labex.io/pt/labs/linux-linux-cat-command-file-concatenating-210986)** - Aprenda o comando `cat` para visualizar, concatenar e manipular arquivos de texto, aprimorando suas habilidades de linha de comando para o manuseio eficiente de arquivos de texto.
+2. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique o uso de comandos como `cat` para visualizar e navegar eficientemente em arquivos de texto, incluindo logs do sistema e arquivos de configuração, para extrair informações críticas.
 
 Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança na visualização de conteúdo de arquivos no Linux.
 

@@ -68,9 +68,9 @@ prw-r--r--   1 root root           0 Dec 20 20:13 fdata
 
 **Linux デバイス**について学んだことを適用するために、次のハンズオンラボをお勧めします。これらの演習は、実際のシナリオでのデバイスの操作と管理に対する自信を構築するのに役立ちます。
 
-1.  **[Linux パーティションとファイルシステムの管理](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Linux における基本的なブロックデバイスであるディスクパーティションとファイルシステムの作成と管理を練習します。
-2.  **[Linux におけるハードウェアデバイスの探索](https://labex.io/ja/labs/comptia-explore-hardware-devices-in-linux-590861)** - さまざまなハードウェアデバイスを識別および検査し、それらが`/dev`ディレクトリでどのように表現されているかを理解する方法を学びます。
-3.  **[Linux でのスワップファイルの作成とアクティブ化](https://labex.io/ja/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 仮想メモリデバイスとして機能するスワップファイルの作成とアクティブ化に関する実践的な経験を積みます。
+1. **[Linux パーティションとファイルシステムの管理](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Linux における基本的なブロックデバイスであるディスクパーティションとファイルシステムの作成と管理を練習します。
+2. **[Linux におけるハードウェアデバイスの探索](https://labex.io/ja/labs/comptia-explore-hardware-devices-in-linux-590861)** - さまざまなハードウェアデバイスを識別および検査し、それらが`/dev`ディレクトリでどのように表現されているかを理解する方法を学びます。
+3. **[Linux でのスワップファイルの作成とアクティブ化](https://labex.io/ja/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 仮想メモリデバイスとして機能するスワップファイルの作成とアクティブ化に関する実践的な経験を積みます。
 
 ## Quiz Question
 

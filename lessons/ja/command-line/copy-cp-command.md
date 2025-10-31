@@ -79,8 +79,8 @@ cp -p mycoolfile /home/pete/backups/
 
 練習あるのみです！Linux でのファイルやディレクトリのコピーに関する理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux cp コマンド：ファイルコピー](https://labex.io/ja/labs/linux-linux-cp-command-file-copying-209744)** - 基本的な使い方、再帰的コピー、属性の保持、ワイルドカードの使用といった高度なオプションを練習し、ファイルやディレクトリを効率的にコピーします。
-2.  **[ファイルとディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - `cp`、`mv`、`rm` コマンドを使用してプロジェクト構造を整理し、ファイルを移動し、不要なディレクトリをクリーンアップすることで、不可欠な Linux ファイル管理スキルを練習します。
+1. **[Linux cp コマンド：ファイルコピー](https://labex.io/ja/labs/linux-linux-cp-command-file-copying-209744)** - 基本的な使い方、再帰的コピー、属性の保持、ワイルドカードの使用といった高度なオプションを練習し、ファイルやディレクトリを効率的にコピーします。
+2. **[ファイルとディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - `cp`、`mv`、`rm` コマンドを使用してプロジェクト構造を整理し、ファイルを移動し、不要なディレクトリをクリーンアップすることで、不可欠な Linux ファイル管理スキルを練習します。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux でのファイルコピーと管理に対する自信を築くのに役立ちます。
 

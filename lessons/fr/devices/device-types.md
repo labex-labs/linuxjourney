@@ -68,9 +68,9 @@ Le numéro majeur (8) identifie le pilote responsable du périphérique. Dans ce
 
 Pour appliquer ce que vous avez appris sur les **périphériques Linux**, nous vous recommandons les laboratoires pratiques suivants. Ces exercices vous aideront à gagner en confiance dans l'interaction et la gestion des périphériques dans des scénarios réels.
 
-1.  **[Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer et gérer des partitions de disque et des systèmes de fichiers, qui sont des périphériques de bloc fondamentaux sous Linux.
-2.  **[Explorer les périphériques matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Apprenez à identifier et inspecter divers périphériques matériels, en comprenant comment ils sont représentés dans le répertoire `/dev`.
-3.  **[Créer et activer un fichier d'échange sous Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Acquérir une expérience pratique dans la création et l'activation d'un fichier d'échange, qui fonctionne comme un périphérique de mémoire virtuelle.
+1. **[Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer et gérer des partitions de disque et des systèmes de fichiers, qui sont des périphériques de bloc fondamentaux sous Linux.
+2. **[Explorer les périphériques matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Apprenez à identifier et inspecter divers périphériques matériels, en comprenant comment ils sont représentés dans le répertoire `/dev`.
+3. **[Créer et activer un fichier d'échange sous Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Acquérir une expérience pratique dans la création et l'activation d'un fichier d'échange, qui fonctionne comme un périphérique de mémoire virtuelle.
 
 ## Quiz Question
 

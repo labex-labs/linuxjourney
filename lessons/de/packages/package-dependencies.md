@@ -29,8 +29,8 @@ Effektives Paketmanagement dreht sich darum, sicherzustellen, dass diese Abhäng
 
 Wenden Sie Ihr Wissen mit diesen praktischen Übungen an, die Ihnen helfen, Ihr Verständnis von Linux-Paketen, Abhängigkeiten und gemeinsam genutzten Bibliotheken zu festigen:
 
-1.  **[Gemeinsam genutzte Bibliotheken unter Linux verwalten](https://labex.io/de/labs/comptia-manage-shared-libraries-in-linux-590867)** – Üben Sie das Identifizieren, Lokalisieren und Verwalten gemeinsam genutzter Bibliotheken, die entscheidende Abhängigkeiten für viele Anwendungen sind.
-2.  **[Pakete mit RPM unter Linux verwalten](https://labex.io/de/labs/rhel-managing-packages-with-rpm-in-linux-590868)** – Lernen Sie, Softwarepakete auf RPM-basierten Systemen zu verwalten, einschließlich der Abfrage von Paketinformationen und des Verständnisses von Abhängigkeiten.
-3.  **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** – Sammeln Sie Erfahrung mit YUM, um installierte Pakete zu überprüfen, Repositories zu erkunden und Updates zu verwalten, was allesamt die Handhabung von Paketabhängigkeiten beinhaltet.
+1. **[Gemeinsam genutzte Bibliotheken unter Linux verwalten](https://labex.io/de/labs/comptia-manage-shared-libraries-in-linux-590867)** – Üben Sie das Identifizieren, Lokalisieren und Verwalten gemeinsam genutzter Bibliotheken, die entscheidende Abhängigkeiten für viele Anwendungen sind.
+2. **[Pakete mit RPM unter Linux verwalten](https://labex.io/de/labs/rhel-managing-packages-with-rpm-in-linux-590868)** – Lernen Sie, Softwarepakete auf RPM-basierten Systemen zu verwalten, einschließlich der Abfrage von Paketinformationen und des Verständnisses von Abhängigkeiten.
+3. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** – Sammeln Sie Erfahrung mit YUM, um installierte Pakete zu überprüfen, Repositories zu erkunden und Updates zu verwalten, was allesamt die Handhabung von Paketabhängigkeiten beinhaltet.
 
 Diese Übungen helfen Ihnen, die Konzepte des Paketmanagements und der Abhängigkeitsauflösung in realen Szenarien anzuwenden und Ihr Vertrauen in die Linux-Softwareinstallation zu stärken.

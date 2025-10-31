@@ -45,9 +45,9 @@ unexpand -a result.txt
 
 为了掌握 Linux 中的文本操作和重定向，实践是关键。以下动手实验将帮助您巩固理解：
 
-1.  **[在 Linux 中重定向输入和输出](https://labex.io/zh/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 练习使用 `>` 和 `>>` 等运算符来操作标准输出 (stdout)、标准错误 (stderr) 和标准输入 (stdin)，从而控制命令的数据流。
-2.  **[简单的文本处理](https://labex.io/zh/labs/linux-simple-text-processing-18004)** - 学习使用 `tr`、`col`、`join` 和 `paste` 等强大命令来有效地操作和分析文本数据，增强您在数据处理方面的命令行技能。
-3.  **[文本处理和正则表达式](https://labex.io/zh/labs/linux-text-processing-and-regular-expressions-18003)** - 学习强大的文本处理工具 `grep`、`sed` 和 `awk`，并使用正则表达式在 Linux 中进行高效的文本操作和模式匹配。
+1. **[在 Linux 中重定向输入和输出](https://labex.io/zh/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 练习使用 `>` 和 `>>` 等运算符来操作标准输出 (stdout)、标准错误 (stderr) 和标准输入 (stdin)，从而控制命令的数据流。
+2. **[简单的文本处理](https://labex.io/zh/labs/linux-simple-text-processing-18004)** - 学习使用 `tr`、`col`、`join` 和 `paste` 等强大命令来有效地操作和分析文本数据，增强您在数据处理方面的命令行技能。
+3. **[文本处理和正则表达式](https://labex.io/zh/labs/linux-text-processing-and-regular-expressions-18003)** - 学习强大的文本处理工具 `grep`、`sed` 和 `awk`，并使用正则表达式在 Linux 中进行高效的文本操作和模式匹配。
 
 完成这些实验将帮助您在实际场景中应用文本转换和文件操作的概念，增强您对基本 Linux 命令行工具的信心。
 

@@ -31,9 +31,9 @@ Linux 操作系统可以组织成三个不同的抽象级别。
 
 为了将理论付诸实践，请尝试以下动手实验。它们将加强你对 Linux 内核及其与系统组件交互的理解：
 
-1.  **[在 Linux 中管理内核模块](https://labex.io/zh/labs/comptia-manage-kernel-modules-in-linux-590865)** - 练习列出、检查、加载和卸载内核模块，并配置它们以便在启动时自动加载。
-2.  **[在 Linux 中探索硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 学习使用命令行实用程序在 Linux 环境中识别和检查硬件设备。
-3.  **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 获得有关创建分区、格式化文件系统、挂载它们以及配置持久性挂载的实践经验，所有这些都由内核管理。
+1. **[在 Linux 中管理内核模块](https://labex.io/zh/labs/comptia-manage-kernel-modules-in-linux-590865)** - 练习列出、检查、加载和卸载内核模块，并配置它们以便在启动时自动加载。
+2. **[在 Linux 中探索硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 学习使用命令行实用程序在 Linux 环境中识别和检查硬件设备。
+3. **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 获得有关创建分区、格式化文件系统、挂载它们以及配置持久性挂载的实践经验，所有这些都由内核管理。
 
 这些实验将帮助你在真实场景中应用内核与硬件和系统资源交互的概念，并增强低级 Linux 管理的信心。
 

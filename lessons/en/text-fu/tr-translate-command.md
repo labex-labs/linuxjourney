@@ -48,7 +48,7 @@ In this case, `tr -s ' '` replaced sequences of multiple spaces with a single sp
 
 To put your knowledge into practice, try the following hands-on lab. It will help you reinforce your understanding of character translation and text processing.
 
-1.  **[Linux tr Command: Character Translating](https://labex.io/labs/linux-linux-tr-command-character-translating-219198)** - Learn the Linux `tr` command for character-level transformations in text streams. You'll practice translating characters, deleting specific characters, working with character classes, and squeezing repeated characters.
+1. **[Linux tr Command: Character Translating](https://labex.io/labs/linux-linux-tr-command-character-translating-219198)** - Learn the Linux `tr` command for character-level transformations in text streams. You'll practice translating characters, deleting specific characters, working with character classes, and squeezing repeated characters.
 
 This lab will help you apply the concepts of text manipulation in real scenarios and build confidence with the `tr` command.
 

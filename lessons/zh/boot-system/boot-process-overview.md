@@ -35,7 +35,7 @@ BIOS（基本输入/输出系统）或其现代继任者 UEFI（统一可扩展�
 
 为了巩固您的理解，我们建议您尝试这个动手实验。它提供了一个实际环境，让您应用所学到的关于 Linux 启动过程的知识。
 
-1.  **[在 Linux 中自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 练习修改 GRUB2 引导菜单，这是 Linux 启动序列中的一个关键组件。
+1. **[在 Linux 中自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 练习修改 GRUB2 引导菜单，这是 Linux 启动序列中的一个关键组件。
 
 ## Quiz Question
 

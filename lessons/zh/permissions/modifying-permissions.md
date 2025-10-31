@@ -74,8 +74,8 @@ chmod 755 myfile
 
 实践造就完美！以下是一些巩固您对 Linux 文件权限理解的动手实验：
 
-1.  **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 学习基本的 Linux 用户和组管理概念，包括理解文件权限和操作文件所有权。此实验提供了在多用户 Linux 环境中保护系统的实践经验。
-2.  **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此挑战中，您将模拟向服务器环境添加新团队成员，创建新的用户帐户，设置自定义组以及管理组成员身份，这通常涉及设置适当的权限。
+1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 学习基本的 Linux 用户和组管理概念，包括理解文件权限和操作文件所有权。此实验提供了在多用户 Linux 环境中保护系统的实践经验。
+2. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此挑战中，您将模拟向服务器环境添加新团队成员，创建新的用户帐户，设置自定义组以及管理组成员身份，这通常涉及设置适当的权限。
 
 这些实验将帮助您在实际场景中应用用户、组和其他权限的概念，并增强您管理 Linux 访问的信心。
 

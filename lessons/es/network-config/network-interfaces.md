@@ -88,9 +88,9 @@ Una ubicación común para estos archivos es `/etc/network/interfaces`. El archi
 
 Ponga su conocimiento en práctica con estos laboratorios prácticos. Le ayudarán a reforzar su comprensión de las interfaces de red y el direccionamiento IP.
 
-1.  **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC, IPv4 e IPv6 en un sistema Linux.
-2.  **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada (_default gateway_) y verificar la configuración de red usando el comando `ip`.
-3.  **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multicast) y pruebe la alcanzabilidad de la red usando `ping` e `ip a`.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC, IPv4 e IPv6 en un sistema Linux.
+2. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar direcciones IP estáticas y dinámicas, establecer una puerta de enlace predeterminada (_default gateway_) y verificar la configuración de red usando el comando `ip`.
+3. **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP (privadas, públicas, multicast) y pruebe la alcanzabilidad de la red usando `ping` e `ip a`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de identificación de interfaz de red y direccionamiento IP en escenarios reales y a ganar confianza con la red de Linux.
 

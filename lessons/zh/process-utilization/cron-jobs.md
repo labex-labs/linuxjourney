@@ -49,7 +49,7 @@ crontab -e
 
 熟能生巧！这个实践实验室将帮助您巩固对如何在 Linux 中`调度任务`的理解。
 
-1.  **[在 Linux 中使用 at 和 cron 调度任务](https://labex.io/zh/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 练习使用 `at`、`atq`、`atrm` 和 `crontab` 创建、管理和删除作业，获得自动化系统管理任务的实践经验。
+1. **[在 Linux 中使用 at 和 cron 调度任务](https://labex.io/zh/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 练习使用 `at`、`atq`、`atrm` 和 `crontab` 创建、管理和删除作业，获得自动化系统管理任务的实践经验。
 
 此实验室将帮助您在真实场景中应用本课程中的概念，并增强您对`Linux自动化`的信心。
 

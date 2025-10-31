@@ -53,8 +53,8 @@ ip route delete 192.168.2.1/23
 
 연습이 완벽을 만듭니다! 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 IP 구성, 기본 게이트웨이 설정 및 `ip` 명령어를 사용한 네트워크 구성 확인을 연습합니다.
-2.  **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 기본 게이트웨이가 원격 트래픽을 처리하는 방법과 네트워크 계층 상호 작용을 관찰하는 방법을 알아봅니다.
+1. **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 IP 구성, 기본 게이트웨이 설정 및 `ip` 명령어를 사용한 네트워크 구성 확인을 연습합니다.
+2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 기본 게이트웨이가 원격 트래픽을 처리하는 방법과 네트워크 계층 상호 작용을 관찰하는 방법을 알아봅니다.
 
 이 랩들은 IP 주소 지정 및 라우팅 개념을 실제 시나리오에 적용하고 Linux 네트워킹에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

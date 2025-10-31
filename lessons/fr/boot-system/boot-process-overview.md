@@ -35,7 +35,7 @@ Ceci fournit un aperçu de haut niveau du **processus de démarrage linux** suiv
 
 Pour consolider votre compréhension, nous vous recommandons d'essayer ce laboratoire pratique. Il fournit un environnement pratique pour appliquer ce que vous avez appris sur le processus de démarrage Linux.
 
-1.  **[Personnaliser le menu de démarrage GRUB2 sous Linux](https://labex.io/fr/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Entraînez-vous à modifier le menu de démarrage GRUB2, un composant critique de la séquence de démarrage Linux.
+1. **[Personnaliser le menu de démarrage GRUB2 sous Linux](https://labex.io/fr/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Entraînez-vous à modifier le menu de démarrage GRUB2, un composant critique de la séquence de démarrage Linux.
 
 ## Quiz Question
 

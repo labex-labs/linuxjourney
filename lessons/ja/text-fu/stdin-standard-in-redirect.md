@@ -29,9 +29,9 @@ cat < peanuts.txt > banana.txt
 
 ここで何が起こるかを分解します。
 
-1.  `< peanuts.txt` の部分は、シェルに対して `cat` コマンドの `stdin` をリダイレクトし、キーボードからではなく `peanuts.txt` から読み取るように指示します。
-2.  `cat` コマンドはその入力を処理します。この場合、`cat stdin` を使用することは、`peanuts.txt` の内容を読み取ることを意味します。
-3.  `> banana.txt` の部分は、`cat` の標準出力を `banana.txt` という新しいファイルにリダイレクトします。
+1. `< peanuts.txt` の部分は、シェルに対して `cat` コマンドの `stdin` をリダイレクトし、キーボードからではなく `peanuts.txt` から読み取るように指示します。
+2. `cat` コマンドはその入力を処理します。この場合、`cat stdin` を使用することは、`peanuts.txt` の内容を読み取ることを意味します。
+3. `> banana.txt` の部分は、`cat` の標準出力を `banana.txt` という新しいファイルにリダイレクトします。
 
 最終的に、`peanuts.txt` の内容が `banana.txt` にコピーされます。この例は、単一の効率的なコマンドで `stdin と stdout` の両方を管理する方法を効果的に示しています。
 
@@ -39,9 +39,9 @@ cat < peanuts.txt > banana.txt
 
 入力と出力のリダイレクトに焦点を当てた実践的な演習で理解を深めましょう。
 
-1.  **[Linux における入出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 演算子（>、>>、2>）や tee コマンドを使用して標準出力 (stdout)、標準エラー (stderr)、標準入力 (stdin) を操作し、コマンドからのデータフロー制御を練習します。
-2.  **[データストリームのリダイレクト](https://labex.io/ja/labs/linux-data-stream-redirection-17995)** - Linux ストリームリダイレクトの技術を学びます。標準入力、出力、エラー ストリームを操作し、出力を結合し、高度なファイル操作のために /dev/null を利用します。
-3.  **[シーケンス制御とパイプライン](https://labex.io/ja/labs/linux-sequence-control-and-pipeline-17994)** - コマンド実行シーケンスを制御し、あるコマンドの出力を別のコマンドの入力として転送するのに不可欠なパイプラインを活用する方法を学びます。
+1. **[Linux における入出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - 演算子（>、>>、2>）や tee コマンドを使用して標準出力 (stdout)、標準エラー (stderr)、標準入力 (stdin) を操作し、コマンドからのデータフロー制御を練習します。
+2. **[データストリームのリダイレクト](https://labex.io/ja/labs/linux-data-stream-redirection-17995)** - Linux ストリームリダイレクトの技術を学びます。標準入力、出力、エラー ストリームを操作し、出力を結合し、高度なファイル操作のために /dev/null を利用します。
+3. **[シーケンス制御とパイプライン](https://labex.io/ja/labs/linux-sequence-control-and-pipeline-17994)** - コマンド実行シーケンスを制御し、あるコマンドの出力を別のコマンドの入力として転送するのに不可欠なパイプラインを活用する方法を学びます。
 
 これらのラボは、入力および出力リダイレクトの概念を実際のシナリオに適用し、シェルスクリプトとデータ操作に対する自信を高めるのに役立ちます。
 

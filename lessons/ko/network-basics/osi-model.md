@@ -39,9 +39,9 @@ OSI 모델은 이론적이지만, 실제 네트워킹에 미치는 영향을 이
 
 기본 네트워킹 개념에 대한 이해를 강화하기 위한 실습 랩은 다음과 같습니다:
 
-1.  **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 및 IP 주소를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
-2.  **[Linux 에서 IP 주소 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정 및 `ip` 명령을 사용한 네트워크 구성 확인 방법을 배웁니다.
-3.  **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령을 사용하여 네트워크 계층과 데이터 링크 계층이 상호 작용하는 방식을 탐색하고, 작동 중인 ARP 를 관찰하며 기본 게이트웨이 동작을 이해합니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 Linux 시스템에서 MAC 및 IP 주소를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정 및 `ip` 명령을 사용한 네트워크 구성 확인 방법을 배웁니다.
+3. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령을 사용하여 네트워크 계층과 데이터 링크 계층이 상호 작용하는 방식을 탐색하고, 작동 중인 ARP 를 관찰하며 기본 게이트웨이 동작을 이해합니다.
 
 이러한 랩은 실제 시나리오에서 기본 네트워킹 개념을 적용하고 Linux 네트워크 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

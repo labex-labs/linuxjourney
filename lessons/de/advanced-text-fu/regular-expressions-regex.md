@@ -80,9 +80,9 @@ Das Erlernen dieser Operatoren ist einer der besten Wege, um die Effizienz der L
 
 Bringen Sie Ihr Wissen in die Praxis. Hier sind einige praktische Übungen, um Ihr Verständnis von regulären Ausdrücken und Musterabgleich zu festigen:
 
-1.  **[Text mit grep unter Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, mit dem Befehl `grep` nach Text in Dateien auf einem Linux-System zu suchen. Sie führen einfache Suchen durch, zeigen Zeilennummern an, verwenden Anker wie `^` und `$` zur Anpassung von Zeilenpositionen und nutzen sowohl einfache als auch erweiterte reguläre Ausdrücke für komplexen Musterabgleich.
-2.  **[Textverarbeitung und reguläre Ausdrücke](https://labex.io/de/labs/linux-text-processing-and-regular-expressions-18003)** - Lernen Sie die leistungsstarken Textverarbeitungswerkzeuge grep, sed und awk kennen. Erfahren Sie, wie Sie reguläre Ausdrücke für effiziente Textmanipulation und Musterabgleich unter Linux verwenden.
-3.  **[Extrahieren von E-Mails und Zahlen](https://labex.io/de/labs/linux-extracting-mails-and-numbers-17991)** - In dieser Herausforderung lernen Sie, wie Sie grep und reguläre Ausdrücke verwenden, um E-Mail-Adressen und Zahlen aus einer Datei zu extrahieren, was wesentliche Linux-Textverarbeitungsfähigkeiten demonstriert.
+1. **[Text mit grep unter Linux suchen](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, mit dem Befehl `grep` nach Text in Dateien auf einem Linux-System zu suchen. Sie führen einfache Suchen durch, zeigen Zeilennummern an, verwenden Anker wie `^` und `$` zur Anpassung von Zeilenpositionen und nutzen sowohl einfache als auch erweiterte reguläre Ausdrücke für komplexen Musterabgleich.
+2. **[Textverarbeitung und reguläre Ausdrücke](https://labex.io/de/labs/linux-text-processing-and-regular-expressions-18003)** - Lernen Sie die leistungsstarken Textverarbeitungswerkzeuge grep, sed und awk kennen. Erfahren Sie, wie Sie reguläre Ausdrücke für effiziente Textmanipulation und Musterabgleich unter Linux verwenden.
+3. **[Extrahieren von E-Mails und Zahlen](https://labex.io/de/labs/linux-extracting-mails-and-numbers-17991)** - In dieser Herausforderung lernen Sie, wie Sie grep und reguläre Ausdrücke verwenden, um E-Mail-Adressen und Zahlen aus einer Datei zu extrahieren, was wesentliche Linux-Textverarbeitungsfähigkeiten demonstriert.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in reguläre Ausdrücke und Textverarbeitung aufzubauen.
 

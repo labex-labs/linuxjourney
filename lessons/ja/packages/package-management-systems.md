@@ -53,9 +53,9 @@ RPM: $ yum info package_name
 
 練習あるのみです！Linux パッケージ管理の理解を深めるための実践的なラボを以下に示します。
 
-1.  **[YUM を使用した Linux でのパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する練習をします。これには、パッケージの検査、更新、リポジトリの探索が含まれます。
-2.  **[Linux でのソフトウェアインストール](https://labex.io/ja/labs/linux-software-installation-on-linux-18005)** - apt、dpkg の使用、および.deb ファイルの処理を含む、Ubuntu システムでソフトウェアをインストールおよび管理するためのさまざまな方法を学びます。
-3.  **[パッケージのインストールと削除](https://labex.io/ja/labs/linux-installing-and-removing-packages-385380)** - `apt` を使用して Debian ベースのシステムでシステムの更新、パッケージのインストールと削除、ソフトウェア構成の最適化を練習します。
+1. **[YUM を使用した Linux でのパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する練習をします。これには、パッケージの検査、更新、リポジトリの探索が含まれます。
+2. **[Linux でのソフトウェアインストール](https://labex.io/ja/labs/linux-software-installation-on-linux-18005)** - apt、dpkg の使用、および.deb ファイルの処理を含む、Ubuntu システムでソフトウェアをインストールおよび管理するためのさまざまな方法を学びます。
+3. **[パッケージのインストールと削除](https://labex.io/ja/labs/linux-installing-and-removing-packages-385380)** - `apt` を使用して Debian ベースのシステムでシステムの更新、パッケージのインストールと削除、ソフトウェア構成の最適化を練習します。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux パッケージ管理に対する自信を築くのに役立ちます。
 

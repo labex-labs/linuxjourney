@@ -27,9 +27,9 @@ IP 地址是网络上设备的逻辑标识符，使其能够在不同网络（�
 
 实践造就完美！以下是一些实践实验，可巩固您对 MAC 地址、IP 地址和主机名等网络标识符的理解：
 
-1.  **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 MAC 地址和 IP 地址。
-2.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 测试网络可达性。
-3.  **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 `/etc/hosts` 文件并测试更改来管理本地主机名解析。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 MAC 地址和 IP 地址。
+2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 测试网络可达性。
+3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 `/etc/hosts` 文件并测试更改来管理本地主机名解析。
 
 这些实验将帮助您在实际场景中应用这些概念，并增强对基本 Linux 网络知识的信心。
 

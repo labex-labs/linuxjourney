@@ -88,9 +88,9 @@ Un emplacement courant pour ces fichiers est `/etc/network/interfaces`. Le fichi
 
 Mettez vos connaissances en pratique avec ces laboratoires pratiques. Ils vous aideront à renforcer votre compréhension des interfaces réseau et de l'adressage IP.
 
-1.  **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, IPv4 et IPv6 sur un système Linux.
-2.  **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
-3.  **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez l'accessibilité du réseau à l'aide de `ping` et `ip a`.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC, IPv4 et IPv6 sur un système Linux.
+2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
+3. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP (privées, publiques, multicast) et testez l'accessibilité du réseau à l'aide de `ping` et `ip a`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'identification d'interface réseau et d'adressage IP dans des scénarios réels et à renforcer votre confiance dans la mise en réseau Linux.
 

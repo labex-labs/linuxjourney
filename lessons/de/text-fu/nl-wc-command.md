@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 Die Ausgabe zeigt drei Zahlen, gefolgt vom Dateinamen. Von links nach rechts stellen diese Zahlen dar:
 
-1.  Die Anzahl der Zeilen.
-2.  Die Anzahl der Wörter (der Linux-Wortzähler).
-3.  Die Anzahl der Bytes.
+1. Die Anzahl der Zeilen.
+2. Die Anzahl der Wörter (der Linux-Wortzähler).
+3. Die Anzahl der Bytes.
 
 ### Spezifische Zählungen erhalten
 
@@ -57,9 +57,9 @@ Mit dem Befehl `nl` können Sie einfach Linux-Zeilennummern hinzufügen:
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 Sowohl `wc` als auch `nl` sind wesentliche Befehle für die tägliche Textverarbeitung auf der Linux-Kommandozeile.
@@ -68,9 +68,9 @@ Sowohl `wc` als auch `nl` sind wesentliche Befehle für die tägliche Textverarb
 
 Um diese Befehle zu beherrschen, ist praktische Übung der Schlüssel. Versuchen Sie diese Übungen, um Ihre Fähigkeiten im Zählen von Text und Nummerieren von Zeilen unter Linux zu festigen:
 
-1.  **[Linux wc Befehl: Textzählung](https://labex.io/de/labs/linux-linux-wc-command-text-counting-219200)** - Üben Sie das Zählen von Wörtern, Zeilen und Zeichen in Textdateien mit dem `wc`-Befehl.
-2.  **[Linux nl Befehl: Zeilennummerierung](https://labex.io/de/labs/linux-linux-nl-command-line-numbering-210988)** - Lernen Sie, Zeilen in Textdateien mit dem `nl`-Befehl zu nummerieren.
-3.  **[Wortzählung und Sortierung](https://labex.io/de/labs/linux-word-count-and-sorting-388125)** - Wenden Sie Ihr Wissen über `wc` an, um Zeilen, Wörter und Zeichen zu zählen, und kombinieren Sie es mit dem Sortieren für praktische Textanalysen.
+1. **[Linux wc Befehl: Textzählung](https://labex.io/de/labs/linux-linux-wc-command-text-counting-219200)** - Üben Sie das Zählen von Wörtern, Zeilen und Zeichen in Textdateien mit dem `wc`-Befehl.
+2. **[Linux nl Befehl: Zeilennummerierung](https://labex.io/de/labs/linux-linux-nl-command-line-numbering-210988)** - Lernen Sie, Zeilen in Textdateien mit dem `nl`-Befehl zu nummerieren.
+3. **[Wortzählung und Sortierung](https://labex.io/de/labs/linux-word-count-and-sorting-388125)** - Wenden Sie Ihr Wissen über `wc` an, um Zeilen, Wörter und Zeichen zu zählen, und kombinieren Sie es mit dem Sortieren für praktische Textanalysen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Textverarbeitung unter Linux aufzubauen.
 

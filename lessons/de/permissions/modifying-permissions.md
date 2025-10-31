@@ -74,8 +74,8 @@ Obwohl `chmod` unerlässlich ist, ist es wichtig, es mit Bedacht einzusetzen. Da
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Dateiberechtigungen zu festigen:
 
-1.  **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie wesentliche Linux-Benutzer- und Gruppenverwaltungskonzepte kennen, einschließlich des Verständnisses von Dateiberechtigungen und der Bearbeitung des Datei-Eigentums. Dieses Labor bietet praktische Erfahrung bei der Sicherung einer Multi-User-Linux-Umgebung.
-2.  **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften, was oft die Festlegung geeigneter Berechtigungen beinhaltet.
+1. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie wesentliche Linux-Benutzer- und Gruppenverwaltungskonzepte kennen, einschließlich des Verständnisses von Dateiberechtigungen und der Bearbeitung des Datei-Eigentums. Dieses Labor bietet praktische Erfahrung bei der Sicherung einer Multi-User-Linux-Umgebung.
+2. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften, was oft die Festlegung geeigneter Berechtigungen beinhaltet.
 
 Diese Labs helfen Ihnen, die Konzepte von Benutzer-, Gruppen- und anderen Berechtigungen in realen Szenarien anzuwenden und Vertrauen in die Verwaltung des Zugriffs unter Linux aufzubauen.
 

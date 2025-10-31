@@ -49,7 +49,7 @@ Sobald Sie Ihre Job-Definition hinzugefügt und die Datei gespeichert haben, lie
 
 Übung macht den Meister! Dieses praktische Labor hilft Ihnen, Ihr Verständnis dafür zu festigen, wie man `Aufgaben in Linux plant`.
 
-1.  **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Üben Sie das Erstellen, Verwalten und Entfernen von Jobs mit `at`, `atq`, `atrm` und `crontab` und sammeln Sie praktische Erfahrungen bei der Automatisierung von Systemadministrationsaufgaben.
+1. **[Aufgaben mit at und cron in Linux planen](https://labex.io/de/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Üben Sie das Erstellen, Verwalten und Entfernen von Jobs mit `at`, `atq`, `atrm` und `crontab` und sammeln Sie praktische Erfahrungen bei der Automatisierung von Systemadministrationsaufgaben.
 
 Dieses Labor hilft Ihnen, die Konzepte aus dieser Lektion in einem realen Szenario anzuwenden und Ihr Selbstvertrauen in die `Linux-Automatisierung` zu stärken.
 

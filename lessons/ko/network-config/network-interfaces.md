@@ -88,9 +88,9 @@ ip address add 192.168.1.1/24 dev eth0
 
 이러한 실습 랩을 통해 지식을 실제로 적용해 보세요. 네트워크 인터페이스와 IP 주소 지정에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령어를 사용하여 리눅스 시스템에서 MAC, IPv4 및 IPv6 주소를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
-2.  **[리눅스에서 IP 주소 지정 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령어를 사용하여 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정 및 네트워크 구성 확인 방법을 배웁니다.
-3.  **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 개인, 공용, 멀티캐스트 등 다양한 IP 주소 유형을 탐색하고 `ping` 및 `ip a`를 사용하여 네트워크 도달 가능성을 테스트합니다.
+1. **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령어를 사용하여 리눅스 시스템에서 MAC, IPv4 및 IPv6 주소를 포함한 네트워크 주소 정보를 식별하는 연습을 합니다.
+2. **[리눅스에서 IP 주소 지정 관리하기](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령어를 사용하여 정적 및 동적 IP 주소 구성, 기본 게이트웨이 설정 및 네트워크 구성 확인 방법을 배웁니다.
+3. **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 개인, 공용, 멀티캐스트 등 다양한 IP 주소 유형을 탐색하고 `ping` 및 `ip a`를 사용하여 네트워크 도달 가능성을 테스트합니다.
 
 이러한 랩은 네트워크 인터페이스 식별 및 IP 주소 지정 개념을 실제 시나리오에 적용하고 리눅스 네트워킹에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

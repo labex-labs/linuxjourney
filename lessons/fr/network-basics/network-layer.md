@@ -27,9 +27,9 @@ Les réseaux plus petits qui constituent Internet sont appelés **sous-réseaux*
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la couche Réseau, de l'adressage IP et des sous-réseaux :
 
-1.  **[Simuler la Connectivité de la Couche Réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Entraînez-vous à attribuer des adresses IP statiques et à tester la connectivité au sein et entre différents sous-réseaux à l'aide de conteneurs Docker.
-2.  **[Effectuer le Sous-réseautage IP et la Conversion Binaire dans le Terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris le calcul des hôtes et des sous-réseaux utilisables, directement dans le terminal Linux.
-3.  **[Explorer les Types d'Adresses IP et la Portée sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez divers types d'adresses IP (privées, publiques, multicast) et testez la portée du réseau à l'aide de `ping` et `ip a`.
+1. **[Simuler la Connectivité de la Couche Réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Entraînez-vous à attribuer des adresses IP statiques et à tester la connectivité au sein et entre différents sous-réseaux à l'aide de conteneurs Docker.
+2. **[Effectuer le Sous-réseautage IP et la Conversion Binaire dans le Terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, y compris le calcul des hôtes et des sous-réseaux utilisables, directement dans le terminal Linux.
+3. **[Explorer les Types d'Adresses IP et la Portée sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez divers types d'adresses IP (privées, publiques, multicast) et testez la portée du réseau à l'aide de `ping` et `ip a`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP et de sous-réseautage dans des scénarios réels et à renforcer votre confiance dans les fondamentaux de la couche Réseau.
 

@@ -38,18 +38,25 @@ Without `-e`, `grep` would treat `-v` as the "invert match" option. The `grep -e
 You can modify `grep`'s behavior with various flags to refine your search results.
 
 - **Case-Insensitive Search**: Use the `-i` flag to make your search case-insensitive.
+
   ```bash
   grep -i somepattern somefile
   ```
+
 - **Count Matching Lines**: To count how many lines match your pattern instead of displaying them, use the `grep -c` flag.
+
   ```bash
   grep -c fox sample.txt
   ```
+
 - **Show Only the Match**: If you only want to see the exact part of the line that matches the pattern, use the `grep -o` flag.
+
   ```bash
   grep -o fox sample.txt
   ```
+
 - **Search for Patterns from a File**: When you have multiple patterns to search for, you can list them in a file and use the `grep -f` flag to tell `grep` to use that file for patterns.
+
   ```bash
   grep -f patterns.txt sample.txt
   ```
@@ -76,9 +83,9 @@ As you can see, `grep` is a versatile and powerful tool for any Linux user.
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of text searching and pattern matching with `grep`:
 
-1.  **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Practice basic searches, display line numbers, use anchors, and harness both basic and extended regular expressions for complex pattern matching with `grep`.
-2.  **[Linux grep Command: Pattern Searching](https://labex.io/labs/linux-linux-grep-command-pattern-searching-219192)** - Learn to use `grep` for searching and matching patterns within text files, and explore regular expressions to define complex search patterns.
-3.  **[Needle in the Haystack](https://labex.io/labs/linux-needle-in-the-haystack-388109)** - Learn the power of the `grep` command to search for specific patterns, count occurrences, extract unique values, and combine multiple search criteria across various log files.
+1. **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Practice basic searches, display line numbers, use anchors, and harness both basic and extended regular expressions for complex pattern matching with `grep`.
+2. **[Linux grep Command: Pattern Searching](https://labex.io/labs/linux-linux-grep-command-pattern-searching-219192)** - Learn to use `grep` for searching and matching patterns within text files, and explore regular expressions to define complex search patterns.
+3. **[Needle in the Haystack](https://labex.io/labs/linux-needle-in-the-haystack-388109)** - Learn the power of the `grep` command to search for specific patterns, count occurrences, extract unique values, and combine multiple search criteria across various log files.
 
 These labs will help you apply the concepts in real scenarios and build confidence with `grep` and regular expressions.
 

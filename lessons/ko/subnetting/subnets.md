@@ -43,9 +43,9 @@ yahoo.com 과 같은 다른 네트워크의 호스트에 연결해야 한다면 
 
 연습이 완벽을 만듭니다! IP 주소 지정 및 서브넷팅에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1.  **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 서브넷 이해의 기본이 되는 IPv4 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
-2.  **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트하여 호스트가 동일한 네트워크에 있는지 확인하는 방법을 배웁니다.
-3.  **[Linux 터미널에서 IP 서브넷팅 및 이진수 변환 수행하기](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 수업에서 논의된 네트워크 접두사 및 호스트 식별 개념을 직접 적용하여 IP 서브넷팅 및 이진수 변환을 마스터합니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 서브넷 이해의 기본이 되는 IPv4 주소를 포함한 네트워크 주소 지정 정보를 식별하는 연습을 합니다.
+2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색하기](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 다양한 IP 주소 유형을 탐색하고 네트워크 도달 가능성을 테스트하여 호스트가 동일한 네트워크에 있는지 확인하는 방법을 배웁니다.
+3. **[Linux 터미널에서 IP 서브넷팅 및 이진수 변환 수행하기](https://labex.io/ko/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 수업에서 논의된 네트워크 접두사 및 호스트 식별 개념을 직접 적용하여 IP 서브넷팅 및 이진수 변환을 마스터합니다.
 
 이 랩들은 실제 시나리오에 개념을 적용하고 네트워크 주소 지정 및 서브넷팅에 대한 자신감을 키우는 데 도움이 될 것입니다.
 

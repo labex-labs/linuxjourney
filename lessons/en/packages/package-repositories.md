@@ -33,9 +33,9 @@ It is also common practice to add new repository configurations in the `/etc/apt
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux package management and repositories:
 
-1.  **[Software Installation on Linux](https://labex.io/labs/linux-software-installation-on-linux-18005)** - Practice various methods to install and manage software on Ubuntu systems, including using apt and handling .deb files, directly relating to the `sources.list` concept.
-2.  **[Installing and Removing Packages](https://labex.io/labs/linux-installing-and-removing-packages-385380)** - Learn to update the system, install, and remove packages on a Debian-based system, solidifying your understanding of how package managers interact with repositories.
-3.  **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore how to manage software packages on RHEL-based Linux systems using YUM, providing a broader perspective on package management across different distributions.
+1. **[Software Installation on Linux](https://labex.io/labs/linux-software-installation-on-linux-18005)** - Practice various methods to install and manage software on Ubuntu systems, including using apt and handling .deb files, directly relating to the `sources.list` concept.
+2. **[Installing and Removing Packages](https://labex.io/labs/linux-installing-and-removing-packages-385380)** - Learn to update the system, install, and remove packages on a Debian-based system, solidifying your understanding of how package managers interact with repositories.
+3. **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore how to manage software packages on RHEL-based Linux systems using YUM, providing a broader perspective on package management across different distributions.
 
 These labs will help you apply the concepts of package repositories and software management in real scenarios and build confidence with system administration tasks.
 

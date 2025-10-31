@@ -35,9 +35,9 @@ Dies macht `head` zu einem der nützlichsten **Linux-Befehle** zur schnellen Üb
 
 Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis für die Anzeige des Anfangs von Dateien und die allgemeine Textdateiverwaltung zu festigen:
 
-1.  **[Linux head Befehl: Anzeige des Dateianfangs](https://labex.io/de/labs/linux-linux-head-command-file-beginning-display-214302)** – Dieses Labor führt Sie durch die Verwendung des `head`-Befehls zur Anzeige der Anfangszeilen von Textdateien, einschließlich der Änderung der Zeilenanzahl.
-2.  **[Anzeigen von Protokoll- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Üben Sie wesentliche Linux-Kommandozeilenfähigkeiten zur effizienten Anzeige und Navigation von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, die oft Befehle wie `head` erfordern.
-3.  **[Schnelle Bedrohungserkennung](https://labex.io/de/labs/linux-rapid-threat-detection-387930)** – Wenden Sie Ihr Wissen über `head` (und `tail`) an, um schnell aktuelle Protokolleinträge zu extrahieren und zu analysieren, was reale Cybersicherheitsanalysen simuliert.
+1. **[Linux head Befehl: Anzeige des Dateianfangs](https://labex.io/de/labs/linux-linux-head-command-file-beginning-display-214302)** – Dieses Labor führt Sie durch die Verwendung des `head`-Befehls zur Anzeige der Anfangszeilen von Textdateien, einschließlich der Änderung der Zeilenanzahl.
+2. **[Anzeigen von Protokoll- und Konfigurationsdateien in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** – Üben Sie wesentliche Linux-Kommandozeilenfähigkeiten zur effizienten Anzeige und Navigation von Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien, die oft Befehle wie `head` erfordern.
+3. **[Schnelle Bedrohungserkennung](https://labex.io/de/labs/linux-rapid-threat-detection-387930)** – Wenden Sie Ihr Wissen über `head` (und `tail`) an, um schnell aktuelle Protokolleinträge zu extrahieren und zu analysieren, was reale Cybersicherheitsanalysen simuliert.
 
 Diese Labore helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Anzeige und Analyse von Textdateien unter Linux aufzubauen.
 

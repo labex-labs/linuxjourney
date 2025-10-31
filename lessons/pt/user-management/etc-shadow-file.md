@@ -31,15 +31,15 @@ O formato de saída do arquivo **etc shadow** é uma série de campos separados 
 
 Cada linha em `/etc/shadow` contém nove campos, separados por dois pontos:
 
-1.  **Nome de Usuário**: O nome de login do usuário.
-2.  **Senha Criptografada**: A senha do usuário em formato hash. Um asterisco (`*`) ou ponto de exclamação (`!`) aqui significa que a conta está bloqueada.
-3.  **Data da Última Alteração de Senha**: O número de dias desde 1º de janeiro de 1970 em que a senha foi alterada pela última vez. Um valor de `0` força uma alteração de senha no próximo login.
-4.  **Idade Mínima da Senha**: O número mínimo de dias que devem passar antes que o usuário possa alterar sua senha novamente.
-5.  **Idade Máxima da Senha**: O número máximo de dias que a senha é válida. Após esse período, o usuário deve alterá-la.
-6.  **Período de Aviso de Senha**: O número de dias antes do vencimento da senha em que o usuário receberá uma mensagem de aviso.
-7.  **Período de Inatividade da Senha**: O número de dias após o vencimento da senha em que a conta é desativada.
-8.  **Data de Expiração da Conta**: Uma data absoluta, expressa em dias desde 1º de janeiro de 1970, em que a conta do usuário será desativada.
-9.  **Campo Reservado**: Este campo é reservado para uso futuro.
+1. **Nome de Usuário**: O nome de login do usuário.
+2. **Senha Criptografada**: A senha do usuário em formato hash. Um asterisco (`*`) ou ponto de exclamação (`!`) aqui significa que a conta está bloqueada.
+3. **Data da Última Alteração de Senha**: O número de dias desde 1º de janeiro de 1970 em que a senha foi alterada pela última vez. Um valor de `0` força uma alteração de senha no próximo login.
+4. **Idade Mínima da Senha**: O número mínimo de dias que devem passar antes que o usuário possa alterar sua senha novamente.
+5. **Idade Máxima da Senha**: O número máximo de dias que a senha é válida. Após esse período, o usuário deve alterá-la.
+6. **Período de Aviso de Senha**: O número de dias antes do vencimento da senha em que o usuário receberá uma mensagem de aviso.
+7. **Período de Inatividade da Senha**: O número de dias após o vencimento da senha em que a conta é desativada.
+8. **Data de Expiração da Conta**: Uma data absoluta, expressa em dias desde 1º de janeiro de 1970, em que a conta do usuário será desativada.
+9. **Campo Reservado**: Este campo é reservado para uso futuro.
 
 Embora o arquivo `/etc/shadow` seja fundamental, a maioria das distribuições modernas o complementa com outros mecanismos de autenticação, como os Módulos de Autenticação Conectáveis (PAM), que oferecem esquemas de autenticação mais flexíveis e avançados.
 
@@ -47,8 +47,8 @@ Embora o arquivo `/etc/shadow` seja fundamental, a maioria das distribuições m
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre autenticação de usuário e gerenciamento de senhas no Linux:
 
-1.  **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas com `useradd` e `passwd` até a modificação e exclusão delas.
-2.  **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo, incluindo a aplicação de políticas de senha e a proteção de contas.
+1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas com `useradd` e `passwd` até a modificação e exclusão delas.
+2. **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo, incluindo a aplicação de políticas de senha e a proteção de contas.
 
 Esses laboratórios ajudarão você a aplicar os conceitos de gerenciamento de usuários e senhas em cenários reais e a ganhar confiança com a administração de sistemas Linux.
 

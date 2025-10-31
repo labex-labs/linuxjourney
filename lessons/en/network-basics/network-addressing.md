@@ -27,9 +27,9 @@ While IP addresses are effective for computers, they are difficult for humans to
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network identifiers like MAC addresses, IP addresses, and hostnames:
 
-1.  **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
-2.  **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using `ping` and `ip a`.
-3.  **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Learn to manage local hostname resolution by editing the `/etc/hosts` file and testing your changes.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using `ping` and `ip a`.
+3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Learn to manage local hostname resolution by editing the `/etc/hosts` file and testing your changes.
 
 These labs will help you apply the concepts in real scenarios and build confidence with fundamental Linux networking.
 

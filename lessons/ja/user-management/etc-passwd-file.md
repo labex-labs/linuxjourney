@@ -31,16 +31,16 @@ root:x:0:0:root:/root:/bin/bash
 
 各フィールドの内訳を見てみましょう。
 
-1.  **ユーザー名**: ユーザーのログイン名（例：`root`）。
-2.  **パスワード**: ユーザーの暗号化されたパスワードのプレースホルダー。セキュリティ上の理由から、実際のパスワードはここには保存されません。
+1. **ユーザー名**: ユーザーのログイン名（例：`root`）。
+2. **パスワード**: ユーザーの暗号化されたパスワードのプレースホルダー。セキュリティ上の理由から、実際のパスワードはここには保存されません。
     - `x`は、暗号化されたパスワードが`/etc/shadow`ファイルに格納されていることを示します。
     - `*`（アスタリスク）は、アカウントがロックされており、ログインに使用できないことを意味します。
     - 空のフィールドは、ユーザーがパスワードを持っていないことを意味します。
-3.  **ユーザー ID (UID)**: ユーザーの一意の数値識別子。`root`ユーザーの UID は常に`0`です。
-4.  **グループ ID (GID)**: ユーザーのプライマリグループの数値識別子。
-5.  **GECOS フィールド**: 伝統的にユーザーのフルネーム、電話番号、オフィスの場所などの追加情報を含むコメントフィールド。カンマ区切りです。
-6.  **ホームディレクトリ**: ユーザーのホームディレクトリへの絶対パス（例：`/root`）。
-7.  **デフォルトシェル**: ユーザーがログイン時に実行されるデフォルトのコマンドラインインタープリタ（例：`/bin/bash`）。
+3. **ユーザー ID (UID)**: ユーザーの一意の数値識別子。`root`ユーザーの UID は常に`0`です。
+4. **グループ ID (GID)**: ユーザーのプライマリグループの数値識別子。
+5. **GECOS フィールド**: 伝統的にユーザーのフルネーム、電話番号、オフィスの場所などの追加情報を含むコメントフィールド。カンマ区切りです。
+6. **ホームディレクトリ**: ユーザーのホームディレクトリへの絶対パス（例：`/root`）。
+7. **デフォルトシェル**: ユーザーがログイン時に実行されるデフォルトのコマンドラインインタープリタ（例：`/bin/bash`）。
 
 ### システムユーザーと特殊アカウント
 
@@ -56,9 +56,9 @@ root:x:0:0:root:/root:/bin/bash
 
 知識を定着させるために、これらの実践的なラボを試してください。これらは、現実世界のシナリオでユーザー ID とアカウント管理の概念を適用し、Linux ユーザー管理に対する自信を築くのに役立ちます。
 
-1.  **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、アカウントの変更と削除まで、ユーザー管理のライフサイクル全体を練習します。
-2.  **[groupadd、usermod、groupdel を使用した Linux グループの管理](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成やユーザーメンバーシップの変更など、グループ管理のコアコマンドラインユーティリティに関する実践的な経験を積みます。
-3.  **[Linux でのユーザーアカウントと Sudo 権限の設定](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux システムのセキュリティを強化するために、ユーザーアカウントと sudo 権限を管理するための重要な技術を学びます。
+1. **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、アカウントの変更と削除まで、ユーザー管理のライフサイクル全体を練習します。
+2. **[groupadd、usermod、groupdel を使用した Linux グループの管理](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成やユーザーメンバーシップの変更など、グループ管理のコアコマンドラインユーティリティに関する実践的な経験を積みます。
+3. **[Linux でのユーザーアカウントと Sudo 権限の設定](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux システムのセキュリティを強化するために、ユーザーアカウントと sudo 権限を管理するための重要な技術を学びます。
 
 ## Quiz Question
 

@@ -49,9 +49,9 @@ ls -la /etc | tee etc_listing.txt | grep "conf"
 
 此命令执行三件事：
 
-1.  它列出 `/etc` 目录的内容。
-2.  它将该输出通过管道传输到 `tee`，`tee` 将一份副本保存到 `etc_listing.txt` 中，并同时将其传递下去。
-3.  来自 `tee` 的输出随后通过管道传输到 `grep`，`grep` 过滤出包含 "conf" 的行。
+1. 它列出 `/etc` 目录的内容。
+2. 它将该输出通过管道传输到 `tee`，`tee` 将一份副本保存到 `etc_listing.txt` 中，并同时将其传递下去。
+3. 来自 `tee` 的输出随后通过管道传输到 `grep`，`grep` 过滤出包含 "conf" 的行。
 
 掌握这些命令将显著提高您在命令行上的效率。
 

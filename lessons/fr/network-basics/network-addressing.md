@@ -27,9 +27,9 @@ Bien que les adresses IP soient efficaces pour les ordinateurs, elles sont diffi
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des identifiants réseau tels que les adresses MAC, les adresses IP et les noms d'hôte :
 
-1.  **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
-2.  **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez l'accessibilité du réseau à l'aide de `ping` et `ip a`.
-3.  **[Gérer la résolution de nom d'hôte locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Apprenez à gérer la résolution de nom d'hôte locale en modifiant le fichier `/etc/hosts` et en testant vos modifications.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
+2. **[Explorer les types d'adresses IP et l'accessibilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explorez différents types d'adresses IP et testez l'accessibilité du réseau à l'aide de `ping` et `ip a`.
+3. **[Gérer la résolution de nom d'hôte locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Apprenez à gérer la résolution de nom d'hôte locale en modifiant le fichier `/etc/hosts` et en testant vos modifications.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec les bases du réseau Linux.
 

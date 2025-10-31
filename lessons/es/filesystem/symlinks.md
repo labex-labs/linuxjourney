@@ -86,8 +86,8 @@ Usar los comandos `ls symlinks` o `ls links` generales con la opción `-l` es es
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración de archivos, enlaces e inodos:
 
-1.  **[Administrar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practique la creación, copia, movimiento y eliminación de archivos y directorios, y aprenda específicamente sobre enlaces simbólicos y físicos, y cómo analizar inodos.
-2.  **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos esenciales como `pwd`, `cd` y `ls` para moverse eficientemente por el sistema de archivos de Linux, una habilidad fundamental para comprender dónde residen los archivos y sus inodos.
+1. **[Administrar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practique la creación, copia, movimiento y eliminación de archivos y directorios, y aprenda específicamente sobre enlaces simbólicos y físicos, y cómo analizar inodos.
+2. **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos esenciales como `pwd`, `cd` y `ls` para moverse eficientemente por el sistema de archivos de Linux, una habilidad fundamental para comprender dónde residen los archivos y sus inodos.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de administración de archivos y enlaces en escenarios reales y a ganar confianza con el sistema de archivos de Linux.
 

@@ -29,16 +29,16 @@ root:x:0:0:root:/root:/bin/bash
 
 Esta entrada para o usuário `root` contém sete campos separados por dois pontos (`:`). Entender a estrutura do `/etc/passwd` no Linux é fundamental para gerenciar usuários. Vamos detalhar cada campo:
 
-1.  **Nome de Usuário**: O nome de login do usuário (ex: `root`).
-2.  **Senha**: Um espaço reservado para a senha criptografada do usuário. A senha real não é armazenada aqui por razões de segurança.
+1. **Nome de Usuário**: O nome de login do usuário (ex: `root`).
+2. **Senha**: Um espaço reservado para a senha criptografada do usuário. A senha real não é armazenada aqui por razões de segurança.
     - Um `x` indica que a senha criptografada está no arquivo `/etc/shadow`.
     - Um `*` (asterisco) significa que a conta está bloqueada e não pode ser usada para login.
     - Um campo em branco significa que o usuário não tem senha.
-3.  **ID de Usuário (UID)**: O identificador numérico exclusivo para o usuário. O usuário `root` sempre tem um UID de `0`.
-4.  **ID do Grupo (GID)**: O identificador numérico para o grupo primário do usuário.
-5.  **Campo GECOS**: Um campo de comentário que tradicionalmente contém informações extras como o nome completo do usuário, número de telefone ou localização do escritório. É delimitado por vírgulas.
-6.  **Diretório Home**: O caminho absoluto para o diretório home do usuário (ex: `/root`).
-7.  **Shell Padrão**: O interpretador de linha de comando padrão do usuário, que é executado no login (ex: `/bin/bash`).
+3. **ID de Usuário (UID)**: O identificador numérico exclusivo para o usuário. O usuário `root` sempre tem um UID de `0`.
+4. **ID do Grupo (GID)**: O identificador numérico para o grupo primário do usuário.
+5. **Campo GECOS**: Um campo de comentário que tradicionalmente contém informações extras como o nome completo do usuário, número de telefone ou localização do escritório. É delimitado por vírgulas.
+6. **Diretório Home**: O caminho absoluto para o diretório home do usuário (ex: `/root`).
+7. **Shell Padrão**: O interpretador de linha de comando padrão do usuário, que é executado no login (ex: `/bin/bash`).
 
 ### Usuários do Sistema e Contas Especiais
 
@@ -54,9 +54,9 @@ Embora tecnicamente você possa editar o arquivo `/etc/passwd` diretamente usand
 
 Para solidificar seu conhecimento, experimente estes laboratórios práticos. Eles ajudarão você a aplicar os conceitos de IDs de usuário e gerenciamento de contas em cenários do mundo real e a construir confiança com a administração de usuários do Linux.
 
-1.  **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas até a modificação e exclusão delas.
-2.  **[Gerenciar Grupos Linux com groupadd, usermod e groupdel](https://labex.io/pt/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Ganhe experiência prática com utilitários de linha de comando essenciais para administração de grupos, incluindo a criação de novos grupos e a modificação de associações de usuários.
-3.  **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo para aumentar a segurança de um sistema Linux.
+1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas até a modificação e exclusão delas.
+2. **[Gerenciar Grupos Linux com groupadd, usermod e groupdel](https://labex.io/pt/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Ganhe experiência prática com utilitários de linha de comando essenciais para administração de grupos, incluindo a criação de novos grupos e a modificação de associações de usuários.
+3. **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo para aumentar a segurança de um sistema Linux.
 
 ## Quiz Question
 

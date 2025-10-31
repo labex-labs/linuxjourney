@@ -35,9 +35,9 @@ O TCP fornece um fluxo de dados confiável e orientado à conexão. Antes que qu
 
 Para estabelecer uma conexão, o TCP usa um processo chamado handshake de três vias:
 
-1.  **SYN**: O cliente envia um segmento SYN (sincronizar) para o servidor para iniciar uma conexão.
-2.  **SYN-ACK**: O servidor responde com um segmento SYN-ACK (sincronizar-reconhecer) para acusar o recebimento da solicitação do cliente.
-3.  **ACK**: O cliente envia um segmento ACK (reconhecer) de volta ao servidor, confirmando que a conexão foi estabelecida.
+1. **SYN**: O cliente envia um segmento SYN (sincronizar) para o servidor para iniciar uma conexão.
+2. **SYN-ACK**: O servidor responde com um segmento SYN-ACK (sincronizar-reconhecer) para acusar o recebimento da solicitação do cliente.
+3. **ACK**: O cliente envia um segmento ACK (reconhecer) de volta ao servidor, confirmando que a conexão foi estabelecida.
 
 Após a conclusão do handshake, os dados podem ser trocados de forma confiável. O TCP usa números de sequência para rastrear cada segmento, permitindo que o host receptor os remonte na ordem correta e solicite a retransmissão de quaisquer segmentos ausentes. Em nosso exemplo de e-mail, a camada de transporte anexaria a porta de destino para SMTP (porta 25) e uma porta de origem do host cliente a cada segmento.
 

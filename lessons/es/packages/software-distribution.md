@@ -35,8 +35,8 @@ Dominar las herramientas para gestionar estos paquetes es la **mejor manera de a
 
 Para aplicar tus conocimientos, recomendamos estos laboratorios prácticos. Proporcionan experiencia práctica con los conceptos cubiertos en esta lección.
 
-1.  **[Gestión de paquetes con RPM en Linux](https://labex.io/es/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Adquiere experiencia práctica consultando información de paquetes, verificando la integridad e inspeccionando el contenido de paquetes RPM en sistemas basados en Red Hat.
-2.  **[Consultar y actualizar paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Aprende a gestionar paquetes de software en sistemas Linux basados en RHEL usando YUM, incluyendo la inspección, actualización y exploración de repositorios.
-3.  **[Compilar software a partir del código fuente en Linux](https://labex.io/es/labs/comptia-build-software-from-source-code-in-linux-590853)** - Comprende el proceso fundamental de compilar e instalar software a partir de su código fuente, una habilidad crucial para aplicaciones que no están disponibles a través de gestores de paquetes.
+1. **[Gestión de paquetes con RPM en Linux](https://labex.io/es/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Adquiere experiencia práctica consultando información de paquetes, verificando la integridad e inspeccionando el contenido de paquetes RPM en sistemas basados en Red Hat.
+2. **[Consultar y actualizar paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Aprende a gestionar paquetes de software en sistemas Linux basados en RHEL usando YUM, incluyendo la inspección, actualización y exploración de repositorios.
+3. **[Compilar software a partir del código fuente en Linux](https://labex.io/es/labs/comptia-build-software-from-source-code-in-linux-590853)** - Comprende el proceso fundamental de compilar e instalar software a partir de su código fuente, una habilidad crucial para aplicaciones que no están disponibles a través de gestores de paquetes.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de gestión de paquetes e instalación de software en escenarios reales y a ganar confianza con la administración de sistemas Linux.

@@ -79,8 +79,8 @@ This command demonstrates how to use `linux cp -p` to copy `mycoolfile` while pr
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of copying files and directories in Linux:
 
-1.  **[Linux cp Command: File Copying](https://labex.io/labs/linux-linux-cp-command-file-copying-209744)** - Practice basic usage, advanced options like recursive copying, preserving attributes, and using wildcards to efficiently copy files and directories.
-2.  **[Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
+1. **[Linux cp Command: File Copying](https://labex.io/labs/linux-linux-cp-command-file-copying-209744)** - Practice basic usage, advanced options like recursive copying, preserving attributes, and using wildcards to efficiently copy files and directories.
+2. **[Organizing Files and Directories](https://labex.io/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
 
 These labs will help you apply the concepts in real scenarios and build confidence with file copying and management in Linux.
 

@@ -29,9 +29,9 @@ Mit seinem benutzerfreundlichen Installer und dem integrierten YaST-Kontrollzent
 
 Um mehr praktische Erfahrung mit Linux-Systemen zu sammeln, probieren Sie diese praktischen Labs aus. Sie behandeln grundlegende administrative Aufgaben, die auf jeder Linux-Distribution, einschließlich openSUSE, nützlich sind.
 
-1.  **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen eines Benutzerkontos.
-2.  **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
-3.  **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
+1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen eines Benutzerkontos.
+2. **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
+3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
 
 ## Quiz Question
 

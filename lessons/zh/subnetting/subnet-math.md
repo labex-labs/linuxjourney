@@ -32,8 +32,8 @@ meta_keywords: "子网计算，子网掩码计算，IP 地址，子网掩码，�
 
 虽然有 256 种可能的组合，但并非所有组合都可以分配给主机。在任何子网中，有两个地址是保留的：
 
-1.  **网络地址：** 第一个地址，其中所有主机位均为 `0`（例如 192.168.1.0）。
-2.  **广播地址：** 最后一个地址，其中所有主机位均为 `1`（例如 192.168.1.255）。
+1. **网络地址：** 第一个地址，其中所有主机位均为 `0`（例如 192.168.1.0）。
+2. **广播地址：** 最后一个地址，其中所有主机位均为 `1`（例如 192.168.1.255）。
 
 因此，实际可用的主机数量是 256 - 2 = 254。这意味着对于使用 `255.255.255.0` 掩码的 `192.168.1.0` 网络，你可以分配的 IP 地址范围是从 `192.168.1.1` 到 `192.168.1.254`。这个核心计算是**子网计算**的基本组成部分。
 
@@ -41,9 +41,9 @@ meta_keywords: "子网计算，子网掩码计算，IP 地址，子网掩码，�
 
 熟能生巧！以下是一些实践实验，以加强你对 IP 寻址和子网划分的理解：
 
-1.  **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，这是网络配置和规划的基本技能。
-2.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 深入了解各种 IP 地址类型以及如何使用 Linux 命令验证网络可达性。
-3.  **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 通过模拟网络配置并在实际环境中测试不同 IP 子网之间的连通性来应用你的知识。
+1. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，这是网络配置和规划的基本技能。
+2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 深入了解各种 IP 地址类型以及如何使用 Linux 命令验证网络可达性。
+3. **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 通过模拟网络配置并在实际环境中测试不同 IP 子网之间的连通性来应用你的知识。
 
 这些实验将帮助你在现实场景中应用 IP 寻址、子网掩码和主机计算的概念，并增强你对网络基础知识的信心。
 

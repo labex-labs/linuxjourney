@@ -59,8 +59,8 @@ ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 
 이것을 분석해 보겠습니다.
 
-1.  `> peanuts.txt`는 `stdout`(파일 디스크립터 1) 을 `peanuts.txt` 파일로 리디렉션합니다.
-2.  `2>&1`은 `stderr`(파일 디스크립터 2) 를 `stdout`(파일 디스크립터 1) 이 현재 가리키고 있는 위치로 리디렉션합니다.
+1. `> peanuts.txt`는 `stdout`(파일 디스크립터 1) 을 `peanuts.txt` 파일로 리디렉션합니다.
+2. `2>&1`은 `stderr`(파일 디스크립터 2) 를 `stdout`(파일 디스크립터 1) 이 현재 가리키고 있는 위치로 리디렉션합니다.
 
 순서가 중요합니다. `2>&1`은 `stderr`를 `stdout`의 현재 대상으로 보냅니다. 이 경우 `stdout`은 파일로 연결되어 있으므로 `stderr`도 해당 파일로 전송됩니다.
 

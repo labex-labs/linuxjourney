@@ -52,7 +52,7 @@ Manejar la redirección de **stdout** es un paso fundamental en tu camino en Lin
 
 Para solidificar tu comprensión de la redirección de E/S, prueba este laboratorio práctico:
 
-1.  **[Redirección de Entrada y Salida en Linux](https://labex.io/es/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practica el control del flujo de datos desde comandos manipulando la salida estándar (stdout), el error estándar (stderr) y la entrada estándar (stdin) usando operadores como `>`, `>>`, `2>`, y el comando `tee`.
+1. **[Redirección de Entrada y Salida en Linux](https://labex.io/es/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practica el control del flujo de datos desde comandos manipulando la salida estándar (stdout), el error estándar (stderr) y la entrada estándar (stdin) usando operadores como `>`, `>>`, `2>`, y el comando `tee`.
 
 Este laboratorio te ayudará a aplicar estos conceptos en escenarios del mundo real y a ganar confianza con la redirección de E/S.
 

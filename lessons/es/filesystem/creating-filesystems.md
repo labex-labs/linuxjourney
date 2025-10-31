@@ -40,7 +40,7 @@ Solo debes crear un sistema de archivos en una partición recién creada o en un
 
 La práctica es clave para dominar las habilidades de Linux. Este laboratorio práctico te ayudará a reforzar tu comprensión de la gestión de sistemas de archivos de Linux:
 
-1.  **[Gestionar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, aprenderás a gestionar particiones de disco y sistemas de archivos en Linux. Usarás `fdisk` para crear una nueva partición, la formatearás con `ext4` (usando `mkfs`), la montarás, configurarás el montaje persistente en `/etc/fstab` y crearás una partición de intercambio (swap), todo en un disco virtual secundario seguro.
+1. **[Gestionar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, aprenderás a gestionar particiones de disco y sistemas de archivos en Linux. Usarás `fdisk` para crear una nueva partición, la formatearás con `ext4` (usando `mkfs`), la montarás, configurarás el montaje persistente en `/etc/fstab` y crearás una partición de intercambio (swap), todo en un disco virtual secundario seguro.
 
 Este laboratorio te ayudará a aplicar los conceptos de creación y gestión de sistemas de archivos en escenarios del mundo real y a ganar confianza con la gestión de discos en Linux.
 

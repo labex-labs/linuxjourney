@@ -35,9 +35,9 @@ head -n 15 /var/log/syslog
 
 熟能生巧！以下是一些实践操作实验，以加强您对查看文件开头和一般文本文件操作的理解：
 
-1.  **[Linux head 命令：文件开头显示](https://labex.io/zh/labs/linux-linux-head-command-file-beginning-display-214302)** - 此实验将指导您使用 `head` 命令显示文本文件的初始行，包括修改行数。
-2.  **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习基本的 Linux 命令行技能，以有效地查看和导航文本文件，包括系统日志和配置文件，这些文件通常需要 `head` 等命令。
-3.  **[快速威胁检测](https://labex.io/zh/labs/linux-rapid-threat-detection-387930)** - 应用您对 `head`（和 `tail`）的知识，快速提取和分析最近的日志条目，模拟现实世界中的网络安全分析。
+1. **[Linux head 命令：文件开头显示](https://labex.io/zh/labs/linux-linux-head-command-file-beginning-display-214302)** - 此实验将指导您使用 `head` 命令显示文本文件的初始行，包括修改行数。
+2. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习基本的 Linux 命令行技能，以有效地查看和导航文本文件，包括系统日志和配置文件，这些文件通常需要 `head` 等命令。
+3. **[快速威胁检测](https://labex.io/zh/labs/linux-rapid-threat-detection-387930)** - 应用您对 `head`（和 `tail`）的知识，快速提取和分析最近的日志条目，模拟现实世界中的网络安全分析。
 
 这些实验将帮助您在实际场景中应用这些概念，并增强您在 Linux 中进行文本文件查看和分析的信心。
 

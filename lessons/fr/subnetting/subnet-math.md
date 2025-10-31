@@ -32,8 +32,8 @@ Dans notre exemple, la partie hôte est `00000000`. Il s'agit d'un champ de 8 bi
 
 Bien qu'il y ait 256 combinaisons possibles, toutes ne peuvent pas être attribuées aux hôtes. Dans tout sous-réseau, deux adresses sont réservées :
 
-1.  **Adresse Réseau :** La première adresse, où tous les bits hôtes sont à `0` (ex: 192.168.1.0).
-2.  **Adresse de Diffusion (Broadcast) :** La dernière adresse, où tous les bits hôtes sont à `1` (ex: 192.168.1.255).
+1. **Adresse Réseau :** La première adresse, où tous les bits hôtes sont à `0` (ex: 192.168.1.0).
+2. **Adresse de Diffusion (Broadcast) :** La dernière adresse, où tous les bits hôtes sont à `1` (ex: 192.168.1.255).
 
 Par conséquent, le nombre réel d'hôtes utilisables est de 256 - 2 = 254. Cela signifie que pour le réseau `192.168.1.0` avec un masque `255.255.255.0`, vous pouvez attribuer des adresses IP de `192.168.1.1` à `192.168.1.254`. Ce calcul fondamental fait partie intégrante des **calculs de sous-réseaux**.
 
@@ -41,9 +41,9 @@ Par conséquent, le nombre réel d'hôtes utilisables est de 256 - 2 = 254. Cela
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et du sous-réseautage :
 
-1.  **[Effectuer le Sous-réseautage IP et la Conversion Binaire dans le Terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, des compétences essentielles pour la configuration et la planification réseau.
-2.  **[Explorer les Types d'Adresses IP et la Joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
-3.  **[Simuler la Connectivité de la Couche Réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
+1. **[Effectuer le Sous-réseautage IP et la Conversion Binaire dans le Terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, des compétences essentielles pour la configuration et la planification réseau.
+2. **[Explorer les Types d'Adresses IP et la Joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Approfondissez votre compréhension des différents types d'adresses IP et comment vérifier la joignabilité du réseau à l'aide des commandes Linux.
+3. **[Simuler la Connectivité de la Couche Réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Appliquez vos connaissances en simulant des configurations réseau et en testant la connectivité entre différents sous-réseaux IP dans un environnement pratique.
 
 Ces laboratoires vous aideront à appliquer les concepts d'adressage IP, de masque de sous-réseau et de calcul d'hôtes dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseau.
 

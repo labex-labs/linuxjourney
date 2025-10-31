@@ -29,22 +29,22 @@ With all the necessary IP and MAC addresses, the **link layer** can now forward 
 
 Here is a step-by-step breakdown of how a packet travels from a sender (Pete) to a receiver (Patty):
 
-1.  Pete sends Patty an email. This data is sent to the transport layer.
-2.  The transport layer encapsulates the data into a TCP or UDP header to form a segment. It attaches the destination and source ports, then sends the segment to the network layer.
-3.  The network layer encapsulates the segment inside an IP packet and attaches the source and destination IP addresses. It then routes the packet to the **link layer**.
-4.  The packet reaches the **link layer**, where it is encapsulated into a frame. The **link layer header**, containing the source and destination MAC addresses, is added.
-5.  Patty receives this data frame through her physical layer, checks the frame for data integrity, then de-encapsulates it and sends the IP packet to her network layer.
-6.  The network layer reads the packet to find the source and destination IP addresses. It confirms the destination IP matches its own, de-encapsulates the packet, and sends the segment to the transport layer.
-7.  The transport layer de-encapsulates the segment, checks the TCP or UDP port numbers, and makes a connection to the application layer based on those ports.
-8.  The application layer receives the data from the transport layer on the specified port and presents it to Patty as the final email message.
+1. Pete sends Patty an email. This data is sent to the transport layer.
+2. The transport layer encapsulates the data into a TCP or UDP header to form a segment. It attaches the destination and source ports, then sends the segment to the network layer.
+3. The network layer encapsulates the segment inside an IP packet and attaches the source and destination IP addresses. It then routes the packet to the **link layer**.
+4. The packet reaches the **link layer**, where it is encapsulated into a frame. The **link layer header**, containing the source and destination MAC addresses, is added.
+5. Patty receives this data frame through her physical layer, checks the frame for data integrity, then de-encapsulates it and sends the IP packet to her network layer.
+6. The network layer reads the packet to find the source and destination IP addresses. It confirms the destination IP matches its own, de-encapsulates the packet, and sends the segment to the transport layer.
+7. The transport layer de-encapsulates the segment, checks the TCP or UDP port numbers, and makes a connection to the application layer based on those ports.
+8. The application layer receives the data from the transport layer on the specified port and presents it to Patty as the final email message.
 
 ## Exercise
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the Link Layer, MAC addresses, and ARP:
 
-1.  **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC addresses, on a Linux system.
-2.  **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands work together to resolve IP addresses to MAC addresses and understand network layer interactions.
-3.  **[Analyze Ethernet Frames with tcpdump in Linux](https://labex.io/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Gain hands-on experience capturing and inspecting Ethernet frames, including MAC addresses, to understand low-level network communications.
+1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC addresses, on a Linux system.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands work together to resolve IP addresses to MAC addresses and understand network layer interactions.
+3. **[Analyze Ethernet Frames with tcpdump in Linux](https://labex.io/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Gain hands-on experience capturing and inspecting Ethernet frames, including MAC addresses, to understand low-level network communications.
 
 These labs will help you apply the concepts in real scenarios and build confidence with network fundamentals at the Link Layer.
 

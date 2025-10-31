@@ -38,9 +38,9 @@ Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 
 習得には実践が不可欠です。次のハンズオンラボは、**Linux を学ぶための最良のリソース**であるログ管理とファイル表示スキルを身につけるためのものです。
 
-1.  **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルを含むテキストファイルを効率的に表示および移動するための必須の Linux コマンドラインスキルを学びます。`cat`、`more`、`less`などのコマンドを使用して、さまざまなファイルタイプから重要な情報を抽出する練習をします。
-2.  **[Linux tail コマンド：ファイル末尾の表示](https://labex.io/ja/labs/linux-linux-tail-command-file-end-display-214303)** - テキストファイルの末尾を表示および監視するための Linux `tail`コマンドを学習します。これはリアルタイムのログ分析に特に役立ちます。
-3.  **[Linux での grep を使用したテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - このラボでは、`grep`コマンドを使用して Linux システム上のファイル内のテキストを検索する方法を学習します。これは、大きなログファイル内の特定の項目を見つけるのに非常に役立ちます。
+1. **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - システムログや設定ファイルを含むテキストファイルを効率的に表示および移動するための必須の Linux コマンドラインスキルを学びます。`cat`、`more`、`less`などのコマンドを使用して、さまざまなファイルタイプから重要な情報を抽出する練習をします。
+2. **[Linux tail コマンド：ファイル末尾の表示](https://labex.io/ja/labs/linux-linux-tail-command-file-end-display-214303)** - テキストファイルの末尾を表示および監視するための Linux `tail`コマンドを学習します。これはリアルタイムのログ分析に特に役立ちます。
+3. **[Linux での grep を使用したテキスト検索](https://labex.io/ja/labs/comptia-search-text-with-grep-in-linux-590841)** - このラボでは、`grep`コマンドを使用して Linux システム上のファイル内のテキストを検索する方法を学習します。これは、大きなログファイル内の特定の項目を見つけるのに非常に役立ちます。
 
 これらのラボは、ログファイル管理と分析の概念を実際のシナリオに適用し、Linux システム監視に対する自信を構築するのに役立ちます。
 

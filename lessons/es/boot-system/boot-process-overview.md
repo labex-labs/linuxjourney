@@ -35,7 +35,7 @@ Esto proporciona una visión general de alto nivel del **proceso de arranque lin
 
 Para solidificar tu comprensión, recomendamos intentar este laboratorio práctico. Proporciona un entorno práctico para aplicar lo que has aprendido sobre el proceso de arranque de Linux.
 
-1.  **[Personalizar el menú de arranque GRUB2 en Linux](https://labex.io/es/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practica la modificación del menú de arranque GRUB2, un componente crítico en la secuencia de arranque de Linux.
+1. **[Personalizar el menú de arranque GRUB2 en Linux](https://labex.io/es/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Practica la modificación del menú de arranque GRUB2, un componente crítico en la secuencia de arranque de Linux.
 
 ## Quiz Question
 

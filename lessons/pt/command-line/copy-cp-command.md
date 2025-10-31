@@ -79,8 +79,8 @@ Este comando demonstra como usar `linux cp -p` para copiar `meuarquivolegal` pre
 
 Praticar leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre a cópia de arquivos e diretórios no Linux:
 
-1.  **[Comando cp do Linux: Cópia de Arquivos](https://labex.io/pt/labs/linux-linux-cp-command-file-copying-209744)** - Pratique o uso básico, opções avançadas como cópia recursiva, preservação de atributos e o uso de curingas para copiar arquivos e diretórios de forma eficiente.
-2.  **[Organizando Arquivos e Diretórios](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Pratique habilidades essenciais de gerenciamento de arquivos do Linux usando os comandos `cp`, `mv` e `rm` para organizar uma estrutura de projeto, mover arquivos e limpar diretórios desnecessários.
+1. **[Comando cp do Linux: Cópia de Arquivos](https://labex.io/pt/labs/linux-linux-cp-command-file-copying-209744)** - Pratique o uso básico, opções avançadas como cópia recursiva, preservação de atributos e o uso de curingas para copiar arquivos e diretórios de forma eficiente.
+2. **[Organizando Arquivos e Diretórios](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Pratique habilidades essenciais de gerenciamento de arquivos do Linux usando os comandos `cp`, `mv` e `rm` para organizar uma estrutura de projeto, mover arquivos e limpar diretórios desnecessários.
 
 Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança na cópia e gerenciamento de arquivos no Linux.
 

@@ -29,8 +29,8 @@ Une gestion efficace des paquets consiste à s'assurer que ces dépendances sont
 
 Appliquez vos connaissances avec ces laboratoires pratiques, qui vous aideront à renforcer votre compréhension des paquets Linux, des dépendances et des bibliothèques partagées :
 
-1.  **[Gérer les Bibliothèques Partagées sous Linux](https://labex.io/fr/labs/comptia-manage-shared-libraries-in-linux-590867)** - Entraînez-vous à identifier, localiser et gérer les bibliothèques partagées, qui sont des dépendances cruciales pour de nombreuses applications.
-2.  **[Gestion des Paquets avec RPM sous Linux](https://labex.io/fr/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Apprenez à gérer les paquets logiciels sur les systèmes basés sur RPM, y compris l'interrogation des informations sur les paquets et la compréhension des dépendances.
-3.  **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Acquérir de l'expérience avec YUM pour inspecter les paquets installés, explorer les dépôts et gérer les mises à jour, ce qui implique tous la gestion des dépendances des paquets.
+1. **[Gérer les Bibliothèques Partagées sous Linux](https://labex.io/fr/labs/comptia-manage-shared-libraries-in-linux-590867)** - Entraînez-vous à identifier, localiser et gérer les bibliothèques partagées, qui sont des dépendances cruciales pour de nombreuses applications.
+2. **[Gestion des Paquets avec RPM sous Linux](https://labex.io/fr/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Apprenez à gérer les paquets logiciels sur les systèmes basés sur RPM, y compris l'interrogation des informations sur les paquets et la compréhension des dépendances.
+3. **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Acquérir de l'expérience avec YUM pour inspecter les paquets installés, explorer les dépôts et gérer les mises à jour, ce qui implique tous la gestion des dépendances des paquets.
 
 Ces laboratoires vous aideront à appliquer les concepts de gestion des paquets et de résolution des dépendances dans des scénarios réels, renforçant ainsi votre confiance dans l'installation de logiciels sous Linux.

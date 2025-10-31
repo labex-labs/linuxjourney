@@ -35,7 +35,7 @@ Dies bietet einen Überblick über den **Bootvorgang Linux** durchläuft. In den
 
 Um Ihr Verständnis zu festigen, empfehlen wir Ihnen, dieses praktische Labor auszuprobieren. Es bietet eine Umgebung, um das Gelernte über den Linux-Bootvorgang praktisch anzuwenden.
 
-1.  **[Anpassen des GRUB2-Bootmenüs in Linux](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Üben Sie die Modifikation des GRUB2-Bootmenüs, einer kritischen Komponente der Linux-Bootsequenz.
+1. **[Anpassen des GRUB2-Bootmenüs in Linux](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Üben Sie die Modifikation des GRUB2-Bootmenüs, einer kritischen Komponente der Linux-Bootsequenz.
 
 ## Quiz Question
 

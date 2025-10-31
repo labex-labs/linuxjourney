@@ -55,9 +55,9 @@ Wenn Sie jemals einen Terminal-Multiplexer wie `screen` oder `tmux` verwendet ha
 
 Um Ihr Verständnis der Puffer- und Textdateiverwaltung zu festigen, probieren Sie diese praktischen Übungen aus. Sie helfen Ihnen, diese Konzepte in realen Szenarien anzuwenden.
 
-1.  **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen, Bearbeiten, Speichern und Navigieren von Text in den Editoren Vim und Nano, was für die Arbeit mit Puffern unerlässlich ist.
-2.  **[Linux cat Befehl: Dateiverkettung](https://labex.io/de/labs/linux-linux-cat-command-file-concatenating-210986)** - Lernen Sie, Textdateien anzuzeigen, zu verketten und zu manipulieren, was sich direkt darauf auswirkt, wie Sie mit Pufferinhalten interagieren könnten.
-3.  **[Protokoll- und Konfigurationsdateien in Linux anzeigen](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie die Verwendung von Befehlen wie `cat`, `more` und `less`, um Textdateien effizient anzuzeigen und darin zu navigieren, was reale Szenarien der Untersuchung pufferähnlicher Inhalte simuliert.
+1. **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen, Bearbeiten, Speichern und Navigieren von Text in den Editoren Vim und Nano, was für die Arbeit mit Puffern unerlässlich ist.
+2. **[Linux cat Befehl: Dateiverkettung](https://labex.io/de/labs/linux-linux-cat-command-file-concatenating-210986)** - Lernen Sie, Textdateien anzuzeigen, zu verketten und zu manipulieren, was sich direkt darauf auswirkt, wie Sie mit Pufferinhalten interagieren könnten.
+3. **[Protokoll- und Konfigurationsdateien in Linux anzeigen](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Üben Sie die Verwendung von Befehlen wie `cat`, `more` und `less`, um Textdateien effizient anzuzeigen und darin zu navigieren, was reale Szenarien der Untersuchung pufferähnlicher Inhalte simuliert.
 
 Diese Übungen helfen Ihnen, Vertrauen in die Textdateiverwaltung und Pufferbearbeitung unter Linux aufzubauen.
 

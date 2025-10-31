@@ -86,8 +86,8 @@ L'utilisation des commandes `ls symlinks` ou `ls links` générales avec l'optio
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des fichiers, des liens et des inodes :
 
-1.  **[Gérer les Fichiers et les Répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Entraînez-vous à créer, copier, déplacer et supprimer des fichiers et des répertoires, et apprenez spécifiquement sur les liens symboliques et physiques, ainsi que sur la manière d'analyser les inodes.
-2.  **[Naviguer dans le Système de Fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Maîtrisez les commandes essentielles telles que `pwd`, `cd` et `ls` pour vous déplacer efficacement dans le système de fichiers Linux, une compétence fondamentale pour comprendre où se trouvent les fichiers et leurs inodes.
+1. **[Gérer les Fichiers et les Répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Entraînez-vous à créer, copier, déplacer et supprimer des fichiers et des répertoires, et apprenez spécifiquement sur les liens symboliques et physiques, ainsi que sur la manière d'analyser les inodes.
+2. **[Naviguer dans le Système de Fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Maîtrisez les commandes essentielles telles que `pwd`, `cd` et `ls` pour vous déplacer efficacement dans le système de fichiers Linux, une compétence fondamentale pour comprendre où se trouvent les fichiers et leurs inodes.
 
 Ces laboratoires vous aideront à appliquer les concepts de gestion de fichiers et de liens dans des scénarios réels et à renforcer votre confiance avec le système de fichiers Linux.
 

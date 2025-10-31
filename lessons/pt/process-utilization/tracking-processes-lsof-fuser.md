@@ -73,7 +73,7 @@ Ambas as ferramentas são essenciais para qualquer usuário Linux. Familiarize-s
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre o gerenciamento de processos e a solução de conflitos de recursos:
 
-1.  **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro plano e em segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e terminando-os com `kill`. Este laboratório ajudará você a identificar e gerenciar processos que podem estar retendo recursos, como arquivos em uma unidade USB.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação com processos em primeiro plano e em segundo plano, inspecionando-os com `ps`, monitorando recursos com `top` e terminando-os com `kill`. Este laboratório ajudará você a identificar e gerenciar processos que podem estar retendo recursos, como arquivos em uma unidade USB.
 
 Este laboratório ajudará você a aplicar esses conceitos em cenários do mundo real e a ganhar confiança na identificação e gerenciamento de processos do sistema.
 

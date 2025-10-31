@@ -27,9 +27,9 @@ Aunque las direcciones IP son efectivas para las computadoras, son difíciles de
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los identificadores de red como direcciones MAC, direcciones IP y nombres de host:
 
-1.  **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, en un sistema Linux.
-2.  **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP y pruebe la alcanzabilidad de la red usando `ping` e `ip a`.
-3.  **[Administrar la resolución de nombres de host locales en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a administrar la resolución de nombres de host locales editando el archivo `/etc/hosts` y probando sus cambios.
+1. **[Identificar direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practique el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones MAC e IP, en un sistema Linux.
+2. **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de direcciones IP y pruebe la alcanzabilidad de la red usando `ping` e `ip a`.
+3. **[Administrar la resolución de nombres de host locales en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a administrar la resolución de nombres de host locales editando el archivo `/etc/hosts` y probando sus cambios.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las redes fundamentales de Linux.
 

@@ -45,9 +45,9 @@ A regra geral para um bom **desempenho do sistema** é manter sua média de carg
 
 Para obter experiência prática com **monitoramento da CPU no Linux** e análise do **desempenho do sistema**, experimente estes laboratórios práticos. Eles ajudarão você a aplicar os conceitos de **média de carga** e **utilização de processos** em cenários do mundo real.
 
-1.  **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação e inspeção de processos, e o monitoramento de recursos com ferramentas como `ps` e `top`, o que se relaciona diretamente com a compreensão da carga da CPU.
-2.  **[Comando Linux top: Monitoramento do Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitoramento do sistema em tempo real, incluindo ordenação de processos e filtragem, fornecendo uma análise mais aprofundada da atividade da CPU e dos processos.
-3.  **[Comando Linux free: Monitoramento da Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorar e analisar o uso da memória do sistema, que é frequentemente um fator crítico, juntamente com a carga da CPU, no desempenho geral do sistema.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação e inspeção de processos, e o monitoramento de recursos com ferramentas como `ps` e `top`, o que se relaciona diretamente com a compreensão da carga da CPU.
+2. **[Comando Linux top: Monitoramento do Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitoramento do sistema em tempo real, incluindo ordenação de processos e filtragem, fornecendo uma análise mais aprofundada da atividade da CPU e dos processos.
+3. **[Comando Linux free: Monitoramento da Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorar e analisar o uso da memória do sistema, que é frequentemente um fator crítico, juntamente com a carga da CPU, no desempenho geral do sistema.
 
 ## Quiz Question
 

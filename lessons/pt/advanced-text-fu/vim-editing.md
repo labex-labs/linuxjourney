@@ -57,7 +57,7 @@ Combinar operadores com diferentes movimentos desbloqueia todo o potencial deste
 
 Para colocar seu conhecimento em prática, recomendamos o seguinte laboratório prático. Ele o ajudará a dominar os comandos de edição fundamentais discutidos neste tutorial Vim.
 
-1.  **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a aplicar conceitos como deletar, alterar, yanking e putting texto em cenários reais.
+1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a aplicar conceitos como deletar, alterar, yanking e putting texto em cenários reais.
 
 ## Quiz Question
 

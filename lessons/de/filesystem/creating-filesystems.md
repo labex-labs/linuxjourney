@@ -40,7 +40,7 @@ Sie sollten nur dann ein Dateisystem erstellen, wenn es sich um eine neu erstell
 
 Übung: Übung ist der Schlüssel zum Beherrschen von Linux-Fähigkeiten. Dieses praktische Labor hilft Ihnen, Ihr Verständnis für die Verwaltung von Linux-Dateisystemen zu festigen:
 
-1.  **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In diesem Labor lernen Sie, Festplattenpartitionen und Dateisysteme unter Linux zu verwalten. Sie verwenden `fdisk`, um eine neue Partition zu erstellen, formatieren diese mit `ext4` (unter Verwendung von `mkfs`), binden sie ein, konfigurieren die dauerhafte Einhängung in `/etc/fstab` und erstellen eine Swap-Partition – alles auf einer sicheren sekundären virtuellen Festplatte.
+1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In diesem Labor lernen Sie, Festplattenpartitionen und Dateisysteme unter Linux zu verwalten. Sie verwenden `fdisk`, um eine neue Partition zu erstellen, formatieren diese mit `ext4` (unter Verwendung von `mkfs`), binden sie ein, konfigurieren die dauerhafte Einhängung in `/etc/fstab` und erstellen eine Swap-Partition – alles auf einer sicheren sekundären virtuellen Festplatte.
 
 Dieses Labor hilft Ihnen, die Konzepte der Erstellung und Verwaltung von Dateisystemen in realen Szenarien anzuwenden und Vertrauen in die Festplattenverwaltung unter Linux aufzubauen.
 

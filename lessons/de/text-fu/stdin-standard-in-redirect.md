@@ -29,9 +29,9 @@ cat < peanuts.txt > banana.txt
 
 Hier ist eine Aufschlüsselung dessen, was passiert:
 
-1.  Der Teil `< peanuts.txt` weist die Shell an, die `stdin` für den `cat`-Befehl umzuleiten, sodass dieser aus `peanuts.txt` liest anstatt von der Tastatur.
-2.  Der `cat`-Befehl verarbeitet seine Eingabe. In diesem Fall bedeutet die Verwendung von `cat stdin`, dass der Inhalt von `peanuts.txt` gelesen wird.
-3.  Der Teil `> banana.txt` leitet die Standardausgabe von `cat` in eine neue Datei namens `banana.txt` um.
+1. Der Teil `< peanuts.txt` weist die Shell an, die `stdin` für den `cat`-Befehl umzuleiten, sodass dieser aus `peanuts.txt` liest anstatt von der Tastatur.
+2. Der `cat`-Befehl verarbeitet seine Eingabe. In diesem Fall bedeutet die Verwendung von `cat stdin`, dass der Inhalt von `peanuts.txt` gelesen wird.
+3. Der Teil `> banana.txt` leitet die Standardausgabe von `cat` in eine neue Datei namens `banana.txt` um.
 
 Letztendlich wird der Inhalt von `peanuts.txt` nach `banana.txt` kopiert. Dieses Beispiel demonstriert effektiv, wie man sowohl `stdin als auch stdout` in einem einzigen, effizienten Befehl verwaltet.
 
@@ -39,9 +39,9 @@ Letztendlich wird der Inhalt von `peanuts.txt` nach `banana.txt` kopiert. Dieses
 
 Um Ihr Verständnis zu festigen, versuchen Sie diese praktischen Übungen, die sich auf die Eingabe- und Ausgabeumleitung in Linux konzentrieren:
 
-1.  **[Eingabe- und Ausgabeumleitung in Linux](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie Standardausgabe (stdout), Standardfehler (stderr) und Standardeingabe (stdin) mithilfe von Operatoren wie >, >>, 2> und dem tee-Befehl manipulieren.
-2.  **[Datenstromumleitung](https://labex.io/de/labs/linux-data-stream-redirection-17995)** - Lernen Sie die Kunst der Linux-Stream-Umleitung. Manipulieren Sie Standardeingabe-, Ausgabe- und Fehlerströme, kombinieren Sie Ausgaben und nutzen Sie /dev/null für erweiterte Dateioperationen.
-3.  **[Sequenzsteuerung und Pipeline](https://labex.io/de/labs/linux-sequence-control-and-pipeline-17994)** - Lernen Sie, Befehlsausführungssequenzen zu steuern und Pipelines zu nutzen, die grundlegend dafür sind, die Ausgabe eines Befehls als Eingabe für einen anderen weiterzuleiten.
+1. **[Eingabe- und Ausgabeumleitung in Linux](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie Standardausgabe (stdout), Standardfehler (stderr) und Standardeingabe (stdin) mithilfe von Operatoren wie >, >>, 2> und dem tee-Befehl manipulieren.
+2. **[Datenstromumleitung](https://labex.io/de/labs/linux-data-stream-redirection-17995)** - Lernen Sie die Kunst der Linux-Stream-Umleitung. Manipulieren Sie Standardeingabe-, Ausgabe- und Fehlerströme, kombinieren Sie Ausgaben und nutzen Sie /dev/null für erweiterte Dateioperationen.
+3. **[Sequenzsteuerung und Pipeline](https://labex.io/de/labs/linux-sequence-control-and-pipeline-17994)** - Lernen Sie, Befehlsausführungssequenzen zu steuern und Pipelines zu nutzen, die grundlegend dafür sind, die Ausgabe eines Befehls als Eingabe für einen anderen weiterzuleiten.
 
 Diese Labs helfen Ihnen, die Konzepte der Eingabe- und Ausgabeumleitung in realen Szenarien anzuwenden und Vertrauen in Shell-Skripte und Datenmanipulation aufzubauen.
 

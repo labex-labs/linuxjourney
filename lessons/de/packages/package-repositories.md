@@ -33,9 +33,9 @@ Es ist auch üblich, neue Repository-Konfigurationen im Verzeichnis `/etc/apt/so
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Paketmanagement und Repositories zu festigen:
 
-1.  **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Üben Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen, einschließlich der Verwendung von apt und der Handhabung von .deb-Dateien, was direkt mit dem `sources.list`-Konzept zusammenhängt.
-2.  **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Lernen Sie, wie Sie ein Debian-basiertes System aktualisieren, Pakete installieren und entfernen, um Ihr Verständnis der Interaktion von Paketmanagern mit Repositories zu festigen.
-3.  **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Erforschen Sie, wie Sie Softwarepakete auf RHEL-basierten Linux-Systemen mit YUM verwalten, um eine breitere Perspektive auf das Paketmanagement über verschiedene Distributionen hinweg zu erhalten.
+1. **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Üben Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen, einschließlich der Verwendung von apt und der Handhabung von .deb-Dateien, was direkt mit dem `sources.list`-Konzept zusammenhängt.
+2. **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Lernen Sie, wie Sie ein Debian-basiertes System aktualisieren, Pakete installieren und entfernen, um Ihr Verständnis der Interaktion von Paketmanagern mit Repositories zu festigen.
+3. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Erforschen Sie, wie Sie Softwarepakete auf RHEL-basierten Linux-Systemen mit YUM verwalten, um eine breitere Perspektive auf das Paketmanagement über verschiedene Distributionen hinweg zu erhalten.
 
 Diese Labs helfen Ihnen, die Konzepte von Paket-Repositories und Softwareverwaltung in realen Szenarien anzuwenden und Selbstvertrauen bei Systemadministrationsaufgaben aufzubauen.
 

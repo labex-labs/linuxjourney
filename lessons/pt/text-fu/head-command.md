@@ -35,9 +35,9 @@ Isso torna o `head` um dos **comandos Linux** mais úteis para inspecionar rapid
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre a visualização do início de arquivos e manipulação geral de arquivos de texto:
 
-1.  **[Comando Linux head: Exibição do Início do Arquivo](https://labex.io/pt/labs/linux-linux-head-command-file-beginning-display-214302)** - Este laboratório o guiará no uso do comando `head` para exibir as linhas iniciais de arquivos de texto, incluindo a modificação da contagem de linhas.
-2.  **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique habilidades essenciais de linha de comando Linux para visualizar e navegar eficientemente por arquivos de texto, incluindo logs de sistema e arquivos de configuração, que frequentemente exigem comandos como `head`.
-3.  **[Detecção Rápida de Ameaças](https://labex.io/pt/labs/linux-rapid-threat-detection-387930)** - Aplique seu conhecimento de `head` (e `tail`) para extrair e analisar rapidamente entradas de log recentes, simulando análises de segurança cibernética do mundo real.
+1. **[Comando Linux head: Exibição do Início do Arquivo](https://labex.io/pt/labs/linux-linux-head-command-file-beginning-display-214302)** - Este laboratório o guiará no uso do comando `head` para exibir as linhas iniciais de arquivos de texto, incluindo a modificação da contagem de linhas.
+2. **[Visualizando Arquivos de Log e Configuração no Linux](https://labex.io/pt/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Pratique habilidades essenciais de linha de comando Linux para visualizar e navegar eficientemente por arquivos de texto, incluindo logs de sistema e arquivos de configuração, que frequentemente exigem comandos como `head`.
+3. **[Detecção Rápida de Ameaças](https://labex.io/pt/labs/linux-rapid-threat-detection-387930)** - Aplique seu conhecimento de `head` (e `tail`) para extrair e analisar rapidamente entradas de log recentes, simulando análises de segurança cibernética do mundo real.
 
 Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança na visualização e análise de arquivos de texto no Linux.
 

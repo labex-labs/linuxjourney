@@ -80,9 +80,9 @@ top -p 1
 
 Practice is essential for mastery. These hands-on labs are some of the **best resources to learn Linux** process management, providing a practical environment to apply what you've learned.
 
-1.  **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with, inspecting, monitoring, and terminating processes in a real Linux environment.
-2.  **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use the `top` command to monitor CPU usage, memory, and running processes in real-time.
-3.  **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to use the `free` command to monitor and analyze system memory usage.
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with, inspecting, monitoring, and terminating processes in a real Linux environment.
+2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to use the `top` command to monitor CPU usage, memory, and running processes in real-time.
+3. **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to use the `free` command to monitor and analyze system memory usage.
 
 ## Quiz Question
 

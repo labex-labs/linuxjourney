@@ -53,7 +53,7 @@ Wenn der Befehl erfolgreich ausgeführt wird (Exit-Code 0), existiert der Prozes
 
 Um das Gelernte anzuwenden, versuchen Sie dieses praktische Labor, um Ihr Verständnis der Prozessverwaltung und -beendigung zu festigen:
 
-1.  **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - In diesem Labor erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden untersuchen, wie man mit Vordergrund- und Hintergrundprozessen interagiert, sie mit `ps` inspiziert, Ressourcen mit `top` überwacht, die Priorität mit `renice` anpasst und sie mit `kill` beendet.
+1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - In diesem Labor erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden untersuchen, wie man mit Vordergrund- und Hintergrundprozessen interagiert, sie mit `ps` inspiziert, Ressourcen mit `top` überwacht, die Priorität mit `renice` anpasst und sie mit `kill` beendet.
 
 Dieses Labor hilft Ihnen, die Konzepte der Prozesssteuerung und -beendigung in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Linux-Prozessen aufzubauen.
 

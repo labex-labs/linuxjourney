@@ -29,9 +29,9 @@ Ubuntu est un choix fantastique pour les débutants. Il offre une expérience fl
 
 La pratique est essentielle pour maîtriser Linux. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes :
 
-1.  **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Dans ce laboratoire, vous apprendrez à gérer les comptes utilisateurs sur la plateforme Linux, y compris la création, la modification et la suppression de comptes utilisateurs.
-2.  **[Le tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Dans ce défi, vous pratiquerez la gestion des comptes utilisateurs en créant de nouveaux utilisateurs, en modifiant leurs propriétés et en les supprimant du système.
-3.  **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi pratique, vous simulerez l'ajout de nouveaux membres d'équipe à un serveur en créant des comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances.
+1. **[Gestion des comptes utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Dans ce laboratoire, vous apprendrez à gérer les comptes utilisateurs sur la plateforme Linux, y compris la création, la modification et la suppression de comptes utilisateurs.
+2. **[Le tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Dans ce défi, vous pratiquerez la gestion des comptes utilisateurs en créant de nouveaux utilisateurs, en modifiant leurs propriétés et en les supprimant du système.
+3. **[Ajouter un nouvel utilisateur et un nouveau groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Dans ce défi pratique, vous simulerez l'ajout de nouveaux membres d'équipe à un serveur en créant des comptes utilisateurs, en configurant des groupes personnalisés et en gérant les appartenances.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans l'administration Linux.
 

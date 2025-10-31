@@ -49,9 +49,9 @@ Comprendre le bit collant est essentiel pour gérer efficacement les environneme
 
 Pour consolider votre compréhension des permissions de fichiers, y compris les permissions spéciales comme le bit collant, essayez ces laboratoires pratiques. Ils vous aideront à voir comment ces concepts s'appliquent dans des scénarios réels.
 
-1.  **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Entraînez-vous à créer des utilisateurs et des groupes, et à manipuler la propriété et les permissions des fichiers. Ce laboratoire fournit une base pour comprendre le fonctionnement des permissions spéciales.
-2.  **[Supprimer et Déplacer des Fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777)** - Apprenez à supprimer et déplacer des fichiers, et voyez comment les permissions, y compris le bit collant sur un répertoire, peuvent restreindre ces actions.
-3.  **[Trouver un Fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Entraînez-vous à localiser des fichiers et à définir des contrôles d'accès, renforçant l'importance des permissions de fichiers dans la gestion de l'accès et de la modification des fichiers.
+1. **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Entraînez-vous à créer des utilisateurs et des groupes, et à manipuler la propriété et les permissions des fichiers. Ce laboratoire fournit une base pour comprendre le fonctionnement des permissions spéciales.
+2. **[Supprimer et Déplacer des Fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777)** - Apprenez à supprimer et déplacer des fichiers, et voyez comment les permissions, y compris le bit collant sur un répertoire, peuvent restreindre ces actions.
+3. **[Trouver un Fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Entraînez-vous à localiser des fichiers et à définir des contrôles d'accès, renforçant l'importance des permissions de fichiers dans la gestion de l'accès et de la modification des fichiers.
 
 ## Quiz Question
 

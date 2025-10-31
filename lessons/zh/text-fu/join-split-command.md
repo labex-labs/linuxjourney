@@ -72,7 +72,7 @@ $ join -1 2 -2 1 file1.txt file2.txt
 `split` 命令与连接相反；它将大文件分成更小的文件。
 
 ```bash
-$ split somefile
+split somefile
 ```
 
 默认情况下，此命令在达到 1000 行限制时将 `somefile` 分割成新文件。输出文件命名为 `xaa`、`xab`，依此类推。你可以通过使用 `-l` 标志指定不同的行数或使用 `-b` 标志按文件大小分割来定制此行为。

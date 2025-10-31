@@ -54,8 +54,8 @@ cat > newfile.txt
 
 練習あるのみです！ファイル内容の表示に関する理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux cat コマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - `cat`コマンドを使用してテキストファイルの表示、連結、操作を学び、効率的なテキストファイル処理のためのコマンドラインスキルを向上させます。
-2.  **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`などのコマンドを使用して、システムログや設定ファイルを含むテキストファイルを効率的に表示・ナビゲートし、重要な情報を抽出する練習をします。
+1. **[Linux cat コマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - `cat`コマンドを使用してテキストファイルの表示、連結、操作を学び、効率的なテキストファイル処理のためのコマンドラインスキルを向上させます。
+2. **[Linux でのログファイルと設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat`などのコマンドを使用して、システムログや設定ファイルを含むテキストファイルを効率的に表示・ナビゲートし、重要な情報を抽出する練習をします。
 
 これらのラボは、概念を実際のシナリオに適用し、Linux でのファイル内容表示に対する自信を構築するのに役立ちます。
 

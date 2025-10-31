@@ -45,9 +45,9 @@ By default, `unexpand` only converts leading spaces on each line. The `-a` optio
 
 To master text manipulation and redirection in Linux, practice is key. The following hands-on labs will help reinforce your understanding:
 
-1.  **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like `>` and `>>`.
-2.  **[Simple Text Processing](https://labex.io/labs/linux-simple-text-processing-18004)** - Learn to use powerful commands like `tr`, `col`, `join`, and `paste` to manipulate and analyze text data efficiently, enhancing your command-line skills for data processing.
-3.  **[Text Processing and Regular Expressions](https://labex.io/labs/linux-text-processing-and-regular-expressions-18003)** - Learn the powerful text processing tools `grep`, `sed`, and `awk`, and use regular expressions for efficient text manipulation and pattern matching in Linux.
+1. **[Redirecting Input and Output in Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Practice controlling data flow from commands by manipulating standard output (stdout), standard error (stderr), and standard input (stdin) using operators like `>` and `>>`.
+2. **[Simple Text Processing](https://labex.io/labs/linux-simple-text-processing-18004)** - Learn to use powerful commands like `tr`, `col`, `join`, and `paste` to manipulate and analyze text data efficiently, enhancing your command-line skills for data processing.
+3. **[Text Processing and Regular Expressions](https://labex.io/labs/linux-text-processing-and-regular-expressions-18003)** - Learn the powerful text processing tools `grep`, `sed`, and `awk`, and use regular expressions for efficient text manipulation and pattern matching in Linux.
 
 Completing these labs will help you apply the concepts of text transformation and file manipulation in real-world scenarios, building your confidence with essential Linux command-line tools.
 

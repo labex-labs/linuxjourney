@@ -49,9 +49,9 @@ Compreender o sticky bit é essencial para gerenciar ambientes multiusuário e p
 
 Para solidificar sua compreensão das permissões de arquivo, incluindo permissões especiais como o sticky bit, experimente estes laboratórios práticos. Eles ajudarão você a ver como esses conceitos se aplicam em cenários do mundo real.
 
-1.  **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação de usuários e grupos e a manipulação da propriedade e permissões de arquivos. Este laboratório fornece uma base para entender como as permissões especiais funcionam.
-2.  **[Excluir e Mover Arquivos](https://labex.io/pt/labs/linux-delete-and-move-files-7777)** - Aprenda a excluir e mover arquivos e veja como as permissões, incluindo o sticky bit em um diretório, podem restringir essas ações.
-3.  **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Pratique a localização de arquivos e a definição de controles de acesso, reforçando a importância das permissões de arquivo no gerenciamento do acesso e modificação de arquivos.
+1. **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação de usuários e grupos e a manipulação da propriedade e permissões de arquivos. Este laboratório fornece uma base para entender como as permissões especiais funcionam.
+2. **[Excluir e Mover Arquivos](https://labex.io/pt/labs/linux-delete-and-move-files-7777)** - Aprenda a excluir e mover arquivos e veja como as permissões, incluindo o sticky bit em um diretório, podem restringir essas ações.
+3. **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Pratique a localização de arquivos e a definição de controles de acesso, reforçando a importância das permissões de arquivo no gerenciamento do acesso e modificação de arquivos.
 
 ## Quiz Question
 

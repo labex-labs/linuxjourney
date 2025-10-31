@@ -34,9 +34,9 @@ meta_keywords: "네트워크 기초, 리눅스 기초, 리눅스 학습 최적�
 
 연습이 완벽함을 만듭니다! 실습 경험은 **네트워크 기초** 개념을 마스터하는 데 중요합니다. 다음 실습은 네트워크 구성 요소와 호스트가 통신하는 방법에 대한 이해를 강화하는 데 도움이 될 것입니다.
 
-1.  **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 호스트의 네트워크 주소 정보를 식별하는 연습을 합니다.
-2.  **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 호스트 연결 방식을 이해하는 데 필수적인 네트워크 도달 가능성을 테스트하고 다양한 IP 주소 유형을 식별하는 방법을 배웁니다.
-3.  **[리눅스에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 주소 결정 프로토콜 (ARP) 을 관찰하고 `ping`으로 연결을 테스트하여 네트워크에서 호스트가 상호 작용하는 방식을 이해합니다.
+1. **[리눅스에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소를 포함한 호스트의 네트워크 주소 정보를 식별하는 연습을 합니다.
+2. **[리눅스에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 호스트 연결 방식을 이해하는 데 필수적인 네트워크 도달 가능성을 테스트하고 다양한 IP 주소 유형을 식별하는 방법을 배웁니다.
+3. **[리눅스에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 주소 결정 프로토콜 (ARP) 을 관찰하고 `ping`으로 연결을 테스트하여 네트워크에서 호스트가 상호 작용하는 방식을 이해합니다.
 
 이 실습들은 실제 시나리오에서 호스트, 주소 지정 및 기본 연결 개념을 적용하고 네트워킹 기본 사항에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

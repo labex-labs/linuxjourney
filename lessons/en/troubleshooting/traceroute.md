@@ -15,12 +15,12 @@ The `traceroute` command is a fundamental network diagnostic tool used to trace 
 
 The mechanism behind `traceroute` lies in its clever manipulation of the Time To Live (TTL) field in an IP packet's header. The process works as follows:
 
-1.  `traceroute` sends out a probe packet with a TTL value of 1.
-2.  The first router on the path receives the packet, decrements the TTL to 0, and discards it. The router then sends an ICMP "Time Exceeded" message back to your computer.
-3.  `traceroute` records the router's IP address and the round-trip time.
-4.  It then sends another packet, this time with a TTL of 2. This packet successfully passes the first router but is dropped by the second router, which again sends back a "Time Exceeded" message.
-5.  This process repeats, with the TTL incrementing by one for each subsequent set of packets. By building a list of the routers that return "Time Exceeded" messages, `traceroute` maps the entire route.
-6.  The process concludes when the packets finally reach the destination, which responds with an ICMP "Echo Reply" message.
+1. `traceroute` sends out a probe packet with a TTL value of 1.
+2. The first router on the path receives the packet, decrements the TTL to 0, and discards it. The router then sends an ICMP "Time Exceeded" message back to your computer.
+3. `traceroute` records the router's IP address and the round-trip time.
+4. It then sends another packet, this time with a TTL of 2. This packet successfully passes the first router but is dropped by the second router, which again sends back a "Time Exceeded" message.
+5. This process repeats, with the TTL incrementing by one for each subsequent set of packets. By building a list of the routers that return "Time Exceeded" messages, `traceroute` maps the entire route.
+6. The process concludes when the packets finally reach the destination, which responds with an ICMP "Echo Reply" message.
 
 ### Understanding Traceroute Output
 
@@ -46,8 +46,8 @@ Using the `traceroute linux` command effectively provides invaluable insight int
 
 Practice is key to mastering network diagnostics. The following hands-on labs will help reinforce your understanding of network path discovery and troubleshooting with tools like `traceroute`:
 
-1.  **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice using the `ip` command to configure network settings and then verify connectivity and routing paths with `traceroute`.
-2.  **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` work together to understand network layer interactions, which are foundational concepts for how `traceroute` operates.
+1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice using the `ip` command to configure network settings and then verify connectivity and routing paths with `traceroute`.
+2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` work together to understand network layer interactions, which are foundational concepts for how `traceroute` operates.
 
 These labs will help you apply the concepts of network diagnostics in real-world scenarios and build confidence with essential Linux networking tools.
 

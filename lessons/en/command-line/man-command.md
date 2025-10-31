@@ -33,9 +33,9 @@ Man pages are particularly useful for understanding command options. For instanc
 
 Practice is key to mastering the command line. These hands-on labs will help you reinforce your skills with fundamental commands. After completing them, use the `man` command to explore each tool's full potential.
 
-1.  **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Practice listing and analyzing file and directory contents, and then use `man ls` to discover more options.
-2.  **[Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)** - Learn the `pwd` command to display your current directory, and explore its man page for details.
-3.  **[Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)** - Master navigating your file system with `cd`, and use `man cd` to understand its various techniques.
+1. **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Practice listing and analyzing file and directory contents, and then use `man ls` to discover more options.
+2. **[Linux pwd Command: Directory Displaying](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)** - Learn the `pwd` command to display your current directory, and explore its man page for details.
+3. **[Linux cd Command: Directory Changing](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)** - Master navigating your file system with `cd`, and use `man cd` to understand its various techniques.
 
 These labs will help you apply core concepts in real scenarios and build confidence with essential Linux commands, preparing you to effectively use `man` to deepen your knowledge.
 

@@ -51,7 +51,7 @@ Depois de adicionar a definição da sua tarefa e guardar o ficheiro, o `cron` l
 
 A prática leva à perfeição! Este laboratório prático ajudará a reforçar a sua compreensão sobre como `agendar tarefas` no Linux.
 
-1.  **[Agendar Tarefas com at e cron no Linux](https://labex.io/pt/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Pratique a criação, gestão e remoção de tarefas com `at`, `atq`, `atrm` e `crontab`, ganhando experiência prática na automação de tarefas de administração do sistema.
+1. **[Agendar Tarefas com at e cron no Linux](https://labex.io/pt/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Pratique a criação, gestão e remoção de tarefas com `at`, `atq`, `atrm` e `crontab`, ganhando experiência prática na automação de tarefas de administração do sistema.
 
 Este laboratório irá ajudá-lo a aplicar os conceitos desta lição num cenário do mundo real e a aumentar a sua confiança com a `automação Linux`.
 

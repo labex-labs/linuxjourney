@@ -99,7 +99,7 @@ sudo systemctl disable networking.service
 
 实践是掌握新技能的关键。这个动手实验将帮助您巩固对管理进程的理解，而这些进程通常由 systemd 服务控制：
 
-1.  **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。此实验将为您提供有关 systemd 单元管理运行时效果的实践经验。
+1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。此实验将为您提供有关 systemd 单元管理运行时效果的实践经验。
 
 此实验将帮助您在真实场景中应用这些概念，并建立对 Linux 进程管理的信心。
 

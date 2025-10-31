@@ -43,9 +43,9 @@ El campo `time` mide el tiempo de ida y vuelta: la duración que tardó el paque
 
 La práctica es esencial para dominar el diagnóstico de redes. Estos laboratorios prácticos le ayudarán a reforzar su comprensión del comando `ping`:
 
-1.  **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilice `ping` y `arp` para explorar las interacciones de la capa de red y de enlace de datos y observe cómo la puerta de enlace predeterminada maneja el tráfico remoto.
-2.  **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilice `ping` e `ip a` para probar la pila TCP/IP local, verificar la conectividad a Internet pública y explorar el alcance de la red.
-3.  **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas con `ip addr` y pruebe la conectividad con `ping` en la misma subred y en subredes diferentes.
+1. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilice `ping` y `arp` para explorar las interacciones de la capa de red y de enlace de datos y observe cómo la puerta de enlace predeterminada maneja el tráfico remoto.
+2. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Utilice `ping` e `ip a` para probar la pila TCP/IP local, verificar la conectividad a Internet pública y explorar el alcance de la red.
+3. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas con `ip addr` y pruebe la conectividad con `ping` en la misma subred y en subredes diferentes.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de alcance de red y el comando `ping` en escenarios del mundo real, aumentando su confianza con el diagnóstico de redes en Linux.
 

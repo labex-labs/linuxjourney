@@ -31,7 +31,7 @@ Nous avons un cours complet sur les systèmes d'init où nous plongerons plus en
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de la manière dont le système les gère :
 
-1.  **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à comprendre le cycle de vie et le contrôle des processus, qui sont fondamentaux pour le fonctionnement d'`init`.
+1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à comprendre le cycle de vie et le contrôle des processus, qui sont fondamentaux pour le fonctionnement d'`init`.
 
 Ces laboratoires vous aideront à appliquer ces concepts dans des scénarios réels et à gagner en confiance dans la gestion des processus Linux.
 

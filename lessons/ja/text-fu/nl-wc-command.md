@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 出力には、ファイル名の前に 3 つの数字が表示されます。左から順に、これらの数字は次のものを表します。
 
-1.  行数。
-2.  単語数（Linux の単語カウント）。
-3.  バイト数。
+1. 行数。
+2. 単語数（Linux の単語カウント）。
+3. バイト数。
 
 ### 特定のカウントの取得
 
@@ -57,9 +57,9 @@ turtles
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 `wc`と`nl`の両方は、Linux コマンドラインでの日常的なテキスト処理に不可欠なコマンドです。
@@ -68,9 +68,9 @@ $ nl file1.txt
 
 これらのコマンドを習得するには、実践的な練習が鍵となります。テキストのカウントと Linux での行番号付けのスキルを確固たるものにするために、次の演習を試してください。
 
-1.  **[Linux wc コマンド：テキストカウント](https://labex.io/ja/labs/linux-linux-wc-command-text-counting-219200)** - `wc`コマンドを使用して、テキストファイルの単語、行、文字をカウントする練習をします。
-2.  **[Linux nl コマンド：行番号付け](https://labex.io/ja/labs/linux-linux-nl-command-line-numbering-210988)** - `nl`コマンドで行番号をテキストファイルに追加する方法を学びます。
-3.  **[単語カウントとソート](https://labex.io/ja/labs/linux-word-count-and-sorting-388125)** - `wc`の知識を応用して行、単語、文字をカウントし、ソートと組み合わせて実用的なテキスト分析タスクを実行します。
+1. **[Linux wc コマンド：テキストカウント](https://labex.io/ja/labs/linux-linux-wc-command-text-counting-219200)** - `wc`コマンドを使用して、テキストファイルの単語、行、文字をカウントする練習をします。
+2. **[Linux nl コマンド：行番号付け](https://labex.io/ja/labs/linux-linux-nl-command-line-numbering-210988)** - `nl`コマンドで行番号をテキストファイルに追加する方法を学びます。
+3. **[単語カウントとソート](https://labex.io/ja/labs/linux-word-count-and-sorting-388125)** - `wc`の知識を応用して行、単語、文字をカウントし、ソートと組み合わせて実用的なテキスト分析タスクを実行します。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux でのテキスト処理に対する自信を築くのに役立ちます。
 

@@ -33,9 +33,9 @@ Linux Mint está diseñado principalmente para ordenadores de escritorio y port�
 
 Para aplicar sus conocimientos en un entorno práctico, recomendamos los siguientes laboratorios prácticos. Estos ejercicios cubren habilidades fundamentales de gestión de usuarios y grupos que son esenciales para cualquier administrador de Linux.
 
-1.  **[Gestión de Cuentas de Usuario](https://labex.io/es/labs/linux-user-account-management-49)** - Practique la creación de nuevas cuentas de usuario, la modificación de la gestión de cuentas de usuario y la eliminación de cuentas de usuario en un entorno Linux real.
-2.  **[El Truco del Joker](https://labex.io/es/labs/linux-the-joker-s-trick-270247)** - Aprenda a gestionar cuentas de usuario creándolas, modificándolas y eliminándolas, simulando un escenario del mundo real.
-3.  **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - Aprenda a crear nuevas cuentas de usuario, configurar grupos personalizados y gestionar las membresías de grupo, esencial para la administración del sistema.
+1. **[Gestión de Cuentas de Usuario](https://labex.io/es/labs/linux-user-account-management-49)** - Practique la creación de nuevas cuentas de usuario, la modificación de la gestión de cuentas de usuario y la eliminación de cuentas de usuario en un entorno Linux real.
+2. **[El Truco del Joker](https://labex.io/es/labs/linux-the-joker-s-trick-270247)** - Aprenda a gestionar cuentas de usuario creándolas, modificándolas y eliminándolas, simulando un escenario del mundo real.
+3. **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - Aprenda a crear nuevas cuentas de usuario, configurar grupos personalizados y gestionar las membresías de grupo, esencial para la administración del sistema.
 
 Estos laboratorios le ayudarán a aplicar conceptos en escenarios reales y a ganar confianza con la administración de usuarios y grupos de Linux.
 

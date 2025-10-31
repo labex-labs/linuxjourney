@@ -45,9 +45,9 @@ user@host:~$ uptime
 
 実用的な経験を積むために、**Linux CPU 監視**と**システムパフォーマンス**の分析を行いましょう。以下のハンズオンラボは、**ロードアベレージ**と**プロセス利用率**の概念を実世界のシナリオに応用するのに役立ちます。
 
-1.  **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - `ps`や`top`などのツールを使用してプロセスと対話し、リソースを検査する練習をします。これは CPU 負荷の理解に直接関連します。
-2.  **[Linux top コマンド：リアルタイムシステム監視](https://labex.io/ja/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - リアルタイムのシステム監視のために`top`コマンドを使用する方法を学び、プロセスの並べ替えやフィルタリングを行い、CPU とプロセスの活動をより深く掘り下げます。
-3.  **[Linux free コマンド：システムメモリの監視](https://labex.io/ja/labs/linux-linux-free-command-monitoring-system-memory-388496)** - システムメモリの使用状況を監視および分析する方法を学びます。これは、全体のシステムパフォーマンスにおいて CPU 負荷と並んで重要な要因となることがよくあります。
+1. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - `ps`や`top`などのツールを使用してプロセスと対話し、リソースを検査する練習をします。これは CPU 負荷の理解に直接関連します。
+2. **[Linux top コマンド：リアルタイムシステム監視](https://labex.io/ja/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - リアルタイムのシステム監視のために`top`コマンドを使用する方法を学び、プロセスの並べ替えやフィルタリングを行い、CPU とプロセスの活動をより深く掘り下げます。
+3. **[Linux free コマンド：システムメモリの監視](https://labex.io/ja/labs/linux-linux-free-command-monitoring-system-memory-388496)** - システムメモリの使用状況を監視および分析する方法を学びます。これは、全体のシステムパフォーマンスにおいて CPU 負荷と並んで重要な要因となることがよくあります。
 
 ## Quiz Question
 

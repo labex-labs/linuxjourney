@@ -59,7 +59,7 @@ Die Kombination von Operatoren mit verschiedenen Bewegungen schöpft das volle P
 
 Um Ihr Wissen in die Praxis umzusetzen, empfehlen wir das folgende praktische Labor. Es wird Ihnen helfen, die grundlegenden Bearbeitungsbefehle zu meistern, die in diesem Vim-Tutorial besprochen wurden.
 
-1.  **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, Konzepte wie das Löschen, Ändern, Yanken und Putten von Text in realen Szenarien anzuwenden.
+1. **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, Konzepte wie das Löschen, Ändern, Yanken und Putten von Text in realen Szenarien anzuwenden.
 
 ## Quiz Question
 

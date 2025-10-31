@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 输出显示三个数字，后跟文件名。从左到右，这些数字代表：
 
-1.  行数。
-2.  单词数（Linux 字数统计）。
-3.  字节数。
+1. 行数。
+2. 单词数（Linux 字数统计）。
+3. 字节数。
 
 ### 获取特定计数
 
@@ -57,9 +57,9 @@ turtles
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 `wc` 和 `nl` 都是日常 Linux 命令行文本处理中的基本命令。
@@ -68,9 +68,9 @@ $ nl file1.txt
 
 为了掌握这些命令，动手实践是关键。尝试这些练习，以巩固您在 Linux 上进行文本计数和行编号的技能：
 
-1.  **[Linux wc 命令：文本计数](https://labex.io/zh/labs/linux-linux-wc-command-text-counting-219200)** - 练习使用 `wc` 命令统计文本文件中的单词、行和字符数。
-2.  **[Linux nl 命令：行编号](https://labex.io/zh/labs/linux-linux-nl-command-line-numbering-210988)** - 学习使用 `nl` 命令为文本文件中的行添加编号。
-3.  **[字数统计与排序](https://labex.io/zh/labs/linux-word-count-and-sorting-388125)** - 应用您对 `wc` 的知识来计算行数、单词数和字符数，并将其与排序结合起来进行实用的文本分析任务。
+1. **[Linux wc 命令：文本计数](https://labex.io/zh/labs/linux-linux-wc-command-text-counting-219200)** - 练习使用 `wc` 命令统计文本文件中的单词、行和字符数。
+2. **[Linux nl 命令：行编号](https://labex.io/zh/labs/linux-linux-nl-command-line-numbering-210988)** - 学习使用 `nl` 命令为文本文件中的行添加编号。
+3. **[字数统计与排序](https://labex.io/zh/labs/linux-word-count-and-sorting-388125)** - 应用您对 `wc` 的知识来计算行数、单词数和字符数，并将其与排序结合起来进行实用的文本分析任务。
 
 这些实验将帮助您在现实场景中应用这些概念，并增强您对 Linux 文本处理的信心。
 

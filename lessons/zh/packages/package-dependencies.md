@@ -29,8 +29,8 @@ meta_keywords: "Linux 软件包依赖项，共享库，Linux 软件包，软件�
 
 通过这些实践实验来运用您的知识，它们将帮助您巩固对 Linux 包、依赖项和共享库的理解：
 
-1.  **[在 Linux 中管理共享库](https://labex.io/zh/labs/comptia-manage-shared-libraries-in-linux-590867)** - 练习识别、定位和管理共享库，它们是许多应用程序的关键依赖项。
-2.  **[在 Linux 中使用 RPM 管理包](https://labex.io/zh/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 学习在基于 RPM 的系统上管理软件包，包括查询包信息和理解依赖项。
-3.  **[使用 YUM 在 Linux 中查询和更新包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 获得使用 YUM 检查已安装的包、探索存储库和管理更新的经验，所有这些都涉及处理包依赖项。
+1. **[在 Linux 中管理共享库](https://labex.io/zh/labs/comptia-manage-shared-libraries-in-linux-590867)** - 练习识别、定位和管理共享库，它们是许多应用程序的关键依赖项。
+2. **[在 Linux 中使用 RPM 管理包](https://labex.io/zh/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 学习在基于 RPM 的系统上管理软件包，包括查询包信息和理解依赖项。
+3. **[使用 YUM 在 Linux 中查询和更新包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 获得使用 YUM 检查已安装的包、探索存储库和管理更新的经验，所有这些都涉及处理包依赖项。
 
 这些实验将帮助您在现实场景中应用包管理和依赖项解析的概念，增强您对 Linux 软件安装的信心。

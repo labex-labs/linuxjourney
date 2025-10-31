@@ -37,9 +37,9 @@ meta_keywords: "ルーター, ネットワーキング，ルーティング，�
 
 練習あるのみです！ネットワーク接続性とルーティングの理解を深めるための実践的なラボを次に示します。
 
-1.  **[Linux における IP アドレスタイプと到達可能性の探索](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - ローカル TCP/IP スタックのテスト、プライベート IP とパブリック IP の識別、ネットワーク到達性の検証を練習します。これらはルーターが通信をどのように促進するかを理解するための鍵となります。
-2.  **[Linux における ping と arp を使用したネットワーク層の相互作用の探索](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`コマンドと`arp`コマンドがネットワーク層とデータリンク層の相互作用をどのように観察するのに役立つか、そしてデフォルトゲートウェイ（ルーター）がリモートトラフィックをどのように処理するかを学びます。
-3.  **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスを割り当て、接続性をテストして、IP サブネットとルーティングがネットワーク通信をどのように制御するかを理解します。
+1. **[Linux における IP アドレスタイプと到達可能性の探索](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - ローカル TCP/IP スタックのテスト、プライベート IP とパブリック IP の識別、ネットワーク到達性の検証を練習します。これらはルーターが通信をどのように促進するかを理解するための鍵となります。
+2. **[Linux における ping と arp を使用したネットワーク層の相互作用の探索](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`コマンドと`arp`コマンドがネットワーク層とデータリンク層の相互作用をどのように観察するのに役立つか、そしてデフォルトゲートウェイ（ルーター）がリモートトラフィックをどのように処理するかを学びます。
+3. **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Docker を使用してネットワークノードをシミュレートし、IP アドレスを割り当て、接続性をテストして、IP サブネットとルーティングがネットワーク通信をどのように制御するかを理解します。
 
 これらのラボは、ネットワーク通信、IP アドレッシング、およびルーティングの役割を実際のシナリオに応用するのに役立ち、ネットワークの基礎に対する自信を構築します。
 

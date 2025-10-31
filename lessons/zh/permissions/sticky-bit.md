@@ -49,9 +49,9 @@ chmod 1755 my_shared_dir
 
 为了巩固您对文件权限（包括粘滞位等特殊权限）的理解，请尝试以下实践实验。它们将帮助您了解这些概念如何在实际场景中应用。
 
-1.  **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 练习创建用户和组，以及操作文件所有权和权限。此实验为理解特殊权限如何工作奠定了基础。
-2.  **[删除和移动文件](https://labex.io/zh/labs/linux-delete-and-move-files-7777)** - 学习如何删除和移动文件，并了解权限（包括目录上的粘滞位）如何限制这些操作。
-3.  **[查找文件](https://labex.io/zh/labs/linux-find-a-file-17993)** - 练习定位文件和设置访问控制，以加强文件权限在管理文件访问和修改方面的重要性。
+1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 练习创建用户和组，以及操作文件所有权和权限。此实验为理解特殊权限如何工作奠定了基础。
+2. **[删除和移动文件](https://labex.io/zh/labs/linux-delete-and-move-files-7777)** - 学习如何删除和移动文件，并了解权限（包括目录上的粘滞位）如何限制这些操作。
+3. **[查找文件](https://labex.io/zh/labs/linux-find-a-file-17993)** - 练习定位文件和设置访问控制，以加强文件权限在管理文件访问和修改方面的重要性。
 
 ## Quiz Question
 

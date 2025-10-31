@@ -45,9 +45,9 @@ unexpand -a result.txt
 
 Linux でのテキスト操作とリダイレクトを習得するには、実践が鍵となります。次のハンズオンラボが理解を深めるのに役立ちます。
 
-1.  **[Linux における入力と出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`や`>>`などの演算子を使用して標準出力（stdout）、標準エラー（stderr）、標準入力（stdin）を操作し、コマンドからのデータフローを制御する練習をします。
-2.  **[簡単なテキスト処理](https://labex.io/ja/labs/linux-simple-text-processing-18004)** - `tr`、`col`、`join`、`paste`などの強力なコマンドを使用してテキストデータを効率的に操作および分析する方法を学び、データ処理のためのコマンドラインスキルを向上させます。
-3.  **[テキスト処理と正規表現](https://labex.io/ja/labs/linux-text-processing-and-regular-expressions-18003)** - 強力なテキスト処理ツールである`grep`、`sed`、`awk`を学び、正規表現を使用して Linux で効率的にテキストを操作しパターンを照合します。
+1. **[Linux における入力と出力のリダイレクト](https://labex.io/ja/labs/comptia-redirecting-input-and-output-in-linux-590840)** - `>`や`>>`などの演算子を使用して標準出力（stdout）、標準エラー（stderr）、標準入力（stdin）を操作し、コマンドからのデータフローを制御する練習をします。
+2. **[簡単なテキスト処理](https://labex.io/ja/labs/linux-simple-text-processing-18004)** - `tr`、`col`、`join`、`paste`などの強力なコマンドを使用してテキストデータを効率的に操作および分析する方法を学び、データ処理のためのコマンドラインスキルを向上させます。
+3. **[テキスト処理と正規表現](https://labex.io/ja/labs/linux-text-processing-and-regular-expressions-18003)** - 強力なテキスト処理ツールである`grep`、`sed`、`awk`を学び、正規表現を使用して Linux で効率的にテキストを操作しパターンを照合します。
 
 これらのラボを完了すると、テキスト変換とファイル操作の概念を実際のシナリオに応用できるようになり、不可欠な Linux コマンドラインツールの使用に対する自信が深まります。
 

@@ -34,9 +34,9 @@ meta_keywords: "logrotate, Linux 日志，日志管理，日志轮换，Linux �
 
 实践造就完美！以下是一些实践操作实验，以加强您对日志文件管理和相关系统管理任务的理解：
 
-1.  **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习基本的 Linux 命令行技能，以有效地查看和导航文本文件，包括由 `logrotate` 等工具管理的系统日志和配置文件。
-2.  **[快速威胁检测](https://labex.io/zh/labs/linux-rapid-threat-detection-387930)** - 学习网络安全分析所需的基本 Linux 命令行技能。使用 `tail` 和 `head` 命令快速提取和分析最近的日志条目，模拟在高风险技术环境中进行快速威胁检测。
-3.  **[在 Linux 中使用 tar 创建和恢复备份](https://labex.io/zh/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - 通过备份目录获得系统管理任务的实践经验，这通常是日志轮换策略中用于归档旧日志的一部分。
+1. **[在 Linux 中查看日志和配置文件](https://labex.io/zh/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 练习基本的 Linux 命令行技能，以有效地查看和导航文本文件，包括由 `logrotate` 等工具管理的系统日志和配置文件。
+2. **[快速威胁检测](https://labex.io/zh/labs/linux-rapid-threat-detection-387930)** - 学习网络安全分析所需的基本 Linux 命令行技能。使用 `tail` 和 `head` 命令快速提取和分析最近的日志条目，模拟在高风险技术环境中进行快速威胁检测。
+3. **[在 Linux 中使用 tar 创建和恢复备份](https://labex.io/zh/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - 通过备份目录获得系统管理任务的实践经验，这通常是日志轮换策略中用于归档旧日志的一部分。
 
 这些实验将帮助您在实际场景中应用这些概念，并增强您在 Linux 中管理和与日志文件交互的信心。
 

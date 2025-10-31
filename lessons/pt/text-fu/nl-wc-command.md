@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 A saída exibe três números seguidos pelo nome do arquivo. Da esquerda para a direita, esses números representam:
 
-1.  O número de linhas.
-2.  O número de palavras (a contagem de palavras do Linux).
-3.  O número de bytes.
+1. O número de linhas.
+2. O número de palavras (a contagem de palavras do Linux).
+3. O número de bytes.
 
 ### Obtendo Contagens Específicas
 
@@ -57,9 +57,9 @@ Usando o comando `nl`, você pode facilmente adicionar números de linha do Linu
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 Tanto `wc` quanto `nl` são comandos essenciais para o processamento de texto do dia a dia na linha de comando do Linux.
@@ -68,9 +68,9 @@ Tanto `wc` quanto `nl` são comandos essenciais para o processamento de texto do
 
 Para dominar esses comandos, a prática manual é fundamental. Tente estes exercícios para solidificar suas habilidades em contagem de texto e numeração de linhas no Linux:
 
-1.  **[Comando wc do Linux: Contagem de Texto](https://labex.io/pt/labs/linux-linux-wc-command-text-counting-219200)** - Pratique a contagem de palavras, linhas e caracteres em arquivos de texto usando o comando `wc`.
-2.  **[Comando nl do Linux: Numeração de Linhas](https://labex.io/pt/labs/linux-linux-nl-command-line-numbering-210988)** - Aprenda a numerar linhas em arquivos de texto com o comando `nl`.
-3.  **[Contagem de Palavras e Ordenação](https://labex.io/pt/labs/linux-word-count-and-sorting-388125)** - Aplique seu conhecimento de `wc` para contar linhas, palavras e caracteres, e combine-o com a ordenação para tarefas práticas de análise de texto.
+1. **[Comando wc do Linux: Contagem de Texto](https://labex.io/pt/labs/linux-linux-wc-command-text-counting-219200)** - Pratique a contagem de palavras, linhas e caracteres em arquivos de texto usando o comando `wc`.
+2. **[Comando nl do Linux: Numeração de Linhas](https://labex.io/pt/labs/linux-linux-nl-command-line-numbering-210988)** - Aprenda a numerar linhas em arquivos de texto com o comando `nl`.
+3. **[Contagem de Palavras e Ordenação](https://labex.io/pt/labs/linux-word-count-and-sorting-388125)** - Aplique seu conhecimento de `wc` para contar linhas, palavras e caracteres, e combine-o com a ordenação para tarefas práticas de análise de texto.
 
 Esses laboratórios ajudarão você a aplicar os conceitos em cenários do mundo real e a ganhar confiança no processamento de texto no Linux.
 

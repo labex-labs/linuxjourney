@@ -40,7 +40,7 @@ sudo mkfs -t ext4 /dev/sdb2
 
 实践是掌握 Linux 技能的关键。这个动手实验将帮助您巩固对管理 Linux 文件系统的理解：
 
-1.  **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 在此实验中，您将学习如何在 Linux 中管理磁盘分区和文件系统。您将使用 `fdisk` 创建一个新分区，使用 `mkfs` 用 `ext4` 格式化它，挂载它，在 `/etc/fstab` 中配置持久挂载，并创建一个交换分区，所有这些都在一个安全的辅助虚拟磁盘上。
+1. **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 在此实验中，您将学习如何在 Linux 中管理磁盘分区和文件系统。您将使用 `fdisk` 创建一个新分区，使用 `mkfs` 用 `ext4` 格式化它，挂载它，在 `/etc/fstab` 中配置持久挂载，并创建一个交换分区，所有这些都在一个安全的辅助虚拟磁盘上。
 
 此实验将帮助您在现实场景中应用创建和管理文件系统的概念，并增强您对 Linux 磁盘管理的信心。
 

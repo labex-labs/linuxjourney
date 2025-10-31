@@ -57,7 +57,7 @@ Vim では、コピーは「ヤンク」（オペレータ`y`）、貼り付け�
 
 知識を実践に移すために、次のハンズオンラボをお勧めします。これは、この Vim チュートリアルで説明した基本的な編集コマンドを習得するのに役立ちます。
 
-1.  **[Vim と Nano で Linux のテキストファイルを編集する](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - ファイルの作成、テキストの編集、ファイルの保存、vi/vim と nano の両方でのナビゲーションを練習します。このラボは、削除、変更、ヤンク、プットなどの概念を実際のシナリオで適用するのに役立ちます。
+1. **[Vim と Nano で Linux のテキストファイルを編集する](https://labex.io/ja/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - ファイルの作成、テキストの編集、ファイルの保存、vi/vim と nano の両方でのナビゲーションを練習します。このラボは、削除、変更、ヤンク、プットなどの概念を実際のシナリオで適用するのに役立ちます。
 
 ## Quiz Question
 

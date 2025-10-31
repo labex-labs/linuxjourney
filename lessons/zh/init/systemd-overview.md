@@ -17,9 +17,9 @@ Systemd 是大多数现代 Linux 发行版的默认初始化系统和服务管�
 
 **systemd** 不使用僵化的顺序脚本，而是使用“目标”（goals）的概念将您的系统带入功能状态。它识别一个主要目标或 `target`，并努力满足其依赖项。这种方法在启动期间提供了更大的灵活性和并行性。由 **systemd** 管理的典型启动过程遵循以下步骤：
 
-1.  **systemd** 首先从 `/etc/systemd/system` 和 `/usr/lib/systemd/system` 等目录加载其配置文件。
-2.  然后它识别默认启动目标，这通常是一个名为 `default.target` 的符号链接。
-3.  最后，**systemd** 解析此目标的所有依赖项，并激活必要的单元以实现所需的系统状态。
+1. **systemd** 首先从 `/etc/systemd/system` 和 `/usr/lib/systemd/system` 等目录加载其配置文件。
+2. 然后它识别默认启动目标，这通常是一个名为 `default.target` 的符号链接。
+3. 最后，**systemd** 解析此目标的所有依赖项，并激活必要的单元以实现所需的系统状态。
 
 ### 理解 Systemd 目标 (Targets)
 

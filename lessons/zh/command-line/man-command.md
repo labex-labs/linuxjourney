@@ -33,9 +33,9 @@ Man 页面在理解命令选项方面特别有用。例如，如果你见过 `ls
 
 实践是掌握命令行的关键。这些动手实验将帮助你巩固对基本命令的掌握。完成它们后，使用 `man` 命令来探索每种工具的全部潜力。
 
-1.  **[Linux ls 命令：内容列表](https://labex.io/zh/labs/linux-linux-ls-command-content-listing-219205)** - 练习列出和分析文件和目录内容，然后使用 `man ls` 发现更多选项。
-2.  **[Linux pwd 命令：目录显示](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 学习使用 `pwd` 命令显示当前目录，并探索其 man 页面以获取详细信息。
-3.  **[Linux cd 命令：目录切换](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 通过 `cd` 掌握文件系统导航，并使用 `man cd` 来理解其各种技术。
+1. **[Linux ls 命令：内容列表](https://labex.io/zh/labs/linux-linux-ls-command-content-listing-219205)** - 练习列出和分析文件和目录内容，然后使用 `man ls` 发现更多选项。
+2. **[Linux pwd 命令：目录显示](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 学习使用 `pwd` 命令显示当前目录，并探索其 man 页面以获取详细信息。
+3. **[Linux cd 命令：目录切换](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 通过 `cd` 掌握文件系统导航，并使用 `man cd` 来理解其各种技术。
 
 这些实验将帮助你在实际场景中应用核心概念，并建立对基本 Linux 命令的信心，为你有效地使用 `man` 来加深知识做好准备。
 

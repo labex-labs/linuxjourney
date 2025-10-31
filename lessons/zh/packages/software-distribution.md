@@ -35,8 +35,8 @@ Linux 系统由许多软件组件构成，例如网页浏览器、文本编辑�
 
 为了应用您的知识，我们推荐以下动手实验（labs）。它们提供了对本课所涵盖概念的实践经验。
 
-1.  **[在 Linux 中使用 RPM 管理软件包](https://labex.io/zh/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 在基于 Red Hat 的系统上，获得查询软件包信息、验证完整性和检查 RPM 软件包内容的实践经验。
-2.  **[在 Linux 中使用 YUM 查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 学习使用 YUM 在基于 RHEL 的 Linux 系统上管理软件软件包，包括检查、更新和探索软件源。
-3.  **[在 Linux 中从源代码构建软件](https://labex.io/zh/labs/comptia-build-software-from-source-code-in-linux-590853)** - 理解从源代码构建和安装软件的基本过程，这是对于无法通过包管理器获得的应用程序至关重要的技能。
+1. **[在 Linux 中使用 RPM 管理软件包](https://labex.io/zh/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - 在基于 Red Hat 的系统上，获得查询软件包信息、验证完整性和检查 RPM 软件包内容的实践经验。
+2. **[在 Linux 中使用 YUM 查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 学习使用 YUM 在基于 RHEL 的 Linux 系统上管理软件软件包，包括检查、更新和探索软件源。
+3. **[在 Linux 中从源代码构建软件](https://labex.io/zh/labs/comptia-build-software-from-source-code-in-linux-590853)** - 理解从源代码构建和安装软件的基本过程，这是对于无法通过包管理器获得的应用程序至关重要的技能。
 
 这些实验将帮助您在真实场景中应用包管理和软件安装的概念，并增强您对 Linux 系统管理的信心。

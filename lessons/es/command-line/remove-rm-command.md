@@ -69,8 +69,8 @@ El comando `rmdir` solo tendrá éxito si el directorio está completamente vac�
 
 La práctica es clave. Aquí hay algunos ejercicios prácticos para solidificar su comprensión de la eliminación de archivos y directorios en Linux:
 
-1.  **[Comando rm de Linux: Eliminación de Archivos](https://labex.io/es/labs/linux-linux-rm-command-file-removing-209741)** - Aprenda a usar el comando `rm` para eliminar archivos y directorios, incluidas varias opciones como `-r` y `-i`, y practique la eliminación segura y efectiva de archivos.
-2.  **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practique habilidades esenciales de gestión de archivos de Linux, incluido el uso del comando `rm` para limpiar directorios innecesarios, en un desafío práctico.
+1. **[Comando rm de Linux: Eliminación de Archivos](https://labex.io/es/labs/linux-linux-rm-command-file-removing-209741)** - Aprenda a usar el comando `rm` para eliminar archivos y directorios, incluidas varias opciones como `-r` y `-i`, y practique la eliminación segura y efectiva de archivos.
+2. **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practique habilidades esenciales de gestión de archivos de Linux, incluido el uso del comando `rm` para limpiar directorios innecesarios, en un desafío práctico.
 
 Estos laboratorios le ayudarán a aplicar estos conceptos en escenarios del mundo real y a ganar confianza con el `comando rm de linux`.
 

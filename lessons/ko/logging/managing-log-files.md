@@ -30,9 +30,9 @@ meta_keywords: "logrotate, 리눅스 로그, 로그 관리, 로그 로테이션,
 
 연습이 완벽을 만듭니다! 로그 파일 관리 및 관련 시스템 관리 작업을 이해하는 데 도움이 되는 실습 랩이 있습니다.
 
-1.  **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `logrotate`와 같은 도구로 관리되는 시스템 로그 및 구성 파일을 포함하여 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 Linux 명령줄 기술을 연습합니다.
-2.  **[신속한 위협 탐지](https://labex.io/ko/labs/linux-rapid-threat-detection-387930)** - 사이버 보안 분석을 위한 필수 Linux 명령줄 기술을 배웁니다. `tail` 및 `head` 명령을 사용하여 최신 로그 항목을 신속하게 추출하고 분석하여 높은 위험도의 기술 환경에서 신속한 위협 탐지를 시뮬레이션합니다.
-3.  **[Linux 에서 tar 를 사용하여 백업 생성 및 복원](https://labex.io/ko/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - 시스템 관리 작업을 직접 경험해 봅니다. 디렉터리를 백업하는 것은 종종 오래된 로그를 보관하기 위한 로그 로테이션 전략의 일부입니다.
+1. **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `logrotate`와 같은 도구로 관리되는 시스템 로그 및 구성 파일을 포함하여 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 Linux 명령줄 기술을 연습합니다.
+2. **[신속한 위협 탐지](https://labex.io/ko/labs/linux-rapid-threat-detection-387930)** - 사이버 보안 분석을 위한 필수 Linux 명령줄 기술을 배웁니다. `tail` 및 `head` 명령을 사용하여 최신 로그 항목을 신속하게 추출하고 분석하여 높은 위험도의 기술 환경에서 신속한 위협 탐지를 시뮬레이션합니다.
+3. **[Linux 에서 tar 를 사용하여 백업 생성 및 복원](https://labex.io/ko/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - 시스템 관리 작업을 직접 경험해 봅니다. 디렉터리를 백업하는 것은 종종 오래된 로그를 보관하기 위한 로그 로테이션 전략의 일부입니다.
 
 이러한 랩은 실제 시나리오에서 개념을 적용하고 Linux 에서 로그 파일을 관리하고 상호 작용하는 데 자신감을 갖도록 도와줄 것입니다.
 

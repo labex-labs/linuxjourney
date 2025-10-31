@@ -27,9 +27,9 @@ Auf der Vermittlungsschicht wird das von der Transportschicht empfangene Datense
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Vermittlungsschicht, der IP-Adressierung und der Subnetze zu festigen:
 
-1.  **[Simulieren der Konnektivität der Vermittlungsschicht in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie die Zuweisung statischer IP-Adressen und testen Sie die Konnektivität innerhalb und über verschiedene Subnetze hinweg mithilfe von Docker-Containern.
-2.  **[Durchführen von IP-Subnetting und binärer Konvertierung im Linux-Terminal](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und binäre Konvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
-3.  **[Erkunden von IP-Adress-Typen und Erreichbarkeit in Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`.
+1. **[Simulieren der Konnektivität der Vermittlungsschicht in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie die Zuweisung statischer IP-Adressen und testen Sie die Konnektivität innerhalb und über verschiedene Subnetze hinweg mithilfe von Docker-Containern.
+2. **[Durchführen von IP-Subnetting und binärer Konvertierung im Linux-Terminal](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und binäre Konvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
+3. **[Erkunden von IP-Adress-Typen und Erreichbarkeit in Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`.
 
 Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Subnetting in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Vermittlungsschicht aufzubauen.
 

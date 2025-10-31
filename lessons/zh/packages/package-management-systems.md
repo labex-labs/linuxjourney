@@ -53,9 +53,9 @@ RPM: $ yum info package_name
 
 实践出真知！以下是一些实践实验，以加强您对 Linux 包管理的理解：
 
-1.  **[在 Linux 中使用 YUM 查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 练习使用 YUM 在基于 RHEL 的 Linux 系统上管理软件包，包括检查、更新和浏览仓库。
-2.  **[Linux 上的软件安装](https://labex.io/zh/labs/linux-software-installation-on-linux-18005)** - 学习在 Ubuntu 系统上安装和管理软件的各种方法，包括使用 apt、dpkg 和处理 .deb 文件。
-3.  **[安装和删除软件包](https://labex.io/zh/labs/linux-installing-and-removing-packages-385380)** - 练习使用 `apt` 在基于 Debian 的系统上更新系统、安装和删除软件包以及优化软件配置。
+1. **[在 Linux 中使用 YUM 查询和更新软件包](https://labex.io/zh/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - 练习使用 YUM 在基于 RHEL 的 Linux 系统上管理软件包，包括检查、更新和浏览仓库。
+2. **[Linux 上的软件安装](https://labex.io/zh/labs/linux-software-installation-on-linux-18005)** - 学习在 Ubuntu 系统上安装和管理软件的各种方法，包括使用 apt、dpkg 和处理 .deb 文件。
+3. **[安装和删除软件包](https://labex.io/zh/labs/linux-installing-and-removing-packages-385380)** - 练习使用 `apt` 在基于 Debian 的系统上更新系统、安装和删除软件包以及优化软件配置。
 
 这些实验将帮助您在实际场景中应用这些概念，并建立对 Linux 包管理的信心。
 

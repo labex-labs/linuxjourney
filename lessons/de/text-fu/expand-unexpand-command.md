@@ -45,9 +45,9 @@ Standardmäßig wandelt `unexpand` nur führende Leerzeichen in jeder Zeile um. 
 
 Um die Textmanipulation und Umleitung in Linux zu meistern, ist Übung der Schlüssel. Die folgenden praktischen Übungen helfen, Ihr Verständnis zu festigen:
 
-1.  **[Eingabe- und Ausgabeumleitung in Linux](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie Standardausgabe (stdout), Standardfehler (stderr) und Standardeingabe (stdin) mithilfe von Operatoren wie `>` und `>>` manipulieren.
-2.  **[Einfache Textverarbeitung](https://labex.io/de/labs/linux-simple-text-processing-18004)** - Lernen Sie, leistungsstarke Befehle wie `tr`, `col`, `join` und `paste` zu verwenden, um Textdaten effizient zu manipulieren und zu analysieren, wodurch Ihre Kommandozeilenfähigkeiten für die Datenverarbeitung verbessert werden.
-3.  **[Textverarbeitung und reguläre Ausdrücke](https://labex.io/de/labs/linux-text-processing-and-regular-expressions-18003)** - Lernen Sie die leistungsstarken Textverarbeitungswerkzeuge `grep`, `sed` und `awk` kennen und verwenden Sie reguläre Ausdrücke für effiziente Textmanipulation und Mustererkennung in Linux.
+1. **[Eingabe- und Ausgabeumleitung in Linux](https://labex.io/de/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Üben Sie die Steuerung des Datenflusses von Befehlen, indem Sie Standardausgabe (stdout), Standardfehler (stderr) und Standardeingabe (stdin) mithilfe von Operatoren wie `>` und `>>` manipulieren.
+2. **[Einfache Textverarbeitung](https://labex.io/de/labs/linux-simple-text-processing-18004)** - Lernen Sie, leistungsstarke Befehle wie `tr`, `col`, `join` und `paste` zu verwenden, um Textdaten effizient zu manipulieren und zu analysieren, wodurch Ihre Kommandozeilenfähigkeiten für die Datenverarbeitung verbessert werden.
+3. **[Textverarbeitung und reguläre Ausdrücke](https://labex.io/de/labs/linux-text-processing-and-regular-expressions-18003)** - Lernen Sie die leistungsstarken Textverarbeitungswerkzeuge `grep`, `sed` und `awk` kennen und verwenden Sie reguläre Ausdrücke für effiziente Textmanipulation und Mustererkennung in Linux.
 
 Das Abschließen dieser Übungen hilft Ihnen, die Konzepte der Texttransformation und Dateimanipulation in realen Szenarien anzuwenden und Ihr Vertrauen in wesentliche Linux-Kommandozeilenwerkzeuge aufzubauen.
 

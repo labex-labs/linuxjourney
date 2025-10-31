@@ -34,9 +34,9 @@ The `logrotate` utility is highly configurable and is typically scheduled to run
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of log file management and related system administration tasks:
 
-1.  **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice essential Linux command-line skills for efficiently viewing and navigating text files, including system logs and configuration files, which are managed by tools like `logrotate`.
-2.  **[Rapid Threat Detection](https://labex.io/labs/linux-rapid-threat-detection-387930)** - Learn essential Linux command-line skills for cybersecurity analysis. Use `tail` and `head` commands to quickly extract and analyze recent log entries, simulating rapid threat detection in a high-stakes tech environment.
-3.  **[Create and Restore a Backup with tar in Linux](https://labex.io/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Gain hands-on experience with system administration tasks by backing up directories, which is often a part of log rotation strategies to archive old logs.
+1. **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice essential Linux command-line skills for efficiently viewing and navigating text files, including system logs and configuration files, which are managed by tools like `logrotate`.
+2. **[Rapid Threat Detection](https://labex.io/labs/linux-rapid-threat-detection-387930)** - Learn essential Linux command-line skills for cybersecurity analysis. Use `tail` and `head` commands to quickly extract and analyze recent log entries, simulating rapid threat detection in a high-stakes tech environment.
+3. **[Create and Restore a Backup with tar in Linux](https://labex.io/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Gain hands-on experience with system administration tasks by backing up directories, which is often a part of log rotation strategies to archive old logs.
 
 These labs will help you apply the concepts in real scenarios and build confidence with managing and interacting with log files in Linux.
 

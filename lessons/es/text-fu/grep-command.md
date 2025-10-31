@@ -38,6 +38,7 @@ Sin `-e`, `grep` trataría `-v` como la opción de "inversión de coincidencia".
 Puede modificar el comportamiento de `grep` con varias banderas para refinar sus resultados de búsqueda.
 
 - **Búsqueda Insensible a Mayúsculas y Minúsculas**: Use la bandera `-i` para hacer que su búsqueda no distinga entre mayúsculas y minúsculas.
+
   ```bash
   grep -i somepattern somefile
   ```
@@ -49,6 +50,7 @@ grep -c fox sample.txt
 ````
 
 - **Mostrar Solo la Coincidencia**: Si solo desea ver la parte exacta de la línea que coincide con el patrón, use la bandera `grep -o`.
+
   ```bash
   grep -o fox sample.txt
   ```
@@ -81,9 +83,9 @@ Como puede ver, `grep` es una herramienta versátil y poderosa para cualquier us
 
 ¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la búsqueda de texto y la coincidencia de patrones con `grep`:
 
-1.  **[Buscar Texto con grep en Linux](https://labex.io/es/labs/comptia-search-text-with-grep-in-linux-590841)** - Practique búsquedas básicas, muestre números de línea, use anclas y aproveche las expresiones regulares tanto básicas como extendidas para la coincidencia de patrones complejos con `grep`.
-2.  **[Comando Linux grep: Búsqueda de Patrones](https://labex.io/es/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprenda a usar `grep` para buscar y hacer coincidir patrones dentro de archivos de texto, y explore expresiones regulares para definir patrones de búsqueda complejos.
-3.  **[Aguja en el Pajar](https://labex.io/es/labs/linux-needle-in-the-haystack-388109)** - Aprenda el poder del comando `grep` para buscar patrones específicos, contar ocurrencias, extraer valores únicos y combinar múltiples criterios de búsqueda en varios archivos de registro.
+1. **[Buscar Texto con grep en Linux](https://labex.io/es/labs/comptia-search-text-with-grep-in-linux-590841)** - Practique búsquedas básicas, muestre números de línea, use anclas y aproveche las expresiones regulares tanto básicas como extendidas para la coincidencia de patrones complejos con `grep`.
+2. **[Comando Linux grep: Búsqueda de Patrones](https://labex.io/es/labs/linux-linux-grep-command-pattern-searching-219192)** - Aprenda a usar `grep` para buscar y hacer coincidir patrones dentro de archivos de texto, y explore expresiones regulares para definir patrones de búsqueda complejos.
+3. **[Aguja en el Pajar](https://labex.io/es/labs/linux-needle-in-the-haystack-388109)** - Aprenda el poder del comando `grep` para buscar patrones específicos, contar ocurrencias, extraer valores únicos y combinar múltiples criterios de búsqueda en varios archivos de registro.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con `grep` y las expresiones regulares.
 

@@ -45,8 +45,8 @@ sudo chown patty:whales myfile
 
 为了巩固您对**Linux 文件所有权**的理解，我们建议您通过以下实践实验室进行练习。它们提供了应用 `chown` 和 `chgrp` 命令的真实场景。
 
-1.  **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 学习基本的 Linux 用户和组管理概念，包括理解文件权限和操作文件所有权。此实验室提供了在多用户 Linux 环境中保护文件的实践经验。
-2.  **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此挑战中，您将通过创建新用户帐户、设置自定义组以及管理组成员资格来模拟向服务器环境添加新团队成员。这将测试您在 Linux 用户和组管理方面的技能。
+1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 学习基本的 Linux 用户和组管理概念，包括理解文件权限和操作文件所有权。此实验室提供了在多用户 Linux 环境中保护文件的实践经验。
+2. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此挑战中，您将通过创建新用户帐户、设置自定义组以及管理组成员资格来模拟向服务器环境添加新团队成员。这将测试您在 Linux 用户和组管理方面的技能。
 
 这些实验室将帮助您在实际场景中应用这些概念，并增强您管理 Linux 中文件所有权和权限的信心。
 

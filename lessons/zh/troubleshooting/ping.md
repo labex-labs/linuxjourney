@@ -43,9 +43,9 @@ PING www.google.com (74.125.239.112) 56(84) bytes of data.
 
 实践对于掌握网络诊断至关重要。这些动手实验将帮助您巩固对 `ping` 命令的理解：
 
-1.  **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 探索网络层和数据链路层交互，并观察默认网关如何处理远程流量。
-2.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 利用 `ping` 和 `ip a` 测试本地 TCP/IP 堆栈，验证公共互联网连接性，并探索网络可达性。
-3.  **[在 Linux 中模拟网络层连接性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习使用 `ip addr` 分配静态 IP 地址，并在同一子网和不同子网上使用 `ping` 测试连接性。
+1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 探索网络层和数据链路层交互，并观察默认网关如何处理远程流量。
+2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 利用 `ping` 和 `ip a` 测试本地 TCP/IP 堆栈，验证公共互联网连接性，并探索网络可达性。
+3. **[在 Linux 中模拟网络层连接性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习使用 `ip addr` 分配静态 IP 地址，并在同一子网和不同子网上使用 `ping` 测试连接性。
 
 这些实验将帮助您在现实场景中应用网络可达性和 `ping` 命令的概念，增强您对 Linux 网络诊断的信心。
 

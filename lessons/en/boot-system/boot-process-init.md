@@ -31,7 +31,7 @@ We have an entire course on Init systems where we will dive into each of these s
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux processes and how the system manages them:
 
-1.  **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`. This lab will help you understand the lifecycle and control of processes, which are fundamental to how `init` operates.
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`. This lab will help you understand the lifecycle and control of processes, which are fundamental to how `init` operates.
 
 These labs will help you apply these concepts in real-world scenarios and build confidence with Linux process management.
 

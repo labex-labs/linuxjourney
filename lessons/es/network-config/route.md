@@ -53,8 +53,8 @@ Dominar el comando `ip route` es una habilidad clave para cualquier administrado
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y la asignación de direcciones IP:
 
-1.  **[Administrar la asignación de direcciones IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique la configuración de una IP estática, el establecimiento de una puerta de enlace predeterminada y la verificación de la configuración de red usando el comando `ip`.
-2.  **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo la puerta de enlace predeterminada maneja el tráfico remoto y observe las interacciones de la capa de red.
+1. **[Administrar la asignación de direcciones IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique la configuración de una IP estática, el establecimiento de una puerta de enlace predeterminada y la verificación de la configuración de red usando el comando `ip`.
+2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo la puerta de enlace predeterminada maneja el tráfico remoto y observe las interacciones de la capa de red.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de asignación de direcciones IP y enrutamiento en escenarios reales y a ganar confianza con la red de Linux.
 

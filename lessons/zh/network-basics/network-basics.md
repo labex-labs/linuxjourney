@@ -36,9 +36,9 @@ meta_keywords: "网络基础，Linux 基础，学习 Linux 的最佳方式，Lin
 
 实践造就完美！实践经验对于掌握 **网络基础知识** 至关重要。以下实验将帮助您巩固对网络组件和主机如何通信的理解：
 
-1.  **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别主机的网络寻址信息，包括 MAC 和 IP 地址。
-2.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 学习测试网络可达性和识别不同 IP 地址类型，这对理解主机如何连接至关重要。
-3.  **[在 Linux 中探索与 ping 和 arp 的网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 通过观察地址解析协议 (ARP) 和使用 `ping` 测试连通性，了解主机如何在网络上进行交互。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别主机的网络寻址信息，包括 MAC 和 IP 地址。
+2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 学习测试网络可达性和识别不同 IP 地址类型，这对理解主机如何连接至关重要。
+3. **[在 Linux 中探索与 ping 和 arp 的网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 通过观察地址解析协议 (ARP) 和使用 `ping` 测试连通性，了解主机如何在网络上进行交互。
 
 这些实验将帮助您在实际场景中应用主机、寻址和基本连接的概念，并增强对网络基础知识的信心。
 

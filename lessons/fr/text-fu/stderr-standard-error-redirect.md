@@ -59,8 +59,8 @@ ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 
 Décortiquons cela :
 
-1.  `> peanuts.txt` redirige `stdout` (descripteur de fichier 1) vers le fichier `peanuts.txt`.
-2.  `2>&1` redirige `stderr` (descripteur de fichier 2) vers le même emplacement que celui vers lequel `stdout` (descripteur de fichier 1) pointe actuellement.
+1. `> peanuts.txt` redirige `stdout` (descripteur de fichier 1) vers le fichier `peanuts.txt`.
+2. `2>&1` redirige `stderr` (descripteur de fichier 2) vers le même emplacement que celui vers lequel `stdout` (descripteur de fichier 1) pointe actuellement.
 
 L'ordre est important. `2>&1` envoie `stderr` vers la destination actuelle de `stdout`. Dans ce cas, `stdout` pointe vers un fichier, donc `stderr` est également envoyé vers ce fichier.
 

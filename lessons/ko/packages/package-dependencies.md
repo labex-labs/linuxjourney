@@ -29,8 +29,8 @@ meta_keywords: "Linux 패키지 종속성, 공유 라이브러리, Linux 패키�
 
 리눅스 패키지, 종속성 및 공유 라이브러리에 대한 이해를 강화하는 데 도움이 되는 다음 실습 랩을 통해 지식을 적용해 보세요:
 
-1.  **[리눅스에서 공유 라이브러리 관리](https://labex.io/ko/labs/comptia-manage-shared-libraries-in-linux-590867)** - 많은 애플리케이션의 중요한 종속성인 공유 라이브러리를 식별, 위치 지정 및 관리하는 연습을 합니다.
-2.  **[리눅스에서 RPM 을 사용한 패키지 관리](https://labex.io/ko/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - RPM 기반 시스템에서 소프트웨어 패키지를 관리하는 방법을 배우고, 패키지 정보를 쿼리하고 종속성을 이해하는 것을 포함합니다.
-3.  **[리눅스에서 YUM 을 사용한 패키지 쿼리 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 설치된 패키지를 검사하고, 리포지토리를 탐색하며, 업데이트를 관리하는 경험을 쌓습니다. 이 모든 과정은 패키지 종속성 처리를 포함합니다.
+1. **[리눅스에서 공유 라이브러리 관리](https://labex.io/ko/labs/comptia-manage-shared-libraries-in-linux-590867)** - 많은 애플리케이션의 중요한 종속성인 공유 라이브러리를 식별, 위치 지정 및 관리하는 연습을 합니다.
+2. **[리눅스에서 RPM 을 사용한 패키지 관리](https://labex.io/ko/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - RPM 기반 시스템에서 소프트웨어 패키지를 관리하는 방법을 배우고, 패키지 정보를 쿼리하고 종속성을 이해하는 것을 포함합니다.
+3. **[리눅스에서 YUM 을 사용한 패키지 쿼리 및 업데이트](https://labex.io/ko/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM 을 사용하여 설치된 패키지를 검사하고, 리포지토리를 탐색하며, 업데이트를 관리하는 경험을 쌓습니다. 이 모든 과정은 패키지 종속성 처리를 포함합니다.
 
 이러한 랩은 패키지 관리 및 종속성 해결 개념을 실제 시나리오에 적용하여 리눅스 소프트웨어 설치에 대한 자신감을 높이는 데 도움이 될 것입니다.

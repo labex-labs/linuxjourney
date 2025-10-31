@@ -37,9 +37,9 @@ Para entender como os dados se movem, é útil conhecer estes termos relacionado
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de conectividade de rede e roteamento:
 
-1.  **[Explorar Tipos de Endereço IP e Alcançabilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique testar a pilha TCP/IP local, identificar IPs privados e públicos e verificar a alcançabilidade da rede, que são fundamentais para entender como um roteador facilita a comunicação.
-2.  **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` ajudam você a observar como as camadas de rede e de enlace de dados interagem, e como o gateway padrão (roteador) lida com o tráfego remoto.
-3.  **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use o Docker para simular nós de rede e atribuir endereços IP, em seguida, teste a conectividade para entender como as sub-redes IP e o roteamento governam a comunicação em rede.
+1. **[Explorar Tipos de Endereço IP e Alcançabilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique testar a pilha TCP/IP local, identificar IPs privados e públicos e verificar a alcançabilidade da rede, que são fundamentais para entender como um roteador facilita a comunicação.
+2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` ajudam você a observar como as camadas de rede e de enlace de dados interagem, e como o gateway padrão (roteador) lida com o tráfego remoto.
+3. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use o Docker para simular nós de rede e atribuir endereços IP, em seguida, teste a conectividade para entender como as sub-redes IP e o roteamento governam a comunicação em rede.
 
 Esses laboratórios ajudarão você a aplicar os conceitos de comunicação de rede, endereçamento IP e o papel do roteamento em cenários reais, aumentando sua confiança nos fundamentos de rede.
 

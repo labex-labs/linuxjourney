@@ -40,7 +40,7 @@ You should only create a filesystem on a newly created partition or on a disk yo
 
 Practice is key to mastering Linux skills. This hands-on lab will help reinforce your understanding of managing Linux filesystems:
 
-1.  **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use `fdisk` to create a new partition, format it with `ext4` (using `mkfs`), mount it, configure persistent mounting in `/etc/fstab`, and create a swap partition, all on a safe secondary virtual disk.
+1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use `fdisk` to create a new partition, format it with `ext4` (using `mkfs`), mount it, configure persistent mounting in `/etc/fstab`, and create a swap partition, all on a safe secondary virtual disk.
 
 This lab will help you apply the concepts of creating and managing filesystems in real-world scenarios and build confidence with disk management in Linux.
 

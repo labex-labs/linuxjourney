@@ -35,9 +35,9 @@ TCP bietet einen zuverlässigen, verbindungsorientierten Datenstrom. Bevor Daten
 
 Um eine Verbindung herzustellen, verwendet TCP einen Prozess, der als Drei-Wege-Handshake bezeichnet wird:
 
-1.  **SYN**: Der Client sendet ein SYN (Synchronize)-Segment an den Server, um eine Verbindung zu initiieren.
-2.  **SYN-ACK**: Der Server antwortet mit einem SYN-ACK (Synchronize-Acknowledge)-Segment, um die Anforderung des Clients zu bestätigen.
-3.  **ACK**: Der Client sendet ein ACK (Acknowledge)-Segment zurück an den Server, wodurch die Verbindung als hergestellt bestätigt wird.
+1. **SYN**: Der Client sendet ein SYN (Synchronize)-Segment an den Server, um eine Verbindung zu initiieren.
+2. **SYN-ACK**: Der Server antwortet mit einem SYN-ACK (Synchronize-Acknowledge)-Segment, um die Anforderung des Clients zu bestätigen.
+3. **ACK**: Der Client sendet ein ACK (Acknowledge)-Segment zurück an den Server, wodurch die Verbindung als hergestellt bestätigt wird.
 
 Sobald der Handshake abgeschlossen ist, können Daten zuverlässig ausgetauscht werden. TCP verwendet Sequenznummern, um jedes Segment zu verfolgen, wodurch der empfangende Host sie in der richtigen Reihenfolge wieder zusammensetzen und die erneute Übertragung fehlender Segmente anfordern kann. In unserem E-Mail-Beispiel würde die Transportschicht die Ziel-Portnummer für SMTP (Port 25) und einen Quell-Port des Client-Hosts an jedes Segment anhängen.
 

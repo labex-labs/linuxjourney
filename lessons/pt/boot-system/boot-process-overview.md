@@ -35,7 +35,7 @@ Isso fornece uma visão geral de alto nível do **processo de inicialização do
 
 Para solidificar sua compreensão, recomendamos experimentar este laboratório prático. Ele fornece um ambiente prático para aplicar o que você aprendeu sobre o processo de boot do Linux.
 
-1.  **[Personalizar o Menu de Boot GRUB2 no Linux](https://labex.io/pt/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Pratique modificar o menu de boot GRUB2, um componente crítico na sequência de boot do Linux.
+1. **[Personalizar o Menu de Boot GRUB2 no Linux](https://labex.io/pt/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Pratique modificar o menu de boot GRUB2, um componente crítico na sequência de boot do Linux.
 
 ## Quiz Question
 

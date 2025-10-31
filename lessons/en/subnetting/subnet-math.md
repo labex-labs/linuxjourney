@@ -32,8 +32,8 @@ In our example, the host portion is `00000000`. This is an 8-bit field, and with
 
 While there are 256 possible combinations, not all of them can be assigned to hosts. In any subnet, two addresses are reserved:
 
-1.  **Network Address:** The first address, where all host bits are `0` (e.g., 192.168.1.0).
-2.  **Broadcast Address:** The last address, where all host bits are `1` (e.g., 192.168.1.255).
+1. **Network Address:** The first address, where all host bits are `0` (e.g., 192.168.1.0).
+2. **Broadcast Address:** The last address, where all host bits are `1` (e.g., 192.168.1.255).
 
 Therefore, the actual number of usable hosts is 256 - 2 = 254. This means for the `192.168.1.0` network with a `255.255.255.0` mask, you can assign IP addresses from `192.168.1.1` to `192.168.1.254`. This core calculation is a fundamental part of **subnet math**.
 
@@ -41,9 +41,9 @@ Therefore, the actual number of usable hosts is 256 - 2 = 254. This means for th
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of IP addressing and subnetting:
 
-1.  **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential skills for network configuration and planning.
-2.  **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Deepen your understanding of various IP address types and how to verify network reachability using Linux commands.
-3.  **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apply your knowledge by simulating network configurations and testing connectivity between different IP subnets in a practical environment.
+1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential skills for network configuration and planning.
+2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Deepen your understanding of various IP address types and how to verify network reachability using Linux commands.
+3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Apply your knowledge by simulating network configurations and testing connectivity between different IP subnets in a practical environment.
 
 These labs will help you apply the concepts of IP addressing, subnet masks, and host calculation in real-world scenarios and build confidence with network fundamentals.
 

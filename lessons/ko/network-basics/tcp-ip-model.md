@@ -52,9 +52,9 @@ meta_keywords: "TCP/IP 모델, tcp ip 모델의 계층, tcp ip 네트워킹, tcp
 
 연습이 완벽을 만듭니다! 다음은 TCP/IP 모델 및 네트워크 기본 사항에 대한 이해를 강화하기 위한 실습 랩입니다.
 
-1.  **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소와 같은 주요 네트워크 주소 정보를 식별하는 연습을 합니다. 이는 TCP/IP 모델의 네트워크 및 데이터 링크 계층을 이해하는 데 기본이 됩니다.
-2.  **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 네트워크 계층과 데이터 링크 계층 간의 상호 작용을 시연하는 방법을 학습하여 장치가 TCP/IP 스택 내에서 통신하는 방식에 대한 실제적인 통찰력을 얻습니다.
-3.  **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Linux 노드 간의 네트워크 연결을 시뮬레이션하고, IP 주소를 할당하고, 통신을 테스트하는 실습 경험을 얻습니다. 이는 TCP/IP 모델의 네트워크 계층과 관련된 개념을 직접 적용하는 것입니다.
+1. **[Linux 에서 MAC 및 IP 주소 식별하기](https://labex.io/ko/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a` 명령을 사용하여 MAC 및 IP 주소와 같은 주요 네트워크 주소 정보를 식별하는 연습을 합니다. 이는 TCP/IP 모델의 네트워크 및 데이터 링크 계층을 이해하는 데 기본이 됩니다.
+2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping` 및 `arp` 명령이 네트워크 계층과 데이터 링크 계층 간의 상호 작용을 시연하는 방법을 학습하여 장치가 TCP/IP 스택 내에서 통신하는 방식에 대한 실제적인 통찰력을 얻습니다.
+3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Linux 노드 간의 네트워크 연결을 시뮬레이션하고, IP 주소를 할당하고, 통신을 테스트하는 실습 경험을 얻습니다. 이는 TCP/IP 모델의 네트워크 계층과 관련된 개념을 직접 적용하는 것입니다.
 
 이러한 랩은 실제 시나리오에서 TCP/IP 모델의 개념을 적용하고 네트워크 구성 및 문제 해결에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

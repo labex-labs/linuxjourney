@@ -35,8 +35,8 @@ Chrome や Firefox のような名前でソフトウェアを知っているか�
 
 知識を応用するために、これらのハンズオンラボをお勧めします。これらは、このレッスンで取り上げた概念に関する実践的な経験を提供します。
 
-1.  **[Linux での RPM を使用したパッケージ管理](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Red Hat ベースのシステムで、パッケージ情報の照会、整合性の検証、RPM パッケージの内容の検査に関する実践的な経験を積みます。
-2.  **[Linux での YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を学びます。これには、リポジトリの検査、更新、調査が含まれます。
-3.  **[Linux でのソースコードからのソフトウェアのビルド](https://labex.io/ja/labs/comptia-build-software-from-source-code-in-linux-590853)** - パッケージマネージャ経由で利用できないアプリケーションにとって重要なスキルである、ソースコードからソフトウェアをビルドおよびインストールする基本的なプロセスを理解します。
+1. **[Linux での RPM を使用したパッケージ管理](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Red Hat ベースのシステムで、パッケージ情報の照会、整合性の検証、RPM パッケージの内容の検査に関する実践的な経験を積みます。
+2. **[Linux での YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を学びます。これには、リポジトリの検査、更新、調査が含まれます。
+3. **[Linux でのソースコードからのソフトウェアのビルド](https://labex.io/ja/labs/comptia-build-software-from-source-code-in-linux-590853)** - パッケージマネージャ経由で利用できないアプリケーションにとって重要なスキルである、ソースコードからソフトウェアをビルドおよびインストールする基本的なプロセスを理解します。
 
 これらのラボは、パッケージ管理とソフトウェアインストールの概念を実際のシナリオに適用し、Linux システム管理への自信を築くのに役立ちます。

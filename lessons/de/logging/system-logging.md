@@ -38,9 +38,9 @@ Dieser Eintrag zeigt, dass am 27. Januar um 07:41:32 der Dienst `anacron` auf de
 
 Übung ist unerlässlich für die Beherrschung. Die folgenden praktischen Labs sind einige der **best resources to learn Linux** für die Verwaltung von Protokolldateien und das Anzeigen von Dateien.
 
-1.  **[Viewing Log and Configuration Files in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Lernen Sie wesentliche Linux-Kommandozeilenfähigkeiten zum effizienten Anzeigen und Navigieren in Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien. Üben Sie die Verwendung von Befehlen wie `cat`, `more` und `less`, um kritische Informationen aus verschiedenen Dateitypen zu extrahieren.
-2.  **[Linux tail Command: File End Display](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux-Befehl `tail` zum Anzeigen und Überwachen des Endes von Textdateien kennen. Dies ist besonders nützlich für die Echtzeit-Protokollanalyse.
-3.  **[Search Text with grep in Linux](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, mit dem Befehl `grep` nach Text in Dateien auf einem Linux-System zu suchen. Dies ist von unschätzbarem Wert, um bestimmte Einträge in großen Protokolldateien zu finden.
+1. **[Viewing Log and Configuration Files in Linux](https://labex.io/de/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Lernen Sie wesentliche Linux-Kommandozeilenfähigkeiten zum effizienten Anzeigen und Navigieren in Textdateien, einschließlich Systemprotokollen und Konfigurationsdateien. Üben Sie die Verwendung von Befehlen wie `cat`, `more` und `less`, um kritische Informationen aus verschiedenen Dateitypen zu extrahieren.
+2. **[Linux tail Command: File End Display](https://labex.io/de/labs/linux-linux-tail-command-file-end-display-214303)** - Lernen Sie den Linux-Befehl `tail` zum Anzeigen und Überwachen des Endes von Textdateien kennen. Dies ist besonders nützlich für die Echtzeit-Protokollanalyse.
+3. **[Search Text with grep in Linux](https://labex.io/de/labs/comptia-search-text-with-grep-in-linux-590841)** - In diesem Lab lernen Sie, mit dem Befehl `grep` nach Text in Dateien auf einem Linux-System zu suchen. Dies ist von unschätzbarem Wert, um bestimmte Einträge in großen Protokolldateien zu finden.
 
 Diese Labs helfen Ihnen, die Konzepte der Protokolldateiverwaltung und -analyse in realen Szenarien anzuwenden und Vertrauen in die Linux-Systemüberwachung aufzubauen.
 

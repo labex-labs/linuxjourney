@@ -43,9 +43,9 @@ Por ejemplo, un host en `192.168.1.129` en una red con una máscara `255.255.255
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del direccionamiento IP y el subnetting:
 
-1.  **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practica el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4, lo cual es fundamental para comprender las subredes.
-2.  **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprende a explorar diferentes tipos de direcciones IP y a probar la alcanzabilidad de la red, lo que te ayudará a verificar si los hosts están en la misma red.
-3.  **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, aplicando directamente los conceptos de prefijo de red e identificación de host discutidos en la lección.
+1. **[Identificar Direcciones MAC e IP en Linux](https://labex.io/es/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practica el uso del comando `ip a` para identificar información de direccionamiento de red, incluidas las direcciones IPv4, lo cual es fundamental para comprender las subredes.
+2. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprende a explorar diferentes tipos de direcciones IP y a probar la alcanzabilidad de la red, lo que te ayudará a verificar si los hosts están en la misma red.
+3. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria, aplicando directamente los conceptos de prefijo de red e identificación de host discutidos en la lección.
 
 Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con el direccionamiento de red y el subnetting.
 

@@ -31,9 +31,9 @@ meta_keywords: "리눅스 커널, 운영 체제, 하드웨어, 사용자 공간,
 
 이론을 실제에 적용하기 위해 다음 실습 랩을 시도해 보세요. 이 랩들은 리눅스 커널과 시스템 구성 요소와의 상호 작용에 대한 이해를 강화할 것입니다:
 
-1.  **[리눅스에서 커널 모듈 관리](https://labex.io/ko/labs/comptia-manage-kernel-modules-in-linux-590865)** - 커널 모듈을 나열, 검사, 로드 및 언로드하고 부팅 시 자동 로드를 위해 구성하는 연습을 합니다.
-2.  **[리눅스에서 하드웨어 장치 탐색](https://labex.io/ko/labs/comptia-explore-hardware-devices-in-linux-590861)** - 명령줄 유틸리티를 사용하여 리눅스 환경 내에서 하드웨어 장치를 식별하고 검사하는 방법을 배웁니다.
-3.  **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 커널이 관리하는 파티션 생성, 파일 시스템 포맷, 마운트 및 영구 마운트 구성을 직접 경험합니다.
+1. **[리눅스에서 커널 모듈 관리](https://labex.io/ko/labs/comptia-manage-kernel-modules-in-linux-590865)** - 커널 모듈을 나열, 검사, 로드 및 언로드하고 부팅 시 자동 로드를 위해 구성하는 연습을 합니다.
+2. **[리눅스에서 하드웨어 장치 탐색](https://labex.io/ko/labs/comptia-explore-hardware-devices-in-linux-590861)** - 명령줄 유틸리티를 사용하여 리눅스 환경 내에서 하드웨어 장치를 식별하고 검사하는 방법을 배웁니다.
+3. **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 커널이 관리하는 파티션 생성, 파일 시스템 포맷, 마운트 및 영구 마운트 구성을 직접 경험합니다.
 
 이 랩들은 하드웨어 및 시스템 리소스와 커널 상호 작용 개념을 실제 시나리오에 적용하고 낮은 수준의 리눅스 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

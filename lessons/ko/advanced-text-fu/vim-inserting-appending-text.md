@@ -46,7 +46,7 @@ Vim 에서는 주로 두 가지 모드, 즉 명령을 실행하기 위한 일반
 
 연습은 Vim 을 마스터하는 데 필수적입니다. 다음 실습은 Vim 의 텍스트 편집 기능을 강화하기 위한 실습 환경을 제공합니다.
 
-1.  **[Linux 에서 Vim 과 Nano 로 텍스트 파일 편집하기](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 파일 생성, 텍스트 편집, 파일 저장, vi/vim 및 nano 를 사용한 탐색을 연습합니다. 이 실습은 Vim 의 일반 모드와 삽입 모드 사용의 기본 기술을 숙달하는 데 도움이 될 것입니다.
+1. **[Linux 에서 Vim 과 Nano 로 텍스트 파일 편집하기](https://labex.io/ko/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 파일 생성, 텍스트 편집, 파일 저장, vi/vim 및 nano 를 사용한 탐색을 연습합니다. 이 실습은 Vim 의 일반 모드와 삽입 모드 사용의 기본 기술을 숙달하는 데 도움이 될 것입니다.
 
 이러한 개념을 실제 시나리오에 적용하면 Linux 에서 Vim 을 사용하여 텍스트 편집에 대한 자신감을 키울 수 있습니다.
 

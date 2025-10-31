@@ -92,7 +92,7 @@ Cette commande redimensionne la partition numéro 1 pour qu'elle se termine à l
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du partitionnement de disque Linux et de la gestion des systèmes de fichiers :
 
-1.  [Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition swap, le tout sur un disque virtuel secondaire sécurisé.
+1. [Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition swap, le tout sur un disque virtuel secondaire sécurisé.
 
 Ce laboratoire vous aidera à appliquer les concepts de partitionnement de disque et de gestion de système de fichiers dans un scénario réel et à renforcer votre confiance dans ces compétences essentielles d'administration Linux.
 

@@ -33,9 +33,9 @@ Man 페이지는 명령어 옵션을 이해하는 데 특히 유용합니다. �
 
 연습은 명령줄을 마스터하는 열쇠입니다. 이 실습 랩은 기본 명령어에 대한 기술을 강화하는 데 도움이 될 것입니다. 완료한 후에는 `man` 명령어를 사용하여 각 도구의 잠재력을 최대한 탐색하십시오.
 
-1.  **[Linux ls 명령어: 콘텐츠 나열](https://labex.io/ko/labs/linux-linux-ls-command-content-listing-219205)** - 파일 및 디렉터리 내용을 나열하고 분석하는 연습을 한 다음, `man ls`를 사용하여 더 많은 옵션을 찾아보십시오.
-2.  **[Linux pwd 명령어: 디렉터리 표시](https://labex.io/ko/labs/linux-linux-pwd-command-directory-displaying-209734)** - 현재 디렉터리를 표시하는 `pwd` 명령어를 배우고, 세부 정보를 위해 해당 man 페이지를 탐색하십시오.
-3.  **[Linux cd 명령어: 디렉터리 변경](https://labex.io/ko/labs/linux-linux-cd-command-directory-changing-209733)** - `cd`를 사용하여 파일 시스템 탐색을 마스터하고, `man cd`를 사용하여 다양한 기술을 이해하십시오.
+1. **[Linux ls 명령어: 콘텐츠 나열](https://labex.io/ko/labs/linux-linux-ls-command-content-listing-219205)** - 파일 및 디렉터리 내용을 나열하고 분석하는 연습을 한 다음, `man ls`를 사용하여 더 많은 옵션을 찾아보십시오.
+2. **[Linux pwd 명령어: 디렉터리 표시](https://labex.io/ko/labs/linux-linux-pwd-command-directory-displaying-209734)** - 현재 디렉터리를 표시하는 `pwd` 명령어를 배우고, 세부 정보를 위해 해당 man 페이지를 탐색하십시오.
+3. **[Linux cd 명령어: 디렉터리 변경](https://labex.io/ko/labs/linux-linux-cd-command-directory-changing-209733)** - `cd`를 사용하여 파일 시스템 탐색을 마스터하고, `man cd`를 사용하여 다양한 기술을 이해하십시오.
 
 이 랩들은 핵심 개념을 실제 시나리오에 적용하고 필수 Linux 명령어에 대한 자신감을 구축하여, 지식을 심화하기 위해 `man`을 효과적으로 사용하는 데 대비할 수 있도록 도와줄 것입니다.
 

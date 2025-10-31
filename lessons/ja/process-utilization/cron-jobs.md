@@ -49,7 +49,7 @@ crontab -e
 
 練習あるのみです！このハンズオンラボは、Linux で`タスクをスケジュール`する方法についての理解を深めるのに役立ちます。
 
-1.  **[Linux で at と cron を使用してタスクをスケジュールする](https://labex.io/ja/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - `at`、`atq`、`atrm`、および`crontab`を使用してジョブの作成、管理、削除を練習し、システム管理タスクの自動化に関する実践的な経験を積みます。
+1. **[Linux で at と cron を使用してタスクをスケジュールする](https://labex.io/ja/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - `at`、`atq`、`atrm`、および`crontab`を使用してジョブの作成、管理、削除を練習し、システム管理タスクの自動化に関する実践的な経験を積みます。
 
 このラボは、このレッスンからの概念を実際のシナリオに適用し、`Linux自動化`に対する自信を構築するのに役立ちます。
 

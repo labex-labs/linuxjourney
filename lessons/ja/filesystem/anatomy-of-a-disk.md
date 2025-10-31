@@ -78,7 +78,7 @@ Number  Start   End     Size     File system  Name        Flags
 
 ディスクパーティションとファイルシステムへの理解を深めるために、次のハンズオンラボをお勧めします。
 
-1.  **[Linux パーティションとファイルシステムの管理](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 新しいパーティションの作成、ext4 などのファイルシステムでのフォーマット、マウント、および`/etc/fstab`での永続的なマウント設定を練習します。
+1. **[Linux パーティションとファイルシステムの管理](https://labex.io/ja/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 新しいパーティションの作成、ext4 などのファイルシステムでのフォーマット、マウント、および`/etc/fstab`での永続的なマウント設定を練習します。
 
 このラボは、実際のシナリオでディスク管理の概念を適用し、Linux ストレージに対する自信を構築するのに役立ちます。
 

@@ -32,10 +32,10 @@ DHCP 服务器负责管理一个 IP 地址池并将其租借给客户端设备�
 
 设备通过 DHCP 获取 IP 地址的过程涉及四步交换，通常用首字母缩写 DORA 来记忆：
 
-1.  **DHCP 发现 (DHCP Discover)：** 客户端设备在网络上广播一个 `DISCOVER` 消息，以查找可用的 DHCP 服务器。
-2.  **DHCP 提供 (DHCP Offer)：** 任何收到发现消息的 DHCP 服务器都可以用 `OFFER` 消息进行响应。此消息包含提议的 IP 地址、子网掩码、网关地址和租约期限。
-3.  **DHCP 请求 (DHCP Request)：** 客户端接收到一个或多个提议，并选择一个。然后它广播一个 `REQUEST` 消息，告知所有 DHCP 服务器它接受了哪个提议。
-4.  **DHCP 确认 (DHCP Acknowledgment - ACK)：** 做出被接受提议的服务器向客户端发送最终的 `ACK` 消息，确认租约并最终确定配置。
+1. **DHCP 发现 (DHCP Discover)：** 客户端设备在网络上广播一个 `DISCOVER` 消息，以查找可用的 DHCP 服务器。
+2. **DHCP 提供 (DHCP Offer)：** 任何收到发现消息的 DHCP 服务器都可以用 `OFFER` 消息进行响应。此消息包含提议的 IP 地址、子网掩码、网关地址和租约期限。
+3. **DHCP 请求 (DHCP Request)：** 客户端接收到一个或多个提议，并选择一个。然后它广播一个 `REQUEST` 消息，告知所有 DHCP 服务器它接受了哪个提议。
+4. **DHCP 确认 (DHCP Acknowledgment - ACK)：** 做出被接受提议的服务器向客户端发送最终的 `ACK` 消息，确认租约并最终确定配置。
 
 虽然完整协议更为复杂，但这四个步骤代表了 DHCP 如何动态配置网络上主机的核心。
 
@@ -43,9 +43,9 @@ DHCP 服务器负责管理一个 IP 地址池并将其租借给客户端设备�
 
 熟能生巧！以下是一些实践实验，以加强您对动态 IP 地址分配和网络配置的理解：
 
-1.  **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令检查接口，并专门使用 `dhclient` 来获取动态 IP 地址，直接应用您对 DHCP 的知识。
-2.  **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令来识别网络寻址信息，包括 DHCP 分配的 IP 地址，并检查网络接口。
-3.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 地址和网络可达性，帮助您了解动态分配的 IP 在网络中如何工作。
+1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令检查接口，并专门使用 `dhclient` 来获取动态 IP 地址，直接应用您对 DHCP 的知识。
+2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令来识别网络寻址信息，包括 DHCP 分配的 IP 地址，并检查网络接口。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 地址和网络可达性，帮助您了解动态分配的 IP 在网络中如何工作。
 
 这些实验将帮助您在实际场景中应用动态 IP 分配和网络配置的概念，并增强您对 Linux 网络操作的信心。
 

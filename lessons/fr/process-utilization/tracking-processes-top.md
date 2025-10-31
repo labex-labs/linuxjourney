@@ -80,9 +80,9 @@ top -p 1
 
 La pratique est essentielle pour la maîtrise. Ces laboratoires pratiques sont parmi les **meilleures ressources pour apprendre Linux** la gestion des processus, offrant un environnement pratique pour appliquer ce que vous avez appris.
 
-1.  **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir, inspecter, surveiller et terminer des processus dans un environnement Linux réel.
-2.  **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour surveiller l'utilisation du CPU, la mémoire et les processus en cours d'exécution en temps réel.
-3.  **[Commande Linux free : Surveillance de la mémoire système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à utiliser la commande `free` pour surveiller et analyser l'utilisation de la mémoire système.
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir, inspecter, surveiller et terminer des processus dans un environnement Linux réel.
+2. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour surveiller l'utilisation du CPU, la mémoire et les processus en cours d'exécution en temps réel.
+3. **[Commande Linux free : Surveillance de la mémoire système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à utiliser la commande `free` pour surveiller et analyser l'utilisation de la mémoire système.
 
 ## Quiz Question
 

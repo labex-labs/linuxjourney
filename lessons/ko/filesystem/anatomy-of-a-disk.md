@@ -78,7 +78,7 @@ Number  Start   End     Size     File system  Name        Flags
 
 디스크 파티셔닝 및 파일 시스템에 대한 이해를 강화하기 위해 다음 실습 랩을 권장합니다.
 
-1.  **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 새 파티션 생성, ext4 와 같은 파일 시스템으로 포맷, 마운트 및 `/etc/fstab`에서 영구 마운트 구성 연습.
+1. **[리눅스 파티션 및 파일 시스템 관리](https://labex.io/ko/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 새 파티션 생성, ext4 와 같은 파일 시스템으로 포맷, 마운트 및 `/etc/fstab`에서 영구 마운트 구성 연습.
 
 이 랩은 실제 시나리오에서 디스크 관리 개념을 적용하고 리눅스 저장소에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

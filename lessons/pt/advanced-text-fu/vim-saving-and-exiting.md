@@ -9,7 +9,7 @@ meta_keywords: "vim como salvar, linux wq, vi escrever e sair, vim como salvar e
 
 ## Lesson Content
 
-Depois de terminar de editar um arquivo, o próximo passo é salvar suas alterações e sair do editor. O Vim oferece vários comandos para esse fim, cada um com uma função específica. Todos esses comandos são executados no modo de Linha de Comando, que você pode acessar pressionando `: `.
+Depois de terminar de editar um arquivo, o próximo passo é salvar suas alterações e sair do editor. O Vim oferece vários comandos para esse fim, cada um com uma função específica. Todos esses comandos são executados no modo de Linha de Comando, que você pode acessar pressionando `:`.
 
 ### Como Salvar no Editor Vim
 

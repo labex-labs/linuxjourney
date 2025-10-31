@@ -55,9 +55,9 @@ Si vous avez déjà utilisé un multiplexeur de terminal comme `screen` ou `tmux
 
 Pour consolider votre compréhension de la manipulation des buffers et des fichiers texte, essayez ces laboratoires pratiques. Ils vous aideront à appliquer ces concepts dans des scénarios réels.
 
-1.  **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer, modifier, sauvegarder et naviguer dans du texte au sein des éditeurs Vim et Nano, ce qui est crucial pour travailler avec des buffers.
-2.  **[Commande cat sous Linux : concaténation de fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Apprenez à visualiser, concaténer et manipuler des fichiers texte, ce qui s'applique directement à la manière dont vous pourriez interagir avec le contenu d'un buffer.
-3.  **[Visualiser des fichiers de logs et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser des commandes comme `cat`, `more` et `less` pour visualiser et naviguer efficacement dans des fichiers texte, simulant des scénarios réels d'examen de contenu de type buffer.
+1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer, modifier, sauvegarder et naviguer dans du texte au sein des éditeurs Vim et Nano, ce qui est crucial pour travailler avec des buffers.
+2. **[Commande cat sous Linux : concaténation de fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Apprenez à visualiser, concaténer et manipuler des fichiers texte, ce qui s'applique directement à la manière dont vous pourriez interagir avec le contenu d'un buffer.
+3. **[Visualiser des fichiers de logs et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser des commandes comme `cat`, `more` et `less` pour visualiser et naviguer efficacement dans des fichiers texte, simulant des scénarios réels d'examen de contenu de type buffer.
 
 Ces laboratoires vous aideront à gagner en confiance dans la manipulation des fichiers texte et des buffers sous Linux.
 

@@ -43,8 +43,8 @@ find /home -type d -name MyFolder
 
 Linux での `find` コマンドの習熟には実践が鍵となります。これらのハンズオンラボは、ファイルやディレクトリを見つけることへの理解を深めるのに役立ちます。
 
-1.  **[Linux find コマンド：ファイル検索](https://labex.io/ja/labs/linux-linux-find-command-file-searching-219191)** - このラボでは、さまざまな基準に基づいてファイルやディレクトリを検索および特定するための多用途ユーティリティである `find` コマンドの紹介を提供します。特定のファイルを見つけるために `find` を使用する練習をします。
-2.  **[重要なシステムリソースの発見](https://labex.io/ja/labs/linux-discover-critical-system-resources-388032)** - `find` を含む、ファイルや実行可能ファイルを検索するための必須の Linux コマンドを学びます。ファイルシステムを効率的に移動し、重要なシステムリソースを発見する練習をします。
+1. **[Linux find コマンド：ファイル検索](https://labex.io/ja/labs/linux-linux-find-command-file-searching-219191)** - このラボでは、さまざまな基準に基づいてファイルやディレクトリを検索および特定するための多用途ユーティリティである `find` コマンドの紹介を提供します。特定のファイルを見つけるために `find` を使用する練習をします。
+2. **[重要なシステムリソースの発見](https://labex.io/ja/labs/linux-discover-critical-system-resources-388032)** - `find` を含む、ファイルや実行可能ファイルを検索するための必須の Linux コマンドを学びます。ファイルシステムを効率的に移動し、重要なシステムリソースを発見する練習をします。
 
 これらのラボは、概念を実際のシナリオに適用し、`find` コマンドを効果的に使用することへの自信を構築するのに役立ちます。
 

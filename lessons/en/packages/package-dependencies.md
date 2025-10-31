@@ -29,9 +29,9 @@ Effective package management is all about ensuring these dependencies are met. I
 
 Apply your knowledge with these hands-on labs, which will help reinforce your understanding of Linux packages, dependencies, and shared libraries:
 
-1.  **[Manage Shared Libraries in Linux](https://labex.io/labs/comptia-manage-shared-libraries-in-linux-590867)** - Practice identifying, locating, and managing shared libraries, which are crucial dependencies for many applications.
-2.  **[Managing Packages with RPM in Linux](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Learn to manage software packages on RPM-based systems, including querying package information and understanding dependencies.
-3.  **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Gain experience with YUM to inspect installed packages, explore repositories, and manage updates, all of which involve handling package dependencies.
+1. **[Manage Shared Libraries in Linux](https://labex.io/labs/comptia-manage-shared-libraries-in-linux-590867)** - Practice identifying, locating, and managing shared libraries, which are crucial dependencies for many applications.
+2. **[Managing Packages with RPM in Linux](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Learn to manage software packages on RPM-based systems, including querying package information and understanding dependencies.
+3. **[Query and Update Packages with YUM in Linux](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Gain experience with YUM to inspect installed packages, explore repositories, and manage updates, all of which involve handling package dependencies.
 
 These labs will help you apply the concepts of package management and dependency resolution in real-world scenarios, building your confidence with Linux software installation.
 

@@ -53,9 +53,9 @@ RPM: $ yum info nombre_paquete
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión de paquetes en Linux:
 
-1.  **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Practique la gestión de paquetes de software en sistemas Linux basados en RHEL, incluyendo la inspección, actualización y exploración de repositorios.
-2.  **[Instalación de Software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Aprenda varios métodos para instalar y gestionar software en sistemas Ubuntu, incluyendo el uso de apt, dpkg y el manejo de archivos .deb.
-3.  **[Instalación y Eliminación de Paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Practique la actualización del sistema, la instalación y eliminación de paquetes, y la optimización de la configuración del software en un sistema basado en Debian usando `apt`.
+1. **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Practique la gestión de paquetes de software en sistemas Linux basados en RHEL, incluyendo la inspección, actualización y exploración de repositorios.
+2. **[Instalación de Software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Aprenda varios métodos para instalar y gestionar software en sistemas Ubuntu, incluyendo el uso de apt, dpkg y el manejo de archivos .deb.
+3. **[Instalación y Eliminación de Paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Practique la actualización del sistema, la instalación y eliminación de paquetes, y la optimización de la configuración del software en un sistema basado en Debian usando `apt`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la gestión de paquetes de Linux.
 

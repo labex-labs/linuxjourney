@@ -52,9 +52,9 @@ meta_keywords: "TCP/IP 模型，tcp ip 模型中的层次，使用 tcp ip 进行
 
 实践造就完美！以下是一些实践实验，以加强您对 TCP/IP 模型和网络基础知识的理解：
 
-1.  **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别关键网络寻址信息，如 MAC 地址和 IP 地址，这是理解 TCP/IP 模型的网络层和数据链路层的基础。
-2.  **[在 Linux 中探索网络层与 ping 和 arp 的交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 学习 `ping` 和 `arp` 命令如何演示网络层和数据链路层之间的交互，从而对设备如何在 TCP/IP 堆栈内进行通信提供实际见解。
-3.  **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 获得动手经验，模拟 Linux 节点之间的网络连通性，分配 IP 地址并测试通信，直接应用与 TCP/IP 模型网络层相关的概念。
+1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别关键网络寻址信息，如 MAC 地址和 IP 地址，这是理解 TCP/IP 模型的网络层和数据链路层的基础。
+2. **[在 Linux 中探索网络层与 ping 和 arp 的交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 学习 `ping` 和 `arp` 命令如何演示网络层和数据链路层之间的交互，从而对设备如何在 TCP/IP 堆栈内进行通信提供实际见解。
+3. **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 获得动手经验，模拟 Linux 节点之间的网络连通性，分配 IP 地址并测试通信，直接应用与 TCP/IP 模型网络层相关的概念。
 
 这些实验将帮助您在实际场景中应用 TCP/IP 模型的概念，并建立网络配置和故障排除的信心。
 

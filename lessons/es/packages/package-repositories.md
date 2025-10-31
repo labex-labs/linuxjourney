@@ -33,9 +33,9 @@ También es una práctica común agregar nuevas configuraciones de repositorio e
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión de paquetes y los repositorios de Linux:
 
-1.  **[Instalación de Software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Practique varios métodos para instalar y administrar software en sistemas Ubuntu, incluido el uso de apt y el manejo de archivos .deb, lo que se relaciona directamente con el concepto de `sources.list`.
-2.  **[Instalación y Eliminación de Paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Aprenda a actualizar el sistema, instalar y eliminar paquetes en un sistema basado en Debian, solidificando su comprensión de cómo los gestores de paquetes interactúan con los repositorios.
-3.  **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore cómo administrar paquetes de software en sistemas Linux basados en RHEL usando YUM, proporcionando una perspectiva más amplia sobre la gestión de paquetes en diferentes distribuciones.
+1. **[Instalación de Software en Linux](https://labex.io/es/labs/linux-software-installation-on-linux-18005)** - Practique varios métodos para instalar y administrar software en sistemas Ubuntu, incluido el uso de apt y el manejo de archivos .deb, lo que se relaciona directamente con el concepto de `sources.list`.
+2. **[Instalación y Eliminación de Paquetes](https://labex.io/es/labs/linux-installing-and-removing-packages-385380)** - Aprenda a actualizar el sistema, instalar y eliminar paquetes en un sistema basado en Debian, solidificando su comprensión de cómo los gestores de paquetes interactúan con los repositorios.
+3. **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explore cómo administrar paquetes de software en sistemas Linux basados en RHEL usando YUM, proporcionando una perspectiva más amplia sobre la gestión de paquetes en diferentes distribuciones.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de repositorios de paquetes y gestión de software en escenarios reales y a ganar confianza con las tareas de administración del sistema.
 

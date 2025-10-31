@@ -45,8 +45,8 @@ sudo chown patty:whales myfile
 
 **Linux 파일 소유권**에 대한 이해를 공고히 하기 위해 이러한 실습 랩을 통해 연습하는 것을 권장합니다. 이 랩들은 `chown` 및 `chgrp` 명령을 적용할 수 있는 실제 시나리오를 제공합니다.
 
-1.  **[Linux 사용자 그룹 및 파일 권한](https://labex.io/ko/labs/linux-linux-user-group-and-file-permissions-18002)** - 파일 권한 이해 및 파일 소유권 조작을 포함하여 필수적인 Linux 사용자 및 그룹 관리 개념을 학습합니다. 이 랩은 다중 사용자 Linux 환경을 보호하는 실질적인 경험을 제공합니다.
-2.  **[새 사용자 및 그룹 추가](https://labex.io/ko/labs/linux-add-new-user-and-group-17987)** - 이 과제에서는 새 사용자 계정을 생성하고, 사용자 지정 그룹을 설정하며, 그룹 멤버십을 관리하여 서버 환경에 새 팀원을 추가하는 시뮬레이션을 수행합니다. 이는 Linux 사용자 및 그룹 관리 기술을 테스트할 것입니다.
+1. **[Linux 사용자 그룹 및 파일 권한](https://labex.io/ko/labs/linux-linux-user-group-and-file-permissions-18002)** - 파일 권한 이해 및 파일 소유권 조작을 포함하여 필수적인 Linux 사용자 및 그룹 관리 개념을 학습합니다. 이 랩은 다중 사용자 Linux 환경을 보호하는 실질적인 경험을 제공합니다.
+2. **[새 사용자 및 그룹 추가](https://labex.io/ko/labs/linux-add-new-user-and-group-17987)** - 이 과제에서는 새 사용자 계정을 생성하고, 사용자 지정 그룹을 설정하며, 그룹 멤버십을 관리하여 서버 환경에 새 팀원을 추가하는 시뮬레이션을 수행합니다. 이는 Linux 사용자 및 그룹 관리 기술을 테스트할 것입니다.
 
 이러한 랩들은 실제 시나리오에서 개념을 적용하고 Linux 에서 파일 소유권 및 권한을 관리하는 데 자신감을 키우는 데 도움이 될 것입니다.
 

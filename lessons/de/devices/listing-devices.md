@@ -41,7 +41,7 @@ lssci
 
 Um Ihr Verständnis der Erkundung von Hardware-Geräten unter Linux zu festigen, versuchen Sie das folgende praktische Labor:
 
-1.  **[Hardware-Geräte unter Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – In diesem Labor erlernen Sie die wesentlichen Fähigkeiten, um Hardware-Geräte in einer Linux-Umgebung zu erkunden, zu identifizieren und zu inspizieren. Sie erhalten praktische Erfahrung mit leistungsstarken Befehlszeilenprogrammen, um zu verstehen, wie das Betriebssystem mit physischen Komponenten interagiert.
+1. **[Hardware-Geräte unter Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – In diesem Labor erlernen Sie die wesentlichen Fähigkeiten, um Hardware-Geräte in einer Linux-Umgebung zu erkunden, zu identifizieren und zu inspizieren. Sie erhalten praktische Erfahrung mit leistungsstarken Befehlszeilenprogrammen, um zu verstehen, wie das Betriebssystem mit physischen Komponenten interagiert.
 
 Dieses Labor hilft Ihnen, diese Konzepte in einem realen Szenario anzuwenden und Vertrauen in die Verwaltung von Geräteinformationen aufzubauen.
 

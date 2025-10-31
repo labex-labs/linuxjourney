@@ -88,9 +88,9 @@ A localização comum para esses arquivos é `/etc/network/interfaces`. O arquiv
 
 Coloque seu conhecimento em prática com estes laboratórios práticos. Eles ajudarão a reforçar sua compreensão sobre interfaces de rede e endereçamento IP.
 
-1.  **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC, IPv4 e IPv6 em um sistema Linux.
-2.  **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir um gateway padrão e verificar configurações de rede usando o comando `ip`.
-3.  **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP (privado, público, multicast) e teste a acessibilidade da rede usando `ping` e `ip a`.
+1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC, IPv4 e IPv6 em um sistema Linux.
+2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir um gateway padrão e verificar configurações de rede usando o comando `ip`.
+3. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP (privado, público, multicast) e teste a acessibilidade da rede usando `ping` e `ip a`.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de identificação de interface de rede e endereçamento IP em cenários reais e a ganhar confiança com redes Linux.
 

@@ -57,7 +57,7 @@ Vim 编辑的核心公式是：`操作符 + 移动`。操作符是一个动作�
 
 为了将您的知识付诸实践，我们推荐以下动手实验。它将帮助您掌握本 Vim 教程中讨论的基本编辑命令。
 
-1.  **[使用 Vim 和 Nano 在 Linux 中编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习使用 vi/vim 和 nano 创建文件、编辑文本、保存文件和导航。此实验将帮助您在实际场景中应用删除、更改、复制和粘贴文本等概念。
+1. **[使用 Vim 和 Nano 在 Linux 中编辑文本文件](https://labex.io/zh/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - 练习使用 vi/vim 和 nano 创建文件、编辑文本、保存文件和导航。此实验将帮助您在实际场景中应用删除、更改、复制和粘贴文本等概念。
 
 ## Quiz Question
 

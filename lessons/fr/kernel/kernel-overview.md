@@ -31,9 +31,9 @@ Dans ce cours, nous allons plonger profondément dans le noyau, démystifiant se
 
 Pour mettre la théorie en pratique, essayez ces laboratoires pratiques. Ils renforceront votre compréhension du noyau Linux et de son interaction avec les composants du système :
 
-1.  **[Gérer les Modules du Noyau sous Linux](https://labex.io/fr/labs/comptia-manage-kernel-modules-in-linux-590865)** - Entraînez-vous à lister, inspecter, charger et décharger les modules du noyau, et à les configurer pour un chargement automatique au démarrage.
-2.  **[Explorer les Périphériques Matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Apprenez à identifier et inspecter les périphériques matériels dans un environnement Linux à l'aide d'utilitaires en ligne de commande.
-3.  **[Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Acquérir une expérience pratique de la création de partitions, du formatage de systèmes de fichiers, de leur montage et de la configuration du montage persistant, le tout géré par le noyau.
+1. **[Gérer les Modules du Noyau sous Linux](https://labex.io/fr/labs/comptia-manage-kernel-modules-in-linux-590865)** - Entraînez-vous à lister, inspecter, charger et décharger les modules du noyau, et à les configurer pour un chargement automatique au démarrage.
+2. **[Explorer les Périphériques Matériels sous Linux](https://labex.io/fr/labs/comptia-explore-hardware-devices-in-linux-590861)** - Apprenez à identifier et inspecter les périphériques matériels dans un environnement Linux à l'aide d'utilitaires en ligne de commande.
+3. **[Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Acquérir une expérience pratique de la création de partitions, du formatage de systèmes de fichiers, de leur montage et de la configuration du montage persistant, le tout géré par le noyau.
 
 Ces laboratoires vous aideront à appliquer les concepts d'interaction du noyau avec le matériel et les ressources système dans des scénarios réels et à renforcer votre confiance dans l'administration Linux de bas niveau.
 

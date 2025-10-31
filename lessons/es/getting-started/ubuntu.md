@@ -29,9 +29,9 @@ Ubuntu es una opción fantástica para principiantes. Ofrece una experiencia flu
 
 La práctica es clave para dominar Linux. Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la gestión de usuarios y grupos:
 
-1.  **[Gestión de Cuentas de Usuario](https://labex.io/es/labs/linux-user-account-management-49)** - En este laboratorio, aprenderás a gestionar cuentas de usuario en la plataforma Linux, incluyendo la creación, modificación y eliminación de cuentas de usuario.
-2.  **[El Truco del Joker](https://labex.io/es/labs/linux-the-joker-s-trick-270247)** - En este desafío, practicarás la gestión de cuentas de usuario creando nuevos usuarios, modificando sus propiedades y eliminándolos del sistema.
-3.  **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío práctico, simularás la adición de nuevos miembros del equipo a un servidor creando cuentas de usuario, configurando grupos personalizados y gestionando las membresías.
+1. **[Gestión de Cuentas de Usuario](https://labex.io/es/labs/linux-user-account-management-49)** - En este laboratorio, aprenderás a gestionar cuentas de usuario en la plataforma Linux, incluyendo la creación, modificación y eliminación de cuentas de usuario.
+2. **[El Truco del Joker](https://labex.io/es/labs/linux-the-joker-s-trick-270247)** - En este desafío, practicarás la gestión de cuentas de usuario creando nuevos usuarios, modificando sus propiedades y eliminándolos del sistema.
+3. **[Añadir Nuevo Usuario y Grupo](https://labex.io/es/labs/linux-add-new-user-and-group-17987)** - En este desafío práctico, simularás la adición de nuevos miembros del equipo a un servidor creando cuentas de usuario, configurando grupos personalizados y gestionando las membresías.
 
 Estos laboratorios te ayudarán a aplicar conceptos en escenarios del mundo real y a ganar confianza con la administración de Linux.
 

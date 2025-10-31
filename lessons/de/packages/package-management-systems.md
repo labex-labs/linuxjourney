@@ -53,9 +53,9 @@ RPM: $ yum info paket_name
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Linux-Paketverwaltung zu festigen:
 
-1.  **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Üben Sie die Verwaltung von Softwarepaketen auf RHEL-basierten Linux-Systemen mit YUM, einschließlich der Überprüfung, Aktualisierung und Erkundung von Repositories.
-2.  **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Lernen Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen kennen, einschließlich der Verwendung von apt, dpkg und der Handhabung von .deb-Dateien.
-3.  **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Üben Sie das Aktualisieren des Systems, das Installieren und Entfernen von Paketen sowie die Optimierung der Softwarekonfiguration auf einem Debian-basierten System mit `apt`.
+1. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Üben Sie die Verwaltung von Softwarepaketen auf RHEL-basierten Linux-Systemen mit YUM, einschließlich der Überprüfung, Aktualisierung und Erkundung von Repositories.
+2. **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Lernen Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen kennen, einschließlich der Verwendung von apt, dpkg und der Handhabung von .deb-Dateien.
+3. **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Üben Sie das Aktualisieren des Systems, das Installieren und Entfernen von Paketen sowie die Optimierung der Softwarekonfiguration auf einem Debian-basierten System mit `apt`.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen in die Linux-Paketverwaltung aufzubauen.
 

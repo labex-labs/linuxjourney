@@ -53,7 +53,7 @@ Se o comando for executado com sucesso (código de saída 0), o processo existe.
 
 Para aplicar o que você aprendeu, experimente este laboratório prático para reforçar sua compreensão sobre gerenciamento e terminação de processos:
 
-1.  **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Neste laboratório, você aprenderá habilidades essenciais para gerenciar e monitorar processos em um sistema Linux. Você explorará como interagir com processos em primeiro plano e em segundo plano, inspecioná-los com `ps`, monitorar recursos com `top`, ajustar a prioridade com `renice` e terminá-los com `kill`.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Neste laboratório, você aprenderá habilidades essenciais para gerenciar e monitorar processos em um sistema Linux. Você explorará como interagir com processos em primeiro plano e em segundo plano, inspecioná-los com `ps`, monitorar recursos com `top`, ajustar a prioridade com `renice` e terminá-los com `kill`.
 
 Este laboratório ajudará você a aplicar os conceitos de controle e terminação de processos em cenários reais e a ganhar confiança no gerenciamento de processos Linux.
 

@@ -72,7 +72,7 @@ Die Option `-1 2` gibt das Feld 2 der ersten Datei an, und `-2 1` gibt das Feld 
 Der Befehl `split` macht das Gegenteil von `join`; er teilt eine große Datei in kleinere auf.
 
 ```bash
-$ split somefile
+split somefile
 ```
 
 Standardmäßig teilt dieser Befehl `somefile` in neue Dateien auf, sobald eine Grenze von 1000 Zeilen erreicht ist. Die Ausgabedateien werden als `xaa`, `xab` usw. benannt. Sie können dieses Verhalten anpassen, indem Sie beispielsweise mit der Option `-l` eine andere Zeilenanzahl angeben oder mit der Option `-b` nach Dateigröße aufteilen.

@@ -38,9 +38,9 @@ Diese Nachrichten werden Ihnen vertrauter werden, wenn wir die gängigen Netzwer
 
 Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von ICMP und der Netzwerk-Fehlerbehebung zu festigen:
 
-1.  **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping`, um zu untersuchen, wie die Netzwerk- und Datenbankschicht interagieren, und wenden Sie direkt Konzepte an, die sich auf die Funktion von ICMP zur Überprüfung der Konnektivität beziehen.
-2.  **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Üben Sie die Verwendung von `ping`, um die Netzwerkerreichbarkeit zu testen und Verbindungsprobleme zu diagnostizieren, wodurch die praktische Anwendung von ICMP-Nachrichten gefestigt wird.
-3.  **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, IP-Adressen zuzuweisen und die Konnektivität mit `ping` in einer simulierten Umgebung zu testen, was Ihnen hilft zu verstehen, wie Netzwerkkonfigurationen die Paketlieferung beeinflussen.
+1. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie `ping`, um zu untersuchen, wie die Netzwerk- und Datenbankschicht interagieren, und wenden Sie direkt Konzepte an, die sich auf die Funktion von ICMP zur Überprüfung der Konnektivität beziehen.
+2. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Üben Sie die Verwendung von `ping`, um die Netzwerkerreichbarkeit zu testen und Verbindungsprobleme zu diagnostizieren, wodurch die praktische Anwendung von ICMP-Nachrichten gefestigt wird.
+3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, IP-Adressen zuzuweisen und die Konnektivität mit `ping` in einer simulierten Umgebung zu testen, was Ihnen hilft zu verstehen, wie Netzwerkkonfigurationen die Paketlieferung beeinflussen.
 
 Diese Labs helfen Ihnen, die Konzepte von ICMP und Netzwerkdiagnostik in realen Szenarien anzuwenden und Vertrauen in die Behebung von Netzwerkproblemen aufzubauen.
 

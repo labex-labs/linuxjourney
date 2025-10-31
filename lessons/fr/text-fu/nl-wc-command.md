@@ -22,9 +22,9 @@ $ wc /etc/passwd
 
 Le résultat affiche trois nombres suivis du nom du fichier. De gauche à droite, ces nombres représentent :
 
-1.  Le nombre de lignes.
-2.  Le nombre de mots (le compte de mots Linux).
-3.  Le nombre d'octets.
+1. Le nombre de lignes.
+2. Le nombre de mots (le compte de mots Linux).
+3. Le nombre d'octets.
 
 ### Obtenir des comptes spécifiques
 
@@ -57,9 +57,9 @@ En utilisant la commande `nl`, vous pouvez facilement ajouter des numéros de li
 
 ```bash
 $ nl file1.txt
-     1	i
-     2	like
-     3	turtles
+     1 i
+     2 like
+     3 turtles
 ```
 
 Les commandes `wc` et `nl` sont toutes deux essentielles pour le traitement de texte quotidien sur la ligne de commande Linux.
@@ -68,9 +68,9 @@ Les commandes `wc` et `nl` sont toutes deux essentielles pour le traitement de t
 
 Pour maîtriser ces commandes, la pratique est essentielle. Essayez ces exercices pour consolider vos compétences en comptage de texte et en numérotation de lignes sous Linux :
 
-1.  **[Commande wc Linux : Comptage de texte](https://labex.io/fr/labs/linux-linux-wc-command-text-counting-219200)** - Entraînez-vous à compter les mots, les lignes et les caractères dans les fichiers texte en utilisant la commande `wc`.
-2.  **[Commande nl Linux : Numérotation des lignes](https://labex.io/fr/labs/linux-linux-nl-command-line-numbering-210988)** - Apprenez à numéroter les lignes dans les fichiers texte avec la commande `nl`.
-3.  **[Comptage de mots et tri](https://labex.io/fr/labs/linux-word-count-and-sorting-388125)** - Appliquez vos connaissances de `wc` pour compter les lignes, les mots et les caractères, et combinez-les avec le tri pour des tâches d'analyse de texte pratiques.
+1. **[Commande wc Linux : Comptage de texte](https://labex.io/fr/labs/linux-linux-wc-command-text-counting-219200)** - Entraînez-vous à compter les mots, les lignes et les caractères dans les fichiers texte en utilisant la commande `wc`.
+2. **[Commande nl Linux : Numérotation des lignes](https://labex.io/fr/labs/linux-linux-nl-command-line-numbering-210988)** - Apprenez à numéroter les lignes dans les fichiers texte avec la commande `nl`.
+3. **[Comptage de mots et tri](https://labex.io/fr/labs/linux-word-count-and-sorting-388125)** - Appliquez vos connaissances de `wc` pour compter les lignes, les mots et les caractères, et combinez-les avec le tri pour des tâches d'analyse de texte pratiques.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans le traitement de texte sous Linux.
 

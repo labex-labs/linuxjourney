@@ -59,8 +59,8 @@ ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 
 我们来分解一下：
 
-1.  `> peanuts.txt` 将 `stdout` (文件描述符 1) 重定向到 `peanuts.txt` 文件。
-2.  `2>&1` 将 `stderr` (文件描述符 2) 重定向到 `stdout` (文件描述符 1) 当前指向的相同位置。
+1. `> peanuts.txt` 将 `stdout` (文件描述符 1) 重定向到 `peanuts.txt` 文件。
+2. `2>&1` 将 `stderr` (文件描述符 2) 重定向到 `stdout` (文件描述符 1) 当前指向的相同位置。
 
 顺序很重要。`2>&1` 将 `stderr` 发送到 `stdout` 的当前目标。在这种情况下，`stdout` 指向一个文件，因此 `stderr` 也被发送到该文件。
 

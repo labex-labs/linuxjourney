@@ -27,9 +27,9 @@ meta_keywords: "网络层，IP 地址，子网，Linux 网络，数据包路由�
 
 实践造就完美！以下是一些旨在巩固您对网络层、IP 寻址和子网理解的动手实验：
 
-1.  **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 练习使用 Docker 容器在子网内部和跨子网分配静态 IP 地址并测试连通性。
-2.  **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 直接在 Linux 终端中掌握 IP 子网划分和二进制转换，包括计算可用主机和子网。
-3.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索各种 IP 地址类型（私有、公共、多播），并使用 `ping` 和 `ip a` 测试网络可达性。
+1. **[在 Linux 中模拟网络层连接](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 练习使用 Docker 容器在子网内部和跨子网分配静态 IP 地址并测试连通性。
+2. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 直接在 Linux 终端中掌握 IP 子网划分和二进制转换，包括计算可用主机和子网。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索各种 IP 地址类型（私有、公共、多播），并使用 `ping` 和 `ip a` 测试网络可达性。
 
 这些实验将帮助您在实际场景中应用 IP 寻址和子网划分的概念，并增强对网络层基础知识的信心。
 

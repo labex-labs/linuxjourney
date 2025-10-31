@@ -33,9 +33,9 @@ meta_keywords: "Linux パッケージリポジトリ，apt ソースリスト，
 
 練習あるのみです！Linux パッケージ管理とリポジトリの理解を深めるための実践的なラボをいくつか紹介します。
 
-1.  **[Linux でのソフトウェアインストール](https://labex.io/ja/labs/linux-software-installation-on-linux-18005)** - `sources.list`の概念に直接関連する、apt の使用や.deb ファイルの処理など、Ubuntu システムでのソフトウェアのインストールと管理のさまざまな方法を練習します。
-2.  **[パッケージのインストールと削除](https://labex.io/ja/labs/linux-installing-and-removing-packages-385380)** - Debian ベースのシステムでシステムを更新し、パッケージをインストールおよび削除する方法を学び、パッケージマネージャーがリポジトリとどのように連携するかについての理解を深めます。
-3.  **[Linux での YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を探り、さまざまなディストリビューション間でのパッケージ管理についてより広い視点を提供します。
+1. **[Linux でのソフトウェアインストール](https://labex.io/ja/labs/linux-software-installation-on-linux-18005)** - `sources.list`の概念に直接関連する、apt の使用や.deb ファイルの処理など、Ubuntu システムでのソフトウェアのインストールと管理のさまざまな方法を練習します。
+2. **[パッケージのインストールと削除](https://labex.io/ja/labs/linux-installing-and-removing-packages-385380)** - Debian ベースのシステムでシステムを更新し、パッケージをインストールおよび削除する方法を学び、パッケージマネージャーがリポジトリとどのように連携するかについての理解を深めます。
+3. **[Linux での YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を探り、さまざまなディストリビューション間でのパッケージ管理についてより広い視点を提供します。
 
 ## Quiz Question
 

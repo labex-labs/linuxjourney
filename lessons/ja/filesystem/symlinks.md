@@ -86,8 +86,8 @@ ln /path/to/original /path/to/link
 
 練習あるのみです！ファイル管理、リンク、inode の理解を深めるための実践的なラボを次に示します。
 
-1.  **[Linux でファイルとディレクトリを管理する](https://labex.io/ja/labs/comptia-manage-files-and-directories-in-linux-590835)** - ファイルとディレクトリの作成、コピー、移動、削除を練習し、特にシンボリックリンクとハードリンクについて学び、inode を分析する方法を習得します。
-2.  **[Linux でファイルシステムをナビゲートする](https://labex.io/ja/labs/comptia-navigate-the-filesystem-in-linux-590971)** - `pwd`、`cd`、`ls` などの必須コマンドを習得し、Linux ファイルシステム内を効率的に移動します。これは、ファイルとその inode がどこにあるかを理解するための基礎的なスキルです。
+1. **[Linux でファイルとディレクトリを管理する](https://labex.io/ja/labs/comptia-manage-files-and-directories-in-linux-590835)** - ファイルとディレクトリの作成、コピー、移動、削除を練習し、特にシンボリックリンクとハードリンクについて学び、inode を分析する方法を習得します。
+2. **[Linux でファイルシステムをナビゲートする](https://labex.io/ja/labs/comptia-navigate-the-filesystem-in-linux-590971)** - `pwd`、`cd`、`ls` などの必須コマンドを習得し、Linux ファイルシステム内を効率的に移動します。これは、ファイルとその inode がどこにあるかを理解するための基礎的なスキルです。
 
 これらのラボは、ファイル管理とリンクの概念を実際のシナリオで適用し、Linux ファイルシステムに対する自信を築くのに役立ちます。
 

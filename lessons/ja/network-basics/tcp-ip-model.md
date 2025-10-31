@@ -52,9 +52,9 @@ meta_keywords: "TCP/IPモデル, tcp ip モデルの層，tcp ip によるネッ
 
 練習あるのみです！TCP/IP モデルとネットワークの基礎の理解を深めるための実践的なラボをいくつかご紹介します。
 
-1.  **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して MAC アドレスや IP アドレスなどの重要なネットワークアドレス情報を特定する練習をします。これは TCP/IP モデルのネットワーク層とデータリンク層を理解するための基本です。
-2.  **[Linux で ping と arp によるネットワーク層の相互作用を調査する](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`コマンドと`arp`コマンドがネットワーク層とデータリンク層の相互作用をどのように示すかを学び、デバイスが TCP/IP スタック内でどのように通信するかについて実践的な洞察を得ます。
-3.  **[Linux でネットワーク層の接続性をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Linux ノード間でネットワーク接続性をシミュレートし、IP アドレスを割り当て、通信をテストするハンズオン経験を積み、TCP/IP モデルのネットワーク層に関連する概念を直接適用します。
+1. **[Linux で MAC アドレスと IP アドレスを特定する](https://labex.io/ja/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - `ip a`コマンドを使用して MAC アドレスや IP アドレスなどの重要なネットワークアドレス情報を特定する練習をします。これは TCP/IP モデルのネットワーク層とデータリンク層を理解するための基本です。
+2. **[Linux で ping と arp によるネットワーク層の相互作用を調査する](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`コマンドと`arp`コマンドがネットワーク層とデータリンク層の相互作用をどのように示すかを学び、デバイスが TCP/IP スタック内でどのように通信するかについて実践的な洞察を得ます。
+3. **[Linux でネットワーク層の接続性をシミュレートする](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Linux ノード間でネットワーク接続性をシミュレートし、IP アドレスを割り当て、通信をテストするハンズオン経験を積み、TCP/IP モデルのネットワーク層に関連する概念を直接適用します。
 
 これらのラボは、実際のシナリオで TCP/IP モデルの概念を適用し、ネットワーク設定とトラブルシューティングに対する自信を構築するのに役立ちます。
 

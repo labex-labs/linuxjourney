@@ -33,9 +33,9 @@ Il est également courant d'ajouter de nouvelles configurations de dépôts dans
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des paquets Linux et des dépôts :
 
-1.  **[Installation de logiciels sur Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005)** - Entraînez-vous à diverses méthodes pour installer et gérer des logiciels sur des systèmes Ubuntu, y compris l'utilisation d'apt et la gestion des fichiers .deb, ce qui est directement lié au concept de `sources.list`.
-2.  **[Installation et suppression de paquets](https://labex.io/fr/labs/linux-installing-and-removing-packages-385380)** - Apprenez à mettre à jour le système, à installer et à supprimer des paquets sur un système basé sur Debian, consolidant ainsi votre compréhension de la manière dont les gestionnaires de paquets interagissent avec les dépôts.
-3.  **[Interroger et mettre à jour les paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explorez comment gérer les paquets logiciels sur les systèmes Linux basés sur RHEL à l'aide de YUM, offrant une perspective plus large sur la gestion des paquets entre différentes distributions.
+1. **[Installation de logiciels sur Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005)** - Entraînez-vous à diverses méthodes pour installer et gérer des logiciels sur des systèmes Ubuntu, y compris l'utilisation d'apt et la gestion des fichiers .deb, ce qui est directement lié au concept de `sources.list`.
+2. **[Installation et suppression de paquets](https://labex.io/fr/labs/linux-installing-and-removing-packages-385380)** - Apprenez à mettre à jour le système, à installer et à supprimer des paquets sur un système basé sur Debian, consolidant ainsi votre compréhension de la manière dont les gestionnaires de paquets interagissent avec les dépôts.
+3. **[Interroger et mettre à jour les paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explorez comment gérer les paquets logiciels sur les systèmes Linux basés sur RHEL à l'aide de YUM, offrant une perspective plus large sur la gestion des paquets entre différentes distributions.
 
 Ces laboratoires vous aideront à appliquer les concepts de dépôts de paquets et de gestion de logiciels dans des scénarios réels et à gagner en confiance dans les tâches d'administration système.
 

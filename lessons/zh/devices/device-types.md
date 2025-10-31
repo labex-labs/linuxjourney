@@ -68,9 +68,9 @@ prw-r--r--   1 root root           0 Dec 20 20:13 fdata
 
 为了应用您对 **Linux 设备** 的了解，我们推荐以下动手实验。这些练习将帮助您在现实场景中建立与设备交互和管理的信心。
 
-1.  **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 练习创建和管理磁盘分区和文件系统，它们是 Linux 中基本的块设备。
-2.  **[探索 Linux 中的硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 学习识别和检查各种硬件设备，了解它们如何在 `/dev` 目录中表示。
-3.  **[在 Linux 中创建和激活交换文件](https://labex.io/zh/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 获得创建和激活交换文件的实践经验，交换文件在功能上充当虚拟内存设备。
+1. **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 练习创建和管理磁盘分区和文件系统，它们是 Linux 中基本的块设备。
+2. **[探索 Linux 中的硬件设备](https://labex.io/zh/labs/comptia-explore-hardware-devices-in-linux-590861)** - 学习识别和检查各种硬件设备，了解它们如何在 `/dev` 目录中表示。
+3. **[在 Linux 中创建和激活交换文件](https://labex.io/zh/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - 获得创建和激活交换文件的实践经验，交换文件在功能上充当虚拟内存设备。
 
 ## Quiz Question
 

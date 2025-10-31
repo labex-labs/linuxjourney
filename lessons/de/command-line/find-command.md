@@ -43,8 +43,8 @@ Ein Hauptmerkmal des `find-Befehls linux`, das Benutzer schätzen, ist seine rek
 
 Übung ist der Schlüssel, um den `find-Befehl in linux` zu meistern. Diese praktischen Labs helfen Ihnen, Ihr Verständnis für das Finden von Dateien und Verzeichnissen zu festigen:
 
-1.  **[Linux find Befehl: Dateisuche](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)** – Dieses Lab bietet eine Einführung in den `find`-Befehl, ein vielseitiges Dienstprogramm zum Suchen und Lokalisieren von Dateien und Verzeichnissen basierend auf verschiedenen Kriterien. Sie üben die Verwendung von `find` zur Lokalisierung bestimmter Dateien.
-2.  **[Kritische Systemressourcen entdecken](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** – Lernen Sie wesentliche Linux-Befehle zum Lokalisieren von Dateien und ausführbaren Programmen kennen, einschließlich `find`. Sie üben die effiziente Navigation im Dateisystem und das Entdecken kritischer Systemressourcen.
+1. **[Linux find Befehl: Dateisuche](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)** – Dieses Lab bietet eine Einführung in den `find`-Befehl, ein vielseitiges Dienstprogramm zum Suchen und Lokalisieren von Dateien und Verzeichnissen basierend auf verschiedenen Kriterien. Sie üben die Verwendung von `find` zur Lokalisierung bestimmter Dateien.
+2. **[Kritische Systemressourcen entdecken](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** – Lernen Sie wesentliche Linux-Befehle zum Lokalisieren von Dateien und ausführbaren Programmen kennen, einschließlich `find`. Sie üben die effiziente Navigation im Dateisystem und das Entdecken kritischer Systemressourcen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die effektive Nutzung des `find`-Befehls aufzubauen.
 

@@ -49,9 +49,9 @@ Comprender el bit adhesivo es esencial para administrar entornos multiusuario y 
 
 Para solidificar su comprensión de los permisos de archivos, incluidos los permisos especiales como el bit adhesivo, pruebe estos laboratorios prácticos. Le ayudarán a ver cómo se aplican estos conceptos en escenarios del mundo real.
 
-1.  **[Grupo de Usuarios de Linux y Permisos de Archivos](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Practique la creación de usuarios y grupos, y la manipulación de la propiedad y los permisos de los archivos. Este laboratorio proporciona una base para comprender cómo funcionan los permisos especiales.
-2.  **[Eliminar y Mover Archivos](https://labex.io/es/labs/linux-delete-and-move-files-7777)** - Aprenda a eliminar y mover archivos, y vea cómo los permisos, incluido el bit adhesivo en un directorio, pueden restringir estas acciones.
-3.  **[Encontrar un Archivo](https://labex.io/es/labs/linux-find-a-file-17993)** - Practique la localización de archivos y el establecimiento de controles de acceso, reforzando la importancia de los permisos de archivos en la gestión del acceso y modificación de archivos.
+1. **[Grupo de Usuarios de Linux y Permisos de Archivos](https://labex.io/es/labs/linux-linux-user-group-and-file-permissions-18002)** - Practique la creación de usuarios y grupos, y la manipulación de la propiedad y los permisos de los archivos. Este laboratorio proporciona una base para comprender cómo funcionan los permisos especiales.
+2. **[Eliminar y Mover Archivos](https://labex.io/es/labs/linux-delete-and-move-files-7777)** - Aprenda a eliminar y mover archivos, y vea cómo los permisos, incluido el bit adhesivo en un directorio, pueden restringir estas acciones.
+3. **[Encontrar un Archivo](https://labex.io/es/labs/linux-find-a-file-17993)** - Practique la localización de archivos y el establecimiento de controles de acceso, reforzando la importancia de los permisos de archivos en la gestión del acceso y modificación de archivos.
 
 ## Quiz Question
 

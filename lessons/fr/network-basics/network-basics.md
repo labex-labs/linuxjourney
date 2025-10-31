@@ -36,9 +36,9 @@ Toutes les données transmises sur ces réseaux, des pages web aux e-mails, sont
 
 La pratique rend parfait ! L'expérience pratique est cruciale pour maîtriser les concepts des **bases du réseau**. Les laboratoires suivants vous aideront à renforcer votre compréhension des composants réseau et de la manière dont les hôtes communiquent :
 
-1.  **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à identifier les informations d'adressage réseau pour les hôtes, y compris les adresses MAC et IP, en utilisant la commande `ip a`.
-2.  **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Apprenez à tester la joignabilité du réseau et à identifier différents types d'adresses IP, essentiels pour comprendre comment les hôtes se connectent.
-3.  **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Comprenez comment les hôtes interagissent sur un réseau en observant le protocole de résolution d'adresses (ARP) et en testant la connectivité avec `ping`.
+1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à identifier les informations d'adressage réseau pour les hôtes, y compris les adresses MAC et IP, en utilisant la commande `ip a`.
+2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Apprenez à tester la joignabilité du réseau et à identifier différents types d'adresses IP, essentiels pour comprendre comment les hôtes se connectent.
+3. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Comprenez comment les hôtes interagissent sur un réseau en observant le protocole de résolution d'adresses (ARP) et en testant la connectivité avec `ping`.
 
 Ces laboratoires vous aideront à appliquer les concepts d'hôtes, d'adressage et de connectivité de base dans des scénarios réels et à renforcer votre confiance dans les fondamentaux du réseautage.
 

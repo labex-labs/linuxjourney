@@ -23,9 +23,9 @@ IPv4 地址由 4 个字节组成，共 32 位。CIDR 前缀决定了地址中网
 
 我们以 `123.12.24.0/23` 为例。这意味着前 23 位是网络前缀。要找到可用主机的数量：
 
-1.  从总位数 (32) 中减去 CIDR 前缀：`32 - 23 = 9`。这为主机部分留下了 9 位。
-2.  计算子网中的总地址数：`2^9 = 512`。
-3.  总数减去 2。一个地址保留给网络本身，一个保留给广播地址。这样就剩下 `512 - 2 = 510` 个可用主机地址。
+1. 从总位数 (32) 中减去 CIDR 前缀：`32 - 23 = 9`。这为主机部分留下了 9 位。
+2. 计算子网中的总地址数：`2^9 = 512`。
+3. 总数减去 2。一个地址保留给网络本身，一个保留给广播地址。这样就剩下 `512 - 2 = 510` 个可用主机地址。
 
 另一个常见的例子是 `/30` 网络，它提供 `32 - 30 = 2` 个主机位。这导致 `2^2 = 4` 个总地址，只留下 2 个可用地址，非常适合点对点链路。
 
@@ -33,8 +33,8 @@ IPv4 地址由 4 个字节组成，共 32 位。CIDR 前缀决定了地址中网
 
 为了掌握这些概念，请通过一些实践实验来加强您对 CIDR、IP 地址分配和 **cidr subnetting**（CIDR 子网划分）的理解：
 
-1.  **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，包括转换 CIDR 掩码和计算可用主机。
-2.  **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习分配静态 IP 地址，并观察 IP 子网如何在模拟环境中控制直接网络通信。
-3.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 等命令探索 IP 地址分配和网络可达性，以测试各种 IP 类型和连通性。
+1. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，包括转换 CIDR 掩码和计算可用主机。
+2. **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习分配静态 IP 地址，并观察 IP 子网如何在模拟环境中控制直接网络通信。
+3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 等命令探索 IP 地址分配和网络可达性，以测试各种 IP 类型和连通性。
 
 这些实验将帮助您在实际场景中应用 CIDR 和 IP 地址分配的概念，并建立网络配置的信心。

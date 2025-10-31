@@ -65,9 +65,9 @@ Para solucionar esto, puede modificar la variable `PATH` para incluir el nuevo d
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de las variables de entorno de Linux:
 
-1.  **[Administrar el Entorno y la Configuración del Shell en Linux](https://labex.io/es/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practique la creación y gestión de variables locales y de entorno, comprenda la herencia y haga que las configuraciones sean persistentes modificando el archivo `.bashrc`.
-2.  **[Variables de Entorno en Linux](https://labex.io/es/labs/linux-environment-variables-in-linux-385274)** - Aprenda el concepto y el uso de las variables de entorno, cómo crearlas, modificarlas y gestionarlas, y su papel en la configuración del sistema.
-3.  **[Configurar Variables de Entorno de Linux](https://labex.io/es/labs/linux-configure-linux-environment-variables-437861)** - Obtenga experiencia práctica creando, estableciendo y gestionando variables de entorno en un sistema Linux.
+1. **[Administrar el Entorno y la Configuración del Shell en Linux](https://labex.io/es/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practique la creación y gestión de variables locales y de entorno, comprenda la herencia y haga que las configuraciones sean persistentes modificando el archivo `.bashrc`.
+2. **[Variables de Entorno en Linux](https://labex.io/es/labs/linux-environment-variables-in-linux-385274)** - Aprenda el concepto y el uso de las variables de entorno, cómo crearlas, modificarlas y gestionarlas, y su papel en la configuración del sistema.
+3. **[Configurar Variables de Entorno de Linux](https://labex.io/es/labs/linux-configure-linux-environment-variables-437861)** - Obtenga experiencia práctica creando, estableciendo y gestionando variables de entorno en un sistema Linux.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión del entorno de su shell Linux.
 

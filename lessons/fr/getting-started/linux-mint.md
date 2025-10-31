@@ -33,9 +33,9 @@ Linux Mint est principalement conçu pour les ordinateurs de bureau et les ordin
 
 Pour appliquer vos connaissances dans un cadre pratique, nous vous recommandons les laboratoires pratiques suivants. Ces exercices couvrent les compétences fondamentales de gestion des utilisateurs et des groupes qui sont essentielles pour tout administrateur Linux.
 
-1.  **[Gestion des Comptes Utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Entraînez-vous à créer de nouveaux comptes utilisateurs, à modifier la gestion des comptes utilisateurs et à supprimer des comptes utilisateurs dans un environnement Linux réel.
-2.  **[Le Tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Apprenez à gérer les comptes utilisateurs en les créant, les modifiant et les supprimant, simulant un scénario réel.
-3.  **[Ajouter un Nouvel Utilisateur et un Groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Apprenez à créer de nouveaux comptes utilisateurs, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, essentiel pour l'administration système.
+1. **[Gestion des Comptes Utilisateurs](https://labex.io/fr/labs/linux-user-account-management-49)** - Entraînez-vous à créer de nouveaux comptes utilisateurs, à modifier la gestion des comptes utilisateurs et à supprimer des comptes utilisateurs dans un environnement Linux réel.
+2. **[Le Tour du Joker](https://labex.io/fr/labs/linux-the-joker-s-trick-270247)** - Apprenez à gérer les comptes utilisateurs en les créant, les modifiant et les supprimant, simulant un scénario réel.
+3. **[Ajouter un Nouvel Utilisateur et un Groupe](https://labex.io/fr/labs/linux-add-new-user-and-group-17987)** - Apprenez à créer de nouveaux comptes utilisateurs, à configurer des groupes personnalisés et à gérer les appartenances aux groupes, essentiel pour l'administration système.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans l'administration des utilisateurs et des groupes sous Linux.
 

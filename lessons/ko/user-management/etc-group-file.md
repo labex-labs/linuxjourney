@@ -29,10 +29,10 @@ root:*:0:pete
 
 `/etc/passwd` 파일과 유사하게, `/etc/group` 파일의 각 줄은 단일 그룹을 나타내며 콜론 (`:`) 으로 구분된 네 개의 필드를 포함합니다.
 
-1.  **그룹 이름**: 그룹의 고유 이름입니다.
-2.  **그룹 암호**: 이 필드는 레거시 기능이며 거의 사용되지 않습니다. 최신 시스템은 그룹 암호 대신 `sudo`와 같은 도구를 사용하여 권한을 높입니다. 일반적으로 별표 (`*`) 또는 'x'와 같은 자리 표시자를 보게 됩니다.
-3.  **그룹 ID (GID)**: 그룹에 대한 고유한 숫자 식별자입니다. 시스템은 그룹 이름 대신 내부적으로 GID 를 사용하는 경우가 많습니다.
-4.  **사용자 목록**: 이 그룹의 멤버인 사용자 이름의 쉼표로 구분된 목록입니다.
+1. **그룹 이름**: 그룹의 고유 이름입니다.
+2. **그룹 암호**: 이 필드는 레거시 기능이며 거의 사용되지 않습니다. 최신 시스템은 그룹 암호 대신 `sudo`와 같은 도구를 사용하여 권한을 높입니다. 일반적으로 별표 (`*`) 또는 'x'와 같은 자리 표시자를 보게 됩니다.
+3. **그룹 ID (GID)**: 그룹에 대한 고유한 숫자 식별자입니다. 시스템은 그룹 이름 대신 내부적으로 GID 를 사용하는 경우가 많습니다.
+4. **사용자 목록**: 이 그룹의 멤버인 사용자 이름의 쉼표로 구분된 목록입니다.
 
 예시 `root:*:0:pete`에서 그룹 이름은 `root`이고, 암호는 없으며, GID 는 `0`이고, 사용자 `pete`가 멤버입니다.
 
@@ -40,9 +40,9 @@ root:*:0:pete
 
 연습이 완벽함을 만듭니다! Linux 사용자 및 그룹 관리에 대한 이해를 강화하기 위한 몇 가지 실습 랩이 있습니다.
 
-1.  **[useradd, usermod 및 userdel 로 Linux 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 새 계정 생성 및 보안부터 수정 및 삭제에 이르기까지 사용자 관리의 전체 수명 주기를 연습합니다.
-2.  **[groupadd, usermod 및 groupdel 로 Linux 그룹 관리](https://labex.io/ko/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - `groupadd`, `usermod`, `groupdel`을 포함하여 그룹 관리를 위한 핵심 명령줄 유틸리티에 대한 실습 경험을 얻습니다.
-3.  **[새 사용자 및 그룹 추가](https://labex.io/ko/labs/linux-add-new-user-and-group-17987)** - 새 사용자 계정을 생성하고, 사용자 지정 그룹을 설정하고, 그룹 멤버십을 관리하여 서버 환경에 새 팀원을 추가하는 것을 시뮬레이션합니다.
+1. **[useradd, usermod 및 userdel 로 Linux 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 새 계정 생성 및 보안부터 수정 및 삭제에 이르기까지 사용자 관리의 전체 수명 주기를 연습합니다.
+2. **[groupadd, usermod 및 groupdel 로 Linux 그룹 관리](https://labex.io/ko/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - `groupadd`, `usermod`, `groupdel`을 포함하여 그룹 관리를 위한 핵심 명령줄 유틸리티에 대한 실습 경험을 얻습니다.
+3. **[새 사용자 및 그룹 추가](https://labex.io/ko/labs/linux-add-new-user-and-group-17987)** - 새 사용자 계정을 생성하고, 사용자 지정 그룹을 설정하고, 그룹 멤버십을 관리하여 서버 환경에 새 팀원을 추가하는 것을 시뮬레이션합니다.
 
 이러한 랩은 실제 시나리오에서 개념을 적용하고 Linux 사용자 및 그룹 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 

@@ -49,7 +49,7 @@ Una vez que agregue la definición de su trabajo y guarde el archivo, `cron` lee
 
 ¡La práctica hace al maestro! Este laboratorio práctico le ayudará a reforzar su comprensión sobre cómo `programar tareas` en Linux.
 
-1.  **[Programar Tareas con at y cron en Linux](https://labex.io/es/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Practique la creación, gestión y eliminación de trabajos con `at`, `atq`, `atrm` y `crontab`, obteniendo experiencia práctica en la automatización de tareas de administración del sistema.
+1. **[Programar Tareas con at y cron en Linux](https://labex.io/es/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Practique la creación, gestión y eliminación de trabajos con `at`, `atq`, `atrm` y `crontab`, obteniendo experiencia práctica en la automatización de tareas de administración del sistema.
 
 Este laboratorio le ayudará a aplicar los conceptos de esta lección en un escenario del mundo real y a aumentar su confianza con la `automatización de Linux`.
 

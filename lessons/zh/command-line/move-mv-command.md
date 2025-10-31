@@ -79,8 +79,8 @@ mv -t /somedirectory file_1 file_2
 
 实践造就完美！动手实践对于掌握 `mv` 等 Linux 命令至关重要。这些实验将帮助您在真实环境中巩固对移动和重命名文件和目录的理解：
 
-1.  **[Linux mv 命令：文件移动和重命名](https://labex.io/zh/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - 练习使用 `mv` 命令移动和重命名文件和目录，包括了解其各种选项和行为。
-2.  **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 在实际挑战中应用您对 `mv`（以及 `cp` 和 `rm`）的知识，以组织项目结构、移动文件和清理目录。
+1. **[Linux mv 命令：文件移动和重命名](https://labex.io/zh/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - 练习使用 `mv` 命令移动和重命名文件和目录，包括了解其各种选项和行为。
+2. **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 在实际挑战中应用您对 `mv`（以及 `cp` 和 `rm`）的知识，以组织项目结构、移动文件和清理目录。
 
 这些实验将帮助您在真实场景中应用概念，并增强使用 `mv` 命令进行文件和目录管理的信心。
 

@@ -29,9 +29,9 @@ Ubuntu 是初学者的绝佳选择。它提供了流畅的开箱即用体验和�
 
 实践是掌握 Linux 的关键。以下是一些强化您对用户和组管理的理解的动手实验：
 
-1.  **[用户账户管理](https://labex.io/zh/labs/linux-user-account-management-49)** - 在此实验中，您将学习管理 Linux 平台上的用户账户，包括创建、修改和删除用户账户。
-2.  **[小丑的把戏](https://labex.io/zh/labs/linux-the-joker-s-trick-270247)** - 在此挑战中，您将通过创建新用户、修改其属性以及从系统中删除他们来练习管理用户账户。
-3.  **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此动手挑战中，您将通过创建用户账户、设置自定义组和管理组成员身份，来模拟向服务器添加新团队成员。
+1. **[用户账户管理](https://labex.io/zh/labs/linux-user-account-management-49)** - 在此实验中，您将学习管理 Linux 平台上的用户账户，包括创建、修改和删除用户账户。
+2. **[小丑的把戏](https://labex.io/zh/labs/linux-the-joker-s-trick-270247)** - 在此挑战中，您将通过创建新用户、修改其属性以及从系统中删除他们来练习管理用户账户。
+3. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此动手挑战中，您将通过创建用户账户、设置自定义组和管理组成员身份，来模拟向服务器添加新团队成员。
 
 这些实验将帮助您在现实场景中应用概念，并增强对 Linux 管理的信心。
 

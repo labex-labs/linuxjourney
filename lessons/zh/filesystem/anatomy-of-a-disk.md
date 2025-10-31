@@ -78,7 +78,7 @@ Number  Start   End     Size     File system  Name        Flags
 
 为了巩固您对磁盘分区和文件系统的理解，我们推荐以下动手实验：
 
-1.  **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 练习创建新分区、使用 ext4 等文件系统格式化它们、挂载它们，以及在 `/etc/fstab` 中配置持久挂载。
+1. **[管理 Linux 分区和文件系统](https://labex.io/zh/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - 练习创建新分区、使用 ext4 等文件系统格式化它们、挂载它们，以及在 `/etc/fstab` 中配置持久挂载。
 
 此实验将帮助您在实际场景中应用磁盘管理概念，并增强对 Linux 存储的信心。
 

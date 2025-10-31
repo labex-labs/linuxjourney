@@ -80,9 +80,9 @@ top -p 1
 
 숙달을 위해서는 연습이 필수적입니다. 이 실습 랩은 Linux 프로세스 관리를 배우는 **최고의 자료** 중 일부이며, 배운 내용을 적용할 수 있는 실제 환경을 제공합니다.
 
-1.  **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 실제 Linux 환경에서 프로세스와 상호 작용, 검사, 모니터링 및 종료하는 방법을 연습합니다.
-2.  **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top` 명령어를 사용하여 CPU 사용량, 메모리 및 실행 중인 프로세스를 실시간으로 모니터링하는 방법을 배웁니다.
-3.  **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - `free` 명령어를 사용하여 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 배웁니다.
+1. **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 실제 Linux 환경에서 프로세스와 상호 작용, 검사, 모니터링 및 종료하는 방법을 연습합니다.
+2. **[Linux top 명령어: 실시간 시스템 모니터링](https://labex.io/ko/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - `top` 명령어를 사용하여 CPU 사용량, 메모리 및 실행 중인 프로세스를 실시간으로 모니터링하는 방법을 배웁니다.
+3. **[Linux free 명령어: 시스템 메모리 모니터링](https://labex.io/ko/labs/linux-linux-free-command-monitoring-system-memory-388496)** - `free` 명령어를 사용하여 시스템 메모리 사용량을 모니터링하고 분석하는 방법을 배웁니다.
 
 ## Quiz Question
 

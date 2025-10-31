@@ -19,13 +19,13 @@ Das OSI-Modell (Open Systems Interconnection) ist ein konzeptioneller Rahmen, de
 
 Dieses Modell zeigt, wie ein Datenpaket ein Netzwerk über sieben verschiedene Schichten durchläuft:
 
-1.  Physikalisch
-2.  Sicherung (Data Link)
-3.  Vermittlung (Netzwerk)
-4.  Transport
-5.  Sitzung
-6.  Darstellung (Präsentation)
-7.  Anwendung
+1. Physikalisch
+2. Sicherung (Data Link)
+3. Vermittlung (Netzwerk)
+4. Transport
+5. Sitzung
+6. Darstellung (Präsentation)
+7. Anwendung
 
 Obwohl wir nicht auf die Besonderheiten jeder Schicht eingehen, ist es entscheidend zu wissen, dass sie existieren, um Netzwerkprozesse zu kontextualisieren.
 
@@ -39,9 +39,9 @@ Obwohl das OSI-Modell theoretisch ist, ist das Verständnis seines Einflusses au
 
 Hier sind einige praktische Übungen, um Ihr Verständnis grundlegender Netzwerkkonzepte zu vertiefen:
 
-1.  **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Adressinformationen des Netzwerks, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
-2.  **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mithilfe des Befehls `ip` zu überprüfen.
-3.  **[Interaktion der Netzwerkschicht mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie die Befehle `ping` und `arp`, um zu untersuchen, wie die Netzwerk- und Sicherungsschichten interagieren, beobachten Sie ARP in Aktion und verstehen Sie das Verhalten des Standard-Gateways.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Adressinformationen des Netzwerks, einschließlich MAC- und IP-Adressen, auf einem Linux-System zu identifizieren.
+2. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Lernen Sie, statische und dynamische IP-Adressen zu konfigurieren, ein Standard-Gateway festzulegen und Netzwerkkonfigurationen mithilfe des Befehls `ip` zu überprüfen.
+3. **[Interaktion der Netzwerkschicht mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verwenden Sie die Befehle `ping` und `arp`, um zu untersuchen, wie die Netzwerk- und Sicherungsschichten interagieren, beobachten Sie ARP in Aktion und verstehen Sie das Verhalten des Standard-Gateways.
 
 Diese Labs helfen Ihnen, grundlegende Netzwerkkonzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkadministration aufzubauen.
 

@@ -74,8 +74,8 @@ Embora o `chmod` seja essencial, é crucial usá-lo com cuidado. Alterar permiss
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das permissões de arquivos no Linux:
 
-1.  **[Linux User Group and File Permissions](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuários e grupos no Linux, incluindo a compreensão de permissões de arquivos e manipulação da propriedade de arquivos. Este laboratório oferece experiência prática na proteção de um ambiente Linux multiusuário.
-2.  **[Add New User and Group](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio, você simulará a adição de novos membros da equipe a um ambiente de servidor, criando novas contas de usuário, configurando grupos personalizados e gerenciando a associação a grupos, o que geralmente envolve a definição de permissões apropriadas.
+1. **[Linux User Group and File Permissions](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Aprenda conceitos essenciais de gerenciamento de usuários e grupos no Linux, incluindo a compreensão de permissões de arquivos e manipulação da propriedade de arquivos. Este laboratório oferece experiência prática na proteção de um ambiente Linux multiusuário.
+2. **[Add New User and Group](https://labex.io/pt/labs/linux-add-new-user-and-group-17987)** - Neste desafio, você simulará a adição de novos membros da equipe a um ambiente de servidor, criando novas contas de usuário, configurando grupos personalizados e gerenciando a associação a grupos, o que geralmente envolve a definição de permissões apropriadas.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de permissões de usuário, grupo e outros em cenários reais e a ganhar confiança no gerenciamento de acesso no Linux.
 

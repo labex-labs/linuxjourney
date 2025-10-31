@@ -35,9 +35,9 @@ Cela fait de `head` l'une des **commandes Linux** les plus utiles pour inspecter
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la visualisation du début des fichiers et de la manipulation générale des fichiers texte :
 
-1.  **[Commande Linux head : Affichage du début de fichier](https://labex.io/fr/labs/linux-linux-head-command-file-beginning-display-214302)** - Ce laboratoire vous guidera dans l'utilisation de la commande `head` pour afficher les lignes initiales des fichiers texte, y compris la modification du nombre de lignes.
-2.  **[Visualisation des fichiers journaux et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous aux compétences essentielles de la ligne de commande Linux pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, qui nécessitent souvent des commandes comme `head`.
-3.  **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Appliquez vos connaissances de `head` (et `tail`) pour extraire et analyser rapidement les entrées de journaux récentes, simulant une analyse de cybersécurité réelle.
+1. **[Commande Linux head : Affichage du début de fichier](https://labex.io/fr/labs/linux-linux-head-command-file-beginning-display-214302)** - Ce laboratoire vous guidera dans l'utilisation de la commande `head` pour afficher les lignes initiales des fichiers texte, y compris la modification du nombre de lignes.
+2. **[Visualisation des fichiers journaux et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous aux compétences essentielles de la ligne de commande Linux pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration, qui nécessitent souvent des commandes comme `head`.
+3. **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Appliquez vos connaissances de `head` (et `tail`) pour extraire et analyser rapidement les entrées de journaux récentes, simulant une analyse de cybersécurité réelle.
 
 Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la visualisation et l'analyse des fichiers texte sous Linux.
 

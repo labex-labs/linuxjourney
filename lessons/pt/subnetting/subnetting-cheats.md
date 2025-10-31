@@ -57,7 +57,7 @@ Como todos os outros bits são `0`, não somamos nenhum outro valor. A fórmula 
 
 A prática leva à perfeição! Embora a matemática de sub-redes seja frequentemente automatizada no mundo real, entender as conversões binárias subjacentes é crucial para entrevistas e uma compreensão mais profunda de redes. Aqui está um laboratório prático para reforçar sua compreensão:
 
-1.  **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
+1. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
 
 Este laboratório ajudará você a aplicar os conceitos de conversão binária e subnetting em um cenário prático e a construir confiança com os fundamentos de endereçamento de rede.
 

@@ -48,7 +48,7 @@ En este caso, `tr -s ' '` reemplazó secuencias de múltiples espacios con un so
 
 Para poner en práctica tus conocimientos, prueba el siguiente laboratorio práctico. Te ayudará a reforzar tu comprensión de la traducción de caracteres y el procesamiento de texto.
 
-1.  **[Comando Linux tr: Traducción de Caracteres](https://labex.io/es/labs/linux-linux-tr-command-character-translating-219198)** - Aprende el comando Linux `tr` para transformaciones a nivel de carácter en flujos de texto. Practicarás la traducción de caracteres, la eliminación de caracteres específicos, el trabajo con clases de caracteres y la compresión de caracteres repetidos.
+1. **[Comando Linux tr: Traducción de Caracteres](https://labex.io/es/labs/linux-linux-tr-command-character-translating-219198)** - Aprende el comando Linux `tr` para transformaciones a nivel de carácter en flujos de texto. Practicarás la traducción de caracteres, la eliminación de caracteres específicos, el trabajo con clases de caracteres y la compresión de caracteres repetidos.
 
 Este laboratorio te ayudará a aplicar los conceptos de manipulación de texto en escenarios reales y a ganar confianza con el comando `tr`.
 

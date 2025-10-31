@@ -99,7 +99,7 @@ These commands are the building blocks for service management on modern Linux sy
 
 Practice is key to mastering new skills. This hands-on lab will help reinforce your understanding of managing processes, which are often controlled by systemd services:
 
-1.  **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`. This lab will give you practical experience with the runtime effects of systemd unit management.
+1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, adjusting priority with `renice`, and terminating them with `kill`. This lab will give you practical experience with the runtime effects of systemd unit management.
 
 This lab will help you apply these concepts in a real-world scenario and build confidence with process management in Linux.
 
