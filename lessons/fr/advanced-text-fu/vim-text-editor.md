@@ -13,13 +13,13 @@ Vim est un éditeur de texte puissant et hautement configurable, conçu pour per
 
 ### Qu'est-ce que Vim Vi Improved
 
-Comme son nom l'indique, **vim vi improved** est le successeur direct de l'éditeur Vi original, qui faisait partie intégrante des premiers systèmes Unix. Vim ajoute un grand nombre de fonctionnalités, notamment la coloration syntaxique, un système d'aide complet, l'annulation à plusieurs niveaux et un support étendu des plugins, ce qui en fait un favori des programmeurs et des administrateurs système. La philosophie centrale de Vim est de permettre la manipulation de texte sans quitter le clavier des mains.
+Comme son nom l'indique, **vim vi improved** est le successeur direct de l'éditeur Vi original, qui était une partie standard des premiers systèmes Unix. Vim ajoute un grand nombre de fonctionnalités, notamment la coloration syntaxique, un système d'aide complet, l'annulation à plusieurs niveaux et un support étendu des plugins, ce qui en fait un favori des programmeurs et des administrateurs système. La philosophie centrale de Vim est de permettre la manipulation de texte sans quitter le clavier des mains.
 
 ### Pourquoi utiliser Vim
 
 L'un des principaux avantages de Vim est son omniprésence. Il est préinstallé sur presque toutes les distributions Linux et est également disponible sur macOS et Windows. Cela signifie que vous pouvez compter sur sa présence sur presque tous les serveurs auxquels vous vous connectez.
 
-De plus, Vim est incroyablement léger et rapide. Il démarre instantanément et peut gérer de très gros fichiers sans ralentir, ce qui est un avantage significatif lorsque l'on travaille sur des systèmes aux ressources limitées. Apprendre les bases de cet éditeur **vim improved** est une compétence essentielle pour tout utilisateur Linux.
+De plus, Vim est incroyablement léger et rapide. Il démarre instantanément et peut gérer de très grands fichiers sans ralentir, un avantage significatif lors du travail sur des systèmes aux ressources limitées. Apprendre les bases de cet éditeur **vim improved** est une compétence essentielle pour tout utilisateur Linux.
 
 ### Démarrer avec Vim
 
@@ -29,7 +29,7 @@ Pour démarrer Vim, vous pouvez simplement taper la commande dans votre terminal
 vim
 ```
 
-Cela ouvrira l'éditeur avec un tampon vierge. Pour ouvrir un fichier spécifique, vous pouvez passer son nom comme argument :
+Cela ouvrira l'éditeur avec un tampon vide. Pour ouvrir un fichier spécifique, vous pouvez passer son nom comme argument :
 
 ```bash
 vim nom_du_fichier.txt
@@ -42,3 +42,11 @@ Si le fichier existe, Vim l'ouvrira pour l'édition. S'il n'existe pas, Vim ouvr
 Pour mettre vos connaissances en pratique, essayez le laboratoire pratique suivant. Il vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance avec les éditeurs de texte Linux.
 
 1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer des fichiers, à modifier du texte, à enregistrer des fichiers et à naviguer avec Vim et Nano dans un environnement Linux réel.
+
+## Quiz Question
+
+De quel éditeur Vim est-il une version améliorée ?
+
+## Quiz Answer
+
+Vi

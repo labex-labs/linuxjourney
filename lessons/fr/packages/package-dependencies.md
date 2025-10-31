@@ -15,15 +15,15 @@ Dans le monde de Linux, les paquets logiciels se suffisent rarement à eux-même
 
 Pour comprendre les dépendances, imaginez un groupe de restaurants. Chaque restaurant crée des plats uniques, mais ils s'approvisionnent tous en ingrédients auprès de la même ferme centrale. La qualité de leur nourriture dépend des approvisionnements de la ferme. Si la ferme cessait soudainement de fournir des ingrédients, les restaurants ne pourraient pas fonctionner. De même, les paquets Linux dépendent d'autres composants pour s'exécuter.
 
-### Que Sont les Bibliothèques Partagées
+### Que sont les Bibliothèques Partagées
 
-Sous Linux, ces dépendances cruciales sont généralement d'autres paquets ou, plus couramment, des bibliothèques partagées. Une bibliothèque partagée est une collection de code précompilé que plusieurs programmes peuvent utiliser simultanément. C'est un principe fondamental d'une installation logicielle efficace.
+Sous Linux, ces dépendances cruciales sont généralement d'autres paquets ou, plus communément, des bibliothèques partagées. Une bibliothèque partagée est une collection de code précompilé que plusieurs programmes peuvent utiliser simultanément. C'est un principe fondamental d'une installation logicielle efficace.
 
-Pour revenir à notre analogie, imaginez le travail supplémentaire si chaque restaurant devait cultiver sa propre nourriture. En partageant une ressource commune — la ferme — ils économisent un effort immense. Les bibliothèques partagées fonctionnent de la même manière, empêchant les développeurs d'avoir à réécrire des fonctions communes pour chaque nouvelle application. Nous explorerons les bibliothèques partagées plus en détail plus tard, mais pour l'instant, il est important de savoir qu'elles constituent un type courant de dépendance.
+Pour revenir à notre analogie, imaginez le travail supplémentaire si chaque restaurant devait cultiver sa propre nourriture. En partageant une ressource commune — la ferme — ils économisent d'immenses efforts. Les bibliothèques partagées fonctionnent de la même manière, empêchant les développeurs d'avoir à réécrire des fonctions courantes pour chaque nouvelle application. Nous explorerons les bibliothèques partagées plus en détail plus tard, mais pour l'instant, il est important de savoir qu'elles constituent un type courant de dépendance.
 
 ### Le Risque des Paquets Cassés
 
-Une gestion efficace des paquets consiste à s'assurer que ces dépendances sont satisfaites. Si un paquet ou une bibliothèque partagée requis est manquant lors de l'installation d'un logiciel, le processus échouera probablement. Le paquet sera considéré comme « cassé » car il lui manque les composants nécessaires pour fonctionner. Le gestionnaire de paquets de votre système est conçu pour gérer automatiquement ces dépendances de paquets Linux, en les récupérant et en les installant pour éviter de tels problèmes avant qu'ils ne surviennent.
+Une gestion efficace des paquets consiste à s'assurer que ces dépendances sont satisfaites. Si un paquet ou une bibliothèque partagée requis est manquant lors de l'installation d'un logiciel, le processus échouera probablement. Le paquet sera considéré comme "cassé" car il lui manque les composants nécessaires pour s'exécuter. Le gestionnaire de paquets de votre système est conçu pour gérer automatiquement ces dépendances de paquets Linux, en les récupérant et en les installant pour éviter de tels problèmes avant qu'ils ne surviennent.
 
 ## Exercise
 
@@ -34,3 +34,11 @@ Appliquez vos connaissances avec ces laboratoires pratiques, qui vous aideront �
 3. **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Acquérir de l'expérience avec YUM pour inspecter les paquets installés, explorer les dépôts et gérer les mises à jour, ce qui implique tous la gestion des dépendances des paquets.
 
 Ces laboratoires vous aideront à appliquer les concepts de gestion des paquets et de résolution des dépendances dans des scénarios réels, renforçant ainsi votre confiance dans l'installation de logiciels sous Linux.
+
+## Quiz Question
+
+What is a collection of pre-compiled code that multiple programs can use? (Please answer in English, paying attention to uppercase and lowercase letters).
+
+## Quiz Answer
+
+Libraries

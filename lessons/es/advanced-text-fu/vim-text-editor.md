@@ -9,11 +9,11 @@ meta_keywords: "Vim, vi mejorado, vim vi mejorado, editor de texto Linux, tutori
 
 ## Lesson Content
 
-Vim es un editor de texto potente y altamente configurable construido para permitir una edición de texto eficiente. Es una versión mejorada del editor Vi, por eso se llama **Vim**, abreviatura de **Vi Improved** (Vi Mejorado).
+Vim es un editor de texto potente y altamente configurable creado para permitir una edición de texto eficiente. Es una versión mejorada del editor Vi, por eso se llama **Vim**, abreviatura de **Vi Improved** (Vi Mejorado).
 
 ### ¿Qué es Vim Vi Improved?
 
-Como su nombre indica, **vim vi improved** es el sucesor directo del editor Vi original, que era parte estándar de los primeros sistemas Unix. Vim añade una gran cantidad de características, incluyendo resaltado de sintaxis, un sistema de ayuda completo, deshacer multinivel y soporte extenso para plugins, lo que lo convierte en el favorito entre programadores y administradores de sistemas. La filosofía central de Vim es permitir la manipulación de texto sin levantar las manos del teclado.
+Como su nombre indica, **vim vi improved** es un sucesor directo del editor Vi original, que era parte estándar de los primeros sistemas Unix. Vim añade una gran cantidad de características, incluyendo resaltado de sintaxis, un sistema de ayuda completo, deshacer de múltiples niveles y un amplio soporte para plugins, lo que lo convierte en el favorito entre programadores y administradores de sistemas. La filosofía central de Vim es permitir la manipulación de texto sin levantar las manos del teclado.
 
 ### ¿Por qué usar Vim?
 
@@ -42,3 +42,11 @@ Si el archivo existe, Vim lo abrirá para editarlo. Si no existe, Vim abrirá un
 Para poner tus conocimientos en práctica, prueba el siguiente laboratorio práctico. Te ayudará a aplicar los conceptos en escenarios del mundo real y a ganar confianza con los editores de texto de Linux.
 
 1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación de archivos, la edición de texto, el guardado de archivos y la navegación con Vim y Nano en un entorno Linux real.
+
+## Quiz Question
+
+¿De qué editor es Vim una versión mejorada?
+
+## Quiz Answer
+
+Vi

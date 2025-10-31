@@ -2,9 +2,9 @@
 index: 5
 lang: "es"
 title: "CIDR"
-meta_title: "CIDR - Subnetting"
-meta_description: "Una guía sobre la notación CIDR. Aprenda sobre el formato CIDR, subnetting CIDR y cómo calcular hosts para su red, incluso en un servidor Ubuntu. Domine el direccionamiento IP con CIDR."
-meta_keywords: "CIDR, subnetting cidr, formato cidr, máscara de subred, direccionamiento IP, cidr de subred de servidor ubuntu, cidr de subred ubuntu, prefijo de red, redes Linux"
+meta_title: "CIDR - Subredes"
+meta_description: "Una guía sobre la notación CIDR. Aprenda sobre el formato CIDR, subredes CIDR y cómo calcular hosts para su red, incluso en un servidor Ubuntu. Domine el direccionamiento IP con CIDR."
+meta_keywords: "CIDR, subredes cidr, formato cidr, máscara de subred, direccionamiento IP, subred ubuntu servidor cidr, subred ubuntu cidr, prefijo de red, redes Linux"
 ---
 
 ## Lesson Content
@@ -35,6 +35,14 @@ Para dominar estos conceptos, practique con algunos laboratorios prácticos que 
 
 1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine el subnetting IP y la conversión binaria, incluida la traducción de máscaras CIDR y el cálculo de hosts utilizables.
 2. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP gobiernan la comunicación directa de red en un entorno simulado.
-3. **[Explorar Tipos de Direcciones IP y Alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y la alcanzabilidad de la red usando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
+3. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y el alcance de la red utilizando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
 
 Estos laboratorios le ayudarán a aplicar los conceptos de CIDR y direccionamiento IP en escenarios del mundo real y a ganar confianza con la configuración de red.
+
+## Quiz Question
+
+¿De cuántos bits consta una dirección IPv4?
+
+## Quiz Answer
+
+32

@@ -43,4 +43,8 @@ These labs will help you apply the concepts of package management and software i
 
 ## Quiz Question
 
+What package format is used by Ubuntu and Debian?
+
 ## Quiz Answer
+
+deb

@@ -13,7 +13,7 @@ Um sistema Linux é composto por muitos componentes de software, como navegadore
 
 ### O Que São Pacotes Linux
 
-Você pode conhecer softwares por nomes como Chrome ou Firefox, mas em um nível técnico, eles são pacotes. Um pacote é essencialmente um arquivo compactado de arquivos, incluindo os executáveis da aplicação, arquivos de configuração e documentação, todos agrupados. Essa estrutura organizada simplifica o gerenciamento de software.
+Você pode conhecer software por nomes como Chrome ou Firefox, mas em um nível técnico, eles são pacotes. Um pacote é essencialmente um arquivo compactado de arquivos, incluindo os executáveis da aplicação, arquivos de configuração e documentação, todos agrupados. Essa estrutura organizada simplifica o gerenciamento de software.
 
 ### A Cadeia de Suprimentos de Software
 
@@ -22,9 +22,9 @@ A jornada de um pacote de software envolve dois papéis principais:
 - **Provedores Upstream**: Estes são os desenvolvedores que escrevem o software. Eles compilam o código-fonte, criam instruções de instalação e lançam novas versões e atualizações.
 - **Mantenedores de Pacotes**: Quando uma nova versão está pronta, os provedores upstream a enviam aos mantenedores de pacotes. Esses mantenedores revisam, gerenciam e distribuem o software para os usuários finais na forma de pacotes adaptados para distribuições Linux específicas.
 
-### Formatos de Pacote Comuns
+### Formatos de Pacotes Comuns
 
-Embora você possa instalar software diretamente do seu código-fonte, usar um gerenciador de pacotes é muito mais comum e eficiente. É uma das **melhores maneiras de aprender comandos linux** para administração de sistemas. Existem dois formatos de pacote predominantes:
+Embora você possa instalar software diretamente do seu código-fonte, usar um gerenciador de pacotes é muito mais comum e eficiente. É uma das **melhores maneiras de aprender comandos linux** para administração de sistemas. Existem dois formatos de pacotes predominantes:
 
 - **Debian (.deb)**: Usado pelo Debian e seus derivados, como Ubuntu e Linux Mint.
 - **Red Hat Package Manager (.rpm)**: Usado pelo Red Hat Enterprise Linux (RHEL), Fedora e CentOS.
@@ -40,3 +40,11 @@ Para aplicar seu conhecimento, recomendamos estes laboratórios práticos. Eles 
 3. **[Compilar Software a Partir do Código-Fonte no Linux](https://labex.io/pt/labs/comptia-build-software-from-source-code-in-linux-590853)** - Entenda o processo fundamental de compilar e instalar software a partir do seu código-fonte, uma habilidade crucial para aplicações não disponíveis via gerenciadores de pacotes.
 
 Estes laboratórios ajudarão você a aplicar os conceitos de gerenciamento de pacotes e instalação de software em cenários reais e a construir confiança com a administração de sistemas Linux.
+
+## Quiz Question
+
+Qual formato de pacote é usado pelo Ubuntu e Debian?
+
+## Quiz Answer
+
+deb

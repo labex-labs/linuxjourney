@@ -3,8 +3,8 @@ index: 1
 lang: "ja"
 title: "ソフトウェア配布"
 meta_title: "ソフトウェア配布 - パッケージ"
-meta_description: ".deb や.rpm などのパッケージ形式、パッケージマネージャー、ソフトウェア配布を理解することで、Linux を学ぶ最良の方法を探求します。無料の Linux 認定コースの重要な一部です。"
-meta_keywords: "Linux ソフトウェア配布，パッケージマネージャー, .deb, .rpm, Linux を学ぶ最良の方法，無料 Linux 認定コース，Linux を学ぶための最良のリソース，Linux コマンドラインを学ぶ最良の方法，ソフトウェアインストール"
+meta_description: "Linux のソフトウェア配布、パッケージマネージャ、.deb や.rpm などのパッケージ形式を理解することで、Linux を学ぶ最良の方法を探求しましょう。無料の Linux 認定コースの重要な一部です。"
+meta_keywords: "Linux ソフトウェア配布，パッケージマネージャ，.deb, .rpm, Linux を学ぶ最良の方法，無料 Linux 認定コース，Linux を学ぶための最良のリソース，Linux コマンドラインを学ぶ最良の方法，ソフトウェアインストール"
 ---
 
 ## Lesson Content
@@ -26,8 +26,8 @@ Chrome や Firefox のような名前でソフトウェアを知っているか�
 
 ソースコードから直接ソフトウェアをインストールすることもできますが、パッケージマネージャを使用する方がはるかに一般的で効率的です。これは、システム管理のために**Linux コマンドを学ぶ最良の方法**の 1 つです。支配的なパッケージ形式は 2 つあります。
 
-- **Debian（.deb）**: Debian とその派生（Ubuntu や Linux Mint など）で使用されます。
-- **Red Hat Package Manager（.rpm）**: Red Hat Enterprise Linux（RHEL）、Fedora、CentOS で使用されます。
+- **Debian (.deb)**: Debian とその派生（Ubuntu や Linux Mint など）で使用されます。
+- **Red Hat Package Manager (.rpm)**: Red Hat Enterprise Linux (RHEL)、Fedora、CentOS で使用されます。
 
 これらのパッケージを管理するためのツールを習得することは、**Linux コマンドラインを学ぶ最良の方法**であり、常に使用するスキルです。これらのツールは、Linux システム管理を学ぶための**最高の資料**の一部です。
 
@@ -35,8 +35,16 @@ Chrome や Firefox のような名前でソフトウェアを知っているか�
 
 知識を応用するために、これらのハンズオンラボをお勧めします。これらは、このレッスンで取り上げた概念に関する実践的な経験を提供します。
 
-1. **[Linux での RPM を使用したパッケージ管理](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Red Hat ベースのシステムで、パッケージ情報の照会、整合性の検証、RPM パッケージの内容の検査に関する実践的な経験を積みます。
-2. **[Linux での YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を学びます。これには、リポジトリの検査、更新、調査が含まれます。
-3. **[Linux でのソースコードからのソフトウェアのビルド](https://labex.io/ja/labs/comptia-build-software-from-source-code-in-linux-590853)** - パッケージマネージャ経由で利用できないアプリケーションにとって重要なスキルである、ソースコードからソフトウェアをビルドおよびインストールする基本的なプロセスを理解します。
+1. **[Linux における RPM を使用したパッケージ管理](https://labex.io/ja/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Red Hat ベースのシステムで、パッケージ情報の照会、整合性の検証、RPM パッケージの内容の検査に関する実践的な経験を積みます。
+2. **[Linux における YUM を使用したパッケージの照会と更新](https://labex.io/ja/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - YUM を使用して RHEL ベースの Linux システムでソフトウェアパッケージを管理する方法を学びます。これには、リポジトリの検査、更新、調査が含まれます。
+3. **[Linux におけるソースコードからのソフトウェアのビルド](https://labex.io/ja/labs/comptia-build-software-from-source-code-in-linux-590853)** - ソースコードからソフトウェアをビルドおよびインストールするという基本的なプロセスを理解します。これは、パッケージマネージャ経由で利用できないアプリケーションにとって重要なスキルです。
 
 これらのラボは、パッケージ管理とソフトウェアインストールの概念を実際のシナリオに適用し、Linux システム管理への自信を築くのに役立ちます。
+
+## Quiz Question
+
+Ubuntu と Debian で使用されるパッケージ形式は何ですか？
+
+## Quiz Answer
+
+deb

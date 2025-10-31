@@ -41,4 +41,8 @@ These labs will help you apply the concepts of CIDR and IP addressing in real-wo
 
 ## Quiz Question
 
+How many bits does an IPv4 address consist of?
+
 ## Quiz Answer
+
+32

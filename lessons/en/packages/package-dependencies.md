@@ -37,4 +37,8 @@ These labs will help you apply the concepts of package management and dependency
 
 ## Quiz Question
 
+What is a collection of pre-compiled code that multiple programs can use? (Please answer in English, paying attention to uppercase and lowercase letters).
+
 ## Quiz Answer
+
+Libraries

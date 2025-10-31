@@ -4,18 +4,18 @@ lang: "pt"
 title: "CIDR"
 meta_title: "CIDR - Sub-redes"
 meta_description: "Um guia para a notação CIDR. Aprenda sobre o formato CIDR, sub-redes CIDR e como calcular hosts para sua rede, inclusive em um servidor Ubuntu. Domine o endereçamento IP com CIDR."
-meta_keywords: "CIDR, sub-rede CIDR, formato CIDR, máscara de sub-rede, endereçamento IP, sub-rede Ubuntu server CIDR, sub-rede Ubuntu CIDR, prefixo de rede, rede Linux"
+meta_keywords: "CIDR, sub-rede CIDR, formato CIDR, máscara de sub-rede, endereçamento IP, sub-rede Ubuntu servidor CIDR, sub-rede Ubuntu CIDR, prefixo de rede, rede Linux"
 ---
 
 ## Lesson Content
 
-CIDR (Classless Inter-Domain Routing) é um método para alocação de endereços IP e roteamento de pacotes do Protocolo de Internet. Ele oferece uma maneira mais compacta e eficiente de representar uma máscara de sub-rede, substituindo o design de rede classful mais antigo. Entender o CIDR é essencial para a administração de redes modernas.
+CIDR (Classless Inter-Domain Routing) é um método para alocar endereços IP e rotear pacotes do Protocolo de Internet. Ele oferece uma maneira mais compacta e eficiente de representar uma máscara de sub-rede, substituindo o design de rede classful mais antigo. Entender o CIDR é essencial para a administração de rede moderna.
 
 ### O Formato CIDR
 
 Você frequentemente verá redes notadas usando o **formato CIDR**, onde um endereço IP é seguido por uma barra e um número. Por exemplo, uma sub-rede como `10.42.3.0` com uma máscara de sub-rede de `255.255.255.0` é escrita como `10.42.3.0/24`. Esta notação única inclui tanto o endereço de rede quanto o comprimento do prefixo.
 
-O número após a barra indica quantos bits do endereço IP são usados para o prefixo de rede. Esta é uma tarefa comum ao configurar a rede em um sistema como um **servidor Ubuntu**, onde você pode definir uma interface com um endereço `ubuntu subnet cidr`.
+O número após a barra indica quantos bits do endereço IP são usados para o prefixo de rede. Esta é uma tarefa comum ao configurar redes em um sistema como um **servidor Ubuntu**, onde você pode definir uma interface com um endereço `ubuntu subnet cidr`.
 
 ### Sub-redes CIDR e Cálculo de Hosts
 
@@ -37,4 +37,12 @@ Para dominar esses conceitos, pratique com alguns laboratórios práticos que re
 2. **[Simular Conectividade de Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a atribuir endereços IP estáticos e observe como as sub-redes IP governam a comunicação direta de rede em um ambiente simulado.
 3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade de rede usando comandos como `ping` e `ip a` para testar vários tipos de IP e conectividade.
 
-Esses laboratórios ajudarão você a aplicar os conceitos de CIDR e endereçamento IP em cenários do mundo real e a construir confiança na configuração de rede.
+Esses laboratórios ajudarão você a aplicar os conceitos de CIDR e endereçamento IP em cenários do mundo real e a ganhar confiança na configuração de rede.
+
+## Quiz Question
+
+Quantos bits um endereço IPv4 possui?
+
+## Quiz Answer
+
+32

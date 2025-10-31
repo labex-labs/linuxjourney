@@ -45,4 +45,8 @@ To put your knowledge into practice, try the following hands-on lab. It will hel
 
 ## Quiz Question
 
+What editor is Vim an improved version of?
+
 ## Quiz Answer
+
+Vi
