@@ -3,43 +3,49 @@ index: 1
 lang: "es"
 title: "¿Qué es un router?"
 meta_title: "¿Qué es un router? - Enrutamiento"
-meta_description: "Aprende qué es un router, cómo funciona y su papel en las redes. Comprende el enrutamiento, los saltos y la entrega de paquetes para principiantes."
-meta_keywords: "router, redes, enrutamiento, saltos, conmutación de paquetes, redes Linux, tutorial para principiantes, guía de red"
+meta_description: "Guía para principiantes sobre qué es un router en redes. Aprenda sobre enrutamiento, conmutación de paquetes, saltos y cómo los routers usan tablas de enrutamiento para reenviar datos a través de redes. Esta guía de redes es esencial para aprender sobre redes en Linux."
+meta_keywords: "router, redes, enrutamiento, saltos, conmutación de paquetes, redes Linux, tutorial principiantes, guía de redes"
 ---
 
 ## Lesson Content
 
-Hemos usado el término router antes; con suerte, sabes lo que es, ya que probablemente tengas uno en tu casa. Un router permite que las máquinas de una red se comuniquen entre sí, así como con otras redes. En un router típico, tendrás puertos LAN que permiten que tus máquinas se conecten a la misma red de área local, y también tendrás un puerto de enlace ascendente a internet que te conecta a internet. A veces verás este puerto etiquetado como WAN porque esencialmente te conecta a una red más amplia. Cuando realizamos cualquier tipo de actividad de red, tiene que pasar por el router. El router decide a dónde van nuestros paquetes de red y cuáles entran. Enruta nuestros paquetes entre múltiples redes para ir desde su host de origen hasta su host de destino.
+Un router es un dispositivo fundamental en las redes informáticas. Es probable que tengas uno en casa que te conecta a Internet. Su trabajo principal es permitir que las máquinas en una red se comuniquen entre sí y con otras redes. Este proceso es una parte central de lo que hace funcionar Internet y las redes locales.
 
-### ¿Cómo funciona un router?
+### La función principal de un router
 
-Piensa en el enrutamiento de la misma manera que la entrega de correo. Tenemos una dirección a la que queremos enviar una carta. Cuando la enviamos a la oficina de correos, ellos reciben la carta y ven: "Oh, esto va a California". La pondré en el camión que va a California (honestamente no tengo idea de cómo funciona el sistema postal). La carta luego se envía a San Francisco. Dentro de San Francisco, hay diferentes códigos postales, y luego en esos códigos postales, hay códigos de dirección más pequeños hasta que finalmente, alguien puede entregar tu carta a la dirección que querías. Por otro lado, si ya vivieras en San Francisco y en el mismo código postal, el cartero probablemente sabrá exactamente a dónde tiene que ir la carta sin entregársela a nadie más.
+Un router doméstico típico tiene puertos LAN (Red de Área Local) para conectar tus dispositivos a una red local y un puerto WAN (Red de Área Amplia) que proporciona conexión a Internet. Cada fragmento de datos, o "paquete", que envías o recibes durante cualquier actividad de red debe pasar por el router. El router inspecciona estos paquetes de red y decide a dónde deben ir. Efectivamente, enruta el tráfico entre múltiples redes, asegurando que cada paquete viaje desde su origen hasta su destino final.
 
-Cuando enrutamos paquetes, utilizan "rutas" de dirección similares, como "para llegar a la red A, envía estos paquetes a la red B". Cuando no tenemos una ruta establecida para eso, tenemos una ruta predeterminada que usarán nuestros paquetes. Estas rutas se establecen en una tabla de enrutamiento que nuestro sistema utiliza para navegar a través de las redes.
+### El proceso de enrutamiento
 
-### Saltos
+Piense en el proceso de enrutamiento como la entrega de correo. Cuando envías una carta, la oficina de correos determina el destino general (por ejemplo, un estado o ciudad) y la envía allí. A partir de ese momento, se clasifica en regiones más pequeñas como códigos postales hasta que finalmente llega a la dirección de calle específica.
 
-A medida que los paquetes se mueven a través de las redes, viajan en saltos. Un salto es cómo medimos aproximadamente la distancia que debe recorrer el paquete para ir del origen al destino. Digamos que tengo dos routers que conectan el host A con el host B; por lo tanto, decimos que hay dos saltos entre el host A y el host B. Cada salto es un dispositivo intermedio, como los routers, por el que debemos pasar.
+En redes, un router utiliza una **tabla de enrutamiento** para tomar estas decisiones. Esta tabla contiene un conjunto de reglas, o rutas, que le dicen al router cómo reenviar paquetes a un destino de red en particular. Por ejemplo, una regla podría decir: "Para llegar a la Red A, envíe los paquetes al Router B". Si no hay una regla específica para un destino, el router utiliza una **ruta predeterminada**, que generalmente dirige el tráfico hacia Internet. Este sistema es crucial tanto en configuraciones domésticas simples como en entornos complejos de **redes Linux**.
 
-### ¿Entendiendo la diferencia básica entre Conmutación, Enrutamiento e Inundación?
+### Saltos (Hops)
 
-- **Packet SWITCHING** es básicamente recibir, procesar y reenviar datos al dispositivo de destino.
-- **ROUTING** es un proceso de creación de la tabla de enrutamiento para que podamos hacer SWITCHING mejor.
-- Antes del enrutamiento, se usaba **FLOODING**. Si un router no sabe por dónde enviar un paquete, entonces cada paquete entrante se envía a través de cada enlace saliente, excepto el que lo recibió.
+A medida que los paquetes viajan a través de las redes, su recorrido se mide en **saltos** (hops). Un salto representa un paso del viaje en el que un paquete pasa por un dispositivo intermedio, como un router. Por ejemplo, si un paquete debe pasar por dos routers para ir del Host A al Host B, decimos que la ruta tiene una longitud de dos saltos. Los saltos proporcionan una métrica simple para medir la distancia entre un origen y un destino en una red.
+
+### Conmutación de paquetes, enrutamiento e inundación
+
+Para comprender cómo se mueven los datos, es útil conocer estos términos relacionados:
+
+- **Conmutación de paquetes** es el método fundamental de recibir, procesar y reenviar paquetes de datos a su destino. Es lo que los routers hacen continuamente.
+- **Enrutamiento** es el proceso inteligente de construir y mantener la tabla de enrutamiento. Un enrutamiento eficaz permite una conmutación de paquetes más eficiente y confiable.
+- **Inundación (Flooding)** es un método más antiguo y menos eficiente que se utiliza cuando un router no sabe a dónde enviar un paquete. Envía el paquete entrante por todas las conexiones excepto por aquella por la que llegó, con la esperanza de que uno llegue al destino. Las redes modernas dependen del enrutamiento para evitar este tipo de ineficiencia.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la conectividad de red y el enrutamiento:
+¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la conectividad de red y el enrutamiento:
 
-1. **[Explorar tipos de direcciones IP y accesibilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practica la prueba de la pila TCP/IP local, la identificación de IPs privadas y públicas, y la verificación de la accesibilidad de la red, que son clave para entender cómo un router facilita la comunicación.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprende cómo los comandos `ping` y `arp` te ayudan a observar cómo interactúan las capas de red y de enlace de datos, y cómo la puerta de enlace predeterminada (router) maneja el tráfico remoto.
-3. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Usa Docker para simular nodos de red y asignar direcciones IP, luego prueba la conectividad para entender cómo las subredes IP y el enrutamiento rigen la comunicación de red.
+1.  **[Explorar tipos de direcciones IP y alcanzabilidad en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Practique la prueba de la pila TCP/IP local, la identificación de IPs privadas y públicas, y la verificación de la alcanzabilidad de la red, que son clave para comprender cómo un router facilita la comunicación.
+2.  **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo los comandos `ping` y `arp` le ayudan a observar cómo interactúan las capas de red y de enlace de datos, y cómo la puerta de enlace predeterminada (router) maneja el tráfico remoto.
+3.  **[Simular conectividad de capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker para simular nodos de red y asignar direcciones IP, luego pruebe la conectividad para comprender cómo las subredes IP y el enrutamiento gobiernan la comunicación de red.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de comunicación de red, direccionamiento IP y el papel del enrutamiento en escenarios reales, construyendo confianza con los fundamentos de la red.
+Estos laboratorios le ayudarán a aplicar los conceptos de comunicación de red, direccionamiento IP y el papel del enrutamiento en escenarios reales, aumentando su confianza con los fundamentos de red.
 
 ## Quiz Question
 
-¿Cómo miden los paquetes la distancia?
+How do packets measure distance? (Please answer in English. The answer is case-sensitive.)
 
 ## Quiz Answer
 

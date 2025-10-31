@@ -3,13 +3,13 @@ index: 12
 lang: "pt"
 title: "symlinks"
 meta_title: "symlinks - O Sistema de Arquivos"
-meta_description: "Aprenda sobre symlinks e hard links no Linux, incluindo como criá-los e gerenciá-los. Entenda suas diferenças e casos de uso com este guia para iniciantes."
-meta_keywords: "Linux symlinks, hard links, comando ln, links simbólicos, sistema de arquivos Linux, tutorial Linux, Linux para iniciantes"
+meta_description: "Explore symlinks (links simbólicos) e hard links no Linux. Aprenda a criá-los com o comando ln, verificar a contagem de links com ls e entender a diferença nas saídas do ls para symlinks e hard links."
+meta_keywords: "symlinks Linux, hard links, comando ln, links simbólicos, ls symlink, contagem de links no linux, ls symlinks, ls links, sistema de arquivos Linux, tutorial Linux"
 ---
 
 ## Lesson Content
 
-Vamos usar um exemplo anterior de informações de inode:
+Ao listar arquivos em detalhes, você verá muitas informações. Vamos analisar um exemplo anterior de informações de inode do comando `ls -li`:
 
 ```plaintext
 pete@icebox:~$ ls -li
@@ -17,11 +17,17 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-Você deve ter notado que temos ignorado o terceiro campo no comando `ls`; esse campo é a contagem de links. A contagem de links é o número total de hard links que um arquivo possui. Bem, isso não significa nada para você agora, então vamos discutir os links primeiro.
+Anteriormente, ignoramos o terceiro campo nesta saída. Este campo é a contagem de links.
 
-### Symlinks
+### A Contagem de Links no Linux
 
-No sistema operacional Windows, existem coisas conhecidas como atalhos. Atalhos são apenas apelidos para outros arquivos. Se você fizer algo com o arquivo original, poderá potencialmente quebrar o atalho. No Linux, o equivalente aos atalhos são os links simbólicos (ou soft links ou symlinks). Symlinks nos permitem linkar para outro arquivo pelo seu nome de arquivo. Outro tipo de link encontrado no Linux são os hard links; estes são, na verdade, outro arquivo com um link para um inode. Vamos ver o que quero dizer na prática, começando com os symlinks.
+A **contagem de links no linux** é o número total de hard links que um arquivo possui. Para entender o que isso significa, primeiro precisamos discutir o que são links. No Linux, existem dois tipos de links: links simbólicos (symlinks) e hard links.
+
+### Entendendo Symlinks
+
+No sistema operacional Windows, você tem atalhos, que são essencialmente aliases que apontam para outros arquivos. No Linux, o equivalente é um link simbólico, também conhecido como link suave ou **symlink**. Um symlink é um tipo especial de arquivo que aponta para outro arquivo ou diretório pelo seu nome.
+
+Vamos ver isso na prática. Criaremos alguns arquivos e, em seguida, um symlink.
 
 ```bash
 pete@icebox:~/Desktop$ echo 'myfile' > myfile
@@ -37,11 +43,13 @@ total 12
 93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
 ```
 
-Você pode ver que eu criei um link simbólico chamado `myfilelink` que aponta para `myfile`. Links simbólicos são denotados por `->`. Observe, no entanto, como obtive um novo número de inode; symlinks são apenas arquivos que apontam para nomes de arquivos. Quando você modifica um symlink, o arquivo também é modificado. Os números de inode são únicos para os sistemas de arquivos; você não pode ter dois números de inode iguais em um único sistema de arquivos, o que significa que você não pode referenciar um arquivo em um sistema de arquivos diferente pelo seu número de inode. No entanto, se você usar symlinks, eles não usam números de inode; eles usam nomes de arquivos, então podem ser referenciados entre diferentes sistemas de arquivos.
+Aqui, criamos um link simbólico chamado `myfilelink` que aponta para `myfile`. Quando você usa `ls` para ver um `ls symlink`, ele é claramente identificado pelo `l` no início da string de permissões e pelo símbolo `->` apontando para o alvo. Observe que o symlink tem seu próprio número de inode exclusivo (93403). Como os symlinks apontam para nomes de arquivos em vez de inodes, eles podem abranger diferentes sistemas de arquivos.
 
-### Hardlinks
+### Entendendo Hard Links
 
-Vamos ver um exemplo de um hardlink:
+O outro tipo de link é o hard link. Um hard link cria outra entrada de arquivo que aponta diretamente para o mesmo inode do arquivo original.
+
+Vamos criar um hard link para `myfile2`:
 
 ```bash
 pete@icebox:~/Desktop$ ln myfile2 myhardlink
@@ -54,36 +62,38 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-Um hardlink apenas cria outro arquivo com um link para o mesmo inode. Então, se eu modificasse o conteúdo de `myfile2` ou `myhardlink`, a mudança seria vista em ambos. Mas se eu excluísse `myfile2`, o arquivo ainda estaria acessível através de `myhardlink`. É aqui que nossa contagem de links no comando `ls` entra em jogo. A contagem de links é o número de hardlinks que um inode possui. Quando você remove um arquivo, ele diminuirá essa contagem de links. O inode só é excluído quando todos os hardlinks para o inode foram excluídos. Quando você cria um arquivo, sua contagem de links é 1 porque é o único arquivo que aponta para aquele inode. Ao contrário dos symlinks, os hardlinks não abrangem sistemas de arquivos porque os inodes são únicos para o sistema de arquivos.
+Observe que `myhardlink` compartilha o mesmo número de inode (93401) que `myfile2`. A contagem de links para ambos os arquivos também aumentou para 2. Isso ocorre porque duas entradas de arquivo agora apontam para o mesmo inode. Se você modificar o conteúdo de `myfile2`, as alterações serão refletidas em `myhardlink`, e vice-versa. Se você excluir `myfile2`, os dados do arquivo ainda estarão acessíveis através de `myhardlink`. O inode e seus dados só são removidos do disco quando a contagem de links cai para zero. Como os hard links apontam para inodes, que são exclusivos dentro de um único sistema de arquivos, eles não podem abranger diferentes sistemas de arquivos.
 
-### Criando um symlink
+### Criando Symlinks e Hard Links
 
-```bash
-ln -s myfile mylink
-```
+Você pode criar ambos os tipos de links usando o comando `ln`. A sintaxe é simples.
 
-Para criar um link simbólico, você usa o comando `ln` com `-s` para simbólico, e você especifica um arquivo de destino e então um nome de link.
-
-### Criando um hardlink
+Para criar um link simbólico, use a flag `-s`:
 
 ```bash
-ln somefile somelink
+ln -s /caminho/para/original /caminho/para/link
 ```
 
-Semelhante à criação de um symlink, exceto que desta vez você omite o `-s`.
+Para criar um hard link, omita a flag `-s`:
+
+```bash
+ln /caminho/para/original /caminho/para/link
+```
+
+Usar os comandos `ls symlinks` ou `ls links` em geral com a opção `-l` é essencial para gerenciar e identificar esses diferentes tipos de arquivos.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre gerenciamento de arquivos, links e inodes:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de gerenciamento de arquivos, links e inodes:
 
-1. **[Gerenciar Arquivos e Diretórios no Linux](https://labex.io/pt/labs/comptia-manage-files-and-directories-in-linux-590835)** - Pratique a criação, cópia, movimentação e remoção de arquivos e diretórios, e aprenda especificamente sobre links simbólicos e hard links, e como analisar inodes.
-2. **[Navegar no Sistema de Arquivos no Linux](https://labex.io/pt/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos essenciais como `pwd`, `cd` e `ls` para se mover eficientemente pelo sistema de arquivos Linux, uma habilidade fundamental para entender onde os arquivos e seus inodes residem.
+1.  **[Gerenciar Arquivos e Diretórios no Linux](https://labex.io/pt/labs/comptia-manage-files-and-directories-in-linux-590835)** - Pratique a criação, cópia, movimentação e remoção de arquivos e diretórios, e aprenda especificamente sobre links simbólicos e hard links, e como analisar inodes.
+2.  **[Navegar no Sistema de Arquivos no Linux](https://labex.io/pt/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos essenciais como `pwd`, `cd` e `ls` para se mover eficientemente pelo sistema de arquivos Linux, uma habilidade fundamental para entender onde os arquivos e seus inodes residem.
 
-Esses laboratórios o ajudarão a aplicar os conceitos de gerenciamento de arquivos e links em cenários reais e a construir confiança com o sistema de arquivos Linux.
+Esses laboratórios ajudarão você a aplicar os conceitos de gerenciamento de arquivos e links em cenários reais e a construir confiança com o sistema de arquivos Linux.
 
 ## Quiz Question
 
-Qual é o comando usado para criar um symlink?
+Qual é o comando e sua opção principal usada para criar um symlink? Sua resposta deve estar em inglês e diferencia maiúsculas de minúsculas. Por favor, inclua o espaço entre o comando e a opção.
 
 ## Quiz Answer
 

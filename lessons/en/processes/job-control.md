@@ -3,17 +3,17 @@ index: 11
 lang: "en"
 title: "Job Control"
 meta_title: "Job Control - Processes"
-meta_description: "Learn Linux job control to manage background processes. Understand 'jobs', 'bg', 'fg', and 'kill' commands for efficient shell usage. Start your Linux journey!"
+meta_description: "Explore our Linux tutorial on job control to effectively manage background processes. Learn to use the jobs, bg, fg, and kill commands for powerful shell multitasking."
 meta_keywords: "Linux job control, background processes, jobs command, bg command, fg command, kill command, Linux tutorial, beginner Linux"
 ---
 
 ## Lesson Content
 
-Let's say you're working on a single terminal window and you're running a command that is taking forever. You can't interact with the shell until it is complete. However, we want to keep working on our machines, so we need that shell open. Fortunately, we can control how our processes run with jobs:
+In Linux, you often encounter commands that take a long time to complete. Instead of waiting and leaving your terminal unusable, you can use **Linux job control** to manage these tasks. This powerful feature allows you to run and manage multiple **background processes** within a single shell session, significantly improving your workflow.
 
-### Sending a job to the background
+### Running a Command in the Background
 
-Appending an ampersand (`&`) to the command will run it in the background so you can still use your shell. Let's see an example:
+To start a process directly in the background, simply append an ampersand (`&`) to your command. This immediately returns your shell prompt, allowing you to continue working while the command executes.
 
 ```bash
 sleep 1000 &
@@ -21,9 +21,9 @@ sleep 1001 &
 sleep 1002 &
 ```
 
-### View all background jobs
+### Listing Background Jobs
 
-Now you can view the jobs you just sent to the background.
+You can view all the jobs running in the background by using the `jobs` command.
 
 ```bash
 $ jobs
@@ -33,11 +33,11 @@ $ jobs
 [3]+   Running     sleep 1002 &
 ```
 
-This will show you the job ID in the first column, then the status and the command that was run. The **+** next to the job ID means that it is the most recent background job that started. The job with the **-** is the second most recent command.
+The output provides the job ID in the first column, its status, and the original command. The `+` symbol indicates the most recently started background job, while the `-` symbol marks the second most recent one.
 
-### Sending a job to the background on an existing job
+### Managing Active Processes
 
-If you already ran a job and want to send it to the background, you don't have to terminate it and start over again. First, suspend the job with Ctrl-Z, then run the **bg** command to send it to the background.
+What if a command is already running in the foreground and you decide you need your terminal back? You don't need to stop it. First, suspend the running process by pressing `Ctrl-Z`. Then, use the `bg` command to send that suspended job to the background.
 
 ```bash
 pete@icebox ~ $ sleep 1003
@@ -46,42 +46,37 @@ pete@icebox ~ $ sleep 1003
 
 pete@icebox ~ $ bg
 [4]+    sleep 1003 &
-
-pete@icebox ~ $ jobs
-
-[1]    Running     sleep 1000 &
-[2]    Running     sleep 1001 &
-[3]-   Running     sleep 1002 &
-[4]+   Running     sleep 1003 &
 ```
 
-### Moving a job from the background to the foreground
+Now, the `sleep 1003` process is running as a background job, and you can verify this with the `jobs` command.
 
-To move a job out of the background, just specify the job ID you want. If you run `fg` without any options, it will bring back the most recent background job (the job with the + sign next to it).
+### Bringing a Job to the Foreground
+
+To bring a background process back to the foreground, use the `fg` command. You can specify a particular job by its ID (e.g., `fg %1`). If you run the `fg` command without any arguments, it will bring the most recent background job (the one marked with `+`) to the foreground.
 
 ```bash
 fg %1
 ```
 
-### Kill background jobs
+### Terminating Background Jobs
 
-Similar to moving jobs out of the background, you can use the same form to kill the processes by using their Job ID.
+If you need to stop a background process, you can use the `kill` command. Similar to the `fg` command, you reference the job using its ID prefixed with a percent sign (`%`). This is a key function of Linux job control.
 
 ```bash
 kill %1
 ```
 
+Mastering these commands is essential for any beginner Linux user looking to multitask efficiently in the shell.
+
 ## Exercise
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of managing processes in Linux:
+To put your knowledge of Linux job control into practice, try this hands-on lab. It will help you solidify your understanding of managing foreground and background processes.
 
 1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, monitoring resources, and terminating processes, directly addressing the scenario of long-running commands.
 
-This lab will help you apply the concepts in real scenarios and build confidence with process management.
-
 ## Quiz Question
 
-What command is used to list background jobs?
+What command is used to list background jobs? (Please answer in English, using only lowercase letters.)
 
 ## Quiz Answer
 

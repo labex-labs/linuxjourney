@@ -1,56 +1,66 @@
 ---
 index: 2
 lang: "ko"
-title: "route"
-meta_title: "route - 네트워크 구성"
-meta_description: "Linux route 및 ip 명령을 사용하여 네트워크 경로를 추가하고 삭제하는 방법을 배웁니다. 초보자 및 중급 사용자를 위한 라우팅 테이블 관리를 이해합니다."
-meta_keywords: "route command, ip route, add route, delete route, Linux networking, routing table, Linux tutorial, beginner guide"
+title: "경로"
+meta_title: "경로 - 네트워크 구성"
+meta_description: "Linux 라우팅 테이블 관리 방법을 알아보세요. 이 가이드는 최신 'ip route 명령어'와 레거시 'route 명령어'를 사용하여 네트워크 경로를 추가하고 삭제하는 방법을 다룹니다."
+meta_keywords: "리눅스 ip route 명령어, 리눅스 ip route, 경로 추가, 경로 삭제, 라우팅 테이블, 네트워크 라우팅, 리눅스 네트워킹, ip route"
 ---
 
 ## Lesson Content
 
-`route` 명령을 사용하여 라우팅 테이블을 보는 방법에 대해 이미 논의했습니다. 경로를 추가하거나 제거하려면 수동으로 수행할 수 있습니다.
+Linux 에서 라우팅 테이블은 네트워크 트래픽을 올바른 목적지로 안내하는 역할을 합니다. 이전에 테이블을 보는 방법에 대해 논의했지만, 데이터 패킷이 전달되는 방식을 제어하기 위해 수동으로 경로를 추가하거나 제거할 수도 있습니다. 이는 복잡한 네트워크 설정을 구성하거나 연결 문제를 해결하는 데 필수적입니다.
 
-### 새 경로 추가
+### 레거시 route 명령어 사용
+
+`route` 명령어는 라우팅 테이블을 관리하는 전통적인 도구입니다. 여전히 작동하지만 레거시로 간주되며, 이제는 `ip` 명령어가 선호됩니다.
+
+새 네트워크 경로를 추가하려면 네트워크 주소, 서브넷 마스크 및 게이트웨이 (`gw`) 를 지정합니다.
 
 ```bash
 sudo route add -net 192.168.2.1/23 gw 10.11.12.3
 ```
 
-### 경로 삭제
+경로를 삭제하려면 네트워크 주소와 함께 `del` 플래그를 사용합니다.
 
 ```bash
 sudo route del -net 192.168.2.1/23
 ```
 
-**ip** 명령으로도 이러한 변경을 수행할 수 있습니다:
+### ip route 를 사용한 최신 경로 관리
 
-### 경로를 추가하려면
+`ip route` 명령어는 Linux 에서 네트워크 구성을 위한 최신이며 더 강력한 도구입니다. 네트워크 인터페이스 및 경로 관리를 위한 보다 일관되고 광범위한 옵션 세트를 제공합니다. **linux ip route command**를 사용하는 것이 현재 시스템에 권장되는 방법입니다.
+
+**ip route command in linux**로 경로를 추가하려면 `add` 작업을 사용하고, 게이트웨이를 통해 대상 네트워크와 다음 홉을 지정합니다.
 
 ```bash
 ip route add 192.168.2.1/23 via 10.11.12.3
 ```
 
-### 경로를 삭제하려면
+경로를 삭제하려면 `delete` 작업을 사용할 수 있습니다. 경로를 전체적으로 지정하거나 대상 네트워크가 고유한 경우 대상 네트워크만 지정할 수 있습니다.
 
 ```bash
-$ ip route delete 192.168.2.1/23 via 10.11.12.3
-or
-$ ip route delete 192.168.2.1/23
+# 전체 경로 지정하여 삭제
+ip route delete 192.168.2.1/23 via 10.11.12.3
+
+# 또는 대상만 지정하여 삭제
+ip route delete 192.168.2.1/23
 ```
+
+`ip route` 명령어를 숙달하는 것은 네트워크 관리를 담당하는 모든 Linux 관리자에게 핵심적인 기술입니다.
 
 ## Exercise
 
-연습이 완벽을 만듭니다! 다음은 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩입니다:
+연습이 완벽을 만듭니다! 네트워크 라우팅 및 IP 주소 지정에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
 
-1. **[Linux 에서 IP 주소 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - `ip` 명령을 사용하여 고정 IP 구성, 기본 게이트웨이 설정 및 네트워크 구성 확인을 연습합니다.
-2. **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 기본 게이트웨이가 원격 트래픽을 처리하는 방법과 네트워크 계층 상호 작용을 관찰하는 방법을 배웁니다.
+1.  **[Linux 에서 IP 주소 지정 관리](https://labex.io/ko/labs/comptia-manage-ip-addressing-in-linux-592736)** - 정적 IP 구성, 기본 게이트웨이 설정 및 `ip` 명령어를 사용한 네트워크 구성 확인을 연습합니다.
+2.  **[Linux 에서 ping 및 arp 를 사용한 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 기본 게이트웨이가 원격 트래픽을 처리하는 방법과 네트워크 계층 상호 작용을 관찰하는 방법을 알아봅니다.
 
-이 랩은 실제 시나리오에서 IP 주소 지정 및 라우팅 개념을 적용하고 Linux 네트워킹에 대한 자신감을 키우는 데 도움이 될 것입니다.
+이 랩들은 IP 주소 지정 및 라우팅 개념을 실제 시나리오에 적용하고 Linux 네트워킹에 대한 자신감을 구축하는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-경로를 삭제하는 명령 플래그는 무엇입니까?
+레거시 `route` 명령어를 사용할 때 경로를 삭제하는 데 사용되는 플래그는 무엇입니까? 대소문자에 주의하여 영어로 답변하십시오.
 
 ## Quiz Answer
 

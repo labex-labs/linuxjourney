@@ -2,42 +2,40 @@
 index: 4
 lang: "zh"
 title: "网络寻址"
-meta_title: "网络寻址 - 网络基础"
-meta_description: "学习网络寻址基础知识：MAC 地址、IP 地址和主机名。了解设备如何在网络上通信。开始您的 Linux 网络之旅！"
-meta_keywords: "网络寻址，MAC 地址，IP 地址，主机名，Linux 网络，初学者，教程，指南"
+meta_title: "网络寻址 - 网络基础知识"
+meta_description: "了解网络寻址的基础知识。本指南解释了 MAC 地址、IP 地址和主机名，这些是理解 Linux 网络中设备如何通信的关键概念。"
+meta_keywords: "网络寻址，MAC 地址，IP 地址，主机名，网络标识符，Linux 网络，网络基础，初学者，教程，指南"
 ---
 
 ## Lesson Content
 
-Before we jump into seeing how a packet moves across a network, we have to familiarize ourselves with some terminology. When you mail a letter, you must know who it is being sent to and where it is coming from. Packets need the same information. Our hosts and other hosts are identified using MAC (Media Access Control) addresses and IP addresses. To make it easier on us humans, we use hostnames to identify a host.
+在探索数据包如何在网络上传输之前，了解一些核心术语至关重要。就像实体信件需要一个目的地和回邮地址一样，网络数据包也需要类似的信息才能到达目标。在计算机网络中，设备使用 MAC（媒体访问控制）地址和 IP 地址来识别。为了方便人类记忆，我们还使用主机名。
 
 ### MAC 地址
 
-A MAC address is a unique identifier used as a hardware address. This address will never change. When you want to get access to the Internet, your machine needs to have a device called a network interface card. This network adapter has its own hardware address that's used to identify your machine. A MAC address for an Ethernet device looks something like this: `00:C4:B5:45:B2:43`. MAC addresses are given to network adapters when they are manufactured. Each manufacturer has an Organizationally Unique Identifier (OUI) to identify them as the manufacturer. This OUI is denoted by the first 3 bytes of the MAC address. For example, Dell has `00-14-22`, so a network adapter from Dell could have a MAC address like: `00-14-22-34-B2-C2`.
+MAC 地址是分配给网络接口卡（NIC）的唯一、永久的硬件标识符。此地址在制造过程中被固化到设备中，并且不会改变。连接到网络的每个设备，例如您的计算机或智能手机，都有一个带有独特 MAC 地址的 NIC。此硬件地址对于在本地网络段上的通信至关重要。以太网 MAC 地址通常看起来像这样：`00:C4:B5:45:B2:43`。地址的前三个字节构成了组织唯一标识符 (OUI)，用于识别制造商。例如，戴尔使用 OUI `00-14-22`，因此戴尔的 NIC 可能具有类似 `00-14-22-34-B2-C2` 的 MAC 地址。
 
 ### IP 地址
 
-An IP address is used to identify a device on a network. They are hardware independent and can vary in syntax depending on if you are using IPv4 or IPv6 (more on this later). For now, we'll assume you are using IPv4, so a typical IP address would look like: `10.24.12.4`. IP addresses are used with the software side of networking. Anytime a system is connected to the Internet, it should have an IP address. They can also change if your network changes and are unique to the entire Internet (this isn't always the case once we learn about NAT).
-
-Remember, it takes both software and hardware to move packets across networks, so we have two identifiers for each: MAC (hardware) and IP (software).
+IP 地址是网络上设备的逻辑标识符，使其能够在不同网络（包括互联网）上访问。与 MAC 地址不同，IP 地址不与硬件绑定，可以动态分配。我们暂时将重点关注 IPv4，其地址看起来像 `10.24.12.4`。IP 地址是网络软件方面的基础，支持路由和全球通信。虽然公共 IP 地址在整个互联网上是唯一的，但它们可能会更改，并且像网络地址转换 (NAT) 这样的技术允许在本地网络内使用私有、非唯一的地址。请记住，成功的网络通信需要 MAC（硬件）和 IP（软件）地址两者都存在。
 
 ### 主机名
 
-One last way to identify your machines is through hostnames. Hostnames take your IP address and allow you to tie that address to a human-readable name. Instead of remembering `192.12.41.4`, you can just remember `myhost.com`.
+虽然 IP 地址对计算机很有效，但人类很难记住。主机名通过将用户友好的名称映射到 IP 地址来解决这个问题。例如，记住 `myhost.com` 比记住其对应的 IP 地址（如 `192.12.41.4`）要容易得多。这种映射由域名系统 (DNS) 处理，DNS 充当互联网的电话簿，将令人难忘的主机名转换为网络路由所需的数字 IP 地址。
 
 ## Exercise
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network identifiers like MAC addresses, IP addresses, and hostnames:
+实践造就完美！以下是一些实践实验，可巩固您对 MAC 地址、IP 地址和主机名等网络标识符的理解：
 
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC and IP addresses, on a Linux system.
-2. **[探索 Linux 中的 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using `ping` and `ip a`.
-3. **[管理 Linux 中的本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Learn to manage local hostname resolution by editing the `/etc/hosts` file and testing your changes.
+1.  **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 MAC 地址和 IP 地址。
+2.  **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 测试网络可达性。
+3.  **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 学习通过编辑 `/etc/hosts` 文件并测试更改来管理本地主机名解析。
 
-These labs will help you apply the concepts in real scenarios and build confidence with fundamental Linux networking.
+这些实验将帮助您在实际场景中应用这些概念，并增强对基本 Linux 网络知识的信心。
 
 ## Quiz Question
 
-IPv4 地址有多少字节？
+一个 IPv4 地址包含多少个字节？
 
 ## Quiz Answer
 

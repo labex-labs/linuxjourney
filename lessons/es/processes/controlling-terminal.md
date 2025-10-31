@@ -1,37 +1,49 @@
 ---
 index: 2
 lang: "es"
-title: "Control de Terminal"
-meta_title: "Control de Terminal - Procesos"
-meta_description: "Aprende sobre el control de terminales en Linux, incluyendo TTY vs. PTS, y cómo los procesos están vinculados a ellos. Comprende los procesos demonio. ¡Comienza tu viaje en Linux!"
-meta_keywords: "terminal de control, TTY, PTS, terminal Linux, procesos demonio, Linux para principiantes, tutorial de Linux, guía de Linux"
+title: "Controlando la Terminal"
+meta_title: "Controlando la Terminal - Procesos"
+meta_description: "Explore el concepto de terminal controladora en Linux. Aprenda qué es una TTY, la diferencia entre TTY y PTS, y cómo usar la salida de `ps tty` para identificar procesos sin terminal controladora, como los daemons."
+meta_keywords: "terminal controladora, ps tty, qué es tty, cómo usar ps, TTY, PTS, terminal Linux, proceso daemon, procesos Linux"
 ---
 
 ## Lesson Content
 
-Discutimos cómo hay un campo TTY en la salida de `ps`. El TTY es el terminal que ejecutó el comando.
+Cuando inspeccionas los procesos en ejecución, notarás un campo `TTY` en la salida del comando `ps`. Este campo es importante ya que indica la **terminal de control** que ejecutó el comando. Comprender este concepto es clave para gestionar procesos de manera efectiva.
 
-Hay dos tipos de terminales: **dispositivos de terminal** regulares y **dispositivos de pseudoterminal**. Un dispositivo de terminal regular es un dispositivo de terminal nativo en el que puedes escribir y enviar la salida a tu sistema. Esto suena como la aplicación de terminal que has estado iniciando para acceder a tu shell, pero no lo es.
+### ¿Qué es una TTY?
 
-Vamos a hacer una digresión para que puedas ver esto en acción. Adelante, escribe Ctrl-Alt-F1 para entrar en TTY1 (la primera consola virtual). Notarás que no tienes nada excepto el terminal, sin gráficos, etc. Esto se considera un dispositivo de terminal regular. Puedes salir de esto con Ctrl-Alt-F7.
+TTY es la abreviatura de "Teletype" (Teleimpresora), que históricamente era un dispositivo físico para interactuar con una computadora. En los sistemas Linux modernos, una TTY se refiere a la terminal que proporciona la entrada y salida estándar para un proceso.
 
-Un pseudoterminal es en lo que has estado acostumbrado a trabajar. Emulan terminales con la ventana del terminal de shell y se denotan por PTS. Si miras `ps` de nuevo, verás tu proceso de shell bajo `pts/*`.
+Hay dos tipos principales de terminales que encontrarás: dispositivos de terminal y dispositivos de terminal virtual (pseudo-terminales).
 
-Bien, volviendo al terminal de control: los procesos suelen estar vinculados a un terminal de control. Por ejemplo, si estuvieras ejecutando un programa en la ventana de tu shell, como `find`, y cerraras la ventana, tu proceso también terminaría con ella.
+### Dispositivos de Terminal vs. Pseudo-terminales
 
-Existen procesos como los procesos demonio, que son procesos especiales que esencialmente mantienen el sistema en funcionamiento. A menudo se inician al arrancar el sistema y suelen terminar cuando el sistema se apaga. Se ejecutan en segundo plano, y dado que no queremos que estos procesos especiales terminen, no están vinculados a un terminal de control. En la salida de `ps`, el TTY aparece como un **?**, lo que significa que no tiene un terminal de control.
+Un dispositivo de terminal verdadero es una consola nativa que te permite escribir comandos y ver la salida directamente. Puedes experimentarlo cambiando a una consola virtual. En muchos sistemas, puedes presionar `Ctrl-Alt-F1` para acceder a TTY1. Verás un indicador de inicio de sesión en un entorno puramente basado en texto, sin interfaz gráfica. Este es un dispositivo de terminal clásico. Para volver a tu sesión gráfica, normalmente puedes usar `Ctrl-Alt-F7` (la combinación exacta de teclas puede variar).
+
+Un pseudo-terminal (PTS), por otro lado, es lo que usas con más frecuencia. Cuando abres una aplicación de terminal dentro de tu entorno de escritorio gráfico, estás usando un PTS. Estos emulan una terminal dentro de una ventana. Si revisas la salida de `ps tty` para tu shell, verás su TTY listada como `pts/*`.
+
+### El Rol de la Terminal de Control
+
+La mayoría de los procesos están vinculados a una **terminal de control**. Esto significa que el ciclo de vida del proceso está ligado a la sesión de terminal que lo inició. Por ejemplo, si ejecutas un programa como `find` en tu ventana de terminal y luego cierras esa ventana, el proceso `find` también será terminado.
+
+### Procesos Sin Terminal de Control
+
+Algunos procesos, conocidos como daemons (servicios en segundo plano), están diseñados para ejecutarse en segundo plano y gestionar servicios del sistema. Estos procesos a menudo se inician cuando el sistema arranca y solo se detienen cuando se apaga.
+
+Para evitar que sean terminados accidentalmente, los daemons no están adjuntos a una **terminal de control**. Cuando aprendes **cómo usar ps** para examinar estos procesos, verás un signo de interrogación (`?`) en la columna TTY. Este `?` significa que el proceso no tiene una terminal de control y se está ejecutando independientemente de cualquier sesión de usuario.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de los procesos de Linux y su interacción con los terminales:
+¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de los procesos de Linux y su interacción con las terminales:
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para administrar y monitorear procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer y segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+1. **[Gestionar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para gestionar y monitorear procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer plano y segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
 
-Este laboratorio te ayudará a aplicar los conceptos de gestión de procesos en escenarios reales y a generar confianza en la comprensión de cómo se ejecutan los procesos e interactúan con el sistema.
+Este laboratorio te ayudará a aplicar los conceptos de gestión de procesos en escenarios reales y a ganar confianza al comprender cómo se ejecutan e interactúan los procesos con el sistema.
 
 ## Quiz Question
 
-¿Qué valor se le da a un proceso que no tiene un terminal de control?
+¿Qué valor se asigna a un proceso que no tiene una terminal de control?
 
 ## Quiz Answer
 

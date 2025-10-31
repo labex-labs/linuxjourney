@@ -3,17 +3,19 @@ index: 4
 lang: "es"
 title: "/etc/hosts"
 meta_title: "/etc/hosts - DNS"
-meta_description: "Aprenda sobre el archivo /etc/hosts en Linux, cómo asigna nombres de host a direcciones IP y su papel en la resolución de DNS. Comprenda la configuración básica de red."
-meta_keywords: "/etc/hosts, redes Linux, mapeo de nombres de host, resolución DNS, tutorial de Linux, guía para principiantes"
+meta_description: "Explora el propósito del archivo /etc/hosts en Linux. Aprende cómo este archivo mapea nombres de host a direcciones IP, su papel en la resolución DNS local y cómo configurarlo en sistemas como Debian. Una guía sobre la configuración de etc hosts linux."
+meta_keywords: "/etc/hosts, etc hosts linux, debian hosts, etc host linux, etc hosts, redes Linux, mapeo de nombres de host, resolución DNS"
 ---
 
 ## Lesson Content
 
-Antes de que nuestra máquina acceda a DNS para realizar una consulta, primero busca localmente en nuestras máquinas.
+Antes de que su sistema Linux consulte a un servidor DNS para resolver un nombre de host, primero busca una correspondencia en la máquina local. Esta comprobación inicial es una parte fundamental del proceso de resolución de nombres.
 
-### /etc/hosts
+### El papel de /etc/hosts
 
-El archivo `/etc/hosts` contiene asignaciones de algunos nombres de host a direcciones IP. Los campos son bastante autoexplicativos: hay uno para la dirección IP, el nombre de host y luego cualquier alias para el host.
+El archivo principal para esta búsqueda local es `/etc/hosts`. Este simple archivo de texto contiene mapeos estáticos de nombres de host a direcciones IP. La estructura del archivo `etc hosts` es sencilla, con cada línea conteniendo tres campos: la dirección IP, el nombre de host canónico y alias opcionales para ese host.
+
+Aquí hay un ejemplo típico de un archivo `etc host linux`:
 
 ```plaintext
 pete@icebox:~$ cat /etc/hosts
@@ -21,39 +23,43 @@ pete@icebox:~$ cat /etc/hosts
 127.0.1.1       icebox
 ```
 
-Normalmente verá su dirección de localhost listada como predeterminada en este archivo. También puede administrar el acceso a los hosts modificando los archivos `/etc/hosts.deny` o `/etc/hosts.allow`. Sin embargo, si usted fuera consciente de la seguridad, este no es realmente el camino a seguir, y debería estar modificando sus reglas de firewall en su lugar.
+Casi siempre encontrará la dirección `localhost` mapeada por defecto. Este archivo es una característica estándar en la mayoría de las distribuciones de Linux, incluidas las `Debian hosts`.
 
-Veamos un ejemplo divertido de `/etc/hosts`. Modifique el archivo y agregue una línea para:
+### Edición del archivo etc hosts linux
+
+Puede editar manualmente el archivo `/etc/hosts` para crear sus propios mapeos. Intentemos un ejemplo divertido. Agregue la siguiente línea a su archivo:
 
 ```plaintext
 123.45.6.7  www.google.com
 ```
 
-Guarde el archivo y ahora vaya a `www.google.com`. ¿Tiene problemas, verdad? Bueno, eso es porque acabamos de asignar `www.google.com` a una dirección IP completamente incorrecta. Dado que nuestros hosts primero buscan localmente las asignaciones de direcciones IP, nunca llega a DNS para encontrar google.com.
+Después de guardar el archivo, intente navegar a `www.google.com` en su navegador web. Descubrirá que no funciona. Esto se debe a que mapeamos `www.google.com` a una dirección IP incorrecta. Como su sistema comprueba primero el archivo local `/etc/hosts`, utiliza nuestro mapeo defectuoso y nunca procede a consultar un servidor DNS para encontrar la dirección correcta. Para solucionar esto, simplemente elimine la línea que agregó.
 
-### /etc/resolv.conf
+Aunque los sistemas más antiguos utilizaban `/etc/hosts.deny` y `/etc/hosts.allow` para el control de acceso, este método está en gran parte obsoleto. Las prácticas de seguridad modernas se basan en configurar reglas de firewall para una protección robusta en su lugar.
 
-Tradicionalmente, hemos utilizado un archivo llamado `/etc/resolv.conf` para asignar servidores de nombres DNS para búsquedas más eficientes. Sin embargo, con las mejoras realizadas en DNS, este archivo a menudo es irrelevante. De hecho, puede ver en mi ejemplo a continuación que `/etc/resolv.conf` no se gestiona manualmente. Consulte la configuración específica de su distribución para administrar las asignaciones de servidores de nombres DNS.
+### Configuración del servidor DNS local
+
+Tradicionalmente, el archivo `/etc/resolv.conf` se utilizaba para especificar los servidores de nombres DNS para las búsquedas. Sin embargo, con los avances en la administración del sistema, este archivo a menudo ya no se gestiona manualmente. Como puede ver en el siguiente ejemplo, el archivo se genera automáticamente mediante otro servicio. Para administrar los mapeos de servidores de nombres DNS, debe consultar la documentación de su distribución específica, ya que herramientas como `systemd-resolved` o `resolvconf` a menudo se encargan de esto ahora.
 
 ```plaintext
-conf(5) file for glibc resolver(3) generated by resolvconf(8)
-#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
+# Archivo resolv.conf(5) dinámico para el resolvedor glibc(3) generado por resolvconf(8)
+#     NO EDITE ESTE ARCHIVO A MANO -- SUS CAMBIOS SERÁN SOBRESCRITOS
 nameserver 127.0.1.1
 search localdomain
 ```
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la resolución de nombres de host locales y las consultas DNS:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la resolución de nombres de host local y las consultas DNS:
 
-1. **[Administrar la resolución de nombres de host locales en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practique la edición del archivo `/etc/hosts` para administrar la resolución de nombres de host locales, un paso clave antes de las consultas DNS.
+1. **[Administrar la resolución de nombres de host local en Linux](https://labex.io/es/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practique la edición del archivo `/etc/hosts` para administrar la resolución de nombres de host local, un paso clave antes de las consultas DNS.
 2. **[Consultar registros DNS en Linux con dig y nslookup](https://labex.io/es/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a consultar registros DNS utilizando herramientas esenciales de Linux como `dig` y `nslookup` para comprender cómo su máquina resuelve nombres externos.
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a generar confianza con la resolución de nombres de host y DNS.
+Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la resolución de nombres de host y DNS.
 
 ## Quiz Question
 
-¿Qué archivo se utiliza para asignar nombres de host a direcciones IP en nuestras máquinas?
+¿Qué archivo se utiliza para mapear nombres de host a direcciones IP en nuestras máquinas? (Responda en inglés, prestando atención a la sensibilidad a mayúsculas y minúsculas).
 
 ## Quiz Answer
 

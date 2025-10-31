@@ -3,47 +3,49 @@ index: 3
 lang: "pt"
 title: "Anatomia de um Disco"
 meta_title: "Anatomia de um Disco - O Sistema de Arquivos"
-meta_description: "Aprenda sobre particionamento de disco Linux, MBR vs. GPT e estrutura do sistema de arquivos. Entenda partições, tabelas e como organizar dados. Comece com este guia para iniciantes!"
-meta_keywords: "particionamento de disco Linux, MBR, GPT, estrutura do sistema de arquivos, partições Linux, iniciante, tutorial, guia"
+meta_description: "Explore a anatomia de um disco no Linux. Este guia explica qual componente do disco informa ao SO como o disco está particionado, cobrindo tabelas de partição MBR e GPT, diferentes tipos de partições Linux e como elas são organizadas."
+meta_keywords: "disco no linux, partições linux, tipos de partições linux, qual componente do disco informa ao SO como o disco está particionado, o que contém informações sobre como as partições do disco rígido são organizadas, MBR, GPT, tabela de partição, sistema de arquivos"
 ---
 
 ## Lesson Content
 
-Discos rígidos podem ser subdivididos em partições, essencialmente criando múltiplos dispositivos de bloco. Lembre-se de exemplos como `/dev/sda1` e `/dev/sda2`. `/dev/sda` é o disco inteiro, mas `/dev/sda1` é a primeira partição nesse disco. As partições são extremamente úteis para separar dados, e se você precisar de um determinado sistema de arquivos, pode facilmente criar uma partição em vez de fazer do disco inteiro um único tipo de sistema de arquivos.
+Um disco rígido no Linux pode ser subdividido em partições, que funcionam como dispositivos de bloco individuais. Você deve se lembrar de exemplos como /dev/sda1 e /dev/sda2. Aqui, /dev/sda representa o disco inteiro, enquanto /dev/sda1 é a primeira partição nesse disco. As partições são incrivelmente úteis para separar dados. Se você precisar de um sistema de arquivos específico para uma parte do seu armazenamento, poderá criar uma nova partição para ele em vez de formatar o disco inteiro.
 
-### Tabela de Partições
+### A Tabela de Partição
 
-Todo disco terá uma tabela de partições. Esta tabela informa ao sistema como o disco está particionado. Esta tabela informa onde as partições começam e terminam, quais partições são inicializáveis, quais setores do disco são alocados para qual partição, etc. Existem dois esquemas principais de tabela de partições usados: Master Boot Record (MBR) e GUID Partition Table (GPT).
+Então, qual componente de um disco informa ao SO como o disco está particionado? A resposta é a **tabela de partição**. Este componente crucial contém informações sobre como as partições do disco rígido são organizadas. A tabela de partição especifica onde cada partição começa e termina, quais partições são inicializáveis e quais setores do disco são alocados a cada partição. Existem dois esquemas principais de tabela de partição: Master Boot Record (MBR) e GUID Partition Table (GPT).
 
-### Partição
+### Entendendo as Partições Linux
 
-Os discos são compostos por partições que nos ajudam a organizar nossos dados. Você pode ter várias partições em um disco, e elas não podem se sobrepor. Se houver espaço que não esteja alocado a uma partição, ele é conhecido como espaço livre. Os tipos de partições dependem da sua tabela de partições. Dentro de uma partição, você pode ter um sistema de arquivos ou dedicar uma partição a outras coisas, como swap (chegaremos a isso em breve).
+Os discos são compostos por partições que nos ajudam a organizar nossos dados. Você pode ter várias partições em um único disco, mas elas não podem se sobrepor. Qualquer espaço no disco não alocado a uma partição é conhecido como espaço livre. Os tipos de partições Linux disponíveis dependem do esquema de tabela de partição que você usa. Dentro de uma partição, você pode criar um sistema de arquivos ou dedicá-la a outros fins, como espaço de troca (swap).
 
-_MBR_
+### Partições MBR
 
-- Tabela de partições tradicional, era usada como padrão
-- Pode ter partições primárias, estendidas e lógicas
-- MBR tem um limite de quatro partições primárias
-- Partições adicionais podem ser criadas transformando uma partição primária em uma partição estendida (pode haver apenas uma partição estendida em um disco). Então, dentro da partição estendida, você adiciona partições lógicas. As partições lógicas são usadas como qualquer outra partição. Bobo, eu sei.
-- Suporta discos de até 2 terabytes
+A Master Boot Record (MBR) é o padrão tradicional de tabela de partição.
 
-_GPT_
+- Ela suporta partições primárias, estendidas e lógicas.
+- O MBR tem um limite de quatro partições primárias.
+- Para criar mais partições, uma partição primária deve ser designada como uma partição estendida (apenas uma é permitida por disco). Dentro desta partição estendida, você pode criar várias partições lógicas, que funcionam como qualquer outra partição.
+- Ela suporta discos de até 2 terabytes de tamanho.
 
-- GUID Partition Table (GPT) está se tornando o novo padrão para particionamento de disco
-- Tem apenas um tipo de partição, e você pode fazer muitas delas
-- Cada partição tem um ID globalmente único (GUID)
-- Usado principalmente em conjunto com a inicialização baseada em UEFI (entraremos em detalhes em outro curso)
+### Partições GPT
+
+A GUID Partition Table (GPT) é o padrão moderno para particionamento de disco.
+
+- Ela tem apenas um tipo de partição, e você pode criar um grande número delas.
+- Cada partição recebe um Identificador Globalmente Único (GUID).
+- O GPT é comumente usado com sistemas de inicialização baseados em UEFI.
 
 ### Estrutura do Sistema de Arquivos
 
-Sabemos da nossa lição anterior que um sistema de arquivos é uma coleção organizada de arquivos e diretórios. Em sua forma mais simples, é composto por um banco de dados para gerenciar arquivos e os próprios arquivos; no entanto, vamos entrar em um pouco mais de detalhes.
+Como aprendemos anteriormente, um sistema de arquivos é uma coleção organizada de arquivos e diretórios. Em sua essência, ele consiste em um banco de dados para gerenciar arquivos e nos próprios arquivos. Vamos explorar sua estrutura em mais detalhes.
 
-- Bloco de inicialização - Este está localizado nos primeiros setores do sistema de arquivos, e não é realmente usado pelo sistema de arquivos. Em vez disso, ele contém informações usadas para inicializar o sistema operacional. Apenas um bloco de inicialização é necessário pelo sistema operacional. Se você tiver várias partições, elas terão blocos de inicialização, mas muitos deles não são usados.
-- Superbloco - Este é um único bloco que vem depois do bloco de inicialização, e contém informações sobre o sistema de arquivos, como o tamanho da tabela de inodes, o tamanho dos blocos lógicos e o tamanho do sistema de arquivos.
-- Tabela de Inodes - Pense nisso como o banco de dados que gerencia nossos arquivos (temos uma lição inteira sobre inodes, então não se preocupe). Cada arquivo ou diretório tem uma entrada única na tabela de inodes, e ela possui várias informações sobre o arquivo.
-- Blocos de dados - Estes são os dados reais para os arquivos e diretórios.
+- **Bloco de inicialização (Boot block)**: Localizado nos primeiros setores de um sistema de arquivos, este bloco não é usado pelo sistema de arquivos em si. Em vez disso, ele contém informações usadas para inicializar o sistema operacional. Apenas um bloco de inicialização é necessário por SO. Embora outras partições possam ter blocos de inicialização, eles geralmente ficam sem uso.
+- **Superbloco (Superblock)**: Este é um único bloco que segue o bloco de inicialização e contém metadados sobre o sistema de arquivos, como o tamanho da tabela de inodes, o tamanho dos blocos lógicos e o tamanho total do sistema de arquivos.
+- **Tabela de inodes (Inode table)**: Este é o banco de dados que gerencia arquivos e diretórios. Cada arquivo ou diretório tem uma entrada exclusiva na tabela de inodes, que armazena vários atributos sobre ele. Abordaremos os inodes em uma lição dedicada.
+- **Blocos de dados (Data blocks)**: É aqui que o conteúdo real dos seus arquivos e diretórios é armazenado.
 
-Vamos dar uma olhada nas diferentes tabelas de partições. Abaixo está um exemplo de uma partição usando a tabela de particionamento MBR (msdos). Você pode ver as partições primárias, estendidas e lógicas na máquina.
+Abaixo está um exemplo de um disco usando a tabela de partição MBR (rotulada como `msdos`). Você pode ver as partições primária, estendida e lógica.
 
 ```plaintext
 pete@icebox:~$ sudo parted -l
@@ -59,7 +61,7 @@ Number  Start   End     Size    Type      File system     Flags
  6      7381MB  21.5GB  14.1GB  logical   xfs
 ```
 
-Este exemplo é GPT, usando apenas um ID único para as partições.
+Este segundo exemplo mostra uma tabela de partição GPT, que usa IDs exclusivos para suas partições.
 
 ```plaintext
 Model: Thumb Drive (scsi)
@@ -74,15 +76,15 @@ Number  Start   End     Size     File system  Name        Flags
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre particionamento de disco e sistemas de arquivos:
+Para reforçar sua compreensão sobre particionamento de disco e sistemas de arquivos, recomendamos este laboratório prático:
 
-1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação de novas partições, formatando-as com sistemas de arquivos como ext4, montando-as e configurando a montagem persistente em `/etc/fstab`.
+1.  **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação de novas partições, formatando-as com sistemas de arquivos como ext4, montando-as e configurando a montagem persistente em /etc/fstab.
 
-Este laboratório o ajudará a aplicar os conceitos de gerenciamento de disco em cenários reais e a construir confiança com o armazenamento Linux.
+Este laboratório ajudará você a aplicar conceitos de gerenciamento de disco em cenários do mundo real e a ganhar confiança com o armazenamento Linux.
 
 ## Quiz Question
 
-Qual tipo de partição é usado para criar mais de 4 partições no esquema de particionamento MBR?
+Qual tipo de partição é usado para criar mais de 4 partições no esquema de particionamento MBR? (Por favor, responda em uma única palavra em inglês minúscula.)
 
 ## Quiz Answer
 

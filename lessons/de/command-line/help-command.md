@@ -1,35 +1,45 @@
 ---
 index: 15
 lang: "de"
-title: "help"
-meta_title: "help - Befehlszeile"
-meta_description: "Erfahren Sie, wie Sie den Befehl 'help' in Bash für schnelle Befehlszeilenhilfe verwenden. Verstehen Sie integrierte Befehle und finden Sie Optionen für Linux-Programme."
-meta_keywords: "Linux help Befehl, Bash help, Befehlszeilenhilfe, Linux Befehle, Linux für Anfänger, Linux Tutorial, Bash Tutorial"
+title: "Hilfe"
+meta_title: "Hilfe - Kommandozeile"
+meta_description: "Erfahren Sie, wie Sie den Linux-Hilfebefehl für schnelle Unterstützung in Ihrem Terminal verwenden. Dieses Bash-Tutorial erklärt, wie Sie Hilfe für Shell-eigene Befehle erhalten und das --help-Flag für andere Linux-Programme nutzen."
+meta_keywords: "Linux Hilfebefehl, Bash Hilfe, Kommandozeilenhilfe, Linux Befehle, Linux Anfänger, Linux Tutorial, Bash Tutorial, Shell Built-in, Kommandozeilenunterstützung"
 ---
 
 ## Lesson Content
 
-Linux verfügt über einige großartige integrierte Tools, die Ihnen helfen zu verstehen, wie ein Befehl verwendet wird oder welche Flags für einen Befehl verfügbar sind. Ein Tool, `help`, ist ein integrierter Bash-Befehl, der Hilfe für andere Bash-Befehle (z. B. `echo`, `logout`, `pwd`) bietet.
+Wenn Sie auf der Linux-Kommandozeile arbeiten, benötigen Sie oft eine schnelle Erinnerung daran, wie ein Befehl funktioniert oder welche Optionen er akzeptiert. Glücklicherweise bietet Linux hervorragende Werkzeuge für die Hilfe auf der Kommandozeile direkt im Terminal.
+
+### Der 'help'-Befehl für Bash-Built-ins
+
+Eines der direktesten Werkzeuge ist `help`, ein Befehl, der direkt in die Bash-Shell integriert ist. Er wurde speziell entwickelt, um Informationen über andere Bash-Built-in-Befehle bereitzustellen. Ein Built-in-Befehl ist Teil der Shell selbst, kein separates Programm. Beispiele hierfür sind `echo`, `cd` und `pwd`.
+
+Um den **Linux-Hilfebefehl** zu verwenden, geben Sie einfach `help` gefolgt vom Namen des Built-in-Befehls ein.
 
 ```bash
 help echo
 ```
 
-Dies gibt Ihnen eine Beschreibung und die Optionen, die Sie verwenden können, wenn Sie `echo` ausführen möchten. Für andere ausführbare Programme ist es Konvention, eine Option namens `--help` oder etwas Ähnliches zu haben.
+Dies zeigt eine Zusammenfassung des `echo`-Befehls, seine Syntax und eine Liste der verfügbaren Optionen. Dies ist der schnellste Weg, um Hilfe für Shell-spezifische Funktionen zu erhalten.
+
+### Das --help-Flag für ausführbare Programme
+
+Für die meisten anderen ausführbaren Programme, die nicht in die Shell integriert sind, funktioniert der `help`-Befehl nicht. Stattdessen ist es eine gängige Konvention, ein `--help`-Flag bereitzustellen. Diese Option signalisiert dem Programm, eine Nutzungsszusammenfassung auszugeben und dann zu beenden.
 
 ```bash
-echo --help
+ls --help
 ```
 
-Nicht alle Entwickler, die ausführbare Dateien ausliefern, werden diesem Standard entsprechen, aber es ist wahrscheinlich Ihre beste Möglichkeit, Hilfe zu einem Programm zu finden.
+Obwohl sich die meisten Entwickler an diesen Standard halten, ist er nicht universell. Das Ausprobieren des `--help`-Flags ist jedoch normalerweise der beste erste Schritt, um Hilfe für ein unbekanntes Programm zu finden. Es ist eine grundlegende Fähigkeit für jeden, der **Linux-Befehle** lernt.
 
 ## Exercise
 
-Obwohl es keine spezifischen Labs für dieses Thema gibt, empfehlen wir Ihnen, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 
-Wie erhalten Sie schnelle Befehlszeilenhilfe für integrierte Bash-Befehle?
+Wie erhalten Sie schnelle Hilfe auf der Kommandozeile für eingebaute Bash-Befehle? (Bitte geben Sie den einzelnen Befehlsnamen auf Englisch und in Kleinbuchstaben an.)
 
 ## Quiz Answer
 

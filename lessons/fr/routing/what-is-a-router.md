@@ -3,43 +3,49 @@ index: 1
 lang: "fr"
 title: "Qu'est-ce qu'un routeur ?"
 meta_title: "Qu'est-ce qu'un routeur ? - Routage"
-meta_description: "Apprenez ce qu'est un routeur, comment il fonctionne et son rôle dans la mise en réseau. Comprenez le routage, les sauts et la livraison de paquets pour les débutants."
-meta_keywords: "routeur, mise en réseau, routage, sauts, commutation de paquets, mise en réseau Linux, tutoriel pour débutants, guide réseau"
+meta_description: "Guide pour débutants pour comprendre ce qu'est un routeur en réseau. Apprenez le routage, la commutation de paquets, les sauts et comment les routeurs utilisent les tables de routage pour transférer des données entre réseaux. Ce guide réseau est essentiel pour apprendre le réseau sous Linux."
+meta_keywords: "routeur, réseau, routage, sauts, commutation de paquets, réseau Linux, tutoriel débutant, guide réseau"
 ---
 
 ## Lesson Content
 
-Nous avons déjà utilisé le terme routeur ; j'espère que vous savez ce que c'est, puisque vous en avez probablement un chez vous. Un routeur permet aux machines d'un réseau de communiquer entre elles ainsi qu'avec d'autres réseaux. Sur un routeur typique, vous aurez des ports LAN qui permettent à vos machines de se connecter au même réseau local, et vous aurez également un port de liaison Internet qui vous connecte à Internet. Parfois, ce port est étiqueté WAN car il vous connecte essentiellement à un réseau plus large. Lorsque nous effectuons une activité de mise en réseau, elle doit passer par le routeur. Le routeur décide où vont nos paquets réseau et lesquels entrent. Il achemine nos paquets entre plusieurs réseaux pour aller de leur hôte source à leur hôte de destination.
+Un routeur est un appareil fondamental dans la mise en réseau informatique. Vous en avez probablement un chez vous qui vous connecte à Internet. Sa tâche principale est de permettre aux machines d'un réseau de communiquer entre elles et avec d'autres réseaux. Ce processus est un élément essentiel du fonctionnement d'Internet et des réseaux locaux.
 
-### Comment fonctionne un routeur ?
+### La fonction principale d'un routeur
 
-Pensez au routage de la même manière qu'à la livraison du courrier. Nous avons une adresse à laquelle nous voulons envoyer une lettre. Lorsque nous l'envoyons à la poste, ils reçoivent la lettre et voient : « Oh, ça va en Californie. » Je vais la mettre dans le camion qui va en Californie (honnêtement, je n'ai aucune idée de la façon dont fonctionne le système postal). La lettre est ensuite envoyée à San Francisco. À San Francisco, il y a différents codes postaux, puis dans ces codes postaux, il y a des codes d'adresse plus petits jusqu'à ce que, finalement, quelqu'un puisse livrer votre lettre à l'adresse que vous vouliez. D'un autre côté, si vous viviez déjà à San Francisco et dans le même code postal, le livreur de courrier saura probablement exactement où la lettre doit aller sans la remettre à quelqu'un d'autre.
+Un routeur domestique typique possède des ports LAN (Local Area Network) pour connecter vos appareils à un réseau local et un port WAN (Wide Area Network) qui fournit une connexion Internet. Chaque morceau de données, ou « paquet », que vous envoyez ou recevez lors de toute activité réseau doit passer par le routeur. Le routeur inspecte ces paquets réseau et décide où ils doivent aller. Il achemine efficacement le trafic entre plusieurs réseaux, garantissant que chaque paquet voyage de sa source à sa destination finale.
 
-Lorsque nous acheminons des paquets, ils utilisent des « routes » d'adresse similaires, telles que « pour atteindre le réseau A, envoyez ces paquets au réseau B ». Lorsque nous n'avons pas de route définie pour cela, nous avons une route par défaut que nos paquets utiliseront. Ces routes sont définies sur une table de routage que notre système utilise pour nous naviguer à travers les réseaux.
+### Le processus de routage
 
-### Hops
+Pensez au processus de routage comme à la livraison du courrier. Lorsque vous envoyez une lettre, la poste détermine la destination générale (par exemple, un état ou une ville) et l'envoie là-bas. À partir de là, elle est triée en régions plus petites comme les codes postaux jusqu'à ce qu'elle atteigne enfin l'adresse de rue spécifique.
 
-Lorsque les paquets se déplacent à travers les réseaux, ils voyagent par sauts. Un saut est la façon dont nous mesurons approximativement la distance que le paquet doit parcourir pour aller de la source à la destination. Disons que j'ai deux routeurs connectant l'hôte A à l'hôte B ; par conséquent, nous disons qu'il y a deux sauts entre l'hôte A et l'hôte B. Chaque saut est un périphérique intermédiaire, comme les routeurs, que nous devons traverser.
+En mise en réseau, un routeur utilise une **table de routage** pour prendre ces décisions. Cette table contient un ensemble de règles, ou routes, qui indiquent au routeur comment transférer les paquets vers une destination réseau particulière. Par exemple, une règle pourrait dire : « Pour atteindre le réseau A, envoyez les paquets au routeur B. » S'il n'y a pas de règle spécifique pour une destination, le routeur utilise une **route par défaut**, qui dirige généralement le trafic vers Internet. Ce système est crucial dans les configurations domestiques simples et les environnements complexes de **mise en réseau Linux**.
 
-### Comprendre la différence fondamentale entre la commutation, le routage et l'inondation ?
+### Les sauts (Hops)
 
-- **La COMMUTATION de paquets** consiste essentiellement à recevoir, traiter et transférer des données vers le périphérique de destination.
-- Le **ROUTAGE** est un processus de création de la table de routage afin que nous puissions mieux faire la COMMUTATION.
-- Avant le routage, l'**INONDATION** était utilisée. Si un routeur ne sait pas par où envoyer un paquet, alors chaque paquet entrant est envoyé par chaque lien sortant, sauf celui par lequel il est arrivé.
+Lorsque les paquets traversent les réseaux, leur parcours est mesuré en **sauts** (hops). Un saut représente une étape du parcours où un paquet passe par un appareil intermédiaire, comme un routeur. Par exemple, si un paquet doit passer par deux routeurs pour aller de l'Hôte A à l'Hôte B, on dit que le chemin comporte deux sauts. Les sauts fournissent une métrique simple pour mesurer la distance entre une source et une destination dans un réseau.
+
+### Commutation de paquets, routage et inondation (Flooding)
+
+Pour comprendre comment les données se déplacent, il est utile de connaître ces termes connexes :
+
+- **Commutation de paquets** (Packet Switching) est la méthode fondamentale de réception, de traitement et de transfert des paquets de données vers leur destination. C'est ce que font continuellement les routeurs.
+- **Routage** est le processus intelligent de construction et de maintenance de la table de routage. Un routage efficace permet une commutation de paquets plus efficace et plus fiable.
+- **Inondation** (Flooding) est une méthode plus ancienne et moins efficace utilisée lorsqu'un routeur ne sait pas où envoyer un paquet. Il envoie le paquet entrant sur toutes les connexions, sauf celle par laquelle il est arrivé, en espérant qu'un chemin atteindra la destination. La mise en réseau moderne repose sur le routage pour éviter ce type d'inefficacité.
 
 ## Exercise
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la connectivité réseau et du routage :
 
-1. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Entraînez-vous à tester la pile TCP/IP locale, à identifier les adresses IP privées et publiques, et à vérifier la joignabilité du réseau, qui sont des éléments clés pour comprendre comment un routeur facilite la communication.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` vous aident à observer comment les couches réseau et liaison de données interagissent, et comment la passerelle par défaut (routeur) gère le trafic distant.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilisez Docker pour simuler des nœuds réseau et attribuer des adresses IP, puis testez la connectivité pour comprendre comment les sous-réseaux IP et le routage régissent la communication réseau.
+1.  **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Entraînez-vous à tester la pile TCP/IP locale, à identifier les adresses IP privées et publiques, et à vérifier la joignabilité du réseau, éléments clés pour comprendre comment un routeur facilite la communication.
+2.  **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` vous aident à observer comment les couches réseau et liaison de données interagissent, et comment la passerelle par défaut (routeur) gère le trafic distant.
+3.  **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilisez Docker pour simuler des nœuds réseau et attribuer des adresses IP, puis testez la connectivité pour comprendre comment les sous-réseaux IP et le routage régissent la communication réseau.
 
 Ces laboratoires vous aideront à appliquer les concepts de communication réseau, d'adressage IP et le rôle du routage dans des scénarios réels, renforçant ainsi votre confiance dans les fondamentaux du réseau.
 
 ## Quiz Question
 
-Comment les paquets mesurent-ils la distance ?
+Comment les paquets mesurent-ils la distance ? (Veuillez répondre en anglais. La réponse est sensible à la casse.)
 
 ## Quiz Answer
 

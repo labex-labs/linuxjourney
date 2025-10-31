@@ -1,54 +1,56 @@
 ---
 index: 8
 lang: "de"
-title: "Link Layer"
-meta_title: "Link Layer - Netzwerk-Grundlagen"
-meta_description: "Erfahren Sie mehr über die Link Layer in TCP/IP, wie ARP MAC-Adressen auflöst und die Paketdurchquerung. Verstehen Sie die Netzwerk-Grundlagen mit diesem Linux-Netzwerk-Tutorial."
-meta_keywords: "Link Layer, ARP, TCP/IP, MAC-Adresse, Netzwerk-Grundlagen, Linux-Netzwerk, Anfänger, Tutorial"
+title: "Link-Schicht"
+meta_title: "Link-Schicht - Netzwerk-Grundlagen"
+meta_description: "Erkunden Sie die Grundlagen der TCP/IP-Link-Schicht. Erfahren Sie, wie der Link-Schicht-Header aufgebaut ist, wie ARP IP-Adressen in MAC-Adressen auflöst und wie Pakete in einem lokalen Netzwerk übertragen werden."
+meta_keywords: "Link-Schicht, Link-Schicht-Header, ARP, TCP/IP, MAC-Adresse, Netzwerk-Grundlagen, Linux-Netzwerk, Paketübertragung, Adressauflösungsprotokoll"
 ---
 
 ## Lesson Content
 
-Am unteren Ende des TCP/IP-Modells befindet sich die Link Layer. Diese Schicht ist hardwarespezifisch.
+Die **Sicherungsschicht** (Link Layer) ist die grundlegende Schicht des TCP/IP-Modells und verantwortlich für die Kommunikation im lokalen Netzwerksegment. Diese Schicht ist hardwareabhängig und befasst sich direkt mit Netzwerkschnittstellenkarten und physischer Adressierung.
 
-In der Link Layer wird unser Paket noch einmal in etwas namens Frame gekapselt. Der Frame-Header fügt die Quell- und Ziel-MAC-Adressen unserer Hosts, Prüfsummen und Paket-Separatoren hinzu, damit der Empfänger erkennen kann, wann ein Paket endet.
+### Frames und der Sicherungsschicht-Header
 
-Glücklicherweise befinden wir uns im selben Netzwerk, sodass unser Paket nicht zu weit reisen muss. Zuerst fügt die Link Layer meine Quell-MAC-Adresse dem Frame-Header hinzu, aber sie muss auch Pattys MAC-Adresse kennen. Woher weiß sie das, und wie finde ich sie, da sie nicht im Internet ist? Wir verwenden ARP!
+Auf der **Sicherungsschicht** wird das Paket aus der Vermittlungsschicht in eine Struktur namens Frame eingekapselt. Ein entscheidender Teil dieses Prozesses ist das Hinzufügen des **Sicherungsschicht-Headers**. Dieser Header enthält die Quell- und Ziel-MAC-Adressen der Hosts, Prüfsummen zur Fehlererkennung und Paket-Trennzeichen, die es dem empfangenden Gerät ermöglichen, zu erkennen, wo ein Frame endet und der nächste beginnt.
+
+Um den **Sicherungsschicht-Header** zu erstellen, benötigt das System sowohl die Quell- als auch die Ziel-MAC-Adresse. Während die Quell-MAC-Adresse bekannt ist, muss die Ziel-MAC-Adresse für eine IP-Adresse im selben lokalen Netzwerk ermittelt werden. Hier kommt das Address Resolution Protocol (ARP) ins Spiel.
 
 ### ARP (Address Resolution Protocol)
 
-ARP findet die MAC-Adresse, die einer IP-Adresse zugeordnet ist. ARP wird innerhalb desselben Netzwerks verwendet. Wenn Patty nicht im selben Netzwerk wäre, würden wir ein Routing-System verwenden, um den nächsten Router zu bestimmen, der das Paket empfangen würde, und sobald wir im selben Netzwerk wären, könnten wir ARP verwenden.
+ARP ist ein Protokoll der **Sicherungsschicht**, das verwendet wird, um die MAC-Adresse zu finden, die mit einer bestimmten IP-Adresse im selben Netzwerk verbunden ist. Befände sich der Zielhost in einem anderen Netzwerk, würde das Paket an ein Standard-Gateway (Router) gesendet, und ARP würde verwendet, um die MAC-Adresse des Routers zu finden.
 
-Sobald wir uns im selben Netzwerk befinden, verwenden Systeme zuerst die ARP-Lookup-Tabelle, die Informationen darüber speichert, welche IP-Adressen welcher MAC-Adresse zugeordnet sind. Wenn der Wert nicht vorhanden ist, wird ARP verwendet. Dann sendet das System eine Broadcast-Nachricht an das Netzwerk unter Verwendung des ARP-Protokolls, um herauszufinden, welcher Host die IP 10.10.1.4 hat. Eine Broadcast-Nachricht ist eine spezielle Nachricht, die an alle Hosts in einem Netzwerk gesendet wird (passend benannt für das Senden einer Übertragung). Jede Maschine mit der angeforderten IP-Adresse antwortet mit einem ARP-Paket, das die IP-Adresse und die MAC-Adresse enthält.
+Systeme konsultieren zuerst ihre ARP-Lookup-Tabelle, die bekannte IP-zu-MAC-Adress-Mappings zwischenspeichert. Wenn die erforderliche Adresse nicht im Cache vorhanden ist, sendet das System eine ARP-Anfrage an das gesamte Netzwerk. Diese spezielle Nachricht fragt, welcher Host eine bestimmte IP-Adresse besitzt, zum Beispiel 10.10.1.4. Der Host mit dieser IP-Adresse sendet eine ARP-Antwort, die seine IP- und MAC-Adresse enthält.
 
-Nachdem wir nun alle notwendigen Daten haben – IP-Adresse und MAC-Adressen – leitet unsere Link Layer diesen Frame über unsere Netzwerkschnittstellenkarte an das nächste Gerät weiter und findet Pattys Netzwerk. Dieser Schritt ist etwas komplexer, als ich es gerade erklärt habe, aber wir werden weitere Details im Routing-Kurs besprechen.
+Mit allen notwendigen IP- und MAC-Adressen kann die **Sicherungsschicht** den Frame nun über die Netzwerkschnittstellenkarte weiterleiten. Die Reise eines Pakets ist ein mehrstufiger Prozess der Kapselung und Dekapselung, während es sich am sendenden und empfangenden Ende den TCP/IP-Stack auf und ab bewegt.
 
-Und da ist es: eine einfache (oder nicht ganz so einfache) Paketdurchquerung durch die TCP/IP-Schicht. Beachten Sie, dass Pakete nicht einseitig reisen. Wir sind noch nicht einmal in Pattys Netzwerk angekommen! Beim Reisen durch Netzwerke muss das TCP/IP-Modell mindestens zweimal durchlaufen werden, bevor Daten gesendet oder empfangen werden. In Wirklichkeit würde dieses Paket etwa so aussehen:
+### Paketdurchlauf (Packet Traversal)
 
-### Paketdurchquerung
+Hier ist eine schrittweise Aufschlüsselung, wie ein Paket von einem Sender (Pete) zu einem Empfänger (Patty) gelangt:
 
-1. Pete sendet Patty eine E-Mail: Diese Daten werden an die Transportschicht gesendet.
-2. Die Transportschicht kapselt die Daten in einen TCP- oder UDP-Header, um ein Segment zu bilden. Das Segment fügt den Ziel- und Quell-TCP- oder UDP-Port hinzu, dann wird das Segment an die Netzwerkschicht gesendet.
-3. Die Netzwerkschicht kapselt das TCP-Segment in ein IP-Paket; sie fügt die Quell- und Ziel-IP-Adresse hinzu. Dann leitet sie das Paket an die Link Layer weiter.
-4. Das Paket erreicht dann Petes physische Hardware und wird in einen Frame gekapselt. Die Quell- und Ziel-MAC-Adressen werden dem Frame hinzugefügt.
-5. Patty empfängt diesen Datenframe über ihre physische Schicht und überprüft jeden Frame auf Datenintegrität, entkapselt dann den Frame-Inhalt und sendet das IP-Paket an die Netzwerkschicht.
-6. Die Netzwerkschicht liest das Paket, um die zuvor angehängte Quell- und Ziel-IP zu finden. Sie überprüft, ob ihre IP mit der Ziel-IP übereinstimmt, was der Fall ist! Sie entkapselt das Paket und sendet das Segment an die Transportschicht.
-7. Die Transportschicht entkapselt die Segmente, überprüft die TCP- oder UDP-Portnummern und stellt eine Verbindung zur Anwendungsschicht basierend auf diesen Portnummern her.
-8. Die Anwendungsschicht empfängt die Daten von der Transportschicht am angegebenen Port und präsentiert sie Patty in Form der endgültigen E-Mail-Nachricht.
+1. Pete sendet Patty eine E-Mail. Diese Daten werden an die Transportschicht gesendet.
+2. Die Transportschicht kapselt die Daten in einen TCP- oder UDP-Header ein, um ein Segment zu bilden. Sie fügt die Ziel- und Quellports hinzu und sendet das Segment an die Vermittlungsschicht.
+3. Die Vermittlungsschicht kapselt das Segment in ein IP-Paket ein und fügt die Quell- und Ziel-IP-Adressen hinzu. Anschließend leitet sie das Paket an die **Sicherungsschicht** weiter.
+4. Das Paket erreicht die **Sicherungsschicht**, wo es in einen Frame eingekapselt wird. Der **Sicherungsschicht-Header**, der die Quell- und Ziel-MAC-Adressen enthält, wird hinzugefügt.
+5. Patty empfängt diesen Datenframe über ihre physikalische Schicht, prüft den Frame auf Datenintegrität, de-kapselt ihn und sendet das IP-Paket an ihre Vermittlungsschicht.
+6. Die Vermittlungsschicht liest das Paket, um die Quell- und Ziel-IP-Adressen zu ermitteln. Sie bestätigt, dass die Ziel-IP mit ihrer eigenen übereinstimmt, de-kapselt das Paket und sendet das Segment an die Transportschicht.
+7. Die Transportschicht de-kapselt das Segment, prüft die TCP- oder UDP-Portnummern und stellt basierend auf diesen Ports eine Verbindung zur Anwendungsschicht her.
+8. Die Anwendungsschicht empfängt die Daten von der Transportschicht am angegebenen Port und präsentiert sie Patty als endgültige E-Mail-Nachricht.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Link Layer, MAC-Adressen und ARP zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Laborübungen, um Ihr Verständnis der Sicherungsschicht, von MAC-Adressen und ARP zu festigen:
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkinformationen, einschließlich MAC-Adressen, auf einem Linux-System zu identifizieren.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie die Befehle `ping` und `arp` zusammenarbeiten, um IP-Adressen in MAC-Adressen aufzulösen und Netzwerkschicht-Interaktionen zu verstehen.
-3. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Sammeln Sie praktische Erfahrungen beim Erfassen und Überprüfen von Ethernet-Frames, einschließlich MAC-Adressen, um Low-Level-Netzwerkkommunikation zu verstehen.
+1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** – Üben Sie die Verwendung des Befehls `ip a`, um Informationen zur Netzwerkadressierung, einschließlich MAC-Adressen, auf einem Linux-System zu identifizieren.
+2. **[Interaktion der Vermittlungsschicht mit ping und arp in Linux untersuchen](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Lernen Sie, wie die Befehle `ping` und `arp` zusammenarbeiten, um IP-Adressen in MAC-Adressen aufzulösen, und verstehen Sie die Interaktionen der Vermittlungsschicht.
+3. **[Ethernet-Frames mit tcpdump in Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** – Sammeln Sie praktische Erfahrungen beim Erfassen und Inspizieren von Ethernet-Frames, einschließlich MAC-Adressen, um die Netzwerkkommunikation auf niedriger Ebene zu verstehen.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Netzwerk-Grundlagen auf der Link Layer aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Netzwerke auf der Sicherungsschicht aufzubauen.
 
 ## Quiz Question
 
-Was wird verwendet, um die MAC-Adresse im selben Netzwerk zu finden?
+Welches Protokoll wird verwendet, um die MAC-Adresse eines Hosts im selben lokalen Netzwerk zu finden? (Bitte antworten Sie mit dem englischen Akronym in Großbuchstaben).
 
 ## Quiz Answer
 

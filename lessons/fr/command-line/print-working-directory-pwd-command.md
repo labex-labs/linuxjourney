@@ -1,15 +1,21 @@
 ---
 index: 2
 lang: "fr"
-title: "pwd (Print Working Directory)"
-meta_title: "pwd (Print Working Directory) - Ligne de commande"
-meta_description: "Apprenez à utiliser la commande 'pwd' sous Linux pour afficher votre répertoire de travail actuel. Comprenez les chemins du système de fichiers Linux et la navigation pour les débutants."
-meta_keywords: "commande pwd, répertoire Linux, répertoire actuel, chemin Linux, tutoriel Linux, Linux débutant, guide Linux"
+title: "pwd (Afficher le Répertoire de Travail)"
+meta_title: "pwd (Afficher le Répertoire de Travail) - Ligne de Commande"
+meta_description: "Maîtrisez la commande linux pwd pour afficher votre répertoire actuel sous Linux. Cette leçon explique la signification complète de pwd sous linux et comment naviguer dans l'arborescence des répertoires sous linux."
+meta_keywords: "linux pwd, répertoire actuel linux, arborescence répertoires linux, signification pwd linux, afficher répertoire de travail, chemin linux, navigation linux, bases ligne de commande"
 ---
 
 ## Lesson Content
 
-Tout dans Linux est un fichier. En approfondissant Linux, vous comprendrez cela, mais pour l'instant, gardez cela à l'esprit. Chaque fichier est organisé dans une arborescence de répertoires hiérarchique. Le premier répertoire du système de fichiers est judicieusement nommé le répertoire racine. Le répertoire racine contient de nombreux dossiers et fichiers, qui peuvent stocker plus de dossiers et de fichiers, etc. Voici un exemple de ce à quoi ressemble l'arborescence des répertoires :
+Sous Linux, un concept fondamental est que tout est traité comme un fichier. Ces fichiers sont organisés au sein d'une structure hiérarchique connue sous le nom de système de fichiers. Comprendre cette structure est essentiel pour naviguer efficacement dans votre système.
+
+### L'Arborescence des Répertoires sous Linux
+
+L'intégralité du système de fichiers commence à partir d'un seul répertoire de niveau supérieur appelé le répertoire racine, représenté par une barre oblique (`/`). Depuis la racine, l'**arborescence des répertoires sous linux** se ramifie en divers sous-répertoires, qui peuvent contenir des fichiers et d'autres sous-répertoires.
+
+Voici un exemple simplifié de cette structure :
 
 ```plaintext
 /
@@ -25,29 +31,37 @@ Tout dans Linux est un fichier. En approfondissant Linux, vous comprendrez cela,
 |-- var
 ```
 
-L'emplacement de ces fichiers et répertoires est appelé chemins. Si vous aviez un dossier nommé `home` avec un dossier à l'intérieur nommé `pete` et un autre dossier dans ce dossier appelé `Movies`, ce chemin ressemblerait à ceci : `/home/pete/Movies`. Plutôt simple, n'est-ce pas ?
+### Comprendre les Chemins de Fichiers
 
-La navigation dans le système de fichiers, tout comme dans la vie réelle, est utile si vous savez où vous êtes et où vous allez. Pour voir où vous êtes, vous pouvez utiliser la commande `pwd`. Cette commande signifie "print working directory" (afficher le répertoire de travail) et elle vous montre simplement dans quel répertoire vous vous trouvez. Notez que le chemin part du répertoire racine.
+L'emplacement de tout fichier ou répertoire est décrit par son chemin. Un chemin est une séquence de répertoires qui mène d'un point de départ à une destination spécifique. Par exemple, si vous avez un dossier nommé `pete` à l'intérieur du répertoire `/home`, et un dossier `Movies` à l'intérieur de `pete`, le chemin complet serait `/home/pete/Movies`.
+
+### Quelle est la Signification de PWD sous Linux ?
+
+Lors de la navigation dans le système de fichiers, il est essentiel de connaître votre emplacement actuel. La commande pour cela est `pwd`. La **signification de pwd sous linux** est "print working directory" (afficher le répertoire de travail). Son seul objectif est d'afficher le chemin complet du répertoire dans lequel vous vous trouvez actuellement, en commençant par la racine (`/`).
+
+### Utilisation de la Commande linux pwd
+
+Pour trouver votre **répertoire actuel linux**, tapez simplement la commande **linux pwd** et appuyez sur Entrée. Elle affiche le chemin absolu de votre emplacement présent dans la ligne de commande.
 
 ```bash
 pwd
 ```
 
-Où êtes-vous ? Où suis-je ? Essayez.
+Où êtes-vous ? Où suis-je ? Essayez pour voir votre propre répertoire de travail actuel.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans le système de fichiers Linux et l'identification de votre emplacement actuel :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la navigation dans le système de fichiers Linux et de l'identification de votre emplacement actuel :
 
-1. **[Commande Linux pwd : Affichage du répertoire](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)** - Ce laboratoire offre un aperçu ciblé et une utilisation pratique de la commande `pwd`, s'alignant directement avec l'introduction de la leçon sur la recherche de votre répertoire actuel.
-2. **[Navigation dans les répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant à travers divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
-3. **[Commande Linux cd : Changement de répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
+1.  **[Commande Linux pwd : Affichage de Répertoire](https://labex.io/fr/labs/linux-linux-pwd-command-directory-displaying-209734)** - Ce laboratoire fournit un aperçu ciblé et une utilisation pratique de la commande `pwd`, s'alignant directement sur l'introduction de la leçon pour trouver votre répertoire actuel.
+2.  **[Navigation dans les Répertoires Linux](https://labex.io/fr/labs/linux-directory-navigation-387844)** - Mettez à l'épreuve vos compétences de base en ligne de commande Linux en naviguant dans divers répertoires, consolidant ainsi votre compréhension des chemins et de la structure du système de fichiers.
+3.  **[Commande Linux cd : Changement de Répertoire](https://labex.io/fr/labs/linux-linux-cd-command-directory-changing-209733)** - Apprenez à naviguer efficacement dans votre système de fichiers à l'aide de la commande `cd`, en comprenant les différentes techniques pour changer de répertoire et explorer la structure des fichiers.
 
-Ces laboratoires vous aideront à appliquer les concepts de hiérarchie et de navigation du système de fichiers dans des scénarios réels et à renforcer votre confiance avec les commandes Linux essentielles.
+Ces laboratoires vous aideront à appliquer les concepts de hiérarchie du système de fichiers et de navigation dans des scénarios réels et à gagner en confiance avec les commandes Linux essentielles.
 
 ## Quiz Question
 
-Comment puis-je savoir dans quel répertoire je me trouve actuellement ?
+Quelle commande est utilisée pour trouver le répertoire dans lequel vous vous trouvez actuellement ? (Veuillez répondre en anglais, en utilisant uniquement le nom de la commande en minuscules.)
 
 ## Quiz Answer
 

@@ -3,31 +3,52 @@ index: 2
 lang: "es"
 title: "Niveles de Privilegio"
 meta_title: "Niveles de Privilegio - Kernel"
-meta_description: "Aprende sobre los niveles de privilegio de Linux, el modo kernel y el modo usuario. Comprende los anillos de protección y las llamadas al sistema para un acceso seguro al hardware. ¡Comienza tu viaje en Linux!"
-meta_keywords: "niveles de privilegio de Linux, modo kernel, modo usuario, anillos de protección, llamadas al sistema, seguridad de Linux, Linux para principiantes, tutorial de Linux"
+meta_description: "Explore los conceptos centrales de los niveles de privilegio de Linux. Esta lección explica la diferencia entre el modo kernel y el modo usuario, el papel de los anillos de protección y cómo las llamadas al sistema proporcionan acceso privilegiado al hardware. Comprenda cómo el kernel gestiona la seguridad y los privilegios del kernel."
+meta_keywords: "niveles de privilegio Linux, modo kernel, modo usuario, anillos de protección, llamadas al sistema, acceso privilegiado, privilegios del kernel, diferencia modo kernel y modo usuario, seguridad Linux"
 ---
 
 ## Lesson Content
 
-Las próximas lecciones son bastante teóricas, así que si buscas algo práctico, puedes saltar y volver más tarde.
+Las próximas lecciones cubren conceptos más teóricos. Si prefiere la práctica directa, siéntase libre de saltar y volver a estos temas más tarde.
 
-¿Por qué tenemos diferentes capas de abstracción para el espacio de usuario y el kernel? ¿Por qué no se pueden combinar ambos poderes en una sola capa? Bueno, hay una muy buena razón por la que estas dos capas existen por separado. Ambas operan en diferentes modos: el kernel opera en modo kernel, y el espacio de usuario opera en modo usuario.
+Un aspecto fundamental de la arquitectura de Linux es la separación entre el espacio de usuario y el kernel. Pero, ¿por qué no podemos combinar sus poderes en una sola capa? La razón es la seguridad y la estabilidad, lo que se logra haciendo que operen en diferentes modos.
 
-En modo kernel, el kernel tiene acceso completo al hardware; lo controla todo. En modo espacio de usuario, hay una cantidad muy pequeña de memoria segura y CPU a la que se le permite acceder. Básicamente, cuando queremos hacer algo que involucre hardware —leer datos de nuestros discos, escribir datos en nuestros discos, controlar nuestra red, etc.— todo se hace en modo kernel. ¿Por qué es esto necesario? Imagina que tu máquina estuviera infectada con spyware; no querrías que tuviera acceso directo al hardware de tu sistema. Podría acceder a todos tus datos, tu cámara web, etc., y eso no es bueno.
+### ¿Cuál es la Diferencia entre el Modo Kernel y el Modo Usuario
 
-Estos diferentes modos se llaman niveles de privilegio (apropiadamente nombrados por los niveles de privilegio que obtienes) y a menudo se describen como anillos de protección. Para facilitar esta imagen, digamos que te enteras de que Britney Spears está en la ciudad, en tu club local. Está protegida por sus groupies, luego por sus guardaespaldas personales, y luego por el portero fuera del club. Quieres conseguir su autógrafo (¿por qué no?), pero no puedes llegar a ella porque está muy protegida. Los anillos funcionan de la misma manera: el anillo más interno corresponde al nivel de privilegio más alto. Hay dos niveles o modos principales en una arquitectura de computadora x86. El Anillo #3 es el privilegio en el que se ejecutan las aplicaciones en modo usuario; el Anillo #0 es el privilegio en el que se ejecuta el kernel. El Anillo #0 puede ejecutar cualquier instrucción del sistema y se le otorga plena confianza. Entonces, ahora que sabemos cómo funcionan esos niveles de privilegio, ¿cómo podemos escribir algo en nuestro hardware? ¿No estaremos siempre en un modo diferente al del kernel?
+El sistema opera en dos modos distintos: modo kernel y modo usuario. Esta separación es crucial para proteger el hardware y los recursos del sistema del acceso directo y no controlado por las aplicaciones.
 
-La respuesta está en las llamadas al sistema. Las llamadas al sistema nos permiten realizar una instrucción privilegiada en modo kernel y luego volver al modo usuario.
+En **modo kernel**, el kernel tiene acceso completo y sin restricciones al hardware; lo controla todo. Este es el nivel de privilegio más alto.
+
+En **modo usuario**, las aplicaciones tienen un acceso muy limitado a una porción pequeña y segura de la memoria y los recursos de la CPU.
+
+Cuando una aplicación de usuario necesita realizar una acción que involucre hardware, como leer desde un disco, enviar datos a través de la red o acceder a un periférico, no puede hacerlo directamente. Estas operaciones deben ser manejadas por el kernel en modo kernel. Este diseño evita que un programa defectuoso o malicioso comprometa todo el sistema. Por ejemplo, no querría que el software espía tuviera acceso directo al hardware, ya que podría leer todos sus datos o controlar su cámara web.
+
+### Anillos de Protección y Acceso Privilegiado
+
+Estos diferentes modos a menudo se describen como **niveles de privilegio** o **anillos de protección**. Imagine una fortaleza con muros concéntricos: el área más interna es la más segura y tiene la mayor autoridad. Los anillos de protección en una computadora funcionan de manera similar, con el anillo más interno correspondiente al nivel de privilegio más alto.
+
+En una arquitectura de computadora x86 estándar, hay dos niveles principales:
+
+- **Anillo 0:** Aquí es donde se ejecuta el kernel. Tiene el nivel más alto de **privilegios de kernel**, puede ejecutar cualquier instrucción del sistema y se le da total confianza para administrar el hardware. Este es el núcleo del **acceso privilegiado**.
+- **Anillo 3:** Este es el nivel donde se ejecutan las aplicaciones en modo usuario. Es el anillo con menos privilegios y no tiene acceso directo al hardware.
+
+Este modelo de seguridad basado en anillos asegura que las aplicaciones de usuario estén aisladas de los componentes críticos del sistema. Pero si las aplicaciones siempre están en un modo diferente al del kernel, ¿cómo pueden realizar las operaciones de hardware necesarias?
+
+### Llamadas al Sistema y Privilegios del Kernel
+
+El puente entre el modo usuario y el modo kernel es la **llamada al sistema**. Cuando una aplicación de usuario necesita realizar una tarea privilegiada, realiza una llamada al sistema para solicitar que el kernel realice la acción en su nombre.
+
+Este proceso permite que la aplicación transicione temporal y seguramente del modo usuario al modo kernel para ejecutar una instrucción específica y controlada. Una vez que la tarea se completa, el sistema vuelve al modo usuario. Este mecanismo asegura que las aplicaciones puedan obtener los servicios que necesitan sin obtener un **acceso privilegiado** directo y peligroso al hardware.
 
 ## Exercise
 
-¡La práctica hace al maestro! Comprender los conceptos teóricos del espacio de usuario, el espacio del kernel y los niveles de privilegio es crucial, pero la experiencia práctica ayuda a solidificar cómo estos conceptos se manifiestan en la administración práctica de Linux. Aquí hay algunos laboratorios prácticos para reforzar su comprensión de cómo las acciones a nivel de usuario interactúan con el sistema subyacente:
+¡La práctica hace al maestro! Comprender los conceptos teóricos del espacio de usuario, el espacio del kernel y los niveles de privilegio es crucial, pero la experiencia práctica ayuda a solidificar cómo se manifiestan estos conceptos en la administración práctica de Linux. Aquí hay algunos laboratorios prácticos para reforzar su comprensión de cómo interactúan las acciones a nivel de usuario con el sistema subyacente:
 
-1. **[Administrar cuentas de usuario de Linux con useradd, usermod y userdel](https://labex.io/es/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practique la creación, modificación y eliminación de cuentas de usuario, lo que se relaciona directamente con la administración de entidades que operan en el espacio de usuario y requieren la interacción del kernel para acciones privilegiadas.
-2. **[Administrar permisos de archivos y directorios en Linux](https://labex.io/es/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - Aprenda a controlar el acceso a archivos y directorios, un concepto de seguridad central que se basa en que el kernel aplica los permisos según los privilegios del usuario.
-3. **[Administrar y monitorear procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Explore cómo interactuar y monitorear procesos, que son aplicaciones de espacio de usuario que realizan llamadas al sistema al kernel para la gestión y ejecución de recursos.
+1.  **[Administrar Cuentas de Usuario de Linux con useradd, usermod y userdel](https://labex.io/es/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Practique la creación, modificación y eliminación de cuentas de usuario, lo que se relaciona directamente con la administración de entidades que operan en el espacio de usuario y requieren interacción con el kernel para acciones privilegiadas.
+2.  **[Administrar Permisos de Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - Aprenda a controlar el acceso a archivos y directorios, un concepto de seguridad central que depende de que el kernel aplique permisos basados en los privilegios del usuario.
+3.  **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Explore cómo interactuar y monitorear procesos, que son aplicaciones de espacio de usuario que realizan llamadas al sistema al kernel para la gestión de recursos y la ejecución.
 
-Estos laboratorios le ayudarán a aplicar los conceptos de interacción del usuario con el sistema Linux, donde el papel del kernel en la gestión de recursos y la aplicación de privilegios es primordial, y a generar confianza con las tareas fundamentales de administración de Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos de interacción del usuario con el sistema Linux, donde el papel del kernel en la administración de recursos y la aplicación de privilegios es primordial, y a ganar confianza con las tareas fundamentales de administración de Linux.
 
 ## Quiz Question
 

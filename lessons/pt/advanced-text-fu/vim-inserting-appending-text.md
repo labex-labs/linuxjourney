@@ -1,42 +1,58 @@
 ---
 index: 6
 lang: "pt"
-title: "Vim Inserindo e Anexando Texto"
-meta_title: "Vim Inserindo e Anexando Texto - Text-Fu Avançado"
-meta_description: "Aprenda os modos de inserção e anexação do Vim. Entenda os comandos 'i', 'a', 'I', 'A', 'o', 'O' para edição de texto eficiente. Melhore suas habilidades com Vim agora!"
-meta_keywords: "modo de inserção Vim, anexar Vim, comandos Vim, tutorial Vim, editor de texto Linux, Vim para iniciantes, guia Vim, Vim 'i' 'a'"
+title: "Inserindo e Anexando Texto no Vim"
+meta_title: "Inserir e Anexar Texto no Vim - Técnicas Avançadas"
+meta_description: "Aprenda a diferença entre os modos de inserção e anexação do Vim. Domine comandos como 'i', 'a' e 'o' para editar texto eficientemente, anexar conteúdo no vim e adicionar linha no vim."
+meta_keywords: "vim anexar, anexar vs inserir vim, vim inserir vs anexar, vim adicionar linha, edição de texto vim, comandos vim, tutorial vim, modo de inserção, modo de anexação"
 ---
 
 ## Lesson Content
 
-O Vim tem dois modos principais que você usará frequentemente: o modo Normal (para comandos) e o modo Inserção (para digitar texto).
+No Vim, você trabalhará principalmente em dois modos: o modo Normal para executar comandos e o modo de Inserção (Insert mode) para digitar texto. Para alternar do modo de Inserção de volta para o modo Normal, basta pressionar a tecla `Esc`.
 
-- Pressione `Esc` para retornar ao modo Normal a qualquer momento.
+Existem vários comandos para entrar no modo de Inserção, cada um posicionando o cursor em um ponto de partida diferente para a entrada de texto.
 
-Entre no modo Inserção de diferentes maneiras, dependendo de onde você deseja digitar:
+### Comandos Básicos de Inserção
 
-- `i` – inserir antes do cursor
-- `a` – anexar depois do cursor
-- `I` – inserir no início da linha atual
-- `A` – anexar no final da linha atual
-- `o` – abrir uma nova linha abaixo da linha atual e começar a inserir
-- `O` – abrir uma nova linha acima da linha atual e começar a inserir
+A maneira mais fundamental de começar a digitar é com o comando `i`.
 
-Dica: Você pode prefixar estes com uma contagem. Por exemplo, `3o` abre três novas linhas abaixo.
+- `i` – **i**nsere texto antes da posição atual do cursor.
 
-Quando terminar de inserir texto, pressione `Esc` para voltar ao modo Normal.
+Este comando alterna para o modo de Inserção, permitindo que você digite diretamente no arquivo.
+
+### Vim Append vs Insert
+
+Um ponto comum de comparação é **vim append vs insert** (vim anexar vs inserir). Embora ambos entrem no modo de Inserção, seus pontos de partida diferem em relação ao cursor. Entender a distinção **vim insert vs append** é fundamental para o movimento e edição eficientes.
+
+- `a` – **a**nexa texto após a posição atual do cursor.
+- `I` – **I**nsere texto no início da linha atual.
+- `A` – **A**nexa texto no final da linha atual.
+
+Usar `a` em vez de `i` economiza uma tecla (movendo o cursor um espaço para a direita antes de inserir). Da mesma forma, `A` é um atalho poderoso para começar a digitar imediatamente no final de uma linha. Dominar os comandos **vim append** é um passo significativo para melhorar sua velocidade de edição.
+
+### Como Fazer Vim Adicionar Linha
+
+Quando você precisar adicionar novas linhas de texto, não precisa pressionar Enter manualmente no final de uma linha. O Vim fornece comandos dedicados para abrir linhas e entrar imediatamente no modo de Inserção.
+
+- `o` – **o**bre uma nova linha abaixo da linha atual e entra no modo de Inserção.
+- `O` – **O**bre uma nova linha acima da linha atual e entra no modo de Inserção.
+
+Esses comandos são extremamente úteis quando você precisa rapidamente **vim add line** (vim adicionar linha) ao codificar ou escrever.
+
+**Dica:** Você pode prefixar esses comandos com um número para repeti-los. Por exemplo, digitar `3o` no modo Normal abrirá três novas linhas em branco abaixo da linha atual e o posicionará no modo de Inserção na primeira dessas novas linhas.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das capacidades de edição de texto do Vim:
+A prática é essencial para dominar o Vim. O laboratório a seguir fornece um ambiente prático para reforçar sua compreensão das capacidades de edição de texto do Vim.
 
-1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a dominar as habilidades fundamentais de uso dos modos Normal e Inserção do Vim.
+1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique criar arquivos, editar texto, salvar arquivos e navegar com vi/vim e nano. Este laboratório o ajudará a dominar as habilidades fundamentais de uso dos modos Normal e de Inserção do Vim.
 
-Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança na edição de texto no Linux usando Vim.
+Aplicar esses conceitos em cenários reais ajudará você a construir confiança na edição de texto no Linux usando o Vim.
 
 ## Quiz Question
 
-Qual tecla entra no modo Inserção antes do cursor?
+Qual tecla entra no modo de Inserção antes do cursor? Por favor, responda com uma única letra minúscula em inglês.
 
 ## Quiz Answer
 

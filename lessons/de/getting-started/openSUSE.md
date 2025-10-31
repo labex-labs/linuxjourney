@@ -3,41 +3,39 @@ index: 10
 lang: "de"
 title: "openSUSE"
 meta_title: "openSUSE - Erste Schritte"
-meta_description: "Erfahren Sie mehr über openSUSE Linux, seine Geschichte, Paketverwaltung (RPM) und Konfigurierbarkeit mit YaST. Entdecken Sie, warum openSUSE großartig für Anfänger ist."
-meta_keywords: "openSUSE, Linux-Distribution, RPM, YaST, Linux für Anfänger, openSUSE-Tutorial, Linux-Anleitung"
+meta_description: "Erhalten Sie mit dieser Anleitung einen umfassenden openSUSE-Überblick. Erfahren Sie mehr über die Geschichte, RPM-Pakete und das leistungsstarke YaST-Tool. Entdecken Sie, warum openSUSE eine stabile, benutzerfreundliche Wahl ist und wo Sie Linux openSUSE herunterladen können."
+meta_keywords: "opensuse, opensuse überblick, linux opensuse herunterladen, wie heißt das administrations-/installationswerkzeug von opensuse?, Linux-Distribution, RPM, YaST, Linux für Anfänger"
 ---
 
 ## Lesson Content
 
-### Überblick
+### Ein openSUSE Überblick
 
-openSUSE Linux wird vom openSUSE Project erstellt, einer Community, die die Nutzung von Linux überall fördert und in einer offenen, transparenten und freundlichen Weise als Teil der weltweiten Free and Open Source Software Community zusammenarbeitet. openSUSE ist die zweitälteste noch laufende Linux-Distribution und teilt ihr Basissystem mit den preisgekrönten SUSE Linux Enterprise Produkten von SUSE.
+The openSUSE Projekt ist eine globale Gemeinschaftsanstrengung, die sich der Förderung der weiten Verbreitung von Linux widmet. Als eine der ältesten und etabliertesten Linux-Distributionen bietet openSUSE ein bemerkenswert stabiles und ausgereiftes Betriebssystem. Es ist in zwei Haupteditionen erhältlich: Tumbleweed, ein Rolling Release für Benutzer, die die neueste Software wünschen, und Leap, ein stabiles Point-Release, das einen gemeinsamen Kern mit SUSE Linux Enterprise teilt und so Unternehmensqualität für alle Benutzer gewährleistet.
 
-### Paketverwaltung
+### Paketverwaltung mit RPM
 
-Verwendet den RPM-Paketmanager.
+The openSUSE Distribution verwendet den RPM-Paketmanager zur Installation, Aktualisierung und Entfernung von Software. RPM ist ein leistungsstarkes und ausgereiftes System, das von mehreren großen Linux-Distributionen genutzt wird und den Zugriff auf ein riesiges Repository von Softwarepaketen ermöglicht. Dies macht die Verwaltung von Anwendungen auf Ihrem System sowohl unkompliziert als auch effizient.
 
-### Konfigurierbarkeit
+### YaST Das All-in-One-Tool
 
-openSUSE ist eine ausgezeichnete Wahl für neue Linux-Benutzer. Es bietet eine benutzerfreundliche grafische Installations-/Administrationsanwendung ([YaST](http://yast.github.io/)) und ein aufgeräumtes Basissystem, das leicht anzupassen ist. openSUSE enthält alles, was Sie brauchen, um das Internet sorgenfrei vor Viren/Spyware zu genießen und Ihre Kreativität auszuleben, sei es mit Ihren Fotos, Videos, Musik oder Code.
+Ein herausragendes Merkmal von openSUSE ist YaST (Yet another Setup Tool). Wenn Sie sich fragen: „Wie lautet der Name des Administrations-/Installationstools von openSUSE?“, lautet die Antwort YaST. Dieses umfassende grafische Tool vereinfacht nahezu jeden Aspekt der Systemadministration, von der Softwareinstallation und Repository-Verwaltung bis hin zur Netzwerkkonfiguration und Hardware-Einrichtung. Die Leistungsfähigkeit von [YaST](http://yast.github.io/) macht openSUSE zu einer ausgezeichneten Wahl für alle, die ein einfach zu verwaltendes System suchen.
 
-### Verwendungszwecke
+### Erste Schritte mit openSUSE
 
-openSUSE Leap ist voll funktionsfähig für den Einsatz auf Desktop-PCs und Laptops.
+Mit seinem benutzerfreundlichen Installer und dem integrierten YaST-Kontrollzentrum ist openSUSE eine fantastische Linux-Distribution für Anfänger. Sobald Sie Linux openSUSE heruntergeladen und den Installer ausgeführt haben, finden Sie eine komplette Desktop-Umgebung, die für tägliche Aufgaben, kreative Projekte und Softwareentwicklung bereit ist. Seine Stabilität und Benutzerfreundlichkeit machen es zu einem großartigen Ausgangspunkt für die Reise jedes Benutzers in die Linux-Welt.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzer- und Gruppenverwaltung in Linux zu vertiefen:
+Um mehr praktische Erfahrung mit Linux-Systemen zu sammeln, probieren Sie diese praktischen Labs aus. Sie behandeln grundlegende administrative Aufgaben, die auf jeder Linux-Distribution, einschließlich openSUSE, nützlich sind.
 
-1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. neue Benutzerkonten erstellen, die Benutzerkontenverwaltung ändern und ein Benutzerkonto löschen.
-2. **[Der Joker-Trick](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
-3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
-
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Gruppenadministration aufzubauen.
+1.  **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen eines Benutzerkontos.
+2.  **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
+3.  **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
 
 ## Quiz Question
 
-Wie heißt das Administrations-/Installationstool von openSUSE?
+Wie lautet der Name des Administrations- und Installationstools von openSUSE? Bitte antworten Sie nur mit Kleinbuchstaben in englischer Sprache.
 
 ## Quiz Answer
 

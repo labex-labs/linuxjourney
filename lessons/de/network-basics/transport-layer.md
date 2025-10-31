@@ -3,41 +3,51 @@ index: 6
 lang: "de"
 title: "Transportschicht"
 meta_title: "Transportschicht - Netzwerk-Grundlagen"
-meta_description: "Erfahren Sie mehr über die Transportschicht im Linux-Netzwerk, einschließlich TCP/UDP-Protokollen, Ports und Datensegmentierung. Verstehen Sie, wie Daten zuverlässig übertragen werden."
-meta_keywords: "Linux Transportschicht, TCP/UDP, Netzwerk-Ports, Datensegmentierung, Linux-Netzwerk, Anfänger-Tutorial, Netzwerkprotokolle"
+meta_description: "Erkunden Sie die Transportschicht im Linux-Netzwerk. Diese Lektion behandelt wichtige Protokolle wie TCP und UDP, die Funktion von Netzwerk-Ports, Datensegmentierung und den TCP-Handshake für eine zuverlässige Datenübertragung."
+meta_keywords: "Linux Transportschicht, TCP, UDP, TCP-Handshake, Netzwerk-Ports, Datensegmentierung, Linux-Netzwerk, Netzwerkprotokolle, zuverlässige Datenübertragung"
 ---
 
 ## Lesson Content
 
-Die Transportschicht hilft uns, unsere Daten so zu übertragen, dass Netzwerke sie lesen können. Sie zerlegt unsere Daten in Blöcke, die transportiert und in der richtigen Reihenfolge wieder zusammengesetzt werden. Diese Blöcke werden als Segmente bezeichnet. Segmente erleichtern den Datentransport über Netzwerke hinweg.
+Die Transportschicht ist ein fundamentaler Bestandteil des Linux-Netzwerkbetriebs, der für die Ende-zu-Ende-Kommunikation und die zuverlässige Datenübertragung zwischen Anwendungen auf verschiedenen Hosts verantwortlich ist. Sie bereitet Daten strukturiert und verwaltbar für den Transport über das Netzwerk vor.
 
-### Ports
+### Datensegmentierung
 
-Obwohl wir über IP-Adressen wissen, wohin wir unsere Daten senden, sind diese nicht spezifisch genug, um unsere Daten an bestimmte Prozesse oder Dienste zu senden. Dienste wie HTTP nutzen einen Kommunikationskanal über Ports. Wenn wir Webseiten-Daten senden möchten, müssen wir diese über den HTTP-Port (Port 80) senden. Zusätzlich zur Bildung von Segmenten fügt die Transportschicht dem Segment auch die Quell- und Zielports hinzu, sodass der Empfänger beim Erhalt des endgültigen Pakets weiß, welchen Port er verwenden muss.
+Eine der Hauptfunktionen der Transportschicht ist die Datensegmentierung. Sie zerlegt große Datenmengen in kleinere, besser handhabbare Blöcke, sogenannte Segmente. Dieser Prozess macht die Datenübertragung effizienter und ausfallsicherer. Geht ein Segment während der Übertragung verloren oder wird es beschädigt, muss nur dieser kleine Teil erneut gesendet werden, nicht der gesamte Datensatz. Sobald die Segmente am Zielort eintreffen, setzt die Transportschicht sie in der richtigen Reihenfolge wieder zusammen.
 
-### UDP
+### Verständnis von Netzwerk-Ports
 
-Es gibt zwei beliebte Transportprotokolle: UDP und TCP. Wir werden UDP kurz besprechen und uns die meiste Zeit mit TCP beschäftigen, da es am häufigsten verwendet wird.
+Während IP-Adressen den richtigen Host in einem Netzwerk identifizieren, geben sie nicht an, welche Anwendung oder welcher Dienst die Daten empfangen soll. Hier kommen Netzwerk-Ports ins Spiel. Dienste wie HTTP (Web-Traffic) oder SMTP (E-Mail) lauschen auf spezifischen, bekannten Ports. HTTP verwendet beispielsweise typischerweise Port 80. Die Transportschicht fügt jedem Segment Quell- und Zielportnummern hinzu, um sicherzustellen, dass die Daten an den korrekten Prozess auf dem empfangenden Host zugestellt werden.
 
-UDP ist keine zuverlässige Methode zum Datentransport; tatsächlich ist es ihm ziemlich egal, ob Sie alle Ihre ursprünglichen Daten erhalten. Das mag schrecklich klingen, aber es hat seine Anwendungen, wie zum Beispiel beim Medien-Streaming. Es ist in Ordnung, wenn Sie einige Frames verlieren; im Gegenzug erhalten Sie Ihre Daten etwas schneller.
+### Kernprotokolle der Transportschicht: TCP und UDP
 
-### TCP
+In modernen Netzwerken werden zwei Hauptprotokolle der Transportschicht verwendet: TCP (Transmission Control Protocol) und UDP (User Datagram Protocol). Wir werden UDP kurz behandeln und uns dann auf TCP konzentrieren, da es für die zuverlässige Kommunikation am weitesten verbreitet ist.
 
-TCP bietet einen zuverlässigen, verbindungsorientierten Datenstrom. TCP verwendet Ports, um Daten zu und von Hosts zu senden. Eine Anwendung öffnet eine Verbindung von einem Port auf ihrem Host zu einem anderen Port auf einem Remote-Host. Um die Verbindung herzustellen, verwenden wir den TCP-Handshake.
+### UDP (User Datagram Protocol)
 
-- Der Client (verbindender Prozess) sendet ein SYN-Segment an den Server, um eine Verbindung anzufordern.
-- Der Server sendet dem Client ein SYN-ACK-Segment, um die Verbindungsanfrage des Clients zu bestätigen.
-- Der Client sendet ein ACK an den Server, um die Verbindungsanfrage des Servers zu bestätigen.
+UDP ist ein verbindungsloses Protokoll, das eine schnelle, aber unzuverlässige Methode zum Transport von Daten bietet. Es garantiert weder, dass alle Segmente ankommen, noch, dass sie in der richtigen Reihenfolge eintreffen. Obwohl dies ein Nachteil zu sein scheint, ist UDP sehr effektiv für Anwendungen, bei denen Geschwindigkeit wichtiger ist als perfekte Genauigkeit, wie z. B. Live-Video-Streaming oder Online-Spiele. Der Verlust einiger Videobilder ist oft ein akzeptabler Kompromiss für einen flüssigeren, schnelleren Stream.
 
-Sobald diese Verbindung hergestellt ist, können Daten über eine TCP-Verbindung ausgetauscht werden. Die Daten werden in verschiedenen Segmenten gesendet und mit TCP-Sequenznummern verfolgt, damit sie bei der Zustellung in der richtigen Reihenfolge angeordnet werden können. In unserem E-Mail-Beispiel fügt die Transportschicht den Zielport (25) dem Quellport des Quellhosts hinzu.
+### TCP (Transmission Control Protocol)
+
+TCP bietet einen zuverlässigen, verbindungsorientierten Datenstrom. Bevor Daten ausgetauscht werden, baut TCP eine formelle Verbindung zwischen den beiden Hosts auf, um sicherzustellen, dass beide zur Kommunikation bereit sind.
+
+### Der TCP-Handshake
+
+Um eine Verbindung herzustellen, verwendet TCP einen Prozess, der als Drei-Wege-Handshake bezeichnet wird:
+
+1.  **SYN**: Der Client sendet ein SYN (Synchronize)-Segment an den Server, um eine Verbindung zu initiieren.
+2.  **SYN-ACK**: Der Server antwortet mit einem SYN-ACK (Synchronize-Acknowledge)-Segment, um die Anforderung des Clients zu bestätigen.
+3.  **ACK**: Der Client sendet ein ACK (Acknowledge)-Segment zurück an den Server, wodurch die Verbindung als hergestellt bestätigt wird.
+
+Sobald der Handshake abgeschlossen ist, können Daten zuverlässig ausgetauscht werden. TCP verwendet Sequenznummern, um jedes Segment zu verfolgen, wodurch der empfangende Host sie in der richtigen Reihenfolge wieder zusammensetzen und die erneute Übertragung fehlender Segmente anfordern kann. In unserem E-Mail-Beispiel würde die Transportschicht die Ziel-Portnummer für SMTP (Port 25) und einen Quell-Port des Client-Hosts an jedes Segment anhängen.
 
 ## Exercise
 
-Obwohl es keine spezifischen Übungen zu diesem Thema gibt, empfehlen wir Ihnen, den umfassenden [Linux-Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
 
 ## Quiz Question
 
-Was ist ein zuverlässiges Transportprotokoll?
+What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
 
 ## Quiz Answer
 

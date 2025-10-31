@@ -3,47 +3,49 @@ index: 3
 lang: "en"
 title: "Anatomy of a Disk"
 meta_title: "Anatomy of a Disk - The Filesystem"
-meta_description: "Learn about Linux disk partitioning, MBR vs. GPT, and filesystem structure. Understand partitions, tables, and how to organize data. Get started with this beginner guide!"
-meta_keywords: "Linux disk partitioning, MBR, GPT, filesystem structure, Linux partitions, beginner, tutorial, guide"
+meta_description: "Explore the anatomy of a disk in Linux. This guide explains what component of a disk tells the OS how the disk is partitioned, covering MBR and GPT partition tables, different types of Linux partitions, and how they are organized."
+meta_keywords: "disk in linux, linux partitions, types of linux partitions, what component of a disk tells the os how the disk is partitioned, what contains information on how hard drive partitions are organized, MBR, GPT, partition table, filesystem"
 ---
 
 ## Lesson Content
 
-Hard disks can be subdivided into partitions, essentially making multiple block devices. Recall such examples as, `/dev/sda1` and `/dev/sda2`. `/dev/sda` is the whole disk, but `/dev/sda1` is the first partition on that disk. Partitions are extremely useful for separating data, and if you need a certain filesystem, you can easily create a partition instead of making the entire disk one filesystem type.
+A hard disk in Linux can be subdivided into partitions, which function as individual block devices. You may recall examples like `/dev/sda1` and `/dev/sda2`. Here, `/dev/sda` represents the entire disk, while `/dev/sda1` is the first partition on that disk. Partitions are incredibly useful for separating data. If you need a specific filesystem for a portion of your storage, you can create a new partition for it instead of formatting the entire disk.
 
-### Partition Table
+### The Partition Table
 
-Every disk will have a partition table. This table tells the system how the disk is partitioned. This table tells you where partitions begin and end, which partitions are bootable, what sectors of the disk are allocated to what partition, etc. There are two main partition table schemes used: Master Boot Record (MBR) and GUID Partition Table (GPT).
+So, what component of a disk tells the OS how the disk is partitioned? The answer is the **partition table**. This crucial component contains information on how hard drive partitions are organized. The partition table specifies where each partition begins and ends, which partitions are bootable, and what sectors of the disk are allocated to each partition. There are two primary partition table schemes: Master Boot Record (MBR) and GUID Partition Table (GPT).
 
-### Partition
+### Understanding Linux Partitions
 
-Disks are comprised of partitions that help us organize our data. You can have multiple partitions on a disk, and they cannot overlap each other. If there is space that is not allocated to a partition, then it is known as free space. The types of partitions depend on your partition table. Inside a partition, you can have a filesystem or dedicate a partition to other things like swap (we'll get to that soon).
+Disks are composed of partitions that help us organize our data. You can have multiple partitions on a single disk, but they cannot overlap. Any space on the disk not allocated to a partition is known as free space. The types of Linux partitions available depend on the partition table scheme you use. Inside a partition, you can create a filesystem or dedicate it to other purposes, such as swap space.
 
-_MBR_
+### MBR Partitions
 
-- Traditional partition table, was used as the standard
-- Can have primary, extended, and logical partitions
-- MBR has a limit of four primary partitions
-- Additional partitions can be made by making a primary partition into an extended partition (there can only be one extended partition on a disk). Then, inside the extended partition, you add logical partitions. The logical partitions are used just like any other partition. Silly, I know.
-- Supports disks up to 2 terabytes
+The Master Boot Record (MBR) is the traditional partition table standard.
 
-_GPT_
+- It supports primary, extended, and logical partitions.
+- MBR has a limit of four primary partitions.
+- To create more partitions, one primary partition must be designated as an extended partition (only one is allowed per disk). Within this extended partition, you can create multiple logical partitions, which function like any other partition.
+- It supports disks up to 2 terabytes in size.
 
-- GUID Partition Table (GPT) is becoming the new standard for disk partitioning
-- Has only one type of partition, and you can make many of them
-- Each partition has a globally unique ID (GUID)
-- Used mostly in conjunction with UEFI-based booting (we'll get into details in another course)
+### GPT Partitions
+
+The GUID Partition Table (GPT) is the modern standard for disk partitioning.
+
+- It has only one type of partition, and you can create a large number of them.
+- Each partition is assigned a Globally Unique Identifier (GUID).
+- GPT is commonly used with UEFI-based booting systems.
 
 ### Filesystem Structure
 
-We know from our previous lesson that a filesystem is an organized collection of files and directories. In its simplest form, it is comprised of a database to manage files and the actual files themselves; however, we're going to go into a little more detail.
+As we learned previously, a filesystem is an organized collection of files and directories. At its core, it consists of a database to manage files and the files themselves. Let's explore its structure in more detail.
 
-- Boot block - This is located in the first few sectors of the filesystem, and it's not really used by the filesystem. Rather, it contains information used to boot the operating system. Only one boot block is needed by the operating system. If you have multiple partitions, they will have boot blocks, but many of them are unused.
-- Super block - This is a single block that comes after the boot block, and it contains information about the filesystem, such as the size of the inode table, size of the logical blocks, and the size of the filesystem.
-- Inode table - Think of this as the database that manages our files (we have a whole lesson on inodes, so don't worry). Each file or directory has a unique entry in the inode table, and it has various information about the file.
-- Data blocks - This is the actual data for the files and directories.
+- **Boot block**: Located in the first few sectors of a filesystem, this block is not used by the filesystem itself. Instead, it contains information used to boot the operating system. Only one boot block is needed per OS. While other partitions may have boot blocks, they often go unused.
+- **Superblock**: This is a single block following the boot block that contains metadata about the filesystem, such as the size of the inode table, the size of logical blocks, and the total size of the filesystem.
+- **Inode table**: This is the database that manages files and directories. Each file or directory has a unique entry in the inode table, which stores various attributes about it. We will cover inodes in a dedicated lesson.
+- **Data blocks**: This is where the actual content of your files and directories is stored.
 
-Let's take a look at the different partition tables. Below is an example of a partition using the MBR partitioning table (msdos). You can see the primary, extended, and logical partitions on the machine.
+Below is an example of a disk using the MBR partition table (labeled as `msdos`). You can see the primary, extended, and logical partitions.
 
 ```plaintext
 pete@icebox:~$ sudo parted -l
@@ -59,7 +61,7 @@ Number  Start   End     Size    Type      File system     Flags
  6      7381MB  21.5GB  14.1GB  logical   xfs
 ```
 
-This example is GPT, using just a unique ID for the partitions.
+This second example shows a GPT partition table, which uses unique IDs for its partitions.
 
 ```plaintext
 Model: Thumb Drive (scsi)
@@ -74,15 +76,15 @@ Number  Start   End     Size     File system  Name        Flags
 
 ## Exercise
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of disk partitioning and filesystems:
+To reinforce your understanding of disk partitioning and filesystems, we recommend this hands-on lab:
 
-1. **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating new partitions, formatting them with filesystems like ext4, mounting them, and configuring persistent mounting in `/etc/fstab`.
+1.  **[Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practice creating new partitions, formatting them with filesystems like ext4, mounting them, and configuring persistent mounting in `/etc/fstab`.
 
-This lab will help you apply the concepts of disk management in real scenarios and build confidence with Linux storage.
+This lab will help you apply disk management concepts in real-world scenarios and build confidence with Linux storage.
 
 ## Quiz Question
 
-What partition type is used to create more than 4 partitions in the MBR partitioning scheme?
+What partition type is used to create more than 4 partitions in the MBR partitioning scheme? (Please answer in a single lowercase English word.)
 
 ## Quiz Answer
 

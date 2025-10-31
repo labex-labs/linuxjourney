@@ -3,32 +3,42 @@ index: 4
 lang: "fr"
 title: "ls (Lister les répertoires)"
 meta_title: "ls (Lister les répertoires) - Ligne de commande"
-meta_description: "Apprenez à utiliser la commande 'ls' sous Linux pour lister le contenu des répertoires, afficher les fichiers cachés et comprendre les détails des fichiers. Améliorez vos compétences en ligne de commande Linux !"
-meta_keywords: "commande ls, lister les répertoires, tutoriel Linux, fichiers cachés, commandes Linux, Linux pour débutants, guide Linux"
+meta_description: "Apprenez à utiliser la commande puissante ls sous Linux. Ce guide couvre comment lister le contenu des répertoires, afficher les fichiers cachés avec ls -a, obtenir des listes détaillées avec ls -l, et utiliser la commande ls -r pour un tri inversé. Une leçon parfaite pour maîtriser la commande ls."
+meta_keywords: "commande ls, lister répertoires, cmd ls, commande ls -r, commande ls, linux ls -r, commande linux ls, fichiers cachés, commandes Linux, Linux débutant"
 ---
 
 ## Lesson Content
 
-Maintenant que nous savons comment nous déplacer dans le système, comment savoir ce qui est à notre disposition ? Pour l'instant, c'est comme si nous nous déplacions dans l'obscurité. Eh bien, nous pouvons utiliser la merveilleuse commande `ls` pour lister le contenu des répertoires. La commande `ls` listera par défaut les répertoires et les fichiers du répertoire courant ; cependant, vous pouvez spécifier le chemin dont vous voulez lister les répertoires.
+Maintenant que nous savons comment naviguer dans le système de fichiers, comment déterminer ce qui est à notre disposition ? Sans le bon outil, c'est comme se déplacer dans le noir. Heureusement, la merveilleuse `commande linux ls` est là pour aider en listant le contenu des répertoires.
+
+### Utilisation de base de la commande ls
+
+Par défaut, la `commande ls` listera les répertoires et les fichiers de votre répertoire actuel. Cependant, vous pouvez également spécifier un chemin pour lister le contenu d'un autre répertoire.
 
 ```bash
 ls
 ls /home/pete
 ```
 
-`ls` est un outil très utile ; il vous montre également des informations détaillées sur les fichiers et les répertoires que vous consultez.
+La `commande ls` est un outil polyvalent qui peut vous montrer des informations détaillées sur les fichiers et les répertoires que vous consultez.
 
-Notez également que tous les fichiers d'un répertoire ne seront pas visibles. Les noms de fichiers qui commencent par `.` sont cachés. Vous pouvez cependant les visualiser avec la commande `ls` et lui passer l'option `-a` (`a` pour all).
+### Afficher les fichiers cachés
+
+Notez que tous les fichiers d'un répertoire ne sont pas visibles par défaut. Sous Linux, les noms de fichiers qui commencent par un point (`.`) sont cachés. Vous pouvez les voir en utilisant la `cmd ls` avec le drapeau `-a`, qui signifie "all" (tout).
 
 ```bash
 ls -a
 ```
 
-Il existe également une autre option `ls` utile, `-l` pour long. Cela affiche une liste détaillée des fichiers dans un format long. Cela vous montrera des informations détaillées, en commençant par la gauche : permissions du fichier, nombre de liens, nom du propriétaire, groupe du propriétaire, taille du fichier, horodatage de la dernière modification, et nom du fichier/répertoire.
+### Obtenir des informations détaillées
+
+Un autre drapeau essentiel de `ls` est `-l` pour "long" (long). Cette option fournit une liste détaillée des fichiers dans un format long. Cela vous montrera des informations détaillées, en commençant par la gauche : les permissions du fichier, le nombre de liens, le nom du propriétaire, le groupe propriétaire, la taille du fichier, l'horodatage de la dernière modification, et le nom du fichier ou du répertoire.
 
 ```bash
 ls -l
 ```
+
+Voici un exemple du résultat :
 
 ```plaintext
 pete@icebox:~$ ls -l
@@ -43,7 +53,17 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Les commandes ont ce qu'on appelle des options (ou arguments, ou drapeaux, peu importe comment vous voulez les appeler) pour ajouter plus de fonctionnalités. Voyez comment nous avons ajouté `-a` et `-l` ; eh bien, vous pouvez les ajouter tous les deux ensemble avec `-la`. L'ordre des options détermine l'ordre dans lequel elles sont traitées. La plupart du temps, cela n'a pas vraiment d'importance, vous pouvez donc aussi faire `ls -al` et cela fonctionnerait toujours.
+### Trier en ordre inverse
+
+Parfois, vous voudrez peut-être changer l'ordre de tri. La `commande ls -r` liste les fichiers et les répertoires par ordre alphabétique inverse. L'option `linux ls -r` est particulièrement utile lorsque vous voulez voir les derniers éléments d'une longue liste en premier.
+
+```bash
+ls -r
+```
+
+### Combinaison des drapeaux de commande
+
+Les commandes ont des drapeaux (aussi appelés arguments ou options) pour ajouter plus de fonctionnalités. Comme nous l'avons vu avec `-a` et `-l`, vous pouvez les combiner en une seule commande comme `ls -la`. L'ordre des drapeaux n'a généralement pas d'importance, donc `ls -al` fonctionnerait de manière identique. Vous pouvez également ajouter le drapeau inverse : `ls -lar`.
 
 ```bash
 ls -la
@@ -53,13 +73,13 @@ ls -la
 
 La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension de la commande `ls` :
 
-- **[Commande Linux ls : Liste de contenu](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)** - Entraînez-vous à utiliser la commande `ls` pour lister et analyser efficacement le contenu des fichiers et des répertoires. Vous apprendrez diverses options pour des listes détaillées, l'affichage des fichiers cachés, des tailles lisibles par l'homme et des techniques de tri pour améliorer vos compétences en ligne de commande.
+- **[Commande ls Linux : Listage de contenu](https://labex.io/fr/labs/linux-linux-ls-command-content-listing-219205)** - Entraînez-vous à utiliser la commande `ls` pour lister et analyser efficacement le contenu des fichiers et des répertoires. Vous apprendrez diverses options pour les listes détaillées, l'affichage des fichiers cachés, les tailles lisibles par l'homme et les techniques de tri pour améliorer vos compétences en ligne de commande.
 
-Ce laboratoire vous aidera à appliquer les concepts dans un scénario réel et à renforcer votre confiance dans la liste des répertoires sous Linux.
+Ce laboratoire vous aidera à appliquer les concepts dans un scénario réel et à gagner en confiance avec le listage de répertoires sous Linux.
 
 ## Quiz Question
 
-Quelle commande utiliseriez-vous pour voir les fichiers cachés ?
+Quelle commande utiliseriez-vous pour voir les fichiers cachés ? Veuillez répondre en anglais, en faisant attention à la sensibilité à la casse.
 
 ## Quiz Answer
 

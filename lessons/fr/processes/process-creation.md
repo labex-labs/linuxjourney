@@ -1,39 +1,47 @@
 ---
 index: 4
 lang: "fr"
-title: "Création de processus"
-meta_title: "Création de processus - Processus"
-meta_description: "Découvrez la création de processus Linux, le fork et les processus parent/enfant. Comprenez le PID, le PPID et le processus init. Obtenez un guide pour débutants sur la gestion des processus Linux."
-meta_keywords: "création de processus Linux, fork, PID, PPID, processus init, processus Linux, débutant, tutoriel, guide"
+title: "Création de Processus"
+meta_title: "Création de Processus - Processus"
+meta_description: "Explorez les fondamentaux de la création de processus sous Linux. Ce guide couvre les appels système fork et execve, les relations parent/enfant (PID et PPID), et le rôle du processus init. Apprenez à créer un processus sous Linux et comprenez les concepts clés de la création de processus dans le système d'exploitation."
+meta_keywords: "création de processus linux, création processus linux, créer un processus linux, création processus système d'exploitation, création de processus, fork, execve, PID, PPID, processus init, processus Linux"
 ---
 
 ## Lesson Content
 
-Encore une fois, cette leçon et la suivante sont purement informatives pour vous permettre de voir ce qui se passe sous le capot. N'hésitez pas à y revenir une fois que vous aurez un peu plus travaillé avec les processus.
+Cette leçon explore les concepts fondamentaux de la manière dont les nouveaux processus sont démarrés sur un système Linux. Comprendre ce mécanisme donne un aperçu du fonctionnement interne du système d'exploitation.
 
-Lorsqu'un nouveau processus est créé, un processus existant se clone essentiellement en utilisant un appel système appelé `fork` (les appels système seront abordés beaucoup plus tard). L'appel système `fork` crée un processus enfant presque identique. Ce processus enfant prend un nouvel ID de processus (PID), et le processus original devient son processus parent et a ce qu'on appelle un ID de processus parent **PPID**. Ensuite, le processus enfant peut soit continuer à utiliser le même programme que son parent utilisait auparavant, soit, plus souvent, utiliser l'appel système `execve` pour lancer un nouveau programme. Cet appel système détruit la gestion de la mémoire que le noyau a mise en place pour ce processus et en configure de nouvelles pour le nouveau programme.
+### Le Modèle Fork et Exec
 
-Nous pouvons le voir en action :
+Le mécanisme principal pour la **création de processus sous Linux** implique qu'un processus existant se clone à l'aide de l'appel système `fork`. L'appel `fork` crée un processus enfant presque identique. Ce nouveau processus enfant reçoit son propre identifiant de processus (PID) unique, tandis que le processus d'origine devient son parent, identifié par un identifiant de processus parent (**PPID**).
+
+Après le fork, le processus enfant peut soit continuer à exécuter le même programme que son parent, soit, plus couramment, utiliser l'appel système `execve` pour charger et exécuter un nouveau programme. L'appel `execve` remplace effectivement l'espace mémoire du processus par celui du nouveau programme, permettant à une tâche différente de commencer. Ce modèle en deux étapes "fork-exec" est une pierre angulaire de la manière dont vous **créez un processus sous Linux**.
+
+### Observation des Relations Parent-Enfant
+
+Nous pouvons observer cette relation parent-enfant en action en utilisant la commande `ps` :
 
 ```bash
 ps l
 ```
 
-L'option `l` nous donne un "format long" ou une vue encore plus détaillée de nos processus en cours d'exécution. Vous verrez une colonne intitulée **PPID** ; c'est l'ID du parent. Regardez maintenant votre terminal ; vous verrez un processus en cours d'exécution qui est votre shell. Donc, sur mon système, j'ai un processus `bash` en cours d'exécution. Rappelez-vous maintenant que lorsque vous avez exécuté la commande `ps l`, vous l'exécutiez à partir du processus qui exécutait `bash`. Vous verrez que le **PID** du shell `bash` est le **PPID** de la commande `ps l`.
+L'option `l` fournit une vue au "format long", montrant plus de détails sur les processus en cours d'exécution. Vous verrez une colonne intitulée **PPID**, qui signifie Parent Process ID (Identifiant du Processus Parent). Regardez le processus de votre shell actuel (par exemple, `bash`). Lorsque vous exécutez la commande `ps l`, vous remarquerez que le **PID** de votre processus shell correspond au **PPID** du processus `ps l`. C'est parce que votre shell s'est forké pour créer le processus `ps`.
 
-Donc, si chaque processus doit avoir un parent et qu'ils ne sont que des forks les uns des autres, il doit y avoir une mère de tous les processus, n'est-ce pas ? Vous avez raison. Lorsque le système démarre, le noyau crée un processus appelé **init** ; il a un PID de 1. Le processus `init` ne peut pas être terminé à moins que le système ne s'arrête. Il s'exécute avec les privilèges root et exécute de nombreux processus qui maintiennent le système en marche. Nous examinerons de plus près `init` dans le cours sur le démarrage du système ; pour l'instant, sachez simplement que c'est le processus qui engendre tous les autres processus.
+### Le Processus Init
+
+Si chaque processus est l'enfant d'un autre, il doit y avoir un ancêtre original. C'est le processus `init`. Lorsque le système démarre, le noyau crée `init` comme tout premier processus de l'espace utilisateur, lui attribuant un PID de 1. Le processus `init` est le parent ultime de tous les autres processus et s'exécute avec les privilèges root pour gérer le système. Il ne peut pas être terminé tant que le système n'est pas éteint et est responsable du lancement de nombreux services qui maintiennent le système en fonctionnement.
 
 ## Exercise
 
 La pratique rend parfait ! Voici un laboratoire pratique pour renforcer votre compréhension des processus Linux et de leur gestion :
 
-- **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus de premier plan et d'arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
+- **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus au premier plan et en arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
 
-Ce laboratoire vous aidera à appliquer les concepts d'ID de processus, d'ID de processus parent et de surveillance des processus dans un scénario réel et à renforcer votre confiance dans la gestion des processus.
+Ce laboratoire vous aidera à appliquer les concepts d'identifiants de processus, d'identifiants de processus parent et de surveillance des processus dans un scénario réel et à renforcer votre confiance dans la gestion des processus.
 
 ## Quiz Question
 
-Quel appel système crée un nouveau processus ?
+Quel appel système crée un nouveau processus ? (Veuillez répondre en un seul mot anglais en minuscules.)
 
 ## Quiz Answer
 

@@ -1,19 +1,19 @@
 ---
 index: 1
 lang: "pt"
-title: "Rastreando processos: top"
-meta_title: "Rastreando processos: top - Utilização de Processos"
-meta_description: "Aprenda a usar o comando `top` do Linux para monitorar recursos do sistema e rastrear processos. Entenda os detalhes de CPU, memória e processos para análise de desempenho."
-meta_keywords: "comando top Linux, monitorar processos, utilização do sistema, desempenho Linux, iniciante, tutorial, guia"
+title: "Rastreamento de processos: top"
+meta_title: "Rastreamento de processos: top - Utilização do Processo"
+meta_description: "Descubra a melhor forma de aprender Linux dominando o comando `top`. Este guia explica como monitorar recursos do sistema, rastrear processos e entender métricas como VIRT e RES. Uma parte essencial para entender como o Linux funciona."
+meta_keywords: "comando top linux, monitorar processos, utilização do sistema, como funciona o linux, linux top virt res, melhor forma de aprender linux, desempenho linux, gerenciamento de processos, treinamento linux online gratuito com certificado"
 ---
 
 ## Lesson Content
 
-Neste curso, abordaremos como ler e analisar a utilização de recursos em seu sistema. Esta lição mostra algumas ótimas ferramentas para usar quando você precisa rastrear o que um processo está fazendo.
+Compreender como ler e analisar a utilização de recursos é uma competência crítica para qualquer utilizador de Linux. Muitos consideram dominar as ferramentas de linha de comandos a **melhor forma de aprender Linux** desde o início, pois fornecem uma visão profunda sobre **como o Linux funciona**. Esta lição apresenta o `top`, uma ferramenta poderosa para rastrear o que os seus processos estão a fazer em tempo real.
 
-### top
+### Compreender o Comando top
 
-Já discutimos o `top` antes, mas vamos aprofundar nos detalhes do que ele realmente está exibindo. Lembre-se, `top` é a ferramenta que usamos para obter uma visão em tempo real da utilização do sistema pelos nossos processos:
+Já mencionámos brevemente o `top`, mas agora vamos aprofundar os detalhes do que ele exibe. O comando `top` fornece uma visão dinâmica e em tempo real dos processos e da utilização do sistema na sua máquina.
 
 ```plaintext
 top - 18:06:26 up 6 days,  4:07,  2 users,  load average: 0.92, 0.62, 0.59
@@ -27,48 +27,50 @@ KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
  6926 patty    20   0  935888 163456  25576 S   4.3  0.5   5:28.13 chrome
 ```
 
-Vamos analisar o que essa saída significa. Você não precisa memorizar isso, mas volte aqui quando precisar de uma referência.
+Vamos analisar o que este resultado significa. Não precisa de memorizar isto, mas pode usar esta lição como referência.
 
-### 1ª linha: Esta é a mesma informação que você veria se executasse o comando `uptime` (mais por vir)
+### Resumo do Sistema
 
-Os campos são da esquerda para a direita:
+A primeira secção fornece um resumo de alto nível do estado do sistema.
 
-1. Hora atual
-2. Há quanto tempo o sistema está em execução
-3. Quantos usuários estão atualmente logados
-4. Média de carga do sistema (mais por vir)
+- **1ª linha**: Esta é a mesma informação que veria se executasse o comando `uptime`. Mostra a hora atual, o tempo de atividade do sistema, o número de utilizadores ligados e a média de carga do sistema nos últimos 1, 5 e 15 minutos.
+- **2ª linha**: Um resumo de todas as tarefas (processos), categorizadas como em execução, em espera (sleeping), paradas (stopped) ou zumbis (zombie).
 
-### 2ª linha: Tarefas que estão em execução, dormindo, paradas e zumbis
+### Detalhe da Utilização da CPU
 
-### 3ª linha: Informações da CPU
+A terceira linha detalha a utilização da CPU.
 
-1. `us`: tempo de CPU do usuário - Porcentagem do tempo de CPU gasto executando processos de usuários que não são niced.
-2. `sy`: tempo de CPU do sistema - Porcentagem do tempo de CPU gasto executando o kernel e processos do kernel.
-3. `ni`: tempo de CPU nice - Porcentagem do tempo de CPU gasto executando processos niced.
-4. `id`: tempo ocioso da CPU - Porcentagem do tempo de CPU que é gasto ocioso.
-5. `wa`: espera de E/S - Porcentagem do tempo de CPU que é gasto esperando por E/S. Se este valor for baixo, o problema provavelmente não é E/S de disco ou rede.
-6. `hi`: interrupções de hardware - Porcentagem do tempo de CPU gasto atendendo interrupções de hardware.
-7. `si`: interrupções de software - Porcentagem do tempo de CPU gasto atendendo interrupções de software.
-8. `st`: tempo de roubo - Se você estiver executando máquinas virtuais, esta é a porcentagem do tempo de CPU que foi roubado de você para outras tarefas.
+- `us`: Percentagem do tempo da CPU gasta a executar processos de utilizador que não são "niced" (prioridade normal).
+- `sy`: Percentagem do tempo da CPU gasta a executar o kernel e os seus processos.
+- `ni`: Percentagem do tempo da CPU gasta a executar processos de utilizador "niced" (baixa prioridade).
+- `id`: Percentagem do tempo da CPU que está ociosa.
+- `wa`: Percentagem do tempo da CPU gasta à espera que as operações de I/O sejam concluídas. Um valor elevado pode indicar um gargalo no disco ou na rede.
+- `hi`: Percentagem do tempo da CPU gasta a servir interrupções de hardware.
+- `si`: Percentagem do tempo da CPU gasta a servir interrupções de software.
+- `st`: Tempo de roubo (Steal time). Em ambientes virtualizados, esta é a percentagem de tempo da CPU que um processador virtual espera por um processador real, enquanto o hipervisor está a servir outro processador virtual.
 
-### 4ª e 5ª linha: Uso de Memória e Uso de Swap
+### Informação de Memória e Swap
 
-### Lista de Processos Atualmente em Uso
+A quarta e quinta linhas mostram o uso do espaço de memória e swap, respetivamente. Isto inclui as quantidades total, usada e livre.
 
-1. `PID`: ID do processo
-2. `USER`: usuário que é o proprietário do processo
-3. `PR`: Prioridade do processo
-4. `NI`: O valor nice
-5. `VIRT`: Memória virtual usada pelo processo
-6. `RES`: Memória física usada pelo processo
-7. `SHR`: Memória compartilhada do processo
-8. `S`: Indica o status do processo: `S`=sleep, `R`=running, `Z`=zombie, `D`=uninterruptible, `T`=stopped
-9. `%CPU`: esta é a porcentagem de CPU usada por este processo
-10. `%MEM`: porcentagem de RAM usada por este processo
-11. `TIME+`: tempo total de atividade deste processo
-12. `COMMAND`: nome do processo
+### A Lista de Processos
 
-Você também pode especificar um ID de processo se quiser apenas rastrear certos processos:
+O corpo principal do `top` é uma lista dos processos que mais consomem recursos.
+
+- `PID`: O Identificador de Processo único.
+- `USER`: O utilizador que é proprietário do processo.
+- `PR`: A prioridade de agendamento do processo.
+- `NI`: O valor "nice", que afeta a sua prioridade.
+- `VIRT`: Memória Virtual usada pelo processo. Esta é a quantidade total de memória que o processo pode aceder.
+- `RES`: Memória Residente usada pelo processo. Esta é a memória física não trocada que uma tarefa está a usar. Compreender a diferença entre **linux top virt res** é fundamental para a análise de memória.
+- `SHR`: Memória Partilhada usada pelo processo.
+- `S`: O estado do processo: `S`=dormir (sleep), `R`=a correr (running), `Z`=zumbi (zombie), `D`=sono ininterruptível (uninterruptible sleep), `T`=parado (stopped).
+- `%CPU`: A percentagem de tempo de CPU utilizada por este processo desde a última atualização.
+- `%MEM`: A percentagem de RAM física usada por este processo.
+- `TIME+`: O tempo total de CPU que o processo usou desde que iniciou.
+- `COMMAND`: O nome do comando ou a linha de comandos que iniciou o processo.
+
+Também pode monitorizar um processo específico pelo seu ID, o que é útil para resolução de problemas focada:
 
 ```bash
 top -p 1
@@ -76,17 +78,15 @@ top -p 1
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da utilização de recursos do Linux e do gerenciamento de processos:
+A prática é essencial para a mestria. Estes laboratórios práticos são alguns dos **melhores recursos para aprender Linux** sobre gestão de processos, fornecendo um ambiente prático para aplicar o que aprendeu.
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique interagir, inspecionar, monitorar e encerrar processos em um ambiente Linux real.
-2. **[Comando Linux top: Monitoramento de Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitorar o uso da CPU, memória e processos em execução em tempo real.
-3. **[Comando Linux free: Monitorando a Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar o comando `free` para monitorar e analisar o uso da memória do sistema.
-
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o monitoramento do sistema e o gerenciamento de processos.
+1.  **[Gerir e Monitorizar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação, inspeção, monitorização e terminação de processos num ambiente Linux real.
+2.  **[Comando Linux top: Monitorização do Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitorizar a utilização da CPU, memória e processos em execução em tempo real.
+3.  **[Comando Linux free: Monitorização da Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar o comando `free` para monitorizar e analisar a utilização da memória do sistema.
 
 ## Quiz Question
 
-Qual comando exibe a mesma saída que a primeira linha em `top`?
+Que comando exibe o mesmo resultado que a primeira linha no `top`? Por favor, responda usando apenas o nome do comando em inglês minúsculo.
 
 ## Quiz Answer
 

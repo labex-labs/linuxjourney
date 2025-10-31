@@ -3,55 +3,57 @@ index: 6
 lang: "de"
 title: "Benutzerverwaltungstools"
 meta_title: "Benutzerverwaltungstools - Benutzerverwaltung"
-meta_description: "Lernen Sie die Linux-Benutzerverwaltung: Hinzufügen, Entfernen und Ändern von Passwörtern mit den Befehlen useradd, userdel und passwd. Starten Sie mit diesem anfängerfreundlichen Leitfaden!"
-meta_keywords: "Linux-Benutzerverwaltung, adduser, userdel, passwd, Linux-Tutorial, Linux für Anfänger, Benutzerkonten, Linux-Befehle"
+meta_description: "Meistern Sie die Linux-Benutzerverwaltung mit essentiellen Kommandozeilen-Tools. Dieser Leitfaden behandelt die Verwendung von useradd, userdel und passwd zur Verwaltung von Konten unter Linux, ideal für Anfänger."
+meta_keywords: "linux benutzerverwaltung, das kommandozeilen-tool zur verwaltung von kontos in linux, useradd, userdel, passwd, linux konten, benutzer verwalten linux"
 ---
 
 ## Lesson Content
 
-Die meisten Unternehmensumgebungen verwenden Managementsysteme zur Verwaltung von Benutzern, Konten und Passwörtern. Auf einem Einzelplatzcomputer gibt es jedoch nützliche Befehle zur Benutzerverwaltung.
+Obwohl viele Unternehmensumgebungen auf dedizierte Systeme für das Identitätsmanagement angewiesen sind, ist das Verständnis der Grundlagen der **Linux-Benutzerverwaltung** direkt auf einer einzelnen Maschine eine entscheidende Fähigkeit. Verschiedene Dienstprogramme dienen als **das Befehlszeilentool für die Verwaltung von Konten unter Linux** und ermöglichen eine effiziente Administration über das Terminal.
 
 ### Benutzer hinzufügen
 
-Sie können den Befehl `adduser` oder `useradd` verwenden. Der Befehl `adduser` enthält nützlichere Funktionen, wie das Erstellen eines Home-Verzeichnisses und mehr. Es gibt Konfigurationsdateien zum Hinzufügen neuer Benutzer, die je nachdem, was Sie einem Standardbenutzer zuweisen möchten, angepasst werden können.
+Um einen neuen Benutzer zu erstellen, können Sie den Befehl `useradd` verwenden. Es handelt sich um ein Low-Level-Dienstprogramm, das ein neues Benutzerkonto basierend auf Standardwerten in `/etc/default/useradd` erstellt. Obwohl einige Systeme auch `adduser` anbieten, ein interaktiveres und benutzerfreundlicheres Skript, ist `useradd` der universelle Standard.
 
 ```bash
 sudo useradd bob
 ```
 
-Sie werden sehen, dass der obige Befehl einen Eintrag in `/etc/passwd` für bob erstellt, Standardgruppen einrichtet und einen Eintrag in der Datei `/etc/shadow` hinzufügt.
+Die Ausführung dieses Befehls fügt einen Eintrag für den Benutzer "bob" in die Datei `/etc/passwd` ein, richtet Standardgruppenmitgliedschaften ein und erstellt einen entsprechenden Eintrag in der Datei `/etc/shadow`, um Kennwortinformationen sicher zu speichern.
 
 ### Benutzer entfernen
 
-Um einen Benutzer zu entfernen, können Sie den Befehl `userdel` verwenden.
+Um ein Benutzerkonto zu entfernen, können Sie den Befehl `userdel` verwenden. Dieser Befehl kehrt effektiv die durch `useradd` vorgenommenen Änderungen um, indem die Einträge des Benutzers aus den Systemkontodateien entfernt werden.
 
 ```bash
 sudo userdel bob
 ```
 
-Dies versucht im Wesentlichen, die durch `useradd` vorgenommenen Dateiänderungen rückgängig zu machen.
+Standardmäßig entfernt dieser Befehl möglicherweise nicht das Home-Verzeichnis des Benutzers. Sie können das Flag `-r` (`userdel -r bob`) verwenden, um sicherzustellen, dass auch das Home-Verzeichnis und der Mail-Spool gelöscht werden.
 
-### Passwörter ändern
+### Kennwörter ändern
+
+Der Befehl `passwd` wird verwendet, um das Kennwort eines Benutzers festzulegen oder zu ändern. Ein regulärer Benutzer kann diesen Befehl ausführen, um sein eigenes Kennwort zu ändern. Der Root-Benutzer kann ihn ausführen, um das Kennwort eines beliebigen Benutzers zu ändern.
 
 ```bash
 passwd bob
 ```
 
-Dies ermöglicht es Ihnen, das Passwort von sich selbst oder einem anderen Benutzer zu ändern (wenn Sie root sind).
+Wenn er von einem Administrator ausgeführt wird, fordert das System zur Eingabe eines neuen Kennworts für den angegebenen Benutzer auf, ohne nach dem alten zu fragen. Dies ist eine grundlegende Aufgabe in der **Linux-Benutzerverwaltung**.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzer- und Kontoverwaltung in Linux zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Benutzer- und Kontoverwaltung unter Linux zu festigen:
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** – Üben Sie den gesamten Lebenszyklus der Benutzerverwaltung, vom Erstellen und Sichern neuer Konten bis zum Ändern und Löschen.
-2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** – Sammeln Sie praktische Erfahrungen mit den wichtigsten Befehlszeilenprogrammen für die Gruppenverwaltung, einschließlich des Hinzufügens, Änderns und Löschens von Gruppen.
-3. **[Benutzerkonten und Sudo-Berechtigungen in Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** – Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen, um die Sicherheit eines Linux-Systems zu verbessern.
+1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den vollständigen Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
+2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit zentralen Befehlszeilentools für die Gruppenadministration, einschließlich dem Hinzufügen, Ändern und Löschen von Gruppen.
+3. **[Benutzerkonten und Sudo-Berechtigungen unter Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen.
 
-Diese Übungen helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Gruppenverwaltung aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Linux-Benutzer- und Gruppenverwaltung aufzubauen.
 
 ## Quiz Question
 
-Welcher Befehl wird verwendet, um ein Passwort zu ändern?
+Welcher Befehl wird verwendet, um ein Kennwort zu ändern? Bitte antworten Sie nur mit dem Befehlsnamen in Kleinbuchstaben auf Englisch.
 
 ## Quiz Answer
 

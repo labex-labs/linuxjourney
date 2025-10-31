@@ -2,58 +2,81 @@
 index: 15
 lang: "ko"
 title: "wc 및 nl"
-meta_title: "wc 및 nl - 텍스트 처리"
-meta_description: "wc 및 nl Linux 명령어를 배우세요. 단어 수 세기, 줄 번호 매기기, 파일 분석을 이해하세요. 오늘 Linux 명령줄 기술을 향상시키세요!"
-meta_keywords: "wc 명령어, nl 명령어, Linux 단어 수 세기, Linux 줄 번호, 파일 분석, Linux 튜토리얼, 초보자 Linux, Linux 가이드"
+meta_title: "wc 및 nl - Text-Fu"
+meta_description: "이 Linux 튜토리얼에서 wc 및 nl 명령을 마스터하세요. Linux 단어 수 세기, 파일에 줄 번호 추가, 기본 파일 분석 수행 방법을 배웁니다. 명령줄 기술을 향상시키기 위한 초보자에게 완벽한 가이드입니다."
+meta_keywords: "wc 명령어, nl 명령어, Linux 단어 수 세기, 파일 단어 수 세기 Linux, Linux 줄 번호, nl 명령어 Linux, 파일 분석, 텍스트 처리 Linux, Linux 명령줄, 초보자용 Linux 튜토리얼"
 ---
 
 ## Lesson Content
 
-`wc` (word count) 명령어는 파일의 총 단어 수를 보여줍니다.
+Linux 에서 텍스트 파일을 분석하는 것은 일반적인 작업입니다. 이를 위한 두 가지 기본 유틸리티는 각각 콘텐츠를 계산하고 줄에 번호를 매기는 데 도움이 되는 `wc`와 `nl`입니다.
+
+### wc 명령어로 계산하기
+
+`wc`(word count, 단어 수) 명령어는 기본적인 파일 분석을 위한 강력한 도구입니다. 파일에서 실행하면 내용에 대한 요약을 제공합니다.
 
 ```bash
 $ wc /etc/passwd
  96     265    5925 /etc/passwd
 ```
 
-이 명령어는 각각 줄 수, 단어 수, 바이트 수를 표시합니다.
+출력에는 파일 이름 앞에 세 개의 숫자가 표시됩니다. 왼쪽부터 이 숫자들은 다음을 나타냅니다.
 
-특정 필드의 개수만 보려면 각각 `-l`, `-w`, 또는 `-c` 옵션을 사용합니다.
+1.  줄 (라인) 수.
+2.  단어 수 (리눅스 단어 수).
+3.  바이트 수.
+
+### 특정 개수 얻기
+
+종종 하나의 정보만 필요할 때가 있습니다. 옵션을 사용하여 세 가지 모두 대신 특정 개수만 표시할 수 있습니다.
+
+- `-l`: 줄 수만 표시합니다.
+- `-w`: 단어 수만 표시합니다.
+- `-c`: 바이트 수만 표시합니다.
+
+예를 들어, `/etc/passwd` 파일의 줄 수만 보려면 다음을 사용합니다.
 
 ```bash
 $ wc -l /etc/passwd
 96
 ```
 
-파일의 줄 수를 확인하는 데 사용할 수 있는 또 다른 명령어는 `nl` (number lines) 명령어입니다.
+### nl 명령어로 줄 번호 매기기
+
+파일을 검사할 때 유용한 또 다른 명령어는 `nl`(number lines, 줄 번호) 입니다. 이름에서 알 수 있듯이 파일을 읽고 각 줄 앞에 줄 번호를 추가하여 내용을 출력합니다. 이는 스크립트나 설정 파일을 검토할 때 특히 유용합니다.
+
+다음과 같은 내용이 포함된 `file1.txt`라는 파일을 고려해 봅시다.
 
 ```plaintext
-file1.txt
 i
 like
 turtles
 ```
 
+`nl` 명령어를 사용하면 리눅스 줄 번호를 쉽게 추가할 수 있습니다.
+
 ```bash
 $ nl file1.txt
-1. i
-2. like
-3. turtles
+     1	i
+     2	like
+     3	turtles
 ```
+
+`wc`와 `nl` 모두 리눅스 명령줄에서 일상적인 텍스트 처리를 위한 필수 명령어입니다.
 
 ## Exercise
 
-연습은 완벽을 만듭니다! 다음은 Linux 에서 텍스트 개수 세기 및 줄 번호 매기기에 대한 이해를 강화하기 위한 실습 랩입니다:
+이러한 명령어를 숙달하려면 실습이 중요합니다. 리눅스에서 텍스트 계산 및 줄 번호 매기기 기술을 확고히 하기 위해 다음 연습 문제를 시도해 보세요.
 
-1. **[Linux wc 명령어: 텍스트 개수 세기](https://labex.io/ko/labs/linux-linux-wc-command-text-counting-219200)** - `wc` 명령어를 사용하여 텍스트 파일의 단어, 줄, 문자 수를 세는 연습을 합니다.
-2. **[Linux nl 명령어: 줄 번호 매기기](https://labex.io/ko/labs/linux-linux-nl-command-line-numbering-210988)** - `nl` 명령어를 사용하여 텍스트 파일에 줄 번호를 매기는 방법을 배웁니다.
-3. **[단어 개수 세기 및 정렬](https://labex.io/ko/labs/linux-word-count-and-sorting-388125)** - `wc` 지식을 적용하여 줄, 단어, 문자 수를 세고, 실용적인 텍스트 분석 작업을 위해 정렬과 결합합니다.
+1.  **[Linux wc 명령어: 텍스트 계산](https://labex.io/ko/labs/linux-linux-wc-command-text-counting-219200)** - `wc` 명령어를 사용하여 텍스트 파일의 단어, 줄 및 문자 수를 연습합니다.
+2.  **[Linux nl 명령어: 줄 번호 매기기](https://labex.io/ko/labs/linux-linux-nl-command-line-numbering-210988)** - `nl` 명령어로 텍스트 파일의 줄에 번호를 매기는 방법을 배웁니다.
+3.  **[단어 수 세기 및 정렬](https://labex.io/ko/labs/linux-word-count-and-sorting-388125)** - `wc` 지식을 적용하여 줄, 단어, 문자를 계산하고 정렬과 결합하여 실제적인 텍스트 분석 작업을 수행합니다.
 
-이 랩들은 실제 시나리오에 개념을 적용하고 Linux 에서 텍스트 처리에 대한 자신감을 키우는 데 도움이 될 것입니다.
+이 실습들은 실제 시나리오에서 개념을 적용하고 리눅스 텍스트 처리 능력을 키우는 데 도움이 될 것입니다.
 
 ## Quiz Question
 
-파일의 총 단어 수와 단어만 얻으려면 어떤 명령어를 사용하시겠습니까?
+파일의 총 단어 수만 표시하려면 어떤 명령어와 옵션을 사용해야 합니까? 답변은 명령어와 옵션만 영어로 작성하십시오. 대소문자를 구분합니다.
 
 ## Quiz Answer
 

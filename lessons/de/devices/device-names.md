@@ -3,52 +3,60 @@ index: 3
 lang: "de"
 title: "Gerätenamen"
 meta_title: "Gerätenamen - Geräte"
-meta_description: "Lernen Sie Linux-Gerätenamen wie SCSI (sd), Pseudo- und PATA (hd)-Geräte kennen. Verstehen Sie /dev/sda, /dev/null und mehr in diesem anfängerfreundlichen Leitfaden."
-meta_keywords: "Linux-Gerätenamen, /dev, SCSI-Geräte, Pseudo-Geräte, PATA-Geräte, Linux-Tutorial, Linux für Anfänger, Gerätedateien"
+meta_description: "Entdecken Sie gängige Linux-Gerätenamen für Speicher und Peripheriegeräte. Dieser Leitfaden erklärt die Benennungskonvention für SCSI-Festplatten (wie sda), wofür sda steht, und Pseudo-Geräte wie /dev/null."
+meta_keywords: "linux gerätenamen, linux gerätename, wofür steht sda, sd elementname, was wäre üblicherweise der gerätename für die erste partition auf der zweiten scsi-festplatte, /dev, scsi geräte, pseudo geräte, pata geräte"
 ---
 
 ## Lesson Content
 
-Hier sind die gängigsten Gerätenamen, denen Sie begegnen werden:
+In Linux wird jedes Gerät durch eine Datei im Verzeichnis `/dev` repräsentiert. Das Verständnis der Namenskonventionen für diese Dateien ist für die Systemadministration von entscheidender Bedeutung. Hier sind die häufigsten Arten von Linux-Gerätenamen, denen Sie begegnen werden.
 
-### SCSI-Geräte
+### SCSI- und moderne Speichergeräte
 
-Wenn Sie Massenspeicher auf Ihrem Computer haben, ist die Wahrscheinlichkeit groß, dass dieser das SCSI-Protokoll (ausgesprochen "scuzzy") verwendet. SCSI steht für Small Computer System Interface; es ist ein Protokoll, das die Kommunikation zwischen Festplatten, Druckern, Scannern und anderen Peripheriegeräten und Ihrem System ermöglicht. Sie haben vielleicht von SCSI-Geräten gehört, die in modernen Systemen eigentlich nicht mehr verwendet werden; unsere Linux-Systeme ordnen jedoch SCSI-Festplatten den Festplattenlaufwerken in `/dev` zu. Sie werden durch das Präfix `sd` (SCSI-Disk) dargestellt:
+Auch wenn Ihr Rechner moderne Speicher wie SATA, NVMe oder USB-Laufwerke verwendet, verwaltet der Linux-Kernel diese oft über sein SCSI (Small Computer System Interface) Subsystem. Deshalb ist das häufigste Präfix für Speichergeräte `sd`, was ursprünglich für „SCSI disk“ stand.
 
-Gängige SCSI-Gerätedateien:
+Der `sd element name` folgt einem klaren Muster:
 
-- `/dev/sda` – Erste Festplatte
-- `/dev/sdb` – Zweite Festplatte
-- `/dev/sda3` – Dritte Partition auf der ersten Festplatte
+- Das Präfix `sd` kennzeichnet ein Massenspeichergerät.
+- Der nächste Buchstabe repräsentiert das Laufwerk selbst, zugewiesen in der Reihenfolge der Erkennung (`a` für das erste, `b` für das zweite usw.).
+- Eine Zahl am Ende gibt die Partition auf diesem Laufwerk an.
+
+Zu den gängigen SCSI-Gerätedateien gehören:
+
+- `/dev/sda`: Das erste Speicherlaufwerk.
+- `/dev/sdb`: Das zweite Speicherlaufwerk.
+- `/dev/sda3`: Die dritte Partition auf dem ersten Speicherlaufwerk.
+
+Wie lautet also der Gerätename für die erste Partition auf der zweiten SCSI-Festplatte? Dem Muster folgend ist die zweite Festplatte `sdb` und ihre erste Partition `1`. Daher lautet der Gerätename `/dev/sdb1`.
 
 ### Pseudo-Geräte
 
-Wie bereits erwähnt, sind Pseudo-Geräte nicht wirklich physisch mit Ihrem System verbunden. Die gängigsten Pseudo-Geräte sind Zeichengeräte:
+Pseudo-Geräte sind spezielle Dateien, die keiner physischen Hardware entsprechen, aber nützliche Systemfunktionen bereitstellen. Es handelt sich typischerweise um Zeichengeräte.
 
-- `/dev/zero` – akzeptiert und verwirft alle Eingaben, erzeugt einen kontinuierlichen Strom von NULL (Nullwert) Bytes
-- `/dev/null` – akzeptiert und verwirft alle Eingaben, erzeugt keine Ausgabe
-- `/dev/random` – erzeugt Zufallszahlen
+- `/dev/zero`: Akzeptiert und verwirft alle Eingaben. Beim Lesen erzeugt es einen kontinuierlichen Strom von NULL-Bytes (Nullwert).
+- `/dev/null`: Akzeptiert und verwirft alle an ihn geschriebenen Eingaben und erzeugt beim Lesen keine Ausgabe.
+- `/dev/random`: Erzeugt einen Strom von Zufallszahlen, die aus Umgebungsrauschen generiert werden.
 
-### PATA-Geräte
+### Veraltete PATA-Geräte
 
-Manchmal, in älteren Systemen, können Festplatten mit einem `hd`-Präfix bezeichnet werden:
+Auf älteren Systemen stoßen Sie möglicherweise auf Festplatten, die die Parallel ATA (PATA) Schnittstelle verwenden. Der Linux-Gerätename für diese Laufwerke verwendet das Präfix `hd`.
 
-- `/dev/hda` – Erste Festplatte
-- `/dev/hdd2` – Zweite Partition auf der 4. Festplatte
+- `/dev/hda`: Die erste PATA-Festplatte.
+- `/dev/hdd2`: Die zweite Partition auf der vierten PATA-Festplatte.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Gerätenamen und Speicherverwaltung zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Gerätenamen und Speicherverwaltung zu festigen:
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen, Formatieren und Mounten von Partitionen, was direkt die Arbeit mit Gerätenamen beinhaltet.
-2. **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte und ihre zugehörigen Namen in einer Linux-Umgebung zu identifizieren und zu inspizieren.
+1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen, Formatieren und Einhängen von Partitionen, was direkt die Arbeit mit Gerätenamen beinhaltet.
+2. **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte und ihre zugehörigen Namen in einer Linux-Umgebung zu identifizieren und zu überprüfen.
 
 Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Speicher und das Verständnis von Hardware in Linux aufzubauen.
 
 ## Quiz Question
 
-Wie würde der Gerätename für die erste Partition auf der zweiten SCSI-Festplatte üblicherweise lauten?
+Wie lautet üblicherweise der Gerätename für die erste Partition auf der zweiten SCSI-Festplatte? Bitte geben Sie die Antwort auf Englisch an und achten Sie auf die korrekte Groß-/Kleinschreibung.
 
 ## Quiz Answer
 
-sdb1
+/dev/sdb1

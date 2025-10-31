@@ -2,30 +2,40 @@
 index: 7
 lang: "de"
 title: "Netzwerkschicht"
-meta_title: "Netzwerkschicht - Netzwerk-Grundlagen"
-meta_description: "Erfahren Sie mehr über die Netzwerkschicht in Linux, wie IP-Adressen Pakete über Subnetze routen und ihre Rolle bei der Datenübertragung. Beginnen Sie Ihre Linux-Netzwerkreise!"
-meta_keywords: "Netzwerkschicht, IP-Adressen, Subnetze, Linux-Netzwerk, Paket-Routing, Anfänger, Tutorial, Anleitung"
+meta_title: "Netzwerkschicht - Netzwerk Grundlagen"
+meta_description: "Erkunden Sie die Netzwerkschicht im Linux-Networking. Dieser Leitfaden erklärt, wie IP-Adressen und Subnetze das Paket-Routing für die Datenübertragung zwischen Netzwerken ermöglichen."
+meta_keywords: "Netzwerkschicht, IP-Adressen, Subnetze, Linux-Networking, Paket-Routing, Datenübertragung, OSI-Modell, IP-Paket"
 ---
 
 ## Lesson Content
 
-Die Netzwerkschicht bestimmt das Routing unserer Pakete von unserem Quellhost zu einem Zielhost. Glücklicherweise reist unser Paket in unserem Beispiel nur innerhalb desselben Netzwerks, aber das Internet besteht aus vielen Netzwerken. Diese kleineren Netzwerke, aus denen das Internet besteht, werden als Subnetze bezeichnet. Alle Subnetze sind auf irgendeine Weise miteinander verbunden, weshalb wir `https://www.google.com` erreichen können, obwohl es sich in einem eigenen Netzwerk befindet. Ich werde nicht ins Detail gehen, da wir einen ganzen Kurs über Subnetze haben, aber vorerst, in Bezug auf unsere Netzwerkschicht, wissen Sie, dass die IP-Adressen die Regeln definieren, um zu verschiedenen Subnetzen zu gelangen.
+Die Vermittlungsschicht (Network Layer) ist für die logische Adressierung und das Routing von Datenpaketen von einem Quellhost zu einem Zielhost verantwortlich. Obwohl ein Paket manchmal innerhalb eines einzigen lokalen Netzwerks reist, ist das Internet eine riesige Sammlung miteinander verbundener Netzwerke.
 
-In der Netzwerkschicht empfängt sie das von der Transportschicht kommende Segment und kapselt dieses Segment in ein IP-Paket, dann hängt sie die IP-Adresse des Quellhosts und die IP-Adresse des Zielhosts an den Paket-Header an. Zu diesem Zeitpunkt enthält unser Paket Informationen darüber, wohin es geht und woher es kam. Nun sendet es unser Paket an die physische Hardwareschicht.
+### Die Rolle des Paketroutings
+
+Die Hauptfunktion der Vermittlungsschicht besteht darin, den optimalen Pfad für die Datenübertragung zu bestimmen. Dieser Prozess, bekannt als **Paketrouting**, stellt sicher, dass Informationen effizient ihr beabsichtigtes Ziel erreichen, selbst wenn sie mehrere Netzwerk-Grenzen überschreiten müssen. Im Bereich **Linux-Netzwerke** ist diese Schicht für die gesamte Internetkommunikation von grundlegender Bedeutung.
+
+### Verstehen von Subnetzen und IP-Adressen
+
+Die kleineren Netzwerke, aus denen das Internet besteht, werden als **Subnetze** bezeichnet. Alle Subnetze sind miteinander verbunden, was es einem Gerät in einem Netzwerk ermöglicht, mit einem Gerät in einem anderen zu kommunizieren, beispielsweise beim Zugriff auf eine Website wie `google.com`. Die Regeln für die Übertragung zwischen diesen verschiedenen Subnetzen werden durch **IP-Adressen** definiert. Eine IP-Adresse bietet eine eindeutige Kennung für ein Gerät in einem Netzwerk, ähnlich einer Straßenadresse für ein Haus.
+
+### Kapselung auf der Vermittlungsschicht
+
+Auf der Vermittlungsschicht wird das von der Transportschicht empfangene Datensegment in eine neue Einheit, das IP-Paket, gekapselt. Während dieses Prozesses wird dem Paket ein Header hinzugefügt, der die Quell-IP-Adresse (woher das Paket stammt) und die Ziel-IP-Adresse (wohin es geht) enthält. Mit diesen entscheidenden Adressinformationen ist das Paket nun für seine Reise gerüstet und wird zur Datenbankschicht (Data Link Layer) weitergegeben, um für die physische Übertragung vorbereitet zu werden.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Netzwerkschicht, der IP-Adressierung und der Subnetze zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Vermittlungsschicht, der IP-Adressierung und der Subnetze zu festigen:
 
-1. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie das Zuweisen statischer IP-Adressen und das Testen der Konnektivität innerhalb und zwischen verschiedenen Subnetzen mithilfe von Docker-Containern.
-2. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adresstypen (privat, öffentlich, Multicast) und testen Sie die Netzwerk-Erreichbarkeit mit `ping` und `ip a`.
+1.  **[Simulieren der Konnektivität der Vermittlungsschicht in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie die Zuweisung statischer IP-Adressen und testen Sie die Konnektivität innerhalb und über verschiedene Subnetze hinweg mithilfe von Docker-Containern.
+2.  **[Durchführen von IP-Subnetting und binärer Konvertierung im Linux-Terminal](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und binäre Konvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
+3.  **[Erkunden von IP-Adress-Typen und Erreichbarkeit in Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`.
 
-Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Subnettings in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Netzwerkschicht aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Subnetting in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Vermittlungsschicht aufzubauen.
 
 ## Quiz Question
 
-Wie werden kleinere Netzwerke genannt, aus denen das Internet besteht?
+Wie werden die kleineren Netzwerke genannt, aus denen das Internet besteht? Bitte antworten Sie mit einem einzigen, kleingeschriebenen englischen Wort.
 
 ## Quiz Answer
 

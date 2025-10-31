@@ -3,47 +3,59 @@ index: 8
 lang: "fr"
 title: "Tâches Cron"
 meta_title: "Tâches Cron - Utilisation des Processus"
-meta_description: "Apprenez à planifier des tâches Linux avec les tâches cron. Comprenez la syntaxe crontab et automatisez les scripts pour les opérations quotidiennes. Démarrez avec ce guide convivial pour débutants !"
-meta_keywords: "tâches cron, crontab, planifier des tâches, automatisation Linux, commandes Linux, Linux pour débutants, tutoriel Linux, crontab -e"
+meta_description: "Apprenez à planifier des tâches et à automatiser des scripts sous Linux avec les tâches cron. Ce guide couvre la syntaxe crontab, les commandes essentielles comme crontab -e, et des exemples pratiques pour débutants."
+meta_keywords: "tâches cron, crontab, planifier des tâches, automatisation Linux, commandes Linux, Linux débutant, tutoriel Linux, crontab -e, cron"
 ---
 
 ## Lesson Content
 
-Bien que nous ayons parlé de l'utilisation des ressources, je pense que ce serait un bon moment pour mentionner un outil astucieux sous Linux qui est utilisé pour planifier des tâches à l'aide de cron. Il existe un service qui exécute des programmes pour vous à l'heure que vous spécifiez. C'est vraiment utile si vous avez un script que vous voulez exécuter une fois par jour et qui doit exécuter quelque chose pour vous.
+Bien que l'utilisation des processus soit importante, c'est aussi le moment idéal pour introduire un outil puissant pour l'`automatisation Linux` : le démon `cron`. Ce service d'arrière-plan vous permet de `planifier des tâches` pour qu'elles s'exécutent automatiquement à des heures ou des intervalles spécifiques. Ces tâches planifiées sont communément appelées `tâches cron`. Ceci est incroyablement utile pour automatiser des actions de routine, comme l'exécution d'un script de sauvegarde chaque nuit ou le nettoyage des fichiers temporaires une fois par semaine.
 
-Par exemple, disons que j'ai un script situé dans `/home/pete/scripts/change_wallpaper`. J'utilise ce script chaque matin pour changer l'image que j'utilise pour mon fond d'écran, mais chaque matin, je dois exécuter ce script manuellement. Au lieu de cela, ce que je peux faire est de créer une tâche cron qui exécute mon script via cron. Je peux spécifier l'heure à laquelle je veux que cette tâche cron s'exécute et exécute mon script.
+### Que sont les tâches Cron
+
+Imaginez que vous ayez un script à `/home/pete/scripts/change_wallpaper` que vous exécutez chaque matin pour définir un nouveau fond d'écran. Au lieu de l'exécuter manuellement chaque jour, vous pouvez créer une `tâche cron` pour l'exécuter à votre place. En définissant une planification, vous pouvez indiquer au service `cron` exactement quand exécuter votre script, ce qui en fait une véritable solution "configurez et oubliez".
+
+### Comprendre la syntaxe Crontab
+
+Pour créer une `tâche cron`, vous devez spécifier la planification et la commande à exécuter. La planification est définie par cinq champs, suivis de la commande.
 
 ```plaintext
 30 08 * * * /home/pete/scripts/change_wallpaper
 ```
 
-Les champs sont les suivants de gauche à droite :
+Les cinq champs d'heure et de date sont, de gauche à droite :
 
-- Minute - (0-59)
-- Heure - (0-23)
-- Jour du mois - (1-31)
-- Mois - (1-12)
-- Jour de la semaine - (0-7). 0 et 7 sont désignés comme dimanche
+- **Minute** : 0-59
+- **Heure** : 0-23 (au format 24 heures)
+- **Jour du mois** : 1-31
+- **Mois** : 1-12
+- **Jour de la semaine** : 0-7 (où 0 et 7 représentent tous deux le dimanche)
 
-L'astérisque dans le champ signifie correspondre à chaque valeur. Donc, dans mon exemple ci-dessus, je veux que cela s'exécute tous les jours de chaque mois à 8h30 du matin.
+Un astérisque (`*`) dans un champ agit comme un joker, signifiant "chaque". Dans l'exemple ci-dessus, la planification `30 08 * * *` indique à `cron` d'exécuter la commande à 8h30, chaque jour du mois, chaque mois et chaque jour de la semaine.
 
-Pour créer une tâche cron, il suffit de modifier le fichier crontab :
+### Gérer les tâches Cron avec Crontab
+
+Vous gérez vos `tâches cron` personnelles à l'aide de la commande `crontab`, qui vous permet d'éditer votre fichier crontab spécifique à l'utilisateur. Ce fichier contient toutes les `tâches cron` que vous avez planifiées.
+
+Pour ajouter ou modifier vos `tâches cron`, utilisez l'indicateur `-e` (éditer). Cela ouvrira votre fichier crontab dans votre éditeur de texte par défaut.
 
 ```bash
 crontab -e
 ```
 
+Une fois que vous avez ajouté la définition de votre tâche et enregistré le fichier, `cron` lira automatiquement la nouvelle planification. Vous pouvez également lister vos `tâches cron` actives avec `crontab -l` ou toutes les supprimer avec `crontab -r`. L'utilisation des `tâches cron` est une compétence fondamentale pour quiconque s'intéresse à l'`automatisation Linux`.
+
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la planification des tâches sous Linux :
+La pratique rend parfait ! Ce laboratoire pratique vous aidera à renforcer votre compréhension de la façon de `planifier des tâches` sous Linux.
 
-1. **[Planifier des tâches avec at et cron sous Linux](https://labex.io/fr/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Entraînez-vous à créer, gérer et supprimer des tâches avec `at`, `atq`, `atrm` et `crontab`, en acquérant une expérience pratique dans l'automatisation des tâches d'administration système.
+1.  **[Planifier des tâches avec at et cron sous Linux](https://labex.io/fr/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Entraînez-vous à créer, gérer et supprimer des tâches avec `at`, `atq`, `atrm` et `crontab`, en acquérant une expérience pratique dans l'automatisation des tâches d'administration système.
 
-Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la planification des tâches.
+Ce laboratoire vous aidera à appliquer les concepts de cette leçon dans un scénario réel et à renforcer votre confiance dans l'`automatisation Linux`.
 
 ## Quiz Question
 
-Quelle est la commande pour modifier vos tâches cron ?
+Quelle est la commande pour éditer vos tâches cron personnelles ? (Veuillez répondre en utilisant la commande exacte en minuscules et son option.)
 
 ## Quiz Answer
 

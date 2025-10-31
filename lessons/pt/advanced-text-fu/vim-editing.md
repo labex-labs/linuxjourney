@@ -1,59 +1,67 @@
 ---
 index: 7
 lang: "pt"
-title: "Edição Vim"
-meta_title: "Edição Vim - Text-Fu Avançado"
-meta_description: "Aprenda os conceitos básicos de edição do Vim: deletar, alterar, copiar e colar texto de forma eficiente. Domine os comandos essenciais do Vim para iniciantes e melhore suas habilidades de edição de texto no Linux."
-meta_keywords: "edição Vim, comandos Vim, editor de texto Linux, tutorial Vim, guia Vim, Vim para iniciantes, comando dd, deletar Vim"
+title: "Edição no Vim"
+meta_title: "Edição no Vim - Text-Fu Avançado"
+meta_description: "Um tutorial Vim para iniciantes sobre comandos essenciais de edição. Aprenda a deletar, alterar, copiar (yank) e colar texto no editor de texto Vim para melhorar seu fluxo de trabalho no Linux."
+meta_keywords: "Edição Vim, comandos Vim, editor de texto Linux, tutorial Vim, guia Vim, Vim para iniciantes, comando dd, deletar Vim"
 ---
 
 ## Lesson Content
 
-A edição no Vim é feita a partir do modo Normal usando operadores e movimentos. Você pode deletar, alterar, copiar (yank), colar (put) e substituir texto de forma eficiente.
+Editar texto no Vim é um recurso poderoso que se baseia na combinação de operadores e movimentos do modo Normal. Essa abordagem permite que você exclua, altere, copie (yank) e cole (put) texto de forma eficiente. Antes de executar qualquer comando, pressione `Esc` para garantir que você esteja no modo Normal.
 
-- Pressione `Esc` para garantir que você esteja no modo Normal antes de usar esses comandos.
+### Entendendo Operadores e Movimentos do Vim
 
-Exclusões (operador `d`):
+A essência da edição no Vim é a fórmula: `operador + movimento`. Um operador é uma ação (como `d` para deletar), e um movimento é um deslocamento (como `w` para palavra). Por exemplo, `dw` combina o operador de deletar com o movimento de palavra para deletar uma palavra. Você também pode usar contadores para repetir uma ação, como `2dw` para deletar duas palavras.
 
-- `x` – deleta o caractere sob o cursor
-- `dw` – deleta do cursor até o início da próxima palavra
-- `d$` – deleta do cursor até o final da linha
-- `dd` – deleta a linha atual
-- Contagens se aplicam: `3dd` deleta três linhas; `2dw` deleta duas palavras
+### Deletando Texto no Vim
 
-Alterações (operador `c`, deleta e então entra no modo Insert):
+O operador de deletar é `d`. É um dos comandos Vim mais comuns para manipulação de texto.
 
-- `cw` – altera a palavra a partir do cursor
-- `c$` – altera até o final da linha
-- `cc` – altera a linha inteira
+- `x` – Deleta o caractere diretamente sob o cursor.
+- `dw` – Deleta do cursor até o início da próxima palavra.
+- `d$` – Deleta do cursor até o final da linha atual.
+- `dd` – O comando `dd` deleta a linha inteira atual.
+- `3dd` – Deleta três linhas, começando pela linha atual.
 
-Yank e Put (copiar/colar):
+### Alterando Texto
 
-- `yw` – copia a palavra
-- `yy` – copia a linha atual
-- `p` – cola (put) após o cursor ou abaixo da linha
-- `P` – cola (put) antes do cursor ou acima da linha
+O operador de alterar, `c`, funciona de forma semelhante ao deletar, mas coloca você no modo de Inserção após executar a ação. Isso é útil para substituir texto.
 
-Substituir e outras edições úteis:
+- `cw` – Altera o texto do cursor até o final da palavra.
+- `c$` – Altera o texto do cursor até o final da linha.
+- `cc` – Altera a linha inteira atual.
 
-- `r{char}` – substitui o caractere sob o cursor por `{char}`
-- `R` – entra no modo Replace para sobrescrever texto
-- `J` – une a linha atual com a próxima linha
-- `.` – repete a última alteração
+### Copiando e Colando no Vim
 
-Combine operadores com movimentos para ter poder: `d}` deleta até o próximo parágrafo; `caw` altera “uma palavra” (palavra sob o cursor incluindo o espaço circundante).
+No Vim, copiar é chamado de "yanking" (operador `y`), e colar é chamado de "putting".
+
+- `yw` – Yanks (copia) uma palavra.
+- `yy` – Yanks (copia) a linha inteira atual.
+- `p` – Puts (cola) o texto copiado após o cursor ou na linha de baixo.
+- `P` – Puts (cola) o texto antes do cursor ou na linha de cima.
+
+### Outros Comandos de Edição Úteis
+
+Este guia Vim não estaria completo sem alguns outros comandos úteis.
+
+- `r{char}` – Substitui o caractere único sob o cursor pelo caractere especificado.
+- `R` – Entra no modo de Substituição, permitindo sobrescrever texto continuamente até pressionar `Esc`.
+- `J` – Junta a linha atual com a próxima.
+- `.` – Repete a última alteração que você fez, um comando muito poderoso e eficiente.
+
+Combinar operadores com diferentes movimentos desbloqueia todo o potencial deste editor de texto Linux. Por exemplo, `d}` deleta até o próximo parágrafo, e `caw` altera "uma palavra" (a palavra sob o cursor, incluindo qualquer espaço circundante).
 
 ## Exercise
 
-A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão da edição de texto no Vim:
+Para colocar seu conhecimento em prática, recomendamos o seguinte laboratório prático. Ele o ajudará a dominar os comandos de edição fundamentais discutidos neste tutorial Vim.
 
-1. **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a dominar os comandos de edição fundamentais discutidos, como deletar, alterar, copiar e colar texto.
-
-Este laboratório o ajudará a aplicar os conceitos em cenários reais e a construir confiança na edição de texto no Linux.
+1.  **[Editar Arquivos de Texto no Linux com Vim e Nano](https://labex.io/pt/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Pratique a criação de arquivos, edição de texto, salvamento de arquivos e navegação com vi/vim e nano. Este laboratório o ajudará a aplicar conceitos como deletar, alterar, yanking e putting texto em cenários reais.
 
 ## Quiz Question
 
-Qual comando deleta a linha atual no Vim?
+Qual comando deleta a linha atual no Vim? (Por favor, responda em inglês, prestando atenção à sensibilidade a maiúsculas e minúsculas).
 
 ## Quiz Answer
 

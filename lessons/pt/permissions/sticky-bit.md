@@ -1,48 +1,61 @@
 ---
 index: 8
 lang: "pt"
-title: "O Sticky Bit"
-meta_title: "O Sticky Bit - Permissões"
-meta_description: "Aprenda sobre o sticky bit do Linux, seu propósito em diretórios compartilhados como /tmp e como configurá-lo usando chmod. Entenda esta permissão de arquivo chave!"
-meta_keywords: "Linux sticky bit, chmod +t, diretório /tmp, permissões Linux, segurança de arquivo, tutorial Linux, Linux para iniciantes"
+title: "O Bit Pegajoso"
+meta_title: "O Bit Pegajoso - Permissões"
+meta_description: "Explore a finalidade do bit pegajoso nas permissões de arquivos Linux e Unix. Aprenda como o bit pegajoso protege arquivos em diretórios compartilhados como /tmp e como configurá-lo usando chmod."
+meta_keywords: "bit pegajoso, bit pegajoso linux, permissões de arquivo unix bit pegajoso, chmod +t, diretório /tmp, permissões de arquivo, segurança linux"
 ---
 
 ## Lesson Content
 
-Um último bit de permissão especial sobre o qual quero falar é o sticky bit.
+Além das permissões padrão de leitura, gravação e execução, o Linux oferece permissões especiais para controle de acesso avançado. A última dessas permissões especiais que abordaremos é o **sticky bit** (bit pegajoso).
 
-Este bit de permissão "fixa um arquivo/diretório", o que significa que apenas o proprietário ou o usuário root pode excluir ou modificar o arquivo. Isso é muito útil para diretórios compartilhados. Veja o exemplo abaixo:
+### O que é o Sticky Bit?
+
+O sticky bit é uma configuração de permissão que pode ser aplicada a um diretório. Quando o sticky bit está definido em um diretório, os arquivos dentro desse diretório só podem ser excluídos ou renomeados pelo proprietário do arquivo, pelo proprietário do diretório ou pelo usuário root. Isso é particularmente útil para diretórios compartilhados onde vários usuários precisam criar e gerenciar seus próprios arquivos sem interferir nos outros. Este conceito é uma parte fundamental do gerenciamento de **permissões de arquivo Unix sticky bit**.
+
+### Um Exemplo Prático: O Diretório /tmp
+
+Um caso de uso comum para o **sticky bit no Linux** é o diretório `/tmp`, que é um local gravável por todos para arquivos temporários. Vamos examinar suas permissões:
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwx+t 6 root root 4096 Dec 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dez 15 11:45 /tmp
 ```
 
-Você verá um bit de permissão especial no final aqui **t**. Isso significa que todos podem adicionar arquivos, gravar arquivos e modificar arquivos no diretório `/tmp`, mas apenas o root pode excluir o diretório `/tmp`.
+Note o `t` no final da string de permissão (`rwxrwxrwt`). Este `t` indica que o sticky bit está definido. Por causa disso, embora qualquer usuário possa criar arquivos em `/tmp`, eles não podem excluir ou mover arquivos criados por outros usuários. Isso impede que um usuário perturbe o trabalho de outro neste espaço compartilhado.
 
-### Modificar o sticky bit
+### Como Definir o Sticky Bit
+
+Você pode definir o sticky bit usando o comando `chmod` de duas maneiras: modo simbólico ou modo octal (numérico).
+
+Para adicionar o sticky bit usando o modo simbólico:
 
 ```bash
-sudo chmod +t mydir
-
-sudo chmod 1755 mydir
+chmod +t meu_dir_compartilhado
 ```
 
-A representação numérica para o sticky bit é **1**.
+Para definir permissões usando o modo octal, você antepõe um `1` ao código de permissão padrão de três dígitos. A representação numérica para o sticky bit é **1**.
+
+```bash
+# Isso define as permissões como rwxr-xr-x com o sticky bit
+chmod 1755 meu_dir_compartilhado
+```
+
+Compreender o sticky bit é essencial para gerenciar ambientes multiusuário e proteger diretórios compartilhados de forma eficaz.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das permissões de arquivo do Linux e seu impacto no gerenciamento de arquivos e diretórios:
+Para solidificar sua compreensão das permissões de arquivo, incluindo permissões especiais como o sticky bit, experimente estes laboratórios práticos. Eles ajudarão você a ver como esses conceitos se aplicam em cenários do mundo real.
 
-1. **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação e o gerenciamento de usuários e grupos, compreendendo as permissões de arquivo e manipulando a propriedade do arquivo. Este laboratório fornece o conhecimento fundamental para entender como funcionam as permissões especiais, como o sticky bit.
-2. **[Excluir e Mover Arquivos](https://labex.io/pt/labs/linux-delete-and-move-files-7777)** - Aprenda como excluir e mover arquivos em sistemas Linux. Este laboratório o ajudará a entender as implicações práticas das permissões, incluindo como elas podem restringir essas ações.
-3. **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Pratique a localização de arquivos e a definição de autoridade de acesso. Este laboratório reforça a importância das permissões de arquivo e como elas controlam o acesso e a modificação.
-
-Esses laboratórios o ajudarão a aplicar os conceitos de permissões de arquivo em cenários reais e a construir confiança no gerenciamento de acesso a arquivos no Linux.
+1.  **[Grupo de Usuários Linux e Permissões de Arquivo](https://labex.io/pt/labs/linux-linux-user-group-and-file-permissions-18002)** - Pratique a criação de usuários e grupos e a manipulação da propriedade e permissões de arquivos. Este laboratório fornece uma base para entender como as permissões especiais funcionam.
+2.  **[Excluir e Mover Arquivos](https://labex.io/pt/labs/linux-delete-and-move-files-7777)** - Aprenda a excluir e mover arquivos e veja como as permissões, incluindo o sticky bit em um diretório, podem restringir essas ações.
+3.  **[Encontrar um Arquivo](https://labex.io/pt/labs/linux-find-a-file-17993)** - Pratique a localização de arquivos e a definição de controles de acesso, reforçando a importância das permissões de arquivo no gerenciamento do acesso e modificação de arquivos.
 
 ## Quiz Question
 
-Qual símbolo representa o sticky bit?
+Em uma listagem longa de diretório (ls -l), qual caractere único na string de permissões representa que o sticky bit está definido? Por favor, responda com uma única letra minúscula em inglês.
 
 ## Quiz Answer
 

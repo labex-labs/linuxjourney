@@ -3,77 +3,83 @@ index: 7
 lang: "es"
 title: "Compilar Código Fuente"
 meta_title: "Compilar Código Fuente - Paquetes"
-meta_description: "Aprende a compilar código fuente en Linux usando make, configure y checkinstall. Comprende el proceso de construcción para usuarios principiantes e intermedios."
-meta_keywords: "compilar código fuente, make install, checkinstall, compilar Linux, build-essential, tutorial Linux, guía para principiantes"
+meta_description: "Aprenda a compilar desde el código fuente en Linux. Esta guía cubre los pasos esenciales sobre cómo construir código fuente usando configure, make y el comando recomendado checkinstall para una gestión de paquetes limpia."
+meta_keywords: "cómo compilar desde código fuente, cómo construir código fuente, compilar código fuente, make install, checkinstall, compilar Linux, build-essential, script configure, makefile, tutorial Linux"
 ---
 
 ## Lesson Content
 
-A menudo, te encontrarás con un paquete oscuro que solo viene en forma de código fuente puro. Necesitarás usar algunos comandos para compilar e instalar ese paquete de código fuente en tu sistema.
+Ocasionalmente, es posible que encuentres un paquete que solo está disponible como código fuente. Para usarlo, deberás compilarlo e instalarlo en tu sistema. Esta lección te guiará a través del proceso común de cómo compilar desde el código fuente.
 
-Primero lo primero, necesitarás tener software para instalar las herramientas que te permitirán compilar código fuente.
+### Preparación de su Sistema
+
+Antes de poder compilar cualquier cosa, necesitas las herramientas necesarias. En sistemas basados en Debian como Ubuntu, puedes instalarlas con un solo comando.
 
 ```bash
 sudo apt install build-essential
 ```
 
-Una vez hecho esto, extrae el contenido del archivo del paquete, muy probablemente un archivo `.tar.gz`.
+El paquete `build-essential` instala un conjunto de herramientas de desarrollo de software, incluido el compilador GCC y la utilidad `make`, que son esenciales para la compilación.
+
+Después de instalar las herramientas, extrae el contenido del paquete de código fuente, que suele ser un archivo `.tar.gz`.
 
 ```bash
-tar -xzvf package.tar.gz
+tar -xzvf paquete.tar.gz
 ```
 
-Antes de hacer cualquier cosa, echa un vistazo al archivo `README` o `INSTALL` dentro del paquete. A veces habrá instrucciones de instalación específicas.
+Antes de continuar, revisa siempre si hay un archivo `README` o `INSTALL` dentro del directorio extraído. Estos archivos a menudo contienen instrucciones específicas o dependencias requeridas para ese paquete en particular.
 
-Dependiendo del método de compilación que haya utilizado el desarrollador, tendrás que usar diferentes comandos, como `cmake` o algo más.
+### El Proceso de Compilación Estándar
 
-Sin embargo, lo más común es que veas la compilación básica con `make`, así que hablaremos de eso:
+Aunque diferentes desarrolladores pueden usar varios sistemas de compilación como `cmake`, el método más tradicional implica un proceso de tres pasos. Comprender esto es fundamental para aprender cómo construir código fuente.
 
-Dentro del contenido del paquete habrá un script `configure`. Este script verifica las dependencias en tu sistema, y si te falta algo, verás un error y tendrás que solucionar esas dependencias.
+Primero, ejecuta el script `configure`. Este script verifica tu sistema en busca de todas las dependencias y bibliotecas necesarias que el software necesita para compilarse y ejecutarse correctamente.
 
 ```bash
 ./configure
 ```
 
-El `./` te permite ejecutar un script en el directorio actual.
+El prefijo `./` le indica al shell que ejecute el script desde el directorio actual. Si el script informa de alguna dependencia faltante, debes instalarlas antes de continuar.
+
+Luego, ejecuta el comando `make`. Este comando lee un archivo llamado `Makefile` en el directorio, que contiene un conjunto de reglas sobre cómo compilar el código fuente en programas ejecutables.
 
 ```bash
 make
 ```
 
-Dentro del contenido del paquete, hay un archivo llamado `Makefile` que contiene reglas para construir el software. Cuando ejecutas el comando `make`, este busca en este archivo para construir el software.
+Finalmente, para instalar el software en tu sistema, normalmente ejecutarías:
 
 ```bash
 sudo make install
 ```
 
-Este comando realmente instala el paquete; copiará los archivos correctos a las ubicaciones correctas en tu computadora.
+Este comando copia los archivos compilados a los directorios del sistema apropiados, haciendo que el software esté disponible para su uso.
 
-Si quieres desinstalar el paquete, usa:
+### Una Mejor Forma de Instalar
 
-```bash
-sudo make uninstall
-```
+Aunque `sudo make install` funciona, tiene una desventaja significativa: no registra el software en el gestor de paquetes de tu sistema. Esto dificulta el seguimiento, la actualización o la desinstalación limpia del paquete más adelante.
 
-Ten cuidado al usar `make install`; es posible que no te des cuenta de cuánto está sucediendo realmente en segundo plano. Si decides eliminar este paquete, es posible que no elimines todo porque no te diste cuenta de lo que se agregó a tu sistema. En su lugar, olvida todo lo que te acabo de explicar sobre `make install` y usa el comando **checkinstall**. Este comando creará un archivo `.deb` para ti que puedes instalar y desinstalar fácilmente.
+Un enfoque mucho mejor es usar `checkinstall`. Esta herramienta ejecuta el proceso de instalación pero, en lugar de copiar archivos directamente, crea un paquete nativo del sistema (como un archivo `.deb` en Debian/Ubuntu) y lo instala.
 
 ```bash
 sudo checkinstall
 ```
 
-Este comando esencialmente hará un "make install" y construirá un paquete `.deb` y lo instalará. Esto facilita la eliminación del paquete más adelante.
+Usar `checkinstall` integra el software compilado en tu sistema de gestión de paquetes. Esto significa que puedes eliminarlo fácilmente más tarde usando `apt` o `dpkg`, al igual que cualquier otro paquete que hayas instalado desde los repositorios oficiales. Por esta razón, siempre debes preferir `checkinstall` sobre `make install`.
+
+Para desinstalar un paquete instalado con `make install`, tendrías que volver al directorio fuente y ejecutar `sudo make uninstall`, pero esto no siempre es fiable.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de la construcción de software desde el código fuente:
+¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de la compilación de software desde el código fuente:
 
-1. **[Construir Software desde el Código Fuente en Linux](https://labex.io/es/labs/comptia-build-software-from-source-code-in-linux-590853)** - Practica el proceso fundamental de construir e instalar software desde su código fuente, incluyendo el uso de `configure`, `make` y `make install`.
+1. **[Compilar Software desde Código Fuente en Linux](https://labex.io/es/labs/comptia-build-software-from-source-code-in-linux-590853)** - Practica el proceso fundamental de compilar e instalar software desde su código fuente, incluyendo el uso de `configure`, `make` y `make install`.
 
-Este laboratorio te ayudará a aplicar los conceptos en un escenario real y a generar confianza al compilar software.
+Este laboratorio te ayudará a aplicar los conceptos en un escenario real y a ganar confianza al compilar software.
 
 ## Quiz Question
 
-¿Qué deberías usar en lugar de `make install` SIEMPRE?
+What should you use instead of `make install` ALWAYS? (Please answer in English, paying attention to case sensitivity)
 
 ## Quiz Answer
 

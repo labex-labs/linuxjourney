@@ -3,77 +3,83 @@ index: 7
 lang: "de"
 title: "Quellcode kompilieren"
 meta_title: "Quellcode kompilieren - Pakete"
-meta_description: "Erfahren Sie, wie Sie Quellcode in Linux mit make, configure und checkinstall kompilieren. Verstehen Sie den Build-Prozess für Anfänger und fortgeschrittene Benutzer."
-meta_keywords: "Quellcode kompilieren, make install, checkinstall, Linux kompilieren, build-essential, Linux Tutorial, Anfängerleitfaden"
+meta_description: "Erfahren Sie, wie Sie Quellcode unter Linux kompilieren. Diese Anleitung behandelt die wesentlichen Schritte zum Erstellen von Quellcode mit configure, make und dem empfohlenen checkinstall-Befehl für eine saubere Paketverwaltung."
+meta_keywords: "Quellcode kompilieren, Quellcode erstellen, Quellcode kompilieren, make install, checkinstall, Linux kompilieren, build-essential, configure Skript, makefile, Linux Tutorial"
 ---
 
 ## Lesson Content
 
-Oft stößt man auf ein obskures Paket, das nur in Form von reinem Quellcode vorliegt. Sie müssen ein paar Befehle verwenden, um dieses Quellcodepaket zu kompilieren und auf Ihrem System zu installieren.
+Gelegentlich finden Sie möglicherweise ein Paket, das nur als Quellcode verfügbar ist. Um es nutzen zu können, müssen Sie es auf Ihrem System kompilieren und installieren. Diese Lektion führt Sie durch den üblichen Prozess, wie man aus Quellcode kompiliert.
 
-Zunächst benötigen Sie Software, um die Tools zu installieren, mit denen Sie Quellcode kompilieren können.
+### Vorbereitung Ihres Systems
+
+Bevor Sie etwas kompilieren können, benötigen Sie die notwendigen Werkzeuge. Auf Debian-basierten Systemen wie Ubuntu können Sie diese mit einem einzigen Befehl installieren.
 
 ```bash
 sudo apt install build-essential
 ```
 
-Danach extrahieren Sie den Inhalt der Paketdatei, höchstwahrscheinlich eine `.tar.gz`-Datei.
+Das Paket `build-essential` installiert eine Reihe von Softwareentwicklungswerkzeugen, einschließlich des GCC-Compilers und des `make`-Dienstprogramms, die für die Kompilierung unerlässlich sind.
+
+Nach der Installation der Werkzeuge entpacken Sie den Inhalt des Quellcode-Pakets, was typischerweise eine `.tar.gz`-Datei ist.
 
 ```bash
 tar -xzvf package.tar.gz
 ```
 
-Bevor Sie etwas tun, werfen Sie einen Blick auf die Datei `README` oder `INSTALL` innerhalb des Pakets. Manchmal gibt es spezifische Installationsanweisungen.
+Bevor Sie fortfahren, überprüfen Sie immer, ob sich im entpackten Verzeichnis eine `README`- oder `INSTALL`-Datei befindet. Diese Dateien enthalten oft spezifische Anweisungen oder Abhängigkeiten, die für dieses spezielle Paket erforderlich sind.
 
-Je nachdem, welche Kompilierungsmethode der Entwickler verwendet hat, müssen Sie verschiedene Befehle verwenden, wie z.B. `cmake` oder etwas anderes.
+### Der Standard-Build-Prozess
 
-Am häufigsten sehen Sie jedoch die grundlegende `make`-Kompilierung, daher werden wir diese besprechen:
+Obwohl verschiedene Entwickler unterschiedliche Build-Systeme wie `cmake` verwenden mögen, beinhaltet die traditionellste Methode einen dreistufigen Prozess. Das Verständnis davon ist grundlegend, um zu lernen, wie man Quellcode erstellt.
 
-Innerhalb des Paketinhaltes befindet sich ein `configure`-Skript. Dieses Skript überprüft die Abhängigkeiten auf Ihrem System, und wenn Ihnen etwas fehlt, wird eine Fehlermeldung angezeigt und Sie müssen diese Abhängigkeiten beheben.
+Führen Sie zuerst das `configure`-Skript aus. Dieses Skript prüft Ihr System auf alle notwendigen Abhängigkeiten und Bibliotheken, die die Software benötigt, um korrekt zu bauen und ausgeführt zu werden.
 
 ```bash
 ./configure
 ```
 
-Das `./` ermöglicht es Ihnen, ein Skript im aktuellen Verzeichnis auszuführen.
+Das Präfix `./` weist die Shell an, das Skript aus dem aktuellen Verzeichnis auszuführen. Wenn das Skript fehlende Abhängigkeiten meldet, müssen Sie diese installieren, bevor Sie fortfahren.
+
+Als Nächstes führen Sie den Befehl `make` aus. Dieser Befehl liest eine Datei namens `Makefile` im Verzeichnis, die eine Reihe von Regeln enthält, wie der Quellcode in ausführbare Programme kompiliert wird.
 
 ```bash
 make
 ```
 
-Innerhalb des Paketinhaltes befindet sich eine Datei namens `Makefile`, die Regeln zum Erstellen der Software enthält. Wenn Sie den Befehl `make` ausführen, schaut er in diese Datei, um die Software zu erstellen.
+Schließlich, um die Software auf Ihrem System zu installieren, würden Sie typischerweise ausführen:
 
 ```bash
 sudo make install
 ```
 
-Dieser Befehl installiert das Paket tatsächlich; er kopiert die richtigen Dateien an die richtigen Stellen auf Ihrem Computer.
+Dieser Befehl kopiert die kompilierten Dateien in die entsprechenden Systemverzeichnisse und macht die Software zur Nutzung verfügbar.
 
-Wenn Sie das Paket deinstallieren möchten, verwenden Sie:
+### Ein besserer Weg zur Installation
 
-```bash
-sudo make uninstall
-```
+Obwohl `sudo make install` funktioniert, hat es einen erheblichen Nachteil: Es registriert die Software nicht beim Paketmanager Ihres Systems. Dies erschwert das Nachverfolgen, Aktualisieren oder saubere Deinstallieren des Pakets zu einem späteren Zeitpunkt.
 
-Seien Sie vorsichtig bei der Verwendung von `make install`; Sie merken vielleicht nicht, wie viel tatsächlich im Hintergrund passiert. Wenn Sie sich entscheiden, dieses Paket zu entfernen, entfernen Sie möglicherweise nicht alles, weil Sie nicht wussten, was Ihrem System hinzugefügt wurde. Vergessen Sie stattdessen alles über `make install`, was ich Ihnen gerade erklärt habe, und verwenden Sie den Befehl **checkinstall**. Dieser Befehl erstellt eine `.deb`-Datei für Sie, die Sie einfach installieren und deinstallieren können.
+Ablösung ist die Verwendung von `checkinstall`. Dieses Werkzeug führt den Installationsprozess aus, aber anstatt Dateien direkt zu kopieren, erstellt es ein natives Systempaket (wie eine `.deb`-Datei unter Debian/Ubuntu) und installiert dieses.
 
 ```bash
 sudo checkinstall
 ```
 
-Dieser Befehl wird im Wesentlichen "make install" ausführen und ein `.deb`-Paket erstellen und installieren. Dies erleichtert das spätere Entfernen des Pakets.
+Die Verwendung von `checkinstall` integriert die kompilierte Software in Ihr Paketverwaltungssystem. Das bedeutet, Sie können sie später einfach mit `apt` oder `dpkg` entfernen, genau wie jedes andere Paket, das Sie aus den offiziellen Repositories installiert haben. Aus diesem Grund sollten Sie `checkinstall` immer `make install` vorziehen.
+
+Um ein mit `make install` installiertes Paket zu deinstallieren, müssten Sie zurück in das Quellverzeichnis navigieren und `sudo make uninstall` ausführen, aber dies ist nicht immer zuverlässig.
 
 ## Exercise
 
-Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis des Erstellens von Software aus dem Quellcode zu vertiefen:
+Übung macht den Meister! Hier ist ein praktisches Labor, um Ihr Verständnis für das Erstellen von Software aus dem Quellcode zu festigen:
 
 1. **[Software aus Quellcode in Linux erstellen](https://labex.io/de/labs/comptia-build-software-from-source-code-in-linux-590853)** - Üben Sie den grundlegenden Prozess des Erstellens und Installierens von Software aus ihrem Quellcode, einschließlich der Verwendung von `configure`, `make` und `make install`.
 
-Dieses Labor wird Ihnen helfen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen beim Kompilieren von Software aufzubauen.
+Dieses Labor hilft Ihnen, die Konzepte in einem realen Szenario anzuwenden und Vertrauen beim Kompilieren von Software aufzubauen.
 
 ## Quiz Question
 
-Was sollten Sie IMMER anstelle von `make install` verwenden?
+Was sollten Sie IMMER anstelle von `make install` verwenden? (Bitte antworten Sie auf Englisch, achten Sie auf die Groß-/Kleinschreibung).
 
 ## Quiz Answer
 

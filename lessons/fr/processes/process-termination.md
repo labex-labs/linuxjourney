@@ -1,35 +1,46 @@
 ---
 index: 5
 lang: "fr"
-title: "Terminaison de processus"
-meta_title: "Terminaison de processus - Processus"
-meta_description: "Découvrez la terminaison des processus Linux, y compris les processus orphelins et zombies. Comprenez les appels système _exit et wait pour une gestion efficace des processus."
-meta_keywords: "terminaison de processus Linux, processus zombies, processus orphelins, appel système wait, _exit, tutoriel Linux, Linux pour débutants"
+title: "Terminaison de Processus"
+meta_title: "Terminaison de Processus - Processus"
+meta_description: "Explorez la terminaison des processus Linux, l'appel système wait, et les différences clés dans le débat processus zombie vs orphelin. Apprenez à gérer les états des processus enfants Linux pour un système stable."
+meta_keywords: "Terminaison processus Linux, processus zombie, processus orphelin, zombie vs orphelin, tuer processus enfant linux, appel système wait, _exit, gestion des processus"
 ---
 
 ## Lesson Content
 
-Maintenant que nous savons ce qui se passe lorsqu'un processus est créé, que se passe-t-il lorsque nous n'en avons plus besoin ? Soyez prévenus, parfois Linux peut devenir un peu sombre...
+### Le Processus de Terminaison
 
-Un processus peut se terminer en utilisant l'appel système `_exit`. Cela libérera les ressources que ce processus utilisait pour une nouvelle allocation. Ainsi, lorsqu'un processus est prêt à se terminer, il informe le noyau de la raison de sa terminaison avec ce qu'on appelle un statut de terminaison. Le plus souvent, un statut de 0 signifie que le processus a réussi. Cependant, ce n'est pas suffisant pour terminer complètement un processus. Le processus parent doit accuser réception de la terminaison du processus enfant en utilisant l'appel système `wait`, et ce que cela fait, c'est qu'il vérifie le statut de terminaison du processus enfant. Je sais que c'est horrible d'y penser, mais l'appel `wait` est une nécessité ; après tout, quel parent ne voudrait pas savoir comment son enfant est mort ?
+Une fois qu'un processus est créé, comment se termine-t-il ? La terminaison d'un processus est une partie essentielle du cycle de vie du processus, garantissant que les ressources système sont gérées efficacement.
 
-Il existe une autre façon de terminer un processus, et cela implique l'utilisation de signaux, dont nous discuterons bientôt.
+Un processus se termine généralement en appelant l'appel système `_exit`. Cette action signale au noyau que le processus est terminé et que ses ressources, telles que la mémoire et les descripteurs de fichiers, peuvent être récupérées. Lors de la sortie, le processus fournit un statut de terminaison au noyau, qui est une valeur entière. Par convention, un statut de 0 indique une exécution réussie, tandis qu'une valeur non nulle signale une erreur.
 
-### Processus orphelins
+Cependant, appeler `_exit` n'efface pas immédiatement le processus. Le processus parent doit accuser réception de la terminaison de son enfant en utilisant l'appel système `wait`. Cet appel permet au parent de récupérer le statut de terminaison de l'enfant. Ce mécanisme en deux étapes est essentiel pour un nettoyage correct du processus. Une autre façon de `linux kill child process` (tuer un processus enfant sous Linux) est d'utiliser des signaux, un sujet que nous explorerons dans une leçon ultérieure.
 
-Lorsqu'un processus parent meurt avant un processus enfant, le noyau sait qu'il ne recevra pas d'appel `wait`, alors il rend ces processus "orphelins" et les place sous la garde de `init` (rappelez-vous, la mère de tous les processus). `init` effectuera éventuellement l'appel système `wait` pour ces orphelins afin qu'ils puissent mourir.
+### Processus Orphelins
 
-### Processus zombies
+Que se passe-t-il si un processus parent se termine avant son enfant ? L'enfant devient un processus "orphelin". Puisque son parent d'origine ne peut plus appeler `wait`, le noyau intervient. Le processus orphelin est immédiatement adopté par un processus système spécial, généralement `init` (ID de processus 1), qui est considéré comme l'ancêtre de tous les processus. Le processus `init` assume alors le rôle de parent, appelant périodiquement `wait` pour collecter le statut de terminaison de tous ses enfants adoptés, leur permettant de se terminer proprement.
 
-Que se passe-t-il lorsqu'un enfant se termine et que le processus parent n'a pas encore appelé `wait` ? Nous voulons toujours pouvoir voir comment un processus enfant s'est terminé, donc même si le processus enfant est terminé, le noyau transforme le processus enfant en processus zombie. Les ressources utilisées par le processus enfant sont toujours libérées pour d'autres processus ; cependant, il y a toujours une entrée dans la table des processus pour ce zombie. Les processus zombies ne peuvent pas non plus être tués, car ils sont techniquement "morts", vous ne pouvez donc pas utiliser de signaux pour les tuer. Finalement, si le processus parent appelle l'appel système `wait`, le zombie disparaîtra ; c'est ce qu'on appelle le "reaping". Si le parent n'effectue pas d'appel `wait`, `init` adoptera le zombie et effectuera automatiquement `wait` et supprimera le zombie. Il peut être mauvais d'avoir trop de processus zombies, car ils occupent de l'espace dans la table des processus ; si elle se remplit, cela empêchera d'autres processus de s'exécuter.
+### Processus Zombies
+
+Un scénario différent se produit lorsqu'un processus enfant se termine, mais que son parent n'a pas encore appelé `wait`. Dans cet état, l'enfant devient un processus "zombie". Le noyau libère la plupart des ressources du zombie, mais il conserve une entrée dans la table des processus. Cette entrée contient l'ID du processus et le statut de terminaison, attendant que le parent le récupère.
+
+Les processus zombies sont déjà morts, ils ne consomment donc pas de temps CPU. Vous ne pouvez pas les tuer avec des signaux car ils ne sont pas en cours d'exécution. Le processus par lequel le parent appelle `wait` pour nettoyer un zombie est appelé "récolte" (reaping). Si le processus parent se termine également, `init` adoptera et récoltera le zombie.
+
+### Processus Zombie vs Orphelin
+
+Comprendre la différence entre un `zombie vs orphan process` (processus zombie contre processus orphelin) est essentiel pour diagnostiquer les problèmes liés aux processus.
+
+- Un **processus orphelin** est un processus actif, en cours d'exécution, dont le parent est décédé. Il est adopté par `init` et continue de s'exécuter jusqu'à sa fin.
+- Un **processus zombie** est un processus mort qui a terminé son exécution mais qui possède toujours une entrée dans la table des processus. Il attend que son processus parent lise son statut de sortie.
+
+En bref, un orphelin est vivant mais sans parent, tandis qu'un zombie est mort mais pas encore entièrement récolté par son parent.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de leur gestion :
+Pour appliquer ces concepts, essayez le laboratoire pratique suivant :
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice` et à les terminer avec `kill`. Ce laboratoire vous donnera une expérience pratique du cycle de vie des processus, y compris comment les terminer.
-
-Ce laboratoire vous aidera à appliquer les concepts de gestion et de terminaison des processus dans des scénarios réels et à renforcer votre confiance en l'administration des systèmes Linux.
+1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, à ajuster la priorité avec `renice`, et à les terminer avec `kill`. Ce laboratoire offre une expérience pratique du cycle de vie des processus, y compris comment les terminer et observer leurs états.
 
 ## Quiz Question
 

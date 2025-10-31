@@ -2,14 +2,14 @@
 index: 12
 lang: "de"
 title: "Symlinks"
-meta_title: "Symlinks - Das Dateisystem"
-meta_description: "Erfahren Sie mehr über Linux-Symlinks und Hardlinks, einschließlich deren Erstellung und Verwaltung. Verstehen Sie ihre Unterschiede und Anwendungsfälle mit diesem anfängerfreundlichen Leitfaden."
-meta_keywords: "Linux Symlinks, Hardlinks, ln Befehl, symbolische Links, Linux Dateisystem, Linux Tutorial, Linux für Anfänger"
+meta_title: "Symlinks – Das Dateisystem"
+meta_description: "Erkunden Sie Linux-Symlinks (symbolische Links) und Hardlinks. Erfahren Sie, wie Sie diese mit dem ln-Befehl erstellen, die Link-Anzahl in Linux mit ls überprüfen und den Unterschied verstehen, wenn Sie die Ausgabe von Symlinks und Hardlinks anzeigen."
+meta_keywords: "Linux Symlinks, Hardlinks, ln Befehl, symbolische Links, ls Symlink, Link-Anzahl in Linux, ls Symlinks, ls Links, Linux Dateisystem, Linux Tutorial"
 ---
 
 ## Lesson Content
 
-Lassen Sie uns ein früheres Beispiel für Inode-Informationen verwenden:
+Wenn Sie Dateien im Detail auflisten, sehen Sie viele Informationen. Betrachten wir ein früheres Beispiel von Inode-Informationen aus dem Befehl `ls -li`:
 
 ```plaintext
 pete@icebox:~$ ls -li
@@ -17,11 +17,17 @@ pete@icebox:~$ ls -li
 141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
 ```
 
-Sie haben vielleicht bemerkt, dass wir das dritte Feld im `ls`-Befehl übersehen haben; dieses Feld ist die Link-Anzahl. Die Link-Anzahl ist die Gesamtzahl der Hardlinks, die eine Datei hat. Nun, das bedeutet Ihnen im Moment nichts, also lassen Sie uns zuerst Links besprechen.
+Wir sind zuvor über das dritte Feld in dieser Ausgabe hinweggegangen. Dieses Feld ist die Link-Anzahl.
 
-### Symlinks
+### Die Link-Anzahl in Linux
 
-Im Windows-Betriebssystem gibt es sogenannte Verknüpfungen. Verknüpfungen sind lediglich Aliase zu anderen Dateien. Wenn Sie etwas mit der Originaldatei tun, könnten Sie die Verknüpfung möglicherweise beschädigen. In Linux sind die Entsprechungen von Verknüpfungen symbolische Links (oder Softlinks oder Symlinks). Symlinks ermöglichen es uns, auf eine andere Datei über ihren Dateinamen zu verweisen. Eine andere Art von Link, die in Linux gefunden wird, sind Hardlinks; dies sind tatsächlich andere Dateien mit einem Link zu einem Inode. Lassen Sie uns sehen, was ich in der Praxis meine, beginnend mit Symlinks.
+Die **Link-Anzahl in Linux** ist die Gesamtzahl der Hardlinks, die eine Datei besitzt. Um zu verstehen, was das bedeutet, müssen wir zuerst besprechen, was Links sind. In Linux gibt es zwei Arten von Links: symbolische Links (Symlinks) und Hardlinks.
+
+### Symlinks verstehen
+
+Im Windows-Betriebssystem gibt es Verknüpfungen (Shortcuts), die im Wesentlichen Aliase sind, die auf andere Dateien zeigen. In Linux ist das Äquivalent ein symbolischer Link, auch bekannt als Softlink oder **Symlink**. Ein Symlink ist ein spezieller Dateityp, der über seinen Namen auf eine andere Datei oder ein anderes Verzeichnis zeigt.
+
+Sehen wir uns das in der Praxis an. Wir erstellen einige Dateien und dann einen Symlink.
 
 ```bash
 pete@icebox:~/Desktop$ echo 'myfile' > myfile
@@ -37,11 +43,13 @@ total 12
 93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
 ```
 
-Sie können sehen, dass ich einen symbolischen Link namens `myfilelink` erstellt habe, der auf `myfile` zeigt. Symbolische Links werden durch `->` gekennzeichnet. Beachten Sie jedoch, dass ich eine neue Inode-Nummer erhalten habe; Symlinks sind nur Dateien, die auf Dateinamen zeigen. Wenn Sie einen Symlink ändern, wird auch die Datei geändert. Inode-Nummern sind für Dateisysteme einzigartig; Sie können nicht zwei gleiche Inode-Nummern in einem einzigen Dateisystem haben, was bedeutet, dass Sie eine Datei in einem anderen Dateisystem nicht über ihre Inode-Nummer referenzieren können. Wenn Sie jedoch Symlinks verwenden, verwenden diese keine Inode-Nummern; sie verwenden Dateinamen, sodass sie über verschiedene Dateisysteme hinweg referenziert werden können.
+Hier haben wir einen symbolischen Link namens `myfilelink` erstellt, der auf `myfile` zeigt. Wenn Sie `ls` verwenden, um einen `ls symlink` anzuzeigen, wird er durch das `l` am Anfang der Berechtigungszeichenfolge und das `->`-Symbol, das auf das Ziel zeigt, deutlich gekennzeichnet. Beachten Sie, dass der Symlink seine eigene eindeutige Inode-Nummer (93403) hat. Da Symlinks auf Dateinamen und nicht auf Inodes zeigen, können sie verschiedene Dateisysteme überspannen.
 
-### Hardlinks
+### Hardlinks verstehen
 
-Sehen wir uns ein Beispiel für einen Hardlink an:
+Die andere Art von Link ist ein Hardlink. Ein Hardlink erstellt einen weiteren Dateieintrag, der direkt auf denselben Inode wie die Originaldatei zeigt.
+
+Erstellen wir einen Hardlink für `myfile2`:
 
 ```bash
 pete@icebox:~/Desktop$ ln myfile2 myhardlink
@@ -54,36 +62,38 @@ total 16
 93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
 ```
 
-Ein Hardlink erstellt einfach eine weitere Datei mit einem Link zum selben Inode. Wenn ich also den Inhalt von `myfile2` oder `myhardlink` ändern würde, wäre die Änderung auf beiden sichtbar. Aber wenn ich `myfile2` löschen würde, wäre die Datei immer noch über `myhardlink` zugänglich. Hier kommt unsere Link-Anzahl im `ls`-Befehl ins Spiel. Die Link-Anzahl ist die Anzahl der Hardlinks, die ein Inode hat. Wenn Sie eine Datei entfernen, verringert sich diese Link-Anzahl. Der Inode wird nur gelöscht, wenn alle Hardlinks zum Inode gelöscht wurden. Wenn Sie eine Datei erstellen, ist ihre Link-Anzahl 1, da sie die einzige Datei ist, die auf diesen Inode zeigt. Im Gegensatz zu Symlinks erstrecken sich Hardlinks nicht über Dateisysteme, da Inodes für das Dateisystem einzigartig sind.
+Beachten Sie, dass `myhardlink` exakt dieselbe Inode-Nummer (93401) wie `myfile2` teilt. Auch die Link-Anzahl für beide Dateien ist auf 2 gestiegen. Das liegt daran, dass nun zwei Dateieinträge auf denselben Inode zeigen. Wenn Sie den Inhalt von `myfile2` ändern, werden die Änderungen in `myhardlink` widergespiegelt, und umgekehrt. Wenn Sie `myfile2` löschen, sind die Daten der Datei immer noch über `myhardlink` zugänglich. Der Inode und seine Daten werden erst dann von der Festplatte entfernt, wenn die Link-Anzahl auf Null sinkt. Da Hardlinks auf Inodes zeigen, die innerhalb eines einzigen Dateisystems eindeutig sind, können sie keine verschiedenen Dateisysteme überspannen.
 
-### Erstellen eines Symlinks
+### Erstellen von Symlinks und Hardlinks
 
-```bash
-ln -s myfile mylink
-```
+You können beide Arten von Links mit dem Befehl `ln` erstellen. Die Syntax ist unkompliziert.
 
-Um einen symbolischen Link zu erstellen, verwenden Sie den Befehl `ln` mit `-s` für symbolisch, und Sie geben eine Zieldatei und dann einen Linknamen an.
-
-### Erstellen eines Hardlinks
+Um einen symbolischen Link zu erstellen, verwenden Sie das Flag `-s`:
 
 ```bash
-ln somefile somelink
+ln -s /pfad/zum/original /pfad/zum/link
 ```
 
-Ähnlich wie bei der Symlink-Erstellung, nur dass Sie diesmal das `-s` weglassen.
+Um einen Hardlink zu erstellen, lassen Sie das Flag `-s` weg:
+
+```bash
+ln /pfad/zum/original /pfad/zum/link
+```
+
+Die Verwendung der Befehle `ls symlinks` oder allgemeiner `ls links` mit der Option `-l` ist für die Verwaltung und Identifizierung dieser verschiedenen Dateitypen unerlässlich.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Dateiverwaltung, Links und Inodes zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Dateiverwaltung, Links und Inodes zu festigen:
 
-1. **[Dateien und Verzeichnisse in Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** – Üben Sie das Erstellen, Kopieren, Verschieben und Entfernen von Dateien und Verzeichnissen und lernen Sie speziell symbolische und Hardlinks sowie die Analyse von Inodes kennen.
-2. **[Dateisystem in Linux navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** – Beherrschen Sie grundlegende Befehle wie `pwd`, `cd` und `ls`, um sich effizient durch das Linux-Dateisystem zu bewegen, eine grundlegende Fähigkeit, um zu verstehen, wo sich Dateien und ihre Inodes befinden.
+1.  **[Dateien und Verzeichnisse unter Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** – Üben Sie das Erstellen, Kopieren, Verschieben und Entfernen von Dateien und Verzeichnissen und lernen Sie speziell symbolische und Hardlinks kennen und wie man Inodes analysiert.
+2.  **[Im Dateisystem unter Linux navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** – Meistern Sie wesentliche Befehle wie `pwd`, `cd` und `ls`, um sich effizient durch das Linux-Dateisystem zu bewegen, eine grundlegende Fähigkeit, um zu verstehen, wo sich Dateien und ihre Inodes befinden.
 
 Diese Labs helfen Ihnen, die Konzepte der Dateiverwaltung und Links in realen Szenarien anzuwenden und Vertrauen in das Linux-Dateisystem aufzubauen.
 
 ## Quiz Question
 
-Welcher Befehl wird verwendet, um einen Symlink zu erstellen?
+Was ist der Befehl und seine primäre Option, die zum Erstellen eines Symlinks verwendet werden? Ihre Antwort muss auf Englisch sein und ist groß-/kleingeschrieben. Bitte fügen Sie das Leerzeichen zwischen dem Befehl und der Option ein.
 
 ## Quiz Answer
 

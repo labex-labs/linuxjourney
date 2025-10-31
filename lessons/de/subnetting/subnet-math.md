@@ -3,32 +3,50 @@ index: 3
 lang: "de"
 title: "Subnetz-Mathematik"
 meta_title: "Subnetz-Mathematik - Subnetting"
-meta_description: "Lernen Sie die Grundlagen der Subnetz-Mathematik und wie Sie verfügbare Hosts in einem Netzwerk berechnen. Verstehen Sie IP-Adressierung und Subnetzmasken für Anfänger. Beginnen Sie Ihre Linux-Reise!"
-meta_keywords: "Subnetz-Mathematik, IP-Adresse, Subnetzmaske, Netzwerk-Hosts, Binär, Linux-Netzwerk, Anfänger-Tutorial, Leitfaden"
+meta_description: "Meistern Sie die Grundlagen der Subnetz-Mathematik. Diese Anleitung erklärt, wie man Subnetzmasken-Berechnungen durchführt, um die Anzahl der verfügbaren Hosts in Ihrem Netzwerk zu ermitteln. Lernen Sie wesentliche IP-Adressierungs- und Binärkonzepte für Linux-Netzwerke."
+meta_keywords: "Subnetz-Mathematik, Subnetzmasken-Berechnung, IP-Adresse, Subnetzmaske, Netzwerk-Hosts, Binär, Linux-Netzwerke, Host-Berechnung, Anfänger-Tutorial"
 ---
 
 ## Lesson Content
 
-Okay, wir wissen, dass Subnetzmasken wichtig sind, um herauszufinden, wie viele Hosts wir in unserem Subnetz haben können. Wie viele Hosts wären das also?
+Um die Anzahl der Hosts zu bestimmen, die ein Subnetz unterstützen kann, müssen Sie einige Grundlagen der **Subnetz-Mathematik** verstehen. Die Subnetzmaske ist der Schlüssel zu dieser Berechnung.
 
-Nehmen wir an, ich habe eine IP-Adresse von **192.168.1.0** und eine Subnetzmaske von **255.255.255.0**. Nun, lassen Sie uns diese Zahlen in binärer Form anordnen. Verwenden Sie vorerst einen Online-Rechner, um diese Werte von dezimal in binär umzuwandeln.
+### Die Rolle der Subnetzmaske
+
+Nehmen wir eine IP-Adresse von **192.168.1.0** mit einer Subnetzmaske von **255.255.255.0**.
+Die Hauptfunktion der Subnetzmaske besteht darin, den Netzwerkanteil der Adresse vom Hostanteil zu unterscheiden.
+
+Um zu sehen, wie dies funktioniert, können wir diese Werte in ihre binäre Form umwandeln.
 
 ```
 192.168.1.165  = 11000000.10101000.00000001.10100101
 255.255.255.0  = 11111111.11111111.11111111.00000000
 ```
 
-Die IP-Adresse wird durch unsere Subnetzmaske maskiert. Wenn Sie eine 1 sehen, ist sie maskiert, und wir tun so, als würden wir sie nicht sehen. Die einzigen möglichen Hosts, die wir haben können, stammen also aus dem Bereich `00000000`. Denken Sie daran, `11111111` in binärer Form entspricht 255. Wir berücksichtigen auch 0 als Hostnummer, so dass es 256 mögliche Optionen gibt. Es mag jedoch so aussehen, als hätten wir 256 mögliche Optionen, aber wir subtrahieren tatsächlich 2 Hosts, da wir die Broadcast-Adresse und die Subnetzadresse berücksichtigen müssen, so dass uns 254 mögliche Hosts in unserem Subnetz bleiben. Wir wissen also, dass wir Hosts mit IP-Adressen im Bereich von 192.168.1.1 - 192.168.1.254 haben können.
+### Durchführung der Subnetzmasken-Mathematik
+
+In der obigen binären Darstellung entsprechen die `1`en in der Subnetzmaske dem Netzwerkanteil der IP-Adresse. Dieser Teil ist "maskiert" oder fest. Die `0`en in der Subnetzmaske entsprechen dem Hostanteil, der den Adressbereich darstellt, den Sie Geräten zuweisen können.
+
+In unserem Beispiel ist der Hostanteil `00000000`. Dies ist ein 8-Bit-Feld, und mit 8 Bits können Sie 2^8 oder 256 eindeutige Kombinationen erstellen (von 0 bis 255).
+
+### Berechnung der verfügbaren Hosts
+
+Obwohl es 256 mögliche Kombinationen gibt, können nicht alle Geräten zugewiesen werden. In jedem Subnetz sind zwei Adressen reserviert:
+
+1.  **Netzwerkadresse:** Die erste Adresse, bei der alle Host-Bits `0` sind (z. B. 192.168.1.0).
+2.  **Broadcast-Adresse:** Die letzte Adresse, bei der alle Host-Bits `1` sind (z. B. 192.168.1.255).
+
+Daher beträgt die tatsächliche Anzahl nutzbarer Hosts 256 - 2 = 254. Das bedeutet, für das Netzwerk `192.168.1.0` mit der Maske `255.255.255.0` können Sie IP-Adressen von `192.168.1.1` bis `192.168.1.254` zuweisen. Diese Kernberechnung ist ein grundlegender Bestandteil der **Subnetz-Mathematik**.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von IP-Adressierung und Subnetting zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von IP-Adressierung und Subnetting zu festigen:
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, wesentliche Fähigkeiten für die Netzwerkkonfiguration und -planung.
-2. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Vertiefen Sie Ihr Verständnis verschiedener IP-Adresstypen und wie Sie die Netzwerkerreichbarkeit mit Linux-Befehlen überprüfen können.
-3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Wenden Sie Ihr Wissen an, indem Sie Netzwerkkonfigurationen simulieren und die Konnektivität zwischen verschiedenen IP-Subnetzen in einer praktischen Umgebung testen.
+1.  **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, wesentliche Fähigkeiten für die Netzwerkkonfiguration und -planung.
+2.  **[IP-Adresstypen und Erreichbarkeit unter Linux untersuchen](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Vertiefen Sie Ihr Verständnis verschiedener IP-Adresstypen und wie Sie die Netzwerkerreichbarkeit mithilfe von Linux-Befehlen überprüfen.
+3.  **[Konnektivität auf der Netzwerkebene in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Wenden Sie Ihr Wissen an, indem Sie Netzwerkkonfigurationen simulieren und die Konnektivität zwischen verschiedenen IP-Subnetzen in einer praktischen Umgebung testen.
 
-Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung, Subnetzmasken und Host-Berechnung in realen Szenarien anzuwenden und Vertrauen in die Netzwerk-Grundlagen aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte von IP-Adressierung, Subnetzmasken und Host-Berechnung in realen Szenarien anzuwenden und Selbstvertrauen in die Netzwerk-Grundlagen aufzubauen.
 
 ## Quiz Question
 

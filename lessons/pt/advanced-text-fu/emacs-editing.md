@@ -2,47 +2,51 @@
 index: 12
 lang: "pt"
 title: "Edição Emacs"
-meta_title: "Edição Emacs - Text-Fu Avançado"
-meta_description: "Aprenda os conceitos básicos de edição do Emacs: navegue pelo texto, corte e cole com eficiência. Este guia para iniciantes ajuda você a dominar os comandos essenciais do Emacs para Linux."
-meta_keywords: "Emacs, tutorial Emacs, comandos Emacs, editor de texto, editor Linux, navegação Emacs, Emacs para iniciantes, guia Emacs"
+meta_title: "Edição Emacs - Domínio Avançado de Texto"
+meta_description: "Domine os fundamentos da edição Emacs com este guia para iniciantes. Aprenda comandos essenciais do Emacs para navegação, corte e colagem de texto neste poderoso editor de texto Linux."
+meta_keywords: "Emacs, tutorial Emacs, comandos Emacs, editor de texto, editor Linux, navegação Emacs, Emacs iniciante, guia Emacs"
 ---
 
 ## Lesson Content
 
-### Navegação de Texto
+Emacs é um editor de texto poderoso e extensível, amplamente utilizado em sistemas Linux e outros sistemas do tipo Unix. Este guia introdutório ao Emacs apresentará alguns comandos de edição fundamentais. Na terminologia do Emacs, `C-` refere-se à tecla `Ctrl`, e `M-` refere-se à tecla `Meta`, que geralmente é a tecla `Alt`.
+
+### Navegação de Texto no Emacs
+
+Embora as teclas de navegação padrão como Início, Fim e as setas funcionem como esperado, o Emacs oferece comandos mais eficientes para se mover pelo seu texto, que o Emacs armazena em um "buffer". Dominar a navegação no Emacs é um passo fundamental para se tornar proficiente.
+
+Aqui estão alguns comandos essenciais do Emacs para mover o cursor:
 
 ```
-C-up arrow: move up one paragraph
-C-down arrow: move down one paragraph
-C-left arrow: move one word left
-C-right arrow: move one word right
-M->: move to the end of the buffer
+C-seta para cima: mover um parágrafo para cima
+C-seta para baixo: mover um parágrafo para baixo
+C-seta para a esquerda: mover uma palavra para a esquerda
+C-seta para a direita: mover uma palavra para a direita
+M->: mover para o final do buffer
 ```
-
-Com a navegação de texto, seus botões de texto regulares funcionam como deveriam: Home, End, Page Up, Page Down e as teclas de seta, etc.
 
 ### Cortar e Colar
 
-Para cortar (kill) ou colar (yank) no Emacs, você precisará ser capaz de selecionar texto primeiro. Para selecionar texto, mova o cursor para onde deseja cortar ou colar e pressione `C-space key`. Em seguida, você pode usar as teclas de navegação para selecionar o texto desejado. Agora você pode cortar e colar da seguinte forma:
+No Emacs, cortar é chamado de "killing" (matar) e colar é chamado de "yanking" (arrancar). Para realizar essas ações, você primeiro precisa selecionar uma região de texto.
+
+Para começar a selecionar texto, mova o cursor para o início da região desejada e pressione `C-espaço`. Isso define a "mark" (marca). Em seguida, use quaisquer comandos de navegação para mover o cursor para o final da região que deseja selecionar. A área entre a marca e a posição atual do cursor será destacada.
+
+Depois de selecionar uma região, você pode usar os seguintes comandos:
 
 ```
-C-w: cut
-C-y: yank
+C-w: matar (cortar) a região selecionada
+C-y: arrancar (colar) o último texto morto
 ```
+
+Estes comandos básicos formam a base da edição no editor de texto Emacs.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de usuários e grupos Linux:
-
-1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e segurança de novas contas até a modificação e exclusão delas.
-2. **[Gerenciar Grupos Linux com groupadd, usermod e groupdel](https://labex.io/pt/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Ganhe experiência prática com utilitários de linha de comando essenciais para a administração de grupos, incluindo a criação de novos grupos, a modificação de associações de usuários e a remoção de grupos.
-3. **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo para aumentar a segurança de um sistema Linux, incluindo a aplicação de políticas de senha e a concessão de permissões administrativas.
-
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com o gerenciamento de usuários e grupos no Linux.
+A melhor maneira de aprender os comandos do Emacs é através da prática. Abra um novo arquivo de texto usando `emacs meu_arquivo_de_pratica.txt` e experimente os comandos de navegação, seleção, corte e colagem abordados nesta lição. Sinta-se à vontade para se mover pelo buffer e manipular o texto.
 
 ## Quiz Question
 
-Como você se move para o final do buffer?
+Como você se move para o final do buffer? Por favor, responda usando apenas o formato de combinação de teclas mostrado na lição (ex: C-w). A resposta diferencia maiúsculas de minúsculas.
 
 ## Quiz Answer
 

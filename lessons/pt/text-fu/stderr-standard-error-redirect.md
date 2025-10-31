@@ -3,67 +3,94 @@ index: 3
 lang: "pt"
 title: "stderr (Erro Padrão)"
 meta_title: "stderr (Erro Padrão) - Text-Fu"
-meta_description: "Aprenda sobre o redirecionamento de stderr (erro padrão) no Linux. Entenda 2>, 2>&1, &> e /dev/null para tratamento de erros no Bash. Melhore suas habilidades na linha de comando Linux!"
-meta_keywords: "Linux stderr, erro padrão, redirecionamento 2>, 2>&1, redirecionamento &>, /dev/null, tratamento de erros Bash, tutorial Linux, Linux para iniciantes"
+meta_description: "Aprenda a gerenciar o erro padrão no Linux. Este guia aborda o redirecionamento de stderr, o descritor de arquivo stderr (2) e como redirecionar stderr para um arquivo ou /dev/null usando 2>, 2>&1 e &>."
+meta_keywords: "stderr, erro padrão linux, descritor de arquivo stderr, arquivo stderr, erro padrão linux, redirecionar stderr, 2>, 2>&1, &>, /dev/null, tratamento de erro bash"
 ---
 
 ## Lesson Content
 
-Vamos tentar algo um pouco diferente agora. Vamos tentar listar o conteúdo de um diretório que não existe no seu sistema e redirecionar a saída para o arquivo `peanuts.txt` novamente.
+Vamos explorar o que acontece quando um comando produz um erro. Tente listar o conteúdo de um diretório que não existe e redirecionar a saída para um arquivo chamado `peanuts.txt`.
 
 ```bash
 ls /fake/directory > peanuts.txt
 ```
 
-O que você deve ver é:
+Em vez de um prompt limpo, você verá uma mensagem de erro na sua tela:
 
 ```plaintext
 ls: cannot access /fake/directory: No such file or directory
 ```
 
-Agora você provavelmente está pensando, essa mensagem não deveria ter sido enviada para o arquivo? Na verdade, há outro fluxo de E/S em jogo aqui, chamado erro padrão (stderr). Por padrão, o stderr também envia sua saída para a tela; é um fluxo completamente diferente do stdout. Então você precisará redirecionar sua saída de uma maneira diferente.
+Você pode estar se perguntando por que essa mensagem não foi enviada para o arquivo. Isso ocorre porque outro fluxo de E/S está em jogo: **erro padrão**, ou **stderr**.
 
-Infelizmente, o redirecionador não é tão agradável quanto usar `<` ou `>`, mas é bem parecido. Teremos que usar descritores de arquivo. Um descritor de arquivo é um número não negativo usado para acessar um arquivo ou fluxo. Abordaremos isso em profundidade mais tarde, mas por enquanto saiba que o descritor de arquivo para stdin, stdout e stderr é 0, 1 e 2, respectivamente.
+### O que é Erro Padrão no Linux?
 
-Então, agora, se quisermos redirecionar nosso stderr para o arquivo, podemos fazer isso:
+No Linux, `stderr` é um fluxo de saída padrão usado por programas para enviar mensagens de erro e diagnósticos. Ele é completamente separado do fluxo de saída padrão (`stdout`), que é usado para a saída normal do programa. Por padrão, tanto `stdout` quanto `stderr` enviam sua saída para a tela do seu terminal, razão pela qual você vê a mensagem de erro diretamente.
+
+Para controlar `stderr`, você precisa de um método de redirecionamento diferente.
+
+### Entendendo Descritores de Arquivo
+
+Para gerenciar fluxos de E/S como `stdin`, `stdout` e `stderr`, o sistema usa descritores de arquivo. Um **descritor de arquivo** é um número não negativo que o kernel usa para identificar um arquivo ou fluxo aberto. Os descritores de arquivo padrão são:
+
+- `0`: stdin (entrada padrão)
+- `1`: stdout (saída padrão)
+- `2`: stderr (erro padrão)
+
+O número `2` é o **descritor de arquivo stderr** dedicado, e podemos usá-lo para controlar para onde as mensagens de erro vão.
+
+### Redirecionando stderr para um Arquivo
+
+Para redirecionar `stderr` para um arquivo, você usa o descritor de arquivo `2` seguido pelo operador `>`. Este comando enviará quaisquer mensagens de erro para o `arquivo stderr` especificado.
 
 ```bash
 ls /fake/directory 2> peanuts.txt
 ```
 
-Você deve ver apenas as mensagens de stderr em `peanuts.txt`.
+Agora, seu terminal ficará silencioso, e a mensagem de erro estará dentro de `peanuts.txt`.
 
-E se eu quisesse ver tanto stderr quanto stdout no arquivo `peanuts.txt`? É possível fazer isso com descritores de arquivo também:
+### Combinando stdout e stderr
 
-```bash
-ls /fake/directory > peanuts.txt 2>&1
-```
-
-Isso envia os resultados de `ls /fake/directory` para o arquivo `peanuts.txt` e então redireciona o stderr para o stdout via `2>&1`. A ordem das operações aqui importa; `2>&1` envia o stderr para onde quer que o stdout esteja apontando. Neste caso, o stdout está apontando para um arquivo, então `2>&1` também envia o stderr para um arquivo. Então, se você abrir o arquivo `peanuts.txt`, deverá ver tanto o stderr quanto o stdout. No nosso caso, o comando acima apenas gera stderr.
-
-Existe uma maneira mais curta de redirecionar tanto stdout quanto stderr para um arquivo:
+E se você quiser capturar tanto a saída normal quanto as mensagens de erro no mesmo arquivo? Você pode conseguir isso redirecionando ambos os fluxos.
 
 ```bash
-ls /fake/directory &> peanuts.txt
+ls /fake/directory /etc/passwd > peanuts.txt 2>&1
 ```
 
-E se eu não quiser nada dessa bagunça e quiser me livrar das mensagens de stderr completamente? Bem, você também pode redirecionar a saída para um arquivo especial chamado `/dev/null` e ele descartará qualquer entrada.
+Vamos analisar isso:
+
+1. `> peanuts.txt` redireciona `stdout` (descritor de arquivo 1) para o arquivo `peanuts.txt`.
+2. `2>&1` redireciona `stderr` (descritor de arquivo 2) para o mesmo local para o qual `stdout` (descritor de arquivo 1) está apontando atualmente.
+
+A ordem é importante. `2>&1` envia `stderr` para o destino atual de `stdout`. Neste caso, `stdout` está apontando para um arquivo, então `stderr` também é enviado para esse arquivo.
+
+Uma maneira mais moderna e curta de redirecionar tanto `stdout` quanto `stderr` é usando `&>`.
+
+```bash
+ls /fake/directory /etc/passwd &> peanuts.txt
+```
+
+### Descartando Mensagens de Erro
+
+Às vezes, você pode querer executar um comando e ignorar completamente quaisquer mensagens de erro potenciais. Para fazer isso, você pode redirecionar `stderr` para um arquivo especial chamado `/dev/null`, que descarta quaisquer dados gravados nele.
 
 ```bash
 ls /fake/directory 2> /dev/null
 ```
 
+Este comando será executado, e qualquer saída de erro de `stderr` será enviada para `/dev/null` e descartada, deixando sua tela limpa.
+
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do redirecionamento de entrada/saída:
+Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do redirecionamento de entrada/saída:
 
-1. **[Redirecionando Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Neste laboratório, você aprenderá a redirecionar entrada e saída no shell Linux. Você praticará o controle do fluxo de dados de comandos manipulando a saída padrão (stdout), o erro padrão (stderr) e a entrada padrão (stdin) usando operadores como >, >>, 2> e o comando tee.
+1. **[Redirecionando Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Neste laboratório, você aprenderá a redirecionar entrada e saída no shell Linux. Você praticará o controle do fluxo de dados dos comandos, manipulando a saída padrão (stdout), o erro padrão (stderr) e a entrada padrão (stdin) usando operadores como >, >>, 2> e o comando tee.
 
-Este laboratório o ajudará a aplicar os conceitos de redirecionamento de E/S em cenários reais e a construir confiança no gerenciamento de fluxos de dados no Linux.
+Este laboratório o ajudará a aplicar os conceitos de redirecionamento de E/S em cenários reais e a ganhar confiança no gerenciamento de fluxos de dados no Linux.
 
 ## Quiz Question
 
-Qual é o redirecionador para stderr?
+Qual é o operador usado para redirecionar o fluxo `stderr`? Por favor, forneça o operador exato em sua resposta.
 
 ## Quiz Answer
 

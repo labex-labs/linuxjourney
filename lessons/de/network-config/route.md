@@ -1,56 +1,66 @@
 ---
 index: 2
 lang: "de"
-title: "route"
-meta_title: "route - Netzwerkkonfiguration"
-meta_description: "Erfahren Sie, wie Sie Netzwerkrouten mit den Linux-Befehlen route und ip hinzufügen und löschen. Verstehen Sie die Verwaltung von Routing-Tabellen für Anfänger und fortgeschrittene Benutzer."
-meta_keywords: "route Befehl, ip route, Route hinzufügen, Route löschen, Linux-Netzwerk, Routing-Tabelle, Linux-Tutorial, Anfängerleitfaden"
+title: "Route"
+meta_title: "Route - Netzwerkkonfiguration"
+meta_description: "Erfahren Sie, wie Sie Ihre Linux-Routing-Tabelle verwalten. Diese Anleitung behandelt das Hinzufügen und Löschen von Netzwerkrouten mit dem modernen Befehl 'ip route command in linux' und dem älteren Befehl 'route'."
+meta_keywords: "ip route befehl linux, linux ip route befehl, route hinzufügen, route löschen, routingtabelle, netzwerk-routing, linux netzwerk, ip route"
 ---
 
 ## Lesson Content
 
-Wir haben bereits die Anzeige unserer Routing-Tabellen mit dem Befehl `route` besprochen. Wenn Sie Routen hinzufügen oder entfernen möchten, können Sie dies manuell tun.
+Unter Linux leitet die Routing-Tabelle den Netzwerkverkehr an sein korrektes Ziel weiter. Obwohl wir zuvor die Anzeige dieser Tabelle besprochen haben, können Sie auch manuell Routen hinzufügen oder entfernen, um zu steuern, wie Datenpakete weitergeleitet werden. Dies ist unerlässlich für die Konfiguration komplexer Netzwerkeinrichtungen oder die Fehlerbehebung bei Verbindungsproblemen.
 
-### Eine neue Route hinzufügen
+### Verwendung des Legacy-Befehls route
+
+Der Befehl `route` ist ein traditionelles Werkzeug zur Verwaltung der Routing-Tabelle. Obwohl er noch funktionsfähig ist, gilt er als veraltet, und der Befehl `ip` wird heute bevorzugt.
+
+Um eine neue Netzwerkroute hinzuzufügen, geben Sie die Netzwerkadresse, die Subnetzmaske und das Gateway (`gw`) an:
 
 ```bash
 sudo route add -net 192.168.2.1/23 gw 10.11.12.3
 ```
 
-### Eine Route löschen
+Um eine Route zu löschen, verwenden Sie das Flag `del` zusammen mit der Netzwerkadresse:
 
 ```bash
 sudo route del -net 192.168.2.1/23
 ```
 
-Sie können diese Änderungen auch mit dem Befehl **ip** vornehmen:
+### Moderne Routenverwaltung mit ip route
 
-### Eine Route hinzufügen
+Der Befehl `ip route` ist das moderne und leistungsfähigere Werkzeug für die Netzwerkkonfiguration unter Linux. Er bietet eine konsistentere und umfangreichere Reihe von Optionen zur Verwaltung von Netzwerkschnittstellen und Routen. Die Verwendung des **linux ip route command** ist die empfohlene Vorgehensweise für aktuelle Systeme.
+
+Um eine Route mit dem **ip route command in linux** hinzuzufügen, verwenden Sie die Aktion `add` und geben das Zielnetzwerk und den nächsten Hop über das Gateway an:
 
 ```bash
 ip route add 192.168.2.1/23 via 10.11.12.3
 ```
 
-### Eine Route löschen
+Um eine Route zu löschen, können Sie die Aktion `delete` verwenden. Sie können die Route vollständig angeben oder nur das Zielnetzwerk, falls es eindeutig ist:
 
 ```bash
-$ ip route delete 192.168.2.1/23 via 10.11.12.3
-or
-$ ip route delete 192.168.2.1/23
+# Löschen durch Angabe der vollständigen Route
+ip route delete 192.168.2.1/23 via 10.11.12.3
+
+# Oder Löschen durch Angabe nur des Ziels
+ip route delete 192.168.2.1/23
 ```
+
+Die Beherrschung des Befehls `ip route` ist eine Schlüsselqualifikation für jeden Linux-Administrator, der für die Netzwerkverwaltung zuständig ist.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu festigen:
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** – Üben Sie das Konfigurieren einer statischen IP, das Festlegen eines Standard-Gateways und das Überprüfen der Netzwerkkonfiguration mit dem Befehl `ip`.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** – Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr handhabt und beobachten Sie Netzwerkschicht-Interaktionen.
+1.  **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Konfiguration einer statischen IP, das Festlegen eines Standard-Gateways und die Überprüfung der Netzwerkkonfiguration mit dem Befehl `ip`.
+2.  **[Netzwerkschicht-Interaktion mit ping und arp unter Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr verarbeitet, und beobachten Sie Interaktionen auf Netzwerkschichtebene.
 
-Diese Übungen helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in die Linux-Netzwerkverwaltung aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
 
 ## Quiz Question
 
-Was ist das Befehls-Flag zum Löschen einer Route?
+Wenn Sie den Legacy-Befehl `route` verwenden, welches Flag wird zum Löschen einer Route verwendet? Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.
 
 ## Quiz Answer
 

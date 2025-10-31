@@ -1,41 +1,49 @@
 ---
 index: 2
 lang: "fr"
-title: "Processus de démarrage : BIOS"
-meta_title: "Processus de démarrage : BIOS - Démarrer le système"
-meta_description: "Découvrez le processus de démarrage Linux, le BIOS et le MBR. Comprenez comment votre système démarre avec ce guide convivial pour débutants. Explorez les concepts UEFI !"
-meta_keywords: "processus de démarrage Linux, BIOS, MBR, UEFI, tutoriel Linux, chargeur de démarrage, Linux débutant, démarrage système"
+title: "Processus de Démarrage : BIOS"
+meta_title: "Processus de Démarrage : BIOS - Démarrer le Système"
+meta_description: "Découvrez la première étape du démarrage Linux : le BIOS. Apprenez comment il trouve le chargeur de démarrage via MBR ou GPT, et comprenez le rôle de l'UEFI. Ce guide explique le démarrage du système et aborde comment accéder au BIOS pour la configuration."
+meta_keywords: "processus démarrage Linux, BIOS, MBR, UEFI, bios sous linux, bios linux, comment accéder au bios, chargeur de démarrage, démarrage système"
 ---
 
 ## Lesson Content
 
-### BIOS
+La première étape du processus de démarrage de Linux est le BIOS (Basic Input/Output System), qui effectue des vérifications cruciales de l'intégrité du système au démarrage. Le BIOS est un micrologiciel couramment trouvé dans les ordinateurs compatibles IBM PC, qui représentent la majorité des ordinateurs en usage aujourd'hui.
 
-La première étape du processus de démarrage Linux est le BIOS, qui effectue des vérifications d'intégrité du système. Le BIOS est un micrologiciel très courant dans les ordinateurs compatibles IBM PC, le type d'ordinateurs dominant aujourd'hui. Vous avez probablement utilisé le micrologiciel BIOS pour modifier l'ordre de démarrage de vos disques durs, vérifier l'heure du système, l'adresse MAC de votre machine, etc. L'objectif principal du BIOS est de trouver le chargeur de démarrage du système.
+### Le Rôle du BIOS sous Linux
 
-Ainsi, une fois que le BIOS démarre le disque dur, il recherche le bloc de démarrage pour savoir comment démarrer le système. Selon la façon dont vous partitionnez votre disque, il se tournera vers le Master Boot Record (MBR) ou GPT. Le MBR est situé dans le premier secteur du disque dur, les 512 premiers octets. Le MBR contient le code pour charger un autre programme quelque part sur le disque ; ce programme charge ensuite notre chargeur de démarrage.
+Lorsque vous allumez votre ordinateur, le **BIOS sous Linux** est le premier logiciel à s'exécuter. Sa fonction principale est d'initialiser et de tester le matériel du système, tel que le CPU, la mémoire et les disques durs. Vous avez probablement déjà interagi avec le micrologiciel BIOS pour modifier l'ordre de démarrage, vérifier l'heure du système ou consulter l'adresse MAC de votre machine. Une fois les vérifications matérielles terminées, l'objectif principal du processus **bios linux** est de localiser et de transférer le contrôle au chargeur de démarrage du système.
 
-Maintenant, si vous avez partitionné votre disque avec GPT, l'emplacement du chargeur de démarrage change un peu.
+### Comment le BIOS Trouve le Chargeur de Démarrage
 
-### UEFI
+Une fois que le BIOS a initialisé le disque dur, il recherche un bloc de démarrage pour déterminer comment démarrer le système d'exploitation. L'emplacement qu'il vérifie dépend du schéma de partitionnement du disque : Master Boot Record (MBR) ou GUID Partition Table (GPT).
 
-Il existe une autre façon de démarrer votre système au lieu d'utiliser le BIOS, et c'est avec l'UEFI (qui signifie "Unified Extensible Firmware Interface"). L'UEFI a été conçu pour succéder au BIOS ; la plupart des matériels actuels sont livrés avec le micrologiciel UEFI intégré. Les machines Macintosh utilisent le démarrage EFI depuis des années, et Windows a majoritairement transféré tout son contenu vers le démarrage UEFI. Le format GPT était destiné à être utilisé avec EFI. Vous n'avez pas nécessairement besoin d'EFI si vous démarrez un disque GPT. Le premier secteur d'un disque GPT est réservé à un "MBR protecteur" pour permettre le démarrage d'une machine basée sur le BIOS.
+Le MBR est situé dans les 512 premiers octets du disque dur. Cette petite section contient le code de démarrage initial et la table de partition. Le code du MBR est responsable du chargement d'un autre programme, qui à son tour charge notre chargeur de démarrage réel. Si vous utilisez un disque partitionné GPT, le processus est légèrement différent.
 
-L'UEFI stocke toutes les informations de démarrage dans un fichier `.efi`. Ce fichier est stocké sur une partition spéciale appelée partition système EFI sur le matériel. À l'intérieur de cette partition, il contiendra le chargeur de démarrage. L'UEFI apporte de nombreuses améliorations par rapport au micrologiciel BIOS traditionnel. Cependant, comme nous utilisons Linux, la majorité d'entre nous utilisons le BIOS. Toutes ces leçons suivront donc cette prémisse.
+### Comment Démarrer dans le BIOS
+
+De nombreux utilisateurs ont besoin de savoir **comment démarrer dans le BIOS** pour configurer les paramètres matériels. La méthode pour y parvenir implique généralement d'appuyer sur une touche spécifique (telle que F2, F10, DEL ou ESC) immédiatement après avoir allumé l'ordinateur. Apprendre **comment démarrer dans le bios** est essentiel pour des tâches telles que la modification de la priorité du périphérique de démarrage ou l'activation de la technologie de virtualisation. La touche exacte varie selon le fabricant, vous devrez donc peut-être consulter la documentation de votre ordinateur.
+
+### L'Avènement de l'UEFI
+
+Une alternative au BIOS traditionnel est l'UEFI (Unified Extensible Firmware Interface). Conçu comme le successeur du BIOS, l'UEFI est désormais standard sur la plupart des matériels modernes. Il stocke toutes les informations de démarrage dans un fichier `.efi` situé sur une partition système EFI (ESP) dédiée. Cette partition contient le chargeur de démarrage pour le système d'exploitation installé.
+
+L'UEFI offre de nombreuses améliorations par rapport au BIOS, notamment des temps de démarrage plus rapides et la prise en charge de disques durs plus volumineux. Bien que le format GPT ait été conçu pour l'UEFI, un "MBR protecteur" sur les disques GPT assure la rétrocompatibilité, rendant possible le démarrage à partir de ceux-ci sur d'anciennes machines basées sur le BIOS. Bien que de nombreux systèmes Linux utilisent désormais l'UEFI, ce guide se concentrera sur le processus de démarrage BIOS traditionnel pour une compréhension fondamentale.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes Linux :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes sous Linux :
 
-1. **[Gérer les comptes d'utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratiquez le cycle de vie complet de l'administration des utilisateurs, de la création et la sécurisation de nouveaux comptes à leur modification et suppression.
-2. **[Gérer les groupes Linux avec groupadd, usermod et groupdel](https://labex.io/fr/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Acquérez une expérience pratique avec les utilitaires en ligne de commande pour l'administration des groupes, y compris la création de nouveaux groupes, la modification des appartenances des utilisateurs et la suppression de groupes.
-3. **[Configurer les comptes d'utilisateurs et les privilèges Sudo sous Linux](https://labex.io/fr/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Apprenez les techniques essentielles pour gérer les comptes d'utilisateurs et les privilèges sudo afin d'améliorer la sécurité d'un système Linux.
+1. **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Entraînez-vous au cycle complet de l'administration des utilisateurs, de la création et de la sécurisation des nouveaux comptes à leur modification et suppression.
+2. **[Gérer les groupes Linux avec groupadd, usermod et groupdel](https://labex.io/fr/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Acquérir une expérience pratique avec les utilitaires en ligne de commande pour l'administration des groupes, y compris la création de nouveaux groupes, la modification des appartenances des utilisateurs et la suppression de groupes.
+3. **[Configurer les comptes utilisateurs et les privilèges Sudo sous Linux](https://labex.io/fr/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Apprendre les techniques essentielles pour gérer les comptes utilisateurs et les privilèges sudo afin d'améliorer la sécurité d'un système Linux.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des utilisateurs et des groupes sous Linux.
+Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec la gestion des utilisateurs et des groupes sous Linux.
 
 ## Quiz Question
 
-Que charge le BIOS ?
+Que charge le BIOS ? Veuillez répondre par un seul mot, en anglais et en minuscules.
 
 ## Quiz Answer
 

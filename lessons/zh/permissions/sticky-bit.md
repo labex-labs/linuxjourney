@@ -1,48 +1,61 @@
 ---
 index: 8
 lang: "zh"
-title: "粘滞位"
-meta_title: "粘滞位 - 权限"
-meta_description: "了解 Linux 粘滞位、它在 /tmp 等共享目录中的用途以及如何使用 chmod 设置它。理解这个关键的文件权限！"
-meta_keywords: "Linux 粘滞位，chmod +t, /tmp 目录，Linux 权限，文件安全，Linux 教程，Linux 初学者"
+title: "粘位"
+meta_title: "粘位 - 权限"
+meta_description: "探索 Linux 和 Unix 文件权限中粘位（Sticky Bit）的用途。了解粘位如何保护 /tmp 等共享目录中的文件，以及如何使用 chmod 设置它。"
+meta_keywords: "粘位，linux 粘位，unix 文件权限 粘位，chmod +t, /tmp 目录，文件权限，linux 安全"
 ---
 
 ## Lesson Content
 
-我想谈的最后一个特殊权限位是粘滞位。
+除了标准的读、写和执行权限外，Linux 还提供用于高级访问控制的特殊权限。我们将介绍的最后一个特殊权限是**粘滞位 (sticky bit)**。
 
-这个权限位“粘住文件/目录”，这意味着只有所有者或 root 用户才能删除或修改文件。这对于共享目录非常有用。请看下面的例子：
+### 什么是粘滞位？
+
+粘滞位是一种可以应用于目录的权限设置。当一个目录设置了粘滞位后，该目录中的文件只能由文件所有者、目录所有者或 root 用户删除或重命名。这对于多个用户需要在其中创建和管理自己文件的共享目录特别有用，而不会相互干扰。这个概念是**Unix 文件权限粘滞位**管理的关键部分。
+
+### 实际示例：/tmp 目录
+
+**Linux 中粘滞位**的一个常见用例是`/tmp`目录，这是一个用于临时文件的全局可写位置。让我们检查一下它的权限：
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwx+t 6 root root 4096 Dec 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-你会在这里的末尾看到一个特殊的权限位 **t**。这意味着每个人都可以在 `/tmp` 目录中添加文件、写入文件和修改文件，但只有 root 可以删除 `/tmp` 目录。
+注意权限字符串末尾的`t`（`rwxrwxrwt`）。这个`t`表示设置了粘滞位。因此，虽然任何用户都可以在`/tmp`中创建文件，但他们不能删除或移动其他用户创建的文件。这可以防止一个用户干扰另一个用户在该共享空间中的工作。
 
-### 修改粘滞位
+### 如何设置粘滞位
+
+您可以使用`chmod`命令通过两种方式设置粘滞位：符号模式或八进制（数字）模式。
+
+要使用符号模式添加粘滞位：
 
 ```bash
-sudo chmod +t mydir
-
-sudo chmod 1755 mydir
+chmod +t my_shared_dir
 ```
 
-粘滞位的数字表示是 **1**。
+要使用八进制模式设置权限，您需要在标准三位权限代码前加上`1`。粘滞位的数字表示是**1**。
+
+```bash
+# 这将权限设置为rwxr-xr-x 并在其上设置粘滞位
+chmod 1755 my_shared_dir
+```
+
+理解粘滞位对于有效管理多用户环境和保护共享目录至关重要。
 
 ## Exercise
 
-熟能生巧！这里有一些动手实验，以加强您对 Linux 文件权限及其对文件和目录管理影响的理解：
+为了巩固您对文件权限（包括粘滞位等特殊权限）的理解，请尝试以下实践实验。它们将帮助您了解这些概念如何在实际场景中应用。
 
-1. **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 练习创建和管理用户和组，理解文件权限，以及操作文件所有权。本实验提供了理解粘滞位等特殊权限如何运作的基础知识。
-2. **[删除和移动文件](https://labex.io/zh/labs/linux-delete-and-move-files-7777)** - 学习如何在 Linux 系统中删除和移动文件。本实验将帮助您理解权限的实际含义，包括它们如何限制这些操作。
-3. **[查找文件](https://labex.io/zh/labs/linux-find-a-file-17993)** - 练习定位文件和设置访问权限。本实验强调了文件权限的重要性以及它们如何控制访问和修改。
-
-这些实验将帮助您在实际场景中应用文件权限的概念，并增强您在 Linux 中管理文件访问的信心。
+1.  **[Linux 用户组和文件权限](https://labex.io/zh/labs/linux-linux-user-group-and-file-permissions-18002)** - 练习创建用户和组，以及操作文件所有权和权限。此实验为理解特殊权限如何工作奠定了基础。
+2.  **[删除和移动文件](https://labex.io/zh/labs/linux-delete-and-move-files-7777)** - 学习如何删除和移动文件，并了解权限（包括目录上的粘滞位）如何限制这些操作。
+3.  **[查找文件](https://labex.io/zh/labs/linux-find-a-file-17993)** - 练习定位文件和设置访问控制，以加强文件权限在管理文件访问和修改方面的重要性。
 
 ## Quiz Question
 
-什么符号代表粘滞位？
+在长格式目录列表（ls -l）中，权限字符串中的哪个单个字符表示设置了粘滞位？请用单个小写英文字母回答。
 
 ## Quiz Answer
 

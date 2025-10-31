@@ -3,40 +3,46 @@ index: 3
 lang: "es"
 title: "Ruta de un Paquete"
 meta_title: "Ruta de un Paquete - Enrutamiento"
-meta_description: "Aprenda cómo viaja un paquete dentro y fuera de una red. Comprenda IP, MAC, ARP y tablas de enrutamiento para la comunicación en red. ¡Comience su viaje en redes Linux!"
-meta_keywords: "viaje de paquetes, comunicación de red, ARP, dirección IP, dirección MAC, tabla de enrutamiento, redes Linux, guía para principiantes"
+meta_description: "Explore la ruta completa de un paquete de datos que viaja dentro de una red local y a través de Internet. Aprenda cómo funcionan juntos las direcciones IP, direcciones MAC, ARP y tablas de enrutamiento para asegurar una comunicación de red exitosa en Linux."
+meta_keywords: "ruta de paquete, comunicación de red, ARP, dirección IP, dirección MAC, tabla de enrutamiento, puerta de enlace predeterminada, redes Linux, viaje de paquete"
 ---
 
 ## Lesson Content
 
-### Veamos cómo viaja un paquete dentro de su red local
+Comprender cómo viajan los datos a través de una red es fundamental para el networking. Este viaje, a menudo denominado **ruta del paquete**, implica un esfuerzo coordinado entre diferentes protocolos y hardware. Trazaremos la **ruta del paquete** en dos escenarios comunes: comunicación dentro de una red local y comunicación con una red externa.
 
-1. Primero, la máquina local comparará la dirección IP de destino para ver si está en la misma subred, observando su máscara de subred.
-2. Cuando se envían paquetes, deben tener una dirección MAC de origen, una dirección MAC de destino, una dirección IP de origen y una dirección IP de destino. En este punto, no conocemos la dirección MAC de destino.
-3. Para llegar al host de destino, usamos ARP para transmitir una solicitud en la red local para encontrar la dirección MAC del host de destino.
-4. ¡Ahora el paquete se puede enviar con éxito!
+### Ruta del Paquete Dentro de una Red Local
 
-### Veamos cómo viaja un paquete fuera de su red
+Cuando un dispositivo envía un paquete a otro dispositivo en la misma red local, el proceso es relativamente sencillo.
 
-1. Primero, la máquina local comparará la dirección IP de destino. Como está fuera de nuestra red, no ve la dirección MAC del host de destino. Y no podemos usar ARP porque la solicitud ARP es una transmisión a hosts conectados localmente.
-2. Así que nuestro paquete ahora mira la tabla de enrutamiento. No conoce la dirección IP de destino, por lo que la envía a la puerta de enlace predeterminada (otro enrutador). Así que ahora nuestro paquete contiene nuestra IP de origen, IP de destino y MAC de origen; sin embargo, no tenemos una MAC de destino. Recuerde, las direcciones MAC solo se alcanzan a través de la misma red. Entonces, ¿qué hace? Envía una solicitud ARP para obtener la dirección MAC de la puerta de enlace predeterminada.
-3. El enrutador mira el paquete y confirma la dirección MAC de destino, pero no es la dirección IP de destino final, por lo que sigue mirando la tabla de enrutamiento para reenviar el paquete a otra dirección IP que pueda ayudar al paquete a avanzar hacia su destino. Cada vez que el paquete se mueve, elimina las antiguas direcciones MAC de origen y destino y actualiza el paquete con las nuevas direcciones MAC de origen y destino.
-4. Una vez que el paquete se reenvía a la misma red, usamos ARP para encontrar la dirección MAC de destino final.
-5. Durante este proceso, nuestro paquete no cambia la dirección IP de origen o destino.
+1.  Primero, el host de envío comprueba si la dirección IP de destino está en la misma subred comparándola con su propia dirección IP y máscara de subred.
+2.  Para enviar un paquete, el host necesita cuatro piezas clave de información: una IP de origen, una IP de destino, una dirección MAC de origen y una dirección MAC de destino. Inicialmente, el host no conoce la dirección MAC del host de destino.
+3.  El host utiliza el Protocolo de Resolución de Direcciones (ARP) para encontrar la información faltante. Transmite una solicitud ARP en la red local, preguntando qué dispositivo tiene la dirección IP objetivo. El dispositivo correspondiente responde con su dirección MAC.
+4.  Con la dirección MAC de destino ya conocida, el paquete está completamente direccionado y puede enviarse directamente al host de destino en la red local.
+
+### Ruta del Paquete a una Red Externa
+
+Cuando un paquete está destinado a un dispositivo fuera de la red local, el proceso involucra routers para reenviar el paquete.
+
+1.  El host de envío determina que la dirección IP de destino no está en su red local. Dado que las transmisiones ARP se limitan a la red local, el host no puede descubrir directamente la dirección MAC del destino final.
+2.  El host consulta su tabla de enrutamiento. Como no hay una ruta específica para la IP externa, utiliza la ruta predeterminada, que apunta a la puerta de enlace predeterminada (un router). El paquete se prepara con las direcciones IP de origen y destino originales. Sin embargo, la dirección MAC de destino se establece en la dirección MAC de la puerta de enlace predeterminada. Si se desconoce la MAC de la puerta de enlace, el host utiliza ARP para encontrarla.
+3.  Una vez que el paquete llega al router, este examina la dirección IP de destino y consulta su propia tabla de enrutamiento para determinar el siguiente salto en la **ruta del paquete**. Luego, el router reescribe las direcciones MAC del paquete: la MAC de origen se convierte en la MAC del router y la MAC de destino se convierte en la MAC del siguiente salto. Este proceso se repite en cada router a lo largo del camino.
+4.  Cuando el paquete finalmente llega al router conectado a la red local de destino, ese router utiliza ARP para encontrar la dirección MAC del host final y entrega el paquete.
+5.  A lo largo de todo este viaje, las direcciones IP de origen y destino en la cabecera del paquete permanecen sin cambios. Solo las direcciones MAC se actualizan en cada salto.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración básica de archivos y directorios de Linux:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión básica de archivos y directorios en Linux:
 
-1. **[Operaciones básicas de archivos en Linux](https://labex.io/es/labs/linux-basic-file-operations-in-linux-18001)** - Practique la navegación por el sistema de archivos, la administración de archivos y directorios, y el uso de atajos de línea de comandos en un entorno Linux real.
-2. **[Operaciones de archivos y directorios](https://labex.io/es/labs/linux-file-and-directory-operations-17997)** - Aprenda a navegar por la estructura de directorios, administrar archivos y carpetas, y usar potentes herramientas de línea de comandos como `ls`, `cd`, `mkdir`, `cp`, `mv` y `rm`.
-3. **[Organización de archivos y directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practique habilidades esenciales de administración de archivos de Linux usando los comandos `cp`, `mv` y `rm` para organizar la estructura de un proyecto, mover archivos y limpiar directorios innecesarios.
+1.  **[Operaciones Básicas de Archivos en Linux](https://labex.io/es/labs/linux-basic-file-operations-in-linux-18001)** - Practique la navegación por el sistema de archivos, la gestión de archivos y directorios, y el uso de atajos de línea de comandos en un entorno Linux real.
+2.  **[Operaciones de Archivos y Directorios](https://labex.io/es/labs/linux-file-and-directory-operations-17997)** - Aprenda a navegar por la estructura de directorios, administrar archivos y carpetas, y utilizar herramientas potentes de línea de comandos como `ls`, `cd`, `mkdir`, `cp`, `mv` y `rm`.
+3.  **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practique habilidades esenciales de gestión de archivos de Linux utilizando los comandos `cp`, `mv` y `rm` para organizar una estructura de proyecto, mover archivos y limpiar directorios innecesarios.
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a desarrollar confianza con las interacciones del sistema de archivos de Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las interacciones del sistema de archivos de Linux.
 
 ## Quiz Question
 
-¿Cómo encontramos la dirección MAC de una dirección IP?
+¿Qué protocolo se utiliza para encontrar la dirección MAC de un host en la red local, dada su dirección IP? Por favor, responda con el acrónimo de tres letras en mayúsculas.
 
 ## Quiz Answer
 

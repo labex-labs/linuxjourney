@@ -3,13 +3,15 @@ index: 5
 lang: "en"
 title: "I/O Monitoring"
 meta_title: "I/O Monitoring - Process Utilization"
-meta_description: "Learn how to use iostat for Linux I/O monitoring. Understand CPU and disk usage metrics with this essential command. Improve system performance!"
-meta_keywords: "iostat, Linux I/O monitoring, CPU usage, disk usage, Linux commands, beginner, tutorial, guide"
+meta_description: "Master Linux I/O monitoring with the iostat command. This guide explains how to analyze CPU and disk usage metrics to optimize your system's performance."
+meta_keywords: "i/o monitoring, iostat, linux i/o monitoring, cpu usage, disk usage, system performance, iowait, linux commands"
 ---
 
 ## Lesson Content
 
-We can monitor CPU usage as well as disk usage with a handy tool known as **iostat**.
+Effective **I/O monitoring** is crucial for maintaining a healthy and responsive Linux system. A powerful command-line tool for this task is **iostat**, which provides detailed reports on both CPU and disk activity.
+
+Running the `iostat` command generates a snapshot of your system's performance metrics.
 
 ```bash
 pete@icebox:~$ iostat
@@ -22,22 +24,28 @@ Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
 sda               0.17         3.49         1.92     385106     212417
 ```
 
-The first part is the CPU information:
+The output is divided into two main sections. Let's break them down.
 
-- **%user** - Shows the percentage of CPU utilization that occurred while executing at the user level (application).
-- **%nice** - Shows the percentage of CPU utilization that occurred while executing at the user level with nice priority.
-- **%system** - Shows the percentage of CPU utilization that occurred while executing at the system level (kernel).
-- **%iowait** - Shows the percentage of time that the CPU or CPUs were idle during which the system had an outstanding disk I/O request.
-- **%steal** - Shows the percentage of time spent in involuntary wait by the virtual CPU or CPUs while the hypervisor was servicing another virtual processor.
-- **%idle** - Shows the percentage of time that the CPU or CPUs were idle and the system did not have an outstanding disk I/O request.
+### Understanding CPU Metrics
 
-The second part is the disk utilization:
+The first report details CPU utilization, providing insight into how the processor is spending its time.
 
-- **tps** - Indicates the number of transfers per second that were issued to the device. A transfer is an I/O request to the device. Multiple logical requests can be combined into a single I/O request to the device. A transfer is of indeterminate size.
-- **kB_read/s** - Indicates the amount of data read from the device, expressed in kilobytes per second.
-- **kB_wrtn/s** - Indicates the amount of data written to the device, expressed in kilobytes per second.
-- **kB_read** - The total number of kilobytes read.
-- **kB_wrtn** - The total number of kilobytes written.
+- **%user**: Percentage of CPU time spent executing user-level (application) processes.
+- **%nice**: Percentage of CPU time spent on user-level processes with a modified (nice) priority.
+- **%system**: Percentage of CPU time spent executing system-level (kernel) processes.
+- **%iowait**: Percentage of time the CPU was idle while waiting for an outstanding disk I/O request to complete. High values here can indicate a storage bottleneck.
+- **%steal**: In a virtualized environment, this is the percentage of time a virtual CPU waits for a real CPU while the hypervisor is servicing another virtual processor.
+- **%idle**: Percentage of time the CPU was idle and not waiting for any disk I/O requests.
+
+### Analyzing Disk Utilization
+
+The second report focuses on device-level **I/O monitoring**, showing how data is being transferred to and from your storage devices.
+
+- **tps**: Transfers per second issued to the device. A transfer is an I/O request, and multiple logical requests can be combined into a single one.
+- **kB_read/s**: The amount of data read from the device, expressed in kilobytes per second.
+- **kB_wrtn/s**: The amount of data written to the device, expressed in kilobytes per second.
+- **kB_read**: The total number of kilobytes read from the device since the last reboot.
+- **kB_wrtn**: The total number of kilobytes written to the device since the last reboot.
 
 ## Exercise
 
@@ -51,7 +59,7 @@ These labs will help you apply the concepts in real scenarios and build confiden
 
 ## Quiz Question
 
-What command can be used to view I/O and CPU usage?
+What command can be used to view I/O and CPU usage? (Please answer in lowercase English characters only)
 
 ## Quiz Answer
 

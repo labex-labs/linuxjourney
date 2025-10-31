@@ -1,47 +1,45 @@
 ---
 index: 1
 lang: "de"
-title: "Bootvorgang Überblick"
-meta_title: "Bootvorgang Überblick - Das System booten"
-meta_description: "Lernen Sie die Phasen des Linux-Bootvorgangs kennen: BIOS, Bootloader, Kernel und Init. Verstehen Sie, wie Linux vom Einschalten bis zur Anmeldung startet. Ein unverzichtbarer Linux-Anfängerleitfaden."
-meta_keywords: "Linux-Bootvorgang, BIOS, Bootloader, Kernel, Init, Linux-Tutorial, Linux-Leitfaden, Anfänger"
+title: "Überblick über den Bootvorgang"
+meta_title: "Bootvorgang Übersicht - System starten"
+meta_description: "Ein klarer Überblick über den Linux-Bootvorgang, der die vier Schlüsselphasen detailliert beschreibt: BIOS, Bootloader, Kernel und Init. Erfahren Sie mehr über den gesamten Startprozess des Linux-Betriebssystems, von der Inbetriebnahme bis zur Anmeldeaufforderung."
+meta_keywords: "Linux Bootvorgang, Bootvorgang Linux, Startvorgang Linux, Startvorgang Linux Betriebssystem, BIOS, Bootloader, Kernel, Init, Linux Tutorial, Linux Anleitung, Anfänger"
 ---
 
 ## Lesson Content
 
-Nachdem wir nun ein ziemlich gutes Verständnis einiger wichtiger Komponenten von Linux erlangt haben, wollen wir sie alle zusammenfügen, indem wir lernen, wie das System bootet. Wenn Sie Ihren Rechner einschalten, macht er einige nette Dinge, wie das Anzeigen des Logo-Bildschirms, das Durchlaufen verschiedener Meldungen, und am Ende werden Sie mit einem Anmeldefenster aufgefordert. Nun, es passiert tatsächlich eine Menge Zeug zwischen dem Drücken des Netzschalters und dem Anmelden, und wir werden diese in diesem Kurs besprechen.
+Nachdem wir einige Schlüsselkomponenten von Linux kennengelernt haben, sehen wir uns nun an, wie diese beim Systemstart zusammenspielen. Die gesamte Abfolge, vom Drücken des Netzschalters bis zum Erscheinen der Anmeldeaufforderung, wird als **Linux-Bootvorgang** bezeichnet. Es ist eine faszinierende Reise, die eine ausgeschaltete Maschine in ein voll funktionsfähiges Betriebssystem verwandelt.
 
-Der Linux-Bootvorgang lässt sich in 4 einfache Phasen unterteilen:
+Der **Bootvorgang des Linux-Betriebssystems** lässt sich in vier Hauptphasen vereinfachen.
 
-### 1. BIOS
+### Phase 1 BIOS
 
-Das BIOS (steht für "Basic Input/Output System") initialisiert die Hardware und stellt mit einem Power-on Self-Test (POST) sicher, dass die gesamte Hardware betriebsbereit ist. Die Hauptaufgabe des BIOS ist es, den Bootloader zu laden.
+Das BIOS (Basic Input/Output System) oder sein moderner Nachfolger, UEFI (Unified Extensible Firmware Interface), ist die erste Software, die beim Einschalten Ihres Computers ausgeführt wird. Es führt einen Power-On Self-Test (POST) durch, um die Hardware des Systems wie CPU, Speicher und Speichergeräte zu initialisieren und zu überprüfen. Sobald die Hardware in Ordnung ist, besteht die Hauptaufgabe des BIOS darin, den Bootloader auf einem Speichergerät zu lokalisieren und zu laden.
 
-### 2. Bootloader
+### Phase 2 Bootloader
 
-Der Bootloader lädt den Kernel in den Speicher und startet dann den Kernel mit einer Reihe von Kernel-Parametern. Einer der gebräuchlichsten Bootloader ist GRUB, ein universeller Linux-Standard.
+Der Bootloader übernimmt die Kontrolle vom BIOS. Seine Hauptaufgabe ist es, den Linux-Kernel in den Speicher zu laden. Ein gängiger Bootloader für Linux ist GRUB (GRand Unified Bootloader). GRUB zeigt oft ein Menü an, in dem Sie auswählen können, welches Betriebssystem oder welche Kernel-Version gestartet werden soll. Nach Ihrer Auswahl (oder nach Ablauf eines Timeouts) lädt er den ausgewählten Kernel und eine initiale RAM-Disk (initrd) in den Speicher und übergibt die Kontrolle an den Kernel.
 
-### 3. Kernel
+### Phase 3 Kernel
 
-Wenn der Kernel geladen ist, initialisiert er sofort Geräte und Speicher. Die Hauptaufgabe des Kernels ist es, den init-Prozess zu laden.
+Sobald der Kernel in den Speicher geladen ist, übernimmt er die Kontrolle über das System. Er beginnt damit, sich selbst zu dekomprimieren und die Kern-Hardware sowie die Speicherverwaltung zu initialisieren. Anschließend bindet der Kernel das Root-Dateisystem ein, das alle Systemdateien enthält. Seine letzte und wichtigste Aufgabe im **Boot-Prozess Linux** besteht darin, das erste Programm im Benutzermodus auszuführen: den `init`-Prozess.
 
-### 4. Init
+### Phase 4 Init
 
-Denken Sie daran, der init-Prozess ist der erste Prozess, der gestartet wird. Init startet und stoppt wesentliche Dienstprozesse auf dem System. Es gibt drei Hauptimplementierungen von init in Linux-Distributionen. Wir werden sie kurz behandeln und dann in einem anderen Kurs näher darauf eingehen.
+Der `init`-Prozess ist der erste vom Kernel gestartete Prozess und der Vorfahre aller anderen Prozesse im System. Seine Hauptaufgabe ist es, das System in einen nutzbaren Zustand zu versetzen, indem er wesentliche Dienste und Hintergrundprozesse (Daemons) gemäß seiner Konfiguration startet. Es gibt verschiedene Implementierungen von `init`, wie das traditionelle System V init, Upstart und das heute weit verbreitete systemd.
 
-Das ist sie, die (sehr) einfache Erklärung des Linux-Bootvorgangs. In den nächsten Lektionen werden wir detaillierter auf diese Phasen eingehen.
+Dies bietet einen Überblick über den **Bootvorgang Linux** durchläuft. In den folgenden Lektionen werden wir tiefer auf jede dieser Phasen eingehen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis des Linux-Bootvorgangs zu vertiefen:
+Um Ihr Verständnis zu festigen, empfehlen wir Ihnen, dieses praktische Labor auszuprobieren. Es bietet eine Umgebung, um das Gelernte über den Linux-Bootvorgang praktisch anzuwenden.
 
-1. **[Das GRUB2-Bootmenü in Linux anpassen](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** – Üben Sie das Ändern des GRUB2-Bootmenüs, einer kritischen Komponente in der Linux-Bootsequenz.
-
-Dieses Lab hilft Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit der Linux-Bootumgebung aufzubauen.
+1.  **[Anpassen des GRUB2-Bootmenüs in Linux](https://labex.io/de/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - Üben Sie die Modifikation des GRUB2-Bootmenüs, einer kritischen Komponente der Linux-Bootsequenz.
 
 ## Quiz Question
 
-Was ist die letzte Phase im Linux-Bootvorgang?
+What is the last stage in the Linux boot process? (Please answer in English, paying attention to case sensitivity).
 
 ## Quiz Answer
 

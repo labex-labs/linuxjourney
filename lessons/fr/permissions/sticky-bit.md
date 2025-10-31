@@ -1,48 +1,61 @@
 ---
 index: 8
 lang: "fr"
-title: "Le Sticky Bit"
-meta_title: "Le Sticky Bit - Permissions"
-meta_description: "Découvrez le sticky bit Linux, son utilité dans les répertoires partagés comme /tmp, et comment le définir en utilisant chmod. Comprenez cette permission de fichier clé !"
-meta_keywords: "sticky bit Linux, chmod +t, répertoire /tmp, permissions Linux, sécurité des fichiers, tutoriel Linux, Linux pour débutants"
+title: "Le Bit Collant"
+meta_title: "Le Bit Collant - Permissions"
+meta_description: "Explorez l'utilité du bit collant dans les permissions de fichiers Linux et Unix. Apprenez comment le bit collant protège les fichiers dans les répertoires partagés comme /tmp et comment le définir avec chmod."
+meta_keywords: "bit collant, bit collant linux, permissions fichiers unix bit collant, chmod +t, répertoire /tmp, permissions fichiers, sécurité linux"
 ---
 
 ## Lesson Content
 
-Un dernier bit de permission spécial dont je veux parler est le sticky bit.
+Au-delà des permissions standard de lecture, d'écriture et d'exécution, Linux offre des permissions spéciales pour un contrôle d'accès avancé. La dernière de ces permissions spéciales que nous aborderons est le **bit collant** (sticky bit).
 
-Ce bit de permission "colle un fichier/répertoire", ce qui signifie que seul le propriétaire ou l'utilisateur root peut supprimer ou modifier le fichier. C'est très utile pour les répertoires partagés. Jetez un œil à l'exemple ci-dessous :
+### Qu'est-ce que le Bit Collant ?
+
+Le bit collant est un paramètre de permission qui peut être appliqué à un répertoire. Lorsqu'un répertoire a le bit collant défini, les fichiers qu'il contient ne peuvent être ni supprimés ni renommés que par le propriétaire du fichier, le propriétaire du répertoire ou l'utilisateur root. Ceci est particulièrement utile pour les répertoires partagés où plusieurs utilisateurs doivent créer et gérer leurs propres fichiers sans interférer avec les autres. Ce concept est une partie essentielle de la gestion des **permissions de fichiers Unix bit collant**.
+
+### Un Exemple Pratique : Le Répertoire /tmp
+
+Un cas d'utilisation courant pour le **bit collant sous Linux** est le répertoire `/tmp`, qui est un emplacement accessible en écriture par tous pour les fichiers temporaires. Examinons ses permissions :
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwx+t 6 root root 4096 Dec 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-Vous verrez un bit de permission spécial à la fin ici **t**. Cela signifie que tout le monde peut ajouter des fichiers, écrire des fichiers et modifier des fichiers dans le répertoire `/tmp`, mais seul root peut supprimer le répertoire `/tmp`.
+Remarquez le `t` à la fin de la chaîne de permissions (`rwxrwxrwt`). Ce `t` indique que le bit collant est défini. Grâce à cela, bien que tout utilisateur puisse créer des fichiers dans `/tmp`, il ne peut pas supprimer ou déplacer les fichiers créés par d'autres utilisateurs. Cela empêche un utilisateur de perturber le travail d'un autre dans cet espace partagé.
 
-### Modifier le sticky bit
+### Comment Définir le Bit Collant
+
+Vous pouvez définir le bit collant à l'aide de la commande `chmod` de deux manières : mode symbolique ou mode octal (numérique).
+
+Pour ajouter le bit collant en mode symbolique :
 
 ```bash
-sudo chmod +t mydir
-
-sudo chmod 1755 mydir
+chmod +t mon_repertoire_partage
 ```
 
-La représentation numérique du sticky bit est **1**.
+Pour définir les permissions en mode octal, vous préfixez un `1` au code de permission standard à trois chiffres. La représentation numérique du bit collant est **1**.
+
+```bash
+# Ceci définit les permissions à rwxr-xr-x avec le bit collant
+chmod 1755 mon_repertoire_partage
+```
+
+Comprendre le bit collant est essentiel pour gérer efficacement les environnements multi-utilisateurs et sécuriser les répertoires partagés.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des permissions de fichiers Linux et de leur impact sur la gestion des fichiers et des répertoires :
+Pour consolider votre compréhension des permissions de fichiers, y compris les permissions spéciales comme le bit collant, essayez ces laboratoires pratiques. Ils vous aideront à voir comment ces concepts s'appliquent dans des scénarios réels.
 
-1. **[Groupe d'utilisateurs Linux et permissions de fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Entraînez-vous à créer et gérer des utilisateurs et des groupes, à comprendre les permissions de fichiers et à manipuler la propriété des fichiers. Ce laboratoire fournit les connaissances fondamentales pour comprendre comment fonctionnent les permissions spéciales comme le sticky bit.
-2. **[Supprimer et déplacer des fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777)** - Apprenez à supprimer et déplacer des fichiers dans les systèmes Linux. Ce laboratoire vous aidera à comprendre les implications pratiques des permissions, y compris comment elles peuvent restreindre ces actions.
-3. **[Trouver un fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Entraînez-vous à localiser des fichiers et à définir l'autorité d'accès. Ce laboratoire renforce l'importance des permissions de fichiers et la manière dont elles contrôlent l'accès et la modification.
-
-Ces laboratoires vous aideront à appliquer les concepts de permissions de fichiers dans des scénarios réels et à renforcer votre confiance dans la gestion de l'accès aux fichiers sous Linux.
+1.  **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Entraînez-vous à créer des utilisateurs et des groupes, et à manipuler la propriété et les permissions des fichiers. Ce laboratoire fournit une base pour comprendre le fonctionnement des permissions spéciales.
+2.  **[Supprimer et Déplacer des Fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777)** - Apprenez à supprimer et déplacer des fichiers, et voyez comment les permissions, y compris le bit collant sur un répertoire, peuvent restreindre ces actions.
+3.  **[Trouver un Fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Entraînez-vous à localiser des fichiers et à définir des contrôles d'accès, renforçant l'importance des permissions de fichiers dans la gestion de l'accès et de la modification des fichiers.
 
 ## Quiz Question
 
-Quel symbole représente le sticky bit ?
+Dans un affichage détaillé du répertoire (ls -l), quel caractère unique dans la chaîne de permissions représente que le bit collant est défini ? Veuillez répondre avec une seule lettre minuscule anglaise.
 
 ## Quiz Answer
 

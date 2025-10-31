@@ -1,90 +1,104 @@
 ---
 index: 4
 lang: "fr"
-title: "Partitionnement de disque"
-meta_title: "Partitionnement de disque - Le système de fichiers"
-meta_description: "Apprenez le partitionnement de disque sous Linux en utilisant parted. Comprenez comment partitionner, sélectionner, afficher et redimensionner des disques. Démarrez avec ce guide convivial pour débutants !"
-meta_keywords: "partitionnement de disque Linux, commande parted, fdisk, gparted, tutoriel Linux, Linux débutant, gestion de disque, guide Linux"
+title: "Partitionnement de Disque"
+meta_title: "Partitionnement de Disque - Le Système de Fichiers"
+meta_description: "Apprenez le partitionnement de disque sous Linux avec la commande parted. Ce guide explique comment visualiser les partitions avec `sudo parted -l`, les créer et les redimensionner. Présente également gparted, une alternative graphique populaire."
+meta_keywords: "Partitionnement disque Linux, commande parted, sudo parted -l, gparted, alternative gparted windows, fdisk, gestion de disque, créer partition, redimensionner partition, guide Linux"
 ---
 
 ## Lesson Content
 
-Faisons des choses pratiques avec les systèmes de fichiers en parcourant le processus sur une clé USB. Si vous n'en avez pas, pas de soucis, vous pouvez toujours suivre ces quelques leçons.
+Cette leçon fournit un guide pratique pour gérer les systèmes de fichiers en partitionnant un disque, tel qu'une clé USB. Si vous n'avez pas de disque de rechange, vous pouvez toujours suivre pour comprendre les concepts.
 
-Tout d'abord, nous devrons partitionner notre disque. De nombreux outils sont disponibles pour ce faire :
+Premièrement, nous devrons partitionner notre disque. De nombreux outils sont disponibles pour cette tâche :
 
-- fdisk - outil de partitionnement en ligne de commande basique ; il ne prend pas en charge GPT
-- parted - c'est un outil en ligne de commande qui prend en charge le partitionnement MBR et GPT
-- gparted - c'est la version GUI de parted
-- gdisk - fdisk, mais il ne prend pas en charge MBR, seulement GPT
+- **fdisk** : Un outil de partitionnement en ligne de commande de base ; il ne prend pas en charge GPT.
+- **parted** : Un outil en ligne de commande puissant qui prend en charge le partitionnement MBR et GPT.
+- **gparted** : La version graphique de `parted`. Pour les utilisateurs qui préfèrent une interface visuelle, `gparted` est un outil intuitif, souvent considéré comme une excellente `alternative windows gparted`.
+- **gdisk** : Similaire à `fdisk`, mais il ne prend en charge que GPT.
 
-Utilisons parted pour notre partitionnement. Supposons que je connecte le périphérique USB et que le nom du périphérique soit /dev/sdb2.
+Nous utiliserons `parted` pour nos exemples.
 
-### Lancer parted
+### Lister les Partitions Existantes
+
+Avant d'apporter des modifications, il est crucial d'identifier votre disque et sa configuration actuelle. Un moyen rapide d'y parvenir est d'utiliser la commande `sudo parted -l`, qui liste les tables de partitions pour tous les périphériques de bloc connectés.
+
+```bash
+sudo parted -l
+```
+
+Cette commande vous aide à trouver le nom de périphérique correct, tel que `/dev/sdb`, avant de commencer à le modifier.
+
+### Lancer le Mode Interactif
+
+Pour commencer à effectuer des modifications, lancez `parted` en mode interactif. Supposons que votre périphérique cible soit `/dev/sdb`.
 
 ```bash
 sudo parted
 ```
 
-Vous entrerez dans l'outil parted ; ici, vous pouvez exécuter des commandes pour partitionner votre périphérique.
+Vous entrerez dans le shell de l'outil `parted`, où vous pourrez exécuter des commandes pour gérer les partitions de votre périphérique.
 
-### Sélectionner le périphérique
+### Sélectionner un Périphérique
+
+Une fois dans le shell `parted`, vous devez sélectionner le disque que vous souhaitez modifier. Soyez très prudent en choisissant le bon pour éviter toute perte de données.
 
 ```bash
-select /dev/sdb2
+select /dev/sdb
 ```
 
-Pour sélectionner le périphérique avec lequel vous travaillerez, sélectionnez-le par son nom de périphérique.
+### Afficher la Table de Partitions
 
-### Afficher la table de partition actuelle
+Utilisez la commande `print` pour afficher la table de partitions du disque sélectionné.
 
 ```plaintext
 (parted) print
-Model: Seagate (scsi)
-Disk /dev/sda: 21.5GB
+Model: ATA VBOX HARDDISK (scsi)
+Disk /dev/sdb: 10.7GB
 Sector size (logical/physical): 512B/512B
 Partition Table: msdos
+Disk Flags:
 
-Number  Start   End     Size    Type      File system     Flags
- 1      1049kB  6860MB  6859MB  primary   ext4            boot
- 2      6861MB  21.5GB  14.6GB  extended
- 5      6861MB  7380MB  519MB   logical   linux-swap(v1)
- 6      7381MB  21.5GB  14.1GB  logical   xfs
+Number  Start   End     Size    Type      File system  Flags
+ 1      1049kB  10.7GB  10.7GB  primary   ext4         boot
 ```
 
-Ici, vous verrez les partitions disponibles sur le périphérique. Les points de **début** et de **fin** sont l'endroit où les partitions occupent de l'espace sur le disque dur ; vous voudrez trouver un bon emplacement de début et de fin pour vos partitions.
+Ce résultat montre les partitions disponibles sur le périphérique. Les colonnes **Start** et **End** indiquent où se situe chaque partition sur le disque.
 
-### Partitionner le périphérique
+### Créer une Partition
+
+La commande `mkpart` crée une nouvelle partition. Vous devez spécifier le type de partition (par exemple, `primary`), un type de système de fichiers optionnel, ainsi que les points de début et de fin.
 
 ```bash
-mkpart primary 123 4567
+mkpart primary ext4 1MB 5000MB
 ```
 
-Maintenant, choisissez simplement un point de début et de fin et créez la partition ; vous devrez spécifier le type de partition en fonction de la table que vous avez utilisée.
+Cette commande crée une partition primaire formatée avec ext4, commençant à 1MB et se terminant à 5000MB.
 
-### Redimensionner une partition
+### Redimensionner une Partition
 
-Vous pouvez également redimensionner une partition si vous n'avez plus d'espace.
+Vous pouvez également redimensionner une partition existante avec la commande `resize`. Vous aurez besoin du numéro de partition et des nouveaux points de début et de fin.
 
 ```bash
-resize 2 1245 3456
+resize 1 1MB 8000MB
 ```
 
-Sélectionnez le numéro de partition, puis les points de début et de fin où vous souhaitez la redimensionner.
+Cette commande redimensionne la partition numéro 1 pour qu'elle se termine à la marque des 8000MB.
 
-Parted est un outil très puissant, et vous devez être prudent lorsque vous partitionnez vos disques.
+`parted` est un outil très puissant. Vérifiez toujours vos commandes avant de les exécuter pour éviter toute perte de données accidentelle.
 
 ## Exercise
 
 La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du partitionnement de disque Linux et de la gestion des systèmes de fichiers :
 
-1. [Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition d'échange, le tout sur un disque virtuel secondaire sécurisé.
+1.  [Gérer les Partitions et les Systèmes de Fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Dans ce laboratoire, vous apprendrez à gérer les partitions de disque et les systèmes de fichiers sous Linux. Vous utiliserez fdisk pour créer une nouvelle partition, la formater avec ext4, la monter, configurer le montage persistant dans /etc/fstab, et créer une partition swap, le tout sur un disque virtuel secondaire sécurisé.
 
-Ce laboratoire vous aidera à appliquer les concepts de partitionnement de disque et de gestion des systèmes de fichiers dans un scénario réel et à renforcer votre confiance avec ces compétences essentielles d'administration Linux.
+Ce laboratoire vous aidera à appliquer les concepts de partitionnement de disque et de gestion de système de fichiers dans un scénario réel et à renforcer votre confiance dans ces compétences essentielles d'administration Linux.
 
 ## Quiz Question
 
-Quelle est la commande parted pour créer une partition ?
+Quelle est la commande `parted` pour créer une partition ? (Veuillez répondre en anglais, en faisant attention à la casse).
 
 ## Quiz Answer
 

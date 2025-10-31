@@ -3,44 +3,69 @@ index: 9
 lang: "de"
 title: "Festplattennutzung"
 meta_title: "Festplattennutzung - Das Dateisystem"
-meta_description: "Erfahren Sie, wie Sie die Festplattennutzung und den freien Speicherplatz unter Linux mit den Befehlen df und du überprüfen. Verstehen Sie ihre Unterschiede und wann Sie welchen verwenden sollten. Linux-Festplattenverwaltungs-Tutorial."
-meta_keywords: "df Befehl, du Befehl, Linux Festplattennutzung, freien Speicherplatz prüfen, Linux Tutorial, Linux für Anfänger, Festplattenverwaltung, Linux Anleitung"
+meta_description: "Erfahren Sie, wie Sie die Linux-Festplattennutzung und den freien Speicherplatz mit den Befehlen df und du überprüfen. Diese Anleitung behandelt die Analyse des Speicherplatzes, einschließlich der Inode-Nutzung mit df -i linux, und wie Sie herausfinden, welche Dateien Platz belegen."
+meta_keywords: "df Befehl, du Befehl, Linux Festplattennutzung, freien Speicherplatz prüfen, df -i linux, Speicherverwaltung, Linux Tutorial, Speichernutzung, Dateisystemnutzung"
 ---
 
 ## Lesson Content
 
-Es gibt einige Tools, mit denen Sie die Auslastung Ihrer Festplatten überprüfen können:
+Die Verwaltung des Speicherplatzes ist eine grundlegende Aufgabe für jeden Linux-Benutzer oder Administrator. Zwei wesentliche Befehle hierfür sind `df` und `du`. Lassen Sie uns untersuchen, wie Sie diese verwenden können, um Ihre Festplattenauslastung effektiv zu überwachen.
+
+### Überprüfung des Dateisystemspeichers mit df
+
+Der Befehl `df` (disk free) meldet den auf Ihren gemounteten Dateisystemen verwendeten und verfügbaren Speicherplatz. Er bietet einen Überblick über Ihre Speicherkapazität.
+
+Um einen Bericht in einem menschenlesbaren Format (z. B. GB, MB, KB) zu erhalten, verwenden Sie das Flag `-h`:
 
 ```bash
 pete@icebox:~$ df -h
-Filesystem     1K-blocks    Used Available Use% Mounted on
+Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1       6.2G  2.3G  3.6G  40% /
 ```
 
-Der Befehl `df` zeigt Ihnen die Auslastung Ihrer aktuell gemounteten Dateisysteme an. Das Flag `-h` liefert ein menschenlesbares Format. Sie können sehen, welches Gerät es ist und wie viel Kapazität belegt und verfügbar ist.
+Diese Ausgabe zeigt das Dateisystemgerät, die Gesamtgröße, den belegten Speicherplatz, den verfügbaren Speicherplatz, den Nutzungsprozentsatz und den Einhängepunkt.
 
-Angenommen, Ihre Festplatte wird voll und Sie möchten wissen, welche Dateien oder Verzeichnisse diesen Speicherplatz belegen; dafür können Sie den Befehl **du** verwenden.
+### Analyse der Inode-Nutzung
+
+Neben dem Block-Speicher verwenden Dateisysteme auch Inodes, um Metadaten über Dateien (wie Berechtigungen, Eigentümerschaft und Speicherort) zu speichern. In seltenen Fällen kann Ihnen der Speicherplatz für Inodes ausgehen, selbst wenn noch freier Speicherplatz vorhanden ist. Um die Inode-Nutzung zu überprüfen, können Sie den Befehl `df -i` verwenden. Die Ausführung von `df -i` unter Linux gibt Ihnen einen klaren Überblick über die Inode-Zuweisung.
+
+```bash
+pete@icebox:~$ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/sda1      4128768 128768 4000000    4% /
+```
+
+### Zusammenfassung der Verzeichnisnutzung mit du
+
+Wenn Sie feststellen, dass eine Festplatte voll wird, möchten Sie herausfinden, welche Dateien oder Verzeichnisse den meisten Speicherplatz verbrauchen. Für diese Aufgabe ist der Befehl `du` (disk usage) das perfekte Werkzeug.
+
+Die Ausführung von `du` ohne Argumente zeigt die Festplattennutzung für jedes Unterverzeichnis an Ihrem aktuellen Standort. Die Verwendung des Flags `-h` liefert eine menschenlesbare Zusammenfassung:
 
 ```bash
 du -h
 ```
 
-Dies zeigt Ihnen die Festplattennutzung des aktuellen Verzeichnisses, in dem Sie sich befinden. Sie können mit `du -h /` einen Blick in das Stammverzeichnis werfen, aber das kann etwas unübersichtlich werden.
+Sie können auch einen Pfad angeben, z. B. `du -h /home/pete`, um ein bestimmtes Verzeichnis zu analysieren. Die Ausführung auf dem Stammverzeichnis (`du -h /`) kann viele Ergebnisse liefern, daher ist es oft besser, bestimmte Verzeichnisse zu überprüfen, von denen Sie vermuten, dass sie groß sind.
 
-Beide Befehle sind sich in der Syntax so ähnlich, dass es schwierig sein kann, sich zu merken, welchen man verwenden soll. Um zu überprüfen, wie viel Speicherplatz auf Ihrer **Festplatte** **frei** ist, verwenden Sie `df`. Um die **Festplattennutzung** zu überprüfen, verwenden Sie `du`.
+### df vs du Eine kurze Zusammenfassung
+
+Die Syntax für `df` und `du` ist so ähnlich, dass man sie leicht verwechseln kann. Hier ist eine einfache Möglichkeit, sich den Unterschied zu merken:
+
+- Verwenden Sie `df`, um zu prüfen, wie viel **d**isk **f**ree (Festplatte frei) auf Ihren Dateisystemen ist.
+- Verwenden Sie `du`, um die **d**isk **u**sage (Festplattennutzung) spezifischer Dateien und Verzeichnisse zu prüfen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Festplattenverwaltung und -nutzung unter Linux zu vertiefen:
+Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis für die Verwaltung und Auslastung des Speicherplatzes unter Linux zu festigen:
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen, Formatieren und Mounten von Dateisystemen, die die zugrunde liegenden Strukturen sind, die von `df` und `du` gemeldet werden.
-2. **[Eine Swap-Datei in Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** – Lernen Sie, den virtuellen Speicher auf der Festplatte zu verwalten, ein kritischer Aspekt der Systemressourcenverwaltung, der den Festplattenspeicher beeinflusst.
+1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Üben Sie das Erstellen, Formatieren und Einhängen von Dateisystemen, welche die zugrunde liegenden Strukturen sind, über die `df` und `du` berichten.
+2. **[Eine Swap-Datei unter Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Lernen Sie, den virtuellen Speicher auf der Festplatte zu verwalten, ein kritischer Aspekt der Systemressourcenverwaltung, der den Speicherplatz beeinflusst.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Festplattenressourcen aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Speicherressourcen aufzubauen.
 
 ## Quiz Question
 
-Welcher Befehl wird verwendet, um anzuzeigen, wie viel Speicherplatz auf Ihrer Festplatte frei ist?
+Welcher Befehl wird verwendet, um anzuzeigen, wie viel Speicherplatz auf Ihrer Festplatte frei ist? Bitte antworten Sie in Kleinbuchstaben auf Englisch.
 
 ## Quiz Answer
 

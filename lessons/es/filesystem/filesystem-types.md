@@ -3,31 +3,35 @@ index: 2
 lang: "es"
 title: "Tipos de Sistemas de Archivos"
 meta_title: "Tipos de Sistemas de Archivos - El Sistema de Archivos"
-meta_description: "Aprenda sobre los tipos de sistemas de archivos de Linux como ext4, Btrfs y XFS. Comprenda el registro (journaling) y VFS para datos consistentes. Explore los sistemas de archivos comunes de Linux en esta guía para principiantes."
-meta_keywords: "tipos de sistemas de archivos Linux, ext4, Btrfs, XFS, journaling, VFS, tutorial Linux, guía para principiantes"
+meta_description: "Descubra los diferentes tipos de sistemas de archivos de Linux, incluyendo ext4, Btrfs y XFS. Esta guía explica conceptos clave como el journaling y el Sistema de Archivos Virtual (VFS), ayudándole a comprender los diversos tipos de sistemas de archivos disponibles para Linux."
+meta_keywords: "tipos de sistemas de archivos linux, tipos de sistemas de archivos, ext4, Btrfs, XFS, journaling, VFS, tutorial linux"
 ---
 
 ## Lesson Content
 
-Existen muchas implementaciones diferentes de sistemas de archivos. Algunos son más rápidos que otros, algunos soportan almacenamiento de mayor capacidad y otros solo funcionan en almacenamiento de menor capacidad. Los diferentes sistemas de archivos tienen diferentes formas de organizar sus datos, y entraremos en detalle sobre qué tipos de sistemas de archivos existen. Dado que hay tantas implementaciones diferentes disponibles, las aplicaciones necesitan una forma de manejar las diferentes operaciones. Por lo tanto, existe algo llamado capa de abstracción del Sistema de Archivos Virtual (VFS). Es una capa entre las aplicaciones y los diferentes tipos de sistemas de archivos, por lo que no importa qué sistema de archivos tenga, sus aplicaciones podrán trabajar con él.
+Linux admite una amplia variedad de implementaciones de sistemas de archivos. Algunos están optimizados para la velocidad, otros para una gran capacidad de almacenamiento y algunos están diseñados para dispositivos más pequeños. Cada uno de estos diferentes tipos de sistemas de archivos tiene una forma única de organizar los datos.
 
-Puede tener muchos sistemas de archivos en sus discos, dependiendo de cómo estén particionados, y lo veremos en una próxima lección.
+### El papel del Sistema de Archivos Virtual
 
-### Registro (Journaling)
+Con tantas implementaciones diferentes disponibles, las aplicaciones necesitan una forma coherente de interactuar con ellas. Aquí es donde entra en juego el Sistema de Archivos Virtual (VFS). El VFS es una capa de abstracción en el kernel de Linux que se sitúa entre las aplicaciones y los diversos sistemas de archivos. Proporciona una interfaz única y uniforme, asegurando que las aplicaciones puedan funcionar sin problemas independientemente del tipo de sistema de archivos subyacente. Esta flexibilidad le permite tener múltiples sistemas de archivos en sus discos, a menudo organizados a través de particiones, lo que cubriremos en una lección futura.
 
-El registro (journaling) viene por defecto en la mayoría de los tipos de sistemas de archivos, pero en caso de que no sea así, debe saber lo que hace. Digamos que está copiando un archivo grande y de repente pierde la energía. Bueno, si está en un sistema de archivos sin registro, el archivo terminaría corrupto y su sistema de archivos sería inconsistente. Luego, cuando vuelva a arrancar, su sistema realizaría una verificación del sistema de archivos para asegurarse de que todo esté bien. Sin embargo, las reparaciones podrían tardar un tiempo dependiendo del tamaño de su sistema de archivos.
+### Journaling para la integridad de los datos
 
-Ahora, si estuviera en un sistema con registro, antes de que su máquina comience a copiar el archivo, escribirá lo que va a hacer en un archivo de registro (journal). Cuando realmente copie el archivo, una vez que se complete, el registro marca esa tarea como completa. El sistema de archivos siempre está en un estado consistente debido a esto, por lo que sabrá exactamente dónde se quedó si su máquina se apaga repentinamente. Esto también disminuye el tiempo de arranque porque en lugar de verificar todo el sistema de archivos, solo mira su registro.
+La mayoría de los tipos de sistemas de archivos modernos incluyen una característica llamada journaling (registro por diario) por defecto. Para comprender su importancia, imagine copiar un archivo grande cuando su computadora pierde energía repentinamente. En un sistema de archivos sin journaling, esta interrupción podría provocar un archivo corrupto y un estado inconsistente del sistema de archivos. Al reiniciar, su sistema necesitaría realizar una verificación completa del sistema de archivos (fsck), lo que puede llevar mucho tiempo en discos grandes.
 
-### Tipos Comunes de Sistemas de Archivos de Escritorio
+Un sistema de archivos con journaling evita este problema. Antes de realizar una operación de escritura, primero registra los cambios previstos en un archivo de registro especial, o "journal". Una vez que la operación se completa con éxito, el journal se actualiza para marcar la tarea como finalizada. Si ocurre un fallo, el sistema simplemente puede leer el journal al reiniciar para ver qué operaciones estaban en curso y devolver rápidamente el sistema de archivos a un estado consistente. Esto reduce drásticamente el tiempo de recuperación y protege contra la corrupción de datos.
 
-- ext4 - Esta es la versión más actual de los sistemas de archivos nativos de Linux. Es compatible con las versiones anteriores ext2 y ext3. Soporta volúmenes de disco de hasta 1 exabyte y tamaños de archivo de hasta 16 terabytes y mucho más. Es la opción estándar para los sistemas de archivos de Linux.
-- Btrfs - "Better or Butter FS" es un nuevo sistema de archivos para Linux que viene con instantáneas, copias de seguridad incrementales, aumento de rendimiento y mucho más. Está ampliamente disponible, pero aún no es del todo estable y compatible.
-- XFS - Sistema de archivos con registro de alto rendimiento, ideal para un sistema con archivos grandes como un servidor de medios.
-- NTFS y FAT - Sistemas de archivos de Windows
-- HFS+ - Sistema de archivos de Macintosh
+### Tipos comunes de sistemas de archivos de Linux
 
-Verifique qué sistemas de archivos hay en su máquina:
+Aquí hay algunos de los **tipos de sistemas de archivos de linux** más comunes que encontrará:
+
+- **ext4** - Como la última versión del Sistema de Archivos Extendido nativo de Linux, ext4 es el predeterminado para muchas distribuciones. Es compatible con versiones anteriores de sus predecesores (ext2/ext3) y admite volúmenes de disco muy grandes (hasta 1 exabyte) y tamaños de archivo (hasta 16 terabytes). Es una opción confiable y estándar para la mayoría de los casos de uso.
+- **Btrfs** - A menudo llamado "B-tree FS", Btrfs es un sistema de archivos moderno con características avanzadas como instantáneas integradas, copias de seguridad incrementales y rendimiento mejorado. Aunque ahora se considera estable y es el predeterminado en algunas distribuciones, todavía está en desarrollo activo.
+- **XFS** - Un sistema de archivos con journaling de alto rendimiento que sobresale en el manejo de archivos grandes y operaciones de E/S paralelas. Esto lo convierte en una excelente opción para sistemas que administran grandes cantidades de datos, como servidores multimedia.
+- **NTFS y FAT** - Estos son tipos de sistemas de archivos estándar de Windows. Linux proporciona soporte completo para leerlos y escribirlos, lo cual es útil para sistemas de arranque dual.
+- **HFS+** - El sistema de archivos principal utilizado por macOS. Linux tiene soporte de solo lectura para él por defecto, con soporte de escritura disponible a través de herramientas adicionales.
+
+Puede ver qué sistemas de archivos están en uso en su máquina con el comando `df`:
 
 ```plaintext
 pete@icebox:~$ df -T
@@ -38,19 +42,19 @@ tmpfs          tmpfs       102544    1068    101476   2% /run
 /dev/sda6      xfs       13752320  460112  13292208   4% /home
 ```
 
-El comando **df** informa el uso del espacio en disco del sistema de archivos y otros detalles sobre su disco; hablaremos más sobre esta herramienta más adelante.
+El comando `df` informa sobre el uso del espacio en disco del sistema de archivos. El indicador `-T` muestra específicamente el tipo de sistema de archivos. Exploraremos esta herramienta con más detalle más adelante.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de los sistemas de archivos y particiones de Linux:
+Para poner su conocimiento en práctica, complete el siguiente laboratorio práctico. Le ayudará a reforzar su comprensión de los sistemas de archivos y particiones de Linux:
 
-1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Practique la creación de una nueva partición, su formato, su montaje y la configuración del montaje persistente, todas habilidades fundamentales relacionadas con la gestión de diferentes implementaciones de sistemas de archivos.
+1. **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, practicará la creación de una nueva partición, su formateo con un tipo de sistema de archivos específico, su montaje y su configuración para el montaje persistente. Estas son habilidades fundamentales para administrar el almacenamiento en Linux.
 
-Este laboratorio le ayudará a aplicar los conceptos en escenarios reales y a generar confianza en la gestión del almacenamiento en disco en Linux.
+Este laboratorio le permite aplicar estos conceptos en un escenario del mundo real y aumentar su confianza con la administración de discos.
 
 ## Quiz Question
 
-¿Cuál es el tipo de sistema de archivos común de Linux?
+¿Cuál es el tipo de sistema de archivos más común y predeterminado para muchas distribuciones de Linux? (Por favor, responda en inglés, prestando atención a la sensibilidad a las mayúsculas y minúsculas)
 
 ## Quiz Answer
 

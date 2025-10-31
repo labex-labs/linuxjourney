@@ -3,45 +3,55 @@ index: 7
 lang: "fr"
 title: "États d'alimentation"
 meta_title: "États d'alimentation - Init"
-meta_description: "Apprenez les états d'alimentation du système Linux : commandes shutdown, reboot et halt. Comprenez comment éteindre ou redémarrer votre système Linux en toute sécurité. Démarrez avec les commandes essentielles !"
-meta_keywords: "arrêt Linux, commande reboot, système halt, éteindre Linux, commandes Linux, Linux débutant, tutoriel Linux, états du système"
+meta_description: "Apprenez à gérer les états d'alimentation du système Linux. Ce guide couvre les commandes essentielles d'arrêt (shutdown), de redémarrage (reboot) et de halt pour éteindre ou redémarrer votre système Linux en toute sécurité. Maîtrisez ces commandes Linux fondamentales pour l'administration système."
+meta_keywords: "états alimentation linux, commande shutdown, commande reboot, commande halt, poweroff linux, redémarrer linux, administration système linux, linux débutants, commandes linux, systemd, init"
 ---
 
 ## Lesson Content
 
-Il est difficile de croire que nous n'avons pas encore abordé les moyens de contrôler l'état de votre système via la ligne de commande. Lorsque nous parlons d'`init`, nous discutons non seulement des modes qui démarrent notre système, mais aussi de ceux qui l'arrêtent.
+La gestion appropriée de l'état d'alimentation de votre système Linux est une compétence fondamentale. Bien que vous puissiez utiliser une interface graphique, la ligne de commande offre des options puissantes et flexibles pour éteindre ou redémarrer votre machine. Ces processus sont liés au système d'initialisation du système, tel que `init` ou `systemd`, qui gère différents états opérationnels, y compris le démarrage et l'arrêt.
 
-Pour éteindre votre système :
+### Arrêt du Système
+
+La commande principale pour gérer les états d'alimentation est `shutdown`. Pour éteindre immédiatement votre système Linux, vous pouvez utiliser la commande `shutdown` avec l'indicateur `-h` (halt) et l'argument de temps `now` (maintenant). Des privilèges administratifs sont requis, vous devrez donc utiliser `sudo`.
 
 ```bash
 sudo shutdown -h now
 ```
 
-Cette commande arrêtera le système (l'éteindra). Vous devez également spécifier l'heure à laquelle vous souhaitez que cela se produise. Vous pouvez ajouter un temps en minutes qui éteindra le système dans ce laps de temps.
+L'indicateur `-h` demande au système de s'arrêter (halt) après l'arrêt des services. Sur la plupart des matériels modernes, cela éteindra complètement la machine. Vous pouvez également planifier un arrêt pour une heure future. Pour éteindre le système dans un nombre spécifique de minutes, utilisez le format `+m`:
 
 ```bash
 sudo shutdown -h +2
 ```
 
-Cela éteindra votre système dans deux minutes. Vous pouvez également redémarrer avec la commande `shutdown` :
+Cette commande arrêtera votre système dans deux minutes, ce qui est utile pour avertir les autres utilisateurs ou permettre aux processus d'arrière-plan de se terminer proprement.
+
+### Redémarrage du Système
+
+Pour redémarrer votre système Linux, vous pouvez utiliser la commande `shutdown` avec l'indicateur `-r` (reboot).
 
 ```bash
 sudo shutdown -r now
 ```
 
-Ou utilisez simplement la commande `reboot` :
+Une alternative plus directe et couramment utilisée est la commande `reboot`, qui réalise le même objectif de redémarrer le système en toute sécurité.
 
 ```bash
 sudo reboot
 ```
 
+### Commandes d'Alimentation Alternatives
+
+Pour un contrôle plus direct, vous pourriez également rencontrer les commandes `halt` et `poweroff`. Dans de nombreuses distributions Linux modernes, ce sont essentiellement des raccourcis qui appellent la commande `shutdown`. Par exemple, exécuter `poweroff` est souvent équivalent à exécuter `shutdown -h now`.
+
 ## Exercise
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux connexes.
+N'hésitez pas à pratiquer ces commandes dans une machine virtuelle. Pour des exercices plus guidés, explorez le [Parcours d'Apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer un large éventail de compétences Linux.
 
 ## Quiz Question
 
-Quelle est la commande pour éteindre votre système en 4 minutes ?
+What is the full command, including `sudo`, to schedule a system power off in 4 minutes? Please provide the complete command in English, paying attention to spacing and case.
 
 ## Quiz Answer
 

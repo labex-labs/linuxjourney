@@ -1,17 +1,21 @@
 ---
 index: 11
 lang: "es"
-title: "join y split"
-meta_title: "join y split - Text-Fu"
-meta_description: "Aprende a usar los comandos 'join' y 'split' de Linux para la manipulación de archivos. Comprende cómo combinar archivos por campos comunes y dividir archivos grandes de manera eficiente. Obtén ejemplos prácticos y consejos."
-meta_keywords: "comando join de Linux, comando split de Linux, manipulación de archivos, tutorial de Linux, línea de comandos, Linux para principiantes, guía de Linux"
+title: "unir y dividir"
+meta_title: "unir y dividir - Text-Fu"
+meta_description: "Domina el uso de los comandos de Linux join y split. Aprende a unir archivos eficientemente basándote en campos comunes y a dividir archivos grandes en partes más pequeñas. Esta guía cubre qué comando usarías para unir archivos llamados gato, perro, vaca y otros ejemplos prácticos."
+meta_keywords: "unir archivos linux, qué comando usarías para unir archivos, comando join linux, comando split linux, manipulación de archivos, línea de comandos, procesamiento de texto"
 ---
 
 ## Lesson Content
 
-El comando `join` te permite unir múltiples archivos por un campo común:
+En Linux, gestionar y manipular archivos de texto es una tarea común. Dos utilidades potentes para esto son `join` y `split`. El comando `join` fusiona líneas de dos archivos basándose en un campo común, mientras que `split` divide un archivo grande en partes más pequeñas y manejables.
 
-Digamos que tengo dos archivos que quiero unir:
+### Unir Archivos por un Campo Común
+
+El comando `join` es una herramienta fundamental cuando necesitas **unir archivos linux**. Por defecto, combina líneas de dos archivos ordenados basándose en un primer campo idéntico.
+
+Por ejemplo, imagina que tienes dos archivos que deseas fusionar:
 
 ```plaintext
 file1.txt
@@ -25,6 +29,8 @@ file2.txt
 3 Sue
 ```
 
+Usando el comando `join`, puedes fusionarlos fácilmente:
+
 ```bash
 $ join file1.txt file2.txt
 1 John Doe
@@ -32,9 +38,11 @@ $ join file1.txt file2.txt
 3 Mary Sue
 ```
 
-¿Ves cómo unió mis archivos? Se unen por el primer campo por defecto, y los campos tienen que ser idénticos. Si no lo son, puedes ordenarlos. En este caso, los archivos se unen a través de 1, 2, 3.
+Como puedes ver, los archivos se unieron utilizando el primer campo común (1, 2, 3). Para que `join` funcione correctamente, los campos de unión en ambos archivos deben estar ordenados.
 
-¿Cómo uniríamos los siguientes archivos?
+### Especificar Campos de Unión Diferentes
+
+¿Qué pasa si el campo común no es la primera columna? Puedes indicarle a `join` qué campos usar. Considera estos archivos:
 
 ```plaintext
 file1.txt
@@ -48,7 +56,7 @@ file2.txt
 3 Sue
 ```
 
-Para unir este archivo, necesitas especificar qué campos estás uniendo. En este caso, queremos el campo 2 en `file1.txt` y el campo 1 en `file2.txt`, por lo que el comando se vería así:
+Aquí, necesitamos unir en el segundo campo de `file1.txt` y el primer campo de `file2.txt`. El comando sería:
 
 ```bash
 $ join -1 2 -2 1 file1.txt file2.txt
@@ -57,27 +65,31 @@ $ join -1 2 -2 1 file1.txt file2.txt
 3 Mary Sue
 ```
 
-`-1` se refiere a `file1.txt` y `-2` se refiere a `file2.txt`. Bastante ingenioso. También puedes dividir un archivo en diferentes archivos con el comando `split`:
+La bandera `-1 2` especifica el campo 2 del primer archivo, y `-2 1` especifica el campo 1 del segundo archivo.
+
+### Dividir Archivos Grandes
+
+El comando `split` hace lo contrario de unir; divide un archivo grande en archivos más pequeños.
 
 ```bash
-split somefile
+$ split somefile
 ```
 
-Esto lo dividirá en diferentes archivos. Por defecto, los dividirá una vez que alcancen un límite de 1000 líneas. Los archivos se nombran `x**` por defecto.
+Por defecto, este comando divide `somefile` en nuevos archivos una vez que se alcanza un límite de 1000 líneas. Los archivos de salida se nombran `xaa`, `xab`, y así sucesivamente. Puedes personalizar este comportamiento, por ejemplo, especificando un recuento de líneas diferente con la bandera `-l` o dividiendo por tamaño de archivo con la bandera `-b`.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de cómo unir y manipular archivos de texto:
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la unión y manipulación de archivos de texto:
 
-1. **[Comando Linux join: Unión de archivos](https://labex.io/es/labs/linux-linux-join-command-file-joining-219193)** - Este laboratorio proporciona una introducción directa y práctica al comando `join`, permitiéndote practicar la fusión de líneas de dos archivos de texto ordenados basándose en un campo común, tal como se discutió en la lección.
-2. **[Procesamiento de datos de empleados](https://labex.io/es/labs/linux-processing-employees-data-388132)** - Aplica tus conocimientos de `join` y otras potentes utilidades de línea de comandos de Linux como `awk` para combinar y procesar datos de múltiples fuentes, simulando un escenario de análisis de datos del mundo real.
-3. **[Control de secuencia y tuberías](https://labex.io/es/labs/linux-sequence-control-and-pipeline-17994)** - Mejora tu eficiencia en la línea de comandos y tus habilidades de manipulación de datos aprendiendo a controlar las secuencias de ejecución de comandos, utilizar tuberías y aprovechar potentes herramientas de procesamiento de texto, lo que complementa las capacidades de combinación de datos de `join`.
+1. **[Comando join de Linux: Unión de Archivos](https://labex.io/es/labs/linux-linux-join-command-file-joining-219193)** - Este laboratorio proporciona una introducción directa y práctica al comando `join`, permitiéndote practicar la fusión de líneas de dos archivos de texto ordenados basándose en un campo común, tal como se discutió en la lección.
+2. **[Procesamiento de Datos de Empleados](https://labex.io/es/labs/linux-processing-employees-data-388132)** - Aplica tu conocimiento de `join` y otras potentes utilidades de línea de comandos de Linux como `awk` para combinar y procesar datos de múltiples fuentes, simulando un escenario de análisis de datos del mundo real.
+3. **[Control de Secuencia y Tubería (Pipeline)](https://labex.io/es/labs/linux-sequence-control-and-pipeline-17994)** - Mejora tu eficiencia en la línea de comandos y tus habilidades de manipulación de datos aprendiendo a controlar secuencias de ejecución de comandos, utilizar tuberías (pipelines) y aprovechar potentes herramientas de procesamiento de texto, lo que complementa las capacidades de combinación de datos de `join`.
 
 Estos laboratorios te ayudarán a aplicar los conceptos de manipulación de archivos de texto y combinación de datos en escenarios reales y a ganar confianza con las herramientas de línea de comandos de Linux.
 
 ## Quiz Question
 
-¿Qué comando usarías para unir archivos llamados `cat`, `dog`, `cow`?
+¿Qué comando usarías para unir archivos llamados `cat`, `dog`, `cow`? Por favor, proporciona el comando completo en inglés. El comando y los nombres de archivo deben estar en minúsculas.
 
 ## Quiz Answer
 

@@ -3,44 +3,69 @@ index: 9
 lang: "pt"
 title: "Uso do Disco"
 meta_title: "Uso do Disco - O Sistema de Arquivos"
-meta_description: "Aprenda como verificar o uso do disco e o espaço livre no Linux usando os comandos df e du. Entenda suas diferenças e quando usar cada um. Tutorial de gerenciamento de disco Linux."
-meta_keywords: "comando df, comando du, uso do disco Linux, verificar espaço livre, tutorial Linux, Linux para iniciantes, gerenciamento de disco, guia Linux"
+meta_description: "Aprenda a verificar o uso do disco e o espaço livre no Linux com os comandos df e du. Este guia aborda como analisar o espaço em disco, incluindo o uso de inodes com df -i linux, e como encontrar quais arquivos estão ocupando espaço."
+meta_keywords: "comando df, comando du, uso de disco Linux, verificar espaço livre, df -i linux, gerenciamento de disco, tutorial Linux, utilização de disco, uso do sistema de arquivos"
 ---
 
 ## Lesson Content
 
-Existem algumas ferramentas que você pode usar para ver a utilização de seus discos:
+Gerenciar o espaço em disco é uma tarefa fundamental para qualquer usuário ou administrador Linux. Dois comandos essenciais para este propósito são `df` e `du`. Vamos explorar como usá-los para monitorar a utilização do seu disco de forma eficaz.
+
+### Verificando o Espaço do Sistema de Arquivos com df
+
+O comando `df` (disk free - disco livre) relata a quantidade de espaço em disco usada e disponível nos seus sistemas de arquivos montados atualmente. Ele fornece uma visão geral do seu armazenamento.
+
+Para obter um relatório em formato legível por humanos (ex: GB, MB, KB), use a flag `-h`:
 
 ```bash
 pete@icebox:~$ df -h
-Filesystem     1K-blocks    Used Available Use% Mounted on
+Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1       6.2G  2.3G  3.6G  40% /
 ```
 
-O comando `df` mostra a utilização dos seus sistemas de arquivos atualmente montados. A flag `-h` fornece um formato legível por humanos. Você pode ver qual é o dispositivo e quanta capacidade é usada e disponível.
+Esta saída mostra o dispositivo do sistema de arquivos, o tamanho total, o espaço usado, o espaço disponível, a porcentagem de uso e onde ele está montado.
 
-Digamos que seu disco esteja ficando cheio e você queira saber quais arquivos ou diretórios estão ocupando esse espaço; para isso, você pode usar o comando **du**.
+### Analisando o Uso de Inodes
+
+Além do espaço em blocos, os sistemas de arquivos também usam inodes para armazenar metadados sobre arquivos (como permissões, propriedade e localização). Em raras ocasiões, você pode ficar sem inodes mesmo tendo espaço livre em disco. Para verificar o uso de inodes, você pode usar o comando `df -i`. Executar `df -i` no Linux oferece uma imagem clara da alocação de inodes.
+
+```bash
+pete@icebox:~$ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/sda1      4128768 128768 4000000    4% /
+```
+
+### Resumindo o Uso de Diretórios com du
+
+Quando você percebe que um disco está ficando cheio, você vai querer identificar quais arquivos ou diretórios estão consumindo mais espaço. Para esta tarefa, o comando `du` (disk usage - uso de disco) é a ferramenta perfeita.
+
+Executar `du` sem argumentos mostra o uso de disco para cada subdiretório na sua localização atual. Usar a flag `-h` fornece um resumo legível por humanos:
 
 ```bash
 du -h
 ```
 
-Isso mostra o uso do disco do diretório atual em que você está. Você pode dar uma olhada no diretório raiz com `du -h /`, mas isso pode ficar um pouco confuso.
+Você também pode especificar um caminho, como `du -h /home/pete`, para analisar um diretório específico. Executá-lo no diretório raiz (`du -h /`) pode gerar muitas saídas, então é frequentemente melhor verificar diretórios específicos que você suspeita serem grandes.
 
-Ambos os comandos são tão semelhantes na sintaxe que pode ser difícil lembrar qual usar. Para verificar quanto do seu **disco** está **livre**, use `df`. Para verificar o **uso do disco**, use `du`.
+### df vs du Um Resumo Rápido
+
+A sintaxe para `df` e `du` é tão semelhante que pode ser fácil confundi-los. Aqui está uma maneira simples de lembrar a diferença:
+
+- Use `df` para verificar quanto **d**isco está **l**ivre (disk **f**ree) nos seus sistemas de arquivos.
+- Use `du` para verificar o **u**so de **d**isco (disk **u**sage) de arquivos e diretórios específicos.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento e utilização do espaço em disco no Linux:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre gerenciamento e utilização de espaço em disco no Linux:
 
 1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Pratique a criação, formatação e montagem de sistemas de arquivos, que são as estruturas subjacentes relatadas por `df` e `du`.
-2. **[Criar e Ativar um Arquivo Swap no Linux](https://labex.io/pt/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda a gerenciar a memória virtual em disco, um aspecto crítico do gerenciamento de recursos do sistema que impacta o espaço em disco.
+2. **[Criar e Ativar um Arquivo de Swap no Linux](https://labex.io/pt/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Aprenda a gerenciar a memória virtual em disco, um aspecto crítico do gerenciamento de recursos do sistema que afeta o espaço em disco.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de recursos de disco.
+Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança no gerenciamento de recursos de disco.
 
 ## Quiz Question
 
-Qual comando é usado para mostrar quanto espaço está livre em seu disco?
+Qual comando é usado para mostrar quanto espaço está livre no seu disco? Responda em letras minúsculas em inglês.
 
 ## Quiz Answer
 

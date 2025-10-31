@@ -2,47 +2,51 @@
 index: 12
 lang: "zh"
 title: "Emacs 编辑"
-meta_title: "Emacs 编辑 - 高级文本技巧"
-meta_description: "学习 Emacs 编辑基础知识：高效导航文本、剪切和粘贴。这本适合初学者的指南帮助您掌握 Linux 中基本的 Emacs 命令。"
-meta_keywords: "Emacs, Emacs 教程，Emacs 命令，文本编辑器，Linux 编辑器，Emacs 导航，Emacs 初学者，Emacs 指南"
+meta_title: "Emacs 编辑 - 高级文本操作"
+meta_description: "通过本入门指南掌握 Emacs 编辑的基础知识。学习这款强大的 Linux 文本编辑器中用于文本导航、剪切和粘贴的基本 Emacs 命令。"
+meta_keywords: "Emacs, Emacs 教程，Emacs 命令，文本编辑器，Linux 编辑器，Emacs 导航，Emacs 入门，Emacs 指南"
 ---
 
 ## Lesson Content
 
-### 文本导航
+Emacs 是一个强大且可扩展的文本编辑器，在 Linux 和其他类 Unix 系统上被广泛使用。本 Emacs 入门指南将向您介绍一些基本的编辑命令。在 Emacs 的术语中，`C-` 指的是 `Ctrl` 键，`M-` 指的是 `Meta` 键，通常是 `Alt` 键。
+
+### Emacs 文本导航
+
+虽然 Home、End 和箭头键等标准导航键可以按预期工作，但 Emacs 提供了更高效的命令来在文本（Emacs 称之为“缓冲区”）中移动。掌握 Emacs 导航是精通 Emacs 的关键一步。
+
+以下是一些用于移动光标的基本 Emacs 命令：
 
 ```
-C-up arrow: move up one paragraph
-C-down arrow: move down one paragraph
-C-left arrow: move one word left
-C-right arrow: move one word right
-M->: move to the end of the buffer
+C-向上箭头: 向上移动一个段落
+C-向下箭头: 向下移动一个段落
+C-向左箭头: 向左移动一个单词
+C-向右箭头: 向右移动一个单词
+M->: 移动到缓冲区末尾
 ```
-
-使用文本导航时，您的常规文本按钮（如 Home、End、Page Up、Page Down 和方向键等）都能正常工作。
 
 ### 剪切和粘贴
 
-要在 Emacs 中剪切 (kill) 或粘贴 (yank)，您需要先选择文本。要选择文本，请将光标移动到您要剪切或粘贴的位置，然后按下 `C-space key`。然后您可以使用导航键选择所需的文本。现在您可以这样剪切和粘贴：
+在 Emacs 中，剪切称为“killing”，粘贴称为“yanking”。要执行这些操作，您首先需要选择一个文本区域。
+
+要开始选择文本，请将光标移动到所需区域的开头并按下 `C-space`。这会设置“标记”（mark）。然后，使用任何导航命令将光标移动到您想要选择区域的末尾。标记和当前光标位置之间的区域将被高亮显示。
+
+选择区域后，您可以使用以下命令：
 
 ```
-C-w: cut
-C-y: yank
+C-w: kill (剪切) 选定的区域
+C-y: yank (粘贴) 最后被剪切的文本
 ```
+
+这些基本命令构成了 Emacs 文本编辑器中编辑的基础。
 
 ## Exercise
 
-熟能生巧！这里有一些动手实验来巩固您对 Linux 用户和组管理的理解：
-
-1. **[使用 useradd、usermod 和 userdel 管理 Linux 用户账户](https://labex.io/zh/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 练习用户管理的完整生命周期，从创建和保护新账户到修改和删除它们。
-2. **[使用 groupadd、usermod 和 groupdel 管理 Linux 组](https://labex.io/zh/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 获得使用核心命令行工具进行组管理的实践经验，包括创建新组、修改用户成员资格和删除组。
-3. **[在 Linux 中配置用户账户和 Sudo 权限](https://labex.io/zh/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - 学习管理用户账户和 sudo 权限的基本技术，以增强 Linux 系统的安全性，包括强制执行密码策略和授予管理权限。
-
-这些实验将帮助您在实际场景中应用概念，并增强在 Linux 中进行用户和组管理的信心。
+学习 Emacs 命令的最佳方法是通过实践。使用 `emacs my_practice_file.txt` 打开一个新的文本文件，并尝试本课程中介绍的导航、选择、剪切和粘贴命令。熟悉在缓冲区中移动和操作文本。
 
 ## Quiz Question
 
-如何移动到缓冲区末尾？
+如何移动到缓冲区末尾？请仅使用课程中显示的按键组合格式回答（例如：C-w）。答案区分大小写。
 
 ## Quiz Answer
 

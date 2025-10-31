@@ -3,39 +3,43 @@ index: 3
 lang: "pt"
 title: "Detalhes do Processo"
 meta_title: "Detalhes do Processo - Processos"
-meta_description: "Aprenda sobre os detalhes dos processos Linux, como o kernel gerencia recursos e o que são processos. Entenda os conceitos de processo para iniciantes."
-meta_keywords: "processos Linux, kernel, gerenciamento de processos, ps aux, tutorial Linux, guia para iniciantes"
+meta_description: "Explore os fundamentos dos detalhes de processos Linux. Este guia para iniciantes explica o que é um processo, como o kernel Linux gerencia processos e aloca recursos do sistema como CPU e memória."
+meta_keywords: "Processo Linux, detalhes do processo, kernel, gerenciamento de processos, recursos do sistema, ps aux, CPU, memória, tutorial Linux, guia para iniciantes"
 ---
 
 ## Lesson Content
 
-Antes de entrarmos em aplicações mais práticas de processos, precisamos primeiro entender o que são e como funcionam. Esta parte pode ser confusa, pois estamos nos aprofundando nos detalhes, então sinta-se à vontade para voltar a esta lição se não quiser aprender sobre isso agora.
+Antes de mergulharmos nas aplicações práticas do gerenciamento de processos, é essencial entender o que são os processos Linux e como eles funcionam. Este tópico pode parecer complexo à medida que exploramos os detalhes, então sinta-se à vontade para revisitar esta lição mais tarde, se necessário.
 
-Um processo, como dissemos antes, é um programa em execução no sistema. Mais precisamente, é o sistema alocando memória, CPU e E/S para fazer o programa rodar. Um processo é uma instância de um programa em execução. Vá em frente e abra 3 janelas de terminal. Em duas janelas, execute o comando `cat` sem passar nenhuma opção (o processo `cat` permanecerá aberto como um processo porque espera stdin). Agora, na terceira janela, execute: `ps aux | grep cat`. Você verá que existem dois processos para `cat`, embora estejam chamando o mesmo programa.
+### O que é um Processo Linux
 
-O kernel é o responsável pelos processos. Quando executamos um programa, o kernel carrega o código do programa na memória, determina e aloca recursos e, em seguida, monitora cada processo. Ele sabe:
+Um processo é um programa em execução. Mais precisamente, é uma instância de um programa em execução ao qual o sistema alocou recursos como memória, tempo de CPU e E/S (Entrada/Saída). Por exemplo, se você abrir três janelas de terminal, executar o comando `cat` em duas delas sem argumentos (ele ficará esperando por entrada padrão, mantendo o processo ativo) e, em seguida, usar a terceira janela para executar `ps aux | grep cat`, você verá dois processos `cat` distintos. Cada um é uma instância separada do mesmo programa, com seu próprio ID de processo exclusivo e alocação de recursos.
+
+### O Papel do Kernel no Gerenciamento de Processos
+
+O kernel Linux é responsável por todo o gerenciamento de processos. Quando você executa um programa, o kernel carrega seu código na memória, aloca os recursos de sistema necessários e começa a rastreá-lo como um processo. O kernel mantém informações detalhadas para cada processo, incluindo:
 
 - O status do processo
 - Os recursos que o processo está usando e recebendo
 - O proprietário do processo
-- Tratamento de sinais (mais sobre isso depois)
+- O tratamento de sinais (falaremos mais sobre isso depois)
 - E basicamente todo o resto
 
-Todos os processos estão tentando ter uma fatia daquele doce bolo de recursos. É trabalho do kernel garantir que os processos recebam a quantidade certa de recursos, dependendo das demandas do processo. Quando um processo termina, os recursos que ele usou são agora liberados para outros processos.
+Todos os processos ativos competem por recursos do sistema. O kernel atua como um escalonador (scheduler), garantindo que cada processo receba uma parte justa dos recursos com base em sua prioridade e necessidades. Quando um processo conclui sua tarefa ou é encerrado, o kernel recupera os recursos que estava utilizando, tornando-os disponíveis para outros processos.
 
 ## Exercise
 
 A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos processos Linux e seu gerenciamento:
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Aprenda habilidades essenciais para gerenciar e monitorar processos em um sistema Linux, incluindo interação com processos em primeiro/segundo plano, inspeção com `ps`, monitoramento com `top` e encerramento com `kill`.
-2. **[Comando Linux top: Monitoramento de Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitoramento de sistema em tempo real, incluindo classificação de processos, ajuste de intervalos de atualização e filtragem por usuário.
-3. **[Comando Linux free: Monitorando a Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar o comando `free` para monitorar e analisar o uso da memória do sistema, entendendo como o kernel aloca recursos para os processos.
+1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Aprenda habilidades essenciais para gerenciar e monitorar processos em um sistema Linux, incluindo interagir com processos em primeiro plano/segundo plano, inspecionar com `ps`, monitorar com `top` e terminar com `kill`.
+2. **[Comando Linux top: Monitoramento de Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitoramento de sistema em tempo real, incluindo ordenação de processos, ajuste de intervalos de atualização e filtragem por usuário.
+3. **[Comando Linux free: Monitoramento da Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar o comando `free` para monitorar e analisar o uso da memória do sistema, entendendo como o kernel aloca recursos para os processos.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento de processos no Linux.
+Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com o gerenciamento de processos no Linux.
 
 ## Quiz Question
 
-O que gerencia e controla os processos?
+O que gerencia e controla todos os processos Linux? Por favor, responda em uma única palavra em inglês, toda em minúsculas.
 
 ## Quiz Answer
 

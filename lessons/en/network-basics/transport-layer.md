@@ -3,33 +3,43 @@ index: 6
 lang: "en"
 title: "Transport Layer"
 meta_title: "Transport Layer - Network Basics"
-meta_description: "Learn about the Transport Layer in Linux networking, including TCP/UDP protocols, ports, and data segmentation. Understand how data is transferred reliably."
-meta_keywords: "Linux Transport Layer, TCP/UDP, network ports, data segmentation, Linux networking, beginner tutorial, network protocols"
+meta_description: "Explore the Transport Layer in Linux networking. This lesson covers key protocols like TCP and UDP, the function of network ports, data segmentation, and the TCP handshake for reliable data transfer."
+meta_keywords: "Linux Transport Layer, TCP, UDP, TCP handshake, network ports, data segmentation, Linux networking, network protocols, reliable data transfer"
 ---
 
 ## Lesson Content
 
-The transport layer helps us transfer our data in a way networks can read it. It breaks our data into chunks that will be transported and put back together in the correct order. These chunks are known as segments. Segments make it easier to transport data across networks.
+The transport layer is a fundamental part of Linux networking responsible for end-to-end communication and reliable data transfer between applications on different hosts. It prepares data for transport across the network in a structured and manageable way.
 
-### Ports
+### Data Segmentation
 
-Even though we know where we are sending our data via IP addresses, they aren't specific enough to send our data to certain processes or services. Services such as HTTP use a communication channel via ports. If we want to send webpage data, we need to send it over the HTTP port (port 80). In addition to forming segments, the transport layer will also attach the source and destination ports to the segment, so when the receiver gets the final packet it will know what port to use.
+One of the primary functions of the transport layer is data segmentation. It breaks down large amounts of data into smaller, more manageable chunks called segments. This process makes data transfer more efficient and resilient. If a segment is lost or corrupted during transmission, only that small piece needs to be re-sent, not the entire data set. Once the segments arrive at their destination, the transport layer reassembles them in the correct order.
 
-### UDP
+### Understanding Network Ports
 
-There are two popular transport protocols: UDP and TCP. We'll briefly discuss UDP and spend most of our time on TCP, since it's the most commonly used.
+While IP addresses identify the correct host on a network, they don't specify which application or service should receive the data. This is where network ports come in. Services like HTTP (web traffic) or SMTP (email) listen on specific, well-known ports. For example, HTTP typically uses port 80. The transport layer attaches source and destination port numbers to each segment, ensuring that the data is delivered to the correct process on the receiving host.
 
-UDP is not a reliable method of transporting data; in fact, it doesn't really care if you get all of your original data. This may sound terrible, but it does have its uses, such as for media streaming. It's okay if you lose some frames; in return, you get your data a little faster.
+### Core Transport Protocols TCP and UDP
 
-### TCP
+There are two main transport protocols used in modern networks: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol). We will briefly cover UDP and then focus on TCP, as it is the most widely used for reliable communication.
 
-TCP provides a reliable, connection-oriented stream of data. TCP uses ports to send data to and from hosts. An application opens up a connection from one port on its host to another port on a remote host. In order to establish the connection, we use the TCP handshake.
+### UDP (User Datagram Protocol)
 
-- The client (connecting process) sends a SYN segment to the server to request a connection.
-- The server sends the client a SYN-ACK segment to acknowledge the client's connection request.
-- The client sends an ACK to the server to acknowledge the server's connection request.
+UDP is a connectionless protocol that offers a fast but unreliable method of transporting data. It does not guarantee that all segments will arrive or that they will arrive in the correct order. While this may seem like a disadvantage, UDP is highly effective for applications where speed is more critical than perfect accuracy, such as live video streaming or online gaming. Losing a few frames of video is often an acceptable trade-off for a smoother, faster stream.
 
-Once this connection is established, data can be exchanged over a TCP connection. The data is sent over in different segments and are tracked with TCP sequence numbers so they can be arranged in the correct order when they are delivered. In our email example, the transport layer attaches the destination port (25) to the source port of the source host.
+### TCP (Transmission Control Protocol)
+
+TCP provides a reliable, connection-oriented stream of data. Before any data is exchanged, TCP establishes a formal connection between the two hosts to ensure both are ready to communicate.
+
+### The TCP Handshake
+
+To establish a connection, TCP uses a process called the three-way handshake:
+
+1.  **SYN**: The client sends a SYN (synchronize) segment to the server to initiate a connection.
+2.  **SYN-ACK**: The server responds with a SYN-ACK (synchronize-acknowledge) segment to acknowledge the client's request.
+3.  **ACK**: The client sends an ACK (acknowledge) segment back to the server, confirming the connection is established.
+
+Once the handshake is complete, data can be exchanged reliably. TCP uses sequence numbers to track each segment, allowing the receiving host to reassemble them in the correct order and request re-transmission of any missing segments. In our email example, the transport layer would attach the destination port for SMTP (port 25) and a source port from the client host to each segment.
 
 ## Exercise
 
@@ -37,7 +47,7 @@ While there are no specific labs for this topic, we recommend exploring the comp
 
 ## Quiz Question
 
-What is a reliable transport protocol?
+What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
 
 ## Quiz Answer
 

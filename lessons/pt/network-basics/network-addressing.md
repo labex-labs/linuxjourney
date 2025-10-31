@@ -3,41 +3,39 @@ index: 4
 lang: "pt"
 title: "Endereçamento de Rede"
 meta_title: "Endereçamento de Rede - Fundamentos de Rede"
-meta_description: "Aprenda os conceitos básicos de endereçamento de rede: endereços MAC vs. IP e nomes de host. Entenda como os dispositivos se comunicam em uma rede. Comece sua jornada de rede Linux!"
-meta_keywords: "endereçamento de rede, endereço MAC, endereço IP, nome de host, rede Linux, iniciante, tutorial, guia"
+meta_description: "Descubra os fundamentos do endereçamento de rede. Este guia explica endereços MAC, endereços IP e nomes de host, conceitos chave para entender como os dispositivos se comunicam em redes Linux."
+meta_keywords: "endereçamento de rede, endereço MAC, endereço IP, nome de host, identificadores de rede, redes Linux, fundamentos de rede, iniciante, tutorial, guia"
 ---
 
 ## Lesson Content
 
-Antes de mergulharmos em como um pacote se move através de uma rede, precisamos nos familiarizar com algumas terminologias. Quando você envia uma carta, você deve saber para quem ela está sendo enviada e de onde ela está vindo. Os pacotes precisam da mesma informação. Nossos hosts e outros hosts são identificados usando endereços MAC (Media Access Control) e endereços IP. Para facilitar para nós, humanos, usamos nomes de host para identificar um host.
+Antes de explorarmos como os pacotes de dados viajam por uma rede, é essencial entender alguma terminologia central. Assim como uma carta física precisa de um endereço de destino e de retorno, os pacotes de rede exigem informações semelhantes para alcançar seu alvo. Em redes de computadores, os dispositivos são identificados usando endereços MAC (Controle de Acesso ao Meio) e endereços IP. Para simplificar as coisas para os humanos, também usamos nomes de host.
 
 ### Endereços MAC
 
-Um endereço MAC é um identificador único usado como um endereço de hardware. Este endereço nunca mudará. Quando você quer ter acesso à Internet, sua máquina precisa ter um dispositivo chamado placa de interface de rede. Este adaptador de rede tem seu próprio endereço de hardware que é usado para identificar sua máquina. Um endereço MAC para um dispositivo Ethernet se parece com isto: `00:C4:B5:45:B2:43`. Os endereços MAC são atribuídos aos adaptadores de rede quando são fabricados. Cada fabricante tem um Identificador Único de Organização (OUI) para identificá-los como o fabricante. Este OUI é denotado pelos primeiros 3 bytes do endereço MAC. Por exemplo, a Dell tem `00-14-22`, então um adaptador de rede da Dell poderia ter um endereço MAC como: `00-14-22-34-B2-C2`.
+Um endereço MAC é um identificador de hardware exclusivo e permanente atribuído a uma placa de interface de rede (NIC). Este endereço é gravado no dispositivo durante a fabricação e não muda. Todo dispositivo que se conecta a uma rede, como seu computador ou smartphone, possui uma NIC com um endereço MAC distinto. Este endereço de hardware é crucial para a comunicação em um segmento de rede local. Um endereço MAC Ethernet geralmente se parece com isto: `00:C4:B5:45:B2:43`. Os primeiros três bytes do endereço formam o Identificador Único Organizacional (OUI), que identifica o fabricante. Por exemplo, a Dell usa o OUI `00-14-22`, então uma NIC Dell pode ter um endereço MAC como `00-14-22-34-B2-C2`.
 
 ### Endereços IP
 
-Um endereço IP é usado para identificar um dispositivo em uma rede. Eles são independentes de hardware e podem variar na sintaxe dependendo se você está usando IPv4 ou IPv6 (mais sobre isso depois). Por enquanto, vamos assumir que você está usando IPv4, então um endereço IP típico seria parecido com: `10.24.12.4`. Os endereços IP são usados com o lado do software da rede. Sempre que um sistema está conectado à Internet, ele deve ter um endereço IP. Eles também podem mudar se sua rede mudar e são únicos para toda a Internet (isso nem sempre é o caso quando aprendemos sobre NAT).
-
-Lembre-se, são necessários tanto software quanto hardware para mover pacotes através de redes, então temos dois identificadores para cada um: MAC (hardware) e IP (software).
+Um endereço IP é um identificador lógico para um dispositivo em uma rede, tornando-o alcançável em diferentes redes, incluindo a internet. Ao contrário de um endereço MAC, um endereço IP não está vinculado ao hardware e pode ser atribuído dinamicamente. Vamos nos concentrar no IPv4 por enquanto, onde um endereço se parece com `10.24.12.4`. Os endereços IP são fundamentais para o lado do software da rede, possibilitando roteamento e comunicação global. Embora os endereços IP públicos sejam exclusivos em toda a internet, eles podem mudar, e tecnologias como a Tradução de Endereços de Rede (NAT) permitem endereços privados e não exclusivos dentro de uma rede local. É importante lembrar que tanto os endereços MAC (hardware) quanto os IP (software) são necessários para uma comunicação de rede bem-sucedida.
 
 ### Nomes de Host
 
-Uma última maneira de identificar suas máquinas é através de nomes de host. Os nomes de host pegam seu endereço IP e permitem que você vincule esse endereço a um nome legível por humanos. Em vez de lembrar `192.12.41.4`, você pode simplesmente lembrar `myhost.com`.
+Embora os endereços IP sejam eficazes para computadores, eles são difíceis de memorizar para os humanos. Os nomes de host resolvem esse problema mapeando um nome amigável ao usuário para um endereço IP. Por exemplo, é muito mais fácil lembrar `meuhost.com` do que seu endereço IP correspondente, como `192.12.41.4`. Esse mapeamento é tratado pelo Sistema de Nomes de Domínio (DNS), que atua como a lista telefônica da internet, traduzindo nomes de host memoráveis para os endereços IP numéricos necessários para o roteamento de rede.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos identificadores de rede, como endereços MAC, endereços IP e nomes de host:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de identificadores de rede como endereços MAC, endereços IP e nomes de host:
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Explorar Tipos de Endereços IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP e teste a acessibilidade da rede usando `ping` e `ip a`.
-3. **[Gerenciar Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts` e testando suas alterações.
+1.  **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
+2.  **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereços IP e teste a acessibilidade da rede usando `ping` e `ip a`.
+3.  **[Gerenciar a Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de nome de host local editando o arquivo `/etc/hosts` e testando suas alterações.
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança com os fundamentos de rede do Linux.
+Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com os fundamentos de rede do Linux.
 
 ## Quiz Question
 
-Quantos bytes existem em um endereço IPv4?
+Quantos bytes há em um endereço IPv4?
 
 ## Quiz Answer
 

@@ -1,43 +1,43 @@
 ---
 index: 5
 lang: "fr"
-title: "Processus de démarrage : Init"
-meta_title: "Processus de démarrage : Init - Démarrer le système"
-meta_description: "Découvrez les systèmes init de Linux : System V, Upstart et systemd. Comprenez leurs rôles dans le processus de démarrage et comment ils gèrent les services. Commencez votre parcours Linux !"
-meta_keywords: "Linux init, systemd, System V init, Upstart, processus de démarrage Linux, tutoriel Linux, Linux pour débutants, guide Linux"
+title: "Processus de Démarrage : Init"
+meta_title: "Processus de Démarrage : Init - Démarrer le Système"
+meta_description: "Explorez le cœur du processus de démarrage Linux dans ce guide pour débutants. Apprenez les différents systèmes init Linux, incluant le traditionnel System V, Upstart, et la norme moderne, systemd. Comprenez comment ces systèmes démarrent et gèrent les services sur votre machine."
+meta_keywords: "Init Linux, systemd, System V init, Upstart, processus de démarrage Linux, tutoriel Linux, Linux débutant, guide Linux"
 ---
 
 ## Lesson Content
 
-Nous avons abordé init dans les leçons précédentes et savons que c'est le premier processus qui est démarré, et qu'il démarre tous les autres services essentiels de notre système. Mais comment ?
+Comme nous l'avons appris, le processus `init` est le premier processus à s'exécuter lors du démarrage de Linux. Il est le parent de tous les autres processus et est responsable du démarrage des services essentiels qui rendent votre système utilisable. Mais comment y parvient-il ?
 
-Il existe en fait trois implémentations majeures d'init sous Linux :
+Il existe trois implémentations majeures du système d'init Linux, chacune avec une approche différente de la gestion des services.
 
-### System V init (sysv)
+### System V Init
 
-C'est le système init traditionnel. Il démarre et arrête séquentiellement les processus en fonction des scripts de démarrage. L'état de la machine est indiqué par des niveaux d'exécution (runlevels) ; chaque niveau d'exécution démarre ou arrête une machine d'une manière différente.
+System V init, souvent appelé `sysvinit`, est le système d'init traditionnel pour Linux. Il suit une procédure de démarrage séquentielle définie par des scripts. L'état du système est géré par des niveaux d'exécution (runlevels), où chaque niveau (par exemple, mode utilisateur unique, mode multi-utilisateur avec réseau) possède un ensemble spécifique de services à démarrer ou à arrêter. C'était la norme pendant longtemps dans le processus de démarrage Linux classique.
 
 ### Upstart
 
-C'est l'init que vous trouverez sur les anciennes installations d'Ubuntu. Upstart utilise l'idée de tâches (jobs) et d'événements et fonctionne en démarrant des tâches qui effectuent certaines actions en réponse à des événements.
+Trouvé sur les anciennes versions d'Ubuntu, Upstart est un système d'init basé sur les événements. Il s'est éloigné du modèle strictement séquentiel de System V. Au lieu de cela, Upstart démarre et arrête les services (appelés jobs) en réponse à des événements système, comme la disponibilité d'un périphérique réseau. Cela permet des temps de démarrage plus flexibles et plus rapides.
 
-### Systemd
+### systemd
 
-C'est le nouveau standard pour init ; il est orienté objectif. En gros, vous avez un objectif que vous voulez atteindre, et systemd essaie de satisfaire les dépendances de l'objectif pour le compléter.
+La norme moderne pour le système d'init Linux est `systemd`. C'est un système orienté objectif qui gère agressivement les dépendances. Au lieu de simplement démarrer une liste de services, vous définissez un état cible (comme une interface graphique), et `systemd` travaille à satisfaire toutes les dépendances pour cet objectif, démarrant souvent les services en parallèle pour accélérer considérablement le processus de démarrage.
 
-Nous avons un cours entier sur les systèmes Init où nous approfondirons chacun de ces systèmes.
+Nous avons un cours complet sur les systèmes d'init où nous plongerons plus en détail dans chacun de ces systèmes.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de la façon dont le système les gère :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de la manière dont le système les gère :
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top`, et à les terminer avec `kill`. Ce laboratoire vous aidera à comprendre le cycle de vie et le contrôle des processus, qui sont fondamentaux pour le fonctionnement d'`init`.
+1.  **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à comprendre le cycle de vie et le contrôle des processus, qui sont fondamentaux pour le fonctionnement d'`init`.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des processus Linux.
+Ces laboratoires vous aideront à appliquer ces concepts dans des scénarios réels et à gagner en confiance dans la gestion des processus Linux.
 
 ## Quiz Question
 
-Quel est le nouveau standard pour init ?
+Quel est le standard le plus récent pour l'init ? (Veuillez répondre uniquement en lettres anglaises minuscules)
 
 ## Quiz Answer
 

@@ -2,47 +2,51 @@
 index: 12
 lang: "ja"
 title: "Emacs 編集"
-meta_title: "Emacs 編集 - 高度なテキスト操作"
-meta_description: "Emacs の編集の基本を学びましょう：テキストのナビゲート、カット、効率的なペースト。この初心者向けのガイドは、Linux で必須の Emacs コマンドを習得するのに役立ちます。"
-meta_keywords: "Emacs, Emacs チュートリアル，Emacs コマンド，テキストエディタ，Linux エディタ，Emacs ナビゲーション，初心者 Emacs, Emacs ガイド"
+meta_title: "Emacs 編集 - 高度なテキスト操作術"
+meta_description: "この初心者向けガイドで Emacs 編集の基本を習得しましょう。強力な Linux テキストエディタである Emacs でのテキスト移動、カット、ペーストに不可欠なコマンドを学びます。"
+meta_keywords: "Emacs, Emacs チュートリアル，Emacs コマンド，テキストエディタ，Linux エディタ，Emacs 移動，初心者 Emacs, Emacs ガイド"
 ---
 
 ## Lesson Content
 
-### テキストナビゲーション
+Emacs は、Linux やその他の Unix 系システムで広く使用されている、強力で拡張性の高いテキストエディタです。この初心者向け Emacs ガイドでは、基本的な編集コマンドをいくつか紹介します。Emacs の専門用語では、`C-`は`Ctrl`キーを指し、`M-`は通常`Alt`キーである`Meta`キーを指します。
+
+### Emacs でのテキスト移動
+
+Home、End、矢印キーなどの標準的な移動キーも期待通りに機能しますが、Emacs はテキスト（Emacs では「バッファ」と呼ばれる）内を移動するための、より効率的なコマンドを提供します。Emacs の移動操作を習得することは、習熟への重要な一歩です。
+
+カーソルを移動するための重要な Emacs コマンドを以下に示します。
 
 ```
-C-up arrow: move up one paragraph
-C-down arrow: move down one paragraph
-C-left arrow: move one word left
-C-right arrow: move one word right
-M->: move to the end of the buffer
+C-上矢印: 段落を1つ上に移動
+C-下矢印: 段落を1つ下に移動
+C-左矢印: 単語を1つ左に移動
+C-右矢印: 単語を1つ右に移動
+M->: バッファの末尾に移動
 ```
 
-テキストナビゲーションでは、Home、End、Page Up、Page Down、矢印キーなどの通常のテキストボタンが期待どおりに機能します。
+### カットとペースト
 
-### カット＆ペースト
+Emacs では、カットは「キル (killing)」と呼ばれ、ペーストは「ヤンク (yanking)」と呼ばれます。これらの操作を行うには、まずテキストの領域を選択する必要があります。
 
-Emacs でカット（キル）またはペースト（ヤンク）するには、まずテキストを選択できる必要があります。テキストを選択するには、カーソルをカットまたはペーストしたい場所に移動し、`C-space key`を押します。その後、ナビゲーションキーを使用して目的のテキストを選択できます。これで、次のようにカット＆ペーストできます。
+テキストの選択を開始するには、カーソルを選択したい領域の先頭に移動し、`C-space`を押します。これにより「マーク」が設定されます。次に、任意の移動コマンドを使用して、選択したい領域の終端までカーソルを移動します。マークと現在のカーソルの位置の間がハイライト表示されます。
+
+領域を選択したら、次のコマンドを使用できます。
 
 ```
-C-w: cut
-C-y: yank
+C-w: 選択した領域をキル（カット）
+C-y: 最後にキルしたテキストをヤンク（ペースト）
 ```
+
+これらの基本的なコマンドが、Emacs テキストエディタでの編集の基礎を形成します。
 
 ## Exercise
 
-練習は完璧を導きます！Linux のユーザーとグループ管理の理解を深めるための実践的なラボをいくつか紹介します。
-
-1. **[useradd、usermod、および userdel を使用して Linux ユーザーアカウントを管理する](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、変更および削除まで、ユーザー管理の完全なライフサイクルを練習します。
-2. **[groupadd、usermod、および groupdel を使用して Linux グループを管理する](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成、ユーザーメンバーシップの変更、グループの削除など、グループ管理のためのコアコマンドラインユーティリティを実践的に体験します。
-3. **[Linux でユーザーアカウントと Sudo 権限を設定する](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - パスワードポリシーの適用や管理権限の付与など、Linux システムのセキュリティを強化するためのユーザーアカウントと sudo 権限を管理する上で不可欠なテクニックを学びます。
-
-これらのラボは、実際のシナリオで概念を適用し、Linux でのユーザーおよびグループ管理に自信を持つのに役立ちます。
+Emacs コマンドを学ぶ最良の方法は実践です。`emacs my_practice_file.txt`を使用して新しいテキストファイルを開き、このレッスンで扱った移動、選択、カット、ペーストのコマンドを試してみてください。バッファ内を移動し、テキストを操作することに慣れましょう。
 
 ## Quiz Question
 
-バッファの最後に移動するにはどうすればよいですか？
+バッファの末尾に移動するにはどうすればよいですか？レッスンで示されたキーの組み合わせ形式（例：C-w）のみを使用して回答してください。大文字と小文字は区別されます。
 
 ## Quiz Answer
 

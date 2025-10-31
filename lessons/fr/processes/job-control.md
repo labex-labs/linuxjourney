@@ -1,19 +1,19 @@
 ---
 index: 11
 lang: "fr"
-title: "Contrôle des jobs"
-meta_title: "Contrôle des jobs - Processus"
-meta_description: "Apprenez le contrôle des jobs Linux pour gérer les processus en arrière-plan. Comprenez les commandes 'jobs', 'bg', 'fg' et 'kill' pour une utilisation efficace du shell. Commencez votre parcours Linux !"
-meta_keywords: "contrôle des jobs Linux, processus en arrière-plan, commande jobs, commande bg, commande fg, commande kill, tutoriel Linux, Linux pour débutants"
+title: "Contrôle des Tâches"
+meta_title: "Contrôle des Tâches - Processus"
+meta_description: "Explorez notre tutoriel Linux sur le contrôle des tâches pour gérer efficacement les processus en arrière-plan. Apprenez à utiliser les commandes jobs, bg, fg et kill pour un multitâche shell puissant."
+meta_keywords: "Contrôle des tâches Linux, processus en arrière-plan, commande jobs, commande bg, commande fg, commande kill, tutoriel Linux, Linux débutant"
 ---
 
 ## Lesson Content
 
-Supposons que vous travailliez sur une seule fenêtre de terminal et que vous exécutiez une commande qui prend une éternité. Vous ne pouvez pas interagir avec le shell tant qu'elle n'est pas terminée. Cependant, nous voulons continuer à travailler sur nos machines, nous avons donc besoin que ce shell soit ouvert. Heureusement, nous pouvons contrôler la façon dont nos processus s'exécutent avec les jobs :
+Sous Linux, vous rencontrez souvent des commandes qui prennent beaucoup de temps à s'exécuter. Au lieu d'attendre et de laisser votre terminal inutilisable, vous pouvez utiliser le **contrôle des tâches Linux (job control)** pour gérer ces tâches. Cette fonctionnalité puissante vous permet d'exécuter et de gérer plusieurs **processus d'arrière-plan** au sein d'une seule session shell, améliorant ainsi considérablement votre flux de travail.
 
-### Envoyer un job en arrière-plan
+### Exécuter une commande en arrière-plan
 
-Ajouter une esperluette (`&`) à la commande l'exécutera en arrière-plan afin que vous puissiez toujours utiliser votre shell. Voyons un exemple :
+Pour démarrer un processus directement en arrière-plan, ajoutez simplement une esperluette (`&`) à votre commande. Cela renvoie immédiatement votre invite shell, vous permettant de continuer à travailler pendant que la commande s'exécute.
 
 ```bash
 sleep 1000 &
@@ -21,9 +21,9 @@ sleep 1001 &
 sleep 1002 &
 ```
 
-### Afficher tous les jobs en arrière-plan
+### Lister les tâches d'arrière-plan
 
-Vous pouvez maintenant visualiser les jobs que vous venez d'envoyer en arrière-plan.
+Vous pouvez visualiser toutes les tâches s'exécutant en arrière-plan en utilisant la commande `jobs`.
 
 ```bash
 $ jobs
@@ -33,11 +33,11 @@ $ jobs
 [3]+   Running     sleep 1002 &
 ```
 
-Ceci vous montrera l'ID du job dans la première colonne, puis le statut et la commande qui a été exécutée. Le **+** à côté de l'ID du job signifie qu'il s'agit du job en arrière-plan le plus récent qui a démarré. Le job avec le **-** est la deuxième commande la plus récente.
+Le résultat fournit l'ID de la tâche dans la première colonne, son statut et la commande d'origine. Le symbole `+` indique la tâche d'arrière-plan la plus récemment démarrée, tandis que le symbole `-` marque la deuxième plus récente.
 
-### Envoyer un job existant en arrière-plan
+### Gérer les processus actifs
 
-Si vous avez déjà exécuté un job et que vous souhaitez l'envoyer en arrière-plan, vous n'avez pas besoin de le terminer et de recommencer. D'abord, suspendez le job avec Ctrl-Z, puis exécutez la commande **bg** pour l'envoyer en arrière-plan.
+Et si une commande est déjà en cours d'exécution au premier plan et que vous décidez d'avoir besoin de votre terminal ? Vous n'avez pas besoin de l'arrêter. D'abord, suspendez le processus en cours en appuyant sur `Ctrl-Z`. Ensuite, utilisez la commande `bg` pour envoyer cette tâche suspendue à l'arrière-plan.
 
 ```bash
 pete@icebox ~ $ sleep 1003
@@ -46,42 +46,37 @@ pete@icebox ~ $ sleep 1003
 
 pete@icebox ~ $ bg
 [4]+    sleep 1003 &
-
-pete@icebox ~ $ jobs
-
-[1]    Running     sleep 1000 &
-[2]    Running     sleep 1001 &
-[3]-   Running     sleep 1002 &
-[4]+   Running     sleep 1003 &
 ```
 
-### Déplacer un job de l'arrière-plan vers le premier plan
+Maintenant, le processus `sleep 1003` s'exécute comme une tâche d'arrière-plan, et vous pouvez le vérifier avec la commande `jobs`.
 
-Pour sortir un job de l'arrière-plan, spécifiez simplement l'ID du job que vous souhaitez. Si vous exécutez `fg` sans aucune option, il ramènera le job en arrière-plan le plus récent (le job avec le signe + à côté).
+### Ramener une tâche au premier plan
+
+Pour ramener un processus d'arrière-plan au premier plan, utilisez la commande `fg`. Vous pouvez spécifier une tâche particulière par son ID (par exemple, `fg %1`). Si vous exécutez la commande `fg` sans aucun argument, elle ramènera la tâche d'arrière-plan la plus récente (celle marquée par `+`) au premier plan.
 
 ```bash
 fg %1
 ```
 
-### Tuer les jobs en arrière-plan
+### Terminer les tâches d'arrière-plan
 
-De manière similaire au déplacement des jobs hors de l'arrière-plan, vous pouvez utiliser la même forme pour tuer les processus en utilisant leur ID de job.
+Si vous avez besoin d'arrêter un processus d'arrière-plan, vous pouvez utiliser la commande `kill`. Semblable à la commande `fg`, vous référencez la tâche en utilisant son ID précédé d'un signe de pourcentage (`%`). C'est une fonction clé du contrôle des tâches Linux.
 
 ```bash
 kill %1
 ```
 
+Maîtriser ces commandes est essentiel pour tout utilisateur Linux débutant souhaitant effectuer plusieurs tâches efficacement dans le shell.
+
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus sous Linux :
+Pour mettre en pratique vos connaissances sur le contrôle des tâches Linux, essayez ce laboratoire pratique. Il vous aidera à consolider votre compréhension de la gestion des processus au premier plan et d'arrière-plan.
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus de premier plan et d'arrière-plan, à surveiller les ressources et à terminer les processus, en abordant directement le scénario des commandes de longue durée.
-
-Ce laboratoire vous aidera à appliquer les concepts dans des scénarios réels et à renforcer votre confiance en la gestion des processus.
+1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et d'arrière-plan, à surveiller les ressources et à terminer les processus, répondant directement au scénario des commandes de longue durée.
 
 ## Quiz Question
 
-Quelle commande est utilisée pour lister les jobs en arrière-plan ?
+What command is used to list background jobs? (Please answer in English, using only lowercase letters.)
 
 ## Quiz Answer
 
