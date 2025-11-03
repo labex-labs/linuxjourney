@@ -2,21 +2,21 @@
 index: 8
 lang: "zh"
 title: "交换"
-meta_title: "交换 - 文件系统"
+meta_title: "交换分区 - 文件系统"
 meta_description: "了解 Linux 交换空间、其工作原理以及如何创建和管理交换分区。通过本指南优化您的系统内存使用！"
 meta_keywords: "Linux 交换，mkswap, swapon, swapoff, /etc/fstab, 虚拟内存，Linux 初学者，Linux 教程"
 ---
 
 ## Lesson Content
 
-In our previous example, I showed you how to see your partition table. Let's revisit that example, more specifically this line:
+在之前的示例中，我向您展示了如何查看分区表。让我们重新审视该示例，更具体地说是这一行：
 
 ```
 Number  Start   End     Size    Type      File system     Flags
  5      6861MB  7380MB  519MB   logical   linux-swap(v1)
 ```
 
-What is this swap partition? Well, swap is what we use to allocate virtual memory to our system. If you are low on memory, the system uses this partition to "swap" pieces of memory of idle processes to the disk, so you're not bogged down for memory.
+这个交换分区是什么？嗯，交换是我们用来为系统分配虚拟内存的。如果您的内存不足，系统会使用此分区将空闲进程的内存片段“交换”到磁盘，这样您就不会因为内存不足而陷入困境。
 
 ### 使用分区作为交换空间
 
