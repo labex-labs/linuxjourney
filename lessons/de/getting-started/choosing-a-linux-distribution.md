@@ -17,8 +17,6 @@ Ein Linux-System ist in drei Hauptteile unterteilt:
 - **Linux-Kernel** – Als Kern des Betriebssystems verwaltet der Kernel die Hardware und erleichtert die Kommunikation zwischen Software und Hardware.
 - **Benutzerbereich (User Space)** – Dies ist die Umgebung, in der Sie als Benutzer über Anwendungen und Befehlszeilenschnittstellen mit dem System interagieren.
 
-![Linux System Components](https://file.labex.io/images/24aceec7-8503-45a6-9f1e-18dd42ba4ee4.jpg)
-
 ### Was ist eine Linux-Distribution
 
 A Linux-Distribution bündelt den Linux-Kernel mit einer Sammlung von Software, wie z. B. Systemdienstprogrammen, Bibliotheken und Anwendungen. Sie enthält oft einen Paketmanager zur Installation und Verwaltung von Software sowie eine Desktop-Umgebung für die grafische Benutzeroberfläche (GUI). Im Wesentlichen ist eine Distro ein komplettes, gebrauchsfertiges Betriebssystem, das um den Kernel herum aufgebaut ist.

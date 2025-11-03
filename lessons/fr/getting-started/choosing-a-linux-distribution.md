@@ -17,8 +17,6 @@ Un système Linux est divisé en trois parties principales :
 - **Noyau Linux (Linux Kernel)** - En tant que cœur du système d'exploitation, le noyau gère le matériel et facilite la communication entre les logiciels et le matériel.
 - **Espace Utilisateur (User Space)** - C'est l'environnement où vous, l'utilisateur, interagissez avec le système via des applications et des interfaces en ligne de commande.
 
-![Linux System Components](https://file.labex.io/images/24aceec7-8503-45a6-9f1e-18dd42ba4ee4.jpg)
-
 ### Qu'est-ce qu'une Distribution Linux
 
 Une distribution Linux regroupe le noyau Linux avec une collection de logiciels, tels que des utilitaires système, des bibliothèques et des applications. Elle comprend souvent un gestionnaire de paquets pour installer et gérer les logiciels, ainsi qu'un environnement de bureau pour l'interface graphique utilisateur (GUI). Essentiellement, une distro est un système d'exploitation complet, prêt à l'emploi, construit autour du noyau.

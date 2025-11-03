@@ -17,8 +17,6 @@ A Linux system is divided into three main parts:
 - **Linux Kernel** - As the core of the operating system, the kernel manages the hardware and facilitates communication between software and hardware.
 - **User Space** - This is the environment where you, the user, interact with the system through applications and command-line interfaces.
 
-![Linux System Components](https://file.labex.io/images/24aceec7-8503-45a6-9f1e-18dd42ba4ee4.jpg)
-
 ### What is a Linux Distribution
 
 A Linux distribution bundles the Linux kernel with a collection of software, such as system utilities, libraries, and applications. It often includes a package manager for installing and managing software, and a desktop environment for the graphical user interface (GUI). Essentially, a distro is a complete, ready-to-use operating system built around the kernel.

@@ -17,8 +17,6 @@ meta_keywords: "选择 linux 发行版，如何选择 linux 发行版，选择 l
 - **Linux 内核 (Linux Kernel)** - 作为操作系统的核心，内核管理硬件并促进软件与硬件之间的通信。
 - **用户空间 (User Space)** - 这是您，即用户，通过应用程序和命令行界面与系统交互的环境。
 
-![Linux System Components](https://file.labex.io/images/24aceec7-8503-45a6-9f1e-18dd42ba4ee4.jpg)
-
 ### 什么是 Linux 发行版
 
 Linux 发行版将 Linux 内核与一系列软件（如系统工具、库和应用程序）捆绑在一起。它通常包含一个用于安装和管理软件的包管理器，以及一个用于图形用户界面 (GUI) 的桌面环境。本质上，一个发行版是围绕内核构建的完整、可立即使用的操作系统。
