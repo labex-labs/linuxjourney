@@ -128,7 +128,7 @@ jobs:
           fi
 
           # Execute batch sync command
-          labex linuxjourney lesson sync-batch $FILE_ARGS -t ${{ github.event_name }}
+          labex linuxjourney lesson sync $FILE_ARGS
 
       - name: Notify completion
         run: |
