@@ -9,9 +9,9 @@ meta_keywords: "选择 linux 发行版，如何选择 linux 发行版，选择 l
 
 ## Lesson Content
 
-在上节课中，我们了解了 Linux 内核。值得注意的是，虽然“Linux”常用来指代整个操作系统，但技术上它仅指内核。使用 Linux 内核的完整操作系统更准确地称为 Linux 发行版，或简称“发行版”（distros）。
+在上一课中，我们了解了 Linux 内核。值得注意的是，虽然“Linux”常被用来指代整个操作系统，但技术上它仅指内核。使用 Linux 内核的完整操作系统更准确地称为 Linux 发行版，或简称“发行版”（distros）。
 
-一个 Linux 系统主要分为三个部分：
+A Linux 系统主要分为三个部分：
 
 - **硬件 (Hardware)** - 这包括您计算机的物理组件，如 CPU、内存和存储设备。
 - **Linux 内核 (Linux Kernel)** - 作为操作系统的核心，内核管理硬件并促进软件与硬件之间的通信。
@@ -23,26 +23,26 @@ Linux 发行版将 Linux 内核与一系列软件（如系统工具、库和应�
 
 ### 如何选择 Linux 发行版
 
-**选择 Linux 发行版**的过程可能会让人不知所措，因为有数百种选择。然而，了解您自己的需求和偏好可以让决策变得容易得多。关键是找到一个与您的经验水平以及您希望用系统完成的任务相符的发行版。学习**如何选择 Linux 发行版**是您旅程中的第一步实践。
+**选择 Linux 发行版**的过程可能会让人不知所措，因为有数百种选择。然而，了解您自己的需求和偏好可以使决策更容易。关键是找到一个与您的经验水平以及您希望用系统完成的任务相符的发行版。学习**如何选择 Linux 发行版**是您旅程中的第一步实践。
 
 ### 需要考虑的关键因素
 
 当您**选择 Linux 发行版**时，请考虑以下方面：
 
-- **经验水平 (Experience Level)**：如果您是 Linux 新手，您应该寻找对初学者友好的发行版，如 Ubuntu 或 Linux Mint。它们提供简单的安装过程和直观的用户界面。高级用户可能更喜欢 Arch Linux 或 Gentoo 等更具可定制性的发行版。
-- **桌面环境 (Desktop Environment)**：桌面环境决定了系统的外观和感觉。流行的选项包括 GNOME（现代、简洁）、KDE Plasma（高度可定制、功能丰富）和 XFCE（轻量级、传统）。许多发行版提供具有预配置桌面环境的不同“版本”（flavors）。
-- **包管理 (Package Management)**：发行版使用包管理器来安装、更新和删除软件。两大主要家族是基于 Debian 的（使用 `apt` 和 `.deb` 文件，如 Ubuntu）和基于 Red Hat 的（使用 `dnf` 或 `yum` 和 `.rpm` 文件，如 Fedora）。软件的可用性有时在这些生态系统之间会有所不同。
-- **社区和支持 (Community and Support)**：一个庞大、活跃的社区意味着当您遇到问题时，有更多的教程、论坛和文档可用。具有强大商业支持的发行版，如 Ubuntu (Canonical) 和 Fedora (Red Hat)，也提供出色的官方支持。
+- **经验水平 (Experience Level)**：如果您是 Linux 新手，请寻找对初学者友好的发行版。例如，Ubuntu 和 Linux Mint 因其简单的安装过程和直观的界面而长期以来一直是热门的起点，尽管许多现代发行版现在提供了同样流畅的体验。高级用户可能更喜欢 Arch Linux 或 Gentoo 等更具可定制性的发行版。
+- **桌面环境 (Desktop Environment)**：桌面环境决定了系统的外观和感觉。流行的选项包括 GNOME、KDE Plasma 和 XFCE。明智的做法是检查您选择的环境是否支持现代显示技术，如 Wayland，这对游戏、多显示器设置或可变刷新率 (VRR) 和 HDR 等功能可能很重要。许多发行版提供带有预配置桌面环境的不同“版本”（flavors）。
+- **包管理 (Package Management)**：发行版使用包管理器来安装、更新和删除软件。两大主要系列是基于 Debian 的（使用 `apt` 和 `.deb` 文件）和基于 Red Hat 的（使用 `dnf` 或 `yum` 和 `.rpm` 文件）。软件的可用性有时会有所不同，尽管 Flatpak 和 Snap 等通用包格式使得在不同发行版上安装应用程序变得更容易。
+- **社区和支持 (Community and Support)**：一个庞大、活跃的社区意味着当您遇到问题时，有更多的教程、论坛和文档可用。一些发行版还拥有强大的商业支持，这可以转化为出色的官方支持。
 
-归根结底，没有一个“最好”的发行版。正确的选择完全取决于您。一个很好的开始方法是使用“Live USB”测试一些流行的选项，它允许您从 USB 驱动器运行操作系统，而无需将其安装到硬盘上。
+归根结底，没有唯一的“最佳”发行版。正确的选择完全取决于您。一个很好的开始方法是使用“Live USB”测试几个流行的选项，它允许您从 USB 驱动器运行操作系统，而无需将其安装到硬盘上。
 
 ## Exercise
 
-虽然此主题没有特定的实验环节，但我们建议您探索全面的[Linux 学习路径](https://labex.io/zh/learn/linux)来练习相关的 Linux 技能和概念。
+虽然本主题没有特定的实验环节，但我们建议您探索全面的 [Linux 学习路径](https://labex.io/zh/learn/linux) 来练习相关的 Linux 技能和概念。
 
 ## Quiz Question
 
-What manages hardware in a Linux system? (Answer in English, paying attention to capitalization)
+在 Linux 系统中，什么管理硬件？ (请用英语回答，注意大小写)
 
 ## Quiz Answer
 
