@@ -114,80 +114,21 @@ jobs:
           echo "Starting sync of changed documents to LabEx..."
           echo "Execution time: $(date)"
 
-          # Sync each changed document
-          SYNC_COUNT=0
-          FAILED_FILES=""
-          SUCCESS_FILES=""
-
+          # Build command arguments for batch sync
+          FILE_ARGS=""
           for file in $CHANGED_FILES; do
             if [ -f "../linuxjourney/$file" ]; then
-              echo "Syncing document: $file"
-              if labex linuxjourney lesson sync --path "../linuxjourney/$file"; then
-                SUCCESS_FILES="$SUCCESS_FILES\n- $file"
-                SYNC_COUNT=$((SYNC_COUNT + 1))
-              else
-                FAILED_FILES="$FAILED_FILES\n- $file"
-              fi
+              FILE_ARGS="$FILE_ARGS -f ../linuxjourney/$file"
             fi
           done
 
-          # Save sync results to output
-          echo "sync_count=$SYNC_COUNT" >> $GITHUB_OUTPUT
-          echo "success_files<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$SUCCESS_FILES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "failed_files<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$FAILED_FILES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          if [ -z "$FILE_ARGS" ]; then
+            echo "No valid files to sync, skipping"
+            exit 0
+          fi
 
-      - name: Generate sync summary
-        run: |
-          SYNC_COUNT="${{ steps.sync-lessons.outputs.sync_count }}"
-          SUCCESS_FILES="${{ steps.sync-lessons.outputs.success_files }}"
-          FAILED_FILES="${{ steps.sync-lessons.outputs.failed_files }}"
-          CHANGED_FILES="${{ steps.changed-files.outputs.changed_files }}"
-
-          # Generate GitHub Actions summary
-          {
-            echo "## LabEx Lesson Sync Report"
-            echo ""
-            echo "### Statistics"
-            echo "- Files synced: $SYNC_COUNT"
-            echo "- Trigger: ${{ github.event_name }}"
-            echo "- Time: $(date)"
-            echo ""
-
-            if [ -n "$CHANGED_FILES" ]; then
-              echo "### Changed Files"
-              for file in $CHANGED_FILES; do
-                echo "- $file"
-              done
-              echo ""
-            fi
-
-            if [ -n "$SUCCESS_FILES" ]; then
-              echo "### Successfully Synced"
-              echo "$SUCCESS_FILES"
-              echo ""
-            fi
-
-            if [ -n "$FAILED_FILES" ]; then
-              echo "### Failed to Sync"
-              echo "$FAILED_FILES"
-              echo ""
-            fi
-
-            echo "### Links"
-            echo "- [Commit](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})"
-            echo "- [Action Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-            echo ""
-
-            if [ -n "$FAILED_FILES" ]; then
-              echo "**Warning**: Some files failed to sync. Please check the failed files list above."
-            else
-              echo "**Completed**: All detected documents have been successfully synced to LabEx."
-            fi
-          } >> $GITHUB_STEP_SUMMARY
+          # Execute batch sync command
+          labex linuxjourney lesson sync-batch $FILE_ARGS -t ${{ github.event_name }}
 
       - name: Notify completion
         run: |
