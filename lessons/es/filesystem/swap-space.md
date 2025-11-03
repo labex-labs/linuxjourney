@@ -1,46 +1,46 @@
 ---
 index: 8
 lang: "es"
-title: "swap"
-meta_title: "swap - El Sistema de Archivos"
-meta_description: "Aprende sobre el espacio de intercambio de Linux, cómo funciona y cómo crear y gestionar particiones de intercambio. ¡Optimiza el uso de la memoria de tu sistema con esta guía!"
-meta_keywords: "Linux swap, mkswap, swapon, swapoff, /etc/fstab, memoria virtual, Linux para principiantes, tutorial de Linux"
+title: "intercambio"
+meta_title: "intercambio - El Sistema de Archivos"
+meta_description: "Aprenda sobre el espacio de intercambio (swap) de Linux, cómo funciona, y cómo crear y administrar particiones de intercambio. ¡Optimice el uso de memoria de su sistema con esta guía!"
+meta_keywords: "swap de Linux, mkswap, swapon, swapoff, /etc/fstab, memoria virtual, principiante Linux, tutorial Linux"
 ---
 
 ## Lesson Content
 
-En nuestro ejemplo anterior, te mostré cómo ver tu tabla de particiones. Volvamos a ese ejemplo, más específicamente a esta línea:
+En nuestro ejemplo anterior, les mostré cómo ver su tabla de particiones. Revisitemos ese ejemplo, más específicamente esta línea:
 
 ```
 Number  Start   End     Size    Type      File system     Flags
  5      6861MB  7380MB  519MB   logical   linux-swap(v1)
 ```
 
-¿Qué es esta partición de intercambio (swap)? Bueno, swap es lo que usamos para asignar memoria virtual a nuestro sistema. Si tienes poca memoria, el sistema usa esta partición para "intercambiar" (swap) piezas de memoria de procesos inactivos al disco, para que no te quedes atascado por falta de memoria.
+¿Qué es esta partición swap? Bueno, swap es lo que usamos para asignar memoria virtual a nuestro sistema. Si tiene poca memoria, el sistema utiliza esta partición para "intercambiar" (swap) partes de la memoria de procesos inactivos al disco, para que no se sature por falta de memoria.
 
-### Usando una partición para espacio de intercambio
+### Usar una partición para espacio swap
 
-Supongamos que queremos configurar nuestra partición `/dev/sdb2` para que se use como espacio de intercambio.
+Supongamos que queremos configurar nuestra partición `/dev/sdb2` para que se use como espacio swap.
 
-1. Primero, asegúrate de que no haya nada en la partición.
-2. Ejecuta: `mkswap /dev/sdb2` para inicializar las áreas de intercambio.
-3. Ejecuta: `swapon /dev/sdb2`. Esto habilitará el dispositivo de intercambio.
-4. Si quieres que la partición de intercambio persista al iniciar el sistema, debes añadir una entrada al archivo `/etc/fstab`. `sw` es el tipo de sistema de archivos que usarás.
-5. Para eliminar el intercambio: `swapoff /dev/sdb2`.
+1. Primero, asegúrese de que no haya nada en la partición.
+2. Ejecute: `mkswap /dev/sdb2` para inicializar las áreas swap.
+3. Ejecute: `swapon /dev/sdb2`. Esto habilitará el dispositivo swap.
+4. Si desea que la partición swap persista al arrancar, debe agregar una entrada al archivo `/etc/fstab`. `sw` es el tipo de sistema de archivos que utilizará.
+5. Para desactivar swap: `swapoff /dev/sdb2`.
 
-Generalmente, deberías asignar aproximadamente el doble de espacio de intercambio de la memoria que tienes. Sin embargo, los sistemas modernos de hoy en día suelen ser lo suficientemente potentes y tienen suficiente RAM tal como están.
+Generalmente, debe asignar aproximadamente el doble de espacio swap que la cantidad de memoria que tiene. Sin embargo, los sistemas modernos hoy en día suelen ser lo suficientemente potentes y ya cuentan con suficiente RAM.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del espacio de intercambio de Linux y la gestión de la memoria virtual:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del espacio swap de Linux y la gestión de memoria virtual:
 
-1. **[Crear y Activar un Archivo de Intercambio en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Practica la creación y activación de un archivo de intercambio, una habilidad crucial para gestionar la memoria virtual de tu sistema.
+1. **[Crear y Activar un Archivo Swap en Linux](https://labex.io/es/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Practique la creación y activación de un archivo swap, una habilidad crucial para administrar la memoria virtual de su sistema.
 
-Este laboratorio te ayudará a aplicar los conceptos de las particiones de intercambio en escenarios reales y a ganar confianza en la gestión de los recursos del sistema.
+Este laboratorio le ayudará a aplicar los conceptos de particiones swap en escenarios reales y a ganar confianza con la gestión de recursos del sistema.
 
 ## Quiz Question
 
-¿Cuál es el comando para habilitar el espacio de intercambio en un dispositivo?
+¿Cuál es el comando para habilitar el espacio swap en un dispositivo?
 
 ## Quiz Answer
 

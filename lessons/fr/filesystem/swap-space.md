@@ -2,45 +2,45 @@
 index: 8
 lang: "fr"
 title: "swap"
-meta_title: "swap - Le système de fichiers"
-meta_description: "Découvrez l'espace de swap Linux, son fonctionnement, et comment créer et gérer des partitions de swap. Optimisez l'utilisation de la mémoire de votre système avec ce guide !"
+meta_title: "swap - L'espace d'échange"
+meta_description: "Découvrez l'espace swap Linux, son fonctionnement, et comment créer et gérer les partitions d'échange. Optimisez l'utilisation de la mémoire de votre système avec ce guide !"
 meta_keywords: "swap Linux, mkswap, swapon, swapoff, /etc/fstab, mémoire virtuelle, débutant Linux, tutoriel Linux"
 ---
 
 ## Lesson Content
 
-Dans notre exemple précédent, je vous ai montré comment visualiser votre table de partitions. Revoyons cet exemple, plus précisément cette ligne :
+Dans notre exemple précédent, je vous ai montré comment visualiser votre table de partitions. Revenons à cet exemple, plus spécifiquement à cette ligne :
 
 ```
 Number  Start   End     Size    Type      File system     Flags
  5      6861MB  7380MB  519MB   logical   linux-swap(v1)
 ```
 
-Qu'est-ce que cette partition swap ? Eh bien, le swap est ce que nous utilisons pour allouer de la mémoire virtuelle à notre système. Si vous manquez de mémoire, le système utilise cette partition pour "échanger" des morceaux de mémoire de processus inactifs vers le disque, afin que vous ne soyez pas ralenti par le manque de mémoire.
+Qu'est-ce que cette partition swap ? Eh bien, le swap est ce que nous utilisons pour allouer de la mémoire virtuelle à notre système. Si votre mémoire est faible, le système utilise cette partition pour "échanger" des morceaux de mémoire des processus inactifs vers le disque, afin que vous ne soyez pas ralenti par un manque de mémoire.
 
-### Utilisation d'une partition pour l'espace de swap
+### Utilisation d'une partition pour l'espace swap
 
-Supposons que nous voulions que notre partition `/dev/sdb2` soit utilisée pour l'espace de swap.
+Disons que nous voulions configurer notre partition `/dev/sdb2` pour être utilisée comme espace swap.
 
-1. Tout d'abord, assurez-vous que la partition ne contient rien.
+1. Assurez-vous d'abord que nous n'avons rien sur la partition.
 2. Exécutez : `mkswap /dev/sdb2` pour initialiser les zones de swap.
 3. Exécutez : `swapon /dev/sdb2`. Cela activera le périphérique de swap.
-4. Si vous voulez que la partition de swap persiste au démarrage, vous devez ajouter une entrée au fichier `/etc/fstab`. `sw` est le type de système de fichiers que vous utiliserez.
+4. Si vous souhaitez que la partition swap persiste au démarrage, vous devez ajouter une entrée au fichier `/etc/fstab`. `sw` est le type de système de fichiers que vous utiliserez.
 5. Pour supprimer le swap : `swapoff /dev/sdb2`.
 
-En général, vous devriez allouer environ deux fois plus d'espace de swap que de mémoire. Cependant, les systèmes modernes sont généralement assez puissants et disposent de suffisamment de RAM.
+En général, vous devriez allouer environ deux fois plus d'espace swap que de mémoire vive. Cependant, les systèmes modernes sont généralement suffisamment puissants et disposent déjà de suffisamment de RAM.
 
 ## Exercise
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'espace de swap Linux et de la gestion de la mémoire virtuelle :
+La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'espace swap Linux et de la gestion de la mémoire virtuelle :
 
-1. **[Créer et activer un fichier d'échange dans Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Entraînez-vous à créer et à activer un fichier d'échange, une compétence cruciale pour gérer la mémoire virtuelle de votre système.
+1. **[Créer et Activer un Fichier Swap sous Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Entraînez-vous à créer et activer un fichier swap, une compétence cruciale pour gérer la mémoire virtuelle de votre système.
 
-Ce laboratoire vous aidera à appliquer les concepts des partitions de swap dans des scénarios réels et à renforcer votre confiance dans la gestion des ressources système.
+Ce laboratoire vous aidera à appliquer les concepts des partitions swap dans des scénarios réels et à renforcer votre confiance dans la gestion des ressources système.
 
 ## Quiz Question
 
-Quelle est la commande pour activer l'espace de swap sur un périphérique ?
+Quel est la commande pour activer l'espace swap sur un périphérique ?
 
 ## Quiz Answer
 
