@@ -19,13 +19,13 @@ The most basic level is the hardware. This includes the CPU, memory (RAM), hard 
 
 ### The Linux Kernel
 
-The next level is the kernel. The kernel's primary job is to act as a bridge, communicating with the hardware to execute the tasks requested by our processes. It handles process and memory management, device communication, system calls, and setting up the filesystem. This is a central theme you'll explore on linux jorney.com.
+The next level is the kernel. The kernel's primary job is to act as a bridge, communicating with the hardware to execute the tasks requested by our processes. It handles process and memory management, device communication, system calls, and setting up the filesystem. This is a central theme you'll explore on **[Linux Journey](https://labex.io/linuxjourney)**.
 
 ### The User Space
 
 The level you are most familiar with is the user space. This includes the shell, the programs you run, graphical interfaces, and all other applications. These programs interact with the kernel to get work done, without needing to know the specific details of the underlying hardware.
 
-In this course, we will dive deep into the kernel, demystifying its complexities. This part of your linux journe will be challenging but rewarding.
+In this course, we will dive deep into the kernel, demystifying its complexities. This part of your linux journey will be challenging but rewarding.
 
 ## Exercise
 
