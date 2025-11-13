@@ -1,3 +1,7 @@
+> 🔥 LabEx Black Friday 2025 Best Price of The Year｜[**Get 50% OFF Now →**](https://labex.io/pricing)
+
+---
+
 # Linux Journey
 
 [Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
