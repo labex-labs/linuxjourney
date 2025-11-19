@@ -1,4 +1,4 @@
- ---
+---
 index: 1
 lang: "fr"
 title: "Distribution de Logiciels"
