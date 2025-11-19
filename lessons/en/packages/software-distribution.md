@@ -13,7 +13,7 @@ A Linux system is composed of many software components, such as web browsers, te
 
 ### What Are Linux Packages
 
-You might know software by names like Chrome or Firefox, but on a technical level, they are packages. A package is essentially an archive पानी of files, including the application's executables, configuration files, and documentation, all bundled together. This organized structure simplifies software management.
+You might know software by names like Chrome or Firefox, but on a technical level, they are packages. A package is essentially an archive of files, including the application's executables, configuration files, and documentation, all bundled together. This organized structure simplifies software management.
 
 ### The Software Supply Chain
 
@@ -29,7 +29,7 @@ While you can install software directly from its source code, using a package ma
 - **Debian (.deb)**: Used by Debian and its derivatives, such as Ubuntu and Linux Mint.
 - **Red Hat Package Manager (.rpm)**: Used by Red Hat Enterprise Linux (RHEL), Fedora, and CentOS.
 
-Mastering the tools εταιρεία to manage these packages is the **best way to learn linux command line** and is a skill you will use constantly. These tools are some of the **best resources to learn linux** system administration.
+Mastering the tools to manage these packages is the **best way to learn linux command line** and is a skill you will use constantly. These tools are some of the **best resources to learn linux** system administration.
 
 ## Exercise
 
