@@ -11,7 +11,7 @@ meta_keywords: "choisir une distro linux, comment choisir une distro linux, choi
 
 Lors de la leçon précédente, nous avons découvert le noyau Linux. Il est important de noter que si « Linux » est souvent utilisé pour désigner l'ensemble du système d'exploitation, cela fait techniquement référence uniquement au noyau. Les systèmes d'exploitation complets qui utilisent le noyau Linux sont plus justement appelés distributions Linux, ou « distros ».
 
-A system Linux est divisé en trois parties principales :
+Un système Linux est divisé en trois parties principales :
 
 - **Matériel (Hardware)** - Cela inclut les composants physiques de votre ordinateur, tels que le CPU, la mémoire et les périphériques de stockage.
 - **Noyau Linux (Linux Kernel)** - En tant que cœur du système d'exploitation, le noyau gère le matériel et facilite la communication entre les logiciels et le matériel.
