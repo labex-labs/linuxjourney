@@ -83,6 +83,7 @@ You can also resize an existing partition with the `resize` command. You'll need
 ```bash
 resize 1 1MB 8000MB
 ```
+Disclaimer: Please use alternative commands like `resizepart` if you face errors like `The resize command has been removed in parted 3.0`.
 
 This command resizes partition number 1 to end at the 8000MB mark.
 
