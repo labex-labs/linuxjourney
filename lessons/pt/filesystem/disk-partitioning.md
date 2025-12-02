@@ -3,7 +3,7 @@ index: 4
 lang: "pt"
 title: "Particionamento de Disco"
 meta_title: "Particionamento de Disco - O Sistema de Arquivos"
-meta_description: "Aprenda particionamento de disco Linux com o comando parted. Este guia aborda como visualizar partições com `sudo parted -l`, criá-las e redimensioná-las. Também apresenta o gparted, uma alternativa gráfica popular."
+meta_description: "Aprenda particionamento de disco Linux com o comando parted. Este guia cobre como visualizar partições com `sudo parted -l`, criá-las e redimensioná-las. Também apresenta o gparted, uma alternativa gráfica popular."
 meta_keywords: "Particionamento de disco Linux, comando parted, sudo parted -l, gparted, alternativa gparted windows, fdisk, gerenciamento de disco, criar partição, redimensionar partição, guia Linux"
 ---
 
@@ -42,7 +42,7 @@ Você entrará no shell da ferramenta `parted`, onde poderá executar comandos p
 
 ### Selecionando um Dispositivo
 
-Uma vez dentro do shell `parted`, você deve selecionar o disco que deseja modificar. Tenha muito cuidado ao escolher o correto para evitar perda de dados.
+Uma vez dentro do shell `parted`, você deve selecionar o disco que deseja modificar. Tenha muito cuidado para escolher o correto para evitar perda de dados.
 
 ```bash
 select /dev/sdb
@@ -78,27 +78,27 @@ Este comando cria uma partição primária formatada com ext4, começando em 1MB
 
 ### Redimensionando uma Partição
 
-Você também pode redimensionar uma partição existente com o comando `resize`. Você precisará do número da partição e dos novos pontos de início e fim.
+Você também pode redimensionar uma partição existente com o comando `resizepart`. Você precisará do número da partição e do novo ponto final.
 
 ```bash
-resize 1 1MB 8000MB
+resizepart 1 8000MB
 ```
 
-Este comando redimensiona a partição número 1 para terminar na marca de 8000MB.
+Este comando redimensiona a partição número 1 para terminar na marca de 8000MB. Observe que isso apenas altera o tamanho da partição; você ainda pode precisar redimensionar o sistema de arquivos em si usando outras ferramentas (como `resize2fs`).
 
 `parted` é uma ferramenta muito poderosa. Sempre verifique duas vezes seus comandos antes de executá-los para evitar perda acidental de dados.
 
 ## Exercise
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de particionamento de disco Linux e gerenciamento de sistemas de arquivos:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de particionamento de disco e gerenciamento de sistemas de arquivos no Linux:
 
 1. [Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845) - Neste laboratório, você aprenderá a gerenciar partições de disco e sistemas de arquivos no Linux. Você usará o fdisk para criar uma nova partição, formatá-la com ext4, montá-la, configurar a montagem persistente em /etc/fstab e criar uma partição swap, tudo em um disco virtual secundário seguro.
 
-Este laboratório o ajudará a aplicar os conceitos de particionamento de disco e gerenciamento de sistemas de arquivos em um cenário real e a construir confiança com essas habilidades essenciais de administração Linux.
+Este laboratório ajudará você a aplicar os conceitos de particionamento de disco e gerenciamento de sistemas de arquivos em um cenário real e a construir confiança com essas habilidades essenciais de administração Linux.
 
 ## Quiz Question
 
-Qual é o comando `parted` para criar uma partição? (Por favor, responda em inglês, prestando atenção à sensibilidade de maiúsculas e minúsculas).
+Qual é o comando `parted` para criar uma partição? (Por favor, responda em inglês, prestando atenção à sensibilidade a maiúsculas e minúsculas).
 
 ## Quiz Answer
 

@@ -78,14 +78,13 @@ This command creates a primary partition formatted with ext4, starting at 1MB an
 
 ### Resizing a Partition
 
-You can also resize an existing partition with the `resize` command. You'll need the partition number and the new start and end points.
+You can also resize an existing partition with the `resizepart` command. You'll need the partition number and the new end point.
 
 ```bash
-resize 1 1MB 8000MB
+resizepart 1 8000MB
 ```
-Disclaimer: Please use alternative commands like `resizepart` if you face errors like `The resize command has been removed in parted 3.0`.
 
-This command resizes partition number 1 to end at the 8000MB mark.
+This command resizes partition number 1 to end at the 8000MB mark. Note that this only changes the partition size; you may still need to resize the filesystem itself using other tools (like `resize2fs`).
 
 `parted` is a very powerful tool. Always double-check your commands before executing them to prevent accidental data loss.
 
