@@ -13,31 +13,31 @@ Seu sistema Linux usa variáveis de ambiente para armazenar informações que o 
 
 ### Explorando Variáveis de Ambiente Básicas
 
-You can view the value of a specific variable by prefixing its name with a `$` symbol. For example, run the following command:
+Você pode visualizar o valor de uma variável específica prefixando seu nome com um símbolo de `$`. Por exemplo, execute o seguinte comando:
 
 ```bash
 echo $HOME
 ```
 
-This command will display the path to your home directory, which might look something like `/home/pete`.
+Este comando exibirá o caminho para o seu diretório inicial, que pode ser algo como `/home/pete`.
 
-Now, try another one:
+Agora, tente outro:
 
 ```bash
 echo $USER
 ```
 
-This will output your current username. But where does this information come from? It's stored in your shell's environment.
+Isso exibirá seu nome de usuário atual. Mas de onde vêm essas informações? Elas são armazenadas no ambiente do seu shell.
 
 ### O que o env faz no Linux
 
-To see all the environment variables currently set for your session, you can use the `env` command. The `linux env command` is a fundamental tool for inspecting your shell's configuration.
+Para ver todas as variáveis de ambiente atualmente definidas para sua sessão, você pode usar o comando `env`. O `comando linux env` é uma ferramenta fundamental para inspecionar a configuração do seu shell.
 
 ```bash
 env
 ```
 
-Running the `env` command will output a list of key-value pairs. Here is a short example of what you might see:
+Executar o comando `env` produzirá uma lista de pares chave-valor. Aqui está um pequeno exemplo do que você pode ver:
 
 ```plaintext
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
@@ -45,35 +45,94 @@ PWD=/home/user
 USER=pete
 ```
 
-Understanding the `linux env` is crucial for managing your system effectively.
+Entender o `linux env` é crucial para gerenciar seu sistema de forma eficaz.
 
 ### A Importância da Variável PATH
 
-One of the most important variables in your `env linux` output is `PATH`. You can view its contents specifically with:
+Uma das variáveis mais importantes na sua saída do `env linux` é `PATH`. Você pode visualizar seu conteúdo especificamente com:
 
 ```bash
 echo $PATH
 ```
 
-This command returns a colon-separated list of directories. When you type a command, your system searches through these directories to find the corresponding executable file.
+Este comando retorna uma lista de diretórios separados por dois pontos. Quando você digita um comando, seu sistema procura nesses diretórios para encontrar o arquivo executável correspondente.
 
-Imagine you manually install a program in a non-standard directory like `/opt/coolapp/bin`. If you try to run it by typing `coolcommand`, you might get a "command not found" error. This happens because the directory containing your program is not listed in the `PATH` variable, so the shell doesn't know where to look for it.
+Imagine que você instala manualmente um programa em um diretório não padrão como `/opt/coolapp/bin`. Se você tentar executá-lo digitando `coolcommand`, poderá receber um erro de "comando não encontrado". Isso acontece porque o diretório que contém seu programa não está listado na variável `PATH`, então o shell não sabe onde procurá-lo.
 
-To fix this, you can modify the `PATH` variable to include the new directory. By adding your custom directory to `PATH`, you enable the shell to find and execute your programs from anywhere in the terminal.
+Para corrigir isso, você pode modificar a variável `PATH` para incluir o novo diretório. Ao adicionar seu diretório personalizado ao `PATH`, você permite que o shell encontre e execute seus programas de qualquer lugar no terminal.
+
+### Definindo uma Variável de Ambiente para a Sessão Atual
+
+Executar o seguinte comando no seu terminal define a variável de ambiente `TEST` apenas para a sessão atual:
+
+```bash
+export TEST=test
+```
+
+Depois disso, se você executar:
+
+```bash
+echo $TEST
+```
+
+A saída será:
+
+```
+test
+```
+
+Esta variável estará disponível enquanto a sessão do terminal permanecer aberta. Assim que você fechar e reabrir o terminal, a variável não existirá mais.
+
+### Tornando a Variável de Ambiente Persistente Entre Sessões
+
+Se você deseja que a variável de ambiente esteja disponível em todas as sessões de terminal (mesmo após fechar e reabrir o terminal), você precisa adicioná-la ao arquivo de inicialização do seu shell. No caso do Bash (o shell padrão para muitas distribuições Linux e macOS), este arquivo geralmente é o `.bashrc` no seu diretório inicial.
+
+Veja como fazer isso:
+
+1.  Abra o `.bashrc` no seu editor de texto preferido. Por exemplo:
+
+        ```bash
+
+    nano ~/.bashrc
+    ```
+
+2.  Adicione a linha `export` ao final do arquivo:
+
+        ```bash
+
+    export TEST=test
+    ```
+
+3.  Salve e saia do editor (no Nano, isso seria `Ctrl+X`, depois `S` para confirmar, e `Enter`).
+
+4.  Para aplicar as alterações imediatamente sem reabrir o terminal, execute:
+
+        ```bash
+
+    source ~/.bashrc
+    ```
+
+Depois disso, a variável `TEST` estará disponível em todas as sessões de terminal futuras, e executar `echo $TEST` imprimirá `test` mesmo depois de fechar e reabrir o terminal.
+
+### Uma Nota sobre Arquivos de Configuração do Shell
+
+- Para **Bash** (o padrão na maioria dos sistemas), o arquivo relevante é `~/.bashrc` para shells interativos não de login.
+- Para **Zsh**, o arquivo equivalente geralmente é `~/.zshrc`.
+- Para **Fish**, você normalmente usaria `~/.config/fish/config.fish`.
 
 ## Exercise
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das variáveis de ambiente do Linux:
 
-1. **[Gerenciar Ambiente e Configuração do Shell no Linux](https://labex.io/pt/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Pratique a criação e o gerenciamento de variáveis locais e de ambiente, entendendo a herança e tornando as configurações persistentes modificando o arquivo `.bashrc`.
+1. **[Gerenciar Ambiente de Shell e Configuração no Linux](https://labex.io/pt/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Pratique a criação e o gerenciamento de variáveis locais e de ambiente, entendendo a herança e tornando as configurações persistentes modificando o arquivo `.bashrc`.
 2. **[Variáveis de Ambiente no Linux](https://labex.io/pt/labs/linux-environment-variables-in-linux-385274)** - Aprenda o conceito e o uso de variáveis de ambiente, como criá-las, modificá-las e gerenciá-las, e seu papel na configuração do sistema.
 3. **[Configurar Variáveis de Ambiente do Linux](https://labex.io/pt/labs/linux-configure-linux-environment-variables-437861)** - Obtenha experiência prática criando, definindo e gerenciando variáveis de ambiente em um sistema Linux.
 
-These labs will help you apply the concepts in real scenarios and build confidence with managing your Linux shell environment.
+Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento do ambiente do seu shell Linux.
 
 ## Quiz Question
 
-Which command displays all of your current environment variables? (Please answer in English, using only the lowercase command name)
+Qual comando exibe todas as suas variáveis de ambiente atuais? (Por favor, responda em inglês, usando apenas o nome do comando em minúsculas).
 
 ## Quiz Answer
 
