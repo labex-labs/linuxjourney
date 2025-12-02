@@ -1,10 +1,10 @@
 ---
 index: 4
 lang: "pt"
-title: "Truques de Sub-redes"
-meta_title: "Truques de Sub-redes - Sub-redes"
-meta_description: "Domine as sub-redes com nosso guia de truques de conversão binária. Aprenda a usar a tabela 128+64+32+16+8+4+2+1 para converter rapidamente endereços IP de decimal para binário e vice-versa. Essencial para entrevistas e certificações de redes."
-meta_keywords: "sub-redes, conversão binária, endereço IP, rede, redes Linux, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, decimal para binário, matemática de sub-redes, tutorial, guia"
+title: "Cola de Sub-redes"
+meta_title: "Cola de Sub-redes - Sub-redes"
+meta_description: "Domine o subnetting com nosso guia de truques de conversão binária. Aprenda a usar a tabela 128+64+32+16+8+4+2+1 para converter rapidamente endereços IP de decimal para binário e vice-versa. Essencial para entrevistas e certificações de rede."
+meta_keywords: "subnetting, conversão binária, endereço IP, rede, rede Linux, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, decimal para binário, matemática de sub-rede, tutorial, guia"
 ---
 
 ## Lesson Content
@@ -37,7 +37,7 @@ Esta tabela é sua principal ferramenta. Cada número corresponde à posição d
 
 Vamos converter o endereço IP `192.168.23.43` para binário. Vamos percorrer o primeiro octeto, `192`, para demonstrar o processo. Usamos os valores da nossa tabela: `128 64 32 16 8 4 2 1`.
 
-1. Comece com o número `192`. Você pode subtrair 128 dele? Sim (192 - 128 = 64). Então, o primeiro bit é **1**.
+1. Comece com o número `192`. Você pode subtrair 128 dele? Sim (192 - 128 = 64). Portanto, o primeiro bit é **1**.
 2. Nosso novo número é `64`. Você pode subtrair o próximo valor, 64, dele? Sim (64 - 64 = 0). O segundo bit é **1**.
 3. Nosso resto agora é `0`. Não podemos subtrair 32, 16, 8, 4, 2 ou 1. Portanto, os bits restantes são todos **0**.
 
@@ -57,9 +57,9 @@ Como todos os outros bits são `0`, não somamos nenhum outro valor. A fórmula 
 
 A prática leva à perfeição! Embora a matemática de sub-redes seja frequentemente automatizada no mundo real, entender as conversões binárias subjacentes é crucial para entrevistas e uma compreensão mais profunda de redes. Aqui está um laboratório prático para reforçar sua compreensão:
 
-1. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
+1. **[Realizar Sub-redes IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine a sub-rede IP e a conversão binária usando Python em um terminal Linux para converter endereços IP, traduzir máscaras CIDR e calcular detalhes de rede.
 
-Este laboratório ajudará você a aplicar os conceitos de conversão binária e subnetting em um cenário prático e a construir confiança com os fundamentos de endereçamento de rede.
+Este laboratório ajudará você a aplicar os conceitos de conversão binária e sub-redes em um cenário prático e a construir confiança com os fundamentos de endereçamento de rede.
 
 ## Quiz Question
 
@@ -67,4 +67,4 @@ Qual é a conversão binária de 123? Por favor, forneça a resposta em caracter
 
 ## Quiz Answer
 
-1111011
+01111011

@@ -9,7 +9,7 @@ meta_keywords: "subnetting, conversión binaria, dirección IP, red, redes Linux
 
 ## Lesson Content
 
-En el networking moderno, rara vez realizarás cálculos de subredes a mano, ya que las herramientas y calculadoras automatizan el proceso. Sin embargo, comprender la conversión manual entre decimal y binario es crucial para las entrevistas de redes, los exámenes de certificación y para obtener una comprensión más profunda de cómo funciona el direccionamiento IP. Esta lección proporciona algunos trucos sencillos para ayudarte a dominarlo.
+En el networking moderno, rara vez realizarás cálculos de subredes a mano, ya que las herramientas y calculadoras automatizan el proceso. Sin embargo, comprender la conversión manual entre decimal y binario es crucial para las entrevistas de networking, los exámenes de certificación y para obtener una comprensión más profunda de cómo funciona el direccionamiento IP. Esta lección proporciona algunos trucos sencillos para ayudarte a dominarlo.
 
 Primero, es muy beneficioso memorizar los cálculos de base 2, ya que forman la base de las matemáticas binarias.
 
@@ -55,7 +55,7 @@ Como todos los demás bits son `0`, no sumamos ningún otro valor. La fórmula `
 
 ## Exercise
 
-¡La práctica hace al maestro! Aunque los cálculos de subredes a menudo se automatizan en el mundo real, comprender las conversiones binarias subyacentes es crucial para las entrevistas y una comprensión más profunda del networking. Aquí tienes un laboratorio práctico para reforzar tu comprensión:
+¡La práctica hace al maestro! Si bien las matemáticas de subredes a menudo se automatizan en el mundo real, comprender las conversiones binarias subyacentes es crucial para las entrevistas y una comprensión más profunda del networking. Aquí tienes un laboratorio práctico para reforzar tu comprensión:
 
 1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domina el subnetting IP y la conversión binaria utilizando Python en una terminal de Linux para convertir direcciones IP, traducir máscaras CIDR y calcular detalles de red.
 
@@ -63,8 +63,8 @@ Este laboratorio te ayudará a aplicar los conceptos de conversión binaria y su
 
 ## Quiz Question
 
-¿Cuál es la conversión binaria de 123? Por favor, proporciona la respuesta usando caracteres en inglés (números).
+¿Cuál es la conversión binaria de 123? Por favor, proporciona la respuesta en caracteres ingleses (números).
 
 ## Quiz Answer
 
-1111011
+01111011

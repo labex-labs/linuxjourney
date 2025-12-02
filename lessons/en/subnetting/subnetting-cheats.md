@@ -67,4 +67,4 @@ What is the binary conversion of 123? Please provide the answer in English chara
 
 ## Quiz Answer
 
-1111011
+01111011
