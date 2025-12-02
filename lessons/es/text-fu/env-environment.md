@@ -13,7 +13,7 @@ Su sistema Linux utiliza variables de entorno para almacenar información a la q
 
 ### Explorando Variables de Entorno Básicas
 
-Puede ver el valor de una variable específica anteponiendo su nombre con un símbolo de `$`. Por ejemplo, ejecute el siguiente comando:
+You puede ver el valor de una variable específica anteponiendo su nombre con un símbolo de `$`. Por ejemplo, ejecute el siguiente comando:
 
 ```bash
 echo $HOME
@@ -29,9 +29,9 @@ echo $USER
 
 Esto mostrará su nombre de usuario actual. ¿Pero de dónde viene esta información? Está almacenada en el entorno de su shell.
 
-### ¿Qué Hace env en Linux?
+### ¿Qué Hace `env` en Linux?
 
-Para ver todas las variables de entorno configuradas actualmente para su sesión, puede usar el comando `env`. El `comando linux env` es una herramienta fundamental para inspeccionar la configuración de su shell.
+Para ver todas las variables de entorno configuradas actualmente para su sesión, puede usar el comando `env`. El `comando env de linux` es una herramienta fundamental para inspeccionar la configuración de su shell.
 
 ```bash
 env
@@ -45,7 +45,7 @@ PWD=/home/user
 USER=pete
 ```
 
-Comprender el `linux env` es crucial para administrar su sistema de manera efectiva.
+Comprender el `env de linux` es crucial para administrar su sistema de manera efectiva.
 
 ### La Importancia de la Variable PATH
 
@@ -89,28 +89,25 @@ Si desea que la variable de entorno esté disponible en cada sesión de terminal
 
 Así es como se hace:
 
-1.  Abra `.bashrc` en su editor de texto preferido. Por ejemplo:
+1. Abra `.bashrc` en su editor de texto preferido. Por ejemplo:
 
-        ```bash
+```bash
+nano ~/.bashrc
+```
 
-    nano ~/.bashrc
-    ```
+2. Agregue la línea `export` al final del archivo:
 
-2.  Agregue la línea `export` al final del archivo:
+```bash
+export TEST=test
+```
 
-        ```bash
+3. Guarde y salga del editor (en Nano, esto sería `Ctrl+X`, luego `Y` para confirmar y `Enter`).
 
-    export TEST=test
-    ```
+4. Para aplicar los cambios inmediatamente sin volver a abrir la terminal, ejecute:
 
-3.  Guarde y salga del editor (en Nano, esto sería `Ctrl+X`, luego `Y` para confirmar y `Enter`).
-
-4.  Para aplicar los cambios inmediatamente sin volver a abrir la terminal, ejecute:
-
-        ```bash
-
-    source ~/.bashrc
-    ```
+```bash
+source ~/.bashrc
+```
 
 Después de esto, la variable `TEST` estará disponible en todas las sesiones de terminal futuras, y ejecutar `echo $TEST` imprimirá `test` incluso después de cerrar y volver a abrir la terminal.
 
@@ -122,17 +119,17 @@ Después de esto, la variable `TEST` estará disponible en todas las sesiones de
 
 ## Exercise
 
-¡La práctica hace la perfección! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de las variables de entorno de Linux:
+¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de las variables de entorno de Linux:
 
-1. **[Administrar el Entorno y la Configuración del Shell en Linux](https://labex.io/es/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practique la creación y gestión de variables locales y de entorno, comprenda la herencia y haga que las configuraciones sean persistentes modificando el archivo `.bashrc`.
-2. **[Variables de Entorno en Linux](https://labex.io/es/labs/linux-environment-variables-in-linux-385274)** - Aprenda el concepto y el uso de las variables de entorno, cómo crearlas, modificarlas y gestionarlas, y su papel en la configuración del sistema.
-3. **[Configurar Variables de Entorno de Linux](https://labex.io/es/labs/linux-configure-linux-environment-variables-437861)** - Obtenga experiencia práctica creando, estableciendo y gestionando variables de entorno en un sistema Linux.
+1. **[Administrar el Entorno y la Configuración del Shell en Linux](https://labex.io/es/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Practique la creación y administración de variables locales y de entorno, comprenda la herencia y haga que las configuraciones sean persistentes modificando el archivo `.bashrc`.
+2. **[Variables de Entorno en Linux](https://labex.io/es/labs/linux-environment-variables-in-linux-385274)** - Aprenda el concepto y el uso de las variables de entorno, cómo crearlas, modificarlas y administrarlas, y su papel en la configuración del sistema.
+3. **[Configurar Variables de Entorno de Linux](https://labex.io/es/labs/linux-configure-linux-environment-variables-437861)** - Obtenga experiencia práctica creando, estableciendo y administrando variables de entorno en un sistema Linux.
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la gestión del entorno de su shell Linux.
+Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la administración del entorno de su shell de Linux.
 
 ## Quiz Question
 
-¿Qué comando muestra todas sus variables de entorno actuales? (Por favor, responda en inglés, usando solo el nombre del comando en minúsculas).
+Which command displays all of your current environment variables? (Please answer in English, using only the lowercase command name)
 
 ## Quiz Answer
 

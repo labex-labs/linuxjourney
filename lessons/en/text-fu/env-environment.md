@@ -91,23 +91,23 @@ Here's how you do it:
 
 1. Open `.bashrc` in your preferred text editor. For example:
 
-    ```bash
-    nano ~/.bashrc
-    ```
+```bash
+nano ~/.bashrc
+```
 
 2. Add the `export` line to the end of the file:
 
-    ```bash
-    export TEST=test
-    ```
+```bash
+export TEST=test
+```
 
 3. Save and exit the editor (in Nano, this would be `Ctrl+X`, then `Y` to confirm, and `Enter`).
 
 4. To apply the changes immediately without reopening the terminal, run:
 
-    ```bash
-    source ~/.bashrc
-    ```
+```bash
+source ~/.bashrc
+```
 
 After this, the `TEST` variable will be available in all future terminal sessions, and running `echo $TEST` will print `test` even after you close and reopen the terminal.
 

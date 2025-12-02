@@ -3,13 +3,13 @@ index: 5
 lang: "de"
 title: "env (Umgebung)"
 meta_title: "env (Umgebung) - Text-Fu"
-meta_description: "Erfahren Sie, was der env-Befehl unter Linux bewirkt. Diese Anleitung erklärt, wie Sie Linux-Umgebungsvariablen wie PATH, HOME und USER mit dem env-Linux-Befehl anzeigen und verwenden."
-meta_keywords: "env, linux env, env linux, env befehl linux, linux env befehl, was macht env unter linux, umgebungsvariablen, PATH variable, shell variablen"
+meta_description: "Erfahren Sie, was der env-Befehl in Linux bewirkt. Diese Anleitung erklärt, wie Sie Linux-Umgebungsvariablen wie PATH, HOME und USER mit dem env-Linux-Befehl anzeigen und verwenden."
+meta_keywords: "env, linux env, env linux, env befehl linux, linux env befehl, was macht env in linux, umgebungsvariablen, PATH variable, shell variablen"
 ---
 
 ## Lesson Content
 
-Ihr Linux-System verwendet Umgebungsvariablen, um Informationen zu speichern, auf die die Shell und andere Prozesse zugreifen können. Diese Variablen enthalten nützliche Daten über Ihre Benutzersitzung und Systemkonfiguration.
+Ihr Linux-System verwendet Umgebungsvariablen, um Informationen zu speichern, auf die die Shell und andere Prozesse zugreifen können. Diese Variablen enthalten nützliche Daten zu Ihrer Benutzersitzung und Systemkonfiguration.
 
 ### Grundlegende Umgebungsvariablen untersuchen
 
@@ -21,7 +21,7 @@ echo $HOME
 
 Dieser Befehl zeigt den Pfad zu Ihrem Home-Verzeichnis an, der etwa so aussehen könnte: `/home/pete`.
 
-Versuchen Sie es nun mit einem weiteren:
+Versuchen Sie nun Folgendes:
 
 ```bash
 echo $USER
@@ -57,7 +57,7 @@ echo $PATH
 
 Dieser Befehl gibt eine durch Doppelpunkte getrennte Liste von Verzeichnissen zurück. Wenn Sie einen Befehl eingeben, durchsucht Ihr System diese Verzeichnisse, um die entsprechende ausführbare Datei zu finden.
 
-Stellen Sie sich vor, Sie installieren manuell ein Programm in einem nicht standardmäßigen Verzeichnis wie `/opt/coolapp/bin`. Wenn Sie versuchen, es durch Eingabe von `coolcommand` auszuführen, erhalten Sie möglicherweise eine Fehlermeldung „command not found“. Dies geschieht, weil das Verzeichnis, das Ihr Programm enthält, nicht in der `PATH`-Variable aufgeführt ist, sodass die Shell nicht weiß, wo sie danach suchen soll.
+Stellen Sie sich vor, Sie installieren manuell ein Programm in einem nicht standardmäßigen Verzeichnis wie `/opt/coolapp/bin`. Wenn Sie versuchen, es auszuführen, indem Sie `coolcommand` eingeben, erhalten Sie möglicherweise eine Fehlermeldung „command not found“. Dies geschieht, weil das Verzeichnis, das Ihr Programm enthält, nicht in der `PATH`-Variable aufgeführt ist, sodass die Shell nicht weiß, wo sie danach suchen soll.
 
 Um dies zu beheben, können Sie die `PATH`-Variable ändern, um das neue Verzeichnis einzuschließen. Indem Sie Ihr benutzerdefiniertes Verzeichnis zu `PATH` hinzufügen, ermöglichen Sie der Shell, Ihre Programme von überall im Terminal aus zu finden und auszuführen.
 
@@ -75,7 +75,7 @@ Danach, wenn Sie ausführen:
 echo $TEST
 ```
 
-Die Ausgabe wird sein:
+wird die Ausgabe sein:
 
 ```
 test
@@ -87,48 +87,45 @@ Diese Variable ist verfügbar, solange die Terminalsitzung geöffnet bleibt. Sob
 
 Wenn die Umgebungsvariable in jeder Terminalsitzung verfügbar sein soll (auch nach dem Schließen und erneuten Öffnen des Terminals), müssen Sie sie zur Startdatei Ihrer Shell hinzufügen. Im Falle von Bash (der Standard-Shell für viele Linux-Distributionen und macOS) ist diese Datei normalerweise `.bashrc` in Ihrem Home-Verzeichnis.
 
-Hier erfahren Sie, wie Sie das tun:
+Hier erfahren Sie, wie Sie dies tun:
 
-1.  Öffnen Sie `.bashrc` in Ihrem bevorzugten Texteditor. Zum Beispiel:
+1. Öffnen Sie `.bashrc` in Ihrem bevorzugten Texteditor. Zum Beispiel:
 
-        ```bash
+```bash
+nano ~/.bashrc
+```
 
-    nano ~/.bashrc
-    ```
+2. Fügen Sie die `export`-Zeile am Ende der Datei hinzu:
 
-2.  Fügen Sie die `export`-Zeile am Ende der Datei hinzu:
+```bash
+export TEST=test
+```
 
-        ```bash
+3. Speichern und beenden Sie den Editor (in Nano wäre dies `Strg+X`, dann `J` zur Bestätigung und `Enter`).
 
-    export TEST=test
-    ```
+4. Um die Änderungen sofort anzuwenden, ohne das Terminal erneut öffnen zu müssen, führen Sie Folgendes aus:
 
-3.  Speichern und beenden Sie den Editor (in Nano wäre dies `Strg+X`, dann `J` zur Bestätigung und `Enter`).
+```bash
+source ~/.bashrc
+```
 
-4.  Um die Änderungen sofort anzuwenden, ohne das Terminal erneut öffnen zu müssen, führen Sie Folgendes aus:
-
-        ```bash
-
-    source ~/.bashrc
-    ```
-
-Danach ist die Variable `TEST` in allen zukünftigen Terminalsitzungen verfügbar, und die Ausführung von `echo $TEST` gibt `test` aus, selbst nachdem Sie das Terminal geschlossen und erneut geöffnet haben.
+Danach ist die Variable `TEST` in allen zukünftigen Terminalsitzungen verfügbar, und die Ausführung von `echo $TEST` gibt `test` aus, auch nachdem Sie das Terminal geschlossen und erneut geöffnet haben.
 
 ### Ein Hinweis zu Shell-Konfigurationsdateien
 
-- Für **Bash** (Standard auf vielen Systemen) ist die relevante Datei `~/.bashrc` für nicht-interaktive Login-Shells.
+- Für **Bash** (Standard auf vielen Systemen) ist die relevante Datei `~/.bashrc` für nicht-anmeldende interaktive Shells.
 - Für **Zsh** ist die entsprechende Datei normalerweise `~/.zshrc`.
 - Für **Fish** würden Sie typischerweise `~/.config/fish/config.fish` verwenden.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Umgebungsvariablen zu festigen:
+Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von Linux-Umgebungsvariablen zu festigen:
 
-1. **[Shell-Umgebung und Konfiguration in Linux verwalten](https://labex.io/de/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Üben Sie das Erstellen und Verwalten lokaler und Umgebungsvariablen, das Verständnis der Vererbung und das dauerhaftes Speichern von Konfigurationen durch Modifizieren der `.bashrc`-Datei.
-2. **[Umgebungsvariablen in Linux](https://labex.io/de/labs/linux-environment-variables-in-linux-385274)** - Lernen Sie das Konzept und die Verwendung von Umgebungsvariablen kennen, wie man sie erstellt, modifiziert und verwaltet und welche Rolle sie bei der Systemkonfiguration spielen.
+1. **[Shell-Umgebung und Konfiguration in Linux verwalten](https://labex.io/de/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Üben Sie das Erstellen und Verwalten lokaler Variablen und Umgebungsvariablen, das Verständnis der Vererbung und das dauerhaftes Speichern von Konfigurationen durch Bearbeiten der Datei `.bashrc`.
+2. **[Umgebungsvariablen in Linux](https://labex.io/de/labs/linux-environment-variables-in-linux-385274)** - Lernen Sie das Konzept und die Verwendung von Umgebungsvariablen kennen, wie man sie erstellt, ändert und verwaltet und welche Rolle sie bei der Systemkonfiguration spielen.
 3. **[Linux-Umgebungsvariablen konfigurieren](https://labex.io/de/labs/linux-configure-linux-environment-variables-437861)** - Sammeln Sie praktische Erfahrungen beim Erstellen, Festlegen und Verwalten von Umgebungsvariablen in einem Linux-System.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen im Umgang mit Ihrer Linux-Shell-Umgebung aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit Ihrer Linux-Shell-Umgebung aufzubauen.
 
 ## Quiz Question
 

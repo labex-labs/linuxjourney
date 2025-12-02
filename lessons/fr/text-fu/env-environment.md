@@ -3,7 +3,7 @@ index: 5
 lang: "fr"
 title: "env (Environnement)"
 meta_title: "env (Environnement) - Text-Fu"
-meta_description: "Découvrez ce que fait la commande env sous Linux. Ce guide explique comment visualiser et utiliser les variables d'environnement Linux comme PATH, HOME et USER avec la commande env."
+meta_description: "Découvrez ce que fait la commande env sous Linux. Ce guide explique comment visualiser et utiliser les variables d'environnement Linux telles que PATH, HOME et USER avec la commande env."
 meta_keywords: "env, env linux, commande env linux, que fait env sous linux, variables d'environnement, variable PATH, variables shell"
 ---
 
@@ -29,7 +29,7 @@ echo $USER
 
 Ceci affichera votre nom d'utilisateur actuel. Mais d'où viennent ces informations ? Elles sont stockées dans l'environnement de votre shell.
 
-### Que fait env sous Linux
+### Que fait `env` sous Linux
 
 Pour voir toutes les variables d'environnement actuellement définies pour votre session, vous pouvez utiliser la commande `env`. La `commande env linux` est un outil fondamental pour inspecter la configuration de votre shell.
 
@@ -63,7 +63,7 @@ Pour corriger cela, vous pouvez modifier la variable `PATH` pour inclure le nouv
 
 ### Définir une variable d'environnement pour la session actuelle
 
-L'exécution de la commande suivante dans votre terminal définit la variable d'environnement `TEST` uniquement pour la session actuelle :
+L'exécution de la commande suivante dans votre terminal définit la variable d'environnement `TEST` pour la session actuelle uniquement :
 
 ```bash
 export TEST=test
@@ -75,13 +75,13 @@ Après cela, si vous exécutez :
 echo $TEST
 ```
 
-Le résultat sera :
+La sortie sera :
 
 ```
 test
 ```
 
-Cette variable sera disponible tant que la session de terminal reste ouverte. Une fois que vous fermez et rouvrez le terminal, la variable n'existera plus.
+Cette variable sera disponible tant que la session de terminal restera ouverte. Une fois que vous fermez et rouvrez le terminal, la variable n'existera plus.
 
 ### Rendre la variable d'environnement persistante entre les sessions
 
@@ -89,28 +89,25 @@ Si vous souhaitez que la variable d'environnement soit disponible dans toutes le
 
 Voici comment procéder :
 
-1.  Ouvrez `.bashrc` dans votre éditeur de texte préféré. Par exemple :
+1. Ouvrez `.bashrc` dans votre éditeur de texte préféré. Par exemple :
 
-        ```bash
+```bash
+nano ~/.bashrc
+```
 
-    nano ~/.bashrc
-    ```
+2. Ajoutez la ligne `export` à la fin du fichier :
 
-2.  Ajoutez la ligne `export` à la fin du fichier :
+```bash
+export TEST=test
+```
 
-        ```bash
+3. Enregistrez et quittez l'éditeur (dans Nano, ce serait `Ctrl+X`, puis `O` pour confirmer, et `Entrée`).
 
-    export TEST=test
-    ```
+4. Pour appliquer les modifications immédiatement sans rouvrir le terminal, exécutez :
 
-3.  Enregistrez et quittez l'éditeur (dans Nano, ce serait `Ctrl+X`, puis `O` pour confirmer, et `Entrée`).
-
-4.  Pour appliquer les modifications immédiatement sans rouvrir le terminal, exécutez :
-
-        ```bash
-
-    source ~/.bashrc
-    ```
+```bash
+source ~/.bashrc
+```
 
 Après cela, la variable `TEST` sera disponible dans toutes les sessions de terminal futures, et l'exécution de `echo $TEST` affichera `test` même après avoir fermé et rouvert le terminal.
 

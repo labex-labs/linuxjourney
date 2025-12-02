@@ -3,8 +3,8 @@ index: 5
 lang: "ja"
 title: "env (環境)"
 meta_title: "env (環境) - Text-Fu"
-meta_description: "Linux の env コマンドの機能を探ります。このガイドでは、env コマンドを使用して PATH、HOME、USER などの Linux 環境変数を表示し、利用する方法を解説します。"
-meta_keywords: "env, linux env, env linux, env コマンド，linux env コマンド，linux env 意味，環境変数，PATH 変数，シェル変数"
+meta_description: "Linux の env コマンドの機能を探ります。このガイドでは、env Linux コマンドを使用して、PATH、HOME、USER などの Linux 環境変数を表示および使用する方法を説明します。"
+meta_keywords: "env, linux env, env linux, env コマンド linux, linux env コマンド，linux で env は何をするか，環境変数，PATH 変数，シェル変数"
 ---
 
 ## Lesson Content
@@ -13,7 +13,7 @@ meta_keywords: "env, linux env, env linux, env コマンド，linux env コマ�
 
 ### 基本的な環境変数の探索
 
-特定の変数の値を確認するには、その変数の名の前に`$`記号を付けます。例えば、次のコマンドを実行します。
+特定の変数の値を確認するには、その名前の前に`$`記号を付けます。例えば、次のコマンドを実行します。
 
 ```bash
 echo $HOME
@@ -31,7 +31,7 @@ echo $USER
 
 ### Linux における env の役割
 
-現在セッションに設定されているすべての環境変数を表示するには、`env`コマンドを使用できます。`linux env command`は、シェルの設定を調べるための基本的なツールです。
+現在セッションに設定されているすべての環境変数を表示するには、`env`コマンドを使用できます。`linux env command`は、シェルの構成を調べるための基本的なツールです。
 
 ```bash
 env
@@ -45,7 +45,7 @@ PWD=/home/user
 USER=pete
 ```
 
-`linux env`を理解することは、システムを効果的に管理するために不可欠です。
+効果的なシステム管理のためには、`linux env`を理解することが不可欠です。
 
 ### PATH 変数の重要性
 
@@ -69,7 +69,7 @@ echo $PATH
 export TEST=test
 ```
 
-この後、次のように実行すると。
+この後、次のように実行すると：
 
 ```bash
 echo $TEST
@@ -85,38 +85,35 @@ test
 
 ### 環境変数をセッション間で永続化する
 
-環境変数を（ターミナルを閉じて再度開いた後でも）すべてのターミナルセッションで利用可能にしたい場合は、シェルの起動ファイルに追加する必要があります。Bash（多くの Linux ディストリビューションと macOS のデフォルトシェル）の場合、このファイルは通常、ホームディレクトリにある`.bashrc`です。
+環境変数をターミナルセッションを閉じて再度開いた後でも、すべてのターミナルセッションで利用可能にしたい場合は、シェルの起動ファイルに追加する必要があります。多くの Linux ディストリビューションや macOS でデフォルトのシェルである Bash の場合、このファイルは通常、ホームディレクトリにある`.bashrc`です。
 
-手順は次のとおりです。
+設定方法は次のとおりです。
 
-1.  お好みのテキストエディタで`.bashrc`を開きます。例えば次のとおりです。
+1. お好みのテキストエディタで`.bashrc`を開きます。例えば：
 
-        ```bash
+```bash
+nano ~/.bashrc
+```
 
-    nano ~/.bashrc
-    ```
+2. ファイルの末尾に`export`行を追加します。
 
-2.  ファイルの末尾に`export`行を追加します。
+```bash
+export TEST=test
+```
 
-        ```bash
+3. エディタを保存して終了します（Nano の場合、これは`Ctrl+X`、次に確認のために`Y`、そして`Enter`です）。
 
-    export TEST=test
-    ```
+4. ターミナルを再度開かずに変更をすぐに適用するには、次を実行します。
 
-3.  エディタを保存して終了します（Nano の場合、これは`Ctrl+X`、次に確認のために`Y`、そして`Enter`です）。
+```bash
+source ~/.bashrc
+```
 
-4.  変更をすぐに適用するために、ターミナルを再起動せずに次を実行します。
-
-        ```bash
-
-    source ~/.bashrc
-    ```
-
-その後、`TEST`変数は将来のすべてのターミナルセッションで利用可能になり、ターミナルを閉じて再度開いた後でも`echo $TEST`を実行すると`test`と表示されます。
+その後、`TEST`変数はすべての将来のターミナルセッションで利用可能になり、ターミナルを閉じて再度開いた後でも`echo $TEST`を実行すると`test`と表示されます。
 
 ### シェル設定ファイルに関する注意点
 
-- **Bash**（多くのシステムでデフォルト）の場合、関連ファイルは非ログイン対話型シェルでは`~/.bashrc`です。
+- **Bash**（多くのシステムでデフォルト）の場合、非ログイン対話型シェルに関連するファイルは`~/.bashrc`です。
 - **Zsh**の場合、同等のファイルは通常`~/.zshrc`です。
 - **Fish**の場合、通常は`~/.config/fish/config.fish`を使用します。
 
@@ -124,9 +121,9 @@ test
 
 練習あるのみです！Linux 環境変数の理解を深めるための実践的なラボをいくつかご紹介します。
 
-1. **[Linux におけるシェル環境と設定の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数の作成と管理、継承の理解、`.bashrc`ファイルの変更による設定の永続化を練習します。
-2. **[Linux の環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念と使用法、作成、変更、管理方法、およびシステム構成におけるその役割について学習します。
-3. **[Linux 環境変数の設定](https://labex.io/ja/labs/linux-configure-linux-environment-variables-437861)** - Linux システムで環境変数の作成、設定、管理を実践的に経験します。
+1. **[Linux におけるシェル環境と構成の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数の作成と管理、継承の理解、`.bashrc`ファイルの変更による構成の永続化を練習します。
+2. **[Linux における環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念と使用法、作成、変更、管理方法、およびシステム構成におけるその役割について学習します。
+3. **[Linux 環境変数の設定](https://labex.io/ja/labs/linux-configure-linux-environment-variables-437861)** - Linux システムで環境変数の作成、設定、管理に関する実践的な経験を積みます。
 
 これらのラボは、実際のシナリオで概念を適用し、Linux シェル環境の管理に対する自信を築くのに役立ちます。
 
