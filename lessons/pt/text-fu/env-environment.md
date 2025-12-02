@@ -61,19 +61,75 @@ Imagine you manually install a program in a non-standard directory like `/opt/co
 
 To fix this, you can modify the `PATH` variable to include the new directory. By adding your custom directory to `PATH`, you enable the shell to find and execute your programs from anywhere in the terminal.
 
+### Definindo uma Variável de Ambiente para a Sessão Atual
+
+Running the following command in your terminal sets the environment variable `TEST` for the current session only:
+
+```bash
+export TEST=test
+```
+
+After this, if you run:
+
+```bash
+echo $TEST
+```
+
+The output will be:
+
+```
+test
+```
+
+This variable will be available as long as the terminal session remains open. Once you close and reopen the terminal, the variable will no longer exist.
+
+### Tornando a Variável de Ambiente Persistente Entre Sessões
+
+If you want the environment variable to be available in every terminal session (even after closing and reopening the terminal), you need to add it to your shell’s startup file. In the case of Bash (the default shell for many Linux distributions and macOS), this file is usually `.bashrc` in your home directory.
+
+Here's how you do it:
+
+1. Open `.bashrc` in your preferred text editor. For example:
+
+```bash
+nano ~/.bashrc
+```
+
+2. Add the `export` line to the end of the file:
+
+```bash
+export TEST=test
+```
+
+3. Save and exit the editor (in Nano, this would be `Ctrl+X`, then `Y` to confirm, and `Enter`).
+
+4. To apply the changes immediately without reopening the terminal, run:
+
+```bash
+source ~/.bashrc
+```
+
+After this, the `TEST` variable will be available in all future terminal sessions, and running `echo $TEST` will print `test` even after you close and reopen the terminal.
+
+### Uma Nota Sobre Arquivos de Configuração do Shell
+
+- For **Bash** (the default on many systems), the relevant file is `~/.bashrc` for non-login interactive shells.
+- For **Zsh**, the equivalent file is usually `~/.zshrc`.
+- For **Fish**, you'd typically use `~/.config/fish/config.fish`.
+
 ## Exercise
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
+A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão das variáveis de ambiente do Linux:
 
 1. **[Gerenciar Ambiente e Configuração do Shell no Linux](https://labex.io/pt/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - Pratique a criação e o gerenciamento de variáveis locais e de ambiente, entendendo a herança e tornando as configurações persistentes modificando o arquivo `.bashrc`.
 2. **[Variáveis de Ambiente no Linux](https://labex.io/pt/labs/linux-environment-variables-in-linux-385274)** - Aprenda o conceito e o uso de variáveis de ambiente, como criá-las, modificá-las e gerenciá-las, e seu papel na configuração do sistema.
-3. **[Configurar Variáveis de Ambiente do Linux](https://labex.io/pt/labs/linux-configure-linux-environment-variables-437861)** - Obtenha experiência prática criando, definindo e gerenciando variáveis de ambiente em um sistema Linux.
+3. **[Configurar Variáveis de Ambiente do Linux](https://labex.io/pt/labs/linux-configure-linux-environment-variables-437861)** - Ganhe experiência prática criando, definindo e gerenciando variáveis de ambiente em um sistema Linux.
 
-These labs will help you apply the concepts in real scenarios and build confidence with managing your Linux shell environment.
+Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança no gerenciamento do seu ambiente de shell Linux.
 
 ## Quiz Question
 
-Which command displays all of your current environment variables? (Please answer in English, using only the lowercase command name)
+Qual comando exibe todas as suas variáveis de ambiente atuais? (Por favor, responda em inglês, usando apenas o nome do comando em minúsculas)
 
 ## Quiz Answer
 

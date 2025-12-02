@@ -27,7 +27,7 @@ echo $HOME
 echo $USER
 ```
 
-这将输出您当前的用户名。但这些信息是从哪里来的呢？它存储在您的 shell 环境中。
+这将输出您当前的用户名。但这些信息是从哪里来的？它存储在您的 shell 环境中。
 
 ### Linux 中的 env 命令的作用
 
@@ -45,7 +45,7 @@ PWD=/home/user
 USER=pete
 ```
 
-理解 `linux env` 对于有效管理您的系统至关重要。
+理解 `linux env` 对于有效管理系统至关重要。
 
 ### PATH 变量的重要性
 
@@ -55,25 +55,81 @@ USER=pete
 echo $PATH
 ```
 
-此命令返回一个以冒号分隔的目录列表。当您键入命令时，系统会搜索这些目录以查找相应的可执行文件。
+此命令返回一个以冒号分隔的目录列表。当您输入一个命令时，系统会搜索这些目录以查找相应的可执行文件。
 
-想象一下，您在非标准目录（如 `/opt/coolapp/bin`）中手动安装了一个程序。如果您尝试通过键入 `coolcommand` 来运行它，您可能会收到“command not found”错误。发生这种情况是因为包含您程序的目录未列在 `PATH` 变量中，因此 shell 不知道在哪里查找它。
+想象一下，您在非标准目录（如 `/opt/coolapp/bin`）中手动安装了一个程序。如果您尝试通过键入 `coolcommand` 来运行它，您可能会收到“command not found”错误。发生这种情况是因为包含您的程序的目录未列在 `PATH` 变量中，因此 shell 不知道在哪里查找它。
 
 要解决此问题，您可以修改 `PATH` 变量以包含新目录。通过将自定义目录添加到 `PATH`，您可以使 shell 能够在终端中的任何位置找到并执行您的程序。
 
+### 为当前会话设置环境变量
+
+在终端中运行以下命令将仅为当前会话设置环境变量 `TEST`：
+
+```bash
+export TEST=test
+```
+
+之后，如果您运行：
+
+```bash
+echo $TEST
+```
+
+输出将是：
+
+```
+test
+```
+
+只要终端会话保持打开状态，此变量就可用。一旦您关闭并重新打开终端，该变量将不再存在。
+
+### 使环境变量在会话间持久化
+
+如果您希望环境变量在每个终端会话中都可用（即使在关闭和重新打开终端后），您需要将其添加到 shell 的启动文件中。对于 Bash（许多 Linux 发行版和 macOS 的默认 shell），该文件通常是主目录中的 `.bashrc`。
+
+操作方法如下：
+
+1. 在您喜欢的文本编辑器中打开 `.bashrc`。例如：
+
+```bash
+nano ~/.bashrc
+```
+
+2. 将 `export` 行添加到文件末尾：
+
+```bash
+export TEST=test
+```
+
+3. 保存并退出编辑器（在 Nano 中，这将是 `Ctrl+X`，然后按 `Y` 确认，再按 `Enter`）。
+
+4. 要立即应用更改而无需重新打开终端，请运行：
+
+```bash
+source ~/.bashrc
+```
+
+之后，`TEST` 变量将在所有将来的终端会话中可用，并且即使在关闭和重新打开终端后，运行 `echo $TEST` 也会打印 `test`。
+
+### 关于 shell 配置文件的一点说明
+
+- 对于 **Bash**（许多系统的默认设置），相关文件是用于非登录交互式 shell 的 `~/.bashrc`。
+- 对于 **Zsh**，等效文件通常是 `~/.zshrc`。
+- 对于 **Fish**，您通常会使用 `~/.config/fish/config.fish`。
+
 ## Exercise
 
-熟能生巧！以下是一些实践操作实验，以加强您对 Linux 环境变量的理解：
+实践造就完美！以下是一些实践操作，以加强您对 Linux 环境变量的理解：
 
 1. **[在 Linux 中管理 Shell 环境和配置](https://labex.io/zh/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - 练习创建和管理本地变量和环境变量，理解继承，并通过修改 `.bashrc` 文件使配置持久化。
 2. **[Linux 中的环境变量](https://labex.io/zh/labs/linux-environment-variables-in-linux-385274)** - 学习环境变量的概念和用法，如何创建、修改和管理它们，以及它们在系统配置中的作用。
-3. **[配置 Linux 环境变量](https://labex.io/zh/labs/linux-configure-linux-environment-variables-437861)** - 在 Linux 系统中亲手实践创建、设置和管理环境变量。
+3. **[配置 Linux 环境变量](https://labex.io/zh/labs/linux-configure-linux-environment-variables-437861)** - 在 Linux 系统中获得创建、设置和管理环境变量的实践经验。
 
-这些实验将帮助您在实际场景中应用这些概念，并建立管理 Linux shell 环境的信心。
+这些实验将帮助您在真实场景中应用这些概念，并建立管理 Linux shell 环境的信心。
 
 ## Quiz Question
 
-哪个命令会显示您当前所有的环境变量？（请用英文回答，只使用小写命令名）。
+哪个命令会显示您当前的所有环境变量？（请用英文回答，只使用小写命令名）。
 
 ## Quiz Answer
 

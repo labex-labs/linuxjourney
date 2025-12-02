@@ -61,6 +61,62 @@ Imagine you manually install a program in a non-standard directory like `/opt/co
 
 To fix this, you can modify the `PATH` variable to include the new directory. By adding your custom directory to `PATH`, you enable the shell to find and execute your programs from anywhere in the terminal.
 
+### Setting an Environment Variable for the Current Session
+
+Running the following command in your terminal sets the environment variable `TEST` for the current session only:
+
+```bash
+export TEST=test
+```
+
+After this, if you run:
+
+```bash
+echo $TEST
+```
+
+The output will be:
+
+```
+test
+```
+
+This variable will be available as long as the terminal session remains open. Once you close and reopen the terminal, the variable will no longer exist.
+
+### Making the Environment Variable Persistent Across Sessions
+
+If you want the environment variable to be available in every terminal session (even after closing and reopening the terminal), you need to add it to your shell’s startup file. In the case of Bash (the default shell for many Linux distributions and macOS), this file is usually `.bashrc` in your home directory.
+
+Here's how you do it:
+
+1. Open `.bashrc` in your preferred text editor. For example:
+
+```bash
+nano ~/.bashrc
+```
+
+2. Add the `export` line to the end of the file:
+
+```bash
+export TEST=test
+```
+
+3. Save and exit the editor (in Nano, this would be `Ctrl+X`, then `Y` to confirm, and `Enter`).
+
+4. To apply the changes immediately without reopening the terminal, run:
+
+```bash
+source ~/.bashrc
+```
+
+After this, the `TEST` variable will be available in all future terminal sessions, and running `echo $TEST` will print `test` even after you close and reopen the terminal.
+
+### A Note on Shell Configuration Files
+
+- For **Bash** (the default on many systems), the relevant file is `~/.bashrc` for non-login interactive shells.
+- For **Zsh**, the equivalent file is usually `~/.zshrc`.
+- For **Fish**, you'd typically use `~/.config/fish/config.fish`.
+
 ## Exercise
 
 Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux environment variables:
