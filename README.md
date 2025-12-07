@@ -1,9 +1,3 @@
-[![](https://cdn.jsdelivr.net/gh/labex-labs/files@master/images/cyber-monday-25.png)](https://labex.io/pricing)
-
-🔥 Cyber Monday 2025 - Ends Soon!｜[**Get 40% OFF Now →**](https://labex.io/pricing)
-
----
-
 # Linux Journey
 
 [Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
