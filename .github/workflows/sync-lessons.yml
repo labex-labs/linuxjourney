@@ -20,6 +20,7 @@ jobs:
 
     env:
       LABEX_USERNAME: ${{ secrets.LABEX_USERNAME }}
+      LABEX_X_AUTH: ${{ secrets.LABEX_X_AUTH }}
       LABEX_PASSWORD: ${{ secrets.LABEX_PASSWORD }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       WORKSPACE: ${{ github.workspace }}
@@ -59,7 +60,7 @@ jobs:
 
       - name: Verify environment variables
         run: |
-          for var in LABEX_USERNAME LABEX_PASSWORD; do
+          for var in LABEX_USERNAME LABEX_X_AUTH LABEX_PASSWORD; do
             if [ -z "${!var}" ]; then
               echo "Error: Missing environment variable $var"
               exit 1
