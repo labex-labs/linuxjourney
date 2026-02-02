@@ -29,15 +29,15 @@ jobs:
       - name: Clean workspace
         run: |
           mkdir -p $WORKSPACE
-          rm -rf "$WORKSPACE/labex-auto"
+          rm -rf "$WORKSPACE/labex-cli"
           echo "Workspace cleaned"
           ls -la $WORKSPACE
 
-      - name: Checkout labex-auto
+      - name: Checkout labex-cli
         uses: actions/checkout@v4
         with:
-          repository: labex-labs/labex-auto
-          path: labex-auto
+          repository: labex-labs/labex-cli
+          path: labex-cli
           token: ${{ env.GH_TOKEN }}
 
       - name: Checkout linuxjourney (for getting changed files)
@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          cd labex-auto
+          cd labex-cli
           pip install -e .
 
       - name: Verify environment variables
@@ -102,7 +102,7 @@ jobs:
 
       - name: Sync changed lessons to LabEx
         run: |
-          cd labex-auto
+          cd labex-cli
 
           # Get list of changed files
           CHANGED_FILES="${{ steps.changed-files.outputs.changed_files }}"
