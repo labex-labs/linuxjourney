@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "zh"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - 设备列表"
-meta_description: "了解如何在 Linux 系统上列出和检查 USB、PCI 和 SCSI 硬件。本指南涵盖 lsusb、lspci 和 lssci 命令，包括 lsusb -t 等查看设备树的选项。"
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, 列出 usb 设备，列出 pci 设备，列出 scsi 设备，linux 硬件，设备信息"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - 设备列表"
+meta_description: "了解如何在 Linux 系统上列出和检查 USB、PCI 和 SCSI 硬件。本指南涵盖 lsusb、lspci 和 lsscsi 命令，包括 lsusb -t 等查看设备树的选项。"
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, 列出 usb 设备，列出 pci 设备，列出 scsi 设备，linux 硬件，设备信息"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ lsusb
 lspci
 ```
 
-### 使用 lssci 列出 SCSI 和 SATA 设备
+### 使用 lsscsi 列出 SCSI 和 SATA 设备
 
-对于存储设备，`lssci` 命令特别有用。它列出了所有连接的 SCSI 和 SATA 设备，这些通常包括硬盘、固态硬盘和光盘驱动器（CD/DVD/蓝光）。虽然其他命令可能会显示存储控制器，但 `lssci` 提供了关于存储设备本身的直接信息，使其成为系统管理员和管理存储用户的宝贵工具。
+对于存储设备，`lsscsi` 命令特别有用。它列出了所有连接的 SCSI 和 SATA 设备，这些通常包括硬盘、固态硬盘和光盘驱动器（CD/DVD/蓝光）。虽然其他命令可能会显示存储控制器，但 `lsscsi` 提供了关于存储设备本身的直接信息，使其成为系统管理员和管理存储用户的宝贵工具。
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

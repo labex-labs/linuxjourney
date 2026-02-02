@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "ko"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - 장치 목록"
-meta_description: "Linux 시스템에서 USB, PCI, SCSI 하드웨어를 나열하고 검사하는 방법을 알아보세요. 이 가이드는 lsusb -t 와 같은 옵션을 포함하여 lsusb, lspci, lssci 명령어를 다룹니다."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, usb 장치 목록, pci 장치 목록, scsi 장치 목록, 리눅스 하드웨어, 장치 정보"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - 장치 목록"
+meta_description: "Linux 시스템에서 USB, PCI, SCSI 하드웨어를 나열하고 검사하는 방법을 알아보세요. 이 가이드는 lsusb -t 와 같은 옵션을 포함하여 lsusb, lspci, lsscsi 명령어를 다룹니다."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, usb 장치 목록, pci 장치 목록, scsi 장치 목록, 리눅스 하드웨어, 장치 정보"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ lsusb
 lspci
 ```
 
-### lssci 를 사용하여 SCSI 및 SATA 장치 나열하기
+### lsscsi 를 사용하여 SCSI 및 SATA 장치 나열하기
 
-저장 장치의 경우 `lssci` 명령이 특히 유용합니다. 이 명령은 일반적으로 하드 드라이브, SSD 및 광학 드라이브 (CD/DVD/Blu-ray) 를 포함하는 연결된 모든 SCSI 및 SATA 장치를 나열합니다. 다른 명령은 저장소 컨트롤러를 표시할 수 있지만, `lssci`는 저장 장치 자체에 대한 직접적인 정보를 제공하므로 시스템 관리자와 저장소를 관리하는 사용자에게 유용한 도구입니다.
+저장 장치의 경우 `lsscsi` 명령이 특히 유용합니다. 이 명령은 일반적으로 하드 드라이브, SSD 및 광학 드라이브 (CD/DVD/Blu-ray) 를 포함하는 연결된 모든 SCSI 및 SATA 장치를 나열합니다. 다른 명령은 저장소 컨트롤러를 표시할 수 있지만, `lsscsi`는 저장 장치 자체에 대한 직접적인 정보를 제공하므로 시스템 관리자와 저장소를 관리하는 사용자에게 유용한 도구입니다.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

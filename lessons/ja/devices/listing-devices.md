@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "ja"
-title: "lsusb、lspci、lssci"
-meta_title: "lsusb、lspci、lssci - デバイス情報"
-meta_description: "Linux システムで USB、PCI、SCSI ハードウェアを一覧表示および検査する方法を発見します。このガイドでは、デバイスツリー表示のための lsusb -t などのオプションを含め、lsusb、lspci、lssci コマンドを解説します。"
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, USB デバイス一覧，PCI デバイス一覧，SCSI デバイス一覧，Linux ハードウェア，デバイス情報"
+title: "lsusb、lspci、lsscsi"
+meta_title: "lsusb、lspci、lsscsi - デバイス情報"
+meta_description: "Linux システムで USB、PCI、SCSI ハードウェアを一覧表示および検査する方法を発見します。このガイドでは、デバイスツリー表示のための lsusb -t などのオプションを含め、lsusb、lspci、lsscsi コマンドを解説します。"
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, USB デバイス一覧，PCI デバイス一覧，SCSI デバイス一覧，Linux ハードウェア，デバイス情報"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ lsusb
 lspci
 ```
 
-### lssci を使用した SCSI および SATA デバイスのリスト表示
+### lsscsi を使用した SCSI および SATA デバイスのリスト表示
 
-ストレージデバイスについては、`lssci` コマンドが特に役立ちます。これは、ハードドライブ、SSD、光学ドライブ (CD/DVD/Blu-ray) など、一般的に含まれるすべての接続されている SCSI および SATA デバイスをリスト表示します。他のコマンドではストレージコントローラが表示されることがありますが、`lssci` はストレージデバイス自体に関する直接的な情報を提供するため、システム管理者やストレージを管理するユーザーにとって価値のあるツールとなります。
+ストレージデバイスについては、`lsscsi` コマンドが特に役立ちます。これは、ハードドライブ、SSD、光学ドライブ (CD/DVD/Blu-ray) など、一般的に含まれるすべての接続されている SCSI および SATA デバイスをリスト表示します。他のコマンドではストレージコントローラが表示されることがありますが、`lsscsi` はストレージデバイス自体に関する直接的な情報を提供するため、システム管理者やストレージを管理するユーザーにとって価値のあるツールとなります。
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

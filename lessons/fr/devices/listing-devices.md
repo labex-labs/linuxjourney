@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "fr"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - Périphériques"
-meta_description: "Découvrez comment lister et inspecter le matériel USB, PCI et SCSI sur votre système Linux. Ce guide couvre les commandes lsusb, lspci et lssci, y compris des options comme lsusb -t pour afficher les arborescences des périphériques."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, lister périphériques usb, lister périphériques pci, lister périphériques scsi, matériel linux, information périphériques"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Périphériques"
+meta_description: "Découvrez comment lister et inspecter le matériel USB, PCI et SCSI sur votre système Linux. Ce guide couvre les commandes lsusb, lspci et lsscsi, y compris des options comme lsusb -t pour afficher les arborescences des périphériques."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, lister périphériques usb, lister périphériques pci, lister périphériques scsi, matériel linux, information périphériques"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ La commande `lspci` est utilisée pour lister tous les périphériques PCI (Peri
 lspci
 ```
 
-### Lister les périphériques SCSI et SATA avec lssci
+### Lister les périphériques SCSI et SATA avec lsscsi
 
-Pour les périphériques de stockage, la commande `lssci` est particulièrement utile. Elle liste tous les périphériques SCSI et SATA connectés, qui comprennent couramment les disques durs, les SSD et les lecteurs optiques (CD/DVD/Blu-ray). Bien que d'autres commandes puissent montrer le contrôleur de stockage, `lssci` fournit des informations directes sur les périphériques de stockage eux-mêmes, ce qui en fait un outil précieux pour les administrateurs système et les utilisateurs gérant le stockage.
+Pour les périphériques de stockage, la commande `lsscsi` est particulièrement utile. Elle liste tous les périphériques SCSI et SATA connectés, qui comprennent couramment les disques durs, les SSD et les lecteurs optiques (CD/DVD/Blu-ray). Bien que d'autres commandes puissent montrer le contrôleur de stockage, `lsscsi` fournit des informations directes sur les périphériques de stockage eux-mêmes, ce qui en fait un outil précieux pour les administrateurs système et les utilisateurs gérant le stockage.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

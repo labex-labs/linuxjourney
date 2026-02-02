@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "pt"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - Dispositivos"
-meta_description: "Descubra como listar e inspecionar hardware USB, PCI e SCSI no seu sistema Linux. Este guia abrange os comandos lsusb, lspci e lssci, incluindo opções como lsusb -t para ver árvores de dispositivos."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, listar dispositivos usb, listar dispositivos pci, listar dispositivos scsi, hardware linux, informação de dispositivo"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Dispositivos"
+meta_description: "Descubra como listar e inspecionar hardware USB, PCI e SCSI no seu sistema Linux. Este guia abrange os comandos lsusb, lspci e lsscsi, incluindo opções como lsusb -t para ver árvores de dispositivos."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, listar dispositivos usb, listar dispositivos pci, listar dispositivos scsi, hardware linux, informação de dispositivo"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ O comando `lspci` é usado para listar todos os dispositivos PCI (Peripheral Com
 lspci
 ```
 
-### Listando Dispositivos SCSI e SATA com lssci
+### Listando Dispositivos SCSI e SATA com lsscsi
 
-Para dispositivos de armazenamento, o comando `lssci` é particularmente útil. Ele lista todos os dispositivos SCSI e SATA conectados, que comumente incluem discos rígidos, SSDs e unidades ópticas (CD/DVD/Blu-ray). Embora outros comandos possam mostrar o controlador de armazenamento, o `lssci` fornece informações diretas sobre os próprios dispositivos de armazenamento, tornando-o uma ferramenta valiosa para administradores de sistema e usuários que gerenciam armazenamento.
+Para dispositivos de armazenamento, o comando `lsscsi` é particularmente útil. Ele lista todos os dispositivos SCSI e SATA conectados, que comumente incluem discos rígidos, SSDs e unidades ópticas (CD/DVD/Blu-ray). Embora outros comandos possam mostrar o controlador de armazenamento, o `lsscsi` fornece informações diretas sobre os próprios dispositivos de armazenamento, tornando-o uma ferramenta valiosa para administradores de sistema e usuários que gerenciam armazenamento.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

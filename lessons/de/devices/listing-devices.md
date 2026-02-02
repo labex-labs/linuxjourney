@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "de"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - Geräte"
-meta_description: "Erfahren Sie, wie Sie USB-, PCI- und SCSI-Hardware auf Ihrem Linux-System auflisten und überprüfen. Diese Anleitung behandelt die Befehle lsusb, lspci und lssci, einschließlich Optionen wie lsusb -t zur Anzeige von Gerätebäumen."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, usb geräte auflisten, pci geräte auflisten, scsi geräte auflisten, linux hardware, geräteinformationen"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Geräte"
+meta_description: "Erfahren Sie, wie Sie USB-, PCI- und SCSI-Hardware auf Ihrem Linux-System auflisten und überprüfen. Diese Anleitung behandelt die Befehle lsusb, lspci und lsscsi, einschließlich Optionen wie lsusb -t zur Anzeige von Gerätebäumen."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, usb geräte auflisten, pci geräte auflisten, scsi geräte auflisten, linux hardware, geräteinformationen"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ Der Befehl `lspci` wird verwendet, um alle PCI-Geräte (Peripheral Component Int
 lspci
 ```
 
-### Auflisten von SCSI- und SATA-Geräten mit lssci
+### Auflisten von SCSI- und SATA-Geräten mit lsscsi
 
-Für Speichergeräte ist der Befehl `lssci` besonders nützlich. Er listet alle angeschlossenen SCSI- und SATA-Geräte auf, wozu üblicherweise Festplatten, SSDs und optische Laufwerke (CD/DVD/Blu-ray) gehören. Während andere Befehle möglicherweise den Speichercontroller anzeigen, liefert `lssci` direkte Informationen über die Speichergeräte selbst, was ihn zu einem wertvollen Werkzeug für Systemadministratoren und Benutzer macht, die Speicher verwalten.
+Für Speichergeräte ist der Befehl `lsscsi` besonders nützlich. Er listet alle angeschlossenen SCSI- und SATA-Geräte auf, wozu üblicherweise Festplatten, SSDs und optische Laufwerke (CD/DVD/Blu-ray) gehören. Während andere Befehle möglicherweise den Speichercontroller anzeigen, liefert `lsscsi` direkte Informationen über die Speichergeräte selbst, was ihn zu einem wertvollen Werkzeug für Systemadministratoren und Benutzer macht, die Speicher verwalten.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

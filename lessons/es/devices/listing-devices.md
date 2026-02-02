@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "es"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - Dispositivos"
-meta_description: "Descubra cómo listar e inspeccionar hardware USB, PCI y SCSI en su sistema Linux. Esta guía cubre los comandos lsusb, lspci y lssci, incluyendo opciones como lsusb -t para ver árboles de dispositivos."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, listar dispositivos usb, listar dispositivos pci, listar dispositivos scsi, hardware linux, información de dispositivos"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Dispositivos"
+meta_description: "Descubra cómo listar e inspeccionar hardware USB, PCI y SCSI en su sistema Linux. Esta guía cubre los comandos lsusb, lspci y lsscsi, incluyendo opciones como lsusb -t para ver árboles de dispositivos."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, listar dispositivos usb, listar dispositivos pci, listar dispositivos scsi, hardware linux, información de dispositivos"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ El comando `lspci` se utiliza para listar todos los dispositivos PCI (Peripheral
 lspci
 ```
 
-### Listar Dispositivos SCSI y SATA con lssci
+### Listar Dispositivos SCSI y SATA con lsscsi
 
-Para los dispositivos de almacenamiento, el comando `lssci` es particularmente útil. Lista todos los dispositivos SCSI y SATA conectados, que comúnmente incluyen discos duros, SSD y unidades ópticas (CD/DVD/Blu-ray). Mientras que otros comandos pueden mostrar el controlador de almacenamiento, `lssci` proporciona información directa sobre los dispositivos de almacenamiento en sí, convirtiéndolo en una herramienta valiosa para administradores de sistemas y usuarios que gestionan el almacenamiento.
+Para los dispositivos de almacenamiento, el comando `lsscsi` es particularmente útil. Lista todos los dispositivos SCSI y SATA conectados, que comúnmente incluyen discos duros, SSD y unidades ópticas (CD/DVD/Blu-ray). Mientras que otros comandos pueden mostrar el controlador de almacenamiento, `lsscsi` proporciona información directa sobre los dispositivos de almacenamiento en sí, convirtiéndolo en una herramienta valiosa para administradores de sistemas y usuarios que gestionan el almacenamiento.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise

@@ -180,7 +180,7 @@ Learn about Linux devices and how they interact with the kernel and user space.
 - [Device Names](https://labex.io/lesson/device-names)
 - [sysfs](https://labex.io/lesson/sysfs)
 - [udev](https://labex.io/lesson/udev)
-- [lsusb, lspci, lssci](https://labex.io/lesson/listing-devices)
+- [lsusb, lspci, lsscsi](https://labex.io/lesson/listing-devices)
 - [dd](https://labex.io/lesson/dd-command)
 
 ### The Filesystem
