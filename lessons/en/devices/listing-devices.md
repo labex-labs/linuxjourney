@@ -1,10 +1,10 @@
 ---
 index: 6
 lang: "en"
-title: "lsusb, lspci, lssci"
-meta_title: "lsusb, lspci, lssci - Devices"
-meta_description: "Discover how to list and inspect USB, PCI, and SCSI hardware on your Linux system. This guide covers the lsusb, lspci, and lssci commands, including options like lsusb -t to view device trees."
-meta_keywords: "lsusb, lspci, lssci, lsusb -t, list usb devices, list pci devices, list scsi devices, linux hardware, device information"
+title: "lsusb, lspci, lsscsi"
+meta_title: "lsusb, lspci, lsscsi - Devices"
+meta_description: "Discover how to list and inspect USB, PCI, and SCSI hardware on your Linux system. This guide covers the lsusb, lspci, and lsscsi commands, including options like lsusb -t to view device trees."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, list usb devices, list pci devices, list scsi devices, linux hardware, device information"
 ---
 
 ## Lesson Content
@@ -29,12 +29,12 @@ The `lspci` command is used to list all PCI (Peripheral Component Interconnect) 
 lspci
 ```
 
-### Listing SCSI and SATA Devices with lssci
+### Listing SCSI and SATA Devices with lsscsi
 
-For storage devices, the `lssci` command is particularly useful. It lists all connected SCSI and SATA devices, which commonly include hard drives, SSDs, and optical drives (CD/DVD/Blu-ray). While other commands might show the storage controller, `lssci` provides direct information about the storage devices themselves, making it a valuable tool for system administrators and users managing storage.
+For storage devices, the `lsscsi` command is particularly useful. It lists all connected SCSI and SATA devices, which commonly include hard drives, SSDs, and optical drives (CD/DVD/Blu-ray). While other commands might show the storage controller, `lsscsi` provides direct information about the storage devices themselves, making it a valuable tool for system administrators and users managing storage.
 
 ```bash
-lssci
+lsscsi
 ```
 
 ## Exercise
