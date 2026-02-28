@@ -3,7 +3,7 @@ index: 8
 lang: "es"
 title: "less"
 meta_title: "less - Línea de Comandos"
-meta_description: "Domina el comando less de Linux para una visualización eficiente de archivos de texto. Esta guía cubre cómo usar el comando less, navegar, realizar una búsqueda unix less y cómo salir de less."
+meta_description: "Domina el comando less de Linux para una visualización eficiente de archivos de texto. Esta guía cubre cómo usar el comando less, navegar, realizar una búsqueda unix con less y cómo salir de less."
 meta_keywords: "comando less, less comando, salir less, búsqueda unix less, linux less, ver archivos de texto, navegar archivos, línea de comandos linux"
 ---
 
@@ -13,7 +13,7 @@ Cuando se visualizan archivos de texto que son demasiado grandes para caber en u
 
 ### Primeros pasos con el comando Less
 
-Para empezar a ver un archivo, simplemente use el `comando less` seguido del nombre del archivo. Esto abrirá el archivo en la interfaz de `less`.
+Para empezar a ver un archivo, simplemente use el comando `less` seguido del nombre del archivo. Esto abrirá el archivo en la interfaz de `less`.
 
 ```bash
 less /home/pete/Documents/text1
@@ -32,7 +32,7 @@ Puede usar varias teclas para moverse por el documento:
 
 ### Búsqueda Unix con Less
 
-Una característica poderosa de `less` es su capacidad para buscar texto. Para realizar una `búsqueda unix less`, escriba `/` seguido del texto que desea encontrar y luego presione Enter. Esto resaltará todas las ocurrencias de su término de búsqueda.
+Una característica poderosa de `less` es su capacidad para buscar texto. Para realizar una `búsqueda unix en less`, escriba `/` seguido del texto que desea encontrar y luego presione Enter. Esto resaltará todas las ocurrencias de su término de búsqueda.
 
 - `/termino_busqueda`: Busca hacia adelante "termino_busqueda".
 - `?termino_busqueda`: Busca hacia atrás "termino_busqueda".
@@ -51,8 +51,8 @@ Dominar el `comando less` es una habilidad fundamental para cualquiera que traba
 
 ¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la visualización y navegación de archivos de texto en Linux:
 
-1. **[Comando Linux less: Paginación de Archivos](https://labex.io/es/labs/linux-linux-less-command-file-paging-214301)** - Aprenda el comando 'less' de Linux para la visualización y navegación eficiente de archivos de texto, incluyendo búsqueda, números de línea y coincidencia de patrones.
-2. **[Comando Linux more: Desplazamiento de Archivos](https://labex.io/es/labs/linux-linux-more-command-file-scrolling-214299)** - Aprenda el comando 'more' de Linux para la visualización eficiente de archivos de texto, cubriendo el uso básico, el inicio desde líneas específicas y la personalización de la visualización.
+1. **[Comando less de Linux: Paginación de Archivos](https://labex.io/es/labs/linux-linux-less-command-file-paging-214301)** - Aprenda el comando 'less' de Linux para la visualización y navegación eficiente de archivos de texto, incluyendo búsqueda, números de línea y coincidencia de patrones.
+2. **[Comando more de Linux: Desplazamiento de Archivos](https://labex.io/es/labs/linux-linux-more-command-file-scrolling-214299)** - Aprenda el comando 'more' de Linux para la visualización eficiente de archivos de texto, cubriendo el uso básico, el inicio desde líneas específicas y la personalización de la visualización.
 3. **[Visualización de Archivos de Registro y Configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Aprenda habilidades esenciales de la línea de comandos de Linux para ver y navegar eficientemente por archivos de texto, incluidos registros del sistema y archivos de configuración, utilizando comandos como `cat`, `more` y `less`.
 
 Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la manipulación y navegación de archivos de texto.
