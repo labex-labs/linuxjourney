@@ -1,9 +1,9 @@
 ---
 index: 7
 lang: "es"
-title: "gato"
+title: "cat"
 meta_title: "cat - Línea de Comandos"
-meta_description: "Domina el comando linux cat para ver, crear y concatenar archivos. Esta guía cubre el uso básico, opciones comunes y cómo usar cat linux con redirección como linux cat >."
+meta_description: "Domina el comando linux cat para ver, crear y concatenar archivos. Esta guía cubre el uso básico, opciones comunes y cómo usar comando cat de linux con redirección como cat >."
 meta_keywords: "comando cat linux, cat linux, manual cat linux, linux cat >, ver contenido de archivos, concatenar archivos, comandos linux, línea de comandos"
 ---
 
@@ -23,7 +23,7 @@ Este comando imprimirá el contenido completo de `myfile.txt` en la pantalla. Si
 
 ### Concatenación de Archivos
 
-Fiel a su nombre, `cat` puede combinar, o concatenar, múltiples archivos y mostrar su salida combinada. La utilidad `cat linux` lee los archivos en el orden en que se proporcionan y los imprime secuencialmente.
+Fiel a su nombre, `cat` puede combinar, o concatenar, múltiples archivos y mostrar su salida combinada. La utilidad `cat` de linux lee los archivos en el orden en que se proporcionan y los imprime secuencialmente.
 
 ```bash
 cat dogfile birdfile
@@ -33,7 +33,7 @@ Este comando mostrará primero el contenido de `dogfile`, seguido inmediatamente
 
 ### Creación de Archivos con Redirección
 
-También puede usar `cat` con el operador de redirección de salida (`>`) para crear nuevos archivos. La combinación `linux cat >` es una forma rápida de escribir texto en un archivo directamente desde su terminal.
+También puede usar `cat` con el operador de redirección de salida (`>`) para crear nuevos archivos. La combinación `cat >` de linux es una forma rápida de escribir texto en un archivo directamente desde su terminal.
 
 ```bash
 cat > newfile.txt
@@ -48,7 +48,7 @@ El comando `cat` tiene varias opciones para modificar su comportamiento. Aquí h
 - `-n`: Esta opción numera todas las líneas de salida, comenzando desde 1.
 - `-b`: Esta opción numera solo las líneas de salida no vacías.
 
-Para obtener una lista completa de funcionalidades, siempre puede consultar la página del `manual cat linux` escribiendo `man cat` en su terminal.
+Para obtener una lista completa de funcionalidades, siempre puede consultar la página del `manual de cat` de linux escribiendo `man cat` en su terminal.
 
 ## Exercise
 
