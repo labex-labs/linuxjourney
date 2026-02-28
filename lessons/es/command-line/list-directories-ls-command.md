@@ -3,13 +3,13 @@ index: 4
 lang: "es"
 title: "ls (Listar Directorios)"
 meta_title: "ls (Listar Directorios) - Línea de Comandos"
-meta_description: "Aprenda a usar el potente comando ls en Linux. Esta guía cubre cómo listar el contenido de directorios, ver archivos ocultos con ls -a, obtener listados detallados con ls -l y usar el comando ls -r para ordenar inversamente. Una lección perfecta para dominar el cmd ls."
+meta_description: "Aprenda a usar el potente comando ls en Linux. Esta guía cubre cómo listar el contenido de directorios, ver archivos ocultos con ls -a, obtener listados detallados con ls -l y usar el comando ls -r para ordenar inversamente. Una lección perfecta para dominar el comando ls."
 meta_keywords: "comando ls, listar directorios, cmd ls, comando ls -r, comando ls, linux ls -r, comando linux ls, archivos ocultos, comandos Linux, Linux para principiantes"
 ---
 
 ## Lesson Content
 
-Ahora que sabemos cómo movernos por el sistema de archivos, ¿cómo averiguamos qué tenemos disponible? Sin la herramienta adecuada, es como moverse a oscuras. Afortunadamente, el maravilloso `command linux ls` está aquí para ayudar listando el contenido de los directorios.
+Ahora que sabemos cómo movernos por el sistema de archivos, ¿cómo averiguamos qué tenemos disponible? Sin la herramienta adecuada, es como moverse a oscuras. Afortunadamente, el maravilloso `comando ls de linux` está aquí para ayudar listando el contenido de los directorios.
 
 ### Uso Básico del Comando ls
 
@@ -20,11 +20,11 @@ ls
 ls /home/pete
 ```
 
-El `command ls` es una herramienta versátil que puede mostrarte información detallada sobre los archivos y directorios que estás viendo.
+El `comando ls` es una herramienta versátil que puede mostrarte información detallada sobre los archivos y directorios que estás viendo.
 
 ### Visualización de Archivos Ocultos
 
-Ten en cuenta que no todos los archivos en un directorio son visibles por defecto. En Linux, los nombres de archivo que comienzan con un punto (`.`) están ocultos. Puedes verlos usando el `cmd ls` con el indicador `-a`, que significa "all" (todos).
+Ten en cuenta que no todos los archivos en un directorio son visibles por defecto. En Linux, los nombres de archivo que comienzan con un punto (`.`) están ocultos. Puedes verlos usando el `comando ls` con el indicador `-a`, que significa "all" (todos).
 
 ```bash
 ls -a
@@ -55,7 +55,7 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 
 ### Ordenación en Orden Inverso
 
-A veces querrás cambiar el orden de clasificación. El `ls -r command` lista archivos y directorios en orden alfabético inverso. La opción `linux ls -r` es particularmente útil cuando quieres ver los últimos elementos de una lista larga primero.
+A veces querrás cambiar el orden de clasificación. El `comando ls -r` lista archivos y directorios en orden alfabético inverso. La opción `ls -r` es particularmente útil cuando quieres ver los últimos elementos de una lista larga primero.
 
 ```bash
 ls -r
