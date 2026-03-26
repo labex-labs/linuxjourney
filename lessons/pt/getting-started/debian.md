@@ -66,7 +66,7 @@ O Debian pode ser amigável para iniciantes, mas depende de que tipo de iniciant
 
 Em outras palavras, o Debian não é apenas para especialistas. É uma opção forte para estudantes que valorizam a confiabilidade, clareza e uma compreensão mais profunda de como os sistemas Linux são montados. Se você ainda está comparando opções, [Escolhendo uma Distribuição Linux](https://labex.io/pt/lesson/choosing-a-linux-distribution) oferece uma visão mais ampla de onde o Debian se encaixa.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [Introdução ao Debian](https://www.debian.org/intro/)
 - [Sobre o Debian](https://www.debian.org/intro/about)

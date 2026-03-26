@@ -45,7 +45,7 @@ O Arch Linux é mais adequado para usuários que desejam uma distribuição Linu
 
 Para iniciantes completos, o Arch geralmente é melhor como um passo posterior do que como um primeiro passo.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [Arch Linux](https://archlinux.org/)
 - [ArchWiki](https://wiki.archlinux.org/)

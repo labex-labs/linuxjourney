@@ -87,7 +87,7 @@ Es ist leicht, zu viel Zeit mit der Suche nach der besten Linux-Distribution zu 
 
 Sobald Sie eine Linux-Distribution verstehen, wird der Wechsel zu einer anderen viel einfacher. Der wichtige Schritt ist, anzufangen.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)

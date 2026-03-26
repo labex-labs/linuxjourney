@@ -47,7 +47,7 @@ Linux Mint est parfaitement adaptée à l'informatique de bureau quotidienne, à
 
 Oui. Linux Mint est l'une des distributions Linux les plus conviviales pour les débutants car elle combine une courbe d'apprentissage douce avec une base performante et stable. Les utilisateurs qui souhaitent une introduction facile à Linux sur le bureau la trouvent souvent plus confortable que des distributions plus techniques ou évoluant plus rapidement.
 
-## Lectures complémentaires
+### Lectures complémentaires
 
 - [Linux Mint](https://linuxmint.com/)
 - [Téléchargement de Linux Mint](https://linuxmint.com/download.php)

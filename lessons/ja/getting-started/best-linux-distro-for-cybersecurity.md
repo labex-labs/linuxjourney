@@ -64,7 +64,7 @@ BlackArch は強力ですが、初心者向けではありません。公式 FAQ
 
 学習者にとっての最善の道は、すべてのセキュリティディストリビューションを一度にインストールすることではありません。自分の目的に合ったものを一つ選び、それを中心に実践的なスキルを磨くことです。汎用的な Linux の選択肢を比較したい場合は、[Linux ディストリビューションの選び方](https://labex.io/ja/lesson/choosing-a-linux-distribution)でより広範な概要を確認できます。
 
-## 参考文献
+### 参考文献
 
 - [Kali Linux とは？](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Kali Linux を使うべきか？](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

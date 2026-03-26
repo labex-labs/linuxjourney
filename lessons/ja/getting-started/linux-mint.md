@@ -47,7 +47,7 @@ Linux Mint は、日常的なデスクトップコンピューティング、Web
 
 はい。Linux Mint は、緩やかな学習曲線と有能で安定した基盤を兼ね備えているため、最も初心者向けの Linux ディストリビューションの一つです。Linux への簡単なデスクトップ入門を求めるユーザーは、技術的すぎる、あるいは変化の激しいディストリビューションよりも、Mint の方が快適だと感じることが多いようです。
 
-## 参考文献
+### 参考文献
 
 - [Linux Mint](https://linuxmint.com/)
 - [Linux Mint ダウンロード](https://linuxmint.com/download.php)

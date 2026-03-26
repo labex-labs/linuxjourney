@@ -51,7 +51,7 @@ O Ubuntu é frequentemente recomendado a iniciantes porque é mais fácil de ins
 
 Para utilizadores que desejam uma distribuição Linux amigável para iniciantes sem abrir mão da flexibilidade a longo prazo, o Ubuntu continua a ser um dos pontos de partida mais seguros.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

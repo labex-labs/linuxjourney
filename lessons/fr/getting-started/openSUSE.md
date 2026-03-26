@@ -43,7 +43,7 @@ Comparée aux distributions davantage axées sur les débutants, openSUSE sédui
 
 openSUSE est une option solide pour les utilisateurs qui recherchent de la flexibilité dans le style de publication et qui apprécient les outils de gestion puissants. Elle peut convenir aux débutants, en particulier ceux qui apprécient l'administration graphique, mais elle est souvent particulièrement attrayante pour les utilisateurs intermédiaires et les utilisateurs techniques de bureau.
 
-## Pour aller plus loin
+### Pour aller plus loin
 
 - [Distributions de bureau openSUSE](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)

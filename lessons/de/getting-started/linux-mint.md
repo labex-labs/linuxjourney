@@ -47,7 +47,7 @@ Linux Mint eignet sich gut für die tägliche Desktop-Nutzung, Web-Browsing, Bü
 
 Ja. Linux Mint ist eine der anfängerfreundlichsten Linux-Distributionen, da es eine sanfte Lernkurve mit einer leistungsfähigen und stabilen Basis kombiniert. Anwender, die einen einfachen Desktop-Einstieg in Linux suchen, empfinden es oft als komfortabler als technischere oder sich schneller entwickelnde Distributionen.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [Linux Mint](https://linuxmint.com/)
 - [Linux Mint Download](https://linuxmint.com/download.php)

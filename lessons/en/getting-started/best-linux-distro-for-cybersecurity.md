@@ -64,7 +64,7 @@ If you want the most widely recognized penetration testing distro, start with **
 
 For most learners, the best path is not to install every security distro at once. Choose one that matches your real goal, then build hands-on skills around it. If you are still comparing general-purpose Linux options, [Choosing a Linux Distribution](https://labex.io/lesson/choosing-a-linux-distribution) gives a broader overview.
 
-## Further Reading
+### Further Reading
 
 - [What is Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Should I Use Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

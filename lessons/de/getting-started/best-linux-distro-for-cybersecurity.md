@@ -64,7 +64,7 @@ Wenn Sie die bekannteste Distribution für Penetrationstests suchen, beginnen Si
 
 Für die meisten Lernenden ist es nicht der beste Weg, alle Sicherheits-Distributionen gleichzeitig zu installieren. Wählen Sie eine, die Ihrem tatsächlichen Ziel entspricht, und bauen Sie darauf praktische Fähigkeiten auf. Wenn Sie noch allgemeine Linux-Optionen vergleichen, bietet [Choosing a Linux Distribution](https://labex.io/de/lesson/choosing-a-linux-distribution) einen breiteren Überblick.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [Was ist Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Sollte ich Kali Linux verwenden?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

@@ -51,7 +51,7 @@ Ubuntu は、他の多くの Linux ディストリビューションよりもイ
 
 長期的な柔軟性を犠牲にすることなく、初心者向けの Linux ディストリビューションを求めるユーザーにとって、Ubuntu は依然として最も安全な出発点の 1 つです。
 
-## 参考文献
+### 参考文献
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

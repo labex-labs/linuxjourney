@@ -43,7 +43,7 @@ openSUSE 는 데스크톱, 개발 시스템 및 기술 워크스테이션에서 
 
 openSUSE 는 릴리스 스타일에 대한 유연성을 원하고 강력한 관리 도구를 높이 평가하는 사용자에게 훌륭한 선택입니다. 그래픽 기반 관리를 선호하는 초보자에게도 적합할 수 있지만, 특히 중급 사용자나 기술적인 데스크톱 사용자에게 매우 매력적입니다.
 
-## 추가 읽기 자료
+### 추가 읽기 자료
 
 - [openSUSE 데스크톱 배포판](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)

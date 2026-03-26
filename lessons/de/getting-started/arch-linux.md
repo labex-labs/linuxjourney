@@ -45,7 +45,7 @@ Arch Linux eignet sich am besten für Benutzer, die eine praxisorientierte Linux
 
 Für absolute Anfänger ist Arch normalerweise eher als späterer Schritt denn als erster Schritt geeignet.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [Arch Linux](https://archlinux.org/)
 - [ArchWiki](https://wiki.archlinux.org/)

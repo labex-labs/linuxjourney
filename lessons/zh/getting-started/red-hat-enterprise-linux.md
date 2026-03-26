@@ -45,7 +45,7 @@ RHEL 还与专业培训和认证紧密相关。RHCSA 和 RHCE 等证书在 Linux
 
 如果您的目标是学习用于企业运营的 Linux，那么 RHEL 是最值得了解的发行版之一。
 
-## 延伸阅读
+### 延伸阅读
 
 - [Red Hat Enterprise Linux 概述](https://developers.redhat.com/products/rhel/overview)
 - [为什么选择 Red Hat Enterprise Linux？](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)

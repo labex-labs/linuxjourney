@@ -47,7 +47,7 @@ Linux Mint is a good fit for everyday desktop computing, web browsing, office wo
 
 Yes. Linux Mint is one of the most beginner-friendly Linux distros because it combines a gentle learning curve with a capable and stable base. Users who want an easy desktop introduction to Linux often find it more comfortable than more technical or faster-moving distributions.
 
-## Further Reading
+### Further Reading
 
 - [Linux Mint](https://linuxmint.com/)
 - [Linux Mint Download](https://linuxmint.com/download.php)

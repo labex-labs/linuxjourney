@@ -51,7 +51,7 @@ Fedora can be beginner-friendly, but it is usually a better fit for users who ar
 
 For users who want a modern Linux distro and do not mind learning a little as they go, Fedora is a strong option.
 
-## Further Reading
+### Further Reading
 
 - [Fedora Workstation](https://fedoraproject.org/workstation/)
 - [Fedora Docs](https://docs.fedoraproject.org/)

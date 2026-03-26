@@ -45,7 +45,7 @@ RHEL также тесно связан с профессиональным об
 
 Если ваша цель — изучить Linux для корпоративных операций, RHEL — один из самых важных дистрибутивов для понимания.
 
-## Дополнительные материалы
+### Дополнительные материалы
 
 - [Обзор Red Hat Enterprise Linux](https://developers.redhat.com/products/rhel/overview)
 - [Почему стоит выбрать Red Hat Enterprise Linux?](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)

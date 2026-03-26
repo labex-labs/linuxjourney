@@ -45,7 +45,7 @@ RHEL 은 전문 교육 및 인증과도 밀접하게 관련되어 있습니다. 
 
 기업 운영을 위해 리눅스를 배우는 것이 목표라면 RHEL 은 이해해야 할 가장 중요한 배포판 중 하나입니다.
 
-## 추가 읽기 자료
+### 추가 읽기 자료
 
 - [Red Hat Enterprise Linux 개요](https://developers.redhat.com/products/rhel/overview)
 - [Red Hat Enterprise Linux 를 선택해야 하는 이유?](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)

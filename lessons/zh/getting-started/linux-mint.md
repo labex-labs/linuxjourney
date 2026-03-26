@@ -47,7 +47,7 @@ Linux Mint 非常适合日常桌面计算、网页浏览、办公、媒体播放
 
 是的。Linux Mint 是最适合初学者的 Linux 发行版之一，因为它将平缓的学习曲线与强大稳定的基础结合在了一起。希望通过简单的桌面环境入门 Linux 的用户，通常会发现它比那些技术性更强或更新更快的发行版更舒适。
 
-## 延伸阅读
+### 延伸阅读
 
 - [Linux Mint](https://linuxmint.com/)
 - [Linux Mint 下载](https://linuxmint.com/download.php)

@@ -64,7 +64,7 @@ BlackArch 는 강력하지만 초보자를 위한 옵션은 아닙니다. 자체
 
 대부분의 학습자에게 가장 좋은 방법은 모든 보안 배포판을 한꺼번에 설치하는 것이 아닙니다. 자신의 실제 목표와 일치하는 것을 하나 선택한 다음, 그 주변에서 실무 기술을 쌓으세요. 여전히 일반적인 리눅스 옵션을 비교 중이라면 [리눅스 배포판 선택하기](https://labex.io/ko/lesson/choosing-a-linux-distribution)에서 더 폭넓은 개요를 확인할 수 있습니다.
 
-## 추가 읽기 자료
+### 추가 읽기 자료
 
 - [Kali Linux 란 무엇인가요?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Kali Linux 를 사용해야 할까요?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

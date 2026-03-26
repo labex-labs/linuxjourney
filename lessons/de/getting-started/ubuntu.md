@@ -51,7 +51,7 @@ Ubuntu wird Anfängern oft empfohlen, da es einfacher zu installieren und bei Pr
 
 Für Benutzer, die eine anfängerfreundliche Linux-Distribution suchen, ohne auf langfristige Flexibilität zu verzichten, bleibt Ubuntu einer der sichersten Ausgangspunkte.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

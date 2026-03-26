@@ -43,7 +43,7 @@ Para los usuarios que valoran ese nivel de control, Gentoo puede ser profundamen
 
 Gentoo es más adecuada para usuarios avanzados y estudiantes comprometidos que disfrutan de la configuración detallada y no les importa dedicar más tiempo a la instalación y el mantenimiento. Si desea un punto de partida más sencillo, una distribución como [Ubuntu](https://labex.io/es/lesson/ubuntu) o [Linux Mint](https://labex.io/es/lesson/linux-mint) suele ser más fácil. Si desea una distribución práctica con menos compilación, [Arch Linux](https://labex.io/es/lesson/arch-linux) puede ser una opción más adecuada.
 
-## Lecturas adicionales
+### Lecturas adicionales
 
 - [Gentoo](https://www.gentoo.org/)
 - [Manual de Gentoo](https://wiki.gentoo.org/wiki/Handbook:Main_Page)

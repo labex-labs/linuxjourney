@@ -87,7 +87,7 @@ It is easy to spend too much time searching for the best Linux distro and never 
 
 Once you understand one Linux distro, moving to another becomes much easier. The important step is to start.
 
-## Further Reading
+### Further Reading
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)

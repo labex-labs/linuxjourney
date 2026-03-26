@@ -47,7 +47,7 @@ Linux Mint es una buena opción para la informática de escritorio diaria, naveg
 
 Sí. Linux Mint es una de las distribuciones de Linux más amigables para principiantes porque combina una curva de aprendizaje suave con una base capaz y estable. Los usuarios que desean una introducción fácil al escritorio de Linux a menudo lo encuentran más cómodo que las distribuciones más técnicas o de actualización rápida.
 
-## Lecturas adicionales
+### Lecturas adicionales
 
 - [Linux Mint](https://linuxmint.com/)
 - [Descarga de Linux Mint](https://linuxmint.com/download.php)

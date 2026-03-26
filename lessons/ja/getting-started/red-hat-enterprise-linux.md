@@ -45,7 +45,7 @@ RHEL は、専門的なトレーニングや認定資格とも密接に関連し
 
 エンタープライズ運用に向けて Linux を学ぶことが目標であれば、RHEL は理解しておくべき最も重要なディストリビューションの一つです。
 
-## 参考文献
+### 参考文献
 
 - [Red Hat Enterprise Linux の概要](https://developers.redhat.com/products/rhel/overview)
 - [なぜ Red Hat Enterprise Linux を選ぶのか？](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)

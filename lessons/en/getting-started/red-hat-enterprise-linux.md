@@ -45,7 +45,7 @@ RHEL is also closely associated with professional training and certification. Cr
 
 If your goal is to learn Linux for enterprise operations, RHEL is one of the most important distributions to understand.
 
-## Further Reading
+### Further Reading
 
 - [Red Hat Enterprise Linux Overview](https://developers.redhat.com/products/rhel/overview)
 - [Why choose Red Hat Enterprise Linux?](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)

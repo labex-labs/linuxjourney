@@ -51,7 +51,7 @@ O Fedora pode ser amigável para iniciantes, mas geralmente é mais adequado par
 
 Para usuários que desejam uma distribuição Linux moderna e não se importam em aprender um pouco conforme avançam, o Fedora é uma excelente opção.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [Fedora Workstation](https://fedoraproject.org/workstation/)
 - [Documentação do Fedora](https://docs.fedoraproject.org/)

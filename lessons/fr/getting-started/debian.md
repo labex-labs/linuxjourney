@@ -66,7 +66,7 @@ Debian peut être adaptée aux débutants, mais cela dépend du type de débutan
 
 En d'autres termes, Debian n'est pas réservée aux experts. C'est une option solide pour les apprenants qui apprécient la fiabilité, la clarté et une compréhension plus approfondie de la façon dont les systèmes Linux sont assemblés. Si vous comparez encore les options, [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution) offre une vue plus large de la place de Debian.
 
-## Lectures complémentaires
+### Lectures complémentaires
 
 - [Introduction à Debian](https://www.debian.org/intro/)
 - [À propos de Debian](https://www.debian.org/intro/about)

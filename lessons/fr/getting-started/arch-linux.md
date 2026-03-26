@@ -45,7 +45,7 @@ Arch Linux est mieux adaptée aux utilisateurs qui souhaitent une distribution L
 
 Pour les débutants complets, Arch est généralement une étape ultérieure plutôt qu'une première étape.
 
-## Lectures complémentaires
+### Lectures complémentaires
 
 - [Arch Linux](https://archlinux.org/)
 - [ArchWiki](https://wiki.archlinux.org/)

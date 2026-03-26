@@ -43,7 +43,7 @@ En comparación con distribuciones más enfocadas a principiantes, openSUSE suel
 
 openSUSE es una opción sólida para usuarios que buscan flexibilidad en el estilo de lanzamiento y aprecian las herramientas de gestión potentes. Puede funcionar para principiantes, especialmente aquellos a quienes les gusta la administración gráfica, pero resulta especialmente atractiva para usuarios intermedios y usuarios técnicos de escritorio.
 
-## Lecturas adicionales
+### Lecturas adicionales
 
 - [Distribuciones de escritorio de openSUSE](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)

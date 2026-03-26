@@ -64,7 +64,7 @@ Se você deseja a distro de teste de penetração mais reconhecida, comece com o
 
 Para a maioria dos alunos, o melhor caminho não é instalar todas as distros de segurança de uma vez. Escolha uma que corresponda ao seu objetivo real e, em seguida, desenvolva habilidades práticas em torno dela. Se você ainda está comparando opções de Linux de uso geral, [Escolhendo uma Distribuição Linux](https://labex.io/pt/lesson/choosing-a-linux-distribution) oferece uma visão geral mais ampla.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [O que é o Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Devo usar o Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

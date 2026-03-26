@@ -43,7 +43,7 @@ Im Vergleich zu einsteigerfreundlicheren Distributionen spricht openSUSE oft Nut
 
 openSUSE ist eine starke Option für Nutzer, die Flexibilität beim Release-Stil wünschen und leistungsstarke Verwaltungswerkzeuge schätzen. Es kann für Anfänger funktionieren, insbesondere für diejenigen, die grafische Administration bevorzugen, ist aber oft besonders für fortgeschrittene Anwender und technische Desktop-Nutzer attraktiv.
 
-## Weiterführende Literatur
+### Weiterführende Literatur
 
 - [openSUSE Desktop-Distributionen](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)

@@ -64,7 +64,7 @@ BlackArch мощный, но не предназначен для новичко
 
 Для большинства обучающихся лучший путь — не устанавливать все дистрибутивы сразу. Выберите один, соответствующий вашей цели, и развивайте практические навыки на его основе. Если вы все еще сравниваете варианты Linux общего назначения, [Выбор дистрибутива Linux](https://labex.io/ru/lesson/choosing-a-linux-distribution) даст более широкий обзор.
 
-## Дополнительные материалы
+### Дополнительные материалы
 
 - [Что такое Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Стоит ли использовать Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)

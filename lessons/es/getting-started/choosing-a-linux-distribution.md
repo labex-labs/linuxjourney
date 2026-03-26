@@ -87,7 +87,7 @@ Es fácil pasar demasiado tiempo buscando la mejor distro de Linux y nunca empez
 
 Una vez que entiendes una distro de Linux, pasar a otra se vuelve mucho más fácil. El paso importante es comenzar.
 
-## Lecturas adicionales
+### Lecturas adicionales
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)

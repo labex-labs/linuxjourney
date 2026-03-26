@@ -51,7 +51,7 @@ Ubuntu est souvent recommandée aux débutants car elle est plus facile à insta
 
 Pour les utilisateurs qui souhaitent une distribution Linux conviviale pour les débutants sans renoncer à la flexibilité à long terme, Ubuntu reste l'un des points de départ les plus sûrs.
 
-## Lectures complémentaires
+### Lectures complémentaires
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

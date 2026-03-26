@@ -87,7 +87,7 @@ Se você está decidindo entre algumas opções, ajuda ler as páginas específi
 
 Depois de entender uma distro Linux, mudar para outra torna-se muito mais fácil. O passo importante é começar.
 
-## Leitura Adicional
+### Leitura Adicional
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)

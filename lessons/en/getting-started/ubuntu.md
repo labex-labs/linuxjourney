@@ -51,7 +51,7 @@ Ubuntu is often recommended to beginners because it is easier to install and tro
 
 For users who want a beginner-friendly Linux distro without giving up long-term flexibility, Ubuntu remains one of the safest starting points.
 
-## Further Reading
+### Further Reading
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

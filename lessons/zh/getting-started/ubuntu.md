@@ -51,7 +51,7 @@ Ubuntu 常被推荐给初学者，因为它比许多其他 Linux 发行版更容
 
 对于那些既想要对初学者友好，又不愿放弃长期灵活性的用户来说，Ubuntu 仍然是最稳妥的起点之一。
 
-## 延伸阅读
+### 延伸阅读
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)

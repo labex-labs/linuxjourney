@@ -87,7 +87,7 @@ Il est facile de passer trop de temps à chercher la meilleure distribution Linu
 
 Une fois que vous comprenez une distribution Linux, passer à une autre devient beaucoup plus facile. L'étape importante est de commencer.
 
-## Lectures complémentaires
+### Lectures complémentaires
 
 - [Debian](https://www.debian.org/intro/)
 - [Ubuntu](https://ubuntu.com/desktop)

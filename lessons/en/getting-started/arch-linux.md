@@ -45,7 +45,7 @@ Arch Linux is best suited for users who want a hands-on Linux distro and do not 
 
 For complete beginners, Arch is usually better as a later step than a first step.
 
-## Further Reading
+### Further Reading
 
 - [Arch Linux](https://archlinux.org/)
 - [ArchWiki](https://wiki.archlinux.org/)

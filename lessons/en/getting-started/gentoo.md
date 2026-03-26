@@ -43,7 +43,7 @@ For users who value that level of control, Gentoo can be deeply rewarding.
 
 Gentoo is best suited for advanced users and committed learners who enjoy detailed configuration and do not mind spending more time on setup and maintenance. If you want a gentler starting point, a distro such as [Ubuntu](https://labex.io/lesson/ubuntu) or [Linux Mint](https://labex.io/lesson/linux-mint) is usually easier. If you want a hands-on distro with less compilation, [Arch Linux](https://labex.io/lesson/arch-linux) may be a closer fit.
 
-## Further Reading
+### Further Reading
 
 - [Gentoo](https://www.gentoo.org/)
 - [Gentoo Handbook](https://wiki.gentoo.org/wiki/Handbook:Main_Page)

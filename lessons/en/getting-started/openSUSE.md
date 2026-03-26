@@ -43,7 +43,7 @@ Compared with more beginner-focused distros, openSUSE often appeals to users who
 
 openSUSE is a strong option for users who want flexibility in release style and appreciate powerful management tools. It can work for beginners, especially those who like graphical administration, but it is often especially appealing to intermediate users and technical desktop users.
 
-## Further Reading
+### Further Reading
 
 - [openSUSE Desktop Distributions](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)
