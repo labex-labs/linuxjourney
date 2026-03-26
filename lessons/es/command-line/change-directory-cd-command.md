@@ -4,12 +4,12 @@ lang: "es"
 title: "cd (Cambiar Directorio)"
 meta_title: "cd (Cambiar Directorio) - Línea de Comandos"
 meta_description: "Aprende el comando esencial cd de Linux para cambiar de directorio. Esta guía cubre el uso del comando cd en el símbolo del sistema, navegando a cualquier carpeta cd con rutas absolutas y relativas, y usando atajos útiles."
-meta_keywords: "comando cd, comando cd linux, carpeta cd, símbolo del sistema cd, comando cd cmd, cambiar directorio, navegación linux, ruta absoluta, ruta relativa"
+meta_keywords: "comando cd, comando cd de linux, carpeta cd, símbolo del sistema cd, comando cd cmd, cambiar directorio, navegación linux, ruta absoluta, ruta relativa"
 ---
 
 ## Lesson Content
 
-Para moverse por el sistema de archivos de Linux, utilizarás rutas para especificar tu destino. La herramienta principal para esto es el comando `cd` (change directory o cambiar directorio). Comprender cómo usar este `comando cd linux` es una habilidad fundamental para trabajar en la terminal o en el `símbolo del sistema cd`.
+Para moverse por el sistema de archivos de Linux, utilizarás rutas para especificar tu destino. La herramienta principal para esto es el comando `cd` (change directory o cambiar directorio). Comprender cómo usar el `comando cd de linux` es una habilidad fundamental para trabajar en la terminal o en el `símbolo del sistema`.
 
 ### Entendiendo las Rutas
 
@@ -21,7 +21,7 @@ Hay dos formas de especificar una ruta: absoluta y relativa.
 
 ### Usando el Comando cd
 
-Una vez que entiendes las rutas, puedes usar el `comando cd` para cambiar tu directorio actual. Ya sea que estés en una terminal de Linux o en un símbolo del sistema de Windows (`cd command cmd`), el concepto de cambiar de directorio es universal, aunque la sintaxis puede variar ligeramente.
+Una vez que entiendes las rutas, puedes usar el `comando cd` para cambiar tu directorio actual. Ya sea que estés en una terminal de Linux o en un símbolo del sistema de Windows (`comando cd de cmd`), el concepto de cambiar de directorio es universal, aunque la sintaxis puede variar ligeramente.
 
 Para cambiar a un directorio específico usando una ruta absoluta, escribirías:
 
@@ -31,9 +31,9 @@ cd /home/pete/Pictures
 
 Este comando te mueve directamente al directorio `Pictures`.
 
-### Navegando a una carpeta cd
+### Navegando a un subdirectorio
 
-Si ya estás en un directorio y deseas moverte a un subdirectorio, puedes usar una ruta relativa. Por ejemplo, si tu ubicación actual es `/home/pete/Pictures` y contiene una `carpeta cd` llamada `Hawaii`, puedes navegar hacia ella con:
+Si ya estás en un directorio y deseas moverte a un subdirectorio, puedes usar una ruta relativa. Por ejemplo, si tu ubicación actual es `/home/pete/Pictures` y contiene una `carpeta` llamada `Hawaii`, puedes navegar hacia ella con:
 
 ```bash
 cd Hawaii
