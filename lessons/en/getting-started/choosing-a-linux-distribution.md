@@ -58,6 +58,7 @@ If you want a quick answer, these are common starting points:
 - **Best Linux distro for stability**: [Debian](https://labex.io/lesson/debian)
 - **Best Linux distro for maximum control**: [Arch Linux](https://labex.io/lesson/arch-linux) or [Gentoo](https://labex.io/lesson/gentoo)
 - **Best Linux distro for enterprise environments**: [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux)
+- **Best Linux distro for cybersecurity**: [Best Linux Distro for Cybersecurity](https://labex.io/lesson/best-linux-distro-for-cybersecurity)
 
 These are not universal answers, but they are useful starting points when you are comparing Linux distros by goal rather than by popularity alone.
 
