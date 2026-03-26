@@ -2,42 +2,73 @@
 index: 5
 lang: "zh"
 title: "Ubuntu"
-meta_title: "Ubuntu 入门指南"
-meta_description: "准备好开始使用 Ubuntu 了吗？本指南解答“Ubuntu 是 Linux 吗”并解释了它为何是初学者的首选，涵盖了其特性、Debian 基础以及在桌面和服务器上的用途。通过 LabEx Ubuntu 实验进行实践。"
-meta_keywords: "Ubuntu, Linux 发行版，Ubuntu 入门，Ubuntu 是 Linux 吗，labex ubuntu, Debian, 包管理，Linux 初学者，Ubuntu 教程"
+meta_title: "Ubuntu Linux 操作系统"
+meta_description: "了解什么是 Ubuntu Linux，为什么 Ubuntu 如此受欢迎，以及它的发布模式、软件包管理机制，及其在桌面、笔记本电脑和服务器上的广泛应用。"
+meta_keywords: "ubuntu linux, ubuntu 发行版，什么是 ubuntu, ubuntu 版本发布，ubuntu 软件包管理，基于 debian 的 ubuntu, linux 发行版"
 ---
 
 ## Lesson Content
 
-### 什么是 Ubuntu Linux
+### 什么是 Ubuntu？
 
-Ubuntu 是最流行和使用最广泛的 Linux 发行版之一，是任何希望**开始使用 Ubuntu** 的人的绝佳入门选择。它由 Canonical 开发，建立在强大的 Debian 基础之上，以其用户友好的设计和强大的社区支持而闻名。那么，对于常见问题“**Ubuntu 是 Linux 吗**？”的回答是：是的，它是 Linux 操作系统的成熟且易于访问的版本。
+Ubuntu 是最广泛使用的 Linux 发行版之一。它由 Canonical 公司开发，基于 Debian 构建，以其易用的设计、庞大的用户社区以及广泛的硬件和软件支持而闻名。
 
-### 包管理
+对于那些希望学习 Linux 但又不想从手动配置或高级设置开始的人来说，Ubuntu 已成为一个常见的起点。它被应用于个人电脑、开发系统、云平台和服务器，其覆盖范围是其他发行版难以企及的。
 
-作为基于 Debian 的操作系统，Ubuntu 使用核心的 Debian 包管理系统。这意味着它使用 `apt`（高级包工具）命令行实用程序来处理软件的安装、更新和删除，使用户能够访问庞大的免费和开源软件存储库。
+### 为什么 Ubuntu 如此受欢迎
 
-### 桌面环境
+Ubuntu 之所以受欢迎，是因为它致力于让 Linux 在日常使用中变得实用。它提供了完善的安装程序、强大的文档、可预测的发布周期，以及庞大的教程和第三方支持生态系统。对于许多用户而言，这些组合使 Ubuntu 成为最容易上手的 Linux 发行版之一。
 
-虽然 Ubuntu 历史上开发了自己的桌面环境 Unity，但现代版本的默认桌面环境是 GNOME。GNOME 以其简洁、现代的界面和直观的工作流程而闻名，这有助于为从 Windows 或 macOS 等其他操作系统过渡过来的用户搭建桥梁。
+Ubuntu 备受瞩目的另一个原因是它适用于多种环境。你可以在笔记本电脑、台式机、虚拟机、服务器以及各种云平台上看到它的身影。这种广泛的采用巩固了它作为通用 Linux 发行版的声誉。
 
-### 为什么选择 Ubuntu
+### Ubuntu 与 Debian
 
-Ubuntu 是初学者的绝佳选择。它提供了流畅的开箱即用体验和出色的用户界面，这使其得到了广泛采用。其多功能性使其适用于任何平台，包括桌面、笔记本电脑和服务器。无论您是开发人员、学生，还是只是一个好奇的用户，Ubuntu 都提供了一个稳定而强大的环境。如需动手实践，您可以使用 [**LabEx Ubuntu Playground**](https://labex.io/zh/tutorials/linux-online-linux-terminal-and-playground-372915) 等平台在真实环境中测试您的技能。
+Ubuntu 是一个基于 Debian 的发行版，这意味着它继承了 Debian 的大部分软件包管理模型和软件打包方式。如果你学会了如何在 Ubuntu 中使用 `apt`，这些知识也将帮助你理解其他基于 Debian 的系统。
+
+同时，Ubuntu 不仅仅是“带有桌面的 Debian”。它拥有自己的发布计划、默认设置、支持模型和生态系统。如果你想将其与其他选项进行比较，请参阅 [选择 Linux 发行版](https://labex.io/zh/lesson/choosing-a-linux-distribution) 或了解更多关于 [Debian](https://labex.io/zh/lesson/debian) 的信息。
+
+### Ubuntu 发布版本
+
+Ubuntu 使用两种主要的发布类型。它每六个月发布一个新版本，每两年会有一个版本成为长期支持（LTS）版本。LTS 版本通常是需要更稳定基础的台式机、工作站和服务器的首选。
+
+这种发布模式有助于解释 Ubuntu 的吸引力。想要可靠基础的用户通常会选择 LTS，而想要新功能的用户则可以使用更新频率更快的过渡版本。
+
+### 软件包管理
+
+作为基于 Debian 的系统，Ubuntu 使用 `.deb` 软件包格式和 `apt` 软件包管理器来安装、更新和删除软件。这使用户能够访问庞大的软件生态系统，并获得熟悉的命令行工作流程。
+
+软件包管理是 Ubuntu 的实用优势之一，因为它将成熟的 Debian 工具与广泛且文档齐全的软件环境结合在了一起。
+
+### 桌面与服务器使用
+
+Ubuntu 同时用于桌面和服务器系统。在桌面端，它以完善的基于 GNOME 的体验和相对平易近人的默认设置而闻名。在服务器端，它被广泛部署在开发、Web 基础设施和云环境中。
+
+这种广泛的适用性使得 Ubuntu 对那些希望拥有一种既能从笔记本电脑学习入门，又能运行生产工作负载的 Linux 发行版的用户极具吸引力。
+
+### 为什么初学者选择 Ubuntu
+
+Ubuntu 常被推荐给初学者，因为它比许多其他 Linux 发行版更容易安装和排查故障。庞大的用户群意味着当出现问题时，有大量的教程、论坛帖子和指南可供参考。
+
+对于那些既想要对初学者友好，又不愿放弃长期灵活性的用户来说，Ubuntu 仍然是最稳妥的起点之一。
+
+## 延伸阅读
+
+- [Ubuntu Desktop](https://ubuntu.com/desktop)
+- [Ubuntu Server](https://ubuntu.com/server)
+- [Ubuntu 发布周期](https://ubuntu.com/releaseendoflife)
+- [Ubuntu 发布文档](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
 
 ## Exercise
 
-实践是掌握 Linux 的关键。以下是一些强化您对用户和组管理的理解的动手实验：
+为了在完成 Ubuntu 介绍后继续学习，我们推荐以下 LabEx 课程：
 
-1. **[用户账户管理](https://labex.io/zh/labs/linux-user-account-management-49)** - 在此实验中，您将学习管理 Linux 平台上的用户账户，包括创建、修改和删除用户账户。
-2. **[小丑的把戏](https://labex.io/zh/labs/linux-the-joker-s-trick-270247)** - 在此挑战中，您将通过创建新用户、修改其属性以及从系统中删除他们来练习管理用户账户。
-3. **[添加新用户和组](https://labex.io/zh/labs/linux-add-new-user-and-group-17987)** - 在此动手挑战中，您将通过创建用户账户、设置自定义组和管理组成员身份，来模拟向服务器添加新团队成员。
-
-这些实验将帮助您在现实场景中应用概念，并增强对 Linux 管理的信心。
+1. **[Linux 快速入门](https://labex.io/zh/courses/quick-start-with-linux)** - 建立 Linux 基础知识，非常适合作为 Ubuntu 的配套入门课程。
+2. **[Linux 新手教程](https://labex.io/zh/courses/linux-for-noobs)** - 遵循对初学者友好的路径，逐步理解 Linux 基础。
+3. **[成为初级系统管理员](https://labex.io/zh/courses/become-a-junior-system-administrator)** - 在熟悉 Ubuntu 后，继续学习实用的管理技能。
 
 ## Quiz Question
 
-What operating system is Ubuntu based on? (Please answer in English, paying attention to capitalization.)
+Ubuntu 基于什么操作系统？（请用英文回答，注意大小写。）
 
 ## Quiz Answer
 

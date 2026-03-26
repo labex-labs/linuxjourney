@@ -2,40 +2,65 @@
 index: 10
 lang: "de"
 title: "openSUSE"
-meta_title: "openSUSE - Erste Schritte"
-meta_description: "Erhalten Sie mit dieser Anleitung einen umfassenden openSUSE-Überblick. Erfahren Sie mehr über die Geschichte, RPM-Pakete und das leistungsstarke YaST-Tool. Entdecken Sie, warum openSUSE eine stabile, benutzerfreundliche Wahl ist und wo Sie Linux openSUSE herunterladen können."
-meta_keywords: "opensuse, opensuse überblick, linux opensuse herunterladen, wie heißt das administrations-/installationswerkzeug von opensuse?, Linux-Distribution, RPM, YaST, Linux für Anfänger"
+meta_title: "openSUSE Linux-Distribution"
+meta_description: "Erfahren Sie mehr über die openSUSE Linux-Distribution, die Unterschiede zwischen Leap und Tumbleweed, die RPM-Paketverwaltung und warum YaST openSUSE so besonders macht."
+meta_keywords: "opensuse distro, opensuse linux distribution, was ist opensuse, opensuse leap, opensuse tumbleweed, yast, rpm paketverwaltung"
 ---
 
 ## Lesson Content
 
-### Ein openSUSE Überblick
+### Was ist openSUSE?
 
-The openSUSE Projekt ist eine globale Gemeinschaftsanstrengung, die sich der Förderung der weiten Verbreitung von Linux widmet. Als eine der ältesten und etabliertesten Linux-Distributionen bietet openSUSE ein bemerkenswert stabiles und ausgereiftes Betriebssystem. Es ist in zwei Haupteditionen erhältlich: Tumbleweed, ein Rolling Release für Benutzer, die die neueste Software wünschen, und Leap, ein stabiles Point-Release, das einen gemeinsamen Kern mit SUSE Linux Enterprise teilt und so Unternehmensqualität für alle Benutzer gewährleistet.
+openSUSE ist eine etablierte Linux-Distribution, die für ihre Flexibilität, leistungsstarke Verwaltungswerkzeuge und verschiedene Release-Optionen bekannt ist. Es handelt sich um ein Community-Projekt, das für seine Ausgereiftheit und Leistungsfähigkeit sowohl auf Desktops als auch auf technischen Systemen geschätzt wird.
 
-### Paketverwaltung mit RPM
+Ein Grund, warum openSUSE heraussticht, ist das Angebot unterschiedlicher Wege für verschiedene Nutzertypen. Manche Anwender bevorzugen eine stabile Basis, während andere ein schnelleres Rolling-Release-Modell wünschen.
 
-The openSUSE Distribution verwendet den RPM-Paketmanager zur Installation, Aktualisierung und Entfernung von Software. RPM ist ein leistungsstarkes und ausgereiftes System, das von mehreren großen Linux-Distributionen genutzt wird und den Zugriff auf ein riesiges Repository von Softwarepaketen ermöglicht. Dies macht die Verwaltung von Anwendungen auf Ihrem System sowohl unkompliziert als auch effizient.
+### Leap und Tumbleweed
 
-### YaST Das All-in-One-Tool
+openSUSE ist für zwei Haupt-Release-Ansätze bekannt: Leap und Tumbleweed. Leap ist die konservativere Option und richtet sich an Nutzer, die Stabilität und ein traditionelles Release-Modell suchen. Tumbleweed ist ein Rolling-Release für Anwender, die kontinuierlich mit aktueller Software versorgt werden möchten.
 
-Ein herausragendes Merkmal von openSUSE ist YaST (Yet another Setup Tool). Wenn Sie sich fragen: „Wie lautet der Name des Administrations-/Installationstools von openSUSE?“, lautet die Antwort YaST. Dieses umfassende grafische Tool vereinfacht nahezu jeden Aspekt der Systemadministration, von der Softwareinstallation und Repository-Verwaltung bis hin zur Netzwerkkonfiguration und Hardware-Einrichtung. Die Leistungsfähigkeit von [YaST](http://yast.github.io/) macht openSUSE zu einer ausgezeichneten Wahl für alle, die ein einfach zu verwaltendes System suchen.
+Diese Aufteilung verleiht openSUSE eine außergewöhnliche Flexibilität. Nutzer können den Stil wählen, der zu ihnen passt, anstatt komplett zu einer anderen Distributionsfamilie wechseln zu müssen.
 
-### Erste Schritte mit openSUSE
+### Paketverwaltung
 
-Mit seinem benutzerfreundlichen Installer und dem integrierten YaST-Kontrollzentrum ist openSUSE eine fantastische Linux-Distribution für Anfänger. Sobald Sie Linux openSUSE heruntergeladen und den Installer ausgeführt haben, finden Sie eine komplette Desktop-Umgebung, die für tägliche Aufgaben, kreative Projekte und Softwareentwicklung bereit ist. Seine Stabilität und Benutzerfreundlichkeit machen es zu einem großartigen Ausgangspunkt für die Reise jedes Benutzers in die Linux-Welt.
+openSUSE verwendet das RPM-Paketformat und Werkzeuge wie `zypper`, um Software zu installieren, zu aktualisieren und zu entfernen. Damit gehört es zu einer anderen Paketfamilie als Debian und Ubuntu, die `.deb`-Pakete und APT nutzen.
+
+Das Verständnis von Paketfamilien ist hilfreich, wenn man Linux-Distributionen vergleicht. Für einen umfassenderen Vergleich siehe [Wahl einer Linux-Distribution](https://labex.io/de/lesson/choosing-a-linux-distribution).
+
+### YaST
+
+Eines der bekanntesten Merkmale von openSUSE ist **YaST**. YaST ist ein Administrations- und Einrichtungswerkzeug, das bei der Verwaltung von Software, Diensten, Speicher, Netzwerken und anderen Systemaufgaben über eine zentrale Oberfläche hilft.
+
+Dies ist ein wesentlicher Grund, warum openSUSE für Nutzer attraktiv ist, die leistungsstarke Systemverwaltungswerkzeuge wünschen, ohne alles manuell konfigurieren zu müssen.
+
+### Typische Einsatzgebiete
+
+openSUSE eignet sich hervorragend für Desktops, Entwicklungssysteme und technische Workstations. Es ist zudem attraktiv für Nutzer, die eine starke Kontrolle über die Systemkonfiguration bei gleichzeitig ausgereiften Werkzeugen wünschen.
+
+Im Vergleich zu einsteigerfreundlicheren Distributionen spricht openSUSE oft Nutzer an, die etwas mehr Struktur und Transparenz bei der Administration suchen.
+
+### Wer sollte openSUSE nutzen?
+
+openSUSE ist eine starke Option für Nutzer, die Flexibilität beim Release-Stil wünschen und leistungsstarke Verwaltungswerkzeuge schätzen. Es kann für Anfänger funktionieren, insbesondere für diejenigen, die grafische Administration bevorzugen, ist aber oft besonders für fortgeschrittene Anwender und technische Desktop-Nutzer attraktiv.
+
+## Weiterführende Literatur
+
+- [openSUSE Desktop-Distributionen](https://get.opensuse.org/desktop/)
+- [Tumbleweed](https://get.opensuse.org/tumbleweed/)
+- [Leap](https://get.opensuse.org/leap/)
+- [YaST](https://yast.opensuse.org/)
 
 ## Exercise
 
-Um mehr praktische Erfahrung mit Linux-Systemen zu sammeln, probieren Sie diese praktischen Labs aus. Sie behandeln grundlegende administrative Aufgaben, die auf jeder Linux-Distribution, einschließlich openSUSE, nützlich sind.
+Um nach dieser Einführung in openSUSE fortzufahren, empfehlen wir diese LabEx-Kurse:
 
-1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Sie Benutzerkonten auf der Linux-Plattform verwalten, z. B. das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen eines Benutzerkontos.
-2. **[Der Trick des Jokers](https://labex.io/de/labs/linux-the-joker-s-trick-270247)** - In dieser Herausforderung versuchen Sie, Benutzerkonten auf der Linux-Plattform zu verwalten, einschließlich des Erstellens neuer Benutzerkonten, des Änderns der Benutzerkontenverwaltung und des Löschens von Benutzerkonten.
-3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser praktischen Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung. Sie erstellen neue Benutzerkonten, richten benutzerdefinierte Gruppen ein und verwalten Gruppenmitgliedschaften.
+1. **[Schnellstart mit Linux](https://labex.io/de/courses/quick-start-with-linux)** - Erlernen Sie die Linux-Grundlagen, die sich gut auf openSUSE übertragen lassen.
+2. **[Linux-Befehle online üben](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Gewinnen Sie Sicherheit im Umgang mit der Befehlszeile parallel zu den grafischen Werkzeugen von openSUSE.
+3. **[Junior-Systemadministrator werden](https://labex.io/de/courses/become-a-junior-system-administrator)** - Vertiefen Sie sich in breitere Administrationsthemen, die den Fokus von openSUSE auf Systemverwaltung ergänzen.
 
 ## Quiz Question
 
-Wie lautet der Name des Administrations- und Installationstools von openSUSE? Bitte antworten Sie nur mit Kleinbuchstaben in englischer Sprache.
+Wie heißt das Administrations- und Installationstool von openSUSE? Bitte antworten Sie nur mit englischen Kleinbuchstaben.
 
 ## Quiz Answer
 

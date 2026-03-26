@@ -2,46 +2,67 @@
 index: 4
 lang: "de"
 title: "Red Hat Enterprise Linux"
-meta_title: "Red Hat Enterprise Linux – Erste Schritte"
-meta_description: "Entdecken Sie Red Hat Enterprise Linux (RHEL), eine führende Wahl für Enterprise-Linux-Systeme. Dieser Leitfaden behandelt RHEL-Grundlagen, den RPM-Paketmanager und seine Rolle in Unternehmensumgebungen. Erfahren Sie, warum RHEL ein stabiles und sicheres Server-Betriebssystem ist."
-meta_keywords: "Enterprise Linux, Enterprise Linux Systeme, Red Hat Enterprise Linux lernen, Red Hat Zertifizierung, RHEL, Red Hat, RPM, YUM, DNF, Linux Server"
+meta_title: "Red Hat Enterprise Linux"
+meta_description: "Erfahren Sie, was Red Hat Enterprise Linux ist, wie RHEL in das Red Hat-Ökosystem passt, wie die Paketverwaltung mit RPM und DNF funktioniert und warum RHEL in Unternehmensumgebungen weit verbreitet ist."
+meta_keywords: "red hat enterprise linux, rhel linux distribution, was ist rhel, enterprise linux, rpm, dnf, red hat zertifizierungen"
 ---
 
 ## Lesson Content
 
-### Was ist Red Hat Enterprise Linux
+### Was ist Red Hat Enterprise Linux?
 
-Red Hat Enterprise Linux, oft als RHEL bezeichnet, ist eine kommerzielle Linux-Distribution, die von Red Hat für den Unternehmensmarkt entwickelt wurde. Es ist eine führende Wahl für ein **Enterprise Linux**-Betriebssystem, das auf langfristige Stabilität, Sicherheit und professionellen Support ausgelegt ist. Obwohl RHEL für den Einsatz in der Produktion ein Abonnement erfordert, stellt Red Hat seinen Quellcode frei zur Verfügung, der die Grundlage für andere Distributionen bildet.
+Red Hat Enterprise Linux, oft **RHEL** genannt, ist eine kommerzielle Linux-Distribution, die von Red Hat für den Unternehmenseinsatz entwickelt wurde. Sie ist für Organisationen konzipiert, die lange Support-Zeiträume, vorhersehbare Releases, Sicherheitswartung und professionellen Support benötigen.
 
-### Paketverwaltung mit RPM
+RHEL ist eine der wichtigsten Enterprise-Linux-Distributionen, da sie auf Servern, in Rechenzentren, Cloud-Systemen und regulierten Geschäftsumgebungen eingesetzt wird. Ihre Rolle unterscheidet sich von allgemeineren Community-Distributionen, da Supportfähigkeit und langfristige Lebenszyklusplanung im Mittelpunkt ihres Nutzens stehen.
 
-RHEL verwendet das RPM (Red Hat Package Manager) Format für seine Softwarepakete. Zur Verwaltung dieser Pakete bietet es übergeordnete Tools wie YUM (Yellowdog Updater, Modified) und dessen Nachfolger DNF (Dandified YUM). Dies ist ein wesentlicher Unterschied zu Distributionen wie Debian oder Ubuntu, die manchmal als **Debian Enterprise Linux**-Alternativen verwendet werden und das `.deb`-Paketformat mit dem APT-Paketmanager nutzen.
+### Warum RHEL wichtig ist
 
-### Der Enterprise-Vorteil
+RHEL ist wichtig, weil es Organisationen eine stabile und unterstützte Plattform für Produktions-Workloads bietet. Dazu gehört nicht nur das Betriebssystem selbst, sondern auch Zertifizierungsprogramme, Hardware- und Softwarekompatibilität sowie Support-Richtlinien, die in Unternehmensumgebungen von Bedeutung sind.
 
-Der Hauptreiz von RHEL liegt in seiner Eignung für **Enterprise Linux Systeme**. Es wurde für geschäftskritische Workloads entwickelt und bietet einen vorhersehbaren Release-Zyklus, langfristigen Support (bis zu 10 Jahre oder länger) sowie ein riesiges Ökosystem an zertifizierter Hard- und Software. Dies macht es zu einer zuverlässigen Grundlage für Server, Cloud Computing und containerisierte Anwendungen in großen Unternehmensumgebungen.
+Das unterscheidet RHEL von Community-fokussierten Distributionen. Der Fokus liegt nicht nur darauf, Linux zu haben, sondern Linux mit den für Unternehmen erforderlichen Erwartungen an Zuverlässigkeit und Support zu nutzen.
 
-### RHEL und sein Ökosystem
+### RHEL und Fedora
 
-Um die Position von RHEL zu verstehen, ist es hilfreich, seine Beziehung zu anderen Distributionen zu kennen. Fedora dient als Upstream-Projekt, das von der Community vorangetrieben wird, in dem neue Funktionen entwickelt und getestet werden. Diese Innovationen werden dann für die Aufnahme in zukünftige RHEL-Versionen verfeinert und stabilisiert. CentOS Stream dient nun als Entwicklungszweig für kommende RHEL-Releases.
+RHEL ist eng mit dem breiteren Red Hat-Ökosystem verbunden. Fedora ist das Community-Projekt, in dem viele neue Technologien zuerst erscheinen, während RHEL das Enterprise-Produkt ist, das mit einer konservativeren Release-Philosophie entwickelt wird. Diese Beziehung erklärt, warum sich Fedora aktueller anfühlt und RHEL kontrollierter wirkt.
 
-### Professioneller Zertifizierungspfad
+Wenn Sie die beiden Wege vergleichen möchten, siehe [Fedora](https://labex.io/de/lesson/fedora). Für einen breiteren Überblick über Distributionsfamilien, siehe [Auswahl einer Linux-Distribution](https://labex.io/de/lesson/choosing-a-linux-distribution).
 
-Für diejenigen, die **Red Hat Enterprise Linux lernen** möchten, bietet Red Hat ein angesehenes **Red Hat Zertifizierung**-Programm an. Zu den wichtigsten Zertifizierungen gehören der Red Hat Certified System Administrator (RHCSA) und der Red Hat Certified Engineer (RHCE). Diese Qualifikationen werden von Arbeitgebern hoch geschätzt und belegen ein hohes Maß an Fachwissen in der Verwaltung von RHEL-Umgebungen.
+### Paketverwaltung
+
+RHEL verwendet das RPM-Paketformat und Tools wie DNF, um Software zu installieren, zu aktualisieren und zu verwalten. Damit gehört es zur gleichen allgemeinen Paketfamilie wie Fedora und openSUSE, obwohl jede Distribution ihre eigenen Werkzeugentscheidungen und Ökosystemdetails hat.
+
+Paketverwaltung ist eine grundlegende operative Fähigkeit für RHEL-Administratoren, da langfristige Wartung und vorhersehbare Updates zentral für den Betrieb von Unternehmenssystemen sind.
+
+### Enterprise-Support
+
+Einer der wichtigsten Gründe, warum sich Organisationen für RHEL entscheiden, ist der Enterprise-Support. Dazu gehören eine langfristige Lebenszyklusplanung, der Zugriff auf Sicherheitsupdates und ein Lebenszyklus, der für jedes Major-Release auf viele Jahre ausgelegt ist.
+
+Für Unternehmen kann dieses Support-Modell genauso wichtig sein wie die technischen Funktionen der Distribution selbst.
+
+### Zertifizierungen und professionelle Nutzung
+
+RHEL ist zudem eng mit professioneller Ausbildung und Zertifizierung verbunden. Qualifikationen wie RHCSA und RHCE sind in der Linux-Administration bekannt und tragen dazu bei, dass RHEL in professionellen Umgebungen hochgradig präsent bleibt.
+
+Wenn Ihr Ziel darin besteht, Linux für den Unternehmenseinsatz zu erlernen, ist RHEL eine der wichtigsten Distributionen, die man verstehen sollte.
+
+## Weiterführende Literatur
+
+- [Red Hat Enterprise Linux Übersicht](https://developers.redhat.com/products/rhel/overview)
+- [Warum Red Hat Enterprise Linux wählen?](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)
+- [RHEL Lebenszyklus](https://www.redhat.com/en/blog/understanding-red-hat-enterprise-linux-rhel-lifecycle)
+- [Red Hat Zertifizierung](https://www.redhat.com/en/services/certification)
 
 ## Exercise
 
-Um grundlegende Linux-Kenntnisse zu üben, probieren Sie diese praktischen Labs aus, die sich auf die Benutzer- und Gruppenverwaltung konzentrieren:
+Um nach dieser RHEL-Einführung weiterzulernen, empfehlen wir diese LabEx-Kurse:
 
-1. **[Benutzerkontenverwaltung](https://labex.io/de/labs/linux-user-account-management-49)** - In diesem Lab lernen Sie, wie Benutzerkonten auf der Linux-Plattform verwaltet werden, z. B. das Erstellen neuer Benutzerkonten, das Ändern der Benutzerkontenverwaltung und das Löschen eines Benutzerkontos.
-2. **[Linux Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** - Lernen Sie wesentliche Konzepte der Linux-Benutzer- und Gruppenverwaltung kennen, einschließlich der Erstellung und Verwaltung von Benutzern, der Untersuchung von Gruppenmitgliedschaften, des Verständnisses von Dateiberechtigungen und der Bearbeitung des Dateibesitzes.
-3. **[Neuen Benutzer und Gruppe hinzufügen](https://labex.io/de/labs/linux-add-new-user-and-group-17987)** - In dieser Herausforderung simulieren Sie das Hinzufügen neuer Teammitglieder zu einer Serverumgebung, indem Sie neue Benutzerkonten erstellen, benutzerdefinierte Gruppen einrichten und Gruppenmitgliedschaften verwalten.
-
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Gruppenadministration sowie die Dateiberechtigungen unter Linux aufzubauen.
+1. **[Red Hat System Administration (RH124) Zertifizierungslabs](https://labex.io/de/courses/red-hat-system-administration-rh124-labs)** - Beginnen Sie mit RHEL-fokussierter Administrationspraxis.
+2. **[RHCSA Zertifizierungsprüfung Übungsaufgaben](https://labex.io/de/courses/rhcsa-certification-exam-practice-exercises)** - Vertiefen Sie die praktischen Fähigkeiten, die üblicherweise mit der RHEL-Administration verbunden sind.
+3. **[RPM und DNF Paketverwaltung](https://labex.io/de/courses/rpm-and-dnf-package-management)** - Üben Sie die Paket-Tools, die für RHEL-Systeme zentral sind.
 
 ## Quiz Question
 
-Was ist das zugrunde liegende Paketverwaltungssystem, auf dem Red Hat Enterprise Linux aufgebaut ist? Bitte antworten Sie auf Englisch, wobei Sie für das Akronym ausschließlich Großbuchstaben verwenden.
+Was ist das zugrunde liegende Paketverwaltungssystem, auf dem Red Hat Enterprise Linux basiert? Bitte antworten Sie auf Englisch und verwenden Sie für das Akronym ausschließlich Großbuchstaben.
 
 ## Quiz Answer
 

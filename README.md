@@ -37,6 +37,7 @@ What is Linux? Get started with choosing a distribution and installation.
 - [Gentoo](https://labex.io/lesson/gentoo)
 - [Arch Linux](https://labex.io/lesson/arch-linux)
 - [openSUSE](https://labex.io/lesson/openSUSE)
+- [Best Linux for Cybersecurity](https://labex.io/lesson/best-linux-distro-for-cybersecurity)
 
 ### Command Line
 
