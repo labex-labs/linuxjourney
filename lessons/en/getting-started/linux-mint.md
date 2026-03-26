@@ -58,7 +58,7 @@ Yes. Linux Mint is one of the most beginner-friendly Linux distros because it co
 
 To keep learning after this Linux Mint overview, we recommend these LabEx courses:
 
-1. **[Quick Start with Linux](https://labex.io/courses/quick-start-with-linux)** - Learn the Linux basics that pair well with Linux Mint as a first distro.
+1. **[Quick Start with Linux](https://labex.io/courses/quick-start-with-linux)** - Learn the Linux basics through guided hands-on practice.
 2. **[Linux for Noobs](https://labex.io/courses/linux-for-noobs)** - Follow a beginner-friendly Linux course with hands-on practice.
 3. **[Linux Terminal Basics](https://labex.io/courses/linux-terminal-basics)** - Build confidence with the terminal while keeping a beginner-friendly pace.
 

@@ -56,7 +56,7 @@ For complete beginners, Arch is usually better as a later step than a first step
 
 To build the command-line confidence Arch Linux expects, we recommend these LabEx courses:
 
-1. **[Linux Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)** - Strengthen the command-line habits that matter in a hands-on distro such as Arch.
+1. **[Linux Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)** - Strengthen the command-line habits that matter in a hands-on Linux environment.
 2. **[Shell for Beginners](https://labex.io/courses/shell-for-beginners)** - Improve your comfort with the shell and terminal workflow.
 3. **[Shell Scripting Fundamentals](https://labex.io/courses/shell-scripting-fundamentals)** - Go deeper once you want more control over your Linux environment.
 

@@ -62,9 +62,9 @@ For users who want a beginner-friendly Linux distro without giving up long-term 
 
 To keep learning after this Ubuntu introduction, we recommend these LabEx courses:
 
-1. **[Quick Start with Linux](https://labex.io/courses/quick-start-with-linux)** - Build the Linux fundamentals that pair well with Ubuntu as a first distro.
+1. **[Quick Start with Linux](https://labex.io/courses/quick-start-with-linux)** - Build a practical foundation in Linux basics and command-line skills.
 2. **[Linux for Noobs](https://labex.io/courses/linux-for-noobs)** - Follow a beginner-friendly path for understanding Linux basics step by step.
-3. **[Become a Junior System Administrator](https://labex.io/courses/become-a-junior-system-administrator)** - Continue into practical administration skills once you are comfortable with Ubuntu.
+3. **[Become a Junior System Administrator](https://labex.io/courses/become-a-junior-system-administrator)** - Continue into practical Linux administration skills once you are comfortable with the basics.
 
 ## Quiz Question
 

@@ -58,7 +58,7 @@ To keep learning after this RHEL introduction, we recommend these LabEx courses:
 
 1. **[Red Hat System Administration (RH124) Certification Labs](https://labex.io/courses/red-hat-system-administration-rh124-labs)** - Start with RHEL-focused administration practice.
 2. **[RHCSA Certification Exam Practice Exercises](https://labex.io/courses/rhcsa-certification-exam-practice-exercises)** - Reinforce the practical skills commonly associated with RHEL administration.
-3. **[RPM and DNF Package Management](https://labex.io/courses/rpm-and-dnf-package-management)** - Practice the package tools that are central to RHEL systems.
+3. **[RPM and DNF Package Management](https://labex.io/courses/rpm-and-dnf-package-management)** - Practice RPM- and DNF-related package management concepts.
 
 ## Quiz Question
 

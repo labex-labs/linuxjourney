@@ -54,9 +54,9 @@ Gentoo is best suited for advanced users and committed learners who enjoy detail
 
 To prepare for the deeper technical work Gentoo often involves, we recommend these LabEx courses:
 
-1. **[Linux Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)** - Strengthen the command-line habits that matter in a hands-on Linux environment.
+1. **[Linux Commands Practice Online](https://labex.io/courses/linux-basic-commands-practice-online)** - Strengthen the command-line habits that matter in hands-on Linux work.
 2. **[Shell Scripting Fundamentals](https://labex.io/courses/shell-scripting-fundamentals)** - Build more control over your environment through shell automation.
-3. **[Become a Junior System Administrator](https://labex.io/courses/become-a-junior-system-administrator)** - Develop the broader Linux foundation that helps when working with an advanced distro such as Gentoo.
+3. **[Become a Junior System Administrator](https://labex.io/courses/become-a-junior-system-administrator)** - Develop a broader Linux administration foundation.
 
 ## Quiz Question
 
