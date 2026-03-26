@@ -58,7 +58,7 @@ Linux Mint 非常适合日常桌面计算、网页浏览、办公、媒体播放
 
 为了在了解 Linux Mint 后继续学习，我们推荐以下 LabEx 课程：
 
-1. **[Linux 快速入门](https://labex.io/zh/courses/quick-start-with-linux)** - 学习 Linux 基础知识，非常适合作为初次接触 Linux Mint 时的配套学习。
+1. **[Linux 快速入门](https://labex.io/zh/courses/quick-start-with-linux)** - 通过引导式动手实践学习 Linux 基础知识。
 2. **[Linux 新手教程](https://labex.io/zh/courses/linux-for-noobs)** - 参加适合初学者的 Linux 课程，并进行动手实践。
 3. **[Linux 终端基础](https://labex.io/zh/courses/linux-terminal-basics)** - 在保持适合初学者的节奏的同时，建立对终端操作的信心。
 

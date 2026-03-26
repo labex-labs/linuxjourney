@@ -62,9 +62,9 @@ Ubuntu は、他の多くの Linux ディストリビューションよりもイ
 
 この Ubuntu の入門を終えた後も学習を続けるために、以下の LabEx コースをお勧めします：
 
-1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - 最初のディストリビューションとして Ubuntu と相性の良い、Linux の基礎を構築します。
+1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - ガイド付きのハンズオンで Linux の基礎とコマンドラインスキルを身につけます。
 2. **[Linux 初心者向けコース](https://labex.io/ja/courses/linux-for-noobs)** - Linux の基本をステップバイステップで理解するための、初心者向けのパスに従います。
-3. **[ジュニアシステムアドミニストレーターになる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - Ubuntu に慣れたら、実践的な管理スキルへと進みます。
+3. **[ジュニアシステムアドミニストレーターになる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - 基礎に慣れたら、実践的な Linux システム管理スキルへ進みます。
 
 ## Quiz Question
 

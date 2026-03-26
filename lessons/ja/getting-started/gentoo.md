@@ -56,7 +56,7 @@ Gentoo が伴う高度な技術作業に備えるため、以下の LabEx コー
 
 1. **[Linux コマンドオンライン練習](https://labex.io/ja/courses/linux-basic-commands-practice-online)** - 実践的な Linux 環境で重要となるコマンドラインの習慣を強化します。
 2. **[シェルスクリプト基礎](https://labex.io/ja/courses/shell-scripting-fundamentals)** - シェルの自動化を通じて、環境に対する制御力を高めます。
-3. **[ジュニアシステム管理者になる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - Gentoo のような高度なディストリビューションを扱う際に役立つ、より広範な Linux の基礎を習得します。
+3. **[ジュニアシステム管理者になる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - より幅広い Linux システム管理の土台を作ります。
 
 ## Quiz Question
 

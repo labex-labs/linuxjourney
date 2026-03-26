@@ -58,7 +58,7 @@ Ja. Linux Mint ist eine der anfängerfreundlichsten Linux-Distributionen, da es 
 
 Um nach diesem Überblick über Linux Mint weiterzulernen, empfehlen wir diese LabEx-Kurse:
 
-1. **[Schnelleinstieg in Linux](https://labex.io/de/courses/quick-start-with-linux)** - Lernen Sie die Linux-Grundlagen, die gut zu Linux Mint als erster Distribution passen.
+1. **[Schnelleinstieg in Linux](https://labex.io/de/courses/quick-start-with-linux)** - Lernen Sie Linux-Grundlagen durch angeleitete praktische Übungen.
 2. **[Linux für Anfänger](https://labex.io/de/courses/linux-for-noobs)** - Folgen Sie einem anfängerfreundlichen Linux-Kurs mit praktischen Übungen.
 3. **[Grundlagen des Linux-Terminals](https://labex.io/de/courses/linux-terminal-basics)** - Bauen Sie Vertrauen im Umgang mit dem Terminal auf, während Sie ein anfängerfreundliches Tempo beibehalten.
 

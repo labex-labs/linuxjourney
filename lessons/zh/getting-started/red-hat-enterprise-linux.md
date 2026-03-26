@@ -58,7 +58,7 @@ RHEL 还与专业培训和认证紧密相关。RHCSA 和 RHCE 等证书在 Linux
 
 1. **[红帽系统管理 (RH124) 认证实验](https://labex.io/zh/courses/red-hat-system-administration-rh124-labs)** - 从以 RHEL 为中心的管理实践开始。
 2. **[RHCSA 认证考试练习题](https://labex.io/zh/courses/rhcsa-certification-exam-practice-exercises)** - 加强与 RHEL 管理相关的实用技能。
-3. **[RPM 和 DNF 软件包管理](https://labex.io/zh/courses/rpm-and-dnf-package-management)** - 练习 RHEL 系统核心的软件包工具。
+3. **[RPM 和 DNF 软件包管理](https://labex.io/zh/courses/rpm-and-dnf-package-management)** - 练习与 RPM 和 DNF 相关的软件包管理概念。
 
 ## Quiz Question
 

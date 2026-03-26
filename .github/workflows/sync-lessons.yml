@@ -119,7 +119,7 @@ jobs:
           FILE_ARGS=""
           for file in $CHANGED_FILES; do
             if [ -f "../linuxjourney/$file" ]; then
-              FILE_ARGS="$FILE_ARGS -f ../linuxjourney/$file"
+              FILE_ARGS="$FILE_ARGS -p ../linuxjourney/$file"
             fi
           done
 

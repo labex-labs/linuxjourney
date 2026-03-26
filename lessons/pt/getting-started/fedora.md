@@ -62,9 +62,9 @@ Para usuários que desejam uma distribuição Linux moderna e não se importam e
 
 Para desenvolver habilidades reais em Linux após aprender sobre o Fedora, recomendamos estes cursos do LabEx:
 
-1. **[Início Rápido com Linux](https://labex.io/pt/courses/quick-start-with-linux)** - Cubra os fundamentos do Linux que se aplicam ao Fedora e a outras distribuições.
-2. **[Prática de Comandos Linux Online](https://labex.io/pt/courses/linux-basic-commands-practice-online)** - Fortaleça os hábitos de linha de comando que tornam o trabalho com o Fedora mais fácil.
-3. **[Gerenciamento de Pacotes RPM e DNF](https://labex.io/pt/courses/rpm-and-dnf-package-management)** - Pratique as ferramentas de gerenciamento de pacotes que são centrais para o Fedora e a família Red Hat.
+1. **[Início Rápido com Linux](https://labex.io/pt/courses/quick-start-with-linux)** - Cobre fundamentos de Linux que se aplicam a muitas distribuições.
+2. **[Prática de Comandos Linux Online](https://labex.io/pt/courses/linux-basic-commands-practice-online)** - Fortaleça hábitos de linha de comando importantes no trabalho diário com Linux.
+3. **[Gerenciamento de Pacotes RPM e DNF](https://labex.io/pt/courses/rpm-and-dnf-package-management)** - Pratique conceitos de gerenciamento de pacotes relacionados a RPM e DNF.
 
 ## Quiz Question
 

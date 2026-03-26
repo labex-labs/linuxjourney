@@ -56,7 +56,7 @@ Für absolute Anfänger ist Arch normalerweise eher als späterer Schritt denn a
 
 Um das Vertrauen in die Befehlszeile aufzubauen, das Arch Linux voraussetzt, empfehlen wir diese LabEx-Kurse:
 
-1. **[Linux Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Stärken Sie die Befehlszeilengewohnheiten, die bei einer praxisorientierten Distribution wie Arch wichtig sind.
+1. **[Linux Commands Practice Online](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Stärken Sie Kommandozeilen-Gewohnheiten, die in praxisnaher Linux-Arbeit wichtig sind.
 2. **[Shell for Beginners](https://labex.io/de/courses/shell-for-beginners)** - Verbessern Sie Ihren Komfort mit der Shell und dem Terminal-Workflow.
 3. **[Shell Scripting Fundamentals](https://labex.io/de/courses/shell-scripting-fundamentals)** - Gehen Sie tiefer, sobald Sie mehr Kontrolle über Ihre Linux-Umgebung wünschen.
 

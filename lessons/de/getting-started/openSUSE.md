@@ -54,9 +54,9 @@ openSUSE ist eine starke Option für Nutzer, die Flexibilität beim Release-Stil
 
 Um nach dieser Einführung in openSUSE fortzufahren, empfehlen wir diese LabEx-Kurse:
 
-1. **[Schnellstart mit Linux](https://labex.io/de/courses/quick-start-with-linux)** - Erlernen Sie die Linux-Grundlagen, die sich gut auf openSUSE übertragen lassen.
-2. **[Linux-Befehle online üben](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Gewinnen Sie Sicherheit im Umgang mit der Befehlszeile parallel zu den grafischen Werkzeugen von openSUSE.
-3. **[Junior-Systemadministrator werden](https://labex.io/de/courses/become-a-junior-system-administrator)** - Vertiefen Sie sich in breitere Administrationsthemen, die den Fokus von openSUSE auf Systemverwaltung ergänzen.
+1. **[Schnellstart mit Linux](https://labex.io/de/courses/quick-start-with-linux)** - Lernen Sie Linux-Grundlagen durch angeleitete praktische Übungen.
+2. **[Linux-Befehle online üben](https://labex.io/de/courses/linux-basic-commands-practice-online)** - Machen Sie sich mit der Linux-Kommandozeile vertraut.
+3. **[Junior-Systemadministrator werden](https://labex.io/de/courses/become-a-junior-system-administrator)** - Vertiefen Sie allgemeinere Themen der Linux-Systemadministration.
 
 ## Quiz Question
 

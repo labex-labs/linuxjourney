@@ -56,7 +56,7 @@ Para prepararse para el trabajo técnico más profundo que a menudo implica Gent
 
 1. **[Práctica de comandos de Linux en línea](https://labex.io/es/courses/linux-basic-commands-practice-online)** - Fortalezca los hábitos de línea de comandos que importan en un entorno Linux práctico.
 2. **[Fundamentos de scripting en Shell](https://labex.io/es/courses/shell-scripting-fundamentals)** - Obtenga más control sobre su entorno a través de la automatización de shell.
-3. **[Conviértase en administrador de sistemas junior](https://labex.io/es/courses/become-a-junior-system-administrator)** - Desarrolle la base más amplia de Linux que ayuda al trabajar con una distribución avanzada como Gentoo.
+3. **[Conviértase en administrador de sistemas junior](https://labex.io/es/courses/become-a-junior-system-administrator)** - Desarrolla una base más amplia de administración de Linux.
 
 ## Quiz Question
 

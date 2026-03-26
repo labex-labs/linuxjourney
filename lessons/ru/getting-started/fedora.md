@@ -62,9 +62,9 @@ Fedora может быть удобна для новичков, но обычн
 
 Чтобы развить реальные навыки работы с Linux после изучения Fedora, мы рекомендуем следующие курсы LabEx:
 
-1. **[Быстрый старт с Linux](https://labex.io/ru/courses/quick-start-with-linux)** — охватывает основы Linux, применимые как в Fedora, так и в других дистрибутивах.
-2. **[Практика команд Linux онлайн](https://labex.io/ru/courses/linux-basic-commands-practice-online)** — укрепите навыки работы в командной строке, которые упрощают взаимодействие с Fedora.
-3. **[Управление пакетами RPM и DNF](https://labex.io/ru/courses/rpm-and-dnf-package-management)** — отработайте навыки работы с инструментами управления пакетами, которые являются ключевыми для Fedora и семейства Red Hat.
+1. **[Быстрый старт с Linux](https://labex.io/ru/courses/quick-start-with-linux)** — охватывает основы Linux, которые применимы ко многим дистрибутивам.
+2. **[Практика команд Linux онлайн](https://labex.io/ru/courses/linux-basic-commands-practice-online)** — укрепите привычки работы в командной строке, важные в повседневной работе с Linux.
+3. **[Управление пакетами RPM и DNF](https://labex.io/ru/courses/rpm-and-dnf-package-management)** — практикуйте концепции управления пакетами, связанные с RPM и DNF.
 
 ## Quiz Question
 

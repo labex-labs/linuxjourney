@@ -62,9 +62,9 @@ Ubuntu 常被推荐给初学者，因为它比许多其他 Linux 发行版更容
 
 为了在完成 Ubuntu 介绍后继续学习，我们推荐以下 LabEx 课程：
 
-1. **[Linux 快速入门](https://labex.io/zh/courses/quick-start-with-linux)** - 建立 Linux 基础知识，非常适合作为 Ubuntu 的配套入门课程。
+1. **[Linux 快速入门](https://labex.io/zh/courses/quick-start-with-linux)** - 通过引导式动手实践建立 Linux 基础和命令行技能。
 2. **[Linux 新手教程](https://labex.io/zh/courses/linux-for-noobs)** - 遵循对初学者友好的路径，逐步理解 Linux 基础。
-3. **[成为初级系统管理员](https://labex.io/zh/courses/become-a-junior-system-administrator)** - 在熟悉 Ubuntu 后，继续学习实用的管理技能。
+3. **[成为初级系统管理员](https://labex.io/zh/courses/become-a-junior-system-administrator)** - 在掌握基础知识后，继续学习实用的 Linux 系统管理技能。
 
 ## Quiz Question
 

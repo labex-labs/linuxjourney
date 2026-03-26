@@ -62,9 +62,9 @@ Para utilizadores que desejam uma distribuição Linux amigável para iniciantes
 
 Para continuar a aprender após esta introdução ao Ubuntu, recomendamos estes cursos LabEx:
 
-1. **[Início Rápido com Linux](https://labex.io/pt/courses/quick-start-with-linux)** - Construa os fundamentos de Linux que combinam bem com o Ubuntu como primeira distribuição.
+1. **[Início Rápido com Linux](https://labex.io/pt/courses/quick-start-with-linux)** - Construa uma base prática em fundamentos de Linux e habilidades de linha de comando.
 2. **[Linux para Iniciantes](https://labex.io/pt/courses/linux-for-noobs)** - Siga um caminho amigável para iniciantes para compreender o básico do Linux passo a passo.
-3. **[Torne-se um Administrador de Sistemas Júnior](https://labex.io/pt/courses/become-a-junior-system-administrator)** - Prossiga para competências práticas de administração assim que se sentir confortável com o Ubuntu.
+3. **[Torne-se um Administrador de Sistemas Júnior](https://labex.io/pt/courses/become-a-junior-system-administrator)** - Continue com habilidades práticas de administração Linux quando estiver confortável com o básico.
 
 ## Quiz Question
 

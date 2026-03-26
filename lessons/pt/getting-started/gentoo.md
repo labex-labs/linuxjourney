@@ -56,7 +56,7 @@ Para se preparar para o trabalho técnico mais profundo que o Gentoo frequenteme
 
 1. **[Prática de Comandos Linux Online](https://labex.io/pt/courses/linux-basic-commands-practice-online)** - Fortaleça os hábitos de linha de comando que importam em um ambiente Linux prático.
 2. **[Fundamentos de Shell Scripting](https://labex.io/pt/courses/shell-scripting-fundamentals)** - Construa mais controle sobre seu ambiente através da automação via shell.
-3. **[Torne-se um Administrador de Sistemas Júnior](https://labex.io/pt/courses/become-a-junior-system-administrator)** - Desenvolva a base Linux mais ampla que ajuda ao trabalhar com uma distribuição avançada como o Gentoo.
+3. **[Torne-se um Administrador de Sistemas Júnior](https://labex.io/pt/courses/become-a-junior-system-administrator)** - Desenvolva uma base mais ampla de administração Linux.
 
 ## Quiz Question
 

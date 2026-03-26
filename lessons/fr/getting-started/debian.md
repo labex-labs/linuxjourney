@@ -77,9 +77,9 @@ En d'autres termes, Debian n'est pas réservée aux experts. C'est une option so
 
 Pour développer des compétences pratiques sur Linux après avoir découvert Debian, nous recommandons ces cours LabEx :
 
-1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Apprenez les bases de Linux qui s'appliquent clairement à Debian et à de nombreuses autres distributions.
-2. **[Gestion des paquets logiciels](https://labex.io/fr/courses/software-package-management)** - Pratiquez les concepts de gestion de paquets qui comptent dans les systèmes basés sur Debian.
-3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** - Approfondissez les compétences d'administration souvent associées aux serveurs Debian et aux environnements Linux stables.
+1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Apprenez les bases de Linux qui s’appliquent à de nombreux environnements Linux.
+2. **[Gestion des paquets logiciels](https://labex.io/fr/courses/software-package-management)** - Pratiquez les concepts essentiels de gestion des paquets utilisés dans différents environnements Linux.
+3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** - Approfondissez vos compétences pratiques en administration Linux.
 
 ## Quiz Question
 

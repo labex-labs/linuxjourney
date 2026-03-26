@@ -58,7 +58,7 @@ Linux Mint は、日常的なデスクトップコンピューティング、Web
 
 この Linux Mint の概要を学んだ後、学習を継続するために以下の LabEx コースをお勧めします：
 
-1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - 最初のディストリビューションとして Linux Mint と相性の良い Linux の基礎を学びます。
+1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - ガイド付きのハンズオンで Linux の基礎を学びます。
 2. **[Linux 初心者向けコース](https://labex.io/ja/courses/linux-for-noobs)** - 実践的な練習を交えた、初心者向けの Linux コースです。
 3. **[Linux ターミナル基礎](https://labex.io/ja/courses/linux-terminal-basics)** - 初心者向けのペースを保ちながら、ターミナル操作の自信を深めます。
 

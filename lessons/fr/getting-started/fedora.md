@@ -62,9 +62,9 @@ Pour les utilisateurs qui souhaitent une distribution Linux moderne et qui ne vo
 
 Pour développer de réelles compétences Linux après avoir découvert Fedora, nous recommandons ces cours LabEx :
 
-1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Couvrez les bases de Linux qui s'appliquent à Fedora et aux autres distributions.
-2. **[Pratique des commandes Linux en ligne](https://labex.io/fr/courses/linux-basic-commands-practice-online)** - Renforcez les habitudes en ligne de commande qui facilitent le travail avec Fedora.
-3. **[Gestion des paquets RPM et DNF](https://labex.io/fr/courses/rpm-and-dnf-package-management)** - Pratiquez les outils de gestion de paquets qui sont au cœur de Fedora et de la famille Red Hat.
+1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Couvre les bases de Linux utiles sur de nombreuses distributions.
+2. **[Pratique des commandes Linux en ligne](https://labex.io/fr/courses/linux-basic-commands-practice-online)** - Renforcez les habitudes de ligne de commande utiles dans le travail quotidien sous Linux.
+3. **[Gestion des paquets RPM et DNF](https://labex.io/fr/courses/rpm-and-dnf-package-management)** - Pratiquez les concepts de gestion des paquets liés à RPM et DNF.
 
 ## Quiz Question
 

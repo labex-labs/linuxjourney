@@ -58,7 +58,7 @@ Sí. Linux Mint es una de las distribuciones de Linux más amigables para princi
 
 Para seguir aprendiendo después de este resumen de Linux Mint, recomendamos estos cursos de LabEx:
 
-1. **[Inicio rápido con Linux](https://labex.io/es/courses/quick-start-with-linux)** - Aprenda los conceptos básicos de Linux que combinan bien con Linux Mint como primera distribución.
+1. **[Inicio rápido con Linux](https://labex.io/es/courses/quick-start-with-linux)** - Aprende los conceptos básicos de Linux mediante práctica guiada.
 2. **[Linux para principiantes](https://labex.io/es/courses/linux-for-noobs)** - Siga un curso de Linux amigable para principiantes con práctica práctica.
 3. **[Conceptos básicos de la terminal de Linux](https://labex.io/es/courses/linux-terminal-basics)** - Desarrolle confianza con la terminal manteniendo un ritmo amigable para principiantes.
 

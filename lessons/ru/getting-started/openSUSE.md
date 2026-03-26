@@ -54,9 +54,9 @@ openSUSE — отличный выбор для пользователей, ко
 
 Чтобы продолжить обучение после этого введения в openSUSE, мы рекомендуем следующие курсы LabEx:
 
-1. **[Быстрый старт с Linux](https://labex.io/ru/courses/quick-start-with-linux)** — изучите основы Linux, которые легко применимы в openSUSE.
-2. **[Практика команд Linux онлайн](https://labex.io/ru/courses/linux-basic-commands-practice-online)** — освойте командную строку наряду с графическими инструментами openSUSE.
-3. **[Станьте младшим системным администратором](https://labex.io/ru/courses/become-a-junior-system-administrator)** — переходите к более широким темам администрирования, которые дополняют фокус openSUSE на управлении системой.
+1. **[Быстрый старт с Linux](https://labex.io/ru/courses/quick-start-with-linux)** — изучайте основы Linux с помощью пошаговой практики.
+2. **[Практика команд Linux онлайн](https://labex.io/ru/courses/linux-basic-commands-practice-online)** — освойтесь с командной строкой Linux.
+3. **[Станьте младшим системным администратором](https://labex.io/ru/courses/become-a-junior-system-administrator)** — переходите к более широким темам администрирования Linux.
 
 ## Quiz Question
 

@@ -56,7 +56,7 @@ Gentoo лучше всего подходит для опытных пользо
 
 1. **[Практика команд Linux онлайн](https://labex.io/ru/courses/linux-basic-commands-practice-online)** — укрепите навыки работы в командной строке, необходимые в практической среде Linux.
 2. **[Основы написания скриптов оболочки (Shell Scripting)](https://labex.io/ru/courses/shell-scripting-fundamentals)** — получите больше контроля над своей средой с помощью автоматизации оболочки.
-3. **[Станьте младшим системным администратором](https://labex.io/ru/courses/become-a-junior-system-administrator)** — создайте более широкую базу знаний Linux, которая поможет при работе с продвинутым дистрибутивом, таким как Gentoo.
+3. **[Станьте младшим системным администратором](https://labex.io/ru/courses/become-a-junior-system-administrator)** — сформируйте более широкую базу по администрированию Linux.
 
 ## Quiz Question
 
