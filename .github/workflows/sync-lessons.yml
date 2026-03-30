@@ -129,7 +129,7 @@ jobs:
           fi
 
           # Execute batch sync command
-          labex linuxjourney lesson sync $FILE_ARGS
+          labex lesson sync $FILE_ARGS
 
       - name: Notify completion
         run: |
