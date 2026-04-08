@@ -11,7 +11,7 @@ meta_keywords: "arch linux distro, arch linux distribution, what is arch linux, 
 
 ### What Is Arch Linux?
 
-Arch Linux is a lightweight, independently developed Linux distribution known for simplicity, user control, and a hands-on approach. It is popular with users who want to build their system more deliberately instead of relying on heavy defaults.
+Arch Linux is a lightweight, independently developed Linux distribution known for user control and a hands-on approach. It is popular with users who want to build their system more deliberately instead of relying on heavy defaults.
 
 Unlike distributions with scheduled major releases, Arch follows a rolling release model. That means the system receives continuous updates rather than waiting for big version jumps.
 
@@ -31,11 +31,11 @@ For users who want a system that stays current, rolling releases are a major att
 
 Arch uses Pacman as its package manager. Pacman installs, updates, removes, and tracks software on the system, and it is one of the most recognizable parts of the Arch Linux experience.
 
-A common command is `pacman -Syu`, which synchronizes package databases and upgrades the installed system. Pacman is valued because it is direct, fast, and closely aligned with Arch's minimalist design.
+A common command is `sudo pacman -Syu`, which synchronizes package databases and upgrades the installed system. Pacman is valued because it is direct, fast, and closely aligned with Arch's minimalist design.
 
 ### The Arch Philosophy
 
-Arch is often associated with simplicity, modernity, and user centrality. In practice, that means the distro tries to avoid unnecessary abstraction and expects users to take responsibility for setup and maintenance.
+Arch is often associated with minimalism, modernity, and user centrality. In practice, that means the distro tries to avoid unnecessary abstraction and expects users to take responsibility for setup and maintenance.
 
 This philosophy is a major reason Arch attracts committed users. It is not trying to hide complexity as much as possible. It is trying to make the system understandable.
 
