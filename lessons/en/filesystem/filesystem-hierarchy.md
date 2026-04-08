@@ -3,7 +3,7 @@ index: 1
 lang: "en"
 title: "Filesystem Hierarchy"
 meta_title: "Filesystem Hierarchy - The Filesystem"
-meta_description: "Explore the standard Linux file system hierarchy (FHS). This guide explains the purpose of key directories like /bin, /etc, /home, and /var, providing a clear overview of the file system hierarchy in Linux."
+meta_description: "Explore the standard Linux file system hierarchy (FSH). This guide explains the purpose of key directories like /bin, /etc, /home, and /var, providing a clear overview of the file system hierarchy in Linux."
 meta_keywords: "linux file system hierarchy, file system hierarchy in linux, linux file hierarchy structure, linux file hierarchy, FHS, linux directory structure"
 ---
 
