@@ -22,10 +22,17 @@ jobs:
       LABEX_USERNAME: ${{ secrets.LABEX_USERNAME }}
       LABEX_X_AUTH: ${{ secrets.LABEX_X_AUTH }}
       LABEX_PASSWORD: ${{ secrets.LABEX_PASSWORD }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
       WORKSPACE: ${{ github.workspace }}
 
     steps:
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.GH_CLIENT_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          owner: labex-labs
+
       - name: Clean workspace
         run: |
           mkdir -p $WORKSPACE
@@ -38,13 +45,14 @@ jobs:
         with:
           repository: labex-labs/labex-cli
           path: labex-cli
-          token: ${{ env.GH_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Checkout linuxjourney (for getting changed files)
         uses: actions/checkout@v4
         with:
           path: linuxjourney
           fetch-depth: 2
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
