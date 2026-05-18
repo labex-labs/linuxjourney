@@ -31,6 +31,8 @@ Choosing a Linux distro becomes much easier when you start with your own needs. 
 
 The best Linux distro is usually the one that matches your goals, not the one with the loudest reputation. For most users, the main factors are ease of use, package management, release style, documentation, and long-term support.
 
+Release style describes how a distro delivers major software updates. Stable or point-release distros publish updates in planned batches and focus on predictability. Rolling-release distros deliver updates continuously, which usually means newer software but also more frequent change.
+
 ### Linux Distros for Beginners
 
 If you are new to Linux, start with distros that offer a smooth installation process, strong documentation, and a polished desktop experience. [Ubuntu](https://labex.io/lesson/ubuntu) and [Linux Mint](https://labex.io/lesson/linux-mint) are common starting points because they are easy to install and widely documented. openSUSE can also be approachable, especially for users who like graphical administration tools.
