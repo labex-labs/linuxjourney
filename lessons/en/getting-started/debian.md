@@ -29,6 +29,8 @@ A major feature of Debian is its branch model. Instead of offering only one stre
 - **Testing**: This branch contains packages that are being prepared for the next Stable release. It usually offers newer software than Stable, but it may still receive important changes as packages move toward release quality.
 - **Unstable**: Also known as "Sid," this is where active development happens. New package uploads enter Unstable first, so it changes frequently and may occasionally break.
 
+Testing and Unstable are rolling branches because package updates flow into them continuously instead of waiting for a single finished Stable release.
+
 These branches help explain why Debian can serve very different users. Someone who wants a predictable system will usually prefer Stable, while developers and advanced users may explore Testing or Unstable for newer software.
 
 ### Debian Releases

@@ -11,7 +11,7 @@ meta_keywords: "mejor distribución de linux, distro linux, distribución de lin
 
 En la lección anterior, aprendimos sobre el kernel de Linux. Aunque la gente suele usar "Linux" para describir todo el sistema operativo, el kernel es solo una parte del sistema. Los sistemas operativos completos construidos alrededor del kernel de Linux se denominan **distribuciones de Linux**, o **distros de Linux**.
 
-Si estás tratando de encontrar la **mejor distro de Linux**, lo primero que debes saber es que no existe una única mejor opción para todos. La distro adecuada depende de si te importa más la facilidad de uso, la actualización del software, la estabilidad, el control del sistema o el soporte empresarial.
+Si estás tratando de encontrar la **mejor distro de Linux**, lo primero que debes saber es que no existe una única mejor opción para todos. La distro adecuada depende de si te importa más la facilidad de uso, la novedad del software, la estabilidad, el control del sistema o el soporte empresarial.
 
 Un sistema Linux se divide en tres partes principales:
 
@@ -23,13 +23,15 @@ Un sistema Linux se divide en tres partes principales:
 
 Una distribución de Linux agrupa el kernel de Linux con utilidades del sistema, bibliotecas, aplicaciones y, por lo general, un gestor de paquetes. Muchas distros también incluyen un entorno de escritorio para uso gráfico. En términos prácticos, una distro de Linux es un sistema operativo completo construido alrededor del kernel de Linux.
 
-Las diferentes distribuciones de Linux toman decisiones distintas sobre estabilidad, actualización de software, experiencia de escritorio, gestión de paquetes, soporte y filosofía del sistema. Por eso no existe una única mejor distro de Linux para todos.
+Las diferentes distribuciones de Linux toman decisiones distintas sobre estabilidad, novedad del software, experiencia de escritorio, gestión de paquetes, soporte y filosofía del sistema. Es por eso que no existe una única mejor distro de Linux para todos.
 
 ### Cómo elegir la mejor distro de Linux
 
-Elegir una distro de Linux se vuelve mucho más fácil cuando empiezas por tus propias necesidades. Piensa en tu nivel de experiencia, el tipo de computadora que estás usando y qué quieres que haga el sistema. Un principiante que configura una computadora portátil puede querer algo muy diferente a un desarrollador que construye una estación de trabajo o un administrador que despliega servidores.
+Elegir una distro de Linux se vuelve mucho más fácil cuando comienzas con tus propias necesidades. Piensa en tu nivel de experiencia, el tipo de computadora que estás usando y qué quieres que haga el sistema. Un principiante que configura una computadora portátil puede querer algo muy diferente a un desarrollador que construye una estación de trabajo o un administrador que despliega servidores.
 
 La mejor distro de Linux suele ser la que se ajusta a tus objetivos, no la que tiene la reputación más alta. Para la mayoría de los usuarios, los factores principales son la facilidad de uso, la gestión de paquetes, el estilo de lanzamiento, la documentación y el soporte a largo plazo.
+
+El estilo de lanzamiento describe cómo una distro entrega actualizaciones importantes de software. Las distros estables o de lanzamiento puntual publican actualizaciones en lotes planificados y se centran en la previsibilidad. Las distros de lanzamiento continuo (rolling-release) entregan actualizaciones continuamente, lo que generalmente significa software más nuevo pero también cambios más frecuentes.
 
 ### Distros de Linux para principiantes
 
@@ -39,13 +41,13 @@ Ser apto para principiantes no siempre significa ser simplista. Por lo general, 
 
 ### Distros de Linux para desarrolladores y usuarios avanzados
 
-Algunos usuarios quieren más control sobre el sistema, software más nuevo o una experiencia más práctica. [Fedora](https://labex.io/es/lesson/fedora) es popular entre los desarrolladores porque avanza rápidamente sin dejar de aspirar a una experiencia pulida. [Arch Linux](https://labex.io/es/lesson/arch-linux) atrae a los usuarios que desean un lanzamiento continuo (rolling release) y un control más directo sobre la configuración del sistema. [Gentoo](https://labex.io/es/lesson/gentoo) es aún más especializado, brindando a los usuarios avanzados un control profundo a través de la compilación de paquetes basada en código fuente.
+Algunos usuarios quieren más control sobre el sistema, software más nuevo o una experiencia más práctica. [Fedora](https://labex.io/es/lesson/fedora) es popular entre los desarrolladores porque avanza rápidamente mientras busca una experiencia pulida. [Arch Linux](https://labex.io/es/lesson/arch-linux) atrae a usuarios que desean un lanzamiento continuo y un control más directo sobre la configuración del sistema. [Gentoo](https://labex.io/es/lesson/gentoo) es aún más especializado, brindando a los usuarios avanzados un control profundo a través de la construcción de paquetes basada en código fuente.
 
 Estas distros pueden ser excelentes, pero generalmente tienen más sentido una vez que ya sabes qué tipo de flujo de trabajo deseas.
 
 ### Distros de Linux para servidores y estabilidad
 
-Si te importa más la previsibilidad y la confiabilidad a largo plazo, los modelos de lanzamiento estable importan más que el pulido visual. [Debian](https://labex.io/es/lesson/debian) es bien conocida por su enfoque conservador y su sólida reputación en servidores. [Red Hat Enterprise Linux](https://labex.io/es/lesson/red-hat-enterprise-linux) está diseñado para entornos empresariales donde el soporte, las certificaciones y los ciclos de vida largos son importantes.
+Si te importa más la previsibilidad y la confiabilidad a largo plazo, los modelos de lanzamiento estable importan más que el pulido visual. [Debian](https://labex.io/es/lesson/debian) es bien conocido por su enfoque conservador y su sólida reputación en servidores. [Red Hat Enterprise Linux](https://labex.io/es/lesson/red-hat-enterprise-linux) está diseñado para entornos empresariales donde el soporte, las certificaciones y los ciclos de vida largos son importantes.
 
 Ubuntu también se usa ampliamente en servidores, especialmente cuando los usuarios desean un ecosistema grande y herramientas familiares. La elección correcta depende de si valoras la estabilidad impulsada por la comunidad, el soporte comercial o un equilibrio de ambos.
 
@@ -67,7 +69,7 @@ Estas no son respuestas universales, pero son puntos de partida útiles cuando c
 Algunas distros de Linux son ampliamente recomendadas porque resuelven bien diferentes problemas:
 
 - [Debian](https://labex.io/es/lesson/debian): estable, fundamental y ampliamente respetada
-- [Ubuntu](https://labex.io/es/lesson/ubuntu): apta para principiantes y ampliamente adoptada en sistemas de escritorio y servidores
+- [Ubuntu](https://labex.io/es/lesson/ubuntu): apta para principiantes y ampliamente adoptada en sistemas de escritorio y servidor
 - [Fedora](https://labex.io/es/lesson/fedora): moderna, amigable para desarrolladores y estrechamente vinculada al ecosistema de Red Hat
 - [Linux Mint](https://labex.io/es/lesson/linux-mint): centrada en el escritorio y especialmente cómoda para nuevos usuarios
 - [Arch Linux](https://labex.io/es/lesson/arch-linux): lanzamiento continuo con una fuerte cultura de "hazlo tú mismo"
@@ -77,13 +79,13 @@ Algunas distros de Linux son ampliamente recomendadas porque resuelven bien dife
 
 ### Debian, Ubuntu, Fedora y otras opciones
 
-Muchas distros de Linux populares pertenecen a familias más grandes. Debian es la base para distribuciones como Ubuntu, y Ubuntu a su vez influye en Linux Mint. Fedora se sitúa en el mundo de Red Hat y ayuda a dar forma a tecnologías que luego aparecen en RHEL. Comprender estas relaciones facilita la comparación de distribuciones de Linux porque la gestión de paquetes, el estilo de lanzamiento y el comportamiento del sistema a menudo siguen líneas familiares.
+Muchas distros de Linux populares pertenecen a familias más grandes. Debian es la base para distribuciones como Ubuntu, y Ubuntu a su vez influye en Linux Mint. Fedora se encuentra en el mundo de Red Hat y ayuda a dar forma a tecnologías que luego aparecen en RHEL. Comprender estas relaciones facilita la comparación de distribuciones de Linux porque la gestión de paquetes, el estilo de lanzamiento y el comportamiento del sistema a menudo siguen líneas familiares.
 
 Si estás decidiendo entre algunas opciones, ayuda leer las páginas específicas de la distro en lugar de confiar solo en recomendaciones generales. Una distro que es ideal para un tipo de usuario puede no ser adecuada para otro.
 
 ### Comienza con una distro
 
-Es fácil pasar demasiado tiempo buscando la mejor distro de Linux y nunca empezar a usar una. En la práctica, muchas distribuciones populares son lo suficientemente buenas para comenzar a aprender Linux. Elige una distro que se ajuste a tus objetivos, pruébala con un sistema en vivo o una máquina virtual y dedica tiempo a aprender los conceptos básicos.
+Es fácil pasar demasiado tiempo buscando la mejor distro de Linux y nunca empezar a usar una. En la práctica, muchas distribuciones populares son lo suficientemente buenas para comenzar a aprender Linux. Elige una distro que se ajuste a tus objetivos, pruébala con un sistema en vivo o una máquina virtual, y dedica tiempo a aprender los conceptos básicos.
 
 Una vez que entiendes una distro de Linux, pasar a otra se vuelve mucho más fácil. El paso importante es comenzar.
 
@@ -104,7 +106,7 @@ Para continuar aprendiendo después de comparar distros de Linux, recomendamos e
 
 ## Quiz Question
 
-¿Qué gestiona el hardware en un sistema Linux? (Responde en inglés, prestando atención a las mayúsculas)
+¿Qué gestiona el hardware en un sistema Linux?
 
 ## Quiz Answer
 
