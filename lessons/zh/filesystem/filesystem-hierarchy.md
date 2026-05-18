@@ -3,13 +3,13 @@ index: 1
 lang: "zh"
 title: "文件系统层次结构"
 meta_title: "文件系统层次结构 - 文件系统"
-meta_description: "探索标准的 Linux 文件系统层次结构（FHS）。本指南解释了/bin、/etc、/home 和/var 等关键目录的用途，清晰概述了 Linux 中的文件系统层次结构。"
-meta_keywords: "linux 文件系统层次结构，linux 中的文件系统层次结构，linux 文件层次结构，linux 文件层次，FHS, linux 目录结构"
+meta_description: "探索标准的 Linux 文件系统层次结构（FSH）。本指南解释了/bin、/etc、/home 和/var 等关键目录的用途，清晰概述了 Linux 中的文件系统层次结构。"
+meta_keywords: "linux 文件系统层次结构，linux 中的文件系统层次结构，linux 文件层次结构，linux 文件层次，FSH, linux 目录结构"
 ---
 
 ## Lesson Content
 
-你可能已经熟悉了系统上的目录结构。大多数 Linux 发行版根据 **Linux 文件系统层次结构** (FHS) 标准来组织其文件系统。此标准确保文件存储在可预测的位置，使系统更加一致。
+你可能已经熟悉了系统上的目录结构。大多数 Linux 发行版根据 **Linux 文件系统层次结构** (FSH) 标准来组织其文件系统。此标准确保文件存储在可预测的位置，使系统更加一致。
 
 要查看顶级目录，请运行命令 `ls -l /`。虽然你的系统可能存在细微差别，但核心的 **linux 文件层次结构** 将与下面描述的非常相似。
 

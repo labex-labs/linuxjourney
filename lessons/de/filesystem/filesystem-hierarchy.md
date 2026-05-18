@@ -3,13 +3,13 @@ index: 1
 lang: "de"
 title: "Dateisystemhierarchie"
 meta_title: "Dateisystemhierarchie - Das Dateisystem"
-meta_description: "Erkunden Sie die Standard-Linux-Dateisystemhierarchie (FHS). Dieser Leitfaden erklärt den Zweck wichtiger Verzeichnisse wie /bin, /etc, /home und /var und bietet einen klaren Überblick über die Dateisystemhierarchie unter Linux."
-meta_keywords: "linux dateisystemhierarchie, dateisystemhierarchie in linux, linux dateihierarchiestruktur, linux dateihierarchie, FHS, linux verzeichnisstruktur"
+meta_description: "Erkunden Sie die Standard-Linux-Dateisystemhierarchie (FSH). Dieser Leitfaden erklärt den Zweck wichtiger Verzeichnisse wie /bin, /etc, /home und /var und bietet einen klaren Überblick über die Dateisystemhierarchie unter Linux."
+meta_keywords: "linux dateisystemhierarchie, dateisystemhierarchie in linux, linux dateihierarchiestruktur, linux dateihierarchie, FSH, linux verzeichnisstruktur"
 ---
 
 ## Lesson Content
 
-Sie machen sich wahrscheinlich mit der Verzeichnisstruktur auf Ihrem System vertraut. Die meisten Linux-Distributionen organisieren ihre Dateisysteme nach dem Standard der **Linux Filesystem Hierarchy** (FHS). Dieser Standard stellt sicher, dass Dateien an vorhersehbaren Orten gespeichert werden, was die Systeme konsistenter macht.
+Sie machen sich wahrscheinlich mit der Verzeichnisstruktur auf Ihrem System vertraut. Die meisten Linux-Distributionen organisieren ihre Dateisysteme nach dem Standard der **Linux Filesystem Hierarchy** (FSH). Dieser Standard stellt sicher, dass Dateien an vorhersehbaren Orten gespeichert werden, was die Systeme konsistenter macht.
 
 Um die obersten Verzeichnisse anzuzeigen, führen Sie den Befehl `ls -l /` aus. Obwohl Ihr System geringfügige Unterschiede aufweisen kann, wird die Kernstruktur der **linux file hierarchy structure** der unten beschriebenen sehr ähnlich sein.
 

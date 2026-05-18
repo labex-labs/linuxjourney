@@ -3,13 +3,13 @@ index: 1
 lang: "pt"
 title: "Hierarquia do Sistema de Arquivos"
 meta_title: "Hierarquia do Sistema de Arquivos - O Sistema de Arquivos"
-meta_description: "Explore a hierarquia padrão do sistema de arquivos Linux (FHS). Este guia explica a finalidade de diretórios chave como /bin, /etc, /home e /var, fornecendo uma visão clara da hierarquia do sistema de arquivos no Linux."
-meta_keywords: "hierarquia do sistema de arquivos linux, hierarquia do sistema de arquivos no linux, estrutura de hierarquia de arquivos linux, hierarquia de arquivos linux, FHS, estrutura de diretórios linux"
+meta_description: "Explore a hierarquia padrão do sistema de arquivos Linux (FSH). Este guia explica a finalidade de diretórios chave como /bin, /etc, /home e /var, fornecendo uma visão clara da hierarquia do sistema de arquivos no Linux."
+meta_keywords: "hierarquia do sistema de arquivos linux, hierarquia do sistema de arquivos no linux, estrutura de hierarquia de arquivos linux, hierarquia de arquivos linux, FSH, estrutura de diretórios linux"
 ---
 
 ## Lesson Content
 
-Você provavelmente está se familiarizando com a estrutura de diretórios em seu sistema. A maioria das distribuições Linux organiza seus sistemas de arquivos de acordo com o Padrão de **Hierarquia do Sistema de Arquivos Linux** (FHS). Este padrão garante que os arquivos sejam armazenados em locais previsíveis, tornando os sistemas mais consistentes.
+Você provavelmente está se familiarizando com a estrutura de diretórios em seu sistema. A maioria das distribuições Linux organiza seus sistemas de arquivos de acordo com o Padrão de **Hierarquia do Sistema de Arquivos Linux** (FSH). Este padrão garante que os arquivos sejam armazenados em locais previsíveis, tornando os sistemas mais consistentes.
 
 Para ver os diretórios de nível superior, execute o comando `ls -l /`. Embora seu sistema possa ter pequenas diferenças, a **estrutura da hierarquia de arquivos do linux** principal será muito semelhante à descrita abaixo.
 

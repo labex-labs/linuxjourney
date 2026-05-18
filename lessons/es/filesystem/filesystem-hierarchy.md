@@ -3,13 +3,13 @@ index: 1
 lang: "es"
 title: "Jerarquía del Sistema de Archivos"
 meta_title: "Jerarquía del Sistema de Archivos - El Sistema de Archivos"
-meta_description: "Explore la jerarquía estándar del sistema de archivos de Linux (FHS). Esta guía explica el propósito de directorios clave como /bin, /etc, /home y /var, ofreciendo una visión clara de la jerarquía del sistema de archivos en Linux."
-meta_keywords: "jerarquía sistema archivos linux, jerarquía sistema archivos en linux, estructura jerarquía archivos linux, jerarquía archivos linux, FHS, estructura directorios linux"
+meta_description: "Explore la jerarquía estándar del sistema de archivos de Linux (FSH). Esta guía explica el propósito de directorios clave como /bin, /etc, /home y /var, ofreciendo una visión clara de la jerarquía del sistema de archivos en Linux."
+meta_keywords: "jerarquía sistema archivos linux, jerarquía sistema archivos en linux, estructura jerarquía archivos linux, jerarquía archivos linux, FSH, estructura directorios linux"
 ---
 
 ## Lesson Content
 
-Es probable que te estés familiarizando con la estructura de directorios de tu sistema. La mayoría de las distribuciones de Linux organizan sus sistemas de archivos de acuerdo con el estándar de la **Jerarquía del Sistema de Archivos de Linux** (FHS). Este estándar asegura que los archivos se almacenen en ubicaciones predecibles, haciendo que los sistemas sean más consistentes.
+Es probable que te estés familiarizando con la estructura de directorios de tu sistema. La mayoría de las distribuciones de Linux organizan sus sistemas de archivos de acuerdo con el estándar de la **Jerarquía del Sistema de Archivos de Linux** (FSH). Este estándar asegura que los archivos se almacenen en ubicaciones predecibles, haciendo que los sistemas sean más consistentes.
 
 Para ver los directorios de nivel superior, ejecuta el comando `ls -l /`. Aunque tu sistema pueda tener diferencias menores, la **estructura de jerarquía de archivos de linux** principal será muy similar a la descrita a continuación.
 

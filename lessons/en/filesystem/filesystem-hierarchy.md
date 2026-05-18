@@ -4,12 +4,12 @@ lang: "en"
 title: "Filesystem Hierarchy"
 meta_title: "Filesystem Hierarchy - The Filesystem"
 meta_description: "Explore the standard Linux file system hierarchy (FSH). This guide explains the purpose of key directories like /bin, /etc, /home, and /var, providing a clear overview of the file system hierarchy in Linux."
-meta_keywords: "linux file system hierarchy, file system hierarchy in linux, linux file hierarchy structure, linux file hierarchy, FHS, linux directory structure"
+meta_keywords: "linux file system hierarchy, file system hierarchy in linux, linux file hierarchy structure, linux file hierarchy, FSH, linux directory structure"
 ---
 
 ## Lesson Content
 
-You are likely becoming familiar with the directory structure on your system. Most Linux distributions organize their filesystems according to the **Linux File System Hierarchy** (FHS) Standard. This standard ensures that files are stored in predictable locations, making systems more consistent.
+You are likely becoming familiar with the directory structure on your system. Most Linux distributions organize their filesystems according to the **Linux File System Hierarchy** (FSH) Standard. This standard ensures that files are stored in predictable locations, making systems more consistent.
 
 To see the top-level directories, run the command `ls -l /`. While your system might have minor differences, the core **linux file hierarchy structure** will be very similar to the one described below.
 

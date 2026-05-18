@@ -3,13 +3,13 @@ index: 1
 lang: "fr"
 title: "Hiérarchie du Système de Fichiers"
 meta_title: "Hiérarchie du Système de Fichiers - Le Système de Fichiers"
-meta_description: "Explorez la hiérarchie standard du système de fichiers Linux (FHS). Ce guide explique l'objectif des répertoires clés tels que /bin, /etc, /home et /var, offrant un aperçu clair de la hiérarchie du système de fichiers sous Linux."
-meta_keywords: "hiérarchie système de fichiers linux, hiérarchie système de fichiers sous linux, structure hiérarchie fichiers linux, hiérarchie fichiers linux, FHS, structure répertoires linux"
+meta_description: "Explorez la hiérarchie standard du système de fichiers Linux (FSH). Ce guide explique l'objectif des répertoires clés tels que /bin, /etc, /home et /var, offrant un aperçu clair de la hiérarchie du système de fichiers sous Linux."
+meta_keywords: "hiérarchie système de fichiers linux, hiérarchie système de fichiers sous linux, structure hiérarchie fichiers linux, hiérarchie fichiers linux, FSH, structure répertoires linux"
 ---
 
 ## Lesson Content
 
-Vous vous familiarisez probablement avec la structure des répertoires sur votre système. La plupart des distributions Linux organisent leurs systèmes de fichiers selon la norme **Hiérarchie du Système de Fichiers Linux** (FHS). Cette norme garantit que les fichiers sont stockés dans des emplacements prévisibles, rendant les systèmes plus cohérents.
+Vous vous familiarisez probablement avec la structure des répertoires sur votre système. La plupart des distributions Linux organisent leurs systèmes de fichiers selon la norme **Hiérarchie du Système de Fichiers Linux** (FSH). Cette norme garantit que les fichiers sont stockés dans des emplacements prévisibles, rendant les systèmes plus cohérents.
 
 Pour voir les répertoires de plus haut niveau, exécutez la commande `ls -l /`. Bien que votre système puisse présenter des différences mineures, la **structure de la hiérarchie des fichiers Linux** de base sera très similaire à celle décrite ci-dessous.
 
