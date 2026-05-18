@@ -11,9 +11,9 @@ meta_keywords: "distro arch linux, distribución arch linux, qué es arch linux,
 
 ### ¿Qué es Arch Linux?
 
-Arch Linux es una distribución de Linux ligera y desarrollada de forma independiente, conocida por su simplicidad, control por parte del usuario y un enfoque práctico. Es popular entre los usuarios que desean construir su sistema de manera más deliberada en lugar de depender de configuraciones predeterminadas pesadas.
+Arch Linux es una distribución de Linux ligera, desarrollada de forma independiente, conocida por el control que ofrece al usuario y su enfoque práctico. Es popular entre los usuarios que desean construir su sistema de manera deliberada en lugar de depender de configuraciones predeterminadas pesadas.
 
-A diferencia de las distribuciones con lanzamientos importantes programados, Arch sigue un modelo de lanzamiento continuo (rolling release). Esto significa que el sistema recibe actualizaciones constantes en lugar de esperar grandes saltos de versión.
+A diferencia de las distribuciones con lanzamientos importantes programados, Arch sigue un modelo de "rolling release" (lanzamiento continuo). Esto significa que el sistema recibe actualizaciones constantes en lugar de esperar grandes saltos de versión.
 
 ### Por qué Arch Linux es popular
 
@@ -23,19 +23,19 @@ Esto hace que Arch sea una recomendación común para usuarios intermedios y ava
 
 ### Lanzamientos continuos (Rolling Releases)
 
-Arch utiliza un modelo de lanzamiento continuo, por lo que los paquetes se actualizan constantemente. Esto brinda a los usuarios acceso a software actual sin necesidad de reinstalar el sistema para cada lanzamiento importante, pero también significa que las actualizaciones requieren más atención que en las distribuciones conservadoras de versiones fijas.
+Arch utiliza un modelo de lanzamiento continuo, por lo que los paquetes se actualizan constantemente. Esto brinda a los usuarios acceso a software actual sin tener que reinstalar el sistema para cada versión importante, pero también significa que las actualizaciones requieren más atención que en distribuciones conservadoras de versiones fijas.
 
-Para los usuarios que desean un sistema que se mantenga actualizado, los lanzamientos continuos son un gran atractivo. Para los usuarios que priorizan la máxima previsibilidad, una distribución como [Debian](https://labex.io/es/lesson/debian) puede resultar más cómoda.
+Para los usuarios que desean un sistema que se mantenga al día, los lanzamientos continuos son un gran atractivo. Para los usuarios que priorizan la máxima previsibilidad, una distribución como [Debian](https://labex.io/es/lesson/debian) puede resultar más cómoda.
 
 ### Pacman y la gestión de paquetes
 
-Arch utiliza Pacman como su gestor de paquetes. Pacman instala, actualiza, elimina y rastrea el software en el sistema, y es una de las partes más reconocibles de la experiencia de Arch Linux.
+Arch utiliza Pacman como su gestor de paquetes. Pacman instala, actualiza, elimina y rastrea el software en el sistema, y es una de las partes más reconocibles de la experiencia en Arch Linux.
 
-Un comando común es `pacman -Syu`, que sincroniza las bases de datos de paquetes y actualiza el sistema instalado. Pacman es valorado porque es directo, rápido y está estrechamente alineado con el diseño minimalista de Arch.
+Un comando común es `sudo pacman -Syu`, que sincroniza las bases de datos de paquetes y actualiza el sistema instalado. Pacman es valorado porque es directo, rápido y está estrechamente alineado con el diseño minimalista de Arch.
 
 ### La filosofía de Arch
 
-Arch a menudo se asocia con la simplicidad, la modernidad y la centralidad del usuario. En la práctica, esto significa que la distribución intenta evitar abstracciones innecesarias y espera que los usuarios asuman la responsabilidad de la configuración y el mantenimiento.
+Arch se asocia a menudo con el minimalismo, la modernidad y la centralidad en el usuario. En la práctica, esto significa que la distribución intenta evitar abstracciones innecesarias y espera que los usuarios asuman la responsabilidad de la configuración y el mantenimiento.
 
 Esta filosofía es una razón importante por la que Arch atrae a usuarios comprometidos. No intenta ocultar la complejidad tanto como sea posible; intenta hacer que el sistema sea comprensible.
 
@@ -56,9 +56,9 @@ Para principiantes absolutos, Arch suele ser mejor como un paso posterior que co
 
 Para desarrollar la confianza en la línea de comandos que Arch Linux requiere, recomendamos estos cursos de LabEx:
 
-1. **[Práctica de comandos de Linux en línea](https://labex.io/es/courses/linux-basic-commands-practice-online)** - Fortalece los hábitos de línea de comandos que importan en el trabajo práctico con Linux.
-2. **[Shell para principiantes](https://labex.io/es/courses/shell-for-beginners)** - Mejora tu comodidad con el shell y el flujo de trabajo de la terminal.
-3. **[Fundamentos de scripting en Shell](https://labex.io/es/courses/shell-scripting-fundamentals)** - Profundiza una vez que desees más control sobre tu entorno Linux.
+1. **[Práctica de comandos de Linux en línea](https://labex.io/es/courses/linux-basic-commands-practice-online)** - Fortalece los hábitos de línea de comandos que importan en un entorno Linux práctico.
+2. **[Shell para principiantes](https://labex.io/es/courses/shell-for-beginners)** - Mejora tu comodidad con el flujo de trabajo de la shell y la terminal.
+3. **[Fundamentos de scripting en Shell](https://labex.io/es/courses/shell-scripting-fundamentals)** - Profundiza una vez que desees tener más control sobre tu entorno Linux.
 
 ## Quiz Question
 
