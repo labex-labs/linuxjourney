@@ -1,5 +1,12 @@
 # Linux Journey
 
+> [!NOTE]
+> Linux Journey has joined the LabEx and is now actively maintained by the LabEx team while remaining free and open source.
+>
+> We will continue building more structured Linux learning content and hands-on labs for beginners.
+>
+> Official website: https://linuxjourney.com
+
 [Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
 
 A structured learning path from beginner to advanced Linux administration with three levels:
