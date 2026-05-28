@@ -33,7 +33,7 @@ echo Hallo Welt
 
 ## Exercise
 
-Wir empfehlen, den umfassenden [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/de/learn/shell), um verwandte Fähigkeiten und Konzepte zu üben.
+Wir empfehlen, den umfassenden [Shell Learning Path](https://labex.io/de/learn/shell), um verwandte Fähigkeiten und Konzepte zu üben.
 
 ## Quiz Question
 

@@ -29,7 +29,7 @@ Comencemos con uno de los comandos de Linux más básicos para principiantes: `e
 
 ## Exercise
 
-Recomendamos explorar la completa [![Ruta de Aprendizaje de Shell](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Ruta de Aprendizaje de Shell](https://labex.io/es/learn/shell) para practicar habilidades y conceptos relacionados.
+Recomendamos explorar la completa [Ruta de Aprendizaje de Shell](https://labex.io/es/learn/shell) para practicar habilidades y conceptos relacionados.
 
 ## Quiz Question
 

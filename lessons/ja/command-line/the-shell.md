@@ -33,7 +33,7 @@ echo Hello World
 
 ## Exercise
 
-関連するスキルと概念を練習するために、包括的な[![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/ja/learn/shell) を探索することを推奨します。
+関連するスキルと概念を練習するために、包括的な[Shell Learning Path](https://labex.io/ja/learn/shell) を探索することを推奨します。
 
 ## Quiz Question
 

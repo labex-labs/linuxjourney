@@ -29,7 +29,7 @@ pete@icebox:/home/pete $
 
 ## Exercise
 
-Мы рекомендуем изучить подробный [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)путь обучения Shell](https://labex.io/ru/learn/shell), чтобы попрактиковаться в связанных навыках и концепциях.
+Мы рекомендуем изучить подробный [путь обучения Shell](https://labex.io/ru/learn/shell), чтобы попрактиковаться в связанных навыках и концепциях.
 
 ## Quiz Question
 

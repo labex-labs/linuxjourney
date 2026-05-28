@@ -29,7 +29,7 @@ Commençons par l'une des commandes Linux les plus basiques pour les débutants 
 
 ## Exercise
 
-Nous vous recommandons d'explorer le [![Parcours d'Apprentissage Shell](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Parcours d'Apprentissage Shell](https://labex.io/fr/learn/shell) complet pour pratiquer les compétences et concepts associés.
+Nous vous recommandons d'explorer le [Parcours d'Apprentissage Shell](https://labex.io/fr/learn/shell) complet pour pratiquer les compétences et concepts associés.
 
 ## Quiz Question
 
