@@ -7,9 +7,9 @@
 >
 > We will continue building more structured Linux learning content and hands-on labs for beginners.
 >
-> Official website: https://linuxjourney.com
+> Official website: https://labex.io/linuxjourney (formerly https://linuxjourney.com)
 
-[Linux Journey](https://linuxjourney.com) - Learn Linux fundamentals through interactive lessons.
+[Linux Journey](https://labex.io/linuxjourney) - Learn Linux fundamentals through interactive lessons.
 
 A structured learning path from beginner to advanced Linux administration with three levels:
 
