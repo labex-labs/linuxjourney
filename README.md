@@ -383,6 +383,12 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed gu
 - Lesson templates and structure
 - Development workflow
 
-## License
+## License and Usage
 
-Content is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) and maintained by the [LabEx](https://labex.io/) team.
+Linux Journey content is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) and maintained by the [LabEx](https://labex.io/) team.
+
+You may study, share, translate, and adapt the lesson content under the terms of the CC BY-SA 4.0 license, including proper attribution and share-alike licensing for adapted content.
+
+This license does not grant permission to use the Linux Journey name, branding, visual identity, course organization, or substantial content collection to create a confusingly similar website, product, or service that imitates Linux Journey or is intended to replace the official Linux Journey experience.
+
+Public reuse of substantial Linux Journey content should be clearly presented as independent from Linux Journey, should link back to the official website at <https://linuxjourney.com>, and must not mislead users into believing it is the official Linux Journey site or an official substitute for it.
