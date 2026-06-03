@@ -3,7 +3,7 @@
 <p><a href="https://apps.apple.com/app/linux-journey/id6770861660"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="160" /></a></p>
 
 > [!NOTE]
-> Linux Journey has joined the LabEx and is now actively maintained by the LabEx team while remaining free and open source.
+> Linux Journey has [joined the LabEx](https://support.labex.io/en/using-labex/linux-journey-now-part-of-labex) and is now actively maintained by the LabEx team while remaining free and open source.
 >
 > We will continue building more structured Linux learning content and hands-on labs for beginners.
 >
