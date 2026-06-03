@@ -391,4 +391,4 @@ You may study, share, translate, and adapt the lesson content under the terms of
 
 This license does not grant permission to use the Linux Journey name, branding, visual identity, course organization, or substantial content collection to create a confusingly similar website, product, or service that imitates Linux Journey or is intended to replace the official Linux Journey experience.
 
-Public reuse of substantial Linux Journey content should be clearly presented as independent from Linux Journey, should link back to the official website at <https://linuxjourney.com>, and must not mislead users into believing it is the official Linux Journey site or an official substitute for it.
+Public reuse of substantial Linux Journey content should be clearly presented as independent from Linux Journey, should link back to the official website at <https://labex.io/linuxjourney> (formerly <https://linuxjourney.com>), and must not mislead users into believing it is the official Linux Journey site or an official substitute for it.
