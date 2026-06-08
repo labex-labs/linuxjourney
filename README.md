@@ -1,6 +1,14 @@
 # Linux Journey
 
-<p><a href="https://apps.apple.com/app/linux-journey/id6770861660"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="160" /></a></p>
+<p>
+  <a href="https://apps.apple.com/app/linux-journey/id6770861660">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="160" />
+  </a>
+  &nbsp;
+  <a href="https://chromewebstore.google.com/detail/linux-journey/jechleifjenndhlfdhcdkmadkcieaimm">
+    <img src="https://developer.chrome.com/static/docs/webstore/branding/image/UV4C4ybeBTsZt43U4xis.png" alt="Available in the Chrome Web Store" height="48" />
+  </a>
+</p>
 
 > [!NOTE]
 > Linux Journey has [joined the LabEx](https://support.labex.io/en/using-labex/linux-journey-now-part-of-labex) and is now actively maintained by the LabEx team while remaining free and open source.
