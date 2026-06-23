@@ -3,22 +3,22 @@ index: 15
 lang: "en"
 title: "help"
 meta_title: "help - Command Line"
-meta_description: "Discover how to use the Linux help command for quick assistance in your terminal. This Bash tutorial explains how to get help for built-in shell commands and use the --help flag for other Linux programs."
-meta_keywords: "Linux help command, Bash help, command line help, Linux commands, beginner Linux, Linux tutorial, Bash tutorial, shell built-in, command line assistance"
+meta_description: "Learn how to get Linux command line help with Bash help, --help output, man pages, and type for shell built-ins and external commands."
+meta_keywords: "linux help command, bash help, command line help, --help, shell built-in, man command, type command"
 ---
 
 ## Lesson Content
 
-When working on the Linux command line, you'll often need a quick reminder of how a command works or what options it accepts. Fortunately, Linux provides excellent tools for command line help right in the terminal.
+When working on the Linux command line, you will often need a quick reminder of how a command works or what options it accepts. Linux provides several help tools directly in the terminal.
 
 ### The 'help' Command for Bash Built-ins
 
 One of the most direct tools is `help`, a command that is built directly into the Bash shell. It is specifically designed to provide information about other Bash built-in commands. A built-in command is part of the shell itself, not a separate program. Examples include `echo`, `cd`, and `pwd`.
 
-To use the **Linux help command**, simply type `help` followed by the name of the built-in command.
+To use `help`, type it followed by the name of the built-in command.
 
 ```bash
-help echo
+$ help echo
 ```
 
 This will display a summary of the `echo` command, its syntax, and a list of available options. This is the fastest way to get assistance for shell-specific functions.
@@ -28,10 +28,38 @@ This will display a summary of the `echo` command, its syntax, and a list of ava
 For most other executable programs that are not built into the shell, the `help` command won't work. Instead, a common convention is to provide a `--help` flag. This option signals the program to print a usage summary and then exit.
 
 ```bash
-ls --help
+$ ls --help
 ```
 
-While most developers adhere to this standard, it's not universal. However, trying the `--help` flag is usually the best first step to find help for an unfamiliar program. It's a fundamental skill for anyone learning about **Linux commands**.
+While most developers follow this standard, it is not universal. Trying `--help` is usually a good first step for an unfamiliar program.
+
+### Finding Command Type
+
+If you are not sure whether a command is a Bash built-in or an external program, use `type`.
+
+```bash
+$ type cd
+cd is a shell builtin
+$ type ls
+ls is /usr/bin/ls
+```
+
+This helps you choose between `help cd`, `ls --help`, or `man ls`.
+
+### Choosing the Right Help Tool
+
+- Use `help COMMAND` for Bash built-ins such as `cd`, `echo`, and `history`.
+- Use `COMMAND --help` for a quick summary from many external commands.
+- Use `man COMMAND` for detailed manual pages.
+- Use `whatis COMMAND` for a one-line description.
+
+### Common Questions
+
+**Why does help ls not work?** `ls` is usually an external program, not a Bash built-in. Try `ls --help` or `man ls`.
+
+**Why does --help not work for every command?** It is a convention, not a strict rule.
+
+**What is the fastest way to check a command?** Try `COMMAND --help` for external commands and `help COMMAND` for Bash built-ins.
 
 ## Exercise
 

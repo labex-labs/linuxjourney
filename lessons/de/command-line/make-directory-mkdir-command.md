@@ -3,52 +3,91 @@ index: 12
 lang: "de"
 title: "mkdir (Verzeichnis erstellen)"
 meta_title: "mkdir (Verzeichnis erstellen) - Kommandozeile"
-meta_description: "Erfahren Sie, wie Sie den Befehl mkdir unter Linux verwenden, um ein neues Verzeichnis zu erstellen. Diese Anleitung behandelt den Befehl zum Erstellen von Ordnern unter Linux, einschließlich der Erstellung mehrerer Verzeichnisse und übergeordneter Verzeichnisse über die Eingabeaufforderung."
-meta_keywords: "verzeichnis erstellen linux, mkdir befehl linux, verzeichnis erstellen in linux, verzeichnis befehl eingabeaufforderung, ordner erstellen linux befehl, mkdir, verzeichnis erstellen, linux"
+meta_description: "Lerne den Linux-Befehl mkdir mit Beispielen zum Erstellen eines Verzeichnisses, mehrerer Verzeichnisse, verschachtelter übergeordneter Verzeichnisse und zum Setzen von Berechtigungen."
+meta_keywords: "mkdir Befehl, linux mkdir, Verzeichnis erstellen linux, Verzeichnis anlegen linux, mkdir -p, mkdir -m, Ordner erstellen linux"
 ---
 
 ## Lesson Content
 
-Wenn Sie mit Dateien arbeiten, müssen Sie diese in Verzeichnissen organisieren. Das primäre Werkzeug für diese Aufgabe ist der Befehl `mkdir`, was für "Make Directory" (Verzeichnis erstellen) steht. Mit diesem Befehl können Sie **ein Verzeichnis unter Linux** direkt über Ihr Terminal oder die **Eingabeaufforderung** erstellen.
+Wenn du mit Dateien arbeitest, musst du sie in Verzeichnissen organisieren. Das wichtigste Werkzeug dafür ist der Befehl `mkdir`, der für „make directory“ (Verzeichnis erstellen) steht.
 
-### Erstellen eines einzelnen Verzeichnisses
-
-Die grundlegendste Verwendung des **mkdir-Befehls unter Linux** ist das Erstellen eines einzelnen neuen Verzeichnisses. Wenn das Verzeichnis noch nicht existiert, erstellt dieser Befehl es an Ihrem aktuellen Speicherort. Um beispielsweise ein Verzeichnis namens `documents` zu erstellen:
+Die grundlegende Syntax lautet:
 
 ```bash
-mkdir documents
+mkdir [OPTIONS] DIRECTORY...
 ```
 
-### Erstellen mehrerer Verzeichnisse
+### Ein einzelnes Verzeichnis erstellen
 
-You können auch mehrere Verzeichnisse gleichzeitig erstellen, indem Sie deren Namen durch Leerzeichen getrennt auflisten. Dies ist eine effiziente Methode, um schnell mehrere Ordner einzurichten.
+Die einfachste Verwendung von `mkdir` ist das Erstellen eines einzelnen neuen Verzeichnisses. Wenn das Verzeichnis noch nicht existiert, wird es an deinem aktuellen Ort erstellt.
 
 ```bash
-mkdir books paintings
+$ mkdir documents
 ```
 
-### Erstellen verschachtelter Verzeichnisse
+### Mehrere Verzeichnisse erstellen
 
-Manchmal müssen Sie ein Verzeichnis und seine übergeordneten Verzeichnisse gleichzeitig erstellen. Die Option `-p` (parent/übergeordnet) ist dafür perfekt geeignet. Diese leistungsstarke Funktion des **Befehls zum Erstellen von Ordnern unter Linux** verhindert Fehler, falls übergeordnete Verzeichnisse nicht existieren. Um beispielsweise das Verzeichnis `favorites` innerhalb von `hemmingway` zu erstellen, welches sich innerhalb von `books` befindet:
+Du kannst auch mehrere Verzeichnisse auf einmal erstellen, indem du ihre Namen mit Leerzeichen getrennt angibst. Das ist eine effiziente Methode, um schnell mehrere Ordner anzulegen.
 
 ```bash
-mkdir -p books/hemmingway/favorites
+$ mkdir books paintings
 ```
 
-Dieser einzelne Befehl erstellt `books`, `hemmingway` und `favorites`, falls sie noch nicht existieren, und demonstriert eine Schlüsselfunktion, wenn Sie **ein Verzeichnis unter Linux erstellen** müssen.
+### Verschachtelte Verzeichnisse erstellen
+
+Manchmal musst du ein Verzeichnis und seine übergeordneten Verzeichnisse gleichzeitig erstellen. Die Option `-p` ist dafür ideal. Sie verhindert Fehler, falls übergeordnete Verzeichnisse nicht existieren.
+
+```bash
+$ mkdir -p books/hemingway/favorites
+```
+
+Dieser einzelne Befehl erstellt `books`, `hemingway` und `favorites`, falls sie noch nicht existieren.
+
+### Verzeichnisberechtigungen setzen
+
+Verwende `-m`, um beim Erstellen eines Verzeichnisses Berechtigungen festzulegen.
+
+```bash
+$ mkdir -m 755 public
+```
+
+Mehr zu Berechtigungen lernst du später, aber dieses Beispiel erstellt ein Verzeichnis, das der Besitzer beschreiben kann und das andere lesen und betreten dürfen.
+
+### Häufige mkdir-Optionen
+
+- `-p`: Erstelle bei Bedarf übergeordnete Verzeichnisse.
+- `-m MODE`: Setze Berechtigungen für das neue Verzeichnis.
+- `-v`: Gib für jedes erstellte Verzeichnis eine Meldung aus.
+
+Beispiel:
+
+```bash
+$ mkdir -pv projects/app/src
+mkdir: created directory 'projects'
+mkdir: created directory 'projects/app'
+mkdir: created directory 'projects/app/src'
+```
+
+### Häufige Fragen
+
+**Warum sagt mkdir „File exists“?** Eine Datei oder ein Verzeichnis mit diesem Namen existiert bereits. Verwende `ls`, um es zu überprüfen.
+
+**Wie erstelle ich verschachtelte Verzeichnisse?** Verwende `mkdir -p parent/child/grandchild`.
+
+**Kann mkdir Dateien erstellen?** Nein. Verwende `touch`, um leere Dateien zu erstellen.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Verzeichniserstellung und -verwaltung zu festigen:
+Übung macht den Meister! Hier sind einige praktische Labs, um dein Verständnis für das Erstellen und Verwalten von Verzeichnissen zu vertiefen:
 
-1. **[Linux mkdir Befehl: Verzeichnisse erstellen](https://labex.io/de/labs/linux-linux-mkdir-command-directory-creating-209739)** - Lernen Sie, wie Sie den `mkdir`-Befehl unter Linux verwenden, um Verzeichnisse zu erstellen, Berechtigungen festzulegen und Ihr Dateisystem zu organisieren. Dieses Labor behandelt die grundlegende und erweiterte Verwendung, einschließlich der Erstellung verschachtelter Verzeichnisse.
-2. **[Einrichten einer neuen Projektstruktur](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** - Üben Sie Ihre Linux-Verzeichnisverwaltungsfähigkeiten, indem Sie eine bestimmte Projektstruktur erstellen und mit Befehlen wie `mkdir` und `cd` darin navigieren.
+1. **[Linux mkdir Command: Directory Creating](https://labex.io/de/labs/linux-linux-mkdir-command-directory-creating-209739)** – Lerne, wie du den Befehl `mkdir` in Linux verwendest, um Verzeichnisse zu erstellen, Berechtigungen zu setzen und dein Dateisystem zu organisieren. Dieses Lab behandelt grundlegende und fortgeschrittene Anwendungen, einschließlich des Erstellens verschachtelter Verzeichnisse.
+2. **[Setting Up a New Project Structure](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** – Übe deine Linux-Verzeichnisverwaltung, indem du eine bestimmte Projektstruktur erstellst und dich mit wichtigen Befehlen wie `mkdir` und `cd` darin bewegst.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen beim Erstellen und Organisieren von Verzeichnissen unter Linux aufzubauen.
+Diese Labs helfen dir, die Konzepte in realen Szenarien anzuwenden und Sicherheit beim Erstellen und Organisieren von Verzeichnissen unter Linux zu gewinnen.
 
 ## Quiz Question
 
-Welcher Befehl wird verwendet, um ein Verzeichnis zu erstellen? Bitte antworten Sie nur mit dem englischen Befehl in Kleinbuchstaben.
+Welcher Befehl wird verwendet, um ein Verzeichnis zu erstellen? Bitte antworte nur mit dem englischen Befehl in Kleinbuchstaben.
 
 ## Quiz Answer
 

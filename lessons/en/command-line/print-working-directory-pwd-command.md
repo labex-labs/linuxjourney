@@ -3,17 +3,17 @@ index: 2
 lang: "en"
 title: "pwd (Print Working Directory)"
 meta_title: "pwd (Print Working Directory) - Command Line"
-meta_description: "Master the linux pwd command to display your current directory in Linux. This lesson explains the full form of pwd in linux and how to navigate the directory tree in linux."
-meta_keywords: "linux pwd, current directory linux, directory tree in linux, full form of pwd in linux, print working directory, linux path, linux navigation, command line basics"
+meta_description: "Learn the Linux pwd command, what print working directory means, and how absolute paths show your current location in the filesystem."
+meta_keywords: "pwd command, linux pwd, print working directory, current directory linux, absolute path, linux filesystem, directory tree"
 ---
 
 ## Lesson Content
 
-In Linux, a core concept is that everything is treated as a file. These files are organized within a hierarchical structure known as the filesystem. Understanding this structure is key to navigating your system effectively.
+In Linux, files and directories are organized in a hierarchy called the filesystem. Before you can move around confidently, you need to know where you are. The `pwd` command answers that question by printing your current working directory.
 
 ### The Directory Tree in Linux
 
-The entire filesystem starts from a single top-level directory called the root directory, represented by a forward slash (`/`). From the root, the **directory tree in linux** branches out into various subdirectories, which can contain files and further subdirectories.
+The entire filesystem starts from a single top-level directory called the root directory, represented by a forward slash (`/`). From the root, the directory tree branches into subdirectories, which can contain files and more subdirectories.
 
 Here is a simplified example of what this structure looks like:
 
@@ -33,21 +33,58 @@ Here is a simplified example of what this structure looks like:
 
 ### Understanding File Paths
 
-The location of any file or directory is described by its path. A path is a sequence of directories that leads from a starting point to a specific destination. For example, if you have a folder named `pete` inside the `/home` directory, and a `Movies` folder inside `pete`, the full path would be `/home/pete/Movies`.
+The location of any file or directory is described by its path. A path is a sequence of directories that leads from a starting point to a specific destination.
+
+For example, if you have a folder named `pete` inside `/home`, and a `Movies` folder inside `pete`, the full path is:
+
+```plaintext
+/home/pete/Movies
+```
+
+A path that starts with `/` is an absolute path because it starts at the root directory. A path such as `Movies` is relative because it depends on your current location.
 
 ### What is the Full Form of PWD in Linux?
 
-When navigating the filesystem, it's essential to know your current location. The command for this is `pwd`. The **full form of pwd in linux** is "print working directory." Its sole purpose is to display the full path of the directory you are currently in, starting from the root (`/`).
+The full form of `pwd` is "print working directory." Your working directory is the directory where your shell is currently located. Commands that use relative paths start from this location.
 
-### Using the linux pwd Command
+### Using the pwd Command
 
-To find your **current directory linux**, simply type the **linux pwd** command and press Enter. It prints the absolute path to your present location on the command line.
+To find your current directory, type `pwd` and press Enter.
 
 ```bash
-pwd
+$ pwd
+/home/pete
 ```
 
-Where are you? Where am I? Give it a try to see your own current working directory.
+The output is an absolute path. In this example, the shell is currently in the `pete` user's home directory.
+
+### Why pwd is Useful
+
+Use `pwd` when:
+
+- You are following instructions and need to confirm your location.
+- A command failed because a file path was wrong.
+- You moved through several directories and lost track of where you are.
+- You want to copy the current directory path into another command.
+
+For example:
+
+```bash
+$ pwd
+/home/pete/projects
+$ ls
+app.py  README.md
+```
+
+This tells you that `app.py` and `README.md` are located in `/home/pete/projects`.
+
+### Common Questions
+
+**Does pwd change anything?** No. `pwd` only prints information.
+
+**Why is the output different on my system?** Your username, home directory, and current location may be different.
+
+**What is the difference between pwd and cd?** `pwd` shows where you are. `cd` changes where you are.
 
 ## Exercise
 

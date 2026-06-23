@@ -3,90 +3,172 @@ index: 10
 lang: "es"
 title: "cp (Copiar)"
 meta_title: "cp (Copiar) - Línea de Comandos"
-meta_description: "Domina el comando cp de Linux para copiar archivos y directorios. Esta guía cubre opciones esenciales como la copia recursiva (-r), preservar atributos con la bandera cp -p, y forzar sobrescrituras con la bandera cp -f. Aprende cómo cp -p en Linux ayuda a mantener los metadatos del archivo."
-meta_keywords: "comando cp, copiar archivos linux, linux cp -p, bandera cp -p, cp -p en linux, bandera cp -f, copia recursiva, cp -r, comodines linux, línea de comandos linux"
+meta_description: "Aprende el comando cp de Linux con ejemplos para copiar archivos, directorios, múltiples archivos, comodines, copias de seguridad y opciones como cp -r, cp -i y cp -p."
+meta_keywords: "comando linux cp, comando cp, copiar archivos linux, cp -r, cp -i, cp -p, cp -a, cp -u, copia recursiva, comodines linux"
 ---
 
 ## Lesson Content
 
-El comando `cp` es la herramienta estándar para copiar archivos y directorios en Linux. Su sintaxis básica es `cp [ORIGEN] [DESTINO]`.
-
-### Copia Básica de Archivos
-
-Para copiar un archivo, especificas el archivo de origen y el directorio o ruta de destino.
+El comando `cp` es la herramienta estándar para copiar archivos y directorios en Linux. Crea una nueva copia dejando el archivo original en su lugar. Su sintaxis básica es:
 
 ```bash
-cp miarchivomolon /home/pete/Documentos/documentosmolones
+cp [OPTIONS] SOURCE DESTINATION
 ```
 
-En este ejemplo, `miarchivomolon` es el archivo de origen, y `/home/pete/Documentos/documentosmolones` es el directorio de destino. También puedes copiar un archivo y darle un nuevo nombre en el destino.
+Puedes copiar un archivo a otro archivo, uno o más archivos a un directorio, o un árbol completo de directorios con la opción adecuada.
+
+### Copia básica de archivos
+
+Para copiar un archivo, especificas el archivo fuente y el directorio o ruta de destino.
 
 ```bash
-cp miarchivomolon /home/pete/Documentos/miarchivomolon_copia
+$ cp mycoolfile /home/pete/Documents/cooldocs
 ```
 
-### Uso de Comodines para Copia Masiva
+En este ejemplo, `mycoolfile` es el archivo fuente, y `/home/pete/Documents/cooldocs` es el directorio de destino. También puedes copiar un archivo y darle un nuevo nombre en el destino.
 
-Los comodines (wildcards) son caracteres especiales que te ayudan a seleccionar múltiples archivos basándose en patrones, proporcionando una gran flexibilidad.
+```bash
+$ cp mycoolfile /home/pete/Documents/mycoolfile_backup
+```
+
+Si el destino es un directorio existente, el archivo copiado mantiene su nombre original. Si el destino es un nombre de archivo, `cp` crea una copia con ese nuevo nombre.
+
+### Copiar múltiples archivos a un directorio
+
+Para copiar varios archivos al mismo directorio, lista todas las fuentes primero y coloca el directorio de destino al final.
+
+```bash
+$ cp report.txt notes.txt summary.txt /home/pete/Documents/
+```
+
+El último argumento debe ser un directorio cuando proporcionas más de una fuente.
+
+### Uso de comodines para copias masivas
+
+Los comodines son caracteres especiales que te ayudan a seleccionar múltiples archivos basados en patrones, proporcionando gran flexibilidad.
 
 - `*`: Coincide con cualquier secuencia de caracteres.
-- `?`: Coincide con cualquier carácter único.
-- `[]`: Coincide con cualquiera de los caracteres encerrados entre los corchetes.
+- `?`: Coincide con cualquier carácter individual.
+- `[]`: Coincide con cualquiera de los caracteres encerrados en los corchetes.
 
-Por ejemplo, para copiar todas las imágenes JPEG desde tu ubicación actual al directorio `Imágenes`:
-
-```bash
-cp *.jpg /home/pete/Imágenes
-```
-
-### Copia Recursiva de Directorios
-
-Si intentas copiar un directorio usando `cp` sin ninguna opción, recibirás un error. Para copiar un directorio y todo su contenido, incluidos subdirectorios, debes usar la opción `-r` (recursivo).
+Por ejemplo, para copiar todas las imágenes JPEG desde tu ubicación actual al directorio `Pictures`:
 
 ```bash
-cp -r Calabaza/ /home/pete/Documentos
+$ cp *.jpg /home/pete/Pictures
 ```
 
-Este comando copia el directorio `Calabaza` y todo lo que contiene a tu directorio `Documentos`.
-
-### Manejo de Sobrescritura de Archivos
-
-Por defecto, `cp` sobrescribirá un archivo en el destino si tiene el mismo nombre. Para prevenir la pérdida accidental de datos, usa la opción `-i` (interactiva), que solicita confirmación antes de sobrescribir.
+Puedes previsualizar los archivos que coinciden antes de copiar:
 
 ```bash
-cp -i miarchivomolon /home/pete/Imágenes
+$ ls *.jpg
+beach.jpg  lunch.jpg  profile.jpg
+$ cp *.jpg /home/pete/Pictures
 ```
 
-Por el contrario, si deseas forzar una sobrescritura sin ninguna solicitud, puedes usar la opción `cp -f`. Esto es útil en scripts donde la interacción del usuario no es posible.
+### Copiar directorios recursivamente
+
+Si intentas copiar un directorio usando `cp` sin opciones, recibirás un error. Para copiar un directorio y todo su contenido, incluidos subdirectorios, debes usar la bandera `-r` (recursiva).
 
 ```bash
-cp -f miarchivomolon /home/pete/Imágenes
+$ cp -r Pumpkin/ /home/pete/Documents
 ```
 
-### Preservar Atributos de Archivo con cp -p
+Este comando copia el directorio `Pumpkin` y todo lo que contiene a tu directorio `Documents`.
 
-Cuando copias un archivo, sus metadatos, como la hora de modificación y la propiedad, generalmente se actualizan. Para preservar estos atributos originales, la opción `cp -p` es esencial. Usar `cp -p en linux` asegura que la copia sea una réplica exacta, no solo en contenido sino también en sus metadatos.
-
-La opción `cp -p flag` es particularmente útil para copias de seguridad o al migrar archivos donde preservar las marcas de tiempo es crítico.
+También puedes ver `-R`, que tiene el mismo propósito recursivo en sistemas Linux típicos:
 
 ```bash
-cp -p miarchivomolon /home/pete/copias_seguridad/
+$ cp -R website /home/pete/backups/
 ```
 
-Este comando demuestra cómo usar `linux cp -p` para copiar `miarchivomolon` preservando su modo, propiedad y marcas de tiempo.
+### Manejo de sobrescrituras de archivos
+
+Por defecto, `cp` sobrescribirá un archivo en el destino si tiene el mismo nombre. Para evitar la pérdida accidental de datos, usa la bandera `-i` (interactiva), que solicita confirmación antes de sobrescribir.
+
+```bash
+$ cp -i mycoolfile /home/pete/Pictures
+cp: overwrite '/home/pete/Pictures/mycoolfile'? n
+```
+
+Por otro lado, si quieres forzar una sobrescritura sin pedir confirmación, usa la opción `-f`. Esto es útil en scripts donde la interacción del usuario no es posible.
+
+```bash
+$ cp -f mycoolfile /home/pete/Pictures
+```
+
+Otra opción de seguridad útil es `-n`, que significa "no sobrescribir". Evita sobrescribir un archivo existente en el destino.
+
+```bash
+$ cp -n mycoolfile /home/pete/Pictures
+```
+
+### Preservar atributos de archivo con -p
+
+Cuando copias un archivo, sus metadatos, como la hora de modificación y la propiedad, normalmente se actualizan. Para preservar estos atributos originales, usa la opción `-p`.
+
+La opción `cp -p` es particularmente útil para copias de seguridad o cuando migras archivos donde preservar las marcas de tiempo es importante.
+
+```bash
+$ cp -p mycoolfile /home/pete/backups/
+```
+
+Esto copia `mycoolfile` preservando su modo, propiedad donde sea posible, y marcas de tiempo.
+
+### Copias de archivo con -a
+
+La opción `-a` significa archivo. Se usa comúnmente para copias de directorios estilo respaldo porque preserva muchos atributos y copia recursivamente.
+
+```bash
+$ cp -a project/ project-backup/
+```
+
+Para muchas copias de seguridad diarias, `cp -a` es más conveniente que combinar varias opciones manualmente.
+
+### Copiar solo archivos más nuevos con -u
+
+La opción `-u` copia solo cuando el archivo fuente es más nuevo que el archivo destino o cuando el archivo destino no existe.
+
+```bash
+$ cp -u *.txt /home/pete/Documents/
+```
+
+Esto es útil cuando actualizas una carpeta sin reescribir archivos que ya están al día.
+
+### Opciones comunes de cp
+
+Aquí están las opciones que usarás con más frecuencia:
+
+- `-r` o `-R`: Copiar directorios recursivamente.
+- `-i`: Preguntar antes de sobrescribir un archivo.
+- `-f`: Forzar la sobrescritura eliminando primero el destino si es necesario.
+- `-n`: No sobrescribir archivos existentes.
+- `-p`: Preservar modo, propiedad donde sea posible y marcas de tiempo.
+- `-a`: Modo archivo, útil para preservar árboles de directorios.
+- `-u`: Copiar solo cuando la fuente es más nueva que el destino.
+- `-v`: Mostrar cada archivo mientras se copia.
+
+### Preguntas comunes
+
+**¿Por qué cp sobrescribió mi archivo?** Por defecto, `cp` reemplaza un archivo destino con el mismo nombre. Usa `cp -i` para preguntar primero o `cp -n` para evitar sobrescribir.
+
+**¿Por qué cp no puede copiar un directorio?** Un directorio requiere copia recursiva. Usa `cp -r source-dir destination-dir`.
+
+**¿Cuál es la diferencia entre cp y mv?** `cp` crea una copia y mantiene el original. `mv` mueve o renombra el original.
+
+**¿Debo usar cp -r o cp -a para copias de seguridad?** Usa `cp -r` para una copia recursiva simple. Usa `cp -a` cuando quieres una copia estilo respaldo que preserve más atributos de archivo.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la copia de archivos y directorios en Linux:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of copying files and directories in Linux:
 
-1. **[Comando cp de Linux: Copia de Archivos](https://labex.io/es/labs/linux-linux-cp-command-file-copying-209744)** - Practica el uso básico, opciones avanzadas como la copia recursiva, la preservación de atributos y el uso de comodines para copiar archivos y directorios eficientemente.
-2. **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practica habilidades esenciales de gestión de archivos de Linux usando los comandos `cp`, `mv` y `rm` para organizar una estructura de proyecto, mover archivos y limpiar directorios innecesarios.
+1. **[Linux cp Command: File Copying](https://labex.io/es/labs/linux-linux-cp-command-file-copying-209744)** - Practice basic usage, advanced options like recursive copying, preserving attributes, and using wildcards to efficiently copy files and directories.
+2. **[Organizing Files and Directories](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la copia y gestión de archivos en Linux.
+These labs will help you apply the concepts in real scenarios and build confidence with file copying and management in Linux.
 
 ## Quiz Question
 
-¿Qué opción necesitas especificar para copiar un directorio completo?
+¿Qué bandera necesitas especificar para copiar un directorio?
 
 ## Quiz Answer
 

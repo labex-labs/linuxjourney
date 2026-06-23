@@ -3,20 +3,26 @@ index: 12
 lang: "en"
 title: "mkdir (Make Directory)"
 meta_title: "mkdir (Make Directory) - Command Line"
-meta_description: "Learn how to use the mkdir command in Linux to create a new directory. This guide covers the create folder Linux command, including how to create multiple directories and parent directories from the command prompt."
-meta_keywords: "create directory linux, mkdir command in linux, create directory in linux, create directory command prompt, create folder linux command, mkdir, make directory, linux"
+meta_description: "Learn the Linux mkdir command with examples for creating one directory, multiple directories, nested parent directories, and setting permissions."
+meta_keywords: "mkdir command, linux mkdir, create directory linux, make directory linux, mkdir -p, mkdir -m, create folder linux"
 ---
 
 ## Lesson Content
 
-As you work with files, you'll need to organize them into directories. The primary tool for this task is the `mkdir` command, which stands for "Make Directory". This command allows you to **create a directory in Linux** right from your terminal or **command prompt**.
+As you work with files, you will need to organize them into directories. The primary tool for this task is the `mkdir` command, which stands for make directory.
+
+The basic syntax is:
+
+```bash
+mkdir [OPTIONS] DIRECTORY...
+```
 
 ### Creating a Single Directory
 
-The most basic use of the **mkdir command in Linux** is to create a single new directory. If the directory doesn't already exist, this command will create it in your current location. For example, to create a directory named `documents`:
+The most basic use of `mkdir` is to create a single new directory. If the directory does not already exist, this command creates it in your current location.
 
 ```bash
-mkdir documents
+$ mkdir documents
 ```
 
 ### Creating Multiple Directories
@@ -24,18 +30,51 @@ mkdir documents
 You can also create several directories at once by listing their names, separated by spaces. This is an efficient way to set up multiple folders quickly.
 
 ```bash
-mkdir books paintings
+$ mkdir books paintings
 ```
 
 ### Creating Nested Directories
 
-Sometimes you need to create a directory and its parent directories simultaneously. The `-p` (parent) option is perfect for this. This powerful feature of the **create folder Linux command** prevents errors if parent directories don't exist. For instance, to create the directory `favorites` inside `hemmingway`, which is inside `books`:
+Sometimes you need to create a directory and its parent directories simultaneously. The `-p` option is perfect for this. It prevents errors if parent directories do not exist.
 
 ```bash
-mkdir -p books/hemmingway/favorites
+$ mkdir -p books/hemingway/favorites
 ```
 
-This single command creates `books`, `hemmingway`, and `favorites` if they don't already exist, demonstrating a key capability when you need to **create a directory in Linux**.
+This single command creates `books`, `hemingway`, and `favorites` if they do not already exist.
+
+### Setting Directory Permissions
+
+Use `-m` to set permissions while creating a directory.
+
+```bash
+$ mkdir -m 755 public
+```
+
+You will learn more about permissions later, but this example creates a directory that the owner can write to and others can read and enter.
+
+### Common mkdir Options
+
+- `-p`: Create parent directories as needed.
+- `-m MODE`: Set permissions for the new directory.
+- `-v`: Print a message for each created directory.
+
+Example:
+
+```bash
+$ mkdir -pv projects/app/src
+mkdir: created directory 'projects'
+mkdir: created directory 'projects/app'
+mkdir: created directory 'projects/app/src'
+```
+
+### Common Questions
+
+**Why does mkdir say "File exists"?** A file or directory with that name already exists. Use `ls` to inspect it.
+
+**How do I create nested directories?** Use `mkdir -p parent/child/grandchild`.
+
+**Can mkdir create files?** No. Use `touch` to create empty files.
 
 ## Exercise
 

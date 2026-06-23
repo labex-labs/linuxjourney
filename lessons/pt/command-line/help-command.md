@@ -1,45 +1,73 @@
 ---
 index: 15
 lang: "pt"
-title: "ajuda"
-meta_title: "ajuda - Linha de Comando"
-meta_description: "Descubra como usar o comando help do Linux para assistência rápida no seu terminal. Este tutorial Bash explica como obter ajuda para comandos internos do shell e usar a flag --help para outros programas Linux."
-meta_keywords: "comando help Linux, ajuda Bash, ajuda linha de comando, comandos Linux, Linux para iniciantes, tutorial Linux, tutorial Bash, built-in shell, assistência linha de comando"
+title: "help"
+meta_title: "help - Linha de Comando"
+meta_description: "Aprenda como obter ajuda na linha de comando do Linux com o Bash help, saída --help, páginas man e type para comandos internos do shell e comandos externos."
+meta_keywords: "comando help linux, ajuda bash, ajuda linha de comando, --help, comando interno shell, comando man, comando type"
 ---
 
 ## Lesson Content
 
-Ao trabalhar na linha de comando do Linux, você frequentemente precisará de um lembrete rápido de como um comando funciona ou quais opções ele aceita. Felizmente, o Linux fornece excelentes ferramentas de ajuda para a linha de comando diretamente no terminal.
+Ao trabalhar na linha de comando do Linux, você frequentemente precisará de um lembrete rápido de como um comando funciona ou quais opções ele aceita. O Linux oferece várias ferramentas de ajuda diretamente no terminal.
 
-### O Comando 'help' para Built-ins do Bash
+### O Comando 'help' para Comandos Internos do Bash
 
-Uma das ferramentas mais diretas é o `help`, um comando que é construído diretamente no shell Bash. Ele é especificamente projetado para fornecer informações sobre outros comandos built-in do Bash. Um comando built-in faz parte do próprio shell, não sendo um programa separado. Exemplos incluem `echo`, `cd` e `pwd`.
+Uma das ferramentas mais diretas é o `help`, um comando incorporado diretamente no shell Bash. Ele é especificamente projetado para fornecer informações sobre outros comandos internos do Bash. Um comando interno faz parte do próprio shell, não é um programa separado. Exemplos incluem `echo`, `cd` e `pwd`.
 
-Para usar o **comando help do Linux**, basta digitar `help` seguido pelo nome do comando built-in.
+Para usar o `help`, digite-o seguido do nome do comando interno.
 
 ```bash
-help echo
+$ help echo
 ```
 
 Isso exibirá um resumo do comando `echo`, sua sintaxe e uma lista de opções disponíveis. Esta é a maneira mais rápida de obter assistência para funções específicas do shell.
 
 ### A Flag --help para Programas Executáveis
 
-Para a maioria dos outros programas executáveis que não são built-in no shell, o comando `help` não funcionará. Em vez disso, uma convenção comum é fornecer uma flag `--help`. Esta opção sinaliza ao programa para imprimir um resumo de uso e, em seguida, sair.
+Para a maioria dos outros programas executáveis que não são internos do shell, o comando `help` não funcionará. Em vez disso, uma convenção comum é fornecer a flag `--help`. Esta opção indica ao programa para imprimir um resumo de uso e então sair.
 
 ```bash
-ls --help
+$ ls --help
 ```
 
-Embora a maioria dos desenvolvedores siga este padrão, ele não é universal. No entanto, tentar a flag `--help` é geralmente o melhor primeiro passo para encontrar ajuda para um programa desconhecido. É uma habilidade fundamental para quem está aprendendo sobre **comandos Linux**.
+Embora a maioria dos desenvolvedores siga esse padrão, ele não é universal. Tentar `--help` geralmente é um bom primeiro passo para um programa desconhecido.
+
+### Encontrando o Tipo do Comando
+
+Se você não tem certeza se um comando é um interno do Bash ou um programa externo, use `type`.
+
+```bash
+$ type cd
+cd is a shell builtin
+$ type ls
+ls is /usr/bin/ls
+```
+
+Isso ajuda você a escolher entre `help cd`, `ls --help` ou `man ls`.
+
+### Escolhendo a Ferramenta de Ajuda Certa
+
+- Use `help COMMAND` para comandos internos do Bash como `cd`, `echo` e `history`.
+- Use `COMMAND --help` para um resumo rápido de muitos comandos externos.
+- Use `man COMMAND` para páginas de manual detalhadas.
+- Use `whatis COMMAND` para uma descrição em uma linha.
+
+### Perguntas Comuns
+
+**Por que `help ls` não funciona?** `ls` geralmente é um programa externo, não um comando interno do Bash. Tente `ls --help` ou `man ls`.
+
+**Por que `--help` não funciona para todos os comandos?** É uma convenção, não uma regra rígida.
+
+**Qual é a maneira mais rápida de verificar um comando?** Tente `COMMAND --help` para comandos externos e `help COMMAND` para comandos internos do Bash.
 
 ## Exercise
 
-Embora não haja laboratórios específicos para este tópico, recomendamos explorar o abrangente [Trilha de Aprendizagem do Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
+Embora não existam laboratórios específicos para este tópico, recomendamos explorar o abrangente [Linux Learning Path](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
 
 ## Quiz Question
 
-Como você obtém ajuda rápida na linha de comando para comandos built-in do Bash? (Por favor, forneça o nome único do comando em inglês e em minúsculas.)
+Como você obtém ajuda rápida na linha de comando para comandos internos do Bash? (Por favor, forneça o nome do comando único em inglês e em letras minúsculas.)
 
 ## Quiz Answer
 

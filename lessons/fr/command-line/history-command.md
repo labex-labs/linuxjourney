@@ -1,60 +1,88 @@
 ---
 index: 9
 lang: "fr"
-title: "historique"
-meta_title: "historique - Ligne de commande"
-meta_description: "Maîtrisez la commande history sous Linux pour rappeler et gérer efficacement votre activité sur la ligne de commande. Apprenez à visualiser l'historique, à utiliser des raccourcis comme Ctrl-R, et à gérer votre historique avec des options telles que history -c et history -d."
-meta_keywords: "historique linux, history -c linux, history -d linux, history -w linux, commande history unix, historique bash, ligne de commande, Ctrl-R, effacer commande"
+title: "history"
+meta_title: "history - Ligne de commande"
+meta_description: "Apprenez la commande history sous Linux avec des exemples pour afficher l'historique des commandes, relancer des commandes, recherche inversée, suppression d'entrées et nettoyage du terminal."
+meta_keywords: "commande linux history, historique bash, history -c, history -d, history -w, Ctrl-R, historique des commandes, commande clear"
 ---
 
 ## Lesson Content
 
-Votre shell conserve un enregistrement des commandes que vous avez précédemment saisies. Vous pouvez accéder à cette liste, ce qui est incroyablement utile lorsque vous souhaitez retrouver et réutiliser une commande sans avoir à la retaper. La commande `history` est un outil fondamental dans la plupart des environnements Unix et Linux.
+Votre shell conserve un enregistrement des commandes que vous avez précédemment saisies. Vous pouvez accéder à cette liste lorsque vous souhaitez retrouver et réutiliser une commande sans la retaper. La commande `history` est un outil fondamental dans Bash et de nombreux environnements shell de type Unix.
 
-### Afficher l'historique de vos commandes
+### Afficher votre historique de commandes
 
-Pour voir la liste des commandes que vous avez utilisées, tapez simplement la commande `history`. Cette fonctionnalité fournit un journal détaillé de votre activité, ce qui facilite le suivi de votre `history in linux`.
+Pour voir la liste des commandes que vous avez utilisées, tapez `history`.
 
 ```bash
-history
+$ history
+  101  pwd
+  102  ls -la
+  103  cat notes.txt
 ```
 
-### Réexécuter les commandes précédentes
+Chaque ligne comporte un numéro d'historique suivi de la commande.
 
-Le shell fournit plusieurs raccourcis pour faciliter la réexécution des commandes.
+### Relancer des commandes précédentes
 
-- **Flèche Haut** : Vous voulez exécuter la même commande que vous venez de faire ? Appuyez simplement sur la flèche haut pour parcourir l'historique à l'envers.
-- **Le raccourci `!!`** : Pour réexécuter la commande la plus récente, vous pouvez utiliser `!!`. Par exemple, si vous venez d'exécuter `cat file1`, taper `!!` et appuyer sur Entrée exécutera à nouveau `cat file1`.
+Le shell propose plusieurs raccourcis pour faciliter la relance des commandes.
+
+- **Flèche vers le haut** : Vous voulez exécuter la même commande que celle que vous venez de faire ? Il suffit d'appuyer sur la touche flèche vers le haut pour parcourir votre historique vers l'arrière.
+- **Le raccourci `!!`** : Pour exécuter à nouveau la commande la plus récente, vous pouvez utiliser `!!`. Par exemple, si vous venez d'exécuter `cat file1`, taper `!!` puis appuyer sur Entrée exécutera à nouveau `cat file1`.
+- **Exécuter par numéro** : Utilisez `!102` pour exécuter la commande numéro 102 de votre historique.
+- **Exécuter par préfixe** : Utilisez `!cat` pour exécuter la commande la plus récente qui commence par `cat`.
 
 ### Rechercher dans votre historique
 
-L'un des raccourcis d'historique les plus puissants est `Ctrl-R`. Cela lance une recherche inversée. Après avoir appuyé sur `Ctrl-R`, commencez à taper n'importe quelle partie de la commande que vous recherchez, et le shell affichera la correspondance la plus récente. Vous pouvez appuyer sur `Ctrl-R` de manière répétée pour parcourir les correspondances plus anciennes. Une fois que vous avez trouvé la commande souhaitée, appuyez simplement sur Entrée pour l'exécuter.
+Un des raccourcis d'historique les plus puissants est `Ctrl-R`. Cela lance une recherche inversée. Après avoir appuyé sur `Ctrl-R`, commencez à taper une partie de la commande que vous cherchez, et le shell affichera la correspondance la plus récente. Vous pouvez appuyer plusieurs fois sur `Ctrl-R` pour parcourir les correspondances plus anciennes. Une fois que vous avez trouvé la commande souhaitée, appuyez simplement sur Entrée pour l'exécuter.
+
+Si vous souhaitez modifier la commande trouvée avant de l'exécuter, appuyez sur la touche flèche droite ou flèche gauche au lieu d'Entrée.
 
 ### Gérer la liste d'historique
 
-Au-delà de la simple visualisation de votre historique, vous pouvez également le gérer directement.
+Au-delà de simplement afficher votre historique, vous pouvez aussi le gérer directement.
 
-- **Effacer l'historique** : Si vous souhaitez effacer l'historique des commandes pour votre session actuelle, vous pouvez utiliser la commande `history -c linux`. Cela supprime toutes les entrées de la liste d'historique en mémoire.
-- **Écrire dans un fichier** : Pour sauvegarder l'historique de la session en cours dans votre fichier d'historique (généralement `~/.bash_history`), vous pouvez utiliser `history -w linux`. Ceci est utile pour conserver les commandes avant de fermer une session.
-- **Supprimer une entrée spécifique** : Vous pouvez supprimer une seule commande de votre historique en utilisant `history -d <offset>`. Le décalage est le numéro affiché à côté de la commande dans la sortie `history`. Par exemple, `history -d 101` supprimerait la 101e entrée. C'est une fonction clé de `history -d linux`.
+- **Effacer la liste d'historique en mémoire** : `history -c` supprime toutes les entrées de la liste d'historique en mémoire.
+- **Écrire l'historique dans un fichier** : `history -w` enregistre l'historique de la session courante dans votre fichier d'historique, généralement `~/.bash_history`.
+- **Supprimer une entrée spécifique** : `history -d <offset>` supprime une commande par son numéro d'historique.
 
-### Autres outils de terminal utiles
-
-À mesure que votre fenêtre de terminal se remplit, vous voudrez peut-être la nettoyer. Utilisez la commande `clear` pour effacer votre affichage et commencer avec un écran vierge.
+Exemples :
 
 ```bash
-clear
+$ history -d 101
+$ history -w
 ```
 
-Une autre fonctionnalité indispensable est la complétion par tabulation. Si vous commencez à taper le début d'une commande, d'un nom de fichier ou d'un répertoire et que vous appuyez sur la touche Tab, le shell tentera de le compléter automatiquement. S'il y a plusieurs possibilités, il pourra vous montrer les options ou ne rien faire. Appuyer sur Tab une seconde fois listera souvent toutes les complétions possibles.
+Soyez prudent avec les commandes d'expansion d'historique telles que `!!` et `!102`. Utilisez d'abord `history` pour confirmer ce qui sera exécuté.
+
+### Autres outils utiles du terminal
+
+Au fur et à mesure que votre fenêtre de terminal se remplit, vous pourriez vouloir la nettoyer. Utilisez la commande `clear` pour effacer votre affichage et repartir sur un écran vierge.
+
+```bash
+$ clear
+```
+
+Une autre fonctionnalité indispensable est la complétion par tabulation. Si vous commencez à taper le début d'une commande, d'un nom de fichier ou d'un répertoire et appuyez sur la touche Tab, le shell tentera de l'autocompléter. S'il y a plusieurs possibilités, il peut vous montrer les options ou ne rien faire. Appuyer une deuxième fois sur Tab affichera souvent toutes les complétions possibles.
+
+### Questions fréquentes
+
+**Où est stocké l'historique Bash ?** Généralement dans `~/.bash_history`, bien que le comportement exact dépende des paramètres du shell.
+
+**L'historique inclut-il chaque commande immédiatement ?** Pas toujours. Certains shells écrivent l'historique à la fermeture de la session sauf configuration contraire.
+
+**L'historique peut-il contenir des données sensibles ?** Oui. Évitez de taper des mots de passe, jetons ou secrets directement dans les commandes.
+
+**Quelle est la différence entre history -c et clear ?** `history -c` efface l'historique des commandes en mémoire. `clear` ne fait qu'effacer l'écran du terminal.
 
 ## Exercise
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux associés.
+Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux associés.
 
 ## Quiz Question
 
-Quelle est la commande pour effacer le terminal ? (Veuillez répondre uniquement en lettres anglaises minuscules)
+Quelle est la commande pour nettoyer le terminal ? (Veuillez répondre uniquement en lettres minuscules anglaises)
 
 ## Quiz Answer
 

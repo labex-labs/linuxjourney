@@ -1,56 +1,120 @@
 ---
 index: 14
 lang: "de"
-title: "finden"
+title: "find"
 meta_title: "find - Kommandozeile"
-meta_description: "Ein umfassender Leitfaden für den find-Befehl in Linux. Lernen Sie, wie Sie die find-Kommandozeile verwenden, um Dateien und Verzeichnisse nach Namen, Typ und mehr zu lokalisieren. Verbessern Sie Ihre Dateiverwaltungsfähigkeiten mit dem leistungsstarken Linux-find-Dienstprogramm."
-meta_keywords: "find Kommandozeile, find Befehl in Linux, find Befehl, find Befehl Linux, Befehl Linux find, Dateisuche, Verzeichnissuche, Linux Tutorial"
+meta_description: "Lernen Sie den Linux-Befehl find mit Beispielen zum Suchen nach Name, Typ, Größe, Änderungszeit und zum Ausführen von Aktionen auf passenden Dateien."
+meta_keywords: "linux find befehl, find befehl, dateien finden linux, nach name finden, nach typ finden, nach größe finden, find mtime, find exec"
 ---
 
 ## Lesson Content
 
-Bei unzähligen Dateien auf einem System kann es schwierig sein, eine bestimmte zu lokalisieren. Glücklicherweise gibt es ein leistungsstarkes Dienstprogramm, das wir dafür verwenden können: den `find`-Befehl. Dieses Tool ist für eine effiziente Dateiverwaltung unerlässlich.
+Bei unzähligen Dateien auf einem System kann es schwierig sein, eine bestimmte zu finden. Der Befehl `find` durchsucht Verzeichnisbäume anhand von Kriterien wie Name, Typ, Größe und Änderungszeit.
 
-### Verwendung der Find-Befehlszeile
+### Verwendung des find-Befehls
 
-Die grundlegende Syntax für die `find-Befehlszeile` lautet `find [pfad] [ausdruck]`. Sie müssen das zu durchsuchende Verzeichnis und die Kriterien für das Gesuchte angeben.
-
-Um beispielsweise im Verzeichnis `/home` und allen seinen Unterverzeichnissen nach einer Datei namens `puppies.jpg` zu suchen, würden Sie Folgendes verwenden:
+Die Grundsyntax lautet:
 
 ```bash
-find /home -name puppies.jpg
+find [PATH] [EXPRESSION]
 ```
 
-Der `find-Befehl in linux` ist sehr flexibel und ermöglicht viele verschiedene Suchausdrücke.
+Sie geben das Verzeichnis an, in dem gesucht werden soll, sowie die Kriterien für das Gesuchte.
+
+Zum Beispiel, um nach einer Datei namens `puppies.jpg` im Verzeichnis `/home` und allen Unterverzeichnissen zu suchen, verwenden Sie:
+
+```bash
+$ find /home -name puppies.jpg
+```
+
+Suchvorgänge sind standardmäßig rekursiv, daher durchsucht `find /home` das Verzeichnis `/home` und seine Unterverzeichnisse.
 
 ### Suche nach Name und Typ
 
-Eine der häufigsten Anwendungen des `find-Befehls` ist die Suche nach Dateinamen. Wie oben gezeigt, ermöglicht Ihnen die Option `-name`, den genauen Namen der Datei anzugeben, die Sie finden möchten.
-
-You können auch den Typ des gesuchten Elements angeben. Die Option `-type` wird für diesen Zweck verwendet. Wenn Sie beispielsweise ein Verzeichnis anstelle einer Datei suchen möchten, können Sie `d` verwenden.
+Eine der häufigsten Anwendungen von `find` ist die Suche nach Dateinamen. Die Option `-name` sucht nach exakten Namen oder nach Mustern im Shell-Stil.
 
 ```bash
-find /home -type d -name MyFolder
+$ find . -name "*.txt"
 ```
 
-In diesem Befehl setzen wir den Typ auf `d` für Verzeichnis und suchen nach einem Element mit dem Namen `MyFolder`. Um speziell nach regulären Dateien zu suchen, würden Sie `-type f` verwenden.
+Sie können auch den Typ des gesuchten Elements angeben. Die Option `-type` wird dafür verwendet. Wenn Sie beispielsweise ein Verzeichnis statt einer Datei finden möchten, verwenden Sie `d`.
 
-### Rekursive Suche
+```bash
+$ find /home -type d -name MyFolder
+```
 
-Ein Hauptmerkmal des `find-Befehls linux`, das Benutzer schätzen, ist seine rekursive Natur. Wenn Sie ein Startverzeichnis angeben, sucht `find` nicht nur in diesem einen Verzeichnis; es durchsucht automatisch alle darin enthaltenen Unterverzeichnisse. Dies macht es zu einem unglaublich gründlichen Werkzeug, um Elemente überall im Verzeichnisbaum zu lokalisieren.
+In diesem Befehl setzen wir den Typ auf `d` für Verzeichnis und suchen nach einem Element namens `MyFolder`. Um speziell nach regulären Dateien zu suchen, verwenden Sie `-type f`.
+
+### Suche nach Größe und Zeit
+
+Sie können nach Dateigröße suchen:
+
+```bash
+$ find . -type f -size +10M
+$ find . -type f -size -1k
+```
+
+Der erste Befehl findet Dateien, die größer als 10 Megabyte sind. Der zweite findet Dateien, die kleiner als 1 Kilobyte sind.
+
+Sie können auch nach Änderungszeit suchen:
+
+```bash
+$ find . -type f -mtime -7
+$ find . -type f -mtime +30
+```
+
+`-mtime -7` bedeutet, innerhalb der letzten 7 Tage geändert. `-mtime +30` bedeutet, vor mehr als 30 Tagen geändert.
+
+### Aktionen auf Ergebnissen ausführen
+
+Standardmäßig gibt `find` die passenden Pfade aus. Sie können Aktionen wie `-print`, `-delete` oder `-exec` hinzufügen.
+
+Treffer explizit ausgeben:
+
+```bash
+$ find . -name "*.log" -print
+```
+
+`ls -l` für jeden Treffer ausführen:
+
+```bash
+$ find . -name "*.log" -exec ls -l {} \;
+```
+
+Der Platzhalter `{}` wird durch jeden passenden Pfad ersetzt. Das maskierte Semikolon markiert das Ende des Befehls.
+
+Seien Sie vorsichtig mit destruktiven Aktionen wie `-delete`. Führen Sie zuerst dieselbe Suche ohne `-delete` aus, um die Treffer zu überprüfen.
+
+### Häufige find-Optionen
+
+- `-name PATTERN`: Nach Dateinamen suchen.
+- `-iname PATTERN`: Nach Dateinamen suchen, Groß-/Kleinschreibung ignorieren.
+- `-type f`: Reguläre Dateien finden.
+- `-type d`: Verzeichnisse finden.
+- `-size +10M`: Dateien größer als 10 Megabyte finden.
+- `-mtime -7`: Dateien finden, die innerhalb der letzten 7 Tage geändert wurden.
+- `-maxdepth N`: Begrenzung der Suchtiefe von `find`.
+
+### Häufige Fragen
+
+**Warum zeigt find „Permission denied“ an?** Ihr Benutzer kann einige Verzeichnisse nicht lesen. Suchen Sie in einem engeren Pfad oder verwenden Sie entsprechende Berechtigungen.
+
+**Warum sollte ich Muster wie "*.txt" in Anführungszeichen setzen?** Das Anführungszeichen verhindert, dass die Shell das Wildcard vor der Übergabe an `find` erweitert.
+
+**Ist find rekursiv?** Ja. Es durchsucht standardmäßig Unterverzeichnisse.
 
 ## Exercise
 
-Übung ist der Schlüssel, um den `find-Befehl in linux` zu meistern. Diese praktischen Labs helfen Ihnen, Ihr Verständnis für das Finden von Dateien und Verzeichnissen zu festigen:
+Übung ist der Schlüssel, um den `find`-Befehl in Linux zu meistern. Diese praktischen Labs helfen Ihnen, Ihr Verständnis für das Finden von Dateien und Verzeichnissen zu vertiefen:
 
-1. **[Linux find Befehl: Dateisuche](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)** – Dieses Lab bietet eine Einführung in den `find`-Befehl, ein vielseitiges Dienstprogramm zum Suchen und Lokalisieren von Dateien und Verzeichnissen basierend auf verschiedenen Kriterien. Sie üben die Verwendung von `find` zur Lokalisierung bestimmter Dateien.
-2. **[Kritische Systemressourcen entdecken](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** – Lernen Sie wesentliche Linux-Befehle zum Lokalisieren von Dateien und ausführbaren Programmen kennen, einschließlich `find`. Sie üben die effiziente Navigation im Dateisystem und das Entdecken kritischer Systemressourcen.
+1. **[Linux find Command: File Searching](https://labex.io/de/labs/linux-linux-find-command-file-searching-219191)** – Dieses Lab bietet eine Einführung in den `find`-Befehl, ein vielseitiges Werkzeug zum Suchen und Auffinden von Dateien und Verzeichnissen basierend auf verschiedenen Kriterien. Sie üben, mit `find` bestimmte Dateien zu finden.
+2. **[Discover Critical System Resources](https://labex.io/de/labs/linux-discover-critical-system-resources-388032)** – Lernen Sie wichtige Linux-Befehle zum Auffinden von Dateien und ausführbaren Dateien kennen, einschließlich `find`. Sie üben, das Dateisystem effizient zu navigieren und kritische Systemressourcen zu entdecken.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die effektive Nutzung des `find`-Befehls aufzubauen.
+Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit dem `find`-Befehl zu gewinnen.
 
 ## Quiz Question
 
-Welche Option sollten Sie für den `find`-Befehl angeben, um nach Namen zu suchen? Bitte antworten Sie nur mit der englischen Option und achten Sie auf das erforderliche Format (z. B. -option).
+Welche Option sollten Sie für den `find`-Befehl angeben, um nach Namen zu suchen? Bitte antworten Sie nur mit der englischen Option und beachten Sie das erforderliche Format (z. B. -option).
 
 ## Quiz Answer
 

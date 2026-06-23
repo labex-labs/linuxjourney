@@ -3,77 +3,125 @@ index: 3
 lang: "es"
 title: "cd (Cambiar Directorio)"
 meta_title: "cd (Cambiar Directorio) - Línea de Comandos"
-meta_description: "Aprende el comando esencial cd de Linux para cambiar de directorio. Esta guía cubre el uso del comando cd en el símbolo del sistema, navegando a cualquier carpeta cd con rutas absolutas y relativas, y usando atajos útiles."
-meta_keywords: "comando cd, comando cd de linux, carpeta cd, símbolo del sistema cd, comando cd cmd, cambiar directorio, navegación linux, ruta absoluta, ruta relativa"
+meta_description: "Aprende el comando cd de Linux con ejemplos para rutas absolutas, rutas relativas, atajos al directorio home, directorios padres y navegación al directorio anterior."
+meta_keywords: "comando cd, comando cd linux, cambiar directorio, cd directorio padre, cd home, cd directorio anterior, ruta absoluta, ruta relativa"
 ---
 
 ## Lesson Content
 
-Para moverse por el sistema de archivos de Linux, utilizarás rutas para especificar tu destino. La herramienta principal para esto es el comando `cd` (change directory o cambiar directorio). Comprender cómo usar el `comando cd de linux` es una habilidad fundamental para trabajar en la terminal o en el `símbolo del sistema`.
+Para moverte por el sistema de archivos de Linux, usas rutas para especificar tu destino. La herramienta principal para esto es el comando `cd`, abreviatura de cambiar directorio. Cambia el directorio de trabajo actual del shell.
+
+La sintaxis básica es:
+
+```bash
+cd [DIRECTORY]
+```
 
 ### Entendiendo las Rutas
 
 Hay dos formas de especificar una ruta: absoluta y relativa.
 
-- **Ruta Absoluta**: Es la ruta completa que comienza desde el directorio raíz (`/`). La raíz es el directorio de nivel superior en el sistema de archivos. Cualquier ruta que comience con `/` es una ruta absoluta. Por ejemplo: `/home/pete/Desktop`.
+- **Ruta absoluta**: La ruta completa que comienza desde el directorio raíz (`/`). Por ejemplo: `/home/pete/Desktop`.
 
-- **Ruta Relativa**: Esta ruta es relativa a tu ubicación actual en el sistema de archivos. Si te encuentras en `/home/pete/Documents` y deseas acceder a un subdirectorio llamado `taxes`, no necesitas la ruta completa. Simplemente puedes usar la ruta relativa: `taxes/`.
+- **Ruta relativa**: Una ruta basada en tu ubicación actual. Si estás en `/home/pete/Documents` y quieres acceder a un subdirectorio llamado `taxes`, puedes usar `taxes/`.
 
 ### Usando el Comando cd
 
-Una vez que entiendes las rutas, puedes usar el `comando cd` para cambiar tu directorio actual. Ya sea que estés en una terminal de Linux o en un símbolo del sistema de Windows (`comando cd de cmd`), el concepto de cambiar de directorio es universal, aunque la sintaxis puede variar ligeramente.
-
-Para cambiar a un directorio específico usando una ruta absoluta, escribirías:
+Para cambiar a un directorio específico usando una ruta absoluta, escribe:
 
 ```bash
-cd /home/pete/Pictures
+$ cd /home/pete/Pictures
 ```
 
 Este comando te mueve directamente al directorio `Pictures`.
 
-### Navegando a un subdirectorio
-
-Si ya estás en un directorio y deseas moverte a un subdirectorio, puedes usar una ruta relativa. Por ejemplo, si tu ubicación actual es `/home/pete/Pictures` y contiene una `carpeta` llamada `Hawaii`, puedes navegar hacia ella con:
+Puedes confirmar tu ubicación con `pwd`:
 
 ```bash
-cd Hawaii
+$ pwd
+/home/pete/Pictures
 ```
 
-Observa que solo usamos el nombre de la carpeta. Esto se debe a que ya estábamos en su directorio padre, `/home/pete/Pictures`.
+### Navegando a un Subdirectorio
 
-### Atajos de Navegación Esenciales
+Si ya estás en un directorio y quieres moverte a un subdirectorio, usa una ruta relativa. Por ejemplo, si tu ubicación actual es `/home/pete/Pictures` y contiene una carpeta llamada `Hawaii`, puedes navegar dentro de ella con:
+
+```bash
+$ cd Hawaii
+```
+
+Fíjate que solo usamos el nombre de la carpeta. Esto es porque ya estábamos en su directorio padre, `/home/pete/Pictures`.
+
+### Atajos Esenciales para Navegar
 
 Navegar con rutas completas puede ser tedioso. Afortunadamente, el shell proporciona varios atajos para hacer que moverse sea mucho más rápido.
 
 - `.` (directorio actual): Representa el directorio en el que te encuentras actualmente.
-- `..` (directorio padre): Te mueve un nivel hacia arriba al directorio que contiene tu directorio actual.
-- `~` (directorio de inicio): Un atajo a tu directorio personal de inicio, como `/home/pete`.
+- `..` (directorio padre): Te mueve un nivel arriba, al directorio que contiene al actual.
+- `~` (directorio home): Un atajo a tu directorio personal home, como `/home/pete`.
 - `-` (directorio anterior): Te lleva de vuelta al último directorio en el que estuviste.
 
-Puedes usar estos atajos con el `comando cd`:
+Puedes usar estos atajos con `cd`:
 
 ```bash
-cd .
-cd ..
-cd ~
-cd -
+$ cd .
+$ cd ..
+$ cd ~
+$ cd -
 ```
 
-Experimenta con estos atajos para ser más eficiente en la línea de comandos.
+Experimenta con estos atajos para volverte más eficiente en la línea de comandos.
+
+### Ejemplos Prácticos de cd
+
+Ve a tu directorio home:
+
+```bash
+$ cd
+```
+
+Sube dos niveles:
+
+```bash
+$ cd ../..
+```
+
+Ve a un directorio cuyo nombre contiene espacios citándolo:
+
+```bash
+$ cd "Vacation Photos"
+```
+
+Regresa al directorio anterior:
+
+```bash
+$ cd -
+/home/pete/Documents
+```
+
+### Preguntas Comunes
+
+**¿Por qué cd dice "No such file or directory"?** La ruta no existe desde tu ubicación actual, o el nombre fue escrito incorrectamente. Usa `ls` para listar los directorios disponibles.
+
+**¿Por qué cd dice "Permission denied"?** No tienes permiso para entrar en ese directorio.
+
+**¿Qué pasa cuando ejecuto cd sin argumentos?** Te lleva a tu directorio home.
+
+**¿Funciona cd con archivos?** No. `cd` cambia a directorios, no a archivos regulares.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la navegación de directorios en Linux:
+Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux directory navigation:
 
-1. **[Comando cd de Linux: Cambio de Directorio](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Aprende el comando `cd` de Linux para navegar eficientemente por tu sistema de archivos, incluyendo varias técnicas para cambiar de directorio, comprender rutas y explorar la estructura de archivos.
-2. **[Navegación de Directorios en Linux](https://labex.io/es/labs/linux-directory-navigation-387844)** - Pon a prueba tus habilidades básicas de línea de comandos de Linux navegando por directorios usando comandos esenciales.
-3. **[Configuración de una Nueva Estructura de Proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios de Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
+1. **[Linux cd Command: Directory Changing](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Learn the Linux `cd` command to efficiently navigate your file system, including various techniques for changing directories, understanding paths, and exploring the file structure.
+2. **[Linux Directory Navigation](https://labex.io/es/labs/linux-directory-navigation-387844)** - Put your basic Linux command-line skills to the test by navigating through directories using essential commands.
+3. **[Setting Up a New Project Structure](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practice your Linux directory management skills by creating a specific project structure and navigating through it using essential commands like `mkdir` and `cd`.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza al navegar por el sistema de archivos de Linux.
+These labs will help you apply the concepts in real scenarios and build confidence with navigating the Linux filesystem.
 
 ## Quiz Question
 
-Si te encuentras en `/home/pete/Pictures` y deseas navegar al directorio padre (`/home/pete`), ¿cuál es el comando completo que debes usar? Por favor, responde en inglés, prestando atención a las mayúsculas y los espacios.
+If you are in `/home/pete/Pictures` and want to navigate to the parent directory (`/home/pete`), what is the full command you should use? Please answer in English, paying attention to case and spacing.
 
 ## Quiz Answer
 

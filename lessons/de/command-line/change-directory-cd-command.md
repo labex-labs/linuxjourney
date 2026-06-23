@@ -3,77 +3,125 @@ index: 3
 lang: "de"
 title: "cd (Verzeichnis wechseln)"
 meta_title: "cd (Verzeichnis wechseln) - Kommandozeile"
-meta_description: "Lernen Sie den essentiellen cd Linux-Befehl, um Verzeichnisse zu wechseln. Diese Anleitung behandelt die Verwendung des cd-Befehls in der Eingabeaufforderung, die Navigation zu jedem cd-Ordner mit absoluten und relativen Pfaden sowie nützliche Abkürzungen."
-meta_keywords: "cd Befehl, cd Linux Befehl, cd Ordner, cd Eingabeaufforderung, cd Befehl cmd, Verzeichnis wechseln, Linux Navigation, absoluter Pfad, relativer Pfad"
+meta_description: "Lerne den Linux-Befehl cd mit Beispielen für absolute Pfade, relative Pfade, Home-Verzeichnis-Verknüpfungen, übergeordnete Verzeichnisse und Navigation zum vorherigen Verzeichnis."
+meta_keywords: "cd Befehl, linux cd Befehl, Verzeichnis wechseln, cd übergeordnetes Verzeichnis, cd home, cd vorheriges Verzeichnis, absoluter Pfad, relativer Pfad"
 ---
 
 ## Lesson Content
 
-Um sich im Linux-Dateisystem zu bewegen, verwenden Sie Pfade, um Ihr Ziel anzugeben. Das primäre Werkzeug dafür ist der `cd` (change directory/Verzeichnis wechseln) Befehl. Zu verstehen, wie man diesen `cd linux befehl` verwendet, ist eine grundlegende Fähigkeit für die Arbeit im Terminal oder in der `cd befehlszeile`.
+Um sich im Linux-Dateisystem zu bewegen, verwendet man Pfade, um das Ziel anzugeben. Das wichtigste Werkzeug dafür ist der Befehl `cd`, kurz für change directory (Verzeichnis wechseln). Er ändert das aktuelle Arbeitsverzeichnis der Shell.
+
+Die grundlegende Syntax lautet:
+
+```bash
+cd [DIRECTORY]
+```
 
 ### Pfade verstehen
 
 Es gibt zwei Möglichkeiten, einen Pfad anzugeben: absolut und relativ.
 
-- **Absoluter Pfad**: Dies ist der vollständige Pfad, der vom Stammverzeichnis (`/`) ausgeht. Die Wurzel ist das oberste Verzeichnis im Dateisystem. Jeder Pfad, der mit `/` beginnt, ist ein absoluter Pfad. Zum Beispiel: `/home/pete/Desktop`.
+- **Absoluter Pfad**: Der vollständige Pfad, beginnend beim Wurzelverzeichnis (`/`). Zum Beispiel: `/home/pete/Desktop`.
 
-- **Relativer Pfad**: Dieser Pfad bezieht sich auf Ihren aktuellen Standort im Dateisystem. Wenn Sie sich in `/home/pete/Documents` befinden und auf ein Unterverzeichnis namens `taxes` zugreifen möchten, benötigen Sie nicht den vollständigen Pfad. Sie können einfach den relativen Pfad verwenden: `taxes/`.
+- **Relativer Pfad**: Ein Pfad basierend auf deinem aktuellen Standort. Wenn du dich in `/home/pete/Documents` befindest und auf ein Unterverzeichnis namens `taxes` zugreifen möchtest, kannst du `taxes/` verwenden.
 
-### Den cd Befehl verwenden
+### Verwendung des cd-Befehls
 
-Sobald Sie Pfade verstehen, können Sie den `cd befehl` verwenden, um Ihr aktuelles Verzeichnis zu wechseln. Ob Sie sich in einem Linux-Terminal oder einer Windows `cd befehlszeile cmd` befinden, das Konzept des Verzeichniswechsels ist universell, auch wenn sich die Syntax leicht unterscheiden kann.
-
-Um mit einem absoluten Pfad in ein bestimmtes Verzeichnis zu wechseln, würden Sie Folgendes eingeben:
+Um in ein bestimmtes Verzeichnis mit einem absoluten Pfad zu wechseln, gib ein:
 
 ```bash
-cd /home/pete/Pictures
+$ cd /home/pete/Pictures
 ```
 
-Dieser Befehl bringt Sie direkt in das Verzeichnis `Pictures`.
+Dieser Befehl bringt dich direkt in das Verzeichnis `Pictures`.
 
-### Navigation zu einem cd Ordner
-
-Wenn Sie sich bereits in einem Verzeichnis befinden und in ein Unterverzeichnis wechseln möchten, können Sie einen relativen Pfad verwenden. Angenommen, Ihr aktueller Standort ist `/home/pete/Pictures` und es enthält einen `cd ordner` namens `Hawaii`, können Sie mit folgendem Befehl hinein navigieren:
+Du kannst deinen Standort mit `pwd` überprüfen:
 
 ```bash
-cd Hawaii
+$ pwd
+/home/pete/Pictures
 ```
 
-Beachten Sie, dass wir nur den Namen des Ordners verwendet haben. Das liegt daran, dass wir uns bereits im übergeordneten Verzeichnis, `/home/pete/Pictures`, befanden.
+### Navigation in ein Unterverzeichnis
 
-### Wesentliche Navigations-Abkürzungen
-
-Die Navigation mit vollständigen Pfaden kann mühsam sein. Glücklicherweise bietet die Shell mehrere Abkürzungen, um die Bewegung viel schneller zu machen.
-
-- `.` (aktuelles Verzeichnis): Stellt das Verzeichnis dar, in dem Sie sich gerade befinden.
-- `..` (übergeordnetes Verzeichnis): Bewegt Sie eine Ebene nach oben in das Verzeichnis, das Ihr aktuelles Verzeichnis enthält.
-- `~` (Home-Verzeichnis): Eine Abkürzung zu Ihrem persönlichen Home-Verzeichnis, wie `/home/pete`.
-- `-` (vorheriges Verzeichnis): Bringt Sie zurück in das letzte Verzeichnis, in dem Sie sich befanden.
-
-You can use these shortcuts with the `cd command`:
+Wenn du dich bereits in einem Verzeichnis befindest und in ein Unterverzeichnis wechseln möchtest, verwende einen relativen Pfad. Zum Beispiel, wenn dein aktueller Standort `/home/pete/Pictures` ist und es einen Ordner namens `Hawaii` enthält, kannst du mit folgendem Befehl hineinnavigieren:
 
 ```bash
-cd .
-cd ..
-cd ~
-cd -
+$ cd Hawaii
 ```
 
-Experimentieren Sie mit diesen Abkürzungen, um in der Befehlszeile effizienter zu werden.
+Beachte, dass wir nur den Ordnernamen verwendet haben. Das liegt daran, dass wir uns bereits im übergeordneten Verzeichnis `/home/pete/Pictures` befanden.
+
+### Wichtige Navigationskürzel
+
+Die Navigation mit vollständigen Pfaden kann mühsam sein. Glücklicherweise bietet die Shell mehrere Kürzel, die das Bewegen deutlich schneller machen.
+
+- `.` (aktuelles Verzeichnis): Repräsentiert das Verzeichnis, in dem du dich gerade befindest.
+- `..` (übergeordnetes Verzeichnis): Bewegt dich eine Ebene nach oben in das Verzeichnis, das dein aktuelles Verzeichnis enthält.
+- `~` (Home-Verzeichnis): Ein Kürzel für dein persönliches Home-Verzeichnis, z.B. `/home/pete`.
+- `-` (vorheriges Verzeichnis): Bringt dich zurück in das letzte Verzeichnis, in dem du warst.
+
+Du kannst diese Kürzel mit `cd` verwenden:
+
+```bash
+$ cd .
+$ cd ..
+$ cd ~
+$ cd -
+```
+
+Probiere diese Kürzel aus, um effizienter an der Kommandozeile zu arbeiten.
+
+### Praktische cd-Beispiele
+
+Wechsle in dein Home-Verzeichnis:
+
+```bash
+$ cd
+```
+
+Gehe zwei Ebenen nach oben:
+
+```bash
+$ cd ../..
+```
+
+Wechsle in ein Verzeichnis, dessen Name Leerzeichen enthält, indem du es in Anführungszeichen setzt:
+
+```bash
+$ cd "Vacation Photos"
+```
+
+Gehe zurück in das vorherige Verzeichnis:
+
+```bash
+$ cd -
+/home/pete/Documents
+```
+
+### Häufige Fragen
+
+**Warum sagt cd „No such file or directory“?** Der Pfad existiert von deinem aktuellen Standort aus nicht, oder der Name wurde falsch eingegeben. Verwende `ls`, um verfügbare Verzeichnisse aufzulisten.
+
+**Warum sagt cd „Permission denied“?** Du hast keine Berechtigung, dieses Verzeichnis zu betreten.
+
+**Was passiert, wenn ich cd ohne Argumente ausführe?** Du gelangst in dein Home-Verzeichnis.
+
+**Funktioniert cd mit Dateien?** Nein. `cd` wechselt nur in Verzeichnisse, nicht in reguläre Dateien.
 
 ## Exercise
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Linux-Verzeichnisnavigation zu festigen:
+Übung macht den Meister! Hier sind einige praktische Labs, um dein Verständnis der Linux-Verzeichnisnavigation zu vertiefen:
 
-1. **[Linux cd Befehl: Verzeichniswechsel](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** - Lernen Sie den Linux `cd` Befehl kennen, um effizient durch Ihr Dateisystem zu navigieren, einschließlich verschiedener Techniken zum Wechseln von Verzeichnissen, zum Verständnis von Pfaden und zur Erkundung der Dateistruktur.
-2. **[Linux Verzeichnisnavigation](https://labex.io/de/labs/linux-directory-navigation-387844)** - Stellen Sie Ihre grundlegenden Linux-Befehlszeilenkenntnisse auf die Probe, indem Sie mit wesentlichen Befehlen durch Verzeichnisse navigieren.
-3. **[Einrichten einer neuen Projektstruktur](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** - Üben Sie Ihre Linux-Verwaltungsfähigkeiten, indem Sie eine bestimmte Projektstruktur erstellen und mit wichtigen Befehlen wie `mkdir` und `cd` darin navigieren.
+1. **[Linux cd Command: Directory Changing](https://labex.io/de/labs/linux-linux-cd-command-directory-changing-209733)** – Lerne den Linux-Befehl `cd`, um dein Dateisystem effizient zu navigieren, einschließlich verschiedener Techniken zum Verzeichniswechsel, Verständnis von Pfaden und Erkundung der Dateistruktur.
+2. **[Linux Directory Navigation](https://labex.io/de/labs/linux-directory-navigation-387844)** – Teste deine grundlegenden Linux-Kommandozeilen-Fähigkeiten, indem du dich mit wichtigen Befehlen durch Verzeichnisse bewegst.
+3. **[Setting Up a New Project Structure](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** – Übe deine Fähigkeiten im Linux-Verzeichnismanagement, indem du eine bestimmte Projektstruktur erstellst und dich mit wichtigen Befehlen wie `mkdir` und `cd` darin bewegst.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen beim Navigieren im Linux-Dateisystem aufzubauen.
+Diese Labs helfen dir, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Navigation des Linux-Dateisystems zu gewinnen.
 
 ## Quiz Question
 
-Wenn Sie sich in `/home/pete/Pictures` befinden und in das übergeordnete Verzeichnis (`/home/pete`) navigieren möchten, lautet der vollständige Befehl, den Sie verwenden sollten? Bitte antworten Sie auf Englisch, achten Sie auf Groß-/Kleinschreibung und Leerzeichen.
+Wenn du dich in `/home/pete/Pictures` befindest und in das übergeordnete Verzeichnis (`/home/pete`) wechseln möchtest, welcher vollständige Befehl ist korrekt? Bitte antworte auf Englisch und achte auf Groß- und Kleinschreibung sowie Leerzeichen.
 
 ## Quiz Answer
 

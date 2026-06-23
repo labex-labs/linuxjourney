@@ -1,43 +1,72 @@
 ---
 index: 17
 lang: "fr"
-title: "Qu'est-ce que c'est"
+title: "whatis"
 meta_title: "whatis - Ligne de commande"
-meta_description: "Découvrez la commande whatis sous Linux. Apprenez comment la commande linux whatis fournit des descriptions en une seule ligne d'autres commandes, ce qui en fait un outil essentiel pour naviguer dans la ligne de commande."
-meta_keywords: "commande whatis sous linux, whatis linux, commande whatis linux, commande whatis linux, whatis linux, ligne de commande, commandes linux"
+meta_description: "Apprenez la commande Linux whatis avec des exemples pour obtenir des descriptions de commandes en une ligne à partir des pages man et comprendre plusieurs sections du manuel."
+meta_keywords: "commande whatis, linux whatis, description commande linux, résumé page man, aide ligne de commande, apropos"
 ---
 
 ## Lesson Content
 
-Lorsque vous explorez la ligne de commande Linux, vous rencontrerez un grand nombre de commandes. Il est naturel d'oublier ce que fait une commande spécifique. Heureusement, il existe un utilitaire simple pour vous aider.
+En explorant la ligne de commande Linux, vous rencontrerez un grand nombre de commandes. Il est naturel d'oublier ce que fait une commande spécifique. Heureusement, il existe un utilitaire simple pour vous aider.
 
-### Qu'est-ce que la commande whatis sous Linux
+### Qu'est-ce que la commande whatis
 
-La commande `whatis` sous Linux affiche une description concise d'une seule ligne d'une commande directement à partir de sa page de manuel (man). C'est un moyen rapide d'obtenir un rappel de la fonction principale d'une commande sans lire l'intégralité de la page man. Considérez la commande **linux whatis** comme un dictionnaire rapide pour votre terminal.
+La commande `whatis` affiche une description concise, en une ligne, d'une commande directement extraite de sa page de manuel. C'est un moyen rapide d'obtenir un rappel de la fonction principale d'une commande sans lire toute la page man.
 
 ### Comment utiliser la commande whatis
 
-L'utilisation de la **commande whatis linux** est simple. Tapez simplement `whatis` suivi du nom de la commande que vous souhaitez connaître. Par exemple, si vous n'êtes pas sûr de la commande `cat`, vous pouvez exécuter :
+Utiliser `whatis` est simple. Tapez `whatis` suivi de la commande dont vous voulez connaître la description.
 
 ```bash
-whatis cat
+$ whatis cat
+cat (1)              - concatenate files and print on the standard output
 ```
 
-Ceci renverra une courte description, telle que "cat - concaténer les fichiers et imprimer sur la sortie standard".
+### Comprendre la sortie
 
-### Comprendre le résultat
+La description fournie par `whatis` provient de la section `NAME` de la page de manuel de la commande. Si un nom possède plusieurs pages de manuel dans différentes sections, `whatis` peut afficher plusieurs lignes.
 
-La description fournie par la **commande linux whatis** est tirée directement de la section NAME de la page de manuel de la commande. Cela garantit que l'information est exacte et cohérente avec la documentation du système. Si une commande possède plusieurs pages de manuel dans différentes sections, `whatis` peut afficher une ligne pour chacune, vous aidant à comprendre ses différents contextes.
+```bash
+$ whatis passwd
+passwd (1)           - change user password
+passwd (5)           - the password file
+```
+
+Le nombre entre parenthèses correspond à la section de la page man.
+
+### Whatis vs Man vs Apropos
+
+- `whatis ls` : Affiche une description en une ligne pour un nom de commande exact.
+- `man ls` : Ouvre la page de manuel complète.
+- `apropos mot-clé` : Recherche dans les descriptions des pages man un mot-clé.
+
+Par exemple :
+
+```bash
+$ apropos password
+```
+
+Utilisez `whatis` lorsque vous connaissez le nom de la commande mais avez oublié ce qu'elle fait.
+
+### Questions fréquentes
+
+**Pourquoi whatis affiche-t-il "nothing appropriate" ?** La commande peut ne pas avoir de page man installée, ou la base de données man peut nécessiter une mise à jour.
+
+**Est-ce que whatis affiche les options de la commande ?** Non. Utilisez `man COMMAND` ou `COMMAND --help` pour les options.
+
+**whatis est-il identique à which ?** Non. `whatis` décrit une commande. `which` montre le chemin de l'exécutable.
 
 ## Exercise
 
-La pratique rend parfait ! Bien qu'il n'y ait pas de laboratoire spécifique pour la commande `whatis`, comprendre comment trouver des informations sur les commandes et les fichiers est crucial. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la localisation des commandes et des fichiers sous Linux :
+La pratique rend parfait ! Bien qu'il n'y ait pas de laboratoire spécifique pour la commande `whatis`, comprendre comment trouver des informations sur les commandes et les fichiers est crucial. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la localisation des commandes et fichiers sous Linux :
 
-1. **[Commande Linux which : Localisation de commande](https://labex.io/fr/labs/linux-linux-which-command-command-locating-215210)** - Entraînez-vous à utiliser la commande `which` pour localiser les fichiers exécutables et comprendre la priorité des commandes dans le PATH de votre système.
-2. **[Commande Linux whereis : Recherche de fichiers et de commandes](https://labex.io/fr/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Apprenez à utiliser `whereis` pour trouver les binaires, les sources et les pages de manuel des commandes, approfondissant ainsi votre compréhension de la structure des commandes.
-3. **[Découvrir les ressources critiques du système](https://labex.io/fr/labs/linux-discover-critical-system-resources-388032)** - Ce défi combine `which`, `whereis` et `find` pour vous aider à naviguer efficacement dans le système de fichiers et à découvrir les ressources système importantes.
+1. **[Commande Linux which : localisation de commande](https://labex.io/fr/labs/linux-linux-which-command-command-locating-215210)** - Entraînez-vous à utiliser la commande `which` pour localiser les fichiers exécutables et comprendre la priorité des commandes dans le PATH de votre système.
+2. **[Commande Linux whereis : recherche de fichiers et commandes](https://labex.io/fr/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Apprenez à utiliser `whereis` pour trouver le binaire, la source et les pages de manuel des commandes, approfondissant votre compréhension de la structure des commandes.
+3. **[Découvrez les ressources système critiques](https://labex.io/fr/labs/linux-discover-critical-system-resources-388032)** - Ce défi combine `which`, `whereis` et `find` pour vous aider à naviguer efficacement dans le système de fichiers et découvrir des ressources système importantes.
 
-Ces laboratoires vous aideront à appliquer les concepts de découverte de commandes et de fichiers dans des scénarios réels et à renforcer votre confiance dans les utilitaires Linux essentiels.
+Ces laboratoires vous aideront à appliquer les concepts de découverte de commandes et fichiers dans des scénarios réels et à gagner en confiance avec les utilitaires Linux essentiels.
 
 ## Quiz Question
 

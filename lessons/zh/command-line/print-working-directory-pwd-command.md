@@ -1,21 +1,21 @@
 ---
 index: 2
 lang: "zh"
-title: "pwd (打印工作目录)"
-meta_title: "pwd (打印工作目录) - 命令行"
-meta_description: "掌握 Linux pwd 命令以显示您在 Linux 中的当前目录。本课程解释了 pwd 在 Linux 中的完整形式以及如何在 Linux 中导航目录树。"
-meta_keywords: "linux pwd, linux 当前目录，linux 目录树，pwd 在 linux 中的完整形式，打印工作目录，linux 路径，linux 导航，命令行基础"
+title: "pwd（显示当前工作目录）"
+meta_title: "pwd（显示当前工作目录）- 命令行"
+meta_description: "学习 Linux 中的 pwd 命令，了解显示当前工作目录的含义，以及绝对路径如何显示你在文件系统中的当前位置。"
+meta_keywords: "pwd 命令, linux pwd, 显示当前工作目录, 当前目录 linux, 绝对路径, linux 文件系统, 目录树"
 ---
 
 ## Lesson Content
 
-在 Linux 中，一个核心概念是所有内容都被视为文件。这些文件组织在一个被称为文件系统的分层结构中。理解这种结构是有效导航系统的关键。
+在 Linux 中，文件和目录以层级结构组织，称为文件系统。在你能够自如地移动之前，你需要知道自己所在的位置。`pwd` 命令通过打印你当前的工作目录来回答这个问题。
 
-### Linux 中的目录树
+### The Directory Tree in Linux
 
-整个文件系统从一个名为根目录的顶级目录开始，用正斜杠（`/`）表示。从根目录开始，**linux 中的目录树** 分支成各种子目录，这些子目录可以包含文件和更多的子目录。
+整个文件系统从一个顶层目录开始，称为根目录，用斜杠（`/`）表示。从根目录开始，目录树分支出子目录，子目录中可以包含文件和更多子目录。
 
-以下是这种结构的一个简化示例：
+下面是该结构的简化示例：
 
 ```plaintext
 /
@@ -31,37 +31,74 @@ meta_keywords: "linux pwd, linux 当前目录，linux 目录树，pwd 在 linux 
 |-- var
 ```
 
-### 理解文件路径
+### Understanding File Paths
 
-任何文件或目录的位置都由其路径描述。路径是从一个起点到特定目的地的目录序列。例如，如果 `/home` 目录下有一个名为 `pete` 的文件夹，而 `pete` 内部有一个 `Movies` 文件夹，那么完整路径将是 `/home/pete/Movies`。
+任何文件或目录的位置都由其路径描述。路径是一系列目录，从起点到特定目标的顺序。
 
-### Linux 中 PWD 的完整形式是什么？
+例如，如果你在 `/home` 目录下有一个名为 `pete` 的文件夹，`pete` 文件夹内有一个 `Movies` 文件夹，则完整路径是：
 
-在文件系统导航时，了解您当前的位置至关重要。用于此目的的命令是 `pwd`。**linux 中 pwd 的完整形式** 是 "print working directory"（打印工作目录）。它的唯一目的是显示您当前所在目录的完整路径，从根目录（`/`）开始。
-
-### 使用 linux pwd 命令
-
-要查找您的 **current directory linux**（当前目录），只需键入 **linux pwd** 命令并按 Enter 键。它会在命令行上打印出您当前位置的绝对路径。
-
-```bash
-pwd
+```plaintext
+/home/pete/Movies
 ```
 
-你在哪里？我在哪里？尝试一下以查看您自己的当前工作目录。
+以 `/` 开头的路径是绝对路径，因为它从根目录开始。像 `Movies` 这样的路径是相对路径，因为它依赖于你当前的位置。
+
+### What is the Full Form of PWD in Linux?
+
+`pwd` 的完整形式是“print working directory”（打印当前工作目录）。你的工作目录是你的 shell 当前所在的目录。使用相对路径的命令都是从这个位置开始的。
+
+### Using the pwd Command
+
+要查找你当前的目录，输入 `pwd` 并按回车。
+
+```bash
+$ pwd
+/home/pete
+```
+
+输出是一个绝对路径。在此示例中，shell 当前位于 `pete` 用户的主目录。
+
+### Why pwd is Useful
+
+使用 `pwd` 的场景包括：
+
+- 你正在按照指示操作，需要确认你的位置。
+- 命令失败了，因为文件路径错误。
+- 你穿越了多个目录，忘记了自己所在的位置。
+- 你想将当前目录路径复制到另一个命令中。
+
+例如：
+
+```bash
+$ pwd
+/home/pete/projects
+$ ls
+app.py  README.md
+```
+
+这告诉你 `app.py` 和 `README.md` 位于 `/home/pete/projects` 目录下。
+
+### Common Questions
+
+**pwd 会改变任何东西吗？** 不会。`pwd` 只打印信息。
+
+**为什么我的系统上输出不同？** 你的用户名、主目录和当前位置可能不同。
+
+**pwd 和 cd 有什么区别？** `pwd` 显示你所在的位置。`cd` 改变你所在的位置。
 
 ## Exercise
 
-实践造就完美！以下是一些实践操作实验，以加强您对 Linux 文件系统导航和识别当前位置的理解：
+熟能生巧！这里有一些动手实验，帮助你巩固对 Linux 文件系统导航和定位当前所在位置的理解：
 
-1. **[Linux pwd 命令：目录显示](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 此实验提供了对 `pwd` 命令的集中概述和实际用法，直接与课程中介绍的查找当前目录的内容相符。
-2. **[Linux 目录导航](https://labex.io/zh/labs/linux-directory-navigation-387844)** - 通过在各种目录中导航来测试您的基本 Linux 命令行技能，巩固您对路径和文件系统结构的理解。
-3. **[Linux cd 命令：目录更改](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 学习如何使用 `cd` 命令高效地导航文件系统，理解更改目录和探索文件结构的不同技术。
+1. **[Linux pwd 命令：显示目录](https://labex.io/zh/labs/linux-linux-pwd-command-directory-displaying-209734)** - 本实验提供了对 `pwd` 命令的重点介绍和实际使用，直接对应本课关于查找当前目录的内容。
+2. **[Linux 目录导航](https://labex.io/zh/labs/linux-directory-navigation-387844)** - 通过导航不同目录，测试你的基本 Linux 命令行技能，巩固对路径和文件系统结构的理解。
+3. **[Linux cd 命令：切换目录](https://labex.io/zh/labs/linux-linux-cd-command-directory-changing-209733)** - 学习如何使用 `cd` 命令高效地导航文件系统，理解切换目录的不同技巧并探索文件结构。
 
-这些实验将帮助您在实际场景中应用文件系统层次结构和导航的概念，并增强对基本 Linux 命令的信心。
+这些实验将帮助你在实际场景中应用文件系统层级和导航的概念，并增强对基本 Linux 命令的信心。
 
 ## Quiz Question
 
-用于查找您当前所在目录的命令是什么？（请用英文回答，只使用小写的命令名称。）
+哪个命令用于查找你当前所在的目录？（请用英文回答，仅使用小写命令名称。）
 
 ## Quiz Answer
 

@@ -3,52 +3,91 @@ index: 12
 lang: "es"
 title: "mkdir (Crear Directorio)"
 meta_title: "mkdir (Crear Directorio) - Línea de Comandos"
-meta_description: "Aprenda a usar el comando mkdir en Linux para crear un nuevo directorio. Esta guía cubre el comando de crear carpeta en Linux, incluyendo cómo crear múltiples directorios y directorios padre desde la línea de comandos."
-meta_keywords: "crear directorio linux, comando mkdir en linux, crear directorio en linux, crear directorio línea de comandos, comando crear carpeta linux, mkdir, crear directorio, linux"
+meta_description: "Aprende el comando mkdir de Linux con ejemplos para crear un directorio, múltiples directorios, directorios anidados y configurar permisos."
+meta_keywords: "comando mkdir, linux mkdir, crear directorio linux, hacer directorio linux, mkdir -p, mkdir -m, crear carpeta linux"
 ---
 
 ## Lesson Content
 
-A medida que trabajas con archivos, necesitarás organizarlos en directorios. La herramienta principal para esta tarea es el comando `mkdir`, que significa "Make Directory" (Crear Directorio). Este comando te permite **crear un directorio en Linux** directamente desde tu terminal o **símbolo del sistema**.
+Mientras trabajas con archivos, necesitarás organizarlos en directorios. La herramienta principal para esta tarea es el comando `mkdir`, que significa crear directorio.
 
-### Creación de un Directorio Único
-
-El uso más básico del **comando mkdir en Linux** es crear un nuevo directorio único. Si el directorio no existe, este comando lo creará en tu ubicación actual. Por ejemplo, para crear un directorio llamado `documents`:
+La sintaxis básica es:
 
 ```bash
-mkdir documents
+mkdir [OPTIONS] DIRECTORY...
 ```
 
-### Creación de Múltiples Directorios
+### Creando un Directorio Único
 
-También puedes crear varios directorios a la vez enumerando sus nombres, separados por espacios. Esta es una forma eficiente de configurar varias carpetas rápidamente.
+El uso más básico de `mkdir` es crear un solo directorio nuevo. Si el directorio no existe ya, este comando lo crea en tu ubicación actual.
 
 ```bash
-mkdir books paintings
+$ mkdir documents
 ```
 
-### Creación de Directorios Anidados
+### Creando Múltiples Directorios
 
-A veces necesitas crear un directorio y sus directorios padres simultáneamente. La opción `-p` (parent/padre) es perfecta para esto. Esta potente característica del **comando para crear carpetas en Linux** evita errores si los directorios padres no existen. Por ejemplo, para crear el directorio `favorites` dentro de `hemmingway`, que está dentro de `books`:
+También puedes crear varios directorios a la vez listando sus nombres, separados por espacios. Esta es una forma eficiente de configurar múltiples carpetas rápidamente.
 
 ```bash
-mkdir -p books/hemmingway/favorites
+$ mkdir books paintings
 ```
 
-Este único comando crea `books`, `hemmingway` y `favorites` si no existen, demostrando una capacidad clave cuando necesitas **crear un directorio en Linux**.
+### Creando Directorios Anidados
+
+A veces necesitas crear un directorio y sus directorios padres simultáneamente. La opción `-p` es perfecta para esto. Evita errores si los directorios padres no existen.
+
+```bash
+$ mkdir -p books/hemingway/favorites
+```
+
+Este único comando crea `books`, `hemingway` y `favorites` si no existen ya.
+
+### Configurando Permisos de Directorio
+
+Usa `-m` para establecer permisos mientras creas un directorio.
+
+```bash
+$ mkdir -m 755 public
+```
+
+Aprenderás más sobre permisos más adelante, pero este ejemplo crea un directorio que el propietario puede escribir y otros pueden leer y entrar.
+
+### Opciones Comunes de mkdir
+
+- `-p`: Crear directorios padres según sea necesario.
+- `-m MODE`: Establecer permisos para el nuevo directorio.
+- `-v`: Imprimir un mensaje para cada directorio creado.
+
+Ejemplo:
+
+```bash
+$ mkdir -pv projects/app/src
+mkdir: created directory 'projects'
+mkdir: created directory 'projects/app'
+mkdir: created directory 'projects/app/src'
+```
+
+### Preguntas Comunes
+
+**¿Por qué mkdir dice "File exists"?** Un archivo o directorio con ese nombre ya existe. Usa `ls` para inspeccionarlo.
+
+**¿Cómo creo directorios anidados?** Usa `mkdir -p parent/child/grandchild`.
+
+**¿Puede mkdir crear archivos?** No. Usa `touch` para crear archivos vacíos.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la creación y gestión de directorios:
+¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión sobre la creación y gestión de directorios:
 
-1. **[Comando mkdir de Linux: Creación de Directorios](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)** - Aprende a usar el comando `mkdir` en Linux para crear directorios, establecer permisos y organizar tu sistema de archivos. Este laboratorio cubre el uso básico y avanzado, incluida la creación de directorios anidados.
-2. **[Configuración de una Nueva Estructura de Proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios de Linux creando una estructura de proyecto específica y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
+1. **[Comando Linux mkdir: Creación de Directorios](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)** - Aprende a usar el comando `mkdir` en Linux para crear directorios, establecer permisos y organizar tu sistema de archivos. Este laboratorio cubre uso básico y avanzado, incluyendo la creación de directorios anidados.
+2. **[Configurando una Nueva Estructura de Proyecto](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practica tus habilidades de gestión de directorios en Linux creando una estructura específica de proyecto y navegando a través de ella usando comandos esenciales como `mkdir` y `cd`.
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza en la creación y organización de directorios en Linux.
+Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza creando y organizando directorios en Linux.
 
 ## Quiz Question
 
-¿Qué comando se utiliza para crear un directorio? Por favor, responda usando solo el comando en inglés en minúsculas.
+¿Qué comando se usa para crear un directorio? Por favor responde usando solo el comando en inglés en minúsculas.
 
 ## Quiz Answer
 

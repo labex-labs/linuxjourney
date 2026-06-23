@@ -1,45 +1,72 @@
 ---
 index: 19
 lang: "de"
-title: "Beenden"
+title: "exit"
 meta_title: "exit - Kommandozeile"
-meta_description: "Meistern Sie die Grundlagen zum Beenden Ihrer Sitzung in der Linux-Shell. Dieses Linux-Tutorial für Anfänger behandelt die Verwendung der Befehle 'exit' und 'logout' für einen sauberen Terminal-Abschluss."
-meta_keywords: "exit Befehl, logout Befehl, Linux Shell, Terminal beenden, Linux Grundlagen, Linux für Anfänger, Linux Tutorial"
+meta_description: "Lernen Sie den Linux-Befehl exit kennen, wie man eine Shell-Sitzung beendet, wie sich logout von exit unterscheidet und wie Exit-Statuswerte funktionieren."
+meta_keywords: "exit Befehl, linux exit, logout Befehl, shell Sitzung, Terminal beenden, Exit-Status, bash exit"
 ---
 
 ## Lesson Content
 
-Herzlichen Glückwunsch zum Abschluss der Grundlagenlektionen Ihrer Linux-Reise! Sie haben die wesentlichen Linux-Grundlagen abgedeckt, und nun ist es Zeit zu lernen, wie Sie Ihre Sitzung ordnungsgemäß beenden. Das Verlassen der Linux-Shell ist ein einfacher, aber wichtiger letzter Schritt.
+Herzlichen Glückwunsch zum Abschluss der grundlegenden Lektionen Ihrer Linux-Reise! Sie haben wichtige Linux-Grundlagen behandelt, und jetzt ist es an der Zeit zu lernen, wie Sie Ihre Sitzung richtig beenden. Das Verlassen der Linux-Shell ist ein einfacher, aber wichtiger letzter Schritt.
 
 ### Der Exit-Befehl
 
-der gebräuchlichste Weg, eine Shell-Sitzung zu beenden, ist der Befehl `exit`. Wenn Sie `exit` eingeben und Enter drücken, wird der aktuelle Shell-Prozess beendet. Dies ist ein universeller Befehl, der in praktisch jeder Shell-Umgebung funktioniert und ihn zu einem grundlegenden Bestandteil jedes Linux-Tutorials für Anfänger macht.
+Die gebräuchlichste Methode, eine Shell-Sitzung zu beenden, ist der Befehl `exit`. Wenn Sie `exit` eingeben und Enter drücken, wird der aktuelle Shell-Prozess beendet. Dieser Befehl funktioniert in nahezu jeder Shell-Umgebung.
 
 ```bash
-exit
+$ exit
 ```
+
+Wenn Sie ein Terminalfenster geöffnet haben, schließt `exit` normalerweise die darin laufende Shell. Wenn Sie sich über SSH verbunden haben, beendet `exit` die entfernte Shell-Sitzung und bringt Sie zurück zur lokalen Eingabeaufforderung.
+
+### Exit-Statuswerte
+
+Der Befehl `exit` kann auch einen Statuscode zurückgeben. Ein Status von `0` bedeutet in der Regel Erfolg, und ein nicht null Status signalisiert meist einen Fehler oder eine besondere Bedingung.
+
+```bash
+$ exit 0
+```
+
+Exit-Statuswerte sehen Sie häufiger beim Schreiben von Shell-Skripten. Für die interaktive Nutzung reicht es aus, einfach `exit` einzugeben.
 
 ### Der Logout-Befehl
 
-Ein weiterer Befehl, den Sie für einen Terminal-Exit verwenden können, ist `logout`. Dieser Befehl wurde speziell zum Beenden einer Login-Shell entwickelt. Obwohl er sich in vielen modernen Systemen ähnlich wie `exit` verhält, ist es gute Praxis, beide Befehle zu kennen.
+Ein weiterer Befehl, den Sie zum Verlassen eines Terminals verwenden können, ist `logout`. Dieser Befehl ist speziell dafür gedacht, eine Login-Shell zu beenden. Obwohl er sich in vielen modernen Systemen ähnlich wie `exit` verhält, ist es gut, beide Befehle zu kennen.
 
 ```bash
-logout
+$ logout
 ```
 
-### Schließen des Terminalfensters
+### Das Terminalfenster schließen
 
-Wenn Sie in einer grafischen Benutzeroberfläche (GUI) arbeiten, haben Sie auch die Möglichkeit, das Terminalfenster einfach zu schließen. Diese Aktion sendet typischerweise ein Signal, das die darin laufende Shell-Sitzung beendet, was eine schnelle Möglichkeit für einen Terminal-Exit bietet.
+Wenn Sie in einer grafischen Benutzeroberfläche arbeiten, haben Sie auch die Möglichkeit, das Terminalfenster einfach zu schließen. Diese Aktion sendet typischerweise ein Signal, das die darin laufende Shell-Sitzung beendet.
 
-Sie haben erfolgreich gelernt, wie man navigiert, mit Dateien arbeitet und nun, wie man die Shell beendet. Machen Sie sich eine wohlverdiente Pause, und wir sehen uns im nächsten Kurs, um Ihr Lernen fortzusetzen!
+### Häufige Wege, eine Shell zu verlassen
+
+- Geben Sie `exit` ein, um die aktuelle Shell zu beenden.
+- Drücken Sie `Ctrl-D` bei einer leeren Eingabeaufforderung, um ein End-of-File zu senden, was oft die Shell beendet.
+- Geben Sie `logout` ein, wenn Sie sich in einer Login-Shell befinden.
+- Schließen Sie das Terminalfenster, wenn Sie ein grafisches Terminal verwenden.
+
+### Häufige Fragen
+
+**Ist exit dasselbe wie das Schließen des Terminalfensters?** Oft ist das Ergebnis ähnlich, aber `exit` teilt der Shell sauber mit, dass sie beendet werden soll.
+
+**Was ist Ctrl-D?** Es sendet ein End-of-File-Signal an die Shell. Bei einer leeren Eingabeaufforderung beendet dies normalerweise die Shell.
+
+**Was bedeutet exit 1?** Es beendet die Shell mit dem Statuscode `1`, der in Skripten häufig verwendet wird, um einen Fehler anzuzeigen.
+
+Sie haben erfolgreich gelernt, wie man navigiert, mit Dateien arbeitet, Hilfe erhält und die Shell verlässt.
 
 ## Exercise
 
-Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+Für dieses Thema gibt es keine spezifischen Labs, aber wir empfehlen, den umfassenden [Linux Learning Path](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und Konzepte zu üben.
 
 ## Quiz Question
 
-Was ist der gebräuchlichste Befehl, um die Linux-Shell zu verlassen? Bitte antworten Sie nur mit einem einzigen kleingeschriebenen englischen Wort.
+What is the most common command to exit from the Linux shell? Please answer using only a single lowercase English word.
 
 ## Quiz Answer
 

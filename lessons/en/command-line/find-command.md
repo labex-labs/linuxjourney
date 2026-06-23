@@ -3,41 +3,105 @@ index: 14
 lang: "en"
 title: "find"
 meta_title: "find - Command Line"
-meta_description: "A comprehensive guide to the find command in linux. Learn how to use the find command line to locate files and directories by name, type, and more. Enhance your file management skills with the powerful command linux find utility."
-meta_keywords: "find command line, find command in linux, find command, find command linux, command linux find, file search, directory search, linux tutorial"
+meta_description: "Learn the Linux find command with examples for searching by name, type, size, modification time, and running actions on matching files."
+meta_keywords: "linux find command, find command, find files linux, find by name, find by type, find by size, find mtime, find exec"
 ---
 
 ## Lesson Content
 
-With countless files on a system, it can be challenging to locate a specific one. Fortunately, there's a powerful utility we can use for that: the `find` command. This tool is essential for efficient file management.
+With countless files on a system, it can be challenging to locate a specific one. The `find` command searches directory trees using criteria such as name, type, size, and modification time.
 
-### Using the Find Command Line
+### Using the find Command
 
-The basic syntax for the `find command line` is `find [path] [expression]`. You must specify the directory to search in and the criteria for what you're looking for.
+The basic syntax is:
+
+```bash
+find [PATH] [EXPRESSION]
+```
+
+You specify the directory to search in and the criteria for what you are looking for.
 
 For example, to search for a file named `puppies.jpg` within the `/home` directory and all its subdirectories, you would use:
 
 ```bash
-find /home -name puppies.jpg
+$ find /home -name puppies.jpg
 ```
 
-The `find command in linux` is highly flexible, allowing for many different search expressions.
+Searches are recursive by default, so `find /home` looks inside `/home` and its subdirectories.
 
 ### Searching by Name and Type
 
-One of the most common uses of the `find command` is searching by filename. As seen above, the `-name` option allows you to specify the exact name of the file you want to find.
+One of the most common uses of `find` is searching by filename. The `-name` option matches names exactly or by shell-style patterns.
+
+```bash
+$ find . -name "*.txt"
+```
 
 You can also specify the type of item you are searching for. The `-type` option is used for this purpose. For instance, if you want to find a directory instead of a file, you can use `d`.
 
 ```bash
-find /home -type d -name MyFolder
+$ find /home -type d -name MyFolder
 ```
 
 In this command, we set the type to `d` for directory and are searching for an item named `MyFolder`. To search specifically for regular files, you would use `-type f`.
 
-### Recursive Searching
+### Searching by Size and Time
 
-A key feature of the `find command linux` users appreciate is its recursive nature. When you specify a starting directory, `find` doesn't just look in that single directory; it automatically searches through all subdirectories contained within it. This makes it an incredibly thorough tool for locating items anywhere in a directory tree.
+You can search by file size:
+
+```bash
+$ find . -type f -size +10M
+$ find . -type f -size -1k
+```
+
+The first command finds files larger than 10 megabytes. The second finds files smaller than 1 kilobyte.
+
+You can also search by modification time:
+
+```bash
+$ find . -type f -mtime -7
+$ find . -type f -mtime +30
+```
+
+`-mtime -7` means modified within the last 7 days. `-mtime +30` means modified more than 30 days ago.
+
+### Running Actions on Results
+
+By default, `find` prints matching paths. You can add actions such as `-print`, `-delete`, or `-exec`.
+
+Print matches explicitly:
+
+```bash
+$ find . -name "*.log" -print
+```
+
+Run `ls -l` on each match:
+
+```bash
+$ find . -name "*.log" -exec ls -l {} \;
+```
+
+The `{}` placeholder is replaced by each matching path. The escaped semicolon marks the end of the command.
+
+Be careful with destructive actions such as `-delete`. First run the same search without `-delete` to confirm the matches.
+
+### Common find Options
+
+- `-name PATTERN`: Match by filename.
+- `-iname PATTERN`: Match by filename, ignoring case.
+- `-type f`: Match regular files.
+- `-type d`: Match directories.
+- `-size +10M`: Match files larger than 10 megabytes.
+- `-mtime -7`: Match files modified within the last 7 days.
+- `-maxdepth N`: Limit how deep `find` searches.
+
+### Common Questions
+
+**Why does find show "Permission denied"?** Your user cannot read some directories. Search a narrower path or use appropriate privileges.
+
+**Why should I quote patterns like "*.txt"?** Quoting prevents the shell from expanding the wildcard before `find` receives it.
+
+**Is find recursive?** Yes. It searches subdirectories by default.
 
 ## Exercise
 

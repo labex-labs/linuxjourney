@@ -3,22 +3,22 @@ index: 18
 lang: "en"
 title: "alias"
 meta_title: "alias - Command Line"
-meta_description: "Learn how to create and manage a command alias in Linux to streamline your workflow. This guide covers creating temporary and permanent aliases using the alias command and the .bashrc file."
-meta_keywords: "linux alias, alias command linux, command alias in linux, linux command alias, bash alias, unalias command, .bashrc, command line, Linux tutorial"
+meta_description: "Learn the Linux alias command with examples for creating temporary aliases, saving aliases in .bashrc, listing aliases, and removing them with unalias."
+meta_keywords: "linux alias command, alias command, bash alias, .bashrc alias, unalias command, command shortcut linux, shell alias"
 ---
 
 ## Lesson Content
 
-Typing long or repetitive commands can be tedious. Fortunately, you can create a shortcut, or a **Linux alias**, to make your command-line experience more efficient. The `alias` command lets you define a custom name for any command or sequence of commands.
+Typing long or repetitive commands can be tedious. An alias is a shell shortcut that lets you define a custom name for a command or sequence of commands.
 
 ### Creating a Temporary Alias
 
 To create a temporary alias that lasts for your current terminal session, you simply specify a name and set it equal to the command string.
 
-For example, to create an alias named `ll` for the `ls -la` command, you would use the `alias command linux` syntax like this:
+For example, create an alias named `ll` for `ls -la`:
 
 ```bash
-alias ll='ls -la'
+$ alias ll='ls -la'
 ```
 
 Now, instead of typing `ls -la`, you can just type `ll`, and it will execute the same command. This is a simple yet powerful way to customize your shell.
@@ -40,20 +40,55 @@ alias update='sudo apt update && sudo apt upgrade'
 For the changes to take effect, you must either close and reopen your terminal or tell the shell to reload the configuration file using the `source` command:
 
 ```bash
-source ~/.bashrc
+$ source ~/.bashrc
 ```
 
-Your **Linux command alias** will now be available every time you start a new terminal session.
+Your alias will now be available every time you start a new Bash session.
 
 ### Removing an Alias
 
 If you no longer need an alias, you can remove it with the `unalias` command. This will remove it from your current session.
 
 ```bash
-unalias ll
+$ unalias ll
 ```
 
 To remove a permanent alias, you must also delete its definition from your `~/.bashrc` file.
+
+### Listing Existing Aliases
+
+Run `alias` with no arguments to list aliases in your current shell.
+
+```bash
+$ alias
+alias ll='ls -la'
+alias grep='grep --color=auto'
+```
+
+Use `type` to see what will run when you enter a command:
+
+```bash
+$ type ll
+ll is aliased to 'ls -la'
+```
+
+### Useful Alias Examples
+
+```bash
+$ alias la='ls -la'
+$ alias ..='cd ..'
+$ alias grep='grep --color=auto'
+```
+
+Keep aliases short and predictable. Avoid replacing destructive commands with surprising behavior unless you are very sure.
+
+### Common Questions
+
+**Do aliases work in scripts?** Usually no, not by default. Scripts should use full commands or functions.
+
+**Where should Bash aliases go?** Put them in `~/.bashrc` for interactive Bash sessions.
+
+**What if an alias conflicts with a real command?** The alias usually takes priority in interactive shell use. Use `command name` or `\name` to bypass an alias.
 
 ## Exercise
 

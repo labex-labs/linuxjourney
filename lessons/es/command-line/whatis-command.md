@@ -1,47 +1,76 @@
 ---
 index: 17
 lang: "es"
-title: "quées"
-meta_title: "quées - Línea de Comandos"
-meta_description: "Descubre el comando whatis en Linux. Aprende cómo el comando whatis de Linux proporciona descripciones en una sola línea de otros comandos, convirtiéndolo en una herramienta vital para navegar por la línea de comandos."
-meta_keywords: "comando whatis en linux, whatis linux, comando whatis linux, whatis comando linux, linux whatis, línea de comandos, comandos linux"
+title: "whatis"
+meta_title: "whatis - Línea de Comandos"
+meta_description: "Aprende el comando whatis de Linux con ejemplos para obtener descripciones de comandos en una línea desde las páginas man y entender múltiples secciones del manual."
+meta_keywords: "comando whatis, linux whatis, descripción de comando linux, resumen página man, ayuda línea de comandos, apropos"
 ---
 
 ## Lesson Content
 
-A medida que exploras la línea de comandos de Linux, encontrarás una gran cantidad de comandos. Es natural olvidar lo que hace un comando específico. Afortunadamente, hay una utilidad sencilla para ayudarte.
+Al explorar la línea de comandos de Linux, encontrarás una gran cantidad de comandos. Es natural olvidar qué hace un comando específico. Afortunadamente, hay una utilidad sencilla que te puede ayudar.
 
-### ¿Qué es el comando whatis en Linux?
+### Qué es el comando whatis
 
-El comando `whatis` en Linux muestra una descripción concisa de una sola línea de un comando directamente desde su página de manual (man). Es una forma rápida de obtener un recordatorio de la función principal de un comando sin tener que leer toda la página man. Piensa en el comando **linux whatis** como un diccionario rápido para tu terminal.
+El comando `whatis` muestra una descripción concisa, en una sola línea, de un comando directamente desde su página del manual. Es una forma rápida de obtener un recordatorio de la función principal de un comando sin leer toda la página man.
 
 ### Cómo usar el comando whatis
 
-Usar el **comando whatis linux** es sencillo. Simplemente escribe `whatis` seguido del nombre del comando sobre el que deseas información. Por ejemplo, si no estás seguro sobre el comando `cat`, puedes ejecutar:
+Usar `whatis` es sencillo. Escribe `whatis` seguido del comando sobre el que quieres saber.
 
 ```bash
-whatis cat
+$ whatis cat
+cat (1)              - concatenate files and print on the standard output
 ```
 
-Esto devolverá una descripción corta, como "cat - concatenar archivos e imprimir en la salida estándar".
+### Entendiendo la salida
 
-### Entendiendo la Salida
+La descripción que proporciona `whatis` proviene de la sección `NAME` de la página del manual del comando. Si un nombre tiene varias páginas del manual en diferentes secciones, `whatis` puede mostrar más de una línea.
 
-La descripción proporcionada por el **comando linux whatis** se obtiene directamente de la sección NAME de la página del manual del comando. Esto asegura que la información sea precisa y consistente con la documentación del sistema. Si un comando tiene varias páginas de manual en diferentes secciones, `whatis` puede mostrar una línea por cada una, ayudándote a entender sus diversos contextos.
+```bash
+$ whatis passwd
+passwd (1)           - change user password
+passwd (5)           - the password file
+```
+
+El número entre paréntesis es la sección de la página man.
+
+### Whatis vs Man vs Apropos
+
+- `whatis ls`: Muestra una descripción en una línea para un nombre de comando exacto.
+- `man ls`: Abre la página completa del manual.
+- `apropos keyword`: Busca en las descripciones de las páginas man una palabra clave.
+
+Por ejemplo:
+
+```bash
+$ apropos password
+```
+
+Usa `whatis` cuando conoces el nombre del comando pero olvidaste qué hace.
+
+### Preguntas comunes
+
+**¿Por qué whatis dice "nothing appropriate"?** El comando puede no tener una página man instalada, o la base de datos man puede necesitar actualización.
+
+**¿Muestra whatis las opciones del comando?** No. Usa `man COMMAND` o `COMMAND --help` para ver las opciones.
+
+**¿Es whatis lo mismo que which?** No. `whatis` describe un comando. `which` muestra la ruta del ejecutable.
 
 ## Exercise
 
-¡La práctica hace al maestro! Aunque no hay un laboratorio específico para el comando `whatis`, comprender cómo encontrar información sobre comandos y archivos es crucial. Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de la localización de comandos y archivos en Linux:
+¡La práctica hace al maestro! Aunque no hay un laboratorio específico para el comando `whatis`, entender cómo encontrar información sobre comandos y archivos es crucial. Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión sobre cómo localizar comandos y archivos en Linux:
 
-1. **[Comando which de Linux: Localización de Comandos](https://labex.io/es/labs/linux-linux-which-command-command-locating-215210)** - Practica el uso del comando `which` para localizar archivos ejecutables y comprender la prioridad de los comandos en la variable PATH de tu sistema.
-2. **[Comando whereis de Linux: Búsqueda de Archivos y Comandos](https://labex.io/es/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Aprende a usar `whereis` para encontrar los binarios, el código fuente y las páginas de manual de los comandos, profundizando en cómo se estructuran los comandos.
-3. **[Descubre Recursos Críticos del Sistema](https://labex.io/es/labs/linux-discover-critical-system-resources-388032)** - Este desafío combina `which`, `whereis` y `find` para ayudarte a navegar eficientemente por el sistema de archivos y descubrir recursos importantes del sistema.
+1. **[Comando Linux which: Localización de Comandos](https://labex.io/es/labs/linux-linux-which-command-command-locating-215210)** - Practica usando el comando `which` para localizar archivos ejecutables y entender la prioridad de comandos en el PATH de tu sistema.
+2. **[Comando Linux whereis: Encontrar Archivos y Comandos](https://labex.io/es/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Aprende a usar `whereis` para encontrar el binario, el código fuente y las páginas del manual de comandos, profundizando en cómo están estructurados los comandos.
+3. **[Descubre Recursos Críticos del Sistema](https://labex.io/es/labs/linux-discover-critical-system-resources-388032)** - Este desafío combina `which`, `whereis` y `find` para ayudarte a navegar eficientemente el sistema de archivos y descubrir recursos importantes del sistema.
 
-Estos laboratorios te ayudarán a aplicar los conceptos de descubrimiento de comandos y archivos en escenarios reales y a ganar confianza con las utilidades esenciales de Linux.
+Estos laboratorios te ayudarán a aplicar los conceptos de descubrimiento de comandos y archivos en escenarios reales y a ganar confianza con utilidades esenciales de Linux.
 
 ## Quiz Question
 
-¿Qué comando puedes usar para ver una pequeña descripción de un comando? Por favor, responde en inglés, prestando atención a las minúsculas.
+What command can you use to see a small description of a command? Please answer in English, paying attention to lowercase.
 
 ## Quiz Answer
 

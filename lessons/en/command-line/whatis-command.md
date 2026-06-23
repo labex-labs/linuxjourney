@@ -3,31 +3,60 @@ index: 17
 lang: "en"
 title: "whatis"
 meta_title: "whatis - Command Line"
-meta_description: "Discover the whatis command in Linux. Learn how the linux whatis command provides one-line descriptions of other commands, making it a vital tool for navigating the command line."
-meta_keywords: "whatis command in linux, whatis linux, linux whatis command, whatis command linux, linux whatis, command line, linux commands"
+meta_description: "Learn the Linux whatis command with examples for getting one-line command descriptions from man pages and understanding multiple manual sections."
+meta_keywords: "whatis command, linux whatis, command description linux, man page summary, command line help, apropos"
 ---
 
 ## Lesson Content
 
 As you explore the Linux command line, you'll encounter a vast number of commands. It's natural to forget what a specific command does. Fortunately, there's a simple utility to help you out.
 
-### What is the whatis Command in Linux
+### What is the whatis Command
 
-The `whatis` command in Linux displays a concise, one-line description of a command directly from its manual (man) page. It's a quick way to get a reminder of a command's primary function without reading the entire man page. Think of the **linux whatis** command as a quick dictionary for your terminal.
+The `whatis` command displays a concise, one-line description of a command directly from its manual page. It is a quick way to get a reminder of a command's primary function without reading the entire man page.
 
 ### How to Use the whatis Command
 
-Using the **whatis command linux** is straightforward. Simply type `whatis` followed by the name of the command you want to know about. For example, if you're unsure about the `cat` command, you can run:
+Using `whatis` is straightforward. Type `whatis` followed by the command you want to know about.
 
 ```bash
-whatis cat
+$ whatis cat
+cat (1)              - concatenate files and print on the standard output
 ```
-
-This will return a short description, such as "cat - concatenate files and print on the standard output".
 
 ### Understanding the Output
 
-The description provided by the **linux whatis command** is sourced directly from the NAME section of the command's manual page. This ensures the information is accurate and consistent with the system's documentation. If a command has multiple manual pages in different sections, `whatis` may display a line for each, helping you understand its various contexts.
+The description provided by `whatis` comes from the `NAME` section of the command's manual page. If a name has multiple manual pages in different sections, `whatis` may display more than one line.
+
+```bash
+$ whatis passwd
+passwd (1)           - change user password
+passwd (5)           - the password file
+```
+
+The number in parentheses is the man page section.
+
+### Whatis vs Man vs Apropos
+
+- `whatis ls`: Show a one-line description for an exact command name.
+- `man ls`: Open the full manual page.
+- `apropos keyword`: Search man page descriptions for a keyword.
+
+For example:
+
+```bash
+$ apropos password
+```
+
+Use `whatis` when you know the command name but forgot what it does.
+
+### Common Questions
+
+**Why does whatis say "nothing appropriate"?** The command may not have a man page installed, or the man database may need updating.
+
+**Does whatis show command options?** No. Use `man COMMAND` or `COMMAND --help` for options.
+
+**Is whatis the same as which?** No. `whatis` describes a command. `which` shows the executable path.
 
 ## Exercise
 
