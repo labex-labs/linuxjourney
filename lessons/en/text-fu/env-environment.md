@@ -85,7 +85,7 @@ This variable will be available as long as the terminal session remains open. On
 
 ### Making the Environment Variable Persistent Across Sessions
 
-If you want the environment variable to be available in every terminal session (even after closing and reopening the terminal), you need to add it to your shell’s startup file. In the case of Bash (the default shell for many Linux distributions and macOS), this file is usually `.bashrc` in your home directory.
+If you want the environment variable to be available in every terminal session (even after closing and reopening the terminal), you need to add it to your shell’s startup file. In the case of Bash (the default shell for many Linux distributions), this file is usually `.bashrc` in your home directory.
 
 Here's how you do it:
 
