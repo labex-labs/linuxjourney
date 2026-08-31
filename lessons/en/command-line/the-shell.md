@@ -75,7 +75,7 @@ Quotes are useful when you want the shell to treat several words as one piece of
 
 ## Exercise
 
-We recommend exploring the comprehensive [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/learn/shell) to practice related skills and concepts.
+We recommend exploring the comprehensive [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/learn/shell) to practice related skills and concepts.
 
 ## Quiz Question
 

@@ -75,7 +75,7 @@ Hello from Bash
 
 ## Exercise
 
-我们推荐探索全面的 [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/zh/learn/shell) 来练习相关技能和概念。
+我们推荐探索全面的 [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/zh/learn/shell) 来练习相关技能和概念。
 
 ## Quiz Question
 

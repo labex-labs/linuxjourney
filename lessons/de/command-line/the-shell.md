@@ -75,7 +75,7 @@ Anführungszeichen sind nützlich, wenn du möchtest, dass die Shell mehrere Wö
 
 ## Exercise
 
-Wir empfehlen, den umfassenden [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/de/learn/shell) zu erkunden, um verwandte Fähigkeiten und Konzepte zu üben.
+Wir empfehlen, den umfassenden [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/de/learn/shell) zu erkunden, um verwandte Fähigkeiten und Konzepte zu üben.
 
 ## Quiz Question
 

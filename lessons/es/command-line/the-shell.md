@@ -75,7 +75,7 @@ Las comillas son útiles cuando quieres que la shell trate varias palabras como 
 
 ## Exercise
 
-Recomendamos explorar la completa [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/es/learn/shell) para practicar habilidades y conceptos relacionados.
+Recomendamos explorar la completa [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/es/learn/shell) para practicar habilidades y conceptos relacionados.
 
 ## Quiz Question
 

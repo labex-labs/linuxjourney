@@ -75,7 +75,7 @@ Aspas são úteis quando você quer que o shell trate várias palavras como um �
 
 ## Exercise
 
-We recommend exploring the comprehensive [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/pt/learn/shell) to practice related skills and concepts.
+We recommend exploring the comprehensive [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/pt/learn/shell) to practice related skills and concepts.
 
 ## Quiz Question
 

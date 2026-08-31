@@ -75,7 +75,7 @@ Les guillemets sont utiles lorsque vous voulez que le shell considère plusieurs
 
 ## Exercise
 
-Nous recommandons d'explorer le [![Shell Learning Path](https://labex.io/_ipx/f_webp&q_100&s_20x20/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/fr/learn/shell) complet pour pratiquer les compétences et concepts associés.
+Nous recommandons d'explorer le [![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/fr/learn/shell) complet pour pratiquer les compétences et concepts associés.
 
 ## Quiz Question
 
