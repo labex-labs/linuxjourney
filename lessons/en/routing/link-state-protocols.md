@@ -1,32 +1,74 @@
 ---
-index: 6
+lesson_id: "link-state-protocols"
+course_id: "routing"
 lang: "en"
+order_index: 6
 title: "Link State Protocols"
+description: "Learn how link-state protocols form adjacencies, flood topology information, and calculate paths."
 meta_title: "Link State Protocols - Routing"
 meta_description: "Learn about link state protocols like OSPF for large networks. Understand their fast convergence and how they update routing tables. Start your Linux networking journey!"
 meta_keywords: "link state protocols, OSPF, Linux networking, routing protocols, network topology, beginner"
 ---
 
-## Lesson Content
+Link-state protocols describe local links and prefixes, distribute those descriptions through a routing scope, and let each router calculate paths from a topology database. OSPF and IS-IS are common examples.
 
-Link state protocols are great for large-scale networks. They are more complex than distance vector protocols; however, a large upside is their ability to converge quickly. This is because instead of periodically sending out the whole routing table, they only send updates to neighboring routes. They use a different algorithm to calculate the shortest path first and construct their network topology in the form of a graph to show which routers are connected to other routers.
+## Forming Adjacencies
 
-One of the common link state protocols is OSPF (Open Shortest Path First). It only updates the routing tables if there is a network change. It does not have a hop limit.
+Routers discover compatible neighbors and form protocol adjacencies according to interface type, area, timers, authentication, and other parameters. Seeing hello packets does not guarantee a full adjacency; mismatched configuration can stop the state machine earlier.
 
-## Exercise
+:::single-choice{#link-state-hello-limit}
+What does receiving an OSPF hello fail to prove?
 
-Practice makes perfect! Understanding how routing protocols work is crucial for network management. While direct labs on OSPF are not available in this set, building a strong foundation in network configuration and connectivity is essential. Here are some hands-on labs to reinforce your understanding of network fundamentals:
+::option[That the routers formed a full synchronized adjacency.]{#link-state-not-full .correct explanation="Area, timers, authentication, MTU, and other state can prevent full database exchange."}
+::option[That the neighbor sent at least one protocol message.]{#link-state-hello-sent explanation="Receiving the hello directly proves that limited fact."}
+::option[That an interface can receive a frame.]{#link-state-frame-received explanation="The received packet proves some local receive path worked."}
+:::
 
-1. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice configuring static and dynamic IP addresses, and verifying network settings, which are fundamental to any routing setup.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn to use `ping` and `arp` to understand how devices communicate at the network and data link layers, providing insight into network reachability.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use Docker to simulate network nodes and practice assigning IP addresses and testing connectivity across different subnets, which helps visualize network topology and routing concepts.
+## Flooding Link-State Information
 
-These labs will help you apply the concepts of network configuration and connectivity in real scenarios, building a solid foundation for understanding more advanced routing protocols like OSPF.
+Each router originates advertisements about its relevant state. Neighbors reliably flood newer information through the defined area or domain, rather than keeping updates only between the original neighboring pair. Sequence and aging mechanisms distinguish current information and remove stale state.
 
-## Quiz Question
+:::single-choice{#link-state-flooding-scope}
+Why is link-state information flooded beyond one neighbor?
 
-What is one of the most common link state protocols?
+::option[Every application needs a copy of all router passwords.]{#link-state-password-copy explanation="Application credentials are not topology advertisements."}
+::option[Ethernet cannot send unicast frames.]{#link-state-no-unicast explanation="Ethernet supports unicast; flooding here is a routing-protocol distribution mechanism."}
+::option[Routers in the routing scope need a consistent topology database.]{#link-state-consistent-database .correct explanation="Each router calculates paths from the shared set of current link-state advertisements."}
+:::
 
-## Quiz Answer
+## Calculating Shortest Paths
 
-OSPF
+After building a link-state database, a router runs a shortest-path-first algorithm, commonly Dijkstra's algorithm, from itself as the root. OSPF sums interface costs; policy and equal-cost rules influence which results are installed.
+
+“Shortest” means lowest protocol cost, not necessarily fewest routers or lowest measured application latency. Cost design must reflect operational intent.
+
+:::single-choice{#link-state-shortest-meaning}
+What does “shortest” mean in a link-state path calculation?
+
+::option[The route whose prefix has the fewest written characters.]{#link-state-shortest-text explanation="Text length is unrelated to topology cost."}
+::option[The path with the smallest sum of protocol costs.]{#link-state-lowest-cost .correct explanation="The cost model may or may not correspond directly to hop count or current latency."}
+::option[The path that always has zero packet loss.]{#link-state-zero-loss explanation="A calculated route does not guarantee application performance."}
+:::
+
+## Areas and Convergence
+
+OSPF areas limit topology flooding and calculation scope, with Area 0 serving as the backbone for normal inter-area design. Summarization and area types can intentionally give different routers different database detail.
+
+After a link change, detection, advertisement flooding, SPF calculation, route installation, and forwarding recovery each take time. Faster convergence than a simple distance-vector design is possible, but not automatic under every failure or configuration.
+
+:::single-choice{#link-state-convergence-stages}
+What should be measured during an OSPF convergence investigation?
+
+::option[Only the time at which an administrator opened a terminal.]{#link-state-terminal-time explanation="That does not isolate protocol or forwarding stages."}
+::option[Only the alphabetical order of router names.]{#link-state-router-names explanation="Names do not determine convergence timing."}
+::option[Detection, flooding, calculation, installation, and forwarding recovery.]{#link-state-all-stages .correct explanation="Separating stages reveals where convergence delay or failure occurs."}
+:::
+
+## Summary
+
+You can now follow link-state routing from neighbor discovery to installed paths.
+
+1. Distinguish hello reception from a full adjacency.
+2. Explain reliable flooding through a routing scope.
+3. Interpret shortest path as lowest configured protocol cost.
+4. Measure every control- and data-plane convergence stage.

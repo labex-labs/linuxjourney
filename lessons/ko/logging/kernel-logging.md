@@ -1,46 +1,97 @@
 ---
-index: 4
+lesson_id: "kernel-logging"
+course_id: "logging"
 lang: "ko"
+order_index: 4
 title: "커널 로깅"
+description: "dmesg와 journalctl로 현재 및 보존된 리눅스 커널 메시지를 조회하는 방법을 알아봅니다."
 meta_title: "커널 로깅 - 로깅"
-meta_description: "리눅스 커널 로그 (/var/log/kern.log 및 dmesg 포함) 를 살펴보세요. 부팅 메시지, 하드웨어 드라이버 정보 확인 및 시스템 문제 해결을 위해 kern 로그를 확인하는 방법을 알아보세요. 커널 로그 리눅스 파일 가이드."
-meta_keywords: "커널 로그, kern.log, /var/log/kern.log, 커널 로그 리눅스, kern 로그, dmesg, 리눅스 로깅, 부팅 메시지, 커널 이벤트"
+meta_description: "/var/log/kern.log와 dmesg를 포함한 리눅스 커널 로그를 살펴봅니다. 부팅 메시지와 하드웨어 드라이버 정보를 확인하고 시스템 문제를 해결하는 방법을 알아봅니다."
+meta_keywords: "커널 로그, kern.log, /var/log/kern.log, 리눅스 커널 로그, dmesg, 리눅스 로깅, 부팅 메시지, 커널 이벤트"
 ---
 
-## Lesson Content
+커널은 부팅, 드라이버, 장치, 파일시스템, 네트워킹, 메모리 및 장애에 관한 메시지를 내보냅니다. 이러한 레코드는 저수준 증상을 설명할 수 있지만, 경고 문자열 하나만으로 하드웨어 결함이 입증되지는 않습니다.
 
-Linux 커널은 운영 체제의 핵심이며, 자체 작동, 하드웨어 상태 및 잠재적인 문제에 대한 메시지를 생성합니다. 이 정보에 액세스하는 것은 시스템 관리 및 문제 해결에 매우 중요합니다. 바로 이 지점에서 커널 로그가 필요합니다.
+## 커널 링 버퍼 읽기
 
-### 커널 링 버퍼와 dmesg
+`dmesg`는 커널 링 버퍼의 메시지를 읽습니다.
 
-부팅 시 시스템은 커널 링 버퍼에서 방대한 양의 정보를 기록합니다. 이 버퍼에는 하드웨어 드라이버 로드, 커널 상태 업데이트 및 시작 프로세스 중에 발생하는 기타 이벤트에 대한 메시지가 포함되어 있습니다.
+```bash
+$ dmesg --human
+```
 
-이 로그는 `dmesg` 명령을 사용하여 볼 수 있습니다. 내용은 종종 `/var/log/dmesg`에도 기록되지만, 이 파일은 일반적으로 재부팅할 때마다 지워지고 다시 작성된다는 점에 유의해야 합니다. 매일 필요하지는 않더라도, 하드웨어 문제나 부팅 중 문제가 발생하는 경우 `dmesg` 출력이 가장 먼저 확인해야 할 곳입니다.
+버퍼의 용량은 유한하므로 새 메시지가 오래된 메시지를 덮어쓸 수 있습니다. 접근이 권한 있는 사용자로 제한될 수도 있습니다. 지원하는 구현체에서는 `dmesg --follow`로 새 커널 메시지를 추적할 수 있으며, 제한된 재현 작업이 끝나면 추적을 중지합니다.
 
-### 기본 커널 로그 파일
+:::single-choice{#kernel-log-ring-buffer-limit}
+오래된 커널 이벤트가 현재 `dmesg` 출력에 없을 수 있는 이유는 무엇입니까?
 
-커널 활동에 대한 보다 영구적인 기록을 위해 `/var/log/kern.log`를 확인할 수 있습니다. 이 파일은 `kernel log linux` 시스템이 사용하는 기본 대상입니다. 실행 중인 시스템에서 커널 정보와 이벤트를 캡처합니다.
+::option[커널 이벤트는 한 글자만 담을 수 있기 때문입니다.]{#kernel-log-one-character explanation="커널 메시지는 일반적인 진단 텍스트와 메타데이터를 담을 수 있습니다."}
+::option[`dmesg`가 표시한 모든 줄을 영구적으로 삭제하기 때문입니다.]{#kernel-log-display-deletes explanation="일반적인 읽기 작업은 표시한 커널 메시지를 모두 소비하지 않습니다."}
+::option[유한한 링 버퍼에서 이벤트가 덮어써졌을 수 있기 때문입니다.]{#kernel-log-overwritten .correct explanation="메모리 내 버퍼는 제한된 양의 커널 메시지 데이터만 보존합니다."}
+:::
 
-`kern.log` 파일에는 `dmesg`의 출력도 포함되어 있어 커널 관련 메시지에 대한 포괄적인 소스가 됩니다. 링 버퍼에 더 이상 존재하지 않는 과거 이벤트의 `kernel log`를 조사해야 하는 경우, `kern log`가 올바른 위치입니다.
+## 읽기 쉬운 타임스탬프 사용하기
 
-### 커널 로그가 중요한 이유
+원시 커널 타임스탬프는 일반적으로 부팅 시점을 기준으로 합니다. `dmesg --ctime` 또는 `--human`은 실제 시각으로 렌더링할 수 있지만, 변환된 값은 시계 이력에 의존하며 부팅 후 시계가 변경됐다면 정확하지 않을 수 있습니다. 정확한 순서가 중요할 때는 부팅 기준 시간도 보존하십시오.
 
-`kernel log`를 읽는 방법을 이해하는 것은 기본적인 기술입니다. 이 로그는 시스템이 하드웨어와 상호 작용하는 방식에 대한 깊은 통찰력을 제공합니다. `kern.log` 또는 `dmesg` 출력을 검사하여 드라이버 문제를 진단하고, 예기치 않은 하드웨어 동작을 조사하며, 커널의 전반적인 상태를 모니터링할 수 있습니다.
+:::single-choice{#kernel-log-timestamp-caution}
+변환된 `dmesg` 실제 시각을 주의해서 다뤄야 하는 이유는 무엇입니까?
 
-## Exercise
+::option[항상 다른 시스템의 시간을 나타내기 때문입니다.]{#kernel-log-other-machine explanation="로컬에서 계산되지만 시계 변경이 변환에 영향을 줄 수 있습니다."}
+::option[변할 수 있는 시계에 부팅 기준 시간을 매핑하기 때문입니다.]{#kernel-log-clock-change .correct explanation="시간 동기화나 수동 시계 변경으로 렌더링된 실제 시각이 오해를 일으킬 수 있습니다."}
+::option[시간 대신 파일시스템 여유 공간을 표시하기 때문입니다.]{#kernel-log-free-space explanation="타임스탬프 옵션은 저장 공간이 아니라 시간을 표시합니다."}
+:::
 
-연습이 완벽을 만듭니다! Linux 사용자 및 그룹 관리에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
+## 영구 커널 레코드 조회하기
 
-1. **[useradd, usermod 및 userdel 을 사용하여 Linux 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 새 계정 생성 및 보안부터 계정 수정 및 삭제에 이르기까지 사용자 관리의 전체 수명 주기를 연습합니다.
-2. **[groupadd, usermod 및 groupdel 을 사용하여 Linux 그룹 관리](https://labex.io/ko/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 새 그룹 생성, 사용자 멤버십 수정 및 그룹 제거를 포함하여 그룹 관리를 위한 핵심 명령줄 유틸리티에 대한 실습 경험을 얻습니다.
-3. **[Linux 에서 사용자 계정 및 Sudo 권한 구성](https://labex.io/ko/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - 암호 정책 시행 및 관리자 권한 부여를 포함하여 Linux 시스템의 보안을 강화하기 위한 사용자 계정 및 sudo 권한 관리의 필수 기술을 배웁니다.
+systemd 호스트에서 현재 부팅의 커널 레코드를 조회합니다.
 
-이러한 랩은 실제 시나리오에서 개념을 적용하고 Linux 에서 사용자 및 그룹 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
+```bash
+$ journalctl -k -b
+```
 
-## Quiz Question
+영구 저널 저장소가 이전 부팅을 보존했다면 부팅 목록을 확인하고 하나를 선택합니다.
 
-커널 부팅 메시지를 보는 데 사용할 수 있는 명령은 무엇입니까? 소문자 영어 명령만 사용하여 답변하십시오.
+```bash
+$ journalctl --list-boots
+$ journalctl -k -b -1
+```
 
-## Quiz Answer
+전통적인 syslog 라우팅은 `/var/log/kern.log`나 다른 파일을 만들 수 있지만 설정에 따라 다릅니다. 저장된 `/var/log/dmesg` 파일 역시 보편적이지 않으며 부팅 시점의 스냅샷만 나타낼 수 있습니다.
 
-dmesg
+:::single-choice{#kernel-log-previous-boot}
+보존된 이전 부팅의 커널 메시지를 요청하는 명령은 무엇입니까?
+
+::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="커널 메시지는 -k로 선택하며 추적 옵션은 이전 부팅을 선택하지 않습니다."}
+::option[`dmesg --clear`]{#kernel-log-clear explanation="지우기 작업은 버퍼 상태를 바꾸며 이전 부팅을 검색하지 않습니다."}
+::option[`journalctl -k -b -1`]{#kernel-log-previous .correct explanation="커널 필터와 부팅 오프셋 -1을 함께 사용하면 보존된 직전 부팅을 선택합니다."}
+:::
+
+## 커널 이벤트 조사하기
+
+해당 시점의 부팅, 타임스탬프, 장치, 하위 시스템 및 수행 중이던 동작을 파악합니다. 주변 커널 및 서비스 레코드를 조회한 다음 하드웨어 목록과 현재 상태를 비교합니다.
+
+```bash
+$ journalctl -k -b --since '10 minutes ago'
+$ lspci -k
+$ lsblk
+```
+
+해당 하위 시스템과 관련 있는 도구만 사용하십시오. 드라이버를 다시 불러오거나 장치의 바인딩을 해제하거나 재부팅하기 전에 저장소, 네트워크, 콘솔 및 서비스에 미칠 영향을 평가하고 복구 접근 경로를 보존합니다.
+
+:::single-choice{#kernel-log-warning-response}
+커널 경고 한 줄에 대한 가장 좋은 대응은 무엇입니까?
+
+::option[불러온 모든 드라이버를 즉시 언로드합니다.]{#kernel-log-unload-all explanation="중요 장치를 중단할 수 있으며 경고의 원인을 격리하지 못합니다."}
+::option[전체 시스템을 교체해야 한다고 가정합니다.]{#kernel-log-replace-machine explanation="레코드 하나만으로는 그런 결론을 내릴 증거가 충분하지 않습니다."}
+::option[주변 이벤트 및 현재 하위 시스템 상태와 연관 지어 분석합니다.]{#kernel-log-correlate .correct explanation="수정 작업을 선택하기 전에 맥락과 재현 가능한 영향을 확인해야 합니다."}
+:::
+
+## 요약
+
+이제 현재 커널 버퍼의 메시지와 보존된 커널 로그를 구분할 수 있습니다.
+
+1. `dmesg`로 유한한 링 버퍼를 읽습니다.
+2. 부팅 기준 및 변환된 타임스탬프를 주의해서 해석합니다.
+3. `journalctl -k`로 현재 또는 이전 부팅을 조회합니다.
+4. 변경을 일으키는 작업 전에 커널 메시지를 다른 정보와 연관 지어 분석합니다.

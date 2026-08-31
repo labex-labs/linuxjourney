@@ -1,44 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-dns"
+course_id: "dns"
 lang: "pt"
+order_index: 1
 title: "O que é DNS?"
+description: "Aprenda como o DNS organiza e resolve nomes distribuídos e registros de recursos tipados."
 meta_title: "O que é DNS? - DNS"
-meta_description: "Se você quer aprender sobre redes Linux, entender o DNS é crucial. Este guia explica o que é o Sistema de Nomes de Domínio (DNS), como ele traduz nomes de domínio para endereços IP e por que ele é a agenda essencial da internet. Um ponto de partida perfeito para quem deseja aprender Linux."
+meta_description: "Para aprender redes Linux, é essencial entender o DNS. Este guia explica o que é o Sistema de Nomes de Domínio (DNS), como ele traduz nomes de domínio em endereços IP e por que é o catálogo de endereços essencial da Internet. Um ponto de partida ideal para aprender Linux."
 meta_keywords: "DNS, Sistema de Nomes de Domínio, endereço IP, aprender linux, linux aprender, nome de host, redes Linux, iniciante, tutorial, guia, labex linux"
 ---
 
-## Lesson Content
+O Sistema de Nomes de Domínio é um banco de dados distribuído e hierárquico e um protocolo de consulta. Ele permite que os clientes recuperem informações tipadas associadas a nomes, incluindo endereços, roteamento de mensagens, servidores autoritativos, dados de serviços e registros de verificação.
 
-### A Agenda Telefônica da Internet
+## Nomes e registros de recursos
 
-Imagine se toda vez que você quisesse visitar o Google, você tivesse que digitar `http://192.78.12.4` em vez de `www.google.com`. Sem o Sistema de Nomes de Domínio (DNS), é exatamente assim que a internet seria. Os protocolos de rede de baixo nível só entendem endereços IP numéricos para identificar um host. O DNS é o sistema que nos permite, humanos, usar nomes fáceis de lembrar para sites e servidores em vez de longas sequências de números. Pense nisso como uma lista de contatos para a internet: você procura um nome para encontrar o número correspondente.
+O DNS faz mais do que traduzir um nome de host em um endereço IP. Um registro `A` contém um endereço IPv4, `AAAA` um endereço IPv6, `MX` dados de roteamento de mensagens, `NS` nomes de servidores autoritativos, e muitos outros tipos transportam dados diferentes. Um nome pode ter vários registros ou nenhum registro de endereço.
 
-### Como o DNS Funciona
+:::single-choice{#dns-purpose-beyond-address}
+Por que o DNS é mais do que uma lista de nomes de host e endereços?
 
-Em sua essência, o DNS traduz nomes de host legíveis por humanos (como `www.google.com`) em endereços IP legíveis por máquina (como `192.78.12.4`). Esse processo é chamado de resolução. Quando você digita um nome de domínio no seu navegador, seu computador envia uma consulta a um servidor DNS, que então procura o endereço IP correto e o envia de volta, permitindo que seu navegador se conecte ao servidor do site.
+::option[Ele atribui permanentemente endereços MAC a todos os quadros Ethernet.]{#dns-mac-frames explanation="A descoberta de vizinhos da camada de enlace não usa o DNS dessa maneira."}
+::option[Ele armazena registros tipados para vários tipos de dados de serviços e delegação.]{#dns-typed-records .correct explanation="Registros de endereço, mensagens, autoridade, alias e políticas possuem semânticas distintas."}
+::option[Ele garante que toda aplicação nomeada esteja íntegra.]{#dns-health-guarantee explanation="Os dados DNS podem ser resolvidos mesmo quando o serviço de destino está indisponível."}
+:::
 
-### Um Sistema Global Distribuído
+## Nomes hierárquicos
 
-O DNS não é um banco de dados único e central. Em vez disso, é um sistema massivo e distribuído. Os proprietários de sites gerenciam seus próprios registros DNS para informar ao mundo como encontrar seu domínio. Esses domínios individuais se comunicam entre si, formando um diretório vasto e interconectado para toda a internet. Essa estrutura descentralizada torna o sistema incrivelmente resiliente e escalável.
+Um nome de domínio totalmente qualificado identifica um caminho na árvore DNS. Em `www.example.com.`, o ponto final representa a raiz, `com` está abaixo dela, `example` está abaixo de `com`, e `www` é um nome dentro desse domínio. O ponto final costuma ser omitido nas interfaces de usuário, mas é importante para diferenciar nomes absolutos de nomes localmente relativos na configuração.
 
-### Por Que Você Deve Aprender DNS no Linux
+:::single-choice{#dns-trailing-dot}
+O que o ponto final em `www.example.com.` representa?
 
-Se você deseja **aprender Linux** para administração de sistemas ou desenvolvimento web, entender DNS é essencial. A capacidade de configurar, gerenciar e solucionar problemas de DNS é uma habilidade fundamental. Este curso cobrirá o básico, mas esteja ciente de que DNS é um tópico profundo e complexo. Para realmente dominá-lo, você precisará fazer pesquisas e práticas adicionais. Este é um ótimo primeiro passo em sua jornada para **linux learn**.
+::option[A raiz do DNS e um nome absoluto.]{#dns-root-dot .correct explanation="O ponto encerra o caminho completo entre o nó nomeado e a raiz."}
+::option[Um curinga para todos os domínios de primeiro nível.]{#dns-dot-wildcard explanation="Um curinga usa um rótulo como `*`, não o terminador da raiz."}
+::option[Uma instrução para usar apenas IPv4.]{#dns-dot-ipv4 explanation="O tipo de registro controla a família de endereços solicitada."}
+:::
 
-## Exercise
+## Autoridade distribuída
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de DNS e resolução de nomes de host. Usar um **terminal labex linux** para estes exercícios é uma ótima maneira de obter experiência prática.
+A autoridade do DNS é delegada ao longo da hierarquia. Servidores raiz direcionam os resolvedores para servidores de domínios de primeiro nível, que os direcionam aos servidores autoritativos das zonas delegadas. As organizações gerenciam seus próprios dados autoritativos sem armazenar todo o espaço global de nomes em um servidor central.
 
-1. **[Consultar Registros DNS no Linux com dig e nslookup](https://labex.io/pt/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Aprenda a usar ferramentas essenciais do Linux como `dig` e `nslookup` para consultar vários tipos de registros DNS, ajudando você a entender como os nomes de host são resolvidos para endereços IP.
-2. **[Gerenciar a Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Pratique a edição do arquivo `/etc/hosts` para gerenciar a resolução de nomes de host local, uma habilidade fundamental para controlar como seu sistema Linux resolve nomes sem depender de servidores DNS externos.
-3. **[Configurar um Servidor DNS Autoritativo Local no Linux](https://labex.io/pt/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Ganhe experiência prática configurando seu próprio servidor DNS autoritativo local usando `bind9`, permitindo que você se aprofunde em como as zonas e registros DNS são gerenciados.
+:::single-choice{#dns-authoritative-data}
+Quem fornece os dados definitivos de uma zona DNS delegada?
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança com DNS e resolução de nomes de host em um ambiente Linux.
+::option[Qualquer navegador que já tenha visitado o site.]{#dns-browser-authority explanation="O cache de um navegador não é autoritativo para a zona."}
+::option[Os servidores de nomes autoritativos configurados para a zona.]{#dns-authoritative-servers .correct explanation="A delegação identifica os servidores responsáveis por responder com autoridade."}
+::option[Todo roteador que transporta um pacote até o endereço.]{#dns-router-authority explanation="O encaminhamento de pacotes e a autoridade DNS são funções separadas."}
+:::
 
-## Quiz Question
+## Resolução e cache
 
-Verdadeiro ou falso: O DNS nos ajuda a encontrar endereços MAC para nomes de host?
+O resolvedor stub de um host geralmente envia uma consulta a um resolvedor recursivo. Esse resolvedor pode responder a partir de um cache válido ou consultar a hierarquia em nome do cliente. Os TTLs dos registros limitam por quanto tempo as entradas de cache normalmente podem ser reutilizadas, melhorando a escalabilidade, mas adiando a visibilidade das alterações até que os caches sejam atualizados.
 
-## Quiz Answer
+O sucesso do DNS não comprova a integridade da rota, do transporte, do TLS nem da aplicação. Uma falha de DNS também pode ocorrer antes de qualquer consulta externa, pois `/etc/hosts`, sufixos de pesquisa, caches locais ou políticas de serviços de nomes afetam o resolvedor do sistema.
 
-False
+:::single-choice{#dns-cache-ttl-role}
+O que o TTL de um registro DNS controla principalmente?
+
+::option[Quantos roteadores um pacote IP pode atravessar.]{#dns-ip-hop-limit explanation="O TTL ou o Limite de Saltos do IP é um campo de protocolo diferente."}
+::option[Por quanto tempo a aplicação deve permanecer íntegra.]{#dns-app-health-time explanation="O cache DNS não fornece garantia de disponibilidade do serviço."}
+::option[Por quanto tempo um resolvedor pode armazenar o registro em cache segundo as regras normais.]{#dns-cache-lifetime .correct explanation="Um cache mais curto ou mais longo afeta a carga de consultas e a propagação das alterações."}
+:::
+
+## Resumo
+
+Agora você pode descrever o DNS como um sistema de dados tipados, em cache e hierárquico.
+
+1. Diferencie os tipos de registros de recursos DNS por finalidade.
+2. Leia um nome totalmente qualificado a partir da raiz.
+3. Identifique a delegação e a responsabilidade autoritativa.
+4. Separe a resolução de nomes da conectividade com a aplicação.

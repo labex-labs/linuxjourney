@@ -1,60 +1,93 @@
 ---
-index: 3
+lesson_id: "traceroute"
+course_id: "troubleshooting"
 lang: "de"
-title: "Traceroute"
-meta_title: "Traceroute - Fehlerbehebung"
-meta_description: "Meistern Sie den Traceroute Linux-Befehl, um Netzwerkrouten zu verfolgen und Verbindungsprobleme zu beheben. Dieses Tutorial erklärt, wie Traceroute TTL verwendet, um den Pfad abzubilden, den Pakete zu ihrem Ziel nehmen."
-meta_keywords: "Traceroute, Traceroute Linux, Linux-Netzwerke, Netzwerk-Fehlerbehebung, TTL, Paket-Routing, Linux-Befehle, Anfänger, Tutorial"
+order_index: 3
+title: "traceroute"
+description: "Lerne, wie traceroute antwortende Hops ermittelt und wie du Lücken, Zeitmessungen und Pfadänderungen interpretierst."
+meta_title: "traceroute – Fehlersuche"
+meta_description: "Lerne mit dem Linux-Befehl traceroute Netzwerkrouten zu verfolgen und Konnektivitätsprobleme zu untersuchen. Diese Anleitung erklärt die Pfaderkennung mit TTL."
+meta_keywords: "traceroute, traceroute Linux, Linux-Vernetzung, Netzwerkfehlersuche, TTL, Paketrouting, Linux-Befehle, Einsteiger, Tutorial"
 ---
 
-## Lesson Content
+`traceroute` sendet Prüfungen mit steigenden IPv4-TTL- oder IPv6-Hop-Limit-Werten. Router, bei denen der Wert abläuft, können Time-Exceeded-Nachrichten zurückgeben und dadurch manche antwortenden Punkte entlang des Hinwegs sichtbar machen.
 
-Der Befehl `traceroute` ist ein grundlegendes Werkzeug zur Netzwerkdiagnose, das verwendet wird, um den Pfad zu verfolgen, den Pakete von Ihrem Computer zu einem Zielhost nehmen. Durch die Anzeige jedes "Hops" oder Routers auf dem Weg hilft er Ihnen, Engpässe im Netzwerk zu identifizieren und Verbindungsprobleme zu beheben. Das Dienstprogramm `traceroute linux` ist für jeden Systemadministrator oder Netzwerktechniker unerlässlich.
+## Funktionsweise der Hop-Erkennung
 
-### Wie Traceroute funktioniert
+Prüfungen beginnen mit einem Hop-Limit von eins, das schrittweise erhöht wird. Der erste Router verringert eins auf null und kann einen ICMP-Fehler zurückgeben. Ein Limit von zwei erreicht vor dem Ablauf den zweiten Router, und der Vorgang läuft weiter, bis das Ziel antwortet oder der Höchstwert erreicht ist.
 
-Der Mechanismus hinter `traceroute` liegt in seiner cleveren Manipulation des Time To Live (TTL)-Feldes im Header eines IP-Pakets. Der Vorgang funktioniert wie folgt:
+:::single-choice{#traceroute-expiring-field}
+Welches Feld lässt aufeinanderfolgende Prüfungen an späteren Routern ablaufen?
 
-1. `traceroute` sendet ein Prüfpaket mit einem TTL-Wert von 1 aus.
-2. Der erste Router auf dem Pfad empfängt das Paket, dekrementiert die TTL auf 0 und verwirft es. Der Router sendet dann eine ICMP-"Time Exceeded"-Nachricht zurück an Ihren Computer.
-3. `traceroute` zeichnet die IP-Adresse des Routers und die Round-Trip-Zeit auf.
-4. Anschließend sendet es ein weiteres Paket, diesmal mit einer TTL von 2. Dieses Paket passiert den ersten Router erfolgreich, wird aber vom zweiten Router verworfen, der wiederum eine "Time Exceeded"-Nachricht zurücksendet.
-5. Dieser Vorgang wiederholt sich, wobei die TTL für jeden nachfolgenden Satz von Paketen um eins erhöht wird. Durch das Erstellen einer Liste der Router, die "Time Exceeded"-Nachrichten zurücksenden, kartiert `traceroute` die gesamte Route.
-6. Der Vorgang endet, wenn die Pakete schließlich das Ziel erreichen, das mit einer ICMP-"Echo Reply"-Nachricht antwortet.
+::option[Die DNS-Cache-TTL des Zielnamens.]{#traceroute-dns-ttl explanation="Die Laufzeit eines DNS-Datensatzes steuert keine Paketweiterleitungs-Hops."}
+::option[Die Ethernet-Quell-MAC-Adresse.]{#traceroute-source-mac explanation="Verbindungsadressen enthalten keinen Ende-zu-Ende-Hop-Zähler."}
+::option[IPv4-TTL oder IPv6-Hop-Limit.]{#traceroute-hop-field .correct explanation="Die Erhöhung dieses begrenzten Weiterleitungszählers macht antwortende geroutete Hops sichtbar."}
+:::
 
-### Verstehen der Traceroute-Ausgabe
+## Prüfmethoden
 
-Betrachten wir eine Beispielausgabe der Ausführung von `traceroute` in einem Linux-Terminal:
+Herkömmliches Linux-traceroute sendet gewöhnlich UDP-Prüfungen an hohe Zielports. Das Ziel kann den Abschluss durch ICMP Port Unreachable melden. Optionen können stattdessen ICMP-Echo- oder TCP-SYN-Prüfungen verwenden, die Filter unterschiedlich durchqueren können:
 
 ```bash
-$ traceroute google.com
-traceroute an google.com (216.58.216.174), 30 Hops max, 60 Byte Pakete
- 1  192.168.4.254 (192.168.4.254)  0.028 ms  0.009 ms  0.008 ms
- 2  100.64.1.113 (100.64.1.113)  1.227 ms  1.226 ms 0.920 ms
- 3  100.64.0.20 (100.64.0.20)  1.501 ms 1.556 ms  0.855 ms
+$ traceroute -n example.com
+$ traceroute -I -n example.com
+$ traceroute -T -p 443 -n example.com
 ```
 
-Jede nummerierte Zeile stellt einen Hop entlang des Netzwerkpfads dar. Hier ist, wie die Informationen zu interpretieren sind:
+Berechtigungen und unterstützte Optionen unterscheiden sich. Verwende für das Ziel autorisierte Methoden und erfasse die Methode beim Vergleich von Ergebnissen.
 
-- **Hop-Nummer:** Die erste Spalte (z. B. `1`, `2`, `3`) gibt die Reihenfolge des Routers im Pfad an.
-- **Router-Name und IP-Adresse:** Der nächste Teil zeigt den Hostnamen (falls auflösbar) und die IP-Adresse des Routers an diesem Hop.
-- **Round-Trip-Zeiten (RTT):** Die letzten drei Spalten zeigen die Round-Trip-Zeit für jedes der drei Prüfpakete, die an diesen spezifischen Hop gesendet wurden. Diese Zeiten, gemessen in Millisekunden (ms), helfen Ihnen, die Latenz bei jedem Schritt der Reise abzuschätzen.
+:::single-choice{#traceroute-default-destination-response}
+Was beendet gewöhnlich ein herkömmliches Linux-UDP-traceroute?
 
-Die effektive Nutzung des Befehls `traceroute linux` liefert unschätzbare Einblicke in die Leistung und Struktur Ihres Netzwerks.
+::option[Eine ICMP-Port-Unreachable-Antwort des Ziels.]{#traceroute-port-unreachable .correct explanation="Hohe UDP-Ports sind normalerweise unbenutzt, sodass sich das Ziel durch diesen Fehler erkennen lässt."}
+::option[Eine vorgeschriebene HTTP-200-Antwort von jedem Router.]{#traceroute-http-every-router explanation="Router geben Netzwerksteuerungsfehler und keine HTTP-Antworten zurück."}
+::option[Ein Ethernet-Broadcast des Ziels über das Internet.]{#traceroute-ethernet-broadcast explanation="Broadcasts der Verbindungsschicht durchqueren keine gerouteten Pfade."}
+:::
 
-## Exercise
+## Sternchen interpretieren
 
-Übung ist der Schlüssel zur Beherrschung der Netzwerkdiagnose. Die folgenden praktischen Labs helfen Ihnen, Ihr Verständnis der Netzwerkwegfindung und Fehlerbehebung mit Tools wie `traceroute` zu festigen:
+Ein Sternchen bedeutet, dass vor dem Zeitlimit keine Antwort für diese Prüfung beobachtet wurde. Der Router kann Transitverkehr weiterleiten und zugleich Diagnoseantworten filtern oder ratenbegrenzen. Wenn spätere Hops antworten, hat der stille Hop eindeutig zumindest manche Prüfungen weitergeleitet.
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls zur Konfiguration von Netzwerkeinstellungen und überprüfen Sie anschließend die Konnektivität und Routing-Pfade mit `traceroute`.
-2. **[Interaktion auf Netzwerkebene mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie `ping` und `arp` zusammenarbeiten, um Interaktionen auf Netzwerkebene zu verstehen, was grundlegende Konzepte dafür sind, wie `traceroute` funktioniert.
+:::single-choice{#traceroute-asterisk-meaning}
+Was beweist `*` an einem Hop?
 
-Diese Labs helfen Ihnen, die Konzepte der Netzwerkdiagnose in realen Szenarien anzuwenden und Vertrauen in wesentliche Linux-Netzwerktools aufzubauen.
+::option[Der Router verwirft dauerhaft alle Transitpakete.]{#traceroute-star-all-drop explanation="Spätere Antworten können die fortgesetzte Weiterleitung belegen."}
+::option[Nur, dass vor dem Prüfzeitlimit keine passende Antwort eintraf.]{#traceroute-star-no-response .correct explanation="Filterung, Ratenbegrenzung, Verlust und Rückwegprobleme können sämtlich Schweigen verursachen."}
+::option[Das Ziel besitzt keine IP-Adresse.]{#traceroute-star-no-address explanation="Die Prüfung zielt bereits auf eine Adresse, und ein stiller Hop entfernt sie nicht."}
+:::
 
-## Quiz Question
+## Zeitmessung und Pfadänderungen
 
-Was wird bei den Hops über das Netzwerk um eins dekrementiert? (Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.)
+Die Zeiten pro Hop messen Umlaufzeiten zu Steuerantworten und nicht die vom Link zwischen benachbarten ausgegebenen Zeilen hinzugefügte Latenz. Router können Antworten der Steuerungsebene nachrangig behandeln. Lastverteilung kann Prüfungen über unterschiedliche Pfade senden, und Namensauflösung kann die Anzeige verzögern; `-n` vermeidet Rückwärtsauflösungen.
 
-## Quiz Answer
+Der Rückweg jeder ICMP-Antwort kann vom Hinweg abweichen. Wiederhole Tests und setze sie zu Anwendungszeitmessungen an den Endpunkten in Beziehung, bevor du einen Engpass benennst.
 
-TTL
+:::single-choice{#traceroute-hop-rtt-limit}
+Warum sollten RTT-Werte benachbarter Hops nicht als genaue Verbindungslatenz voneinander abgezogen werden?
+
+::option[Traceroute meldet alle Zeiten in Byte statt Millisekunden.]{#traceroute-times-bytes explanation="Die angezeigten Prüfzeiten werden normalerweise in Millisekunden angegeben."}
+::option[Antworten können unterschiedliche Rückwege und Verarbeitung der Steuerungsebene verwenden.]{#traceroute-rtt-asymmetry .correct explanation="Die Messungen sind getrennte Ende-zu-Hop-Umlaufzeiten und keine synchronisierten Einwegstichproben einer Verbindung."}
+::option[Jeder Router besitzt dieselbe Uhr wie die Quelle.]{#traceroute-router-clock explanation="Die Messung beruht nicht auf synchronisierten entfernten Uhren."}
+:::
+
+## Mit der Anwendung vergleichen
+
+Ein traceroute kann das Ziel erreichen, während der Dienst blockiert ist, und der Dienst kann funktionieren, während Zwischenrouter ihre Antworten verbergen. Teste dieselbe Adressfamilie, dasselbe Ziel, Transportprotokoll und denselben Port wie die Anwendung und verwende traceroute anschließend als unterstützenden Pfadbeleg.
+
+:::single-choice{#traceroute-service-proof}
+Beweist ein abgeschlossenes traceroute, dass ein HTTPS-Dienst fehlerfrei ist?
+
+::option[Ja, weil jeder Hop das Serverzertifikat validiert.]{#traceroute-validates-cert explanation="Router führen nicht die TLS-Validierung des Clients aus."}
+::option[Nein; Transport-, TLS- und HTTP-Verhalten benötigen eigene Tests.]{#traceroute-not-app-proof .correct explanation="Pfaderkennung und Anwendungszustand sind unterschiedliche Diagnoseschichten."}
+::option[Ja, aber nur, wenn Rückwärts-DNS-Namen ausgegeben werden.]{#traceroute-rdns-proof explanation="Namen belegen keine Anwendungsfunktion."}
+:::
+
+## Zusammenfassung
+
+Du kannst traceroute nun als Folge von Prüfungen mit begrenzter Hop-Anzahl interpretieren und nicht als vollständiges Pfadorakel.
+
+1. Erkläre die Hop-Erkennung durch Ablauf von TTL oder Hop Limit.
+2. Erfasse, ob UDP-, ICMP- oder TCP-Prüfungen verwendet wurden.
+3. Behandle Sternchen als fehlende Antworten und nicht als bewiesene Ausfälle.
+4. Leite aus RTTs benachbarter Hops keine genaue Verbindungslatenz ab.
+5. Verknüpfe Pfadbelege mit der tatsächlichen Anwendung.

@@ -1,44 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-dns"
+course_id: "dns"
 lang: "ja"
+order_index: 1
 title: "DNS とは？"
+description: "DNS が分散された名前と型付きリソースレコードを体系化し、解決する仕組みを学びます。"
 meta_title: "DNS とは？ - DNS"
 meta_description: "Linux ネットワーキングを学ぶなら、DNS の理解は不可欠です。このガイドでは、ドメインネームシステム（DNS）の概要、ドメイン名を IP アドレスに変換する仕組み、そしてなぜそれがインターネットの必須のアドレス帳なのかを解説します。Linux 学習を始める方に最適です。"
 meta_keywords: "DNS, ドメインネームシステム，IP アドレス，Linux 学習，Linux, ホスト名，Linux ネットワーキング，初心者，チュートリアル，ガイド，labex linux"
 ---
 
-## Lesson Content
+Domain Name System（DNS）は、分散型の階層データベースであり、問い合わせプロトコルでもあります。クライアントは名前に関連付けられた型付き情報を取得でき、そこにはアドレス、メールルーティング、権威サーバー、サービスデータ、検証レコードなどが含まれます。
 
-### インターネットの電話帳
+## 名前とリソースレコード
 
-もし Google にアクセスするたびに、`www.google.com`ではなく`http://192.78.12.4`と入力しなければならないとしたらどうでしょう。ドメインネームシステム（DNS）がなければ、インターネットはまさにそのような状態になります。低レベルのネットワーキングプロトコルは、ホストを識別するために数値の IP アドレスしか理解できません。DNS は、人間が長い数字の羅列の代わりに、ウェブサイトやサーバーに対して覚えやすい名前を使用できるようにするシステムです。インターネットの連絡先リストのようなものだと考えてください。名前を検索して、対応する番号を見つけます。
+DNS は、一つのホスト名を一つの IP アドレスへ変換するだけではありません。`A` レコードは IPv4 アドレス、`AAAA` は IPv6 アドレス、`MX` はメールルーティング情報、`NS` は権威サーバー名を保持し、ほかにもさまざまな型が別種のデータを運びます。一つの名前に複数レコードがある場合も、アドレスレコードがない場合もあります。
 
-### DNS の仕組み
+:::single-choice{#dns-purpose-beyond-address}
+DNS が単なるホスト名とアドレスの一覧ではないのはなぜですか？
 
-DNS の核となる機能は、人間が読めるホスト名（例：`www.google.com`）を、機械が読める IP アドレス（例：`192.78.12.4`）に変換することです。このプロセスを名前解決（resolution）と呼びます。ブラウザにドメイン名を入力すると、コンピューターは DNS サーバーにクエリを送信し、DNS サーバーが正しい IP アドレスを検索して返送します。これにより、ブラウザはウェブサイトのサーバーに接続できるようになります。
+::option[すべての Ethernet フレームへ MAC アドレスを恒久的に割り当てるから。]{#dns-mac-frames explanation="リンク層の近隣探索は、そのような方法で DNS を使いません。"}
+::option[複数種類のサービス情報や委任情報を型付きレコードとして保存するから。]{#dns-typed-records .correct explanation="アドレス、メール、権威、別名、ポリシー関連のレコードには、それぞれ異なる意味があります。"}
+::option[名前を持つすべてのアプリケーションの正常性を保証するから。]{#dns-health-guarantee explanation="宛先サービスが利用できなくても、DNS データは正常に解決できる場合があります。"}
+:::
 
-### 分散されたグローバルシステム
+## 階層化された名前
 
-DNS は単一の中央データベースではありません。むしろ、それは巨大な分散システムです。ウェブサイトの所有者は、自分のドメインを見つける方法を世界に伝えるために、独自の DNS レコードを管理しています。これらの個々のドメインはお互いに通信し合い、インターネット全体の広大な相互接続されたディレクトリを形成しています。この非中央集権的な構造により、システムは信じられないほど回復力があり、スケーラブルになります。
+Fully Qualified Domain Name（FQDN）は、DNS ツリー内の経路を識別します。`www.example.com.` では、最後のドットが root、その下が `com`、さらにその下が `example`、`www` はそのドメイン内の名前です。末尾のドットはユーザーインターフェースで省略されることが多いものの、設定内で絶対名とローカル相対名を区別するときに重要です。
 
-### Linux で DNS を学ぶべき理由
+:::single-choice{#dns-trailing-dot}
+`www.example.com.` の最後のドットは何を表しますか？
 
-システム管理やウェブ開発のために**Linux を学びたい**のであれば、DNS を理解することは不可欠です。DNS を設定、管理、トラブルシューティングする能力は基本的なスキルです。このコースでは基礎を扱いますが、DNS は深く複雑なトピックであることを認識しておく必要があります。真に習得するには、追加の調査と練習が必要です。これは、**linux learn**への道のりにおける素晴らしい第一歩です。
+::option[DNS root と絶対名。]{#dns-root-dot .correct explanation="このドットが、名前付きノードから root までの完全な経路を終端します。"}
+::option[すべてのトップレベルドメインに対するワイルドカード。]{#dns-dot-wildcard explanation="ワイルドカードは root 終端記号ではなく、`*` などのラベルを使います。"}
+::option[IPv4 だけを使うという指示。]{#dns-dot-ipv4 explanation="要求するアドレスファミリーはレコード型で制御します。"}
+:::
 
-## Exercise
+## 分散された権威
 
-練習あるのみです！DNS とホスト名の解決の理解を深めるための実践的なラボをいくつか紹介します。これらの演習で**labex linux ターミナル**を使用することは、実践的な経験を積むための優れた方法です。
+DNS の権威は階層に沿って下位へ委任されます。root server は resolver を top-level-domain server へ導き、そこから委任済み zone の authoritative server へ導きます。組織は、一つの中央サーバーへ全世界の名前空間を保存せず、自組織の権威データを管理できます。
 
-1. **[dig と nslookup を使用して Linux で DNS レコードをクエリする](https://labex.io/ja/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - `dig`や`nslookup`などの必須の Linux ツールを使用してさまざまな DNS レコードタイプをクエリする方法を学び、ホスト名が IP アドレスに解決される仕組みを理解するのに役立ちます。
-2. **[Linux でローカルホスト名解決を管理する](https://labex.io/ja/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - `/etc/hosts`ファイルを編集してローカルのホスト名解決を管理する練習をします。これは、外部 DNS サーバーに依存せずに Linux システムが名前を解決する方法を制御するための基本的なスキルです。
-3. **[Linux 上にローカルの権威 DNS サーバーを設定する](https://labex.io/ja/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - `bind9`を使用して独自のローカルの権威 DNS サーバーを設定および構成することで実践的な経験を積み、DNS ゾーンとレコードがどのように管理されているかをより深く掘り下げることができます。
+:::single-choice{#dns-authoritative-data}
+委任済み DNS zone の決定的なデータを提供するのは誰ですか？
 
-これらのラボは、概念を実際のシナリオに適用し、Linux 環境での DNS とホスト名解決に対する自信を構築するのに役立ちます。
+::option[以前そのサイトを訪れた任意のブラウザー。]{#dns-browser-authority explanation="ブラウザーのキャッシュは、その zone に対して権威を持ちません。"}
+::option[その zone に設定された authoritative name server。]{#dns-authoritative-servers .correct explanation="委任によって、権威を持って応答する責任のあるサーバーが特定されます。"}
+::option[そのアドレスへパケットを運ぶすべてのルーター。]{#dns-router-authority explanation="パケット転送と DNS の権威は別の役割です。"}
+:::
 
-## Quiz Question
+## 名前解決とキャッシュ
 
-真偽：DNS はホスト名の MAC アドレスを見つけるのに役立ちますか？
+ホストの stub resolver は通常、recursive resolver へ問い合わせを送ります。その resolver は有効なキャッシュから応答するか、クライアントに代わって階層へ問い合わせます。レコードの TTL は、通常キャッシュエントリを再利用できる期間を制限します。規模を拡大しやすくする一方、キャッシュが更新されるまで変更が見えにくくなります。
 
-## Quiz Answer
+DNS の成功は、経路、トランスポート、TLS、アプリケーションの正常性を証明しません。また、`/etc/hosts`、search suffix、ローカルキャッシュ、名前サービスのポリシーがシステムの resolver に影響するため、外部へ問い合わせる前に DNS 解決が失敗することもあります。
 
-False
+:::single-choice{#dns-cache-ttl-role}
+DNS レコードの TTL が主に制御するものは何ですか？
+
+::option[IP パケットが通過できるルーター数。]{#dns-ip-hop-limit explanation="IP の TTL または Hop Limit は別のプロトコルフィールドです。"}
+::option[アプリケーションが正常でなければならない期間。]{#dns-app-health-time explanation="DNS キャッシュはサービスの可用性を保証しません。"}
+::option[通常の規則で resolver がレコードをキャッシュできる期間。]{#dns-cache-lifetime .correct explanation="キャッシュ期間の長短は、問い合わせ負荷と変更の伝播に影響します。"}
+:::
+
+## まとめ
+
+これで、DNS を型付き・キャッシュ付き・階層型のデータシステムとして説明できます。
+
+1. DNS リソースレコードの型を目的別に区別する。
+2. Fully Qualified Domain Name を root から下向きに読む。
+3. 委任と権威を持つ責任主体を特定する。
+4. 名前解決とアプリケーション接続性を区別する。

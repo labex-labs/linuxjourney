@@ -1,17 +1,18 @@
 ---
-index: 9
+lesson_id: "history-command"
+course_id: "command-line"
 lang: "zh"
+order_index: 9
 title: "history 命令"
+description: "学习在 Bash 中查看、搜索、重用和管理命令历史。"
 meta_title: "history - 命令行"
 meta_description: "通过示例学习 Linux history 命令，包括查看命令历史、重运行命令、反向搜索、删除条目和清屏操作。"
 meta_keywords: "linux history 命令, bash history, history -c, history -d, history -w, Ctrl-R, 命令历史, clear 命令"
 ---
 
-## Lesson Content
+交互式 shell 可以保存你输入过的命令。本课重点介绍 Bash，其中的 `history` 内建命令用于显示和管理这份记录；其他 shell 可能采用不同的快捷键、文件或设置。
 
-你的 shell 会记录你之前输入过的命令。当你想查找并重用某个命令而不想重新输入时，可以访问这个列表。`history` 命令是 Bash 以及许多类 Unix shell 环境中的基础工具。
-
-### 查看你的命令历史
+## 查看 Bash 历史
 
 要查看你使用过的命令列表，输入 `history`。
 
@@ -24,7 +25,15 @@ $ history
 
 每一行都有一个历史编号，后面跟着命令。
 
-### 重运行之前的命令
+:::single-choice{#show-command-history}
+哪个 Bash 命令会显示当前带编号的历史列表？
+
+::option[`clear`]{#clear-display explanation="`clear` 刷新可见的终端区域，不会显示以前的命令。"}
+::option[`history -w`]{#write-history explanation="`history -w` 把当前列表写入历史文件，用途是保存，而不是显示列表。"}
+::option[`history`]{#show-history .correct explanation="`history` 内建命令会打印当前历史列表中的命令，通常还会带上历史编号。"}
+:::
+
+## 重用以前的命令
 
 shell 提供了几种快捷方式来方便地重运行命令。
 
@@ -33,13 +42,31 @@ shell 提供了几种快捷方式来方便地重运行命令。
 - **按编号运行**：使用 `!102` 来运行历史中编号为 102 的命令。
 - **按前缀运行**：使用 `!cat` 来运行最近以 `cat` 开头的命令。
 
-### 搜索你的历史
+以 `!` 开头的历史扩展形式可能会在按 Enter 后立即运行命令。只要有疑问，就先检查匹配内容，尤其是在添加提升权限的命令或操作重要文件之前。
+
+:::single-choice{#repeat-most-recent-command}
+哪个 Bash 历史扩展会重复最近执行的命令？
+
+::option[`!102`]{#event-number explanation="这个扩展会选择历史编号 102 的命令，而该条目不一定是最近的命令。"}
+::option[`!cat`]{#event-prefix explanation="它选择最近一条以 `cat` 开头的命令，并不表示任意类型的最近命令。"}
+::option[`!!`]{#previous-event .correct explanation="在 Bash 中，`!!` 会展开为上一条命令，并在提交该行后执行它。"}
+:::
+
+## 交互式搜索历史
 
 最强大的历史快捷键之一是 `Ctrl-R`。这会启动反向搜索。按下 `Ctrl-R` 后，开始输入你想查找的命令的任意部分，shell 会显示最近匹配的命令。你可以反复按 `Ctrl-R` 来循环浏览更早的匹配项。找到想要的命令后，按回车即可执行。
 
-如果你想在执行前编辑匹配的命令，按右箭头键或左箭头键代替回车。
+按 Enter 会执行显示的匹配项。如果想先查看或编辑，请用方向键把该命令放到编辑行上。
 
-### 管理历史列表
+:::single-choice{#search-before-executing}
+你记得以前某条 Bash 命令的一部分，并想交互式查找它。首先应按什么？
+
+::option[`Ctrl+D`]{#end-input explanation="`Ctrl+D` 在许多终端场景中表示输入结束，在空闲 shell 中甚至可能退出；它不会开始历史搜索。"}
+::option[`Ctrl+C`]{#cancel-input explanation="`Ctrl+C` 通常会中断或取消当前操作，并不搜索命令历史。"}
+::option[`Ctrl+R`]{#reverse-search .correct explanation="`Ctrl+R` 会开始对命令历史进行反向增量搜索，继续输入字符可缩小匹配范围。"}
+:::
+
+## 管理历史列表
 
 除了查看历史，你还可以直接管理它。
 
@@ -54,36 +81,44 @@ $ history -d 101
 $ history -w
 ```
 
-使用历史扩展命令如 `!!` 和 `!102` 时要小心。建议先用 `history` 确认将要执行的命令。
+清空内存列表本身并不能保证旧命令已从所有文件、备份或其他活动 shell 中消失。历史行为还取决于 Bash 设置，以及会话读取或写入文件的时机。
 
-### 其他有用的终端工具
+:::single-choice{#save-current-history-list}
+哪个命令会把当前 Bash 历史列表写入配置的历史文件？
 
-当你的终端窗口内容过多时，可能想清理一下。使用 `clear` 命令可以清空显示屏，开始一个干净的界面。
+::option[`history -c`]{#clear-current-list explanation="`-c` 会清空内存列表，并不要求保存当前列表。"}
+::option[`history -d 101`]{#delete-one-entry explanation="`-d` 会删除选定的一条历史记录，不是保存完整列表的操作。"}
+::option[`history -w`]{#write-current-list .correct explanation="`-w` 会把当前历史列表写入配置的历史文件。"}
+:::
+
+## 清理显示和补全名称
+
+需要新的可见终端区域时，可以使用 `clear`：
 
 ```bash
 $ clear
 ```
 
-另一个不可或缺的功能是 Tab 补全。如果你开始输入命令、文件名或目录的开头，按 Tab 键，shell 会尝试自动补全。如果有多个可能，可能会显示选项或无反应。再次按 Tab 通常会列出所有可能的补全项。
+这不会删除 Bash 历史列表。根据终端的不同，滚动回看中也可能仍保留旧的显示内容。
 
-### 常见问题
+Tab 补全也是避免重复输入的方法。先输入命令、文件名或目录名的开头，再按 Tab。若匹配唯一，Bash 可能直接补全；若有多个匹配，则可能显示候选项。
 
-**Bash 历史记录存储在哪里？** 通常在 `~/.bash_history`，但具体行为取决于 shell 配置。
+命令行可能被存进历史记录，因此如果存在更安全的输入方法，不要直接把密码、令牌或其他秘密写进命令。
 
-**历史记录会立即包含每条命令吗？** 不一定。有些 shell 只有在会话退出时才写入历史，除非另有配置。
+:::single-choice{#distinguish-clear-from-history-clear}
+你想刷新可见终端，但不删除内存中的命令历史。应运行哪个命令？
 
-**历史记录会包含敏感数据吗？** 会。避免直接在命令中输入密码、令牌或秘密信息。
+::option[`clear`]{#clear-visible-area .correct explanation="`clear` 会刷新可见终端区域，同时保留 Bash 的内存历史列表。"}
+::option[`history -c`]{#clear-memory explanation="它会删除当前内存历史列表中的条目，改变的是历史，而不只是刷新显示。"}
+::option[`history -d 1`]{#delete-first-entry explanation="它要求 Bash 删除选定的历史条目，并不会清理可见终端区域。"}
+:::
 
-**`history -c` 和 `clear` 有什么区别？** `history -c` 清除内存中的命令历史。`clear` 只清除终端屏幕显示。
+## 总结
 
-## Exercise
+现在，你可以查找并重用 Bash 命令，同时有意识地管理历史记录。
 
-虽然本主题没有特定实验，但我们推荐探索全面的 [Linux 学习路径](https://labex.io/zh/learn/linux) 来练习相关的 Linux 技能和概念。
-
-## Quiz Question
-
-清空终端的命令是什么？（请仅用小写英文字母回答）
-
-## Quiz Answer
-
-clear
+1. 显示当前带编号的历史列表。
+2. 谨慎地调出或展开以前的命令。
+3. 使用 `Ctrl+R` 交互式搜索历史。
+4. 删除、清空或写入历史条目。
+5. 区分命令历史与终端显示内容。

@@ -1,89 +1,98 @@
 ---
-index: 5
+lesson_id: "packet-analysis"
+course_id: "troubleshooting"
 lang: "fr"
-title: "Analyse de Paquets"
-meta_title: "Analyse de Paquets - Dépannage"
-meta_description: "Apprenez les fondamentaux de l'analyse de paquets réseau sous Linux. Ce guide présente tcpdump, un puissant analyseur de paquets, pour capturer et interpréter le trafic réseau."
-meta_keywords: "tcpdump, analyse de paquets, analyse de paquets réseau, analyseur de paquets réseau, analyse réseau, outils d'analyse de paquets réseau, réseau Linux, Wireshark, commandes Linux, trafic réseau"
+order_index: 5
+title: "Analyse de paquets"
+description: "Apprenez à capturer une trace de paquets bornée et filtrée, puis à l'analyser prudemment avec tcpdump."
+meta_title: "Analyse de paquets - Dépannage"
+meta_description: "Découvrez l'analyse de paquets réseau sous Linux et utilisez tcpdump pour capturer et interpréter le trafic."
+meta_keywords: "tcpdump, analyse de paquets, capture réseau, Wireshark, trafic réseau Linux"
 ---
 
-## Lesson Content
+Une capture enregistre le trafic visible depuis un point d'observation. Elle révèle échanges et chronologie, mais peut aussi collecter identifiants, données personnelles et trafic d'autres utilisateurs. Obtenez l'autorisation, réduisez la portée, protégez les fichiers et respectez la conservation prévue.
 
-Le domaine de l'analyse des paquets réseau est vaste et peut faire l'objet de cours et de livres entiers. Cette leçon présentera les fondamentaux. L'analyse des paquets implique la capture et l'inspection des données qui transitent sur un réseau. C'est une compétence essentielle pour le dépannage réseau, l'optimisation des performances et l'analyse de sécurité. En examinant les paquets individuels, vous pouvez obtenir des aperçus approfondis de ce qui se passe sur votre réseau à un niveau bas.
+## Choisir le point d'observation
 
-### Outils populaires d'analyse de paquets réseau
+Capturez sur l'interface et dans l'espace de noms où passe réellement le flux touché. Ponts, conteneurs, VPN, agrégats, VLAN et déchargement peuvent modifier ce qu'une interface montre. Utilisez `ip route get` et `ip link` pour repérer les candidates.
 
-Il existe deux outils d'analyse de paquets réseau extrêmement populaires : Wireshark et tcpdump. Ce sont tous deux de puissantes applications d'analyse de paquets qui scannent vos interfaces réseau, capturent l'activité des paquets et analysent les données pour inspection. Ils nous permettent d'entrer dans les détails de l'analyse réseau. Nous utiliserons tcpdump pour sa simplicité en ligne de commande, mais si vous prévoyez d'approfondir l'analyse des paquets réseau, explorer l'interface graphique de Wireshark est fortement recommandé.
+:::single-choice{#packet-analysis-interface-choice}
+Pourquoi le choix de l'interface de capture importe-t-il ?
 
-### Installation de tcpdump
+::option[Chaque interface reflète automatiquement tout Internet.]{#packet-analysis-mirrors-internet explanation="Un hôte ne voit normalement que le trafic livré ou répliqué vers ses interfaces."}
+::option[Seul le trafic visible à ce point d'observation peut être enregistré.]{#packet-analysis-visible-point .correct explanation="Espaces de noms, tunnels, ponts et routage peuvent placer le flux ailleurs."}
+::option[Le nom de l'interface déchiffre les données TLS.]{#packet-analysis-name-decrypts explanation="Un nom ne fournit aucune capacité de déchiffrement."}
+:::
 
-Sur les systèmes basés sur Debian comme Ubuntu, vous pouvez installer tcpdump avec la commande suivante :
+## Capturer un flux borné
 
-```bash
-sudo apt install tcpdump
-```
-
-### Capture de données de paquets en direct
-
-Pour commencer à capturer des données sur une interface spécifique, utilisez l'indicateur `-i` suivi du nom de l'interface.
-
-```plaintext
-pete@icebox:~$ sudo tcpdump -i wlan0
-tcpdump: sortie verbeuse supprimée, utilisez -v ou -vv pour un décodage de protocole complet
-écoute sur wlan0, type de lien EN10MB (Ethernet), taille de capture 65535 octets
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-11:28:23.970928 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 2, length 64
-11:28:24.960464 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 3, length 64
-11:28:24.979299 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 3, length 64
-11:28:25.961869 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 4, length 64
-11:28:25.976176 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 4, length 64
-11:28:26.963667 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 5, length 64
-11:28:26.976137 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 5, length 64
-11:28:30.674953 ARP, Request who-has 172.254.1.0 tell ThePickleParty.lan, length 28
-11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
-```
-
-Vous remarquerez beaucoup d'activité lorsque vous exécutez une capture de paquets, ce qui est attendu étant donné le trafic réseau constant en arrière-plan. L'exemple ci-dessus montre un extrait d'une capture effectuée lors du ping de `www.google.com`.
-
-### Interprétation de la sortie tcpdump
-
-Décomposons une ligne de la capture :
-
-```plaintext
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-```
-
-- **Horodatage** : Le premier champ (`11:28:23.958840`) indique quand le paquet a été capturé.
-- **Protocole** : `IP` indique le protocole de la couche réseau.
-- **Source et Destination** : `icebox.lan > nuq04s29-in-f4.1e100.net` montre l'origine et la destination du paquet.
-- **Informations spécifiques au protocole** : Le reste de la ligne contient des détails spécifiques au protocole. Pour ce paquet ICMP :
-  - `seq` : Le numéro de séquence du paquet.
-  - `length` : La longueur du paquet en octets.
-
-Comme vous pouvez le voir, notre machine a envoyé une requête d'écho ICMP et a reçu une réponse d'écho ICMP. Différents protocoles afficheront des informations différentes, veuillez donc consulter la page de manuel pour plus de détails.
-
-### Sauvegarde des captures pour analyse ultérieure
-
-Au lieu d'afficher le trafic en direct, vous pouvez enregistrer la capture dans un fichier à l'aide de l'indicateur `-w`. Ceci est utile pour une analyse de paquets hors ligne plus approfondie.
+Capturez au plus 100 paquets sans résolution de noms, limités à un hôte et à un port TCP :
 
 ```bash
-sudo tcpdump -w /some/file.pcap
+$ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
+    'host 192.0.2.25 and tcp port 443'
 ```
 
-Nous n'avons fait qu'effleurer la surface de l'analyse des paquets. Il y a beaucoup plus à explorer, y compris le filtrage avancé et l'inspection du contenu des paquets en Hexadécimal et ASCII. D'innombrables ressources en ligne peuvent vous aider à maîtriser les outils d'analyse de paquets réseau, et nous vous encourageons à poursuivre votre parcours d'apprentissage.
+`-i` choisit l'interface, `-n` garde les valeurs numériques, `-c` borne le nombre, `-w` écrit le pcap, et l'expression finale filtre la capture. Ajoutez aussi une limite de temps externe lorsque le trafic peut être absent.
 
-## Exercise
+:::single-choice{#packet-analysis-count-bound}
+Que fait `-c 100` ?
 
-Pour consolider votre compréhension de l'analyse des paquets, essayez ce laboratoire pratique. La pratique rend parfait !
+::option[Il capture seulement le port TCP 100.]{#packet-analysis-port-hundred explanation="Le port se choisit dans l'expression de filtre."}
+::option[Il compresse le fichier à 100 octets.]{#packet-analysis-compress-hundred explanation="Cette option compte les paquets, pas la taille du fichier."}
+::option[Il s'arrête après 100 paquets capturés.]{#packet-analysis-hundred .correct explanation="Cette borne empêche une capture laissée seule de croître indéfiniment en nombre de paquets."}
+:::
 
-1. **[Analyser les trames Ethernet avec tcpdump sous Linux](https://labex.io/fr/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Entraînez-vous à capturer et inspecter les trames Ethernet, à générer du trafic et à analyser les en-têtes de trame et les adresses MAC à l'aide de `tcpdump`.
+## Lire les paquets capturés
 
-Ce laboratoire vous aidera à appliquer les concepts d'analyse de paquets dans un scénario réel et à renforcer votre confiance dans le dépannage réseau.
+Analysez le fichier sans le modifier :
 
-## Quiz Question
+```bash
+$ tcpdump -n -tttt -r incident.pcap
+```
 
-Quel est l'indicateur pour capturer une interface spécifique avec tcpdump ? Veuillez répondre en utilisant uniquement l'indicateur requis en anglais. La réponse est sensible à la casse.
+Lisez horodatage, protocole, source, destination, indicateurs, séquences, acquittements et longueur selon le protocole. L'horodatage marque l'observation sur cet hôte, pas forcément l'émission exacte ailleurs. La synchronisation des horloges compte pour corréler plusieurs systèmes.
 
-## Quiz Answer
+:::single-choice{#packet-analysis-read-file}
+Quelle option lit les paquets d'un fichier pcap enregistré ?
 
--i
+::option[`-r`]{#packet-analysis-option-read .correct explanation="L'option read traite un fichier de capture existant."}
+::option[`-i`]{#packet-analysis-option-interface explanation="Cette option choisit une interface de capture en direct."}
+::option[`-w`]{#packet-analysis-option-write explanation="Cette option écrit les paquets bruts dans un fichier."}
+:::
+
+## Interpréter l'absence et le chiffrement
+
+Une capture vide peut venir d'une mauvaise interface ou d'un mauvais espace de noms, de pertes de capture, d'un filtre trop étroit, du déchargement, d'un autre routage ou d'une absence de trafic. Vérifiez les compteurs reçus et perdus de tcpdump et reproduisez un événement connu.
+
+TLS masque normalement les charges utiles mais laisse des métadonnées utiles : extrémités, temps, tailles, comportement TCP et parties des négociations. Ne tentez aucun déchiffrement non autorisé et ne collectez pas de clés privées sans précaution.
+
+:::single-choice{#packet-analysis-no-packets}
+Que prouve une capture filtrée vide ?
+
+::option[Que l'application distante a été définitivement supprimée.]{#packet-analysis-empty-deleted explanation="Une erreur de point d'observation ou de filtre produit le même résultat."}
+::option[Que tout le réseau ne transporte aucun trafic.]{#packet-analysis-empty-network explanation="Un filtre étroit peut exclure tout le trafic sans rapport."}
+::option[Seulement qu'aucun paquet correspondant n'a été enregistré à ce point.]{#packet-analysis-empty-limited .correct explanation="Validez interface, espace de noms, filtre, pertes de capture et génération du test."}
+:::
+
+## Protéger et partager les preuves
+
+Stockez les pcaps avec des permissions restrictives. Notez commande, hôte, interface, fuseau horaire, filtre et fenêtre d'incident, et hachez les preuves si leur intégrité compte. Avant partage, réduisez ou assainissez les données tout en préservant les champs nécessaires ; charges utiles et métadonnées peuvent identifier utilisateurs et systèmes.
+
+:::single-choice{#packet-analysis-pcap-safety}
+Comment faut-il traiter un pcap d'incident ?
+
+::option[Comme une preuve sensible, avec accès restreint et provenance documentée.]{#packet-analysis-sensitive-evidence .correct explanation="Une capture peut contenir des informations confidentielles et exige intégrité comme confidentialité."}
+::option[Comme un texte inoffensif publiable sans examen.]{#packet-analysis-public explanation="Les captures binaires peuvent révéler charges utiles, identités et infrastructure."}
+::option[En modifiant ses octets sur place sans conserver l'original.]{#packet-analysis-edit-original explanation="Cela détruit la provenance et peut invalider l'analyse ultérieure."}
+:::
+
+## Résumé
+
+Vous savez créer une capture utile sans la rendre inutilement large ou dangereuse.
+
+1. Choisir l'interface et l'espace de noms corrects.
+2. Borner par filtre, nombre de paquets et temps.
+3. Enregistrer les paquets bruts et analyser le fichier en lecture seule.
+4. Interpréter correctement absence et chiffrement.
+5. Protéger confidentialité, intégrité et provenance.

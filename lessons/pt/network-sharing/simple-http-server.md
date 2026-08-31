@@ -1,54 +1,96 @@
 ---
-index: 3
+lesson_id: "simple-http-server"
+course_id: "network-sharing"
 lang: "pt"
+order_index: 3
 title: "Servidor HTTP Simples"
+description: "Aprenda a expor temporariamente um diretório controlado usando o servidor HTTP do Python."
 meta_title: "Servidor HTTP Simples - Compartilhamento de Rede"
 meta_description: "Aprenda a configurar rapidamente um servidor HTTP simples no Linux usando o módulo http.server do Python. Este guia explica como criar um servidor web Linux simples para facilitar o compartilhamento de arquivos em sua rede."
 meta_keywords: "servidor http simples linux, servidor http simples no linux, servidor web linux simples, python http.server, o que é python simplehttpserver, compartilhamento de arquivos, servidor de rede"
 ---
 
-## Lesson Content
+O módulo `http.server` do Python pode servir arquivos estáticos para um teste curto ou transferência confiável. Não é servidor de produção e não oferece autenticação, autorização, TLS, limitação de taxa nem tratamento reforçado de tráfego hostil.
 
-O Python inclui um módulo integrado que permite criar instantaneamente um servidor web, o que é incrivelmente útil para compartilhar arquivos em uma rede. Configurar um **servidor http simples linux** é um processo direto que requer apenas um único comando.
+## Preparação do diretório compartilhado
 
-### Iniciando um Servidor HTTP Simples no Linux
+Crie um diretório dedicado contendo apenas os arquivos destinados à exposição. Revise arquivos ocultos, links, permissões e metadados sensíveis. Não sirva o diretório pessoal, raiz de repositório, credenciais ou caminhos do sistema.
 
-Para começar, navegue até o diretório que deseja compartilhar usando seu terminal. Depois de estar no diretório desejado, você pode iniciar um ambiente de **servidor http simples linux** com o seguinte comando se estiver usando Python 3:
-
-```bash
-python -m http.server
-```
-
-Este comando inicia um servidor web básico, tornando o conteúdo do seu diretório atual acessível via HTTP.
-
-### Método Legado para Python 2
-
-Para sistemas mais antigos que ainda usam Python 2, o comando é ligeiramente diferente. O módulo era anteriormente chamado de `SimpleHTTPServer`. Se você já se perguntou **o que é python simplehttpserver**, é simplesmente o equivalente do Python 2 para o módulo `http.server`. Você pode executá-lo com:
+Use `--directory` para tornar a raiz explícita:
 
 ```bash
-python -m SimpleHTTPServer
+$ python3 -m http.server 8000 --directory /srv/temporary-share
 ```
 
-### Acessando Seu Servidor Web Linux Simples
+Quando não há um arquivo de índice, o módulo normalmente gera uma listagem do diretório. Qualquer pessoa que consiga alcançar o socket em escuta pode enumerar e baixar o conteúdo servido.
 
-Após executar o comando, seu **servidor web linux simples** estará ativo. Você pode acessar os arquivos compartilhados de outra máquina na mesma rede abrindo um navegador da web e navegando para `http://ENDERECO_IP:8000`, substituindo `ENDERECO_IP` pelo IP local da máquina que executa o servidor.
+:::single-choice{#http-server-directory-option}
+Por que usar `--directory /srv/temporary-share`?
 
-Para visualizar os arquivos na mesma máquina, você pode usar o endereço localhost: `http://localhost:8000`.
+::option[Ele criptografa toda resposta HTTP automaticamente.]{#http-server-directory-tls explanation="A opção de diretório não acrescenta TLS."}
+::option[Ele cria uma conta para cada pessoa que baixa.]{#http-server-directory-accounts explanation="O módulo básico não oferece autenticação."}
+::option[Ele torna explícita a raiz de documentos pretendida.]{#http-server-explicit-root .correct explanation="Uma raiz explícita e revisada reduz a exposição acidental do diretório de trabalho."}
+:::
 
-## Exercise
+## Controle do endereço de escuta
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de conectividade de rede e endereçamento IP, que são essenciais para compartilhar arquivos em uma rede:
+Vincule ao loopback quando somente o mesmo host deve acessar:
 
-1. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique a identificação de diferentes tipos de endereço IP e o teste de acessibilidade da rede, crucial para garantir que seu servidor HTTP Python seja acessível.
-2. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Aprenda a usar o comando `ip a` para encontrar o endereço IP da sua máquina, um passo necessário antes de acessar seus arquivos compartilhados de outro dispositivo.
-3. **[Gerenciar a Resolução de Nome de Host Local no Linux](https://labex.io/pt/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Aprenda a gerenciar a resolução de nome de host local no Linux editando o arquivo /etc/hosts, uma habilidade chave para desenvolvimento web e testes de rede.
+```bash
+$ python3 -m http.server 8000 --bind 127.0.0.1 --directory /srv/temporary-share
+```
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com operações básicas de rede no Linux.
+Para compartilhar em rede confiável, vincule deliberadamente ao endereço apropriado e confirme o firewall. Sem bind restritivo, o comando costuma ouvir em todas as interfaces e pode expor o diretório além da rede pretendida.
 
-## Quiz Question
+:::single-choice{#http-server-loopback-bind}
+Quem normalmente alcança um servidor vinculado a `127.0.0.1`?
 
-Para o Python 3, qual é o nome do módulo usado para criar um servidor HTTP simples? (Por favor, responda em inglês, prestando atenção à sensibilidade de maiúsculas e minúsculas).
+::option[Clientes no mesmo host.]{#http-server-local-clients .correct explanation="Loopback serve a testes locais ou uso por um túnel configurado deliberadamente."}
+::option[Qualquer host da Internet pública.]{#http-server-public explanation="Loopback é local ao namespace e não é interface pública."}
+::option[Apenas dispositivos Bluetooth.]{#http-server-bluetooth explanation="O endereço não tem relação com Bluetooth."}
+:::
 
-## Quiz Answer
+## Teste do acesso
 
-http.server
+No host servidor, solicite um arquivo conhecido:
+
+```bash
+$ curl -f http://127.0.0.1:8000/example.txt
+```
+
+Para um teste remoto autorizado, use o endereço da interface selecionada em vez do loopback. Confirme tanto que o arquivo pretendido está acessível quanto que um arquivo fora da raiz de documentos não está. O sucesso no navegador por si só não comprova uma exposição apropriada nem a confidencialidade.
+
+:::single-choice{#http-server-default-port-command}
+Qual porta é escolhida em `python3 -m http.server 8000`?
+
+::option[22]{#http-server-port-22 explanation="A porta 22 é associada ao SSH e não foi escolhida aqui."}
+::option[8000]{#http-server-port-8000 .correct explanation="O operando posicional informa a porta de escuta."}
+::option[443]{#http-server-port-443 explanation="O comando não configura HTTPS na porta 443."}
+:::
+
+## Encerramento e limpeza
+
+Execute o serviço temporário num terminal supervisionado e pare com `Ctrl-C` ao concluir. Confirme que o listener sumiu:
+
+```bash
+$ ss -ltn 'sport = :8000'
+```
+
+Remova cópias temporárias conforme a política e reverta regras de firewall. Para distribuição persistente, autenticada ou pública, use servidor mantido com controle de acesso e TLS.
+
+:::single-choice{#http-server-completion-check}
+O que deve acontecer após a transferência temporária?
+
+::option[Parar o serviço e confirmar que a porta não está mais ouvindo.]{#http-server-stop-verify .correct explanation="A verificação confirma que o serviço temporário realmente terminou."}
+::option[Deixar o listener ativo para possível uso futuro.]{#http-server-leave-running explanation="A exposição desnecessária deve terminar com a finalidade autorizada."}
+::option[Copiar mais arquivos privados para a raiz.]{#http-server-add-private explanation="Somente conteúdo intencional pertence ao diretório servido."}
+:::
+
+## Resumo
+
+Agora você consegue executar um servidor HTTP temporário com exposição limitada.
+
+1. Servir apenas um diretório dedicado e revisado.
+2. Vincular ao endereço mais restrito adequado.
+3. Testar acesso pretendido e limites não pretendidos.
+4. Parar o listener e limpar o acesso temporário.

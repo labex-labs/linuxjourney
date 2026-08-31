@@ -1,75 +1,101 @@
 ---
-index: 5
+lesson_id: "ubuntu"
+course_id: "getting-started"
 lang: "ja"
+order_index: 5
 title: "Ubuntu"
+description: "Ubuntu が Debian の基盤と、親しみやすいデスクトップ、サーバー、リリースの選択肢をどう組み合わせるか学びます。"
 meta_title: "Ubuntu Linux とは"
 meta_description: "Ubuntu Linux の概要や人気の理由、リリースモデル、パッケージ管理の仕組みを解説。デスクトップからサーバーまで幅広く利用される理由を紹介します。"
 meta_keywords: "Ubuntu Linux, Ubuntu ディストリビューション，Ubuntu とは，Ubuntu リリース，Ubuntu パッケージ管理，Ubuntu Debian ベース，Linux ディストリビューション"
 ---
 
-## Lesson Content
+## Ubuntu とは
 
-### Ubuntu とは？
+Ubuntu は、最も広く使われる Linux ディストリビューションの1つです。Canonical が開発し、Debian を基盤に、親しみやすい設計、大きなユーザーコミュニティ、幅広いハードウェアとソフトウェアへの対応で知られます。
 
-Ubuntu は、最も広く利用されている Linux ディストリビューションの 1 つです。Canonical 社によって開発され、Debian をベースとしており、アクセシブルな設計、大規模なユーザーコミュニティ、そして幅広いハードウェアおよびソフトウェアのサポートで知られています。
+手動作業の多い高度な設定から始めず Linux を学びたい人の一般的な出発点です。個人用コンピューター、開発システム、クラウド、サーバーで使われ、ほかのディストロには少ない広がりを持ちます。
 
-Ubuntu は、より手動での設定や高度なセットアップから始めることなく Linux を学びたい人にとって、一般的な出発点となっています。パーソナルコンピュータ、開発システム、クラウドプラットフォーム、サーバーなどで使用されており、他のディストリビューションにはない広範な普及を見せています。
+:::single-choice{#identify-ubuntu-base}
+Ubuntu の基盤となるディストリビューションはどれですか？
 
-### Ubuntu が人気な理由
+::option[Debian ディストリビューション]{#debian-base .correct explanation="Ubuntu は Debian を基にし、そのパッケージ方式の多くを引き継ぎつつ、独自のリリース、既定値、サポートモデルを追加します。"}
+::option[Fedora ディストリビューション]{#ubuntu-fedora-base explanation="Fedora は Red Hat エコシステムに属し、Ubuntu の基盤ではありません。Ubuntu は Debian 系です。"}
+::option[Arch ディストリビューション]{#ubuntu-arch-base explanation="Arch Linux は独自のパッケージシステムとリリース方式を持つ別のディストリビューションで、Ubuntu は Debian ベースです。"}
+:::
 
-Ubuntu が人気なのは、Linux を日常的に実用的なものにしようとしているからです。洗練されたインストーラー、充実したドキュメント、予測可能なリリースサイクル、そしてチュートリアルやサードパーティ製サポートの巨大なエコシステムを提供しています。多くのユーザーにとって、その組み合わせが Ubuntu を最も扱いやすい Linux ディストリビューションの 1 つにしています。
+## Ubuntu が人気の理由
 
-Ubuntu がこれほど目立つもう 1 つの理由は、多くの環境で動作する点です。ノートパソコンやデスクトップ、仮想マシン、サーバー、そしてクラウドプラットフォーム全体で見かけることができます。その幅広い採用が、汎用 Linux ディストリビューションとしての評価を強固なものにしています。
+Ubuntu は Linux を日常利用しやすくすることを目指します。洗練されたインストーラー、充実した文書、予測可能なリリース、多数のチュートリアルとサードパーティー支援があり、多くの人にとって暮らしやすいディストロです。
 
-### Ubuntu と Debian
+ノート PC、デスクトップ、仮想マシン、サーバー、クラウドなど多様な環境で動くことも、汎用ディストリビューションとしての評価を強めています。
 
-Ubuntu は Debian ベースのディストリビューションであり、パッケージ管理モデルやソフトウェアパッケージングの手法の多くを Debian から継承しています。Ubuntu で`apt`の仕組みを学べば、その知識は他の Debian ベースのシステムを理解する際にも役立ちます。
+:::single-choice{#recognize-beginner-support}
+初心者の問題解決に最も直接役立つ Ubuntu の特性はどれですか？
 
-同時に、Ubuntu は単なる「デスクトップ版 Debian」ではありません。独自のリリーススケジュール、デフォルト設定、サポートモデル、エコシステムを持っています。他の選択肢と比較したい場合は、「[Linux ディストリビューションの選択](https://labex.io/ja/lesson/choosing-a-linux-distribution)」を参照するか、「[Debian](https://labex.io/ja/lesson/debian)」について詳しく学んでください。
+::option[導入する各プログラムで手動コンパイルが必須]{#manual-compilation explanation="通常はパッケージ化されたソフトウェアを提供し、毎回手動コンパイルを要求しません。追加作業は問題解決を簡単にしません。"}
+::option[充実した文書と大きなユーザーコミュニティ]{#documentation-community .correct explanation="文書とコミュニティの議論から説明や問題解決方法を見つけやすく、学習の障壁を下げます。"}
+::option[経験豊富な管理者だけが利用できる限定的な案内]{#limited-guidance explanation="Ubuntu は多様な技能レベル向けの豊富な案内で知られ、専門家だけに限定すると初心者向けではなくなります。"}
+:::
 
-### Ubuntu のリリース
+## Ubuntu と Debian
 
-Ubuntu には主に 2 種類のリリースタイプがあります。6 ヶ月ごとに新しいリリースが公開され、2 年ごとにそのうちの 1 つが LTS（長期サポート）リリースとなります。LTS リリースは、より安定した基盤を必要とするデスクトップ、ワークステーション、サーバーで一般的に選択されます。
+Ubuntu は Debian ベースで、パッケージ管理モデルとソフトウェアのパッケージ化方式の多くを引き継ぎます。Ubuntu で `apt` を学ぶと、ほかの Debian ベースシステムの理解にも役立ちます。
 
-このリリースモデルは、Ubuntu の魅力を説明する一助となります。信頼できる基盤を求めるユーザーは LTS を選択し、より新しい機能を求めるユーザーは、より速いスケジュールで提供される中間リリースを使用することができます。
+ただし、Ubuntu は単なる「デスクトップ付き Debian」ではありません。独自のリリース日程、既定値、サポートモデル、エコシステムがあります。比較には [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) と [Debian](https://labex.io/lesson/debian) を参照してください。
 
-### パッケージ管理
+## Ubuntu のリリース
 
-Debian ベースのシステムとして、Ubuntu はソフトウェアのインストール、更新、削除に`.deb`パッケージ形式と`apt`パッケージマネージャーを使用します。これにより、ユーザーは非常に大規模なソフトウェアエコシステムと、使い慣れたコマンドラインワークフローを利用できます。
+Ubuntu には主に2種類のリリースがあります。6か月ごとに新リリースを公開し、そのうち2年ごとの1つが Long Term Support（LTS）になります。より安定した基盤が必要なデスクトップ、ワークステーション、サーバーでは LTS がよく選ばれます。
 
-パッケージ管理は、成熟した Debian のツールと、広く文書化された大規模なソフトウェア環境を組み合わせているため、Ubuntu の実用的な強みの 1 つとなっています。
+信頼できる基盤が欲しい人は LTS を、新しい機能が欲しい人は短い間隔で登場する中間リリースを選べます。
 
-### デスクトップおよびサーバーでの利用
+:::single-choice{#choose-ubuntu-lts}
+長く使え、予測可能な基盤が必要なシステムに最も適した Ubuntu リリースはどれですか？
 
-Ubuntu はデスクトップシステムとサーバーシステムの両方で使用されています。デスクトップ側では、洗練された GNOME ベースの体験と、比較的親しみやすいデフォルト設定で知られています。サーバー側では、開発、Web インフラストラクチャ、クラウド環境で広く展開されています。
+::option[中間リリース]{#interim-release explanation="中間リリースは頻繁に登場し新機能を早く提供しますが、短いサポート期間は要件に合いません。"}
+::option[LTS リリース]{#lts-release .correct explanation="LTS は長期サポートを目的とし、信頼できる基盤を重視するシステムでよく選ばれます。"}
+::option[パッケージ更新]{#package-update explanation="パッケージ更新は導入済みリリース内のソフトウェアを変えるもので、OS の2つのリリース種類ではありません。"}
+:::
 
-その範囲の広さが、ノートパソコンでの学習から本番環境でのワークロード実行まで対応できる Linux ディストリビューションを求めるユーザーにとって、Ubuntu を魅力的なものにしています。
+## パッケージ管理
 
-### 初心者が Ubuntu を選ぶ理由
+Debian ベースの Ubuntu は `.deb` パッケージ形式と `apt` パッケージマネージャーを使い、ソフトウェアを導入、更新、削除します。大きなソフトウェアエコシステムと、よく知られたコマンドライン作業を利用できます。
 
-Ubuntu は、他の多くの Linux ディストリビューションよりもインストールやトラブルシューティングが容易であるため、初心者によく推奨されます。ユーザーベースが大きいため、問題が発生した際に利用できるチュートリアル、フォーラムの投稿、ガイドが豊富にあります。
+成熟した Debian のツールと、広く文書化された環境を組み合わせるパッケージ管理は、Ubuntu の実用的な強みです。
 
-長期的な柔軟性を犠牲にすることなく、初心者向けの Linux ディストリビューションを求めるユーザーにとって、Ubuntu は依然として最も安全な出発点の 1 つです。
+:::single-choice{#identify-ubuntu-package-tool}
+Ubuntu でソフトウェアを導入するパッケージ管理ツールはどれですか？
 
-### 参考文献
+::option[`.deb`]{#deb-format explanation=".deb は Debian ベースシステムのパッケージ形式で、コマンドラインの管理ツールではありません。"}
+::option[`LTS`]{#lts-label explanation="LTS は長期サポートリリースを示し、パッケージを導入・管理しません。"}
+::option[`apt`]{#ubuntu-apt-tool .correct explanation="Ubuntu は apt でパッケージを導入、更新、削除し、Debian の .deb 形式を扱います。"}
+:::
+
+## デスクトップとサーバーでの利用
+
+デスクトップでは洗練された GNOME ベースの体験と親しみやすい既定値で知られ、サーバーでは開発、Web インフラ、クラウドへ広く配備されます。ノート PC での学習から本番ワークロードまで、1つのディストリビューションを広げて使いたい人に適します。
+
+## 初心者が Ubuntu を選ぶ理由
+
+多くのディストロより導入と問題解決が簡単で、大きな利用者基盤により、問題発生時に参照できるチュートリアル、フォーラム投稿、ガイドが豊富です。初心者向けでありながら将来の柔軟性も欲しい人の一般的な出発点です。
+
+## 関連資料
 
 - [Ubuntu Desktop](https://ubuntu.com/desktop)
 - [Ubuntu Server](https://ubuntu.com/server)
-- [Ubuntu release cycle](https://ubuntu.com/releaseendoflife)
-- [Ubuntu releases documentation](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
+- [Ubuntu のリリースサイクル](https://ubuntu.com/releaseendoflife)
+- [Ubuntu リリースの文書](https://documentation.ubuntu.com/project/release-team/ubuntu-releases/)
 
-## Exercise
+1. **[Linux クイックスタート](https://labex.io/courses/quick-start-with-linux)** - Linux とコマンドライン技能の実用的な基礎を築きます。
+2. **[初心者のための Linux](https://labex.io/courses/linux-for-noobs)** - 初心者向けの順序で Linux の基本を学びます。
+3. **[ジュニアシステム管理者になる](https://labex.io/courses/become-a-junior-system-administrator)** - 基本に慣れた後、実用的な Linux 管理技能へ進みます。
 
-この Ubuntu の入門を終えた後も学習を続けるために、以下の LabEx コースをお勧めします：
+## まとめ
 
-1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - ガイド付きのハンズオンで Linux の基礎とコマンドラインスキルを身につけます。
-2. **[Linux 初心者向けコース](https://labex.io/ja/courses/linux-for-noobs)** - Linux の基本をステップバイステップで理解するための、初心者向けのパスに従います。
-3. **[ジュニアシステムアドミニストレーターになる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - 基礎に慣れたら、実践的な Linux システム管理スキルへ進みます。
+Ubuntu が Debian を基盤にしながら、独自のリリースとユーザー体験を提供する仕組みを説明できるようになりました。
 
-## Quiz Question
-
-Ubuntu はどのオペレーティングシステムをベースにしていますか？（英語で回答してください。大文字と小文字の区別に注意してください。）
-
-## Quiz Answer
-
-Debian
+1. Ubuntu の基盤が Debian だと特定する。
+2. 初心者を支える特性を見分ける。
+3. Ubuntu の LTS と中間リリースを比較する。
+4. Ubuntu のパッケージ管理に `apt` を使う。

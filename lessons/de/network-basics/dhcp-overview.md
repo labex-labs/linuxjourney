@@ -1,58 +1,102 @@
 ---
-index: 9
+lesson_id: "dhcp-overview"
+course_id: "network-basics"
 lang: "de"
-title: "DHCP-Übersicht"
-meta_title: "DHCP-Übersicht - Netzwerk-Grundlagen"
-meta_description: "Lernen Sie die Grundlagen des DHCP (Dynamic Host Configuration Protocol). Dieser Leitfaden behandelt, wie DHCP IP-Adressen zuweist, seinen Vier-Schritte-Prozess (DORA) und seine Rolle in der DHCP-Schicht des Netzwerks. Ideal für Linux-Netzwerk-Anfänger."
-meta_keywords: "DHCP, Dynamic Host Configuration Protocol, DHCP-Schicht, IP-Adresse, Linux-Netzwerk, DHCP-Prozess, DORA, Netzwerkkonfiguration"
+order_index: 9
+title: "Überblick über DHCP"
+description: "Lerne, wie DHCPv4 Adressen und Netzwerkoptionen durch Erkennung, Auswahl und Erneuerung least."
+meta_title: "Überblick über DHCP – Netzwerkgrundlagen"
+meta_description: "Lerne die Grundlagen des Dynamic Host Configuration Protocol. Diese Anleitung behandelt die Vergabe von IP-Adressen durch DHCP, den vierstufigen DORA-Ablauf und seine Rolle bei der Netzwerkkonfiguration."
+meta_keywords: "DHCP, Dynamic Host Configuration Protocol, DHCP-Schicht, IP-Adresse, Linux-Vernetzung, DHCP-Ablauf, DORA, Netzwerkkonfiguration"
 ---
 
-## Lesson Content
+Das Dynamic Host Configuration Protocol stellt Clients geleaste Netzwerkkonfiguration bereit. Bei DHCPv4 kann diese eine IPv4-Adresse, Subnetzmaske, Standardrouter, DNS-Server, Lease-Dauer und weitere von der lokalen Richtlinie ausgewählte Optionen umfassen.
 
-Das Dynamic Host Configuration Protocol (DHCP) ist ein grundlegendes Netzwerkprotokoll, das verwendet wird, um Geräten in einem Netzwerk automatisch IP-Adressen und andere Netzwerkkonfigurationsparameter zuzuweisen.
+## Clients, Server und Relays
 
-### Was ist DHCP?
+Ein DHCP-Server verwaltet Bereiche oder Adresspools und den Lease-Zustand. Der Server muss sich nicht in jedem physischen Segment befinden: Ein DHCP-Relay kann den Austausch zwischen Clients in einem Subnetz und einem zentralen Server weiterleiten. Netzwerke mit ausschließlich statischer Konfiguration stellen möglicherweise überhaupt kein DHCP bereit.
 
-Stellen Sie sich DHCP wie eine Telefongesellschaft für Ihre Geräte vor. Wenn Sie ein neues Telefon erhalten, benötigen Sie eine Nummer, um mit der Kommunikation zu beginnen. Sie kontaktieren Ihren Anbieter, und dieser weist Ihnen eine zu. Ebenso benötigt ein Gerät, wenn es sich mit einem Netzwerk verbindet, eine IP-Adresse, um mit anderen Geräten kommunizieren zu können. DHCP ist der Dienst, der diese IP-Adresse bereitstellt.
+DHCP ist ein Protokoll der Anwendungsschicht, das über UDP transportiert wird. DHCPv4-Server verwenden normalerweise UDP-Port 67 und Clients Port 68.
 
-Diese IP-Adresse wird typischerweise für einen bestimmten Zeitraum „geleast“ (gemietet). Bevor die Lease abläuft, kann das Gerät sie erneuern, um eine kontinuierliche Verbindung zu gewährleisten. Dieser automatisierte Prozess ist für die Verwaltung von Geräten in jedem Netzwerk unerlässlich.
+:::single-choice{#dhcp-relay-purpose}
+Was ermöglicht ein DHCP-Relay?
 
-### Die Rolle eines DHCP-Servers
+::option[Jedem Client, eine Adresse ohne jede Richtlinie auszuwählen.]{#dhcp-client-any-address explanation="Der Server wendet weiterhin Bereichs- und Lease-Richtlinien an."}
+::option[Clients in einem anderen Subnetz, einen zentralen DHCP-Server zu erreichen.]{#dhcp-central-server .correct explanation="Das Relay leitet den DHCP-Austausch über eine Routinggrenze weiter und kennzeichnet das Clientnetzwerk."}
+::option[Ethernet-Switches, alle IP-Router zu ersetzen.]{#dhcp-switch-router explanation="Die DHCP-Weiterleitung beseitigt keine gerouteten Netzwerkgrenzen."}
+:::
 
-A DHCP-Server ist dafür verantwortlich, einen Pool von IP-Adressen zu verwalten und diese an Client-Geräte zu verleasen. In einem typischen Heimnetzwerk fungiert Ihr Router oft als DHCP-Server. In größeren Netzwerken übernimmt ein dedizierter Server diese Aufgabe.
+## Erster DHCPv4-Austausch
 
-Die Verwendung von DHCP bietet erhebliche Vorteile:
+Der gewöhnliche anfängliche Ablauf wird als DORA bezeichnet:
 
-- **Automatisierung:** Netzwerkadministratoren müssen nicht jedes Gerät manuell konfigurieren, was Zeit und Aufwand spart.
-- **Genauigkeit:** Es verhindert häufige Fehler wie die Zuweisung doppelter IP-Adressen, was zu Netzwerkkonflikten führen kann.
+1. `DHCPDISCOVER`: Ein Client sucht nach verfügbaren Servern.
+2. `DHCPOFFER`: Ein Server schlägt eine Adresse und Optionen vor.
+3. `DHCPREQUEST`: Der Client wählt ein angebotenes Lease aus und fordert es an.
+4. `DHCPACK`: Der ausgewählte Server bestätigt Lease und Optionen.
 
-Jedes physische Netzwerk sollte seinen eigenen DHCP-Server haben, um den Prozess der Anforderung und des Erhalts von IP-Adressen durch Hosts zu optimieren. Dieses Protokoll arbeitet auf der Anwendungsschicht und bildet einen entscheidenden Teil der Konfigurationsdienste des Netzwerks, manchmal konzeptionell als `dhcp layer` bezeichnet.
+Einzelheiten zu Broadcast und Unicast unterscheiden sich je nach Clientzustand, Relay-Verwendung und Serverfähigkeiten. Ein Angebot ist noch nicht das abschließend verwendbare Lease; die Bestätigung schließt den normalen Auswahlaustausch ab.
 
-### Der Vier-Schritte-DHCP-Prozess
+:::single-choice{#dhcp-dora-order}
+Was ist die normale anfängliche DHCPv4-Reihenfolge?
 
-Der Prozess, bei dem ein Gerät über DHCP eine IP-Adresse erhält, beinhaltet einen Vier-Schritte-Austausch, der oft durch das Akronym DORA in Erinnerung behalten wird:
+::option[OFFER, DISCOVER, ACK, REQUEST.]{#dhcp-wrong-order-one explanation="Ein Client sucht, bevor ein Server anbietet, und fordert vor der Bestätigung an."}
+::option[DISCOVER, OFFER, REQUEST, ACK.]{#dhcp-correct-order .correct explanation="Die Abfolge sucht, schlägt vor, wählt aus und bestätigt."}
+::option[REQUEST, ACK, DISCOVER, OFFER.]{#dhcp-wrong-order-two explanation="Ein neuer Client benötigt normalerweise Erkennung und Angebot, bevor er ein Lease auswählt."}
+:::
 
-1. **DHCP Discover (Entdecken):** Das Client-Gerät sendet eine `DISCOVER`-Nachricht als Broadcast über das Netzwerk, um einen verfügbaren DHCP-Server zu finden.
-2. **DHCP Offer (Angebot):** Jeder DHCP-Server, der die Entdeckungsnachricht empfängt, kann mit einer `OFFER`-Nachricht antworten. Diese Nachricht enthält eine vorgeschlagene IP-Adresse, Subnetzmaske, Gateway-Adresse und die Gültigkeitsdauer des Leases.
-3. **DHCP Request (Anforderung):** Der Client empfängt ein oder mehrere Angebote und wählt eines aus. Er sendet dann eine `REQUEST`-Nachricht als Broadcast, um alle DHCP-Server darüber zu informieren, welches Angebot er angenommen hat.
-4. **DHCP Acknowledgment (ACK) (Bestätigung):** Der Server, der das angenommene Angebot gemacht hat, sendet eine abschließende `ACK`-Nachricht an den Client, um den Lease zu bestätigen und die Konfiguration abzuschließen.
+## Lease-Erneuerung
 
-Obwohl das vollständige Protokoll komplexer ist, stellen diese vier Schritte den Kern dessen dar, wie DHCP Hosts in einem Netzwerk dynamisch konfiguriert.
+Ein Lease läuft ab, wenn es nicht erneuert wird. Ein Client beginnt die Erneuerung normalerweise vor Ablauf und kontaktiert häufig zuerst den ursprünglichen Server direkt. Bleibt die Erneuerung erfolglos, erweitert er später den Rebinding-Versuch. Die genauen Timer werden vom Protokoll geliefert oder daraus abgeleitet.
 
-## Exercise
+Eine als dynamisch zugewiesen angezeigte Adresse beweist nicht, dass ihr Lease für immer bestehen bleibt. Erfasse bei der Fehlersuche zu Änderungen das aktive Lease, seine Laufzeit, den Server und die Optionen.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von dynamischer IP-Adressierung und Netzwerkkonfiguration zu festigen:
+:::single-choice{#dhcp-lease-expiration}
+Was geschieht mit einem DHCP-Adress-Lease ohne erfolgreiche Erneuerung?
 
-1. **[IP-Adressierung in Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Verwendung des `ip`-Befehls, um Schnittstellen zu überprüfen, und verwenden Sie speziell `dhclient`, um eine dynamische IP-Adresse zu beziehen, wobei Sie Ihr Wissen über DHCP direkt anwenden.
-2. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Lernen Sie, den Befehl `ip a` zu verwenden, um Netzwerkadressinformationen, einschließlich der von DHCP zugewiesenen IP-Adressen, zu identifizieren und Netzwerkschnittstellen zu überprüfen.
-3. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie die IP-Adressierung und die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`, um zu verstehen, wie dynamisch zugewiesene IPs innerhalb eines Netzwerks funktionieren.
+::option[Es wird zu einer dauerhaften Hardware-MAC-Adresse.]{#dhcp-lease-mac explanation="Ein IP-Lease verändert die Identität der Verbindungsschicht nicht."}
+::option[Es läuft schließlich ab, und der Client darf es nicht mehr als gültig behandeln.]{#dhcp-lease-expires .correct explanation="Leasing ermöglicht, Adressen und Optionen gemäß Serverrichtlinie zurückzufordern oder zu ändern."}
+::option[Es macht den Client zur autoritativen DNS-Wurzel.]{#dhcp-lease-dns-root explanation="DHCP-Leasing verleiht keine DNS-Autorität."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte der dynamischen IP-Zuweisung und Netzwerkkonfiguration in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
+## Das Ergebnis untersuchen
 
-## Quiz Question
+Überprüfe nach der DHCP-Konfiguration eines Clients den gesamten erforderlichen Zustand und nicht nur die Adresse:
 
-Was sind die vier Schritte im DHCP-Prozess in der richtigen Reihenfolge? Bitte antworten Sie auf Englisch, wobei die Wörter in Großbuchstaben durch ein Komma und ein Leerzeichen getrennt sind.
+```bash
+$ ip address show
+$ ip route show
+$ resolvectl status
+```
 
-## Quiz Answer
+Der Resolverbefehl unterscheidet sich je nach System. Untersuche außerdem Leasedaten und Protokolle des aktiven Netzwerkmanagers. Doppelte Adressen können weiterhin durch nicht autorisierte Server, statische Zuweisungen innerhalb eines Pools, veralteten Zustand oder manuelle Konfiguration entstehen. DHCP verringert Fehler, kann aber nicht jeden Konflikt allein verhindern.
 
-DISCOVER, OFFER, REQUEST, ACK
+:::single-choice{#dhcp-result-verification}
+Was sollte geprüft werden, nachdem ein DHCP-Lease angenommen wurde?
+
+::option[Nur der angezeigte Name der Schnittstelle.]{#dhcp-interface-name-only explanation="Ein Schnittstellenname belegt weder Adressierung noch Routing oder Namensauflösung."}
+::option[Nur, ob die Tastatur reagiert.]{#dhcp-keyboard explanation="Tastatureingaben haben nichts mit der Netzwerkkonfiguration eines Leases zu tun."}
+::option[Adresse, Routen, DNS und Lease-Details.]{#dhcp-check-complete-state .correct explanation="Eine verwendbare Konfiguration hängt von mehreren Optionen und ihrem angewandten Systemzustand ab."}
+:::
+
+## DHCPv6 und IPv6-Konfiguration
+
+IPv6-Hosts können Stateless Address Autoconfiguration, DHCPv6, statische Konfiguration oder Kombinationen verwenden. DHCPv6 verwendet nicht den DORA-Austausch von IPv4, und Informationen zum Standardrouter stammen normalerweise aus IPv6 Router Advertisements statt aus DHCPv6.
+
+:::single-choice{#dhcp-ipv6-default-router}
+Woher erfährt ein IPv6-Host normalerweise seine Standardrouterinformationen?
+
+::option[Aus IPv6 Router Advertisements.]{#dhcp-router-advertisement .correct explanation="DHCPv6 kann andere Konfiguration bereitstellen, doch Router kündigen sich über Neighbor Discovery an."}
+::option[Aus einem Ethernet-FCS-Abschluss.]{#dhcp-ipv6-fcs explanation="Die FCS erkennt Verbindungsbeschädigungen und enthält keine Routerkonfiguration."}
+::option[Nur aus IPv4-DHCPACK.]{#dhcp-ipv4-ack explanation="IPv4-DHCP-Nachrichten konfigurieren kein IPv6-Routing."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun erklären, wie DHCPv4 die Netzwerkkonfiguration eines Hosts least und erneuert.
+
+1. Unterscheide DHCP-Server von Relays und Clientsubnetzen.
+2. Verfolge den Austausch DISCOVER, OFFER, REQUEST und ACK.
+3. Behandle Adressen und Optionen als zeitlich begrenzten Lease-Zustand.
+4. Überprüfe Adresse, Routen, DNS und Lease-Metadaten gemeinsam.
+5. Halte DHCPv4-Verhalten von IPv6-Autokonfiguration getrennt.

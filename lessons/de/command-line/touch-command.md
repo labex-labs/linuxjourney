@@ -1,15 +1,16 @@
 ---
-index: 5
+lesson_id: "touch-command"
+course_id: "command-line"
 lang: "de"
+order_index: 5
 title: "touch"
+description: "Lerne, mit touch leere Dateien zu erstellen und Dateizeitstempel zu verwalten."
 meta_title: "touch - Kommandozeile"
 meta_description: "Lernen Sie den Linux-Befehl touch mit Beispielen zum Erstellen leerer Dateien, Aktualisieren von Zeitstempeln, Setzen von Daten, Verwenden von Referenzdateien und Vermeiden von Überschreibungen."
 meta_keywords: "linux touch befehl, touch befehl, datei erstellen linux, zeitstempel aktualisieren linux, touch -d, touch -r, touch -c"
 ---
 
-## Lesson Content
-
-Der Befehl `touch` ist ein Standardwerkzeug auf Unix-ähnlichen Betriebssystemen. Während sein Hauptzweck darin besteht, Dateizeitstempel zu ändern, wird er auch häufig verwendet, um neue, leere Dateien zu erstellen.
+Der Befehl `touch` ändert Dateizeitstempel. Außerdem wird er häufig verwendet, um eine oder mehrere leere Dateien anzulegen.
 
 Die grundlegende Syntax lautet:
 
@@ -17,97 +18,117 @@ Die grundlegende Syntax lautet:
 touch [OPTIONS] FILE...
 ```
 
-### Neue Dateien erstellen
+## Leere Dateien erstellen
 
-Die einfachste Möglichkeit, eine leere Datei zu erstellen, ist die Verwendung von `touch` gefolgt von einem Dateinamen. Wenn die Datei nicht existiert, erstellt `touch` sie.
+Existiert die angegebene Datei noch nicht, erstellt `touch` sie als leere Datei:
 
 ```bash
 $ touch mysuperduperfile
 ```
 
-Nach Ausführung dieses Befehls erscheint eine neue leere Datei namens `mysuperduperfile` in Ihrem aktuellen Verzeichnis. Sie können mehrere Dateien gleichzeitig erstellen, indem Sie ihre Namen auflisten.
+Du kannst mehrere Dateien in einem Befehl erstellen, indem du ihre Namen nacheinander angibst:
 
 ```bash
 $ touch file1.txt file2.txt file3.log
 ```
 
-Dies ist nützlich, wenn Sie eine Projektstruktur einrichten oder Platzhalterdateien erstellen möchten, bevor Sie Inhalte hinzufügen.
+Das ist praktisch für Platzhalter. `touch` fügt einer Datei jedoch keinen Text hinzu. Für eine nicht leere Datei benötigst du einen Texteditor oder einen anderen Befehl, der Inhalte schreibt.
 
-### Aktualisieren von Dateizeitstempeln
+:::single-choice{#create-several-empty-files}
+Welcher Befehl erstellt drei leere Dateien namens `one`, `two` und `three`, sofern sie noch nicht existieren?
 
-Die ursprüngliche Funktion von `touch` ist das Aktualisieren der Zugriffs- und Änderungszeitstempel einer Datei oder eines Verzeichnisses. Wenn Sie `touch` auf eine vorhandene Datei anwenden, aktualisiert es deren Zeitstempel auf die aktuelle Zeit.
+::option[`touch "one two three"`]{#touch-one-spaced explanation="Durch die Anführungszeichen entsteht ein einzelner Dateiname mit Leerzeichen. Der Befehl bezieht sich daher auf eine statt auf drei Dateien."}
+::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` erstellt Verzeichnisse und keine leeren regulären Dateien. Für die verlangten Dateien verwendest du `touch`."}
+::option[`touch one two three`]{#touch-three .correct explanation="`touch` akzeptiert mehrere Dateioperanden. Jede fehlende Datei wird erstellt, ohne Inhalt einzufügen."}
+:::
 
-Sie können dies überprüfen, indem Sie `ls -l` verwenden, um den Zeitstempel einer Datei zu sehen, dann `touch` darauf ausführen und anschließend erneut prüfen.
+## Dateizeitstempel aktualisieren
+
+Dateien speichern mehrere Zeitstempel. Wird `touch` ohne weitere Optionen auf eine vorhandene Datei angewendet, setzt der Befehl sowohl ihre Zugriffs- als auch ihre Änderungszeit auf die aktuelle Zeit. Der Dateiinhalt bleibt unverändert.
+
+Du kannst die angezeigte Änderungszeit vor und nach dem Befehl vergleichen:
 
 ```bash
-# Check the original timestamp
 $ ls -l mysuperduperfile
-
-# Update the timestamp
 $ touch mysuperduperfile
-
-# Check the new timestamp
 $ ls -l mysuperduperfile
 ```
 
-### Erweiterte Zeitstempelsteuerung
+Die Ausgabe von `ls -l` zeigt normalerweise die Änderungszeit, nicht die Zugriffszeit.
 
-Der Befehl `touch` bietet auch Optionen für eine präzisere Zeitstempelmanipulation.
+:::single-choice{#touch-existing-file}
+Was geschieht bei `touch report.txt`, wenn `report.txt` bereits existiert?
 
-Verwenden Sie eine Referenzdatei mit `-r`, um Zeitstempel von einer Datei auf eine andere zu kopieren.
+::option[Die Zeitstempel werden aktualisiert, ohne den Inhalt zu ersetzen.]{#timestamps-only .correct explanation="Standardmäßig aktualisiert `touch` die Zugriffs- und Änderungszeit einer vorhandenen Datei. Die gespeicherten Daten werden nicht überschrieben."}
+::option[Der Inhalt wird gelöscht und die Datei wird geleert.]{#contents-deleted explanation="Eine leere Datei wird nur angelegt, wenn sie fehlt. Bei einer vorhandenen Datei aktualisiert `touch` die Zeitstempel und erhält den Inhalt."}
+::option[Der Befehl schlägt fehl, weil der Dateiname bereits verwendet wird.]{#existing-error explanation="`touch` ist sowohl für vorhandene als auch für fehlende Dateien vorgesehen. Ein bestehender Name ist allein kein Fehler."}
+:::
+
+## Den zu ändernden Zeitstempel auswählen
+
+Mit `-a` änderst du nur die Zugriffszeit, mit `-m` nur die Änderungszeit:
 
 ```bash
-$ touch -r file1.txt file2.txt
+$ touch -a notes.txt
+$ touch -m notes.txt
 ```
 
-Setzen Sie ein bestimmtes Datum und eine bestimmte Uhrzeit mit `-d`:
+:::single-choice{#change-modification-time-only}
+Welcher Befehl aktualisiert ausschließlich die Änderungszeit von `notes.txt`?
+
+::option[`touch -a notes.txt`]{#access-only explanation="Die Option `-a` ändert nur die Zugriffszeit. Sie wählt nicht die hier verlangte Änderungszeit aus."}
+::option[`touch -m notes.txt`]{#modification-only .correct explanation="Die Option `-m` beschränkt die Änderung auf die Änderungszeit. Die Zugriffszeit bleibt unverändert."}
+::option[`touch -c notes.txt`]{#no-create explanation="Die Option `-c` steuert, ob eine fehlende Datei angelegt wird. Sie beschränkt die Aktualisierung nicht auf einen bestimmten Zeitstempel."}
+:::
+
+## Eine Zeit setzen oder kopieren
+
+Mit der Option `-d` gibst du statt der aktuellen Zeit eine Datumszeichenfolge an:
 
 ```bash
 $ touch -d "2026-06-23 12:30:00" mysuperduperfile
 ```
 
-Verwenden Sie `-c`, wenn Sie eine Datei nur aktualisieren möchten, falls sie bereits existiert. Mit `-c` erstellt `touch` keine fehlende Datei.
+Mit `-r` übernimmst du die Zugriffs- und Änderungszeit einer Referenzdatei:
+
+```bash
+$ touch -r file1.txt file2.txt
+```
+
+Hier liefert `file1.txt` die Zeitstempel, während `file2.txt` geändert wird. Mit `-t` kannst du eine Zeit außerdem in einem kompakten numerischen Format angeben.
+
+:::single-choice{#copy-reference-timestamps}
+Welcher Befehl kopiert die Zeitstempel von `source.txt` nach `target.txt`?
+
+::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Bei `-r` ist der nächste Operand die Referenzdatei; der letzte Operand bezeichnet die Datei, deren Zeitstempel aktualisiert werden."}
+::option[`touch -r target.txt source.txt`]{#reference-target explanation="Damit wären die Rollen vertauscht: `target.txt` würde als Referenz dienen und `source.txt` würde aktualisiert."}
+::option[`touch -d source.txt target.txt`]{#date-source explanation="Die Option `-d` erwartet eine Datumszeichenfolge und keinen Referenzdateinamen. Zum Kopieren von Zeitstempeln dient `-r`."}
+:::
+
+## Das Erstellen einer Datei verhindern
+
+Normalerweise erstellt `touch` eine Datei, wenn der angegebene Pfad nicht existiert. Verwende `-c`, wenn eine Datei nur dann aktualisiert werden soll, wenn sie bereits vorhanden ist:
 
 ```bash
 $ touch -c existing-file.txt
 ```
 
-### Häufige touch-Optionen
+Fehlt `existing-file.txt`, legt dieser Befehl sie nicht an. Dieses Verhalten ist in Skripten hilfreich, die einen Zeitstempel aktualisieren sollen, ohne versehentlich eine neue Datei zu erzeugen.
 
-- `-a`: Nur die Zugriffszeit ändern.
-- `-m`: Nur die Änderungszeit ändern.
-- `-c`: Datei nicht erstellen, wenn sie nicht existiert.
-- `-d "DATUM"`: Einen bestimmten Datumsstring verwenden.
-- `-r DATEI`: Die Zeitstempel einer anderen Datei als Referenz verwenden.
-- `-t ZEITSTEMPEL`: Einen Zeitstempel im kompakten numerischen Format verwenden.
+:::single-choice{#update-without-creating}
+Welcher Befehl aktualisiert `status.log`, falls die Datei existiert, legt sie aber nicht an, wenn sie fehlt?
 
-Zum Beispiel ändert dies nur die Änderungszeit:
+::option[`touch -a status.log`]{#touch-access explanation="Die Option `-a` wählt die Zugriffszeit aus, eine fehlende Datei kann aber weiterhin angelegt werden. Sie verhindert das Erstellen nicht."}
+::option[`touch -m status.log`]{#touch-modification explanation="Die Option `-m` wählt die Änderungszeit aus, verhindert jedoch nicht das Anlegen einer fehlenden Datei. Dafür dient `-c`."}
+::option[`touch -c status.log`]{#touch-no-create .correct explanation="Die Option `-c` unterdrückt das Erstellen einer fehlenden Datei. Bei einer vorhandenen Datei können die Zeitstempel weiterhin aktualisiert werden."}
+:::
 
-```bash
-$ touch -m notes.txt
-```
+## Zusammenfassung
 
-### Häufige Fragen
+Du kannst nun mit `touch` leere Dateien erstellen und Dateizeitstempel gezielt steuern.
 
-**Fügt touch Text zu einer Datei hinzu?** Nein. `touch` erstellt eine leere Datei oder aktualisiert Zeitstempel. Verwenden Sie einen Editor, `echo` oder `cat`, um Text hinzuzufügen.
-
-**Überschreibt touch eine vorhandene Datei?** Nein. Es aktualisiert Zeitstempel, ersetzt aber nicht den Inhalt der Datei.
-
-**Warum wird touch in Skripten verwendet?** Es ist eine schnelle Möglichkeit sicherzustellen, dass eine Datei existiert oder um zu markieren, dass eine Aufgabe zu einer bestimmten Zeit stattgefunden hat.
-
-## Exercise
-
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis für das Erstellen und Verwalten von Dateisystemobjekten zu vertiefen:
-
-1. **[Linux mkdir Command: Directory Creating](https://labex.io/de/labs/linux-linux-mkdir-command-directory-creating-209739)** – Lernen Sie, wie Sie den Befehl `mkdir` in Linux verwenden, um Verzeichnisse zu erstellen, Berechtigungen zu setzen und Ihr Dateisystem zu organisieren. Dies hilft Ihnen, das umfassendere Konzept der Erstellung neuer Elemente im Dateisystem zu verstehen.
-2. **[Setting Up a New Project Structure](https://labex.io/de/labs/linux-setting-up-a-new-project-structure-387859)** – Üben Sie Ihre Fähigkeiten im Linux-Verzeichnismanagement, indem Sie eine spezifische Projektstruktur erstellen und mit wichtigen Befehlen wie `mkdir` und `cd` darin navigieren.
-
-Diese Labs helfen Ihnen, die Konzepte der Dateisystemerstellung und -organisation in realen Szenarien anzuwenden und Vertrauen im Umgang mit Linux-Befehlen aufzubauen.
-
-## Quiz Question
-
-Wie erstellen Sie eine Datei namens `myfile`? Bitte antworten Sie nur mit dem englischen Befehl und achten Sie auf Groß- und Kleinschreibung.
-
-## Quiz Answer
-
-touch myfile
+1. Erstelle eine oder mehrere leere Dateien.
+2. Aktualisiere Zeitstempel, ohne Dateiinhalte zu verändern.
+3. Wähle Zugriffs- oder Änderungszeit gezielt aus.
+4. Setze eine bestimmte Zeit oder kopiere die Zeitstempel einer Referenzdatei.
+5. Verhindere das Erstellen einer fehlenden Datei.

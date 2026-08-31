@@ -1,41 +1,58 @@
 ---
-index: 15
+lesson_id: "help-command"
+course_id: "command-line"
 lang: "de"
+order_index: 15
 title: "help"
+description: "Lerne, für einen Befehl zwischen eingebauter Hilfe, Programmnutzung und Handbuchseiten zu wählen."
 meta_title: "help - Kommandozeile"
 meta_description: "Lernen Sie, wie Sie Linux-Kommandozeilenhilfe mit Bash help, --help-Ausgabe, Manpages und type für Shell-Built-ins und externe Befehle erhalten."
 meta_keywords: "linux help befehl, bash help, kommandozeilenhilfe, --help, shell built-in, man befehl, type befehl"
 ---
 
-## Lesson Content
+Du musst nicht jede Befehlsoption auswendig lernen. Bash und viele installierte Programme können ihre Syntax direkt im Terminal erklären. Welche Hilfequelle passt, hängt jedoch von der Art des Befehls ab.
 
-Wenn Sie an der Linux-Kommandozeile arbeiten, benötigen Sie oft eine schnelle Erinnerung daran, wie ein Befehl funktioniert oder welche Optionen er akzeptiert. Linux stellt mehrere Hilfsmittel direkt im Terminal zur Verfügung.
+## Hilfe für Bash-Builtins aufrufen
 
-### Der 'help'-Befehl für Bash Built-ins
+Bash stellt den eingebauten Befehl `help` für Befehle bereit, die von der Shell selbst implementiert werden. Dazu gehören beispielsweise `cd`, `history` und `type`.
 
-Eines der direktesten Hilfsmittel ist `help`, ein Befehl, der direkt in die Bash-Shell eingebaut ist. Er ist speziell dafür gedacht, Informationen über andere Bash-eigene Befehle bereitzustellen. Ein Built-in-Befehl ist Teil der Shell selbst, kein separates Programm. Beispiele sind `echo`, `cd` und `pwd`.
-
-Um `help` zu verwenden, geben Sie es gefolgt vom Namen des Built-in-Befehls ein.
+Übergib den Namen des Builtins als Argument:
 
 ```bash
 $ help echo
 ```
 
-Dies zeigt eine Zusammenfassung des Befehls `echo`, seine Syntax und eine Liste der verfügbaren Optionen an. Dies ist der schnellste Weg, um Unterstützung für shell-spezifische Funktionen zu erhalten.
+Die Ausgabe beschreibt Syntax und Verhalten des Builtins. `help` ohne Argument listet die Builtins auf, für die Bash Hilfe bereithält.
 
-### Der --help-Schalter für ausführbare Programme
+:::single-choice{#help-for-bash-cd}
+Welcher Befehl zeigt den Bash-Hilfeeintrag für das eingebaute `cd` an?
 
-Für die meisten anderen ausführbaren Programme, die nicht in die Shell eingebaut sind, funktioniert der `help`-Befehl nicht. Stattdessen ist es eine gängige Konvention, einen `--help`-Schalter bereitzustellen. Diese Option signalisiert dem Programm, eine Nutzungsübersicht auszugeben und dann zu beenden.
+::option[`cd --help`]{#cd-help-option explanation="Einige Builtins erkennen Optionen, doch die dafür vorgesehene Bash-Dokumentationsschnittstelle ist `help` gefolgt vom Namen des Builtins."}
+::option[`help cd`]{#help-cd .correct explanation="Das Bash-Builtin `help` sucht die Dokumentation für das benannte Builtin, hier also `cd`."}
+::option[`type cd`]{#type-cd explanation="`type` erklärt, wie Bash den Namen `cd` auflöst. Der Befehl identifiziert ihn, zeigt aber nicht den vollständigen Hilfeeintrag."}
+:::
+
+## Die Nutzungsübersicht eines Programms anfordern
+
+Viele externe Programme folgen der Konvention, `--help` zu akzeptieren und eine Nutzungsübersicht auszugeben:
 
 ```bash
 $ ls --help
 ```
 
-Obwohl die meisten Entwickler diesem Standard folgen, ist er nicht universell. Das Ausprobieren von `--help` ist normalerweise ein guter erster Schritt bei einem unbekannten Programm.
+Diese Konvention ist verbreitet, aber nicht universell. Lies Ausgabe und Beendigungsstatus, statt anzunehmen, dass jedes Programm dieselbe Option unterstützt.
 
-### Den Befehlstyp herausfinden
+:::single-choice{#quick-ls-usage}
+Welcher Befehl gibt üblicherweise eine kurze Nutzungsübersicht des externen Programms `ls` aus?
 
-Wenn Sie nicht sicher sind, ob ein Befehl ein Bash Built-in oder ein externes Programm ist, verwenden Sie `type`.
+::option[`help ls`]{#bash-help-ls explanation="Bash `help` dokumentiert Shell-Builtins. Auf einem typischen System enthält es keine Nutzungsseite des externen Programms `ls`."}
+::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` folgt der verbreiteten Konvention `--help` und gibt seine Nutzung und Optionen aus."}
+::option[`type --help ls`]{#type-help-ls explanation="Damit fragst du das Builtin `type` nach dessen eigener Optionsverarbeitung, nicht `ls` nach seiner Nutzung."}
+:::
+
+## Prüfen, wie Bash einen Namen auflöst
+
+Mit `type` erkennst du, ob Bash einen Namen als Builtin, Alias, Funktion, Schlüsselwort oder ausführbare Datei auflöst:
 
 ```bash
 $ type cd
@@ -44,31 +61,38 @@ $ type ls
 ls is /usr/bin/ls
 ```
 
-Dies hilft Ihnen bei der Entscheidung zwischen `help cd`, `ls --help` oder `man ls`.
+Das genaue Ergebnis kann durch Aliase, Funktionen, installierte Programme und `PATH` variieren. Mit `type -a NAME` zeigt Bash alle bekannten Auflösungen statt nur der zuerst verwendeten an.
 
-### Das richtige Hilfsmittel wählen
+:::single-choice{#identify-command-resolution}
+Du weißt nicht, ob `deploy` ein Alias, eine Funktion, ein Builtin oder eine ausführbare Datei ist. Welcher Bash-Befehl prüft die Auflösung des Namens?
 
-- Verwenden Sie `help COMMAND` für Bash Built-ins wie `cd`, `echo` und `history`.
-- Verwenden Sie `COMMAND --help` für eine schnelle Zusammenfassung vieler externer Befehle.
-- Verwenden Sie `man COMMAND` für ausführliche Handbuchseiten.
-- Verwenden Sie `whatis COMMAND` für eine einzeilige Beschreibung.
+::option[`type deploy`]{#type-deploy .correct explanation="Das Builtin `type` meldet, wie Bash den Befehlsnamen in der aktuellen Shell-Umgebung interpretiert."}
+::option[`help deploy`]{#help-deploy explanation="`help` sucht nach Bash-Builtin-Dokumentation. Aliase, Funktionen und externe Dateien identifiziert es im Allgemeinen nicht."}
+::option[`deploy --help`]{#deploy-help explanation="Damit versuchst du, den Befehl auszuführen, und bist von seiner eigenen Optionsunterstützung abhängig. Die Namensauflösung durch Bash wird nicht zuerst erklärt."}
+:::
 
-### Häufige Fragen
+## Den passenden Detailgrad wählen
 
-**Warum funktioniert help ls nicht?** `ls` ist normalerweise ein externes Programm, kein Bash Built-in. Versuchen Sie `ls --help` oder `man ls`.
+- Verwende `help COMMAND` für ein Bash-Builtin.
+- Verwende `COMMAND --help` für eine kurze Übersicht vieler externer Befehle.
+- Verwende `man COMMAND` für eine installierte Handbuchseite mit ausführlicher Dokumentation.
+- Verwende `whatis COMMAND` für eine einzeilige Beschreibung.
 
-**Warum funktioniert --help nicht bei jedem Befehl?** Es ist eine Konvention, keine strikte Regel.
+Die nächsten Lektionen behandeln Handbuchseiten und Kurzbeschreibungen ausführlicher.
 
-**Was ist der schnellste Weg, einen Befehl zu überprüfen?** Versuchen Sie `COMMAND --help` für externe Befehle und `help COMMAND` für Bash Built-ins.
+:::single-choice{#choose-detailed-manual}
+Du benötigst eine ausführliche Dokumentation des externen Befehls `ls`, nicht nur eine kurze Nutzungsübersicht. Welchen Befehl solltest du versuchen?
 
-## Exercise
+::option[`man ls`]{#man-ls .correct explanation="`man ls` öffnet die installierte Handbuchseite, die normalerweise Syntax, Optionen und Verhalten ausführlicher beschreibt."}
+::option[`whatis ls`]{#whatis-ls explanation="`whatis` zeigt knappe Beschreibungen von Handbuchseiten. Die verlangte ausführliche Dokumentation liefert es nicht."}
+::option[`type ls`]{#type-ls explanation="`type` meldet, wie Bash `ls` auflöst. Das ausführliche Programmhandbuch zeigt der Befehl nicht an."}
+:::
 
-Obwohl es keine spezifischen Labs zu diesem Thema gibt, empfehlen wir, den umfassenden [Linux Learning Path](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und Konzepte zu üben.
+## Zusammenfassung
 
-## Quiz Question
+Du kannst nun abhängig von der Namensauflösung durch Bash die passende Hilfequelle wählen.
 
-Wie erhält man schnelle Kommandozeilenhilfe für eingebaute Bash-Befehle? (Bitte geben Sie den einzelnen Befehlsnamen auf Englisch und in Kleinbuchstaben an.)
-
-## Quiz Answer
-
-help
+1. Verwende `help` für Bash-Builtins.
+2. Probiere `--help` für eine kurze Programmnutzung.
+3. Prüfe die Namensauflösung mit `type`.
+4. Öffne ausführliche Dokumentation mit `man`.

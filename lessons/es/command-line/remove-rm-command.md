@@ -1,23 +1,24 @@
 ---
-index: 13
+lesson_id: "remove-rm-command"
+course_id: "command-line"
 lang: "es"
+order_index: 13
 title: "rm (Eliminar)"
+description: "Aprende a eliminar archivos y directorios comprobando los destinos y eligiendo opciones más seguras de `rm`."
 meta_title: "rm (Eliminar) - Línea de Comandos"
 meta_description: "Aprende el comando Linux rm con ejemplos seguros para eliminar archivos, borrar directorios, usar rm -r, rm -i y evitar errores con rm -rf."
 meta_keywords: "comando linux rm, comando rm, rm -r, rm -i, rm -f, rm -rf, eliminar archivos linux, borrar directorio linux, rmdir"
 ---
 
-## Lesson Content
+La orden `rm` elimina entradas del sistema de archivos. La eliminación desde la línea de comandos normalmente no envía los elementos a la papelera del escritorio y `rm` no incorpora una función para deshacer, así que confirma todos los destinos antes de ejecutarla.
 
-En Linux, es común acumular archivos que ya no se necesitan. Para eliminarlos, se usa el comando `rm` (remove), una utilidad fundamental para gestionar tu sistema de archivos. La sintaxis básica es:
+Su sintaxis básica es:
 
 ```bash
 rm [OPTIONS] FILE...
 ```
 
-El comando `rm` elimina entradas de directorio del sistema de archivos. En términos normales, borra archivos. A diferencia de muchos entornos de escritorio, la eliminación desde la línea de comandos usualmente no mueve los archivos a una papelera, por lo que debes revisar tu comando antes de presionar Enter.
-
-### Eliminar un solo archivo
+## Eliminación de archivos
 
 Para eliminar un archivo, pasa el nombre del archivo a `rm`.
 
@@ -31,9 +32,17 @@ Puedes eliminar varios archivos a la vez listándolos uno tras otro.
 $ rm notes.txt old-report.txt draft.md
 ```
 
-Esto es útil para una limpieza rápida, pero también significa que un error tipográfico puede borrar más de lo que pretendías.
+Comprueba la ortografía y la ubicación antes de pulsar Enter. Una copia de seguridad o una versión almacenada en un sistema de control de versiones es un plan de recuperación más fiable que las herramientas de recuperación del sistema de archivos después de eliminar los datos.
 
-### Eliminar archivos con comodines
+:::single-choice{#remove-one-file}
+Después de confirmar el destino, ¿qué orden elimina el archivo `old-report.txt`?
+
+::option[`rm old-report.txt`]{#rm-report .correct explanation="`rm` elimina la entrada del archivo indicado. Normalmente la operación no lo envía a una papelera."}
+::option[`rmdir old-report.txt`]{#rmdir-report explanation="`rmdir` actúa sobre directorios vacíos, no sobre archivos normales. No es la orden apropiada para este destino."}
+::option[`mv old-report.txt`]{#mv-report explanation="`mv` necesita un destino y cambia una ruta en vez de eliminarla. Esta orden incompleta no realiza la eliminación solicitada."}
+:::
+
+## Previsualización de destinos con comodines
 
 Los comodines del shell te permiten coincidir con varios archivos. Por ejemplo, esto elimina todos los archivos `.tmp` en el directorio actual:
 
@@ -51,7 +60,15 @@ $ rm *.tmp
 
 Recuerda que el shell expande `*.tmp` antes de que `rm` se ejecute. Si el patrón coincide con más archivos de los esperados, `rm` recibirá todos ellos.
 
-### Eliminación interactiva con -i
+:::single-choice{#preview-removal-pattern}
+Planeas eliminar `*.tmp`. ¿Qué orden muestra primero las rutas no ocultas seleccionadas por el patrón sin borrarlas?
+
+::option[`rm -v *.tmp`]{#verbose-remove explanation="El modo detallado informa de las eliminaciones mientras ocurren. Sigue borrando los archivos coincidentes y no es una previsualización de solo lectura."}
+::option[`ls '*.tmp'`]{#quoted-pattern explanation="Las comillas impiden expandir el comodín, por lo que se busca un nombre literal que contenga `*` en vez de previsualizar los destinos previstos."}
+::option[`ls *.tmp`]{#list-temp-matches .correct explanation="La shell expande `*.tmp` para `ls`, lo que permite examinar el mismo conjunto de coincidencias no ocultas antes de eliminarlas."}
+:::
+
+## Solicitud de confirmación
 
 Para un enfoque más seguro, usa la opción `-i`. Te pregunta antes de eliminar cada archivo.
 
@@ -60,9 +77,17 @@ $ rm -i important.txt
 rm: remove regular file 'important.txt'? y
 ```
 
-Usa `rm -i` al eliminar archivos de un directorio compartido, limpiar muchos archivos o aprender el comando por primera vez.
+La opción `-I` es una protección menos intrusiva de GNU `rm`: pregunta una vez cuando la orden eliminaría más de tres archivos o actuaría de forma recursiva.
 
-### Eliminación forzada con -f
+:::single-choice{#confirm-each-removal}
+¿Qué orden solicita confirmación antes de eliminar cada archivo indicado?
+
+::option[`rm -i important.txt`]{#interactive-important .correct explanation="La opción `-i` pregunta antes de cada eliminación, lo que permite rechazar la operación."}
+::option[`rm -f important.txt`]{#force-important explanation="La opción `-f` suprime los prompts e ignora un operando ausente. Elimina confirmaciones en vez de añadirlas."}
+::option[`rm -v important.txt`]{#verbose-important explanation="La opción `-v` informa de lo que se ha eliminado, pero no pide aprobación previamente."}
+:::
+
+## Ignorar archivos ausentes con -f
 
 La opción `-f` significa "force" (forzar). Ignora archivos inexistentes y no solicita confirmación.
 
@@ -70,15 +95,9 @@ La opción `-f` significa "force" (forzar). Ignora archivos inexistentes y no so
 $ rm -f old-cache.txt
 ```
 
-Esto es útil en scripts donde la limpieza debe continuar incluso si un archivo ya no existe.
+Esto puede hacer que la limpieza de un script sea idempotente cuando un archivo generado quizá ya no exista. Como elimina la confirmación, no añadas `-f` solo para silenciar un error que no comprendes.
 
-```bash
-$ rm -f build.log
-```
-
-Ten cuidado: `-f` también suprime algunas advertencias de seguridad, por lo que puede ocultar errores.
-
-### Eliminar directorios con -r
+## Eliminación de directorios
 
 Por defecto, `rm` no puede eliminar un directorio.
 
@@ -93,44 +112,40 @@ Para eliminar un directorio y todo su contenido, usa `-r` o `-R` para eliminaci�
 $ rm -r old-project
 ```
 
-La eliminación recursiva recorre el árbol de directorios y elimina archivos, subdirectorios y su contenido.
-
-### Los peligros de rm -rf
-
-El comando `rm -rf` combina eliminación recursiva con eliminación forzada.
+Para un directorio vacío, `rmdir` es una alternativa más limitada:
 
 ```bash
-$ rm -rf old-project
+$ rmdir empty-directory
 ```
 
-Este comando puede ser apropiado para eliminar carpetas generadas como resultados de compilación, pero es peligroso porque elimina todo un árbol sin preguntar. Siempre verifica:
+`rmdir` falla si el directorio no está vacío, lo que protege su contenido frente a una eliminación recursiva.
+
+:::single-choice{#remove-empty-directory-only}
+¿Qué orden elimina `old-cache/` únicamente si el directorio está vacío?
+
+::option[`rm -r old-cache/`]{#recursive-cache explanation="`rm` recursivo elimina el directorio y su contenido. No impone la condición de que esté vacío."}
+::option[`rmdir old-cache/`]{#rmdir-cache .correct explanation="`rmdir` solo tiene éxito con un directorio vacío, por lo que no elimina recursivamente los archivos que contenga."}
+::option[`rm -f old-cache/`]{#force-cache explanation="La opción `-f` no hace que un `rm` sin `-r` elimine directorios. Además, suprime protecciones en vez de comprobar que estén vacíos."}
+:::
+
+## Comprobación de una eliminación recursiva
+
+La eliminación recursiva puede borrar un árbol completo. Combinar `-r` con `-f` también suprime los prompts, por lo que `rm -rf` exige validar el destino con especial cuidado. Antes de cualquier eliminación recursiva, comprueba:
 
 - ¿Estás en el directorio que crees? Usa `pwd`.
 - ¿Tu comodín se expandió correctamente? Previsualiza con `ls`.
 - ¿La ruta es absoluta o relativa? `/tmp/cache` y `tmp/cache` son muy diferentes.
 - ¿Hay un espacio accidental? `rm -rf old-project` y `rm -rf old project` apuntan a rutas diferentes.
 
-### Usar rmdir para directorios vacíos
-
-Como alternativa más segura, elimina un directorio vacío con `rmdir`.
+Utiliza `--` antes de un destino que pueda comenzar con un guion para evitar que se interprete como una opción:
 
 ```bash
-$ rmdir empty-directory
+$ rm -- -old-name
 ```
 
-El comando `rmdir` solo tendrá éxito si el directorio está completamente vacío, lo que lo hace una opción más segura que `rm -r` para tareas de limpieza.
+No recurras a `sudo` simplemente porque `rm` informe de un error de permisos. Comprueba primero el destino y determina por qué tu cuenta no puede modificar el directorio que lo contiene. Una eliminación recursiva con privilegios puede dañar el sistema operativo o los datos de otros usuarios.
 
-### Opciones comunes de rm
-
-Aquí están las opciones que verás más a menudo:
-
-- `-i`: Preguntar antes de cada eliminación.
-- `-I`: Preguntar una vez antes de eliminar más de tres archivos o eliminar recursivamente.
-- `-f`: Forzar eliminación e ignorar archivos inexistentes.
-- `-r` o `-R`: Eliminar directorios y su contenido recursivamente.
-- `-v`: Mostrar qué se eliminó.
-
-Por ejemplo, puedes combinar opciones:
+Utiliza `-v` cuando quieras que `rm` informe de cada eliminación realizada:
 
 ```bash
 $ rm -rv old-project
@@ -138,29 +153,25 @@ removed 'old-project/notes.txt'
 removed directory 'old-project'
 ```
 
-### Preguntas comunes
+:::single-choice{#remove-nonempty-tree}
+Después de verificar el destino completo, ¿qué orden elimina `old-project/` y todo su contenido sin suprimir los prompts normales?
 
-**¿Puedo deshacer rm?** Usualmente no. Una vez que un archivo se elimina con `rm`, no hay un comando incorporado para deshacer. Las copias de seguridad, el control de versiones y las herramientas de recuperación de sistema de archivos son la verdadera red de seguridad.
+::option[`rm old-project/`]{#plain-rm-project explanation="Un `rm` sin opciones no desciende por un directorio. No puede eliminar un árbol que contenga elementos."}
+::option[`rm -r old-project/`]{#recursive-old-project .correct explanation="La opción `-r` elimina recursivamente el árbol del directorio. A diferencia de `-rf`, esta forma no añade `-f` para suprimir los prompts."}
+::option[`rmdir old-project/`]{#rmdir-project explanation="`rmdir` exige que el directorio esté vacío. Falla mientras el proyecto contenga elementos."}
+:::
 
-**¿Por qué rm dice "Permiso denegado"?** No tienes permiso para eliminar ese archivo o para modificar el directorio que lo contiene. Revisa la propiedad y permisos con `ls -l`.
+Para practicar la eliminación en un entorno controlado, prueba estos laboratorios:
 
-**¿Por qué rm dice "No existe el archivo o directorio"?** El archivo no existe en esa ruta, o estás en un directorio diferente al que esperabas. Usa `pwd` y `ls` para confirmar.
+1. **[Orden rm de Linux: eliminación de archivos](https://labex.io/es/labs/linux-linux-rm-command-file-removing-209741)** - Aprende a utilizar la orden `rm` para eliminar archivos y directorios, incluidas opciones como `-r` e `-i`, y practica una eliminación segura y eficaz.
+2. **[Organización de archivos y directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practica habilidades esenciales de administración de archivos en Linux, incluido el uso de `rm` para limpiar directorios innecesarios, mediante un ejercicio práctico.
 
-**¿Debo usar sudo con rm?** Solo cuando entiendas completamente la ruta que estás eliminando. `sudo rm -r` puede eliminar archivos del sistema que tu cuenta de usuario normal no puede tocar.
+## Resumen
 
-## Exercise
+Ahora puedes eliminar elementos del sistema de archivos tratando cada destino como irreversible.
 
-Practice is key. Here are some hands-on exercises to solidify your understanding of file and directory removal in Linux:
-
-1. **[Linux rm Command: File Removing](https://labex.io/es/labs/linux-linux-rm-command-file-removing-209741)** - Learn how to use the `rm` command for removing files and directories, including various options like `-r` and `-i`, and practice safe and effective file deletion.
-2. **[Organizing Files and Directories](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills, including using the `rm` command to clean up unnecessary directories, in a practical challenge.
-
-These labs will help you apply these concepts in real-world scenarios and build confidence with the `linux rm command`.
-
-## Quiz Question
-
-How do you remove a file named `myfile`? Your answer must be in English and use the exact, case-sensitive command.
-
-## Quiz Answer
-
-rm myfile
+1. Confirmar las rutas de archivo antes de eliminarlas.
+2. Previsualizar las expansiones de comodines con una orden de solo lectura.
+3. Solicitar confirmación con `-i` o `-I`.
+4. Preferir `rmdir` cuando el directorio deba estar vacío.
+5. Validar el destino completo antes de una eliminación recursiva.

@@ -1,71 +1,103 @@
 ---
-index: 7
+lesson_id: "linux-mint"
+course_id: "getting-started"
 lang: "de"
+order_index: 7
 title: "Linux Mint"
-meta_title: "Linux Mint Distribution"
-meta_description: "Erfahren Sie, was die Linux Mint Distribution ist, warum sie bei Einsteigern beliebt ist, wie die Ubuntu-Basis und die APT-Paketverwaltung funktionieren und warum sie eine hervorragende Wahl für den Desktop ist."
-meta_keywords: "Linux Mint Distribution, Linux Mint Linux-Distribution, was ist Linux Mint, Linux Mint Ubuntu-basiert, Linux Mint Paketverwaltung, Linux-Distribution für Einsteiger"
+description: "Erfahre, wie Linux Mint eine zugängliche Desktop-Erfahrung mit vertrauten Werkzeugen der Debian-Familie bietet."
+meta_title: "Linux-Mint-Distribution"
+meta_description: "Erfahre, was die Linux-Mint-Distribution ist, warum Linux Mint bei Einsteigern beliebt ist, wie seine Ubuntu-Basis und die APT-Paketverwaltung funktionieren und warum es eine gute Wahl für Desktop-Linux ist."
+meta_keywords: "Linux-Mint-Distribution, Linux-Mint-Linux-Distribution, was ist Linux Mint, Linux Mint Ubuntu-basiert, Linux-Mint-Paketverwaltung, Linux-Distribution für Einsteiger"
 ---
 
-## Lesson Content
+## Was ist Linux Mint?
 
-### Was ist Linux Mint?
+Linux Mint ist eine auf den Desktop ausgerichtete Linux-Distribution, die dafür bekannt ist, komfortabel, vertraut und einfach zu bedienen zu sein. Sie ist besonders bei Einsteigern und bei Nutzern beliebt, die ein traditionelles Desktop-Layout einer stärker eigensinnigen Oberfläche vorziehen.
 
-Linux Mint ist eine auf den Desktop ausgerichtete Linux-Distribution, die für ihre Benutzerfreundlichkeit, Vertrautheit und einfache Bedienung bekannt ist. Sie ist besonders bei Anfängern beliebt sowie bei Anwendern, die ein traditionelles Desktop-Layout einer eher eigenwilligen Benutzeroberfläche vorziehen.
+Ihr Ruf beruht eher auf praktischen Entscheidungen als auf technischer Komplexität. Linux Mint möchte eine vollständige Desktop-Erfahrung mit sinnvollen Voreinstellungen bieten. Das ist ein Grund, warum es Menschen beim Umstieg von Windows häufig empfohlen wird.
 
-Ihr Ruf beruht eher auf praktischen Entscheidungen als auf technischer Komplexität. Linux Mint zielt darauf ab, ein vollständiges Desktop-Erlebnis mit sinnvollen Standardeinstellungen zu bieten, was ein Grund dafür ist, warum es oft Personen empfohlen wird, die von Windows umsteigen.
+:::single-choice{#match-linux-mint-goal}
+Welches Ziel passt am besten zu Linux Mint?
 
-### Warum Linux Mint so beliebt ist
+::option[Einen vertrauten Desktop mit praktischen Voreinstellungen verwenden]{#familiar-desktop .correct explanation="Linux Mint konzentriert sich auf eine zugängliche Desktop-Erfahrung mit vertrauter Navigation und nützlichen Voreinstellungen. Das entspricht diesem Ziel unmittelbar."}
+::option[Einen schlanken Server ohne Desktop-Oberfläche betreiben]{#minimal-server explanation="Linux Mint ist hauptsächlich für den Einsatz auf Desktops und Laptops gedacht. Eine serverorientierte Distribution würde besser zu einem schlanken System ohne grafische Oberfläche passen."}
+::option[Jede installierte Komponente manuell aus dem Quellcode erstellen]{#mint-manual-source explanation="Mint stellt einen vollständigen paketierten Desktop bereit und verlangt nicht, dass Nutzer jede Komponente selbst erstellen. Sein Ziel ist praktische Benutzerfreundlichkeit statt manueller Zusammenbau."}
+:::
 
-Linux Mint ist beliebt, weil es das Desktop-Erlebnis unkompliziert hält. Anwender wählen es oft, wenn sie möchten, dass sich Linux vertraut, stabil und ohne viel zusätzliche Einrichtung einsatzbereit anfühlt.
+## Warum Linux Mint beliebt ist
 
-Es profitiert zudem von seinem Ruf, zugänglich zu sein. Das macht Mint zu einer natürlichen Empfehlung in jedem umfassenderen Leitfaden darüber, wie man [eine Linux-Distribution auswählt](https://labex.io/de/lesson/choosing-a-linux-distribution).
+Linux Mint ist beliebt, weil es die Desktop-Erfahrung unkompliziert hält. Nutzer wählen es häufig, wenn sich Linux vertraut und stabil anfühlen und ohne großen zusätzlichen Einrichtungsaufwand einsatzbereit sein soll.
 
-### Linux Mint und Ubuntu
+Außerdem profitiert es von seinem Ruf, leicht zugänglich zu sein. Das macht Mint zu einer naheliegenden Empfehlung in jedem umfassenderen Leitfaden dazu, wie du [eine Linux-Distribution auswählst](https://labex.io/lesson/choosing-a-linux-distribution).
 
-Linux Mint basiert auf Ubuntu, insbesondere auf Ubuntu LTS-Versionen, was bedeutet, dass es ein großes Software-Ökosystem, breite Hardware-Unterstützung und ein ausgereiftes Paketmanagement erbt. In der Praxis verleiht dies Mint eine stabile Basis, während es dennoch ein anderes Desktop-Erlebnis bieten kann.
+## Linux Mint und Ubuntu
 
-Wenn Sie diese verwandtschaftliche Beziehung besser verstehen möchten, lesen Sie [Ubuntu](https://labex.io/de/lesson/ubuntu) und [Debian](https://labex.io/de/lesson/debian).
+Die wichtigsten Linux-Mint-Editionen verwenden Ubuntu LTS als Paketbasis. Dadurch erhalten sie Zugriff auf ein großes Software-Ökosystem und eine ausgereifte Paketverwaltung. Linux Mint pflegt außerdem die Linux Mint Debian Edition (LMDE), die direkt auf Debian basiert. In beiden Fällen setzt Mint seine eigene Desktop-Erfahrung auf eine Grundlage aus der Debian-Familie.
 
-### Paketmanagement
+Wenn du diese Familienbeziehung besser verstehen möchtest, sieh dir [Ubuntu](https://labex.io/lesson/ubuntu) und [Debian](https://labex.io/lesson/debian) an.
 
-Da Linux Mint auf Ubuntu basiert, verwendet es das `.deb`-Paketformat und APT für das Paketmanagement. Anwender können Software über die Befehlszeile oder über grafische Werkzeuge wie den Software-Manager installieren.
+:::single-choice{#identify-main-mint-base}
+Welche Distribution stellt die Paketbasis für die wichtigsten Linux-Mint-Editionen bereit?
 
-Dies verleiht Linux Mint einen vertrauten und gut dokumentierten Software-Workflow, was einer der Gründe ist, warum es für Neulinge gut geeignet ist.
+::option[Ubuntu LTS]{#ubuntu-lts-base .correct explanation="Die wichtigsten Linux-Mint-Editionen verwenden eine Ubuntu-LTS-Paketbasis. LMDE ist die separate, direkt auf Debian basierende Edition."}
+::option[Fedora Linux]{#mint-fedora-base explanation="Fedora gehört zur RPM-Paketfamilie und stellt nicht Mints Paketbasis bereit. Die wichtigsten Mint-Editionen verwenden Ubuntu LTS."}
+::option[Arch Linux]{#mint-arch-base explanation="Arch besitzt ein anderes Paketsystem und ein Rolling-Release-Modell. Es ist nicht die Grundlage der wichtigsten Linux-Mint-Editionen."}
+:::
 
-### Desktop-Erlebnis
+## Paketverwaltung
 
-Linux Mint ist primär für Desktop- und Laptop-Systeme konzipiert. Sein Cinnamon-Desktop ist besonders dafür bekannt, ein klassisches Layout mit einer Leiste, einem Anwendungsmenü und einem Workflow zu bieten, der sich für viele Anwender vertraut anfühlt.
+Da Linux Mint auf Ubuntu basiert, verwendet es das Paketformat `.deb` und APT für die Paketverwaltung. Nutzer können Software auf der Befehlszeile oder mit grafischen Werkzeugen wie der Anwendungsverwaltung installieren.
 
-Dieser Fokus auf den Desktop ist ein wesentlicher Teil der Identität von Mint. Im Gegensatz zu einigen Distributionen, die versuchen, jeden Anwendungsfall gleichermaßen abzudecken, ist Mint am besten als praktische Desktop-Linux-Distribution zu verstehen.
+Dadurch bietet Linux Mint einen vertrauten und gut dokumentierten Arbeitsablauf für Software. Das ist einer der Gründe, warum es sich gut für Neueinsteiger eignet.
 
-### Häufige Anwendungsbereiche
+:::single-choice{#identify-mint-package-tool}
+Welches Werkzeug verwaltet Pakete auf Linux Mint über die Befehlszeile?
 
-Linux Mint eignet sich gut für die tägliche Desktop-Nutzung, Web-Browsing, Büroarbeit, Medienwiedergabe und allgemeines Lernen. Es wird seltener für Server oder hochgradig angepasste Entwicklungsumgebungen gewählt, ist aber als persönliches Desktop-System sehr stark.
+::option[DNF]{#mint-dnf-tool explanation="DNF wird von Fedora und Systemen der RHEL-Familie verwendet. Linux Mint verwendet stattdessen Paketwerkzeuge aus der Debian-Familie."}
+::option[APT]{#mint-apt-tool .correct explanation="Linux Mint verwendet APT für die Paketverwaltung auf der Befehlszeile. Seine Software wird im `.deb`-Format der Debian-Familie verteilt."}
+::option[Pacman]{#mint-pacman-tool explanation="Pacman gehört zu Arch Linux. Es ist nicht das Paketverwaltungswerkzeug von Linux Mint."}
+:::
 
-### Ist Linux Mint gut für Anfänger geeignet?
+## Desktop-Erfahrung
 
-Ja. Linux Mint ist eine der anfängerfreundlichsten Linux-Distributionen, da es eine sanfte Lernkurve mit einer leistungsfähigen und stabilen Basis kombiniert. Anwender, die einen einfachen Desktop-Einstieg in Linux suchen, empfinden es oft als komfortabler als technischere oder sich schneller entwickelnde Distributionen.
+Linux Mint ist hauptsächlich für Desktop- und Laptop-Systeme gedacht. Sein Cinnamon-Desktop ist besonders für ein klassisches Layout mit einer Leiste, einem Anwendungsmenü und einem Arbeitsablauf bekannt, der vielen Nutzern vertraut vorkommt.
 
-### Weiterführende Literatur
+Dieser Schwerpunkt auf dem Desktop ist ein wichtiger Teil von Mints Identität. Im Gegensatz zu einigen Distributionen, die alle Einsatzbereiche gleichermaßen abdecken möchten, lässt sich Mint am besten als praktische Desktop-Linux-Distribution verstehen.
+
+:::single-choice{#recognize-cinnamon-layout}
+Welche Eigenschaft beschreibt die hier hervorgehobene Cinnamon-Desktop-Erfahrung?
+
+::option[Eine reine Befehlsoberfläche ohne grafischen Desktop]{#command-only-layout explanation="Unter Linux Mint kannst du ein Terminal verwenden, aber Cinnamon ist eine grafische Desktop-Umgebung. Eine reine Befehlsoberfläche beschreibt sie nicht."}
+::option[Ein klassisches Layout mit einer Leiste und einem Anwendungsmenü]{#classic-cinnamon-layout .correct explanation="Cinnamon ist für ein vertrautes Layout mit Leiste und Menü bekannt. Das trägt zu Mints zugänglicher Desktop-Erfahrung bei."}
+::option[Eine Serverkonsole ohne Desktop-Anwendungen]{#server-console-layout explanation="Mints Cinnamon-Edition ist für den persönlichen Desktop-Einsatz gedacht. Sie wird nicht als Desktop-freie Serverkonsole angeboten."}
+:::
+
+## Häufige Einsatzgebiete
+
+Linux Mint eignet sich gut für die tägliche Arbeit am Desktop, das Surfen im Web, Büroarbeiten, die Medienwiedergabe und das allgemeine Lernen. Für Server oder stark angepasste Entwicklungsumgebungen wird es seltener gewählt, als persönliches Desktop-System ist es jedoch sehr leistungsfähig.
+
+## Eignet sich Linux Mint für Einsteiger?
+
+Ja. Linux Mint gehört zu den einsteigerfreundlichsten Linux-Distributionen, weil es eine sanfte Lernkurve mit einer leistungsfähigen und stabilen Grundlage verbindet. Nutzer, die einen einfachen Desktop-Einstieg in Linux möchten, empfinden es häufig als angenehmer als technischere oder sich schneller verändernde Distributionen.
+
+## Weiterführende Literatur
 
 - [Linux Mint](https://linuxmint.com/)
-- [Linux Mint Download](https://linuxmint.com/download.php)
-- [Linux Mint Installationsanleitung](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
-- [Linux Mint Benutzerhandbuch](https://linuxmint-user-guide.readthedocs.io/en/latest/)
-
-## Exercise
+- [Linux Mint herunterladen](https://linuxmint.com/download.php)
+- [Installationsanleitung für Linux Mint](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
+- [Benutzerhandbuch für Linux Mint](https://linuxmint-user-guide.readthedocs.io/en/latest/)
 
 Um nach diesem Überblick über Linux Mint weiterzulernen, empfehlen wir diese LabEx-Kurse:
 
-1. **[Schnelleinstieg in Linux](https://labex.io/de/courses/quick-start-with-linux)** - Lernen Sie Linux-Grundlagen durch angeleitete praktische Übungen.
-2. **[Linux für Anfänger](https://labex.io/de/courses/linux-for-noobs)** - Folgen Sie einem anfängerfreundlichen Linux-Kurs mit praktischen Übungen.
-3. **[Grundlagen des Linux-Terminals](https://labex.io/de/courses/linux-terminal-basics)** - Bauen Sie Vertrauen im Umgang mit dem Terminal auf, während Sie ein anfängerfreundliches Tempo beibehalten.
+1. **[Schnellstart mit Linux](https://labex.io/courses/quick-start-with-linux)** - Lerne die Linux-Grundlagen durch angeleitete praktische Übungen.
+2. **[Linux für Einsteiger](https://labex.io/courses/linux-for-noobs)** - Folge einem einsteigerfreundlichen Linux-Kurs mit praktischen Übungen.
+3. **[Grundlagen des Linux-Terminals](https://labex.io/courses/linux-terminal-basics)** - Gewinne Sicherheit im Umgang mit dem Terminal und behalte dabei ein einsteigerfreundliches Tempo bei.
 
-## Quiz Question
+## Zusammenfassung
 
-Auf welcher populären Distribution basiert Linux Mint? (Antwort auf Englisch, Groß-/Kleinschreibung beachten)
+Du kannst nun erklären, wie Linux Mint einen vertrauten Desktop mit der Softwareverwaltung der Debian-Familie verbindet.
 
-## Quiz Answer
-
-Ubuntu
+1. Bestimme die Desktop-Ziele, auf die Linux Mint besonderen Wert legt.
+2. Erkläre die Ubuntu-LTS-Basis der wichtigsten Mint-Editionen.
+3. Erkenne LMDE als die direkt auf Debian basierende Edition.
+4. Bestimme APT und die Cinnamon-Desktop-Erfahrung.

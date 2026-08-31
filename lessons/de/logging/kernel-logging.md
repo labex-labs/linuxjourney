@@ -1,46 +1,97 @@
 ---
-index: 4
+lesson_id: "kernel-logging"
+course_id: "logging"
 lang: "de"
-title: "Kernel-Protokollierung"
-meta_title: "Kernel-Protokollierung - Protokollierung"
-meta_description: "Erkunden Sie das Linux-Kernel-Log, einschließlich /var/log/kern.log und dmesg. Erfahren Sie, wie Sie das Kern-Log auf Boot-Meldungen, Hardware-Treiberinformationen überprüfen und Systemprobleme beheben. Ein Leitfaden zu Linux-Kernel-Log-Dateien."
-meta_keywords: "kernel log, kern.log, /var/log/kern.log, kernel log linux, kern log, dmesg, linux protokollierung, bootmeldungen, kernel ereignisse"
+order_index: 4
+title: "Kernelprotokollierung"
+description: "Lerne, aktuelle und aufbewahrte Linux-Kernelmeldungen mit dmesg und journalctl abzufragen."
+meta_title: "Kernelprotokollierung – Protokollierung"
+meta_description: "Erkunde das Linux-Kernelprotokoll einschließlich /var/log/kern.log und dmesg. Lerne, Bootmeldungen und Treiberinformationen zu prüfen und Systemprobleme zu untersuchen."
+meta_keywords: "Kernelprotokoll, kern.log, /var/log/kern.log, Linux-Kernelprotokoll, dmesg, Linux-Protokollierung, Bootmeldungen, Kernelereignisse"
 ---
 
-## Lesson Content
+Der Kernel gibt Meldungen zu Bootvorgang, Treibern, Geräten, Dateisystemen, Netzwerk, Speicher und Fehlern aus. Diese Datensätze können Symptome auf niedriger Ebene erklären, doch eine einzelne Warnmeldung beweist nicht, dass Hardware defekt ist.
 
-Der Linux-Kernel ist der Kern des Betriebssystems und erzeugt Meldungen über seine Vorgänge, den Hardwarestatus und potenzielle Probleme. Der Zugriff auf diese Informationen ist für die Systemadministration und Fehlerbehebung von entscheidender Bedeutung. Hier kommt das Kernel-Protokoll (Kernel Log) ins Spiel.
+## Den Kernel-Ringpuffer lesen
 
-### Der Kernel-Ringpuffer und dmesg
+`dmesg` liest Meldungen aus dem Ringpuffer des Kernels:
 
-Während des Bootvorgangs protokolliert Ihr System eine Fülle von Informationen aus dem Kernel-Ringpuffer. Dieser Puffer enthält Meldungen über das Laden von Hardware-Treibern, Kernel-Statusaktualisierungen und andere Ereignisse, die während des Startvorgangs auftreten.
+```bash
+$ dmesg --human
+```
 
-Dieses Protokoll kann mit dem Befehl `dmesg` angezeigt werden. Die Inhalte werden oft auch in `/var/log/dmesg` geschrieben, aber beachten Sie, dass diese Datei normalerweise bei jedem Neustart gelöscht und neu geschrieben wird. Obwohl Sie sie möglicherweise nicht täglich benötigen, ist die `dmesg`-Ausgabe die erste Anlaufstelle, wenn Sie auf ein Hardwareproblem oder ein Problem während des Bootvorgangs stoßen.
+Der Puffer besitzt eine begrenzte Kapazität, sodass neuere Meldungen ältere überschreiben können. Der Zugriff kann außerdem auf privilegierte Benutzer beschränkt sein. `dmesg --follow` verfolgt bei Implementierungen, die dies unterstützen, neue Kernelmeldungen; beende es nach einer begrenzten Reproduktion.
 
-### Die primäre Kernel-Protokolldatei
+:::single-choice{#kernel-log-ring-buffer-limit}
+Warum kann ein älteres Kernelereignis in der aktuellen `dmesg`-Ausgabe fehlen?
 
-Für eine dauerhaftere Aufzeichnung der Kernel-Aktivität können Sie sich `/var/log/kern.log` zuwenden. Diese Datei ist das primäre Ziel für die von `kernel log linux`-Systemen verwendeten Protokolle. Sie erfasst Kernel-Informationen und Ereignisse, während sie auf Ihrem laufenden System auftreten.
+::option[Kernelereignisse dürfen nur ein Zeichen enthalten.]{#kernel-log-one-character explanation="Kernelmeldungen können gewöhnlichen Diagnosetext und Metadaten enthalten."}
+::option[`dmesg` löscht jede Zeile dauerhaft, nachdem sie angezeigt wurde.]{#kernel-log-display-deletes explanation="Ein gewöhnlicher Lesevorgang verbraucht nicht alle angezeigten Kernelmeldungen."}
+::option[Der begrenzte Ringpuffer kann es überschrieben haben.]{#kernel-log-overwritten .correct explanation="Der speicherresidente Puffer bewahrt nur eine begrenzte Menge an Kernelmeldungsdaten auf."}
+:::
 
-Die Datei `kern.log` enthält auch die Ausgabe von `dmesg` und ist somit eine umfassende Quelle für Kernel-bezogene Meldungen. Wenn Sie ein `kernel log` eines früheren Ereignisses untersuchen müssen, das sich nicht mehr im Ringpuffer befindet, ist das `kern log` die richtige Anlaufstelle.
+## Lesbare Zeitstempel verwenden
 
-### Warum Kernel-Protokolle wichtig sind
+Rohe Kernelzeitstempel sind gewöhnlich relativ zum Bootvorgang. `dmesg --ctime` oder `--human` kann sie als Uhrzeiten darstellen, doch umgerechnete Werte hängen vom Verlauf der Systemuhr ab und können ungenau sein, wenn sich die Uhr nach dem Bootvorgang geändert hat. Bewahre die bootrelative Zeitangabe, wenn eine genaue Reihenfolge wichtig ist.
 
-Zu verstehen, wie man das `kernel log` liest, ist eine grundlegende Fähigkeit. Diese Protokolle geben tiefe Einblicke in die Interaktion Ihres Systems mit seiner Hardware. Durch die Untersuchung von `kern.log` oder der Ausgabe von `dmesg` können Sie Treiberprobleme diagnostizieren, unerwartetes Hardwareverhalten untersuchen und die allgemeine Integrität des Kernels überwachen.
+:::single-choice{#kernel-log-timestamp-caution}
+Warum solltest du umgerechnete Uhrzeitstempel von `dmesg` mit Bedacht behandeln?
 
-## Exercise
+::option[Sie beziehen sich immer auf einen anderen Rechner.]{#kernel-log-other-machine explanation="Sie werden lokal abgeleitet, doch Uhränderungen können die Umrechnung beeinflussen."}
+::option[Sie beruhen auf der Zuordnung bootrelativer Zeit zu einer Uhr, die sich ändern kann.]{#kernel-log-clock-change .correct explanation="Zeitsynchronisierung oder manuelle Uhränderungen können die dargestellte Uhrzeit irreführend machen."}
+::option[Sie zeigen freien Dateisystemspeicher statt einer Zeit an.]{#kernel-log-free-space explanation="Zeitstempeloptionen zeigen weiterhin Zeiten und keine Speicherkapazität."}
+:::
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Benutzer- und Gruppenverwaltung unter Linux zu festigen:
+## Dauerhafte Kernelaufzeichnungen abfragen
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Üben Sie den gesamten Lebenszyklus der Benutzeradministration, vom Erstellen und Sichern neuer Konten bis hin zum Ändern und Löschen dieser.
-2. **[Linux-Gruppen mit groupadd, usermod und groupdel verwalten](https://labex.io/de/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Sammeln Sie praktische Erfahrungen mit den zentralen Befehlszeilenprogrammen für die Gruppenadministration, einschließlich der Erstellung neuer Gruppen, der Änderung von Benutzerzuordnungen und der Entfernung von Gruppen.
-3. **[Benutzerkonten und Sudo-Berechtigungen unter Linux konfigurieren](https://labex.io/de/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Lernen Sie wesentliche Techniken zur Verwaltung von Benutzerkonten und Sudo-Berechtigungen kennen, um die Sicherheit eines Linux-Systems zu erhöhen, einschließlich der Durchsetzung von Passwortrichtlinien und der Gewährung administrativer Rechte.
+Frage auf einem systemd-Host Kernelaufzeichnungen des aktuellen Bootvorgangs ab mit:
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Benutzer- und Gruppenverwaltung unter Linux aufzubauen.
+```bash
+$ journalctl -k -b
+```
 
-## Quiz Question
+Falls frühere Bootvorgänge in einem dauerhaften Journalspeicher aufbewahrt wurden, untersuche die Bootliste und wähle einen aus:
 
-Welcher Befehl kann verwendet werden, um Kernel-Bootmeldungen anzuzeigen? Bitte antworten Sie nur mit dem englischen Befehl in Kleinbuchstaben.
+```bash
+$ journalctl --list-boots
+$ journalctl -k -b -1
+```
 
-## Quiz Answer
+Herkömmliche Syslog-Weiterleitung kann `/var/log/kern.log` oder eine andere Datei erstellen, doch dies hängt von der Konfiguration ab. Auch eine gespeicherte Datei `/var/log/dmesg` ist nicht allgemeingültig und stellt möglicherweise nur eine Momentaufnahme vom Bootvorgang dar.
 
-dmesg
+:::single-choice{#kernel-log-previous-boot}
+Welcher Befehl fordert Kernelmeldungen des vorherigen aufbewahrten Bootvorgangs an?
+
+::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Kernelmeldungen werden mit `-k` ausgewählt, und das Verfolgen wählt keinen vorherigen Bootvorgang."}
+::option[`dmesg --clear`]{#kernel-log-clear explanation="Das Leeren verändert den Pufferzustand und ruft keinen früheren Bootvorgang ab."}
+::option[`journalctl -k -b -1`]{#kernel-log-previous .correct explanation="Der Kernelfilter zusammen mit dem Bootversatz minus eins wählt den vorherigen aufbewahrten Bootvorgang aus."}
+:::
+
+## Ein Kernelereignis untersuchen
+
+Ermittle Bootvorgang, Zeitstempel, Gerät, Subsystem und die zu diesem Zeitpunkt ausgeführte Aktion. Frage umgebende Kernel- und Dienstdatensätze ab und vergleiche anschließend Hardwareinventar und aktuellen Zustand:
+
+```bash
+$ journalctl -k -b --since '10 minutes ago'
+$ lspci -k
+$ lsblk
+```
+
+Verwende nur Werkzeuge, die für das Subsystem relevant sind. Beurteile vor dem Neuladen eines Treibers, dem Trennen eines Geräts oder einem Neustart die Auswirkungen auf Speicher, Netzwerk, Konsole und Dienste und bewahre einen Wiederherstellungszugang.
+
+:::single-choice{#kernel-log-warning-response}
+Was ist die beste Reaktion auf eine einzelne Kernelwarnung?
+
+::option[Sofort jeden geladenen Treiber entladen.]{#kernel-log-unload-all explanation="Dies kann wichtige Geräte unterbrechen und grenzt die Ursache der Warnung nicht ein."}
+::option[Annehmen, dass der gesamte Rechner ersetzt werden muss.]{#kernel-log-replace-machine explanation="Ein einzelner Datensatz reicht für diese Schlussfolgerung nicht aus."}
+::option[Sie mit umgebenden Ereignissen und dem aktuellen Subsystemzustand verknüpfen.]{#kernel-log-correlate .correct explanation="Zusammenhang und reproduzierbare Auswirkungen sind erforderlich, bevor eine Korrekturmaßnahme ausgewählt wird."}
+:::
+
+## Zusammenfassung
+
+Du kannst aktuelle Meldungen des Kernelpuffers nun von aufbewahrten Kernelprotokollen unterscheiden.
+
+1. Lies den begrenzten Ringpuffer mit `dmesg`.
+2. Interpretiere bootrelative und umgerechnete Zeitstempel mit Bedacht.
+3. Frage aktuelle oder vorherige Bootvorgänge mit `journalctl -k` ab.
+4. Verknüpfe Kernelmeldungen, bevor du unterbrechende Änderungen vornimmst.

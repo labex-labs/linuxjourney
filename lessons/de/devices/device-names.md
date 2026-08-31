@@ -1,62 +1,113 @@
 ---
-index: 3
+lesson_id: "device-names"
+course_id: "devices"
 lang: "de"
+order_index: 3
 title: "Gerätenamen"
-meta_title: "Gerätenamen - Geräte"
-meta_description: "Entdecken Sie gängige Linux-Gerätenamen für Speicher und Peripheriegeräte. Dieser Leitfaden erklärt die Benennungskonvention für SCSI-Festplatten (wie sda), wofür sda steht, und Pseudo-Geräte wie /dev/null."
-meta_keywords: "linux gerätenamen, linux gerätename, wofür steht sda, sd elementname, was wäre üblicherweise der gerätename für die erste partition auf der zweiten scsi-festplatte, /dev, scsi geräte, pseudo geräte, pata geräte"
+description: "Lerne, wie Linux verbreitete Speichergeräte, Partitionen, logische Geräte und dauerhafte Gerätelinks benennt."
+meta_title: "Gerätenamen – Geräte"
+meta_description: "Erkunde gängige Linux-Gerätenamen für Datenträger, Partitionen, NVMe, Device Mapper, RAID, Loop-Geräte und dauerhafte Links unter /dev/disk."
+meta_keywords: "Linux Gerätenamen, Linux Gerätename, sda Bedeutung, /dev, SCSI Geräte, NVMe, Device Mapper, dauerhafte Gerätelinks, Pseudogeräte"
 ---
 
-## Lesson Content
+Linux-Gerätenamen spiegeln das Kernel-Subsystem und den Treiber wider, der eine Schnittstelle bereitstellt, und nicht immer den auf der Hardware aufgedruckten physischen Anschluss. Lerne die üblichen Muster, ermittle aber vor Änderungen am Speicher stets die tatsächliche Zuordnung auf dem aktuellen System.
 
-In Linux wird jedes Gerät durch eine Datei im Verzeichnis `/dev` repräsentiert. Das Verständnis der Namenskonventionen für diese Dateien ist für die Systemadministration von entscheidender Bedeutung. Hier sind die häufigsten Arten von Linux-Gerätenamen, denen Sie begegnen werden.
+## Namen von Datenträgern der SCSI-Schicht
 
-### SCSI- und moderne Speichergeräte
+Datenträger, die über die SCSI-Datenträgerschicht bereitgestellt werden, verwenden häufig Namen mit `sd`. Dazu gehören viele SCSI-, SATA-, USB-Speicher- und virtuelle Datenträger:
 
-Auch wenn Ihr Rechner moderne Speicher wie SATA, NVMe oder USB-Laufwerke verwendet, verwaltet der Linux-Kernel diese oft über sein SCSI (Small Computer System Interface) Subsystem. Deshalb ist das häufigste Präfix für Speichergeräte `sd`, was ursprünglich für „SCSI disk“ stand.
+- `/dev/sda`: ein vollständiger Datenträger
+- `/dev/sdb`: ein weiterer vollständiger Datenträger
+- `/dev/sda3`: Partition 3 auf `/dev/sda`
+- `/dev/sdb1`: Partition 1 auf `/dev/sdb`
 
-Der `sd element name` folgt einem klaren Muster:
+Die Buchstaben spiegeln die Aufzählungsreihenfolge wider und sind keine dauerhafte Identität. Das Hinzufügen eines Controllers, eine geänderte Firmware-Reihenfolge oder das Anschließen eines Geräts kann verändern, welcher Datenträger einen bestimmten Buchstaben erhält.
 
-- Das Präfix `sd` kennzeichnet ein Massenspeichergerät.
-- Der nächste Buchstabe repräsentiert das Laufwerk selbst, zugewiesen in der Reihenfolge der Erkennung (`a` für das erste, `b` für das zweite usw.).
-- Eine Zahl am Ende gibt die Partition auf diesem Laufwerk an.
+:::single-choice{#device-names-sdb-first-partition}
+Welcher Pfad bezeichnet im `sd`-Namensmuster Partition 1 auf `/dev/sdb`?
 
-Zu den gängigen SCSI-Gerätedateien gehören:
+::option[`/dev/sda2`]{#device-names-sda-two explanation="Dieser Pfad bezeichnet Partition 2 auf dem aktuell `/dev/sda` genannten Datenträger."}
+::option[`/dev/sdbp1`]{#device-names-sdb-p-one explanation="Das Trennzeichen `p` wird bei Mustern verwendet, deren Grundname bereits mit einer Ziffer endet, nicht bei gewöhnlichen `sd`-Namen."}
+::option[`/dev/sdb1`]{#device-names-sdb-one .correct explanation="Bei `sd`-Datenträgern wird die Partitionsnummer direkt an den Namen des vollständigen Datenträgers angehängt."}
+:::
 
-- `/dev/sda`: Das erste Speicherlaufwerk.
-- `/dev/sdb`: Das zweite Speicherlaufwerk.
-- `/dev/sda3`: Die dritte Partition auf dem ersten Speicherlaufwerk.
+## Namen, die mit Ziffern enden
 
-Wie lautet also der Gerätename für die erste Partition auf der zweiten SCSI-Festplatte? Dem Muster folgend ist die zweite Festplatte `sdb` und ihre erste Partition `1`. Daher lautet der Gerätename `/dev/sdb1`.
+Einige Namen vollständiger Geräte enthalten bereits Ziffern. Ihre Partitionsnamen verwenden deshalb `p` als Trennzeichen:
 
-### Pseudo-Geräte
+- `/dev/nvme0n1`: NVMe-Namespace 1 auf Controller 0
+- `/dev/nvme0n1p2`: Partition 2 auf diesem Namespace
+- `/dev/mmcblk0`: ein MMC-Blockgerät
+- `/dev/mmcblk0p1`: Partition 1 auf diesem Gerät
 
-Pseudo-Geräte sind spezielle Dateien, die keiner physischen Hardware entsprechen, aber nützliche Systemfunktionen bereitstellen. Es handelt sich typischerweise um Zeichengeräte.
+NVMe-Geräte heißen normalerweise nicht `/dev/sdX`, sondern folgen der Namenskonvention des NVMe-Subsystems.
 
-- `/dev/zero`: Akzeptiert und verwirft alle Eingaben. Beim Lesen erzeugt es einen kontinuierlichen Strom von NULL-Bytes (Nullwert).
-- `/dev/null`: Akzeptiert und verwirft alle an ihn geschriebenen Eingaben und erzeugt beim Lesen keine Ausgabe.
-- `/dev/random`: Erzeugt einen Strom von Zufallszahlen, die aus Umgebungsrauschen generiert werden.
+:::single-choice{#device-names-nvme-partition}
+Welcher Pfad bezeichnet Partition 2 von `/dev/nvme0n1`?
 
-### Veraltete PATA-Geräte
+::option[`/dev/nvme0n1p2`]{#device-names-nvme-p-two .correct explanation="NVMe-Partitionsnamen fügen vor der Partitionsnummer ein `p` ein."}
+::option[`/dev/nvme0n12`]{#device-names-nvme-no-p explanation="Ohne Trennzeichen wären die abschließenden Ziffern gegenüber der Namespace-Nummer mehrdeutig."}
+::option[`/dev/sda2`]{#device-names-nvme-sda explanation="Dies ist eine Partition eines Datenträgers der `sd`-Schicht und bezeichnet nicht den angegebenen NVMe-Namespace."}
+:::
 
-Auf älteren Systemen stoßen Sie möglicherweise auf Festplatten, die die Parallel ATA (PATA) Schnittstelle verwenden. Der Linux-Gerätename für diese Laufwerke verwendet das Präfix `hd`.
+## Logische und virtuelle Blockgeräte
 
-- `/dev/hda`: Die erste PATA-Festplatte.
-- `/dev/hdd2`: Die zweite Partition auf der vierten PATA-Festplatte.
+Linux erstellt außerdem Blockgeräte, die keinem physischen Datenträger eins zu eins entsprechen:
 
-## Exercise
+- `/dev/dm-N` für Device-Mapper-Geräte, häufig ergänzt durch beschreibende Links unter `/dev/mapper/`
+- `/dev/mdN` für Linux-Software-RAID-Arrays
+- `/dev/loopN` für gewöhnliche Dateien, die als Loop-Blockgeräte eingebunden sind
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Gerätenamen und Speicherverwaltung zu festigen:
+Partitionen, Verschlüsselungsebenen, RAID, logische Volumes und Dateisysteme bilden einen Stapel. Verwende Werkzeuge wie `lsblk`, um Eltern-Kind-Beziehungen zu sehen, statt den Stapel allein aus einem Namen abzuleiten.
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen, Formatieren und Einhängen von Partitionen, was direkt die Arbeit mit Gerätenamen beinhaltet.
-2. **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte und ihre zugehörigen Namen in einer Linux-Umgebung zu identifizieren und zu überprüfen.
+:::single-choice{#device-names-device-mapper-link}
+Welcher Ort enthält häufig beschreibende Links für Device-Mapper-Geräte?
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Speicher und das Verständnis von Hardware in Linux aufzubauen.
+::option[`/dev/mapper/`]{#device-names-mapper-directory .correct explanation="Nutzer des Device Mappers wie LVM und Datenträgerverschlüsselung stellen in diesem Verzeichnis häufig benannte Links bereit."}
+::option[`/dev/null/`]{#device-names-null-directory explanation="`/dev/null` ist ein Zeichengerät und kein Verzeichnis abgebildeter Blockgeräte."}
+::option[`/proc/partitions/mapper/`]{#device-names-proc-mapper explanation="Dies ist nicht der übliche Pfad für Namenslinks des Device Mappers."}
+:::
 
-## Quiz Question
+## Dauerhafte Links für Speichergeräte
 
-Wie lautet üblicherweise der Gerätename für die erste Partition auf der zweiten SCSI-Festplatte? Bitte geben Sie die Antwort auf Englisch an und achten Sie auf die korrekte Groß-/Kleinschreibung.
+Die Userspace-Geräteverwaltung erzeugt Links unter `/dev/disk/`, die häufig folgendermaßen gruppiert sind:
 
-## Quiz Answer
+- `by-id` für Hardware- oder Transportkennungen
+- `by-uuid` für Dateisystem-UUIDs
+- `by-label` für Dateisystembezeichnungen
+- `by-partuuid` für UUIDs aus der Partitionstabelle
+- `by-path` für topologieabhängige Pfade
 
-/dev/sdb1
+Wähle eine Kennung passend zu der Eigenschaft, die stabil bleiben muss. Eine Dateisystem-UUID identifiziert ein Dateisystem und nicht zwangsläufig den darunterliegenden physischen Datenträger. Beim Klonen eines Dateisystems kann dessen UUID dupliziert werden; prüfe deshalb ihre Eindeutigkeit, bevor du dich darauf verlässt.
+
+:::single-choice{#device-names-persistent-config}
+Warum sind Links unter `/dev/disk/by-id/` in gerätespezifischen Konfigurationen häufig besser geeignet als `/dev/sdX`?
+
+::option[Sie machen zerstörerische Schreibvorgänge automatisch rückgängig.]{#device-names-by-id-reversible explanation="Ein stabiler Name stellt weder Snapshots noch Sicherungen oder Schreibschutz bereit."}
+::option[Sie wandeln ein Blockgerät in eine gewöhnliche Datei um.]{#device-names-by-id-regular explanation="Der Eintrag ist ein symbolischer Link, der weiterhin auf einen Blockgeräteknoten verweist."}
+::option[Sie werden aus der Geräteidentität statt aus der aktuellen Aufzählungsreihenfolge abgeleitet.]{#device-names-by-id-stable .correct explanation="Das Linkziel kann sich ändern, während der identitätsbasierte Link weiterhin demselben erkannten Gerät zugeordnet bleibt."}
+:::
+
+## Namen von Pseudogeräten
+
+Namen wie `/dev/null`, `/dev/zero` und `/dev/urandom` bezeichnen Kernel-Pseudogeräte statt physischen Speicher. `/dev/null` verwirft Schreibvorgänge und liefert beim Lesen sofort das Dateiende; `/dev/zero` stellt Nullbytes bereit; `/dev/urandom` liefert Bytes aus dem Zufallszahlengenerator des Kernels.
+
+:::single-choice{#device-names-zero-read}
+Was erzeugt das Lesen aus `/dev/zero`?
+
+::option[Eine Liste unbenutzter Speichergeräte.]{#device-names-zero-storage-list explanation="Es ist ein byteserzeugendes Zeichengerät und kein Erkennungsbefehl."}
+::option[Einen Strom von Bytes mit dem Wert null.]{#device-names-zero-bytes .correct explanation="Das Zero-Pseudogerät gibt bei Leseanforderungen Nullbytes zurück."}
+::option[Sofort das Dateiende, wie beim Lesen aus `/dev/null`.]{#device-names-zero-eof explanation="`/dev/zero` erzeugt fortlaufend Bytes, während Lesevorgänge auf `/dev/null` das Dateiende zurückgeben."}
+:::
+
+Nutze das Lab [Hardwaregeräte unter Linux erkunden](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861), um vor Partitionsarbeiten Namen, dauerhafte Links und `lsblk`-Beziehungen zu vergleichen.
+
+## Zusammenfassung
+
+Du kannst gängige Linux-Speichernamen nun entschlüsseln, ohne sie als dauerhafte Identität zu behandeln.
+
+1. Lies `sdXNUMBER` als Partition eines `sd`-Datenträgers.
+2. Verwende `pNUMBER`, wenn der Name des vollständigen Geräts bereits mit einer Ziffer endet.
+3. Erkenne logische Geräte wie Device Mapper, RAID und Loop-Geräte.
+4. Bevorzuge dauerhafte Links passend zur benötigten Identität.
+5. Unterscheide Speichernamen von Kernel-Pseudogeräten.

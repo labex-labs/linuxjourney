@@ -1,93 +1,108 @@
 ---
-index: 1
+lesson_id: "tracking-processes-top"
+course_id: "process-utilization"
 lang: "fr"
-title: "Suivi des processus : top"
-meta_title: "Suivi des processus : top - Utilisation du processus"
-meta_description: "Découvrez la meilleure façon d'apprendre Linux en maîtrisant la commande `top`. Ce guide explique comment surveiller les ressources système, suivre les processus et comprendre les métriques comme VIRT et RES. Une partie essentielle pour comprendre le fonctionnement de Linux."
-meta_keywords: "commande top Linux, surveiller les processus, utilisation système, fonctionnement linux, linux top virt res, meilleure façon d'apprendre linux, performance linux, gestion des processus, formation linux gratuite en ligne avec certificat"
+order_index: 1
+title: "Suivre les processus : top"
+description: "Découvrez comment employer top pour interpréter la charge du système, le processeur, la mémoire et l’activité de chaque processus."
+meta_title: "Suivre les processus : top - Utilisation des processus"
+meta_description: "Maîtrisez la commande top sous Linux pour surveiller les ressources, suivre les processus et comprendre des mesures telles que VIRT et RES."
+meta_keywords: "commande top Linux, surveiller processus, utilisation système, fonctionnement Linux, top VIRT RES, performances Linux, gestion processus"
 ---
 
-## Lesson Content
+`top` fournit une vue régulièrement actualisée de l’activité du système et des processus en cours d’exécution. Il aide à formuler une hypothèse de performances, mais un échantillon chargé ne prouve pas à lui seul la cause d’un problème. Comparez plusieurs actualisations et mettez-les en relation avec les journaux et les mesures propres à la charge de travail.
 
-Comprendre comment lire et analyser l'utilisation des ressources est une compétence essentielle pour tout utilisateur Linux. Beaucoup considèrent que maîtriser les outils en ligne de commande est la **meilleure façon d'apprendre Linux** depuis les bases, car ils offrent un aperçu approfondi de **comment fonctionne Linux**. Cette leçon présente `top`, un utilitaire puissant pour suivre en temps réel ce que font vos processus.
+## Lire le résumé du système
 
-### Comprendre la commande top
+Un affichage courant commence par des lignes de résumé suivies d’une table des processus :
 
-Nous avons brièvement mentionné `top` auparavant, mais nous allons maintenant examiner les détails de ce qu'il affiche. La commande `top` vous donne une vue dynamique et en temps réel des processus et de l'utilisation du système sur votre machine.
-
-```plaintext
-top - 18:06:26 up 6 days,  4:07,  2 users,  load average: 0.92, 0.62, 0.59
-Tasks: 389 total,   1 running, 387 sleeping,   0 stopped,   1 zombie
-%Cpu(s):  1.8 us,  0.4 sy,  0.0 ni, 97.6 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
-KiB Mem:  32870888 total, 27467976 used,  5402912 free,   518808 buffers
-KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
- 6675 patty    20   0 1731472 520960  30876 S   8.3  1.6 160:24.79 chrome
- 6926 patty    20   0  935888 163456  25576 S   4.3  0.5   5:28.13 chrome
+```text
+top - 18:06:26 up 6 days, 4:07, 2 users, load average: 0.92, 0.62, 0.59
+Tasks: 389 total, 1 running, 387 sleeping, 0 stopped, 1 zombie
+%Cpu(s): 1.8 us, 0.4 sy, 0.0 ni, 97.6 id, 0.1 wa, 0.0 hi, 0.0 si, 0.0 st
+MiB Mem : 32099.0 total, 5276.3 free, 7031.2 used, 19791.5 buff/cache
+MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 ```
 
-Examinons ce que signifie cette sortie. Vous n'avez pas besoin de la mémoriser, mais vous pouvez utiliser cette leçon comme référence.
+La première ligne contient l’heure actuelle, la durée de fonctionnement, le nombre d’utilisateurs connectés et les charges moyennes sur 1, 5 et 15 minutes. La ligne des tâches compte les états des processus. La charge moyenne n’est pas un pourcentage direct d’utilisation du processeur ; sous Linux, elle reflète les tâches exécutables et celles en sommeil non interruptible. Interprétez-la donc avec le nombre de processeurs, l’activité d’entrées-sorties et la latence.
 
-### Résumé du système
+:::single-choice{#top-load-average-periods}
+Que représentent les trois valeurs de charge moyenne dans `top` ?
 
-Les premières lignes fournissent un résumé de haut niveau de l'état du système.
+::option[La charge moyenne sur 1, 5 et 15 minutes.]{#top-one-five-fifteen .correct explanation="Ces valeurs résument des fenêtres récentes de durée progressivement plus longue."}
+::option[L’utilisation du processeur par les trois processus les plus actifs.]{#top-three-processes explanation="L’utilisation par processus apparaît dans la table des processus, et non dans ces trois valeurs du résumé."}
+::option[La mémoire libre, le cache et l’espace d’échange en mégaoctets.]{#top-three-memory-values explanation="La mémoire et l’espace d’échange possèdent leurs propres lignes de résumé."}
+:::
 
-- **1ère ligne** : Il s'agit des mêmes informations que vous verriez si vous exécutiez la commande `uptime`. Elle indique l'heure actuelle, le temps de fonctionnement du système, le nombre d'utilisateurs connectés et la charge moyenne du système sur les 1, 5 et 15 dernières minutes.
-- **2ème ligne** : Un résumé de toutes les tâches (processus), classées comme en cours d'exécution, en veille, arrêtées ou zombies.
+## Interpréter le temps processeur
 
-### Ventilation de l'utilisation du CPU
+Les champs courants du processeur comprennent :
 
-La troisième ligne détaille l'utilisation du CPU.
+- `us` : temps d’exécution dans l’espace utilisateur ;
+- `sy` : temps d’exécution dans le noyau ;
+- `ni` : temps dans l’espace utilisateur pour les tâches dont la priorité nice a été modifiée ;
+- `id` : temps d’inactivité ;
+- `wa` : temps d’inactivité pendant qu’une requête d’entrée-sortie est en attente ;
+- `hi` et `si` : traitement des interruptions matérielles et logicielles ;
+- `st` : temps de processeur virtuel pris par l’hyperviseur pour d’autres invités.
 
-- `us` : Pourcentage du temps CPU passé à exécuter des processus utilisateur qui ne sont pas "nicés".
-- `sy` : Pourcentage du temps CPU passé à exécuter le noyau et ses processus.
-- `ni` : Pourcentage du temps CPU passé à exécuter des processus utilisateur "nicés" (priorité basse).
-- `id` : Pourcentage du temps CPU inactif.
-- `wa` : Pourcentage du temps CPU passé à attendre que les opérations d'E/S se terminent. Une valeur élevée peut indiquer un goulot d'étranglement du disque ou du réseau.
-- `hi` : Pourcentage du temps CPU passé à gérer les interruptions matérielles.
-- `si` : Pourcentage du temps CPU passé à gérer les interruptions logicielles.
-- `st` : Temps de vol (Steal time). Dans les environnements virtualisés, c'est le pourcentage de temps CPU qu'un CPU virtuel attend un CPU réel, pendant que l'hyperviseur sert un autre processeur virtuel.
+Une valeur `wa` élevée peut étayer l’hypothèse d’une attente d’entrées-sorties, mais n’identifie pas un périphérique et ne prouve pas que le stockage soit le seul goulot d’étranglement. Examinez la latence des périphériques et le comportement de l’application avant de conclure.
 
-### Informations sur la mémoire et le Swap
+:::single-choice{#top-cpu-wa-meaning}
+Que mesure le champ processeur `wa` ?
 
-Les quatrième et cinquième lignes montrent respectivement l'utilisation de la mémoire et de l'espace swap. Cela inclut les montants total, utilisé et libre.
+::option[Le temps consacré à l’exécution du code utilisateur ordinaire.]{#top-wa-user explanation="L’exécution dans l’espace utilisateur est indiquée sous `us`."}
+::option[Les pages mémoire écrites dans l’espace d’échange depuis le démarrage.]{#top-wa-swap explanation="L’activité d’échange n’est pas une catégorie de temps processeur."}
+::option[Le temps d’inactivité du processeur pendant qu’une requête d’entrée-sortie est en attente.]{#top-wa-io .correct explanation="Ce champ représente le temps d’attente d’entrées-sorties et exige des preuves complémentaires sur les périphériques pour établir un diagnostic."}
+:::
 
-### La liste des processus
+## Lire la table des processus
 
-Le corps principal de `top` est une liste des processus les plus gourmands en ressources.
+Les colonnes importantes comprennent généralement :
 
-- `PID` : L'identifiant unique du processus.
-- `USER` : L'utilisateur propriétaire du processus.
-- `PR` : La priorité de planification du processus.
-- `NI` : La valeur "nice", qui affecte sa priorité.
-- `VIRT` : Mémoire virtuelle utilisée par le processus. C'est la quantité totale de mémoire à laquelle le processus peut accéder.
-- `RES` : Mémoire Résidente utilisée par le processus. C'est la mémoire physique non paginée qu'une tâche utilise. Comprendre la différence entre **linux top virt res** est essentiel pour l'analyse de la mémoire.
-- `SHR` : Mémoire Partagée utilisée par le processus.
-- `S` : L'état du processus : `S`=veille, `R`=en cours d'exécution, `Z`=zombie, `D`=veille non interrompue, `T`=arrêté.
-- `%CPU` : Le pourcentage de temps CPU utilisé par ce processus depuis la dernière mise à jour.
-- `%MEM` : Le pourcentage de RAM physique utilisée par ce processus.
-- `TIME+` : Le temps CPU total que le processus a utilisé depuis son démarrage.
-- `COMMAND` : Le nom de la commande ou la ligne de commande qui a démarré le processus.
+- `PID`, `USER` et `COMMAND` : identité et propriété ;
+- `S` : état, par exemple en cours d’exécution (`R`), en sommeil (`S`), en sommeil non interruptible (`D`), arrêté (`T`) ou zombie (`Z`) ;
+- `%CPU` et `%MEM` : activité échantillonnée du processeur et part de la mémoire physique ;
+- `TIME+` : temps processeur cumulé ;
+- `VIRT` : espace d’adressage virtuel total associé à la tâche ;
+- `RES` : mémoire physique résidente, non placée dans l’espace d’échange, actuellement attribuée à la tâche ;
+- `SHR` : mémoire résidente qui peut être partagée avec d’autres processus.
 
-Vous pouvez également surveiller un processus spécifique par son ID, ce qui est utile pour un dépannage ciblé :
+`VIRT` n’est pas la quantité de mémoire vive physique consommée. Il peut comprendre les fichiers mappés, les bibliothèques partagées, l’espace d’adressage réservé et les pages dans l’espace d’échange. Même `RES` exige de la prudence, car les pages partagées compliquent leur attribution.
+
+:::single-choice{#top-res-versus-virt}
+Quel champ se rapproche le plus de la mémoire physique actuellement résidente d’un processus ?
+
+::option[`TIME+`]{#top-time-field explanation="Ce champ cumule le temps processeur, et non la mémoire."}
+::option[`VIRT`]{#top-virt-field explanation="La taille virtuelle comprend un espace d’adressage qui ne réside pas nécessairement en mémoire vive."}
+::option[`RES`]{#top-res-field .correct explanation="La taille résidente reflète les pages physiques actuellement présentes pour le processus, sous réserve des difficultés liées au partage."}
+:::
+
+## Cibler et trier
+
+Surveillez directement des PID connus :
 
 ```bash
-top -p 1
+$ top -p 1234,5678
 ```
 
-## Exercise
+Dans `top`, appuyez sur `P` pour trier par processeur, `M` pour trier par mémoire, `1` pour afficher ou masquer les lignes de chaque processeur et `q` pour quitter dans les implémentations courantes de procps-ng. Appuyez sur `h` pour consulter l’aide interactive locale, car les touches et les champs peuvent varier selon l’implémentation.
 
-La pratique est essentielle pour la maîtrise. Ces laboratoires pratiques sont parmi les **meilleures ressources pour apprendre Linux** la gestion des processus, offrant un environnement pratique pour appliquer ce que vous avez appris.
+Relevez le PID, la commande, l’horodatage et plusieurs échantillons avant d’agir. Un processus qui atteint brièvement la première place peut être normal, et l’arrêter peut entraîner une perte de données ou une interruption de service.
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir, inspecter, surveiller et terminer des processus dans un environnement Linux réel.
-2. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour surveiller l'utilisation du CPU, la mémoire et les processus en cours d'exécution en temps réel.
-3. **[Commande Linux free : Surveillance de la mémoire système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à utiliser la commande `free` pour surveiller et analyser l'utilisation de la mémoire système.
+:::single-choice{#top-monitor-known-pid}
+Quel appel limite l’affichage au PID 1234 ?
 
-## Quiz Question
+::option[`top -u 1234`]{#top-user-filter explanation="La forme `-u` filtre par utilisateur au lieu d’interpréter la valeur comme un PID."}
+::option[`top -d 1234`]{#top-delay-filter explanation="Sur les implémentations courantes, l’option `-d` contrôle le délai d’actualisation."}
+::option[`top -p 1234`]{#top-pid-filter .correct explanation="L’option `-p` sélectionne un ou plusieurs identifiants de processus à surveiller."}
+:::
 
-Quelle commande affiche la même sortie que la première ligne de `top` ? Veuillez répondre en utilisant uniquement le nom de la commande en anglais minuscule.
+## Résumé
 
-## Quiz Answer
+Vous savez maintenant employer `top` pour formuler et tester une hypothèse sur les performances du système.
 
-uptime
+1. Lire les charges moyennes comme des charges sur des fenêtres de temps, et non comme des pourcentages du processeur.
+2. Comparer les catégories du processeur sur plusieurs échantillons.
+3. Distinguer l’espace d’adressage virtuel de la mémoire résidente.
+4. Cibler des PID connus et vérifier les preuves avant d’agir.

@@ -1,42 +1,76 @@
 ---
-index: 4
+lesson_id: "routing-protocols"
+course_id: "routing"
 lang: "es"
-title: "Protocolos de Enrutamiento"
-meta_title: "Protocolos de Enrutamiento - Enrutamiento"
-meta_description: "Explore los fundamentos de los protocolos de enrutamiento en redes Linux. Esta guía cubre protocolos de vector distancia y estado de enlace, convergencia de red, y cómo los routers construyen y mantienen tablas de enrutamiento. Un tutorial perfecto para principiantes."
-meta_keywords: "protocolos de enrutamiento, convergencia de red, vector distancia, estado de enlace, redes linux, tabla de enrutamiento, tutorial de red, guía para principiantes, comunicación de router"
+order_index: 4
+title: "Protocolos de enrutamiento"
+description: "Aprende cómo los protocolos de enrutamiento dinámico intercambian accesibilidad y convergen en rutas de reenvío utilizables."
+meta_title: "Protocolos de enrutamiento - Routing"
+meta_description: "Explora los fundamentos de los protocolos de enrutamiento en redes Linux. Esta guía explica los protocolos de vector de distancia y de estado de enlace, la convergencia y cómo los routers mantienen sus tablas."
+meta_keywords: "protocolos de enrutamiento, convergencia de red, vector de distancia, estado de enlace, redes linux, tabla de enrutamiento, tutorial de redes, guía para principiantes, comunicación entre routers"
 ---
 
-## Lesson Content
+Las rutas estáticas se configuran directamente, mientras que los protocolos de enrutamiento dinámico intercambian información de accesibilidad y topología para que los routers puedan adaptarse. El aprendizaje dinámico reduce el trabajo manual, pero introduce estados de protocolo, límites de confianza, temporizadores y modos de fallo que deben supervisarse.
 
-Configurar rutas manualmente en una tabla de enrutamiento para cada dispositivo en una red grande sería una tarea increíblemente tediosa. Para automatizar este proceso, utilizamos **protocolos de enrutamiento** dinámicos. Estos protocolos permiten a los enrutadores adaptarse automáticamente a los cambios de la red aprendiendo diferentes rutas, construyéndolas en la tabla de enrutamiento y reenviando paquetes en consecuencia. Hay dos tipos principales de protocolos de enrutamiento: vector distancia y estado de enlace.
+## Plano de control y plano de reenvío
 
-### Protocolos de Vector Distancia
+Un protocolo de enrutamiento aprende candidatos en su propia base de datos. El router selecciona rutas para una base de información de enrutamiento e instala siguientes saltos utilizables en una tabla de reenvío. Después, el hardware o el kernel reenvían paquetes a partir de esa tabla.
 
-Los protocolos de vector distancia operan bajo el principio de "enrutamiento por rumor". Cada enrutador comparte su tabla de enrutamiento completa con sus vecinos conectados directamente a intervalos regulares. Cuando un enrutador recibe una tabla de enrutamiento de un vecino, actualiza la suya con cualquier ruta nueva o mejor. La "distancia" generalmente se mide con una métrica como el conteo de saltos. Este método es simple, pero puede ser lento para converger y es susceptible a bucles de enrutamiento. Un ejemplo de protocolo de vector distancia es el Protocolo de Información de Enrutamiento (RIP).
+Que se haya establecido una adyacencia del protocolo no demuestra que el prefijo deseado se haya aprendido, seleccionado, instalado o permitido por la política de reenvío.
 
-### Protocolos de Estado de Enlace
+:::single-choice{#routing-protocols-adjacency-limit}
+¿Qué no demuestra una adyacencia de enrutamiento establecida?
 
-En contraste, los protocolos de **estado de enlace** proporcionan a cada enrutador un mapa completo de la topología de la red. En lugar de compartir toda su tabla de enrutamiento, los enrutadores envían información sobre el estado de sus propios enlaces (por ejemplo, vecinos conectados y el costo de la conexión) a todos los demás enrutadores de la red. Usando esta información, cada enrutador puede construir de forma independiente un mapa idéntico de la red y calcular la mejor ruta a cada destino. Este enfoque conduce a una **convergencia de red** más rápida y es más escalable que los protocolos de vector distancia. Un ejemplo es el protocolo Open Shortest Path First (OSPF).
+::option[Que todas las rutas deseadas estén instaladas y reenvíen correctamente.]{#routing-protocols-not-full-proof .correct explanation="El anuncio, la selección, la instalación, el filtrado y el funcionamiento del plano de datos son etapas independientes."}
+::option[Que dos participantes del protocolo hayan intercambiado algún mensaje de control.]{#routing-protocols-no-messages explanation="Establecer una adyacencia normalmente requiere comunicación del protocolo."}
+::option[Que exista un plano de control.]{#routing-protocols-no-control explanation="La adyacencia es en sí misma un estado del plano de control."}
+:::
 
-### Convergencia de Red
+## Enrutamiento interior y exterior
 
-Antes de discutir más a fondo los protocolos, es importante comprender un concepto clave en el enrutamiento conocido como **convergencia de red**. Cuando se utilizan protocolos de enrutamiento, los enrutadores se comunican para recopilar e intercambiar información. La convergencia es el estado en el que todos los enrutadores tienen una visión consistente y precisa de la topología de la red. Cuando cada tabla de enrutamiento mapea correctamente toda la red, se considera que la red está "convergida". Si ocurre un cambio, como la caída de un enlace, la convergencia se rompe temporalmente hasta que todos los enrutadores se enteran del cambio y actualizan sus tablas de enrutamiento.
+Los protocolos de puerta de enlace interior operan dentro de un dominio administrativo de enrutamiento. Entre los ejemplos se encuentran RIP, OSPF e IS-IS. BGP intercambia accesibilidad controlada mediante políticas dentro de sistemas autónomos y entre ellos, y es el protocolo de enrutamiento exterior de Internet.
 
-## Exercise
+Las métricas tienen un significado específico de cada protocolo. Un coste OSPF, una cantidad de saltos RIP y un conjunto de atributos BGP no pueden compararse como si compartieran una escala numérica universal. Las implementaciones utilizan preferencias de ruta o distancias administrativas para elegir entre fuentes antes de la selección específica del protocolo o junto con ella.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y el direccionamiento IP:
+:::single-choice{#routing-protocols-metric-comparison}
+¿Puede compararse directamente una cantidad de saltos RIP con un coste OSPF?
 
-1. **[Administrar el direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practique la configuración de direcciones IP estáticas y dinámicas, el establecimiento de una puerta de enlace predeterminada y la verificación de configuraciones de red, que son cruciales para comprender cómo se construyen y utilizan las tablas de enrutamiento.
-2. **[Explorar la interacción de la capa de red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda cómo interactúan los dispositivos en la capa de red, observando ARP y cómo la puerta de enlace predeterminada maneja el tráfico remoto, lo que proporciona información sobre los mecanismos que gestionan los protocolos de enrutamiento.
-3. **[Simular la conectividad de la capa de red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilice Docker para simular nodos de red, asignar direcciones IP y probar la conectividad a través de subredes, aplicando directamente conceptos relacionados con los cambios de red y las decisiones de enrutamiento.
+::option[Sí, porque todas las métricas de enrutamiento utilizan las mismas unidades.]{#routing-protocols-universal-metric explanation="Cada protocolo define su propia métrica y su propio proceso de selección."}
+::option[Sí, pero solo cuando ambos valores son cero.]{#routing-protocols-zero-metric explanation="Su semántica sigue siendo distinta con independencia del número mostrado."}
+::option[No; tienen significados específicos de cada protocolo.]{#routing-protocols-specific-metric .correct explanation="La selección entre fuentes utiliza la política de la implementación en lugar de tratar métricas distintas como una única escala."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos de configuración y conectividad de red en escenarios reales, aumentando la confianza con los elementos fundamentales que automatizan los protocolos de enrutamiento.
+## Vector de distancia y estado de enlace
 
-## Quiz Question
+Los protocolos de vector de distancia anuncian accesibilidad y distancia mediante sus vecinos, y derivan las rutas de los informes de estos. Los protocolos de estado de enlace forman adyacencias, difunden información del estado de los enlaces en un ámbito, construyen una base de datos de topología y calculan árboles de rutas más cortas. Los protocolos modernos incluyen mejoras que hacen que las descripciones sencillas de las categorías sean incompletas.
 
-What is the term for the state where all routing tables on a network agree on the network topology? (Please answer in English, paying attention to capitalization.)
+:::single-choice{#routing-protocols-link-state-input}
+¿Qué utiliza un router de estado de enlace para calcular sus rutas?
 
-## Quiz Answer
+::option[Únicamente el nombre de host de su puerta de enlace predeterminada.]{#routing-protocols-hostname-only explanation="Un cálculo de topología necesita información de enlaces y prefijos."}
+::option[Una base de datos sincronizada que describe los enlaces del ámbito de enrutamiento.]{#routing-protocols-link-database .correct explanation="El router ejecuta un algoritmo de la ruta más corta sobre la topología aprendida."}
+::option[Las contraseñas de la capa de aplicación de todos los hosts.]{#routing-protocols-passwords explanation="El intercambio de topología de enrutamiento no requiere credenciales de los usuarios finales."}
+:::
 
-Convergence
+## Convergencia
+
+Después de un cambio de topología o política, los routers lo detectan, propagan información de control, calculan rutas y actualizan el estado de reenvío. La convergencia es el periodo y el resultado mediante los cuales la red alcanza un enrutamiento estable y mutuamente utilizable para los destinos afectados. No exige que todos los routers tengan una tabla completa idéntica; las funciones y políticas pueden diferir deliberadamente.
+
+Durante la convergencia pueden producirse pérdidas transitorias, bucles o agujeros negros. Mide por separado la detección, la propagación, el cálculo y la instalación, y comprueba el resultado mediante pruebas del plano de datos.
+
+:::single-choice{#routing-protocols-convergence}
+¿Qué es la convergencia del enrutamiento?
+
+::option[El proceso de alcanzar un enrutamiento estable y utilizable después de un cambio.]{#routing-protocols-stable-routing .correct explanation="Incluye la propagación del control y las actualizaciones de reenvío resultantes."}
+::option[La obligación de que todos los routers almacenen una tabla global idéntica.]{#routing-protocols-identical-table explanation="Las políticas, las áreas y las funciones pueden crear diferencias deliberadas."}
+::option[La prevención permanente de todos los fallos de enrutamiento posibles.]{#routing-protocols-no-failure explanation="Una red convergida aún puede tener problemas de políticas o capacidad."}
+:::
+
+## Resumen
+
+Ahora puedes situar la información de enrutamiento dinámico en la trayectoria que va del intercambio del protocolo al reenvío.
+
+1. Distingue los candidatos aprendidos, las rutas seleccionadas y las entradas de reenvío.
+2. Separa el enrutamiento interior del intercambio de políticas mediante BGP.
+3. Compara las métricas únicamente dentro de la semántica de su protocolo.
+4. Comprueba la convergencia tanto en el plano de control como en el de datos.

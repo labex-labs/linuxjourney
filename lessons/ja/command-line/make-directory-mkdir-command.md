@@ -1,65 +1,86 @@
 ---
-index: 12
+lesson_id: "make-directory-mkdir-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 12
 title: "mkdir（ディレクトリ作成）"
+description: "`mkdir` のオプションを使い、1 つ、複数、入れ子のディレクトリを作成する方法を学びます。"
 meta_title: "mkdir（ディレクトリ作成） - コマンドライン"
 meta_description: "Linuxのmkdirコマンドを学び、単一ディレクトリの作成、複数ディレクトリの作成、親ディレクトリのネスト作成、権限設定の例を紹介します。"
 meta_keywords: "mkdirコマンド, linux mkdir, ディレクトリ作成 linux, ディレクトリ作成コマンド, mkdir -p, mkdir -m, フォルダ作成 linux"
 ---
 
-## Lesson Content
+make directory の略である `mkdir` コマンドは、ファイルやほかのディレクトリを整理するためのディレクトリを作成します。
 
-ファイルを扱う際には、それらをディレクトリに整理する必要があります。この作業の基本的なツールが `mkdir` コマンドで、これは「make directory（ディレクトリを作る）」の略です。
-
-基本的な構文は次の通りです。
+基本構文は次のとおりです。
 
 ```bash
 mkdir [OPTIONS] DIRECTORY...
 ```
 
-### 単一ディレクトリの作成
+## 1 つのディレクトリを作成する
 
-`mkdir` の最も基本的な使い方は、単一の新しいディレクトリを作成することです。ディレクトリがまだ存在しなければ、このコマンドで現在の場所に作成されます。
+パス名を渡して 1 つのディレクトリを作ります。この例では、現在の作業ディレクトリに `documents` を作成します。
 
 ```bash
 $ mkdir documents
 ```
 
-### 複数ディレクトリの作成
+`documents` という項目がすでに存在する場合、`mkdir` は置換せずエラーを報告します。`ls -ld documents` で既存の項目を調べてください。
 
-複数のディレクトリを一度に作成することもできます。名前をスペースで区切って並べるだけです。複数のフォルダを素早く準備する効率的な方法です。
+:::single-choice{#create-one-directory}
+現在の作業ディレクトリに `documents` というディレクトリを作成するコマンドはどれですか？
+
+::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` は相対パス `documents` に、要求されたディレクトリを作成します。"}
+::option[`touch documents`]{#touch-documents explanation="`touch` はパスが存在しない場合に空の通常ファイルを作成し、ディレクトリは作りません。"}
+::option[`cd documents`]{#cd-documents explanation="`cd` は既存のディレクトリへ入ろうとするもので、存在しないディレクトリは作成しません。"}
+:::
+
+## 複数のディレクトリを作成する
+
+複数のパス名を並べると、1 つのコマンドで複数のディレクトリを作成できます。
 
 ```bash
 $ mkdir books paintings
 ```
 
-### ネストされたディレクトリの作成
+:::single-choice{#create-separate-directories}
+`books` と `paintings` という 2 つの同階層のディレクトリを作成するコマンドはどれですか？
 
-時には、ディレクトリとその親ディレクトリを同時に作成したい場合があります。`-p` オプションがこれに最適で、親ディレクトリが存在しなくてもエラーになりません。
+::option[`mkdir books/paintings`]{#nested-paintings explanation="このパス名は同階層の 2 ディレクトリではなく、`books` の中の `paintings` を表します。`books` がなければ失敗もします。"}
+::option[`mkdir "books paintings"`]{#spaced-directory explanation="引用符が単語を 1 つのパス名へまとめるため、空白を含む名前のディレクトリを 1 つ要求します。"}
+::option[`mkdir books paintings`]{#two-directories .correct explanation="別々のオペランドにより、`mkdir` は `books` と `paintings` を 2 ディレクトリとして作成します。"}
+:::
+
+## 存在しない親ディレクトリを作成する
+
+オプションなしの `mkdir books/hemingway/favorites` は、中間ディレクトリが存在しないと失敗します。`-p` を追加すると、パス上の存在しない親ディレクトリを作成します。
 
 ```bash
 $ mkdir -p books/hemingway/favorites
 ```
 
-この1つのコマンドで、`books`、`hemingway`、`favorites` がまだ存在しなければ作成されます。
+パスの存在しない部分を作成します。最後のディレクトリがすでに存在するという理由だけではエラーを報告しませんが、権限不足などのほかのエラーは発生し得ます。
 
-### ディレクトリの権限設定
+:::single-choice{#create-nested-path}
+`projects/app/src` のどの部分もまだ存在しません。完全なディレクトリパスを作るコマンドはどれですか？
 
-ディレクトリを作成するときに権限を設定するには `-m` を使います。
+::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="`-p` は最後のディレクトリを作る前に、存在しない各親ディレクトリを作成します。"}
+::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="`-p` がなければ、中間ディレクトリが存在しない状態で `src` を作成できません。"}
+::option[`mkdir -m projects/app/src`]{#mkdir-mode-missing explanation="`-m` はモード引数を必要とし、存在しない親の作成を要求しません。"}
+:::
+
+## 初期モードを設定する
+
+`-m MODE` で、新しく作るディレクトリのパーミッションを指定します。
 
 ```bash
 $ mkdir -m 755 public
 ```
 
-権限については後で詳しく学びますが、この例では所有者が書き込み可能で、他のユーザーは読み取りとディレクトリへの移動ができるディレクトリを作成しています。
+パーミッションモードは後で学びます。この例のモード `755` は、所有者に読み取り、書き込み、検索権限を与え、グループとその他には読み取りと検索権限を与えます。
 
-### よく使う mkdir オプション
-
-- `-p`：必要に応じて親ディレクトリも作成する。
-- `-m MODE`：新しいディレクトリの権限を設定する。
-- `-v`：作成したディレクトリごとにメッセージを表示する。
-
-例：
+`-v` を追加すると、各ディレクトリの作成時にメッセージを表示します。
 
 ```bash
 $ mkdir -pv projects/app/src
@@ -68,27 +89,24 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-### よくある質問
+:::single-choice{#set-directory-mode}
+パーミッションモード `755` で `public` を作成するコマンドはどれですか？
 
-**mkdir が「File exists」と言うのはなぜ？** その名前のファイルまたはディレクトリが既に存在しているためです。`ls` コマンドで確認しましょう。
+::option[`mkdir -p 755 public`]{#parents-755 explanation="`-p` は残りの単語をディレクトリのパス名として扱い、`755` をパーミッションモードには設定しません。"}
+::option[`mkdir -v 755 public`]{#verbose-755 explanation="`-v` は作成メッセージを表示し、`755` をパーミッションモードとしては解釈しません。"}
+::option[`mkdir -m 755 public`]{#mode-public .correct explanation="`-m` が要求するモードを受け取り、`public` が作成するディレクトリのパス名になります。"}
+:::
 
-**ネストされたディレクトリはどうやって作るの？** `mkdir -p parent/child/grandchild` を使います。
+ディレクトリの作成と整理を練習するには、次のハンズオンラボを利用してください。
 
-**mkdir でファイルは作れますか？** いいえ。空のファイルを作るには `touch` を使います。
+1. **[Linux mkdir コマンド：ディレクトリの作成](https://labex.io/ja/labs/linux-linux-mkdir-command-directory-creating-209739)**：`mkdir` でディレクトリを作り、パーミッションを設定し、入れ子のディレクトリを含むファイルシステムを整理します。
+2. **[新しいプロジェクト構造のセットアップ](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)**：`mkdir` や `cd` を使い、特定のプロジェクト構造を作成して移動します。
 
-## Exercise
+## まとめ
 
-練習が上達の鍵です！ディレクトリ作成と管理の理解を深めるための実践的なラボを紹介します：
+これで、名前、親、モードを意図してディレクトリ構造を作成できるようになりました。
 
-1. **[Linux mkdir コマンド：ディレクトリ作成](https://labex.io/ja/labs/linux-linux-mkdir-command-directory-creating-209739)** - Linuxでの `mkdir` コマンドの使い方を学び、ディレクトリの作成、権限設定、ファイルシステムの整理方法を習得します。基本から応用まで、ネストされたディレクトリの作成もカバーしています。
-2. **[新しいプロジェクト構造の設定](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)** - 特定のプロジェクト構造を作成し、`mkdir` や `cd` などの基本コマンドを使って操作することで、Linuxのディレクトリ管理スキルを実践的に磨きます。
-
-これらのラボで実際のシナリオに概念を適用し、Linuxでのディレクトリ作成と整理に自信をつけましょう。
-
-## Quiz Question
-
-ディレクトリを作成するコマンドは何ですか？小文字の英語コマンドだけで答えてください。
-
-## Quiz Answer
-
-mkdir
+1. 1 つのコマンドで 1 つ以上のディレクトリを作成する。
+2. 既存のパス名によるエラーを認識する。
+3. `-p` で存在しない親ディレクトリを構築する。
+4. `-m` で新しいディレクトリのモードを設定する。

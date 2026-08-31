@@ -1,105 +1,130 @@
 ---
-index: 4
+lesson_id: "disk-partitioning"
+course_id: "filesystem"
 lang: "en"
+order_index: 4
 title: "Disk Partitioning"
+description: "Learn a verification-first workflow for inspecting, creating, and resizing partition boundaries with `parted`."
 meta_title: "Disk Partitioning - The Filesystem"
 meta_description: "Learn Linux disk partitioning with the parted command. This guide covers how to view partitions with `sudo parted -l`, create, and resize them. Also introduces gparted, a popular graphical alternative."
 meta_keywords: "Linux disk partitioning, parted command, sudo parted -l, gparted, gparted windows alternative, fdisk, disk management, create partition, resize partition, Linux guide"
 ---
 
-## Lesson Content
+Partition editing changes the map that defines storage boundaries. A wrong device, start, or end can make existing data inaccessible or overwrite critical metadata. Practice only on a disposable virtual disk and maintain a separately tested backup before modifying valuable storage.
 
-This lesson provides a practical guide to managing filesystems by partitioning a disk, such as a USB drive. If you don't have a spare drive, you can still follow along to understand the concepts.
+## Choosing a Tool
 
-First, we'll need to partition our disk. There are many tools available for this task:
+Common tools include:
 
-- **fdisk**: A basic command-line partitioning tool; it does not support GPT.
-- **parted**: A powerful command-line tool that supports both MBR and GPT partitioning.
-- **gparted**: The graphical version of `parted`. For users who prefer a visual interface, `gparted` is an intuitive tool, often considered a great `gparted windows alternative`.
-- **gdisk**: Similar to `fdisk`, but it only supports GPT.
+- `fdisk`, a terminal partition editor from util-linux that supports MBR and GPT
+- `parted`, a terminal and scriptable editor for GPT, MBR, and other table formats
+- `gdisk`, an interactive GPT-focused editor
+- GParted, a graphical partition and filesystem front end
 
-We will use `parted` for our examples.
+Tool support evolves, so use the local manual and distribution documentation. A graphical interface does not make destructive operations safe; it still changes the same disk metadata.
 
-### Listing Existing Partitions
+:::single-choice{#disk-partitioning-fdisk-gpt}
+Which statement about current Linux `fdisk` is accurate?
 
-Before making changes, it's crucial to identify your disk and its current layout. A quick way to do this is with the `sudo parted -l` command, which lists the partition tables for all connected block devices.
+::option[It supports both MBR and GPT partition tables.]{#disk-partitioning-fdisk-supports-gpt .correct explanation="Current util-linux fdisk can edit DOS/MBR and GPT layouts, among others."}
+::option[It can edit only GPT and never MBR.]{#disk-partitioning-fdisk-only-gpt explanation="GPT-focused `gdisk` is closer to that description; fdisk supports multiple label types."}
+::option[It creates filesystems but cannot edit partition entries.]{#disk-partitioning-fdisk-filesystem-only explanation="Its central purpose is viewing and editing partition tables."}
+:::
 
-```bash
-sudo parted -l
-```
+## Identify and Quiesce the Target
 
-This command helps you find the correct device name, such as `/dev/sdb`, before you begin modifying it.
-
-### Launching Interactive Mode
-
-To start making changes, launch `parted` in interactive mode. Let's assume your target device is `/dev/sdb`.
+Start with read-only inventory:
 
 ```bash
-sudo parted
+$ lsblk -o NAME,PATH,TYPE,SIZE,MODEL,SERIAL,TRAN,PTTYPE,FSTYPE,MOUNTPOINTS
+$ findmnt --real
+$ sudo parted --list
 ```
 
-You will enter the `parted` tool's shell, where you can run commands to manage your device's partitions.
+Confirm the whole device by persistent identity, model, serial, size, transport, and topology—not merely `/dev/sdX`. Then identify every consumer: mounted filesystems, swap, LVM, RAID, encryption, containers, virtual machines, databases, and open file descriptors.
 
-### Selecting a Device
+Unmount or deactivate all relevant layers using their documented procedures. Do not edit the partition table of the running system disk merely because the tool opens successfully. Record the existing table in a restorable form and confirm that your backup resides on a different failure domain.
 
-Once inside the `parted` shell, you must select the disk you want to modify. Be very careful to choose the correct one to avoid data loss.
+:::single-choice{#disk-partitioning-target-identity}
+Why is a device name such as `/dev/sdb` insufficient as the only target check?
+
+::option[Linux never exposes whole disks under `/dev`.]{#disk-partitioning-no-whole-disks explanation="Whole disks commonly do have block nodes under `/dev`."}
+::option[Enumeration names can change when devices or topology change.]{#disk-partitioning-enumeration-changes .correct explanation="A letter is assigned by discovery order and can refer to another disk in a later session."}
+::option[Partition tools accept only filesystem UUIDs as operands.]{#disk-partitioning-only-uuid explanation="Editors normally operate on a whole block-device path, after identity verification."}
+:::
+
+## Inspecting One Device in `parted`
+
+Open the explicitly verified whole device:
 
 ```bash
-select /dev/sdb
+$ sudo parted /dev/VERIFIED-DISK
 ```
 
-### Viewing the Partition Table
+Then select consistent display units and print the table:
 
-Use the `print` command to display the partition table of the selected disk.
-
-```plaintext
-(parted) print
-Model: ATA VBOX HARDDISK (scsi)
-Disk /dev/sdb: 10.7GB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags:
-
-Number  Start   End     Size    Type      File system  Flags
- 1      1049kB  10.7GB  10.7GB  primary   ext4         boot
+```text
+(parted) unit MiB
+(parted) print free
 ```
 
-This output shows available partitions on the device. The **Start** and **End** columns indicate where each partition is located on the disk.
+`print free` shows current entries and unallocated regions. Parted commands can update disk metadata immediately rather than waiting for a final “save” operation, so treat the interactive prompt as live write access.
 
-### Creating a Partition
+:::single-choice{#disk-partitioning-print-free}
+What does `print free` help display in `parted`?
 
-The `mkpart` command creates a new partition. You need to specify the partition type (e.g., `primary`), an optional filesystem type, and the start and end points.
+::option[Files that can be deleted to shrink any filesystem safely.]{#disk-partitioning-free-files explanation="Parted reads partition layout, not filesystem-level file allocation."}
+::option[Every backup stored on remote systems.]{#disk-partitioning-remote-backups explanation="Remote backup inventory is outside a partition editor's scope."}
+::option[Existing partition entries and unallocated regions.]{#disk-partitioning-free-regions .correct explanation="The view helps choose boundaries based on the current table and remaining gaps."}
+:::
 
-```bash
-mkpart primary ext4 1MB 5000MB
+## Creating a Partition Entry
+
+The exact `mkpart` syntax depends on the table type. A GPT example in MiB units resembles:
+
+```text
+(parted) mkpart data ext4 1MiB 5000MiB
 ```
 
-This command creates a primary partition formatted with ext4, starting at 1MB and ending at 5000MB.
+This creates a partition entry with a name, suggested content type, start, and end. It does **not** create an ext4 filesystem. Formatting is a separate, destructive step performed only after the kernel recognizes the intended new partition and its identity is verified.
 
-### Resizing a Partition
+Use tool-recommended alignment and understand whether endpoints are inclusive and how they are rounded. Inspect the result with `print` and `lsblk`; do not assume a requested decimal boundary was recorded exactly.
 
-You can also resize an existing partition with the `resizepart` command. You'll need the partition number and the new end point.
+:::single-choice{#disk-partitioning-mkpart-effect}
+What does `parted` `mkpart` create?
 
-```bash
-resizepart 1 8000MB
-```
+::option[A mounted ext4 filesystem containing a home directory.]{#disk-partitioning-mounted-filesystem explanation="Formatting and mounting are separate operations after partition creation."}
+::option[A complete backup of the previous partition contents.]{#disk-partitioning-automatic-backup explanation="Partition editors do not create a recovery backup automatically."}
+::option[A partition-table entry, without formatting a filesystem.]{#disk-partitioning-entry-only .correct explanation="The filesystem-type argument influences partition metadata but does not run `mkfs`."}
+:::
 
-This command resizes partition number 1 to end at the 8000MB mark. Note that this only changes the partition size; you may still need to resize the filesystem itself using other tools (like `resize2fs`).
+## Resizing Boundaries and Contents
 
-`parted` is a very powerful tool. Always double-check your commands before executing them to prevent accidental data loss.
+`resizepart NUMBER END` moves only a partition's end boundary. It does not resize the filesystem or other structure stored inside.
 
-## Exercise
+Order is critical:
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux disk partitioning and filesystem management:
+- To grow, enlarge the containing partition or logical device first, then grow the filesystem with its own supported tool.
+- To shrink, verify that the filesystem supports shrinking, shrink it first while observing its offline/online requirements, then reduce the containing boundary without crossing the new end.
 
-1. [Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) - In this lab, you will learn to manage disk partitions and filesystems in Linux. You'll use fdisk to create a new partition, format it with ext4, mount it, configure persistent mounting in /etc/fstab, and create a swap partition, all on a safe secondary virtual disk.
+Some filesystems cannot shrink. Encryption, LVM, RAID, and nested layouts add more ordered layers. A kernel can also refuse to reread a changed table while devices are busy, requiring a controlled reboot before the new layout is usable.
 
-This lab will help you apply the concepts of disk partitioning and filesystem management in a real scenario and build confidence with these essential Linux administration skills.
+:::single-choice{#disk-partitioning-shrink-order}
+When a filesystem supports shrinking, which order avoids cutting off live filesystem data?
 
-## Quiz Question
+::option[Reduce the partition first, then discover whether the filesystem fits.]{#disk-partitioning-shrink-partition-first explanation="Shortening the container first can truncate filesystem structures and data."}
+::option[Shrink the filesystem first, then reduce its containing partition boundary.]{#disk-partitioning-shrink-filesystem-first .correct explanation="The content must fit inside the smaller range before the outer block device is shortened."}
+::option[Delete the partition table and let the filesystem recreate it.]{#disk-partitioning-delete-table explanation="A filesystem does not reconstruct a safe partition table as part of normal shrinking."}
+:::
 
-What is the `parted` command to make a partition? (Please answer in English, paying attention to case sensitivity).
+Use [Manage Linux Partitions and Filesystems](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) on its designated secondary virtual disk; do not substitute a host disk.
 
-## Quiz Answer
+## Summary
 
-mkpart
+You can now describe partition editing as a layered, destructive storage operation.
+
+1. Select a tool that supports the actual table and workflow.
+2. Verify persistent disk identity and deactivate every consumer.
+3. Inspect units, entries, and free regions before writing.
+4. Remember that `mkpart` does not create a filesystem.
+5. Resize inner content and outer boundaries in the safe order.

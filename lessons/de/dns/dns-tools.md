@@ -1,87 +1,124 @@
 ---
-index: 6
+lesson_id: "dns-tools"
+course_id: "dns"
 lang: "de"
-title: "DNS-Tools"
-meta_title: "DNS-Tools - DNS"
-meta_description: "Entdecken Sie wesentliche Linux DNS-Tools wie nslookup und den leistungsstarken dig-Befehl. Dieses anfängerfreundliche Linux-Tutorial behandelt DNS-Abfragen und DNS-Fehlerbehebungstechniken."
-meta_keywords: "nslookup, dig-Befehl, DNS-Tools, Linux DNS, DNS-Fehlerbehebung, Namenserver-Abfrage, Linux-Tutorial, Anfänger Linux"
+order_index: 6
+title: "DNS-Werkzeuge"
+description: "Lerne, die Systemauflösung und direkte DNS-Abfragen mit getent, resolvectl und dig zu vergleichen."
+meta_title: "DNS-Werkzeuge – DNS"
+meta_description: "Lerne DNS unter Linux mit getent, resolvectl und dig zu untersuchen. Vergleiche Systemresolver, direkte Serverabfragen, Flags, Reverse-Lookups und TCP."
+meta_keywords: "dig Befehl, DNS Werkzeuge, Linux DNS, DNS Fehlersuche, getent, resolvectl, Nameserver Abfrage"
 ---
 
-## Lesson Content
+Bei der DNS-Fehlersuche musst du zuerst bestimmen, welche Ebene getestet wird. Werkzeuge für den Systemresolver beziehen lokale Dateien und Richtlinien ein, während `dig` und `nslookup` DNS-Abfragen senden und einen bestimmten Server direkt ansprechen können.
 
-Unter Linux stehen mehrere Befehlszeilen-Dienstprogramme für die Netzwerkanalyse zur Verfügung. Wenn es um Probleme mit dem Domain Name System (DNS) geht, stechen zwei primäre **DNS-Tools** hervor: `nslookup` und `dig`. Zu wissen, wie man sie benutzt, ist entscheidend für jede **DNS-Fehlerbehebung** auf einem **Linux DNS**-Server oder -Client.
+## Den Systemresolver testen
 
-### Verwendung von nslookup für grundlegende DNS-Abfragen
-
-Das Tool `nslookup` (Name Server Lookup) ist ein klassisches Dienstprogramm zum Abfragen von DNS-Servern, um Informationen zur Zuordnung von Domainnamen oder IP-Adressen zu erhalten. Obwohl es manchmal zugunsten von `dig` als veraltet gilt, bleibt es ein schnelles und einfaches Werkzeug für einfache Nachschlagevorgänge.
-
-Um die IP-Adresse für eine Domain wie `www.google.com` zu finden, können Sie Folgendes ausführen:
+Verwende den normalen Namensdienstpfad des Hosts:
 
 ```bash
-pete@icebox:~$ nslookup www.google.com
-Server:         127.0.1.1
-Address:        127.0.1.1#53
-
-Non-authoritative answer:
-Name:   www.google.com
-Address: 216.58.192.4
+$ getent ahosts www.example.com
 ```
 
-In dieser Ausgabe zeigen `Server` und `Address` den DNS-Server an, der die Abfrage beantwortet hat. Die `Non-authoritative answer` bedeutet, dass der Server ein zwischengespeichertes Ergebnis geliefert hat, anstatt direkt die autoritative Quelle abzufragen. `Name` und `Address` zeigen die aufgelöste IP-Adresse für die Domain an.
-
-### Erweiterte DNS-Fehlerbehebung mit dig
-
-Der Befehl `dig` (Domain Information Groper) ist ein leistungsstarkes und flexibles Werkzeug zur Abfrage von DNS-Namenservern. Er liefert detailliertere Informationen als `nslookup` und ist daher die bevorzugte Wahl für ernsthafte **DNS-Fehlerbehebung**.
-
-Hier ist ein Beispiel für die Verwendung des **dig-Befehls**:
+Untersuche auf einem Host mit systemd-resolved die Server, Suchdomains und den Protokollzustand pro Verbindung:
 
 ```bash
-pete@icebox:~$ dig www.google.com
-
-; <<>> DiG 9.9.5-3-Ubuntu <<>> www.google.com
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42376
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; MBZ: 0005 , udp: 512
-;; QUESTION SECTION:
-;www.google.com.                        IN      A
-
-;; ANSWER SECTION:
-www.google.com.         5       IN      A       74.125.239.147
-www.google.com.         5       IN      A       74.125.239.144
-www.google.com.         5       IN      A       74.125.239.146
-www.google.com.         5       IN      A       74.125.239.145
-www.google.com.         5       IN      A       74.125.239.148
-
-;; Query time: 27 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Sun Feb 07 10:14:00 PST 2016
-;; MSG SIZE  rcvd: 123
+$ resolvectl status
+$ resolvectl query www.example.com
 ```
 
-Die Ausgabe von `dig` ist in Abschnitte unterteilt:
+Eine Anwendung kann weiterhin eine eigene Resolver-Bibliothek oder einen Proxy verwenden. Stelle die Abfrage deshalb über die Anwendung nach, wenn sich die Ausgaben unterscheiden.
 
-- **QUESTION SECTION**: Zeigt die gesendete Abfrage. Hier haben wir nach einem `A` (Address)-Eintrag für `www.google.com` gefragt.
-- **ANSWER SECTION**: Zeigt die vom DNS-Server erhaltene Antwort. In diesem Fall sind mehrere IP-Adressen mit der Domain von Google verknüpft.
-- **Statistics**: Der letzte Abschnitt enthält Metadaten zur Abfrage, wie die Abfragezeit und den antwortenden Server.
+:::single-choice{#dns-tools-system-resolver}
+Welcher Befehl durchläuft den konfigurierten Namensdienstpfad des Systems?
 
-Aufgrund seiner detaillierten Ausgabe und Flexibilität ist `dig` ein unverzichtbares Werkzeug für jeden, der Netzwerkdienste unter Linux verwaltet oder Fehler behebt.
+::option[Nur `dig @SERVER NAME`.]{#dns-tools-dig-direct explanation="Dig sendet eine DNS-Abfrage und liest normalerweise keine Zuordnungen der Hosts-Datei."}
+::option[`ip link set down`]{#dns-tools-link-down explanation="Dieser Befehl unterbricht die Schnittstelle, statt die Auflösung zu testen."}
+::option[`getent ahosts NAME`]{#dns-tools-getent .correct explanation="Der Befehl kann `/etc/hosts`, DNS und andere Name-Service-Switch-Quellen widerspiegeln."}
+:::
 
-## Exercise
+## Mit dig abfragen
 
-Um mehr Erfahrung mit Linux-Netzwerkdienstprogrammen zu sammeln, sollten Sie das folgende praktische Labor ausprobieren:
+Gib einen Namen und einen Eintragstyp an:
 
-1. **[Netzwerkschnittstelleneinstellungen mit ethtool unter Linux überprüfen](https://labex.io/de/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - Lernen Sie, den Befehl `ethtool` zu verwenden, um Netzwerkschnittstelleneinstellungen zu überprüfen und zu verwalten, einschließlich der Anzeige und Einstellung von Schnittstellengeschwindigkeit und Duplex sowie der Analyse von Link-Modi zur Fehlerbehebung bei Problemen auf der physischen Schicht des Netzwerks.
+```bash
+$ dig www.example.com A
+$ dig www.example.com AAAA
+$ dig example.com MX
+```
 
-Dieses Labor hilft Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Netzwerkschnittstellen aufzubauen.
+Die Ausgabe bezeichnet den antwortenden Server, Status, Flags, Frage, Antwort, Autoritäts- und Zusatzdaten, Abfragezeit sowie Transportmetadaten. `+short` ist für Skripte praktisch, verbirgt aber für die Diagnose benötigte Belege.
 
-## Quiz Question
+:::single-choice{#dns-tools-record-type}
+Welche Abfrage fordert IPv6-Adresseinträge an?
 
-Welches Tool wird verwendet, um detaillierte Informationen über DNS-Namenserver abzurufen? Bitte antworten Sie nur mit Kleinbuchstaben in englischer Sprache.
+::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA-Einträge enthalten IPv6-Adressen."}
+::option[`dig NAME MX`]{#dns-tools-mx explanation="MX fordert Mail-Exchanger-Einträge an."}
+::option[`dig NAME PTR` mit dem Vorwärtsnamen.]{#dns-tools-ptr-forward explanation="PTR wird normalerweise über einen Namen für die Rückwärtsauflösung abgefragt."}
+:::
 
-## Quiz Answer
+## Einen Server auswählen
 
-dig
+Sprich einen Resolver oder autoritativen Server ausdrücklich an:
+
+```bash
+$ dig @192.0.2.53 www.example.com A
+```
+
+Vergleiche den konfigurierten rekursiven Resolver, einen zweiten genehmigten Resolver und jeden autoritativen Server, um Cache und Autorität voneinander abzugrenzen. Ein Status `NOERROR` kann ohne angeforderte Antwortdaten zurückkommen; `NXDOMAIN` bedeutet, dass der abgefragte Name nicht existiert, während `SERVFAIL` bedeutet, dass der Server die Abfrage nicht abschließen konnte.
+
+:::single-choice{#dns-tools-noerror-empty}
+Kann `NOERROR` einen leeren Antwortabschnitt besitzen?
+
+::option[Ja, wenn der Name existiert, aber die Daten des angeforderten Eintragstyps fehlen.]{#dns-tools-noerror-nodata .correct explanation="Status und Anzahl der Antworten müssen gemeinsam ausgewertet werden."}
+::option[Nein, der Status garantiert mindestens einen Adresseintrag.]{#dns-tools-noerror-always-answer explanation="Der Name kann existieren, ohne Daten des angeforderten Typs zu besitzen."}
+::option[Nein, leere Antworten sind immer Ethernet-Fehler.]{#dns-tools-empty-ethernet explanation="Eine gültige No-Data-Antwort wird durch DNS-Semantik und nicht durch die Frame-Bildung der Verbindung erklärt."}
+:::
+
+## Rekursion und Autorität prüfen
+
+`rd` in der Abfrage fordert Rekursion an; `ra` in einer Antwort zeigt an, dass der Server sie anbietet. `aa` bedeutet, dass die Antwort autoritativ ist. Frage einen autoritativen Server mit `+norecurse` ab, damit du einen rekursiven Cache nicht mit bereitgestellten Zonendaten verwechselst.
+
+`dig +trace NAME` führt selbst einen iterativen Durchlauf aus, der bei den Root-Hinweisen beginnt. Das Ergebnis kann sich von einem produktiven Resolver unterscheiden, weil dessen Cache, Weiterleitung, Richtlinie, DNSSEC-Validierung und Netzwerkstandort umgangen werden.
+
+:::single-choice{#dns-tools-aa-flag}
+Was bedeutet das Antwort-Flag `aa`?
+
+::option[Die Abfrage hat zwei identische IPv4-Adressen verwendet.]{#dns-tools-two-addresses explanation="Das Flag steht weder mit der Antwortanzahl noch mit der Adressfamilie in Zusammenhang."}
+::option[Die Antwort wurde mit Anmeldedaten der Anwendung verschlüsselt.]{#dns-tools-aa-encrypted explanation="DNS-Flags stellen keinen verschlüsselten Transport her."}
+::option[Die Antwort ist autoritativ.]{#dns-tools-authoritative-answer .correct explanation="Der antwortende Server beansprucht Autorität für die Antwortdaten."}
+:::
+
+## Reverse- und TCP-Abfragen testen
+
+Verwende `-x`, um eine rückwärts gerichtete PTR-Abfrage aufzubauen:
+
+```bash
+$ dig -x 192.0.2.25
+```
+
+Teste DNS über TCP, wenn du abgeschnittene Antworten, Zonenübertragungen oder Unterschiede in der Firewall untersuchst:
+
+```bash
+$ dig +tcp @192.0.2.53 example.com SOA
+```
+
+Modernes DNS kann UDP oder TCP auf Port 53 verwenden; beide müssen dort zugelassen sein, wo sie benötigt werden. Eine UDP-Antwort mit gesetztem Truncation-Flag veranlasst konforme Clients, die Abfrage über einen geeigneten Transport zu wiederholen.
+
+:::single-choice{#dns-tools-tcp-test}
+Was verändert `dig +tcp`?
+
+::option[Die DNS-Abfrage wird über TCP statt des standardmäßigen ersten UDP-Versuchs gesendet.]{#dns-tools-use-tcp .correct explanation="Damit lassen sich Transportfilterung und Antworten untersuchen, die einen größeren zuverlässigen Datenstrom benötigen."}
+::option[Es werden nur TCP-Dienstnameneinträge angefordert.]{#dns-tools-tcp-records explanation="Der gewünschte DNS-Typ wird weiterhin getrennt angegeben."}
+::option[Die Resolver-Konfiguration des Servers wird dauerhaft verändert.]{#dns-tools-tcp-persistent explanation="Eine Abfrage bearbeitet keine Servereinstellungen."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun ein DNS-Werkzeug passend zur untersuchten Resolver-Ebene auswählen.
+
+1. Verwende `getent` für den konfigurierten Systemresolver-Pfad.
+2. Verwende `dig` mit ausdrücklichen Eintragstypen und Servern.
+3. Werte Status, Flags, Abschnitte und antwortenden Server gemeinsam aus.
+4. Trenne den rekursiven Cache von autoritativen Daten.
+5. Teste Reverse-Abfragen und beide erforderlichen DNS-Transporte.

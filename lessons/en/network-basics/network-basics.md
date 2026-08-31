@@ -1,51 +1,82 @@
 ---
-index: 1
+lesson_id: "network-basics"
+course_id: "network-basics"
 lang: "en"
+order_index: 1
 title: "Network Basics"
+description: "Learn how hosts, links, switches, routers, and packets form local and wide-area networks."
 meta_title: "Network Basics - Network Basics"
 meta_description: "Discover the best way to learn Linux by starting with network basics. This guide covers the basics of network components like WAN, LAN, routers, and hosts for beginners."
 meta_keywords: "basics network, basics linux, best way to learn linux, basics of linux, WAN, LAN, WLAN, network tutorial, networking guide"
 ---
 
-## Lesson Content
+A network connects interfaces so applications on different hosts can exchange data. Understanding which device, address, and link handles each part of the path makes later Linux commands easier to interpret.
 
-Understanding the **basics of linux** networking is a fundamental skill. For many, grasping these concepts is the **best way to learn linux** more deeply, as networks are integral to how modern systems operate. Let's explore a typical home network to understand the core components.
+## Hosts and Interfaces
 
-### Core Network Components
+A host is an endpoint or networked system, such as a laptop, server, phone, or virtual machine. One host can have several interfaces: Ethernet, Wi-Fi, loopback, tunnels, bridges, or virtual adapters. Each interface can have link-layer and network-layer configuration appropriate to its technology.
 
-Your home network is a small ecosystem of devices working together. Here are the key players:
+Inspect a Linux host's interfaces and addresses with:
 
-- **ISP (Internet Service Provider):** This is the company you pay for your internet connection, linking your home to the global internet.
-- **Router:** The router is the central hub of your network. It directs traffic, allowing each machine to connect to the internet and communicate with each other. Modern routers support both wired (Ethernet) and wireless connections.
+```bash
+$ ip address show
+```
 
-### Understanding Network Types WAN LAN and WLAN
+An interface being present or administratively up does not prove end-to-end connectivity.
 
-Networks are categorized by their scale. In a home setup, you'll encounter these three common types, which form the foundation of **basics network** knowledge:
+:::single-choice{#network-basics-host-interface}
+What is a network interface?
 
-- **WAN (Wide Area Network):** This term describes the vast network outside your home, connecting your router to the broader internet.
-- **WLAN (Wireless Local Area Network):** This is your Wi-Fi network. It connects wireless devices, like laptops and smartphones, to your router without physical cables.
-- **LAN (Local Area Network):** This refers to the wired part of your network, connecting devices like desktop PCs or game consoles to your router via an Ethernet cable.
+::option[A permanent copy of every packet on the Internet.]{#network-basics-interface-copy explanation="An interface transmits and receives traffic; it is not a global packet archive."}
+::option[A host's attachment point to a network or virtual link.]{#network-basics-interface-attachment .correct explanation="A host can have multiple physical or virtual interfaces with separate configuration."}
+::option[A human-readable alias for an ISP invoice.]{#network-basics-interface-invoice explanation="Billing labels are unrelated to host network attachments."}
+:::
 
-### Hosts and Packets
+## Local Networks
 
-On any network, every connected device—be it a computer, phone, or server—is known as a **host**.
+A local area network, or LAN, covers a limited environment such as a home, office, or data center segment. Ethernet switches forward frames between ports on a local link. A wireless LAN, or WLAN, uses wireless link technology. Wired and wireless interfaces can still belong to the same IP subnet when a bridge or access point joins them.
 
-All data transmitted across these networks, from web pages to emails, is broken down into small pieces called **packets**. Throughout the Networking Nomad section, you will learn in detail how these packets travel to and from different hosts, completing their journey across the internet.
+:::single-choice{#network-basics-wlan-relationship}
+How does a WLAN relate to a LAN?
 
-## Exercise
+::option[A WLAN is always a separate global Internet.]{#network-basics-wlan-global explanation="It is a local network using wireless link technology."}
+::option[A WLAN is a disk partition used by routers.]{#network-basics-wlan-disk explanation="The term describes networking, not storage layout."}
+::option[A WLAN is a wireless form of local area network.]{#network-basics-wlan-local .correct explanation="Wireless and wired links can even be bridged into one local broadcast domain."}
+:::
 
-Practice makes perfect! Hands-on experience is crucial for mastering **basics network** concepts. The following labs will help reinforce your understanding of network components and how hosts communicate:
+## Routers and Wider Networks
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice identifying network addressing information for hosts, including MAC and IP addresses, using the `ip a` command.
-2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Learn to test network reachability and identify different IP address types, essential for understanding how hosts connect.
-3. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Understand how hosts interact on a network by observing the Address Resolution Protocol (ARP) and testing connectivity with `ping`.
+A router forwards network-layer packets between IP networks according to its routing table. A home device often combines routing, switching, Wi-Fi access, firewalling, NAT, and DHCP, but those remain distinct functions.
 
-These labs will help you apply the concepts of hosts, addressing, and basic connectivity in real scenarios and build confidence with fundamental networking.
+A wide area network, or WAN, spans larger geographic or administrative boundaries. An Internet service provider can connect a customer network to other networks, but “WAN” does not simply mean every device outside one house.
 
-## Quiz Question
+:::single-choice{#network-basics-router-role}
+What is a router's defining role?
 
-What is the local area network known as? Please answer in English, paying attention to capitalization.
+::option[Forward packets between network-layer networks.]{#network-basics-forward-networks .correct explanation="Routing selects next hops across IP network boundaries."}
+::option[Store every user's files as a mandatory backup.]{#network-basics-router-backup explanation="File retention is not the defining routing function."}
+::option[Translate every hostname without consulting DNS.]{#network-basics-router-hostnames explanation="Name resolution and packet forwarding are separate functions."}
+:::
 
-## Quiz Answer
+## Packets, Frames, and Flows
 
-LAN
+Applications produce data that protocol layers divide and encapsulate for transmission. IP carries packets across networks; a local link carries each packet inside a technology-specific frame. Routers normally replace link-layer framing at each hop while forwarding the IP packet onward.
+
+A conversation can involve many packets in both directions. Loss, reordering, fragmentation, retransmission, and path changes mean one captured packet rarely describes the whole application transaction.
+
+:::single-choice{#network-basics-router-frame}
+What normally happens to link-layer framing at a router hop?
+
+::option[The router removes incoming framing and creates framing for the next link.]{#network-basics-reframe .correct explanation="The forwarded IP packet is carried in a new link-layer frame appropriate to the outgoing interface."}
+::option[The same Ethernet frame crosses the entire Internet unchanged.]{#network-basics-same-frame explanation="Frames are scoped to their links and are replaced at routed hops."}
+::option[The application deletes the IP addresses permanently.]{#network-basics-delete-ip explanation="Routing depends on network-layer addresses."}
+:::
+
+## Summary
+
+You can now describe the main components of a basic network path.
+
+1. Distinguish hosts from their physical and virtual interfaces.
+2. Recognize wired and wireless forms of local networks.
+3. Separate routing from other functions in a combined home device.
+4. Distinguish link frames from routed IP packets.

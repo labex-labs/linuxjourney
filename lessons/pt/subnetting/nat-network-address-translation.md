@@ -1,44 +1,82 @@
 ---
-index: 6
+lesson_id: "nat-network-address-translation"
+course_id: "subnetting"
 lang: "pt"
+order_index: 6
 title: "NAT"
-meta_title: "NAT - Sub-rede"
-meta_description: "Aprenda sobre NAT (Network Address Translation) no Linux, como funciona e seu papel na segurança da rede. Entenda IPs privados vs. públicos. Guia de rede Linux."
-meta_keywords: "NAT, Network Address Translation, rede Linux, IP privado, IP público, tutorial Linux, guia para iniciantes"
+description: "Aprenda como a tradução de origem, destino e portas modifica fluxos IPv4 e o estado das conexões."
+meta_title: "NAT - Sub-redes"
+meta_description: "Aprenda sobre NAT (Tradução de Endereços de Rede) no Linux, como ele funciona e sua relação com a segurança de rede. Entenda IPs privados e públicos neste guia de redes Linux."
+meta_keywords: "NAT, Tradução de Endereços de Rede, redes Linux, IP privado, IP público, tutorial Linux, guia para iniciantes"
 ---
 
-## Lesson Content
+A Tradução de Endereços de Rede reescreve campos de endereço e, frequentemente, portas de transporte à medida que os pacotes atravessam um dispositivo de tradução. Ela é amplamente usada para conectar redes IPv4 com endereços privados por meio de um conjunto menor de endereços roteáveis externamente.
 
-Já mencionamos NAT (Network Address Translation) antes, mas não a abordamos. Quando estamos trabalhando em nossa rede, isso significa que a internet pode ver nosso endereço IP? Não exatamente.
+## Tradução de origem
 
-NAT faz com que um dispositivo como nosso roteador atue como um intermediário entre a internet e uma rede privada. Assim, apenas um único e exclusivo endereço IP é necessário para representar um grupo inteiro de computadores.
+O NAT de origem substitui o endereço de origem de um pacote quando ele sai de uma rede. Implantações de muitos para um também traduzem portas de origem para que vários fluxos internos possam compartilhar um endereço externo. Essa forma que considera portas costuma ser chamada de NAPT, PAT ou mascaramento quando o endereço externo pode mudar.
 
-Pense na NAT como uma recepcionista em um grande escritório. Se alguém quiser contatá-lo, eles só sabem o número do escritório inteiro. A recepcionista teria então que procurar seu número de ramal e encaminhar a chamada para você.
+O tradutor acompanha os mapeamentos para que os pacotes de resposta possam ser reescritos de volta ao ponto de extremidade interno original. Normalmente, ele encaminha o mesmo fluxo de transporte; não precisa abrir uma conexão de proxy separada como faria um proxy de aplicação.
 
-### Como funciona?
+:::single-choice{#nat-source-translation}
+O que o NAT de origem altera em um pacote de saída?
 
-Um caso simples seria assim:
+::option[Apenas as permissões de arquivo da aplicação de destino.]{#nat-file-permissions explanation="O NAT opera nos cabeçalhos de rede e transporte, não em sistemas de arquivos remotos."}
+::option[O endereço de origem e, no uso de muitos para um, frequentemente a porta de origem.]{#nat-source-fields .correct explanation="O mapeamento permite associar o tráfego de retorno ao fluxo interno original."}
+::option[O nome DNS armazenado permanentemente pelo cliente.]{#nat-dns-name explanation="A tradução não reescreve o banco de dados de serviços de nomes do cliente."}
+:::
 
-1. Patty quer se conectar a `www.google.com`, então sua máquina envia essa solicitação através do roteador.
-2. O roteador pega essa solicitação e abre sua própria conexão para google.com, então ele envia a solicitação de Patty assim que estabelece uma conexão.
-3. O roteador é o intermediário entre Patty e `www.google.com`. O Google não sabe sobre Patty; em vez disso, tudo o que pode ver é o roteador.
+## Tradução de destino
 
-NAT e o roteamento de pacotes em geral podem ser bem complicados, mas não vamos nos aprofundar nos detalhes.
+O NAT de destino reescreve o endereço ou a porta de destino, normalmente para publicar um serviço interno por meio de um ponto de extremidade externo. Uma regra de encaminhamento de portas pode mapear uma porta TCP externa para um endereço e uma porta internos diferentes. O tráfego de retorno precisa de uma tradução reversa consistente.
 
-## Exercise
+:::single-choice{#nat-port-forward}
+Qual forma de NAT normalmente implementa um encaminhamento de porta de entrada?
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão sobre endereçamento de rede e conectividade, que são fundamentais para entender conceitos como NAT:
+::option[Apenas NAT de origem, antes da consulta de rota.]{#nat-snat-port-forward explanation="Publicar um destino interno exige a tradução dos campos de destino."}
+::option[Nenhuma tradução de endereço ou porta.]{#nat-no-translation explanation="Uma regra de encaminhamento de porta é, por definição, uma política de tradução."}
+::option[NAT de destino.]{#nat-dnat .correct explanation="O DNAT mapeia o destino externo para o ponto de extremidade do serviço interno selecionado."}
+:::
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4 e IPv6, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar o endereçamento IP configurando IPs estáticos e dinâmicos, e verificando a configuração de rede, o que ajuda a entender como os dispositivos obtêm seus endereços.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore diferentes tipos de endereço IP (privado, público, multicast) e teste a acessibilidade da rede, fornecendo um contexto prático de como a NAT distingue entre endereços internos e externos.
+## NAT e política de firewall
 
-Esses laboratórios o ajudarão a aplicar os conceitos em cenários reais e a construir confiança na configuração e solução de problemas de rede no Linux.
+NAT não é um firewall. Um tradutor com estado pode não ter um mapeamento para tráfego de entrada não solicitado, mas o encaminhamento explícito, a tradução de destino, a filtragem e a exposição da aplicação determinam o que está acessível. A política de segurança deve ser expressa e auditada com regras de firewall, serviços de privilégio mínimo e controles de ponta a ponta, em vez de ser deduzida da reescrita de endereços.
 
-## Quiz Question
+:::single-choice{#nat-not-firewall}
+Por que o NAT não deve ser tratado como uma política de segurança por si só?
 
-O que é usado para representar um único endereço privado para a internet?
+::option[O NAT criptografa automaticamente toda carga útil.]{#nat-encrypts explanation="A tradução de endereços não fornece confidencialidade à carga útil."}
+::option[Regras de tradução e regras de filtragem de tráfego têm finalidades diferentes.]{#nat-filter-separate .correct explanation="A acessibilidade e a autorização exigem políticas explícitas de filtragem e serviço, mesmo quando há tradução."}
+::option[O NAT impede que administradores definam regras de firewall.]{#nat-prevents-firewall explanation="A tradução e a política de firewall normalmente coexistem."}
+:::
 
-## Quiz Answer
+## Consequências operacionais
 
-NAT
+O NAT pode esgotar os mapeamentos de endereços e portas, complicar protocolos ponto a ponto, ocultar das aplicações as origens reais e exigir tratamento especial para protocolos que incorporam endereços. Se for necessário rastrear fluxos, os logs devem preservar os horários das traduções e os detalhes dos mapeamentos.
+
+No Linux, as políticas modernas costumam ser configuradas com nftables e rastreamento de conexões. Inspecione o conjunto de regras real antes de alterá-lo:
+
+```bash
+$ sudo nft list ruleset
+$ sudo conntrack -L
+```
+
+O segundo comando exige as ferramentas conntrack e privilégios. Alterações no conjunto de regras podem desconectar o acesso remoto; portanto, use recuperação por console, configuração atômica, validação e reversão.
+
+:::single-choice{#nat-trace-flow}
+Quais evidências são necessárias para rastrear um fluxo de endereço compartilhado até um cliente interno?
+
+::option[Apenas o endereço externo, sem horário nem porta.]{#nat-address-only explanation="Muitos clientes e fluxos podem compartilhar esse endereço."}
+::option[Apenas o nome de host exibido pelo cliente.]{#nat-hostname-only explanation="O tradutor mapeia tuplas de pacotes, não necessariamente nomes de host."}
+::option[Um mapeamento de tradução correlacionado no tempo, incluindo protocolo e portas.]{#nat-correlated-mapping .correct explanation="A tupla completa e o registro de horário diferenciam fluxos traduzidos simultâneos."}
+:::
+
+## Resumo
+
+Agora você pode diferenciar tradução de endereços, roteamento, proxy e política de firewall.
+
+1. Identifique a tradução de origem nos fluxos de saída.
+2. Identifique a tradução de destino nos serviços publicados.
+3. Entenda como os mapeamentos de portas permitem o compartilhamento de endereços.
+4. Aplique filtragem explícita em vez de tratar o NAT como segurança.
+5. Preserve evidências de mapeamento e acesso de recuperação durante alterações.

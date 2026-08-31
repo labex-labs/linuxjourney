@@ -1,62 +1,120 @@
 ---
-index: 7
+lesson_id: "dd-command"
+course_id: "devices"
 lang: "de"
+order_index: 7
 title: "dd"
-meta_title: "dd - Geräte"
-meta_description: "Entdecken Sie das leistungsstarke dd-Tool unter Linux. Diese Anleitung erklärt, wie Sie den dd Linux-Befehl für effizientes Kopieren von Daten, Festplatten-Imaging und Backups verwenden. Lernen Sie wichtige Optionen wie if, of und bs kennen."
-meta_keywords: "dd Befehl, dd linux, dd Tool, Daten kopieren, Festplatten-Imaging, Linux Tutorial, Anfänger, Anleitung, Datensicherung"
+description: "Lerne, wie `dd` Blockdatenströme kopiert und wie du zerstörerische Fehler bei Eingabe, Ausgabe und Größe vermeidest."
+meta_title: "dd – Geräte"
+meta_description: "Lerne den Linux-Befehl dd zum Kopieren von Datenströmen und Datenträgerabbildern kennen. Verstehe if, of, bs und count sowie wichtige Sicherheitsmaßnahmen."
+meta_keywords: "dd Befehl, dd Linux, dd Werkzeug, Daten kopieren, Datenträgerabbild, Linux Tutorial, Datensicherung, Blockgerät"
 ---
 
-## Lesson Content
+`dd` kopiert Daten von einem Eingabe- in einen Ausgabestrom und wendet dabei die angeforderten Blockgrößen und Umwandlungen an. Das Werkzeug versteht weder Dateisysteme und Partitionsgrenzen noch, ob ein Ausgabeziel wertvolle Daten enthält. Dadurch eignet es sich für Abbilder und rohe Geräte – und wirkt bei einem falschen Ziel sofort zerstörerisch.
 
-Der Befehl `dd` ist ein vielseitiges und leistungsstarkes Dienstprogramm zum Konvertieren und Kopieren von Daten. Er arbeitet, indem er von einer Eingabedatei oder einem Datenstrom liest und in eine Ausgabedatei oder einen Datenstrom schreibt, was ihn zu einem unverzichtbaren `dd tool` für viele Systemadministrationsaufgaben macht.
+## Eingabe, Ausgabe und Blockgröße
 
-### Die dd-Befehlsstruktur verstehen
-
-Im Kern kopiert `dd` Daten Byte für Byte. Betrachten Sie den folgenden Befehl:
+Ein Befehl besitzt diese allgemeine Form:
 
 ```bash
-dd if=/home/pete/backup.img of=/dev/sdb bs=1024
+$ dd if=input.img of=output.img bs=4M status=progress
 ```
 
-Dieser Befehl kopiert den Inhalt der Datei `backup.img` auf das Blockgerät `/dev/sdb`. Er führt diese Operation durch, indem er die Daten in Blöcken von 1024 Bytes kopiert, bis die gesamte Eingabedatei gelesen wurde.
+- `if=` wählt die Eingabe; ohne diese Angabe liest `dd` von der Standardeingabe.
+- `of=` wählt die Ausgabe; ohne diese Angabe schreibt `dd` auf die Standardausgabe.
+- `bs=` legt beim gewöhnlichen Kopieren die Blockgröße für Ein- und Ausgabe fest.
+- `status=progress` fordert GNU `dd` auf, regelmäßig den Übertragungsfortschritt zu melden.
 
-### Wesentliche dd-Optionen
+`dd` kopiert Blöcke und nicht grundsätzlich einzelne Bytes. Ein größeres `bs` kann den Aufwand für Systemaufrufe verringern, doch der optimale Wert hängt von Geräten, Ausrichtung, Caches und Arbeitslast ab. Die logisch kopierten Daten verändern sich dadurch nicht.
 
-Das Verhalten des `dd`-Befehls wird durch mehrere Schlüsseloptionen gesteuert:
+:::single-choice{#dd-command-output-operand}
+Welcher Operand wählt das von `dd` beschriebene Ziel aus?
 
-- `if=file`: Gibt die **Eingabedatei** an. `dd` liest von dieser Datei anstelle der Standardeingabe.
-- `of=file`: Gibt die **Ausgabedatei** an. `dd` schreibt in diese Datei anstelle der Standardausgabe.
-- `bs=bytes`: Legt die **Blockgröße** fest. `dd` liest und schreibt jeweils diese Anzahl von Bytes. Sie können Suffixe für größere Einheiten verwenden, wie z. B. `k` für Kilobytes (1024 Bytes), `M` für Megabytes und `G` für Gigabytes. Zum Beispiel `bs=1M`.
-- `count=number`: Kopiert nur diese angegebene **Anzahl von Blöcken**.
+::option[`if=`]{#dd-command-input-file explanation="`if` bezeichnet die Eingabequelle."}
+::option[`of=`]{#dd-command-output-file .correct explanation="`of` benennt den Ausgabestrom oder die Datei, die die kopierten Daten empfängt."}
+::option[`bs=`]{#dd-command-block-size explanation="`bs` wählt eine Übertragungsblockgröße und keinen Pfad."}
+:::
 
-### Verwendung von bs und count zusammen
+## Die Kopie begrenzen
 
-Die Option `count` ist nützlich, wenn Sie eine bestimmte Datenmenge kopieren müssen. Die insgesamt kopierte Datenmenge ergibt sich aus `bs` multipliziert mit `count`. Wenn Sie beispielsweise den folgenden Befehl für eine 10M-Datei ausführen:
+`count=` begrenzt die Anzahl der verarbeiteten Eingabeblöcke. Für eine gewöhnliche Eingabedatei:
 
 ```bash
-dd if=/home/pete/backup.img of=/dev/sdb bs=1M count=2
+$ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 ```
 
-Obwohl `backup.img` 10M groß ist, weist dieser Befehl `dd` an, 2 Blöcke zu je 1M Größe zu kopieren. Infolgedessen werden nur 2M Daten kopiert, was zu einer unvollständigen Übertragung führt. Obwohl `count` in bestimmten Szenarien wertvoll ist, können Sie es oft weglassen, wenn Ihr Ziel darin besteht, eine ganze Datei zu kopieren. Die Optimierung von `bs` kann die Übertragungsgeschwindigkeiten erheblich verbessern, aber die Standardeinstellungen sind oft ausreichend.
+Damit werden zwei Eingabeblöcke mit jeweils bis zu 1 MiB angefordert, also höchstens 2 MiB kopiert. Bei Datenströmen wie Pipes können kurze Lesevorgänge diese einfache Multiplikation erschweren; GNU `dd` bietet `iflag=fullblock`, wenn vollständige Eingabeblöcke erforderlich sind. Beachte Binäreinheiten und Suffixsyntax der lokal installierten Implementierung.
 
-### Die Macht und Gefahr von dd
+:::single-choice{#dd-command-count-result}
+Welche maximale Datenmenge fordert `bs=1M count=2` bei einer gewöhnlichen Datei an?
 
-Der Befehl `dd linux` ist extrem leistungsfähig. Sie können ihn verwenden, um Backups ganzer Festplatten zu erstellen, Festplatten-Images wiederherzustellen und Daten sicher zu löschen. Diese Macht birgt jedoch ein Risiko. Ein kleiner Fehler, wie das Vertauschen der Werte für `if` und `of`, kann zu irreversiblen Datenverlusten führen. Überprüfen Sie Ihre Befehle immer sorgfältig, bevor Sie sie ausführen, insbesondere wenn Sie auf ein Gerät wie `/dev/sda` schreiben.
+::option[1 MiB.]{#dd-command-one-mib explanation="Das wäre ein Block der ausgewählten Größe."}
+::option[2 MiB.]{#dd-command-two-mib .correct explanation="Zwei Eingabeblöcke multipliziert mit 1 MiB pro Block ergeben höchstens 2 MiB."}
+::option[2 GiB.]{#dd-command-two-gib explanation="Das Suffix `M` bezeichnet bei GNU `dd` Blöcke in Mebibyte-Größe und keine Gibibytes."}
+:::
 
-## Exercise
+## Ein Abbild auf ein Blockgerät schreiben
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Datenmanipulation und Festplattenverwaltung in Linux zu festigen:
+Eine rohe Wiederherstellung kann so aussehen:
 
-1. **[Erstellen und Wiederherstellen eines Backups mit tar in Linux](https://labex.io/de/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Üben Sie das Erstellen und Wiederherstellen von Dateisystem-Backups, eine entscheidende Fähigkeit im Zusammenhang mit Datenintegrität und Wiederherstellung, für die auch `dd` verwendet werden kann.
-2. **[Verwalten von Linux-Partitionen und Dateisystemen](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Lernen Sie, wie man Festplattenpartitionen und Dateisysteme verwaltet, einschließlich Erstellung, Formatierung und Einhängepunkte, was grundlegende Konzepte sind, wenn man mit Tools wie `dd` für das Disk-Imaging arbeitet.
+```bash
+$ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
+```
 
-Diese Labs helfen Ihnen, die Konzepte der Datenverarbeitung und Festplattenoperationen in realen Szenarien anzuwenden und Vertrauen in Systemadministrationsaufgaben aufzubauen.
+`/dev/sdX` ist absichtlich ein Platzhalter und kein direkt zu kopierender Befehl. Bevor du ihn ersetzt:
 
-## Quiz Question
+1. Halte eine geprüfte Sicherung aller wertvollen Daten vor.
+2. Bestimme das Ziel mit `lsblk`, `udevadm` oder gleichwertigen Werkzeugen anhand von Modell, Seriennummer, Größe, Transport und dauerhaftem Link.
+3. Bestätige, dass keine Zielpartition eingehängt, als Swap verwendet, Teil von RAID oder LVM oder von einem anderen Dienst geöffnet ist.
+4. Prüfe das Gerät nach jedem Trennen, Neustart oder jeder Änderung der Topologie erneut.
+5. Vergewissere dich, dass das Abbild passt und wirklich das vollständige Gerät beschrieben werden soll.
 
-Was ist die `dd`-Option für die Blockgröße? Bitte antworten Sie nur mit Kleinbuchstaben in englischer Sprache.
+Das Ausgabegerät wird von seinem Anfang an überschrieben. Das Vertauschen von `if` und `of`, die Auswahl des Systemdatenträgers oder die Verwendung eines ganzen Datenträgers anstelle einer beabsichtigten Partition kann Daten ohne Bestätigungsfrage zerstören.
 
-## Quiz Answer
+:::single-choice{#dd-command-target-verification}
+Was ist der wichtigste Grund, Modell, Seriennummer, Größe und aktive Nutzung vor dem Schreiben auf ein rohes Gerät zu prüfen?
 
-bs
+::option[Gerätebuchstaben können sich ändern, und `dd` überschreibt das ausgewählte Ziel, ohne dessen Inhalt zu verstehen.]{#dd-command-target-can-change .correct explanation="Identitäts- und Nutzungsprüfungen verringern das Risiko, einen anderen Datenträger oder einen aktiven Speicherstapel zu zerstören."}
+::option[`dd` verweigert das Schreiben, wenn die Dateisystembezeichnung nicht zum Abbild passt.]{#dd-command-label-check explanation="Das Werkzeug führt keine solche dateisystembezogene Sicherheitsprüfung aus."}
+::option[Blockgeräte lassen sich nicht öffnen, solange irgendeine Sicherung existiert.]{#dd-command-backup-prevents-open explanation="Eine Sicherung verhindert Schreibvorgänge technisch nicht; eine gepflegte und geprüfte Sicherung ermöglicht die Wiederherstellung."}
+:::
+
+## Ein konsistentes Abbild erstellen
+
+Das Lesen eines aktiven Blockgeräts, während sich sein Dateisystem verändert, kann ein intern inkonsistentes Abbild erzeugen. Bevorzuge ein nicht eingehängtes Dateisystem, einen anwendungskonsistenten Snapshot oder einen dokumentierten Freeze-/Snapshot-Ablauf. Datenbanken und virtuelle Maschinen können eigene Verfahren zum Ruhigstellen erfordern.
+
+Ein rohes Geräteabbild kopiert Blöcke einschließlich Dateisystemmetadaten und unbenutzter Bereiche. Es kann daher wesentlich größer als eine dateibasierte Sicherung sein und Kennungen duplizieren, die geändert werden müssen, bevor ein Klon neben dem Original eingehängt wird.
+
+:::single-choice{#dd-command-live-filesystem-image}
+Warum kann das Abbild eines eingehängten, sich verändernden Dateisystems unzuverlässig sein?
+
+::option[Eingehängte Dateisysteme erlauben niemals das Lesen des Blockgeräts.]{#dd-command-mounted-no-read explanation="Rohe Lesevorgänge können möglich sein; gerade deshalb muss die Konsistenz geplant und darf nicht vorausgesetzt werden."}
+::option[Unterschiedliche Blöcke können aus verschiedenen Zeitpunkten des Dateisystemzustands gelesen werden.]{#dd-command-inconsistent-moments .correct explanation="Gleichzeitige Änderungen können verhindern, dass das gesammelte Blockabbild einen einzigen konsistenten Zeitpunkt darstellt."}
+::option[`dd` wandelt das Dateisystem automatisch in ein tar-Archiv um.]{#dd-command-converts-tar explanation="Das Werkzeug kopiert Rohdaten und erstellt kein dateisystembezogenes Archiv."}
+:::
+
+## Abschluss und Überprüfung
+
+Ein Befehlsabschluss ohne Ein-/Ausgabefehler beweist weder die Auswahl der beabsichtigten Quelle und des richtigen Ziels noch die Verwendbarkeit des Abbilds. Notiere die genauen Identitäten und Größen, stelle sicher, dass gepufferte Ausgabe den Speicher erreicht hat, vergleiche einen angemessen begrenzten Rücklesevorgang oder kryptografische Hashes und teste die Wiederherstellung gemäß dem Sicherungsplan.
+
+Bewirb Überschreibdurchläufe mit `dd` nicht als garantiert sichere Löschung für SSDs, Flash-Übersetzungsschichten, Thin-Provisioning-Speicher, Snapshots oder umgeleitete Sektoren. Verwende vom Gerät und der Plattform unterstützte Bereinigungsverfahren zusammen mit einer ausdrücklichen Richtlinie zur Datenvernichtung.
+
+:::single-choice{#dd-command-success-meaning}
+Was beweist ein Exit-Status null von `dd` für sich allein nicht?
+
+::option[Dass der Befehl alle angegebenen Operanden ausgewertet hat.]{#dd-command-parsed-operands explanation="Ungültige Operanden führen normalerweise zu einem Fehler statt zu einem erfolgreichen Abschluss."}
+::option[Dass der Bediener die beabsichtigte Quelle und das beabsichtigte Ziel ausgewählt hat.]{#dd-command-does-not-prove-intent .correct explanation="Das Werkzeug kann erfolgreich auf das falsche Ziel kopieren, weil es die Absicht des Bedieners nicht erkennen kann."}
+::option[Dass der Prozess seinen normalen Beendigungspfad erreicht hat.]{#dd-command-normal-exit explanation="Ein Status null zeigt einen normalen Erfolg auf Befehlsebene an, nicht jedoch die semantische Richtigkeit der ausgewählten Ziele."}
+:::
+
+Übe ausschließlich mit gewöhnlichen Dateien oder entbehrlichen virtuellen Datenträgern, bevor du rohe Hardware berührst. Die Partitions- und Dateisystemkonzepte im Lab [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) liefern wichtigen Kontext.
+
+## Zusammenfassung
+
+Du kannst `dd` nun als rohes Blockkopierwerkzeug ohne Verständnis deiner Absicht einordnen.
+
+1. Unterscheide `if`, `of`, `bs` und `count`.
+2. Prüfe die dauerhafte Zielidentität und jeden aktiven Verbraucher.
+3. Erstelle Abbilder aus einem konsistenten Speicherzustand.
+4. Leere Puffer, prüfe das Ergebnis und teste nach dem Kopieren die Wiederherstellung.
+5. Behandle jede Ausgabe auf ein rohes Gerät als potenziell zerstörerisch.

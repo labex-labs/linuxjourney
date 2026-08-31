@@ -1,70 +1,114 @@
 ---
-index: 1
+lesson_id: "filesystem-hierarchy"
+course_id: "filesystem"
 lang: "fr"
-title: "Hiérarchie du Système de Fichiers"
-meta_title: "Hiérarchie du Système de Fichiers - Le Système de Fichiers"
-meta_description: "Explorez la hiérarchie standard du système de fichiers Linux (FSH). Ce guide explique l'objectif des répertoires clés tels que /bin, /etc, /home et /var, offrant un aperçu clair de la hiérarchie du système de fichiers sous Linux."
-meta_keywords: "hiérarchie système de fichiers linux, hiérarchie système de fichiers sous linux, structure hiérarchie fichiers linux, hiérarchie fichiers linux, FSH, structure répertoires linux"
+order_index: 1
+title: "Hiérarchie du système de fichiers"
+description: "Découvrez le rôle prévu des principaux répertoires Linux et les différences possibles dans les organisations fusionnées modernes."
+meta_title: "Hiérarchie du système de fichiers - Le système de fichiers"
+meta_description: "Explorez la hiérarchie standard du système de fichiers Linux et le rôle des répertoires essentiels comme /bin, /etc, /home et /var."
+meta_keywords: "hiérarchie système de fichiers Linux, arborescence Linux, structure répertoires Linux, FHS, /bin, /etc, /home, /var"
 ---
 
-## Lesson Content
+Linux présente les systèmes de fichiers montés sous la forme d'une seule arborescence enracinée dans `/`. Le Filesystem Hierarchy Standard, ou FHS, attribue un rôle conventionnel à de nombreux répertoires, mais les distributions, conteneurs, systèmes immuables et règles locales peuvent différer. Examinez toujours la machine réelle avant de vous fier à un chemin.
 
-Vous vous familiarisez probablement avec la structure des répertoires sur votre système. La plupart des distributions Linux organisent leurs systèmes de fichiers selon la norme **Hiérarchie du Système de Fichiers Linux** (FSH). Cette norme garantit que les fichiers sont stockés dans des emplacements prévisibles, rendant les systèmes plus cohérents.
+```bash
+$ ls -ld /*
+```
 
-Pour voir les répertoires de plus haut niveau, exécutez la commande `ls -l /`. Bien que votre système puisse présenter des différences mineures, la **structure de la hiérarchie des fichiers Linux** de base sera très similaire à celle décrite ci-dessous.
+## Racine et chemins système essentiels
 
-### Le Répertoire Racine
+- `/` est la racine de l'arborescence visible.
+- `/etc` contient la configuration système propre à la machine. Il peut aussi renfermer des scripts exécutables d'assistance ou de démarrage : il serait donc inexact d'affirmer qu'il ne contient jamais de contenu exécutable.
+- `/boot` contient les fichiers liés au démarrage, notamment les données du chargeur d'amorçage et, sur de nombreux systèmes, les noyaux et images du système de fichiers RAM initial.
+- `/bin` et `/sbin` contiennent traditionnellement les commandes essentielles destinées aux utilisateurs et à l'administration système.
+- `/lib` et ses variantes propres à une architecture contiennent traditionnellement les bibliothèques partagées et composants de chargement essentiels.
 
-- `/` - C'est le répertoire racine, le point de départ de l'ensemble du système de fichiers. Chaque fichier et répertoire de votre système est situé sous ce répertoire.
+De nombreuses distributions actuelles utilisent une organisation `/usr` fusionnée, dans laquelle `/bin`, `/sbin` et `/lib` sont des liens symboliques vers les répertoires correspondants sous `/usr`. Servez-vous de la découverte des commandes et des informations des paquets plutôt que de supposer qu'un chemin est un répertoire physique ou un lien.
 
-### Répertoires Système Essentiels
+:::single-choice{#filesystem-hierarchy-configuration-directory}
+Quel répertoire contient conventionnellement la configuration système propre à la machine ?
 
-La **hiérarchie des fichiers sous Linux** comprend plusieurs répertoires essentiels au fonctionnement du système.
+::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="Procfs présente des interfaces actives pour les processus et le noyau, et non des fichiers persistants de configuration de la machine."}
+::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="La configuration du système et des services est conventionnellement organisée sous `/etc`."}
+::option[`/dev`]{#filesystem-hierarchy-dev-config explanation="`/dev` contient des objets d'exécution liés aux périphériques, pas la hiérarchie générale de configuration."}
+:::
 
-- `/bin` - Contient les programmes essentiels en ligne de commande (binaires) disponibles pour tous les utilisateurs, tels que `ls`, `cp` et `mv`.
-- `/sbin` - Contient les binaires système essentiels, principalement destinés à l'administration système et qui ne peuvent généralement être exécutés que par l'utilisateur root.
-- `/etc` - C'est le répertoire de configuration système principal. Il contient les fichiers de configuration pour le système d'exploitation et les applications installées, mais il ne doit contenir aucun binaire exécutable.
-- `/lib` - Contient les fichiers de bibliothèques partagées essentiels dont dépendent les binaires système dans `/bin` et `/sbin` pour fonctionner correctement.
-- `/boot` - Stocke les fichiers requis pour le processus de démarrage du système, y compris le noyau Linux et les fichiers du programme de démarrage (boot loader).
+## Logiciels de la distribution et logiciels locaux
 
-### Données Utilisateur et Applications
+- `/usr` contient la principale hiérarchie partageable et largement en lecture seule du système d'exploitation et des applications, notamment les commandes, bibliothèques et données indépendantes de l'architecture.
+- `/usr/local` est réservé aux logiciels et données installés par l'administrateur local en dehors de la gestion normale de `/usr` par la distribution.
+- `/opt` peut accueillir des paquets applicatifs complémentaires dans des sous-arborescences autonomes.
 
-- `/home` - Contient les répertoires personnels pour chaque utilisateur. C'est là que vous stockez vos documents, paramètres d'application et autres fichiers personnels.
-- `/root` - Le répertoire personnel de l'utilisateur root, séparé du répertoire `/home` pour garantir que l'utilisateur root puisse se connecter même si `/home` n'est pas disponible.
-- `/opt` - Réservé aux logiciels optionnels ou aux progiciels d'applications tiers.
-- `/usr` - Ce répertoire contient les logiciels et utilitaires installés par l'utilisateur. Malgré son nom, il ne contient généralement pas les fichiers personnels des utilisateurs. Il possède sa propre structure de sous-répertoires, comme `/usr/bin` pour les binaires utilisateur non essentiels et `/usr/local` pour les logiciels compilés à partir des sources.
+Malgré son nom, `/usr` n'est normalement pas l'emplacement des fichiers personnels des utilisateurs. Les gestionnaires de paquets possèdent souvent une grande partie de cette arborescence ; copier des fichiers compilés localement dans `/usr/bin` peut donc entrer en conflit avec les paquets gérés.
 
-### Données Dynamiques et Temporaires
+:::single-choice{#filesystem-hierarchy-local-software}
+Quel préfixe est conventionnellement réservé aux logiciels installés localement hors du contenu de `/usr` géré par la distribution ?
 
-- `/var` - Abréviation de « variable », il stocke les fichiers dont on s'attend à ce que leur taille et leur contenu changent, tels que les journaux système (`/var/log`), les caches et les fichiers de mise en file d'attente (spool).
-- `/tmp` - Un espace inscriptible par tous pour stocker des fichiers temporaires. Les fichiers dans ce répertoire sont souvent supprimés lors du redémarrage du système.
-- `/run` - Contient des informations sur le système en cours d'exécution depuis le dernier démarrage, telles que les identifiants de processus (PID) et d'autres données d'exécution.
+::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="La hiérarchie locale sépare les logiciels installés par l'administrateur de l'arborescence `/usr` principale de la distribution."}
+::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="Procfs est une interface virtuelle du noyau, et non un préfixe logiciel persistant."}
+::option[`/dev/local`]{#filesystem-hierarchy-dev-local explanation="Le stockage des nœuds de périphériques n'est pas l'emplacement conventionnel des applications locales."}
+:::
 
-### Périphériques et Points de Montage
+## Données des utilisateurs et des services
 
-- `/dev` - Contient des fichiers de périphériques spéciaux qui représentent des composants matériels comme les disques durs, les terminaux et les périphériques d'entrée.
-- `/media` - Un point de montage standard pour les médias amovibles comme les clés USB, les cartes SD et les CD-ROM.
-- `/mnt` - Un point de montage générique pour monter temporairement des systèmes de fichiers.
+- `/home` contient conventionnellement les répertoires personnels des utilisateurs autres que root, même si un service d'annuaire ou une règle locale peut les placer ailleurs.
+- `/root` est le répertoire personnel conventionnel du compte root.
+- `/srv` est destiné aux données propres au site que sert ce système.
 
-### Informations Système
+Le chemin d'un répertoire personnel provient des informations du compte, et non de la simple concaténation de `/home` et d'un nom d'utilisateur. Utilisez `getent passwd UTILISATEUR` ou le répertoire personnel résolu par le shell plutôt que de coder cette hypothèse en dur.
 
-- `/proc` - Un système de fichiers virtuel qui fournit des informations en temps réel sur les processus en cours d'exécution et les paramètres du noyau.
-- `/srv` - Destiné aux données spécifiques au site servies par le système, comme les fichiers pour un serveur web.
+:::single-choice{#filesystem-hierarchy-root-home}
+Quel est le répertoire personnel conventionnel du compte root ?
 
-## Exercise
+::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Les répertoires personnels ordinaires se trouvent souvent sous `/home`, mais root possède un chemin conventionnel distinct."}
+::option[`/root`]{#filesystem-hierarchy-root .correct explanation="Le répertoire personnel du compte privilégié se situe conventionnellement directement sous la racine du système de fichiers."}
+::option[`/usr/root`]{#filesystem-hierarchy-usr-root explanation="`/usr` est la hiérarchie des logiciels et données partagées, pas le répertoire personnel de root."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du système de fichiers Linux :
+## Données variables, temporaires et d'exécution
 
-1. **[Naviguer dans le Système de Fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Entraînez-vous à utiliser des commandes shell essentielles comme `pwd`, `cd` et `ls` pour vous déplacer entre les répertoires et explorer le système de fichiers.
-2. **[Gérer les Fichiers et Répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-files-and-directories-in-linux-590835)** - Apprenez à créer, supprimer, copier et déplacer des fichiers et des répertoires, et comprenez les liens symboliques et les liens physiques.
-3. **[Trouver des Fichiers et des Commandes sous Linux](https://labex.io/fr/labs/comptia-find-files-and-commands-in-linux-590834)** - Maîtrisez les techniques pour localiser des fichiers et des commandes en utilisant `find`, `locate`, `whereis`, `which` et `type`.
+- `/var` contient des données variables telles que journaux, caches, files d'attente et état applicatif. Les journaux système se trouvent souvent sous `/var/log`, bien que certains systèmes reposent surtout sur une interface de journalisation.
+- `/run` contient l'état d'exécution volatil du démarrage en cours, comme les sockets, l'état des services et les fichiers PID. Il est normalement recréé au démarrage.
+- `/tmp` accueille les fichiers temporaires et est généralement accessible en écriture à tous les utilisateurs avec la protection du sticky bit.
+- `/var/tmp` est destiné aux fichiers temporaires qui doivent survivre plus longtemps que ceux de `/tmp`.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion du système de fichiers Linux.
+La politique de nettoyage de `/tmp` varie : ne supposez ni que les fichiers persistent jusqu'au redémarrage, ni qu'ils sont toujours supprimés à ce moment-là. Les applications doivent créer leurs fichiers temporaires de façon sûre, sans noms prévisibles.
 
-## Quiz Question
+:::single-choice{#filesystem-hierarchy-log-path}
+Quel chemin stocke conventionnellement les fichiers journaux du système ?
 
-Quel répertoire est utilisé pour stocker les journaux ? (Veuillez fournir le chemin complet. La réponse est sensible à la casse et doit être en anglais.)
+::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` sert à la configuration, et non aux données de journal qui s'accumulent normalement."}
+::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Les journaux sont une catégorie de données système changeantes organisée sous la hiérarchie des données variables."}
+::option[`/boot/log`]{#filesystem-hierarchy-boot-log explanation="`/boot` est réservé aux éléments liés au démarrage, pas aux journaux généraux des services."}
+:::
 
-## Quiz Answer
+## Périphériques, interfaces du noyau et points de montage
 
-/var
+- `/dev` contient les nœuds de périphériques et les liens d'exécution associés.
+- `/proc` expose des interfaces des processus et du noyau au moyen de procfs.
+- `/sys` expose les objets, périphériques, pilotes et attributs du noyau au moyen de sysfs.
+- `/media` sert souvent au montage automatique des supports amovibles.
+- `/mnt` est un emplacement conventionnel pour les montages temporaires effectués par l'administrateur.
+
+Il s'agit de conventions, pas d'autorisations. Monter un autre système de fichiers sur un répertoire non vide masque temporairement le contenu antérieur de ce répertoire jusqu'au démontage.
+
+:::single-choice{#filesystem-hierarchy-sysfs-path}
+Quel chemin expose normalement le modèle de périphériques du noyau au moyen de sysfs ?
+
+::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` est destiné aux données servies par le système."}
+::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="Sysfs est conventionnellement monté dans `/sys` et présente périphériques, pilotes, bus et attributs."}
+::option[`/opt`]{#filesystem-hierarchy-opt explanation="`/opt` contient les arborescences d'applications complémentaires facultatives."}
+:::
+
+Utilisez [Naviguer dans le système de fichiers sous Linux](https://labex.io/fr/labs/comptia-navigate-the-filesystem-in-linux-590971) pour examiner ces chemins et [Trouver des fichiers et des commandes sous Linux](https://labex.io/fr/labs/comptia-find-files-and-commands-in-linux-590834) pour éviter de vous fier à des emplacements supposés.
+
+## Résumé
+
+Vous savez maintenant associer les principaux chemins Linux à leur rôle prévu tout en tenant compte des variations réelles entre systèmes.
+
+1. Partir de l'arborescence unifiée enracinée dans `/`.
+2. Distinguer configuration, logiciels gérés, logiciels locaux et données variables.
+3. Séparer les répertoires personnels et données de services de l'état d'exécution.
+4. Reconnaître `/dev`, `/proc` et `/sys` comme des interfaces d'exécution particulières.
+5. Examiner les liens symboliques, montages, données des comptes et règles de la distribution avant de supposer une organisation.

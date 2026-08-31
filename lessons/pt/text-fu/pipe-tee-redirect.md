@@ -1,74 +1,131 @@
 ---
-index: 4
+lesson_id: "pipe-tee-redirect"
+course_id: "text-fu"
 lang: "pt"
-title: "tubo e t"
-meta_title: "tubo e t - Text-Fu"
-meta_description: "Explore o poderoso comando pipe e tee no Linux. Aprenda a encadear comandos com a combinação pipe tee do Linux e redirecionar a saída tanto para a tela quanto para um arquivo. Este guia aborda como usar pipe para tee para um fluxo de dados avançado na linha de comando."
-meta_keywords: "comando pipe e tee no linux, linux pipe tee, pipe para tee, pipe do Linux, comando tee, stdout, stdin, redirecionamento de linha de comando, tutorial Linux"
+order_index: 4
+title: "pipe e tee"
+description: "Aprenda como pipelines conectam comandos e como tee salva um fluxo enquanto o encaminha."
+meta_title: "pipe e tee - Text-Fu"
+meta_description: "Explore pipe e tee no Linux. Aprenda a encadear comandos, redirecionar dados, exibir a saída na tela e salvá-la em um arquivo ao mesmo tempo."
+meta_keywords: "pipe e tee Linux, pipe para tee, pipe Linux, comando tee, stdout, stdin, redirecionamento linha de comando, tutorial Linux"
 ---
 
-## Lesson Content
+Pipelines conectam pequenos comandos para que os dados fluam entre eles sem um arquivo intermediário. O comando `tee` pode copiar parte desse fluxo para um arquivo enquanto continua a encaminhá-lo.
 
-No Linux, a linha de comando torna-se incrivelmente poderosa quando você começa a conectar comandos. Em vez de executar um comando, salvar sua saída e depois executar outro, você pode criar um pipeline para passar dados diretamente entre eles.
+## Conexão de Comandos com |
 
-### Entendendo o Operador Pipe
-
-Vamos começar com um comando que produz muita saída:
+Suponha que uma listagem de diretório seja longa demais para ler de uma vez:
 
 ```bash
-ls -la /etc
+$ ls -la /etc
 ```
 
-A lista de itens provavelmente é muito longa para caber na sua tela, dificultando a leitura. Embora você pudesse redirecionar essa saída para um arquivo, um método mais eficiente é enviá-la diretamente para outro comando, como `less`, para facilitar a visualização.
+Coloque o operador de pipe, `|`, entre os comandos para conectar stdout do comando à esquerda a stdin do comando à direita:
 
 ```bash
-ls -la /etc | less
+$ ls -la /etc | less
 ```
 
-O operador pipe `|`, representado por uma barra vertical, é a chave para esse processo. Ele pega a saída padrão (`stdout`) do comando à sua esquerda e a usa como entrada padrão (`stdin`) para o comando à sua direita. Neste caso, nós _canalizamos_ (`piped`) a saída de `ls -la /etc` diretamente para o comando `less`. O pipe é uma ferramenta fundamental que você usará constantemente.
+O shell inicia os comandos do pipeline e organiza a conexão do fluxo. Os comandos podem trabalhar simultaneamente: `less` pode começar a ler antes que `ls` produza toda a listagem.
 
-### Dividindo a Saída com o Comando Tee
+:::single-choice{#pipe-stream-connection}
+Em `ls -la /etc | less`, quais fluxos `|` conecta por padrão?
 
-E se você quiser ver a saída na sua tela _e_ salvá-la em um arquivo simultaneamente? É aqui que entra o comando `tee`. O `comando pipe e tee no linux` é uma combinação clássica para registro e monitoramento.
+::option[stdin de `ls` a stdout de `less`.]{#pipe-reversed-streams explanation="Essa resposta inverte o produtor e o consumidor. Os dados fluem da saída do comando à esquerda para a entrada do comando à direita."}
+::option[stderr de `ls` aos dois fluxos de `less`.]{#pipe-stderr-both explanation="Um pipe simples não conecta stderr do comando à esquerda nem se dirige aos dois fluxos do comando à direita."}
+::option[stdout de `ls` a stdin de `less`.]{#pipe-stdout-stdin .correct explanation="Um pipeline padrão conecta o descritor de arquivo 1 do comando à esquerda ao descritor 0 do comando à direita."}
+:::
+
+## Manutenção de stderr Separada
+
+Um `|` simples transporta apenas stdout. Stderr do comando à esquerda mantém seu destino anterior, geralmente o terminal:
 
 ```bash
-ls | tee peanuts.txt
+$ find /etc -name "*.conf" | less
 ```
 
-Após executar isso, você verá a saída de `ls` no seu terminal. Se você também verificar o conteúdo de `peanuts.txt`, encontrará exatamente a mesma informação. O comando `tee` efetivamente divide o fluxo de saída em duas direções: uma para a saída padrão e outra para um arquivo especificado.
-
-### Combinando Pipe e Tee
-
-Você pode criar fluxos de trabalho ainda mais avançados encadeando esses comandos. Um padrão comum é usar o `pipe para tee` no meio de uma cadeia de comandos mais longa. Isso permite salvar um resultado intermediário enquanto continua a processar os dados.
-
-Por exemplo, você pode usar a combinação `linux pipe tee` para visualizar e salvar a saída antes de filtrar mais:
+Os caminhos correspondentes passam pelo pipe, enquanto os diagnósticos de permissão ainda podem aparecer diretamente no terminal. Redirecione stderr separadamente quando precisar de outro comportamento:
 
 ```bash
-ls -la /etc | tee etc_listing.txt | grep "conf"
+$ find /etc -name "*.conf" 2> find-errors.log | less
 ```
 
-Este comando faz três coisas:
+:::single-choice{#pipe-left-stderr}
+Em `find /etc -name "*.conf" | less`, para onde stderr de `find` normalmente vai quando não há outro redirecionamento?
 
-1. Lista o conteúdo do diretório `/etc`.
-2. Canaliza essa saída para o `tee`, que salva uma cópia em `etc_listing.txt` e também a repassa.
-3. A saída do `tee` é então canalizada para o `grep`, que filtra por linhas contendo "conf".
+::option[Para `less` pelo mesmo pipe de stdout.]{#pipe-errors-to-less explanation="O pipe comum conecta apenas stdout. Stderr não é combinada automaticamente com ela."}
+::option[Para um arquivo chamado `stderr` no diretório atual.]{#pipe-errors-to-file explanation="Não há redirecionamento para um arquivo de erros; portanto, o shell não cria esse arquivo."}
+::option[Para seu destino atual, geralmente o terminal.]{#pipe-errors-terminal .correct explanation="Como o descritor 2 permanece inalterado, os diagnósticos normalmente continuam conectados ao terminal."}
+:::
 
-Dominar esses comandos melhorará significativamente sua eficiência na linha de comando.
+## Cópia de um Fluxo com tee
 
-## Exercise
+`tee` lê stdin, grava uma cópia em cada arquivo indicado e também envia os mesmos dados a stdout:
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de redirecionamento de entrada/saída e pipelines:
+```bash
+$ ls | tee listing.txt
+```
 
-1. **[Redirecionamento de Entrada e Saída no Linux](https://labex.io/pt/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Pratique o controle do fluxo de dados dos comandos manipulando a saída padrão (stdout), erro padrão (stderr) e entrada padrão (stdin) usando operadores como `>`, `>>`, `2>` e o comando `tee`.
-2. **[Controle de Sequência e Pipeline no Linux](https://labex.io/pt/labs/linux-sequence-control-and-pipeline-17994)** - Aprenda a controlar sequências de execução de comandos, utilizar pipelines e alavancar poderosas ferramentas de processamento de texto como `cut`, `grep`, `wc`, `sort` e `uniq`.
-3. **[Redirecionamento de Fluxo de Dados](https://labex.io/pt/labs/linux-data-stream-redirection-17995)** - Aprenda a arte da redireção de fluxo no Linux, incluindo a manipulação de fluxos de entrada, saída e erro padrão, combinação de saídas e utilização de `/dev/null`.
+Aqui, `listing.txt` recebe a listagem e stdout de `tee` continua conectada ao terminal. Por padrão, `tee` cria ou trunca o arquivo indicado, assim como `>`.
 
-Estes laboratórios ajudarão você a aplicar os conceitos de piping e redirecionamento em cenários reais e a ganhar confiança na manipulação de dados da linha de comando.
+:::single-choice{#tee-display-and-save}
+Qual comando exibe a saída de `generate-report` e também substitui `report.txt` pela mesma saída?
 
-## Quiz Question
+::option[`generate-report > report.txt`]{#redirect-report-only explanation="Um redirecionamento simples grava o arquivo, mas não mantém uma cópia fluindo para o terminal."}
+::option[`generate-report | tee report.txt`]{#tee-report .correct explanation="`tee` copia stdin para `report.txt` e para stdout, que permanece conectada ao terminal neste pipeline."}
+::option[`tee generate-report | report.txt`]{#tee-operands-reversed explanation="Essa forma trata `generate-report` como nome de destino e tenta executar `report.txt` como comando. O produtor deve ficar à esquerda."}
+:::
 
-Qual caractere único representa o operador pipe em um comando Linux? Por favor, responda apenas com o símbolo.
+Use `-a` quando o conteúdo deva ser acrescentado ao arquivo em vez de substituí-lo:
 
-## Quiz Answer
+```bash
+$ date | tee -a activity.log
+```
 
-|
+:::single-choice{#tee-append-log}
+Qual comando exibe a data atual e a acrescenta a `activity.log`?
+
+::option[`date | tee -a activity.log`]{#tee-append-activity .correct explanation="A opção `-a` faz `tee` acrescentar ao arquivo enquanto continua copiando a entrada para stdout."}
+::option[`date | tee activity.log`]{#tee-replace-activity explanation="Sem `-a`, `tee` substitui o arquivo existente em vez de preservar suas entradas anteriores."}
+::option[`date > activity.log`]{#redirect-replace-activity explanation="Essa forma substitui o arquivo e não envia uma cópia ao terminal. Ela não atende aos requisitos de acréscimo e exibição."}
+:::
+
+## Salvamento de um Resultado Intermediário
+
+Coloque `tee` no meio de um pipeline para salvar um fluxo intermediário e continuar seu processamento:
+
+```bash
+$ ls -la /etc | tee etc-listing.txt | grep "conf"
+```
+
+Esse pipeline:
+
+1. Produz a listagem longa completa.
+2. Salva o fluxo completo em `etc-listing.txt`.
+3. Envia o mesmo fluxo a `grep`, que mostra apenas as linhas que contêm `conf`.
+
+O arquivo contém os dados anteriores ao filtro de `grep`. Se quiser salvar apenas as linhas filtradas, coloque `tee` depois de `grep`.
+
+:::single-choice{#tee-before-filter-result}
+O que `all.txt` contém depois que `produce | tee all.txt | grep error` termina com sucesso?
+
+::option[Apenas as linhas correspondentes em `grep`.]{#tee-filtered-only explanation="`tee` é executado antes de `grep`; portanto, ele grava a entrada não filtrada, não o conjunto de correspondências posterior."}
+::option[Apenas stderr de `produce`.]{#tee-producer-stderr explanation="Um pipe simples transporta stdout de `produce`. Stderr não é a entrada de `tee`."}
+::option[Toda a stdout produzida antes da filtragem.]{#tee-complete-intermediate .correct explanation="`tee` salva cada byte recebido e depois envia o mesmo fluxo a `grep` para filtragem."}
+:::
+
+Para praticar pipelines e cópias de fluxos, experimente estes laboratórios:
+
+1. **[Redirecionamento de Entrada e Saída no Linux](https://labex.io/labs/comptia-redirecting-input-and-output-in-linux-590840)** — Pratique o controle do fluxo de dados dos comandos manipulando a saída padrão (stdout), o erro padrão (stderr) e a entrada padrão (stdin) com operadores como `>`, `>>`, `2>` e o comando `tee`.
+2. **[Controle de Sequência e Pipeline](https://labex.io/labs/linux-sequence-control-and-pipeline-17994)** — Aprenda a controlar sequências de comandos, usar pipelines e aproveitar ferramentas de texto como `cut`, `grep`, `wc`, `sort` e `uniq`.
+3. **[Redirecionamento de Fluxos de Dados](https://labex.io/labs/linux-data-stream-redirection-17995)** — Aprenda a arte do redirecionamento de fluxos no Linux, incluindo a manipulação dos fluxos de entrada, saída e erro padrão, a combinação de saídas e o uso de `/dev/null`.
+
+## Resumo
+
+Agora você sabe conectar comandos e preservar pontos escolhidos em um fluxo de dados.
+
+1. Encaminhe stdout de um comando para stdin de outro.
+2. Redirecione stderr separadamente quando necessário.
+3. Copie a entrada para um arquivo e para stdout com `tee`.
+4. Acrescente com `tee -a` em vez de substituir o arquivo.
+5. Posicione `tee` antes ou depois de um filtro conscientemente.

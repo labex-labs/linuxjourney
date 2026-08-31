@@ -1,54 +1,112 @@
 ---
-index: 6
+lesson_id: "listing-devices"
+course_id: "devices"
 lang: "pt"
+order_index: 6
 title: "lsusb, lspci, lsscsi"
+description: "Aprenda a inspecionar a topologia USB, funções PCI, dispositivos da camada SCSI e seus drivers ativos."
 meta_title: "lsusb, lspci, lsscsi - Dispositivos"
-meta_description: "Descubra como listar e inspecionar hardware USB, PCI e SCSI no seu sistema Linux. Este guia abrange os comandos lsusb, lspci e lsscsi, incluindo opções como lsusb -t para ver árvores de dispositivos."
-meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, listar dispositivos usb, listar dispositivos pci, listar dispositivos scsi, hardware linux, informação de dispositivo"
+meta_description: "Descubra como listar e inspecionar hardware USB, PCI e SCSI em seu sistema Linux. Este guia aborda os comandos lsusb, lspci e lsscsi, incluindo opções como lsusb -t para visualizar árvores de dispositivos."
+meta_keywords: "lsusb, lspci, lsscsi, lsusb -t, listar dispositivos USB, listar dispositivos PCI, listar dispositivos SCSI, hardware Linux, informações de dispositivos"
 ---
 
-## Lesson Content
+O Linux oferece ferramentas de inventário específicas para barramentos e subsistemas. Cada comando apresenta uma visão diferente, portanto combine seus identificadores, topologia, drivers, caminhos do sysfs e logs, em vez de esperar uma única lista completa do hardware.
 
-Assim como você usa o comando `ls` para listar arquivos, o Linux fornece ferramentas semelhantes para listar dispositivos de hardware. Esses comandos são essenciais para identificar o hardware conectado ao seu sistema.
+## Inspeção de Dispositivos USB
 
-### Listando Dispositivos USB com lsusb
-
-Para ver todos os dispositivos USB conectados ao seu sistema, você pode usar o comando `lsusb`. Este comando escaneia os hubs USB e relata informações sobre os dispositivos que encontra, como webcams, teclados e unidades externas.
+`lsusb` lista os dispositivos USB visíveis pelo subsistema USB:
 
 ```bash
-lsusb
+$ lsusb
 ```
 
-Para uma visualização mais estruturada, você pode usar o comando `lsusb -t`. Esta opção exibe os dispositivos USB em uma estrutura semelhante a uma árvore, o que é útil para entender como os dispositivos estão fisicamente conectados aos controladores e hubs USB.
+A saída normalmente inclui números de barramento e dispositivo, um par de IDs de fornecedor e produto e uma descrição do banco de dados USB local. O endereço numérico de barramento/dispositivo pode mudar após uma reconexão ou reinicialização e não deve ser tratado como uma identidade persistente.
 
-### Listando Dispositivos PCI com lspci
-
-O comando `lspci` é usado para listar todos os dispositivos PCI (Peripheral Component Interconnect). Estes são tipicamente componentes internos conectados à placa-mãe, como placas gráficas, adaptadores de rede e placas de som. Este comando fornece uma visão geral rápida do hardware principal do seu sistema.
+Exiba as relações entre controladores, hubs, portas, interfaces, drivers e velocidades com:
 
 ```bash
-lspci
+$ lsusb -t
 ```
 
-### Listando Dispositivos SCSI e SATA com lsscsi
+Também há uma saída detalhada dos descritores, mas alguns dados exigem acesso elevado de leitura. Não conceda permissões amplas aos dispositivos USB apenas para evitar mensagens de uma ferramenta de inspeção.
 
-Para dispositivos de armazenamento, o comando `lsscsi` é particularmente útil. Ele lista todos os dispositivos SCSI e SATA conectados, que comumente incluem discos rígidos, SSDs e unidades ópticas (CD/DVD/Blu-ray). Embora outros comandos possam mostrar o controlador de armazenamento, o `lsscsi` fornece informações diretas sobre os próprios dispositivos de armazenamento, tornando-o uma ferramenta valiosa para administradores de sistema e usuários que gerenciam armazenamento.
+:::single-choice{#listing-devices-usb-tree}
+Qual comando exibe os dispositivos USB como uma árvore de topologia?
+
+::option[`lspci -k`]{#listing-devices-lspci-tree explanation="Esse comando lista funções PCI e informações de drivers do kernel, não a topologia USB."}
+::option[`lsscsi -t`]{#listing-devices-lsscsi-tree explanation="Esse não é o comando de árvore USB apresentado."}
+::option[`lsusb -t`]{#listing-devices-lsusb-tree .correct explanation="A opção de árvore mostra os dispositivos abaixo de controladores e hubs, com relações entre portas e interfaces."}
+:::
+
+## Inspeção de Funções PCI
+
+`lspci` lista as funções encontradas nos barramentos PCI e PCI Express:
 
 ```bash
-lsscsi
+$ lspci
 ```
 
-## Exercise
+Dispositivos PCIe internos e conectados externamente podem incluir controladores gráficos, de rede, armazenamento, USB, áudio e pontes. Mostre o driver do kernel em uso e os módulos candidatos com:
 
-Para reforçar sua compreensão sobre a exploração de dispositivos de hardware no Linux, experimente o seguinte laboratório prático:
+```bash
+$ lspci -k
+```
 
-1. **[Explorar Dispositivos de Hardware no Linux](https://labex.io/pt/labs/comptia-explore-hardware-devices-in-linux-590861)** - Neste laboratório, você aprenderá as habilidades essenciais para explorar, identificar e inspecionar dispositivos de hardware dentro de um ambiente Linux. Você ganhará experiência prática com utilitários poderosos de linha de comando para entender como o sistema operacional interage com componentes físicos.
+O aparecimento de um controlador PCI nessa lista não comprova que todos os dispositivos atrás dele estejam inicializados ou funcionando. Verifique a associação do driver e os logs do kernel durante a solução de problemas.
 
-Este laboratório ajudará você a aplicar esses conceitos em um cenário do mundo real e a ganhar confiança no gerenciamento de informações de dispositivos.
+:::single-choice{#listing-devices-pci-driver}
+Qual comando acrescenta informações de drivers do kernel a uma listagem PCI?
 
-## Quiz Question
+::option[`lspci -k`]{#listing-devices-lspci-k .correct explanation="A opção `-k` exibe o driver ativo do kernel e os módulos capazes de controlar cada dispositivo PCI."}
+::option[`lsusb -t`]{#listing-devices-usb-not-pci explanation="Esse comando descreve a hierarquia USB e os drivers das interfaces."}
+::option[`lsblk -f`]{#listing-devices-lsblk-filesystem explanation="Esse comando informa campos de dispositivos de bloco e sistemas de arquivos, não a associação de drivers PCI."}
+:::
 
-Qual comando é usado para visualizar uma lista de dispositivos USB conectados? (Por favor, responda apenas com caracteres em inglês minúsculos.)
+## Inspeção de Dispositivos da Camada SCSI
 
-## Quiz Answer
+`lsscsi` lista os dispositivos representados pela camada intermediária SCSI do Linux:
 
-lsusb
+```bash
+$ lsscsi
+```
+
+Isso pode incluir dispositivos SCSI nativos e discos SATA, de armazenamento USB ou virtuais apresentados por camadas compatíveis com SCSI. Os namespaces NVMe normalmente pertencem a outro subsistema e não são inventariados de forma abrangente por `lsscsi`.
+
+Para uma hierarquia orientada ao armazenamento que inclua muitos tipos de dispositivos de bloco, use também `lsblk`:
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,MODEL,SERIAL,TRAN,FSTYPE,MOUNTPOINTS
+```
+
+:::single-choice{#listing-devices-lsscsi-scope}
+O que `lsscsi` lista principalmente?
+
+::option[Exclusivamente todos os namespaces e controladores NVMe.]{#listing-devices-only-nvme explanation="O NVMe usa seu próprio subsistema e suas próprias ferramentas, embora visualizações de blocos relacionadas possam aparecer em outros lugares."}
+::option[Somente arquivos cujos nomes terminam em `.scsi`.]{#listing-devices-scsi-extension explanation="O comando consulta interfaces de dispositivos do kernel, não extensões de nomes de arquivos."}
+::option[Dispositivos representados pela camada intermediária SCSI do Linux.]{#listing-devices-scsi-mid-layer .correct explanation="O comando informa hosts, destinos, unidades lógicas SCSI e os nós de dispositivos correspondentes, quando disponíveis."}
+:::
+
+## Interpretação dos Resultados do Inventário
+
+As descrições muitas vezes vêm de bancos de dados locais de IDs e podem ser genéricas ou desatualizadas. Um dispositivo listado pode não ter um driver funcional, e um ambiente virtualizado pode apresentar hardware emulado ou paravirtual. Relacione os resultados a `udevadm info`, sysfs, `lsblk`, ferramentas de rede e `journalctl -k` ou `dmesg`, de acordo com as permissões e com o problema investigado.
+
+Os utilitários podem ser distribuídos separadamente, normalmente em pacotes como `usbutils`, `pciutils` e `lsscsi`. Quando um comando estiver ausente, use o gerenciador de pacotes da distribuição em vez de baixar substitutos desconhecidos.
+
+:::single-choice{#listing-devices-listed-not-working}
+Ver um dispositivo em `lspci` comprova que seu driver está ativo e funcionando corretamente?
+
+::option[Não; inspecione também a associação do driver e as mensagens relevantes do kernel.]{#listing-devices-needs-correlation .correct explanation="A enumeração estabelece que uma função PCI está visível, não que a inicialização de nível superior foi bem-sucedida."}
+::option[Sim; a enumeração PCI realiza um teste funcional completo.]{#listing-devices-complete-test explanation="A listagem não exercita todas as funções do hardware nem valida o comportamento dos serviços."}
+::option[Sim; `lspci` instala automaticamente um driver adequado.]{#listing-devices-installs-driver explanation="O comando é uma ferramenta de inventário e não instala pacotes de drivers."}
+:::
+
+Use o laboratório [Exploração de Dispositivos de Hardware no Linux](https://labex.io/labs/comptia-explore-hardware-devices-in-linux-590861) para comparar essas visualizações de subsistemas em um único host controlado.
+
+## Resumo
+
+Agora você sabe selecionar um comando de inventário para o subsistema de dispositivos em questão.
+
+1. Use `lsusb` e `lsusb -t` para identidade e topologia USB.
+2. Use `lspci -k` para funções PCI e associação de drivers.
+3. Use `lsscsi` para dispositivos da camada SCSI e `lsblk` para a topologia de blocos.
+4. Relacione a enumeração aos drivers, ao sysfs e às mensagens do kernel.

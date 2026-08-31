@@ -1,80 +1,118 @@
 ---
-index: 11
+lesson_id: "inodes"
+course_id: "filesystem"
 lang: "de"
+order_index: 11
 title: "Inodes"
-meta_title: "Inodes - Das Dateisystem"
-meta_description: "Erkunden Sie das Konzept des Linux-Inodes. Erfahren Sie, was ein i-node ist, wie Inodes unter Linux Dateimetadaten verwalten und wie Sie die Inode-Nutzung mit `df -i` und `ls -li` überprüfen."
-meta_keywords: "linux inode, inode in linux, i node, inode, inode linux, inode nummer, dateisystem, df -i, ls -li, stat"
+description: "Lerne, wie Inode-Nummern Verzeichnisnamen mit Metadaten und Daten von Dateisystemobjekten verbinden."
+meta_title: "Inodes – Das Dateisystem"
+meta_description: "Lerne Linux-Inodes, Verzeichniseinträge, Metadaten, Hardlinks, offene Referenzen und Inode-Kapazität mit ls -li, stat und df -i kennen."
+meta_keywords: "Linux Inode, Inode Linux, Inode Nummer, Dateisystem, df -i, ls -li, stat, Hardlink"
 ---
 
-## Lesson Content
+In Inode-basierten Unix-Dateisystemen ordnet ein Verzeichnis jeden Eintragsnamen einer Inode-Nummer zu. Der Inode stellt das Dateisystemobjekt dar und zeichnet Metadaten auf, die zum Auffinden und Interpretieren seiner Daten nötig sind. Der Pfadname ist daher nicht als primäre Identität des Objekts selbst gespeichert.
 
-Erinnern Sie sich, wie unser Dateisystem aus all unseren tatsächlichen Dateien und einer Datenbank besteht, die diese verwaltet? Diese Datenbank ist als Inode-Tabelle bekannt, ein grundlegender Bestandteil der Funktionsweise von `inode in linux`.
+## Mit einem Inode gespeicherte Metadaten
 
-### Was ist ein Linux Inode
+Zu den häufig mit einem Inode verbundenen Metadaten gehören:
 
-Ein Inode (Kurzform für Index Node) ist ein Eintrag in dieser Tabelle. Jede Datei und jedes Verzeichnis hat seinen eigenen `inode`. Er beschreibt alles über die Datei, wie zum Beispiel:
+- Objekttyp und Berechtigungsmodus
+- Benutzer- und Gruppeneigentümerschaft
+- logische Größe und Buchhaltung zugewiesener Blöcke
+- Anzahl der Hardlinks
+- Zeitstempel für Zugriff, Änderung und Statusänderung
+- Verweise auf Dateidaten oder dateisystemspezifische Extent-Strukturen
 
-- Dateityp (z. B. reguläre Datei, Verzeichnis, Zeichengerät)
-- Besitzer
-- Gruppe
-- Zugriffsberechtigungen
-- Zeitstempel: mtime (letzte Änderung), ctime (letzte Attributänderung), atime (letzter Zugriff)
-- Anzahl der Hardlinks auf die Datei
-- Größe der Datei
-- Anzahl der der Datei zugewiesenen Blöcke
-- Zeiger auf die Datenblöcke der Datei (am wichtigsten!)
+Der Inode speichert normalerweise nicht den Namen des Verzeichniseintrags. Ein Dateisystem kann außerdem erweiterte Attribute, Zugriffskontrolllisten, Geburtszeit, Inline-Daten oder weitere Informationen in formatspezifischen Strukturen speichern.
 
-Im Wesentlichen speichert ein `i node` alle Metadaten über die Datei, außer deren Namen und dem eigentlichen Inhalt.
+`ctime` ist der Zeitpunkt der Inode-Statusänderung und nicht zwangsläufig die Erstellungszeit der Datei. Ein getrennter Geburts- oder Erstellungszeitstempel ist optional und möglicherweise nicht verfügbar.
 
-### Inode-Erstellung und -Zuweisung
+:::single-choice{#inodes-name-location}
+Wo ist die Pfadnamenkomponente einer gewöhnlichen Datei normalerweise mit ihrer Inode-Nummer verknüpft?
 
-Wenn ein Dateisystem erstellt wird, wird auch Speicherplatz für Inodes zugewiesen. Algorithmen bestimmen, wie viel `inode`-Speicherplatz Sie basierend auf dem Volumen der Festplatte und anderen Faktoren benötigen. Sie haben wahrscheinlich schon Fehler wegen "out of disk space" gesehen. Dasselbe kann mit Inodes passieren, obwohl es seltener vorkommt. Wenn Ihnen die Inodes ausgehen, können Sie keine neuen Dateien erstellen. Die Datenspeicherung hängt sowohl von den Datenblöcken als auch von der Datenbank (der `inode`-Tabelle) ab.
+::option[Im Prozess-Scheduler.]{#inodes-scheduler-name explanation="Der Zustand der CPU-Ablaufplanung implementiert keine Pfadauflösung des Dateisystems."}
+::option[In einem Verzeichniseintrag.]{#inodes-directory-entry .correct explanation="Ein Verzeichnis ordnet innerhalb dieses Dateisystems einen Namen einer Inode-Nummer zu."}
+::option[In der Partitionstabelle des Datenträgers.]{#inodes-partition-name explanation="Eine Partitionstabelle ordnet Speicherbereiche und keine einzelnen Dateinamen zu."}
+:::
 
-Um zu sehen, wie viele Inodes auf Ihrem System noch frei sind, verwenden Sie den Befehl `df -i`. Dies ist eine entscheidende Überprüfung für Systemadministratoren, die eine große Anzahl kleiner Dateien verwalten.
+## Inode-Nummern und Dateisystemumfang
 
-### Anzeigen von Inode-Informationen
-
-Jeder `linux inode` wird durch eine eindeutige Nummer identifiziert. Wenn eine Datei erstellt wird, erhält sie eine Inode-Nummer, oft sequenziell. Sie werden jedoch möglicherweise feststellen, dass eine neue Datei eine niedrigere Inode-Nummer als ältere Dateien erhält. Dies geschieht, weil gelöschte Inode-Nummern für neue Dateien wiederverwendet werden können. Um Inode-Nummern anzuzeigen, führen Sie `ls -li` aus:
-
-```bash
-pete@icebox:~$ ls -li
-140 drwxr-xr-x 2 pete pete 6 Jan 20 20:13 Desktop
-141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
-```
-
-Das erste Feld in der Ausgabe dieses Befehls ist die Inode-Nummer. Detaillierte Informationen zum `i node` einer Datei erhalten Sie auch mit dem Befehl `stat`:
+Zeige Inode-Nummern an:
 
 ```bash
-pete@icebox:~$ stat ~/Desktop/
-  File: ‘/home/pete/Desktop/’
-  Size: 6               Blocks: 0          IO Block: 4096   directory
-Device: 806h/2054d      Inode: 140         Links: 2
-Access: (0755/drwxr-xr-x)  Uid: ( 1000/   pete)   Gid: ( 1000/   pete)
-Access: 2016-01-20 20:13:50.647435982 -0800
-Modify: 2016-01-20 20:13:06.191675843 -0800
-Change: 2016-01-20 20:13:06.191675843 -0800
- Birth: -
+$ ls -li
 ```
 
-### Wie ein I-Node auf Daten verweist
+Das erste Feld ist die Inode-Nummer. Untersuche ein Objekt ausführlicher:
 
-Wir wissen, dass unsere Daten auf der Festplatte gespeichert sind, aber wahrscheinlich nicht in einem einzigen zusammenhängenden Block. Hier wird die Struktur des `inode linux` unerlässlich. Inodes verweisen auf die tatsächlichen Datenblöcke Ihrer Dateien. In einem typischen Dateisystem (obwohl die Implementierungen variieren) enthält jeder Inode 15 Zeiger. Die ersten 12 Zeiger verweisen direkt auf Datenblöcke. Der 13. Zeiger verweist auf einen Block, der weitere Zeiger enthält. Die 14. und 15. Zeiger verweisen auf weiter verschachtelte Zeigerblöcke. Das mag verwirrend erscheinen, aber diese Struktur ermöglicht es dem `i node`, eine feste Größe beizubehalten und gleichzeitig auf Dateien unterschiedlicher Größe verweisen zu können. Kleine Dateien können schnell über die direkten Zeiger abgerufen werden, während größere Dateien über die verschachtelten Zeiger gefunden werden.
+```bash
+$ stat path
+```
 
-## Exercise
+Eine Inode-Nummer ist nur innerhalb eines Dateisystems zu einem bestimmten Zeitpunkt eindeutig. Dieselbe Nummer kann in einem anderen Dateisystem vorkommen und nach der Freigabe eines Inodes erneut verwendet werden. Identifiziere ein Objekt zuverlässig durch Dateisystemidentität und Inode-Nummer gemeinsam, nicht allein anhand der Inode-Nummer.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis des Linux-Dateisystems und der Dateiverwaltung zu festigen:
+:::single-choice{#inodes-number-scope}
+In welchem Umfang ist eine Inode-Nummer eine Objektkennung?
 
-1. **[Dateien und Verzeichnisse unter Linux verwalten](https://labex.io/de/labs/comptia-manage-files-and-directories-in-linux-590835)** - Üben Sie das Erstellen, Entfernen, Kopieren und Verschieben von Dateien und Verzeichnissen und erkunden Sie das Erstellen von symbolischen und Hardlinks, während Sie Inodes analysieren.
-2. **[Im Linux-Dateisystem navigieren](https://labex.io/de/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Lernen Sie die grundlegenden Fähigkeiten zur Navigation im Linux-Dateisystem mithilfe wichtiger Shell-Befehle wie `pwd`, `cd` und `ls`.
-3. **[Dateien und Befehle unter Linux finden](https://labex.io/de/labs/comptia-find-files-and-commands-in-linux-590834)** - Meistern Sie wesentliche Techniken zum Auffinden von Dateien und Befehlen unter Linux mit `find`, `locate`, `whereis`, `which` und `type`.
+::option[Für immer auf jedem Linux-System der Welt.]{#inodes-global-forever explanation="Inodes werden lokal in einem Dateisystem zugewiesen und ihre Kennungen können wiederverwendet werden."}
+::option[In einem Dateisystem zu einem bestimmten Zeitpunkt.]{#inodes-one-filesystem .correct explanation="Andere Dateisysteme können dieselbe Nummer verwenden; freigegebene Inode-Nummern können später erneut vergeben werden."}
+::option[Nur im Shellprozess, der die Datei erstellt hat.]{#inodes-shell-scope explanation="Das Dateisystem und nicht eine einzelne Shell verwaltet die Inode-Identität."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Selbstvertrauen in die Verwaltung des Linux-Dateisystems aufzubauen.
+## Hardlinks und offene Referenzen
 
-## Quiz Question
+Mehrere Verzeichniseinträge können auf denselben Inode verweisen; dies sind Hardlinks. Das Erstellen eines weiteren Hardlinks erhöht die Linkanzahl des Objekts. Wird ein Name entfernt, sinkt die Anzahl, ohne die Daten zu löschen, solange ein anderer Link vorhanden ist.
 
-How do you see how many inodes are left on your system? (Please answer in English, paying attention to case sensitivity.)
+Auch nach dem Entfernen des letzten Verzeichniseintrags bleibt eine geöffnete Datei zugewiesen, bis die letzte Prozessreferenz geschlossen wird. Ihre Linkanzahl kann null sein, während ein Dateideskriptor weiterhin darauf zugreift. Das erklärt, warum das Löschen eines großen geöffneten Protokolls die von `df` gemeldete Belegung nicht sofort verringern muss.
 
-## Quiz Answer
+:::single-choice{#inodes-unlinked-open-file}
+Wann werden die Ressourcen einer nicht mehr verlinkten Datei normalerweise freigegeben?
 
-df -i
+::option[Sofort nach dem Entfernen eines beliebigen Hardlink-Namens.]{#inodes-one-link-removed explanation="Andere Hardlinks oder offene Referenzen können das Objekt am Leben halten."}
+::option[Erst nach der Neuformatierung des gesamten Dateisystems.]{#inodes-reformat-only explanation="Gewöhnliche Unlink- und Close-Operationen geben nicht mehr verwendete Inodes und Blöcke frei."}
+::option[Nachdem ihre Linkanzahl null ist und die letzte offene Referenz geschlossen wurde.]{#inodes-zero-links-no-opens .correct explanation="Verzeichnisnamen und Dateideskriptoren von Prozessen sind voneinander unabhängige Referenzen auf den Inode."}
+:::
+
+## Inode-Kapazität
+
+In Dateisystemen mit einem endlichen oder gemeldeten Inode-Pool können Millionen kleiner Dateien die Metadatenkapazität erschöpfen, bevor die Datenblöcke voll sind. Untersuche die Inode-Buchhaltung eingehängter Dateisysteme:
+
+```bash
+$ df -i
+```
+
+Sind keine freien Inodes vorhanden, kann das Erstellen einer weiteren Datei fehlschlagen, obwohl `df -h` freie Blöcke meldet. Zuweisungsstrategien unterscheiden sich: Manche Dateisysteme reservieren Inode-Strukturen bei ihrer Erstellung, andere verwalten Metadaten dynamisch und können Inode-Kapazität anders melden.
+
+:::single-choice{#inodes-df-i-purpose}
+Was meldet `df -i`, wenn das Dateisystem eine Inode-Buchhaltung bereitstellt?
+
+::option[Den Inhalt jeder Datei in Inode-Reihenfolge.]{#inodes-df-i-content explanation="Df meldet zusammengefasste Dateisystemstatistiken und liest keine Dateiinhalte."}
+::option[Verbrauchte und verfügbare Inode-Kapazität.]{#inodes-df-i-capacity .correct explanation="Die Inode-Ansicht hilft, die Erschöpfung von Metadatenobjekten unabhängig von Datenblöcken zu diagnostizieren."}
+::option[Die Firmware-Version des Datenträgers.]{#inodes-df-i-firmware explanation="Das Firmware-Inventar steht in keinem Zusammenhang mit der Inode-Nutzung."}
+:::
+
+## Dateisystemspezifische Datenzuordnung
+
+Gehe nicht davon aus, dass jeder Inode genau zwölf direkte sowie drei indirekte Zeiger besitzt. Das beschreibt einige klassische Dateisystemstrukturen sinnvoll, doch modernes ext4 kann Extents verwenden, während XFS, Btrfs und andere Dateisysteme andere Strukturen einsetzen. Inline-Daten und komprimierte oder Copy-on-Write-Extents verändern die Beziehung zusätzlich.
+
+Verwende dateisystemspezifische Diagnosewerkzeuge nur in schreibgeschützten oder dokumentierten Modi, wenn die interne Zuordnung wichtig ist. Für die gewöhnliche Administration bieten `stat`, `find -inum`, `df -i` und linkbewusste Werkzeuge sicherere Abstraktionen.
+
+:::single-choice{#inodes-layout-portability}
+Warum solltest du nicht für jeden Inode eine feste Zeigerstruktur voraussetzen?
+
+::option[Inodes verweisen in keiner Weise auf Dateidaten.]{#inodes-no-data-reference explanation="Das Dateisystem muss das Objekt mit seinem Inhalt verknüpfen, auch wenn der Mechanismus variiert."}
+::option[Dateisystemimplementierungen verwenden unterschiedliche Extent-, Baum- und Inline-Datenstrukturen.]{#inodes-format-specific-layout .correct explanation="Die Zuordnung vom Inode zum Inhalt auf dem Datenträger gehört zum Format des jeweiligen Dateisystems."}
+::option[Jede Inode-Struktur wird getrennt vom Dateieigentümer ausgewählt.]{#inodes-owner-layout explanation="Dateisystemimplementierung und -format bestimmen die Metadatenstruktur."}
+:::
+
+Nutze das Lab [Dateien und Verzeichnisse unter Linux verwalten](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835), um Inode-Nummern und Linkanzahlen an entbehrlichen Dateien zu vergleichen.
+
+## Zusammenfassung
+
+Du kannst Pfadnamen, Inodes, Links und Dateisystemkapazität nun miteinander in Beziehung setzen.
+
+1. Behandle Verzeichniseinträge als Zuordnungen von Namen zu Inode-Nummern.
+2. Lies Metadaten und Zeitstempel, ohne ctime mit der Erstellung zu verwechseln.
+3. Begrenze Inode-Nummern auf ein Dateisystem und einen Zeitpunkt.
+4. Berücksichtige sowohl Hardlinks als auch offene Dateideskriptoren.
+5. Verwende dateisystemspezifische Modelle statt einer universellen Zeigerstruktur.

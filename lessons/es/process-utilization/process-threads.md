@@ -1,53 +1,84 @@
 ---
-index: 3
+lesson_id: "process-threads"
+course_id: "process-utilization"
 lang: "es"
-title: "Hilos de Proceso"
-meta_title: "Hilos de Proceso - Utilización del Proceso"
-meta_description: "Una guía sobre los hilos de procesos en Linux. Aprenda la diferencia entre procesos monohilo y multihilo y cómo usar el comando ps para mostrar hilos."
-meta_keywords: "hilos Linux, hilos de proceso, ps mostrar hilos, ps m, multihilo, monohilo, proceso ligero, gestión de procesos Linux"
+order_index: 3
+title: "Hilos de proceso"
+description: "Aprende cómo los hilos de Linux comparten recursos del proceso y cómo examinarlos con ps."
+meta_title: "Hilos de proceso - Utilización de procesos"
+meta_description: "Aprende la diferencia entre procesos e hilos de Linux y cómo mostrar hilos con la orden ps."
+meta_keywords: "hilos Linux, hilos de proceso, ps mostrar hilos, procesos multihilo, gestión de procesos"
 ---
 
-## Lesson Content
+Un hilo es un flujo de ejecución planificado dentro de un proceso. Todo proceso en ejecución tiene al menos un hilo, y un proceso multihilo tiene varios flujos que pueden avanzar simultáneamente.
 
-### ¿Qué son los Hilos de Procesos?
+## Procesos e hilos
 
-Es posible que haya oído los términos de un solo hilo (single-threaded) y de múltiples hilos (multi-threaded). Los hilos son unidades de ejecución dentro de un proceso y a menudo se les llama "procesos ligeros" (lightweight processes). Mientras que los procesos operan con sus propios recursos de sistema aislados, los hilos dentro del mismo proceso pueden compartir estos recursos, como la memoria. Este modelo de recursos compartidos hace que la comunicación entre hilos sea mucho más rápida y eficiente que la comunicación entre procesos separados.
+Los hilos de un proceso comparten recursos como el espacio de direcciones virtual y los descriptores de archivo abiertos. Cada hilo conserva su propio estado de ejecución, incluidos los registros y una pila. Compartir recursos hace eficiente la comunicación, pero también significa que un cambio sin sincronizar de un hilo puede afectar a los demás.
 
-### Un Solo Hilo vs. Múltiples Hilos
+Los procesos independientes suelen tener espacios de direcciones distintos y se comunican mediante mecanismos explícitos entre procesos. Ninguno de los diseños es automáticamente más rápido o seguro; la carga de trabajo y la implementación determinan las ventajas e inconvenientes.
 
-Cada proceso tiene al menos un hilo. Un proceso con un solo hilo se denomina de un solo hilo, mientras que un proceso con más de uno se denomina de múltiples hilos.
+:::single-choice{#threads-shared-resource}
+¿Qué recurso comparten normalmente los hilos de un mismo proceso?
 
-Por ejemplo, cuando utiliza un editor de texto moderno, este podría ejecutarse como un solo proceso. Sin embargo, dentro de ese proceso, un hilo podría estar gestionando su entrada de teclado, mientras que otro hilo se ejecuta en segundo plano para realizar la corrección ortográfica o el autoguardado. Esta ejecución concurrente hace que la aplicación se sienta más receptiva. Utilizar múltiples hilos es a menudo más eficiente que iniciar múltiples procesos para tareas relacionadas.
+::option[El espacio de direcciones virtual del proceso.]{#threads-shared-address-space .correct explanation="Los hilos pueden acceder a la misma memoria del proceso, sujetos a la sincronización del programa."}
+::option[Una instalación distinta del kernel para cada hilo.]{#threads-separate-kernel explanation="Todos los hilos utilizan el kernel del sistema en ejecución."}
+::option[Una raíz del sistema de archivos distinta para cada hilo.]{#threads-different-root explanation="Los hilos suelen compartir el contexto del sistema de archivos del proceso en vez de recibir raíces independientes."}
+:::
 
-### Cómo Mostrar Hilos con ps
+## Identificadores de hilos
 
-Para inspeccionar los procesos en ejecución y sus hilos, puede utilizar el comando `ps`. Aunque `ps` tiene muchas opciones, una forma común de **mostrar hilos** es con la bandera `m`.
+Linux representa cada hilo como una tarea planificable con su propio identificador de hilo. El identificador del líder del grupo de hilos suele presentarse como identificador de proceso, mientras que todos los miembros comparten un identificador de grupo de hilos. Las herramientas utilizan etiquetas como `PID`, `TID`, `LWP` y `SPID`; consulta las definiciones de campos de la herramienta en vez de suponer que todas significan lo mismo.
 
-```plaintext
-pete@icebox:~$ ps m
-  PID TTY      STAT   TIME COMMAND
- 2207 pts/2    -      0:01 bash
-    - -        Ss     0:01 -
- 5252 pts/2    -      0:00 ps m
-    - -        R+     0:00 -
+:::single-choice{#threads-own-scheduling-state}
+¿Qué mantiene de forma independiente cada hilo?
+
+::option[La tabla completa de archivos abiertos del proceso.]{#threads-open-files-shared explanation="Los hilos de un proceso suelen compartir los descriptores de archivo abiertos."}
+::option[La base de datos de usuarios de todo el sistema.]{#threads-user-database explanation="Las bases de datos de cuentas no son estado privado de un hilo."}
+::option[Su estado de ejecución y su pila.]{#threads-stack-state .correct explanation="Un hilo necesita su propio contexto de ejecución aunque comparta recursos del proceso."}
+:::
+
+## Mostrar hilos con ps
+
+Utiliza campos de salida explícitos para evitar diseños predeterminados ambiguos:
+
+```bash
+$ ps -eLo pid,tid,psr,stat,comm
 ```
 
-### Interpretación de la Salida
+En `ps` de procps, `-L` muestra hilos y `-e` selecciona todos los procesos. `pid` identifica el grupo de hilos, `tid` identifica un hilo concreto, `psr` muestra la CPU en la que se ejecutó por última vez y `stat` comunica el estado. Para examinar un proceso:
 
-En la salida anterior, las líneas con un `PID` (ID de Proceso) representan el proceso principal. Las líneas directamente debajo, que tienen un guion (`-`) en lugar de un `PID`, representan los hilos que pertenecen a ese proceso. En este ejemplo, tanto los procesos `bash` como `ps m` son de un solo hilo, ya que cada uno solo tiene un hilo principal listado.
+```bash
+$ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
+```
 
-## Exercise
+Los listados de hilos son instantáneas. Un hilo puede terminar o cambiar de estado inmediatamente después.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de los procesos de Linux y su gestión:
+:::single-choice{#threads-ps-one-process}
+¿Qué orden muestra los hilos pertenecientes al PID 1234 con campos explícitos?
 
-1. **[Gestionar y Supervisar Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderá habilidades esenciales para gestionar y supervisar procesos en un sistema Linux. Explorará cómo interactuar con procesos en primer plano y en segundo plano, inspeccionarlos con `ps`, supervisar recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Esta salida no solicita filas para cada hilo."}
+::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="La opción `-L` solicita filas de hilos para el proceso seleccionado."}
+::option[`ps -e -o pid,user,stat,pcpu,comm`]{#threads-all-processes explanation="Esta orden selecciona procesos de todo el sistema sin identificadores de hilos."}
+:::
 
-Este laboratorio le ayudará a aplicar los conceptos de gestión de procesos en escenarios reales y a ganar confianza con la supervisión de la actividad del sistema.
+## Interpretar la actividad de los hilos
 
-## Quiz Question
+Una actividad de CPU alta en un hilo puede quedar oculta por el promedio de todo el proceso. Combina muestras de CPU a nivel de hilo con registros de la aplicación, trazas de pilas y herramientas de perfilado. No conectes depuradores ni envíes señales a tareas de producción sin comprender sus efectos sobre las pausas, los permisos y el servicio.
 
-Verdadero o falso, todos los procesos comienzan siendo de un solo hilo.
+:::single-choice{#threads-snapshot-limit}
+¿Por qué no debe tratarse un listado de hilos de `ps` como estado permanente?
 
-## Quiz Answer
+::option[Porque `ps` crea un hilo de sustitución por cada fila.]{#threads-ps-creates explanation="La orden observa tareas; no clona cada una de las que muestra."}
+::option[Porque los identificadores de hilos son idénticos en todos los equipos Linux.]{#threads-identical-ids explanation="Los identificadores se asignan dentro de un sistema en ejecución y no son universales."}
+::option[Porque los hilos pueden cambiar de estado o terminar después de la instantánea.]{#threads-change-after-snapshot .correct explanation="La inspección de procesos observa un instante de un sistema que cambia continuamente."}
+:::
 
-True
+## Resumen
+
+Ahora puedes distinguir los recursos del proceso del estado de ejecución de cada hilo.
+
+1. Reconoce que todo proceso tiene al menos un hilo.
+2. Identifica los recursos compartidos por los hilos de un proceso.
+3. Muestra identificadores explícitos de procesos e hilos con `ps -L`.
+4. Trata la salida de hilos como una instantánea y relaciónala con otras pruebas.

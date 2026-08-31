@@ -1,57 +1,103 @@
 ---
-index: 3
+lesson_id: "subnet-math"
+course_id: "subnetting"
 lang: "de"
-title: "Subnetz-Mathematik"
-meta_title: "Subnetz-Mathematik - Subnetting"
-meta_description: "Meistern Sie die Grundlagen der Subnetz-Mathematik. Diese Anleitung erklärt, wie man Subnetzmasken-Berechnungen durchführt, um die Anzahl der verfügbaren Hosts in Ihrem Netzwerk zu ermitteln. Lernen Sie wesentliche IP-Adressierungs- und Binärkonzepte für Linux-Netzwerke."
-meta_keywords: "Subnetz-Mathematik, Subnetzmasken-Berechnung, IP-Adresse, Subnetzmaske, Netzwerk-Hosts, Binär, Linux-Netzwerke, Host-Berechnung, Anfänger-Tutorial"
+order_index: 3
+title: "Subnetzberechnung"
+description: "Lerne, IPv4-Netzwerk, Broadcast, Bereich und Adressanzahl aus einem Präfix zu berechnen."
+meta_title: "Subnetzberechnung – Subnetting"
+meta_description: "Lerne die Grundlagen der Subnetzberechnung. Diese Anleitung erklärt, wie du mit Subnetzmasken die Anzahl verfügbarer Hosts berechnest und binäre IP-Adressierung verstehst."
+meta_keywords: "Subnetzberechnung, Subnetzmaskenberechnung, IP-Adresse, Subnetzmaske, Netzwerkhosts, Binär, Linux-Vernetzung, Hostberechnung, Einsteiger-Tutorial"
 ---
 
-## Lesson Content
+Bei der Subnetzberechnung wird eine Präfixlänge auf die 32 Bit einer IPv4-Adresse angewandt. Binäres Denken verhindert Fehler an Präfixgrenzen, die nicht mit Dezimaloktetten übereinstimmen.
 
-Um die Anzahl der Hosts zu bestimmen, die ein Subnetz unterstützen kann, müssen Sie einige Grundlagen der **Subnetz-Mathematik** verstehen. Die Subnetzmaske ist der Schlüssel zu dieser Berechnung.
+## Die Netzwerkadresse bestimmen
 
-### Die Rolle der Subnetzmaske
+Verwende die Adresse `192.168.1.165/24`:
 
-Nehmen wir eine IP-Adresse von **192.168.1.0** mit einer Subnetzmaske von **255.255.255.0**.
-Die Hauptfunktion der Subnetzmaske besteht darin, den Netzwerkanteil der Adresse vom Hostanteil zu unterscheiden.
-
-Um zu sehen, wie dies funktioniert, können wir diese Werte in ihre binäre Form umwandeln.
-
-```
-192.168.1.165  = 11000000.10101000.00000001.10100101
-255.255.255.0  = 11111111.11111111.11111111.00000000
+```text
+address  11000000.10101000.00000001.10100101
+mask     11111111.11111111.11111111.00000000
+network  11000000.10101000.00000001.00000000
 ```
 
-### Durchführung der Subnetzmasken-Mathematik
+Ein bitweises UND bewahrt Adressbits dort, wo die Maske eins ist, und löscht Hostbits. Das Ergebnis lautet `192.168.1.0/24`.
 
-In der obigen binären Darstellung entsprechen die `1`en in der Subnetzmaske dem Netzwerkanteil der IP-Adresse. Dieser Teil ist "maskiert" oder fest. Die `0`en in der Subnetzmaske entsprechen dem Hostanteil, der den Adressbereich darstellt, den Sie Geräten zuweisen können.
+:::single-choice{#subnet-math-network-operation}
+Welche Operation bestimmt eine IPv4-Netzwerkadresse aus Adresse und Maske?
 
-In unserem Beispiel ist der Hostanteil `00000000`. Dies ist ein 8-Bit-Feld, und mit 8 Bits können Sie 2^8 oder 256 eindeutige Kombinationen erstellen (von 0 bis 255).
+::option[Aneinanderreihung dezimaler Zeichenfolgen.]{#subnet-math-concatenation explanation="Das Verbinden ausgegebener Oktette wendet keine Präfixbits an."}
+::option[Subtraktion von Transportports.]{#subnet-math-port-subtraction explanation="Ports haben nichts mit dem Netzwerkpräfix zu tun."}
+::option[Bitweises UND.]{#subnet-math-bitwise-and .correct explanation="Netzwerkbits bleiben bestehen, während durch Nullen maskierte Hostpositionen gelöscht werden."}
+:::
 
-### Berechnung der verfügbaren Hosts
+## Adressen zählen
 
-Obwohl es 256 mögliche Kombinationen gibt, können nicht alle Geräten zugewiesen werden. In jedem Subnetz sind zwei Adressen reserviert:
+Für das Präfix `/p` enthält der Hostanteil `32 - p` Bits. Die Gesamtzahl der Adressen ist:
 
-1. **Netzwerkadresse:** Die erste Adresse, bei der alle Host-Bits `0` sind (z. B. 192.168.1.0).
-2. **Broadcast-Adresse:** Die letzte Adresse, bei der alle Host-Bits `1` sind (z. B. 192.168.1.255).
+```text
+2^(32 - p)
+```
 
-Daher beträgt die tatsächliche Anzahl nutzbarer Hosts 256 - 2 = 254. Das bedeutet, für das Netzwerk `192.168.1.0` mit der Maske `255.255.255.0` können Sie IP-Adressen von `192.168.1.1` bis `192.168.1.254` zuweisen. Diese Kernberechnung ist ein grundlegender Bestandteil der **Subnetz-Mathematik**.
+Ein `/24` enthält daher `2^8 = 256` Adressen. In einem herkömmlichen Broadcast-Subnetz ist der ausschließlich aus Nullen bestehende Hostwert die Netzwerkadresse und der ausschließlich aus Einsen bestehende Wert der gerichtete Broadcast. Damit bleiben 254 gewöhnliche Unicast-Hostadressen.
 
-## Exercise
+:::single-choice{#subnet-math-24-total}
+Wie viele Adressen enthält ein IPv4-`/24` insgesamt?
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von IP-Adressierung und Subnetting zu festigen:
+::option[24]{#subnet-math-total-24 explanation="Die Präfixlänge zählt Netzwerkbits und keine Adressen."}
+::option[256]{#subnet-math-total-256 .correct explanation="Acht Hostbits erzeugen 2^8 unterschiedliche Adresswerte."}
+::option[254]{#subnet-math-total-254 explanation="Dies ist nach Abzug zweier besonderer Adressen die herkömmliche Anzahl verwendbarer Hosts und nicht die Gesamtzahl."}
+:::
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, wesentliche Fähigkeiten für die Netzwerkkonfiguration und -planung.
-2. **[IP-Adresstypen und Erreichbarkeit unter Linux untersuchen](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Vertiefen Sie Ihr Verständnis verschiedener IP-Adresstypen und wie Sie die Netzwerkerreichbarkeit mithilfe von Linux-Befehlen überprüfen.
-3. **[Konnektivität auf der Netzwerkebene in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Wenden Sie Ihr Wissen an, indem Sie Netzwerkkonfigurationen simulieren und die Konnektivität zwischen verschiedenen IP-Subnetzen in einer praktischen Umgebung testen.
+## Eine Blockgrenze bestimmen
 
-Diese Labs helfen Ihnen, die Konzepte von IP-Adressierung, Subnetzmasken und Host-Berechnung in realen Szenarien anzuwenden und Selbstvertrauen in die Netzwerk-Grundlagen aufzubauen.
+Für `/26` lautet die Maske `255.255.255.192`. Die Blockgröße des letzten Oktetts beträgt `256 - 192 = 64`, sodass die Subnetzgrenzen bei 0, 64, 128 und 192 liegen. Die Adresse `192.168.1.165/26` liegt in:
 
-## Quiz Question
+```text
+network:   192.168.1.128
+broadcast: 192.168.1.191
+range:     192.168.1.129 through 192.168.1.190
+```
 
-Was ist das binäre Äquivalent von 255?
+:::single-choice{#subnet-math-165-network}
+Wie lautet die Netzwerkadresse für `192.168.1.165/26`?
 
-## Quiz Answer
+::option[`192.168.1.0`]{#subnet-math-network-zero explanation="Dies ist der erste `/26`-Block, der 0 bis 63 umfasst."}
+::option[`192.168.1.165`]{#subnet-math-network-self explanation="Die angegebene Adresse besitzt innerhalb des `/26` von null verschiedene Hostbits."}
+::option[`192.168.1.128`]{#subnet-math-network-128 .correct explanation="Der Wert 165 liegt im Block von 128 bis 191."}
+:::
 
-11111111
+## Präfixausnahmen berücksichtigen
+
+Die Abkürzung `2^host_bits - 2` gilt nicht allgemein. IPv4-`/31`-Präfixe sind für Punkt-zu-Punkt-Verbindungen definiert, bei denen beide Adressen Endpunkte sein können und kein gerichteter Broadcast benötigt wird. Ein `/32` identifiziert eine einzelne Hostroute oder Schnittstellenadresse. Netzwerktechnik und Protokollverwendung bestimmen, welche Adressen zuweisbar sind.
+
+:::single-choice{#subnet-math-31-exception}
+Warum solltest du nicht von jedem IPv4-Präfix zwei Adressen abziehen?
+
+::option[IPv4-Adressen enthalten bei keinem Präfix Hostbits.]{#subnet-math-no-host-bits explanation="Die meisten Präfixe lassen mindestens ein Hostbit."}
+::option[Punkt-zu-Punkt-Verbindungen mit `/31` können beide Adressen als Endpunkte verwenden.]{#subnet-math-31-both .correct explanation="Das Punkt-zu-Punkt-Modell benötigt keine herkömmliche Reservierung für Netzwerk und gerichteten Broadcast."}
+::option[Alle IPv4-Netzwerke verwenden Multicast statt Unicast.]{#subnet-math-all-multicast explanation="Gewöhnliche Unicast-Adressierung bleibt grundlegend."}
+:::
+
+## Berechnungen überprüfen
+
+Verwende ein unabhängiges Werkzeug oder eine Bibliothek, um die manuelle Arbeit zu prüfen, und vergleiche anschließend mit der tatsächlichen Schnittstellen- und Routenkonfiguration. Ein mathematisch gültiges Präfix kann dennoch mit einem anderen Subnetz überlappen oder einen Vergabeplan verletzen.
+
+:::single-choice{#subnet-math-valid-not-safe}
+Was beweist eine korrekte Subnetzberechnung nicht?
+
+::option[Dass der Adressplan keine Überlappung oder keinen Richtlinienkonflikt besitzt.]{#subnet-math-no-conflict .correct explanation="Betriebliche Vergabe- und Routingbelege sind weiterhin erforderlich."}
+::option[Dass IPv4-Adressen 32 Bit enthalten.]{#subnet-math-proves-size explanation="Die Berechnung beruht auf dieser festen Größe."}
+::option[Dass Zweierpotenzen Blockanzahlen bestimmen.]{#subnet-math-powers explanation="Binäre Adresskombinationen verwenden grundsätzlich Zweierpotenzen."}
+:::
+
+## Zusammenfassung
+
+Du kannst IPv4-Subnetzgrenzen nun berechnen und häufige Ausnahmen erkennen.
+
+1. Bestimme eine Netzwerkadresse mit bitweisem UND.
+2. Zähle Gesamtadressen anhand der Anzahl der Hostbits.
+3. Verwende Blockgrößen, um Netzwerk- und Broadcastgrenzen zu bestimmen.
+4. Behandle `/31` und `/32` entsprechend ihrem beabsichtigten Einsatz.
+5. Vergleiche mathematische Ergebnisse mit dem tatsächlichen Adressplan.

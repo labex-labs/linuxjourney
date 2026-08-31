@@ -1,75 +1,96 @@
 ---
-index: 1
+lesson_id: "ipv4"
+course_id: "subnetting"
 lang: "en"
+order_index: 1
 title: "IPv4"
+description: "Learn how IPv4 addresses, prefixes, scopes, and Linux interface output fit together."
 meta_title: "IPv4 - Subnetting"
 meta_description: "Start your journey with our complete linux tutorial on IPv4 addresses. This guide for beginner linux users is the best way to learn linux networking, covering IP structure and essential command-line tools like ip addr."
 meta_keywords: "IPv4, IP address, beginner linux, best way to learn linux, complete linux tutorial, best linux course online free, free linux certification courses, linux networking, ifconfig, ip addr"
 ---
 
-## Lesson Content
+IPv4 provides 32-bit source and destination addresses for routed packets. An address is meaningful together with its prefix, interface, scope, route policy, and lifetime—not as a permanent identifier for an entire device.
 
-Every device on a network has a unique identifier called an IP (Internet Protocol) address. This lesson, a key part of our `complete linux tutorial`, focuses on IPv4 addresses—the most common type you'll encounter. For any `beginner linux` user, understanding IPv4 is a critical first step into the world of networking.
+## Dotted-Decimal Notation
 
-### Why IPv4 is Essential
+IPv4 is displayed as four eight-bit octets separated by dots:
 
-Learning about IPv4 is fundamental for anyone serious about system administration or network management. It forms the backbone of most network communication. This guide offers the `best way to learn linux` networking from the ground up. While this isn't one of those `free linux certification courses`, mastering these basics is a key step toward professional certification.
-
-### IPv4 Address Structure
-
-An IPv4 address is a 32-bit number, but it's usually shown in a human-readable format like this:
-
-```
-204.23.124.23
+```text
+192.0.2.165
 ```
 
-This address has two main parts: the **network portion**, which identifies the network, and the **host portion**, which identifies the specific device on that network. The address is divided into four sections separated by periods, with each section called an **octet**. An octet is a group of 8 bits, meaning an IPv4 address is 4 bytes (32 bits) long. Understanding this structure is crucial for network configuration and troubleshooting.
+Each octet ranges from 0 through 255, so the complete address contains four bytes. The prefix length identifies how many leading bits belong to the network prefix, as in `192.0.2.165/24`.
 
-### Finding Your IP Address
+:::single-choice{#ipv4-address-size}
+How large is an IPv4 address?
 
-One of the first tasks for any Linux user is to find their system's IP address. You can do this using simple command-line tools. The traditional command for this is `ifconfig`. While it is still found on many systems, it is considered a legacy tool.
+::option[32 bits in four octets.]{#ipv4-thirty-two-bits .correct explanation="Four groups of eight bits produce the dotted-decimal representation."}
+::option[24 bits in every network.]{#ipv4-always-twenty-four explanation="A `/24` is one prefix length, not the size of every IPv4 address."}
+::option[128 bytes separated by colons.]{#ipv4-128-bytes explanation="IPv6 is 128 bits and uses colon-separated hexadecimal notation."}
+:::
+
+## Address Scope and Purpose
+
+Not every IPv4 address is globally routable. Examples include loopback `127.0.0.0/8`, link-local `169.254.0.0/16`, private ranges such as `10.0.0.0/8`, and documentation ranges such as `192.0.2.0/24`. Multicast and limited broadcast addresses have other semantics.
+
+Private addresses can be reused in separate networks. NAT may translate them for external communication, but NAT is not required for communication within the private routed domain.
+
+:::single-choice{#ipv4-private-reuse}
+Why can `10.0.0.1` appear in many organizations?
+
+::option[Every instance identifies the same physical router.]{#ipv4-same-router explanation="The address has meaning within each network and is not globally unique."}
+::option[IPv4 routers ignore the first octet.]{#ipv4-ignore-octet explanation="All address bits participate in route matching."}
+::option[It is in an address range intended for private-network reuse.]{#ipv4-private-range .correct explanation="Separate private networks can use the same addresses without advertising them globally."}
+:::
+
+## Inspecting Linux IPv4 Addresses
+
+Display IPv4 assignments with:
 
 ```bash
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
+$ ip -4 address show
 ```
 
-In the output above, the IPv4 address is `192.168.1.129`.
+A line such as this reports more than the address:
 
-### Using the ip addr Command
+```text
+inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
+```
 
-The modern and recommended method uses the `ip` command. The `ip addr` command has replaced `ifconfig` and is the standard on most current Linux distributions. It provides more detailed information and is the tool you should focus on learning.
+It shows prefix, broadcast, scope, dynamic origin marker, and interface. Additional lines can show valid and preferred lifetimes. An interface can hold several IPv4 addresses.
+
+:::single-choice{#ipv4-ip-output-prefix}
+What does `/24` mean in `192.0.2.165/24`?
+
+::option[The address expires after 24 seconds.]{#ipv4-prefix-seconds explanation="Lifetime is reported separately."}
+::option[The first 24 address bits form the network prefix.]{#ipv4-prefix-bits .correct explanation="The remaining eight bits identify positions within that prefix."}
+::option[The interface is TCP port 24.]{#ipv4-prefix-port explanation="CIDR prefix notation is independent of transport ports."}
+:::
+
+## Determining the Selected Source
+
+The presence of an address does not prove Linux will use it for a destination. Routes, policy rules, metrics, and application binding influence source selection. Query the current routing decision:
 
 ```bash
-pete@icebox:~$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
-       valid_lft 85646sec preferred_lft 85646sec
+$ ip route get 198.51.100.20
 ```
 
-Here, you can find the same IPv4 address, `192.168.1.129`, listed next to `inet` for the `eth0` interface.
+Read the selected next hop, interface, and source, then test the real application path. Do not alter addresses on a remote host without console access and a rollback plan.
 
-## Exercise
+:::single-choice{#ipv4-route-get-purpose}
+What can `ip route get DESTINATION` show?
 
-Practice your skills with these hands-on labs to reinforce your understanding of IP addressing and network identification in Linux:
+::option[Every router's configuration along the complete Internet path.]{#ipv4-all-router-config explanation="A local lookup does not query downstream device configurations."}
+::option[The local route decision, including interface and preferred source.]{#ipv4-route-decision .correct explanation="It evaluates current host routing policy for the supplied destination."}
+::option[The destination user's password.]{#ipv4-password explanation="Routing commands do not expose application credentials."}
+:::
 
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including IPv4 and IPv6 addresses, on a Linux system.
-2. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types and test network reachability using commands like `ping` and `ip a`.
-3. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion, essential for a deeper understanding of how IP addresses and networks are structured at the bit level.
+## Summary
 
-These labs will help you apply the concepts of IP addressing in real scenarios and build confidence with network configuration and troubleshooting in Linux.
+You can now read an IPv4 address as part of interface and routing state.
 
-## Quiz Question
-
-How many bytes are in an IPv4 address?
-
-## Quiz Answer
-
-4
+1. Recognize IPv4 as four octets totaling 32 bits.
+2. Interpret an address together with its prefix.
+3. Distinguish private, loopback, link-local, and other scopes.
+4. Inspect assignments and the source selected for a destination.

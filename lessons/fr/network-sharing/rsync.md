@@ -1,72 +1,106 @@
 ---
-index: 2
+lesson_id: "rsync"
+course_id: "network-sharing"
 lang: "fr"
+order_index: 2
 title: "rsync"
-meta_title: "rsync - Partage Réseau"
-meta_description: "Découvrez comment utiliser la puissante commande rsync sous Linux pour une synchronisation de fichiers efficace, le transfert de données à distance et des sauvegardes fiables. Ce guide couvre les commandes et options clés de rsync."
-meta_keywords: "rsync, rsync linux, synchronisation fichiers, sauvegarde données, synchronisation distante, commande rsync, transfert fichiers linux, tutoriel rsync"
+description: "Découvrez comment prévisualiser, exécuter et vérifier une synchronisation sûre de répertoires, localement ou par SSH, avec rsync."
+meta_title: "rsync - Partage réseau"
+meta_description: "Découvrez la commande rsync sous Linux pour synchroniser efficacement des fichiers, transférer des données à distance et contribuer à une stratégie de sauvegarde fiable."
+meta_keywords: "rsync, rsync Linux, synchronisation de fichiers, sauvegarde de données, synchronisation distante, commande rsync, transfert de fichiers Linux, tutoriel rsync"
 ---
 
-## Lesson Content
+`rsync` réconcilie les fichiers et les arborescences de répertoires tout en évitant le transfert inutile de données inchangées. Son efficacité ne rend pas chaque appel sûr : la syntaxe de la source, les barres obliques finales, les métadonnées, les exclusions et la politique de suppression déterminent le résultat.
 
-### Qu'est-ce que rsync ?
+## Lire la source et la destination
 
-Un autre outil essentiel pour copier des données entre différents hôtes est `rsync`, qui signifie synchronisation à distance (remote synchronization). Bien que similaire à `scp`, `rsync` présente une différence clé qui le rend incroyablement efficace. Il utilise un algorithme de transfert delta qui vérifie intelligemment la destination pour les données existantes et ne transfère que les parties des fichiers qui ont changé.
-
-Par exemple, si un transfert de fichier volumineux est interrompu, `rsync` peut reprendre la copie, ne transférant que les parties restantes du fichier au lieu de recommencer à zéro. Cela en fait un choix robuste pour les connexions réseau instables.
-
-### Caractéristiques clés de rsync
-
-L'efficacité de `rsync` provient de ses optimisations intelligentes. Il vérifie l'intégrité des fichiers à l'aide de sommes de contrôle pour s'assurer que les données copiées ne sont pas corrompues pendant le transfert. Ces fonctionnalités offrent une flexibilité considérable, faisant de `rsync` un outil idéal pour :
-
-- La synchronisation de répertoires (à distance et localement)
-- La création de sauvegardes de données incrémentielles
-- La gestion efficace des transferts de données volumineux
-
-### Options courantes de rsync
-
-Vous pouvez modifier le comportement de la commande `rsync` avec plusieurs options. Parmi les plus couramment utilisées, on trouve :
-
-- `-v` : Sortie verbeuse, affichant les fichiers en cours de transfert.
-- `-r` : Récursif, nécessaire pour copier des répertoires entiers.
-- `-h` : Sortie lisible par l'homme, affichant les nombres dans un format plus compréhensible (par exemple, Ko, Mo).
-- `-z` : Compresse les données des fichiers pendant le transfert, ce qui est excellent pour les connexions lentes.
-- `-a` : Mode archive, un raccourci pratique qui combine plusieurs options (`-rlptgoD`) pour préserver les permissions, la propriété et les horodatages.
-
-### Exemples d'utilisation de rsync
-
-#### Synchroniser des fichiers sur le même hôte
-
-Vous pouvez utiliser `rsync` pour synchroniser deux répertoires sur votre machine locale. Ceci est utile pour créer des sauvegardes locales.
+Synchronisez localement le contenu de `source/` dans `destination/` :
 
 ```bash
-rsync -avh /mon/repertoire/local/un/ /mon/repertoire/local/deux/
+$ rsync -a -- source/ destination/
 ```
 
-#### Synchroniser des fichiers d'un hôte distant vers un hôte local
+La barre oblique finale de `source/` signifie « copier le contenu de ce répertoire ». Sans elle, `rsync -a source destination/` crée ou met à jour `destination/source`. Prévisualisez toujours les chemins produits lorsque vous modifiez la présence de cette barre.
 
-Pour récupérer des fichiers d'un serveur distant vers votre machine locale, spécifiez d'abord la source distante.
+:::single-choice{#rsync-source-trailing-slash}
+Que signifie la barre oblique finale dans `rsync -a source/ destination/` ?
+
+::option[Supprimer la source après un transfert réussi.]{#rsync-delete-source explanation="La suppression de la source exige une option et une politique explicites distinctes."}
+::option[Copier le contenu de `source` dans la destination.]{#rsync-copy-contents .correct explanation="Le retrait de la barre après la source modifie l’organisation de premier niveau à la destination."}
+::option[Interpréter la destination comme un partage Windows distant.]{#rsync-windows-share explanation="La barre contrôle le contenu du répertoire, et non le type de transport."}
+:::
+
+## Comprendre le mode archive
+
+Le mode archive, `-a`, équivaut à un ensemble d’options récursives et de conservation des métadonnées souvent résumé par `-rlptgoD`. Il conserve les liens symboliques, les permissions, les dates de modification, les groupes, les propriétaires ainsi que les fichiers de périphérique ou spéciaux lorsque les permissions et la plateforme le permettent.
+
+Le mode archive ne conserve pas les liens physiques, les ACL ni les attributs étendus ; ceux-ci nécessitent généralement `-H`, `-A` et `-X`. Il ne crée pas non plus de versions historiques à lui seul.
+
+:::single-choice{#rsync-archive-limit}
+Quelle métadonnée n’est pas incluse dans `-a` à elle seule ?
+
+::option[Les relations entre liens physiques.]{#rsync-hard-links .correct explanation="La conservation des liens physiques nécessite l’option distincte `-H`."}
+::option[Le parcours récursif des répertoires.]{#rsync-archive-recursion explanation="Le mode archive inclut le parcours récursif."}
+::option[Les dates de modification.]{#rsync-archive-times explanation="Le mode archive inclut la conservation des dates."}
+:::
+
+## Prévisualiser un transfert
+
+Effectuez une simulation avec le détail des modifications avant une synchronisation lourde de conséquences :
 
 ```bash
-rsync -avh utilisateur@hote_distant.com:/repertoire/distant/ /repertoire/local/
+$ rsync -a --dry-run --itemize-changes -- source/ destination/
 ```
 
-#### Synchroniser des fichiers d'un hôte local vers un hôte distant
+Une simulation prédit les actions à partir de l’analyse actuelle ; elle ne garantit pas que les fichiers resteront inchangés avant la vraie commande. Enregistrez et examinez la commande exacte, puis ne la relancez sans `--dry-run` qu’après avoir confirmé les deux extrémités.
 
-Pour envoyer des fichiers de votre machine locale vers un serveur distant, spécifiez d'abord la source locale.
+:::single-choice{#rsync-dry-run-purpose}
+Que fournit `--dry-run --itemize-changes` ?
+
+::option[Un instantané permanent conservé sur un autre périphérique.]{#rsync-dry-backup explanation="Une simulation ne crée aucune copie des données ni conservation indépendante."}
+::option[La garantie que les fichiers source ne pourront pas changer ensuite.]{#rsync-dry-lock explanation="La prévisualisation ne verrouille pas l’arborescence source."}
+::option[Un aperçu des modifications actuellement prévues par rsync.]{#rsync-dry-preview .correct explanation="Le détail de la simulation révèle les décisions relatives aux chemins et aux métadonnées avant toute mutation."}
+:::
+
+## Synchroniser par SSH
+
+Envoyez des données vers un hôte distant ou récupérez-les depuis celui-ci avec l’opérande distant habituel :
 
 ```bash
-rsync -avh /repertoire/local/ utilisateur@hote_distant.com:/repertoire/distant/
+$ rsync -a -- source/ alice@example.net:/srv/data/
+$ rsync -a -- alice@example.net:/srv/data/ destination/
 ```
 
-## Exercise
+Cette forme de rsync moderne emploie couramment SSH, mais vérifiez le shell distant configuré, la clé d’hôte, les privilèges du compte et la disponibilité de rsync sur l’hôte distant. La compression avec `-z` peut aider pour des données compressibles sur une liaison limitée, mais gaspiller du temps processeur pour des données déjà compressées.
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux associés.
+:::single-choice{#rsync-pull-direction}
+Quel ordre des opérandes récupère des données distantes dans un répertoire local ?
 
-## Quiz Question
+::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="Cet ordre envoie le contenu local vers la destination distante."}
+::option[`rsync --delete host local`]{#rsync-missing-path explanation="Cette commande n’exprime pas la syntaxe du chemin distant présentée et ajoute une option destructive sans rapport."}
+::option[`rsync -a host:/data/ local/`]{#rsync-remote-first .correct explanation="L’arborescence distante est la source et l’arborescence locale la destination."}
+:::
 
-What command, known for its delta-transfer algorithm, is particularly useful for creating efficient data backups? Please answer in English, paying attention to case sensitivity.
+## Considérer la suppression comme destructive
 
-## Quiz Answer
+`--delete` retire de la destination les entrées absentes de la source au sein du périmètre synchronisé. Une inversion des extrémités, une mauvaise barre oblique ou une exclusion erronée peut donc effacer des données valides. Prévisualisez l’opération sur une destination de test, assurez-vous de disposer de sauvegardes récupérables, vérifiez l’état des montages et envisagez une limite du nombre de suppressions avant de l’autoriser.
 
-rsync
+Après l’exécution réelle, examinez l’état de sortie et les journaux, comparez le nombre de fichiers et les métadonnées attendus, puis testez un contenu représentatif ou une restauration. La synchronisation rsync reproduit à elle seule les suppressions ou les altérations indésirables et ne constitue pas une stratégie de sauvegarde complète.
+
+:::single-choice{#rsync-delete-effect}
+Que peut faire `--delete` pendant la synchronisation ?
+
+::option[Chiffrer chaque fichier transféré avec la clé d’hôte SSH.]{#rsync-delete-encrypt explanation="La politique de suppression est sans rapport avec le chiffrement des fichiers."}
+::option[Empêcher toute modification du système de fichiers de destination.]{#rsync-delete-readonly explanation="Elle autorise explicitement des modifications supplémentaires à la destination."}
+::option[Supprimer les entrées de destination absentes du périmètre source sélectionné.]{#rsync-delete-destination .correct explanation="Cette option aligne le contenu de la destination sur celui de la source et exige une prévisualisation vérifiée ainsi qu’un plan de récupération."}
+:::
+
+## Résumé
+
+Vous savez maintenant prévisualiser et vérifier une opération `rsync` sans en masquer les cas limites destructifs.
+
+1. Utiliser les barres obliques finales pour exprimer l’organisation voulue des répertoires.
+2. Ajouter les options de métadonnées non couvertes par le mode archive si nécessaire.
+3. Examiner le détail de la simulation avant la synchronisation réelle.
+4. Vérifier l’identité SSH et le sens des extrémités.
+5. Traiter la suppression et la conservation des sauvegardes comme des politiques explicites.

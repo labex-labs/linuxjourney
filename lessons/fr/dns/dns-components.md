@@ -1,52 +1,91 @@
 ---
-index: 2
+lesson_id: "dns-components"
+course_id: "dns"
 lang: "fr"
+order_index: 2
 title: "Composants DNS"
+description: "Découvrez comment les résolveurs récursifs, serveurs faisant autorité, zones et enregistrements se partagent les responsabilités DNS."
 meta_title: "Composants DNS - DNS"
 meta_description: "Découvrez les composants DNS : serveurs de noms, fichiers de zone et enregistrements de ressources. Comprenez comment fonctionne le DNS pour les débutants. Commencez votre parcours de mise en réseau Linux !"
 meta_keywords: "composants DNS, serveur de noms, fichier de zone, enregistrements de ressources, tutoriel DNS, mise en réseau Linux, guide du débutant"
 ---
 
-## Lesson Content
+Le DNS sépare la récursion tournée vers le client de la publication faisant autorité. Comprendre cette frontière évite de prendre une réponse mise en cache pour le propriétaire d'une zone.
 
-La base de données DNS d'Internet repose sur des sites et des organisations qui fournissent une partie de cette base de données. Pour ce faire, ils ont besoin de :
+## Résolveurs stub et récursifs
 
-### Serveur de noms
+Un résolveur stub dans une application ou un système d'exploitation envoie ses requêtes au résolveur récursif configuré. Celui-ci renvoie une réponse finale, une erreur ou le résultat d'un renvoi après avoir utilisé son cache et, si nécessaire, des requêtes itératives. Sa réponse ne porte l'indicateur de réponse faisant autorité que si le serveur répondant possède cette autorité ; la récursion seule ne la confère pas.
 
-Nous configurons le DNS via des "serveurs de noms". Les serveurs de noms chargent nos paramètres et configurations DNS et répondent à toutes les questions des clients ou d'autres serveurs qui veulent savoir des choses comme "Qui est google.com ?". Si le serveur de noms ne connaît pas la réponse à cette requête, il redirigera la demande vers d'autres serveurs de noms. Les serveurs de noms peuvent être "autoritaires", ce qui signifie qu'ils détiennent les enregistrements DNS réels que vous recherchez, ou "récursifs", ce qui signifie qu'ils interrogeraient d'autres serveurs, et ces serveurs interrogeraient d'autres serveurs jusqu'à ce qu'ils trouvent un serveur autoritaire contenant les enregistrements DNS. Les serveurs récursifs peuvent également avoir les informations que nous voulons en cache au lieu d'atteindre un serveur autoritaire.
+:::single-choice{#dns-components-recursive-role}
+Que fait un résolveur récursif pour un client stub ?
 
-### Fichier de zone
+::option[Il obtient un résultat DNS final grâce au cache et à d'autres serveurs de noms.]{#dns-components-recursive-result .correct explanation="Le client délègue au service récursif les différentes étapes de la recherche."}
+::option[Il remplace chaque routeur réseau sur le chemin des paquets.]{#dns-components-replaces-router explanation="La résolution de noms et l'acheminement IP sont distincts."}
+::option[Il devient l'autorité de chaque enregistrement qu'il met en cache.]{#dns-components-cache-authority explanation="Les données en cache conservent l'autorité de leur source ; le résolveur n'est pas propriétaire de la zone."}
+:::
 
-À l'intérieur d'un serveur de noms se trouve ce qu'on appelle des fichiers de zone. Les fichiers de zone sont la manière dont le serveur de noms stocke les informations sur le domaine ou comment accéder au domaine s'il ne le connaît pas.
+## Serveurs de noms faisant autorité
 
-### Enregistrements de ressources
+Un serveur faisant autorité répond depuis les données des zones dont il a la charge. Une zone doit posséder plusieurs serveurs d'autorité, avec des données synchronisées et des risques de panne indépendants. Un serveur exclusivement d'autorité n'a pas besoin d'effectuer la récursion pour des clients arbitraires.
 
-Un fichier de zone est composé d'entrées d'enregistrements de ressources. Chaque ligne est un enregistrement et contient des informations sur les hôtes, les serveurs de noms, d'autres ressources, etc. Les champs sont les suivants :
+:::single-choice{#dns-components-authoritative-role}
+Qu'est-ce qui rend un serveur faisant autorité pour une zone ?
 
-- Nom de l'enregistrement
-- TTL - Le temps après lequel nous rejetons l'enregistrement et en obtenons un nouveau. En DNS, le TTL est indiqué par le temps, de sorte que les enregistrements peuvent avoir un TTL d'une heure. La raison pour laquelle nous faisons cela est que l'Internet est en constante évolution ; une minute un hôte peut être mappé à une adresse IP X, puis la minute suivante il peut être à une adresse IP Y.
-- Classe - Espace de noms des informations d'enregistrement. Le plus souvent, IN est utilisé pour Internet.
-- Type - Type d'informations stockées dans les données de l'enregistrement. Nous n'entrerons pas dans les types d'enregistrements, mais vous en avez probablement vu des courants comme A pour l'adresse, MX pour l'échangeur de courrier, etc.
-- Données - Ce champ peut contenir une adresse IP s'il s'agit d'un enregistrement A ou autre chose selon le type d'enregistrement.
+::option[Il a déjà interrogé cette zone par un résolveur public.]{#dns-components-once-queried explanation="Une requête ou une mise en cache ne confère aucune autorité."}
+::option[Il sert les données de la zone selon la délégation et la configuration pertinentes.]{#dns-components-serves-zone .correct explanation="L'autorité provient de la délégation DNS et de la zone chargée sur le serveur, pas d'une copie mise en cache."}
+::option[Il répond le plus vite à un ping.]{#dns-components-fastest-ping explanation="Le temps de réponse ICMP ne définit pas l'autorité DNS."}
+:::
 
-```plaintext
-patty    IN  A      192.168.0.4
+## Zones et stockage des zones
+
+Une zone est une portion de l'espace de noms servie administrativement. Elle commence à son sommet et peut déléguer des zones enfants. Ses données peuvent résider dans un fichier texte, être générées depuis une base de données, chargées par une API ou synthétisées par un logiciel ; un « fichier de zone » physique n'est pas obligatoire.
+
+Le sommet possède normalement un enregistrement SOA et un ensemble NS. Les données de délégation du parent identifient les serveurs de l'enfant, parfois avec des enregistrements d'adresse glue nécessaires pour joindre les noms de serveurs qui appartiennent à la zone déléguée.
+
+:::single-choice{#dns-components-zone-meaning}
+Qu'est-ce qu'une zone DNS ?
+
+::option[Une portion de l'espace de noms servie administrativement.]{#dns-components-admin-portion .correct explanation="Elle peut contenir des enregistrements et délégations quel que soit le système de stockage."}
+::option[Un unique fichier texte obligatoire sur chaque client.]{#dns-components-client-file explanation="Les implémentations d'autorité peuvent employer plusieurs formes de stockage, et les clients ne détiennent pas toutes les zones."}
+::option[Un domaine de diffusion Ethernet identifié par un VLAN.]{#dns-components-vlan explanation="Les zones DNS et les segments de couche liaison sont des concepts indépendants."}
+:::
+
+## Champs des enregistrements de ressources
+
+Un enregistrement possède un nom de propriétaire, un TTL, une classe, un type et des RDATA propres au type. Par exemple :
+
+```text
+www.example.com.  300  IN  A  192.0.2.25
 ```
 
-## Exercise
+Le propriétaire est `www.example.com.`, le TTL 300 secondes, la classe Internet, le type une adresse IPv4 et les RDATA l'adresse. Les règles d'omission de champs et de noms relatifs des fichiers de zone exigent une gestion attentive de l'origine.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du DNS et de la résolution de noms d'hôtes :
+:::single-choice{#dns-components-mx-type}
+Quel type d'enregistrement publie les préférences et noms d'hôtes des échangeurs de courrier ?
 
-1. **[Configurer un serveur DNS autoritaire local sous Linux](https://labex.io/fr/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Entraînez-vous à installer et configurer un serveur DNS local (`bind9`), à définir des zones et à valider votre configuration.
-2. **[Interroger les enregistrements DNS sous Linux avec dig et nslookup](https://labex.io/fr/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Apprenez à utiliser les outils de ligne de commande essentiels (`dig`, `nslookup`) pour interroger différents types d'enregistrements DNS et dépanner les problèmes DNS.
-3. **[Gérer la résolution de noms d'hôtes locale sous Linux](https://labex.io/fr/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Comprenez comment gérer la résolution de noms d'hôtes locale en modifiant le fichier `/etc/hosts`, une compétence clé pour le développement et les tests.
+::option[`A`]{#dns-components-a explanation="Un enregistrement A stocke une adresse IPv4."}
+::option[`NS`]{#dns-components-ns explanation="Les enregistrements NS identifient les serveurs de noms faisant autorité."}
+::option[`MX`]{#dns-components-mx .correct explanation="Les RDATA MX comprennent une préférence et le nom d'un échangeur de courrier."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts de DNS et de résolution de noms d'hôtes dans des scénarios réels et à renforcer votre confiance avec les services réseau.
+## TTL et cache négatif
 
-## Quiz Question
+Les enregistrements positifs emploient des TTL pour limiter leur réutilisation en cache. Les réponses négatives, comme la preuve d'un nom inexistant, peuvent aussi être mises en cache selon des règles issues du SOA. Réduire un TTL peu avant un changement planifié ne touche que les enregistrements récupérés après que les caches ont vu la nouvelle valeur ; ceux déjà mis en cache avec l'ancien TTL subsistent jusqu'à leur expiration.
 
-Quel type d'enregistrement de ressource est utilisé pour les échangeurs de courrier ?
+:::single-choice{#dns-components-lower-ttl-timing}
+Pourquoi réduire un TTL DNS bien avant un changement d'adresse prévu ?
 
-## Quiz Answer
+::option[Le TTL modifie le MTU Ethernet du serveur.]{#dns-components-ttl-mtu explanation="La durée du cache et la taille des paquets sur le lien n'ont aucun rapport."}
+::option[Un TTL faible garantit que la nouvelle application fonctionne.]{#dns-components-ttl-health explanation="Il agit sur le cache, pas sur la correction du service."}
+::option[Les caches existants doivent avoir le temps d'expirer les données apprises avec l'ancien TTL plus long.]{#dns-components-old-cache-expiry .correct explanation="Modifier les données d'autorité ne peut pas raccourcir rétroactivement la durée restante d'un enregistrement déjà en cache."}
+:::
 
-MX
+## Résumé
+
+Vous savez maintenant séparer la récursion DNS, l'autorité, la gestion de l'espace de noms et les données en cache.
+
+1. Identifier les rôles des résolveurs stub et récursifs.
+2. Définir l'autorité par le service délégué d'une zone.
+3. Voir une zone comme une responsabilité sur l'espace de noms et non comme un fichier obligatoire.
+4. Lire les champs propriétaire, TTL, classe, type et RDATA.
+5. Planifier les durées de cache avant les changements DNS.

@@ -1,32 +1,74 @@
 ---
-index: 6
+lesson_id: "link-state-protocols"
+course_id: "routing"
 lang: "fr"
-title: "Protocoles à état de liens"
-meta_title: "Protocoles à état de liens - Routage"
-meta_description: "Découvrez les protocoles à état de liens comme OSPF pour les grands réseaux. Comprenez leur convergence rapide et comment ils mettent à jour les tables de routage. Commencez votre parcours de mise en réseau Linux !"
-meta_keywords: "protocoles à état de liens, OSPF, mise en réseau Linux, protocoles de routage, topologie de réseau, débutant"
+order_index: 6
+title: "Protocoles à état des liens"
+description: "Découvrez comment les protocoles à état des liens forment des adjacences, diffusent les informations de topologie et calculent les chemins."
+meta_title: "Protocoles à état des liens - Routage"
+meta_description: "Découvrez les protocoles à état des liens tels qu’OSPF, leur convergence, leur diffusion de topologie et leur mise à jour des routes."
+meta_keywords: "protocoles état liens, OSPF, réseau Linux, protocoles routage, topologie réseau, débutant"
 ---
 
-## Lesson Content
+Les protocoles à état des liens décrivent les liens et préfixes locaux, distribuent ces descriptions dans un périmètre de routage et permettent à chaque routeur de calculer les chemins depuis une base de topologie. OSPF et IS-IS en sont des exemples courants.
 
-Les protocoles à état de liens sont excellents pour les réseaux à grande échelle. Ils sont plus complexes que les protocoles à vecteur de distance ; cependant, un avantage majeur est leur capacité à converger rapidement. En effet, au lieu d'envoyer périodiquement l'intégralité de la table de routage, ils n'envoient des mises à jour qu'aux routes voisines. Ils utilisent un algorithme différent pour calculer le chemin le plus court en premier et construisent leur topologie de réseau sous la forme d'un graphe pour montrer quels routeurs sont connectés à d'autres routeurs.
+## Former des adjacences
 
-L'un des protocoles à état de liens courants est OSPF (Open Shortest Path First). Il ne met à jour les tables de routage que s'il y a un changement de réseau. Il n'a pas de limite de saut.
+Les routeurs découvrent des voisins compatibles et forment des adjacences de protocole selon le type d’interface, la zone, les minuteurs, l’authentification et d’autres paramètres. L’observation de paquets hello ne garantit pas une adjacence complète ; une configuration incompatible peut arrêter plus tôt la machine à états.
 
-## Exercise
+:::single-choice{#link-state-hello-limit}
+Qu’est-ce que la réception d’un paquet hello OSPF ne prouve pas ?
 
-C'est en forgeant qu'on devient forgeron ! Comprendre le fonctionnement des protocoles de routage est crucial pour la gestion de réseau. Bien que des laboratoires directs sur OSPF ne soient pas disponibles dans cet ensemble, il est essentiel de bâtir une base solide en configuration et connectivité réseau. Voici quelques laboratoires pratiques pour renforcer votre compréhension des fondamentaux du réseau :
+::option[Que les routeurs ont formé une adjacence entièrement synchronisée.]{#link-state-not-full .correct explanation="La zone, les minuteurs, l’authentification, la MTU et d’autres états peuvent empêcher l’échange complet de la base."}
+::option[Que le voisin a envoyé au moins un message de protocole.]{#link-state-hello-sent explanation="La réception du paquet hello prouve directement ce fait limité."}
+::option[Qu’une interface peut recevoir une trame.]{#link-state-frame-received explanation="Le paquet reçu prouve qu’une partie du chemin de réception local fonctionne."}
+:::
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à configurer des adresses IP statiques et dynamiques, et à vérifier les paramètres réseau, qui sont fondamentaux pour toute configuration de routage.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez à utiliser `ping` et `arp` pour comprendre comment les appareils communiquent aux couches réseau et liaison de données, offrant un aperçu de l'accessibilité du réseau.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Utilisez Docker pour simuler des nœuds réseau et entraînez-vous à attribuer des adresses IP et à tester la connectivité entre différents sous-réseaux, ce qui aide à visualiser la topologie du réseau et les concepts de routage.
+## Diffuser les informations d’état des liens
 
-Ces laboratoires vous aideront à appliquer les concepts de configuration et de connectivité réseau dans des scénarios réels, en construisant une base solide pour comprendre des protocoles de routage plus avancés comme OSPF.
+Chaque routeur produit des annonces sur son état pertinent. Les voisins diffusent de manière fiable les informations plus récentes dans la zone ou le domaine défini au lieu de limiter les mises à jour à la paire de voisins d’origine. Des mécanismes de séquence et de vieillissement distinguent les informations actuelles et retirent les états périmés.
 
-## Quiz Question
+:::single-choice{#link-state-flooding-scope}
+Pourquoi les informations d’état des liens sont-elles diffusées au-delà d’un seul voisin ?
 
-Quel est l'un des protocoles à état de liens les plus courants ?
+::option[Chaque application a besoin d’une copie de tous les mots de passe des routeurs.]{#link-state-password-copy explanation="Les identifiants applicatifs ne constituent pas des annonces de topologie."}
+::option[Ethernet ne peut pas envoyer de trames unicast.]{#link-state-no-unicast explanation="Ethernet prend en charge l’unicast ; la diffusion est ici un mécanisme de distribution du protocole de routage."}
+::option[Les routeurs du périmètre ont besoin d’une base de topologie cohérente.]{#link-state-consistent-database .correct explanation="Chaque routeur calcule ses chemins depuis l’ensemble partagé des annonces actuelles d’état des liens."}
+:::
 
-## Quiz Answer
+## Calculer les plus courts chemins
 
-OSPF
+Après avoir construit une base d’état des liens, un routeur exécute un algorithme de plus court chemin d’abord, généralement l’algorithme de Dijkstra, en se prenant comme racine. OSPF additionne les coûts des interfaces ; la politique et les règles de coûts égaux influencent les résultats installés.
+
+« Plus court » signifie le coût de protocole le plus faible, et pas nécessairement le plus petit nombre de routeurs ou la plus faible latence applicative mesurée. La conception des coûts doit refléter l’intention opérationnelle.
+
+:::single-choice{#link-state-shortest-meaning}
+Que signifie « plus court » dans le calcul d’un chemin à état des liens ?
+
+::option[La route dont le préfixe comporte le moins de caractères écrits.]{#link-state-shortest-text explanation="La longueur du texte est sans rapport avec le coût de la topologie."}
+::option[Le chemin dont la somme des coûts de protocole est la plus faible.]{#link-state-lowest-cost .correct explanation="Le modèle de coût peut correspondre ou non directement au nombre de sauts ou à la latence actuelle."}
+::option[Le chemin qui ne connaît jamais aucune perte de paquets.]{#link-state-zero-loss explanation="Une route calculée ne garantit pas les performances de l’application."}
+:::
+
+## Zones et convergence
+
+Les zones OSPF limitent la diffusion de la topologie et le périmètre du calcul, la zone 0 servant de dorsale dans une conception interzone normale. La récapitulation et les types de zones peuvent volontairement donner à différents routeurs des niveaux de détail différents dans leur base.
+
+Après un changement de liaison, la détection, la diffusion des annonces, le calcul SPF, l’installation des routes et la reprise de l’acheminement prennent chacun du temps. Une convergence plus rapide qu’avec une conception simple à vecteur de distance est possible, mais pas automatique pour chaque panne ou configuration.
+
+:::single-choice{#link-state-convergence-stages}
+Que faut-il mesurer pendant l’analyse d’une convergence OSPF ?
+
+::option[Uniquement l’heure à laquelle un administrateur a ouvert un terminal.]{#link-state-terminal-time explanation="Cela n’isole aucune étape du protocole ou de l’acheminement."}
+::option[Uniquement l’ordre alphabétique des noms des routeurs.]{#link-state-router-names explanation="Les noms ne déterminent pas la durée de la convergence."}
+::option[La détection, la diffusion, le calcul, l’installation et la reprise de l’acheminement.]{#link-state-all-stages .correct explanation="La séparation des étapes révèle l’endroit où le retard ou l’échec de convergence survient."}
+:::
+
+## Résumé
+
+Vous savez maintenant suivre le routage à état des liens de la découverte des voisins aux chemins installés.
+
+1. Distinguer la réception d’un hello d’une adjacence complète.
+2. Expliquer la diffusion fiable dans un périmètre de routage.
+3. Interpréter le plus court chemin comme le coût de protocole configuré le plus faible.
+4. Mesurer chaque étape de convergence des plans de contrôle et de données.

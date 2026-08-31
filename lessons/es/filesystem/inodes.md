@@ -1,80 +1,118 @@
 ---
-index: 11
+lesson_id: "inodes"
+course_id: "filesystem"
 lang: "es"
+order_index: 11
 title: "Inodos"
-meta_title: "Inodos - El Sistema de Archivos"
-meta_description: "Explore el concepto del inodo de Linux. Aprenda qué es un i-nodo, cómo los inodos en Linux gestionan los metadatos de archivos y cómo verificar el uso de inodos con `df -i` y `ls -li`."
-meta_keywords: "inodo linux, inodo en linux, i nodo, inodo, inodo linux, número de inodo, sistema de archivos, df -i, ls -li, stat"
+description: "Aprende cómo los números de inodo conectan los nombres de directorio con los metadatos y los datos de los objetos del sistema de archivos."
+meta_title: "Inodos - El sistema de archivos"
+meta_description: "Aprende cómo los inodos de Linux relacionan nombres, metadatos y datos, y cómo examinar números y capacidad de inodos."
+meta_keywords: "inodos Linux, número de inodo, sistema de archivos, df -i, ls -li, stat, enlaces duros"
 ---
 
-## Lesson Content
+En los sistemas de archivos Unix basados en inodos, un directorio asocia el nombre de cada entrada con un número de inodo. El inodo representa el objeto del sistema de archivos y registra los metadatos necesarios para localizar e interpretar sus datos. Por tanto, la ruta no se almacena como identidad principal propia del objeto.
 
-Recuerda que nuestro sistema de archivos se compone de todos nuestros archivos reales y una base de datos que los administra. Esta base de datos se conoce como la tabla de inodos, una parte fundamental de cómo funciona el `inode in linux`.
+## Metadatos almacenados con un inodo
 
-### ¿Qué es un Inodo de Linux
+Entre los metadatos habituales asociados a un inodo se encuentran:
 
-Un inodo (abreviatura de nodo índice) es una entrada en esta tabla. Cada archivo y directorio tiene su propio `inode`. Describe todo sobre el archivo, como:
+- tipo de objeto y modo de permisos
+- propiedad de usuario y grupo
+- tamaño lógico y contabilidad de bloques asignados
+- número de enlaces duros
+- marcas de tiempo de acceso, modificación y cambio de estado
+- referencias a los datos del archivo o a estructuras de extensiones específicas del sistema de archivos
 
-- Tipo de archivo (ej. archivo regular, directorio, dispositivo de caracteres)
-- Propietario
-- Grupo
-- Permisos de acceso
-- Marcas de tiempo: mtime (última modificación), ctime (último cambio de atributo), atime (último acceso)
-- Número de enlaces duros al archivo
-- Tamaño del archivo
-- Número de bloques asignados al archivo
-- Punteros a los bloques de datos del archivo (¡lo más importante!)
+El inodo no suele almacenar el nombre de la entrada del directorio. Un sistema de archivos también puede almacenar atributos ampliados, listas de control de acceso, hora de creación, datos en línea u otra información mediante estructuras específicas del formato.
 
-Esencialmente, un `i node` almacena todos los metadatos sobre el archivo, excepto su nombre y el contenido real.
+`ctime` es la hora de cambio de estado del inodo, no necesariamente la hora de creación del archivo. Una marca independiente de nacimiento o creación es opcional y puede no estar disponible.
 
-### Creación y Asignación de Inodos
+:::single-choice{#inodes-name-location}
+¿Dónde se asocia normalmente el componente de ruta de un archivo normal con su número de inodo?
 
-Cuando se crea un sistema de archivos, también se asigna espacio para los inodos. Los algoritmos determinan cuánto espacio de `inode` necesitas según el volumen del disco y otros factores. Probablemente hayas visto errores de falta de espacio en disco antes. Lo mismo puede suceder con los inodos, aunque es menos común. Si te quedas sin inodos, no puedes crear nuevos archivos. El almacenamiento de datos depende tanto de los bloques de datos como de la base de datos (la tabla de `inode`).
+::option[En el planificador de procesos.]{#inodes-scheduler-name explanation="El estado de planificación de CPU no implementa la búsqueda de rutas del sistema de archivos."}
+::option[En una entrada de directorio.]{#inodes-directory-entry .correct explanation="Un directorio asocia un nombre con un número de inodo dentro de ese sistema de archivos."}
+::option[En la tabla de particiones del disco.]{#inodes-partition-name explanation="Una tabla de particiones delimita regiones de almacenamiento, no nombres de archivos individuales."}
+:::
 
-Para ver cuántos inodos quedan en tu sistema, usa el comando `df -i`. Esta es una comprobación crucial para los administradores de sistemas que gestionan una gran cantidad de archivos pequeños.
+## Números de inodo y alcance del sistema de archivos
 
-### Visualización de Información del Inodo
-
-Cada `linux inode` se identifica mediante un número único. Cuando se crea un archivo, se le asigna un número de inodo, a menudo de forma secuencial. Sin embargo, podrías notar que un nuevo archivo obtiene un número de inodo menor que los más antiguos. Esto sucede porque los números de inodo eliminados pueden reutilizarse para nuevos archivos. Para ver los números de inodo, ejecuta `ls -li`:
-
-```bash
-pete@icebox:~$ ls -li
-140 drwxr-xr-x 2 pete pete 6 Jan 20 20:13 Desktop
-141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
-```
-
-El primer campo en la salida de este comando es el número de inodo. También puedes ver información detallada sobre el `i node` de un archivo con el comando `stat`:
+Muestra los números de inodo con:
 
 ```bash
-pete@icebox:~$ stat ~/Desktop/
-  File: ‘/home/pete/Desktop/’
-  Size: 6               Blocks: 0          IO Block: 4096   directory
-Device: 806h/2054d      Inode: 140         Links: 2
-Access: (0755/drwxr-xr-x)  Uid: ( 1000/   pete)   Gid: ( 1000/   pete)
-Access: 2016-01-20 20:13:50.647435982 -0800
-Modify: 2016-01-20 20:13:06.191675843 -0800
-Change: 2016-01-20 20:13:06.191675843 -0800
- Birth: -
+$ ls -li
 ```
 
-### Cómo un I-Node Apunta a los Datos
+El primer campo es el número de inodo. Examina un objeto con más detalle mediante:
 
-Sabemos que nuestros datos se almacenan en el disco, pero es probable que no estén en un bloque continuo. Aquí es donde la estructura `inode linux` se vuelve esencial. Los inodos apuntan a los bloques de datos reales de tus archivos. En un sistema de archivos típico (aunque las implementaciones varían), cada inodo contiene 15 punteros. Los primeros 12 punteros apuntan directamente a bloques de datos. El puntero 13 apunta a un bloque que contiene más punteros. Los punteros 14 y 15 apuntan a bloques anidados más profundos de punteros. Esto puede parecer confuso, pero esta estructura permite que el `i node` mantenga un tamaño fijo mientras puede hacer referencia a archivos de tamaños variables. Los archivos pequeños se pueden acceder rápidamente usando los punteros directos, mientras que los archivos más grandes se localizan a través de los punteros anidados.
+```bash
+$ stat path
+```
 
-## Exercise
+Un número de inodo solo es único dentro de un sistema de archivos en un momento determinado. El mismo número puede existir en otro sistema y puede reutilizarse después de liberar un inodo. Para identificar un objeto de forma sólida, utiliza tanto la identidad del sistema de archivos como el número de inodo, no solo este último.
 
-¡La práctica hace al maestro! Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión del sistema de archivos y la gestión de archivos en Linux:
+:::single-choice{#inodes-number-scope}
+¿En qué ámbito identifica un objeto un número de inodo?
 
-1. **[Administrar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practica la creación, eliminación, copia y movimiento de archivos y directorios, y explora la creación de enlaces simbólicos y duros mientras analizas los inodos.
-2. **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Aprende las habilidades fundamentales para navegar por el sistema de archivos de Linux usando comandos esenciales de shell como `pwd`, `cd` y `ls`.
-3. **[Encontrar Archivos y Comandos en Linux](https://labex.io/es/labs/comptia-find-files-and-commands-in-linux-590834)** - Domina las técnicas esenciales para localizar archivos y comandos en Linux usando `find`, `locate`, `whereis`, `which` y `type`.
+::option[En todos los sistemas Linux del mundo para siempre.]{#inodes-global-forever explanation="La asignación de inodos es local a cada sistema de archivos y los identificadores pueden reutilizarse."}
+::option[En un sistema de archivos y en un momento determinados.]{#inodes-one-filesystem .correct explanation="Otros sistemas de archivos pueden utilizar el mismo número y los inodos liberados pueden reutilizarse después."}
+::option[Únicamente en el proceso de shell que creó el archivo.]{#inodes-shell-scope explanation="El sistema de archivos, no un shell, mantiene la identidad del inodo."}
+:::
 
-Estos laboratorios te ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con la gestión del sistema de archivos de Linux.
+## Enlaces duros y referencias abiertas
 
-## Quiz Question
+Varias entradas de directorio pueden referirse al mismo inodo; son enlaces duros. Crear otro enlace duro incrementa el número de enlaces del objeto. Eliminar un nombre reduce ese número sin borrar los datos mientras quede otro enlace.
 
-¿Cómo ves cuántos inodos quedan en tu sistema? (Por favor, responde en inglés, prestando atención a las mayúsculas y minúsculas.)
+Incluso después de eliminar la última entrada de directorio, un archivo abierto permanece asignado hasta que se cierre la última referencia del proceso. Su número de enlaces puede ser cero mientras un descriptor siga accediendo a él. Esto explica por qué eliminar un registro grande abierto quizá no reduzca inmediatamente el uso que muestra `df`.
 
-## Quiz Answer
+:::single-choice{#inodes-unlinked-open-file}
+¿Cuándo se liberan normalmente los recursos de un archivo desenlazado?
 
-df -i
+::option[Inmediatamente después de eliminar cualquier nombre de enlace duro.]{#inodes-one-link-removed explanation="Otros enlaces duros o referencias abiertas pueden mantener vivo el objeto."}
+::option[Únicamente cuando se vuelve a dar formato a todo el sistema de archivos.]{#inodes-reformat-only explanation="Las operaciones normales de desenlace y cierre recuperan inodos y bloques sin uso."}
+::option[Cuando su número de enlaces es cero y se cierra la última referencia abierta.]{#inodes-zero-links-no-opens .correct explanation="Los nombres de directorio y los descriptores de archivos de procesos son referencias independientes al inodo."}
+:::
+
+## Capacidad de inodos
+
+En sistemas de archivos con un conjunto de inodos finito o comunicado, millones de archivos pequeños pueden agotar la capacidad de metadatos antes de llenar los bloques de datos. Examina la contabilidad de inodos de los sistemas montados con:
+
+```bash
+$ df -i
+```
+
+Si no quedan inodos libres, crear otro archivo puede fallar aunque `df -h` comunique bloques disponibles. Las estrategias de asignación difieren: algunos sistemas preasignan estructuras de inodos al crearse, mientras que otros gestionan metadatos dinámicamente y pueden comunicar la capacidad de otra forma.
+
+:::single-choice{#inodes-df-i-purpose}
+¿Qué comunica `df -i` cuando el sistema de archivos ofrece contabilidad de inodos?
+
+::option[El contenido de todos los archivos ordenado por inodo.]{#inodes-df-i-content explanation="Df comunica estadísticas agregadas y no lee el contenido de los archivos."}
+::option[La capacidad de inodos utilizada y disponible.]{#inodes-df-i-capacity .correct explanation="La vista de inodos ayuda a diagnosticar el agotamiento de objetos de metadatos independientemente de los bloques de datos."}
+::option[La revisión del firmware del disco.]{#inodes-df-i-firmware explanation="El inventario del firmware no guarda relación con el uso de inodos."}
+:::
+
+## Correspondencia de datos específica del sistema de archivos
+
+No supongas que cada inodo tiene exactamente 12 punteros directos y tres indirectos. Es una descripción útil de algunos diseños clásicos, pero ext4 moderno puede utilizar extensiones, y XFS, Btrfs y otros sistemas emplean estructuras diferentes. Los datos en línea y las extensiones comprimidas o de copia al escribir modifican aún más la relación.
+
+Utiliza herramientas de diagnóstico específicas del sistema de archivos únicamente en modos de solo lectura o documentados cuando importe la correspondencia interna. Para la administración habitual, `stat`, `find -inum`, `df -i` y las herramientas que comprenden enlaces ofrecen abstracciones más seguras.
+
+:::single-choice{#inodes-layout-portability}
+¿Por qué no debes suponer un único diseño fijo de punteros para todos los inodos?
+
+::option[Porque los inodos nunca se refieren de ninguna forma a los datos de archivos.]{#inodes-no-data-reference explanation="El sistema de archivos debe asociar el objeto con su contenido, aunque el mecanismo varíe."}
+::option[Porque las implementaciones utilizan estructuras distintas de extensiones, árboles y datos en línea.]{#inodes-format-specific-layout .correct explanation="La correspondencia en disco entre un inodo y su contenido forma parte del formato de cada sistema de archivos."}
+::option[Porque el propietario de cada archivo elige por separado el diseño de su inodo.]{#inodes-owner-layout explanation="La implementación y el formato del sistema de archivos determinan la estructura de metadatos."}
+:::
+
+Utiliza [Gestionar archivos y directorios en Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835) para comparar números de inodo y recuentos de enlaces en archivos desechables.
+
+## Resumen
+
+Ahora puedes relacionar rutas, inodos, enlaces y capacidad del sistema de archivos.
+
+1. Trata las entradas de directorio como asociaciones de nombres con números de inodo.
+2. Lee metadatos y marcas de tiempo sin confundir ctime con la creación.
+3. Limita los números de inodo a un sistema de archivos y un momento.
+4. Ten en cuenta los enlaces duros y los descriptores de archivo abiertos.
+5. Utiliza modelos específicos de cada sistema en vez de un diseño universal de punteros.

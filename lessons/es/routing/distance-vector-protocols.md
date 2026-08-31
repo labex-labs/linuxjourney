@@ -1,51 +1,72 @@
 ---
-index: 5
+lesson_id: "distance-vector-protocols"
+course_id: "routing"
 lang: "es"
-title: "Protocolos de Vector Distancia"
-meta_title: "Protocolos de Vector Distancia - Enrutamiento"
-meta_description: "Guía para principiantes sobre protocolos de vector distancia en el enrutamiento de redes. Este tutorial explica cómo protocolos como RIP usan el conteo de saltos para determinar rutas y cubre sus limitaciones para el networking moderno en Linux."
-meta_keywords: "protocolos vector distancia, enrutamiento de red, RIP, protocolo de información de enrutamiento, conteo de saltos, networking Linux, guía principiantes, tutorial"
+order_index: 5
+title: "Protocolos de vector de distancia"
+description: "Aprende cómo los protocolos de vector de distancia derivan rutas de los anuncios de sus vecinos y limitan los bucles."
+meta_title: "Protocolos de vector de distancia - Routing"
+meta_description: "Guía para principiantes sobre los protocolos de vector de distancia. Este tutorial explica cómo protocolos como RIP utilizan la cantidad de saltos para determinar rutas y cuáles son sus limitaciones."
+meta_keywords: "protocolos de vector de distancia, enrutamiento de red, RIP, protocolo de información de enrutamiento, cantidad de saltos, redes Linux, guía para principiantes, tutorial"
 ---
 
-## Lesson Content
+El enrutamiento por vector de distancia indica a los vecinos qué destinos son accesibles y una métrica que describe la distancia. Un router combina el anuncio de un vecino con el coste para llegar a él y así deriva su propia ruta candidata.
 
-Los protocolos de vector distancia son una categoría fundamental de protocolos de enrutamiento utilizados en redes informáticas. Determinan la mejor ruta para los paquetes de datos basándose en la distancia, que generalmente se mide por el **conteo de saltos** (hop count). En este tipo de **enrutamiento de red**, cada router mantiene una tabla de la "distancia" a todas las redes conocidas.
+## Aprender mediante los vecinos
 
-### Cómo Funcionan los Protocolos de Vector Distancia
+Si el router A anuncia una distancia de tres hasta un prefijo y el router B llega a A con un coste de uno, B puede derivar una distancia de cuatro a través de A. La información describe una dirección y una métrica, no un mapa completo de la topología, por lo que este enfoque a veces se denomina enrutamiento por rumores.
 
-El principio central de un protocolo de vector distancia es sencillo: los routers comparten su información de enrutamiento con sus vecinos inmediatos. Este proceso a veces se denomina "enrutamiento por rumor". Por ejemplo, si el Router A sabe que está a 3 saltos de la Red X, y el Router B es un vecino directo del Router A, el Router B puede inferir que está a 4 saltos de la Red X a través del Router A. Cuando existen múltiples rutas hacia el mismo destino, el protocolo siempre elegirá la ruta con el **conteo de saltos** más bajo.
+:::single-choice{#distance-vector-derived-distance}
+Si un vecino anuncia la métrica 3 y el coste del enlace es 1, ¿qué métrica se deriva a través de él?
 
-### Ventajas y Desventajas
+::option[2]{#distance-vector-two explanation="El coste del enlace se suma, no se resta."}
+::option[31]{#distance-vector-thirty-one explanation="Los valores son métricas, no dígitos decimales que deban concatenarse."}
+::option[4]{#distance-vector-four .correct explanation="La distancia del vecino y el coste del enlace local se combinan para formar la ruta candidata."}
+:::
 
-Los **protocolos de vector distancia** son simples de configurar y funcionan bien en redes pequeñas y estables. Sin embargo, tienen limitaciones significativas que los hacen menos adecuados para entornos más grandes y complejos.
+## Bucles y cuenta hasta el infinito
 
-Una gran desventaja es la convergencia lenta. Los routers transmiten periódicamente toda su tabla de enrutamiento a sus vecinos, lo que puede consumir un ancho de banda y una potencia de procesamiento considerables, especialmente a medida que la red crece. Si ocurre un cambio en la red, puede llevar mucho tiempo que esa información se propague a todos los routers.
+Después de un fallo, los vecinos pueden anunciarse por error una ruta mutuamente y aumentar su métrica de forma gradual. Los protocolos mitigan este problema mediante valores finitos de infinito, horizonte dividido, envenenamiento de rutas, inversa envenenada, actualizaciones activadas y temporizadores. Estos mecanismos reducen el problema, pero no convierten todos los cambios de topología en una convergencia instantánea.
 
-Otra desventaja clave es que el camino más corto en términos de **conteo de saltos** no siempre es el más eficiente. Un camino con menos saltos podría tener enlaces más lentos (por ejemplo, 10 Mbps) en comparación con un camino con más saltos que utiliza enlaces más rápidos (por ejemplo, 1 Gbps). Los protocolos de vector distancia generalmente desconocen la velocidad del enlace, lo que lleva a decisiones de enrutamiento subóptimas.
+:::single-choice{#distance-vector-split-horizon}
+¿Qué pretende reducir el horizonte dividido?
 
-### RIP Un Ejemplo Común
+::option[La cantidad de bits de todas las direcciones IPv4.]{#distance-vector-ip-bits explanation="El tamaño de una dirección IPv4 es fijo e independiente de las actualizaciones de enrutamiento."}
+::option[La sobrecarga de cifrado de las cargas útiles de las aplicaciones.]{#distance-vector-encryption explanation="La técnica se ocupa de la dirección de los anuncios de rutas."}
+::option[Anunciar una ruta aprendida de vuelta hacia el vecino del que procedía.]{#distance-vector-no-return .correct explanation="Suprimir esa dirección ayuda a evitar bucles sencillos de realimentación."}
+:::
 
-Uno de los **protocolos de vector distancia** más conocidos es el **Protocolo de Información de Enrutamiento (RIP)**. Es un ejemplo clásico que demuestra claramente los principios y limitaciones de esta familia de protocolos.
+## Métricas y límites de RIP
 
-- **Actualizaciones Periódicas:** RIP transmite toda su tabla de enrutamiento a todos los vecinos cada 30 segundos.
-- **Límite de Conteo de Saltos:** Para prevenir bucles de enrutamiento y controlar el tráfico de red, RIP impone un **conteo de saltos** máximo de 15. Cualquier ruta que requiera 16 saltos se considera inalcanzable.
+RIP utiliza la cantidad de saltos. Una ruta con métrica 16 es inaccesible, por lo que la mayor métrica utilizable es 15. Esto limita el crecimiento de los bucles, pero también el diámetro de la red. Una cantidad menor de saltos no significa necesariamente menor latencia o más ancho de banda.
 
-Debido a estas características, RIP rara vez se utiliza en redes de producción modernas, pero sirve como una excelente herramienta de aprendizaje en una **guía para principiantes** sobre **redes Linux** y conceptos de enrutamiento.
+RIPv2 utiliza actualizaciones periódicas y activadas, y admite información CIDR. Suele enviar las actualizaciones mediante multicast en lugar de difundir una tabla completa en todas las circunstancias. La autenticación y el filtrado aún requieren una configuración deliberada.
 
-## Exercise
+:::single-choice{#distance-vector-rip-infinity}
+¿Qué representa la métrica 16 de RIP?
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión del enrutamiento de red y la conectividad:
+::option[La ruta más rápida con dieciséis enlaces paralelos.]{#distance-vector-fastest-16 explanation="RIP trata el valor como inaccesible."}
+::option[Infinito, lo que significa que el destino es inaccesible.]{#distance-vector-unreachable .correct explanation="RIP limita las rutas utilizables a 15 saltos."}
+::option[Una ruta aprendida de BGP.]{#distance-vector-bgp-route explanation="El número tiene un significado específico de RIP."}
+:::
 
-1. **[Explorar la Interacción de la Capa de Red con ping y arp en Linux](https://labex.io/es/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practique el uso de `ping` y `arp` para comprender cómo los dispositivos se descubren entre sí y cómo se enrutan los datos en la capa de red.
-2. **[Simular la Conectividad de la Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP y probar la conectividad entre nodos Linux simulados, observando cómo las subredes IP influyen en la comunicación de red.
-3. **[Administrar Direccionamiento IP en Linux](https://labex.io/es/labs/comptia-manage-ip-addressing-in-linux-592736)** - Obtenga experiencia práctica configurando direcciones IP estáticas y dinámicas y estableciendo puertas de enlace predeterminadas, que son componentes esenciales del enrutamiento de red.
+## Evaluar una ruta aprendida
 
-Estos laboratorios le ayudarán a aplicar los conceptos de direccionamiento de red y conectividad en escenarios reales, construyendo una base sólida para comprender cómo funcionan los protocolos de enrutamiento.
+Comprueba el estado del vecino, los prefijos recibidos y anunciados, la métrica, el siguiente salto, la instalación de la ruta y la accesibilidad del plano de datos. Una ruta puede ser válida dentro de RIP, pero perder frente a otra fuente de rutas debido a la política local de preferencias.
 
-## Quiz Question
+:::single-choice{#distance-vector-fewest-hop-limit}
+¿Por qué puede rendir mal la ruta de RIP con menos saltos?
 
-¿Verdadero o falso: Los protocolos de vector distancia utilizan la ruta con la menor cantidad de ancho de banda?
+::option[La cantidad de saltos no representa el ancho de banda, la latencia, las pérdidas ni la congestión de los enlaces.]{#distance-vector-hop-limited .correct explanation="Una ruta con más saltos puede tener mejores enlaces y rendimiento para la aplicación."}
+::option[RIP siempre elige la ruta con más saltos.]{#distance-vector-most-hops explanation="Su métrica prefiere cantidades menores de saltos utilizables."}
+::option[La cantidad de saltos se mide en bytes de espacio en disco.]{#distance-vector-disk-bytes explanation="Cuenta transiciones enrutadas, no almacenamiento."}
+:::
 
-## Quiz Answer
+## Resumen
 
-False
+Ahora puedes explicar tanto la sencillez como las limitaciones del enrutamiento por vector de distancia.
+
+1. Deriva una distancia candidata del anuncio de un vecino.
+2. Reconoce el comportamiento de los bucles y la cuenta hasta el infinito.
+3. Explica el límite utilizable de 15 saltos de RIP y la métrica 16.
+4. Comprueba por separado la instalación de la ruta y el resultado del plano de datos.

@@ -1,79 +1,84 @@
 ---
-index: 6
+lesson_id: "memory-monitoring"
+course_id: "process-utilization"
 lang: "zh"
+order_index: 6
 title: "内存监控"
-meta_title: "内存监控 - 进程利用率"
+description: "学习如何解读 vmstat 的内存、分页、进程、I/O 和 CPU 样本。"
+meta_title: "内存监控 - 进程资源利用"
 meta_description: "使用 vmstat 命令掌握 Linux 内存监控。本指南解释了如何使用此强大的内存利用率监视器来分析系统性能指标。"
 meta_keywords: "内存监控，内存利用率监视器，vmstat, linux 内存，系统性能，内存使用，linux 教程"
 ---
 
-## Lesson Content
+Linux 会有意使用原本空闲的内存作为缓存，因此 `free` 值较小本身并不能证明存在内存压力。`vmstat` 可以帮助你把内存与可运行任务、分页、I/O 和 CPU 活动联系起来。
 
-有效的系统管理需要密切关注资源使用情况，而**内存监控**是这一过程的关键部分。当系统内存不足时，其性能可能会显著下降。Linux 提供了多种工具来帮助您跟踪内存消耗，其中最通用的是 `vmstat`。
+## 使用 vmstat 采样
 
-### vmstat 简介
-
-`vmstat`（虚拟内存统计）命令是一个强大的**内存利用率监视器**，它报告有关进程、内存、分页、块 I/O、中断和 CPU 活动的信息。在不带任何参数的情况下运行它，可以提供自系统启动以来的当前状态快照。
+可以每秒收集一个样本：
 
 ```bash
-pete@icebox:~$ vmstat
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
-r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
+$ vmstat 1
 ```
 
-输出分为几个部分。让我们分解一下每个字段的含义。
+第一行数据通常报告系统启动以来的平均值，后续各行覆盖每个采样间隔。捕获到具有代表性的时段后，按 `Ctrl-C` 停止。单位和可用字段会有差异，因此应检查 `vmstat --unit` 和本机手册。
 
-### Procs (进程)
+:::single-choice{#vmstat-interval-rows}
+`vmstat 1` 的哪些行最适合观察逐秒变化？
 
-- `r`: 正在等待运行时间的就绪进程数。
-- `b`: 处于不可中断睡眠状态的进程数，通常在等待 I/O。
+::option[初始报告之后的各行。]{#vmstat-later-rows .correct explanation="后续各行描述指定的每个采样间隔，而不是累计时段。"}
+::option[只有第一行数据上方的标题。]{#vmstat-headings explanation="标题定义字段，但不包含活动样本。"}
+::option[只使用从另一台主机复制的一行。]{#vmstat-other-host explanation="不同系统不能代表当前工作负载。"}
+:::
 
-### Memory (内存)
+## 进程与内存
 
-- `swpd`: 使用的虚拟内存量（以千字节为单位）。
-- `free`: 空闲内存量（以千字节为单位）。
-- `buff`: 用作缓冲区的内存量。
-- `cache`: 用作页面缓存的内存量。
+常见进程字段包括表示可运行任务的 `r`，以及表示在不可中断睡眠中阻塞任务的 `b`。内存字段包括已用交换空间（`swpd`）、空闲内存（`free`）、缓冲区（`buff`）和缓存（`cache`）。这些都是系统级数值，而不是单个进程的消耗量。
 
-### Swap (交换)
+若要更直观地查看当前可用内存，可以与以下输出比较：
 
-- `si`: 每秒从磁盘换入的内存量（以千字节为单位）。高值表示系统物理内存不足。
-- `so`: 每秒换出到磁盘的内存量（以千字节为单位）。理想情况下，此值应为零。
+```bash
+$ free -h
+```
 
-### IO (输入/输出)
+`available` 估算值通常比单独的 `free` 更有用，因为可回收缓存可以用于满足新的内存分配。
 
-- `bi`: 从块设备接收的块数（块/秒）。
-- `bo`: 发送到块设备的块数（块/秒）。
+:::single-choice{#vmstat-free-memory}
+为什么 Linux 上较低的 `free` 值可能是正常现象？
 
-### System (系统)
+::option[该值总是排除全部物理 RAM。]{#vmstat-excludes-ram explanation="它是内存字段，不过应确认具体单位。"}
+::option[内核可以把空闲内存用于可回收缓存。]{#vmstat-reclaimable-cache .correct explanation="应用需要内存时，缓存内存通常可以被回收。"}
+::option[空闲内存少证明 CPU 已经关机。]{#vmstat-cpu-off explanation="内存分配和 CPU 电源状态之间不存在这种结论。"}
+:::
 
-- `in`: 每秒中断次数，包括时钟中断。
-- `cs`: 每秒上下文切换次数。
+## 分页与 I/O
 
-### CPU (中央处理器)
+`si` 和 `so` 显示换入和换出速率。持续分页若同时伴随延迟和内存回收活动，可能表示存在压力；但交换空间使用量（`swpd`）非零本身并不能证明当前有问题。`bi` 和 `bo` 报告块输入与输出速率，并不限于交换流量。
 
-这些是总 CPU 时间的百分比。
+:::single-choice{#vmstat-swap-pressure}
+哪项证据更能支持当前存在内存压力的诊断？
 
-- `us`: 运行非内核代码所花费的时间（用户时间）。
-- `sy`: 运行内核代码所花费的时间（系统时间）。
-- `id`: 空闲时间。
-- `wa`: 等待 I/O 所花费的时间。
-- `st`: 从虚拟机窃取的时间（适用于虚拟化环境）。
+::option[`swpd` 非零，且没有其他观察结果。]{#vmstat-swpd-alone explanation="早期压力过后，内存页仍可能留在交换空间，因此单看使用量并不充分。"}
+::option[持续分页，并且与内存回收活动和工作负载延迟相关。]{#vmstat-correlated-pressure .correct explanation="反复出现且相互关联的证据，能够把内存行为与当前影响联系起来。"}
+::option[登录时打印的主机名。]{#vmstat-hostname explanation="主机名无法衡量内存回收或分页活动。"}
+:::
 
-## Exercise
+## CPU 与系统活动
 
-实践造就完美！以下是一些实践实验，以加强您对系统和内存监控的理解：
+CPU 列通常包括用户（`us`）、系统（`sy`）、空闲（`id`）、I/O 等待（`wa`）和窃取（`st`）百分比。系统列包括每秒中断数（`in`）和上下文切换数（`cs`）。应依据基线解读尖峰；对于某些工作负载，较高的上下文切换率可能完全正常。
 
-1. **[Linux free 命令：监控系统内存](https://labex.io/zh/labs/linux-linux-free-command-monitoring-system-memory-388496)** - 学习监控和分析系统内存使用情况，理解各种显示格式和总内存消耗。
-2. **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用各种选项进行排序和过滤，实时监控系统性能，包括进程、CPU 和内存使用情况。
+:::single-choice{#vmstat-r-column}
+进程字段 `r` 表示什么？
 
-这些实验将帮助您在实际场景中应用系统资源监控的概念，并建立分析 Linux 系统性能的信心。
+::option[以只读方式挂载的文件系统。]{#vmstat-readonly explanation="进程字段不表示文件系统挂载标志。"}
+::option[拥有活动 shell 的远程用户。]{#vmstat-remote-users explanation="登录会话由其他工具报告。"}
+::option[可运行或正在等待 CPU 的任务。]{#vmstat-runnable .correct explanation="将此数量与 CPU 容量比较，有助于识别 CPU 需求。"}
+:::
 
-## Quiz Question
+## 总结
 
-What tool is used to view memory utilization? (Please answer in English, paying attention to case sensitivity).
+现在，你可以把 `vmstat` 解读为按时间关联的系统视图。
 
-## Quiz Answer
-
-vmstat
+1. 区分初始累计报告和后续间隔样本。
+2. 将缓存视为可能可回收的内存。
+3. 把分页与内存回收和应用影响相互关联。
+4. 综合阅读进程、I/O、系统和 CPU 字段。

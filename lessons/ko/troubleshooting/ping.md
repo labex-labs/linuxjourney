@@ -1,58 +1,91 @@
 ---
-index: 2
+lesson_id: "ping"
+course_id: "troubleshooting"
 lang: "ko"
-title: "핑"
+order_index: 2
+title: "ping"
+description: "범위가 제한된 ping 테스트를 실행하고 응답, 손실, RTT, TTL 및 한계를 해석하는 방법을 알아봅니다."
 meta_title: "ping - 문제 해결"
-meta_description: "Linux ping 명령어를 사용하여 네트워크 연결 상태를 테스트하는 방법을 알아보세요. 이 가이드는 icmp_seq, TTL 및 왕복 시간 (roundtrip time) 을 포함한 ping 출력 해석 방법을 설명합니다. 네트워크 문제를 진단하기 위해 ping 시퀀스를 이해하는 방법을 알아보세요."
-meta_keywords: "Linux ping, 네트워크 연결, ICMP, TTL, ping 명령어, icmp_seq, ping 시퀀스, icmp seq, icmp_seq 의미, ping icmp_seq, Linux 네트워킹"
+meta_description: "리눅스 ping 명령으로 네트워크 연결을 테스트하는 방법을 알아봅니다. icmp_seq, TTL 및 왕복 시간을 포함한 출력을 설명합니다."
+meta_keywords: "리눅스 ping, 네트워크 연결, ICMP, TTL, ping 명령, icmp_seq, 리눅스 네트워킹"
 ---
 
-## Lesson Content
+`ping`은 ICMP Echo Request를 보내고 관찰된 응답을 보고합니다. 하나의 주소로 향하는 제어 메시지 경로를 테스트하며 TCP, UDP, DNS, 인증 또는 애플리케이션이 작동함을 입증하지는 않습니다.
 
-**ping** 명령어는 원격 호스트가 IP 네트워크를 통해 도달 가능한지 테스트하는 데 사용되는 가장 기본적인 네트워킹 유틸리티 중 하나입니다. 이 명령어는 대상 호스트에 ICMP(Internet Control Message Protocol) "에코 요청" 패킷을 보내고 ICMP "에코 응답"을 기다리는 방식으로 작동합니다. 요청 패킷이 전송되고 응답이 수신되면 성공적인 ping 으로 간주됩니다.
+## 범위가 제한된 테스트 실행하기
 
-실행 중인 일반적인 `ping` 명령어를 살펴보겠습니다.
+일반적인 iputils 구현에서 패킷별 제한 시간을 2초로 두고 IPv4 요청 세 개를 보냅니다.
 
-```plaintext
-pete@icebox:~$ ping -c 3 www.google.com
-PING www.google.com (74.125.239.112) 56(84) bytes of data.
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=1 ttl=128 time=29.0 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=2 ttl=128 time=23.7 ms
-64 bytes from nuq05s01-in-f16.1e100.net (74.125.239.112): icmp_seq=3 ttl=128 time=15.1 ms
+```bash
+$ ping -4 -c 3 -W 2 example.com
 ```
 
-이 예시에서 우리는 `ping`을 사용하여 `www.google.com`에 대한 연결 상태를 확인합니다. `-c 3` 옵션은 `ping`에게 정확히 세 개의 에코 요청 패킷을 보내고 중지하도록 지시합니다. 기본적으로 `ping`은 초당 하나의 패킷을 보냅니다.
+IPv6를 선택하려면 `-6`을 사용합니다. 호스트 이름이 여러 주소를 반환하고 반복 실행에서 다른 주소를 선택할 수 있으므로 확인된 주소를 기록하십시오.
 
-### Ping 출력 이해하기
+:::single-choice{#ping-count-option}
+`-c 3`은 무엇을 요청합니까?
 
-`ping icmp_seq` 명령어의 출력은 유용한 진단 정보를 제공합니다. 주요 구성 요소를 분석해 보겠습니다.
+::option[정확히 3메가바이트인 패킷 페이로드입니다.]{#ping-three-megabytes explanation="패킷 크기에는 다른 옵션을 사용합니다."}
+::option[목적지로 향하는 영구 경로 세 개입니다.]{#ping-three-routes explanation="ping은 트래픽을 프로브하며 경로를 설치하지 않습니다."}
+::option[명령이 정상적으로 끝나기 전 Echo Request 세 개입니다.]{#ping-three-requests .correct explanation="유한한 횟수로 진단을 제한하고 반복 가능하게 만듭니다."}
+:::
 
-### ICMP 시퀀스 (icmp_seq)
+## 순서와 손실
 
-`icmp_seq` 필드는 각 ICMP 패킷의 시퀀스 번호를 표시합니다. 예시에서 우리는 세 개의 패킷을 보냈고, 출력은 세 개 모두 (`icmp_seq=1`, `icmp_seq=2`, `icmp_seq=3`) 성공적으로 반환되었음을 보여줍니다. `ping seq`는 패킷 손실을 진단하는 데 중요합니다. 시퀀스 번호가 누락된 경우, 일부 패킷이 목적지에 도달하지 못했거나 돌아오지 못하는 연결 문제를 나타냅니다. `icmp seq` 번호가 순서가 맞지 않게 나타나면, 패킷이 왕복하는 데 기본 1 초 간격보다 더 오래 걸리고 있음을 의미하므로 네트워크 혼잡이나 지연을 시사할 수 있습니다. `icmp_seq meaning`을 이해하는 것이 문제 해결의 핵심입니다.
+`icmp_seq`는 실행 안에서 요청을 식별합니다. 응답 누락은 관찰된 손실에 포함되고 순서가 바뀐 응답은 변동하는 지연을 나타낼 수 있습니다. 작은 표본에는 잡음이 많으므로 범위가 제한된 여러 구간과 애플리케이션 자체 오류율을 비교합니다.
 
-### Time To Live (TTL)
+손실은 어느 방향에서나 발생할 수 있고 ICMP 속도 제한으로 ping 손실과 애플리케이션 손실이 다를 수 있습니다.
 
-Time To Live (TTL) 필드는 패킷의 홉 카운터 역할을 합니다. 패킷이 라우터 (한 "홉") 를 통과할 때마다 TTL 값이 1 씩 감소합니다. 패킷이 목적지에 도착하기 전에 카운터가 0 에 도달하면 패킷은 폐기됩니다. 이 메커니즘은 패킷이 네트워크에서 끝없이 순환하는 것을 방지합니다.
+:::single-choice{#ping-sequence-gap}
+`icmp_seq` 응답 누락은 무엇을 나타낼 수 있습니까?
 
-### 시간 (Time)
+::option[목적지가 MAC 주소를 영구적으로 바꿨습니다.]{#ping-sequence-mac explanation="순서 공백만으로 그런 링크 계층 결론을 내릴 수 없습니다."}
+::option[요청 또는 응답이 유실, 필터링, 대기 시간 초과 또는 속도 제한됐을 수 있습니다.]{#ping-sequence-possibilities .correct explanation="순서 공백은 관찰된 응답이 없음을 식별하지만 정확한 방향이나 원인은 알 수 없습니다."}
+::option[출발지 디스크에 여유 inode가 없습니다.]{#ping-sequence-inodes explanation="파일시스템 inode 상태는 ICMP 순서 응답과 관계없습니다."}
+:::
 
-`time` 필드는 왕복 시간, 즉 패킷이 내 컴퓨터에서 대상 호스트까지 이동하고 에코 응답이 돌아오는 데 걸린 시간을 측정합니다. 이 값은 일반적으로 밀리초 (ms) 단위로 측정되며 네트워크 지연의 주요 지표입니다.
+## 왕복 시간
 
-## Exercise
+`time` 필드는 요청 전송부터 응답 수신까지의 왕복 시간을 밀리초로 나타냅니다. 송신 지연, 원격 처리 및 반환 지연을 합친 값입니다. 동기화된 끝점 측정 없이는 단방향 지연 시간을 알 수 없습니다.
 
-네트워크 진단을 마스터하려면 연습이 필수적입니다. 다음 실습 랩은 `ping` 명령어에 대한 이해를 강화하는 데 도움이 될 것입니다.
+:::single-choice{#ping-rtt-meaning}
+`time=23.7 ms`는 무엇을 측정합니까?
 
-1. **[Linux 에서 ping 및 arp 를 사용하여 네트워크 계층 상호 작용 탐색](https://labex.io/ko/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`과 `arp`를 사용하여 네트워크 및 데이터 링크 계층 상호 작용을 탐색하고 기본 게이트웨이가 원격 트래픽을 처리하는 방식을 관찰합니다.
-2. **[Linux 에서 IP 주소 유형 및 도달 가능성 탐색](https://labex.io/ko/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`과 `ip a`를 활용하여 로컬 TCP/IP 스택을 테스트하고, 공용 인터넷 연결을 확인하며, 네트워크 도달 가능성을 탐색합니다.
-3. **[Linux 에서 네트워크 계층 연결 시뮬레이션](https://labex.io/ko/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - `ip addr`를 사용하여 정적 IP 주소를 할당하고 동일 및 다른 서브넷에서 `ping`으로 연결을 테스트하는 방법을 배웁니다.
+::option[송신 방향의 단방향 경로 지연 시간만 측정합니다.]{#ping-outbound-only explanation="ping은 전체 요청 및 응답 구간을 측정합니다."}
+::option[대상 시스템의 가동 시간입니다.]{#ping-target-uptime explanation="부팅 시간이 아니라 프로브 시간입니다."}
+::option[해당 에코의 왕복 시간입니다.]{#ping-round-trip .correct explanation="양방향과 끝점 처리를 포함합니다."}
+:::
 
-이 랩들은 네트워크 도달 가능성 및 `ping` 명령어 개념을 실제 시나리오에 적용하여 Linux 에서 네트워크 진단에 대한 자신감을 높이는 데 도움이 될 것입니다.
+## TTL 또는 Hop Limit
 
-## Quiz Question
+표시되는 IPv4 TTL 또는 IPv6 Hop Limit은 수신된 응답에 남아 있는 값입니다. 송신자의 초기 값과 반환 경로를 모르면 이를 빼서 정확한 홉 수를 구할 수 없습니다. 값 변경은 다른 응답자, 초기 값 또는 반환 경로를 나타낼 수 있습니다.
 
-왕복 시간의 측정 단위는 무엇입니까? 대소문자를 구분하여 영어로 답변하십시오.
+:::single-choice{#ping-received-ttl}
+IPv4 Echo Reply에 표시되는 TTL은 무엇입니까?
 
-## Quiz Answer
+::option[응답이 로컬 호스트에 도달했을 때 남은 값입니다.]{#ping-remaining-ttl .correct explanation="반환 경로의 각 라우터가 송신자의 초기 값을 줄였습니다."}
+::option[양방향의 정확한 라우터 수입니다.]{#ping-exact-hop-count explanation="이 필드만으로 초기 TTL과 방향별 경로를 알 수 없습니다."}
+::option[DNS 레코드의 캐시 수명입니다.]{#ping-dns-ttl explanation="DNS TTL과 IP 패킷 TTL은 서로 다른 필드입니다."}
+:::
 
-ms
+## 올바른 계층 테스트하기
+
+ping은 성공하지만 서비스가 실패하면 실제 포트, TLS, 프로토콜 및 요청을 테스트합니다. ping이 실패하면 호스트가 중단됐다고 단정하기 전에 이름 확인, `ip route get`, 이웃 상태, 방화벽 정책 및 캡처를 조사합니다.
+
+:::single-choice{#ping-success-limit}
+성공한 ping이 입증하지 못하는 것은 무엇입니까?
+
+::option[일부 ICMP 요청 및 응답 경로가 작동했습니다.]{#ping-icmp-worked explanation="응답이 직접 제공하는 증거입니다."}
+::option[응답에 순서 번호가 있었습니다.]{#ping-sequence-present explanation="정상 출력에 응답 순서가 직접 보고됩니다."}
+::option[의도한 애플리케이션이 요청을 받아 완료합니다.]{#ping-app-not-proven .correct explanation="응용 및 전송 동작에는 애플리케이션에 맞는 테스트가 필요합니다."}
+:::
+
+## 요약
+
+이제 ping을 명시적인 한계가 있는 범위 제한 ICMP 측정으로 사용할 수 있습니다.
+
+1. 주소 계열을 선택하고 확인된 주소를 기록합니다.
+2. 반복 가능한 테스트를 위해 횟수와 대기 시간을 제한합니다.
+3. 방향이나 원인을 단정하지 않고 손실을 해석합니다.
+4. RTT를 양방향으로, TTL을 남은 값으로 취급합니다.
+5. 실제 애플리케이션을 별도로 테스트합니다.

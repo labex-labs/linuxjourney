@@ -1,28 +1,27 @@
 ---
-index: 6
+lesson_id: "file-command"
+course_id: "command-line"
 lang: "de"
+order_index: 6
 title: "file"
+description: "Lerne, den wahrscheinlichen Inhaltstyp einer Datei unabhängig von ihrem Namen oder ihrer Endung zu bestimmen."
 meta_title: "file - Kommandozeile"
 meta_description: "Lernen Sie den Linux-Befehl file mit Beispielen zur Identifikation von Textdateien, Bildern, Skripten, komprimierten Archiven, Binärdateien und MIME-Typen."
 meta_keywords: "linux file befehl, file befehl, dateityp erkennen linux, mime typ linux, textdatei, binärdatei, archivdatei"
 ---
 
-## Lesson Content
+In der vorherigen Lektion hast du mit `touch` eine Datei ohne Erweiterung erstellt. Unter Linux muss ein Dateiname nicht verraten, was eine Datei enthält: Eine Datei namens `funny.gif` ist nicht zwangsläufig ein GIF-Bild.
 
-Im vorherigen Kapitel haben wir `touch` kennengelernt. Schauen wir uns das noch einmal an. Ist Ihnen aufgefallen, dass der Dateiname nicht den üblichen Namenskonventionen entspricht, wie Sie sie wahrscheinlich von anderen Betriebssystemen wie Windows kennen? Normalerweise würde man erwarten, dass eine Datei namens `banana.jpeg` eine JPEG-Bilddatei ist.
-
-Unter Linux müssen Dateinamen nicht den Inhalt der Datei widerspiegeln. Sie können eine Datei namens `funny.gif` erstellen, die tatsächlich kein GIF ist.
-
-Um herauszufinden, um welche Art von Datei es sich handelt, können Sie den Befehl `file` verwenden. Er zeigt Ihnen eine Beschreibung des Inhalts der Datei an.
+Mit `file` untersuchst du eine Datei und lässt dir ihren wahrscheinlichen Typ melden:
 
 ```bash
 $ file banana.jpg
 banana.jpg: JPEG image data
 ```
 
-### Warum Dateiendungen nicht ausreichen
+## Warum Dateiendungen nicht ausreichen
 
-Linux-Tools benötigen normalerweise keine Dateiendung, um zu entscheiden, was für eine Datei es ist. Ein Shell-Skript kann `backup` heißen, eine Textdatei `README` und ein Bild kann eine falsche Endung haben. Der Befehl `file` untersucht den Inhalt und die Metadaten der Datei, um eine bessere Einschätzung zu geben.
+Linux-Werkzeuge benötigen normalerweise keine Dateiendung, um den Dateityp zu bestimmen. Ein Shell-Skript kann `backup`, eine Textdatei `README` heißen und ein Bild kann eine irreführende Endung besitzen. `file` untersucht unter anderem Metadaten des Dateisystems und erkennbare Muster im Inhalt.
 
 ```bash
 $ file README
@@ -31,9 +30,19 @@ $ file /bin/ls
 /bin/ls: ELF 64-bit LSB executable
 ```
 
-### Mehrere Dateien prüfen
+Das Ergebnis ist eine Klassifizierung, keine Garantie. Bei ungewöhnlichen, unvollständigen oder beschädigten Dateien liefert file möglicherweise nur eine allgemeine Beschreibung wie `data`.
 
-Sie können mehrere Dateien gleichzeitig prüfen:
+:::single-choice{#identify-misleading-extension}
+Eine Datei namens `report.jpg` enthält möglicherweise kein Bild. Welcher Befehl prüft ihren wahrscheinlichen Inhaltstyp?
+
+::option[`ls report.jpg`]{#list-report explanation="`ls` bestätigt den Namen und kann Metadaten anzeigen, klassifiziert aber nicht den Dateiinhalt."}
+::option[`file report.jpg`]{#inspect-report .correct explanation="`file` untersucht die Datei und meldet einen wahrscheinlichen Typ. Der Befehl verlässt sich nicht nur auf die Endung `.jpg`."}
+::option[`touch report.jpg`]{#touch-report explanation="`touch` aktualisiert Zeitstempel oder erstellt eine fehlende Datei. Der Befehl bestimmt keinen Inhaltstyp."}
+:::
+
+## Mehrere Dateien prüfen
+
+Du kannst mehrere Dateien auf einmal untersuchen:
 
 ```bash
 $ file notes.txt image.png archive.tar.gz
@@ -42,27 +51,43 @@ image.png: PNG image data
 archive.tar.gz: gzip compressed data
 ```
 
-Wildcards funktionieren ebenfalls:
+Auch ein Shell-Platzhalter ist möglich. Die Shell erweitert `*` zu den passenden Namen, bevor `file` sie untersucht:
 
 ```bash
 $ file *
 ```
 
-### MIME-Typen anzeigen
+:::single-choice{#inspect-multiple-files}
+Welcher Befehl lässt `file` alle nicht versteckten Namen untersuchen, auf die `*` im aktuellen Verzeichnis passt?
 
-Die Option `-i` gibt Informationen im MIME-Format aus, was nützlich ist, wenn man mit Webdateien oder Skripten arbeitet.
+::option[`file *`]{#file-wildcard .correct explanation="Die Shell erweitert `*` zu passenden nicht versteckten Namen und `file` untersucht jeden daraus entstehenden Operanden."}
+::option[`file .`]{#file-current-directory explanation="Ein einzelner Punkt bezeichnet das aktuelle Verzeichnis selbst. Dieser Befehl klassifiziert das Verzeichnis, nicht jeden Eintrag darin."}
+::option[`file -b`]{#file-brief-no-operand explanation="Die Option `-b` ändert die Ausgabeform, doch in diesem Befehl fehlen die zu untersuchenden Dateien."}
+:::
+
+## MIME-Informationen anzeigen
+
+Die Option `-i` gibt Informationen im MIME-Stil aus, darunter einen Medientyp und – sofern verfügbar – einen Zeichensatz. Diese Form ist nützlich, wenn ein anderes Programm Werte wie `text/html` erwartet.
 
 ```bash
 $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-### Häufige Optionen von file
+:::single-choice{#show-mime-information}
+Welcher Befehl meldet MIME-Informationen für `index.html`?
 
-- `-i`: Zeigt MIME-Typ-Informationen an.
-- `-b`: Kurze Ausgabe, ohne Dateinamen.
-- `-L`: Symbolischen Links folgen.
-- `-z`: Versucht, komprimierte Dateien zu untersuchen.
+::option[`file -b index.html`]{#brief-index explanation="Die Option `-b` lässt den Dateinamen in der üblichen Beschreibung weg. Sie fordert nicht ausdrücklich eine MIME-Ausgabe an."}
+::option[`file -i index.html`]{#mime-index .correct explanation="Die Option `-i` fordert eine Ausgabe im MIME-Stil an, etwa `text/html` mit Zeichensatzangabe."}
+::option[`file -L index.html`]{#follow-index explanation="Die Option `-L` steuert den Umgang mit symbolischen Links. Sie wählt nicht das MIME-Ausgabeformat aus."}
+:::
+
+## Nützliche file-Optionen
+
+- `-i`: Zeigt Informationen im MIME-Stil an.
+- `-b`: Verwendet den Kurzmodus und lässt den Dateinamen in der Ausgabe weg.
+- `-L`: Folgt symbolischen Links und klassifiziert deren Ziele.
+- `-z`: Versucht, den Inhalt komprimierter Dateien zu untersuchen.
 
 Zum Beispiel:
 
@@ -71,28 +96,19 @@ $ file -b notes.txt
 ASCII text
 ```
 
-### Häufige Fragen
+:::single-choice{#omit-filename-from-output}
+Welcher Befehl klassifiziert `notes.txt`, lässt aber den Dateinamen in der Ausgabe weg?
 
-**Verlässt sich file nur auf Dateiendungen?** Nein. Es untersucht hauptsächlich den Dateiinhalte und bekannte Signaturen.
+::option[`file -i notes.txt`]{#mime-notes explanation="Die Option `-i` fordert MIME-Informationen an. Der Dateiname ist normalerweise weiterhin Teil der Ausgabe."}
+::option[`file -z notes.txt`]{#compressed-notes explanation="Die Option `-z` lässt `file` nach Möglichkeit in komprimierte Daten hineinsehen. Sie aktiviert keine Kurzausgabe."}
+::option[`file -b notes.txt`]{#brief-notes .correct explanation="Der mit `-b` gewählte Kurzmodus gibt die Klassifizierung ohne vorangestellten Dateinamen aus."}
+:::
 
-**Kann file falsch liegen?** Ja. Es gibt eine fundierte Vermutung ab, besonders bei ungewöhnlichen oder beschädigten Dateien.
+## Zusammenfassung
 
-**Warum sagt file „data“?** Die Datei entspricht keinem spezifischeren bekannten Typ oder es handelt sich um Binärdaten ohne erkennbare Signatur.
+Du kannst nun mit `file` untersuchen, was eine Datei wahrscheinlich enthält.
 
-## Exercise
-
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis für die Inspektion von Dateiinhalten und -eigenschaften zu vertiefen:
-
-1. **[Linux ls Command: Content Listing](https://labex.io/de/labs/linux-linux-ls-command-content-listing-219205)** – Lernen Sie den Linux-Befehl `ls` kennen, um Dateien und Verzeichnisse effizient aufzulisten und zu analysieren, was oft vor oder nach der Verwendung von `file` erfolgt, um den Inhalt Ihrer Verzeichnisse zu verstehen.
-2. **[Linux cat Command: File Concatenating](https://labex.io/de/labs/linux-linux-cat-command-file-concatenating-210986)** – Üben Sie das Anzeigen und Bearbeiten von Textdateien, eine häufige Aufgabe nach der Identifikation des Dateityps.
-3. **[Linux more Command: File Scrolling](https://labex.io/de/labs/linux-linux-more-command-file-scrolling-214299)** – Verbessern Sie Ihre Kommandozeilenfähigkeiten für das Navigieren und Erkunden großer Textdateien, basierend auf der Fähigkeit, Dateitypen zu erkennen und deren Inhalt zu prüfen.
-
-Diese Labs helfen Ihnen, die Konzepte der Dateiinhaltsprüfung und -anzeige in realen Szenarien anzuwenden und stärken Ihr Selbstvertrauen im Umgang mit Dateien unter Linux.
-
-## Quiz Question
-
-Welchen Befehl können Sie verwenden, um den Dateityp einer Datei herauszufinden?
-
-## Quiz Answer
-
-file
+1. Klassifiziere eine Datei, ohne ihrer Endung zu vertrauen.
+2. Untersuche mehrere Pfade mit einem Befehl.
+3. Fordere Informationen im MIME-Stil an.
+4. Steuere den Umgang mit Links, komprimierten Daten und Ausgabebezeichnungen.

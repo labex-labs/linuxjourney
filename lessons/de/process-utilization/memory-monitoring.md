@@ -1,79 +1,84 @@
 ---
-index: 6
+lesson_id: "memory-monitoring"
+course_id: "process-utilization"
 lang: "de"
-title: "Speicherüberwachung"
-meta_title: "Speicherüberwachung - Prozessauslastung"
-meta_description: "Meistern Sie die Linux-Speicherüberwachung mit dem vmstat-Befehl. Diese Anleitung erklärt, wie Sie diesen leistungsstarken Monitor zur Speicherbelegung nutzen, um Systemleistungskennzahlen zu analysieren."
-meta_keywords: "speicherüberwachung, speicherauslastungsmonitor, vmstat, linux speicher, systemleistung, speichernutzung, linux tutorial"
+order_index: 6
+title: "Arbeitsspeicherüberwachung"
+description: "Lerne, vmstat-Stichproben zu Speicher, Paging, Prozessen, E/A und CPU zu interpretieren."
+meta_title: "Arbeitsspeicherüberwachung – Prozessauslastung"
+meta_description: "Lerne die Linux-Arbeitsspeicherüberwachung mit dem Befehl vmstat. Diese Anleitung erklärt, wie du mit diesem Werkzeug Messwerte zur Systemleistung analysierst."
+meta_keywords: "Arbeitsspeicherüberwachung, Speicherauslastungsmonitor, vmstat, Linux-Arbeitsspeicher, Systemleistung, Speichernutzung, Linux-Tutorial"
 ---
 
-## Lesson Content
+Linux verwendet ansonsten ungenutzten Speicher absichtlich für Caches. Ein kleiner `free`-Wert allein beweist daher keinen Speicherdruck. `vmstat` hilft, Speicher zu ausführbaren Tasks, Paging, E/A und CPU-Aktivität in Beziehung zu setzen.
 
-Eine effektive Systemadministration erfordert eine genaue Beobachtung der Ressourcennutzung, und **Speicherüberwachung** (memory monitoring) ist ein kritischer Teil dieses Prozesses. Wenn einem System der Arbeitsspeicher ausgeht, kann seine Leistung erheblich beeinträchtigt werden. Linux bietet verschiedene Tools, um den Speicherverbrauch zu verfolgen, und eines der vielseitigsten ist `vmstat`.
+## Stichproben mit vmstat
 
-### Einführung in vmstat
-
-Der Befehl `vmstat` (virtual memory statistics) ist ein leistungsstarker **Speicherauslastungsmonitor** (memory utilization monitor), der Informationen über Prozesse, Speicher, Paging, Block-I/O, Interrupts und CPU-Aktivität meldet. Wenn er ohne Argumente ausgeführt wird, liefert er eine Momentaufnahme des aktuellen Systemzustands seit dem letzten Start.
+Erfasse eine Stichprobe pro Sekunde:
 
 ```bash
-pete@icebox:~$ vmstat
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
-r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
+$ vmstat 1
 ```
 
-Die Ausgabe ist in mehrere Spalten unterteilt. Lassen Sie uns aufschlüsseln, was jedes Feld bedeutet.
+Die erste Datenzeile meldet im Allgemeinen Mittelwerte seit dem Bootvorgang; spätere Zeilen decken jeweils ein Intervall ab. Beende die Erfassung nach einem repräsentativen Zeitraum mit `Ctrl-C`. Einheiten und verfügbare Felder unterscheiden sich; prüfe deshalb `vmstat --unit` und die lokale Handbuchseite.
 
-### Procs (Prozesse)
+:::single-choice{#vmstat-interval-rows}
+Welche Zeilen eignen sich am besten, um mit `vmstat 1` Änderungen von Sekunde zu Sekunde zu beobachten?
 
-- `r`: Die Anzahl der lauffähigen Prozesse, die auf ihre Ausführungszeit warten.
-- `b`: Die Anzahl der Prozesse im nicht unterbrechbaren Schlafmodus, typischerweise wartend auf I/O.
+::option[Die späteren Zeilen nach dem ersten Bericht.]{#vmstat-later-rows .correct explanation="Spätere Zeilen beschreiben jeweils das angeforderte Intervall statt des kumulativen Zeitraums."}
+::option[Nur die Überschriften oberhalb der ersten Datenzeile.]{#vmstat-headings explanation="Überschriften definieren Felder, enthalten aber keine Aktivitätsstichproben."}
+::option[Nur eine von einem anderen Host kopierte Zeile.]{#vmstat-other-host explanation="Ein anderes System bildet die aktuelle Arbeitslast nicht ab."}
+:::
 
-### Memory (Speicher)
+## Prozesse und Arbeitsspeicher
 
-- `swpd`: Die Menge des verwendeten virtuellen Speichers (in Kilobytes).
-- `free`: Die Menge des ungenutzten Speichers (in Kilobytes).
-- `buff`: Die Menge des als Puffer verwendeten Speichers.
-- `cache`: Die Menge des als Seitencache verwendeten Speichers.
+Häufige Prozessfelder sind `r` für ausführbare Tasks und `b` für Tasks, die in nicht unterbrechbarem Schlaf blockiert sind. Zu den Speicherfeldern gehören verwendeter Swap (`swpd`), ungenutzter Speicher (`free`), Puffer (`buff`) und Cache (`cache`). Dies sind systemweite Werte und kein Verbrauch einzelner Prozesse.
 
-### Swap
+Vergleiche für eine leichter verständliche Ansicht des aktuell verfügbaren Speichers mit:
 
-- `si`: Die Menge des pro Sekunde von der Festplatte eingewechselten Speichers (swapped in) (in Kilobytes). Hohe Werte deuten darauf hin, dass dem System physischer Speicher fehlt.
-- `so`: Die Menge des pro Sekunde auf die Festplatte ausgelagerten Speichers (swapped out) (in Kilobytes). Dieser Wert sollte idealerweise Null sein.
+```bash
+$ free -h
+```
 
-### IO (E/A)
+Die Schätzung `available` ist im Allgemeinen nützlicher als `free` allein, weil rückgewinnbarer Cache neue Speicherzuweisungen erfüllen kann.
 
-- `bi`: Empfangene Blöcke von einem Blockgerät (Blöcke/s).
-- `bo`: Gesendete Blöcke an ein Blockgerät (Blöcke/s).
+:::single-choice{#vmstat-free-memory}
+Warum kann ein niedriger `free`-Wert unter Linux normal sein?
 
-### System
+::option[Der Wert schließt immer den gesamten physischen Arbeitsspeicher aus.]{#vmstat-excludes-ram explanation="Es handelt sich um ein Speicherfeld, dessen genaue Einheit allerdings geprüft werden sollte."}
+::option[Der Kernel kann ungenutzten Speicher für rückgewinnbare Caches verwenden.]{#vmstat-reclaimable-cache .correct explanation="Zwischengespeicherter Speicher kann häufig zurückgewonnen werden, wenn Anwendungen ihn benötigen."}
+::option[Wenig freier Speicher beweist, dass die CPU ausgeschaltet ist.]{#vmstat-cpu-off explanation="Speicherzuweisung und CPU-Energiezustand lassen keine solche gemeinsame Schlussfolgerung zu."}
+:::
 
-- `in`: Die Anzahl der Interrupts pro Sekunde, einschließlich der Uhr.
-- `cs`: Die Anzahl der Kontextwechsel pro Sekunde.
+## Paging und E/A
 
-### CPU
+`si` und `so` zeigen die Swap-in- und Swap-out-Raten. Anhaltendes Paging zusammen mit Latenz und Aktivität zur Speicherrückgewinnung kann auf Druck hindeuten. Eine von null verschiedene Swap-Nutzung (`swpd`) beweist für sich allein jedoch kein aktuelles Problem. `bi` und `bo` melden Blockeingabe- und Blockausgaberaten und sind nicht auf Swap-Verkehr beschränkt.
 
-Dies sind Prozentsätze der gesamten CPU-Zeit.
+:::single-choice{#vmstat-swap-pressure}
+Welche Belege stützen die Diagnose eines aktuellen Speicherdrucks besser?
 
-- `us`: Zeit, die für die Ausführung von Nicht-Kernel-Code aufgewendet wurde (Benutzerzeit).
-- `sy`: Zeit, die für die Ausführung von Kernel-Code aufgewendet wurde (Systemzeit).
-- `id`: Zeit, die im Leerlauf verbracht wurde.
-- `wa`: Zeit, die auf I/O gewartet wurde.
-- `st`: Gestohlene Zeit von einer virtuellen Maschine (für virtualisierte Umgebungen).
+::option[Ein von null verschiedener `swpd`-Wert ohne weitere Beobachtungen.]{#vmstat-swpd-alone explanation="Seiten können nach früherem Druck im Swap verbleiben; die Menge allein reicht daher nicht aus."}
+::option[Anhaltendes Paging in Verbindung mit Rückgewinnungsaktivität und Arbeitslastlatenz.]{#vmstat-correlated-pressure .correct explanation="Wiederholte, verknüpfte Belege verbinden das Speicherverhalten mit aktuellen Auswirkungen."}
+::option[Der bei der Anmeldung ausgegebene Hostname.]{#vmstat-hostname explanation="Ein Hostname misst weder Rückgewinnungs- noch Paging-Aktivität."}
+:::
 
-## Exercise
+## CPU- und Systemaktivität
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der System- und Speicherüberwachung zu festigen:
+CPU-Spalten enthalten gewöhnlich die Prozentanteile für Benutzer (`us`), System (`sy`), Leerlauf (`id`), E/A-Wartezeit (`wa`) und entzogene Zeit (`st`). Systemspalten enthalten Interrupts (`in`) und Kontextwechsel (`cs`) pro Sekunde. Interpretiere Spitzen im Vergleich zu einer Grundlinie; hohe Kontextwechselraten können für manche Arbeitslasten normal sein.
 
-1. **[Linux free Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Lernen Sie, die Systemspeichernutzung zu überwachen und zu analysieren, verschiedene Anzeigeformate und den gesamten Speicherverbrauch zu verstehen.
-2. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Lernen Sie, die Systemleistung in Echtzeit zu überwachen, einschließlich Prozessen, CPU- und Speichernutzung, unter Verwendung verschiedener Optionen zum Sortieren und Filtern.
+:::single-choice{#vmstat-r-column}
+Was stellt das Prozessfeld `r` dar?
 
-Diese Labs helfen Ihnen, die Konzepte der Systemressourcenüberwachung in realen Szenarien anzuwenden und Vertrauen in die Analyse der Linux-Systemleistung aufzubauen.
+::option[Schreibgeschützt eingehängte Dateisysteme.]{#vmstat-readonly explanation="Mount-Optionen von Dateisystemen werden durch das Prozessfeld nicht dargestellt."}
+::option[Entfernte Benutzer mit aktiven Shells.]{#vmstat-remote-users explanation="Anmeldesitzungen werden von anderen Werkzeugen gemeldet."}
+::option[Tasks, die ausführbar sind oder auf CPU warten.]{#vmstat-runnable .correct explanation="Der Vergleich dieser Anzahl mit der CPU-Kapazität kann helfen, CPU-Bedarf zu erkennen."}
+:::
 
-## Quiz Question
+## Zusammenfassung
 
-Welches Tool wird verwendet, um die Speicherauslastung anzuzeigen? (Bitte antworten Sie auf Englisch, achten Sie auf die Groß-/Kleinschreibung).
+Du kannst `vmstat` nun als zeitlich verknüpfte Systemansicht interpretieren.
 
-## Quiz Answer
-
-vmstat
+1. Trenne den ersten kumulativen Bericht von den Intervallstichproben.
+2. Behandle Cache als möglicherweise rückgewinnbaren Speicher.
+3. Setze Paging zu Rückgewinnung und Anwendungsauswirkungen in Beziehung.
+4. Lies Prozess-, E/A-, System- und CPU-Felder gemeinsam.

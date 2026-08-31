@@ -1,21 +1,22 @@
 ---
-index: 2
+lesson_id: "print-working-directory-pwd-command"
+course_id: "command-line"
 lang: "pt"
-title: "pwd (Imprimir Diretório Atual)"
-meta_title: "pwd (Imprimir Diretório Atual) - Linha de Comando"
-meta_description: "Aprenda o comando Linux pwd, o que significa imprimir o diretório atual e como caminhos absolutos mostram sua localização atual no sistema de arquivos."
-meta_keywords: "comando pwd, linux pwd, imprimir diretório atual, diretório atual linux, caminho absoluto, sistema de arquivos linux, árvore de diretórios"
+order_index: 2
+title: "pwd (Exibir o Diretório de Trabalho)"
+description: "Aprenda a usar pwd para identificar sua localização atual no sistema de arquivos do Linux."
+meta_title: "pwd (Exibir o Diretório de Trabalho) - Linha de Comando"
+meta_description: "Aprenda o comando pwd do Linux, o significado de print working directory e como caminhos absolutos mostram sua localização atual no sistema de arquivos."
+meta_keywords: "comando pwd, pwd Linux, exibir diretório de trabalho, diretório atual Linux, caminho absoluto, sistema de arquivos Linux, árvore de diretórios"
 ---
 
-## Lesson Content
+No Linux, arquivos e diretórios são organizados em uma hierarquia chamada sistema de arquivos. Antes de navegar com confiança, você precisa saber onde está. O comando `pwd` responde a essa pergunta exibindo seu diretório de trabalho atual.
 
-No Linux, arquivos e diretórios são organizados em uma hierarquia chamada sistema de arquivos. Antes de você poder se mover com confiança, é preciso saber onde você está. O comando `pwd` responde a essa pergunta imprimindo seu diretório de trabalho atual.
+## A Árvore de Diretórios no Linux
 
-### A Árvore de Diretórios no Linux
+Todo o sistema de arquivos começa em um único diretório de nível superior chamado diretório raiz, representado por uma barra (`/`). A partir da raiz, a árvore se ramifica em subdiretórios, que podem conter arquivos e outros subdiretórios.
 
-Todo o sistema de arquivos começa a partir de um único diretório de nível superior chamado diretório raiz, representado por uma barra (/). A partir da raiz, a árvore de diretórios se ramifica em subdiretórios, que podem conter arquivos e mais subdiretórios.
-
-Aqui está um exemplo simplificado de como essa estrutura se parece:
+Veja um exemplo simplificado dessa estrutura:
 
 ```plaintext
 /
@@ -31,41 +32,75 @@ Aqui está um exemplo simplificado de como essa estrutura se parece:
 |-- var
 ```
 
-### Entendendo os Caminhos de Arquivos
+:::single-choice{#identify-root-subdirectories}
+Na árvore de diretórios acima, qual é a relação de `home` e `etc` com `/`?
 
-A localização de qualquer arquivo ou diretório é descrita pelo seu caminho. Um caminho é uma sequência de diretórios que leva de um ponto de partida a um destino específico.
+::option[Eles são subdiretórios que se ramificam a partir de `/`.]{#root-subdirectories .correct explanation="Os dois diretórios aparecem diretamente abaixo de `/` na árvore. O sistema de arquivos se ramifica em subdiretórios a partir da raiz."}
+::option[Eles são arquivos armazenados dentro do diretório `bin`.]{#files-inside-bin explanation="A árvore coloca `home` e `etc` ao lado de `bin`, não dentro dele. Neste exemplo, eles são diretórios, e não arquivos."}
+::option[Eles são nomes alternativos para o diretório raiz.]{#alternate-root-names explanation="O Linux tem uma única raiz do sistema de arquivos, representada por `/`. `home` e `etc` são diretórios abaixo dela."}
+:::
 
-Por exemplo, se você tem uma pasta chamada `pete` dentro de `/home`, e uma pasta `Movies` dentro de `pete`, o caminho completo é:
+## Compreensão dos Caminhos de Arquivos
+
+A localização de qualquer arquivo ou diretório é descrita por seu caminho. Um caminho é uma sequência de diretórios que leva de um ponto inicial até um destino específico.
+
+Por exemplo, se houver uma pasta chamada `pete` dentro de `/home` e uma pasta `Movies` dentro de `pete`, o caminho completo será:
 
 ```plaintext
 /home/pete/Movies
 ```
 
-Um caminho que começa com `/` é um caminho absoluto porque começa no diretório raiz. Um caminho como `Movies` é relativo porque depende da sua localização atual.
+Um caminho que começa com `/` é absoluto porque parte do diretório raiz. Um caminho como `Movies` é relativo porque depende da sua localização atual.
 
-### Qual é o Significado Completo de PWD no Linux?
+:::single-choice{#recognize-absolute-path}
+O que torna `/home/pete/Movies` um caminho absoluto?
 
-O significado completo de `pwd` é "print working directory" (imprimir diretório de trabalho). Seu diretório de trabalho é o diretório onde seu shell está atualmente localizado. Comandos que usam caminhos relativos começam a partir dessa localização.
+::option[Ele contém vários nomes de diretórios separados por `/`.]{#contains-directories explanation="Tanto caminhos absolutos quanto relativos podem conter vários nomes de diretórios. O ponto inicial, e não a quantidade de nomes, determina o tipo do caminho."}
+::option[Ele termina em um diretório chamado `Movies`.]{#ends-with-movies explanation="O nome do destino não determina se um caminho é absoluto. Um caminho absoluto é identificado por seu ponto inicial na raiz."}
+::option[Ele começa na raiz com uma `/` inicial.]{#starts-at-root .correct explanation="Um caminho absoluto começa no diretório raiz. A `/` inicial mostra esse ponto de partida."}
+:::
 
-### Usando o Comando pwd
+## Qual É o Significado de PWD no Linux?
 
-Para encontrar seu diretório atual, digite `pwd` e pressione Enter.
+`pwd` significa “print working directory”, ou “exibir o diretório de trabalho”. Seu diretório de trabalho é aquele em que o shell se encontra no momento. Os comandos que usam caminhos relativos partem dessa localização.
+
+:::single-choice{#expand-pwd-name}
+O que significa `pwd`?
+
+::option[Print working directory]{#print-working-directory .correct explanation="O nome descreve exatamente o que o comando faz: exibe o diretório de trabalho atual do shell."}
+::option[Present working directory]{#present-working-directory explanation="Na linguagem comum, a localização atual pode ser chamada de diretório presente, mas essa não é a expansão de `pwd`."}
+::option[Print whole directory]{#print-whole-directory explanation="`pwd` informa o caminho do diretório atual. Ele não exibe todo o conteúdo desse diretório."}
+:::
+
+## Uso do Comando pwd
+
+Para descobrir seu diretório atual, digite `pwd` e pressione Enter.
 
 ```bash
 $ pwd
 /home/pete
 ```
 
-A saída é um caminho absoluto. Neste exemplo, o shell está atualmente no diretório home do usuário `pete`.
+A saída é um caminho absoluto. Neste exemplo, o shell está no diretório pessoal do usuário `pete`.
 
-### Por que o pwd é Útil
+A saída exata pode ser diferente em seu sistema porque o nome do usuário, o diretório pessoal e a localização atual podem variar. O comando `pwd` apenas exibe informações; ele não altera o diretório de trabalho. Já `cd` muda o diretório em que o shell se encontra.
+
+:::single-choice{#check-location-without-changing-it}
+Qual ação verifica seu diretório atual sem alterá-lo?
+
+::option[Executar `cd` e ler o diretório para o qual ele muda.]{#run-cd explanation="O comando `cd` altera o diretório de trabalho. Ele não atende ao requisito de verificar a localização sem modificá-la."}
+::option[Inserir `/home/pete` e usar o caminho como um comando.]{#run-path explanation="Um caminho absoluto identifica uma localização, mas o caminho sozinho não é o comando que informa seu diretório atual."}
+::option[Executar `pwd` e ler o caminho absoluto exibido.]{#run-pwd .correct explanation="`pwd` informa a localização atual do shell sem mudá-la. Por isso, você pode usá-lo com segurança sempre que precisar confirmar onde está."}
+:::
+
+## Por que pwd É Útil
 
 Use `pwd` quando:
 
-- Você está seguindo instruções e precisa confirmar sua localização.
-- Um comando falhou porque um caminho de arquivo estava errado.
-- Você navegou por vários diretórios e perdeu a noção de onde está.
-- Você quer copiar o caminho do diretório atual para outro comando.
+- estiver seguindo instruções e precisar confirmar sua localização;
+- um comando falhar porque o caminho de um arquivo está errado;
+- tiver percorrido vários diretórios e perdido a noção de onde está;
+- quiser copiar o caminho do diretório atual para outro comando.
 
 Por exemplo:
 
@@ -76,30 +111,19 @@ $ ls
 app.py  README.md
 ```
 
-Isso indica que `app.py` e `README.md` estão localizados em `/home/pete/projects`.
+Isso mostra que `app.py` e `README.md` estão localizados em `/home/pete/projects`.
 
-### Perguntas Comuns
+Para reforçar sua compreensão sobre a navegação no sistema de arquivos do Linux e a identificação da localização atual, experimente estes laboratórios práticos:
 
-**O pwd altera alguma coisa?** Não. `pwd` apenas imprime informações.
+1. **[Comando pwd do Linux: Exibição de Diretórios](https://labex.io/labs/linux-linux-pwd-command-directory-displaying-209734)** — Este laboratório oferece uma visão geral focada e o uso prático do comando `pwd`, em correspondência direta com a identificação do diretório atual apresentada nesta lição.
+2. **[Navegação em Diretórios no Linux](https://labex.io/labs/linux-directory-navigation-387844)** — Teste suas habilidades básicas na linha de comando navegando por vários diretórios e consolide sua compreensão sobre caminhos e a estrutura do sistema de arquivos.
+3. **[Comando cd do Linux: Mudança de Diretórios](https://labex.io/labs/linux-linux-cd-command-directory-changing-209733)** — Aprenda a navegar com eficiência pelo sistema de arquivos usando `cd`, conhecendo diferentes técnicas para mudar de diretório e explorar sua estrutura.
 
-**Por que a saída é diferente no meu sistema?** Seu nome de usuário, diretório home e localização atual podem ser diferentes.
+## Resumo
 
-**Qual é a diferença entre pwd e cd?** `pwd` mostra onde você está. `cd` muda onde você está.
+Agora você sabe usar `pwd` para identificar sua localização atual no sistema de arquivos do Linux.
 
-## Exercise
-
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux file system navigation and identifying your current location:
-
-1. **[Linux pwd Command: Directory Displaying](https://labex.io/pt/labs/linux-linux-pwd-command-directory-displaying-209734)** - This lab provides a focused overview and practical usage of the `pwd` command, directly aligning with the lesson's introduction to finding your current directory.
-2. **[Linux Directory Navigation](https://labex.io/pt/labs/linux-directory-navigation-387844)** - Put your basic Linux command-line skills to the test by navigating through various directories, solidifying your understanding of paths and the file system structure.
-3. **[Linux cd Command: Directory Changing](https://labex.io/pt/labs/linux-linux-cd-command-directory-changing-209733)** - Learn to efficiently navigate your file system using the `cd` command, understanding different techniques for changing directories and exploring the file structure.
-
-These labs will help you apply the concepts of file system hierarchy and navigation in real scenarios and build confidence with essential Linux commands.
-
-## Quiz Question
-
-Qual comando é usado para descobrir o diretório em que você está atualmente? (Por favor, responda em inglês, usando apenas o nome do comando em letras minúsculas.)
-
-## Quiz Answer
-
-pwd
+1. Reconheça a raiz da árvore de diretórios.
+2. Diferencie um caminho absoluto de um caminho relativo.
+3. Explique o significado de `pwd` e o que ele informa.
+4. Verifique seu diretório de trabalho sem alterá-lo.

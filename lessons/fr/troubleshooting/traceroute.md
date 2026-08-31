@@ -1,60 +1,93 @@
 ---
-index: 3
+lesson_id: "traceroute"
+course_id: "troubleshooting"
 lang: "fr"
+order_index: 3
 title: "traceroute"
+description: "Découvrez comment traceroute trouve les sauts répondants et comment interpréter silences, délais et variations de chemin."
 meta_title: "traceroute - Dépannage"
-meta_description: "Maîtrisez la commande traceroute Linux pour tracer les chemins réseau et dépanner les problèmes de connectivité. Ce tutoriel explique comment traceroute utilise le TTL pour cartographier le chemin emprunté par les paquets jusqu'à leur destination."
-meta_keywords: "traceroute, traceroute linux, réseau Linux, dépannage réseau, TTL, routage de paquets, commandes Linux, débutant, tutoriel"
+meta_description: "Maîtrisez traceroute sous Linux pour suivre les routes réseau et comprendre le rôle du TTL dans le diagnostic."
+meta_keywords: "traceroute Linux, dépannage réseau, TTL, routage, commandes Linux"
 ---
 
-## Lesson Content
+`traceroute` envoie des sondes avec des valeurs croissantes de TTL IPv4 ou Hop Limit IPv6. Les routeurs où la valeur expire peuvent renvoyer Time Exceeded et révéler certains points répondants du trajet aller.
 
-La commande `traceroute` est un outil de diagnostic réseau fondamental utilisé pour tracer le chemin emprunté par les paquets depuis votre ordinateur jusqu'à un hôte de destination. En révélant chaque « saut » ou routeur rencontré en cours de route, elle vous aide à identifier les goulots d'étranglement du réseau et à dépanner les problèmes de connectivité. L'utilitaire `traceroute linux` est essentiel pour tout administrateur système ou ingénieur réseau.
+## Fonctionnement de la découverte des sauts
 
-### Comment fonctionne Traceroute
+Les sondes commencent avec une limite de un, puis l'augmentent. Le premier routeur la décrémente à zéro et peut renvoyer une erreur ICMP. Une limite de deux atteint le deuxième routeur, et ainsi de suite jusqu'à la destination ou la limite maximale.
 
-Le mécanisme derrière `traceroute` réside dans sa manipulation astucieuse du champ Time To Live (TTL) dans l'en-tête d'un paquet IP. Le processus fonctionne comme suit :
+:::single-choice{#traceroute-expiring-field}
+Quel champ fait expirer les sondes successives sur des routeurs plus éloignés ?
 
-1. `traceroute` envoie un paquet de sonde avec une valeur TTL de 1.
-2. Le premier routeur sur le chemin reçoit le paquet, décrémente le TTL à 0 et le supprime. Le routeur renvoie ensuite un message ICMP « Time Exceeded » (Temps dépassé) à votre ordinateur.
-3. `traceroute` enregistre l'adresse IP du routeur et le temps de trajet aller-retour.
-4. Il envoie ensuite un autre paquet, cette fois avec un TTL de 2. Ce paquet passe le premier routeur avec succès mais est supprimé par le deuxième routeur, qui renvoie à nouveau un message « Time Exceeded ».
-5. Ce processus se répète, le TTL s'incrémentant de un pour chaque ensemble de paquets subséquent. En construisant une liste des routeurs qui renvoient des messages « Time Exceeded », `traceroute` cartographie l'itinéraire complet.
-6. Le processus se termine lorsque les paquets atteignent finalement la destination, qui répond avec un message ICMP « Echo Reply » (Réponse d'écho).
+::option[Le TTL du cache DNS du nom de destination.]{#traceroute-dns-ttl explanation="La durée d'un enregistrement DNS ne contrôle pas les sauts de transfert."}
+::option[L'adresse MAC Ethernet source.]{#traceroute-source-mac explanation="Les adresses de liaison ne portent pas de compteur de sauts de bout en bout."}
+::option[Le TTL IPv4 ou Hop Limit IPv6.]{#traceroute-hop-field .correct explanation="L'augmentation de ce compteur borné expose les sauts routés qui répondent."}
+:::
 
-### Comprendre la sortie de Traceroute
+## Méthodes de sondage
 
-Examinons un exemple de sortie de l'exécution de `traceroute` dans un terminal Linux :
+Le traceroute Linux traditionnel envoie souvent des datagrammes UDP vers des ports élevés. La destination peut terminer la découverte avec ICMP Port Unreachable. D'autres options utilisent ICMP Echo ou TCP SYN :
 
 ```bash
-$ traceroute google.com
-traceroute vers google.com (216.58.216.174), 30 sauts max, paquets de 60 octets
- 1  192.168.4.254 (192.168.4.254)  0.028 ms  0.009 ms  0.008 ms
- 2  100.64.1.113 (100.64.1.113)  1.227 ms  1.226 ms 0.920 ms
- 3  100.64.0.20 (100.64.0.20)  1.501 ms 1.556 ms  0.855 ms
+$ traceroute -n example.com
+$ traceroute -I -n example.com
+$ traceroute -T -p 443 -n example.com
 ```
 
-Chaque ligne numérotée représente un saut le long du chemin réseau. Voici comment interpréter les informations :
+Privilèges et options varient. N'utilisez que des méthodes autorisées et notez-les lorsque vous comparez des résultats.
 
-- **Numéro de saut :** La première colonne (par exemple, `1`, `2`, `3`) indique la séquence du routeur dans le chemin.
-- **Nom et adresse IP du routeur :** La partie suivante montre le nom d'hôte (s'il peut être résolu) et l'adresse IP du routeur à ce saut.
-- **Temps de trajet aller-retour (RTT) :** Les trois dernières colonnes indiquent le temps de trajet aller-retour pour chacun des trois paquets de sonde envoyés à ce saut spécifique. Ces temps, mesurés en millisecondes (ms), vous aident à évaluer la latence à chaque étape du parcours.
+:::single-choice{#traceroute-default-destination-response}
+Qu'est-ce qui termine couramment un traceroute UDP Linux traditionnel ?
 
-Utiliser la commande `traceroute linux` efficacement fournit un aperçu inestimable des performances et de la structure de votre réseau.
+::option[Une réponse ICMP Port Unreachable de la destination.]{#traceroute-port-unreachable .correct explanation="Les ports UDP élevés sont généralement inutilisés, ce qui permet à la destination de se signaler par cette erreur."}
+::option[Une réponse HTTP 200 obligatoire de chaque routeur.]{#traceroute-http-every-router explanation="Les routeurs renvoient des erreurs de contrôle réseau, pas des réponses HTTP."}
+::option[Une diffusion Ethernet de la destination sur Internet.]{#traceroute-ethernet-broadcast explanation="Les diffusions de liaison ne franchissent pas les réseaux routés."}
+:::
 
-## Exercise
+## Interpréter les astérisques
 
-La pratique est essentielle pour maîtriser le diagnostic réseau. Les laboratoires pratiques suivants vous aideront à renforcer votre compréhension de la découverte de chemin réseau et du dépannage avec des outils comme `traceroute` :
+Un astérisque signifie qu'aucune réponse n'a été observée avant l'expiration. Le routeur peut transférer le trafic tout en filtrant ou limitant ses réponses de diagnostic. Si des sauts suivants répondent, le saut silencieux a bien transmis au moins certaines sondes.
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à utiliser la commande `ip` pour configurer les paramètres réseau, puis vérifiez la connectivité et les chemins de routage avec `traceroute`.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment `ping` et `arp` fonctionnent ensemble pour comprendre les interactions de la couche réseau, qui sont des concepts fondamentaux pour le fonctionnement de `traceroute`.
+:::single-choice{#traceroute-asterisk-meaning}
+Que prouve `*` pour un saut ?
 
-Ces laboratoires vous aideront à appliquer les concepts de diagnostic réseau dans des scénarios réels et à renforcer votre confiance avec les outils réseau Linux essentiels.
+::option[Que le routeur abandonne définitivement tout trafic de transit.]{#traceroute-star-all-drop explanation="Les réponses ultérieures peuvent démontrer la poursuite du transfert."}
+::option[Seulement qu'aucune réponse correspondante n'est arrivée avant l'expiration.]{#traceroute-star-no-response .correct explanation="Filtrage, limitation, perte et problème de route retour peuvent tous produire ce silence."}
+::option[Que la destination n'a aucune adresse IP.]{#traceroute-star-no-address explanation="La sonde vise déjà une adresse ; un saut silencieux ne la supprime pas."}
+:::
 
-## Quiz Question
+## Délais et variations de chemin
 
-Qu'est-ce qui est décrémenté de un lors des sauts à travers le réseau ? (Veuillez répondre en anglais, en faisant attention à la casse)
+Les temps par saut sont des allers-retours vers des réponses de contrôle, pas la latence ajoutée entre deux lignes. Les routeurs peuvent déprioriser ces réponses. L'équilibrage peut faire varier le chemin, et la résolution de noms ralentir l'affichage ; `-n` évite les recherches inverses.
 
-## Quiz Answer
+La route retour de chaque réponse ICMP peut différer du trajet aller. Répétez les tests et corrélez-les avec la mesure applicative avant d'identifier un goulot.
 
-TTL
+:::single-choice{#traceroute-hop-rtt-limit}
+Pourquoi ne faut-il pas soustraire les RTT de deux sauts comme latence exacte du lien ?
+
+::option[Parce que traceroute exprime tous les temps en octets.]{#traceroute-times-bytes explanation="Les durées de sonde sont normalement en millisecondes."}
+::option[Parce que les réponses peuvent emprunter d'autres retours et subir un traitement de contrôle variable.]{#traceroute-rtt-asymmetry .correct explanation="Ce sont des allers-retours source-saut distincts, pas des mesures unidirectionnelles synchronisées."}
+::option[Parce que chaque routeur possède la même horloge que la source.]{#traceroute-router-clock explanation="La mesure ne repose pas sur la synchronisation des horloges distantes."}
+:::
+
+## Comparer avec l'application
+
+Un traceroute peut atteindre la destination tandis que le service est bloqué, et un service fonctionner tandis que des routeurs intermédiaires cachent leurs réponses. Testez la même famille, adresse, transport et port que l'application, puis utilisez traceroute comme indice complémentaire.
+
+:::single-choice{#traceroute-service-proof}
+Un traceroute terminé prouve-t-il la bonne santé d'un service HTTPS ?
+
+::option[Oui, car chaque saut valide le certificat.]{#traceroute-validates-cert explanation="Les routeurs n'effectuent pas la validation TLS du client."}
+::option[Non ; le transport, TLS et HTTP exigent leurs propres tests.]{#traceroute-not-app-proof .correct explanation="La découverte du chemin et la santé de l'application relèvent de couches différentes."}
+::option[Oui, mais seulement si les noms DNS inverses apparaissent.]{#traceroute-rdns-proof explanation="Les noms n'établissent pas le fonctionnement applicatif."}
+:::
+
+## Résumé
+
+Vous savez interpréter traceroute comme une série de sondes à sauts bornés, pas comme un oracle complet.
+
+1. Expliquer la découverte par expiration du TTL ou Hop Limit.
+2. Noter la méthode UDP, ICMP ou TCP.
+3. Traiter les astérisques comme des réponses absentes, pas des pannes prouvées.
+4. Ne pas déduire une latence exacte des RTT adjacents.
+5. Corréler le chemin avec l'application réelle.

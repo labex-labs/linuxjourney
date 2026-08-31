@@ -1,135 +1,157 @@
 ---
-index: 11
+lesson_id: "move-mv-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 11
 title: "mv（移動）"
+description: "意図しない上書きを避けながら、ファイルやディレクトリの名前を変更し、移動する方法を学びます。"
 meta_title: "mv（移動） - コマンドライン"
 meta_description: "Linuxのmvコマンドを学び、ファイルの移動、ファイルやディレクトリの名前変更、複数ファイルの移動、上書き回避の方法を例とともに解説します。"
 meta_keywords: "linux mv コマンド, mv コマンド, linux ファイル移動, linux ファイル名前変更, linux ディレクトリ名前変更, mv -i, mv -n, mv -t"
 ---
 
-## Lesson Content
+`mv` コマンドは、ファイルやディレクトリの名前を変更するか、別の場所へ移動します。`cp` とは異なり、移動に成功した後は元のパス名を残しません。
 
-`mv`コマンドは「move（移動）」の略で、Linux環境で基本的なユーティリティです。主に2つの目的があります：ファイルやディレクトリの名前変更と、別の場所への移動です。
-
-基本的な構文は以下の通りです：
+基本構文は次のとおりです。
 
 ```bash
 mv [OPTIONS] SOURCE DESTINATION
 ```
 
-`cp`がコピーを作成するのに対し、`mv`は元のアイテムの場所や名前を変更します。
+## ファイルとディレクトリの名前を変更する
 
-### ファイルやディレクトリの名前変更
+現在のパス名を先、新しいパス名を後に置きます。
 
-`mv`の最も一般的な使い方の一つは名前変更です。構文は簡単で、古い名前と新しい名前を指定します。
-
-ファイルの名前を変更するには：
+ファイルの名前を変更します。
 
 ```bash
 $ mv oldfile newfile
 ```
 
-同じ方法でディレクトリの名前も変更できます：
+同じオペランド順でディレクトリ名も変更できます。
 
 ```bash
 $ mv old_directory_name new_directory_name
 ```
 
-### ファイルやディレクトリの移動
+:::single-choice{#rename-file-with-mv}
+現在のディレクトリで `cat` を `dog` へ名前変更するコマンドはどれですか？
 
-`mv`コマンドのもう一つの主要な機能は、アイテムをある場所から別の場所へ移動することです。
+::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` は `cat` をコピー元パス、`dog` を新しいコピー先パスとして扱います。"}
+::option[`mv dog cat`]{#rename-dog explanation="オペランドの順序が逆で、既存の `dog` を `cat` へ名前変更しようとします。"}
+::option[`cp cat dog`]{#copy-cat explanation="`cp` は `cat` を残したまま `dog` というコピーを作り、要求された名前変更にはなりません。"}
+:::
 
-単一のファイルを別のディレクトリに移動するには：
+## 項目をディレクトリへ移動する
+
+最後のオペランドが既存ディレクトリなら、`mv` はその中へコピー元を置きます。
 
 ```bash
 $ mv file2 /home/pete/Documents
 ```
 
-複数のファイルを一度に移動することもできます。移動元のファイルをすべて列挙し、最後に移動先のディレクトリを指定します：
+複数のコピー元を移動するには、すべてを先に並べ、対象ディレクトリを最後に置きます。
 
 ```bash
 $ mv file_1 file_2 somedirectory/
 ```
 
-GNU/Linuxシステムでは、`-t`オプションが便利です。これにより移動先のディレクトリを先に指定でき、多くのファイルを移動するときにわかりやすくなります。
+GNU `mv` には、対象ディレクトリをコピー元より前に置く `-t` もあります。
 
 ```bash
 $ mv -t somedirectory/ file_1 file_2
 ```
 
-`cp`コマンドとは異なり、ディレクトリを移動するのに再帰オプションは必要ありません。`mv`はデフォルトでディレクトリを扱います。
+`cp` とは異なり、`mv` でディレクトリを移動するために再帰オプションは必要ありません。
 
-### mvコマンドの重要なオプション
+:::single-choice{#move-multiple-files}
+`file_1` と `file_2` の両方を、既存の `archive/` ディレクトリへ移動するコマンドはどれですか？
 
-デフォルトでは、同じ名前のファイルが移動先に存在すると、`mv`は警告なしに上書きします。誤ってデータを失わないように、以下のオプションを使うことができます：
+::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="GNU `-t` がなければ、複数のコピー元を移動するときは対象ディレクトリを最後に置きます。これは標準の複数コピー元形式ではありません。"}
+::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` はファイルやディレクトリの移動に `-r` を使いません。通常の複数コピー元形式で処理できます。"}
+::option[`mv file_1 file_2 archive/`]{#target-last .correct explanation="コピー元が複数ある場合、既存の対象ディレクトリを最後のオペランドに置き、両ファイルを受け取ります。"}
+:::
 
-- **-i（インタラクティブ）**：重要な安全機能です。既存のファイルを上書きする前に確認を求めます。
+## 既存のコピー先を制御する
+
+既定では、`mv` は既存のコピー先を置換できます。実行前にコピー元とコピー先のパス名を確認し、必要に応じて上書き方針を選びます。
+
+- `-i`：既存のコピー先を置換する前に確認する
 
   ```bash
   $ mv -i source_file destination_directory
   ```
 
-- **-b（バックアップ）**：上書きする場合でも元のファイルを残したいときに使います。移動先のファイルのバックアップを作成し、通常はチルダ（`~`）を付けて名前を変えます。
+- `-n`：既存のコピー先を上書きしない
+
+  ```bash
+  $ mv -n source_file destination_directory
+  ```
+
+- `-b`：GNU/Linux で、置換されるコピー先のバックアップを作る。既定の接尾辞は通常 `~`
 
   ```bash
   $ mv -b file1 directory_with_file1
   ```
 
-- **-v（詳細表示）**：`mv`コマンドが何をしているかを表示し、移動または名前変更されたファイルを示します。
-
-  ```bash
-  $ mv -v file1 file2 somedirectory/
-  ```
-
-もう一つ便利なオプションは`-n`で、これは上書きをしない（no clobber）という意味です。既存のファイルを上書きしません。
+- `-v`：各移動を実行時に表示する
 
 ```bash
-$ mv -n source_file destination_directory
+$ mv -v file1 file2 somedirectory/
 ```
 
-### よくあるmvの例
+:::single-choice{#move-without-overwriting}
+既存のコピー先を上書きしない場合だけ、`draft.txt` を `finished/` へ移動するコマンドはどれですか？
 
-ファイルの名前を変更する：
+::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="`-i` はコピー先が存在する場合に処理を尋ね、確認すれば上書きできます。"}
+::option[`mv -b draft.txt finished/`]{#backup-draft explanation="`-b` は以前のコピー先をバックアップしながら置換を許可し、上書き自体は防ぎません。"}
+::option[`mv -n draft.txt finished/`]{#no-clobber-draft .correct explanation="`-n` は既存のコピー先を上書きする移動を飛ばします。"}
+:::
 
-```bash
-$ mv draft.txt final.txt
-```
+## ディレクトリとワイルドカードの一致結果を移動する
 
-ディレクトリを移動する：
+`-r` なしでディレクトリを移動できます。
 
 ```bash
 $ mv project /home/pete/Documents/
 ```
 
-すべてのテキストファイルをフォルダに移動する：
+シェルのワイルドカードで複数のコピー元を選べます。
 
 ```bash
+$ ls *.txt
 $ mv *.txt notes/
 ```
 
-多くのファイルを移動する前に、`ls`でワイルドカードのマッチを確認しましょう。
+`ls` で一致結果を確認すると、複数のパス名を変更する前に、広すぎるパターンへ気付けます。
 
-### よくある質問
+:::single-choice{#move-directory-without-recursion}
+`project/` ディレクトリを `/srv/archive/` へ移動するコマンドはどれですか？
 
-**mvはファイルをコピーしますか？** いいえ。`mv`は元のアイテムを移動または名前変更します。
+::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` はこの目的に `-r` を必要とせず、対応もしません。通常の移動操作でディレクトリを扱います。"}
+::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="通常の `mv` 構文で、再帰フラグなしにディレクトリを既存の対象ディレクトリへ移動します。"}
+::option[`cp project/ /srv/archive/`]{#copy-project explanation="通常の `cp` はディレクトリを移動せず、コピーには再帰オプションが必要です。元のディレクトリも残ります。"}
+:::
 
-**mvはファイルを上書きしますか？** はい。`mv -i`で確認を求めたり、`mv -n`で上書きを避けることができます。
+:::single-choice{#preview-text-file-move}
+`mv *.txt notes/` を実行する前に、同じワイルドカードが選ぶパス名を確認するコマンドはどれですか？
 
-**ディレクトリにはmv -rが必要ですか？** いいえ。`mv`は`-r`なしでディレクトリを移動できます。
+::option[`ls '*.txt'`]{#literal-text-pattern explanation="引用符が `*` の展開を防ぐため、移動対象ではなくアスタリスクを含むリテラル名を探します。"}
+::option[`ls *.txt`]{#list-text-matches .correct explanation="シェルは `mv` と同様に `ls` の `*.txt` を展開し、選択される隠しファイル以外の名前を先に確認できます。"}
+::option[`mv -v *.txt notes/`]{#verbose-text-move explanation="詳細モードは移動の実行中に報告します。読み取り専用の確認ではなく操作を実行します。"}
+:::
 
-## Exercise
+項目の移動と名前変更を練習するには、次のハンズオンラボを利用してください。
 
-練習が上達の鍵です！`mv`のようなLinuxコマンドを習得するには実践が不可欠です。以下のラボで、実際の環境でファイルやディレクトリの移動と名前変更を確実に理解しましょう：
+1. **[Linux mv コマンド：ファイルの移動と名前変更](https://labex.io/ja/labs/linux-linux-mv-command-file-moving-and-renaming-209743)**：`mv` でファイルとディレクトリを移動、名前変更し、オプションと動作を学びます。
+2. **[ファイルとディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)**：`mv`、`cp`、`rm` を使い、プロジェクト構造を整理します。
 
-1. **[Linux mvコマンド：ファイルの移動と名前変更](https://labex.io/ja/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - `mv`コマンドを使ってファイルやディレクトリを移動・名前変更し、そのさまざまなオプションや挙動を理解します。
-2. **[ファイルとディレクトリの整理](https://labex.io/ja/labs/linux-organizing-files-and-directories-387877)** - `mv`（および`cp`や`rm`）の知識を活かして、プロジェクト構造の整理、ファイルの移動、ディレクトリのクリーンアップに挑戦します。
+## まとめ
 
-これらのラボで実際のシナリオに概念を適用し、`mv`コマンドを使ったファイル・ディレクトリ管理に自信をつけましょう。
+これで既存のコピー先を保護しながら、ファイルやディレクトリの名前を変更、移動できるようになりました。
 
-## Quiz Question
-
-`mv`コマンドを使って、ファイル名`cat`を`dog`に名前変更するにはどうしますか？完全なコマンドを答えてください。注意：回答は大文字小文字を区別し、小文字の英語で入力してください。
-
-## Quiz Answer
-
-mv cat dog
+1. コピー元を新しいパス名より前に置く。
+2. 複数のコピー元の後に対象ディレクトリを置く。
+3. コピー先の置換前に確認、スキップ、バックアップを選ぶ。
+4. 再帰オプションなしでディレクトリを移動する。
+5. 一括移動前にワイルドカードの一致結果を確認する。

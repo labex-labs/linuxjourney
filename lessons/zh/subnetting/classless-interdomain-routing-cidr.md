@@ -1,48 +1,90 @@
 ---
-index: 5
+lesson_id: "classless-interdomain-routing-cidr"
+course_id: "subnetting"
 lang: "zh"
+order_index: 5
 title: "CIDR"
+description: "学习 CIDR 前缀如何表示地址范围、子网边界和聚合路由。"
 meta_title: "CIDR - 子网划分"
-meta_description: "CIDR 表示法指南。了解 CIDR 格式、CIDR 子网划分以及如何在您的网络（包括 Ubuntu 服务器）上计算主机数。掌握 CIDR IP 地址分配。"
-meta_keywords: "CIDR, cidr 子网划分，cidr 格式，子网掩码，IP 地址分配，ubuntu 服务器子网 cidr, ubuntu 子网 cidr, 网络前缀，Linux 网络"
+meta_description: "CIDR 表示法指南。了解 CIDR 格式、CIDR 子网划分，以及如何计算包括 Ubuntu 服务器在内的网络主机数量，掌握 CIDR IP 寻址。"
+meta_keywords: "CIDR, CIDR 子网划分, CIDR 格式, 子网掩码, IP 寻址, Ubuntu 服务器子网 CIDR, 网络前缀, Linux 网络"
 ---
 
-## Lesson Content
+无类别域间路由使用前缀长度表示地址范围，而不依赖历史地址类别。CIDR 为 IPv4 和 IPv6 支持大小可变的分配、子网划分和路由聚合。
 
-CIDR（无类别域间路由）是一种分配 IP 地址和路由网际协议数据包的方法。它提供了一种更简洁、更高效的方式来表示子网掩码，取代了旧的类别网络设计。理解 CIDR 对于现代网络管理至关重要。
+## 阅读前缀表示法
 
-### CIDR 格式
+在 `10.42.3.17/24` 中，前 24 位是网络前缀，剩余八位表示范围内的位置。规范网络为 `10.42.3.0/24`；配置接口时，仍可将所给主机地址与前缀写在一起。
 
-您经常会看到使用**CIDR 格式**表示的网络，即 IP 地址后跟一个斜杠和一个数字。例如，子网 `10.42.3.0`，其子网掩码为 `255.255.255.0`，可以写成 `10.42.3.0/24`。这种单一的表示法同时包含了网络地址和前缀长度。
+:::single-choice{#cidr-prefix-meaning}
+IPv4 CIDR 值中的 `/24` 指定什么？
 
-斜杠后的数字表示用于网络前缀的 IP 地址位数。这是配置网络（例如在 **Ubuntu 服务器**上）时的一项常见任务，您可能需要使用 `ubuntu subnet cidr` 地址来定义一个接口。
+::option[开头的二十四个网络前缀位。]{#cidr-24-prefix-bits .correct explanation="IPv4 的其余八位可在该前缀内变化。"}
+::option[每个子网有二十四个可用地址。]{#cidr-24-addresses explanation="/24 包含 256 个地址值。"}
+::option[该网络的 TCP 目标端口。]{#cidr-24-port explanation="CIDR 与传输端口相互独立。"}
+:::
 
-### CIDR 子网划分和主机计算
+## 计算范围大小
 
-一个 IPv4 地址由 4 个字节组成，共 32 位。CIDR 前缀决定了地址中网络部分和主机部分的划分。要实现有效的**cidr subnetting**（CIDR 子网划分），您需要知道如何计算可用主机的数量。
+IPv4 前缀 `/23` 留出九个主机位，因此覆盖 `2^9 = 512` 个地址。对齐的前缀 `123.12.24.0/23` 范围为：
 
-我们以 `123.12.24.0/23` 为例。这意味着前 23 位是网络前缀。要找到可用主机的数量：
+```text
+first: 123.12.24.0
+last:  123.12.25.255
+```
 
-1. 将 CIDR 前缀从总位数（32）中减去：`32 - 23 = 9`。这为主机部分留下了 9 位。
-2. 计算子网中的总地址数：`2^9 = 512`。
-3. 从总数中减去 2。一个地址保留给网络本身，一个用于广播地址。这留下了 `512 - 2 = 510` 个可用主机地址。
+在传统广播用法中，第一个地址是网络地址，最后一个地址是定向广播地址。不要把“减去两个”的可用主机快捷公式盲目应用到 `/31` 点对点链路或 `/32` 主机路由。
 
-另一个常见的例子是 `/30` 网络，它提供 `32 - 30 = 2` 个主机位。这导致 `2^2 = 4` 个总地址，只留下 2 个可用地址，使其非常适合点对点链路。
+:::single-choice{#cidr-23-total}
+`/23` 包含多少个 IPv4 地址？
 
-## Exercise
+::option[512]{#cidr-total-512 .correct explanation="九个可变位产生 2^9 种组合。"}
+::option[23]{#cidr-total-23 explanation="前缀数字统计固定的位数，而不是地址数。"}
+::option[510]{#cidr-total-510 explanation="这是减去特殊端点后的传统可用数量，并不是总范围大小。"}
+:::
 
-为了掌握这些概念，请通过一些实践实验来加强您对 CIDR、IP 寻址和**cidr subnetting**（CIDR 子网划分）的理解：
+## 检查对齐
 
-1. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，包括转换 CIDR 掩码和计算可用主机。
-2. **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 学习在模拟环境中分配静态 IP 地址并观察 IP 子网如何控制直接网络通信。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 等命令探索 IP 寻址和网络可达性，以测试各种 IP 类型和连通性。
+前缀必须从其二进制边界开始。当前面的八位组固定时，`/23` 在第三个八位组中以 2 为块递增，因此 `123.12.24.0/23` 已对齐，而 `123.12.25.0/23` 会规范化为相同的 `123.12.24.0/23` 范围。
 
-这些实验将帮助您在实际场景中应用 CIDR 和 IP 寻址的概念，并建立对网络配置的信心。
+:::single-choice{#cidr-canonical-25}
+包含 `123.12.25.0` 的规范 `/23` 网络是什么？
 
-## Quiz Question
+::option[只能是从 25 开始的 `123.12.25.0/23`。]{#cidr-25-unaligned explanation="最后一个前缀位会把第三个八位组值按对齐的二元组分组。"}
+::option[`123.12.0.0/23`]{#cidr-third-zero explanation="它描述的是另一个 /23 范围。"}
+::option[`123.12.24.0/23`]{#cidr-24-canonical .correct explanation="第三个八位组的 24 和 25 共享同一个对齐的 23 位前缀。"}
+:::
 
-一个 IPv4 地址由多少位组成？
+## 聚合路由
 
-## Quiz Answer
+CIDR 可以用一条聚合路由通告多个连续、等大且正确对齐的前缀。例如，`192.0.2.0/25` 和 `192.0.2.128/25` 可以合并为 `192.0.2.0/24`。只有通告路由器能够正确到达整个聚合范围，或有策略防止环路和黑洞时，聚合才是安全的。
 
-32
+:::single-choice{#cidr-aggregate-two-25s}
+哪个聚合前缀覆盖 `192.0.2.0/24` 的两个半区？
+
+::option[`192.0.2.0/26`]{#cidr-aggregate-26 explanation="/26 只覆盖 64 个地址，比任意一个半区都小。"}
+::option[`192.0.3.0/25`]{#cidr-aggregate-other explanation="它位于所述地址范围之外。"}
+::option[`192.0.2.0/24`]{#cidr-aggregate-24 .correct explanation="两个连续对齐的 /25 范围只在下一位不同，共享 /24 前缀。"}
+:::
+
+## 最长前缀路由
+
+当路由重叠时，转发通常会选择匹配前缀最长的合格路由。`/24` 路由比覆盖它的 `/16` 更具体；默认路由 `/0` 只有在没有更具体的合格路由胜出时才会被选中。
+
+:::single-choice{#cidr-route-specificity}
+对于目标 `10.42.3.8`，哪条合格路由更具体？
+
+::option[`10.42.3.0/24`]{#cidr-route-24 .correct explanation="24 位匹配更长，因此比 /8 更具体。"}
+::option[`10.0.0.0/8`]{#cidr-route-8 explanation="它能够匹配，但固定的目标位更少。"}
+::option[`0.0.0.0/0`]{#cidr-default explanation="默认路由是最不具体的 IPv4 前缀。"}
+:::
+
+## 总结
+
+现在，你可以使用 CIDR 表示地址范围和路由选择。
+
+1. 将斜杠后的值解释为开头前缀位的数量。
+2. 根据剩余位计算总范围大小。
+3. 将前缀规范化到对齐的网络边界。
+4. 只聚合具有有效可达性的连续对齐范围。
+5. 路由查找时优先选择最长的合格前缀。

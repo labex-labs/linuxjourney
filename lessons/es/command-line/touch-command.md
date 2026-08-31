@@ -1,113 +1,134 @@
 ---
-index: 5
+lesson_id: "touch-command"
+course_id: "command-line"
 lang: "es"
+order_index: 5
 title: "touch"
+description: "Aprende a crear archivos vacíos y gestionar sus marcas de tiempo con la orden `touch`."
 meta_title: "touch - Línea de Comandos"
 meta_description: "Aprende el comando touch de Linux con ejemplos para crear archivos vacíos, actualizar marcas de tiempo, establecer fechas, usar archivos de referencia y evitar sobrescrituras."
 meta_keywords: "comando linux touch, comando touch, crear archivo linux, actualizar marca de tiempo linux, touch -d, touch -r, touch -c"
 ---
 
-## Lesson Content
+La orden `touch` modifica las marcas de tiempo de los archivos. También se utiliza habitualmente para crear uno o varios archivos vacíos.
 
-El comando `touch` es una utilidad estándar en sistemas operativos tipo Unix. Aunque su propósito principal es cambiar las marcas de tiempo de los archivos, también se usa comúnmente para crear archivos nuevos y vacíos.
-
-La sintaxis básica es:
+Su sintaxis básica es:
 
 ```bash
 touch [OPTIONS] FILE...
 ```
 
-### Creación de Archivos Nuevos
+## Creación de archivos vacíos
 
-La forma más sencilla de crear un archivo vacío es usar `touch` seguido del nombre del archivo. Si el archivo no existe, `touch` lo crea.
+Si el archivo indicado no existe, `touch` lo crea vacío:
 
 ```bash
 $ touch mysuperduperfile
 ```
 
-Después de ejecutar este comando, aparecerá un nuevo archivo vacío llamado `mysuperduperfile` en tu directorio actual. Puedes crear varios archivos a la vez listando sus nombres.
+Puedes crear varios archivos con una sola orden enumerando sus nombres:
 
 ```bash
 $ touch file1.txt file2.txt file3.log
 ```
 
-Esto es útil cuando configuras la estructura de un proyecto o creas archivos de marcador de posición antes de agregar contenido.
+Esto resulta útil para crear marcadores de posición, pero `touch` no añade texto a los archivos. Cuando necesites un archivo con contenido, utiliza un editor de texto u otra orden diseñada para escribir datos.
 
-### Actualización de Marcas de Tiempo de Archivos
+:::single-choice{#create-several-empty-files}
+¿Qué orden crea tres archivos vacíos llamados `one`, `two` y `three` si aún no existen?
 
-La función original de `touch` es actualizar las marcas de tiempo de acceso y modificación de un archivo o directorio. Si usas `touch` en un archivo existente, actualiza sus marcas de tiempo a la hora actual.
+::option[`touch "one two three"`]{#touch-one-spaced explanation="Las comillas hacen que todo sea un único nombre de archivo con espacios. Esta orden actúa sobre un archivo, no sobre tres."}
+::option[`mkdir one two three`]{#mkdir-three explanation="`mkdir` crea directorios, no archivos normales vacíos. Utiliza `touch` para crear los archivos solicitados."}
+::option[`touch one two three`]{#touch-three .correct explanation="`touch` acepta varios operandos de archivo. Crea cada archivo que falte sin añadirle contenido."}
+:::
 
-Puedes verificar esto usando `ls -l` para revisar la marca de tiempo de un archivo, ejecutando `touch` sobre él, y luego revisando nuevamente.
+## Actualización de las marcas de tiempo
+
+Los archivos registran varias marcas de tiempo. De forma predeterminada, ejecutar `touch` sobre un archivo existente cambia tanto su hora de acceso como su hora de modificación a la hora actual. El contenido del archivo no se altera.
+
+Puedes comparar la hora de modificación mostrada antes y después de ejecutar la orden:
 
 ```bash
-# Check the original timestamp
 $ ls -l mysuperduperfile
-
-# Update the timestamp
 $ touch mysuperduperfile
-
-# Check the new timestamp
 $ ls -l mysuperduperfile
 ```
 
-### Control Avanzado de Marcas de Tiempo
+La salida de `ls -l` suele mostrar la hora de modificación, no la de acceso.
 
-El comando `touch` también ofrece opciones para una manipulación más precisa de las marcas de tiempo.
+:::single-choice{#touch-existing-file}
+¿Qué ocurre al ejecutar `touch report.txt` si `report.txt` ya existe?
 
-Usa un archivo de referencia con `-r` para copiar las marcas de tiempo de un archivo a otro.
+::option[Se actualizan sus marcas de tiempo sin sustituir el contenido.]{#timestamps-only .correct explanation="De forma predeterminada, `touch` actualiza las horas de acceso y modificación de un archivo existente. No sobrescribe sus datos."}
+::option[Se elimina su contenido y el archivo queda vacío.]{#contents-deleted explanation="La creación de un archivo vacío solo ocurre cuando este no existe. Si ya existe, conserva el contenido mientras `touch` actualiza sus marcas de tiempo."}
+::option[La orden falla porque el nombre del archivo ya está en uso.]{#existing-error explanation="`touch` está diseñado para actuar tanto sobre archivos existentes como sobre archivos ausentes. Un nombre existente no constituye un error por sí mismo."}
+:::
+
+## Control de la marca de tiempo que cambia
+
+Utiliza `-a` para cambiar únicamente la hora de acceso o `-m` para cambiar solo la hora de modificación:
 
 ```bash
-$ touch -r file1.txt file2.txt
+$ touch -a notes.txt
+$ touch -m notes.txt
 ```
 
-Establece una fecha y hora específica con `-d`:
+:::single-choice{#change-modification-time-only}
+¿Qué orden actualiza únicamente la hora de modificación de `notes.txt`?
+
+::option[`touch -a notes.txt`]{#access-only explanation="La opción `-a` cambia solo la hora de acceso. No selecciona la hora de modificación solicitada."}
+::option[`touch -m notes.txt`]{#modification-only .correct explanation="La opción `-m` limita el cambio a la hora de modificación. La hora de acceso permanece intacta."}
+::option[`touch -c notes.txt`]{#no-create explanation="La opción `-c` controla si se crea un archivo ausente. No limita la actualización a una sola marca de tiempo."}
+:::
+
+## Establecer o copiar una hora
+
+La opción `-d` acepta una cadena de fecha en vez de utilizar la hora actual:
 
 ```bash
 $ touch -d "2026-06-23 12:30:00" mysuperduperfile
 ```
 
-Usa `-c` cuando quieras actualizar un archivo solo si ya existe. Con `-c`, `touch` no creará un archivo faltante.
+Para asignar a un archivo las mismas horas de acceso y modificación que otro archivo de referencia, utiliza `-r`:
+
+```bash
+$ touch -r file1.txt file2.txt
+```
+
+En este caso, `file1.txt` proporciona las marcas de tiempo y `file2.txt` es el archivo que cambia. La opción `-t` ofrece otra forma de indicar una hora mediante un formato numérico compacto.
+
+:::single-choice{#copy-reference-timestamps}
+¿Qué orden copia las marcas de tiempo de `source.txt` a `target.txt`?
+
+::option[`touch -r source.txt target.txt`]{#reference-source .correct explanation="Con `-r`, el operando siguiente es el archivo de referencia y el último operando es el archivo cuyas marcas de tiempo se actualizan."}
+::option[`touch -r target.txt source.txt`]{#reference-target explanation="Esta orden invierte las funciones de los archivos. Utilizaría `target.txt` como referencia y actualizaría `source.txt`."}
+::option[`touch -d source.txt target.txt`]{#date-source explanation="La opción `-d` espera una cadena de fecha, no un nombre de archivo de referencia. Utiliza `-r` para copiar las marcas de tiempo de otro archivo."}
+:::
+
+## Evitar la creación de archivos
+
+Normalmente, `touch` crea un archivo cuando la ruta indicada no existe. Añade `-c` cuando solo quieras actualizarlo si ya existe:
 
 ```bash
 $ touch -c existing-file.txt
 ```
 
-### Opciones Comunes de touch
+Si `existing-file.txt` no existe, esta orden no lo crea. Este comportamiento puede ser útil en scripts que deben actualizar una marca de tiempo sin introducir un archivo nuevo.
 
-- `-a`: Cambiar solo la hora de acceso.
-- `-m`: Cambiar solo la hora de modificación.
-- `-c`: No crear el archivo si no existe.
-- `-d "FECHA"`: Usar una cadena de fecha específica.
-- `-r ARCHIVO`: Usar la marca de tiempo de otro archivo como referencia.
-- `-t MARCA`: Usar una marca de tiempo en formato numérico compacto.
+:::single-choice{#update-without-creating}
+¿Qué orden actualiza `status.log` si existe, pero no lo crea si falta?
 
-Por ejemplo, esto cambia solo la hora de modificación:
+::option[`touch -a status.log`]{#touch-access explanation="La opción `-a` selecciona la hora de acceso, pero aún podría crear un archivo ausente. No proporciona el comportamiento solicitado."}
+::option[`touch -m status.log`]{#touch-modification explanation="La opción `-m` selecciona la hora de modificación, pero no impide crear un archivo que falte. Para ello se utiliza `-c`."}
+::option[`touch -c status.log`]{#touch-no-create .correct explanation="La opción `-c` impide crear un archivo ausente. Si el archivo existe, sus marcas de tiempo sí pueden actualizarse."}
+:::
 
-```bash
-$ touch -m notes.txt
-```
+## Resumen
 
-### Preguntas Comunes
+Ahora puedes utilizar `touch` para crear archivos vacíos y controlar sus marcas de tiempo.
 
-**¿touch añade texto a un archivo?** No. `touch` crea un archivo vacío o actualiza marcas de tiempo. Usa un editor, `echo` o `cat` para añadir texto.
-
-**¿touch sobrescribe un archivo existente?** No. Actualiza las marcas de tiempo pero no reemplaza el contenido del archivo.
-
-**¿Por qué usar touch en scripts?** Es una forma rápida de asegurar que un archivo exista o de marcar que una tarea ocurrió en un momento determinado.
-
-## Exercise
-
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of creating and managing file system objects:
-
-1. **[Linux mkdir Command: Directory Creating](https://labex.io/es/labs/linux-linux-mkdir-command-directory-creating-209739)** - Learn how to use the `mkdir` command in Linux to create directories, set permissions, and organize your file system. This will help you understand the broader concept of creating new items in the file system.
-2. **[Setting Up a New Project Structure](https://labex.io/es/labs/linux-setting-up-a-new-project-structure-387859)** - Practice your Linux directory management skills by creating a specific project structure and navigating through it using essential commands like `mkdir` and `cd`.
-
-These labs will help you apply the concepts of file system creation and organization in real scenarios and build confidence with Linux commands.
-
-## Quiz Question
-
-¿Cómo se crea un archivo llamado `myfile`? Por favor responde usando solo el comando en inglés, prestando atención a las mayúsculas y minúsculas.
-
-## Quiz Answer
-
-touch myfile
+1. Crear uno o varios archivos vacíos.
+2. Actualizar marcas de tiempo sin cambiar el contenido.
+3. Seleccionar la hora de acceso o de modificación.
+4. Establecer una hora concreta o copiar la de un archivo de referencia.
+5. Evitar la creación de un archivo ausente.

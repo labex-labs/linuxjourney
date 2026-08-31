@@ -1,92 +1,133 @@
 ---
-index: 3
+lesson_id: "debian"
+course_id: "getting-started"
 lang: "fr"
+order_index: 3
 title: "Debian"
+description: "Découvrez comment Debian organise ses versions, ses paquets et son système Linux entretenu par la communauté."
 meta_title: "Distribution Linux Debian"
-meta_description: "Découvrez la distribution Linux Debian, son fonctionnement, ses branches, ses versions, la gestion de paquets APT et pourquoi elle reste une référence pour les serveurs et les postes de travail."
-meta_keywords: "distribution debian, distribution linux debian, qu'est-ce que debian, branches debian, versions debian, gestion de paquets apt, distributions basées sur debian, distribution linux"
+meta_description: "Découvrez la distribution Linux Debian, ses branches et versions, la gestion des paquets avec APT et son rôle dans les systèmes dérivés."
+meta_keywords: "distribution Debian, Debian Linux, branches Debian, versions Debian, gestion paquets APT, distributions basées sur Debian"
 ---
 
-## Lesson Content
+## Qu'est-ce que Debian ?
 
-### Qu'est-ce que Debian ?
+**Debian** est l'une des distributions Linux les plus connues et influentes. Ce système d'exploitation libre et open source est développé par une communauté mondiale plutôt que par une entreprise unique.
 
-**Debian** est l'une des distributions Linux les plus connues et les plus influentes. Il s'agit d'un système d'exploitation libre et open-source développé par une communauté mondiale plutôt que par une seule entreprise.
+Le projet Debian existe depuis les débuts de Linux et s'est forgé une réputation de rigueur technique, d'ouverture et de fiabilité à long terme. En pratique, la **distribution Linux Debian** est connue pour sa base solide, son immense collection de logiciels et la clarté de ses principes.
 
-Le projet Debian existe depuis les débuts de Linux et s'est forgé une réputation d'ingénierie rigoureuse, d'ouverture et de fiabilité à long terme. En pratique, la **distribution Linux Debian** est reconnue pour fournir un système de base solide, une vaste collection de logiciels et des principes de projet clairs.
+:::single-choice{#identify-debian-project-model}
+Qui développe principalement Debian ?
 
-### Pourquoi Debian est-elle populaire ?
+::option[Une seule entreprise de logiciels commerciaux]{#single-company explanation="Debian n'est pas développé par une seule entreprise. Des bénévoles et contributeurs du monde entier entretiennent le projet."}
+::option[Un seul fabricant de matériel informatique]{#hardware-manufacturer explanation="Debian prend en charge de nombreux matériels, mais aucun fabricant ne possède son développement. Le projet est entretenu par la communauté."}
+::option[Une communauté open source mondiale]{#global-community .correct explanation="Debian est entretenu par une communauté internationale et non contrôlé par une entreprise. La structure du projet définit en partie la distribution."}
+:::
 
-Debian reste populaire car elle se concentre sur la stabilité, la cohérence et la liberté logicielle. De nombreux utilisateurs choisissent Debian lorsqu'ils souhaitent un système qui évolue prudemment plutôt que rapidement. Cette approche a rendu Debian particulièrement respectée pour les serveurs, les environnements de développement et toute configuration où la fiabilité compte plus que l'accès immédiat aux dernières fonctionnalités.
+## Pourquoi Debian est populaire
 
-Une autre raison pour laquelle Debian est si largement connue est son rôle dans l'écosystème Linux au sens large. Debian a influencé d'innombrables utilisateurs, administrateurs et développeurs, et a également servi de base à de nombreuses autres distributions. Sa longue histoire et sa grande communauté de bénévoles lui confèrent un niveau de confiance que peu de projets peuvent égaler.
+Debian reste populaire parce qu'il met l'accent sur la stabilité, la cohérence et la liberté des logiciels. De nombreux utilisateurs le choisissent lorsqu'ils souhaitent un système qui évolue avec prudence plutôt que rapidement. Cette approche lui vaut un grand respect sur les serveurs, dans les environnements de développement et partout où la fiabilité compte davantage que l'accès immédiat aux toutes dernières fonctionnalités.
 
-### Les branches Debian
+Son rôle dans l'écosystème Linux explique aussi sa notoriété. Debian a influencé d'innombrables utilisateurs, administrateurs et développeurs, et sert de fondation à de nombreuses autres distributions. Sa longue histoire et sa grande communauté de bénévoles lui confèrent un niveau de confiance que peu de projets égalent.
 
-Une caractéristique majeure de Debian est son modèle de branches. Au lieu de ne proposer qu'un seul flux de paquets, Debian maintient plusieurs branches afin que les utilisateurs puissent choisir l'équilibre entre stabilité et logiciels récents.
+## Branches de Debian
 
-- **Stable** : Il s'agit de la version officielle. Elle privilégie la fiabilité et la sécurité plutôt que les dernières versions logicielles, ce qui en fait un excellent choix pour les serveurs et les postes de travail quotidiens où la stabilité est critique.
-- **Testing** : Cette branche contient des paquets en cours de préparation pour la prochaine version Stable. Elle propose généralement des logiciels plus récents que Stable, mais peut encore recevoir des changements importants à mesure que les paquets atteignent la qualité requise pour une version finale.
-- **Unstable** : Également connue sous le nom de "Sid", c'est là que se déroule le développement actif. Les nouveaux paquets y sont intégrés en premier, elle change donc fréquemment et peut parfois être instable.
+Le modèle de branches est une caractéristique importante de Debian. Au lieu de proposer un seul flux de paquets, le projet maintient plusieurs branches afin que chacun puisse choisir son équilibre entre stabilité et logiciels récents.
 
-Testing et Unstable sont des branches en continu (rolling) car les mises à jour des paquets y sont intégrées en permanence au lieu d'attendre une version Stable finale.
+- **Stable** : la version officielle. Elle privilégie la fiabilité et la sécurité plutôt que les toutes dernières versions des logiciels, ce qui en fait un excellent choix pour les serveurs et postes quotidiens où la stabilité est essentielle.
+- **Testing** : elle contient les paquets préparés pour la prochaine version Stable. Ses logiciels sont généralement plus récents, mais peuvent encore subir d'importants changements à mesure qu'ils approchent de la qualité nécessaire à une publication.
+- **Unstable** : également appelée « Sid », c'est la branche de développement actif. Les nouveaux paquets y entrent en premier ; elle change donc souvent et peut occasionnellement casser.
 
-Ces branches expliquent pourquoi Debian peut servir des utilisateurs très différents. Quelqu'un qui souhaite un système prévisible préférera généralement Stable, tandis que les développeurs et les utilisateurs avancés peuvent explorer Testing ou Unstable pour des logiciels plus récents.
+Pendant la majeure partie du cycle de développement, les paquets passent continuellement d'Unstable à Testing. Cette dernière traverse ensuite des phases de gel pendant la préparation de la prochaine Stable. Il est donc plus exact d'y voir des branches de développement que de considérer les deux comme des produits ordinaires en publication continue.
 
-### Les versions Debian
+Ces branches expliquent comment Debian peut servir des utilisateurs très différents. Une personne qui souhaite un système prévisible préférera généralement Stable, tandis que les développeurs et utilisateurs avancés pourront explorer Testing ou Unstable pour des logiciels plus récents.
 
-Debian suit un modèle basé sur des versions. Le projet publie périodiquement une nouvelle version Stable après que les paquets ont mûri grâce au développement et aux tests. C'est l'une des raisons pour lesquelles Debian a la réputation d'apporter des changements conservateurs et bien testés.
+:::single-choice{#choose-debian-stable}
+Quelle branche Debian convient le mieux à une personne qui privilégie la fiabilité et des mises à jour prévisibles ?
 
-Pour les débutants, l'idée principale est simple : Debian ne court pas après les changements rapides. Les mises à jour majeures apparaissent généralement d'abord dans Testing et Unstable, puis deviennent plus tard partie intégrante de la prochaine version Stable. Ce modèle de publication aide Debian à rester fiable tout en progressant au fil du temps.
+::option[Testing]{#testing-branch explanation="Testing possède généralement des paquets plus récents préparés pour une future version, mais peut encore changer considérablement pendant le développement."}
+::option[Unstable]{#unstable-branch explanation="Unstable reçoit les nouveaux paquets en premier et change souvent. Cela ne correspond pas à l'objectif de mises à jour prévisibles."}
+::option[Stable]{#stable-branch .correct explanation="Stable est la version officielle de production de Debian et privilégie fiabilité et sécurité. C'est le choix naturel pour un système prévisible."}
+:::
 
-### Gestion des paquets
+## Versions de Debian
 
-La gestion des paquets est l'une des plus grandes forces de Debian. Debian utilise le format de paquet `.deb` et l'ensemble d'outils **APT** pour installer, mettre à jour, supprimer et gérer les logiciels. Cela facilite le maintien de la cohérence du système et l'installation de logiciels à partir des dépôts officiels.
+Debian suit un modèle fondé sur des versions. Le projet publie périodiquement une nouvelle Stable après la maturation des paquets au fil du développement et des tests. C'est l'une des raisons de sa réputation de changements prudents et bien éprouvés.
 
-Comme Debian dispose d'une très grande collection de paquets, les utilisateurs peuvent tout installer, des applications de bureau aux outils de développement, via le même système de paquets. Par exemple, les développeurs installent souvent des outils de compilation courants avec des paquets tels que `build-essential`. Ce système de paquets mature est l'une des raisons pour lesquelles Debian est si largement utilisée et approuvée.
+Pour les débutants, l'idée principale est simple : Debian ne poursuit pas le changement rapide. Les nouveaux paquets entrent normalement dans Unstable, ceux qui satisfont les critères passent dans Testing, puis une branche Testing préparée devient la prochaine Stable. Ce modèle aide Debian à rester fiable tout en progressant dans le temps.
 
-### Utilisations courantes
+:::single-choice{#trace-debian-package-flow}
+Quelle suite représente le mieux le parcours simplifié des paquets Debian vers une version ?
 
-Debian est utilisée dans plusieurs scénarios courants. Elle est particulièrement populaire pour :
+::option[Unstable → Testing → Stable]{#unstable-testing-stable .correct explanation="Les nouveaux paquets entrent dans Unstable, ceux qui remplissent les critères passent dans Testing, puis une Testing préparée devient la prochaine Stable."}
+::option[Stable → Testing → Unstable]{#stable-testing-unstable explanation="Stable est la version de production achevée, pas le point de départ des nouveaux paquets. Le développement commence dans Unstable."}
+::option[Testing → Stable → Unstable]{#testing-stable-unstable explanation="Cette suite place Unstable après la version achevée. Dans le flux de Debian, les nouveautés entrent dans Unstable avant Testing."}
+:::
 
-- **Les serveurs**, où la stabilité et les mises à jour prévisibles sont importantes
-- **Les environnements de développement**, où les utilisateurs souhaitent un système de base propre et fiable
-- **Les systèmes de bureau**, en particulier pour les personnes qui préfèrent une expérience Linux simple et stable
-- **L'apprentissage de Linux**, car Debian expose de nombreux outils et conventions Linux standard sans personnalisation inutile
+## Gestion des paquets
 
-Cette gamme de cas d'utilisation explique la réputation durable de Debian. Elle est suffisamment flexible pour les ordinateurs de bureau et suffisamment fiable pour l'infrastructure.
+La gestion des paquets est l'un des grands atouts de Debian. La distribution emploie le format `.deb` et les outils **APT** pour installer, mettre à jour, supprimer et gérer les logiciels. Le système reste ainsi cohérent et les logiciels des dépôts officiels s'installent facilement.
 
-### Distributions basées sur Debian
+Grâce à l'immense collection de paquets, les utilisateurs installent par le même système aussi bien des applications de bureau que des outils de développement. Par exemple, les développeurs obtiennent souvent les outils courants de compilation au moyen de paquets comme `build-essential`. La maturité de ce système contribue à la large utilisation et à la confiance dont bénéficie Debian.
 
-Debian est également importante car de nombreuses autres distributions Linux sont construites à partir de son travail. On les appelle souvent **distributions basées sur Debian**. Ubuntu en est l'exemple le plus célèbre, et d'autres systèmes de la famille Debian s'appuient sur la même tradition de packaging et de dépôts.
+:::single-choice{#recognize-apt-purpose}
+Quel est le rôle principal des outils APT de Debian ?
 
-Cela signifie que Debian n'est pas seulement une distribution Linux à part entière, mais aussi une fondation pour une grande partie du monde Linux. Lorsque vous apprenez les concepts Debian tels qu'APT, les paquets `.deb` ou les branches de version, ces connaissances sont souvent transférables aux systèmes basés sur Debian. Si vous souhaitez une option basée sur Debian plus axée sur les débutants, consultez [Ubuntu](https://labex.io/fr/lesson/ubuntu).
+::option[Installer, mettre à jour, supprimer et gérer des paquets logiciels]{#manage-packages .correct explanation="APT gère les paquets des dépôts Debian. Il fournit une méthode cohérente pour installer, mettre à jour et supprimer les logiciels."}
+::option[Compiler un nouveau noyau Linux à chaque mise à jour]{#compile-kernel explanation="APT peut installer des noyaux déjà empaquetés, mais son rôle couvre toute la gestion des paquets. Il n'impose pas de compiler un noyau à chaque mise à jour."}
+::option[Déplacer le système entre les branches sans configuration]{#switch-branches explanation="Changer de branche Debian exige des décisions explicites sur les dépôts et la mise à niveau. APT ne choisit ni ne change automatiquement la branche de version."}
+:::
 
-### Debian est-elle adaptée aux débutants ?
+## Usages courants
 
-Debian peut être adaptée aux débutants, mais cela dépend du type de débutant que vous êtes. Si vous souhaitez une expérience de bureau prête à l'emploi très soignée avec de nombreux paramètres par défaut pratiques, un autre système basé sur Debian comme Ubuntu peut sembler plus facile au début. Cependant, si vous souhaitez apprendre une distribution Linux classique et respectée avec une documentation solide et une conception stable, Debian est un excellent choix.
+Debian est employé dans plusieurs contextes courants, notamment :
 
-En d'autres termes, Debian n'est pas réservée aux experts. C'est une option solide pour les apprenants qui apprécient la fiabilité, la clarté et une compréhension plus approfondie de la façon dont les systèmes Linux sont assemblés. Si vous comparez encore les options, [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution) offre une vue plus large de la place de Debian.
+- **les serveurs**, où la stabilité et la prévisibilité des mises à jour sont importantes ;
+- **les environnements de développement**, dont les utilisateurs veulent une base propre et fiable ;
+- **les postes de travail**, surtout pour les personnes qui préfèrent une expérience Linux directe et stable ;
+- **l'apprentissage de Linux**, car Debian expose de nombreux outils et conventions standard sans personnalisation superflue.
 
-### Pour aller plus loin
+Cette diversité d'usages explique la longévité de sa réputation. Debian est assez flexible pour le bureau et suffisamment fiable pour l'infrastructure.
+
+## Distributions basées sur Debian
+
+Debian est également important parce que de nombreuses autres distributions s'appuient sur son travail. On les appelle souvent **distributions basées sur Debian**. Ubuntu en est l'exemple le plus célèbre, et d'autres systèmes de la famille Debian reposent sur les mêmes traditions de paquets et dépôts.
+
+Debian est donc à la fois une distribution Linux à part entière et la fondation d'une grande partie de l'univers Linux. Les concepts que vous y apprenez, comme APT, les paquets `.deb` ou les branches de publication, se transfèrent souvent aux systèmes dérivés. Si vous recherchez une option Debian davantage tournée vers les débutants, consultez [Ubuntu](https://labex.io/fr/lesson/ubuntu).
+
+:::single-choice{#transfer-debian-knowledge}
+Pourquoi les connaissances sur la gestion des paquets Debian peuvent-elles se transférer à certaines autres distributions ?
+
+::option[Toutes les distributions Linux emploient des paquets et dépôts identiques]{#identical-linux-packages explanation="Les distributions peuvent employer des formats, outils et dépôts différents. Les connaissances Debian se transfèrent surtout au sein de sa famille."}
+::option[Les systèmes basés sur Debian partagent souvent les traditions de `.deb` et d'APT]{#shared-package-traditions .correct explanation="Les distributions issues de Debian conservent couramment son format de paquets et ses outils associés. Les dépôts précis peuvent différer, mais les concepts fondamentaux se transfèrent."}
+::option[Tous les systèmes basés sur Debian suivent le même calendrier de publication]{#identical-release-schedule explanation="Les distributions dérivées peuvent définir leurs propres calendriers et règles. Ce sont les traditions de paquets, et non un calendrier identique, qui expliquent le transfert des connaissances."}
+:::
+
+## Debian convient-il aux débutants ?
+
+Debian peut convenir aux débutants, selon leur profil. Si vous souhaitez dès l'installation un bureau très soigné et de nombreux réglages pratiques, un autre système basé sur Debian comme Ubuntu pourra sembler plus simple. En revanche, si vous voulez apprendre une distribution classique et respectée, avec une solide documentation et une conception stable, Debian est un excellent choix.
+
+Debian n'est donc pas réservé aux experts. Il constitue une option solide pour les apprenants qui apprécient fiabilité, clarté et compréhension approfondie de la construction des systèmes Linux. Si vous comparez encore les possibilités, [Choisir une distribution Linux](https://labex.io/fr/lesson/choosing-a-linux-distribution) offre une vue d'ensemble de la place de Debian.
+
+## Pour aller plus loin
 
 - [Introduction à Debian](https://www.debian.org/intro/)
 - [À propos de Debian](https://www.debian.org/intro/about)
 - [Versions de Debian](https://www.debian.org/releases/)
-- [APT sur le Wiki Debian](https://wiki.debian.org/Apt)
+- [APT sur le wiki Debian](https://wiki.debian.org/Apt)
 
-## Exercise
+Pour acquérir des compétences pratiques après cette découverte de Debian, nous recommandons les cours LabEx suivants :
 
-Pour développer des compétences pratiques sur Linux après avoir découvert Debian, nous recommandons ces cours LabEx :
+1. **[Prise en main rapide de Linux](https://labex.io/fr/courses/quick-start-with-linux)** — Apprenez les bases de Linux qui s'appliquent directement à Debian et à de nombreuses autres distributions.
+2. **[Gestion des paquets logiciels](https://labex.io/fr/courses/software-package-management)** — Exercez-vous aux concepts essentiels de gestion des paquets dans les environnements Linux.
+3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** — Approfondissez les compétences pratiques d'administration Linux.
 
-1. **[Démarrage rapide avec Linux](https://labex.io/fr/courses/quick-start-with-linux)** - Apprenez les bases de Linux qui s'appliquent clairement à Debian et à de nombreuses autres distributions.
-2. **[Gestion des paquets logiciels](https://labex.io/fr/courses/software-package-management)** - Pratiquez les concepts fondamentaux de gestion des paquets utilisés dans les environnements Linux.
-3. **[Devenir administrateur système junior](https://labex.io/fr/courses/become-a-junior-system-administrator)** - Approfondissez vos compétences pratiques en administration Linux.
+## Résumé
 
-## Quiz Question
+Vous savez maintenant expliquer comment Debian équilibre versions stables et développement actif des paquets.
 
-Quel type de version les branches Testing et Unstable possèdent-elles ? Veuillez répondre en anglais et faire attention aux majuscules.
-
-## Quiz Answer
-
-Rolling
+1. Décrire le modèle de projet communautaire de Debian.
+2. Comparer les branches Stable, Testing et Unstable.
+3. Retracer le parcours simplifié des paquets vers une version Stable.
+4. Expliquer comment APT gère les logiciels Debian.
+5. Reconnaître les connaissances qui se transfèrent aux systèmes basés sur Debian.

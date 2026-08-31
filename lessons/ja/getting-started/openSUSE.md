@@ -1,67 +1,95 @@
 ---
-index: 10
+lesson_id: "openSUSE"
+course_id: "getting-started"
 lang: "ja"
+order_index: 10
 title: "openSUSE"
+description: "openSUSE が通常リリースとローリングリリースを、Zypper と YaST の管理ツールとともに提供する仕組みを学びます。"
 meta_title: "openSUSE Linux ディストリビューション"
 meta_description: "openSUSE Linux ディストリビューションの概要、Leap と Tumbleweed の違い、RPM パッケージ管理の仕組み、そして YaST が選ばれる理由について解説します。"
 meta_keywords: "opensuse, opensuse linux, opensuse とは，opensuse leap, opensuse tumbleweed, yast, rpm パッケージ管理"
 ---
 
-## Lesson Content
+## openSUSE とは
 
-### openSUSE とは？
+openSUSE は、柔軟性、強力な管理ツール、複数のリリース選択肢で知られる、長い歴史を持つ Linux ディストリビューションです。デスクトップと技術システムの両方で、洗練された有能な環境を提供するコミュニティプロジェクトです。
 
-openSUSE は、柔軟性、強力な管理ツール、そして複数のリリースオプションで知られる歴史ある Linux ディストリビューションです。デスクトップ環境と技術的なシステムの双方で洗練された能力を発揮することで定評のあるコミュニティプロジェクトです。
+安定した基盤を望む人と、速く進むローリングリリースを望む人に異なる道を提供します。
 
-openSUSE が際立っている理由の一つは、ユーザーのニーズに合わせて異なる選択肢を提供している点です。安定した基盤を求めるユーザーもいれば、より迅速なローリングリリースを求めるユーザーもいます。
+## Leap と Tumbleweed
 
-### Leap と Tumbleweed
+主なリリース方式は Leap と Tumbleweed です。Leap は安定性と従来型リリースを求める人向けの保守的な選択肢です。Tumbleweed は新しいソフトウェアを継続的に受け取りたい人向けのローリングリリースです。
 
-openSUSE は、Leap と Tumbleweed という 2 つの主要なリリースアプローチで知られています。Leap はより保守的な選択肢であり、安定性と従来のリリースモデルを求めるユーザー向けです。Tumbleweed は、新しいソフトウェアを継続的に受け取りたいユーザー向けのローリングリリースです。
+同じディストロ系統のまま、自分に合う方式を選べる柔軟性があります。
 
-この使い分けにより、openSUSE は非常に高い柔軟性を備えています。ユーザーは別のディストリビューションファミリーに完全に乗り換えることなく、自分に合ったスタイルを選択できます。
+:::single-choice{#choose-opensuse-leap}
+従来型の定期リリースを望む人に最適な openSUSE の選択肢はどれですか？
 
-### パッケージ管理
+::option[Tumbleweed]{#tumbleweed-release explanation="継続的に更新されるローリングリリースで、新しいパッケージを優先する人に向きます。"}
+::option[YaST]{#yast-not-release explanation="YaST はインストールと設定のツールであり、リリース方式ではありません。"}
+::option[Leap]{#leap-release .correct explanation="通常のリリース方式と保守的なシステム基盤を重視し、要望に合います。"}
+:::
 
-openSUSE は RPM パッケージ形式を採用しており、`zypper`などのツールを使用してソフトウェアのインストール、更新、削除を行います。これは、`.deb`パッケージと APT を使用する Debian や Ubuntu とは異なるパッケージファミリーに属しています。
+:::single-choice{#recognize-tumbleweed-model}
+Tumbleweed と Leap の違いは何ですか？
 
-Linux ディストリビューションを比較する際、パッケージファミリーを理解しておくことは役立ちます。より広範な比較については、[Linux ディストリビューションの選び方](https://labex.io/ja/lesson/choosing-a-linux-distribution)を参照してください。
+::option[テスト済みのパッケージ更新を継続的に提供する]{#continuous-tested-updates .correct explanation="Tumbleweed はテスト済みスナップショットを継続的に公開するため、通常のメジャーリリースを待たず新しいソフトウェアを受け取れます。"}
+::option[固定されたメジャーリリースだけでソフトウェアを受け取る]{#fixed-major-releases explanation="固定された通常リリースは Leap に近く、Tumbleweed は継続的に更新します。"}
+::option[OS からパッケージ管理を取り除く]{#no-package-management explanation="ローリングリリースは更新時期の方式であり、パッケージ管理をなくすものではありません。"}
+:::
 
-### YaST
+## パッケージ管理
 
-openSUSE の最も有名な機能の一つが**YaST**です。YaST は、ソフトウェア、サービス、ストレージ、ネットワーク、その他のシステムタスクを一元的なインターフェースから管理できる管理・設定ツールです。
+openSUSE は RPM パッケージ形式と `zypper` などのツールを使い、ソフトウェアを導入、更新、削除します。`.deb` と APT を使う Debian・Ubuntu とは異なるパッケージ系統です。
 
-これは、すべてを手動で設定することなく強力なシステム管理ツールを求めるユーザーにとって、openSUSE が選ばれる大きな理由となっています。
+系統の比較には [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) を参照してください。
 
-### 一般的な用途
+:::single-choice{#identify-zypper-role}
+openSUSE で `zypper` は何に使いますか？
 
-openSUSE は、デスクトップ、開発システム、技術ワークステーションで優れたパフォーマンスを発揮します。また、洗練されたツールを活用しつつ、システム設定を強力に制御したいユーザーにも魅力的です。
+::option[グラフィカルデスクトップの壁紙テーマを選ぶ]{#zypper-wallpaper explanation="外観はデスクトップツールで設定し、zypper はソフトウェアパッケージを管理します。"}
+::option[ソフトウェアパッケージを導入、更新、削除する]{#zypper-package-tool .correct explanation="RPM リポジトリと連携する openSUSE のコマンドラインパッケージ管理ツールです。"}
+::option[Tumbleweed を固定版の Debian へ変える]{#zypper-debian explanation="パッケージ管理で別のディストリビューション系統へ変わることはなく、Leap と Tumbleweed は openSUSE の選択肢です。"}
+:::
 
-初心者向けのディストリビューションと比較して、openSUSE は、より構造化された管理の可視性を求めるユーザーに好まれる傾向があります。
+## YaST
 
-### openSUSE はどのような人向けか？
+openSUSE の代表的な機能 **YaST** は、ソフトウェア、サービス、ストレージ、ネットワークなどのシステム作業を中央のインターフェースから管理する設定ツールです。
 
-openSUSE は、リリーススタイルの柔軟性を求め、強力な管理ツールを高く評価するユーザーにとって強力な選択肢です。初心者、特にグラフィカルな管理を好むユーザーにも適していますが、中級者や技術的なデスクトップユーザーにとって特に魅力的です。
+すべてを手動設定せず、強力なシステム管理機能を使いたい人に openSUSE が選ばれる大きな理由です。
 
-### 参考文献
+:::single-choice{#identify-yast-purpose}
+YaST は何を提供するために設計されていますか？
 
-- [openSUSE デスクトップディストリビューション](https://get.opensuse.org/desktop/)
+::option[最新アプリケーションだけを含むローリングリポジトリ]{#yast-repository explanation="ローリング方式を提供するのは Tumbleweed で、YaST は管理・設定ツールです。"}
+::option[Debian・Ubuntu と共有するパッケージ形式]{#yast-package-format explanation="openSUSE は RPM、Debian 系は .deb を使い、YaST 自体はパッケージ形式ではありません。"}
+::option[インストールとシステム設定の中央インターフェース]{#yast-administration .correct explanation="インストールと、多くのシステム部分を設定するモジュールをまとめ、GUI と端末の両方で利用できます。"}
+:::
+
+## 一般的な用途
+
+デスクトップ、開発システム、技術ワークステーションに適し、洗練されたツールと強い設定制御を両方望む人に魅力的です。初心者中心のディストロより、構造と管理状態の見通しを求める人に向きます。
+
+## openSUSE を使うべき人
+
+リリース方式の柔軟性と強力な管理ツールを重視する人に適します。グラフィカル管理を好む初心者にも使えますが、中級者や技術デスクトップ利用者に特に魅力的です。
+
+## 関連資料
+
+- [openSUSE のデスクトップディストリビューション](https://get.opensuse.org/desktop/)
 - [Tumbleweed](https://get.opensuse.org/tumbleweed/)
 - [Leap](https://get.opensuse.org/leap/)
 - [YaST](https://yast.opensuse.org/)
 
-## Exercise
+1. **[Linux クイックスタート](https://labex.io/courses/quick-start-with-linux)** - ガイド付き演習で Linux の基礎を学びます。
+2. **[Linux コマンドのオンライン練習](https://labex.io/courses/linux-basic-commands-practice-online)** - Linux コマンドラインに慣れます。
+3. **[ジュニアシステム管理者になる](https://labex.io/courses/become-a-junior-system-administrator)** - より幅広い Linux 管理へ進みます。
 
-この openSUSE の紹介を終えた後、以下の LabEx コースを推奨します：
+## まとめ
 
-1. **[Linux クイックスタート](https://labex.io/ja/courses/quick-start-with-linux)** - ガイド付きのハンズオンで Linux の基礎を学びます。
-2. **[Linux コマンドオンライン練習](https://labex.io/ja/courses/linux-basic-commands-practice-online)** - Linux コマンドラインに慣れていきます。
-3. **[ジュニアシステム管理者になる](https://labex.io/ja/courses/become-a-junior-system-administrator)** - より幅広い Linux システム管理のトピックに進みます。
+openSUSE のリリース選択肢を比較し、主要な管理ツールを特定できるようになりました。
 
-## Quiz Question
-
-openSUSE の管理およびインストールツールの名前は何ですか？小文字の英字のみで回答してください。
-
-## Quiz Answer
-
-yast
+1. リリースの好みに応じて Leap と Tumbleweed を選ぶ。
+2. Tumbleweed が継続的な更新を届ける仕組みを説明する。
+3. Zypper をパッケージ管理ツールとして特定する。
+4. YaST を中央の設定インターフェースとして理解する。

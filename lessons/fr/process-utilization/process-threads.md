@@ -1,53 +1,84 @@
 ---
-index: 3
+lesson_id: "process-threads"
+course_id: "process-utilization"
 lang: "fr"
-title: "Threads de Processus"
-meta_title: "Threads de Processus - Utilisation des Processus"
-meta_description: "Un guide sur les threads de processus Linux. Apprenez la différence entre les processus mono-thread et multi-thread et comment utiliser la commande ps pour afficher les threads."
-meta_keywords: "threads Linux, threads de processus, ps afficher threads, ps m, multi-thread, mono-thread, processus léger, gestion des processus Linux"
+order_index: 3
+title: "Threads des processus"
+description: "Découvrez comment les threads Linux partagent les ressources d’un processus et comment les examiner avec ps."
+meta_title: "Threads des processus - Utilisation des processus"
+meta_description: "Guide des threads de processus Linux : différence entre processus mono et multithreads et utilisation de ps pour afficher les threads."
+meta_keywords: "threads Linux, threads processus, ps afficher threads, ps m, multithread, monothread, processus léger, gestion processus Linux"
 ---
 
-## Lesson Content
+Un thread est un flux d’exécution planifié au sein d’un processus. Chaque processus en cours d’exécution possède au moins un thread, et un processus multithread possède plusieurs flux qui peuvent progresser simultanément.
 
-### Que Sont les Threads de Processus ?
+## Processus et threads
 
-Vous avez peut-être entendu les termes mono-thread (single-threaded) et multi-thread (multi-threaded). Les threads sont des unités d'exécution au sein d'un processus et sont souvent appelés "processus légers" (lightweight processes). Alors que les processus fonctionnent avec leurs propres ressources système isolées, les threads au sein du même processus peuvent partager ces ressources, comme la mémoire. Ce modèle de partage de ressources rend la communication entre les threads beaucoup plus rapide et plus efficace que la communication entre des processus distincts.
+Les threads d’un même processus partagent des ressources telles que l’espace d’adressage virtuel et les descripteurs de fichiers ouverts. Chaque thread conserve néanmoins son propre état d’exécution, notamment ses registres et sa pile. Le partage rend la communication efficace, mais signifie aussi qu’une modification non synchronisée par un thread peut affecter les autres.
 
-### Mono-thread contre Multi-thread
+Les processus distincts possèdent normalement des espaces d’adressage distincts et communiquent au moyen de mécanismes explicites de communication interprocessus. Aucune des deux conceptions n’est automatiquement plus rapide ou plus sûre ; la charge de travail et l’implémentation déterminent le compromis.
 
-Chaque processus possède au moins un thread. Un processus avec un seul thread est appelé mono-thread, tandis qu'un processus avec plus d'un est multi-thread.
+:::single-choice{#threads-shared-resource}
+Quelle ressource les threads d’un même processus partagent-ils normalement ?
 
-Par exemple, lorsque vous utilisez un éditeur de texte moderne, il peut s'exécuter comme un seul processus. Cependant, au sein de ce processus, un thread pourrait gérer votre saisie au clavier, tandis qu'un autre thread s'exécute en arrière-plan pour effectuer la vérification orthographique ou l'enregistrement automatique. Cette exécution concurrente rend l'application plus réactive. L'utilisation de plusieurs threads est souvent plus efficace que le lancement de plusieurs processus pour des tâches connexes.
+::option[L’espace d’adressage virtuel du processus.]{#threads-shared-address-space .correct explanation="Les threads peuvent accéder à la même mémoire du processus, sous réserve de la synchronisation du programme."}
+::option[Une installation distincte du noyau pour chaque thread.]{#threads-separate-kernel explanation="Tous les threads emploient le noyau du système en cours d’exécution."}
+::option[Une racine de système de fichiers différente pour chaque thread.]{#threads-different-root explanation="Les threads partagent normalement le contexte de système de fichiers du processus au lieu de recevoir des racines distinctes."}
+:::
 
-### Comment Afficher les Threads avec ps
+## Identifiants des threads
 
-Pour inspecter les processus en cours d'exécution et leurs threads, vous pouvez utiliser la commande `ps`. Bien que `ps` ait de nombreuses options, une façon courante d'**afficher les threads** est d'utiliser l'indicateur `m`.
+Linux représente chaque thread comme une tâche planifiable dotée de son propre identifiant de thread. L’identifiant du chef du groupe de threads est couramment présenté comme l’identifiant du processus, tandis que tous les membres partagent un identifiant de groupe de threads. Les outils emploient des étiquettes telles que `PID`, `TID`, `LWP` et `SPID` ; vérifiez la définition de leurs champs plutôt que de supposer que chaque étiquette possède la même signification.
 
-```plaintext
-pete@icebox:~$ ps m
-  PID TTY      STAT   TIME COMMAND
- 2207 pts/2    -      0:01 bash
-    - -        Ss     0:01 -
- 5252 pts/2    -      0:00 ps m
-    - -        R+     0:00 -
+:::single-choice{#threads-own-scheduling-state}
+Qu’est-ce que chaque thread conserve indépendamment ?
+
+::option[La table complète des fichiers ouverts du processus.]{#threads-open-files-shared explanation="Les threads d’un processus partagent normalement les descripteurs de fichiers ouverts."}
+::option[La base des utilisateurs de toute la machine.]{#threads-user-database explanation="Les bases de comptes ne constituent pas un état privé du thread."}
+::option[Son état d’exécution et sa pile.]{#threads-stack-state .correct explanation="Un thread a besoin de son propre contexte d’exécution même lorsque les ressources du processus sont partagées."}
+:::
+
+## Répertorier les threads avec ps
+
+Employez des champs de sortie explicites pour éviter les présentations par défaut ambiguës :
+
+```bash
+$ ps -eLo pid,tid,psr,stat,comm
 ```
 
-### Interprétation du Résultat
+Dans `ps` de procps, `-L` affiche les threads et `-e` sélectionne tous les processus. `pid` identifie le groupe de threads, `tid` un thread particulier, `psr` le processeur sur lequel il s’est exécuté en dernier et `stat` son état. Pour examiner un processus :
 
-Dans le résultat ci-dessus, les lignes avec un `PID` (ID de processus) représentent le processus principal. Les lignes situées directement en dessous, qui affichent un tiret (`-`) au lieu d'un `PID`, représentent les threads appartenant à ce processus. Dans cet exemple, les processus `bash` et `ps m` sont mono-thread, car chacun n'a qu'un seul thread principal listé.
+```bash
+$ ps -L -p 1234 -o pid,tid,stat,pcpu,comm
+```
 
-## Exercise
+Les listes de threads sont des instantanés. Un thread peut se terminer ou changer d’état immédiatement après.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de leur gestion :
+:::single-choice{#threads-ps-one-process}
+Quelle commande répertorie les threads appartenant au PID 1234 avec des champs explicites ?
 
-1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus au premier plan et en arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
+::option[`ps -p 1234 -o pid,ppid,stat,pcpu,comm`]{#threads-process-only explanation="Cette sortie ne demande pas de ligne par thread."}
+::option[`ps -L -p 1234 -o pid,tid,stat,pcpu,comm`]{#threads-ps-l .correct explanation="L’option `-L` demande les lignes des threads pour le processus sélectionné."}
+::option[`ps -e -o pid,user,stat,pcpu,comm`]{#threads-all-processes explanation="Cette commande sélectionne les processus de tout le système sans afficher les identifiants de threads."}
+:::
 
-Ce laboratoire vous aidera à appliquer les concepts de gestion des processus dans des scénarios réels et à renforcer votre confiance dans la surveillance de l'activité du système.
+## Interpréter l’activité des threads
 
-## Quiz Question
+Une forte utilisation du processeur par un thread peut être masquée par une moyenne calculée pour tout le processus. Associez les échantillons d’utilisation par thread aux journaux de l’application, aux traces de pile et aux outils de profilage. N’attachez pas de débogueur et n’envoyez pas de signal aux tâches de production sans comprendre les conséquences sur les pauses, les permissions et le service.
 
-Vrai ou faux, tous les processus commencent par être mono-thread.
+:::single-choice{#threads-snapshot-limit}
+Pourquoi une liste de threads produite par `ps` ne doit-elle pas être considérée comme un état permanent ?
 
-## Quiz Answer
+::option[`ps` crée un thread de remplacement pour chaque ligne.]{#threads-ps-creates explanation="La commande observe les tâches ; elle ne clone pas chacune de celles qu’elle affiche."}
+::option[Les identifiants de threads sont identiques sur chaque hôte Linux.]{#threads-identical-ids explanation="Les identifiants sont attribués au sein d’un système en cours d’exécution et ne sont pas universels."}
+::option[Les threads peuvent changer d’état ou se terminer après l’instantané.]{#threads-change-after-snapshot .correct explanation="L’examen des processus observe un instant d’un système qui évolue continuellement."}
+:::
 
-True
+## Résumé
+
+Vous savez maintenant distinguer les ressources d’un processus de l’état d’exécution propre à chaque thread.
+
+1. Reconnaître que chaque processus possède au moins un thread.
+2. Identifier les ressources partagées par les threads d’un même processus.
+3. Répertorier explicitement les identifiants des processus et des threads avec `ps -L`.
+4. Considérer la sortie des threads comme un instantané et la mettre en relation avec d’autres indices.

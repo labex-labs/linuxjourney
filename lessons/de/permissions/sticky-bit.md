@@ -1,62 +1,95 @@
 ---
-index: 8
+lesson_id: "sticky-bit"
+course_id: "permissions"
 lang: "de"
-title: "Das Sticky Bit"
-meta_title: "Das Sticky Bit - Berechtigungen"
-meta_description: "Erkunden Sie den Zweck des Sticky Bits in Linux- und Unix-Dateiberechtigungen. Erfahren Sie, wie das Sticky Bit Dateien in gemeinsam genutzten Verzeichnissen wie /tmp schützt und wie man es mit chmod setzt."
-meta_keywords: "sticky bit, sticky bit linux, unix dateiberechtigungen sticky bit, chmod +t, /tmp verzeichnis, dateiberechtigungen, linux sicherheit"
+order_index: 8
+title: "Das Sticky-Bit"
+description: "Erfahre, wie das Sticky-Bit Einträge in gemeinsam genutzten beschreibbaren Verzeichnissen wie `/tmp` schützt."
+meta_title: "Das Sticky-Bit – Berechtigungen"
+meta_description: "Erkunde den Zweck des Sticky-Bits in Linux- und Unix-Dateiberechtigungen. Erfahre, wie das Sticky-Bit Dateien in gemeinsam genutzten Verzeichnissen wie /tmp schützt und wie du es mit chmod setzt."
+meta_keywords: "Sticky-Bit, Sticky-Bit Linux, Sticky-Bit Unix-Dateiberechtigungen, chmod +t, Verzeichnis /tmp, Dateiberechtigungen, Linux-Sicherheit"
 ---
 
-## Lesson Content
+Ein beschreibbares Verzeichnis erlaubt einem autorisierten Benutzer gewöhnlich, darin enthaltene Einträge zu entfernen oder umzubenennen, selbst wenn ihm die Dateien selbst nicht gehören. Das Sticky-Bit fügt eine Eigentumsbeschränkung hinzu, die gemeinsam genutzte beschreibbare Verzeichnisse sicherer macht.
 
-Jenseits der Standardberechtigungen Lesen, Schreiben und Ausführen bietet Linux spezielle Berechtigungen für eine erweiterte Zugriffskontrolle. Die letzte dieser speziellen Berechtigungen, die wir behandeln, ist das **Sticky Bit** (klebriges Bit).
+## Wie das Sticky-Bit das Entfernen einschränkt
 
-### Was ist das Sticky Bit?
+Wenn das Sticky-Bit auf einem Verzeichnis gesetzt ist, erlaubt Linux das Entfernen oder Umbenennen eines Eintrags im Allgemeinen nur einem entsprechend privilegierten Prozess, dem Verzeichniseigentümer oder dem Eigentümer des Eintrags. Die gewöhnlichen Schreib- und Suchberechtigungen des Verzeichnisses sind weiterhin erforderlich.
 
-Das Sticky Bit ist eine Berechtigungseinstellung, die auf ein Verzeichnis angewendet werden kann. Wenn das Sticky Bit für ein Verzeichnis gesetzt ist, können Dateien in diesem Verzeichnis nur vom Besitzer der Datei, dem Besitzer des Verzeichnisses oder dem Root-Benutzer gelöscht oder umbenannt werden. Dies ist besonders nützlich für gemeinsam genutzte Verzeichnisse, in denen mehrere Benutzer ihre eigenen Dateien erstellen und verwalten müssen, ohne andere zu beeinträchtigen. Dieses Konzept ist ein Schlüsselbestandteil der Verwaltung von **Unix-Dateiberechtigungen mit Sticky Bit**.
+Die Einschränkung betrifft Verzeichniseinträge. Sie hindert einen Dateieigentümer nicht daran, den Dateiinhalt zu bearbeiten, wenn die Dateiberechtigungen diesen Vorgang anderweitig erlauben, und macht das Verzeichnis nicht privat.
 
-### Ein praktisches Beispiel: Das /tmp-Verzeichnis
+:::single-choice{#sticky-bit-removal-rule}
+Welcher gewöhnliche Benutzer kann in einem gemeinsam genutzten Verzeichnis mit Sticky-Bit einen bestimmten Eintrag normalerweise entfernen?
 
-Ein häufiger Anwendungsfall für das **Sticky Bit unter Linux** ist das `/tmp`-Verzeichnis, ein für alle beschreibbarer Ort für temporäre Dateien. Untersuchen wir seine Berechtigungen:
+::option[Jeder Benutzer, der das Verzeichnis auflisten kann.]{#sticky-bit-any-reader explanation="Die Leseberechtigung eines Verzeichnisses kann Namen sichtbar machen, umgeht aber nicht die Eigentumsbeschränkung des Sticky-Bits."}
+::option[Der Eigentümer des Eintrags, sofern der erforderliche Verzeichniszugriff besteht.]{#sticky-bit-entry-owner .correct explanation="Der Eigentümer des Eintrags gehört zu den Identitäten, denen die Regel eines Verzeichnisses mit Sticky-Bit das Entfernen gewöhnlich erlaubt."}
+::option[Ausschließlich ein Mitglied der Gruppe des Eintrags.]{#sticky-bit-entry-group explanation="Eine Gruppenmitgliedschaft allein ist keine durch das Sticky-Bit festgelegte Eigentumsausnahme."}
+:::
+
+## Das Bit an `/tmp` erkennen
+
+Das temporäre Systemverzeichnis ist ein verbreitetes Beispiel:
 
 ```bash
 $ ls -ld /tmp
-drwxrwxrwt 17 root root 4096 Dez 15 11:45 /tmp
+drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-Beachten Sie das `t` am Ende der Berechtigungszeichenfolge (`rwxrwxrwt`). Dieses `t` zeigt an, dass das Sticky Bit gesetzt ist. Aus diesem Grund kann zwar jeder Benutzer Dateien in `/tmp` erstellen, aber er kann keine von anderen Benutzern erstellten Dateien löschen oder verschieben. Dies verhindert, dass ein Benutzer die Arbeit eines anderen in diesem gemeinsam genutzten Bereich stört.
+Das abschließende kleingeschriebene `t` steht an der Ausführungsposition für andere. Es bedeutet, dass sowohl das Sticky-Bit als auch die Ausführungsberechtigung für andere vorhanden sind. Ein großgeschriebenes `T` bedeutet, dass das Sticky-Bit gesetzt ist, während die Ausführungsberechtigung für andere fehlt.
 
-### So setzen Sie das Sticky Bit
+Da `/tmp` gewöhnlich für alle beschreibbar und durchsuchbar ist, können mehrere Benutzer dort Einträge erstellen. Das Sticky-Bit verhindert, dass ein gewöhnlicher Benutzer die Einträge eines anderen allein deshalb entfernen kann, weil das Verzeichnis für alle beschreibbar ist. Anwendungen müssen temporäre Objekte weiterhin sicher erstellen, da vorhersehbare Namen, unsichere Links und schwache Dateimodi getrennte Risiken darstellen.
 
-You können das Sticky Bit mit dem `chmod`-Befehl auf zwei Arten setzen: symbolischer Modus oder oktaler (numerischer) Modus.
+:::single-choice{#sticky-bit-lowercase-t}
+Was zeigt ein kleingeschriebenes `t` am Ende eines Verzeichnismodus an?
 
-Um das Sticky Bit im symbolischen Modus hinzuzufügen:
+::option[Sticky-Bit und Ausführungsberechtigung für andere sind gesetzt.]{#sticky-bit-t-with-execute .correct explanation="Ein kleingeschriebenes `t` verbindet das besondere Sticky-Bit mit dem gewöhnlichen Ausführungsbit für andere."}
+::option[Das Sticky-Bit ist gesetzt, aber die Ausführungsberechtigung für andere fehlt.]{#sticky-bit-t-without-execute explanation="Diese Kombination wird als großgeschriebenes `T` dargestellt."}
+::option[Setgid und die Gruppenausführungsberechtigung sind gesetzt.]{#sticky-bit-setgid-position explanation="Setgid erscheint an der Gruppenausführungsposition und nicht an der abschließenden Position für andere."}
+:::
+
+## Das Sticky-Bit setzen und entfernen
+
+Setze das Bit symbolisch:
 
 ```bash
-chmod +t mein_gemeinsames_verzeichnis
+$ chmod +t shared-directory
 ```
 
-Um Berechtigungen im oktalen Modus festzulegen, stellen Sie der Standard-dreistelligen Berechtigungsziffer eine **1** voran. Die numerische Darstellung für das Sticky Bit ist **1**.
+In einer führenden oktalen Ziffer für besondere Bits trägt Sticky den Wert `1` bei:
 
 ```bash
-# Dies setzt die Berechtigungen auf rwxr-xr-x mit dem Sticky Bit
-chmod 1755 mein_gemeinsames_verzeichnis
+$ chmod 1777 shared-directory
 ```
 
-Das Verständnis des Sticky Bits ist entscheidend für die Verwaltung von Multi-User-Umgebungen und die effektive Sicherung gemeinsam genutzter Verzeichnisse.
+Die führende `1` setzt Sticky, während `777` den gewöhnlichen Modus angibt. Dieser Modus ist nur dann angemessen, wenn das Verzeichnis bewusst von allen lokalen Benutzern gemeinsam verwendet wird. Für ein Teamverzeichnis können engere Gruppenberechtigungen besser geeignet sein. Entferne ausschließlich das Sticky-Bit mit `chmod -t shared-directory`.
 
-## Exercise
+:::single-choice{#sticky-bit-octal-value}
+Welcher führende oktale Wert steht für das Sticky-Bit?
 
-Um Ihr Verständnis von Dateiberechtigungen, einschließlich spezieller Berechtigungen wie dem Sticky Bit, zu festigen, versuchen Sie diese praktischen Labs. Sie helfen Ihnen zu sehen, wie diese Konzepte in realen Szenarien angewendet werden.
+::option[`2`]{#sticky-bit-value-two explanation="Eine führende `2` steht für setgid."}
+::option[`1`]{#sticky-bit-value-one .correct explanation="Das Sticky-Bit trägt `1` zur führenden Ziffer für besondere Bits bei."}
+::option[`4`]{#sticky-bit-value-four explanation="Eine führende `4` steht für setuid."}
+:::
 
-1. **[Linux-Benutzergruppe und Dateiberechtigungen](https://labex.io/de/labs/linux-linux-user-group-and-file-permissions-18002)** – Üben Sie das Erstellen von Benutzern und Gruppen sowie die Manipulation von Dateibesitz und Berechtigungen. Dieses Lab bietet eine Grundlage für das Verständnis der Funktionsweise spezieller Berechtigungen.
-2. **[Dateien löschen und verschieben](https://labex.io/de/labs/linux-delete-and-move-files-7777)** – Lernen Sie, wie man Dateien löscht und verschiebt, und sehen Sie, wie Berechtigungen, einschließlich des Sticky Bits auf einem Verzeichnis, diese Aktionen einschränken können.
-3. **[Eine Datei finden](https://labex.io/de/labs/linux-find-a-file-17993)** – Üben Sie das Auffinden von Dateien und das Festlegen von Zugriffskontrollen, um die Bedeutung von Dateiberechtigungen bei der Verwaltung des Dateizugriffs und der Änderung zu verstärken.
+## Die vollständige Verzeichnisrichtlinie überprüfen
 
-## Quiz Question
+Sticky gewährt weder Schreib- noch Suchzugriff; es schränkt nur das Entfernen und Umbenennen ein, nachdem die gewöhnlichen Berechtigungen eine Änderung des Verzeichnisses erlauben. Prüfe Eigentümer, Gruppe, gewöhnlichen Modus, ACLs und Einhängekontext des Verzeichnisses gemeinsam. Teste in einer isolierten Umgebung mit unprivilegierten Konten, statt `/tmp` auf einem laufenden System zu verändern.
 
-Welches einzelne Zeichen in der Berechtigungszeichenfolge stellt in einer langen Verzeichnisauflistung (ls -l) dar, dass das Sticky Bit gesetzt ist? Bitte antworten Sie mit einem einzelnen Kleinbuchstaben aus dem Englischen.
+:::single-choice{#sticky-bit-access-scope}
+Macht das Hinzufügen des Sticky-Bits ein nicht beschreibbares Verzeichnis für andere Benutzer beschreibbar?
 
-## Quiz Answer
+::option[Ja; Sticky fügt automatisch für jede Klasse die Schreibberechtigung hinzu.]{#sticky-bit-adds-write explanation="Das besondere Bit schreibt die Schreibbits für Eigentümer, Gruppe oder andere nicht um."}
+::option[Ja; Sticky deaktiviert das Berechtigungstripel für andere.]{#sticky-bit-disables-other explanation="Das Tripel für andere ist weiterhin an gewöhnlichen Zugriffsprüfungen beteiligt."}
+::option[Nein; gewöhnliche Schreib- und Suchberechtigungen steuern den Zugriff weiterhin.]{#sticky-bit-no-write-grant .correct explanation="Sticky schränkt bestimmte Entfernungs- und Umbenennungsvorgänge ein, fügt aber keine fehlenden gewöhnlichen Berechtigungen hinzu."}
+:::
 
-t
+Erstelle zum Üben ein entbehrliches gemeinsam genutztes Verzeichnis, setze einen passenden gewöhnlichen Modus und das Sticky-Bit und teste anschließend das Entfernen von Einträgen als zwei unprivilegierte Benutzer. Das Lab [Dateien löschen und verschieben](https://labex.io/labs/linux-delete-and-move-files-7777) kann die zugrunde liegenden Umbenennungs- und Löschvorgänge festigen.
+
+## Zusammenfassung
+
+Du kannst nun das Sticky-Bit auf gemeinsam genutzten Verzeichnissen erklären und überprüfen.
+
+1. Setze Sticky mit Eigentumsbeschränkungen beim Entfernen und Umbenennen in Beziehung.
+2. Erkenne ein kleingeschriebenes `t` und ein großgeschriebenes `T` in einer ausführlichen Auflistung.
+3. Setze das Bit symbolisch oder mit dem führenden oktalen Wert `1`.
+4. Bewerte Sticky zusammen mit den gewöhnlichen Verzeichnisberechtigungen.

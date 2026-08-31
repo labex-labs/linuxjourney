@@ -1,59 +1,96 @@
 ---
-index: 6
+lesson_id: "vim-inserting-appending-text"
+course_id: "advanced-text-fu"
 lang: "de"
+order_index: 6
 title: "Vim: Text einfügen und anhängen"
-meta_title: "Vim: Text einfügen und anhängen – Fortgeschrittene Text-Fu"
-meta_description: "Lernen Sie den Unterschied zwischen Vim Einfüge- und Anhängemodus. Meistern Sie Befehle wie 'i', 'a' und 'o', um Text effizient zu bearbeiten, Vim-Inhalte anzuhängen und Zeilen in Vim hinzuzufügen."
+description: "Lerne, wie du in Vim vor, hinter, über oder unter der aktuellen Cursorposition in den Einfügemodus wechselst."
+meta_title: "Vim: Text einfügen und anhängen – Fortgeschrittenes Text-Fu"
+meta_description: "Lerne den Unterschied zwischen Einfügen und Anhängen in Vim. Beherrsche Befehle wie 'i', 'a' und 'o', um Text effizient zu bearbeiten und neue Zeilen anzulegen."
 meta_keywords: "vim anhängen, append vs insert vim, vim einfügen vs anhängen, vim zeile hinzufügen, vim textbearbeitung, vim befehle, vim tutorial, einfügemodus, anhängemodus"
 ---
 
-## Lesson Content
+Im Normalmodus interpretiert Vim Tasteneingaben als Befehle. Im Einfügemodus wird der eingegebene Text in den Puffer eingefügt. Verschiedene Befehle des Normalmodus wechseln an unterschiedlichen Positionen in den Einfügemodus. So kannst du direkt mit dem Tippen beginnen, ohne vorher separat dorthin zu navigieren.
 
-In Vim arbeiten Sie hauptsächlich in zwei Modi: dem Normalmodus zur Ausführung von Befehlen und dem Einfügemodus (Insert mode) zum Tippen von Text. Um vom Einfügemodus zurück in den Normalmodus zu wechseln, drücken Sie einfach die Taste `Esc`.
+Drücke `Esc`, um den Einfügemodus zu verlassen und in den Normalmodus zurückzukehren. Wenn du nicht sicher bist, welcher Modus aktiv ist, kannst du mit `Esc` zuverlässig wieder den Normalmodus herstellen. Beachte jedoch, dass dadurch eine noch ausstehende Operation abgebrochen werden kann.
 
-Es gibt verschiedene Befehle, um in den Einfügemodus zu gelangen, wobei jeder den Cursor an einer anderen Startposition für Ihre Texteingabe platziert.
+:::single-choice{#vim-insert-return-normal}
+Mit welcher Taste kehrst du normalerweise vom Einfügemodus in den Normalmodus zurück?
 
-### Grundlegende Einfügebefehle
+::option[`Esc`]{#vim-insert-escape .correct explanation="Escape beendet die aktuelle Eingabe und bringt Vim zurück in den Normalmodus."}
+::option[`Enter`]{#vim-insert-enter explanation="Enter fügt einen Zeilenumbruch ein und lässt Vim im Einfügemodus."}
+::option[`Tab`]{#vim-insert-tab explanation="Tab fügt eine Einrückung ein oder löst eine konfigurierte Vervollständigung aus; normalerweise verlässt du damit nicht den Einfügemodus."}
+:::
 
-Die grundlegendste Methode, mit dem Tippen zu beginnen, ist der Befehl `i`.
+## Vor oder hinter dem Cursor einfügen
 
-- `i` – Fügt Text **i**nsert (einfügt) vor der aktuellen Cursorposition ein.
+Aus dem Normalmodus:
 
-Dieser Befehl schaltet Sie in den Einfügemodus und ermöglicht es Ihnen, direkt in die Datei zu tippen.
+- `i`: Vor dem Cursor in den Einfügemodus wechseln.
+- `a`: Hinter dem Cursor in den Einfügemodus wechseln.
 
-### Vim Append vs. Insert
+Steht der Cursor beispielsweise auf dem `b` in `abc`, beginnt `i` vor dem `b`, während `a` nach dem `b` beginnt. Beide Befehle wechseln den Modus; der Text, den du anschließend eingibst, wird an dieser Stelle eingefügt.
 
-Ein häufiger Vergleichspunkt ist **vim append vs insert** (Vim Anhängen vs. Einfügen). Obwohl beide in den Einfügemodus wechseln, unterscheiden sich ihre Startpunkte relativ zum Cursor. Das Verständnis des Unterschieds zwischen **vim insert vs append** ist der Schlüssel zu effizienter Bewegung und Bearbeitung.
+:::single-choice{#vim-insert-before-cursor}
+Welche Taste wechselt aus dem Normalmodus unmittelbar vor dem Cursor in den Einfügemodus?
 
-- `a` – **a**ppend (hängt an) Text nach der aktuellen Cursorposition an.
-- `I` – **I**nsert (fügt ein) Text am Anfang der aktuellen Zeile ein.
-- `A` – **A**ppend (hängt an) Text am Ende der aktuellen Zeile an.
+::option[`a`]{#vim-insert-a-after explanation="Das kleine `a` hängt Text hinter dem Cursor an, statt ihn davor einzufügen."}
+::option[`o`]{#vim-insert-o-below explanation="Das kleine `o` öffnet unter der aktuellen Zeile eine neue Zeile und wechselt dann in den Einfügemodus."}
+::option[`i`]{#vim-insert-i-before .correct explanation="Das kleine `i` beginnt die Eingabe an der aktuellen Cursorposition, also vor dem Zeichen unter dem Cursor."}
+:::
 
-Die Verwendung von `a` anstelle von `i` spart Ihnen einen Tastendruck (da der Cursor nicht erst um eine Position nach rechts bewegt werden muss, bevor eingefügt wird). Ebenso ist `A` eine leistungsstarke Abkürzung, um sofort am Ende einer Zeile mit der Eingabe zu beginnen. Die Beherrschung der `vim append`-Befehle ist ein bedeutender Schritt zur Verbesserung Ihrer Bearbeitungsgeschwindigkeit.
+## An Zeilengrenzen einfügen
 
-### Wie man eine Zeile in Vim hinzufügt (Vim Add Line)
+Großgeschriebene Befehle springen zu wichtigen Positionen in der aktuellen Zeile:
 
-Wenn Sie neue Textzeilen hinzufügen müssen, müssen Sie nicht manuell Enter am Ende einer Zeile drücken. Vim bietet spezielle Befehle, um Zeilen zu öffnen und sofort in den Einfügemodus zu wechseln.
+- `I`: Vor dem ersten Zeichen der Zeile, das kein Leerraum ist, in den Einfügemodus wechseln.
+- `A`: Am Ende der Zeile in den Einfügemodus wechseln.
 
-- `o` – **o**pen (öffnet) eine neue Zeile unterhalb der aktuellen Zeile und wechselt in den Einfügemodus.
-- `O` – **O**pen (öffnet) eine neue Zeile oberhalb der aktuellen Zeile und wechselt in den Einfügemodus.
+In einer eingerückten Zeile überspringt `I` die Einrückung und beginnt vor dem ersten sichtbaren Text. Verwende `0i`, wenn du ausdrücklich in Spalte null einfügen möchtest.
 
-Diese Befehle sind äußerst nützlich, wenn Sie beim Programmieren oder Schreiben schnell eine **vim add line** (Zeile in Vim hinzufügen) benötigen.
+:::single-choice{#vim-insert-first-nonblank}
+Welcher Befehl des Normalmodus beginnt die Eingabe vor dem ersten Zeichen der aktuellen Zeile, das kein Leerraum ist?
 
-Tipp: Sie können diesen Befehlen eine Zahl voranstellen, um sie zu wiederholen. Zum Beispiel öffnet die Eingabe von `3o` im Normalmodus drei neue leere Zeilen unterhalb der aktuellen und platziert Sie im Einfügemodus in der ersten dieser neuen Zeilen.
+::option[`i`]{#vim-insert-lower-i explanation="Das kleine `i` verwendet die aktuelle Cursorposition und springt nicht zuerst zum Textanfang der Zeile."}
+::option[`A`]{#vim-insert-capital-a explanation="Das große `A` beginnt die Eingabe am Ende der aktuellen Zeile."}
+::option[`I`]{#vim-insert-capital-i .correct explanation="Das große `I` springt zum ersten Nicht-Leerraum-Zeichen und wechselt davor in den Einfügemodus."}
+:::
 
-## Exercise
+:::single-choice{#vim-append-line-end}
+Welcher Befehl des Normalmodus springt ans Ende der aktuellen Zeile und wechselt in den Einfügemodus?
 
-Übung ist unerlässlich, um Vim zu meistern. Das folgende Labor bietet eine praktische Umgebung, um Ihr Verständnis der Textbearbeitungsfunktionen von Vim zu festigen.
+::option[`A`]{#vim-append-capital-a .correct explanation="Das große `A` verbindet den Sprung ans Zeilenende mit dem Wechsel in den Einfügemodus."}
+::option[`$`]{#vim-move-line-end explanation="Die Dollar-Bewegung erreicht das Zeilenende, bleibt aber im Normalmodus."}
+::option[`a`]{#vim-append-one-position explanation="Das kleine `a` beginnt hinter der aktuellen Cursorposition, statt ans Zeilenende zu springen."}
+:::
 
-1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, die grundlegenden Fähigkeiten zur Verwendung des Normal- und Einfügemodus von Vim zu meistern.
+## Eine neue Zeile öffnen
 
-Die Anwendung dieser Konzepte in realen Szenarien hilft Ihnen, Vertrauen in die Textbearbeitung unter Linux mit Vim aufzubauen.
+Aus dem Normalmodus:
 
-## Quiz Question
+- `o`: Unter der aktuellen Zeile eine neue Zeile öffnen und in den Einfügemodus wechseln.
+- `O`: Über der aktuellen Zeile eine neue Zeile öffnen und in den Einfügemodus wechseln.
 
-Welche Taste wechselt in den Einfügemodus vor dem Cursor? Bitte antworten Sie mit einem einzigen Kleinbuchstaben des englischen Alphabets.
+Vim richtet die neue Zeile entsprechend den aktuellen Einstellungen und den Regeln für den Dateityp ein. Mit einem Zähler lässt sich das Öffnen von Zeilen wiederholen. Lerne zunächst die Form für eine einzelne Zeile, damit die anschließende Cursorposition vorhersehbar bleibt.
 
-## Quiz Answer
+:::single-choice{#vim-open-line-above}
+Welcher Befehl des Normalmodus öffnet über der aktuellen Zeile eine neue Zeile und wechselt in den Einfügemodus?
 
-i
+::option[`o`]{#vim-open-lower-o explanation="Das kleine `o` öffnet eine Zeile unterhalb der aktuellen Zeile."}
+::option[`O`]{#vim-open-upper-o .correct explanation="Das große `O` öffnet darüber eine neue Zeile und beginnt dort mit der Eingabe."}
+::option[`A`]{#vim-open-upper-a explanation="Das große `A` hängt Text am Ende der vorhandenen Zeile an und öffnet darüber keine neue Zeile."}
+:::
+
+Mit diesem praktischen Lab kannst du den Wechsel zwischen Normal- und Einfügemodus üben:
+
+1. **[Textdateien unter Linux mit Vim und Nano bearbeiten](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** – Übe, Dateien anzulegen, Text zu bearbeiten und zu speichern sowie mit vi/vim und nano zu navigieren. Das Lab hilft dir, die grundlegende Arbeit mit Vims Normal- und Einfügemodus zu beherrschen.
+
+## Zusammenfassung
+
+Du kannst nun genau dort in den Einfügemodus wechseln, wo neuer Text stehen soll.
+
+1. Kehre mit `Esc` in den Normalmodus zurück.
+2. Füge mit `i` oder `a` Text vor beziehungsweise hinter dem Cursor ein.
+3. Beginne mit `I` am ersten Text der Zeile oder mit `A` am Zeilenende.
+4. Öffne mit `o` eine Zeile darunter.
+5. Öffne mit `O` eine Zeile darüber.

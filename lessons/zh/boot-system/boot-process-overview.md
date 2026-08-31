@@ -1,46 +1,80 @@
 ---
-index: 1
+lesson_id: "boot-process-overview"
+course_id: "boot-system"
 lang: "zh"
+order_index: 1
 title: "启动过程概述"
+description: "了解从平台固件到内核，再到第一个用户空间进程的主要控制权交接。"
 meta_title: "启动过程概述 - 系统启动"
 meta_description: "清晰概述 Linux 启动过程，详细介绍四个关键阶段：BIOS、引导加载程序、内核和 init。了解从开机到登录提示的完整 Linux 操作系统启动流程。"
 meta_keywords: "Linux 启动过程，启动过程 linux, linux 启动，linux 操作系统启动过程，BIOS, 引导加载程序，内核，init, Linux 教程，Linux 指南，新手"
 ---
 
-## Lesson Content
+启动是一连串信任与控制权转移，把平台复位转变为运行中的用户空间环境。常见 PC 路径可以概括为固件、启动管理器或加载程序、带有可选早期用户空间的内核，以及作为 PID 1 的 init 系统。不同架构、虚拟机、嵌入式系统和容器可能采用不同路径。
 
-在探索了 Linux 的一些关键组件之后，现在让我们看看它们在系统启动时是如何组合在一起的。从按下电源按钮到出现登录提示符的整个序列，被称为 **Linux 启动过程** (Linux boot process)。这是一个将断电机器转变为功能齐全的操作系统迷人的旅程。
+## 固件初始化
 
-**Linux 操作系统启动过程** (booting process of the Linux operating system) 可以简化为四个主要阶段。
+平台固件会初始化足够的 CPU、内存和设备状态，以选择启动目标。传统 PC 使用 BIOS 约定，当前 PC 通常使用 UEFI。固件设置、启动顺序、平台验证和安全启动策略会决定哪个下一阶段可执行文件获准运行。
 
-### 阶段 1 BIOS
+固件不一定理解已安装的 Linux 根文件系统。它会根据自身接口定位启动路径，例如选定磁盘上的 BIOS 启动代码，或指向 EFI 系统分区中 EFI 可执行文件的 UEFI 启动条目。
 
-BIOS（基本输入/输出系统）或其现代继任者 UEFI（统一可扩展固件接口）是您打开计算机电源时运行的第一个软件。它执行开机自检 (POST) 以初始化和验证 CPU、内存和存储设备等系统硬件。硬件检查通过后，BIOS 的主要任务是从存储设备定位并加载引导加载程序。
+:::single-choice{#boot-overview-first-stage}
+典型 PC 复位后，哪个组件首先开始平台初始化？
 
-### 阶段 2 引导加载程序 (Bootloader)
+::option[用户的交互式 shell。]{#boot-overview-shell explanation="Shell 要晚得多才会由用户空间服务或登录流程启动。"}
+::option[BIOS 或 UEFI 等平台固件。]{#boot-overview-firmware .correct explanation="Linux 运行前，固件先建立早期硬件状态并选择下一个启动目标。"}
+::option[文件系统修复工具。]{#boot-overview-fsck explanation="检查器可能根据启动策略在之后参与流程，但不是初始固件阶段。"}
+:::
 
-引导加载程序从 BIOS 接管控制权。它的主要职责是将 Linux 内核加载到内存中。Linux 的常见引导加载程序是 GRUB（GRand 统一引导加载程序）。GRUB 通常会显示一个菜单，允许您选择要启动的操作系统或内核版本。在您做出选择（或超时后），它会将选定的内核和初始 RAM 磁盘 (initrd) 加载到内存中，然后将控制权传递给内核。
+## 引导加载程序或启动管理器
 
-### 阶段 3 内核 (Kernel)
+GRUB 等加载程序可以显示启动条目、把选定 Linux 内核和初始 RAM 文件系统载入内存、构造内核命令行并移交控制权。UEFI 也可以直接加载构建为 EFI 可执行文件的内核，因此独立的多阶段加载程序很常见，但并非普遍必需。
 
-一旦内核加载到内存中，它就接管了系统的控制权。它首先解压缩自身并初始化核心硬件和内存管理。然后内核挂载根文件系统，其中包含所有系统文件。**Linux 启动过程** (boot process linux) 所依赖的最后一个也是最关键的任务是执行第一个用户空间程序：`init` 进程。
+所选内容必须相互匹配：内核版本、initramfs 内容、根目录标识符、安全签名和命令行选项都会影响下一次交接能否成功。
 
-### 阶段 4 Init
+:::single-choice{#boot-overview-loader-role}
+Linux 引导加载程序通常承担什么职责？
 
-`init` 进程是内核启动的第一个进程，也是系统上所有其他进程的祖先。它的主要工作是根据其配置启动必要的服务和后台进程（守护进程），使系统进入可用状态。`init` 有几种实现，例如传统的 System V init、Upstart 以及现在广泛采用的 systemd。
+::option[加载选定内核并传递其命令行。]{#boot-overview-load-kernel .correct explanation="加载程序准备内核映像和参数，通常还包括 initramfs。"}
+::option[每次启动时从头创建所有用户账户。]{#boot-overview-create-users explanation="持久账户数据库属于用户空间配置，不会由加载程序重新创建。"}
+::option[登录后调度每个应用程序进程。]{#boot-overview-schedule-apps explanation="CPU 调度由运行中的内核负责。"}
+:::
 
-这提供了 **Linux 启动过程** (booting process linux) 的高级概述。我们将在接下来的课程中深入探讨这些阶段的每一个。
+## 内核与早期用户空间
 
-## Exercise
+内核会按需解压或重定位、初始化核心子系统、解析命令行并发现可用硬件。Initramfs 可以提供存储发现、RAID、加密、LVM、网络或其他组装真实根文件系统所需的模块与早期工具。
 
-为了巩固您的理解，我们建议您尝试这个动手实验。它提供了一个实际环境，让您应用所学到的关于 Linux 启动过程的知识。
+预期根目录可用后，早期用户空间会切换到它，内核再执行配置的第一个用户空间程序。由谁执行文件系统检查或重新以读写方式挂载等细节，取决于发行版的启动设计，并不存在一套通用顺序。
 
-1. **[在 Linux 中自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 练习修改 GRUB2 引导菜单，这是 Linux 启动序列中的一个关键组件。
+:::single-choice{#boot-overview-initramfs-purpose}
+系统为什么可能使用 initramfs？
 
-## Quiz Question
+::option[把每个用户的桌面会话永久保存在固件中。]{#boot-overview-desktop-firmware explanation="Initramfs 是启动时文件系统映像，而不是固件会话存储。"}
+::option[提供访问真实根文件系统所需的早期工具和驱动程序。]{#boot-overview-early-root-tools .correct explanation="早期用户空间可以组装加密、逻辑、网络或依赖驱动的根存储。"}
+::option[登录后替换内核的进程调度器。]{#boot-overview-replace-scheduler explanation="整个运行期间，调度职责仍由内核承担。"}
+:::
 
-Linux 启动过程的最后一个阶段是什么？（请用英文回答，注意大小写）
+## PID 1 与系统就绪
 
-## Quiz Answer
+第一个用户空间进程获得 PID 1。许多发行版使用 systemd，其他系统则使用 sysvinit、OpenRC、runit、BusyBox init 或专用程序。PID 1 建立用户空间服务环境、回收孤儿子进程并负责关闭系统。
 
-init
+到达 PID 1 并不表示系统已经完全就绪。服务可能仍在启动，存储可能仍在挂载，网络配置可能尚未完成，而图形或控制台登录也只是可能的目标状态之一。
+
+:::single-choice{#boot-overview-final-stage}
+什么操作开始主要的用户空间初始化阶段？
+
+::option[每次启动时创建磁盘的保护性 MBR。]{#boot-overview-create-mbr explanation="创建分区表并不是周期性启动阶段。"}
+::option[删除所有内核命令行参数。]{#boot-overview-delete-command-line explanation="内核会解析并公开命令行，并不要求删除它。"}
+::option[执行 PID 1 init 程序。]{#boot-overview-pid-one .correct explanation="完成根目录设置后，第一个用户空间进程启动或监管达到配置系统状态所需的服务。"}
+:::
+
+[自定义 GRUB2 引导菜单](https://labex.io/zh/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)实验演示了一种加载程序配置路径。只能在具备恢复能力的实验系统中应用更改。
+
+## 总结
+
+现在，你可以追踪 Linux 启动的主要控制权交接，而不会把它们误认为通用实现细节。
+
+1. 从固件初始化和目标选择开始。
+2. 理解加载程序与内核、initramfs 和命令行选择之间的关系。
+3. 通过早期用户空间理解复杂根存储的组装。
+4. 把 PID 1 视为服务初始化的开始，而不是系统已经就绪的证明。

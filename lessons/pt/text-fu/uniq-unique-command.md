@@ -1,19 +1,20 @@
 ---
-index: 14
+lesson_id: "uniq-unique-command"
+course_id: "text-fu"
 lang: "pt"
+order_index: 14
 title: "uniq (Único)"
+description: "Aprenda a agrupar, contar ou filtrar grupos adjacentes de linhas iguais com uniq."
 meta_title: "uniq (Único) - Text-Fu"
-meta_description: "Explore o comando uniq no Linux para filtrar e remover linhas adjacentes duplicadas de texto. Aprenda a usar a ferramenta uniq linux com opções como -c, -u, -d e combine-a com sort para processamento de texto poderoso."
-meta_keywords: "comando uniq, uniq Linux, uniq linux, remover duplicatas, sort uniq, processamento de texto, limpeza de dados, tutorial Linux"
+meta_description: "Explore o comando uniq do Linux para filtrar linhas duplicadas adjacentes. Aprenda as opções -c, -u e -d e sua combinação com sort."
+meta_keywords: "comando uniq, uniq Linux, remover duplicatas, sort uniq, processamento texto, limpeza dados, tutorial Linux"
 ---
 
-## Lesson Content
+O comando `uniq` compara cada linha de entrada com a linha anterior. Ele pode agrupar, contar ou selecionar grupos adjacentes de linhas iguais, mas não pesquisa o arquivo inteiro por duplicatas separadas.
 
-O comando `uniq` (unique) é uma ferramenta essencial para o processamento de texto no Linux. Ele ajuda a filtrar e gerenciar linhas duplicadas dentro de um arquivo de texto, mas é importante entender como ele funciona para usá-lo de forma eficaz.
+## Agrupamento de Linhas Duplicadas Adjacentes
 
-### Remoção Básica de Duplicatas
-
-A função principal do comando `uniq` é remover linhas adjacentes duplicadas. Imagine que você tem um arquivo chamado `reading.txt` com o seguinte conteúdo:
+Suponha que `reading.txt` contenha valores agrupados:
 
 ```plaintext
 book
@@ -25,7 +26,7 @@ article
 magazine
 ```
 
-Para remover as linhas repetidas, você pode executar o comando `uniq`:
+Execute `uniq` sem opção de filtro para mostrar uma linha representativa de cada grupo adjacente:
 
 ```bash
 $ uniq reading.txt
@@ -35,13 +36,19 @@ article
 magazine
 ```
 
-Como você pode ver, `uniq` exibe uma versão do arquivo com as linhas adjacentes duplicadas removidas.
+O arquivo de entrada permanece inalterado, pois o resultado vai para stdout.
 
-### Opções Avançadas de Filtragem
+:::single-choice{#uniq-collapse-adjacent}
+O que `uniq reading.txt` faz por padrão?
 
-O comando `uniq` também fornece várias opções para uma análise mais detalhada.
+::option[Ordena o arquivo inteiro e remove todos os valores repetidos.]{#uniq-auto-sort explanation="`uniq` preserva a ordem da entrada e não a ordena. Cópias separadas permanecem em grupos diferentes."}
+::option[Mostra uma linha de cada grupo adjacente de linhas iguais.]{#uniq-one-per-group .correct explanation="Por padrão, `uniq` agrupa linhas iguais consecutivas em uma única linha de saída."}
+::option[Exclui as linhas duplicadas diretamente de `reading.txt`.]{#uniq-edit-file explanation="O comando grava o texto filtrado em stdout por padrão e não edita o arquivo de entrada."}
+:::
 
-Para contar as ocorrências de cada linha, use a flag `-c` (count):
+## Contagem de Grupos Adjacentes
+
+Use `-c` para prefixar cada grupo de saída com sua quantidade de linhas consecutivas:
 
 ```bash
 $ uniq -c reading.txt
@@ -51,14 +58,26 @@ $ uniq -c reading.txt
       1 magazine
 ```
 
-Para exibir apenas as linhas que não são repetidas (ou seja, são únicas), use a flag `-u` (unique):
+Essas quantidades representam o tamanho de cada sequência, não os totais globais, a menos que todas as linhas iguais tenham sido agrupadas primeiro.
+
+:::single-choice{#uniq-count-groups}
+O que a contagem de `uniq -c` representa?
+
+::option[A quantidade de caracteres de cada linha de entrada.]{#uniq-character-count explanation="Contar caracteres não é a finalidade de `uniq -c`; ferramentas como `wc` calculam totais de caracteres e bytes."}
+::option[A quantidade de linhas iguais consecutivas em cada grupo.]{#uniq-consecutive-count .correct explanation="`-c` prefixa cada grupo adjacente condensado com a quantidade de linhas que ele continha."}
+::option[A quantidade total de linhas correspondentes em qualquer parte do arquivo.]{#uniq-global-count explanation="Linhas iguais separadas formam grupos distintos, a menos que os dados sejam ordenados ou agrupados primeiro."}
+:::
+
+## Seleção de Grupos Únicos ou Repetidos
+
+Use `-u` para mostrar apenas os grupos que contêm exatamente uma linha:
 
 ```bash
 $ uniq -u reading.txt
 magazine
 ```
 
-Inversamente, para exibir apenas as linhas que são repetidas, use a flag `-d` (duplicated):
+Use `-d` para mostrar uma linha representativa de cada grupo adjacente que contém mais de uma:
 
 ```bash
 $ uniq -d reading.txt
@@ -67,11 +86,27 @@ paper
 article
 ```
 
-### A Importância da Ordenação
+O GNU `uniq -D` mostra todas as linhas dos grupos repetidos, enquanto `-d` minúsculo mostra o valor de cada grupo uma vez.
 
-Um detalhe crítico sobre o comando **uniq linux** é que ele só detecta linhas duplicadas se elas estiverem diretamente adjacentes uma à outra. Se as duplicatas estiverem espalhadas pelo arquivo, `uniq` não as identificará.
+:::single-choice{#uniq-only-singletons}
+Qual comando mostra apenas os grupos adjacentes que ocorrem exatamente uma vez?
 
-Considere esta versão de `reading.txt` onde as duplicatas não são adjacentes:
+::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Essa forma mostra todos os grupos com uma contagem, incluindo repetidos e únicos."}
+::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="`-d` minúsculo mostra uma linha de cada grupo repetido, a seleção oposta."}
+::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="A opção `-u` seleciona grupos cuja sequência adjacente possui exatamente uma linha."}
+:::
+
+:::single-choice{#uniq-one-per-duplicate-group}
+Qual comando mostra uma linha de cada grupo adjacente que aparece mais de uma vez?
+
+::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="A opção `-d` seleciona grupos adjacentes repetidos e emite uma linha representativa de cada um."}
+::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="`-D` maiúsculo do GNU mostra todas as linhas pertencentes aos grupos repetidos, não apenas uma representante."}
+::option[`uniq -u reading.txt`]{#uniq-unique-groups explanation="A opção `-u` seleciona grupos únicos, não os repetidos."}
+:::
+
+## Agrupamento de Duplicatas Separadas
+
+Se linhas iguais estiverem separadas, elas formarão grupos diferentes:
 
 ```plaintext
 book
@@ -83,7 +118,7 @@ magazine
 article
 ```
 
-Executar `uniq` neste arquivo produzirá um resultado surpreendente:
+Executar `uniq` nesse arquivo produz um resultado que pode surpreender:
 
 ```bash
 $ uniq reading.txt
@@ -96,7 +131,7 @@ magazine
 article
 ```
 
-Nenhuma linha foi removida porque nenhuma linha idêntica estava lado a lado. Para resolver isso, você deve primeiro ordenar o conteúdo do arquivo. Ao canalizar (`pipe`) a saída de `sort` para `uniq`, você garante que todas as linhas idênticas se tornem adjacentes, permitindo que `uniq` funcione corretamente. Esta combinação é um padrão poderoso e comum em scripts de shell.
+Nenhuma linha é agrupada porque os valores vizinhos são diferentes. Ordene primeiro quando a mudança de ordem for aceitável e você quiser reunir linhas completas iguais:
 
 ```bash
 $ sort reading.txt | uniq
@@ -106,22 +141,30 @@ magazine
 paper
 ```
 
-Este comando primeiro ordena as linhas alfabeticamente e, em seguida, `uniq` filtra as duplicatas, fornecendo uma lista limpa de entradas exclusivas.
+Use um locale e uma política de comparação consistentes nas duas etapas. `sort -u reading.txt` também pode ordenar e preservar uma linha para cada chave igual em um único comando.
 
-## Exercise
+:::single-choice{#uniq-separated-duplicates}
+Linhas iguais estão espalhadas por `reading.txt`, e a ordem da saída pode mudar. Qual pipeline produz uma cópia ordenada de cada linha completa distinta?
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do processamento de texto com `uniq` e `sort`:
+::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="A ordenação agrupa linhas completas iguais, e `uniq` reduz cada grupo adjacente a uma única linha."}
+::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` é executado antes que linhas iguais separadas se tornem adjacentes; por isso, a ordenação posterior ainda pode deixar duplicatas."}
+::option[`uniq -c reading.txt | head`]{#uniq-count-head explanation="Essa forma conta os grupos adjacentes existentes e limita a saída. Ela não agrupa globalmente duplicatas separadas."}
+:::
 
-1. **[Comando uniq do Linux: Filtragem de Duplicatas](https://labex.io/pt/labs/linux-linux-uniq-command-duplicate-filtering-219199)** - Aprenda a usar o comando `uniq` do Linux em combinação com `sort` para identificar, filtrar e analisar linhas duplicadas em arquivos de texto.
-2. **[Comando sort do Linux: Ordenação de Texto](https://labex.io/pt/labs/linux-linux-sort-command-text-sorting-219196)** - Pratique o uso do comando `sort` para organizar linhas de arquivos de texto, um passo crucial antes de usar `uniq` de forma eficaz.
-3. **[Contagem de Palavras e Ordenação](https://labex.io/pt/labs/linux-word-count-and-sorting-388125)** - Aprenda as ferramentas essenciais de processamento de texto do Linux, `wc` (contagem de palavras) e `sort`, neste desafio prático. Aprenda a contar linhas, palavras e caracteres, encontrar padrões frequentes e ordenar dados de forma eficiente para várias tarefas de análise de texto.
+`uniq` lê stdin quando nenhum arquivo de entrada é indicado, motivo pelo qual se encaixa naturalmente depois de `sort`. Opções GNU como `-i` podem ignorar maiúsculas e minúsculas, enquanto `-f`, `-s` e `-w` podem ignorar ou limitar regiões de comparação; use-as apenas quando a igualdade deva ser definida por parte de cada linha.
 
-Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a construir confiança com o processamento de texto e a manipulação de dados no Linux.
+Para praticar o agrupamento, a contagem e a filtragem de duplicatas, experimente estes laboratórios:
 
-## Quiz Question
+1. **[Comando uniq do Linux: Filtragem de Duplicatas](https://labex.io/labs/linux-linux-uniq-command-duplicate-filtering-219199)** — Aprenda a combinar `uniq` com `sort` para identificar, filtrar e analisar linhas duplicadas.
+2. **[Comando sort do Linux: Ordenação de Texto](https://labex.io/labs/linux-linux-sort-command-text-sorting-219196)** — Pratique a organização de linhas com `sort`, uma etapa importante antes do uso eficaz de `uniq`.
+3. **[Contagem e Ordenação de Palavras](https://labex.io/labs/linux-word-count-and-sorting-388125)** — Aprenda as ferramentas essenciais de processamento de texto do Linux `wc` (contagem de palavras) e `sort` neste desafio prático. Aprenda a contar linhas, palavras e caracteres, encontrar padrões frequentes e ordenar dados com eficiência em várias tarefas de análise de texto.
 
-Qual comando você usaria para remover linhas duplicadas adjacentes em um arquivo? Por favor, responda usando apenas o nome do comando em letras minúsculas em inglês.
+## Resumo
 
-## Quiz Answer
+Agora você sabe analisar grupos adjacentes de linhas iguais com `uniq`.
 
-uniq
+1. Agrupe cada grupo adjacente duplicado em uma linha.
+2. Conte ocorrências consecutivas com `-c`.
+3. Selecione grupos únicos com `-u`.
+4. Selecione grupos repetidos com `-d` ou `-D` do GNU.
+5. Ordene primeiro quando duplicatas separadas precisarem ser agrupadas.

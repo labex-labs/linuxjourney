@@ -1,67 +1,92 @@
 ---
-index: 2
+lesson_id: "route"
+course_id: "network-config"
 lang: "fr"
+order_index: 2
 title: "route"
-meta_title: "route - Configuration Réseau"
-meta_description: "Apprenez à gérer votre table de routage Linux. Ce guide couvre l'ajout et la suppression de routes réseau en utilisant la commande moderne 'ip route' et la commande héritée 'route'."
-meta_keywords: "commande ip route linux, commande ip route, ajouter route, supprimer route, table de routage, routage réseau, réseau linux, ip route"
+description: "Découvrez comment examiner, ajouter, remplacer, supprimer et vérifier en toute sécurité les routes Linux avec ip."
+meta_title: "route - Configuration réseau"
+meta_description: "Apprenez à gérer la table de routage Linux : ajout, remplacement et suppression de routes avec la commande moderne ip route et l’ancienne commande route."
+meta_keywords: "commande ip route Linux, route Linux, ajouter une route, supprimer une route, table de routage, routage réseau, réseau Linux, ip route"
 ---
 
-## Lesson Content
+Les routes manuelles modifient la manière dont le noyau choisit une interface de sortie et un prochain saut. Une erreur peut déconnecter l’hôte ou rediriger du trafic sensible ; examinez donc la route effective, le gestionnaire de configuration et la voie de récupération avant de modifier l’état.
 
-Sous Linux, la table de routage dirige le trafic réseau vers sa destination correcte. Bien que nous ayons précédemment discuté de la visualisation de cette table, vous pouvez également ajouter ou supprimer manuellement des routes pour contrôler la manière dont les paquets de données sont transférés. Ceci est essentiel pour configurer des configurations réseau complexes ou pour dépanner des problèmes de connectivité.
+## Examiner la décision actuelle
 
-### Utilisation de la commande legacy route
-
-La commande `route` est un outil traditionnel pour gérer la table de routage. Bien qu'elle soit toujours fonctionnelle, elle est considérée comme obsolète et la commande `ip` est désormais préférée.
-
-Pour ajouter une nouvelle route réseau, vous spécifiez l'adresse réseau, le masque de sous-réseau et la passerelle (`gw`) :
+Relevez les routes pertinentes et demandez au noyau comment il atteint actuellement la destination :
 
 ```bash
-sudo route add -net 192.168.2.1/23 gw 10.11.12.3
+$ ip -4 route show
+$ ip route get 192.168.2.25
 ```
 
-Pour supprimer une route, utilisez l'indicateur `del` avec l'adresse réseau :
+Examinez également les règles de routage par politiques et les tables secondaires lorsqu’elles existent. La recherche de route constitue une preuve locale ; elle n’envoie aucun trafic.
+
+:::single-choice{#route-get-before-change}
+Pourquoi exécuter `ip route get DESTINATION` avant de modifier une route ?
+
+::option[Cette commande relève la décision locale actuelle afin de permettre une comparaison et un retour en arrière.]{#route-get-baseline .correct explanation="L’interface, le prochain saut et la source sélectionnés contribuent à définir la modification voulue."}
+::option[Elle réserve définitivement la destination sur chaque routeur.]{#route-get-reserves explanation="La commande effectue une recherche locale et ne modifie aucun état distant."}
+::option[Elle désactive toutes les règles de routage par politiques.]{#route-get-disables-policy explanation="La recherche évalue les politiques au lieu de les supprimer."}
+:::
+
+## Ajouter ou remplacer une route
+
+Ajoutez une route vers le préfixe canonique en passant par un prochain saut accessible :
 
 ```bash
-sudo route del -net 192.168.2.1/23
+$ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-### Gestion moderne des routes avec ip route
+La passerelle doit être accessible par la liaison concernée ou conformément à une conception explicite et valide qui la considère comme directement connectée. `add` échoue lorsqu’une route équivalente existe déjà. `replace` crée ou modifie une route, ce qui convient aux configurations idempotentes, mais peut écraser un état fonctionnel ; examinez d’abord précisément la cible.
 
-La commande `ip route` est l'outil moderne et plus puissant pour la configuration réseau sous Linux. Elle offre un ensemble d'options plus cohérent et plus étendu pour gérer les interfaces réseau et les routes. L'utilisation de la **commande ip route linux** est la pratique recommandée pour les systèmes actuels.
+:::single-choice{#route-add-existing}
+Que se passe-t-il généralement si `ip route add` vise une route qui existe déjà ?
 
-Pour ajouter une route avec la **commande ip route sous linux**, vous utilisez l'action `add`, en spécifiant le réseau de destination et le saut suivant via la passerelle :
+::option[La commande supprime silencieusement l’ancien préfixe de destination.]{#route-add-deletes explanation="Add signale normalement que l’objet existe au lieu de le remplacer."}
+::option[Elle échoue au lieu de remplacer la route existante.]{#route-add-fails .correct explanation="N’utilisez délibérément `replace` qu’après avoir examiné l’entrée qui sera modifiée."}
+::option[Elle redémarre la passerelle sélectionnée.]{#route-add-reboots explanation="Une configuration de route locale ne peut pas demander ainsi le redémarrage d’un système distant."}
+:::
+
+## Supprimer avec précision
+
+Précisez tous les attributs de la route à supprimer lorsque plusieurs routes candidates ou tables peuvent exister :
 
 ```bash
-ip route add 192.168.2.1/23 via 10.11.12.3
+$ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-Pour supprimer une route, vous pouvez utiliser l'action `delete`. Vous pouvez spécifier la route en entier ou seulement le réseau de destination si elle est unique :
+Une suppression indiquant uniquement la destination peut avoir une portée plus large que prévu ou être ambiguë. Avant de retirer la route, relevez la commande d’origine qui permettra de la restaurer.
 
-```bash
-# Supprimer en spécifiant la route complète
-ip route delete 192.168.2.1/23 via 10.11.12.3
+:::single-choice{#route-delete-precision}
+Pourquoi inclure le prochain saut et le périphérique lors de la suppression d’une route ?
 
-# Ou, supprimer en spécifiant seulement la destination
-ip route delete 192.168.2.1/23
-```
+::option[Pour identifier plus précisément l’entrée visée.]{#route-delete-exact .correct explanation="Des attributs explicites réduisent le risque de supprimer une autre route possédant le même préfixe."}
+::option[Pour supprimer également l’adaptateur réseau physique.]{#route-delete-adapter explanation="La suppression d’une route ne retire pas l’objet de liaison du noyau."}
+::option[Pour effacer la zone DNS de la destination.]{#route-delete-dns explanation="Le routage et les données DNS faisant autorité sont des systèmes distincts."}
+:::
 
-Maîtriser la commande `ip route` est une compétence clé pour tout administrateur Linux responsable de la gestion du réseau.
+## Persistance et sécurité à distance
 
-## Exercise
+Une commande `ip route` ne modifie que l’état actuel du noyau. NetworkManager, systemd-networkd, netplan, ifupdown, DHCP, les démons de routage ou un système d’orchestration peuvent ensuite la remplacer. N’enregistrez la route auprès du gestionnaire actif qu’après avoir testé son comportement à l’exécution.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du routage réseau et de l'adressage IP :
+Sur un hôte distant, conservez une console indépendante et utilisez un mécanisme de retour en arrière qui ne dépend pas de la route modifiée. Vérifiez ensuite la recherche de route, l’état des voisins, le trafic dans les deux sens et le service réel.
 
-1. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Entraînez-vous à configurer une IP statique, à définir une passerelle par défaut et à vérifier la configuration réseau à l'aide de la commande `ip`.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment la passerelle par défaut gère le trafic distant et observez les interactions de la couche réseau.
+:::single-choice{#route-runtime-persistence}
+Que peut-il arriver à une route ajoutée manuellement après le rechargement du gestionnaire de réseau ?
 
-Ces laboratoires vous aideront à appliquer les concepts d'adressage IP et de routage dans des scénarios réels et à gagner en confiance avec le réseau Linux.
+::option[Elle devient pour toujours une fonction immuable du noyau.]{#route-manual-immutable explanation="Les routes d’exécution peuvent être supprimées ou remplacées."}
+::option[Elle apparaît automatiquement sur chaque hôte du sous-réseau.]{#route-manual-all-hosts explanation="La commande ne modifie que l’espace de noms réseau actuel."}
+::option[Elle peut disparaître si elle ne figure pas dans la politique persistante.]{#route-manual-disappears .correct explanation="Le gestionnaire réconcilie l’état du noyau avec ses profils configurés."}
+:::
 
-## Quiz Question
+## Résumé
 
-When using the legacy `route` command, what is the flag used to delete a route? Please answer in English, paying attention to case.
+Vous savez maintenant modifier une route Linux de manière ciblée et récupérable.
 
-## Quiz Answer
-
-del
+1. Relever les routes, les règles et la recherche effective actuelles.
+2. Utiliser un préfixe canonique et un prochain saut accessible.
+3. Distinguer l’ajout du remplacement délibéré.
+4. Supprimer la route exacte et conserver une commande de restauration.
+5. Assurer la persistance par le gestionnaire actif et vérifier les deux sens du trafic.

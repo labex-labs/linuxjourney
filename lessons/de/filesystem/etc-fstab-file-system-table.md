@@ -1,57 +1,123 @@
 ---
-index: 7
+lesson_id: "etc-fstab-file-system-table"
+course_id: "filesystem"
 lang: "de"
+order_index: 7
 title: "/etc/fstab"
-meta_title: "/etc/fstab - Das Dateisystem"
-meta_description: "Erfahren Sie, wie Sie die Datei /etc/fstab unter Linux verwenden, um Dateisysteme beim Booten automatisch einzubinden. Diese Anleitung behandelt die fstab-Syntax, die sichere Bearbeitung der etc fstab-Datei und ihre Rolle beim Systemstart."
-meta_keywords: "fstab, fstab linux, etc fstab, /etc/fstab, fstab datei, dateisysteme einbinden, Linux boot, fstab tutorial"
+description: "Lerne, dauerhafte Dateisystem- und Swap-Verbindungen in `/etc/fstab` zu definieren und sicher zu validieren."
+meta_title: "/etc/fstab – Das Dateisystem"
+meta_description: "Lerne Aufbau und sichere Bearbeitung von /etc/fstab kennen, um Dateisysteme und Swap dauerhaft zu konfigurieren und vor dem Neustart zu validieren."
+meta_keywords: "fstab, fstab Linux, /etc/fstab, Dateisysteme einhängen, Linux Boot, fstab Syntax, mount -a, findmnt verify"
 ---
 
-## Lesson Content
+`/etc/fstab`, die Dateisystemtabelle, deklariert Dateisysteme, Swap-Bereiche, Bind-Mounts, Netzwerkquellen und andere Verbindungen, die Systemwerkzeuge einhängen oder aktivieren können. Einträge können am Systemstart teilnehmen. Optionen wie `noauto`, die Einbindung von Automount und Richtlinien des Dienstmanagers beeinflussen jedoch, wann oder ob dies geschieht.
 
-Unter Linux konfigurieren Sie Dateisysteme, die beim Systemstart automatisch eingehängt werden sollen, in einer speziellen Konfigurationsdatei unter `/etc/fstab`. Der Name `fstab` steht für „Filesystem Table“ (Dateisystemtabelle), und diese Datei enthält eine permanente Liste von Dateisystemen, die das System während des Bootvorgangs einhängen soll. Das Verständnis der **fstab linux**-Konfiguration ist eine Schlüsselqualifikation für jeden Systemadministrator.
+## Die sechs Felder
 
-### Was ist /etc/fstab
+Ein gewöhnlicher Eintrag besitzt sechs durch Leerraum getrennte Felder:
 
-Die Datei `/etc/fstab` ist eine Systemkonfigurationsdatei, die alle verfügbaren Festplattenpartitionen und andere Arten von Dateisystemen und Datenquellen definiert, die nicht notwendigerweise auf Festplatten basieren. Das System zieht diese Datei beim Start zurate, um festzustellen, welche Dateisysteme automatisch eingehängt werden sollen.
-
-Hier ist ein Beispiel für eine typische **fstab file**:
-
-```plaintext
-pete@icebox:~$ cat /etc/fstab
-UUID=130b882f-7d79-436d-a096-1e594c92bb76 /               ext4    relatime,errors=remount-ro 0       1
-UUID=78d203a0-7c18-49bd-9e07-54f44cdb5726 /home           xfs     relatime        0       2
-UUID=22c3d34b-467e-467c-b44d-f03803c2c526 none            swap    sw              0       0
+```text
+UUID=130b882f-7d79-436d-a096-1e594c92bb76 /data ext4 defaults,nosuid,nodev 0 2
 ```
 
-### Die fstab Dateistruktur
+1. **Quelle**: ein Gerätepfad, `UUID=`, `LABEL=`, eine Netzwerkquelle oder eine andere unterstützte Angabe.
+2. **Ziel**: Einhängepunkt oder, wo passend, `none` für Verwendungen wie Swap.
+3. **Typ**: Dateisystemtyp, `swap`, `none` oder ein akzeptierter automatischer Typ.
+4. **Optionen**: eine kommagetrennte Liste, die von Mount-Hilfsprogrammen und Integrationsschichten ausgewertet wird.
+5. **Dump-Feld**: steuert historisch das Sicherungsprogramm `dump`; `0` deaktiviert die Teilnahme üblicherweise.
+6. **Pass-Feld**: steuert, soweit anwendbar, die Reihenfolge von `fsck` beim Systemstart; `0` deaktiviert die automatische Prüfung über diesen Mechanismus.
 
-Jede Zeile in der **etc fstab**-Datei repräsentiert ein Dateisystem und enthält sechs Felder, die durch Leerzeichen oder Tabulatoren getrennt sind. Lassen Sie uns aufschlüsseln, was jedes Feld bedeutet:
+Leerraum innerhalb eines Felds muss mit der fstab-Syntax maskiert werden, beispielsweise als `\040` für ein Leerzeichen. Ein `#` beginnt außerhalb eines Felds einen Kommentar.
 
-- **Gerätebezeichner**: Dieser gibt das einzuhängende Gerät an. Moderne Systeme verwenden eine UUID (Universally Unique Identifier), um Probleme zu vermeiden, falls sich der Gerätename (z. B. `/dev/sda1`) ändert.
-- **Einhängepunkt (Mount Point)**: Das Verzeichnis im Dateisystem, in das das Gerät eingehängt wird (z. B. `/` oder `/home`).
-- **Dateisystemtyp**: Die Art des Dateisystems auf dem Gerät, wie z. B. `ext4`, `xfs`, `btrfs` oder `swap`.
-- **Optionen**: Einhängeoptionen, die steuern, wie das Dateisystem eingehängt wird. Häufige Optionen sind `defaults`, `relatime` und `errors=remount-ro`. Eine vollständige Liste finden Sie in der `mount`-Manpage.
-- **Dump**: Dieses Feld wird vom `dump`-Dienstprogramm verwendet, um festzustellen, ob ein Dateisystem gesichert werden muss. Ein Wert von `0` bedeutet, dass es ignoriert wird, was eine sichere Standardeinstellung ist.
-- **Pass (Prüfnummer)**: Dieses Feld wird von `fsck` verwendet, um die Reihenfolge der Überprüfung der Dateisysteme beim Booten festzulegen. Das Root-Dateisystem (`/`) sollte `1` sein, andere Dateisysteme sollten `2` sein, und ein Wert von `0` bedeutet, dass das Dateisystem nicht überprüft wird.
+:::single-choice{#fstab-field-count}
+Wie viele Felder enthält ein normaler Eintrag in `/etc/fstab`?
 
-### Wie man /etc/fstab bearbeitet
+::option[Vier.]{#fstab-four-fields explanation="Auf Quelle, Ziel, Typ und Optionen folgen die Felder Dump und Pass."}
+::option[Acht.]{#fstab-eight-fields explanation="Acht ist nicht die Standardanzahl der Felder eines fstab-Eintrags."}
+::option[Sechs.]{#fstab-six-fields .correct explanation="Das traditionelle Format enthält Quelle, Ziel, Typ, Optionen, Dump und Pass."}
+:::
 
-Sie können einen Eintrag hinzufügen, indem Sie die Datei `/etc/fstab` direkt mit Root-Rechten in einem Texteditor bearbeiten. Seien Sie äußerst vorsichtig beim Bearbeiten dieser Datei; ein falscher Eintrag in der **fstab** kann verhindern, dass Ihr System korrekt startet. Es ist immer eine gute Vorgehensweise, die Datei vor Änderungen zu sichern. Nachdem Sie Ihre Änderungen gespeichert haben, können Sie diese testen, ohne neu zu starten, indem Sie den Befehl `sudo mount -a` ausführen, der alle in `/etc/fstab` aufgeführten Dateisysteme einhängt.
+## Stabile Quellenkennungen
 
-## Exercise
+Für lokale Dateisysteme ist eine Dateisystem-UUID häufig stabiler als die Aufzählung `/dev/sdX`:
 
-Übung macht den Meister! Praktische Erfahrung ist entscheidend, um zu verstehen, wie Dateisysteme verwaltet werden und sichergestellt wird, dass sie beim Systemstart korrekt eingehängt werden. Hier sind einige praktische Labs, um Ihr Verständnis für die Linux-Dateisystemverwaltung und die Datei `/etc/fstab` zu festigen:
+```bash
+$ lsblk -f
+$ sudo blkid
+```
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen von Partitionen, deren Formatierung, das Einhängen und die Konfiguration des permanenten Einhängens mithilfe von `/etc/fstab`.
-2. **[Erstellen und Aktivieren einer Swap-Datei in Linux](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** – Lernen Sie die wesentliche administrative Aufgabe des Erstellens und Aktivierens einer Swap-Datei kennen, was oft Einträge in `/etc/fstab` beinhaltet.
+Verwende `UUID=...` erst, nachdem du bestätigt hast, dass die Kennung zum beabsichtigten Dateisystem gehört. Eine Neuformatierung erzeugt eine neue UUID, während Klone auf Blockebene dieselbe UUID besitzen können. `PARTUUID=` bezeichnet stattdessen einen Partitionstabelleneintrag und besitzt eine andere Semantik.
 
-Diese Labs helfen Ihnen, die Konzepte des Einhängens und Konfigurierens von Dateisystemen in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Festplattenressourcen unter Linux aufzubauen.
+:::single-choice{#fstab-uuid-source}
+Was bezeichnet `UUID=...` im Quellenfeld normalerweise?
 
-## Quiz Question
+::option[Das Benutzerkonto, dem der Einhängepunkt gehört.]{#fstab-user-uuid explanation="Die Kontoidentität wird nicht über die Quellsyntax der Dateisystem-UUID ausgewählt."}
+::option[Dateisystemmetadaten mit dieser UUID.]{#fstab-filesystem-uuid .correct explanation="Mount löst die Dateisystemkennung zu einem verfügbaren Blockgerät auf, statt sich auf dessen Aufzählungsnamen zu verlassen."}
+::option[Den Prozess, der das Dateisystem zuletzt ausgehängt hat.]{#fstab-process-uuid explanation="Der Prozessverlauf ist in diesem Quellenfeld nicht codiert."}
+:::
 
-Welche Datei wird verwendet, um zu definieren, wie Dateisysteme eingehängt werden sollen? (Bitte geben Sie den vollständigen Pfad an. Die Antwort ist groß-/kleingeschrieben.)
+## Einhängeoptionen und Prüffelder
 
-## Quiz Answer
+`defaults` wird zu einer implementierungsabhängigen herkömmlichen Optionsgruppe erweitert und ist nicht zwangsläufig die sicherste Richtlinie für jede Einhängung. Füge Optionen abhängig von Vertrauen und Arbeitslast hinzu, etwa schreibgeschützten Zugriff oder Einschränkungen für Geräteknoten und Setuid-Verhalten. Netzwerk- und Wechseldatenträgerdateisysteme können Richtlinien für Zeitüberschreitungen, Abhängigkeiten oder Fehlertoleranz benötigen, damit der Systemstart nicht unerwartet blockiert.
 
-/etc/fstab
+Bei von `fsck` unterstützten Dateisystemen verwendet das Root-Dateisystem herkömmlicherweise Pass `1`, andere geprüfte lokale Dateisysteme Pass `2`. Die Praxis hängt vom Dateisystem ab; manche Typen verwenden beispielsweise kein allgemeines fsck beim Start. Folge der Dokumentation des installierten Dateisystems und der Distribution, statt mechanisch `2` einzutragen.
+
+:::single-choice{#fstab-pass-zero}
+Was fordert der Wert `0` im sechsten Feld an?
+
+::option[Die automatische fsck-Reihenfolge über fstab für diesen Eintrag überspringen.]{#fstab-pass-zero-skip .correct explanation="Pass null schließt den Eintrag aus der durch dieses Feld gesteuerten Prüfsequenz beim Systemstart aus."}
+::option[Das Dateisystem unter allen Umständen schreibgeschützt einhängen.]{#fstab-pass-zero-readonly explanation="Schreibgeschütztes Verhalten gehört in das Feld der Einhängeoptionen."}
+::option[Das Dateisystem vor jedem Start löschen.]{#fstab-pass-zero-erase explanation="Das Pass-Feld formatiert oder löscht kein Dateisystem."}
+:::
+
+## Mit einem Wiederherstellungsweg bearbeiten
+
+Ein ungültiger Eintrag für Root, Boot oder ein erforderliches Netzwerk kann den Systemstart unterbrechen. Vor der Bearbeitung:
+
+1. Bestätige eine aktuelle Sicherung sowie Konsolen- oder Rettungszugang.
+2. Kopiere die vorhandene Datei unter Erhaltung ihrer Berechtigungen.
+3. Prüfe die Quellenidentität und erstelle den beabsichtigten Einhängepunkt.
+4. Nimm eine einzelne, begrenzte Änderung vor.
+5. Validiere und teste vor dem Neustart.
+
+Schreibe keine Anmeldedaten direkt in einen für alle lesbaren fstab-Eintrag. Verwende den geschützten Anmeldedatenmechanismus des betreffenden Mount-Hilfsprogramms.
+
+:::single-choice{#fstab-editing-recovery}
+Warum solltest du vor der Änderung eines wichtigen fstab-Eintrags den Rettungszugang bestätigen?
+
+::option[Fstab-Änderungen löschen immer sofort die Partitionstabelle.]{#fstab-no-partition-erase explanation="Die Textänderung selbst schreibt keine Datenträgerpartitionen neu, auch wenn spätere Einhängungen Auswirkungen haben können."}
+::option[Die Datei lässt sich ausschließlich aus einem anderen Betriebssystem bearbeiten.]{#fstab-other-os-only explanation="Sie kann unter Linux mit geeigneten Privilegien und Schutzmaßnahmen bearbeitet werden."}
+::option[Ein fehlerhafter Eintrag kann verhindern, dass der normale Systemstart ein nutzbares System erreicht.]{#fstab-boot-failure .correct explanation="Fehler bei wichtigen Einhängungen können in den Notfallmodus führen oder abhängige Dienste blockieren."}
+:::
+
+## Validieren, ohne Erfolg vorauszusetzen
+
+Beginne, soweit unterstützt, mit einer statischen Prüfung:
+
+```bash
+$ sudo findmnt --verify --verbose
+```
+
+Teste anschließend den konkreten neuen Eintrag unter kontrollierten Bedingungen, bestätige ihn mit `findmnt` und hänge ihn wieder aus, falls der Test vorübergehend war. `mount -a` versucht viele zulässige Einträge und kann Netzwerke kontaktieren oder unbeabsichtigte Quellen verbinden. Bereits eingehängte und mit `noauto` versehene Einträge werden übersprungen. Der Befehl ist daher weder ein harmloser Syntaxprüfer noch ein vollständiger Beleg.
+
+Lade auf systemd-basierten Systemen nach der Bearbeitung von fstab die Manager-Konfiguration neu, damit erzeugte Mount-Units aktualisiert werden. Prüfe anschließend Abhängigkeiten und Startverhalten gemäß der lokalen Dokumentation.
+
+:::single-choice{#fstab-mount-a-limit}
+Warum ist `mount -a` allein keine vollständige fstab-Validierung?
+
+::option[Der Befehl formatiert vor dem Einhängen immer jedes aufgeführte Gerät neu.]{#fstab-mount-a-formats explanation="Mount erstellt normalerweise keine Dateisysteme."}
+::option[Er kann Einträge überspringen und führt umfassende echte Einhängeoperationen statt nur einer Syntaxprüfung aus.]{#fstab-mount-a-incomplete .correct explanation="Bereits eingehängte oder mit `noauto` versehene Einträge werden möglicherweise nicht getestet, während zulässige Quellen aktive Auswirkungen haben können."}
+::option[Er liest nur den Shell-Verlauf und ignoriert fstab.]{#fstab-mount-a-history explanation="Der Befehl berücksichtigt fstab für zulässige Einträge."}
+:::
+
+Übe im Lab [Linux-Partitionen und Dateisysteme verwalten](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) mit dem wiederherstellungssicheren zweiten Speicher des Labs.
+
+## Zusammenfassung
+
+Du kannst einen dauerhaften Eintrag der Dateisystemtabelle nun lesen und validieren.
+
+1. Werte Quelle, Ziel, Typ, Optionen, Dump und Pass aus.
+2. Wähle eine geprüfte Kennung mit der beabsichtigten Identitätssemantik.
+3. Lege Einhänge- und Prüfrichtlinien passend zum tatsächlichen Dateisystem fest.
+4. Bewahre Rettungszugang und nimm eine einzelne, begrenzte Änderung vor.
+5. Verbinde statische Validierung, gezieltes Einhängen und Prüfungen der Startrichtlinie.

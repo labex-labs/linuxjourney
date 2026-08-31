@@ -1,53 +1,100 @@
 ---
-index: 1
+lesson_id: "system-logging"
+course_id: "logging"
 lang: "es"
-title: "Registro del Sistema"
-meta_title: "Registro del Sistema - Logging"
-meta_description: "Descubra la mejor manera de aprender Linux entendiendo el registro del sistema. Esta guía cubre syslog, rsyslogd y cómo encontrar y leer archivos de registro en /var/log. Una parte clave de cualquier curso gratuito de Linux en línea."
+order_index: 1
+title: "Registro del sistema"
+description: "Aprende cómo se relacionan las fuentes, los recolectores, el almacenamiento y las herramientas de consulta de registros en Linux."
+meta_title: "Registro del sistema - Logging"
+meta_description: "Descubre cómo aprender Linux comprendiendo el registro del sistema. Esta guía explica syslog, rsyslogd y cómo encontrar y leer archivos de registro en /var/log, una parte esencial de cualquier curso gratuito de Linux."
 meta_keywords: "cómo aprender linux, mejor manera de aprender linux, registro del sistema linux, syslog, rsyslogd, var log, registros del sistema, aprender línea de comandos linux, mejores recursos para aprender linux"
 ---
 
-## Lesson Content
+Los registros guardan eventos emitidos por el kernel, los servicios, las aplicaciones y los componentes de seguridad. Ayudan a diagnosticar problemas y realizar auditorías, pero solo si la recopilación funciona, se comprenden las marcas de tiempo y se incluye la fuente correspondiente.
 
-Comprender el registro de sistemas (system logging) es una parte fundamental de aprender **cómo aprender Linux**. Los servicios, el kernel y los demonios de su sistema están constantemente activos. Esta actividad se registra y guarda en su sistema en archivos llamados registros (logs), creando un diario legible por humanos de todos los eventos importantes del sistema.
+## Seguir el recorrido de un mensaje de registro
 
-### ¿Qué Son los Registros del Sistema
+Una ruta de registro consta de varias partes distintas:
 
-Los registros del sistema son esenciales para monitorear la salud del sistema, solucionar problemas y auditar la seguridad. Estos datos se almacenan típicamente en el directorio `/var`, que está designado para datos variables como los registros. Explorar estos archivos es un paso crucial para cualquiera que busque la **mejor manera de aprender la línea de comandos de Linux**.
+1. Una fuente emite un evento.
+2. Un recolector lo acepta y lo enriquece.
+3. Las reglas de enrutamiento y conservación eligen los destinos de almacenamiento o reenvío.
+4. Una herramienta de consulta busca en los registros almacenados.
 
-### El Papel de Syslog y Rsyslogd
+En una máquina con systemd, `systemd-journald` suele recopilar la salida estándar de los servicios, los mensajes del kernel y los mensajes nativos del diario o de syslog. Un demonio syslog como rsyslog también puede recibir mensajes y escribir archivos de texto tradicionales o reenviarlos. Las aplicaciones pueden mantener en cambio sus propios archivos o telemetría externa.
 
-Pero, ¿cómo se recopilan estos mensajes? Un servicio central llamado `syslog` es responsable de recopilar esta información y dirigirla al registrador del sistema.
+:::single-choice{#system-logging-distinct-roles}
+¿Qué componente decide dónde se almacenan o reenvían los mensajes aceptados?
 
-El protocolo `syslog` involucra varios componentes. Uno de los más importantes es un demonio llamado `syslogd` (o `rsyslogd` en la mayoría de las distribuciones modernas de Linux). Este demonio se ejecuta en segundo plano, esperando mensajes de eventos. Luego filtra estos mensajes y, basándose en su configuración, los envía a un archivo, los muestra en la consola o los descarta. Dominar estos conceptos es parte de la **mejor manera de aprender Linux**.
+::option[El directorio de trabajo actual de la terminal.]{#system-logging-cwd explanation="Un directorio del shell no define las rutas de registro de todo el sistema."}
+::option[El nombre de archivo de la imagen del kernel en ejecución.]{#system-logging-kernel-file explanation="El kernel puede emitir mensajes, pero el nombre de archivo de su imagen no es la política de enrutamiento."}
+::option[La configuración de enrutamiento y conservación.]{#system-logging-routing .correct explanation="Las reglas entre la recopilación y el almacenamiento determinan los destinos y el comportamiento de conservación."}
+:::
 
-### Localización y Lectura de Archivos de Registro
+## Descubrir los registros disponibles
 
-Aunque el registrador del sistema proporciona un mecanismo centralizado, no es la única fuente de registros. Muchas aplicaciones implementan sus propias reglas de registro y generan archivos de registro separados. Sin embargo, una entrada de registro estándar generalmente incluye una marca de tiempo, el nombre del host, el proceso que generó el mensaje y los detalles del evento.
+No supongas que todas las máquinas tienen los mismos archivos. Inspecciona los servicios de registro activos y la configuración local:
 
-Aquí hay un ejemplo de una línea de un archivo syslog típico:
+```bash
+$ systemctl --type=service --state=running | grep -E 'journal|syslog'
+$ ls -la /var/log
+$ journalctl --disk-usage
+```
 
-```plaintext
-pete@icebox:~$ less /var/log/syslog
+`/var/log/syslog` es habitual en sistemas de la familia Debian que utilizan un enrutamiento compatible, mientras que `/var/log/messages` es común en otros. Cualquiera de ellos puede faltar en una máquina que solo use el diario. La documentación de la aplicación y la configuración de sus unidades pueden indicar destinos adicionales.
+
+:::single-choice{#system-logging-file-absence}
+¿Qué significa necesariamente que falte el archivo `/var/log/syslog`?
+
+::option[La máquina puede utilizar otro destino de registro configurado.]{#system-logging-other-destination .correct explanation="Los sistemas que solo usan el diario y otras políticas de syslog no tienen por qué crear este archivo."}
+::option[El kernel nunca ha producido ningún mensaje.]{#system-logging-no-kernel explanation="Los registros del kernel pueden estar en el diario o en otro destino."}
+::option[Todas las aplicaciones han dejado de ejecutarse.]{#system-logging-apps-stopped explanation="El estado de las aplicaciones no puede deducirse de una única ruta ausente."}
+:::
+
+## Consultar el diario
+
+Empieza con una consulta limitada en lugar de volcar todo el diario:
+
+```bash
+$ journalctl -b -p warning
+$ journalctl -u ssh.service --since '1 hour ago'
+```
+
+`-b` selecciona el arranque actual, `-p` filtra por prioridad y `-u` filtra por unidad. Los nombres de las unidades y los arranques conservados varían según la máquina. Usa `journalctl --list-boots` para ver los arranques disponibles y `journalctl -f` para seguir los registros nuevos mientras reproduces un problema.
+
+:::single-choice{#system-logging-current-boot}
+¿Qué opción limita una consulta de `journalctl` al arranque actual?
+
+::option[`-b`]{#system-logging-boot-option .correct explanation="Sin argumento, el selector de arranque elige el actual."}
+::option[`-u`]{#system-logging-unit-option explanation="Esta opción filtra por una unidad de systemd."}
+::option[`-f`]{#system-logging-follow-option explanation="Esta opción sigue los registros que se añadan a partir de ese momento."}
+:::
+
+## Interpretar los registros en su contexto
+
+Una línea tradicional con estilo syslog puede tener este aspecto:
+
+```text
 Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 ```
 
-Esta entrada muestra que el 27 de enero a las 07:41:32, el servicio `anacron` en el host `icebox` inició el trabajo `cron.weekly`. Puede ver los mensajes de eventos recopilados por el registrador del sistema examinando archivos como `/var/log/syslog` o `/var/log/messages`.
+Contiene una marca de tiempo, la máquina, el programa y el PID, y después un mensaje. Trata el texto del mensaje como salida de la aplicación, no como un hecho estructurado garantizado. Comprueba la zona horaria, la sincronización del reloj, el identificador del arranque, la reutilización de PID y los registros inmediatamente anteriores y posteriores al evento. Los campos del diario pueden proporcionar identificadores más sólidos que el texto mostrado por sí solo.
 
-## Exercise
+Los registros pueden contener nombres de usuario, direcciones, rutas, tokens u otros datos sensibles. Aplica el acceso con privilegios mínimos, elimina datos sensibles de las exportaciones y conserva los originales y sus marcas de tiempo durante una investigación.
 
-La práctica es esencial para el dominio. Los siguientes laboratorios prácticos son algunos de los **mejores recursos para aprender Linux** en la gestión de registros y las habilidades de visualización de archivos.
+:::single-choice{#system-logging-export-safety}
+¿Qué debes hacer antes de compartir externamente un fragmento de un registro?
 
-1. **[Visualización de Registros y Archivos de Configuración en Linux](https://labex.io/es/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Aprenda habilidades esenciales de la línea de comandos de Linux para ver y navegar eficientemente por archivos de texto, incluidos registros del sistema y archivos de configuración. Practique el uso de comandos como `cat`, `more` y `less` para extraer información crítica de varios tipos de archivos.
-2. **[Comando tail de Linux: Visualización del Final del Archivo](https://labex.io/es/labs/linux-linux-tail-command-file-end-display-214303)** - Aprenda el comando `tail` de Linux para ver y monitorear el final de archivos de texto. Esto es particularmente útil para el análisis de registros en tiempo real.
-3. **[Buscar Texto con grep en Linux](https://labex.io/es/labs/comptia-search-text-with-grep-in-linux-590841)** - En este laboratorio, aprenderá a buscar texto en archivos en un sistema Linux usando el comando `grep`. Esto es invaluable para encontrar entradas específicas dentro de archivos de registro grandes.
+::option[Sustituir todas las marcas de tiempo por valores aleatorios.]{#system-logging-random-time explanation="Destruir la información temporal puede impedir la correlación y no constituye un método de ocultación adecuado."}
+::option[Revisarlo en busca de secretos e identificadores sensibles.]{#system-logging-review-sensitive .correct explanation="Los registros suelen contener datos operativos o personales que requieren una eliminación controlada."}
+::option[Permitir que cualquiera pueda modificar el registro original.]{#system-logging-world-writable explanation="Debilitar los controles de acceso puede dañar la integridad y exponer datos adicionales."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos de gestión y análisis de archivos de registro en escenarios reales y a ganar confianza con el monitoreo del sistema Linux.
+## Resumen
 
-## Quiz Question
+Ahora puedes localizar y consultar registros de Linux sin suponer que existe una única ruta universal de almacenamiento.
 
-¿Cuál es el demonio que gestiona los registros en los sistemas Linux más nuevos? (Por favor, responda en inglés, prestando atención a la sensibilidad a mayúsculas y minúsculas)
-
-## Quiz Answer
-
-rsyslogd
+1. Distingue las fuentes de eventos, los recolectores, el enrutamiento, el almacenamiento y las herramientas de consulta.
+2. Descubre la configuración de registro activa de la máquina.
+3. Usa consultas limitadas del diario por unidad, arranque, tiempo o prioridad.
+4. Relaciona los registros en su contexto y protege los datos sensibles.

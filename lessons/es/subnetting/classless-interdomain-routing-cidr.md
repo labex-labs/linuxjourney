@@ -1,48 +1,90 @@
 ---
-index: 5
+lesson_id: "classless-interdomain-routing-cidr"
+course_id: "subnetting"
 lang: "es"
+order_index: 5
 title: "CIDR"
-meta_title: "CIDR - Subredes"
-meta_description: "Una guía sobre la notación CIDR. Aprenda sobre el formato CIDR, subredes CIDR y cómo calcular hosts para su red, incluso en un servidor Ubuntu. Domine el direccionamiento IP con CIDR."
-meta_keywords: "CIDR, subredes cidr, formato cidr, máscara de subred, direccionamiento IP, subred ubuntu servidor cidr, subred ubuntu cidr, prefijo de red, redes Linux"
+description: "Aprende cómo los prefijos CIDR representan intervalos de direcciones, límites de subred y rutas agregadas."
+meta_title: "CIDR - Subnetting"
+meta_description: "Guía sobre la notación CIDR. Aprende el formato CIDR, cómo dividir en subredes y cómo calcular hosts para una red, también en un servidor Ubuntu. Domina el direccionamiento IP con CIDR."
+meta_keywords: "CIDR, subredes CIDR, formato CIDR, máscara de subred, direccionamiento IP, cidr subred servidor ubuntu, cidr subred ubuntu, prefijo de red, redes Linux"
 ---
 
-## Lesson Content
+El enrutamiento entre dominios sin clases representa un intervalo de direcciones mediante una longitud de prefijo en lugar de depender de las clases históricas de direcciones. CIDR permite asignaciones de tamaño variable, división en subredes y agregación de rutas para IPv4 e IPv6.
 
-CIDR (Classless Inter-Domain Routing) es un método para asignar direcciones IP y enrutar paquetes del Protocolo de Internet. Ofrece una forma más compacta y eficiente de representar una máscara de subred, reemplazando el diseño de red con clases más antiguo. Comprender CIDR es esencial para la administración de redes modernas.
+## Interpretar la notación de prefijos
 
-### El Formato CIDR
+En `10.42.3.17/24`, los primeros 24 bits son el prefijo de red y quedan ocho bits para las posiciones dentro del intervalo. La red canónica es `10.42.3.0/24`; la dirección de host proporcionada aún puede escribirse con el prefijo al configurar una interfaz.
 
-A menudo verá redes notadas usando el **formato CIDR**, donde una dirección IP es seguida por una barra y un número. Por ejemplo, una subred como `10.42.3.0` con una máscara de subred de `255.255.255.0` se escribe como `10.42.3.0/24`. Esta notación única incluye tanto la dirección de red como la longitud del prefijo.
+:::single-choice{#cidr-prefix-meaning}
+¿Qué especifica `/24` en un valor CIDR de IPv4?
 
-El número después de la barra indica cuántos bits de la dirección IP se utilizan para el prefijo de red. Esta es una tarea común al configurar redes en un sistema como un **servidor Ubuntu**, donde podría definir una interfaz con una dirección de `ubuntu subnet cidr`.
+::option[Veinticuatro bits iniciales de prefijo de red.]{#cidr-24-prefix-bits .correct explanation="Los ocho bits restantes de los 32 de IPv4 varían dentro del prefijo."}
+::option[Veinticuatro direcciones utilizables en todas las subredes.]{#cidr-24-addresses explanation="Un `/24` contiene 256 valores de dirección totales."}
+::option[El puerto TCP de destino de la red.]{#cidr-24-port explanation="CIDR y los puertos de transporte son independientes."}
+:::
 
-### Subnetting CIDR y Cálculo de Hosts
+## Calcular el tamaño del intervalo
 
-Una dirección IPv4 consta de 4 bytes, lo que suma un total de 32 bits. El prefijo CIDR determina la división entre la porción de red y la porción de host de la dirección. Para un **cidr subnetting** efectivo, necesita saber cómo calcular el número de hosts disponibles.
+El prefijo IPv4 `/23` deja nueve bits de host y, por tanto, abarca `2^9 = 512` direcciones totales. El prefijo alineado `123.12.24.0/23` abarca:
 
-Tomemos el ejemplo `123.12.24.0/23`. Esto significa que los primeros 23 bits son el prefijo de red. Para encontrar el número de hosts disponibles:
+```text
+first: 123.12.24.0
+last:  123.12.25.255
+```
 
-1. Reste el prefijo CIDR del número total de bits (32): `32 - 23 = 9`. Esto deja 9 bits para la porción de host.
-2. Calcule el número total de direcciones en la subred: `2^9 = 512`.
-3. Reste 2 del total. Una dirección está reservada para la red en sí, y una es para la dirección de difusión. Esto deja `512 - 2 = 510` direcciones de host utilizables.
+En el uso tradicional con broadcast, la primera es la dirección de red y la última es el broadcast dirigido. No apliques ciegamente el atajo de «restar dos» hosts utilizables a los enlaces punto a punto `/31` o a las rutas de host `/32`.
 
-Otro ejemplo común es una red `/30`, que proporciona `32 - 30 = 2` bits de host. Esto da como resultado `2^2 = 4` direcciones totales, dejando solo 2 direcciones utilizables, lo que la hace ideal para enlaces punto a punto.
+:::single-choice{#cidr-23-total}
+¿Cuántas direcciones IPv4 totales contiene un `/23`?
 
-## Exercise
+::option[512]{#cidr-total-512 .correct explanation="Nueve bits variables crean 2^9 combinaciones."}
+::option[23]{#cidr-total-23 explanation="El número del prefijo cuenta bits fijos, no direcciones."}
+::option[510]{#cidr-total-510 explanation="Esa es una cantidad tradicional utilizable después de los extremos especiales, no el tamaño total del intervalo."}
+:::
 
-Para dominar estos conceptos, practique con algunos laboratorios prácticos que refuercen su comprensión de CIDR, direccionamiento IP y **cidr subnetting**:
+## Comprobar la alineación
 
-1. **[Realizar Subnetting IP y Conversión Binaria en la Terminal de Linux](https://labex.io/es/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine el subnetting IP y la conversión binaria, incluida la traducción de máscaras CIDR y el cálculo de hosts utilizables.
-2. **[Simular Conectividad de Capa de Red en Linux](https://labex.io/es/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Aprenda a asignar direcciones IP estáticas y observe cómo las subredes IP gobiernan la comunicación directa de red en un entorno simulado.
-3. **[Explorar Tipos de Direcciones IP y Alcance en Linux](https://labex.io/es/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore el direccionamiento IP y el alcance de la red utilizando comandos como `ping` e `ip a` para probar varios tipos de IP y conectividad.
+Un prefijo debe comenzar en su límite binario. Un `/23` avanza en bloques de dos en el tercer octeto cuando los octetos anteriores son fijos, por lo que `123.12.24.0/23` está alineado, mientras que `123.12.25.0/23` se canoniza al mismo intervalo `123.12.24.0/23`.
 
-Estos laboratorios le ayudarán a aplicar los conceptos de CIDR y direccionamiento IP en escenarios del mundo real y a ganar confianza con la configuración de red.
+:::single-choice{#cidr-canonical-25}
+¿Cuál es la red `/23` canónica que contiene `123.12.25.0`?
 
-## Quiz Question
+::option[Únicamente `123.12.25.0/23`, que comienza en 25.]{#cidr-25-unaligned explanation="El último bit del prefijo agrupa los valores del tercer octeto en pares alineados."}
+::option[`123.12.0.0/23`]{#cidr-third-zero explanation="Esto describe otro intervalo `/23`."}
+::option[`123.12.24.0/23`]{#cidr-24-canonical .correct explanation="Los valores 24 y 25 del tercer octeto comparten el mismo prefijo alineado de 23 bits."}
+:::
 
-¿De cuántos bits consta una dirección IPv4?
+## Agregar rutas
 
-## Quiz Answer
+CIDR permite anunciar un único agregado para varios prefijos contiguos, del mismo tamaño y correctamente alineados. Por ejemplo, `192.0.2.0/25` y `192.0.2.128/25` se combinan en `192.0.2.0/24`. La agregación solo es segura cuando el router anunciante puede llegar correctamente a todo el agregado o dispone de políticas para impedir bucles y agujeros negros.
 
-32
+:::single-choice{#cidr-aggregate-two-25s}
+¿Qué agregado abarca ambas mitades de `192.0.2.0/24`?
+
+::option[`192.0.2.0/26`]{#cidr-aggregate-26 explanation="Un `/26` solo abarca 64 direcciones, menos que cualquiera de las mitades."}
+::option[`192.0.3.0/25`]{#cidr-aggregate-other explanation="Esto queda fuera del intervalo de direcciones indicado."}
+::option[`192.0.2.0/24`]{#cidr-aggregate-24 .correct explanation="Los dos intervalos `/25` contiguos y alineados solo difieren en el bit siguiente y comparten el prefijo `/24`."}
+:::
+
+## Enrutamiento por el prefijo más largo
+
+Cuando las rutas se solapan, el reenvío suele seleccionar la ruta válida con el prefijo coincidente más largo. Una ruta `/24` es más específica que un `/16` que la contiene, mientras que una ruta predeterminada `/0` solo se impone cuando no gana ninguna ruta válida más específica.
+
+:::single-choice{#cidr-route-specificity}
+Para el destino `10.42.3.8`, ¿qué ruta válida es más específica?
+
+::option[`10.42.3.0/24`]{#cidr-route-24 .correct explanation="La coincidencia de 24 bits es más larga y, por tanto, más específica que `/8`."}
+::option[`10.0.0.0/8`]{#cidr-route-8 explanation="Esta ruta coincide, pero fija menos bits del destino."}
+::option[`0.0.0.0/0`]{#cidr-default explanation="La ruta predeterminada es el prefijo IPv4 menos específico posible."}
+:::
+
+## Resumen
+
+Ahora puedes utilizar la notación CIDR tanto para intervalos de direcciones como para seleccionar rutas.
+
+1. Interpreta el valor tras la barra como una cantidad de bits iniciales de prefijo.
+2. Calcula el tamaño total del intervalo a partir de los bits restantes.
+3. Canoniza un prefijo a su límite de red alineado.
+4. Agrega únicamente intervalos contiguos y alineados cuya accesibilidad sea válida.
+5. Durante una consulta de ruta, prefiere el prefijo válido más largo.

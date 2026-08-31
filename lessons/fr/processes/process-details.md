@@ -1,46 +1,92 @@
 ---
-index: 3
+lesson_id: "process-details"
+course_id: "processes"
 lang: "fr"
-title: "Détails du Processus"
-meta_title: "Détails du Processus - Processus"
-meta_description: "Explorez les fondamentaux des détails des processus Linux. Ce guide pour débutants explique ce qu'est un processus, comment le noyau Linux gère les processus et alloue les ressources système comme le CPU et la mémoire."
-meta_keywords: "processus Linux, détails du processus, noyau, gestion des processus, ressources système, ps aux, CPU, mémoire, tutoriel Linux, guide du débutant"
+order_index: 3
+title: "Détails des processus"
+description: "Découvrez quels états et ressources distinguent un processus en cours d’exécution d’un programme enregistré sur disque."
+meta_title: "Détails des processus - Processus"
+meta_description: "Explorez les bases des processus Linux, la manière dont le noyau les gère et l’attribution des ressources telles que le processeur et la mémoire."
+meta_keywords: "processus Linux, détails processus, noyau, gestion processus, ressources système, ps aux, processeur, mémoire, tutoriel Linux"
 ---
 
-## Lesson Content
+Un programme est du code exécutable et des données enregistrés dans un fichier. Un processus est un contexte d’exécution actif : il comprend du code mappé, de la mémoire, des identifiants, des descripteurs de fichiers ouverts, l’état des signaux, des informations de planification et un ou plusieurs threads. Un même programme peut posséder de nombreuses instances de processus indépendantes.
 
-Avant de plonger dans les applications pratiques de la gestion des processus, il est essentiel de comprendre ce que sont les processus Linux et comment ils fonctionnent. Ce sujet peut sembler complexe à mesure que nous explorons les détails, n'hésitez donc pas à revenir sur cette leçon plus tard si nécessaire.
+## Instances de programme et PID
 
-### Qu'est-ce qu'un processus Linux
+Par exemple, lancez `cat` sans opérande dans deux terminaux. Chaque instance attend une entrée et possède son propre identifiant de processus :
 
-Un processus est un programme en cours d'exécution. Plus précisément, c'est une instance d'un programme en cours d'exécution à laquelle le système a alloué des ressources telles que la mémoire, le temps CPU et les E/S. Par exemple, si vous ouvrez trois fenêtres de terminal, exécutez la commande `cat` dans deux d'entre elles sans aucun argument (elle attendra l'entrée standard, gardant le processus actif), puis utilisez la troisième fenêtre pour exécuter `ps aux | grep cat`, vous verrez deux processus `cat` distincts. Chacun est une instance séparée du même programme, avec son propre identifiant de processus unique et son allocation de ressources.
+```bash
+$ pgrep -a cat
+18420 cat
+18457 cat
+```
 
-### Le rôle du noyau dans la gestion des processus
+Les deux processus exécutent le même programme, mais peuvent posséder des flux d’entrée, un contenu mémoire, des identifiants, des répertoires de travail et des durées de vie différents. Un PID désigne un processus actif à un instant donné et peut être réutilisé après la fin de ce processus.
 
-Le noyau Linux est responsable de toute la gestion des processus. Lorsque vous exécutez un programme, le noyau charge son code en mémoire, alloue les ressources système nécessaires et commence à le suivre en tant que processus. Le noyau maintient des informations détaillées pour chaque processus, notamment :
+:::single-choice{#process-details-program-versus-process}
+Qu’est-ce qui distingue deux instances en cours d’exécution du même programme ?
 
-- L'état du processus
-- Les ressources que le processus utilise et reçoit
-- Le propriétaire du processus
-- La gestion des signaux (nous y reviendrons plus tard)
-- Et fondamentalement tout le reste
+::option[Le fichier exécutable doit être copié une fois pour chaque instance.]{#process-details-copied-executable explanation="Plusieurs processus peuvent mapper et partager les pages de code du même fichier exécutable sans dupliquer celui-ci."}
+::option[Une seule instance peut posséder de la mémoire ou des fichiers ouverts.]{#process-details-one-instance-resources explanation="Chaque processus peut posséder ses propres mappages mémoire et sa table de descripteurs de fichiers."}
+::option[Chaque instance possède son propre contexte de processus et son PID.]{#process-details-independent-context .correct explanation="Des exécutions distinctes reçoivent un état de processus actif différent, même lorsque leur code exécutable provient du même fichier."}
+:::
 
-Tous les processus actifs sont en concurrence pour les ressources système. Le noyau agit comme un ordonnanceur, garantissant que chaque processus reçoit une juste part des ressources en fonction de sa priorité et de ses besoins. Lorsqu'un processus termine sa tâche ou est terminé, le noyau récupère les ressources qu'il utilisait, les rendant disponibles pour d'autres processus.
+## État suivi par le noyau
 
-## Exercise
+Le noyau conserve les informations nécessaires à la planification et au contrôle de chaque processus, notamment :
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension des processus Linux et de leur gestion :
+- les identifiants du processus et de son parent ;
+- les identifiants utilisateur et groupe ;
+- les mappages de mémoire virtuelle ;
+- les descripteurs de fichiers ouverts et le répertoire actuel ;
+- les dispositions et les signaux en attente ;
+- la politique de planification, la priorité et l’état d’exécution ;
+- les données comptables telles que le temps processeur.
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Apprenez les compétences essentielles pour gérer et surveiller les processus sur un système Linux, y compris l'interaction avec les processus de premier plan/arrière-plan, l'inspection avec `ps`, la surveillance avec `top` et la terminaison avec `kill`.
-2. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à utiliser la commande `top` pour la surveillance du système en temps réel, y compris le tri des processus, l'ajustement des intervalles de mise à jour et le filtrage par utilisateur.
-3. **[Commande Linux free : Surveillance de la mémoire système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à utiliser la commande `free` pour surveiller et analyser l'utilisation de la mémoire système, en comprenant comment le noyau alloue les ressources aux processus.
+Certaines ressources sous-jacentes peuvent être partagées. Des processus apparentés peuvent partager de la mémoire mappée, et les threads d’un même processus partagent un espace d’adressage et de nombreuses ressources du processus. Un processus fournit donc des frontières d’isolation sans que chaque octet ou objet du noyau soit nécessairement privé physiquement.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance dans la gestion des processus sous Linux.
+:::single-choice{#process-details-kernel-state}
+Quel composant conserve l’état de planification et les identifiants des processus Linux ?
 
-## Quiz Question
+::option[Le noyau.]{#process-details-kernel .correct explanation="Le noyau suit l’état des processus et applique les règles de planification, de mémoire, de signaux et de contrôle d’accès."}
+::option[Le répertoire du fichier exécutable.]{#process-details-directory explanation="Un répertoire conserve une association entre noms et inodes et ne planifie pas les processus actifs."}
+::option[Uniquement l’émulateur de terminal de l’utilisateur.]{#process-details-terminal explanation="Un terminal peut interagir avec les processus, mais leur gestion reste une responsabilité du noyau."}
+:::
 
-What manages and controls all Linux processes? Please answer in a single English word, all lowercase.
+## Planification du processeur et mémoire
 
-## Quiz Answer
+Les threads exécutables se disputent le temps processeur. L’ordonnanceur du noyau choisit quel thread s’exécute sur quel processeur selon la classe de planification, la priorité, l’affinité du processeur, la charge et la politique. Cela ne garantit pas une part égale à chaque processus.
 
-kernel
+Chaque processus voit normalement un espace d’adressage virtuel. Le noyau et le matériel associent les adresses virtuelles à la mémoire physique ou à un autre stockage sous-jacent, appliquent des protections et peuvent partager des pages. Une valeur de mémoire dans `ps` ou `top` n’est donc pas automatiquement la quantité de mémoire vive physique unique attribuable à ce processus.
+
+:::single-choice{#process-details-scheduler-role}
+Que sélectionne l’ordonnanceur Linux ?
+
+::option[Le thread exécutable qui s’exécute sur un processeur disponible.]{#process-details-runnable-thread .correct explanation="La politique de planification choisit parmi les contextes d’exécution prêts et leur attribue du temps processeur."}
+::option[Le propriétaire de fichier enregistré lors du formatage d’un disque.]{#process-details-format-owner explanation="La propriété du système de fichiers est sans rapport avec la planification du processeur."}
+::option[La ligne de commande qu’un utilisateur est autorisé à saisir.]{#process-details-command-entry explanation="L’ordonnanceur gère le temps d’exécution plutôt que la syntaxe des commandes interactives."}
+:::
+
+## Fin du processus et libération des ressources
+
+Lorsqu’un processus se termine, le noyau libère la plupart de ses ressources privées, ferme les descripteurs restants et enregistre les informations de fin pour son parent. Une petite entrée dans la table des processus peut rester sous forme de zombie jusqu’à ce que le parent récupère l’état de sortie. « Le processus a fini de s’exécuter » et « toute trace a disparu de la table des processus » ne sont donc pas toujours simultanés.
+
+:::single-choice{#process-details-exit-status}
+Pourquoi un processus terminé peut-il rester brièvement sous forme de zombie ?
+
+::option[Il exécute encore des instructions avec toute sa mémoire allouée.]{#process-details-zombie-running explanation="Un zombie a terminé son exécution et ne conserve plus un espace d’adressage actif normal."}
+::option[Son parent n’a pas encore récupéré l’état de fin enregistré.]{#process-details-parent-wait .correct explanation="Le noyau conserve des informations minimales de sortie jusqu’à ce que le parent effectue une opération d’attente."}
+::option[Son fichier exécutable est définitivement verrouillé par le noyau.]{#process-details-zombie-file-lock explanation="L’état zombie concerne la comptabilisation de la fin entre parent et enfant, et non un verrou permanent de l’exécutable."}
+:::
+
+Utilisez l’atelier [Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864) pour lancer plusieurs instances et comparer leurs PID et leurs états. L’atelier [Commande Linux `top`](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500) fournit une vue évolutive de la planification et des mesures de ressources.
+
+## Résumé
+
+Vous savez maintenant décrire un processus comme davantage qu’un fichier de programme.
+
+1. Distinguer le code exécutable enregistré d’une instance de processus active.
+2. Identifier l’état et les ressources suivis par le noyau.
+3. Relier la planification aux threads exécutables plutôt qu’à des parts égales.
+4. Reconnaître que l’état de sortie peut subsister jusqu’à ce que le parent le récupère.

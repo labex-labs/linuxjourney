@@ -1,62 +1,120 @@
 ---
-index: 7
+lesson_id: "dd-command"
+course_id: "devices"
 lang: "pt"
+order_index: 7
 title: "dd"
+description: "Aprenda como `dd` copia fluxos de blocos e como evitar erros destrutivos de entrada, saída e tamanho."
 meta_title: "dd - Dispositivos"
-meta_description: "Explore a poderosa ferramenta dd no Linux. Este guia explica como usar o comando dd linux para cópia eficiente de dados, criação de imagens de disco e backups. Aprenda opções chave como if, of e bs."
-meta_keywords: "comando dd, dd linux, ferramenta dd, copiar dados, imagem de disco, tutorial Linux, iniciante, guia, backup de dados"
+meta_description: "Conheça a poderosa ferramenta dd do Linux. Este guia explica como usar o comando dd para copiar dados, criar imagens de discos e backups, incluindo opções como if, of e bs."
+meta_keywords: "comando dd, dd Linux, ferramenta dd, copiar dados, imagem de disco, tutorial Linux, iniciante, guia, backup de dados"
 ---
 
-## Lesson Content
+`dd` copia dados de um fluxo de entrada para um fluxo de saída enquanto aplica os tamanhos de blocos e as conversões solicitados. Ele não compreende sistemas de arquivos, limites de partições nem se um destino de saída contém dados valiosos. Isso o torna útil para imagens e dispositivos brutos — e imediatamente destrutivo quando o destino está errado.
 
-O comando `dd` é uma utilidade versátil e poderosa para converter e copiar dados. Ele opera lendo de um arquivo de entrada ou fluxo de dados e escrevendo em um arquivo de saída ou fluxo de dados, tornando-o uma `ferramenta dd` essencial para muitas tarefas de administração de sistema.
+## Entrada, Saída e Tamanho de Bloco
 
-### Entendendo o Comando dd
-
-Em sua essência, `dd` copia dados byte por byte. Considere o seguinte comando:
+Um comando possui este formato geral:
 
 ```bash
-dd if=/home/pete/backup.img of=/dev/sdb bs=1024
+$ dd if=input.img of=output.img bs=4M status=progress
 ```
 
-Este comando copia o conteúdo do arquivo `backup.img` para o dispositivo de bloco `/dev/sdb`. Ele realiza essa operação copiando os dados em blocos de 1024 bytes até que todo o arquivo de entrada tenha sido lido.
+- `if=` seleciona a entrada; sem ele, `dd` lê da entrada padrão.
+- `of=` seleciona a saída; sem ele, `dd` grava na saída padrão.
+- `bs=` define o tamanho dos blocos de entrada e saída para uma cópia comum.
+- `status=progress` solicita que o `dd` do GNU informe periodicamente o progresso da transferência.
 
-### Opções Essenciais do dd
+`dd` copia blocos, não necessariamente um byte por vez. Um `bs` maior pode reduzir a sobrecarga das chamadas de sistema, mas o valor ideal depende dos dispositivos, do alinhamento, do cache e da carga de trabalho. Ele não altera os dados lógicos copiados.
 
-O comportamento do comando `dd` é controlado por várias opções chave:
+:::single-choice{#dd-command-output-operand}
+Qual operando seleciona o destino gravado por `dd`?
 
-- `if=file`: Especifica o **arquivo de entrada**. `dd` lerá deste arquivo em vez da entrada padrão.
-- `of=file`: Especifica o **arquivo de saída**. `dd` escreverá neste arquivo em vez da saída padrão.
-- `bs=bytes`: Define o **tamanho do bloco**. `dd` lê e escreve essa quantidade de bytes por vez. Você pode usar sufixos para unidades maiores, como `k` para kilobytes (1024 bytes), `M` para megabytes e `G` para gigabytes. Por exemplo, `bs=1M`.
-- `count=number`: Copia apenas este **número de blocos** especificado.
+::option[`if=`]{#dd-command-input-file explanation="`if` identifica a origem de entrada."}
+::option[`of=`]{#dd-command-output-file .correct explanation="`of` nomeia o fluxo ou arquivo de saída que recebe os dados copiados."}
+::option[`bs=`]{#dd-command-block-size explanation="`bs` escolhe um tamanho de bloco de transferência, não um caminho."}
+:::
 
-### Usando bs e count Juntos
+## Limitação da Cópia
 
-A opção `count` é útil quando você precisa copiar uma quantidade específica de dados. Os dados totais copiados serão `bs` multiplicado por `count`. Por exemplo, se você executar o seguinte comando em um arquivo de 10M:
+`count=` limita o número de blocos de entrada processados. Para um arquivo de entrada comum:
 
 ```bash
-dd if=/home/pete/backup.img of=/dev/sdb bs=1M count=2
+$ dd if=source.img of=prefix.img bs=1M count=2 status=progress
 ```
 
-Embora `backup.img` tenha 10M, este comando instrui `dd` a copiar 2 blocos, cada um com 1M de tamanho. Como resultado, apenas 2M de dados serão copiados, levando a uma transferência incompleta. Embora `count` seja valioso em certos cenários, você pode frequentemente omiti-lo se seu objetivo for copiar um arquivo inteiro. Otimizar `bs` pode melhorar significativamente as velocidades de transferência, mas as configurações padrão geralmente são suficientes.
+Isso solicita dois blocos de entrada de até 1 MiB cada, portanto copia no máximo 2 MiB. Leituras curtas podem complicar a multiplicação simples em fluxos como pipes; o `dd` do GNU oferece `iflag=fullblock` quando são necessários blocos de entrada completos. Diferencie unidades binárias e a sintaxe dos sufixos conforme a implementação local.
 
-### O Poder e o Perigo do dd
+:::single-choice{#dd-command-count-result}
+Para um arquivo comum, qual quantidade máxima `bs=1M count=2` solicita?
 
-O comando `dd linux` é extremamente poderoso. Você pode usá-lo para criar backups de discos inteiros, restaurar imagens de disco e limpar dados com segurança. No entanto, esse poder traz um risco. Um pequeno erro, como inverter os valores de `if` e `of`, pode resultar em perda de dados irreversível. Sempre verifique duas vezes seus comandos antes de executá-los, especialmente ao escrever em um dispositivo como `/dev/sda`.
+::option[1 MiB.]{#dd-command-one-mib explanation="Isso corresponderia a um bloco do tamanho selecionado."}
+::option[2 MiB.]{#dd-command-two-mib .correct explanation="Dois blocos de entrada multiplicados por 1 MiB por bloco resultam em um máximo de 2 MiB."}
+::option[2 GiB.]{#dd-command-two-gib explanation="No `dd` do GNU, o sufixo `M` indica blocos com tamanho de mebibytes, não gibibytes."}
+:::
 
-## Exercise
+## Gravação de uma Imagem em um Dispositivo de Bloco
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão da manipulação de dados e gerenciamento de disco no Linux:
+Uma restauração bruta pode se parecer com esta:
 
-1. **[Criar e Restaurar um Backup com tar no Linux](https://labex.io/pt/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Pratique a criação e restauração de backups do sistema de arquivos, uma habilidade crítica relacionada à integridade e recuperação de dados, para a qual o `dd` também pode ser usado.
-2. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Aprenda a gerenciar partições de disco e sistemas de arquivos, incluindo criação, formatação e montagem, que são conceitos fundamentais ao trabalhar com ferramentas como `dd` para criação de imagens de disco.
+```bash
+$ sudo dd if=backup.img of=/dev/sdX bs=4M status=progress conv=fsync
+```
 
-Esses laboratórios ajudarão você a aplicar os conceitos de manuseio de dados e operações de disco em cenários reais e a construir confiança com tarefas de administração de sistema.
+`/dev/sdX` é deliberadamente um marcador, não um comando para copiar. Antes de substituí-lo:
 
-## Quiz Question
+1. Mantenha um backup testado de todos os dados valiosos.
+2. Identifique o destino pelo modelo, número de série, tamanho, transporte e link persistente usando `lsblk`, `udevadm` ou ferramentas equivalentes.
+3. Confirme que nenhuma partição do destino esteja montada, usada como swap, integrada a RAID ou LVM ou aberta por outro serviço.
+4. Verifique novamente o dispositivo após qualquer desconexão, reinicialização ou alteração da topologia.
+5. Garanta que a imagem caiba e que a gravação de todo o dispositivo seja realmente pretendida.
 
-Qual é a opção do `dd` para tamanho de bloco? Por favor, responda usando apenas letras minúsculas em inglês.
+O dispositivo de saída é sobrescrito desde o início. Inverter `if` e `of`, selecionar o disco do sistema ou usar um disco inteiro quando a intenção era uma partição pode destruir dados sem uma solicitação de confirmação.
 
-## Quiz Answer
+:::single-choice{#dd-command-target-verification}
+Qual é o motivo mais importante para verificar o modelo, o número de série, o tamanho e o uso ativo antes de uma gravação bruta em um dispositivo?
 
-bs
+::option[As letras dos dispositivos podem mudar, e `dd` sobrescreve o destino selecionado sem compreender seu conteúdo.]{#dd-command-target-can-change .correct explanation="As verificações de identidade e uso reduzem o risco de destruir outro disco ou uma pilha de armazenamento ativa."}
+::option[`dd` se recusa a gravar se o rótulo do sistema de arquivos não corresponder à imagem.]{#dd-command-label-check explanation="A ferramenta não realiza essa verificação de segurança baseada no sistema de arquivos."}
+::option[Dispositivos de bloco não podem ser abertos enquanto existir qualquer backup.]{#dd-command-backup-prevents-open explanation="Um backup não impede tecnicamente as gravações; quando mantido e testado, ele oferece recuperação."}
+:::
+
+## Criação de uma Imagem Consistente
+
+Ler um dispositivo de bloco ativo enquanto seu sistema de arquivos está sendo alterado pode produzir uma imagem internamente inconsistente. Prefira um sistema de arquivos desmontado, um snapshot consistente com a aplicação ou um fluxo documentado de congelamento e snapshot. Bancos de dados e máquinas virtuais podem exigir seus próprios procedimentos de suspensão das alterações.
+
+Uma imagem bruta do dispositivo copia blocos, incluindo os metadados do sistema de arquivos e regiões não utilizadas. Por isso, ela pode ser muito maior que um backup no nível dos arquivos e pode reproduzir identificadores que precisam ser alterados antes de montar um clone junto do original.
+
+:::single-choice{#dd-command-live-filesystem-image}
+Por que criar a imagem de um sistema de arquivos montado e em alteração pode não ser confiável?
+
+::option[Sistemas de arquivos montados nunca permitem leituras do dispositivo de bloco.]{#dd-command-mounted-no-read explanation="Leituras brutas podem ser possíveis, por isso a consistência precisa ser planejada, não presumida."}
+::option[Blocos diferentes podem ser lidos em momentos diferentes do estado do sistema de arquivos.]{#dd-command-inconsistent-moments .correct explanation="Alterações simultâneas podem fazer a imagem de blocos coletada não representar um único ponto consistente no tempo."}
+::option[`dd` converte automaticamente o sistema de arquivos em um arquivo tar.]{#dd-command-converts-tar explanation="A ferramenta copia dados brutos e não cria um arquivo compactado com conhecimento do sistema de arquivos."}
+:::
+
+## Conclusão e Verificação
+
+O comando terminar sem um erro de E/S não comprova que a origem e o destino pretendidos foram selecionados nem que a imagem possa ser usada. Registre as identidades e os tamanhos exatos, garanta que a saída em buffer tenha chegado ao armazenamento, compare uma leitura posterior com limites apropriados ou hashes criptográficos e teste a recuperação conforme o plano de backup.
+
+Não divulgue passagens de sobrescrita com `dd` como apagamento seguro garantido para SSDs, camadas de tradução de flash, armazenamento com provisionamento dinâmico, snapshots ou setores remapeados. Use a sanitização compatível com o dispositivo e a plataforma junto com uma política explícita de destruição de dados.
+
+:::single-choice{#dd-command-success-meaning}
+O que um status de saída zero de `dd` não comprova por si só?
+
+::option[Que o comando interpretou todos os operandos fornecidos.]{#dd-command-parsed-operands explanation="Operandos inválidos normalmente causam um erro, não uma conclusão bem-sucedida."}
+::option[Que o operador selecionou a origem e o destino pretendidos.]{#dd-command-does-not-prove-intent .correct explanation="A ferramenta pode copiar com sucesso para o destino errado, pois não consegue deduzir a intenção do operador."}
+::option[Que o processo chegou ao caminho normal de encerramento.]{#dd-command-normal-exit explanation="Um status zero indica sucesso no nível do comando, mas não a correção semântica dos destinos escolhidos."}
+:::
+
+Pratique somente com arquivos comuns ou discos virtuais descartáveis antes de trabalhar com hardware bruto. Os conceitos de partições e sistemas de arquivos em [Gerenciamento de Partições e Sistemas de Arquivos Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) fornecem um contexto essencial.
+
+## Resumo
+
+Agora você sabe analisar `dd` como uma ferramenta de cópia bruta de blocos sem conhecimento da intenção.
+
+1. Diferencie `if`, `of`, `bs` e `count`.
+2. Verifique a identidade persistente do destino e todos os seus consumidores ativos.
+3. Crie imagens a partir de um estado de armazenamento consistente.
+4. Sincronize, verifique e teste a recuperação após uma cópia.
+5. Trate toda saída para um dispositivo bruto como potencialmente destrutiva.

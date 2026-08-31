@@ -1,48 +1,91 @@
 ---
-index: 4
+lesson_id: "process-creation"
+course_id: "processes"
 lang: "pt"
+order_index: 4
 title: "Criação de Processos"
+description: "Aprenda como fork, exec, PIDs e relações de parentesco participam da criação de processos no Linux."
 meta_title: "Criação de Processos - Processos"
-meta_description: "Explore os fundamentos da criação de processos no Linux. Este guia abrange as chamadas de sistema fork e execve, relações pai/filho (PID e PPID) e o papel do processo init. Aprenda a criar um processo no Linux e entenda os conceitos centrais da criação de processos no sistema operacional."
-meta_keywords: "criação de processos no linux, criação de processo linux, criar um processo no linux, criação de processo no sistema operacional, criação de processo, fork, execve, PID, PPID, processo init, processos Linux"
+meta_description: "Conheça os fundamentos da criação de processos no Linux. Este guia aborda as chamadas de sistema fork e execve, as relações entre pais e filhos (PID e PPID) e a função do processo init."
+meta_keywords: "criação de processos no Linux, criar processo Linux, criação de processos no sistema operacional, fork, execve, PID, PPID, processo init, processos Linux"
 ---
 
-## Lesson Content
+Os processos Linux formam relações entre pais e filhos. Um shell normalmente inicia um comando externo criando um processo filho e fazendo esse filho executar o programa solicitado. A explicação clássica separa esse trabalho nas operações `fork` e `exec`.
 
-Esta lição explora os conceitos fundamentais de como novos processos são iniciados em um sistema Linux. Entender este mecanismo fornece uma visão sobre o funcionamento interno do sistema operacional.
+## Criação de um Filho com `fork`
 
-### O Modelo Fork e Exec
+A chamada de sistema `fork()` cria um processo filho com base no processo solicitante. O pai e o filho continuam a partir do ponto de retorno de `fork`, mas recebem valores de retorno diferentes e possuem PIDs distintos.
 
-O principal mecanismo para **criação de processos no Linux** envolve um processo existente se clonando usando a chamada de sistema `fork`. A chamada `fork` cria um processo filho quase idêntico. Este novo processo filho recebe seu próprio Identificador de Processo (PID) exclusivo, enquanto o processo original se torna seu pai, identificado por um Identificador de Processo Pai (**PPID**).
+O filho recebe um estado de processo logicamente separado. Inicialmente, o Linux pode compartilhar páginas de memória física usando copy-on-write, copiando uma página somente quando um dos processos a modifica. Os descritores de arquivos abertos são herdados e apontam para as mesmas descrições de arquivos abertos subjacentes, portanto detalhes como os offsets dos arquivos podem continuar compartilhados.
 
-Após o fork, o processo filho pode continuar executando o mesmo programa que seu pai ou, mais comumente, usar a chamada de sistema `execve` para carregar e executar um novo programa. A chamada `execve` substitui efetivamente o espaço de memória do processo pelo do novo programa, permitindo que uma tarefa diferente comece. Este modelo de dois passos "fork-exec" é um pilar de como você **cria um processo no Linux**.
+:::single-choice{#process-creation-fork-result}
+O que uma chamada `fork()` bem-sucedida cria?
 
-### Observando Relações Pai-Filho
+::option[Somente um programa substituto dentro do mesmo processo.]{#process-creation-fork-replacement explanation="Substituir a imagem do programa atual é a função de uma operação `exec`."}
+::option[Um processo filho com um novo PID.]{#process-creation-fork-child .correct explanation="`fork()` estabelece um processo filho separado e uma relação entre pai e filho."}
+::option[Uma cópia permanente e imediata de todas as páginas de memória física.]{#process-creation-fork-full-copy explanation="O Linux normalmente usa copy-on-write, em vez de duplicar antecipadamente todas as páginas físicas."}
+:::
 
-Podemos observar esta relação pai-filho em ação usando o comando `ps`:
+## Substituição de um Programa com `execve`
+
+Uma chamada `execve()` carrega um novo programa no processo solicitante. Quando bem-sucedida, ela substitui a imagem do processo e não retorna ao programa antigo. O PID permanece o mesmo porque `execve()` não cria um novo processo.
+
+Por isso, muitos comandos do shell seguem um padrão fork-exec:
+
+1. O shell cria um processo filho.
+2. O filho prepara redirecionamentos e outros estados de execução.
+3. O filho executa o programa solicitado.
+4. O shell aguarda ou continua, dependendo da execução em primeiro ou segundo plano.
+
+Bibliotecas e aplicações podem expor interfaces de nível superior, como `posix_spawn()`, e o Linux possui primitivas adicionais, como `clone()`. O conhecido modelo fork-exec continua sendo útil sem ser a única interface possível.
+
+:::single-choice{#process-creation-exec-pid}
+O que acontece com o PID de um processo após um `execve()` bem-sucedido?
+
+::option[Ele se torna idêntico ao PID do pai.]{#process-creation-exec-parent-pid explanation="O pai e o filho mantêm IDs de processo separados."}
+::option[Ele permanece o mesmo enquanto a imagem do programa é substituída.]{#process-creation-exec-same-pid .correct explanation="`execve()` transforma o processo solicitante, em vez de criar outro processo."}
+::option[Ele é removido antes que o novo programa seja iniciado.]{#process-creation-exec-pid-removed explanation="O processo existente continua com seu PID e recebe novo código, dados, pilha e estados relacionados ao programa."}
+:::
+
+## Inspeção dos IDs de Pais e Filhos
+
+`PID` identifica o processo, enquanto `PPID` identifica seu pai. Solicite esses campos explicitamente:
 
 ```bash
-ps l
+$ ps -o pid,ppid,stat,cmd
 ```
 
-A opção `l` fornece uma visualização em "formato longo", mostrando mais detalhes sobre os processos em execução. Você verá uma coluna rotulada **PPID**, que significa Parent Process ID (Identificador de Processo Pai). Observe o processo do seu shell atual (por exemplo, `bash`). Quando você executa o comando `ps l`, notará que o **PID** do seu processo shell corresponde ao **PPID** do processo `ps l`. Isso ocorre porque seu shell se bifurcou para criar o processo `ps`.
+Se um shell iniciar `ps`, o PID do shell normalmente aparecerá como `PPID` desse processo `ps`. O momento importa: processos de curta duração podem terminar antes que uma observação separada os capture.
 
-### O Processo Init
+:::single-choice{#process-creation-ppid}
+O que `PPID` representa em uma listagem de processos?
 
-Se todo processo é filho de outro, deve haver um ancestral original. Este é o processo `init`. Quando o sistema é inicializado, o kernel cria `init` como o primeiro processo em espaço de usuário, atribuindo-lhe um PID de 1. O processo `init` é o pai supremo de todos os outros processos e é executado com privilégios de root para gerenciar o sistema. Ele não pode ser encerrado até que o sistema seja desligado e é responsável por iniciar muitos dos serviços que mantêm o sistema funcionando.
+::option[O PID anterior que já foi atribuído ao processo.]{#process-creation-previous-pid explanation="PIDs podem ser reutilizados, mas `PPID` não registra o histórico de identificadores."}
+::option[O identificador da prioridade de escalonamento do processo.]{#process-creation-priority-id explanation="A prioridade de escalonamento é representada por outros campos, como priority ou nice."}
+::option[O ID do processo pai.]{#process-creation-parent-pid .correct explanation="PPID registra a relação atual do processo com seu pai."}
+:::
 
-## Exercise
+## PID 1 e Reparentalização
 
-A prática leva à perfeição! Aqui está um laboratório prático para reforçar sua compreensão dos processos Linux e seu gerenciamento:
+O kernel inicia o primeiro processo do espaço do usuário com o PID 1. Dependendo do sistema, ele pode ser `systemd`, outra implementação de init ou um init pequeno dentro de um contêiner ou namespace de PIDs. O PID 1 inicia e supervisiona partes do ambiente do espaço do usuário e possui responsabilidades especiais de sinais e coleta de processos órfãos.
 
-- **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Neste laboratório, você aprenderá habilidades essenciais para gerenciar e monitorar processos em um sistema Linux. Você explorará como interagir com processos em primeiro plano e em segundo plano, inspecioná-los com `ps`, monitorar recursos com `top`, ajustar a prioridade com `renice` e terminá-los com `kill`.
+Quando um pai termina antes de seu filho, o filho é reparentalizado para um subreaper apropriado ou para o processo init de seu namespace de PIDs. Ele não precisa terminar apenas porque seu pai original foi encerrado.
 
-Este laboratório o ajudará a aplicar os conceitos de IDs de processo, IDs de processo pai e monitoramento de processos em um cenário real e a ganhar confiança no gerenciamento de processos.
+:::single-choice{#process-creation-pid-one}
+Qual afirmação sobre o PID 1 está correta?
 
-## Quiz Question
+::option[Ele sempre deve ser um programa cujo nome de executável seja exatamente `init`.]{#process-creation-pid-one-name explanation="A implementação pode ser `systemd`, outro init ou um programa específico do contêiner."}
+::option[Ele é o pai que criou diretamente todos os processos atualmente em execução.]{#process-creation-pid-one-direct explanation="A maioria dos processos é criada por várias gerações de pais intermediários."}
+::option[Ele é o primeiro processo de seu namespace de PIDs e possui responsabilidades semelhantes às de um init.]{#process-creation-pid-one-init .correct explanation="O PID 1 sustenta a supervisão e a coleta de processos do espaço do usuário dentro de um namespace de PIDs."}
+:::
 
-Qual chamada de sistema cria um novo processo? (Por favor, responda em uma única palavra em inglês minúscula.)
+O laboratório [Gerenciamento e Monitoramento de Processos Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) permite observar os IDs de pais e filhos durante a execução de comandos em primeiro e segundo plano.
 
-## Quiz Answer
+## Resumo
 
-fork
+Agora você sabe acompanhar a sequência clássica de criação de processos no Linux.
+
+1. Use `fork()` para criar um filho com um PID distinto.
+2. Use `execve()` para substituir a imagem de um processo sem alterar seu PID.
+3. Leia PID e PPID para identificar relações entre pais e filhos.
+4. Reconheça o PID 1 e os subreapers como destinos de filhos reparentalizados.

@@ -1,54 +1,108 @@
 ---
-index: 2
+lesson_id: "stdin-standard-in-redirect"
+course_id: "text-fu"
 lang: "fr"
-title: "stdin (Entrée Standard)"
-meta_title: "stdin (Entrée Standard) - Text-Fu"
-meta_description: "Maîtrisez les opérations de la ligne de commande Linux en apprenant à rediriger stdin (entrée standard). Ce guide couvre la relation entre stdin et stdout, l'utilisation de l'opérateur '<', et des exemples pratiques comme 'cat stdin' pour gérer efficacement les flux de données."
-meta_keywords: "stdin, entree standard, rediriger stdin, cat stdin, stdin et stdout, entrée standard, redirection Linux, ligne de commande, flux d'entrée"
+order_index: 2
+title: "stdin (entrée standard)"
+description: "Découvrez comment les programmes lisent l'entrée standard et comment Bash relie ce flux à un fichier."
+meta_title: "stdin (entrée standard) - Text-Fu"
+meta_description: "Maîtrisez l'entrée standard stdin, le descripteur 0 et la redirection avec l'opérateur <."
+meta_keywords: "stdin, entrée standard, rediriger stdin, Linux, ligne de commande, flux d'entrée"
 ---
 
-## Lesson Content
+L'entrée standard, abrégée **stdin**, est le flux qu'un programme lit normalement pour recevoir des données. Dans un terminal interactif, le shell la relie généralement à votre saisie.
 
-Lors de notre leçon précédente, nous avons appris à rediriger le flux de sortie standard (stdout). De même, nous pouvons également gérer le flux d'entrée standard (`stdin`). Par défaut, un programme reçoit son `stdin` du clavier, mais nous pouvons également utiliser des fichiers ou la sortie d'autres processus comme source d'entrée.
+## Entrée standard et descripteur de fichier 0
 
-### Comprendre stdin et stdout
+Par convention, les trois flux standard utilisent ces descripteurs :
 
-Chaque processus en ligne de commande sous Linux fonctionne avec au moins deux flux de données fondamentaux : l'entrée standard (`stdin`) et la sortie standard (`stdout`). Un programme lit les données depuis `stdin` et écrit ses résultats sur `stdout`. Comprendre comment contrôler à la fois `stdin et stdout` est crucial pour un travail efficace en ligne de commande.
+- `0` : entrée standard (`stdin`)
+- `1` : sortie standard (`stdout`)
+- `2` : erreur standard (`stderr`)
 
-### Comment rediriger stdin
+Un programme choisit comment employer ces flux. Une commande conçue pour lire stdin attend souvent une saisie au terminal si aucun fichier ni autre source n'est fourni.
 
-Tout comme nous utilisons `>` pour la redirection de stdout, nous utilisons l'opérateur `<` pour `rediriger stdin`. Cette fonctionnalité puissante vous permet d'indiquer à une commande de lire son entrée à partir d'un fichier au lieu d'attendre que vous la tapiez au clavier. C'est un concept fondamental de la redirection d'entrée.
+:::single-choice{#stdin-descriptor-number}
+Quel descripteur représente conventionnellement l'entrée standard ?
 
-### Exemple pratique avec cat stdin
+::option[`0`]{#stdin-fd-zero .correct explanation="L'entrée standard correspond conventionnellement au descripteur 0."}
+::option[`1`]{#stdin-fd-one explanation="Le descripteur 1 désigne la sortie standard."}
+::option[`2`]{#stdin-fd-two explanation="Le descripteur 2 désigne l'erreur standard."}
+:::
 
-Revenons au fichier `peanuts.txt` de la leçon précédente, qui contient le texte "Hello World". Considérez la commande suivante :
+## Rediriger un fichier vers stdin
+
+L'opérateur `<` demande à Bash d'ouvrir un fichier en lecture et de le relier à stdin :
 
 ```bash
-cat < peanuts.txt > banana.txt
+$ cat < peanuts.txt
+Hello World
 ```
 
-Voici une explication de ce qui se passe :
+Le shell traite `< peanuts.txt` ; `cat` lit simplement le descripteur 0. Le chemin ne lui est pas transmis comme opérande. Si le fichier n'existe pas ou ne peut être ouvert, le shell signale l'erreur et ne lance pas la commande avec cette entrée.
 
-1. La partie `< peanuts.txt` indique au shell de `rediriger stdin` pour la commande `cat`, lui faisant lire depuis `peanuts.txt` au lieu du clavier.
-2. La commande `cat` traite son entrée. Dans ce cas, utiliser `cat stdin` signifie qu'elle lit le contenu de `peanuts.txt`.
-3. La partie `> banana.txt` redirige la sortie standard de `cat` vers un nouveau fichier nommé `banana.txt`.
+:::single-choice{#stdin-from-file}
+Quelle commande fait lire `names.txt` à `sort` sur son entrée standard ?
 
-En fin de compte, le contenu de `peanuts.txt` est copié dans `banana.txt`. Cet exemple démontre efficacement comment gérer à la fois `stdin et stdout` dans une seule commande efficace.
+::option[`sort < names.txt`]{#sort-stdin-file .correct explanation="Bash ouvre `names.txt` et le relie au descripteur 0 de `sort`."}
+::option[`sort > names.txt`]{#stdout-to-names explanation="`>` redirige stdout et peut tronquer le fichier ; il ne fournit pas l'entrée."}
+::option[`sort names.txt >`]{#incomplete-sort-output explanation="Cette redirection de sortie est incomplète."}
+:::
 
-## Exercise
+## Opérande de fichier ou redirection d'entrée
 
-Pour consolider votre compréhension, essayez ces exercices pratiques axés sur la redirection d'entrée et de sortie sous Linux :
+Certaines commandes acceptent soit un nom de fichier, soit stdin, avec parfois une légère différence :
 
-1. **[Redirection d'entrée et de sortie sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Entraînez-vous à contrôler le flux de données des commandes en manipulant la sortie standard (stdout), l'erreur standard (stderr) et l'entrée standard (stdin) à l'aide d'opérateurs tels que >, >>, 2> et de la commande tee.
-2. **[Redirection de flux de données](https://labex.io/fr/labs/linux-data-stream-redirection-17995)** - Apprenez l'art de la redirection de flux sous Linux. Manipulez les flux d'entrée, de sortie et d'erreur standard, combinez les sorties et utilisez /dev/null pour des opérations de fichiers avancées.
-3. **[Contrôle de séquence et pipeline sous Linux](https://labex.io/fr/labs/linux-sequence-control-and-pipeline-17994)** - Apprenez à contrôler les séquences d'exécution des commandes et à utiliser les pipelines, fondamentaux pour diriger la sortie d'une commande comme entrée d'une autre.
+```bash
+$ wc -l peanuts.txt
+1 peanuts.txt
+$ wc -l < peanuts.txt
+1
+```
 
-Ces laboratoires vous aideront à appliquer les concepts de redirection d'entrée et de sortie dans des scénarios réels et à renforcer votre confiance dans le scripting shell et la manipulation de données.
+Les deux formes comptent les mêmes lignes. Dans la première, `wc` connaît le nom reçu en argument. Dans la seconde, il ne reçoit qu'un flux et n'a aucun nom à afficher.
 
-## Quiz Question
+:::single-choice{#stdin-not-command-argument}
+Pourquoi `wc -l < peanuts.txt` omet-il normalement `peanuts.txt` dans sa sortie ?
 
-Quel opérateur est utilisé pour rediriger stdin ? Veuillez répondre uniquement avec le symbole requis.
+::option[`wc` supprime le nom après le comptage.]{#stdin-delete-name explanation="La commande ne renomme ni ne supprime le fichier."}
+::option[L'opérateur `<` masque chaque mot affiché.]{#stdin-hide-words explanation="La redirection d'entrée ne filtre pas stdout."}
+::option[Bash fournit le fichier sur stdin plutôt que comme argument.]{#stdin-no-filename .correct explanation="Le shell relie le fichier au descripteur 0 ; `wc` ne reçoit donc pas son chemin comme opérande."}
+:::
 
-## Quiz Answer
+## Combiner les redirections d'entrée et de sortie
 
-<
+Une même ligne peut rediriger plusieurs flux :
+
+```bash
+$ cat < peanuts.txt > banana.txt
+```
+
+Le shell réalise deux connexions indépendantes :
+
+1. `< peanuts.txt` ouvre `peanuts.txt` comme stdin de `cat`.
+2. `> banana.txt` crée ou tronque `banana.txt` et le relie à stdout.
+
+`cat` lit stdin et écrit sur stdout ; `banana.txt` reçoit donc le contenu source. Pour une copie ordinaire, `cp peanuts.txt banana.txt` exprime mieux l'intention ; cet exemple illustre les flux.
+
+:::single-choice{#stdin-and-stdout-files}
+Dans `cat < input.txt > output.txt`, quel fichier fournit stdin et lequel reçoit stdout ?
+
+::option[`output.txt` fournit stdin et `input.txt` reçoit stdout.]{#stdin-output-stdout-input explanation="Cela inverse le sens des opérateurs."}
+::option[`input.txt` fournit stdin et `output.txt` reçoit stdout.]{#stdin-input-stdout-output .correct explanation="`<` ouvre `input.txt` pour le descripteur 0 et `>` ouvre `output.txt` pour le descripteur 1."}
+::option[Les deux fournissent stdin et stdout reste au terminal.]{#both-stdin explanation="Les opérateurs touchent deux flux différents ; `>` redirige stdout."}
+:::
+
+Pour vous exercer :
+
+1. **[Rediriger les entrées et sorties sous Linux](https://labex.io/fr/labs/comptia-redirecting-input-and-output-in-linux-590840)** - Manipulez stdout, stderr et stdin avec les opérateurs de redirection.
+2. **[Redirection des flux de données](https://labex.io/fr/labs/linux-data-stream-redirection-17995)** - Combinez les flux standard et utilisez `/dev/null`.
+
+## Résumé
+
+Vous savez maintenant relier l'entrée standard d'une commande à un fichier.
+
+1. Reconnaître stdin comme le descripteur 0.
+2. Rediriger un fichier lisible avec `<`.
+3. Distinguer un opérande d'une entrée redirigée.
+4. Combiner volontairement les redirections stdin et stdout.

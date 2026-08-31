@@ -1,32 +1,39 @@
 ---
-index: 17
+lesson_id: "whatis-command"
+course_id: "command-line"
 lang: "en"
+order_index: 17
 title: "whatis"
+description: "Learn how to retrieve concise manual-page descriptions and interpret their section numbers."
 meta_title: "whatis - Command Line"
 meta_description: "Learn the Linux whatis command with examples for getting one-line command descriptions from man pages and understanding multiple manual sections."
 meta_keywords: "whatis command, linux whatis, command description linux, man page summary, command line help, apropos"
 ---
 
-## Lesson Content
+When you recognize a command name but forget its purpose, `whatis` can provide a short reminder from the manual-page database.
 
-As you explore the Linux command line, you'll encounter a vast number of commands. It's natural to forget what a specific command does. Fortunately, there's a simple utility to help you out.
+## Looking Up an Exact Name
 
-### What is the whatis Command
-
-The `whatis` command displays a concise, one-line description of a command directly from its manual page. It is a quick way to get a reminder of a command's primary function without reading the entire man page.
-
-### How to Use the whatis Command
-
-Using `whatis` is straightforward. Type `whatis` followed by the command you want to know about.
+Pass one or more exact topic names to `whatis`. Each result is derived from the `NAME` section recorded for an installed manual page:
 
 ```bash
 $ whatis cat
 cat (1)              - concatenate files and print on the standard output
 ```
 
-### Understanding the Output
+The output is a description, not a list of command options or examples. Use `man cat` or `cat --help` when you need more detail.
 
-The description provided by `whatis` comes from the `NAME` section of the command's manual page. If a name has multiple manual pages in different sections, `whatis` may display more than one line.
+:::single-choice{#describe-known-command}
+You know the name `cat` and want its one-line manual-page description. Which command should you run?
+
+::option[`man cat`]{#manual-cat explanation="`man cat` opens the full manual page. It provides more than the requested one-line reminder."}
+::option[`apropos cat`]{#apropos-cat explanation="`apropos` searches descriptions for a keyword and can return many related topics. It is broader than an exact-name lookup."}
+::option[`whatis cat`]{#whatis-cat .correct explanation="`whatis` looks up the exact topic name and prints its concise description from the manual database."}
+:::
+
+## Reading Section Numbers
+
+If the same topic has manual pages in several sections, `whatis` can display more than one result:
 
 ```bash
 $ whatis passwd
@@ -34,13 +41,21 @@ passwd (1)           - change user password
 passwd (5)           - the password file
 ```
 
-The number in parentheses is the man page section.
+The number in parentheses is the manual section. Here, `passwd(1)` describes the user command and `passwd(5)` describes a file format. You can open one explicitly with `man 1 passwd` or `man 5 passwd`.
 
-### Whatis vs Man vs Apropos
+:::single-choice{#interpret-whatis-section}
+In the output `passwd (5) - the password file`, what does `(5)` identify?
 
-- `whatis ls`: Show a one-line description for an exact command name.
-- `man ls`: Open the full manual page.
-- `apropos keyword`: Search man page descriptions for a keyword.
+::option[The fifth option accepted by the `passwd` command.]{#fifth-option explanation="The number is not an option position. Options are documented inside a selected manual page."}
+::option[The manual section containing the file-format page.]{#section-five .correct explanation="Section 5 is used for file formats and conventions, so `passwd(5)` refers to that manual section."}
+::option[Five manual pages that share the name `passwd`.]{#five-pages explanation="Multiple results may exist, but the parenthesized value identifies one section rather than a page count."}
+:::
+
+## Choosing between whatis, man, and apropos
+
+- `whatis NAME`: Show concise descriptions for an exact manual topic name.
+- `man NAME`: Open a full manual page.
+- `apropos KEYWORD`: Search manual-page names and descriptions for a keyword.
 
 For example:
 
@@ -48,30 +63,33 @@ For example:
 $ apropos password
 ```
 
-Use `whatis` when you know the command name but forgot what it does.
+Use `apropos` when you know the task but not the command name. Use `whatis` when you already know the name.
 
-### Common Questions
+:::single-choice{#search-by-purpose}
+You do not know a command's name, but you want to search manual descriptions for the keyword `password`. Which command fits that task?
 
-**Why does whatis say "nothing appropriate"?** The command may not have a man page installed, or the man database may need updating.
+::option[`apropos password`]{#apropos-password .correct explanation="`apropos` searches manual-page names and descriptions for the keyword, helping discover relevant topics."}
+::option[`whatis password`]{#exact-password explanation="`whatis` looks for an exact manual topic named `password`. It is not the general keyword-search interface."}
+::option[`man password`]{#manual-password explanation="`man` attempts to open a page with that topic name. It does not perform the requested description search."}
+:::
 
-**Does whatis show command options?** No. Use `man COMMAND` or `COMMAND --help` for options.
+## When No Description Appears
 
-**Is whatis the same as which?** No. `whatis` describes a command. `which` shows the executable path.
+If `whatis` reports that nothing is appropriate, the topic may not have an installed manual page or the manual database may be out of date. This result does not prove that no executable, alias, function, or builtin with that name exists. Use `type NAME` to see how Bash resolves a command name, then choose an appropriate help source.
 
-## Exercise
+:::single-choice{#whatis-versus-type}
+`whatis deploy` finds no manual description. Which command checks whether Bash resolves `deploy` as an alias, function, builtin, or executable?
 
-Practice makes perfect! While there isn't a specific lab for the `whatis` command, understanding how to find information about commands and files is crucial. Here are some hands-on labs to reinforce your understanding of locating commands and files in Linux:
+::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Changing the manual-database query does not show all of Bash's aliases, functions, builtins, and path resolution."}
+::option[`man 5 deploy`]{#manual-five-deploy explanation="This attempts to open a section 5 page. It does not determine how Bash resolves the command name."}
+::option[`type deploy`]{#resolve-deploy .correct explanation="Bash `type` reports how the current shell resolves a command name, independently of whether a manual description is installed."}
+:::
 
-1. **[Linux which Command: Command Locating](https://labex.io/labs/linux-linux-which-command-command-locating-215210)** - Practice using the `which` command to locate executable files and understand command priority in your system's PATH.
-2. **[Linux whereis Command: File and Command Finding](https://labex.io/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Learn to use `whereis` to find the binary, source, and manual pages for commands, deepening your understanding of how commands are structured.
-3. **[Discover Critical System Resources](https://labex.io/labs/linux-discover-critical-system-resources-388032)** - This challenge combines `which`, `whereis`, and `find` to help you efficiently navigate the file system and discover important system resources.
+## Summary
 
-These labs will help you apply the concepts of command and file discovery in real scenarios and build confidence with essential Linux utilities.
+You can now retrieve and interpret concise descriptions from the manual database.
 
-## Quiz Question
-
-What command can you use to see a small description of a command? Please answer in English, paying attention to lowercase.
-
-## Quiz Answer
-
-whatis
+1. Look up an exact topic with `whatis`.
+2. Read the manual section shown in parentheses.
+3. Use `man` when you need the full page.
+4. Use `apropos` when you know a keyword rather than a name.

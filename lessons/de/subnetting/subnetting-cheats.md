@@ -1,70 +1,93 @@
 ---
-index: 4
+lesson_id: "subnetting-cheats"
+course_id: "subnetting"
 lang: "de"
-title: "Subnetz-Spickzettel"
-meta_title: "Subnetz-Spickzettel - Subnetting"
-meta_description: "Meistern Sie Subnetting mit unserem Leitfaden zu binären Konvertierungs-Spickzetteln. Lernen Sie, die 128+64+32+16+8+4+2+1-Tabelle zu verwenden, um IP-Adressen schnell von Dezimal in Binär und zurück umzuwandeln. Unerlässlich für Netzwerk-Interviews und Zertifizierungen."
-meta_keywords: "subnetting, binäre Umwandlung, IP-Adresse, Netzwerk, Linux-Netzwerk, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, dezimal zu binär, Subnetz-Mathematik, Tutorial, Leitfaden"
+order_index: 4
+title: "Subnetting-Kurzverfahren"
+description: "Lerne kompakte Binär- und Blockgrößenverfahren zur Prüfung von IPv4-Subnetzberechnungen."
+meta_title: "Subnetting-Kurzverfahren – Subnetting"
+meta_description: "Beherrsche Subnetting mit kompakten Verfahren zur Binärumwandlung. Verwende die Folge 128+64+32+16+8+4+2+1, um IP-Adressen schnell zwischen Dezimal- und Binärdarstellung umzuwandeln."
+meta_keywords: "Subnetting, Binärumwandlung, IP-Adresse, Netzwerk, Linux-Vernetzung, 128+64+32+16+8+4+2+1, Dezimal zu Binär, Subnetzberechnung, Tutorial, Anleitung"
 ---
 
-## Lesson Content
+Subnetzrechner sind nützlich, doch einige wenige Binärmuster erleichtern die Prüfung ihrer Ausgabe. Diese Verfahren sind Kontrollen und kein Ersatz für die Bestätigung der tatsächlichen Vergabe- und Routingrichtlinie.
 
-In der modernen Netzwerktechnik werden Sie selten Subnetz-Mathematik von Hand durchführen, da Tools und Rechner diesen Prozess automatisieren. Das Verständnis der manuellen Umwandlung zwischen Dezimal und Binär ist jedoch entscheidend für Netzwerkinterviews, Zertifizierungsprüfungen und um ein tieferes Verständnis dafür zu entwickeln, wie die IP-Adressierung funktioniert. Diese Lektion bietet einige einfache "Spickzettel" (Cheats), die Ihnen helfen, dies zu meistern.
+## Bitwerte eines Oktetts
 
-Zuerst ist es sehr vorteilhaft, sich die Basis-2-Berechnungen einzuprägen, da sie die Grundlage der Binärmathematik bilden.
+Ein IPv4-Oktett verwendet diese Stellenwerte:
 
-- 2^1 = 2
-- 2^2 = 4
-- 2^3 = 8
-- 2^4 = 16
-- 2^5 = 32
-- 2^6 = 64
-- 2^7 = 128
-- 2^8 = 256
-
-### Die Binärkonvertierungstabelle
-
-Um Zahlen einfach umzuwandeln, verwenden wir eine Tabelle, die den Wert jedes Bits in einem 8-Bit-Oktett einer IP-Adresse darstellt.
-
-```plaintext
-1   1  1  1  1 1 1 1
-128 64 32 16 8 4 2 1
+```text
+bit:    1   1   1   1   1  1  1  1
+value: 128  64  32  16   8  4  2  1
 ```
 
-Diese Tabelle ist Ihr primäres Werkzeug. Jede Zahl entspricht der Position eines Bits. Die volle Summe, `128+64+32+16+8+4+2+1`, ergibt 255, was der höchstmögliche Wert in einem Oktett ist.
+Die Summe aller acht Werte ergibt 255. Dezimal 192 ist `128 + 64`, daher lautet seine Binärdarstellung `11000000`.
 
-### Dezimal-zu-Binär-Umwandlung
+:::single-choice{#subnet-cheats-binary-192}
+Wie lautet Dezimal 192 in achtstelliger Binärdarstellung?
 
-Lassen Sie uns die IP-Adresse `192.168.23.43` in Binär umwandeln. Wir gehen das erste Oktett, `192`, durch, um den Prozess zu demonstrieren. Wir verwenden die Werte aus unserer Tabelle: `128 64 32 16 8 4 2 1`.
+::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="Die Stellen 128 und 64 sind gesetzt, die übrigen Stellen null."}
+::option[`10101000`]{#subnet-cheats-168 explanation="Dieses Muster entspricht 168."}
+::option[`11111111`]{#subnet-cheats-255 explanation="Alle acht gesetzten Stellen ergeben 255."}
+:::
 
-1. Beginnen Sie mit der Zahl `192`. Können Sie 128 davon subtrahieren? Ja (192 - 128 = 64). Das erste Bit ist also **1**.
-2. Unsere neue Zahl ist `64`. Können Sie den nächsten Wert, 64, davon subtrahieren? Ja (64 - 64 = 0). Das zweite Bit ist **1**.
-3. Unser Restbetrag ist nun `0`. Wir können 32, 16, 8, 4, 2 oder 1 nicht subtrahieren. Daher sind die restlichen Bits alle **0**.
+## Häufige Masken innerhalb eines Oktetts
 
-Die Binärform von 192 ist `11000000`. Sie können diese gleiche Subtraktionsmethode auf die anderen Oktette anwenden.
+Zusammenhängende Präfixbits ergeben eine kurze Maskenfolge:
 
-### Binär-zu-Dezimal-Umwandlung
+```text
+bits set: 0    1    2    3    4    5    6    7    8
+decimal:  0  128  192  224  240  248  252  254  255
+```
 
-Um von Binär zurück zu Dezimal zu konvertieren, addieren Sie einfach die Werte aus der Tabelle, bei denen eine `1` in der Binärzahl erscheint. Wandeln wir `11000000` zurück in Dezimal um.
+`/19` enthält beispielsweise 16 vollständige Präfixbits sowie drei Bits im dritten Oktett. Die Maske lautet daher `255.255.224.0`.
 
-Wenn wir die Tabelle `128 64 32 16 8 4 2 1` betrachten, sind die ersten beiden Bits `1`. Das bedeutet, wir addieren die ersten beiden Werte:
+:::single-choice{#subnet-cheats-prefix-19}
+Welche Maske entspricht IPv4-`/19`?
 
-`128 + 64 = 192`
+::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Sechzehn vollständige Bits plus drei weitere ergeben 255, 255 und 224."}
+::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="Eine Präfixlänge ist eine Bitanzahl und kein dezimales Maskenoktett."}
+::option[`255.255.255.19`]{#subnet-cheats-tail-19 explanation="Dies ist keine zusammenhängende 19-Bit-Maske."}
+:::
 
-Da alle anderen Bits `0` sind, addieren wir keine weiteren Werte. Die Formel `128 + 64 + 0 + 0 + 0 + 0 + 0 + 0` ergibt 192. So einfach ist das!
+## Blockgrößen
 
-## Exercise
+Subtrahiere im ersten Maskenoktett, das nicht 255 ist, den Maskenwert von 256, um die Subnetzschrittweite zu erhalten. Eine `/27`-Maske endet auf 224 und ergibt die Blockgröße `256 - 224 = 32`. Die Grenzen im letzten Oktett sind daher 0, 32, 64, 96, 128, 160, 192 und 224.
 
-Übung macht den Meister! Obwohl Subnetz-Mathematik in der realen Welt oft automatisiert wird, ist das Verständnis der zugrunde liegenden Binärkonvertierungen für Interviews und ein tieferes Verständnis von Netzwerken entscheidend. Hier ist ein praktisches Labor, um Ihr Verständnis zu festigen:
+Die Adresse `198.51.100.77/27` liegt im Block von 64 bis 95.
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, indem Sie Python in einem Linux-Terminal verwenden, um IP-Adressen umzuwandeln, CIDR-Masken zu übersetzen und Netzwerkdetails zu berechnen.
+:::single-choice{#subnet-cheats-77-network}
+Wie lautet die Netzwerkadresse für `198.51.100.77/27`?
 
-Dieses Labor hilft Ihnen, die Konzepte der Binärkonvertierung und des Subnetting in einem praktischen Szenario anzuwenden und Vertrauen in die Grundlagen der Netzwerkadressierung aufzubauen.
+::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="Dieser Block umfasst im letzten Oktett die Werte 32 bis 63."}
+::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="Die Adresse enthält Hostbits und ist keine Blockgrenze."}
+::option[`198.51.100.64`]{#subnet-cheats-network-64 .correct explanation="Der bei 64 beginnende `/27`-Block umfasst 64 bis 95."}
+:::
 
-## Quiz Question
+## Ein beliebiges Oktett umwandeln
 
-Was ist die Binärkonvertierung von 123? Bitte geben Sie die Antwort in englischen Zeichen (Zahlen) an.
+Wähle zur Umwandlung von Dezimal 123 jeweils die größten verbleibenden Werte, ohne die Zahl zu überschreiten:
 
-## Quiz Answer
+```text
+123 = 64 + 32 + 16 + 8 + 2 + 1
+    = 01111011
+```
 
-01111011
+Wandle zurück, indem du nur die Stellenwerte addierst, deren Bits eins sind. Bewahre bei der Arbeit innerhalb eines IPv4-Oktetts stets alle acht Positionen.
+
+:::single-choice{#subnet-cheats-binary-123}
+Welcher Acht-Bit-Wert entspricht Dezimal 123?
+
+::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="Der Zahlenwert ist ähnlich, doch die Oktettdarstellung muss acht Positionen bewahren."}
+::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="Die gesetzten Stellen ergeben 64 + 32 + 16 + 8 + 2 + 1."}
+::option[`01111100`]{#subnet-cheats-124 explanation="Dieses Muster setzt die 4er-Stelle statt 2 und 1 und ergibt 124."}
+:::
+
+## Zusammenfassung
+
+Du kannst häufige IPv4-Berechnungen nun mit kompakten Binärmustern prüfen.
+
+1. Verwende die acht Oktettstellenwerte von 128 bis 1.
+2. Merke dir die Folge zusammenhängender Teiloktettmasken.
+3. Leite die Blockgröße ab, indem du die Teilmaske von 256 abziehst.
+4. Bewahre bei der Umwandlung einzelner Oktette acht Bits.

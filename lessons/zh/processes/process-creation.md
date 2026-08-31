@@ -1,48 +1,91 @@
 ---
-index: 4
+lesson_id: "process-creation"
+course_id: "processes"
 lang: "zh"
+order_index: 4
 title: "进程创建"
+description: "学习 fork、exec、PID 和父进程关系如何参与 Linux 进程创建。"
 meta_title: "进程创建 - 进程管理"
 meta_description: "探索 Linux 中进程创建的基础知识。本指南涵盖 fork 和 execve 系统调用、父/子关系（PID 和 PPID）以及 init 进程的作用。了解如何在 Linux 中创建进程并理解操作系统中进程创建的核心概念。"
 meta_keywords: "linux 进程创建，linux 进程创建，在 linux 中创建进程，操作系统进程创建，进程创建，fork, execve, PID, PPID, init 进程，Linux 进程"
 ---
 
-## Lesson Content
+Linux 进程会形成父子关系。Shell 通常先创建子进程，再安排该子进程执行所请求的程序，从而启动外部命令。经典解释会把这项工作分成 `fork` 和 `exec` 操作。
 
-本课程探讨了在 Linux 系统中启动新进程的基本概念。理解这一机制有助于深入了解操作系统的内部工作原理。
+## 使用 `fork` 创建子进程
 
-### Fork 和 Exec 模型
+`fork()` 系统调用会根据调用进程创建子进程。父进程和子进程都会从 `fork` 的返回点继续，但获得不同的返回值和不同的 PID。
 
-**在 Linux 中创建进程**的主要机制是现有进程使用 `fork` 系统调用克隆自身。`fork` 调用会创建一个几乎完全相同的子进程。这个新的子进程会获得自己唯一的进程 ID (PID)，而原始进程则成为其父进程，由父进程 ID (**PPID**) 标识。
+子进程获得逻辑上独立的进程状态。Linux 最初可以使用写时复制共享物理内存页面，只有某个进程修改页面时才复制。打开的文件描述符会被继承，并引用相同的底层打开文件描述，因此文件偏移等细节可能继续共享。
 
-分叉后，子进程可以继续运行与父进程相同的程序，或者更常见的是，使用 `execve` 系统调用来加载和运行一个新程序。`execve` 调用有效地用新程序的内存空间替换了进程的内存空间，从而允许开始执行不同的任务。这种两步“fork-exec”模型是**如何在 Linux 中创建进程**的基石。
+:::single-choice{#process-creation-fork-result}
+成功的 `fork()` 会创建什么？
 
-### 观察父子关系
+::option[只在同一进程内创建替代程序。]{#process-creation-fork-replacement explanation="替换当前程序映像是 `exec` 操作的职责。"}
+::option[拥有新 PID 的子进程。]{#process-creation-fork-child .correct explanation="`fork()` 会建立独立的子进程和父子关系。"}
+::option[立即永久复制每一个物理内存页。]{#process-creation-fork-full-copy explanation="Linux 通常使用写时复制，而不是立即复制所有物理页面。"}
+:::
 
-我们可以使用 `ps` 命令来观察这种父子关系：
+## 使用 `execve` 替换程序
+
+`execve()` 调用会把新程序加载到调用进程中。成功时，它会替换进程映像，不会返回旧程序。PID 保持不变，因为 `execve()` 不会创建新进程。
+
+因此，许多 shell 命令遵循 fork-exec 模式：
+
+1. Shell 创建子进程。
+2. 子进程准备重定向和其他执行状态。
+3. 子进程执行所请求的程序。
+4. Shell 根据前台或后台执行选择等待或继续。
+
+库和应用程序可以提供 `posix_spawn()` 等更高层接口，Linux 也有 `clone()` 等其他原语。熟悉的 fork-exec 模型仍然有用，但不是唯一可能的接口。
+
+:::single-choice{#process-creation-exec-pid}
+成功执行 `execve()` 后，进程的 PID 会发生什么？
+
+::option[变得与父进程 PID 相同。]{#process-creation-exec-parent-pid explanation="父进程和子进程仍然保留不同的进程 ID。"}
+::option[程序映像被替换，但 PID 保持不变。]{#process-creation-exec-same-pid .correct explanation="`execve()` 会转换调用进程，而不是创建另一个进程。"}
+::option[在新程序启动前被移除。]{#process-creation-exec-pid-removed explanation="现有进程会以原 PID 继续运行新的代码、数据、栈和相关程序状态。"}
+:::
+
+## 检查父进程和子进程 ID
+
+`PID` 标识进程，`PPID` 标识其父进程。明确请求这些字段：
 
 ```bash
-ps l
+$ ps -o pid,ppid,stat,cmd
 ```
 
-`l` 选项提供“长格式”视图，显示有关运行进程的更多详细信息。您会看到一个标记为 **PPID** 的列，代表父进程 ID。查看您当前 shell（例如 `bash`）的进程。当您运行 `ps l` 命令时，您会注意到您的 shell 进程的 **PID** 与 `ps l` 进程的 **PPID** 相匹配。这是因为您的 shell 分叉了自身以创建 `ps` 进程。
+如果 shell 启动 `ps`，该 shell 的 PID 通常会显示为 `ps` 进程的 `PPID`。时机很重要：短生命周期进程可能在单独的观察命令捕获之前就已经退出。
 
-### Init 进程
+:::single-choice{#process-creation-ppid}
+进程列表中的 `PPID` 表示什么？
 
-如果每个进程都是另一个进程的子进程，那么必然存在一个最初的祖先。这就是 `init` 进程。系统启动时，内核会创建 `init` 作为第一个用户空间进程，并为其分配 PID 1。`init` 进程是所有其他进程的最终父进程，并以 root 权限运行以管理系统。在系统关闭之前，它不能被终止，并且负责启动许多维持系统运行的服务。
+::option[之前曾分配给该进程的 PID。]{#process-creation-previous-pid explanation="PID 可以重复使用，但 `PPID` 不记录标识符历史。"}
+::option[进程的调度优先级标识符。]{#process-creation-priority-id explanation="调度优先级由 priority 或 nice 值等其他字段表示。"}
+::option[父进程的进程 ID。]{#process-creation-parent-pid .correct explanation="PPID 记录进程当前的父进程关系。"}
+:::
 
-## Exercise
+## PID 1 和重新指定父进程
 
-熟能生巧！这是一个实践实验室，旨在巩固您对 Linux 进程及其管理的理解：
+内核会以 PID 1 启动第一个用户空间进程。根据系统，它可能是 `systemd`、其他 init 实现，或容器/PID 命名空间中的小型 init。PID 1 会启动并监督部分用户空间环境，还承担特殊的信号和孤儿进程回收职责。
 
-- **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 在此实验室中，您将学习管理和监控 Linux 系统上进程的基本技能。您将探索如何与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，使用 `renice` 调整优先级，以及使用 `kill` 终止它们。
+父进程先于子进程退出时，子进程会被重新指定给适当的 subreaper，或其 PID 命名空间中的 init 进程。它不必仅因原父进程结束而终止。
 
-此实验室将帮助您在实际场景中应用进程 ID、父进程 ID 和进程监控的概念，并增强对进程管理的信心。
+:::single-choice{#process-creation-pid-one}
+关于 PID 1，哪个说法准确？
 
-## Quiz Question
+::option[它必须始终是可执行名称恰好为 `init` 的程序。]{#process-creation-pid-one-name explanation="具体实现可以是 `systemd`、其他 init 或容器特定程序。"}
+::option[它是直接创建当前每个运行进程的父进程。]{#process-creation-pid-one-direct explanation="大多数进程是经过许多代中间父进程创建的。"}
+::option[它是其 PID 命名空间中的第一个进程，并承担类似 init 的职责。]{#process-creation-pid-one-init .correct explanation="PID 1 在一个 PID 命名空间中承担用户空间进程监督和回收的核心职责。"}
+:::
 
-哪个系统调用创建了一个新进程？（请用一个单独的小写英文字母回答。）
+[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)实验让你可以在运行前台和后台命令时观察父进程与子进程 ID。
 
-## Quiz Answer
+## 总结
 
-fork
+现在，你可以追踪经典的 Linux 进程创建顺序。
+
+1. 使用 `fork()` 创建具有不同 PID 的子进程。
+2. 使用 `execve()` 替换进程映像而不改变 PID。
+3. 读取 PID 和 PPID 以识别父子关系。
+4. 认识 PID 1 和 subreaper 是重新指定父进程后的子进程去向。

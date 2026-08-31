@@ -1,63 +1,80 @@
 ---
-index: 10
+lesson_id: "copy-cp-command"
+course_id: "command-line"
 lang: "de"
+order_index: 10
 title: "cp (Kopieren)"
+description: "Lerne, Dateien und Verzeichnisbäume zu kopieren und dabei Überschreibungen sowie erhaltene Attribute zu steuern."
 meta_title: "cp (Kopieren) - Kommandozeile"
 meta_description: "Lernen Sie den Linux-Befehl cp mit Beispielen zum Kopieren von Dateien, Verzeichnissen, mehreren Dateien, Wildcards, Backups und Optionen wie cp -r, cp -i und cp -p."
 meta_keywords: "linux cp befehl, cp befehl, dateien kopieren linux, cp -r, cp -i, cp -p, cp -a, cp -u, rekursives kopieren, linux wildcards"
 ---
 
-## Lesson Content
-
-Der Befehl `cp` ist das Standardwerkzeug zum Kopieren von Dateien und Verzeichnissen unter Linux. Er erstellt eine neue Kopie und lässt die Originaldatei unverändert. Die Grundsyntax lautet:
+Der Befehl `cp` kopiert Dateien und Verzeichnisse, während die Quelle erhalten bleibt. Seine grundlegende Syntax lautet:
 
 ```bash
 cp [OPTIONS] SOURCE DESTINATION
 ```
 
-Sie können eine Datei in eine andere Datei kopieren, eine oder mehrere Dateien in ein Verzeichnis oder mit der richtigen Option einen gesamten Verzeichnisbaum.
+Du kannst eine Datei an einen anderen Pfad kopieren, mehrere Dateien in ein Verzeichnis übernehmen oder einen vollständigen Verzeichnisbaum rekursiv kopieren.
 
-### Grundlegendes Kopieren von Dateien
+## Eine Datei kopieren
 
-Um eine Datei zu kopieren, geben Sie die Quelldatei und das Zielverzeichnis oder den Zielpfad an.
+Gib zuerst die Quelle und danach das Ziel an:
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/cooldocs
 ```
 
-In diesem Beispiel ist `mycoolfile` die Quelldatei und `/home/pete/Documents/cooldocs` das Zielverzeichnis. Sie können auch eine Datei kopieren und ihr im Ziel einen neuen Namen geben.
+Ist `/home/pete/Documents/cooldocs` ein vorhandenes Verzeichnis, wird darin eine Kopie namens `mycoolfile` erstellt. Stattdessen kannst du einen neuen Zieldateinamen angeben:
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 ```
 
-Wenn das Ziel ein vorhandenes Verzeichnis ist, behält die kopierte Datei ihren ursprünglichen Namen. Wenn das Ziel ein Dateiname ist, erstellt `cp` eine Kopie mit diesem neuen Namen.
+Im zweiten Beispiel erhält die Kopie den Namen `mycoolfile_backup`.
 
-### Mehrere Dateien in ein Verzeichnis kopieren
+:::single-choice{#copy-file-under-new-name}
+Welcher Befehl kopiert `draft.txt` nach `final.txt`, während `draft.txt` erhalten bleibt?
 
-Um mehrere Dateien in dasselbe Verzeichnis zu kopieren, listen Sie zuerst alle Quellen auf und setzen das Zielverzeichnis an das Ende.
+::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` benennt den ursprünglichen Pfad um oder verschiebt ihn. Die verlangte Quelle bleibt dabei nicht als Kopie erhalten."}
+::option[`cp final.txt draft.txt`]{#copy-reversed explanation="Hier sind Quelle und Ziel vertauscht. Der Befehl würde `final.txt` nach `draft.txt` kopieren."}
+::option[`cp draft.txt final.txt`]{#copy-draft .correct explanation="`cp` liest `draft.txt` und erstellt oder ersetzt `final.txt`, während die Quelldatei erhalten bleibt."}
+:::
+
+## Mehrere Dateien in ein Verzeichnis kopieren
+
+Führe zuerst alle Quellen auf und setze das Zielverzeichnis ans Ende:
 
 ```bash
 $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 ```
 
-Das letzte Argument muss ein Verzeichnis sein, wenn Sie mehr als eine Quelle angeben.
+Bei mehreren Quellen muss das letzte Argument ein Verzeichnis sein.
 
-### Verwendung von Wildcards für Massenkopien
+:::single-choice{#copy-multiple-files}
+Welcher Befehl kopiert `a.txt` und `b.txt` in das vorhandene Verzeichnis `archive/`?
 
-Wildcards sind spezielle Zeichen, die Ihnen helfen, mehrere Dateien anhand von Mustern auszuwählen und bieten große Flexibilität.
+::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Bei dieser Form von `cp` gehört das Zielverzeichnis ans Ende. An erster Stelle werden die Operanden anders interpretiert."}
+::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Bei mehreren Quellen behandelt `cp` das letzte vorhandene Verzeichnis als gemeinsames Ziel aller vorherigen Dateien."}
+::option[`cp a.txt archive/ b.txt`]{#destination-middle explanation="Alle Quelloperanden müssen vor dem Ziel stehen. Das vorhandene Verzeichnis gehört an die letzte Stelle."}
+:::
+
+## Dateien mit Platzhaltern auswählen
+
+Die Shell kann Platzhaltermuster zu mehreren Quellpfaden erweitern:
 
 - `*`: Passt auf eine beliebige Zeichenfolge.
-- `?`: Passt auf genau ein einzelnes Zeichen.
-- `[]`: Passt auf eines der in den Klammern eingeschlossenen Zeichen.
+- `?`: Passt auf genau ein Zeichen.
+- `[]`: Passt auf eines der in den Klammern enthaltenen Zeichen.
 
-Zum Beispiel, um alle JPEG-Bilder von Ihrem aktuellen Ort in das Verzeichnis `Pictures` zu kopieren:
+So kopierst du beispielsweise alle Namen im aktuellen Verzeichnis, die auf `.jpg` enden, nach `Pictures`:
 
 ```bash
 $ cp *.jpg /home/pete/Pictures
 ```
 
-Sie können die passenden Dateien vor dem Kopieren anzeigen lassen:
+Prüfe die Treffer vor einem umfangreichen Kopiervorgang, besonders wenn das Ziel wichtige Daten enthält:
 
 ```bash
 $ ls *.jpg
@@ -65,111 +82,99 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-### Verzeichnisse rekursiv kopieren
+:::single-choice{#preview-copy-pattern}
+Welcher Befehl zeigt vor dem Kopieren die nicht versteckten Namen an, auf die `*.jpg` derzeit passt?
 
-Wenn Sie versuchen, ein Verzeichnis mit `cp` ohne Optionen zu kopieren, erhalten Sie einen Fehler. Um ein Verzeichnis und seinen gesamten Inhalt, einschließlich Unterverzeichnissen, zu kopieren, müssen Sie die Option `-r` (rekursiv) verwenden.
+::option[`cp *.jpg`]{#copy-no-destination explanation="Dieser Befehl versucht bei mehreren Treffern ohne eindeutiges Ziel zu kopieren. Er dient nicht als Vorschau."}
+::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="Die Shell erweitert für `ls` dasselbe Muster, sodass du die passenden Namen vor dem Kopieren prüfen kannst."}
+::option[`file '*.jpg'`]{#quoted-jpg-pattern explanation="Die Anführungszeichen verhindern die Erweiterung des Platzhalters. `file` erhält daher die wörtlichen Zeichen `*.jpg`, nicht die üblichen Treffer."}
+:::
+
+## Verzeichnisbäume kopieren
+
+Zum Kopieren eines Verzeichnisses samt aller darunterliegenden Inhalte ist ein rekursiver Vorgang erforderlich. Verwende `-r` oder `-R`:
 
 ```bash
 $ cp -r Pumpkin/ /home/pete/Documents
 ```
 
-Dieser Befehl kopiert das Verzeichnis `Pumpkin` und alles darin in Ihr Verzeichnis `Documents`.
+Damit werden das Verzeichnis `Pumpkin` und alle seine Nachkommen nach `Documents` kopiert.
 
-Sie können auch `-R` sehen, was auf typischen Linux-Systemen denselben rekursiven Zweck erfüllt:
+Auch das große `-R` fordert rekursives Kopieren an:
 
 ```bash
 $ cp -R website /home/pete/backups/
 ```
 
-### Umgang mit Dateiüberschreibungen
+Der Archivmodus `-a` eignet sich für sicherungsähnliche Kopien. Er kopiert rekursiv und erhält Links sowie zahlreiche Dateiattribute:
 
-Standardmäßig überschreibt `cp` eine Datei im Ziel, wenn sie denselben Namen hat. Um versehentlichen Datenverlust zu vermeiden, verwenden Sie die Option `-i` (interaktiv), die vor dem Überschreiben um Bestätigung bittet.
+```bash
+$ cp -a project/ project-backup/
+```
+
+:::single-choice{#archive-directory-tree}
+Du möchtest `project/` rekursiv und sicherungsähnlich kopieren und dabei Links sowie zahlreiche Attribute erhalten. Welcher Befehl passt dazu?
+
+::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` erhält ausgewählte Attribute, macht das Kopieren eines Verzeichnisses für sich allein aber nicht rekursiv."}
+::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` steuert anhand des Zielzustands, wann Dateien kopiert werden. Rekursives Kopieren wird dadurch allein nicht aktiviert."}
+::option[`cp -a project/ project-backup/`]{#archive-project .correct explanation="Der Archivmodus kopiert rekursiv und erhält Links sowie zahlreiche Attribute für ein sicherungsähnliches Ergebnis."}
+:::
+
+## Überschreibungen steuern
+
+Standardmäßig kann `cp` eine vorhandene Zieldatei ersetzen. Mit `-i` lässt du vor dem Überschreiben nachfragen:
 
 ```bash
 $ cp -i mycoolfile /home/pete/Pictures
 cp: overwrite '/home/pete/Pictures/mycoolfile'? n
 ```
 
-Umgekehrt, wenn Sie eine Überschreibung ohne Nachfrage erzwingen möchten, verwenden Sie die Option `-f`. Dies ist nützlich in Skripten, in denen keine Benutzerinteraktion möglich ist.
-
-```bash
-$ cp -f mycoolfile /home/pete/Pictures
-```
-
-Eine weitere nützliche Sicherheitsoption ist `-n`, was „no clobber“ bedeutet. Sie verhindert das Überschreiben einer bereits existierenden Zieldatei.
+Verwende `-n`, wenn ein vorhandenes Ziel nicht überschrieben werden soll:
 
 ```bash
 $ cp -n mycoolfile /home/pete/Pictures
 ```
 
-### Dateiattribute mit -p erhalten
+Die Option `-f` weist GNU `cp` an, ein vorhandenes Ziel zu entfernen und den Kopiervorgang erneut zu versuchen, falls die Datei nicht zum Schreiben geöffnet werden kann. Sie ersetzt keine sorgfältige Zielprüfung. Auch Shell-Aliase können Optionen wie `-i` ergänzen; untersuche eine unerwartete Nachfrage, statt von einer bestimmten Konfiguration auszugehen.
 
-Beim Kopieren einer Datei werden deren Metadaten wie Änderungszeit und Eigentümer normalerweise aktualisiert. Um diese ursprünglichen Attribute zu erhalten, verwenden Sie die Option `-p`.
+:::single-choice{#skip-existing-destination}
+Welcher Befehl kopiert `report.txt` nach `backup/`, überspringt aber ein bereits vorhandenes Ziel gleichen Namens?
 
-Die Option `cp -p` ist besonders nützlich für Backups oder beim Migrieren von Dateien, bei denen die Erhaltung der Zeitstempel wichtig ist.
+::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="Die Option `-n` verhindert, dass `cp` eine vorhandene Zieldatei überschreibt."}
+::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` fragt vor dem Überschreiben nach, sodass das Ergebnis von der Antwort abhängt. Vorhandene Ziele werden nicht automatisch immer übersprungen."}
+::option[`cp -f report.txt backup/`]{#force-report explanation="`-f` kann helfen, ein zunächst nicht schreibbares Ziel zu ersetzen. Die Option schützt vorhandene Dateien nicht vor dem Überschreiben."}
+:::
+
+## Dateien erhalten oder auffrischen
+
+Mit `-p` erhältst du den Modus, die Eigentümerschaft soweit zulässig und die Zeitstempel der Quelldatei:
 
 ```bash
 $ cp -p mycoolfile /home/pete/backups/
 ```
 
-Dies kopiert `mycoolfile` und erhält dabei Modus, Eigentümer (sofern erlaubt) und Zeitstempel.
-
-### Archivkopien mit -a
-
-Die Option `-a` steht für Archiv. Sie wird häufig für Backup-ähnliche Verzeichnis-Kopien verwendet, da sie viele Attribute erhält und rekursiv kopiert.
-
-```bash
-$ cp -a project/ project-backup/
-```
-
-Für viele alltägliche Backups ist `cp -a` bequemer als das manuelle Kombinieren mehrerer Optionen.
-
-### Nur neuere Dateien mit -u kopieren
-
-Die Option `-u` kopiert nur, wenn die Quelldatei neuer ist als die Zieldatei oder wenn die Zieldatei nicht existiert.
+Mit `-u` kopierst du eine Quelle nur dann, wenn das Ziel fehlt oder die Quelle neuer ist:
 
 ```bash
 $ cp -u *.txt /home/pete/Documents/
 ```
 
-Dies ist nützlich, wenn Sie einen Ordner aktualisieren möchten, ohne bereits aktuelle Dateien neu zu schreiben.
+Weitere gebräuchliche Optionen sind:
 
-### Häufige cp-Optionen
+- `-f`: Versucht bei Bedarf, das Ziel vor dem erneuten Kopieren zu entfernen.
+- `-v`: Zeigt jede Datei beim Kopieren an.
 
-Hier sind die Optionen, die Sie am häufigsten verwenden werden:
+Zum praktischen Üben eignen sich diese Labs:
 
-- `-r` oder `-R`: Verzeichnisse rekursiv kopieren.
-- `-i`: Vor dem Überschreiben einer Datei nachfragen.
-- `-f`: Überschreiben erzwingen, indem das Ziel bei Bedarf zuerst entfernt wird.
-- `-n`: Keine vorhandenen Dateien überschreiben.
-- `-p`: Modus, Eigentümer (wo möglich) und Zeitstempel erhalten.
-- `-a`: Archivmodus, nützlich zum Erhalten von Verzeichnisbäumen.
-- `-u`: Nur kopieren, wenn die Quelle neuer ist als das Ziel.
-- `-v`: Zeigt jede Datei während des Kopiervorgangs an.
+1. **[Linux cp Command: File Copying](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)** – Übe die grundlegende Verwendung, rekursives Kopieren, das Bewahren von Attributen und den Einsatz von Platzhaltern für Dateien und Verzeichnisse.
+2. **[Organizing Files and Directories](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** – Organisiere mit `cp`, `mv` und `rm` eine Projektstruktur, verschiebe Dateien und entferne nicht mehr benötigte Verzeichnisse.
 
-### Häufige Fragen
+## Zusammenfassung
 
-**Warum hat cp meine Datei überschrieben?** Standardmäßig ersetzt `cp` eine Zieldatei mit demselben Namen. Verwenden Sie `cp -i`, um zuerst zu fragen, oder `cp -n`, um Überschreiben zu vermeiden.
+Du kannst nun Dateien und Verzeichnisbäume kopieren und den Umgang mit Zielen gezielt steuern.
 
-**Warum kann cp kein Verzeichnis kopieren?** Ein Verzeichnis erfordert rekursives Kopieren. Verwenden Sie `cp -r source-dir destination-dir`.
-
-**Was ist der Unterschied zwischen cp und mv?** `cp` erstellt eine Kopie und behält das Original. `mv` verschiebt oder benennt das Original um.
-
-**Sollte ich für Backups cp -r oder cp -a verwenden?** Verwenden Sie `cp -r` für eine einfache rekursive Kopie. Verwenden Sie `cp -a`, wenn Sie eine Backup-ähnliche Kopie möchten, die mehr Dateiattribute erhält.
-
-## Exercise
-
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis für das Kopieren von Dateien und Verzeichnissen unter Linux zu vertiefen:
-
-1. **[Linux cp Command: File Copying](https://labex.io/de/labs/linux-linux-cp-command-file-copying-209744)** – Üben Sie die Grundnutzung, erweiterte Optionen wie rekursives Kopieren, Erhaltung von Attributen und die Verwendung von Wildcards, um Dateien und Verzeichnisse effizient zu kopieren.
-2. **[Organizing Files and Directories](https://labex.io/de/labs/linux-organizing-files-and-directories-387877)** – Üben Sie wichtige Linux-Dateiverwaltungsfähigkeiten, indem Sie die Befehle `cp`, `mv` und `rm` verwenden, um eine Projektstruktur zu organisieren, Dateien zu verschieben und unnötige Verzeichnisse zu bereinigen.
-
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen im Umgang mit Datei-Kopieren und -Verwaltung unter Linux zu gewinnen.
-
-## Quiz Question
-
-Welchen Parameter müssen Sie angeben, um ein Verzeichnis zu kopieren?
-
-## Quiz Answer
-
--r
+1. Setze Quelloperanden vor das Ziel.
+2. Prüfe Platzhaltertreffer vor einem umfangreichen Kopiervorgang.
+3. Kopiere Verzeichnisbäume rekursiv oder im Archivmodus.
+4. Bestätige, überspringe oder ersetze vorhandene Ziele bewusst.
+5. Erhalte Attribute oder kopiere bei Bedarf nur neuere Quellen.

@@ -1,68 +1,93 @@
 ---
-index: 7
+lesson_id: "cat-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 7
 title: "cat"
+description: "`cat` コマンドでファイル内容を安全に表示、連結、リダイレクトする方法を学びます。"
 meta_title: "cat - コマンドライン"
 meta_description: "Linuxのcatコマンドを学び、ファイルの表示、ファイルの連結、行番号付け、ファイル作成、安全なリダイレクションの使い方を例とともに解説します。"
 meta_keywords: "linux cat コマンド, cat コマンド, linux ファイル表示, ファイル連結, cat -n, cat -b, cat リダイレクション, linux cat"
 ---
 
-## Lesson Content
+ファイルを識別する方法を学んだら、次はその内容を読みましょう。`cat` コマンドはファイルを表示し、その内容を結合します。名前は「concatenate」の略です。
 
-ファイルシステムのナビゲーションを学んだ後は、ファイルの内容を表示する方法を学びましょう。基本的で多用途なツールが `cat` コマンドです。`cat` は "concatenate"（連結）の略で、ファイルをつなげる機能を持つことを示しています。
+## ファイル内容を表示する
 
-### ファイル内容の表示
-
-`cat` コマンドの最も基本的な使い方は、単一のファイルの内容を端末に直接表示することです。
+`cat` の最も簡単な使い方は、ファイルを端末へ直接表示することです。
 
 ```bash
 $ cat myfile.txt
 ```
 
-このコマンドは `myfile.txt` の内容全体を画面に表示します。短い設定ファイルやテキストの断片には最適ですが、大きなファイルの表示には向いていません。テキストが非常に速く流れてしまうためです。大きなファイルに適したツールは後のレッスンで扱います。
+コマンドはファイル全体を標準出力へ書き込みます。短いテキストには適していますが、長いファイルは速すぎて画面から流れ去ることがあります。
 
-### ファイルの連結
+:::single-choice{#display-short-file}
+`myfile.txt` の全内容を端末へ表示するコマンドはどれですか？
 
-名前の通り、`cat` は複数のファイルを連結し、その結合された出力を表示できます。指定された順にファイルを読み込み、順番に表示します。
+::option[`file myfile.txt`]{#classify-myfile explanation="`file` はファイルの種類を推定して報告し、保存されたテキスト全体は表示しません。"}
+::option[`touch myfile.txt`]{#update-myfile explanation="`touch` はタイムスタンプを更新するか、存在しないファイルを作り、内容は表示しません。"}
+::option[`cat myfile.txt`]{#display-myfile .correct explanation="`cat` は `myfile.txt` を読み、その内容を標準出力へ書き込みます。ここでは標準出力が端末です。"}
+:::
+
+## ファイルを連結する
+
+`cat` に複数のファイルを渡すと、オペランドの順に読み、その内容を続けて書き込みます。
 
 ```bash
 $ cat dogfile birdfile
 ```
 
-このコマンドはまず `dogfile` の内容を表示し、その直後に `birdfile` の内容を表示します。
-
-結合した出力を新しいファイルに保存するには、リダイレクションを使います。
+`dogfile` が先、`birdfile` が後に表示されます。結合した出力を新しいファイルへ保存するには、`>` で標準出力をリダイレクトします。
 
 ```bash
 $ cat dogfile birdfile > animals
 ```
 
-### リダイレクションによるファイル作成
+シェルは `cat` を実行する前に `animals` を作成または切り詰め、そこへ結合した出力を送ります。入力ファイルの 1 つを出力先にすると、`cat` が読む前に空になる可能性があるため、使用しないでください。
 
-`cat` と出力リダイレクション演算子（`>`）を使って新しいファイルを作成することもできます。これは端末から直接テキストを書き込む簡単な方法です。
+:::single-choice{#combine-files-in-order}
+`part1` に続けて `part2` を、新規または置換される `whole` ファイルへ書き込むコマンドはどれですか？
+
+::option[`cat whole > part1 part2`]{#reverse-redirection explanation="リダイレクト先は 1 つで、そのほかの単語は `cat` のオペランドになります。要求された入出力順を表しません。"}
+::option[`cat part1 part2 > whole`]{#ordered-inputs .correct explanation="`cat` は一覧の順に 2 ファイルを出力し、`>` が結合出力を `whole` へリダイレクトします。"}
+::option[`cat part2 part1 > whole`]{#reverse-inputs explanation="同じ 2 入力を `whole` へ書きますが、`part1` より先に `part2` を読みます。オペランドの順序が出力順を制御します。"}
+:::
+
+## 端末入力をファイルへ書き込む
+
+入力ファイルを指定しない場合、`cat` は標準入力を読みます。この動作を `>` と組み合わせ、端末から入力したテキストをファイルへ書き込めます。
 
 ```bash
 $ cat > newfile.txt
 ```
 
-このコマンドを実行した後、テキストを入力できます。新しい行で `Ctrl+D` を押すと保存して終了します。これにより、入力したテキストを含む `newfile.txt` が作成されます。既存のファイルに対して `>` を使うと完全に上書きされるので注意してください。
+コマンドの後で目的のテキストを入力します。`Ctrl+D` でファイル終端信号を送り、シェルへ戻ります。`newfile.txt` がすでに存在すると、`>` が以前の内容を切り詰めるため注意してください。
 
-上書きではなくファイルに追記したい場合は、`>>` を使います。
+既存内容を置き換えず、新しい入力を追加するには `>>` を使います。
 
 ```bash
 $ cat >> notes.txt
 ```
 
-### catコマンドのよく使うオプション
+:::single-choice{#append-terminal-input}
+既存の `notes.txt` の末尾へ追加するテキストを入力したい場合、ファイルを切り詰めずに操作を始めるコマンドはどれですか？
 
-`cat` コマンドには動作を変更するいくつかのオプションがあります。
+::option[`cat > notes.txt`]{#overwrite-notes explanation="1 つの `>` は出力先を切り詰めてから入力をリダイレクトするため、`notes.txt` の既存テキストを失います。"}
+::option[`cat >> notes.txt`]{#append-notes .correct explanation="`>>` 演算子は出力先を追記用に開き、`cat` が読むテキストを既存内容の後へ追加します。"}
+::option[`cat notes.txt > notes.txt`]{#same-input-output explanation="同じファイルを入力と `>` の出力先にすると、`cat` が読む前に切り詰められる可能性があります。安全な追記ではありません。"}
+:::
 
-- `-n`: 出力のすべての行に1から始まる行番号を付ける。
-- `-b`: 空行を除く行にだけ行番号を付ける。
-- `-s`: 連続する空行を1行にまとめる。
-- `-A`: 非表示文字、タブ、行末記号を表示する。
+## 出力を整形する
 
-例：
+いくつかのオプションで出力を確認しやすくできます。
+
+- `-n`：1 から始め、すべての出力行に番号を付ける
+- `-b`：空でない出力行だけに番号を付ける
+- `-s`：複数の空行を 1 つの空行へまとめる
+- `-A`：非表示文字、タブ、行末を表示する
+
+例を示します。
 
 ```bash
 $ cat -n script.sh
@@ -70,35 +95,41 @@ $ cat -b notes.txt
 $ cat -s messy.txt
 ```
 
-### catを使わないほうが良い場合
+:::single-choice{#number-nonempty-lines}
+`notes.txt` の空でない出力行だけに番号を付けるコマンドはどれですか？
 
-短いファイルには `cat` を使いましょう。長いファイルには `less` を使うと、スクロールや検索、終了ができて端末が文字で溢れるのを防げます。
+::option[`cat -b notes.txt`]{#number-nonblank .correct explanation="`-b` は空でない出力行に番号を付け、空行には番号を付けません。"}
+::option[`cat -n notes.txt`]{#number-all-lines explanation="`-n` は空行を含むすべての出力行に番号を付け、空でない行だけという条件を満たしません。"}
+::option[`cat -s notes.txt`]{#squeeze-blank-lines explanation="`-s` は連続する空行を 1 つに減らしますが、行番号は追加しません。"}
+:::
+
+## 長いファイル用のビューアーを選ぶ
+
+出力全体を一度に必要とする場合は `cat` を使います。長いファイルは、端末へ大量に流さずスクロール、検索、終了できる `less` の方が便利です。
 
 ```bash
 $ less /var/log/syslog
 ```
 
-### よくある質問
+:::single-choice{#choose-viewer-for-long-file}
+長いログファイルを対話的に読むのに適したコマンドはどれですか？
 
-**catは何の略ですか？** concatenate（連結）の略です。
+::option[`less /var/log/syslog`]{#page-through-log .correct explanation="`less` はスクロール、検索、制御された終了を提供し、長いファイルを対話的に読むのに適しています。"}
+::option[`cat /var/log/syslog`]{#print-entire-log explanation="`cat` はログ全体を一度に端末へ書き込み、確認前に画面から流れ去ることがあります。"}
+::option[`touch /var/log/syslog`]{#update-log-time explanation="`touch` はタイムスタンプを変え、権限が必要なことがあります。ログを読むコマンドではありません。"}
+:::
 
-**catでファイルを編集できますか？** 対話的にはできません。リダイレクションでファイルを作成または上書きはできますが、編集にはテキストエディタの方が適しています。
+ファイル内容の表示と結合を練習するには、次のハンズオンラボを利用してください。
 
-**`>` と `>>` の違いは何ですか？** `>` はファイルを上書きします。`>>` はファイルの末尾に追記します。
+1. **[Linux cat コマンド：ファイルの連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)**：`cat` でテキストファイルを表示、連結、操作する方法を学びます。
+2. **[Linux でログと設定ファイルを表示する](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)**：`cat` などでシステムログや設定ファイルを効率よく表示し、必要な情報を取り出します。
 
-## Exercise
+## まとめ
 
-練習が上達の鍵です！ファイル内容の表示を理解するための実践的なラボを紹介します：
+これで安全なリダイレクトを選びながら、`cat` でファイル内容を表示、結合できるようになりました。
 
-1. **[Linux catコマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - `cat` コマンドを使ってファイルの表示、連結、操作を学び、効率的なテキストファイル処理のコマンドラインスキルを向上させましょう。
-2. **[Linuxでのログおよび設定ファイルの表示](https://labex.io/ja/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - `cat` などのコマンドを使ってシステムログや設定ファイルを効率的に表示・ナビゲートし、重要な情報を抽出する練習をしましょう。
-
-これらのラボで実際のシナリオに概念を適用し、Linuxでのファイル内容表示に自信をつけましょう。
-
-## Quiz Question
-
-コマンドラインでファイルの内容を表示するために使うコマンドは何ですか？（答えは小文字の英単語1語で答えてください）
-
-## Quiz Answer
-
-cat
+1. 短いファイルの全内容を表示する。
+2. 選んだ順序でファイルを連結する。
+3. 出力先の置換または追記を意図的に選ぶ。
+4. 行に番号を付けるか、出力を簡略化する。
+5. 対話的な読み取りに適する場合は `less` を選ぶ。

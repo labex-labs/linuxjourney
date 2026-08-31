@@ -1,70 +1,120 @@
 ---
-index: 11
+lesson_id: "emacs-buffer-navigation"
+course_id: "advanced-text-fu"
 lang: "fr"
+order_index: 11
 title: "Navigation dans les Tampons Emacs"
+description: "Apprenez à changer et fermer des tampons Emacs, ainsi qu'à diviser, sélectionner et fermer les fenêtres d'affichage."
 meta_title: "Navigation Tampons Emacs - Maîtrise Avancée du Texte"
 meta_description: "Guide complet sur la navigation dans les tampons Emacs. Apprenez à basculer efficacement entre les tampons, diviser les fenêtres et gérer votre flux de travail avec les commandes Emacs essentielles. Maîtrisez la commande switch buffer d'Emacs et améliorez vos compétences en édition de texte."
 meta_keywords: "navigation emacs, emacs switch buffer, gestion tampons emacs, commandes emacs, C-x b, C-x k, C-x 2, éditeur de texte, linux"
 ---
 
-## Lesson Content
+Un tampon Emacs contient du texte ou un état de l'éditeur, tandis qu'une fenêtre affiche un tampon. Un tampon peut exister sans être visible, et plusieurs fenêtres peuvent afficher le même tampon. La gestion de l'un de ces objets n'entraîne pas automatiquement celle de l'autre.
 
-Dans Emacs, un "buffer" est un espace de travail temporaire où vous pouvez éditer du texte. Lorsque vous ouvrez un fichier, Emacs charge son contenu dans un buffer. Vous pouvez également avoir des buffers qui ne correspondent à aucun fichier, comme le buffer `*scratch*`. La gestion efficace de ces buffers est essentielle pour un flux de travail fluide. Maîtriser la **navigation emacs** entre les buffers accélérera considérablement votre processus d'édition.
+## Changer de tampon
 
-### Basculer entre les Buffers
+Utilisez `C-x b`, qui exécute `switch-to-buffer`, pour sélectionner par son nom le tampon affiché dans la fenêtre actuelle :
 
-Pour passer d'un buffer ouvert à un autre, vous pouvez utiliser plusieurs commandes. La commande principale pour **emacs switch buffer** vous demandera le nom du buffer que vous souhaitez ouvrir.
-
-```
-C-x b - Basculer vers un autre buffer par son nom
-C-x flèche droite - Passer au buffer suivant
-C-x flèche gauche - Passer au buffer précédent
+```text
+C-x b
 ```
 
-### Gestion des Fenêtres de Buffer
+Le minibuffer propose la complétion des noms existants. La saisie d'un nouveau nom peut créer un tampon sans fichier portant ce nom ; elle n'ouvre pas un chemin de fichier.
 
-Emacs vous permet d'afficher plusieurs buffers simultanément en divisant votre écran (ou "frame") en différentes fenêtres.
+Par défaut, `C-x Droite` exécute `next-buffer` et `C-x Gauche` exécute `previous-buffer`, ce qui fait défiler les tampons dans la fenêtre sélectionnée.
 
-```
-C-x 2 - Diviser la fenêtre actuelle verticalement
-```
+:::single-choice{#emacs-switch-buffer-key}
+Quelle séquence de touches demande le nom du tampon à afficher dans la fenêtre actuelle ?
 
-Cette commande crée deux fenêtres, l'une au-dessus de l'autre, vous permettant de voir deux buffers en même temps. Pour déplacer votre curseur entre ces fenêtres, utilisez :
+::option[`C-x C-f`]{#emacs-buffer-find-file explanation="Cette séquence demande un chemin et ouvre ce fichier, ce qui diffère du choix d'un tampon existant par son nom."}
+::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` lit un nom de tampon et affiche celui-ci dans la fenêtre sélectionnée."}
+::option[`C-x k`]{#emacs-buffer-kill explanation="Cette séquence demande quel tampon fermer au lieu d'en afficher un dans la fenêtre sélectionnée."}
+:::
 
-```
-C-x o - Passer à l'autre fenêtre
-```
+## Diviser la fenêtre sélectionnée
 
-Lorsque vous avez terminé avec une vue en écran partagé et que vous souhaitez revenir à une seule fenêtre, vous pouvez utiliser la commande suivante. Cela fait de la fenêtre actuelle la seule à l'écran.
+Utilisez `C-x 2` pour diviser la fenêtre sélectionnée en une fenêtre supérieure et une fenêtre inférieure :
 
-```
-C-x 1 - Fermer toutes les autres fenêtres
-```
-
-### Fermer un Buffer
-
-Lorsque vous avez terminé de travailler avec un fichier ou un buffer temporaire, vous pouvez le fermer pour garder votre espace de travail propre.
-
-```
-C-x k - Tuer (fermer) le buffer actuel
+```text
+C-x 2
 ```
 
-Si vous avez déjà utilisé un multiplexeur de terminal comme `screen` ou `tmux`, vous trouverez que ces commandes de gestion de buffer vous semblent très familières.
+Utilisez `C-x 3` pour la diviser en fenêtres gauche et droite :
 
-## Exercise
+```text
+C-x 3
+```
 
-Pour consolider votre compréhension de la manipulation des buffers et des fichiers texte, essayez ces laboratoires pratiques. Ils vous aideront à appliquer ces concepts dans des scénarios réels.
+La nouvelle fenêtre affiche initialement un tampon, souvent le même. Vous pouvez changer indépendamment le tampon de chaque fenêtre.
 
-1. **[Modifier des fichiers texte sous Linux avec Vim et Nano](https://labex.io/fr/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Entraînez-vous à créer, modifier, sauvegarder et naviguer dans du texte au sein des éditeurs Vim et Nano, ce qui est crucial pour travailler avec des buffers.
-2. **[Commande cat sous Linux : concaténation de fichiers](https://labex.io/fr/labs/linux-linux-cat-command-file-concatenating-210986)** - Apprenez à visualiser, concaténer et manipuler des fichiers texte, ce qui s'applique directement à la manière dont vous pourriez interagir avec le contenu d'un buffer.
-3. **[Visualiser des fichiers de logs et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser des commandes comme `cat`, `more` et `less` pour visualiser et naviguer efficacement dans des fichiers texte, simulant des scénarios réels d'examen de contenu de type buffer.
+:::single-choice{#emacs-split-side-by-side}
+Quelle séquence de touches divise la fenêtre Emacs sélectionnée en fenêtres gauche et droite ?
 
-Ces laboratoires vous aideront à gagner en confiance dans la manipulation des fichiers texte et des buffers sous Linux.
+::option[`C-x 1`]{#emacs-window-one explanation="Cette séquence supprime les autres fenêtres et fait de la fenêtre sélectionnée la seule de son cadre."}
+::option[`C-x 2`]{#emacs-window-below explanation="Cette séquence crée des fenêtres supérieure et inférieure, et non une division côte à côte."}
+::option[`C-x 3`]{#emacs-window-right .correct explanation="`split-window-right`, associé à `C-x 3`, crée des fenêtres gauche et droite."}
+:::
 
-## Quiz Question
+## Sélectionner et fermer des fenêtres
 
-Comment tuez-vous un buffer ? Veuillez répondre en utilisant la combinaison de touches exacte en anglais, en faisant attention à la casse.
+Utilisez `C-x o`, qui exécute `other-window`, pour sélectionner la fenêtre suivante :
 
-## Quiz Answer
+```text
+C-x o
+```
 
+Utilisez les commandes suivantes pour retirer des affichages de fenêtres :
+
+- `C-x 0` : supprimer la fenêtre sélectionnée ;
+- `C-x 1` : supprimer les autres fenêtres du cadre actuel.
+
+La suppression d'une fenêtre laisse normalement en vie le tampon qu'elle affichait. Vous pourrez donc le réafficher dans une autre fenêtre.
+
+:::single-choice{#emacs-select-other-window}
+Quelle séquence de touches déplace le point et le focus clavier vers une autre fenêtre Emacs ?
+
+::option[`C-x 0`]{#emacs-delete-selected-window explanation="Cette séquence supprime la fenêtre sélectionnée au lieu de déplacer le focus vers une autre."}
+::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` sélectionne à tour de rôle une autre fenêtre du cadre."}
+::option[`C-x b`]{#emacs-switch-in-window explanation="Cette séquence change le tampon affiché par la fenêtre actuelle, pas la fenêtre sélectionnée."}
+:::
+
+:::single-choice{#emacs-keep-one-window}
+Quelle séquence de touches conserve la fenêtre sélectionnée et supprime les autres fenêtres de son cadre ?
+
+::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` fait de la fenêtre sélectionnée la seule fenêtre du cadre."}
+::option[`C-x 0`]{#emacs-delete-current-window explanation="Cette séquence supprime la fenêtre sélectionnée elle-même au lieu de la conserver."}
+::option[`C-x 2`]{#emacs-add-lower-window explanation="Cette séquence ajoute une fenêtre au lieu de réduire le cadre à une seule."}
+:::
+
+## Fermer un tampon
+
+Utilisez `C-x k`, qui exécute `kill-buffer`, pour demander quel tampon retirer d'Emacs :
+
+```text
 C-x k
+```
+
+Le tampon actuel est proposé par défaut. Si un tampon associé à un fichier contient des changements non enregistrés, Emacs affiche un avertissement avant de le fermer. Lisez la demande : fermer un tampon modifié peut faire perdre des changements.
+
+Fermer un tampon diffère de supprimer une fenêtre. Emacs remplace un tampon fermé dans toutes les fenêtres qui l'affichaient, tandis que la suppression d'une fenêtre peut laisser son tampon intact.
+
+:::single-choice{#emacs-kill-buffer-key}
+Quelle séquence de touches demande quel tampon Emacs fermer ?
+
+::option[`C-x 0`]{#emacs-kill-window-only explanation="Cette séquence supprime l'affichage d'une fenêtre, mais laisse normalement le tampon en vie."}
+::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` retire le tampon choisi d'Emacs après toute confirmation requise concernant ses modifications."}
+::option[`C-x b`]{#emacs-kill-switch explanation="Cette séquence affiche un tampon nommé dans la fenêtre actuelle et ne le ferme pas."}
+:::
+
+Exercez-vous avec `*scratch*` et des tampons jetables. Avant de fermer un tampon associé à un fichier, vérifiez si son indicateur de modification signale un travail non enregistré.
+
+## Résumé
+
+Vous savez maintenant gérer ce qu'Emacs stocke et ce que chaque fenêtre affiche.
+
+1. Changer le tampon de la fenêtre sélectionnée avec `C-x b`.
+2. Diviser vers le bas avec `C-x 2` ou vers la droite avec `C-x 3`.
+3. Sélectionner une autre fenêtre avec `C-x o`.
+4. Retirer des fenêtres avec `C-x 0` ou `C-x 1`.
+5. Fermer un tampon avec `C-x k` seulement après avoir examiné les changements non enregistrés.

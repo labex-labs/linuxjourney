@@ -1,49 +1,83 @@
 ---
-index: 3
+lesson_id: "path-of-a-packet"
+course_id: "routing"
 lang: "es"
-title: "Ruta de un Paquete"
-meta_title: "Ruta de un Paquete - Enrutamiento"
-meta_description: "Explore la ruta completa de un paquete de datos que viaja dentro de una red local y a través de Internet. Aprenda cómo funcionan juntos las direcciones IP, direcciones MAC, ARP y tablas de enrutamiento para asegurar una comunicación de red exitosa en Linux."
-meta_keywords: "ruta de paquete, comunicación de red, ARP, dirección IP, dirección MAC, tabla de enrutamiento, puerta de enlace predeterminada, redes Linux, viaje de paquete"
+order_index: 3
+title: "Recorrido de un paquete"
+description: "Aprende cómo las rutas, el descubrimiento de vecinos, las tramas y los routers transportan un paquete IP a través de una trayectoria."
+meta_title: "Recorrido de un paquete - Routing"
+meta_description: "Explora el recorrido completo de los datos dentro de una red local y a través de Internet. Aprende cómo colaboran las direcciones IP, las direcciones MAC, ARP y las tablas de enrutamiento."
+meta_keywords: "recorrido de paquetes, comunicación de red, ARP, dirección IP, dirección MAC, tabla de enrutamiento, puerta de enlace predeterminada, redes Linux, viaje de paquetes"
 ---
 
-## Lesson Content
+El recorrido de un paquete es una secuencia de decisiones locales. El host de origen, cada router y el destino aplican sus propios estados de enrutamiento, vecinos, filtrado y protocolos; normalmente, ningún punto final conoce de antemano todas las decisiones internas.
 
-Comprender cómo viajan los datos a través de una red es fundamental para el networking. Este viaje, a menudo denominado **ruta del paquete**, implica un esfuerzo coordinado entre diferentes protocolos y hardware. Trazaremos la **ruta del paquete** en dos escenarios comunes: comunicación dentro de una red local y comunicación con una red externa.
+## Enviar a un destino situado en el enlace
 
-### Ruta del Paquete Dentro de una Red Local
+Para un destino cubierto por una ruta conectada, el origen selecciona una interfaz y una dirección IP de origen. Después resuelve la dirección de enlace del destino —ARP para IPv4 sobre Ethernet o descubrimiento de vecinos para IPv6— y envía una trama que transporta el paquete IP. Un conmutador puede reenviar la trama sin convertirse en un salto IP.
 
-Cuando un dispositivo envía un paquete a otro dispositivo en la misma red local, el proceso es relativamente sencillo.
+:::single-choice{#packet-path-switch-hop}
+¿Cuenta un conmutador Ethernet ordinario como salto de enrutamiento IP?
 
-1. Primero, el host de envío comprueba si la dirección IP de destino está en la misma subred comparándola con su propia dirección IP y máscara de subred.
-2. Para enviar un paquete, el host necesita cuatro piezas clave de información: una IP de origen, una IP de destino, una dirección MAC de origen y una dirección MAC de destino. Inicialmente, el host no conoce la dirección MAC del host de destino.
-3. El host utiliza el Protocolo de Resolución de Direcciones (ARP) para encontrar la información faltante. Transmite una solicitud ARP en la red local, preguntando qué dispositivo tiene la dirección IP objetivo. El dispositivo correspondiente responde con su dirección MAC.
-4. Con la dirección MAC de destino ya conocida, el paquete está completamente direccionado y puede enviarse directamente al host de destino en la red local.
+::option[No; reenvía tramas locales sin reducir el campo de saltos IP.]{#packet-path-switch-not-hop .correct explanation="Un salto enrutado se produce cuando un router procesa y reenvía el paquete IP."}
+::option[Sí; todos los conmutadores sustituyen el destino IP.]{#packet-path-switch-replaces-ip explanation="El reenvío de capa 2 normalmente no reescribe los destinos IP."}
+::option[Sí; todos los conectores de los cables también son saltos IP.]{#packet-path-cable-hop explanation="Los componentes físicos no realizan enrutamiento IP."}
+:::
 
-### Ruta del Paquete a una Red Externa
+## Enviar a través de una puerta de enlace
 
-Cuando un paquete está destinado a un dispositivo fuera de la red local, el proceso involucra routers para reenviar el paquete.
+Para un destino situado fuera del enlace, la ruta seleccionada identifica un router como siguiente salto. El destino IP sigue siendo el punto final remoto, mientras que el destino de la trama local es la dirección de enlace de la puerta de enlace. El host resuelve la puerta de enlace, no el servidor remoto, en su enlace local.
 
-1. El host de envío determina que la dirección IP de destino no está en su red local. Dado que las transmisiones ARP se limitan a la red local, el host no puede descubrir directamente la dirección MAC del destino final.
-2. El host consulta su tabla de enrutamiento. Como no hay una ruta específica para la IP externa, utiliza la ruta predeterminada, que apunta a la puerta de enlace predeterminada (un router). El paquete se prepara con las direcciones IP de origen y destino originales. Sin embargo, la dirección MAC de destino se establece en la dirección MAC de la puerta de enlace predeterminada. Si se desconoce la MAC de la puerta de enlace, el host utiliza ARP para encontrarla.
-3. Una vez que el paquete llega al router, este examina la dirección IP de destino y consulta su propia tabla de enrutamiento para determinar el siguiente salto en la **ruta del paquete**. Luego, el router reescribe las direcciones MAC del paquete: la MAC de origen se convierte en la MAC del router y la MAC de destino se convierte en la MAC del siguiente salto. Este proceso se repite en cada router a lo largo del camino.
-4. Cuando el paquete finalmente llega al router conectado a la red local de destino, ese router utiliza ARP para encontrar la dirección MAC del host final y entrega el paquete.
-5. A lo largo de todo este viaje, las direcciones IP de origen y destino en la cabecera del paquete permanecen sin cambios. Solo las direcciones MAC se actualizan en cada salto.
+:::single-choice{#packet-path-gateway-mac}
+¿Qué dirección MAC se utiliza en la primera trama Ethernet dirigida a un servidor situado fuera del enlace?
 
-## Exercise
+::option[La dirección del servidor remoto a través de todas las redes intermedias.]{#packet-path-remote-mac explanation="La dirección de enlace remota no tiene significado en la LAN de origen."}
+::option[Un valor calculado a partir del nombre DNS del servidor.]{#packet-path-dns-mac explanation="Los nombres DNS no codifican la dirección MAC del siguiente salto local."}
+::option[La dirección de la puerta de enlace local seleccionada.]{#packet-path-local-gateway .correct explanation="La trama se entrega al siguiente salto mientras la cabecera IP se dirige al punto final definitivo."}
+:::
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión básica de archivos y directorios en Linux:
+## Procesamiento en cada router
 
-1. **[Operaciones Básicas de Archivos en Linux](https://labex.io/es/labs/linux-basic-file-operations-in-linux-18001)** - Practique la navegación por el sistema de archivos, la gestión de archivos y directorios, y el uso de atajos de línea de comandos en un entorno Linux real.
-2. **[Operaciones de Archivos y Directorios](https://labex.io/es/labs/linux-file-and-directory-operations-17997)** - Aprenda a navegar por la estructura de directorios, administrar archivos y carpetas, y utilizar herramientas potentes de línea de comandos como `ls`, `cd`, `mkdir`, `cp`, `mv` y `rm`.
-3. **[Organización de Archivos y Directorios](https://labex.io/es/labs/linux-organizing-files-and-directories-387877)** - Practique habilidades esenciales de gestión de archivos de Linux utilizando los comandos `cp`, `mv` y `rm` para organizar una estructura de proyecto, mover archivos y limpiar directorios innecesarios.
+Un router elimina el encapsulado de enlace entrante, valida y procesa la cabecera IP, reduce el TTL o Hop Limit, consulta el destino, aplica la política y crea un encapsulado nuevo para el enlace de salida. En IPv4, el procesamiento de la suma de comprobación de la cabecera refleja el cambio del TTL. Si el campo de saltos llega a cero, el router descarta el paquete y puede devolver un mensaje ICMP de tiempo agotado.
 
-Estos laboratorios le ayudarán a aplicar los conceptos en escenarios reales y a ganar confianza con las interacciones del sistema de archivos de Linux.
+:::single-choice{#packet-path-router-change}
+¿Qué campo IP cambia en todos los saltos enrutados normales?
 
-## Quiz Question
+::option[El nombre de usuario de la aplicación.]{#packet-path-username explanation="Los routers no necesitan datos de cuentas de aplicaciones para el reenvío básico."}
+::option[El TTL de IPv4 o el Hop Limit de IPv6.]{#packet-path-hop-field .correct explanation="Cada router reduce el campo para limitar los bucles de enrutamiento."}
+::option[El puerto de transporte de destino en todos los casos.]{#packet-path-port explanation="El enrutamiento ordinario conserva los puntos finales de transporte; NAT puede ser una transformación independiente."}
+:::
 
-¿Qué protocolo se utiliza para encontrar la dirección MAC de un host en la red local, dada su dirección IP? Por favor, responda con el acrónimo de tres letras en mayúsculas.
+## Tener en cuenta dispositivos intermedios y MTU
 
-## Quiz Answer
+El enrutamiento ordinario conserva las direcciones IP de origen y destino, pero NAT puede reescribirlas y los túneles pueden envolver el paquete original. Los cortafuegos pueden descartar el tráfico silenciosamente o rechazarlo. Las MTU de los enlaces también varían; en ocasiones los routers IPv4 pueden fragmentar paquetes, mientras que los routers IPv6 no fragmentan paquetes reenviados y dependen del descubrimiento de la MTU de la ruta.
 
-ARP
+:::single-choice{#packet-path-address-change-exception}
+¿Cuándo pueden cambiar las direcciones IP de extremo a extremo durante una ruta?
+
+::option[Cuando un conmutador Ethernet aprende una dirección MAC de origen.]{#packet-path-switch-learning-ip explanation="El aprendizaje del conmutador afecta a una tabla de reenvío de enlace, no a las direcciones de los puntos finales IP."}
+::option[Cuando una política NAT traduce las cabeceras de los paquetes.]{#packet-path-nat-change .correct explanation="La traducción es una función de un dispositivo intermedio que va más allá del reenvío ordinario de rutas."}
+::option[Cuando caduca una entrada de la caché DNS.]{#packet-path-dns-expiry explanation="Los paquetes existentes ya contienen direcciones numéricas."}
+:::
+
+## Seguir la ruta de retorno
+
+El destino realiza su propia consulta de ruta para la respuesta. La ruta de retorno puede utilizar routers distintos debido a las políticas de enrutamiento, el equilibrio de carga o los fallos. Los cortafuegos con estado y NAT deben tener en cuenta el flujo observado, por lo que la asimetría puede tener importancia operativa aunque IP la permita.
+
+:::single-choice{#packet-path-return-symmetry}
+¿Debe atravesar una respuesta los mismos routers en orden inverso?
+
+::option[Sí, porque IP registra la ruta de salida completa en todos los paquetes.]{#packet-path-records-route explanation="Los paquetes IP ordinarios no contienen obligatoriamente una ruta inversa completa."}
+::option[Sí, salvo que el origen y el destino compartan un nombre de host.]{#packet-path-hostname-symmetry explanation="Los nombres no imponen la simetría de las rutas."}
+::option[No; cada dirección se enruta de forma independiente.]{#packet-path-independent-return .correct explanation="Las políticas y la topología pueden producir una ruta asimétrica pero válida."}
+:::
+
+## Resumen
+
+Ahora puedes seguir el estado cambiante del enlace alrededor de un paquete IP enrutado.
+
+1. Resuelve el host final directamente solo cuando esté en el enlace.
+2. Encapsula el tráfico situado fuera del enlace para la puerta de enlace local seleccionada.
+3. Sigue la consulta de rutas y el procesamiento del límite de saltos en cada router.
+4. Ten en cuenta NAT, el filtrado, los túneles y las restricciones de MTU.
+5. Trata la dirección de retorno como una ruta independiente.

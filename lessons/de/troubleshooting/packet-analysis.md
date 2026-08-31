@@ -1,89 +1,98 @@
 ---
-index: 5
+lesson_id: "packet-analysis"
+course_id: "troubleshooting"
 lang: "de"
+order_index: 5
 title: "Paketanalyse"
-meta_title: "Paketanalyse - Fehlerbehebung"
-meta_description: "Lernen Sie die Grundlagen der Netzwerk-Paketanalyse unter Linux. Diese Anleitung stellt tcpdump vor, einen leistungsstarken Paketanalysator, um Netzwerkverkehr zu erfassen und zu interpretieren."
-meta_keywords: "tcpdump, Paketanalyse, Netzwerk-Paketanalyse, Netzwerk-Paketanalysator, Netzwerkanalyse, Netzwerk-Paketanalyse-Tools, Linux-Netzwerk, Wireshark, Linux-Befehle, Netzwerkverkehr"
+description: "Lerne, eine begrenzte, gefilterte Paketaufzeichnung zu erstellen und mit tcpdump sicher zu analysieren."
+meta_title: "Paketanalyse – Fehlersuche"
+meta_description: "Lerne die Grundlagen der Netzwerkpaketanalyse unter Linux. Diese Anleitung führt in tcpdump ein, um Netzwerkverkehr aufzuzeichnen und zu interpretieren."
+meta_keywords: "tcpdump, Paketanalyse, Netzwerkpaketanalyse, Netzwerkpaketanalysator, Netzwerkanalyse, Werkzeuge zur Netzwerkpaketanalyse, Linux-Vernetzung, Wireshark, Linux-Befehle, Netzwerkverkehr"
 ---
 
-## Lesson Content
+Eine Paketaufzeichnung erfasst Datenverkehr, der an einem ausgewählten Beobachtungspunkt sichtbar ist. Sie kann Protokollaustausch und Zeitverlauf offenlegen, aber auch Anmeldedaten, personenbezogene Daten und Datenverkehr unabhängiger Benutzer sammeln. Hole eine Genehmigung ein, begrenze den Umfang, schütze Dateien und befolge die Aufbewahrungsrichtlinie.
 
-Das Gebiet der Netzwerkanalyse ist riesig und kann Gegenstand ganzer Kurse und Bücher sein. Diese Lektion führt in die Grundlagen ein. Die Paket-Analyse umfasst das Erfassen und Untersuchen der Daten, die über ein Netzwerk gesendet werden. Es ist eine wesentliche Fähigkeit für die Fehlerbehebung im Netzwerk, die Leistungsoptimierung und die Sicherheitsanalyse. Durch die Untersuchung einzelner Pakete erhalten Sie tiefe Einblicke in das, was auf einer niedrigen Ebene in Ihrem Netzwerk geschieht.
+## Den Beobachtungspunkt auswählen
 
-### Beliebte Tools zur Netzwerkanalyse
+Zeichne auf der Schnittstelle und im Netzwerknamensraum auf, die der betroffene Datenstrom tatsächlich durchquert. Bridges, Container, VPNs, Bonds, VLANs und Offloading können verändern, was eine Schnittstelle zeigt. Ermittle vor der Aufzeichnung mit `ip route get` und `ip link` mögliche Kandidaten.
 
-Es gibt zwei extrem beliebte Tools zur Netzwerkanalyse: Wireshark und tcpdump. Beide sind leistungsstarke Paketanalysatoren, die Ihre Netzwerkschnittstellen scannen, Paketaktivitäten erfassen und die Daten zur Inspektion analysieren. Sie ermöglichen es uns, ins Detail der Netzwerkanalyse einzutauchen. Wir verwenden tcpdump wegen seiner Einfachheit über die Kommandozeile, aber wenn Sie planen, tiefer in die Netzwerkanalyse einzutauchen, wird die Erkundung der grafischen Oberfläche von Wireshark dringend empfohlen.
+:::single-choice{#packet-analysis-interface-choice}
+Warum ist die Auswahl der Aufzeichnungsschnittstelle wichtig?
 
-### Installation von tcpdump
+::option[Jede Schnittstelle spiegelt automatisch das gesamte Internet.]{#packet-analysis-mirrors-internet explanation="Ein Host sieht normalerweise nur Datenverkehr, der über seine Schnittstellen zugestellt oder zu ihnen gespiegelt wird."}
+::option[Nur an diesem Beobachtungspunkt sichtbarer Datenverkehr kann aufgezeichnet werden.]{#packet-analysis-visible-point .correct explanation="Namensräume, Tunnel, Bridges und Routing können den relevanten Datenstrom andernorts platzieren."}
+::option[Der Schnittstellenname entschlüsselt TLS-Nutzlasten.]{#packet-analysis-name-decrypts explanation="Eine Benennung besitzt keine Entschlüsselungsfähigkeit."}
+:::
 
-Auf Debian-basierten Systemen wie Ubuntu können Sie tcpdump mit dem folgenden Befehl installieren:
+## Einen begrenzten Datenstrom aufzeichnen
 
-```bash
-sudo apt install tcpdump
-```
-
-### Erfassen von Live-Paketdaten
-
-Um die Datenerfassung auf einer bestimmten Schnittstelle zu starten, verwenden Sie das Flag `-i`, gefolgt vom Schnittstellennamen.
-
-```plaintext
-pete@icebox:~$ sudo tcpdump -i wlan0
-tcpdump: ausführliche Ausgabe unterdrückt, verwenden Sie -v oder -vv für vollständige Protokolldekodierung
-listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-11:28:23.970928 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 2, length 64
-11:28:24.960464 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 3, length 64
-11:28:24.979299 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 3, length 64
-11:28:25.961869 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 4, length 64
-11:28:25.976176 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 4, length 64
-11:28:26.963667 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 5, length 64
-11:28:26.976137 IP nuq04s29-in-f4.1e100.net > icebox.lan: ICMP echo reply, id 1901, seq 5, length 64
-11:28:30.674953 ARP, Request who-has 172.254.1.0 tell ThePickleParty.lan, length 28
-11:28:31.190665 IP ThePickleParty.lan.51056 > 192.168.86.255.rfe: UDP, length 306
-```
-
-Sie werden viele Aktivitäten bemerken, wenn Sie eine Paketerfassung starten, was angesichts des konstanten Hintergrundnetzwerkverkehrs zu erwarten ist. Das obige Beispiel zeigt einen Ausschnitt einer Erfassung, die während des Pings von `www.google.com` gemacht wurde.
-
-### Interpretation der tcpdump-Ausgabe
-
-Lassen Sie uns eine Zeile aus der Erfassung aufschlüsseln:
-
-```plaintext
-11:28:23.958840 IP icebox.lan > nuq04s29-in-f4.1e100.net: ICMP echo request, id 1901, seq 2, length 64
-```
-
-- **Zeitstempel**: Das erste Feld (`11:28:23.958840`) zeigt an, wann das Paket erfasst wurde.
-- **Protokoll**: `IP` zeigt das Protokoll der Netzwerkschicht an.
-- **Quelle und Ziel**: `icebox.lan > nuq04s29-in-f4.1e100.net` zeigt den Ursprung und das Ziel des Pakets an.
-- **Protokollspezifische Informationen**: Der Rest der Zeile enthält Details, die für das Protokoll spezifisch sind. Für dieses ICMP-Paket:
-  - `seq`: Die Sequenznummer des Pakets.
-  - `length`: Die Paketlänge in Bytes.
-
-Wie Sie sehen, hat unsere Maschine eine ICMP-Echo-Anforderung gesendet und eine ICMP-Echo-Antwort erhalten. Verschiedene Protokolle zeigen unterschiedliche Informationen an. Konsultieren Sie die Manpage für weitere Details.
-
-### Speichern von Erfassungen für die spätere Analyse
-
-Anstatt den Live-Verkehr anzuzeigen, können Sie die Erfassung mit dem Flag `-w` in einer Datei speichern. Dies ist nützlich für eine tiefere, Offline-Paketanalyse.
+Zeichne ohne Namensauflösung höchstens 100 Pakete auf, beschränkt auf einen Host und TCP-Port:
 
 ```bash
-sudo tcpdump -w /some/file.pcap
+$ sudo tcpdump -i enp1s0 -n -c 100 -w incident.pcap \
+    'host 192.0.2.25 and tcp port 443'
 ```
 
-Wir haben bisher nur an der Oberfläche der Paket-Analyse gekratzt. Es gibt noch viel mehr zu entdecken, einschließlich erweiterter Filterung und der Inspektion von Paket-Inhalten in Hex und ASCII. Unzählige Online-Ressourcen können Ihnen helfen, die Tools zur Netzwerkanalyse zu meistern, und wir ermutigen Sie, Ihre Lernreise fortzusetzen.
+`-i` wählt die Schnittstelle, `-n` bewahrt numerische Namen, `-c` begrenzt die Paketanzahl, `-w` schreibt pcap-Daten, und der abschließende Ausdruck ist ein Aufzeichnungsfilter. Lege zusätzlich extern eine Zeitgrenze fest, falls kein Datenverkehr auftritt.
 
-## Exercise
+:::single-choice{#packet-analysis-count-bound}
+Was bewirkt `-c 100`?
 
-Um Ihr Verständnis der Paket-Analyse zu festigen, versuchen Sie dieses praktische Labor. Übung macht den Meister!
+::option[Es zeichnet nur TCP-Port 100 auf.]{#packet-analysis-port-hundred explanation="Die Portauswahl gehört in den Filterausdruck."}
+::option[Es komprimiert die Datei auf 100 Byte.]{#packet-analysis-compress-hundred explanation="Die Option bezeichnet eine Paketanzahl und keine Dateigrößengrenze."}
+::option[Es stoppt nach der Aufzeichnung von 100 Paketen.]{#packet-analysis-hundred .correct explanation="Die Anzahl verhindert, dass eine unbeaufsichtigte Aufzeichnung nach Paketmenge unbegrenzt wächst."}
+:::
 
-1. **[Ethernet-Frames mit tcpdump unter Linux analysieren](https://labex.io/de/labs/comptia-analyze-ethernet-frames-with-tcpdump-in-linux-592765)** - Üben Sie das Erfassen und Untersuchen von Ethernet-Frames, das Generieren von Verkehr und die Analyse von Frame-Headern und MAC-Adressen mit `tcpdump`.
+## Aufgezeichnete Pakete lesen
 
-Dieses Labor hilft Ihnen, die Konzepte der Paket-Analyse in einem realen Szenario anzuwenden und Vertrauen in die Netzwerk-Fehlerbehebung aufzubauen.
+Analysiere die gespeicherte Datei, ohne sie zu verändern:
 
-## Quiz Question
+```bash
+$ tcpdump -n -tttt -r incident.pcap
+```
 
-Was ist das Flag, um eine bestimmte Schnittstelle mit tcpdump zu erfassen? Bitte antworten Sie nur mit dem erforderlichen Flag in Englisch. Die Antwort ist groß-/kleinschreibungsempfindlich.
+Lies je nach Protokoll Zeitstempel, Protokoll, Quelle, Ziel, Kennzeichen, Sequenz- oder Bestätigungsdaten und Länge. Ein Aufzeichnungszeitstempel kennzeichnet die Beobachtung auf diesem Host und nicht zwangsläufig die genaue Sendezeit andernorts. Uhrsynchronisierung ist wichtig, wenn Aufzeichnungen mehrerer Systeme miteinander verknüpft werden.
 
-## Quiz Answer
+:::single-choice{#packet-analysis-read-file}
+Welche Option liest Pakete aus einer gespeicherten pcap-Datei?
 
--i
+::option[`-r`]{#packet-analysis-option-read .correct explanation="Die Leseoption verarbeitet eine bestehende Aufzeichnungsdatei."}
+::option[`-i`]{#packet-analysis-option-interface explanation="Dies wählt eine Schnittstelle für eine Live-Aufzeichnung aus."}
+::option[`-w`]{#packet-analysis-option-write explanation="Dies schreibt rohe Pakete in eine Datei."}
+:::
+
+## Abwesenheit und Verschlüsselung interpretieren
+
+Keine aufgezeichneten Pakete können eine falsche Schnittstelle oder einen falschen Namensraum, Aufzeichnungsverlust, einen zu engen Filter, Offloading-Auswirkungen, anderes Routing oder ausbleibenden Datenverkehr bedeuten. Prüfe die Zähler von tcpdump für empfangene und verworfene Pakete und reproduziere ein bekanntes Ereignis.
+
+TLS und andere Verschlüsselung verbergen normalerweise Anwendungsnutzlasten, lassen jedoch nützliche Metadaten wie Endpunkte, Zeitverlauf, Größen, TCP-Verhalten und Teile von Handshakes sichtbar. Versuche keine unautorisierte Entschlüsselung und sammle private Schlüssel nicht leichtfertig.
+
+:::single-choice{#packet-analysis-no-packets}
+Was beweist eine leere gefilterte Aufzeichnung?
+
+::option[Die entfernte Anwendung wurde dauerhaft gelöscht.]{#packet-analysis-empty-deleted explanation="Fehler bei Beobachtungspunkt und Filter können dasselbe Ergebnis erzeugen."}
+::option[Das gesamte Netzwerk besitzt keinen Datenverkehr.]{#packet-analysis-empty-network explanation="Ein enger Filter kann unabhängigen Datenverkehr ausschließen."}
+::option[Nur, dass an diesem Aufzeichnungspunkt keine passenden Pakete erfasst wurden.]{#packet-analysis-empty-limited .correct explanation="Validiere Schnittstelle, Namensraum, Filter, verworfene Aufzeichnungen und Testerzeugung, bevor du Schlussfolgerungen ziehst."}
+:::
+
+## Belege schützen und weitergeben
+
+Speichere pcaps mit restriktiven Berechtigungen, erfasse Befehl, Host, Schnittstelle, Zeitzone, Filter und Vorfallszeitraum und hashe Belege, wenn Integrität wichtig ist. Minimiere oder bereinige Daten vor der Weitergabe mit Werkzeugen und Verfahren, die benötigte Felder erhalten; Paketnutzlasten und sogar Metadaten können Benutzer und Systeme identifizieren.
+
+:::single-choice{#packet-analysis-pcap-safety}
+Wie sollte eine pcap-Datei eines Vorfalls behandelt werden?
+
+::option[Als vertraulicher Beleg mit beschränktem Zugriff und dokumentierter Herkunft.]{#packet-analysis-sensitive-evidence .correct explanation="Aufzeichnungen können vertrauliche Inhalte enthalten und benötigen sowohl Integritäts- als auch Vertraulichkeitskontrollen."}
+::option[Als harmloser Text, der ohne Prüfung öffentlich hochgeladen werden kann.]{#packet-analysis-public explanation="Binäre Aufzeichnungen können Nutzlasten, Identitäten und Infrastruktur offenlegen."}
+::option[Durch Bearbeiten von Bytes an Ort und Stelle, ohne das Original zu bewahren.]{#packet-analysis-edit-original explanation="Dies beschädigt die Herkunft und kann spätere Analysen ungültig machen."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun eine nützliche Paketaufzeichnung erstellen, ohne sie unnötig breit oder unsicher zu machen.
+
+1. Wähle die richtige Schnittstelle und den richtigen Netzwerknamensraum.
+2. Begrenze Aufzeichnungen durch Filter, Paketanzahl und Zeit.
+3. Speichere rohe Pakete und analysiere die Datei schreibgeschützt.
+4. Behandle Abwesenheit und verschlüsselte Nutzlasten mit angemessenen Grenzen.
+5. Schütze Vertraulichkeit, Integrität und Herkunft der Aufzeichnung.

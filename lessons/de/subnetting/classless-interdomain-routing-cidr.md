@@ -1,48 +1,90 @@
 ---
-index: 5
+lesson_id: "classless-interdomain-routing-cidr"
+course_id: "subnetting"
 lang: "de"
+order_index: 5
 title: "CIDR"
-meta_title: "CIDR - Subnetzmaskierung"
-meta_description: "Ein Leitfaden zur CIDR-Notation. Erfahren Sie mehr über das CIDR-Format, CIDR-Subnetzmaskierung und wie Sie Hosts für Ihr Netzwerk berechnen, auch auf einem Ubuntu-Server. Meistern Sie die IP-Adressierung mit CIDR."
-meta_keywords: "CIDR, CIDR-Subnetzmaskierung, CIDR-Format, Subnetzmaske, IP-Adressierung, Ubuntu-Server-Subnetz-CIDR, Ubuntu-Subnetz-CIDR, Netzwerkpräfix, Linux-Netzwerk"
+description: "Lerne, wie CIDR-Präfixe Adressbereiche, Subnetzgrenzen und aggregierte Routen darstellen."
+meta_title: "CIDR – Subnetting"
+meta_description: "Eine Anleitung zur CIDR-Notation. Lerne das CIDR-Format, CIDR-Subnetting und die Berechnung von Hosts in deinem Netzwerk kennen."
+meta_keywords: "CIDR, CIDR-Subnetting, CIDR-Format, Subnetzmaske, IP-Adressierung, Ubuntu-Server-Subnetz CIDR, Netzwerkpräfix, Linux-Vernetzung"
 ---
 
-## Lesson Content
+Classless Inter-Domain Routing stellt einen Adressbereich durch eine Präfixlänge dar, statt sich auf historische Adressklassen zu stützen. CIDR ermöglicht variabel große Vergaben, Subnetting und Routenaggregation für IPv4 und IPv6.
 
-CIDR (Classless Inter-Domain Routing) ist eine Methode zur Zuweisung von IP-Adressen und zum Routing von Internet Protocol-Paketen. Es bietet eine kompaktere und effizientere Möglichkeit, eine Subnetzmaske darzustellen, und ersetzt das ältere klassenbasierte Netzwerkdesign. Das Verständnis von CIDR ist für die moderne Netzwerkadministration unerlässlich.
+## Präfixnotation lesen
 
-### Das CIDR-Format
+In `10.42.3.17/24` bilden die ersten 24 Bit das Netzwerkpräfix, und acht Bits bleiben für Positionen innerhalb des Bereichs. Das kanonische Netzwerk lautet `10.42.3.0/24`; die angegebene Hostadresse kann bei der Konfiguration einer Schnittstelle dennoch zusammen mit dem Präfix geschrieben werden.
 
-Sie werden Netzwerke häufig in der **CIDR-Notation** sehen, wobei auf eine IP-Adresse ein Schrägstrich und eine Zahl folgt. Beispielsweise wird ein Subnetz wie `10.42.3.0` mit einer Subnetzmaske von `255.255.255.0` als `10.42.3.0/24` geschrieben. Diese einzelne Notation enthält sowohl die Netzadresse als auch die Präfixlänge.
+:::single-choice{#cidr-prefix-meaning}
+Was legt `/24` in einem IPv4-CIDR-Wert fest?
 
-Die Zahl nach dem Schrägstrich gibt an, wie viele Bits der IP-Adresse für das Netzwerkpräfix verwendet werden. Dies ist eine häufige Aufgabe bei der Konfiguration der Netzwerke auf einem System wie einem **Ubuntu-Server**, bei dem Sie möglicherweise eine Schnittstelle mit einer `ubuntu subnet cidr`-Adresse definieren.
+::option[24 führende Netzwerkpräfixbits.]{#cidr-24-prefix-bits .correct explanation="Die verbleibenden acht der 32 IPv4-Bits können innerhalb des Präfixes variieren."}
+::option[24 verwendbare Adressen in jedem Subnetz.]{#cidr-24-addresses explanation="Ein `/24` enthält insgesamt 256 Adresswerte."}
+::option[Den TCP-Zielport des Netzwerks.]{#cidr-24-port explanation="CIDR und Transportports sind unabhängig."}
+:::
 
-### CIDR-Subnetting und Host-Berechnung
+## Bereichsgröße berechnen
 
-Eine IPv4-Adresse besteht aus 4 Bytes, also insgesamt 32 Bits. Das CIDR-Präfix bestimmt die Aufteilung zwischen dem Netzwerk- und dem Host-Teil der Adresse. Für effektives **cidr subnetting** müssen Sie wissen, wie die Anzahl der verfügbaren Hosts berechnet wird.
+Das IPv4-Präfix `/23` lässt neun Hostbits und umfasst deshalb `2^9 = 512` Adressen. Das ausgerichtete Präfix `123.12.24.0/23` erstreckt sich über:
 
-Nehmen wir das Beispiel `123.12.24.0/23`. Dies bedeutet, dass die ersten 23 Bits das Netzwerkpräfix sind. Um die Anzahl der verfügbaren Hosts zu ermitteln:
+```text
+first: 123.12.24.0
+last:  123.12.25.255
+```
 
-1. Subtrahieren Sie das CIDR-Präfix von der Gesamtanzahl der Bits (32): `32 - 23 = 9`. Dies lässt 9 Bits für den Host-Teil übrig.
-2. Berechnen Sie die Gesamtanzahl der Adressen im Subnetz: `2^9 = 512`.
-3. Subtrahieren Sie 2 von der Gesamtzahl. Eine Adresse ist für das Netzwerk selbst reserviert, und eine für die Broadcast-Adresse. Dies ergibt `512 - 2 = 510` nutzbare Host-Adressen.
+Bei herkömmlicher Broadcast-Verwendung ist die erste Adresse die Netzwerkadresse und die letzte der gerichtete Broadcast. Wende die Abkürzung „minus zwei“ für verwendbare Hosts nicht blind auf `/31`-Punkt-zu-Punkt- oder `/32`-Hostrouten an.
 
-Ein weiteres häufiges Beispiel ist ein `/30`-Netzwerk, das `32 - 30 = 2` Host-Bits bereitstellt. Dies führt zu `2^2 = 4` Gesamtadressen, wodurch nur 2 nutzbare Adressen übrig bleiben, was es ideal für Punkt-zu-Punkt-Verbindungen macht.
+:::single-choice{#cidr-23-total}
+Wie viele IPv4-Adressen enthält ein `/23` insgesamt?
 
-## Exercise
+::option[512]{#cidr-total-512 .correct explanation="Neun veränderliche Bits erzeugen 2^9 Kombinationen."}
+::option[23]{#cidr-total-23 explanation="Die Präfixzahl zählt feste Bits und keine Adressen."}
+::option[510]{#cidr-total-510 explanation="Dies ist nach Abzug besonderer Endpunkte eine herkömmliche verwendbare Anzahl und nicht die gesamte Bereichsgröße."}
+:::
 
-Um diese Konzepte zu meistern, üben Sie mit einigen praktischen Labs, die Ihr Verständnis von CIDR, IP-Adressierung und **cidr subnetting** vertiefen:
+## Ausrichtung prüfen
 
-1. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, einschließlich der Übersetzung von CIDR-Masken und der Berechnung nutzbarer Hosts.
-2. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Lernen Sie, statische IP-Adressen zuzuweisen und zu beobachten, wie IP-Subnetze die direkte Netzwerkkommunikation in einer simulierten Umgebung steuern.
-3. **[IP-Adresstypen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie IP-Adressierung und Netzwerkerreichbarkeit mithilfe von Befehlen wie `ping` und `ip a`, um verschiedene IP-Typen und Konnektivität zu testen.
+Ein Präfix muss an seiner Binärgrenze beginnen. Ein `/23` schreitet bei festen früheren Oktetten im dritten Oktett in Zweierblöcken fort. Daher ist `123.12.24.0/23` ausgerichtet, während `123.12.25.0/23` zu demselben Bereich `123.12.24.0/23` kanonisiert wird.
 
-Diese Labs helfen Ihnen, die Konzepte von CIDR und IP-Adressierung in realen Szenarien anzuwenden und Selbstvertrauen bei der Netzwerkkonfiguration aufzubauen.
+:::single-choice{#cidr-canonical-25}
+Was ist das kanonische `/23`-Netzwerk, das `123.12.25.0` enthält?
 
-## Quiz Question
+::option[Nur `123.12.25.0/23`, beginnend bei 25.]{#cidr-25-unaligned explanation="Das letzte Präfixbit gruppiert die Werte des dritten Oktetts in ausgerichteten Paaren."}
+::option[`123.12.0.0/23`]{#cidr-third-zero explanation="Dies beschreibt einen anderen `/23`-Bereich."}
+::option[`123.12.24.0/23`]{#cidr-24-canonical .correct explanation="Die Werte 24 und 25 im dritten Oktett besitzen dasselbe ausgerichtete 23-Bit-Präfix."}
+:::
 
-Aus wie vielen Bits besteht eine IPv4-Adresse?
+## Routen aggregieren
 
-## Quiz Answer
+CIDR kann ein Aggregat für mehrere zusammenhängende, gleich große und richtig ausgerichtete Präfixe ankündigen. Beispielsweise lassen sich `192.0.2.0/25` und `192.0.2.128/25` zu `192.0.2.0/24` zusammenfassen. Aggregation ist nur sicher, wenn der ankündigende Router das vollständige Aggregat korrekt erreichen kann oder Richtlinien zur Vermeidung von Schleifen und Blackholes besitzt.
 
-32
+:::single-choice{#cidr-aggregate-two-25s}
+Welches Aggregat umfasst beide Hälften von `192.0.2.0/24`?
+
+::option[`192.0.2.0/26`]{#cidr-aggregate-26 explanation="Ein `/26` umfasst nur 64 Adressen und ist kleiner als jede Hälfte."}
+::option[`192.0.3.0/25`]{#cidr-aggregate-other explanation="Dies liegt außerhalb des angegebenen Adressbereichs."}
+::option[`192.0.2.0/24`]{#cidr-aggregate-24 .correct explanation="Die beiden zusammenhängenden ausgerichteten `/25`-Bereiche unterscheiden sich nur im nächsten Bit und besitzen dasselbe `/24`-Präfix."}
+:::
+
+## Routing mit längstem Präfix
+
+Wenn sich Routen überschneiden, wählt die Weiterleitung normalerweise die geeignete Route mit dem längsten passenden Präfix. Eine `/24`-Route ist spezifischer als ein sie umfassendes `/16`, während eine Standardroute `/0` nur gewinnt, wenn keine spezifischere geeignete Route vorhanden ist.
+
+:::single-choice{#cidr-route-specificity}
+Welche geeignete Route ist für das Ziel `10.42.3.8` spezifischer?
+
+::option[`10.42.3.0/24`]{#cidr-route-24 .correct explanation="Die 24-Bit-Übereinstimmung ist länger und damit spezifischer als `/8`."}
+::option[`10.0.0.0/8`]{#cidr-route-8 explanation="Diese Route passt, legt aber weniger Zielbits fest."}
+::option[`0.0.0.0/0`]{#cidr-default explanation="Die Standardroute ist das unspezifischste mögliche IPv4-Präfix."}
+:::
+
+## Zusammenfassung
+
+Du kannst die CIDR-Notation nun für Adressbereiche und Routenauswahl verwenden.
+
+1. Interpretiere den Schrägstrichwert als Anzahl führender Präfixbits.
+2. Berechne die Gesamtbereichsgröße aus den verbleibenden Bits.
+3. Kanonisiere ein Präfix auf seine ausgerichtete Netzwerkgrenze.
+4. Aggregiere nur zusammenhängende ausgerichtete Bereiche mit gültiger Erreichbarkeit.
+5. Bevorzuge bei der Routensuche das längste geeignete Präfix.

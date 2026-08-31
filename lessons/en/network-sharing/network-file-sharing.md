@@ -1,64 +1,91 @@
 ---
-index: 1
+lesson_id: "network-file-sharing"
+course_id: "network-sharing"
 lang: "en"
+order_index: 1
 title: "File Sharing Overview"
+description: "Learn how to choose and safely perform an SSH-based file transfer with scp."
 meta_title: "File Sharing Overview - Network Sharing"
 meta_description: "Explore Linux file sharing with our free online course. Learn one of the best ways to learn Linux commands like scp for secure network file transfers. A key resource for coding in Linux."
 meta_keywords: "linux file sharing, scp command, secure copy, learn linux commands, best linux course online free, coding in linux, network file transfer, best resources to learn linux"
 ---
 
-## Lesson Content
+Network file movement ranges from one-time copies to continuously mounted shares and synchronized directory trees. Choose a method based on direction, data size, update frequency, identity model, network trust, metadata requirements, and whether clients need live shared access.
 
-In most modern computing environments, your machine is rarely isolated. Whether at home or in a corporate setting, you are typically part of a network. When you need to transfer data between computers, you could use a USB drive, but for machines on the same network, network file sharing is far more efficient. This is a foundational skill for anyone serious about `coding in linux` or managing systems.
+## Choosing a Transfer Method
 
-This lesson, part of what many consider the `best linux course online free`, will introduce you to methods for copying data across a network. We will start with simple file transfers and later discuss mounting entire remote directories, making them appear as local drives on your machine. This site aims to be the `best website to learn linux` by providing clear, practical examples.
+- `scp` or SFTP provides an SSH-authenticated copy or interactive transfer.
+- `rsync` efficiently reconciles directory trees locally or over a transport such as SSH.
+- NFS presents server exports as mounted filesystems, commonly between Unix-like hosts.
+- SMB, implemented by Samba on Linux, supports shared access across many operating systems.
+- HTTP can provide simple downloads but is not a general mounted filesystem.
 
-### The Secure Copy Command (scp)
+A copy is not automatically a backup. A backup design also needs independent retention, restore testing, integrity checks, and protection from the same deletion or compromise.
 
-One of the simplest and most powerful tools for this task is the `scp` command, which stands for "secure copy." It functions much like the standard `cp` command but extends its capability across the network. Understanding it is one of the `best ways to learn linux commands` for network interaction. Because `scp` operates over SSH (Secure Shell), all transfers benefit from the same robust authentication and security protocols.
+:::single-choice{#file-sharing-one-time-ssh-copy}
+Which tool is suitable for a one-time file copy through SSH?
 
-### Common scp Command Examples
+::option[`scp`]{#file-sharing-scp .correct explanation="SCP uses SSH authentication and transport for file copies."}
+::option[`uptime`]{#file-sharing-uptime explanation="Uptime reports host runtime and load rather than transferring files."}
+::option[`logrotate`]{#file-sharing-logrotate explanation="Logrotate manages file-log generations on a host."}
+:::
 
-Let's explore some practical examples. The syntax is straightforward: `scp [options] source destination`. The key difference from `cp` is that the source or destination includes a remote host specification in the format `username@remotehost:/path/to/file`.
+## Understanding scp Paths
 
-### Copy a file from a local host to a remote host
-
-This command sends a local file to a specified directory on a remote machine.
-
-```bash
-scp myfile.txt username@remotehost.com:/remote/directory
-```
-
-### Copy a file from a remote host to your local host
-
-This command retrieves a file from a remote machine and saves it to a local directory.
+The general form is `scp SOURCE DESTINATION`. A remote operand commonly uses `user@host:path`:
 
 ```bash
-scp username@remotehost.com:/remote/directory/myfile.txt /local/directory
+$ scp -- report.txt alice@example.net:/srv/incoming/
+$ scp -- alice@example.net:/srv/outgoing/result.txt ./result.txt
 ```
 
-### Copy a directory from your local host to a remote host
+The first command pushes a local file; the second pulls a remote file. A colon distinguishes the remote host from its path. Quote paths that contain shell-sensitive characters and avoid ambiguous untrusted filenames.
 
-To copy an entire directory and its contents, use the `-r` (recursive) option.
+:::single-choice{#file-sharing-scp-pull-source}
+In an `scp` pull, where does the remote specification appear?
+
+::option[As the source before the local destination.]{#file-sharing-pull-source .correct explanation="Copy direction follows the source-to-destination operand order."}
+::option[As the local destination after every option.]{#file-sharing-pull-destination explanation="The remote object being retrieved is the source operand."}
+::option[Only inside the user's SSH configuration file.]{#file-sharing-pull-config explanation="SSH configuration can provide defaults, but the copied remote path is still an operand."}
+:::
+
+## Copying a Directory
+
+Use recursive mode for a directory tree:
 
 ```bash
-scp -r mydir username@remotehost.com:/remote/directory
+$ scp -r -- project/ alice@example.net:/srv/incoming/
 ```
 
-Mastering `scp` is an essential step, and exploring such tools is why many consider this one of the `best resources to learn linux`.
+Before copying, inspect data size, symlinks, permissions, ownership requirements, free space, and destination naming. SCP is not a synchronization policy; repeated directory copies can leave files at the destination that no longer exist at the source.
 
-## Exercise
+:::single-choice{#file-sharing-scp-recursive}
+What does `scp -r` request?
 
-Practice is key to mastering new commands. To reinforce your understanding of secure network file transfer, we recommend this hands-on lab:
+::option[Removal of the remote destination before copying.]{#file-sharing-scp-remove explanation="Recursive mode traverses directories and does not define cleanup policy."}
+::option[Recursive copying of a directory tree.]{#file-sharing-scp-tree .correct explanation="The flag is required when the selected source is a directory."}
+::option[Read-only access to the SSH configuration.]{#file-sharing-scp-readonly explanation="The option concerns directory traversal, not configuration access."}
+:::
 
-1. **[Secure Remote Access in Linux with SSH](https://labex.io/labs/comptia-secure-remote-access-in-linux-with-ssh-592816)** - Practice key-based authentication, securely transferring files with `scp`, and creating SSH tunnels for port forwarding.
+## Verifying Identity and Results
 
-This lab will help you apply the concepts of secure remote access and file transfer in a real-world scenario and build confidence with `scp`.
+SSH host-key verification protects against connecting to the wrong server. Treat a changed host key as an event to verify through a trusted channel rather than bypassing the warning. Use least-privilege accounts and key handling appropriate to the environment.
 
-## Quiz Question
+After transfer, verify exit status, expected files, sizes, metadata, and—when integrity requirements demand it—independently calculated hashes at both ends. Confirm that the destination application can actually read the data.
 
-What command can you use to securely copy files from one host to another? Please answer with the command name only, in lowercase English letters.
+:::single-choice{#file-sharing-host-key-change}
+What should you do when SSH reports an unexpected changed host key?
 
-## Quiz Answer
+::option[Disable host-key checking for every future transfer.]{#file-sharing-disable-checking explanation="This removes an important server-identity control."}
+::option[Verify the new key through a trusted source before continuing.]{#file-sharing-verify-key .correct explanation="The warning can indicate a rebuilt host, wrong destination, or interception and should be investigated."}
+::option[Publish the private authentication key in the command output.]{#file-sharing-publish-key explanation="Private credentials must not be exposed."}
+:::
 
-scp
+## Summary
+
+You can now select and verify a secure one-time network file copy.
+
+1. Match the sharing method to access and retention needs.
+2. Read local and remote `scp` operands by source and destination.
+3. Use recursive mode deliberately for directory trees.
+4. Verify server identity, transfer results, and destination usability.

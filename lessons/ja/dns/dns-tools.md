@@ -1,87 +1,124 @@
 ---
-index: 6
+lesson_id: "dns-tools"
+course_id: "dns"
 lang: "ja"
+order_index: 6
 title: "DNS ツール"
+description: "getent、resolvectl、dig を使い、システムの名前解決と直接の DNS 問い合わせを比較する方法を学びます。"
 meta_title: "DNS ツール - DNS"
 meta_description: "nslookup や強力な dig コマンドなど、必須の Linux DNS ツールを探求します。この初心者向けの Linux チュートリアルでは、DNS クエリと DNS トラブルシューティング技術を解説します。"
 meta_keywords: "nslookup, dig コマンド，DNS ツール，Linux DNS, DNS トラブルシューティング，ネームサーバー検索，Linux チュートリアル，初心者 Linux"
 ---
 
-## Lesson Content
+DNS のトラブルシューティングは、どの層をテストしているか特定するところから始まります。システム resolver のツールはローカルファイルとポリシーを含みますが、`dig` と `nslookup` は DNS 問い合わせを送り、特定サーバーを直接対象にできます。
 
-Linux では、ネットワーク診断のためにいくつかのコマンドラインユーティリティが利用可能です。ドメインネームシステム（DNS）の問題に関しては、`nslookup`と`dig`という 2 つの主要な**DNS ツール**が際立っています。これらをどのように使用するかを理解することは、**Linux DNS**サーバーまたはクライアントでのあらゆる**DNS トラブルシューティング**にとって極めて重要です。
+## システム Resolver をテストする
 
-### 基本的な DNS クエリのための nslookup の使用
-
-`nslookup`（ネームサーバー検索）ツールは、DNS サーバーにクエリを実行してドメイン名または IP アドレスのマッピング情報を取得するための古典的なユーティリティです。単純なルックアップには素早く簡単なツールですが、`dig`に取って代わられることもあります。
-
-`www.google.com`のようなドメインの IP アドレスを見つけるには、以下を実行できます。
+通常のホスト名前サービス経路を使います。
 
 ```bash
-pete@icebox:~$ nslookup www.google.com
-Server:         127.0.1.1
-Address:        127.0.1.1#53
-
-Non-authoritative answer:
-Name:   www.google.com
-Address: 216.58.192.4
+$ getent ahosts www.example.com
 ```
 
-この出力では、`Server`と`Address`がクエリに応答した DNS サーバーを示しています。`Non-authoritative answer`は、サーバーが権威ソースに直接問い合わせるのではなく、キャッシュされた結果を提供したことを意味します。`Name`と`Address`は、ドメインに対して解決された IP アドレスを示します。
-
-### dig による高度な DNS トラブルシューティング
-
-`dig`（ドメイン情報検索）コマンドは、DNS ネームサーバーを調査するための強力で柔軟なツールです。これは`nslookup`よりも詳細な情報を提供するため、本格的な**DNS トラブルシューティング**で好まれる選択肢です。
-
-**dig コマンド**を使用した例を次に示します。
+systemd-resolved のホストでは、リンクごとのサーバー、search domain、プロトコル状態を調べます。
 
 ```bash
-pete@icebox:~$ dig www.google.com
-
-; <<>> DiG 9.9.5-3-Ubuntu <<>> www.google.com
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42376
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; MBZ: 0005 , udp: 512
-;; QUESTION SECTION:
-;www.google.com.                        IN      A
-
-;; ANSWER SECTION:
-www.google.com.         5       IN      A       74.125.239.147
-www.google.com.         5       IN      A       74.125.239.144
-www.google.com.         5       IN      A       74.125.239.146
-www.google.com.         5       IN      A       74.125.239.145
-www.google.com.         5       IN      A       74.125.239.148
-
-;; Query time: 27 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Sun Feb 07 10:14:00 PST 2016
-;; MSG SIZE  rcvd: 123
+$ resolvectl status
+$ resolvectl query www.example.com
 ```
 
-`dig`の出力はセクションに整理されています。
+アプリケーションが独自 resolver library や proxy を使う場合もあるため、出力が異なるときはアプリケーション経由でも再現してください。
 
-- **QUESTION SECTION**: 送信されたクエリを示します。ここでは、`www.google.com`の`A`（アドレス）レコードを要求しました。
-- **ANSWER SECTION**: DNS サーバーから受信した回答を表示します。この場合、Google にはドメインに関連付けられた複数の IP アドレスがあります。
-- **Statistics**: 最後のセクションでは、クエリ時間や応答したサーバーなど、クエリに関するメタデータを提供します。
+:::single-choice{#dns-tools-system-resolver}
+設定されたシステムの名前サービス経路を動かすコマンドはどれですか？
 
-その詳細な出力と柔軟性から、`dig`は Linux でネットワークサービスを管理またはトラブルシューティングする人にとって不可欠なユーティリティです。
+::option[`dig @SERVER NAME` だけ。]{#dns-tools-dig-direct explanation="dig は DNS 問い合わせを送り、通常 hosts ファイルの対応付けを読みません。"}
+::option[`ip link set down`]{#dns-tools-link-down explanation="名前解決をテストせず、インターフェースを中断します。"}
+::option[`getent ahosts NAME`]{#dns-tools-getent .correct explanation="`/etc/hosts`、DNS などの Name Service Switch 情報源を反映できます。"}
+:::
 
-## Exercise
+## dig で問い合わせる
 
-Linux ネットワーキングユーティリティでの経験を積むために、次のハンズオンラボを試すことを検討してください。
+名前とレコード型を指定します。
 
-1. **[Linux で ethtool を使用してネットワークインターフェイス設定を確認する](https://labex.io/ja/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool`コマンドを使用して、インターフェイス速度とデュプレックスの表示と設定、リンクモードの分析など、ネットワークインターフェイスの設定を確認および管理する方法を学び、物理層のネットワークの問題をトラブルシューティングします。
+```bash
+$ dig www.example.com A
+$ dig www.example.com AAAA
+$ dig example.com MX
+```
 
-このラボは、概念を実際のシナリオに適用し、ネットワークインターフェイスの管理に対する自信を構築するのに役立ちます。
+出力には応答サーバー、status、flag、question、answer、authority、additional data、query time、transport metadata が示されます。`+short` はスクリプトに便利ですが、診断に必要な証拠を隠します。
 
-## Quiz Question
+:::single-choice{#dns-tools-record-type}
+IPv6 address レコードを要求する問い合わせはどれですか？
 
-DNS ネームサーバーに関する詳細情報を取得するために使用されるツールは何ですか？回答には小文字の英字のみを使用してください。
+::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA レコードは IPv6 アドレスを含みます。"}
+::option[`dig NAME MX`]{#dns-tools-mx explanation="MX は mail exchanger レコードを要求します。"}
+::option[forward name に対する `dig NAME PTR`。]{#dns-tools-ptr-forward explanation="PTR は通常、reverse-lookup name を使って問い合わせます。"}
+:::
 
-## Quiz Answer
+## サーバーを選ぶ
 
-dig
+resolver または authoritative server を明示的に指定します。
+
+```bash
+$ dig @192.0.2.53 www.example.com A
+```
+
+cache と authority を切り分けるときは、設定済み recursive resolver、承認済みの二つ目の resolver、各 authoritative server を比較します。`NOERROR` status でも要求した answer がない場合があります。`NXDOMAIN` は問い合わせた名前が存在しないこと、`SERVFAIL` はサーバーが問い合わせを完了できなかったことを意味します。
+
+:::single-choice{#dns-tools-noerror-empty}
+`NOERROR` でも answer section が空になることはありますか？
+
+::option[はい。名前は存在するが、要求したレコードデータがない場合です。]{#dns-tools-noerror-nodata .correct explanation="status と answer count を一緒に解釈する必要があります。"}
+::option[いいえ。少なくとも一つの address レコードが必ずあります。]{#dns-tools-noerror-always-answer explanation="名前が存在しても、要求した type のデータがない場合があります。"}
+::option[いいえ。空の answer は常に Ethernet 障害です。]{#dns-tools-empty-ethernet explanation="有効な no-data response は、リンクフレームではなく DNS の意味によって説明できます。"}
+:::
+
+## Recursion と Authority を確認する
+
+問い合わせの `rd` は recursion を要求し、応答の `ra` はサーバーが recursion を提供することを示します。`aa` は answer が authoritative であることを意味します。authoritative server へは `+norecurse` で問い合わせ、recursive cache と提供中の zone data を混同しないようにします。
+
+`dig +trace NAME` は root hint から独自に反復探索します。production resolver の cache、forwarding、policy、DNSSEC validation、network location を通らないため、その resolver とは結果が異なる場合があります。
+
+:::single-choice{#dns-tools-aa-flag}
+応答の `aa` flag は何を意味しますか？
+
+::option[問い合わせが同じ二つの IPv4 アドレスを使った。]{#dns-tools-two-addresses explanation="この flag は answer count や address family と無関係です。"}
+::option[応答がアプリケーションの認証情報で暗号化された。]{#dns-tools-aa-encrypted explanation="DNS flag は暗号化トランスポートを証明しません。"}
+::option[answer が authoritative である。]{#dns-tools-authoritative-answer .correct explanation="応答サーバーは、その answer data に対して権威を持つと表明しています。"}
+:::
+
+## Reverse Query と TCP Query をテストする
+
+`-x` を使って reverse PTR query を組み立てます。
+
+```bash
+$ dig -x 192.0.2.25
+```
+
+truncation、zone transfer、ファイアウォール差異を調べるときは、TCP 上の DNS をテストします。
+
+```bash
+$ dig +tcp @192.0.2.53 example.com SOA
+```
+
+現代の DNS は UDP または TCP のポート 53 を使えます。必要な場所では両方を許可すべきです。UDP answer に truncation flag があると、準拠クライアントは適切なトランスポートで再試行します。
+
+:::single-choice{#dns-tools-tcp-test}
+`dig +tcp` は何を変更しますか？
+
+::option[既定の UDP 試行ではなく、TCP で DNS 問い合わせを送る。]{#dns-tools-use-tcp .correct explanation="トランスポートのフィルタリングと、大きな信頼性のある stream を要する応答を切り分けるのに役立ちます。"}
+::option[TCP のサービス名レコードだけを要求する。]{#dns-tools-tcp-records explanation="要求する DNS type は別途指定します。"}
+::option[サーバーの resolver 設定を恒久的に変更する。]{#dns-tools-tcp-persistent explanation="問い合わせはサーバー設定を編集しません。"}
+:::
+
+## まとめ
+
+これで、調査対象の resolver 層に合った DNS ツールを選べます。
+
+1. 設定済みシステム resolver の経路には `getent` を使う。
+2. 明示的なレコード型とサーバーを指定して `dig` を使う。
+3. status、flag、section、応答サーバーをまとめて解釈する。
+4. recursive cache と authoritative data を区別する。
+5. reverse query と、必要な両方の DNS transport をテストする。

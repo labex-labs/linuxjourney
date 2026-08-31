@@ -1,54 +1,98 @@
 ---
-index: 6
+lesson_id: "transport-layer"
+course_id: "network-basics"
 lang: "fr"
-title: "Couche Transport"
-meta_title: "Couche Transport - Bases Réseau"
-meta_description: "Explorez la Couche Transport dans le réseau Linux. Cette leçon couvre les protocoles clés comme TCP et UDP, la fonction des ports réseau, la segmentation des données et la poignée de main TCP pour un transfert de données fiable."
-meta_keywords: "Couche Transport Linux, TCP, UDP, poignée de main TCP, ports réseau, segmentation des données, réseau Linux, protocoles réseau, transfert de données fiable"
+order_index: 6
+title: "Couche transport"
+description: "Découvrez comment TCP et UDP emploient les ports et offrent différentes sémantiques de livraison entre terminaux applicatifs."
+meta_title: "Couche transport - Réseaux"
+meta_description: "Explorez la couche transport sous Linux : TCP, UDP, ports réseau, segmentation, flux, datagrammes et poignée de main TCP."
+meta_keywords: "couche transport Linux, TCP, UDP, poignée de main TCP, ports réseau, segmentation, protocoles réseau"
 ---
 
-## Lesson Content
+La couche transport relie les terminaux applicatifs à travers un réseau IP. TCP et UDP emploient tous deux des numéros de ports sur 16 bits, mais exposent aux applications des modèles de communication et garanties différents.
 
-La couche transport est une partie fondamentale du réseautage Linux responsable de la communication de bout en bout et du transfert de données fiable entre les applications sur différents hôtes. Elle prépare les données pour le transport sur le réseau d'une manière structurée et gérable.
+## Ports et sockets
 
-### Segmentation des Données
+Un port de destination aide le système d'exploitation à livrer le trafic à un socket en écoute. Une connexion ou un flux est identifié par plus d'un port : le protocole, les adresses source et destination ainsi que les ports source et destination comptent tous. Un même port de serveur peut donc prendre en charge de nombreux clients simultanés.
 
-L'une des fonctions principales de la couche transport est la segmentation des données. Elle divise de grandes quantités de données en morceaux plus petits et plus gérables appelés segments. Ce processus rend le transfert de données plus efficace et résilient. Si un segment est perdu ou corrompu pendant la transmission, seule cette petite partie doit être renvoyée, et non l'ensemble des données. Une fois que les segments arrivent à destination, la couche transport les réassemble dans le bon ordre.
+:::single-choice{#transport-layer-many-clients}
+Comment un seul port de serveur TCP peut-il gérer plusieurs clients en même temps ?
 
-### Comprendre les Ports Réseau
+::option[Chaque connexion possède une combinaison distincte d'adresses et de ports de terminaux.]{#transport-layer-connection-tuple .correct explanation="Le tuple complet de transport distingue les connexions simultanées qui partagent un port d'écoute."}
+::option[Le serveur renomme définitivement son port après chaque paquet.]{#transport-layer-renames-port explanation="Le port d'écoute peut rester stable tandis que les connexions acceptées possèdent des tuples de pairs distincts."}
+::option[IP supprime toutes les adresses source avant la livraison.]{#transport-layer-removes-source explanation="Les adresses source participent à l'identification du pair et du trajet."}
+:::
 
-Alors que les adresses IP identifient l'hôte correct sur un réseau, elles ne spécifient pas quelle application ou quel service doit recevoir les données. C'est là qu'interviennent les ports réseau. Des services comme HTTP (trafic web) ou SMTP (e-mail) écoutent sur des ports spécifiques et bien connus. Par exemple, HTTP utilise généralement le port 80. La couche transport attache les numéros de port source et de destination à chaque segment, garantissant que les données sont livrées au processus correct sur l'hôte récepteur.
+## Flux d'octets TCP
 
-### Protocoles de Transport Principaux TCP et UDP
+TCP fournit un flux d'octets ordonné et fiable tant que la connexion reste viable. Il emploie des numéros de séquence, accusés de réception, retransmissions et contrôles de flux et de congestion. TCP ne préserve pas les limites des messages applicatifs : une écriture peut arriver par plusieurs lectures, ou plusieurs écritures être renvoyées par une seule lecture. Les applications définissent leur propre encadrement.
 
-Il existe deux protocoles de transport principaux utilisés dans les réseaux modernes : TCP (Transmission Control Protocol) et UDP (User Datagram Protocol). Nous allons brièvement aborder UDP puis nous concentrer sur TCP, car il est le plus largement utilisé pour la communication fiable.
+La fiabilité ne signifie pas une livraison absolue. Une connexion peut expirer, être réinitialisée ou échouer, et un accusé de réception ne prouve pas que l'application a durablement validé les données.
 
-### UDP (User Datagram Protocol)
+:::single-choice{#transport-layer-tcp-boundaries}
+Que deviennent les limites des messages applicatifs dans TCP ?
 
-UDP est un protocole sans connexion qui offre une méthode de transport de données rapide mais non fiable. Il ne garantit pas que tous les segments arriveront ou qu'ils arriveront dans le bon ordre. Bien que cela puisse sembler être un inconvénient, UDP est très efficace pour les applications où la vitesse est plus critique que la précision parfaite, comme le streaming vidéo en direct ou les jeux en ligne. La perte de quelques images vidéo est souvent un compromis acceptable pour un flux plus fluide et plus rapide.
+::option[TCP expose un flux d'octets ordonné sans préserver les limites des écritures.]{#transport-layer-byte-stream .correct explanation="Le protocole applicatif doit définir la délimitation ou la taille de ses messages."}
+::option[Chaque écriture devient exactement un paquet IP et une lecture.]{#transport-layer-one-write-packet explanation="La segmentation, la mise en tampon et les API de réception ne préservent pas cette correspondance."}
+::option[TCP convertit chaque message en enregistrement DNS.]{#transport-layer-tcp-dns explanation="DNS est un protocole applicatif distinct."}
+:::
 
-### TCP (Transmission Control Protocol)
+## La poignée de main TCP
 
-TCP fournit un flux de données fiable et orienté connexion. Avant que toute donnée ne soit échangée, TCP établit une connexion formelle entre les deux hôtes pour s'assurer qu'ils sont tous deux prêts à communiquer.
+Une connexion TCP normale commence par une poignée de main en trois étapes :
 
-### La Poignée de Main TCP
+1. L'initiateur envoie `SYN` avec ses informations de séquence initiales.
+2. Le processus en écoute répond `SYN-ACK` avec ses propres informations de séquence et son accusé de réception.
+3. L'initiateur renvoie `ACK`.
 
-Pour établir une connexion, TCP utilise un processus appelé la poignée de main en trois étapes :
+Cet échange établit l'état du transport dans les deux terminaux. Il n'authentifie pas le serveur applicatif et ne prouve pas que l'opération applicative demandée réussira.
 
-1. **SYN** : Le client envoie un segment SYN (synchroniser) au serveur pour initier une connexion.
-2. **SYN-ACK** : Le serveur répond avec un segment SYN-ACK (synchroniser-acquitter) pour accuser réception de la demande du client.
-3. **ACK** : Le client renvoie un segment ACK (acquitter) au serveur, confirmant que la connexion est établie.
+:::single-choice{#transport-layer-handshake-order}
+Quel est l'ordre normal de la poignée de main TCP en trois étapes ?
 
-Une fois la poignée de main terminée, les données peuvent être échangées de manière fiable. TCP utilise des numéros de séquence pour suivre chaque segment, permettant à l'hôte récepteur de les réassembler dans le bon ordre et de demander la retransmission de tout segment manquant. Dans notre exemple de courrier électronique, la couche transport attacherait le port de destination pour SMTP (port 25) et un port source de l'hôte client à chaque segment.
+::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="L'échange synchronise et accuse réception de l'état initial de la connexion dans les deux directions."}
+::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="L'initiateur demande d'abord la synchronisation."}
+::option[SYN, FIN, RST.]{#transport-layer-syn-fin-rst explanation="FIN et RST ferment ou abandonnent l'état plutôt que d'établir une connexion normale."}
+:::
 
-## Exercise
+## Datagrammes UDP
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous vous recommandons d'explorer le [Parcours d'Apprentissage Linux](https://labex.io/fr/learn/linux) complet pour pratiquer les compétences et concepts Linux associés.
+UDP préserve les limites des datagrammes et fournit une détection des erreurs par somme de contrôle, mais n'offre pas l'état de connexion, l'ordre, la retransmission ni les contrôles de flux et de congestion de TCP. Une application peut ajouter elle-même la fiabilité ou le comportement de congestion dont elle a besoin. UDP n'est pas automatiquement plus rapide : les performances dépendent de la conception du protocole, de la charge, du trajet et de l'implémentation.
 
-## Quiz Question
+:::single-choice{#transport-layer-udp-boundaries}
+Quelle propriété UDP fournit-il aux applications ?
 
-What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
+::option[Un flux d'octets ordonné automatiquement retransmis.]{#transport-layer-udp-stream explanation="Cela décrit des services comparables à TCP, pas UDP de base."}
+::option[La préservation des limites entre les datagrammes soumis.]{#transport-layer-udp-datagrams .correct explanation="Un datagramme UDP reçu correspond à un datagramme envoyé, sauf s'il est perdu."}
+::option[La livraison garantie avant une échéance fixe.]{#transport-layer-udp-deadline explanation="UDP ne garantit aucune échéance de livraison."}
+:::
 
-## Quiz Answer
+## Examiner les terminaux de transport
 
-TCP
+Employez `ss` pour examiner les sockets en écoute et connectés sans les modifier :
+
+```bash
+$ ss -lntup
+$ ss -tn state established
+```
+
+Les détails des processus peuvent exiger des privilèges. Un socket en écoute prouve seulement la disponibilité locale à la frontière du transport ; le pare-feu, le routage, la famille d'adresses, TLS et la santé applicative exigent encore des tests adaptés.
+
+:::single-choice{#transport-layer-listener-proof}
+Qu'établit un socket TCP en écoute ?
+
+::option[Que chaque pare-feu distant autorise la connexion.]{#transport-layer-all-firewalls explanation="L'état du socket local ne révèle pas toutes les règles du trajet."}
+::option[Que l'application a réussi chacun de ses contrôles de santé.]{#transport-layer-all-health explanation="L'écoute constitue une preuve plus faible qu'une transaction applicative réussie."}
+::option[Qu'un processus local est prêt à accepter les connexions TCP correspondantes.]{#transport-layer-local-listener .correct explanation="L'accessibilité distante et les bonnes réponses applicatives restent des questions distinctes."}
+:::
+
+## Résumé
+
+Vous savez maintenant distinguer le comportement des flux TCP de celui des datagrammes UDP.
+
+1. Identifier un flux par le protocole, les adresses et les ports.
+2. Considérer TCP comme un flux d'octets fiable et ordonné sans limites de messages.
+3. Reconnaître ce que la poignée de main TCP prouve et ne prouve pas.
+4. Considérer la fiabilité et la congestion d'UDP comme des choix de conception applicatifs.
+5. Vérifier la santé applicative au-delà de l'état du socket local.

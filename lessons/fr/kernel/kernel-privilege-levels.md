@@ -1,59 +1,99 @@
 ---
-index: 2
+lesson_id: "kernel-privilege-levels"
+course_id: "kernel"
 lang: "fr"
-title: "Niveaux de privilèges"
-meta_title: "Niveaux de privilèges - Noyau"
-meta_description: "Explorez les concepts fondamentaux des niveaux de privilèges sous Linux. Cette leçon explique la différence entre le mode noyau et le mode utilisateur, le rôle des anneaux de protection, et comment les appels système fournissent un accès privilégié au matériel. Comprenez comment le noyau gère la sécurité et les privilèges du noyau."
-meta_keywords: "niveaux de privilèges Linux, mode noyau, mode utilisateur, anneaux de protection, appels système, accès privilégié, privilèges noyau, différence mode noyau mode utilisateur, sécurité Linux"
+order_index: 2
+title: "Niveaux de privilège"
+description: "Découvrez comment les privilèges du processeur séparent l'exécution utilisateur de l'exécution de confiance du noyau."
+meta_title: "Niveaux de privilège - Noyau"
+meta_description: "Explorez les niveaux de privilège Linux, les modes noyau et utilisateur, les anneaux de protection et les transitions par appels système."
+meta_keywords: "niveaux privilège Linux, mode noyau, mode utilisateur, anneaux protection, appels système, accès privilégié"
 ---
 
-## Lesson Content
+Les processeurs fournissent des modes de privilège qui limitent les instructions sensibles et les accès mémoire. Linux emploie cette frontière matérielle afin que les défaillances ordinaires des applications ne puissent pas écraser directement la mémoire du noyau ou reconfigurer les périphériques. Le noyau contrôle les transitions vers l'exécution privilégiée.
 
-Les prochaines leçons couvrent des concepts plus théoriques. Si vous préférez la pratique concrète, n'hésitez pas à sauter ces sections et à revenir à ces sujets plus tard.
+## Mode utilisateur
 
-Un aspect fondamental de l'architecture Linux est la séparation entre l'espace utilisateur et le noyau. Mais pourquoi ne pouvons-nous pas combiner leurs pouvoirs en une seule couche ? La raison est la sécurité et la stabilité, ce qui est obtenu en les faisant fonctionner dans des modes différents.
+Un processus ordinaire s'exécute en mode utilisateur dans son espace d'adressage virtuel. Il peut calculer librement et accéder aux mappages mémoire accordés par le noyau, lesquels peuvent être vastes ; le mode utilisateur ne signifie donc pas « seulement une petite quantité de mémoire ». Il ne peut pas accéder directement à une adresse physique arbitraire, aux mappages privés d'un autre processus ou aux contrôles privilégiés du processeur.
 
-### Quelle est la différence entre le mode noyau et le mode utilisateur
+Les tables de pages et les bits de protection imposent les accès mémoire. Si un thread référence une adresse invalide ou interdite, le processeur provoque une exception vers le noyau, qui peut résoudre un défaut de page valide ou livrer un signal comme `SIGSEGV`.
 
-Le système fonctionne selon deux modes distincts : le mode noyau et le mode utilisateur. Cette séparation est cruciale pour protéger le matériel et les ressources du système contre un accès direct et incontrôlé par les applications.
+:::single-choice{#kernel-privilege-user-mode-memory}
+À quelle mémoire un processus en mode utilisateur peut-il normalement accéder directement ?
 
-En **mode noyau**, le noyau a un accès complet et illimité au matériel ; il contrôle tout. C'est le niveau de privilège le plus élevé.
+::option[À chaque adresse physique de la RAM et à toute la mémoire du noyau.]{#kernel-privilege-all-physical explanation="Les privilèges et la protection de la mémoire virtuelle empêchent ces accès."}
+::option[À un seul octet fixe choisi au démarrage du processus.]{#kernel-privilege-one-byte explanation="Un processus peut posséder de nombreuses régions mappées tout en restant non privilégié."}
+::option[Aux mappages autorisés dans son propre espace d'adressage virtuel.]{#kernel-privilege-own-mappings .correct explanation="Les protections matérielles des pages limitent le processus aux mappages établis avec les accès appropriés."}
+:::
 
-En **mode utilisateur**, les applications ont un accès très limité à une petite partie sûre de la mémoire et des ressources du processeur.
+## Mode noyau
 
-Lorsqu'une application utilisateur doit effectuer une action impliquant le matériel — comme lire depuis un disque, envoyer des données sur le réseau ou accéder à un périphérique — elle ne peut pas le faire directement. Ces opérations doivent être gérées par le noyau en mode noyau. Cette conception empêche un programme défectueux ou malveillant de compromettre l'ensemble du système. Par exemple, vous ne voudriez pas que des logiciels espions aient un accès direct au matériel, car ils pourraient lire toutes vos données ou contrôler votre webcam.
+Le mode noyau autorise l'exécution d'instructions privilégiées et l'accès aux mappages protégés nécessaires à la gestion de la mémoire, l'ordonnancement, la gestion des interruptions et les pilotes. Sur x86, cette séparation Linux est couramment décrite comme le ring 0 pour le noyau et le ring 3 pour les processus utilisateur. Linux n'emploie normalement pas les rings 1 et 2 pour l'isolation ordinaire des processus.
 
-### Anneaux de protection et accès privilégié
+Les autres architectures possèdent des noms et mécanismes différents, comme les niveaux d'exception. La virtualisation ajoute les relations entre hyperviseur et invités, qui ne rentrent pas dans un simple schéma à deux anneaux. L'idée essentielle est le privilège contrôlé, pas les numéros propres à x86.
 
-Ces différents modes sont souvent décrits comme des **niveaux de privilège** ou des **anneaux de protection**. Imaginez une forteresse avec des murs concentriques : la zone la plus intérieure est la plus sécurisée et possède l'autorité la plus élevée. Les anneaux de protection dans un ordinateur fonctionnent de manière similaire, l'anneau le plus intérieur correspondant au niveau de privilège le plus élevé.
+:::single-choice{#kernel-privilege-x86-kernel-ring}
+Dans quel anneau de protection x86 le noyau Linux s'exécute-t-il normalement ?
 
-Sur une architecture informatique x86 standard, il existe deux niveaux principaux :
+::option[Ring 3.]{#kernel-privilege-ring-three explanation="Le ring 3 est le niveau de privilège conventionnel du mode utilisateur."}
+::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="Le noyau emploie l'anneau x86 traditionnel le plus privilégié."}
+::option[Ring 7.]{#kernel-privilege-ring-seven explanation="Les anneaux de protection x86 traditionnels sont numérotés de 0 à 3."}
+:::
 
-- **Anneau 0** : C'est là que le noyau s'exécute. Il possède le plus haut niveau de **privilèges noyau**, peut exécuter n'importe quelle instruction système et a toute confiance pour gérer le matériel. C'est le cœur de l'**accès privilégié**.
-- **Anneau 3** : C'est le niveau où s'exécutent les applications en mode utilisateur. C'est l'anneau le moins privilégié et il n'a aucun accès direct au matériel.
+## Transitions contrôlées
 
-Ce modèle de sécurité basé sur les anneaux garantit que les applications utilisateur sont isolées des composants critiques du système. Mais si les applications sont toujours dans un mode différent de celui du noyau, comment peuvent-elles effectuer les opérations matérielles nécessaires ?
+Plusieurs événements transfèrent le contrôle à un point d'entrée du noyau :
 
-### Appels système et privilèges noyau
+- une instruction d'appel système demande un service du noyau ;
+- une exception signale une situation comme un défaut de page ou une instruction invalide ;
+- une interruption matérielle signale un événement externe.
 
-Le pont entre le mode utilisateur et le mode noyau est l'**appel système**. Lorsqu'une application utilisateur doit effectuer une tâche privilégiée, elle effectue un appel système pour demander au noyau d'effectuer l'action en son nom.
+Le processeur enregistre le contexte d'exécution, change de privilège selon les mécanismes d'entrée configurés et commence à exécuter le code de confiance du noyau. Le noyau valide la demande et l'état, exécute ou refuse le travail, puis revient au mode utilisateur lorsque cela convient.
 
-Ce processus permet à l'application de passer temporairement et en toute sécurité du mode utilisateur au mode noyau pour exécuter une instruction spécifique et contrôlée. Une fois la tâche terminée, le système revient en mode utilisateur. Ce mécanisme garantit que les applications peuvent obtenir les services dont elles ont besoin sans acquérir un **accès privilégié** direct et dangereux au matériel.
+L'application ne devient pas temporairement du code du noyau. Le processeur exécute un gestionnaire du noyau pour le compte du thread, avec des piles et mappages contrôlés par le noyau.
 
-## Exercise
+:::single-choice{#kernel-privilege-system-call-transition}
+Que se produit-il pendant une transition d'appel système ?
 
-La pratique rend parfait ! Comprendre les concepts théoriques de l'espace utilisateur, de l'espace noyau et des niveaux de privilège est crucial, mais l'expérience pratique aide à solidifier la manière dont ces concepts se manifestent dans l'administration Linux pratique. Voici quelques laboratoires pratiques pour renforcer votre compréhension de la manière dont les actions au niveau utilisateur interagissent avec le système sous-jacent :
+::option[Le code utilisateur de l'application reçoit un accès illimité au ring 0.]{#kernel-privilege-user-ring-zero explanation="Seul le code de confiance du noyau s'exécute après l'entrée contrôlée."}
+::option[Le processus change définitivement son UID en zéro.]{#kernel-privilege-uid-zero explanation="La transition du mode processeur ne réécrit pas les identifiants utilisateur."}
+::option[Le contrôle entre dans un gestionnaire défini du noyau qui valide la demande.]{#kernel-privilege-kernel-handler .correct explanation="Le processeur change de mode par un chemin d'entrée configuré tout en préservant le contexte utilisateur pour le retour."}
+:::
 
-1. **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Entraînez-vous à créer, modifier et supprimer des comptes utilisateurs, ce qui est directement lié à la gestion des entités qui opèrent dans l'espace utilisateur et nécessitent une interaction noyau pour les actions privilégiées.
-2. **[Gérer les permissions de fichiers et de répertoires sous Linux](https://labex.io/fr/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** - Apprenez à contrôler l'accès aux fichiers et aux répertoires, un concept de sécurité fondamental qui repose sur le noyau appliquant les permissions en fonction des privilèges de l'utilisateur.
-3. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Explorez comment interagir et surveiller les processus, qui sont des applications en espace utilisateur qui effectuent des appels système au noyau pour la gestion des ressources et l'exécution.
+## Le privilège du processeur n'est pas l'identité de l'utilisateur
 
-Ces laboratoires vous aideront à appliquer les concepts d'interaction utilisateur avec le système Linux, où le rôle du noyau dans la gestion des ressources et l'application des privilèges est primordial, et à renforcer votre confiance dans les tâches d'administration Linux fondamentales.
+Une application exécutée comme utilisateur Linux `root` reste normalement en mode utilisateur. L'UID 0 influence les contrôles d'autorisation du noyau, mais ne permet pas à ses instructions d'accéder directement à la mémoire du noyau. Inversement, le code du noyau s'exécute en mode privilégié quel que soit l'utilisateur qui a provoqué son exécution par un appel système.
 
-## Quiz Question
+Les capacités, espaces de noms, seccomp, modules de sécurité et cgroups limitent davantage ce qu'un processus peut demander. Ces règles en couches sont distinctes de la frontière matérielle entre modes utilisateur et noyau.
 
-Quel numéro d'anneau possède les privilèges les plus élevés ?
+:::single-choice{#kernel-privilege-root-distinction}
+Quelle affirmation compare correctement l'identité root et le mode noyau ?
 
-## Quiz Answer
+::option[Root est un identifiant de l'espace utilisateur ; le mode noyau est un privilège d'exécution du processeur.]{#kernel-privilege-credential-versus-mode .correct explanation="Un processus root formule des demandes autorisées depuis le mode utilisateur, tandis que le code de confiance du noyau effectue l'exécution privilégiée."}
+::option[Chaque instruction appartenant à root s'exécute comme code chargeable du noyau.]{#kernel-privilege-root-kernel-code explanation="L'UID propriétaire ne transforme pas un exécutable en module du noyau."}
+::option[Le mode noyau est un autre nom d'utilisateur stocké dans `/etc/passwd`.]{#kernel-privilege-kernel-username explanation="Les modes du processeur sont des états matériels, pas des comptes de connexion."}
+:::
 
-0
+## Importance de la frontière
+
+La frontière limite les dommages causés par les bogues ordinaires et fournit un point de contrôle des accès, mais les vulnérabilités du noyau et les modules malveillants peuvent la vaincre. Maintenez noyau et micrologiciel à jour par des canaux fiables, réduisez le code privilégié et évitez les modules non fiables.
+
+Les problèmes d'exécution spéculative et les canaux auxiliaires montrent également que l'isolation matérielle exige des mesures d'atténuation permanentes ; « un anneau différent » est un fondement, pas une preuve de sécurité complète.
+
+:::single-choice{#kernel-privilege-boundary-limit}
+La séparation des modes utilisateur et noyau garantit-elle la sécurité complète du système ?
+
+::option[Oui ; les vulnérabilités du noyau ne peuvent pas toucher les processus utilisateur.]{#kernel-privilege-no-kernel-vulns explanation="Une vulnérabilité du noyau peut compromettre tout le système."}
+::option[Non ; les défauts du code privilégié et les canaux auxiliaires peuvent toujours franchir les frontières prévues.]{#kernel-privilege-not-complete .correct explanation="La séparation des modes réduit la surface d'attaque, mais doit s'accompagner d'un code du noyau correct et de mesures supplémentaires."}
+::option[Oui ; les modes matériels suppriment le besoin de règles de contrôle d'accès.]{#kernel-privilege-no-policy explanation="Les identifiants et règles de sécurité restent essentiels au partage autorisé des ressources."}
+:::
+
+## Résumé
+
+Vous savez maintenant distinguer le privilège matériel d'exécution de l'autorité des comptes Linux.
+
+1. Relier le mode utilisateur aux espaces d'adressage virtuels protégés.
+2. Relier le mode noyau aux instructions et mappages privilégiés.
+3. Considérer les appels système, exceptions et interruptions comme des entrées contrôlées.
+4. Distinguer l'autorisation de l'UID 0 de l'exécution en ring 0.
+5. Voir les modes de privilège comme une couche d'une conception de sécurité plus large.

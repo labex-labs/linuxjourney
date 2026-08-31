@@ -1,50 +1,81 @@
 ---
-index: 5
+lesson_id: "arp-command"
+course_id: "network-config"
 lang: "en"
+order_index: 5
 title: "arp"
+description: "Learn how to inspect and interpret Linux IPv4 ARP and IPv6 neighbor-cache state."
 meta_title: "arp - Network Config"
 meta_description: "Learn about the Linux ARP command and how to view your ARP cache. Understand ARP's role in network communication. A beginner's guide to ARP."
 meta_keywords: "Linux ARP, ARP cache, ip neighbour show, network commands, Linux networking, beginner Linux, Linux tutorial"
 ---
 
-## Lesson Content
+Linux stores recently resolved next-hop link addresses in the neighbor table. For IPv4 over Ethernet, entries are learned through ARP; IPv6 uses Neighbor Discovery. The legacy `arp` command shows only part of this state, while `ip neighbor` handles both families.
 
-Remember when we look up a MAC address with ARP, it first checks the locally stored ARP cache on our system. You can actually view this cache:
+## Viewing Neighbor Entries
 
-```
-pete@icebox:~$ arp
-Address                  HWtype  HWaddress           Flags Mask            Iface
-192.168.22.1            ether   00:12:24:fc:12:cc   C                     eth0
-192.168.22.254          ether   00:12:45:f2:84:64   C                     eth0
-```
-
-The ARP cache is actually empty when a machine boots up; it gets populated as packets are being sent to other hosts. If we send a packet to a destination that isn't in the ARP cache, the following happens:
-
-1. The source host creates the Ethernet frame with an ARP request packet.
-2. The source host broadcasts this frame to the entire network.
-3. If one of the hosts on the network knows the correct MAC address, it will send a reply packet and frame containing the MAC address.
-4. The source host adds the IP to MAC address mapping to the ARP cache and then proceeds with sending the packet.
-
-You can also view your ARP cache via the `ip` command:
+Inspect all entries or one interface:
 
 ```bash
-ip neighbour show
+$ ip neighbor show
+$ ip neighbor show dev enp1s0
 ```
 
-## Exercise
+An entry includes an IP address, link-layer address, device, and reachability state. The table can be empty after boot and populate as traffic needs local next hops.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of ARP and network layer interaction:
+:::single-choice{#arp-command-modern-view}
+Which command displays modern Linux neighbor-table state?
 
-1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use `ping` and `arp` commands to observe how IP addresses are resolved to MAC addresses and how the default gateway handles traffic.
-2. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Learn to use the `ip a` command to identify network addressing information, including MAC and IP addresses, which are fundamental to understanding ARP.
-3. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Practice managing IP addressing using the `ip` command and verify network configuration with `arp` and `traceroute`.
+::option[`pwd neighbor`]{#arp-command-pwd explanation="Pwd reports the shell working directory."}
+::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="It reports both IPv4 ARP-derived and IPv6 Neighbor Discovery entries."}
+::option[`route --passwords`]{#arp-command-route-passwords explanation="No such route inspection should expose credentials."}
+:::
 
-These labs will help you apply the concepts of ARP and network addressing in real scenarios and build confidence with Linux networking.
+## Resolving an IPv4 Neighbor
 
-## Quiz Question
+When an on-link IPv4 mapping is absent, a host broadcasts an ARP request asking who owns the target address. The target, or a router explicitly performing proxy ARP, replies. The sender caches the mapping and transmits the waiting frame.
 
-What command can you use to view your ARP cache?
+For a remote IP destination, the host resolves the selected gateway's address rather than the remote host's MAC.
 
-## Quiz Answer
+:::single-choice{#arp-command-remote-target}
+Which IPv4 neighbor does a host resolve for an off-link destination?
 
-arp
+::option[The final remote server across all routers.]{#arp-command-final-server explanation="Its MAC address has no meaning on the source link."}
+::option[Every DNS server listed in resolver configuration.]{#arp-command-all-dns explanation="Neighbor resolution follows the selected route, not the resolver list."}
+::option[The selected on-link gateway.]{#arp-command-gateway .correct explanation="The local Ethernet frame is addressed to the router that forwards the IP packet."}
+:::
+
+## Interpreting States
+
+Common states include `REACHABLE`, `STALE`, `DELAY`, `PROBE`, `INCOMPLETE`, and `FAILED`. `STALE` means recent reachability confirmation has expired; the cached address can still be used while the stack probes as needed. `FAILED` indicates resolution or reachability detection did not succeed, but causes can include link, VLAN, address, route, filtering, or the peer being down.
+
+:::single-choice{#arp-command-stale-state}
+Does `STALE` mean the neighbor is known to be unreachable?
+
+::option[No; it lacks recent confirmation and can be probed on use.]{#arp-command-stale-probe .correct explanation="The state is not equivalent to `FAILED`."}
+::option[Yes, and the entry can never be used again.]{#arp-command-stale-dead explanation="Stale entries remain candidates and can transition after reachability checks."}
+::option[Yes, because its DNS record expired.]{#arp-command-stale-dns explanation="Neighbor state and DNS caching are separate."}
+:::
+
+## Changing Neighbor State Carefully
+
+Static entries and cache flushes are state-changing and can disrupt active traffic or hide the original evidence. Capture current routes, packet counters, and neighbor state first. Prefer a targeted probe and packet capture on an authorized test network before flushing an entire interface.
+
+ARP has no built-in authentication, so duplicate addresses or spoofed replies can poison mappings. Switch protections, segmentation, monitoring, and higher-layer authentication help reduce impact.
+
+:::single-choice{#arp-command-flush-first}
+Why avoid flushing the whole neighbor table as the first diagnostic step?
+
+::option[Neighbor entries are stored only in DNS root servers.]{#arp-command-neighbors-dns explanation="They are maintained by the local network stack."}
+::option[A flush permanently removes the interface hardware.]{#arp-command-flush-hardware explanation="It removes cache entries, not physical devices."}
+::option[It changes evidence and can interrupt otherwise working next hops.]{#arp-command-flush-disrupts .correct explanation="Read-only inspection and targeted tests preserve the state needed to diagnose the cause."}
+:::
+
+## Summary
+
+You can now inspect neighbor resolution without treating every cache state as failure.
+
+1. Use `ip neighbor` for IPv4 and IPv6 state.
+2. Resolve the destination only when it is on-link.
+3. Resolve a gateway for off-link IP traffic.
+4. Preserve cache evidence before targeted state changes.

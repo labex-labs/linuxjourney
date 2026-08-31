@@ -1,15 +1,16 @@
 ---
-index: 11
+lesson_id: "move-mv-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 11
 title: "mv (Mover)"
+description: "Aprenda a renomear e mover arquivos ou diretórios evitando substituições indesejadas."
 meta_title: "mv (Mover) - Linha de Comando"
-meta_description: "Aprenda o comando Linux mv com exemplos para mover arquivos, renomear arquivos e diretórios, mover múltiplos arquivos e evitar sobrescritas."
-meta_keywords: "comando linux mv, comando mv, mover arquivos linux, renomear arquivo linux, renomear diretório linux, mv -i, mv -n, mv -t"
+meta_description: "Aprenda o comando mv do Linux com exemplos para mover e renomear arquivos e diretórios, mover vários arquivos e evitar substituições."
+meta_keywords: "comando mv Linux, comando mv, mover arquivos Linux, renomear arquivo Linux, renomear diretório Linux, mv -i, mv -n, mv -t"
 ---
 
-## Lesson Content
-
-O comando `mv`, abreviação de "mover", é uma ferramenta fundamental em qualquer ambiente Linux. Ele serve a dois propósitos principais: renomear arquivos ou diretórios e movê-los para um local diferente.
+O comando `mv` renomeia um arquivo ou diretório, ou o move para outro local. Ao contrário de `cp`, ele não mantém o caminho original após uma movimentação bem-sucedida.
 
 A sintaxe básica é:
 
@@ -17,11 +18,9 @@ A sintaxe básica é:
 mv [OPTIONS] SOURCE DESTINATION
 ```
 
-Ao contrário do `cp`, que cria uma cópia, o `mv` altera onde o item original está localizado ou como ele é chamado.
+## Renomeação de Arquivos e Diretórios
 
-### Renomeando Arquivos e Diretórios
-
-Um dos usos mais comuns do `mv` é renomear. A sintaxe é simples: especifique o nome antigo e o novo nome.
+Para renomear um item, coloque primeiro o caminho atual e depois o novo caminho.
 
 Para renomear um arquivo:
 
@@ -29,107 +28,130 @@ Para renomear um arquivo:
 $ mv oldfile newfile
 ```
 
-Essa mesma lógica se aplica para renomear diretórios:
+A mesma ordem dos operandos renomeia um diretório:
 
 ```bash
 $ mv old_directory_name new_directory_name
 ```
 
-### Movendo Arquivos e Diretórios
+:::single-choice{#rename-file-with-mv}
+Qual comando renomeia `cat` como `dog` no diretório atual?
 
-A outra função principal do comando `mv` é mover itens de um local para outro.
+::option[`mv cat dog`]{#rename-cat .correct explanation="`mv` trata `cat` como o caminho de origem e `dog` como seu novo caminho de destino."}
+::option[`mv dog cat`]{#rename-dog explanation="A ordem dos operandos está invertida. Esse comando tentaria renomear um `dog` existente como `cat`."}
+::option[`cp cat dog`]{#copy-cat explanation="`cp` criaria uma cópia chamada `dog` e manteria `cat`. Ele não realizaria a renomeação solicitada."}
+:::
 
-Para mover um único arquivo para um diretório diferente:
+## Movimentação de Itens para um Diretório
+
+Quando o último operando é um diretório existente, `mv` coloca a origem dentro dele:
 
 ```bash
 $ mv file2 /home/pete/Documents
 ```
 
-Você também pode mover múltiplos arquivos de uma vez. Basta listar todos os arquivos de origem seguidos pelo diretório de destino:
+Para mover várias origens, liste-as primeiro e coloque o diretório de destino por último:
 
 ```bash
 $ mv file_1 file_2 somedirectory/
 ```
 
-Em sistemas GNU/Linux, uma opção útil para isso é `-t`, que permite especificar o diretório de destino primeiro. Isso pode ser mais claro ao mover muitos arquivos.
+O GNU `mv` também oferece `-t` para colocar o diretório de destino antes das origens:
 
 ```bash
 $ mv -t somedirectory/ file_1 file_2
 ```
 
-Ao contrário do comando `cp`, você não precisa de uma opção recursiva para mover um diretório. O `mv` lida com diretórios por padrão.
+Ao contrário de `cp`, `mv` não precisa de uma opção recursiva para um diretório.
 
-### Opções Importantes para o Comando mv
+:::single-choice{#move-multiple-files}
+Qual comando move `file_1` e `file_2` para o diretório existente `archive/`?
 
-Por padrão, se você mover um arquivo para um destino onde já existe um arquivo com o mesmo nome, o `mv` irá sobrescrevê-lo sem aviso. Para evitar perda acidental de dados, você pode usar as seguintes opções:
+::option[`mv archive/ file_1 file_2`]{#target-first-without-option explanation="Sem a opção GNU `-t`, uma movimentação com várias origens espera o diretório de destino por último. Essa não é a forma padrão."}
+::option[`mv -r file_1 file_2 archive/`]{#recursive-move explanation="`mv` não usa `-r` para mover arquivos ou diretórios. A forma comum com várias origens já realiza a movimentação solicitada."}
+::option[`mv file_1 file_2 archive/`]{#target-last .correct explanation="Com várias origens, o diretório de destino existente é o último operando e recebe os dois arquivos."}
+:::
 
-- **-i (interativo)**: Esta é uma funcionalidade de segurança crucial. Ela solicitará confirmação antes de sobrescrever qualquer arquivo existente.
+## Controle dos Destinos Existentes
+
+Por padrão, `mv` pode substituir um destino existente. Inspecione os caminhos de origem e destino antes de executar uma movimentação e escolha uma política de substituição quando necessário:
+
+- `-i`: solicita confirmação antes de substituir um destino existente.
 
   ```bash
   $ mv -i source_file destination_directory
   ```
 
-- **-b (backup)**: Se você pretende sobrescrever um arquivo, mas quer manter a versão antiga, essa opção cria um backup do arquivo de destino. O backup normalmente é renomeado com um sufixo til (`~`).
+- `-n`: não sobrescreve um destino existente.
+
+  ```bash
+  $ mv -n source_file destination_directory
+  ```
+
+- `-b`: no GNU/Linux, cria um backup do destino que seria substituído. O sufixo padrão do backup geralmente é `~`.
 
   ```bash
   $ mv -b file1 directory_with_file1
   ```
 
-- **-v (verbose)**: Essa opção faz o comando `mv` imprimir o que está fazendo, mostrando cada arquivo sendo movido ou renomeado.
-
-  ```bash
-  $ mv -v file1 file2 somedirectory/
-  ```
-
-Outra opção útil é `-n`, que significa sem sobrescrever. Ela impede a sobrescrição de um arquivo de destino existente.
+- `-v`: mostra cada movimentação conforme ela ocorre.
 
 ```bash
-$ mv -n source_file destination_directory
+$ mv -v file1 file2 somedirectory/
 ```
 
-### Exemplos Comuns de mv
+:::single-choice{#move-without-overwriting}
+Qual comando move `draft.txt` para `finished/` somente se isso não sobrescrever um destino existente?
 
-Renomear um arquivo:
+::option[`mv -i draft.txt finished/`]{#interactive-draft explanation="A opção `-i` pergunta o que fazer quando há um destino. Ainda pode ocorrer uma substituição se o usuário a confirmar."}
+::option[`mv -b draft.txt finished/`]{#backup-draft explanation="A opção `-b` permite a substituição e mantém um backup do destino anterior. Ela não impede a sobrescrita."}
+::option[`mv -n draft.txt finished/`]{#no-clobber-draft .correct explanation="A opção `-n` ignora uma movimentação que sobrescreveria um destino existente."}
+:::
 
-```bash
-$ mv draft.txt final.txt
-```
+## Movimentação de Diretórios e Correspondências de Curingas
 
-Mover um diretório:
+Um diretório pode ser movido sem `-r`:
 
 ```bash
 $ mv project /home/pete/Documents/
 ```
 
-Mover todos os arquivos de texto para uma pasta:
+Curingas do shell podem selecionar várias origens:
 
 ```bash
+$ ls *.txt
 $ mv *.txt notes/
 ```
 
-Visualize as correspondências de curingas com `ls` antes de mover muitos arquivos.
+Visualizar as correspondências com `ls` ajuda a detectar um padrão amplo demais antes de alterar vários caminhos.
 
-### Perguntas Comuns
+:::single-choice{#move-directory-without-recursion}
+Qual comando move o diretório `project/` para `/srv/archive/`?
 
-**O mv copia arquivos?** Não. O `mv` move ou renomeia o item original.
+::option[`mv -r project/ /srv/archive/`]{#recursive-project explanation="`mv` não precisa nem oferece suporte a `-r` para essa finalidade. Os diretórios são tratados pela operação comum de movimentação."}
+::option[`mv project/ /srv/archive/`]{#move-project .correct explanation="A sintaxe comum de `mv` move um diretório para um diretório de destino existente sem um sinalizador recursivo."}
+::option[`cp project/ /srv/archive/`]{#copy-project explanation="Um `cp` simples não move o diretório e precisaria de uma opção recursiva para copiá-lo. A origem também continuaria no lugar."}
+:::
 
-**O mv pode sobrescrever arquivos?** Sim. Use `mv -i` para perguntar antes ou `mv -n` para evitar sobrescrever.
+:::single-choice{#preview-text-file-move}
+Você pretende executar `mv *.txt notes/`. Qual comando visualiza os caminhos selecionados pelo mesmo curinga?
 
-**Preciso de mv -r para diretórios?** Não. O `mv` move diretórios sem `-r`.
+::option[`ls '*.txt'`]{#literal-text-pattern explanation="As aspas impedem o shell de expandir `*`; assim, o comando procura um nome literal com asterisco em vez de mostrar o conjunto da movimentação."}
+::option[`ls *.txt`]{#list-text-matches .correct explanation="O shell expande `*.txt` para `ls` da mesma forma que faria para `mv`, permitindo inspecionar primeiro os nomes não ocultos selecionados."}
+::option[`mv -v *.txt notes/`]{#verbose-text-move explanation="O modo detalhado relata as movimentações enquanto elas acontecem. Ele realiza a operação, em vez de oferecer uma visualização somente para leitura."}
+:::
 
-## Exercise
+Para praticar a movimentação e a renomeação de itens, experimente estes laboratórios:
 
-A prática leva à perfeição! A experiência prática é crucial para dominar comandos Linux como o `mv`. Estes laboratórios ajudarão você a consolidar seu entendimento sobre mover e renomear arquivos e diretórios em um ambiente real:
+1. **[Comando mv do Linux: Movimentação e Renomeação de Arquivos](https://labex.io/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** — Pratique o uso de `mv` para mover e renomear arquivos e diretórios, conhecendo suas opções e comportamentos.
+2. **[Organização de Arquivos e Diretórios](https://labex.io/labs/linux-organizing-files-and-directories-387877)** — Aplique seu conhecimento de `mv`, junto com `cp` e `rm`, em um desafio prático para organizar um projeto, mover arquivos e eliminar diretórios desnecessários.
 
-1. **[Comando Linux mv: Movendo e Renomeando Arquivos](https://labex.io/pt/labs/linux-linux-mv-command-file-moving-and-renaming-209743)** - Pratique o uso do comando `mv` para mover e renomear arquivos e diretórios, incluindo o entendimento de suas várias opções e comportamentos.
-2. **[Organizando Arquivos e Diretórios](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Aplique seu conhecimento do `mv` (junto com `cp` e `rm`) em um desafio prático para organizar a estrutura de um projeto, mover arquivos e limpar diretórios.
+## Resumo
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e ganhar confiança no gerenciamento de arquivos e diretórios usando o comando `mv`.
+Agora você sabe renomear e mover arquivos ou diretórios protegendo os destinos existentes.
 
-## Quiz Question
-
-Usando o comando `mv`, como você renomearia um arquivo chamado `cat` para `dog`? Por favor, forneça o comando completo. Nota: A resposta é sensível a maiúsculas e deve ser inserida em inglês minúsculo.
-
-## Quiz Answer
-
-mv cat dog
+1. Coloque a origem antes de seu novo caminho.
+2. Coloque o diretório de destino depois de várias origens.
+3. Pergunte, ignore ou crie um backup antes de substituir um destino.
+4. Mova diretórios sem uma opção recursiva.
+5. Visualize as correspondências de curingas antes de uma movimentação em massa.

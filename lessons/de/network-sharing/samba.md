@@ -1,105 +1,126 @@
 ---
-index: 5
+lesson_id: "samba"
+course_id: "network-sharing"
 lang: "de"
+order_index: 5
 title: "Samba"
-meta_title: "Samba - Netzwerkfreigabe"
-meta_description: "Erfahren Sie, wie Sie eine Samba-Netzwerkfreigabe unter Linux einrichten. Diese Anleitung behandelt das Samba-Protokoll, Installation, Konfiguration und die Verwendung von smb-Linux-Clients zur Verbindung mit Freigaben."
-meta_keywords: "Samba, smb linux, linux smb, samba netzwerk, samba protokoll, smb samba, dateifreigabe, smb.conf, cifs, smbclient, linux anleitung"
+description: "Lerne, eine grundlegende Samba-Dateifreigabe zu konfigurieren, zu validieren, aufzurufen und abzusichern."
+meta_title: "Samba – Netzwerkfreigaben"
+meta_description: "Lerne, eine Samba-Netzwerkfreigabe unter Linux einzurichten. Diese Anleitung behandelt SMB-Protokoll, Installation, Konfiguration und den Zugriff mit Linux-SMB-Clients."
+meta_keywords: "Samba, SMB Linux, Linux SMB, Samba-Netzwerk, Samba-Protokoll, SMB Samba, Dateifreigabe, smb.conf, cifs, smbclient, Linux-Tutorial"
 ---
 
-## Lesson Content
+Samba implementiert das Server Message Block Protocol auf Unix-artigen Systemen und ermöglicht Linux-, Windows-, macOS- und anderen Clients die gemeinsame Nutzung von Dateien und Druckern. Moderne Installationen verwenden aktuelle SMB-Dialekte. Der ältere Begriff CIFS ist weiterhin in Linux-Clientwerkzeugen sichtbar, sollte aber nicht als Grund verstanden werden, das veraltete SMB1 zu aktivieren.
 
-Jahrzehntelang war die gemeinsame Nutzung von Dateien zwischen Windows- und Linux-Rechnern eine primäre Herausforderung in gemischten Betriebssystemumgebungen. Die Lösung, die sich herauskristallisierte, ist das Server Message Block (SMB) Protokoll. Ursprünglich für Windows entwickelt, wurde das **Samba-Protokoll** später zu einem Dialekt verfeinert, der als Common Internet File System (CIFS) bekannt ist. Heutzutage verwenden moderne Systeme neuere Versionen von SMB, aber die Begriffe werden oft zusammen verwendet.
+## Die Freigabe planen
 
-Samba ist die leistungsstarke Software-Suite, die das **SMB/CIFS**-Protokoll auf Linux und anderen Unix-ähnlichen Systemen implementiert. Es ist der Schlüssel zur **smb linux**-Integration und ermöglicht es einem Linux-Server, als Datei- und Druckserver für Windows-, macOS- und andere Linux-Clients zu fungieren und so ein nahtloses **Samba-Netzwerk** zu schaffen. Die Beziehung zwischen **smb samba** ist einfach: Samba ist die Software, die die SMB-Sprache spricht.
+Lege vor der Installation oder Änderung von Samba die autorisierten Clients, Identitäten, Lese-/Schreibanforderungen, Netzwerkzone, Dateneigentümer, Sicherungsrichtlinie und den erforderlichen SMB-Dialekt fest. Verwende ein eigenes Verzeichnis, statt unbeabsichtigt einen Home- oder Systembaum offenzulegen.
 
-### Samba unter Linux installieren
+Der Zugriff wird sowohl durch die Samba-Richtlinie als auch die zugrunde liegenden Dateisystemberechtigungen gesteuert. Schreibzugriff in `smb.conf` kann einem Konto keinen Dateisystemzugriff gewähren, den es nicht besitzt.
 
-Zuerst müssen Sie das Samba-Paket installieren. Der Befehl variiert je nach Paketmanager Ihrer Linux-Distribution. Für Debian-basierte Systeme wie Ubuntu verwenden Sie Folgendes:
+:::single-choice{#samba-two-permission-layers}
+Was muss einem Benutzer das Schreiben über eine Samba-Freigabe erlauben?
 
-```bash
-sudo apt update
-sudo apt install samba
-```
+::option[Nur der angezeigte Kommentar der Freigabe.]{#samba-comment-permission explanation="Ein Kommentar ist beschreibender Text und gewährt keinen Zugriff."}
+::option[Sowohl Samba-Regeln als auch Dateisystemberechtigungen.]{#samba-policy-and-filesystem .correct explanation="Die Anfrage muss die Regeln auf Protokollebene und die lokale Dateisystemautorisierung bestehen."}
+::option[Nur die Einstellung des Desktophintergrunds auf dem Client.]{#samba-wallpaper explanation="Darstellungseinstellungen des Clients steuern keine Serverdateien."}
+:::
 
-### Eine Samba-Freigabe konfigurieren
+## Eine grundlegende Freigabe definieren
 
-Die Hauptkonfigurationsdatei für Samba befindet sich unter `/etc/samba/smb.conf`. Diese Datei legt fest, welche Verzeichnisse freigegeben werden, wer darauf zugreifen kann und welche Berechtigungen gelten. Die Standarddatei enthält viele auskommentierte Beispiele, die als hervorragende Referenz dienen.
-
-Gehen wir die Schritte zur Konfiguration einer einfachen Freigabe durch.
-
-Öffnen Sie zuerst die Konfigurationsdatei in einem Texteditor:
-
-```bash
-sudo nano /etc/samba/smb.conf
-```
-
-Fügen Sie am Ende der Datei einen neuen Abschnitt für Ihre Freigabe hinzu. Der Name in den Klammern ist der Name der Freigabe, der im Netzwerk sichtbar ist.
+Die Hauptkonfiguration ist gewöhnlich `/etc/samba/smb.conf`. Ein eingeschränktes Beispiel lautet:
 
 ```ini
-[myshare]
-    comment = Meine erste Samba-Freigabe
-    path = /my/directory/to/share
+[team]
+    path = /srv/samba/team
+    browseable = yes
     read only = no
-    browsable = yes
+    valid users = @teamshare
 ```
 
-Erstellen Sie als Nächstes das Verzeichnis, das Sie in der Konfiguration angegeben haben:
+Erstelle das Verzeichnis und wende geprüfte Eigentums- und Berechtigungseinstellungen für die Unix-Gruppe an:
 
 ```bash
-mkdir -p /my/directory/to/share
+$ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 ```
 
-Zuletzt müssen Sie ein spezifisches Passwort für den Samba-Zugriff einrichten. Samba pflegt eine eigene Passwortdatenbank, die von den Systembenutzerpasswörtern getrennt ist.
+Das Set-Group-ID-Bit hilft neuen Einträgen, die Verzeichnisgruppe zu übernehmen. Gemeinsamer Zugriff kann jedoch zusätzlich eine ACL oder eine sorgfältig gewählte Erstellungsmaske erfordern. Teste die tatsächlichen Datei- und Verzeichnisergebnisse, statt anzunehmen, dass die Vererbung ausreicht.
+
+:::single-choice{#samba-valid-users}
+Was drückt `valid users = @teamshare` aus?
+
+::option[Jeder anonyme Netzwerkbenutzer erhält Schreibzugriff.]{#samba-every-anonymous explanation="Die Regel schränkt den Zugriff ein, statt Gastschreibzugriff zu aktivieren."}
+::option[Der Server muss die Freigabe in `teamshare` umbenennen.]{#samba-rename-share explanation="Der sichtbare Freigabename bleibt der Abschnittsname `[team]`."}
+::option[Nur Mitglieder der benannten Gruppe werden von dieser Freigaberegel zugelassen.]{#samba-valid-group .correct explanation="Die Form mit `@` bezeichnet in Sambas Benutzerlistensyntax eine Gruppe."}
+:::
+
+## Identität konfigurieren
+
+In einer eigenständigen Samba-Konfiguration benötigt ein Konto gewöhnlich eine entsprechende Unix-Identität und aktivierte Samba-Anmeldedaten:
 
 ```bash
-sudo smbpasswd -a [username]
+$ sudo smbpasswd -a alice
 ```
 
-Ersetzen Sie `[username]` durch einen vorhandenen Linux-Benutzer auf Ihrem System. Sie werden aufgefordert, ein neues Passwort für diesen Benutzer für den Samba-Zugriff zu erstellen.
+Installationen mit Verzeichnisdomäne verwenden einen anderen Identitätsentwurf. Lege Passwörter weder im Shellverlauf noch in einer für unabhängige Benutzer lesbaren Konfiguration ab und nimm nicht an, dass ein Samba-Passwort automatisch mit dem Passwort des Unix-Kontos identisch ist.
 
-### Den Samba-Dienst verwalten
+:::single-choice{#samba-password-database}
+Was bewirkt `smbpasswd -a alice` gewöhnlich auf einem eigenständigen Server?
 
-Nachdem Sie Änderungen an der Datei `smb.conf` vorgenommen haben, müssen Sie den Samba-Dienst neu starten, damit diese wirksam werden.
+::option[Es löscht das Home-Verzeichnis des Unix-Benutzers.]{#samba-delete-home explanation="Der Befehl verwaltet Samba-Anmeldedaten und entfernt keine Home-Verzeichnisse."}
+::option[Es fügt Samba-Anmeldedaten für das Konto hinzu oder initialisiert sie.]{#samba-add-credential .correct explanation="Die SMB-Authentifizierungsdatenbank wird getrennt vom bloßen Erstellen eines Unix-Benutzers verwaltet."}
+::option[Es hängt jede sichtbare SMB-Freigabe als Alice ein.]{#samba-mount-all explanation="Das Eintragen von Serveranmeldedaten ist vom Einhängen auf einem Client getrennt."}
+:::
+
+## Konfiguration validieren und anwenden
+
+Prüfe die geparste Konfiguration, bevor du Dienste neu lädst:
 
 ```bash
-sudo service smbd restart
+$ testparm -s
 ```
 
-### Auf Samba-Freigaben zugreifen
+Prüfe unerwartete Standardwerte und Fehler und lade den Samba-Dienst der Distribution anschließend über seinen Dienstmanager neu. Dienstnamen unterscheiden sich und umfassen häufig `smbd.service` oder `smb.service`. Ein Neuladen ist, sofern unterstützt, weniger unterbrechend als ein Neustart. Überprüfe dennoch Zustand, lauschende Sockets, Firewallbereich und Protokolle.
 
-Sobald Ihre Freigabe konfiguriert ist, können Clients im Netzwerk darauf zugreifen.
-
-**Von Windows aus:**
-Öffnen Sie das Ausführen-Fenster (Win + R) oder den Datei-Explorer und geben Sie den Netzwerkpfad ein: `\\HOST\sharename`, wobei HOST die IP-Adresse oder der Hostname Ihres Linux-Rechners ist.
-
-**Von Linux aus:**
-Das Samba-Paket enthält ein Befehlszeilenwerkzeug namens **smbclient**, mit dem Sie mit jeder **linux smb**- oder Windows-Freigabe interagieren können.
+Teste von einem Client mit einem ausdrücklich angegebenen Benutzer:
 
 ```bash
-smbclient //HOST/myshare -U username
+$ smbclient //server.example.net/team -U alice
 ```
 
-Nach der Verbindung erhalten Sie eine `smb: \>`-Eingabeaufforderung, in der Sie Befehle wie `ls`, `get` und `put` zur Verwaltung von Dateien verwenden können.
+:::single-choice{#samba-testparm-purpose}
+Warum solltest du `testparm -s` vor dem Anwenden einer Samba-Änderung ausführen?
 
-### Eine Samba-Freigabe einbinden (mounten)
+::option[Der Befehl kopiert jede freigegebene Datei auf einen Sicherungsserver.]{#samba-testparm-backup explanation="Das Werkzeug parst und meldet Konfiguration, statt Freigabedaten zu kopieren."}
+::option[Er validiert die wirksame Samba-Konfiguration und zeigt sie an.]{#samba-testparm-validate .correct explanation="Die Parserausgabe erkennt Konfigurationsfehler und zeigt interpretierte Einstellungen vor Auswirkungen auf den Dienst."}
+::option[Er gewährt allen Clients Administratorrechte.]{#samba-testparm-admin explanation="Die Validierung verändert keine Clientautorisierung."}
+:::
 
-Für einen dauerhafteren Zugriff können Sie die Netzwerkfreigabe direkt in Ihr Dateisystem einbinden, sodass sie wie ein lokales Verzeichnis erscheint.
+## Unter Linux einhängen
+
+Linux-Clients verwenden gewöhnlich den Dateisystemtreiber `cifs` und Mount-Hilfsprogramme. Vermeide Passwörter in der Befehlszeile, weil Argumente über Verlauf oder Prozessuntersuchung offengelegt werden können. Verwende eine nur für root lesbare Anmeldedatendatei oder einen genehmigten Anmeldedatenmechanismus:
 
 ```bash
-sudo mount -t cifs //SERVER/sharename /mnt/mountpoint -o user=username,pass=password
+$ sudo mount -t cifs //server.example.net/team /mnt/team \
+    -o credentials=/root/.smb-team,vers=3.1.1
 ```
 
-Dieser Befehl verwendet den Dateisystemtyp `cifs`, um die Remote-Freigabe an einen lokalen Einhängepunkt anzuhängen.
+Schütze die Anmeldedatendatei, bestätige den von beiden Seiten unterstützten Dialekt und lege Anforderungen an UID, GID, Berechtigungen und Verschlüsselung bewusst fest. Überprüfe nach dem Einhängen mit `findmnt`, führe autorisierte Lese-/Schreibtests aus und hänge nach Koordination aktiver Benutzer aus.
 
-## Exercise
+:::single-choice{#samba-command-line-password}
+Warum solltest du `password=...` nicht direkt in einem mount-Befehl verwenden?
 
-Versuchen Sie, eine einfache Samba-Freigabe auf Ihrem eigenen Linux-Rechner einzurichten. Erstellen Sie ein Verzeichnis, konfigurieren Sie es in `smb.conf` und versuchen Sie, von demselben Rechner aus mit `smbclient` darauf zuzugreifen, um die Konfiguration zu testen. Für mehr praktische Übung erkunden Sie den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux), um verwandte Linux-Fähigkeiten und Konzepte zu üben.
+::option[Das Geheimnis kann über den Verlauf oder Prozessargumente offengelegt werden.]{#samba-password-exposure .correct explanation="Eine geschützte Anmeldedatenquelle verringert unbeabsichtigte Offenlegung, erfordert aber weiterhin sorgfältige Berechtigungen."}
+::option[SMB unterstützt keinerlei Passwortauthentifizierung.]{#samba-no-passwords explanation="Passwortbasierte SMB-Authentifizierung ist verbreitet, obwohl auch andere Identitätssysteme existieren."}
+::option[Die Option macht die Freigabe dauerhaft schreibgeschützt.]{#samba-password-readonly explanation="Der Speicherort des Geheimnisses bestimmt nicht die Schreibrichtlinie."}
+:::
 
-## Quiz Question
+## Zusammenfassung
 
-What is the name of the protocol, an early dialect of SMB, that was developed for file sharing? Please answer in English, paying attention to capitalization.
+Du kannst eine Samba-Freigabe nun unter Berücksichtigung von Protokoll- und Dateisystemsicherheit konfigurieren.
 
-## Quiz Answer
-
-CIFS
+1. Lege zuerst Clients, Identitäten, Netzwerkbereich und Datenrichtlinie fest.
+2. Beschränke die Freigabe und gleiche die zugrunde liegenden Berechtigungen ab.
+3. Verwalte Samba-Anmeldedaten über das richtige Identitätsmodell.
+4. Validiere mit `testparm` und führe einen Ende-zu-Ende-Clienttest aus.
+5. Schütze Clientanmeldedaten und überprüfe den eingehängten Zugriff.

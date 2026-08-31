@@ -1,46 +1,97 @@
 ---
-index: 4
+lesson_id: "kernel-logging"
+course_id: "logging"
 lang: "fr"
-title: "Journalisation du Noyau"
-meta_title: "Journalisation du Noyau - Journalisation"
-meta_description: "Explorez le journal du noyau Linux, y compris /var/log/kern.log et dmesg. Apprenez à vérifier le journal kern pour les messages de démarrage, les informations sur les pilotes matériels et à dépanner les problèmes système. Un guide des fichiers journaux du noyau Linux."
-meta_keywords: "journal noyau, kern.log, /var/log/kern.log, journal noyau linux, journal kern, dmesg, journalisation linux, messages démarrage, événements noyau"
+order_index: 4
+title: "Journalisation du noyau"
+description: "Découvrez comment interroger les messages actuels et conservés du noyau Linux avec dmesg et journalctl."
+meta_title: "Journalisation du noyau - Journaux"
+meta_description: "Explorez les journaux du noyau Linux avec dmesg, journalctl et /var/log/kern.log pour analyser le démarrage, les pilotes et le matériel."
+meta_keywords: "journal noyau Linux, kern.log, /var/log/kern.log, dmesg, messages démarrage, événements noyau"
 ---
 
-## Lesson Content
+Le noyau émet des messages concernant le démarrage, les pilotes, les périphériques, les systèmes de fichiers, le réseau, la mémoire et les défaillances. Ces enregistrements peuvent expliquer des symptômes de bas niveau, mais un seul avertissement ne prouve pas que le matériel est défectueux.
 
-Le noyau Linux est le cœur du système d'exploitation et il génère des messages concernant ses opérations, l'état du matériel et les problèmes potentiels. L'accès à ces informations est crucial pour l'administration système et le dépannage. C'est là qu'intervient le journal du noyau (kernel log).
+## Lire le tampon circulaire du noyau
 
-### Le tampon circulaire du noyau et dmesg
+`dmesg` lit les messages du tampon circulaire du noyau :
 
-Au démarrage, votre système enregistre une mine d'informations dans le tampon circulaire du noyau (kernel ring buffer). Ce tampon contient des messages sur le chargement des pilotes matériels, les mises à jour d'état du noyau et d'autres événements qui se produisent pendant le processus de démarrage.
+```bash
+$ dmesg --human
+```
 
-Ce journal peut être consulté à l'aide de la commande `dmesg`. Le contenu est également souvent écrit dans `/var/log/dmesg`, mais sachez que ce fichier est généralement effacé et réécrit à chaque redémarrage. Bien que vous n'en ayez pas besoin quotidiennement, la sortie de `dmesg` est le premier endroit à vérifier si vous rencontrez un problème matériel ou un souci lors du démarrage.
+Le tampon possède une capacité finie ; les nouveaux messages peuvent donc écraser les plus anciens. Son accès peut aussi être limité aux utilisateurs privilégiés. `dmesg --follow` suit les nouveaux messages sur les implémentations qui le prennent en charge ; arrêtez-le après une reproduction limitée.
 
-### Le fichier journal principal du noyau
+:::single-choice{#kernel-log-ring-buffer-limit}
+Pourquoi un ancien événement du noyau peut-il être absent de la sortie actuelle de `dmesg` ?
 
-Pour un enregistrement plus persistant de l'activité du noyau, vous pouvez vous tourner vers `/var/log/kern.log`. Ce fichier est la destination principale pour les systèmes utilisant le `kernel log linux`. Il capture les informations et les événements du noyau au fur et à mesure qu'ils se produisent sur votre système en cours d'exécution.
+::option[Les événements du noyau ne peuvent contenir qu'un seul caractère.]{#kernel-log-one-character explanation="Les messages du noyau peuvent contenir du texte de diagnostic et des métadonnées ordinaires."}
+::option[`dmesg` supprime définitivement chaque ligne après l'avoir affichée.]{#kernel-log-display-deletes explanation="Une lecture normale ne consomme pas tous les messages affichés du noyau."}
+::option[Le tampon circulaire fini a pu l'écraser.]{#kernel-log-overwritten .correct explanation="Le tampon en mémoire ne conserve qu'une quantité limitée de données de messages du noyau."}
+:::
 
-Le fichier `kern.log` inclut également la sortie de `dmesg`, ce qui en fait une source complète pour les messages liés au noyau. Si vous devez examiner un `kernel log` d'un événement passé qui n'est plus dans le tampon circulaire, le `kern log` est l'endroit approprié à consulter.
+## Employer des horodatages lisibles
 
-### Pourquoi les journaux du noyau sont importants
+Les horodatages bruts du noyau sont généralement relatifs au démarrage. `dmesg --ctime` ou `--human` peut les afficher selon l'heure murale, mais les valeurs converties dépendent de l'historique de l'horloge et peuvent être inexactes si celle-ci a changé après le démarrage. Préservez le temps relatif au démarrage lorsqu'un séquençage précis est important.
 
-Comprendre comment lire le `kernel log` est une compétence fondamentale. Ces journaux fournissent des informations approfondies sur l'interaction de votre système avec son matériel. En examinant `kern.log` ou la sortie de `dmesg`, vous pouvez diagnostiquer des problèmes de pilotes, enquêter sur des comportements matériels inattendus et surveiller la santé globale du noyau.
+:::single-choice{#kernel-log-timestamp-caution}
+Pourquoi faut-il interpréter prudemment les horodatages d'heure murale convertis par `dmesg` ?
 
-## Exercise
+::option[Ils désignent toujours une autre machine.]{#kernel-log-other-machine explanation="Ils sont calculés localement, même si les changements d'horloge peuvent influencer la conversion."}
+::option[Ils dépendent de l'association du temps relatif au démarrage à une horloge susceptible de changer.]{#kernel-log-clock-change .correct explanation="La synchronisation du temps ou une modification manuelle de l'horloge peut rendre l'heure affichée trompeuse."}
+::option[Ils affichent l'espace libre du système de fichiers au lieu de l'heure.]{#kernel-log-free-space explanation="Les options d'horodatage affichent toujours des heures, pas la capacité du stockage."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des utilisateurs et des groupes sous Linux :
+## Interroger les enregistrements persistants du noyau
 
-1. **[Gérer les comptes utilisateurs Linux avec useradd, usermod et userdel](https://labex.io/fr/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Entraînez-vous au cycle complet de l'administration des utilisateurs, de la création et de la sécurisation des nouveaux comptes à leur modification et suppression.
-2. **[Gérer les groupes Linux avec groupadd, usermod et groupdel](https://labex.io/fr/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Acquérir une expérience pratique avec les utilitaires de ligne de commande essentiels pour l'administration des groupes, y compris la création de nouveaux groupes, la modification des appartenances des utilisateurs et la suppression de groupes.
-3. **[Configurer les comptes utilisateurs et les privilèges Sudo sous Linux](https://labex.io/fr/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Apprenez les techniques essentielles pour gérer les comptes utilisateurs et les privilèges sudo afin d'améliorer la sécurité d'un système Linux, y compris l'application de politiques de mots de passe et l'octroi de permissions administratives.
+Sur un hôte systemd, interrogez les enregistrements du démarrage actuel avec :
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance dans la gestion des utilisateurs et des groupes sous Linux.
+```bash
+$ journalctl -k -b
+```
 
-## Quiz Question
+Si le stockage persistant du journal a conservé des démarrages antérieurs, affichez leur liste et sélectionnez-en un :
 
-Quelle commande peut être utilisée pour visualiser les messages de démarrage du noyau ? Veuillez répondre en utilisant uniquement la commande anglaise en minuscules.
+```bash
+$ journalctl --list-boots
+$ journalctl -k -b -1
+```
 
-## Quiz Answer
+Le routage syslog traditionnel peut créer `/var/log/kern.log` ou un autre fichier, mais cela dépend de la configuration. Un fichier `/var/log/dmesg` enregistré n'est pas non plus universel et peut ne représenter qu'un instantané du démarrage.
 
-dmesg
+:::single-choice{#kernel-log-previous-boot}
+Quelle commande demande les messages du noyau du démarrage précédent conservé ?
+
+::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="Les messages du noyau se sélectionnent avec `-k`, et le suivi ne choisit pas le démarrage précédent."}
+::option[`dmesg --clear`]{#kernel-log-clear explanation="L'effacement change l'état du tampon et ne récupère pas un ancien démarrage."}
+::option[`journalctl -k -b -1`]{#kernel-log-previous .correct explanation="Le filtre du noyau combiné au décalage de démarrage moins un sélectionne le précédent conservé."}
+:::
+
+## Enquêter sur un événement du noyau
+
+Identifiez le démarrage, l'horodatage, le périphérique, le sous-système et l'action en cours à ce moment-là. Interrogez les enregistrements voisins du noyau et des services, puis comparez-les à l'inventaire et à l'état actuel du matériel :
+
+```bash
+$ journalctl -k -b --since '10 minutes ago'
+$ lspci -k
+$ lsblk
+```
+
+N'employez que les outils pertinents pour le sous-système. Avant de recharger un pilote, dissocier un périphérique ou redémarrer, évaluez l'impact sur le stockage, le réseau, la console et les services, puis préservez l'accès de récupération.
+
+:::single-choice{#kernel-log-warning-response}
+Quelle est la meilleure réaction à une seule ligne d'avertissement du noyau ?
+
+::option[Décharger immédiatement tous les pilotes actifs.]{#kernel-log-unload-all explanation="Cela peut interrompre des périphériques essentiels et n'isole pas la cause de l'avertissement."}
+::option[Supposer que toute la machine doit être remplacée.]{#kernel-log-replace-machine explanation="Un seul enregistrement ne suffit pas à établir cette conclusion."}
+::option[La corréler aux événements voisins et à l'état actuel du sous-système.]{#kernel-log-correlate .correct explanation="Le contexte et un impact reproductible sont nécessaires avant de choisir une correction."}
+:::
+
+## Résumé
+
+Vous savez maintenant distinguer les messages du tampon actif du noyau des journaux conservés.
+
+1. Lire le tampon circulaire fini avec `dmesg`.
+2. Interpréter prudemment les horodatages relatifs au démarrage et convertis.
+3. Interroger le démarrage actuel ou précédent avec `journalctl -k`.
+4. Corréler les messages du noyau avant toute modification perturbatrice.

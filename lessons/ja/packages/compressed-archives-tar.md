@@ -1,109 +1,128 @@
 ---
-index: 3
+lesson_id: "compressed-archives-tar"
+course_id: "packages"
 lang: "ja"
+order_index: 3
 title: "tar と gzip"
+description: "`tar` でファイルをアーカイブし、`gzip` でストリームを圧縮し、安全な展開前にアーカイブを検査する方法を学びます。"
 meta_title: "tar と gzip - パッケージ"
 meta_description: "Linux での tar と gzip の使用に関する包括的なガイド。tar 圧縮、アーカイブの作成と抽出方法、gzip と tar の違いを学びます。tar.gz ファイルを圧縮し、ソフトウェアパッケージを効果的に管理するためのコマンドを習得しましょう。"
 meta_keywords: "tar と gzip, tar 圧縮，gzip tar, tar gz 圧縮，gzip と tar, Linux アーカイブ，ファイル圧縮，tar コマンド，gzip コマンド，Linux チュートリアル"
 ---
 
-## Lesson Content
+アーカイブと圧縮は別の問題を解決します。アーカイブはディレクトリツリーとそのメタデータを一つのストリームへまとめます。圧縮はストリームを符号化してサイズを減らします。`.tar.gz` ファイルは慣例として、ストリームを gzip で圧縮した tar アーカイブです。
 
-パッケージマネージャーに深く入る前に、ファイルアーカイブと圧縮を理解することが不可欠です。オンラインでソフトウェアをダウンロードすると、アーカイブされ圧縮された形式でパッケージ化されていることがよくあります。このレッスンでは、この目的のための 2 つの基本的なユーティリティ、`tar`と`gzip`に焦点を当てます。
+## `gzip` で一つのストリームを圧縮する
 
-### アーカイブと圧縮の理解
-
-アーカイブと圧縮を区別することが重要です。**アーカイブ**とは、複数のファイルやディレクトリを単一のファイル（アーカイブと呼ばれる）にまとめるプロセスです。これにより、ファイルのグループの管理と転送が容易になります。一方、**圧縮**とは、ディスクスペースを節約し転送を高速化するためにファイルのサイズを縮小するプロセスです。`tar`ユーティリティはアーカイブに使用され、`gzip`は圧縮に使用されます。多くの場合、`gzipとtar`が一緒に使用されているのを目にします。
-
-### gzip を使用した単一ファイルの圧縮
-
-`gzip`プログラムは、Linux で個々のファイルを圧縮するために使用されます。`gzip`でファイルを圧縮すると、そのファイルは`.gz`拡張子を持つファイルに置き換えられます。
-
-ファイルを圧縮するには：
+`gzip` は既定ではファイルを圧縮し、元の名前を `.gz` ファイルへ置き換えます。
 
 ```bash
-gzip mycoolfile
+$ gzip report.txt
 ```
 
-これにより`mycoolfile.gz`が作成され、オリジナルは削除されます。ファイルを解凍するには、`gunzip`を使用できます。
+通常、`report.txt.gz` の作成に成功すると `report.txt` は削除されます。展開には次を使います。
 
 ```bash
-gunzip mycoolfile.gz
+$ gunzip report.txt.gz
 ```
 
-### tar を使用したアーカイブの作成
+対応している環境で入力ファイルを残すには `gzip -k report.txt` を使い、明示的に制御する必要がある場合は標準ストリームを使います。ファイル名の拡張子は慣習であり、実際の形式の証明ではありません。`file` などのツールで内容を調べられます。
 
-`gzip`は圧縮には優れていますが、複数のファイルを単一のアーカイブにバンドルすることはできません。そのためには、`tar`（Tape Archive）ユーティリティを使用します。`tar`で作成されたファイルは「tarball」と呼ばれることが多く、`.tar`拡張子を持ちます。
+:::single-choice{#tar-gzip-gzip-role}
+このレッスンにおける `gzip` の主な役割は何ですか？
 
-複数のファイルを含む新しいアーカイブを作成するには：
+::option[ファイルメタデータとともにディレクトリツリーを一つのアーカイブへまとめる。]{#tar-gzip-directory-archive explanation="gzip 圧縮を適用する前に、そのアーカイブ処理を行うのは tar です。"}
+::option[一つの入力ストリームを圧縮する。]{#tar-gzip-compress-stream .correct explanation="Gzip は一つのバイトストリームを変換し、それ自体でディレクトリ階層を符号化しません。"}
+::option[依存関係メタデータをパッケージデータベースへインストールする。]{#tar-gzip-package-install explanation="圧縮は、ネイティブパッケージのインストールや依存関係追跡とは別です。"}
+:::
+
+## Tar アーカイブを作成する
+
+非圧縮アーカイブは次のように作成します。
 
 ```bash
-tar cvf myarchive.tar file1 file2 directory1
+$ tar -cvf project.tar file1 file2 directory1
 ```
 
-オプションの内訳を見てみましょう。
+- `-c` は新しいアーカイブを作成します。
+- `-v` は処理中のメンバーを一覧表示する任意のオプションです。
+- `-f project.tar` はアーカイブファイルを指定します。`-f` は引数を一つ取るため、ファイル名をその隣に置きます。
 
-- `c`: 新しいアーカイブを**c**reate（作成）します。
-- `v`: **v**erbose（詳細）モード。処理中にファイルがリストされます。
-- `f`: **f**ile（ファイル）。次の引数がアーカイブファイルの名前であることを指定します。
+パスはアーカイブのメンバー名として保存されます。意図した作業ディレクトリからアーカイブを作成し、機密情報、キャッシュ、ソケット、広範な絶対パスを誤って含めないようにしてください。
 
-### tar と gzip を組み合わせたパワー
+:::single-choice{#tar-gzip-create-option}
+新しいアーカイブを作成する `tar` オプションはどれですか？
 
-真のパワーは、`tarとgzip`を一緒に使用することから生まれます。まず`.tar`アーカイブを作成し、次に`gzip`で圧縮して`.tar.gz`ファイルを作成できます。しかし、`tar`は`z`オプションを使用して、`tar compression`を単一のステップで処理する便利な方法を提供します。このプロセスは、`gzip tar`アーカイブを作成することとも呼ばれます。
+::option[`-x`]{#tar-gzip-option-extract explanation="`-x` 操作はアーカイブのメンバーを展開します。"}
+::option[`-c`]{#tar-gzip-option-create .correct explanation="作成操作は、指定された入力から新しいアーカイブを書き出します。"}
+::option[`-t`]{#tar-gzip-option-list explanation="`-t` 操作はメンバーを展開せずに一覧表示します。"}
+:::
 
-`.tar.gz`ファイルを圧縮する一般的な方法である圧縮アーカイブを作成するには：
+## Gzip で圧縮した Tar アーカイブを作成する
+
+GNU tar をはじめ多くの実装では、`-z` で gzip を呼び出せます。
 
 ```bash
-tar czvf myarchive.tar.gz file1 file2 directory1
+$ tar -czvf project.tar.gz file1 file2 directory1
 ```
 
-ここで、`z`オプションは`tar`に`gzip`を使用して圧縮するように指示します。
+結果は、gzip で圧縮された一つの tar ストリームです。圧縮はアーカイブを暗号化せず、読み取って展開できる人から内容を隠しません。機密性が必要なら、適切な認証付き暗号化の手順を使い、鍵を別に管理してください。
 
-### tar と gzip アーカイブの抽出
+:::single-choice{#tar-gzip-z-option}
+示した `tar` コマンドの `-z` は何を要求しますか？
 
-アーカイブからファイルを抽出するには、`x`オプションを使用します。
+::option[ゼロ知識鍵でアーカイブを暗号化する。]{#tar-gzip-z-encrypt explanation="tar も gzip も、このオプションでは暗号化を提供しません。"}
+::option[長さがゼロのメンバーをすべて破棄する。]{#tar-gzip-z-zero explanation="このオプションは gzip を選択し、サイズによるメンバーの絞り込みは行いません。"}
+::option[アーカイブストリームを gzip で処理する。]{#tar-gzip-z-gzip .correct explanation="`z` オプションは tar のアーカイブ操作を gzip の圧縮または展開へ接続します。"}
+:::
 
-単純な`.tar`アーカイブを抽出するには：
+## 展開前に一覧表示する
+
+別の相手から受け取ったアーカイブは、信頼できない入力として扱います。まずメンバー名を一覧表示してください。
 
 ```bash
-tar xvf myarchive.tar
+$ tar -tzf download.tar.gz
 ```
 
-`.tar.gz`アーカイブを単一のコマンドで解凍および抽出するには、`z`オプションを再度追加するだけです。
+予期しない絶対パス、`..` によるパストラバーサル、意外なシンボリックリンクやハードリンク、デバイスファイル、重要ファイルを上書きする名前がないか確認します。現代の tar 実装には保護機能がありますが、動作とオプションは異なり、展開すると攻撃者が選んだ名前と内容が作成されることに変わりはありません。
+
+新しく作った非特権のステージングディレクトリへ展開します。
 
 ```bash
-tar xzvf myarchive.tar.gz
+$ mkdir extraction-stage
+$ tar -xzf download.tar.gz -C extraction-stage
 ```
 
-抽出オプションを確認しましょう。
+未確認のアーカイブを root として展開してはいけません。作成されたものを検証してから、選択したファイルを最終的な場所へ移動します。
 
-- `x`: アーカイブからファイルを**e**xtract（抽出）します。
-- `z`: **g**z**ip**を使用してアーカイブを解凍します。
-- `v`: **v**erbose（詳細）モード。抽出時にファイルがリストされます。
-- `f`: 抽出するアーカイブファイルを指定する**f**ile（ファイル）。
+:::single-choice{#tar-gzip-list-before-extract}
+アーカイブのメンバーを展開せずに一覧表示する操作はどれですか？
 
-このための便利な覚え方は、「e**X**tract **Z**ee **V**ery **F**ast!」（非常に速く抽出！）です。
+::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="これは現在のディレクトリからアーカイブを作成または置き換えます。"}
+::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="`-x` 操作は対象ディレクトリへメンバーを書き出します。"}
+::option[`tar -tzf download.tar.gz`]{#tar-gzip-list-members .correct explanation="`-t` 操作はメンバー表を読み取って表示し、`-z` が gzip を処理します。"}
+:::
 
-`tar`は非常に重要でありながら、しばしば忘れられるコマンドです。関連する xkcd: `https://xkcd.com/1168`
+## その他の圧縮形式
 
-### その他のユーティリティ
+tar 実装は bzip2 や xz などの圧縮器も扱えます。GNU tar では一般にそれぞれ `-j` と `-J` で選択します。対応形式と自動検出の動作は異なるため、`tar --help` またはローカルマニュアルを参照してください。ZIP は別のアーカイブ形式であり、`zip` や `unzip` などのツールで操作します。
 
-`tar`と`gzip`は非常に一般的ですが、Linux の道のりでは他のアーカイブおよび圧縮形式に遭遇するでしょう。これらには、`.bz2`ファイルを作成し`tar`で`j`フラグを使用する`bzip2`、`.xz`ファイルを作成し`J`フラグを使用する`xz`、そしておなじみの`zip`/`unzip`ユーティリティが含まれます。それぞれに独自のコマンドセットと圧縮率がありますが、基本的な概念は同じままです。
+:::single-choice{#tar-gzip-archive-confidentiality}
+gzip 圧縮によって tar アーカイブに機密性が加わりますか？
 
-## Exercise
+::option[いいえ。読み取れる人は通常、そのまま展開できる。]{#tar-gzip-not-encryption .correct explanation="圧縮は表現とサイズを変えますが、アクセス制御や暗号学的な秘匿性を提供しません。"}
+::option[はい。gzip がファイル名から暗号鍵を導出する。]{#tar-gzip-filename-key explanation="Gzip はそのような暗号化機構を実装していません。"}
+::option[はい。gzip が処理する前に tar が各メンバーを暗号化する。]{#tar-gzip-tar-encrypt explanation="Tar はメンバーをアーカイブしますが、内容を自動的に暗号化しません。"}
+:::
 
-練習あるのみです！ファイルアーカイブと圧縮の理解を深めるための実践的なラボを次に示します。
+[ファイルのパッケージ化と圧縮](https://labex.io/labs/linux-file-packaging-and-compression-385413)で破棄可能なファイルを使って練習し、[tar でバックアップを作成・復元する](https://labex.io/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)で検査とステージングを実践してください。
 
-1. **[ファイルパッケージングと圧縮](https://labex.io/ja/labs/linux-file-packaging-and-compression-385413)** - tar、gzip、zip などのツールを使用して、必須の Linux ファイル圧縮およびパッケージング技術を学びます。
-2. **[Linux で tar を使用してバックアップを作成および復元する](https://labex.io/ja/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - tar コマンドを使用してファイルシステムバックアップを作成および復元する実践的な経験を積みます。
-3. **[システムログのバックアップ](https://labex.io/ja/labs/linux-backup-system-log-17989)** - tar コマンドと日付書式設定を使用してシステムログファイルをバックアップするという必須スキルを学びます。
+## まとめ
 
-これらのラボは、アーカイブと圧縮の概念を実際のシナリオに適用し、Linux でのファイル管理に対する自信を構築するのに役立ちます。
+tar のアーカイブと gzip の圧縮を安全に組み合わせられるようになりました。
 
-## Quiz Question
-
-アーカイブを作成するために tar で使用されるフラグは何ですか？単一の小文字の英字で回答してください。
-
-## Quiz Answer
-
-c
+1. tar アーカイブと gzip 圧縮を区別する。
+2. `-c` でアーカイブを、`-z` で gzip ストリームを作成する。
+3. `-x` で展開する前に `-t` でメンバーを一覧表示する。
+4. 信頼できない内容は非特権のステージングディレクトリへ展開する。
+5. 圧縮と暗号化を別のものとして扱う。

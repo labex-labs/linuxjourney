@@ -1,83 +1,140 @@
 ---
-index: 6
+lesson_id: "mounting-and-unmounting-filesystems"
+course_id: "filesystem"
 lang: "es"
-title: "montar y desmontar"
-meta_title: "mount y umount - El Sistema de Archivos"
-meta_description: "Aprenda a usar los comandos mount y umount en Linux para adjuntar y separar sistemas de archivos. Esta guía cubre el montaje de dispositivos, el proceso de sudo umount para un desmontaje seguro en Linux y el uso de UUIDs."
-meta_keywords: "mount, umount, sudo umount, umount linux, desmontar linux, debian umount, montar sistema de archivos, desmontar dispositivo, Linux UUID, punto de montaje"
+order_index: 6
+title: "mount y umount"
+description: "Aprende a conectar, examinar y desconectar de forma segura sistemas de archivos mediante fuentes y puntos de montaje verificados."
+meta_title: "mount y umount - El sistema de archivos"
+meta_description: "Aprende a montar y desmontar sistemas de archivos Linux con mount y umount mediante dispositivos y UUID verificados."
+meta_keywords: "mount, umount, montar sistema de archivos, desmontar dispositivo, UUID Linux, punto de montaje"
 ---
 
-## Lesson Content
+Montar conecta un sistema de archivos con un directorio del espacio de nombres visible. La fuente puede ser un dispositivo de bloques, una exportación de red, un sistema de archivos virtual, una fuente de montaje enlazado u otro objeto específico de una implementación. El directorio de destino se llama punto de montaje.
 
-Antes de poder acceder a los archivos de un dispositivo de almacenamiento, primero debe montar su sistema de archivos en un directorio de su sistema. Este proceso implica una ubicación del dispositivo, un tipo de sistema de archivos y un punto de montaje. El punto de montaje es simplemente un directorio existente donde se adjuntará el sistema de archivos.
+## Preparar y examinar un punto de montaje
 
-### Cómo Montar un Sistema de Archivos
-
-Primero, necesita crear un punto de montaje. Creemos un directorio para este propósito:
+Crea un directorio con un nombre deliberado cuando la política local lo requiera:
 
 ```bash
-sudo mkdir /mydrive
+$ sudo mkdir -p /mnt/mydrive
 ```
 
-Con el punto de montaje listo, puede usar el comando `mount` para adjuntar su dispositivo. La bandera `-t` especifica el tipo de sistema de archivos.
+Examínalo antes de montar:
 
 ```bash
-sudo mount -t ext4 /dev/sdb2 /mydrive
+$ findmnt --target /mnt/mydrive
+$ sudo ls -la /mnt/mydrive
 ```
 
-¡Así de simple! Ahora, si navega al directorio `/mydrive`, verá el contenido del sistema de archivos de su dispositivo.
+Montar sobre un directorio no vacío oculta sus entradas existentes tras el sistema de archivos nuevo hasta que se desmonta; no las elimina. Esto puede confundir a las aplicaciones y consumir espacio en disco de forma invisible, así que utiliza un punto de montaje vacío y dedicado.
 
-### Cómo Desmontar un Sistema de Archivos en Linux
+:::single-choice{#mount-umount-nonempty-target}
+¿Qué ocurre con los archivos existentes de un directorio cuando se monta otro sistema de archivos en él?
 
-Cuando haya terminado con un dispositivo, debe desmontarlo para asegurarse de que todos los datos se escriban de forma segura y el sistema de archivos se separe limpiamente. El comando estándar para esta operación en Linux es `umount`. Para realizar un `linux unmount`, puede especificar el punto de montaje o el nombre del dispositivo.
+::option[Se copian automáticamente al sistema de archivos nuevo.]{#mount-umount-copied-files explanation="Montar cambia la conexión del espacio de nombres y no migra el contenido del directorio."}
+::option[El kernel los elimina permanentemente.]{#mount-umount-erased-files explanation="Los archivos suelen reaparecer después de desmontar porque estaban ocultos, no eliminados."}
+::option[El montaje los oculta hasta que se desconecta.]{#mount-umount-hidden-files .correct explanation="El directorio subyacente permanece, pero la resolución de rutas entra en el sistema de archivos montado."}
+:::
 
-Usando el punto de montaje:
+## Montar un sistema de archivos verificado
+
+Después de confirmar la identidad de la fuente, el tipo detectado y el contenido esperado, monta explícitamente:
 
 ```bash
-sudo umount /mydrive
+$ sudo mount -t ext4 /dev/VERIFIED-PARTITION /mnt/mydrive
 ```
 
-Alternativamente, usando el nombre del dispositivo:
+La opción `-t` indica la implementación del sistema de archivos. Mount suele poder detectar el tipo, pero un tipo explícito y opciones revisadas aclaran la intención. Para contenido extraíble o que no sea de confianza, considera opciones restrictivas como `ro`, `nosuid`, `nodev` y `noexec` cuando correspondan a la carga; cada una tiene limitaciones y no debe tratarse como un entorno aislado completo.
+
+Verifica lo que está montado realmente:
 
 ```bash
-sudo umount /dev/sdb2
+$ findmnt --target /mnt/mydrive -o TARGET,SOURCE,FSTYPE,OPTIONS
 ```
 
-Es una buena práctica usar `sudo umount` para asegurar que tiene los permisos necesarios para separar el sistema de archivos. Este comando es universal en las distribuciones de Linux, por lo que la misma sintaxis se aplica si está en Ubuntu, Fedora o realizando un `debian umount`. Tenga en cuenta que no puede `umount` un dispositivo si está actualmente en uso (por ejemplo, si un archivo está abierto o su directorio de trabajo actual está en el dispositivo).
+Los montajes se limitan a espacios de nombres. Un montaje creado en un contenedor o en el espacio privado de un servicio puede no aparecer en la vista de otro proceso.
 
-### Uso de UUIDs para un Montaje Estable
+:::single-choice{#mount-umount-mount-role}
+¿Qué hace la orden `mount` en el flujo de trabajo mostrado?
 
-El kernel nombra los dispositivos en el orden en que los descubre, lo que significa que un nombre de dispositivo como `/dev/sdb2` podría cambiar entre reinicios. Para evitar problemas, puede usar la identificación única universal (UUID) de un dispositivo, que permanece constante.
+::option[Crea un sistema de archivos nuevo y borra la fuente.]{#mount-umount-format-source explanation="Crear un sistema de archivos es una operación destructiva independiente realizada con `mkfs`."}
+::option[Conecta una fuente de sistema de archivos con un directorio de un espacio de nombres de montajes.]{#mount-umount-attach-filesystem .correct explanation="La resolución de rutas bajo el destino entra entonces en el sistema de archivos conectado."}
+::option[Cambia los límites de las particiones del disco.]{#mount-umount-change-partitions explanation="Editar la tabla de particiones es independiente de montar en un espacio de nombres."}
+:::
 
-Para ver los UUIDs de sus dispositivos de bloque, use el comando `blkid`:
+## Utilizar UUID de sistemas de archivos
+
+Los nombres de enumeración como `/dev/sdb2` pueden cambiar. Descubre identificadores de sistemas de archivos con:
 
 ```bash
-pete@icebox:~$ sudo blkid
-/dev/sda1: UUID="130b882f-7d79-436d-a096-1e594c92bb76" TYPE="ext4"
-/dev/sda5: UUID="22c3d34b-467e-467c-b44d-f03803c2c526" TYPE="swap"
-/dev/sda6: UUID="78d203a0-7c18-49bd-9e07-54f44cdb5726" TYPE="xfs"
+$ lsblk -f
+$ sudo blkid
 ```
 
-Esta salida muestra los nombres de los dispositivos, sus tipos de sistema de archivos y sus UUIDs correspondientes. Luego puede montar un dispositivo usando su UUID:
+Después monta un sistema de archivos verificado mediante su UUID:
 
 ```bash
-sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mydrive
+$ sudo mount UUID=130b882f-7d79-436d-a096-1e594c92bb76 /mnt/mydrive
 ```
 
-Aunque no siempre necesitará montar dispositivos a través de sus UUIDs, es el método recomendado para montar sistemas de archivos automáticamente al inicio, como un disco duro secundario. Cubriremos ese proceso en la próxima lección.
+Un UUID identifica el sistema de archivos, no necesariamente el disco físico. Darle otro formato lo cambia, mientras que clonarlo puede duplicarlo. Verifica la unicidad antes de conectar el original y el clon al mismo sistema.
 
-## Exercise
+:::single-choice{#mount-umount-uuid-benefit}
+¿Por qué suele ser preferible un UUID del sistema de archivos a `/dev/sdX` para una configuración persistente?
 
-¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de la gestión de sistemas de archivos de Linux:
+::option[Porque evita que fallen los dispositivos de almacenamiento.]{#mount-umount-uuid-no-failure explanation="Un identificador no proporciona redundancia, reparación de integridad ni copias de seguridad."}
+::option[Porque garantiza que los sistemas de archivos clonados tengan identificadores distintos.]{#mount-umount-uuid-clone-unique explanation="Un clon a nivel de bloques puede copiar el UUID y provocar una colisión."}
+::option[Porque está vinculado a la identidad del sistema de archivos y no al orden de enumeración actual.]{#mount-umount-uuid-identity .correct explanation="La ruta del dispositivo de bloques puede cambiar mientras los metadatos del sistema de archivos conservan su UUID."}
+:::
 
-- **[Administrar Particiones y Sistemas de Archivos de Linux](https://labex.io/es/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - En este laboratorio, aprenderá a administrar particiones de disco y sistemas de archivos en Linux. Usará fdisk para crear una nueva partición, formatearla con ext4, montarla, configurar el montaje persistente en /etc/fstab y crear una partición swap, todo en un disco virtual secundario seguro.
+## Desmontar de forma segura
 
-Este laboratorio le ayudará a aplicar los conceptos de montaje y desmontaje en escenarios reales y a ganar confianza con la gestión de sistemas de archivos.
+Desconecta mediante el punto de montaje exacto:
 
-## Quiz Question
+```bash
+$ sudo umount /mnt/mydrive
+```
 
-¿Qué comando se utiliza para adjuntar un sistema de archivos? (Por favor, use una sola palabra en inglés en minúsculas para su respuesta.)
+La orden se escribe `umount`, sin la primera `n`. Un desmontaje correcto desconecta el sistema de archivos después de que el kernel complete las escrituras pendientes necesarias y las referencias lo permitan. Confirma después con `findmnt` antes de desconectar el almacenamiento.
 
-## Quiz Answer
+Un desmontaje correcto no siempre es la última operación necesaria para retirar con seguridad un medio extraíble. Las pilas de almacenamiento de escritorio pueden ofrecer una acción de expulsión o apagado que vacíe las cachés del dispositivo y desactive un dispositivo USB. Sigue el flujo de trabajo de la plataforma y el hardware.
 
-mount
+:::single-choice{#mount-umount-command-name}
+¿Qué orden desconecta `/mnt/mydrive`?
+
+::option[`umount /mnt/mydrive`]{#mount-umount-umount-correct .correct explanation="`umount` desconecta el sistema de archivos montado en el destino indicado."}
+::option[`unmount /mnt/mydrive`]{#mount-umount-unmount-spelling explanation="El nombre de la orden estándar omite la primera `n`."}
+::option[`mkfs /mnt/mydrive`]{#mount-umount-mkfs-target explanation="Mkfs crea estructuras de sistemas de archivos y no debe utilizarse para desconectar."}
+:::
+
+## Diagnosticar un sistema de archivos ocupado
+
+El desmontaje falla cuando el espacio de nombres todavía contiene referencias activas, como archivos abiertos, el directorio de trabajo de un proceso, montajes anidados, intercambio u otras capas de almacenamiento. Investiga en vez de forzarlo de inmediato:
+
+```bash
+$ findmnt --submounts /mnt/mydrive
+$ sudo fuser -vm /mnt/mydrive
+```
+
+Saca los shells del árbol, detén limpiamente la aplicación responsable y desmonta los montajes hijos antes que el padre. Las opciones de desmontaje diferido y forzoso tienen una semántica especializada y pueden dejar referencias activas o arriesgar datos; utilízalas únicamente con un razonamiento de recuperación documentado.
+
+:::single-choice{#mount-umount-busy-cause}
+¿Qué condición puede hacer que `umount` comunique que un sistema de archivos está ocupado?
+
+::option[Que el nombre del directorio del punto de montaje contenga letras minúsculas.]{#mount-umount-lowercase explanation="El uso de mayúsculas o minúsculas en la ruta no crea por sí solo una referencia activa al sistema de archivos."}
+::option[Que un proceso tenga su directorio de trabajo actual dentro del montaje.]{#mount-umount-cwd-busy .correct explanation="El proceso conserva una referencia al sistema de archivos montado, lo que impide la desconexión ordinaria."}
+::option[Que el UUID sea más largo que el nombre del dispositivo.]{#mount-umount-uuid-length explanation="La longitud de la cadena del identificador no guarda relación con las comprobaciones de ocupación."}
+:::
+
+Utiliza [Gestionar particiones y sistemas de archivos de Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) para practicar con el almacenamiento desechable designado.
+
+## Resumen
+
+Ahora puedes conectar y desconectar sistemas de archivos con un alcance verificable.
+
+1. Utiliza un punto de montaje vacío y dedicado.
+2. Verifica la fuente, el tipo, las opciones y el montaje resultante.
+3. Prefiere un identificador único del sistema de archivos para referencias persistentes.
+4. Desmonta por destino y confirma la desconexión antes de retirar el dispositivo.
+5. Diagnostica las referencias activas en vez de forzar un desmontaje ocupado.

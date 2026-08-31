@@ -1,72 +1,106 @@
 ---
-index: 2
+lesson_id: "rsync"
+course_id: "network-sharing"
 lang: "de"
+order_index: 2
 title: "rsync"
-meta_title: "rsync - Netzwerkfreigabe"
-meta_description: "Erfahren Sie, wie Sie den leistungsstarken rsync-Befehl unter Linux für effiziente Dateisynchronisierung, Remote-Datenübertragung und zuverlässige Backups verwenden. Diese Anleitung behandelt wichtige rsync-Befehle und Optionen."
-meta_keywords: "rsync, linux rsync, dateisynchronisierung, datensicherung, remote sync, rsync befehl, linux dateitransfer, rsync tutorial"
+description: "Lerne, sichere lokale oder SSH-basierte Verzeichnissynchronisierung mit rsync vorab zu prüfen, auszuführen und zu verifizieren."
+meta_title: "rsync – Netzwerkfreigaben"
+meta_description: "Lerne den leistungsfähigen Linux-Befehl rsync für effiziente Dateisynchronisierung, entfernte Datenübertragung und verlässliche Sicherungen kennen."
+meta_keywords: "rsync, Linux rsync, Dateisynchronisierung, Datensicherung, entfernte Synchronisierung, rsync-Befehl, Linux-Dateiübertragung, rsync-Tutorial"
 ---
 
-## Lesson Content
+`rsync` gleicht Dateien und Verzeichnisbäume ab und vermeidet dabei unnötige Übertragung unveränderter Daten. Seine Effizienz macht nicht jeden Aufruf sicher: Quellsyntax, abschließende Schrägstriche, Metadaten, Ausschlüsse und Löschrichtlinie bestimmen das Ergebnis.
 
-### Was ist rsync?
+## Quelle und Ziel lesen
 
-Ein weiteres unverzichtbares Werkzeug zum Kopieren von Daten zwischen verschiedenen Hosts ist `rsync`, was für "remote synchronization" (Fernsynchronisation) steht. Obwohl es `scp` ähnelt, hat `rsync` einen wesentlichen Unterschied, der es unglaublich effizient macht. Es verwendet einen Delta-Transfer-Algorithmus, der intelligent das Ziel auf vorhandene Daten überprüft und nur die Teile von Dateien überträgt, die sich geändert haben.
-
-Wenn beispielsweise eine große Dateiübertragung unterbrochen wird, kann `rsync` das Kopieren fortsetzen und nur die verbleibenden Teile der Datei übertragen, anstatt von vorne zu beginnen. Dies macht es zu einer robusten Wahl für instabile Netzwerkverbindungen.
-
-### Hauptmerkmale von rsync
-
-Die Effizienz von `rsync` ergibt sich aus seinen intelligenten Optimierungen. Es überprüft die Dateiintegrität mithilfe von Prüfsummen, um sicherzustellen, dass die kopierten Daten während der Übertragung nicht beschädigt werden. Diese Funktionen bieten erhebliche Flexibilität und machen `rsync` zu einem idealen Werkzeug für:
-
-- Verzeichnissynchronisation (sowohl remote als auch lokal)
-- Erstellung inkrementeller Datensicherungen
-- Effiziente Handhabung großer Datenübertragungen
-
-### Häufige rsync-Optionen
-
-Sie können das Verhalten des `rsync`-Befehls mit verschiedenen Optionen modifizieren. Zu den am häufigsten verwendeten gehören:
-
-- `-v`: Ausführliche Ausgabe (Verbose), zeigt an, welche Dateien übertragen werden.
-- `-r`: Rekursiv, notwendig für das Kopieren ganzer Verzeichnisse.
-- `-h`: Menschenlesbare Ausgabe (Human-readable), zeigt Zahlen in einem verständlicheren Format an (z. B. KB, MB).
-- `-z`: Komprimiert die Dateiübertragung während der Übertragung, ideal für langsame Verbindungen.
-- `-a`: Archivmodus, eine praktische Abkürzung, die mehrere Optionen (`-rlptgoD`) kombiniert, um Berechtigungen, Eigentümerschaft und Zeitstempel beizubehalten.
-
-### rsync Anwendungsbeispiele
-
-#### Dateien auf demselben Host synchronisieren
-
-Sie können `rsync` verwenden, um zwei Verzeichnisse auf Ihrem lokalen Rechner zu synchronisieren. Dies ist nützlich für die Erstellung lokaler Backups.
+Synchronisiere den Inhalt von `source/` lokal nach `destination/`:
 
 ```bash
-rsync -avh /my/local/directory/one/ /my/local/directory/two/
+$ rsync -a -- source/ destination/
 ```
 
-#### Dateien von einem Remote-Host auf einen lokalen Host synchronisieren
+Der abschließende Schrägstrich bei `source/` bedeutet „kopiere den Inhalt dieses Verzeichnisses“. Ohne ihn erstellt oder aktualisiert `rsync -a source destination/` den Pfad `destination/source`. Prüfe bei einer Änderung der Schrägstriche immer die entstehenden Pfade vorab.
 
-Um Dateien von einem Remote-Server auf Ihren lokalen Rechner zu ziehen, geben Sie zuerst die Remote-Quelle an.
+:::single-choice{#rsync-source-trailing-slash}
+Was bedeutet der abschließende Schrägstrich in `rsync -a source/ destination/`?
+
+::option[Die Quelle nach einer erfolgreichen Übertragung löschen.]{#rsync-delete-source explanation="Das Entfernen der Quelle erfordert eine getrennte ausdrückliche Option und Richtlinie."}
+::option[Den Inhalt von `source` in das Ziel kopieren.]{#rsync-copy-contents .correct explanation="Das Entfernen des Schrägstrichs an der Quelle verändert die oberste Zielstruktur."}
+::option[Das Ziel als entfernte Windows-Freigabe interpretieren.]{#rsync-windows-share explanation="Der Schrägstrich steuert Verzeichnisinhalte und nicht den Transporttyp."}
+:::
+
+## Archivmodus verstehen
+
+Der Archivmodus `-a` entspricht einer Sammlung rekursiver und metadatenerhaltender Optionen, die häufig als `-rlptgoD` zusammengefasst werden. Er bewahrt symbolische Links, Berechtigungen, Änderungszeiten, Gruppen, Eigentümer sowie Geräte- oder Spezialdateien, soweit Berechtigungen und Plattformunterstützung dies erlauben.
+
+Der Archivmodus umfasst nicht die Erhaltung harter Links, ACLs oder erweiterter Attribute; dafür werden gewöhnlich `-H`, `-A` und `-X` benötigt. Er erstellt außerdem nicht von selbst historische Versionen.
+
+:::single-choice{#rsync-archive-limit}
+Welche Metadaten sind in `-a` allein nicht enthalten?
+
+::option[Beziehungen harter Links.]{#rsync-hard-links .correct explanation="Die Erhaltung harter Links erfordert die getrennte Option `-H`."}
+::option[Rekursives Durchlaufen von Verzeichnissen.]{#rsync-archive-recursion explanation="Der Archivmodus umfasst rekursives Durchlaufen."}
+::option[Änderungszeiten.]{#rsync-archive-times explanation="Der Archivmodus umfasst die Erhaltung von Zeiten."}
+:::
+
+## Eine Übertragung vorab prüfen
+
+Verwende vor einer folgenreichen Synchronisierung einen Probelauf mit einzeln aufgeführten Änderungen:
 
 ```bash
-rsync -avh username@remotehost.com:/remote/directory/ /local/directory/
+$ rsync -a --dry-run --itemize-changes -- source/ destination/
 ```
 
-#### Dateien von einem lokalen Host auf einen Remote-Host synchronisieren
+Ein Probelauf sagt Aktionen anhand der aktuellen Erfassung voraus; er kann nicht garantieren, dass sich Dateien vor dem tatsächlichen Befehl nicht ändern. Speichere und prüfe den genauen Befehl und führe ihn erst nach Bestätigung beider Endpunkte ohne `--dry-run` aus.
 
-Um Dateien von Ihrem lokalen Rechner auf einen Remote-Server zu pushen, geben Sie zuerst die lokale Quelle an.
+:::single-choice{#rsync-dry-run-purpose}
+Was bietet `--dry-run --itemize-changes`?
+
+::option[Eine dauerhafte Momentaufnahme auf einem anderen Gerät.]{#rsync-dry-backup explanation="Ein Probelauf erstellt weder eine Datenkopie noch unabhängige Aufbewahrung."}
+::option[Eine Garantie, dass sich Quelldateien später nicht ändern können.]{#rsync-dry-lock explanation="Die Vorschau sperrt den Quellbaum nicht."}
+::option[Eine Vorschau der aktuell von rsync geplanten Änderungen.]{#rsync-dry-preview .correct explanation="Die einzeln aufgeführte Probelaufausgabe zeigt Pfad- und Metadatenentscheidungen vor der Änderung."}
+:::
+
+## Über SSH synchronisieren
+
+Übertrage zum entfernten Host oder rufe von ihm ab, indem du den bekannten entfernten Operanden verwendest:
 
 ```bash
-rsync -avh /local/directory/ username@remotehost.com:/remote/directory/
+$ rsync -a -- source/ alice@example.net:/srv/data/
+$ rsync -a -- alice@example.net:/srv/data/ destination/
 ```
 
-## Exercise
+Modernes rsync verwendet für diese Form gewöhnlich SSH. Bestätige dennoch die konfigurierte entfernte Shell, den Hostschlüssel, Kontoberechtigungen und die Verfügbarkeit von rsync auf dem entfernten Host. Komprimierung mit `-z` kann bei komprimierbaren Daten über eine eingeschränkte Verbindung helfen, aber für bereits komprimierte Daten CPU verschwenden.
 
-Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+:::single-choice{#rsync-pull-direction}
+Welche Operandenreihenfolge ruft entfernte Daten in ein lokales Verzeichnis ab?
 
-## Quiz Question
+::option[`rsync -a local/ host:/data/`]{#rsync-local-first explanation="Diese Reihenfolge überträgt lokale Inhalte zum entfernten Ziel."}
+::option[`rsync --delete host local`]{#rsync-missing-path explanation="Dies drückt nicht die gezeigte Syntax für entfernte Pfade aus und fügt eine unabhängige destruktive Option hinzu."}
+::option[`rsync -a host:/data/ local/`]{#rsync-remote-first .correct explanation="Der entfernte Baum ist die Quelle und der lokale Baum das Ziel."}
+:::
 
-Welcher Befehl, bekannt für seinen Delta-Transfer-Algorithmus, ist besonders nützlich für die Erstellung effizienter Datensicherungen? Bitte antworten Sie auf Englisch und achten Sie auf die Groß- und Kleinschreibung.
+## Löschen als destruktiv behandeln
 
-## Quiz Answer
+`--delete` entfernt Zieleinträge, die innerhalb des synchronisierten Bereichs an der Quelle fehlen. Vertauschte Endpunkte, ein falscher Schrägstrich oder ein fehlerhafter Ausschluss können deshalb gültige Daten löschen. Prüfe vorab gegen ein Testziel, stelle wiederherstellbare Sicherungen sicher, prüfe den Mountzustand und erwäge vor der Genehmigung eine Obergrenze für Löschungen.
 
-rsync
+Untersuche nach dem tatsächlichen Lauf Exit-Status und Protokolle, vergleiche erwartete Dateianzahlen und Metadaten und teste repräsentative Inhalte oder die Wiederherstellung. Rsync-Synchronisierung allein spiegelt unerwünschte Löschung oder Beschädigung und ist keine vollständige Sicherungsstrategie.
+
+:::single-choice{#rsync-delete-effect}
+Was kann `--delete` während der Synchronisierung bewirken?
+
+::option[Jede übertragene Datei mit dem SSH-Hostschlüssel verschlüsseln.]{#rsync-delete-encrypt explanation="Die Löschrichtlinie hat nichts mit Dateiverschlüsselung zu tun."}
+::option[Alle Änderungen am Zieldateisystem verhindern.]{#rsync-delete-readonly explanation="Die Option erlaubt ausdrücklich zusätzliche Zieländerungen."}
+::option[Zieleinträge entfernen, die im ausgewählten Quellbereich fehlen.]{#rsync-delete-destination .correct explanation="Die Option gleicht den Zielbestand an die Quelle an und erfordert eine geprüfte Vorschau sowie einen Wiederherstellungsplan."}
+:::
+
+## Zusammenfassung
+
+Du kannst einen `rsync`-Vorgang nun vorab prüfen und verifizieren, ohne seine destruktiven Randfälle zu verbergen.
+
+1. Verwende abschließende Schrägstriche, um die beabsichtigte Verzeichnisstruktur auszudrücken.
+2. Ergänze bei Bedarf Metadatenoptionen, die der Archivmodus nicht umfasst.
+3. Prüfe die einzeln aufgeführte Probelaufausgabe vor der tatsächlichen Synchronisierung.
+4. Überprüfe SSH-Identität und Endpunktrichtung.
+5. Behandle Löschung und Sicherungsaufbewahrung als ausdrückliche Richtlinien.

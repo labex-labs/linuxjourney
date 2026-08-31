@@ -1,58 +1,85 @@
 ---
-index: 2
+lesson_id: "subnets"
+course_id: "subnetting"
 lang: "pt"
+order_index: 2
 title: "Sub-redes"
-meta_title: "Sub-redes - Sub-redes (Subnetting)"
-meta_description: "Domine os fundamentos de sub-rede e máscara de sub-rede no Linux. Este guia explica sub-redes, prefixos de rede e como gerenciar a segmentação de rede em um ambiente Linux com sub-redes."
-meta_keywords: "subnet linux, sub-rede linux, máscara de sub-rede linux, sub-redes, sub-redes, máscara de sub-rede, prefixo de rede, rede Linux, endereço IP"
+description: "Aprenda como os prefixos definem sub-redes IPv4 e influenciam a entrega no enlace, o roteamento e as políticas."
+meta_title: "Sub-redes - Sub-redes"
+meta_description: "Domine os fundamentos das sub-redes e máscaras de sub-rede no Linux. Este guia explica a divisão em sub-redes, os prefixos de rede e como gerenciar a segmentação de redes em um ambiente Linux."
+meta_keywords: "sub-rede linux, linux sub-rede, máscara de sub-rede linux, divisão em sub-redes, sub-redes, máscara de sub-rede, prefixo de rede, redes Linux, endereço IP"
 ---
 
-## Lesson Content
+Uma sub-rede é um intervalo de endereços IP definido por um prefixo de rede. Hosts em uma sub-rede costumam estar no mesmo enlace local, mas a proximidade física não é a definição: VLANs, túneis, sobreposições e enlaces roteados podem alterar a topologia.
 
-Como você pode saber se dois computadores estão na mesma rede? A resposta reside na compreensão da sub-rede, abreviação de subnetwork. Uma sub-rede é uma divisão lógica de uma rede IP, agrupando hosts com endereços IP semelhantes. Esses hosts geralmente estão em proximidade física, permitindo transferência de dados eficiente entre eles. Pense nisso como enviar correspondência dentro do mesmo código postal; é muito mais rápido e simples do que enviá-la para um estado diferente.
+## Prefixos e máscaras
 
-Para que um host faça parte de uma **sub-rede linux**, seu endereço IP é dividido em duas partes: um prefixo de rede e um identificador de host. Por exemplo, se um host tem um IP de 192.168.1.8 e outro tem 192.168.1.9, eles provavelmente compartilham o mesmo prefixo de rede. A parte comum identifica a rede, enquanto os números exclusivos (8 e 9) identificam os hosts individuais.
+O IPv4 pode expressar um prefixo de 24 bits como `/24` ou como a máscara `255.255.255.0`. Em binário, uma máscara de sub-rede convencional válida possui uns contíguos seguidos por zeros:
 
-### Entendendo a Máscara de Sub-rede Linux
-
-A **máscara de sub-rede linux** é o que determina qual parte de um endereço IP é a porção de rede e qual parte é a porção de host. Uma máscara de sub-rede típica se parece com isto:
-
-```plaintext
-255.255.255.0
+```text
+11111111.11111111.11111111.00000000
 ```
 
-Para entender isso, precisamos pensar em binário. Cada número em um endereço IP ou máscara de sub-rede é um octeto, representando 8 bits. Em binário, um `1` significa "ligado" e um `0` significa "desligado". Se você converter o número binário `11111111` para decimal, você obtém 255. Isso significa que um octeto pode variar de 0 (`00000000`) a 255 (`11111111`).
+Para o endereço `192.168.1.8/24`, o prefixo de rede é `192.168.1.0/24`. A escrita `192.168.1.0/255.255.255.0` é entendida em alguns contextos, mas a notação de prefixo CIDR é a forma compacta padrão.
 
-Os `255`s na máscara "mascaram" a porção de rede do endereço IP. Portanto, com uma máscara de `255.255.255.0` e um IP de `192.168.1.8`, a parte `192.168.1` é a rede, e `8` é o host. Frequentemente, denotamos uma configuração de **sub-rede linux** pelo seu prefixo de rede seguido pela máscara de sub-rede, como `192.168.1.0/255.255.255.0`.
+:::single-choice{#subnets-mask-24}
+Qual máscara decimal pontuada corresponde a `/24`?
 
-### O Propósito de Subnetting de Sub-redes
+::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Três octetos completos contêm 24 bits um iniciais."}
+::option[`255.255.0.255`]{#subnets-noncontiguous explanation="Ela possui bits de rede não contíguos e não é a máscara `/24` convencional."}
+::option[`0.0.0.24`]{#subnets-prefix-as-octet explanation="Um comprimento de prefixo não é colocado no último octeto da máscara."}
+:::
 
-Por que criamos sub-redes? A prática de **subnetting de sub-redes** (divisão de sub-redes) é crucial para organizar e gerenciar redes de forma eficaz. Envolve dividir uma rede maior em segmentos menores e mais gerenciáveis. Isso oferece vários benefícios principais:
+## Decidindo se um destino está no enlace
 
-- **Melhor Desempenho:** Ao segmentar uma rede, você reduz o volume de tráfego de broadcast dentro de cada sub-rede, levando a menos congestionamento e melhor desempenho geral.
-- **Segurança Aprimorada:** As sub-redes permitem isolar diferentes partes da sua rede. Um host em uma sub-rede não pode interagir diretamente com um host em outra sem um roteador, criando um limite de segurança. Você pode implementar regras de acesso no roteador para controlar o fluxo de tráfego entre sub-redes.
-- **Administração Simplificada:** Dividir uma rede grande em unidades lógicas menores facilita o gerenciamento, a solução de problemas e a aplicação de políticas de rede.
+O Linux instala rotas conectadas a partir dos endereços e prefixos das interfaces. Ele compara um destino com as rotas elegíveis, em vez de apenas comparar os três primeiros octetos decimais. Em limites que não coincidem com octetos, como `/20`, a divisão ocorre dentro de um octeto.
 
-### Conectando Sub-redes
+Inspecione as rotas conectadas e a decisão para um endereço:
 
-E se você precisar se conectar a hosts em uma rede diferente, como yahoo.com? Para conectar sub-redes diferentes, você precisa de um dispositivo que esteja conectado a mais de uma sub-rede: um roteador.
+```bash
+$ ip route show
+$ ip route get 192.168.1.50
+```
 
-Por exemplo, um host em `192.168.1.129` em uma rede com máscara `255.255.255.0` pode alcançar qualquer outro host na rede `192.168.1.0`. Para alcançar a internet, ele deve enviar tráfego através de seu gateway, que é o roteador. Em muitas redes domésticas, o endereço do roteador é frequentemente `.1` da sub-rede (por exemplo, `192.168.1.1`). Este roteador tem outra conexão com uma sub-rede diferente (como a rede do seu provedor de serviços de internet), permitindo a comunicação com a internet em geral.
+:::single-choice{#subnets-on-link-decision}
+Como um host Linux determina se deve enviar diretamente ou por um roteador?
 
-## Exercise
+::option[Ele sempre presume que endereços terminados em `.1` são locais.]{#subnets-dot-one explanation="Convenções de números de host não substituem os prefixos e as rotas configurados."}
+::option[Ele consulta os prefixos e a política de roteamento.]{#subnets-route-policy .correct explanation="A rota selecionada identifica se o destino está no enlace e qual interface ou próximo salto usar."}
+::option[Ele solicita uma máscara de sub-rede à aplicação de destino depois de se conectar.]{#subnets-ask-application explanation="A seleção da rota precisa ocorrer antes dessa troca com a aplicação."}
+:::
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de endereçamento IP e subnetting:
+## Roteamento entre sub-redes
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IPv4, o que é fundamental para entender sub-redes.
-2. **[Explorar Tipos de Endereços IP e Alcançabilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Aprenda a explorar diferentes tipos de endereços IP e testar a alcançabilidade da rede, ajudando você a verificar se os hosts estão na mesma rede.
-3. **[Realizar Subnetting IP e Conversão Binária no Terminal Linux](https://labex.io/pt/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Domine o subnetting IP e a conversão binária, aplicando diretamente os conceitos de prefixo de rede e identificação de host discutidos na lição.
+Um roteador com interfaces e rotas adequadas pode encaminhar tráfego entre sub-redes. Um gateway padrão é simplesmente um próximo salto selecionado por uma rota padrão; ele não precisa usar o primeiro endereço utilizável nem terminar em `.1`.
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com o endereçamento de rede e subnetting.
+A separação em sub-redes cria um ponto para aplicar políticas de roteamento e filtragem, mas não constitui automaticamente um limite de segurança. Se o encaminhamento for permitido sem uma política restritiva, hosts em sub-redes diferentes ainda poderão se comunicar.
 
-## Quiz Question
+:::single-choice{#subnets-security-boundary}
+A criação de duas sub-redes bloqueia automaticamente o tráfego entre elas?
 
-Uma sub-rede é definida por um prefixo de rede e uma máscara de sub-rede. Verdadeiro ou Falso? (Por favor, responda com 'True' ou 'False'. A resposta diferencia maiúsculas de minúsculas e deve estar em inglês.)
+::option[Sim, porque roteadores não podem conectar prefixos diferentes.]{#subnets-never-route explanation="Conectar prefixos é a principal função do roteamento."}
+::option[Não; as políticas de roteamento e filtragem determinam o tráfego permitido.]{#subnets-policy-required .correct explanation="A segmentação permite aplicar políticas, mas não as define por si só."}
+::option[Sim, a menos que ambas usem o endereço de host `.1`.]{#subnets-dot-one-security explanation="Uma convenção de número de host não controla o encaminhamento."}
+:::
 
-## Quiz Answer
+## Motivos para criar sub-redes
 
-True
+A divisão em sub-redes pode organizar a alocação de endereços, limitar o escopo de broadcast da camada de enlace, separar domínios de falha e fornecer limites para políticas. Ela também pode acrescentar complexidade de roteamento, firewall, DHCP, monitoramento e documentação. Projete os prefixos de acordo com requisitos reais de escala, crescimento, redundância e segurança, em vez de presumir que menor sempre significa mais rápido.
+
+:::single-choice{#subnets-design-tradeoff}
+Qual é uma compensação real da divisão em sub-redes?
+
+::option[Domínios de broadcast menores não exigem roteamento nem documentação.]{#subnets-no-complexity explanation="Mais limites geralmente exigem mais gerenciamento de rotas, políticas, endereços e serviços."}
+::option[A segmentação pode melhorar a organização enquanto aumenta a complexidade das políticas.]{#subnets-tradeoff .correct explanation="Os limites das sub-redes podem favorecer o controle, mas acrescentam estado operacional que precisa ser mantido."}
+::option[Toda sub-rede garante a mesma latência até a Internet.]{#subnets-equal-latency explanation="As condições do caminho e da carga de trabalho determinam a latência."}
+:::
+
+## Resumo
+
+Agora você pode relacionar um prefixo IPv4 à entrega local e às políticas roteadas.
+
+1. Expresse máscaras contíguas com comprimentos de prefixo CIDR.
+2. Calcule o prefixo de rede a partir dos bits do endereço e da máscara.
+3. Use rotas para determinar a entrega no enlace ou pelo próximo salto.
+4. Trate o isolamento de sub-redes como uma oportunidade para aplicar políticas, não como uma garantia.

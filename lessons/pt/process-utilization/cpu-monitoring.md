@@ -1,58 +1,95 @@
 ---
-index: 4
+lesson_id: "cpu-monitoring"
+course_id: "process-utilization"
 lang: "pt"
+order_index: 4
 title: "Monitoramento da CPU"
+description: "Aprenda a interpretar as médias de carga do Linux junto com a quantidade de CPUs, a utilização e o estado das tarefas."
 meta_title: "Monitoramento da CPU - Utilização de Processos"
-meta_description: "Aprenda os fundamentos do monitoramento da CPU no Linux usando o comando uptime. Este guia para iniciantes explica como interpretar a média de carga, entender a utilização de processos e avaliar o desempenho do sistema."
-meta_keywords: "comando uptime, monitoramento CPU Linux, média de carga, desempenho do sistema, utilização de processos, tutorial Linux, guia iniciante"
+meta_description: "Aprenda os fundamentos do monitoramento da CPU no Linux usando o comando uptime. Este guia explica como interpretar a carga média, entender a utilização dos processos e avaliar o desempenho do sistema."
+meta_keywords: "comando uptime, monitoramento CPU Linux, carga média, desempenho do sistema, utilização de processos, tutorial Linux, guia para iniciantes"
 ---
 
-## Lesson Content
+A solução de problemas da CPU começa pela separação entre carga, utilização e capacidade de resposta. Nenhum número isolado comprova um gargalo, portanto compare vários intervalos de tempo e relacione as métricas do host à carga de trabalho realmente percebida pelos usuários.
 
-Uma habilidade fundamental na gestão de um sistema Linux é a compreensão do seu desempenho. Um dos comandos mais úteis para uma verificação rápida de integridade é o **uptime**.
+## Leitura de uptime
 
+`uptime` fornece um ponto de partida compacto:
+
+```text
+$ uptime
+ 17:23:35 up 1 day, 5:59, 2 users, load average: 0.00, 0.02, 0.05
 ```
-pete@icebox:~$ uptime
- 17:23:35 up 1 day,  5:59,  2 users,  load average: 0.00, 0.02, 0.05
+
+Os três valores finais são as médias de carga durante aproximadamente 1, 5 e 15 minutos. Compará-los mostra a direção: um valor de 1 minuto muito maior pode indicar carga crescente, enquanto um valor de 15 minutos maior pode indicar uma carga em queda.
+
+:::single-choice{#cpu-uptime-windows}
+Em que ordem `uptime` exibe os intervalos de carga média?
+
+::option[15, 5 e 1 segundos.]{#cpu-windows-seconds explanation="Os valores são médias em escala de minutos e não aparecem do mais longo para o mais curto."}
+::option[1, 5 e 15 minutos.]{#cpu-windows-one-five-fifteen .correct explanation="O intervalo recente mais curto aparece primeiro, e o mais longo aparece por último."}
+::option[Porcentagens atual, mínima e máxima da CPU.]{#cpu-windows-percentages explanation="A carga média não é uma porcentagem mínima ou máxima da CPU."}
+:::
+
+## Compreensão da Carga no Linux
+
+A carga média do Linux conta as tarefas executáveis, incluindo as que usam ou aguardam CPU, e as tarefas em sono ininterruptível, normalmente associadas à E/S. Portanto, ela não é o mesmo que a utilização da CPU.
+
+Uma carga de `4.0` possui implicações diferentes em sistemas com uma e dezesseis CPUs lógicas. Descubra a quantidade de unidades de processamento disponíveis para o sistema com:
+
+```bash
+$ nproc
 ```
 
-Embora já tenhamos visto o `uptime` antes, vamos nos concentrar no campo `load average` (média de carga), que é crucial para o **monitoramento da CPU no Linux**.
+Cotas de CPU, afinidade, virtualização e limites de contêineres podem reduzir a capacidade visível para determinada carga de trabalho, portanto a quantidade de CPUs do host é apenas um ponto de partida.
 
-### Entendendo a Média de Carga (Load Average)
+:::single-choice{#cpu-load-not-percentage}
+Por que a carga média não é uma porcentagem de utilização da CPU?
 
-A média de carga fornece um instantâneo da carga da CPU no seu sistema. Os três números representam a carga média da CPU nos intervalos de 1, 5 e 15 minutos. Mas o que é carga da CPU? É o número médio de processos na fila de execução (run-queue), o que significa que eles estão sendo executados ativamente pela CPU ou estão esperando sua vez. Esta métrica é um indicador chave da **utilização de processos** e do **desempenho geral do sistema**.
+::option[Ela informa somente a frequência do clock da CPU.]{#cpu-load-clock explanation="A velocidade do clock é uma métrica separada de hardware ou escalonamento."}
+::option[Ela mede somente a memória física livre.]{#cpu-load-memory explanation="A disponibilidade de memória é informada por outras métricas."}
+::option[Ela inclui tarefas executáveis e tarefas em sono ininterruptível.]{#cpu-load-task-count .correct explanation="A carga se baseia na demanda e no estado de espera das tarefas, não em uma porcentagem do tempo de CPU decorrido."}
+:::
 
-### Uma Analogia de Tráfego
+## Comparação da Carga com a Atividade da CPU
 
-Imagine uma CPU de núcleo único como uma rodovia de pista única.
+Colete várias amostras, em vez de depender de uma única saída. Algumas ferramentas complementares úteis são:
 
-- Se a rodovia estiver com capacidade total com um fluxo constante de carros, o tráfego está em 100%, o que corresponde a uma média de carga de 1.0.
-- Se ocorrer um grande congestionamento, e os carros se acumularem duas vezes a capacidade da rodovia, a carga é de 200%, ou uma média de carga de 2.0.
-- Se a rodovia estiver meio vazia, a carga é de 0.5.
-- Idealmente, você deseja uma média de carga baixa, como uma rodovia às 2 da manhã sem tráfego.
+```bash
+$ top
+$ vmstat 1
+$ mpstat -P ALL 1
+```
 
-Nesta analogia, os carros são os processos esperando para serem processados pela CPU.
+`top` combina visualizações do host e dos processos. `vmstat` mostra as contagens de tarefas executáveis e bloqueadas junto com categorias da CPU. `mpstat`, fornecido pelo `sysstat` em muitas distribuições, mostra a atividade por CPU. A disponibilidade e os campos exatos variam, portanto consulte os manuais locais.
 
-### Interpretando a Média de Carga em Sistemas Modernos
+Uma carga alta com CPUs ocupadas pode indicar demanda de CPU. Uma carga alta com muitas tarefas bloqueadas, latência de E/S ou observações de espera por E/S aponta para outro recurso limitado. Uma utilização média baixa também pode ocultar uma única CPU saturada ou um pico breve de latência.
 
-Uma média de carga de 1.0 não significa necessariamente que seu sistema está com dificuldades. A maioria dos computadores modernos possui processadores multi-core. Se você tiver um processador quad-core (4 núcleos), uma média de carga de 1.0 significa que apenas 25% da sua capacidade total de CPU está sendo utilizada. Cada núcleo atua como uma pista adicional na rodovia.
+:::single-choice{#cpu-high-load-next-step}
+Qual é a melhor próxima etapa após observar uma carga média alta?
 
-Para interpretar corretamente a média de carga, você deve considerar o número de núcleos da CPU. Você pode ver o número de núcleos no seu sistema com o comando `cat /proc/cpuinfo`.
+::option[Comparar medições repetidas de CPU, estados das tarefas, E/S e carga de trabalho.]{#cpu-load-correlate .correct explanation="Amostras relacionadas diferenciam as possíveis explicações para a carga."}
+::option[Reiniciar imediatamente sem coletar outros dados.]{#cpu-load-reboot explanation="A reinicialização remove evidências e pode interromper serviços sem identificar a causa."}
+::option[Presumir que todas as CPUs estejam totalmente utilizadas.]{#cpu-load-assume explanation="A carga pode incluir tarefas ininterruptíveis e estar distribuída de forma desigual entre as CPUs."}
+:::
 
-A regra geral para um bom **desempenho do sistema** é manter sua média de carga abaixo do número de núcleos. Se você descobrir que sua máquina consistentemente tem uma média de carga superior à contagem de núcleos, isso pode indicar um gargalo de desempenho, como um processo descontrolado ou recursos de hardware insuficientes.
+## Avaliação da Capacidade e do Impacto
 
-## Exercise
+Não existe uma regra universal de que a carga sempre deva permanecer abaixo da quantidade de CPUs. Sistemas em lote podem aceitar filas, enquanto serviços interativos podem violar metas de latência antes desse ponto. Estabeleça uma linha de base para o mesmo host e a mesma carga de trabalho e depois compare tempo de resposta, throughput, taxa de erros, saturação e uso de recursos.
 
-Para obter experiência prática com **monitoramento da CPU no Linux** e análise do **desempenho do sistema**, experimente estes laboratórios práticos. Eles ajudarão você a aplicar os conceitos de **média de carga** e **utilização de processos** em cenários do mundo real.
+:::single-choice{#cpu-capacity-threshold}
+O que deve determinar se a carga observada é aceitável?
 
-1. **[Gerenciar e Monitorar Processos Linux](https://labex.io/pt/labs/comptia-manage-and-monitor-linux-processes-590864)** - Pratique a interação e inspeção de processos, e o monitoramento de recursos com ferramentas como `ps` e `top`, o que se relaciona diretamente com a compreensão da carga da CPU.
-2. **[Comando Linux top: Monitoramento do Sistema em Tempo Real](https://labex.io/pt/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar o comando `top` para monitoramento do sistema em tempo real, incluindo ordenação de processos e filtragem, fornecendo uma análise mais aprofundada da atividade da CPU e dos processos.
-3. **[Comando Linux free: Monitoramento da Memória do Sistema](https://labex.io/pt/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorar e analisar o uso da memória do sistema, que é frequentemente um fator crítico, juntamente com a carga da CPU, no desempenho geral do sistema.
+::option[Uma exigência de que o valor sempre permaneça abaixo de um.]{#cpu-below-one explanation="A capacidade de vários núcleos e os objetivos da carga de trabalho tornam esse limite fixo pouco confiável."}
+::option[Somente a quantidade de usuários listados por `uptime`.]{#cpu-user-count explanation="Os usuários conectados por shells não representam toda a demanda da carga de trabalho."}
+::option[A linha de base e os objetivos de serviço da carga de trabalho.]{#cpu-baseline-objectives .correct explanation="A aceitabilidade depende do comportamento esperado e do desempenho percebido pelos usuários, não de um limite universal."}
+:::
 
-## Quiz Question
+## Resumo
 
-Qual comando você pode usar para ver a média de carga do sistema? Por favor, responda em inglês, e observe que o comando diferencia maiúsculas de minúsculas.
+Agora você sabe interpretar a carga média como uma parte da investigação da CPU.
 
-## Quiz Answer
-
-uptime
+1. Leia os intervalos de carga de 1, 5 e 15 minutos.
+2. Diferencie a carga das tarefas das porcentagens de tempo da CPU.
+3. Compare a carga com a capacidade de processamento disponível.
+4. Relacione medições repetidas do host aos resultados dos serviços.

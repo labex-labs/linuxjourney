@@ -1,66 +1,90 @@
 ---
-index: 5
+lesson_id: "io-monitoring"
+course_id: "process-utilization"
 lang: "fr"
-title: "Surveillance des E/S"
-meta_title: "Surveillance des E/S - Utilisation des Processus"
-meta_description: "Maîtrisez la surveillance des E/S sous Linux avec la commande iostat. Ce guide explique comment analyser les métriques d'utilisation du CPU et du disque pour optimiser les performances de votre système."
-meta_keywords: "surveillance e/s, iostat, surveillance e/s linux, utilisation cpu, utilisation disque, performance système, iowait, commandes linux"
+order_index: 5
+title: "Surveillance des entrées-sorties"
+description: "Découvrez comment employer les échantillons d’iostat pour analyser l’activité du processeur et des périphériques bloc."
+meta_title: "Surveillance des entrées-sorties - Utilisation des processus"
+meta_description: "Maîtrisez la surveillance des entrées-sorties Linux avec iostat et analysez les mesures du processeur et des disques pour comprendre les performances."
+meta_keywords: "surveillance entrées-sorties, iostat, surveillance E/S Linux, utilisation processeur, utilisation disque, performances système, iowait, commandes Linux"
 ---
 
-## Lesson Content
+`iostat`, généralement fourni par le paquet `sysstat`, indique l’activité du processeur et des périphériques bloc. Associez des échantillons répétés à la latence de l’application : le débit ou l’utilisation seuls ne prouvent pas que le stockage provoque un problème visible par l’utilisateur.
 
-Une **surveillance des E/S** (Entrées/Sorties) efficace est cruciale pour maintenir un système Linux sain et réactif. Un outil puissant en ligne de commande pour cette tâche est **iostat**, qui fournit des rapports détaillés sur l'activité du CPU et du disque.
+## Recueillir des échantillons utiles
 
-L'exécution de la commande `iostat` génère un instantané des métriques de performance de votre système.
+Affichez des statistiques étendues des périphériques à intervalles d’une seconde :
 
 ```bash
-pete@icebox:~$ iostat
-Linux 3.13.0-39-lowlatency (icebox)     01/28/2016      _i686_  (1 CPU)
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.13    0.03    0.50    0.01    0.00   99.33
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sda               0.17         3.49         1.92     385106     212417
+$ iostat -xz 1
 ```
 
-Le résultat est divisé en deux sections principales. Décortiquons-les.
+Sur les implémentations courantes, le premier rapport contient les moyennes depuis le démarrage et les suivants couvrent chaque intervalle. L’option `-x` ajoute des champs étendus, tandis que `-z` masque les périphériques inactifs. Laissez passer plusieurs intervalles afin de saisir des périodes normales et problématiques.
 
-### Comprendre les métriques du CPU
+:::single-choice{#iostat-first-report}
+Que représente couramment le premier rapport d’`iostat` ?
 
-Le premier rapport détaille l'utilisation du CPU, donnant un aperçu de la manière dont le processeur passe son temps.
+::option[Uniquement les opérations de la dernière seconde de la commande.]{#iostat-final-second explanation="Cela ne décrit pas le rapport cumulatif initial."}
+::option[Les moyennes d’activité depuis le démarrage du système.]{#iostat-since-boot .correct explanation="Les rapports suivants concernent généralement chaque intervalle ; le premier doit donc être interprété séparément."}
+::option[Une prévision de l’utilisation des périphériques pour demain.]{#iostat-forecast explanation="L’outil indique les statistiques observées, et non la demande future."}
+:::
 
-- **%user**: Pourcentage du temps CPU passé à exécuter des processus au niveau utilisateur (applications).
-- **%nice**: Pourcentage du temps CPU passé sur des processus de niveau utilisateur avec une priorité modifiée (nice).
-- **%system**: Pourcentage du temps CPU passé à exécuter des processus au niveau système (noyau).
-- **%iowait**: Pourcentage du temps où le CPU était inactif en attendant qu'une requête d'E/S disque en attente se termine. Des valeurs élevées ici peuvent indiquer un goulot d'étranglement du stockage.
-- **%steal**: Dans un environnement virtualisé, c'est le pourcentage de temps pendant lequel un processeur virtuel attend un processeur réel pendant que l'hyperviseur dessert un autre processeur virtuel.
-- **%idle**: Pourcentage du temps où le CPU était inactif et n'attendait aucune requête d'E/S disque.
+## Lire les champs du processeur
 
-### Analyser l'utilisation du disque
+La section du processeur comprend couramment le temps utilisateur (`%user`), système (`%system`), d’inactivité (`%idle`), d’attente d’entrées-sorties (`%iowait`) et de vol par une machine virtuelle (`%steal`). L’attente d’entrées-sorties est le temps d’inactivité du processeur pendant lequel le système possède une requête d’entrée-sortie en attente ; ce n’est pas le pourcentage d’occupation d’un disque.
 
-Le deuxième rapport se concentre sur la **surveillance des E/S** au niveau du périphérique, montrant comment les données sont transférées vers et depuis vos périphériques de stockage.
+:::single-choice{#iostat-iowait-meaning}
+Que décrit `%iowait` ?
 
-- **tps**: Transferts par seconde émis vers le périphérique. Un transfert est une requête d'E/S, et plusieurs requêtes logiques peuvent être combinées en une seule.
-- **kB_read/s**: Quantité de données lues depuis le périphérique, exprimée en kilooctets par seconde.
-- **kB_wrtn/s**: Quantité de données écrites sur le périphérique, exprimée en kilooctets par seconde.
-- **kB_read**: Nombre total de kilooctets lus depuis le périphérique depuis le dernier redémarrage.
-- **kB_wrtn**: Nombre total de kilooctets écrits sur le périphérique depuis le dernier redémarrage.
+::option[Le pourcentage de la capacité du disque déjà rempli.]{#iostat-capacity explanation="La capacité du système de fichiers et le temps processeur sont des mesures différentes."}
+::option[Le temps d’inactivité du processeur pendant qu’une requête d’entrée-sortie est en attente.]{#iostat-iowait-cpu .correct explanation="Il s’agit d’une catégorie de temps processeur qui ne peut identifier un périphérique à elle seule."}
+::option[Le nombre de fichiers en attente de suppression.]{#iostat-delete-queue explanation="Ce champ ne représente pas un nombre de suppressions de fichiers."}
+:::
 
-## Exercise
+## Lire les champs des périphériques
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la surveillance du système et de l'utilisation du disque :
+Les noms des champs varient selon la version de sysstat, mais les notions utiles comprennent :
 
-1. **[Commande Linux df : Rapport sur l'espace disque](https://labex.io/fr/labs/linux-linux-df-command-disk-space-reporting-219188)** - Entraînez-vous à rapporter l'utilisation de l'espace disque sur les systèmes de fichiers montés, un aspect clé de la surveillance.
-2. **[Commande Linux du : Estimation de l'espace fichier](https://labex.io/fr/labs/linux-linux-du-command-file-space-estimating-219190)** - Apprenez à estimer l'utilisation de l'espace disque pour les répertoires et sous-répertoires, complétant les informations sur les E/S disque fournies par `iostat`.
-3. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Explorez la surveillance du système en temps réel, y compris l'utilisation du CPU et de la mémoire, ce qui fournit un contexte plus large pour les métriques CPU vues dans `iostat`.
+- les opérations ou volumes lus et écrits par seconde, qui indiquent le rythme de la charge ;
+- `await`, qui mesure la latence moyenne des requêtes, y compris le temps en file d’attente et de service ;
+- les champs de taille moyenne de la file, qui indiquent les requêtes en attente ou en cours de traitement ;
+- `%util`, qui indique le pourcentage du temps écoulé pendant lequel le périphérique a traité des entrées-sorties.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance dans la surveillance des ressources système Linux.
+Une valeur `%util` élevée peut signaler la saturation d’un périphérique série simple, mais ne se traduit pas directement en capacité de performances pour un stockage parallèle, une grappe ou un périphérique virtuel. Comparez la latence à la conception du périphérique, au profil de la charge et à l’objectif de service.
 
-## Quiz Question
+:::single-choice{#iostat-await-purpose}
+Quel champ est le plus directement associé à la latence moyenne des requêtes d’entrée-sortie ?
 
-Quelle commande peut être utilisée pour visualiser les E/S et l'utilisation du CPU ? (Veuillez répondre uniquement en caractères anglais minuscules)
+::option[Le nom du périphérique.]{#iostat-device-name explanation="Le nom identifie le périphérique, mais ne mesure pas la durée des requêtes."}
+::option[`await`]{#iostat-await .correct explanation="Await reflète le temps moyen des requêtes, y compris l’attente dans la file et le service."}
+::option[`%idle`]{#iostat-idle explanation="Il s’agit d’un champ du processeur, et non de la latence des requêtes du périphérique."}
+:::
 
-## Quiz Answer
+## Mettre les indices en relation
 
-iostat
+Associez les noms des périphériques aux montages et aux périphériques sous-jacents avant de conclure :
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINTS
+$ findmnt
+```
+
+Mettez ensuite les intervalles d’`iostat` en relation avec le temps de réponse de l’application, les mesures de la base de données ou du système de fichiers et les entrées-sorties des processus. Device Mapper, RAID, les conteneurs et le stockage réseau peuvent ajouter des couches qui nécessitent leurs propres outils.
+
+:::single-choice{#iostat-high-util-conclusion}
+Que faire après avoir observé une valeur `%util` élevée sur un périphérique ?
+
+::option[Supposer que chaque système de fichiers manque d’espace libre.]{#iostat-assume-full explanation="Le temps d’occupation n’indique pas la capacité du système de fichiers."}
+::option[Supprimer des fichiers avant d’identifier la charge montée.]{#iostat-delete-first explanation="La suppression modifie l’état et ne prouve pas un goulot d’étranglement des entrées-sorties."}
+::option[Mettre la latence et le comportement de la charge en relation avec la conception du stockage.]{#iostat-correlate .correct explanation="Le parallélisme du périphérique et les objectifs de la charge déterminent si l’observation est nuisible."}
+:::
+
+## Résumé
+
+Vous savez maintenant employer `iostat` comme indice dans une investigation sur les entrées-sorties.
+
+1. Recueillir plusieurs intervalles de statistiques étendues.
+2. Distinguer l’attente d’entrées-sorties du processeur du temps d’occupation du périphérique.
+3. Interpréter ensemble la latence, la mise en file, le débit et l’utilisation.
+4. Associer les périphériques aux charges et vérifier les conséquences sur l’application.

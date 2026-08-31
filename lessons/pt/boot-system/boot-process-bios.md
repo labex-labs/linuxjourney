@@ -1,50 +1,80 @@
 ---
-index: 2
+lesson_id: "boot-process-bios"
+course_id: "boot-system"
 lang: "pt"
+order_index: 2
 title: "Processo de Boot: BIOS"
+description: "Aprenda como o BIOS legado e o firmware UEFI moderno localizam e autorizam a próxima etapa do boot."
 meta_title: "Processo de Boot: BIOS - Inicializando o Sistema"
 meta_description: "Descubra o primeiro passo do processo de boot do Linux: a BIOS. Aprenda como ela encontra o carregador de boot via MBR ou GPT e entenda o papel da UEFI. Este guia explica a inicialização do sistema e aborda como entrar na BIOS para configuração."
 meta_keywords: "processo de boot linux, BIOS, MBR, UEFI, bios no linux, bios linux, como entrar na bios, carregador de boot, inicialização do sistema"
 ---
 
-## Lesson Content
+O firmware é executado antes do kernel Linux. Em hardware da classe PC, as duas principais interfaces são BIOS legado e UEFI. Elas usam modelos diferentes para descobrir o boot; portanto, “o BIOS lê o carregador” descreve apenas um dos caminhos.
 
-O primeiro passo no processo de inicialização do Linux é o BIOS (Basic Input/Output System), que realiza verificações cruciais de integridade do sistema ao ligar. O BIOS é um firmware comumente encontrado em computadores compatíveis com IBM PC, que representam a maioria dos computadores em uso hoje.
+## Boot com BIOS legado
 
-### O Papel do BIOS no Linux
+Depois da inicialização inicial da plataforma e da escolha do dispositivo, o BIOS legado normalmente lê o primeiro setor de 512 bytes do disco escolhido e transfere o controle ao código ali presente se encontrar a assinatura esperada.
 
-Quando você liga o computador, o **BIOS no Linux** é o primeiro software a ser executado. Sua função principal é inicializar e testar o hardware do sistema, como CPU, memória e discos rígidos. Você provavelmente já interagiu com o firmware do BIOS antes para alterar a ordem de inicialização, verificar a hora do sistema ou visualizar o endereço MAC da sua máquina. Após a conclusão das verificações de hardware, o objetivo principal do processo **bios linux** é localizar e transferir o controle para o carregador de inicialização do sistema (bootloader).
+Em um layout MBR, esse setor contém uma pequena região de código, quatro entradas de partição e uma assinatura. O espaço é insuficiente para um carregador completo, por isso o código costuma localizar outra etapa no disco ou em um sistema de arquivos.
 
-### Como o BIOS Encontra o Bootloader
+É possível iniciar por BIOS em um disco GPT, mas o MBR protetor sozinho não contém as etapas posteriores. O GRUB costuma usar uma pequena BIOS Boot Partition no GPT para seu código central incorporado. A organização exata depende do carregador instalado.
 
-Depois que o BIOS inicializa o disco rígido, ele procura por um bloco de inicialização para determinar como iniciar o sistema operacional. A localização que ele verifica depende do esquema de particionamento do disco: Master Boot Record (MBR) ou GUID Partition Table (GPT).
+:::single-choice{#boot-bios-legacy-first-sector}
+O que o BIOS legado normalmente carrega primeiro do disco de boot escolhido?
 
-O MBR está localizado nos primeiros 512 bytes do disco rígido. Esta pequena seção contém o código de inicialização inicial e a tabela de partições. O código do MBR é responsável por carregar outro programa, que por sua vez carrega nosso bootloader real. Se você estiver usando um disco particionado com GPT, o processo é ligeiramente diferente.
+::option[O setor inicial de boot que contém um pequeno código.]{#boot-bios-boot-sector .correct explanation="O caminho de disco legado do firmware transfere o controle ao código no primeiro setor do disco escolhido."}
+::option[Todo o sistema de arquivos raiz Linux na memória do firmware.]{#boot-bios-entire-root explanation="O setor inicial é minúsculo; softwares posteriores localizam o kernel e o armazenamento raiz."}
+::option[Toda configuração de serviços de usuário em `/etc`.]{#boot-bios-etc-config explanation="O firmware não interpreta toda a configuração de serviços do sistema instalado."}
+:::
 
-### Como Inicializar no BIOS
+## Boot com UEFI
 
-Muitos usuários precisam saber **como inicializar no BIOS** para configurar as configurações de hardware. O método para isso geralmente envolve pressionar uma tecla específica (como F2, F10, DEL ou ESC) imediatamente após ligar o computador. Aprender **como inicializar no bios** é essencial para tarefas como alterar a prioridade do dispositivo de inicialização ou habilitar a tecnologia de virtualização. A tecla exata varia de acordo com o fabricante, portanto, você pode precisar consultar a documentação do seu computador.
+O firmware UEFI compreende um sistema de arquivos definido em uma Partição de Sistema EFI (ESP) e pode carregar executáveis EFI. Entradas de boot guardadas em variáveis não voláteis normalmente identificam disco, partição e caminho do executável. Um caminho alternativo padronizado pode ser usado em mídias removíveis ou recuperação.
 
-### A Ascensão do UEFI
+A ESP contém aplicativos de boot e arquivos de apoio, não “todas as informações de inicialização”. Kernel, initramfs e configuração do carregador podem ficar nela ou em outro lugar. GPT é convencional em UEFI, mas a interface do firmware e a tabela de partições continuam sendo camadas distintas.
 
-Uma alternativa ao BIOS tradicional é o UEFI (Unified Extensible Firmware Interface). Projetado como o sucessor do BIOS, o UEFI agora é padrão na maioria dos hardwares modernos. Ele armazena todas as informações de inicialização em um arquivo .efi localizado em uma Partição de Sistema EFI (ESP) dedicada. Esta partição contém o bootloader para o sistema operacional instalado.
+:::single-choice{#boot-bios-uefi-esp}
+O que o UEFI normalmente carrega de uma Partição de Sistema EFI?
 
-O UEFI oferece muitas melhorias em relação ao BIOS, incluindo tempos de inicialização mais rápidos e suporte para discos rígidos maiores. Embora o formato GPT tenha sido projetado para o UEFI, um "MBR protetor" em discos GPT garante a compatibilidade com versões anteriores, tornando possível inicializar a partir deles em máquinas mais antigas baseadas em BIOS. Embora muitos sistemas Linux agora usem UEFI, este guia se concentrará no processo de inicialização do BIOS tradicional para uma compreensão fundamental.
+::option[Um executável EFI escolhido por uma entrada de boot do firmware.]{#boot-bios-efi-executable .correct explanation="O gerenciamento de boot UEFI aponta o firmware para um arquivo executável em uma partição de sistema compatível."}
+::option[Um script de shell POSIX de qualquer diretório pessoal ext4.]{#boot-bios-shell-script explanation="O firmware carrega formatos executáveis definidos em caminhos compatíveis, em vez de executar um shell de usuário."}
+::option[Uma partição estendida MBR que contém contas de usuário.]{#boot-bios-extended-users explanation="Dados de contas não participam da descoberta de executáveis UEFI."}
+:::
 
-## Exercise
+## Secure Boot e confiança
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do gerenciamento de usuários e grupos do Linux:
+Com o Secure Boot ativado, o UEFI verifica as assinaturas da cadeia de boot conforme as chaves e a política cadastradas. Uma distribuição Linux pode usar shim, carregador e kernel assinados, além de uma política para módulos, para estender essa cadeia.
 
-1. **[Gerenciar Contas de Usuário Linux com useradd, usermod e userdel](https://labex.io/pt/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - Pratique o ciclo de vida completo da administração de usuários, desde a criação e proteção de novas contas até a modificação e exclusão delas.
-2. **[Gerenciar Grupos Linux com groupadd, usermod e groupdel](https://labex.io/pt/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - Ganhe experiência prática com utilitários de linha de comando para administração de grupos, incluindo a criação de novos grupos, a modificação de associações de usuários e a remoção de grupos.
-3. **[Configurar Contas de Usuário e Privilégios Sudo no Linux](https://labex.io/pt/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Aprenda técnicas essenciais para gerenciar contas de usuário e privilégios sudo para aumentar a segurança de um sistema Linux.
+Secure Boot não criptografa o disco nem prova que todo programa é seguro. Ele ajuda a impedir que código de pré-boot não autorizado seja aceito pela política de confiança configurada.
 
-Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança no gerenciamento de usuários e grupos no Linux.
+:::single-choice{#boot-bios-secure-boot-purpose}
+O que o UEFI Secure Boot impõe principalmente?
 
-## Quiz Question
+::option[Criptografia automática de todos os arquivos em todos os discos.]{#boot-bios-secure-encryption explanation="A confidencialidade dos discos exige um sistema de criptografia separado."}
+::option[Autorização por assinatura dos executáveis da cadeia de boot.]{#boot-bios-secure-signatures .correct explanation="O firmware e os componentes verificados posteriores aceitam código conforme as chaves e a política cadastradas."}
+::option[Ausência garantida de vulnerabilidades em software assinado.]{#boot-bios-secure-no-vulnerabilities explanation="Uma assinatura válida prova autorização e integridade, não que o código seja perfeito."}
+:::
 
-O que o BIOS carrega? Por favor, responda em uma única palavra, em inglês e em minúsculas.
+## Entrada na configuração do firmware
 
-## Quiz Answer
+As teclas variam por fabricante e modelo, incluindo Delete, Escape ou teclas de função durante o início. Consulte a documentação do dispositivo. Alguns sistemas UEFI também permitem que o sistema operacional solicite uma reinicialização para a configuração.
 
-bootloader
+Registre os valores existentes e as chaves de recuperação antes de mudar Secure Boot, modo do controlador de armazenamento, TPM, virtualização ou ordem de boot. Uma alteração pode tornar volumes criptografados ou o sistema temporariamente inacessíveis.
+
+:::single-choice{#boot-bios-setup-key}
+Por que não existe uma tecla universal para entrar na configuração do firmware?
+
+::option[O Linux escolhe uma tecla aleatória após cada boot.]{#boot-bios-random-key explanation="O sistema operacional não define aleatoriamente a tecla inicial do firmware."}
+::option[A tecla e o momento são definidos pelo fabricante do sistema.]{#boot-bios-vendor-key .correct explanation="As interfaces variam entre modelos, por isso é preciso consultar a documentação oficial do dispositivo."}
+::option[Só é possível entrar na configuração apagando o carregador.]{#boot-bios-delete-loader explanation="A configuração do firmware independe da destruição dos arquivos de boot instalados."}
+:::
+
+## Resumo
+
+Agora você consegue distinguir os modelos de descoberta de boot do BIOS legado e do UEFI.
+
+1. Relacionar o BIOS legado ao primeiro setor e às etapas posteriores do carregador.
+2. Relacionar entradas UEFI a executáveis EFI em uma ESP.
+3. Tratar GPT, interface do firmware e layout do carregador como escolhas distintas.
+4. Alterar configurações de confiança e armazenamento apenas com um caminho de recuperação.

@@ -1,67 +1,72 @@
 ---
-index: 3
+lesson_id: "tcp-ip-model"
+course_id: "network-basics"
 lang: "fr"
+order_index: 3
 title: "Modèle TCP/IP"
-meta_title: "Modèle TCP/IP - Bases du Réseau"
-meta_description: "Explorez les couches fondamentales du modèle TCP/IP, pierre angulaire des réseaux modernes. Apprenez sur les couches Application, Transport, Réseau et Liaison pour un réseautage efficace avec TCP/IP."
-meta_keywords: "modèle TCP/IP, couches du modèle tcp ip, réseautage avec tcp ip, couches du protocole TCP, couches réseau, TCP, IP, réseau Linux, projet protocole réel"
+description: "Découvrez comment les couches application, transport, Internet et liaison coopèrent dans le modèle TCP/IP."
+meta_title: "Modèle TCP/IP - Réseaux"
+meta_description: "Explorez les couches fondamentales du modèle TCP/IP : application, transport, Internet et liaison, ainsi que leur coopération."
+meta_keywords: "modèle TCP/IP, couches TCP IP, réseau TCP/IP, TCP, IP, couches réseau, réseau Linux"
 ---
 
-## Lesson Content
+Le modèle TCP/IP organise en couches fonctionnelles les protocoles employés par les hôtes Internet. Une forme courante à quatre couches comprend Application, Transport, Internet et Liaison. Certains modèles pédagogiques séparent le support physique de la couche liaison et présentent donc cinq couches.
 
-Le modèle théorique OSI a donné naissance à ce qui est finalement devenu le modèle TCP/IP, qui constitue la base pratique sur laquelle Internet est construit. Il représente l'implémentation réelle de la mise en réseau. Le modèle TCP/IP utilise la suite de protocoles TCP/IP, que nous appelons couramment TCP/IP. Une **mise en réseau efficace avec TCP/IP** dépend de ces protocoles, qui fonctionnent ensemble pour spécifier comment les données doivent être collectées, adressées, transmises et acheminées. En examinant les **couches du modèle TCP/IP**, nous pouvons comprendre comment un paquet de données voyage à travers le réseau.
+## Couche application
 
-### Les Quatre Couches du Modèle TCP/IP
+Les protocoles applicatifs définissent les messages et comportements de services comme HTTP, DNS, SSH et SMTP. Cette couche comprend également de nombreuses responsabilités de représentation et de session que le modèle OSI décrit séparément.
 
-Le modèle est divisé en quatre couches distinctes, chacune ayant une fonction spécifique. Comprendre ces couches est crucial pour tout **projet de protocole réel** ou tâche de dépannage réseau.
+:::single-choice{#tcpip-http-layer}
+Dans quelle couche TCP/IP classe-t-on normalement HTTP ?
 
-### Couche Application
+::option[Internet.]{#tcpip-http-internet explanation="La couche Internet traite l'adressage IP et la transmission des paquets."}
+::option[Liaison.]{#tcpip-http-link explanation="La couche liaison transporte le trafic sur un support local."}
+::option[Application.]{#tcpip-http-application .correct explanation="HTTP définit la sémantique des requêtes et réponses applicatives."}
+:::
 
-C'est la couche supérieure du modèle TCP/IP, où résident les applications visibles par l'utilisateur et les services réseau. Elle détermine comment les programmes, comme votre navigateur Web ou votre client de messagerie, interagissent avec les services de la couche transport pour envoyer et recevoir des données.
+## Couche transport
 
-Cette couche utilise des protocoles tels que :
+Les protocoles de transport fournissent la communication entre les terminaux applicatifs. TCP offre un flux d'octets fiable et ordonné avec contrôle de congestion et de flux. UDP fournit des datagrammes indépendants sans les garanties de connexion, d'ordre ou de retransmission de TCP. Les numéros de ports aident à identifier les terminaux de transport, mais un port seul ne prouve pas l'application à l'écoute.
 
-- HTTP (Hypertext Transfer Protocol) : La base de la communication de données pour le World Wide Web.
-- SMTP (Simple Mail Transfer Protocol) : Utilisé pour l'envoi de courrier électronique (email).
+:::single-choice{#tcpip-udp-property}
+Quelle propriété appartient à UDP plutôt qu'à TCP ?
 
-### Couche Transport
+::option[Des datagrammes indépendants sans garantie intégrée de retransmission.]{#tcpip-udp-datagrams .correct explanation="Les applications qui emploient UDP choisissent si elles ajoutent une fiabilité et de quelle manière."}
+::option[La livraison garantie et ordonnée d'un flux d'octets unique.]{#tcpip-udp-ordered explanation="Il s'agit d'une propriété du service TCP, sous réserve d'une connexion réussie."}
+::option[Le routage des paquets entre différents réseaux IP.]{#tcpip-udp-routing explanation="Le routage entre réseaux est une fonction de la couche Internet."}
+:::
 
-La couche transport est responsable de la communication de bout en bout et de l'intégrité des données. Elle établit la manière dont les données seront transmises, gère les numéros de port et garantit que les paquets sont livrés de manière fiable. La suite des **couches du protocole TCP** est la plus visible ici.
+## Couche Internet
 
-Cette couche utilise principalement :
+Internet Protocol transporte des paquets avec des adresses IP source et destination. Les routeurs examinent les informations de routage et diminuent la limite de sauts en transmettant les paquets vers leur destination. ICMP communique les informations de contrôle et d'erreur nécessaires au fonctionnement d'IP. La livraison reste au mieux ; les couches supérieures ou les applications prennent en charge toute récupération nécessaire.
 
-- TCP (Transmission Control Protocol) : Fournit une livraison fiable, ordonnée et vérifiée des erreurs d'un flux de données. Il est orienté connexion.
-- UDP (User Datagram Protocol) : Offre une méthode de livraison de données plus rapide et sans connexion, considérée comme peu fiable car elle ne garantit ni la livraison ni l'ordre.
+:::single-choice{#tcpip-router-layer}
+Quelle couche fournit l'adresse IP de destination employée par les routeurs ?
 
-### Couche Réseau
+::option[Internet.]{#tcpip-router-internet .correct explanation="L'en-tête IP contient la destination de la couche réseau employée pour la transmission routée."}
+::option[Application.]{#tcpip-router-application explanation="Les messages applicatifs sont transportés dans les données des protocoles inférieurs."}
+::option[Liaison.]{#tcpip-router-link explanation="Les adresses de liaison sélectionnent la destination de la trame au prochain saut local."}
+:::
 
-Cette couche, également connue sous le nom de Couche Internet, spécifie comment déplacer les paquets entre les hôtes et à travers différents réseaux. Son travail principal est l'adressage et le routage. L'adresse IP attribuée à cette couche est fondamentale pour l'identité d'un appareil sur un réseau, ce qui est lié au concept de **signification de l'affiliation IP** (c'est-à-dire qu'il fait partie d'un réseau spécifique).
+## Couche liaison et encapsulation
 
-Cette couche utilise des protocoles tels que :
+La couche liaison envoie un paquet IP sur une liaison locale au moyen d'Ethernet, du Wi-Fi, d'un protocole point à point ou d'une autre technologie. Lorsque les données applicatives descendent dans la pile, chaque couche ajoute les informations nécessaires à sa portée. Chez le destinataire, les couches valident et retirent leur encapsulation avant de livrer les données vers le haut.
 
-- IP (Internet Protocol) : Acheminer les paquets d'une machine source vers une machine de destination.
-- ICMP (Internet Control Message Protocol) : Utilisé pour envoyer des messages d'erreur et des informations opérationnelles, comme avec la commande `ping`.
+Les en-têtes de liaison changent normalement à chaque saut routé ; les conversations de transport et d'application sont de bout en bout, sauf si un équipement intermédiaire les termine ou les transforme.
 
-### Couche Liaison (Link Layer)
+:::single-choice{#tcpip-link-scope}
+Quelle est la portée normale d'une trame de la couche liaison ?
 
-Également connue sous le nom de Couche d'Interface Réseau, cette couche spécifie comment envoyer des données sur un support physique. Elle gère la transmission des paquets de données sur le segment de réseau local, par exemple via Ethernet, Wi-Fi ou câbles à fibre optique.
+::option[Une liaison ou un saut local.]{#tcpip-one-link .correct explanation="Un routeur retire l'encapsulation entrante et en crée une nouvelle pour la liaison suivante."}
+::option[Chaque session applicative de tout Internet.]{#tcpip-global-frame explanation="Les trames ne restent pas inchangées à travers les réseaux routés."}
+::option[Uniquement la mémoire du processus source.]{#tcpip-process-memory explanation="Les trames sont transmises sur une liaison réseau."}
+:::
 
-Les protocoles listés ci-dessus ne sont pas exhaustifs, et vous rencontrerez beaucoup d'autres. Dans les leçons suivantes, nous plongerons plus profondément dans chacune de ces couches pour voir comment un paquet traverse le réseau du point de vue du modèle TCP/IP.
+## Résumé
 
-## Exercise
+Vous savez maintenant situer les fonctions Internet courantes dans le modèle TCP/IP.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du modèle TCP/IP et des fondamentaux du réseau :
-
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à identifier les informations d'adressage réseau clés comme les adresses MAC et IP en utilisant la commande `ip a`, ce qui est fondamental pour comprendre les couches réseau et liaison de données du modèle TCP/IP.
-2. **[Explorer l'interaction de la couche réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Apprenez comment les commandes `ping` et `arp` démontrent l'interaction entre les couches réseau et liaison de données, offrant un aperçu pratique de la manière dont les appareils communiquent au sein de la pile TCP/IP.
-3. **[Simuler la connectivité de la couche réseau sous Linux](https://labex.io/fr/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Acquérir une expérience pratique en simulant la connectivité réseau entre des nœuds Linux, en attribuant des adresses IP et en testant la communication, appliquant directement les concepts liés à la couche réseau du modèle TCP/IP.
-
-Ces laboratoires vous aideront à appliquer les concepts du modèle TCP/IP dans des scénarios réels et à renforcer votre confiance dans la configuration et le dépannage réseau.
-
-## Quiz Question
-
-Quelle est la couche supérieure du modèle TCP/IP ? (Veuillez répondre en anglais. Notez que la réponse est sensible à la casse.)
-
-## Quiz Answer
-
-Application
+1. Associer les protocoles de services à la couche application.
+2. Distinguer les flux TCP des datagrammes UDP.
+3. Placer l'adressage IP et le routage dans la couche Internet.
+4. Considérer l'encapsulation de liaison comme propre au saut local.

@@ -1,96 +1,164 @@
 ---
-index: 11
+lesson_id: "join-split-command"
+course_id: "text-fu"
 lang: "ja"
+order_index: 11
 title: "結合と分割"
+description: "並べ替え済みの 2 つのテキストファイルをキーで結合し、1 つのファイルを名前付きの断片へ分割する方法を学びます。"
 meta_title: "結合と分割 - Text-Fu"
 meta_description: "Linux の join コマンドと split コマンドの使い方を習得しましょう。共通のフィールドに基づいてファイルを効率的に結合する方法や、大きなファイルを小さな部分に分割する方法を学びます。このガイドでは、cat、dog、cow という名前のファイルを結合する際に使用するコマンドや、その他の実用的な例を解説します。"
 meta_keywords: "linux ファイル結合，ファイルを結合するコマンド，linux join コマンド，linux split コマンド，ファイル操作，コマンドライン，テキスト処理"
 ---
 
-## Lesson Content
+`join` と `split` は異なるファイル処理を行います。`join` は並べ替え済みの 2 つのテキスト入力から関連レコードを結合し、`split` は 1 つの入力を連続した小ファイルへ分割します。
 
-Linux では、テキストファイルを管理および操作することは一般的なタスクです。そのための強力なユーティリティが`join`と`split`です。`join`コマンドは共通のフィールドに基づいて 2 つのファイルの行をマージし、`split`は大きなファイルをより小さく管理しやすい断片に分割します。
+## 先頭フィールドで 2 ファイルを結合する
 
-### 共通フィールドによるファイルの結合
+`join` は標準で、ちょうど 2 つの入力ファイルにある先頭の空白区切りフィールドを比較します。次のファイルは並べ替え済みです。
 
-**linux join files**を行う必要がある場合、`join`コマンドは基本的なツールです。デフォルトでは、同一の最初のフィールドに基づいてソートされた 2 つのファイルの行を結合します。
+`people.txt`：
 
-例えば、マージしたい 2 つのファイルがあると想像してください。
-
-```plaintext
-file1.txt
+```text
 1 John
 2 Jane
 3 Mary
+```
 
-file2.txt
+`surnames.txt`：
+
+```text
 1 Doe
 2 Doe
 3 Sue
 ```
 
-`join`コマンドを使用すると、簡単に結合できます。
+キーが等しいレコードを結合します。
 
 ```bash
-$ join file1.txt file2.txt
+$ join people.txt surnames.txt
 1 John Doe
 2 Jane Doe
 3 Mary Sue
 ```
 
-ご覧のとおり、ファイルは共通の最初のフィールド（1、2、3）を使用して結合されました。`join`が正しく機能するためには、両方のファイルの結合フィールドがソートされている必要があります。
+出力には共有キーが 1 回、その後に第 1、第 2 ファイルの残りのフィールドが入ります。`join` が一度に処理するのは 2 ファイルで、3 つの通常ファイルを 3 方向の関係結合としては受け取りません。
 
-### 異なる結合フィールドの指定
+:::single-choice{#join-default-key}
+フィールドオプションなしの `join first.txt second.txt` はどのレコードを結合しますか？
 
-共通フィールドが最初の列でない場合はどうでしょうか？`join`にどのフィールドを使用するかを指示できます。これらのファイルを検討してください。
+::option[先頭の空白区切りフィールドが等しい行。]{#join-first-fields .correct explanation="`join` の標準動作は、並べ替え済みの 2 入力からフィールド 1 を比較します。"}
+::option[物理的な行番号が同じ行。]{#join-line-numbers explanation="一致は単なるレコード位置ではなく、キーフィールドの値に基づきます。"}
+::option[第 1 ファイルの全行と第 2 ファイルの全行の組み合わせ。]{#join-all-pairs explanation="`join` は全行の無制限な直積ではなく、一致するキーのレコードを出力します。"}
+:::
 
-```plaintext
-file1.txt
+## 結合キーを並べ替える
+
+各入力は、互換性のある比較規則で結合フィールド順に並べる必要があります。標準のフィールド 1 なら、`sort -k 1,1` でコピーを用意します。
+
+```bash
+$ LC_ALL=C sort -k 1,1 people-raw.txt > people.txt
+$ LC_ALL=C sort -k 1,1 surnames-raw.txt > surnames.txt
+$ LC_ALL=C join people.txt surnames.txt
+```
+
+並べ替えと結合で同じロケールを使えば照合規則が一致します。シェルが先にファイルを切り詰めるため、並べ替え結果を同じ入力パスへリダイレクトしないでください。
+
+:::single-choice{#join-sort-requirement}
+`join` が確実に一致を処理するため、通常どの準備が必要ですか？
+
+::option[両ファイルの物理的な行数を完全に同じにする。]{#join-equal-line-count explanation="入力の長さは異なっても構いません。結合出力は行数ではなくキーの一致で決まります。"}
+::option[2 つのファイル名をアルファベット順で隣り合わせにする。]{#join-filename-order explanation="並べ替える必要があるのは内容のキーで、ファイル名同士の辞書順は無関係です。"}
+::option[両ファイルをそれぞれの結合フィールドで互換性のある順序に並べる。]{#join-sorted-keys .correct explanation="`join` は順序付きキーを進むため、各入力の順序は比較規則と一致している必要があります。"}
+:::
+
+## 異なる結合フィールドを選ぶ
+
+第 1 ファイルのキーには `-1 FIELD`、第 2 ファイルには `-2 FIELD` を使います。第 1 入力に次が含まれるとします。
+
+```text
 John 1
 Jane 2
 Mary 3
+```
 
-file2.txt
+第 2 入力には次が含まれます。
+
+```text
 1 Doe
 2 Doe
 3 Sue
 ```
 
-ここでは、`file1.txt`の 2 番目のフィールドと`file2.txt`の 1 番目のフィールドで結合する必要があります。コマンドは次のようになります。
+第 1 入力をフィールド 2、第 2 入力をフィールド 1 で並べた後、次を実行できます。
 
 ```bash
-$ join -1 2 -2 1 file1.txt file2.txt
+$ join -1 2 -2 1 people.txt surnames.txt
 1 John Doe
 2 Jane Doe
 3 Mary Sue
 ```
 
-`-1 2`フラグは最初のファイルのフィールド 2 を、`-2 1`フラグは 2 番目のファイルのフィールド 1 を指定します。
+コロンなど 1 文字の非空白区切りには `-t CHARACTER` を使います。`-a 1` や `-a 2` は片方にしかない行を含められますが、標準では一致したキーだけを出力します。
 
-### 大容量ファイルの分割
+:::single-choice{#join-different-fields}
+第 1 ファイルのフィールド 2 と第 2 ファイルのフィールド 1 を結合するオプションはどれですか？
 
-`split`コマンドは結合とは逆の操作を行い、大きなファイルをより小さなファイルに分割します。
+::option[`-1 1 -2 2`]{#join-fields-reversed explanation="第 1 入力のフィールド 1 と第 2 入力のフィールド 2 を選ぶため、要求と逆です。"}
+::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` は第 1 ファイルのフィールド 2、`-2 1` は第 2 ファイルのフィールド 1 を選びます。"}
+::option[`-f 2 -d 1`]{#join-cut-style-options explanation="他のテキストツールのフィールド、区切りオプションに似ていますが、`join` のフィールド選択ではありません。"}
+:::
+
+## 行数で分割する
+
+`split` は 1 つの入力の連続部分を別々の出力ファイルへ書きます。キー結合を行う `join` の逆操作ではありません。
 
 ```bash
-split somefile
+$ split large.txt
 ```
 
-デフォルトでは、このコマンドは 1000 行の制限に達すると`somefile`を新しいファイル（`xaa`、`xab`など）に分割します。`-l`フラグで異なる行数を指定したり、`-b`フラグでファイルサイズで分割したりするなど、この動作をカスタマイズできます。
+GNU の標準動作では 1 ファイルにつき最大 1000 行、接頭辞 `x` を使い、`xaa`、`xab`、`xac` などを作ります。行数は `-l NUMBER`、出力接頭辞は最後のオペランドで指定します。
 
-## Exercise
+```bash
+$ split -l 500 large.txt part-
+```
 
-練習あるのみです！テキストファイルの結合と操作の理解を深めるための実践的なラボを次に示します。
+:::single-choice{#split-lines-with-prefix}
+`large.txt` を最大 500 行ずつ、接頭辞 `part-` の断片へ分割するコマンドはどれですか？
 
-1. **[Linux join コマンド：ファイル結合](https://labex.io/ja/labs/linux-linux-join-command-file-joining-219193)** - このラボでは、`join`コマンドへの直接的で実践的な入門を提供し、レッスンで説明したように、共通フィールドに基づいてソートされた 2 つのテキストファイルの行をマージする練習ができます。
-2. **[従業員データの処理](https://labex.io/ja/labs/linux-processing-employees-data-388132)** - `join`と`awk`のような他の強力な Linux コマンドラインユーティリティの知識を適用して、複数のソースからのデータを結合および処理し、現実世界のデータ分析シナリオをシミュレートします。
-3. **[シーケンス制御とパイプライン](https://labex.io/ja/labs/linux-sequence-control-and-pipeline-17994)** - コマンド実行シーケンスの制御、パイプラインの利用、強力なテキスト処理ツールの活用を学ぶことで、コマンドラインの効率とデータ操作スキルを向上させます。これは`join`のデータ結合機能と相補的です。
+::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` はバイトを選ぶため、通常のテキストでは 500 行よりはるかに小さな断片になります。"}
+::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` が最大行数を設定し、最後のオペランドが出力ファイル名の接頭辞です。"}
+::option[`join -l 500 large.txt part-`]{#join-split-lines explanation="`join` は 2 ファイルのキー付きレコードを結合し、1 入力を分割しません。"}
+:::
 
-これらのラボは、テキストファイル操作とデータ結合の概念を実際のシナリオに応用し、Linux コマンドラインツールに対する自信を構築するのに役立ちます。
+## サイズで分割する
 
-## Quiz Question
+`-b SIZE` は入力をバイトサイズで分割します。GNU の `K`、`M`、`G` などはここでは 1024 の累乗です。
 
-`cat`、`dog`、`cow`という名前のファイルを結合するには、どのコマンドを使用しますか？完全なコマンドを英語で提供してください。コマンドとファイル名は小文字にしてください。
+```bash
+$ split -b 10M archive.bin chunk-
+```
 
-## Quiz Answer
+最後の断片だけ小さくなる可能性があります。`split` はアーカイブの目録や再構築用メタデータを作らないため、接尾辞の順序を保ち、必要なら順番に連結してください。
 
-join cat dog cow
+:::single-choice{#split-ten-mebibytes}
+`archive.bin` を接頭辞 `chunk-`、10 MiB ずつに分割するコマンドはどれですか？
+
+::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` は行数を取り、バイナリ断片のバイトサイズ接尾辞は指定しません。"}
+::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` はバイナリ入力を分割せず、この断片サイズ操作も受け付けません。"}
+::option[`split -b 10M archive.bin chunk-`]{#split-ten-mib .correct explanation="`-b` が断片サイズを選び、`10M` は 10×1024×1024 バイト、`chunk-` は接頭辞です。"}
+:::
+
+キー結合と構造化データ処理を練習するには、次のラボを試してください。
+
+1. **[Linux join コマンド：ファイル結合](https://labex.io/ja/labs/linux-linux-join-command-file-joining-219193)** - 共通フィールドに基づき、並べ替え済み 2 ファイルの行を結合します。
+2. **[従業員データの処理](https://labex.io/ja/labs/linux-processing-employees-data-388132)** - `join` や `awk` で複数ソースのデータを結合、処理します。
+
+## まとめ
+
+並べ替え済みレコードを結合し、1 つの入力を順序付きの断片へ分割できるようになりました。
+
+1. 等しいキーフィールドでちょうど 2 ファイルを結合する。
+2. 両入力を結合キーで一貫して並べ替える。
+3. `-1` と `-2` で標準以外のキーフィールドを選ぶ。
+4. `-l` で行数ごとに分割する。
+5. `-b` と明確な接頭辞でバイトサイズごとに分割する。

@@ -1,75 +1,96 @@
 ---
-index: 1
+lesson_id: "ipv4"
+course_id: "subnetting"
 lang: "de"
+order_index: 1
 title: "IPv4"
-meta_title: "IPv4 - Subnetting"
-meta_description: "Beginnen Sie Ihre Reise mit unserem kompletten Linux-Tutorial zu IPv4-Adressen. Dieser Leitfaden für Linux-Anfänger ist der beste Weg, um Linux-Netzwerke zu erlernen, einschließlich IP-Struktur und wesentlicher Befehlszeilentools wie ip addr."
-meta_keywords: "IPv4, IP-Adresse, Linux für Anfänger, bester Weg, Linux zu lernen, komplettes Linux-Tutorial, bester kostenloser Linux-Kurs online, kostenlose Linux-Zertifizierungskurse, Linux-Netzwerke, ifconfig, ip addr"
+description: "Lerne, wie IPv4-Adressen, Präfixe, Geltungsbereiche und die Linux-Schnittstellenausgabe zusammenpassen."
+meta_title: "IPv4 – Subnetting"
+meta_description: "Beginne mit IPv4-Adressen in Linux. Diese Einführung behandelt IP-Aufbau, Präfixe und wichtige Befehlszeilenwerkzeuge wie ip addr."
+meta_keywords: "IPv4, IP-Adresse, Linux für Einsteiger, Linux lernen, Linux-Tutorial, Linux-Netzwerkkurs, Linux-Vernetzung, ifconfig, ip addr"
 ---
 
-## Lesson Content
+IPv4 stellt 32-Bit-Quell- und Zieladressen für geroutete Pakete bereit. Eine Adresse ist zusammen mit ihrem Präfix, ihrer Schnittstelle, ihrem Geltungsbereich, ihrer Routenrichtlinie und Laufzeit aussagekräftig – nicht als dauerhafte Kennung eines gesamten Geräts.
 
-Jedes Gerät in einem Netzwerk hat eine eindeutige Kennung, die als IP-Adresse (Internet Protocol) bezeichnet wird. Diese Lektion, ein wichtiger Teil unseres `kompletten Linux-Tutorials`, konzentriert sich auf IPv4-Adressen – den häufigsten Typ, dem Sie begegnen werden. Für jeden `Linux-Anfänger` ist das Verständnis von IPv4 ein entscheidender erster Schritt in die Welt der Netzwerke.
+## Punktgetrennte Dezimalschreibweise
 
-### Warum IPv4 unerlässlich ist
+IPv4 wird als vier durch Punkte getrennte Acht-Bit-Oktette dargestellt:
 
-Das Lernen über IPv4 ist grundlegend für jeden, der es ernst meint mit Systemadministration oder Netzwerkmanagement. Es bildet das Rückgrat der meisten Netzwerkkommunikation. Dieser Leitfaden bietet den `besten Weg, Linux-Netzwerke` von Grund auf zu erlernen. Obwohl dies keines dieser `kostenlosen Linux-Zertifizierungskurse` ist, ist die Beherrschung dieser Grundlagen ein wichtiger Schritt in Richtung professioneller Zertifizierung.
-
-### IPv4-Adressstruktur
-
-Eine IPv4-Adresse ist eine 32-Bit-Zahl, wird aber normalerweise in einem für Menschen lesbaren Format angezeigt, wie diesem:
-
-```
-204.23.124.23
+```text
+192.0.2.165
 ```
 
-Diese Adresse hat zwei Hauptteile: den **Netzwerkanteil**, der das Netzwerk identifiziert, und den **Hostanteil**, der das spezifische Gerät in diesem Netzwerk identifiziert. Die Adresse ist in vier durch Punkte getrennte Abschnitte unterteilt, wobei jeder Abschnitt ein **Oktett** genannt wird. Ein Oktett ist eine Gruppe von 8 Bits, was bedeutet, dass eine IPv4-Adresse 4 Bytes (32 Bits) lang ist. Das Verständnis dieser Struktur ist entscheidend für die Netzwerkkonfiguration und Fehlerbehebung.
+Jedes Oktett reicht von 0 bis 255, sodass die vollständige Adresse vier Byte enthält. Die Präfixlänge gibt an, wie viele führende Bits zum Netzwerkpräfix gehören, wie in `192.0.2.165/24`.
 
-### So finden Sie Ihre IP-Adresse
+:::single-choice{#ipv4-address-size}
+Wie groß ist eine IPv4-Adresse?
 
-Eine der ersten Aufgaben für jeden Linux-Benutzer ist es, die IP-Adresse seines Systems zu finden. Dies können Sie mit einfachen Befehlszeilentools tun. Der traditionelle Befehl hierfür ist `ifconfig`. Obwohl er auf vielen Systemen noch zu finden ist, gilt er als veraltet.
+::option[32 Bit in vier Oktetten.]{#ipv4-thirty-two-bits .correct explanation="Vier Gruppen zu je acht Bit ergeben die punktgetrennte Dezimaldarstellung."}
+::option[24 Bit in jedem Netzwerk.]{#ipv4-always-twenty-four explanation="Ein `/24` ist eine Präfixlänge und nicht die Größe jeder IPv4-Adresse."}
+::option[128 Byte, getrennt durch Doppelpunkte.]{#ipv4-128-bytes explanation="IPv6 besitzt 128 Bit und verwendet eine durch Doppelpunkte getrennte hexadezimale Schreibweise."}
+:::
+
+## Adressbereich und Zweck
+
+Nicht jede IPv4-Adresse ist weltweit routbar. Beispiele sind Loopback `127.0.0.0/8`, Link-Local `169.254.0.0/16`, private Bereiche wie `10.0.0.0/8` und Dokumentationsbereiche wie `192.0.2.0/24`. Multicast- und begrenzte Broadcast-Adressen besitzen andere Semantik.
+
+Private Adressen können in getrennten Netzwerken wiederverwendet werden. NAT kann sie für externe Kommunikation übersetzen, ist für die Kommunikation innerhalb der privaten gerouteten Domäne aber nicht erforderlich.
+
+:::single-choice{#ipv4-private-reuse}
+Warum kann `10.0.0.1` in vielen Organisationen vorkommen?
+
+::option[Jede Instanz identifiziert denselben physischen Router.]{#ipv4-same-router explanation="Die Adresse besitzt innerhalb jedes Netzwerks Bedeutung und ist nicht weltweit eindeutig."}
+::option[IPv4-Router ignorieren das erste Oktett.]{#ipv4-ignore-octet explanation="Alle Adressbits wirken an der Routenübereinstimmung mit."}
+::option[Sie liegt in einem Adressbereich, der zur Wiederverwendung in privaten Netzwerken vorgesehen ist.]{#ipv4-private-range .correct explanation="Getrennte private Netzwerke können dieselben Adressen verwenden, ohne sie weltweit anzukündigen."}
+:::
+
+## Linux-IPv4-Adressen untersuchen
+
+Zeige IPv4-Zuweisungen an mit:
 
 ```bash
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
+$ ip -4 address show
 ```
 
-In der obigen Ausgabe ist die IPv4-Adresse `192.168.1.129`.
+Eine solche Zeile meldet mehr als die Adresse:
 
-### Verwendung des ip addr-Befehls
+```text
+inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
+```
 
-Die moderne und empfohlene Methode verwendet den `ip`-Befehl. Der Befehl `ip addr` hat `ifconfig` ersetzt und ist der Standard auf den meisten aktuellen Linux-Distributionen. Er liefert detailliertere Informationen und ist das Werkzeug, auf dessen Erlernen Sie sich konzentrieren sollten.
+Sie zeigt Präfix, Broadcast, Geltungsbereich, Kennzeichnung des dynamischen Ursprungs und Schnittstelle. Weitere Zeilen können gültige und bevorzugte Laufzeiten anzeigen. Eine Schnittstelle kann mehrere IPv4-Adressen besitzen.
+
+:::single-choice{#ipv4-ip-output-prefix}
+Was bedeutet `/24` in `192.0.2.165/24`?
+
+::option[Die Adresse läuft nach 24 Sekunden ab.]{#ipv4-prefix-seconds explanation="Die Laufzeit wird getrennt gemeldet."}
+::option[Die ersten 24 Adressbits bilden das Netzwerkpräfix.]{#ipv4-prefix-bits .correct explanation="Die verbleibenden acht Bits identifizieren Positionen innerhalb dieses Präfixes."}
+::option[Die Schnittstelle ist TCP-Port 24.]{#ipv4-prefix-port explanation="CIDR-Präfixnotation ist unabhängig von Transportports."}
+:::
+
+## Die ausgewählte Quelle bestimmen
+
+Das Vorhandensein einer Adresse beweist nicht, dass Linux sie für ein Ziel verwendet. Routen, Richtlinienregeln, Messwerte und Anwendungsbindung beeinflussen die Quellauswahl. Frage die aktuelle Routingentscheidung ab:
 
 ```bash
-pete@icebox:~$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
-       valid_lft 85646sec preferred_lft 85646sec
+$ ip route get 198.51.100.20
 ```
 
-Hier finden Sie dieselbe IPv4-Adresse, `192.168.1.129`, aufgeführt neben `inet` für die Schnittstelle `eth0`.
+Lies den ausgewählten nächsten Hop, die Schnittstelle und Quelle und teste anschließend den tatsächlichen Anwendungspfad. Ändere auf einem entfernten Host keine Adressen ohne Konsolenzugang und Rücknahmeplan.
 
-## Exercise
+:::single-choice{#ipv4-route-get-purpose}
+Was kann `ip route get DESTINATION` anzeigen?
 
-Üben Sie Ihre Fähigkeiten mit diesen praktischen Labs, um Ihr Verständnis von IP-Adressierung und Netzwerkerkennung in Linux zu festigen:
+::option[Die Konfiguration jedes Routers entlang des vollständigen Internetpfads.]{#ipv4-all-router-config explanation="Eine lokale Suche fragt keine Konfigurationen nachgelagerter Geräte ab."}
+::option[Die lokale Routenentscheidung einschließlich Schnittstelle und bevorzugter Quelle.]{#ipv4-route-decision .correct explanation="Der Befehl wertet die aktuelle Host-Routingrichtlinie für das angegebene Ziel aus."}
+::option[Das Passwort des Zielbenutzers.]{#ipv4-password explanation="Routingbefehle legen keine Anmeldedaten von Anwendungen offen."}
+:::
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Verwendung des Befehls `ip a`, um Netzwerkadressinformationen, einschließlich IPv4- und IPv6-Adressen, auf einem Linux-System zu identifizieren.
-2. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Erkunden Sie verschiedene IP-Adress-Typen und testen Sie die Netzwerkerreichbarkeit mit Befehlen wie `ping` und `ip a`.
-3. **[IP-Subnetting und Binärkonvertierung im Linux-Terminal durchführen](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Meistern Sie IP-Subnetting und Binärkonvertierung, was für ein tieferes Verständnis der Struktur von IP-Adressen und Netzwerken auf Bit-Ebene unerlässlich ist.
+## Zusammenfassung
 
-Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und Fehlerbehebung unter Linux aufzubauen.
+Du kannst eine IPv4-Adresse nun als Teil des Schnittstellen- und Routingzustands lesen.
 
-## Quiz Question
-
-Wie viele Bytes hat eine IPv4-Adresse?
-
-## Quiz Answer
-
-4
+1. Erkenne IPv4 als vier Oktette mit insgesamt 32 Bit.
+2. Interpretiere eine Adresse zusammen mit ihrem Präfix.
+3. Unterscheide private, Loopback-, Link-Local- und weitere Geltungsbereiche.
+4. Untersuche Zuweisungen und die für ein Ziel ausgewählte Quelle.

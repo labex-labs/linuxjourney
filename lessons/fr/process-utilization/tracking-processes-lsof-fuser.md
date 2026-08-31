@@ -1,86 +1,110 @@
 ---
-index: 2
+lesson_id: "tracking-processes-lsof-fuser"
+course_id: "process-utilization"
 lang: "fr"
+order_index: 2
 title: "lsof et fuser"
+description: "Découvrez comment identifier les processus qui utilisent des fichiers, des répertoires, des points de montage et des sockets réseau."
 meta_title: "lsof et fuser - Utilisation des processus"
-meta_description: "Explorez les commandes Linux lsof et fuser pour identifier quels processus utilisent des fichiers spécifiques. Apprenez à résoudre les erreurs 'Périphérique ou ressource occupée', comparez fuser et lsof, et utilisez des options comme fuser -k pour gérer efficacement les fichiers ouverts."
-meta_keywords: "lsof, fuser, commande fuser, fuser linux, fuser vs lsof, lsof vs fuser, fuser -k linux, fichiers ouverts, gestion des processus, périphérique occupé, commandes Linux"
+meta_description: "Explorez les commandes lsof et fuser sous Linux pour identifier les processus qui utilisent des fichiers et résoudre les erreurs de ressource occupée."
+meta_keywords: "lsof, fuser, commande fuser, fuser Linux, fuser ou lsof, fuser -k Linux, fichiers ouverts, gestion processus, périphérique occupé"
 ---
 
-## Lesson Content
+Un système de fichiers peut rester occupé parce qu’un processus possède un fichier ouvert, mappe un fichier en mémoire ou emploie un répertoire comme répertoire de travail actuel. `lsof` et `fuser` aident à identifier ces relations. Commencez par examiner la situation ; l’arrêt des processus constitue une décision distincte aux conséquences opérationnelles.
 
-Avez-vous déjà essayé de démonter une clé USB et reçu une erreur "Périphérique ou ressource occupé" ? Ce problème courant survient lorsqu'un processus utilise encore un fichier ou un répertoire sur le périphérique. Pour résoudre ce problème, vous devez découvrir quel processus détient la ressource. Deux utilitaires puissants pour cette tâche sont `lsof` et `fuser`.
+## Répertorier les fichiers ouverts avec lsof
 
-### Utilisation de lsof pour lister les fichiers ouverts
-
-Sous Linux, presque tout est traité comme un fichier, y compris les disques, les pipes, les sockets réseau et les périphériques. La commande `lsof` (abréviation de "list open files") vous montre une liste détaillée de tous les fichiers ouverts et des processus qui les utilisent.
-
-Pour voir quels processus utilisent le répertoire courant (`.`), vous pouvez exécuter :
+`lsof` signifie « list open files ». Interrogez un chemin pour afficher les enregistrements de fichiers ouverts correspondants :
 
 ```bash
-pete@icebox:~$ lsof .
-COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-lxsession 1491 pete  cwd    DIR    8,6     4096  131 .
-update-no 1796 pete  cwd    DIR    8,6     4096  131 .
-nm-applet 1804 pete  cwd    DIR    8,6     4096  131 .
-xterm     2205 pete  cwd    DIR    8,6     4096  131 .
-bash      2207 pete  cwd    DIR    8,6     4096  131 .
-lsof      5914 pete  cwd    DIR    8,6     4096  131 .
+$ sudo lsof -- /mnt/usb
 ```
 
-Le résultat montre la commande (`COMMAND`), l'ID de processus (`PID`) et l'utilisateur (`USER`) associés à chaque fichier ouvert. Avec ces informations, vous pouvez identifier les processus qui vous empêchent de démonter un périphérique.
-
-### La commande fuser
-
-Un autre excellent outil est la commande `fuser` (abréviation de "file user"). Cet utilitaire identifie quels processus utilisent des fichiers, des sockets ou des systèmes de fichiers spécifiques. La commande `linux fuser` est un moyen rapide de voir les PID des processus accédant à une ressource particulière.
-
-L'utilisation de l'option `-v` (verbose) fournit un résultat plus détaillé :
+Pour toute une arborescence du même système de fichiers, les implémentations prennent couramment en charge `+D`, mais les analyses récursives peuvent être coûteuses :
 
 ```bash
-pete@icebox:~$ fuser -v .
-                     USER        PID ACCESS COMMAND
-/home/pete:         pete  1491 ..c.. lxsession
-                     pete  1796 ..c.. update-notifier
-                     pete  1804 ..c.. nm-applet
-                     pete  2205 ..c.. xterm
-                     pete  2207 ..c.. bash
+$ sudo lsof +D /mnt/usb
 ```
 
-Ici, nous pouvons voir clairement quels processus utilisent notre répertoire courant. La colonne `ACCESS` montre comment le fichier est utilisé (par exemple, `c` pour répertoire courant).
+Les colonnes utiles comprennent `COMMAND`, `PID`, `USER`, le descripteur de fichier (`FD`), le type, le périphérique et `NAME`. Un enregistrement dont le champ `FD` vaut `cwd` indique que le processus emploie ce répertoire comme répertoire de travail actuel. La sortie sans privilèges peut être incomplète pour les processus appartenant à d’autres utilisateurs.
 
-### Terminer les processus avec fuser
+:::single-choice{#lsof-cwd-record}
+Qu’indique `cwd` dans la colonne `FD` ?
 
-Une fonctionnalité clé de la commande `fuser` est sa capacité à terminer les processus qui utilisent une ressource. L'option `fuser -k` envoie un signal `SIGKILL` à chaque processus accédant au fichier ou système de fichiers spécifié. Ceci est particulièrement utile pour démonter un périphérique occupé.
+::option[Le processus emploie ce répertoire comme répertoire de travail actuel.]{#lsof-current-directory .correct explanation="Le répertoire actuel d’un processus peut maintenir un système de fichiers monté occupé."}
+::option[Le fichier a été fermé pendant son écriture.]{#lsof-closed-write explanation="Ce marqueur décrit une relation avec un répertoire, et non un événement de fermeture."}
+::option[Le processus possède le périphérique du système de fichiers.]{#lsof-device-owner explanation="La propriété du système de fichiers n’est pas représentée par l’étiquette de descripteur `cwd`."}
+:::
 
-Par exemple, pour tuer tous les processus utilisant un point de montage à `/mnt/usb`, vous exécuteriez :
+## Identifier les utilisateurs avec fuser
+
+`fuser` indique les identifiants des processus qui utilisent un fichier ou un système de fichiers donné. La sortie détaillée ajoute les utilisateurs, les types d’accès et les noms des commandes :
 
 ```bash
-sudo fuser -k /mnt/usb
+$ sudo fuser -v /mnt/usb
 ```
 
-L'utilisation de `fuser -k` sous Linux est un moyen rapide et efficace de libérer une ressource.
+Pour traiter l’argument comme un système de fichiers monté et trouver les processus qui accèdent aux fichiers qu’il contient, employez l’option de montage prise en charge par `fuser` de procps :
 
-### fuser vs lsof
+```bash
+$ sudo fuser -vm /mnt/usb
+```
 
-Alors, quand faut-il utiliser `fuser` contre `lsof` ?
+Vérifiez que le chemin est bien le point de montage voulu avec un outil tel que `findmnt --target /mnt/usb`. Les montages liés, les espaces de noms, les permissions et les conditions de concurrence peuvent influencer ce qu’une requête unique révèle.
 
-- **`lsof`** est excellent pour les investigations détaillées. Il fournit des informations exhaustives sur tous les fichiers ouverts, ce qui le rend idéal pour un dépannage complexe.
-- **`fuser`** est plus direct. Il est parfait pour identifier rapidement et, si nécessaire, terminer les processus sur un fichier ou un point de montage spécifique. La commande `fuser command` est souvent le choix le plus rapide pour résoudre les erreurs "Périphérique ou ressource occupé".
+:::single-choice{#fuser-verbose-purpose}
+Pourquoi employer `fuser -v` plutôt que `fuser` seul pendant une investigation ?
 
-Les deux outils sont essentiels pour tout utilisateur Linux. Familiarisez-vous avec eux pour gérer efficacement les fichiers et les processus.
+::option[La commande démonte automatiquement le système de fichiers sélectionné.]{#fuser-verbose-unmount explanation="Le mode détaillé affiche des informations et ne demande aucun démontage."}
+::option[Elle ajoute des informations telles que l’utilisateur, le type d’accès et la commande.]{#fuser-verbose-details .correct explanation="Ces colonnes supplémentaires aident à évaluer les processus qui peuvent être coordonnés ou arrêtés sans risque."}
+::option[Elle empêche définitivement les processus de rouvrir des fichiers.]{#fuser-verbose-prevent explanation="La production d’un rapport ne crée aucune règle de contrôle d’accès."}
+:::
 
-## Exercise
+## Traiter un système de fichiers occupé
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des processus et du dépannage des conflits de ressources :
+Suivez une séquence délibérée au lieu de tuer immédiatement chaque PID correspondant :
 
-1. **[Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Entraînez-vous à interagir avec les processus au premier plan et en arrière-plan, à les inspecter avec `ps`, à surveiller les ressources avec `top` et à les terminer avec `kill`. Ce laboratoire vous aidera à identifier et à gérer les processus qui pourraient conserver des ressources, comme les fichiers sur une clé USB.
+1. Confirmez l’hôte, le chemin, la source du montage et la maintenance prévue.
+2. Identifiez les processus avec les deux outils lorsque c’est possible.
+3. Déterminez si chaque processus peut être arrêté, quitter le répertoire ou terminer son travail.
+4. Arrêtez-le par son gestionnaire de services ou l’interface de l’application lorsqu’ils existent.
+5. Interrogez de nouveau, puis démontez et vérifiez le résultat.
 
-Ce laboratoire vous aidera à appliquer ces concepts dans des scénarios réels et à renforcer votre confiance dans l'identification et la gestion des processus système.
+`fuser -k` envoie un signal aux processus correspondants. Sur les implémentations procps courantes, le signal par défaut est `SIGKILL` et ne permet donc pas un arrêt ordonné. Si une terminaison explicitement approuvée est nécessaire, choisissez un signal adapté, vérifiez le PID et son propriétaire, et gardez à l’esprit que l’ensemble des processus peut changer entre l’examen et l’action.
 
-## Quiz Question
+:::single-choice{#fuser-k-risk}
+Pourquoi `fuser -k /mnt/usb` constitue-t-il une mauvaise première étape de dépannage ?
 
-Quelle commande est utilisée pour lister les fichiers ouverts et les informations sur les processus associés ?
+::option[La commande affiche uniquement l’espace libre du système de fichiers.]{#fuser-k-space explanation="Cette option cible des processus au lieu d’indiquer la capacité."}
+::option[Elle peut tuer plusieurs processus correspondants sans nettoyage ordonné.]{#fuser-k-kills .correct explanation="Cette action large peut interrompre des écritures ou des services ; l’investigation et la coordination doivent donc la précéder."}
+::option[Elle modifie le répertoire de travail de chaque processus correspondant.]{#fuser-k-chdir explanation="Elle envoie un signal et ne déplace pas les répertoires des processus."}
+:::
 
-## Quiz Answer
+## Choisir l’outil
 
-lsof
+Employez `lsof` lorsque vous avez besoin d’enregistrements détaillés sur les fichiers ouverts, les descripteurs ou les sockets. Employez `fuser` pour une vue centrée sur un chemin des PID et des types d’accès correspondants. Aucun résultat ne vous indique à lui seul si l’arrêt d’un processus est sûr.
+
+Pour les sockets réseau, utilisez un espace de noms de protocole explicite avec `fuser` ou un outil centré sur les sockets tel que `ss` :
+
+```bash
+$ sudo fuser -v 22/tcp
+$ sudo ss -lntp
+```
+
+:::single-choice{#lsof-fuser-tool-choice}
+Quel outil convient à une liste détaillée des descripteurs de fichiers ouverts et de leurs processus propriétaires ?
+
+::option[`lsof`]{#lsof-detailed-records .correct explanation="Sa sortie s’organise autour des enregistrements de fichiers ouverts et des métadonnées de leurs processus."}
+::option[`uptime`]{#lsof-uptime explanation="Uptime indique la durée de fonctionnement et les charges moyennes, et non les descripteurs ouverts."}
+::option[`free`]{#lsof-free explanation="Free résume la mémoire plutôt que l’utilisation des fichiers."}
+:::
+
+## Résumé
+
+Vous savez maintenant analyser l’utilisation des fichiers et des systèmes de fichiers sans considérer la terminaison comme la réponse par défaut.
+
+1. Employer `lsof` pour les enregistrements détaillés des fichiers ouverts.
+2. Employer `fuser` pour les PID et les types d’accès centrés sur un chemin.
+3. Confirmer le montage et tenir compte des permissions et des conditions de concurrence.
+4. Coordonner un arrêt ordonné avant d’envisager un signal.
+5. Interroger de nouveau et vérifier le démontage ou le résultat sur le service.

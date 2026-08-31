@@ -1,58 +1,102 @@
 ---
-index: 9
+lesson_id: "dhcp-overview"
+course_id: "network-basics"
 lang: "zh"
+order_index: 9
 title: "DHCP 概述"
-meta_title: "DHCP 概述 - 网络基础知识"
-meta_description: "了解 DHCP（动态主机配置协议）的基础知识。本指南涵盖 DHCP 如何分配 IP 地址、其四步过程 (DORA) 及其在网络 DHCP 层中的作用。非常适合 Linux 网络初学者。"
-meta_keywords: "DHCP, 动态主机配置协议，dhcp 层，IP 地址，Linux 网络，DHCP 过程，DORA, 网络配置"
+description: "学习 DHCPv4 如何通过发现、选择和续租来租用地址与网络选项。"
+meta_title: "DHCP 概述 - 网络基础"
+meta_description: "学习 DHCP（动态主机配置协议）基础。本指南介绍 DHCP 如何分配 IP 地址、DORA 四步流程，以及它在网络中的作用，适合 Linux 网络初学者。"
+meta_keywords: "DHCP, 动态主机配置协议, DHCP 层, IP 地址, Linux 网络, DHCP 流程, DORA, 网络配置"
 ---
 
-## Lesson Content
+动态主机配置协议向客户端提供有租期的网络配置。在 DHCPv4 中，这些配置可以包括 IPv4 地址、子网掩码、默认路由器、DNS 服务器、租期，以及本地策略选择的其他选项。
 
-动态主机配置协议（DHCP）是一种基本的网络协议，用于自动为网络上的设备分配 IP 地址和其他网络配置参数。
+## 客户端、服务器与中继
 
-### 什么是 DHCP？
+DHCP 服务器管理作用域或地址池以及租约状态。服务器不必位于每个物理网段；DHCP 中继可以在子网与集中式服务器之间转发客户端交换。只使用静态配置的网络可能根本不提供 DHCP。
 
-将 DHCP 视为设备的“电话公司”。当您拿到一部新手机时，需要一个号码才能开始通信。您联系运营商，他们会分配给您一个号码。同样，当设备连接到网络时，它需要一个 IP 地址才能与其他设备通信。DHCP 就是提供此 IP 地址的服务。
+DHCP 是通过 UDP 承载的应用层协议。DHCPv4 服务器通常使用 UDP 端口 67，客户端使用端口 68。
 
-此 IP 地址通常会“租用”特定时间。在租约到期之前，设备可以续订它，从而确保持续连接。此自动化过程对于管理任何网络上的设备至关重要。
+:::single-choice{#dhcp-relay-purpose}
+DHCP 中继实现了什么？
 
-### DHCP 服务器的作用
+::option[让每个客户端不受策略限制地选择任意地址。]{#dhcp-client-any-address explanation="服务器仍然应用作用域和租约策略。"}
+::option[让另一个子网中的客户端访问集中式 DHCP 服务器。]{#dhcp-central-server .correct explanation="中继跨越路由边界转发 DHCP 交换，并标识客户端所在网络。"}
+::option[让以太网交换机取代所有 IP 路由器。]{#dhcp-switch-router explanation="中继 DHCP 不会消除路由网络边界。"}
+:::
 
-DHCP 服务器负责管理一个 IP 地址池并将其租借给客户端设备。在典型的家庭网络中，您的路由器通常充当 DHCP 服务器。在更大的网络中，专用的服务器处理此任务。
+## 初始 DHCPv4 交换
 
-使用 DHCP 有明显的优势：
+常见的初始过程可记为 DORA：
 
-- **自动化：** 网络管理员无需手动配置每台设备，节省了时间和精力。
-- **准确性：** 它可以防止分配重复 IP 地址等常见错误，这可能导致网络冲突。
+1. `DHCPDISCOVER`：客户端搜索可用服务器。
+2. `DHCPOFFER`：服务器提出地址和选项。
+3. `DHCPREQUEST`：客户端选择并请求所提供的租约。
+4. `DHCPACK`：所选服务器确认租约和选项。
 
-每个物理网络都应该有自己的 DHCP 服务器，以简化主机请求和接收 IP 地址的过程。该协议在应用层运行，构成了网络配置服务的一个关键部分，有时在概念上被称为 `dhcp layer`（DHCP 层）。
+广播与单播细节取决于客户端状态、中继使用情况和服务器能力。要约尚不是最终可用的租约；确认消息会完成正常选择交换。
 
-### 四步 DHCP 过程
+:::single-choice{#dhcp-dora-order}
+DHCPv4 正常的初始顺序是什么？
 
-设备通过 DHCP 获取 IP 地址的过程涉及四步交换，通常用首字母缩写 DORA 来记忆：
+::option[OFFER、DISCOVER、ACK、REQUEST。]{#dhcp-wrong-order-one explanation="客户端先发现，服务器再提供；客户端先请求，服务器再确认。"}
+::option[DISCOVER、OFFER、REQUEST、ACK。]{#dhcp-correct-order .correct explanation="该序列依次执行搜索、提议、选择和确认。"}
+::option[REQUEST、ACK、DISCOVER、OFFER。]{#dhcp-wrong-order-two explanation="新客户端通常需要先发现服务器并收到要约，才能选择租约。"}
+:::
 
-1. **DHCP 发现 (DHCP Discover)：** 客户端设备在网络上广播一个 `DISCOVER` 消息，以查找可用的 DHCP 服务器。
-2. **DHCP 提供 (DHCP Offer)：** 任何收到发现消息的 DHCP 服务器都可以用 `OFFER` 消息进行响应。此消息包含提议的 IP 地址、子网掩码、网关地址和租约期限。
-3. **DHCP 请求 (DHCP Request)：** 客户端接收到一个或多个提议，并选择一个。然后它广播一个 `REQUEST` 消息，告知所有 DHCP 服务器它接受了哪个提议。
-4. **DHCP 确认 (DHCP Acknowledgment - ACK)：** 做出被接受提议的服务器向客户端发送最终的 `ACK` 消息，确认租约并最终确定配置。
+## 租约续期
 
-虽然完整协议更为复杂，但这四个步骤代表了 DHCP 如何动态配置网络上主机的核心。
+租约如果不续期就会过期。客户端通常会在到期前开始续租，往往先直接联系原服务器。如果续租失败，它会在之后扩大重新绑定尝试。具体计时器由协议提供或根据协议推导。
 
-## Exercise
+显示为动态分配的地址并不能证明租约永久有效。排查变化时，应记录当前租约、有效期、服务器和选项。
 
-熟能生巧！以下是一些实践实验，以加强您对动态 IP 地址分配和网络配置的理解：
+:::single-choice{#dhcp-lease-expiration}
+DHCP 地址租约未成功续期时会发生什么？
 
-1. **[在 Linux 中管理 IP 地址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令检查接口，并专门使用 `dhclient` 来获取动态 IP 地址，直接应用您对 DHCP 的知识。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令来识别网络寻址信息，包括 DHCP 分配的 IP 地址，并检查网络接口。
-3. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 使用 `ping` 和 `ip a` 探索 IP 地址和网络可达性，帮助您了解动态分配的 IP 在网络中如何工作。
+::option[它会变成永久硬件 MAC 地址。]{#dhcp-lease-mac explanation="IP 租约不会改变链路层身份。"}
+::option[它最终会过期，客户端必须停止将其视为有效地址。]{#dhcp-lease-expires .correct explanation="租赁机制允许服务器根据策略回收或更改地址和选项。"}
+::option[它会把客户端转换成权威 DNS 根服务器。]{#dhcp-lease-dns-root explanation="DHCP 租约不会授予 DNS 权限。"}
+:::
 
-这些实验将帮助您在实际场景中应用动态 IP 分配和网络配置的概念，并增强您对 Linux 网络操作的信心。
+## 检查结果
 
-## Quiz Question
+客户端应用 DHCP 配置后，应验证所有必需状态，而不只是地址：
 
-DHCP 过程中的四个步骤按顺序是什么？请用英文回答，使用大写单词，并用逗号和空格分隔。
+```bash
+$ ip address show
+$ ip route show
+$ resolvectl status
+```
 
-## Quiz Answer
+解析器命令因系统而异。还应检查活动网络管理器的租约数据和日志。恶意服务器、地址池内的静态分配、过期状态或手动配置仍可能造成地址重复；DHCP 可以减少错误，但本身无法阻止所有冲突。
 
-DISCOVER, OFFER, REQUEST, ACK
+:::single-choice{#dhcp-result-verification}
+接受 DHCP 租约后应该检查什么？
+
+::option[只检查接口显示名称。]{#dhcp-interface-name-only explanation="接口名称不能确定寻址、路由或解析状态。"}
+::option[只检查键盘是否响应。]{#dhcp-keyboard explanation="键盘输入与网络租约配置无关。"}
+::option[检查地址、路由、DNS 和租约详情。]{#dhcp-check-complete-state .correct explanation="可用配置取决于多个选项及其在系统中应用后的状态。"}
+:::
+
+## DHCPv6 与 IPv6 配置
+
+IPv6 主机可以使用无状态地址自动配置、DHCPv6、静态配置或这些方式的组合。DHCPv6 不使用 IPv4 的 DORA 交换，默认路由器信息通常来自 IPv6 路由器通告，而不是 DHCPv6。
+
+:::single-choice{#dhcp-ipv6-default-router}
+IPv6 主机通常从哪里获得默认路由器信息？
+
+::option[IPv6 路由器通告。]{#dhcp-router-advertisement .correct explanation="DHCPv6 可以提供其他配置，但路由器通过邻居发现通告自身。"}
+::option[以太网 FCS 尾部。]{#dhcp-ipv6-fcs explanation="FCS 用于检测链路损坏，不承载路由器配置。"}
+::option[仅来自 IPv4 DHCPACK。]{#dhcp-ipv4-ack explanation="IPv4 DHCP 消息不会配置 IPv6 路由。"}
+:::
+
+## 总结
+
+现在，你可以解释 DHCPv4 如何租用并续订主机网络配置。
+
+1. 区分 DHCP 服务器、中继和客户端子网。
+2. 理解 DISCOVER、OFFER、REQUEST 和 ACK 交换。
+3. 将地址和选项视为有期限的租约状态。
+4. 一并验证地址、路由、DNS 和租约元数据。
+5. 将 DHCPv4 行为与 IPv6 自动配置区分开。

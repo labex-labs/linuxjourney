@@ -1,40 +1,97 @@
 ---
-index: 3
+lesson_id: "general-logging"
+course_id: "logging"
 lang: "pt"
+order_index: 3
 title: "Registro Geral"
+description: "Aprenda a descobrir, filtrar, acompanhar e correlacionar logs gerais de sistemas Linux."
 meta_title: "Registro Geral - Logging"
 meta_description: "Um guia para iniciantes sobre logs gerais do Linux. Aprenda sobre /var/log/messages e syslog para monitoramento eficaz do sistema, análise de logs e solução de problemas no Linux."
 meta_keywords: "logs Linux, syslog, var/log/messages, solução de problemas Linux, logs do sistema, análise de logs, monitoramento do sistema, guia Linux, iniciante Linux, /var/log"
 ---
 
-## Lesson Content
+Logs gerais combinam avisos rotineiros, alertas e erros de várias fontes. São bons pontos de partida, mas nomes e conteúdo dos arquivos são escolhas da política de roteamento, não garantias universais do Linux.
 
-Seu sistema Linux registra diligentemente eventos, erros e informações operacionais em arquivos conhecidos como **logs do sistema**. Esses logs são inestimáveis para **solução de problemas no Linux** e para entender o comportamento do sistema. Para qualquer **iniciante em Linux**, aprender a ler esses logs é um passo crucial. A maioria dos arquivos de log importantes é armazenada no diretório `/var/log`. Nesta lição, exploraremos dois dos logs de propósito geral mais comuns.
+## Localização da fonte relevante
 
-### O Log de Mensagens Gerais
+Conforme distribuição e configuração, mensagens gerais podem aparecer em `/var/log/syslog`, `/var/log/messages`, no journal ou em vários destinos. Primeiro identifique o host e o intervalo do incidente, depois examine as fontes:
 
-Em muitas distribuições Linux, `/var/log/messages` serve como um repositório central para uma ampla gama de eventos do sistema. Ele captura mensagens informativas não críticas do kernel, daemons e vários serviços. Isso o torna um excelente ponto de partida para obter uma visão geral da atividade do seu sistema e para a **solução de problemas inicial no Linux**. Pense nele como a caixa de entrada padrão para o bate-papo diário do seu sistema.
+```bash
+$ ls -lh /var/log
+$ journalctl --since '2026-08-31 09:00' --until '2026-08-31 09:15'
+```
 
-### O Log Abrangente do Sistema
+Logs de aplicativos podem ficar em subdiretórios próprios ou serviços externos. Registros de autenticação, auditoria, pacotes, banco de dados e servidor web podem ser separados do fluxo geral.
 
-O arquivo `/var/log/syslog` geralmente contém uma coleção mais abrangente de **logs do sistema**. Embora seu conteúdo possa se sobrepor ao de `/var/log/messages`, ele normalmente inclui uma gama mais ampla de informações, tudo, exceto mensagens relacionadas à autenticação. Este log detalhado é particularmente útil para depuração aprofundada e **análise de logs** quando você precisa rastrear um problema específico do início ao fim.
+:::single-choice{#general-logs-universal-file}
+Por que não se deve presumir que `/var/log/messages` exista em todo host Linux?
 
-### Monitoramento Eficaz do Sistema com Logs
+::option[Os destinos dependem dos coletores e da política local.]{#general-logs-local-routing .correct explanation="Um sistema apenas com journal ou outra configuração syslog pode usar destinos diferentes."}
+::option[O Linux permite apenas um arquivo de log por disco.]{#general-logs-one-file explanation="Sistemas mantêm rotineiramente vários arquivos e armazenamentos de journal."}
+::option[O caminho é reservado exclusivamente a documentos pessoais.]{#general-logs-user-documents explanation="A hierarquia `/var/log` é convencionalmente usada para logs."}
+:::
 
-Embora esses dois arquivos sejam ferramentas poderosas para **monitoramento do sistema**, lembre-se de que o diretório `/var/log` contém muitos outros logs especializados (por exemplo, para autenticação, gerenciamento de pacotes ou aplicativos específicos). O comportamento exato do registro também pode variar dependendo da sua distribuição Linux e de sua configuração, com alguns sistemas modernos usando `systemd-journald`. No entanto, entender `/var/log/messages` e `syslog` fornece uma base sólida para qualquer aspirante a usuário Linux e é uma parte fundamental de qualquer **guia Linux**.
+## Inspeção de logs de texto
 
-## Exercise
+Use `less` para navegação controlada e `tail` para os registros mais novos:
 
-A prática é fundamental para dominar a **análise de logs**. Os seguintes exercícios ajudarão você a se familiarizar com a visualização e análise de **logs do Linux** usando ferramentas comuns de linha de comando, uma habilidade essencial para o **monitoramento do sistema**.
+```bash
+$ sudo less /var/log/syslog
+$ sudo tail -n 100 /var/log/messages
+```
 
-1. **[Comando Linux tail: Exibição do Final do Arquivo](https://labex.io/pt/labs/linux-linux-tail-command-file-end-display-214303)** - Aprenda o comando `tail` do Linux para visualizar e monitorar o final de arquivos de texto, essencial para a análise de logs.
-2. **[Comando Linux head: Exibição do Início do Arquivo](https://labex.io/pt/labs/linux-linux-head-command-file-beginning-display-214302)** - Explore o comando `head` para exibir as linhas iniciais de arquivos de texto, útil para verificar rapidamente os cabeçalhos dos logs.
-3. **[Detecção Rápida de Ameaças](https://labex.io/pt/labs/linux-rapid-threat-detection-387930)** - Pratique habilidades essenciais de linha de comando do Linux para análise de segurança cibernética, usando `tail` e `head` para extrair e analisar rapidamente entradas de log recentes.
+Acompanhe linhas novas durante uma reprodução limitada com `tail -F FILE`. `-F` tenta novamente quando o arquivo é substituído na rotação. Pare com `Ctrl-C` e não deixe sessões privilegiadas amplas abertas.
 
-## Quiz Question
+:::single-choice{#general-logs-tail-f-capability}
+Para que `tail -F` é útil durante uma reprodução controlada?
 
-Qual arquivo de log normalmente registra tudo, exceto mensagens de autenticação? (Por favor, responda em inglês, usando apenas letras minúsculas.)
+::option[Acompanhar um arquivo pelo nome quando ele é substituído na rotação.]{#general-logs-tail-follow .correct explanation="A repetição por nome permite continuar quando o arquivo ativo é renomeado e recriado."}
+::option[Mudar a gravidade de todo log para debug.]{#general-logs-tail-debug explanation="Tail lê conteúdo e não reconfigura as fontes."}
+::option[Descriptografar arquivos comprimidos sem outra ferramenta.]{#general-logs-tail-decrypt explanation="Ele não oferece descompactação ou descriptografia geral."}
+:::
 
-## Quiz Answer
+## Filtragem sem perder o contexto
 
-syslog
+Pesquise um arquivo ou intervalo limitado, em vez de canalizar imediatamente um fluxo ilimitado:
+
+```bash
+$ grep -n -C 3 'connection refused' /var/log/example.log
+$ journalctl -u example.service --since '10 minutes ago' --grep='connection refused'
+```
+
+Maiúsculas, redação, limites de frequência e localização podem tornar a busca literal incompleta. Registre eventos bem-sucedidos e falhos e mantenha as linhas próximas, pois a causa pode preceder o erro visível.
+
+:::single-choice{#general-logs-context-lines}
+Por que incluir linhas ao redor de um erro encontrado?
+
+::option[Um evento anterior pode explicar a falha posterior.]{#general-logs-preceding-context .correct explanation="O contexto temporal ajuda a reconstruir a sequência, em vez de tratar uma string como todo o incidente."}
+::option[O contexto garante que o primeiro resultado seja a causa.]{#general-logs-guaranteed-cause explanation="Ainda é preciso correlacionar evidências; contexto não prova causalidade."}
+::option[Ele altera automaticamente a configuração do serviço.]{#general-logs-context-config explanation="A saída da busca é somente leitura."}
+:::
+
+## Inclusão de logs rotacionados
+
+Um incidente pode atravessar o limite de uma rotação. Arquivos ativos, arquivos numerados e arquivos comprimidos podem conter partes diferentes da mesma sequência. Ferramentas como `zgrep` e `zless` leem arquivos comprimidos com gzip:
+
+```bash
+$ sudo zgrep -n 'connection refused' /var/log/example.log*.gz
+```
+
+Ordene pelos horários reais, não apenas pelos sufixos. Antes de copiar evidências, preserve metadados e restrinja acesso, pois logs podem conter dados pessoais ou credenciais.
+
+:::single-choice{#general-logs-rotation-boundary}
+O que verificar quando um incidente atravessa uma rotação?
+
+::option[Apenas o novo arquivo ativo vazio.]{#general-logs-active-only explanation="Registros anteriores podem ter sido movidos para arquivos rotacionados."}
+::option[Logs ativos e arquivados ordenados pelo horário dos eventos.]{#general-logs-all-intervals .correct explanation="A sequência relevante pode estar dividida entre arquivos atuais e antigos."}
+::option[Apenas nomes de arquivo, independentemente dos horários.]{#general-logs-filenames-only explanation="A ordem dos sufixos nem sempre equivale ao tempo dos eventos."}
+:::
+
+## Resumo
+
+Agora você consegue investigar logs gerais em arquivos, journals e limites de rotação.
+
+1. Descobrir destinos em vez de presumir um nome universal.
+2. Ler um intervalo limitado e acompanhar apenas durante a reprodução.
+3. Manter o contexto temporal ao redor dos registros.
+4. Incluir arquivos rotacionados e proteger evidências sensíveis.

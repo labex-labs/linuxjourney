@@ -1,44 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-dns"
+course_id: "dns"
 lang: "de"
+order_index: 1
 title: "Was ist DNS?"
-meta_title: "Was ist DNS? - DNS"
-meta_description: "Wenn Sie Linux-Netzwerke lernen möchten, ist das Verständnis von DNS entscheidend. Dieser Leitfaden erklärt, was das Domain Name System (DNS) ist, wie es Domainnamen in IP-Adressen übersetzt und warum es das unverzichtbare Adressbuch des Internets ist. Ein perfekter Startpunkt für alle, die Linux lernen möchten."
-meta_keywords: "DNS, Domain Name System, IP-Adresse, Linux lernen, Linux-Grundlagen, Hostname, Linux-Netzwerke, Anfänger, Tutorial, Anleitung, Labex Linux"
+description: "Lerne, wie DNS verteilte Namen und typisierte Resource Records organisiert und auflöst."
+meta_title: "Was ist DNS? – DNS"
+meta_description: "Lerne das Domain Name System als verteilte, hierarchische Datenbank kennen, die Namen mit typisierten Einträgen für Adressen, E-Mail und Dienste verknüpft."
+meta_keywords: "DNS, Domain Name System, IP Adresse, Linux lernen, Hostname, Linux Netzwerk, Resource Records, Namensauflösung"
 ---
 
-## Lesson Content
+Das Domain Name System ist eine verteilte, hierarchische Datenbank und ein Abfrageprotokoll. Clients können damit typisierte Informationen zu Namen abrufen, darunter Adressen, E-Mail-Routing, autoritative Server, Dienstdaten und Verifizierungseinträge.
 
-### Das Telefonbuch des Internets
+## Namen und Resource Records
 
-Stellen Sie sich vor, Sie müssten jedes Mal, wenn Sie Google besuchen möchten, `http://192.78.12.4` eingeben, anstatt `www.google.com`. Ohne das Domain Name System (DNS) wäre das Internet genau so. Protokolle auf niedriger Ebene verstehen zur Identifizierung eines Hosts nur numerische IP-Adressen. DNS ist das System, das es uns Menschen ermöglicht, einprägsame Namen für Websites und Server anstelle langer Zahlenreihen zu verwenden. Betrachten Sie es als ein Adressbuch für das Internet: Sie suchen einen Namen, um die entsprechende Nummer zu finden.
+DNS übersetzt nicht nur einen Hostnamen in eine IP-Adresse. Ein `A`-Eintrag enthält eine IPv4-Adresse, `AAAA` eine IPv6-Adresse, `MX` Daten zum E-Mail-Routing und `NS` die Namen autoritativer Server; zahlreiche weitere Typen enthalten andere Daten. Ein Name kann mehrere Einträge oder überhaupt keinen Adresseintrag besitzen.
 
-### Wie DNS funktioniert
+:::single-choice{#dns-purpose-beyond-address}
+Warum ist DNS mehr als eine Liste aus Hostnamen und Adressen?
 
-Im Kern übersetzt DNS menschenlesbare Hostnamen (wie `www.google.com`) in maschinenlesbare IP-Adressen (wie `192.78.12.4`). Dieser Vorgang wird als Auflösung bezeichnet. Wenn Sie einen Domainnamen in Ihren Browser eingeben, sendet Ihr Computer eine Abfrage an einen DNS-Server, der dann die korrekte IP-Adresse nachschlägt und zurücksendet, wodurch Ihr Browser eine Verbindung zum Server der Website herstellen kann.
+::option[Es weist jedem Ethernet-Frame dauerhaft MAC-Adressen zu.]{#dns-mac-frames explanation="Die Nachbarerkennung auf der Sicherungsschicht verwendet DNS nicht auf diese Weise."}
+::option[Es speichert typisierte Einträge für verschiedene Arten von Dienst- und Delegierungsdaten.]{#dns-typed-records .correct explanation="Adress-, E-Mail-, Autoritäts-, Alias- und richtlinienbezogene Einträge besitzen unterschiedliche Bedeutungen."}
+::option[Es garantiert, dass jede benannte Anwendung funktionsfähig ist.]{#dns-health-guarantee explanation="DNS-Daten können erfolgreich aufgelöst werden, obwohl der Zieldienst nicht verfügbar ist."}
+:::
 
-### Ein verteiltes globales System
+## Hierarchische Namen
 
-DNS ist keine einzelne, zentrale Datenbank. Stattdessen ist es ein riesiges, verteiltes System. Website-Besitzer verwalten ihre eigenen DNS-Einträge, um der Welt mitzuteilen, wie sie ihre Domain finden können. Diese einzelnen Domains kommunizieren miteinander und bilden ein riesiges, miteinander verbundenes Verzeichnis für das gesamte Internet. Diese dezentrale Struktur macht das System unglaublich widerstandsfähig und skalierbar.
+Ein vollständig qualifizierter Domainname bezeichnet einen Pfad im DNS-Baum. In `www.example.com.` steht der abschließende Punkt für die Wurzel, `com` liegt darunter, `example` unter `com` und `www` ist ein Name innerhalb dieser Domain. In Benutzeroberflächen wird der abschließende Punkt häufig weggelassen. In Konfigurationen ist er jedoch wichtig, um absolute von lokal relativen Namen zu unterscheiden.
 
-### Warum Sie Linux DNS lernen sollten
+:::single-choice{#dns-trailing-dot}
+Wofür steht der abschließende Punkt in `www.example.com.`?
 
-Wenn Sie **Linux lernen** möchten für Systemadministration oder Webentwicklung, ist das Verständnis von DNS unerlässlich. Die Fähigkeit, DNS zu konfigurieren, zu verwalten und Fehler darin zu beheben, ist eine grundlegende Fertigkeit. Dieser Kurs behandelt die Grundlagen, aber seien Sie sich bewusst, dass DNS ein tiefes und komplexes Thema ist. Um es wirklich zu meistern, müssen Sie zusätzliche Recherchen und Übungen durchführen. Dies ist ein großartiger erster Schritt auf Ihrem Weg zu **linux learn**.
+::option[Für die DNS-Wurzel und einen absoluten Namen.]{#dns-root-dot .correct explanation="Der Punkt beendet den vollständigen Pfad vom benannten Knoten bis zur Wurzel."}
+::option[Für einen Platzhalter für jede Top-Level-Domain.]{#dns-dot-wildcard explanation="Ein Platzhalter verwendet eine Bezeichnung wie `*` und nicht das Wurzelabschlusszeichen."}
+::option[Für die Anweisung, ausschließlich IPv4 zu verwenden.]{#dns-dot-ipv4 explanation="Der Eintragstyp bestimmt die angeforderte Adressfamilie."}
+:::
 
-## Exercise
+## Verteilte Autorität
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von DNS und Hostnamenauflösung zu festigen. Die Verwendung eines **labex linux Terminals** für diese Übungen ist eine großartige Möglichkeit, praktische Erfahrungen zu sammeln.
+DNS-Autorität wird entlang der Hierarchie nach unten delegiert. Root-Server verweisen Resolver an die Server der Top-Level-Domains, die sie wiederum an die autoritativen Server delegierter Zonen weiterleiten. Organisationen verwalten ihre eigenen autoritativen Daten, ohne den gesamten globalen Namensraum auf einem zentralen Server zu speichern.
 
-1. **[DNS-Einträge in Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Lernen Sie, wie man wichtige Linux-Tools wie `dig` und `nslookup` verwendet, um verschiedene DNS-Eintragstypen abzufragen, was Ihnen hilft zu verstehen, wie Hostnamen in IP-Adressen aufgelöst werden.
-2. **[Lokale Hostnamenauflösung in Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Üben Sie die Bearbeitung der Datei `/etc/hosts`, um die lokale Hostnamenauflösung zu verwalten, eine grundlegende Fähigkeit, um zu steuern, wie Ihr Linux-System Namen auflöst, ohne sich auf externe DNS-Server verlassen zu müssen.
-3. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Sammeln Sie praktische Erfahrungen, indem Sie Ihren eigenen lokalen autoritativen DNS-Server mit `bind9` einrichten und konfigurieren, sodass Sie tiefer in die Verwaltung von DNS-Zonen und -Einträgen eintauchen können.
+:::single-choice{#dns-authoritative-data}
+Wer liefert die maßgeblichen Daten für eine delegierte DNS-Zone?
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in DNS und Hostnamenauflösung in einer Linux-Umgebung aufzubauen.
+::option[Jeder Browser, der die Website zuvor besucht hat.]{#dns-browser-authority explanation="Ein Browsercache ist für die Zone nicht autoritativ."}
+::option[Die konfigurierten autoritativen Nameserver der Zone.]{#dns-authoritative-servers .correct explanation="Die Delegierung bezeichnet die Server, die für autoritative Antworten zuständig sind."}
+::option[Jeder Router, der ein Paket zu der Adresse weiterleitet.]{#dns-router-authority explanation="Paketweiterleitung und DNS-Autorität sind getrennte Aufgaben."}
+:::
 
-## Quiz Question
+## Auflösung und Caching
 
-Richtig oder falsch: DNS hilft uns, MAC-Adressen für Hostnamen zu finden?
+Der Stub-Resolver eines Hosts sendet eine Abfrage üblicherweise an einen rekursiven Resolver. Dieser kann aus einem gültigen Cache antworten oder die Hierarchie im Auftrag des Clients abfragen. Die TTL eines Eintrags begrenzt, wie lange Cacheeinträge normalerweise wiederverwendet werden dürfen. Das verbessert die Skalierbarkeit, verzögert aber die Sichtbarkeit von Änderungen, bis sich die Caches erneuern.
 
-## Quiz Answer
+Eine erfolgreiche DNS-Auflösung beweist weder Route noch Transport-, TLS- oder Anwendungszustand. Ein DNS-Fehler kann außerdem bereits vor einer externen Abfrage entstehen, weil `/etc/hosts`, Suchsuffixe, lokale Caches oder die Richtlinie des Namensdienstes den Systemresolver beeinflussen.
 
-False
+:::single-choice{#dns-cache-ttl-role}
+Was steuert die TTL eines DNS-Eintrags in erster Linie?
+
+::option[Wie viele Router ein IP-Paket durchqueren darf.]{#dns-ip-hop-limit explanation="IP-TTL beziehungsweise Hop Limit ist ein anderes Protokollfeld."}
+::option[Wie lange die Anwendung funktionsfähig bleiben muss.]{#dns-app-health-time explanation="DNS-Caching garantiert keine Dienstverfügbarkeit."}
+::option[Wie lange ein Resolver den Eintrag unter normalen Regeln zwischenspeichern darf.]{#dns-cache-lifetime .correct explanation="Kürzeres oder längeres Caching beeinflusst Abfragelast und Verbreitung von Änderungen."}
+:::
+
+## Zusammenfassung
+
+Du kannst DNS nun als typisiertes, zwischengespeichertes und hierarchisches Datensystem beschreiben.
+
+1. Unterscheide DNS-Resource-Record-Typen nach ihrem Zweck.
+2. Lies einen vollständig qualifizierten Namen von der Wurzel abwärts.
+3. Erkenne Delegierung und autoritative Zuständigkeit.
+4. Trenne Namensauflösung von der Verbindung zur Anwendung.

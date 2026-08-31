@@ -1,67 +1,72 @@
 ---
-index: 3
+lesson_id: "tcp-ip-model"
+course_id: "network-basics"
 lang: "en"
+order_index: 3
 title: "TCP/IP Model"
+description: "Learn how the application, transport, Internet, and link layers cooperate in the TCP/IP model."
 meta_title: "TCP/IP Model - Network Basics"
 meta_description: "Explore the fundamental layers in the TCP/IP model, the cornerstone of modern networking. Learn about the Application, Transport, Network, and Link layers for effective networking with TCP/IP."
 meta_keywords: "TCP/IP model, layers in the tcp ip model, networking with tcp ip, layers of tcp protocol, network layers, TCP, IP, Linux networking, real world protocol project"
 ---
 
-## Lesson Content
+The TCP/IP model organizes the protocols used by Internet hosts into functional layers. A common four-layer form uses Application, Transport, Internet, and Link. Some teaching models split the physical medium from the link layer and therefore show five layers.
 
-The theoretical OSI model gave birth to what eventually became the TCP/IP model, which is the practical foundation the internet is built on. It represents the actual implementation of networking. The TCP/IP model utilizes the TCP/IP protocol suite, which we commonly refer to as TCP/IP. Effective **networking with TCP/IP** depends on these protocols, which work together to specify how data should be gathered, addressed, transmitted, and routed. By examining the **layers in the TCP/IP model**, we can understand how a data packet travels through the network.
+## Application Layer
 
-### The Four Layers of the TCP/IP Model
+Application protocols define messages and behavior for services such as HTTP, DNS, SSH, and SMTP. This layer also includes many representation and session responsibilities that the OSI model discusses separately.
 
-The model is divided into four distinct layers, each with a specific function. Understanding these layers is crucial for any **real world protocol project** or network troubleshooting task.
+:::single-choice{#tcpip-http-layer}
+At which TCP/IP layer is HTTP normally classified?
 
-### Application Layer
+::option[Internet.]{#tcpip-http-internet explanation="The Internet layer handles IP addressing and packet forwarding."}
+::option[Link.]{#tcpip-http-link explanation="The link layer carries traffic on a local medium."}
+::option[Application.]{#tcpip-http-application .correct explanation="HTTP defines application request and response semantics."}
+:::
 
-This is the top layer of the TCP/IP model, where user-facing applications and network services reside. It determines how programs, like your web browser or email client, interface with the transport layer services to send and receive data.
+## Transport Layer
 
-This layer uses protocols such as:
+Transport protocols provide communication between application endpoints. TCP offers a reliable ordered byte stream with congestion and flow control. UDP provides independent datagrams without TCP's connection, ordering, or retransmission guarantees. Port numbers help identify transport endpoints, but a port number alone does not prove which application is listening.
 
-- HTTP (Hypertext Transfer Protocol): The foundation of data communication for the World Wide Web.
-- SMTP (Simple Mail Transfer Protocol): Used for sending electronic mail (email).
+:::single-choice{#tcpip-udp-property}
+Which property belongs to UDP rather than TCP?
 
-### Transport Layer
+::option[Independent datagrams without built-in retransmission guarantees.]{#tcpip-udp-datagrams .correct explanation="Applications using UDP decide whether and how to add reliability."}
+::option[Guaranteed in-order delivery of one byte stream.]{#tcpip-udp-ordered explanation="That is a TCP service property, subject to connection success."}
+::option[Routing packets between different IP networks.]{#tcpip-udp-routing explanation="Inter-network routing is an Internet-layer function."}
+:::
 
-The transport layer is responsible for end-to-end communication and data integrity. It establishes how data will be transmitted, manages port numbers, and ensures that packets are delivered reliably. The **layers of TCP protocol** suite are most prominent here.
+## Internet Layer
 
-This layer primarily uses:
+Internet Protocol carries packets using source and destination IP addresses. Routers examine routing information and decrement hop limits while forwarding packets toward the destination. ICMP communicates control and error information for IP operation. Delivery remains best effort; higher layers or applications handle any required recovery.
 
-- TCP (Transmission Control Protocol): Provides reliable, ordered, and error-checked delivery of a stream of data. It is connection-oriented.
-- UDP (User Datagram Protocol): Offers a faster, connectionless data delivery method that is considered unreliable because it does not guarantee delivery or order.
+:::single-choice{#tcpip-router-layer}
+Which layer supplies the IP destination used by routers?
 
-### Network Layer
+::option[Internet.]{#tcpip-router-internet .correct explanation="The IP header contains the network-layer destination used for routed forwarding."}
+::option[Application.]{#tcpip-router-application explanation="Application messages are carried inside lower-layer protocol data."}
+::option[Link.]{#tcpip-router-link explanation="Link addresses select the next local-hop frame destination."}
+:::
 
-This layer, also known as the Internet Layer, specifies how to move packets between hosts and across different networks. Its main job is addressing and routing. The IP address assigned at this layer is fundamental to a device's identity on a network, which relates to the concept of **ip affiliation meaning** it is part of a specific network.
+## Link Layer and Encapsulation
 
-This layer uses protocols like:
+The link layer sends an IP packet across one local link using Ethernet, Wi-Fi, a point-to-point protocol, or another technology. As application data moves downward, each layer adds information needed for its scope. At the receiver, layers validate and remove their own encapsulation before delivering data upward.
 
-- IP (Internet Protocol): Routes packets from a source machine to a destination machine.
-- ICMP (Internet Control Message Protocol): Used for sending error messages and operational information, such as with the `ping` command.
+Link headers normally change at each routed hop; transport and application conversations are end-to-end unless a middlebox terminates or transforms them.
 
-### Link Layer
+:::single-choice{#tcpip-link-scope}
+What is the normal scope of a link-layer frame?
 
-Also known as the Network Interface Layer, this layer specifies how to send data across a physical piece of hardware. It handles the transmission of data packets on the local network segment, such as over Ethernet, Wi-Fi, or fiber optic cables.
+::option[One local link or hop.]{#tcpip-one-link .correct explanation="A router removes incoming framing and creates framing for the next link."}
+::option[Every application session on the global Internet.]{#tcpip-global-frame explanation="Frames do not remain unchanged across routed networks."}
+::option[Only the source process's memory.]{#tcpip-process-memory explanation="Frames are transmitted over a network link."}
+:::
 
-The protocol lists above are not exhaustive, and you'll encounter many others. In the following lessons, we will dive deeper into each of these layers to see how a packet traverses the network from the perspective of the TCP/IP model.
+## Summary
 
-## Exercise
+You can now place common Internet functions in the TCP/IP model.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of the TCP/IP model and network fundamentals:
-
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice identifying key network addressing information like MAC and IP addresses using the `ip a` command, which is fundamental to understanding the network and data link layers of the TCP/IP model.
-2. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Learn how `ping` and `arp` commands demonstrate the interaction between the network and data link layers, providing practical insight into how devices communicate within the TCP/IP stack.
-3. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Gain hands-on experience simulating network connectivity between Linux nodes, assigning IP addresses, and testing communication, directly applying concepts related to the network layer of the TCP/IP model.
-
-These labs will help you apply the concepts of the TCP/IP model in real scenarios and build confidence with network configuration and troubleshooting.
-
-## Quiz Question
-
-What is the top layer of the TCP/IP model? (Please answer in English. Note that the answer is case-sensitive.)
-
-## Quiz Answer
-
-Application
+1. Associate service protocols with the application layer.
+2. Distinguish TCP streams from UDP datagrams.
+3. Place IP addressing and routing at the Internet layer.
+4. Treat link framing as local-hop encapsulation.

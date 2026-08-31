@@ -1,45 +1,94 @@
 ---
-index: 5
+lesson_id: "kernel-location"
+course_id: "kernel"
 lang: "ko"
+order_index: 5
 title: "커널 위치"
-meta_title: "커널 위치 - 리눅스 커널"
-meta_description: "/boot 디렉터리에서 리눅스 커널 위치를 확인하세요. vmlinuz 및 initrd 와 같은 주요 파일을 자세히 설명합니다."
-meta_keywords: "리눅스 커널 위치, 커널 위치, 커널 저장 위치, 리눅스 커널 저장 위치, vmlinuz, /boot 디렉터리"
+description: "배포판이 커널 이미지, initramfs 파일, 설정, 심볼 및 버전별 모듈을 저장하는 위치를 알아봅니다."
+meta_title: "커널 위치 - 커널"
+meta_description: "리눅스에서 커널이 저장되는 위치를 알아봅니다. /boot 디렉터리의 vmlinuz, initramfs, 설정 파일 및 버전별 모듈 트리를 설명합니다."
+meta_keywords: "리눅스 커널 위치, 커널 저장 위치, vmlinuz, /boot 디렉터리, initramfs, 커널 모듈, Unified Kernel Image"
 ---
 
-## Lesson Content
+리눅스 배포판은 일반적으로 부팅 가능한 커널 결과물을 `/boot` 아래에 저장하지만 UEFI와 부트 로더 사양 레이아웃에서는 EFI 시스템 파티션 또는 확장 부트 파티션의 결과물을 `/boot`, `/boot/efi` 또는 `/efi` 같은 경로에 마운트할 수도 있습니다. 하나의 범용 경로를 가정하지 말고 마운트와 로더 설정을 검사하십시오.
 
-새로운 커널을 설치하면 시스템은 특정 디렉토리에 몇 가지 중요한 파일을 추가합니다. 리눅스에서 **커널이 어디에 저장되는지** 궁금했다면, 정답은 보통 `/boot` 디렉토리입니다. 이 디렉토리는 대부분의 시스템에서 표준 **리눅스 커널 위치**입니다.
+## `/boot` 아래의 버전별 파일
 
-### /boot 디렉토리
+전통적인 배포판 레이아웃에는 다음 파일이 있을 수 있습니다.
 
-`/boot` 디렉토리에는 부팅 프로세스를 시작하는 데 필요한 모든 파일이 포함되어 있습니다. 이 디렉토리를 살펴보면 종종 다른 커널 버전에 해당하는 파일들을 볼 수 있으며, 새 커널에 문제가 발생할 경우 이전 커널로 부팅할 수 있게 해줍니다. 이 **커널 위치**를 이해하는 것은 시스템 유지 관리에 매우 중요합니다.
+- `vmlinuz-KERNEL_RELEASE`: 부팅 가능한 리눅스 커널 이미지
+- `initrd.img-KERNEL_RELEASE` 또는 `initramfs-KERNEL_RELEASE.img`: 초기 사용자 공간 이미지
+- `config-KERNEL_RELEASE`: 해당 패키지 커널 빌드에 사용된 설정
+- `System.map-KERNEL_RELEASE`: 커널 빌드의 심볼 주소 맵
 
-### 주요 커널 파일
+이름은 배포판마다 다릅니다. 최신 배포판의 `initrd` 이름 파일에도 initramfs 아카이브가 들어 있는 경우가 많습니다. `vmlinuz`라는 이름만으로 정확한 내부 압축 방식이나 플랫폼 부팅 형식을 알 수 없으므로 배포판 도구로 검사하십시오.
 
-그렇다면 이 디렉토리 내에서 **커널은 어디에 위치**할까요? 몇 가지 다른 중요한 파일들이 함께 있습니다. 마주치게 될 주요 파일들은 다음과 같습니다.
+:::single-choice{#kernel-location-vmlinuz}
+버전이 붙은 `vmlinuz-*` 파일에는 일반적으로 무엇이 들어 있습니까?
 
-- `vmlinuz`: 이것이 바로 압축된 실행 가능한 리눅스 커널 자체입니다. 끝에 있는 'z'는 압축되었음을 나타냅니다.
-- `initrd`: 이것은 초기 램 디스크입니다. 논의했듯이, `initrd`는 실제 루트 파일 시스템을 마운트하기 위해 시작 시 메모리로 로드되는 임시 루트 파일 시스템입니다.
-- `System.map`: 이 파일은 커널 함수 이름과 해당 메모리 주소를 매핑하는 심볼 테이블을 포함합니다. 주로 커널 패닉 및 오류 (oops) 디버깅에 사용됩니다.
-- `config`: 이 파일은 해당 특정 커널 버전을 컴파일하는 데 사용된 구성 설정을 저장합니다. 어떤 드라이버와 기능이 포함되었는지 자세히 설명합니다.
+::option[부팅 가능한 리눅스 커널 이미지입니다.]{#kernel-location-kernel-image .correct explanation="부트 로더나 펌웨어가 이 아키텍처별 커널 결과물을 불러옵니다."}
+::option[설치된 모든 커널의 모든 로드 가능 모듈입니다.]{#kernel-location-all-modules explanation="모듈은 릴리스별 모듈 트리에 따로 저장됩니다."}
+::option[이전 부팅에서 사용자의 셸 기록입니다.]{#kernel-location-shell-history explanation="부팅 커널 이미지에는 개인 명령 기록이 들어 있지 않습니다."}
+:::
 
-### 커널 파일 관리
+## 초기 RAM 파일 시스템과 빌드 메타데이터
 
-시간이 지남에 따라 `/boot` 디렉토리는 이전 커널의 파일들로 가득 찰 수 있습니다. 공간이 부족해지면 사용하지 않는 이전 버전의 파일들을 제거할 수 있습니다. 가장 안전한 방법은 배포판의 패키지 관리자 (`apt` 또는 `dnf` 등) 를 사용하는 것입니다. 파일을 수동으로 삭제하는 것은 위험할 수 있으므로, 현재 사용 중인 커널의 파일을 제거하지 않도록 매우 주의해야 합니다.
+initramfs에는 일치하는 커널 및 루트 저장 장치 설계에 필요한 초기 모듈과 도구가 들어 있어야 합니다. 파일 이름이 맞는 것만으로는 충분하지 않습니다. 오래됐거나 생성에 실패한 파일은 부팅 항목을 사용할 수 없게 만들 수 있습니다.
 
-## Exercise
+`config-*`는 어떤 기능이 내장되거나 모듈로 빌드되거나 제외되었는지 설명하는 데 도움을 줍니다. `System.map-*`은 심볼화와 디버깅에 도움을 줄 수 있지만 주소 무작위화, 분리된 디버그 정보 및 배포판 도구에 따라 사용 방식이 달라집니다. 이 파일들은 지원 결과물이며 대체 커널이 아닙니다.
 
-리눅스 부팅 프로세스 및 커널 관리에 대한 이해를 강화하기 위해 이 실습을 통해 지식을 적용해 보세요:
+:::single-choice{#kernel-location-initramfs-match}
+initramfs가 특정 커널 릴리스 및 시스템 설정에 연결되는 이유는 무엇입니까?
 
-1. **[리눅스에서 GRUB2 부트 메뉴 사용자 지정하기](https://labex.io/ko/labs/comptia-customize-the-grub2-boot-menu-in-linux-590859)** - 리눅스 시스템이 부팅되고 커널 버전을 선택하는 방식에 직접적인 영향을 미치는 GRUB2 구성을 수정하는 연습을 합니다. 이 실습은 `/boot` 디렉토리에서 논의된 파일들의 실제적인 의미를 이해하는 데 도움이 될 것입니다.
+::option[마운트된 모든 파일 시스템의 영구 내용을 저장하기 때문입니다.]{#kernel-location-all-filesystems explanation="initramfs는 작은 초기 부팅 환경이며 전체 시스템 백업이 아닙니다."}
+::option[부팅할 때마다 사용자에게 새 UID를 배정하기 때문입니다.]{#kernel-location-user-ids explanation="계정 식별 정보 관리는 일반적인 initramfs 역할의 범위 밖입니다."}
+::option[해당 부팅 경로에 필요한 초기 모듈과 도구를 담기 때문입니다.]{#kernel-location-early-modules .correct explanation="모듈 ABI와 필요한 저장 장치 구성 요소가 선택된 커널과 맞아야 합니다."}
+:::
 
-이 실습은 이러한 개념을 실제 시나리오에 적용하고 리눅스 커널 및 부트 관리에 대한 자신감을 키우는 데 도움이 될 것입니다.
+## 버전별 커널 모듈
 
-## Quiz Question
+실행 중인 릴리스의 로드 가능 모듈은 일반적으로 다음 경로 아래에 있습니다.
 
-`/boot` 디렉토리에서 압축된 리눅스 커널 이미지 파일의 일반적인 이름은 무엇입니까? 대소문자를 구분하여 영어로 답하십시오.
+```bash
+$ printf '/lib/modules/%s\n' "$(uname -r)"
+```
 
-## Quiz Answer
+병합 파일 시스템 레이아웃에서는 `/usr/lib/modules/KERNEL_RELEASE`로 해석될 수 있습니다. 설치된 각 커널에는 호환되는 모듈 트리와 의존성 인덱스가 필요합니다. `modprobe`는 디스크 전체에서 임의의 `.ko` 파일을 찾지 않고 릴리스별 메타데이터를 사용합니다.
 
-vmlinuz
+:::single-choice{#kernel-location-module-tree}
+실행 중인 커널 릴리스의 모듈이 일반적으로 들어 있는 디렉터리는 무엇입니까?
+
+::option[`/home/modules/current/`]{#kernel-location-home-modules explanation="사용자 홈 디렉터리는 표준 시스템 모듈 트리가 아닙니다."}
+::option[`/lib/modules/$(uname -r)/`]{#kernel-location-lib-modules .correct explanation="릴리스 구성 요소는 설치된 각 커널의 모듈 ABI와 의존성 데이터를 분리합니다."}
+::option[`/proc/modules/files/`]{#kernel-location-proc-files explanation="`/proc/modules`는 로드된 모듈을 보고하며 모듈 바이너리 디렉터리가 아닙니다."}
+:::
+
+## 통합 커널 이미지와 펌웨어 경로
+
+통합 커널 이미지(UKI)는 커널, initrd, 명령줄 및 메타데이터를 하나로 묶을 수 있는 서명된 EFI 실행 파일입니다. UKI는 별도의 `vmlinuz`와 initramfs 파일이 아니라 EFI가 접근할 수 있는 부팅 위치에 저장되는 경우가 많습니다.
+
+따라서 전통적인 `/boot` 레이아웃이 비어 보인다고 해서 커널이 설치되지 않았다는 뜻은 아닙니다. `findmnt`, 패키지 데이터베이스, 부트 관리자 도구 및 로더 설정으로 활성 결과물을 매핑하십시오.
+
+:::single-choice{#kernel-location-uki}
+통합 커널 이미지가 결합할 수 있는 것은 무엇입니까?
+
+::option[모든 사용자 홈 디렉터리를 GPT 헤더에 결합합니다.]{#kernel-location-uki-homes explanation="UKI는 부팅 실행 파일이며 사용자 데이터 컨테이너나 파티션 테이블이 아닙니다."}
+::option[설치된 모든 패키지를 셸 스크립트 하나로 결합합니다.]{#kernel-location-uki-packages explanation="전체 운영체제 저장소가 아니라 부팅 구성 요소를 패키징합니다."}
+::option[커널, initrd, 명령줄 및 메타데이터를 EFI 실행 파일로 결합합니다.]{#kernel-location-uki-components .correct explanation="결합된 결과물은 서명된 UEFI 부팅 작업 흐름에 참여할 수 있습니다."}
+:::
+
+## 안전하게 공간 관리하기
+
+부트 파일 시스템이 가득 찼다면 먼저 마운트된 부트 경로를 매핑하고 각 결과물을 소유한 패키지를 조회하십시오. 패키지 관리자의 커널 정리 작업 흐름을 사용하고, 실행 중인 커널과 정상 작동이 확인된 대체 커널을 보존하며, 부팅 항목을 다시 생성하거나 검사한 뒤 여유 공간을 검증합니다.
+
+오래됐다는 이유만으로 `vmlinuz`, initramfs, UKI 또는 모듈 트리를 직접 삭제하지 마십시오. 현재 실행 중이지 않더라도 파일 하나가 부팅 가능한 유일한 복구 항목일 수 있습니다.
+
+## 요약
+
+이제 커널 패키지를 부팅 및 모듈 결과물과 연결할 수 있습니다.
+
+1. 실제 `/boot` 및 EFI 관련 마운트를 검사합니다.
+2. 커널 이미지, initramfs, 설정 및 심볼 맵을 구분합니다.
+3. 모듈 트리를 정확한 커널 릴리스와 일치시킵니다.
+4. 통합 커널 이미지와 배포판별 레이아웃을 고려합니다.
+5. 검증된 패키지 및 대체 커널 계획을 통해서만 부트 공간을 회수합니다.

@@ -1,53 +1,72 @@
 ---
-index: 1
+lesson_id: "icmp"
+course_id: "troubleshooting"
 lang: "ja"
+order_index: 1
 title: "ICMP"
+description: "ICMP が IP のエラーを通知し、診断を支援し、IPv4 と IPv6 の重要な動作を実現する仕組みを学びます。"
 meta_title: "ICMP - トラブルシューティング"
 meta_description: "この Linux チュートリアルでは、ICMP プロトコルを解説し、Linux ネットワーキングを学ぶのに役立ちます。効果的なネットワークトラブルシューティングのために、ICMP メッセージタイプとコードを理解しましょう。"
 meta_keywords: "ICMP, ICMP プロトコル，ネットワークトラブルシューティング，ICMP タイプ，Linux ネットワーキング，Linux 学習，Linux チュートリアル，labex linux, 初心者，ガイド"
 ---
 
-## Lesson Content
+Internet Control Message Protocol（ICMP）は、IP とともに制御、エラー、診断の情報を運びます。IPv4 用の ICMP と ICMPv6 は関連していますが、メッセージタイプの番号や責務が異なる別々のプロトコルです。
 
-Internet Control Message Protocol (ICMP) は、TCP/IP プロトコルスイートの基本的な部分です。これは、システム間でデータを交換するためではなく、エラーを報告したり、運用情報を提供したりするために使用されます。Linux ネットワーク管理を`learn linux`しようとする人にとって、ICMP を理解することは、パケット配信の失敗などのネットワーク問題のデバッグに不可欠です。
+## タイプ、コード、チェックサム
 
-### ICMP メッセージの構造
+ICMP メッセージにはタイプ、必要に応じてさらに詳しいコード、そしてチェックサムがあります。エラーメッセージには通常、送信側がエラーを通信フローと対応付けられるよう、原因となったパケットの一部が含まれます。
 
-すべての ICMP メッセージには、タイプ、コード、チェックサムを含む標準化された構造があります。
+:::single-choice{#icmp-code-purpose}
+ICMP のコードは何を示しますか？
 
-- **タイプ**: このフィールドは、ICMP メッセージの一般的なカテゴリを示します。たとえば、メッセージがエラーレポートか情報クエリかを指定します。
-- **コード**: このフィールドは、メッセージタイプに関するより具体的な情報を提供します。たとえば、タイプが「宛先到達不能」の場合、コードはその到達不能の理由を指定します。
-- **チェックサム**: これはメッセージの整合性を検証するために使用され、送信中に破損していないことを保証します。
+::option[報告元ルーターの永続的な DNS 名。]{#icmp-code-dns explanation="このフィールドは名前解決を目的として符号化されるものではありません。"}
+::option[ICMP メッセージタイプの中で、より具体的な意味。]{#icmp-code-specific .correct explanation="たとえば Destination Unreachable のコードは、複数の失敗理由を区別します。"}
+::option[過去に送られた全パケットの完全なペイロード。]{#icmp-code-all-payload explanation="エラーに引用されるのは、プロトコル規則に従って原因パケットを識別するのに十分な部分だけです。"}
+:::
 
-この構造により、ICMP は強力な診断ツールとなり、この`linux tutorial`は、その実際的な応用を理解するのに役立ちます。
+## Echo とエラーメッセージ
 
-### 一般的な ICMP タイプ
+ICMPv4 では Echo Request がタイプ 8、Echo Reply がタイプ 0 です。Destination Unreachable はタイプ 3、Time Exceeded はタイプ 11 です。ICMPv6 では異なるタイプ番号を使うため、キャプチャを解釈する前に必ずアドレスファミリーを特定してください。
 
-多くの ICMP タイプがありますが、日常的なネットワークトラブルシューティングで特に一般的なものがいくつかあります。
+:::single-choice{#icmpv4-echo-request-type}
+ICMPv4 の Echo Request のタイプ番号はどれですか？
 
-- **タイプ 8 - エコー要求**: このメッセージは、ターゲットホストへの接続を確認するために`ping`コマンドによって送信されます。
-- **タイプ 0 - エコー応答**: ターゲットホストが到達可能であれば、エコー要求に応答してエコー応答を返し、接続を確立できることを確認します。
-- **タイプ 3 - 宛先到達不能**: パケットが最終宛先に配信できない場合、ルーターまたはホストはこのメッセージを送信します。特定の理由を提供する 16 種類の異なるコード値があり、次のようなものがあります。
-  - コード 0: ネットワーク到達不能
-  - コード 1: ホスト到達不能
-- **タイプ 11 - 時間超過**: このメッセージは、パケットの生存時間 (TTL) 値が宛先に到達する前にゼロになったときに生成されます。これはルーティングループで頻繁に発生し、ネットワークパスをマッピングするために`traceroute`コマンドによって使用されます。
+::option[0]{#icmp-type-zero explanation="タイプ 0 は ICMPv4 の Echo Reply です。"}
+::option[11]{#icmp-type-eleven explanation="タイプ 11 は ICMPv4 の Time Exceeded です。"}
+::option[8]{#icmp-type-eight .correct explanation="ping は一般に、この ICMPv4 メッセージを送って Echo 応答を要求します。"}
+:::
 
-これらのメッセージは、`labex linux terminal`で利用可能な一般的なネットワークトラブルシューティングツールを調べるにつれて、より馴染み深いものになるでしょう。
+## Path MTU と不可欠な ICMP
 
-## Exercise
+ICMP は、単なる任意の ping トラフィックではありません。IPv4 の fragmentation needed エラーと ICMPv6 の Packet Too Big メッセージは、Path MTU Discovery を支えます。ICMPv6 は Neighbor Discovery と Router Advertisement も運びます。そのため、ICMP をすべて遮断するとブラックホールが生じ、IPv6 の動作が壊れる場合があります。
 
-練習あるのみです！ICMP とネットワークトラブルシューティングの理解を深めるための実践的なラボを次に示します。
+一律に遮断するのではなく、必要なタイプ、方向、レート、スコープに基づいてフィルタリングしてください。一部の ICMP は攻撃者が偽装できるため、引用されたパケットの文脈を検証し、ローカルルートやキャプチャとも照合します。
 
-1. **[Linux における ping と arp を使用したネットワーク層の相互作用の探求](https://labex.io/ja/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - `ping`を使用して、ネットワーク層とデータリンク層がどのように相互作用するかを探り、接続テストにおける ICMP の機能に関連する概念を直接適用します。
-2. **[Linux における IP アドレスタイプと到達可能性の探求](https://labex.io/ja/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - `ping`を使用してネットワーク到達可能性をテストし、接続の問題を診断する練習を行い、ICMP メッセージの実用的な適用を強化します。
-3. **[Linux におけるネットワーク層接続のシミュレーション](https://labex.io/ja/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - シミュレーション環境で IP アドレスを割り当て、`ping`で接続をテストする方法を学び、ネットワーク構成がパケット配信にどのように影響するかを理解するのに役立ちます。
+:::single-choice{#icmp-block-all-risk}
+ICMP をすべて遮断すると、正当な通信が壊れる可能性があるのはなぜですか？
 
-これらのラボは、ICMP とネットワーク診断の概念を実際のシナリオに適用し、ネットワーク問題のトラブルシューティングに対する自信を築くのに役立ちます。
+::option[すべての HTTP 応答が ICMP Echo Reply 内で運ばれるから。]{#icmp-http-echo explanation="HTTP は通常、ICMP Echo ではなく TCP または QUIC を使います。"}
+::option[ICMP に全アプリケーションのパスワードが保存されるから。]{#icmp-passwords explanation="ICMP は認証情報データベースではありません。"}
+::option[ICMP が Path MTU と IPv6 に必要な制御情報を運ぶから。]{#icmp-essential-control .correct explanation="これらのメッセージを抑止すると、適切なパケットサイズの決定や、近隣・ルーターの検出ができなくなる場合があります。"}
+:::
 
-## Quiz Question
+## 応答がない場合の解釈
 
-エコー要求の ICMP タイプは何ですか？数値のみで回答してください。
+ICMP 応答がない原因には、フィルタリング、レート制限、非対称ルーティング、戻り経路の欠落、ホスト停止、そのメッセージに単に応答しない機器などがあります。反対に、ICMP エラーは最終宛先ではなく、中継機器が生成することもあります。
 
-## Quiz Answer
+:::single-choice{#icmp-silence-meaning}
+Echo Reply がないという事実だけから、何が証明できますか？
 
-8
+::option[対象アプリケーションが確実に停止している。]{#icmp-silence-app-down explanation="Echo トラフィックが遮断または無視されていても、サービスは動作している場合があります。"}
+::option[宛先ホスト名が DNS から削除されている。]{#icmp-silence-dns-deleted explanation="数値アドレスへの試行は、DNS とは無関係に無応答になることがあります。"}
+::option[観測した Echo のやり取りで応答が得られなかったことだけ。]{#icmp-silence-limited .correct explanation="原因の特定には、経路、トランスポート、アプリケーション、キャプチャの追加証拠が必要です。"}
+:::
+
+## まとめ
+
+これで、ICMP を二択の接続判定ではなく、制御に関する証拠として解釈できます。
+
+1. 正しい IP ファミリーのタイプとコードを読む。
+2. Echo、Unreachable、Time Exceeded の役割を識別する。
+3. Path MTU と IPv6 の動作に必要な ICMP を維持する。
+4. エラーや無応答を、ほかの経路情報と照合する。

@@ -1,67 +1,72 @@
 ---
-index: 3
+lesson_id: "tcp-ip-model"
+course_id: "network-basics"
 lang: "zh"
+order_index: 3
 title: "TCP/IP 模型"
+description: "学习 TCP/IP 模型中的应用层、传输层、网际层和链路层如何协同工作。"
 meta_title: "TCP/IP 模型 - 网络基础"
-meta_description: "探索 TCP/IP 模型中的基本层次，这是现代网络技术的基石。了解应用层、传输层、网络层和链路层，以有效利用 TCP/IP 进行网络通信。"
-meta_keywords: "TCP/IP 模型，tcp ip 模型中的层次，使用 tcp ip 进行网络，tcp 协议的层次，网络层，TCP, IP, Linux 网络，真实世界协议项目"
+meta_description: "探索现代网络基础 TCP/IP 模型中的各个层次。了解应用层、传输层、网络层和链路层，以便有效使用 TCP/IP 进行联网。"
+meta_keywords: "TCP/IP 模型, TCP/IP 模型层次, TCP/IP 网络, TCP 协议层次, 网络层次, TCP, IP, Linux 网络, 实际协议项目"
 ---
 
-## Lesson Content
+TCP/IP 模型将互联网主机使用的协议划分为不同功能层。常见的四层形式包括应用层、传输层、网际层和链路层。有些教学模型会将物理介质与链路层分开，因此呈现五层。
 
-理论上的 OSI 模型催生了最终成为 TCP/IP 模型的模型，后者是互联网赖以建立的实际基础。它代表了网络实现的实际情况。TCP/IP 模型利用了我们通常所说的 TCP/IP 的 TCP/IP 协议套件。有效的**TCP/IP网络**取决于这些协议，它们协同工作，规定了数据应如何被收集、寻址、传输和路由。通过研究**TCP/IP模型中的层次**，我们可以了解数据包如何在网络中传输。
+## 应用层
 
-### TCP/IP模型的四个层次
+应用层协议为 HTTP、DNS、SSH 和 SMTP 等服务定义消息与行为。该层还包含许多在 OSI 模型中单独讨论的表示层和会话层职责。
 
-该模型分为四个不同的层次，每个层次都有特定的功能。理解这些层次对于任何**真实世界协议项目**或网络故障排除任务都至关重要。
+:::single-choice{#tcpip-http-layer}
+HTTP 通常归入 TCP/IP 的哪一层？
 
-### 应用层
+::option[网际层。]{#tcpip-http-internet explanation="网际层处理 IP 寻址和数据包转发。"}
+::option[链路层。]{#tcpip-http-link explanation="链路层在本地介质上传输流量。"}
+::option[应用层。]{#tcpip-http-application .correct explanation="HTTP 定义应用程序请求和响应语义。"}
+:::
 
-这是 TCP/IP 模型的最高层，用户面向的应用和网络服务位于此。它决定了诸如您的网页浏览器或电子邮件客户端等程序如何与传输层服务接口以发送和接收数据。
+## 传输层
 
-该层使用以下协议：
+传输层协议提供应用程序端点之间的通信。TCP 提供具有拥塞控制和流量控制的可靠有序字节流。UDP 提供独立数据报，不具备 TCP 的连接、排序或重传保证。端口号有助于标识传输端点，但仅凭端口号不能证明哪个应用程序正在监听。
 
-- HTTP（超文本传输协议）：万维网数据通信的基础。
-- SMTP（简单邮件传输协议）：用于发送电子邮件。
+:::single-choice{#tcpip-udp-property}
+哪项属性属于 UDP 而不是 TCP？
 
-### 传输层
+::option[独立数据报，且没有内置重传保证。]{#tcpip-udp-datagrams .correct explanation="使用 UDP 的应用程序自行决定是否以及如何增加可靠性。"}
+::option[保证一个字节流按顺序送达。]{#tcpip-udp-ordered explanation="这是 TCP 的服务属性，前提是连接成功。"}
+::option[在不同 IP 网络之间路由数据包。]{#tcpip-udp-routing explanation="网络间路由属于网际层功能。"}
+:::
 
-传输层负责端到端通信和数据完整性。它确定数据如何传输、管理端口号，并确保数据包可靠地交付。**TCP 协议的层次**在此处最为突出。
+## 网际层
 
-该层主要使用：
+互联网协议使用源 IP 地址和目标 IP 地址承载数据包。路由器在向目标转发数据包时检查路由信息并递减跳数限制。ICMP 为 IP 操作传递控制和错误信息。传送仍然是尽力而为；所需的恢复由更高层或应用程序处理。
 
-- TCP（传输控制协议）：提供可靠、有序和经过错误检查的数据流传输。它是面向连接的。
-- UDP（用户数据报协议）：提供一种更快速、无连接的数据传输方式，由于不保证交付或顺序，因此被认为是不可靠的。
+:::single-choice{#tcpip-router-layer}
+哪一层提供路由器使用的 IP 目标地址？
 
-### 网络层
+::option[网际层。]{#tcpip-router-internet .correct explanation="IP 标头包含用于路由转发的网络层目标。"}
+::option[应用层。]{#tcpip-router-application explanation="应用程序消息承载在较低层协议数据中。"}
+::option[链路层。]{#tcpip-router-link explanation="链路地址选择下一条本地跳点帧的目标。"}
+:::
 
-该层，也称为互联网层，规定了数据包如何在主机之间以及跨不同网络移动。其主要工作是寻址和路由。在此层分配的 IP 地址是一个设备在网络上身份的基础，这与**IP 归属含义**（即它属于特定网络的一部分）的概念相关。
+## 链路层与封装
 
-该层使用以下协议：
+链路层使用以太网、Wi-Fi、点对点协议或其他技术，在一条本地链路上传送 IP 数据包。应用程序数据向下移动时，每一层都会添加其作用范围所需的信息。在接收端，各层验证并移除自己的封装，再将数据向上传递。
 
-- IP（互联网协议）：将数据包从源机器路由到目标机器。
-- ICMP（互联网控制消息协议）：用于发送错误消息和操作信息，例如使用 `ping` 命令。
+链路标头通常会在每个路由跳点改变；除非中间设备终止或转换通信，否则传输层和应用层会话是端到端的。
 
-### 链路层
+:::single-choice{#tcpip-link-scope}
+链路层帧的正常作用范围是什么？
 
-也称为网络接口层，该层规定了如何通过物理硬件发送数据。它处理数据包在本地网络段上的传输，例如通过以太网、Wi-Fi 或光纤电缆。
+::option[一条本地链路或一跳。]{#tcpip-one-link .correct explanation="路由器移除传入帧，并为下一条链路创建新帧。"}
+::option[全球互联网上的每个应用程序会话。]{#tcpip-global-frame explanation="帧不会原封不动地跨越经过路由的网络。"}
+::option[仅限源进程的内存。]{#tcpip-process-memory explanation="帧会通过网络链路传输。"}
+:::
 
-上述协议列表并非详尽无遗，您还会遇到许多其他协议。在接下来的课程中，我们将深入研究这些层次中的每一个，以从 TCP/IP 模型的角度了解数据包如何遍历网络。
+## 总结
 
-## Exercise
+现在，你可以将常见互联网功能放到 TCP/IP 模型的对应层次。
 
-实践造就完美！以下是一些实践实验，以加强您对 TCP/IP 模型和网络基础知识的理解：
-
-1. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 使用 `ip a` 命令练习识别关键网络寻址信息，如 MAC 地址和 IP 地址，这是理解 TCP/IP 模型的网络层和数据链路层的基础。
-2. **[在 Linux 中探索网络层与 ping 和 arp 的交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 学习 `ping` 和 `arp` 命令如何演示网络层和数据链路层之间的交互，从而对设备如何在 TCP/IP 堆栈内进行通信提供实际见解。
-3. **[在 Linux 中模拟网络层连通性](https://labex.io/zh/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - 获得动手经验，模拟 Linux 节点之间的网络连通性，分配 IP 地址并测试通信，直接应用与 TCP/IP 模型网络层相关的概念。
-
-这些实验将帮助您在实际场景中应用 TCP/IP 模型的概念，并建立网络配置和故障排除的信心。
-
-## Quiz Question
-
-TCP/IP模型的最高层是什么？ (请用英语回答。注意答案区分大小写。)
-
-## Quiz Answer
-
-Application
+1. 将服务协议与应用层相关联。
+2. 区分 TCP 字节流与 UDP 数据报。
+3. 将 IP 寻址和路由归入网际层。
+4. 将链路帧视为本地跳点的封装。

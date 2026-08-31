@@ -1,32 +1,39 @@
 ---
-index: 17
+lesson_id: "whatis-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 17
 title: "whatis"
+description: "Aprenda a obter descrições concisas das páginas de manual e interpretar seus números de seção."
 meta_title: "whatis - Linha de Comando"
-meta_description: "Aprenda o comando Linux whatis com exemplos para obter descrições de comandos em uma linha a partir das páginas man e entender múltiplas seções do manual."
-meta_keywords: "comando whatis, linux whatis, descrição de comando linux, resumo página man, ajuda linha de comando, apropos"
+meta_description: "Aprenda o comando whatis do Linux com exemplos para obter descrições de uma linha das páginas man e entender várias seções do manual."
+meta_keywords: "comando whatis, whatis Linux, descrição de comando Linux, resumo página man, ajuda linha de comando, apropos"
 ---
 
-## Lesson Content
+Quando você reconhece o nome de um comando, mas esquece sua finalidade, `whatis` pode fornecer um breve lembrete com base no banco de dados das páginas de manual.
 
-Ao explorar a linha de comando do Linux, você encontrará uma grande quantidade de comandos. É natural esquecer o que um comando específico faz. Felizmente, existe uma utilidade simples para ajudar você.
+## Consulta de um Nome Exato
 
-### O que é o comando whatis
-
-O comando `whatis` exibe uma descrição concisa, em uma linha, de um comando diretamente da sua página de manual. É uma forma rápida de lembrar a função principal de um comando sem precisar ler toda a página man.
-
-### Como usar o comando whatis
-
-Usar o `whatis` é simples. Digite `whatis` seguido do comando sobre o qual você quer saber.
+Forneça um ou mais nomes exatos de tópicos a `whatis`. Cada resultado deriva da seção `NAME` registrada em uma página de manual instalada:
 
 ```bash
 $ whatis cat
 cat (1)              - concatenate files and print on the standard output
 ```
 
-### Entendendo a saída
+A saída é uma descrição, não uma lista de opções ou exemplos do comando. Use `man cat` ou `cat --help` quando precisar de mais detalhes.
 
-A descrição fornecida pelo `whatis` vem da seção `NAME` da página de manual do comando. Se um nome tiver múltiplas páginas man em seções diferentes, o `whatis` pode exibir mais de uma linha.
+:::single-choice{#describe-known-command}
+Você conhece o nome `cat` e quer sua descrição de uma linha na página de manual. Qual comando deve executar?
+
+::option[`man cat`]{#manual-cat explanation="`man cat` abre a página de manual completa. Ele fornece mais do que o lembrete de uma linha solicitado."}
+::option[`apropos cat`]{#apropos-cat explanation="`apropos` pesquisa descrições por uma palavra-chave e pode retornar muitos tópicos relacionados. Ele é mais abrangente que uma consulta por nome exato."}
+::option[`whatis cat`]{#whatis-cat .correct explanation="`whatis` consulta o nome exato do tópico e mostra sua descrição concisa no banco de dados do manual."}
+:::
+
+## Leitura dos Números de Seção
+
+Se o mesmo tópico tiver páginas de manual em várias seções, `whatis` poderá mostrar mais de um resultado:
 
 ```bash
 $ whatis passwd
@@ -34,13 +41,21 @@ passwd (1)           - change user password
 passwd (5)           - the password file
 ```
 
-O número entre parênteses é a seção da página man.
+O número entre parênteses é a seção do manual. Aqui, `passwd(1)` descreve o comando de usuário, e `passwd(5)` descreve um formato de arquivo. Você pode abrir uma delas explicitamente com `man 1 passwd` ou `man 5 passwd`.
 
-### Whatis vs Man vs Apropos
+:::single-choice{#interpret-whatis-section}
+Na saída `passwd (5) - the password file`, o que `(5)` identifica?
 
-- `whatis ls`: Mostra uma descrição em uma linha para um nome exato de comando.
-- `man ls`: Abre a página de manual completa.
-- `apropos palavra-chave`: Pesquisa descrições das páginas man por uma palavra-chave.
+::option[A quinta opção aceita pelo comando `passwd`.]{#fifth-option explanation="O número não é a posição de uma opção. As opções são documentadas dentro da página de manual selecionada."}
+::option[A seção do manual que contém a página do formato de arquivo.]{#section-five .correct explanation="A seção 5 é usada para formatos e convenções de arquivos; portanto, `passwd(5)` se refere a essa seção."}
+::option[Cinco páginas de manual que compartilham o nome `passwd`.]{#five-pages explanation="Podem existir vários resultados, mas o valor entre parênteses identifica uma seção, não a quantidade de páginas."}
+:::
+
+## Escolha entre whatis, man e apropos
+
+- `whatis NAME`: mostra descrições concisas de um nome exato de tópico do manual.
+- `man NAME`: abre uma página de manual completa.
+- `apropos KEYWORD`: pesquisa uma palavra-chave nos nomes e nas descrições das páginas.
 
 Por exemplo:
 
@@ -48,30 +63,33 @@ Por exemplo:
 $ apropos password
 ```
 
-Use `whatis` quando você souber o nome do comando, mas esqueceu o que ele faz.
+Use `apropos` quando conhecer a tarefa, mas não o nome do comando. Use `whatis` quando já souber o nome.
 
-### Perguntas Comuns
+:::single-choice{#search-by-purpose}
+Você não conhece o nome de um comando, mas quer pesquisar a palavra-chave `password` nas descrições dos manuais. Qual comando é adequado?
 
-**Por que o whatis diz "nothing appropriate"?** O comando pode não ter uma página man instalada, ou o banco de dados do man pode precisar ser atualizado.
+::option[`apropos password`]{#apropos-password .correct explanation="`apropos` pesquisa a palavra-chave nos nomes e nas descrições das páginas de manual, ajudando a descobrir tópicos relevantes."}
+::option[`whatis password`]{#exact-password explanation="`whatis` procura um tópico exato chamado `password`. Ele não é a interface geral de pesquisa por palavra-chave."}
+::option[`man password`]{#manual-password explanation="`man` tenta abrir uma página com esse nome de tópico. Ele não realiza a pesquisa solicitada nas descrições."}
+:::
 
-**O whatis mostra opções do comando?** Não. Use `man COMANDO` ou `COMANDO --help` para opções.
+## Quando Nenhuma Descrição Aparece
 
-**O whatis é igual ao which?** Não. `whatis` descreve um comando. `which` mostra o caminho do executável.
+Se `whatis` informar que nada é apropriado, talvez o tópico não possua uma página de manual instalada ou o banco de dados esteja desatualizado. Esse resultado não comprova a inexistência de um executável, alias, função ou comando interno com esse nome. Use `type NAME` para descobrir como o Bash resolve o nome e então escolha a fonte de ajuda apropriada.
 
-## Exercise
+:::single-choice{#whatis-versus-type}
+`whatis deploy` não encontra uma descrição de manual. Qual comando verifica se o Bash resolve `deploy` como alias, função, comando interno ou executável?
 
-A prática leva à perfeição! Embora não exista um laboratório específico para o comando `whatis`, entender como encontrar informações sobre comandos e arquivos é crucial. Aqui estão alguns laboratórios práticos para reforçar seu entendimento sobre localização de comandos e arquivos no Linux:
+::option[`whatis -r deploy`]{#whatis-regex-deploy explanation="Alterar a consulta ao banco de manuais não mostra todos os aliases, funções, comandos internos e resoluções de caminho do Bash."}
+::option[`man 5 deploy`]{#manual-five-deploy explanation="Esse comando tenta abrir uma página da seção 5. Ele não determina como o Bash resolve o nome."}
+::option[`type deploy`]{#resolve-deploy .correct explanation="O `type` do Bash informa como o shell atual resolve um nome de comando, independentemente de existir uma descrição de manual instalada."}
+:::
 
-1. **[Comando Linux which: Localizando Comandos](https://labex.io/pt/labs/linux-linux-which-command-command-locating-215210)** - Pratique o uso do comando `which` para localizar arquivos executáveis e entender a prioridade dos comandos no PATH do seu sistema.
-2. **[Comando Linux whereis: Encontrando Arquivos e Comandos](https://labex.io/pt/labs/linux-linux-whereis-command-file-and-command-finding-215211)** - Aprenda a usar o `whereis` para encontrar o binário, código-fonte e páginas de manual dos comandos, aprofundando seu entendimento sobre a estrutura dos comandos.
-3. **[Descubra Recursos Críticos do Sistema](https://labex.io/pt/labs/linux-discover-critical-system-resources-388032)** - Este desafio combina `which`, `whereis` e `find` para ajudar você a navegar eficientemente pelo sistema de arquivos e descobrir recursos importantes do sistema.
+## Resumo
 
-Esses laboratórios ajudarão você a aplicar os conceitos de descoberta de comandos e arquivos em cenários reais e a ganhar confiança com utilitários essenciais do Linux.
+Agora você sabe obter e interpretar descrições concisas no banco de dados dos manuais.
 
-## Quiz Question
-
-Qual comando você pode usar para ver uma pequena descrição de um comando? Por favor, responda em inglês, prestando atenção às letras minúsculas.
-
-## Quiz Answer
-
-whatis
+1. Consulte um tópico exato com `whatis`.
+2. Leia a seção do manual mostrada entre parênteses.
+3. Use `man` quando precisar da página completa.
+4. Use `apropos` quando conhecer uma palavra-chave, mas não o nome.

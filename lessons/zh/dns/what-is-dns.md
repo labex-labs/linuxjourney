@@ -1,44 +1,72 @@
 ---
-index: 1
+lesson_id: "what-is-dns"
+course_id: "dns"
 lang: "zh"
+order_index: 1
 title: "什么是 DNS？"
-meta_title: "什么是 DNS？- DNS"
-meta_description: "如果你想学习 Linux 网络知识，理解 DNS 至关重要。本指南解释了什么是域名系统 (DNS)，它如何将域名翻译成 IP 地址，以及为什么它是互联网的基本地址簿。对于任何想学习 Linux 的人来说，这是一个完美的起点。"
-meta_keywords: "DNS, 域名系统，IP 地址，学习 Linux, Linux 学习，主机名，Linux 网络，初学者，教程，指南，labex linux"
+description: "了解 DNS 如何组织和解析分布式名称及不同类型的资源记录。"
+meta_title: "什么是 DNS？ - DNS"
+meta_description: "要学习 Linux 网络，理解 DNS 至关重要。本指南介绍域名系统（DNS）是什么、它如何将域名解析为 IP 地址，以及为何它是互联网不可或缺的地址簿。非常适合作为 Linux 学习的起点。"
+meta_keywords: "DNS, 域名系统, IP 地址, 学习 Linux, Linux 学习, 主机名, Linux 网络, 初学者, 教程, 指南, LabEx Linux"
 ---
 
-## Lesson Content
+域名系统（DNS）是一个分布式、分层的数据库与查询协议。客户端可以用它获取与名称关联的类型化信息，包括地址、邮件路由、权威服务器、服务数据和验证记录。
 
-### 互联网的电话簿
+## 名称与资源记录
 
-想象一下，如果每次你想访问谷歌时，都必须输入 `http://192.78.12.4` 而不是 `www.google.com`。没有域名系统（DNS），互联网就会是这个样子。底层网络协议只能识别数字 IP 地址来标识主机。DNS 允许我们人类使用易于记忆的名称来代替一长串数字来访问网站和服务器。把它想象成互联网的联系人列表：你查找一个名称以找到相应的数字。
+DNS 所做的不只是把一个主机名转换为一个 IP 地址。`A` 记录保存 IPv4 地址，`AAAA` 记录保存 IPv6 地址，`MX` 记录保存邮件路由数据，`NS` 记录保存权威服务器名称，还有许多其他记录类型承载不同的数据。一个名称可以拥有多条记录，也可能根本没有地址记录。
 
-### DNS 的工作原理
+:::single-choice{#dns-purpose-beyond-address}
+为什么说 DNS 不只是主机名到地址的列表？
 
-从本质上讲，DNS 将人类可读的主机名（如 `www.google.com`）转换为机器可读的 IP 地址（如 `192.78.12.4`）。这个过程称为解析。当你在浏览器中输入域名时，你的计算机向 DNS 服务器发送一个查询，该服务器查找正确的 IP 地址并将其发送回来，从而允许你的浏览器连接到网站的服务器。
+::option[它会为每个以太网帧永久分配 MAC 地址。]{#dns-mac-frames explanation="链路层邻居发现并不以这种方式使用 DNS。"}
+::option[它存储多种服务与委派数据所需的类型化记录。]{#dns-typed-records .correct explanation="地址、邮件、权威、别名以及策略相关记录各有不同语义。"}
+::option[它保证每个具名应用程序都处于健康状态。]{#dns-health-guarantee explanation="即使目标服务不可用，DNS 数据仍可能成功解析。"}
+:::
 
-### 分布式全球系统
+## 分层名称
 
-DNS 不是一个单一的中央数据库。相反，它是一个庞大、分布式的系统。网站所有者管理自己的 DNS 记录，以告知世界如何找到他们的域名。这些单独的域相互通信，形成了覆盖整个互联网的庞大互联目录。这种去中心化的结构使系统具有极强的弹性和可扩展性。
+完全限定域名（FQDN）标识 DNS 树中的一条路径。在 `www.example.com.` 中，末尾的点表示根，`com` 位于根之下，`example` 位于 `com` 之下，而 `www` 是该域中的一个名称。用户界面通常省略末尾的点，但在配置中区分绝对名称和相对于本地域的名称时，这个点很重要。
 
-### 为什么你应该学习 Linux DNS
+:::single-choice{#dns-trailing-dot}
+`www.example.com.` 末尾的点表示什么？
 
-如果你想学习 **Linux** 用于系统管理或 Web 开发，了解 DNS 至关重要。配置、管理和排除 DNS 故障的能力是一项基本技能。本课程将介绍基础知识，但请注意，DNS 是一个深入而复杂的主题。要真正掌握它，你需要进行额外的研究和练习。这是你开始 **linux learn** 之旅的绝佳第一步。
+::option[DNS 根和一个绝对名称。]{#dns-root-dot .correct explanation="这个点结束了从具名节点到根的完整路径。"}
+::option[匹配所有顶级域的通配符。]{#dns-dot-wildcard explanation="通配符使用 `*` 之类的标签，而不是根终止符。"}
+::option[仅使用 IPv4 的指令。]{#dns-dot-ipv4 explanation="请求的地址族由记录类型控制。"}
+:::
 
-## Exercise
+## 分布式权威
 
-熟能生巧！以下是一些实践实验，以加强你对 DNS 和主机名解析的理解。使用 **labex linux 终端** 进行这些练习是获得实践经验的好方法。
+DNS 权威沿层级向下委派。根服务器将解析器引向顶级域服务器，顶级域服务器再将其引向受委派区域的权威服务器。各组织可以管理自己的权威数据，而无须由一台中央服务器存储整个全球命名空间。
 
-1. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用 `dig` 和 `nslookup` 等基本的 Linux 工具来查询各种 DNS 记录类型，帮助你了解主机名是如何解析为 IP 地址的。
-2. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 练习编辑 `/etc/hosts` 文件以管理本地主机名解析，这是一项基本技能，用于控制 Linux 系统如何在不依赖外部 DNS 服务器的情况下解析名称。
-3. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - 通过使用 `bind9` 设置和配置你自己的本地权威 DNS 服务器来获得实践经验，使你能够深入了解 DNS 区域和记录的管理方式。
+:::single-choice{#dns-authoritative-data}
+谁为一个受委派的 DNS 区域提供最终数据？
 
-这些实验将帮助你在真实场景中应用这些概念，并在 Linux 环境中建立对 DNS 和主机名解析的信心。
+::option[任何曾经访问过该站点的浏览器。]{#dns-browser-authority explanation="浏览器缓存并不是该区域的权威来源。"}
+::option[该区域配置的权威名称服务器。]{#dns-authoritative-servers .correct explanation="委派指定了负责提供权威回答的服务器。"}
+::option[将数据包转发到该地址的每一台路由器。]{#dns-router-authority explanation="数据包转发与 DNS 权威是彼此独立的角色。"}
+:::
 
-## Quiz Question
+## 解析与缓存
 
-True or false: DNS helps us find MAC addresses for hostnames?
+主机的存根解析器通常把查询发送给递归解析器。递归解析器可以使用仍然有效的缓存作答，或代表客户端查询 DNS 层级。记录的 TTL 限制了缓存条目通常可以复用的时长，这提高了系统的可扩展性，却也会使变更在缓存刷新前无法立即显现。
 
-## Quiz Answer
+DNS 成功并不能证明路由、传输、TLS 或应用程序处于正常状态。DNS 失败也可能在任何外部查询发生前出现，因为 `/etc/hosts`、搜索后缀、本地缓存和名称服务策略都会影响系统解析器。
 
-False
+:::single-choice{#dns-cache-ttl-role}
+DNS 记录的 TTL 主要控制什么？
+
+::option[IP 数据包可以经过多少台路由器。]{#dns-ip-hop-limit explanation="IP TTL 或 Hop Limit 是另一个协议字段。"}
+::option[应用程序必须保持健康多长时间。]{#dns-app-health-time explanation="DNS 缓存不提供任何服务可用性保证。"}
+::option[解析器在正常规则下可以缓存该记录多长时间。]{#dns-cache-lifetime .correct explanation="缓存时间缩短或延长会影响查询负载与变更传播。"}
+:::
+
+## 总结
+
+现在，你可以把 DNS 描述为一个类型化、带缓存且分层的数据系统。
+
+1. 按用途区分 DNS 资源记录类型。
+2. 从根开始向下解读完全限定域名。
+3. 识别委派关系与权威责任。
+4. 将名称解析与应用程序连接能力区分开来。

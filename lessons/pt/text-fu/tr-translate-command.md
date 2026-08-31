@@ -1,15 +1,16 @@
 ---
-index: 13
+lesson_id: "tr-translate-command"
+course_id: "text-fu"
 lang: "pt"
+order_index: 13
 title: "tr (Traduzir)"
+description: "Aprenda a traduzir, excluir e agrupar conjuntos de caracteres em um fluxo de entrada padrão."
 meta_title: "tr (Traduzir) - Text-Fu"
-meta_description: "Aprenda o comando Linux tr com exemplos para traduzir caracteres, deletar caracteres, comprimir repetições, usar classes de caracteres e limpar texto."
-meta_keywords: "comando linux tr, comando tr, tr -d, tr -s, traduzir caracteres, deletar caracteres, classes de caracteres, processamento de texto linux"
+meta_description: "Aprenda o comando tr do Linux com exemplos para traduzir, excluir e agrupar caracteres repetidos, usar classes e limpar textos."
+meta_keywords: "comando tr Linux, tr -d, tr -s, traduzir caracteres, excluir caracteres, classes caracteres, processamento texto Linux"
 ---
 
-## Lesson Content
-
-O comando `tr`, abreviação de translate (traduzir), é uma ferramenta de linha de comando que traduz, deleta ou comprime caracteres da entrada padrão. É útil para manipulação simples de texto e frequentemente usado com pipes para processar a saída de outros comandos.
+O comando `tr`, abreviação de translate, traduz, exclui ou agrupa caracteres lidos de stdin. Ele não aceita operandos comuns de arquivos de entrada; por isso, use um pipe ou redirecionamento de entrada para fornecer os dados.
 
 A sintaxe básica é:
 
@@ -17,18 +18,18 @@ A sintaxe básica é:
 tr [OPTIONS] SET1 [SET2]
 ```
 
-Ao contrário de ferramentas como `sed` ou `awk`, o `tr` trabalha caractere por caractere. Ele não entende palavras, colunas ou expressões regulares da mesma forma. Isso o torna rápido e simples para tarefas como mudar maiúsculas/minúsculas, remover dígitos e normalizar espaços repetidos.
+`tr` trabalha com conjuntos de caracteres, não com palavras nem expressões regulares gerais. Use outra ferramenta quando uma transformação depender de uma palavra completa, da estrutura da linha ou do contexto ao redor.
 
-### Tradução Básica de Caracteres
+## Tradução de Caracteres
 
-O uso mais comum do `tr` é substituir um conjunto de caracteres por outro. Por exemplo, você pode facilmente traduzir todos os caracteres minúsculos para maiúsculos.
+Com dois conjuntos, os caracteres de `SET1` são mapeados pela posição para os caracteres de `SET2`:
 
 ```bash
 $ echo "hello world" | tr a-z A-Z
 HELLO WORLD
 ```
 
-Neste exemplo, enviamos a saída do `echo` para o comando `tr`. O comando `tr` então traduziu o intervalo de caracteres `a-z` para os caracteres correspondentes no intervalo `A-Z`.
+Aqui, as posições do intervalo de letras minúsculas são mapeadas para as posições correspondentes em maiúsculas. Coloque as expressões dos conjuntos entre aspas para que o shell as forneça inalteradas.
 
 Você também pode traduzir um caractere para outro:
 
@@ -37,52 +38,66 @@ $ echo "2026-06-23" | tr '-' '/'
 2026/06/23
 ```
 
-Cada caractere em `SET1` corresponde ao caractere na mesma posição em `SET2`.
-
 ```bash
 $ echo "abc123" | tr 'abc' 'ABC'
 ABC123
 ```
 
-Aqui, `a` vira `A`, `b` vira `B` e `c` vira `C`.
+Os caracteres que não estão em `SET1` passam inalterados.
 
-### Deletando Caracteres com -d
+:::single-choice{#tr-map-characters}
+O que `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` mostra?
 
-Outra funcionalidade poderosa é a capacidade de deletar caracteres específicos usando a opção `-d`. Isso é particularmente útil para limpar texto. Por exemplo, se você quiser remover todos os dígitos de uma string, pode usar:
+::option[`ABCABC`]{#tr-uppercase-digits explanation="Os dígitos não pertencem ao conjunto de origem; portanto, `tr` não os substitui por letras."}
+::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Cada um de `a`, `b` e `c` é mapeado para o caractere na mesma posição em `ABC`; os dígitos permanecem iguais."}
+::option[`abc123ABC`]{#tr-append-set explanation="`tr` traduz os caracteres correspondentes da entrada. Ele não acrescenta o conjunto de destino ao fluxo."}
+:::
+
+## Exclusão de Caracteres
+
+Use `-d` com um conjunto para remover todos os caracteres correspondentes:
 
 ```bash
 $ echo "My address is 123 Main Street" | tr -d '0-9'
 My address is  Main Street
 ```
 
-Aqui, `tr -d` deletou todos os caracteres no conjunto especificado, de `0` a `9`.
+Cada dígito é removido independentemente; `tr` não identifica um número completo como token.
 
-Você pode remover pontuação de uma string usando uma classe de caracteres:
+Classes de caracteres podem descrever grupos definidos pelo locale atual:
 
 ```bash
 $ echo "Hello, world!" | tr -d '[:punct:]'
 Hello world
 ```
 
-Também é possível remover caracteres de nova linha para juntar linhas:
+Excluir novas linhas une as linhas da entrada sem inserir um separador:
 
 ```bash
 $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-### Comprimindo Caracteres Repetidos
+:::single-choice{#tr-delete-digits}
+Qual comando remove todos os dígitos de stdin e mantém os outros caracteres inalterados?
 
-O comando `tr` também pode "comprimir" caracteres repetidos em uma única ocorrência usando a opção `-s`. Isso é ótimo para normalizar texto com espaços extras.
+::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="A opção `-d` exclui do fluxo todos os caracteres da classe de dígitos."}
+::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="A opção `-s` agrupa dígitos repetidos, mas preserva um caractere de cada sequência."}
+::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Uma tradução normalmente exige um segundo conjunto. Um conjunto sozinho não solicita uma exclusão."}
+:::
+
+## Agrupamento de Caracteres Repetidos
+
+Use `-s SET` para substituir cada sequência de um caractere listado por uma única ocorrência:
 
 ```bash
 $ echo "Hello      World,   how   are   you?" | tr -s ' '
 Hello World, how are you?
 ```
 
-Neste caso, `tr -s ' '` substituiu sequências de múltiplos espaços por um único espaço, deixando a saída muito mais limpa.
+Esse conjunto contém um espaço comum; portanto, tabulações e novas linhas não são agrupadas pelo comando.
 
-Você pode comprimir novas linhas repetidas também:
+Também é possível agrupar novas linhas repetidas:
 
 ```bash
 $ printf "one\n\n\nTwo\n" | tr -s '\n'
@@ -90,42 +105,60 @@ one
 Two
 ```
 
-### Usando Classes de Caracteres
+:::single-choice{#tr-squeeze-spaces}
+Qual comando reduz cada sequência de espaços comuns em stdin a um único espaço?
 
-Classes de caracteres tornam os comandos `tr` mais fáceis de ler e mais portáveis. Classes comuns incluem:
+::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="A opção `-s` agrupa os membros repetidos do conjunto fornecido, que contém um espaço comum."}
+::option[`tr -d ' '`]{#tr-delete-space explanation="A opção `-d` remove todos os espaços comuns, em vez de preservar um por sequência."}
+::option[`tr ' ' ''`]{#tr-empty-destination explanation="Um conjunto de tradução vazio não é a forma clara e portável de solicitar o agrupamento. Use `-s` para caracteres repetidos."}
+:::
 
-- `[:lower:]`: Letras minúsculas.
-- `[:upper:]`: Letras maiúsculas.
-- `[:digit:]`: Dígitos.
-- `[:alpha:]`: Letras.
-- `[:alnum:]`: Letras e dígitos.
-- `[:space:]`: Caracteres de espaço em branco.
-- `[:punct:]`: Caracteres de pontuação.
+## Uso de Classes de Caracteres e Complementos
 
-Por exemplo, converta texto minúsculo para maiúsculo com classes de caracteres:
+Em muitos locales, as classes deixam a intenção mais clara que intervalos escritos à mão. Algumas classes comuns são:
+
+- `[:lower:]`: letras minúsculas.
+- `[:upper:]`: letras maiúsculas.
+- `[:digit:]`: dígitos.
+- `[:alpha:]`: letras.
+- `[:alnum:]`: letras e dígitos.
+- `[:space:]`: caracteres de espaço em branco.
+- `[:punct:]`: caracteres de pontuação.
+
+Por exemplo, converta um texto em minúsculas para maiúsculas usando classes:
 
 ```bash
 $ echo "linux journey" | tr '[:lower:]' '[:upper:]'
 LINUX JOURNEY
 ```
 
-Delete tudo exceto letras e dígitos usando `-c` com `-d`. A opção `-c` significa complemento, ou "tudo que não está neste conjunto."
+A opção `-c` complementa `SET1`, ou seja, representa todos os caracteres que não pertencem ao conjunto. Combine-a com `-d` para manter apenas determinados tipos:
 
 ```bash
 $ echo "user@example.com!" | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
-### Combinando Deletar e Comprimir
+Isso também remove a nova linha, pois ela não é alfanumérica. Acrescente ou preserve separadores conscientemente quando os limites dos registros forem importantes.
 
-Você pode combinar opções ao limpar texto. Este exemplo deleta pontuação, depois comprime espaços repetidos:
+:::single-choice{#tr-keep-alphanumeric}
+O que `tr -cd '[:alnum:]'` faz com stdin?
+
+::option[Exclui os caracteres alfanuméricos e mantém todo o restante.]{#tr-delete-alnum explanation="O complemento altera os caracteres que `-d` seleciona. O conjunto alfanumérico em si é preservado."}
+::option[Exclui todos os caracteres que não são alfanuméricos.]{#tr-delete-nonalnum .correct explanation="`-c` complementa o conjunto alfanumérico, e `-d` exclui o conjunto resultante de caracteres não alfanuméricos."}
+::option[Converte todas as letras e dígitos em maiúsculas.]{#tr-uppercase-alnum explanation="Não há um conjunto de tradução de destino; portanto, o comando não realiza conversão de maiúsculas."}
+:::
+
+## Criação de Transformações de Fluxo
+
+Vários processos `tr` podem ser conectados quando as transformações ficam mais claras como etapas separadas:
 
 ```bash
 $ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
-Para entrada separada por tabulações, você pode traduzir tabs em vírgulas:
+Para uma entrada simples separada por tabulações, traduza os caracteres de tabulação em vírgulas:
 
 ```bash
 $ printf "name\tlevel\npete\tbeginner\n" | tr '\t' ','
@@ -133,37 +166,32 @@ name,level
 pete,beginner
 ```
 
-### Opções Comuns do tr
+Como `tr` lê stdin, um arquivo pode ser fornecido com `<`:
 
-Aqui estão as opções que você usará com mais frequência:
+```bash
+$ tr '[:lower:]' '[:upper:]' < names.txt
+```
 
-- `-d`: Deleta caracteres em `SET1`.
-- `-s`: Comprime caracteres repetidos em `SET1`.
-- `-c`: Usa o complemento de `SET1`.
-- `-t`: Trunca `SET1` ao tamanho de `SET2` antes de traduzir.
+Redirecione stdout para outro arquivo se precisar salvar o resultado. Não a redirecione de volta ao caminho de entrada, pois o shell o truncaria antes que `tr` o lesse.
 
-### Perguntas Comuns
+:::single-choice{#tr-read-file-input}
+Qual comando faz `tr` ler `names.txt` como stdin e converter caracteres minúsculos em maiúsculos?
 
-**Por que o tr lê de um pipe?** O `tr` lê da entrada padrão, então é comumente usado após comandos como `echo`, `cat`, `printf` ou outros que produzem texto.
+::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` não recebe um nome de arquivo comum dessa forma; o operando extra torna a sintaxe inválida."}
+::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Essa forma lê o arquivo corretamente, mas exclui as letras minúsculas em vez de traduzi-las."}
+::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="O shell abre `names.txt` em stdin, e `tr` mapeia a classe de minúsculas para a de maiúsculas."}
+:::
 
-**O tr substitui palavras?** Não. O `tr` traduz caracteres, não palavras. Use `sed` quando precisar substituir palavras inteiras ou padrões.
+Para praticar transformações de fluxos no nível dos caracteres, experimente este laboratório:
 
-**Por que meu comando tr mudou caracteres um por um?** É assim que o `tr` funciona. Ele mapeia cada caractere em `SET1` para o caractere correspondente em `SET2`.
+1. **[Comando tr do Linux: Tradução de Caracteres](https://labex.io/labs/linux-linux-tr-command-character-translating-219198)** — Aprenda a usar o comando `tr` do Linux para transformar caracteres em fluxos de texto. Você praticará a tradução e a exclusão de caracteres específicos, o trabalho com classes de caracteres e o agrupamento de caracteres repetidos.
 
-**Por que devo colocar conjuntos como 'a-z' entre aspas?** Colocar entre aspas evita que o shell interprete caracteres especiais antes do `tr` recebê-los.
+## Resumo
 
-## Exercise
+Agora você sabe transformar fluxos de caracteres com operações específicas de `tr`.
 
-Para colocar seu conhecimento em prática, experimente o seguinte laboratório prático. Ele ajudará a reforçar seu entendimento sobre tradução de caracteres e processamento de texto.
-
-1. **[Comando Linux tr: Tradução de Caracteres](https://labex.io/pt/labs/linux-linux-tr-command-character-translating-219198)** - Aprenda o comando Linux `tr` para transformações a nível de caracteres em fluxos de texto. Você praticará traduzir caracteres, deletar caracteres específicos, trabalhar com classes de caracteres e comprimir caracteres repetidos.
-
-Este laboratório ajudará você a aplicar os conceitos de manipulação de texto em cenários reais e ganhar confiança com o comando `tr`.
-
-## Quiz Question
-
-Qual comando é usado para traduzir caracteres? (Por favor, responda apenas com letras minúsculas em inglês)
-
-## Quiz Answer
-
-tr
+1. Mapeie caracteres entre conjuntos correspondentes.
+2. Exclua caracteres selecionados com `-d`.
+3. Agrupe caracteres repetidos com `-s`.
+4. Use conscientemente classes dependentes do locale e complementos.
+5. Forneça a entrada por stdin, não como operando de nome de arquivo.

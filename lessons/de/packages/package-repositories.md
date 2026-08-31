@@ -1,48 +1,107 @@
 ---
-index: 2
+lesson_id: "package-repositories"
+course_id: "packages"
 lang: "de"
-title: "Paket-Repositories"
-meta_title: "Paket-Repositories - Pakete"
-meta_description: "Entdecken Sie Linux-Paket-Repositories und deren Rolle bei der Paketverwaltung. Erfahren Sie, wie Ihr System Quellen wie die Datei /etc/apt/sources.list nutzt, um Linux-Pakete zu finden und zu installieren."
-meta_keywords: "Linux Paket-Repositories, apt sources list, /etc/apt/sources.list, Linux Pakete, Anfänger Linux, Linux Tutorial, Paketverwaltung"
+order_index: 2
+title: "Paketquellen"
+description: "Erfahre, wie Paketquellen signierte Paketindizes veröffentlichen und wie APT konfigurierte Quellen der Debian-Familie findet."
+meta_title: "Paketquellen – Pakete"
+meta_description: "Erkunde Linux-Paketquellen und ihre Rolle in der Paketverwaltung. Erfahre, wie dein System Quellen wie die Datei /etc/apt/sources.list verwendet, um Linux-Pakete zu finden und zu installieren."
+meta_keywords: "Linux-Paketquellen, APT-Quellenliste, /etc/apt/sources.list, Linux-Pakete, Linux für Einsteiger, Linux-Tutorial, Paketverwaltung"
 ---
 
-## Lesson Content
+Eine Paketquelle veröffentlicht Pakete zusammen mit Indizes und Veröffentlichungsmetadaten. Eine Paketverwaltung lädt diese Indizes herunter, wählt Versionen aus, die mit der konfigurierten Distribution und Architektur kompatibel sind, überprüft die Authentifizierung der Paketquelle und ruft die benötigten Paketdateien ab.
 
-Wie gelangen die unzähligen online verfügbaren Linux-Pakete auf unsere Computer? Man könnte zwar die Download-Seite für jede einzelne Software besuchen, aber es gibt eine weitaus effizientere Lösung: Paket-Repositories.
+## Metadaten der Paketquelle und lokale Kataloge
 
-### Was ist ein Paket-Repository
+Eine Paketquelle ist mehr als ein Verzeichnis mit Archiven. Ihre Metadaten beschreiben verfügbare Paketnamen, Versionen, Architekturen, Prüfsummen, Abhängigkeiten und Bereiche der Paketquelle. Der Client speichert einen lokalen Katalog zwischen, damit er Pakete durchsuchen und auflösen kann, ohne zuerst jedes Archiv herunterzuladen.
 
-A repository (oder Paket-Archiv) ist ein zentraler Speicherort für Software. Diese Repositories, die auf Servern im gesamten Internet gehostet werden, enthalten kuratierte Sammlungen von Linux-Paketen und machen manuelle Downloads und Installationen überflüssig. Dieses System ist ein Eckpfeiler des modernen Linux-Paketmanagements und bietet eine optimierte und sichere Methode zur Verwaltung von Software.
+Aktualisiere die konfigurierten Metadaten auf einem System der Debian-Familie mit:
 
-### Wie Repositories funktionieren
+```bash
+$ sudo apt update
+```
 
-Der Paketmanager Ihres Systems muss wissen, wo es diese Repositories finden kann. Sie geben ihm einen Quell-Link, und er erledigt den Rest.
+Dies aktualisiert die lokalen Paketindizes; es installiert nicht von selbst alle verfügbaren Upgrades. Prüfe die gemeldeten Quellen und Authentifizierungsfehler, statt fehlgeschlagene Einträge zu ignorieren.
 
-Um beispielsweise Docker zu installieren, laden Sie es nicht direkt von deren Website herunter. Stattdessen konfigurieren Sie Ihren Paketmanager so, dass er das offizielle Repository von Docker verwendet, das unter einer URL wie `https://download.docker.com/linux/ubuntu` gehostet wird. Nach der Konfiguration kann Ihr System auf alle Pakete in diesem Repository zugreifen, wie z. B. `docker-ce`, `docker-ce-cli` und `containerd.io`.
+:::single-choice{#package-repositories-apt-update}
+Was aktualisiert `apt update` in erster Linie?
 
-### Konfigurieren von Repository-Quellen
+::option[Jede installierte Paketbinärdatei ohne Bestätigung.]{#package-repositories-all-binaries explanation="Die Installation von Upgrades ist ein getrennter Vorgang von der Aktualisierung der Metadaten."}
+::option[Die Passwörter von Benutzern, die Pakete installieren dürfen.]{#package-repositories-user-passwords explanation="Die Aktualisierung von Paketquellenindizes ändert keine lokalen Authentifizierungsdaten."}
+::option[Die lokalen Indizes, die verfügbare Pakete aus konfigurierten Quellen beschreiben.]{#package-repositories-local-indexes .correct explanation="APT lädt aktuelle Metadaten der Paketquellen herunter, damit spätere Suchen und die Abhängigkeitsauflösung einen aktuellen Katalog verwenden."}
+:::
 
-Ihre Linux-Distribution wird bereits mit einer Reihe von vorkonfigurierten Repositories für alle Basispakete Ihres Systems ausgeliefert. Bei Debian-basierten Systemen wie Ubuntu wird die primäre Konfiguration für diese Quellen über die `apt sources list` verwaltet.
+## Konfiguration von APT-Quellen
 
-Traditionell ist diese Liste eine einzige Datei: `/etc/apt/sources.list`. Der Paketmanager Ihres Rechners liest diese Datei, um zu erfahren, welche Repositories er nach verfügbarer Software und Updates durchsuchen soll.
+APT liest konfigurierte Quellen aus beiden folgenden Orten:
 
-Es ist auch üblich, neue Repository-Konfigurationen im Verzeichnis `/etc/apt/sources.list.d/` hinzuzufügen. Neuere Ubuntu-Versionen (ab 22.04) verwenden dieses Verzeichnis sogar standardmäßig und organisieren Quellen in strukturierten `.sources`-Dateien. Dieser Ansatz hält Repositories von Drittanbietern getrennt von den Standardquellen des Systems, was die Paketverwaltung sauberer und organisierter macht. Sowohl `/etc/apt/sources.list` als auch Dateien in `/etc/apt/sources.list.d/` werden vom `apt`-Paketmanager verwendet.
+- `/etc/apt/sources.list`
+- auf `.list` oder `.sources` endenden Dateien unter `/etc/apt/sources.list.d/`
 
-## Exercise
+Die Erweiterung `.list` verwendet das traditionelle einzeilige Format. Die Erweiterung `.sources` verwendet Abschnitte im deb822-Stil, die die aktuelle APT-Dokumentation für neue Konfigurationen empfiehlt. Eine Distribution kann ihre Standardquellen an beiden Orten ablegen. Daher enthält `/etc/apt/sources.list` nicht garantiert die vollständige oder primäre Konfiguration.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Linux-Paketmanagement und Repositories zu festigen:
+Eine Quelle im deb822-Stil kann so aussehen:
 
-1. **[Softwareinstallation unter Linux](https://labex.io/de/labs/linux-software-installation-on-linux-18005)** - Üben Sie verschiedene Methoden zur Installation und Verwaltung von Software auf Ubuntu-Systemen, einschließlich der Verwendung von apt und der Handhabung von .deb-Dateien, was direkt mit dem `sources.list`-Konzept zusammenhängt.
-2. **[Pakete installieren und entfernen](https://labex.io/de/labs/linux-installing-and-removing-packages-385380)** - Lernen Sie, wie Sie ein Debian-basiertes System aktualisieren, Pakete installieren und entfernen, um Ihr Verständnis der Interaktion von Paketmanagern mit Repositories zu festigen.
-3. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Erforschen Sie, wie Sie Softwarepakete auf RHEL-basierten Linux-Systemen mit YUM verwalten, um eine breitere Perspektive auf das Paketmanagement über verschiedene Distributionen hinweg zu erhalten.
+```text
+Types: deb
+URIs: https://deb.example.invalid/repository
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/example.gpg
+```
 
-Diese Labs helfen Ihnen, die Konzepte von Paket-Repositories und Softwareverwaltung in realen Szenarien anzuwenden und Selbstvertrauen bei Systemadministrationsaufgaben aufzubauen.
+Dies veranschaulicht lediglich die Syntax; die reservierte Domain `.invalid` ist keine nutzbare Paketquelle.
 
-## Quiz Question
+:::single-choice{#package-repositories-apt-locations}
+Wo kann APT aktive Definitionen von Paketquellen lesen?
 
-Auf einem traditionellen Debian-System, wie lautet der vollständige Pfad zu der Hauptdatei, die Paket-Repositories auflistet? Bitte antworten Sie mit dem vollständigen Dateipfad.
+::option[Ausschließlich aus `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT liest außerdem unterstützte Quelldateien aus `/etc/apt/sources.list.d/`."}
+::option[Ausschließlich aus Dateien in den Home-Verzeichnissen der Benutzer.]{#package-repositories-only-home explanation="Die systemweite Konfiguration von APT-Quellen befindet sich gewöhnlich unter `/etc/apt`."}
+::option[Aus `/etc/apt/sources.list` und unterstützten Dateien in `/etc/apt/sources.list.d/`.]{#package-repositories-both-locations .correct explanation="APT kombiniert die Hauptdatei mit Definitionen in `.list`- und `.sources`-Dateien im Quellenlistenverzeichnis."}
+:::
 
-## Quiz Answer
+## Authentifizierung von Paketquellen
 
-/etc/apt/sources.list
+APT überprüft signierte Veröffentlichungsmetadaten einer Paketquelle und vergleicht anschließend heruntergeladene Paketdateien mit den authentifizierten Prüfsummen in diesen Metadaten. `Signed-By` kann eine Quelle auf einen bestimmten Schlüsselbund begrenzen, statt für diese Paketquelle jedem global konfigurierten Schlüssel zu vertrauen.
+
+Eine gültige Signatur bestätigt, dass die Metadaten vom Inhaber eines akzeptierten Signaturschlüssels stammen und nicht unbemerkt verändert wurden. Sie beweist nicht, dass die Software des Herausgebers fehlerfrei, nicht bösartig oder für das System geeignet ist. Bestätige den Fingerabdruck des Schlüssels und die Quellenanweisungen über einen unabhängigen vertrauenswürdigen Kanal.
+
+:::single-choice{#package-repositories-signed-by}
+Welchen Sicherheitszweck erfüllt `Signed-By` in einer APT-Quellendefinition?
+
+::option[Jedes installierte Paket zu verschlüsseln, damit root es nicht lesen kann.]{#package-repositories-package-encryption explanation="Die Signierung von Paketquellen ermöglicht Herkunfts- und Integritätsprüfungen, nicht die Geheimhaltung vor dem lokalen Administrator."}
+::option[Diese Quelle auf ausgewählte Signaturschlüssel zu begrenzen.]{#package-repositories-key-scope .correct explanation="Das Feld bindet die Prüfung der Paketquelle an ausgewähltes Schlüsselbundmaterial statt an eine uneingeschränkte globale Schlüsselmenge."}
+::option[Zu garantieren, dass die Paketquelle keine anfällige Software enthält.]{#package-repositories-no-vulnerabilities explanation="Kryptografische Authentizität bewertet weder Softwarequalität noch Sicherheitsfehler."}
+:::
+
+## Drittanbieterquellen bewusst hinzufügen
+
+Eine Paketquelle kann Pakete und Lebenszyklusskripte mit Systemrechten installieren. Ihr Hinzufügen erweitert daher die Vertrauensgrenze der Software des Systems. Vorher solltest du:
+
+1. Die Paketquelle der Distribution bevorzugen, wenn sie die Anforderung erfüllt.
+2. Herausgeber, unterstützte Veröffentlichung, Architektur und Fingerabdruck des Signaturschlüssels bestätigen.
+3. Eine eigene Quelldatei und einen begrenzten Schlüsselbund verwenden.
+4. Paketnamen und Änderungen an Abhängigkeiten vor der Installation prüfen.
+5. Dokumentieren, wie du die Quelle deaktivierst und ihre Pakete migrierst oder entfernst.
+
+Kopiere keine veralteten Anweisungen, die Signaturprüfungen deaktivieren oder ein ungeprüftes entferntes Skript in eine privilegierte Shell leiten.
+
+:::single-choice{#package-repositories-third-party-risk}
+Warum erweitert das Hinzufügen einer Drittanbieterquelle die Vertrauensgrenze des Systems?
+
+::option[Ihre authentifizierten Pakete und Skripte können mit Systemrechten installiert werden.]{#package-repositories-privileged-install .correct explanation="Das Vertrauen in die Signaturquelle kann Code und Lebenszyklusaktionen autorisieren, die das Betriebssystem beeinflussen."}
+::option[Sie veranlasst den Linux-Kernel, keine Dateiberechtigungen mehr durchzusetzen.]{#package-repositories-disable-permissions explanation="Die Konfiguration von Paketquellen deaktiviert nicht die gewöhnlichen Zugriffskontrollmechanismen des Kernels."}
+::option[Sie wandelt alle nativen Pakete in Quellarchive um.]{#package-repositories-convert-source explanation="Das Hinzufügen einer Paketquelle ändert die verfügbaren Paketquellen und nicht das grundlegende Format bestehender Pakete."}
+:::
+
+Übe die paketquellenbasierte Installation in [Softwareinstallation unter Linux](https://labex.io/labs/linux-software-installation-on-linux-18005) oder vergleiche einen Arbeitsablauf der Red-Hat-Familie in [Pakete mit YUM abfragen und aktualisieren](https://labex.io/labs/rhel-query-and-update-packages-with-yum-in-linux-590869). Die genaue APT-Syntax findest du im lokalen Handbuch `sources.list(5)`.
+
+## Zusammenfassung
+
+Du kannst nun erklären, wie eine konfigurierte Paketquelle zu vertrauenswürdigen Paketmetadaten wird.
+
+1. Unterscheide Paketquellenindizes von Paketarchiven.
+2. Verwende `apt update`, um den lokalen Katalog zu aktualisieren.
+3. Finde APT-Quellendefinitionen im einzeiligen und deb822-Stil.
+4. Begrenze Signaturschlüssel und prüfe Vertrauen in Drittanbieter bewusst.

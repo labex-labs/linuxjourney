@@ -1,56 +1,102 @@
 ---
-index: 2
+lesson_id: "syslog"
+course_id: "logging"
 lang: "en"
+order_index: 2
 title: "syslog"
+description: "Learn how syslog facilities, severities, routing rules, and the logger command work."
 meta_title: "syslog - Logging"
 meta_description: "Learn about syslog and rsyslog in Linux, how to manage system logs, and use the logger command. Get started with this beginner-friendly tutorial!"
 meta_keywords: "syslog, rsyslog, Linux logs, logger command, /var/log/syslog, Linux tutorial, beginner Linux, system logging"
 ---
 
-## Lesson Content
+Syslog defines a message model and transport conventions used by many Unix-like systems. Rsyslog is one implementation that can receive, filter, transform, store, and forward messages. It may coexist with `systemd-journald`; neither name means that every application uses that path.
 
-The syslog service manages and sends logs to the system logger. Rsyslog is an advanced version of syslog; most Linux distributions should be using this new version. The output of all the logs the syslog service collects can be found at `/var/log/syslog` (every message except authentication messages).
+## Facilities and Severities
 
-To find out what files are maintained by our system logger, look at the configuration files in `/etc/rsyslog.d`:
+A syslog message carries a facility describing its broad source category and a severity from emergency through debug. Common facilities include `auth`, `cron`, `daemon`, `kern`, `mail`, `user`, and `local0` through `local7`.
 
-```plaintext
-pete@icebox:~$ less /etc/rsyslog.d/50-default.conf
-# First some standard log files.  Log by facility.
-#
-auth,authpriv.*                 /var/log/auth.log
-*.*;auth,authpriv.none          -/var/log/syslog
-#cron.*                         /var/log/cron.log
-#daemon.*                       -/var/log/daemon.log
-kern.*                          -/var/log/kern.log
-#lpr.*                          -/var/log/lpr.log
-mail.*                          -/var/log/mail.log
-#user.*                         -/var/log/user.log
+Severities are ordered. In classic selector syntax, `daemon.warning` normally matches daemon messages at warning and all more severe levels, not warning alone. Exact matching uses an equals modifier in implementations that support the classic syntax, such as `daemon.=warning`.
+
+:::single-choice{#syslog-warning-selector}
+What does a classic selector such as `daemon.warning` normally match?
+
+::option[Only messages whose text contains the word daemon.]{#syslog-text-daemon explanation="Facility metadata, not message-text search, drives this selector."}
+::option[Every debug message from every facility.]{#syslog-all-debug explanation="The selector is limited to the daemon facility and a severity threshold."}
+::option[Warning messages and more severe daemon messages.]{#syslog-warning-or-higher .correct explanation="The priority selector includes the named severity and levels of greater urgency."}
+:::
+
+## Reading rsyslog Rules
+
+Rsyslog commonly loads a main file and snippets under `/etc/rsyslog.d/`. A traditional rule has a selector followed by an action:
+
+```text
+auth,authpriv.*          /var/log/auth.log
+*.*;auth,authpriv.none  -/var/log/syslog
+kern.*                  /var/log/kern.log
 ```
 
-These rules for log files are denoted by the selector on the left column and the action on the right column. The action tells us where to send the log information: to a file, console, etc. Remember, not every application and service uses rsyslog to manage their logs, so if you want to know specifically what is logged, you'll have to look inside this directory.
+The first line routes all priorities from two authentication facilities. The second broadly selects messages and excludes those facilities. The third routes kernel-facility messages. A leading `-` on a file action commonly requests asynchronous writes; it does not mean exclusion.
 
-Let's actually see logging in action; you can manually send a log with the `logger` command:
+Inspect all included files and validate the exact syntax used by the installed version before changing production routing.
+
+:::single-choice{#syslog-selector-action}
+In a traditional rsyslog rule, what is the action?
+
+::option[The facility and severity expression on the left.]{#syslog-left-selector explanation="That part selects messages."}
+::option[The destination or operation on the right.]{#syslog-right-action .correct explanation="The action determines whether selected records go to a file, remote target, or another output."}
+::option[The comment describing the package version.]{#syslog-comment-version explanation="Comments do not perform message routing."}
+:::
+
+## Sending a Test Message
+
+Use `logger` to submit a controlled test with an identifiable tag and priority:
 
 ```bash
-logger -s Hello
+$ logger -p user.notice -t lesson-test 'routing check 2026-08-31T10:00'
 ```
 
-Now look inside your `/var/log/syslog`, and you should see this entry in your logs.
+Then query the expected destination, for example:
 
-## Exercise
+```bash
+$ journalctl -t lesson-test --since '5 minutes ago'
+```
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of Linux logging and file viewing:
+The same event can appear in the journal and a text file, depending on forwarding and routing. `logger -s` also copies the message to standard error; it does not prove durable storage.
 
-1. **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice essential Linux command-line skills for efficiently viewing and navigating text files, including system logs and configuration files.
-2. **[Linux tail Command: File End Display](https://labex.io/labs/linux-linux-tail-command-file-end-display-214303)** - Learn the Linux `tail` command for viewing and monitoring the end of text files, which is particularly useful for real-time log analysis.
-3. **[Search Text with grep in Linux](https://labex.io/labs/comptia-search-text-with-grep-in-linux-590841)** - Learn to search for specific text patterns within files, an invaluable skill for sifting through log entries to find critical information.
+:::single-choice{#syslog-logger-tag}
+What does `logger -t lesson-test` add to the submitted message?
 
-These labs will help you apply the concepts of log management and file inspection in real scenarios and build confidence with Linux system administration.
+::option[A request to erase older test records.]{#syslog-tag-delete explanation="The option sets an identifying tag and does not manage retention."}
+::option[The identifier `lesson-test` as the message tag.]{#syslog-tag-identifier .correct explanation="A unique tag makes the controlled event easier to locate in configured destinations."}
+::option[A five-minute delivery delay.]{#syslog-tag-delay explanation="No delivery interval is encoded by the tag option."}
+:::
 
-## Quiz Question
+## Changing and Verifying Routing
 
-What command can you use to manually log a message?
+Before a change, save the current configuration and identify downstream consumers. Validate syntax with the implementation's configuration-check mode, commonly:
 
-## Quiz Answer
+```bash
+$ sudo rsyslogd -N1
+```
 
-logger
+Only after validation should you reload the service through its manager. Send a new tagged message, verify every required destination, and check service status and internal error logs. A syntactically valid rule can still route too broadly, duplicate records, or expose sensitive data.
+
+Remote forwarding should use authenticated, encrypted transport when logs cross untrusted networks. UDP delivery has no end-to-end acknowledgement; critical audit requirements need a design that accounts for queues, loss, integrity, access control, and receiver outages.
+
+:::single-choice{#syslog-change-verification}
+What is sufficient evidence that a new routing rule works?
+
+::option[The configuration file has a recent modification time.]{#syslog-mtime explanation="A timestamp does not prove valid syntax or delivery."}
+::option[The sender can reach the receiver with a ping.]{#syslog-ping explanation="Network reachability alone does not verify the logging protocol or storage path."}
+::option[Validation passes and a tagged test reaches every intended destination.]{#syslog-validate-and-test .correct explanation="Both static validation and an observed end-to-end event are needed."}
+:::
+
+## Summary
+
+You can now test syslog routing from message metadata to its configured destination.
+
+1. Distinguish facilities from ordered severity levels.
+2. Read selectors separately from their actions.
+3. Send a tagged, prioritized event with `logger`.
+4. Validate configuration and verify delivery end to end.

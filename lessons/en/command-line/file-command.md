@@ -1,28 +1,27 @@
 ---
-index: 6
+lesson_id: "file-command"
+course_id: "command-line"
 lang: "en"
+order_index: 6
 title: "file"
+description: "Learn how to identify a file's likely content type without relying on its name or extension."
 meta_title: "file - Command Line"
 meta_description: "Learn the Linux file command with examples for identifying text files, images, scripts, compressed archives, binaries, and MIME types."
 meta_keywords: "linux file command, file command, identify file type linux, mime type linux, text file, binary file, archive file"
 ---
 
-## Lesson Content
+In the previous lesson, you used `touch` to create a file without adding an extension. Linux filenames do not have to describe what a file contains: a file named `funny.gif` is not necessarily a GIF image.
 
-In the previous lesson, we learned about `touch`. Let's revisit that for a bit. Did you notice that the filename didn't conform to standard naming conventions, like you've probably seen with other operating systems such as Windows? Normally, you would expect a file called `banana.jpeg` to be a JPEG picture file.
-
-In Linux, filenames aren't required to represent the contents of the file. You can create a file called `funny.gif` that isn't actually a GIF.
-
-To find out what kind of file a file is, you can use the `file` command. It will show you a description of the file's contents.
+Use the `file` command to inspect a file and report its likely type:
 
 ```bash
 $ file banana.jpg
 banana.jpg: JPEG image data
 ```
 
-### Why File Extensions Are Not Enough
+## Why File Extensions Are Not Enough
 
-Linux tools usually do not require a file extension to decide what a file is. A shell script can be named `backup`, a text file can be named `README`, and an image can have the wrong extension. The `file` command inspects the file's contents and metadata to make a better guess.
+Linux tools usually do not require a file extension to determine a file's type. A shell script can be named `backup`, a text file can be named `README`, and an image can have a misleading extension. The `file` command examines properties such as filesystem metadata and recognizable patterns in the content.
 
 ```bash
 $ file README
@@ -31,7 +30,17 @@ $ file /bin/ls
 /bin/ls: ELF 64-bit LSB executable
 ```
 
-### Checking Multiple Files
+Its result is a classification, not a guarantee. An unusual, incomplete, or damaged file may receive a broad description such as `data` instead of a precise type.
+
+:::single-choice{#identify-misleading-extension}
+A file named `report.jpg` may not contain an image. Which command checks its likely content type?
+
+::option[`ls report.jpg`]{#list-report explanation="`ls` confirms that the name exists and can show metadata, but it does not classify the file's contents."}
+::option[`file report.jpg`]{#inspect-report .correct explanation="The `file` command examines the file and reports a likely type. It does not rely only on the `.jpg` suffix."}
+::option[`touch report.jpg`]{#touch-report explanation="`touch` updates timestamps or creates a missing file. It does not identify the content type."}
+:::
+
+## Checking Multiple Files
 
 You can check several files at once:
 
@@ -42,27 +51,43 @@ image.png: PNG image data
 archive.tar.gz: gzip compressed data
 ```
 
-Wildcards also work:
+You can also pass a shell wildcard. The shell expands `*` into matching names before `file` examines them:
 
 ```bash
 $ file *
 ```
 
-### Showing MIME Types
+:::single-choice{#inspect-multiple-files}
+Which command asks `file` to inspect every non-hidden name matched by `*` in the current directory?
 
-The `-i` option prints MIME-style information, which is useful when working with web files or scripts.
+::option[`file *`]{#file-wildcard .correct explanation="The shell expands `*` to matching non-hidden names, and `file` inspects each resulting operand."}
+::option[`file .`]{#file-current-directory explanation="A single dot names the current directory itself. This command classifies that directory rather than each entry inside it."}
+::option[`file -b`]{#file-brief-no-operand explanation="The `-b` option changes output formatting, but this command does not supply the files to inspect."}
+:::
+
+## Showing MIME Information
+
+The `-i` option prints MIME-style information, including a media type and, when available, a character set. This form is useful when another program expects values such as `text/html`.
 
 ```bash
 $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-### Common file Options
+:::single-choice{#show-mime-information}
+Which command reports MIME-style information for `index.html`?
 
-- `-i`: Show MIME type information.
-- `-b`: Brief mode, omit the filename in output.
-- `-L`: Follow symbolic links.
-- `-z`: Try to inspect compressed files.
+::option[`file -b index.html`]{#brief-index explanation="The `-b` option omits the filename from the usual description. It does not specifically request MIME-style output."}
+::option[`file -i index.html`]{#mime-index .correct explanation="The `-i` option requests MIME-style output, such as `text/html` plus character-set information."}
+::option[`file -L index.html`]{#follow-index explanation="The `-L` option controls symbolic-link handling. It does not select the MIME output format."}
+:::
+
+## Useful file Options
+
+- `-i`: Show MIME-style information.
+- `-b`: Use brief mode and omit the filename from the output.
+- `-L`: Follow symbolic links and classify their targets.
+- `-z`: Try to examine the contents of compressed files.
 
 For example:
 
@@ -71,28 +96,19 @@ $ file -b notes.txt
 ASCII text
 ```
 
-### Common Questions
+:::single-choice{#omit-filename-from-output}
+Which command classifies `notes.txt` but omits its filename from the output?
 
-**Does file rely only on extensions?** No. It primarily inspects file contents and known signatures.
+::option[`file -i notes.txt`]{#mime-notes explanation="The `-i` option requests MIME-style information. The output still normally includes the filename."}
+::option[`file -z notes.txt`]{#compressed-notes explanation="The `-z` option asks `file` to look inside compressed data when possible. It does not enable brief output."}
+::option[`file -b notes.txt`]{#brief-notes .correct explanation="Brief mode, selected with `-b`, prints the classification without the filename prefix."}
+:::
 
-**Can file be wrong?** Yes. It makes an educated guess, especially for unusual or damaged files.
+## Summary
 
-**Why does file say "data"?** The file does not match a more specific known type, or it may be binary data without a recognizable signature.
+You can now use `file` to investigate what a file is likely to contain.
 
-## Exercise
-
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of inspecting file content and properties:
-
-1. **[Linux ls Command: Content Listing](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** - Learn the Linux `ls` command to efficiently list and analyze file and directory contents, which often precedes or follows using the `file` command to understand what's in your directories.
-2. **[Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)** - Practice viewing and manipulating text files, a common task after identifying a file's type.
-3. **[Linux more Command: File Scrolling](https://labex.io/labs/linux-linux-more-command-file-scrolling-214299)** - Enhance your command-line skills for navigating and exploring large text files, building on the ability to identify file types and then inspect their content.
-
-These labs will help you apply the concepts of file inspection and content viewing in real scenarios and build confidence with managing files in Linux.
-
-## Quiz Question
-
-What command can you use to find the file type of a file?
-
-## Quiz Answer
-
-file
+1. Classify a file without trusting its extension.
+2. Inspect multiple pathnames in one command.
+3. Request MIME-style information.
+4. Adjust how links, compressed data, and output labels are handled.

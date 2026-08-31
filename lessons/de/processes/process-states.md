@@ -1,50 +1,86 @@
 ---
-index: 9
+lesson_id: "process-states"
+course_id: "processes"
 lang: "de"
+order_index: 9
 title: "Prozesszustände"
-meta_title: "Prozesszustände - Prozesse"
-meta_description: "Ein umfassender Leitfaden zu Linux-Prozesszuständen. Erfahren Sie mehr über die verschiedenen Prozesszustände in Linux (R, S, D, Z, T) und wie Sie diese mit dem Befehl `ps` interpretieren können."
-meta_keywords: "linux prozesszustände, prozesszustände in linux, linux prozesszustand, prozesszustand in linux, linux prozesszustände erklärt, ps befehl, STAT codes, prozessverwaltung"
+description: "Erfahre, wie du häufige Linux-Prozesszustandscodes in `ps`-Momentaufnahmen interpretierst."
+meta_title: "Prozesszustände – Prozesse"
+meta_description: "Ein umfassender Leitfaden zu Linux-Prozesszuständen. Lerne die verschiedenen Prozesszustände unter Linux (R, S, D, Z, T) kennen und erfahre, wie du sie mit dem Befehl `ps` interpretierst."
+meta_keywords: "Linux-Prozesszustände, Prozesszustände unter Linux, Linux-Prozesszustand, Prozesszustand unter Linux, Linux-Prozesszustände erklärt, ps-Befehl, STAT-Codes, Prozessverwaltung"
 ---
 
-## Lesson Content
-
-Wenn Sie laufende Prozesse inspizieren, beispielsweise mit dem Befehl `ps aux`, werden Sie eine STAT-Spalte bemerken. Das Verständnis der Codes in dieser Spalte ist der Schlüssel zur Beherrschung der Prozessverwaltung. Jeder Code repräsentiert einen spezifischen **linux process state** (Linux-Prozesszustand).
+Eine Linux-Aufgabe wechselt während ihrer Ausführung, ihres Wartens, Anhaltens und Beendens zwischen verschiedenen Zuständen. Das Feld `STAT` von `ps` erfasst einen einzelnen Augenblick. Bei der Diagnose eines Verhaltens sind wiederholte Beobachtungen daher nützlicher als ein einzelner Buchstabe.
 
 ```bash
-ps aux
+$ ps -o pid,ppid,stat,wchan:24,cmd
 ```
 
-Ein **process state in Linux** (Prozesszustand unter Linux) liefert eine Momentaufnahme dessen, was ein Prozess gerade tut. Nutzt er aktiv die CPU, wartet er auf Eingaben oder wurde er beendet? Lassen Sie uns die häufigsten Zustände untersuchen, denen Sie begegnen werden.
+Das erste Zeichen in `STAT` ist der primäre Zustand. Weitere Zeichen sind Modifikatoren, die Eigenschaften wie die Leitung einer Sitzung oder die Mitgliedschaft in einer Vordergrundprozessgruppe beschreiben. Den vollständigen Satz findest du im lokalen `ps`-Handbuch.
 
-### Dekodierung gängiger Prozesszustandscodes
+## Laufend und unterbrechbarer Schlaf
 
-Die STAT-Spalte zeigt den aktuellen **linux process state** (Linux-Prozesszustand). Obwohl es viele mögliche Zustände gibt, sind die folgenden diejenigen, die Sie am häufigsten sehen werden. Diese **linux process states explained** (erklärten Linux-Prozesszustände) helfen Ihnen bei der Diagnose des Systemverhaltens.
+- `R` bedeutet laufend oder ausführungsbereit. Die Aufgabe wird auf einer CPU ausgeführt oder wartet in einer Ausführungswarteschlange auf CPU-Zeit.
+- `S` bedeutet unterbrechbarer Schlaf. Die Aufgabe wartet auf ein Ereignis und kann durch ein geeignetes Signal oder Ereignis geweckt werden.
 
-- **R (Running or Runnable)**: Ein Prozess in diesem Zustand führt entweder aktiv auf einem CPU-Kern aus oder befindet sich in der Warteschlange (Run Queue) und ist bereit zur Ausführung, sobald ein CPU-Kern verfügbar wird.
+Schlafen ist normal. Interaktive Programme und Dienste verbringen einen großen Teil ihrer Zeit damit, auf Eingaben, Zeitgeber, Netzwerkverkehr, Sperren oder andere Ereignisse zu warten, statt fortlaufend CPU zu verbrauchen.
 
-- **S (Interruptible Sleep)**: Dies ist einer der häufigsten **process states in Linux** (Prozesszustände unter Linux). Der Prozess wartet auf den Abschluss eines Ereignisses, wie z. B. Benutzereingaben vom Terminal oder das Eintreffen eines Netzwerkpakets. Er ist „unterbrechbar“ (interruptible), was bedeutet, dass er durch Signale geweckt werden kann.
+:::single-choice{#process-states-runnable-code}
+Was bedeutet der primäre Zustand `R`?
 
-- **D (Uninterruptible Sleep)**: Dieser Prozess schläft ebenfalls, befindet sich jedoch in einem Zustand, in dem er nicht durch ein Signal unterbrochen werden kann. Dies wird typischerweise für kurze Zeiträume bei E/A-Operationen verwendet, da eine Unterbrechung des Prozesses zu einem beschädigten Zustand führen könnte. Bleibt ein Prozess lange in diesem Zustand, kann dies auf ein Problem mit der Hardware oder einem Treiber hindeuten.
+::option[Auf einer CPU laufend oder zur Ausführung bereit.]{#process-states-r-running .correct explanation="`R` umfasst sowohl aktuell ausgeführte Aufgaben als auch ausführungsbereite Aufgaben, die auf CPU-Zeit warten."}
+::option[Aufgeräumt, nachdem der Elternprozess den Status abgeholt hat.]{#process-states-r-reaped explanation="Ein vollständig aufgeräumter Prozess erscheint nicht mehr als gewöhnlicher Eintrag in der Prozesstabelle."}
+::option[In nicht unterbrechbarem Schlaf wartend.]{#process-states-r-uninterruptible explanation="Nicht unterbrechbarer Schlaf wird durch `D` dargestellt."}
+:::
 
-- **Z (Zombie)**: Ein Zombie-Prozess hat seine Ausführung beendet, besitzt aber immer noch einen Eintrag in der Prozesstabelle. Er wartet darauf, dass sein Elternprozess seinen Exit-Status ausliest. Einige Zombies sind normal, aber eine große Anzahl kann auf einen Fehler in der Elternanwendung hinweisen.
+:::single-choice{#process-states-interruptible-code}
+Welcher primäre Zustand steht für unterbrechbaren Schlaf?
 
-- **T (Stopped)**: Ein Prozess wechselt in diesen Zustand, wenn er durch ein Job-Control-Signal (wie das Drücken von `Ctrl+Z`) angehalten oder weil er von einem Debugger verfolgt wird. Er kann mit dem Signal `SIGCONT` fortgesetzt werden.
+::option[`D`]{#process-states-sleep-d explanation="`D` steht für nicht unterbrechbaren Schlaf."}
+::option[`Z`]{#process-states-sleep-z explanation="`Z` steht für einen beendeten Kindprozess, dessen Status noch nicht aufgeräumt wurde."}
+::option[`S`]{#process-states-sleep-s .correct explanation="`S` ist der übliche `ps`-Code für unterbrechbares Warten."}
+:::
 
-Durch das Verständnis dieser grundlegenden **linux process states** (Linux-Prozesszustände) können Sie tiefere Einblicke in die Aktivität Ihres Systems gewinnen und laufende Anwendungen effektiver verwalten.
+## Nicht unterbrechbarer Schlaf
 
-## Exercise
+`D` bedeutet nicht unterbrechbarer Schlaf, gewöhnlich während die Aufgabe in einem Kernelvorgang wie bestimmter Speicher- oder Netzwerkdateisystem-E/A wartet. Die Aufgabe reagiert erst auf gewöhnliche Signale, wenn sie diesen Wartezustand verlässt; ein Signal kann währenddessen ausstehend bleiben.
 
-Wenden Sie Ihr Wissen in der Praxis an. Das folgende Labor hilft Ihnen, Ihr Verständnis für die Linux-Prozessverwaltung und -zustände zu festigen:
+Ein kurzer Zustand `D` kann normal sein. Dauerhaft oder zahlreich in `D` befindliche Aufgaben können auf langsame, nicht verfügbare oder fehlerhafte E/A hindeuten, doch der Zustand allein bestimmt nicht die Ursache. Prüfe den Wartekanal, Kernelprotokolle, den Zustand von Speicher und Netzwerk sowie das betreffende Subsystem, bevor du Schlüsse ziehst.
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - In diesem Labor erlernen Sie wesentliche Fähigkeiten zur Verwaltung und Überwachung von Prozessen auf einem Linux-System. Sie werden untersuchen, wie man mit Vordergrund- und Hintergrundprozessen interagiert, sie mit `ps` inspiziert, Ressourcen mit `top` überwacht, die Priorität mit `renice` anpasst und sie mit `kill` beendet.
+:::single-choice{#process-states-uninterruptible-code}
+Welcher primäre Zustand steht für nicht unterbrechbaren Schlaf?
 
-Dieses Labor hilft Ihnen, die Konzepte der Prozesszustände in realen Szenarien anzuwenden und Vertrauen in die Linux-Prozessverwaltung aufzubauen.
+::option[`T`]{#process-states-d-stopped explanation="`T` kennzeichnet eine angehaltene Aufgabe."}
+::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` wird für eine Aufgabe verwendet, die in einem nicht unterbrechbaren Kernel-Schlaf wartet."}
+::option[`R`]{#process-states-d-runnable explanation="`R` kennzeichnet eine ausgeführte oder ausführungsbereite Aufgabe."}
+:::
 
-## Quiz Question
+## Angehaltene und Zombie-Zustände
 
-Welcher STAT-Code wird verwendet, um einen nicht unterbrechbaren Schlaf (uninterruptible sleep) darzustellen? (Bitte geben Sie den einzelnen, großgeschriebenen englischen Buchstaben für den Zustands-Code an.)
+- `T` bedeutet gewöhnlich, dass die Aufgabe durch die Jobsteuerung, etwa mit `SIGTSTP`, oder durch `SIGSTOP` angehalten wurde. Einige Werkzeuge verwenden ein kleingeschriebenes `t` für einen durch Tracing verursachten Stopp.
+- `Z` bedeutet Zombie: Der Prozess wurde beendet, aber sein Elternprozess hat den Beendigungseintrag noch nicht abgeholt.
 
-## Quiz Answer
+Setze einen Jobsteuerungsstopp gegebenenfalls mit `SIGCONT` fort. Ein Zombie kann weder fortgesetzt noch beendet werden, da er nicht mehr läuft; sein Elternprozess oder ein adoptierender Reaper muss ihn aufräumen.
 
-D
+:::single-choice{#process-states-zombie-code}
+Was kennzeichnet der primäre Zustand `Z`?
+
+::option[Einen beendeten Prozess, dessen Beendigungseintrag noch auf das Aufräumen wartet.]{#process-states-z-zombie .correct explanation="Ein Zombie bewahrt nach dem Ende der Ausführung einen minimalen, für den Elternprozess sichtbaren Status auf."}
+::option[Einen durch ein Terminal-Anhaltesignal pausierten Prozess.]{#process-states-z-terminal-stop explanation="Ein Jobsteuerungsstopp wird gewöhnlich als `T` angezeigt."}
+::option[Einen Prozess, der derzeit einen vollständigen CPU-Kern verwendet.]{#process-states-z-cpu explanation="Eine aktiv laufende Aufgabe wird durch `R` dargestellt, während ein Zombie keine Anweisungen ausführt."}
+:::
+
+## Zustände im Zusammenhang lesen
+
+Zustandscodes sind Beobachtungen und keine Diagnosen. Kombiniere sie mit verstrichener Zeit, CPU-Nutzung, Wartekanälen, Elternbeziehungen, Protokollen und wiederholten Stichproben. Eine Aufgabe kann ihren Zustand zwischen dem Augenblick, in dem der Kernel ihn meldet, und dem Augenblick, in dem du den Bildschirm liest, wechseln.
+
+Das Lab [Linux-Prozesse verwalten und überwachen](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) bietet eine sichere Umgebung zum Beobachten von Vordergrund-, schlafenden, angehaltenen und beendeten Aufgaben.
+
+## Zusammenfassung
+
+Du kannst nun die häufigsten primären Prozesszustände interpretieren.
+
+1. Lies `R` als laufend oder ausführungsbereit und `S` als unterbrechbaren Schlaf.
+2. Untersuche dauerhaftes `D` als Wartesymptom und nicht als Diagnose.
+3. Unterscheide angehaltenes `T` von beendetem, nicht aufgeräumtem `Z`.
+4. Verwende wiederholte Beobachtungen und umgebende Belege.

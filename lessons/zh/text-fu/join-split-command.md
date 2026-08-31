@@ -1,96 +1,168 @@
 ---
-index: 11
+lesson_id: "join-split-command"
+course_id: "text-fu"
 lang: "zh"
-title: "连接与分割"
-meta_title: "连接与分割 - Text-Fu"
+order_index: 11
+title: "join 和 split"
+description: "学习如何按键连接两个已排序的文本文件，以及如何把一个文件拆分成命名片段。"
+meta_title: "join 和 split - Text-Fu"
 meta_description: "掌握如何使用 Linux 的 join 和 split 命令。学习如何根据共同的字段高效地连接文件，以及将大文件分割成更小的部分。本指南涵盖了用于连接名为 cat、dog、cow 的文件以及其他实用示例的命令。"
 meta_keywords: "linux 连接文件，用于连接文件的命令是什么，linux join 命令，linux split 命令，文件操作，命令行，文本处理"
 ---
 
-## Lesson Content
+`join` 和 `split` 命令解决的是不同的文件处理问题。`join` 合并两个已排序文本输入中的相关记录，而 `split` 把一个输入划分成一系列较小的文件。
 
-在 Linux 中，管理和操作文本文件是一项常见任务。两个强大的实用工具是 `join` 和 `split`。`join` 命令根据共同的字段合并两个文件的行，而 `split` 将大文件分解成更小、更易于管理的部分。
+## 按第一字段连接两个文件
 
-### 按共同字段连接文件
+默认情况下，`join` 会比较恰好两个输入文件中以空白分隔的第一个字段。假设有以下两个已经排序的文件。
 
-当你需要 **linux join files** 时，`join` 命令是一个基本工具。默认情况下，它根据第一个相同的字段合并两个已排序文件的行。
+`people.txt`：
 
-例如，想象你有两个想要合并的文件：
-
-```plaintext
-file1.txt
+```text
 1 John
 2 Jane
 3 Mary
+```
 
-file2.txt
+`surnames.txt`：
+
+```text
 1 Doe
 2 Doe
 3 Sue
 ```
 
-使用 `join` 命令，你可以轻松地将它们组合起来：
+连接键字段相等的记录：
 
 ```bash
-$ join file1.txt file2.txt
+$ join people.txt surnames.txt
 1 John Doe
 2 Jane Doe
 3 Mary Sue
 ```
 
-正如你所见，文件是根据第一个共同字段（1、2、3）连接起来的。为了让 `join` 正确工作，两个文件中的连接字段必须是已排序的。
+输出先包含一次共享键，然后依次是第一个和第二个文件中的其余字段。`join` 一次处理两个文件；它不接受三个普通文件操作数来执行三路关系连接。
 
-### 指定不同的连接字段
+:::single-choice{#join-default-key}
+不指定字段选项时，`join first.txt second.txt` 会合并哪些记录？
 
-如果共同字段不是第一列怎么办？你可以告诉 `join` 使用哪些字段。考虑以下文件：
+::option[以空白分隔的第一个字段相等的行。]{#join-first-fields .correct explanation="`join` 默认比较两个已排序输入的第 1 个字段。"}
+::option[物理行号相同的行。]{#join-line-numbers explanation="匹配依据是键字段的值，而不只是记录所在的位置。"}
+::option[第一个文件的每一行与第二个文件的每一行。]{#join-all-pairs explanation="`join` 输出键匹配的记录，而不是所有行组成的不受限制的笛卡尔积。"}
+:::
 
-```plaintext
-file1.txt
+## 对连接键排序
+
+每个输入都必须按照各自的连接字段排序，并使用兼容的比较规则。对于默认的第 1 字段，可使用 `sort -k 1,1` 准备副本：
+
+```bash
+$ LC_ALL=C sort -k 1,1 people-raw.txt > people.txt
+$ LC_ALL=C sort -k 1,1 surnames-raw.txt > surnames.txt
+$ LC_ALL=C join people.txt surnames.txt
+```
+
+排序和连接使用同一 locale，可以让排序规则保持一致。不要把排序结果重定向回原输入路径，因为 shell 会先截断该文件。
+
+:::single-choice{#join-sort-requirement}
+为了可靠匹配，`join` 通常要求进行什么准备？
+
+::option[两个文件必须包含完全相同数量的物理行。]{#join-equal-line-count explanation="输入长度可以不同。连接输出取决于键是否匹配，而不是行数是否相等。"}
+::option[两个文件的文件名必须在字母排序中彼此相邻。]{#join-filename-order explanation="需要排序的是内容中的键；两个文件名在词法上的关系无关紧要。"}
+::option[两个文件都必须按各自的连接字段使用兼容的顺序排序。]{#join-sorted-keys .correct explanation="`join` 会沿着有序键向前处理，因此每个输入的顺序都必须与其比较规则一致。"}
+:::
+
+## 选择不同的连接字段
+
+使用 `-1 FIELD` 指定第一个文件的键，使用 `-2 FIELD` 指定第二个文件的键。假设第一个输入包含：
+
+```text
 John 1
 Jane 2
 Mary 3
+```
 
-file2.txt
+第二个输入包含：
+
+```text
 1 Doe
 2 Doe
 3 Sue
 ```
 
-在这里，我们需要根据 `file1.txt` 的第二个字段和 `file2.txt` 的第一个字段进行连接。命令将是：
+先按字段 2 对第一个文件排序，按字段 1 对第二个文件排序，然后运行：
 
 ```bash
-$ join -1 2 -2 1 file1.txt file2.txt
+$ join -1 2 -2 1 people.txt surnames.txt
 1 John Doe
 2 Jane Doe
 3 Mary Sue
 ```
 
-`-1 2` 标志指定第一个文件的第 2 个字段，`-2 1` 标志指定第二个文件的第 1 个字段。
+如果字段由 `:` 之类的单个非空白字符分隔，请使用 `-t CHARACTER`。`-a 1` 或 `-a 2` 等选项可以包含某个输入中未配对的行；默认输出只包含匹配的键。
 
-### 分割大文件
+:::single-choice{#join-different-fields}
+哪些选项会把第一个文件的字段 2 与第二个文件的字段 1 连接起来？
 
-`split` 命令与连接相反；它将大文件分成更小的文件。
+::option[`-1 1 -2 2`]{#join-fields-reversed explanation="这会选择第一个输入的字段 1 和第二个输入的字段 2，与题目要求相反。"}
+::option[`-1 2 -2 1`]{#join-fields-two-one .correct explanation="`-1 2` 选择文件一的字段 2，`-2 1` 选择文件二的字段 1。"}
+::option[`-f 2 -d 1`]{#join-cut-style-options explanation="这些更像其他文本工具的字段和分隔符选项，并不是 `join` 的字段选择器。"}
+:::
+
+## 按行数拆分
+
+`split` 会把一个输入中连续的片段写入不同的输出文件。它不是按键执行的 `join` 操作的逆过程。
 
 ```bash
-split somefile
+$ split large.txt
 ```
 
-默认情况下，此命令在达到 1000 行限制时将 `somefile` 分割成新文件。输出文件命名为 `xaa`、`xab`，依此类推。你可以通过使用 `-l` 标志指定不同的行数或使用 `-b` 标志按文件大小分割来定制此行为。
+GNU 的默认行为是每个输出文件最多写入 1000 行，并使用前缀 `x`，生成 `xaa`、`xab` 和 `xac` 等名称。
 
-## Exercise
+使用 `-l NUMBER` 选择行数，并添加最后一个操作数来选择输出前缀：
 
-实践造就完美！这里有一些动手实验，以加强你对连接和操作文本文件的理解：
+```bash
+$ split -l 500 large.txt part-
+```
 
-1. **[Linux join 命令：文件连接](https://labex.io/zh/labs/linux-linux-join-command-file-joining-219193)** - 此实验提供了对 `join` 命令的直接、动手介绍，允许你练习根据共同字段合并两个已排序文本文件的行，就像课程中所讨论的那样。
-2. **[处理员工数据](https://labex.io/zh/labs/linux-processing-employees-data-388132)** - 应用你对 `join` 和其他强大的 Linux 命令行实用程序（如 `awk`）的知识，以组合和处理来自多个源的数据，模拟现实世界的数据分析场景。
-3. **[序列控制和管道](https://labex.io/zh/labs/linux-sequence-control-and-pipeline-17994)** - 通过学习控制命令执行序列、利用管道以及利用强大的文本处理工具来增强你的命令行效率和数据操作技能，这补充了 `join` 的数据组合功能。
+这会生成 `part-aa`、`part-ab` 等文件，每个片段最多包含 500 行。
 
-这些实验将帮助你将文本文件操作和数据组合的概念应用于实际场景，并建立对 Linux 命令行工具的信心。
+:::single-choice{#split-lines-with-prefix}
+哪个命令会把 `large.txt` 拆成最多 500 行一份、名称以 `part-` 为前缀的片段？
 
-## Quiz Question
+::option[`split -b 500 large.txt part-`]{#split-five-hundred-bytes explanation="`-b` 选择的是字节；对于普通文本，这些片段会远小于 500 行。"}
+::option[`split -l 500 large.txt part-`]{#split-five-hundred-lines .correct explanation="`-l 500` 设置最大行数，最后一个操作数提供输出文件名前缀。"}
+::option[`join -l 500 large.txt part-`]{#join-split-lines explanation="`join` 合并两个文件中带键的记录，不会把一个输入拆成多个片段。"}
+:::
 
-你会使用什么命令来连接名为 `cat`、`dog`、`cow` 的文件？请用英文提供完整的命令。命令和文件名应为小写。
+## 按大小拆分
 
-## Quiz Answer
+使用 `-b SIZE` 可按字节大小划分输入。在这里，GNU 的 `K`、`M` 和 `G` 等后缀表示 1024 的幂：
 
-join cat dog cow
+```bash
+$ split -b 10M archive.bin chunk-
+```
+
+这会请求大小为 10 MiB 的片段，最后一片可能更小。`split` 不会创建归档清单或重组元数据；需要重建时，请保留后缀顺序，并按顺序拼接各片段。
+
+:::single-choice{#split-ten-mebibytes}
+哪个命令会把 `archive.bin` 拆成 10 MiB 一份、使用 `chunk-` 前缀的片段？
+
+::option[`split -l 10M archive.bin chunk-`]{#split-lines-ten-m explanation="`-l` 选项需要行数，不能用字节大小后缀来指定二进制片段。"}
+::option[`join -b 10M archive.bin chunk-`]{#join-bytes explanation="`join` 不会拆分二进制输入，也不支持这种片段大小操作。"}
+::option[`split -b 10M archive.bin chunk-`]{#split-ten-mib .correct explanation="`-b` 选择片段大小，`10M` 表示 10×1024×1024 字节，`chunk-` 是输出前缀。"}
+:::
+
+要练习按键连接和结构化数据处理，可以尝试以下动手实验：
+
+1. **[Linux join 命令：文件连接](https://labex.io/zh/labs/linux-linux-join-command-file-joining-219193)** - 这个实验直接介绍 `join` 命令，让你练习根据共同字段合并两个已排序文本文件中的行，正如本课所讲。
+2. **[处理员工数据](https://labex.io/zh/labs/linux-processing-employees-data-388132)** - 运用 `join` 以及 `awk` 等其他强大的 Linux 命令行工具，组合并处理来自多个来源的数据，模拟真实的数据分析场景。
+
+## 总结
+
+现在，你可以合并已排序的记录，也可以把一个输入拆分成有序片段。
+
+1. 按相等的键字段连接恰好两个文件。
+2. 按连接键以一致方式排序两个输入。
+3. 使用 `-1` 和 `-2` 选择非默认键字段。
+4. 使用 `-l` 按行数拆分。
+5. 使用 `-b` 和清晰的前缀按字节大小拆分。

@@ -1,56 +1,102 @@
 ---
-index: 2
+lesson_id: "syslog"
+course_id: "logging"
 lang: "ko"
+order_index: 2
 title: "syslog"
+description: "syslog 퍼실리티, 심각도, 라우팅 규칙 및 logger 명령의 동작 방식을 알아봅니다."
 meta_title: "syslog - 로깅"
-meta_description: "Linux 에서 syslog 및 rsyslog 에 대해 알아보고, 시스템 로그를 관리하고, logger 명령을 사용하는 방법을 알아보세요. 이 초보자 친화적인 튜토리얼로 시작하세요!"
-meta_keywords: "syslog, rsyslog, Linux 로그, logger 명령, /var/log/syslog, Linux 튜토리얼, 초보자 Linux, 시스템 로깅"
+meta_description: "리눅스의 syslog와 rsyslog, 시스템 로그 관리 및 logger 명령 사용법을 초보자도 쉽게 알아봅니다."
+meta_keywords: "syslog, rsyslog, 리눅스 로그, logger 명령, /var/log/syslog, 리눅스 튜토리얼, 시스템 로깅"
 ---
 
-## Lesson Content
+Syslog는 많은 유닉스 계열 시스템에서 사용하는 메시지 모델과 전송 규약을 정의합니다. Rsyslog는 메시지를 수신, 필터링, 변환, 저장 및 전달할 수 있는 구현체 중 하나입니다. `systemd-journald`와 함께 사용할 수도 있으며, 어느 이름도 모든 애플리케이션이 그 경로를 사용한다는 뜻은 아닙니다.
 
-syslog 서비스는 로그를 시스템 로거로 관리하고 전송합니다. Rsyslog 는 syslog 의 고급 버전이며, 대부분의 Linux 배포판은 이 새로운 버전을 사용해야 합니다. syslog 서비스가 수집하는 모든 로그의 출력은 `/var/log/syslog`에서 찾을 수 있습니다 (인증 메시지를 제외한 모든 메시지).
+## 퍼실리티와 심각도
 
-시스템 로거가 어떤 파일을 유지 관리하는지 확인하려면 `/etc/rsyslog.d`의 구성 파일을 확인하십시오.
+syslog 메시지는 대략적인 소스 범주를 설명하는 퍼실리티와 emergency부터 debug까지의 심각도를 가집니다. 흔한 퍼실리티에는 `auth`, `cron`, `daemon`, `kern`, `mail`, `user` 및 `local0`부터 `local7`까지가 있습니다.
 
-```plaintext
-pete@icebox:~$ less /etc/rsyslog.d/50-default.conf
-# First some standard log files.  Log by facility.
-#
-auth,authpriv.*                 /var/log/auth.log
-*.*;auth,authpriv.none          -/var/log/syslog
-#cron.*                         /var/log/cron.log
-#daemon.*                       -/var/log/daemon.log
-kern.*                          -/var/log/kern.log
-#lpr.*                          -/var/log/lpr.log
-mail.*                          -/var/log/mail.log
-#user.*                         -/var/log/user.log
+심각도에는 순서가 있습니다. 고전적인 선택자 구문에서 `daemon.warning`은 일반적으로 warning뿐 아니라 daemon의 warning 이상으로 심각한 모든 메시지와 일치합니다. 고전 구문을 지원하는 구현체에서는 `daemon.=warning`처럼 등호 한정자를 사용해 정확히 일치시킬 수 있습니다.
+
+:::single-choice{#syslog-warning-selector}
+`daemon.warning` 같은 고전적인 선택자는 일반적으로 무엇과 일치합니까?
+
+::option[텍스트에 daemon이라는 단어가 있는 메시지만 일치합니다.]{#syslog-text-daemon explanation="메시지 텍스트 검색이 아니라 퍼실리티 메타데이터가 이 선택자를 결정합니다."}
+::option[모든 퍼실리티의 모든 debug 메시지와 일치합니다.]{#syslog-all-debug explanation="이 선택자는 daemon 퍼실리티와 심각도 임계값으로 제한됩니다."}
+::option[warning 및 그보다 심각한 daemon 메시지와 일치합니다.]{#syslog-warning-or-higher .correct explanation="우선순위 선택자는 지정한 심각도와 긴급도가 더 높은 수준을 포함합니다."}
+:::
+
+## rsyslog 규칙 읽기
+
+Rsyslog는 일반적으로 주 설정 파일과 `/etc/rsyslog.d/` 아래의 조각 파일을 불러옵니다. 전통적인 규칙은 선택자와 그 뒤의 동작으로 구성됩니다.
+
+```text
+auth,authpriv.*          /var/log/auth.log
+*.*;auth,authpriv.none  -/var/log/syslog
+kern.*                  /var/log/kern.log
 ```
 
-로그 파일에 대한 이러한 규칙은 왼쪽 열의 선택자 (selector) 와 오른쪽 열의 동작 (action) 으로 표시됩니다. 동작은 로그 정보를 파일, 콘솔 등으로 보낼 위치를 알려줍니다. 모든 애플리케이션과 서비스가 로그 관리를 위해 rsyslog 를 사용하는 것은 아니므로, 구체적으로 무엇이 기록되는지 알고 싶다면 이 디렉터리 내부를 확인해야 합니다.
+첫째 줄은 두 인증 퍼실리티의 모든 우선순위를 라우팅합니다. 둘째 줄은 메시지를 광범위하게 선택하되 해당 퍼실리티를 제외합니다. 셋째 줄은 커널 퍼실리티 메시지를 라우팅합니다. 파일 동작 앞의 `-`는 일반적으로 비동기 쓰기를 요청하며 제외를 뜻하지 않습니다.
 
-실제로 로깅이 작동하는지 확인해 봅시다. `logger` 명령을 사용하여 수동으로 로그를 보낼 수 있습니다.
+프로덕션 라우팅을 변경하기 전에 포함된 모든 파일을 검사하고 설치된 버전에서 사용하는 정확한 구문을 검증하십시오.
+
+:::single-choice{#syslog-selector-action}
+전통적인 rsyslog 규칙에서 동작은 어느 부분입니까?
+
+::option[왼쪽의 퍼실리티 및 심각도 표현식입니다.]{#syslog-left-selector explanation="이 부분은 메시지를 선택합니다."}
+::option[오른쪽의 대상 또는 작업입니다.]{#syslog-right-action .correct explanation="동작은 선택된 레코드를 파일, 원격 대상 또는 다른 출력 중 어디로 보낼지 결정합니다."}
+::option[패키지 버전을 설명하는 주석입니다.]{#syslog-comment-version explanation="주석은 메시지를 라우팅하지 않습니다."}
+:::
+
+## 테스트 메시지 보내기
+
+`logger`를 사용해 식별 가능한 태그와 우선순위가 있는 통제된 테스트 메시지를 전송합니다.
 
 ```bash
-logger -s Hello
+$ logger -p user.notice -t lesson-test 'routing check 2026-08-31T10:00'
 ```
 
-이제 `/var/log/syslog` 내부를 확인하면 로그에 이 항목이 표시되어야 합니다.
+그런 다음 예상 대상을 조회합니다.
 
-## Exercise
+```bash
+$ journalctl -t lesson-test --since '5 minutes ago'
+```
 
-연습이 완벽을 만듭니다! Linux 로깅 및 파일 보기에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
+전달 및 라우팅 설정에 따라 같은 이벤트가 저널과 텍스트 파일에 모두 나타날 수 있습니다. `logger -s`는 메시지를 표준 오류에도 복사할 뿐, 영구 저장을 입증하지는 않습니다.
 
-1. **[Linux 에서 로그 및 구성 파일 보기](https://labex.io/ko/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - 시스템 로그 및 구성 파일을 포함하여 텍스트 파일을 효율적으로 보고 탐색하기 위한 필수 Linux 명령줄 기술을 연습합니다.
-2. **[Linux tail 명령: 파일 끝 표시](https://labex.io/ko/labs/linux-linux-tail-command-file-end-display-214303)** - 텍스트 파일의 끝을 보고 모니터링하는 Linux `tail` 명령을 학습하며, 이는 실시간 로그 분석에 특히 유용합니다.
-3. **[Linux 에서 grep 을 사용하여 텍스트 검색](https://labex.io/ko/labs/comptia-search-text-with-grep-in-linux-590841)** - 파일 내에서 특정 텍스트 패턴을 검색하는 방법을 학습하며, 이는 로그 항목을 선별하여 중요한 정보를 찾는 데 매우 유용한 기술입니다.
+:::single-choice{#syslog-logger-tag}
+`logger -t lesson-test`는 전송하는 메시지에 무엇을 추가합니까?
 
-이 랩들은 로그 관리 및 파일 검사 개념을 실제 시나리오에 적용하고 Linux 시스템 관리 역량을 키우는 데 도움이 될 것입니다.
+::option[오래된 테스트 레코드를 지우라는 요청을 추가합니다.]{#syslog-tag-delete explanation="이 옵션은 식별 태그를 설정하며 보존을 관리하지 않습니다."}
+::option[메시지 태그로 `lesson-test` 식별자를 추가합니다.]{#syslog-tag-identifier .correct explanation="고유한 태그를 사용하면 설정된 대상에서 통제된 이벤트를 쉽게 찾을 수 있습니다."}
+::option[5분의 전송 지연을 추가합니다.]{#syslog-tag-delay explanation="태그 옵션에는 전송 간격이 인코딩되지 않습니다."}
+:::
 
-## Quiz Question
+## 라우팅 변경 및 검증
 
-메시지를 수동으로 기록하는 데 사용할 수 있는 명령은 무엇입니까?
+변경 전에 현재 설정을 보관하고 하위 소비자를 파악합니다. 구현체의 설정 검사 모드로 구문을 검증하십시오. 일반적인 명령은 다음과 같습니다.
 
-## Quiz Answer
+```bash
+$ sudo rsyslogd -N1
+```
 
-logger
+검증을 통과한 뒤에만 서비스 관리자를 통해 서비스를 다시 불러와야 합니다. 새 태그 메시지를 보내고, 필요한 모든 대상에서 확인하며, 서비스 상태와 내부 오류 로그를 검사합니다. 구문이 유효한 규칙도 범위를 지나치게 넓게 설정하거나 레코드를 중복시키거나 민감한 데이터를 노출할 수 있습니다.
+
+신뢰할 수 없는 네트워크를 통과해 원격으로 전달할 때는 인증되고 암호화된 전송을 사용해야 합니다. UDP 전송에는 종단 간 확인 응답이 없습니다. 중요한 감사 요구 사항에는 큐, 손실, 무결성, 접근 제어 및 수신기 장애를 고려한 설계가 필요합니다.
+
+:::single-choice{#syslog-change-verification}
+새 라우팅 규칙이 작동한다는 충분한 증거는 무엇입니까?
+
+::option[설정 파일의 수정 시간이 최근입니다.]{#syslog-mtime explanation="타임스탬프만으로는 구문 유효성이나 전송을 입증할 수 없습니다."}
+::option[송신자가 ping으로 수신자에 도달할 수 있습니다.]{#syslog-ping explanation="네트워크 연결만으로는 로깅 프로토콜이나 저장 경로를 검증할 수 없습니다."}
+::option[검증을 통과하고 태그가 있는 테스트가 모든 의도한 대상에 도달합니다.]{#syslog-validate-and-test .correct explanation="정적 검증과 관찰된 종단 간 이벤트가 모두 필요합니다."}
+:::
+
+## 요약
+
+이제 메시지 메타데이터부터 설정된 대상까지 syslog 라우팅을 테스트할 수 있습니다.
+
+1. 퍼실리티와 순서가 있는 심각도 수준을 구분합니다.
+2. 선택자와 동작을 분리해 읽습니다.
+3. `logger`로 태그와 우선순위가 지정된 이벤트를 보냅니다.
+4. 설정을 검증하고 전송을 종단 간 확인합니다.

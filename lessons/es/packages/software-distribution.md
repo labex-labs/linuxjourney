@@ -1,50 +1,89 @@
 ---
-index: 1
+lesson_id: "software-distribution"
+course_id: "packages"
 lang: "es"
-title: "Distribución de Software"
-meta_title: "Distribución de Software - Paquetes"
-meta_description: "Explora la mejor manera de aprender Linux entendiendo la distribución de software, los gestores de paquetes y formatos como .deb y .rpm. Una parte clave de nuestro curso gratuito de certificación linux."
-meta_keywords: "distribución de software linux, gestor de paquetes, .deb, .rpm, mejor forma de aprender linux, curso gratuito de certificación linux, mejores recursos para aprender linux, mejor forma de aprender línea de comandos linux, instalación de software"
+order_index: 1
+title: "Distribución de software"
+description: "Aprende cómo los proyectos originales, los mantenedores de distribuciones, los paquetes y sus formatos forman una cadena de suministro de software Linux."
+meta_title: "Distribución de software - Paquetes"
+meta_description: "Comprende la distribución de software Linux, los gestores de paquetes y formatos como .deb y .rpm."
+meta_keywords: "distribución de software Linux, gestor de paquetes, paquetes deb, paquetes rpm, instalación de software"
 ---
 
-## Lesson Content
+El software de Linux se distribuye habitualmente en forma de paquetes gestionados por herramientas específicas de cada distribución. Un paquete agrupa archivos instalables con metadatos para que el sistema pueda controlar versiones, dependencias, propiedad, sumas de comprobación y acciones del ciclo de vida.
 
-Un sistema Linux se compone de muchos componentes de software, como navegadores web, editores de texto y reproductores multimedia. Estos componentes se conocen como paquetes, y normalmente son gestionados por un gestor de paquetes, que se encarga de la instalación, actualización y eliminación de software. Comprender este proceso es una parte fundamental de la **mejor manera de aprender linux**.
+## Contenido de un paquete
 
-### ¿Qué son los Paquetes de Linux
+Un paquete binario puede contener ejecutables, bibliotecas, documentación, configuración predeterminada, definiciones de servicios y otros recursos. También incluye metadatos como:
 
-You might know software by names like Chrome or Firefox, but on a technical level, they are packages. A package is essentially an archive of files, including the application's executables, configuration files, and documentation, all bundled together. This organized structure simplifies software management.
+- nombre y versión del paquete
+- arquitectura de destino y contexto de la distribución
+- dependencias y conflictos declarados
+- listas de archivos e información de integridad
+- scripts o activadores opcionales utilizados durante operaciones del ciclo de vida
 
-### La Cadena de Suministro de Software
+No todos los paquetes son aplicaciones interactivas. Un paquete puede proporcionar una biblioteca, un componente del kernel, datos de idioma, fuentes, símbolos de depuración o metadatos que dependan de un conjunto de otros paquetes.
 
-El recorrido de un paquete de software involucra dos roles clave:
+:::single-choice{#software-distribution-package-metadata}
+¿Qué información suele ser un metadato del paquete en vez de un ejecutable de la aplicación?
 
-- **Proveedores Upstream (Desarrolladores Originales)**: Son los desarrolladores que escriben el software. Compilan el código fuente, crean instrucciones de instalación y publican nuevas versiones y actualizaciones.
-- **Mantenedores de Paquetes**: Cuando una nueva versión está lista, los proveedores upstream la envían a los mantenedores de paquetes. Estos mantenedores revisan, gestionan y distribuyen el software a los usuarios finales en forma de paquetes adaptados para distribuciones Linux específicas.
+::option[Las instrucciones de CPU que implementan la aplicación.]{#software-distribution-executable-code explanation="Las instrucciones compiladas forman parte del contenido del paquete, no de los metadatos de dependencias."}
+::option[Las relaciones de dependencia declaradas.]{#software-distribution-dependencies .correct explanation="Los paquetes describen los paquetes necesarios o incompatibles para que las herramientas de gestión puedan razonar sobre la instalación."}
+::option[El documento sin guardar que el usuario tiene abierto en memoria.]{#software-distribution-user-document explanation="Los datos de usuario durante la ejecución no forman parte de los metadatos del paquete distribuido."}
+:::
 
-### Formatos de Paquetes Comunes
+## Funciones del proyecto original y de la distribución
 
-Aunque puedes instalar software directamente desde su código fuente, usar un gestor de paquetes es mucho más común y eficiente. Es una de las **mejores maneras de aprender comandos de linux** para la administración de sistemas. Hay dos formatos de paquetes predominantes:
+Un proyecto original desarrolla y publica el código fuente inicial. Después, los mantenedores de una distribución Linux adaptan ciertas versiones a la distribución. Su trabajo puede incluir revisar licencias, aplicar parches de integración o seguridad, definir instrucciones de compilación, dividir el resultado en paquetes, declarar dependencias, ejecutar pruebas y mantener actualizaciones.
 
-- **Debian (.deb)**: Utilizado por Debian y sus derivados, como Ubuntu y Linux Mint.
-- **Red Hat Package Manager (.rpm)**: Utilizado por Red Hat Enterprise Linux (RHEL), Fedora y CentOS.
+La infraestructura de compilación de la distribución produce paquetes para las versiones y arquitecturas compatibles. Las herramientas del repositorio publican metadatos y firmas que los clientes pueden verificar. Las responsabilidades exactas varían: algunos proyectos originales publican sus propios paquetes, mientras que las distribuciones pueden compilar por separado a partir del código fuente.
 
-Dominar las herramientas para gestionar estos paquetes es la **mejor manera de aprender la línea de comandos de linux** y es una habilidad que usarás constantemente. Estas herramientas son algunos de los **mejores recursos para aprender linux** administración de sistemas.
+:::single-choice{#software-distribution-maintainer-role}
+¿Qué tarea suele corresponder al mantenedor de un paquete de una distribución?
 
-## Exercise
+::option[Adaptar el código fuente original a las reglas de compilación y dependencias de la distribución.]{#software-distribution-maintainer-integrates .correct explanation="Los mantenedores adaptan el software a las políticas, compilaciones, dependencias y entornos compatibles de la distribución."}
+::option[Elegir la contraseña local de la cuenta de cada usuario.]{#software-distribution-maintainer-passwords explanation="Los datos de autenticación locales no guardan relación con el mantenimiento de paquetes."}
+::option[Planificar en una CPU cada proceso instalado.]{#software-distribution-maintainer-scheduler explanation="El planificador del kernel en ejecución gestiona el uso de la CPU después de la instalación."}
+:::
 
-Para aplicar tus conocimientos, recomendamos estos laboratorios prácticos. Proporcionan experiencia práctica con los conceptos cubiertos en esta lección.
+## Formatos de paquetes nativos habituales
 
-1. **[Gestión de Paquetes con RPM en Linux](https://labex.io/es/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Adquiere experiencia práctica consultando información de paquetes, verificando la integridad e inspeccionando el contenido de paquetes RPM en sistemas basados en Red Hat.
-2. **[Consultar y Actualizar Paquetes con YUM en Linux](https://labex.io/es/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Aprende a gestionar paquetes de software en sistemas Linux basados en RHEL usando YUM, incluyendo la inspección, actualización y exploración de repositorios.
-3. **[Compilar Software desde Código Fuente en Linux](https://labex.io/es/labs/comptia-build-software-from-source-code-in-linux-590853)** - Comprende el proceso fundamental de compilar e instalar software desde su código fuente, una habilidad crucial para aplicaciones que no están disponibles a través de gestores de paquetes.
+Dos formatos nativos muy utilizados son:
 
-Estos laboratorios te ayudarán a aplicar los conceptos de gestión de paquetes e instalación de software en escenarios reales y a ganar confianza con la administración de sistemas Linux.
+- `.deb`, empleado por Debian y las distribuciones derivadas, entre ellas Ubuntu y Linux Mint
+- `.rpm`, empleado por Fedora, Red Hat Enterprise Linux y muchas distribuciones relacionadas
 
-## Quiz Question
+Existen otros formatos nativos y formatos que abarcan varias distribuciones. Una extensión de archivo coincidente no garantiza por sí sola la compatibilidad: también importan la arquitectura del paquete, la versión de la distribución, las versiones de las bibliotecas, las políticas, las firmas y las dependencias.
 
-¿Qué formato de paquete se utiliza por Ubuntu y Debian?
+:::single-choice{#software-distribution-debian-format}
+¿Qué formato de paquete nativo utilizan Debian y Ubuntu?
 
-## Quiz Answer
+::option[`.deb`]{#software-distribution-format-deb .correct explanation="Las herramientas de paquetes de la familia Debian utilizan el formato de archivo `.deb`."}
+::option[`.rpm`]{#software-distribution-format-rpm explanation="RPM es nativo de Fedora, RHEL y familias de distribuciones relacionadas."}
+::option[`.tar`]{#software-distribution-format-tar explanation="Un archivo tar es un contenedor general y por sí solo no proporciona los metadatos ni la semántica de ciclo de vida de un paquete Debian."}
+:::
 
-deb
+## Importancia de la distribución gestionada
+
+Un gestor de paquetes registra el estado instalado y coordina los cambios entre paquetes. Instalar desde repositorios de confianza de la distribución suele proporcionar resolución coherente de dependencias, verificación de firmas, actualizaciones de seguridad y eliminación limpia. Copiar manualmente un binario o instalar desde el código fuente puede ser apropiado, pero no incorpora automáticamente el software a ese ciclo de vida gestionado.
+
+La confianza sigue dependiendo de la configuración de los repositorios y de las claves de firma. Un paquete criptográficamente válido demuestra su asociación con una clave de confianza, no que cualquier software de terceros sea seguro o apropiado. Cuando sea posible, prefiere los repositorios de la distribución y evalúa cualquier fuente externa antes de concederle privilegios de instalación.
+
+:::single-choice{#software-distribution-package-manager-benefit}
+¿Cuál es una ventaja de instalar mediante un repositorio de paquetes de confianza?
+
+::option[El gestor puede controlar las versiones y resolver las dependencias declaradas.]{#software-distribution-managed-lifecycle .correct explanation="Los metadatos del repositorio y los registros del estado instalado permiten coordinar la instalación, las actualizaciones y la eliminación."}
+::option[Todos los programas instalados quedan inmunizados frente a fallos de seguridad.]{#software-distribution-no-vulnerabilities explanation="La gestión de paquetes facilita las actualizaciones, pero no puede garantizar que el software carezca de fallos."}
+::option[Todos los paquetes de todas las distribuciones se vuelven intercambiables.]{#software-distribution-universal-compatibility explanation="Los paquetes nativos siguen ligados a formatos, versiones, arquitecturas y entornos de dependencias."}
+:::
+
+Utiliza el laboratorio [Gestionar paquetes con RPM](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868) para examinar los metadatos y la integridad de los paquetes, o el laboratorio [Compilar software desde el código fuente](https://labex.io/labs/comptia-build-software-from-source-code-in-linux-590853) para comparar un flujo de trabajo basado en código fuente con los paquetes gestionados.
+
+## Resumen
+
+Ahora puedes identificar las partes principales de la distribución de software Linux.
+
+1. Separa los archivos de contenido del paquete de sus metadatos.
+2. Distingue el desarrollo original de la integración realizada por la distribución.
+3. Asocia `.deb` y `.rpm` con sus familias de distribuciones.
+4. Evalúa la compatibilidad y la confianza más allá de la extensión de un archivo.

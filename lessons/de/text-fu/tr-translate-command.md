@@ -1,88 +1,103 @@
 ---
-index: 13
+lesson_id: "tr-translate-command"
+course_id: "text-fu"
 lang: "de"
+order_index: 13
 title: "tr (Übersetzen)"
+description: "Lerne, Zeichensätze in einem Standardeingabestrom zu übersetzen, zu löschen und zusammenzuziehen."
 meta_title: "tr (Übersetzen) - Text-Fu"
 meta_description: "Lerne den Linux-Befehl tr mit Beispielen zum Übersetzen von Zeichen, Löschen von Zeichen, Zusammenziehen von Wiederholungen, Verwendung von Zeichenklassen und Bereinigung von Text."
 meta_keywords: "linux tr befehl, tr befehl, tr -d, tr -s, zeichen übersetzen, zeichen löschen, zeichenklassen, textverarbeitung linux"
 ---
 
-## Lesson Content
+Der Befehl `tr`, kurz für „translate“, übersetzt, löscht oder komprimiert Zeichen, die er von stdin liest. Gewöhnliche Eingabedateioperanden akzeptiert er nicht; stelle Daten daher über eine Pipe oder Eingabeumleitung bereit.
 
-Der Befehl `tr`, kurz für translate (übersetzen), ist ein Kommandozeilenwerkzeug, das Zeichen aus der Standardeingabe übersetzt, löscht oder zusammenzieht. Er ist nützlich für einfache Textmanipulationen und wird oft mit Pipes verwendet, um die Ausgabe anderer Befehle zu verarbeiten.
-
-Die Grundsyntax lautet:
+Die grundlegende Syntax lautet:
 
 ```bash
 tr [OPTIONS] SET1 [SET2]
 ```
 
-Im Gegensatz zu Werkzeugen wie `sed` oder `awk` arbeitet `tr` zeichenweise. Es versteht Wörter, Spalten oder reguläre Ausdrücke nicht auf dieselbe Weise. Das macht es schnell und einfach für Aufgaben wie Groß-/Kleinschreibung ändern, Ziffern entfernen und wiederholte Leerzeichen normalisieren.
+`tr` arbeitet mit Zeichensätzen statt mit Wörtern oder allgemeinen regulären Ausdrücken. Verwende ein anderes Werkzeug, wenn eine Umwandlung von vollständigen Wörtern, der Zeilenstruktur oder dem umgebenden Kontext abhängt.
 
-### Grundlegende Zeichenübersetzung
+## Zeichen übersetzen
 
-Die häufigste Verwendung von `tr` ist das Ersetzen eines Zeichensatzes durch einen anderen. Zum Beispiel kann man alle Kleinbuchstaben einfach in Großbuchstaben übersetzen.
+Bei zwei Sätzen werden Zeichen aus `SET1` positionsgleich auf Zeichen aus `SET2` abgebildet:
 
 ```bash
 $ echo "hello world" | tr a-z A-Z
 HELLO WORLD
 ```
 
-In diesem Beispiel haben wir die Ausgabe von `echo` an den Befehl `tr` weitergeleitet. Der `tr`-Befehl hat dann den Zeichensatzbereich `a-z` in die entsprechenden Zeichen im Bereich `A-Z` übersetzt.
+Hier werden Positionen im Kleinbuchstabenbereich auf die entsprechenden Großbuchstaben abgebildet. Schütze Satzausdrücke durch Anführungszeichen, damit die Shell sie unverändert übergibt.
 
-Man kann auch einzelne Zeichen in andere übersetzen:
+Du kannst auch einzelne Zeichen übersetzen:
 
 ```bash
 $ echo "2026-06-23" | tr '-' '/'
 2026/06/23
 ```
 
-Jedes Zeichen in `SET1` wird auf das Zeichen an der gleichen Position in `SET2` abgebildet.
-
 ```bash
 $ echo "abc123" | tr 'abc' 'ABC'
 ABC123
 ```
 
-Hier wird `a` zu `A`, `b` zu `B` und `c` zu `C`.
+Zeichen, die nicht in `SET1` vorkommen, bleiben unverändert.
 
-### Löschen von Zeichen mit -d
+:::single-choice{#tr-map-characters}
+Was gibt `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` aus?
 
-Eine weitere mächtige Funktion ist die Möglichkeit, bestimmte Zeichen mit der Option `-d` zu löschen. Das ist besonders nützlich, um Text zu bereinigen. Wenn man zum Beispiel alle Ziffern aus einem String entfernen möchte, kann man Folgendes verwenden:
+::option[`ABCABC`]{#tr-uppercase-digits explanation="Ziffern gehören nicht zum Quellsatz; `tr` ersetzt sie daher nicht durch Buchstaben."}
+::option[`ABC123`]{#tr-uppercase-abc .correct explanation="`a`, `b` und `c` werden jeweils auf das Zeichen an derselben Position in `ABC` abgebildet; die Ziffern bleiben unverändert."}
+::option[`abc123ABC`]{#tr-append-set explanation="`tr` übersetzt passende Eingabezeichen. Der Zielsatz wird nicht an den Strom angehängt."}
+:::
+
+## Zeichen löschen
+
+Mit `-d` und einem Satz entfernst du jedes passende Zeichen:
 
 ```bash
 $ echo "My address is 123 Main Street" | tr -d '0-9'
 My address is  Main Street
 ```
 
-Hier hat `tr -d` jedes Zeichen aus dem angegebenen Satz von `0` bis `9` gelöscht.
+Jede Ziffer wird unabhängig entfernt; `tr` erkennt dabei kein vollständiges Zahlentoken.
 
-Man kann Satzzeichen aus einem String entfernen, indem man eine Zeichenklasse verwendet:
+Zeichenklassen können von der aktuellen Locale definierte Gruppen beschreiben:
 
 ```bash
 $ echo "Hello, world!" | tr -d '[:punct:]'
 Hello world
 ```
 
-Man kann auch Zeilenumbrüche entfernen, um Zeilen zusammenzufügen:
+Das Löschen von Zeilenumbrüchen verbindet Eingabezeilen, ohne ein Ersatztrennzeichen einzufügen:
 
 ```bash
 $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-### Zusammenziehen von wiederholten Zeichen
+:::single-choice{#tr-delete-digits}
+Welcher Befehl entfernt jede Ziffer aus stdin und lässt andere Zeichen unverändert?
 
-Der Befehl `tr` kann auch wiederholte Zeichen mit der Option `-s` „zusammenziehen“. Das ist ideal, um Text mit überflüssigen Leerzeichen zu normalisieren.
+::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="Die Option `-d` löscht alle Zeichen der Ziffernklasse aus dem Eingabestrom."}
+::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="Die Option `-s` komprimiert wiederholte Ziffern, lässt aber ein Zeichen jeder Folge bestehen."}
+::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Für eine Übersetzung ist normalerweise ein zweiter Satz nötig. Ein Satz allein fordert keine Löschung an."}
+:::
+
+## Wiederholte Zeichen komprimieren
+
+Mit `-s SET` ersetzt du jede Folge eines aufgeführten Zeichens durch eine einzelne Instanz:
 
 ```bash
 $ echo "Hello      World,   how   are   you?" | tr -s ' '
 Hello World, how are you?
 ```
 
-In diesem Fall hat `tr -s ' '` Folgen von mehreren Leerzeichen durch ein einzelnes Leerzeichen ersetzt, was die Ausgabe viel sauberer macht.
+Dieser Satz enthält ein gewöhnliches Leerzeichen; Tabulatoren und Zeilenumbrüche werden von diesem Befehl nicht komprimiert.
 
-Man kann auch wiederholte Zeilenumbrüche zusammenziehen:
+Auch wiederholte Zeilenumbrüche lassen sich zusammenziehen:
 
 ```bash
 $ printf "one\n\n\nTwo\n" | tr -s '\n'
@@ -90,9 +105,17 @@ one
 Two
 ```
 
-### Verwendung von Zeichenklassen
+:::single-choice{#tr-squeeze-spaces}
+Welcher Befehl reduziert jede Folge gewöhnlicher Leerzeichen in stdin auf ein Leerzeichen?
 
-Zeichenklassen machen `tr`-Befehle leichter lesbar und portabler. Häufige Klassen sind:
+::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="Die Option `-s` komprimiert Wiederholungen der Zeichen im angegebenen Satz, der hier ein gewöhnliches Leerzeichen enthält."}
+::option[`tr -d ' '`]{#tr-delete-space explanation="Die Option `-d` entfernt alle gewöhnlichen Leerzeichen, statt eines pro Folge zu bewahren."}
+::option[`tr ' ' ''`]{#tr-empty-destination explanation="Ein leerer Zielsatz ist keine eindeutige, portable Anforderung zum Komprimieren. Für Wiederholungen dient `-s`."}
+:::
+
+## Zeichenklassen und Komplemente verwenden
+
+Zeichenklassen drücken die Absicht in vielen Locales deutlicher aus als selbst geschriebene Bereiche. Häufige Klassen sind:
 
 - `[:lower:]`: Kleinbuchstaben.
 - `[:upper:]`: Großbuchstaben.
@@ -102,30 +125,40 @@ Zeichenklassen machen `tr`-Befehle leichter lesbar und portabler. Häufige Klass
 - `[:space:]`: Leerraumzeichen.
 - `[:punct:]`: Satzzeichen.
 
-Zum Beispiel kann man mit Zeichenklassen Kleinbuchstaben in Großbuchstaben umwandeln:
+So wandelst du Klein- in Großbuchstaben um:
 
 ```bash
 $ echo "linux journey" | tr '[:lower:]' '[:upper:]'
 LINUX JOURNEY
 ```
 
-Lösche alles außer Buchstaben und Ziffern, indem du `-c` mit `-d` verwendest. Die Option `-c` bedeutet Komplement, also „alles, was nicht in diesem Satz ist“.
+Die Option `-c` bildet das Komplement von `SET1`, also alle nicht darin enthaltenen Zeichen. Zusammen mit `-d` kannst du nur bestimmte Zeichenarten bewahren:
 
 ```bash
 $ echo "user@example.com!" | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
-### Kombination von Löschen und Zusammenziehen
+Auch der Zeilenumbruch wird entfernt, weil er nicht alphanumerisch ist. Ergänze oder bewahre Trennzeichen bewusst, wenn Datensatzgrenzen wichtig sind.
 
-Man kann Optionen kombinieren, wenn man Text bereinigt. Dieses Beispiel löscht Satzzeichen und zieht dann wiederholte Leerzeichen zusammen:
+:::single-choice{#tr-keep-alphanumeric}
+Was bewirkt `tr -cd '[:alnum:]'` mit stdin?
+
+::option[Alphanumerische Zeichen werden gelöscht, alle anderen bleiben erhalten.]{#tr-delete-alnum explanation="Das Komplement verändert die von `-d` betroffenen Zeichen. Der alphanumerische Satz selbst bleibt erhalten."}
+::option[Jedes nicht alphanumerische Zeichen wird gelöscht.]{#tr-delete-nonalnum .correct explanation="`-c` bildet das Komplement des alphanumerischen Satzes; `-d` löscht den daraus entstehenden nicht alphanumerischen Satz."}
+::option[Alle Buchstaben und Ziffern werden in Großbuchstaben umgewandelt.]{#tr-uppercase-alnum explanation="Es ist kein Zielzeichensatz vorhanden; eine Umwandlung der Großschreibung findet nicht statt."}
+:::
+
+## Stromtransformationen aufbauen
+
+Mehrere `tr`-Prozesse lassen sich verbinden, wenn getrennte Schritte verständlicher sind:
 
 ```bash
 $ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
-Für tabulatorgetrennte Eingaben kann man Tabs in Kommas übersetzen:
+Bei einfachen tabulatorgetrennten Daten kannst du Tabulatoren in Kommas übersetzen:
 
 ```bash
 $ printf "name\tlevel\npete\tbeginner\n" | tr '\t' ','
@@ -133,37 +166,32 @@ name,level
 pete,beginner
 ```
 
-### Häufige tr-Optionen
+Da `tr` stdin liest, kann eine Datei mit `<` bereitgestellt werden:
 
-Hier sind die Optionen, die du am häufigsten verwenden wirst:
+```bash
+$ tr '[:lower:]' '[:upper:]' < names.txt
+```
 
-- `-d`: Löscht Zeichen in `SET1`.
-- `-s`: Zieht wiederholte Zeichen in `SET1` zusammen.
-- `-c`: Verwendet das Komplement von `SET1`.
-- `-t`: Kürzt `SET1` auf die Länge von `SET2` vor der Übersetzung.
+Leite stdout in eine andere Datei um, wenn du das Ergebnis speichern möchtest. Eine Umleitung zurück in den Eingabepfad würde ihn leeren, bevor `tr` ihn liest.
 
-### Häufige Fragen
+:::single-choice{#tr-read-file-input}
+Welcher Befehl lässt `tr` `names.txt` als stdin lesen und Kleinbuchstaben in Großbuchstaben umwandeln?
 
-**Warum liest tr von einer Pipe?** `tr` liest von der Standardeingabe, daher wird es häufig nach Befehlen wie `echo`, `cat`, `printf` oder anderen textproduzierenden Befehlen verwendet.
+::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` akzeptiert auf diese Weise keinen gewöhnlichen Eingabedateinamen; der zusätzliche Operand macht die Syntax ungültig."}
+::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="Dieser Befehl liest die Datei richtig, löscht Kleinbuchstaben aber, statt sie zu übersetzen."}
+::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="Die Shell öffnet `names.txt` als stdin; `tr` bildet die Kleinbuchstabenklasse auf die Großbuchstabenklasse ab."}
+:::
 
-**Ersetzt tr Wörter?** Nein. `tr` übersetzt Zeichen, keine Wörter. Verwende `sed`, wenn du ganze Wörter oder Muster ersetzen möchtest.
+Mit dieser Übung kannst du zeichenweise Stromtransformationen praktisch trainieren:
 
-**Warum hat mein tr-Befehl Zeichen einzeln geändert?** So funktioniert `tr`. Es ordnet jedes Zeichen in `SET1` dem entsprechenden Zeichen in `SET2` zu.
+1. **[Linux tr Command: Character Translating](https://labex.io/de/labs/linux-linux-tr-command-character-translating-219198)** – Transformiere mit `tr` Zeichen in Textströmen, lösche bestimmte Zeichen, verwende Zeichenklassen und fasse Wiederholungen zusammen.
 
-**Warum sollte ich Zeichensätze wie 'a-z' in Anführungszeichen setzen?** Das Setzen in Anführungszeichen verhindert, dass die Shell Sonderzeichen interpretiert, bevor `tr` sie erhält.
+## Zusammenfassung
 
-## Exercise
+Du kannst nun Zeichenströme mit gezielten `tr`-Operationen verändern.
 
-Um dein Wissen praktisch anzuwenden, probiere das folgende praktische Lab aus. Es hilft dir, dein Verständnis von Zeichenübersetzung und Textverarbeitung zu vertiefen.
-
-1. **[Linux tr Command: Character Translating](https://labex.io/de/labs/linux-linux-tr-command-character-translating-219198)** – Lerne den Linux-Befehl `tr` für zeichenweise Transformationen in Textströmen. Du wirst das Übersetzen von Zeichen, Löschen bestimmter Zeichen, Arbeiten mit Zeichenklassen und Zusammenziehen wiederholter Zeichen üben.
-
-Dieses Lab hilft dir, die Konzepte der Textmanipulation in realen Szenarien anzuwenden und Vertrauen im Umgang mit dem `tr`-Befehl zu gewinnen.
-
-## Quiz Question
-
-Welcher Befehl wird verwendet, um Zeichen zu übersetzen? (Bitte nur Kleinbuchstaben auf Englisch antworten)
-
-## Quiz Answer
-
-tr
+1. Bilde Zeichen zwischen positionsgleichen Sätzen ab.
+2. Lösche ausgewählte Zeichen mit `-d`.
+3. Komprimiere Wiederholungen mit `-s`.
+4. Verwende localeabhängige Klassen und Komplemente bewusst.
+5. Stelle die Eingabe über stdin statt über einen Dateinamenoperanden bereit.

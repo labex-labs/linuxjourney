@@ -1,52 +1,87 @@
 ---
-index: 5
+lesson_id: "authentication-logging"
+course_id: "logging"
 lang: "en"
+order_index: 5
 title: "Authentication Logging"
+description: "Learn how to locate, interpret, and safely correlate Linux authentication records."
 meta_title: "Authentication Logging - Logging"
 meta_description: "Explore Linux authentication logging by examining the /var/log/auth.log file. This guide helps beginners understand user login events, authentication methods, and how to troubleshoot access issues for better Linux security."
 meta_keywords: "Linux authentication, auth.log, Linux logging, user login, Linux security, system authorization, troubleshoot login, authentication methods, beginner, tutorial, guide, secure log"
 ---
 
-## Lesson Content
+Authentication logs help explain login attempts, privilege changes, and session activity. They are security-sensitive evidence, but one line rarely establishes a user's intent or proves that an account was compromised.
 
-In Linux, keeping track of who accesses a system and how they do it is crucial for security and troubleshooting. This process is managed through authentication logging, which records all authorization-related events, such as user logins and the methods used.
+## Locating Authentication Records
 
-### The auth.log File
+Debian-family syslog configurations commonly route authentication events to `/var/log/auth.log`; Red Hat-family configurations commonly use `/var/log/secure`. A systemd journal may retain the same events with unit and process metadata, and centralized logging may hold the authoritative copy.
 
-On Debian-based systems like Ubuntu, the primary file for tracking this activity is `/var/log/auth.log`. This log file contains system authorization information, including successful and failed user login attempts, and any authentication mechanisms that were triggered. Reviewing this file is a key step in diagnosing login problems or investigating security incidents.
+Discover the local destination and query the relevant service, for example:
 
-Here is a sample snippet from an `auth.log` file:
+```bash
+$ sudo journalctl -u ssh.service --since '1 hour ago'
+$ sudo less /var/log/auth.log
+```
 
-```plaintext
+The SSH unit can be named `ssh.service` or `sshd.service`. Permissions commonly restrict these records because they expose account and access details.
+
+:::single-choice{#auth-logs-file-location}
+Where must Linux authentication events always be stored?
+
+::option[In the destination selected by local logging policy.]{#auth-logs-local-policy .correct explanation="Files, the journal, and centralized collectors vary by distribution and configuration."}
+::option[In `/var/log/auth.log` on every distribution.]{#auth-logs-auth-only explanation="That path is common on Debian-family systems but is not universal."}
+::option[Inside each user's shell history file.]{#auth-logs-shell-history explanation="Shell history is user-command history, not the system authentication event store."}
+:::
+
+## Interpreting an Event
+
+A traditional record might contain:
+
+```text
 Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
 ```
 
-### Understanding Log Entries
+This identifies the time, host, emitting program, PAM module and service, requested session user, and originating UID. It does not by itself identify the human behind UID 1000 or prove that the action was malicious. Resolve the UID against account records valid at the incident time and correlate terminal, remote address, session, and surrounding events.
 
-Each line in the log provides valuable details. In the example above:
+:::single-choice{#auth-logs-uid-inference}
+What does `uid=1000` establish in this record?
 
-- **`Jan 31 10:37:50`**: The timestamp of the event.
-- **`icebox`**: The hostname of the machine where the event occurred.
-- **`pkexec`**: The program that initiated the event.
-- **`pam_unix(polkit-1:session)`**: The authentication module and service used.
-- **`session opened for user root by (uid=1000)`**: The action taken—a session was opened for the `root` user by a user with UID `1000`.
+::option[That the root password was typed incorrectly one thousand times.]{#auth-logs-thousand-passwords explanation="The value is an identity number, not an attempt count."}
+::option[The numeric account identity associated with the initiating process.]{#auth-logs-numeric-identity .correct explanation="Additional session and account evidence is needed to attribute the action to a person."}
+::option[That the event originated from TCP port 1000.]{#auth-logs-port explanation="A UID is not a network port field."}
+:::
 
-### Alternative Log Files
+## Investigating Success and Failure
 
-It's important to note that the location for authentication logs can vary between Linux distributions. For example, on Red Hat-based systems like CentOS and Fedora, these events are typically recorded in `/var/log/secure` instead of `/var/log/auth.log`.
+Search for both accepted and rejected attempts in a bounded time range. For SSH, also examine connection source, authentication method, target account, session open and close, and service restarts. Repeated failures can be user error, automation with stale credentials, scanning, or an attack; rate alone does not select one explanation.
 
-## Exercise
+`last` and `lastb` can summarize records from `wtmp` and `btmp` where maintained, but those binary databases have their own retention and integrity limits. Cross-check them with journal or syslog records and centralized sources.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of user authentication and account management:
+:::single-choice{#auth-logs-failed-attempts}
+What should repeated failed logins be correlated with?
 
-1. **[Configure User Accounts and Sudo Privileges in Linux](https://labex.io/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Practice enforcing password policies, locking/unlocking user accounts, securing the root account, and granting administrative permissions, all of which are critical for understanding authentication security.
+::option[Only the total free disk space.]{#auth-logs-disk-space explanation="Capacity does not identify the source, target, or method of an authentication attempt."}
+::option[Source, target account, method, timing, and successful sessions.]{#auth-logs-correlated-fields .correct explanation="These details help distinguish misconfiguration, user error, scanning, and unauthorized access."}
+::option[A conclusion that the account is certainly compromised.]{#auth-logs-certain-compromise explanation="Failures can have several benign or hostile causes."}
+:::
 
-These labs will help you apply the concepts in real scenarios and build confidence with Linux user and security management.
+## Preserving and Responding
 
-## Quiz Question
+If an incident is suspected, record host time and timezone, preserve original logs and metadata, and secure any exported copy. Avoid editing evidence in place. Account locks, firewall changes, and session termination can interrupt legitimate access or alert an attacker, so follow the incident-response process and retain a recovery path.
 
-On Debian-based systems, what is the name of the log file used for user authentication? Please answer using the filename only. The answer is case-sensitive.
+:::single-choice{#auth-logs-preservation}
+How should authentication evidence be handled during an investigation?
 
-## Quiz Answer
+::option[Edit suspicious lines in the original file for clarity.]{#auth-logs-edit-original explanation="Changing the source damages evidence integrity."}
+::option[Publish the complete log so anyone can identify users.]{#auth-logs-publish explanation="Authentication records can expose sensitive identities and infrastructure details."}
+::option[Preserve originals and protect exported copies.]{#auth-logs-preserve .correct explanation="Integrity and confidentiality are both important for security logs."}
+:::
 
-auth.log
+## Summary
+
+You can now examine authentication events without overclaiming what one record proves.
+
+1. Discover the locally configured authentication-log destination.
+2. Interpret identity, service, method, and session fields in context.
+3. Correlate failed and successful activity across retained sources.
+4. Preserve evidence and coordinate disruptive response actions.

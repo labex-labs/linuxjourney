@@ -1,105 +1,126 @@
 ---
-index: 5
+lesson_id: "samba"
+course_id: "network-sharing"
 lang: "ja"
+order_index: 5
 title: "Samba"
+description: "基本的な Samba ファイル共有を設定、検証、利用し、安全に保護する方法を学びます。"
 meta_title: "Samba - ネットワーク共有"
 meta_description: "Linux での Samba ネットワーク共有の設定方法を学びます。このガイドでは、Samba プロトコル、インストール、設定、および smb クライアントを使用した共有への接続について解説します。"
 meta_keywords: "Samba, smb linux, linux smb, samba ネットワーク，samba プロトコル，smb samba, ファイル共有，smb.conf, cifs, smbclient, linux チュートリアル"
 ---
 
-## Lesson Content
+Samba は Unix 系システムで Server Message Block（SMB）プロトコルを実装し、Linux、Windows、macOS などのクライアント間でファイルやプリンターを共有できるようにします。現代の環境では現在の SMB dialect を使います。古い用語 CIFS が Linux クライアントツールに残っていても、廃止された SMB1 を有効にすべき理由にはなりません。
 
-長年にわたり、Windows と Linux マシン間でファイルを共有することは、混在 OS 環境における主要な課題でした。この問題に対する解決策として登場したのが、Server Message Block (SMB) プロトコルです。元々 Windows 向けに開発されましたが、**samba protocol** は後に Common Internet File System (CIFS) と呼ばれる方言に洗練されました。現在、最新のシステムは新しいバージョンの SMB を使用していますが、これらの用語はしばしば一緒に使われます。
+## 共有を計画する
 
-Samba は、Linux およびその他の Unix 系システム上で**SMB/CIFS**プロトコルを実装する強力なソフトウェアスイートです。これは**smb linux**統合の鍵であり、Linux サーバーが Windows、macOS、その他の Linux クライアントに対してファイルサーバーおよびプリントサーバーとして機能することを可能にし、シームレスな**samba network**を構築します。
+Samba をインストールまたは変更する前に、許可するクライアント、ID、読み書き要件、ネットワークゾーン、データ所有者、バックアップポリシー、必要な SMB dialect を定義します。ホームやシステムのツリーを誤って公開せず、専用ディレクトリを使ってください。
 
-### Linux への Samba のインストール
+アクセスは Samba のポリシーと基盤となるファイルシステム権限の両方で制御されます。`smb.conf` で書き込みを許可しても、アカウントにないファイルシステムアクセス権は与えられません。
 
-まず、Samba パッケージをインストールする必要があります。コマンドは使用している Linux ディストリビューションのパッケージマネージャーによって異なります。Ubuntu のような Debian ベースのシステムでは、以下を使用します。
+:::single-choice{#samba-two-permission-layers}
+Samba 共有を通じた書き込みを許可する必要があるものはどれですか？
 
-```bash
-sudo apt update
-sudo apt install samba
-```
+::option[共有に表示されるコメントだけ。]{#samba-comment-permission explanation="コメントは説明文であり、アクセス権を与えません。"}
+::option[Samba のルールとファイルシステム権限の両方。]{#samba-policy-and-filesystem .correct explanation="要求はプロトコル層のルールとローカルファイルシステムの認可をどちらも通過する必要があります。"}
+::option[クライアントのデスクトップ壁紙設定だけ。]{#samba-wallpaper explanation="クライアントの外観設定はサーバー上のファイルを制御しません。"}
+:::
 
-### Samba 共有の設定
+## 基本的な共有を定義する
 
-Samba のメイン設定ファイルは `/etc/samba/smb.conf` にあります。このファイルは、どのディレクトリが共有されるか、誰がそれにアクセスできるか、およびその権限を決定します。デフォルトファイルにはコメントアウトされた多くの例が含まれており、優れたリファレンスとなります。
-
-基本的な共有を設定する手順を見ていきましょう。
-
-まず、テキストエディタで設定ファイルを開きます。
-
-```bash
-sudo nano /etc/samba/smb.conf
-```
-
-ファイルの一番下で、共有の新しいセクションを追加します。角括弧内の名前が、ネットワーク上で表示される共有名になります。
+主要な設定ファイルは通常 `/etc/samba/smb.conf` です。制限された設定例を示します。
 
 ```ini
-[myshare]
-    comment = My First Samba Share
-    path = /my/directory/to/share
+[team]
+    path = /srv/samba/team
+    browseable = yes
     read only = no
-    browsable = yes
+    valid users = @teamshare
 ```
 
-次に、設定で指定したディレクトリを作成します。
+ディレクトリを作り、Unix グループに対して確認済みの所有権と権限を適用します。
 
 ```bash
-mkdir -p /my/directory/to/share
+$ sudo install -d -o root -g teamshare -m 2770 /srv/samba/team
 ```
 
-最後に、Samba アクセス用の特定パスワードを設定する必要があります。Samba は独自のパスワードデータベースを維持しており、これはシステムのユーザーパスワードとは別物です。
+set-group-ID ビットは新しいエントリにディレクトリのグループを継承させるのに役立ちますが、共同アクセスには ACL や慎重に選んだ create mask も必要な場合があります。継承だけで十分と決めつけず、実際に作られたファイルとディレクトリをテストしてください。
+
+:::single-choice{#samba-valid-users}
+`valid users = @teamshare` は何を表しますか？
+
+::option[すべての匿名ネットワークユーザーへ書き込み権を与える。]{#samba-every-anonymous explanation="このルールはアクセスを制限するもので、ゲスト書き込みを有効にしません。"}
+::option[サーバーが共有名を `teamshare` に変更しなければならない。]{#samba-rename-share explanation="表示される共有名はセクション名 `[team]` のままです。"}
+::option[指定グループのメンバーだけが、この共有ルールで許可される。]{#samba-valid-group .correct explanation="Samba のユーザー一覧構文で、`@` 形式はグループを指します。"}
+:::
+
+## ID を設定する
+
+スタンドアロンの Samba 設定では、通常アカウントに対応する Unix ID と、有効な Samba 認証情報が必要です。
 
 ```bash
-sudo smbpasswd -a [username]
+$ sudo smbpasswd -a alice
 ```
 
-`[username]` をシステム上の既存の Linux ユーザーに置き換えてください。Samba アクセス用の新しいパスワードを作成するように求められます。
+ディレクトリドメイン環境では別の ID 設計を使います。パスワードをシェル履歴や無関係な利用者が読める設定に置かず、Samba パスワードが Unix アカウントのパスワードと自動的に同じになるとも考えないでください。
 
-### Samba サービスの管理
+:::single-choice{#samba-password-database}
+スタンドアロンサーバーで `smbpasswd -a alice` は通常何をしますか？
 
-`smb.conf` ファイルに変更を加えた後、変更を有効にするために Samba サービスを再起動する必要があります。
+::option[Unix ユーザーのホームディレクトリを削除する。]{#samba-delete-home explanation="このコマンドは Samba 認証情報を管理し、ホームディレクトリを削除しません。"}
+::option[そのアカウントの Samba 認証情報を追加または初期化する。]{#samba-add-credential .correct explanation="SMB 認証データベースは、Unix ユーザーを作るだけとは別に管理されます。"}
+::option[Alice として表示可能な全 SMB 共有をマウントする。]{#samba-mount-all explanation="サーバーの認証情報登録とクライアントのマウントは別の操作です。"}
+:::
+
+## 設定を検証して適用する
+
+サービスを再読み込みする前に、解析された設定を確認します。
 
 ```bash
-sudo service smbd restart
+$ testparm -s
 ```
 
-### Samba 共有へのアクセス
+予期しない既定値やエラーを確認してから、ディストリビューションのサービスマネージャーで Samba サービスを再読み込みします。サービス名は環境により異なり、一般に `smbd.service` や `smb.service` などです。対応していれば reload は restart より影響が小さいものの、状態、待ち受けソケット、ファイアウォール範囲、ログは必ず確認してください。
 
-共有が設定されると、ネットワーク上のクライアントがそれにアクセスできます。
-
-**Windows から：**
-実行プロンプト (Win + R) またはファイルエクスプローラーを開き、ネットワークパスを入力します：`\HOST\sharename`。ここで `HOST` は Linux マシンの IP アドレスまたはホスト名です。
-
-**Linux から：**
-Samba パッケージには **smbclient** と呼ばれるコマンドラインツールが含まれており、これにより任意の**linux smb**または Windows 共有と対話できます。
+クライアントからユーザーを明示してテストします。
 
 ```bash
-smbclient //HOST/myshare -U username
+$ smbclient //server.example.net/team -U alice
 ```
 
-接続後、`ls`、`get`、`put` などのコマンドを使用してファイルを管理できる `smb: \>` プロンプトが表示されます。
+:::single-choice{#samba-testparm-purpose}
+Samba の変更適用前に `testparm -s` を実行するのはなぜですか？
 
-### Samba 共有のマウント
+::option[全共有ファイルをバックアップサーバーへコピーするため。]{#samba-testparm-backup explanation="このツールは設定を解析・報告するもので、共有データをコピーしません。"}
+::option[有効な Samba 設定を検証して表示するため。]{#samba-testparm-validate .correct explanation="パーサー出力から、サービスへ影響する前に設定エラーと解釈済み設定を確認できます。"}
+::option[すべてのクライアントへ管理者権限を与えるため。]{#samba-testparm-admin explanation="検証してもクライアントの認可は変更されません。"}
+:::
 
-より永続的なアクセスを実現するために、ネットワーク共有をファイルシステムに直接マウントし、ローカルディレクトリのように見せることができます。
+## Linux からマウントする
+
+Linux クライアントは通常、`cifs` ファイルシステムドライバーと mount helper を使います。コマンド引数のパスワードは履歴やプロセス調査から漏れる可能性があるため避けてください。root だけが読める認証情報ファイル、または承認済みの認証情報管理機構を使います。
 
 ```bash
-sudo mount -t cifs //SERVER/sharename /mnt/mountpoint -o user=username,pass=password
+$ sudo mount -t cifs //server.example.net/team /mnt/team \
+    -o credentials=/root/.smb-team,vers=3.1.1
 ```
 
-このコマンドは `cifs` ファイルシステムタイプを使用して、リモート共有をローカルのマウントポイントにアタッチします。
+認証情報ファイルを保護し、両端が対応する dialect を確認し、UID、GID、権限、暗号化の要件を意図して定義します。マウント後は `findmnt` で確認し、許可された読み書きテストを行い、利用中のユーザーと調整してからアンマウントします。
 
-## Exercise
+:::single-choice{#samba-command-line-password}
+mount コマンドへ `password=...` を直接書くべきでないのはなぜですか？
 
-ご自身の Linux マシン上にシンプルな Samba 共有を設定してみてください。ディレクトリを作成し、`smb.conf`で設定し、同じマシンから`smbclient`を使用してアクセスを試み、設定をテストします。より実践的な練習のために、関連する Linux スキルと概念を練習できる包括的な[Linux 学習パス](https://labex.io/ja/learn/linux)を探ってみてください。
+::option[履歴やプロセス引数から秘密情報が露出する可能性があるから。]{#samba-password-exposure .correct explanation="保護された認証情報源なら偶発的な漏えいを減らせますが、それ自体にも慎重な権限設定が必要です。"}
+::option[SMB はどのようなパスワード認証にも対応しないから。]{#samba-no-passwords explanation="ほかの ID システムもありますが、パスワードによる SMB 認証は一般的です。"}
+::option[そのオプションが共有を恒久的に読み取り専用にするから。]{#samba-password-readonly explanation="秘密情報の置き場所は書き込みポリシーを決めません。"}
+:::
 
-## Quiz Question
+## まとめ
 
-ファイル共有のために開発された、SMB の初期の方言であるプロトコルの名前は何ですか？大文字と小文字に注意して、英語で回答してください。
+これで、プロトコルとファイルシステム双方のセキュリティを考慮して Samba 共有を設定できます。
 
-## Quiz Answer
-
-CIFS
+1. クライアント、ID、ネットワーク範囲、データポリシーを先に定義する。
+2. 共有を制限し、基盤となる権限と整合させる。
+3. 適切な ID モデルで Samba 認証情報を管理する。
+4. `testparm` で検証し、クライアントからエンドツーエンドでテストする。
+5. クライアント認証情報を保護し、マウント済みアクセスを検証する。

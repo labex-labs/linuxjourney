@@ -1,51 +1,82 @@
 ---
-index: 1
+lesson_id: "network-basics"
+course_id: "network-basics"
 lang: "de"
-title: "Netzwerk Grundlagen"
-meta_title: "Netzwerk Grundlagen - Netzwerk Basics"
-meta_description: "Entdecken Sie den besten Weg, Linux zu lernen, indem Sie mit den Netzwerk Grundlagen beginnen. Dieser Leitfaden behandelt die Grundlagen von Netzwerkkomponenten wie WAN, LAN, Router und Hosts für Anfänger."
-meta_keywords: "Netzwerk Grundlagen, Linux Grundlagen, bester Weg Linux lernen, Linux Grundlagen, WAN, LAN, WLAN, Netzwerk Tutorial, Netzwerk Guide"
+order_index: 1
+title: "Netzwerkgrundlagen"
+description: "Lerne, wie Hosts, Verbindungen, Switches, Router und Pakete lokale und weitreichende Netzwerke bilden."
+meta_title: "Netzwerkgrundlagen – Netzwerkgrundlagen"
+meta_description: "Beginne mit den Netzwerkgrundlagen und lerne Komponenten wie WAN, LAN, Router und Hosts kennen. Eine verständliche Einführung für Einsteiger."
+meta_keywords: "Netzwerkgrundlagen, Linux-Grundlagen, Linux lernen, WAN, LAN, WLAN, Netzwerk-Tutorial, Netzwerk-Anleitung"
 ---
 
-## Lesson Content
+Ein Netzwerk verbindet Schnittstellen, damit Anwendungen auf unterschiedlichen Hosts Daten austauschen können. Wenn du verstehst, welches Gerät, welche Adresse und welche Verbindung die einzelnen Teile des Pfads verarbeitet, kannst du spätere Linux-Befehle leichter interpretieren.
 
-Das Verständnis der **Grundlagen von Linux**-Netzwerken ist eine grundlegende Fähigkeit. Für viele ist das Erfassen dieser Konzepte der **beste Weg, Linux** tiefergehend zu lernen, da Netzwerke integraler Bestandteil moderner Systeme sind. Lassen Sie uns ein typisches Heimnetzwerk untersuchen, um die Kernkomponenten zu verstehen.
+## Hosts und Schnittstellen
 
-### Kernnetzwerkkomponenten
+Ein Host ist ein Endpunkt oder vernetztes System, etwa ein Laptop, Server, Telefon oder eine virtuelle Maschine. Ein Host kann mehrere Schnittstellen besitzen: Ethernet, WLAN, Loopback, Tunnel, Bridges oder virtuelle Adapter. Jede Schnittstelle kann eine für ihre Technologie geeignete Konfiguration auf Verbindungs- und Netzwerkschicht besitzen.
 
-Ihr Heimnetzwerk ist ein kleines Ökosystem von Geräten, die zusammenarbeiten. Hier sind die wichtigsten Akteure:
+Untersuche die Schnittstellen und Adressen eines Linux-Hosts mit:
 
-- **ISP (Internet Service Provider/Internetanbieter):** Dies ist das Unternehmen, dem Sie für Ihren Internetanschluss bezahlen und das Ihr Zuhause mit dem globalen Internet verbindet.
-- **Router:** Der Router ist die zentrale Drehscheibe Ihres Netzwerks. Er leitet den Datenverkehr und ermöglicht jeder Maschine, sich mit dem Internet zu verbinden und miteinander zu kommunizieren. Moderne Router unterstützen sowohl kabelgebundene (Ethernet) als auch drahtlose Verbindungen.
+```bash
+$ ip address show
+```
 
-### Verständnis der Netzwerktypen WAN, LAN und WLAN
+Dass eine Schnittstelle vorhanden oder administrativ aktiv ist, beweist keine Ende-zu-Ende-Verbindung.
 
-Netzwerke werden nach ihrem Umfang kategorisiert. In einer Heimkonfiguration werden Sie auf diese drei gängigen Typen stoßen, die die Grundlage für **Netzwerk-Grundlagen** bilden:
+:::single-choice{#network-basics-host-interface}
+Was ist eine Netzwerkschnittstelle?
 
-- **WAN (Wide Area Network/Weitverkehrsnetz):** Dieser Begriff beschreibt das riesige Netzwerk außerhalb Ihres Zuhauses, das Ihren Router mit dem breiteren Internet verbindet.
-- **WLAN (Wireless Local Area Network/Funklokalnetzwerk):** Dies ist Ihr Wi-Fi-Netzwerk. Es verbindet drahtlose Geräte wie Laptops und Smartphones ohne physische Kabel mit Ihrem Router.
-- **LAN (Local Area Network/Lokales Netzwerk):** Dies bezieht sich auf den kabelgebundenen Teil Ihres Netzwerks, der Geräte wie Desktop-PCs oder Spielkonsolen über ein Ethernet-Kabel mit Ihrem Router verbindet.
+::option[Eine dauerhafte Kopie jedes Pakets im Internet.]{#network-basics-interface-copy explanation="Eine Schnittstelle sendet und empfängt Datenverkehr; sie ist kein weltweites Paketarchiv."}
+::option[Der Anschlusspunkt eines Hosts an ein Netzwerk oder eine virtuelle Verbindung.]{#network-basics-interface-attachment .correct explanation="Ein Host kann mehrere physische oder virtuelle Schnittstellen mit getrennter Konfiguration besitzen."}
+::option[Ein menschenlesbarer Alias für eine Rechnung des Internetanbieters.]{#network-basics-interface-invoice explanation="Abrechnungsbezeichnungen haben nichts mit Netzwerkanbindungen eines Hosts zu tun."}
+:::
 
-### Hosts und Pakete
+## Lokale Netzwerke
 
-In jedem Netzwerk wird jedes angeschlossene Gerät – sei es ein Computer, Telefon oder Server – als **Host** bezeichnet.
+Ein lokales Netzwerk, kurz LAN, deckt eine begrenzte Umgebung wie ein Zuhause, Büro oder Rechenzentrumssegment ab. Ethernet-Switches leiten Frames zwischen Ports einer lokalen Verbindung weiter. Ein drahtloses LAN, kurz WLAN, verwendet drahtlose Verbindungstechnik. Kabelgebundene und drahtlose Schnittstellen können dennoch zum selben IP-Subnetz gehören, wenn eine Bridge oder ein Access Point sie verbindet.
 
-Alle Daten, die über diese Netzwerke übertragen werden, von Webseiten bis hin zu E-Mails, werden in kleine Teile zerlegt, die **Pakete** genannt werden. Im gesamten Abschnitt "Networking Nomad" erfahren Sie im Detail, wie diese Pakete zu und von verschiedenen Hosts reisen und ihre Reise durch das Internet abschließen.
+:::single-choice{#network-basics-wlan-relationship}
+In welchem Verhältnis steht ein WLAN zu einem LAN?
 
-## Exercise
+::option[Ein WLAN ist immer ein getrenntes weltweites Internet.]{#network-basics-wlan-global explanation="Es ist ein lokales Netzwerk mit drahtloser Verbindungstechnik."}
+::option[Ein WLAN ist eine von Routern verwendete Datenträgerpartition.]{#network-basics-wlan-disk explanation="Der Begriff beschreibt Vernetzung und keine Speicheraufteilung."}
+::option[Ein WLAN ist eine drahtlose Form eines lokalen Netzwerks.]{#network-basics-wlan-local .correct explanation="Drahtlose und kabelgebundene Verbindungen können sogar zu einer lokalen Broadcast-Domäne gebrückt werden."}
+:::
 
-Übung macht den Meister! Praktische Erfahrung ist entscheidend für die Beherrschung der **Netzwerk-Grundlagen**-Konzepte. Die folgenden Labs helfen Ihnen, Ihr Verständnis von Netzwerkkomponenten und der Kommunikation von Hosts zu festigen:
+## Router und weitreichende Netzwerke
 
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Identifizierung von Netzwerkadressinformationen für Hosts, einschließlich MAC- und IP-Adressen, mithilfe des Befehls `ip a`.
-2. **[IP-Adress-Typen und Erreichbarkeit in Linux erkunden](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Lernen Sie, die Netzwerkerreichbarkeit zu testen und verschiedene IP-Adress-Typen zu identifizieren, was für das Verständnis der Host-Verbindungen unerlässlich ist.
-3. **[Interaktion der Netzwerkschicht mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Verstehen Sie, wie Hosts in einem Netzwerk interagieren, indem Sie das Address Resolution Protocol (ARP) beobachten und die Konnektivität mit `ping` testen.
+Ein Router leitet Netzwerkschichtpakete gemäß seiner Routingtabelle zwischen IP-Netzwerken weiter. Ein Heimgerät verbindet häufig Routing, Switching, WLAN-Zugang, Firewall, NAT und DHCP, doch dies bleiben unterschiedliche Funktionen.
 
-Diese Labs helfen Ihnen, die Konzepte von Hosts, Adressierung und grundlegender Konnektivität in realen Szenarien anzuwenden und Vertrauen in grundlegende Netzwerkkenntnisse aufzubauen.
+Ein Weitverkehrsnetz, kurz WAN, erstreckt sich über größere geografische oder administrative Grenzen. Ein Internetanbieter kann ein Kundennetz mit anderen Netzwerken verbinden, aber „WAN“ bezeichnet nicht einfach jedes Gerät außerhalb eines Hauses.
 
-## Quiz Question
+:::single-choice{#network-basics-router-role}
+Was ist die kennzeichnende Aufgabe eines Routers?
 
-Wie wird das lokale Netzwerk genannt? Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.
+::option[Pakete zwischen Netzwerken der Netzwerkschicht weiterleiten.]{#network-basics-forward-networks .correct explanation="Routing wählt nächste Hops über Grenzen von IP-Netzwerken hinweg aus."}
+::option[Die Dateien jedes Benutzers zwingend als Sicherung speichern.]{#network-basics-router-backup explanation="Dateiaufbewahrung ist nicht die kennzeichnende Routingfunktion."}
+::option[Jeden Hostnamen ohne Abfrage von DNS übersetzen.]{#network-basics-router-hostnames explanation="Namensauflösung und Paketweiterleitung sind getrennte Funktionen."}
+:::
 
-## Quiz Answer
+## Pakete, Frames und Datenströme
 
-LAN
+Anwendungen erzeugen Daten, die Protokollschichten zur Übertragung aufteilen und kapseln. IP transportiert Pakete über Netzwerke; eine lokale Verbindung trägt jedes Paket in einem technologiespezifischen Frame. Router ersetzen bei jedem Hop gewöhnlich die Kapselung der Verbindungsschicht, während sie das IP-Paket weiterleiten.
+
+Eine Unterhaltung kann viele Pakete in beiden Richtungen umfassen. Verlust, Umordnung, Fragmentierung, erneute Übertragung und Pfadänderungen bedeuten, dass ein einzelnes aufgezeichnetes Paket selten die gesamte Anwendungstransaktion beschreibt.
+
+:::single-choice{#network-basics-router-frame}
+Was geschieht an einem Router-Hop normalerweise mit der Kapselung der Verbindungsschicht?
+
+::option[Der Router entfernt den eingehenden Frame und erstellt einen Frame für die nächste Verbindung.]{#network-basics-reframe .correct explanation="Das weitergeleitete IP-Paket wird in einem neuen, zur ausgehenden Schnittstelle passenden Frame der Verbindungsschicht transportiert."}
+::option[Der gleiche Ethernet-Frame durchquert unverändert das gesamte Internet.]{#network-basics-same-frame explanation="Frames gelten für ihre jeweilige Verbindung und werden an gerouteten Hops ersetzt."}
+::option[Die Anwendung löscht die IP-Adressen dauerhaft.]{#network-basics-delete-ip explanation="Routing ist auf Netzwerkschichtadressen angewiesen."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun die Hauptbestandteile eines grundlegenden Netzwerkpfads beschreiben.
+
+1. Unterscheide Hosts von ihren physischen und virtuellen Schnittstellen.
+2. Erkenne kabelgebundene und drahtlose Formen lokaler Netzwerke.
+3. Trenne Routing von anderen Funktionen eines kombinierten Heimgeräts.
+4. Unterscheide Frames lokaler Verbindungen von gerouteten IP-Paketen.

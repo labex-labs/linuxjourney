@@ -1,58 +1,85 @@
 ---
-index: 2
+lesson_id: "subnets"
+course_id: "subnetting"
 lang: "fr"
+order_index: 2
 title: "Sous-réseaux"
-meta_title: "Sous-réseaux - Sous-réseautage"
-meta_description: "Maîtrisez les fondamentaux du sous-réseau et du masque de sous-réseau Linux. Ce guide explique le sous-réseautage, les préfixes réseau et comment gérer la segmentation réseau dans un environnement Linux avec sous-réseaux."
-meta_keywords: "subnet linux, sous-réseau linux, masque sous-réseau linux, sous-réseautage sous-réseaux, sous-réseaux, masque de sous-réseau, préfixe réseau, réseau Linux, adresse IP"
+description: "Découvrez comment les préfixes définissent les sous-réseaux IPv4 et influencent la livraison locale, le routage et les politiques."
+meta_title: "Sous-réseaux - Sous-réseaux"
+meta_description: "Maîtrisez les bases des sous-réseaux et masques Linux, des préfixes réseau et de la segmentation."
+meta_keywords: "sous-réseau Linux, masque sous-réseau Linux, sous-réseaux, préfixe réseau, réseau Linux, adresse IP"
 ---
 
-## Lesson Content
+Un sous-réseau est une plage d’adresses IP définie par un préfixe réseau. Les hôtes d’un sous-réseau se trouvent souvent sur la même liaison locale, mais la proximité physique ne le définit pas : les VLAN, les tunnels, les surcouches et les liaisons routées peuvent modifier la topologie.
 
-Comment savoir si deux ordinateurs se trouvent sur le même réseau ? La réponse réside dans la compréhension du sous-réseau (subnet), abréviation de sous-réseau logique. Un sous-réseau est une division logique d'un réseau IP, regroupant des hôtes ayant des adresses IP similaires. Ces hôtes sont généralement à proximité physique, ce qui permet un transfert de données efficace entre eux. Pensez-y comme à l'envoi de courrier dans le même code postal ; c'est beaucoup plus rapide et simple que de l'envoyer dans un autre État.
+## Préfixes et masques
 
-Pour qu'un hôte fasse partie d'un **sous-réseau linux**, son adresse IP est divisée en deux parties : un préfixe réseau et un identifiant d'hôte. Par exemple, si un hôte a une IP de 192.168.1.8 et un autre 192.168.1.9, ils partagent probablement le même préfixe réseau. La partie commune identifie le réseau, tandis que les numéros uniques (8 et 9) identifient les hôtes individuels.
+IPv4 peut exprimer un préfixe de 24 bits par `/24` ou par le masque `255.255.255.0`. En binaire, un masque de sous-réseau conventionnel valide possède des uns contigus suivis de zéros :
 
-### Comprendre le masque de sous-réseau Linux
-
-Un **masque de sous-réseau linux** est ce qui détermine quelle partie d'une adresse IP est la portion réseau et quelle partie est la portion hôte. Un masque de sous-réseau typique ressemble à ceci :
-
-```plaintext
-255.255.255.0
+```text
+11111111.11111111.11111111.00000000
 ```
 
-Pour comprendre cela, nous devons penser en binaire. Chaque nombre dans une adresse IP ou un masque de sous-réseau est un octet, représentant 8 bits. En binaire, un `1` signifie "activé" et un `0` signifie "désactivé". Si vous convertissez le nombre binaire `11111111` en décimal, vous obtenez 255. Cela signifie qu'un octet peut aller de 0 (`00000000`) à 255 (`11111111`).
+Pour l’adresse `192.168.1.8/24`, le préfixe réseau est `192.168.1.0/24`. Certains contextes comprennent `192.168.1.0/255.255.255.0`, mais la notation de préfixe CIDR est la forme compacte standard.
 
-Les `255` dans le masque "masquent" la partie réseau de l'adresse IP. Ainsi, avec un masque de `255.255.255.0` et une IP de `192.168.1.8`, la partie `192.168.1` est le réseau, et `8` est l'hôte. Nous désignons souvent une configuration de **subnet linux** par son préfixe réseau suivi du masque de sous-réseau, comme `192.168.1.0/255.255.255.0`.
+:::single-choice{#subnets-mask-24}
+Quel masque décimal pointé correspond à `/24` ?
 
-### L'objectif de la segmentation des sous-réseaux (Subnetting Subnets)
+::option[`255.255.255.0`]{#subnets-mask-correct .correct explanation="Trois octets complets contiennent 24 bits un initiaux."}
+::option[`255.255.0.255`]{#subnets-noncontiguous explanation="Les bits réseau ne sont pas contigus ; ce n’est pas le masque conventionnel `/24`."}
+::option[`0.0.0.24`]{#subnets-prefix-as-octet explanation="Une longueur de préfixe ne se place pas dans le dernier octet du masque."}
+:::
 
-Pourquoi créons-nous des sous-réseaux ? La pratique de la **segmentation des sous-réseaux (subnetting subnets)** est cruciale pour organiser et gérer efficacement les réseaux. Elle consiste à diviser un réseau plus grand en segments plus petits et plus gérables. Cela offre plusieurs avantages clés :
+## Déterminer si une destination se trouve sur la liaison
 
-- **Performance Améliorée :** En segmentant un réseau, vous réduisez le volume de trafic de diffusion au sein de chaque sous-réseau, ce qui entraîne moins de congestion et une meilleure performance globale.
-- **Sécurité Renforcée :** Les sous-réseaux vous permettent d'isoler différentes parties de votre réseau. Un hôte sur un sous-réseau ne peut pas interagir directement avec un hôte sur un autre sans routeur, créant ainsi une frontière de sécurité. Vous pouvez implémenter des règles d'accès sur le routeur pour contrôler le flux de trafic entre les sous-réseaux.
-- **Administration Simplifiée :** Décomposer un grand réseau en unités logiques plus petites facilite la gestion, le dépannage et l'application des politiques réseau.
+Linux installe des routes connectées à partir des adresses et préfixes des interfaces. Il compare une destination aux routes admissibles au lieu de comparer simplement les trois premiers octets décimaux. Pour des limites qui ne coïncident pas avec les octets, telles que `/20`, la séparation se produit à l’intérieur d’un octet.
 
-### Connexion des sous-réseaux
+Examinez les routes connectées et la décision pour une adresse :
 
-Et si vous devez vous connecter à des hôtes sur un réseau différent, comme yahoo.com ? Pour connecter différents sous-réseaux, vous avez besoin d'un appareil connecté à plusieurs sous-réseaux : un routeur.
+```bash
+$ ip route show
+$ ip route get 192.168.1.50
+```
 
-Par exemple, un hôte à `192.168.1.129` sur un réseau avec un masque `255.255.255.0` peut atteindre n'importe quel autre hôte du réseau `192.168.1.0`. Pour atteindre Internet, il doit envoyer le trafic via sa passerelle, qui est le routeur. Sur de nombreux réseaux domestiques, l'adresse du routeur est souvent `.1` du sous-réseau (par exemple, `192.168.1.1`). Ce routeur possède une autre connexion à un sous-réseau différent (comme le réseau de votre FAI), permettant la communication avec le reste d'Internet.
+:::single-choice{#subnets-on-link-decision}
+Comment un hôte Linux détermine-t-il s’il doit envoyer directement ou par un routeur ?
 
-## Exercise
+::option[Il suppose toujours que les adresses terminées par `.1` sont locales.]{#subnets-dot-one explanation="Les conventions de numéros d’hôtes ne remplacent pas les préfixes et les routes configurés."}
+::option[Il consulte les préfixes et la politique de routage.]{#subnets-route-policy .correct explanation="La route sélectionnée indique si la destination est directement connectée et quelle interface ou quel prochain saut employer."}
+::option[Il demande un masque de sous-réseau à l’application de destination après la connexion.]{#subnets-ask-application explanation="La sélection de route doit avoir lieu avant cet échange applicatif."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'adressage IP et du sous-réseautage :
+## Routage entre les sous-réseaux
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses IPv4, ce qui est fondamental pour comprendre les sous-réseaux.
-2. **[Explorer les types d'adresses IP et la joignabilité sous Linux](https://labex.io/fr/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Apprenez à explorer différents types d'adresses IP et à tester la joignabilité du réseau, ce qui vous aidera à vérifier si les hôtes sont sur le même réseau.
-3. **[Effectuer le sous-réseautage IP et la conversion binaire dans le terminal Linux](https://labex.io/fr/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Maîtrisez le sous-réseautage IP et la conversion binaire, en appliquant directement les concepts de préfixe réseau et d'identification d'hôte abordés dans la leçon.
+Un routeur doté des interfaces et des routes appropriées peut acheminer le trafic entre des sous-réseaux. Une passerelle par défaut est simplement un prochain saut sélectionné par une route par défaut ; elle ne doit pas nécessairement employer la première adresse utilisable ni se terminer par `.1`.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à gagner en confiance avec l'adressage réseau et le sous-réseautage.
+La séparation en sous-réseaux crée un emplacement où appliquer des politiques de routage et de filtrage, mais ne constitue pas automatiquement une frontière de sécurité. Si l’acheminement est autorisé sans politique restrictive, des hôtes de sous-réseaux différents peuvent encore communiquer.
 
-## Quiz Question
+:::single-choice{#subnets-security-boundary}
+La création de deux sous-réseaux bloque-t-elle automatiquement le trafic entre eux ?
 
-Un sous-réseau est défini par un préfixe réseau et un masque de sous-réseau. Vrai ou Faux ? (Veuillez répondre par 'True' ou 'False'. La réponse est sensible à la casse et doit être en anglais.)
+::option[Oui, car les routeurs ne peuvent pas relier des préfixes différents.]{#subnets-never-route explanation="Relier des préfixes est le rôle principal du routage."}
+::option[Non ; les politiques de routage et de filtrage déterminent le trafic autorisé.]{#subnets-policy-required .correct explanation="La segmentation permet l’application de politiques, mais ne définit pas elle-même ces politiques."}
+::option[Oui, sauf si les deux emploient l’adresse d’hôte `.1`.]{#subnets-dot-one-security explanation="Une convention de numéro d’hôte ne contrôle pas l’acheminement."}
+:::
 
-## Quiz Answer
+## Raisons de créer des sous-réseaux
 
-True
+Les sous-réseaux peuvent organiser l’attribution des adresses, limiter la portée des diffusions de la couche liaison, séparer les domaines de panne et fournir des frontières de politique. Ils peuvent aussi accroître la complexité du routage, du pare-feu, de DHCP, de la surveillance et de la documentation. Concevez les préfixes selon l’échelle, la croissance, la redondance et les exigences de sécurité réelles plutôt que de supposer qu’un réseau plus petit est toujours plus rapide.
+
+:::single-choice{#subnets-design-tradeoff}
+Quel est un véritable compromis de la création de sous-réseaux ?
+
+::option[Les domaines de diffusion plus petits n’exigent ni routage ni documentation.]{#subnets-no-complexity explanation="Davantage de frontières exigent généralement une gestion accrue des routes, des politiques, des adresses et des services."}
+::option[La segmentation peut améliorer l’organisation tout en augmentant la complexité des politiques.]{#subnets-tradeoff .correct explanation="Les frontières de sous-réseaux peuvent faciliter le contrôle, mais ajoutent un état opérationnel à maintenir."}
+::option[Chaque sous-réseau garantit la même latence vers Internet.]{#subnets-equal-latency explanation="Le chemin et les conditions de la charge déterminent la latence."}
+:::
+
+## Résumé
+
+Vous savez maintenant relier un préfixe IPv4 à la livraison locale et à la politique routée.
+
+1. Exprimer les masques contigus par des longueurs de préfixe CIDR.
+2. Calculer le préfixe réseau à partir des bits de l’adresse et du masque.
+3. Employer les routes pour distinguer la livraison locale de celle par un prochain saut.
+4. Considérer l’isolation des sous-réseaux comme une possibilité de politique, et non une garantie.

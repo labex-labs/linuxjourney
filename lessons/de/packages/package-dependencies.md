@@ -1,44 +1,87 @@
 ---
-index: 4
+lesson_id: "package-dependencies"
+course_id: "packages"
 lang: "de"
+order_index: 4
 title: "Paketabhängigkeiten"
+description: "Erfahre, wie Paketmetadaten erforderliche Fähigkeiten, Versionen, Konflikte und Beziehungen zu gemeinsam genutzten Bibliotheken ausdrücken."
 meta_title: "Paketabhängigkeiten – Pakete"
-meta_description: "Erfahren Sie mehr über Linux-Paketabhängigkeiten und deren Wichtigkeit für die Softwareinstallation. Dieser Leitfaden erklärt gemeinsam genutzte Bibliotheken und wie Paketverwaltung Abhängigkeiten handhabt, um fehlerhafte Software zu vermeiden."
-meta_keywords: "Linux Paketabhängigkeiten, Shared Libraries, Linux Pakete, Paketverwaltung, Linux Softwareinstallation, Linux Tutorial, Anfänger Linux, Linux Anleitung"
+meta_description: "Lerne Linux-Paketabhängigkeiten kennen und erfahre, warum sie für die Softwareinstallation entscheidend sind. Dieser Leitfaden erklärt gemeinsam genutzte Bibliotheken und wie die Paketverwaltung Abhängigkeiten behandelt, um defekte Software zu vermeiden."
+meta_keywords: "Linux-Paketabhängigkeiten, gemeinsam genutzte Bibliotheken, Linux-Pakete, Paketverwaltung, Linux-Softwareinstallation, Linux-Tutorial, Linux für Einsteiger, Linux-Leitfaden"
 ---
 
-## Lesson Content
+Eine Paketabhängigkeit besagt, dass ein Paket für seine Installation oder seinen Betrieb ein anderes Paket, eine Fähigkeit oder eine kompatible Version benötigt. Paketverwaltungen mit Paketquellenkenntnis berechnen anhand dieser Metadaten eine konsistente Menge von Änderungen, statt jedes Archiv isoliert zu behandeln.
 
-In der Welt von Linux stehen Softwarepakete selten für sich allein. Sie sind oft auf andere Komponenten angewiesen, bekannt als Abhängigkeiten (Dependencies), um korrekt zu funktionieren. Dieses Konzept ist fundamental für das Linux-Paketmanagement.
+## Abhängigkeitsbeziehungen
 
-### Das Konzept der Abhängigkeiten
+Paketmetadaten können mehr als einen einfachen erforderlichen Namen ausdrücken. Je nach Distributionsformat können Beziehungen Folgendes umfassen:
 
-Um Abhängigkeiten zu verstehen, stellen Sie sich eine Gruppe von Restaurants vor. Jedes Restaurant kreiert einzigartige Gerichte, aber alle beziehen ihre Zutaten von derselben zentralen Farm. Die Qualität ihrer Speisen hängt von den Lieferungen der Farm ab. Wenn die Farm plötzlich aufhören würde, Zutaten zu liefern, könnten die Restaurants nicht arbeiten. Ähnlich verhält es sich mit Linux-Paketen, die von anderen Komponenten abhängen, um ausgeführt zu werden.
+- erforderliche Abhängigkeiten
+- Mindest-, Höchst- oder genaue Versionsbeschränkungen
+- Alternativen, bei denen einer von mehreren Anbietern eine Anforderung erfüllt
+- Empfehlungen oder Vorschläge mit schwächerer Semantik
+- Konflikte, Brüche oder Ersetzungen
+- virtuelle Fähigkeiten, die von mehr als einem Paket bereitgestellt werden
 
-### Was sind gemeinsam genutzte Bibliotheken (Shared Libraries)
+Mit diesen Regeln kann ein Solver eine Gruppe von Paketversionen auswählen, die mit den konfigurierten Paketquellen, der Architektur und dem installierten Zustand kompatibel ist. Eine Lösung kann Upgrades, Entfernungen oder die Wahl zwischen Anbietern erfordern. Prüfe daher die vorgeschlagene Transaktion, bevor du sie genehmigst.
 
-Unter Linux sind diese entscheidenden Abhängigkeiten typischerweise andere Pakete oder, häufiger, gemeinsam genutzte Bibliotheken (Shared Libraries). Eine gemeinsam genutzte Bibliothek ist eine Sammlung von vorkompiliertem Code, den mehrere Programme gleichzeitig nutzen können. Dies ist ein Kernprinzip der effizienten Softwareinstallation.
+:::single-choice{#package-dependencies-solver-role}
+Was versucht ein Abhängigkeits-Solver mit Paketquellenkenntnis zu erzeugen?
 
-Zurück zu unserer Analogie: Stellen Sie sich den Mehraufwand vor, wenn jedes Restaurant sein eigenes Essen anbauen müsste. Durch die gemeinsame Nutzung einer zentralen Ressource – der Farm – sparen sie immensen Aufwand. Gemeinsam genutzte Bibliotheken funktionieren genauso; sie verhindern, dass Entwickler gängige Funktionen für jede neue Anwendung neu schreiben müssen. Wir werden gemeinsam genutzte Bibliotheken später detaillierter untersuchen, aber vorerst ist es wichtig zu wissen, dass sie eine häufige Art von Abhängigkeit darstellen.
+::option[Eine konsistente Gruppe von Paketversionen und erforderlichen Änderungen.]{#package-dependencies-consistent-set .correct explanation="Der Solver bewertet deklarierte Beziehungen über installierte und verfügbare Pakete hinweg."}
+::option[Ein neues Benutzerkonto für jede installierte Anwendung.]{#package-dependencies-user-account explanation="Das Erstellen eines Kontos kann eine Lebenszyklusaktion eines Pakets sein, ist aber nicht der Zweck der Abhängigkeitsauflösung."}
+::option[Eine komprimierte Kopie jeder Datei in der Paketquelle.]{#package-dependencies-compressed-repository explanation="Der Solver wählt Metadaten und Pakete aus; er archiviert nicht die gesamte Paketquelle."}
+:::
 
-### Das Risiko fehlerhafter Pakete
+## Gemeinsam genutzte Bibliotheken als Abhängigkeiten
 
-Effektives Paketmanagement dreht sich darum, sicherzustellen, dass diese Abhängigkeiten erfüllt sind. Wenn ein erforderliches Paket oder eine gemeinsam genutzte Bibliothek während einer Softwareinstallation fehlt, wird der Vorgang wahrscheinlich fehlschlagen. Das Paket wird als „gebrochen“ betrachtet, da ihm die notwendigen Komponenten zum Ausführen fehlen. Der Paketmanager Ihres Systems ist darauf ausgelegt, diese Linux-Paketabhängigkeiten automatisch zu verwalten, indem er sie abruft und installiert, um solche Probleme zu verhindern, bevor sie auftreten.
+Eine gemeinsam genutzte Bibliothek enthält kompilierten Code, den mehrere Programme zur Laufzeit einbinden können. Die gemeinsame Nutzung verringert doppelte Implementierungen und erlaubt Distributionen, eine gemeinsame Bibliothek unabhängig zu aktualisieren. Programme sind jedoch von einer kompatiblen Binärschnittstelle der Anwendung oder ABI abhängig.
 
-## Exercise
+Auf ELF-basierten Linux-Systemen kann eine ausführbare Datei einen benötigten Bibliotheksnamen wie einen SONAME erfassen. Der dynamische Linker findet beim Programmstart eine passende installierte Bibliothek. Paketmetadaten stellen diese Anforderung gewöhnlich als Abhängigkeit von dem Paket oder der Fähigkeit dar, das beziehungsweise die die kompatible Bibliothek bereitstellt.
 
-Wenden Sie Ihr Wissen mit diesen praktischen Übungen an, die Ihnen helfen, Ihr Verständnis von Linux-Paketen, Abhängigkeiten und gemeinsam genutzten Bibliotheken zu festigen:
+:::single-choice{#package-dependencies-shared-library}
+Was ist eine gemeinsam genutzte Bibliothek?
 
-1. **[Gemeinsam genutzte Bibliotheken unter Linux verwalten](https://labex.io/de/labs/comptia-manage-shared-libraries-in-linux-590867)** – Üben Sie das Identifizieren, Lokalisieren und Verwalten gemeinsam genutzter Bibliotheken, die entscheidende Abhängigkeiten für viele Anwendungen sind.
-2. **[Pakete mit RPM unter Linux verwalten](https://labex.io/de/labs/rhel-managing-packages-with-rpm-in-linux-590868)** – Lernen Sie, Softwarepakete auf RPM-basierten Systemen zu verwalten, einschließlich der Abfrage von Paketinformationen und des Verständnisses von Abhängigkeiten.
-3. **[Pakete mit YUM unter Linux abfragen und aktualisieren](https://labex.io/de/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** – Sammeln Sie Erfahrung mit YUM, um installierte Pakete zu überprüfen, Repositories zu erkunden und Updates zu verwalten, was alles die Handhabung von Paketabhängigkeiten beinhaltet.
+::option[Kompilierter Code, den mehrere Programme laden und verwenden können.]{#package-dependencies-library-code .correct explanation="Eine gemeinsam genutzte Bibliothek stellt wiederverwendbare Binärschnittstellen bereit, statt in jedes Programm eine getrennte Implementierung einzubetten."}
+::option[Eine Liste von Paketquellen, die unabhängige Distributionen gemeinsam nutzen.]{#package-dependencies-shared-repository explanation="Die Konfiguration von Paketquellen und ausführbarer Bibliothekscode sind unterschiedliche Konzepte."}
+::option[Eine Textdatei mit dem Shell-Verlauf jedes Benutzers.]{#package-dependencies-shared-history explanation="Der Shell-Verlauf sind Benutzerdaten und keine Programmbibliotheksabhängigkeit."}
+:::
 
-Diese Labs helfen Ihnen, die Konzepte des Paketmanagements und der Abhängigkeitsauflösung in realen Szenarien anzuwenden und Ihr Vertrauen in die Linux-Softwareinstallation zu stärken.
+## Versions- und ABI-Kompatibilität
 
-## Quiz Question
+Eine Datei mit einem ähnlichen Bibliotheksnamen reicht nicht aus. Die erforderliche ABI, Architektur, Symbole und manchmal Mindestversion müssen übereinstimmen. Das manuelle Ersetzen einer Distributionsbibliothek kann jedes abhängige Programm beschädigen, selbst wenn der Dateiname richtig aussieht.
 
-Was ist eine Sammlung von vorkompiliertem Code, die mehrere Programme nutzen können? (Bitte antworten Sie auf Englisch, achten Sie auf Groß- und Kleinschreibung).
+Paketbetreuer codieren Bibliotheksbeziehungen und koordinieren Übergänge, wenn sich eine ABI ändert. Belasse native Bibliotheken unter der Kontrolle der Paketverwaltung. Verwende unterstützte Mechanismen zur parallelen Installation, Container, Umgebungen oder Build-Mechanismen für Software, die eine in Konflikt stehende Version benötigt.
 
-## Quiz Answer
+:::single-choice{#package-dependencies-filename-insufficient}
+Warum kann ein Programm trotz einer ähnlich benannten Bibliotheksdatei fehlschlagen?
 
-Libraries
+::option[Linux erlaubt jeder Bibliothek nur die Nutzung durch eine einzige ausführbare Datei.]{#package-dependencies-one-consumer explanation="Ein wesentlicher Zweck gemeinsam genutzter Bibliotheken ist ihre Verwendung durch mehrere Prozesse und Programme."}
+::option[Paketabhängigkeiten gelten nur vor dem ersten Systemstart.]{#package-dependencies-boot-only explanation="Abhängigkeiten bleiben während Installation, Upgrades und Laufzeit relevant."}
+::option[Die ABI oder Architektur der Bibliothek erfüllt möglicherweise nicht die Anforderungen des Programms.]{#package-dependencies-abi-mismatch .correct explanation="Die Laufzeitverknüpfung hängt von kompatiblen Binärschnittstellen und der Maschinenarchitektur ab und nicht nur von einem Dateinamen."}
+:::
+
+## Defekte Abhängigkeitszustände
+
+Ein Abhängigkeitsproblem kann durch gemischte Paketquellen, unterbrochene Vorgänge, manuell installierte Archive, zurückgehaltene Versionen, entfernte Dateien oder inkompatible Drittanbietersoftware entstehen. Reagiere darauf nicht, indem du Paketdatenbankdateien löschst oder eine Installation blind erzwingst.
+
+Lies zuerst die Diagnose der Paketverwaltung, aktualisiere nur Metadaten vertrauenswürdiger Paketquellen, prüfe zurückgehaltene oder gepinnte Versionen und begutachte die vorgeschlagene Reparatur. Ein einfaches Paketinstallationswerkzeug kann ein Archiv entpacken, ohne alle Abhängigkeiten abzurufen. Ein übergeordnetes Werkzeug mit Paketquellenkenntnis ist für gewöhnliche Installationen meist sicherer, da es die vollständige Transaktion auflöst.
+
+:::single-choice{#package-dependencies-low-level-limit}
+Was ist eine verbreitete Einschränkung bei der Installation eines lokalen Pakets mit einem einfachen Archivwerkzeug?
+
+::option[Es ruft möglicherweise nicht alle fehlenden Abhängigkeiten aus Paketquellen ab und löst sie nicht vollständig auf.]{#package-dependencies-no-repository-resolution .correct explanation="Einfache Werkzeuge verwalten Paketarchive und Datenbanken, können das Abrufen von Abhängigkeiten aber einer übergeordneten Verwaltung überlassen."}
+::option[Es kompiliert den Linux-Kernel immer aus dem Quellcode neu.]{#package-dependencies-recompile-kernel explanation="Die Installation eines Paketarchivs baut nicht zwangsläufig den Kernel neu."}
+::option[Es verhindert, dass das Paket gemeinsam genutzte Bibliotheken enthält.]{#package-dependencies-no-libraries explanation="Ein Paketarchiv kann unabhängig vom verwendeten Installationswerkzeug Bibliotheken enthalten."}
+:::
+
+Nutze [Gemeinsam genutzte Bibliotheken unter Linux verwalten](https://labex.io/labs/comptia-manage-shared-libraries-in-linux-590867), um Laufzeitbeziehungen zu prüfen, und vergleiche sie anschließend mit Paketmetadaten in [Pakete mit RPM verwalten](https://labex.io/labs/rhel-managing-packages-with-rpm-in-linux-590868).
+
+## Zusammenfassung
+
+Du kannst nun erklären, wie die Auflösung von Paketabhängigkeiten funktioniert.
+
+1. Erkenne erforderliche, alternative, versionierte und in Konflikt stehende Beziehungen.
+2. Setze Pakete gemeinsam genutzter Bibliotheken mit ABI-Anforderungen zur Laufzeit in Beziehung.
+3. Behandle Dateinamen als schwächeren Beleg als Architektur- und Schnittstellenkompatibilität.
+4. Prüfe eine vollständige Paketverwaltungstransaktion, bevor du Reparaturen anwendest.

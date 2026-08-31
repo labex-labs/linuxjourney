@@ -1,86 +1,110 @@
 ---
-index: 2
+lesson_id: "tracking-processes-lsof-fuser"
+course_id: "process-utilization"
 lang: "es"
+order_index: 2
 title: "lsof y fuser"
-meta_title: "lsof y fuser - Uso de Procesos"
-meta_description: "Explore los comandos lsof y fuser en Linux para identificar qué procesos están utilizando archivos específicos. Aprenda a resolver errores de 'Dispositivo o Recurso Ocupado', compare fuser vs lsof, y use opciones como fuser -k para gestionar archivos abiertos eficazmente."
-meta_keywords: "lsof, fuser, comando fuser, fuser linux, fuser vs lsof, lsof vs fuser, fuser -k linux, archivos abiertos, gestión de procesos, dispositivo ocupado, comandos Linux"
+description: "Aprende a identificar los procesos que utilizan archivos, directorios, puntos de montaje y sockets de red."
+meta_title: "lsof y fuser - Utilización de procesos"
+meta_description: "Aprende a usar lsof y fuser para identificar qué procesos utilizan archivos, sistemas de archivos y sockets."
+meta_keywords: "lsof, fuser, archivos abiertos, dispositivo ocupado, procesos Linux, fuser -k"
 ---
 
-## Lesson Content
+Un sistema de archivos puede seguir ocupado porque un proceso mantiene un archivo abierto, asigna un archivo en memoria o utiliza un directorio como directorio de trabajo actual. `lsof` y `fuser` ayudan a identificar esas relaciones. Primero investiga; detener procesos es una decisión independiente con consecuencias para el funcionamiento.
 
-¿Alguna vez ha intentado desmontar una unidad USB y ha recibido un error de "Dispositivo o recurso ocupado"? Este problema común ocurre cuando un proceso todavía está utilizando un archivo o directorio en el dispositivo. Para resolver esto, necesita averiguar qué proceso está reteniendo el recurso. Dos utilidades potentes para esta tarea son `lsof` y `fuser`.
+## Mostrar archivos abiertos con lsof
 
-### Usando lsof para listar archivos abiertos
-
-En Linux, casi todo se trata como un archivo, incluidos discos, tuberías, sockets de red y dispositivos. El comando `lsof` (abreviatura de "list open files" o listar archivos abiertos) le muestra una lista detallada de todos los archivos abiertos y los procesos que los utilizan.
-
-Para ver qué procesos están utilizando el directorio actual (`.`), puede ejecutar:
+`lsof` significa «list open files», es decir, mostrar archivos abiertos. Consulta una ruta para ver los registros de archivos abiertos coincidentes:
 
 ```bash
-pete@icebox:~$ lsof .
-COMMAND    PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
-lxsession 1491 pete  cwd    DIR    8,6     4096  131 .
-update-no 1796 pete  cwd    DIR    8,6     4096  131 .
-nm-applet 1804 pete  cwd    DIR    8,6     4096  131 .
-xterm     2205 pete  cwd    DIR    8,6     4096  131 .
-bash      2207 pete  cwd    DIR    8,6     4096  131 .
-lsof      5914 pete  cwd    DIR    8,6     4096  131 .
+$ sudo lsof -- /mnt/usb
 ```
 
-La salida muestra el comando (`COMMAND`), el ID de proceso (`PID`) y el usuario (`USER`) asociados con cada archivo abierto. Con esta información, puede identificar los procesos que le impiden desmontar un dispositivo.
-
-### El comando fuser
-
-Otra excelente herramienta es el comando `fuser` (abreviatura de "file user" o usuario de archivo). Esta utilidad identifica qué procesos están utilizando archivos, sockets o sistemas de archivos específicos. El comando `linux fuser` es una forma rápida de ver los PID de los procesos que acceden a un recurso en particular.
-
-El uso de la opción `-v` (verbose o detallado) proporciona una salida más detallada:
+Para recorrer todo un árbol de directorios del mismo sistema de archivos, las implementaciones suelen admitir `+D`, pero los recorridos recursivos pueden ser costosos:
 
 ```bash
-pete@icebox:~$ fuser -v .
-                     USER        PID ACCESS COMMAND
-/home/pete:         pete  1491 ..c.. lxsession
-                     pete  1796 ..c.. update-notifier
-                     pete  1804 ..c.. nm-applet
-                     pete  2205 ..c.. xterm
-                     pete  2207 ..c.. bash
+$ sudo lsof +D /mnt/usb
 ```
 
-Aquí, podemos ver claramente qué procesos están utilizando nuestro directorio actual. La columna `ACCESS` muestra cómo se está utilizando el archivo (por ejemplo, `c` para directorio actual).
+Entre las columnas útiles se encuentran `COMMAND`, `PID`, `USER`, el descriptor de archivo (`FD`), el tipo, el dispositivo y `NAME`. Un registro cuyo `FD` sea `cwd` indica que el proceso utiliza el directorio como directorio de trabajo actual. La salida sin privilegios puede estar incompleta para procesos de otros usuarios.
 
-### Terminación de procesos con fuser
+:::single-choice{#lsof-cwd-record}
+¿Qué indica `cwd` en la columna `FD`?
 
-Una característica clave del comando `fuser` es su capacidad para terminar procesos que están utilizando un recurso. La opción `fuser -k` envía una señal `SIGKILL` a cada proceso que accede al archivo o sistema de archivos especificado. Esto es particularmente útil para desmontar un dispositivo ocupado.
+::option[Que el proceso utiliza ese directorio como directorio de trabajo actual.]{#lsof-current-directory .correct explanation="El directorio actual de un proceso puede mantener ocupado un sistema de archivos montado."}
+::option[Que el archivo se cerró mientras se escribía.]{#lsof-closed-write explanation="El marcador describe una relación con un directorio, no un suceso de cierre."}
+::option[Que el proceso es propietario del dispositivo del sistema de archivos.]{#lsof-device-owner explanation="La propiedad del sistema de archivos no se representa mediante la etiqueta de descriptor `cwd`."}
+:::
 
-Por ejemplo, para eliminar todos los procesos que utilizan un punto de montaje en `/mnt/usb`, ejecutaría:
+## Identificar usuarios con fuser
+
+`fuser` comunica los identificadores de los procesos que utilizan un archivo o sistema de archivos indicado. La salida detallada añade usuarios, tipos de acceso y nombres de órdenes:
 
 ```bash
-sudo fuser -k /mnt/usb
+$ sudo fuser -v /mnt/usb
 ```
 
-Usar `fuser -k` en Linux es una forma rápida y efectiva de liberar un recurso.
+Para tratar el argumento como un sistema de archivos montado y encontrar los procesos que acceden a archivos situados dentro de él, utiliza la opción de montaje compatible con `fuser` de procps:
 
-### fuser vs lsof
+```bash
+$ sudo fuser -vm /mnt/usb
+```
 
-Entonces, ¿cuándo debe usar `fuser` vs `lsof`?
+Comprueba con herramientas como `findmnt --target /mnt/usb` que la ruta sea el punto de montaje pretendido. Los montajes enlazados, los espacios de nombres, los permisos y las condiciones de carrera pueden afectar a lo que revela una sola consulta.
 
-- **`lsof`** es excelente para la investigación detallada. Proporciona información exhaustiva sobre todos los archivos abiertos, lo que lo hace ideal para la solución de problemas complejos.
-- **`fuser`** es más directo. Es perfecto para identificar rápidamente y, si es necesario, terminar procesos en un archivo o punto de montaje específico. El `fuser command` es a menudo la opción más rápida para resolver errores de "Dispositivo o recurso ocupado".
+:::single-choice{#fuser-verbose-purpose}
+¿Por qué utilizar `fuser -v` en vez de `fuser` sin opciones durante una investigación?
 
-Ambas herramientas son esenciales para cualquier usuario de Linux. Familiarícese con ellas para administrar archivos y procesos de manera eficiente.
+::option[Porque desmonta automáticamente el sistema de archivos seleccionado.]{#fuser-verbose-unmount explanation="El modo detallado comunica información y no solicita un desmontaje."}
+::option[Porque añade contexto como el usuario, el tipo de acceso y la orden.]{#fuser-verbose-details .correct explanation="Las columnas adicionales ayudan a evaluar con qué procesos es seguro coordinarse o cuáles se pueden detener."}
+::option[Porque impide permanentemente que los procesos vuelvan a abrir archivos.]{#fuser-verbose-prevent explanation="Mostrar información no crea una regla de control de acceso."}
+:::
 
-## Exercise
+## Gestionar un sistema de archivos ocupado
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la gestión de procesos y la solución de conflictos de recursos:
+Sigue una secuencia deliberada en vez de matar de inmediato todos los PID coincidentes:
 
-1. **[Administrar y monitorear procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción con procesos en primer plano y en segundo plano, inspeccionándolos con `ps`, monitoreando recursos con `top` y terminándolos con `kill`. Este laboratorio le ayudará a identificar y administrar procesos que puedan estar reteniendo recursos, como archivos en una unidad USB.
+1. Confirma el equipo, la ruta, la fuente del montaje y el mantenimiento pretendido.
+2. Identifica los procesos con ambas herramientas cuando sea práctico.
+3. Determina si cada proceso puede detenerse, salir del directorio o terminar su trabajo.
+4. Detenlo mediante su gestor de servicios o la interfaz de la aplicación cuando existan.
+5. Vuelve a consultar y después desmonta y verifica el resultado.
 
-Este laboratorio le ayudará a aplicar estos conceptos en escenarios del mundo real y a ganar confianza en la identificación y gestión de procesos del sistema.
+`fuser -k` envía una señal a los procesos coincidentes. En las implementaciones habituales de procps, la señal predeterminada es `SIGKILL`, por lo que no permite un cierre ordenado. Si resulta necesaria una terminación aprobada explícitamente, elige una señal apropiada, verifica el PID y el propietario, y comprende que el conjunto de procesos puede cambiar entre la inspección y la acción.
 
-## Quiz Question
+:::single-choice{#fuser-k-risk}
+¿Por qué `fuser -k /mnt/usb` es un mal primer paso para resolver un problema?
 
-What command is used to list open files and their associated process information? (Please answer in English, using only lowercase letters.)
+::option[Porque solo muestra el espacio libre del sistema de archivos.]{#fuser-k-space explanation="La opción se dirige a procesos, no comunica capacidad."}
+::option[Porque puede matar varios procesos coincidentes sin una limpieza ordenada.]{#fuser-k-kills .correct explanation="La acción amplia de señalización puede interrumpir escrituras o servicios, así que primero deben investigarse y coordinarse."}
+::option[Porque cambia el directorio de trabajo de todos los procesos coincidentes.]{#fuser-k-chdir explanation="Envía una señal y no traslada los directorios de los procesos."}
+:::
 
-## Quiz Answer
+## Elegir la herramienta
 
-lsof
+Utiliza `lsof` cuando necesites registros detallados de archivos abiertos, descriptores o información de sockets. Utiliza `fuser` para una vista orientada a rutas de los PID y tipos de acceso coincidentes. Ningún resultado por sí solo indica si es seguro terminar un proceso.
+
+Para sockets de red, utiliza un espacio de nombres de protocolo explícito con `fuser` o una herramienta centrada en sockets como `ss`:
+
+```bash
+$ sudo fuser -v 22/tcp
+$ sudo ss -lntp
+```
+
+:::single-choice{#lsof-fuser-tool-choice}
+¿Qué herramienta resulta adecuada para obtener una lista detallada de descriptores de archivos abiertos y sus procesos propietarios?
+
+::option[`lsof`]{#lsof-detailed-records .correct explanation="Su salida se organiza alrededor de registros de archivos abiertos y los metadatos de sus procesos."}
+::option[`uptime`]{#lsof-uptime explanation="Uptime comunica el tiempo de actividad y los promedios de carga, no descriptores abiertos."}
+::option[`free`]{#lsof-free explanation="Free resume la memoria, no el uso de archivos."}
+:::
+
+## Resumen
+
+Ahora puedes investigar el uso de archivos y sistemas de archivos sin tratar la terminación como respuesta predeterminada.
+
+1. Utiliza `lsof` para obtener registros detallados de archivos abiertos.
+2. Utiliza `fuser` para obtener información de PID y acceso orientada a rutas.
+3. Confirma el montaje y ten en cuenta los permisos y las condiciones de carrera.
+4. Coordina una detención ordenada antes de plantearte una señal.
+5. Vuelve a consultar y verifica el resultado del desmontaje o del servicio.

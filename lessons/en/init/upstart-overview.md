@@ -1,60 +1,91 @@
 ---
-index: 3
+lesson_id: "upstart-overview"
+course_id: "init"
 lang: "en"
+order_index: 3
 title: "Upstart Overview"
+description: "Learn how the legacy Upstart init system connects event expressions to job lifecycle goals."
 meta_title: "Upstart Overview - Init"
 meta_description: "Learn about Upstart, its event-driven model, and how it manages services in Linux. Understand Upstart job configurations and its role as an init system."
 meta_keywords: "Upstart, init system, Linux services, Ubuntu, SysV, beginner tutorial, Linux guide"
 ---
 
-## Lesson Content
+Upstart is a legacy event-based init and service-management system developed by Canonical. Older Ubuntu and several other distributions used it, but current Ubuntu releases use systemd. Study Upstart when maintaining a confirmed legacy host, not as the default assumption for a modern installation.
 
-Upstart was developed by Canonical, so it was the init implementation on Ubuntu for a while; however, on modern Ubuntu installations, systemd is now used. Upstart was created to improve upon the issues with SysV, such as strict startup processes, blocking of tasks, etc. Upstart's event and job-driven model allow it to respond to events as they happen.
+## Confirming a Legacy Upstart Host
 
-To find out if you are using Upstart, if you have a `/usr/share/upstart` directory, that's a pretty good indicator.
+Inspect PID 1 and the active control interface:
 
-Jobs are the actions that Upstart performs, and events are messages that are received from other processes to trigger jobs. To see a list of jobs and their configuration:
-
-```plaintext
-pete@icebox:~$ ls /etc/init
-acpid.conf                   mountnfs.sh.conf
-alsa-restore.conf            mtab.sh.conf
-alsa-state.conf              networking.conf
-alsa-store.conf              network-interface.conf
-anacron.conf                 network-interface-container.conf
+```bash
+$ ps -p 1 -o pid,comm,args=
+$ readlink /proc/1/exe
+$ initctl version
 ```
 
-Inside these job configurations, you'll find information on how and when to start jobs.
+The last command succeeds meaningfully only where the Upstart control service and client are present. A directory such as `/usr/share/upstart` or leftover files under `/etc/init` is weak evidence because packages and migration remnants can remain after another init system takes over.
 
-For example, in the `networking.conf` file, it could say something as simple as:
+:::single-choice{#upstart-overview-active-evidence}
+What is the strongest evidence that a host actually uses Upstart?
 
-```plaintext
-start on runlevel [235]
-stop on runlevel [0]
+::option[A directory name contains the word `upstart`.]{#upstart-overview-directory-only explanation="Installed documentation or remnants can remain on a system using another init."}
+::option[The system has at least one shell script.]{#upstart-overview-shell-script explanation="Shell scripts are common to all init environments."}
+::option[PID 1 and the live `initctl` interface identify Upstart.]{#upstart-overview-live-interface .correct explanation="Runtime process and control evidence is stronger than the existence of legacy files."}
+:::
+
+## Jobs and Events
+
+An Upstart **job** describes a service or task, including its process commands and lifecycle conditions. An **event** is a named notification with optional environment variables. Job configuration can express when its goal should become start or stop.
+
+System job files commonly live under `/etc/init/` with a `.conf` suffix. For example:
+
+```text
+description "Example worker"
+start on runlevel [2345]
+stop on runlevel [016]
+exec /usr/local/sbin/example-worker
 ```
 
-This means that it will start setting up networking on runlevel 2, 3, or 5 and will stop networking on runlevel 0. There are many ways to write the configuration file, and you'll discover that when you look at the different job configurations available.
+This uses runlevel events as compatibility inputs. Upstart can also react to filesystem, device, network, or application-defined events depending on what the system emits.
 
-The way that Upstart works is that:
+:::single-choice{#upstart-overview-start-on}
+What does an Upstart `start on` stanza define?
 
-1. First, it loads the job configurations from `/etc/init`.
-2. Once a startup event occurs, it will run jobs triggered by that event.
-3. These jobs will make new events, and then those events will trigger more jobs.
-4. Upstart continues to do this until it completes all the necessary jobs.
+::option[The kernel version that must be compiled next.]{#upstart-overview-kernel-version explanation="Job event conditions do not select a kernel build."}
+::option[The event expression that changes the job's goal toward starting.]{#upstart-overview-start-condition .correct explanation="When the expression is satisfied, Upstart attempts the configured job start transition."}
+::option[The disk partition where every job stores data.]{#upstart-overview-partition explanation="Storage placement is unrelated to Upstart event syntax."}
+:::
 
-## Exercise
+## Event-Driven Startup
 
-Practice makes perfect! While Upstart is an older init system, understanding how processes are managed and tasks are scheduled is crucial for any Linux administrator. Here are some hands-on labs to reinforce your understanding of process management and task automation, which are foundational to how init systems operate:
+During startup, Upstart loads job definitions and receives events. Matching `start on` or `stop on` expressions update job goals; job transitions can emit additional events that unlock other work. Independent jobs can progress concurrently.
 
-1. **[Manage and Monitor Linux Processes](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practice interacting with foreground and background processes, inspecting them with `ps`, monitoring resources with `top`, and terminating them with `kill`. This lab helps you understand the lifecycle of processes, which init systems like Upstart manage.
-2. **[Schedule Tasks with at and cron in Linux](https://labex.io/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - Learn to schedule one-time jobs with `at` and recurring tasks with `cron`. This provides practical experience with task automation, a core function that init systems facilitate for system services.
+This model avoids one hard-coded global script sequence, but it can be difficult to diagnose when event names, ordering, and conditions are implicit. Events are not a durable message queue by default, so a job added or condition changed later should not assume every past event will be replayed.
 
-These labs will help you apply the concepts of process control and task automation in real scenarios, building confidence in managing a Linux system, regardless of the specific init system in use.
+:::single-choice{#upstart-overview-event-chain}
+How can one Upstart job lead to another job starting?
 
-## Quiz Question
+::option[It rewrites the other job's executable binary in memory.]{#upstart-overview-rewrite-binary explanation="Coordination occurs through events, not code modification."}
+::option[Every job always starts strictly in filename order.]{#upstart-overview-filename-order explanation="Upstart uses event expressions rather than one filename-sequenced startup list."}
+::option[Its transition can emit an event matched by another job.]{#upstart-overview-emitted-event .correct explanation="Event expressions connect otherwise independent job lifecycle transitions."}
+:::
 
-What is the init implementation that is used by Ubuntu?
+## Migration and Compatibility
 
-## Quiz Answer
+Systemd can provide limited compatibility for some legacy service scripts, but it does not execute Upstart job syntax as native systemd units. When migrating, translate lifecycle conditions, environment, respawn policy, logging, dependencies, and readiness semantics rather than mechanically renaming files.
 
-systemd
+:::single-choice{#upstart-overview-current-ubuntu}
+Which init system is used by current standard Ubuntu releases?
+
+::option[Upstart exclusively on every installation.]{#upstart-overview-current-upstart explanation="That was true only for historical release periods and configurations."}
+::option[systemd.]{#upstart-overview-current-systemd .correct explanation="Upstart belongs to older Ubuntu generations; current releases use systemd as PID 1."}
+::option[No init process at all.]{#upstart-overview-no-init explanation="A full Ubuntu system still requires a PID 1 service manager."}
+:::
+
+## Summary
+
+You can now read Upstart as a legacy event-and-job model.
+
+1. Confirm the live PID 1 and control interface.
+2. Distinguish job definitions from event notifications.
+3. Interpret `start on` and `stop on` as lifecycle expressions.
+4. Migrate semantics explicitly rather than renaming configuration files.

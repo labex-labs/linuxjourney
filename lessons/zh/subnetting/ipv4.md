@@ -1,75 +1,96 @@
 ---
-index: 1
+lesson_id: "ipv4"
+course_id: "subnetting"
 lang: "zh"
+order_index: 1
 title: "IPv4"
+description: "学习 IPv4 地址、前缀、作用域和 Linux 接口输出之间的关系。"
 meta_title: "IPv4 - 子网划分"
-meta_description: "通过我们完整的 IPv4 地址 Linux 教程开始您的学习之旅。本指南专为初学者设计，是学习 Linux 网络知识的最佳途径，涵盖 IP 结构和 ip addr 等基本命令行工具。"
-meta_keywords: "IPv4, IP 地址，Linux 初学者，学习 Linux 的最佳方式，完整 Linux 教程，免费在线 Linux 课程，免费 Linux 认证课程，Linux 网络，ifconfig, ip addr"
+meta_description: "通过完整的 IPv4 地址 Linux 教程开始学习。本指南面向 Linux 初学者，介绍 IP 结构以及 ip addr 等重要命令行工具。"
+meta_keywords: "IPv4, IP 地址, Linux 初学者, 学习 Linux, 完整 Linux 教程, 免费 Linux 在线课程, Linux 网络, ifconfig, ip addr"
 ---
 
-## Lesson Content
+IPv4 为经过路由的数据包提供 32 位源地址和目标地址。地址只有与其前缀、接口、作用域、路由策略和有效期结合起来才有意义，并不是整台设备的永久标识符。
 
-网络上的每个设备都有一个唯一的标识符，称为 IP（Internet Protocol，互联网协议）地址。本课程是我们“完整 Linux 教程”的关键部分，重点介绍 IPv4 地址——您将遇到的最常见的类型。对于任何“Linux 新手”来说，理解 IPv4 是进入网络世界的关键第一步。
+## 点分十进制表示法
 
-### 为什么 IPv4 至关重要
+IPv4 显示为由点分隔的四个八位组：
 
-学习 IPv4 对于任何认真对待系统管理或网络管理的人来说都是基础性的。它构成了大多数网络通信的骨干。本指南提供了从头开始学习 Linux 网络知识的“最佳方式”。虽然这不属于那些“免费 Linux 认证课程”之列，但掌握这些基础知识是迈向专业认证的关键一步。
-
-### IPv4 地址结构
-
-IPv4 地址是一个 32 位的数字，但通常以易于人类阅读的格式显示，如下所示：
-
-```
-204.23.124.23
+```text
+192.0.2.165
 ```
 
-该地址有两个主要部分：标识网络的**网络部分**和标识该网络上特定设备的**主机部分**。该地址被点（句点）分隔成四个部分，每个部分称为一个**八位字节 (octet)**。一个八位字节是 8 位的一组，这意味着一个 IPv4 地址长 4 字节（32 位）。理解这种结构对于网络配置和故障排除至关重要。
+每个八位组的取值范围为 0 到 255，因此完整地址包含四个字节。前缀长度表示从开头起多少位属于网络前缀，例如 `192.0.2.165/24`。
 
-### 查找您的 IP 地址
+:::single-choice{#ipv4-address-size}
+IPv4 地址有多大？
 
-任何 Linux 用户要做的第一项任务之一就是查找其系统的 IP 地址。您可以使用简单的命令行工具来完成此操作。传统的命令是 `ifconfig`。虽然它在许多系统上仍然存在，但它被认为是遗留工具。
+::option[32 位，由四个八位组组成。]{#ipv4-thirty-two-bits .correct explanation="四组八位构成点分十进制表示。"}
+::option[每个网络中都是 24 位。]{#ipv4-always-twenty-four explanation="/24 只是一种前缀长度，并不是每个 IPv4 地址的大小。"}
+::option[128 个字节，并用冒号分隔。]{#ipv4-128-bytes explanation="IPv6 是 128 位，使用冒号分隔的十六进制表示。"}
+:::
+
+## 地址作用域与用途
+
+并非每个 IPv4 地址都能进行全局路由。例如环回地址 `127.0.0.0/8`、链路本地地址 `169.254.0.0/16`、`10.0.0.0/8` 等私有范围，以及 `192.0.2.0/24` 等文档范围。多播和受限广播地址具有其他语义。
+
+私有地址可以在相互独立的网络中重复使用。NAT 可以为外部通信转换这些地址，但私有路由域内部的通信并不需要 NAT。
+
+:::single-choice{#ipv4-private-reuse}
+为什么许多组织中都可以出现 `10.0.0.1`？
+
+::option[每个实例都标识同一台物理路由器。]{#ipv4-same-router explanation="该地址在各自网络内具有意义，并不全球唯一。"}
+::option[IPv4 路由器会忽略第一个八位组。]{#ipv4-ignore-octet explanation="所有地址位都会参与路由匹配。"}
+::option[它属于可供私有网络重复使用的地址范围。]{#ipv4-private-range .correct explanation="互相独立的私有网络可以使用相同地址，而不向全球网络通告。"}
+:::
+
+## 检查 Linux IPv4 地址
+
+使用以下命令显示 IPv4 分配：
 
 ```bash
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
+$ ip -4 address show
 ```
 
-在上面的输出中，IPv4 地址是 `192.168.1.129`。
+下面这样的行报告的不只是地址：
 
-### 使用 ip addr 命令
+```text
+inet 192.0.2.165/24 brd 192.0.2.255 scope global dynamic eth0
+```
 
-现代推荐的方法是使用 `ip` 命令。`ip addr` 命令取代了 `ifconfig`，是大多数当前 Linux 发行版上的标准。它提供更详细的信息，是您应该专注于学习的工具。
+它显示前缀、广播地址、作用域、动态来源标记和接口。其他行还可以显示有效期和首选期。一个接口可以拥有多个 IPv4 地址。
+
+:::single-choice{#ipv4-ip-output-prefix}
+`192.0.2.165/24` 中的 `/24` 表示什么？
+
+::option[该地址会在 24 秒后过期。]{#ipv4-prefix-seconds explanation="有效期会单独报告。"}
+::option[地址的前 24 位组成网络前缀。]{#ipv4-prefix-bits .correct explanation="剩余八位标识该前缀内的位置。"}
+::option[该接口使用 TCP 端口 24。]{#ipv4-prefix-port explanation="CIDR 前缀表示法与传输端口无关。"}
+:::
+
+## 确定所选源地址
+
+接口上存在某个地址，并不能证明 Linux 会对目标使用它。路由、策略规则、度量值和应用程序绑定都会影响源地址选择。使用以下命令查询当前路由决策：
 
 ```bash
-pete@icebox:~$ ip addr show
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 1d:3a:32:24:4d:ce brd ff:ff:ff:ff:ff:ff
-    inet 192.168.1.129/24 brd 192.168.1.255 scope global dynamic eth0
-       valid_lft 85646sec preferred_lft 85646sec
+$ ip route get 198.51.100.20
 ```
 
-在这里，您可以在 `eth0` 接口的 `inet` 旁边找到相同的 IPv4 地址 `192.168.1.129`。
+读取所选下一跳、接口和源地址，然后测试真实应用程序路径。没有控制台访问和回滚计划时，不要更改远程主机的地址。
 
-## Exercise
+:::single-choice{#ipv4-route-get-purpose}
+`ip route get DESTINATION` 可以显示什么？
 
-使用这些动手实验来巩固您对 Linux 中 IP 寻址和网络识别的理解：
+::option[完整互联网路径上每台路由器的配置。]{#ipv4-all-router-config explanation="本地查询不会查询下游设备配置。"}
+::option[本地路由决策，包括接口和首选源地址。]{#ipv4-route-decision .correct explanation="它会针对所给目标评估当前主机的路由策略。"}
+::option[目标用户的密码。]{#ipv4-password explanation="路由命令不会暴露应用程序凭据。"}
+:::
 
-1. **[在 Linux 中识别 MAC 地址和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 练习使用 `ip a` 命令来识别 Linux 系统上的网络寻址信息，包括 IPv4 和 IPv6 地址。
-2. **[在 Linux 中探索 IP 地址类型和可达性](https://labex.io/zh/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - 探索不同的 IP 地址类型，并使用 `ping` 和 `ip a` 等命令测试网络可达性。
-3. **[在 Linux 终端中执行 IP 子网划分和二进制转换](https://labex.io/zh/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - 掌握 IP 子网划分和二进制转换，这对于深入理解 IP 地址和网络在位级别上的结构至关重要。
+## 总结
 
-这些实验将帮助您在实际场景中应用 IP 寻址概念，并增强您对 Linux 中网络配置和故障排除的信心。
+现在，你可以把 IPv4 地址作为接口和路由状态的一部分来解读。
 
-## Quiz Question
-
-一个 IPv4 地址有多少字节？
-
-## Quiz Answer
-
-4
+1. 认识到 IPv4 由四个八位组组成，总计 32 位。
+2. 将地址与其前缀结合起来解释。
+3. 区分私有、环回、链路本地及其他作用域。
+4. 检查地址分配和针对目标所选的源地址。

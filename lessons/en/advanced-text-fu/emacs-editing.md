@@ -1,53 +1,114 @@
 ---
-index: 12
+lesson_id: "emacs-editing"
+course_id: "advanced-text-fu"
 lang: "en"
+order_index: 12
 title: "Emacs Editing"
+description: "Learn how to move point, activate a region, and use Emacs kill-ring commands to edit text."
 meta_title: "Emacs Editing - Advanced Text-Fu"
 meta_description: "Master the fundamentals of Emacs editing with this beginner-friendly guide. Learn essential Emacs commands for text navigation, cutting, and pasting in this powerful Linux text editor."
 meta_keywords: "Emacs, Emacs tutorial, Emacs commands, text editor, Linux editor, Emacs navigation, beginner Emacs, Emacs guide"
 ---
 
-## Lesson Content
+Emacs calls the current cursor position **point**. Movement commands reposition point; editing commands insert, delete, kill, copy, or yank text around it. In the key notation below, `C-` means Control and `M-` means Meta, commonly Alt.
 
-Emacs is a powerful and extensible text editor widely used on Linux and other Unix-like systems. This beginner Emacs guide will introduce you to some fundamental editing commands. In Emacs terminology, `C-` refers to the `Ctrl` key, and `M-` refers to the `Meta` key, which is usually the `Alt` key.
+## Moving by Characters and Lines
 
-### Emacs Text Navigation
+Arrow and other platform navigation keys may work, but Emacs's standard movement commands remain available across terminal and graphical sessions:
 
-While standard navigation keys like Home, End, and the arrow keys work as expected, Emacs offers more efficient commands for moving through your text, which Emacs holds in a "buffer". Mastering Emacs navigation is a key step in becoming proficient.
+- `C-f`: Move forward one character.
+- `C-b`: Move backward one character.
+- `C-n`: Move to the next line.
+- `C-p`: Move to the previous line.
+- `C-a`: Move to the beginning of the line.
+- `C-e`: Move to the end of the line.
 
-Here are some essential Emacs commands for moving the cursor:
+:::single-choice{#emacs-edit-next-line}
+Which Emacs key moves point to the next line?
 
+::option[`C-p`]{#emacs-edit-previous-line explanation="`C-p` moves to the previous line, in the opposite direction."}
+::option[`C-n`]{#emacs-edit-next-line-answer .correct explanation="`C-n`, for next-line, moves point downward to the next screen line position."}
+::option[`C-f`]{#emacs-edit-forward-character explanation="`C-f` moves forward one character rather than to the next line."}
+:::
+
+## Moving by Words and Buffer Boundaries
+
+Meta commands move across larger units:
+
+- `M-f`: Move forward one word.
+- `M-b`: Move backward one word.
+- `M-<`: Move to the beginning of the buffer.
+- `M->`: Move to the end of the buffer.
+
+On many keyboards, Alt acts as Meta. When that chord is unavailable, pressing `Esc` and then the following key often sends the equivalent Meta command.
+
+:::single-choice{#emacs-edit-buffer-end}
+Which Emacs key moves point to the end of the buffer?
+
+::option[`C-e`]{#emacs-edit-line-end explanation="`C-e` moves to the end of the current line rather than the entire buffer."}
+::option[`M-<`]{#emacs-edit-buffer-start explanation="`M-<` moves to the beginning of the buffer."}
+::option[`M->`]{#emacs-edit-buffer-end-answer .correct explanation="`M->` moves point to the end of the current buffer."}
+:::
+
+## Defining a Region
+
+The **mark** is a saved buffer position. The text between point and mark is the **region**. Press `C-SPC`, written `C-space` in some documentation, to run `set-mark-command`, then move point to extend the active region.
+
+In a terminal, `C-SPC` can be encoded as `C-@`. Highlighting depends on transient-mark settings, but point and mark still define a region.
+
+:::single-choice{#emacs-edit-set-mark}
+Which key begins defining a region by setting the mark at point?
+
+::option[`C-w`]{#emacs-edit-kill-region-before-mark explanation="`C-w` kills an already defined region; it is not the initial mark-setting command."}
+::option[`C-y`]{#emacs-edit-yank-before-mark explanation="`C-y` inserts text from the kill ring and does not begin a selection."}
+::option[`C-SPC`]{#emacs-edit-control-space .correct explanation="`set-mark-command` places the mark, after which movement changes the region between mark and point."}
+:::
+
+## Killing or Copying a Region
+
+Emacs stores killed and copied text in the **kill ring**:
+
+- `C-w`: Kill the active region, removing it and adding it to the kill ring.
+- `M-w`: Copy the active region to the kill ring without removing it.
+- `C-k`: Kill from point to the end of the line; repeated use can include the newline.
+
+Killing is more than ordinary deletion because the removed text is retained for later yanking.
+
+:::single-choice{#emacs-edit-copy-region}
+Which key copies the active region to the kill ring without removing it?
+
+::option[`M-w`]{#emacs-edit-copy-active-region .correct explanation="`kill-ring-save`, bound to `M-w`, copies the region without deleting it."}
+::option[`C-w`]{#emacs-edit-kill-active-region explanation="`C-w` removes the region while saving it to the kill ring."}
+::option[`C-k`]{#emacs-edit-kill-line explanation="`C-k` kills text toward the end of the line rather than copying the selected region unchanged."}
+:::
+
+## Yanking from the Kill Ring
+
+Use `C-y` to yank the most recent kill-ring entry at point. Immediately after a yank, `M-y` replaces that inserted text with an earlier kill-ring entry; repeating `M-y` cycles through entries.
+
+```text
+C-y
+M-y
 ```
-C-up arrow: move up one paragraph
-C-down arrow: move down one paragraph
-C-left arrow: move one word left
-C-right arrow: move one word right
-M->: move to the end of the buffer
-```
 
-### Cutting and Pasting
+If another unrelated command occurs after `C-y`, `M-y` no longer has the same yank-pop context.
 
-In Emacs, cutting is called "killing" and pasting is called "yanking". To perform these actions, you first need to select a region of text.
+:::single-choice{#emacs-edit-yank-latest}
+Which key inserts the most recent kill-ring entry at point?
 
-To begin selecting text, move your cursor to the start of the desired region and press `C-space`. This sets the "mark". Then, use any navigation commands to move the cursor to the end of the region you want to select. The area between the mark and your current cursor position will be highlighted.
+::option[`C-y`]{#emacs-edit-yank-answer .correct explanation="`yank`, bound to `C-y`, inserts the latest kill-ring text into the current buffer."}
+::option[`M-y`]{#emacs-edit-yank-pop explanation="`M-y` normally replaces a just-yanked entry with an earlier one; it depends on the preceding yank context."}
+::option[`C-d`]{#emacs-edit-delete-character explanation="`C-d` deletes the character after point and does not retrieve kill-ring text."}
+:::
 
-Once you have selected a region, you can use the following commands:
+Practice in `*scratch*` or a disposable file: move point, set the mark, copy one region, kill another, and yank both back. Save only when the resulting file is worth keeping.
 
-```
-C-w: kill (cut) the selected region
-C-y: yank (paste) the last killed text
-```
+## Summary
 
-These basic commands form the foundation of editing in the Emacs text editor.
+You can now navigate and rearrange Emacs text using point, mark, and the kill ring.
 
-## Exercise
-
-The best way to learn Emacs commands is through practice. Open a new text file using `emacs my_practice_file.txt` and try out the navigation, selection, cutting, and pasting commands covered in this lesson. Get comfortable moving around the buffer and manipulating text.
-
-## Quiz Question
-
-How do you move to the end of the buffer? Please answer using only the key combination format shown in the lesson (e.g., C-w). The answer is case-sensitive.
-
-## Quiz Answer
-
-M->
+1. Move by characters or lines with Control commands.
+2. Move by words or buffer boundaries with Meta commands.
+3. Set the mark with `C-SPC` to define a region.
+4. Kill with `C-w` or copy with `M-w`.
+5. Yank with `C-y` and cycle with `M-y` immediately afterward.

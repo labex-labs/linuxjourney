@@ -1,44 +1,87 @@
 ---
-index: 4
+lesson_id: "package-dependencies"
+course_id: "packages"
 lang: "fr"
-title: "Dépendances de Paquets"
-meta_title: "Dépendances de Paquets - Paquets"
-meta_description: "Découvrez les dépendances de paquets Linux et leur importance cruciale pour l'installation de logiciels. Ce guide explique les bibliothèques partagées et comment la gestion des paquets gère les dépendances pour éviter les logiciels défectueux."
-meta_keywords: "dépendances paquets Linux, bibliothèques partagées, paquets Linux, gestion des paquets, installation logiciels Linux, tutoriel Linux, Linux débutant, guide Linux"
+order_index: 4
+title: "Dépendances des paquets"
+description: "Découvrez comment les métadonnées des paquets expriment les fonctionnalités requises, les versions, les conflits et les relations entre bibliothèques partagées."
+meta_title: "Dépendances des paquets - Paquets"
+meta_description: "Découvrez les dépendances des paquets Linux, les bibliothèques partagées et la manière dont la gestion des paquets prévient les installations incohérentes."
+meta_keywords: "dépendances des paquets Linux, bibliothèques partagées, paquets Linux, gestion des paquets, installation de logiciels Linux, tutoriel Linux, Linux débutant"
 ---
 
-## Lesson Content
+Une dépendance de paquet indique qu’un paquet a besoin d’un autre paquet, d’une fonctionnalité ou d’une version compatible pour être installé ou fonctionner. Les gestionnaires de paquets qui connaissent les dépôts emploient ces métadonnées pour calculer un ensemble cohérent de changements au lieu de traiter chaque archive isolément.
 
-Dans le monde de Linux, les paquets logiciels se suffisent rarement à eux-mêmes. Ils dépendent souvent d'autres composants, appelés dépendances, pour fonctionner correctement. Ce concept est fondamental pour la gestion des paquets sous Linux.
+## Relations de dépendances
 
-### Le Concept de Dépendances
+Les métadonnées d’un paquet peuvent exprimer plus qu’un simple nom obligatoire. Selon le format de la distribution, les relations peuvent comprendre :
 
-Pour comprendre les dépendances, imaginez un groupe de restaurants. Chaque restaurant crée des plats uniques, mais ils s'approvisionnent tous en ingrédients auprès de la même ferme centrale. La qualité de leur nourriture dépend des approvisionnements de la ferme. Si la ferme cessait soudainement de fournir des ingrédients, les restaurants ne pourraient pas fonctionner. De même, les paquets Linux dépendent d'autres composants pour s'exécuter.
+- les dépendances obligatoires ;
+- des contraintes de version minimale, maximale ou exacte ;
+- des solutions de remplacement, où l’un des fournisseurs possibles satisfait l’exigence ;
+- des recommandations ou des suggestions dont la sémantique est moins contraignante ;
+- des conflits, des ruptures ou des remplacements ;
+- des fonctionnalités virtuelles fournies par plusieurs paquets.
 
-### Que sont les Bibliothèques Partagées
+Ces règles permettent au solveur de choisir un ensemble de versions compatible avec les dépôts configurés, l’architecture et l’état installé. Une solution peut nécessiter des mises à niveau, des suppressions ou un choix entre plusieurs fournisseurs ; examinez donc la transaction proposée avant de l’approuver.
 
-Sous Linux, ces dépendances cruciales sont généralement d'autres paquets ou, plus communément, des bibliothèques partagées. Une bibliothèque partagée est une collection de code précompilé que plusieurs programmes peuvent utiliser simultanément. C'est un principe fondamental d'une installation logicielle efficace.
+:::single-choice{#package-dependencies-solver-role}
+Que cherche à produire un solveur de dépendances qui connaît les dépôts ?
 
-Pour revenir à notre analogie, imaginez le travail supplémentaire si chaque restaurant devait cultiver sa propre nourriture. En partageant une ressource commune — la ferme — ils économisent d'immenses efforts. Les bibliothèques partagées fonctionnent de la même manière, empêchant les développeurs d'avoir à réécrire des fonctions courantes pour chaque nouvelle application. Nous explorerons les bibliothèques partagées plus en détail plus tard, mais pour l'instant, il est important de savoir qu'elles constituent un type courant de dépendance.
+::option[Un ensemble cohérent de versions de paquets et de changements nécessaires.]{#package-dependencies-consistent-set .correct explanation="Le solveur évalue les relations déclarées entre les paquets installés et disponibles."}
+::option[Un nouveau compte utilisateur pour chaque application installée.]{#package-dependencies-user-account explanation="La création d’un compte peut être une action du cycle de vie d’un paquet, mais ce n’est pas le but de la résolution des dépendances."}
+::option[Une copie compressée de chaque fichier du dépôt.]{#package-dependencies-compressed-repository explanation="Le solveur sélectionne des métadonnées et des paquets ; il n’archive pas tout le dépôt."}
+:::
 
-### Le Risque des Paquets Cassés
+## Bibliothèques partagées comme dépendances
 
-Une gestion efficace des paquets consiste à s'assurer que ces dépendances sont satisfaites. Si un paquet ou une bibliothèque partagée requis est manquant lors de l'installation d'un logiciel, le processus échouera probablement. Le paquet sera considéré comme "cassé" car il lui manque les composants nécessaires pour s'exécuter. Le gestionnaire de paquets de votre système est conçu pour gérer automatiquement ces dépendances de paquets Linux, en les récupérant et en les installant pour éviter de tels problèmes avant qu'ils ne surviennent.
+Une bibliothèque partagée contient du code compilé que plusieurs programmes peuvent charger à l’exécution. Le partage réduit la duplication des implémentations et permet aux distributions de mettre à jour une bibliothèque commune indépendamment, mais les programmes dépendent d’une interface binaire applicative, ou ABI, compatible.
 
-## Exercise
+Sur les systèmes Linux reposant sur ELF, un exécutable peut enregistrer le nom d’une bibliothèque nécessaire, par exemple un SONAME. L’éditeur de liens dynamique trouve une bibliothèque installée correspondante au démarrage du programme. Les métadonnées du paquet représentent généralement cette exigence comme une dépendance envers le paquet ou la fonctionnalité qui fournit la bibliothèque compatible.
 
-Appliquez vos connaissances avec ces laboratoires pratiques, qui vous aideront à renforcer votre compréhension des paquets Linux, des dépendances et des bibliothèques partagées :
+:::single-choice{#package-dependencies-shared-library}
+Qu’est-ce qu’une bibliothèque partagée ?
 
-1. **[Gérer les Bibliothèques Partagées sous Linux](https://labex.io/fr/labs/comptia-manage-shared-libraries-in-linux-590867)** - Entraînez-vous à identifier, localiser et gérer les bibliothèques partagées, qui sont des dépendances cruciales pour de nombreuses applications.
-2. **[Gestion des Paquets avec RPM sous Linux](https://labex.io/fr/labs/rhel-managing-packages-with-rpm-in-linux-590868)** - Apprenez à gérer les paquets logiciels sur les systèmes basés sur RPM, y compris l'interrogation des informations sur les paquets et la compréhension des dépendances.
-3. **[Interroger et Mettre à Jour les Paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Acquérir de l'expérience avec YUM pour inspecter les paquets installés, explorer les dépôts et gérer les mises à jour, ce qui implique tous la gestion des dépendances des paquets.
+::option[Du code compilé que plusieurs programmes peuvent charger et utiliser.]{#package-dependencies-library-code .correct explanation="Une bibliothèque partagée fournit des interfaces binaires réutilisables au lieu d’intégrer une implémentation distincte dans chaque programme."}
+::option[Une liste de dépôts partagée entre des distributions sans rapport.]{#package-dependencies-shared-repository explanation="La configuration des dépôts et le code exécutable d’une bibliothèque sont des notions différentes."}
+::option[Un fichier texte contenant l’historique du shell de chaque utilisateur.]{#package-dependencies-shared-history explanation="L’historique du shell est une donnée utilisateur et non une dépendance de bibliothèque d’un programme."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts de gestion des paquets et de résolution des dépendances dans des scénarios réels, renforçant ainsi votre confiance dans l'installation de logiciels sous Linux.
+## Compatibilité des versions et de l’ABI
 
-## Quiz Question
+La présence d’un fichier dont le nom ressemble à celui de la bibliothèque ne suffit pas. L’ABI requise, l’architecture, les symboles et parfois la version minimale doivent correspondre. Le remplacement manuel d’une bibliothèque de la distribution peut briser tous les programmes qui en dépendent, même si son nom paraît correct.
 
-What is a collection of pre-compiled code that multiple programs can use? (Please answer in English, paying attention to uppercase and lowercase letters).
+Les mainteneurs de paquets encodent les relations entre bibliothèques et coordonnent les transitions lorsqu’une ABI change. Laissez le gestionnaire de paquets contrôler les bibliothèques natives ; employez des mécanismes pris en charge d’installation parallèle, de conteneur, d’environnement ou de construction pour les logiciels qui exigent une version incompatible.
 
-## Quiz Answer
+:::single-choice{#package-dependencies-filename-insufficient}
+Pourquoi un programme peut-il encore échouer lorsqu’un fichier de bibliothèque portant un nom semblable existe ?
 
-Libraries
+::option[Linux n’autorise qu’un seul exécutable à employer chaque bibliothèque.]{#package-dependencies-one-consumer explanation="L’un des objectifs fondamentaux des bibliothèques partagées est leur utilisation par plusieurs processus et programmes."}
+::option[Les dépendances des paquets ne s’appliquent qu’avant le premier démarrage du système.]{#package-dependencies-boot-only explanation="Les dépendances restent pertinentes pendant l’installation, les mises à niveau et l’exécution."}
+::option[L’ABI ou l’architecture de la bibliothèque peut ne pas répondre aux exigences du programme.]{#package-dependencies-abi-mismatch .correct explanation="L’édition de liens à l’exécution dépend d’interfaces binaires et d’une architecture machine compatibles, et non seulement du nom du fichier."}
+:::
+
+## États de dépendances cassés
+
+Un problème de dépendances peut provenir d’un mélange de dépôts, d’opérations interrompues, d’archives installées manuellement, de versions retenues, de fichiers supprimés ou de logiciels tiers incompatibles. N’y répondez pas en supprimant les fichiers de la base des paquets ou en forçant aveuglément une installation.
+
+Commencez par lire les diagnostics du gestionnaire de paquets, n’actualisez que les métadonnées des dépôts de confiance, examinez les versions retenues ou épinglées et vérifiez la réparation proposée. Un installateur de bas niveau peut décompresser une archive sans récupérer toutes ses dépendances ; un outil de dépôt de niveau supérieur est généralement plus sûr pour une installation ordinaire, car il résout toute la transaction.
+
+:::single-choice{#package-dependencies-low-level-limit}
+Quelle est une limite courante de l’installation d’un paquet local avec un outil d’archives de bas niveau ?
+
+::option[Il peut ne pas récupérer ni résoudre toutes les dépendances manquantes dans les dépôts.]{#package-dependencies-no-repository-resolution .correct explanation="Les outils de bas niveau gèrent les archives et les bases de paquets, mais peuvent laisser la récupération des dépendances à un gestionnaire de niveau supérieur."}
+::option[Il recompile toujours le noyau Linux depuis les sources.]{#package-dependencies-recompile-kernel explanation="L’installation d’une archive de paquet n’entraîne pas nécessairement la reconstruction du noyau."}
+::option[Il empêche le paquet de contenir des bibliothèques partagées.]{#package-dependencies-no-libraries explanation="Une archive de paquet peut contenir des bibliothèques quel que soit l’outil qui l’installe."}
+:::
+
+Utilisez [Gérer les bibliothèques partagées sous Linux](https://labex.io/fr/labs/comptia-manage-shared-libraries-in-linux-590867) pour examiner les relations à l’exécution, puis comparez-les aux métadonnées des paquets dans [Gérer des paquets avec RPM](https://labex.io/fr/labs/rhel-managing-packages-with-rpm-in-linux-590868).
+
+## Résumé
+
+Vous savez maintenant expliquer la résolution des dépendances des paquets.
+
+1. Reconnaître les relations obligatoires, alternatives, versionnées et conflictuelles.
+2. Relier les paquets de bibliothèques partagées aux exigences d’ABI à l’exécution.
+3. Considérer les noms de fichiers comme une preuve moins solide que l’architecture et la compatibilité des interfaces.
+4. Examiner une transaction complète du gestionnaire de paquets avant d’appliquer une réparation.

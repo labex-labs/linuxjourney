@@ -1,68 +1,130 @@
 ---
-index: 7
+lesson_id: "vim-editing"
+course_id: "advanced-text-fu"
 lang: "es"
+order_index: 7
 title: "Edición en Vim"
-meta_title: "Edición en Vim - Trucos de Texto Avanzados"
-meta_description: "Un tutorial de Vim para principiantes sobre comandos de edición esenciales. Aprende a borrar, cambiar, copiar (yank) y pegar texto en el editor de texto Vim para mejorar tu flujo de trabajo en Linux."
-meta_keywords: "edición Vim, comandos Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes, comando dd, borrar en Vim"
+description: "Aprende cómo Vim combina operadores, movimientos, registros, inserciones y órdenes de deshacer para editar texto."
+meta_title: "Edición en Vim - Text-Fu avanzado"
+meta_description: "Tutorial de Vim para principiantes sobre órdenes esenciales de edición. Aprende a eliminar, cambiar, copiar y pegar texto para mejorar tu flujo de trabajo."
+meta_keywords: "edición Vim, órdenes Vim, editor de texto Linux, tutorial Vim, guía Vim, Vim para principiantes, orden dd, eliminar Vim"
 ---
 
-## Lesson Content
+Las órdenes de edición de Vim suelen combinar un operador con un movimiento o un objeto de texto. Esta gramática permite aplicar las mismas acciones a caracteres, palabras, líneas y ámbitos mayores. Pulsa `Esc` antes de practicar para volver al modo Normal.
 
-Editar texto en Vim es una característica potente que se basa en combinar operadores y movimientos desde el modo Normal. Este enfoque le permite eliminar, cambiar, copiar (yank) y pegar (put) texto de manera eficiente. Antes de ejecutar cualquier comando, presione `Esc` para asegurarse de estar en el modo Normal.
+## Combinar un operador con un movimiento
 
-### Entendiendo los Operadores y Movimientos de Vim
+La forma general es:
 
-El núcleo de la edición en Vim es la fórmula: `operador + movimiento`. Un operador es una acción (como `d` para eliminar), y un movimiento es un desplazamiento (como `w` para palabra). Por ejemplo, `dw` combina el operador de eliminar con el movimiento de palabra para borrar una palabra. También puede usar contadores para repetir una acción, como `2dw` para eliminar dos palabras.
+```text
+[count] operator [count] motion
+```
 
-### Eliminar Texto en Vim
+Entre los operadores habituales se encuentran:
 
-El operador de eliminación es `d`. Es uno de los comandos de Vim más comunes para la manipulación de texto.
+- `d`: elimina texto.
+- `c`: cambia texto y después entra en el modo Insertar.
+- `y`: copia texto en un registro (*yank*).
 
-- `x` – Elimina el carácter directamente bajo el cursor.
-- `dw` – Elimina desde el cursor hasta el principio de la siguiente palabra.
-- `d$` – Elimina desde el cursor hasta el final de la línea actual.
-- `dd` – El comando `dd` elimina la línea actual completa.
-- `3dd` – Elimina tres líneas, comenzando desde la línea actual.
+Por ejemplo, `dw` elimina el intervalo cubierto por el movimiento `w`, mientras que `d$` elimina desde el cursor hasta el final de la línea. `2dw` aplica la eliminación a dos movimientos de palabra.
 
-### Cambiar Texto
+:::single-choice{#vim-edit-operator-motion}
+En el modo Normal, ¿qué hace `d$`?
 
-El operador de cambio, `c`, funciona de manera similar a eliminar, pero lo coloca en el modo Insertar después de realizar la acción. Esto es útil para reemplazar texto.
+::option[Elimina el archivo completo desde el cursor en adelante.]{#vim-edit-delete-file-end explanation="El movimiento con signo de dólar apunta al final de la línea actual, no al final de todo el búfer."}
+::option[Elimina desde el cursor hasta el final de la línea.]{#vim-edit-delete-line-end .correct explanation="El operador `d` se aplica al movimiento `$` hacia el final de la línea."}
+::option[Se desplaza al final de la línea sin modificar el texto.]{#vim-edit-move-line-end explanation="`$` por sí solo se desplaza, pero la `d` anterior convierte el intervalo cubierto en una eliminación."}
+:::
 
-- `cw` – Cambia el texto desde el cursor hasta el final de la palabra.
-- `c$` – Cambia el texto desde el cursor hasta el final de la línea.
-- `cc` – Cambia la línea actual completa.
+## Editar caracteres y líneas
 
-### Copiar y Pegar en Vim
+Algunas órdenes son atajos prácticos:
 
-En Vim, copiar se denomina "yankear" (operador `y`), y pegar se denomina "poner" (put).
+- `x`: elimina el carácter situado bajo el cursor.
+- `dd`: elimina la línea actual como una línea completa.
+- `3dd`: elimina tres líneas a partir de la actual.
+- `cc`: cambia la línea actual y entra en el modo Insertar.
+- `r{char}`: sustituye el carácter bajo el cursor por `{char}`.
+- `R`: entra en el modo Reemplazar hasta que se pulsa `Esc`.
 
-- `yw` – Yankea (copia) una palabra.
-- `yy` – Yankea la línea actual completa.
-- `p` – Pone (pega) el texto yankeado después del cursor o en la línea inferior.
-- `P` – Pone el texto antes del cursor o en la línea superior.
+Repetir un operador, como en `dd`, hace que actúe por líneas. Una cantidad amplía el número de líneas.
 
-### Otros Comandos de Edición Útiles
+:::single-choice{#vim-edit-delete-three-lines}
+¿Qué orden del modo Normal elimina la línea actual y las dos siguientes?
 
-Esta guía de Vim no estaría completa sin algunos otros comandos prácticos.
+::option[`dd3`]{#vim-edit-dd-three explanation="En esta forma de orden, la cantidad debe ir antes del operador duplicado."}
+::option[`3x`]{#vim-edit-three-x explanation="Esto elimina tres caracteres bajo el cursor y después de él, no tres líneas completas."}
+::option[`3dd`]{#vim-edit-three-dd .correct explanation="La cantidad se aplica a la orden por líneas `dd` y elimina tres líneas a partir de la actual."}
+:::
 
-- `r{char}` – Reemplaza el carácter único bajo el cursor con el carácter especificado.
-- `R` – Entra en el modo Reemplazar, permitiéndole sobrescribir texto continuamente hasta que presione `Esc`.
-- `J` – Une la línea actual con la siguiente.
-- `.` – Repite el último cambio que realizó, un comando muy potente y eficiente.
+## Cambiar texto y entrar en el modo Insertar
 
-Combinar operadores con diferentes movimientos desbloquea todo el potencial de este editor de texto de Linux. Por ejemplo, `d}` elimina hasta el siguiente párrafo, y `caw` cambia "una palabra" (la palabra bajo el cursor incluyendo cualquier espacio circundante).
+El operador `c` elimina el texto seleccionado y entra en el modo Insertar para que puedas escribir un reemplazo:
 
-## Exercise
+- `ce`: cambia hasta el final de la palabra.
+- `c$`: cambia hasta el final de la línea.
+- `cc`: cambia toda la línea actual.
+- `ciw`: cambia la palabra interior bajo el cursor.
+- `caw`: cambia un objeto de texto de palabra, incluido el espacio circundante según lo define Vim.
 
-Para poner en práctica sus conocimientos, recomendamos el siguiente laboratorio práctico. Le ayudará a dominar los comandos de edición fundamentales discutidos en este tutorial de Vim.
+El comportamiento de `cw` tiene un caso especial histórico y a menudo actúa como `ce`. Los objetos de texto como `iw` pueden expresar con mayor claridad el límite deseado.
 
-1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/es/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practique la creación de archivos, la edición de texto, el guardado de archivos y la navegación con vi/vim y nano. Este laboratorio le ayudará a aplicar conceptos como eliminar, cambiar, yanquear y poner texto en escenarios reales.
+:::single-choice{#vim-edit-change-inner-word}
+¿Qué orden del modo Normal sustituye la palabra interior bajo el cursor al eliminarla y entrar en el modo Insertar?
 
-## Quiz Question
+::option[`diw`]{#vim-edit-delete-inner-word explanation="Esto elimina la palabra interior, pero permanece en el modo Normal en vez de iniciar el texto de reemplazo."}
+::option[`yiw`]{#vim-edit-yank-inner-word explanation="Esto copia la palabra interior sin modificar el búfer ni entrar en el modo Insertar."}
+::option[`ciw`]{#vim-edit-change-inner-word-answer .correct explanation="El operador `c` cambia el objeto de texto `iw` y después entra en el modo Insertar."}
+:::
 
-Which command deletes the current line in Vim? (Please answer in English, paying attention to case sensitivity).
+## Copiar e insertar texto
 
-## Quiz Answer
+Vim denomina **yank** a copiar y **put** a insertar el texto almacenado:
 
-dd
+- `yw`: copia el intervalo de un movimiento de palabra.
+- `yy`: copia la línea actual.
+- `p`: inserta después del cursor si el texto es por caracteres, o debajo de la línea actual si es por líneas.
+- `P`: inserta antes del cursor o encima de la línea actual.
+
+Las eliminaciones y los cambios también guardan texto en registros, por lo que un `p` posterior puede insertar el texto eliminado más recientemente en vez de una copia anterior. Los registros con nombre permiten conservar texto específico, pero empieza observando qué ha guardado la última operación.
+
+:::single-choice{#vim-edit-yank-put-line}
+Después de que `yy` copie la línea actual, ¿qué orden inserta esa línea debajo de la actual?
+
+::option[`p`]{#vim-edit-put-below .correct explanation="Para texto copiado por líneas, la `p` minúscula inserta la línea almacenada debajo de la actual."}
+::option[`P`]{#vim-edit-put-above explanation="La `P` mayúscula inserta el texto por líneas encima de la línea actual."}
+::option[`u`]{#vim-edit-undo-not-put explanation="La `u` minúscula deshace un cambio; no inserta la línea copiada."}
+:::
+
+## Deshacer, rehacer y repetir
+
+En el modo Normal:
+
+- `u`: deshace el cambio más reciente.
+- `Ctrl+R`: rehace un cambio deshecho.
+- `.`: repite el cambio más reciente en la ubicación actual cuando corresponde.
+- `J`: une la línea actual con la siguiente.
+
+El historial de deshacer se aplica a cambios del búfer, no a simples movimientos del cursor. Guarda puntos de control y revisa las ediciones en vez de depender de un historial de deshacer ilimitado o permanente.
+
+:::single-choice{#vim-edit-redo-change}
+¿Qué orden del modo Normal rehace un cambio que se acaba de deshacer?
+
+::option[`Ctrl+U`]{#vim-edit-control-u explanation="En el modo Normal, `Ctrl+U` desplaza la vista aproximadamente media pantalla hacia arriba; no rehace."}
+::option[`.`]{#vim-edit-dot-repeat explanation="El punto repite el último cambio como una acción nueva en vez de avanzar por el historial de deshacer."}
+::option[`Ctrl+R`]{#vim-edit-control-r .correct explanation="Vim usa `Ctrl+R` en el modo Normal para avanzar por el historial de deshacer."}
+:::
+
+Para practicar operadores, movimientos y recuperación sobre texto desechable, prueba este laboratorio práctico:
+
+1. **[Editar archivos de texto en Linux con Vim y Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practica la creación y edición de archivos, el guardado y la navegación con vi/vim y nano, aplicando eliminaciones, cambios, copias e inserciones de texto.
+
+## Resumen
+
+Ahora puedes componer ediciones de Vim y recuperarte de errores en el modo Normal.
+
+1. Combina operadores con movimientos, objetos de texto y cantidades.
+2. Elimina caracteres o líneas completas con el ámbito elegido.
+3. Cambia texto y entra en el modo Insertar para reemplazarlo.
+4. Copia e inserta texto por caracteres o por líneas.
+5. Deshaz, rehace o repite cambios deliberadamente.

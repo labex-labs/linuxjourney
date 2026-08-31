@@ -1,99 +1,105 @@
 ---
-index: 4
+lesson_id: "netstat"
+course_id: "troubleshooting"
 lang: "ko"
+order_index: 4
 title: "netstat"
+description: "ss로 리눅스 소켓, 리스너, 큐 및 TCP 상태를 조사하는 방법을 알아봅니다."
 meta_title: "netstat - 문제 해결"
-meta_description: "리눅스 netstat 명령어를 마스터하여 네트워크 연결, 포트 및 소켓을 분석합니다. 이 가이드는 SYN_SENT 및 netstat close_wait 와 같은 일반적인 상태를 다루어 효과적인 문제 해결을 돕습니다."
-meta_keywords: "리눅스 netstat, netstat, netstat 명령어, syn_sent netstat, netstat close_wait, 네트워크 연결, 리눅스 네트워킹, 네트워크 분석, 리눅스 튜토리얼"
+meta_description: "리눅스 네트워크 연결, 포트 및 소켓을 분석하는 방법을 알아봅니다. ss 명령과 SYN-SENT, CLOSE-WAIT 같은 상태를 설명합니다."
+meta_keywords: "리눅스 netstat, netstat, ss 명령, SYN-SENT, CLOSE-WAIT, 네트워크 연결, 리눅스 네트워킹"
 ---
 
-## Lesson Content
+기존 `netstat` 도구는 소켓, 경로 및 인터페이스 통계를 표시합니다. 현대 리눅스에서는 커널 소켓 상태를 효율적으로 보여 주고 iproute2와 함께 유지 관리되는 `ss`가 선호되는 소켓 조사 도구입니다.
 
-### 잘 알려진 포트 (Well-Known Ports)
+## 수신 소켓 나열하기
 
-데이터가 우리 컴퓨터의 포트를 통해 어떻게 전송되는지 살펴보았습니다. 이제 일반적이고 잘 알려진 포트들을 살펴보겠습니다. 이러한 포트 목록은 **/etc/services** 파일에서 찾을 수 있습니다.
-
-```plaintext
-ftp             21/tcp
-ssh             22/tcp
-smtp            25/tcp
-domain          53/tcp  # DNS
-http            80/tcp
-https           443/tcp
-..etc..
-```
-
-첫 번째 열은 서비스 이름, 그 뒤에 할당된 포트 번호 및 사용되는 전송 계층 프로토콜을 보여줍니다.
-
-### linux netstat 소개
-
-상세한 네트워크 정보를 수집하는 데 매우 유용한 도구는 **netstat**입니다. `linux netstat` 명령어는 활성 네트워크 연결, 라우팅 테이블 및 인터페이스 통계를 포함하여 광범위한 네트워크 관련 데이터를 표시합니다. 종종 네트워킹 도구의 스위스 군용 칼이라고 불립니다.
-
-이 레슨에서는 `netstat`을 사용하여 네트워크 연결 상태를 확인하는 데 중점을 둘 것입니다. 예제로 넘어가기 전에 소켓과 포트의 차이점을 명확히 해보겠습니다. **포트**는 데이터를 특정 애플리케이션으로 전달하는 데 사용되는 숫자 식별자입니다. **소켓**은 통신의 종단점으로, 프로그램이 데이터를 송수신할 수 있게 해줍니다. 소켓 주소는 IP 주소와 포트 번호의 고유한 조합입니다. 호스트와 대상 간의 모든 연결에는 고유한 소켓이 필요합니다. 예를 들어, HTTP 서비스는 포트 80 에서 실행되지만, 여러 HTTP 연결이 동시에 존재할 수 있으며, 각각에 대해 고유한 소켓이 생성됩니다.
-
-`netstat -at`의 출력을 살펴보겠습니다.
+수신 중인 TCP와 UDP 소켓을 숫자로 표시하고, 권한이 있으면 소유 프로세스도 포함합니다.
 
 ```bash
-pete@icebox:~$ netstat -at
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State
-tcp        0      0 icebox:domain           *:*                     LISTEN
-tcp        0      0 localhost:ipp           *:*                     LISTEN
-tcp        0      0 icebox.lan:44468        124.28.28.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34751        124.28.29.50:http       TIME_WAIT
-tcp        0      0 icebox.lan:34604        economy.canonical.:http TIME_WAIT
-tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN
-tcp6       1      0 ip6-localhost:35094     ip6-localhost:ipp       CLOSE_WAIT
-tcp6       0      0 ip6-localhost:ipp       ip6-localhost:35094     FIN_WAIT2
+$ sudo ss -lntup
 ```
 
-`netstat -a` 명령어는 수신 대기 중인 소켓과 수신 대기 중이 아닌 소켓을 모두 표시하며, `-t` 플래그는 출력을 TCP 연결만 표시하도록 필터링합니다.
+`-l`은 리스너를 선택하고, `-n`은 이름 조회를 피하고, `-t`와 `-u`는 TCP와 UDP를 선택하며, `-p`는 프로세스 데이터를 요청합니다. UDP는 비연결형이므로 연결되지 않은 바인드 소켓에 TCP 방식의 `LISTEN` 핸드셰이크가 없습니다.
 
-열은 다음과 같습니다.
+:::single-choice{#netstat-ss-numeric}
+소켓 문제 해결 중 `-n`을 사용하는 이유는 무엇입니까?
 
-- **Proto**: 사용된 프로토콜 (예: TCP 또는 UDP).
-- **Recv-Q**: 수신 대기 중인 데이터 큐.
-- **Send-Q**: 전송 대기 중인 데이터 큐.
-- **Local Address**: 로컬 호스트의 주소.
-- **Foreign Address**: 원격 호스트의 주소.
-- **State**: 소켓의 현재 상태.
+::option[새 네트워크 네임스페이스를 만듭니다.]{#netstat-new-namespace explanation="이 옵션은 출력의 이름 확인을 제어합니다."}
+::option[주소 및 포트 이름 조회를 방지합니다.]{#netstat-numeric-output .correct explanation="숫자 출력은 서비스 이름 매핑을 관찰된 프로토콜 신원으로 혼동하는 일을 막습니다."}
+::option[수신 중이 아닌 모든 소켓을 닫습니다.]{#netstat-close-sockets explanation="검사 작업은 소켓을 종료하지 않습니다."}
+:::
 
-### 연결 상태 이해하기
+## 포트, 끝점 및 서비스
 
-**State** 열은 연결 상태에 대한 중요한 정보를 제공합니다. 일반적으로 접하게 되는 몇 가지 일반적인 상태는 다음과 같습니다.
+로컬 소켓 끝점은 주소, 전송 프로토콜 및 포트로 구성됩니다. TCP 연결은 프로토콜과 출발지 및 목적지 주소와 포트로 구분됩니다. `/etc/services`는 관례적인 이름을 숫자에 매핑하지만 현재 어느 프로세스가 포트를 소유하거나 어떤 응용 프로토콜을 사용하는지 입증하지 않습니다.
 
-- **LISTENING**: 소켓이 들어오는 연결을 기다리고 있습니다. TCP 연결이 이루어지려면 대상이 수신 대기 중이어야 합니다.
-- **SYN_SENT**: `netstat`을 사용할 때 `SYN_SENT` 상태는 소켓이 적극적으로 연결을 설정하려고 시도하고 있음을 나타냅니다.
-- **ESTABLISHED**: 소켓이 완전히 설정된 연결을 가지고 있습니다.
-- **CLOSE_WAIT**: `netstat close_wait` 상태는 원격 호스트가 종료되었으며 로컬 시스템이 애플리케이션이 소켓을 닫기를 기다리고 있음을 의미합니다.
-- **TIME_WAIT**: 소켓은 네트워크에 남아 있을 수 있는 패킷을 처리하기 위해 닫은 후 대기 중입니다.
+:::single-choice{#netstat-services-file-limit}
+`https 443/tcp` 같은 `/etc/services` 항목은 무엇을 확립합니까?
 
-You can see a full list of socket states in the `netstat` man page.
+::option[정상적인 HTTPS 서버가 현재 수신 중입니다.]{#netstat-healthy-listener explanation="정적 이름 데이터베이스는 런타임 상태를 입증하지 않습니다."}
+::option[해당 포트의 관례적인 서비스 이름 매핑입니다.]{#netstat-conventional-name .correct explanation="소켓 소유권과 실제 프로토콜 동작에는 런타임 조사 및 테스트가 필요합니다."}
+::option[모든 포트 443 트래픽이 올바르게 암호화됩니다.]{#netstat-all-encrypted explanation="포트 번호는 TLS 동작을 검증할 수 없습니다."}
+:::
 
-### 연결 상태 이해하기
+## TCP 상태 읽기
 
-**State** 열은 연결 상태에 대한 중요한 정보를 제공합니다. 일반적으로 접하게 되는 몇 가지 일반적인 상태는 다음과 같습니다.
+일반적인 상태는 다음과 같습니다.
 
-- **LISTENING**: 소켓이 들어오는 연결을 기다리고 있습니다. TCP 연결이 이루어지려면 대상이 수신 대기 중이어야 합니다.
-- **SYN_SENT**: `netstat`을 사용할 때 `SYN_SENT` 상태는 소켓이 적극적으로 연결을 설정하려고 시도하고 있음을 나타냅니다.
-- **ESTABLISHED**: 소켓이 완전히 설정된 연결을 가지고 있습니다.
-- **CLOSE_WAIT**: `netstat close_wait` 상태는 원격 호스트가 종료되었으며 로컬 시스템이 애플리케이션이 소켓을 닫기를 기다리고 있음을 의미합니다.
-- **TIME_WAIT**: 소켓은 네트워크에 남아 있을 수 있는 패킷을 처리하기 위해 닫은 후 대기 중입니다.
+- `SYN-SENT`: 로컬 끝점이 연결 요청을 보내고 진행을 기다립니다.
+- `ESTAB`: TCP 연결이 수립됐습니다.
+- `CLOSE-WAIT`: 통신 상대가 송신 측을 닫았지만 로컬 애플리케이션이 소켓을 닫지 않았습니다.
+- `TIME-WAIT`: 능동적으로 닫은 끝점이 지연 세그먼트가 만료되고 최종 교환을 안전하게 처리할 수 있도록 기다립니다.
 
-`netstat` man 페이지에서 소켓 상태의 전체 목록을 볼 수 있습니다.
+`CLOSE-WAIT` 수가 많거나 계속 증가하면 흔히 로컬 애플리케이션 정리 동작을 가리킵니다. `TIME-WAIT`는 정상적인 프로토콜 상태이며 수량과 리소스 영향에 따라 운영상 문제인지 판단합니다.
 
-## Exercise
+:::single-choice{#netstat-close-wait-owner}
+`CLOSE-WAIT`에서 어느 쪽이 아직 소켓을 닫아야 합니까?
 
-연습이 완벽함을 만듭니다! 다음은 네트워크 인터페이스 설정에 대한 이해를 강화하기 위한 실습 랩입니다.
+::option[인터넷의 모든 라우터입니다.]{#netstat-all-routers-close explanation="라우터는 끝점 소켓을 소유하지 않습니다."}
+::option[DNS 권위 서버입니다.]{#netstat-dns-close explanation="이름 서비스는 로컬 TCP 닫기 처리와 관계없습니다."}
+::option[로컬 애플리케이션입니다.]{#netstat-local-close .correct explanation="TCP가 통신 상대의 FIN을 받았으며 로컬 프로세스가 자기 쪽을 닫기를 기다립니다."}
+:::
 
-1. **[Linux 에서 ethtool 을 사용하여 네트워크 인터페이스 설정 검토하기](https://labex.io/ko/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` 명령어를 사용하여 인터페이스 속도 및 이중 모드 보기 및 설정, 링크 모드 분석 등을 통해 물리적 계층 네트워크 문제를 해결하는 방법을 알아봅니다.
+## 큐 해석하기
 
-이 랩은 실제 시나리오에서 개념을 적용하고 네트워크 인터페이스 관리 자신감을 키우는 데 도움이 될 것입니다.
+`Recv-Q`와 `Send-Q`의 의미는 상태와 프로토콜에 따라 다릅니다. 수립된 TCP 소켓에서는 애플리케이션 수신 또는 전송 확인 응답을 기다리는 데이터를 나타낼 수 있습니다. 수신 소켓에서 큐 필드는 같은 방식의 응용 페이로드 바이트가 아니라 연결 백로그 상태를 설명합니다.
 
-## Quiz Question
+스냅샷 하나만으로 누수나 병목을 확립할 수 없습니다. 시간에 따라 표본을 수집하고 프로세스 동작, 애플리케이션 지연 시간, 재전송 및 리소스 제한과 연관 지으십시오.
 
-HTTPS 에 사용되는 포트는 무엇입니까?
+:::single-choice{#netstat-queue-snapshot}
+큰 소켓 큐 스냅샷 하나만으로 진단하기에 부족한 이유는 무엇입니까?
 
-## Quiz Answer
+::option[리눅스는 소켓 큐에 데이터를 저장하지 않기 때문입니다.]{#netstat-no-queues explanation="커널 네트워킹은 송수신 큐에 의존합니다."}
+::option[모든 큐 값이 파일시스템 권한이기 때문입니다.]{#netstat-queue-permission explanation="필드는 네트워킹 상태를 설명합니다."}
+::option[큐의 영향에는 상태, 추세 및 작업 부하 맥락이 필요하기 때문입니다.]{#netstat-queue-context .correct explanation="일시적인 버스트는 지속적인 애플리케이션 또는 네트워크 병목과 다릅니다."}
+:::
 
-443
+## 조사 범위 제한하기
+
+문제의 프로토콜, 상태, 끝점 또는 프로세스로 출력을 제한합니다.
+
+```bash
+$ ss -tn state established
+$ ss -ltn 'sport = :443'
+```
+
+리스너는 로컬 전송 준비 상태를 입증하지만 원격 연결 가능성이나 애플리케이션 상태는 입증하지 않습니다. 증상에 맞는 경로, 방화벽, 패킷, TLS 및 응용 테스트를 이어서 수행하십시오.
+
+:::single-choice{#netstat-listener-limit}
+포트 443의 TCP 리스너가 입증하지 못하는 것은 무엇입니까?
+
+::option[로컬 소켓이 bind와 listen 작업을 받아들였습니다.]{#netstat-listen-local explanation="표시된 로컬 상태가 정확히 그 사실을 나타냅니다."}
+::option[원격 클라이언트가 유효한 HTTPS 요청을 완료할 수 있습니다.]{#netstat-not-remote-proof .correct explanation="경로 정책, TLS 및 응용 동작은 테스트되지 않았습니다."}
+::option[TCP에 숫자 포트 필드가 있습니다.]{#netstat-port-field explanation="리스너 출력에 직접 포함됩니다."}
+:::
+
+## 요약
+
+이제 포트를 애플리케이션과 혼동하지 않고 `ss`로 소켓 상태를 조사할 수 있습니다.
+
+1. 프로세스 맥락과 함께 리스너를 숫자로 나열합니다.
+2. 관례적인 서비스 이름과 런타임 소유권을 구분합니다.
+3. 로컬 끝점 관점에서 TCP 닫기 상태를 해석합니다.
+4. 작업 부하 맥락과 함께 시간에 따라 큐를 표본 추출합니다.
+5. 로컬 리스너를 넘어 원격 응용 동작을 검증합니다.

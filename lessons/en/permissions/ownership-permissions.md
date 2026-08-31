@@ -1,59 +1,100 @@
 ---
-index: 3
+lesson_id: "ownership-permissions"
+course_id: "permissions"
 lang: "en"
+order_index: 3
 title: "Ownership Permissions"
+description: "Learn how to inspect and change the user and group ownership of Linux filesystem objects."
 meta_title: "Ownership Permissions - Permissions"
 meta_description: "Master Linux file ownership by learning how to use the chown and chgrp Linux commands. This Linux tutorial explains how to change user and group ownership for files, a key skill for managing Linux permissions."
 meta_keywords: "chown, chgrp, linux file ownership, change file owner, change file group, linux permissions, linux commands, linux tutorial, linux guide, user ownership, group ownership"
 ---
 
-## Lesson Content
+Every Linux filesystem object records a user owner and a group owner. These identities determine which owner or group permission triplet applies, but they do not themselves grant a particular permission. Inspect both ownership and mode with `ls -l`.
 
-In a Linux system, every file and directory is assigned an owner and a group. Managing **Linux file ownership** is a fundamental task for controlling access and permissions. You can modify both the user and group ownership of a file using specific **Linux commands**.
+## Changing the User Owner
 
-### Changing User Ownership
-
-To transfer the ownership of a file to a different user, you use the `chown` (change owner) command. This is useful when a user's responsibilities change or when you need to assign file control to someone else. You typically need superuser privileges (`sudo`) to change the owner of a file you don't own.
+Use `chown`, short for change owner, to assign a different user owner:
 
 ```bash
-sudo chown patty myfile
+$ sudo chown patty myfile
 ```
 
-This command changes the user owner of `myfile` to the user `patty`.
+This changes the user owner of `myfile` to `patty` and leaves its group unchanged. Changing a file's user owner normally requires appropriate privilege, even if you currently own the file. This restriction prevents users from transferring files to evade quotas or other ownership-based controls.
 
-### Changing Group Ownership
+:::single-choice{#ownership-permissions-change-user}
+Which command changes the user owner of `myfile` to `patty` while leaving its group unchanged?
 
-Similarly, you can change the group associated with a file using the `chgrp` (change group) command. This allows all members of the new group to have access based on the group's **Linux permissions**.
+::option[`chown patty myfile`]{#ownership-permissions-user-with-chown .correct explanation="A username alone as the `chown` ownership operand changes the user owner and preserves the group."}
+::option[`chgrp patty myfile`]{#ownership-permissions-user-with-chgrp explanation="`chgrp` changes the group owner rather than the user owner."}
+::option[`chmod patty myfile`]{#ownership-permissions-user-with-chmod explanation="`chmod` changes mode bits and does not accept a username as the new owner."}
+:::
+
+## Changing the Group Owner
+
+Use `chgrp` to assign a different group owner:
 
 ```bash
-sudo chgrp whales myfile
+$ chgrp whales myfile
 ```
 
-This command sets the group ownership of `myfile` to the group `whales`.
-
-### Changing Both User and Group
-
-For efficiency, the `chown` command allows you to change both the user and group ownership in a single step. By separating the user and group name with a colon, you can update both attributes simultaneously.
+On typical systems, an unprivileged owner can change a file's group only to a group of which that user is a member. Privileged processes can make broader changes. The equivalent `chown` form begins with a colon:
 
 ```bash
-sudo chown patty:whales myfile
+$ chown :whales myfile
 ```
 
-This single command assigns user ownership to `patty` and group ownership to `whales` for the file `myfile`. This is the most common method for managing **Linux file ownership**.
+Afterward, the group's mode bits apply when the kernel selects the group class; changing the group does not automatically add read, write, or execute bits.
 
-## Exercise
+:::single-choice{#ownership-permissions-change-group}
+What does `chgrp whales myfile` change?
 
-To solidify your understanding of **Linux file ownership**, we recommend practicing with these hands-on labs. They provide real-world scenarios for applying the `chown` and `chgrp` commands.
+::option[The user owner recorded for `myfile`.]{#ownership-permissions-group-not-user explanation="The user owner is changed with `chown`, not `chgrp`."}
+::option[The members listed in the `whales` group.]{#ownership-permissions-group-members explanation="The command changes file metadata; it does not edit the system's group membership database."}
+::option[The group owner recorded for `myfile`.]{#ownership-permissions-group-owner .correct explanation="`chgrp` assigns the named group as the filesystem object's group owner."}
+:::
 
-1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including understanding file permissions and manipulating file ownership. This lab provides practical experience in securing a multi-user Linux environment.
-2. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this challenge, you'll simulate adding new team members to a server environment by creating new user accounts, setting up custom groups, and managing group memberships. This will test your skills in Linux user and group administration.
+## Changing User and Group Together
 
-These labs will help you apply the concepts in real scenarios and build confidence with managing file ownership and permissions in Linux.
+Supply `USER:GROUP` to `chown` to update both fields in one operation:
 
-## Quiz Question
+```bash
+$ sudo chown patty:whales myfile
+```
 
-What command is used to change the user ownership of a file? Please provide only the command name in lowercase English letters.
+The command assigns `patty` as the user owner and `whales` as the group owner. Verify the result rather than assuming it succeeded:
 
-## Quiz Answer
+```bash
+$ ls -l myfile
+```
 
-chown
+:::single-choice{#ownership-permissions-change-both}
+Which ownership specification assigns user `patty` and group `whales` in one `chown` command?
+
+::option[`patty:whales`]{#ownership-permissions-both-colon .correct explanation="A colon separates the user and group names in the combined ownership specification."}
+::option[`patty/whales`]{#ownership-permissions-both-slash explanation="A slash is not the introduced separator for a `chown` user and group operand."}
+::option[`patty+whales`]{#ownership-permissions-both-plus explanation="A plus sign is not used to combine the two ownership fields for `chown`."}
+:::
+
+## Handling Recursive Changes Carefully
+
+The `-R` option changes ownership recursively, but a broad recursive command can cross unexpected directory trees or affect service data. Confirm the exact target, understand symbolic-link behavior for your implementation, preview the tree, and verify a small sample before changing a large hierarchy. Avoid copying privileged ownership commands from examples onto real systems without reviewing their scope.
+
+:::single-choice{#ownership-permissions-mode-separate}
+After changing a file's group owner, what happens to its ordinary group permission bits?
+
+::option[They always become read and write automatically.]{#ownership-permissions-mode-read-write explanation="`chgrp` does not automatically select a fixed group mode."}
+::option[They are copied from the owner's permission triplet.]{#ownership-permissions-mode-copied explanation="The owner and group triplets remain independent when ownership changes."}
+::option[They remain as set unless a separate operation changes them.]{#ownership-permissions-mode-unchanged .correct explanation="Ownership fields and mode bits are separate metadata; changing the group does not inherently grant new group bits."}
+:::
+
+For practice in an isolated environment, the [Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002) lab covers inspecting and modifying ownership alongside file modes.
+
+## Summary
+
+You can now distinguish ownership metadata from permission bits and change it deliberately.
+
+1. Use `chown USER FILE` to change the user owner.
+2. Use `chgrp GROUP FILE` or `chown :GROUP FILE` to change the group owner.
+3. Use `chown USER:GROUP FILE` to set both fields.
+4. Verify results and scope recursive changes carefully.

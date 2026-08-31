@@ -1,87 +1,124 @@
 ---
-index: 6
+lesson_id: "dns-tools"
+course_id: "dns"
 lang: "ko"
+order_index: 6
 title: "DNS 도구"
+description: "getent, resolvectl 및 dig로 시스템 이름 확인과 직접 DNS 쿼리를 비교하는 방법을 알아봅니다."
 meta_title: "DNS 도구 - DNS"
-meta_description: "nslookup 및 강력한 dig 명령과 같은 필수 Linux DNS 도구를 살펴보세요. 이 초보자 친화적인 Linux 튜토리얼은 DNS 쿼리 및 DNS 문제 해결 기술을 다룹니다."
-meta_keywords: "nslookup, dig 명령어, DNS 도구, 리눅스 DNS, DNS 문제 해결, 네임 서버 조회, 리눅스 튜토리얼, 초보자 리눅스"
+meta_description: "dig와 nslookup 같은 필수 리눅스 DNS 도구를 알아봅니다. DNS 쿼리와 문제 해결 기법을 설명합니다."
+meta_keywords: "nslookup, dig 명령, DNS 도구, 리눅스 DNS, DNS 문제 해결, 네임 서버 조회"
 ---
 
-## Lesson Content
+DNS 문제 해결은 어느 계층을 테스트하는지 식별하는 것부터 시작합니다. 시스템 확인자 도구에는 로컬 파일과 정책이 포함되지만 `dig`와 `nslookup`은 DNS 쿼리를 보내고 특정 서버를 직접 대상으로 할 수 있습니다.
 
-Linux 에는 네트워크 진단을 위해 사용할 수 있는 여러 명령줄 유틸리티가 있습니다. 도메인 이름 시스템 (DNS) 문제의 경우, `nslookup`과 `dig`라는 두 가지 주요 **DNS 도구**가 두드러집니다. 이 도구들을 사용하는 방법을 이해하는 것은 **Linux DNS** 서버나 클라이언트에서 **DNS 문제 해결**을 위해 매우 중요합니다.
+## 시스템 확인자 테스트하기
 
-### 기본 DNS 조회를 위한 nslookup 사용
-
-`nslookup`(네임 서버 조회) 도구는 DNS 서버에 쿼리하여 도메인 이름 또는 IP 주소 매핑 정보를 얻는 고전적인 유틸리티입니다. 더 강력한 `dig`에 밀려 사용되지 않는 경우도 있지만, 간단한 조회를 위한 빠르고 쉬운 도구로 여전히 사용됩니다.
-
-`www.google.com`과 같은 도메인의 IP 주소를 찾으려면 다음을 실행할 수 있습니다.
+일반적인 호스트 이름 서비스 경로를 사용합니다.
 
 ```bash
-pete@icebox:~$ nslookup www.google.com
-Server:         127.0.1.1
-Address:        127.0.1.1#53
-
-Non-authoritative answer:
-Name:   www.google.com
-Address: 216.58.192.4
+$ getent ahosts www.example.com
 ```
 
-이 출력에서 `Server`와 `Address`는 쿼리에 응답한 DNS 서버를 보여줍니다. `Non-authoritative answer`는 해당 서버가 권한 있는 소스에 직접 쿼리하는 대신 캐시된 결과를 제공했음을 의미합니다. `Name`과 `Address`는 도메인에 대해 확인된 IP 주소를 보여줍니다.
-
-### dig 를 사용한 고급 DNS 문제 해결
-
-`dig`(도메인 정보 조사기) 명령어는 DNS 네임 서버를 조회하는 강력하고 유연한 도구입니다. `nslookup`보다 더 자세한 정보를 제공하므로 심각한 **DNS 문제 해결**에 선호되는 선택입니다.
-
-다음은 **dig 명령어** 사용 예시입니다.
+systemd-resolved 호스트에서는 링크별 서버, 검색 도메인 및 프로토콜 상태를 조사합니다.
 
 ```bash
-pete@icebox:~$ dig www.google.com
-
-; <<>> DiG 9.9.5-3-Ubuntu <<>> www.google.com
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42376
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; MBZ: 0005 , udp: 512
-;; QUESTION SECTION:
-;www.google.com.                        IN      A
-
-;; ANSWER SECTION:
-www.google.com.         5       IN      A       74.125.239.147
-www.google.com.         5       IN      A       74.125.239.144
-www.google.com.         5       IN      A       74.125.239.146
-www.google.com.         5       IN      A       74.125.239.145
-www.google.com.         5       IN      A       74.125.239.148
-
-;; Query time: 27 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Sun Feb 07 10:14:00 PST 2016
-;; MSG SIZE  rcvd: 123
+$ resolvectl status
+$ resolvectl query www.example.com
 ```
 
-`dig`의 출력은 다음과 같은 섹션으로 구성됩니다.
+애플리케이션이 별도의 확인자 라이브러리나 프록시를 사용할 수 있으므로 출력이 다르면 애플리케이션을 통해 재현하십시오.
 
-- **QUESTION SECTION**: 전송된 쿼리를 보여줍니다. 여기서는 `www.google.com`에 대한 `A`(주소) 레코드를 요청했습니다.
-- **ANSWER SECTION**: DNS 서버로부터 받은 답변을 표시합니다. 이 경우 Google 은 도메인과 연결된 여러 IP 주소를 가지고 있습니다.
-- **Statistics**: 마지막 섹션은 쿼리 시간 및 응답 서버와 같은 쿼리에 대한 메타데이터를 제공합니다.
+:::single-choice{#dns-tools-system-resolver}
+설정된 시스템 이름 서비스 경로를 사용하는 명령은 무엇입니까?
 
-상세한 출력과 유연성 덕분에 `dig`는 Linux 에서 네트워크 서비스를 관리하거나 문제 해결을 하는 모든 사람에게 필수적인 유틸리티입니다.
+::option[`dig @SERVER NAME`만 사용합니다.]{#dns-tools-dig-direct explanation="dig는 DNS 쿼리를 보내며 일반적으로 hosts 파일 매핑을 읽지 않습니다."}
+::option[`ip link set down`]{#dns-tools-link-down explanation="이름 확인을 테스트하는 대신 인터페이스를 중단합니다."}
+::option[`getent ahosts NAME`]{#dns-tools-getent .correct explanation="/etc/hosts, DNS 및 기타 Name Service Switch 소스를 반영할 수 있습니다."}
+:::
 
-## Exercise
+## dig로 조회하기
 
-Linux 네트워킹 유틸리티에 대한 경험을 더 쌓으려면 다음 실습 랩을 시도해 보세요.
+이름과 레코드 유형을 지정합니다.
 
-1. **[Linux 에서 ethtool 로 네트워크 인터페이스 설정 검사하기](https://labex.io/ko/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - `ethtool` 명령어를 사용하여 인터페이스 속도 및 이중 설정 보기/설정, 링크 모드 분석 등을 통해 물리적 계층 네트워크 문제를 해결하는 방법을 배웁니다.
+```bash
+$ dig www.example.com A
+$ dig www.example.com AAAA
+$ dig example.com MX
+```
 
-이 랩은 실제 시나리오에서 개념을 적용하고 네트워크 인터페이스 관리 자신감을 키우는 데 도움이 될 것입니다.
+출력은 응답 서버, 상태, 플래그, 질문, 응답, 권위, 추가 데이터, 쿼리 시간 및 전송 메타데이터를 식별합니다. `+short`는 스크립트에 편리하지만 진단에 필요한 증거를 숨깁니다.
 
-## Quiz Question
+:::single-choice{#dns-tools-record-type}
+IPv6 주소 레코드를 요청하는 쿼리는 무엇입니까?
 
-DNS 네임 서버에 대한 자세한 정보를 얻는 데 사용되는 도구는 무엇입니까? 답변은 소문자 영어 문자만 사용하십시오.
+::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA 레코드에 IPv6 주소가 들어 있습니다."}
+::option[`dig NAME MX`]{#dns-tools-mx explanation="MX는 메일 교환기 레코드를 요청합니다."}
+::option[정방향 이름에 `dig NAME PTR`을 사용합니다.]{#dns-tools-ptr-forward explanation="PTR은 일반적으로 역방향 조회 이름으로 요청합니다."}
+:::
 
-## Quiz Answer
+## 서버 선택하기
 
-dig
+확인자 또는 권위 서버를 명시적으로 대상으로 합니다.
+
+```bash
+$ dig @192.0.2.53 www.example.com A
+```
+
+캐시와 권위를 구분할 때 설정된 재귀 확인자, 승인된 둘째 확인자 및 각 권위 서버를 비교합니다. `NOERROR` 상태에도 요청한 응답이 없을 수 있습니다. `NXDOMAIN`은 조회한 이름이 존재하지 않는다는 뜻이고 `SERVFAIL`은 서버가 쿼리를 완료하지 못했다는 뜻입니다.
+
+:::single-choice{#dns-tools-noerror-empty}
+`NOERROR`에 빈 응답 섹션이 있을 수 있습니까?
+
+::option[예. 이름은 존재하지만 요청한 레코드 데이터가 없을 수 있습니다.]{#dns-tools-noerror-nodata .correct explanation="상태와 응답 수를 함께 해석해야 합니다."}
+::option[아니요. 주소 레코드가 하나 이상 있음을 보장합니다.]{#dns-tools-noerror-always-answer explanation="이름이 존재하면서 요청한 유형의 데이터가 없을 수 있습니다."}
+::option[아니요. 빈 응답은 언제나 Ethernet 장애입니다.]{#dns-tools-empty-ethernet explanation="링크 프레이밍이 아니라 DNS 의미로 유효한 데이터 없음 응답을 설명합니다."}
+:::
+
+## 재귀와 권위 확인하기
+
+쿼리의 `rd`는 재귀를 요청하고 응답의 `ra`는 서버가 재귀를 제공한다고 나타냅니다. `aa`는 응답이 권위 있음을 뜻합니다. 재귀 캐시와 제공 중인 영역 데이터를 혼동하지 않도록 권위 서버를 `+norecurse`로 조회합니다.
+
+`dig +trace NAME`은 루트 힌트에서 시작해 자체 반복 조회를 수행합니다. 해당 확인자의 캐시, 전달, 정책, DNSSEC 검증 및 네트워크 위치를 우회하므로 프로덕션 확인자와 결과가 다를 수 있습니다.
+
+:::single-choice{#dns-tools-aa-flag}
+`aa` 응답 플래그는 무엇을 뜻합니까?
+
+::option[쿼리가 동일한 IPv4 주소 두 개를 사용했습니다.]{#dns-tools-two-addresses explanation="응답 수나 주소 계열과 관계없는 플래그입니다."}
+::option[응답이 애플리케이션 자격 증명으로 암호화됐습니다.]{#dns-tools-aa-encrypted explanation="DNS 플래그는 암호화된 전송을 확립하지 않습니다."}
+::option[응답이 권위 있습니다.]{#dns-tools-authoritative-answer .correct explanation="응답 서버가 응답 데이터에 대한 권위를 주장합니다."}
+:::
+
+## 역방향 및 TCP 쿼리 테스트하기
+
+`-x`로 역방향 PTR 쿼리를 구성합니다.
+
+```bash
+$ dig -x 192.0.2.25
+```
+
+잘림, 영역 전송 또는 방화벽 차이를 조사할 때 TCP 기반 DNS를 테스트합니다.
+
+```bash
+$ dig +tcp @192.0.2.53 example.com SOA
+```
+
+현대 DNS는 UDP 또는 TCP 포트 53을 사용할 수 있으며 필요한 곳에서는 둘 다 허용해야 합니다. 잘림 플래그가 있는 UDP 응답을 받으면 규격을 따르는 클라이언트는 적절한 전송으로 다시 시도합니다.
+
+:::single-choice{#dns-tools-tcp-test}
+`dig +tcp`는 무엇을 바꿉니까?
+
+::option[기본 UDP 시도 대신 TCP로 DNS 쿼리를 보냅니다.]{#dns-tools-use-tcp .correct explanation="전송 필터링과 더 큰 신뢰성 있는 스트림이 필요한 응답을 구분하는 데 도움이 됩니다."}
+::option[TCP 서비스 이름 레코드만 요청합니다.]{#dns-tools-tcp-records explanation="요청하는 DNS 유형은 별도로 지정합니다."}
+::option[서버의 확인자 설정을 영구적으로 바꿉니다.]{#dns-tools-tcp-persistent explanation="쿼리는 서버 설정을 편집하지 않습니다."}
+:::
+
+## 요약
+
+이제 조사하는 확인자 계층에 맞는 DNS 도구를 선택할 수 있습니다.
+
+1. 설정된 시스템 확인자 경로에는 `getent`를 사용합니다.
+2. `dig`에 레코드 유형과 서버를 명시합니다.
+3. 상태, 플래그, 섹션 및 응답 서버를 함께 해석합니다.
+4. 재귀 캐시와 권위 데이터를 구분합니다.
+5. 역방향 쿼리와 필요한 두 DNS 전송을 모두 테스트합니다.

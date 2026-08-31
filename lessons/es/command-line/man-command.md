@@ -1,21 +1,18 @@
 ---
-index: 16
+lesson_id: "man-command"
+course_id: "command-line"
 lang: "es"
+order_index: 16
 title: "man"
+description: "Aprende a abrir, recorrer, buscar y seleccionar secciones de las páginas del manual instaladas."
 meta_title: "man - Línea de Comandos"
 meta_description: "Aprende el comando man de Linux con ejemplos para leer páginas de manual, buscar dentro de páginas man, entender secciones y encontrar opciones de comandos."
 meta_keywords: "comando man, páginas man linux, manual de comandos, man ls, secciones man, buscar en página man, ayuda línea de comandos"
 ---
 
-## Lesson Content
+Muchas órdenes, interfaces, archivos de configuración y herramientas de administración de Linux disponen de documentación de referencia instalada denominada páginas del manual o páginas man. La orden `man` busca y muestra esas páginas.
 
-En Linux, casi todos los comandos cuentan con su propio manual de instrucciones. Estos se llaman "páginas man" (abreviatura de páginas manual), y son un recurso esencial para aprender a usar el sistema de manera efectiva.
-
-### Entendiendo las Páginas Man
-
-Las páginas man son la documentación incorporada para comandos de Linux, utilidades y llamadas al sistema. Proporcionan una descripción detallada de lo que hace un comando, sus opciones disponibles (o flags) y cómo usarlo. Son tu primera y mejor fuente de ayuda en la línea de comandos.
-
-### Accediendo a un Manual con man
+## Apertura de una página del manual
 
 Para ver el manual de cualquier comando, usa `man` seguido del nombre del comando. Por ejemplo, para leer el manual de `ls`, escribe:
 
@@ -23,20 +20,46 @@ Para ver el manual de cualquier comando, usa `man` seguido del nombre del comand
 $ man ls
 ```
 
-Esto abre la página man de `ls`. Puedes desplazarte con las flechas, buscar con `/` y presionar `q` para salir.
+Las páginas suelen incluir una sinopsis, una descripción, opciones, archivos relacionados y referencias cruzadas, aunque las secciones exactas varían.
 
-### Encontrando Detalles sobre Opciones de Comando
+:::single-choice{#open-ls-manual}
+¿Qué orden abre la página del manual instalada para `ls`?
+
+::option[`help ls`]{#help-ls explanation="`help` de Bash documenta órdenes integradas y normalmente no abre la página del manual del programa externo `ls`."}
+::option[`man ls`]{#manual-ls-page .correct explanation="`man` busca el tema `ls` en la base de datos del manual y muestra la página coincidente."}
+::option[`ls --help`]{#ls-usage explanation="Esta orden pide a `ls` su propio resumen de uso. No abre la página del manual instalada."}
+:::
+
+## Navegación y búsqueda en una página
 
 Las páginas man son particularmente útiles para entender las opciones de un comando. Por ejemplo, si has visto `ls -l` y quieres saber qué significa `-l`, abre `man ls` y busca `-l`.
 
-Dentro de una página man:
+En muchos sistemas, `man` muestra las páginas mediante un paginador como `less`. Mientras una página esté abierta, puedes desplazarte con las flechas o las teclas de página y usar estos controles:
 
 - Presiona `/` y escribe un término para buscar hacia adelante.
 - Presiona `n` para saltar a la siguiente coincidencia.
 - Presiona `N` para saltar a la coincidencia anterior.
 - Presiona `q` para salir.
 
-### Entendiendo las Secciones de las Páginas Man
+El paginador puede variar según el sistema o el entorno, así que estas teclas no están garantizadas en todos los casos. Los controles anteriores corresponden a la configuración habitual con `less`.
+
+:::single-choice{#search-man-page}
+Con una página man abierta en `less`, ¿qué inicia una búsqueda hacia delante de `--recursive`?
+
+::option[Escribir `?--recursive` y pulsar Enter.]{#backward-man-search explanation="El signo de interrogación inicia una búsqueda hacia atrás. Busca en la dirección opuesta a la solicitada."}
+::option[Escribir `/--recursive` y pulsar Enter.]{#forward-man-search .correct explanation="Una barra inicia una búsqueda hacia delante en `less` y Enter envía el patrón."}
+::option[Escribir `n--recursive` y pulsar Enter.]{#repeat-man-search explanation="La tecla `n` repite una búsqueda existente. No introduce de esta forma un patrón de búsqueda nuevo."}
+:::
+
+:::single-choice{#leave-man-page}
+Con una página man abierta en el paginador habitual, ¿qué tecla devuelve el control a la shell?
+
+::option[`G`]{#man-page-end explanation="La `G` mayúscula lleva al final de la página en `less`. No cierra el paginador."}
+::option[`n`]{#next-man-match explanation="La tecla `n` repite la búsqueda más reciente. La página del manual permanece abierta."}
+::option[`q`]{#quit-man .correct explanation="La tecla `q` cierra el paginador habitual y devuelve el control a la shell."}
+:::
+
+## Selección de una sección del manual
 
 Las páginas manual están organizadas en secciones numeradas. Las secciones comunes incluyen:
 
@@ -53,28 +76,39 @@ $ man 5 passwd
 $ man 1 passwd
 ```
 
-### Preguntas Comunes
+La primera orden abre la página del formato de archivo `passwd` en la sección 5. La segunda abre la página de la orden de usuario en la sección 1. Las referencias como `passwd(5)` utilizan la misma notación `topic(section)`.
 
-**¿Por qué la salida de man es tan larga?** Las páginas man son documentación de referencia. Usa la búsqueda dentro de `man` para saltar a la parte que necesitas.
+:::single-choice{#open-passwd-file-format}
+¿Qué orden abre la página de la sección 5 que documenta el formato del archivo `passwd`?
 
-**¿Cómo salgo de man?** Presiona `q`.
+::option[`man passwd 5`]{#section-after-topic explanation="En esta forma de la orden, el selector de sección debe aparecer antes del tema. Este orden no solicita `passwd(5)`."}
+::option[`man 5 passwd`]{#passwd-format-page .correct explanation="Al colocar la sección `5` antes de `passwd`, se selecciona específicamente la página del formato de archivo."}
+::option[`man 1 passwd`]{#passwd-command-page explanation="La sección 1 contiene órdenes de usuario, por lo que selecciona la página de la orden `passwd`, no la del formato de archivo."}
+:::
 
-**¿Qué hago si no existe una página man?** Prueba con `COMMAND --help`, `help COMMAND`, o instala el paquete de documentación para tu distribución.
+## Cuando falta una página
 
-## Exercise
+No todos los nombres de órdenes tienen una página del manual independiente instalada. Si `man` indica que no existe ninguna entrada:
 
-Practice is key to mastering the command line. These hands-on labs will help you reinforce your skills with fundamental commands. After completing them, use the `man` command to explore each tool's full potential.
+- Ejecuta `type NAME` para averiguar cómo resuelve Bash el nombre.
+- Utiliza `help NAME` si es una orden integrada de Bash.
+- Prueba `NAME --help` si un programa externo admite esa convención.
+- Comprueba si tu distribución ofrece un paquete de documentación independiente.
 
-1. **[Linux ls Command: Content Listing](https://labex.io/es/labs/linux-linux-ls-command-content-listing-219205)** - Practice listing and analyzing file and directory contents, and then use `man ls` to discover more options.
-2. **[Linux pwd Command: Directory Displaying](https://labex.io/es/labs/linux-linux-pwd-command-directory-displaying-209734)** - Learn the `pwd` command to display your current directory, and explore its man page for details.
-3. **[Linux cd Command: Directory Changing](https://labex.io/es/labs/linux-linux-cd-command-directory-changing-209733)** - Master navigating your file system with `cd`, and use `man cd` to understand its various techniques.
+:::single-choice{#missing-builtin-manual}
+`type cd` indica que `cd` es una orden integrada de Bash y no hay una página man independiente. ¿Qué orden debes probar a continuación?
 
-These labs will help you apply core concepts in real scenarios and build confidence with essential Linux commands, preparing you to effectively use `man` to deepen your knowledge.
+::option[`whatis cd`]{#whatis-missing-cd explanation="`whatis` resume entradas de la base de datos del manual. No puede proporcionar una página independiente inexistente para la orden integrada."}
+::option[`file cd`]{#file-cd-name explanation="`file` clasifica objetos del sistema de archivos, pero aquí `cd` se resuelve como una orden integrada, no como una ruta."}
+::option[`help cd`]{#builtin-cd-help .correct explanation="La orden integrada `help` de Bash proporciona la documentación propia de la shell para `cd`."}
+:::
 
-## Quiz Question
+## Resumen
 
-¿Cómo ves el manual de un comando? (Por favor responde usando solo el nombre del comando en letras minúsculas en inglés).
+Ahora puedes localizar y recorrer la documentación instalada del manual.
 
-## Quiz Answer
-
-man
+1. Abrir una página por el nombre del tema.
+2. Buscar y desplazarte por una página en el paginador habitual.
+3. Salir del paginador y volver a la shell.
+4. Seleccionar una sección numerada del manual.
+5. Elegir otra fuente de ayuda cuando una página no esté disponible.

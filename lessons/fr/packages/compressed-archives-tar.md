@@ -1,109 +1,128 @@
 ---
-index: 3
+lesson_id: "compressed-archives-tar"
+course_id: "packages"
 lang: "fr"
+order_index: 3
 title: "tar et gzip"
+description: "Découvrez comment archiver des fichiers avec `tar`, compresser des flux avec `gzip` et examiner les archives avant de les extraire en toute sécurité."
 meta_title: "tar et gzip - Paquets"
-meta_description: "Un guide complet sur l'utilisation de tar et gzip sous Linux. Apprenez la compression tar, comment créer et extraire des archives, et la différence entre gzip et tar. Maîtrisez les commandes pour compresser les fichiers tar gz et gérer efficacement vos paquets logiciels."
-meta_keywords: "tar et gzip, compression tar, gzip tar, compresser tar gz, gzip et tar, archivage Linux, compression de fichiers, commande tar, commande gzip, tutoriel Linux"
+meta_description: "Guide de tar et gzip sous Linux : création et extraction d’archives, différence entre archivage et compression, et gestion sûre des fichiers tar.gz."
+meta_keywords: "tar et gzip, compression tar, gzip tar, compresser tar gz, archivage Linux, compression de fichiers, commande tar, commande gzip, tutoriel Linux"
 ---
 
-## Lesson Content
+L’archivage et la compression répondent à des besoins différents. Une archive rassemble une arborescence de répertoires et ses métadonnées dans un seul flux. La compression encode un flux afin de réduire sa taille. Par convention, un fichier `.tar.gz` est une archive tar dont le flux a été compressé avec gzip.
 
-Avant de plonger dans les gestionnaires de paquets, il est essentiel de comprendre l'archivage et la compression de fichiers. Lorsque vous téléchargez des logiciels en ligne, vous les trouverez souvent empaquetés dans des formats archivés et compressés. Cette leçon se concentre sur deux utilitaires fondamentaux à cette fin : `tar` et `gzip`.
+## Compresser un flux avec `gzip`
 
-### Comprendre l'archivage par rapport à la compression
-
-Il est important de distinguer l'archivage de la compression. L'**archivage** est le processus de combinaison de plusieurs fichiers et répertoires en un seul fichier, appelé archive. Cela facilite la gestion et le transfert d'un groupe de fichiers. La **compression**, quant à elle, est le processus de réduction de la taille d'un fichier pour économiser de l'espace disque et accélérer les transferts. L'utilitaire `tar` est utilisé pour l'archivage, tandis que `gzip` est utilisé pour la compression. Souvent, vous verrez `gzip et tar` utilisés ensemble.
-
-### Compression de fichiers uniques avec gzip
-
-Le programme `gzip` est utilisé pour compresser des fichiers individuels sous Linux. Lorsque vous compressez un fichier avec `gzip`, il est remplacé par un fichier portant l'extension `.gz`.
-
-Pour compresser un fichier :
+Par défaut, `gzip` compresse un fichier et remplace son nom d’origine par un fichier portant l’extension `.gz` :
 
 ```bash
-gzip monfichiercool
+$ gzip report.txt
 ```
 
-Ceci créera `monfichiercool.gz` et supprimera l'original. Pour décompresser le fichier, vous pouvez utiliser `gunzip` :
+Cette commande supprime normalement `report.txt` après avoir créé correctement `report.txt.gz`. Décompressez-le avec :
 
 ```bash
-gunzip monfichiercool.gz
+$ gunzip report.txt.gz
 ```
 
-### Création d'archives avec tar
+Employez `gzip -k report.txt` lorsque cette option est prise en charge pour conserver le fichier d’entrée, ou utilisez les flux standards lorsque vous souhaitez un contrôle explicite. Une extension de nom est une convention, et non une preuve du format réel ; des outils tels que `file` peuvent examiner le contenu.
 
-Bien que `gzip` soit excellent pour la compression, il ne peut pas regrouper plusieurs fichiers dans une seule archive. Pour cela, nous utilisons l'utilitaire `tar` (Tape Archive). Un fichier créé avec `tar` est souvent appelé "tarball" et porte l'extension `.tar`.
+:::single-choice{#tar-gzip-gzip-role}
+Quel est le rôle principal de `gzip` dans cette leçon ?
 
-Pour créer une nouvelle archive contenant plusieurs fichiers :
+::option[Rassembler une arborescence de répertoires et ses métadonnées dans une archive.]{#tar-gzip-directory-archive explanation="Tar assure cette fonction d’archivage avant l’application de la compression gzip."}
+::option[Compresser un seul flux d’entrée.]{#tar-gzip-compress-stream .correct explanation="Gzip transforme un flux d’octets et n’encode pas lui-même une hiérarchie de répertoires."}
+::option[Installer les métadonnées de dépendances dans une base de paquets.]{#tar-gzip-package-install explanation="La compression est distincte de l’installation de paquets natifs et du suivi des dépendances."}
+:::
+
+## Créer une archive tar
+
+Créez une archive non compressée avec :
 
 ```bash
-tar cvf monarchive.tar fichier1 fichier2 repertoire1
+$ tar -cvf project.tar file1 file2 directory1
 ```
 
-Décortiquons les options :
+- `-c` crée une nouvelle archive.
+- `-v` affiche les membres pendant le traitement et reste facultatif.
+- `-f project.tar` nomme le fichier d’archive ; comme `-f` consomme un argument, gardez le nom du fichier à côté de cette option.
 
-- `c` : **c**réer une nouvelle archive.
-- `v` : mode **v**erbose, qui liste les fichiers au fur et à mesure de leur traitement.
-- `f` : **f**ichier, qui spécifie que l'argument suivant est le nom du fichier archive.
+Les chemins sont enregistrés comme noms de membres de l’archive. Créez les archives depuis un répertoire de travail choisi délibérément et évitez d’inclure involontairement des secrets, des caches, des sockets ou de vastes chemins absolus.
 
-### La puissance combinée de tar et gzip
+:::single-choice{#tar-gzip-create-option}
+Quelle option de `tar` crée une nouvelle archive ?
 
-La véritable puissance réside dans l'utilisation conjointe de `tar et gzip`. Vous pouvez d'abord créer une archive `.tar`, puis la compresser avec `gzip`, ce qui donne un fichier `.tar.gz`. Cependant, `tar` offre un moyen pratique de gérer la **compression tar** en une seule étape à l'aide de l'option `z`. Ce processus est parfois appelé création d'une archive **gzip tar**.
+::option[`-x`]{#tar-gzip-option-extract explanation="L’opération `-x` extrait les membres de l’archive."}
+::option[`-c`]{#tar-gzip-option-create .correct explanation="L’opération de création écrit une nouvelle archive à partir des entrées nommées."}
+::option[`-t`]{#tar-gzip-option-list explanation="L’opération `-t` répertorie les membres de l’archive sans les extraire."}
+:::
 
-Pour créer une archive compressée, ce qui est une façon courante de **compresser tar gz** :
+## Créer une archive tar compressée avec gzip
+
+GNU tar et de nombreuses autres implémentations peuvent appeler gzip avec `-z` :
 
 ```bash
-tar czvf monarchive.tar.gz fichier1 fichier2 repertoire1
+$ tar -czvf project.tar.gz file1 file2 directory1
 ```
 
-Ici, l'option `z` indique à `tar` d'utiliser `gzip` pour la compression.
+Le résultat est un seul flux tar compressé avec gzip. La compression ne chiffre pas l’archive et ne dissimule pas son contenu à une personne capable de la lire et de la décompresser. Si la confidentialité est requise, employez une procédure de chiffrement authentifié appropriée et gérez les clés séparément.
 
-### Extraction des archives tar et gzip
+:::single-choice{#tar-gzip-z-option}
+Que demande `-z` dans la commande `tar` présentée ?
 
-Pour extraire des fichiers d'une archive, vous utilisez l'option `x`.
+::option[Chiffrer l’archive avec une clé à divulgation nulle.]{#tar-gzip-z-encrypt explanation="Ni tar ni gzip ne fournit de chiffrement par cette option."}
+::option[Ignorer chaque membre de taille nulle.]{#tar-gzip-z-zero explanation="Cette option sélectionne gzip et ne filtre pas les membres selon leur taille."}
+::option[Faire passer le flux de l’archive par gzip.]{#tar-gzip-z-gzip .correct explanation="L’option `z` relie l’opération d’archivage de tar à la compression ou à la décompression gzip."}
+:::
 
-Pour extraire une archive `.tar` simple :
+## Répertorier avant d’extraire
+
+Considérez une archive reçue d’un tiers comme une entrée non fiable. Répertoriez d’abord les noms de ses membres :
 
 ```bash
-tar xvf monarchive.tar
+$ tar -tzf download.tar.gz
 ```
 
-Pour décompresser et extraire une archive `.tar.gz` en une seule commande, ajoutez simplement à nouveau l'option `z` :
+Recherchez les chemins absolus inattendus, les composants de traversée `..`, les liens symboliques ou physiques surprenants, les fichiers de périphérique et les noms susceptibles d’écraser des fichiers importants. Les implémentations modernes de tar appliquent des protections, mais leur comportement et leurs options varient, et l’extraction crée toujours des noms et du contenu choisis par l’auteur de l’archive.
+
+Extrayez dans un nouveau répertoire intermédiaire sans privilèges :
 
 ```bash
-tar xzvf monarchive.tar.gz
+$ mkdir extraction-stage
+$ tar -xzf download.tar.gz -C extraction-stage
 ```
 
-Récapitulons les options d'extraction :
+N’extrayez pas en tant que root une archive qui n’a pas été examinée. Vérifiez les éléments créés avant de déplacer les fichiers sélectionnés vers leur emplacement final.
 
-- `x` : **e**xtraire les fichiers de l'archive.
-- `z` : Décompresser l'archive en utilisant **g**u**z**ip.
-- `v` : mode **v**erbose, listant les fichiers au fur et à mesure de leur extraction.
-- `f` : **f**ichier, spécifiant le fichier archive à extraire.
+:::single-choice{#tar-gzip-list-before-extract}
+Quelle opération répertorie les membres d’une archive sans les extraire ?
 
-Aide-mémoire utile pour ceci : **E**xtraire **Z**e **V**raiment **F**acilement !
+::option[`tar -czf download.tar.gz .`]{#tar-gzip-create-download explanation="Cette commande crée ou remplace une archive à partir du répertoire actuel."}
+::option[`tar -xzf download.tar.gz`]{#tar-gzip-extract-download explanation="L’opération `-x` écrit les membres dans le répertoire cible."}
+::option[`tar -tzf download.tar.gz`]{#tar-gzip-list-members .correct explanation="L’opération `-t` lit et affiche la table des membres tandis que `-z` gère gzip."}
+:::
 
-`tar` est une commande si essentielle mais souvent oubliée. xkcd pertinent : `https://xkcd.com/1168`
+## Autres formats de compression
 
-### Autres utilitaires
+Les implémentations de tar peuvent fonctionner avec des compresseurs tels que bzip2 et xz, généralement sélectionnés respectivement avec `-j` et `-J` dans GNU tar. La prise en charge des formats et leur détection automatique diffèrent ; consultez `tar --help` ou le manuel local. ZIP est un format d’archive distinct, manipulé avec des outils tels que `zip` et `unzip`.
 
-Bien que `tar` et `gzip` soient extrêmement courants, vous rencontrerez d'autres formats d'archivage et de compression lors de votre parcours sous Linux. Ceux-ci incluent `bzip2` (qui crée des fichiers `.bz2` et utilise l'indicateur `j` dans `tar`), `xz` (créant des fichiers `.xz` avec l'indicateur `J`), et les utilitaires familiers `zip`/`unzip`. Chacun a son propre ensemble de commandes et ses propres ratios de compression, mais les concepts sous-jacents restent les mêmes.
+:::single-choice{#tar-gzip-archive-confidentiality}
+La compression gzip rend-elle une archive tar confidentielle ?
 
-## Exercise
+::option[Non ; toute personne capable de la lire peut généralement la décompresser.]{#tar-gzip-not-encryption .correct explanation="La compression modifie la représentation et la taille, mais n’apporte ni contrôle d’accès ni secret cryptographique."}
+::option[Oui ; gzip dérive une clé de chiffrement du nom du fichier.]{#tar-gzip-filename-key explanation="Gzip ne met en œuvre aucun mécanisme de chiffrement de ce type."}
+::option[Oui ; tar chiffre chaque membre avant que gzip ne le traite.]{#tar-gzip-tar-encrypt explanation="Tar archive les membres, mais ne chiffre pas automatiquement leur contenu."}
+:::
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de l'archivage et de la compression de fichiers :
+Entraînez-vous avec des fichiers jetables dans [Empaquetage et compression de fichiers](https://labex.io/fr/labs/linux-file-packaging-and-compression-385413), puis appliquez l’examen et l’extraction intermédiaire dans [Créer et restaurer une sauvegarde avec tar](https://labex.io/fr/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843).
 
-1. **[Packaging et compression de fichiers](https://labex.io/fr/labs/linux-file-packaging-and-compression-385413)** - Apprenez les techniques essentielles de compression et d'empaquetage de fichiers Linux à l'aide d'outils tels que tar, gzip et zip.
-2. **[Créer et restaurer une sauvegarde avec tar sous Linux](https://labex.io/fr/labs/comptia-create-and-restore-a-backup-with-tar-in-linux-590843)** - Acquérir une expérience pratique de la création et de la restauration de sauvegardes de systèmes de fichiers à l'aide de la commande tar.
-3. **[Sauvegarder le journal système](https://labex.io/fr/labs/linux-backup-system-log-17989)** - Apprenez la compétence essentielle de sauvegarde des fichiers journaux système à l'aide de la commande tar et du formatage de date.
+## Résumé
 
-Ces laboratoires vous aideront à appliquer les concepts d'archivage et de compression dans des scénarios réels et à renforcer votre confiance dans la gestion des fichiers sous Linux.
+Vous savez maintenant associer en toute sécurité l’archivage tar et la compression gzip.
 
-## Quiz Question
-
-Quel drapeau tar est utilisé pour créer des archives ? Veuillez répondre avec une seule lettre minuscule anglaise.
-
-## Quiz Answer
-
-c
+1. Distinguer une archive tar de la compression gzip.
+2. Créer des archives avec `-c` et des flux gzip avec `-z`.
+3. Répertorier les membres avec `-t` avant de les extraire avec `-x`.
+4. Extraire le contenu non fiable dans un répertoire intermédiaire sans privilèges.
+5. Distinguer la compression du chiffrement.

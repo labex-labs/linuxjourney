@@ -1,66 +1,106 @@
 ---
-index: 7
+lesson_id: "killing-processes"
+course_id: "processes"
 lang: "ja"
+order_index: 7
 title: "kill（終了）"
+description: "プロセスを特定し、`kill` で適切なシグナルを安全な段階的手順に従って送る方法を学びます。"
 meta_title: "kill（終了） - プロセス"
 meta_description: "Linux の kill コマンドをマスターしてプロセスを管理・終了する方法を学びます。このガイドでは、kill と terminate の違い、および kill sigterm (SIGTERM)、SIGKILL、kill sighup (SIGHUP) などのシグナルについて解説します。"
 meta_keywords: "kill コマンド，kill sigterm, kill sighup, linux kill -0, kill vs terminate, kill -15 linux, SIGTERM, SIGKILL, プロセス管理，プロセス終了"
 ---
 
-## Lesson Content
+`kill` コマンドはプロセスまたはプロセスグループへシグナルを送ります。名前は歴史的なもので、要求するシグナルは終了、停止、続行、アプリケーション固有の操作などを起こせます。送信前に正確な対象と、プログラムが文書化したシグナル動作を確認してください。
 
-Linux では、シグナルをプロセスに送信することでプロセスを管理できます。そのための主要なコマンドは`kill`ですが、その名前にもかかわらず、プロセスを終了させるシグナルだけでなく、さまざまなシグナルを送信できます。
+## 秩序立った終了を要求する
 
-### kill sigterm によるデフォルトの終了
-
-プロセス ID（PID）のみを指定して`kill`コマンドを使用すると、デフォルトで`TERM`シグナルが送信されます。これは、プログラムに正常に終了するように要求する標準的で穏当な方法です。
+PID だけを指定すると、既定で `SIGTERM` を送ります。
 
 ```bash
-kill 12445
+$ kill 12445
 ```
 
-`kill sigterm`シグナル（`SIGTERM`またはシグナル 15 としても知られる）は、プロセスにクリーンアップしてシャットダウンするように要求します。これにより、プロセスは進捗を保存し、リソースを適切に解放する機会を得ます。シグナル番号を明示的に使用することもでき、`kill -15 12445`は上記のコマンドと同等になります。これは一般的な`kill -15 linux`の問い合わせに対応します。
-
-### SIGKILL による強制終了
-
-プロセスが応答しなくなり、`SIGTERM`シグナルに反応しない場合があります。このような場合は、`KILL`シグナルを使用して強制的に停止させることができます。
+明示する場合は記号名を優先します。
 
 ```bash
-kill -9 12445
+$ kill -TERM 12445
 ```
 
-`SIGKILL`シグナル（シグナル 9）は、プロセスにクリーンアップの機会を与えることなく、即座にプロセスを終了させます。これは`kill vs terminate`の議論における重要な違いです。`SIGKILL`は無条件の終了であり、`SIGTERM`は丁寧な要求です。
+`SIGTERM` の既定動作は終了ですが、プログラムは捕捉・無視できます。適切に設計されたサービスは新しい仕事の受け入れ停止、状態保存、リソース解放を行えますが、即時または正常な後始末の保証ではありません。
 
-### その他の一般的なシグナルの理解
+:::single-choice{#killing-processes-default-signal}
+`kill PID` が既定で要求するシグナルはどれですか？
 
-`SIGTERM`と`SIGKILL`が最も一般的ですが、他のシグナルもプロセス管理に役立ちます。
+::option[`SIGKILL`]{#killing-processes-default-kill explanation="強制的で捕捉不能なシグナルは明示的に選ぶ必要があります。"}
+::option[`SIGTERM`]{#killing-processes-default-term .correct explanation="別のシグナルを指定しなければ、標準の終了要求を送ります。"}
+::option[`SIGSTOP`]{#killing-processes-default-stop explanation="プロセス停止は kill の既定要求ではありません。"}
+:::
 
-- **SIGHUP**: `kill sighup`シグナル（ハングアップ、シグナル 1）は、制御端末が閉じられたときに伝統的にプロセスに送信されます。デーモンプロセスに設定ファイルを再読み込みするように指示するために使用できます。
-- **SIGINT**: 割り込みシグナル（シグナル 2）は、`Ctrl-C`を押したときに送信されます。プロセスに現在の操作を中断するように要求します。
-- **SIGSTOP**: このシグナル（シグナル 19）は、プロセスを終了させずに一時停止します。プロセスは後で`SIGCONT`シグナルで再開できます。
+## 対象を検証する
 
-### kill -0 によるプロセスの存在確認
-
-特殊な使用例として`linux kill -0`があります。このコマンドは実際にはシグナルを送信せず、指定された PID を持つプロセスが存在するか、およびそれをシグナル送信する権限があるかを確認します。
+PID は再利用されるため、古い PID が後に別プロセスを指すことがあります。操作直前に対象を調べます。
 
 ```bash
-kill -0 12445
+$ ps -p 12445 -o pid,ppid,user,lstart,stat,cmd
 ```
 
-コマンドが正常に実行された場合（終了コード 0）、プロセスは存在します。失敗した場合は、プロセスが存在しないか、権限がありません。
+ユーザー、開始時刻、コマンド、親、サービス所有者、運用上の役割を確認します。サービスマネージャーが所有するなら、その状態を正しく保ち、子の即時再起動を避けるため、可能な限りマネージャーの stop・reload を使います。
 
-## Exercise
+権限規則の範囲で自分のプロセスへ送信できます。他者のプロセスには通常、適切な権限が必要です。名前による広いコマンドは、全一致を確認するまで使わないでください。
 
-学んだことを適用するために、プロセス管理と終了に関する理解を深めるための実践的なラボを試してください。
+:::single-choice{#killing-processes-pid-reuse}
+シグナル送信直前に PID を調べるべきなのはなぜですか？
 
-1. **[Linux プロセスの管理と監視](https://labex.io/ja/labs/comptia-manage-and-monitor-linux-processes-590864)** - このラボでは、Linux システム上のプロセスの管理と監視に不可欠なスキルを学びます。フォアグラウンドプロセスとバックグラウンドプロセスの操作、`ps`を使用した検査、`top`を使用したリソースの監視、`renice`を使用した優先度の調整、`kill`を使用した終了方法を探ります。
+::option[プロセスがファイルを読むたび PID が変わるから。]{#killing-processes-pid-read explanation="実行中プロセスは通常、生存中ずっと同じ PID を保ちます。"}
+::option[以前のプロセス終了後、カーネルが PID を再利用できるから。]{#killing-processes-pid-reused .correct explanation="記憶した数値が、後に別の実行中プロセスを指す場合があります。"}
+::option[`kill` はコマンド名だけを受け付け、数値を受け付けないから。]{#killing-processes-no-numeric explanation="数値 PID は kill の通常の対象引数です。"}
+:::
 
-このラボは、プロセス制御と終了の概念を実際のシナリオに適用し、Linux プロセスの管理に対する自信を築くのに役立ちます。
+## シグナル0で権限を確認する
 
-## Quiz Question
+シグナル番号0は実際のシグナルを配送せず、エラー検査を行います。
 
-デフォルトの`kill`コマンドのシグナル名はなんですか？英語で回答してください。回答は大文字と小文字が区別されます。
+```bash
+$ kill -0 12445
+```
 
-## Quiz Answer
+成功は、その瞬間に PID のプロセスが存在し、呼び出し元に送信権限があることを意味します。失敗は不在または権限不足のどちらもあり得るため、すべてを「実行していない」と解釈せず、エラーと終了状態を確認します。瞬間的な検査なので、後の PID 再利用競合は防げません。
 
-SIGTERM
+:::single-choice{#killing-processes-signal-zero}
+`kill -0 PID` の成功がその瞬間に確立することは何ですか？
+
+::option[プロセスが全後始末を終えて終了した。]{#killing-processes-zero-exited explanation="成功はシグナル可能な実行中対象を示し、終了完了ではありません。"}
+::option[プロセスがその PID を永久に保つ。]{#killing-processes-zero-permanent explanation="検査は瞬間的で、終了後に PID は再利用できます。"}
+::option[プロセスが存在し、呼び出し元がシグナルを送れる。]{#killing-processes-zero-permitted .correct explanation="通常のシグナルを配送せず、対象の存在と権限を検査します。"}
+:::
+
+## 必要な場合だけ段階的に強める
+
+許可された対象が `SIGTERM` 後も終了しなければ、ワークロードに合う時間を待ち、理由を調べます。強制終了が正当なときは次を送ります。
+
+```bash
+$ kill -KILL 12445
+```
+
+`SIGKILL` は捕捉、無視、遮断できず、アプリケーションは後始末できません。不完全なトランザクション、一時状態、ほかの構成要素による復旧作業を残す場合があります。最初の通常手段ではなく、調査後の段階的な手段として使います。
+
+ほかのシグナルの意味は受信プログラムの契約次第です。`SIGHUP` は設定再読み込みを要求することが多い一方、既定の終了動作を保つプログラムもあります。`SIGSTOP` は後始末なしに停止し、`SIGCONT` は再開します。
+
+:::single-choice{#killing-processes-kill-tradeoff}
+`SIGKILL` の主な運用上の欠点は何ですか？
+
+::option[プロセス所有者だけが処理できる。]{#killing-processes-kill-owner-handler explanation="対象プロセスは SIGKILL のハンドラーを設定できません。"}
+::option[一時停止するだけで終了しない。]{#killing-processes-kill-pauses explanation="停止は SIGSTOP で、SIGKILL は終了させます。"}
+::option[プログラムにアプリケーションレベルの後始末を行う機会がない。]{#killing-processes-kill-no-cleanup .correct explanation="ユーザー空間のハンドラーを呼ばず、カーネルが終了を強制します。"}
+:::
+
+隔離環境で自分が開始したプロセスだけを使ってシグナル選択を練習してください。[Linux プロセスの管理と監視](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) は確認と終了の制御された手順を提供します。
+
+## まとめ
+
+意図的で検証可能な手順に従い、プロセスへシグナルを送れるようになりました。
+
+1. 操作前に実行中の対象と監督プロセスを確認する。
+2. 通常の終了要求には `SIGTERM` を使う。
+3. シグナル0を瞬間的な存在・権限検査として解釈する。
+4. `SIGKILL` は調査後、正当な段階的強化に限定する。

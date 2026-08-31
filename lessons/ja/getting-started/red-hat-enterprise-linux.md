@@ -1,69 +1,95 @@
 ---
-index: 4
+lesson_id: "red-hat-enterprise-linux"
+course_id: "getting-started"
 lang: "ja"
+order_index: 4
 title: "Red Hat Enterprise Linux"
+description: "RHEL が企業向けサポート、予測可能なライフサイクル、RPM ベースのソフトウェア管理をどう組み合わせるか学びます。"
 meta_title: "Red Hat Enterprise Linux とは"
 meta_description: "Red Hat Enterprise Linux (RHEL) の概要、Red Hat エコシステムにおける役割、RPM および DNF パッケージ管理の仕組み、そして企業環境で広く採用されている理由を解説します。"
 meta_keywords: "Red Hat Enterprise Linux, RHEL, Linux ディストリビューション，エンタープライズ Linux, RPM, DNF, Red Hat 認定"
 ---
 
-## Lesson Content
+## Red Hat Enterprise Linux とは
 
-### Red Hat Enterprise Linux とは？
+Red Hat Enterprise Linux（**RHEL**）は、Red Hat が企業用途向けに開発する商用 Linux ディストリビューションです。長いサポート期間、予測可能なリリース、セキュリティ保守、専門サポートを必要とする組織向けに設計されています。
 
-Red Hat Enterprise Linux（通称**RHEL**）は、Red Hat 社が企業向けに開発した商用 Linux ディストリビューションです。長期的なサポート期間、予測可能なリリースサイクル、セキュリティメンテナンス、そして専門的なサポートを必要とする組織向けに設計されています。
+RHEL はサーバー、データセンター、クラウド、規制対象の業務環境で使われます。汎用のコミュニティディストロとは異なり、サポート可能性と長期的なライフサイクル計画が価値の中心です。
 
-RHEL は、サーバー、データセンター、クラウドシステム、規制の厳しいビジネス環境などで幅広く利用されている、最も重要なエンタープライズ Linux ディストリビューションの一つです。その価値の中心はサポート体制と長期的なライフサイクル計画にあり、一般的なコミュニティ主導のディストリビューションとは役割が異なります。
+:::single-choice{#match-rhel-priorities}
+RHEL の設計目標に最も直接合う必要条件はどれですか？
 
-### RHEL が重要な理由
+::option[サポート期間のない継続的な機能変更]{#continuous-unsupported-change explanation="RHEL は継続的で無保証な変更ではなく、保守的で公表済みのライフサイクルに従います。"}
+::option[予測可能なリリースと長期の専門サポート]{#predictable-enterprise-platform .correct explanation="計画されたライフサイクル、保守、専門サポートを必要とする組織向けで、本番システムを長期にわたりサポート可能にします。"}
+::option[個人プロジェクト専用の実験的システム]{#personal-experimental-system explanation="多様なワークロードを扱えますが、定義上の目的は支援付きの企業運用であり、趣味の実験だけではありません。"}
+:::
 
-RHEL が重要なのは、組織に対して本番環境のワークロードを支える安定したサポート付きのプラットフォームを提供しているからです。これにはオペレーティングシステムそのものだけでなく、認定プログラム、ハードウェアおよびソフトウェアの互換性、エンタープライズ環境で重視されるサポートポリシーが含まれます。
+## RHEL が重要な理由
 
-これが、RHEL がコミュニティ主導のディストリビューションと異なる点です。単に Linux を利用することではなく、信頼性とサポートというエンタープライズの要件を満たした Linux を利用することに重点が置かれています。
+RHEL は、組織へ安定した支援付きの本番プラットフォームを提供します。OS 本体だけでなく、認定制度、ハードウェアとソフトウェアの互換性、企業環境で重要なサポート方針も含まれます。
 
-### RHEL と Fedora
+単に Linux を提供するのではなく、信頼性とサポートに関する企業の期待を伴う Linux である点が、コミュニティ中心のディストリビューションとの違いです。
 
-RHEL は、より広範な Red Hat エコシステムと密接に関連しています。Fedora は多くの新技術が最初に導入されるコミュニティプロジェクトであり、RHEL はより保守的なリリース哲学に基づいて構築されたエンタープライズ製品です。この関係性が、なぜ Fedora がより先進的で、RHEL がより管理されているように感じられるのかを説明しています。
+## RHEL と Fedora
 
-これら 2 つのパスを比較したい場合は、[Fedora](https://labex.io/ja/lesson/fedora)を参照してください。ディストリビューションファミリーのより広範な概要については、[Linux ディストリビューションの選択](https://labex.io/ja/lesson/choosing-a-linux-distribution)を参照してください。
+RHEL は Red Hat エコシステムと密接です。Fedora は多くの新技術が先に登場するコミュニティプロジェクトで、RHEL はより保守的なリリース方針の企業製品です。そのため Fedora は新しさを、RHEL は制御された安定性を感じさせます。
 
-### パッケージ管理
+比較には [Fedora](https://labex.io/lesson/fedora)、ディストロ系統の概要には [Linux ディストリビューションの選び方](https://labex.io/lesson/choosing-a-linux-distribution) を参照してください。
 
-RHEL は RPM パッケージ形式を使用し、DNF などのツールを使ってソフトウェアのインストール、更新、管理を行います。これは Fedora や openSUSE と同じパッケージファミリーに属しますが、各ディストリビューションには独自のツール選択やエコシステムの詳細があります。
+:::single-choice{#compare-fedora-and-rhel}
+Red Hat エコシステムで、Fedora は RHEL とどう関係しますか？
 
-長期的なメンテナンスと予測可能なアップデートはエンタープライズシステムの運用において中心的な役割を果たすため、パッケージ管理は RHEL 管理者にとって不可欠な運用スキルです。
+::option[セキュリティ保守なしで残された古い RHEL リリース]{#fedora-old-rhel explanation="Fedora は期限切れの RHEL ではなく、独自のリリースと速い進行を持つ別のコミュニティディストリビューションです。"}
+::option[RHEL に入る可能性がある技術の上流コミュニティプロジェクト]{#fedora-upstream .correct explanation="Fedora は速く進む上流コミュニティで、Red Hat はそこからより保守的な企業プラットフォームを開発します。"}
+::option[RHEL にソフトウェアを導入するパッケージマネージャー]{#fedora-package-manager explanation="Fedora はコマンドではなく Linux ディストリビューションです。RHEL は RPM と DNF などを使います。"}
+:::
 
-### エンタープライズサポート
+## パッケージ管理
 
-組織が RHEL を選択する最大の理由の一つは、エンタープライズサポートです。これには、長期的なライフサイクル計画、セキュリティアップデートへのアクセス、そして各メジャーリリースに対して長年にわたって提供されるライフサイクルが含まれます。
+RHEL は RPM パッケージ形式と DNF などのツールでソフトウェアを導入、更新、管理します。Fedora や openSUSE と同じ大きなパッケージ系統ですが、ツールの選択やエコシステムの詳細はそれぞれ異なります。
 
-企業にとって、このサポートモデルはディストリビューション自体の技術的機能と同じくらい重要になる場合があります。
+長期保守と予測可能な更新が企業運用の中心なので、パッケージ管理は RHEL 管理者の中核技能です。
 
-### 認定資格と専門的な利用
+:::single-choice{#relate-rpm-and-dnf}
+RHEL で RPM と DNF はどう連携しますか？
 
-RHEL は、専門的なトレーニングや認定資格とも密接に関連しています。RHCSA や RHCE といった資格は Linux 管理の分野で広く知られており、RHEL が専門的な環境で高い存在感を保ち続けている理由の一つとなっています。
+::option[RPM がパッケージ化されたソフトウェアを定義し、DNF がリポジトリ内容と依存関係を管理する]{#rpm-format-dnf-tool .correct explanation="ソフトウェアは RPM として配布され、DNF は検索、導入、更新、削除を行う上位ツールです。"}
+::option[DNF がパッケージを定義し、RPM がグラフィカルデスクトップを管理する]{#dnf-format-rpm-desktop explanation="役割が逆で誤っています。RPM がパッケージシステムで、DNF が上位のソフトウェア管理を行います。"}
+::option[RPM がリリース期間を制御し、DNF が専門認定を提供する]{#rpm-lifecycle-dnf-certification explanation="リリース方針と認定は別の Red Hat プログラムで、RPM と DNF はソフトウェアのパッケージ化と管理に属します。"}
+:::
 
-エンタープライズ運用に向けて Linux を学ぶことが目標であれば、RHEL は理解しておくべき最も重要なディストリビューションの一つです。
+## 企業向けサポート
 
-### 参考文献
+企業が RHEL を選ぶ大きな理由は、長期計画、セキュリティ更新へのアクセス、各メジャーリリースで何年にもわたるライフサイクルを含む企業向けサポートです。企業にとって、このモデルは技術機能と同じほど重要になり得ます。
+
+:::single-choice{#use-published-lifecycle}
+公表されたサポートライフサイクルが組織に有用なのはなぜですか？
+
+::option[すべてのアプリケーションがテストなしで動くと保証するから]{#guarantee-all-applications explanation="支援付き OS でも全アプリケーションとの互換性は保証せず、確認とテストが必要です。"}
+::option[サポート中のセキュリティ更新が不要になるから]{#avoid-security-updates explanation="ライフサイクルは保守と更新を提供しますが、更新自体が不要になるわけではありません。"}
+::option[保守、アップグレード、支援対象としての運用を計画できるから]{#plan-supported-operation .correct explanation="既知の期間により更新と将来の移行を計画し、長期運用する本番システムの不確実性を減らせます。"}
+:::
+
+## 認定と専門的な利用
+
+RHEL は専門研修や認定とも密接です。RHCSA や RHCE は Linux 管理でよく知られ、RHEL が専門環境で高い認知を保つ理由の1つです。企業運用のために Linux を学ぶなら、理解すべき重要なディストリビューションです。
+
+## 関連資料
 
 - [Red Hat Enterprise Linux の概要](https://developers.redhat.com/products/rhel/overview)
-- [なぜ Red Hat Enterprise Linux を選ぶのか？](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)
+- [RHEL を選ぶ理由](https://www.redhat.com/en/topics/linux/why-choose-red-hat-enterprise-linux)
 - [RHEL のライフサイクル](https://www.redhat.com/en/blog/understanding-red-hat-enterprise-linux-rhel-lifecycle)
-- [Red Hat 認定資格](https://www.redhat.com/en/services/certification)
+- [Red Hat 認定](https://www.redhat.com/en/services/certification)
 
-## Exercise
+1. **[Red Hat System Administration（RH124）認定ラボ](https://labex.io/courses/red-hat-system-administration-rh124-labs)** - RHEL に焦点を当てた管理演習を始めます。
+2. **[RHCSA 認定試験の演習](https://labex.io/courses/rhcsa-certification-exam-practice-exercises)** - RHEL 管理に関連する実用技能を強化します。
+3. **[RPM と DNF のパッケージ管理](https://labex.io/courses/rpm-and-dnf-package-management)** - RPM と DNF の概念を練習します。
 
-この RHEL の入門を終えた後、学習を継続するために以下の LabEx コースを推奨します：
+## まとめ
 
-1. **[Red Hat システム管理 (RH124) 認定ラボ](https://labex.io/ja/courses/red-hat-system-administration-rh124-labs)** - RHEL に特化した管理の実践から始めましょう。
-2. **[RHCSA 認定試験 練習問題](https://labex.io/ja/courses/rhcsa-certification-exam-practice-exercises)** - RHEL 管理に関連する実践的なスキルを強化します。
-3. **[RPM および DNF パッケージ管理](https://labex.io/ja/courses/rpm-and-dnf-package-management)** - RHEL システムの中核となるパッケージツールを練習します。
+RHEL が長期運用される支援付き企業環境向けである理由を説明できるようになりました。
 
-## Quiz Question
-
-Red Hat Enterprise Linux が基盤としているパッケージ管理システムは何ですか？英語で回答し、頭字語はすべて大文字で記述してください。
-
-## Quiz Answer
-
-RPM
+1. RHEL が対応する企業向けの優先事項を特定する。
+2. Fedora と RHEL の上流関係を説明する。
+3. RPM パッケージと DNF の連携を説明する。
+4. 公表されたサポート期間の計画上の価値を理解する。

@@ -1,62 +1,95 @@
 ---
-index: 8
+lesson_id: "sticky-bit"
+course_id: "permissions"
 lang: "fr"
-title: "Le Bit Collant"
-meta_title: "Le Bit Collant - Permissions"
-meta_description: "Explorez l'utilité du bit collant dans les permissions de fichiers Linux et Unix. Apprenez comment le bit collant protège les fichiers dans les répertoires partagés comme /tmp et comment le définir avec chmod."
-meta_keywords: "bit collant, bit collant linux, permissions fichiers unix bit collant, chmod +t, répertoire /tmp, permissions fichiers, sécurité linux"
+order_index: 8
+title: "Le sticky bit"
+description: "Découvrez comment le sticky bit protège les entrées des répertoires partagés accessibles en écriture tels que `/tmp`."
+meta_title: "Le sticky bit - Permissions"
+meta_description: "Explorez le rôle du sticky bit dans les permissions Linux et Unix, sa protection des fichiers dans /tmp et sa définition avec chmod."
+meta_keywords: "sticky bit, sticky bit Linux, permissions fichiers Unix, chmod +t, répertoire /tmp, permissions fichiers, sécurité Linux"
 ---
 
-## Lesson Content
+Un répertoire accessible en écriture permet normalement à un utilisateur autorisé de supprimer ou de renommer ses entrées, même si cet utilisateur ne possède pas les fichiers eux-mêmes. Le sticky bit ajoute une restriction fondée sur la propriété qui rend les répertoires partagés accessibles en écriture plus sûrs.
 
-Au-delà des permissions standard de lecture, d'écriture et d'exécution, Linux offre des permissions spéciales pour un contrôle d'accès avancé. La dernière de ces permissions spéciales que nous aborderons est le **bit collant** (sticky bit).
+## Comment le sticky bit limite la suppression
 
-### Qu'est-ce que le Bit Collant ?
+Lorsqu’un répertoire possède le sticky bit, Linux ne permet généralement de supprimer ou de renommer une entrée qu’à un processus suffisamment privilégié, au propriétaire du répertoire ou au propriétaire de l’entrée. Les permissions ordinaires d’écriture et de recherche du répertoire restent nécessaires.
 
-Le bit collant est un paramètre de permission qui peut être appliqué à un répertoire. Lorsqu'un répertoire a le bit collant défini, les fichiers qu'il contient ne peuvent être ni supprimés ni renommés que par le propriétaire du fichier, le propriétaire du répertoire ou l'utilisateur root. Ceci est particulièrement utile pour les répertoires partagés où plusieurs utilisateurs doivent créer et gérer leurs propres fichiers sans interférer avec les autres. Ce concept est une partie essentielle de la gestion des **permissions de fichiers Unix bit collant**.
+Cette restriction concerne les entrées du répertoire. Elle n’empêche pas le propriétaire d’un fichier d’en modifier le contenu lorsque ses permissions l’autorisent, et ne rend pas le répertoire privé.
 
-### Un Exemple Pratique : Le Répertoire /tmp
+:::single-choice{#sticky-bit-removal-rule}
+Dans un répertoire partagé doté du sticky bit, quel utilisateur ordinaire peut normalement supprimer une entrée particulière ?
 
-Un cas d'utilisation courant pour le **bit collant sous Linux** est le répertoire `/tmp`, qui est un emplacement accessible en écriture par tous pour les fichiers temporaires. Examinons ses permissions :
+::option[N’importe quel utilisateur capable de répertorier le répertoire.]{#sticky-bit-any-reader explanation="La permission de lecture du répertoire peut révéler les noms, mais ne contourne pas la restriction de propriété du sticky bit."}
+::option[Le propriétaire de l’entrée, s’il possède l’accès requis au répertoire.]{#sticky-bit-entry-owner .correct explanation="Le propriétaire de l’entrée fait partie des identités normalement autorisées par la règle du répertoire doté du sticky bit."}
+::option[Uniquement un membre du groupe de l’entrée.]{#sticky-bit-entry-group explanation="La seule appartenance au groupe ne constitue pas l’exception de propriété définie par le sticky bit."}
+:::
+
+## Reconnaître le bit sur `/tmp`
+
+Le répertoire temporaire du système est un exemple courant :
 
 ```bash
 $ ls -ld /tmp
 drwxrwxrwt 17 root root 4096 Dec 15 11:45 /tmp
 ```
 
-Remarquez le `t` à la fin de la chaîne de permissions (`rwxrwxrwt`). Ce `t` indique que le bit collant est défini. Grâce à cela, bien que tout utilisateur puisse créer des fichiers dans `/tmp`, il ne peut pas supprimer ou déplacer les fichiers créés par d'autres utilisateurs. Cela empêche un utilisateur de perturber le travail d'un autre dans cet espace partagé.
+Le `t` minuscule final occupe la position d’exécution des autres. Il signifie que le sticky bit et la permission d’exécution des autres sont présents. Un `T` majuscule signifie que le sticky bit est défini tandis que l’exécution des autres est absente.
 
-### Comment Définir le Bit Collant
+Comme `/tmp` est généralement accessible en écriture et en recherche à tous, plusieurs utilisateurs peuvent y créer des entrées. Le sticky bit empêche un utilisateur ordinaire de supprimer les entrées d’un autre utilisateur au seul motif que le répertoire est accessible en écriture à tous. Les applications doivent néanmoins créer les objets temporaires de manière sûre, car les noms prévisibles, les liens dangereux et les modes trop faibles constituent des risques distincts.
 
-Vous pouvez définir le bit collant à l'aide de la commande `chmod` de deux manières : mode symbolique ou mode octal (numérique).
+:::single-choice{#sticky-bit-lowercase-t}
+Qu’indique un `t` minuscule à la fin du mode d’un répertoire ?
 
-Pour ajouter le bit collant en mode symbolique :
+::option[Le sticky bit et l’exécution des autres sont définis.]{#sticky-bit-t-with-execute .correct explanation="Le `t` minuscule associe le bit spécial sticky au bit ordinaire d’exécution des autres."}
+::option[Le sticky bit est défini, mais l’exécution des autres est absente.]{#sticky-bit-t-without-execute explanation="Cette combinaison est affichée sous la forme d’un `T` majuscule."}
+::option[Setgid et l’exécution du groupe sont définis.]{#sticky-bit-setgid-position explanation="Setgid apparaît à la position d’exécution du groupe, et non à la position finale des autres."}
+:::
+
+## Définir et retirer le sticky bit
+
+Définissez le bit symboliquement :
 
 ```bash
-chmod +t mon_repertoire_partage
+$ chmod +t shared-directory
 ```
 
-Pour définir les permissions en mode octal, vous préfixez un `1` au code de permission standard à trois chiffres. La représentation numérique du bit collant est **1**.
+Dans le premier chiffre octal des bits spéciaux, sticky contribue pour `1` :
 
 ```bash
-# Ceci définit les permissions à rwxr-xr-x avec le bit collant
-chmod 1755 mon_repertoire_partage
+$ chmod 1777 shared-directory
 ```
 
-Comprendre le bit collant est essentiel pour gérer efficacement les environnements multi-utilisateurs et sécuriser les répertoires partagés.
+Le premier `1` définit sticky, tandis que `777` fournit le mode ordinaire. Ce mode ne convient que si le répertoire doit être partagé intentionnellement par tous les utilisateurs locaux. Des permissions de groupe plus étroites peuvent être préférables pour un répertoire d’équipe. Retirez uniquement le sticky bit avec `chmod -t shared-directory`.
 
-## Exercise
+:::single-choice{#sticky-bit-octal-value}
+Quelle première valeur octale représente le sticky bit ?
 
-Pour consolider votre compréhension des permissions de fichiers, y compris les permissions spéciales comme le bit collant, essayez ces laboratoires pratiques. Ils vous aideront à voir comment ces concepts s'appliquent dans des scénarios réels.
+::option[`2`]{#sticky-bit-value-two explanation="Un premier `2` représente setgid."}
+::option[`1`]{#sticky-bit-value-one .correct explanation="Le sticky bit contribue pour `1` au premier chiffre des bits spéciaux."}
+::option[`4`]{#sticky-bit-value-four explanation="Un premier `4` représente setuid."}
+:::
 
-1. **[Groupes d'Utilisateurs Linux et Permissions de Fichiers](https://labex.io/fr/labs/linux-linux-user-group-and-file-permissions-18002)** - Entraînez-vous à créer des utilisateurs et des groupes, et à manipuler la propriété et les permissions des fichiers. Ce laboratoire fournit une base pour comprendre le fonctionnement des permissions spéciales.
-2. **[Supprimer et Déplacer des Fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777)** - Apprenez à supprimer et déplacer des fichiers, et voyez comment les permissions, y compris le bit collant sur un répertoire, peuvent restreindre ces actions.
-3. **[Trouver un Fichier](https://labex.io/fr/labs/linux-find-a-file-17993)** - Entraînez-vous à localiser des fichiers et à définir des contrôles d'accès, renforçant l'importance des permissions de fichiers dans la gestion de l'accès et de la modification des fichiers.
+## Vérifier la politique complète du répertoire
 
-## Quiz Question
+Sticky n’accorde ni l’écriture ni la recherche ; il ne fait que limiter la suppression et le changement de nom après que les permissions ordinaires ont autorisé la modification du répertoire. Vérifiez ensemble le propriétaire, le groupe, le mode ordinaire, les ACL et le contexte de montage du répertoire. Effectuez les tests avec des comptes sans privilèges dans un environnement isolé plutôt que de modifier `/tmp` sur un système en service.
 
-Dans un affichage détaillé du répertoire (ls -l), quel caractère unique dans la chaîne de permissions représente que le bit collant est défini ? Veuillez répondre avec une seule lettre minuscule anglaise.
+:::single-choice{#sticky-bit-access-scope}
+L’ajout du sticky bit rend-il un répertoire non accessible en écriture modifiable par les autres utilisateurs ?
 
-## Quiz Answer
+::option[Oui ; sticky ajoute automatiquement l’écriture à chaque classe.]{#sticky-bit-adds-write explanation="Le bit spécial ne réécrit pas les bits d’écriture du propriétaire, du groupe ou des autres."}
+::option[Oui ; sticky désactive le triplet de permissions des autres.]{#sticky-bit-disables-other explanation="Le triplet des autres continue de participer aux contrôles d’accès ordinaires."}
+::option[Non ; les permissions ordinaires d’écriture et de recherche continuent de contrôler l’accès.]{#sticky-bit-no-write-grant .correct explanation="Sticky restreint certaines opérations de suppression et de changement de nom, mais n’ajoute pas de permissions ordinaires absentes."}
+:::
 
-t
+Pour vous exercer, créez un répertoire partagé jetable, définissez un mode ordinaire approprié et le sticky bit, puis testez la suppression d’entrées avec deux utilisateurs sans privilèges. L’atelier [Supprimer et déplacer des fichiers](https://labex.io/fr/labs/linux-delete-and-move-files-7777) renforce les opérations sous-jacentes de changement de nom et de suppression.
+
+## Résumé
+
+Vous savez maintenant expliquer et vérifier le sticky bit sur les répertoires partagés.
+
+1. Relier sticky aux restrictions de propriété lors de la suppression et du changement de nom.
+2. Reconnaître le `t` minuscule et le `T` majuscule dans une liste détaillée.
+3. Définir le bit symboliquement ou avec la première valeur octale `1`.
+4. Évaluer sticky avec les permissions ordinaires du répertoire.

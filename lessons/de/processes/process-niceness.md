@@ -1,65 +1,96 @@
 ---
-index: 8
+lesson_id: "process-niceness"
+course_id: "processes"
 lang: "de"
-title: "Nettigkeit"
-meta_title: "Nettigkeit - Prozesse"
-meta_description: "Erfahren Sie, was die Nettigkeit (Niceness) unter Linux ist und wie sie die Prozesspriorität beeinflusst. Diese Lektion erklärt die Linux-Prozess-Nettigkeit und die Verwendung der Befehle nice und renice zur Verwaltung der CPU-Planung und Verbesserung der Systemleistung."
-meta_keywords: "niceness linux, linux niceness, was ist niceness in linux, linux prozess niceness, niceness von prozess, prozesspriorität, nice befehl, renice befehl, cpu-planung"
+order_index: 8
+title: "Niceness"
+description: "Erfahre, wie Nice-Werte das Gewicht beim CPU-Scheduling gewöhnlicher Linux-Prozesse beeinflussen."
+meta_title: "Niceness – Prozesse"
+meta_description: "Entdecke, was Niceness unter Linux ist und wie sie die Prozesspriorität beeinflusst. Diese Lektion erklärt die Niceness von Linux-Prozessen und den Einsatz der Befehle nice und renice zur Verwaltung des CPU-Schedulings und Verbesserung der Systemleistung."
+meta_keywords: "Niceness Linux, Linux-Niceness, was ist Niceness unter Linux, Niceness von Linux-Prozessen, Niceness eines Prozesses, Prozesspriorität, nice-Befehl, renice-Befehl, CPU-Scheduling"
 ---
 
-## Lesson Content
+Linux kann Threads gleichzeitig auf verschiedenen CPU-Kernen ausführen und einen Kern zeitlich unter mehr ausführungsbereiten Threads aufteilen, als gleichzeitig laufen können. Der Scheduler trifft diese Entscheidungen anhand von Scheduling-Richtlinie, Priorität, Affinität und Arbeitslast. Ein Nice-Wert ist eine Eingabe für gewöhnliche Richtlinien mit zeitlicher Aufteilung.
 
-Wenn Sie mehrere Anwendungen auf Ihrem Computer ausführen, scheint es, als würden sie alle gleichzeitig laufen. In Wirklichkeit schaltet die CPU schnell zwischen ihnen um und gibt jedem Prozess eine kleine Menge an Verarbeitungszeit.
+## Nice-Werte interpretieren
 
-### Wie die CPU Prozesse verwaltet
+Der konventionelle Nice-Bereich reicht von `-20` bis `19`:
 
-Jedem Prozess wird eine kleine Menge an CPU-Zeit zugewiesen, die als "Zeitscheibe" (time slice) bezeichnet wird. Nach seiner Zeitscheibe wird ein Prozess angehalten, und die CPU wechselt zum nächsten. Standardmäßig plant der Linux-Kernel Prozesse in einer Round-Robin-Methode, um sicherzustellen, dass jeder Prozess einen fairen Anteil an CPU-Zeit erhält, bis er abgeschlossen ist. Der Scheduler des Kernels ist sehr effizient bei der Verwaltung dieser schnellen Wechsel.
+- Ein niedrigerer Wert verleiht einer Aufgabe im Verhältnis zu vergleichbaren Aufgaben ein größeres Scheduling-Gewicht.
+- Ein höherer Wert macht sie „netter“, indem er ihr ein geringeres relatives Gewicht gibt.
+- Der Standardwert ist gewöhnlich `0`.
 
-### Was ist Niceness unter Linux
+Niceness reserviert weder einen Prozentsatz einer CPU noch garantiert sie eine sofortige Ausführung. Ihre Wirkung ist am deutlichsten, wenn vergleichbare ausführungsbereite Aufgaben um CPU-Zeit konkurrieren. Echtzeitrichtlinien, cgroups, CPU-Affinität, E/A-Wartezeiten und andere Kontrollen können das beobachtete Verhalten stärker bestimmen.
 
-Obwohl Prozesse ihre CPU-Zeit nicht direkt steuern können, können Sie die Scheduling-Entscheidungen des Kernels beeinflussen. Dies geschieht durch die Anpassung des **linux niceness**-Wertes eines Prozesses. Der Begriff "Niceness" (Nettigkeit) bezieht sich darauf, wie "nett" ein Prozess zu anderen Prozessen auf dem System ist.
+:::single-choice{#process-niceness-lower-value}
+Welcher Nice-Wert verleiht unter derselben gewöhnlichen Scheduling-Richtlinie ein größeres relatives CPU-Gewicht?
 
-Die **Niceness eines Prozesses** wird durch eine Zahl zwischen -20 (höchste Priorität) und 19 (niedrigste Priorität) dargestellt.
+::option[`10`]{#process-niceness-value-ten explanation="Ein positiver Wert ist netter und besitzt gewöhnlich weniger Gewicht als null oder ein negativer Wert."}
+::option[`19`]{#process-niceness-value-nineteen explanation="Dies ist das netteste Ende des konventionellen Bereichs und besitzt ein vergleichsweise geringes Gewicht."}
+::option[`-5`]{#process-niceness-value-minus-five .correct explanation="Niedrigere Nice-Werte entsprechen einem größeren relativen Gewicht unter vergleichbaren gewöhnlichen Aufgaben."}
+:::
 
-- Ein hoher Niceness-Wert (z. B. 19) bedeutet, dass der Prozess sehr "nett" ist und eine niedrige Priorität hat, wodurch er CPU-Zeit an andere abgibt.
-- Ein niedriger oder negativer Niceness-Wert (z. B. -20) bedeutet, dass der Prozess nicht "nett" ist und mehr CPU-Zeit beansprucht, was ihm eine höhere Priorität einräumt.
+## Niceness anzeigen
 
-Das Verständnis der **linux process niceness** ist der Schlüssel zur effektiven Verwaltung von Systemressourcen.
-
-### Anpassen der Prozesspriorität
-
-Sie können den aktuellen Niceness-Level laufender Prozesse mit dem Befehl `top` anzeigen. Achten Sie auf die Spalte `NI`, die den Niceness-Wert anzeigt.
-
-```bash
-top
-```
-
-Um den **niceness linux**-Wert zu steuern, können Sie die Befehle `nice` und `renice` verwenden.
-
-Verwenden Sie den Befehl `nice`, um einen neuen Prozess mit einem bestimmten Niceness-Level zu starten. Der folgende Befehl startet beispielsweise `apt upgrade` mit einer Niceness von 5.
+In `top` zeigt die Spalte `NI` den Nice-Wert an. Du kannst ihn auch ausdrücklich von `ps` anfordern:
 
 ```bash
-nice -n 5 apt upgrade
+$ ps -o pid,ni,pri,stat,cmd -p 3245
 ```
 
-Um die Priorität eines bereits laufenden Prozesses zu ändern, verwenden Sie den Befehl `renice`. Der folgende Befehl ändert die Niceness eines Prozesses mit der PID 3245 auf 10.
+`NI` ist der für Benutzer sichtbare Nice-Wert. Eine Spalte `PRI` oder eine ähnliche Spalte kann eine abgeleitete Scheduler-Priorität darstellen, deren Skala sich je nach Werkzeug und Scheduling-Klasse unterscheidet. Gehe daher nicht davon aus, dass beide Spalten austauschbar sind.
+
+:::single-choice{#process-niceness-top-column}
+Welche Spalte von `top` zeigt gewöhnlich den Nice-Wert an?
+
+::option[`PID`]{#process-niceness-column-pid explanation="`PID` kennzeichnet einen Prozess und zeigt nicht seine Scheduling-Anpassung an."}
+::option[`TTY`]{#process-niceness-column-tty explanation="`TTY` kennzeichnet die Zuordnung zu einem steuernden Terminal."}
+::option[`NI`]{#process-niceness-column-ni .correct explanation="`NI` ist die übliche Abkürzung für den Nice-Wert eines Prozesses oder Threads."}
+:::
+
+## Einen Befehl mit `nice` starten
+
+Verwende `nice`, um einen neuen Befehl mit einem angepassten Wert zu starten:
 
 ```bash
-renice 10 -p 3245
+$ nice -n 5 long-computation
 ```
 
-## Exercise
+Die angeforderte Anpassung und die akzeptierte Syntax kannst du im lokalen Handbuch prüfen. Ein unprivilegierter Benutzer kann einen Befehl gewöhnlich netter machen, indem er seinen Wert erhöht. Ein niedrigerer Nice-Wert und damit ein günstigeres Scheduling-Gewicht erfordern entsprechende Privilegien oder konfigurierte Ressourcenlimits.
 
-Wenden Sie Ihr Wissen in diesem praktischen Labor an, um Ihr Verständnis für die Verwaltung und Planung von Linux-Prozessen zu festigen:
+:::single-choice{#process-niceness-nice-command}
+Was bewirkt `nice -n 5 long-computation`?
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top`, passen Sie die Priorität mit `renice` an und beenden Sie sie mit `kill`.
+::option[Es startet den Befehl mit Nice-Wert 5, sofern dies erlaubt ist.]{#process-niceness-start-five .correct explanation="`nice` startet einen neuen Befehl mit der angeforderten Scheduling-Anpassung."}
+::option[Es ändert PID 5 auf den niedrigstmöglichen Nice-Wert.]{#process-niceness-pid-five explanation="Der Operand nach `-n` ist ein Nice-Wert und kein PID-Ziel."}
+::option[Es garantiert dem Befehl genau fünf Prozent einer CPU.]{#process-niceness-five-percent explanation="Nice-Werte drücken relatives Gewicht aus und reservieren keine festen CPU-Prozentsätze."}
+:::
 
-Dieses Labor hilft Ihnen, die Konzepte der Prozessplanung und Niceness in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Prozessen unter Linux aufzubauen.
+## Einen bestehenden Prozess mit `renice` ändern
 
-## Quiz Question
+Verwende `renice` für einen bereits laufenden Prozess:
 
-Wenn Sie möchten, dass ein Prozess mehr CPU-Priorität erhält, sollten Sie eine niedrigere oder höhere "nice"-Zahl verwenden? Bitte antworten Sie in einem einzigen englischen Wort, alles kleingeschrieben.
+```bash
+$ renice -n 10 -p 3245
+```
 
-## Quiz Answer
+Dies fordert den Nice-Wert `10` für PID `3245` an. Prüfe zuerst das Ziel, da PIDs wiederverwendet werden können, und bestätige anschließend den resultierenden Wert. Berechtigungen hängen von Eigentum, Privilegien, Ressourcenlimits und Systemrichtlinien ab. Die Erhöhung des Nice-Werts ist für einen eigenen Prozess gewöhnlich erlaubt; das Rückgängigmachen dieser Änderung kann ohne Privilegien untersagt sein.
 
-lower
+:::single-choice{#process-niceness-renice-purpose}
+Welches Werkzeug ändert den Nice-Wert eines bestehenden Prozesses?
+
+::option[`nice`]{#process-niceness-tool-nice explanation="`nice` startet hauptsächlich einen neuen Befehl mit einem angepassten Wert."}
+::option[`kill`]{#process-niceness-tool-kill explanation="`kill` sendet Signale und dient nicht als gewöhnlicher Niceness-Editor."}
+::option[`renice`]{#process-niceness-tool-renice .correct explanation="`renice` richtet sich abhängig von seinen Optionen an eine bestehende PID, Prozessgruppe oder einen Benutzer."}
+:::
+
+Das Lab [Linux-Prozesse verwalten und überwachen](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) bietet eine kontrollierte Umgebung zum Anzeigen und Ändern von Nice-Werten. Vergleiche konkurrierende CPU-intensive Aufgaben, statt auf einem untätigen System einen sichtbaren Unterschied zu erwarten.
+
+## Zusammenfassung
+
+Du kannst nun Niceness interpretieren und anpassen, ohne sie als CPU-Garantie zu behandeln.
+
+1. Lies niedrigere Nice-Werte als größeres relatives Scheduling-Gewicht.
+2. Prüfe `NI` getrennt von abgeleiteten Prioritätsfeldern.
+3. Verwende `nice` beim Starten eines Befehls.
+4. Verwende `renice` für einen bestehenden, überprüften Prozess.

@@ -1,50 +1,81 @@
 ---
-index: 5
+lesson_id: "arp-command"
+course_id: "network-config"
 lang: "zh"
+order_index: 5
 title: "arp"
+description: "学习如何检查和解读 Linux IPv4 ARP 与 IPv6 邻居缓存状态。"
 meta_title: "arp - 网络配置"
-meta_description: "了解 Linux ARP 命令以及如何查看您的 ARP 缓存。理解 ARP 在网络通信中的作用。ARP 初学者指南。"
-meta_keywords: "Linux ARP, ARP 缓存，ip neighbour show, 网络命令，Linux 网络，Linux 初学者，Linux 教程"
+meta_description: "了解 Linux ARP 命令、如何查看 ARP 缓存，以及 ARP 在网络通信中的作用。面向初学者的 ARP 指南。"
+meta_keywords: "Linux ARP, ARP 缓存, ip neighbour show, 网络命令, Linux 网络, Linux 初学者, Linux 教程"
 ---
 
-## Lesson Content
+Linux 会在邻居表中存储最近解析的下一跳链路地址。以太网上的 IPv4 条目通过 ARP 学习，IPv6 则使用邻居发现。旧式 `arp` 命令只显示部分状态，而 `ip neighbor` 同时支持两个地址族。
 
-请记住，当我们使用 ARP 查找 MAC 地址时，它首先检查我们系统上本地存储的 ARP 缓存。您实际上可以查看此缓存：
+## 查看邻居条目
 
-```
-pete@icebox:~$ arp
-Address                  HWtype  HWaddress           Flags Mask            Iface
-192.168.22.1            ether   00:12:24:fc:12:cc   C                     eth0
-192.168.22.254          ether   00:12:45:f2:84:64   C                     eth0
-```
-
-当机器启动时，ARP 缓存实际上是空的；它会在数据包发送到其他主机时填充。如果我们将数据包发送到 ARP 缓存中不存在的目标，则会发生以下情况：
-
-1. 源主机创建带有 ARP 请求数据包的以太网帧。
-2. 源主机将此帧广播到整个网络。
-3. 如果网络上的某个主机知道正确的 MAC 地址，它将发送包含 MAC 地址的回复数据包和帧。
-4. 源主机将 IP 到 MAC 地址的映射添加到 ARP 缓存，然后继续发送数据包。
-
-您还可以通过 `ip` 命令查看 ARP 缓存：
+检查所有条目或某个接口：
 
 ```bash
-ip neighbour show
+$ ip neighbor show
+$ ip neighbor show dev enp1s0
 ```
 
-## Exercise
+条目包含 IP 地址、链路层地址、设备和可达性状态。启动后邻居表可能为空，并随着流量需要本地下一跳而填充。
 
-熟能生巧！以下是一些动手实验，可帮助您巩固对 ARP 和网络层交互的理解：
+:::single-choice{#arp-command-modern-view}
+哪个命令显示现代 Linux 邻居表状态？
 
-1. **[在 Linux 中使用 ping 和 arp 探索网络层交互](https://labex.io/zh/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - 使用 `ping` 和 `arp` 命令观察 IP 地址如何解析为 MAC 地址以及默认网关如何处理流量。
-2. **[在 Linux 中识别 MAC 和 IP 地址](https://labex.io/zh/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - 学习使用 `ip a` 命令识别网络寻址信息，包括 MAC 和 IP 地址，这些信息是理解 ARP 的基础。
-3. **[在 Linux 中管理 IP 寻址](https://labex.io/zh/labs/comptia-manage-ip-addressing-in-linux-592736)** - 练习使用 `ip` 命令管理 IP 寻址，并使用 `arp` 和 `traceroute` 验证网络配置。
+::option[`pwd neighbor`]{#arp-command-pwd explanation="pwd 报告 shell 工作目录。"}
+::option[`ip neighbor show`]{#arp-command-ip-neighbor .correct explanation="它同时报告 IPv4 ARP 派生条目和 IPv6 邻居发现条目。"}
+::option[`route --passwords`]{#arp-command-route-passwords explanation="路由检查不应存在这种暴露凭据的命令。"}
+:::
 
-这些实验将帮助您在实际场景中应用 ARP 和网络寻址的概念，并增强您对 Linux 网络的信心。
+## 解析 IPv4 邻居
 
-## Quiz Question
+链路内 IPv4 映射缺失时，主机会广播 ARP 请求，询问谁拥有目标地址。目标或明确执行代理 ARP 的路由器会作出回复。发送方缓存该映射，再发送等待中的帧。
 
-您可以使用什么命令来查看您的 ARP 缓存？
+对于远程 IP 目标，主机解析的是所选网关地址，而不是远程主机的 MAC。
 
-## Quiz Answer
+:::single-choice{#arp-command-remote-target}
+对于链路外目标，主机会解析哪个 IPv4 邻居？
 
-arp
+::option[跨越所有路由器的最终远程服务器。]{#arp-command-final-server explanation="它的 MAC 地址在源链路上没有意义。"}
+::option[解析器配置中列出的每台 DNS 服务器。]{#arp-command-all-dns explanation="邻居解析遵循所选路由，而不是解析器列表。"}
+::option[所选链路内网关。]{#arp-command-gateway .correct explanation="本地以太网帧会发送给负责转发 IP 数据包的路由器。"}
+:::
+
+## 解读状态
+
+常见状态包括 `REACHABLE`、`STALE`、`DELAY`、`PROBE`、`INCOMPLETE` 和 `FAILED`。`STALE` 表示最近的可达性确认已经过期；协议栈仍可使用缓存地址，并按需探测。`FAILED` 表示解析或可达性检测未成功，但原因可能是链路、VLAN、地址、路由、过滤问题或对端已关闭。
+
+:::single-choice{#arp-command-stale-state}
+`STALE` 是否表示已知邻居不可达？
+
+::option[不是；它缺少最近确认，可以在使用时探测。]{#arp-command-stale-probe .correct explanation="该状态不等同于 FAILED。"}
+::option[是，而且该条目永远无法再次使用。]{#arp-command-stale-dead explanation="过期条目仍是候选项，可以在可达性检查后转换状态。"}
+::option[是，因为它的 DNS 记录已经过期。]{#arp-command-stale-dns explanation="邻居状态与 DNS 缓存相互独立。"}
+:::
+
+## 谨慎更改邻居状态
+
+静态条目和缓存刷新都会改变状态，可能中断活动流量或隐藏原始证据。应先记录当前路由、数据包计数器和邻居状态。在获得授权的测试网络上，应优先使用针对性探测和数据包捕获，而不是刷新整个接口。
+
+ARP 没有内置身份验证，因此重复地址或伪造回复可能污染映射。交换机保护、分段、监控和更高层身份验证有助于降低影响。
+
+:::single-choice{#arp-command-flush-first}
+为什么不应把刷新整个邻居表作为第一项诊断步骤？
+
+::option[邻居条目只存储在 DNS 根服务器中。]{#arp-command-neighbors-dns explanation="它们由本地网络协议栈维护。"}
+::option[刷新会永久移除接口硬件。]{#arp-command-flush-hardware explanation="它移除缓存条目，而不是物理设备。"}
+::option[它会改变证据，并可能中断原本正常的下一跳。]{#arp-command-flush-disrupts .correct explanation="只读检查和针对性测试能保留诊断原因所需的状态。"}
+:::
+
+## 总结
+
+现在，你可以检查邻居解析，而不会把每种缓存状态都当作故障。
+
+1. 使用 `ip neighbor` 查看 IPv4 和 IPv6 状态。
+2. 只有目标位于链路内时才直接解析它。
+3. 为链路外 IP 流量解析网关。
+4. 在针对性更改状态前保留缓存证据。

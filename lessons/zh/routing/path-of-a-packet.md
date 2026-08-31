@@ -1,49 +1,83 @@
 ---
-index: 3
+lesson_id: "path-of-a-packet"
+course_id: "routing"
 lang: "zh"
+order_index: 3
 title: "数据包的路径"
-meta_title: "数据包路径 - 路由"
-meta_description: "探索数据在本地网络和互联网上传输的完整数据包路径。了解 IP 地址、MAC 地址、ARP 和路由表如何协同工作，以确保在 Linux 中成功进行网络通信。"
-meta_keywords: "数据包路径，网络通信，ARP, IP 地址，MAC 地址，路由表，默认网关，Linux 网络，数据包传输"
+description: "学习路由、邻居发现、帧和路由器如何沿路径承载 IP 数据包。"
+meta_title: "数据包的路径 - 路由"
+meta_description: "探索数据在本地网络和互联网中传输的完整数据包路径。了解 IP 地址、MAC 地址、ARP 和路由表如何协同工作，确保 Linux 网络通信成功。"
+meta_keywords: "数据包路径, 网络通信, ARP, IP 地址, MAC 地址, 路由表, 默认网关, Linux 网络, 数据包传输"
 ---
 
-## Lesson Content
+一条数据包路径由一系列本地决策组成。源主机、每台路由器和目标都会应用各自的路由、邻居、过滤和协议状态；任何端点通常都无法提前知道每项内部决策。
 
-理解数据如何在网络上传输是网络技术的基础。这个旅程，通常被称为**数据包路径**（packet path），涉及不同协议和硬件之间的协同工作。让我们在两种常见场景中追踪**数据包路径**：在本地网络内通信和与外部网络通信。
+## 发送到链路内目标
 
-### 本地网络内的数据包路径
+对于由直连路由覆盖的目标，源主机会选择接口和源 IP。然后，它解析目标的链路地址——以太网上的 IPv4 使用 ARP，IPv6 使用邻居发现——再发送承载 IP 数据包的帧。交换机可以转发该帧，而不会成为 IP 跳点。
 
-当设备向同一本地网络上的另一个设备发送数据包时，过程相对直接。
+:::single-choice{#packet-path-switch-hop}
+普通以太网交换机算作 IP 路由跳点吗？
 
-1. 首先，发送主机通过将其与自身的 IP 地址和子网掩码进行比较，检查目标 IP 地址是否在同一子网内。
-2. 要发送数据包，主机需要四个关键信息：源 IP、目标 IP、源 MAC 地址和目标 MAC 地址。最初，主机不知道目标主机的 MAC 地址。
-3. 主机使用地址解析协议（ARP）来查找缺失的信息。它在本地网络上广播一个 ARP 请求，询问哪个设备拥有目标 IP 地址。相应的设备会回复其 MAC 地址。
-4. 知道了目标 MAC 地址后，数据包就完全寻址完毕，可以直接发送到本地网络上的目标主机。
+::option[不算；它转发本地帧，不会递减 IP 跳数字段。]{#packet-path-switch-not-hop .correct explanation="只有路由器处理并转发 IP 数据包时才构成路由跳点。"}
+::option[算；每台交换机都会替换 IP 目标。]{#packet-path-switch-replaces-ip explanation="二层转发通常不会重写 IP 目标。"}
+::option[算；每个电缆连接器也是 IP 跳点。]{#packet-path-cable-hop explanation="物理组件不执行 IP 路由。"}
+:::
 
-### 外部网络的数据包路径
+## 通过网关发送
 
-当数据包的目标是本地网络外的设备时，该过程涉及路由器来转发数据包。
+对于链路外目标，所选路由会标识下一跳路由器。IP 目标仍是远程端点，而本地帧的目标则是网关的链路地址。主机在本地链路上解析的是网关，而不是远程服务器。
 
-1. 发送主机确定目标 IP 地址不在其本地网络上。由于 ARP 广播仅限于本地网络，主机无法直接发现最终目标的 MAC 地址。
-2. 主机查阅其路由表。由于没有针对外部 IP 的特定路由，它使用默认路由，该路由指向默认网关（路由器）。数据包使用原始的源 IP 和目标 IP 地址准备就绪。但是，目标 MAC 地址设置为默认网关的 MAC 地址。如果不知道网关的 MAC 地址，主机使用 ARP 来查找它。
-3. 一旦数据包到达路由器，路由器会检查目标 IP 地址并查阅其自身的路由表，以确定**数据包路径**上的下一跳。然后，路由器会重写数据包的 MAC 地址：源 MAC 变为路由器的 MAC，目标 MAC 变为下一跳的 MAC。这个过程在路径上的每台路由器上重复。
-4. 当数据包最终到达连接到目标本地网络的路由器时，该路由器使用 ARP 查找最终主机的 MAC 地址并交付数据包。
-5. 在整个旅程中，数据包头中的源和目标 IP 地址保持不变。只有 MAC 地址在每跳时都会更新。
+:::single-choice{#packet-path-gateway-mac}
+发送到链路外服务器的第一个以太网帧使用谁的 MAC 地址？
 
-## Exercise
+::option[跨越所有中间网络使用远程服务器的地址。]{#packet-path-remote-mac explanation="远程链路地址在源 LAN 上没有意义。"}
+::option[根据服务器 DNS 名称计算出的值。]{#packet-path-dns-mac explanation="DNS 名称不会编码本地下一跳 MAC。"}
+::option[所选本地网关的地址。]{#packet-path-local-gateway .correct explanation="帧会送达下一跳，而 IP 标头仍以最终端点为目标。"}
+:::
 
-实践造就完美！以下是一些实践实验，以加强您对基本 Linux 文件和目录管理的理解：
+## 每台路由器上的处理
 
-1. **[Linux 中的基本文件操作](https://labex.io/zh/labs/linux-basic-file-operations-in-linux-18001)** - 在真实的 Linux 环境中练习文件系统导航、文件和目录管理以及命令行快捷键的使用。
-2. **[文件和目录操作](https://labex.io/zh/labs/linux-file-and-directory-operations-17997)** - 学习目录结构导航、文件和文件夹管理，以及使用`ls`、`cd`、`mkdir`、`cp`、`mv`和`rm`等强大的命令行工具。
-3. **[组织文件和目录](https://labex.io/zh/labs/linux-organizing-files-and-directories-387877)** - 通过使用`cp`、`mv`和`rm`命令来组织项目结构、移动文件和清理不必要的目录，来练习基本的 Linux 文件管理技能。
+路由器会移除传入链路帧、验证并处理 IP 标头、递减 TTL 或 Hop Limit、查找目标、应用策略，再为传出链路创建新帧。对于 IPv4，标头校验和处理会反映 TTL 的变化。如果跳数字段到达零，路由器会丢弃数据包，并可以返回 ICMP 超时消息。
 
-这些实验将帮助您在实际场景中应用概念，并建立对 Linux 文件系统交互的信心。
+:::single-choice{#packet-path-router-change}
+每个正常路由跳点都会更改哪个 IP 字段？
 
-## Quiz Question
+::option[应用程序用户名。]{#packet-path-username explanation="基本转发不需要路由器了解应用程序账户数据。"}
+::option[IPv4 TTL 或 IPv6 Hop Limit。]{#packet-path-hop-field .correct explanation="每台路由器都会递减该字段，以限制路由环路。"}
+::option[所有情况下都更改传输层目标端口。]{#packet-path-port explanation="普通路由保留传输端点；NAT 才可能进行独立转换。"}
+:::
 
-给定本地网络上主机的 IP 地址，使用哪种协议来查找其 MAC 地址？请用三个大写字母的缩写回答。
+## 考虑中间设备与 MTU
 
-## Quiz Answer
+普通路由会保留源和目标 IP 地址，但 NAT 可以重写它们，隧道则可以封装原始数据包。防火墙可能静默丢弃或明确拒绝流量。不同链路的 MTU 也不相同；IPv4 路由器有时可以对数据包分片，而 IPv6 路由器不会对转发的数据包分片，而是依赖路径 MTU 发现。
 
-ARP
+:::single-choice{#packet-path-address-change-exception}
+端到端 IP 地址何时可能沿路径改变？
+
+::option[以太网交换机每次学习源 MAC 时。]{#packet-path-switch-learning-ip explanation="交换机学习影响链路转发表，而不是 IP 端点地址。"}
+::option[NAT 策略转换数据包标头时。]{#packet-path-nat-change .correct explanation="转换是普通路由转发之外的中间设备功能。"}
+::option[DNS 缓存条目每次过期时。]{#packet-path-dns-expiry explanation="已经存在的数据包包含数字地址。"}
+:::
+
+## 跟踪返回路径
+
+目标会为响应执行自己的路由查找。由于路由策略、负载均衡或故障，返回路径可能经过不同的路由器。有状态防火墙和 NAT 必须考虑观察到的流，因此即使 IP 允许路径不对称，它在运维上仍可能产生影响。
+
+:::single-choice{#packet-path-return-symmetry}
+回复必须按相反顺序经过相同的路由器吗？
+
+::option[必须，因为 IP 会在每个数据包中记录完整的出站路由。]{#packet-path-records-route explanation="普通 IP 数据包不携带强制性的完整反向路由。"}
+::option[必须，除非源和目标共享一个主机名。]{#packet-path-hostname-symmetry explanation="名称不会强制路径对称。"}
+::option[不必；两个方向各自独立路由。]{#packet-path-independent-return .correct explanation="策略和拓扑可以产生不对称但有效的路径。"}
+:::
+
+## 总结
+
+现在，你可以跟踪路由 IP 数据包周围不断变化的链路状态。
+
+1. 只有最终主机在链路上时才直接解析它。
+2. 将链路外流量装入发送给所选本地网关的帧。
+3. 跟踪每台路由器上的路由查找和跳数限制处理。
+4. 考虑 NAT、过滤、隧道和 MTU 限制。
+5. 将返回方向视为一条独立路由。

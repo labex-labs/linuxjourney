@@ -1,63 +1,80 @@
 ---
-index: 10
+lesson_id: "copy-cp-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 10
 title: "cp (Copiar)"
+description: "Aprenda a copiar arquivos e árvores de diretórios controlando substituições e atributos preservados."
 meta_title: "cp (Copiar) - Linha de Comando"
-meta_description: "Aprenda o comando cp do Linux com exemplos para copiar arquivos, diretórios, múltiplos arquivos, curingas, backups e opções como cp -r, cp -i e cp -p."
-meta_keywords: "comando linux cp, comando cp, copiar arquivos linux, cp -r, cp -i, cp -p, cp -a, cp -u, cópia recursiva, curingas linux"
+meta_description: "Aprenda o comando cp do Linux com exemplos para copiar arquivos, diretórios, vários arquivos, curingas e backups, além de opções como cp -r, cp -i e cp -p."
+meta_keywords: "comando cp Linux, comando cp, copiar arquivos Linux, cp -r, cp -i, cp -p, cp -a, cp -u, cópia recursiva, curingas Linux"
 ---
 
-## Lesson Content
-
-O comando `cp` é a ferramenta padrão para copiar arquivos e diretórios no Linux. Ele cria uma nova cópia enquanto mantém o arquivo original no lugar. Sua sintaxe básica é:
+O comando `cp` copia arquivos e diretórios, mantendo a origem no lugar. Sua sintaxe básica é:
 
 ```bash
 cp [OPTIONS] SOURCE DESTINATION
 ```
 
-Você pode copiar um arquivo para outro arquivo, um ou mais arquivos para um diretório, ou uma árvore inteira de diretórios com a opção correta.
+Você pode copiar um arquivo para outro caminho, copiar vários arquivos para um diretório ou copiar recursivamente uma árvore de diretórios.
 
-### Cópia Básica de Arquivos
+## Cópia de um Arquivo
 
-Para copiar um arquivo, você especifica o arquivo de origem e o diretório ou caminho de destino.
+Coloque primeiro a origem e depois o destino:
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/cooldocs
 ```
 
-Neste exemplo, `mycoolfile` é o arquivo de origem, e `/home/pete/Documents/cooldocs` é o diretório de destino. Você também pode copiar um arquivo e dar um novo nome a ele no destino.
+Se `/home/pete/Documents/cooldocs` for um diretório existente, a cópia será criada dentro dele com o nome `mycoolfile`. Você também pode fornecer um novo nome no destino:
 
 ```bash
 $ cp mycoolfile /home/pete/Documents/mycoolfile_backup
 ```
 
-Se o destino for um diretório existente, o arquivo copiado mantém seu nome original. Se o destino for um nome de arquivo, o `cp` cria uma cópia com esse novo nome.
+No segundo exemplo, os dados copiados recebem o nome `mycoolfile_backup`.
 
-### Copiar Múltiplos Arquivos para um Diretório
+:::single-choice{#copy-file-under-new-name}
+Qual comando copia `draft.txt` para um arquivo chamado `final.txt`, mantendo `draft.txt`?
 
-Para copiar vários arquivos para o mesmo diretório, liste todas as fontes primeiro e coloque o diretório de destino por último.
+::option[`mv draft.txt final.txt`]{#move-draft explanation="`mv` renomeia ou move o caminho original. Ele não mantém a cópia de origem solicitada."}
+::option[`cp final.txt draft.txt`]{#copy-reversed explanation="A origem e o destino estão invertidos. Esse comando copiaria de `final.txt` para `draft.txt`."}
+::option[`cp draft.txt final.txt`]{#copy-draft .correct explanation="`cp` lê `draft.txt` e cria ou substitui `final.txt`, enquanto a origem continua disponível."}
+:::
+
+## Cópia de Vários Arquivos para um Diretório
+
+Liste primeiro todas as origens e coloque o diretório de destino por último:
 
 ```bash
 $ cp report.txt notes.txt summary.txt /home/pete/Documents/
 ```
 
-O argumento final deve ser um diretório quando você fornece mais de uma fonte.
+O último argumento deve ser um diretório quando você fornece mais de uma origem.
 
-### Usando Curingas para Cópia em Massa
+:::single-choice{#copy-multiple-files}
+Qual comando copia `a.txt` e `b.txt` para o diretório existente `archive/`?
 
-Curingas são caracteres especiais que ajudam você a selecionar múltiplos arquivos baseados em padrões, oferecendo grande flexibilidade.
+::option[`cp archive/ a.txt b.txt`]{#destination-first explanation="Nessa forma de `cp`, o diretório de destino deve ficar no final. Colocá-lo primeiro altera a interpretação dos operandos."}
+::option[`cp a.txt b.txt archive/`]{#destination-last .correct explanation="Com várias origens, `cp` trata o último diretório existente como destino de todos os arquivos anteriores."}
+::option[`cp a.txt archive/ b.txt`]{#destination-middle explanation="Todos os operandos de origem devem vir antes do destino. O diretório existente deve ser o último operando."}
+:::
 
-- `*`: Corresponde a qualquer sequência de caracteres.
-- `?`: Corresponde a qualquer caractere único.
-- `[]`: Corresponde a qualquer um dos caracteres entre colchetes.
+## Seleção de Arquivos com Curingas
 
-Por exemplo, para copiar todas as imagens JPEG da sua localização atual para o diretório `Pictures`:
+O shell pode expandir padrões curingas para vários caminhos de origem:
+
+- `*`: corresponde a qualquer sequência de caracteres.
+- `?`: corresponde a qualquer caractere individual.
+- `[]`: corresponde a um dos caracteres entre colchetes.
+
+Por exemplo, copie os nomes terminados em `.jpg` do diretório atual para `Pictures`:
 
 ```bash
 $ cp *.jpg /home/pete/Pictures
 ```
 
-Você pode visualizar os arquivos que correspondem antes de copiar:
+Visualize as correspondências antes de uma cópia em massa, especialmente quando o destino contiver dados importantes:
 
 ```bash
 $ ls *.jpg
@@ -65,111 +82,99 @@ beach.jpg  lunch.jpg  profile.jpg
 $ cp *.jpg /home/pete/Pictures
 ```
 
-### Copiando Diretórios Recursivamente
+:::single-choice{#preview-copy-pattern}
+Antes de copiar `*.jpg`, qual comando mostra os nomes não ocultos aos quais o padrão corresponde no momento?
 
-Se você tentar copiar um diretório usando `cp` sem opções, receberá um erro. Para copiar um diretório e todo o seu conteúdo, incluindo subdiretórios, você deve usar a flag `-r` (recursiva).
+::option[`cp *.jpg`]{#copy-no-destination explanation="Esse comando tenta realizar uma cópia sem um destino claro quando há várias correspondências. Ele não é uma operação de visualização."}
+::option[`ls *.jpg`]{#list-jpg-matches .correct explanation="O shell expande o mesmo padrão para `ls`, permitindo inspecionar os nomes correspondentes antes de copiá-los."}
+::option[`file '*.jpg'`]{#quoted-jpg-pattern explanation="As aspas impedem a expansão do curinga; portanto, `file` recebe os caracteres literais `*.jpg`. Isso não mostra as correspondências normais."}
+:::
+
+## Cópia de Árvores de Diretórios
+
+Copiar um diretório e tudo abaixo dele exige uma operação recursiva. Use `-r` ou `-R`:
 
 ```bash
 $ cp -r Pumpkin/ /home/pete/Documents
 ```
 
-Este comando copia o diretório `Pumpkin` e tudo dentro dele para seu diretório `Documents`.
+Esse comando copia o diretório `Pumpkin` e seus descendentes para `Documents`.
 
-Você também pode ver `-R`, que tem o mesmo propósito recursivo em sistemas Linux típicos:
+`-R` maiúsculo também solicita uma cópia recursiva:
 
 ```bash
 $ cp -R website /home/pete/backups/
 ```
 
-### Lidando com Sobrescrita de Arquivos
+O modo de arquivamento, `-a`, é útil para cópias de backup. Ele copia recursivamente, preservando links e muitos atributos:
 
-Por padrão, o `cp` sobrescreve um arquivo no destino se ele tiver o mesmo nome. Para evitar perda acidental de dados, use a flag `-i` (interativa), que pede confirmação antes de sobrescrever.
+```bash
+$ cp -a project/ project-backup/
+```
+
+:::single-choice{#archive-directory-tree}
+Você quer uma cópia recursiva de `project/` no estilo de backup, preservando links e muitos atributos. Qual comando atende a esse objetivo?
+
+::option[`cp -p project/ project-backup/`]{#preserve-directory-only explanation="`-p` preserva determinados atributos, mas não torna a cópia de um diretório recursiva por si só."}
+::option[`cp -u project/ project-backup/`]{#update-directory-only explanation="`-u` controla quando os arquivos são copiados conforme o estado do destino. Ele não ativa por si só a cópia recursiva de diretórios."}
+::option[`cp -a project/ project-backup/`]{#archive-project .correct explanation="O modo de arquivamento inclui a cópia recursiva e preserva links e um conjunto amplo de atributos para um resultado no estilo de backup."}
+:::
+
+## Controle das Substituições
+
+Por padrão, `cp` pode substituir um arquivo existente no destino. Use `-i` para solicitar confirmação antes da substituição:
 
 ```bash
 $ cp -i mycoolfile /home/pete/Pictures
 cp: overwrite '/home/pete/Pictures/mycoolfile'? n
 ```
 
-Por outro lado, se você quiser forçar a sobrescrita sem prompts, use a opção `-f`. Isso é útil em scripts onde a interação do usuário não é possível.
-
-```bash
-$ cp -f mycoolfile /home/pete/Pictures
-```
-
-Outra opção útil de segurança é `-n`, que significa "não sobrescrever". Ela impede a sobrescrição de um arquivo de destino existente.
+Use `-n` quando um destino existente não deve ser sobrescrito:
 
 ```bash
 $ cp -n mycoolfile /home/pete/Pictures
 ```
 
-### Preservar Atributos do Arquivo com -p
+A opção `-f` instrui o GNU `cp` a tentar remover um destino existente quando não conseguir abri-lo para gravação e depois repetir a cópia. Ela não substitui a verificação cuidadosa dos destinos. Aliases do shell também podem acrescentar opções como `-i`; portanto, investigue uma solicitação inesperada em vez de presumir uma configuração específica.
 
-Quando você copia um arquivo, seus metadados, como horário de modificação e propriedade, normalmente são atualizados. Para preservar esses atributos originais, use a opção `-p`.
+:::single-choice{#skip-existing-destination}
+Qual comando copia `report.txt` para `backup/`, mas ignora um destino existente com o mesmo nome?
 
-A opção `cp -p` é particularmente útil para backups ou quando se migram arquivos onde preservar timestamps é importante.
+::option[`cp -n report.txt backup/`]{#no-clobber-report .correct explanation="A opção `-n` impede que `cp` sobrescreva um arquivo existente no destino."}
+::option[`cp -i report.txt backup/`]{#interactive-report explanation="`-i` pergunta antes de sobrescrever; portanto, o resultado depende da resposta. Ele não ignora automaticamente todos os destinos existentes."}
+::option[`cp -f report.txt backup/`]{#force-report explanation="`-f` pode ajudar a substituir um destino que inicialmente não pôde ser aberto. Ele não impede sobrescritas."}
+:::
+
+## Preservação ou Atualização de Arquivos
+
+Use `-p` para preservar o modo do arquivo de origem, seu proprietário quando permitido e seus carimbos de data e hora:
 
 ```bash
 $ cp -p mycoolfile /home/pete/backups/
 ```
 
-Isso copia `mycoolfile` preservando seu modo, propriedade onde permitido, e timestamps.
-
-### Cópias de Arquivo com Arquivamento -a
-
-A opção `-a` significa arquivar. É comumente usada para cópias de diretórios no estilo backup porque preserva muitos atributos e copia recursivamente.
-
-```bash
-$ cp -a project/ project-backup/
-```
-
-Para muitos backups do dia a dia, `cp -a` é mais conveniente do que combinar várias opções manualmente.
-
-### Copiar Apenas Arquivos Mais Novos com -u
-
-A opção `-u` copia somente quando o arquivo de origem é mais novo que o arquivo de destino ou quando o arquivo de destino não existe.
+Use `-u` para copiar uma origem somente quando o destino estiver ausente ou a origem for mais recente:
 
 ```bash
 $ cp -u *.txt /home/pete/Documents/
 ```
 
-Isso é útil ao atualizar uma pasta sem reescrever arquivos que já estão atualizados.
+Outras opções comuns incluem:
 
-### Opções Comuns do cp
+- `-f`: força a substituição removendo primeiro o destino, se necessário.
+- `-v`: mostra cada arquivo conforme ele é copiado.
 
-Aqui estão as opções que você usará com mais frequência:
+Para praticar a cópia de arquivos e árvores de diretórios, experimente estes laboratórios:
 
-- `-r` ou `-R`: Copiar diretórios recursivamente.
-- `-i`: Perguntar antes de sobrescrever um arquivo.
-- `-f`: Forçar a sobrescrita removendo o destino primeiro, se necessário.
-- `-n`: Não sobrescrever arquivos existentes.
-- `-p`: Preservar modo, propriedade onde possível, e timestamps.
-- `-a`: Modo arquivar, útil para preservar árvores de diretórios.
-- `-u`: Copiar somente quando a origem for mais nova que o destino.
-- `-v`: Mostrar cada arquivo conforme é copiado.
+1. **[Comando cp do Linux: Cópia de Arquivos](https://labex.io/labs/linux-linux-cp-command-file-copying-209744)** — Pratique o uso básico, opções avançadas como cópia recursiva e preservação de atributos, além de curingas para copiar arquivos e diretórios com eficiência.
+2. **[Organização de Arquivos e Diretórios](https://labex.io/labs/linux-organizing-files-and-directories-387877)** — Pratique habilidades essenciais de gerenciamento de arquivos usando `cp`, `mv` e `rm` para organizar uma estrutura de projeto, mover arquivos e remover diretórios desnecessários.
 
-### Perguntas Comuns
+## Resumo
 
-**Por que o cp sobrescreveu meu arquivo?** Por padrão, o `cp` substitui um arquivo de destino com o mesmo nome. Use `cp -i` para perguntar antes ou `cp -n` para evitar sobrescrever.
+Agora você sabe copiar arquivos e árvores de diretórios controlando o tratamento dos destinos.
 
-**Por que o cp não pode copiar um diretório?** Um diretório requer cópia recursiva. Use `cp -r source-dir destination-dir`.
-
-**Qual a diferença entre cp e mv?** `cp` cria uma cópia e mantém o original. `mv` move ou renomeia o original.
-
-**Devo usar cp -r ou cp -a para backups?** Use `cp -r` para uma cópia recursiva simples. Use `cp -a` quando quiser uma cópia no estilo backup que preserve mais atributos de arquivo.
-
-## Exercise
-
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of copying files and directories in Linux:
-
-1. **[Linux cp Command: File Copying](https://labex.io/pt/labs/linux-linux-cp-command-file-copying-209744)** - Practice basic usage, advanced options like recursive copying, preserving attributes, and using wildcards to efficiently copy files and directories.
-2. **[Organizing Files and Directories](https://labex.io/pt/labs/linux-organizing-files-and-directories-387877)** - Practice essential Linux file management skills by using `cp`, `mv`, and `rm` commands to organize a project structure, move files, and clean up unnecessary directories.
-
-These labs will help you apply the concepts in real scenarios and build confidence with file copying and management in Linux.
-
-## Quiz Question
-
-Qual flag você precisa especificar para copiar um diretório?
-
-## Quiz Answer
-
--r
+1. Coloque os operandos de origem antes do destino.
+2. Visualize as correspondências de curingas antes de uma cópia em massa.
+3. Copie árvores de diretórios recursivamente ou no modo de arquivamento.
+4. Confirme, ignore ou substitua conscientemente os destinos existentes.
+5. Preserve atributos ou copie apenas origens mais recentes quando necessário.

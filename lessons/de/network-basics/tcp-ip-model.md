@@ -1,67 +1,72 @@
 ---
-index: 3
+lesson_id: "tcp-ip-model"
+course_id: "network-basics"
 lang: "de"
+order_index: 3
 title: "TCP/IP-Modell"
-meta_title: "TCP/IP-Modell - Netzwerk-Grundlagen"
-meta_description: "Erkunden Sie die fundamentalen Schichten im TCP/IP-Modell, dem Eckpfeiler moderner Netzwerke. Erfahren Sie mehr über die Anwendungs-, Transport-, Netzwerk- und Link-Schicht für effektives Networking mit TCP/IP."
-meta_keywords: "TCP/IP-Modell, Schichten im TCP/IP-Modell, Networking mit TCP/IP, Schichten des TCP-Protokolls, Netzwerkschichten, TCP, IP, Linux-Networking, reales Protokollprojekt"
+description: "Lerne, wie Anwendungs-, Transport-, Internet- und Verbindungsschicht im TCP/IP-Modell zusammenarbeiten."
+meta_title: "TCP/IP-Modell – Netzwerkgrundlagen"
+meta_description: "Erkunde die grundlegenden Schichten des TCP/IP-Modells als Basis moderner Vernetzung. Lerne Anwendungs-, Transport-, Internet- und Verbindungsschicht kennen."
+meta_keywords: "TCP/IP-Modell, Schichten im TCP/IP-Modell, Vernetzung mit TCP/IP, TCP-Protokollschichten, Netzwerkschichten, TCP, IP, Linux-Vernetzung"
 ---
 
-## Lesson Content
+Das TCP/IP-Modell ordnet die von Internet-Hosts verwendeten Protokolle in funktionale Schichten. Eine verbreitete vierschichtige Form verwendet Anwendung, Transport, Internet und Verbindung. Manche Lehrmodelle trennen das physische Medium von der Verbindungsschicht und zeigen deshalb fünf Schichten.
 
-Das theoretische OSI-Modell brachte das hervor, was schließlich zum TCP/IP-Modell wurde, der praktischen Grundlage, auf der das Internet aufgebaut ist. Es repräsentiert die tatsächliche Implementierung der Netzwerkkommunikation. Das TCP/IP-Modell nutzt die TCP/IP-Protokollsuite, die wir allgemein als TCP/IP bezeichnen. Effektives **Networking with TCP/IP** hängt von diesen Protokollen ab, die zusammenarbeiten, um festzulegen, wie Daten gesammelt, adressiert, übertragen und weitergeleitet werden sollen. Durch die Untersuchung der **layers in the TCP/IP model** können wir verstehen, wie ein Datenpaket durch das Netzwerk reist.
+## Anwendungsschicht
 
-### Die vier Schichten des TCP/IP-Modells
+Anwendungsprotokolle definieren Nachrichten und Verhalten für Dienste wie HTTP, DNS, SSH und SMTP. Diese Schicht umfasst außerdem viele Darstellungs- und Sitzungsaufgaben, die das OSI-Modell getrennt behandelt.
 
-Das Modell ist in vier verschiedene Schichten unterteilt, die jeweils eine spezifische Funktion haben. Das Verständnis dieser Schichten ist entscheidend für jedes **real world protocol project** oder jede Aufgabe zur Fehlerbehebung im Netzwerk.
+:::single-choice{#tcpip-http-layer}
+Welcher TCP/IP-Schicht wird HTTP normalerweise zugeordnet?
 
-### Anwendungsschicht (Application Layer)
+::option[Internet.]{#tcpip-http-internet explanation="Die Internetschicht verarbeitet IP-Adressierung und Paketweiterleitung."}
+::option[Verbindung.]{#tcpip-http-link explanation="Die Verbindungsschicht transportiert Datenverkehr auf einem lokalen Medium."}
+::option[Anwendung.]{#tcpip-http-application .correct explanation="HTTP definiert die Semantik von Anwendungsanfragen und -antworten."}
+:::
 
-Dies ist die oberste Schicht des TCP/IP-Modells, in der sich benutzerorientierte Anwendungen und Netzwerkdienste befinden. Sie bestimmt, wie Programme, wie Ihr Webbrowser oder E-Mail-Client, mit den Diensten der Transportschicht interagieren, um Daten zu senden und zu empfangen.
+## Transportschicht
 
-Diese Schicht verwendet Protokolle wie:
+Transportprotokolle ermöglichen die Kommunikation zwischen Anwendungsendpunkten. TCP bietet einen zuverlässigen geordneten Bytestrom mit Überlastungs- und Flusskontrolle. UDP stellt unabhängige Datagramme ohne TCPs Garantien für Verbindung, Reihenfolge oder erneute Übertragung bereit. Portnummern helfen, Transportendpunkte zu identifizieren, doch eine Portnummer allein beweist nicht, welche Anwendung lauscht.
 
-- HTTP (Hypertext Transfer Protocol): Die Grundlage der Datenkommunikation für das World Wide Web.
-- SMTP (Simple Mail Transfer Protocol): Wird zum Senden elektronischer Post (E-Mail) verwendet.
+:::single-choice{#tcpip-udp-property}
+Welche Eigenschaft gehört zu UDP und nicht zu TCP?
 
-### Transportschicht (Transport Layer)
+::option[Unabhängige Datagramme ohne eingebaute Garantie erneuter Übertragung.]{#tcpip-udp-datagrams .correct explanation="UDP-Anwendungen entscheiden, ob und wie sie Zuverlässigkeit ergänzen."}
+::option[Garantierte geordnete Zustellung eines einzelnen Bytestroms.]{#tcpip-udp-ordered explanation="Dies ist eine Diensteigenschaft von TCP, sofern eine Verbindung zustande kommt."}
+::option[Pakete zwischen unterschiedlichen IP-Netzwerken weiterleiten.]{#tcpip-udp-routing explanation="Die Weiterleitung zwischen Netzwerken ist eine Funktion der Internetschicht."}
+:::
 
-Die Transportschicht ist für die Ende-zu-Ende-Kommunikation und die Datenintegrität verantwortlich. Sie legt fest, wie Daten übertragen werden, verwaltet Portnummern und stellt sicher, dass Pakete zuverlässig zugestellt werden. Die **layers of TCP protocol** Suite ist hier am prominentesten.
+## Internetschicht
 
-Diese Schicht verwendet hauptsächlich:
+Das Internet Protocol transportiert Pakete anhand von Quell- und Ziel-IP-Adressen. Router untersuchen Routinginformationen und verringern Hop-Limits, während sie Pakete zum Ziel weiterleiten. ICMP übermittelt Steuerungs- und Fehlerinformationen für den IP-Betrieb. Die Zustellung erfolgt nach bestem Bemühen; höhere Schichten oder Anwendungen übernehmen jede erforderliche Wiederherstellung.
 
-- TCP (Transmission Control Protocol): Bietet eine zuverlässige, geordnete und fehlergeprüfte Übertragung eines Datenstroms. Es ist verbindungsorientiert.
-- UDP (User Datagram Protocol): Bietet eine schnellere, verbindungslosere Datenübertragungsmethode, die als unzuverlässig gilt, da sie weder die Zustellung noch die Reihenfolge garantiert.
+:::single-choice{#tcpip-router-layer}
+Welche Schicht stellt das von Routern verwendete IP-Ziel bereit?
 
-### Netzwerkschicht (Network Layer)
+::option[Internet.]{#tcpip-router-internet .correct explanation="Der IP-Header enthält das Netzwerkschichtziel für die geroutete Weiterleitung."}
+::option[Anwendung.]{#tcpip-router-application explanation="Anwendungsnachrichten werden innerhalb der Protokolldaten niedrigerer Schichten transportiert."}
+::option[Verbindung.]{#tcpip-router-link explanation="Verbindungsadressen wählen das Frameziel für den nächsten lokalen Hop aus."}
+:::
 
-Diese Schicht, auch Internetschicht genannt, legt fest, wie Pakete zwischen Hosts und über verschiedene Netzwerke hinweg bewegt werden. Ihre Hauptaufgabe ist die Adressierung und das Routing. Die auf dieser Ebene zugewiesene IP-Adresse ist grundlegend für die Identität eines Geräts in einem Netzwerk, was mit dem Konzept der **ip affiliation meaning** (IP-Zugehörigkeit) zusammenhängt, dass es Teil eines bestimmten Netzwerks ist.
+## Verbindungsschicht und Kapselung
 
-Diese Schicht verwendet Protokolle wie:
+Die Verbindungsschicht sendet ein IP-Paket über eine lokale Verbindung mithilfe von Ethernet, WLAN, einem Punkt-zu-Punkt-Protokoll oder einer anderen Technik. Während sich Anwendungsdaten nach unten bewegen, ergänzt jede Schicht die für ihren Bereich erforderlichen Informationen. Beim Empfänger validieren und entfernen die Schichten ihre eigene Kapselung, bevor sie Daten nach oben weitergeben.
 
-- IP (Internet Protocol): Leitet Pakete von einem Quellgerät zu einem Zielgerät weiter.
-- ICMP (Internet Control Message Protocol): Wird zum Senden von Fehlermeldungen und Betriebsinformationen verwendet, wie z. B. beim `ping`-Befehl.
+Verbindungsheader ändern sich gewöhnlich an jedem gerouteten Hop; Transport- und Anwendungsunterhaltungen laufen von Ende zu Ende, sofern keine Middlebox sie beendet oder umwandelt.
 
-### Verbindungsschicht (Link Layer)
+:::single-choice{#tcpip-link-scope}
+Was ist der normale Geltungsbereich eines Frames der Verbindungsschicht?
 
-Auch als Netzwerkschnittstellenschicht bekannt, legt diese Schicht fest, wie Daten über ein physisches Hardwareteil gesendet werden. Sie kümmert sich um die Übertragung von Datenpaketen im lokalen Netzwerksegment, z. B. über Ethernet, WLAN oder Glasfaserkabel.
+::option[Eine lokale Verbindung oder ein Hop.]{#tcpip-one-link .correct explanation="Ein Router entfernt den eingehenden Frame und erstellt einen Frame für die nächste Verbindung."}
+::option[Jede Anwendungssitzung im weltweiten Internet.]{#tcpip-global-frame explanation="Frames bleiben über geroutete Netzwerke hinweg nicht unverändert."}
+::option[Nur der Speicher des Quellprozesses.]{#tcpip-process-memory explanation="Frames werden über eine Netzwerkverbindung übertragen."}
+:::
 
-Die oben genannten Protokolle sind nicht erschöpfend, und Sie werden vielen weiteren begegnen. In den folgenden Lektionen werden wir tiefer in jede dieser Schichten eintauchen, um zu sehen, wie ein Paket aus der Perspektive des TCP/IP-Modells durch das Netzwerk wandert.
+## Zusammenfassung
 
-## Exercise
+Du kannst häufige Internetfunktionen nun im TCP/IP-Modell einordnen.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis des TCP/IP-Modells und der Netzwerk-Grundlagen zu festigen:
-
-1. **[MAC- und IP-Adressen in Linux identifizieren](https://labex.io/de/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Üben Sie die Identifizierung wichtiger Netzwerkadressinformationen wie MAC- und IP-Adressen mithilfe des Befehls `ip a`, der für das Verständnis der Netzwerk- und Datenverbindungsschichten des TCP/IP-Modells von grundlegender Bedeutung ist.
-2. **[Netzwerkschicht-Interaktion mit ping und arp in Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie die Befehle `ping` und `arp` die Interaktion zwischen der Netzwerk- und der Datenverbindungsschicht demonstrieren und praktische Einblicke geben, wie Geräte innerhalb des TCP/IP-Stacks kommunizieren.
-3. **[Netzwerkschicht-Konnektivität in Linux simulieren](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Sammeln Sie praktische Erfahrungen bei der Simulation der Netzwerkkonnektivität zwischen Linux-Knoten, der Zuweisung von IP-Adressen und dem Testen der Kommunikation, wobei Konzepte im Zusammenhang mit der Netzwerkschicht des TCP/IP-Modells direkt angewendet werden.
-
-Diese Labs helfen Ihnen, die Konzepte des TCP/IP-Modells in realen Szenarien anzuwenden und Vertrauen in die Netzwerkkonfiguration und Fehlerbehebung aufzubauen.
-
-## Quiz Question
-
-Was ist die oberste Schicht des TCP/IP-Modells? (Bitte antworten Sie auf Englisch. Beachten Sie, dass die Antwort groß- und kleingeschrieben werden muss.)
-
-## Quiz Answer
-
-Application
+1. Ordne Dienstprotokolle der Anwendungsschicht zu.
+2. Unterscheide TCP-Ströme von UDP-Datagrammen.
+3. Ordne IP-Adressierung und Routing der Internetschicht zu.
+4. Behandle Verbindungskapselung als Kapselung für einen lokalen Hop.

@@ -1,81 +1,102 @@
 ---
-index: 2
+lesson_id: "device-types"
+course_id: "devices"
 lang: "de"
+order_index: 2
 title: "Gerätetypen"
-meta_title: "Gerätetypen - Geräte"
-meta_description: "Entdecken Sie die verschiedenen Linux-Gerätetypen, einschließlich Zeichen-, Block-, Pipe- und Socket-Geräte. Erfahren Sie, wie Linux Geräte verwaltet, wie Sie eine Gerätedatei mit `ls -l /dev` identifizieren und welche Rolle Haupt- und Neben-Gerätenummern spielen."
-meta_keywords: "linux geräte, linux gerätetypen, gerätedatei, zeichengerät, blockgerät, haupt neben nummern, linux für geräte, /dev verzeichnis"
+description: "Lerne, Zeichen- und Blockgeräteknoten von Pipes, Sockets und gewöhnlichen Dateisystemobjekten zu unterscheiden."
+meta_title: "Gerätetypen – Geräte"
+meta_description: "Erkunde Linux-Gerätetypen wie Zeichen- und Blockgeräte sowie FIFOs und Unix-Sockets. Lerne außerdem Major- und Minor-Gerätenummern kennen."
+meta_keywords: "Linux Geräte, Linux Gerätetypen, Gerätedatei, Zeichengerät, Blockgerät, Major Minor Nummern, /dev Verzeichnis"
 ---
 
-## Lesson Content
+Das erste Zeichen eines von `ls -l` angezeigten Modus bezeichnet den Dateisystemtyp eines Objekts. Unter `/dev` sind besondere Zeichen- und Blockdateien Geräteknoten. Dort können auch Pipes und Knoten von Unix-Domain-Sockets erscheinen. Diese sind jedoch Objekte für die Interprozesskommunikation und keine Hardware-Geräteknoten.
 
-In Linux ist ein Kernprinzip, dass „alles eine Datei ist“. Diese Philosophie erstreckt sich auf Hardwarekomponenten, die als spezielle Dateien im Dateisystem dargestellt werden. Das Verständnis dieser **Linux-Geräte** und ihrer entsprechenden Dateien ist für die Systemadministration von entscheidender Bedeutung. Beginnen wir mit der Erkundung des Verzeichnisses `/dev`, dem traditionellen Speicherort für jede **Gerätedatei**.
-
-### Erkundung von Linux-Geräten in /dev
-
-Sie können die Dateien im Verzeichnis `/dev` auflisten, um zu sehen, wie das System verschiedene **Linux-Geräte** darstellt.
-
-```bash
-$ ls -l /dev
-brw-rw----   1 root disk      8,   0 Dec 20 20:13 sda
-crw-rw-rw-   1 root root      1,   3 Dec 20 20:13 null
-srw-rw-rw-   1 root root           0 Dec 20 20:13 log
-prw-r--r--   1 root root           0 Dec 20 20:13 fdata
+```text
+$ ls -l /dev/null /dev/sda /run/systemd/journal/dev-log /tmp/example-fifo
+crw-rw-rw- 1 root root 1, 3 ... /dev/null
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+srw-rw-rw- 1 root root      ... /run/systemd/journal/dev-log
+prw------- 1 user user      ... /tmp/example-fifo
 ```
 
-Hier ist eine Aufschlüsselung der Spalten von links nach rechts:
+Einträge und Berechtigungen unterscheiden sich je nach System; das Beispiel veranschaulicht nur die Typzeichen.
 
-- Berechtigungen
-- Besitzer
-- Gruppe
-- Hauptgerätenummer
-- Nebengerätenummer
-- Zeitstempel
-- Gerätebezeichnung
+## Zeichengeräteknoten
 
-### Identifizierung von Linux-Gerätetypen
+Ein `c` bezeichnet ein Zeichengerät. Es stellt normalerweise eine stromorientierte oder gerätespezifische Schnittstelle bereit und keinen adressierbaren Speicher aus Blöcken fester Größe. Beispiele sind Terminals und Pseudogeräte wie `/dev/null`.
 
-Das erste Zeichen in der Berechtigungszeichenfolge der `ls -l`-Ausgabe gibt den Dateityp an. Für eine **Gerätedatei** sehen Sie eines der folgenden Zeichen, was hilft, die spezifischen **Linux-Gerätetypen** zu identifizieren:
+„Zeichen“ bedeutet nicht, dass jeder Systemaufruf genau ein Zeichen übertragen muss. Anwendungen können Puffer lesen oder schreiben, während der Treiber Blockierung, Rahmung und Steuerverhalten festlegt.
 
-- `c` - Zeichen (character)
-- `b` - Block (block)
-- `p` - Pipe
-- `s` - Socket
+:::single-choice{#device-types-character-marker}
+Welches erste Moduszeichen bezeichnet einen Zeichengeräteknoten?
 
-### Zeichengeräte (Character Devices)
+::option[`b`]{#device-types-marker-block explanation="Das Zeichen `b` bezeichnet einen Blockgeräteknoten."}
+::option[`p`]{#device-types-marker-pipe explanation="Das Zeichen `p` bezeichnet eine FIFO, also eine benannte Pipe."}
+::option[`c`]{#device-types-marker-character .correct explanation="Besondere Zeichendateien beginnen in einer langen Auflistung mit `c`."}
+:::
 
-Diese Geräte übertragen Daten zeichenweise. Viele Pseudo-Geräte, die nicht physisch angeschlossene Hardware sind, sondern wesentliche Betriebssystemfunktionen bereitstellen, werden als Zeichengeräte dargestellt. Ein klassisches Beispiel ist `/dev/null`.
+## Blockgeräteknoten
 
-### Blockgeräte (Block Devices)
+Ein `b` bezeichnet ein Blockgerät. Blockgeräte stellen über die Blockschicht des Kernels adressierbaren Speicher in Blöcken bereit und können Operationen wie gepufferte Ein-/Ausgabe, Partitionierung und Dateisysteme unterstützen. Datenträger, Partitionen und logische Volumes besitzen häufig Blockgeräteknoten.
 
-Diese Geräte übertragen Daten in großen, festen Blöcken. Sie werden häufig feststellen, dass Speicherhardware wie Festplatten (`/dev/sda`), SSDs und andere Massenspeicherkomponenten als Blockgeräte dargestellt werden, da sie für den blockbasierten Datenzugriff optimiert sind.
+Ein Blockgeräteknoten ist kein eingehängtes Dateisystem. Er stellt ein Speichergerät oder einen logischen Bereich dar; darauf kann getrennt ein Dateisystem erstellt und eingehängt werden. Das Schreiben von Rohdaten auf den falschen Blockgeräteknoten kann Partitionstabellen, Dateisysteme oder Benutzerdaten zerstören.
 
-### Pipe-Geräte (Pipe Devices)
+:::single-choice{#device-types-block-marker}
+Was bedeutet das erste Moduszeichen `b`?
 
-Benannte Pipes oder FIFOs (First-In, First-Out) ermöglichen die Prozesskommunikation. Sie verhalten sich wie Zeichengeräte, leiten ihre Ausgabe jedoch an einen anderen Prozess anstatt an ein physisches Gerät weiter.
+::option[Einen Hintergrundjob der Shell.]{#device-types-background-job explanation="Der Zustand eines Shelljobs ist nicht als Dateisystem-Typzeichen codiert."}
+::option[Eine Blockgeräteschnittstelle.]{#device-types-block-device .correct explanation="Besondere Blockdateien stellen über das Blocksubsystem des Kernels adressierbaren Speicher bereit."}
+::option[Einen beschädigten symbolischen Link.]{#device-types-broken-link explanation="Symbolische Links verwenden `l`, unabhängig davon, ob ihr Ziel aktuell existiert."}
+:::
 
-### Socket-Geräte (Socket Devices)
+## FIFOs und Socket-Knoten
 
-Socket-Geräte erleichtern ebenfalls die Kommunikation zwischen Prozessen. Im Gegensatz zu Pipes sind sie vielseitiger und können die Kommunikation zwischen mehreren Prozessen unterstützen, sogar über ein Netzwerk hinweg.
+Ein `p` bezeichnet eine FIFO, auch benannte Pipe genannt. Sie stellt einen benannten Bytestrom zur Kommunikation zwischen Prozessen bereit. Nach dem Lesen bleiben die Daten nicht dauerhaft im FIFO-Knoten gespeichert.
 
-### Verständnis der Gerätenummern
+Ein `s` bezeichnet den Knoten eines Unix-Domain-Sockets. Er benennt einen lokalen Socket-Endpunkt und kann verbindungsorientierte oder Datagramm-Kommunikation, die Übergabe von Dateideskriptoren und Funktionen für Peer-Anmeldedaten unterstützen. Netzwerk-Sockets mit Internetadressen besitzen nicht zwangsläufig Dateisystemknoten.
 
-Jedes **Linux-Gerät** wird eindeutig durch zwei Zahlen identifiziert: die **Hauptgerätenummer** und die **Nebengerätenummer**. Sie können diese in der `ls`-Ausgabe sehen, durch ein Komma getrennt. Für ein Gerät mit den Nummern **8, 0**:
+Weder eine FIFO noch ein Unix-Socket-Knoten verwendet Major- und Minor-Nummern zur Auswahl eines Hardwaretreibers.
 
-Die Hauptnummer (8) identifiziert den Treiber, der für das Gerät verantwortlich ist. In diesem Fall wird 8 üblicherweise für SCSI-Festplatten verwendet. Die Nebennummer (0) teilt dem Treiber mit, welche spezifische Instanz des Geräts es ist. Hier repräsentiert 0 die erste Festplatte (`a`).
+:::single-choice{#device-types-pipe-socket-distinction}
+Welche Aussage unterscheidet diese IPC-Objekttypen richtig?
 
-## Exercise
+::option[`p` bezeichnet eine Datenträgerpartition, `s` einen Solid-State-Speicher.]{#device-types-storage-letters explanation="Partitionen sind normalerweise Blockgeräte; die Buchstaben codieren keine Speichertechnologie."}
+::option[`p` bezeichnet eine FIFO, `s` den Knoten eines Unix-Domain-Sockets.]{#device-types-p-and-s .correct explanation="Dies sind getrennte Dateisystemobjekttypen für die lokale Interprozesskommunikation."}
+::option[Beide Typen identifizieren Kernel-Blocktreiber über Major-Nummern.]{#device-types-ipc-major explanation="FIFO- und Socket-Knoten sind weder Zeichen- noch Blockgeräteknoten."}
+:::
 
-Um das Gelernte über **Linux-Geräte** anzuwenden, empfehlen wir die folgenden praktischen Übungen. Diese Übungen helfen Ihnen, Vertrauen in die Geräteinteraktion und -verwaltung in realen Szenarien aufzubauen.
+## Major- und Minor-Gerätenummern
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** – Üben Sie das Erstellen und Verwalten von Festplattenpartitionen und Dateisystemen, die grundlegende Blockgeräte in Linux sind.
-2. **[Hardware-Geräte in Linux erkunden](https://labex.io/de/labs/comptia-explore-hardware-devices-in-linux-590861)** – Lernen Sie, verschiedene Hardware-Geräte zu identifizieren und zu inspizieren und zu verstehen, wie sie im Verzeichnis `/dev` dargestellt werden.
-3. **[Eine Swap-Datei in Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** – Sammeln Sie praktische Erfahrungen beim Erstellen und Aktivieren einer Swap-Datei, die als virtuelles Speichergerät fungiert.
+Zeichen- und Blockgeräteknoten speichern eine Gerätenummer, die in Major- und Minor-Komponente aufgeteilt ist. In einer langen Auflistung ersetzen sie die gewöhnliche Spalte für die Dateigröße:
 
-## Quiz Question
+```text
+brw-rw---- 1 root disk 8, 0 ... /dev/sda
+```
 
-Welches Symbol steht für Zeichengeräte (character devices) im Befehl `ls -l`? (Geben Sie als Antwort den einzelnen kleingeschriebenen englischen Buchstaben an)
+Das Zahlenpaar teilt dem Kernel mit, welche registrierte Geräteschnittstelle und Instanz der Knoten anspricht. Eine Major-Nummer ist einem Treiber oder einer Geräteklasse zugeordnet; der Treiber interpretiert die Minor-Nummer. Codiere Annahmen wie „Minor null bedeutet immer das erste Laufwerk“ nicht fest ein, denn die Zuordnung hängt vom Subsystem und den Kernel-Schnittstellen ab.
 
-## Quiz Answer
+Zeige Typ und Gerätenummern ausdrücklich an:
 
-c
+```bash
+$ stat -c 'type=%F major=%t minor=%T path=%n' /dev/null
+```
+
+GNU `stat` gibt die Werte `%t` und `%T` hexadezimal aus.
+
+:::single-choice{#device-types-major-minor-scope}
+Welche Objekte verwenden Major- und Minor-Nummern zur Identifikation einer Kernel-Geräteschnittstelle?
+
+::option[Jede gewöhnliche Datei und jedes Verzeichnis.]{#device-types-all-files explanation="Gewöhnliche Dateien verwenden Größe und Dateisystemmetadaten statt eines Major-/Minor-Paars für Geräteknoten."}
+::option[Nur symbolische Links, deren Ziel fehlt.]{#device-types-broken-symlinks explanation="Symbolische Links speichern Pfadtext und werden bei einem fehlenden Ziel nicht zu Geräteknoten."}
+::option[Zeichen- und Blockgeräteknoten.]{#device-types-device-number-nodes .correct explanation="Ihre besonderen Inode-Metadaten enthalten die an eine Treiberschnittstelle weitergeleitete Gerätenummer."}
+:::
+
+## Zusammenfassung
+
+Du kannst besondere Dateisystemtypen nun einordnen, ohne sie alle als Hardwaregeräte zu behandeln.
+
+1. Lies `c` als Zeichen- und `b` als Blockgeräteknoten.
+2. Lies `p` als FIFO und `s` als Knoten eines Unix-Domain-Sockets.
+3. Ordne Major- und Minor-Nummern ausschließlich Geräteknoten zu.
+4. Behandle rohen Zugriff auf Blockgeräte als potenziell zerstörerisch.

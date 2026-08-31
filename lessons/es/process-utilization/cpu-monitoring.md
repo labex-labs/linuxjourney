@@ -1,58 +1,95 @@
 ---
-index: 4
+lesson_id: "cpu-monitoring"
+course_id: "process-utilization"
 lang: "es"
-title: "Monitoreo de CPU"
-meta_title: "Monitoreo de CPU - Utilización de Procesos"
-meta_description: "Aprenda los fundamentos del monitoreo de CPU en Linux usando el comando uptime. Esta guía para principiantes explica cómo interpretar el promedio de carga, entender la utilización de procesos y evaluar el rendimiento del sistema."
-meta_keywords: "comando uptime, monitoreo de CPU Linux, promedio de carga, rendimiento del sistema, utilización de procesos, tutorial Linux, guía para principiantes"
+order_index: 4
+title: "Supervisión de la CPU"
+description: "Aprende a interpretar los promedios de carga de Linux junto con el número de CPU, la utilización y el estado de las tareas."
+meta_title: "Supervisión de la CPU - Utilización de procesos"
+meta_description: "Aprende a supervisar la CPU de Linux con uptime e interpreta el promedio de carga, la capacidad y el rendimiento."
+meta_keywords: "uptime, supervisión CPU Linux, promedio de carga, rendimiento del sistema, utilización de procesos"
 ---
 
-## Lesson Content
+La investigación de la CPU comienza separando la carga, la utilización y la capacidad de respuesta. Ningún número por sí solo establece un cuello de botella, así que compara varios intervalos de tiempo y relaciona las métricas del equipo con la carga de trabajo que experimentan realmente los usuarios.
 
-Una habilidad fundamental en la administración de un sistema Linux es comprender su rendimiento. Uno de los comandos más útiles para una verificación rápida del estado es **uptime**.
+## Leer uptime
 
+`uptime` proporciona un punto de partida compacto:
+
+```text
+$ uptime
+ 17:23:35 up 1 day, 5:59, 2 users, load average: 0.00, 0.02, 0.05
 ```
-pete@icebox:~$ uptime
- 17:23:35 up 1 day,  5:59,  2 users,  load average: 0.00, 0.02, 0.05
+
+Los tres valores finales son promedios de carga de aproximadamente 1, 5 y 15 minutos. Compararlos muestra la tendencia: un valor de 1 minuto mucho mayor puede indicar que la carga aumenta, mientras que un valor de 15 minutos mayor puede indicar que disminuye.
+
+:::single-choice{#cpu-uptime-windows}
+¿En qué orden muestra `uptime` los intervalos del promedio de carga?
+
+::option[15, 5 y 1 segundos.]{#cpu-windows-seconds explanation="Los valores son promedios a escala de minutos y no se muestran del más largo al más corto."}
+::option[1, 5 y 15 minutos.]{#cpu-windows-one-five-fifteen .correct explanation="El intervalo reciente más corto aparece primero y el más largo, al final."}
+::option[Porcentajes actual, mínimo y máximo de CPU.]{#cpu-windows-percentages explanation="El promedio de carga no es un porcentaje mínimo o máximo de CPU."}
+:::
+
+## Comprender la carga de Linux
+
+El promedio de carga de Linux cuenta las tareas preparadas para ejecutarse, incluidas las que utilizan o esperan CPU, además de las tareas en espera ininterrumpible, asociadas habitualmente con la E/S. Por tanto, no equivale a la utilización de la CPU.
+
+Una carga de `4.0` tiene implicaciones distintas en sistemas con una y dieciséis CPU lógicas. Averigua el número de unidades de procesamiento disponibles para el sistema con:
+
+```bash
+$ nproc
 ```
 
-Aunque ya hemos visto `uptime` antes, centrémonos en el campo `load average` (carga promedio), que es crucial para el **monitoreo de la CPU en Linux**.
+Las cuotas de CPU, la afinidad, la virtualización y los límites de contenedores pueden reducir la capacidad visible para una carga de trabajo concreta, por lo que el número de CPU del equipo es solo un punto de partida.
 
-### Entendiendo la Carga Promedio
+:::single-choice{#cpu-load-not-percentage}
+¿Por qué el promedio de carga no es un porcentaje de utilización de CPU?
 
-La carga promedio proporciona una instantánea de la carga de la CPU en su sistema. Los tres números representan la carga promedio de la CPU durante los últimos 1, 5 y 15 minutos. ¿Pero qué es la carga de la CPU? Es el número promedio de procesos en la cola de ejecución (run-queue), lo que significa que están siendo ejecutados activamente por la CPU o están esperando su turno. Esta métrica es un indicador clave de la **utilización de procesos** y el **rendimiento general del sistema**.
+::option[Porque solo comunica la frecuencia de reloj de la CPU.]{#cpu-load-clock explanation="La velocidad del reloj es una métrica distinta del hardware o del escalado."}
+::option[Porque solo mide la memoria física libre.]{#cpu-load-memory explanation="La disponibilidad de memoria se comunica mediante otras métricas."}
+::option[Porque incluye tareas preparadas para ejecutarse y tareas en espera ininterrumpible.]{#cpu-load-task-count .correct explanation="La carga se basa en la demanda y el estado de espera de las tareas, no en un porcentaje del tiempo de CPU transcurrido."}
+:::
 
-### Una Analogía de Tráfico
+## Comparar la carga con la actividad de CPU
 
-Imagine una CPU de un solo núcleo como una autopista de un solo carril.
+Recopila varias muestras en vez de depender de una sola salida. Algunas herramientas complementarias útiles son:
 
-- Si la autopista está a plena capacidad con un flujo constante de coches, el tráfico es del 100%, lo que corresponde a una carga promedio de 1.0.
-- Si ocurre un gran atasco y los coches se acumulan al doble de la capacidad de la autopista, la carga es del 200%, o una carga promedio de 2.0.
-- Si la autopista está medio vacía, la carga es de 0.5.
-- Idealmente, usted desea una carga promedio baja, como una autopista a las 2 AM sin tráfico.
+```bash
+$ top
+$ vmstat 1
+$ mpstat -P ALL 1
+```
 
-En esta analogía, los coches son los procesos que esperan ser gestionados por la CPU.
+`top` combina vistas del equipo y de los procesos. `vmstat` muestra el número de tareas preparadas y bloqueadas junto con categorías de CPU. `mpstat`, proporcionado por `sysstat` en muchas distribuciones, muestra la actividad de cada CPU. La disponibilidad y los campos exactos varían, así que utiliza los manuales locales.
 
-### Interpretación de la Carga Promedio en Sistemas Modernos
+Una carga alta con las CPU ocupadas puede indicar demanda de CPU. Una carga alta con una cantidad notable de tareas bloqueadas, latencia de E/S u observaciones de espera de E/S apunta a otro recurso limitado. Una utilización media baja también puede ocultar una CPU saturada o un pico breve de latencia.
 
-Una carga promedio de 1.0 no significa necesariamente que su sistema esté teniendo problemas. La mayoría de las computadoras modernas tienen procesadores multinúcleo. Si tiene un procesador de cuatro núcleos (quad-core), una carga promedio de 1.0 significa que solo se está utilizando el 25% de su capacidad total de CPU. Cada núcleo actúa como un carril adicional en la autopista.
+:::single-choice{#cpu-high-load-next-step}
+¿Cuál es el mejor paso después de observar un promedio de carga alto?
 
-Para interpretar correctamente la carga promedio, debe considerar el número de núcleos de la CPU. Puede ver el número de núcleos en su sistema con el comando `cat /proc/cpuinfo`.
+::option[Comparar mediciones repetidas de CPU, estados de tareas, E/S y carga de trabajo.]{#cpu-load-correlate .correct explanation="Las muestras relacionadas permiten distinguir explicaciones contrapuestas de la carga."}
+::option[Reiniciar de inmediato sin recopilar otros datos.]{#cpu-load-reboot explanation="Reiniciar elimina pruebas y puede interrumpir servicios sin identificar la causa."}
+::option[Suponer que todas las CPU están completamente utilizadas.]{#cpu-load-assume explanation="La carga puede incluir tareas ininterrumpibles y distribuirse de forma desigual entre las CPU."}
+:::
 
-Una regla general para un buen **rendimiento del sistema** es mantener su carga promedio por debajo del número de núcleos. Si descubre que su máquina tiene consistentemente una carga promedio superior a su número de núcleos, podría indicar un cuello de botella en el rendimiento, como un proceso descontrolado o recursos de hardware insuficientes.
+## Evaluar la capacidad y el impacto
 
-## Exercise
+No existe una regla universal que exija mantener siempre la carga por debajo del número de CPU. Los sistemas por lotes pueden aceptar colas, mientras que los servicios interactivos pueden incumplir sus objetivos de latencia antes de alcanzar ese punto. Establece una referencia para el mismo equipo y la misma carga de trabajo y compara después el tiempo de respuesta, el rendimiento, la tasa de errores, la saturación y el uso de recursos.
 
-Para obtener experiencia práctica con el **monitoreo de la CPU en Linux** y el análisis del **rendimiento del sistema**, pruebe estos laboratorios prácticos. Le ayudarán a aplicar los conceptos de **carga promedio** y **utilización de procesos** en escenarios del mundo real.
+:::single-choice{#cpu-capacity-threshold}
+¿Qué debe determinar si la carga observada es aceptable?
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción e inspección de procesos, y el monitoreo de recursos con herramientas como `ps` y `top`, lo que se relaciona directamente con la comprensión de la carga de la CPU.
-2. **[Comando Linux top: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar el comando `top` para el monitoreo del sistema en tiempo real, incluyendo la clasificación de procesos y el filtrado, proporcionando una inmersión más profunda en la actividad de la CPU y los procesos.
-3. **[Comando Linux free: Monitoreo de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a monitorear y analizar el uso de la memoria del sistema, que a menudo es un factor crítico junto con la carga de la CPU en el rendimiento general del sistema.
+::option[El requisito de que el valor permanezca siempre por debajo de uno.]{#cpu-below-one explanation="La capacidad multinúcleo y los objetivos de la carga de trabajo hacen que este umbral fijo sea poco fiable."}
+::option[Únicamente el número de usuarios que muestra `uptime`.]{#cpu-user-count explanation="Los usuarios con una sesión de shell iniciada no representan toda la demanda de la carga de trabajo."}
+::option[La referencia y los objetivos de servicio de la carga de trabajo.]{#cpu-baseline-objectives .correct explanation="La aceptabilidad depende del comportamiento esperado y del rendimiento visible para el usuario, no de un umbral universal."}
+:::
 
-## Quiz Question
+## Resumen
 
-What command can you use to see the system's load average? Please answer in English, and note that the command is case-sensitive.
+Ahora puedes interpretar el promedio de carga como una parte de una investigación de CPU.
 
-## Quiz Answer
-
-uptime
+1. Lee los intervalos de carga de 1, 5 y 15 minutos.
+2. Distingue la carga de tareas de los porcentajes de tiempo de CPU.
+3. Compara la carga con la capacidad de procesamiento disponible.
+4. Relaciona mediciones repetidas del equipo con los resultados del servicio.

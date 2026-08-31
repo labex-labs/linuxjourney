@@ -1,15 +1,16 @@
 ---
-index: 13
+lesson_id: "tr-translate-command"
+course_id: "text-fu"
 lang: "en"
+order_index: 13
 title: "tr (Translate)"
+description: "Learn how to translate, delete, and squeeze character sets in a standard input stream."
 meta_title: "tr (Translate) - Text-Fu"
 meta_description: "Learn the Linux tr command with examples for translating characters, deleting characters, squeezing repeats, using character classes, and cleaning text."
 meta_keywords: "linux tr command, tr command, tr -d, tr -s, translate characters, delete characters, character classes, text processing linux"
 ---
 
-## Lesson Content
-
-The `tr` command, short for translate, is a command-line utility that translates, deletes, or squeezes characters from standard input. It is useful for simple text manipulation and is often used with pipes to process the output of other commands.
+The `tr` command, short for translate, translates, deletes, or squeezes characters read from stdin. It does not accept ordinary input-file operands, so use a pipe or input redirection to provide data.
 
 The basic syntax is:
 
@@ -17,18 +18,18 @@ The basic syntax is:
 tr [OPTIONS] SET1 [SET2]
 ```
 
-Unlike tools such as `sed` or `awk`, `tr` works character by character. It does not understand words, columns, or regular expressions in the same way. That makes it fast and simple for tasks such as changing case, removing digits, and normalizing repeated spaces.
+`tr` works with character sets rather than words or general regular expressions. Use another tool when a transformation depends on a complete word, line structure, or surrounding context.
 
-### Basic Character Translation
+## Translating Characters
 
-The most common use of `tr` is to substitute one set of characters for another. For example, you can easily translate all lowercase characters to uppercase.
+With two sets, characters from `SET1` map by position to characters in `SET2`:
 
 ```bash
 $ echo "hello world" | tr a-z A-Z
 HELLO WORLD
 ```
 
-In this example, we piped the output of `echo` to the `tr` command. The `tr` command then translated the character range `a-z` into the corresponding characters in the range `A-Z`.
+Here, lowercase range positions map to corresponding uppercase positions. Quote set expressions so the shell passes them unchanged.
 
 You can also translate one character to another:
 
@@ -37,50 +38,64 @@ $ echo "2026-06-23" | tr '-' '/'
 2026/06/23
 ```
 
-Each character in `SET1` maps to the character in the same position in `SET2`.
-
 ```bash
 $ echo "abc123" | tr 'abc' 'ABC'
 ABC123
 ```
 
-Here, `a` becomes `A`, `b` becomes `B`, and `c` becomes `C`.
+Characters not in `SET1` pass through unchanged.
 
-### Deleting Characters with -d
+:::single-choice{#tr-map-characters}
+What does `printf '%s\n' 'abc123' | tr 'abc' 'ABC'` print?
 
-Another powerful feature is the ability to delete specific characters using the `-d` option. This is particularly useful for cleaning up text. For instance, if you want to remove all digits from a string, you can use:
+::option[`ABCABC`]{#tr-uppercase-digits explanation="Digits are not members of the source set, so `tr` does not replace them with letters."}
+::option[`ABC123`]{#tr-uppercase-abc .correct explanation="Each of `a`, `b`, and `c` maps to the character at the same position in `ABC`; the digits are unchanged."}
+::option[`abc123ABC`]{#tr-append-set explanation="`tr` translates matching input characters. It does not append the destination set to the stream."}
+:::
+
+## Deleting Characters
+
+Use `-d` with one set to remove every matching character:
 
 ```bash
 $ echo "My address is 123 Main Street" | tr -d '0-9'
 My address is  Main Street
 ```
 
-Here, `tr -d` deleted every character in the specified set, from `0` through `9`.
+Every digit is removed independently; `tr` is not identifying a complete number token.
 
-You can remove punctuation from a string by using a character class:
+Character classes can describe groups defined by the current locale:
 
 ```bash
 $ echo "Hello, world!" | tr -d '[:punct:]'
 Hello world
 ```
 
-You can also remove newline characters to join lines together:
+Deleting newlines joins input lines without inserting a replacement separator:
 
 ```bash
 $ printf "one\ntwo\nthree\n" | tr -d '\n'
 onetwothree
 ```
 
-### Squeezing Repeated Characters
+:::single-choice{#tr-delete-digits}
+Which command removes every digit from stdin while leaving other characters unchanged?
 
-The `tr` command can also "squeeze" repeated characters into a single instance using the `-s` option. This is great for normalizing text with extra whitespace.
+::option[`tr -d '[:digit:]'`]{#tr-delete-digit-class .correct explanation="The `-d` option deletes all characters in the digit class from the input stream."}
+::option[`tr -s '[:digit:]'`]{#tr-squeeze-digits explanation="The `-s` option collapses repeated digits but leaves one character from each run."}
+::option[`tr '[:digit:]'`]{#tr-one-set-no-delete explanation="Translation normally needs a second set. A set alone does not request deletion."}
+:::
+
+## Squeezing Repeated Characters
+
+Use `-s SET` to replace each run of a listed character with one instance of that character:
 
 ```bash
 $ echo "Hello      World,   how   are   you?" | tr -s ' '
 Hello World, how are you?
 ```
 
-In this case, `tr -s ' '` replaced sequences of multiple spaces with a single space, making the output much cleaner.
+This set contains an ordinary space, so tabs and newlines are not squeezed by that command.
 
 You can squeeze repeated newlines too:
 
@@ -90,9 +105,17 @@ one
 Two
 ```
 
-### Using Character Classes
+:::single-choice{#tr-squeeze-spaces}
+Which command reduces every run of ordinary spaces in stdin to one space?
 
-Character classes make `tr` commands easier to read and more portable. Common classes include:
+::option[`tr -s ' '`]{#tr-squeeze-space .correct explanation="The `-s` option squeezes repeated members of the supplied set, which contains one ordinary space."}
+::option[`tr -d ' '`]{#tr-delete-space explanation="The `-d` option removes all ordinary spaces rather than preserving one per run."}
+::option[`tr ' ' ''`]{#tr-empty-destination explanation="An empty translation set is not the clear, portable way to request squeezing. Use `-s` for repeated characters."}
+:::
+
+## Using Character Classes and Complements
+
+Character classes make intent clearer than hand-written ranges in many locales. Common classes include:
 
 - `[:lower:]`: Lowercase letters.
 - `[:upper:]`: Uppercase letters.
@@ -109,23 +132,33 @@ $ echo "linux journey" | tr '[:lower:]' '[:upper:]'
 LINUX JOURNEY
 ```
 
-Delete everything except letters and digits by using `-c` with `-d`. The `-c` option means complement, or "everything not in this set."
+The `-c` option complements `SET1`, meaning every character not in the set. Combine it with `-d` to retain only selected kinds of characters:
 
 ```bash
 $ echo "user@example.com!" | tr -cd '[:alnum:]'
 userexamplecom
 ```
 
-### Combining Delete and Squeeze
+This also removes the newline because a newline is not alphanumeric. Add or preserve separators deliberately when record boundaries matter.
 
-You can combine options when cleaning text. This example deletes punctuation, then squeezes repeated spaces:
+:::single-choice{#tr-keep-alphanumeric}
+What does `tr -cd '[:alnum:]'` do to stdin?
+
+::option[Deletes alphanumeric characters and keeps everything else.]{#tr-delete-alnum explanation="The complement changes which characters `-d` targets. The alphanumeric set itself is retained."}
+::option[Deletes every character that is not alphanumeric.]{#tr-delete-nonalnum .correct explanation="`-c` complements the alphanumeric set, and `-d` deletes the resulting non-alphanumeric set."}
+::option[Converts every letter and digit to uppercase.]{#tr-uppercase-alnum explanation="No destination translation set is present, so this command does not perform case conversion."}
+:::
+
+## Building Stream Transformations
+
+Several `tr` processes can be connected when transformations are clearer as separate stages:
 
 ```bash
 $ echo "Hello,,,     world!!!" | tr -d '[:punct:]' | tr -s ' '
 Hello world
 ```
 
-For tab-separated input, you can translate tabs into commas:
+For simple tab-separated input, translate tab characters into commas:
 
 ```bash
 $ printf "name\tlevel\npete\tbeginner\n" | tr '\t' ','
@@ -133,37 +166,32 @@ name,level
 pete,beginner
 ```
 
-### Common tr Options
+Because `tr` reads stdin, a file can be provided with `<`:
 
-Here are the options you will use most often:
+```bash
+$ tr '[:lower:]' '[:upper:]' < names.txt
+```
 
-- `-d`: Delete characters in `SET1`.
-- `-s`: Squeeze repeated characters in `SET1`.
-- `-c`: Use the complement of `SET1`.
-- `-t`: Truncate `SET1` to the length of `SET2` before translating.
+Redirect stdout to a different file if you need to save the result. Do not redirect back to the input pathname, because the shell would truncate it before `tr` reads.
 
-### Common Questions
+:::single-choice{#tr-read-file-input}
+Which command makes `tr` read `names.txt` as stdin and convert lowercase characters to uppercase?
 
-**Why does tr read from a pipe?** `tr` reads from standard input, so it is commonly used after commands such as `echo`, `cat`, `printf`, or other text-producing commands.
+::option[`tr names.txt '[:lower:]' '[:upper:]'`]{#tr-file-operand explanation="`tr` does not take an ordinary input filename this way; the extra operand makes the syntax invalid."}
+::option[`tr -d '[:lower:]' < names.txt`]{#tr-delete-lowercase explanation="This reads the file correctly but deletes lowercase letters rather than translating them."}
+::option[`tr '[:lower:]' '[:upper:]' < names.txt`]{#tr-input-redirection .correct explanation="The shell opens `names.txt` on stdin, and `tr` maps the lowercase class to the uppercase class."}
+:::
 
-**Does tr replace words?** No. `tr` translates characters, not words. Use `sed` when you need to replace whole words or patterns.
-
-**Why did my tr command change characters one by one?** That is how `tr` works. It maps each character in `SET1` to the corresponding character in `SET2`.
-
-**Why should I quote sets like 'a-z'?** Quoting prevents the shell from interpreting special characters before `tr` receives them.
-
-## Exercise
-
-To put your knowledge into practice, try the following hands-on lab. It will help you reinforce your understanding of character translation and text processing.
+To practice character-level stream transformations, try this hands-on lab:
 
 1. **[Linux tr Command: Character Translating](https://labex.io/labs/linux-linux-tr-command-character-translating-219198)** - Learn the Linux `tr` command for character-level transformations in text streams. You'll practice translating characters, deleting specific characters, working with character classes, and squeezing repeated characters.
 
-This lab will help you apply the concepts of text manipulation in real scenarios and build confidence with the `tr` command.
+## Summary
 
-## Quiz Question
+You can now transform character streams with focused `tr` operations.
 
-What command is used to translate characters? (Please answer in lowercase English letters only)
-
-## Quiz Answer
-
-tr
+1. Map characters between corresponding sets.
+2. Delete selected characters with `-d`.
+3. Squeeze repeated characters with `-s`.
+4. Use locale-aware classes and complements deliberately.
+5. Supply input through stdin rather than a filename operand.

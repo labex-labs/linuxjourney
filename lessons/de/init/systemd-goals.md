@@ -1,112 +1,165 @@
 ---
-index: 6
+lesson_id: "systemd-goals"
+course_id: "init"
 lang: "de"
-title: "Systemd Ziele"
-meta_title: "Systemd Ziele - Init"
-meta_description: "Erkunden Sie Systemd-Ziele und lernen Sie, Linux-Dienste mit essentiellen systemctl-Befehlen zu verwalten. Dieser Leitfaden behandelt die Grundlagen von Systemd-Unit-Dateien, wie man Dienste startet, stoppt und aktiviert und deren Status anzeigt."
-meta_keywords: "systemd, systemctl, Linux-Dienste, Unit-Dateien, systemd-Ziele, Dienstverwaltung, systemd-Units, Anfänger, Tutorial, Leitfaden, Linux-Befehle"
+order_index: 6
+title: "Systemd-Ziele"
+description: "Erfahre, wie du systemd-Dienst-Units untersuchst, überschreibst, validierst, startest, aktivierst und Fehler diagnostizierst."
+meta_title: "Systemd-Ziele – Init"
+meta_description: "Erkunde systemd-Ziele und lerne, Linux-Dienste mit wichtigen systemctl-Befehlen zu verwalten. Diese Anleitung behandelt Grundlagen von Unit-Dateien sowie Starten, Stoppen, Aktivieren und Statusprüfung von Diensten."
+meta_keywords: "systemd, systemctl, Linux-Dienste, Unit-Dateien, systemd-Ziele, Dienstverwaltung, systemd-Units, Einsteiger, Tutorial, Anleitung, Linux-Befehle"
 ---
 
-## Lesson Content
+`systemctl` sendet Anforderungen an einen systemd-Manager. Diese Lektion konzentriert sich auf Systemdienst-Units. Bestätige den genauen Unit-Namen, den Managerbereich, die Abhängigkeiten und die betrieblichen Auswirkungen, bevor du den Zustand änderst.
 
-Diese Lektion bietet einen grundlegenden Überblick über systemd Unit-Dateien und wie man sie mit `systemctl` verwaltet, dem primären Werkzeug zur Steuerung des Init-Systems. Wir werden die grundlegende Struktur einer Unit-Datei und die wesentlichen Befehle zur Verwaltung von Linux-Diensten behandeln.
+## Eine Dienst-Unit lesen
 
-### Verständnis einer Systemd Unit-Datei
+Eine minimale beispielhafte Unit kann so aussehen:
 
-A systemd Unit-Datei ist eine einfache Textdatei, die einen Dienst, einen Einhängepunkt, ein Gerät oder eine andere Ressource beschreibt, die systemd verwalten kann. Hier ist ein einfaches Beispiel für eine Service-Unit-Datei namens `foobar.service`:
-
-```
+```ini
 [Unit]
-Description=Mein Foobar Dienst
-After=network.target
+Description=Example worker
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/foobar
+Type=exec
+ExecStart=/usr/local/bin/example-worker
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Diese einfache Service-Datei ist in Abschnitte unterteilt:
+- `[Unit]` enthält die Beschreibung und Abhängigkeitsbeziehungen.
+- `[Service]` definiert den Prozesslebenszyklus und dienstspezifisches Verhalten.
+- `[Install]` teilt Aktivierungsbefehlen mit, welche Aliase oder Abhängigkeitsverknüpfungen sie erstellen sollen; der Abschnitt ist nicht automatisch eine aktive Laufzeitabhängigkeit.
 
-- **[Unit]**: Dieser Abschnitt enthält Metadaten und Abhängigkeitsinformationen. Die `Description` liefert einen für Menschen lesbaren Namen für die Unit. Direktiven wie `After` und `Before` steuern die Startreihenfolge und stellen sicher, dass diese Unit startet, nachdem das Netzwerk verfügbar ist.
-- **[Service]**: Dieser Abschnitt definiert, wie der Dienst verwaltet wird. Die Direktive `ExecStart` ist entscheidend, da sie den Befehl angibt, der zur Ausführung des Dienstes ausgeführt wird. Andere Direktiven wie `ExecStop` und `ExecReload` können definieren, wie der Dienst gestoppt oder neu geladen wird.
-- **[Install]**: Dieser Abschnitt definiert das Verhalten der Unit, wenn sie mit `systemctl` aktiviert oder deaktiviert wird. Die Direktive `WantedBy` weist systemd an, diesen Dienst als Teil eines bestimmten Ziels zu starten, wie z.B. dem `multi-user.target` für einen Standard-Nicht-Grafik-Boot.
+`ExecStart=` wird standardmäßig nicht durch eine Shell geleitet. Shell-Pipelines, Umleitungen, Variablen und Anführungszeichen verhalten sich nicht wie in einer interaktiven Befehlszeile, sofern nicht absichtlich eine ausdrückliche Shell aufgerufen wird.
 
-Dies ist nur ein kleiner Einblick in systemd Unit-Dateien. Für fortgeschrittenere Konfigurationen wird dringend empfohlen, sich weiter mit dem Thema zu befassen.
+:::single-choice{#systemd-goals-install-section}
+Was ist der Hauptzweck von `[Install]`-Direktiven wie `WantedBy=`?
 
-### Wesentliche Systemctl-Befehle
+::option[Sie garantieren, dass der Dienstprozess bereits läuft.]{#systemd-goals-install-running explanation="Die Laufzeitaktivierung erfordert start oder eine andere auslösende Abhängigkeit."}
+::option[Sie beschreiben Verknüpfungen oder Beziehungen, die beim Aktivieren der Unit erstellt werden.]{#systemd-goals-enable-links .correct explanation="Installationsmetadaten werden von Aktivierungsoperationen ausgewertet und sind vom aktuellen Prozesszustand getrennt."}
+::option[Sie führen jeden Befehl durch die interaktive Shell des Benutzers aus.]{#systemd-goals-install-shell explanation="Die Befehlsauswertung von Units verwendet standardmäßig keine interaktive Shell."}
+:::
 
-Nun erkunden wir die wesentlichen `systemctl`-Befehle, die Sie verwenden werden, um mit systemd Units zu interagieren und Linux-Dienste zu verwalten.
+## Die wirksame Konfiguration untersuchen
 
-### Auflisten von Systemd Units
-
-Um alle aktiven Units anzuzeigen, die systemd gerade verwaltet, verwenden Sie den Befehl `list-units`.
-
-```bash
-systemctl list-units
-```
-
-### Überprüfen des Status einer Unit
-
-Um den detaillierten Status einer bestimmten Unit anzuzeigen, einschließlich ob sie aktiv und aktiviert ist, sowie deren letzte Protokolleinträge, verwenden Sie den Befehl `status`.
+Liste geladene Units auf mit:
 
 ```bash
-systemctl status networking.service
+$ systemctl list-units --type=service
 ```
 
-### Verwalten von Dienstzuständen
-
-Sie können den Laufzeitzustand eines Dienstes mit `start`, `stop` und `restart` steuern.
-
-Um einen Dienst sofort zu starten:
+Liste installierte Unit-Dateien und Aktivierungszustände auf mit:
 
 ```bash
-sudo systemctl start networking.service
+$ systemctl list-unit-files --type=service
 ```
 
-Um einen laufenden Dienst zu stoppen:
+Dies sind unterschiedliche Ansichten: Eine Unit-Datei kann aktiviert, aber inaktiv, aktiv, aber deaktiviert, statisch, erzeugt, transient, maskiert oder in einer der Auflistungen nicht vorhanden sein. Untersuche zusammengeführte Anbieter- und Drop-in-Inhalte mit:
 
 ```bash
-sudo systemctl stop networking.service
+$ systemctl cat UNIT.service
+$ systemctl show UNIT.service
 ```
 
-Um den Dienst zu stoppen und dann erneut zu starten:
+:::single-choice{#systemd-goals-list-units-versus-files}
+Was zeigt `list-unit-files`, das `list-units` nicht in erster Linie zeigt?
+
+::option[Nur die Prozesse mit dem höchsten CPU-Verbrauch.]{#systemd-goals-cpu-processes explanation="Die Rangfolge des Ressourcenverbrauchs von Prozessen gehört nicht zu diesen Unit-Inventarbefehlen."}
+::option[Die Aktivierungszustände installierter Unit-Dateien.]{#systemd-goals-unit-file-state .correct explanation="Der Befehl meldet, ob Unit-Dateien aktiviert, deaktiviert, statisch, maskiert oder in verwandten Installationszuständen sind."}
+::option[Jede jemals in das Journal geschriebene Zeile.]{#systemd-goals-all-journal explanation="Journalabfragen verwenden `journalctl`."}
+:::
+
+## Eine lokale Überschreibung erstellen
+
+Verwende ein Drop-in, statt eine mit einem Paket gelieferte Unit zu bearbeiten:
 
 ```bash
-sudo systemctl restart networking.service
+$ sudo systemctl edit UNIT.service
 ```
 
-### Dienste aktivieren und deaktivieren
-
-Das Aktivieren eines Dienstes erstellt einen symbolischen Link, der ihn mit dem Boot-Prozess verbindet und sicherstellt, dass er automatisch startet. Das Deaktivieren entfernt diesen Link.
-
-Um einen Dienst so zu aktivieren, dass er beim Booten startet:
+Nach dem Speichern weist systemctl den Manager bei aktuellen Implementierungen im Rahmen dieses Bearbeitungsablaufs normalerweise an, neu zu laden. Wenn Dateien auf andere Weise geändert werden, führe dagegen Folgendes aus:
 
 ```bash
-sudo systemctl enable networking.service
+$ sudo systemctl daemon-reload
 ```
 
-Um einen Dienst vom automatischen Start beim Booten zu deaktivieren:
+`daemon-reload` liest Unit-Definitionen neu ein und erstellt Abhängigkeiten erneut. Der Befehl lädt weder Anwendungskonfiguration neu noch startet er laufende Dienste neu. Validiere gegebenenfalls Unit-Syntax und Abhängigkeiten mit `systemd-analyze verify` und prüfe danach die wirksame zusammengeführte Unit.
+
+:::single-choice{#systemd-goals-daemon-reload}
+Was bewirkt `systemctl daemon-reload`?
+
+::option[Es zwingt jeden Daemon, seine Anwendungskonfiguration neu einzulesen.]{#systemd-goals-reload-all-apps explanation="Das Neuladen einer Anwendung ist dienstspezifisch und von der Managerkonfiguration getrennt."}
+::option[Es startet den Kernel mit einer neuen Version neu.]{#systemd-goals-reload-kernel explanation="Die Aktivierung eines Kernels erfordert einen Bootvorgang und kein Neuladen von Unit-Definitionen."}
+::option[Es lädt systemd-Unit-Definitionen und Abhängigkeitsinformationen neu.]{#systemd-goals-reload-manager .correct explanation="Es aktualisiert die Konfigurationssicht des Managers, ohne zwangsläufig Dienste neu zu starten."}
+:::
+
+## Laufzeitzustand von Diensten
+
+Nachdem du die Dienstkonfiguration validiert und einen Wiederherstellungszugang bewahrt hast:
 
 ```bash
-sudo systemctl disable networking.service
+$ sudo systemctl start peanut.service
+$ sudo systemctl stop peanut.service
+$ sudo systemctl restart peanut.service
+$ sudo systemctl reload peanut.service
 ```
 
-Diese Befehle sind die Bausteine für die Dienstverwaltung auf modernen Linux-Systemen. Ihre Beherrschung ist ein wichtiger Schritt auf Ihrem Linux-Weg.
+`reload` ist nur erfolgreich, wenn die Unit eine Neuladeaktion definiert oder unterstützt. `restart` unterbricht den Prozess und kann den Dienst möglicherweise nicht wiederherstellen. Halte für Fernzugriff, Netzwerk, Speicher oder Authentifizierung einen separaten Konsolenzugang bereit und prüfe die Konfiguration, bevor du handelst.
 
-## Exercise
+Prüfe Zustand und Protokolle mit:
 
-Übung ist der Schlüssel zum Erlernen neuer Fähigkeiten. Dieses praktische Labor hilft Ihnen, Ihr Verständnis für die Verwaltung von Prozessen zu festigen, die oft von systemd-Diensten gesteuert werden:
+```bash
+$ systemctl status peanut.service
+$ systemctl is-active peanut.service
+$ journalctl -u peanut.service -b
+```
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** - Üben Sie die Interaktion mit Vordergrund- und Hintergrundprozessen, inspizieren Sie diese mit `ps`, überwachen Sie Ressourcen mit `top`, passen Sie die Priorität mit `renice` an und beenden Sie sie mit `kill`. Dieses Labor vermittelt Ihnen praktische Erfahrung mit den Laufzeitauswirkungen der systemd Unit-Verwaltung.
+„Active“ ist ein Managerzustand und kein Beweis dafür, dass jeder Anwendungsendpunkt fehlerfrei ist.
 
-Dieses Labor hilft Ihnen, diese Konzepte in einem realen Szenario anzuwenden und Selbstvertrauen in die Prozessverwaltung unter Linux aufzubauen.
+:::single-choice{#systemd-goals-start-peanut}
+Welcher Befehl startet `peanut.service` jetzt, ohne für sich allein die künftige Aktivierung zu ändern?
 
-## Quiz Question
+::option[`sudo systemctl enable peanut.service`]{#systemd-goals-enable-only explanation="Enable ändert Aktivierungsverknüpfungen, startet den Dienst jedoch nur in Verbindung mit `--now`."}
+::option[`sudo systemctl start peanut.service`]{#systemd-goals-start-command .correct explanation="Start fordert die aktuelle Laufzeitaktivierung an und ist von der dauerhaften Aktivierung getrennt."}
+::option[`sudo systemctl daemon-reload peanut.service`]{#systemd-goals-daemon-reload-unit explanation="Daemon-reload akzeptiert keinen Operanden zur Unit-Aktivierung und startet diesen Dienst nicht."}
+:::
 
-What is the command to start a service named peanut.service? Please answer in English. The answer is case-sensitive.
+## Aktivieren, Deaktivieren und Maskieren
 
-## Quiz Answer
+Verwalte Verknüpfungen für künftige Abhängigkeiten mit:
 
-sudo systemctl start peanut.service
+```bash
+$ sudo systemctl enable peanut.service
+$ sudo systemctl disable peanut.service
+```
+
+Enable startet die Unit nur, wenn `--now` hinzugefügt wird. Disable stoppt eine laufende Unit nur, wenn `--now` hinzugefügt wird. Einer statischen Unit können Installationsmetadaten fehlen, obwohl sie weiterhin als Abhängigkeit einer anderen Unit aktiviert werden kann.
+
+Beim Maskieren wird die Unit mit `/dev/null` verknüpft. Dadurch wird die gewöhnliche Aktivierung einschließlich der Aktivierung als Abhängigkeit blockiert, bis die Maskierung aufgehoben wird. Dies ist stärker als Deaktivieren und kann abhängige Units beeinträchtigen; prüfe vor der Verwendung die umgekehrten Abhängigkeiten.
+
+:::single-choice{#systemd-goals-disable-runtime}
+Was geschieht mit einem bereits laufenden Dienst nach `systemctl disable UNIT` ohne `--now`?
+
+::option[Er wird sofort mit `SIGKILL` beendet.]{#systemd-goals-disable-kills explanation="Disable allein fordert keinen aktuellen Stopp an."}
+::option[Seine ausführbare Datei wird aus dem Dateisystem gelöscht.]{#systemd-goals-disable-deletes explanation="Aktivierungsoperationen verwalten Verknüpfungen und keine Programmdateien aus Paketen."}
+::option[Er läuft normalerweise weiter, während Verknüpfungen für künftige Aktivierungen entfernt werden.]{#systemd-goals-disable-keeps-running .correct explanation="Laufzeitzustand und Installationszustand sind getrennte Dimensionen."}
+:::
+
+## Das Ergebnis des Dienstes überprüfen
+
+Prüfe nach einer Änderung den Prozesszustand, aktuelle Protokolle, lauschende Endpunkte, abhängige Units, den Zustand der Anwendung und – falls sich die Bootaktivierung geändert hat – das Verhalten nach einem kontrollierten Neustart. Verwende je nach Bedarf `systemctl is-failed`, `systemctl list-dependencies` und anwendungseigene Prüfungen.
+
+## Zusammenfassung
+
+Du kannst einen systemd-Dienst nun verwalten, ohne Konfiguration, Laufzeit und Aktivierung miteinander zu verwechseln.
+
+1. Lies `[Unit]`, `[Service]` und `[Install]` entsprechend ihren unterschiedlichen Aufgaben.
+2. Vergleiche den Zustand geladener Units mit dem Zustand installierter Unit-Dateien.
+3. Verwende Drop-ins und lade den Manager nach externen Dateiänderungen neu.
+4. Starte, stoppe, lade neu oder starte erst nach Prüfung der Auswirkungen neu.
+5. Behandle Aktivieren, Deaktivieren und Maskieren als getrennte Steuerungen der Dauerhaftigkeit.

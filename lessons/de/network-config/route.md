@@ -1,67 +1,92 @@
 ---
-index: 2
+lesson_id: "route"
+course_id: "network-config"
 lang: "de"
-title: "Route"
-meta_title: "Route - Netzwerkkonfiguration"
-meta_description: "Erfahren Sie, wie Sie Ihre Linux-Routing-Tabelle verwalten. Diese Anleitung behandelt das Hinzufügen und Löschen von Netzwerkrouten mit dem modernen Befehl 'ip route command in linux' und dem älteren Befehl 'route'."
-meta_keywords: "ip route befehl linux, linux ip route befehl, route hinzufügen, route löschen, routingtabelle, netzwerk-routing, linux netzwerk, ip route"
+order_index: 2
+title: "route"
+description: "Lerne, Linux-Routen mit ip zu untersuchen, hinzuzufügen, zu ersetzen, zu löschen und sicher zu überprüfen."
+meta_title: "route – Netzwerkkonfiguration"
+meta_description: "Lerne, die Linux-Routingtabelle zu verwalten. Diese Anleitung behandelt das Hinzufügen und Löschen von Netzwerkrouten mit dem modernen Befehl ip route und dem älteren route-Befehl."
+meta_keywords: "ip route-Befehl unter Linux, Linux ip route-Befehl, Route hinzufügen, Route löschen, Routingtabelle, Netzwerkrouting, Linux-Vernetzung, ip route"
 ---
 
-## Lesson Content
+Manuelle Routen verändern, wie der Kernel eine ausgehende Schnittstelle und den nächsten Hop auswählt. Ein Fehler kann den Host trennen oder vertraulichen Datenverkehr umleiten. Untersuche deshalb die wirksame Route, den Konfigurationseigentümer und den Wiederherstellungsweg, bevor du den Zustand änderst.
 
-Unter Linux leitet die Routing-Tabelle den Netzwerkverkehr an sein korrektes Ziel weiter. Obwohl wir zuvor die Anzeige dieser Tabelle besprochen haben, können Sie auch manuell Routen hinzufügen oder entfernen, um zu steuern, wie Datenpakete weitergeleitet werden. Dies ist unerlässlich für die Konfiguration komplexer Netzwerkeinrichtungen oder die Fehlerbehebung bei Verbindungsproblemen.
+## Die aktuelle Entscheidung untersuchen
 
-### Verwendung des Legacy-Befehls route
-
-Der Befehl `route` ist ein traditionelles Werkzeug zur Verwaltung der Routing-Tabelle. Obwohl er noch funktionsfähig ist, gilt er als veraltet, und der Befehl `ip` wird heute bevorzugt.
-
-Um eine neue Netzwerkroute hinzuzufügen, geben Sie die Netzwerkadresse, die Subnetzmaske und das Gateway (`gw`) an:
+Erfasse relevante Routen und frage den Kernel, wie er das Ziel aktuell erreicht:
 
 ```bash
-sudo route add -net 192.168.2.1/23 gw 10.11.12.3
+$ ip -4 route show
+$ ip route get 192.168.2.25
 ```
 
-Um eine Route zu löschen, verwenden Sie das Flag `del` zusammen mit der Netzwerkadresse:
+Untersuche außerdem Richtlinienregeln und alternative Tabellen, falls vorhanden. Die Routensuche ist ein lokaler Beleg; sie sendet keinen Datenverkehr.
+
+:::single-choice{#route-get-before-change}
+Warum solltest du `ip route get DESTINATION` vor einer Routenänderung ausführen?
+
+::option[Der Befehl erfasst die aktuelle lokale Entscheidung für Vergleich und Rücknahme.]{#route-get-baseline .correct explanation="Ausgewählte Schnittstelle, nächster Hop und Quelle helfen, die beabsichtigte Änderung zu definieren."}
+::option[Er reserviert das Ziel dauerhaft auf jedem Router.]{#route-get-reserves explanation="Der Befehl führt eine lokale Suche aus und verändert keinen entfernten Zustand."}
+::option[Er deaktiviert alle Richtlinienroutingregeln.]{#route-get-disables-policy explanation="Die Suche wertet Richtlinien aus, statt sie zu entfernen."}
+:::
+
+## Eine Route hinzufügen oder ersetzen
+
+Füge eine Route zum kanonischen Präfix über einen erreichbaren nächsten Hop hinzu:
 
 ```bash
-sudo route del -net 192.168.2.1/23
+$ sudo ip route add 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-### Moderne Routenverwaltung mit ip route
+Das Gateway muss über die betreffende Verbindung oder einen ausdrücklich gültigen On-link-Entwurf erreichbar sein. `add` schlägt fehl, wenn bereits eine gleichwertige Route besteht. `replace` erstellt oder ändert eine Route, was für idempotente Konfiguration nützlich ist, aber funktionierenden Zustand überschreiben kann; prüfe zuerst das genaue Ziel.
 
-Der Befehl `ip route` ist das moderne und leistungsfähigere Werkzeug für die Netzwerkkonfiguration unter Linux. Er bietet eine konsistentere und umfangreichere Reihe von Optionen zur Verwaltung von Netzwerkschnittstellen und Routen. Die Verwendung des **linux ip route command** ist die empfohlene Vorgehensweise für aktuelle Systeme.
+:::single-choice{#route-add-existing}
+Was geschieht gewöhnlich, wenn `ip route add` auf eine bereits vorhandene Route zielt?
 
-Um eine Route mit dem **ip route command in linux** hinzuzufügen, verwenden Sie die Aktion `add` und geben das Zielnetzwerk und den nächsten Hop über das Gateway an:
+::option[Der Befehl löscht still das alte Zielpräfix.]{#route-add-deletes explanation="Add meldet normalerweise einen Fehler wegen eines bestehenden Objekts, statt es zu ersetzen."}
+::option[Er schlägt fehl, statt die bestehende Route zu ersetzen.]{#route-add-fails .correct explanation="Verwende `replace` nur bewusst, nachdem du geprüft hast, welcher Eintrag sich ändern wird."}
+::option[Er startet das ausgewählte Gateway neu.]{#route-add-reboots explanation="Lokale Routenkonfiguration kann auf diese Weise keinen entfernten Neustart anfordern."}
+:::
+
+## Genau löschen
+
+Lösche die genauen Routenattribute, wenn mehrere Kandidaten oder Tabellen bestehen können:
 
 ```bash
-ip route add 192.168.2.1/23 via 10.11.12.3
+$ sudo ip route del 192.168.2.0/23 via 10.11.12.3 dev enp1s0
 ```
 
-Um eine Route zu löschen, können Sie die Aktion `delete` verwenden. Sie können die Route vollständig angeben oder nur das Zielnetzwerk, falls es eindeutig ist:
+Eine Löschung nur anhand des Ziels kann breiter als beabsichtigt oder mehrdeutig passen. Erfasse vor dem Entfernen den ursprünglichen Befehl, mit dem sich die Route wiederherstellen lässt.
 
-```bash
-# Löschen durch Angabe der vollständigen Route
-ip route delete 192.168.2.1/23 via 10.11.12.3
+:::single-choice{#route-delete-precision}
+Warum solltest du beim Löschen einer Route den nächsten Hop und das Gerät angeben?
 
-# Oder Löschen durch Angabe nur des Ziels
-ip route delete 192.168.2.1/23
-```
+::option[Um den beabsichtigten Eintrag genauer zu identifizieren.]{#route-delete-exact .correct explanation="Ausdrückliche Attribute verringern die Gefahr, eine andere Route mit demselben Präfix zu entfernen."}
+::option[Um den physischen Netzwerkadapter ebenfalls zu löschen.]{#route-delete-adapter explanation="Das Löschen einer Route entfernt nicht das Verbindungsobjekt des Kernels."}
+::option[Um die DNS-Zone des Ziels zu löschen.]{#route-delete-dns explanation="Routing und autoritative DNS-Daten sind getrennte Systeme."}
+:::
 
-Die Beherrschung des Befehls `ip route` ist eine Schlüsselqualifikation für jeden Linux-Administrator, der für die Netzwerkverwaltung zuständig ist.
+## Dauerhaftigkeit und Sicherheit bei Fernzugriff
 
-## Exercise
+Ein `ip route`-Befehl verändert nur den aktuellen Kernelzustand. NetworkManager, systemd-networkd, Netplan, ifupdown, DHCP, Routing-Daemons oder Orchestrierung können ihn später ersetzen. Speichere die Route erst nach dem Testen des Laufzeitverhaltens beim aktiven Eigentümer.
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis von Netzwerk-Routing und IP-Adressierung zu festigen:
+Bewahre bei einem entfernten Host eine unabhängige Konsole und verwende eine Rücknahme, die nicht von der zu ändernden Route abhängt. Überprüfe anschließend Routensuche, Nachbarzustand, beide Datenverkehrsrichtungen und den tatsächlichen Dienst.
 
-1. **[IP-Adressierung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-ip-addressing-in-linux-592736)** - Üben Sie die Konfiguration einer statischen IP, das Festlegen eines Standard-Gateways und die Überprüfung der Netzwerkkonfiguration mit dem Befehl `ip`.
-2. **[Netzwerkschicht-Interaktion mit ping und arp unter Linux erkunden](https://labex.io/de/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Erfahren Sie, wie das Standard-Gateway den Remote-Verkehr verarbeitet, und beobachten Sie Interaktionen auf Netzwerkschichtebene.
+:::single-choice{#route-runtime-persistence}
+Was kann mit einer manuell hinzugefügten Route nach dem Neuladen eines Netzwerkmanagers geschehen?
 
-Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Routings in realen Szenarien anzuwenden und Vertrauen in das Linux-Networking aufzubauen.
+::option[Sie wird für immer zu einer unveränderlichen Kernelfunktion.]{#route-manual-immutable explanation="Laufzeitrouten können entfernt oder ersetzt werden."}
+::option[Sie erscheint automatisch auf jedem Host im Subnetz.]{#route-manual-all-hosts explanation="Der Befehl verändert nur den aktuellen Netzwerknamensraum."}
+::option[Sie kann verschwinden, wenn sie in der dauerhaften Richtlinie fehlt.]{#route-manual-disappears .correct explanation="Der Manager gleicht den Kernelzustand mit seinen konfigurierten Profilen ab."}
+:::
 
-## Quiz Question
+## Zusammenfassung
 
-Wenn Sie den Legacy-Befehl `route` verwenden, welches Flag wird zum Löschen einer Route verwendet? Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung.
+Du kannst nun eine begrenzte Linux-Routenänderung mit einem wiederherstellbaren Ablauf vornehmen.
 
-## Quiz Answer
-
-del
+1. Erfasse aktuelle Routen, Regeln und die wirksame Suche.
+2. Verwende ein kanonisches Präfix und einen erreichbaren nächsten Hop.
+3. Unterscheide Hinzufügen von bewusstem Ersetzen.
+4. Lösche die genaue Route und bewahre einen Wiederherstellungsbefehl.
+5. Speichere sie über den aktiven Manager und überprüfe beide Richtungen.

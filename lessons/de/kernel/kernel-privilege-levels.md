@@ -1,59 +1,99 @@
 ---
-index: 2
+lesson_id: "kernel-privilege-levels"
+course_id: "kernel"
 lang: "de"
-title: "Privilegien-Level"
-meta_title: "Privilegien-Level – Kernel"
-meta_description: "Erkunden Sie die Kernkonzepte der Linux-Privilegien-Level. Diese Lektion erklärt den Unterschied zwischen Kernel-Modus und Benutzermodus, die Rolle der Schutzringe und wie Systemaufrufe privilegierten Zugriff auf Hardware ermöglichen. Verstehen Sie, wie der Kernel Sicherheit und Kernel-Privilegien verwaltet."
-meta_keywords: "Linux Privilegien-Level, Kernel-Modus, Benutzermodus, Schutzringe, Systemaufrufe, privilegierter Zugriff, Kernel-Privilegien, Unterschied Kernel-Modus Benutzermodus, Linux Sicherheit"
+order_index: 2
+title: "Privilegienstufen"
+description: "Erfahre, wie Prozessorprivilegien die Benutzerausführung von vertrauenswürdiger Kernelausführung trennen."
+meta_title: "Privilegienstufen – Kernel"
+meta_description: "Erkunde die Kernkonzepte der Linux-Privilegienstufen. Diese Lektion erklärt den Unterschied zwischen Kernel- und Benutzermodus, die Rolle von Schutzringen und wie Systemaufrufe privilegierten Hardwarezugriff ermöglichen. Verstehe, wie der Kernel Sicherheit und Kernelprivilegien verwaltet."
+meta_keywords: "Linux-Privilegienstufen, Kernelmodus, Benutzermodus, Schutzringe, Systemaufrufe, privilegierter Zugriff, Kernelprivilegien, Unterschied zwischen Kernelmodus und Benutzermodus, Linux-Sicherheit"
 ---
 
-## Lesson Content
+Prozessoren stellen Privilegienmodi bereit, die vertrauliche Anweisungen und Speicherzugriffe einschränken. Linux verwendet diese Hardwaregrenze, damit gewöhnliche Anwendungsfehler weder direkt Kernelspeicher überschreiben noch Geräte neu konfigurieren können. Der Kernel steuert die Übergänge in die privilegierte Ausführung.
 
-Die nächsten Lektionen behandeln eher theoretische Konzepte. Wenn Sie praktische Übungen bevorzugen, können Sie gerne vorspringen und später zu diesen Themen zurückkehren.
+## Benutzermodus
 
-Ein grundlegender Aspekt der Linux-Architektur ist die Trennung zwischen dem Benutzerbereich (User Space) und dem Kernel. Aber warum können wir ihre Kräfte nicht in einer einzigen Schicht vereinen? Der Grund sind Sicherheit und Stabilität, die dadurch erreicht werden, dass sie in unterschiedlichen Modi arbeiten.
+Ein gewöhnlicher Prozess läuft im Benutzermodus innerhalb seines virtuellen Adressraums. Er kann frei rechnen und auf vom Kernel gewährte Speicherabbildungen zugreifen, die sehr groß sein können; Benutzermodus bedeutet nicht „nur wenig Speicher“. Er kann weder unmittelbar auf beliebigen physischen Speicher oder private Abbildungen eines anderen Prozesses noch auf privilegierte Prozessorsteuerungen zugreifen.
 
-### Was ist der Unterschied zwischen Kernel-Modus und Benutzer-Modus
+Seitentabellen und Schutzbits setzen den Speicherzugriff durch. Wenn ein Thread auf eine ungültige oder unzulässige Adresse verweist, löst der Prozessor eine Trap in den Kernel aus. Dieser kann einen gültigen Seitenfehler beheben oder ein Signal wie `SIGSEGV` zustellen.
 
-Das System arbeitet in zwei unterschiedlichen Modi: Kernel-Modus und Benutzer-Modus. Diese Trennung ist entscheidend, um die Hardware und Ressourcen des Systems vor direktem, unkontrolliertem Zugriff durch Anwendungen zu schützen.
+:::single-choice{#kernel-privilege-user-mode-memory}
+Auf welchen Speicher kann ein Prozess im Benutzermodus gewöhnlich unmittelbar zugreifen?
 
-Im **Kernel-Modus** hat der Kernel vollständigen und uneingeschränkten Zugriff auf die Hardware; er kontrolliert alles. Dies ist die höchste Stufe der Privilegien.
+::option[Auf jede physische RAM-Adresse und den gesamten Kernelspeicher.]{#kernel-privilege-all-physical explanation="Privilegien und der Schutz des virtuellen Speichers verhindern diese Zugriffe."}
+::option[Ausschließlich auf ein festes Byte, das beim Prozessstart ausgewählt wird.]{#kernel-privilege-one-byte explanation="Ein Prozess kann viele abgebildete Bereiche besitzen und dennoch unprivilegiert bleiben."}
+::option[Auf erlaubte Abbildungen in seinem eigenen virtuellen Adressraum.]{#kernel-privilege-own-mappings .correct explanation="Hardwareseitiger Seitenschutz beschränkt den Prozess auf Abbildungen, die mit entsprechendem Zugriff eingerichtet wurden."}
+:::
 
-Im **Benutzer-Modus** haben Anwendungen nur sehr begrenzten Zugriff auf einen kleinen, sicheren Teil des Speichers und der CPU-Ressourcen.
+## Kernelmodus
 
-Wenn eine Benutzeranwendung eine Aktion ausführen muss, die die Hardware betrifft – wie das Lesen von einer Festplatte, das Senden von Daten über das Netzwerk oder der Zugriff auf ein Peripheriegerät – kann sie dies nicht direkt tun. Diese Operationen müssen vom Kernel im Kernel-Modus behandelt werden. Dieses Design verhindert, dass ein fehlerhaftes oder bösartiges Programm das gesamte System kompromittiert. Sie möchten beispielsweise nicht, dass Spyware direkten Hardwarezugriff erhält, da sie alle Ihre Daten lesen oder Ihre Webcam steuern könnte.
+Der Kernelmodus erlaubt die Ausführung privilegierter Anweisungen und den Zugriff auf geschützte Kernelabbildungen, die für Speicherverwaltung, Scheduling, Interruptbehandlung und Treiber erforderlich sind. Auf x86 wird diese Linux-Aufteilung gewöhnlich als Ring 0 für den Kernel und Ring 3 für Benutzerprozesse beschrieben. Linux verwendet die Ringe 1 und 2 gewöhnlich nicht für die normale Prozessisolation.
 
-### Schutzringe und privilegierter Zugriff
+Andere Architekturen verwenden andere Bezeichnungen und Mechanismen, beispielsweise Exception Levels. Virtualisierung fügt Beziehungen zwischen Hypervisor und Gast hinzu, die nicht in eine einfache Zeichnung mit zwei Ringen passen. Entscheidend ist das kontrollierte Privileg und nicht die x86-Ringnummer selbst.
 
-Diese unterschiedlichen Modi werden oft als **Privilegienstufen** oder **Schutzringe** bezeichnet. Stellen Sie sich eine Festung mit konzentrischen Mauern vor: Der innerste Bereich ist der sicherste und hat die höchste Autorität. Die Schutzringe in einem Computer funktionieren ähnlich, wobei der innerste Ring der höchsten Privilegienstufe entspricht.
+:::single-choice{#kernel-privilege-x86-kernel-ring}
+In welchem x86-Schutzring läuft der Linux-Kernel gewöhnlich?
 
-Auf einer Standard-x86-Computerarchitektur gibt es zwei Hauptebenen:
+::option[Ring 3.]{#kernel-privilege-ring-three explanation="Ring 3 ist die herkömmliche Privilegienstufe des Benutzermodus."}
+::option[Ring 0.]{#kernel-privilege-ring-zero .correct explanation="Der Kernel verwendet den privilegiertesten herkömmlichen x86-Ring."}
+::option[Ring 7.]{#kernel-privilege-ring-seven explanation="Herkömmliche x86-Schutzringe sind von 0 bis 3 nummeriert."}
+:::
 
-- **Ring 0:** Hier läuft der Kernel. Er besitzt die höchste Stufe an **Kernel-Privilegien**, kann jede Systemanweisung ausführen und erhält das volle Vertrauen, die Hardware zu verwalten. Dies ist der Kern des **privilegierten Zugriffs**.
-- **Ring 3:** Dies ist die Ebene, auf der Benutzeranwendungen laufen. Es ist der am wenigsten privilegierte Ring und hat keinen direkten Hardwarezugriff.
+## Kontrollierte Übergänge
 
-Dieses ringbasierte Sicherheitsmodell stellt sicher, dass Benutzeranwendungen von kritischen Systemkomponenten isoliert sind. Aber wenn Anwendungen immer in einem anderen Modus als der Kernel sind, wie können sie notwendige Hardwareoperationen durchführen?
+Mehrere Ereignisse übertragen die Kontrolle an einen Kernel-Einstiegspunkt:
 
-### Systemaufrufe und Kernel-Privilegien
+- Eine Systemaufrufanweisung fordert einen Kerneldienst an.
+- Eine Ausnahme meldet einen Zustand wie einen Seitenfehler oder eine ungültige Anweisung.
+- Ein Hardware-Interrupt meldet ein externes Ereignis.
 
-Die Brücke zwischen Benutzer-Modus und Kernel-Modus ist der **Systemaufruf (System Call)**. Wenn eine Benutzeranwendung eine privilegierte Aufgabe ausführen muss, macht sie einen Systemaufruf, um den Kernel zu bitten, die Aktion in ihrem Namen durchzuführen.
+Der Prozessor speichert den Ausführungskontext, ändert das Privileg entsprechend den konfigurierten Einstiegsmechanismen und beginnt mit der Ausführung vertrauenswürdigen Kernelcodes. Der Kernel validiert Anfrage und Zustand, führt die Arbeit aus oder lehnt sie ab und kehrt gegebenenfalls in den Benutzermodus zurück.
 
-Dieser Prozess ermöglicht es der Anwendung, vorübergehend und sicher vom Benutzer-Modus in den Kernel-Modus zu wechseln, um eine spezifische, kontrollierte Anweisung auszuführen. Sobald die Aufgabe abgeschlossen ist, schaltet das System zurück in den Benutzer-Modus. Dieser Mechanismus stellt sicher, dass Anwendungen die Dienste erhalten, die sie benötigen, ohne gefährlichen, direkten **privilegierten Zugriff** auf die Hardware zu erlangen.
+Die Anwendung wird nicht vorübergehend zu Kernelcode. Die CPU führt im Namen des Threads einen Kernelhandler mit vom Kernel gesteuerten Stacks und Abbildungen aus.
 
-## Exercise
+:::single-choice{#kernel-privilege-system-call-transition}
+Was geschieht während eines Systemaufrufübergangs?
 
-Übung macht den Meister! Das Verständnis der theoretischen Konzepte von Benutzerbereich, Kernelbereich und Privilegienstufen ist entscheidend, aber praktische Erfahrung hilft dabei, zu festigen, wie sich diese Konzepte in der tatsächlichen Linux-Administration zeigen. Hier sind einige praktische Labs, um Ihr Verständnis dafür zu vertiefen, wie Benutzeraktionen mit dem zugrunde liegenden System interagieren:
+::option[Der Benutzercode der Anwendung erhält uneingeschränkte Ausführung in Ring 0.]{#kernel-privilege-user-ring-zero explanation="Nach dem kontrollierten Einstieg wird ausschließlich vertrauenswürdiger Kernelcode ausgeführt."}
+::option[Der Prozess ändert seine UID dauerhaft auf null.]{#kernel-privilege-uid-zero explanation="Ein Übergang des Prozessormodus schreibt keine Benutzerzugangsdaten um."}
+::option[Die Kontrolle gelangt zu einem festgelegten Kernelhandler, der die Anfrage validiert.]{#kernel-privilege-kernel-handler .correct explanation="Der Prozessor ändert den Modus über einen konfigurierten Einstiegspfad und bewahrt den Benutzerkontext für die Rückkehr auf."}
+:::
 
-1. **[Linux-Benutzerkonten mit useradd, usermod und userdel verwalten](https://labex.io/de/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** – Üben Sie das Erstellen, Ändern und Löschen von Benutzerkonten, was direkt mit der Verwaltung von Entitäten zusammenhängt, die im Benutzerbereich agieren und für privilegierte Aktionen die Kernel-Interaktion benötigen.
-2. **[Datei- und Verzeichnisberechtigungen in Linux verwalten](https://labex.io/de/labs/comptia-manage-file-and-directory-permissions-in-linux-590844)** – Lernen Sie, den Zugriff auf Dateien und Verzeichnisse zu steuern, ein Kernsicherheitskonzept, das darauf beruht, dass der Kernel Berechtigungen basierend auf Benutzerprivilegien durchsetzt.
-3. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Erforschen Sie, wie man mit Prozessen interagiert und diese überwacht, bei denen es sich um Benutzerbereichsanwendungen handelt, die Systemaufrufe an den Kernel für Ressourcenverwaltung und Ausführung tätigen.
+## CPU-Privilegien sind keine Benutzeridentität
 
-Diese Labs helfen Ihnen, die Konzepte der Benutzerinteraktion mit dem Linux-System anzuwenden, bei denen die Rolle des Kernels bei der Verwaltung von Ressourcen und der Durchsetzung von Privilegien von größter Bedeutung ist, und stärken Ihr Vertrauen in grundlegende Linux-Administrationsaufgaben.
+Eine Anwendung, die als Linux-Benutzer `root` läuft, führt ihre Anweisungen gewöhnlich weiterhin im Benutzermodus aus. UID 0 beeinflusst Autorisierungsprüfungen des Kernels, erlaubt ihren Anweisungen aber keinen direkten Zugriff auf Kernelspeicher. Umgekehrt läuft Kernelcode unabhängig davon im privilegierten Modus, welcher Benutzer durch seinen Systemaufruf die Ausführung veranlasst hat.
 
-## Quiz Question
+Capabilities, Namensräume, seccomp, Sicherheitsmodule und cgroups schränken weiter ein, was ein Prozess anfordern darf. Diese geschichtete Richtlinie ist von der Hardwaregrenze zwischen Benutzer- und Kernelmodus getrennt.
 
-Welcher Ringnummer besitzt die höchsten Privilegien?
+:::single-choice{#kernel-privilege-root-distinction}
+Welche Aussage vergleicht die root-Identität und den Kernelmodus richtig?
 
-## Quiz Answer
+::option[root ist eine User-Space-Zugangsangabe; der Kernelmodus ist ein Ausführungsprivileg des Prozessors.]{#kernel-privilege-credential-versus-mode .correct explanation="Ein root-Prozess stellt autorisierte Anfragen aus dem Benutzermodus, während vertrauenswürdiger Kernelcode die privilegierte Ausführung übernimmt."}
+::option[Jede Anweisung im Besitz von root wird als ladbarer Kernelcode ausgeführt.]{#kernel-privilege-root-kernel-code explanation="Das UID-Eigentum verwandelt eine ausführbare Datei nicht in ein Kernelmodul."}
+::option[Der Kernelmodus ist ein weiterer in `/etc/passwd` gespeicherter Benutzername.]{#kernel-privilege-kernel-username explanation="Prozessormodi sind Hardwarezustände und keine Anmeldekonten."}
+:::
 
-0
+## Warum die Grenze wichtig ist
+
+Die Grenze begrenzt Schäden durch gewöhnliche Fehler und stellt einen Ort für Zugriffsprüfungen bereit. Kernel-Schwachstellen und bösartige Module können sie jedoch überwinden. Halte Kernel und Firmware über vertrauenswürdige Kanäle aktuell, minimiere privilegierten Code und lade keine nicht vertrauenswürdigen Module.
+
+Probleme mit spekulativer Ausführung und Seitenkanäle zeigen außerdem, dass Hardwareisolation fortlaufende Gegenmaßnahmen benötigt. Ein „anderer Ring“ ist eine Grundlage und kein vollständiger Sicherheitsbeweis.
+
+:::single-choice{#kernel-privilege-boundary-limit}
+Garantiert die Trennung von Benutzer- und Kernelmodus vollständige Systemsicherheit?
+
+::option[Ja; Kernel-Schwachstellen können Benutzerprozesse nicht beeinflussen.]{#kernel-privilege-no-kernel-vulns explanation="Eine Kernel-Schwachstelle kann das gesamte System gefährden."}
+::option[Nein; Fehler in privilegiertem Code und Seitenkanäle können beabsichtigte Grenzen weiterhin überschreiten.]{#kernel-privilege-not-complete .correct explanation="Die Modusaufteilung verringert die Angriffsfläche, muss aber mit korrektem Kernelcode und zusätzlichen Gegenmaßnahmen kombiniert werden."}
+::option[Ja; Hardwaremodi beseitigen die Notwendigkeit von Zugriffskontrollrichtlinien.]{#kernel-privilege-no-policy explanation="Zugangsdaten und Sicherheitsrichtlinien bleiben für die autorisierte gemeinsame Ressourcennutzung unerlässlich."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun Hardware-Ausführungsprivilegien von Linux-Kontobefugnissen unterscheiden.
+
+1. Setze den Benutzermodus mit geschützten virtuellen Adressräumen in Beziehung.
+2. Setze den Kernelmodus mit privilegierten Anweisungen und Abbildungen in Beziehung.
+3. Behandle Systemaufrufe, Ausnahmen und Interrupts als kontrollierte Einstiegspunkte.
+4. Trenne die Autorisierung der UID 0 von der Ausführung in Ring 0.
+5. Betrachte Privilegienmodi als eine Schicht eines umfassenderen Sicherheitsentwurfs.

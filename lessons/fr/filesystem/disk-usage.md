@@ -1,72 +1,121 @@
 ---
-index: 9
+lesson_id: "disk-usage"
+course_id: "filesystem"
 lang: "fr"
-title: "Utilisation du Disque"
-meta_title: "Utilisation du Disque - Le Système de Fichiers"
-meta_description: "Apprenez à vérifier l'utilisation du disque et l'espace libre sous Linux avec les commandes df et du. Ce guide explique comment analyser l'espace disque, y compris l'utilisation des inodes avec df -i linux, et trouver quels fichiers occupent de l'espace."
-meta_keywords: "commande df, commande du, utilisation disque Linux, vérifier espace libre, df -i linux, gestion disque, tutoriel Linux, utilisation disque, utilisation système de fichiers"
+order_index: 9
+title: "Utilisation du disque"
+description: "Découvrez comment `df` et `du` mesurent différemment la consommation des blocs et des inodes d'un système de fichiers."
+meta_title: "Utilisation du disque - Le système de fichiers"
+meta_description: "Apprenez à contrôler l'utilisation et l'espace libre des disques Linux avec df et du, notamment les inodes avec df -i."
+meta_keywords: "commande df, commande du, utilisation disque Linux, espace libre, df -i Linux, gestion disque, inodes, système de fichiers"
 ---
 
-## Lesson Content
+La capacité d'un système de fichiers possède au moins deux limites : les blocs de données et les objets de métadonnées comme les inodes. `df` indique l'allocation du point de vue du système de fichiers, tandis que `du` parcourt les chemins accessibles et additionne l'utilisation qui leur est attribuée. Ces valeurs répondent à des questions différentes et ne sont pas obligées de correspondre.
 
-La gestion de l'espace disque est une tâche fondamentale pour tout utilisateur ou administrateur Linux. Deux commandes essentielles à cet effet sont `df` et `du`. Explorons comment les utiliser pour surveiller efficacement l'utilisation de votre disque.
+## Capacité du système de fichiers avec `df`
 
-### Vérification de l'espace du système de fichiers avec df
-
-La commande `df` (disk free) signale la quantité d'espace disque utilisée et disponible sur vos systèmes de fichiers montés actuellement. Elle fournit une vue d'ensemble de votre stockage.
-
-Pour obtenir un rapport dans un format lisible par l'homme (par exemple, Go, Mo, Ko), utilisez l'indicateur `-h` :
+Affichez le type des systèmes de fichiers montés et les chiffres des blocs dans un format lisible :
 
 ```bash
-pete@icebox:~$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1       6.2G  2.3G  3.6G  40% /
+$ df -hT
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda1      ext4  6.2G  2.3G  3.6G  40% /
 ```
 
-Ce résultat montre le périphérique du système de fichiers, la taille totale, l'espace utilisé, l'espace disponible, le pourcentage d'utilisation et son point de montage.
-
-### Analyse de l'utilisation des inodes
-
-En plus de l'espace bloc, les systèmes de fichiers utilisent également des inodes pour stocker les métadonnées des fichiers (comme les permissions, la propriété et l'emplacement). Dans de rares cas, vous pouvez manquer d'inodes même s'il reste de l'espace disque libre. Pour vérifier l'utilisation des inodes, vous pouvez utiliser la commande `df -i`. L'exécution de `df -i` sous Linux vous donne une image claire de l'allocation des inodes.
+`Size`, `Used` et `Avail` proviennent de la comptabilité du système de fichiers. L'espace disponible peut être inférieur au total moins l'espace utilisé en raison des blocs réservés, des métadonnées, des règles d'allocation, des quotas ou des arrondis. Exécutez `df` sur un chemin pour obtenir le système de fichiers qui le contient :
 
 ```bash
-pete@icebox:~$ df -i
-Filesystem      Inodes  IUsed   IFree IUse% Mounted on
-/dev/sda1      4128768 128768 4000000    4% /
+$ df -hT /var/log
 ```
 
-### Résumé de l'utilisation des répertoires avec du
+:::single-choice{#disk-usage-df-scope}
+Qu'indique principalement `df` ?
 
-Lorsque vous remarquez qu'un disque se remplit, vous voudrez identifier quels fichiers ou répertoires consomment le plus d'espace. Pour cette tâche, la commande `du` (disk usage) est l'outil parfait.
+::option[Le contenu en octets de chaque fichier d'un répertoire.]{#disk-usage-df-file-content explanation="La comptabilité d'une arborescence de répertoires relève d'outils comme `du`."}
+::option[La capacité, l'utilisation et l'espace disponible au niveau du système de fichiers.]{#disk-usage-df-filesystem .correct explanation="Df interroge les statistiques d'allocation des systèmes de fichiers montés au lieu de parcourir chaque chemin."}
+::option[Uniquement la taille physique imprimée sur l'étiquette du disque.]{#disk-usage-df-physical-label explanation="Ses chiffres décrivent la comptabilité du système de fichiers, pas seulement la capacité commerciale du matériel."}
+:::
 
-Exécuter `du` sans arguments montre l'utilisation du disque pour chaque sous-répertoire de votre emplacement actuel. L'utilisation de l'indicateur `-h` fournit un résumé lisible par l'homme :
+## Capacité en inodes
+
+Les systèmes de fichiers qui allouent des objets comparables à des inodes peuvent les épuiser alors que des blocs restent libres :
 
 ```bash
-du -h
+$ df -i /var
 ```
 
-Vous pouvez également spécifier un chemin, comme `du -h /home/pete`, pour analyser un répertoire spécifique. L'exécuter sur le répertoire racine (`du -h /`) peut générer beaucoup de résultats, il est donc souvent préférable de vérifier les répertoires spécifiques que vous soupçonnez d'être volumineux.
+Un grand nombre de petits fichiers peut consommer tous les inodes disponibles. Supprimer un gros fichier libère de nombreux blocs, mais généralement un seul inode ; supprimer de nombreux petits fichiers inutiles peut réduire la pression sur les inodes. Certains systèmes de fichiers allouent leurs métadonnées dynamiquement et présentent ces notions différemment.
 
-### df vs du Un bref résumé
+:::single-choice{#disk-usage-inode-exhaustion}
+Que peut-il se produire lorsqu'un système de fichiers possède des blocs libres, mais plus aucun inode libre ?
 
-La syntaxe de `df` et `du` est si similaire qu'il peut être facile de les confondre. Voici un moyen simple de se souvenir de la différence :
+::option[Chaque fichier existant double automatiquement de taille.]{#disk-usage-inode-double explanation="L'épuisement des inodes empêche l'allocation de nouvelles métadonnées et n'agrandit pas le contenu existant."}
+::option[La création d'un autre fichier peut échouer.]{#disk-usage-inode-create-fail .correct explanation="Un nouvel objet du système de fichiers a besoin de métadonnées même s'il reste de la place pour ses données."}
+::option[Le système de fichiers est converti en swap.]{#disk-usage-inode-swap explanation="L'épuisement d'une ressource ne change pas le type du système de fichiers."}
+:::
 
-- Utilisez `df` pour vérifier combien d'**e**space **d**isque est **l**ibre sur vos systèmes de fichiers.
-- Utilisez `du` pour vérifier l'**u**tilisati**o**n du **d**isque des fichiers et répertoires spécifiques.
+## Utilisation des chemins avec `du`
 
-## Exercise
+Résumez l'espace alloué accessible sous un répertoire :
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion et de l'utilisation de l'espace disque sous Linux :
+```bash
+$ du -sh /var/log
+```
 
-1. **[Gérer les partitions et les systèmes de fichiers Linux](https://labex.io/fr/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Entraînez-vous à créer, formater et monter des systèmes de fichiers, qui sont les structures sous-jacentes signalées par `df` et `du`.
-2. **[Créer et activer un fichier d'échange (Swap) sous Linux](https://labex.io/fr/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Apprenez à gérer la mémoire virtuelle sur disque, un aspect critique de la gestion des ressources système qui a un impact sur l'espace disque.
+Comparez ses enfants directs tout en restant sur un seul système de fichiers :
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans la gestion des ressources disque.
+```bash
+$ sudo du -xhd1 /var | sort -h
+```
 
-## Quiz Question
+Les options GNU présentées signifient respectivement sortie lisible, profondeur maximale d'un niveau et limitation à un système de fichiers. Les permissions peuvent masquer des sous-arborescences et produire un total incomplet. Par défaut, `du` peut aussi ne compter qu'une seule fois les fichiers possédant plusieurs liens physiques, distinguer la taille apparente des blocs alloués et traiter les fichiers creux différemment selon les options.
 
-Quelle commande est utilisée pour afficher l'espace libre sur votre disque ? Veuillez répondre en lettres minuscules anglaises.
+:::single-choice{#disk-usage-du-purpose}
+Quelle commande résume l'espace alloué sous `/var/log` ?
 
-## Quiz Answer
+::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Cette commande indique les statistiques d'inodes du système de fichiers qui contient le chemin."}
+::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du parcourt l'arborescence indiquée et `-s` produit un seul résumé dans des unités lisibles."}
+::option[`mount -a /var/log`]{#disk-usage-mount-a explanation="Le montage est sans rapport avec le résumé en lecture seule de l'utilisation d'un répertoire."}
+:::
 
-df
+## Pourquoi `df` et `du` diffèrent
+
+Parmi les causes courantes figurent :
+
+- un processus conserve ouvert un fichier supprimé : ses blocs restent alloués, mais aucun chemin n'existe plus pour `du` ;
+- les métadonnées, espaces réservés, journaux, reflinks, instantanés ou la compression du système de fichiers influencent la comptabilité ;
+- un autre système de fichiers est monté dans l'arborescence parcourue ;
+- les permissions empêchent `du` de lire certains répertoires ;
+- les fichiers creux possèdent des tailles apparente et allouée différentes.
+
+Pour les fichiers supprimés mais encore ouverts, examinez les processus autorisés avec un outil comme `lsof +L1` ; redémarrez ou signalez le service responsable selon sa procédure normale au lieu de tronquer des descripteurs inconnus.
+
+:::single-choice{#disk-usage-deleted-open-file}
+Pourquoi `df` peut-il signaler de l'espace utilisé qu'un `du` fondé sur les chemins ne trouve pas ?
+
+::option[`df` multiplie toujours la taille de chaque fichier par deux.]{#disk-usage-df-doubles explanation="Il n'existe aucune règle universelle de doublement."}
+::option[Un fichier supprimé peut rester ouvert et alloué à un processus actif.]{#disk-usage-open-deleted .correct explanation="L'entrée de répertoire a disparu, mais le système de fichiers conserve les blocs jusqu'à la fermeture de la dernière référence ouverte."}
+::option[`du` supprime automatiquement les fichiers après les avoir comptés.]{#disk-usage-du-deletes explanation="Du est un outil de comptabilité et ne supprime pas les fichiers parcourus."}
+:::
+
+## Enquêter sans aggraver l'incident
+
+Partez du système de fichiers plein signalé par `df`, identifiez sa cible de montage avec `findmnt`, puis réduisez la portée des recherches `du` sur ce même système. Tenez compte des instantanés, couches de conteneurs, journaux, caches de paquets et règles de conservation des applications. Ne supprimez pas un fichier au seul motif qu'il est volumineux ; déterminez d'abord son propriétaire, sa sauvegarde, les obligations de conformité et le comportement du service.
+
+:::single-choice{#disk-usage-safe-investigation}
+Quelle est la réaction la plus sûre après avoir trouvé un fichier volumineux ?
+
+::option[Le supprimer immédiatement pendant que le service y écrit.]{#disk-usage-delete-immediately explanation="Cela peut détruire des données nécessaires et ne pas libérer d'espace si le fichier reste ouvert."}
+::option[Exécuter `mkfs` sur le périphérique qui le contient.]{#disk-usage-mkfs-device explanation="Le formatage détruirait le système de fichiers au lieu de résoudre la croissance d'un seul fichier."}
+::option[Identifier son propriétaire et son rôle dans la conservation avant de le modifier.]{#disk-usage-review-large-file .correct explanation="La taille seule ne prouve pas que le fichier est inutile ou peut être tronqué sans risque."}
+:::
+
+## Résumé
+
+Vous savez maintenant rapprocher les rapports d'espace produits au niveau du système de fichiers et au niveau des chemins.
+
+1. Employer `df` pour la capacité en blocs des systèmes de fichiers montés.
+2. Employer `df -i` pour la pression sur les inodes lorsqu'elle est prise en charge.
+3. Limiter les parcours `du` afin d'attribuer l'utilisation des chemins accessibles.
+4. Rechercher les fichiers supprimés encore ouverts et les différences de comptabilité propres aux formats.
+5. Appliquer les règles de propriété et de conservation avant de supprimer des données.

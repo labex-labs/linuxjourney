@@ -1,61 +1,101 @@
 ---
-index: 2
+lesson_id: "filesystem-types"
+course_id: "filesystem"
 lang: "pt"
-title: "Tipos de Sistema de Arquivos"
-meta_title: "Tipos de Sistema de Arquivos - O Sistema de Arquivos"
-meta_description: "Descubra os diferentes tipos de sistemas de arquivos Linux, incluindo ext4, Btrfs e XFS. Este guia explica conceitos chave como journaling e o Sistema de Arquivos Virtual (VFS), ajudando você a entender os vários tipos de sistemas de arquivos disponíveis para Linux."
-meta_keywords: "tipos de sistema de arquivos linux, tipos de sistema de arquivos, ext4, Btrfs, XFS, journaling, VFS, tutorial linux"
+order_index: 2
+title: "Tipos de Sistemas de Arquivos"
+description: "Aprenda como o VFS do Linux apresenta sistemas de arquivos locais, de rede e virtuais por meio de uma única interface."
+meta_title: "Tipos de Sistemas de Arquivos - O Sistema de Arquivos"
+meta_description: "Conheça diferentes tipos de sistemas de arquivos Linux, incluindo ext4, Btrfs e XFS. Este guia explica conceitos importantes como journaling e o Virtual File System (VFS)."
+meta_keywords: "tipos de sistemas de arquivos Linux, sistemas de arquivos, ext4, Btrfs, XFS, journaling, VFS, tutorial Linux"
 ---
 
-## Lesson Content
+O Linux oferece suporte a muitas implementações de sistemas de arquivos, com diferentes formatos em disco, protocolos de rede, modelos de consistência, recursos e ferramentas operacionais. A escolha adequada depende do suporte da distribuição, da carga de trabalho, dos requisitos de recuperação, da topologia do armazenamento e da experiência do administrador.
 
-O Linux suporta uma grande variedade de implementações de sistemas de arquivos. Alguns são otimizados para velocidade, outros para grande capacidade de armazenamento e alguns são projetados para dispositivos menores. Cada um desses diferentes tipos de sistema de arquivos tem uma maneira única de organizar os dados.
+## A Camada de Sistema de Arquivos Virtual
 
-### O Papel do Sistema de Arquivos Virtual
+A camada Virtual Filesystem do kernel, ou VFS, fornece operações comuns como abertura, leitura, escrita, renomeação e verificações de permissões. As implementações de sistemas de arquivos conectam essas operações às suas próprias estruturas de dados e meios de armazenamento.
 
-Com tantas implementações diferentes disponíveis, as aplicações precisam de uma maneira consistente de interagir com elas. É aqui que entra o Sistema de Arquivos Virtual (VFS). O VFS é uma camada de abstração no kernel do Linux que fica entre as aplicações e os vários sistemas de arquivos. Ele fornece uma interface única e uniforme, garantindo que as aplicações possam funcionar perfeitamente, independentemente do tipo de sistema de arquivos subjacente. Essa flexibilidade permite que você tenha múltiplos sistemas de arquivos em seus discos, muitas vezes organizados através de partições, o que abordaremos em uma lição futura.
+Isso permite que um único processo acesse ext4, XFS, NFS, tmpfs e procfs por meio de um modelo compartilhado de caminhos e descritores de arquivos. Porém, não torna idênticos todos os recursos ou comportamentos: diferenciação entre maiúsculas e minúsculas, bloqueio, permissões, garantias de renomeação, atributos estendidos e tratamento de erros podem variar.
 
-### Journaling para Integridade dos Dados
+:::single-choice{#filesystem-types-vfs-role}
+Qual é a principal função do VFS do Linux?
 
-A maioria dos tipos de sistemas de arquivos modernos inclui um recurso chamado journaling por padrão. Para entender sua importância, imagine copiar um arquivo grande quando seu computador perde energia subitamente. Em um sistema de arquivos sem journaling, essa interrupção poderia levar a um arquivo corrompido e a um estado inconsistente do sistema de arquivos. Ao reiniciar, seu sistema precisaria realizar uma verificação completa do sistema de arquivos (fsck), o que pode ser demorado em discos grandes.
+::option[Converter em disco todos os sistemas de arquivos montados para ext4.]{#filesystem-types-vfs-convert-ext4 explanation="A abstração preserva as implementações e os formatos distintos dos sistemas de arquivos."}
+::option[Fazer backup de cada arquivo antes de uma aplicação gravá-lo.]{#filesystem-types-vfs-backup explanation="O VFS encaminha operações e não fornece um histórico automático de backups."}
+::option[Fornecer operações de arquivo comuns do kernel para várias implementações de sistemas de arquivos.]{#filesystem-types-vfs-common-interface .correct explanation="O VFS permite que as aplicações usem chamadas de sistema compartilhadas, enquanto cada sistema de arquivos implementa o comportamento subjacente."}
+:::
 
-Um sistema de arquivos com journaling evita esse problema. Antes de executar uma operação de gravação, ele primeiro registra as alterações pretendidas em um arquivo de log especial, ou "journal". Assim que a operação é concluída com sucesso, o journal é atualizado para marcar a tarefa como finalizada. Se ocorrer uma falha, o sistema pode simplesmente ler o journal ao reiniciar para ver quais operações estavam em andamento e rapidamente restaurar o sistema de arquivos para um estado consistente. Isso reduz drasticamente o tempo de recuperação e protege contra a corrupção de dados.
+## Journaling e Consistência após Falhas
 
-### Tipos Comuns de Sistemas de Arquivos Linux
+Um sistema de arquivos com journaling registra atualizações selecionadas em um journal para poder repetir ou descartar transações incompletas após uma falha. O journaling serve principalmente para restaurar a consistência estrutural do sistema de arquivos mais rapidamente do que uma verificação completa.
 
-Aqui estão alguns dos **tipos de sistemas de arquivos linux** mais comuns que você encontrará:
+Ele não garante que os dados mais recentes das aplicações tenham sobrevivido, que transações envolvendo vários arquivos sejam válidas nem que o hardware de armazenamento tenha respeitado todas as gravações concluídas. Os sistemas de arquivos oferecem diferentes modos de dados e garantias de ordenação, enquanto as aplicações devem usar padrões adequados de sincronização e atualização atômica. Um journal não é um backup e não protege contra exclusões, malware ou falhas do dispositivo.
 
-- **ext4** - Como a versão mais recente do Sistema de Arquivos Estendido nativo do Linux, o ext4 é o padrão para muitas distribuições. Ele é retrocompatível com seus predecessores (ext2/ext3) e suporta volumes de disco muito grandes (até 1 exabyte) e tamanhos de arquivo (até 16 terabytes). É uma escolha confiável e padrão para a maioria dos casos de uso.
-- **Btrfs** - Frequentemente chamado de "B-tree FS", o Btrfs é um sistema de arquivos moderno com recursos avançados como snapshots integrados, backups incrementais e desempenho aprimorado. Embora agora seja considerado estável e seja o padrão em algumas distribuições, ainda está em desenvolvimento ativo.
-- **XFS** - Um sistema de arquivos com journaling de alto desempenho que se destaca no manuseio de arquivos grandes e operações de I/O paralelas. Isso o torna uma excelente escolha para sistemas que gerenciam grandes quantidades de dados, como servidores de mídia.
-- **NTFS e FAT** - Estes são tipos de sistemas de arquivos padrão do Windows. O Linux fornece suporte total para leitura e gravação neles, o que é útil para sistemas de dual-boot.
-- **HFS+** - O sistema de arquivos principal usado pelo macOS. O Linux tem suporte de apenas leitura para ele por padrão, com suporte de gravação disponível através de ferramentas adicionais.
+:::single-choice{#filesystem-types-journal-scope}
+O que o journaling do sistema de arquivos ajuda principalmente a recuperar após uma falha?
 
-Você pode ver quais sistemas de arquivos estão em uso em sua máquina com o comando `df`:
+::option[Metadados consistentes do sistema de arquivos e transações registradas.]{#filesystem-types-journal-consistency .correct explanation="A repetição do journal ajuda a devolver as estruturas do sistema de arquivos a um estado coerente."}
+::option[Todas as versões históricas de todos os documentos dos usuários.]{#filesystem-types-journal-versions explanation="Um journal não é um armazenamento de backup com versões."}
+::option[Dados de um dispositivo de armazenamento fisicamente destruído.]{#filesystem-types-journal-hardware-loss explanation="A recuperação após a perda de um dispositivo exige redundância ou backups fora do dispositivo com falha."}
+:::
 
-```plaintext
-pete@icebox:~$ df -T
-Filesystem     Type     1K-blocks    Used Available Use% Mounted on
-/dev/sda1      ext4       6461592 2402708   3707604  40% /
-udev           devtmpfs    501356       4    501352   1% /dev
-tmpfs          tmpfs       102544    1068    101476   2% /run
-/dev/sda6      xfs       13752320  460112  13292208   4% /home
+## Sistemas de Arquivos Locais Comuns
+
+- **ext4** é um sistema de arquivos maduro com journaling e amplo suporte nas distribuições Linux e ferramentas de recuperação.
+- **XFS** é um sistema de arquivos escalável com journaling, normalmente escolhido para sistemas de arquivos grandes e cargas de trabalho com E/S paralela.
+- **Btrfs** é um sistema de arquivos copy-on-write com checksums, subvolumes, snapshots e recursos integrados para vários dispositivos.
+
+Os recursos exigem contexto operacional. Um snapshot do Btrfs inicialmente compartilha o armazenamento com sua origem e não é um backup independente quando permanece no mesmo dispositivo sujeito a falhas. XFS e ext4 possuem capacidades diferentes de expansão, redução, reparo e ajuste. Confirme o suporte do kernel instalado, do ambiente de boot e das ferramentas de recuperação antes de escolher ou alterar um sistema de arquivos raiz.
+
+:::single-choice{#filesystem-types-btrfs-snapshot}
+Por que um snapshot do Btrfs no mesmo dispositivo não é um backup completo?
+
+::option[Snapshots sempre excluem o subvolume original imediatamente.]{#filesystem-types-snapshot-deletes explanation="Um snapshot cria outra visualização de subvolume e não remove sua origem por si só."}
+::option[Ele compartilha o mesmo domínio de falha de armazenamento da origem.]{#filesystem-types-snapshot-failure-domain .correct explanation="A perda do dispositivo ou danos graves ao sistema de arquivos podem afetar tanto a origem quanto seu snapshot local."}
+::option[O Btrfs não consegue representar mais de um arquivo.]{#filesystem-types-btrfs-one-file explanation="O Btrfs é um sistema de arquivos de uso geral para árvores de diretórios e muitos arquivos."}
+:::
+
+## Sistemas de Arquivos de Interoperabilidade, Rede e Virtuais
+
+O Linux pode montar formatos de interoperabilidade como variantes FAT, exFAT e NTFS, mas suas semânticas de propriedade Unix, permissões, links e nomes de arquivos são diferentes. As opções de montagem e a implementação do driver determinam como o Linux apresenta os recursos ausentes.
+
+Sistemas de arquivos de rede, como NFS e SMB, dependem de um servidor e de um protocolo de rede, com regras próprias de cache e identidade. Sistemas de arquivos virtuais, como tmpfs, procfs e sysfs, não usam um formato persistente comum em disco: o tmpfs armazena dados voláteis em páginas apoiadas por memória, enquanto procfs e sysfs expõem interfaces do kernel.
+
+:::single-choice{#filesystem-types-procfs-category}
+Qual descrição corresponde melhor ao procfs?
+
+::option[Um formato de intercâmbio do Windows para mídias removíveis.]{#filesystem-types-procfs-windows explanation="FAT ou exFAT correspondem melhor a esse uso; o procfs é voltado às interfaces do kernel Linux."}
+::option[Um sistema de arquivos virtual que expõe interfaces de processos e do kernel.]{#filesystem-types-procfs-virtual .correct explanation="O procfs gera uma visualização ativa do kernel, em vez de armazenar arquivos persistentes comuns no disco."}
+::option[Um sistema de arquivos de disco com journaling desenvolvido para volumes de bancos de dados.]{#filesystem-types-procfs-journal explanation="O procfs não possui um journal comum em disco nem a função de volume de dados."}
+:::
+
+## Descoberta dos Tipos Ativos
+
+Mostre os tipos de sistemas de arquivos montados com:
+
+```bash
+$ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
 ```
 
-O comando `df` relata o uso de espaço em disco do sistema de arquivos. O sinalizador `-T` mostra especificamente o tipo de sistema de arquivos. Exploraremos esta ferramenta em mais detalhes mais tarde.
+Outras visualizações incluem `df -T` para contabilizar o espaço montado, `lsblk -f` para dispositivos de bloco e assinaturas de sistemas de arquivos detectadas e `/proc/filesystems` para os tipos reconhecidos ou suportados pelo kernel em execução. Elas respondem a perguntas diferentes; um sistema de arquivos desmontado não aparece em uma listagem comum de sistemas montados.
 
-## Exercise
+:::single-choice{#filesystem-types-findmnt-output}
+Qual comando lista diretamente os destinos montados com a origem, o tipo e as opções mostrados na lição?
 
-Para colocar seu conhecimento em prática, complete o seguinte laboratório prático. Ele ajudará a reforçar sua compreensão dos sistemas de arquivos e partições do Linux:
+::option[`findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS`]{#filesystem-types-findmnt .correct explanation="Findmnt lê a tabela de montagens e formata os campos solicitados dos sistemas de arquivos montados."}
+::option[`lsblk -o NAME,SIZE,MODEL,SERIAL,ROTA`]{#filesystem-types-mkfs-destructive explanation="Esse comando lista detalhes de hardware dos dispositivos de bloco, não os tipos e opções efetivos dos sistemas de arquivos montados."}
+::option[`cat /proc/filesystems | sort --unique`]{#filesystem-types-rm-proc explanation="Isso informa os tipos de sistemas de arquivos suportados pelo kernel, não as origens e opções efetivas das montagens."}
+:::
 
-1. **[Gerenciar Partições e Sistemas de Arquivos Linux](https://labex.io/pt/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Neste laboratório, você praticará a criação de uma nova partição, a formatação com um tipo de sistema de arquivos específico, o ponto de montagem e a configuração para montagem persistente. Estas são habilidades fundamentais para gerenciar o armazenamento no Linux.
+Use o laboratório [Gerenciamento de Partições e Sistemas de Arquivos Linux](https://labex.io/labs/comptia-manage-linux-partitions-and-filesystems-590845) em um armazenamento descartável para comparar tipos, opções de montagem e visualizações de descoberta.
 
-Este laboratório permite que você aplique esses conceitos em um cenário do mundo real e ganhe confiança no gerenciamento de discos.
+## Resumo
 
-## Quiz Question
+Agora você sabe comparar categorias de sistemas de arquivos sem presumir semânticas idênticas.
 
-Qual é o tipo de sistema de arquivos mais comum e padrão para muitas distribuições Linux? (Por favor, responda em inglês, prestando atenção à sensibilidade a maiúsculas e minúsculas)
-
-## Quiz Answer
-
-ext4
+1. Relacione o VFS às operações comuns entre diferentes implementações.
+2. Trate o journaling como suporte à consistência após falhas, não como backup.
+3. Compare ext4, XFS e Btrfs pelas operações compatíveis e pela carga de trabalho.
+4. Diferencie sistemas de arquivos de disco local, rede, interoperabilidade e virtuais.
+5. Use ferramentas de montagem e dispositivos de bloco para responder a diferentes perguntas de inventário.

@@ -1,28 +1,27 @@
 ---
-index: 6
+lesson_id: "file-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 6
 title: "file コマンド"
+description: "名前や拡張子に頼らず、ファイルに含まれる可能性が高いデータの種類を識別する方法を学びます。"
 meta_title: "file コマンド - コマンドライン"
 meta_description: "Linuxのfileコマンドを使って、テキストファイル、画像、スクリプト、圧縮アーカイブ、バイナリ、MIMEタイプを識別する方法を例とともに学びましょう。"
 meta_keywords: "linux file コマンド, file コマンド, ファイルタイプ識別 linux, mime タイプ linux, テキストファイル, バイナリファイル, アーカイブファイル"
 ---
 
-## Lesson Content
+前のレッスンでは `touch` を使い、拡張子を付けずにファイルを作成しました。Linux のファイル名は、内容を表す必要がありません。`funny.gif` というファイルが、必ずしも GIF 画像とは限りません。
 
-前のレッスンでは `touch` について学びました。少し振り返ってみましょう。ファイル名が、Windowsなど他のオペレーティングシステムでよく見られるような標準的な命名規則に従っていなかったことに気づきましたか？通常、`banana.jpeg` というファイル名ならJPEG画像ファイルであることが期待されます。
-
-Linuxでは、ファイル名がファイルの内容を表す必要はありません。実際にはGIFでないのに `funny.gif` という名前のファイルを作成することもできます。
-
-ファイルがどのような種類のファイルかを調べるには、`file` コマンドを使います。ファイルの内容の説明を表示してくれます。
+`file` コマンドでファイルを調べ、種類の推定結果を報告できます。
 
 ```bash
 $ file banana.jpg
 banana.jpg: JPEG image data
 ```
 
-### なぜファイル拡張子だけでは不十分なのか
+## ファイル拡張子だけでは不十分な理由
 
-Linuxのツールは通常、ファイルの種類を判断するのにファイル拡張子を必要としません。シェルスクリプトは `backup` と名付けられることもありますし、テキストファイルは `README` と呼ばれることもありますし、画像ファイルが間違った拡張子を持つこともあります。`file` コマンドはファイルの内容やメタデータを調べて、より正確な推測を行います。
+Linux のツールは通常、ファイルの種類を判断するために拡張子を必要としません。シェルスクリプトを `backup`、テキストファイルを `README` と名付けることができ、画像に誤解を招く拡張子を付けることもできます。`file` コマンドは、ファイルシステムのメタデータや内容に含まれる認識可能なパターンなどを調べます。
 
 ```bash
 $ file README
@@ -31,9 +30,19 @@ $ file /bin/ls
 /bin/ls: ELF 64-bit LSB executable
 ```
 
-### 複数ファイルの確認
+結果は分類であり、保証ではありません。特殊、不完全、または損傷したファイルは、正確な種類ではなく `data` のような広い説明になる場合があります。
 
-複数のファイルを一度に調べることもできます：
+:::single-choice{#identify-misleading-extension}
+`report.jpg` というファイルに画像が入っているとは限りません。内容の種類を推定するコマンドはどれですか？
+
+::option[`ls report.jpg`]{#list-report explanation="`ls` は名前の存在を確認し、メタデータを表示できますが、ファイル内容の種類は分類しません。"}
+::option[`file report.jpg`]{#inspect-report .correct explanation="`file` コマンドはファイルを調べ、推定した種類を報告します。`.jpg` という接尾辞だけには依存しません。"}
+::option[`touch report.jpg`]{#touch-report explanation="`touch` はタイムスタンプを更新するか、存在しないファイルを作ります。内容の種類は識別しません。"}
+:::
+
+## 複数のファイルを確認する
+
+一度に複数のファイルを確認できます。
 
 ```bash
 $ file notes.txt image.png archive.tar.gz
@@ -42,57 +51,64 @@ image.png: PNG image data
 archive.tar.gz: gzip compressed data
 ```
 
-ワイルドカードも使えます：
+シェルのワイルドカードも渡せます。シェルが `file` の実行前に `*` を一致する名前へ展開します。
 
 ```bash
 $ file *
 ```
 
-### MIMEタイプの表示
+:::single-choice{#inspect-multiple-files}
+現在のディレクトリで、`*` に一致する隠しファイル以外のすべての名前を `file` に調べさせるコマンドはどれですか？
 
-`-i` オプションはMIMEスタイルの情報を表示します。これはウェブファイルやスクリプトを扱う際に便利です。
+::option[`file *`]{#file-wildcard .correct explanation="シェルが `*` を一致する隠しファイル以外の名前へ展開し、`file` が得られた各オペランドを調べます。"}
+::option[`file .`]{#file-current-directory explanation="1 つのドットは現在のディレクトリ自体を表します。その中の各項目ではなく、そのディレクトリを分類します。"}
+::option[`file -b`]{#file-brief-no-operand explanation="`-b` は出力形式を変えますが、このコマンドには調べるファイルが指定されていません。"}
+:::
+
+## MIME 情報を表示する
+
+`-i` オプションは、メディアタイプと、分かる場合は文字セットを含む MIME 形式の情報を表示します。別のプログラムが `text/html` のような値を求める場合に便利です。
 
 ```bash
 $ file -i index.html
 index.html: text/html; charset=us-ascii
 ```
 
-### よく使う file のオプション
+:::single-choice{#show-mime-information}
+`index.html` の MIME 形式の情報を報告するコマンドはどれですか？
 
-- `-i`: MIMEタイプ情報を表示する。
-- `-b`: 簡潔モード。出力にファイル名を含めない。
-- `-L`: シンボリックリンクをたどる。
-- `-z`: 圧縮ファイルの中身を調べようとする。
+::option[`file -b index.html`]{#brief-index explanation="`-b` は通常の説明からファイル名を省きますが、MIME 形式の出力は要求しません。"}
+::option[`file -i index.html`]{#mime-index .correct explanation="`-i` は `text/html` と文字セット情報のような MIME 形式の出力を要求します。"}
+::option[`file -L index.html`]{#follow-index explanation="`-L` はシンボリックリンクの扱いを制御し、MIME 出力形式は選びません。"}
+:::
 
-例えば：
+## 便利な `file` オプション
+
+- `-i`：MIME 形式の情報を表示する
+- `-b`：簡潔なモードを使い、出力からファイル名を省く
+- `-L`：シンボリックリンクをたどり、その対象を分類する
+- `-z`：圧縮ファイルの内容を調べるよう試みる
+
+たとえば次のようにします。
 
 ```bash
 $ file -b notes.txt
 ASCII text
 ```
 
-### よくある質問
+:::single-choice{#omit-filename-from-output}
+`notes.txt` を分類し、出力からファイル名を省くコマンドはどれですか？
 
-**file は拡張子だけを頼りにしていますか？** いいえ。主にファイルの内容や既知のシグネチャを調べています。
+::option[`file -i notes.txt`]{#mime-notes explanation="`-i` は MIME 形式の情報を要求し、通常は出力にファイル名も含みます。"}
+::option[`file -z notes.txt`]{#compressed-notes explanation="`-z` は可能な場合に圧縮データの中を調べ、簡潔な出力は有効にしません。"}
+::option[`file -b notes.txt`]{#brief-notes .correct explanation="`-b` で選ぶ簡潔なモードは、ファイル名の接頭辞なしで分類結果を表示します。"}
+:::
 
-**file が間違うことはありますか？** はい。特に珍しいファイルや破損したファイルの場合は推測に過ぎません。
+## まとめ
 
-**file が「data」と表示するのはなぜですか？** ファイルがより具体的な既知のタイプに一致しないか、認識可能なシグネチャを持たないバイナリデータである可能性があります。
+これで `file` を使い、ファイルに何が含まれる可能性が高いかを調べられるようになりました。
 
-## Exercise
-
-練習が上達の鍵です！ファイルの内容や属性を調べる理解を深めるための実践的なラボを紹介します：
-
-1. **[Linux ls コマンド：内容一覧表示](https://labex.io/ja/labs/linux-linux-ls-command-content-listing-219205)** - Linuxの `ls` コマンドを学び、ファイルやディレクトリの内容を効率的に一覧・分析する方法を習得します。これは `file` コマンドで内容を理解する前後によく使われます。
-2. **[Linux cat コマンド：ファイル連結](https://labex.io/ja/labs/linux-linux-cat-command-file-concatenating-210986)** - ファイルの種類を特定した後によく行う、テキストファイルの閲覧や操作を練習します。
-3. **[Linux more コマンド：ファイルスクロール](https://labex.io/ja/labs/linux-linux-more-command-file-scrolling-214299)** - 大きなテキストファイルをコマンドラインでナビゲート・探索するスキルを向上させ、ファイルタイプを特定して内容を調べる能力を強化します。
-
-これらのラボは、実際のシナリオでファイルの検査や内容の閲覧の概念を応用し、Linuxでのファイル管理に自信を持つ助けとなります。
-
-## Quiz Question
-
-ファイルの種類を調べるために使うコマンドは何ですか？
-
-## Quiz Answer
-
-file
+1. 拡張子を信用せず、ファイルを分類する。
+2. 1 つのコマンドで複数のパス名を調べる。
+3. MIME 形式の情報を要求する。
+4. リンク、圧縮データ、出力ラベルの扱いを調整する。

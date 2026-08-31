@@ -1,93 +1,108 @@
 ---
-index: 1
+lesson_id: "tracking-processes-top"
+course_id: "process-utilization"
 lang: "es"
+order_index: 1
 title: "Seguimiento de procesos: top"
-meta_title: "Seguimiento de procesos: top - Utilización de Procesos"
-meta_description: "Descubre la mejor forma de aprender Linux dominando el comando `top`. Esta guía explica cómo monitorear recursos del sistema, rastrear procesos y entender métricas como VIRT y RES. Una parte clave para entender cómo funciona Linux."
-meta_keywords: "comando top linux, monitorear procesos, utilización del sistema, cómo funciona linux, linux top virt res, mejor forma de aprender linux, rendimiento linux, gestión de procesos, formación linux gratis online con certificado"
+description: "Aprende a utilizar top para interpretar la carga del sistema, la CPU, la memoria y la actividad de cada proceso."
+meta_title: "Seguimiento de procesos: top - Utilización de procesos"
+meta_description: "Aprende a supervisar recursos del sistema y procesos con top, e interpreta métricas como carga, VIRT y RES."
+meta_keywords: "orden top Linux, supervisar procesos, utilización del sistema, rendimiento Linux, VIRT, RES"
 ---
 
-## Lesson Content
+`top` proporciona una vista actualizada repetidamente de la actividad del sistema y de los procesos en ejecución. Resulta útil para formular una hipótesis sobre el rendimiento, pero una sola muestra con mucha actividad no demuestra la causa de un problema. Compara varias actualizaciones y relaciónalas con registros y métricas específicas de la carga de trabajo.
 
-Comprender cómo leer y analizar la utilización de recursos es una habilidad crítica para cualquier usuario de Linux. Muchos consideran que dominar las herramientas de línea de comandos es la **mejor manera de aprender Linux** desde cero, ya que proporcionan una visión profunda de **cómo funciona Linux**. Esta lección presenta `top`, una potente utilidad para rastrear lo que sus procesos están haciendo en tiempo real.
+## Leer el resumen del sistema
 
-### Entendiendo el comando top
+Una pantalla habitual comienza con líneas de resumen seguidas de una tabla de procesos:
 
-Hemos mencionado brevemente `top` antes, pero ahora profundizaremos en los detalles de lo que muestra. El comando `top` le ofrece una vista dinámica y en tiempo real de los procesos y la utilización del sistema en su máquina.
-
-```plaintext
-top - 18:06:26 up 6 days,  4:07,  2 users,  load average: 0.92, 0.62, 0.59
-Tasks: 389 total,   1 running, 387 sleeping,   0 stopped,   1 zombie
-%Cpu(s):  1.8 us,  0.4 sy,  0.0 ni, 97.6 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
-KiB Mem:  32870888 total, 27467976 used,  5402912 free,   518808 buffers
-KiB Swap: 33480700 total,    39892 used, 33440808 free. 19454152 cached Mem
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
- 6675 patty    20   0 1731472 520960  30876 S   8.3  1.6 160:24.79 chrome
- 6926 patty    20   0  935888 163456  25576 S   4.3  0.5   5:28.13 chrome
+```text
+top - 18:06:26 up 6 days, 4:07, 2 users, load average: 0.92, 0.62, 0.59
+Tasks: 389 total, 1 running, 387 sleeping, 0 stopped, 1 zombie
+%Cpu(s): 1.8 us, 0.4 sy, 0.0 ni, 97.6 id, 0.1 wa, 0.0 hi, 0.0 si, 0.0 st
+MiB Mem : 32099.0 total, 5276.3 free, 7031.2 used, 19791.5 buff/cache
+MiB Swap: 32700.0 total, 32661.0 free, 39.0 used
 ```
 
-Repasemos lo que significa esta salida. No tiene que memorizarlo, pero puede usar esta lección como referencia.
+La primera línea contiene la hora actual, el tiempo de actividad, el número de usuarios con sesión iniciada y los promedios de carga de 1, 5 y 15 minutos. La línea de tareas cuenta los estados de los procesos. El promedio de carga no es un porcentaje directo de CPU; en Linux refleja las tareas preparadas para ejecutarse y las que están en espera ininterrumpible, así que interprétalo junto con el número de CPU, la actividad de E/S y la latencia.
 
-### Resumen del Sistema
+:::single-choice{#top-load-average-periods}
+¿Qué representan los tres valores de promedio de carga de `top`?
 
-Las primeras líneas proporcionan un resumen de alto nivel del estado del sistema.
+::option[La carga media durante 1, 5 y 15 minutos.]{#top-one-five-fifteen .correct explanation="Los valores resumen intervalos recientes de duración progresivamente mayor."}
+::option[El uso de CPU de los tres procesos con más actividad.]{#top-three-processes explanation="La CPU de cada proceso aparece en la tabla de procesos, no en estos tres valores de resumen."}
+::option[La memoria libre, la caché y el intercambio en megabytes.]{#top-three-memory-values explanation="La memoria y el intercambio tienen líneas de resumen independientes."}
+:::
 
-- **1ª línea**: Esta es la misma información que vería si ejecutara el comando `uptime`. Muestra la hora actual, el tiempo de actividad del sistema, el número de usuarios conectados y el promedio de carga del sistema durante los últimos 1, 5 y 15 minutos.
-- **2ª línea**: Un resumen de todas las tareas (procesos), categorizados como en ejecución, durmiendo, detenidos o zombis.
+## Interpretar el tiempo de CPU
 
-### Desglose del Uso de CPU
+Entre los campos habituales de CPU se encuentran:
 
-La tercera línea detalla la utilización de la CPU.
+- `us`: tiempo de ejecución en el espacio de usuario.
+- `sy`: tiempo de ejecución del kernel.
+- `ni`: tiempo en el espacio de usuario de tareas con niceness.
+- `id`: tiempo inactivo.
+- `wa`: tiempo inactivo mientras existe una solicitud de E/S pendiente.
+- `hi` y `si`: gestión de interrupciones de hardware y software.
+- `st`: tiempo de CPU virtual que el hipervisor dedica a otros huéspedes.
 
-- `us`: Porcentaje de tiempo de CPU dedicado a ejecutar procesos de usuario que no tienen nice.
-- `sy`: Porcentaje de tiempo de CPU dedicado a ejecutar el kernel y sus procesos.
-- `ni`: Porcentaje de tiempo de CPU dedicado a ejecutar procesos de usuario con nice (baja prioridad).
-- `id`: Porcentaje de tiempo de CPU que está inactivo.
-- `wa`: Porcentaje de tiempo de CPU dedicado a esperar a que se completen las operaciones de E/S. Un valor alto podría indicar un cuello de botella en el disco o la red.
-- `hi`: Porcentaje de tiempo de CPU dedicado a atender interrupciones de hardware.
-- `si`: Porcentaje de tiempo de CPU dedicado a atender interrupciones de software.
-- `st`: Tiempo de robo (Steal time). En entornos virtualizados, este es el porcentaje de tiempo de CPU que una CPU virtual espera a una CPU real, mientras el hipervisor está atendiendo a otro procesador virtual.
+Un valor alto de `wa` puede respaldar una hipótesis de espera de E/S, pero no identifica un dispositivo ni demuestra que el almacenamiento sea el único cuello de botella. Examina la latencia del dispositivo y el comportamiento de la aplicación antes de concluir.
 
-### Información de Memoria y Swap
+:::single-choice{#top-cpu-wa-meaning}
+¿Qué comunica el campo de CPU `wa`?
 
-La cuarta y quinta líneas muestran el uso del espacio de memoria y swap, respectivamente. Esto incluye las cantidades total, utilizada y libre.
+::option[El tiempo dedicado a ejecutar código ordinario del usuario.]{#top-wa-user explanation="La ejecución en el espacio de usuario se comunica mediante `us`."}
+::option[Las páginas de memoria escritas en el intercambio desde el arranque.]{#top-wa-swap explanation="La actividad de intercambio no es una categoría de tiempo de CPU."}
+::option[El tiempo de CPU inactivo mientras existe una solicitud de E/S pendiente.]{#top-wa-io .correct explanation="El campo es tiempo de espera de E/S y necesita pruebas complementarias del dispositivo para diagnosticar."}
+:::
 
-### La Lista de Procesos
+## Leer la tabla de procesos
 
-El cuerpo principal de `top` es una lista de los procesos que consumen más recursos.
+Entre las columnas importantes suelen encontrarse:
 
-- `PID`: El Identificador de Proceso único.
-- `USER`: El usuario propietario del proceso.
-- `PR`: La prioridad de planificación del proceso.
-- `NI`: El valor "nice", que afecta su prioridad.
-- `VIRT`: Memoria Virtual utilizada por el proceso. Es la cantidad total de memoria a la que el proceso puede acceder.
-- `RES`: Memoria Residente utilizada por el proceso. Es la memoria física no paginada que está utilizando una tarea. Comprender la diferencia entre **linux top virt res** es clave para el análisis de memoria.
-- `SHR`: Memoria Compartida utilizada por el proceso.
-- `S`: El estado del proceso: `S`=dormido (sleep), `R`=ejecutándose (running), `Z`=zombi (zombie), `D`=sueño ininterrumpible (uninterruptible sleep), `T`=detenido (stopped).
-- `%CPU`: El porcentaje de tiempo de CPU utilizado por este proceso desde la última actualización.
-- `%MEM`: El porcentaje de RAM física utilizada por este proceso.
-- `TIME+`: El tiempo total de CPU que el proceso ha utilizado desde que comenzó.
-- `COMMAND`: El nombre del comando o la línea de comandos que inició el proceso.
+- `PID`, `USER` y `COMMAND`: identidad y propiedad.
+- `S`: estado, como en ejecución (`R`), espera (`S`), espera ininterrumpible (`D`), detenido (`T`) o zombi (`Z`).
+- `%CPU` y `%MEM`: actividad de CPU muestreada y proporción de memoria física.
+- `TIME+`: tiempo de CPU acumulado.
+- `VIRT`: espacio de direcciones virtual total asociado a la tarea.
+- `RES`: memoria física residente, no intercambiada, atribuida actualmente a la tarea.
+- `SHR`: memoria residente que puede compartirse con otros procesos.
 
-You can also monitor a specific process by its ID, which is useful for focused troubleshooting:
+`VIRT` no es la cantidad de RAM física consumida. Puede incluir archivos mapeados, bibliotecas compartidas, espacio de direcciones reservado y páginas intercambiadas. Incluso `RES` debe interpretarse con cuidado porque las páginas compartidas complican la atribución.
+
+:::single-choice{#top-res-versus-virt}
+¿Qué campo se aproxima más a la memoria física actualmente residente de un proceso?
+
+::option[`TIME+`]{#top-time-field explanation="Este campo acumula tiempo de CPU, no memoria."}
+::option[`VIRT`]{#top-virt-field explanation="El tamaño virtual incluye espacio de direcciones que no tiene por qué residir en RAM."}
+::option[`RES`]{#top-res-field .correct explanation="El tamaño residente refleja páginas físicas residentes actualmente para el proceso, con las salvedades de la memoria compartida."}
+:::
+
+## Centrar y ordenar la vista
+
+Supervisa directamente PID conocidos:
 
 ```bash
-top -p 1
+$ top -p 1234,5678
 ```
 
-## Exercise
+Dentro de `top`, pulsa `P` para ordenar por CPU, `M` para ordenar por memoria, `1` para alternar las líneas de cada CPU y `q` para salir en las implementaciones habituales de procps-ng. Pulsa `h` para consultar la ayuda interactiva local, porque las teclas y los campos pueden variar según la implementación.
 
-La práctica es esencial para el dominio. Estos laboratorios prácticos son algunos de los **mejores recursos para aprender Linux** sobre gestión de procesos, proporcionando un entorno práctico para aplicar lo aprendido.
+Registra el PID, la orden, la marca de tiempo y varias muestras antes de actuar. Que un proceso alcance brevemente la primera posición puede ser normal, y terminarlo puede provocar pérdida de datos o una interrupción del servicio.
 
-1. **[Administrar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - Practique la interacción, inspección, monitoreo y terminación de procesos en un entorno Linux real.
-2. **[Comando top de Linux: Monitoreo del Sistema en Tiempo Real](https://labex.io/es/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Aprenda a usar el comando `top` para monitorear el uso de CPU, la memoria y los procesos en ejecución en tiempo real.
-3. **[Comando free de Linux: Monitoreo de la Memoria del Sistema](https://labex.io/es/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Aprenda a usar el comando `free` para monitorear y analizar el uso de la memoria del sistema.
+:::single-choice{#top-monitor-known-pid}
+¿Qué invocación limita la pantalla al PID 1234?
 
-## Quiz Question
+::option[`top -u 1234`]{#top-user-filter explanation="La forma `-u` filtra por usuario en vez de tratar el valor como un PID."}
+::option[`top -d 1234`]{#top-delay-filter explanation="La opción `-d` controla el intervalo de actualización en las implementaciones habituales."}
+::option[`top -p 1234`]{#top-pid-filter .correct explanation="La opción `-p` selecciona uno o varios identificadores de proceso para supervisarlos."}
+:::
 
-¿Qué comando muestra la misma salida que la primera línea en `top`? Por favor, responda usando solo el nombre del comando en inglés en minúsculas.
+## Resumen
 
-## Quiz Answer
+Ahora puedes utilizar `top` para formular y comprobar una hipótesis sobre el rendimiento del sistema.
 
-uptime
+1. Interpreta los promedios de carga como carga en intervalos de tiempo, no como porcentajes de CPU.
+2. Compara las categorías de CPU entre varias muestras.
+3. Distingue el espacio de direcciones virtual de la memoria residente.
+4. Céntrate en PID conocidos y verifica las pruebas antes de actuar.

@@ -1,15 +1,16 @@
 ---
-index: 12
+lesson_id: "make-directory-mkdir-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 12
 title: "mkdir (Criar Diretório)"
+description: "Aprenda a criar diretórios únicos, múltiplos e aninhados com as opções de mkdir."
 meta_title: "mkdir (Criar Diretório) - Linha de Comando"
-meta_description: "Aprenda o comando mkdir do Linux com exemplos para criar um diretório, múltiplos diretórios, diretórios aninhados e definir permissões."
-meta_keywords: "comando mkdir, linux mkdir, criar diretório linux, fazer diretório linux, mkdir -p, mkdir -m, criar pasta linux"
+meta_description: "Aprenda o comando mkdir do Linux com exemplos para criar um ou vários diretórios, diretórios pais aninhados e definir permissões."
+meta_keywords: "comando mkdir, mkdir Linux, criar diretório Linux, criar pasta Linux, mkdir -p, mkdir -m, diretórios aninhados"
 ---
 
-## Lesson Content
-
-À medida que você trabalha com arquivos, precisará organizá-los em diretórios. A ferramenta principal para essa tarefa é o comando `mkdir`, que significa criar diretório.
+O comando `mkdir`, abreviação de make directory, cria diretórios para organizar arquivos e outros diretórios.
 
 A sintaxe básica é:
 
@@ -17,49 +18,69 @@ A sintaxe básica é:
 mkdir [OPTIONS] DIRECTORY...
 ```
 
-### Criando um Diretório Único
+## Criação de um Diretório
 
-O uso mais básico do `mkdir` é criar um único diretório novo. Se o diretório ainda não existir, este comando o cria no seu local atual.
+Forneça um caminho para criar um diretório. Este exemplo cria `documents` no diretório de trabalho atual:
 
 ```bash
 $ mkdir documents
 ```
 
-### Criando Múltiplos Diretórios
+Se já existir uma entrada chamada `documents`, `mkdir` informará um erro em vez de substituí-la. Use `ls -ld documents` para inspecionar a entrada existente.
 
-Você também pode criar vários diretórios de uma vez listando seus nomes, separados por espaços. Esta é uma forma eficiente de configurar várias pastas rapidamente.
+:::single-choice{#create-one-directory}
+Qual comando cria um diretório chamado `documents` no diretório de trabalho atual?
+
+::option[`mkdir documents`]{#mkdir-documents .correct explanation="`mkdir` cria o diretório solicitado no caminho relativo `documents`."}
+::option[`touch documents`]{#touch-documents explanation="`touch` cria um arquivo comum vazio quando o caminho está ausente. Ele não cria um diretório."}
+::option[`cd documents`]{#cd-documents explanation="`cd` tenta entrar em um diretório existente. Ele não cria um diretório ausente."}
+:::
+
+## Criação de Vários Diretórios
+
+Liste vários caminhos para criar vários diretórios em um único comando:
 
 ```bash
 $ mkdir books paintings
 ```
 
-### Criando Diretórios Aninhados
+:::single-choice{#create-separate-directories}
+Qual comando cria dois diretórios irmãos chamados `books` e `paintings`?
 
-Às vezes, você precisa criar um diretório e seus diretórios pai simultaneamente. A opção `-p` é perfeita para isso. Ela evita erros caso os diretórios pai não existam.
+::option[`mkdir books/paintings`]{#nested-paintings explanation="Esse caminho descreve `paintings` dentro de `books`, não dois diretórios irmãos. Ele também falha se `books` estiver ausente."}
+::option[`mkdir "books paintings"`]{#spaced-directory explanation="As aspas combinam as palavras em um único caminho; portanto, esse comando solicita um só diretório cujo nome contém um espaço."}
+::option[`mkdir books paintings`]{#two-directories .correct explanation="Operandos separados instruem `mkdir` a criar `books` e `paintings` como dois diretórios."}
+:::
+
+## Criação de Diretórios Pais Ausentes
+
+Sem uma opção, `mkdir books/hemingway/favorites` falha quando um diretório intermediário está ausente. Acrescente `-p` para criar os diretórios pais que faltam ao longo do caminho:
 
 ```bash
 $ mkdir -p books/hemingway/favorites
 ```
 
-Este único comando cria `books`, `hemingway` e `favorites` se eles ainda não existirem.
+Esse comando cria as partes ausentes do caminho. Ele também não informa um erro apenas porque o diretório final já existe, embora outros erros, como permissões insuficientes, ainda possam ocorrer.
 
-### Definindo Permissões do Diretório
+:::single-choice{#create-nested-path}
+Nenhuma parte de `projects/app/src` existe. Qual comando cria o caminho completo de diretórios?
 
-Use `-m` para definir permissões ao criar um diretório.
+::option[`mkdir -p projects/app/src`]{#mkdir-parents .correct explanation="A opção `-p` cria cada diretório pai ausente antes de criar o diretório final."}
+::option[`mkdir projects/app/src`]{#mkdir-no-parents explanation="Sem `-p`, `mkdir` não consegue criar `src` quando os diretórios intermediários não existem."}
+::option[`mkdir -m projects/app/src`]{#mkdir-mode-missing explanation="A opção `-m` exige um argumento de modo e não solicita a criação dos diretórios pais ausentes."}
+:::
+
+## Definição do Modo Inicial
+
+Use `-m MODE` para especificar as permissões de um novo diretório:
 
 ```bash
 $ mkdir -m 755 public
 ```
 
-Você aprenderá mais sobre permissões depois, mas este exemplo cria um diretório que o proprietário pode escrever e os outros podem ler e acessar.
+Você estudará os modos de permissão mais adiante. Neste exemplo, o modo `755` concede ao proprietário permissões de leitura, gravação e pesquisa, enquanto o grupo e os demais recebem permissões de leitura e pesquisa.
 
-### Opções Comuns do mkdir
-
-- `-p`: Cria diretórios pai conforme necessário.
-- `-m MODE`: Define permissões para o novo diretório.
-- `-v`: Exibe uma mensagem para cada diretório criado.
-
-Exemplo:
+Acrescente `-v` para mostrar uma mensagem para cada diretório criado:
 
 ```bash
 $ mkdir -pv projects/app/src
@@ -68,27 +89,24 @@ mkdir: created directory 'projects/app'
 mkdir: created directory 'projects/app/src'
 ```
 
-### Perguntas Comuns
+:::single-choice{#set-directory-mode}
+Qual comando cria `public` com o modo de permissão `755`?
 
-**Por que o mkdir diz "File exists"?** Um arquivo ou diretório com esse nome já existe. Use `ls` para inspecioná-lo.
+::option[`mkdir -p 755 public`]{#parents-755 explanation="A opção `-p` trata as palavras restantes como caminhos de diretórios; portanto, esse comando não define o modo de permissão `755`."}
+::option[`mkdir -v 755 public`]{#verbose-755 explanation="A opção `-v` mostra mensagens de criação. Ela não interpreta `755` como um modo de permissão."}
+::option[`mkdir -m 755 public`]{#mode-public .correct explanation="A opção `-m` recebe o modo solicitado, e `public` é o caminho do diretório que será criado."}
+:::
 
-**Como criar diretórios aninhados?** Use `mkdir -p parent/child/grandchild`.
+Para praticar a criação e a organização de diretórios, experimente estes laboratórios:
 
-**O mkdir pode criar arquivos?** Não. Use `touch` para criar arquivos vazios.
+1. **[Comando mkdir do Linux: Criação de Diretórios](https://labex.io/labs/linux-linux-mkdir-command-directory-creating-209739)** — Aprenda a usar `mkdir` para criar diretórios, definir permissões e organizar o sistema de arquivos. O laboratório aborda o uso básico e avançado, incluindo diretórios aninhados.
+2. **[Configuração da Estrutura de um Novo Projeto](https://labex.io/labs/linux-setting-up-a-new-project-structure-387859)** — Pratique o gerenciamento de diretórios criando uma estrutura de projeto específica e navegando por ela com comandos essenciais como `mkdir` e `cd`.
 
-## Exercise
+## Resumo
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar seu entendimento sobre criação e gerenciamento de diretórios:
+Agora você sabe criar estruturas de diretórios com nomes, diretórios pais e modos escolhidos conscientemente.
 
-1. **[Comando Linux mkdir: Criando Diretórios](https://labex.io/pt/labs/linux-linux-mkdir-command-directory-creating-209739)** - Aprenda a usar o comando `mkdir` no Linux para criar diretórios, definir permissões e organizar seu sistema de arquivos. Este laboratório cobre uso básico e avançado, incluindo criação de diretórios aninhados.
-2. **[Configurando uma Nova Estrutura de Projeto](https://labex.io/pt/labs/linux-setting-up-a-new-project-structure-387859)** - Pratique suas habilidades de gerenciamento de diretórios no Linux criando uma estrutura específica de projeto e navegando por ela usando comandos essenciais como `mkdir` e `cd`.
-
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e ganhar confiança na criação e organização de diretórios no Linux.
-
-## Quiz Question
-
-Qual comando é usado para criar um diretório? Por favor, responda usando apenas o comando em inglês minúsculo.
-
-## Quiz Answer
-
-mkdir
+1. Crie um ou mais diretórios em um único comando.
+2. Reconheça um erro causado por um caminho já existente.
+3. Crie diretórios pais ausentes com `-p`.
+4. Defina o modo de um novo diretório com `-m`.

@@ -1,50 +1,95 @@
 ---
-index: 2
+lesson_id: "controlling-terminal"
+course_id: "processes"
 lang: "es"
-title: "Controlando la Terminal"
-meta_title: "Controlando la Terminal - Procesos"
-meta_description: "Explore el concepto de terminal controladora en Linux. Aprenda qué es una TTY, la diferencia entre TTY y PTS, y cómo usar la salida de `ps tty` para identificar procesos sin terminal controladora, como los daemons."
-meta_keywords: "terminal controladora, ps tty, qué es tty, cómo usar ps, TTY, PTS, terminal Linux, proceso daemon, procesos Linux"
+order_index: 2
+title: "Terminal de control"
+description: "Aprende cómo las terminales de control conectan las sesiones con la entrada interactiva, las señales y el control de trabajos del shell."
+meta_title: "Terminal de control - Procesos"
+meta_description: "Descubre qué es una terminal de control en Linux, la diferencia entre TTY y PTS y cómo interpretar la columna TTY de ps."
+meta_keywords: "terminal de control, ps tty, qué es tty, TTY, PTS, terminal Linux, proceso daemon, procesos Linux"
 ---
 
-## Lesson Content
+Una sesión interactiva de inicio puede tener una terminal de control: un dispositivo de terminal asociado a la sesión y utilizado por el kernel para las señales generadas por la terminal y el control de trabajos. El campo `TTY` de los listados de procesos ayuda a identificar esa asociación.
 
-Cuando inspeccionas los procesos en ejecución, notarás un campo `TTY` en la salida del comando `ps`. Este campo es importante ya que indica la **terminal de control** que ejecutó el comando. Comprender este concepto es clave para gestionar procesos de manera efectiva.
+## Dispositivos de terminal y pseudoterminal
 
-### ¿Qué es una TTY?
+El nombre TTY procede de los teletipos históricos. En Linux moderno, las interfaces de terminal son abstracciones de dispositivos y no necesariamente equipos físicos.
 
-TTY es la abreviatura de "Teletype" (Teleimpresora), que históricamente era un dispositivo físico para interactuar con una computadora. En los sistemas Linux modernos, una TTY se refiere a la terminal que proporciona la entrada y salida estándar para un proceso.
+Una consola virtual del sistema puede aparecer con un nombre como `tty1`. Las combinaciones de teclas del escritorio para cambiar de consola varían según la distribución y no deben darse por supuestas. Un emulador de terminal, un inicio de sesión remoto o un multiplexor suele usar un par de pseudoterminales, cuyo lado interactivo aparece con un nombre como `pts/3`.
 
-Hay dos tipos principales de terminales que encontrarás: dispositivos de terminal y dispositivos de terminal virtual (pseudo-terminales).
+Muestra la terminal conectada a la entrada estándar de la orden actual con:
 
-### Dispositivos de Terminal vs. Pseudo-terminales
+```bash
+$ tty
+/dev/pts/3
+```
 
-Un dispositivo de terminal verdadero es una consola nativa que te permite escribir comandos y ver la salida directamente. Puedes experimentarlo cambiando a una consola virtual. En muchos sistemas, puedes presionar `Ctrl-Alt-F1` para acceder a TTY1. Verás un indicador de inicio de sesión en un entorno puramente basado en texto, sin interfaz gráfica. Este es un dispositivo de terminal clásico. Para volver a tu sesión gráfica, normalmente puedes usar `Ctrl-Alt-F7` (la combinación exacta de teclas puede variar).
+Este resultado está relacionado con el concepto más amplio de terminal de control, pero no es idéntico. Un proceso puede redirigir su entrada o salida estándar y seguir perteneciendo a una sesión con terminal de control.
 
-Un pseudo-terminal (PTS), por otro lado, es lo que usas con más frecuencia. Cuando abres una aplicación de terminal dentro de tu entorno de escritorio gráfico, estás usando un PTS. Estos emulan una terminal dentro de una ventana. Si revisas la salida de `ps tty` para tu shell, verás su TTY listada como `pts/*`.
+:::single-choice{#controlling-terminal-pts-meaning}
+¿Qué suele identificar un nombre como `pts/3`?
 
-### El Rol de la Terminal de Control
+::option[Un ID de proceso asignado al tercer shell.]{#controlling-terminal-pts-pid explanation="Un PID es un metadato numérico de proceso y no se expresa como un nombre de dispositivo `pts/N`."}
+::option[Un dispositivo pseudoterminal usado por una sesión interactiva.]{#controlling-terminal-pts-device .correct explanation="Las entradas de `/dev/pts` son dispositivos esclavos de pseudoterminal usados habitualmente por emuladores y sesiones remotas."}
+::option[Una partición del sistema de archivos que contiene programas de terminal.]{#controlling-terminal-pts-partition explanation="El nombre identifica una interfaz de dispositivo de terminal, no una partición de almacenamiento."}
+:::
 
-La mayoría de los procesos están vinculados a una **terminal de control**. Esto significa que el ciclo de vida del proceso está ligado a la sesión de terminal que lo inició. Por ejemplo, si ejecutas un programa como `find` en tu ventana de terminal y luego cierras esa ventana, el proceso `find` también será terminado.
+## Sesiones, grupos de procesos y control de trabajos
 
-### Procesos Sin Terminal de Control
+Una terminal de control pertenece a una sesión, no únicamente a la orden que abrió una ventana. Dentro de esa sesión, la terminal mantiene un grupo de procesos en primer plano. El shell coloca una tubería en primer plano dentro de ese grupo para que pueda leer la entrada y recibir señales generadas por la terminal.
 
-Algunos procesos, conocidos como daemons (servicios en segundo plano), están diseñados para ejecutarse en segundo plano y gestionar servicios del sistema. Estos procesos a menudo se inician cuando el sistema arranca y solo se detienen cuando se apaga.
+Por ejemplo, al pulsar `Ctrl-C`, el controlador de la terminal suele enviar `SIGINT` al grupo de procesos en primer plano. Un grupo en segundo plano que intenta leer de la terminal puede recibir `SIGTTIN`. Estas reglas permiten al shell coordinar trabajos en primer y segundo plano.
 
-Para evitar que sean terminados accidentalmente, los daemons no están adjuntos a una **terminal de control**. Cuando aprendes **cómo usar ps** para examinar estos procesos, verás un signo de interrogación (`?`) en la columna TTY. Este `?` significa que el proceso no tiene una terminal de control y se está ejecutando independientemente de cualquier sesión de usuario.
+:::single-choice{#controlling-terminal-ctrl-c-target}
+¿A qué procesos dirige normalmente una terminal la señal generada por `Ctrl-C`?
 
-## Exercise
+::option[A todos los procesos propiedad del usuario actual.]{#controlling-terminal-ctrl-c-user explanation="Las señales generadas por la terminal se limitan al grupo de procesos en primer plano, no a todos los procesos del usuario."}
+::option[Únicamente al shell de inicio, sin importar el trabajo en primer plano.]{#controlling-terminal-ctrl-c-shell explanation="Mientras otro trabajo está en primer plano, el grupo de ese trabajo es el destino normal de la señal."}
+::option[Al grupo de procesos en primer plano de la terminal.]{#controlling-terminal-ctrl-c-foreground .correct explanation="El controlador de terminal envía `SIGINT` al grupo de procesos que está actualmente en primer plano."}
+:::
 
-¡La práctica hace al maestro! Aquí tienes un laboratorio práctico para reforzar tu comprensión de los procesos de Linux y su interacción con las terminales:
+## Leer la columna `TTY`
 
-1. **[Gestionar y Monitorear Procesos de Linux](https://labex.io/es/labs/comptia-manage-and-monitor-linux-processes-590864)** - En este laboratorio, aprenderás habilidades esenciales para gestionar y monitorear procesos en un sistema Linux. Explorarás cómo interactuar con procesos en primer plano y segundo plano, inspeccionarlos con `ps`, monitorear recursos con `top`, ajustar la prioridad con `renice` y terminarlos con `kill`.
+Solicita campos de proceso concretos cuando quieras una vista estable:
 
-Este laboratorio te ayudará a aplicar los conceptos de gestión de procesos en escenarios reales y a ganar confianza al comprender cómo se ejecutan e interactúan los procesos con el sistema.
+```bash
+$ ps -o pid,tty,stat,cmd
+```
 
-## Quiz Question
+Un nombre de terminal como `pts/3` identifica la terminal de control registrada para ese proceso. Un signo de interrogación (`?`) suele significar que el proceso no tiene terminal de control.
 
-¿Qué valor se asigna a un proceso que no tiene una terminal de control?
+Muchos procesos de servicios no tienen terminal de control porque un gestor de servicios los inicia independientemente de una sesión interactiva. Sin embargo, la ausencia de TTY no demuestra por sí sola que un proceso sea un daemon, y un trabajo del shell en segundo plano puede conservar una terminal de control.
 
-## Quiz Answer
+:::single-choice{#controlling-terminal-question-mark}
+¿Qué significa normalmente `?` en la columna `TTY` de `ps`?
 
-?
+::option[El proceso no tiene terminal de control.]{#controlling-terminal-no-tty .correct explanation="El signo de interrogación es la representación habitual cuando no hay una terminal de control asociada al proceso."}
+::option[No se pudo leer la terminal del proceso porque está ocupada.]{#controlling-terminal-busy-tty explanation="El marcador representa la ausencia de terminal de control, no una contención temporal del dispositivo."}
+::option[El proceso siempre es un hilo del kernel.]{#controlling-terminal-kernel-only explanation="Los hilos del kernel suelen carecer de terminal, pero también muchos servicios del espacio de usuario."}
+:::
+
+## Cierre de la terminal y hangups
+
+Cuando desaparece una conexión de terminal, el kernel o el software de terminal y sesión puede enviar `SIGHUP` a los procesos asociados. Un proceso puede terminar, capturar la señal, ignorarla o haberse configurado previamente para sobrevivir. Funciones del shell como `disown`, utilidades como `nohup`, multiplexores y gestores de servicios afectan al ciclo de vida.
+
+Por tanto, cerrar una terminal no garantiza que todas las órdenes iniciadas desde ella terminen. Cuando importe la persistencia, consulta la sesión, el tratamiento de señales, las redirecciones y el supervisor del proceso.
+
+:::single-choice{#controlling-terminal-close-effect}
+¿Por qué es incorrecto afirmar que cerrar una terminal siempre termina todos los procesos iniciados en ella?
+
+::option[Las terminales de Linux nunca generan señales al cerrarse.]{#controlling-terminal-never-signals explanation="Las señales de hangup son un comportamiento real de terminales y sesiones, aunque no garanticen la terminación."}
+::option[Únicamente los procesos con PID numéricos pueden recibir hangups.]{#controlling-terminal-pid-hangup explanation="Todos los procesos normales tienen PID numéricos; este hecho no determina si sobreviven al cierre de una terminal."}
+::option[Los procesos pueden tratar o evitar el hangup y estar gestionados de forma independiente.]{#controlling-terminal-hangup-handling .correct explanation="La disposición de señales, el shell, los multiplexores y los supervisores pueden permitir que un proceso continúe después del cierre."}
+:::
+
+El laboratorio [Gestionar y supervisar procesos de Linux](https://labex.io/labs/comptia-manage-and-monitor-linux-processes-590864) ofrece un entorno seguro para comparar trabajos en primer y segundo plano y sus campos `TTY`.
+
+## Resumen
+
+Ahora puedes relacionar una terminal de control con la gestión de procesos interactivos.
+
+1. Distingue terminales virtuales de pseudoterminales.
+2. Relaciona las señales de terminal con el grupo de procesos en primer plano.
+3. Interpreta los nombres de terminal y `?` en la salida de `ps`.
+4. Trata el cierre de la terminal como una señalización, no como una terminación garantizada.

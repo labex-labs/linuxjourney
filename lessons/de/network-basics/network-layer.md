@@ -1,42 +1,78 @@
 ---
-index: 7
+lesson_id: "network-layer"
+course_id: "network-basics"
 lang: "de"
+order_index: 7
 title: "Netzwerkschicht"
-meta_title: "Netzwerkschicht - Netzwerk Grundlagen"
-meta_description: "Erkunden Sie die Netzwerkschicht im Linux-Networking. Dieser Leitfaden erklärt, wie IP-Adressen und Subnetze das Paket-Routing für die Datenübertragung zwischen Netzwerken ermöglichen."
-meta_keywords: "Netzwerkschicht, IP-Adressen, Subnetze, Linux-Networking, Paket-Routing, Datenübertragung, OSI-Modell, IP-Paket"
+description: "Lerne, wie IP-Adressierung, Präfixe, Routingtabellen und Hop-Limits Pakete zwischen Netzwerken transportieren."
+meta_title: "Netzwerkschicht – Netzwerkgrundlagen"
+meta_description: "Erkunde die Netzwerkschicht der Linux-Vernetzung. Diese Anleitung erklärt, wie IP-Adressen und Subnetze das Routing von Paketen zur Datenübertragung über Netzwerke ermöglichen."
+meta_keywords: "Netzwerkschicht, IP-Adressen, Subnetze, Linux-Vernetzung, Paketrouting, Datenübertragung, OSI-Modell, IP-Paket"
 ---
 
-## Lesson Content
+Die Netzwerkschicht stellt logische Adressierung und Paketzustellung nach bestem Bemühen über verbundene Netzwerke hinweg bereit. In der Internetprotokollfamilie transportieren IPv4 und IPv6 Pakete, während Router den nächsten Hop zu jedem Ziel auswählen.
 
-Die Vermittlungsschicht (Network Layer) ist für die logische Adressierung und das Routing von Datenpaketen von einem Quellhost zu einem Zielhost verantwortlich. Obwohl ein Paket manchmal innerhalb eines einzigen lokalen Netzwerks reist, ist das Internet eine riesige Sammlung miteinander verbundener Netzwerke.
+## IP-Pakete
 
-### Die Rolle des Paketroutings
+Ein IP-Header enthält Quell- und Zieladressen sowie für Weiterleitung und Protokollverarbeitung erforderliche Felder. Die Nutzlast enthält gewöhnlich ein TCP-Segment, UDP-Datagramm oder eine ICMP-Nachricht. IP garantiert weder Ankunft noch Reihenfolge oder das Ausbleiben von Duplikaten.
 
-Die Hauptfunktion der Vermittlungsschicht besteht darin, den optimalen Pfad für die Datenübertragung zu bestimmen. Dieser Prozess, bekannt als **Paketrouting**, stellt sicher, dass Informationen effizient ihr beabsichtigtes Ziel erreichen, selbst wenn sie mehrere Netzwerk-Grenzen überschreiten müssen. Im Bereich **Linux-Netzwerke** ist diese Schicht für die gesamte Internetkommunikation von grundlegender Bedeutung.
+:::single-choice{#network-layer-ip-service}
+Welchen Zustelldienst bietet IP für sich allein?
 
-### Verstehen von Subnetzen und IP-Adressen
+::option[Garantierte Bestätigungen von Anwendungstransaktionen.]{#network-layer-guaranteed-commit explanation="Ein IP-Zustellergebnis kann keine dauerhafte Speicherung durch eine Anwendung beweisen."}
+::option[Paketzustellung nach bestem Bemühen.]{#network-layer-best-effort .correct explanation="Höhere Schichten oder Anwendungen ergänzen erforderliche Wiederherstellung oder Reihenfolge."}
+::option[Dauerhafte Reservierung eines physischen Kabels.]{#network-layer-cable-reservation explanation="Paketweiterleitung reserviert keinen eigenen physischen Pfad."}
+:::
 
-Die kleineren Netzwerke, aus denen das Internet besteht, werden als **Subnetze** bezeichnet. Alle Subnetze sind miteinander verbunden, was es einem Gerät in einem Netzwerk ermöglicht, mit einem Gerät in einem anderen zu kommunizieren, beispielsweise beim Zugriff auf eine Website wie `google.com`. Die Regeln für die Übertragung zwischen diesen verschiedenen Subnetzen werden durch **IP-Adressen** definiert. Eine IP-Adresse bietet eine eindeutige Kennung für ein Gerät in einem Netzwerk, ähnlich einer Straßenadresse für ein Haus.
+## Präfixe und Subnetze
 
-### Kapselung auf der Vermittlungsschicht
+Eine Adresse und Präfixlänge legen fest, welche führenden Bits ein Netzwerkpräfix bilden. Hosts verwenden diese Informationen und ihre Routen, um zu entscheiden, ob ein Ziel direkt erreichbar ist oder einen Next-Hop-Router benötigt. Ein Subnetz ist ein Adressbereich unter einem Präfix und einer Richtlinie; Subnetze sind nicht automatisch mit jedem anderen Subnetz verbunden.
 
-Auf der Vermittlungsschicht wird das von der Transportschicht empfangene Datensegment in eine neue Einheit, das IP-Paket, gekapselt. Während dieses Prozesses wird dem Paket ein Header hinzugefügt, der die Quell-IP-Adresse (woher das Paket stammt) und die Ziel-IP-Adresse (wohin es geht) enthält. Mit diesen entscheidenden Adressinformationen ist das Paket nun für seine Reise gerüstet und wird zur Datenbankschicht (Data Link Layer) weitergegeben, um für die physische Übertragung vorbereitet zu werden.
+:::single-choice{#network-layer-prefix-decision}
+Was hilft einem Host zu entscheiden, ob ein IPv4-Ziel direkt erreichbar ist?
 
-## Exercise
+::option[Das Anwendungspasswort des Ziels.]{#network-layer-password explanation="Authentifizierungsdaten definieren keine Netzwerkpräfixe."}
+::option[Die Farbe des Ethernet-Kabels.]{#network-layer-cable-color explanation="Das Aussehen eines Kabels besitzt keine Adressierungssemantik."}
+::option[Seine konfigurierten Präfixe und die Routingtabelle.]{#network-layer-prefix-routes .correct explanation="Der Host vergleicht Ziele mit Routen einschließlich direkt verbundener Präfixe."}
+:::
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis der Vermittlungsschicht, der IP-Adressierung und der Subnetze zu festigen:
+## Routingentscheidungen
 
-1. **[Simulieren der Konnektivität der Vermittlungsschicht in Linux](https://labex.io/de/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** – Üben Sie die Zuweisung statischer IP-Adressen und testen Sie die Konnektivität innerhalb und über verschiedene Subnetze hinweg mithilfe von Docker-Containern.
-2. **[Durchführen von IP-Subnetting und binärer Konvertierung im Linux-Terminal](https://labex.io/de/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** – Meistern Sie IP-Subnetting und binäre Konvertierung, einschließlich der Berechnung nutzbarer Hosts und Subnetze, direkt im Linux-Terminal.
-3. **[Erkunden von IP-Adress-Typen und Erreichbarkeit in Linux](https://labex.io/de/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** – Erkunden Sie verschiedene IP-Adress-Typen (privat, öffentlich, Multicast) und testen Sie die Netzwerkerreichbarkeit mithilfe von `ping` und `ip a`.
+Linux prüft Routingrichtlinien und -tabellen, um eine ausgehende Schnittstelle, einen nächsten Hop und bevorzugte Quellinformationen auszuwählen. Unter ansonsten geeigneten Routen wird normalerweise das spezifischste passende Präfix bevorzugt. Untersuche die tatsächliche Entscheidung für ein Ziel mit:
 
-Diese Labs helfen Ihnen, die Konzepte der IP-Adressierung und des Subnetting in realen Szenarien anzuwenden und Vertrauen in die Grundlagen der Vermittlungsschicht aufzubauen.
+```bash
+$ ip route get 203.0.113.10
+```
 
-## Quiz Question
+Dies ist eine lokale Routensuche und kein Beweis, dass jeder nachgelagerte Router eine funktionierende Route besitzt oder das Ziel Datenverkehr annimmt.
 
-Wie werden die kleineren Netzwerke genannt, aus denen das Internet besteht? Bitte antworten Sie mit einem einzigen, kleingeschriebenen englischen Wort.
+:::single-choice{#network-layer-longest-prefix}
+Welche Route gewinnt normalerweise unter geeigneten Routen zum selben Ziel?
 
-## Quiz Answer
+::option[Die Route, deren Schnittstellenname alphabetisch zuerst steht.]{#network-layer-alphabetical explanation="Die Schreibweise der Schnittstelle ist keine Auswahlregel."}
+::option[Die älteste Route unabhängig von ihrem Präfix.]{#network-layer-oldest explanation="Das Alter allein setzt die Präfixübereinstimmung nicht außer Kraft."}
+::option[Die Route mit dem spezifischsten passenden Präfix.]{#network-layer-most-specific .correct explanation="Die längste Präfixübereinstimmung wählt die Route aus, die den kleinsten passenden Adressbereich umfasst."}
+:::
 
-subnets
+## Hop-Limits und Änderungen bei der Weiterleitung
+
+Jedes IPv4-Paket besitzt eine TTL und jedes IPv6-Paket ein Hop Limit. Ein Router verringert den Wert; erreicht er null, verwirft der Router das Paket und kann einen ICMP-Fehler senden. Dies verhindert, dass Pakete endlos in Routingschleifen kreisen.
+
+Router bewahren gewöhnlich die Ende-zu-Ende-IP-Adressen, doch NAT, Tunnel, Proxys und andere Middleboxes können Pakete umwandeln oder einkapseln. Header der Verbindungsschicht ändern sich unabhängig davon an jedem gerouteten Hop.
+
+:::single-choice{#network-layer-hop-limit}
+Warum verringern Router TTL oder Hop Limit?
+
+::option[Um die Dateiberechtigungen der Anwendung zu erhöhen.]{#network-layer-hop-permissions explanation="Die Hop-Anzahl hat nichts mit Dateisystemautorisierung zu tun."}
+::option[Um jedes Paket von IPv4 in IPv6 umzuwandeln.]{#network-layer-hop-convert explanation="Protokollübersetzung ist nicht der Zweck dieses Felds."}
+::option[Um zu verhindern, dass Pakete für immer kreisen.]{#network-layer-prevent-loop .correct explanation="Eine endliche Hop-Anzahl stellt sicher, dass eine dauerhafte Routingschleife das Paket schließlich verwirft."}
+:::
+
+## Zusammenfassung
+
+Du kannst nun erklären, wie ein IP-Host den nächsten Schritt zu einem Ziel auswählt.
+
+1. Behandle IP-Zustellung als bestmöglich.
+2. Verwende Präfixe und Routen, um direkt erreichbare von gerouteten Zielen zu unterscheiden.
+3. Wende die längste Präfixübereinstimmung auf die Routenauswahl an.
+4. Erkenne, wie Hop-Limits Routingschleifen begrenzen.

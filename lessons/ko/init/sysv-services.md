@@ -1,65 +1,100 @@
 ---
-index: 2
+lesson_id: "sysv-services"
+course_id: "init"
 lang: "ko"
+order_index: 2
 title: "System V 서비스"
+description: "활성 시스템이 지원하는 래퍼를 통해 레거시 SysV 서비스 스크립트를 검사하고 조작하는 방법을 알아봅니다."
 meta_title: "System V 서비스 - Init"
-meta_description: "Linux 에서 전통적인 System V(SysV) 서비스를 관리하는 방법을 알아보세요. 이 가이드는 System V init 시스템에서 `service` 명령어를 사용하여 서비스를 나열, 시작, 중지 및 재시작하는 방법을 다룹니다."
-meta_keywords: "system v, sysv init, 리눅스 서비스, service 명령어, 리눅스 서비스 관리, 서비스 시작, 서비스 중지, 서비스 재시작, 리눅스 system v"
+meta_description: "리눅스의 전통적인 System V 서비스를 관리하는 방법을 알아봅니다. service 명령으로 서비스를 나열하고 시작, 중지 및 재시작하는 방법을 설명합니다."
+meta_keywords: "System V, sysvinit, 리눅스 서비스, service 명령어, 리눅스 서비스 관리, 서비스 시작, 서비스 중지, 서비스 재시작"
 ---
 
-## Lesson Content
+SysV 서비스는 일반적으로 `/etc/init.d/` 아래의 실행 가능한 스크립트로 표현됩니다. 스크립트는 구현과 배포판 관례에 따라 `start`, `stop`, `restart` 또는 `status` 같은 작업을 받습니다. `service` 명령은 이름 있는 스크립트를 더 제어된 환경에서 실행하는 래퍼를 제공합니다.
 
-**System V**(또는 SysV) 는 유닉스 계열 운영 체제의 고전적인 초기화 시스템 중 하나입니다. 많은 최신 Linux 배포판이 `systemd`와 같은 새로운 시스템으로 전환했지만, 많은 시스템이 하위 호환성을 유지하므로 **System V** 서비스를 관리하는 방법을 이해하는 것은 여전히 가치 있는 기술입니다.
+## 서비스와 작업 확인하기
 
-### service 명령어
-
-**System V** init 시스템에서 서비스와 상호 작용하는 주요 도구는 `service` 명령어입니다. 이 명령어는 래퍼 스크립트 역할을 하여 서비스 제어 프로세스를 단순화합니다.
-
-### 모든 서비스 나열하기
-
-사용 가능한 모든 서비스와 현재 상태를 확인하려면 `--status-all` 플래그를 사용할 수 있습니다. 이 명령어는 각 서비스를 나열하고 실행 중 (`+`), 중지됨 (`-`), 또는 상태를 알 수 없음 (`?`) 을 표시합니다.
+먼저 스크립트 이름을 나열합니다.
 
 ```bash
-service --status-all
+$ ls -1 /etc/init.d/
 ```
 
-### 특정 서비스 제어하기
-
-개별 서비스를 관리하려면 서비스 이름 뒤에 `start`, `stop`, 또는 `restart`와 같은 작업을 지정합니다. 이러한 작업에는 관리자 권한이 필요하므로 일반적으로 `sudo`를 사용합니다.
-
-네트워킹 서비스와 같이 서비스를 시작하려면:
+일부 구현은 다음 명령을 제공합니다.
 
 ```bash
-sudo service networking start
+$ service --status-all
 ```
 
-실행 중인 서비스를 중지하려면:
+대괄호 표식과 종료 상태는 래퍼마다 다르고 스크립트가 알 수 없는 상태를 보고할 수도 있습니다. 서비스 하나에 대해서는 모든 작업이 있다고 가정하지 말고 스크립트의 사용법 출력이나 문서를 검사하십시오.
+
+:::single-choice{#sysv-services-wrapper-purpose}
+`service` 명령은 일반적으로 무엇을 감쌉니까?
+
+::option[모든 서비스 파일에서 실행되는 디스크 파티션 편집기입니다.]{#sysv-services-partition-editor explanation="서비스 제어는 저장 장치 파티셔닝과 관련이 없습니다."}
+::option[스크립트가 동적으로 추가한 커널 시스템 호출입니다.]{#sysv-services-new-syscall explanation="init 스크립트는 사용자 공간 프로세스 제어 프로그램입니다."}
+::option[이름 있는 init 스크립트와 지원되는 작업 하나입니다.]{#sysv-services-script-action .correct explanation="래퍼는 레거시 서비스 스크립트를 찾아 정규화된 환경에서 호출합니다."}
+:::
+
+## 시작 및 중지
+
+실제로 SysV가 관리하는 호스트에서는 다음 형태가 일반적입니다.
 
 ```bash
-sudo service networking stop
+$ sudo service SERVICE_NAME start
+$ sudo service SERVICE_NAME stop
 ```
 
-구성 변경 사항을 적용하는 데 유용한, 서비스를 중지한 다음 즉시 다시 시작하려면:
+서비스, 의존 항목, 현재 상태 및 운영 영향을 식별한 뒤에만 자리표시자를 바꾸십시오. 원격 세션에서 네트워킹, 원격 접근, 저장 장치 또는 인증을 중지하면 접근이 끊기거나 활성 작업이 손상될 수 있습니다.
+
+직접 호출하는 `/etc/init.d/SERVICE_NAME ACTION` 형태도 있을 수 있지만 활성 관리자가 호환성을 제공하는 호스트에서는 상태와 의존성을 추적할 수 있도록 관리자 인터페이스 명령을 사용하십시오.
+
+:::single-choice{#sysv-services-stop-peanut}
+SysV 서비스 `peanut`의 중지를 요청하는 명령은 무엇입니까?
+
+::option[`sudo service stop peanut`]{#sysv-services-stop-first explanation="일반적인 피연산자 순서는 작업보다 서비스 이름을 먼저 둡니다."}
+::option[`sudo stop --partition peanut`]{#sysv-services-partition-stop explanation="SysV 서비스 래퍼 구문이 아닙니다."}
+::option[`sudo service peanut stop`]{#sysv-services-peanut-stop .correct explanation="래퍼는 서비스 이름 다음에 요청한 중지 작업을 받습니다."}
+:::
+
+## 다시 불러오기, 재시작 및 상태
+
+`restart`는 일반적으로 서비스를 중지한 뒤 시작하므로 중단이 발생합니다. `reload`는 완전히 재시작하지 않고 설정을 다시 읽도록 요청할 수 있지만 스크립트와 데몬이 지원할 때만 가능합니다. 일부 스크립트는 배포판에서 정의한 대체 동작을 가진 `force-reload`를 제공합니다.
+
+다시 불러오거나 재시작하기 전에 설정을 검증하고, 원격 접근 변경에는 두 번째 관리 연결을 유지하며, 작업 후 “실행 중” 상태만 보지 말고 실제 엔드포인트와 로그를 통해 서비스를 검증하십시오.
 
 ```bash
-sudo service networking restart
+$ sudo service SERVICE_NAME status
+$ sudo service SERVICE_NAME reload
 ```
 
-이러한 명령어는 **System V** init 시스템에만 국한된 것이 아니며, Upstart 서비스 관리에도 종종 사용할 수 있습니다. Linux 배포판이 계속 발전함에 따라, `service` 명령어와 같은 호환성 계층은 기존 init 스크립트에서 전환하는 데 도움을 주기 위해 유지됩니다.
+:::single-choice{#sysv-services-reload-versus-restart}
+`reload`를 `restart`와 같다고 가정해서는 안 되는 이유는 무엇입니까?
 
-## Exercise
+::option[reload가 항상 전체 운영체제를 종료하기 때문입니다.]{#sysv-services-reload-shutdown explanation="서비스 다시 불러오기 작업의 일반적인 의미가 아닙니다."}
+::option[restart는 설정만 출력하고 프로세스 상태를 절대 바꾸지 않기 때문입니다.]{#sysv-services-restart-readonly explanation="restart는 일반적으로 서비스를 중지한 뒤 시작합니다."}
+::option[reload는 서비스별 작업이며 프로세스를 중지하지 않고 설정을 다시 읽을 수 있기 때문입니다.]{#sysv-services-reload-specific .correct explanation="지원 및 의미는 init 스크립트와 데몬에 속하지만 restart는 일반적으로 수명 주기를 중단합니다."}
+:::
 
-연습이 완벽을 만듭니다! Linux 에서 프로세스 및 작업 관리를 강화하기 위한 몇 가지 실습 랩이 있습니다. 이는 Linux 에서 서비스를 관리하는 기본 사항입니다.
+## 런타임 제어와 부팅 활성화
 
-1. **[Linux 프로세스 관리 및 모니터링](https://labex.io/ko/labs/comptia-manage-and-monitor-linux-processes-590864)** - 실제 Linux 환경에서 프로세스와 상호 작용, 검사, 모니터링 및 종료하는 방법을 연습합니다.
-2. **[Linux 에서 at 및 cron 으로 작업 예약](https://labex.io/ko/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 한 번 실행되는 작업에는 `at`을, 반복되는 작업에는 `cron`을 사용하여 작업을 자동화하는 방법을 배웁니다. 이는 서비스 자동화에 핵심적인 기술입니다.
+지금 서비스를 시작해도 이후 런레벨에서 자동으로 활성화되지는 않습니다. 부팅 활성화는 런레벨 링크로 표현되며 `update-rc.d`, `chkconfig` 또는 서비스 관리자 호환성 생성기 같은 배포판별 도구로 관리합니다.
 
-이러한 랩은 실제 시나리오에서 개념을 적용하고 시스템 운영 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
+배포판의 의존성 메타데이터와 관리 도구를 이해하기 전에는 `S`와 `K` 링크를 직접 만들지 마십시오. 수동 링크는 덮어써지거나 잘못된 순서로 배치될 수 있습니다.
 
-## Quiz Question
+:::single-choice{#sysv-services-start-versus-enable}
+`service SERVICE start`가 이후 부팅에서 서비스를 반드시 활성화합니까?
 
-System V 시스템에서 `peanut`이라는 서비스를 중지하는 전체 명령어는 무엇입니까? 대소문자를 주의하여 정확한 명령어를 영어로 제공하십시오.
+::option[그렇습니다. 모든 start 작업이 모든 런레벨 링크를 자동으로 만듭니다.]{#sysv-services-start-links explanation="래퍼가 영구 활성화를 보편적으로 변경하지는 않습니다."}
+::option[아닙니다. 런타임 상태와 런레벨 활성화는 별개입니다.]{#sysv-services-runtime-separate .correct explanation="현재 프로세스 시작과 별개로 부팅 링크나 관리자 정책이 이후 활성화를 결정합니다."}
+::option[그렇습니다. 실행 중인 PID가 부트 섹터에 영구 저장됩니다.]{#sysv-services-pid-boot-sector explanation="PID는 런타임 식별자이며 부팅 활성화 메타데이터가 아닙니다."}
+:::
 
-## Quiz Answer
+## 요약
 
-sudo service peanut stop
+이제 런타임 제어와 부팅 정책을 혼동하지 않고 레거시 서비스를 조작할 수 있습니다.
+
+1. 실제 스크립트와 지원되는 작업을 확인합니다.
+2. 래퍼 구문에서 작업보다 서비스 이름을 먼저 사용합니다.
+3. 다시 불러오기 또는 재시작 동작을 검증하고 확인합니다.
+4. 배포판 도구로 이후 런레벨 활성화를 관리합니다.

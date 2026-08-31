@@ -1,72 +1,121 @@
 ---
-index: 9
+lesson_id: "disk-usage"
+course_id: "filesystem"
 lang: "de"
-title: "Festplattennutzung"
-meta_title: "Festplattennutzung - Das Dateisystem"
-meta_description: "Erfahren Sie, wie Sie die Linux-Festplattennutzung und den freien Speicherplatz mit den Befehlen df und du überprüfen. Diese Anleitung behandelt die Analyse des Speicherplatzes, einschließlich der Inode-Nutzung mit df -i linux, und wie Sie herausfinden, welche Dateien Platz belegen."
-meta_keywords: "df Befehl, du Befehl, Linux Festplattennutzung, freien Speicherplatz prüfen, df -i linux, Speicherverwaltung, Linux Tutorial, Speichernutzung, Dateisystemnutzung"
+order_index: 9
+title: "Speicherbelegung"
+description: "Lerne, wie `df` und `du` unterschiedliche Ansichten des Block- und Inode-Verbrauchs eines Dateisystems messen."
+meta_title: "Speicherbelegung – Das Dateisystem"
+meta_description: "Lerne, mit df Dateisystemkapazität und Inodes sowie mit du die erreichbare Pfadbelegung unter Linux zu untersuchen und Abweichungen sicher zu erklären."
+meta_keywords: "df Befehl, du Befehl, Linux Speicherbelegung, freien Speicher prüfen, df -i, Inodes, Dateisystemnutzung"
 ---
 
-## Lesson Content
+Die Kapazität eines Dateisystems besitzt mindestens zwei Grenzen: Datenblöcke und Metadatenobjekte wie Inodes. `df` meldet die Zuweisung aus Sicht des Dateisystems, während `du` erreichbare Pfadnamen durchläuft und die ihnen zugeordnete Belegung summiert. Die Werte beantworten verschiedene Fragen und müssen nicht übereinstimmen.
 
-Die Verwaltung des Speicherplatzes ist eine grundlegende Aufgabe für jeden Linux-Benutzer oder Administrator. Zwei wesentliche Befehle hierfür sind `df` und `du`. Lassen Sie uns untersuchen, wie Sie diese verwenden können, um Ihre Festplattenauslastung effektiv zu überwachen.
+## Dateisystemkapazität mit `df`
 
-### Überprüfung des Dateisystemspeichers mit df
-
-Der Befehl `df` (disk free) meldet den auf Ihren gemounteten Dateisystemen verwendeten und verfügbaren Speicherplatz. Er bietet einen Überblick über Ihre Speicherkapazität.
-
-Um einen Bericht in einem menschenlesbaren Format (z. B. GB, MB, KB) zu erhalten, verwenden Sie das Flag `-h`:
+Zeige den Typ eingehängter Dateisysteme und menschenlesbare Blockwerte an:
 
 ```bash
-pete@icebox:~$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1       6.2G  2.3G  3.6G  40% /
+$ df -hT
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda1      ext4  6.2G  2.3G  3.6G  40% /
 ```
 
-Diese Ausgabe zeigt das Dateisystemgerät, die Gesamtgröße, den belegten Speicherplatz, den verfügbaren Speicherplatz, den Nutzungsprozentsatz und den Einhängepunkt.
-
-### Analyse der Inode-Nutzung
-
-Neben dem Block-Speicher verwenden Dateisysteme auch Inodes, um Metadaten über Dateien (wie Berechtigungen, Eigentümerschaft und Speicherort) zu speichern. In seltenen Fällen kann Ihnen der Speicherplatz für Inodes ausgehen, selbst wenn noch freier Speicherplatz vorhanden ist. Um die Inode-Nutzung zu überprüfen, können Sie den Befehl `df -i` verwenden. Die Ausführung von `df -i` unter Linux gibt Ihnen einen klaren Überblick über die Inode-Zuweisung.
+`Size`, `Used` und `Avail` stammen aus der Dateisystembuchhaltung. Der verfügbare Platz kann wegen reservierter Blöcke, Metadaten, Zuweisungsrichtlinien, Quoten oder Rundung kleiner als Gesamtgröße minus Belegung sein. Führe `df` mit einem Pfad aus, um das Dateisystem zu melden, das diesen Pfad enthält:
 
 ```bash
-pete@icebox:~$ df -i
-Filesystem      Inodes  IUsed   IFree IUse% Mounted on
-/dev/sda1      4128768 128768 4000000    4% /
+$ df -hT /var/log
 ```
 
-### Zusammenfassung der Verzeichnisnutzung mit du
+:::single-choice{#disk-usage-df-scope}
+Was meldet `df` in erster Linie?
 
-Wenn Sie feststellen, dass eine Festplatte voll wird, möchten Sie herausfinden, welche Dateien oder Verzeichnisse den meisten Speicherplatz verbrauchen. Für diese Aufgabe ist der Befehl `du` (disk usage) das perfekte Werkzeug.
+::option[Den Byteinhalt jeder Datei in einem Verzeichnis.]{#disk-usage-df-file-content explanation="Die Buchhaltung eines Verzeichnisbaums ist Aufgabe von Werkzeugen wie `du`."}
+::option[Kapazität, Belegung und verfügbaren Platz auf Dateisystemebene.]{#disk-usage-df-filesystem .correct explanation="Df fragt Zuweisungsstatistiken eingehängter Dateisysteme ab, statt jeden Pfadnamen zu durchlaufen."}
+::option[Nur die auf einem Datenträgeretikett aufgedruckte physische Größe.]{#disk-usage-df-physical-label explanation="Die Werte beschreiben die Dateisystembuchhaltung und nicht bloß die beworbene Hardwarekapazität."}
+:::
 
-Die Ausführung von `du` ohne Argumente zeigt die Festplattennutzung für jedes Unterverzeichnis an Ihrem aktuellen Standort. Die Verwendung des Flags `-h` liefert eine menschenlesbare Zusammenfassung:
+## Inode-Kapazität
+
+Dateisysteme, die Inode-ähnliche Objekte zuweisen, können diese erschöpfen, obwohl noch Blöcke frei sind:
 
 ```bash
-du -h
+$ df -i /var
 ```
 
-Sie können auch einen Pfad angeben, z. B. `du -h /home/pete`, um ein bestimmtes Verzeichnis zu analysieren. Die Ausführung auf dem Stammverzeichnis (`du -h /`) kann viele Ergebnisse liefern, daher ist es oft besser, bestimmte Verzeichnisse zu überprüfen, von denen Sie vermuten, dass sie groß sind.
+Eine große Anzahl kleiner Dateien kann die verfügbaren Inodes verbrauchen. Das Löschen einer großen Datei gibt viele Blöcke, aber im Allgemeinen nur einen Inode frei; das Löschen vieler unnötiger kleiner Dateien kann Inode-Druck verringern. Manche Dateisysteme weisen Metadaten dynamisch zu und melden diese Konzepte anders.
 
-### df vs du Eine kurze Zusammenfassung
+:::single-choice{#disk-usage-inode-exhaustion}
+Was kann geschehen, wenn ein Dateisystem freie Blöcke, aber keine freien Inodes besitzt?
 
-Die Syntax für `df` und `du` ist so ähnlich, dass man sie leicht verwechseln kann. Hier ist eine einfache Möglichkeit, sich den Unterschied zu merken:
+::option[Jede vorhandene Datei verdoppelt automatisch ihre Größe.]{#disk-usage-inode-double explanation="Inode-Erschöpfung verhindert die Zuweisung neuer Metadaten und vergrößert vorhandene Inhalte nicht."}
+::option[Das Erstellen einer weiteren Datei kann fehlschlagen.]{#disk-usage-inode-create-fail .correct explanation="Ein neues Dateisystemobjekt benötigt Metadaten, auch wenn noch Platz für Dateidaten vorhanden ist."}
+::option[Das Dateisystem wird in Swap umgewandelt.]{#disk-usage-inode-swap explanation="Ressourcenerschöpfung ändert den Dateisystemtyp nicht."}
+:::
 
-- Verwenden Sie `df`, um zu prüfen, wie viel **d**isk **f**ree (Festplatte frei) auf Ihren Dateisystemen ist.
-- Verwenden Sie `du`, um die **d**isk **u**sage (Festplattennutzung) spezifischer Dateien und Verzeichnisse zu prüfen.
+## Pfadbelegung mit `du`
 
-## Exercise
+Fasse den zugewiesenen Speicher zusammen, der unterhalb eines Verzeichnisses erreichbar ist:
 
-Übung macht den Meister! Hier sind einige praktische Labs, um Ihr Verständnis für die Verwaltung und Auslastung des Speicherplatzes unter Linux zu festigen:
+```bash
+$ du -sh /var/log
+```
 
-1. **[Linux-Partitionen und Dateisysteme verwalten](https://labex.io/de/labs/comptia-manage-linux-partitions-and-filesystems-590845)** - Üben Sie das Erstellen, Formatieren und Einhängen von Dateisystemen, welche die zugrunde liegenden Strukturen sind, über die `df` und `du` berichten.
-2. **[Eine Swap-Datei unter Linux erstellen und aktivieren](https://labex.io/de/labs/comptia-create-and-activate-a-swap-file-in-linux-590858)** - Lernen Sie, den virtuellen Speicher auf der Festplatte zu verwalten, ein kritischer Aspekt der Systemressourcenverwaltung, der den Speicherplatz beeinflusst.
+Vergleiche unmittelbare Untereinträge und bleibe dabei auf einem Dateisystem:
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Verwaltung von Speicherressourcen aufzubauen.
+```bash
+$ sudo du -xhd1 /var | sort -h
+```
 
-## Quiz Question
+Die hier gezeigten GNU-Optionen stehen für menschenlesbare Ausgabe, maximale Tiefe eins und ein einziges Dateisystem. Berechtigungen können Unterbäume verbergen und eine unvollständige Summe erzeugen. `du` kann außerdem standardmäßig hart verlinkte Dateien nur einmal zählen, scheinbare Größe von zugewiesenen Blöcken unterscheiden und Sparse-Dateien abhängig von den Optionen verschieden behandeln.
 
-Welcher Befehl wird verwendet, um anzuzeigen, wie viel Speicherplatz auf Ihrer Festplatte frei ist? Bitte antworten Sie in Kleinbuchstaben auf Englisch.
+:::single-choice{#disk-usage-du-purpose}
+Welcher Befehl fasst die zugewiesene Belegung unter `/var/log` zusammen?
 
-## Quiz Answer
+::option[`df -i /var/log`]{#disk-usage-df-inodes explanation="Dieser Befehl meldet Inode-Statistiken des enthaltenden Dateisystems."}
+::option[`du -sh /var/log`]{#disk-usage-du-summary .correct explanation="Du durchläuft den angegebenen Baum; `-s` gibt eine einzelne Zusammenfassung in menschenlesbaren Einheiten aus."}
+::option[`mount -a /var/log`]{#disk-usage-mount-a explanation="Das Einhängen steht in keinem Zusammenhang mit einer schreibgeschützten Zusammenfassung der Verzeichnisbelegung."}
+:::
 
-df
+## Warum `df` und `du` abweichen
+
+Häufige Ursachen sind:
+
+- Ein Prozess hält eine gelöschte Datei geöffnet; ihre Blöcke bleiben zugewiesen, aber für `du` existiert kein Pfadname mehr.
+- Dateisystemmetadaten, reservierter Speicher, Journale, Reflinks, Snapshots oder Kompression beeinflussen die Buchhaltung.
+- Innerhalb des durchlaufenen Baums ist ein anderes Dateisystem eingehängt.
+- Berechtigungen hindern `du` am Lesen mancher Verzeichnisse.
+- Sparse-Dateien besitzen unterschiedliche scheinbare und zugewiesene Größen.
+
+Untersuche gelöschte, aber geöffnete Dateien bei autorisierten Prozessen mit einem Werkzeug wie `lsof +L1`. Starte den verantwortlichen Dienst über sein normales Verfahren neu oder sende ihm ein passendes Signal, statt unbekannte Deskriptoren zu kürzen.
+
+:::single-choice{#disk-usage-deleted-open-file}
+Warum kann `df` belegten Platz anzeigen, den das pfadbasierte `du` nicht findet?
+
+::option[`df` multipliziert jede Dateigröße immer mit zwei.]{#disk-usage-df-doubles explanation="Es gibt keine universelle Verdoppelungsregel."}
+::option[Eine gelöschte Datei kann für einen laufenden Prozess geöffnet und zugewiesen bleiben.]{#disk-usage-open-deleted .correct explanation="Der Verzeichniseintrag ist entfernt, doch das Dateisystem behält die Blöcke bis zum Schließen der letzten offenen Referenz."}
+::option[`du` löscht Dateien automatisch nach dem Zählen.]{#disk-usage-du-deletes explanation="Du ist ein Buchhaltungswerkzeug und entfernt die durchlaufenen Dateien nicht."}
+:::
+
+## Untersuchen, ohne den Vorfall zu verschlimmern
+
+Beginne beim von `df` gemeldeten vollen Dateisystem, bestimme sein Einhängeziel mit `findmnt` und grenze `du`-Suchen anschließend auf dasselbe Dateisystem ein. Berücksichtige Snapshots, Containerschichten, Protokolle, Paket-Caches und Aufbewahrungsrichtlinien von Anwendungen. Lösche Dateien nicht allein aufgrund ihrer Größe; kläre zuerst Eigentümerschaft, Sicherung, Compliance und Dienstverhalten.
+
+:::single-choice{#disk-usage-safe-investigation}
+Was ist die sicherste Reaktion auf eine gefundene große Datei?
+
+::option[Sie sofort löschen, während der Dienst sie beschreibt.]{#disk-usage-delete-immediately explanation="Dadurch können benötigte Daten verloren gehen; der Speicher wird möglicherweise nicht frei, solange die Datei geöffnet bleibt."}
+::option[`mkfs` auf dem enthaltenden Gerät ausführen.]{#disk-usage-mkfs-device explanation="Eine Formatierung würde das Dateisystem zerstören, statt das Wachstum einer Datei zu beheben."}
+::option[Vor einer Änderung ihren Eigentümer und ihre Aufbewahrungsfunktion bestimmen.]{#disk-usage-review-large-file .correct explanation="Die Größe allein beweist nicht, dass die Datei entbehrlich oder sicher zu kürzen ist."}
+:::
+
+## Zusammenfassung
+
+Du kannst Berichte über Dateisystem- und pfadbasierte Speicherbelegung nun miteinander in Einklang bringen.
+
+1. Verwende `df` für die Blockkapazität eingehängter Dateisysteme.
+2. Verwende `df -i` für Inode-Druck, soweit unterstützt.
+3. Verwende begrenzte `du`-Durchläufe, um die Belegung erreichbarer Pfade zuzuordnen.
+4. Untersuche gelöschte offene Dateien und dateisystemspezifische Buchhaltungsunterschiede.
+5. Wende Eigentums- und Aufbewahrungsrichtlinien an, bevor du Daten löschst.

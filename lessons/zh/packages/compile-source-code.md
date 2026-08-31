@@ -1,86 +1,117 @@
 ---
-index: 7
+lesson_id: "compile-source-code"
+course_id: "packages"
 lang: "zh"
+order_index: 7
 title: "编译源代码"
+description: "学习如何验证、配置、构建、测试、暂存并跟踪从源代码编译的软件。"
 meta_title: "编译源代码 - 软件包"
-meta_description: "了解如何在 Linux 中从源代码编译。本指南涵盖了使用 configure、make 和推荐的 checkinstall 命令构建源代码以进行干净软件包管理的基本步骤。"
+meta_description: "了解如何在 Linux 中从源代码编译。本指南涵盖使用 configure、make 和推荐的 checkinstall 命令构建源代码以进行干净软件包管理的基本步骤。"
 meta_keywords: "如何从源代码编译，如何构建源代码，编译源代码，make install, checkinstall, Linux 编译，build-essential, configure 脚本，makefile, Linux 教程"
 ---
 
-## Lesson Content
+从源代码构建可以获得已配置仓库中没有的版本或功能，但这会把集成、更新和信任工作从发行版转移给你。如果受支持的发行版软件包能够满足需求，应优先使用它。
 
-有时，您可能会发现某个软件包仅以源代码的形式提供。要使用它，您需要在系统上编译和安装它。本课程将指导您完成如何从源代码编译的常见过程。
+## 构建前验证并阅读
 
-### 准备您的系统
+从经过身份验证的上游发布渠道获取源代码，通过受信任路径验证签名或校验和；然后先检查归档，再把它提取到非特权暂存目录。阅读 `README`、`INSTALL`、`SECURITY` 和项目构建文档等文件。
 
-在编译任何内容之前，您需要必要的工具。在基于 Debian 的系统（如 Ubuntu）上，您可以使用一个命令安装它们。
+构建说明也是可执行代码。`configure` 脚本、构建定义、测试或编译器插件都可能以你的用户身份运行任意命令。不要构建不受信任的源代码，也不要用 `sudo` 运行构建本身。
 
-```bash
-sudo apt install build-essential
-```
+:::single-choice{#compile-source-code-build-privilege}
+为什么编译步骤通常不应该使用 `sudo`？
 
-`build-essential` 包安装了一套软件开发工具，包括 GCC 编译器和 `make` 实用程序，它们对编译至关重要。
+::option[编译器拒绝为 root 用户生成机器代码。]{#compile-source-code-root-compiler explanation="编译器可以由 root 运行，但这样做会不必要地增加风险。"}
+::option[`sudo` 会自动删除所有生成的目标文件。]{#compile-source-code-sudo-delete explanation="提升权限本身不会移除构建输出。"}
+::option[构建逻辑可以执行任意命令，而且通常不需要系统权限。]{#compile-source-code-unprivileged-build .correct explanation="保持非特权构建可以限制错误或恶意构建说明造成的损害。"}
+:::
 
-安装工具后，解压源代码包的内容，这通常是一个 `.tar.gz` 文件。
+## 安装构建要求
 
-```bash
-tar -xzvf package.tar.gz
-```
-
-在继续之前，请务必检查解压后的目录中是否存在 `README` 或 `INSTALL` 文件。这些文件通常包含该特定软件包所需的具体说明或依赖项。
-
-### 标准构建过程
-
-虽然不同的开发人员可能会使用各种构建系统（如 `cmake`），但最传统的方法涉及一个三步过程。理解这一点是学习如何构建源代码的基础。
-
-首先，运行 `configure` 脚本。此脚本会检查您的系统是否具有软件构建和正确运行所需的所有必要依赖项和库。
+在 Debian 家族开发系统上，常见起点是：
 
 ```bash
-./configure
+$ sudo apt install build-essential
 ```
 
-`./` 前缀告诉 shell 从当前目录执行脚本。如果脚本报告任何缺少依赖项，您必须在继续之前安装它们。
+这会安装一组基础编译器和构建工具，而不是每个项目所需的全部依赖。项目还可能需要语言运行时、生成器、构建系统工具、开发头文件或精确的库版本。应从受信任仓库安装要求，并区分构建依赖与运行时依赖。
 
-接下来，运行 `make` 命令。此命令会读取目录中名为 `Makefile` 的文件，其中包含一组关于如何将源代码编译成可执行程序的规则。
+:::single-choice{#compile-source-code-build-essential-scope}
+`build-essential` 在 Debian 家族系统上提供什么？
+
+::option[一组常用的基础编译和构建工具。]{#compile-source-code-baseline-tools .correct explanation="它提供基础工具，但无法预知每个项目特有的库或生成器。"}
+::option[每个源代码项目的所有依赖项。]{#compile-source-code-all-dependencies explanation="各项目还会声明额外的、有时带特定版本要求的依赖。"}
+::option[下载的源代码一定可信的保证。]{#compile-source-code-trust-guarantee explanation="安装工具不会对另一份源代码发布进行身份验证。"}
+:::
+
+## 配置与构建
+
+传统的 Autoconf 风格项目可能使用：
 
 ```bash
-make
+$ ./configure --prefix=/usr/local
+$ make
 ```
 
-最后，要将软件安装到您的系统上，您通常会运行：
+`configure` 检查环境，并根据所选选项生成构建文件。`make` 读取通常位于 `Makefile` 中的依赖与命令规则，创建请求的目标。
+
+这一顺序并不通用。项目可能使用 CMake、Meson、Ninja、语言专用工具或自定义脚本。应遵循准确版本的文档，不要仅仅因为熟悉就运行 `./configure`。如果构建系统支持，源代码树外的构建目录可以让生成文件保持分离。
+
+:::single-choice{#compile-source-code-make-role}
+在传统流程中，`make` 做什么？
+
+::option[把每个输出注册到发行版软件包数据库。]{#compile-source-code-make-package-db explanation="仅编译不会创建原生软件包所有权记录。"}
+::option[自动下载经过身份验证的源代码发布。]{#compile-source-code-make-download explanation="除非项目明确另有定义，源代码获取与验证发生在本地构建之前。"}
+::option[执行构建描述中适用的规则。]{#compile-source-code-make-rules .correct explanation="Make 评估依赖项，并运行让选定目标达到最新状态所需的命令。"}
+:::
+
+## 安装前测试
+
+运行项目文档指定的测试目标，例如：
 
 ```bash
-sudo make install
+$ make check
 ```
 
-此命令会将编译后的文件复制到适当的系统目录中，使软件可供使用。
+实际目标可能是 `test`、`check` 或一个独立命令。测试失败时应调查原因，而不是安装未经测试的输出。测试可能要求网络访问、服务、特殊硬件或隔离环境；执行前应像审查其他构建代码一样审查测试。
 
-### 更好的安装方式
+:::single-choice{#compile-source-code-test-failure}
+文档指定的测试套件失败时，应该怎么做？
 
-虽然 `sudo make install` 有效，但它有一个明显的缺点：它不会将软件注册到您系统的包管理器中。这使得将来难以跟踪、更新或干净地卸载该软件包。
+::option[立即以 root 身份运行相同安装。]{#compile-source-code-install-after-failure explanation="权限无法解决未知的正确性问题，反而会扩大后果。"}
+::option[删除包管理器数据库以避免冲突。]{#compile-source-code-delete-database explanation="原生数据库与解决源代码测试失败无关，绝不能丢弃。"}
+::option[安装构建前先调查失败原因。]{#compile-source-code-investigate-tests .correct explanation="测试失败可能揭示依赖不兼容、构建缺陷或环境假设。"}
+:::
 
-一个更好的方法是使用 `checkinstall`。此工具会运行安装过程，但它不会直接复制文件，而是创建一个原生的系统包（如 Debian/Ubuntu 上的 `.deb` 文件）并安装它。
+## 暂存并跟踪安装
 
-```bash
-sudo checkinstall
-```
+`sudo make install` 可能直接把文件复制到系统前缀，却不记录到原生软件包数据库。卸载目标是可选的，可能并不完整；后续升级也可能覆盖文件或留下孤立文件。
 
-使用 `checkinstall` 将编译后的软件集成到您的包管理系统中。这意味着您以后可以使用 `apt` 或 `dpkg` 轻松将其删除，就像您从官方存储库安装的任何其他软件包一样。因此，您应该始终优先使用 `checkinstall` 而不是 `make install`。
+应优先选择以下受控方法之一：
 
-要卸载使用 `make install` 安装的软件包，您需要返回到源目录并运行 `sudo make uninstall`，但这并不总是可靠的。
+- 使用发行版打包工具构建正式原生软件包
+- 在策略允许时安装到 `/usr/local` 等明确分离的前缀
+- 使用 `DESTDIR` 等受支持机制把文件暂存到临时打包根目录
+- 适当时使用非特权用户前缀、隔离环境或容器
 
-## Exercise
+`checkinstall` 可以为某些 `make install` 流程创建简单软件包，但并不通用，也无法替代经过审核的发行版质量打包配方。绝不能把它当作“始终使用”的规则。进行任何特权复制前，应检查暂存文件列表、所有权、权限、路径，以及卸载或升级计划。
 
-实践造就完美！这是一个实践实验，用于巩固您对从源构建软件的理解：
+:::single-choice{#compile-source-code-destdir-purpose}
+受支持的 `DESTDIR` 暂存安装有什么用途？
 
-1. **[在 Linux 中从源代码构建软件](https://labex.io/zh/labs/comptia-build-software-from-source-code-in-linux-590853)** - 练习从源代码构建和安装软件的基本过程，包括使用 `configure`、`make` 和 `make install`。
+::option[把预定安装文件放到临时根目录中，以供检查或打包。]{#compile-source-code-stage-root .correct explanation="暂存会把文件收集与立即写入活动系统前缀分开。"}
+::option[把编译器变成远程软件包仓库。]{#compile-source-code-destdir-repository explanation="该变量重定向安装路径，不会发布仓库元数据。"}
+::option[跳过编译，改为下载未知二进制文件。]{#compile-source-code-destdir-download explanation="暂存发生在构建后，并不替代外部二进制下载。"}
+:::
 
-此实验将帮助您在真实场景中应用这些概念，并建立编译软件的信心。
+可以在可丢弃环境中通过[在 Linux 中从源代码构建软件](https://labex.io/zh/labs/comptia-build-software-from-source-code-in-linux-590853)实验练习这一流程，避免把实验文件混入生产系统。
 
-## Quiz Question
+## 总结
 
-您应该始终使用什么来代替 `make install`？（请用英语回答，注意区分大小写）
+现在，你可以把源代码构建作为受控的软件供应流程来处理。
 
-## Quiz Answer
-
-checkinstall
+1. 验证源代码身份，并把其说明当作可执行代码审查。
+2. 从受信任仓库安装明确的构建要求。
+3. 在没有不必要权限的情况下配置、构建和测试。
+4. 写入系统前暂存并检查输出。
+5. 使用原生打包或有意识选择的隔离前缀跟踪已安装文件。

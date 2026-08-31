@@ -1,52 +1,76 @@
 ---
-index: 1
+lesson_id: "what-is-a-router"
+course_id: "routing"
 lang: "pt"
+order_index: 1
 title: "O que é um roteador?"
+description: "Aprenda como os roteadores selecionam próximos saltos e encaminham pacotes IP entre redes."
 meta_title: "O que é um roteador? - Roteamento"
-meta_description: "Guia para iniciantes sobre o que é um roteador em redes. Aprenda sobre roteamento, comutação de pacotes, saltos (hops) e como roteadores usam tabelas de roteamento para encaminhar dados entre redes. Este guia de rede é essencial para aprender sobre redes Linux."
-meta_keywords: "roteador, redes, roteamento, saltos, comutação de pacotes, redes Linux, tutorial iniciante, guia de rede"
+meta_description: "Um guia de introdução para entender o que é um roteador em redes. Aprenda sobre roteamento, comutação de pacotes, saltos e como roteadores usam tabelas de roteamento para encaminhar dados entre redes. Este guia é essencial para aprender redes Linux."
+meta_keywords: "roteador, redes, roteamento, saltos, comutação de pacotes, redes Linux, tutorial para iniciantes, guia de redes"
 ---
 
-## Lesson Content
+Um roteador conecta domínios da camada de rede e encaminha pacotes IP entre eles. Um host Linux pode atuar como roteador quando o encaminhamento está habilitado e suas interfaces, rotas, descoberta de vizinhos e política de filtragem estão configuradas adequadamente.
 
-Um roteador é um dispositivo fundamental em redes de computadores. Você provavelmente tem um em sua casa conectando você à internet. Sua função principal é permitir que máquinas em uma rede se comuniquem entre si e com outras redes. Este processo é uma parte central do que faz a internet e as redes locais funcionarem.
+## Roteamento e encaminhamento
 
-### A Função Central de um Roteador
+O roteamento cria ou seleciona informações sobre prefixos acessíveis. O encaminhamento aplica essas informações a cada pacote: examina o destino, escolhe uma rota elegível e o próximo salto, reduz o limite de saltos e transmite por uma interface de saída.
 
-Um roteador doméstico típico possui portas LAN (Rede Local) para conectar seus dispositivos a uma rede local e uma porta WAN (Rede de Longa Distância) que fornece conexão com a internet. Cada pedaço de dado, ou "pacote", que você envia ou recebe durante qualquer atividade de rede deve passar pelo roteador. O roteador inspeciona esses pacotes de rede e decide para onde eles devem ir. Ele efetivamente roteia o tráfego entre múltiplas redes, garantindo que cada pacote viaje de sua origem até seu destino final.
+Essas são questões separadas do plano de controle e do plano de dados. Uma rota pode existir enquanto a política de firewall bloqueia o encaminhamento, ou uma interface de encaminhamento pode estar ativa enquanto não existe uma rota válida.
 
-### O Processo de Roteamento
+:::single-choice{#router-forwarding-role}
+O que o encaminhamento de pacotes faz?
 
-Pense no processo de roteamento como a entrega de correspondência. Quando você envia uma carta, os correios determinam o destino geral (por exemplo, um estado ou cidade) e a enviam para lá. A partir desse ponto, ela é classificada em regiões menores, como códigos postais, até finalmente chegar ao endereço de rua específico.
+::option[Aplica as informações de roteamento para enviar um pacote em direção ao próximo salto.]{#router-apply-route .correct explanation="O encaminhamento é a ação realizada em cada pacote com base na rota e na política selecionadas."}
+::option[Cria um login permanente na aplicação para cada destino.]{#router-create-login explanation="O roteamento não gerencia contas de aplicações remotas."}
+::option[Copia cada pacote para todas as interfaces quando não existe uma rota.]{#router-flood-no-route explanation="O encaminhamento IP comum descarta um pacote sem rota, em vez de recorrer à inundação no estilo Ethernet."}
+:::
 
-Em redes, um roteador usa uma **tabela de roteamento** para tomar essas decisões. Esta tabela contém um conjunto de regras, ou rotas, que dizem ao roteador como encaminhar pacotes para um determinado destino de rede. Por exemplo, uma regra pode dizer: "Para alcançar a Rede A, envie pacotes para o Roteador B." Se não houver uma regra específica para um destino, o roteador usa uma **rota padrão**, que geralmente direciona o tráfego para a internet. Este sistema é crucial tanto em configurações domésticas simples quanto em ambientes complexos de **redes Linux**.
+## Tabelas de roteamento e rotas padrão
 
-### Saltos (Hops)
+Uma rota associa um prefixo de destino a uma interface de saída, próximo salto, métrica, preferência de origem ou outros atributos. A correspondência de prefixo mais longo favorece uma rota elegível mais específica. Uma rota padrão, IPv4 `/0` ou IPv6 `::/0`, é a correspondência menos específica e só é usada quando nenhuma rota mais específica vence.
 
-À medida que os pacotes viajam através das redes, sua jornada é medida em **saltos** (hops). Um salto representa uma etapa da jornada onde um pacote passa por um dispositivo intermediário, como um roteador. Por exemplo, se um pacote precisa passar por dois roteadores para ir do Host A ao Host B, dizemos que o caminho tem dois saltos de comprimento. Os saltos fornecem uma métrica simples para medir a distância entre uma origem e um destino em uma rede.
+Se nenhuma rota elegível existir, o roteador descarta o pacote e pode gerar uma mensagem ICMP de destino inacessível. Uma rota padrão é opcional e não precisa apontar diretamente para a Internet pública.
 
-### Comutação de Pacotes, Roteamento e Inundação (Flooding)
+:::single-choice{#router-default-route}
+Quando uma rota padrão é selecionada?
 
-Para entender como os dados se movem, é útil conhecer estes termos relacionados:
+::option[Antes da verificação de qualquer prefixo específico do destino.]{#router-default-first explanation="Prefixos elegíveis mais específicos têm precedência."}
+::option[Apenas quando o pacote é um broadcast Ethernet.]{#router-default-broadcast explanation="A seleção da rota IP se baseia nos destinos da camada de rede."}
+::option[Quando nenhuma rota elegível mais específica corresponde.]{#router-default-fallback .correct explanation="O prefixo de comprimento zero é a rota menos específica."}
+:::
 
-- **Comutação de Pacotes** (Packet Switching) é o método fundamental de receber, processar e encaminhar pacotes de dados para seu destino. É o que os roteadores fazem continuamente.
-- **Roteamento** é o processo inteligente de construir e manter a tabela de roteamento. O roteamento eficaz permite uma comutação de pacotes mais eficiente e confiável.
-- **Inundação** (Flooding) é um método mais antigo e menos eficiente usado quando um roteador não sabe para onde enviar um pacote. Ele envia o pacote recebido por todas as conexões, exceto aquela pela qual chegou, na esperança de que um alcance o destino. As redes modernas dependem do roteamento para evitar esse tipo de ineficiência.
+## Tráfego local e roteado
 
-## Exercise
+Dois hosts na mesma sub-rede no enlace normalmente trocam quadros sem enviar o pacote IP por um roteador. Um roteador participa quando a seleção de rota o escolhe como próximo salto ou quando a topologia e a política impõem deliberadamente a passagem roteada.
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de conectividade de rede e roteamento:
+Um “roteador” residencial geralmente combina roteador IP, switch Ethernet, ponto de acesso Wi-Fi, serviço DHCP, NAT e firewall. Cada função deve ser diagnosticada separadamente.
 
-1. **[Explorar Tipos de Endereço IP e Alcançabilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Pratique testar a pilha TCP/IP local, identificar IPs privados e públicos e verificar a alcançabilidade da rede, que são fundamentais para entender como um roteador facilita a comunicação.
-2. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Aprenda como os comandos `ping` e `arp` ajudam você a observar como as camadas de rede e de enlace de dados interagem, e como o gateway padrão (roteador) lida com o tráfego remoto.
-3. **[Simular Conectividade da Camada de Rede no Linux](https://labex.io/pt/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Use o Docker para simular nós de rede e atribuir endereços IP, em seguida, teste a conectividade para entender como as sub-redes IP e o roteamento governam a comunicação em rede.
+:::single-choice{#router-same-subnet-path}
+O tráfego entre dois hosts no enlace precisa passar pelo roteador padrão?
 
-Esses laboratórios ajudarão você a aplicar os conceitos de comunicação de rede, endereçamento IP e o papel do roteamento em cenários reais, aumentando sua confiança nos fundamentos de rede.
+::option[Sim, porque todo pacote precisa alcançar uma porta WAN.]{#router-always-wan explanation="A entrega local no enlace pode ocorrer diretamente por ele."}
+::option[Sim, a menos que ambos os hosts tenham endereços públicos.]{#router-public-required explanation="O escopo público ou privado não determina o encaminhamento básico no enlace."}
+::option[Não; o remetente pode endereçar o destino diretamente no enlace local.]{#router-direct-on-link .correct explanation="A tabela de roteamento identifica o prefixo conectado como pertencente ao enlace."}
+:::
 
-## Quiz Question
+## Saltos e prevenção de loops
 
-How do packets measure distance? (Please answer in English. The answer is case-sensitive.)
+Um salto roteado é uma etapa de encaminhamento da camada de rede. O TTL do IPv4 e o Limite de Saltos do IPv6 são reduzidos em cada roteador, limitando os loops. A contagem de saltos não é uma métrica completa de distância nem de qualidade: os enlaces diferem em largura de banda, latência, perda, política e congestionamento.
 
-## Quiz Answer
+:::single-choice{#router-hop-count-limit}
+O que uma contagem menor de saltos não consegue garantir?
 
-Hops
+::option[Que existe pelo menos uma etapa roteada.]{#router-hop-exists explanation="Uma contagem positiva de saltos indica diretamente uma passagem roteada."}
+::option[Um caminho mais rápido ou melhor para a aplicação.]{#router-hop-not-quality .correct explanation="Menos roteadores ainda podem atravessar enlaces mais lentos, congestionados ou limitados por políticas."}
+::option[Que os campos de limite de saltos são finitos.]{#router-hop-limit-finite explanation="Esses campos são finitos por definição do protocolo."}
+:::
+
+## Resumo
+
+Agora você pode separar a seleção de rotas de um roteador de sua ação de encaminhamento.
+
+1. Defina roteadores pelo encaminhamento entre redes IP.
+2. Diferencie o roteamento do plano de controle do encaminhamento do plano de dados.
+3. Trate a rota padrão como a alternativa menos específica.
+4. Reconheça que a contagem de saltos, por si só, não mede a qualidade do caminho.

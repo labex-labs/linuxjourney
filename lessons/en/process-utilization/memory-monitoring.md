@@ -1,79 +1,84 @@
 ---
-index: 6
+lesson_id: "memory-monitoring"
+course_id: "process-utilization"
 lang: "en"
+order_index: 6
 title: "Memory Monitoring"
+description: "Learn how to interpret vmstat memory, paging, process, I/O, and CPU samples."
 meta_title: "Memory Monitoring - Process Utilization"
 meta_description: "Master Linux memory monitoring with the vmstat command. This guide explains how to use this powerful memory utilization monitor to analyze system performance metrics."
 meta_keywords: "memory monitoring, memory utilization monitor, vmstat, linux memory, system performance, memory usage, linux tutorial"
 ---
 
-## Lesson Content
+Linux intentionally uses otherwise idle memory for caches, so a small `free` value alone does not prove memory pressure. `vmstat` helps relate memory to runnable tasks, paging, I/O, and CPU activity.
 
-Effective system administration requires keeping a close eye on resource usage, and **memory monitoring** is a critical part of this process. When a system runs low on memory, its performance can degrade significantly. Linux provides several tools to help you track memory consumption, and one of the most versatile is `vmstat`.
+## Sampling with vmstat
 
-### Introduction to vmstat
-
-The `vmstat` (virtual memory statistics) command is a powerful **memory utilization monitor** that reports information about processes, memory, paging, block I/O, traps, and CPU activity. Running it without any arguments provides a snapshot of the system's current state since the last boot.
+Collect one sample per second:
 
 ```bash
-pete@icebox:~$ vmstat
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
- r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
+$ vmstat 1
 ```
 
-The output is organized into several columns. Let's break down what each field means.
+The first data row generally reports averages since boot; subsequent rows cover each interval. Stop with `Ctrl-C` after capturing a representative period. Units and available fields vary, so check `vmstat --unit` and the local manual.
 
-### Procs
+:::single-choice{#vmstat-interval-rows}
+Which rows are best for observing second-by-second changes from `vmstat 1`?
 
-- `r`: The number of runnable processes waiting for run time.
-- `b`: The number of processes in uninterruptible sleep, typically waiting for I/O.
+::option[Later rows after the initial report.]{#vmstat-later-rows .correct explanation="Later rows describe each requested interval rather than the cumulative period."}
+::option[Only the headings above the first data row.]{#vmstat-headings explanation="Headings define fields but contain no activity samples."}
+::option[Only a row copied from a different host.]{#vmstat-other-host explanation="A different system does not represent the current workload."}
+:::
 
-### Memory
+## Processes and Memory
 
-- `swpd`: The amount of virtual memory used (in kilobytes).
-- `free`: The amount of idle memory (in kilobytes).
-- `buff`: The amount of memory used as buffers.
-- `cache`: The amount of memory used as a page cache.
+Common process fields are `r`, runnable tasks, and `b`, tasks blocked in uninterruptible sleep. Memory fields include used swap (`swpd`), idle memory (`free`), buffers (`buff`), and cache (`cache`). These are system-wide values, not per-process consumption.
 
-### Swap
+For an easier view of currently available memory, compare with:
 
-- `si`: The amount of memory swapped in from disk per second (in kilobytes). High values indicate the system is low on physical memory.
-- `so`: The amount of memory swapped out to disk per second (in kilobytes). This should ideally be zero.
+```bash
+$ free -h
+```
 
-### IO
+The `available` estimate is generally more useful than `free` alone because reclaimable cache can satisfy new allocations.
 
-- `bi`: Blocks received from a block device (blocks/s).
-- `bo`: Blocks sent to a block device (blocks/s).
+:::single-choice{#vmstat-free-memory}
+Why can a low `free` value be normal on Linux?
 
-### System
+::option[The value always excludes all physical RAM.]{#vmstat-excludes-ram explanation="It is a memory field, though its exact unit should be checked."}
+::option[The kernel can use idle memory for reclaimable caches.]{#vmstat-reclaimable-cache .correct explanation="Cached memory can often be reclaimed when applications need it."}
+::option[Low free memory proves the CPU is powered off.]{#vmstat-cpu-off explanation="Memory allocation and CPU power state are unrelated conclusions."}
+:::
 
-- `in`: The number of interrupts per second, including the clock.
-- `cs`: The number of context switches per second.
+## Paging and I/O
 
-### CPU
+`si` and `so` show swap-in and swap-out rates. Sustained paging combined with latency and memory reclaim activity can indicate pressure, but nonzero swap use (`swpd`) does not by itself prove a current problem. `bi` and `bo` report block input and output rates and are not limited to swap traffic.
 
-These are percentages of total CPU time.
+:::single-choice{#vmstat-swap-pressure}
+Which evidence better supports current memory-pressure diagnosis?
 
-- `us`: Time spent running non-kernel code (user time).
-- `sy`: Time spent running kernel code (system time).
-- `id`: Time spent idle.
-- `wa`: Time spent waiting for I/O.
-- `st`: Time stolen from a virtual machine (for virtualized environments).
+::option[A nonzero `swpd` value with no other observations.]{#vmstat-swpd-alone explanation="Pages can remain in swap after earlier pressure, so the amount alone is insufficient."}
+::option[Sustained paging correlated with reclaim activity and workload latency.]{#vmstat-correlated-pressure .correct explanation="Repeated, correlated evidence connects memory behavior to current impact."}
+::option[The hostname printed at login.]{#vmstat-hostname explanation="A hostname does not measure reclaim or paging activity."}
+:::
 
-## Exercise
+## CPU and System Activity
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of system and memory monitoring:
+CPU columns commonly include user (`us`), system (`sy`), idle (`id`), I/O wait (`wa`), and steal (`st`) percentages. System columns include interrupts (`in`) and context switches (`cs`) per second. Interpret spikes against a baseline; high context-switch rates can be normal for some workloads.
 
-1. **[Linux free Command: Monitoring System Memory](https://labex.io/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Learn to monitor and analyze system memory usage, understanding various display formats and total memory consumption.
-2. **[Linux top Command: Real-time System Monitoring](https://labex.io/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Learn to monitor system performance in real-time, including processes, CPU, and memory usage, using various options for sorting and filtering.
+:::single-choice{#vmstat-r-column}
+What does the `r` process field represent?
 
-These labs will help you apply the concepts of system resource monitoring in real scenarios and build confidence with analyzing Linux system performance.
+::option[Read-only mounted filesystems.]{#vmstat-readonly explanation="Filesystem mount flags are not represented by the process field."}
+::option[Remote users with active shells.]{#vmstat-remote-users explanation="Login sessions are reported by other tools."}
+::option[Tasks that are runnable or waiting for CPU.]{#vmstat-runnable .correct explanation="Comparing this count with CPU capacity can help identify CPU demand."}
+:::
 
-## Quiz Question
+## Summary
 
-What tool is used to view memory utilization? (Please answer in English, paying attention to case sensitivity).
+You can now interpret `vmstat` as a time-correlated system view.
 
-## Quiz Answer
-
-vmstat
+1. Separate the initial cumulative report from interval samples.
+2. Treat cache as potentially reclaimable memory.
+3. Correlate paging with reclaim and application impact.
+4. Read process, I/O, system, and CPU fields together.

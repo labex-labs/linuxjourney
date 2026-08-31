@@ -1,52 +1,79 @@
 ---
-index: 1
+lesson_id: "the-shell"
+course_id: "command-line"
 lang: "ja"
+order_index: 1
 title: "シェルとは"
+description: "Linux のシェルとは何か、コマンドがどのように実行されるかを学びます。"
 meta_title: "シェルとは - コマンドライン"
 meta_description: "Linuxシェルとは何か、Bashプロンプトの仕組み、そして初心者向けのコマンド例で最初のコマンドを実行する方法を学びましょう。"
 meta_keywords: "linux シェル, bash シェル, コマンドライン, linux ターミナル, シェルプロンプト, echo コマンド, 基本的な linux コマンド"
 ---
 
-## Lesson Content
+## Linux シェルとは
 
-### Linuxシェルとは何か
+Linux の学習へようこそ。最初のステップは Linux シェルを理解することです。シェルは、入力したコマンドを受け取り、オペレーティングシステムへ実行を依頼し、その結果を端末へ表示するプログラムです。
 
-Linuxの旅へようこそ！最初のステップはLinuxシェルを理解することです。シェルとは、あなたが入力したコマンドを受け取り、それをオペレーティングシステムに実行させ、その結果を端末に表示するプログラムです。
+グラフィカルユーザーインターフェースを使ったことがあれば、ウィンドウ、メニュー、ボタンをクリックする操作に慣れているでしょう。コマンドラインでは、代わりに正確な指示を入力します。「Terminal」「Console」「Konsole」などのアプリケーションは、通常、シェルセッションを開きます。
 
-グラフィカルユーザーインターフェースを使ったことがあるなら、ウィンドウやメニュー、ボタンをクリックすることに慣れているでしょう。コマンドラインでは、代わりに正確な指示をタイプします。通常、「Terminal」「Console」「Konsole」といった名前のアプリケーションがシェルセッションを開きます。
+端末は入力するためのウィンドウまたはアプリケーションで、シェルはその中で動作するプログラムです。
 
-シェルは高速でスクリプト化が可能で、ほぼすべてのLinuxシステムで利用できるため便利です。コマンドを学ぶにつれて、それらを組み合わせてファイルを調べたり、ディレクトリを管理したり、テキストを検索したり、ソフトウェアをインストールしたり、繰り返し作業を自動化したりできます。
+シェルは高速で、スクリプト化でき、ほぼすべての Linux システムで利用できるため便利です。コマンドを学ぶにつれ、それらを組み合わせてファイルを調べ、ディレクトリを管理し、テキストを検索し、ソフトウェアをインストールし、繰り返し作業を自動化できます。
 
-### Bashシェルとの対話
+:::single-choice{#distinguish-shell-and-terminal}
+端末とシェルの関係を正しく説明しているものはどれですか？
 
-このコースではBash（Bourne Again Shellの略）に焦点を当てます。Bashは最も一般的なLinuxシェルの一つであり、後で`zsh`や`fish`など他のシェルを使う場合でも良い基礎となります。
+::option[端末がウィンドウを提供し、その中でシェルが動作します。]{#shell-runs-in-terminal .correct explanation="端末は操作するためのインターフェースで、シェルはその中で動作するコマンド処理プログラムです。"}
+::option[端末がコマンドを受け取り、シェルはその出力を表示するだけです。]{#terminal-accepts-commands explanation="役割が逆です。端末がインターフェースを提供し、シェルがコマンドを受け取って実行します。"}
+::option[端末とシェルは、同じプログラムを表す 2 つの名前です。]{#terminal-equals-shell explanation="両者は連携しますが、同じプログラムではありません。端末がセッションを開き、その中でシェルが動作します。"}
+:::
 
-ターミナルを開くと、シェルプロンプトが表示されます。見た目は様々ですが、多くの場合、ユーザー名、ホスト名、現在のディレクトリが表示されます。
+## Bash シェルと対話する
+
+このコースでは Bourne Again Shell の略である Bash を中心に扱います。Bash は最も一般的な Linux シェルの 1 つで、後で `zsh`、`fish`、そのほかのシェルを使う場合にも良い基礎になります。
+
+端末を開くと、シェルプロンプトが表示されます。外観はさまざまですが、多くの場合はユーザー名、ホスト名、現在のディレクトリを示します。
 
 ```plaintext
 pete@icebox:/home/pete $
 ```
 
-`$`記号は、シェルが通常ユーザーとして入力を受け付ける準備ができていることを示します。コマンドを入力するときにこの記号はタイプしません。これはシェルが表示しているものです。もし`#`が表示されている場合は、通常rootユーザーとして作業しており、より強い権限とリスクがあります。
+`$` 記号は、シェルが通常ユーザーからの入力を待っていることを示します。コマンド入力時にこの記号は入力しません。シェルが表示するものです。`#` が表示されていれば、通常はより強力で危険も大きい root ユーザーとして作業しています。
 
-コマンドはしばしば次のパターンに従います：
+:::single-choice{#interpret-dollar-prompt}
+例のプロンプト末尾にある `$` は何を示しますか？
+
+::option[シェルが root ユーザーの権限で動作しています。]{#root-user-ready explanation="root のプロンプトは通常、`$` ではなく `#` で終わります。root アクセスには追加の権限と危険があります。"}
+::option[シェルが通常ユーザーからの入力を待っています。]{#normal-user-ready .correct explanation="`$` は通常ユーザーのプロンプトを表し、シェルがコマンドを受け付ける準備ができていることを示します。"}
+::option[次のコマンドはドル記号から始める必要があります。]{#type-dollar-first explanation="`$` はプロンプトの一部です。記号をコピーせず、その後に続くコマンドだけを入力します。"}
+:::
+
+コマンドは多くの場合、次の形式を取ります。
 
 ```bash
 command options arguments
 ```
 
-例えば、`echo Hello World`では、`echo`がコマンドで、`Hello World`がそれに渡されるテキストです。
+たとえば `echo Hello World` では、`echo` がコマンドで、`Hello World` が渡されるテキストです。
 
-### あなたの最初のLinuxコマンド
+:::single-choice{#identify-command-name}
+`echo Hello World` で、コマンド名はどの部分ですか？
 
-初心者向けの最も基本的なLinuxコマンドの一つ、`echo`から始めましょう。このコマンドは、あなたが指定したテキストを端末に表示します。
+::option[`Hello`]{#hello-command explanation="`Hello` はコマンド名の後にあるため、`echo` へ渡すテキストの一部です。"}
+::option[`World`]{#world-command explanation="`World` も `echo` へ渡すテキストで、実行するコマンドの名前ではありません。"}
+::option[`echo`]{#echo-command .correct explanation="`echo` は、シェルが実行すべきプログラム名です。その後の単語は引数として渡されます。"}
+:::
+
+## 最初の Linux コマンド
+
+初心者向けの最も基本的な Linux コマンドの 1 つ、`echo` から始めましょう。このコマンドは、指定したテキストを端末へ表示します。
 
 ```bash
 $ echo Hello World
 Hello World
 ```
 
-いくつか例を試してみてください：
+さらにいくつか試してみます。
 
 ```bash
 $ echo Linux is fun
@@ -55,32 +82,30 @@ $ echo "Hello from Bash"
 Hello from Bash
 ```
 
-複数の単語を一つのテキストとして扱いたい場合は、引用符が便利です。
+複数の単語を 1 つのテキストとしてシェルに扱わせたいとき、引用符が役立ちます。
 
-### 初心者向けのよくあるヒント
+:::single-choice{#group-words-with-quotes}
+`Hello from Bash` を、引用符で囲んだ 1 つのテキストとしてシェルに扱わせるコマンドはどれですか？
 
-- コマンドを実行するには`Enter`キーを押します。
-- `Up Arrow`キーで以前のコマンドを呼び出せます。
-- Linuxではコマンドやファイル名は大文字と小文字を区別します。
-- スペースは重要です。`echo hello`と`echohello`は異なります。
-- コマンドが固まったように見えたら、`Ctrl-C`でキャンセルできることが多いです。
+::option[`echo "Hello from Bash"`]{#quoted-words .correct explanation="引用符によって 3 つの単語が、`echo` へ渡す 1 つの引数にまとめられます。"}
+::option[`echo Hello from Bash`]{#unquoted-words explanation="見える結果は同じですが、引用符がないため、シェルはそれらを別々の引数として扱います。"}
+::option[`"echo Hello from Bash"`]{#quoted-command explanation="行全体を引用すると、`echo` とテキストに分けず、その全体を名前とするコマンドを探します。"}
+:::
 
-### よくある質問
+これらのスキルを練習するには、包括的な [![シェル学習パス](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)シェル学習パス](https://labex.io/ja/learn/shell) を利用してください。
 
-**シェルとターミナルは同じですか？** まったく同じではありません。ターミナルはあなたが入力するウィンドウやアプリで、シェルはその中で動作しているプログラムです。
+## 初心者向けのヒント
 
-**例にある`$`はタイプしますか？** いいえ。`$`はプロンプトのマーカーです。その後のコマンドだけをタイプしてください。
+- `Enter` を押してコマンドを実行する
+- `上矢印` キーで以前のコマンドを呼び出す
+- Linux のコマンドとファイル名では、大文字と小文字が区別される
+- 空白には意味がある。`echo hello` と `echohello` は異なる
+- コマンドが停止したように見える場合、`Ctrl-C` で取り消せることが多い
 
-**他のシェルがあるのに、なぜBashを学ぶのですか？** Bashは広く利用されており、ドキュメントが充実し、チュートリアルやスクリプトでよく使われています。
+## まとめ
 
-## Exercise
+これでシェルの役割を説明し、基本的なシェルプロンプトを操作できるようになりました。
 
-関連するスキルや概念を練習するために、包括的な[![Shell Learning Path](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell Learning Path](https://labex.io/ja/learn/shell)の利用をお勧めします。
-
-## Quiz Question
-
-`echo Hello World`と入力したときに表示される正確な出力は何ですか？大文字・小文字やスペースに注意して英語で答えてください。
-
-## Quiz Answer
-
-Hello World
+1. 端末とシェルを区別する。
+2. コマンドプロンプトを識別する。
+3. `echo` で簡単なコマンドを実行する。

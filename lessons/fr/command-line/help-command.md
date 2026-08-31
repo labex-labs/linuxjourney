@@ -1,41 +1,58 @@
 ---
-index: 15
+lesson_id: "help-command"
+course_id: "command-line"
 lang: "fr"
+order_index: 15
 title: "help"
+description: "Apprenez à choisir l'aide intégrée, la sortie d'utilisation d'un programme ou sa page de manuel."
 meta_title: "help - Ligne de commande"
 meta_description: "Apprenez à obtenir de l'aide sur la ligne de commande Linux avec l'aide Bash, la sortie --help, les pages man, et la commande type pour les commandes intégrées et externes."
 meta_keywords: "commande d'aide linux, aide bash, aide ligne de commande, --help, commande intégrée shell, commande man, commande type"
 ---
 
-## Lesson Content
+Vous n'avez pas besoin de mémoriser toutes les options. Bash et de nombreux programmes installés peuvent expliquer leur syntaxe directement dans le terminal, mais la source appropriée dépend du type de commande.
 
-Lorsque vous travaillez sur la ligne de commande Linux, vous aurez souvent besoin d'un rappel rapide sur le fonctionnement d'une commande ou les options qu'elle accepte. Linux fournit plusieurs outils d'aide directement dans le terminal.
+## Obtenir de l'aide sur les commandes intégrées à Bash
 
-### La commande 'help' pour les commandes intégrées Bash
+Bash fournit sa commande intégrée `help` pour les commandes mises en œuvre par le shell lui-même, comme `cd`, `history` et `type`.
 
-Un des outils les plus directs est `help`, une commande intégrée directement dans le shell Bash. Elle est spécialement conçue pour fournir des informations sur d'autres commandes intégrées Bash. Une commande intégrée fait partie du shell lui-même, ce n'est pas un programme séparé. Des exemples incluent `echo`, `cd` et `pwd`.
-
-Pour utiliser `help`, tapez-le suivi du nom de la commande intégrée.
+Fournissez le nom de la commande comme argument :
 
 ```bash
 $ help echo
 ```
 
-Cela affichera un résumé de la commande `echo`, sa syntaxe, et une liste des options disponibles. C'est la manière la plus rapide d'obtenir de l'aide pour les fonctions spécifiques au shell.
+La sortie décrit sa syntaxe et son comportement. Sans argument, `help` liste les commandes intégrées pour lesquelles Bash possède une aide.
 
-### Le flag --help pour les programmes exécutables
+:::single-choice{#help-for-bash-cd}
+Quelle commande affiche l'entrée d'aide de Bash pour sa commande intégrée `cd` ?
 
-Pour la plupart des autres programmes exécutables qui ne sont pas intégrés au shell, la commande `help` ne fonctionnera pas. À la place, une convention courante est de fournir un flag `--help`. Cette option indique au programme d'afficher un résumé d'utilisation puis de quitter.
+::option[`cd --help`]{#cd-help-option explanation="Certaines commandes intégrées reconnaissent des options, mais l'interface de documentation dédiée de Bash est `help` suivie du nom."}
+::option[`help cd`]{#help-cd .correct explanation="La commande intégrée `help` de Bash recherche la documentation de la commande intégrée nommée, ici `cd`."}
+::option[`type cd`]{#type-cd explanation="`type` explique comment Bash résout le nom `cd` ; elle identifie la commande sans afficher toute son entrée d'aide."}
+:::
+
+## Demander le résumé d'utilisation d'un programme
+
+De nombreux programmes externes acceptent par convention `--help` et affichent un résumé :
 
 ```bash
 $ ls --help
 ```
 
-Bien que la plupart des développeurs suivent cette norme, ce n'est pas universel. Essayer `--help` est généralement une bonne première étape pour un programme inconnu.
+Cette convention est fréquente, mais pas universelle. Lisez la sortie et l'état de terminaison au lieu de supposer que tous les programmes prennent en charge la même option.
 
-### Trouver le type de commande
+:::single-choice{#quick-ls-usage}
+Quelle commande affiche généralement un résumé rapide fourni par le programme externe `ls` ?
 
-Si vous n'êtes pas sûr qu'une commande soit une commande intégrée Bash ou un programme externe, utilisez `type`.
+::option[`help ls`]{#bash-help-ls explanation="`help` documente les commandes intégrées au shell. Sur un système typique, elle ne fournit pas la page d'utilisation du programme externe `ls`."}
+::option[`ls --help`]{#ls-help .correct explanation="GNU `ls` suit la convention courante `--help` et affiche son utilisation ainsi que ses options."}
+::option[`type --help ls`]{#type-help-ls explanation="Cette commande interroge la gestion des options de `type`, pas celle de `ls`."}
+:::
+
+## Découvrir comment Bash résout un nom
+
+Utilisez `type` pour savoir si Bash résout un nom comme commande intégrée, alias, fonction, mot-clé ou fichier exécutable :
 
 ```bash
 $ type cd
@@ -44,31 +61,38 @@ $ type ls
 ls is /usr/bin/ls
 ```
 
-Cela vous aide à choisir entre `help cd`, `ls --help` ou `man ls`.
+Le résultat exact dépend des alias, fonctions, programmes installés et de `PATH`. Utilisez `type -a NAME` pour afficher toutes les résolutions connues plutôt que la première seulement.
 
-### Choisir le bon outil d'aide
+:::single-choice{#identify-command-resolution}
+Vous ignorez si `deploy` est un alias, une fonction, une commande intégrée ou un exécutable. Quelle commande Bash vérifie sa résolution ?
 
-- Utilisez `help COMMANDE` pour les commandes intégrées Bash telles que `cd`, `echo` et `history`.
-- Utilisez `COMMANDE --help` pour un résumé rapide de nombreuses commandes externes.
-- Utilisez `man COMMANDE` pour des pages de manuel détaillées.
-- Utilisez `whatis COMMANDE` pour une description en une ligne.
+::option[`type deploy`]{#type-deploy .correct explanation="La commande intégrée `type` indique comment Bash interprète ce nom dans l'environnement actuel du shell."}
+::option[`help deploy`]{#help-deploy explanation="`help` recherche la documentation des commandes intégrées à Bash ; elle n'identifie généralement pas les alias, fonctions et fichiers externes."}
+::option[`deploy --help`]{#deploy-help explanation="Cette commande tente d'exécuter le programme et dépend de sa prise en charge de l'option ; elle n'explique pas d'abord comment Bash a résolu le nom."}
+:::
 
-### Questions fréquentes
+## Choisir le niveau de détail
 
-**Pourquoi `help ls` ne fonctionne-t-il pas ?** `ls` est généralement un programme externe, pas une commande intégrée Bash. Essayez `ls --help` ou `man ls`.
+- Utilisez `help COMMAND` pour une commande intégrée à Bash.
+- Utilisez `COMMAND --help` pour obtenir un résumé rapide de nombreux programmes externes.
+- Utilisez `man COMMAND` pour une page de manuel installée et plus détaillée.
+- Utilisez `whatis COMMAND` pour une description en une ligne.
 
-**Pourquoi `--help` ne fonctionne-t-il pas pour toutes les commandes ?** C'est une convention, pas une règle stricte.
+Les leçons suivantes étudient plus précisément les pages de manuel et les descriptions brèves.
 
-**Quelle est la manière la plus rapide de vérifier une commande ?** Essayez `COMMANDE --help` pour les commandes externes et `help COMMANDE` pour les commandes intégrées Bash.
+:::single-choice{#choose-detailed-manual}
+Vous avez besoin de la documentation détaillée de la commande externe `ls`, pas seulement d'un résumé. Quelle commande faut-il essayer ?
 
-## Exercise
+::option[`man ls`]{#man-ls .correct explanation="`man ls` ouvre la page de manuel installée, qui décrit normalement plus complètement la syntaxe, les options et le comportement."}
+::option[`whatis ls`]{#whatis-ls explanation="`whatis` affiche des descriptions concises de pages de manuel ; elle ne fournit pas la documentation détaillée demandée."}
+::option[`type ls`]{#type-ls explanation="`type` indique comment Bash résout `ls` ; elle n'affiche pas le manuel détaillé du programme."}
+:::
 
-Bien qu'il n'y ait pas de laboratoires spécifiques pour ce sujet, nous recommandons d'explorer le parcours complet [Linux Learning Path](https://labex.io/fr/learn/linux) pour pratiquer les compétences et concepts Linux associés.
+## Résumé
 
-## Quiz Question
+Vous savez maintenant choisir une source d'aide en fonction de la manière dont Bash résout une commande.
 
-Comment obtenir rapidement de l'aide en ligne de commande pour les commandes intégrées Bash ? (Veuillez fournir le nom de la commande unique en anglais et en minuscules.)
-
-## Quiz Answer
-
-help
+1. Utiliser `help` pour les commandes intégrées à Bash.
+2. Essayer `--help` pour le résumé d'utilisation d'un programme.
+3. Examiner la résolution d'un nom avec `type`.
+4. Ouvrir une documentation détaillée avec `man`.

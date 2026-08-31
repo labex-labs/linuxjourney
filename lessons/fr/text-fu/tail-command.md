@@ -1,56 +1,125 @@
 ---
-index: 9
+lesson_id: "tail-command"
+course_id: "text-fu"
 lang: "fr"
-title: "queue"
-meta_title: "tail - Outils Texte"
-meta_description: "Guide Linux pour débutants sur la commande tail. Apprenez à utiliser tail sous Linux pour afficher la fin des fichiers et surveiller les logs en temps réel avec l'option puissante tail -f."
-meta_keywords: "commande tail, Linux tail, tail -f, visualiser logs, surveiller logs, tutoriel Linux, Linux débutant, guide Linux, surveillance fichiers"
+order_index: 9
+title: "tail"
+description: "Apprenez à consulter la fin d'une entrée et à suivre un fichier lorsque du contenu y est ajouté."
+meta_title: "tail - Text-Fu"
+meta_description: "Utilisez la commande Linux tail pour voir la fin d'un fichier et suivre un journal en temps réel avec tail -f."
+meta_keywords: "commande tail, Linux tail, tail -f, journaux, surveillance fichiers"
 ---
 
-## Lesson Content
+`tail` affiche la fin d'un fichier ou d'un flux. Il peut aussi rester actif et montrer les données ajoutées, ce qui est utile pour observer des journaux.
 
-La commande `tail` est un utilitaire fondamental pour quiconque apprend Linux. Comme son nom l'indique, elle permet de visualiser la "queue" ou la fin d'un fichier. Ceci est particulièrement utile pour vérifier les entrées les plus récentes dans les fichiers qui changent rapidement, tels que les journaux système.
+## Afficher les dix dernières lignes
 
-### Visualiser la fin d'un fichier
-
-Par défaut, la commande `tail` affiche les 10 dernières lignes d'un fichier spécifié. Elle fonctionne comme le complément de la commande `head`.
+Sans option de comptage, `tail` affiche les 10 dernières lignes :
 
 ```bash
-tail /var/log/syslog
+$ tail application.log
 ```
 
-Tout comme avec `head`, vous pouvez personnaliser le nombre de lignes que vous souhaitez afficher en utilisant l'option `-n`. Par exemple, pour voir les 20 dernières lignes, vous utiliseriez la commande suivante :
+Si le fichier est plus court, toutes ses lignes sont affichées sans le modifier.
+
+:::single-choice{#tail-default-lines}
+Que montre `tail application.log` par défaut ?
+
+::option[Au plus les 10 premières lignes.]{#tail-first-ten explanation="Le début est sélectionné par `head` ; `tail` part de la fin."}
+::option[Toutes les lignes ajoutées après son lancement.]{#tail-follow-only explanation="Le suivi continu exige `-f` ; un simple `tail` affiche un instantané puis se termine."}
+::option[Au plus les 10 dernières lignes.]{#tail-last-ten .correct explanation="Sans option, `tail` choisit les dix dernières lignes disponibles."}
+:::
+
+## Choisir un nombre de lignes ou d'octets
 
 ```bash
-tail -n 20 /var/log/syslog
+$ tail -n 20 application.log
 ```
 
-Cette flexibilité fait de la commande `tail Linux` un outil essentiel pour inspecter rapidement les fins de fichiers sans ouvrir le fichier entier.
-
-### Surveillance de fichiers en temps réel avec tail -f
-
-L'une des fonctionnalités les plus puissantes de la commande `tail` est sa capacité à surveiller les fichiers en temps réel. Ceci est réalisé avec l'indicateur `-f` (follow/suivre). Lorsque vous utilisez `tail -f`, la commande ne se termine pas après avoir affiché les dernières lignes. Au lieu de cela, elle attend que de nouvelles données soient ajoutées au fichier et les imprime à l'écran au fur et à mesure de leur arrivée.
+Utilisez `-c NUMBER` lorsque vous avez besoin des derniers octets :
 
 ```bash
-tail -f /var/log/syslog
+$ tail -c 100 payload.bin
 ```
 
-Essayez d'exécuter cette commande. Au fur et à mesure que vous continuez à utiliser votre système, vous verrez de nouvelles lignes apparaître dans votre terminal. Cela fait de `tail -f` un outil indispensable pour les administrateurs système et les développeurs qui ont besoin de `visualiser les journaux` et de surveiller la sortie des applications au fur et à mesure qu'elles se produisent.
+`-n` choisit les dernières lignes, `-c` les derniers octets. Le mode octet peut commencer au milieu d'une ligne ou d'un caractère encodé.
 
-## Exercise
+:::single-choice{#tail-twenty-lines}
+Quelle commande affiche les 20 dernières lignes de `application.log` ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la commande `tail` et de ses applications :
+::option[`tail -n 20 application.log`]{#tail-twenty-end .correct explanation="`-n` choisit un nombre de lignes, que `tail` prend à la fin."}
+::option[`head -n 20 application.log`]{#head-twenty-start explanation="Cette commande choisit les lignes du début."}
+::option[`tail -c 20 application.log`]{#tail-twenty-bytes explanation="`-c` choisit 20 octets, pas 20 lignes."}
+:::
 
-1. **[Commande tail Linux : Affichage de la fin de fichier](https://labex.io/fr/labs/linux-linux-tail-command-file-end-display-214303)** - Apprenez la commande `tail` Linux pour visualiser et surveiller la fin des fichiers texte, y compris l'option `-f` pour les mises à jour en temps réel.
-2. **[Visualisation des fichiers journaux et de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Entraînez-vous à utiliser `tail` (avec `cat` et `more`) pour visualiser et naviguer efficacement dans les fichiers journaux et de configuration, ce qui est crucial pour la surveillance du système.
-3. **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Appliquez vos connaissances de `tail` pour extraire et analyser rapidement les entrées de journal récentes, simulant une détection rapide des menaces dans un contexte de cybersécurité.
+## Commencer à une ligne donnée
 
-Ces laboratoires vous aideront à appliquer les concepts de visualisation et de surveillance du contenu des fichiers dans des scénarios réels et à gagner en confiance avec la commande `tail`.
+Avec un préfixe `+`, `tail -n +N` commence à la ligne N :
 
-## Quiz Question
+```bash
+$ tail -n +5 report.txt
+```
 
-Quel est l'indicateur utilisé pour suivre un fichier dans `tail` ? (Veuillez répondre en anglais, en faisant attention à la casse)
+Cette commande saute quatre lignes et commence à la cinquième, ce qui permet notamment de retirer un nombre connu d'en-têtes.
 
-## Quiz Answer
+:::single-choice{#tail-start-line-five}
+Quelle commande affiche `report.txt` à partir de la ligne 5 ?
 
--f
+::option[`tail -n +5 report.txt`]{#tail-from-five .correct explanation="`+5` demande à `tail` de commencer à la ligne 5 et de poursuivre jusqu'à la fin."}
+::option[`tail -n 5 report.txt`]{#tail-final-five explanation="Sans plus, cette forme choisit les cinq dernières lignes."}
+::option[`head -n +5 report.txt`]{#head-plus-five explanation="Ce n'est pas la forme de départ à une ligne de `tail`."}
+:::
+
+## Suivre les données ajoutées
+
+Avec `-f`, `tail` affiche la fin actuelle et reste actif :
+
+```bash
+$ tail -f application.log
+```
+
+Appuyez sur `Ctrl+C` pour l'interrompre. Le suivi montre seulement le nouveau contenu ; il ne garantit pas la santé de l'application ni que tous les événements utilisent ce fichier.
+
+:::single-choice{#tail-follow-file}
+Quelle commande montre la fin actuelle de `application.log` puis attend les ajouts ?
+
+::option[`tail -f application.log`]{#tail-follow-app .correct explanation="`-f` maintient `tail` actif et affiche les données ajoutées."}
+::option[`tail -n 0 application.log`]{#tail-zero-lines explanation="Sans option de suivi, elle n'affiche rien puis se termine."}
+::option[`less application.log`]{#less-log explanation="Cette forme ouvre un paginateur, pas le mode de suivi de `tail`."}
+:::
+
+## Suivre un journal renouvelé par son nom
+
+La rotation peut renommer l'ancien fichier et en recréer un au chemin initial. GNU `tail -F` suit le nom et réessaie, ce qui lui permet de rouvrir le fichier :
+
+```bash
+$ tail -F application.log
+```
+
+Employez `-f` pour suivre le fichier actuellement ouvert et `-F` lorsqu'un journal nommé doit tourner. D'autres implémentations peuvent différer.
+
+:::single-choice{#tail-follow-rotated-name}
+Sous GNU/Linux, quelle option convient au suivi de `application.log` lors d'une rotation par renommage et recréation ?
+
+::option[`-n`]{#tail-rotation-lines explanation="`-n` modifie le nombre de lignes, pas le suivi d'un chemin remplacé."}
+::option[`-c`]{#tail-rotation-bytes explanation="`-c` choisit les octets et ne gère pas la rotation."}
+::option[`-F`]{#tail-follow-name .correct explanation="GNU `-F` suit le nom et réessaie afin de rouvrir un journal remplacé."}
+:::
+
+Sans fichier, `tail` lit stdin. Avec plusieurs fichiers, il ajoute par défaut des en-têtes, comme `head`.
+
+Pour vous exercer :
+
+1. **[Commande Linux tail : afficher la fin d'un fichier](https://labex.io/fr/labs/linux-linux-tail-command-file-end-display-214303)** - Consultez et suivez la fin de fichiers avec `-f`.
+2. **[Consulter les journaux et fichiers de configuration](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Naviguez efficacement dans les journaux.
+3. **[Détection rapide des menaces](https://labex.io/fr/labs/linux-rapid-threat-detection-387930)** - Analysez rapidement des entrées récentes.
+
+## Résumé
+
+Vous savez inspecter la fin d'un fichier et observer son nouveau contenu.
+
+1. Afficher les dix dernières lignes par défaut.
+2. Choisir un nombre de lignes ou d'octets.
+3. Commencer à une ligne avec `-n +N`.
+4. Suivre les ajouts avec `-f` et arrêter avec `Ctrl+C`.
+5. Utiliser GNU `-F` pour un journal soumis à rotation.

@@ -1,79 +1,84 @@
 ---
-index: 6
+lesson_id: "memory-monitoring"
+course_id: "process-utilization"
 lang: "fr"
+order_index: 6
 title: "Surveillance de la mémoire"
+description: "Découvrez comment interpréter les échantillons de vmstat relatifs à la mémoire, la pagination, les processus, les entrées-sorties et le processeur."
 meta_title: "Surveillance de la mémoire - Utilisation des processus"
-meta_description: "Maîtrisez la surveillance de la mémoire Linux avec la commande vmstat. Ce guide explique comment utiliser cet outil puissant de surveillance de l'utilisation de la mémoire pour analyser les métriques de performance du système."
-meta_keywords: "surveillance mémoire, moniteur d'utilisation mémoire, vmstat, mémoire linux, performance système, utilisation mémoire, tutoriel linux"
+meta_description: "Maîtrisez la surveillance de la mémoire Linux avec vmstat et analysez les mesures de performances du système."
+meta_keywords: "surveillance mémoire, utilisation mémoire, vmstat, mémoire Linux, performances système, tutoriel Linux"
 ---
 
-## Lesson Content
+Linux emploie intentionnellement la mémoire autrement inactive pour les caches ; une faible valeur `free` ne prouve donc pas à elle seule une pression mémoire. `vmstat` aide à relier la mémoire aux tâches exécutables, à la pagination, aux entrées-sorties et à l’activité du processeur.
 
-Une administration système efficace nécessite de surveiller de près l'utilisation des ressources, et la **surveillance de la mémoire** est un élément essentiel de ce processus. Lorsqu'un système manque de mémoire, ses performances peuvent se dégrader considérablement. Linux fournit plusieurs outils pour vous aider à suivre la consommation de mémoire, et l'un des plus polyvalents est `vmstat`.
+## Échantillonner avec vmstat
 
-### Introduction à vmstat
-
-La commande `vmstat` (statistiques de mémoire virtuelle) est un **moniteur d'utilisation de la mémoire** puissant qui signale des informations sur les processus, la mémoire, la pagination, les E/S de bloc, les interruptions et l'activité du CPU. L'exécuter sans arguments fournit un instantané de l'état actuel du système depuis le dernier démarrage.
+Recueillez un échantillon par seconde :
 
 ```bash
-pete@icebox:~$ vmstat
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
-r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- 1  0      0 396528  38816 384036    0    0     4     2   38   79  0  0 99  0  0
+$ vmstat 1
 ```
 
-Le résultat est organisé en plusieurs colonnes. Décomposons la signification de chaque champ.
+La première ligne de données indique généralement les moyennes depuis le démarrage ; les lignes suivantes couvrent chaque intervalle. Arrêtez avec `Ctrl-C` après avoir enregistré une période représentative. Les unités et les champs disponibles varient ; consultez `vmstat --unit` et le manuel local.
 
-### Procs
+:::single-choice{#vmstat-interval-rows}
+Quelles lignes conviennent le mieux à l’observation des changements seconde par seconde avec `vmstat 1` ?
 
-- `r` : Le nombre de processus exécutables attendant du temps d'exécution.
-- `b` : Le nombre de processus en sommeil non interrompable, attendant généralement des E/S.
+::option[Les lignes qui suivent le rapport initial.]{#vmstat-later-rows .correct explanation="Les lignes suivantes décrivent chaque intervalle demandé plutôt que toute la période cumulée."}
+::option[Uniquement les en-têtes au-dessus de la première ligne de données.]{#vmstat-headings explanation="Les en-têtes définissent les champs, mais ne contiennent aucun échantillon d’activité."}
+::option[Uniquement une ligne copiée depuis un autre hôte.]{#vmstat-other-host explanation="Un autre système ne représente pas la charge de travail actuelle."}
+:::
 
-### Memory
+## Processus et mémoire
 
-- `swpd` : La quantité de mémoire virtuelle utilisée (en kilooctets).
-- `free` : La quantité de mémoire inactive (en kilooctets).
-- `buff` : La quantité de mémoire utilisée comme tampons (buffers).
-- `cache` : La quantité de mémoire utilisée comme cache de pages.
+Les champs courants des processus sont `r`, pour les tâches exécutables, et `b`, pour les tâches bloquées en sommeil non interruptible. Les champs de mémoire comprennent l’espace d’échange utilisé (`swpd`), la mémoire inactive (`free`), les tampons (`buff`) et le cache (`cache`). Il s’agit de valeurs pour tout le système, et non de la consommation de chaque processus.
 
-### Swap
+Pour une vue plus simple de la mémoire actuellement disponible, comparez avec :
 
-- `si` : La quantité de mémoire échangée depuis le disque par seconde (en kilooctets). Des valeurs élevées indiquent que le système manque de mémoire physique.
-- `so` : La quantité de mémoire échangée vers le disque par seconde (en kilooctets). Idéalement, cette valeur devrait être nulle.
+```bash
+$ free -h
+```
 
-### IO
+L’estimation `available` est généralement plus utile que `free` seule, car le cache récupérable peut satisfaire de nouvelles allocations.
 
-- `bi` : Blocs reçus d'un périphérique de bloc (blocs/s).
-- `bo` : Blocs envoyés à un périphérique de bloc (blocs/s).
+:::single-choice{#vmstat-free-memory}
+Pourquoi une faible valeur `free` peut-elle être normale sous Linux ?
 
-### System
+::option[Cette valeur exclut toujours toute la mémoire vive physique.]{#vmstat-excludes-ram explanation="Il s’agit d’un champ de mémoire, même si son unité exacte doit être vérifiée."}
+::option[Le noyau peut employer la mémoire inactive pour des caches récupérables.]{#vmstat-reclaimable-cache .correct explanation="La mémoire mise en cache peut souvent être récupérée lorsque les applications en ont besoin."}
+::option[Une faible mémoire libre prouve que le processeur est éteint.]{#vmstat-cpu-off explanation="L’allocation de mémoire et l’état d’alimentation du processeur sont sans rapport."}
+:::
 
-- `in` : Le nombre d'interruptions par seconde, y compris l'horloge.
-- `cs` : Le nombre de changements de contexte par seconde.
+## Pagination et entrées-sorties
 
-### CPU
+`si` et `so` indiquent les débits d’entrée et de sortie de l’espace d’échange. Une pagination soutenue associée à une latence et à une activité de récupération de mémoire peut signaler une pression, mais une utilisation non nulle de l’espace d’échange (`swpd`) ne prouve pas à elle seule un problème actuel. `bi` et `bo` indiquent les débits d’entrée et de sortie de blocs et ne se limitent pas au trafic d’échange.
 
-Ce sont des pourcentages du temps total du CPU.
+:::single-choice{#vmstat-swap-pressure}
+Quel indice étaye le mieux un diagnostic de pression mémoire actuelle ?
 
-- `us` : Temps passé à exécuter du code non noyau (temps utilisateur).
-- `sy` : Temps passé à exécuter du code noyau (temps système).
-- `id` : Temps passé au repos (inactif).
-- `wa` : Temps passé à attendre des E/S.
-- `st` : Temps volé à une machine virtuelle (pour les environnements virtualisés).
+::option[Une valeur `swpd` non nulle sans aucune autre observation.]{#vmstat-swpd-alone explanation="Des pages peuvent rester dans l’espace d’échange après une pression passée ; la quantité seule ne suffit donc pas."}
+::option[Une pagination soutenue corrélée à la récupération de mémoire et à la latence de la charge.]{#vmstat-correlated-pressure .correct explanation="Des indices répétés et corrélés relient le comportement de la mémoire aux conséquences actuelles."}
+::option[Le nom de l’hôte affiché lors de la connexion.]{#vmstat-hostname explanation="Le nom d’hôte ne mesure ni la récupération de mémoire ni la pagination."}
+:::
 
-## Exercise
+## Activité du processeur et du système
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la surveillance du système et de la mémoire :
+Les colonnes du processeur comprennent couramment les pourcentages utilisateur (`us`), système (`sy`), inactif (`id`), d’attente d’entrées-sorties (`wa`) et de vol (`st`). Les colonnes système comprennent les interruptions (`in`) et les changements de contexte (`cs`) par seconde. Interprétez les pics par rapport à une référence ; un taux élevé de changements de contexte peut être normal pour certaines charges.
 
-1. **[Commande Linux free : Surveillance de la mémoire système](https://labex.io/fr/labs/linux-linux-free-command-monitoring-system-memory-388496)** - Apprenez à surveiller et analyser l'utilisation de la mémoire système, en comprenant les différents formats d'affichage et la consommation totale de mémoire.
-2. **[Commande Linux top : Surveillance du système en temps réel](https://labex.io/fr/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Apprenez à surveiller les performances du système en temps réel, y compris les processus, le CPU et l'utilisation de la mémoire, en utilisant diverses options de tri et de filtrage.
+:::single-choice{#vmstat-r-column}
+Que représente le champ de processus `r` ?
 
-Ces laboratoires vous aideront à appliquer les concepts de surveillance des ressources système dans des scénarios réels et à renforcer votre confiance dans l'analyse des performances du système Linux.
+::option[Les systèmes de fichiers montés en lecture seule.]{#vmstat-readonly explanation="Les options de montage ne sont pas représentées par ce champ de processus."}
+::option[Les utilisateurs distants possédant un shell actif.]{#vmstat-remote-users explanation="Les sessions de connexion sont indiquées par d’autres outils."}
+::option[Les tâches exécutables ou en attente du processeur.]{#vmstat-runnable .correct explanation="La comparaison de ce nombre à la capacité du processeur peut aider à identifier une demande de calcul."}
+:::
 
-## Quiz Question
+## Résumé
 
-Quel outil est utilisé pour visualiser l'utilisation de la mémoire ? (Veuillez répondre en anglais, en faisant attention à la casse)
+Vous savez maintenant interpréter `vmstat` comme une vue du système corrélée dans le temps.
 
-## Quiz Answer
-
-vmstat
+1. Distinguer le rapport cumulatif initial des échantillons par intervalle.
+2. Considérer le cache comme de la mémoire potentiellement récupérable.
+3. Mettre la pagination en relation avec la récupération et les conséquences sur l’application.
+4. Lire ensemble les champs des processus, des entrées-sorties, du système et du processeur.

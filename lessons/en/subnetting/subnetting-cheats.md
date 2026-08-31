@@ -1,70 +1,93 @@
 ---
-index: 4
+lesson_id: "subnetting-cheats"
+course_id: "subnetting"
 lang: "en"
+order_index: 4
 title: "Subnetting Cheats"
+description: "Learn compact binary and block-size methods for checking IPv4 subnet calculations."
 meta_title: "Subnetting Cheats - Subnetting"
 meta_description: "Master subnetting with our guide on binary conversion cheats. Learn to use the 128+64+32+16+8+4+2+1 chart to quickly convert IP addresses from decimal to binary and back. Essential for networking interviews and certifications."
 meta_keywords: "subnetting, binary conversion, IP address, network, Linux networking, 128+64+32+16+8+4+2+1, 128 64 32 16 8 4 2 1, decimal to binary, subnet math, tutorial, guide"
 ---
 
-## Lesson Content
+Subnet calculators are useful, but a small set of binary patterns makes their output easier to verify. These methods are checks, not substitutes for confirming the real allocation and routing policy.
 
-In modern networking, you will rarely perform subnet math by hand, as tools and calculators automate the process. However, understanding the manual conversion between decimal and binary is crucial for networking interviews, certification exams, and gaining a deeper understanding of how IP addressing works. This lesson provides some simple cheats to help you master it.
+## Octet Bit Values
 
-First, it's highly beneficial to memorize the base-2 calculations, as they form the foundation of binary math.
+An IPv4 octet uses these place values:
 
-- 2^1 = 2
-- 2^2 = 4
-- 2^3 = 8
-- 2^4 = 16
-- 2^5 = 32
-- 2^6 = 64
-- 2^7 = 128
-- 2^8 = 256
-
-### The Binary Conversion Chart
-
-To easily convert numbers, we use a chart that represents the value of each bit in an 8-bit octet of an IP address.
-
-```plaintext
-1   1  1  1  1 1 1 1
-128 64 32 16 8 4 2 1
+```text
+bit:    1   1   1   1   1  1  1  1
+value: 128  64  32  16   8  4  2  1
 ```
 
-This chart is your primary tool. Each number corresponds to a bit's position. The full sum, `128+64+32+16+8+4+2+1`, equals 255, which is the highest possible value in an octet.
+Adding all eight values produces 255. Decimal 192 is `128 + 64`, so its binary representation is `11000000`.
 
-### Decimal to Binary Conversion
+:::single-choice{#subnet-cheats-binary-192}
+What is decimal 192 in eight-bit binary?
 
-Let's convert the IP address `192.168.23.43` to binary. We'll walk through the first octet, `192`, to demonstrate the process. We use the values from our chart: `128 64 32 16 8 4 2 1`.
+::option[`11000000`]{#subnet-cheats-192-correct .correct explanation="The 128 and 64 positions are set and the remaining positions are zero."}
+::option[`10101000`]{#subnet-cheats-168 explanation="This pattern equals 168."}
+::option[`11111111`]{#subnet-cheats-255 explanation="All eight positions set equal 255."}
+:::
 
-1. Start with the number `192`. Can you subtract 128 from it? Yes (192 - 128 = 64). So, the first bit is **1**.
-2. Our new number is `64`. Can you subtract the next value, 64, from it? Yes (64 - 64 = 0). The second bit is **1**.
-3. Our remainder is now `0`. We cannot subtract 32, 16, 8, 4, 2, or 1. Therefore, the remaining bits are all **0**.
+## Common Partial-Octet Masks
 
-The binary form of 192 is `11000000`. You can apply this same subtraction method to the other octets.
+Contiguous prefix bits produce a short mask sequence:
 
-### Binary to Decimal Conversion
+```text
+bits set: 0    1    2    3    4    5    6    7    8
+decimal:  0  128  192  224  240  248  252  254  255
+```
 
-To convert from binary back to decimal, you simply add the values from the chart where a `1` appears in the binary number. Let's convert `11000000` back to decimal.
+For example, `/19` contains 16 full prefix bits plus three bits in the third octet, so its mask is `255.255.224.0`.
 
-Looking at the chart `128 64 32 16 8 4 2 1`, the first two bits are `1`. This means we add the first two values:
+:::single-choice{#subnet-cheats-prefix-19}
+Which mask corresponds to IPv4 `/19`?
 
-`128 + 64 = 192`
+::option[`255.255.224.0`]{#subnet-cheats-mask-19 .correct explanation="Sixteen full bits plus three more yield 255, 255, and 224."}
+::option[`255.255.19.0`]{#subnet-cheats-literal-19 explanation="A prefix length is a bit count, not a decimal mask octet."}
+::option[`255.255.255.19`]{#subnet-cheats-tail-19 explanation="This is not a contiguous 19-bit mask."}
+:::
 
-Since all other bits are `0`, we don't add any other values. The formula `128 + 64 + 0 + 0 + 0 + 0 + 0 + 0` gives us 192. It's that simple!
+## Block Sizes
 
-## Exercise
+In the first mask octet that is not 255, subtract the mask value from 256 to get the subnet increment. A `/27` mask ends in 224, giving block size `256 - 224 = 32`. Boundaries in the final octet are therefore 0, 32, 64, 96, 128, 160, 192, and 224.
 
-Practice makes perfect! While subnet math is often automated in the real world, understanding the underlying binary conversions is crucial for interviews and a deeper grasp of networking. Here's a hands-on lab to reinforce your understanding:
+Address `198.51.100.77/27` lies in the 64-through-95 block.
 
-1. **[Perform IP Subnetting and Binary Conversion in the Linux Terminal](https://labex.io/labs/comptia-perform-ip-subnetting-and-binary-conversion-in-the-linux-terminal-592782)** - Master IP subnetting and binary conversion by using Python in a Linux terminal to convert IP addresses, translate CIDR masks, and calculate network details.
+:::single-choice{#subnet-cheats-77-network}
+What is the network address for `198.51.100.77/27`?
 
-This lab will help you apply the concepts of binary conversion and subnetting in a practical scenario and build confidence with network addressing fundamentals.
+::option[`198.51.100.32`]{#subnet-cheats-network-32 explanation="That block covers final-octet values 32 through 63."}
+::option[`198.51.100.77`]{#subnet-cheats-network-77 explanation="The address includes host bits and is not the block boundary."}
+::option[`198.51.100.64`]{#subnet-cheats-network-64 .correct explanation="The `/27` block beginning at 64 covers 64 through 95."}
+:::
 
-## Quiz Question
+## Converting an Arbitrary Octet
 
-What is the binary conversion of 123? Please provide the answer in English characters (numbers).
+To convert decimal 123, select the largest remaining values without exceeding it:
 
-## Quiz Answer
+```text
+123 = 64 + 32 + 16 + 8 + 2 + 1
+    = 01111011
+```
 
-01111011
+Convert back by adding only the place values whose bits are one. Always keep all eight positions when working inside an IPv4 octet.
+
+:::single-choice{#subnet-cheats-binary-123}
+Which eight-bit value equals decimal 123?
+
+::option[`1111011`]{#subnet-cheats-123-seven-bit explanation="The numeric value is similar, but the octet representation must retain eight positions."}
+::option[`01111011`]{#subnet-cheats-123-correct .correct explanation="The set positions add to 64 + 32 + 16 + 8 + 2 + 1."}
+::option[`01111100`]{#subnet-cheats-124 explanation="This pattern sets the 4 position instead of 2 and 1, producing 124."}
+:::
+
+## Summary
+
+You can now check common IPv4 calculations with compact binary patterns.
+
+1. Use the eight octet place values from 128 through 1.
+2. Recall the sequence of contiguous partial-octet masks.
+3. Derive block size by subtracting the partial mask from 256.
+4. Keep eight bits when converting individual octets.

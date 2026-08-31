@@ -1,54 +1,98 @@
 ---
-index: 6
+lesson_id: "transport-layer"
+course_id: "network-basics"
 lang: "en"
+order_index: 6
 title: "Transport Layer"
+description: "Learn how TCP and UDP use ports and different delivery semantics between application endpoints."
 meta_title: "Transport Layer - Network Basics"
 meta_description: "Explore the Transport Layer in Linux networking. This lesson covers key protocols like TCP and UDP, the function of network ports, data segmentation, and the TCP handshake for reliable data transfer."
 meta_keywords: "Linux Transport Layer, TCP, UDP, TCP handshake, network ports, data segmentation, Linux networking, network protocols, reliable data transfer"
 ---
 
-## Lesson Content
+The transport layer connects application endpoints across an IP network. TCP and UDP both use 16-bit port numbers, but they expose different communication models and guarantees to applications.
 
-The transport layer is a fundamental part of Linux networking responsible for end-to-end communication and reliable data transfer between applications on different hosts. It prepares data for transport across the network in a structured and manageable way.
+## Ports and Sockets
 
-### Data Segmentation
+A destination port helps the operating system deliver traffic to a listening socket. A connection or flow is identified by more than one port: protocol, source and destination addresses, and source and destination ports all matter. The same server port can therefore support many simultaneous clients.
 
-One of the primary functions of the transport layer is data segmentation. It breaks down large amounts of data into smaller, more manageable chunks called segments. This process makes data transfer more efficient and resilient. If a segment is lost or corrupted during transmission, only that small piece needs to be re-sent, not the entire data set. Once the segments arrive at their destination, the transport layer reassembles them in the correct order.
+:::single-choice{#transport-layer-many-clients}
+How can one TCP server port handle several clients at once?
 
-### Understanding Network Ports
+::option[Each connection has a distinct combination of endpoint addresses and ports.]{#transport-layer-connection-tuple .correct explanation="The complete transport tuple distinguishes concurrent connections sharing a listening port."}
+::option[The server permanently renames its port after each packet.]{#transport-layer-renames-port explanation="The listening port can remain stable while accepted connections have distinct peer tuples."}
+::option[IP removes all source addresses before delivery.]{#transport-layer-removes-source explanation="Source addresses are part of identifying the peer and path."}
+:::
 
-While IP addresses identify the correct host on a network, they don't specify which application or service should receive the data. This is where network ports come in. Services like HTTP (web traffic) or SMTP (email) listen on specific, well-known ports. For example, HTTP typically uses port 80. The transport layer attaches source and destination port numbers to each segment, ensuring that the data is delivered to the correct process on the receiving host.
+## TCP Byte Streams
 
-### Core Transport Protocols TCP and UDP
+TCP provides an ordered, reliable byte stream while a connection remains viable. It uses sequence numbers, acknowledgements, retransmission, flow control, and congestion control. TCP does not preserve application message boundaries: one write can arrive through several reads, or several writes can be returned by one read. Applications define their own framing.
 
-There are two main transport protocols used in modern networks: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol). We will briefly cover UDP and then focus on TCP, as it is the most widely used for reliable communication.
+Reliability is not absolute delivery. A connection can time out, reset, or fail, and an acknowledgement does not prove that an application durably committed the data.
 
-### UDP (User Datagram Protocol)
+:::single-choice{#transport-layer-tcp-boundaries}
+What happens to application message boundaries in TCP?
 
-UDP is a connectionless protocol that offers a fast but unreliable method of transporting data. It does not guarantee that all segments will arrive or that they will arrive in the correct order. While this may seem like a disadvantage, UDP is highly effective for applications where speed is more critical than perfect accuracy, such as live video streaming or online gaming. Losing a few frames of video is often an acceptable trade-off for a smoother, faster stream.
+::option[TCP exposes an ordered byte stream without preserving write boundaries.]{#transport-layer-byte-stream .correct explanation="The application protocol must define how messages are delimited or sized."}
+::option[Every write becomes exactly one IP packet and one read.]{#transport-layer-one-write-packet explanation="Segmentation, buffering, and receiving APIs do not preserve that mapping."}
+::option[TCP converts each message into a DNS record.]{#transport-layer-tcp-dns explanation="DNS is a separate application protocol."}
+:::
 
-### TCP (Transmission Control Protocol)
+## The TCP Handshake
 
-TCP provides a reliable, connection-oriented stream of data. Before any data is exchanged, TCP establishes a formal connection between the two hosts to ensure both are ready to communicate.
+A normal TCP connection begins with a three-way handshake:
 
-### The TCP Handshake
+1. The initiator sends `SYN` with its initial sequence information.
+2. The listener replies `SYN-ACK` with its own sequence information and acknowledgement.
+3. The initiator returns `ACK`.
 
-To establish a connection, TCP uses a process called the three-way handshake:
+This establishes transport state in both endpoints. It does not authenticate the application server or prove that the requested application operation will succeed.
 
-1. **SYN**: The client sends a SYN (synchronize) segment to the server to initiate a connection.
-2. **SYN-ACK**: The server responds with a SYN-ACK (synchronize-acknowledge) segment to acknowledge the client's request.
-3. **ACK**: The client sends an ACK (acknowledge) segment back to the server, confirming the connection is established.
+:::single-choice{#transport-layer-handshake-order}
+What is the normal TCP three-way handshake order?
 
-Once the handshake is complete, data can be exchanged reliably. TCP uses sequence numbers to track each segment, allowing the receiving host to reassemble them in the correct order and request re-transmission of any missing segments. In our email example, the transport layer would attach the destination port for SMTP (port 25) and a source port from the client host to each segment.
+::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="The exchange synchronizes and acknowledges initial connection state in both directions."}
+::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="The initiator first requests synchronization."}
+::option[SYN, FIN, RST.]{#transport-layer-syn-fin-rst explanation="FIN and RST close or abort state rather than form a normal handshake."}
+:::
 
-## Exercise
+## UDP Datagrams
 
-While there are no specific labs for this topic, we recommend exploring the comprehensive [Linux Learning Path](https://labex.io/learn/linux) to practice related Linux skills and concepts.
+UDP preserves datagram boundaries and provides checksum-based error detection, but it does not provide TCP-style connection state, ordering, retransmission, flow control, or congestion control. An application can add any needed reliability or congestion behavior itself. UDP is not automatically faster; performance depends on protocol design, workload, path, and implementation.
 
-## Quiz Question
+:::single-choice{#transport-layer-udp-boundaries}
+Which property does UDP provide to applications?
 
-What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
+::option[An automatically retransmitted ordered byte stream.]{#transport-layer-udp-stream explanation="That describes TCP-like services, not base UDP."}
+::option[Preserved boundaries between submitted datagrams.]{#transport-layer-udp-datagrams .correct explanation="A received UDP datagram corresponds to one sent datagram, unless it is lost."}
+::option[Guaranteed delivery before a fixed deadline.]{#transport-layer-udp-deadline explanation="UDP provides no delivery deadline guarantee."}
+:::
 
-## Quiz Answer
+## Inspecting Transport Endpoints
 
-TCP
+Use `ss` to inspect listening and connected sockets without changing them:
+
+```bash
+$ ss -lntup
+$ ss -tn state established
+```
+
+Process details can require privileges. A listening socket proves local readiness only at the transport boundary; firewall, routing, address family, TLS, and application health still need appropriate tests.
+
+:::single-choice{#transport-layer-listener-proof}
+What does a listening TCP socket establish?
+
+::option[Every remote firewall permits the connection.]{#transport-layer-all-firewalls explanation="Local socket state does not reveal all path policy."}
+::option[The application has passed every health check.]{#transport-layer-all-health explanation="Listening is weaker evidence than a successful application transaction."}
+::option[A local process is prepared to accept matching TCP connections.]{#transport-layer-local-listener .correct explanation="Remote reachability and correct application responses remain separate questions."}
+:::
+
+## Summary
+
+You can now distinguish TCP stream behavior from UDP datagram behavior.
+
+1. Identify a flow using protocol, addresses, and ports.
+2. Treat TCP as a reliable ordered byte stream without message boundaries.
+3. Recognize what the TCP handshake does and does not prove.
+4. Treat UDP reliability and congestion behavior as application design choices.
+5. Verify application health beyond local socket state.

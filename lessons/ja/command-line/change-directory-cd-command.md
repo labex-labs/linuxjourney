@@ -1,67 +1,85 @@
 ---
-index: 3
+lesson_id: "change-directory-cd-command"
+course_id: "command-line"
 lang: "ja"
+order_index: 3
 title: "cd（ディレクトリの変更）"
+description: "`cd` とパスやショートカットを使い、Linux ファイルシステム内を移動する方法を学びます。"
 meta_title: "cd（ディレクトリの変更） - コマンドライン"
 meta_description: "絶対パス、相対パス、ホームディレクトリのショートカット、親ディレクトリ、前のディレクトリへの移動などの例を使ってLinuxのcdコマンドを学びましょう。"
 meta_keywords: "cdコマンド, linux cdコマンド, ディレクトリ変更, cd 親ディレクトリ, cd ホーム, cd 前のディレクトリ, 絶対パス, 相対パス"
 ---
 
-## Lesson Content
+Linux ファイルシステム内を移動するには、パスで目的地を指定します。中心となるツールは、change directory の略である `cd` コマンドです。シェルの現在の作業ディレクトリを変更します。
 
-Linuxのファイルシステム内を移動するには、目的地を指定するためにパスを使います。主なツールは`cd`コマンドで、change directory（ディレクトリの変更）の略です。これはシェルの現在の作業ディレクトリを変更します。
+目的地は通常ファイルではなくディレクトリでなければなりません。ディレクトリが存在しない、名前の入力が誤っている、入る権限がない場合、`cd` は場所を変更せずエラーを報告します。
 
-基本的な構文は以下の通りです：
+基本構文は次のとおりです。
 
 ```bash
 cd [DIRECTORY]
 ```
 
-### パスの理解
+## パスを理解する
 
-パスの指定方法には絶対パスと相対パスの2種類があります。
+パスの指定方法には、絶対パスと相対パスがあります。
 
-- **絶対パス**：ルートディレクトリ（`/`）から始まる完全なパスです。例：`/home/pete/Desktop`。
+- **絶対パス**：ルートディレクトリ（`/`）から始まる完全なパス。例：`/home/pete/Desktop`
+- **相対パス**：現在位置を基準にするパス。`/home/pete/Documents` にいて `taxes` というサブディレクトリへ入るなら、`taxes/` を使える
 
-- **相対パス**：現在の場所を基準にしたパスです。例えば、現在`/home/pete/Documents`にいて、`taxes`というサブディレクトリにアクセスしたい場合は、`taxes/`と指定します。
+:::single-choice{#recognize-absolute-cd-path}
+絶対パスを正しく説明しているものはどれですか？
 
-### cdコマンドの使い方
+::option[シェルが現在使っているディレクトリから始まります]{#begins-at-current-directory explanation="シェルの現在位置に依存するパスは相対パスです。必ずしもルートから始まりません。"}
+::option[親ディレクトリを含まず、最後のディレクトリ名だけを含みます]{#contains-final-name-only explanation="目的地名 1 つは通常、現在のディレクトリからの相対パスとして解釈されます。絶対パスは `/` からの経路を含みます。"}
+::option[`/` で表されるルートディレクトリから始まります]{#begins-at-root .correct explanation="絶対パスはファイルシステムのルートから始まります。先頭の `/` により、現在のディレクトリに依存しない出発点になります。"}
+:::
 
-絶対パスを使って特定のディレクトリに移動するには、次のように入力します：
+## `cd` コマンドを使う
+
+絶対パスで特定のディレクトリへ移動するには、次のように入力します。
 
 ```bash
 $ cd /home/pete/Pictures
 ```
 
-このコマンドは直接`Pictures`ディレクトリに移動します。
+このコマンドは `Pictures` ディレクトリへ直接移動します。
 
-現在の場所を確認するには`pwd`を使います：
+`pwd` で場所を確認できます。
 
 ```bash
 $ pwd
 /home/pete/Pictures
 ```
 
-### サブディレクトリへの移動
+:::single-choice{#verify-changed-directory}
+`cd` の後でシェルの現在位置を確認するコマンドはどれですか？
 
-すでにディレクトリ内にいて、サブディレクトリに移動したい場合は相対パスを使います。例えば、現在の場所が`/home/pete/Pictures`で、その中に`Hawaii`というフォルダがある場合、次のように移動できます：
+::option[`cd`]{#cd-command explanation="`cd` は現在のディレクトリを変更しますが、通常、結果の完全なパスは表示しません。`pwd` で確認します。"}
+::option[`ls`]{#ls-command explanation="`ls` はディレクトリ内容を表示します。場所を調べる助けにはなりますが、場所そのものを報告するのは `pwd` です。"}
+::option[`pwd`]{#pwd-command .correct explanation="`pwd` は現在の作業ディレクトリを表示し、`cd` で移動した場所を確認できます。"}
+:::
+
+## サブディレクトリへ移動する
+
+すでにディレクトリ内にいて、そのサブディレクトリへ移動する場合は相対パスを使います。たとえば現在位置が `/home/pete/Pictures` で、その中に `Hawaii` フォルダーがあるなら、次のように移動できます。
 
 ```bash
 $ cd Hawaii
 ```
 
-フォルダ名だけを使ったことに注目してください。これはすでに親ディレクトリである`/home/pete/Pictures`にいるためです。
+フォルダー名だけを使えるのは、すでに親ディレクトリの `/home/pete/Pictures` にいるためです。
 
-### 重要なナビゲーションショートカット
+## 重要な移動用ショートカット
 
-フルパスで移動するのは面倒なことがあります。幸い、シェルには移動を速くするためのいくつかのショートカットがあります。
+完全なパスを毎回入力するのは面倒です。シェルには、移動を速くするショートカットがあります。
 
-- `.`（現在のディレクトリ）：現在いるディレクトリを表します。
-- `..`（親ディレクトリ）：現在のディレクトリの一つ上の階層に移動します。
-- `~`（ホームディレクトリ）：自分のホームディレクトリへのショートカットで、例えば`/home/pete`です。
-- `-`（前のディレクトリ）：直前にいたディレクトリに戻ります。
+- `.`（現在のディレクトリ）：現在いるディレクトリを表す
+- `..`（親ディレクトリ）：現在のディレクトリを含む 1 つ上の階層を表す
+- `~`（ホームディレクトリ）：`/home/pete` など、個人のホームディレクトリを表す
+- `-`（前のディレクトリ）：直前にいたディレクトリへ戻る
 
-これらのショートカットは`cd`と一緒に使えます：
+`cd` と組み合わせて使います。
 
 ```bash
 $ cd .
@@ -70,59 +88,73 @@ $ cd ~
 $ cd -
 ```
 
-これらのショートカットを試して、コマンドラインでの操作を効率化しましょう。
+:::single-choice{#move-to-parent-directory}
+`/home/pete/Pictures` から `/home/pete` へ移動するコマンドはどれですか？
 
-### 実用的なcdの例
+::option[`cd .`]{#cd-current explanation="`.` は現在のディレクトリを表すため、`/home/pete/Pictures` にとどまります。"}
+::option[`cd -`]{#cd-previous explanation="`-` は直前の作業ディレクトリへ戻りますが、必ずしも親とは限りません。1 つ上へ行く場合は `..` を使います。"}
+::option[`cd ..`]{#cd-parent .correct explanation="`..` は現在のディレクトリの親を表します。`Pictures` の親は `/home/pete` です。"}
+:::
 
-ホームディレクトリに移動：
+:::single-choice{#return-to-previous-directory}
+現在のディレクトリの直前に使っていたディレクトリへ戻るコマンドはどれですか？
+
+::option[`cd -`]{#previous-directory .correct explanation="`cd -` は直前の作業ディレクトリへ切り替えます。その場所はファイルシステム内のどこでもかまいません。"}
+::option[`cd ..`]{#parent-directory explanation="`cd ..` は親ディレクトリへ移動します。親と直前のディレクトリは常に同じとは限りません。"}
+::option[`cd ~`]{#home-directory explanation="`cd ~` はホームディレクトリへ移動し、直前に訪れたディレクトリは追跡しません。"}
+:::
+
+これらのショートカットを試し、コマンドラインで効率よく移動できるようにしましょう。
+
+## 実用的な `cd` の例
+
+ホームディレクトリへ移動します。
 
 ```bash
 $ cd
 ```
 
-2階層上に移動：
+ディレクトリ引数なしで `cd` を実行しても、ホームディレクトリへ移動します。
+
+2 階層上へ移動します。
 
 ```bash
 $ cd ../..
 ```
 
-名前にスペースが含まれるディレクトリに移動するには引用符で囲む：
+空白を含む名前のディレクトリへ、引用符を使って移動します。
 
 ```bash
 $ cd "Vacation Photos"
 ```
 
-前のディレクトリに戻る：
+:::single-choice{#enter-directory-with-spaces}
+`Vacation Photos` を 1 つのディレクトリ名として扱うコマンドはどれですか？
+
+::option[`cd Vacation Photos`]{#unquoted-directory-name explanation="引用符がないため、シェルは `Vacation` と `Photos` を 1 つの名前ではなく別々の引数として渡します。"}
+::option[`"cd Vacation Photos"`]{#quote-entire-command explanation="行全体を引用すると、シェルはそれを 1 つのコマンド名として扱います。コマンド自体はパスの引用符の外に置きます。"}
+::option[`cd "Vacation Photos"`]{#quote-directory-name .correct explanation="引用符が 2 つの単語を、`cd` に渡す 1 つのパス引数へまとめます。"}
+:::
+
+前のディレクトリへ戻ります。
 
 ```bash
 $ cd -
 /home/pete/Documents
 ```
 
-### よくある質問
+Linux のディレクトリ移動を身に付けるには、次のハンズオンラボを利用してください。
 
-**cdが「No such file or directory」と言うのはなぜ？** 現在の場所からそのパスが存在しないか、名前を間違えて入力しているためです。`ls`で利用可能なディレクトリを確認しましょう。
+1. **[Linux cd コマンド：ディレクトリの変更](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)**：パスを理解し、`cd` で効率よくファイルシステムを移動する方法を学びます。
+2. **[Linux のディレクトリ移動](https://labex.io/ja/labs/linux-directory-navigation-387844)**：基本的なコマンドでディレクトリを移動し、スキルを試します。
+3. **[新しいプロジェクト構造のセットアップ](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)**：`mkdir` や `cd` で特定のプロジェクト構造を作成し、その中を移動します。
 
-**cdが「Permission denied」と言うのはなぜ？** そのディレクトリに入る権限がありません。
+## まとめ
 
-**引数なしでcdを実行するとどうなる？** ホームディレクトリに移動します。
+これで `cd` を使い、完全なパスやシェルのショートカットでディレクトリ間を移動できるようになりました。
 
-**cdはファイルに対して使えますか？** いいえ。`cd`はディレクトリに移動するコマンドであり、通常のファイルには使えません。
-
-## Exercise
-
-練習が上達の鍵です！Linuxのディレクトリナビゲーションの理解を深めるための実践的なラボを紹介します：
-
-1. **[Linux cd Command: Directory Changing](https://labex.io/ja/labs/linux-linux-cd-command-directory-changing-209733)** - Linuxの`cd`コマンドを学び、ディレクトリの変更方法、パスの理解、ファイル構造の探索などを効率的に行う技術を習得しましょう。
-2. **[Linux Directory Navigation](https://labex.io/ja/labs/linux-directory-navigation-387844)** - 基本的なLinuxコマンドラインスキルを試し、重要なコマンドを使ってディレクトリを移動しましょう。
-3. **[Setting Up a New Project Structure](https://labex.io/ja/labs/linux-setting-up-a-new-project-structure-387859)** - `mkdir`や`cd`などの基本コマンドを使って特定のプロジェクト構造を作成し、Linuxのディレクトリ管理スキルを実践的に磨きましょう。
-
-これらのラボは実際のシナリオで概念を応用し、Linuxファイルシステムのナビゲーションに自信をつけるのに役立ちます。
-
-## Quiz Question
-
-もしあなたが`/home/pete/Pictures`にいて、親ディレクトリ（`/home/pete`）に移動したい場合、使うべき完全なコマンドは何ですか？大文字・小文字やスペースに注意して英語で答えてください。
-
-## Quiz Answer
-
-cd ..
+1. 絶対パスと相対パスを区別する。
+2. ディレクトリを変更し、`pwd` で結果を確認する。
+3. 親、ホーム、前のディレクトリへ移動する。
+4. 空白を含むディレクトリ名へ入る。
+5. 一般的なパスとパーミッションのエラーを認識する。

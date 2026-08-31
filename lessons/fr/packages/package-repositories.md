@@ -1,48 +1,107 @@
 ---
-index: 2
+lesson_id: "package-repositories"
+course_id: "packages"
 lang: "fr"
-title: "Dépôts de Paquets"
-meta_title: "Dépôts de Paquets - Paquets"
-meta_description: "Explorez les dépôts de paquets Linux et leur rôle dans la gestion des paquets. Découvrez comment votre système utilise des sources comme le fichier /etc/apt/sources.list pour trouver et installer des paquets Linux."
-meta_keywords: "dépôts paquets Linux, sources apt list, /etc/apt/sources.list, paquets Linux, Linux débutant, tutoriel Linux, gestion paquets"
+order_index: 2
+title: "Dépôts de paquets"
+description: "Découvrez comment les dépôts publient des index de paquets signés et comment APT trouve les sources configurées des distributions de la famille Debian."
+meta_title: "Dépôts de paquets - Paquets"
+meta_description: "Explorez les dépôts de paquets Linux, leur rôle dans la gestion des logiciels et les sources APT telles que /etc/apt/sources.list."
+meta_keywords: "dépôts de paquets Linux, liste des sources APT, /etc/apt/sources.list, paquets Linux, Linux débutant, tutoriel Linux, gestion des paquets"
 ---
 
-## Lesson Content
+Un dépôt de paquets publie des paquets accompagnés d’index et de métadonnées de version. Le gestionnaire de paquets télécharge ces index, sélectionne les versions compatibles avec la distribution et l’architecture configurées, vérifie l’authentification du dépôt et récupère les fichiers de paquets nécessaires.
 
-Comment le grand nombre de paquets Linux disponibles en ligne parvient-il sur nos ordinateurs ? Bien que vous puissiez visiter la page de téléchargement de chaque logiciel, une solution beaucoup plus efficace existe : les dépôts de paquets (package repositories).
+## Métadonnées du dépôt et catalogues locaux
 
-### Qu'est-ce qu'un dépôt de paquets
+Un dépôt est plus qu’un répertoire d’archives. Ses métadonnées décrivent les noms de paquets disponibles, leurs versions, leurs architectures, leurs sommes de contrôle, leurs dépendances et les sections du dépôt. Le client conserve un catalogue local afin de rechercher et de résoudre les paquets sans devoir télécharger d’abord chaque archive.
 
-Un dépôt de paquets est un emplacement de stockage central pour les logiciels. Ces dépôts, hébergés sur des serveurs à travers Internet, contiennent des collections organisées de paquets Linux, éliminant le besoin de téléchargements et d'installations manuels. Ce système est une pierre angulaire de la gestion moderne des paquets Linux, offrant une manière rationalisée et sécurisée de gérer les logiciels.
+Sur un système de la famille Debian, actualisez les métadonnées configurées avec :
 
-### Comment fonctionnent les dépôts
+```bash
+$ sudo apt update
+```
 
-Le gestionnaire de paquets de votre système doit savoir où trouver ces dépôts. Vous lui fournissez un lien source, et il s'occupe du reste.
+Cette commande met à jour les index de paquets locaux ; elle n’installe pas à elle seule toutes les mises à niveau disponibles. Examinez les sources signalées et les erreurs d’authentification au lieu d’ignorer les entrées qui ont échoué.
 
-Par exemple, pour installer Docker, vous ne le téléchargez pas directement depuis leur site web. Au lieu de cela, vous configurez votre gestionnaire de paquets pour utiliser le dépôt officiel de Docker, qui est hébergé à une URL telle que `https://download.docker.com/linux/ubuntu`. Une fois configuré, votre système peut accéder à tous les paquets de ce dépôt, tels que `docker-ce`, `docker-ce-cli` et `containerd.io`.
+:::single-choice{#package-repositories-apt-update}
+Qu’est-ce que `apt update` actualise principalement ?
 
-### Configuration des sources de dépôts
+::option[Chaque binaire de paquet installé, sans confirmation.]{#package-repositories-all-binaries explanation="L’installation des mises à niveau est une opération distincte de l’actualisation des métadonnées."}
+::option[Les mots de passe des utilisateurs autorisés à installer des paquets.]{#package-repositories-user-passwords explanation="L’actualisation des index de dépôts ne modifie pas les identifiants d’authentification locaux."}
+::option[Les index locaux qui décrivent les paquets disponibles dans les sources configurées.]{#package-repositories-local-indexes .correct explanation="APT télécharge les métadonnées actuelles des dépôts afin que les recherches et la résolution des dépendances utilisent un catalogue à jour."}
+:::
 
-Votre distribution Linux est déjà livrée avec un ensemble de dépôts préconfigurés pour tous les paquets de base de votre système. Sur les systèmes basés sur Debian comme Ubuntu, la configuration principale de ces sources est gérée via la liste des sources `apt` (apt sources list).
+## Configuration des sources APT
 
-Traditionnellement, cette liste est un fichier unique : `/etc/apt/sources.list`. Le gestionnaire de paquets de votre machine lit ce fichier pour savoir quels dépôts vérifier pour les logiciels et les mises à jour disponibles.
+APT lit les sources configurées dans :
 
-Il est également courant d'ajouter de nouvelles configurations de dépôts dans le répertoire `/etc/apt/sources.list.d/`. Les versions plus récentes d'Ubuntu (22.04+) utilisent même ce répertoire par défaut, organisant les sources dans des fichiers `.sources` structurés. Cette approche maintient les dépôts tiers séparés des sources par défaut du système, rendant la gestion des paquets plus propre et plus organisée. `/etc/apt/sources.list` et les fichiers dans `/etc/apt/sources.list.d/` sont tous deux utilisés par le gestionnaire de paquets `apt`.
+- `/etc/apt/sources.list` ;
+- les fichiers dont le nom se termine par `.list` ou `.sources` dans `/etc/apt/sources.list.d/`.
 
-## Exercise
+L’extension `.list` emploie le format traditionnel à une ligne. L’extension `.sources` emploie des strophes de style deb822, recommandées par la documentation actuelle d’APT pour les nouvelles configurations. Une distribution peut placer ses sources par défaut dans l’un ou l’autre emplacement ; `/etc/apt/sources.list` ne contient donc pas nécessairement la configuration complète ou principale.
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension de la gestion des paquets Linux et des dépôts :
+Une source de style deb822 peut ressembler à ceci :
 
-1. **[Installation de logiciels sur Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005)** - Entraînez-vous à diverses méthodes pour installer et gérer des logiciels sur des systèmes Ubuntu, y compris l'utilisation d'apt et la gestion des fichiers .deb, ce qui est directement lié au concept de `sources.list`.
-2. **[Installation et suppression de paquets](https://labex.io/fr/labs/linux-installing-and-removing-packages-385380)** - Apprenez à mettre à jour le système, à installer et à supprimer des paquets sur un système basé sur Debian, consolidant ainsi votre compréhension de la manière dont les gestionnaires de paquets interagissent avec les dépôts.
-3. **[Interroger et mettre à jour les paquets avec YUM sous Linux](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869)** - Explorez comment gérer les paquets logiciels sur les systèmes Linux basés sur RHEL à l'aide de YUM, offrant une perspective plus large sur la gestion des paquets entre différentes distributions.
+```text
+Types: deb
+URIs: https://deb.example.invalid/repository
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/example.gpg
+```
 
-Ces laboratoires vous aideront à appliquer les concepts de dépôts de paquets et de gestion de logiciels dans des scénarios réels et à gagner en confiance dans les tâches d'administration système.
+Il s’agit uniquement d’un exemple de syntaxe ; le domaine réservé `.invalid` ne correspond pas à un dépôt utilisable.
 
-## Quiz Question
+:::single-choice{#package-repositories-apt-locations}
+Où APT peut-il lire les définitions actives des dépôts ?
 
-Sur un système Debian traditionnel, quel est le chemin complet vers le fichier principal qui liste les dépôts de paquets ? Veuillez répondre en utilisant le chemin de fichier complet.
+::option[Uniquement dans `/etc/apt/sources.list`.]{#package-repositories-only-main-list explanation="APT lit également les fichiers de sources pris en charge dans `/etc/apt/sources.list.d/`."}
+::option[Uniquement dans des fichiers situés dans le répertoire personnel de chaque utilisateur.]{#package-repositories-only-home explanation="La configuration système des sources APT se trouve normalement sous `/etc/apt`."}
+::option[Dans `/etc/apt/sources.list` et les fichiers pris en charge de `/etc/apt/sources.list.d/`.]{#package-repositories-both-locations .correct explanation="APT combine le fichier principal et les définitions `.list` et `.sources` du répertoire des listes de sources."}
+:::
 
-## Quiz Answer
+## Authentification du dépôt
 
-/etc/apt/sources.list
+APT vérifie les métadonnées de version signées du dépôt, puis compare les fichiers de paquets téléchargés aux sommes de contrôle authentifiées qu’elles contiennent. `Signed-By` peut limiter une source à un trousseau de clés précis au lieu d’accorder à chaque clé configurée globalement la confiance nécessaire pour ce dépôt.
+
+Une signature valide établit que les métadonnées proviennent du détenteur d’une clé de signature acceptée et n’ont pas été modifiées sans détection. Elle ne prouve pas que le logiciel de l’éditeur est exempt de défauts, inoffensif ou adapté au système. Confirmez l’empreinte de la clé et les instructions relatives à la source par un canal de confiance indépendant.
+
+:::single-choice{#package-repositories-signed-by}
+Quel est l’objectif de sécurité de `Signed-By` dans une définition de source APT ?
+
+::option[Chiffrer chaque paquet installé afin que root ne puisse pas le lire.]{#package-repositories-package-encryption explanation="La signature des dépôts assure des contrôles d’origine et d’intégrité, et non le secret face à l’administrateur local."}
+::option[Limiter cette source à certaines clés de signature.]{#package-repositories-key-scope .correct explanation="Ce champ lie la vérification du dépôt à des trousseaux sélectionnés plutôt qu’à un ensemble global de clés sans restriction."}
+::option[Garantir que le dépôt ne contient aucun logiciel vulnérable.]{#package-repositories-no-vulnerabilities explanation="L’authenticité cryptographique n’évalue ni la qualité du logiciel ni ses failles de sécurité."}
+:::
+
+## Ajouter délibérément des sources tierces
+
+Un dépôt peut installer des paquets et des scripts de cycle de vie avec les privilèges du système ; son ajout étend donc la frontière de confiance logicielle du système. Avant de procéder :
+
+1. Privilégiez le dépôt de la distribution s’il répond au besoin.
+2. Confirmez l’éditeur, la version prise en charge, l’architecture et l’empreinte de la clé de signature.
+3. Employez un fichier de source dédié et un trousseau de portée limitée.
+4. Examinez les noms des paquets et les changements de dépendances avant l’installation.
+5. Documentez la désactivation de la source et la migration ou la suppression de ses paquets.
+
+Ne recopiez pas d’anciennes instructions qui désactivent le contrôle des signatures ou transmettent un script distant non audité à un shell privilégié.
+
+:::single-choice{#package-repositories-third-party-risk}
+Pourquoi l’ajout d’un dépôt tiers élargit-il la frontière de confiance du système ?
+
+::option[Ses paquets et scripts authentifiés peuvent être installés avec les privilèges du système.]{#package-repositories-privileged-install .correct explanation="Faire confiance à la source de signature peut autoriser du code et des actions de cycle de vie qui affectent le système d’exploitation."}
+::option[Il empêche le noyau Linux d’appliquer les permissions des fichiers.]{#package-repositories-disable-permissions explanation="La configuration d’un dépôt ne désactive pas les mécanismes normaux de contrôle d’accès du noyau."}
+::option[Il convertit tous les paquets natifs en archives de code source.]{#package-repositories-convert-source explanation="L’ajout d’un dépôt modifie les sources de paquets disponibles, et non le format fondamental des paquets existants."}
+:::
+
+Entraînez-vous à une installation depuis un dépôt dans [Installation de logiciels sous Linux](https://labex.io/fr/labs/linux-software-installation-on-linux-18005), ou comparez une procédure de la famille Red Hat dans [Interroger et mettre à jour des paquets avec YUM](https://labex.io/fr/labs/rhel-query-and-update-packages-with-yum-in-linux-590869). Pour connaître la syntaxe exacte d’APT, consultez le manuel local `sources.list(5)`.
+
+## Résumé
+
+Vous savez maintenant expliquer comment un dépôt configuré devient une source authentifiée de métadonnées de paquets.
+
+1. Distinguer les index de dépôts des archives de paquets.
+2. Utiliser `apt update` pour actualiser le catalogue local.
+3. Localiser les définitions de sources APT à une ligne et de style deb822.
+4. Limiter la portée des clés de signature et évaluer délibérément la confiance accordée aux tiers.

@@ -1,46 +1,85 @@
 ---
-index: 3
+lesson_id: "dns-process"
+course_id: "dns"
 lang: "en"
+order_index: 3
 title: "DNS Process"
+description: "Learn how a stub and recursive resolver use cache, referrals, glue, and authority to answer a DNS query."
 meta_title: "DNS Process - DNS"
 meta_description: "Explore the step-by-step DNS resolution process, from root servers to the authoritative DNS server. Understand how a Linux server finds a domain, a crucial concept for production environments and domain hosting."
 meta_keywords: "DNS process, DNS lookup, domain resolution, linux dns, production server, domain hosting, dns server, TLD, root servers, authoritative dns"
 ---
 
-## Lesson Content
+A normal application asks the operating system's stub resolver, which consults local name-service policy and sends a recursive query to a configured resolver. The recursive resolver performs the hierarchy walk only when valid cache does not already answer the question.
 
-Let's explore how a computer, such as a `Linux server`, finds a `domain` like `catzontheinterwebz.com` using DNS. The process works like a funnel, narrowing down the search until we reach the specific `DNS server` that holds the answer.
+## Starting with Local Policy and Cache
 
-### The Initial Query
+The system resolver can consult `/etc/hosts`, DNS, and other sources in the configured order. Search suffixes can transform a short name into several candidate names. A recursive resolver then checks positive and negative cache entries before sending upstream traffic.
 
-First, your host asks its configured recursive DNS server, "Where is `catzontheinterwebz.com`?" This recursive server, often provided by your ISP, likely doesn't know the answer directly. So, it begins the resolution process by contacting the highest authority: the Root Servers. This initial step is the same whether you're browsing from home or a `production server` is communicating with an API.
+:::single-choice{#dns-process-cache-first}
+Why might a recursive resolver not contact any authoritative server for a query?
 
-### Root Servers
+::option[DNS requires every query to fail locally first.]{#dns-process-requires-failure explanation="A resolver can answer immediately from cache."}
+::option[It has a still-valid cached answer.]{#dns-process-valid-cache .correct explanation="Caching avoids repeating the hierarchy walk until the record's lifetime expires."}
+::option[Authoritative servers accept only Ethernet frames from clients.]{#dns-process-authoritative-ethernet explanation="DNS operates over IP transports across routed networks."}
+:::
 
-The internet's DNS hierarchy starts with 13 logical Root Servers, which are mirrored across hundreds of physical locations worldwide. These servers don't know the IP address for every `domain`, but they know who manages the Top-Level Domains (TLDs) like `.com`, `.org`, and `.net`. When asked about `catzontheinterwebz.com`, a Root Server will respond, "I don't know, but you should ask the `.com` TLD server," and provide its IP address.
+## Querying a Root Server
 
-### Top-Level Domain Servers
+On a cache miss, a recursive resolver can ask a root server. The DNS root has 13 named server identities, A through M, served by many physical instances using anycast and other resilient deployment techniques. The response normally refers the resolver to authoritative servers for the relevant top-level domain rather than returning the final host address.
 
-Next, the recursive server sends a new query to the `.com` TLD server, again asking for the location of `catzontheinterwebz.com`. The TLD server's job is to point to the correct authoritative name servers for that specific `domain`. It doesn't have the final IP address, but it knows which `DNS server` is responsible for the `domain`, a detail often configured through your `domain hosting` provider. The TLD server replies with the IP address of that authoritative name server.
+:::single-choice{#dns-process-root-response}
+What does a root server normally return for an uncached `www.example.com` lookup?
 
-### Authoritative DNS Server
+::option[A referral toward the `com` top-level-domain servers.]{#dns-process-root-referral .correct explanation="The hierarchy delegates responsibility rather than storing every final host record at the root."}
+::option[The web page hosted at `www.example.com`.]{#dns-process-root-webpage explanation="DNS returns resource-record data, not application content."}
+::option[The destination's Ethernet MAC address.]{#dns-process-root-mac explanation="MAC addresses are resolved on local links, not through the DNS hierarchy."}
+:::
 
-Finally, the recursive server sends one last request to the authoritative `DNS server`. This is the server that holds the actual DNS records for the `catzontheinterwebz.com` `domain`. This server checks its records, finds the 'A' record for the host, and returns the final IP address. This is a critical step for anyone `making` a website or application live, as this server provides the definitive link between the `domain` name and the `production server`'s IP address. With the IP address in hand, your computer can now connect and retrieve the content.
+## Following TLD and Authoritative Referrals
 
-## Exercise
+The resolver asks a `com` authoritative server, which returns the delegated authoritative name servers for `example.com`. The referral can include glue address records when needed to reach a server whose name lies inside the delegated child. The resolver then queries an authoritative server for the requested record.
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of DNS resolution and management:
+:::single-choice{#dns-process-glue-purpose}
+What problem does DNS glue help solve?
 
-1. **[Query DNS Records in Linux with dig and nslookup](https://labex.io/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Learn to query DNS records like A, PTR, and MX, and identify your default DNS server, essential for network troubleshooting.
-2. **[Set Up a Local Authoritative DNS Server on Linux](https://labex.io/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803)** - Gain hands-on experience by installing and configuring a local authoritative DNS server, defining zones, and testing DNS resolution.
-3. **[Manage Local Hostname Resolution in Linux](https://labex.io/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Practice managing local hostname resolution by editing the `/etc/hosts` file, a key skill for web development and network testing.
+::option[Encrypting HTTP payloads after DNS resolution.]{#dns-process-glue-http explanation="TLS or other application security handles payload encryption."}
+::option[Choosing the fastest Ethernet switch port.]{#dns-process-glue-switch explanation="Glue is delegation address data, not link forwarding policy."}
+::option[Reaching an in-bailiwick server without circular resolution.]{#dns-process-glue-reachability .correct explanation="The parent supplies address data needed to contact a server named inside the child zone."}
+:::
 
-These labs will help you apply the concepts in real scenarios and build confidence with DNS.
+## Following Aliases and Record Types
 
-## Quiz Question
+An answer can contain a CNAME alias requiring another name lookup, or application-specific records that lead to more queries. Asking for `A` returns only IPv4-address records and related chain data; a separate `AAAA` query retrieves IPv6 addresses. The final response carries a status such as `NOERROR`, `NXDOMAIN`, or `SERVFAIL`, each with different meaning.
 
-What is the abbreviation for the nameservers where .com, .net, .org, etc., addresses are found? Please answer using only uppercase English letters.
+:::single-choice{#dns-process-nxdomain-meaning}
+What does `NXDOMAIN` report?
 
-## Quiz Answer
+::option[The queried domain name does not exist according to an authoritative result.]{#dns-process-name-does-not-exist .correct explanation="This differs from an existing name that simply lacks the requested record type."}
+::option[The name exists and always has an empty A record.]{#dns-process-empty-a explanation="An existing name with no requested data normally produces a no-data response, not NXDOMAIN."}
+::option[The resolver reached its maximum Ethernet frame size.]{#dns-process-frame-size explanation="The status concerns name existence."}
+:::
 
-TLD
+## Validation, Caching, and Application Use
+
+A validating recursive resolver can use DNSSEC signatures and the chain of trust to verify authenticated denial or record integrity. DNSSEC does not encrypt queries or prove that the application at the returned address is trustworthy.
+
+The resolver caches results within TTL rules and returns them to the stub. The application then chooses an address and attempts its own network and security protocols.
+
+:::single-choice{#dns-process-dnssec-limit}
+What does DNSSEC validation not provide?
+
+::option[Integrity and origin authentication for signed DNS data.]{#dns-process-dnssec-does-integrity explanation="Those are core DNSSEC goals."}
+::option[Authenticated denial for signed nonexistent data.]{#dns-process-authenticated-denial explanation="Signed denial mechanisms can provide that validation."}
+::option[Confidentiality for the DNS query and response.]{#dns-process-no-confidentiality .correct explanation="Encryption requires a separate protected DNS transport such as DoT or DoH."}
+:::
+
+## Summary
+
+You can now trace a recursive DNS lookup from local policy to a cached final response.
+
+1. Check local sources and resolver cache first.
+2. Follow root and top-level-domain referrals.
+3. Use glue to reach appropriate delegated servers.
+4. Distinguish aliases, no-data answers, and nonexistent names.
+5. Separate DNSSEC integrity from transport confidentiality.

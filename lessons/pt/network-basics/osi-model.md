@@ -1,54 +1,78 @@
 ---
-index: 2
+lesson_id: "osi-model"
+course_id: "network-basics"
 lang: "pt"
+order_index: 2
 title: "Modelo OSI"
-meta_title: "Modelo OSI - Fundamentos de Rede"
-meta_description: "Explore o modelo OSI, uma estrutura fundamental de 7 camadas para redes. Saiba como este conceito teórico influencia o modelo TCP/IP e sua importância no mundo das redes OSI Linux."
+description: "Aprenda como o modelo de referência OSI de sete camadas organiza as funções de rede e a linguagem de solução de problemas."
+meta_title: "Modelo OSI - Fundamentos de rede"
+meta_description: "Explore o modelo OSI, uma estrutura fundamental de sete camadas para redes. Aprenda como esse conceito teórico influencia o modelo TCP/IP e sua importância no universo das redes Linux."
 meta_keywords: "osi linux, modelo OSI, conceitos de rede, TCP/IP, redes Linux, camadas de rede, modelo teórico, modelo de 7 camadas"
 ---
 
-## Lesson Content
+O modelo de Interconexão de Sistemas Abertos é uma estrutura de referência de sete camadas. Ele oferece aos engenheiros um vocabulário comum para localizar responsabilidades, interfaces e falhas; não é uma descrição literal de toda implementação.
 
-Antes de mergulharmos nos comandos práticos de rede, é essencial entender alguns jargões fundamentais. Um dos conceitos mais importantes é o modelo OSI, que serve como pedra angular para a compreensão das comunicações de rede.
+## As sete camadas
 
-### O que é o Modelo OSI?
+Da mais baixa para a mais alta, as camadas OSI são:
 
-O modelo OSI (Interconexão de Sistemas Abertos) é uma estrutura conceitual usada para entender e padronizar as funções de um sistema de telecomunicações ou computação. Ele caracteriza as funções de um sistema de rede em um conjunto de sete camadas distintas. Para quem trabalha com redes **osi linux**, compreender este modelo fornece uma base teórica sólida.
+1. Física: sinais, meios, conectores e transmissão de bits.
+2. Enlace de Dados: quadros locais, endereçamento de enlace e acesso ao meio.
+3. Rede: endereçamento lógico e encaminhamento entre redes.
+4. Transporte: comunicação entre pontos de extremidade ou processos.
+5. Sessão: gerenciamento de sessões de comunicação.
+6. Apresentação: representação, transformação e codificação de dados.
+7. Aplicação: serviços de rede usados pelas aplicações.
 
-### As Sete Camadas do OSI
+:::single-choice{#osi-network-layer-number}
+Qual camada OSI cuida do endereçamento lógico e do encaminhamento entre redes?
 
-Este modelo mostra como um pacote de dados atravessa uma rede através de sete camadas diferentes:
+::option[Camada 3, Rede.]{#osi-layer-three .correct explanation="A camada de rede descreve o endereçamento lógico e o encaminhamento entre redes."}
+::option[Camada 1, Física.]{#osi-layer-one explanation="A camada física trata dos sinais e dos meios."}
+::option[Camada 7, Aplicação.]{#osi-layer-seven explanation="A camada de aplicação descreve os serviços expostos às aplicações de rede."}
+:::
 
-1. Física
-2. Enlace de Dados
-3. Rede
-4. Transporte
-5. Sessão
-6. Apresentação
-7. Aplicação
+## Usando o modelo como vocabulário
 
-Embora não detalhemos as especificidades de cada camada, saber que elas existem é crucial para contextualizar os processos de rede.
+Afirmações como “um loop de Camada 2” ou “uma porta de Camada 4” identificam uma área funcional sem explicar todos os detalhes da implementação. Um protocolo real pode atravessar limites, e criptografia, túneis, proxies ou sobreposições podem criar várias camadas aninhadas.
 
-### Relevância nas Redes Modernas
+:::single-choice{#osi-model-purpose}
+Para que o modelo OSI é mais útil na solução cotidiana de problemas?
 
-Embora o modelo OSI seja primariamente teórico, sua influência é significativa. A maior parte das redes modernas, incluindo a internet, opera no modelo TCP/IP, que é mais prático. No entanto, o modelo TCP/IP foi fortemente influenciado pela estrutura OSI. Muitos conceitos de rede e métodos de solução de problemas ainda se referem às camadas OSI, tornando-o um conhecimento atemporal e relevante para administradores de rede.
+::option[Garantir que todo protocolo tenha exatamente sete cabeçalhos.]{#osi-seven-headers explanation="As implementações não correspondem individualmente a sete cabeçalhos no meio de transmissão."}
+::option[Substituir todas as capturas de pacotes por um diagrama.]{#osi-replace-captures explanation="O modelo orienta a investigação, mas não substitui as evidências."}
+::option[Fornecer uma maneira comum de classificar as funções de rede.]{#osi-shared-vocabulary .correct explanation="A estrutura ajuda as equipes a delimitar a área funcional em discussão."}
+:::
 
-## Exercise
+## Comparando OSI e TCP/IP
 
-Embora o modelo OSI seja teórico, entender sua influência nas redes práticas é fundamental. A prática com comandos básicos de rede ajudará a solidificar sua compreensão de como esses modelos teóricos se traduzem em operações de rede no mundo real.
+A suíte de protocolos da Internet e o modelo de referência OSI se desenvolveram por meio de histórias de padronização diferentes. O modelo TCP/IP prático geralmente agrupa as responsabilidades de sessão e apresentação do OSI em sua camada de aplicação e combina as questões físicas e de enlace de dados em uma camada de enlace ou de acesso à rede. Os mapeamentos são aproximados, não uma prova de que uma pilha foi implementada diretamente a partir da outra.
 
-Aqui estão alguns laboratórios práticos para reforçar sua compreensão dos conceitos básicos de rede:
+:::single-choice{#osi-tcpip-mapping}
+Como um mapeamento das camadas OSI para TCP/IP deve ser interpretado?
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços MAC e IP, em um sistema Linux.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a configurar endereços IP estáticos e dinâmicos, definir um gateway padrão e verificar configurações de rede usando o comando `ip`.
-3. **[Explorar a Interação da Camada de Rede com ping e arp no Linux](https://labex.io/pt/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Use os comandos `ping` e `arp` para explorar como as camadas de rede e de enlace de dados interagem, observando o ARP em ação e entendendo o comportamento do gateway padrão.
+::option[Como uma regra exata que todo protocolo deve seguir.]{#osi-exact-rule explanation="As responsabilidades dos protocolos frequentemente atravessam limites conceituais."}
+::option[Como evidência de que o TCP/IP usa sete camadas obrigatórias no meio de transmissão.]{#osi-tcp-seven explanation="O TCP/IP costuma ser apresentado com quatro ou cinco camadas."}
+::option[Como uma comparação aproximada entre modelos funcionais.]{#osi-approximate-map .correct explanation="Os modelos agrupam algumas responsabilidades de maneiras diferentes."}
+:::
 
-Estes laboratórios ajudarão você a aplicar conceitos fundamentais de rede em cenários reais e a construir confiança com a administração de rede Linux.
+## Solucionando problemas entre camadas
 
-## Quiz Question
+Comece pelo sintoma e teste as suposições, em vez de verificar mecanicamente as camadas em ordem numérica. Uma falha na Web pode envolver o estado do enlace local, o roteamento IP, a acessibilidade do transporte, TLS, resolução de nomes, autenticação ou comportamento da aplicação. Evidências em uma camada podem orientar o próximo teste sem comprovar que as camadas superiores funcionam.
 
-Qual é usado como o modelo teórico de rede? (Por favor, responda em inglês, usando a sigla em maiúsculas.)
+:::single-choice{#osi-link-success-limit}
+O que um enlace Ethernet local funcionando comprova?
 
-## Quiz Answer
+::option[Que todos os serviços HTTP remotos estão íntegros.]{#osi-link-proves-http explanation="O estado do enlace local não pode comprovar a integridade de uma aplicação remota."}
+::option[Que o DNS não contém registros incorretos.]{#osi-link-proves-dns explanation="Os dados de nomes são independentes da conectividade básica do enlace."}
+::option[Apenas que as condições relevantes do enlace local funcionam.]{#osi-link-limited-proof .correct explanation="Falhas de roteamento, transporte, nomenclatura, segurança e aplicação ainda podem existir."}
+:::
 
-OSI
+## Resumo
+
+Agora você pode usar o modelo OSI como um vocabulário de diagnóstico em camadas.
+
+1. Nomeie as sete camadas em ordem.
+2. Associe cada camada à sua responsabilidade geral.
+3. Trate os mapeamentos para TCP/IP como aproximados.
+4. Use as evidências das camadas para orientar, não substituir, testes de ponta a ponta.

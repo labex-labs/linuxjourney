@@ -1,103 +1,112 @@
 ---
-index: 1
+lesson_id: "network-interfaces"
+course_id: "network-config"
 lang: "en"
+order_index: 1
 title: "Network Interfaces"
+description: "Learn how to inspect Linux interface state, addresses, statistics, and persistent configuration ownership."
 meta_title: "Network Interfaces - Network Config"
 meta_description: "A comprehensive guide to the Linux network interface. Learn to use ifconfig and the modern ip command, and understand configuration files like /etc/network/interfaces, especially on Debian systems."
 meta_keywords: "linux interface, linux network interface, etc network interfaces, debian network interfaces, ifconfig, ip command, network configuration, linux networking"
 ---
 
-## Lesson Content
+A Linux network interface connects a network namespace to a physical device, loopback path, bridge, tunnel, virtual device, or other link. Interface state, addresses, routes, DNS, and persistent configuration are related but distinct.
 
-A **linux network interface** is the crucial point of connection between the kernel's software networking stack and the physical network hardware. It allows your operating system to send and receive data over a network. We've already seen an example of what a configured `linux interface` looks like:
+## Discovering Interfaces
 
-```plaintext
-pete@icebox:~$ ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 1d:3a:32:24:4d:ce
-          inet addr:192.168.1.129  Bcast:192.168.1.255  Mask:255.255.255.0
-          inet6 addr: fd60::21c:29ff:fe63:5cdc/64 Scope:Link
-```
-
-### Understanding Network Interfaces
-
-When you view your network settings, you'll see interfaces with names like `eth0` (the first Ethernet card), `wlan0` (a wireless interface), or `lo` (the loopback interface). The loopback interface is a special virtual interface that represents your own computer, allowing you to connect to services running locally.
-
-An interface can be in an "up" or "down" state. An "up" state means it's active and ready to transmit data, while "down" deactivates it. Key information displayed for each interface includes the `HWaddr` (its unique MAC address), `inet` address (its IPv4 address), and `inet6` address (its IPv6 address), along with the subnet mask and broadcast address.
-
-### The Legacy ifconfig Command
-
-The **ifconfig** command is a classic tool for configuring a `linux network interface`. On system boot, it typically runs to set up interfaces based on configuration files. While still available on many systems, it is now considered a legacy tool.
-
-You can use `ifconfig` to manually assign an IP address and bring an interface up:
+Use the modern iproute2 tools:
 
 ```bash
-ifconfig eth0 192.168.2.1 netmask 255.255.255.0 up
+$ ip -brief link show
+$ ip -brief address show
 ```
 
-You can also use the related `ifup` and `ifdown` commands to easily activate or deactivate an interface:
+Interface names can be predictable hardware-derived names such as `enp1s0`, traditional names such as `eth0`, or administrator-defined names. Never assume `eth0` exists or identifies a particular adapter.
+
+:::single-choice{#interfaces-name-assumption}
+Why should a script discover rather than assume `eth0`?
+
+::option[Every interface is required to be named `lo`.]{#interfaces-all-loopback explanation="Loopback is one special interface, not the name of every link."}
+::option[Linux systems can use several interface naming schemes.]{#interfaces-naming-varies .correct explanation="Hardware-derived, virtual, and custom names make a fixed `eth0` assumption unreliable."}
+::option[Interface names are always remote passwords.]{#interfaces-name-password explanation="Names identify kernel devices and are not credentials."}
+:::
+
+## Administrative and Operational State
+
+`UP` means the interface is administratively enabled. `LOWER_UP` commonly indicates that the lower layer reports operational readiness, such as Ethernet carrier. Either flag alone does not prove an IP address, route, DNS, firewall, or application path works.
 
 ```bash
-ifup eth0
-ifdown eth0
+$ ip -details link show dev enp1s0
+$ ip -s link show dev enp1s0
 ```
 
-### The Modern ip Command
+The statistics view can reveal errors, drops, and counters, but counters need a time interval and baseline to become meaningful.
 
-The **ip** command is the modern and more powerful replacement for `ifconfig`. It is the preferred method for managing the network stack on most current Linux distributions.
+:::single-choice{#interfaces-up-limit}
+What does administrative `UP` fail to prove?
 
-Here are some common examples of its usage:
+::option[That end-to-end connectivity works.]{#interfaces-up-not-connectivity .correct explanation="Lower-layer, addressing, routing, filtering, naming, and service failures can remain."}
+::option[That the administrator enabled the interface.]{#interfaces-up-does-prove explanation="That is the direct meaning of the state."}
+::option[That the interface has a kernel object.]{#interfaces-up-kernel-object explanation="The displayed state belongs to an existing kernel interface."}
+:::
 
-**Show information for all interfaces:**
+## Changing Runtime State
+
+Runtime commands include:
 
 ```bash
-ip link show
+$ sudo ip link set dev enp1s0 up
+$ sudo ip address add 192.0.2.10/24 dev enp1s0
 ```
 
-**Show detailed statistics for a specific interface:**
+These changes affect current kernel state and can conflict with a network manager that later reapplies its profile. Bringing down a remote-management interface can immediately end access. Before changing it, verify the exact device, preserve console access, record current state, and prepare a timed or tested rollback.
+
+:::single-choice{#interfaces-ip-address-add-persistence}
+Does `ip address add` by itself guarantee persistence after reboot?
+
+::option[No; the active configuration system must also store the setting.]{#interfaces-manager-persistence .correct explanation="NetworkManager, systemd-networkd, ifupdown, or another owner applies persistent policy."}
+::option[Yes, because every kernel change edits all manager profiles.]{#interfaces-runtime-always-persistent explanation="Kernel runtime changes do not universally update persistent configuration."}
+::option[Only when the address is private IPv4.]{#interfaces-private-persistent explanation="Address scope does not make a runtime command persistent."}
+:::
+
+## Identifying Configuration Ownership
+
+Persistent paths differ across distributions and installations. Possibilities include NetworkManager profiles, systemd-networkd units, netplan input, `/etc/network/interfaces`, cloud-init, or orchestration. Determine which service manages the device before editing files:
 
 ```bash
-ip -s link show eth0
+$ systemctl --type=service --state=running | grep -E 'NetworkManager|networkd|networking'
+$ networkctl status
+$ nmcli device status
 ```
 
-**Show IP addresses assigned to interfaces:**
+Use only commands present for the identified manager. Two managers controlling the same link can race and overwrite each other's state.
 
-```bash
-ip address show
-```
+:::single-choice{#interfaces-config-owner}
+What should precede a persistent interface change?
 
-**Bring an interface up or down:**
+::option[Edit every possible network configuration file.]{#interfaces-edit-all explanation="Competing definitions create conflicts and unpredictable reapplication."}
+::option[Identify which network manager owns the interface.]{#interfaces-identify-owner .correct explanation="The correct configuration source and apply method depend on that ownership."}
+::option[Delete all current routes before inspection.]{#interfaces-delete-routes explanation="That is destructive and can remove recovery access."}
+:::
 
-```bash
-ip link set eth0 up
-ip link set eth0 down
-```
+## Verifying a Change
 
-**Add an IP address to an interface:**
+Verify link state, assigned addresses and lifetimes, selected routes, resolver state, neighbor reachability, and the actual application. For a persistent change, test a controlled service restart or reboot only when a recovery path exists.
 
-```bash
-ip address add 192.168.1.1/24 dev eth0
-```
+:::single-choice{#interfaces-change-verification}
+What provides better evidence than seeing the new address in `ip address`?
 
-### Network Configuration Files
+::option[The interface name contains a digit.]{#interfaces-digit explanation="Naming provides no end-to-end validation."}
+::option[The shell prompt still has the same color.]{#interfaces-prompt-color explanation="Terminal appearance is unrelated to network operation."}
+::option[Routes, resolver state, and the intended application also work.]{#interfaces-end-to-end .correct explanation="A usable configuration depends on the complete path and service behavior."}
+:::
 
-While commands like `ip` and `ifconfig` configure the live state of an interface, these changes are not permanent and will be lost on reboot. To make settings persistent, you must edit configuration files.
+## Summary
 
-A common location for these files is `/etc/network/interfaces`. The `etc network interfaces` file is particularly prevalent on Debian-based systems like Ubuntu. Managing **debian network interfaces** through this file allows you to define static IP addresses, gateways, and other settings that are applied automatically at boot. The structure within `debian network/interfaces` is straightforward and well-documented.
+You can now inspect and change an interface without confusing runtime state with persistent policy.
 
-## Exercise
-
-Put your knowledge into practice with these hands-on labs. They will help reinforce your understanding of network interfaces and IP addressing.
-
-1. **[Identify MAC and IP Addresses in Linux](https://labex.io/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Practice using the `ip a` command to identify network addressing information, including MAC, IPv4, and IPv6 addresses on a Linux system.
-2. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Learn to configure static and dynamic IP addresses, set a default gateway, and verify network configurations using the `ip` command.
-3. **[Explore IP Address Types and Reachability in Linux](https://labex.io/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore different IP address types (private, public, multicast) and test network reachability using `ping` and `ip a`.
-
-These labs will help you apply the concepts of network interface identification and IP addressing in real scenarios and build confidence with Linux networking.
-
-## Quiz Question
-
-What is the legacy command used to configure a Linux network interface? Please answer in English, using only lowercase letters.
-
-## Quiz Answer
-
-ifconfig
+1. Discover real interface names and addresses.
+2. Separate administrative state from operational connectivity.
+3. Treat direct `ip` changes as current kernel state.
+4. Identify the active configuration owner before persistence changes.
+5. Verify routing, resolution, and application behavior afterward.

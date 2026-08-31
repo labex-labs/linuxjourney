@@ -1,53 +1,100 @@
 ---
-index: 1
+lesson_id: "system-logging"
+course_id: "logging"
 lang: "fr"
-title: "Journalisation Système"
-meta_title: "Journalisation Système - Journaux"
-meta_description: "Découvrez la meilleure façon d'apprendre Linux en comprenant la journalisation système. Ce guide couvre syslog, rsyslogd et comment trouver et lire les fichiers journaux dans /var/log. Une partie clé de tout cours Linux gratuit en ligne."
-meta_keywords: "apprendre linux, meilleure façon d'apprendre linux, journalisation système linux, syslog, rsyslogd, var log, journaux système, apprendre ligne de commande linux, meilleures ressources pour apprendre linux"
+order_index: 1
+title: "Journalisation du système"
+description: "Découvrez comment les sources, collecteurs, stockages et outils de consultation des journaux Linux s'articulent."
+meta_title: "Journalisation du système - Journaux"
+meta_description: "Découvrez la journalisation système Linux, syslog, rsyslogd, le journal systemd et la manière de trouver et lire les journaux dans /var/log."
+meta_keywords: "journalisation système Linux, syslog, rsyslogd, /var/log, journaux système, journalctl"
 ---
 
-## Lesson Content
+Les journaux consignent les événements émis par le noyau, les services, les applications et les composants de sécurité. Ils facilitent le dépannage et l'audit, mais seulement si la collecte fonctionne, si les horodatages sont compris et si la source concernée est incluse.
 
-Comprendre la journalisation système est une partie fondamentale de l'apprentissage de **comment apprendre Linux**. Les services, le noyau et les démons de votre système sont constamment actifs. Cette activité est enregistrée et sauvegardée sur votre système dans des fichiers appelés journaux (logs), créant un journal lisible par l'homme de tous les événements système importants.
+## Suivre un message de journal
 
-### Que sont les journaux système
+Le parcours de journalisation comprend plusieurs parties distinctes :
 
-Les journaux système sont essentiels pour surveiller l'état du système, dépanner les problèmes et auditer la sécurité. Ces données sont généralement stockées dans le répertoire `/var`, qui est désigné pour les données variables comme les journaux. Explorer ces fichiers est une étape cruciale pour quiconque recherche la **meilleure façon d'apprendre la ligne de commande Linux**.
+1. Une source émet un événement.
+2. Un collecteur l'accepte et l'enrichit.
+3. Les règles de routage et de conservation choisissent les destinations de stockage ou de transfert.
+4. Un outil de consultation interroge les enregistrements conservés.
 
-### Le rôle de Syslog et Rsyslogd
+Sur un hôte systemd, `systemd-journald` collecte couramment la sortie standard des services, les messages du noyau et les messages natifs du journal ou de syslog. Un démon syslog comme rsyslog peut également recevoir les messages, les écrire dans des fichiers texte traditionnels ou les transférer. Les applications peuvent plutôt entretenir leurs propres fichiers ou une télémétrie externe.
 
-Mais comment ces messages sont-ils collectés ? Un service central appelé `syslog` est responsable de la collecte de ces informations et de leur acheminement vers le système de journalisation.
+:::single-choice{#system-logging-distinct-roles}
+Quel composant décide où les messages acceptés sont stockés ou transférés ?
 
-Le protocole `syslog` implique plusieurs composants. L'un des plus importants est un démon nommé `syslogd` (ou `rsyslogd` sur la plupart des distributions Linux modernes). Ce démon s'exécute en arrière-plan, attendant les messages d'événements. Il filtre ensuite ces messages et, en fonction de sa configuration, les envoie à un fichier, les affiche sur la console ou les supprime. Maîtriser ces concepts fait partie de la **meilleure façon d'apprendre Linux**.
+::option[Le répertoire de travail actuel du terminal.]{#system-logging-cwd explanation="Un répertoire du shell ne définit pas les routes de journalisation à l'échelle du système."}
+::option[Le nom de fichier de l'image du noyau actif.]{#system-logging-kernel-file explanation="Le noyau peut émettre des messages, mais le nom de son image ne définit pas la politique de routage."}
+::option[La configuration du routage et de la conservation.]{#system-logging-routing .correct explanation="Les règles situées entre la collecte et le stockage déterminent les destinations et le comportement de conservation."}
+:::
 
-### Localiser et lire les fichiers journaux
+## Découvrir les journaux disponibles
 
-Bien que le système de journalisation fournisse un mécanisme centralisé, ce n'est pas la seule source de journaux. De nombreuses applications implémentent leurs propres règles de journalisation et génèrent des fichiers journaux distincts. Cependant, une entrée de journal standard comprend généralement un horodatage, le nom d'hôte, le processus qui a généré le message et les détails de l'événement.
+Ne supposez pas que chaque hôte possède les mêmes fichiers. Examinez les services de journalisation actifs et la configuration locale :
 
-Voici un exemple de ligne provenant d'un fichier syslog typique :
+```bash
+$ systemctl --type=service --state=running | grep -E 'journal|syslog'
+$ ls -la /var/log
+$ journalctl --disk-usage
+```
 
-```plaintext
-pete@icebox:~$ less /var/log/syslog
+`/var/log/syslog` est courant dans la famille Debian avec un routage compatible, tandis que `/var/log/messages` l'est ailleurs. Les deux peuvent être absents sur un hôte qui emploie uniquement le journal. La documentation des applications et la configuration des unités peuvent révéler d'autres destinations.
+
+:::single-choice{#system-logging-file-absence}
+Que signifie nécessairement l'absence du fichier `/var/log/syslog` ?
+
+::option[L'hôte peut employer une autre destination de journalisation configurée.]{#system-logging-other-destination .correct explanation="Les systèmes fondés uniquement sur le journal et les différentes politiques syslog ne créent pas nécessairement ce fichier."}
+::option[Le noyau n'a jamais produit le moindre message.]{#system-logging-no-kernel explanation="Des enregistrements du noyau peuvent se trouver dans le journal ou dans une autre destination."}
+::option[Toutes les applications ont cessé de fonctionner.]{#system-logging-apps-stopped explanation="L'état des applications ne peut pas se déduire d'un seul chemin absent."}
+:::
+
+## Interroger le journal
+
+Commencez par une requête limitée plutôt que d'afficher tout le journal :
+
+```bash
+$ journalctl -b -p warning
+$ journalctl -u ssh.service --since '1 hour ago'
+```
+
+`-b` sélectionne le démarrage actuel, `-p` filtre selon la priorité et `-u` selon une unité. Les noms d'unités et les démarrages conservés diffèrent selon l'hôte. Employez `journalctl --list-boots` pour afficher les démarrages disponibles et `journalctl -f` pour suivre les nouveaux enregistrements pendant la reproduction d'un problème.
+
+:::single-choice{#system-logging-current-boot}
+Quelle option limite une requête `journalctl` au démarrage actuel ?
+
+::option[`-b`]{#system-logging-boot-option .correct explanation="Sans argument, le sélecteur de démarrage choisit celui en cours."}
+::option[`-u`]{#system-logging-unit-option explanation="Cette option filtre selon une unité systemd."}
+::option[`-f`]{#system-logging-follow-option explanation="Cette option suit les nouveaux enregistrements ajoutés."}
+:::
+
+## Lire les enregistrements dans leur contexte
+
+Une ligne traditionnelle de style syslog peut ressembler à ceci :
+
+```text
 Jan 27 07:41:32 icebox anacron[4650]: Job `cron.weekly' started
 ```
 
-Cette entrée montre que le 27 janvier à 07:41:32, le service `anacron` sur l'hôte `icebox` a démarré le travail `cron.weekly`. Vous pouvez visualiser les messages d'événements collectés par le système de journalisation en examinant des fichiers tels que `/var/log/syslog` ou `/var/log/messages`.
+Elle contient un horodatage, un hôte, un programme et un PID, puis un message. Considérez le texte du message comme la sortie d'une application, pas comme un fait structuré garanti. Vérifiez le fuseau horaire, la synchronisation de l'horloge, l'identifiant de démarrage, la réutilisation des PID et les enregistrements qui précèdent et suivent immédiatement l'événement. Les champs du journal peuvent offrir des identifiants plus solides que le seul texte affiché.
 
-## Exercise
+Les journaux peuvent contenir des noms d'utilisateurs, adresses, chemins, jetons ou d'autres données sensibles. Appliquez le moindre privilège, expurgez les exportations et préservez les originaux et horodatages pendant une enquête.
 
-La pratique est essentielle à la maîtrise. Les laboratoires pratiques suivants sont parmi les **meilleures ressources pour apprendre Linux** en matière de gestion des journaux et de compétences de visualisation de fichiers.
+:::single-choice{#system-logging-export-safety}
+Que faut-il faire avant de partager un extrait de journal à l'extérieur ?
 
-1. **[Visualisation des journaux et des fichiers de configuration sous Linux](https://labex.io/fr/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Apprenez les compétences essentielles de la ligne de commande Linux pour visualiser et naviguer efficacement dans les fichiers texte, y compris les journaux système et les fichiers de configuration. Entraînez-vous à utiliser des commandes telles que `cat`, `more` et `less` pour extraire des informations critiques de différents types de fichiers.
-2. **[Commande tail Linux : Affichage de la fin du fichier](https://labex.io/fr/labs/linux-linux-tail-command-file-end-display-214303)** - Apprenez la commande `tail` de Linux pour visualiser et surveiller la fin des fichiers texte. Ceci est particulièrement utile pour l'analyse des journaux en temps réel.
-3. **[Rechercher du texte avec grep sous Linux](https://labex.io/fr/labs/comptia-search-text-with-grep-in-linux-590841)** - Dans ce laboratoire, vous apprendrez à rechercher du texte dans des fichiers sur un système Linux à l'aide de la commande `grep`. Ceci est inestimable pour trouver des entrées spécifiques dans de grands fichiers journaux.
+::option[Remplacer chaque horodatage par une valeur aléatoire.]{#system-logging-random-time explanation="Détruire les informations temporelles peut empêcher la corrélation et ne constitue pas une bonne méthode d'expurgation."}
+::option[Rechercher les secrets et identifiants sensibles qu'il contient.]{#system-logging-review-sensitive .correct explanation="Les journaux contiennent souvent des données opérationnelles ou personnelles qui exigent une expurgation contrôlée."}
+::option[Rendre le journal original accessible en écriture à tous.]{#system-logging-world-writable explanation="Affaiblir les contrôles d'accès peut nuire à l'intégrité et exposer d'autres données."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts de gestion et d'analyse des fichiers journaux dans des scénarios réels et à renforcer votre confiance dans la surveillance des systèmes Linux.
+## Résumé
 
-## Quiz Question
+Vous savez maintenant trouver et interroger les journaux Linux sans supposer un chemin de stockage universel.
 
-Quel est le démon qui gère les journaux sur les systèmes Linux plus récents ? (Veuillez répondre en anglais, en faisant attention à la casse).
-
-## Quiz Answer
-
-rsyslogd
+1. Distinguer sources d'événements, collecteurs, routage, stockage et outils de consultation.
+2. Découvrir la configuration de journalisation active de l'hôte.
+3. Employer des requêtes limitées selon l'unité, le démarrage, l'heure ou la priorité.
+4. Corréler les enregistrements dans leur contexte et protéger les données sensibles.

@@ -1,70 +1,114 @@
 ---
-index: 1
+lesson_id: "filesystem-hierarchy"
+course_id: "filesystem"
 lang: "pt"
+order_index: 1
 title: "Hierarquia do Sistema de Arquivos"
+description: "Aprenda as funções pretendidas dos principais diretórios Linux e como os layouts modernos unificados podem ser diferentes."
 meta_title: "Hierarquia do Sistema de Arquivos - O Sistema de Arquivos"
-meta_description: "Explore a hierarquia padrão do sistema de arquivos Linux (FSH). Este guia explica a finalidade de diretórios chave como /bin, /etc, /home e /var, fornecendo uma visão clara da hierarquia do sistema de arquivos no Linux."
-meta_keywords: "hierarquia do sistema de arquivos linux, hierarquia do sistema de arquivos no linux, estrutura de hierarquia de arquivos linux, hierarquia de arquivos linux, FSH, estrutura de diretórios linux"
+meta_description: "Conheça a hierarquia padrão do sistema de arquivos Linux (FHS). Este guia explica a finalidade de diretórios importantes como /bin, /etc, /home e /var."
+meta_keywords: "hierarquia do sistema de arquivos Linux, sistema de arquivos Linux, estrutura hierárquica Linux, hierarquia de arquivos Linux, FHS, estrutura de diretórios Linux"
 ---
 
-## Lesson Content
+O Linux apresenta os sistemas de arquivos montados como uma única árvore de diretórios enraizada em `/`. O Filesystem Hierarchy Standard, ou FHS, atribui funções convencionais a muitos diretórios, mas distribuições, contêineres, sistemas imutáveis e políticas locais podem ser diferentes. Inspecione o host real antes de depender de um caminho.
 
-Você provavelmente está se familiarizando com a estrutura de diretórios em seu sistema. A maioria das distribuições Linux organiza seus sistemas de arquivos de acordo com o Padrão de **Hierarquia do Sistema de Arquivos Linux** (FSH). Este padrão garante que os arquivos sejam armazenados em locais previsíveis, tornando os sistemas mais consistentes.
+```bash
+$ ls -ld /*
+```
 
-Para ver os diretórios de nível superior, execute o comando `ls -l /`. Embora seu sistema possa ter pequenas diferenças, a **estrutura da hierarquia de arquivos do linux** principal será muito semelhante à descrita abaixo.
+## Raiz e Caminhos Essenciais do Sistema
 
-### O Diretório Raiz
+- `/` é a raiz da árvore visível do sistema de arquivos.
+- `/etc` contém a configuração do sistema específica do host. Ele pode conter scripts auxiliares ou de inicialização executáveis, portanto é incorreto afirmar que nunca possui conteúdo executável.
+- `/boot` contém arquivos relacionados à inicialização, como dados do carregador de boot e, em muitos sistemas, kernels e imagens iniciais do sistema de arquivos em RAM.
+- `/bin` e `/sbin` tradicionalmente contêm comandos essenciais para usuários e para a administração do sistema.
+- `/lib` e suas variantes específicas de arquitetura tradicionalmente contêm bibliotecas compartilhadas essenciais e componentes do carregador.
 
-- `/` - Este é o diretório raiz, o ponto de partida para todo o sistema de arquivos. Cada arquivo e diretório em seu sistema está localizado sob este diretório.
+Muitas distribuições atuais usam um layout `/usr` unificado, no qual `/bin`, `/sbin` e `/lib` são links simbólicos para os diretórios correspondentes em `/usr`. Use a descoberta de comandos e os registros de pacotes em vez de presumir se um caminho é um diretório físico ou um link.
 
-### Diretórios Essenciais do Sistema
+:::single-choice{#filesystem-hierarchy-configuration-directory}
+Qual diretório contém convencionalmente a configuração do sistema específica do host?
 
-A **hierarquia de arquivos no linux** inclui vários diretórios críticos para a operação do sistema.
+::option[`/proc`]{#filesystem-hierarchy-proc-config explanation="O procfs apresenta interfaces ativas de processos e do kernel, não arquivos persistentes de configuração do host."}
+::option[`/etc`]{#filesystem-hierarchy-etc .correct explanation="A configuração do sistema e dos serviços é convencionalmente organizada em `/etc`."}
+::option[`/dev`]{#filesystem-hierarchy-dev-config explanation="`/dev` contém objetos voltados aos dispositivos em tempo de execução, não a hierarquia geral de configuração."}
+:::
 
-- `/bin` - Contém programas essenciais de linha de comando (binários) disponíveis para todos os usuários, como `ls`, `cp` e `mv`.
-- `/sbin` - Contém binários essenciais do sistema, que são destinados principalmente à administração do sistema e geralmente só podem ser executados pelo usuário root.
-- `/etc` - Este é o diretório central de configuração do sistema. Ele contém arquivos de configuração para o sistema operacional e aplicativos instalados, mas não deve conter binários executáveis.
-- `/lib` - Contém arquivos de biblioteca compartilhada essenciais dos quais os binários do sistema em `/bin` e `/sbin` dependem para funcionar corretamente.
-- `/boot` - Armazena os arquivos necessários para o processo de inicialização do sistema, incluindo o kernel Linux e os arquivos do carregador de inicialização.
+## Software da Distribuição e Software Local
 
-### Dados do Usuário e Aplicações
+- `/usr` contém a principal hierarquia compartilhável e predominantemente somente para leitura do sistema operacional e das aplicações, incluindo comandos, bibliotecas e dados independentes da arquitetura.
+- `/usr/local` é reservado para software e dados instalados pelo administrador local fora do gerenciamento normal de `/usr` pela distribuição.
+- `/opt` pode conter pacotes de aplicações adicionais em subárvores autocontidas.
 
-- `/home` - Contém diretórios pessoais para cada usuário. É aqui que você armazena seus documentos, configurações de aplicativos e outros arquivos pessoais.
-- `/root` - O diretório pessoal do usuário root, separado do diretório `/home` para garantir que o usuário root possa fazer login mesmo que `/home` não esteja disponível.
-- `/opt` - Reservado para pacotes de software de aplicativos opcionais ou de terceiros.
-- `/usr` - Este diretório contém software e utilitários instalados pelo usuário. Apesar do nome, geralmente não contém arquivos pessoais de usuários individuais. Ele tem sua própria estrutura de subdiretórios, como `/usr/bin` para binários de usuário não essenciais e `/usr/local` para software compilado a partir do código-fonte.
+Apesar do nome, `/usr` não é o local onde normalmente ficam os arquivos pessoais de cada usuário. Os gerenciadores de pacotes da distribuição geralmente controlam grande parte desse diretório, portanto copiar arquivos compilados localmente para `/usr/bin` pode entrar em conflito com os pacotes gerenciados.
 
-### Dados Dinâmicos e Temporários
+:::single-choice{#filesystem-hierarchy-local-software}
+Qual prefixo é convencionalmente reservado ao software instalado localmente fora do conteúdo de `/usr` gerenciado pela distribuição?
 
-- `/var` - Significa "variável" e armazena arquivos que se espera que mudem de tamanho e conteúdo, como logs do sistema (`/var/log`), caches e arquivos de spool.
-- `/tmp` - Um espaço gravável por todos para armazenar arquivos temporários. Arquivos neste diretório são frequentemente excluídos na reinicialização do sistema.
-- `/run` - Contém informações sobre o sistema em execução desde a última inicialização, como IDs de processo (PIDs) e outros dados de tempo de execução.
+::option[`/usr/local`]{#filesystem-hierarchy-usr-local .correct explanation="A hierarquia local separa o software instalado pelo administrador da árvore principal `/usr` da distribuição."}
+::option[`/proc/local`]{#filesystem-hierarchy-proc-local explanation="O procfs é uma interface virtual do kernel, não um prefixo persistente de software."}
+::option[`/dev/local`]{#filesystem-hierarchy-dev-local explanation="O armazenamento de nós de dispositivos não é o local convencional para aplicações locais."}
+:::
 
-### Dispositivos e Pontos de Montagem
+## Dados de Usuários e Serviços
 
-- `/dev` - Contém arquivos de dispositivo especiais que representam componentes de hardware como discos rígidos, terminais e dispositivos de entrada.
-- `/media` - Um ponto de montagem padrão para mídia removível, como unidades USB, cartões SD e CD-ROMs.
-- `/mnt` - Um ponto de montagem genérico para montar sistemas de arquivos temporariamente.
+- `/home` contém convencionalmente os diretórios pessoais dos usuários que não são root, embora serviços de diretório e políticas locais possam colocá-los em outros locais.
+- `/root` é o diretório pessoal convencional da conta root.
+- `/srv` é destinado aos dados específicos do local servidos por este sistema.
 
-### Informações do Sistema
+O caminho do diretório pessoal vem das informações da conta, não apenas da combinação de `/home` com um nome de usuário. Use `getent passwd USER` ou o diretório pessoal resolvido pelo shell em vez de codificar suposições.
 
-- `/proc` - Um sistema de arquivos virtual que fornece informações em tempo real sobre processos em execução e parâmetros do kernel.
-- `/srv` - Destinado a dados específicos do site servidos pelo sistema, como arquivos para um servidor web.
+:::single-choice{#filesystem-hierarchy-root-home}
+Qual é o diretório pessoal convencional da conta root?
 
-## Exercise
+::option[`/home/root`]{#filesystem-hierarchy-home-root explanation="Diretórios pessoais comuns muitas vezes ficam em `/home`, mas o root possui um caminho convencional distinto."}
+::option[`/root`]{#filesystem-hierarchy-root .correct explanation="O diretório pessoal da conta privilegiada fica convencionalmente diretamente abaixo da raiz do sistema de arquivos."}
+::option[`/usr/root`]{#filesystem-hierarchy-usr-root explanation="`/usr` é a hierarquia de software e dados compartilhados, não o diretório pessoal do root."}
+:::
 
-A prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão do sistema de arquivos Linux:
+## Dados Variáveis, de Execução e Temporários
 
-1. **[Navegar no Sistema de Arquivos no Linux](https://labex.io/pt/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Pratique o uso de comandos essenciais do shell como `pwd`, `cd` e `ls` para se mover entre diretórios e explorar o sistema de arquivos.
-2. **[Gerenciar Arquivos e Diretórios no Linux](https://labex.io/pt/labs/comptia-manage-files-and-directories-in-linux-590835)** - Aprenda a criar, remover, copiar e mover arquivos e diretórios, e entenda links simbólicos e rígidos.
-3. **[Encontrar Arquivos e Comandos no Linux](https://labex.io/pt/labs/comptia-find-files-and-commands-in-linux-590834)** - Domine técnicas para localizar arquivos e comandos usando `find`, `locate`, `whereis`, `which` e `type`.
+- `/var` contém dados variáveis, como logs, caches, filas e estados de aplicações. Os logs do sistema normalmente aparecem em `/var/log`, embora alguns sistemas dependam principalmente de uma interface de journal.
+- `/run` contém o estado volátil em tempo de execução da inicialização atual, como sockets, estados de serviços e arquivos PID. Ele normalmente é recriado durante o boot.
+- `/tmp` é destinado a arquivos temporários e geralmente permite escrita por todos com a proteção do sticky bit.
+- `/var/tmp` é destinado a arquivos temporários que devem sobreviver por mais tempo que os arquivos de `/tmp`.
 
-Esses laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança no gerenciamento do sistema de arquivos Linux.
+A política de limpeza de `/tmp` varia; não presuma que os arquivos persistam até a reinicialização nem que sempre sejam excluídos durante ela. As aplicações devem criar arquivos temporários com segurança, em vez de usar nomes previsíveis.
 
-## Quiz Question
+:::single-choice{#filesystem-hierarchy-log-path}
+Qual caminho armazena convencionalmente os arquivos de log do sistema?
 
-Qual diretório é usado para armazenar logs? (Por favor, forneça o caminho completo. A resposta diferencia maiúsculas de minúsculas e deve estar em inglês.)
+::option[`/etc/log`]{#filesystem-hierarchy-etc-log explanation="`/etc` é destinado à configuração, não a dados comuns de log que se acumulam."}
+::option[`/var/log`]{#filesystem-hierarchy-var-log .correct explanation="Os logs são uma categoria de dados mutáveis do sistema, organizada na hierarquia de dados variáveis."}
+::option[`/boot/log`]{#filesystem-hierarchy-boot-log explanation="`/boot` é reservado a artefatos relacionados à inicialização, não aos logs gerais de serviços."}
+:::
 
-## Quiz Answer
+## Dispositivos, Interfaces do Kernel e Pontos de Montagem
 
-/var
+- `/dev` contém nós de dispositivos e links relacionados em tempo de execução.
+- `/proc` expõe interfaces de processos e do kernel por meio do procfs.
+- `/sys` expõe objetos, dispositivos, drivers e atributos do kernel por meio do sysfs.
+- `/media` costuma ser usado para mídias removíveis montadas automaticamente.
+- `/mnt` é um local convencional para montagens temporárias realizadas pelo administrador.
+
+Essas são convenções, não concessões de permissões. Montar outro sistema de arquivos sobre um diretório não vazio oculta temporariamente o conteúdo anterior do diretório até que ele seja desmontado.
+
+:::single-choice{#filesystem-hierarchy-sysfs-path}
+Qual caminho normalmente expõe o modelo de dispositivos do kernel por meio do sysfs?
+
+::option[`/srv`]{#filesystem-hierarchy-srv explanation="`/srv` é destinado aos dados servidos pelo sistema."}
+::option[`/sys`]{#filesystem-hierarchy-sys .correct explanation="O sysfs é convencionalmente montado em `/sys` e apresenta dispositivos, drivers, barramentos e atributos."}
+::option[`/opt`]{#filesystem-hierarchy-opt explanation="`/opt` contém árvores de aplicações adicionais opcionais."}
+:::
+
+Use o laboratório [Navegação pelo Sistema de Arquivos no Linux](https://labex.io/labs/comptia-navigate-the-filesystem-in-linux-590971) para inspecionar esses caminhos e [Localização de Arquivos e Comandos no Linux](https://labex.io/labs/comptia-find-files-and-commands-in-linux-590834) para evitar depender de locais presumidos.
+
+## Resumo
+
+Agora você sabe relacionar os principais caminhos do Linux às suas funções pretendidas, considerando as variações dos sistemas reais.
+
+1. Comece pela árvore unificada enraizada em `/`.
+2. Separe configuração, software gerenciado, software local e dados variáveis.
+3. Diferencie diretórios pessoais e dados de serviços do estado em tempo de execução.
+4. Reconheça `/dev`, `/proc` e `/sys` como interfaces especiais em tempo de execução.
+5. Inspecione links simbólicos, montagens, dados de contas e a política da distribuição antes de presumir um layout.

@@ -1,50 +1,69 @@
 ---
-index: 4
+lesson_id: "list-directories-ls-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 4
 title: "ls (Listar Diretórios)"
+description: "Aprenda a usar as opções de ls para inspecionar arquivos, entradas ocultas, detalhes, tamanhos e ordem de classificação."
 meta_title: "ls (Listar Diretórios) - Linha de Comando"
-meta_description: "Aprenda o comando Linux ls com exemplos para listar arquivos, arquivos ocultos, saída em formato longo, tamanhos legíveis, ordenação e combinação de opções."
-meta_keywords: "comando ls, linux ls, listar arquivos linux, listar diretórios, ls -a, ls -l, ls -lh, ls -r, arquivos ocultos"
+meta_description: "Aprenda o comando ls do Linux com exemplos para listar arquivos, arquivos ocultos, detalhes, tamanhos legíveis, classificação e combinações de opções."
+meta_keywords: "comando ls, ls Linux, listar arquivos Linux, listar diretórios, ls -a, ls -l, ls -lh, ls -r, arquivos ocultos"
 ---
 
-## Lesson Content
+Agora que sabemos navegar pelo sistema de arquivos, como descobrimos o que está disponível? O comando `ls` lista arquivos e diretórios para que você possa inspecionar sua localização atual ou outro caminho.
 
-Agora que sabemos como navegar pelo sistema de arquivos, como descobrimos o que está disponível para nós? O comando `ls` lista arquivos e diretórios para que você possa inspecionar sua localização atual ou outro caminho.
+## Uso Básico do Comando ls
 
-### Uso Básico do Comando ls
-
-Por padrão, o comando `ls` listará os diretórios e arquivos no seu diretório atual. No entanto, você também pode especificar um caminho para listar o conteúdo de um diretório diferente.
+Por padrão, `ls` lista os diretórios e arquivos do diretório atual. Você também pode fornecer um caminho para listar o conteúdo de outro diretório.
 
 ```bash
 $ ls
 $ ls /home/pete
 ```
 
-Você também pode listar um arquivo específico:
+Também é possível listar um arquivo específico:
 
 ```bash
 $ ls /etc/hosts
 /etc/hosts
 ```
 
-### Visualizando Arquivos Ocultos
+:::single-choice{#list-another-directory}
+Qual comando lista o conteúdo de `/home/pete` sem entrar nesse diretório?
 
-Nem todos os arquivos em um diretório são visíveis por padrão. No Linux, nomes de arquivos que começam com um ponto (`.`) são ocultos. Você pode visualizá-los com a opção `-a`, que significa todos.
+::option[`ls /home/pete`]{#ls-target-path .correct explanation="Fornecer o caminho de um diretório a `ls` lista seu conteúdo. O shell permanece no diretório de trabalho atual."}
+::option[`cd /home/pete`]{#cd-target-path explanation="`cd` muda o diretório de trabalho do shell. Por si só, ele não realiza a listagem solicitada."}
+::option[`pwd /home/pete`]{#pwd-target-path explanation="`pwd` informa o diretório de trabalho atual e não recebe um destino para listar. Use `ls` com o caminho."}
+:::
+
+## Visualização de Arquivos Ocultos
+
+Nem todos os arquivos de um diretório aparecem por padrão. No Linux, nomes de arquivos que começam com um ponto (`.`) ficam ocultos. Você pode exibi-los com a opção `-a`, de all.
 
 ```bash
 $ ls -a
 .  ..  .bashrc  Documents  Pictures
 ```
 
-### Obtendo Informações Detalhadas
+Arquivos com nomes iniciados por ponto ficam ocultos por padrão e frequentemente armazenam configurações, como `.bashrc`.
 
-Outra opção essencial do `ls` é `-l` para formato longo. Ela mostra permissões de arquivo, número de links, proprietário, grupo, tamanho, hora da modificação e nome.
+:::single-choice{#show-hidden-files}
+Qual comando inclui os arquivos ocultos na listagem?
+
+::option[`ls -l`]{#long-format explanation="A opção `-l` acrescenta colunas detalhadas, mas não inclui por si só os nomes ocultos."}
+::option[`ls -r`]{#reverse-order explanation="A opção `-r` inverte a ordem de classificação. Ela não altera a inclusão dos arquivos ocultos."}
+::option[`ls -a`]{#all-files .correct explanation="A opção `-a` significa all, ou todos, e faz `ls` incluir os nomes iniciados por ponto."}
+:::
+
+## Obtenção de Informações Detalhadas
+
+Outra opção essencial de `ls` é `-l`, que seleciona o formato longo. Ela mostra as permissões, o número de links, o proprietário, o grupo, o tamanho, a data de modificação e o nome.
 
 ```bash
 $ ls -l
 ```
 
-Aqui está um exemplo da saída:
+Veja um exemplo da saída:
 
 ```plaintext
 pete@icebox:~$ ls -l
@@ -59,36 +78,52 @@ drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Templates
 drwxr-x--- 2 pete penguingroup   4096 Jul 27 12:41   Videos
 ```
 
-Para tamanhos de arquivo mais fáceis de entender, adicione `-h` para saída legível por humanos:
+Para facilitar a leitura dos tamanhos, acrescente `-h`, de human-readable:
 
 ```bash
 $ ls -lh
 ```
 
-### Ordenação em Ordem Reversa
+:::single-choice{#show-readable-file-details}
+Qual comando exibe os detalhes no formato longo com tamanhos legíveis?
 
-Às vezes, você pode querer mudar a ordem de ordenação. A opção `-r` lista arquivos e diretórios em ordem reversa.
+::option[`ls -la`]{#long-all explanation="Esse comando combina o formato longo com a inclusão de arquivos ocultos. Ele não solicita unidades de tamanho legíveis."}
+::option[`ls -lh`]{#long-human-readable .correct explanation="`-l` seleciona o formato longo e `-h` facilita a leitura dos tamanhos. As opções podem ser combinadas em um único comando."}
+::option[`ls -ltr`]{#long-time-reverse explanation="Esse comando combina formato longo, classificação por data de modificação e ordem inversa. Ele não inclui a opção de tamanho `-h`."}
+:::
+
+## Classificação em Ordem Inversa
+
+Às vezes, você pode querer mudar a ordem de classificação. A opção `-r` lista os arquivos e diretórios em ordem inversa.
 
 ```bash
 $ ls -r
 ```
 
-Você pode ordenar por tempo de modificação com `-t`, e depois inverter com `-r`:
+Você pode classificar pela data de modificação com `-t` e depois inverter a ordem com `-r`:
 
 ```bash
 $ ls -lt
 $ ls -ltr
 ```
 
-### Combinando Flags de Comando
+:::single-choice{#show-newest-files-last}
+Qual comando classifica pela data de modificação e coloca as entradas mais recentes por último?
 
-Comandos têm flags, também chamadas opções, para adicionar mais funcionalidades. Como vimos com `-a` e `-l`, você pode combiná-las em um único comando como `ls -la`. A ordem das flags geralmente não importa, então `ls -al` funciona da mesma forma.
+::option[`ls -ltr`]{#time-reversed .correct explanation="`-t` classifica pela data de modificação, enquanto `-r` inverte essa ordem. Juntas, elas colocam as entradas mais antigas antes das recentes."}
+::option[`ls -lt`]{#time-default explanation="Esse comando classifica pela data de modificação, mas mantém a direção padrão, da mais recente para a mais antiga."}
+::option[`ls -lr`]{#reverse-name-order explanation="Esse comando usa o formato longo e inverte a classificação padrão por nome. Sem `-t`, a data de modificação não controla a ordem."}
+:::
+
+## Combinação de Opções de Comando
+
+Os comandos possuem sinalizadores, também chamados de opções, que acrescentam funcionalidades. Como vimos com `-a` e `-l`, você pode combiná-los em um único comando, como `ls -la`. A ordem dos sinalizadores muitas vezes não importa; portanto, `ls -al` funciona da mesma maneira.
 
 ```bash
 $ ls -la
 ```
 
-Combinações úteis incluem:
+Algumas combinações úteis são:
 
 ```bash
 $ ls -lh
@@ -96,38 +131,38 @@ $ ls -la
 $ ls -ltr
 ```
 
-### Opções Comuns do ls
+## Opções Comuns de ls
 
-- `-a`: Mostra todos os arquivos, incluindo os ocultos.
-- `-l`: Usa formato longo.
-- `-h`: Mostra tamanhos legíveis com `-l`.
-- `-r`: Inverte a ordem de ordenação.
-- `-t`: Ordena por tempo de modificação.
-- `-S`: Ordena por tamanho do arquivo.
-- `-d`: Lista o diretório em si ao invés do seu conteúdo.
+- `-a`: mostra todos os arquivos, inclusive os ocultos.
+- `-l`: usa o formato longo.
+- `-h`: mostra tamanhos legíveis quando usado com `-l`.
+- `-r`: inverte a ordem de classificação.
+- `-t`: classifica pela data de modificação.
+- `-S`: classifica pelo tamanho do arquivo.
+- `-d`: lista o próprio diretório, em vez de seu conteúdo.
 
-### Perguntas Comuns
+:::single-choice{#list-directory-entry-itself}
+Qual comando lista a entrada do diretório `projects/` em vez de seu conteúdo?
 
-**Por que alguns nomes de arquivos começam com um ponto?** Arquivos com ponto são ocultos por padrão e frequentemente armazenam configurações, como `.bashrc`.
+::option[`ls -d projects/`]{#directory-entry .correct explanation="A opção `-d` instrui `ls` a mostrar a própria entrada do diretório, em vez de abri-lo para listar o conteúdo."}
+::option[`ls projects/`]{#directory-contents explanation="Sem `-d`, fornecer o caminho de um diretório faz `ls` exibir as entradas contidas nele."}
+::option[`cd projects/`]{#change-to-directory explanation="`cd` muda o diretório de trabalho. Ele não lista a entrada de diretório solicitada."}
+:::
 
-**Como listar apenas o diretório em si?** Use `ls -d directory/`.
+Alguns sistemas exibem a saída de `ls` em cores diferentes conforme o tipo de arquivo. Esse comportamento costuma vir de um alias ou de uma configuração do ambiente; portanto, as cores podem variar entre sistemas.
 
-**Como vejo os arquivos mais novos por último?** Use `ls -ltr`.
+Para reforçar sua compreensão do comando `ls`, experimente este laboratório prático:
 
-**Por que o ls mostra cores?** Muitos sistemas configuram o `ls` para colorir tipos de arquivos através de um alias ou configuração de ambiente.
+- **[Comando ls do Linux: Listagem de Conteúdo](https://labex.io/labs/linux-linux-ls-command-content-listing-219205)** — Pratique o uso de `ls` para listar e analisar com eficiência o conteúdo de arquivos e diretórios. Você aprenderá opções para listagens detalhadas, exibição de arquivos ocultos, tamanhos legíveis e técnicas de classificação.
 
-## Exercise
+Esse laboratório ajudará você a aplicar os conceitos em um cenário real e a ganhar confiança na listagem de diretórios no Linux.
 
-A prática leva à perfeição! Aqui está um laboratório prático para reforçar seu entendimento do comando `ls`:
+## Resumo
 
-- **[Comando Linux ls: Listagem de Conteúdo](https://labex.io/pt/labs/linux-linux-ls-command-content-listing-219205)** - Pratique o uso do comando `ls` para listar e analisar eficientemente o conteúdo de arquivos e diretórios. Você aprenderá várias opções para listagens detalhadas, exibição de arquivos ocultos, tamanhos legíveis e técnicas de ordenação para aprimorar suas habilidades na linha de comando.
+Agora você sabe usar `ls` para inspecionar o conteúdo de diretórios e controlar como as entradas são exibidas.
 
-Este laboratório ajudará você a aplicar os conceitos em um cenário real e ganhar confiança com a listagem de diretórios no Linux.
-
-## Quiz Question
-
-Qual comando você usaria para ver arquivos ocultos? Por favor, responda em inglês, prestando atenção à sensibilidade a maiúsculas e minúsculas.
-
-## Quiz Answer
-
-ls -a
+1. Liste o diretório atual ou outro caminho.
+2. Inclua arquivos ocultos em uma listagem.
+3. Mostre informações detalhadas com tamanhos legíveis.
+4. Classifique as entradas pela data de modificação em ordem inversa.
+5. Liste uma entrada de diretório sem listar seu conteúdo.

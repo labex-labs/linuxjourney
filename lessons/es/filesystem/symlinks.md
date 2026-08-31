@@ -1,100 +1,135 @@
 ---
-index: 12
+lesson_id: "symlinks"
+course_id: "filesystem"
 lang: "es"
+order_index: 12
 title: "Enlaces simbólicos"
-meta_title: "Enlaces simbólicos - El Sistema de Archivos"
-meta_description: "Explora los enlaces simbólicos (symlinks) y enlaces duros de Linux. Aprende a crearlos con el comando ln, verificar el conteo de enlaces en Linux con ls, y entiende la diferencia en las salidas de ls para enlaces simbólicos y duros."
-meta_keywords: "Enlaces simbólicos Linux, enlaces duros, comando ln, enlaces simbólicos, ls enlace simbólico, conteo de enlaces en linux, ls enlaces simbólicos, ls enlaces, sistema de archivos Linux, tutorial Linux"
+description: "Aprende cómo difieren los enlaces simbólicos y duros en la resolución de rutas, la identidad de inodos y el alcance del sistema de archivos."
+meta_title: "Enlaces simbólicos - El sistema de archivos"
+meta_description: "Aprende a crear e inspeccionar enlaces simbólicos y duros de Linux y comprende sus diferencias de identidad y alcance."
+meta_keywords: "enlaces simbólicos Linux, enlaces duros, orden ln, inodos, readlink, recuento de enlaces"
 ---
 
-## Lesson Content
+Una entrada de directorio da nombre a un inodo. Un enlace duro crea otra entrada de directorio para el mismo inodo, mientras que un enlace simbólico crea un inodo distinto cuyo contenido es una ruta que debe resolverse. Esta diferencia controla la identidad, la duración y el comportamiento entre sistemas de archivos.
 
-Cuando lista archivos en detalle, ve mucha información. Veamos un ejemplo anterior de información de inodo del comando `ls -li`:
+## Crear y examinar un enlace simbólico
 
-```plaintext
-pete@icebox:~$ ls -li
-140 drwxr-xr-x 2 pete pete 6 Jan 20 20:13 Desktop
-141 drwxr-xr-x 2 pete pete 6 Jan 20 20:01 Documents
-```
-
-Anteriormente pasamos por alto el tercer campo en esta salida. Este campo es el recuento de enlaces.
-
-### El Recuento de Enlaces en Linux
-
-El **recuento de enlaces en linux** es el número total de enlaces físicos (hard links) que tiene un archivo. Para entender lo que esto significa, primero debemos discutir qué son los enlaces. En Linux, hay dos tipos de enlaces: enlaces simbólicos (symlinks) y enlaces físicos (hard links).
-
-### Entendiendo los Symlinks
-
-En el sistema operativo Windows, tiene accesos directos, que son esencialmente alias que apuntan a otros archivos. En Linux, el equivalente es un enlace simbólico, también conocido como enlace suave o **symlink**. Un symlink es un tipo especial de archivo que apunta a otro archivo o directorio por su nombre.
-
-Veamos esto en la práctica. Crearemos algunos archivos y luego un symlink.
+Crea un enlace simbólico con `ln -s TARGET LINK_NAME`:
 
 ```bash
-pete@icebox:~/Desktop$ echo 'myfile' > myfile
-pete@icebox:~/Desktop$ echo 'myfile2' > myfile2
-pete@icebox:~/Desktop$ echo 'myfile3' > myfile3
-
-pete@icebox:~/Desktop$ ln -s myfile myfilelink
-pete@icebox:~/Desktop$ ls -li
-total 12
-  151 -rw-rw-r-- 1 pete pete 7 Jan 21 21:36 myfile
-93401 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile2
-93402 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile3
-93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
+$ printf '%s\n' 'example' > myfile
+$ ln -s -- myfile myfilelink
+$ ls -li myfile myfilelink
+151   -rw-r--r-- 1 user user 8 ... myfile
+93403 lrwxrwxrwx 1 user user 6 ... myfilelink -> myfile
 ```
 
-Aquí, hemos creado un enlace simbólico llamado `myfilelink` que apunta a `myfile`. Cuando usa `ls` para ver un `ls symlink`, se identifica claramente por la `l` al principio de la cadena de permisos y el símbolo `->` que apunta al destino. Tenga en cuenta que el symlink tiene su propio número de inodo único (93403). Debido a que los symlinks apuntan a nombres de archivo en lugar de inodos, pueden abarcar diferentes sistemas de archivos.
-
-### Entendiendo los Enlaces Físicos (Hard Links)
-
-El otro tipo de enlace es un enlace físico. Un enlace físico crea otra entrada de archivo que apunta directamente al mismo inodo que el archivo original.
-
-Creemos un enlace físico para `myfile2`:
+El enlace simbólico tiene su propio inodo y almacena el texto `myfile`. Cuando un programa sigue `myfilelink`, la resolución de rutas continúa hacia el destino. Muestra el texto almacenado sin seguirlo mediante:
 
 ```bash
-pete@icebox:~/Desktop$ ln myfile2 myhardlink
-pete@icebox:~/Desktop$ ls -li
-total 16
-  151 -rw-rw-r-- 1 pete pete 7 Jan 21 21:36 myfile
-93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myfile2
-93402 -rw-rw-r-- 1 pete pete 8 Jan 21 21:36 myfile3
-93403 lrwxrwxrwx 1 pete pete 6 Jan 21 21:39 myfilelink -> myfile
-93401 -rw-rw-r-- 2 pete pete 8 Jan 21 21:36 myhardlink
+$ readlink myfilelink
 ```
 
-Observe que `myhardlink` comparte el número de inodo exacto (93401) que `myfile2`. El recuento de enlaces para ambos archivos también ha aumentado a 2. Esto se debe a que dos entradas de archivo ahora apuntan al mismo inodo. Si modifica el contenido de `myfile2`, los cambios se reflejarán en `myhardlink`, y viceversa. Si elimina `myfile2`, los datos del archivo seguirán siendo accesibles a través de `myhardlink`. El inodo y sus datos solo se eliminan del disco cuando el recuento de enlaces llega a cero. Debido a que los enlaces físicos apuntan a inodos, que son únicos dentro de un solo sistema de archivos, no pueden abarcar diferentes sistemas de archivos.
+:::single-choice{#symlinks-create-symbolic}
+¿Qué orden crea el enlace simbólico `myfilelink` con el texto de destino `myfile`?
 
-### Creación de Symlinks y Enlaces Físicos
+::option[`ln -s -- myfile myfilelink`]{#symlinks-ln-s .correct explanation="La opción `-s` solicita un enlace simbólico, seguida del destino y el nombre del enlace nuevo."}
+::option[`ln -- myfile myfilelink`]{#symlinks-ln-hard explanation="Sin `-s`, `ln` solicita un enlace duro al inodo existente."}
+::option[`readlink myfile myfilelink`]{#symlinks-readlink-create explanation="Readlink examina un enlace simbólico y no crea ninguno."}
+:::
 
-Puede crear ambos tipos de enlaces utilizando el comando `ln`. La sintaxis es sencilla.
+## Destinos relativos y absolutos
 
-Para crear un enlace simbólico, use la opción `-s`:
+Un destino absoluto comienza en `/`. Un destino relativo se resuelve respecto al directorio que contiene el enlace simbólico, no respecto al directorio actual del shell en el momento en que alguien lo abra posteriormente.
 
 ```bash
-ln -s /ruta/al/original /ruta/al/enlace
+$ mkdir -p tree/data tree/current
+$ printf '%s\n' 'value' > tree/data/item
+$ ln -s ../data/item tree/current/item
 ```
 
-Para crear un enlace físico, omita la opción `-s`:
+Mover toda la jerarquía `tree` conserva esta relación relativa. Mover solo el enlace o el destino puede romperla. Un enlace simbólico puede contener un destino inexistente y entonces se denomina colgante o roto.
+
+:::single-choice{#symlinks-relative-resolution}
+¿Desde dónde se resuelve el destino relativo de un enlace simbólico?
+
+::option[Desde el directorio personal del usuario que lo creó.]{#symlinks-creator-home explanation="La identidad del creador no se convierte en una base permanente de resolución."}
+::option[Desde el directorio actual del primer shell que lo muestra.]{#symlinks-listing-shell explanation="El contexto del listado no reescribe la relación de destino almacenada."}
+::option[Desde el directorio que contiene el enlace simbólico.]{#symlinks-containing-directory .correct explanation="El recorrido de la ruta sustituye el texto relativo almacenado en la ubicación del enlace."}
+:::
+
+## Crear un enlace duro
+
+Crea otro nombre para un archivo normal existente sin `-s`:
 
 ```bash
-ln /ruta/al/original /ruta/al/enlace
+$ ln -- myfile myhardlink
+$ ls -li myfile myhardlink
+151 -rw-r--r-- 2 user user 8 ... myfile
+151 -rw-r--r-- 2 user user 8 ... myhardlink
 ```
 
-Usar los comandos `ls symlinks` o `ls links` generales con la opción `-l` es esencial para administrar e identificar estos diferentes tipos de archivos.
+Ambos nombres se corresponden con el mismo sistema de archivos y número de inodo. El recuento de enlaces pasa a ser 2. Ningún nombre es intrínsecamente el «original»; cambiar el contenido mediante uno modifica el objeto compartido, y eliminar un nombre deja el otro.
 
-## Exercise
+Los enlaces duros no pueden cruzar límites de sistemas de archivos porque un número de inodo solo tiene significado dentro del suyo. Linux también impide normalmente que los usuarios creen enlaces duros a directorios y puede restringir enlaces a archivos que no poseen para evitar ciclos y problemas de seguridad.
 
-¡La práctica hace al maestro! Aquí hay algunos laboratorios prácticos para reforzar su comprensión de la administración de archivos, enlaces e inodos:
+:::single-choice{#symlinks-hard-link-inode}
+¿Qué comparten dos enlaces duros a un archivo normal?
 
-1. **[Administrar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Practique la creación, copia, movimiento y eliminación de archivos y directorios, y aprenda específicamente sobre enlaces simbólicos y físicos, y cómo analizar inodos.
-2. **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Domine comandos esenciales como `pwd`, `cd` y `ls` para moverse eficientemente por el sistema de archivos de Linux, una habilidad fundamental para comprender dónde residen los archivos y sus inodos.
+::option[Únicamente nombres parecidos, pero datos de archivo distintos.]{#symlinks-separate-data explanation="Eso describiría copias independientes, no enlaces duros."}
+::option[Una ruta almacenada dentro de un inodo de enlace simbólico distinto.]{#symlinks-stored-path explanation="El texto de una ruta es el mecanismo que define un enlace simbólico."}
+::option[El mismo inodo y contenido de archivo.]{#symlinks-same-inode .correct explanation="Cada entrada de directorio da nombre al mismo objeto del sistema de archivos."}
+:::
 
-Estos laboratorios le ayudarán a aplicar los conceptos de administración de archivos y enlaces en escenarios reales y a ganar confianza con el sistema de archivos de Linux.
+## Duración y eliminación
 
-## Quiz Question
+Eliminar un enlace simbólico elimina ese objeto de enlace, no su destino:
 
-¿Cuál es el comando y su opción principal utilizada para crear un symlink? Su respuesta debe estar en inglés y distingue entre mayúsculas y minúsculas. Por favor, incluya el espacio entre el comando y la opción.
+```bash
+$ rm -- myfilelink
+```
 
-## Quiz Answer
+Eliminar el nombre de un enlace duro reduce el recuento de enlaces del inodo compartido. El sistema de archivos solo puede recuperar el objeto cuando el recuento llega a cero y ningún descriptor abierto ni otra referencia del sistema de archivos lo mantiene vivo.
 
-ln -s
+Evita una barra final al eliminar un enlace simbólico a un directorio, porque la resolución de rutas con barra final puede seguir la semántica de directorios según la orden. Examina con `ls -ld -- LINK` y elimina deliberadamente el nombre del enlace.
+
+:::single-choice{#symlinks-remove-symbolic}
+¿Qué ocurre normalmente al eliminar el propio enlace simbólico?
+
+::option[Se eliminan el inodo y el nombre del enlace mientras permanece el destino.]{#symlinks-remove-link-only .correct explanation="Desenlazar el enlace simbólico no actúa sobre el objeto indicado por el texto de destino almacenado."}
+::option[Se eliminan automáticamente el destino y todos sus enlaces duros.]{#symlinks-remove-target explanation="El enlace simbólico es un objeto independiente y no posee su destino."}
+::option[El destino se copia dentro del enlace antes de eliminarlo.]{#symlinks-copy-target explanation="La eliminación no conserva el contenido del destino dentro del enlace."}
+:::
+
+## Seguir enlaces de forma segura
+
+Los enlaces simbólicos pueden desviar un programa privilegiado fuera de un directorio esperado o cambiar entre la validación y el uso. Los programas seguros deben evitar carreras de comprobar y después abrir, y utilizar interfaces relativas a directorios, que no sigan enlaces o que restrinjan la resolución según el lenguaje y el sistema operativo.
+
+Para una inspección habitual:
+
+- `ls -ld ENLACE` muestra el propio enlace.
+- `readlink LINK` imprime el texto de destino almacenado.
+- `stat LINK` suele comunicar los metadatos del enlace, mientras que `stat -L LINK` lo sigue en GNU coreutils.
+- `find -L` sigue enlaces y puede encontrar ciclos; utilízalo solo deliberadamente.
+
+Los permisos mostrados como `lrwxrwxrwx` no son una concesión general de acceso. El acceso se decide mediante el recorrido de directorios, la política de seguimiento y los permisos del destino; la propiedad del enlace también importa para algunas reglas de directorios protegidos.
+
+:::single-choice{#symlinks-readlink-output}
+¿Qué imprime de forma predeterminada `readlink LINK`?
+
+::option[El texto de ruta almacenado en el enlace simbólico.]{#symlinks-readlink-target-text .correct explanation="Examina el objeto de enlace sin leer el contenido del archivo de destino."}
+::option[Todo el contenido en bytes del archivo normal de destino.]{#symlinks-readlink-file-content explanation="Utiliza una orden de lectura después de resolver deliberadamente el destino para obtener su contenido."}
+::option[Todos los enlaces duros del sistema de archivos.]{#symlinks-readlink-all-hard explanation="Descubrir enlaces duros exige búsquedas que conozcan los inodos y no guarda relación con el texto de destino del enlace simbólico."}
+:::
+
+Utiliza [Gestionar archivos y directorios en Linux](https://labex.io/labs/comptia-manage-files-and-directories-in-linux-590835) para practicar con enlaces en archivos desechables y comparar números de inodo.
+
+## Resumen
+
+Ahora puedes elegir y examinar el tipo correcto de enlace del sistema de archivos.
+
+1. Utiliza `ln -s DESTINO ENLACE` para un enlace simbólico basado en rutas.
+2. Resuelve los destinos relativos desde el directorio que contiene el enlace.
+3. Utiliza `ln EXISTING LINK` para otro nombre de inodo en el mismo sistema de archivos.
+4. Distingue desenlazar un enlace simbólico de desenlazar uno duro.
+5. Evita seguir enlaces de forma insegura en operaciones privilegiadas o recursivas.

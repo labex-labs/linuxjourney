@@ -1,52 +1,87 @@
 ---
-index: 5
+lesson_id: "authentication-logging"
+course_id: "logging"
 lang: "ja"
+order_index: 5
 title: "認証ログ"
+description: "Linux の認証レコードを見つけ、解釈し、安全に相関する方法を学びます。"
 meta_title: "認証ログ - ログ記録"
 meta_description: "/var/log/auth.log ファイルを調べて Linux の認証ログを探索します。このガイドは、初心者向けにユーザーログインイベント、認証方法、アクセス問題のトラブルシューティング方法を解説し、Linux セキュリティの向上を支援します。"
 meta_keywords: "Linux 認証，auth.log, Linux ログ，ユーザーログイン，Linux セキュリティ，システム認証，ログイントラブルシューティング，認証方法，初心者，チュートリアル，ガイド，セキュアログ"
 ---
 
-## Lesson Content
+認証ログは、ログイン試行、権限変更、session activity を説明する助けになります。セキュリティ上重要な証拠ですが、一行だけでユーザーの意図を確定したり、アカウント侵害を証明したりすることはほとんどできません。
 
-Linux では、誰がどのようにシステムにアクセスしているかを追跡することは、セキュリティとトラブルシューティングのために極めて重要です。このプロセスは認証ロギングによって管理され、ユーザーログインや使用された方法など、認証に関連するすべてのイベントが記録されます。
+## 認証レコードを見つける
 
-### auth.log ファイル
+Debian 系の syslog 設定は認証イベントを `/var/log/auth.log` へ、Red Hat 系は `/var/log/secure` へ route するのが一般的です。systemd journal が同じイベントを unit・process metadata とともに保持する場合や、集中ログが authoritative copy を持つ場合もあります。
 
-Ubuntu のような Debian ベースのシステムでは、このアクティビティを追跡するための主要なファイルは`/var/log/auth.log`です。このログファイルには、成功したログイン試行と失敗したログイン試行、およびトリガーされた認証メカニズムを含むシステム認証情報が含まれています。このファイルを確認することは、ログインの問題を診断したり、セキュリティインシデントを調査したりするための重要なステップです。
+ローカルの宛先を見つけ、関連サービスを問い合わせます。
 
-`auth.log`ファイルのサンプルスニペットを以下に示します。
+```bash
+$ sudo journalctl -u ssh.service --since '1 hour ago'
+$ sudo less /var/log/auth.log
+```
 
-```plaintext
+SSH unit は `ssh.service` または `sshd.service` の場合があります。アカウントとアクセスの詳細が含まれるため、通常レコードの権限は制限されています。
+
+:::single-choice{#auth-logs-file-location}
+Linux の認証イベントは、必ずどこに保存されますか？
+
+::option[ローカルのロギングポリシーが選んだ宛先。]{#auth-logs-local-policy .correct explanation="file、journal、集中 collector はディストリビューションと設定によって異なります。"}
+::option[すべてのディストリビューションの `/var/log/auth.log`。]{#auth-logs-auth-only explanation="このパスは Debian 系では一般的ですが、普遍的ではありません。"}
+::option[各ユーザーの shell history file 内。]{#auth-logs-shell-history explanation="shell history はユーザーコマンド履歴であり、システムの認証イベント保存先ではありません。"}
+:::
+
+## イベントを解釈する
+
+従来形式のレコード例です。
+
+```text
 Jan 31 10:37:50 icebox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
 ```
 
-### ログエントリの理解
+時刻、host、発信 program、PAM module と service、要求された session user、発信元 UID を識別できます。これだけでは UID 1000 の背後にいる人物を特定できず、悪意ある操作とも証明できません。障害時点で有効な account record から UID を解決し、terminal、remote address、session、周辺イベントと相関させます。
 
-ログの各行は貴重な詳細情報を提供します。上記の例では、次のようになります。
+:::single-choice{#auth-logs-uid-inference}
+このレコードの `uid=1000` から何が分かりますか？
 
-- **`Jan 31 10:37:50`**: イベントのタイムスタンプ。
-- **`icebox`**: イベントが発生したマシンのホスト名。
-- **`pkexec`**: イベントを開始したプログラム。
-- **`pam_unix(polkit-1:session)`**: 使用された認証モジュールとサービス。
-- **`session opened for user root by (uid=1000)`**: 実行されたアクション—UID が`1000`のユーザーによって`root`ユーザーのセッションが開かれました。
+::option[root password が 1,000 回間違って入力された。]{#auth-logs-thousand-passwords explanation="この値は identity number であり、試行回数ではありません。"}
+::option[開始プロセスに関連付けられた数値 account identity。]{#auth-logs-numeric-identity .correct explanation="操作を人へ帰属させるには、追加の session と account の証拠が必要です。"}
+::option[イベントが TCP port 1000 から発生した。]{#auth-logs-port explanation="UID はネットワークポートの field ではありません。"}
+:::
 
-### 代替ログファイル
+## 成功と失敗を調査する
 
-認証ログの場所は Linux ディストリビューションによって異なる場合があることに注意することが重要です。たとえば、CentOS や Fedora などの Red Hat ベースのシステムでは、これらのイベントは通常`/var/log/auth.log`の代わりに`/var/log/secure`に記録されます。
+限定した時間範囲で、accepted と rejected の試行をどちらも検索します。SSH では connection source、authentication method、target account、session open/close、service restart も調べます。失敗の繰り返しは、ユーザーの誤り、古い認証情報を持つ自動処理、scan、attack のいずれでも起こります。頻度だけで一つに決めることはできません。
 
-## Exercise
+`last` と `lastb` は、維持されていれば `wtmp` と `btmp` のレコードを要約できますが、これらの binary database にも retention と integrity の限界があります。journal、syslog、集中ログと照合してください。
 
-練習あるのみです！ユーザー認証とアカウント管理の理解を深めるための実践的なラボを以下に示します。
+:::single-choice{#auth-logs-failed-attempts}
+失敗ログインの繰り返しは何と相関させるべきですか？
 
-1. **[Linux におけるユーザーアカウントと Sudo 権限の設定](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - パスワードポリシーの適用、ユーザーアカウントのロック/ロック解除、root アカウントの保護、管理者権限の付与を練習します。これらはすべて、認証セキュリティを理解するために不可欠です。
+::option[ディスクの空き容量だけ。]{#auth-logs-disk-space explanation="容量から、認証試行の source、target、method は特定できません。"}
+::option[source、target account、method、timing、成功 session。]{#auth-logs-correlated-fields .correct explanation="これらの詳細は、設定誤り、ユーザー操作ミス、scan、不正アクセスの区別に役立ちます。"}
+::option[アカウントが確実に侵害されたという結論。]{#auth-logs-certain-compromise explanation="失敗には善意・悪意の複数原因が考えられます。"}
+:::
 
-これらのラボは、概念を実際のシナリオに適用し、Linux のユーザーおよびセキュリティ管理に対する自信を構築するのに役立ちます。
+## 保存して対応する
 
-## Quiz Question
+incident が疑われる場合、host time と timezone を記録し、元ログと metadata を保持し、export copy を安全に保護します。証拠をその場で編集してはいけません。account lock、firewall change、session termination は正当なアクセスを中断したり、攻撃者へ気付かせたりする可能性があるため、incident-response process に従い、復旧経路を維持します。
 
-Debian ベースのシステムでは、ユーザー認証に使用されるログファイルの名前は何ですか？ファイル名のみで回答してください。大文字と小文字は区別されます。
+:::single-choice{#auth-logs-preservation}
+調査中の認証証拠はどのように扱うべきですか？
 
-## Quiz Answer
+::option[分かりやすくするため、元ファイルの疑わしい行を編集する。]{#auth-logs-edit-original explanation="発生元を変更すると証拠の integrity が損なわれます。"}
+::option[誰でもユーザーを特定できるよう、完全なログを公開する。]{#auth-logs-publish explanation="認証レコードは機密性の高い identity と infrastructure の詳細を露出する場合があります。"}
+::option[原本を保持し、export copy を保護する。]{#auth-logs-preserve .correct explanation="セキュリティログには integrity と confidentiality の両方が重要です。"}
+:::
 
-auth.log
+## まとめ
+
+これで、一つのレコードから分かることを過大評価せず、認証イベントを調べられます。
+
+1. ローカルで設定された認証ログの宛先を見つける。
+2. identity、service、method、session field を文脈の中で解釈する。
+3. 保存された複数情報源で、失敗・成功 activity を相関させる。
+4. 証拠を保持し、中断を伴う対応操作を調整する。

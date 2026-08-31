@@ -1,52 +1,110 @@
 ---
-index: 3
+lesson_id: "system-calls"
+course_id: "kernel"
 lang: "es"
-title: "Llamadas al Sistema"
-meta_title: "Llamadas al Sistema - Kernel"
-meta_description: "Explora los fundamentos de una llamada al sistema en Linux. Aprende cómo los procesos en espacio de usuario usan llamadas al sistema (syscalls) para solicitar servicios al kernel, cambiar de modo y cómo funciona la tabla de llamadas al sistema. Usa `strace` para ver las llamadas al sistema en acción."
+order_index: 3
+title: "Llamadas al sistema"
+description: "Aprende cómo el código del espacio de usuario invoca servicios del kernel de Linux y cómo inspeccionar llamadas de forma segura con `strace`."
+meta_title: "Llamadas al sistema - Kernel"
+meta_description: "Explora los fundamentos de las llamadas al sistema en Linux. Aprende cómo los procesos del espacio de usuario solicitan servicios al kernel, cambian de modo y utilizan la tabla de llamadas. Usa `strace` para observarlas en acción."
 meta_keywords: "llamada al sistema linux, llamadas al sistema, tabla syscall, modo kernel, modo usuario, strace, kernel linux, API syscall"
 ---
 
-## Lesson Content
+Una llamada al sistema es una entrada definida al kernel mediante la cual el código del espacio de usuario solicita una operación, como abrir un archivo, asignar memoria, crear un proceso o enviar datos por la red. El kernel valida los argumentos, las credenciales, el estado de los objetos y la política de seguridad antes de realizar la solicitud.
 
-Imagina que estás en un gran concierto. Para pasar del área del público general al exclusivo backstage, no puedes simplemente caminar. Necesitas un pase especial que te conceda acceso a través de una puerta específica y vigilada. En el mundo de la computación, las **llamadas al sistema** (system calls) son esos pases especiales.
+## Bibliotecas y ABI de llamadas al sistema
 
-### ¿Qué Son las Llamadas al Sistema?
+Las aplicaciones suelen llamar a funciones de la biblioteca de C en lugar de escribir instrucciones de entrada específicas de la arquitectura. Un envoltorio de biblioteca prepara los registros y la memoria según la ABI de llamadas al sistema, entra en el kernel y traduce el resultado a la convención del lenguaje.
 
-Las llamadas al sistema, a menudo abreviadas como _syscalls_, proporcionan una forma para que los procesos en el espacio de usuario soliciten servicios directamente al kernel. El kernel expone un conjunto de servicios a través de la API de llamadas al sistema. Estos servicios son esenciales para operaciones como leer o escribir en un archivo, gestionar la memoria o manejar conexiones de red. El número de llamadas al sistema disponibles es fijo; no puedes añadir nuevas arbitrariamente. Tu sistema mantiene una `tabla de llamadas al sistema` (_syscall table_) donde cada llamada al sistema está registrada con un ID único.
+La relación no siempre es de una función por cada llamada al sistema:
 
-### El Mecanismo de Llamada al Sistema en Linux
+- una función de biblioteca puede combinar varias llamadas al sistema
+- algunas funciones operan por completo en el espacio de usuario
+- una función vDSO optimizada puede obtener ciertos datos mantenidos por el kernel sin una transición completa de modo
+- una llamada al sistema puede dar soporte a muchas API de mayor nivel
 
-Cuando ejecutas un programa como `ls`, el código dentro de él no ejecuta el comando **system call linux** directamente. En su lugar, utiliza una función de biblioteca que actúa como un envoltorio (_wrapper_). Esta función envoltorio prepara los parámetros necesarios y luego desencadena una interrupción de software, o una "trampa" (_trap_).
+:::single-choice{#system-calls-library-wrapper}
+¿Qué hace un envoltorio típico de libc para una llamada al sistema?
 
-Esta trampa indica al procesador que cambie del modo de usuario no privilegiado al modo de kernel privilegiado. Una vez en el modo kernel, un manejador de llamadas al sistema toma el control. Utiliza el ID único para buscar la función solicitada en la `tabla de llamadas al sistema` y luego la ejecuta. Por ejemplo, la llamada al sistema `stat()`, utilizada para consultar el estado de un archivo, se encuentra y se ejecuta de esta manera. Después de que el kernel completa la tarea, cambia el contexto de nuevo al modo de usuario y devuelve un código de estado a tu proceso, indicando éxito o un error.
+::option[Prepara los argumentos de la ABI, entra en el kernel y traduce el resultado.]{#system-calls-wrapper-role .correct explanation="El envoltorio oculta las convenciones de llamada específicas de la arquitectura tras una interfaz de biblioteca normal."}
+::option[Concede a la aplicación acceso sin restricciones a la memoria del kernel.]{#system-calls-wrapper-unrestricted explanation="La entrada al kernel sigue estando controlada y valida la solicitud."}
+::option[Vuelve a compilar el kernel cada vez que se llama a la función.]{#system-calls-wrapper-compile explanation="Una llamada durante la ejecución utiliza el kernel que ya está en funcionamiento."}
+:::
 
-### Visualización de Llamadas al Sistema con strace
+## Entrar y salir del kernel
 
-Puedes observar las llamadas al sistema que realiza un proceso en tiempo real utilizando el comando `strace`. Esta herramienta es increíblemente útil para depurar y comprender cómo un programa interactúa con el kernel.
+El envoltorio coloca un número de llamada al sistema y sus argumentos en las ubicaciones definidas por la arquitectura, y después ejecuta una instrucción de entrada como `syscall` en x86-64 o `svc` en AArch64. El procesador cambia a un punto de entrada privilegiado configurado y el kernel distribuye la solicitud.
 
-Para ver las llamadas al sistema realizadas por el comando `ls`, ejecutarías:
+Al terminar, el kernel devuelve un valor o una indicación de error. Los envoltorios de la biblioteca de C suelen devolver `-1` y establecer el `errno` local del hilo cuando se produce un error. Otros lenguajes y entornos de ejecución exponen tipos de error diferentes.
+
+Llamar «interrupción de software» a todas las entradas es impreciso en las arquitecturas actuales; las trampas, las instrucciones rápidas de llamadas al sistema y las llamadas al supervisor implementan de maneras distintas transiciones controladas relacionadas.
+
+:::single-choice{#system-calls-entry-result}
+¿Quién valida los argumentos y la autorización de una llamada al sistema?
+
+::option[El indicador del shell antes de que se inicie el proceso.]{#system-calls-shell-validates explanation="Un proceso puede realizar llamadas al sistema sin depender de un shell, y las comprobaciones del kernel siguen siendo necesarias."}
+::option[La implementación en el kernel del servicio solicitado.]{#system-calls-kernel-validates .correct explanation="El manejador privilegiado comprueba los punteros, el estado de los objetos, las credenciales y la política antes de actuar."}
+::option[La tabla de particiones del disco.]{#system-calls-partition-validates explanation="Los metadatos de la disposición del almacenamiento no autorizan servicios arbitrarios del kernel."}
+:::
+
+## Números y compatibilidad
+
+Los números de las llamadas al sistema y sus convenciones de llamada son específicos de cada arquitectura. La misma llamada simbólica puede tener un número o una disposición de estructuras diferente en otra ABI. Las versiones del kernel pueden añadir llamadas al sistema, mientras que las ABI estables del espacio de usuario intentan conservar el comportamiento existente.
+
+Un proceso sin privilegios no puede insertar manejadores arbitrarios nuevos en la tabla de llamadas al sistema del kernel activo. Ampliar la interfaz requiere código del kernel y un diseño cuidadoso de la ABI. Funciones como seccomp pueden filtrar qué llamadas tiene permitido realizar un proceso, pero no crean nuevas implementaciones en el kernel.
+
+:::single-choice{#system-calls-number-portability}
+¿Por qué debe una aplicación evitar codificar directamente números de llamadas al sistema de otra arquitectura?
+
+::option[Los números y las convenciones de llamada son específicos de la ABI.]{#system-calls-abi-specific .correct explanation="Un número con un significado en una arquitectura puede identificar otra operación o no existir en otra."}
+::option[Las llamadas al sistema reciben sus nombres del directorio de trabajo actual.]{#system-calls-directory-names explanation="Los nombres de ruta no definen la ABI de numeración de llamadas al sistema."}
+::option[Cada proceso recibe una tabla aleatoria de llamadas al sistema al iniciarse.]{#system-calls-random-table explanation="La ABI del kernel activo es estable para una arquitectura, no se aleatoriza para cada proceso."}
+:::
+
+## Rastrear con `strace`
+
+Rastrea un comando sencillo y guarda la salida por separado:
 
 ```bash
-strace ls
+$ strace -o trace.log -- ls
 ```
 
-Esto mostrará una lista detallada de cada llamada al sistema que `ls` realiza durante su ejecución.
+Cuando dispongas de autorización, sigue los procesos hijo con `-f` o limita la salida mediante una expresión como:
 
-## Exercise
+```bash
+$ strace -f -e trace=%file -o trace.log -- command
+```
 
-¡La práctica hace al maestro! Si bien el funcionamiento interno de las llamadas al sistema es complejo, comprender cómo interactúan los programas del espacio de usuario con el kernel es fundamental. La mejor manera de captar esta interacción es practicando con comandos que realizan estas operaciones subyacentes. Aquí tienes algunos laboratorios prácticos para reforzar tu comprensión de las interacciones del sistema de archivos, que dependen en gran medida de las llamadas al sistema:
+`strace` puede revelar rutas, argumentos, datos derivados del entorno, direcciones de red, fragmentos del contenido de archivos y credenciales pasadas incorrectamente mediante argumentos. Almacena los rastros con permisos restrictivos y elimínalos de acuerdo con la política de datos de incidentes.
 
-1. **[Navegar por el Sistema de Archivos en Linux](https://labex.io/es/labs/comptia-navigate-the-filesystem-in-linux-590971)** - Practica comandos esenciales como `ls`, `cd` y `pwd` para moverte e inspeccionar tu sistema de archivos Linux, interactuando directamente con los servicios del sistema de archivos del kernel.
-2. **[Gestionar Archivos y Directorios en Linux](https://labex.io/es/labs/comptia-manage-files-and-directories-in-linux-590835)** - Aprende a crear, eliminar, copiar y mover archivos y directorios usando comandos como `mkdir`, `rm`, `cp` y `mv`, todos los cuales involucran llamadas al sistema para realizar sus acciones.
-3. **[Buscar Archivos y Comandos en Linux](https://labex.io/es/labs/comptia-find-files-and-commands-in-linux-590834)** - Domina las técnicas para localizar archivos y comandos usando `find`, `whereis` y `which`, ilustrando aún más cómo los comandos de usuario aprovechan los servicios del kernel para interactuar con el sistema de archivos.
+:::single-choice{#system-calls-strace-purpose}
+¿Qué observa principalmente `strace`?
 
-Estos laboratorios te ayudarán a aplicar los conceptos de interacción con el sistema de archivos en escenarios reales y a ganar confianza con las operaciones fundamentales de Linux que dependen implícitamente de las llamadas al sistema.
+::option[Únicamente las líneas de código fuente ejecutadas dentro de la aplicación.]{#system-calls-strace-source-lines explanation="El rastreo en el nivel del código fuente requiere depuradores o instrumentación con símbolos."}
+::option[Las llamadas al sistema y las señales en el límite entre el usuario y el kernel.]{#system-calls-strace-boundary .correct explanation="Informa de solicitudes, argumentos, resultados y eventos de señales de los procesos rastreados."}
+::option[El voltaje físico de cada núcleo de la CPU.]{#system-calls-strace-voltage explanation="La telemetría del hardware queda fuera del rastreo de llamadas al sistema."}
+:::
 
-## Quiz Question
+## Interpretar los rastros con cuidado
 
-What is used to switch from user mode to kernel mode? Please answer in English, using two words.
+El rastreo altera los tiempos y puede imponer una sobrecarga considerable. Una llamada fallida puede ser una comprobación esperada, y el último error visible puede ser consecuencia de una operación anterior o de la política de la aplicación. Interpreta los descriptores de archivo, sigue las relaciones entre procesos y relaciona los resultados con los registros de la aplicación.
 
-## Quiz Answer
+Los permisos y la política de seguridad de ptrace restringen qué procesos pueden rastrearse. No te conectes al proceso de otro usuario o a uno de producción sin autorización; las suspensiones y los cambios de tiempos pueden afectar al comportamiento del servicio.
 
-System call
+:::single-choice{#system-calls-strace-failure}
+¿Significa necesariamente que la aplicación está averiada el hecho de que falle una llamada al sistema en un rastro?
+
+::option[Sí; cualquier valor de retorno distinto de cero termina Linux inmediatamente.]{#system-calls-nonzero-terminates explanation="Las aplicaciones gestionan habitualmente errores de llamadas al sistema sin que falle el sistema."}
+::option[No; los programas suelen probar alternativas y gestionar errores esperados.]{#system-calls-expected-failure .correct explanation="Interpreta el valor devuelto en el contexto del flujo de control y de la aplicación, no de forma aislada."}
+::option[Sí; el kernel nunca devuelve errores esperados.]{#system-calls-no-expected-errors explanation="Errores como rutas inexistentes u operaciones no compatibles son resultados normales de una API."}
+:::
+
+## Resumen
+
+Ahora puedes seguir una llamada al sistema desde la API de una biblioteca hasta el trabajo validado del kernel.
+
+1. Distingue las funciones de alto nivel de la ABI de llamadas al sistema.
+2. Relaciona las instrucciones de entrada de la arquitectura con la distribución controlada del kernel.
+3. Trata los números y las estructuras de las llamadas al sistema como elementos específicos de la arquitectura.
+4. Usa salidas filtradas de `strace` y protege los datos sensibles.
+5. Interpreta los fallos y la sobrecarga del rastreo en el contexto de la aplicación.

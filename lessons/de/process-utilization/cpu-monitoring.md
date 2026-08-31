@@ -1,58 +1,95 @@
 ---
-index: 4
+lesson_id: "cpu-monitoring"
+course_id: "process-utilization"
 lang: "de"
+order_index: 4
 title: "CPU-Überwachung"
-meta_title: "CPU-Überwachung - Prozessauslastung"
-meta_description: "Lernen Sie die Grundlagen der Linux-CPU-Überwachung mit dem uptime-Befehl. Dieser Anfängerleitfaden erklärt, wie man die Lastdurchschnittswerte interpretiert, die Prozessauslastung versteht und die Systemleistung bewertet."
-meta_keywords: "uptime-Befehl, Linux CPU-Überwachung, Lastdurchschnitt, Systemleistung, Prozessauslastung, Linux Tutorial, Anfängerleitfaden"
+description: "Lerne, Linux-Lastmittelwerte zusammen mit CPU-Anzahl, Auslastung und Taskzustand zu interpretieren."
+meta_title: "CPU-Überwachung – Prozessauslastung"
+meta_description: "Lerne die Grundlagen der Linux-CPU-Überwachung mit dem Befehl uptime. Diese Einführung erklärt, wie du Lastmittelwerte interpretierst, Prozessauslastung verstehst und die Systemleistung beurteilst."
+meta_keywords: "uptime-Befehl, Linux-CPU-Überwachung, Lastmittelwert, Systemleistung, Prozessauslastung, Linux-Tutorial, Einführung"
 ---
 
-## Lesson Content
+Die CPU-Fehlersuche beginnt damit, Last, Auslastung und Reaktionsfähigkeit voneinander zu trennen. Kein einzelner Wert belegt einen Engpass. Vergleiche deshalb mehrere Zeitfenster und setze Hostmesswerte zu der Arbeitslast in Beziehung, die Benutzer tatsächlich erleben.
 
-Eine grundlegende Fähigkeit bei der Verwaltung eines Linux-Systems ist das Verständnis seiner Leistung. Eines der nützlichsten Befehle für einen schnellen Gesundheitscheck ist **uptime**.
+## uptime lesen
 
+`uptime` bietet einen kompakten Ausgangspunkt:
+
+```text
+$ uptime
+ 17:23:35 up 1 day, 5:59, 2 users, load average: 0.00, 0.02, 0.05
 ```
-pete@icebox:~$ uptime
- 17:23:35 up 1 day,  5:59,  2 users,  load average: 0.00, 0.02, 0.05
+
+Die letzten drei Werte sind Lastmittelwerte über ungefähr 1, 5 und 15 Minuten. Ihr Vergleich zeigt die Richtung: Ein deutlich größerer 1-Minuten-Wert kann auf steigende Last hindeuten, während ein größerer 15-Minuten-Wert auf fallende Last hinweisen kann.
+
+:::single-choice{#cpu-uptime-windows}
+In welcher Reihenfolge zeigt `uptime` die Zeitfenster der Lastmittelwerte an?
+
+::option[15, 5 und 1 Sekunde.]{#cpu-windows-seconds explanation="Die Werte sind Mittelwerte über Minuten und werden nicht mit dem längsten zuerst ausgegeben."}
+::option[1, 5 und 15 Minuten.]{#cpu-windows-one-five-fifteen .correct explanation="Das kürzeste vergangene Zeitfenster steht zuerst und das längste zuletzt."}
+::option[Aktueller, minimaler und maximaler CPU-Prozentwert.]{#cpu-windows-percentages explanation="Der Lastmittelwert ist kein minimaler oder maximaler CPU-Prozentwert."}
+:::
+
+## Linux-Last verstehen
+
+Der Linux-Lastmittelwert zählt ausführbare Tasks, einschließlich derjenigen, die CPU verwenden oder darauf warten, sowie Tasks in nicht unterbrechbarem Schlaf, der häufig mit E/A zusammenhängt. Er ist deshalb nicht mit der CPU-Auslastung identisch.
+
+Eine Last von `4.0` hat auf Systemen mit einer beziehungsweise sechzehn logischen CPUs unterschiedliche Bedeutung. Ermittle die Anzahl der dem System verfügbaren Verarbeitungseinheiten mit:
+
+```bash
+$ nproc
 ```
 
-Obwohl wir `uptime` schon einmal gesehen haben, konzentrieren wir uns auf das Feld `load average` (Auslastungsdurchschnitt), das für das **Linux CPU Monitoring** entscheidend ist.
+CPU-Kontingente, Affinität, Virtualisierung und Containergrenzen können die für eine bestimmte Arbeitslast sichtbare Kapazität verringern. Die CPU-Anzahl des Hosts ist daher nur ein Ausgangspunkt.
 
-### Verständnis des Load Average
+:::single-choice{#cpu-load-not-percentage}
+Warum ist der Lastmittelwert kein CPU-Auslastungsprozentwert?
 
-Der Load Average liefert eine Momentaufnahme der CPU-Auslastung Ihres Systems. Die drei Zahlen stehen für die durchschnittliche CPU-Auslastung über die letzten 1, 5 und 15 Minuten. Aber was ist CPU-Auslastung? Es ist die durchschnittliche Anzahl von Prozessen in der Warteschlange (run-queue), was bedeutet, dass sie entweder aktiv von der CPU ausgeführt werden oder auf ihren Einsatz warten. Diese Metrik ist ein Schlüsselindikator für die **Prozessauslastung** und die allgemeine **Systemleistung**.
+::option[Er meldet nur die CPU-Taktfrequenz.]{#cpu-load-clock explanation="Die Taktfrequenz ist ein getrennter Hardware- oder Skalierungsmesswert."}
+::option[Er misst nur freien physischen Arbeitsspeicher.]{#cpu-load-memory explanation="Die Speicherverfügbarkeit wird durch andere Messwerte gemeldet."}
+::option[Er umfasst ausführbare Tasks und Tasks in nicht unterbrechbarem Schlaf.]{#cpu-load-task-count .correct explanation="Last basiert auf Taskbedarf und Wartezustand statt auf einem Prozentanteil verstrichener CPU-Zeit."}
+:::
 
-### Eine Verkehrsanalyse
+## Last mit CPU-Aktivität vergleichen
 
-Stellen Sie sich eine Single-Core-CPU als eine einspurige Autobahn vor.
+Erfasse mehrere Stichproben, statt dich auf eine einzelne Ausgabe zu verlassen. Nützliche ergänzende Werkzeuge sind:
 
-- Wenn die Autobahn bei konstantem Verkehrsfluss zu 100 % ausgelastet ist, entspricht dies einem Load Average von 1,0.
-- Wenn ein großer Stau entsteht und sich Autos doppelt so weit stauen, wie die Autobahn Kapazität hat, beträgt die Auslastung 200 % oder ein Load Average von 2,0.
-- Wenn die Autobahn halb leer ist, beträgt die Auslastung 0,5.
-- Idealerweise wünschen Sie sich einen niedrigen Load Average, wie eine Autobahn um 2 Uhr morgens ohne Verkehr.
+```bash
+$ top
+$ vmstat 1
+$ mpstat -P ALL 1
+```
 
-In dieser Analogie sind die Autos Prozesse, die darauf warten, von der CPU bearbeitet zu werden.
+`top` verbindet Host- und Prozessansichten. `vmstat` zeigt die Anzahl ausführbarer und blockierter Tasks zusammen mit CPU-Kategorien. `mpstat`, das auf vielen Distributionen von `sysstat` bereitgestellt wird, zeigt die Aktivität einzelner CPUs. Verfügbarkeit und genaue Felder unterscheiden sich; verwende daher die lokalen Handbuchseiten.
 
-### Interpretation des Load Average auf modernen Systemen
+Hohe Last bei ausgelasteten CPUs kann auf CPU-Bedarf hindeuten. Hohe Last zusammen mit auffällig vielen blockierten Tasks, E/A-Latenz oder beobachteter E/A-Wartezeit weist auf eine andere eingeschränkte Ressource hin. Eine niedrige durchschnittliche Auslastung kann außerdem eine gesättigte einzelne CPU oder eine kurze Latenzspitze verbergen.
 
-Ein Load Average von 1,0 bedeutet nicht zwangsläufig, dass Ihr System überlastet ist. Die meisten modernen Computer verfügen über Mehrkernprozessoren. Wenn Sie einen Quad-Core (4-Kern)-Prozessor haben, bedeutet ein Load Average von 1,0, dass nur 25 % Ihrer gesamten CPU-Kapazität genutzt werden. Jeder Kern fungiert als zusätzliche Spur auf der Autobahn.
+:::single-choice{#cpu-high-load-next-step}
+Was ist der beste nächste Schritt, nachdem du einen hohen Lastmittelwert beobachtet hast?
 
-Um den Load Average richtig zu interpretieren, müssen Sie die Anzahl der CPU-Kerne berücksichtigen. Sie können die Anzahl der Kerne auf Ihrem System mit dem Befehl `cat /proc/cpuinfo` anzeigen.
+::option[Wiederholte CPU-, Taskzustands-, E/A- und Arbeitslastmessungen vergleichen.]{#cpu-load-correlate .correct explanation="Miteinander verknüpfte Stichproben unterscheiden konkurrierende Erklärungen für die Last."}
+::option[Sofort neu starten, ohne weitere Daten zu erfassen.]{#cpu-load-reboot explanation="Ein Neustart beseitigt Belege und kann Dienste unterbrechen, ohne die Ursache zu ermitteln."}
+::option[Annehmen, dass jede CPU vollständig ausgelastet ist.]{#cpu-load-assume explanation="Last kann nicht unterbrechbare Tasks umfassen und ungleichmäßig auf CPUs verteilt sein."}
+:::
 
-Eine allgemeine Regel für gute **Systemleistung** ist, Ihren Load Average unter der Anzahl der Kerne zu halten. Wenn Sie feststellen, dass Ihr Rechner durchgehend einen Load Average hat, der höher ist als seine Kernanzahl, könnte dies auf einen Leistungsengpass hindeuten, wie z. B. einen fehlerhaften Prozess oder unzureichende Hardware-Ressourcen.
+## Kapazität und Auswirkungen bewerten
 
-## Exercise
+Es gibt keine allgemeingültige Regel, nach der die Last immer unter der CPU-Anzahl bleiben muss. Stapelverarbeitungssysteme können Warteschlangen akzeptieren, während interaktive Dienste schon vorher ihre Latenzziele verfehlen können. Erstelle eine Grundlinie für denselben Host und dieselbe Arbeitslast und vergleiche anschließend Antwortzeit, Durchsatz, Fehlerrate, Sättigung und Ressourcennutzung.
 
-Um praktische Erfahrungen mit dem **Linux CPU Monitoring** und der Analyse der **Systemleistung** zu sammeln, probieren Sie diese praktischen Labs aus. Sie helfen Ihnen, die Konzepte von **Load Average** und **Prozessauslastung** in realen Szenarien anzuwenden.
+:::single-choice{#cpu-capacity-threshold}
+Woran solltest du entscheiden, ob die beobachtete Last akzeptabel ist?
 
-1. **[Linux-Prozesse verwalten und überwachen](https://labex.io/de/labs/comptia-manage-and-monitor-linux-processes-590864)** – Üben Sie die Interaktion mit und die Inspektion von Prozessen sowie die Überwachung von Ressourcen mit Tools wie `ps` und `top`, was direkt mit dem Verständnis der CPU-Last zusammenhängt.
-2. **[Linux top-Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** – Lernen Sie, den `top`-Befehl für die Echtzeit-Systemüberwachung zu verwenden, einschließlich des Sortierens und Filterns von Prozessen, was einen tieferen Einblick in die CPU- und Prozessaktivität bietet.
-3. **[Linux free-Befehl: Systemspeicher überwachen](https://labex.io/de/labs/linux-linux-free-command-monitoring-system-memory-388496)** – Lernen Sie, die Systemspeichernutzung zu überwachen und zu analysieren, was oft ein kritischer Faktor neben der CPU-Last für die Gesamtleistung des Systems ist.
+::option[An der Vorgabe, dass der Wert immer unter eins bleiben muss.]{#cpu-below-one explanation="Mehrkernkapazität und Arbeitslastziele machen diesen festen Schwellenwert unzuverlässig."}
+::option[Allein an der von `uptime` angezeigten Benutzeranzahl.]{#cpu-user-count explanation="Angemeldete Shellbenutzer stellen nicht den gesamten Arbeitslastbedarf dar."}
+::option[An der Grundlinie und den Dienstzielen der Arbeitslast.]{#cpu-baseline-objectives .correct explanation="Die Akzeptanz hängt vom erwarteten Verhalten und der für Benutzer sichtbaren Leistung ab, nicht von einem allgemeingültigen Schwellenwert."}
+:::
 
-## Quiz Question
+## Zusammenfassung
 
-Welchen Befehl können Sie verwenden, um den Load Average des Systems anzuzeigen? Bitte antworten Sie auf Englisch, und beachten Sie, dass der Befehl groß- und kleingeschrieben werden muss.
+Du kannst den Lastmittelwert nun als einen Bestandteil einer CPU-Untersuchung interpretieren.
 
-## Quiz Answer
-
-uptime
+1. Lies die Lastzeitfenster über 1, 5 und 15 Minuten.
+2. Unterscheide Tasklast von CPU-Zeitprozenten.
+3. Vergleiche die Last mit der verfügbaren Verarbeitungskapazität.
+4. Verknüpfe wiederholte Hostmessungen mit Dienstergebnissen.

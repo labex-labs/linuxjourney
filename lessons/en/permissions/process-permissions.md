@@ -1,47 +1,78 @@
 ---
-index: 7
+lesson_id: "process-permissions"
+course_id: "permissions"
 lang: "en"
+order_index: 7
 title: "Process Permissions"
+description: "Learn how real, effective, and saved user IDs help Linux processes track callers and manage privilege."
 meta_title: "Process Permissions - Permissions"
 meta_description: "Learn about Linux process permissions, including Real, Effective, and Saved User IDs. Understand how UIDs impact security and command execution. Start learning today!"
 meta_keywords: "Linux process permissions, Real UID, Effective UID, Saved UID, Linux security, passwd command, Linux tutorial, beginner Linux"
 ---
 
-## Lesson Content
+Linux authorization checks act on process credentials rather than directly on a typed username. A process has several related user and group IDs, each serving a different role. Most ordinary programs start with matching identities, while privileged programs can use distinct values deliberately.
 
-Let's segue into process permissions for a bit. Remember how I told you that when you run the `passwd` command with the SUID permission bit enabled, you will run the program as root? That is true. However, does that mean since you are temporarily root, you can modify other users' passwords? Nope, fortunately not!
+## Real User ID
 
-This is because of the many UIDs that Linux implements. There are three UIDs associated with every process:
+The real user ID identifies the account that started the process or its ancestor login session. Programs can consult it to distinguish the caller from an elevated effective identity.
 
-When you launch a process, it runs with the same permissions as the user or group that ran it. This is known as an **effective user ID**. This UID is used to grant access rights to a process. So, naturally, if Bob ran the `touch` command, the process would run as him, and any files he created would be under his ownership.
+For an ordinary command started by user Bob, the real user ID normally equals Bob's UID. Creating another process does not create a new account or change this identity by itself.
 
-There is another UID, called the **real user ID**. This is the ID of the user that launched the process. These are used to track down who the user who launched the process is.
+:::single-choice{#process-permissions-real-uid}
+What does a process's real user ID normally identify?
 
-One last UID is the **saved user ID**. This allows a process to switch between the effective UID and real UID, and vice versa. This is useful because we don't want our process to run with elevated privileges all the time; it's just good practice to use special privileges at specific times.
+::option[The owner of the most recently opened file.]{#process-permissions-real-opened-file explanation="Opening a file does not replace the process's real UID with that file's owner."}
+::option[The account associated with the process's original caller.]{#process-permissions-real-caller .correct explanation="The real UID records the calling user identity inherited when the process is launched."}
+::option[The group selected for every access check.]{#process-permissions-real-group explanation="A UID is a user identity; group checks use separate group credentials."}
+:::
 
-Now let's piece these all together by looking at the `passwd` command once more.
+## Effective User ID
 
-When running the `passwd` command, your effective UID is your user ID; let's say it's 500 for now. Oh, but wait, remember the `passwd` command has the SUID permission enabled. So when you run it, your effective UID is now 0 (0 is the UID of root). Now this program can access files as root.
+The effective user ID is the user credential used for many filesystem and privilege checks. Ordinarily it matches the real UID. Executing an honored setuid program can instead initialize it from the executable's owner.
 
-Let's say you get a little taste of power, and you want to modify Sally's password. Sally has a UID of 600. Well, you'll be out of luck. Fortunately, the process also has your real UID, in this case 500. It knows that your UID is 500, and therefore you can't modify the password of UID 600. (This, of course, is always bypassed if you are a superuser on a machine and can control and change everything).
+For example, a carefully designed password utility may run with an elevated effective UID so it can update protected authentication data. The program must still enforce policy based on the caller, requested account, PAM results, and other context. Possessing an effective UID does not automatically make every requested operation legitimate.
 
-Since you ran `passwd`, it will start the process off using your real UID, and it will save the UID of the owner of the file (effective UID), so you can switch between the two. No need to modify all files with root access if it's not required.
+:::single-choice{#process-permissions-effective-uid}
+Which user ID is used for many access-control decisions made on behalf of a process?
 
-Most of the time, the real UID and the effective UID are the same, but in such cases as the `passwd` command, they will change.
+::option[The effective user ID.]{#process-permissions-effective-active .correct explanation="The effective UID is the active user credential consulted for many authorization checks."}
+::option[The saved user ID only.]{#process-permissions-effective-saved-only explanation="The saved ID supports credential transitions but is not generally the active identity for access checks."}
+::option[The UID stored on the current directory.]{#process-permissions-effective-directory explanation="Filesystem ownership is object metadata, not the process's active user credential."}
+:::
 
-## Exercise
+## Saved Set-User-ID
 
-Practice makes perfect! Understanding user IDs and process permissions is crucial for Linux security and administration. Here are some hands-on labs to reinforce your understanding of user and group management, which forms the basis of how UIDs function:
+The saved set-user-ID lets a program retain an identity it may later restore, subject to the system-call rules. A privileged program can temporarily switch its effective UID to a less privileged value, perform ordinary work with reduced authority, and restore the saved identity only for a narrowly scoped operation.
 
-1. **[Linux User Group and File Permissions](https://labex.io/labs/linux-linux-user-group-and-file-permissions-18002)** - Learn essential Linux user and group management concepts, including creating and managing users, exploring group memberships, understanding file permissions, and manipulating file ownership. This lab provides practical experience in securing a multi-user Linux environment.
-2. **[Add New User and Group](https://labex.io/labs/linux-add-new-user-and-group-17987)** - In this challenge, you'll simulate adding new team members to a server environment by creating new user accounts, setting up custom groups, and managing group memberships. This will test your skills in Linux user and group administration, essential for system administrators and DevOps professionals.
+This is safer than retaining elevated authority throughout the entire program, but only when implemented correctly. Programs should permanently discard privilege when it is no longer needed and check every credential-changing call for failure.
 
-These labs will help you apply the concepts of user and group management in real scenarios, building a strong foundation for understanding how UIDs control access and permissions in Linux.
+:::single-choice{#process-permissions-saved-uid}
+Why can a privileged program retain a saved set-user-ID?
 
-## Quiz Question
+::option[To switch its effective identity for controlled privileged and unprivileged phases.]{#process-permissions-saved-switch .correct explanation="The saved identity can support temporary privilege reduction and a permitted later restoration."}
+::option[To assign that UID automatically to every file it reads.]{#process-permissions-saved-file-owner explanation="Reading a file does not change its ownership to the process's saved UID."}
+::option[To replace the system account database for the process.]{#process-permissions-saved-database explanation="Process credentials do not substitute for account records or name-service data."}
+:::
 
-What UID decides what access to grant?
+## User IDs Are Only Part of the Credential Set
 
-## Quiz Answer
+Processes also have real, effective, saved, and supplementary group credentials. Filesystem IDs, capabilities, namespaces, security modules, ACLs, mount options, and service policies can further affect authorization. Therefore, “the UID allows it” is often only part of a complete explanation.
 
-effective
+Use tools such as `ps` and `/proc/PROCESS/status` to inspect credentials on Linux. Field availability and display formats vary, so consult the local documentation and avoid changing credentials merely to experiment on a shared system.
+
+:::single-choice{#process-permissions-ordinary-identities}
+For most ordinary commands without a privilege transition, how do the real and effective UIDs compare?
+
+::option[The effective UID is always zero.]{#process-permissions-effective-root explanation="Ordinary commands do not automatically receive root's UID."}
+::option[The real UID always equals the executable file owner.]{#process-permissions-real-file-owner explanation="The executable owner affects setuid behavior, not the ordinary real UID."}
+::option[They normally match the invoking user's UID.]{#process-permissions-uids-match .correct explanation="Without setuid or an explicit credential change, ordinary processes usually run with matching real and effective identities."}
+:::
+
+## Summary
+
+You can now explain why a Linux process can carry several user identities.
+
+1. Use the real UID to identify the original caller.
+2. Relate the effective UID to active authorization checks.
+3. Use the saved identity to understand controlled privilege transitions.
+4. Consider group IDs and additional security mechanisms as part of the full decision.

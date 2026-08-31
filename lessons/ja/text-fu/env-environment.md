@@ -1,43 +1,52 @@
 ---
-index: 5
+lesson_id: "env-environment"
+course_id: "text-fu"
 lang: "ja"
+order_index: 5
 title: "env (環境)"
+description: "Bash が環境変数を展開、エクスポート、確認し、一時的に上書きする方法を学びます。"
 meta_title: "env (環境) - Text-Fu"
 meta_description: "Linux の env コマンドの機能を探ります。このガイドでは、env Linux コマンドを使用して、PATH、HOME、USER などの Linux 環境変数を表示および使用する方法を説明します。"
 meta_keywords: "env, linux env, env linux, env コマンド linux, linux env コマンド，linux で env は何をするか，環境変数，PATH 変数，シェル変数"
 ---
 
-## Lesson Content
+すべてのプロセスには、親プロセスから継承した名前と値の文字列集合である「環境」があります。シェルは環境変数を使い、言語設定や実行ファイルの検索パスなどを起動するプログラムへ渡します。
 
-お使いの Linux システムは、シェルや他のプロセスがアクセスできる情報を格納するために環境変数を使用します。これらの変数は、ユーザーセッションとシステム構成に関する役立つデータを保持しています。
+## Bash で変数の値を展開する
 
-### 基本的な環境変数の探索
-
-特定の変数の値を確認するには、その名前の前に`$`記号を付けます。例えば、次のコマンドを実行します。
+Bash はコマンドを実行する前に `$NAME` または `${NAME}` を変数の値へ展開します。値を 1 つの引数として保つには展開を引用符で囲みます。
 
 ```bash
-echo $HOME
+$ printf '%s\n' "$HOME"
+/home/pete
 ```
 
-このコマンドはホームディレクトリへのパスを表示します。これは`/home/pete`のような形式になるかもしれません。
+よく使われる環境変数には次があります。
 
-次に、別のものを試してみましょう。
+- `HOME`：現在のユーザーのホームディレクトリ。
+- `USER`：多くのシステムでログイン環境が設定するユーザー名。
+- `PWD`：シェルの現在の作業ディレクトリ。
+- `PATH`：コマンド名を検索するディレクトリ。
+
+値は現在のプロセス環境によって異なり、普遍的な定数ではありません。未設定の変数は、より厳格なシェル動作を有効にしていなければ空文字列へ展開されます。
+
+:::single-choice{#env-print-home-value}
+`HOME` の値を 1 つの引数として保ちながら表示する Bash コマンドはどれですか？
+
+::option[`printf '%s\n' '$HOME'`]{#env-literal-home explanation="単一引用符はパラメーター展開を防ぐため、文字列 `$HOME` がそのまま表示されます。"}
+::option[`printf '%s\n' "$HOME"`]{#env-quoted-home .correct explanation="Bash は二重引用符内の `$HOME` を展開し、`printf` は完全な値を 1 つの引数として受け取ります。"}
+::option[`printf '%s\n' HOME`]{#env-name-home explanation="ドル記号やパラメーター構文がなければ、`HOME` は変数展開ではなく通常の文字列です。"}
+:::
+
+## 現在の環境を確認する
+
+`env` を引数なしで実行すると、その `env` プロセスが継承した環境が表示されます。
 
 ```bash
-echo $USER
+$ env
 ```
 
-これは現在のユーザー名を出力します。しかし、この情報はどこから来るのでしょうか？それはシェルの環境に格納されています。
-
-### Linux における env の役割
-
-現在セッションに設定されているすべての環境変数を表示するには、`env`コマンドを使用できます。`linux env command`は、シェルの構成を調べるための基本的なツールです。
-
-```bash
-env
-```
-
-`env`コマンドを実行すると、キーと値のペアのリストが出力されます。表示される内容の簡単な例を次に示します。
+出力には次のような `NAME=value` 形式のレコードが含まれます。
 
 ```plaintext
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/bin
@@ -45,92 +54,108 @@ PWD=/home/user
 USER=pete
 ```
 
-効果的なシステム管理のためには、`linux env`を理解することが不可欠です。
+環境変数には認証情報、トークン、内部パスなどの機密データが含まれることがあります。`env` の完全な出力を公開の課題やログへ貼る前に、必ず確認して機密部分を伏せてください。
 
-### PATH 変数の重要性
+:::single-choice{#env-list-exported-values}
+新しく起動したプロセスから見える環境を表示するコマンドはどれですか？
 
-`env linux`の出力の中で最も重要な変数の 1 つが`PATH`です。次のコマンドでその内容を具体的に確認できます。
+::option[`env`]{#env-print-all .correct explanation="コマンドや代入を指定しない `env` は、受け取った環境の名前と値を表示します。"}
+::option[`alias`]{#env-alias-list explanation="`alias` はエクスポートされた環境ではなく、シェル状態であるエイリアス定義を一覧表示します。"}
+::option[`history`]{#env-history-list explanation="`history` はシェルが記憶したコマンドラインを表示し、エクスポート済み変数は列挙しません。"}
+:::
 
-```bash
-echo $PATH
-```
+## PATH からコマンドを探す
 
-このコマンドは、コロンで区切られたディレクトリのリストを返します。コマンドを入力すると、システムはこれらのディレクトリを検索して、対応する実行可能ファイルを探します。
-
-手動で`/opt/coolapp/bin`のような標準的でないディレクトリにプログラムをインストールしたと想像してください。`coolcommand`と入力して実行しようとすると、「command not found」エラーが発生する可能性があります。これは、プログラムが含まれるディレクトリが`PATH`変数にリストされていないため、シェルがどこを探せばよいかわからないからです。
-
-これを修正するには、新しいディレクトリを含めるように`PATH`変数を変更できます。カスタムディレクトリを`PATH`に追加することで、ターミナル上のどこからでもシェルがプログラムを見つけて実行できるようになります。
-
-### 現在のセッションの環境変数の設定
-
-ターミナルで次のコマンドを実行すると、現在のセッションでのみ環境変数`TEST`が設定されます。
+`PATH` は、スラッシュを含まないコマンド名を Bash が検索するディレクトリをコロンで区切った一覧です。
 
 ```bash
-export TEST=test
+$ printf '%s\n' "$PATH"
 ```
 
-この後、次のように実行すると：
+順序は重要で、Bash は名前解決規則に従って最初に見つけた適切なコマンドを使います。現在のシェルが名前をどう解決するかは `type -a NAME` で確認できます。
+
+既存の検索パスを残し、現在のシェルと今後の子プロセス用に `/opt/coolapp/bin` を追加するには次のようにします。
 
 ```bash
-echo $TEST
+$ export PATH="/opt/coolapp/bin:$PATH"
 ```
 
-出力は次のようになります。
+誤って `PATH` を新しいディレクトリだけで置き換えたり、信頼できない書き込み可能なディレクトリを追加したりしないでください。通常のコマンドが見つからなくなったり、意図しない実行ファイルが動いたりする恐れがあります。
 
+:::single-choice{#env-prepend-path-directory}
+現在の Bash と今後の子プロセスで、既存の `PATH` の前に `/opt/coolapp/bin` を追加するコマンドはどれですか？
+
+::option[`export PATH="/opt/coolapp/bin"`]{#env-replace-path explanation="既存の検索ディレクトリをすべて捨てるため、通常のコマンドが見つけにくくなります。"}
+::option[`export PATH="/opt/coolapp/bin:$PATH"`]{#env-export-path .correct explanation="新しいディレクトリを先頭へ加え、以前の値を残し、結果を子プロセスへエクスポートします。"}
+::option[`PATH='$PATH:/opt/coolapp/bin'`]{#env-literal-path explanation="単一引用符は文字列 `$PATH` をそのまま残し、この代入は今後の子プロセスへエクスポートされません。"}
+:::
+
+## 変数を子プロセスへエクスポートする
+
+Bash 変数は自動的には子プロセスの環境へ入りません。`export` で名前をエクスポート対象にします。
+
+```bash
+$ export TEST=test
 ```
+
+```bash
+$ printenv TEST
 test
 ```
 
-この変数は、ターミナルセッションが開いている限り利用可能です。ターミナルを閉じて再度開くと、変数は存在しなくなります。
+現在の Bash に `TEST` が作られ、起動するコマンドは `TEST=test` を継承します。子プロセスから親の環境を変更することはできません。通常、この代入は解除するかシェルを終了するまで続き、システム全体の環境は変更しません。
 
-### 環境変数をセッション間で永続化する
+:::single-choice{#env-export-inheritance}
+Bash で `export TEST=test` を実行する主な効果は何ですか？
 
-環境変数をターミナルセッションを閉じて再度開いた後でも、すべてのターミナルセッションで利用可能にしたい場合は、シェルの起動ファイルに追加する必要があります。多くの Linux ディストリビューションでデフォルトのシェルである Bash の場合、このファイルは通常、ホームディレクトリにある`.bashrc`です。
+::option[すべてのユーザーのシステム設定へ `TEST` を書き込む。]{#env-system-wide explanation="現在のシェルとその子による継承に作用し、全ユーザーや OS 全体には作用しません。"}
+::option[今後の子プロセスが `TEST=test` を継承できるようにする。]{#env-child-inheritance .correct explanation="`export` は、Bash が起動するコマンドへ渡す環境にシェル変数を追加します。"}
+::option[すでに動作中のプロセスの環境を変更する。]{#env-existing-processes explanation="既存のプロセスはそれぞれの環境を保ち、エクスポートはその後に起動するプロセスへ作用します。"}
+:::
 
-設定方法は次のとおりです。
+## 1 つのコマンドだけに値を設定する
 
-1. お好みのテキストエディタで`.bashrc`を開きます。例えば：
+コマンドの前に代入を書くと、そのコマンドの環境だけへ値を渡せます。
 
 ```bash
-nano ~/.bashrc
+$ LANG=C sort names.txt
 ```
 
-2. ファイルの末尾に`export`行を追加します。
+```bash
+$ env LANG=C sort names.txt
+```
+
+現在のシェルの `LANG` は恒久的には変わりません。`env -i COMMAND` は最初は空の環境でコマンドを起動しますが、多くのプログラムが環境値に依存するため意図的に使ってください。
+
+:::single-choice{#env-one-command-value}
+現在のシェルの `LANG` を恒久的に変えず、`sort names.txt` を `LANG=C` で実行するコマンドはどれですか？
+
+::option[`env LANG=C sort names.txt`]{#env-lang-sort .correct explanation="`env` は起動するコマンドの環境へ代入を追加し、親シェルは以前の値を保ちます。"}
+::option[`export LANG=C; sort names.txt`]{#env-export-lang explanation="これは現在のシェルで `LANG=C` をエクスポートし、`sort` 終了後も変更を残します。"}
+::option[`env -i sort names.txt`]{#env-empty-sort explanation="空の環境で起動しますが、要求された `LANG=C` は設定しません。"}
+:::
+
+## 今後のセッションで個人用の値を読み込む
+
+今後の対話型 Bash セッションで変数を再作成するには、そのセッションが実際に読む起動ファイル（対話型の非ログイン Bash では一般に `~/.bashrc`）へ適切な `export` 行を書きます。
 
 ```bash
 export TEST=test
 ```
 
-3. エディタを保存して終了します（Nano の場合、これは`Ctrl+X`、次に確認のために`Y`、そして`Enter`です）。
+Zsh は一般に `~/.zshrc` を使い、Fish は異なる構文と設定を使います。ログインシェルや非対話型シェルは別のファイルを読むことがあるため、1 つのファイルですべてを設定できると思い込まず、シェルとセッションの種類を確認してください。
 
-4. ターミナルを再度開かずに変更をすぐに適用するには、次を実行します。
+環境の継承とシェル設定を練習するには、次のラボを試してください。
 
-```bash
-source ~/.bashrc
-```
+1. **[Linux でのシェル環境と設定の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数、継承、`.bashrc` による永続化を練習します。
+2. **[Linux の環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念、作成、変更、管理とシステム設定での役割を学びます。
 
-その後、`TEST`変数はすべての将来のターミナルセッションで利用可能になり、ターミナルを閉じて再度開いた後でも`echo $TEST`を実行すると`test`と表示されます。
+## まとめ
 
-### シェル設定ファイルに関する注意点
+Bash から子プロセスへ渡す環境を確認し、制御できるようになりました。
 
-- **Bash**（多くのシステムでデフォルト）の場合、非ログイン対話型シェルに関連するファイルは`~/.bashrc`です。
-- **Zsh**の場合、同等のファイルは通常`~/.zshrc`です。
-- **Fish**の場合、通常は`~/.config/fish/config.fish`を使用します。
-
-## Exercise
-
-練習あるのみです！Linux 環境変数の理解を深めるための実践的なラボをいくつかご紹介します。
-
-1. **[Linux におけるシェル環境と構成の管理](https://labex.io/ja/labs/comptia-manage-shell-environment-and-configuration-in-linux-590838)** - ローカル変数と環境変数の作成と管理、継承の理解、`.bashrc`ファイルの変更による構成の永続化を練習します。
-2. **[Linux における環境変数](https://labex.io/ja/labs/linux-environment-variables-in-linux-385274)** - 環境変数の概念と使用法、作成、変更、管理方法、およびシステム構成におけるその役割について学習します。
-3. **[Linux 環境変数の設定](https://labex.io/ja/labs/linux-configure-linux-environment-variables-437861)** - Linux システムで環境変数の作成、設定、管理に関する実践的な経験を積みます。
-
-これらのラボは、実際のシナリオで概念を適用し、Linux シェル環境の管理に対する自信を築くのに役立ちます。
-
-## Quiz Question
-
-現在のすべての環境変数を表示するコマンドはどれですか？（回答は英語で、小文字のコマンド名のみを使用してください）。
-
-## Quiz Answer
-
-env
+1. 適切に引用符を使って変数の値を展開する。
+2. 機密情報を公開せず、エクスポート済みの値を確認する。
+3. `PATH` のコマンドディレクトリを保持し、順序を管理する。
+4. 今後の子プロセス用にシェル変数をエクスポートする。
+5. 親シェルを変えず、1 つのコマンドだけ値を上書きする。

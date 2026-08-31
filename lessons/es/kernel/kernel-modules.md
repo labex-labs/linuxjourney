@@ -1,78 +1,133 @@
 ---
-index: 6
+lesson_id: "kernel-modules"
+course_id: "kernel"
 lang: "es"
-title: "Módulos del Kernel"
-meta_title: "Módulos del Kernel - Kernel"
-meta_description: "Descubra qué son los módulos del kernel en Linux y cómo extienden la funcionalidad del kernel. Esta lección cubre el uso de lsmod y modprobe para listar, cargar y descargar módulos bajo demanda."
+order_index: 6
+title: "Módulos del kernel"
+description: "Aprende a inspeccionar, cargar, configurar y retirar de forma segura módulos de Linux específicos de una versión del kernel."
+meta_title: "Módulos del kernel - Kernel"
+meta_description: "Descubre qué son los módulos del kernel en Linux y cómo amplían su funcionalidad. Esta lección explica cómo usar lsmod y modprobe para listar, cargar y descargar módulos cuando se necesiten."
 meta_keywords: "qué son los módulos del kernel, módulos del kernel de Linux, modprobe, lsmod, gestión del kernel, tutorial de Linux, Linux para principiantes, guía de Linux"
 ---
 
-## Lesson Content
+Un módulo cargable del kernel es código privilegiado que puede ampliar el kernel en ejecución con un controlador, un sistema de archivos, una función de red u otro subsistema. Los módulos evitan tener que integrar todas las funciones opcionales en una sola imagen del kernel, pero cargar uno amplía la superficie de ataque de confianza del kernel.
 
-Piense en el núcleo de Linux como el motor central de un coche. Puede añadir accesorios como una baca o un nuevo sistema de sonido sin cambiar el motor en sí. Estos accesorios se pueden añadir o quitar según sea necesario. El núcleo de Linux utiliza un concepto similar con los módulos del kernel.
+## Listar e inspeccionar módulos
 
-### ¿Qué son los Módulos del Kernel
-
-Entonces, **¿qué son los módulos del kernel?** Son piezas de código que se pueden cargar y descargar del kernel bajo demanda. Extienden la funcionalidad del kernel sin requerir que recompiles el kernel principal o reinicies el sistema. Este enfoque modular permite añadir soporte para nuevo hardware (como una nueva tarjeta Wi-Fi) o nuevas características de software (como un nuevo sistema de archivos) dinámicamente. Esto mantiene el kernel principal ligero al tiempo que permite una inmensa flexibilidad.
-
-### Listar Módulos Cargados
-
-Para ver una lista de todos los módulos del kernel cargados actualmente en memoria, puede usar el comando `lsmod`. Esto le da una instantánea de los módulos activos y sus dependencias.
+Lista los módulos cargados actualmente:
 
 ```bash
-lsmod
+$ lsmod
 ```
 
-### Cargar un Módulo del Kernel
+La salida procede del estado del kernel, como `/proc/modules`, e incluye el nombre del módulo, su tamaño y un contador de uso o sus dependencias. Que el contador parezca cero no demuestra por completo que retirarlo sea seguro; un controlador aún puede tener dispositivos activos a su cargo o participar en el estado de un subsistema.
 
-Para cargar un módulo del kernel, usamos el comando `modprobe`. Por ejemplo, para cargar el módulo `bluetooth`, ejecutaría:
+Inspecciona un módulo disponible para el kernel en ejecución con:
 
 ```bash
-sudo modprobe bluetooth
+$ modinfo MODULE_NAME
 ```
 
-El comando `modprobe` es inteligente; busca el módulo en el directorio estándar (`/lib/modules/$(uname -r)/`) y también carga cualquier otro módulo del que dependa el módulo objetivo.
+`modinfo` puede mostrar el nombre del archivo, los alias, los parámetros, la licencia, la descripción y la información de firma. Trata los metadatos como información descriptiva, no como prueba de que el módulo sea de confianza o compatible con la carga de trabajo.
 
-### Descargar un Módulo del Kernel
+:::single-choice{#kernel-modules-lsmod-purpose}
+¿Qué muestra `lsmod`?
 
-Si un módulo ya no es necesario, puede descargarlo para liberar recursos del sistema. Use la opción `-r` con `modprobe` para eliminar un módulo:
+::option[Todos los paquetes de módulos disponibles en repositorios remotos.]{#kernel-modules-repository-list explanation="Para consultar el inventario de los repositorios se necesita el gestor de paquetes."}
+::option[Únicamente los controladores compilados directamente en la imagen del kernel.]{#kernel-modules-builtins explanation="Las funciones integradas no son módulos cargables y normalmente no aparecen en lsmod."}
+::option[Los módulos cargados actualmente en el kernel en ejecución.]{#kernel-modules-loaded-list .correct explanation="El listado refleja el estado activo de los módulos y la información sobre dependencias o uso."}
+:::
+
+## Cargar con `modprobe`
+
+Carga un módulo por su nombre:
 
 ```bash
-sudo modprobe -r bluetooth
+$ sudo modprobe MODULE_NAME
 ```
 
-### Gestionar Módulos al Arrancar
+`modprobe` consulta los índices de dependencias, los alias y la configuración del kernel en ejecución bajo `/lib/modules/$(uname -r)/`. Carga las dependencias necesarias y pasa los parámetros configurados. En cambio, `insmod` inserta directamente un único archivo de módulo indicado y no proporciona el mismo flujo de resolución de dependencias.
 
-Los módulos cargados con `modprobe` son temporales y desaparecerán después de un reinicio. Para hacer permanentes las configuraciones de los módulos, puede crear archivos de configuración en el directorio `/etc/modprobe.d/`.
+Antes de cargarlo, confirma la procedencia del módulo, la política de firmas, la compatibilidad con la versión del kernel, los parámetros, la asociación esperada con el hardware y el procedimiento de reversión. Secure Boot o el bloqueo del kernel pueden rechazar módulos sin firmar; forzar código incompatible puede provocar un fallo o comprometer el sistema.
 
-Para cargar automáticamente un módulo al arrancar con opciones específicas, cree un archivo `.conf`. Por ejemplo, si tuviera un módulo hipotético llamado `peanut_butter` y quisiera establecer su parámetro `type` como `almond`, su archivo se vería así:
+:::single-choice{#kernel-modules-modprobe-dependencies}
+¿Por qué suele preferirse `modprobe` frente al uso directo de `insmod`?
 
-```plaintext
-# /etc/modprobe.d/peanutbutter.conf
+::option[Ejecuta el módulo por completo en el espacio de usuario sin privilegios.]{#kernel-modules-modprobe-userspace explanation="El módulo insertado se ejecuta como código privilegiado del kernel."}
+::option[Garantiza que todos los módulos de terceros estén firmados y sean seguros.]{#kernel-modules-modprobe-guarantee explanation="La aplicación de firmas depende de la política, y una firma válida no demuestra que no haya defectos."}
+::option[Resuelve los alias, las dependencias y la configuración de los módulos.]{#kernel-modules-modprobe-resolves .correct explanation="Modprobe utiliza el árbol de módulos indexado de la versión exacta en ejecución."}
+:::
 
-options peanut_butter type=almond
+## Parámetros de módulos y carga durante el arranque
+
+La política persistente de parámetros y alias debe residir en un archivo `.conf` bajo `/etc/modprobe.d/`:
+
+```text
+options example_module mode=careful
 ```
 
-A la inversa, para evitar que un módulo se cargue al arrancar (un proceso llamado "blacklisting" o lista negra), puede usar la palabra clave `blacklist` en un archivo de configuración:
+Esta línea afecta a la forma en que modprobe carga el módulo; por sí sola, no solicita que se cargue durante el arranque. Una lista sencilla de carga durante el arranque suele residir bajo `/etc/modules-load.d/`:
 
-```plaintext
-# /etc/modprobe.d/peanutbutter.conf
-
-blacklist peanut_butter
+```text
+example_module
 ```
 
-Estos archivos de configuración permiten un control detallado sobre qué módulos están disponibles cuando su sistema se inicia.
+Los alias de hardware suelen provocar la carga automática sin una lista explícita. Para los módulos que se necesitan durante las primeras fases del arranque, actualiza el initramfs mediante el proceso documentado de la distribución después de cambiar la configuración.
 
-## Exercise
+:::single-choice{#kernel-modules-options-versus-load}
+¿Qué hace una línea `options` de `/etc/modprobe.d/`?
 
-¡La práctica hace al maestro! Aquí hay un laboratorio práctico para reforzar su comprensión de los módulos del kernel de Linux:
+::option[Garantiza por sí sola que el módulo se cargue en todos los arranques.]{#kernel-modules-options-autoload explanation="Las solicitudes de carga durante el arranque utilizan otro mecanismo, como la configuración de modules-load o los alias de dispositivos."}
+::option[Establece los parámetros que se utilizan al cargar el módulo indicado.]{#kernel-modules-options-parameters .correct explanation="Modprobe aplica los argumentos clave-valor configurados durante la inserción."}
+::option[Compila el módulo para todas las versiones instaladas del kernel.]{#kernel-modules-options-compiles explanation="La configuración no compila módulos binarios."}
+:::
 
-1. **[Gestionar Módulos del Kernel en Linux](https://labex.io/es/labs/comptia-manage-kernel-modules-in-linux-590865)** - Practique listar, inspeccionar, cargar y descargar módulos del kernel, y configurarlos para que se carguen automáticamente al arrancar. Este laboratorio le ayudará a aplicar los conceptos en un escenario real y a ganar confianza con la gestión de módulos del kernel.
+## Listas negras y sus límites
 
-## Quiz Question
+Una configuración de modprobe puede contener:
 
-¿Qué comando se utiliza para descargar un módulo?
+```text
+blacklist example_module
+```
 
-## Quiz Answer
+La inclusión en una lista negra normalmente impide la carga automática mediante los alias del módulo. No descarga un módulo ya cargado, no lo elimina de un initramfs ni impide necesariamente que se cargue explícitamente por su nombre exacto o como dependencia. El refuerzo de la seguridad requiere una combinación específica para la amenaza de disponibilidad de módulos, aplicación de firmas, contenido del initramfs, parámetros de arranque y políticas.
 
-modprobe -r
+:::single-choice{#kernel-modules-blacklist-effect}
+¿Qué impide principalmente una línea básica `blacklist` de modprobe?
+
+::option[La carga automática mediante los alias del módulo.]{#kernel-modules-blacklist-aliases .correct explanation="La directiva no constituye una prohibición universal de todas las vías por las que el código puede estar ya cargado o llegar a cargarse."}
+::option[La ejecución de todos los programas del espacio de usuario que tengan un nombre parecido.]{#kernel-modules-blacklist-user-programs explanation="La configuración de modprobe se aplica a la resolución de módulos del kernel."}
+::option[Todo el código del kernel integrado en la imagen.]{#kernel-modules-blacklist-builtins explanation="La funcionalidad integrada no puede descargarse ni bloquearse como módulo."}
+:::
+
+## Retirar un módulo de forma segura
+
+Solicita la retirada con:
+
+```bash
+$ sudo modprobe -r MODULE_NAME
+```
+
+Modprobe puede retirar las dependencias que hayan dejado de usarse cuando corresponda. El kernel rechaza la retirada cuando el seguimiento ordinario de referencias indica que el módulo está ocupado, pero no confíes en ello como única comprobación de seguridad. Detén los servicios, desmonta los sistemas de archivos, desconecta los dispositivos, deja inactiva la red y confirma que haya otro controlador o una vía de recuperación antes de retirar código que preste servicio a hardware activo.
+
+Nunca fuerces la descarga de un módulo en un sistema que necesites conservar. Los errores durante la retirada o la actividad pendiente pueden bloquear el kernel o dañar datos.
+
+:::single-choice{#kernel-modules-remove-command}
+¿Qué comando solicita la retirada por nombre de un módulo teniendo en cuenta las dependencias?
+
+::option[`lsmod -r MODULE_NAME`]{#kernel-modules-lsmod-remove explanation="Lsmod es una herramienta de listado de solo lectura y no retira módulos."}
+::option[`uname -r MODULE_NAME`]{#kernel-modules-uname-remove explanation="Uname informa sobre el kernel y no gestiona módulos."}
+::option[`modprobe -r MODULE_NAME`]{#kernel-modules-modprobe-remove .correct explanation="El modo de retirada tiene en cuenta las relaciones de dependencia indexadas alrededor del módulo solicitado."}
+:::
+
+Utiliza [Gestionar módulos del kernel en Linux](https://labex.io/labs/comptia-manage-kernel-modules-in-linux-590865) para practicar con módulos que el laboratorio haya designado como seguros.
+
+## Resumen
+
+Ahora puedes gestionar módulos teniendo en cuenta el riesgo que implican en el nivel del kernel.
+
+1. Usa `lsmod` para consultar el estado activo y `modinfo` para los metadatos disponibles.
+2. Usa `modprobe` para cargar teniendo en cuenta los alias y las dependencias.
+3. Distingue los parámetros de modprobe de las solicitudes de carga durante el arranque.
+4. Trata las listas negras como una política limitada, no como un bloqueo absoluto.
+5. Deja inactivos todos los consumidores antes de ejecutar `modprobe -r`.

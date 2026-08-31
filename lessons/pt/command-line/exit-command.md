@@ -1,73 +1,91 @@
 ---
-index: 19
+lesson_id: "exit-command"
+course_id: "command-line"
 lang: "pt"
+order_index: 19
 title: "exit"
+description: "Aprenda a sair do shell atual e escolher o status que ele devolve ao processo chamador."
 meta_title: "exit - Linha de Comando"
-meta_description: "Aprenda o comando exit no Linux, como encerrar uma sessão shell, a diferença entre logout e exit, e como funcionam os valores de status de saída."
-meta_keywords: "comando exit, linux exit, comando logout, sessão shell, saída do terminal, status de saída, bash exit"
+meta_description: "Aprenda o comando exit do Linux, como encerrar uma sessão do shell, a diferença entre logout e exit e como funcionam os códigos de saída."
+meta_keywords: "comando exit, exit Linux, comando logout, sessão shell, sair terminal, status de saída, exit Bash"
 ---
 
-## Lesson Content
+Os shells podem ser aninhados: um terminal gráfico inicia um shell, uma conexão SSH inicia um shell remoto e um shell pode iniciar outro shell. Sair de um deles normalmente devolve o controle ao processo que iniciou o shell atual.
 
-Parabéns por completar as lições fundamentais da sua jornada Linux! Você aprendeu os conceitos básicos essenciais do Linux, e agora é hora de aprender como encerrar sua sessão corretamente. Sair do shell Linux é um passo final simples, mas importante.
+## Saída do Shell Atual
 
-### O Comando Exit
-
-A maneira mais comum de encerrar uma sessão shell é com o comando `exit`. Quando você digita `exit` e pressiona Enter, o processo shell atual termina. Esse comando funciona em praticamente qualquer ambiente shell.
+O comando `exit` solicita que o shell atual seja encerrado:
 
 ```bash
 $ exit
 ```
 
-Se você abriu uma janela de terminal, `exit` geralmente fecha o shell que está rodando dentro dela. Se você se conectou via SSH, `exit` encerra a sessão shell remota e retorna ao seu prompt local.
+Se esse shell for o processo principal de uma aba do terminal gráfico, a aba poderá ser fechada de acordo com as configurações do terminal. Em uma sessão SSH, sair do shell remoto normalmente leva você de volta ao shell local. Se você iniciou um shell aninhado, `exit` retorna ao shell pai.
 
-### Valores de Status de Saída
+:::single-choice{#leave-current-shell}
+Você iniciou o Bash dentro de outro shell e agora quer retornar ao shell pai. Qual comando deve executar na sessão aninhada do Bash?
 
-O comando `exit` também pode retornar um código de status. Um status `0` geralmente significa sucesso, e um status diferente de zero geralmente indica um erro ou condição especial.
+::option[`clear`]{#clear-nested explanation="`clear` atualiza a área visível do terminal, mas mantém o shell atual em execução."}
+::option[`exit`]{#exit-nested .correct explanation="`exit` encerra o shell atual, permitindo que o shell pai retome o controle."}
+::option[`history -c`]{#clear-nested-history explanation="Esse comando limpa a lista do histórico do Bash na memória. Ele não encerra o shell atual."}
+:::
+
+## Retorno de um Status de Saída
+
+Um argumento numérico opcional define o status devolvido ao processo chamador do shell:
 
 ```bash
 $ exit 0
 ```
 
-Você verá os status de saída com mais frequência ao escrever scripts shell. Para uso interativo, simplesmente digitar `exit` é suficiente.
+Por convenção, `0` significa sucesso, e um valor diferente de zero representa falha ou outra condição definida pelo programa. Se o Bash não receber um argumento numérico, ele sairá com o status do último comando executado antes de `exit`.
 
-### O Comando Logout
+:::single-choice{#return-success-status}
+Qual comando encerra o shell atual e informa explicitamente sucesso ao processo chamador?
 
-Outro comando que você pode usar para sair do terminal é `logout`. Esse comando é especificamente projetado para terminar um shell de login. Embora em muitos sistemas modernos ele se comporte de forma semelhante ao `exit`, é uma boa prática conhecer ambos os comandos.
+::option[`exit 0`]{#exit-zero .correct explanation="Por convenção, o status `0` informa ao chamador uma conclusão bem-sucedida."}
+::option[`exit 1`]{#exit-one explanation="Por convenção, um status diferente de zero indica falha ou outro resultado excepcional, não sucesso."}
+::option[`logout 0`]{#logout-zero explanation="O `logout` do Bash serve para um shell de login e não usa essa forma para definir o status solicitado."}
+:::
+
+:::single-choice{#exit-without-number}
+No Bash, qual status `exit` devolve quando você não fornece um número?
+
+::option[Ele sempre devolve o status de sucesso `0`.]{#always-zero explanation="A convenção de sucesso não obriga um `exit` sem argumento a retornar zero. Nesse caso, o Bash preserva um status anterior."}
+::option[Ele sempre devolve o status de falha `1`.]{#always-one explanation="O Bash não atribui o status de falha `1` a todo `exit` sem argumento. O comando anterior determina o valor."}
+::option[Ele devolve o status de saída do comando anterior.]{#last-command-status .correct explanation="Sem um argumento numérico explícito, o Bash sai usando o status do comando mais recente."}
+:::
+
+## Uso de logout em um Shell de Login
+
+O comando interno `logout` do Bash encerra um shell de login:
 
 ```bash
 $ logout
 ```
 
-### Fechando a Janela do Terminal
+Em um shell do Bash que não seja de login, `logout` informa que ele não é um shell de login; nesse caso, use `exit`.
 
-Se você estiver trabalhando em uma interface gráfica, também tem a opção de simplesmente fechar a janela do terminal. Essa ação normalmente envia um sinal que termina a sessão shell que está rodando dentro dela.
+:::single-choice{#leave-login-shell}
+Qual comando interno do Bash se destina especificamente a sair de um shell de login?
 
-### Maneiras Comuns de Sair de um Shell
+::option[`logout`]{#logout-login .correct explanation="O Bash fornece `logout` para encerrar um shell de login."}
+::option[`unalias`]{#unalias-login explanation="`unalias` remove definições de aliases do shell atual. Ele não encerra a sessão."}
+::option[`source`]{#source-login explanation="`source` lê comandos de um arquivo no shell atual. Ele não encerra esse shell."}
+:::
 
-- Digite `exit` para encerrar o shell atual.
-- Pressione `Ctrl-D` em um prompt vazio para enviar um fim de arquivo, que frequentemente encerra o shell.
-- Digite `logout` quando estiver em um shell de login.
-- Feche a janela do terminal quando estiver usando um terminal gráfico.
+## Uso de Ctrl+D ou Fechamento de um Terminal
 
-### Perguntas Comuns
+Em um prompt interativo vazio, pressionar `Ctrl+D` normalmente fornece o caractere de fim de arquivo do terminal. O Bash costuma interpretar essa condição como uma solicitação para sair. Isso não é um sinal, e configurações do shell como `ignoreeof` do Bash podem alterar o comportamento.
 
-**O exit é o mesmo que fechar a janela do terminal?** Frequentemente o resultado é semelhante, mas `exit` informa ao shell para terminar de forma limpa.
+Fechar uma janela de terminal gráfico solicita que o aplicativo encerre seus processos e pode afetar tarefas em execução. Quando for possível, prefira uma saída organizada com `exit` e verifique se há trabalhos ativos antes de fechar a sessão.
 
-**O que é Ctrl-D?** Ele envia um sinal de fim de arquivo para o shell. Em um prompt vazio, isso geralmente encerra o shell.
+## Resumo
 
-**O que significa exit 1?** Sai com o código de status `1`, comumente usado para indicar falha em scripts.
+Agora você sabe sair do shell atual e comunicar seu status de conclusão.
 
-Você aprendeu com sucesso como navegar, trabalhar com arquivos, obter ajuda e sair do shell.
-
-## Exercise
-
-Embora não existam laboratórios específicos para este tópico, recomendamos explorar o abrangente [Caminho de Aprendizagem Linux](https://labex.io/pt/learn/linux) para praticar habilidades e conceitos relacionados ao Linux.
-
-## Quiz Question
-
-Qual é o comando mais comum para sair do shell Linux? Por favor, responda usando apenas uma palavra em inglês minúscula.
-
-## Quiz Answer
-
-exit
+1. Use `exit` para retornar ao processo chamador do shell atual.
+2. Forneça `0` para sucesso ou um status definido diferente de zero nos outros casos.
+3. Entenda qual status é usado por `exit` sem argumento.
+4. Use `logout` apenas em um shell de login.
+5. Reconheça `Ctrl+D` como entrada de fim de arquivo, não como sinal.

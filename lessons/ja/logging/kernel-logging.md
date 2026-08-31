@@ -1,46 +1,97 @@
 ---
-index: 4
+lesson_id: "kernel-logging"
+course_id: "logging"
 lang: "ja"
+order_index: 4
 title: "カーネルロギング"
+description: "dmesg と journalctl を使い、現在および保存済みの Linux カーネルメッセージを問い合わせる方法を学びます。"
 meta_title: "カーネルロギング - ロギング"
 meta_description: "Linux カーネルログ（/var/log/kern.log や dmesg を含む）を探索します。起動メッセージ、ハードウェアドライバ情報、システム問題のトラブルシューティングのために kern ログを確認する方法を学びます。カーネルログ Linux ファイルに関するガイド。"
 meta_keywords: "カーネルログ，kern.log, /var/log/kern.log, カーネルログ linux, kern ログ，dmesg, linux ロギング，起動メッセージ，カーネルイベント"
 ---
 
-## Lesson Content
+カーネルは boot、driver、device、filesystem、networking、memory、failure に関するメッセージを発します。これらのレコードは低レベルの症状を説明できますが、一つの warning 文字列だけでハードウェア故障を証明することはできません。
 
-Linux カーネルはオペレーティングシステムの核であり、その動作、ハードウェアの状態、および潜在的な問題に関するメッセージを生成します。この情報にアクセスすることは、システム管理とトラブルシューティングにとって極めて重要です。ここでカーネルログが役立ちます。
+## カーネル Ring Buffer を読む
 
-### カーネルリングバッファと dmesg
+`dmesg` はカーネル ring buffer のメッセージを読みます。
 
-起動時、システムはカーネルリングバッファから大量の情報を記録します。このバッファには、ハードウェアドライバのロード、カーネルの状態更新、起動プロセス中に発生するその他のイベントに関するメッセージが含まれています。
+```bash
+$ dmesg --human
+```
 
-このログは`dmesg`コマンドを使用して表示できます。内容は通常`/var/log/dmesg`にも書き込まれますが、このファイルは再起動のたびに消去され、上書きされることが多い点に注意してください。日常的に必要でなくても、ハードウェアの問題や起動時の問題に遭遇した場合、`dmesg`の出力は最初に確認すべき場所です。
+buffer の容量は有限なので、新しいメッセージが古いものを上書きする場合があります。アクセスが特権ユーザーに制限されることもあります。対応実装では `dmesg --follow` で新しいカーネルメッセージを追跡できます。範囲を限定した再現後に停止してください。
 
-### 主要なカーネルログファイル
+:::single-choice{#kernel-log-ring-buffer-limit}
+古いカーネルイベントが現在の `dmesg` 出力にない場合があるのはなぜですか？
 
-カーネルアクティビティのより永続的な記録については、`/var/log/kern.log`を参照できます。このファイルは、`kernel log linux`システムが使用する主要な宛先です。実行中のシステムで発生したカーネル情報をキャプチャします。
+::option[カーネルイベントには一文字しか含められないから。]{#kernel-log-one-character explanation="カーネルメッセージには通常の診断テキストと metadata を含められます。"}
+::option[`dmesg` が表示後に全行を恒久的に削除するから。]{#kernel-log-display-deletes explanation="通常の読み取りでは、表示した全カーネルメッセージを消費しません。"}
+::option[有限の ring buffer が上書きした可能性があるから。]{#kernel-log-overwritten .correct explanation="メモリ内 buffer が保持できるカーネルメッセージデータの量には上限があります。"}
+:::
 
-`kern.log`ファイルには`dmesg`の出力も含まれており、カーネル関連メッセージの包括的なソースとなっています。リングバッファにはもう存在しない過去のイベントの`kernel log`を調査する必要がある場合、確認すべき正しい場所は`kern log`です。
+## 読みやすい Timestamp を使う
 
-### カーネルログが重要な理由
+生のカーネル timestamp は通常 boot からの相対時間です。`dmesg --ctime` または `--human` は wall-clock time へ変換できますが、変換値は時計の履歴に依存し、boot 後に時計が変わると不正確になる場合があります。正確な順序が重要なら boot-relative timing を保持してください。
 
-`kernel log`の読み方を理解することは基本的なスキルです。これらのログは、システムがハードウェアとどのように相互作用しているかについての深い洞察を提供します。`kern.log`または`dmesg`の出力を調べることで、ドライバの問題を診断し、予期しないハードウェアの動作を調査し、カーネルの全体的な健全性を監視できます。
+:::single-choice{#kernel-log-timestamp-caution}
+変換済み `dmesg` の wall-clock timestamp を慎重に扱うべきなのはなぜですか？
 
-## Exercise
+::option[常に別のマシンを参照するから。]{#kernel-log-other-machine explanation="ローカルで導かれる値ですが、時計変更が変換へ影響します。"}
+::option[変化し得る時計へ boot-relative time を対応付けているから。]{#kernel-log-clock-change .correct explanation="時刻同期や手動変更により、表示された wall time が誤解を招く場合があります。"}
+::option[時刻ではなくファイルシステムの空き容量を示すから。]{#kernel-log-free-space explanation="timestamp option が表示するのは時刻であり、storage capacity ではありません。"}
+:::
 
-練習あるのみです！Linux ユーザーとグループ管理の理解を深めるための実践的なラボを以下に示します。
+## 永続的なカーネルレコードを問い合わせる
 
-1. **[useradd、usermod、userdel を使用した Linux ユーザーアカウントの管理](https://labex.io/ja/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 新しいアカウントの作成と保護から、それらの変更と削除まで、ユーザー管理の全ライフサイクルを練習します。
-2. **[groupadd、usermod、groupdel を使用した Linux グループの管理](https://labex.io/ja/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 新しいグループの作成、ユーザーメンバーシップの変更、グループの削除など、グループ管理のためのコアコマンドラインユーティリティに関する実践的な経験を積みます。
-3. **[Linux でのユーザーアカウントと sudo 権限の設定](https://labex.io/ja/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - パスワードポリシーの適用や管理者権限の付与など、Linux システムのセキュリティを強化するためのユーザーアカウントと sudo 権限を管理する重要な技術を学びます。
+systemd ホストでは、現在の boot のカーネルレコードを問い合わせます。
 
-これらのラボは、概念を実際のシナリオに適用し、Linux でのユーザーおよびグループ管理に対する自信を構築するのに役立ちます。
+```bash
+$ journalctl -k -b
+```
 
-## Quiz Question
+persistent journal storage が以前の boot を保持している場合、boot list を調べて一つ選びます。
 
-カーネルの起動メッセージを表示するために使用できるコマンドは何ですか？小文字の英語のコマンドのみで回答してください。
+```bash
+$ journalctl --list-boots
+$ journalctl -k -b -1
+```
 
-## Quiz Answer
+従来の syslog routing が `/var/log/kern.log` などを作る場合がありますが、設定によって異なります。保存済み `/var/log/dmesg` も普遍的ではなく、boot 時の snapshot にすぎない場合があります。
 
-dmesg
+:::single-choice{#kernel-log-previous-boot}
+保存されている一つ前の boot のカーネルメッセージを要求するコマンドはどれですか？
+
+::option[`journalctl -u kernel -f`]{#kernel-log-unit-follow explanation="カーネルメッセージは `-k` で選び、follow は以前の boot を選択しません。"}
+::option[`dmesg --clear`]{#kernel-log-clear explanation="clear は buffer 状態を変更し、以前の boot を取得しません。"}
+::option[`journalctl -k -b -1`]{#kernel-log-previous .correct explanation="kernel filter と boot offset のマイナス 1 により、一つ前の保存済み boot を選びます。"}
+:::
+
+## カーネルイベントを調査する
+
+boot、timestamp、device、subsystem、その時点の操作を特定します。周辺の kernel record と service record を問い合わせ、hardware inventory と現在状態を比較します。
+
+```bash
+$ journalctl -k -b --since '10 minutes ago'
+$ lspci -k
+$ lsblk
+```
+
+subsystem に関係するツールだけを使ってください。driver の reload、device の unbind、reboot の前に、storage、network、console、service への影響を評価し、復旧アクセスを確保します。
+
+:::single-choice{#kernel-log-warning-response}
+一つのカーネル warning 行に対する最善の対応はどれですか？
+
+::option[読み込まれている全 driver を直ちに unload する。]{#kernel-log-unload-all explanation="重要な device を中断する可能性があり、warning の原因も切り分けられません。"}
+::option[マシン全体を交換する必要があると判断する。]{#kernel-log-replace-machine explanation="一つのレコードだけでは、その結論を支える証拠が足りません。"}
+::option[周辺イベントおよび現在の subsystem 状態と相関させる。]{#kernel-log-correlate .correct explanation="修正操作を選ぶ前に、文脈と再現可能な影響が必要です。"}
+:::
+
+## まとめ
+
+これで、live kernel buffer のメッセージと保存済み kernel log を区別できます。
+
+1. `dmesg` で有限の ring buffer を読む。
+2. boot-relative timestamp と変換済み timestamp を慎重に解釈する。
+3. `journalctl -k` で現在または以前の boot を問い合わせる。
+4. 中断を伴う変更前にカーネルメッセージを相関させる。

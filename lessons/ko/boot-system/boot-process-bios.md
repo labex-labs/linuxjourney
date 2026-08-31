@@ -1,50 +1,80 @@
 ---
-index: 2
+lesson_id: "boot-process-bios"
+course_id: "boot-system"
 lang: "ko"
-title: "부팅 프로세스: BIOS"
-meta_title: "부팅 프로세스: BIOS - 시스템 부팅"
-meta_description: "리눅스 부팅 프로세스의 첫 단계인 BIOS 에 대해 알아보세요. BIOS 가 MBR 또는 GPT 를 통해 부트로더를 찾는 방법과 UEFI 의 역할을 이해합니다. 이 가이드는 시스템 시작 과정을 설명하고 BIOS 설정으로 진입하는 방법을 간략히 다룹니다."
-meta_keywords: "리눅스 부팅 프로세스, BIOS, MBR, UEFI, 리눅스 BIOS, BIOS 리눅스, BIOS 진입 방법, 부트로더, 시스템 시작"
+order_index: 2
+title: "부팅 과정: BIOS"
+description: "레거시 BIOS와 최신 UEFI 펌웨어가 다음 부팅 단계를 찾고 승인하는 방법을 알아봅니다."
+meta_title: "부팅 과정: BIOS - 시스템 부팅"
+meta_description: "리눅스 부팅의 첫 단계인 펌웨어를 살펴봅니다. BIOS가 MBR에서 부트 로더를 찾는 방식과 UEFI, EFI 시스템 파티션 및 보안 부팅의 역할을 설명합니다."
+meta_keywords: "리눅스 부팅 과정, BIOS, MBR, UEFI, 리눅스 BIOS, 부트 로더, 시스템 시작, 보안 부팅"
 ---
 
-## Lesson Content
+펌웨어는 리눅스 커널보다 먼저 실행됩니다. PC 계열 하드웨어의 두 주요 인터페이스는 레거시 BIOS와 UEFI입니다. 두 방식은 서로 다른 부팅 검색 모델을 사용하므로 “BIOS가 부트 로더를 읽는다”는 설명은 한 경로에만 해당합니다.
 
-Linux 부팅 프로세스의 첫 번째 단계는 시스템 시작 시 중요한 시스템 무결성 검사를 수행하는 BIOS(Basic Input/Output System) 입니다. BIOS 는 오늘날 사용되는 대부분의 컴퓨터를 나타내는 IBM PC 호환 컴퓨터에서 흔히 볼 수 있는 펌웨어입니다.
+## 레거시 BIOS 부팅
 
-### Linux 에서 BIOS 의 역할
+초기 플랫폼 초기화와 부팅 장치 선택 후, 레거시 BIOS는 일반적으로 선택한 디스크의 첫 512바이트 섹터를 읽고 예상된 서명이 있으면 그 부트 코드로 제어권을 넘깁니다.
 
-컴퓨터를 켜면 **Linux 시스템의 BIOS**가 가장 먼저 실행되는 소프트웨어입니다. 주요 기능은 CPU, 메모리, 하드 드라이브와 같은 시스템 하드웨어를 초기화하고 테스트하는 것입니다. 부팅 순서 변경, 시스템 시간 확인 또는 머신의 MAC 주소 확인을 위해 BIOS 펌웨어와 상호 작용한 적이 있을 것입니다. 하드웨어 검사가 완료되면 **bios linux** 프로세스의 주요 목표는 시스템 부트로더를 찾아서 제어권을 넘기는 것입니다.
+MBR 레이아웃에서 이 섹터에는 작은 부트 코드 영역, 네 개의 파티션 항목 및 서명이 들어 있습니다. 기능이 풍부한 로더를 담기에는 코드 영역이 너무 작으므로 흔히 디스크나 파일 시스템의 다른 위치에 있는 다음 단계를 찾습니다.
 
-### BIOS 가 부트로더를 찾는 방법
+GPT 디스크에서 BIOS 부팅도 가능하지만 보호 MBR만으로 로더의 다음 단계가 제공되지는 않습니다. GRUB은 일반적으로 GPT의 작은 BIOS 부트 파티션을 내장 코어 코드에 사용합니다. 정확한 구성은 설치된 로더에 따라 달라집니다.
 
-BIOS 가 하드 드라이브를 초기화하면 운영 체제를 시작하는 방법을 결정하기 위해 부트 블록을 검색합니다. 확인하는 위치는 디스크의 파티션 방식 (마스터 부트 레코드 (MBR) 또는 GUID 파티션 테이블 (GPT)) 에 따라 달라집니다.
+:::single-choice{#boot-bios-legacy-first-sector}
+레거시 BIOS가 선택한 부팅 디스크에서 일반적으로 가장 먼저 불러오는 것은 무엇입니까?
 
-MBR 은 하드 드라이브의 처음 512 바이트에 위치합니다. 이 작은 섹션에는 초기 부트 코드와 파티션 테이블이 포함되어 있습니다. MBR 의 코드는 실제 부트로더를 로드하는 또 다른 프로그램을 로드할 책임이 있습니다. GPT 로 파티션된 디스크를 사용하는 경우 프로세스가 약간 다릅니다.
+::option[작은 부트 코드가 들어 있는 초기 부트 섹터입니다.]{#boot-bios-boot-sector .correct explanation="펌웨어의 레거시 디스크 경로는 선택된 디스크 첫 섹터의 코드로 제어권을 넘깁니다."}
+::option[전체 리눅스 루트 파일 시스템을 펌웨어 메모리로 불러옵니다.]{#boot-bios-entire-root explanation="첫 단계 섹터는 매우 작으며 다음 소프트웨어가 커널과 루트 저장 장치를 찾습니다."}
+::option[`/etc` 아래의 모든 사용자 서비스 설정입니다.]{#boot-bios-etc-config explanation="펌웨어는 설치된 시스템의 전체 서비스 설정을 해석하지 않습니다."}
+:::
 
-### BIOS 로 부팅하는 방법
+## UEFI 부팅
 
-많은 사용자가 하드웨어 설정을 구성하기 위해 **BIOS 로 부팅하는 방법**을 알아야 합니다. 이를 위한 방법은 일반적으로 컴퓨터 전원을 켠 직후 특정 키 (예: F2, F10, DEL 또는 ESC) 를 누르는 것입니다. 부팅 장치 우선순위 변경 또는 가상화 기술 활성화와 같은 작업을 위해서는 **bios 로 부팅하는 방법**을 아는 것이 필수적입니다. 정확한 키는 제조사마다 다르므로 컴퓨터 설명서를 참조해야 할 수 있습니다.
+UEFI 펌웨어는 EFI 시스템 파티션(ESP)에 정의된 파일 시스템을 이해하고 EFI 실행 파일을 불러올 수 있습니다. 비휘발성 변수에 저장된 펌웨어 부팅 항목은 일반적으로 디스크, 파티션 및 실행 파일 경로를 식별합니다. 이동식 미디어나 복구 상황에서는 표준화된 대체 경로를 사용할 수 있습니다.
 
-### UEFI 의 부상
+ESP에는 부팅 애플리케이션과 지원 파일이 있지만 “모든 시작 정보”가 들어 있는 것은 아닙니다. 부팅 설계에 따라 커널 이미지, initramfs 파일 및 로더 설정은 그곳이나 다른 위치에 있을 수 있습니다. UEFI 시스템에서는 GPT가 일반적이지만 펌웨어 인터페이스와 파티션 테이블 방식은 여전히 별개의 계층입니다.
 
-전통적인 BIOS 의 대안은 UEFI(Unified Extensible Firmware Interface) 입니다. BIOS 의 후속 제품으로 설계된 UEFI 는 이제 대부분의 최신 하드웨어에서 표준입니다. UEFI 는 전용 EFI 시스템 파티션 (ESP) 에 있는 .efi 파일에 모든 시작 정보를 저장합니다. 이 파티션에는 설치된 운영 체제의 부트로더가 포함되어 있습니다.
+:::single-choice{#boot-bios-uefi-esp}
+UEFI가 EFI 시스템 파티션에서 일반적으로 불러오는 것은 무엇입니까?
 
-UEFI 는 더 빠른 부팅 시간과 더 큰 하드 드라이브 지원을 포함하여 BIOS 보다 많은 개선 사항을 제공합니다. GPT 형식은 UEFI 를 위해 설계되었지만, GPT 디스크의 "보호용 MBR"은 하위 호환성을 보장하여 이전 BIOS 기반 머신에서도 부팅할 수 있도록 합니다. 많은 Linux 시스템이 이제 UEFI 를 사용하지만, 이 가이드는 기본적인 이해를 위해 전통적인 BIOS 부팅 프로세스에 중점을 둘 것입니다.
+::option[펌웨어 부팅 항목이 선택한 EFI 실행 파일입니다.]{#boot-bios-efi-executable .correct explanation="UEFI 부팅 관리는 지원되는 시스템 파티션의 실행 파일을 펌웨어에 지정합니다."}
+::option[임의의 ext4 홈 디렉터리에 있는 POSIX 셸 스크립트입니다.]{#boot-bios-shell-script explanation="펌웨어는 일반 사용자 셸을 실행하지 않고 지원되는 부팅 경로에서 정의된 실행 형식을 불러옵니다."}
+::option[사용자 계정이 들어 있는 MBR 확장 파티션입니다.]{#boot-bios-extended-users explanation="계정 데이터는 UEFI 실행 파일 검색과 관련이 없습니다."}
+:::
 
-## Exercise
+## 보안 부팅과 신뢰
 
-연습이 완벽을 만듭니다! Linux 사용자 및 그룹 관리에 대한 이해를 강화하기 위한 실습 랩이 있습니다.
+보안 부팅을 활성화하면 UEFI는 등록된 플랫폼 키와 정책에 따라 부팅 체인의 서명을 검증합니다. 리눅스 배포판은 서명된 shim, 부트 로더, 커널 및 커널 모듈 정책으로 이 신뢰 체인을 확장할 수 있습니다.
 
-1. **[useradd, usermod 및 userdel 을 사용하여 Linux 사용자 계정 관리](https://labex.io/ko/labs/comptia-manage-linux-user-accounts-with-useradd-usermod-and-userdel-590837)** - 새 계정 생성 및 보안부터 수정 및 삭제에 이르기까지 사용자 관리의 전체 수명 주기를 연습합니다.
-2. **[groupadd, usermod 및 groupdel 을 사용하여 Linux 그룹 관리](https://labex.io/ko/labs/comptia-manage-linux-groups-with-groupadd-usermod-and-groupdel-590836)** - 새 그룹 생성, 사용자 멤버십 수정 및 그룹 제거를 포함하여 그룹 관리를 위한 명령줄 유틸리티에 대한 실습 경험을 얻습니다.
-3. **[Linux 에서 사용자 계정 및 Sudo 권한 구성](https://labex.io/ko/labs/comptia-configure-user-accounts-and-sudo-privileges-in-linux-590856)** - Linux 시스템의 보안을 강화하기 위해 사용자 계정 및 sudo 권한을 관리하는 필수 기술을 배웁니다.
+보안 부팅은 디스크를 암호화하지 않으며 모든 사용자 공간 프로그램이 안전하다는 사실을 증명하지도 않습니다. 설정된 신뢰 정책에서 승인되지 않은 사전 부팅 코드가 받아들여지는 것을 막는 데 도움을 줍니다.
 
-이러한 랩은 실제 시나리오에서 개념을 적용하고 Linux 에서 사용자 및 그룹 관리에 대한 자신감을 구축하는 데 도움이 될 것입니다.
+:::single-choice{#boot-bios-secure-boot-purpose}
+UEFI 보안 부팅이 주로 적용하는 것은 무엇입니까?
 
-## Quiz Question
+::option[모든 디스크의 모든 파일을 자동으로 암호화합니다.]{#boot-bios-secure-encryption explanation="디스크 기밀성에는 별도의 암호화 시스템이 필요합니다."}
+::option[서명을 기반으로 부팅 체인 실행 파일을 승인합니다.]{#boot-bios-secure-signatures .correct explanation="펌웨어와 이후 검증 구성 요소는 등록된 키와 정책에 따라 코드를 받아들입니다."}
+::option[서명된 소프트웨어에 취약점이 없음을 보장합니다.]{#boot-bios-secure-no-vulnerabilities explanation="유효한 서명은 승인과 무결성을 증명할 뿐 결함 없는 코드를 보장하지 않습니다."}
+:::
 
-BIOS 는 무엇을 로드합니까? 영어로, 소문자로 된 한 단어로 답하십시오.
+## 펌웨어 설정 진입하기
 
-## Quiz Answer
+펌웨어 설정 키는 제조업체와 모델에 따라 다르며 초기 시작 중 Delete, Escape 또는 기능 키 등을 흔히 사용합니다. 무작위로 변경을 시도하지 말고 장치 문서를 확인하십시오. 일부 UEFI 시스템은 운영체제에서 펌웨어 설정으로 재부팅하도록 요청하는 기능도 제공합니다.
 
-bootloader
+보안 부팅, 저장 장치 컨트롤러 모드, TPM, 가상화 또는 부팅 순서를 변경하기 전에 기존 값과 복구 키를 기록하십시오. 펌웨어 변경 때문에 암호화 볼륨이나 설치된 운영체제에 일시적으로 접근하지 못할 수 있습니다.
+
+:::single-choice{#boot-bios-setup-key}
+펌웨어 설정에 들어가는 범용 키가 없는 이유는 무엇입니까?
+
+::option[리눅스가 부팅할 때마다 새 임의 키를 배정하기 때문입니다.]{#boot-bios-random-key explanation="운영체제는 펌웨어의 초기 시작 키를 무작위로 정의하지 않습니다."}
+::option[키와 입력 시점을 시스템 제조업체가 정하기 때문입니다.]{#boot-bios-vendor-key .correct explanation="펌웨어 인터페이스는 모델마다 다르므로 공식 장치 문서가 필요합니다."}
+::option[부트 로더를 삭제해야만 설정에 들어갈 수 있기 때문입니다.]{#boot-bios-delete-loader explanation="펌웨어 설정은 설치된 부팅 파일을 파괴하는 작업과 독립적입니다."}
+:::
+
+## 요약
+
+이제 레거시 BIOS와 UEFI의 부팅 검색 모델을 구분할 수 있습니다.
+
+1. 레거시 BIOS를 첫 섹터 부트 코드 및 이후 로더 단계와 연결합니다.
+2. UEFI 부팅 항목을 ESP의 EFI 실행 파일과 연결합니다.
+3. GPT, 펌웨어 인터페이스 및 부트 로더 레이아웃을 별도의 선택으로 취급합니다.
+4. 복구 경로가 있을 때만 펌웨어 신뢰 및 저장 장치 설정을 변경합니다.

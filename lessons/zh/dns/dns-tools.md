@@ -1,87 +1,124 @@
 ---
-index: 6
+lesson_id: "dns-tools"
+course_id: "dns"
 lang: "zh"
+order_index: 6
 title: "DNS 工具"
-meta_title: "DNS 工具 - DNS 查询与排错"
-meta_description: "探索 nslookup 和强大的 dig 命令等必备的 Linux DNS 工具。本面向初学者的 Linux 教程涵盖 DNS 查询和 DNS 故障排除技术。"
-meta_keywords: "nslookup, dig 命令，DNS 工具，Linux DNS, DNS 故障排除，名称服务器查询，Linux 教程，初学者 Linux"
+description: "了解如何使用 getent、resolvectl 和 dig 比较系统解析与直接 DNS 查询。"
+meta_title: "DNS 工具 - DNS"
+meta_description: "探索 nslookup 和强大的 dig 命令等重要 Linux DNS 工具。这份初学者友好的 Linux 教程介绍 DNS 查询与 DNS 故障排除技术。"
+meta_keywords: "nslookup, dig 命令, DNS 工具, Linux DNS, DNS 故障排除, 名称服务器查询, Linux 教程, 初学者 Linux"
 ---
 
-## Lesson Content
+DNS 故障排除首先要明确正在测试哪一层。系统解析器工具会纳入本地文件和策略，而 `dig` 与 `nslookup` 会发送 DNS 查询，并可直接指定某台服务器。
 
-在 Linux 中，有几种命令行实用程序可用于网络诊断。当涉及到域名系统 (DNS) 问题时，两个主要的**DNS 工具**脱颖而出：`nslookup` 和 `dig`。了解如何使用它们对于在 **Linux DNS** 服务器或客户端上进行任何**DNS 故障排除**至关重要。
+## 测试系统解析器
 
-### 使用 nslookup 进行基本 DNS 查询
-
-`nslookup`（名称服务器查找）工具是一个经典的实用程序，用于查询 DNS 服务器以获取域名或 IP 地址映射信息。尽管它有时被认为已过时，不如 `dig` 强大，但它仍然是一个用于简单查找的快速简便的工具。
-
-要查找像 `www.google.com` 这样的域的 IP 地址，您可以运行：
+使用以下命令走正常的主机名称服务路径：
 
 ```bash
-pete@icebox:~$ nslookup www.google.com
-Server:         127.0.1.1
-Address:        127.0.1.1#53
-
-Non-authoritative answer:
-Name:   www.google.com
-Address: 216.58.192.4
+$ getent ahosts www.example.com
 ```
 
-在此输出中，`Server` 和 `Address` 显示了回答查询的 DNS 服务器。`Non-authoritative answer`（非权威应答）意味着服务器提供了缓存的结果，而不是直接查询权威源。`Name` 和 `Address` 显示了该域解析出的 IP 地址。
-
-### 使用 dig 进行高级 DNS 故障排除
-
-`dig`（域名信息搜寻器）命令是一个强大而灵活的工具，用于查询 DNS 名称服务器。它提供比 `nslookup` 更详细的信息，使其成为进行严肃**DNS 故障排除**的首选工具。
-
-以下是使用 **dig 命令**的一个示例：
+在使用 systemd-resolved 的主机上，可以用以下命令检查每条链路的服务器、搜索域和协议状态：
 
 ```bash
-pete@icebox:~$ dig www.google.com
-
-; <<>> DiG 9.9.5-3-Ubuntu <<>> www.google.com
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42376
-;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; MBZ: 0005 , udp: 512
-;; QUESTION SECTION:
-;www.google.com.                        IN      A
-
-;; ANSWER SECTION:
-www.google.com.         5       IN      A       74.125.239.147
-www.google.com.         5       IN      A       74.125.239.144
-www.google.com.         5       IN      A       74.125.239.146
-www.google.com.         5       IN      A       74.125.239.145
-www.google.com.         5       IN      A       74.125.239.148
-
-;; Query time: 27 msec
-;; SERVER: 127.0.1.1#53(127.0.1.1)
-;; WHEN: Sun Feb 07 10:14:00 PST 2016
-;; MSG SIZE  rcvd: 123
+$ resolvectl status
+$ resolvectl query www.example.com
 ```
 
-`dig` 的输出组织成几个部分：
+应用程序仍可能使用私有解析器库或代理，所以当输出不同时，还应通过该应用程序重现问题。
 
-- **QUESTION SECTION**（问题部分）：显示发送的查询。在这里，我们查询了 `www.google.com` 的 `A`（地址）记录。
-- **ANSWER SECTION**（答案部分）：显示从 DNS 服务器收到的答案。在这种情况下，Google 的域关联了多个 IP 地址。
-- **Statistics**（统计信息）：最后一部分提供了有关查询的元数据，例如查询时间和响应服务器。
+:::single-choice{#dns-tools-system-resolver}
+哪个命令会使用已配置的系统名称服务路径？
 
-由于其详细的输出和灵活性，`dig` 是任何在 Linux 上管理或排除网络服务故障的人不可或缺的实用程序。
+::option[只有 `dig @SERVER NAME`。]{#dns-tools-dig-direct explanation="Dig 发送 DNS 查询，通常不会读取 hosts 文件映射。"}
+::option[`ip link set down`]{#dns-tools-link-down explanation="这会中断接口，而不是测试解析。"}
+::option[`getent ahosts NAME`]{#dns-tools-getent .correct explanation="它可以反映 `/etc/hosts`、DNS 和其他名称服务切换来源。"}
+:::
 
-## Exercise
+## 使用 dig 查询
 
-为了获得更多使用 Linux 网络实用程序的经验，请考虑尝试以下实践实验：
+指定名称和记录类型：
 
-1. **[在 Linux 中使用 ethtool 检查网络接口设置](https://labex.io/zh/labs/comptia-examine-network-interface-settings-with-ethtool-in-linux-592759)** - 学习使用 `ethtool` 命令来检查和管理网络接口设置，包括查看和设置接口速度和双工模式，以及分析链路模式以排除物理层网络问题。
+```bash
+$ dig www.example.com A
+$ dig www.example.com AAAA
+$ dig example.com MX
+```
 
-此实验将帮助您在实际场景中应用这些概念，并增强管理网络接口的信心。
+输出会标识响应服务器、状态、标志、问题、回答、权威数据、附加数据、查询时间和传输元数据。`+short` 便于脚本使用，却隐藏了诊断所需的证据。
 
-## Quiz Question
+:::single-choice{#dns-tools-record-type}
+哪条查询请求 IPv6 地址记录？
 
-哪个工具用于获取有关 DNS 名称服务器的详细信息？请仅使用小写英文字母回答。
+::option[`dig NAME AAAA`]{#dns-tools-aaaa .correct explanation="AAAA 记录包含 IPv6 地址。"}
+::option[`dig NAME MX`]{#dns-tools-mx explanation="MX 请求邮件交换器记录。"}
+::option[对正向名称执行 `dig NAME PTR`。]{#dns-tools-ptr-forward explanation="PTR 通常通过反向查询名称进行查询。"}
+:::
 
-## Quiz Answer
+## 选择服务器
 
-dig
+明确指定某个解析器或权威服务器：
+
+```bash
+$ dig @192.0.2.53 www.example.com A
+```
+
+在区分缓存与权威时，应比较已配置的递归解析器、第二个获准解析器和每台权威服务器。`NOERROR` 状态也可能没有所请求的回答；`NXDOMAIN` 表示查询的名称不存在，而 `SERVFAIL` 表示服务器无法完成查询。
+
+:::single-choice{#dns-tools-noerror-empty}
+`NOERROR` 的回答区可以为空吗？
+
+::option[可以，名称存在但缺少所请求的记录数据时便会如此。]{#dns-tools-noerror-nodata .correct explanation="必须结合状态与回答数量进行解释。"}
+::option[不可以，它保证至少有一条地址记录。]{#dns-tools-noerror-always-answer explanation="名称可能存在，但没有请求类型的数据。"}
+::option[不可以，空回答始终是以太网故障。]{#dns-tools-empty-ethernet explanation="有效的无数据响应由 DNS 语义解释，而不是链路成帧故障。"}
+:::
+
+## 检查递归与权威
+
+查询中的 `rd` 表示请求递归；响应中的 `ra` 表示服务器提供递归服务；`aa` 表示回答具有权威性。使用 `+norecurse` 查询权威服务器，以免把递归缓存与服务器提供的区域数据混淆。
+
+`dig +trace NAME` 从根提示开始自行执行迭代查询。它可能与生产解析器得出不同结果，因为它绕过了该解析器的缓存、转发、策略、DNSSEC 验证和网络位置。
+
+:::single-choice{#dns-tools-aa-flag}
+`aa` 响应标志表示什么？
+
+::option[查询使用了两个相同的 IPv4 地址。]{#dns-tools-two-addresses explanation="该标志与回答数量或地址族无关。"}
+::option[响应使用应用程序凭据加密。]{#dns-tools-aa-encrypted explanation="DNS 标志无法建立加密传输。"}
+::option[回答具有权威性。]{#dns-tools-authoritative-answer .correct explanation="响应服务器声明自己对回答数据具有权威。"}
+:::
+
+## 测试反向查询与 TCP 查询
+
+使用 `-x` 构造反向 PTR 查询：
+
+```bash
+$ dig -x 192.0.2.25
+```
+
+调查截断、区域传送或防火墙差异时，测试基于 TCP 的 DNS：
+
+```bash
+$ dig +tcp @192.0.2.53 example.com SOA
+```
+
+现代 DNS 可以使用 UDP 或 TCP 53 端口；需要时应同时放行两者。带有截断标志的 UDP 回答会促使合规客户端通过合适的传输方式重试。
+
+:::single-choice{#dns-tools-tcp-test}
+`dig +tcp` 改变了什么？
+
+::option[它使用 TCP 发送 DNS 查询，而不是默认先尝试 UDP。]{#dns-tools-use-tcp .correct explanation="这有助于区分传输过滤问题，以及需要更大可靠字节流的响应。"}
+::option[它只请求 TCP 服务名称记录。]{#dns-tools-tcp-records explanation="请求的 DNS 类型仍需另行指定。"}
+::option[它会永久更改服务器的解析器配置。]{#dns-tools-tcp-persistent explanation="查询不会编辑服务器设置。"}
+:::
+
+## 总结
+
+现在，你可以选择与待调查解析器层级相匹配的 DNS 工具。
+
+1. 使用 `getent` 测试已配置的系统解析器路径。
+2. 使用 `dig` 明确指定记录类型和服务器。
+3. 结合状态、标志、各区段和响应服务器进行解释。
+4. 将递归缓存与权威数据区分开来。
+5. 测试反向查询和两种必需的 DNS 传输方式。

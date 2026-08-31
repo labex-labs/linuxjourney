@@ -1,52 +1,91 @@
 ---
-index: 2
+lesson_id: "dns-components"
+course_id: "dns"
 lang: "zh"
+order_index: 2
 title: "DNS 组件"
+description: "了解递归解析器、权威服务器、区域和资源记录如何划分 DNS 职责。"
 meta_title: "DNS 组件 - DNS"
-meta_description: "了解 DNS 组件：域名服务器、区域文件和资源记录。了解 DNS 如何为初学者工作。开始您的 Linux 网络之旅！"
-meta_keywords: "DNS 组件，域名服务器，区域文件，资源记录，DNS 教程，Linux 网络，初学者指南"
+meta_description: "了解 DNS 的各项组件：名称服务器、区域文件和资源记录。通过初学者指南理解 DNS 的工作方式，开启 Linux 网络学习之旅！"
+meta_keywords: "DNS 组件, 名称服务器, 区域文件, 资源记录, DNS 教程, Linux 网络, 初学者指南"
 ---
 
-## Lesson Content
+DNS 将面向客户端的递归查询职责与权威发布职责分开。理解这条边界，才能避免把缓存答案的提供者误当成区域的所有者。
 
-互联网的 DNS 数据库依赖于站点和组织提供部分数据库。为此，它们需要：
+## 存根解析器与递归解析器
 
-### 域名服务器
+应用程序或操作系统中的存根解析器将查询发送给已配置的递归解析器。递归解析器利用缓存，并在必要时执行迭代查询，最终返回查询结果、错误或转介结果。只有应答服务器对相关数据具有权威时，其回复才能带有权威应答标志；仅仅执行递归查询并不会使服务器成为权威。
 
-我们通过“域名服务器”设置 DNS。域名服务器加载我们的 DNS 设置和配置，并回答来自客户端或其他服务器的任何问题，例如“google.com 是谁？”。如果域名服务器不知道该查询的答案，它会将请求重定向到其他域名服务器。域名服务器可以是“权威的”，这意味着它们持有您正在寻找的实际 DNS 记录，也可以是“递归的”，这意味着它们会询问其他服务器，而这些服务器会询问其他服务器，直到它们找到包含 DNS 记录的权威服务器。递归服务器也可以缓存我们想要的信息，而不是到达权威服务器。
+:::single-choice{#dns-components-recursive-role}
+递归解析器为存根客户端做什么？
 
-### 区域文件
+::option[利用缓存和其他名称服务器取得最终 DNS 结果。]{#dns-components-recursive-result .correct explanation="客户端把多步骤查询工作委托给递归服务。"}
+::option[取代数据包路径上的每一台网络路由器。]{#dns-components-replaces-router explanation="名称解析与 IP 转发是彼此独立的。"}
+::option[成为其缓存的每条记录的权威来源。]{#dns-components-cache-authority explanation="缓存数据的权威仍来自其源头；解析器并不是区域所有者。"}
+:::
 
-域名服务器内部有一个叫做区域文件的东西。区域文件是域名服务器存储域信息或在不知道域的情况下如何到达域的方式。
+## 权威名称服务器
 
-### 资源记录
+权威服务器从自己有权管理的区域数据中作答。一个区域应配置多台数据同步的权威服务器，并考虑彼此独立的故障风险。仅提供权威服务的服务器无须为任意客户端执行递归查询。
 
-区域文件由资源记录条目组成。每行都是一条记录，包含有关主机、域名服务器、其他资源等的信息。字段包括：
+:::single-choice{#dns-components-authoritative-role}
+服务器因何成为某个区域的权威服务器？
 
-- 记录名称
-- TTL - 我们丢弃记录并获取新记录的时间。在 DNS 中，TTL 以时间表示，因此记录的 TTL 可以为一小时。我们这样做是因为互联网在不断变化；前一分钟主机可以映射到 X IP 地址，下一分钟它可以映射到 Y IP 地址。
-- Class - 记录信息的命名空间。最常见的是，IN 用于 Internet。
-- Type - 记录数据中存储的信息类型。我们不会深入探讨记录类型，但您可能见过常见的类型，例如用于地址的 A、用于邮件交换器的 MX 等。
-- Data - 此字段可以包含 IP 地址（如果是 A 记录）或根据记录类型包含其他内容。
+::option[它曾经通过公共解析器查询过该区域。]{#dns-components-once-queried explanation="查询或缓存并不会赋予权威。"}
+::option[它依据相关委派和配置提供该区域的数据。]{#dns-components-serves-zone .correct explanation="权威来自 DNS 委派和服务器加载的区域，而不是来自一份缓存副本。"}
+::option[它对某一次 ping 的响应最快。]{#dns-components-fastest-ping explanation="ICMP 时延不能定义 DNS 权威。"}
+:::
 
-```plaintext
-patty    IN  A      192.168.0.4
+## 区域与区域存储
+
+区域是 DNS 命名空间中由某个管理主体提供服务的一部分。它从区域顶点开始，并可继续委派子区域。区域数据可以存放在文本区域文件中，也可以从数据库生成、通过 API 加载或由软件合成；“区域文件”并不是强制要求的物理实现。
+
+区域顶点通常拥有一条 SOA 记录和一组 NS 记录。父区域的委派数据标识子区域的权威服务器；有时还会附带粘合地址记录，以便访问名称位于该子区域内的服务器。
+
+:::single-choice{#dns-components-zone-meaning}
+什么是 DNS 区域？
+
+::option[命名空间中由某个管理主体提供服务的一部分。]{#dns-components-admin-portion .correct explanation="无论采用何种存储后端，它都可以包含记录和委派。"}
+::option[每台客户端上都必须存在的单个文本文件。]{#dns-components-client-file explanation="权威实现可以使用多种存储形式，客户端也不会保存每个区域。"}
+::option[由 VLAN 标识的以太网广播域。]{#dns-components-vlan explanation="DNS 区域与链路层网段是彼此独立的概念。"}
+:::
+
+## 资源记录字段
+
+一条资源记录包含所有者名称、TTL、类、类型和特定于类型的 RDATA。例如：
+
+```text
+www.example.com.  300  IN  A  192.0.2.25
 ```
 
-## Exercise
+所有者是 `www.example.com.`，TTL 为 300 秒，类是 Internet，类型是 IPv4 地址，RDATA 则是该地址。区域文件语法中的字段省略和相对名称规则要求你谨慎处理起点（origin）。
 
-熟能生巧！以下是一些动手实验，可帮助您加深对 DNS 和主机名解析的理解：
+:::single-choice{#dns-components-mx-type}
+哪种记录类型会发布邮件交换器的优先级和主机名？
 
-1. **[在 Linux 上设置本地权威 DNS 服务器](https://labex.io/zh/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - 练习安装和配置本地 DNS 服务器 (`bind9`)，定义区域，并验证您的设置。
-2. **[使用 dig 和 nslookup 在 Linux 中查询 DNS 记录](https://labex.io/zh/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - 学习使用基本命令行工具 (`dig`, `nslookup`) 查询各种 DNS 记录类型并排除 DNS 问题。
-3. **[在 Linux 中管理本地主机名解析](https://labex.io/zh/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - 了解如何通过编辑 `/etc/hosts` 文件来管理本地主机名解析，这是开发和测试的关键技能。
+::option[`A`]{#dns-components-a explanation="A 记录保存 IPv4 地址。"}
+::option[`NS`]{#dns-components-ns explanation="NS 记录标识权威名称服务器。"}
+::option[`MX`]{#dns-components-mx .correct explanation="MX 的 RDATA 包含优先级和邮件交换器名称。"}
+:::
 
-这些实验将帮助您在实际场景中应用 DNS 和主机名解析的概念，并增强您对网络服务的信心。
+## TTL 与否定缓存
 
-## Quiz Question
+正面记录使用 TTL 限制缓存复用时间。经过确认的名称不存在等否定回答，也可以按照源自 SOA 的规则缓存。在计划变更前不久降低 TTL，只会影响缓存看到较低 TTL 后获取的记录；先前以较长 TTL 缓存的记录仍会保留到过期。
 
-邮件交换器使用哪种资源记录类型？
+:::single-choice{#dns-components-lower-ttl-timing}
+为什么要在计划更改地址之前很早就降低 DNS TTL？
 
-## Quiz Answer
+::option[TTL 会修改服务器的以太网 MTU。]{#dns-components-ttl-mtu explanation="缓存生命周期与链路数据包大小无关。"}
+::option[较低的 TTL 能保证新应用程序健康。]{#dns-components-ttl-health explanation="它影响缓存行为，而不是服务正确性。"}
+::option[现有缓存需要时间，让按原先较长 TTL 获取的记录过期。]{#dns-components-old-cache-expiry .correct explanation="更改权威数据无法追溯缩短已缓存记录的剩余生命周期。"}
+:::
 
-MX
+## 总结
+
+现在，你可以区分 DNS 的递归查询、权威、命名空间管理和记录缓存。
+
+1. 识别存根解析器与递归解析器的职责。
+2. 通过受委派区域的服务关系定义权威。
+3. 把区域理解为命名空间责任，而不是某个必需文件。
+4. 解读所有者、TTL、类、类型和 RDATA 字段。
+5. 在 DNS 变更之前规划缓存生命周期。

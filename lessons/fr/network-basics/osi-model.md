@@ -1,54 +1,78 @@
 ---
-index: 2
+lesson_id: "osi-model"
+course_id: "network-basics"
 lang: "fr"
+order_index: 2
 title: "Modèle OSI"
-meta_title: "Modèle OSI - Bases du Réseau"
-meta_description: "Explorez le modèle OSI, un cadre fondamental à 7 couches pour la mise en réseau. Découvrez comment ce concept théorique influence le modèle TCP/IP et son importance dans le monde du réseautage Linux OSI."
-meta_keywords: "osi linux, modèle OSI, concepts réseau, TCP/IP, réseau Linux, couches réseau, modèle théorique, modèle à 7 couches"
+description: "Découvrez comment le modèle de référence OSI à sept couches organise les fonctions réseau et le vocabulaire du dépannage."
+meta_title: "Modèle OSI - Réseaux"
+meta_description: "Explorez le modèle OSI à sept couches, ses fonctions réseau et son usage comme cadre de compréhension et de dépannage des réseaux Linux."
+meta_keywords: "modèle OSI, réseau Linux, TCP/IP, couches réseau, modèle sept couches, dépannage réseau"
 ---
 
-## Lesson Content
+Le modèle Open Systems Interconnection est un cadre de référence à sept couches. Il donne aux ingénieurs un vocabulaire commun pour situer les responsabilités, interfaces et défaillances ; il ne décrit pas littéralement chaque implémentation.
 
-Avant de plonger dans les commandes réseau pratiques, il est essentiel de comprendre une terminologie fondamentale. L'un des concepts les plus importants est le modèle OSI, qui sert de pierre angulaire à la compréhension des communications réseau.
+## Les sept couches
 
-### Qu'est-ce que le modèle OSI ?
+De la plus basse à la plus haute, les couches OSI sont :
 
-Le modèle OSI (Open Systems Interconnection ou Interconnexion de Systèmes Ouverts) est un cadre conceptuel utilisé pour comprendre et standardiser les fonctions d'un système de télécommunication ou informatique. Il caractérise les fonctions d'un système de mise en réseau en un ensemble de sept couches distinctes. Pour quiconque travaille avec le réseau **osi linux**, la compréhension de ce modèle fournit une base théorique solide.
+1. Physique : signaux, supports, connecteurs et transmission des bits.
+2. Liaison de données : trames locales, adressage de liaison et accès au support.
+3. Réseau : adressage logique et transmission entre réseaux.
+4. Transport : communication entre terminaux ou processus.
+5. Session : gestion des sessions de communication.
+6. Présentation : représentation, transformation et encodage des données.
+7. Application : services réseau employés par les applications.
 
-### Les Sept Couches de l'OSI
+:::single-choice{#osi-network-layer-number}
+Quelle couche OSI traite l'adressage logique et la transmission entre réseaux ?
 
-Ce modèle montre comment un paquet de données traverse un réseau à travers sept couches différentes :
+::option[La couche 3, Réseau.]{#osi-layer-three .correct explanation="La couche réseau décrit l'adressage logique et la transmission entre les réseaux."}
+::option[La couche 1, Physique.]{#osi-layer-one explanation="La couche physique concerne les signaux et les supports."}
+::option[La couche 7, Application.]{#osi-layer-seven explanation="La couche application décrit les services exposés aux applications réseau."}
+:::
 
-1. Physique
-2. Liaison de données
-3. Réseau
-4. Transport
-5. Session
-6. Présentation
-7. Application
+## Employer le modèle comme vocabulaire
 
-Bien que nous n'allions pas détailler les spécificités de chaque couche, savoir qu'elles existent est crucial pour contextualiser les processus réseau.
+Des expressions comme « boucle de couche 2 » ou « port de couche 4 » désignent une zone fonctionnelle sans expliquer chaque détail de l'implémentation. Un protocole réel peut franchir des limites, et le chiffrement, les tunnels, mandataires ou surcouches peuvent créer plusieurs couches imbriquées.
 
-### Pertinence dans les Réseaux Modernes
+:::single-choice{#osi-model-purpose}
+À quoi le modèle OSI sert-il le plus dans le dépannage quotidien ?
 
-Bien que le modèle OSI soit principalement théorique, son influence est significative. La plupart des réseaux modernes, y compris Internet, fonctionnent sur le modèle TCP/IP, plus pratique. Cependant, le modèle TCP/IP a été fortement influencé par le cadre OSI. De nombreux concepts réseau et méthodes de dépannage font toujours référence aux couches OSI, ce qui en fait une connaissance intemporelle et pertinente pour les administrateurs réseau.
+::option[À garantir que chaque protocole possède exactement sept en-têtes.]{#osi-seven-headers explanation="Les implémentations ne correspondent pas une à une à sept en-têtes sur le réseau."}
+::option[À remplacer toutes les captures de paquets par un diagramme.]{#osi-replace-captures explanation="Le modèle guide l'enquête, mais ne remplace pas les preuves."}
+::option[À fournir une méthode commune de classement des fonctions réseau.]{#osi-shared-vocabulary .correct explanation="Le cadre aide les équipes à réduire la zone fonctionnelle examinée."}
+:::
 
-## Exercise
+## Comparer OSI et TCP/IP
 
-Bien que le modèle OSI soit théorique, comprendre son influence sur les réseaux pratiques est essentiel. La pratique concrète avec les commandes réseau fondamentales aidera à solidifier votre compréhension de la manière dont ces modèles théoriques se traduisent dans les opérations réseau du monde réel.
+La suite de protocoles Internet et le modèle de référence OSI sont issus d'histoires de normalisation différentes. Le modèle pratique TCP/IP regroupe souvent dans sa couche application les responsabilités de session et de présentation d'OSI et réunit les aspects physiques et de liaison dans une couche liaison ou accès réseau. Les correspondances sont approximatives et ne prouvent pas que l'une des piles a été directement implémentée à partir de l'autre.
 
-Voici quelques laboratoires pratiques pour renforcer votre compréhension des concepts réseau de base :
+:::single-choice{#osi-tcpip-mapping}
+Comment faut-il interpréter une correspondance entre couches OSI et TCP/IP ?
 
-1. **[Identifier les adresses MAC et IP sous Linux](https://labex.io/fr/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Entraînez-vous à utiliser la commande `ip a` pour identifier les informations d'adressage réseau, y compris les adresses MAC et IP, sur un système Linux.
-2. **[Gérer l'adressage IP sous Linux](https://labex.io/fr/labs/comptia-manage-ip-addressing-in-linux-592736)** - Apprenez à configurer des adresses IP statiques et dynamiques, à définir une passerelle par défaut et à vérifier les configurations réseau à l'aide de la commande `ip`.
-3. **[Explorer l'interaction de la couche Réseau avec ping et arp sous Linux](https://labex.io/fr/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Utilisez les commandes `ping` et `arp` pour explorer comment les couches réseau et liaison de données interagissent, en observant ARP en action et en comprenant le comportement de la passerelle par défaut.
+::option[Comme une règle exacte à laquelle chaque protocole doit obéir.]{#osi-exact-rule explanation="Les responsabilités des protocoles franchissent souvent les limites conceptuelles."}
+::option[Comme la preuve que TCP/IP emploie obligatoirement sept couches sur le réseau.]{#osi-tcp-seven explanation="TCP/IP est couramment présenté avec quatre ou cinq couches."}
+::option[Comme une comparaison approximative entre des modèles fonctionnels.]{#osi-approximate-map .correct explanation="Les modèles regroupent certaines responsabilités différemment."}
+:::
 
-Ces laboratoires vous aideront à appliquer les concepts réseau fondamentaux dans des scénarios réels et à renforcer votre confiance dans l'administration réseau sous Linux.
+## Dépanner entre les couches
 
-## Quiz Question
+Partez du symptôme et testez les hypothèses plutôt que de vérifier mécaniquement les couches dans l'ordre numérique. Une défaillance web peut concerner l'état de la liaison locale, le routage IP, l'accessibilité du transport, TLS, la résolution des noms, l'authentification ou le comportement applicatif. Une preuve dans une couche peut guider le test suivant sans démontrer que les couches supérieures fonctionnent.
 
-What is used as the theoretical model of networking? (Please answer in English, using the acronym in uppercase.)
+:::single-choice{#osi-link-success-limit}
+Que prouve une liaison Ethernet locale qui fonctionne ?
 
-## Quiz Answer
+::option[Que tous les services HTTP distants sont sains.]{#osi-link-proves-http explanation="L'état de la liaison locale ne permet pas d'établir la santé d'une application distante."}
+::option[Que le DNS ne contient aucun enregistrement incorrect.]{#osi-link-proves-dns explanation="Les données de noms sont indépendantes de la connectivité élémentaire de la liaison."}
+::option[Uniquement que les conditions pertinentes de la liaison locale fonctionnent.]{#osi-link-limited-proof .correct explanation="Des défaillances de routage, transport, nommage, sécurité et application peuvent subsister."}
+:::
 
-OSI
+## Résumé
+
+Vous savez maintenant employer le modèle OSI comme vocabulaire de diagnostic en couches.
+
+1. Nommer les sept couches dans l'ordre.
+2. Associer chaque couche à sa grande responsabilité.
+3. Considérer les correspondances avec TCP/IP comme approximatives.
+4. Employer les preuves d'une couche pour guider les tests de bout en bout, pas les remplacer.

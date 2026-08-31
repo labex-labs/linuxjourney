@@ -1,54 +1,98 @@
 ---
-index: 6
+lesson_id: "transport-layer"
+course_id: "network-basics"
 lang: "de"
+order_index: 6
 title: "Transportschicht"
-meta_title: "Transportschicht - Netzwerk-Grundlagen"
-meta_description: "Erkunden Sie die Transportschicht im Linux-Netzwerk. Diese Lektion behandelt wichtige Protokolle wie TCP und UDP, die Funktion von Netzwerk-Ports, Datensegmentierung und den TCP-Handshake für eine zuverlässige Datenübertragung."
-meta_keywords: "Linux Transportschicht, TCP, UDP, TCP-Handshake, Netzwerk-Ports, Datensegmentierung, Linux-Netzwerk, Netzwerkprotokolle, zuverlässige Datenübertragung"
+description: "Lerne, wie TCP und UDP Ports sowie unterschiedliche Zustellungssemantiken zwischen Anwendungsendpunkten verwenden."
+meta_title: "Transportschicht – Netzwerkgrundlagen"
+meta_description: "Erkunde die Transportschicht der Linux-Vernetzung. Diese Lektion behandelt TCP, UDP, Netzwerkports, Datensegmentierung und den TCP-Handshake für zuverlässige Datenübertragung."
+meta_keywords: "Linux-Transportschicht, TCP, UDP, TCP-Handshake, Netzwerkports, Datensegmentierung, Linux-Vernetzung, Netzwerkprotokolle, zuverlässige Datenübertragung"
 ---
 
-## Lesson Content
+Die Transportschicht verbindet Anwendungsendpunkte über ein IP-Netzwerk. TCP und UDP verwenden beide 16-Bit-Portnummern, stellen Anwendungen jedoch unterschiedliche Kommunikationsmodelle und Garantien bereit.
 
-Die Transportschicht ist ein fundamentaler Bestandteil des Linux-Netzwerkbetriebs, der für die Ende-zu-Ende-Kommunikation und die zuverlässige Datenübertragung zwischen Anwendungen auf verschiedenen Hosts verantwortlich ist. Sie bereitet Daten strukturiert und verwaltbar für den Transport über das Netzwerk vor.
+## Ports und Sockets
 
-### Datensegmentierung
+Ein Zielport hilft dem Betriebssystem, Datenverkehr an einen lauschenden Socket zuzustellen. Eine Verbindung oder ein Datenstrom wird durch mehr als einen Port identifiziert: Protokoll, Quell- und Zieladressen sowie Quell- und Zielports sind alle relevant. Derselbe Serverport kann deshalb viele gleichzeitige Clients bedienen.
 
-Eine der Hauptfunktionen der Transportschicht ist die Datensegmentierung. Sie zerlegt große Datenmengen in kleinere, besser handhabbare Blöcke, sogenannte Segmente. Dieser Prozess macht die Datenübertragung effizienter und ausfallsicherer. Geht ein Segment während der Übertragung verloren oder wird es beschädigt, muss nur dieser kleine Teil erneut gesendet werden, nicht der gesamte Datensatz. Sobald die Segmente am Zielort eintreffen, setzt die Transportschicht sie in der richtigen Reihenfolge wieder zusammen.
+:::single-choice{#transport-layer-many-clients}
+Wie kann ein TCP-Serverport mehrere Clients gleichzeitig bedienen?
 
-### Verständnis von Netzwerk-Ports
+::option[Jede Verbindung besitzt eine eigene Kombination aus Endpunktadressen und Ports.]{#transport-layer-connection-tuple .correct explanation="Das vollständige Transporttupel unterscheidet gleichzeitige Verbindungen, die denselben lauschenden Port verwenden."}
+::option[Der Server benennt seinen Port nach jedem Paket dauerhaft um.]{#transport-layer-renames-port explanation="Der lauschende Port kann unverändert bleiben, während angenommene Verbindungen unterschiedliche Peer-Tupel besitzen."}
+::option[IP entfernt vor der Zustellung alle Quelladressen.]{#transport-layer-removes-source explanation="Quelladressen helfen, Kommunikationspartner und Pfad zu identifizieren."}
+:::
 
-Während IP-Adressen den richtigen Host in einem Netzwerk identifizieren, geben sie nicht an, welche Anwendung oder welcher Dienst die Daten empfangen soll. Hier kommen Netzwerk-Ports ins Spiel. Dienste wie HTTP (Web-Traffic) oder SMTP (E-Mail) lauschen auf spezifischen, bekannten Ports. HTTP verwendet beispielsweise typischerweise Port 80. Die Transportschicht fügt jedem Segment Quell- und Zielportnummern hinzu, um sicherzustellen, dass die Daten an den korrekten Prozess auf dem empfangenden Host zugestellt werden.
+## TCP-Byteströme
 
-### Kernprotokolle der Transportschicht: TCP und UDP
+TCP stellt einen geordneten, zuverlässigen Bytestrom bereit, solange die Verbindung funktionsfähig bleibt. Es verwendet Sequenznummern, Bestätigungen, erneute Übertragung, Flusskontrolle und Überlastungskontrolle. TCP bewahrt keine Nachrichtengrenzen der Anwendung: Ein Schreibvorgang kann über mehrere Lesevorgänge eintreffen, oder mehrere Schreibvorgänge können von einem Lesevorgang zurückgegeben werden. Anwendungen definieren ihre eigene Rahmung.
 
-In modernen Netzwerken werden zwei Hauptprotokolle der Transportschicht verwendet: TCP (Transmission Control Protocol) und UDP (User Datagram Protocol). Wir werden UDP kurz behandeln und uns dann auf TCP konzentrieren, da es für die zuverlässige Kommunikation am weitesten verbreitet ist.
+Zuverlässigkeit bedeutet keine absolute Zustellung. Eine Verbindung kann das Zeitlimit überschreiten, zurückgesetzt werden oder fehlschlagen, und eine Bestätigung beweist nicht, dass eine Anwendung die Daten dauerhaft gespeichert hat.
 
-### UDP (User Datagram Protocol)
+:::single-choice{#transport-layer-tcp-boundaries}
+Was geschieht in TCP mit Nachrichtengrenzen der Anwendung?
 
-UDP ist ein verbindungsloses Protokoll, das eine schnelle, aber unzuverlässige Methode zum Transport von Daten bietet. Es garantiert weder, dass alle Segmente ankommen, noch, dass sie in der richtigen Reihenfolge eintreffen. Obwohl dies ein Nachteil zu sein scheint, ist UDP sehr effektiv für Anwendungen, bei denen Geschwindigkeit wichtiger ist als perfekte Genauigkeit, wie z. B. Live-Video-Streaming oder Online-Spiele. Der Verlust einiger Videobilder ist oft ein akzeptabler Kompromiss für einen flüssigeren, schnelleren Stream.
+::option[TCP stellt einen geordneten Bytestrom bereit, ohne Schreibgrenzen zu bewahren.]{#transport-layer-byte-stream .correct explanation="Das Anwendungsprotokoll muss definieren, wie Nachrichten abgegrenzt oder in ihrer Größe angegeben werden."}
+::option[Jeder Schreibvorgang wird genau ein IP-Paket und ein Lesevorgang.]{#transport-layer-one-write-packet explanation="Segmentierung, Pufferung und Empfangsschnittstellen bewahren diese Zuordnung nicht."}
+::option[TCP wandelt jede Nachricht in einen DNS-Datensatz um.]{#transport-layer-tcp-dns explanation="DNS ist ein getrenntes Anwendungsprotokoll."}
+:::
 
-### TCP (Transmission Control Protocol)
+## Der TCP-Handshake
 
-TCP bietet einen zuverlässigen, verbindungsorientierten Datenstrom. Bevor Daten ausgetauscht werden, baut TCP eine formelle Verbindung zwischen den beiden Hosts auf, um sicherzustellen, dass beide zur Kommunikation bereit sind.
+Eine normale TCP-Verbindung beginnt mit einem Drei-Wege-Handshake:
 
-### Der TCP-Handshake
+1. Der Initiator sendet `SYN` mit seinen anfänglichen Sequenzinformationen.
+2. Der lauschende Endpunkt antwortet mit `SYN-ACK`, eigenen Sequenzinformationen und einer Bestätigung.
+3. Der Initiator sendet `ACK` zurück.
 
-Um eine Verbindung herzustellen, verwendet TCP einen Prozess, der als Drei-Wege-Handshake bezeichnet wird:
+Dies richtet in beiden Endpunkten Transportzustand ein. Es authentifiziert weder den Anwendungsserver noch beweist es, dass der angeforderte Anwendungsvorgang erfolgreich sein wird.
 
-1. **SYN**: Der Client sendet ein SYN (Synchronize)-Segment an den Server, um eine Verbindung zu initiieren.
-2. **SYN-ACK**: Der Server antwortet mit einem SYN-ACK (Synchronize-Acknowledge)-Segment, um die Anforderung des Clients zu bestätigen.
-3. **ACK**: Der Client sendet ein ACK (Acknowledge)-Segment zurück an den Server, wodurch die Verbindung als hergestellt bestätigt wird.
+:::single-choice{#transport-layer-handshake-order}
+Was ist die normale Reihenfolge des TCP-Drei-Wege-Handshakes?
 
-Sobald der Handshake abgeschlossen ist, können Daten zuverlässig ausgetauscht werden. TCP verwendet Sequenznummern, um jedes Segment zu verfolgen, wodurch der empfangende Host sie in der richtigen Reihenfolge wieder zusammensetzen und die erneute Übertragung fehlender Segmente anfordern kann. In unserem E-Mail-Beispiel würde die Transportschicht die Ziel-Portnummer für SMTP (Port 25) und einen Quell-Port des Client-Hosts an jedes Segment anhängen.
+::option[SYN, SYN-ACK, ACK.]{#transport-layer-syn-order .correct explanation="Der Austausch synchronisiert und bestätigt den anfänglichen Verbindungszustand in beiden Richtungen."}
+::option[ACK, ACK, SYN.]{#transport-layer-ack-ack-syn explanation="Der Initiator fordert zuerst die Synchronisierung an."}
+::option[SYN, FIN, RST.]{#transport-layer-syn-fin-rst explanation="FIN und RST schließen beziehungsweise verwerfen Zustand, statt einen normalen Handshake zu bilden."}
+:::
 
-## Exercise
+## UDP-Datagramme
 
-Obwohl es für dieses Thema keine spezifischen Übungen gibt, empfehlen wir Ihnen, den umfassenden [Linux Lernpfad](https://labex.io/de/learn/linux) zu erkunden, um verwandte Linux-Fähigkeiten und -Konzepte zu üben.
+UDP bewahrt Datagrammgrenzen und bietet prüfsummenbasierte Fehlererkennung, aber keinen TCP-artigen Verbindungszustand, keine Reihenfolge, erneute Übertragung, Flusskontrolle oder Überlastungskontrolle. Eine Anwendung kann benötigte Zuverlässigkeit oder Überlastungssteuerung selbst ergänzen. UDP ist nicht automatisch schneller; die Leistung hängt von Protokollentwurf, Arbeitslast, Pfad und Implementierung ab.
 
-## Quiz Question
+:::single-choice{#transport-layer-udp-boundaries}
+Welche Eigenschaft stellt UDP Anwendungen bereit?
 
-What is a reliable transport protocol? (Your answer should be in English and is case-sensitive).
+::option[Einen automatisch erneut übertragenen geordneten Bytestrom.]{#transport-layer-udp-stream explanation="Dies beschreibt TCP-artige Dienste und nicht grundlegendes UDP."}
+::option[Bewahrte Grenzen zwischen eingereichten Datagrammen.]{#transport-layer-udp-datagrams .correct explanation="Ein empfangenes UDP-Datagramm entspricht einem gesendeten Datagramm, sofern es nicht verloren geht."}
+::option[Garantierte Zustellung vor einer festen Frist.]{#transport-layer-udp-deadline explanation="UDP bietet keine Garantie für eine Zustellungsfrist."}
+:::
 
-## Quiz Answer
+## Transportendpunkte untersuchen
 
-TCP
+Verwende `ss`, um lauschende und verbundene Sockets zu untersuchen, ohne sie zu verändern:
+
+```bash
+$ ss -lntup
+$ ss -tn state established
+```
+
+Prozessdetails können erhöhte Berechtigungen erfordern. Ein lauschender Socket beweist lokale Bereitschaft nur an der Transportgrenze; Firewall, Routing, Adressfamilie, TLS und Anwendungszustand benötigen weiterhin geeignete Tests.
+
+:::single-choice{#transport-layer-listener-proof}
+Was belegt ein lauschender TCP-Socket?
+
+::option[Jede entfernte Firewall erlaubt die Verbindung.]{#transport-layer-all-firewalls explanation="Lokaler Socketzustand zeigt nicht alle Richtlinien entlang des Pfads."}
+::option[Die Anwendung hat jede Zustandsprüfung bestanden.]{#transport-layer-all-health explanation="Lauschen ist ein schwächerer Beleg als eine erfolgreiche Anwendungstransaktion."}
+::option[Ein lokaler Prozess ist bereit, passende TCP-Verbindungen anzunehmen.]{#transport-layer-local-listener .correct explanation="Entfernte Erreichbarkeit und korrekte Anwendungsantworten bleiben getrennte Fragen."}
+:::
+
+## Zusammenfassung
+
+Du kannst das TCP-Stromverhalten nun vom UDP-Datagrammverhalten unterscheiden.
+
+1. Identifiziere einen Datenstrom anhand von Protokoll, Adressen und Ports.
+2. Behandle TCP als zuverlässigen geordneten Bytestrom ohne Nachrichtengrenzen.
+3. Erkenne, was der TCP-Handshake beweist und was nicht.
+4. Behandle UDP-Zuverlässigkeit und Überlastungsverhalten als Entscheidungen des Anwendungsentwurfs.
+5. Überprüfe den Anwendungszustand über den lokalen Socketzustand hinaus.

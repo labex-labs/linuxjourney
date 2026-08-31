@@ -1,50 +1,86 @@
 ---
-index: 9
+lesson_id: "process-states"
+course_id: "processes"
 lang: "fr"
-title: "États des Processus"
-meta_title: "États des Processus Linux - Processus"
-meta_description: "Guide complet sur les états des processus Linux. Découvrez les différents états (R, S, D, Z, T) et comment les interpréter avec la commande `ps`."
-meta_keywords: "états processus linux, états des processus linux, état processus linux, états processus expliqués, commande ps, codes STAT, gestion des processus"
+order_index: 9
+title: "États des processus"
+description: "Découvrez comment interpréter les codes courants d’état des processus Linux dans les instantanés de `ps`."
+meta_title: "États des processus - Processus"
+meta_description: "Guide des états des processus Linux R, S, D, Z et T et de leur interprétation avec la commande ps."
+meta_keywords: "états processus Linux, état processus Linux, commande ps, codes STAT, gestion processus"
 ---
 
-## Lesson Content
-
-Lorsque vous inspectez les processus en cours d'exécution, par exemple avec la commande `ps aux`, vous remarquerez une colonne STAT. Comprendre les codes de cette colonne est essentiel pour maîtriser la gestion des processus. Chaque code représente un **état de processus Linux** spécifique.
+Une tâche Linux passe d’un état d’exécution à l’autre lorsqu’elle s’exécute, attend, s’arrête et se termine. Le champ `STAT` de `ps` saisit un instant ; plusieurs observations sont donc plus utiles qu’une lettre isolée pour diagnostiquer un comportement.
 
 ```bash
-ps aux
+$ ps -o pid,ppid,stat,wchan:24,cmd
 ```
 
-Un **état de processus sous Linux** fournit un instantané de ce que fait actuellement un processus. Est-il en train d'utiliser activement le CPU, d'attendre une entrée, ou s'est-il terminé ? Explorons les états les plus courants que vous rencontrerez.
+Le premier caractère de `STAT` est l’état principal. Les caractères supplémentaires sont des modificateurs qui décrivent des propriétés telles que la direction d’une session ou l’appartenance au groupe de processus au premier plan. Consultez le manuel local de `ps` pour obtenir la liste complète.
 
-### Décoder les codes d'état de processus courants
+## Exécution et sommeil interruptible
 
-La colonne STAT révèle l'**état de processus Linux** actuel. Bien qu'il existe de nombreux états possibles, voici ceux que vous rencontrerez le plus souvent. Avoir ces **états de processus Linux expliqués** vous aidera à diagnostiquer le comportement du système.
+- `R` signifie en cours d’exécution ou exécutable. La tâche s’exécute sur un processeur ou attend du temps processeur dans une file d’exécution.
+- `S` signifie sommeil interruptible. La tâche attend un événement et peut être réveillée par un signal ou un événement approprié.
 
-- **R (Running ou Runnable)** : Un processus dans cet état est soit en cours d'exécution active sur un cœur de CPU, soit dans la file d'attente d'exécution, prêt à être exécuté dès qu'un cœur de CPU devient disponible.
+Le sommeil est normal. Les programmes interactifs et les services passent une grande partie de leur temps à attendre une entrée, un minuteur, du trafic réseau, un verrou ou d’autres événements plutôt qu’à consommer continuellement du processeur.
 
-- **S (Interruptible Sleep / Sommeil Interruptible)** : C'est l'un des **états de processus sous Linux** les plus courants. Le processus attend qu'un événement se termine, comme une entrée utilisateur depuis le terminal ou l'arrivée d'un paquet réseau. Il est « interruptible », ce qui signifie qu'il peut être réveillé par des signaux.
+:::single-choice{#process-states-runnable-code}
+Que signifie l’état principal `R` ?
 
-- **D (Uninterruptible Sleep / Sommeil Ininterruptible)** : Ce processus dort également, mais il est dans un état où il ne peut pas être interrompu par un signal. Ceci est généralement utilisé pendant de courtes périodes lors d'opérations d'E/S où interrompre le processus pourrait entraîner un état corrompu. Si un processus reste longtemps dans cet état, cela peut indiquer un problème matériel ou de pilote.
+::option[En cours d’exécution sur un processeur ou prêt à s’exécuter.]{#process-states-r-running .correct explanation="`R` regroupe les tâches actuellement exécutées et celles qui attendent le processeur dans une file d’exécution."}
+::option[Récupéré après que son parent a recueilli son état.]{#process-states-r-reaped explanation="Un processus entièrement récupéré n’apparaît plus comme une entrée normale de la table des processus."}
+::option[En attente dans un sommeil non interruptible.]{#process-states-r-uninterruptible explanation="Le sommeil non interruptible est représenté par `D`."}
+:::
 
-- **Z (Zombie)** : Un processus zombie a terminé son exécution, mais il conserve toujours une entrée dans la table des processus. Il attend que son processus parent lise son statut de sortie. Quelques zombies sont normaux, mais un grand nombre peut indiquer un bogue dans l'application parente.
+:::single-choice{#process-states-interruptible-code}
+Quel état principal représente le sommeil interruptible ?
 
-- **T (Stopped / Arrêté)** : Un processus entre dans cet état lorsqu'il a été suspendu par un signal de contrôle de tâche (comme appuyer sur `Ctrl+Z`) ou parce qu'il est tracé par un débogueur. Il peut être repris avec le signal `SIGCONT`.
+::option[`D`]{#process-states-sleep-d explanation="`D` désigne le sommeil non interruptible."}
+::option[`Z`]{#process-states-sleep-z explanation="`Z` désigne un enfant terminé dont l’état n’a pas été récupéré."}
+::option[`S`]{#process-states-sleep-s .correct explanation="`S` est le code conventionnel de `ps` pour une attente interruptible."}
+:::
 
-En comprenant ces **états de processus Linux** fondamentaux, vous pouvez acquérir une compréhension plus approfondie de l'activité de votre système et gérer plus efficacement les applications en cours d'exécution.
+## Sommeil non interruptible
 
-## Exercise
+`D` signifie sommeil non interruptible, généralement pendant que la tâche attend dans une opération du noyau telle que certaines entrées-sorties de stockage ou de système de fichiers réseau. La tâche ne réagit pas aux signaux ordinaires avant de quitter cette attente ; un signal peut rester en attente entre-temps.
 
-Appliquez vos connaissances avec une pratique concrète. Le laboratoire suivant vous aidera à renforcer votre compréhension de la gestion des processus Linux et de leurs états :
+Un bref état `D` peut être normal. Des tâches nombreuses ou durablement en `D` peuvent signaler des entrées-sorties lentes, indisponibles ou défaillantes, mais l’état seul n’en identifie pas la cause. Examinez le canal d’attente, les journaux du noyau, la santé du stockage et du réseau ainsi que le sous-système concerné avant de conclure.
 
-1. **[Gérer et Surveiller les Processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864)** - Dans ce laboratoire, vous apprendrez les compétences essentielles pour gérer et surveiller les processus sur un système Linux. Vous explorerez comment interagir avec les processus au premier plan et en arrière-plan, les inspecter avec `ps`, surveiller les ressources avec `top`, ajuster la priorité avec `renice` et les terminer avec `kill`.
+:::single-choice{#process-states-uninterruptible-code}
+Quel état principal désigne le sommeil non interruptible ?
 
-Ce laboratoire vous aidera à appliquer les concepts des états de processus dans des scénarios réels et à renforcer votre confiance dans la gestion des processus Linux.
+::option[`T`]{#process-states-d-stopped explanation="`T` identifie une tâche arrêtée."}
+::option[`D`]{#process-states-d-uninterruptible .correct explanation="`D` désigne une tâche en attente dans un sommeil non interruptible du noyau."}
+::option[`R`]{#process-states-d-runnable explanation="`R` identifie une tâche en cours d’exécution ou exécutable."}
+:::
 
-## Quiz Question
+## États arrêté et zombie
 
-Quel code STAT est utilisé pour représenter un sommeil ininterruptible ? (Veuillez fournir la lettre anglaise majuscule unique pour le code d'état.)
+- `T` signifie normalement arrêté par une action de contrôle des tâches, telle que `SIGTSTP`, ou par `SIGSTOP`. Certains outils emploient un `t` minuscule pour un arrêt dû au traçage.
+- `Z` signifie zombie : le processus s’est terminé, mais son parent n’a pas encore recueilli l’enregistrement de fin.
 
-## Quiz Answer
+Reprenez un arrêt de contrôle des tâches avec `SIGCONT` lorsque cela convient. Un zombie ne peut être ni repris ni tué, car il ne s’exécute plus ; son parent ou un récupérateur adoptant doit le recueillir.
 
-D
+:::single-choice{#process-states-zombie-code}
+Qu’identifie l’état principal `Z` ?
+
+::option[Un processus terminé dont l’enregistrement de fin attend d’être récupéré.]{#process-states-z-zombie .correct explanation="Un zombie conserve un état minimal visible par le parent après la fin de son exécution."}
+::option[Un processus suspendu par un signal du terminal.]{#process-states-z-terminal-stop explanation="Un arrêt de contrôle des tâches s’affiche normalement sous la forme `T`."}
+::option[Un processus qui emploie actuellement tout un cœur de processeur.]{#process-states-z-cpu explanation="Une tâche active est représentée par `R`, tandis qu’un zombie n’exécute aucune instruction."}
+:::
+
+## Lire les états dans leur contexte
+
+Les codes d’état sont des observations, pas des diagnostics. Associez-les au temps écoulé, à l’utilisation du processeur, aux canaux d’attente, aux relations parentales, aux journaux et à plusieurs échantillons. Une tâche peut changer d’état entre l’instant où le noyau le signale et celui où vous lisez l’écran.
+
+L’atelier [Gérer et surveiller les processus Linux](https://labex.io/fr/labs/comptia-manage-and-monitor-linux-processes-590864) fournit un environnement sûr pour observer les tâches au premier plan, endormies, arrêtées et terminées.
+
+## Résumé
+
+Vous savez maintenant interpréter les principaux états de processus les plus courants.
+
+1. Lire `R` comme en cours d’exécution ou exécutable et `S` comme sommeil interruptible.
+2. Analyser un état `D` persistant comme le symptôme d’une attente, et non comme un diagnostic.
+3. Distinguer l’état arrêté `T` de l’état terminé et non récupéré `Z`.
+4. Employer plusieurs observations et les indices environnants.

@@ -1,70 +1,120 @@
 ---
-index: 11
+lesson_id: "emacs-buffer-navigation"
+course_id: "advanced-text-fu"
 lang: "en"
+order_index: 11
 title: "Emacs Buffer Navigation"
+description: "Learn how to switch and kill Emacs buffers while splitting, selecting, and closing display windows."
 meta_title: "Emacs Buffer Navigation - Advanced Text-Fu"
 meta_description: "A comprehensive guide to Emacs buffer navigation. Learn how to efficiently switch buffers, split windows, and manage your workflow with essential Emacs commands. Master the emacs switch buffer command and improve your text editing skills."
 meta_keywords: "emacs navigation, emacs switch buffer, emacs buffer management, emacs commands, C-x b, C-x k, C-x 2, text editor, linux"
 ---
 
-## Lesson Content
+An Emacs buffer holds text or editor state, while a window displays a buffer. A buffer can exist without being visible, and several windows can display one buffer. Managing one object does not automatically manage the other.
 
-In Emacs, a "buffer" is a temporary workspace where you can edit text. When you open a file, Emacs loads its contents into a buffer. You can also have buffers that don't correspond to a file, such as the `*scratch*` buffer. Efficiently managing these buffers is key to a smooth workflow. Mastering **emacs navigation** between buffers will significantly speed up your editing process.
+## Switching Buffers
 
-### Switching Between Buffers
+Use `C-x b`, which runs `switch-to-buffer`, to select a buffer by name in the current window:
 
-To move between different open buffers, you can use several commands. The primary command to **emacs switch buffer** will prompt you for the name of the buffer you want to open.
-
-```
-C-x b - Switch to another buffer by name
-C-x right arrow - Cycle to the next buffer
-C-x left arrow - Cycle to the previous buffer
+```text
+C-x b
 ```
 
-### Managing Buffer Windows
+The minibuffer offers completion for existing names. Entering a new name can create a non-file buffer with that name; it does not visit a file pathname.
 
-Emacs allows you to view multiple buffers at once by splitting your screen (or "frame") into different windows.
+By default, `C-x Right` runs `next-buffer` and `C-x Left` runs `previous-buffer`, cycling through buffers in the selected window.
 
-```
-C-x 2 - Split the current window vertically
-```
+:::single-choice{#emacs-switch-buffer-key}
+Which key sequence prompts for a buffer name to display in the current window?
 
-This command creates two windows, one above the other, allowing you to see two buffers simultaneously. To move your cursor between these windows, use:
+::option[`C-x C-f`]{#emacs-buffer-find-file explanation="This prompts for a file pathname and visits it, which is a different operation from choosing an existing buffer by name."}
+::option[`C-x b`]{#emacs-switch-buffer .correct explanation="`switch-to-buffer` reads a buffer name and displays that buffer in the selected window."}
+::option[`C-x k`]{#emacs-buffer-kill explanation="This prompts to kill a buffer rather than switch the selected window to one."}
+:::
 
-```
-C-x o - Move to the other window
-```
+## Splitting the Selected Window
 
-When you are finished with a split-screen view and want to return to a single window, you can use the following command. This makes the current window the only one on the screen.
+Use `C-x 2` to split the selected window into an upper and lower window:
 
-```
-C-x 1 - Close all other windows
-```
-
-### Closing a Buffer
-
-When you are done working with a file or a temporary buffer, you can close it to keep your workspace tidy.
-
-```
-C-x k - Kill (close) the current buffer
+```text
+C-x 2
 ```
 
-If you have ever used a terminal multiplexer like `screen` or `tmux`, you will find that these buffer management commands feel very familiar.
+Use `C-x 3` to split it into left and right windows:
 
-## Exercise
+```text
+C-x 3
+```
 
-To solidify your understanding of buffer and text file manipulation, try these hands-on labs. They will help you apply these concepts in real-world scenarios.
+The new window initially displays a buffer, often the same one. Switch buffers in either window independently.
 
-1. **[Edit Text Files in Linux with Vim and Nano](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Practice creating, editing, saving, and navigating text within the Vim and Nano editors, which are crucial for working with buffers.
-2. **[Linux cat Command: File Concatenating](https://labex.io/labs/linux-linux-cat-command-file-concatenating-210986)** - Learn to view, concatenate, and manipulate text files, directly applying to how you might interact with buffer content.
-3. **[Viewing Log and Configuration Files in Linux](https://labex.io/labs/linux-viewing-log-and-configuration-files-in-linux-387914)** - Practice using commands like `cat`, `more`, and `less` to efficiently view and navigate text files, simulating real-world scenarios of examining buffer-like content.
+:::single-choice{#emacs-split-side-by-side}
+Which key sequence splits the selected Emacs window into left and right windows?
 
-These labs will help you build confidence with text file and buffer manipulation in Linux.
+::option[`C-x 1`]{#emacs-window-one explanation="This deletes other windows and makes the selected window the only one in its frame."}
+::option[`C-x 2`]{#emacs-window-below explanation="This creates upper and lower windows rather than a side-by-side split."}
+::option[`C-x 3`]{#emacs-window-right .correct explanation="`split-window-right`, bound to `C-x 3`, creates left and right windows."}
+:::
 
-## Quiz Question
+## Selecting and Closing Windows
 
-How do you kill a buffer? Please answer using the exact keybinding in English, paying attention to case.
+Use `C-x o`, which runs `other-window`, to select the next window:
 
-## Quiz Answer
+```text
+C-x o
+```
 
+Use these commands to remove window displays:
+
+- `C-x 0`: Delete the selected window.
+- `C-x 1`: Delete the other windows in the current frame.
+
+Deleting a window normally leaves its displayed buffer alive. You can show that buffer again in another window.
+
+:::single-choice{#emacs-select-other-window}
+Which key sequence moves point and keyboard focus to another Emacs window?
+
+::option[`C-x 0`]{#emacs-delete-selected-window explanation="This deletes the selected window rather than moving focus to another one."}
+::option[`C-x o`]{#emacs-other-window .correct explanation="`other-window` cycles selection to another window in the frame."}
+::option[`C-x b`]{#emacs-switch-in-window explanation="This changes which buffer the current window displays, not which window is selected."}
+:::
+
+:::single-choice{#emacs-keep-one-window}
+Which key sequence keeps the selected window and deletes the other windows in its frame?
+
+::option[`C-x 1`]{#emacs-delete-other-windows .correct explanation="`delete-other-windows` makes the selected window the only window in the frame."}
+::option[`C-x 0`]{#emacs-delete-current-window explanation="This deletes the selected window itself rather than preserving it."}
+::option[`C-x 2`]{#emacs-add-lower-window explanation="This adds another window instead of reducing the frame to one."}
+:::
+
+## Killing a Buffer
+
+Use `C-x k`, which runs `kill-buffer`, to prompt for a buffer to remove from Emacs:
+
+```text
 C-x k
+```
+
+The current buffer is the default choice. If a file-visiting buffer has unsaved changes, Emacs warns before killing it. Read the prompt; killing a modified buffer can discard edits.
+
+Killing a buffer is different from deleting a window. Emacs replaces a killed buffer in any displaying window, while deleting a window can leave its buffer untouched.
+
+:::single-choice{#emacs-kill-buffer-key}
+Which key sequence prompts to kill an Emacs buffer?
+
+::option[`C-x 0`]{#emacs-kill-window-only explanation="This deletes a window display but normally leaves the buffer alive."}
+::option[`C-x k`]{#emacs-kill-buffer-answer .correct explanation="`kill-buffer` removes the selected buffer from Emacs after any required modified-buffer confirmation."}
+::option[`C-x b`]{#emacs-kill-switch explanation="This switches the current window to a named buffer and does not kill it."}
+:::
+
+Practice these commands with `*scratch*` and disposable buffers. Before killing any file-visiting buffer, confirm whether its modified indicator shows unsaved work.
+
+## Summary
+
+You can now manage what Emacs stores and what each window displays.
+
+1. Switch buffers in the selected window with `C-x b`.
+2. Split below with `C-x 2` or to the right with `C-x 3`.
+3. Select another window with `C-x o`.
+4. Remove window displays with `C-x 0` or `C-x 1`.
+5. Kill a buffer with `C-x k` only after reviewing unsaved changes.

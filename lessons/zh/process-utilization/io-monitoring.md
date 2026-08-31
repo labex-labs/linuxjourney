@@ -1,66 +1,90 @@
 ---
-index: 5
+lesson_id: "io-monitoring"
+course_id: "process-utilization"
 lang: "zh"
+order_index: 5
 title: "I/O 监控"
-meta_title: "I/O 监控 - 进程利用率"
+description: "学习如何使用 iostat 样本调查 CPU 和块设备活动。"
+meta_title: "I/O 监控 - 进程资源利用"
 meta_description: "使用 iostat 命令掌握 Linux I/O 监控。本指南解释了如何分析 CPU 和磁盘使用率指标以优化系统性能。"
 meta_keywords: "i/o 监控，iostat, linux i/o 监控，cpu 使用率，磁盘使用率，系统性能，iowait, linux 命令"
 ---
 
-## Lesson Content
+`iostat` 通常由 `sysstat` 软件包提供，用于报告 CPU 和块设备活动。应结合重复采样和应用延迟进行分析：吞吐量或利用率本身并不能证明存储正在造成用户可见的问题。
 
-有效的**I/O 监控**对于维护一个健康且响应迅速的 Linux 系统至关重要。一个强大的命令行工具是 **iostat**，它提供有关 CPU 和磁盘活动的详细报告。
+## 收集有效样本
 
-运行 `iostat` 命令会生成系统性能指标的快照。
+可以每秒收集一次扩展设备统计信息：
 
 ```bash
-pete@icebox:~$ iostat
-Linux 3.13.0-39-lowlatency (icebox)     01/28/2016      _i686_  (1 CPU)
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.13    0.03    0.50    0.01    0.00   99.33
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sda               0.17         3.49         1.92     385106     212417
+$ iostat -xz 1
 ```
 
-输出分为两个主要部分。我们来分解一下。
+在常见实现中，第一份报告包含系统启动以来的平均值，后续报告则覆盖各自的采样间隔。`-x` 选项增加扩展字段，`-z` 则隐藏无活动设备。应等待多个间隔，以捕获正常和异常时段。
 
-### 理解 CPU 指标
+:::single-choice{#iostat-first-report}
+第一份 `iostat` 报告通常表示什么？
 
-第一个报告详细说明了 CPU 利用率，提供了有关处理器如何分配时间的见解。
+::option[仅表示命令执行最后一秒内的操作。]{#iostat-final-second explanation="这并不是初始累计报告的含义。"}
+::option[系统启动以来的活动平均值。]{#iostat-since-boot .correct explanation="后续报告通常针对各个采样间隔，因此第一份报告需要单独解读。"}
+::option[对明天设备利用率的预测。]{#iostat-forecast explanation="该工具报告已观察到的统计信息，而不是未来需求。"}
+:::
 
-- **%user**: 用于执行用户级（应用程序）进程的 CPU 时间百分比。
-- **%nice**: 用于执行具有修改（nice）优先级的用户级进程的 CPU 时间百分比。
-- **%system**: 用于执行系统级（内核）进程的 CPU 时间百分比。
-- **%iowait**: CPU 在等待待处理的磁盘 I/O 请求完成而处于空闲状态的时间百分比。这里的高值可能表明存储瓶颈。
-- **%steal**: 在虚拟化环境中，这是虚拟 CPU 在等待真实 CPU 期间，而管理程序正在为另一个虚拟处理器提供服务的时间百分比。
-- **%idle**: CPU 处于空闲状态且未等待任何磁盘 I/O 请求的时间百分比。
+## 阅读 CPU 字段
 
-### 分析磁盘利用率
+CPU 部分通常包括用户时间（`%user`）、系统时间（`%system`）、空闲时间（`%idle`）、I/O 等待时间（`%iowait`）和虚拟机窃取时间（`%steal`）。I/O 等待是系统存在尚未完成的 I/O 请求时 CPU 的空闲时间，并不是磁盘繁忙程度的百分比。
 
-第二个报告侧重于设备级别的**I/O 监控**，显示数据是如何在存储设备之间传输的。
+:::single-choice{#iostat-iowait-meaning}
+`%iowait` 描述什么？
 
-- **tps**: 发送到设备的每秒传输次数。一次传输是一个 I/O 请求，多个逻辑请求可以合并为一个请求。
-- **kB_read/s**: 从设备读取的数据量，以每千字节/秒为单位。
-- **kB_wrtn/s**: 写入到设备的字节量，以每千字节/秒为单位。
-- **kB_read**: 自上次重新启动以来从设备读取的总千字节数。
-- **kB_wrtn**: 自上次重新启动以来写入到设备的字节总数。
+::option[磁盘容量已经占用的百分比。]{#iostat-capacity explanation="文件系统容量和 CPU 时间是两种不同指标。"}
+::option[存在未完成 I/O 请求时 CPU 的空闲时间。]{#iostat-iowait-cpu .correct explanation="它是 CPU 时间类别，无法单独指出具体设备。"}
+::option[等待删除的文件数量。]{#iostat-delete-queue explanation="该字段不表示文件删除次数。"}
+:::
 
-## Exercise
+## 阅读设备字段
 
-实践造就完美！以下是一些实践实验，以加强您对系统监控和磁盘使用的理解：
+字段名称会随 sysstat 版本而变化，但常用概念包括：
 
-1. **[Linux df 命令：磁盘空间报告](https://labex.io/zh/labs/linux-linux-df-command-disk-space-reporting-219188)** - 练习报告挂载文件系统的磁盘空间使用情况，这是监控的关键方面。
-2. **[Linux du 命令：文件空间估算](https://labex.io/zh/labs/linux-linux-du-command-file-space-estimating-219190)** - 学习估算目录和子目录的磁盘空间使用情况，补充 `iostat` 提供的磁盘 I/O 信息。
-3. **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 探索实时系统监控，包括 CPU 和内存使用情况，为 `iostat` 中看到的 CPU 指标提供更广泛的背景。
+- 每秒读写操作数或数据量表示工作负载速率。
+- `await` 表示平均请求延迟，其中包括排队时间和服务时间。
+- 平均队列大小字段表示正在等待或处理的请求。
+- `%util` 表示设备存在 I/O 活动的时间占总时间的百分比。
 
-这些实验将帮助您在真实场景中应用这些概念，并建立对监控 Linux 系统资源的信心。
+对于简单的串行设备，较高的 `%util` 可能表示已经饱和；但对于并行存储、阵列或虚拟设备，它不能直接换算为性能容量。应把延迟与设备设计、工作负载模式和服务目标进行比较。
 
-## Quiz Question
+:::single-choice{#iostat-await-purpose}
+哪个字段与平均 I/O 请求延迟最直接相关？
 
-可以使用哪个命令来查看 I/O 和 CPU 使用情况？（请仅使用小写英文字符回答）
+::option[设备名称。]{#iostat-device-name explanation="名称用于标识设备，并不衡量请求持续时间。"}
+::option[`await`]{#iostat-await .correct explanation="`await` 反映请求的平均耗时，其中包括排队和服务时间。"}
+::option[`%idle`]{#iostat-idle explanation="这是 CPU 字段，而不是设备请求延迟。"}
+:::
 
-## Quiz Answer
+## 关联分析证据
 
-iostat
+下结论前，应先把设备名称对应到挂载点和底层设备：
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINTS
+$ findmnt
+```
+
+然后将 `iostat` 的各个间隔与应用响应时间、数据库或文件系统指标以及进程级 I/O 相互关联。设备映射器、RAID、容器和网络后端存储都可能增加额外层次，需要使用各自对应的工具检查。
+
+:::single-choice{#iostat-high-util-conclusion}
+看到设备的 `%util` 较高后，应该怎么做？
+
+::option[假定所有文件系统都没有可用空间。]{#iostat-assume-full explanation="繁忙时间并不表示文件系统容量。"}
+::option[在识别挂载的工作负载前就删除文件。]{#iostat-delete-first explanation="删除是会改变状态的操作，与证明 I/O 瓶颈无关。"}
+::option[结合存储设计，关联分析延迟和工作负载行为。]{#iostat-correlate .correct explanation="设备并行能力和工作负载目标决定观察到的现象是否有害。"}
+:::
+
+## 总结
+
+现在，你可以把 `iostat` 用作 I/O 调查中的证据。
+
+1. 收集多个扩展统计采样间隔。
+2. 区分 CPU 的 I/O 等待时间与设备繁忙时间。
+3. 综合解读延迟、排队、吞吐量和利用率。
+4. 将设备映射到工作负载，并验证对应用的影响。

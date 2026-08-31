@@ -1,66 +1,90 @@
 ---
-index: 5
+lesson_id: "io-monitoring"
+course_id: "process-utilization"
 lang: "de"
-title: "I/O-Überwachung"
-meta_title: "I/O-Überwachung – Prozessauslastung"
-meta_description: "Meistern Sie die Linux I/O-Überwachung mit dem iostat-Befehl. Diese Anleitung erklärt, wie Sie CPU- und Festplattenauslastungsmetriken analysieren, um die Systemleistung zu optimieren."
-meta_keywords: "i/o überwachung, iostat, linux i/o überwachung, cpu auslastung, festplattenauslastung, systemleistung, iowait, linux befehle"
+order_index: 5
+title: "E/A-Überwachung"
+description: "Lerne, mit iostat-Stichproben CPU- und Blockgeräteaktivität zu untersuchen."
+meta_title: "E/A-Überwachung – Prozessauslastung"
+meta_description: "Lerne die Linux-E/A-Überwachung mit dem Befehl iostat. Diese Anleitung erklärt, wie du Messwerte zur CPU- und Datenträgernutzung analysierst, um die Systemleistung zu beurteilen."
+meta_keywords: "E/A-Überwachung, iostat, Linux-E/A-Überwachung, CPU-Auslastung, Datenträgernutzung, Systemleistung, iowait, Linux-Befehle"
 ---
 
-## Lesson Content
+`iostat`, das gewöhnlich vom Paket `sysstat` bereitgestellt wird, meldet CPU- und Blockgeräteaktivität. Verwende wiederholte Stichproben zusammen mit der Anwendungslatenz: Durchsatz oder Auslastung allein belegen nicht, ob Speicher ein für Benutzer sichtbares Problem verursacht.
 
-Effektives **I/O-Monitoring** ist entscheidend für die Aufrechterhaltung eines gesunden und reaktionsschnellen Linux-Systems. Ein leistungsstarkes Befehlszeilenwerkzeug für diese Aufgabe ist **iostat**, das detaillierte Berichte über CPU- und Festplattenaktivität liefert.
+## Aussagekräftige Stichproben erfassen
 
-Die Ausführung des Befehls `iostat` generiert eine Momentaufnahme der Leistungsmetriken Ihres Systems.
+Führe erweiterte Gerätestatistiken in Abständen von einer Sekunde aus:
 
 ```bash
-pete@icebox:~$ iostat
-Linux 3.13.0-39-lowlatency (icebox)     01/28/2016      _i686_  (1 CPU)
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.13    0.03    0.50    0.01    0.00   99.33
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sda               0.17         3.49         1.92     385106     212417
+$ iostat -xz 1
 ```
 
-Die Ausgabe ist in zwei Hauptabschnitte unterteilt. Lassen Sie uns diese aufschlüsseln.
+Bei üblichen Implementierungen enthält der erste Bericht Mittelwerte seit dem Bootvorgang, während spätere Berichte jeweils ein Intervall abdecken. Die Option `-x` ergänzt erweiterte Felder, und `-z` unterdrückt inaktive Geräte. Lasse mehrere Intervalle verstreichen, um normale und problematische Zeiträume zu erfassen.
 
-### Verständnis der CPU-Metriken
+:::single-choice{#iostat-first-report}
+Was stellt der erste `iostat`-Bericht üblicherweise dar?
 
-Der erste Bericht beschreibt die CPU-Auslastung und gibt Aufschluss darüber, wie der Prozessor seine Zeit verbringt.
+::option[Nur Vorgänge aus der letzten Sekunde des Befehls.]{#iostat-final-second explanation="Dies beschreibt nicht den anfänglichen kumulativen Bericht."}
+::option[Aktivitätsmittelwerte seit dem Systemstart.]{#iostat-since-boot .correct explanation="Spätere Berichte beziehen sich normalerweise auf einzelne Intervalle; der erste muss daher gesondert interpretiert werden."}
+::option[Eine Prognose der Geräteauslastung von morgen.]{#iostat-forecast explanation="Das Werkzeug meldet beobachtete Statistiken und keinen künftigen Bedarf."}
+:::
 
-- **%user**: Prozentsatz der CPU-Zeit, die für die Ausführung von Prozessen auf Benutzerebene (Anwendungen) aufgewendet wird.
-- **%nice**: Prozentsatz der CPU-Zeit, die für Prozesse auf Benutzerebene mit modifizierter (nice) Priorität aufgewendet wird.
-- **%system**: Prozentsatz der CPU-Zeit, die für die Ausführung von Prozessen auf Systemebene (Kernel) aufgewendet wird.
-- **%iowait**: Prozentsatz der Zeit, in der die CPU untätig war, während sie auf den Abschluss einer ausstehenden Festplatten-I/O-Anforderung wartete. Hohe Werte hier können auf einen Speicherengpass hinweisen.
-- **%steal**: In einer virtualisierten Umgebung ist dies der Prozentsatz der Zeit, in der eine virtuelle CPU auf eine reale CPU wartet, während der Hypervisor einen anderen virtuellen Prozessor bedient.
-- **%idle**: Prozentsatz der Zeit, in der die CPU untätig war und nicht auf I/O-Anforderungen der Festplatte wartete.
+## CPU-Felder lesen
 
-### Analyse der Festplattenauslastung
+Der CPU-Abschnitt enthält häufig Benutzerzeit (`%user`), Systemzeit (`%system`), Leerlaufzeit (`%idle`), E/A-Wartezeit (`%iowait`) und von virtuellen Maschinen entzogene Zeit (`%steal`). E/A-Wartezeit ist CPU-Leerlaufzeit, während im System eine E/A-Anforderung noch nicht abgeschlossen ist; sie ist nicht der Prozentsatz, zu dem ein Datenträger ausgelastet ist.
 
-Der zweite Bericht konzentriert sich auf das **I/O-Monitoring** auf Geräteeebene und zeigt, wie Daten auf Ihre Speichergeräte übertragen werden und von diesen abgerufen werden.
+:::single-choice{#iostat-iowait-meaning}
+Was beschreibt `%iowait`?
 
-- **tps**: Übertragungen pro Sekunde, die an das Gerät gesendet werden. Eine Übertragung ist eine I/O-Anforderung, und mehrere logische Anforderungen können zu einer einzigen zusammengefasst werden.
-- **kB_read/s**: Die vom Gerät gelesene Datenmenge, ausgedrückt in Kilobyte pro Sekunde.
-- **kB_wrtn/s**: Die auf das Gerät geschriebene Datenmenge, ausgedrückt in Kilobyte pro Sekunde.
-- **kB_read**: Die insgesamt vom Gerät gelesenen Kilobytes seit dem letzten Neustart.
-- **kB_wrtn**: Die insgesamt auf das Gerät geschriebenen Kilobytes seit dem letzten Neustart.
+::option[Den Prozentsatz der bereits belegten Datenträgerkapazität.]{#iostat-capacity explanation="Dateisystemkapazität und CPU-Zeit sind unterschiedliche Messungen."}
+::option[CPU-Leerlaufzeit, während eine E/A-Anforderung noch nicht abgeschlossen ist.]{#iostat-iowait-cpu .correct explanation="Es handelt sich um eine CPU-Zeitkategorie, die für sich allein kein Gerät identifizieren kann."}
+::option[Die Anzahl der Dateien, die auf das Löschen warten.]{#iostat-delete-queue explanation="Anzahlen von Dateilöschungen werden durch dieses Feld nicht dargestellt."}
+:::
 
-## Exercise
+## Gerätefelder lesen
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis der Systemüberwachung und Festplattennutzung zu festigen:
+Feldnamen unterscheiden sich je nach sysstat-Version, doch nützliche Konzepte sind:
 
-1. **[Linux df Befehl: Berichterstattung über den Speicherplatz](https://labex.io/de/labs/linux-linux-df-command-disk-space-reporting-219188)** - Üben Sie die Berichterstattung über die Festplattennutzung auf gemounteten Dateisystemen, ein wichtiger Aspekt der Überwachung.
-2. **[Linux du Befehl: Schätzung des Speicherplatzes](https://labex.io/de/labs/linux-linux-du-command-file-space-estimating-219190)** - Lernen Sie, die Festplattennutzung für Verzeichnisse und Unterverzeichnisse abzuschätzen, was die von `iostat` bereitgestellten Festplatten-I/O-Informationen ergänzt.
-3. **[Linux top Befehl: Echtzeit-Systemüberwachung](https://labex.io/de/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - Erkunden Sie die Echtzeit-Systemüberwachung, einschließlich CPU- und Speichernutzung, was einen breiteren Kontext für die in `iostat` angezeigten CPU-Metriken bietet.
+- Lese- und Schreibvorgänge oder Daten pro Sekunde zeigen die Arbeitslastrate.
+- `await` meldet die durchschnittliche Anforderungslatenz einschließlich Warteschlangen- und Bedienzeit.
+- Felder für die durchschnittliche Warteschlangengröße zeigen wartende oder gerade bediente Anforderungen.
+- `%util` meldet den Prozentsatz der verstrichenen Zeit, in der E/A auf dem Gerät im Gange war.
 
-Diese Labs helfen Ihnen, die Konzepte in realen Szenarien anzuwenden und Vertrauen in die Überwachung von Linux-Systemressourcen aufzubauen.
+Ein hoher `%util`-Wert kann bei einem einfachen seriellen Gerät auf Sättigung hindeuten, lässt sich aber bei parallelem Speicher, Arrays oder virtuellen Geräten nicht unmittelbar in Leistungskapazität übersetzen. Vergleiche die Latenz mit dem Geräteaufbau, Arbeitslastmuster und Dienstziel.
 
-## Quiz Question
+:::single-choice{#iostat-await-purpose}
+Welches Feld steht am unmittelbarsten mit der durchschnittlichen Latenz von E/A-Anforderungen in Verbindung?
 
-Welcher Befehl kann verwendet werden, um I/O- und CPU-Auslastung anzuzeigen? (Bitte antworten Sie nur in Kleinbuchstaben auf Englisch)
+::option[Der Gerätename.]{#iostat-device-name explanation="Der Name identifiziert das Gerät, misst aber nicht die Dauer von Anforderungen."}
+::option[`await`]{#iostat-await .correct explanation="Await bildet die durchschnittliche Dauer von Anforderungen einschließlich Warteschlangen- und Bedienzeit ab."}
+::option[`%idle`]{#iostat-idle explanation="Dies ist ein CPU-Feld und nicht die Latenz von Geräteanforderungen."}
+:::
 
-## Quiz Answer
+## Die Belege miteinander verknüpfen
 
-iostat
+Ordne Gerätenamen Einhängepunkten und zugrunde liegenden Geräten zu, bevor du Schlussfolgerungen ziehst:
+
+```bash
+$ lsblk -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINTS
+$ findmnt
+```
+
+Setze anschließend `iostat`-Intervalle zu Anwendungsantwortzeit, Datenbank- oder Dateisystemmesswerten und E/A auf Prozessebene in Beziehung. Device Mapper, RAID, Container und netzwerkgestützter Speicher können weitere Schichten hinzufügen, die eigene Werkzeuge erfordern.
+
+:::single-choice{#iostat-high-util-conclusion}
+Was solltest du tun, nachdem du einen hohen `%util`-Wert auf einem Gerät gesehen hast?
+
+::option[Annehmen, dass auf jedem Dateisystem der freie Speicherplatz erschöpft ist.]{#iostat-assume-full explanation="Auslastungszeit meldet nicht die Dateisystemkapazität."}
+::option[Dateien löschen, bevor du die eingehängte Arbeitslast ermittelt hast.]{#iostat-delete-first explanation="Löschen verändert den Zustand und hat nichts mit dem Beleg eines E/A-Engpasses zu tun."}
+::option[Latenz und Arbeitslastverhalten mit dem Speicheraufbau in Beziehung setzen.]{#iostat-correlate .correct explanation="Geräteparallelität und Arbeitslastziele bestimmen, ob die Beobachtung schädlich ist."}
+:::
+
+## Zusammenfassung
+
+Du kannst `iostat` nun als Beleg in einer E/A-Untersuchung verwenden.
+
+1. Erfasse mehrere Intervalle mit erweiterten Statistiken.
+2. Unterscheide CPU-E/A-Wartezeit von Geräteauslastungszeit.
+3. Interpretiere Latenz, Warteschlangen, Durchsatz und Auslastung gemeinsam.
+4. Ordne Geräte Arbeitslasten zu und überprüfe die Auswirkungen auf die Anwendung.

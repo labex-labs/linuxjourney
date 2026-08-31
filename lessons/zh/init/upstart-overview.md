@@ -1,60 +1,91 @@
 ---
-index: 3
+lesson_id: "upstart-overview"
+course_id: "init"
 lang: "zh"
+order_index: 3
 title: "Upstart 概述"
-meta_title: "Upstart 概述 - Init 系统"
+description: "了解旧式 Upstart init 系统如何把事件表达式与作业生命周期目标连接起来。"
+meta_title: "Upstart 概述 - Init"
 meta_description: "了解 Upstart、其事件驱动模型以及它如何在 Linux 中管理服务。理解 Upstart 作业配置及其作为 init 系统的作用。"
 meta_keywords: "Upstart, init 系统，Linux 服务，Ubuntu, SysV, 初学者教程，Linux 指南"
 ---
 
-## Lesson Content
+Upstart 是由 Canonical 开发的旧式事件驱动 init 与服务管理系统。旧版 Ubuntu 和其他一些发行版曾使用它，但当前 Ubuntu 使用 systemd。只有维护已经确认的旧主机时才应研究 Upstart，不能把它当作现代安装的默认假设。
 
-Upstart 由 Canonical 开发，因此它曾是 Ubuntu 上的 init 实现；然而，在现代 Ubuntu 安装中，现在使用的是 systemd。Upstart 的创建是为了改进 SysV 的问题，例如严格的启动流程、任务阻塞等。Upstart 的事件和作业驱动模型使其能够响应发生的事件。
+## 确认旧式 Upstart 主机
 
-要确定您是否正在使用 Upstart，如果您有一个 `/usr/share/upstart` 目录，这是一个很好的指示。
+检查 PID 1 和活动控制接口：
 
-Job（作业）是 Upstart 执行的操作，而 Event（事件）是从其他进程接收到的触发作业的消息。要查看作业及其配置的列表：
-
-```plaintext
-pete@icebox:~$ ls /etc/init
-acpid.conf                   mountnfs.sh.conf
-alsa-restore.conf            mtab.sh.conf
-alsa-state.conf              networking.conf
-alsa-store.conf              network-interface.conf
-anacron.conf                 network-interface-container.conf
+```bash
+$ ps -p 1 -o pid,comm,args=
+$ readlink /proc/1/exe
+$ initctl version
 ```
 
-在这些作业配置中，您会找到关于如何以及何时启动作业的信息。
+最后一条命令只有在 Upstart 控制服务和客户端存在时才会返回有意义的结果。`/usr/share/upstart` 等目录或 `/etc/init` 下残留文件是较弱证据，因为其他 init 系统接管后，软件包和迁移残留仍可能存在。
 
-例如，在 `networking.conf` 文件中，它可能包含如下简单的内容：
+:::single-choice{#upstart-overview-active-evidence}
+主机确实使用 Upstart 的最有力证据是什么？
 
-```plaintext
-start on runlevel [235]
-stop on runlevel [0]
+::option[某个目录名称包含 `upstart`。]{#upstart-overview-directory-only explanation="已安装文档或残留内容可能保留在使用其他 init 的系统上。"}
+::option[系统至少有一个 shell 脚本。]{#upstart-overview-shell-script explanation="Shell 脚本在所有 init 环境中都很常见。"}
+::option[PID 1 和活动 `initctl` 接口都表明是 Upstart。]{#upstart-overview-live-interface .correct explanation="运行时进程和控制证据比旧文件是否存在更有力。"}
+:::
+
+## 作业与事件
+
+Upstart **作业**描述一个服务或任务，包括其进程命令和生命周期条件。**事件**是带有可选环境变量的命名通知。作业配置可以表达其目标何时应转向启动或停止。
+
+系统作业文件通常位于 `/etc/init/` 下，并以 `.conf` 结尾。例如：
+
+```text
+description "Example worker"
+start on runlevel [2345]
+stop on runlevel [016]
+exec /usr/local/sbin/example-worker
 ```
 
-这意味着它将在 runlevel 2、3 或 5 上开始设置 networking，并在 runlevel 0 上停止 networking。编写配置文件的方式有很多种，当您查看可用的不同作业配置时，您会发现这一点。
+该示例把运行级别事件用作兼容输入。Upstart 还可以响应文件系统、设备、网络或应用程序定义的事件，具体取决于系统会发出什么。
 
-Upstart 的工作方式如下：
+:::single-choice{#upstart-overview-start-on}
+Upstart 的 `start on` 段定义什么？
 
-1. 首先，它从 `/etc/init` 加载作业配置。
-2. 一旦发生启动事件，它将运行由该事件触发的作业。
-3. 这些作业将产生新的事件，然后这些事件将触发更多作业。
-4. Upstart 会持续执行此操作，直到完成所有必要的作业。
+::option[接下来必须编译的内核版本。]{#upstart-overview-kernel-version explanation="作业事件条件不选择内核构建。"}
+::option[让作业目标转向启动的事件表达式。]{#upstart-overview-start-condition .correct explanation="表达式满足时，Upstart 会尝试执行配置的作业启动转换。"}
+::option[每个作业存储数据的磁盘分区。]{#upstart-overview-partition explanation="存储位置与 Upstart 事件语法无关。"}
+:::
 
-## Exercise
+## 事件驱动启动
 
-熟能生巧！虽然 Upstart 是一个较旧的 init 系统，但理解如何管理进程和调度任务对于任何 Linux 管理员来说都至关重要。以下是一些实践操作实验，以加强您对进程管理和任务自动化的理解，这是 init 系统运行的基础：
+启动期间，Upstart 加载作业定义并接收事件。匹配的 `start on` 或 `stop on` 表达式会更新作业目标；作业转换又可以发出其他事件，解锁后续工作。互不依赖的作业可以并发推进。
 
-1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习与前台和后台进程交互，使用 `ps` 检查它们，使用 `top` 监控资源，并使用 `kill` 终止它们。此实验可帮助您理解进程的生命周期，这是 Upstart 等 init 系统所管理的内容。
-2. **[在 Linux 中使用 at 和 cron 调度任务](https://labex.io/zh/labs/comptia-schedule-tasks-with-at-and-cron-in-linux-590870)** - 学习使用 `at` 调度一次性作业，并使用 `cron` 调度重复性任务。这提供了任务自动化的实践经验，这是 init 系统为系统服务提供的核心功能。
+该模型避免使用一套硬编码的全局脚本顺序，但事件名称、顺序和条件隐含时可能难以诊断。事件默认不是持久消息队列，因此后来新增作业或更改条件时，不能假定所有过去事件都会重放。
 
-这些实验将帮助您在实际场景中应用进程控制和任务自动化的概念，从而增强管理 Linux 系统的信心，无论使用的是哪个特定的 init 系统。
+:::single-choice{#upstart-overview-event-chain}
+一个 Upstart 作业如何促使另一个作业启动？
 
-## Quiz Question
+::option[在内存中重写另一个作业的可执行二进制文件。]{#upstart-overview-rewrite-binary explanation="协调通过事件完成，而不是修改代码。"}
+::option[每个作业总是严格按照文件名顺序启动。]{#upstart-overview-filename-order explanation="Upstart 使用事件表达式，而不是一份按文件名排序的启动列表。"}
+::option[其转换可以发出另一个作业所匹配的事件。]{#upstart-overview-emitted-event .correct explanation="事件表达式把原本独立的作业生命周期转换连接起来。"}
+:::
 
-What is the init implementation that is used by Ubuntu?
+## 迁移与兼容
 
-## Quiz Answer
+Systemd 可以为某些旧式服务脚本提供有限兼容性，但不会把 Upstart 作业语法作为原生 systemd 单元执行。迁移时，应翻译生命周期条件、环境、重生策略、日志、依赖和就绪语义，而不是机械地重命名文件。
 
-systemd
+:::single-choice{#upstart-overview-current-ubuntu}
+当前标准 Ubuntu 版本使用哪种 init 系统？
+
+::option[每次安装都只使用 Upstart。]{#upstart-overview-current-upstart explanation="这只适用于历史时期的版本和配置。"}
+::option[systemd。]{#upstart-overview-current-systemd .correct explanation="Upstart 属于较早 Ubuntu 世代，当前版本使用 systemd 作为 PID 1。"}
+::option[完全没有 init 进程。]{#upstart-overview-no-init explanation="完整 Ubuntu 系统仍需要 PID 1 服务管理器。"}
+:::
+
+## 总结
+
+现在，你可以把 Upstart 解读为旧式事件与作业模型。
+
+1. 确认活动 PID 1 和控制接口。
+2. 区分作业定义与事件通知。
+3. 把 `start on` 和 `stop on` 解读为生命周期表达式。
+4. 显式迁移语义，而不是重命名配置文件。

@@ -1,52 +1,91 @@
 ---
-index: 2
+lesson_id: "dns-components"
+course_id: "dns"
 lang: "de"
+order_index: 2
 title: "DNS-Komponenten"
-meta_title: "DNS-Komponenten - DNS"
-meta_description: "Erfahren Sie mehr über DNS-Komponenten: Name Server, Zone-Dateien und Resource Records. Verstehen Sie, wie DNS für Anfänger funktioniert. Beginnen Sie Ihre Linux-Netzwerkreise!"
-meta_keywords: "DNS-Komponenten, Name Server, Zone-Datei, Resource Records, DNS-Tutorial, Linux-Netzwerk, Anfängerleitfaden"
+description: "Lerne, wie rekursive Resolver, autoritative Server, Zonen und Resource Records die DNS-Aufgaben aufteilen."
+meta_title: "DNS-Komponenten – DNS"
+meta_description: "Lerne die Rollen von Stub- und rekursiven Resolvern, autoritativen Nameservern, DNS-Zonen, Resource Records und TTLs kennen."
+meta_keywords: "DNS Komponenten, Nameserver, DNS Zone, Resource Records, rekursiver Resolver, autoritativer Server, DNS Tutorial"
 ---
 
-## Lesson Content
+DNS trennt die clientseitige Rekursion von der autoritativen Veröffentlichung. Wer diese Grenze versteht, verwechselt eine zwischengespeicherte Antwort nicht mit dem Eigentümer einer Zone.
 
-Die DNS-Datenbank des Internets basiert darauf, dass Websites und Organisationen einen Teil dieser Datenbank bereitstellen. Dazu benötigen sie:
+## Stub- und rekursive Resolver
 
-### Name Server
+Ein Stub-Resolver in einer Anwendung oder einem Betriebssystem sendet Abfragen an einen konfigurierten rekursiven Resolver. Dieser liefert ein endgültiges Ergebnis, einen Fehler oder das Ergebnis einer Weiterleitung, nachdem er seinen Cache genutzt und bei Bedarf iterative Abfragen ausgeführt hat. Seine Antwort kann das Kennzeichen für eine autoritative Antwort nur dann tragen, wenn der antwortende Server für die Daten autoritativ ist; Rekursion allein macht ihn nicht autoritativ.
 
-Wir richten DNS über "Name Server" ein. Name Server laden unsere DNS-Einstellungen und -Konfigurationen und beantworten alle Anfragen von Clients oder anderen Servern, die wissen möchten, wie z.B. "Wer ist google.com?". Wenn der Name Server die Antwort auf diese Abfrage nicht kennt, leitet er die Anfrage an andere Name Server weiter. Name Server können "autoritativ" sein, was bedeutet, dass sie die tatsächlichen DNS-Einträge enthalten, nach denen Sie suchen, oder "rekursiv", was bedeutet, dass sie andere Server fragen würden, und diese Server würden andere Server fragen, bis sie einen autoritativen Server gefunden haben, der die DNS-Einträge enthält. Rekursive Server können die gewünschten Informationen auch zwischengespeichert haben, anstatt einen autoritativen Server zu erreichen.
+:::single-choice{#dns-components-recursive-role}
+Was übernimmt ein rekursiver Resolver für einen Stub-Client?
 
-### Zone-Datei
+::option[Er ermittelt mithilfe seines Caches und anderer Nameserver ein endgültiges DNS-Ergebnis.]{#dns-components-recursive-result .correct explanation="Der Client überträgt die mehrstufige Suche an den rekursiven Dienst."}
+::option[Er ersetzt jeden Netzwerkrouter auf dem Paketpfad.]{#dns-components-replaces-router explanation="Namensauflösung und IP-Weiterleitung sind getrennte Aufgaben."}
+::option[Er wird für jeden zwischengespeicherten Eintrag autoritativ.]{#dns-components-cache-authority explanation="Zwischengespeicherte Daten behalten die Autorität ihrer Quelle; der Resolver wird dadurch nicht zum Eigentümer der Zone."}
+:::
 
-Innerhalb eines Name Servers befindet sich etwas, das als Zone-Dateien bezeichnet wird. Zone-Dateien sind die Art und Weise, wie der Name Server Informationen über die Domäne speichert oder wie er zur Domäne gelangt, wenn er sie nicht kennt.
+## Autoritative Nameserver
 
-### Resource Records
+Ein autoritativer Server antwortet aus Zonendaten, für die er Autorität besitzt. Eine Zone sollte mehrere autoritative Server mit synchronisierten Daten und voneinander unabhängigen Ausfallrisiken besitzen. Ein ausschließlich autoritativer Server muss für beliebige Clients keine Rekursion durchführen.
 
-Eine Zone-Datei besteht aus Einträgen von Resource Records. Jede Zeile ist ein Eintrag und enthält Informationen über Hosts, Name Server, andere Ressourcen usw. Die Felder bestehen aus den folgenden:
+:::single-choice{#dns-components-authoritative-role}
+Wodurch ist ein Server für eine Zone autoritativ?
 
-- Record name
-- TTL - Die Zeit, nach der wir den Eintrag verwerfen und einen neuen erhalten. Im DNS wird TTL durch Zeit angegeben, so dass Einträge eine TTL von einer Stunde haben könnten. Der Grund, warum wir dies tun, ist, dass sich das Internet ständig ändert; in einer Minute kann ein Host einer X-IP-Adresse zugeordnet sein, dann in der nächsten einer Y-IP-Adresse.
-- Class - Namespace der Eintraginformationen. Am häufigsten wird IN für Internet verwendet.
-- Type - Art der im Eintrag gespeicherten Informationen. Wir werden nicht auf Eintragstypen eingehen, aber Sie haben wahrscheinlich gängige wie A für Adresse, MX für Mail Exchanger usw. gesehen.
-- Data - Dieses Feld kann eine IP-Adresse enthalten, wenn es sich um einen A-Eintrag handelt, oder etwas anderes, je nach Eintragstyp.
+::option[Er hat die Zone einmal über einen öffentlichen Resolver abgefragt.]{#dns-components-once-queried explanation="Eine Abfrage oder Zwischenspeicherung verleiht keine Autorität."}
+::option[Er stellt die Zonendaten gemäß der betreffenden Delegierung und Konfiguration bereit.]{#dns-components-serves-zone .correct explanation="Autorität entsteht durch die DNS-Delegierung und die geladene Zone des Servers, nicht durch eine zwischengespeicherte Kopie."}
+::option[Er antwortet auf einen Ping am schnellsten.]{#dns-components-fastest-ping explanation="ICMP-Laufzeiten definieren keine DNS-Autorität."}
+:::
 
-```plaintext
-patty    IN  A      192.168.0.4
+## Zonen und Zonenspeicher
+
+Eine Zone ist ein administrativ bereitgestellter Teil des DNS-Namensraums. Sie beginnt an einem Zonen-Apex und kann untergeordnete Zonen delegieren. Zonendaten können in einer Text-Zonendatei gespeichert, aus einer Datenbank erzeugt, über eine API geladen oder von Software synthetisiert werden. Eine „Zonendatei“ ist keine zwingende physische Implementierung.
+
+Der Zonen-Apex besitzt normalerweise einen SOA-Eintrag und eine Gruppe von NS-Einträgen. Delegierungsdaten beim Elternknoten bezeichnen die autoritativen Server der untergeordneten Zone. Mitunter werden sie durch Glue-Adresseinträge ergänzt, die zum Erreichen von Servernamen innerhalb der delegierten Zone erforderlich sind.
+
+:::single-choice{#dns-components-zone-meaning}
+Was ist eine DNS-Zone?
+
+::option[Ein administrativ bereitgestellter Teil des Namensraums.]{#dns-components-admin-portion .correct explanation="Sie kann unabhängig vom Speicher-Backend Einträge und Delegierungen enthalten."}
+::option[Eine zwingend erforderliche einzelne Textdatei auf jedem Client.]{#dns-components-client-file explanation="Autoritative Implementierungen können verschiedene Speicherformen verwenden; Clients halten nicht jede Zone vor."}
+::option[Eine durch ein VLAN bezeichnete Ethernet-Broadcast-Domain.]{#dns-components-vlan explanation="DNS-Zonen und Segmente der Sicherungsschicht sind voneinander unabhängige Konzepte."}
+:::
+
+## Felder eines Resource Records
+
+Ein Resource Record besitzt Eigentümername, TTL, Klasse, Typ und typspezifische RDATA. Beispiel:
+
+```text
+www.example.com.  300  IN  A  192.0.2.25
 ```
 
-## Exercise
+Der Eigentümer ist `www.example.com.`, die TTL beträgt 300 Sekunden, die Klasse ist Internet, der Typ eine IPv4-Adresse und RDATA ist die Adresse. Regeln für ausgelassene Felder und relative Namen in der Zonendateisyntax erfordern einen sorgfältigen Umgang mit dem Origin.
 
-Übung macht den Meister! Hier sind einige praktische Übungen, um Ihr Verständnis von DNS und Hostnamenauflösung zu vertiefen:
+:::single-choice{#dns-components-mx-type}
+Welcher Eintragstyp veröffentlicht Priorität und Hostnamen von Mail Exchangern?
 
-1. **[Einen lokalen autoritativen DNS-Server unter Linux einrichten](https://labex.io/de/labs/comptia-set-up-a-local-authoritative-dns-server-on-linux-592803-592803)** - Üben Sie die Installation und Konfiguration eines lokalen DNS-Servers (`bind9`), das Definieren von Zonen und das Validieren Ihrer Einrichtung.
-2. **[DNS-Einträge unter Linux mit dig und nslookup abfragen](https://labex.io/de/labs/comptia-query-dns-records-in-linux-with-dig-and-nslookup-592796)** - Lernen Sie, wichtige Befehlszeilentools (`dig`, `nslookup`) zu verwenden, um verschiedene DNS-Eintragstypen abzufragen und DNS-Probleme zu beheben.
-3. **[Lokale Hostnamenauflösung unter Linux verwalten](https://labex.io/de/labs/comptia-manage-local-hostname-resolution-in-linux-592792)** - Verstehen Sie, wie Sie die lokale Hostnamenauflösung durch Bearbeiten der Datei `/etc/hosts` verwalten, eine wichtige Fähigkeit für Entwicklung und Tests.
+::option[`A`]{#dns-components-a explanation="Ein A-Eintrag speichert eine IPv4-Adresse."}
+::option[`NS`]{#dns-components-ns explanation="NS-Einträge bezeichnen autoritative Nameserver."}
+::option[`MX`]{#dns-components-mx .correct explanation="MX-RDATA enthält die Priorität und den Namen eines Mail Exchangers."}
+:::
 
-Diese Übungen helfen Ihnen, die Konzepte von DNS und Hostnamenauflösung in realen Szenarien anzuwenden und Vertrauen in Netzwerkdienste aufzubauen.
+## TTL und negatives Caching
 
-## Quiz Question
+Positive Einträge begrenzen mit TTLs ihre Wiederverwendung aus Caches. Auch negative Antworten, etwa ein nachweislich nicht vorhandener Name, können gemäß aus dem SOA abgeleiteten Regeln zwischengespeichert werden. Das Absenken einer TTL kurz vor einer geplanten Änderung wirkt sich nur auf Einträge aus, die nach dem Bekanntwerden des niedrigeren Werts abgerufen werden. Zuvor mit einer längeren TTL zwischengespeicherte Einträge bleiben bis zu ihrem Ablauf erhalten.
 
-Welcher Ressourcendatensatztyp wird für Mail Exchanger verwendet?
+:::single-choice{#dns-components-lower-ttl-timing}
+Warum sollte eine DNS-TTL lange vor einer geplanten Adressänderung abgesenkt werden?
 
-## Quiz Answer
+::option[Die TTL verändert die Ethernet-MTU des Servers.]{#dns-components-ttl-mtu explanation="Cache-Lebensdauer und Paketgröße der Sicherungsschicht stehen in keinem Zusammenhang."}
+::option[Eine niedrigere TTL garantiert, dass die neue Anwendung funktioniert.]{#dns-components-ttl-health explanation="Sie beeinflusst das Caching und nicht die Korrektheit des Dienstes."}
+::option[Vorhandene Caches brauchen Zeit, um mit der alten längeren TTL gelernte Einträge ablaufen zu lassen.]{#dns-components-old-cache-expiry .correct explanation="Eine Änderung autoritativer Daten kann die verbleibende Lebensdauer eines bereits zwischengespeicherten Eintrags nicht rückwirkend verkürzen."}
+:::
 
-MX
+## Zusammenfassung
+
+Du kannst DNS-Rekursion, Autorität, Namensraumverwaltung und zwischengespeicherte Einträge nun voneinander trennen.
+
+1. Erkenne die Rollen von Stub- und rekursivem Resolver.
+2. Definiere Autorität durch die Bereitstellung einer delegierten Zone.
+3. Betrachte eine Zone als Zuständigkeit im Namensraum und nicht als zwingend erforderliche Datei.
+4. Lies Eigentümer-, TTL-, Klassen-, Typ- und RDATA-Felder.
+5. Plane Cache-Lebensdauern vor DNS-Änderungen.

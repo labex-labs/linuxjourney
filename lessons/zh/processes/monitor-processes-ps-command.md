@@ -1,90 +1,115 @@
 ---
-index: 1
+lesson_id: "monitor-processes-ps-command"
+course_id: "processes"
 lang: "zh"
-title: "ps (进程)"
+order_index: 1
+title: "ps（进程）"
+description: "学习使用 `ps` 获取进程快照，并使用 `top` 监控不断变化的活动。"
 meta_title: "ps (进程) - 进程管理"
 meta_description: "使用我们全面的指南探索 Linux ps 命令。了解如何在 Linux 中使用 ps -ef 命令和其他选项来查看正在运行的进程、理解 PID 以及管理系统任务。开启您的 Linux 之旅的完美起点。"
 meta_keywords: "ps 命令，ps -ef linux, ps -ef 命令，linux ps -ef, ps -e linux, Linux 进程，进程 ID, PID, top 命令，Linux 之旅"
 ---
 
-## Lesson Content
+进程是程序的运行实例，包含其内存、凭据、打开的资源和执行状态。Linux 使用数值进程 ID（PID）标识每个活动进程。PID 在同时存在的进程中是唯一的，但进程退出后，内核可以重复使用它。
 
-### 理解 Linux 进程
+## 获取基本快照
 
-进程是当前在您的机器上运行的程序。Linux 内核管理它们，每个进程都会被分配一个唯一的数字，称为**进程 ID (PID)**。PID 通常在新进程创建时按顺序分配。
+不带选项运行 `ps`，可以查看由当前实现默认规则选择的快照，通常是与当前终端和用户关联的进程：
 
-### ps 命令基本用法
-
-要快速查看活动的进程，只需运行 `ps` 命令。这会提供与您当前终端会话相关的进程的快速快照。
-
-```plaintext
+```text
 $ ps
-
-PID        TTY     STAT   TIME          CMD
-41230    pts/4    Ss        00:00:00     bash
-51224    pts/4    R+        00:00:00     ps
+    PID TTY          TIME CMD
+  41230 pts/4    00:00:00 bash
+  51224 pts/4    00:00:00 ps
 ```
 
-此输出显示了几个关键细节：
+常见字段包括：
 
-- **PID**: 唯一的进程 ID。
-- **TTY**: 控制进程的终端。
-- **STAT**: 进程的当前状态。
-- **TIME**: 进程使用的总 CPU 时间。
-- **CMD**: 启动进程的命令。
+- `PID`：进程 ID
+- `TTY`：控制终端；没有关联时为 `?`
+- `TIME`：累计 CPU 时间，而不是实际经过的墙上时钟时间
+- `CMD`：命令名称或命令行，取决于所选格式
 
-### 使用 BSD 风格选项探索 ps
+确切列和默认选择规则因 `ps` 实现及环境而异。
 
-`ps` 命令用途非常广泛，它有很多选项属于不同的语法风格（BSD、System V、GNU）。BSD 风格不使用连字符 (-) 作为选项前缀，非常常见。一个流行的组合是 `ps aux`：
+:::single-choice{#ps-command-pid-meaning}
+`PID` 列标识什么？
+
+::option[进程的当前目录编号。]{#ps-command-pid-directory explanation="当前目录是文件系统引用，不由 PID 表示。"}
+::option[以秒为单位的累计 CPU 时间。]{#ps-command-pid-cpu explanation="CPU 使用量显示在 `TIME` 等独立字段中。"}
+::option[内核分配的进程 ID。]{#ps-command-pid-kernel .correct explanation="PID 是用于引用活动进程的数值标识符。"}
+:::
+
+## 使用 BSD 风格选项列出进程
+
+Linux `ps` 接受多种选项风格。BSD 风格选项通常不带开头的连字符：
 
 ```bash
-ps aux
+$ ps aux
 ```
 
-这些选项的含义如下：
+在这个组合中：
 
-- **a**: 显示所有用户的所有进程。
-- **u**: 提供详细的、面向用户的格式。
-- **x**: 包括未附加到任何终端的进程。这些通常是系统守护进程，它们在启动时运行，并在 TTY 列中显示 `?`。
+- `a` 扩大选择范围，包含拥有终端的其他用户进程。
+- `x` 也包含没有控制终端的进程，与 `a` 组合时进一步扩大选择。
+- `u` 选择面向用户的输出格式，包含 `USER`、`%CPU`、`%MEM`、`VSZ` 和 `RSS` 等字段。
 
-此命令提供了更丰富的输出，包含 `USER`、`%CPU`、`%MEM`、`VSZ` 和 `RSS` 等额外列。目前，我们将重点关注 PID、STAT 和 COMMAND。
+由于选项含义可能相互作用，应解释完整组合，而不是把每个字母视为独立命令。
 
-### 在 Linux 中使用 ps -ef 命令
+:::single-choice{#ps-command-aux-user-format}
+在 `ps aux` 中，哪个选项请求面向用户的输出格式？
 
-另一种极其流行的语法是 System V 风格。系统管理员经常使用 **ps -ef 命令**。这是全面了解系统上所有运行内容的强大方法。
+::option[`u`]{#ps-command-aux-u .correct explanation="BSD 风格的 `u` 选项会选择一组面向用户的输出列。"}
+::option[`x`]{#ps-command-aux-x explanation="`x` 选项影响进程选择，尤其是没有控制终端的进程。"}
+::option[`a`]{#ps-command-aux-a explanation="`a` 选项把选择范围扩大到当前用户终端进程之外。"}
+:::
+
+## 使用标准风格选项
+
+广泛使用的标准风格命令 `ps -ef` 会为选项添加开头连字符：
 
 ```bash
-ps -ef
+$ ps -ef
 ```
 
-**ps -ef linux** 命令提供所有进程的完整列表。
+- `-e` 选择调用者可见的每个进程。
+- `-f` 请求完整格式列表。
 
-- **-e**: 选择系统上的每个进程。
-- **-f**: 显示“完整格式”列表，其中包含 UID、PPID（父进程 ID）、C（CPU 利用率）和 STIME（启动时间）等详细信息。
+输出通常包含 `UID`、`PID`、`PPID`、启动时间和命令信息。`PPID` 是父进程 ID。该列表本身并非层次结构；父子布局很重要时，可使用实现支持的 `--forest` 等选项，或 `pstree` 等专用树查看器。
 
-许多用户更喜欢 `ps -ef` 而不是 `ps aux`，因为它提供了清晰的层次结构视图和详细信息。在 Linux 系统上进行故障排除时，运行 **linux ps -ef** 通常是诊断问题的首要步骤之一。一个更简单的变体 `ps -e linux` 也会列出所有进程，但格式不太详细。
+:::single-choice{#ps-command-ef-selection}
+`ps -ef` 中的 `-e` 请求什么？
 
-### 使用 top 进行实时监控
+::option[每秒更新一次，直到被中断。]{#ps-command-e-refresh explanation="`ps` 生成快照；持续刷新是 `top` 等工具的功能。"}
+::option[包含调用者可见的每个进程。]{#ps-command-e-every .correct explanation="标准风格的 `-e` 选项会把快照扩展到所有可选进程。"}
+::option[只包含命令以错误结束的进程。]{#ps-command-e-errors explanation="进程选择并不依据命令最终的退出状态。"}
+:::
 
-虽然 `ps` 提供快照，但 `top` 命令提供了系统上进程的实时、动态视图。它是识别哪些进程占用了最多 CPU 或内存的绝佳工具。默认情况下，显示每隔几秒刷新一次。
+## 随时间监控活动
+
+`ps` 输出一次快照后便退出。使用 `top` 可获得定期刷新的交互式视图：
 
 ```bash
-top
+$ top
 ```
 
-## Exercise
+`top` 有助于找出不断变化的 CPU 和内存消耗者，但其数值是会波动的采样结果。应通过多次观察确认疑似问题，并结合机器的 CPU 数量、内存计算方式和工作负载解释百分比。
 
-实践是掌握 Linux 命令的关键。以下动手实验将帮助您巩固对进程监控和管理的理解：
+:::single-choice{#ps-command-snapshot-versus-top}
+本课介绍的哪个工具默认会定期刷新进程显示？
 
-1. **[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)** - 练习管理和监控 Linux 系统进程的基本技能，包括与前台/后台进程交互、使用 `ps` 检查、使用 `top` 监控以及使用 `kill` 终止。
-2. **[Linux top 命令：实时系统监控](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)** - 学习使用 Linux `top` 命令进行实时系统监控，包括排序进程、调整更新间隔和按用户过滤。
+::option[`top`]{#ps-command-top-refresh .correct explanation="`top` 是会定时更新显示的交互式监控工具。"}
+::option[`ps -ef`]{#ps-command-ps-ef-snapshot explanation="该命令会输出完整格式的进程快照，然后退出。"}
+::option[`ls -l`]{#ps-command-ls-files explanation="`ls -l` 显示文件系统目录项，而不是实时进程监控器。"}
+:::
 
-这些实验将帮助您在现实场景中应用进程识别和监控的概念，增强您作为 Linux 系统管理员的信心。
+要动手练习，可以使用[管理和监控 Linux 进程](https://labex.io/zh/labs/comptia-manage-and-monitor-linux-processes-590864)比较快照与交互式监控器，或在 [Linux `top` 命令](https://labex.io/zh/labs/linux-linux-top-command-real-time-system-monitoring-388500)实验中探索排序与筛选。
 
-## Quiz Question
+## 总结
 
-与 `a` 和 `x` 标志一起使用时，哪个 `ps` 标志用于查看有关进程的详细、面向用户的信息？请用单个小写英文字母回答。
+现在，你可以选择进程视图并解释其基本标识符。
 
-## Quiz Answer
-
-u
+1. 把 PID 视为当前活动进程可重复使用的标识符。
+2. 使用普通 `ps` 获取较小的默认快照。
+3. 使用 `ps aux` 或 `ps -ef` 获得更广的选择范围和更丰富的列。
+4. 需要观察随时间变化时使用 `top`。

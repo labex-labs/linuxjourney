@@ -1,68 +1,105 @@
 ---
-index: 2
+lesson_id: "routing-table"
+course_id: "routing"
 lang: "pt"
-title: "Tabela de Roteamento"
-meta_title: "Tabela de Roteamento - Roteamento"
-meta_description: "Um guia para entender a tabela de roteamento do Linux. Aprenda a interpretar a saída do comando route, incluindo destino, gateway, genmask e a interface eth0. Domine o básico da sua tabela de rotas Linux."
+order_index: 2
+title: "Tabela de roteamento"
+description: "Aprenda a ler rotas no Linux e inspecionar a rota selecionada para um destino."
+meta_title: "Tabela de roteamento - Roteamento"
+meta_description: "Um guia para entender a tabela de roteamento do Linux. Aprenda a interpretar a saída do comando route, incluindo destino, gateway, genmask e a interface eth0. Domine os fundamentos da tabela de rotas do Linux."
 meta_keywords: "tabela de roteamento linux, tabela de rotas linux, genmask, eth0, comando route, roteamento de rede, roteamento IP, destino, gateway, máscara de sub-rede, redes linux"
 ---
 
-## Lesson Content
+O estado de roteamento do Linux determina quais próximos saltos, interfaces e origens são elegíveis para um destino IP. A visualização legada `route -n` ainda é encontrada, mas `ip route` expõe os conceitos modernos de roteamento do kernel de forma mais direta.
 
-A **tabela de roteamento do Linux** armazena as regras que determinam para onde os pacotes de rede são enviados. Toda vez que seu sistema precisa enviar um pacote para um endereço IP, ele consulta esta tabela para encontrar o caminho apropriado. Para visualizar a **tabela de roteamento do Linux** da sua máquina, você pode usar o comando `route`.
+## Lendo rotas IPv4
 
-```plaintext
-pete@icebox:~$ sudo route -n
-Tabela de roteamento IP do Kernel
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-0.0.0.0         192.168.224.2   0.0.0.0         UG    0      0        0 eth0
-192.168.224.0   0.0.0.0         255.255.255.0   U     1      0        0 eth0
+Um exemplo de saída pode ser:
+
+```text
+$ ip -4 route show
+default via 192.168.224.2 dev eth0 proto dhcp src 192.168.224.10 metric 100
+192.168.224.0/24 dev eth0 proto kernel scope link src 192.168.224.10 metric 100
 ```
 
-### Entendendo as Colunas
+A rota `/24` conectada envia os destinos correspondentes diretamente por `eth0`. A rota padrão usa o gateway de próximo salto `192.168.224.2`. `proto` descreve como a rota foi instalada, `src` é uma origem preferida para o tráfego correspondente, e uma métrica ajuda a classificar rotas que, de outra forma, seriam comparáveis.
 
-A saída do comando `route` é organizada em várias colunas, cada uma fornecendo informações específicas sobre uma rota de rede.
+:::single-choice{#routing-table-via-meaning}
+O que `via 192.168.224.2` indica?
 
-### Destination (Destino)
+::option[A única aplicação autorizada a usar a rota.]{#routing-table-application explanation="A autorização da aplicação não é codificada pela palavra-chave `via`."}
+::option[O gateway de próximo salto da rota.]{#routing-table-next-hop .correct explanation="O pacote é enquadrado para esse roteador no enlace enquanto mantém seu destino IP."}
+::option[O ponto de montagem da rota no sistema de arquivos.]{#routing-table-mount explanation="As entradas de roteamento tratam do encaminhamento de rede, não de sistemas de arquivos."}
+:::
 
-A coluna Destination especifica uma rede ou um host. A entrada `192.168.224.0` direciona todos os pacotes destinados a essa rede específica. Se o destino de um pacote estiver dentro desta rede (por exemplo, de 192.168.224.5 para 192.168.224.7), ele é enviado diretamente através da interface especificada, como `eth0`.
+## Rotas conectadas e padrão
 
-A destinação `0.0.0.0` é a rota padrão. Se a tabela de roteamento não tiver uma entrada mais específica para o destino de um pacote, ela usará esta rota.
+Uma rota com `scope link` e sem próximo salto `via` trata o prefixo como diretamente acessível pela interface. Uma rota padrão corresponde a todos os endereços, mas perde para qualquer rota elegível mais específica.
 
-### Gateway
+:::single-choice{#routing-table-connected-route}
+Como um destino conectado com `scope link` é normalmente alcançado?
 
-A coluna Gateway mostra o roteador para o qual os pacotes são enviados. Se um pacote não estiver na mesma rede local, ele é encaminhado para este endereço de gateway. Para a rota padrão, este é o endereço IP do roteador que conecta sua rede local a outras redes, como a internet.
+::option[Pelo gateway padrão, mesmo quando uma rota conectada corresponde.]{#routing-table-connected-default explanation="O prefixo conectado é mais específico e não possui operando de gateway."}
+::option[Convertendo o destino em um servidor DNS.]{#routing-table-connected-dns explanation="O serviço de nomes não faz parte de uma rota IP já selecionada."}
+::option[Diretamente pela interface indicada após a resolução do vizinho.]{#routing-table-direct .correct explanation="O host resolve o endereço do destino no enlace e enquadra o tráfego localmente."}
+:::
 
-### Genmask
+## Comprimento do prefixo e métrica
 
-A `genmask`, ou máscara de geração, é a máscara de sub-rede para a rede de destino. Ela é usada com o IP de destino para determinar se um pacote pertence a essa rede. Por exemplo, uma `genmask` de `255.255.255.0` significa que os primeiros três octetos do endereço IP devem corresponder aos primeiros três octetos do destino.
+A seleção de rotas considera as regras de política e escolhe o prefixo elegível mais longo. As métricas classificam rotas dentro de conjuntos comparáveis apropriados; uma rota padrão de métrica baixa não substitui uma `/24` correspondente apenas porque seu número é menor.
 
-### Flags (Sinalizadores)
+:::single-choice{#routing-table-prefix-before-default}
+Qual rota normalmente corresponde de forma mais específica a `192.168.224.50`?
 
-Estes sinalizadores fornecem informações adicionais sobre a rota:
+::option[`192.168.224.0/24 dev eth0`]{#routing-table-twenty-four .correct explanation="O prefixo correspondente de 24 bits é o mais longo entre as rotas listadas."}
+::option[`default via 192.168.224.2`]{#routing-table-default-less-specific explanation="A rota padrão possui comprimento de prefixo zero."}
+::option[`192.168.0.0/16 via 192.168.224.3`]{#routing-table-sixteen explanation="Ela abrange o endereço, mas fixa menos bits do que `/24`."}
+:::
 
-- **U**: Indica que a rota está ativa e em funcionamento.
-- **G**: Significa que a rota é para um gateway (roteador).
-- **UG**: Significa que a rota está ativa e aponta para um gateway.
+## Regras de política e várias tabelas
 
-### Iface (Interface)
+O Linux pode consultar várias tabelas de roteamento de acordo com políticas de `ip rule` baseadas em origem, marca, interface ou outros seletores. Por isso, visualizar apenas a tabela principal pode omitir o caminho real:
 
-Esta coluna indica a interface de rede, como `eth0`, através da qual os pacotes para esta rota serão enviados. `eth0` geralmente representa o primeiro adaptador Ethernet no seu sistema.
+```bash
+$ ip rule show
+$ ip route show table all
+```
 
-## Exercise
+Namespaces de rede e VRFs também podem conter estados separados. Execute a inspeção no mesmo contexto do processo afetado.
 
-Prática leva à perfeição! Aqui estão alguns laboratórios práticos para reforçar sua compreensão de roteamento de rede e endereçamento IP:
+:::single-choice{#routing-table-policy-limit}
+Por que `ip route show` por si só pode não explicar o caminho de uma aplicação?
 
-1. **[Identificar Endereços MAC e IP no Linux](https://labex.io/pt/labs/comptia-identify-mac-and-ip-addresses-in-linux-592731)** - Pratique o uso do comando `ip a` para identificar informações de endereçamento de rede, incluindo endereços IP e interfaces de rede, que são componentes chave de uma tabela de roteamento.
-2. **[Gerenciar Endereçamento IP no Linux](https://labex.io/pt/labs/comptia-manage-ip-addressing-in-linux-592736)** - Aprenda a gerenciar endereçamento IP, configurar IPs estáticos, definir gateways padrão e verificar configurações de rede, relacionando-se diretamente com as entradas encontradas em uma tabela de roteamento.
-3. **[Explorar Tipos de Endereço IP e Acessibilidade no Linux](https://labex.io/pt/labs/comptia-explore-ip-address-types-and-reachability-in-linux-592780)** - Explore o endereçamento IP e a acessibilidade de rede usando `ping` e `ip a`, ajudando você a entender como diferentes tipos de IP interagem e como a acessibilidade da rede é determinada, o que é refletido nas decisões de roteamento.
+::option[Regras de política ou outro namespace de rede podem selecionar um estado de roteamento diferente.]{#routing-table-policy-context .correct explanation="A consulta efetiva depende dos atributos do pacote e do contexto de rede do processo."}
+::option[As tabelas de roteamento do Linux não contêm prefixos de destino.]{#routing-table-no-prefixes explanation="Os prefixos de destino são chaves fundamentais das rotas."}
+::option[As aplicações nunca enviam pacotes IP.]{#routing-table-apps-never explanation="O tráfego das aplicações é transportado por protocolos de rede e transporte."}
+:::
 
-Estes laboratórios ajudarão você a aplicar os conceitos em cenários reais e a ganhar confiança com a configuração e solução de problemas de rede.
+## Consultando uma rota efetiva
 
-## Quiz Question
+Peça ao kernel para avaliar um destino e, opcionalmente, uma origem:
 
-Se um destino não for encontrado na tabela de roteamento, para onde os pacotes são enviados? Por favor, responda com uma única palavra em inglês, prestando atenção à capitalização.
+```bash
+$ ip route get 203.0.113.10
+$ ip route get 203.0.113.10 from 192.168.224.10
+```
 
-## Quiz Answer
+O resultado prevê a consulta local naquele momento. Ele não envia uma sondagem nem comprova a acessibilidade do vizinho, dos saltos seguintes, do firewall ou da aplicação.
 
-Gateway
+:::single-choice{#routing-table-route-get-limit}
+O que `ip route get` não faz?
+
+::option[Exibir a interface local e o próximo salto escolhidos.]{#routing-table-get-does-interface explanation="Esses são campos principais do resultado da consulta."}
+::option[Avaliar a política atual de rotas locais para um destino.]{#routing-table-get-does-policy explanation="O comando realiza uma consulta de rota no kernel."}
+::option[Comprovar a entrega bem-sucedida através de todos os saltos seguintes.]{#routing-table-get-not-probe .correct explanation="Ele é uma consulta de decisão local, não uma sondagem de rede de ponta a ponta."}
+:::
+
+## Resumo
+
+Agora você pode ler entradas de roteamento do Linux e consultar a decisão local efetiva.
+
+1. Diferencie rotas conectadas de rotas que passam por um gateway.
+2. Leia os campos de prefixo, interface, protocolo, origem e métrica.
+3. Aplique a correspondência de prefixo mais longo antes de comparar métricas relevantes.
+4. Considere tabelas de política, namespaces e VRFs.
+5. Trate `ip route get` como uma consulta, não como um teste de acessibilidade.

@@ -1,51 +1,72 @@
 ---
-index: 5
+lesson_id: "distance-vector-protocols"
+course_id: "routing"
 lang: "en"
+order_index: 5
 title: "Distance Vector Protocols"
+description: "Learn how distance-vector protocols derive routes from neighbor advertisements and limit loops."
 meta_title: "Distance Vector Protocols - Routing"
 meta_description: "A beginner guide to distance vector protocols in network routing. This tutorial explains how protocols like RIP use hop count to determine routes and covers their limitations for modern Linux networking."
 meta_keywords: "distance vector protocols, network routing, RIP, routing information protocol, hop count, Linux networking, beginner guide, tutorial"
 ---
 
-## Lesson Content
+Distance-vector routing tells neighbors which destinations are reachable and a metric describing the distance. A router combines a neighbor's advertisement with the cost to that neighbor to derive its own candidate path.
 
-Distance vector protocols are a fundamental category of routing protocols used in computer networks. They determine the best path for data packets based on distance, which is typically measured by **hop count**. In this type of **network routing**, each router maintains a table of the "distance" to all known networks.
+## Learning Through Neighbors
 
-### How Distance Vector Protocols Work
+If Router A advertises a distance of three to a prefix and Router B reaches A with cost one, B can derive distance four through A. The information describes a direction and metric, not a complete topology map, which is why the approach is sometimes called routing by rumor.
 
-The core principle of a distance vector protocol is straightforward: routers share their routing information with their immediate neighbors. This process is sometimes called "routing by rumor." For example, if Router A knows it is 3 hops away from Network X, and Router B is a direct neighbor of Router A, Router B can infer that it is 4 hops away from Network X via Router A. When multiple paths to the same destination exist, the protocol will always choose the path with the lowest **hop count**.
+:::single-choice{#distance-vector-derived-distance}
+If a neighbor advertises metric 3 and the link cost is 1, what metric is derived through it?
 
-### Advantages and Disadvantages
+::option[2]{#distance-vector-two explanation="The link cost is added rather than subtracted."}
+::option[31]{#distance-vector-thirty-one explanation="The values are metrics, not decimal digits to concatenate."}
+::option[4]{#distance-vector-four .correct explanation="The neighbor distance and local link cost combine for the candidate path."}
+:::
 
-**Distance vector protocols** are simple to configure and work well in small, stable networks. However, they have significant limitations that make them less suitable for larger, more complex environments.
+## Loops and Count to Infinity
 
-One major downside is slow convergence. Routers periodically broadcast their entire routing table to their neighbors, which can consume significant bandwidth and processing power, especially as the network grows. If a network change occurs, it can take a long time for that information to propagate to all routers.
+After a failure, neighbors can mistakenly advertise a route back to each other, gradually increasing its metric. Protocols mitigate this with finite infinity values, split horizon, route poisoning, poison reverse, triggered updates, and timers. These mechanisms reduce but do not turn every topology change into instantaneous convergence.
 
-Another key disadvantage is that the shortest path in terms of **hop count** is not always the most efficient. A path with fewer hops might have slower links (e.g., 10 Mbps) compared to a path with more hops that uses faster links (e.g., 1 Gbps). Distance vector protocols are generally unaware of link speed, leading to suboptimal routing decisions.
+:::single-choice{#distance-vector-split-horizon}
+What is split horizon intended to reduce?
 
-### RIP A Common Example
+::option[The number of bits in every IPv4 address.]{#distance-vector-ip-bits explanation="IPv4 address size is fixed independently of routing updates."}
+::option[Encryption overhead in application payloads.]{#distance-vector-encryption explanation="The technique concerns route advertisement direction."}
+::option[Advertising a learned route back toward the neighbor it came from.]{#distance-vector-no-return .correct explanation="Suppressing that direction helps prevent simple feedback loops."}
+:::
 
-One of the most well-known **distance vector protocols** is the **Routing Information Protocol (RIP)**. It is a classic example that clearly demonstrates the principles and limitations of this protocol family.
+## RIP Metrics and Limits
 
-- **Periodic Updates:** RIP broadcasts its entire routing table to all neighbors every 30 seconds.
-- **Hop Count Limit:** To prevent routing loops and control network traffic, RIP enforces a maximum **hop count** of 15. Any route that requires 16 hops is considered unreachable.
+RIP uses hop count. A route with metric 16 is unreachable, so the largest usable metric is 15. That bounds loop escalation but also limits network diameter. Fewer hops do not necessarily mean lower latency or more bandwidth.
 
-Because of these characteristics, RIP is rarely used in modern production networks but serves as an excellent learning tool in a **beginner guide** to **Linux networking** and routing concepts.
+RIPv2 uses periodic and triggered updates and supports CIDR information. It commonly multicasts updates rather than broadcasting an entire table in every circumstance. Authentication and filtering still require deliberate configuration.
 
-## Exercise
+:::single-choice{#distance-vector-rip-infinity}
+What does RIP metric 16 represent?
 
-Practice makes perfect! Here are some hands-on labs to reinforce your understanding of network routing and connectivity:
+::option[The fastest path with sixteen parallel links.]{#distance-vector-fastest-16 explanation="RIP treats the value as unreachable."}
+::option[Infinity, meaning the destination is unreachable.]{#distance-vector-unreachable .correct explanation="RIP caps usable paths at 15 hops."}
+::option[A route learned from BGP.]{#distance-vector-bgp-route explanation="The number has a RIP-specific meaning."}
+:::
 
-1. **[Explore Network Layer Interaction with ping and arp in Linux](https://labex.io/labs/comptia-explore-network-layer-interaction-with-ping-and-arp-in-linux-592746)** - Practice using `ping` and `arp` to understand how devices discover each other and how traffic is routed at the network layer.
-2. **[Simulate Network Layer Connectivity in Linux](https://labex.io/labs/comptia-simulate-network-layer-connectivity-in-linux-592752)** - Learn to assign IP addresses and test connectivity between simulated Linux nodes, observing how IP subnets influence network communication.
-3. **[Manage IP Addressing in Linux](https://labex.io/labs/comptia-manage-ip-addressing-in-linux-592736)** - Gain hands-on experience configuring static and dynamic IP addresses and setting default gateways, which are essential components of network routing.
+## Evaluating a Learned Route
 
-These labs will help you apply the concepts of network addressing and connectivity in real scenarios, building a strong foundation for understanding how routing protocols function.
+Check neighbor state, received and advertised prefixes, metric, next hop, route installation, and data-plane reachability. A route can be valid within RIP but lose to another route source under local preference policy.
 
-## Quiz Question
+:::single-choice{#distance-vector-fewest-hop-limit}
+Why can RIP's lowest-hop route perform poorly?
 
-True or false: Distance vector protocols use the route with the least amount of bandwidth?
+::option[Hop count does not encode link bandwidth, latency, loss, or congestion.]{#distance-vector-hop-limited .correct explanation="A path with more hops can have better links and application performance."}
+::option[RIP always chooses the route with the most hops.]{#distance-vector-most-hops explanation="Its metric prefers smaller usable hop counts."}
+::option[Hop count is measured in bytes of disk space.]{#distance-vector-disk-bytes explanation="It counts routed transitions rather than storage."}
+:::
 
-## Quiz Answer
+## Summary
 
-False
+You can now explain both the simplicity and limitations of distance-vector routing.
+
+1. Derive candidate distance from a neighbor's advertisement.
+2. Recognize loop and count-to-infinity behavior.
+3. Explain RIP's 15-hop usable limit and metric 16.
+4. Verify route installation and data-plane outcome separately.

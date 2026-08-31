@@ -1,19 +1,20 @@
 ---
-index: 14
+lesson_id: "uniq-unique-command"
+course_id: "text-fu"
 lang: "fr"
-title: "uniq (Unique)"
-meta_title: "uniq (Unique) - Text-Fu"
-meta_description: "Explorez la commande uniq sous Linux pour filtrer et supprimer les lignes adjacentes dupliquées dans un texte. Apprenez à utiliser l'outil uniq linux avec des options comme -c, -u, -d et combinez-le avec sort pour un traitement de texte puissant."
-meta_keywords: "commande uniq, uniq Linux, uniq linux, supprimer doublons, sort uniq, traitement texte, nettoyage données, tutoriel Linux"
+order_index: 14
+title: "uniq (unique)"
+description: "Apprenez à regrouper, compter ou filtrer les groupes adjacents de lignes identiques avec uniq."
+meta_title: "uniq (unique) - Text-Fu"
+meta_description: "Utilisez uniq sous Linux pour filtrer les doublons adjacents avec -c, -u et -d, notamment après sort."
+meta_keywords: "commande uniq, Linux uniq, doublons, sort uniq, traitement texte"
 ---
 
-## Lesson Content
+`uniq` compare chaque ligne à la précédente. Il peut regrouper, compter ou sélectionner des séries adjacentes identiques, mais ne cherche pas les doublons séparés dans tout le fichier.
 
-La commande `uniq` (unique) est un outil essentiel pour le traitement de texte sous Linux. Elle vous aide à filtrer et à gérer les lignes dupliquées dans un fichier texte, mais il est important de comprendre son fonctionnement pour l'utiliser efficacement.
+## Regrouper les lignes dupliquées adjacentes
 
-### Suppression de base des doublons
-
-La fonction principale de la commande `uniq` est de supprimer les lignes adjacentes dupliquées. Imaginez que vous avez un fichier nommé `reading.txt` avec le contenu suivant :
+Si `reading.txt` contient :
 
 ```plaintext
 book
@@ -25,8 +26,6 @@ article
 magazine
 ```
 
-Pour supprimer les lignes répétées, vous pouvez exécuter la commande `uniq` :
-
 ```bash
 $ uniq reading.txt
 book
@@ -35,13 +34,17 @@ article
 magazine
 ```
 
-Comme vous pouvez le constater, `uniq` affiche une version du fichier sans les lignes adjacentes dupliquées.
+Une ligne représentative est produite par groupe adjacent. Le fichier d'entrée reste inchangé.
 
-### Options de filtrage avancées
+:::single-choice{#uniq-collapse-adjacent}
+Que fait `uniq reading.txt` par défaut ?
 
-La commande `uniq` fournit également plusieurs options pour une analyse plus détaillée.
+::option[Il trie tout le fichier puis supprime chaque valeur répétée.]{#uniq-auto-sort explanation="`uniq` préserve l'ordre et ne trie pas ; les copies séparées restent dans des groupes distincts."}
+::option[Il affiche une ligne par groupe adjacent de lignes égales.]{#uniq-one-per-group .correct explanation="Par défaut, `uniq` réduit chaque série consécutive identique à une ligne."}
+::option[Il supprime directement les doublons de `reading.txt`.]{#uniq-edit-file explanation="Le résultat va sur stdout ; l'entrée n'est pas modifiée."}
+:::
 
-Pour compter les occurrences de chaque ligne, utilisez l'indicateur `-c` (count) :
+## Compter les groupes adjacents
 
 ```bash
 $ uniq -c reading.txt
@@ -51,14 +54,24 @@ $ uniq -c reading.txt
       1 magazine
 ```
 
-Pour afficher uniquement les lignes qui ne sont pas répétées (c'est-à-dire qui sont uniques), utilisez l'indicateur `-u` (unique) :
+Ces nombres sont les longueurs des séries, pas des totaux globaux, sauf si les lignes égales ont été regroupées au préalable.
+
+:::single-choice{#uniq-count-groups}
+Que représente le nombre produit par `uniq -c` ?
+
+::option[Le nombre de caractères de chaque ligne.]{#uniq-character-count explanation="Le comptage des caractères relève plutôt de `wc`."}
+::option[Le nombre de lignes égales consécutives dans chaque groupe.]{#uniq-consecutive-count .correct explanation="`-c` préfixe chaque groupe adjacent réduit par le nombre de lignes qu'il contenait."}
+::option[Le total de lignes correspondantes partout dans le fichier.]{#uniq-global-count explanation="Les copies séparées forment des groupes différents tant que les données ne sont pas triées."}
+:::
+
+## Sélectionner les groupes uniques ou répétés
 
 ```bash
 $ uniq -u reading.txt
 magazine
 ```
 
-Inversement, pour afficher uniquement les lignes qui sont dupliquées, utilisez l'indicateur `-d` (duplicated) :
+Utilisez `-d` pour afficher un représentant de chaque groupe répété :
 
 ```bash
 $ uniq -d reading.txt
@@ -67,11 +80,27 @@ paper
 article
 ```
 
-### L'importance du tri
+`-u` ne garde que les groupes d'une ligne. `-d` émet une ligne par groupe répété ; GNU `uniq -D` émet toutes les lignes de ces groupes.
 
-Un détail critique concernant la commande **uniq linux** est qu'elle ne détecte les lignes dupliquées que si elles sont directement adjacentes les unes aux autres. Si les doublons sont dispersés dans le fichier, `uniq` ne les identifiera pas.
+:::single-choice{#uniq-only-singletons}
+Quelle commande affiche seulement les groupes adjacents présents exactement une fois ?
 
-Considérez cette version de `reading.txt` où les doublons ne sont pas adjacents :
+::option[`uniq -c reading.txt`]{#uniq-count-reading explanation="Cette forme affiche tous les groupes avec leur nombre."}
+::option[`uniq -d reading.txt`]{#uniq-duplicate-reading explanation="`-d` choisit les groupes répétés."}
+::option[`uniq -u reading.txt`]{#uniq-single-reading .correct explanation="`-u` sélectionne les groupes dont la longueur est exactement un."}
+:::
+
+:::single-choice{#uniq-one-per-duplicate-group}
+Quelle commande affiche une ligne par groupe adjacent présent plusieurs fois ?
+
+::option[`uniq -d reading.txt`]{#uniq-duplicate-groups .correct explanation="`-d` choisit les groupes répétés et en émet un représentant."}
+::option[`uniq -D reading.txt`]{#uniq-all-duplicate-lines explanation="GNU `-D` émet toutes les lignes des groupes répétés."}
+::option[`uniq -u reading.txt`]{#uniq-unique-groups explanation="`-u` choisit les groupes unitaires."}
+:::
+
+## Regrouper les doublons séparés
+
+Si les valeurs égales ne sont pas voisines, elles forment des groupes distincts :
 
 ```plaintext
 book
@@ -83,7 +112,7 @@ magazine
 article
 ```
 
-L'exécution de `uniq` sur ce fichier produira un résultat surprenant :
+Sur ce fichier, aucune ligne n'est regroupée puisque les voisines diffèrent :
 
 ```bash
 $ uniq reading.txt
@@ -96,7 +125,7 @@ magazine
 article
 ```
 
-Aucune ligne n'a été supprimée car aucune ligne identique n'était côte à côte. Pour résoudre ce problème, vous devez d'abord trier le contenu du fichier. En acheminant la sortie de `sort` vers `uniq`, vous vous assurez que toutes les lignes identiques deviennent adjacentes, permettant à `uniq` de fonctionner correctement. Cette combinaison est un modèle puissant et courant dans le scripting shell.
+Lorsque l'ordre peut changer, triez d'abord :
 
 ```bash
 $ sort reading.txt | uniq
@@ -106,22 +135,30 @@ magazine
 paper
 ```
 
-Cette commande trie d'abord les lignes par ordre alphabétique, puis `uniq` filtre les doublons, vous donnant une liste claire des entrées uniques.
+Employez une locale et une politique de comparaison cohérentes. `sort -u reading.txt` peut aussi trier et ne garder qu'une ligne par clé égale.
 
-## Exercise
+:::single-choice{#uniq-separated-duplicates}
+Des lignes égales sont dispersées dans `reading.txt` et l'ordre peut changer. Quel pipeline produit une copie triée de chaque ligne distincte ?
 
-La pratique rend parfait ! Voici quelques laboratoires pratiques pour renforcer votre compréhension du traitement de texte avec `uniq` et `sort` :
+::option[`sort reading.txt | uniq`]{#sort-then-uniq .correct explanation="Le tri rend les lignes égales adjacentes, puis `uniq` réduit chaque groupe."}
+::option[`uniq reading.txt | sort`]{#uniq-before-sort explanation="`uniq` agit avant le regroupement et peut laisser des doublons dans la sortie triée."}
+::option[`uniq -c reading.txt | head`]{#uniq-count-head explanation="Cette forme compte les groupes actuels puis limite la sortie."}
+:::
 
-1. **[Commande Linux uniq : Filtrage des doublons](https://labex.io/fr/labs/linux-linux-uniq-command-duplicate-filtering-219199)** - Apprenez à utiliser la commande Linux `uniq` en combinaison avec `sort` pour identifier, filtrer et analyser les lignes dupliquées dans les fichiers texte.
-2. **[Commande Linux sort : Tri de texte](https://labex.io/fr/labs/linux-linux-sort-command-text-sorting-219196)** - Entraînez-vous à utiliser la commande `sort` pour organiser les lignes des fichiers texte, une étape cruciale avant d'utiliser `uniq` efficacement.
-3. **[Comptage de mots et tri](https://labex.io/fr/labs/linux-word-count-and-sorting-388125)** - Découvrez les outils essentiels de traitement de texte Linux `wc` (compte de mots) et `sort` dans ce défi pratique. Apprenez à compter les lignes, les mots et les caractères, à trouver les modèles fréquents et à trier les données efficacement pour diverses tâches d'analyse de texte.
+Sans fichier, `uniq` lit stdin. GNU propose aussi `-i` pour ignorer la casse, et `-f`, `-s`, `-w` pour limiter la région comparée.
 
-Ces laboratoires vous aideront à appliquer les concepts dans des scénarios réels et à renforcer votre confiance dans le traitement de texte et la manipulation de données sous Linux.
+Pour vous exercer :
 
-## Quiz Question
+1. **[Commande Linux uniq : filtrer les doublons](https://labex.io/fr/labs/linux-linux-uniq-command-duplicate-filtering-219199)** - Identifiez et analysez les doublons avec `sort` et `uniq`.
+2. **[Commande Linux sort : trier du texte](https://labex.io/fr/labs/linux-linux-sort-command-text-sorting-219196)** - Organisez les lignes avant `uniq`.
+3. **[Comptage et tri de mots](https://labex.io/fr/labs/linux-word-count-and-sorting-388125)** - Analysez et triez des données textuelles.
 
-Quelle commande utiliseriez-vous pour supprimer les lignes dupliquées adjacentes dans un fichier ? Veuillez répondre en utilisant uniquement le nom de la commande en minuscules anglaises.
+## Résumé
 
-## Quiz Answer
+Vous savez analyser les groupes adjacents de lignes égales avec `uniq`.
 
-uniq
+1. Réduire chaque groupe adjacent à une ligne.
+2. Compter les occurrences consécutives avec `-c`.
+3. Choisir les groupes unitaires avec `-u`.
+4. Choisir les groupes répétés avec `-d` ou GNU `-D`.
+5. Trier d'abord pour regrouper les doublons séparés.

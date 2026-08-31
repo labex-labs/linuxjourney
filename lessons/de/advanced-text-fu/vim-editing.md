@@ -1,70 +1,130 @@
 ---
-index: 7
+lesson_id: "vim-editing"
+course_id: "advanced-text-fu"
 lang: "de"
-title: "Vim-Bearbeitung"
-meta_title: "Vim-Bearbeitung - Fortgeschrittenes Text-Fu"
-meta_description: "Ein Vim-Tutorial für Anfänger über wesentliche Bearbeitungsbefehle. Lernen Sie, wie Sie Text im Vim-Texteditor löschen, ändern, kopieren (yank) und einfügen, um Ihren Linux-Workflow zu verbessern."
-meta_keywords: "Vim-Bearbeitung, Vim-Befehle, Linux-Texteditor, Vim-Tutorial, Vim-Anleitung, Anfänger Vim, dd-Befehl, Vim löschen"
+order_index: 7
+title: "Text in Vim bearbeiten"
+description: "Lerne, wie Vim Operatoren, Bewegungen, Register, Einfügebefehle und Rückgängig-Funktionen zur Textbearbeitung kombiniert."
+meta_title: "Text in Vim bearbeiten – Fortgeschrittenes Text-Fu"
+meta_description: "Ein Vim-Tutorial für Einsteiger zu wichtigen Bearbeitungsbefehlen. Lerne, wie du im Vim-Texteditor Text löschst, änderst, kopierst und einfügst."
+meta_keywords: "Vim Bearbeitung, Vim Befehle, Linux Texteditor, Vim Tutorial, Vim Anleitung, Vim Anfänger, dd Befehl, Vim löschen"
 ---
 
-## Lesson Content
+Vims Bearbeitungsbefehle kombinieren häufig einen Operator mit einer Bewegung oder einem Textobjekt. Dank dieser Grammatik lassen sich dieselben Aktionen auf Zeichen, Wörter, Zeilen und größere Bereiche anwenden. Drücke vor dem Üben `Esc`, um in den Normalmodus zurückzukehren.
 
-Das Bearbeiten von Text in Vim ist eine leistungsstarke Funktion, die auf der Kombination von Operatoren und Bewegungen aus dem Normalmodus beruht. Dieser Ansatz ermöglicht es Ihnen, Text effizient zu löschen, zu ändern, zu kopieren (yank) und einzufügen (put).
+## Einen Operator mit einer Bewegung kombinieren
 
-Bevor Sie Befehle ausführen, drücken Sie `Esc`, um sicherzustellen, dass Sie sich im Normalmodus befinden.
+Die allgemeine Form lautet:
 
-### Verstehen von Vim-Operatoren und -Bewegungen
+```text
+[Anzahl] Operator [Anzahl] Bewegung
+```
 
-Der Kern der Vim-Bearbeitung ist die Formel: `Operator + Bewegung`. Ein Operator ist eine Aktion (wie `d` für löschen), und eine Bewegung ist eine Navigation (wie `w` für Wort). Zum Beispiel kombiniert `dw` den Löschoperator mit der Wortbewegung, um ein Wort zu löschen. Sie können auch Zähler verwenden, um eine Aktion zu wiederholen, z. B. `2dw`, um zwei Wörter zu löschen.
+Häufig verwendete Operatoren sind:
 
-### Text in Vim löschen
+- `d`: Text löschen.
+- `c`: Text ändern und anschließend in den Einfügemodus wechseln.
+- `y`: Text „yanken“, also kopieren.
 
-Der Löschoperator ist `d`. Er ist einer der häufigsten Vim-Befehle zur Textmanipulation.
+`dw` löscht beispielsweise den von der Bewegung `w` erfassten Bereich, während `d$` vom Cursor bis einschließlich des Zeilenendes löscht. `2dw` wendet das Löschen auf zwei Wortbewegungen an.
 
-- `x` – Löscht das Zeichen direkt unter dem Cursor.
-- `dw` – Löscht vom Cursor bis zum Anfang des nächsten Wortes.
-- `d$` – Löscht vom Cursor bis zum Ende der aktuellen Zeile.
-- `dd` – Der Befehl `dd` löscht die gesamte aktuelle Zeile.
-- `3dd` – Löscht drei Zeilen, beginnend mit der aktuellen Zeile.
+:::single-choice{#vim-edit-operator-motion}
+Was bewirkt `d$` im Normalmodus?
 
-### Text ändern
+::option[Es löscht ab dem Cursor die gesamte Datei.]{#vim-edit-delete-file-end explanation="Die Dollar-Bewegung zielt auf das Ende der aktuellen Zeile, nicht auf das Ende des gesamten Puffers."}
+::option[Es löscht vom Cursor bis einschließlich des Zeilenendes.]{#vim-edit-delete-line-end .correct explanation="Der Operator `d` wird auf die Bewegung `$` zum Zeilenende angewendet."}
+::option[Es bewegt den Cursor ans Zeilenende, ohne den Text zu verändern.]{#vim-edit-move-line-end explanation="`$` allein bewegt den Cursor. Das vorangestellte `d` macht aus dem erfassten Bereich jedoch eine Löschoperation."}
+:::
 
-Der Änderungsoperator `c` funktioniert ähnlich wie löschen, versetzt Sie jedoch nach der Ausführung der Aktion in den Einfügemodus. Dies ist nützlich, um Text zu ersetzen.
+## Zeichen und Zeilen bearbeiten
 
-- `cw` – Ändert den Text vom Cursor bis zum Ende des Wortes.
-- `c$` – Ändert den Text vom Cursor bis zum Ende der Zeile.
-- `cc` – Ändert die gesamte aktuelle Zeile.
+Einige Befehle dienen als praktische Kurzformen:
 
-### Text in Vim kopieren und einfügen
+- `x`: Das Zeichen unter dem Cursor löschen.
+- `dd`: Die aktuelle Zeile zeilenweise löschen.
+- `3dd`: Drei Zeilen löschen, beginnend mit der aktuellen Zeile.
+- `cc`: Die aktuelle Zeile ändern und in den Einfügemodus wechseln.
+- `r{char}`: Das Zeichen unter dem Cursor durch `{char}` ersetzen.
+- `R`: Bis zum Drücken von `Esc` in den Ersetzen-Modus wechseln.
 
-In Vim wird das Kopieren als „Yanking“ (Operator `y`) und das Einfügen als „Putting“ bezeichnet.
+Wird ein Operator wie in `dd` wiederholt, arbeitet er zeilenweise. Ein Zähler erweitert die Anzahl der betroffenen Zeilen.
 
-- `yw` – Yankt (kopiert) ein Wort.
-- `yy` – Yankt die gesamte aktuelle Zeile.
-- `p` – Put (fügt) den yanked Text nach dem Cursor oder in die nächste Zeile ein.
-- `P` – Put den Text vor dem Cursor oder in die vorherige Zeile ein.
+:::single-choice{#vim-edit-delete-three-lines}
+Welcher Befehl des Normalmodus löscht die aktuelle und die beiden folgenden Zeilen?
 
-### Andere nützliche Bearbeitungsbefehle
+::option[`dd3`]{#vim-edit-dd-three explanation="Bei dieser Befehlsform steht der Zähler vor dem verdoppelten Operator."}
+::option[`3x`]{#vim-edit-three-x explanation="Dieser Befehl löscht drei Zeichen ab dem Cursor, nicht drei vollständige Zeilen."}
+::option[`3dd`]{#vim-edit-three-dd .correct explanation="Der Zähler gilt für den zeilenweisen Befehl `dd` und löscht ab der aktuellen Zeile insgesamt drei Zeilen."}
+:::
 
-Dieser Vim-Leitfaden wäre nicht vollständig ohne ein paar weitere praktische Befehle.
+## Text ändern und in den Einfügemodus wechseln
 
-- `r{char}` – Ersetzt das einzelne Zeichen unter dem Cursor durch das angegebene Zeichen.
-- `R` – Wechselt in den Ersetzen-Modus, sodass Sie Text kontinuierlich überschreiben können, bis Sie `Esc` drücken.
-- `J` – Fügt die aktuelle Zeile mit der nächsten zusammen.
-- `.` – Wiederholt die letzte vorgenommene Änderung, ein sehr leistungsstarker und effizienter Befehl.
+Der Operator `c` entfernt den ausgewählten Text und wechselt anschließend in den Einfügemodus, damit du einen Ersatz eingeben kannst:
 
-Die Kombination von Operatoren mit verschiedenen Bewegungen schöpft das volle Potenzial dieses Linux-Texteditors aus. Zum Beispiel löscht `d}` bis zum nächsten Absatz, und `caw` ändert „ein Wort“ (das Wort unter dem Cursor einschließlich eventueller umgebender Leerzeichen).
+- `ce`: Bis zum Ende des Wortes ändern.
+- `c$`: Bis zum Ende der Zeile ändern.
+- `cc`: Die gesamte aktuelle Zeile ändern.
+- `ciw`: Das innere Wort unter dem Cursor ändern.
+- `caw`: Ein Wort-Textobjekt einschließlich der von Vim festgelegten umgebenden Abstände ändern.
 
-## Exercise
+Das Verhalten von `cw` ist historisch bedingt ein Sonderfall und entspricht häufig `ce`. Textobjekte wie `iw` können die beabsichtigte Grenze deutlicher ausdrücken.
 
-Um Ihr Wissen in die Praxis umzusetzen, empfehlen wir das folgende praktische Labor. Es wird Ihnen helfen, die grundlegenden Bearbeitungsbefehle zu meistern, die in diesem Vim-Tutorial besprochen wurden.
+:::single-choice{#vim-edit-change-inner-word}
+Welcher Befehl des Normalmodus ersetzt das innere Wort unter dem Cursor, indem er es löscht und in den Einfügemodus wechselt?
 
-1. **[Textdateien in Linux mit Vim und Nano bearbeiten](https://labex.io/de/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** - Üben Sie das Erstellen von Dateien, das Bearbeiten von Text, das Speichern von Dateien und die Navigation sowohl mit vi/vim als auch mit nano. Dieses Labor hilft Ihnen, Konzepte wie das Löschen, Ändern, Yanken und Putten von Text in realen Szenarien anzuwenden.
+::option[`diw`]{#vim-edit-delete-inner-word explanation="Dieser Befehl löscht das innere Wort, bleibt jedoch im Normalmodus, statt die Eingabe des Ersatztexts zu beginnen."}
+::option[`yiw`]{#vim-edit-yank-inner-word explanation="Dieser Befehl kopiert das innere Wort, ohne den Puffer zu verändern oder in den Einfügemodus zu wechseln."}
+::option[`ciw`]{#vim-edit-change-inner-word-answer .correct explanation="Der Operator `c` ändert das Textobjekt `iw` und wechselt danach in den Einfügemodus."}
+:::
 
-## Quiz Question
+## Text kopieren und einfügen
 
-Welcher Befehl löscht die aktuelle Zeile in Vim? (Bitte antworten Sie auf Englisch und achten Sie auf die Groß-/Kleinschreibung).
+Vim bezeichnet das Kopieren als **Yanking** und das Einfügen als **Putting**:
 
-## Quiz Answer
+- `yw`: Den von einer Wortbewegung erfassten Text kopieren.
+- `yy`: Die aktuelle Zeile kopieren.
+- `p`: Zeichenweisen Text hinter dem Cursor oder zeilenweisen Text unter der aktuellen Zeile einfügen.
+- `P`: Text vor dem Cursor beziehungsweise über der aktuellen Zeile einfügen.
 
-dd
+Auch beim Löschen und Ändern wird Text in Registern gespeichert. Daher kann ein späteres `p` den zuletzt gelöschten Text anstelle eines zuvor kopierten Texts einfügen. In benannten Registern kannst du bestimmten Text gezielt aufbewahren. Beobachte am Anfang aber zunächst, was die jeweils letzte Operation gespeichert hat.
+
+:::single-choice{#vim-edit-yank-put-line}
+Welcher Befehl fügt die mit `yy` kopierte aktuelle Zeile unterhalb der aktuellen Zeile ein?
+
+::option[`p`]{#vim-edit-put-below .correct explanation="Bei zeilenweise kopiertem Text fügt das kleine `p` die gespeicherte Zeile unterhalb der aktuellen Zeile ein."}
+::option[`P`]{#vim-edit-put-above explanation="Das große `P` fügt zeilenweisen Text oberhalb der aktuellen Zeile ein."}
+::option[`u`]{#vim-edit-undo-not-put explanation="Das kleine `u` macht eine Änderung rückgängig; es fügt die kopierte Zeile nicht ein."}
+:::
+
+## Rückgängig machen, wiederholen und erneut anwenden
+
+Im Normalmodus:
+
+- `u`: Die letzte Änderung rückgängig machen.
+- `Ctrl+R`: Eine rückgängig gemachte Änderung wiederherstellen.
+- `.`: Die letzte Änderung, soweit anwendbar, an der aktuellen Position erneut ausführen.
+- `J`: Die aktuelle mit der nächsten Zeile verbinden.
+
+Der Rückgängig-Verlauf gilt für Änderungen am Puffer, nicht für reine Cursorbewegungen. Speichere Zwischenstände und prüfe deine Änderungen, statt dich auf einen unbegrenzten oder dauerhaften Rückgängig-Verlauf zu verlassen.
+
+:::single-choice{#vim-edit-redo-change}
+Welcher Befehl des Normalmodus stellt eine soeben rückgängig gemachte Änderung wieder her?
+
+::option[`Ctrl+U`]{#vim-edit-control-u explanation="Im Normalmodus scrollt `Ctrl+U` ungefähr einen halben Bildschirm nach oben; es ist kein Wiederherstellen-Befehl."}
+::option[`.`]{#vim-edit-dot-repeat explanation="Der Punkt führt die letzte Änderung als neue Aktion erneut aus, statt im Rückgängig-Verlauf vorwärtszugehen."}
+::option[`Ctrl+R`]{#vim-edit-control-r .correct explanation="Mit `Ctrl+R` gehst du in Vims Rückgängig-Verlauf im Normalmodus wieder vorwärts."}
+:::
+
+In diesem praktischen Lab kannst du Operatoren, Bewegungen und die Wiederherstellung an entbehrlichem Text üben:
+
+1. **[Textdateien unter Linux mit Vim und Nano bearbeiten](https://labex.io/labs/comptia-edit-text-files-in-linux-with-vim-and-nano-591076)** – Übe, Dateien anzulegen, Text zu bearbeiten und zu speichern sowie mit vi/vim und nano zu navigieren. Das Lab hilft dir, das Löschen, Ändern, Kopieren und Einfügen von Text in realistischen Situationen anzuwenden.
+
+## Zusammenfassung
+
+Du kannst nun im Normalmodus Bearbeitungsbefehle zusammensetzen und dich von Fehlern erholen.
+
+1. Kombiniere Operatoren mit Bewegungen, Textobjekten und Zählern.
+2. Lösche Zeichen oder vollständige Zeilen im gewünschten Umfang.
+3. Ändere Text und wechsle zur Eingabe des Ersatzes in den Einfügemodus.
+4. Kopiere und füge zeichen- oder zeilenweisen Text ein.
+5. Mache Änderungen gezielt rückgängig, stelle sie wieder her oder führe sie erneut aus.
