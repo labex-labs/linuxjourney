@@ -85,7 +85,7 @@ Esta variable estará disponible mientras la sesión de terminal permanezca abie
 
 ### Hacer Persistente la Variable de Entorno Entre Sesiones
 
-Si desea que la variable de entorno esté disponible en cada sesión de terminal (incluso después de cerrar y volver a abrir la terminal), debe agregarla al archivo de inicio de su shell. En el caso de Bash (el shell predeterminado para muchas distribuciones de Linux y macOS), este archivo suele ser `.bashrc` en su directorio de inicio.
+Si desea que la variable de entorno esté disponible en cada sesión de terminal (incluso después de cerrar y volver a abrir la terminal), debe agregarla al archivo de inicio de su shell. En el caso de Bash (el shell predeterminado para muchas distribuciones de Linux), este archivo suele ser `.bashrc` en su directorio de inicio.
 
 Así es como se hace:
 

@@ -85,7 +85,7 @@ Diese Variable ist verfügbar, solange die Terminalsitzung geöffnet bleibt. Sob
 
 ### Die Umgebungsvariable sitzungsübergreifend persistent machen
 
-Wenn die Umgebungsvariable in jeder Terminalsitzung verfügbar sein soll (auch nach dem Schließen und erneuten Öffnen des Terminals), müssen Sie sie zur Startdatei Ihrer Shell hinzufügen. Im Falle von Bash (der Standard-Shell für viele Linux-Distributionen und macOS) ist diese Datei normalerweise `.bashrc` in Ihrem Home-Verzeichnis.
+Wenn die Umgebungsvariable in jeder Terminalsitzung verfügbar sein soll (auch nach dem Schließen und erneuten Öffnen des Terminals), müssen Sie sie zur Startdatei Ihrer Shell hinzufügen. Im Falle von Bash (der Standard-Shell für viele Linux-Distributionen) ist diese Datei normalerweise `.bashrc` in Ihrem Home-Verzeichnis.
 
 Hier erfahren Sie, wie Sie dies tun:
 
