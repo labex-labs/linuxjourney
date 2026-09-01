@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       sync_path:
-        description: "Path to sync specific lesson file (e.g., lessons/en/logging/syslog.md). Leave empty to sync all changed files."
+        description: "Path to a lesson file; all existing language versions are synced. Leave empty to sync every lesson."
         required: false
         default: ""
         type: string
@@ -123,21 +123,21 @@ jobs:
           echo "Starting sync of changed documents to LabEx..."
           echo "Execution time: $(date)"
 
-          # Build command arguments for batch sync
-          FILE_ARGS=""
+          # Build command arguments for Journey v2 batch sync
+          FILE_ARGS=()
           for file in $CHANGED_FILES; do
             if [ -f "../linuxjourney/$file" ]; then
-              FILE_ARGS="$FILE_ARGS -p ../linuxjourney/$file"
+              FILE_ARGS+=(--lessons-path "../linuxjourney/$file")
             fi
           done
 
-          if [ -z "$FILE_ARGS" ]; then
+          if [ ${#FILE_ARGS[@]} -eq 0 ]; then
             echo "No valid files to sync, skipping"
             exit 0
           fi
 
-          # Execute batch sync command
-          labex lesson sync $FILE_ARGS
+          # Sync changed lessons and every existing language version
+          labex lesson sync-v2 --all-langs "${FILE_ARGS[@]}"
 
       - name: Notify completion
         run: |
