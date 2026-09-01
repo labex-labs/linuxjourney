@@ -1,5 +1,5 @@
 ---
-lesson_id: "openSUSE"
+lesson_id: "opensuse"
 course_id: "getting-started"
 lang: "ru"
 order_index: 10
