@@ -1,5 +1,7 @@
 # Linux Journey
 
+![Getting Started](https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@master/images/getting-started.png)
+
 <p><a href="https://apps.apple.com/app/linux-journey/id6770861660"><img src="https://cdn.jsdelivr.net/gh/labex-labs/files@master/images/app-store-badge.svg" alt="Download on the App Store" /></a>&nbsp;<a href="https://apps.apple.com/app/linux-journey/id6770861660"><img src="https://cdn.jsdelivr.net/gh/labex-labs/files@master/images/mac-app-store-badge.svg" alt="Download on the Mac App Store" /></a>&nbsp;<a href="https://play.google.com/store/apps/details?id=io.labex.linuxjourney"><img src="https://cdn.jsdelivr.net/gh/labex-labs/files@master/images/google-play-badge.svg" alt="Get it on Google Play" /></a>&nbsp;<a href="https://chromewebstore.google.com/detail/linux-journey/jechleifjenndhlfdhcdkmadkcieaimm"><img src="https://cdn.jsdelivr.net/gh/labex-labs/files@master/images/chrome-web-store-badge.svg" alt="Available in the Chrome Web Store" /></a></p>
 
 > [!NOTE]
