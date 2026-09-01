@@ -88,7 +88,7 @@ As aspas são úteis quando você quer que o shell trate várias palavras como u
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="Colocar a linha inteira entre aspas faz o shell procurar um comando com todo esse nome, em vez de executar `echo` com um texto."}
 :::
 
-Para praticar essas habilidades, explore a abrangente [![Trilha de Aprendizado do Shell](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Trilha de Aprendizado do Shell](https://labex.io/learn/shell).
+Para praticar essas habilidades, explore a abrangente [![Trilha de Aprendizado do Shell](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Trilha de Aprendizado do Shell](https://labex.io/learn/shell).
 
 ## Dicas Comuns para Iniciantes
 

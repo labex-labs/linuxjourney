@@ -88,7 +88,7 @@ Hello from Bash
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="给整行加引号会让 shell 查找具有这一完整名称的命令，而不是运行 `echo` 并向它传入文本。"}
 :::
 
-要练习这些技能，可以探索完整的 [![Shell 学习路径](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell 学习路径](https://labex.io/zh/learn/shell)。
+要练习这些技能，可以探索完整的 [![Shell 学习路径](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Shell 学习路径](https://labex.io/zh/learn/shell)。
 
 ## 初学者常见提示
 

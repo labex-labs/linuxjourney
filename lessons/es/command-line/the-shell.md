@@ -88,7 +88,7 @@ Las comillas son útiles cuando quieres que la shell trate varias palabras como 
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="Al entrecomillar toda la línea, la shell busca una orden con ese nombre completo en vez de ejecutar `echo` con texto."}
 :::
 
-Para practicar estas habilidades, explora la completa [![Ruta de aprendizaje de la shell](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Ruta de aprendizaje de la shell](https://labex.io/es/learn/shell).
+Para practicar estas habilidades, explora la completa [![Ruta de aprendizaje de la shell](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)Ruta de aprendizaje de la shell](https://labex.io/es/learn/shell).
 
 ## Consejos habituales para principiantes
 

@@ -88,7 +88,7 @@ Hello from Bash
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="Кавычки вокруг всей строки заставят оболочку искать команду с полным таким именем вместо запуска `echo` с текстом."}
 :::
 
-Для практики изучите [![Путь изучения Shell](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)путь изучения Shell](https://labex.io/ru/learn/shell).
+Для практики изучите [![Путь изучения Shell](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)путь изучения Shell](https://labex.io/ru/learn/shell).
 
 ## Советы начинающим
 

@@ -88,7 +88,7 @@ Les guillemets sont utiles lorsque vous voulez que le shell traite plusieurs mot
 ::option[`"echo Hello from Bash"`]{#quoted-command explanation="En plaçant toute la ligne entre guillemets, le shell recherche une commande portant ce nom complet au lieu d'exécuter `echo` avec du texte."}
 :::
 
-Pour pratiquer ces compétences, explorez le [![Parcours d'apprentissage du shell](https://labex.io/cdn-cgi/image/width=200,height=200,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)parcours d'apprentissage du shell](https://labex.io/fr/learn/shell).
+Pour pratiquer ces compétences, explorez le [![Parcours d'apprentissage du shell](https://labex.io/cdn-cgi/image/width=20,height=20,quality=80,format=auto,onerror=redirect/https://file.labex.io/path/FaVTnI4iqZP0.png)parcours d'apprentissage du shell](https://labex.io/fr/learn/shell).
 
 ## Conseils courants pour les débutants
 
