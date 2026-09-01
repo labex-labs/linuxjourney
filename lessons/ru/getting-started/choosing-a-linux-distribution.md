@@ -100,7 +100,7 @@ Ubuntu также широко используется на серверах, �
 - [Fedora](https://labex.io/ru/lesson/fedora): современная, удобная разработчикам и тесно связанная с экосистемой Red Hat
 - [Linux Mint](https://labex.io/ru/lesson/linux-mint): ориентирован на рабочий стол и особенно удобен новым пользователям
 - [Arch Linux](https://labex.io/ru/lesson/arch-linux): rolling release с сильной культурой самостоятельной сборки системы
-- [openSUSE](https://labex.io/ru/lesson/openSUSE): гибкая, отполированная и известная YaST и несколькими моделями выпусков
+- [openSUSE](https://labex.io/ru/lesson/opensuse): гибкая, отполированная и известная YaST и несколькими моделями выпусков
 - [Gentoo](https://labex.io/ru/lesson/gentoo): основана на исходном коде и глубоко настраивается
 - [Red Hat Enterprise Linux](https://labex.io/ru/lesson/red-hat-enterprise-linux): ориентирована на предприятия и коммерческую поддержку
 

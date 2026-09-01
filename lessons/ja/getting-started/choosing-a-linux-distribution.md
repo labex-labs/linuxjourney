@@ -98,7 +98,7 @@ Ubuntu も、大きなエコシステムと使い慣れたツールを求める�
 - [Fedora](https://labex.io/lesson/fedora)：現代的で開発者に優しく、Red Hat エコシステムと密接
 - [Linux Mint](https://labex.io/lesson/linux-mint)：デスクトップ重視で、特に初心者が使いやすい
 - [Arch Linux](https://labex.io/lesson/arch-linux)：自分で構築する文化を持つローリングリリース
-- [openSUSE](https://labex.io/lesson/openSUSE)：柔軟で洗練され、YaST と複数のリリース方式で知られる
+- [openSUSE](https://labex.io/lesson/opensuse)：柔軟で洗練され、YaST と複数のリリース方式で知られる
 - [Gentoo](https://labex.io/lesson/gentoo)：ソースベースで高度にカスタマイズ可能
 - [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux)：商用サポートを持つ企業向け
 

@@ -102,7 +102,7 @@ Ubuntu 也广泛用于服务器，特别是当用户需要庞大的生态系统�
 - [Fedora](https://labex.io/zh/lesson/fedora)：现代、对开发人员友好，与 Red Hat 生态系统联系紧密
 - [Linux Mint](https://labex.io/zh/lesson/linux-mint)：专注于桌面，对新用户特别友好
 - [Arch Linux](https://labex.io/zh/lesson/arch-linux)：滚动更新，具有强大的 DIY 文化
-- [openSUSE](https://labex.io/zh/lesson/openSUSE)：灵活、精美，以 YaST 和多种发布选项而闻名
+- [openSUSE](https://labex.io/zh/lesson/opensuse)：灵活、精美，以 YaST 和多种发布选项而闻名
 - [Gentoo](https://labex.io/zh/lesson/gentoo)：基于源代码，高度可定制
 - [Red Hat Enterprise Linux](https://labex.io/zh/lesson/red-hat-enterprise-linux)：专注于企业，提供商业支持
 

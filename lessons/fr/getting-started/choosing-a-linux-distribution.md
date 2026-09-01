@@ -102,7 +102,7 @@ Certaines distributions sont souvent recommandées parce qu'elles résolvent bie
 - [Fedora](https://labex.io/fr/lesson/fedora) : moderne, favorable aux développeurs et étroitement liée à l'écosystème Red Hat ;
 - [Linux Mint](https://labex.io/fr/lesson/linux-mint) : centrée sur le bureau et particulièrement confortable pour les nouveaux utilisateurs ;
 - [Arch Linux](https://labex.io/fr/lesson/arch-linux) : publication continue et forte culture du « faites-le vous-même » ;
-- [openSUSE](https://labex.io/fr/lesson/openSUSE) : flexible, soignée et connue pour YaST et ses différents modèles de publication ;
+- [openSUSE](https://labex.io/fr/lesson/opensuse) : flexible, soignée et connue pour YaST et ses différents modèles de publication ;
 - [Gentoo](https://labex.io/fr/lesson/gentoo) : fondée sur les sources et très personnalisable ;
 - [Red Hat Enterprise Linux](https://labex.io/fr/lesson/red-hat-enterprise-linux) : orientée entreprise avec une assistance commerciale.
 

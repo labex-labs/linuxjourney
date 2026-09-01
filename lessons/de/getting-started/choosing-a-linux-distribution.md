@@ -102,7 +102,7 @@ Einige Distributionen werden häufig empfohlen, weil sie unterschiedliche Aufgab
 - [Fedora](https://labex.io/lesson/fedora): modern, entwicklerfreundlich und eng mit dem Red-Hat-Ökosystem verbunden
 - [Linux Mint](https://labex.io/lesson/linux-mint): auf den Desktop ausgerichtet und besonders angenehm für neue Nutzer
 - [Arch Linux](https://labex.io/lesson/arch-linux): Rolling Release mit ausgeprägter Do-it-yourself-Kultur
-- [openSUSE](https://labex.io/lesson/openSUSE): flexibel, ausgereift und für YaST sowie mehrere Veröffentlichungsmodelle bekannt
+- [openSUSE](https://labex.io/lesson/opensuse): flexibel, ausgereift und für YaST sowie mehrere Veröffentlichungsmodelle bekannt
 - [Gentoo](https://labex.io/lesson/gentoo): quellbasiert und stark anpassbar
 - [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux): unternehmensorientiert mit kommerzieller Unterstützung
 

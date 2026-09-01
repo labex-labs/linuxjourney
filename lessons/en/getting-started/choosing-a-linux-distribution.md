@@ -102,7 +102,7 @@ Some Linux distros are widely recommended because they solve different problems 
 - [Fedora](https://labex.io/lesson/fedora): modern, developer-friendly, and closely tied to the Red Hat ecosystem
 - [Linux Mint](https://labex.io/lesson/linux-mint): desktop-focused and especially comfortable for new users
 - [Arch Linux](https://labex.io/lesson/arch-linux): rolling release with a strong do-it-yourself culture
-- [openSUSE](https://labex.io/lesson/openSUSE): flexible, polished, and known for YaST and multiple release options
+- [openSUSE](https://labex.io/lesson/opensuse): flexible, polished, and known for YaST and multiple release options
 - [Gentoo](https://labex.io/lesson/gentoo): source-based and highly customizable
 - [Red Hat Enterprise Linux](https://labex.io/lesson/red-hat-enterprise-linux): enterprise-focused with commercial support
 

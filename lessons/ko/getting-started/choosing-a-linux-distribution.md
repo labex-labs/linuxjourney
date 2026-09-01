@@ -102,7 +102,7 @@ Ubuntu 또한 서버에서 널리 사용되는데, 특히 사용자가 거대한
 - [Fedora](https://labex.io/ko/lesson/fedora): 현대적이고 개발자 친화적이며 Red Hat 생태계와 밀접하게 연결됨
 - [Linux Mint](https://labex.io/ko/lesson/linux-mint): 데스크톱 중심이며 특히 신규 사용자에게 편안함
 - [Arch Linux](https://labex.io/ko/lesson/arch-linux): 강력한 DIY 문화를 가진 롤링 릴리스
-- [openSUSE](https://labex.io/ko/lesson/openSUSE): 유연하고 세련되었으며 YaST 와 다양한 릴리스 옵션으로 유명함
+- [openSUSE](https://labex.io/ko/lesson/opensuse): 유연하고 세련되었으며 YaST 와 다양한 릴리스 옵션으로 유명함
 - [Gentoo](https://labex.io/ko/lesson/gentoo): 소스 기반이며 고도로 사용자 정의 가능함
 - [Red Hat Enterprise Linux](https://labex.io/ko/lesson/red-hat-enterprise-linux): 상업적 지원을 제공하는 기업 중심 배포판
 

@@ -102,7 +102,7 @@ Algunas distros de Linux son ampliamente recomendadas porque resuelven bien dife
 - [Fedora](https://labex.io/es/lesson/fedora): moderna, amigable para desarrolladores y estrechamente vinculada al ecosistema de Red Hat
 - [Linux Mint](https://labex.io/es/lesson/linux-mint): centrada en el escritorio y especialmente cómoda para nuevos usuarios
 - [Arch Linux](https://labex.io/es/lesson/arch-linux): lanzamiento continuo con una fuerte cultura de "hazlo tú mismo"
-- [openSUSE](https://labex.io/es/lesson/openSUSE): flexible, pulida y conocida por YaST y múltiples opciones de lanzamiento
+- [openSUSE](https://labex.io/es/lesson/opensuse): flexible, pulida y conocida por YaST y múltiples opciones de lanzamiento
 - [Gentoo](https://labex.io/es/lesson/gentoo): basada en código fuente y altamente personalizable
 - [Red Hat Enterprise Linux](https://labex.io/es/lesson/red-hat-enterprise-linux): centrada en la empresa con soporte comercial
 
