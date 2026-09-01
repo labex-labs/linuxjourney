@@ -7,9 +7,19 @@ translations:
   en:
     title: 'Boot the System'
     description: 'Learn about the stages of the Linux boot process.'
+    faqs:
+      - question: 'Which stages of Linux boot are explained?'
+        answer: 'The course follows startup from BIOS through the bootloader, kernel initialization, and the init system that starts services and the user environment.'
+      - question: 'Is this course specific to one Linux distribution?'
+        answer: 'No. The core boot sequence applies broadly, although firmware, bootloader settings, and init implementations can vary between systems.'
+      - question: 'Why should I learn the boot process?'
+        answer: 'Knowing which component runs at each stage helps you locate startup failures and choose the right logs, configuration, or recovery tool.'
+    meta_title: 'Linux Boot Process Course | Linux Journey'
+    meta_description: 'Understand each stage of the Linux boot process, from BIOS and the bootloader through kernel initialization and the init system.'
+    meta_keywords: 'Linux boot process, BIOS, bootloader, GRUB, Linux kernel, init system, system startup'
   de:
     title: 'System booten'
-    description: 'Lernen Sie die Phasen des Linux boot process kennen.'
+    description: 'Lernen Sie die einzelnen Phasen des Linux-Startvorgangs kennen.'
   es:
     title: 'Arrancar el Sistema'
     description: 'Aprende sobre las etapas del proceso de boot de Linux.'
@@ -21,7 +31,7 @@ translations:
     description: 'Linux の起動プロセスの段階について学びましょう。'
   ko:
     title: '시스템 부팅'
-    description: 'Linux boot process 의 단계에 대해 배우세요.'
+    description: 'Linux 부팅 과정의 각 단계를 알아보세요.'
   pt:
     title: 'Inicializar o Sistema'
     description: 'Aprenda sobre as etapas do processo de boot do Linux.'

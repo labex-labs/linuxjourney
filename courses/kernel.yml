@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Kernel'
     description: 'The most important part of the Linux system; learn about how it works and how to configure it.'
+    faqs:
+      - question: 'What does the Linux kernel do?'
+        answer: 'The kernel manages hardware, memory, processes, and access to system resources while providing system calls that programs use to request services.'
+      - question: 'Will I learn about kernel modules?'
+        answer: 'Yes. The course explains how modules extend the kernel and introduces tools such as lsmod and modprobe for inspecting and managing them.'
+      - question: 'Do I need to compile a kernel?'
+        answer: 'No. The course focuses on kernel concepts, locations, versions, installation, modules, privilege levels, and system calls rather than requiring a custom build.'
+    meta_title: 'Linux Kernel Fundamentals Course | Linux Journey'
+    meta_description: 'Learn what the Linux kernel does, where it is stored, how system calls and privilege levels work, and how to manage modules and kernel versions.'
+    meta_keywords: 'Linux kernel, kernel modules, system calls, privilege levels, modprobe, kernel installation, vmlinuz'
   de:
     title: 'Kernel'
     description: 'Der wichtigste Teil des Linux-Systems; erfahren Sie, wie es funktioniert und wie Sie es konfigurieren.'

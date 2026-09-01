@@ -7,27 +7,37 @@ translations:
   en:
     title: 'The Filesystem'
     description: 'Learn about the Linux filesystem, the different types of filesystems, partitioning, and more.'
+    faqs:
+      - question: 'What storage topics are covered?'
+        answer: 'The course covers disk anatomy, partitioning, filesystem types and creation, mounting, /etc/fstab, inodes, links, swap, usage reporting, and repair.'
+      - question: 'Will I need a spare disk to follow the course?'
+        answer: 'No. You can learn the concepts without changing a disk. Use a disposable virtual disk or test environment before practicing partitioning or repair commands.'
+      - question: 'What is the difference between a disk and a filesystem?'
+        answer: 'A disk is a storage device that may contain partitions, while a filesystem organizes files and metadata inside a partition or other storage volume.'
+    meta_title: 'Linux Filesystem Course | Linux Journey'
+    meta_description: 'Explore Linux filesystems, disk layout, partitions, inodes, mounting, fstab, swap, links, disk usage, creation, and filesystem repair.'
+    meta_keywords: 'Linux filesystem, disk partitioning, mount, fstab, inodes, swap, symlinks, filesystem repair, disk usage'
   de:
     title: 'Das Dateisystem'
-    description: 'Lernen Sie das Linux filesystem, die verschiedenen Arten von filesystems, partitioning und mehr kennen.'
+    description: 'Lernen Sie das Linux-Dateisystem, verschiedene Dateisystemtypen, Partitionierung und weitere Grundlagen kennen.'
   es:
-    title: 'El Filesystem'
-    description: 'Aprende sobre el Linux filesystem, los diferentes tipos de filesystems, partitioning y más.'
+    title: 'El Sistema de Archivos'
+    description: 'Aprende sobre el sistema de archivos de Linux, sus distintos tipos, el particionado y otros conceptos.'
   fr:
-    title: 'Le Filesystem'
-    description: 'Apprenez-en davantage sur le Linux filesystem, les différents types de filesystems, le partitioning, et plus encore.'
+    title: 'Le Système de Fichiers'
+    description: 'Découvrez le système de fichiers Linux, les différents types de systèmes de fichiers, le partitionnement et plus encore.'
   ja:
     title: 'ファイルシステム'
     description: 'Linux ファイルシステム、さまざまな種類のファイルシステム、パーティショニングなどについて学びましょう。'
   ko:
     title: '파일 시스템'
-    description: 'Linux filesystem, 다양한 유형의 filesystems, partitioning 등에 대해 배우세요.'
+    description: 'Linux 파일 시스템, 다양한 파일 시스템 유형, 파티셔닝 등을 알아보세요.'
   pt:
-    title: 'O Filesystem'
-    description: 'Aprenda sobre o filesystem Linux, os diferentes tipos de filesystems, particionamento e muito mais.'
+    title: 'O Sistema de Arquivos'
+    description: 'Aprenda sobre o sistema de arquivos Linux, seus diferentes tipos, particionamento e outros conceitos.'
   ru:
     title: 'Файловая система'
-    description: 'Узнайте о файловой системе Linux, различных типах filesystems, partitioning и многом другом.'
+    description: 'Изучите файловую систему Linux, различные типы файловых систем, разметку дисков и другие основы.'
   zh:
     title: '文件系统'
-    description: '了解 Linux filesystem、不同类型的文件系统、分区等。'
+    description: '了解 Linux 文件系统、不同的文件系统类型、磁盘分区及其他基础知识。'

@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Text-Fu'
     description: 'Learn basic text manipulation and navigation.'
+    faqs:
+      - question: 'What will I learn in Text-Fu?'
+        answer: 'You will learn to search, filter, transform, combine, and redirect text with tools such as grep, cut, sort, uniq, tr, head, tail, and tee.'
+      - question: 'Should I complete the Command Line course first?'
+        answer: 'Yes. Familiarity with files, directories, and basic shell commands will make the text-processing examples easier to understand.'
+      - question: 'Why are pipes and redirection important?'
+        answer: 'They let you connect small commands into repeatable workflows, control input and output, and process data without opening a graphical editor.'
+    meta_title: 'Linux Text Processing Course | Linux Journey'
+    meta_description: 'Master Linux text streams and essential tools such as grep, sort, cut, head, tail, tr, uniq, pipes, and input or output redirection.'
+    meta_keywords: 'Linux text processing, grep, pipes, redirection, sort command, cut command, stdin stdout stderr'
   de:
     title: 'Text-Fu'
     description: 'Lernen Sie grundlegende Textmanipulation und -navigation.'

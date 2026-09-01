@@ -7,27 +7,37 @@ translations:
   en:
     title: 'Subnetting'
     description: 'Learn about subnets and how to do subnet arithmetic!'
+    faqs:
+      - question: 'What calculations will I learn?'
+        answer: 'You will learn how addresses, prefix lengths, subnet masks, and host ranges relate, with subnet arithmetic and a practical reference lesson.'
+      - question: 'Does the course cover both IPv4 and IPv6?'
+        answer: 'Yes. Separate lessons introduce IPv4 and IPv6, while the subnet and CIDR concepts help you reason about address allocation.'
+      - question: 'Should I understand binary numbers first?'
+        answer: 'Basic binary familiarity is helpful, but the subnet math lessons are designed to build the connection between bits, prefixes, masks, and address ranges.'
+    meta_title: 'IP Addressing and Subnetting Course | Linux Journey'
+    meta_description: 'Learn IPv4, IPv6, subnets, CIDR notation, subnet arithmetic, NAT, and practical techniques for understanding network address ranges.'
+    meta_keywords: 'subnetting, subnet math, CIDR, IPv4, IPv6, NAT, network addressing, subnet mask'
   de:
     title: 'Subnetting'
-    description: 'Lernen Sie subnets und wie man subnet arithmetic durchführt!'
+    description: 'Lernen Sie Subnetze und die Berechnung von Subnetzbereichen kennen.'
   es:
     title: 'Subnetting'
-    description: '¡Aprende sobre subnets y cómo hacer subnet arithmetic!'
+    description: 'Aprende sobre subredes y a calcular sus rangos de direcciones.'
   fr:
     title: 'Subnetting'
-    description: 'Apprenez-en davantage sur les subnets et comment faire le subnet arithmetic !'
+    description: 'Découvrez les sous-réseaux et apprenez à calculer leurs plages d’adresses.'
   ja:
     title: 'サブネット化'
     description: 'サブネットとサブネット計算の方法を学びましょう！'
   ko:
     title: '서브넷팅'
-    description: 'subnets 과 subnet arithmetic 을 하는 방법에 대해 배우세요!'
+    description: '서브넷과 주소 범위를 계산하는 방법을 알아보세요.'
   pt:
     title: 'Subnetting'
-    description: 'Aprenda sobre subnets e como fazer aritmética de subnet!'
+    description: 'Aprenda sobre sub-redes e a calcular seus intervalos de endereços.'
   ru:
     title: 'Подсети'
-    description: 'Узнайте о subnets и как выполнять арифметику подсетей!'
+    description: 'Изучите подсети и научитесь рассчитывать диапазоны адресов.'
   zh:
     title: '子网划分'
     description: '了解子网以及如何进行子网计算！'

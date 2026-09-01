@@ -7,9 +7,19 @@ translations:
   en:
     title: 'Init'
     description: 'Learn about the different init systems: SysV, Upstart, and systemd.'
+    faqs:
+      - question: 'Which init systems are covered?'
+        answer: 'The course covers System V, Upstart, and systemd, explaining their different approaches to starting, stopping, and organizing system services.'
+      - question: 'Is systemd the main focus?'
+        answer: 'Systemd is important on modern distributions, but the historical System V and Upstart lessons help you understand older systems and the evolution of service management.'
+      - question: 'Does the course cover shutdown and reboot?'
+        answer: 'Yes. The power-states lesson explains common ways to halt, power off, and restart Linux systems safely.'
+    meta_title: 'Linux Init Systems Course | Linux Journey'
+    meta_description: 'Compare System V, Upstart, and systemd while learning how Linux init systems start services, organize boot targets, and manage power states.'
+    meta_keywords: 'Linux init system, systemd, System V, Upstart, systemctl, services, systemd targets, shutdown reboot'
   de:
     title: 'Init'
-    description: 'Lernen Sie die verschiedenen init systems kennen: SysV, Upstart und systemd.'
+    description: 'Lernen Sie die verschiedenen Init-Systeme SysV, Upstart und systemd kennen.'
   es:
     title: 'Init'
     description: 'Aprende sobre los diferentes sistemas init: SysV, Upstart y systemd.'

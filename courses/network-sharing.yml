@@ -7,12 +7,22 @@ translations:
   en:
     title: 'Network Sharing'
     description: 'Learn about network sharing with rsync, scp, nfs, and more.'
+    faqs:
+      - question: 'Which sharing methods are covered?'
+        answer: 'The course introduces file-sharing concepts, rsync, NFS, Samba, and a simple Python HTTP server so you can compare synchronization and network access methods.'
+      - question: 'Should I use NFS or Samba?'
+        answer: 'NFS is common between Unix-like systems, while Samba is useful for SMB compatibility across Linux, Windows, and other clients. Your network determines the best fit.'
+      - question: 'Is a simple HTTP server safe for public use?'
+        answer: 'The lesson’s simple server is intended for controlled local sharing and testing, not as a hardened public web server. Avoid exposing sensitive directories.'
+    meta_title: 'Linux Network File Sharing Course | Linux Journey'
+    meta_description: 'Learn practical Linux network sharing with rsync, secure copy concepts, NFS, Samba, and a simple HTTP server for local file access.'
+    meta_keywords: 'Linux file sharing, rsync, NFS, Samba, simple HTTP server, network shares, file synchronization'
   de:
     title: 'Netzwerkfreigabe'
     description: 'Lernen Sie die Netzwerkfreigabe mit rsync, scp, nfs und mehr kennen.'
   es:
     title: 'Compartir Red'
-    description: 'Aprende sobre network sharing con rsync, scp, nfs y más.'
+    description: 'Aprende a compartir recursos en red con rsync, scp, NFS y otras herramientas.'
   fr:
     title: 'Partage Réseau'
     description: 'Apprenez-en davantage sur le partage réseau avec rsync, scp, nfs, et plus encore.'
@@ -21,7 +31,7 @@ translations:
     description: 'rsync、scp、nfs などを使ったネットワーク共有について学びましょう。'
   ko:
     title: '네트워크 공유'
-    description: 'rsync, scp, nfs 등을 사용한 network sharing 에 대해 배우세요.'
+    description: 'rsync, scp, NFS 등을 사용한 네트워크 공유 방법을 알아보세요.'
   pt:
     title: 'Compartilhamento de Rede'
     description: 'Aprenda sobre compartilhamento de rede com rsync, scp, nfs e muito mais.'

@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Logging'
     description: 'Learn about system logs and the /var/log directory.'
+    faqs:
+      - question: 'Which Linux logs are explained?'
+        answer: 'The course covers general system logs, authentication events, kernel messages, syslog, common files under /var/log, and log rotation.'
+      - question: 'Do log locations differ between distributions?'
+        answer: 'Yes. File names and logging services can vary, but the course teaches concepts that help you identify the relevant source on your system.'
+      - question: 'Why is log rotation necessary?'
+        answer: 'Rotation limits storage growth while retaining useful history, helping systems avoid disk exhaustion and keeping archived logs manageable.'
+    meta_title: 'Linux System Logging Course | Linux Journey'
+    meta_description: 'Learn how Linux records system, authentication, and kernel events; find logs under /var/log; use syslog; and manage rotation and retention.'
+    meta_keywords: 'Linux logs, var log, syslog, authentication logs, kernel logs, logrotate, system logging, log management'
   de:
     title: 'Protokollierung'
     description: 'Lernen Sie Systemprotokolle und das Verzeichnis /var/log kennen.'

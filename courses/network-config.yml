@@ -7,12 +7,22 @@ translations:
   en:
     title: 'Network Config'
     description: 'Learn about network configuration using Linux tools!'
+    faqs:
+      - question: 'Which Linux networking tools are covered?'
+        answer: 'The course introduces network interfaces, dhclient, routing commands, ARP information, and NetworkManager for understanding and configuring connectivity.'
+      - question: 'Will the exact commands work on every distribution?'
+        answer: 'Tools and configuration files can differ by distribution and version, but the underlying interface, address, route, neighbor, and DNS concepts remain useful.'
+      - question: 'Can network changes disconnect my system?'
+        answer: 'Yes. Changing an active interface, address, route, or DHCP configuration can interrupt access, so practice locally or ensure you have a recovery path.'
+    meta_title: 'Linux Network Configuration Course | Linux Journey'
+    meta_description: 'Learn Linux network interfaces, DHCP clients, routing commands, ARP neighbor information, and NetworkManager configuration fundamentals.'
+    meta_keywords: 'Linux network configuration, NetworkManager, network interfaces, dhclient, route command, ARP, IP configuration'
   de:
     title: 'Netzwerkkonfiguration'
     description: 'Lernen Sie die Netzwerkkonfiguration mit Linux-Tools!'
   es:
     title: 'Configuración de Red'
-    description: '¡Aprende sobre network configuration usando herramientas de Linux!'
+    description: 'Aprende a configurar redes con herramientas de Linux.'
   fr:
     title: 'Configuration Réseau'
     description: 'Apprenez-en davantage sur la configuration réseau à l''aide des outils Linux !'
@@ -21,7 +31,7 @@ translations:
     description: 'Linux ツールを使ったネットワーク設定について学びましょう！'
   ko:
     title: '네트워크 구성'
-    description: 'Linux 도구를 사용한 network configuration 에 대해 배우세요!'
+    description: 'Linux 도구를 사용한 네트워크 구성 방법을 알아보세요.'
   pt:
     title: 'Configuração de Rede'
     description: 'Aprenda sobre configuração de rede usando ferramentas Linux!'

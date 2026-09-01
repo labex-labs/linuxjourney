@@ -7,6 +7,16 @@ translations:
   en:
     title: 'User Management'
     description: 'Learn about user roles and management.'
+    faqs:
+      - question: 'What account files does this course explain?'
+        answer: 'You will learn the roles of /etc/passwd, /etc/shadow, and /etc/group, including how Linux stores account, password, and group information.'
+      - question: 'Which user-management tasks are covered?'
+        answer: 'The lessons cover users and groups, root access, account files, and common tools for creating, modifying, inspecting, and removing accounts.'
+      - question: 'Do these lessons require administrator access?'
+        answer: 'Reading the explanations does not, but many account changes require root or sudo privileges. Practice only in a system where you are authorized to administer users.'
+    meta_title: 'Linux User Management Course | Linux Journey'
+    meta_description: 'Learn Linux users and groups, account databases, root privileges, passwords, and practical commands for safely managing local user accounts.'
+    meta_keywords: 'Linux user management, users and groups, passwd file, shadow file, root user, useradd, group management'
   de:
     title: 'Benutzerverwaltung'
     description: 'Lernen Sie Benutzerrollen und -verwaltung kennen.'

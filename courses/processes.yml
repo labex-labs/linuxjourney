@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Processes'
     description: 'Learn about the running processes on the system.'
+    faqs:
+      - question: 'What process-management tools will I learn?'
+        answer: 'You will use concepts and tools including ps, kill, signals, job control, foreground and background jobs, niceness, terminals, and /proc.'
+      - question: 'What is the difference between a process and a job?'
+        answer: 'A process is a running program tracked by the kernel, while a shell job is the shell’s way of grouping and controlling commands in a session.'
+      - question: 'Is this course useful for troubleshooting?'
+        answer: 'Yes. Understanding process states, signals, priorities, and termination helps you investigate slow, stuck, or misbehaving programs safely.'
+    meta_title: 'Linux Processes Course | Linux Journey'
+    meta_description: 'Learn how Linux creates, tracks, schedules, controls, and terminates processes using ps, signals, job control, niceness, and the /proc filesystem.'
+    meta_keywords: 'Linux processes, ps command, kill command, process signals, job control, proc filesystem, process states, nice'
   de:
     title: 'Prozesse'
     description: 'Lernen Sie die laufenden Prozesse auf dem System kennen.'

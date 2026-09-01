@@ -7,27 +7,37 @@ translations:
   en:
     title: 'Command Line'
     description: 'Learn the fundamentals of the command line, navigating files, directories, and more.'
+    faqs:
+      - question: 'What commands are covered in this course?'
+        answer: 'The course covers core commands including pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man, history, and aliases.'
+      - question: 'Is prior command-line experience required?'
+        answer: 'No. The lessons begin with the shell and basic navigation, then build toward everyday file operations, command discovery, and efficient terminal use.'
+      - question: 'Can I follow the lessons on macOS or Windows?'
+        answer: 'Many concepts also work in macOS terminals and Windows Linux environments, but a Linux shell provides the most consistent experience.'
+    meta_title: 'Linux Command Line Course | Linux Journey'
+    meta_description: 'Learn essential Linux command-line skills for navigating directories, managing files, finding help, inspecting content, and working efficiently in a shell.'
+    meta_keywords: 'Linux command line, shell basics, ls command, cd command, file management, terminal tutorial, Linux commands'
   de:
-    title: 'Command Line'
-    description: 'Lernen Sie die Grundlagen der command line, das Navigieren in Dateien, Verzeichnissen und mehr.'
+    title: 'Befehlszeile'
+    description: 'Lernen Sie die Grundlagen der Befehlszeile sowie die Navigation in Dateien und Verzeichnissen.'
   es:
-    title: 'Command Line'
-    description: 'Aprende los fundamentos de la command line, navegando archivos, directorios y más.'
+    title: 'Línea de Comandos'
+    description: 'Aprende los fundamentos de la línea de comandos y a navegar por archivos y directorios.'
   fr:
-    title: 'Command Line'
-    description: 'Apprenez les fondamentaux de la command line, la navigation dans les fichiers, les répertoires, et plus encore.'
+    title: 'Ligne de Commande'
+    description: 'Apprenez les fondamentaux de la ligne de commande et la navigation dans les fichiers et répertoires.'
   ja:
     title: 'コマンドライン'
     description: 'コマンドラインの基本、ファイルやディレクトリの操作などを学びましょう。'
   ko:
-    title: 'Command Line'
-    description: 'command line 의 기본, 파일 및 디렉토리 탐색 등을 배우세요.'
+    title: '명령줄'
+    description: '명령줄의 기본과 파일 및 디렉터리를 탐색하는 방법을 알아보세요.'
   pt:
     title: 'Linha de Comando'
     description: 'Aprenda os fundamentos da linha de comando, navegando por arquivos, diretórios e muito mais.'
   ru:
     title: 'Командная строка'
-    description: 'Изучите основы command line, навигацию по файлам, каталогам и многое другое.'
+    description: 'Изучите основы командной строки и навигацию по файлам и каталогам.'
   zh:
     title: '命令行'
     description: '学习命令行的基础知识，导航文件、目录等。'

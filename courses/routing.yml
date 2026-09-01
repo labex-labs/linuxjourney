@@ -7,12 +7,22 @@ translations:
   en:
     title: 'Routing'
     description: 'Learn how packets are routed across networks!'
+    faqs:
+      - question: 'What routing protocols are introduced?'
+        answer: 'The course explains the ideas behind distance-vector and link-state protocols and introduces BGP for exchanging routes between large networks.'
+      - question: 'Will I learn how to read a routing table?'
+        answer: 'Yes. A dedicated lesson explains routing-table entries and how systems choose a path when forwarding traffic toward a destination.'
+      - question: 'Do I need to complete Subnetting first?'
+        answer: 'A working understanding of IP addresses and network prefixes is recommended because routing decisions operate on those address ranges.'
+    meta_title: 'Network Routing Fundamentals Course | Linux Journey'
+    meta_description: 'Learn how routers forward packets, read routing tables, and use distance-vector, link-state, and BGP concepts to exchange network routes.'
+    meta_keywords: 'network routing, routing table, routers, packet path, distance vector, link state, BGP, routing protocols'
   de:
     title: 'Routing'
-    description: 'Lernen Sie, wie packets über Netzwerke geroutet werden!'
+    description: 'Lernen Sie, wie Pakete durch Netzwerke geroutet werden.'
   es:
     title: 'Enrutamiento'
-    description: '¡Aprende cómo se enrutan los packets a través de las redes!'
+    description: 'Aprende cómo se enrutan los paquetes a través de las redes.'
   fr:
     title: 'Routage'
     description: 'Apprenez comment les paquets sont routés à travers les réseaux !'
@@ -21,7 +31,7 @@ translations:
     description: 'パケットがネットワークを介してどのようにルーティングされるかを学びましょう！'
   ko:
     title: '라우팅'
-    description: 'packets 이 networks 를 통해 어떻게 routed 되는지 배우세요!'
+    description: '패킷이 네트워크를 통해 라우팅되는 방식을 알아보세요.'
   pt:
     title: 'Roteamento'
     description: 'Aprenda como os pacotes são roteados através das redes!'

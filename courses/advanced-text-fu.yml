@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Advanced Text-Fu'
     description: 'Navigate text like a Linux spider monkey with Vim and Emacs.'
+    faqs:
+      - question: 'What editors are taught in this course?'
+        answer: 'The course introduces both Vim and Emacs, covering navigation, editing, file operations, help, search patterns, and safe ways to exit each editor.'
+      - question: 'Do I need to master both Vim and Emacs?'
+        answer: 'No. Learning the fundamentals of both helps you work on unfamiliar systems, but you can choose one editor for deeper daily use.'
+      - question: 'Are regular expressions included?'
+        answer: 'Yes. A dedicated lesson explains regular expressions so you can recognize patterns and perform more powerful searches in editors and command-line tools.'
+    meta_title: 'Vim, Emacs, and Regex Course | Linux Journey'
+    meta_description: 'Develop advanced Linux text-editing skills with Vim and Emacs, including navigation, editing, search, file operations, and regular expressions.'
+    meta_keywords: 'Vim tutorial, Emacs tutorial, regular expressions, Linux text editor, Vim navigation, Vim search, Emacs editing'
   de:
     title: 'Fortgeschrittenes Text-Fu'
     description: 'Navigieren Sie Text wie ein Linux-Spinnenaffe mit Vim und Emacs.'

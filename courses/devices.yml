@@ -7,12 +7,22 @@ translations:
   en:
     title: 'Devices'
     description: 'Learn about Linux devices and how they interact with the kernel and user space.'
+    faqs:
+      - question: 'How does Linux represent hardware devices?'
+        answer: 'Linux exposes devices through special files in /dev and information in sysfs, while udev dynamically manages device nodes and related events.'
+      - question: 'Which hardware inspection tools are included?'
+        answer: 'The course introduces lsusb, lspci, and lsscsi for identifying USB, PCI, and SCSI devices, along with common Linux device naming conventions.'
+      - question: 'Is the dd command safe to practice?'
+        answer: 'dd can overwrite disks when given the wrong destination. Review every input and output path and practice only with disposable files or devices you can safely replace.'
+    meta_title: 'Linux Devices Course | Linux Journey'
+    meta_description: 'Learn how Linux represents and manages hardware through /dev, sysfs, device types and names, udev, hardware listing tools, and the dd command.'
+    meta_keywords: 'Linux devices, dev directory, sysfs, udev, lsusb, lspci, lsscsi, dd command, device files'
   de:
     title: 'Geräte'
-    description: 'Lernen Sie Linux-Geräte kennen und wie sie mit dem kernel und dem user space interagieren.'
+    description: 'Lernen Sie Linux-Geräte und ihr Zusammenspiel mit dem Kernel und dem Benutzerbereich kennen.'
   es:
     title: 'Dispositivos'
-    description: 'Aprende sobre los dispositivos Linux y cómo interactúan con el kernel y el user space.'
+    description: 'Aprende sobre los dispositivos Linux y cómo interactúan con el kernel y el espacio de usuario.'
   fr:
     title: 'Périphériques'
     description: 'Apprenez-en davantage sur les périphériques Linux et leur interaction avec le kernel et l''espace utilisateur.'
@@ -21,13 +31,13 @@ translations:
     description: 'Linux デバイスと、それらが kernel およびユーザー空間とどのように相互作用するかを学びましょう。'
   ko:
     title: '장치'
-    description: 'Linux 장치와 이들이 kernel 및 user space 와 상호 작용하는 방식에 대해 배우세요.'
+    description: 'Linux 장치가 커널 및 사용자 공간과 상호 작용하는 방식을 알아보세요.'
   pt:
     title: 'Dispositivos'
-    description: 'Aprenda sobre os dispositivos Linux e como eles interagem com o kernel e o user space.'
+    description: 'Aprenda sobre dispositivos Linux e como eles interagem com o kernel e o espaço do usuário.'
   ru:
     title: 'Устройства'
-    description: 'Узнайте об устройствах Linux и о том, как они взаимодействуют с kernel и user space.'
+    description: 'Узнайте об устройствах Linux и их взаимодействии с ядром и пространством пользователя.'
   zh:
     title: '设备'
     description: '了解 Linux 设备以及它们如何与 kernel 和用户空间交互。'

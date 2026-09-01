@@ -7,27 +7,37 @@ translations:
   en:
     title: 'Network Basics'
     description: 'Learn about networking basics and the TCP/IP model.'
+    faqs:
+      - question: 'What networking models will I learn?'
+        answer: 'The course explains both the OSI and TCP/IP models and connects them to the link, network, transport, and application layers used in real networks.'
+      - question: 'Is previous networking experience required?'
+        answer: 'No. The lessons introduce core terminology, addressing, DHCP, and layered communication before later courses cover subnetting, routing, and configuration.'
+      - question: 'Why learn both OSI and TCP/IP?'
+        answer: 'The OSI model is useful for reasoning and troubleshooting, while the TCP/IP model more directly reflects the protocol suite used by modern networks.'
+    meta_title: 'Computer Networking Basics Course | Linux Journey'
+    meta_description: 'Build a foundation in networking with the OSI and TCP/IP models, addressing, DHCP, and the link, network, transport, and application layers.'
+    meta_keywords: 'networking basics, OSI model, TCP IP model, DHCP, network addressing, link layer, transport layer, application layer'
   de:
     title: 'Netzwerkgrundlagen'
-    description: 'Lernen Sie die Grundlagen des networking und das TCP/IP model kennen.'
+    description: 'Lernen Sie die Grundlagen der Netzwerktechnik und das TCP/IP-Modell kennen.'
   es:
     title: 'Conceptos Básicos de Red'
-    description: 'Aprende sobre los conceptos básicos de networking y el modelo TCP/IP.'
+    description: 'Aprende los fundamentos de las redes y el modelo TCP/IP.'
   fr:
     title: 'Bases du Réseau'
-    description: 'Apprenez-en davantage sur les bases du networking et le modèle TCP/IP.'
+    description: 'Apprenez les fondamentaux des réseaux et le modèle TCP/IP.'
   ja:
     title: 'ネットワークの基本'
     description: 'ネットワーキングの基本と TCP/IP モデルについて学びましょう。'
   ko:
     title: '네트워크 기본'
-    description: 'networking 기본 및 TCP/IP model 에 대해 배우세요.'
+    description: '네트워크의 기본과 TCP/IP 모델을 알아보세요.'
   pt:
     title: 'Noções Básicas de Rede'
     description: 'Aprenda sobre noções básicas de rede e o modelo TCP/IP.'
   ru:
     title: 'Основы сети'
-    description: 'Узнайте об основах networking и модели TCP/IP.'
+    description: 'Изучите основы компьютерных сетей и модель TCP/IP.'
   zh:
     title: '网络基础'
     description: '了解网络基础知识和 TCP/IP 模型。'

@@ -7,27 +7,37 @@ translations:
   en:
     title: 'Troubleshooting'
     description: 'Learn about common networking tools to help you diagnose and troubleshoot issues!'
+    faqs:
+      - question: 'Which diagnostic tools are covered?'
+        answer: 'The course covers ICMP, ping, traceroute, netstat-style connection inspection, and packet analysis for investigating connectivity and traffic flow.'
+      - question: 'What troubleshooting order should I use?'
+        answer: 'Start with the symptom and test progressively: local configuration, reachability, path behavior, listening services, connections, and packets when deeper evidence is needed.'
+      - question: 'Do packet captures contain sensitive data?'
+        answer: 'They can. Captures may include addresses, hostnames, protocol details, and unencrypted content, so collect and share them only with proper authorization.'
+    meta_title: 'Linux Network Troubleshooting Course | Linux Journey'
+    meta_description: 'Diagnose Linux network problems with ICMP, ping, traceroute, socket inspection, netstat concepts, and packet analysis techniques.'
+    meta_keywords: 'Linux network troubleshooting, ping, traceroute, ICMP, netstat, packet analysis, network diagnostics'
   de:
     title: 'Fehlerbehebung'
-    description: 'Lernen Sie gängige networking tools kennen, die Ihnen bei der Diagnose und Fehlerbehebung helfen!'
+    description: 'Lernen Sie gängige Netzwerkwerkzeuge zur Diagnose und Fehlerbehebung kennen.'
   es:
     title: 'Resolución de Problemas'
-    description: '¡Aprende sobre herramientas comunes de networking para ayudarte a diagnosticar y solucionar problemas!'
+    description: 'Aprende a diagnosticar y resolver problemas con herramientas de red habituales.'
   fr:
     title: 'Dépannage'
-    description: 'Apprenez-en davantage sur les outils de networking courants pour vous aider à diagnostiquer et dépanner les problèmes !'
+    description: 'Apprenez à diagnostiquer et résoudre les problèmes avec les outils réseau courants.'
   ja:
     title: 'トラブルシューティング'
     description: '問題の診断とトラブルシューティングに役立つ一般的なネットワークツールについて学びましょう！'
   ko:
     title: '문제 해결'
-    description: '문제를 진단하고 troubleshoot 하는 데 도움이 되는 일반적인 networking 도구에 대해 배우세요!'
+    description: '일반적인 네트워크 도구로 문제를 진단하고 해결하는 방법을 알아보세요.'
   pt:
     title: 'Resolução de Problemas'
     description: 'Aprenda sobre ferramentas comuns de rede para ajudar a diagnosticar e resolver problemas!'
   ru:
     title: 'Устранение неполадок'
-    description: 'Узнайте об общих инструментах networking, которые помогут вам диагностировать и устранять проблемы!'
+    description: 'Изучите распространённые сетевые инструменты для диагностики и устранения неполадок.'
   zh:
     title: '故障排除'
     description: '了解常用的网络工具，帮助您诊断和排除问题！'

@@ -7,21 +7,31 @@ translations:
   en:
     title: 'Packages'
     description: 'Learn all about the dpkg, apt-get, rpm, and yum package management tools.'
+    faqs:
+      - question: 'Which package managers are covered?'
+        answer: 'The course explains dpkg and apt for Debian-based systems, rpm and yum for RPM-based systems, plus the shared ideas behind packages and repositories.'
+      - question: 'Will I learn to install software from source?'
+        answer: 'Yes. The lessons introduce compressed archives and the basic workflow for obtaining, compiling, and installing source code.'
+      - question: 'Why do Linux distributions use different package tools?'
+        answer: 'Distributions organize software around different package formats and repository ecosystems, but dependencies, updates, and trusted sources are common concerns.'
+    meta_title: 'Linux Package Management Course | Linux Journey'
+    meta_description: 'Learn Linux software distribution, dependencies, repositories, archives, source builds, and package tools including apt, yum, dpkg, and rpm.'
+    meta_keywords: 'Linux package management, apt, yum, dpkg, rpm, package repositories, dependencies, tar gzip, compile source'
   de:
     title: 'Pakete'
     description: 'Erfahren Sie alles über die Paketverwaltungstools dpkg, apt-get, rpm und yum.'
   es:
     title: 'Paquetes'
-    description: 'Aprende todo sobre las herramientas de package management dpkg, apt-get, rpm y yum.'
+    description: 'Aprende a usar las herramientas de gestión de paquetes dpkg, apt-get, rpm y yum.'
   fr:
     title: 'Packages'
-    description: 'Apprenez tout sur les outils de package management dpkg, apt-get, rpm et yum.'
+    description: 'Apprenez à utiliser les outils de gestion de paquets dpkg, apt-get, rpm et yum.'
   ja:
     title: 'パッケージ'
-    description: 'Learn all about the dpkg, apt-get, rpm, and yum package management tools.'
+    description: 'dpkg、apt-get、rpm、yum などのパッケージ管理ツールについて学びましょう。'
   ko:
     title: '패키지'
-    description: 'dpkg, apt-get, rpm, yum package management 도구에 대해 모두 배우세요.'
+    description: 'dpkg, apt-get, rpm, yum 패키지 관리 도구를 알아보세요.'
   pt:
     title: 'Pacotes'
     description: 'Aprenda tudo sobre as ferramentas de gerenciamento de pacotes dpkg, apt-get, rpm e yum.'

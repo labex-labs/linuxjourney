@@ -7,6 +7,16 @@ translations:
   en:
     title: 'Getting Started'
     description: 'What is Linux? Get started with choosing a distribution and installation.'
+    faqs:
+      - question: 'What will I learn in this course?'
+        answer: 'You will learn what Linux is, how it developed, and how major distributions such as Ubuntu, Debian, Fedora, Arch Linux, and Linux Mint differ.'
+      - question: 'Is this course suitable for complete beginners?'
+        answer: 'Yes. The course assumes no previous Linux experience and provides the background you need before moving on to command-line and system topics.'
+      - question: 'Do I need to install Linux before starting?'
+        answer: 'No. You can study the distribution guides first and decide which Linux environment, virtual machine, or live system best fits your needs.'
+    meta_title: 'Getting Started with Linux | Linux Journey'
+    meta_description: 'Start learning Linux by exploring its history, major distributions, installation choices, and how to select the right Linux system for your goals.'
+    meta_keywords: 'Linux basics, Linux distributions, choose a Linux distro, Ubuntu, Debian, Fedora, Arch Linux'
   de:
     title: 'Erste Schritte'
     description: 'Was ist Linux? Beginnen Sie mit der Auswahl einer Distribution und der Installation.'
