@@ -14,7 +14,7 @@ translations:
         answer: 'Yes. File names and logging services can vary, but the course teaches concepts that help you identify the relevant source on your system.'
       - question: 'Why is log rotation necessary?'
         answer: 'Rotation limits storage growth while retaining useful history, helping systems avoid disk exhaustion and keeping archived logs manageable.'
-    meta_title: 'Linux System Logging Course | Linux Journey'
+    meta_title: 'Linux System Logging Course'
     meta_description: 'Learn how Linux records system, authentication, and kernel events; find logs under /var/log; use syslog; and manage rotation and retention.'
     meta_keywords: 'Linux logs, var log, syslog, authentication logs, kernel logs, logrotate, system logging, log management'
   de:

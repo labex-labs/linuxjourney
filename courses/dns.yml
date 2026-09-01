@@ -14,7 +14,7 @@ translations:
         answer: 'You will learn practical lookup and diagnostic concepts using tools such as dig and nslookup, along with local resolver configuration and /etc/hosts.'
       - question: 'Is DNS only used for website addresses?'
         answer: 'No. DNS stores multiple record types used for services, mail, verification, reverse lookups, and other forms of name-based discovery.'
-    meta_title: 'DNS Fundamentals and Tools Course | Linux Journey'
+    meta_title: 'DNS Fundamentals and Tools Course'
     meta_description: 'Understand DNS components and query flow, local hosts files, resolver setup, record lookup tools, and practical DNS troubleshooting on Linux.'
     meta_keywords: 'DNS fundamentals, DNS lookup, dig command, nslookup, resolvers, DNS records, hosts file, DNS troubleshooting'
   de:

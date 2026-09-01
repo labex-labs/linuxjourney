@@ -14,7 +14,7 @@ translations:
         answer: 'No. The lessons introduce core terminology, addressing, DHCP, and layered communication before later courses cover subnetting, routing, and configuration.'
       - question: 'Why learn both OSI and TCP/IP?'
         answer: 'The OSI model is useful for reasoning and troubleshooting, while the TCP/IP model more directly reflects the protocol suite used by modern networks.'
-    meta_title: 'Computer Networking Basics Course | Linux Journey'
+    meta_title: 'Computer Networking Basics Course'
     meta_description: 'Build a foundation in networking with the OSI and TCP/IP models, addressing, DHCP, and the link, network, transport, and application layers.'
     meta_keywords: 'networking basics, OSI model, TCP IP model, DHCP, network addressing, link layer, transport layer, application layer'
   de:

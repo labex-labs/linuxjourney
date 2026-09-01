@@ -14,7 +14,7 @@ translations:
         answer: 'Yes. The lessons introduce compressed archives and the basic workflow for obtaining, compiling, and installing source code.'
       - question: 'Why do Linux distributions use different package tools?'
         answer: 'Distributions organize software around different package formats and repository ecosystems, but dependencies, updates, and trusted sources are common concerns.'
-    meta_title: 'Linux Package Management Course | Linux Journey'
+    meta_title: 'Linux Package Management Course'
     meta_description: 'Learn Linux software distribution, dependencies, repositories, archives, source builds, and package tools including apt, yum, dpkg, and rpm.'
     meta_keywords: 'Linux package management, apt, yum, dpkg, rpm, package repositories, dependencies, tar gzip, compile source'
   de:

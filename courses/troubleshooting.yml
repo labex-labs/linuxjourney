@@ -14,7 +14,7 @@ translations:
         answer: 'Start with the symptom and test progressively: local configuration, reachability, path behavior, listening services, connections, and packets when deeper evidence is needed.'
       - question: 'Do packet captures contain sensitive data?'
         answer: 'They can. Captures may include addresses, hostnames, protocol details, and unencrypted content, so collect and share them only with proper authorization.'
-    meta_title: 'Linux Network Troubleshooting Course | Linux Journey'
+    meta_title: 'Linux Network Troubleshooting Course'
     meta_description: 'Diagnose Linux network problems with ICMP, ping, traceroute, socket inspection, netstat concepts, and packet analysis techniques.'
     meta_keywords: 'Linux network troubleshooting, ping, traceroute, ICMP, netstat, packet analysis, network diagnostics'
   de:

@@ -14,7 +14,7 @@ translations:
         answer: 'NFS is common between Unix-like systems, while Samba is useful for SMB compatibility across Linux, Windows, and other clients. Your network determines the best fit.'
       - question: 'Is a simple HTTP server safe for public use?'
         answer: 'The lesson’s simple server is intended for controlled local sharing and testing, not as a hardened public web server. Avoid exposing sensitive directories.'
-    meta_title: 'Linux Network File Sharing Course | Linux Journey'
+    meta_title: 'Linux Network File Sharing Course'
     meta_description: 'Learn practical Linux network sharing with rsync, secure copy concepts, NFS, Samba, and a simple HTTP server for local file access.'
     meta_keywords: 'Linux file sharing, rsync, NFS, Samba, simple HTTP server, network shares, file synchronization'
   de:

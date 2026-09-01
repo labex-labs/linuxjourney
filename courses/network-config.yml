@@ -14,7 +14,7 @@ translations:
         answer: 'Tools and configuration files can differ by distribution and version, but the underlying interface, address, route, neighbor, and DNS concepts remain useful.'
       - question: 'Can network changes disconnect my system?'
         answer: 'Yes. Changing an active interface, address, route, or DHCP configuration can interrupt access, so practice locally or ensure you have a recovery path.'
-    meta_title: 'Linux Network Configuration Course | Linux Journey'
+    meta_title: 'Linux Network Configuration Course'
     meta_description: 'Learn Linux network interfaces, DHCP clients, routing commands, ARP neighbor information, and NetworkManager configuration fundamentals.'
     meta_keywords: 'Linux network configuration, NetworkManager, network interfaces, dhclient, route command, ARP, IP configuration'
   de:

@@ -14,7 +14,7 @@ translations:
         answer: 'Systemd is important on modern distributions, but the historical System V and Upstart lessons help you understand older systems and the evolution of service management.'
       - question: 'Does the course cover shutdown and reboot?'
         answer: 'Yes. The power-states lesson explains common ways to halt, power off, and restart Linux systems safely.'
-    meta_title: 'Linux Init Systems Course | Linux Journey'
+    meta_title: 'Linux Init Systems Course'
     meta_description: 'Compare System V, Upstart, and systemd while learning how Linux init systems start services, organize boot targets, and manage power states.'
     meta_keywords: 'Linux init system, systemd, System V, Upstart, systemctl, services, systemd targets, shutdown reboot'
   de:

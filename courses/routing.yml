@@ -14,7 +14,7 @@ translations:
         answer: 'Yes. A dedicated lesson explains routing-table entries and how systems choose a path when forwarding traffic toward a destination.'
       - question: 'Do I need to complete Subnetting first?'
         answer: 'A working understanding of IP addresses and network prefixes is recommended because routing decisions operate on those address ranges.'
-    meta_title: 'Network Routing Fundamentals Course | Linux Journey'
+    meta_title: 'Network Routing Fundamentals Course'
     meta_description: 'Learn how routers forward packets, read routing tables, and use distance-vector, link-state, and BGP concepts to exchange network routes.'
     meta_keywords: 'network routing, routing table, routers, packet path, distance vector, link state, BGP, routing protocols'
   de:

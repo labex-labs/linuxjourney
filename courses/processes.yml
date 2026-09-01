@@ -14,7 +14,7 @@ translations:
         answer: 'A process is a running program tracked by the kernel, while a shell job is the shell’s way of grouping and controlling commands in a session.'
       - question: 'Is this course useful for troubleshooting?'
         answer: 'Yes. Understanding process states, signals, priorities, and termination helps you investigate slow, stuck, or misbehaving programs safely.'
-    meta_title: 'Linux Processes Course | Linux Journey'
+    meta_title: 'Linux Processes Course'
     meta_description: 'Learn how Linux creates, tracks, schedules, controls, and terminates processes using ps, signals, job control, niceness, and the /proc filesystem.'
     meta_keywords: 'Linux processes, ps command, kill command, process signals, job control, proc filesystem, process states, nice'
   de:

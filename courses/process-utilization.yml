@@ -14,7 +14,7 @@ translations:
         answer: 'The lessons introduce tools and concepts including top, load averages, iostat, lsof, fuser, process threads, and cron.'
       - question: 'Is this course useful for diagnosing slow systems?'
         answer: 'Yes. It helps you distinguish CPU, memory, I/O, and process-related pressure before deciding where deeper investigation is needed.'
-    meta_title: 'Linux Performance Monitoring Course | Linux Journey'
+    meta_title: 'Linux Performance Monitoring Course'
     meta_description: 'Monitor Linux CPU, memory, disk I/O, processes, threads, open files, scheduled jobs, and overall system activity with practical tools.'
     meta_keywords: 'Linux performance monitoring, top command, CPU monitoring, memory monitoring, iostat, lsof, cron jobs, process threads'
   de:

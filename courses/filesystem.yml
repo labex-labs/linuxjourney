@@ -14,7 +14,7 @@ translations:
         answer: 'No. You can learn the concepts without changing a disk. Use a disposable virtual disk or test environment before practicing partitioning or repair commands.'
       - question: 'What is the difference between a disk and a filesystem?'
         answer: 'A disk is a storage device that may contain partitions, while a filesystem organizes files and metadata inside a partition or other storage volume.'
-    meta_title: 'Linux Filesystem Course | Linux Journey'
+    meta_title: 'Linux Filesystem Course'
     meta_description: 'Explore Linux filesystems, disk layout, partitions, inodes, mounting, fstab, swap, links, disk usage, creation, and filesystem repair.'
     meta_keywords: 'Linux filesystem, disk partitioning, mount, fstab, inodes, swap, symlinks, filesystem repair, disk usage'
   de:

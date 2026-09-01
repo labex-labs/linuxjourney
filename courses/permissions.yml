@@ -14,7 +14,7 @@ translations:
         answer: 'The lessons help you connect symbolic and numeric permission forms, so you can read and modify permissions confidently.'
       - question: 'Can changing permissions create security risks?'
         answer: 'Yes. Overly broad permissions or misuse of special bits can expose data or privileges, so the course emphasizes understanding each change before applying it.'
-    meta_title: 'Linux File Permissions Course | Linux Journey'
+    meta_title: 'Linux File Permissions Course'
     meta_description: 'Understand Linux file ownership and permissions, chmod, umask, process permissions, setuid, setgid, and the sticky bit through focused lessons.'
     meta_keywords: 'Linux file permissions, chmod, chown, umask, setuid, setgid, sticky bit, file ownership'
   de:

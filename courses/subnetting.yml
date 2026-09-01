@@ -14,7 +14,7 @@ translations:
         answer: 'Yes. Separate lessons introduce IPv4 and IPv6, while the subnet and CIDR concepts help you reason about address allocation.'
       - question: 'Should I understand binary numbers first?'
         answer: 'Basic binary familiarity is helpful, but the subnet math lessons are designed to build the connection between bits, prefixes, masks, and address ranges.'
-    meta_title: 'IP Addressing and Subnetting Course | Linux Journey'
+    meta_title: 'IP Addressing and Subnetting Course'
     meta_description: 'Learn IPv4, IPv6, subnets, CIDR notation, subnet arithmetic, NAT, and practical techniques for understanding network address ranges.'
     meta_keywords: 'subnetting, subnet math, CIDR, IPv4, IPv6, NAT, network addressing, subnet mask'
   de:

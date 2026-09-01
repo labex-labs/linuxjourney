@@ -14,7 +14,7 @@ translations:
         answer: 'No. The core boot sequence applies broadly, although firmware, bootloader settings, and init implementations can vary between systems.'
       - question: 'Why should I learn the boot process?'
         answer: 'Knowing which component runs at each stage helps you locate startup failures and choose the right logs, configuration, or recovery tool.'
-    meta_title: 'Linux Boot Process Course | Linux Journey'
+    meta_title: 'Linux Boot Process Course'
     meta_description: 'Understand each stage of the Linux boot process, from BIOS and the bootloader through kernel initialization and the init system.'
     meta_keywords: 'Linux boot process, BIOS, bootloader, GRUB, Linux kernel, init system, system startup'
   de:

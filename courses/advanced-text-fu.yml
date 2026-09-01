@@ -14,7 +14,7 @@ translations:
         answer: 'No. Learning the fundamentals of both helps you work on unfamiliar systems, but you can choose one editor for deeper daily use.'
       - question: 'Are regular expressions included?'
         answer: 'Yes. A dedicated lesson explains regular expressions so you can recognize patterns and perform more powerful searches in editors and command-line tools.'
-    meta_title: 'Vim, Emacs, and Regex Course | Linux Journey'
+    meta_title: 'Vim, Emacs, and Regex Course'
     meta_description: 'Develop advanced Linux text-editing skills with Vim and Emacs, including navigation, editing, search, file operations, and regular expressions.'
     meta_keywords: 'Vim tutorial, Emacs tutorial, regular expressions, Linux text editor, Vim navigation, Vim search, Emacs editing'
   de:

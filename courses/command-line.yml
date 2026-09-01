@@ -14,7 +14,7 @@ translations:
         answer: 'No. The lessons begin with the shell and basic navigation, then build toward everyday file operations, command discovery, and efficient terminal use.'
       - question: 'Can I follow the lessons on macOS or Windows?'
         answer: 'Many concepts also work in macOS terminals and Windows Linux environments, but a Linux shell provides the most consistent experience.'
-    meta_title: 'Linux Command Line Course | Linux Journey'
+    meta_title: 'Linux Command Line Course'
     meta_description: 'Learn essential Linux command-line skills for navigating directories, managing files, finding help, inspecting content, and working efficiently in a shell.'
     meta_keywords: 'Linux command line, shell basics, ls command, cd command, file management, terminal tutorial, Linux commands'
   de:

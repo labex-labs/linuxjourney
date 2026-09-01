@@ -14,7 +14,7 @@ translations:
         answer: 'The lessons cover users and groups, root access, account files, and common tools for creating, modifying, inspecting, and removing accounts.'
       - question: 'Do these lessons require administrator access?'
         answer: 'Reading the explanations does not, but many account changes require root or sudo privileges. Practice only in a system where you are authorized to administer users.'
-    meta_title: 'Linux User Management Course | Linux Journey'
+    meta_title: 'Linux User Management Course'
     meta_description: 'Learn Linux users and groups, account databases, root privileges, passwords, and practical commands for safely managing local user accounts.'
     meta_keywords: 'Linux user management, users and groups, passwd file, shadow file, root user, useradd, group management'
   de:

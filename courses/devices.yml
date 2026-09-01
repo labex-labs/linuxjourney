@@ -14,7 +14,7 @@ translations:
         answer: 'The course introduces lsusb, lspci, and lsscsi for identifying USB, PCI, and SCSI devices, along with common Linux device naming conventions.'
       - question: 'Is the dd command safe to practice?'
         answer: 'dd can overwrite disks when given the wrong destination. Review every input and output path and practice only with disposable files or devices you can safely replace.'
-    meta_title: 'Linux Devices Course | Linux Journey'
+    meta_title: 'Linux Devices Course'
     meta_description: 'Learn how Linux represents and manages hardware through /dev, sysfs, device types and names, udev, hardware listing tools, and the dd command.'
     meta_keywords: 'Linux devices, dev directory, sysfs, udev, lsusb, lspci, lsscsi, dd command, device files'
   de:

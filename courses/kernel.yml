@@ -14,7 +14,7 @@ translations:
         answer: 'Yes. The course explains how modules extend the kernel and introduces tools such as lsmod and modprobe for inspecting and managing them.'
       - question: 'Do I need to compile a kernel?'
         answer: 'No. The course focuses on kernel concepts, locations, versions, installation, modules, privilege levels, and system calls rather than requiring a custom build.'
-    meta_title: 'Linux Kernel Fundamentals Course | Linux Journey'
+    meta_title: 'Linux Kernel Fundamentals Course'
     meta_description: 'Learn what the Linux kernel does, where it is stored, how system calls and privilege levels work, and how to manage modules and kernel versions.'
     meta_keywords: 'Linux kernel, kernel modules, system calls, privilege levels, modprobe, kernel installation, vmlinuz'
   de:
