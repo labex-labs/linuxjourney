@@ -1,0 +1,33 @@
+id: dns
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/dns.png
+order_index: 6
+translations:
+  en:
+    title: 'DNS'
+    description: 'Everything and more that you wanted to know about DNS.'
+  de:
+    title: 'DNS'
+    description: 'Alles und mehr, was Sie über DNS wissen wollten.'
+  es:
+    title: 'DNS'
+    description: 'Todo y más que querías saber sobre DNS.'
+  fr:
+    title: 'DNS'
+    description: 'Tout ce que vous vouliez savoir et plus encore sur le DNS.'
+  ja:
+    title: 'DNS'
+    description: 'DNS について知りたかったことすべて、そしてそれ以上を学びましょう。'
+  ko:
+    title: 'DNS'
+    description: 'DNS 에 대해 알고 싶었던 모든 것과 그 이상.'
+  pt:
+    title: 'DNS'
+    description: 'Tudo e mais que você queria saber sobre DNS.'
+  ru:
+    title: 'DNS'
+    description: 'Все и даже больше, что вы хотели знать о DNS.'
+  zh:
+    title: 'DNS'
+    description: '所有您想了解的关于 DNS 的一切及更多。'

@@ -1,0 +1,33 @@
+id: advanced-text-fu
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/advanced-text-fu.png
+order_index: 3
+translations:
+  en:
+    title: 'Advanced Text-Fu'
+    description: 'Navigate text like a Linux spider monkey with Vim and Emacs.'
+  de:
+    title: 'Fortgeschrittenes Text-Fu'
+    description: 'Navigieren Sie Text wie ein Linux-Spinnenaffe mit Vim und Emacs.'
+  es:
+    title: 'Text-Fu Avanzado'
+    description: 'Navega texto como un mono araña de Linux con Vim y Emacs.'
+  fr:
+    title: 'Text-Fu Avancé'
+    description: 'Naviguez dans le texte comme un singe araignée Linux avec Vim et Emacs.'
+  ja:
+    title: '高度なテキスト操作'
+    description: 'Vim と Emacs を使って、Linux のクモザルのようにテキストを操作しましょう。'
+  ko:
+    title: '고급 Text-Fu'
+    description: 'Vim 과 Emacs 로 Linux 거미원숭이처럼 텍스트를 탐색하세요.'
+  pt:
+    title: 'Text-Fu Avançado'
+    description: 'Navegue por texto como um macaco-aranha Linux com Vim e Emacs.'
+  ru:
+    title: 'Продвинутый Text-Fu'
+    description: 'Навигируйте по тексту, как паукообразная обезьяна Linux, с помощью Vim и Emacs.'
+  zh:
+    title: '高级文本操作'
+    description: '使用 Vim 和 Emacs 像 Linux 蜘蛛猴一样导航文本。'

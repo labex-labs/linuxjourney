@@ -1,0 +1,33 @@
+id: network-config
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/network-config.png
+order_index: 4
+translations:
+  en:
+    title: 'Network Config'
+    description: 'Learn about network configuration using Linux tools!'
+  de:
+    title: 'Netzwerkkonfiguration'
+    description: 'Lernen Sie die Netzwerkkonfiguration mit Linux-Tools!'
+  es:
+    title: 'Configuración de Red'
+    description: '¡Aprende sobre network configuration usando herramientas de Linux!'
+  fr:
+    title: 'Configuration Réseau'
+    description: 'Apprenez-en davantage sur la configuration réseau à l''aide des outils Linux !'
+  ja:
+    title: 'ネットワーク設定'
+    description: 'Linux ツールを使ったネットワーク設定について学びましょう！'
+  ko:
+    title: '네트워크 구성'
+    description: 'Linux 도구를 사용한 network configuration 에 대해 배우세요!'
+  pt:
+    title: 'Configuração de Rede'
+    description: 'Aprenda sobre configuração de rede usando ferramentas Linux!'
+  ru:
+    title: 'Конфигурация сети'
+    description: 'Узнайте о конфигурации сети с помощью инструментов Linux!'
+  zh:
+    title: '网络配置'
+    description: '了解如何使用 Linux 工具进行网络配置！'

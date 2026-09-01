@@ -1,0 +1,33 @@
+id: filesystem
+category:
+  id: journeyman
+image_url: /images/linuxjourney/courses/filesystem.png
+order_index: 1
+translations:
+  en:
+    title: 'The Filesystem'
+    description: 'Learn about the Linux filesystem, the different types of filesystems, partitioning, and more.'
+  de:
+    title: 'Das Dateisystem'
+    description: 'Lernen Sie das Linux filesystem, die verschiedenen Arten von filesystems, partitioning und mehr kennen.'
+  es:
+    title: 'El Filesystem'
+    description: 'Aprende sobre el Linux filesystem, los diferentes tipos de filesystems, partitioning y más.'
+  fr:
+    title: 'Le Filesystem'
+    description: 'Apprenez-en davantage sur le Linux filesystem, les différents types de filesystems, le partitioning, et plus encore.'
+  ja:
+    title: 'ファイルシステム'
+    description: 'Linux ファイルシステム、さまざまな種類のファイルシステム、パーティショニングなどについて学びましょう。'
+  ko:
+    title: '파일 시스템'
+    description: 'Linux filesystem, 다양한 유형의 filesystems, partitioning 등에 대해 배우세요.'
+  pt:
+    title: 'O Filesystem'
+    description: 'Aprenda sobre o filesystem Linux, os diferentes tipos de filesystems, particionamento e muito mais.'
+  ru:
+    title: 'Файловая система'
+    description: 'Узнайте о файловой системе Linux, различных типах filesystems, partitioning и многом другом.'
+  zh:
+    title: '文件系统'
+    description: '了解 Linux filesystem、不同类型的文件系统、分区等。'

@@ -1,0 +1,33 @@
+id: getting-started
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/getting-started.png
+order_index: 0
+translations:
+  en:
+    title: 'Getting Started'
+    description: 'What is Linux? Get started with choosing a distribution and installation.'
+  de:
+    title: 'Erste Schritte'
+    description: 'Was ist Linux? Beginnen Sie mit der Auswahl einer Distribution und der Installation.'
+  es:
+    title: 'Primeros Pasos'
+    description: '¿Qué es Linux? Comienza eligiendo una distribución e instalación.'
+  fr:
+    title: 'Démarrage'
+    description: 'Qu''est-ce que Linux ? Commencez par choisir une distribution et l''installation.'
+  ja:
+    title: 'はじめに'
+    description: 'Linux とは？ディストリビューションの選択とインストールから始めましょう。'
+  ko:
+    title: '시작하기'
+    description: 'Linux 란 무엇인가요? 배포판 선택 및 설치부터 시작하세요.'
+  pt:
+    title: 'Primeiros Passos'
+    description: 'O que é Linux? Comece escolhendo uma distribuição e fazendo a instalação.'
+  ru:
+    title: 'Начало работы'
+    description: 'Что такое Linux? Начните с выбора дистрибутива и установки.'
+  zh:
+    title: '入门'
+    description: '什么是 Linux？从选择发行版和安装开始。'

@@ -1,0 +1,33 @@
+id: processes
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/processes.png
+order_index: 6
+translations:
+  en:
+    title: 'Processes'
+    description: 'Learn about the running processes on the system.'
+  de:
+    title: 'Prozesse'
+    description: 'Lernen Sie die laufenden Prozesse auf dem System kennen.'
+  es:
+    title: 'Procesos'
+    description: 'Aprende sobre los procesos en ejecución en el sistema.'
+  fr:
+    title: 'Processus'
+    description: 'Apprenez-en davantage sur les processus en cours d''exécution sur le système.'
+  ja:
+    title: 'プロセス'
+    description: 'システム上で実行されているプロセスについて学びましょう。'
+  ko:
+    title: '프로세스'
+    description: '시스템에서 실행 중인 프로세스에 대해 배우세요.'
+  pt:
+    title: 'Processos'
+    description: 'Aprenda sobre os processos em execução no sistema.'
+  ru:
+    title: 'Процессы'
+    description: 'Узнайте о запущенных процессах в системе.'
+  zh:
+    title: '进程'
+    description: '了解系统上运行的进程。'

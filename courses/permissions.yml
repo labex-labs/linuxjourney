@@ -1,0 +1,33 @@
+id: permissions
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/permissions.png
+order_index: 5
+translations:
+  en:
+    title: 'Permissions'
+    description: 'Learn about permission levels and modifying permissions.'
+  de:
+    title: 'Berechtigungen'
+    description: 'Lernen Sie Berechtigungsstufen und das Ändern von Berechtigungen kennen.'
+  es:
+    title: 'Permisos'
+    description: 'Aprende sobre los niveles de permiso y cómo modificarlos.'
+  fr:
+    title: 'Permissions'
+    description: 'Apprenez-en davantage sur les niveaux de permission et la modification des permissions.'
+  ja:
+    title: 'パーミッション'
+    description: 'パーミッションレベルとパーミッションの変更について学びましょう。'
+  ko:
+    title: '권한'
+    description: '권한 수준 및 권한 수정에 대해 배우세요.'
+  pt:
+    title: 'Permissões'
+    description: 'Aprenda sobre níveis de permissão e como modificá-las.'
+  ru:
+    title: 'Разрешения'
+    description: 'Узнайте об уровнях разрешений и изменении разрешений.'
+  zh:
+    title: '权限'
+    description: '了解权限级别和修改权限。'

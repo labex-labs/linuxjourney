@@ -1,0 +1,33 @@
+id: packages
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/packages.png
+order_index: 7
+translations:
+  en:
+    title: 'Packages'
+    description: 'Learn all about the dpkg, apt-get, rpm, and yum package management tools.'
+  de:
+    title: 'Pakete'
+    description: 'Erfahren Sie alles über die Paketverwaltungstools dpkg, apt-get, rpm und yum.'
+  es:
+    title: 'Paquetes'
+    description: 'Aprende todo sobre las herramientas de package management dpkg, apt-get, rpm y yum.'
+  fr:
+    title: 'Packages'
+    description: 'Apprenez tout sur les outils de package management dpkg, apt-get, rpm et yum.'
+  ja:
+    title: 'パッケージ'
+    description: 'Learn all about the dpkg, apt-get, rpm, and yum package management tools.'
+  ko:
+    title: '패키지'
+    description: 'dpkg, apt-get, rpm, yum package management 도구에 대해 모두 배우세요.'
+  pt:
+    title: 'Pacotes'
+    description: 'Aprenda tudo sobre as ferramentas de gerenciamento de pacotes dpkg, apt-get, rpm e yum.'
+  ru:
+    title: 'Пакеты'
+    description: 'Узнайте все о средствах управления пакетами dpkg, apt-get, rpm и yum.'
+  zh:
+    title: '软件包'
+    description: '了解 dpkg、apt-get、rpm 和 yum 包管理工具。'

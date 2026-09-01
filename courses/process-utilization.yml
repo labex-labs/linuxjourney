@@ -1,0 +1,33 @@
+id: process-utilization
+category:
+  id: journeyman
+image_url: /images/linuxjourney/courses/process-utilization.png
+order_index: 5
+translations:
+  en:
+    title: 'Process Utilization'
+    description: 'Learn resource monitoring with top, load averages, iostat, and more!'
+  de:
+    title: 'Prozessauslastung'
+    description: 'Lernen Sie die Ressourcenüberwachung mit top, load averages, iostat und mehr!'
+  es:
+    title: 'Utilización de Procesos'
+    description: '¡Aprende monitoreo de recursos con top, load averages, iostat y más!'
+  fr:
+    title: 'Utilisation des Processus'
+    description: 'Apprenez la surveillance des ressources avec top, load averages, iostat, et plus encore !'
+  ja:
+    title: 'プロセス利用率'
+    description: 'top、load averages、iostat などを使ったリソース監視を学びましょう！'
+  ko:
+    title: '프로세스 활용'
+    description: 'top, load averages, iostat 등을 사용하여 리소스 모니터링을 배우세요!'
+  pt:
+    title: 'Utilização de Processos'
+    description: 'Aprenda monitoramento de recursos com top, load averages, iostat e muito mais!'
+  ru:
+    title: 'Использование процессов'
+    description: 'Изучите мониторинг ресурсов с помощью top, load averages, iostat и многого другого!'
+  zh:
+    title: '进程利用率'
+    description: '使用 top、load averages、iostat 等工具学习资源监控！'

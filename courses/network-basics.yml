@@ -1,0 +1,33 @@
+id: network-basics
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/network-basics.png
+order_index: 1
+translations:
+  en:
+    title: 'Network Basics'
+    description: 'Learn about networking basics and the TCP/IP model.'
+  de:
+    title: 'Netzwerkgrundlagen'
+    description: 'Lernen Sie die Grundlagen des networking und das TCP/IP model kennen.'
+  es:
+    title: 'Conceptos Básicos de Red'
+    description: 'Aprende sobre los conceptos básicos de networking y el modelo TCP/IP.'
+  fr:
+    title: 'Bases du Réseau'
+    description: 'Apprenez-en davantage sur les bases du networking et le modèle TCP/IP.'
+  ja:
+    title: 'ネットワークの基本'
+    description: 'ネットワーキングの基本と TCP/IP モデルについて学びましょう。'
+  ko:
+    title: '네트워크 기본'
+    description: 'networking 기본 및 TCP/IP model 에 대해 배우세요.'
+  pt:
+    title: 'Noções Básicas de Rede'
+    description: 'Aprenda sobre noções básicas de rede e o modelo TCP/IP.'
+  ru:
+    title: 'Основы сети'
+    description: 'Узнайте об основах networking и модели TCP/IP.'
+  zh:
+    title: '网络基础'
+    description: '了解网络基础知识和 TCP/IP 模型。'

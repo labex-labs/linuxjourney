@@ -1,0 +1,33 @@
+id: subnetting
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/subnetting.png
+order_index: 2
+translations:
+  en:
+    title: 'Subnetting'
+    description: 'Learn about subnets and how to do subnet arithmetic!'
+  de:
+    title: 'Subnetting'
+    description: 'Lernen Sie subnets und wie man subnet arithmetic durchführt!'
+  es:
+    title: 'Subnetting'
+    description: '¡Aprende sobre subnets y cómo hacer subnet arithmetic!'
+  fr:
+    title: 'Subnetting'
+    description: 'Apprenez-en davantage sur les subnets et comment faire le subnet arithmetic !'
+  ja:
+    title: 'サブネット化'
+    description: 'サブネットとサブネット計算の方法を学びましょう！'
+  ko:
+    title: '서브넷팅'
+    description: 'subnets 과 subnet arithmetic 을 하는 방법에 대해 배우세요!'
+  pt:
+    title: 'Subnetting'
+    description: 'Aprenda sobre subnets e como fazer aritmética de subnet!'
+  ru:
+    title: 'Подсети'
+    description: 'Узнайте о subnets и как выполнять арифметику подсетей!'
+  zh:
+    title: '子网划分'
+    description: '了解子网以及如何进行子网计算！'

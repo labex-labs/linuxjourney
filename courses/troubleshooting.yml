@@ -1,0 +1,33 @@
+id: troubleshooting
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/troubleshooting.png
+order_index: 5
+translations:
+  en:
+    title: 'Troubleshooting'
+    description: 'Learn about common networking tools to help you diagnose and troubleshoot issues!'
+  de:
+    title: 'Fehlerbehebung'
+    description: 'Lernen Sie gängige networking tools kennen, die Ihnen bei der Diagnose und Fehlerbehebung helfen!'
+  es:
+    title: 'Resolución de Problemas'
+    description: '¡Aprende sobre herramientas comunes de networking para ayudarte a diagnosticar y solucionar problemas!'
+  fr:
+    title: 'Dépannage'
+    description: 'Apprenez-en davantage sur les outils de networking courants pour vous aider à diagnostiquer et dépanner les problèmes !'
+  ja:
+    title: 'トラブルシューティング'
+    description: '問題の診断とトラブルシューティングに役立つ一般的なネットワークツールについて学びましょう！'
+  ko:
+    title: '문제 해결'
+    description: '문제를 진단하고 troubleshoot 하는 데 도움이 되는 일반적인 networking 도구에 대해 배우세요!'
+  pt:
+    title: 'Resolução de Problemas'
+    description: 'Aprenda sobre ferramentas comuns de rede para ajudar a diagnosticar e resolver problemas!'
+  ru:
+    title: 'Устранение неполадок'
+    description: 'Узнайте об общих инструментах networking, которые помогут вам диагностировать и устранять проблемы!'
+  zh:
+    title: '故障排除'
+    description: '了解常用的网络工具，帮助您诊断和排除问题！'

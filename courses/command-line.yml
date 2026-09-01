@@ -1,0 +1,33 @@
+id: command-line
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/command-line.png
+order_index: 1
+translations:
+  en:
+    title: 'Command Line'
+    description: 'Learn the fundamentals of the command line, navigating files, directories, and more.'
+  de:
+    title: 'Command Line'
+    description: 'Lernen Sie die Grundlagen der command line, das Navigieren in Dateien, Verzeichnissen und mehr.'
+  es:
+    title: 'Command Line'
+    description: 'Aprende los fundamentos de la command line, navegando archivos, directorios y más.'
+  fr:
+    title: 'Command Line'
+    description: 'Apprenez les fondamentaux de la command line, la navigation dans les fichiers, les répertoires, et plus encore.'
+  ja:
+    title: 'コマンドライン'
+    description: 'コマンドラインの基本、ファイルやディレクトリの操作などを学びましょう。'
+  ko:
+    title: 'Command Line'
+    description: 'command line 의 기본, 파일 및 디렉토리 탐색 등을 배우세요.'
+  pt:
+    title: 'Linha de Comando'
+    description: 'Aprenda os fundamentos da linha de comando, navegando por arquivos, diretórios e muito mais.'
+  ru:
+    title: 'Командная строка'
+    description: 'Изучите основы command line, навигацию по файлам, каталогам и многое другое.'
+  zh:
+    title: '命令行'
+    description: '学习命令行的基础知识，导航文件、目录等。'

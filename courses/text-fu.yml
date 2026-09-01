@@ -1,0 +1,33 @@
+id: text-fu
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/text-fu.png
+order_index: 2
+translations:
+  en:
+    title: 'Text-Fu'
+    description: 'Learn basic text manipulation and navigation.'
+  de:
+    title: 'Text-Fu'
+    description: 'Lernen Sie grundlegende Textmanipulation und -navigation.'
+  es:
+    title: 'Text-Fu'
+    description: 'Aprende manipulación y navegación básica de texto.'
+  fr:
+    title: 'Text-Fu'
+    description: 'Apprenez la manipulation et la navigation de texte de base.'
+  ja:
+    title: 'テキスト操作'
+    description: '基本的なテキスト操作とナビゲーションを学びましょう。'
+  ko:
+    title: 'Text-Fu'
+    description: '기본 텍스트 조작 및 탐색을 배우세요.'
+  pt:
+    title: 'Text-Fu'
+    description: 'Aprenda manipulação e navegação básica de texto.'
+  ru:
+    title: 'Text-Fu'
+    description: 'Изучите базовые манипуляции с текстом и навигацию.'
+  zh:
+    title: '文本操作'
+    description: '学习基本的文本操作和导航。'

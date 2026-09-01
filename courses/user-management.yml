@@ -1,0 +1,33 @@
+id: user-management
+category:
+  id: grasshopper
+image_url: /images/linuxjourney/courses/user-management.png
+order_index: 4
+translations:
+  en:
+    title: 'User Management'
+    description: 'Learn about user roles and management.'
+  de:
+    title: 'Benutzerverwaltung'
+    description: 'Lernen Sie Benutzerrollen und -verwaltung kennen.'
+  es:
+    title: 'Gestión de Usuarios'
+    description: 'Aprende sobre los roles y la gestión de usuarios.'
+  fr:
+    title: 'Gestion des Utilisateurs'
+    description: 'Apprenez-en davantage sur les rôles et la gestion des utilisateurs.'
+  ja:
+    title: 'ユーザー管理'
+    description: 'ユーザーの役割と管理について学びましょう。'
+  ko:
+    title: '사용자 관리'
+    description: '사용자 역할 및 관리에 대해 배우세요.'
+  pt:
+    title: 'Gerenciamento de Usuários'
+    description: 'Aprenda sobre funções e gerenciamento de usuários.'
+  ru:
+    title: 'Управление пользователями'
+    description: 'Узнайте о ролях пользователей и управлении.'
+  zh:
+    title: '用户管理'
+    description: '了解用户角色和管理。'

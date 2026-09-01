@@ -1,0 +1,33 @@
+id: logging
+category:
+  id: journeyman
+image_url: /images/linuxjourney/courses/logging.png
+order_index: 6
+translations:
+  en:
+    title: 'Logging'
+    description: 'Learn about system logs and the /var/log directory.'
+  de:
+    title: 'Protokollierung'
+    description: 'Lernen Sie Systemprotokolle und das Verzeichnis /var/log kennen.'
+  es:
+    title: 'Registro'
+    description: 'Aprende sobre los system logs y el directorio /var/log.'
+  fr:
+    title: 'Logging'
+    description: 'Apprenez-en davantage sur les system logs et le répertoire /var/log.'
+  ja:
+    title: 'ロギング'
+    description: 'システムログと/var/log ディレクトリについて学びましょう。'
+  ko:
+    title: '로깅'
+    description: 'system logs 및 /var/log 디렉토리에 대해 배우세요.'
+  pt:
+    title: 'Registro de Logs'
+    description: 'Aprenda sobre os logs do sistema e o diretório /var/log.'
+  ru:
+    title: 'Ведение журнала'
+    description: 'Узнайте о системных журналах и каталоге /var/log.'
+  zh:
+    title: '日志'
+    description: '了解系统日志和 /var/log 目录。'

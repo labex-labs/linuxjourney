@@ -1,0 +1,33 @@
+id: routing
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/routing.png
+order_index: 3
+translations:
+  en:
+    title: 'Routing'
+    description: 'Learn how packets are routed across networks!'
+  de:
+    title: 'Routing'
+    description: 'Lernen Sie, wie packets über Netzwerke geroutet werden!'
+  es:
+    title: 'Enrutamiento'
+    description: '¡Aprende cómo se enrutan los packets a través de las redes!'
+  fr:
+    title: 'Routage'
+    description: 'Apprenez comment les paquets sont routés à travers les réseaux !'
+  ja:
+    title: 'ルーティング'
+    description: 'パケットがネットワークを介してどのようにルーティングされるかを学びましょう！'
+  ko:
+    title: '라우팅'
+    description: 'packets 이 networks 를 통해 어떻게 routed 되는지 배우세요!'
+  pt:
+    title: 'Roteamento'
+    description: 'Aprenda como os pacotes são roteados através das redes!'
+  ru:
+    title: 'Маршрутизация'
+    description: 'Узнайте, как пакеты маршрутизируются по сетям!'
+  zh:
+    title: '路由'
+    description: '了解数据包如何在网络中路由！'

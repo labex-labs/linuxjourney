@@ -1,0 +1,33 @@
+id: boot-system
+category:
+  id: journeyman
+image_url: /images/linuxjourney/courses/boot-system.png
+order_index: 2
+translations:
+  en:
+    title: 'Boot the System'
+    description: 'Learn about the stages of the Linux boot process.'
+  de:
+    title: 'System booten'
+    description: 'Lernen Sie die Phasen des Linux boot process kennen.'
+  es:
+    title: 'Arrancar el Sistema'
+    description: 'Aprende sobre las etapas del proceso de boot de Linux.'
+  fr:
+    title: 'Démarrer le Système'
+    description: 'Apprenez-en davantage sur les étapes du processus de boot Linux.'
+  ja:
+    title: 'システムの起動'
+    description: 'Linux の起動プロセスの段階について学びましょう。'
+  ko:
+    title: '시스템 부팅'
+    description: 'Linux boot process 의 단계에 대해 배우세요.'
+  pt:
+    title: 'Inicializar o Sistema'
+    description: 'Aprenda sobre as etapas do processo de boot do Linux.'
+  ru:
+    title: 'Загрузка системы'
+    description: 'Узнайте об этапах процесса загрузки Linux.'
+  zh:
+    title: '启动系统'
+    description: '了解 Linux 启动过程的各个阶段。'

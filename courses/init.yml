@@ -1,0 +1,33 @@
+id: init
+category:
+  id: journeyman
+image_url: /images/linuxjourney/courses/init.png
+order_index: 4
+translations:
+  en:
+    title: 'Init'
+    description: 'Learn about the different init systems: SysV, Upstart, and systemd.'
+  de:
+    title: 'Init'
+    description: 'Lernen Sie die verschiedenen init systems kennen: SysV, Upstart und systemd.'
+  es:
+    title: 'Init'
+    description: 'Aprende sobre los diferentes sistemas init: SysV, Upstart y systemd.'
+  fr:
+    title: 'Init'
+    description: 'Apprenez-en davantage sur les différents systèmes init : SysV, Upstart et systemd.'
+  ja:
+    title: 'Init'
+    description: 'さまざまな init システム（SysV、Upstart、systemd）について学びましょう。'
+  ko:
+    title: 'Init'
+    description: '다양한 init 시스템: SysV, Upstart, systemd 에 대해 배우세요.'
+  pt:
+    title: 'Init'
+    description: 'Aprenda sobre os diferentes sistemas init: SysV, Upstart e systemd.'
+  ru:
+    title: 'Init'
+    description: 'Узнайте о различных системах init: SysV, Upstart и systemd.'
+  zh:
+    title: '初始化'
+    description: '了解不同的 init 系统：SysV、Upstart 和 systemd。'

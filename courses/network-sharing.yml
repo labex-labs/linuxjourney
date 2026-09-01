@@ -1,0 +1,33 @@
+id: network-sharing
+category:
+  id: networking-nomad
+image_url: /images/linuxjourney/courses/network-sharing.png
+order_index: 0
+translations:
+  en:
+    title: 'Network Sharing'
+    description: 'Learn about network sharing with rsync, scp, nfs, and more.'
+  de:
+    title: 'Netzwerkfreigabe'
+    description: 'Lernen Sie die Netzwerkfreigabe mit rsync, scp, nfs und mehr kennen.'
+  es:
+    title: 'Compartir Red'
+    description: 'Aprende sobre network sharing con rsync, scp, nfs y más.'
+  fr:
+    title: 'Partage Réseau'
+    description: 'Apprenez-en davantage sur le partage réseau avec rsync, scp, nfs, et plus encore.'
+  ja:
+    title: 'ネットワーク共有'
+    description: 'rsync、scp、nfs などを使ったネットワーク共有について学びましょう。'
+  ko:
+    title: '네트워크 공유'
+    description: 'rsync, scp, nfs 등을 사용한 network sharing 에 대해 배우세요.'
+  pt:
+    title: 'Compartilhamento de Rede'
+    description: 'Aprenda sobre compartilhamento de rede com rsync, scp, nfs e muito mais.'
+  ru:
+    title: 'Совместное использование сети'
+    description: 'Узнайте о совместном использовании сети с помощью rsync, scp, nfs и других.'
+  zh:
+    title: '网络共享'
+    description: '了解使用 rsync、scp、nfs 等进行网络共享。'
