@@ -1,43 +1,123 @@
 id: processes
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/processes.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/processes.png
 order_index: 6
 translations:
   en:
-    title: 'Processes'
-    description: 'Learn about the running processes on the system.'
+    title: "Processes"
+    description: "Learn about the running processes on the system."
     faqs:
-      - question: 'What process-management tools will I learn?'
-        answer: 'You will use concepts and tools including ps, kill, signals, job control, foreground and background jobs, niceness, terminals, and /proc.'
-      - question: 'What is the difference between a process and a job?'
-        answer: 'A process is a running program tracked by the kernel, while a shell job is the shell’s way of grouping and controlling commands in a session.'
-      - question: 'Is this course useful for troubleshooting?'
-        answer: 'Yes. Understanding process states, signals, priorities, and termination helps you investigate slow, stuck, or misbehaving programs safely.'
-    meta_title: 'Linux Processes Course'
-    meta_description: 'Learn how Linux creates, tracks, schedules, controls, and terminates processes using ps, signals, job control, niceness, and the /proc filesystem.'
-    meta_keywords: 'Linux processes, ps command, kill command, process signals, job control, proc filesystem, process states, nice'
+      - question: "What process-management tools will I learn?"
+        answer: "You will use concepts and tools including ps, kill, signals, job control, foreground and background jobs, niceness, terminals, and /proc."
+      - question: "What is the difference between a process and a job?"
+        answer: "A process is a running program tracked by the kernel, while a shell job is the shell’s way of grouping and controlling commands in a session."
+      - question: "Is this course useful for troubleshooting?"
+        answer: "Yes. Understanding process states, signals, priorities, and termination helps you investigate slow, stuck, or misbehaving programs safely."
+    meta_title: "Linux Processes Course"
+    meta_description: "Learn how Linux creates, tracks, schedules, controls, and terminates processes using ps, signals, job control, niceness, and the /proc filesystem."
+    meta_keywords: "Linux processes, ps command, kill command, process signals, job control, proc filesystem, process states, nice"
   de:
-    title: 'Prozesse'
-    description: 'Lernen Sie die laufenden Prozesse auf dem System kennen.'
+    title: "Prozesse"
+    description: "Lernen Sie die laufenden Prozesse auf dem System kennen."
+    faqs:
+      - question: "Welche Prozessmanagement-Tools werde ich erlernen?"
+        answer: "Sie verwenden Konzepte und Tools wie ps, kill, Signale, Jobsteuerung, Vordergrund- und Hintergrundjobs, Niceness, Terminals und /proc."
+      - question: "Was ist der Unterschied zwischen einem Prozess und einem Job?"
+        answer: "Ein Prozess ist ein laufendes Programm, das vom Kernel verfolgt wird, während ein Shell-Job die Art und Weise ist, wie die Shell Befehle in einer Sitzung gruppiert und steuert."
+      - question: "Ist dieser Kurs für die Fehlerbehebung nützlich?"
+        answer: "Ja. Das Verständnis von Prozesszuständen, Signalen, Prioritäten und Beendigung hilft Ihnen, langsame, hängengebliebene oder sich schlecht verhaltende Programme sicher zu untersuchen."
+    meta_title: "Linux-Prozesskurs"
+    meta_description: "Erfahren Sie, wie Linux mithilfe von ps, Signalen, Jobsteuerung, Niceness und dem /proc-Dateisystem Prozesse erstellt, verfolgt, plant, steuert und beendet."
+    meta_keywords: "Linux-Prozesse, ps-Befehl, kill-Befehl, Prozesssignale, Jobsteuerung, proc-Dateisystem, Prozesszustände, nice"
   es:
-    title: 'Procesos'
-    description: 'Aprende sobre los procesos en ejecución en el sistema.'
+    title: "Procesos"
+    description: "Aprende sobre los procesos en ejecución en el sistema."
+    faqs:
+      - question: "¿Qué herramientas de gestión de procesos aprenderé?"
+        answer: "Utilizará conceptos y herramientas que incluyen ps, kill, señales, control de trabajos, trabajos en primer plano y en segundo plano, amabilidad, terminales y /proc."
+      - question: "¿Cuál es la diferencia entre un proceso y un trabajo?"
+        answer: "Un proceso es un programa en ejecución rastreado por el kernel, mientras que un trabajo de shell es la forma en que el shell agrupa y controla comandos en una sesión."
+      - question: "¿Es útil este curso para solucionar problemas?"
+        answer: "Sí. Comprender los estados de los procesos, las señales, las prioridades y la terminación le ayuda a investigar de forma segura programas lentos, atascados o que se comportan mal."
+    meta_title: "Curso Procesos Linux"
+    meta_description: "Aprenda cómo Linux crea, rastrea, programa, controla y finaliza procesos usando ps, señales, control de trabajo, amabilidad y el sistema de archivos /proc."
+    meta_keywords: "Procesos de Linux, comando ps, comando kill, señales de proceso, control de trabajos, sistema de archivos proc, estados de proceso, nice"
   fr:
-    title: 'Processus'
-    description: 'Apprenez-en davantage sur les processus en cours d''exécution sur le système.'
+    title: "Processus"
+    description: "Apprenez-en davantage sur les processus en cours d'exécution sur le système."
+    faqs:
+      - question: "Quels outils de gestion de processus vais-je apprendre ?"
+        answer: "Vous utiliserez des concepts et des outils tels que ps, kill, signaux, contrôle des tâches, tâches de premier plan et d'arrière-plan, gentillesse, terminaux et /proc."
+      - question: "Quelle est la différence entre un processus et un travail ?"
+        answer: "Un processus est un programme en cours d'exécution suivi par le noyau, tandis qu'une tâche shell est le moyen utilisé par le shell pour regrouper et contrôler les commandes dans une session."
+      - question: "Ce cours est-il utile pour le dépannage ?"
+        answer: "Oui. Comprendre les états, les signaux, les priorités et l'arrêt des processus vous aide à enquêter en toute sécurité sur les programmes lents, bloqués ou qui se comportent mal."
+    meta_title: "Cours sur les processus Linux"
+    meta_description: "Découvrez comment Linux crée, suit, planifie, contrôle et termine les processus à l'aide de ps, de signaux, du contrôle des tâches, de la gentillesse et du système de fichiers /proc."
+    meta_keywords: "Processus Linux, commande ps, commande kill, signaux de processus, contrôle des tâches, système de fichiers proc, états de processus, nice"
   ja:
-    title: 'プロセス'
-    description: 'システム上で実行されているプロセスについて学びましょう。'
+    title: "プロセス"
+    description: "システム上で実行されているプロセスについて学びましょう。"
+    faqs:
+      - question: "どのようなプロセス管理ツールを学習しますか？"
+        answer: "ps、kill、シグナル、ジョブ制御、フォアグラウンドとバックグラウンドのジョブ、niceness、ターミナル、/proc などの概念とツールを使用します。"
+      - question: "プロセスとジョブの違いは何ですか？"
+        answer: "プロセスはカーネルによって追跡される実行中のプログラムであり、シェル ジョブはシェルがセッション内のコマンドをグループ化して制御する方法です。"
+      - question: "このコースはトラブルシューティングに役立ちますか？"
+        answer: "はい。プロセスの状態、信号、優先順位、終了を理解すると、遅いプログラム、スタックしたプログラム、または誤動作するプログラムを安全に調査するのに役立ちます。"
+    meta_title: "Linux プロセス コース"
+    meta_description: "Linux が ps、シグナル、ジョブ制御、niceness、および /proc ファイルシステムを使用してプロセスを作成、追跡、スケジュール、制御、および終了する方法を学びます。"
+    meta_keywords: "Linux プロセス，ps コマンド，kill コマンド，プロセスシグナル，ジョブ制御，proc ファイルシステム，プロセス状態，nice"
   ko:
-    title: '프로세스'
-    description: '시스템에서 실행 중인 프로세스에 대해 배우세요.'
+    title: "프로세스"
+    description: "시스템에서 실행 중인 프로세스에 대해 배우세요."
+    faqs:
+      - question: "어떤 프로세스 관리 도구를 배우나요?"
+        answer: "ps, kill, 신호, 작업 제어, 포그라운드 및 백그라운드 작업, niceness, 터미널 및 /proc 를 포함한 개념과 도구를 사용합니다."
+      - question: "프로세스와 작업의 차이점은 무엇인가요?"
+        answer: "프로세스는 커널이 추적하는 실행 중인 프로그램인 반면, 셸 작업은 세션에서 명령을 그룹화하고 제어하는 ​​셸의 방식입니다."
+      - question: "이 과정이 문제 해결에 유용합니까?"
+        answer: "네. 프로세스 상태, 신호, 우선 순위 및 종료를 이해하면 느리거나 멈추거나 오작동하는 프로그램을 안전하게 조사하는 데 도움이 됩니다."
+    meta_title: "Linux 프로세스 과정"
+    meta_description: "Linux 가 ps, 신호, 작업 제어, niceness 및 /proc 파일 시스템을 사용하여 프로세스를 생성, 추적, 예약, 제어 및 종료하는 방법을 알아보세요."
+    meta_keywords: "Linux 프로세스, ps 명령, kill 명령, 프로세스 신호, 작업 제어, proc 파일 시스템, 프로세스 상태, nice"
   pt:
-    title: 'Processos'
-    description: 'Aprenda sobre os processos em execução no sistema.'
+    title: "Processos"
+    description: "Aprenda sobre os processos em execução no sistema."
+    faqs:
+      - question: "Quais ferramentas de gerenciamento de processos vou aprender?"
+        answer: "Você usará conceitos e ferramentas, incluindo ps, kill, sinais, controle de tarefas, tarefas em primeiro e segundo plano, gentileza, terminais e /proc."
+      - question: "Qual é a diferença entre um processo e um trabalho?"
+        answer: "Um processo é um programa em execução rastreado pelo kernel, enquanto um shell job é a maneira do shell agrupar e controlar comandos em uma sessão."
+      - question: "Este curso é útil para solução de problemas?"
+        answer: "Sim. Compreender os estados, sinais, prioridades e encerramento do processo ajuda a investigar com segurança programas lentos, travados ou que se comportam mal."
+    meta_title: "Curso de Processos Linux"
+    meta_description: "Aprenda como o Linux cria, rastreia, agenda, controla e finaliza processos usando ps, sinais, controle de tarefas, gentileza e o sistema de arquivos /proc."
+    meta_keywords: "Processos Linux, comando ps, comando kill, sinais de processo, controle de tarefas, sistema de arquivos proc, estados de processo, nice"
   ru:
-    title: 'Процессы'
-    description: 'Узнайте о запущенных процессах в системе.'
+    title: "Процессы"
+    description: "Узнайте о запущенных процессах в системе."
+    faqs:
+      - question: "Какие инструменты управления процессами я изучу?"
+        answer: "Вы будете использовать концепции и инструменты, включая ps, kill, сигналы, управление заданиями, приоритетные и фоновые задания, корректность, терминалы и /proc."
+      - question: "В чем разница между процессом и работой?"
+        answer: "Процесс — это работающая программа, отслеживаемая ядром, а задание оболочки — это способ группировки и управления командами оболочки в сеансе."
+      - question: "Полезен ли этот курс для устранения неполадок?"
+        answer: "Да. Понимание состояний процессов, сигналов, приоритетов и завершения помогает безопасно исследовать медленные, зависшие или неправильно работающие программы."
+    meta_title: "Курс процессов Linux"
+    meta_description: "Узнайте, как Linux создает, отслеживает, планирует, контролирует и завершает процессы с помощью ps, сигналов, управления заданиями, корректности и файловой системы /proc."
+    meta_keywords: "Процессы Linux, команда ps, команда kill, сигналы процессов, управление заданиями, файловая система proc, состояния процессов, nice"
   zh:
-    title: '进程'
-    description: '了解系统上运行的进程。'
+    title: "进程"
+    description: "了解系统上运行的进程。"
+    faqs:
+      - question: "我将学习哪些流程管理工具？"
+        answer: "您将使用包括 ps、kill、信号、作业控制、前台和后台作业、niceness、终端和 /proc 在内的概念和工具。"
+      - question: "进程和作业有什么区别？"
+        answer: "进程是由内核跟踪的正在运行的程序，而 shell 作业是 shell 在会话中分组和控制命令的方式。"
+      - question: "本课程对于故障排除有用吗？"
+        answer: "是的。了解进程状态、信号、优先级和终止可以帮助您安全地调查缓慢、卡住或行为异常的程序。"
+    meta_title: "Linux 进程课程"
+    meta_description: "了解 Linux 如何使用 ps、信号、作业控制、niceness 和 /proc 文件系统创建、跟踪、调度、控制和终止进程。"
+    meta_keywords: "Linux 进程，ps 命令，kill 命令，进程信号，作业控制，proc 文件系统，进程状态，nice"

@@ -1,43 +1,123 @@
 id: network-sharing
 category:
   id: networking-nomad
-image_url: /images/linuxjourney/courses/network-sharing.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/network-sharing.png
 order_index: 0
 translations:
   en:
-    title: 'Network Sharing'
-    description: 'Learn about network sharing with rsync, scp, nfs, and more.'
+    title: "Network Sharing"
+    description: "Learn about network sharing with rsync, scp, nfs, and more."
     faqs:
-      - question: 'Which sharing methods are covered?'
-        answer: 'The course introduces file-sharing concepts, rsync, NFS, Samba, and a simple Python HTTP server so you can compare synchronization and network access methods.'
-      - question: 'Should I use NFS or Samba?'
-        answer: 'NFS is common between Unix-like systems, while Samba is useful for SMB compatibility across Linux, Windows, and other clients. Your network determines the best fit.'
-      - question: 'Is a simple HTTP server safe for public use?'
-        answer: 'The lesson’s simple server is intended for controlled local sharing and testing, not as a hardened public web server. Avoid exposing sensitive directories.'
-    meta_title: 'Linux Network File Sharing Course'
-    meta_description: 'Learn practical Linux network sharing with rsync, secure copy concepts, NFS, Samba, and a simple HTTP server for local file access.'
-    meta_keywords: 'Linux file sharing, rsync, NFS, Samba, simple HTTP server, network shares, file synchronization'
+      - question: "Which sharing methods are covered?"
+        answer: "The course introduces file-sharing concepts, rsync, NFS, Samba, and a simple Python HTTP server so you can compare synchronization and network access methods."
+      - question: "Should I use NFS or Samba?"
+        answer: "NFS is common between Unix-like systems, while Samba is useful for SMB compatibility across Linux, Windows, and other clients. Your network determines the best fit."
+      - question: "Is a simple HTTP server safe for public use?"
+        answer: "The lesson’s simple server is intended for controlled local sharing and testing, not as a hardened public web server. Avoid exposing sensitive directories."
+    meta_title: "Linux Network File Sharing Course"
+    meta_description: "Learn practical Linux network sharing with rsync, secure copy concepts, NFS, Samba, and a simple HTTP server for local file access."
+    meta_keywords: "Linux file sharing, rsync, NFS, Samba, simple HTTP server, network shares, file synchronization"
   de:
-    title: 'Netzwerkfreigabe'
-    description: 'Lernen Sie die Netzwerkfreigabe mit rsync, scp, nfs und mehr kennen.'
+    title: "Netzwerkfreigabe"
+    description: "Lernen Sie die Netzwerkfreigabe mit rsync, scp, nfs und mehr kennen."
+    faqs:
+      - question: "Welche Sharing-Methoden werden abgedeckt?"
+        answer: "Der Kurs stellt Dateifreigabekonzepte, rsync, NFS, Samba und einen einfachen Python-HTTP-Server vor, sodass Sie Synchronisierungs- und Netzwerkzugriffsmethoden vergleichen können."
+      - question: "Sollte ich NFS oder Samba verwenden?"
+        answer: "NFS ist bei Unix-ähnlichen Systemen üblich, während Samba für die SMB-Kompatibilität zwischen Linux, Windows und anderen Clients nützlich ist. Ihr Netzwerk bestimmt die beste Lösung."
+      - question: "Ist ein einfacher HTTP-Server für die öffentliche Nutzung sicher?"
+        answer: "Der einfache Server der Lektion ist für die kontrollierte lokale Freigabe und zum Testen gedacht und nicht als gehärteter öffentlicher Webserver. Vermeiden Sie es, vertrauliche Verzeichnisse offenzulegen."
+    meta_title: "Kurs zur Linux-Netzwerkdateifreigabe"
+    meta_description: "Lernen Sie die praktische Linux-Netzwerkfreigabe mit rsync, sicheren Kopierkonzepten, NFS, Samba und einem einfachen HTTP-Server für den lokalen Dateizugriff kennen."
+    meta_keywords: "Linux-Dateifreigabe, Rsync, NFS, Samba, einfacher HTTP-Server, Netzwerkfreigaben, Dateisynchronisierung"
   es:
-    title: 'Compartir Red'
-    description: 'Aprende a compartir recursos en red con rsync, scp, NFS y otras herramientas.'
+    title: "Compartir Red"
+    description: "Aprende a compartir recursos en red con rsync, scp, NFS y otras herramientas."
+    faqs:
+      - question: "¿Qué métodos para compartir están cubiertos?"
+        answer: "El curso presenta conceptos de intercambio de archivos, rsync, NFS, Samba y un servidor HTTP Python simple para que pueda comparar métodos de sincronización y acceso a la red."
+      - question: "¿Debería usar NFS o Samba?"
+        answer: "NFS es común entre sistemas tipo Unix, mientras que Samba es útil para la compatibilidad SMB en Linux, Windows y otros clientes. Su red determina la mejor opción."
+      - question: "¿Es seguro un servidor HTTP simple para uso público?"
+        answer: "El servidor simple de la lección está diseñado para compartir y probar localmente de forma controlada, no como un servidor web público reforzado. Evite exponer directorios confidenciales."
+    meta_title: "Curso de intercambio de archivos en red Linux"
+    meta_description: "Aprenda a compartir redes Linux de forma práctica con rsync, conceptos de copia segura, NFS, Samba y un servidor HTTP simple para acceso a archivos locales."
+    meta_keywords: "Uso compartido de archivos de Linux, rsync, NFS, Samba, servidor HTTP simple, recursos compartidos de red, sincronización de archivos"
   fr:
-    title: 'Partage Réseau'
-    description: 'Apprenez-en davantage sur le partage réseau avec rsync, scp, nfs, et plus encore.'
+    title: "Partage Réseau"
+    description: "Apprenez-en davantage sur le partage réseau avec rsync, scp, nfs, et plus encore."
+    faqs:
+      - question: "Quelles méthodes de partage sont couvertes ?"
+        answer: "Le cours présente les concepts de partage de fichiers, rsync, NFS, Samba et un simple serveur HTTP Python afin que vous puissiez comparer les méthodes de synchronisation et d'accès au réseau."
+      - question: "Dois-je utiliser NFS ou Samba ?"
+        answer: "NFS est courant entre les systèmes de type Unix, tandis que Samba est utile pour la compatibilité SMB sur Linux, Windows et d'autres clients. Votre réseau détermine la meilleure solution."
+      - question: "Un simple serveur HTTP est-il sûr pour un usage public ?"
+        answer: "Le ​​serveur simple de la leçon est destiné au partage et aux tests locaux contrôlés, et non comme un serveur Web public renforcé. Évitez d’exposer les répertoires sensibles."
+    meta_title: "Cours de partage de fichiers réseau Linux"
+    meta_description: "Apprenez le partage réseau Linux pratique avec rsync, les concepts de copie sécurisée, NFS, Samba et un simple serveur HTTP pour l'accès aux fichiers locaux."
+    meta_keywords: "Partage de fichiers Linux, rsync, NFS, Samba, serveur HTTP simple, partages réseau, synchronisation de fichiers"
   ja:
-    title: 'ネットワーク共有'
-    description: 'rsync、scp、nfs などを使ったネットワーク共有について学びましょう。'
+    title: "ネットワーク共有"
+    description: "rsync、scp、nfs などを使ったネットワーク共有について学びましょう。"
+    faqs:
+      - question: "どの共有方法が対象ですか？"
+        answer: "このコースでは、ファイル共有の概念、rsync、NFS、Samba、および単純な Python HTTP サーバーを紹介し、同期とネットワーク アクセス方法を比較できます。"
+      - question: "NFS と Samba を使用する必要がありますか？"
+        answer: "NFS は Unix 系システム間で一般的ですが、Samba は Linux、Windows、およびその他のクライアント間での SMB 互換性に役立ちます。ネットワークによって最適な適合性が決まります。"
+      - question: "単純な HTTP サーバーは公共で使用しても安全ですか？"
+        answer: "レッスンのシンプルなサーバーは、強化されたパブリック Web サーバーとしてではなく、制御されたローカル共有とテストを目的としています。機密性の高いディレクトリを公開しないようにします。"
+    meta_title: "Linux ネットワーク ファイル共有コース"
+    meta_description: "rsync を使用した実践的な Linux ネットワーク共有、セキュア コピーの概念、NFS、Samba、ローカル ファイル アクセス用のシンプルな HTTP サーバーについて学びます。"
+    meta_keywords: "Linux ファイル共有，rsync, NFS, Samba, シンプルな HTTP サーバー, ネットワーク共有，ファイル同期"
   ko:
-    title: '네트워크 공유'
-    description: 'rsync, scp, NFS 등을 사용한 네트워크 공유 방법을 알아보세요.'
+    title: "네트워크 공유"
+    description: "rsync, scp, NFS 등을 사용한 네트워크 공유 방법을 알아보세요."
+    faqs:
+      - question: "어떤 공유 방법이 적용되나요?"
+        answer: "이 과정에서는 파일 공유 개념, rsync, NFS, Samba 및 간단한 Python HTTP 서버를 소개하므로 동기화 및 네트워크 액세스 방법을 비교할 수 있습니다."
+      - question: "NFS 를 사용해야 할까요, 아니면 Samba 를 사용해야 할까요?"
+        answer: "NFS 는 Unix 계열 시스템에서 일반적으로 사용되는 반면 Samba 는 Linux, Windows 및 기타 클라이언트 간의 SMB 호환성에 유용합니다. 귀하의 네트워크가 가장 적합한 것을 결정합니다."
+      - question: "간단한 HTTP 서버는 공개적으로 사용해도 안전한가요?"
+        answer: "이 강의의 단순 서버는 강화된 공개 웹 서버가 아닌 제어된 로컬 공유 및 테스트를 위한 것입니다. 민감한 디렉터리를 노출하지 마세요."
+    meta_title: "Linux 네트워크 파일 공유 강좌"
+    meta_description: "rsync, 보안 복사 개념, NFS, Samba 및 로컬 파일 액세스를 위한 간단한 HTTP 서버를 통한 실용적인 Linux 네트워크 공유를 알아보세요."
+    meta_keywords: "Linux 파일 공유, rsync, NFS, Samba, 단순 HTTP 서버, 네트워크 공유, 파일 동기화"
   pt:
-    title: 'Compartilhamento de Rede'
-    description: 'Aprenda sobre compartilhamento de rede com rsync, scp, nfs e muito mais.'
+    title: "Compartilhamento de Rede"
+    description: "Aprenda sobre compartilhamento de rede com rsync, scp, nfs e muito mais."
+    faqs:
+      - question: "Quais métodos de compartilhamento são abordados?"
+        answer: "O curso apresenta conceitos de compartilhamento de arquivos, rsync, NFS, Samba e um servidor HTTP Python simples para que você possa comparar métodos de sincronização e acesso à rede."
+      - question: "Devo usar NFS ou Samba?"
+        answer: "O NFS é comum entre sistemas do tipo Unix, enquanto o Samba é útil para compatibilidade SMB em Linux, Windows e outros clientes. Sua rede determina o melhor ajuste."
+      - question: "Um servidor HTTP simples é seguro para uso público?"
+        answer: "O servidor simples da lição destina-se ao compartilhamento e teste locais controlados, não como um servidor web público reforçado. Evite expor diretórios confidenciais."
+    meta_title: "Curso de compartilhamento de arquivos em rede Linux"
+    meta_description: "Aprenda o compartilhamento prático de rede Linux com rsync, conceitos de cópia segura, NFS, Samba e um servidor HTTP simples para acesso local a arquivos."
+    meta_keywords: "Compartilhamento de arquivos Linux, rsync, NFS, Samba, servidor HTTP simples, compartilhamentos de rede, sincronização de arquivos"
   ru:
-    title: 'Совместное использование сети'
-    description: 'Узнайте о совместном использовании сети с помощью rsync, scp, nfs и других.'
+    title: "Совместное использование сети"
+    description: "Узнайте о совместном использовании сети с помощью rsync, scp, nfs и других."
+    faqs:
+      - question: "Какие способы обмена охвачены?"
+        answer: "В курсе представлены концепции совместного использования файлов, rsync, NFS, Samba и простой HTTP-сервер Python, чтобы вы могли сравнить методы синхронизации и доступа к сети."
+      - question: "Что мне следует использовать: NFS или Samba?"
+        answer: "NFS обычно используется в Unix-подобных системах, а Samba полезна для совместимости SMB с Linux, Windows и другими клиентами. Ваша сеть определяет наиболее подходящий вариант."
+      - question: "Безопасен ли простой HTTP-сервер для публичного использования?"
+        answer: "Простой сервер урока предназначен для контролируемого локального обмена и тестирования, а не как защищенный общедоступный веб-сервер. Избегайте раскрытия конфиденциальных каталогов."
+    meta_title: "Курс по совместному использованию сетевых файлов в Linux"
+    meta_description: "Изучите практический общий доступ к сети Linux с помощью rsync, концепции безопасного копирования, NFS, Samba и простой HTTP-сервер для доступа к локальным файлам."
+    meta_keywords: "Общий доступ к файлам Linux, rsync, NFS, Samba, простой HTTP-сервер, общие сетевые ресурсы, синхронизация файлов."
   zh:
-    title: '网络共享'
-    description: '了解使用 rsync、scp、nfs 等进行网络共享。'
+    title: "网络共享"
+    description: "了解使用 rsync、scp、nfs 等进行网络共享。"
+    faqs:
+      - question: "涵盖了哪些分享方式？"
+        answer: "本课程介绍文件共享概念、rsync、NFS、Samba 和简单的 Python HTTP 服务器，以便您可以比较同步和网络访问方法。"
+      - question: "我应该使用 NFS 还是 Samba？"
+        answer: "NFS 在类 Unix 系统之间很常见，而 Samba 对于跨 Linux、Windows 和其他客户端的 SMB 兼容性很有用。您的网络决定了最适合的。"
+      - question: "简单的 HTTP 服务器可供公众使用安全吗？"
+        answer: "本课程的简单服务器旨在用于受控的本地共享和测试，而不是作为强化的公共 Web 服务器。避免暴露敏感目录。"
+    meta_title: "Linux 网络文件共享课程"
+    meta_description: "学习实用的 Linux 网络共享，包括 rsync、安全复制概念、NFS、Samba 以及用于本地文件访问的简单 HTTP 服务器。"
+    meta_keywords: "Linux 文件共享，rsync, NFS, Samba, 简单 HTTP 服务器，网络共享，文件同步"

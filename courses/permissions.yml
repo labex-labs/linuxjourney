@@ -1,43 +1,123 @@
 id: permissions
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/permissions.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/permissions.png
 order_index: 5
 translations:
   en:
-    title: 'Permissions'
-    description: 'Learn about permission levels and modifying permissions.'
+    title: "Permissions"
+    description: "Learn about permission levels and modifying permissions."
     faqs:
-      - question: 'What permission concepts are covered?'
-        answer: 'The course explains read, write, and execute permissions; ownership; chmod; umask; process permissions; setuid; setgid; and the sticky bit.'
-      - question: 'Do I need to understand octal permission notation?'
-        answer: 'The lessons help you connect symbolic and numeric permission forms, so you can read and modify permissions confidently.'
-      - question: 'Can changing permissions create security risks?'
-        answer: 'Yes. Overly broad permissions or misuse of special bits can expose data or privileges, so the course emphasizes understanding each change before applying it.'
-    meta_title: 'Linux File Permissions Course'
-    meta_description: 'Understand Linux file ownership and permissions, chmod, umask, process permissions, setuid, setgid, and the sticky bit through focused lessons.'
-    meta_keywords: 'Linux file permissions, chmod, chown, umask, setuid, setgid, sticky bit, file ownership'
+      - question: "What permission concepts are covered?"
+        answer: "The course explains read, write, and execute permissions; ownership; chmod; umask; process permissions; setuid; setgid; and the sticky bit."
+      - question: "Do I need to understand octal permission notation?"
+        answer: "The lessons help you connect symbolic and numeric permission forms, so you can read and modify permissions confidently."
+      - question: "Can changing permissions create security risks?"
+        answer: "Yes. Overly broad permissions or misuse of special bits can expose data or privileges, so the course emphasizes understanding each change before applying it."
+    meta_title: "Linux File Permissions Course"
+    meta_description: "Understand Linux file ownership and permissions, chmod, umask, process permissions, setuid, setgid, and the sticky bit through focused lessons."
+    meta_keywords: "Linux file permissions, chmod, chown, umask, setuid, setgid, sticky bit, file ownership"
   de:
-    title: 'Berechtigungen'
-    description: 'Lernen Sie Berechtigungsstufen und das Ändern von Berechtigungen kennen.'
+    title: "Berechtigungen"
+    description: "Lernen Sie Berechtigungsstufen und das Ändern von Berechtigungen kennen."
+    faqs:
+      - question: "Welche Berechtigungskonzepte werden abgedeckt?"
+        answer: "Der Kurs behandelt Lese-, Schreib- und Ausführungsrechte, Eigentümerzuordnung, chmod, umask, Prozessrechte, setuid, setgid und das Sticky-Bit."
+      - question: "Muss ich die oktale Berechtigungsnotation verstehen?"
+        answer: "Die Lektionen zeigen den Zusammenhang zwischen symbolischer und numerischer Schreibweise, damit Sie Rechte sicher lesen und ändern können."
+      - question: "Können geänderte Berechtigungen Sicherheitsrisiken mit sich bringen?"
+        answer: "Ja. Zu weit gefasste Berechtigungen oder der Missbrauch spezieller Bits können Daten oder Privilegien offenlegen. Daher legt der Kurs Wert darauf, jede Änderung zu verstehen, bevor man sie anwendet."
+    meta_title: "Linux-Dateiberechtigungskurs"
+    meta_description: "Lernen Sie Linux-Dateieigentum und -rechte, chmod, umask, Prozessrechte, setuid, setgid und das Sticky-Bit in gezielten Lektionen kennen."
+    meta_keywords: "Linux-Dateiberechtigungen, chmod, chown, umask, setuid, setgid, Sticky Bit, Dateieigentum"
   es:
-    title: 'Permisos'
-    description: 'Aprende sobre los niveles de permiso y cómo modificarlos.'
+    title: "Permisos"
+    description: "Aprende sobre los niveles de permiso y cómo modificarlos."
+    faqs:
+      - question: "¿Qué conceptos de permisos se tratan?"
+        answer: "El curso explica los permisos de lectura, escritura y ejecución, la propiedad, chmod, umask, los permisos de proceso, setuid, setgid y el sticky bit."
+      - question: "¿Necesito entender la notación de permisos octal?"
+        answer: "Las lecciones relacionan la notación simbólica con la numérica para que puedas interpretar y modificar permisos con seguridad."
+      - question: "¿El cambio de permisos puede crear riesgos de seguridad?"
+        answer: "Sí. Los permisos demasiado amplios o el uso indebido de bits especiales pueden exponer datos o privilegios, por lo que el curso hace hincapié en comprender cada cambio antes de aplicarlo."
+    meta_title: "Curso de permisos de archivos de Linux"
+    meta_description: "Comprende la propiedad y los permisos de archivos en Linux, chmod, umask, los permisos de proceso, setuid, setgid y el sticky bit."
+    meta_keywords: "Permisos de archivos de Linux, chmod, chown, umask, setuid, setgid, sticky bit, propiedad del archivo"
   fr:
-    title: 'Permissions'
-    description: 'Apprenez-en davantage sur les niveaux de permission et la modification des permissions.'
+    title: "Permissions"
+    description: "Apprenez-en davantage sur les niveaux de permission et la modification des permissions."
+    faqs:
+      - question: "Quels concepts d'autorisation sont couverts ?"
+        answer: "Le cours explique les droits de lecture, d'écriture et d'exécution, la propriété, chmod, umask, les droits des processus, setuid, setgid et le sticky bit."
+      - question: "Dois-je comprendre la notation d'autorisation octale ?"
+        answer: "Les leçons relient les notations symbolique et numérique afin que vous puissiez lire et modifier les droits en toute confiance."
+      - question: "La modification des autorisations peut-elle créer des risques de sécurité ?"
+        answer: "Oui. Des autorisations trop larges ou une utilisation abusive de bits spéciaux peuvent exposer des données ou des privilèges. Le cours met donc l'accent sur la compréhension de chaque modification avant de l'appliquer."
+    meta_title: "Cours sur les autorisations de fichiers Linux"
+    meta_description: "Maîtrisez la propriété et les droits des fichiers Linux, chmod, umask, les droits des processus, setuid, setgid et le sticky bit."
+    meta_keywords: "Autorisations de fichiers Linux, chmod, chown, umask, setuid, setgid, sticky bit, propriété du fichier"
   ja:
-    title: 'パーミッション'
-    description: 'パーミッションレベルとパーミッションの変更について学びましょう。'
+    title: "パーミッション"
+    description: "パーミッションレベルとパーミッションの変更について学びましょう。"
+    faqs:
+      - question: "どのような権限の概念がカバーされますか？"
+        answer: "このコースでは、読み取り・書き込み・実行権限、所有権、chmod、umask、プロセス権限、setuid、setgid、スティッキービットを扱います。"
+      - question: "8 進数の許可表記を理解する必要がありますか？"
+        answer: "記号表記と数値表記の対応を学び、権限を正しく読み取って変更できるようになります。"
+      - question: "権限を変更するとセキュリティ上のリスクが生じる可能性がありますか？"
+        answer: "はい。広すぎる権限や特殊ビットの誤用により、データや特権が漏洩する可能性があるため、このコースでは、各変更を適用する前に理解することに重点を置いています。"
+    meta_title: "Linux ファイル権限コース"
+    meta_description: "集中的なレッスンを通じて、Linux ファイルの所有権と権限、chmod、umask、プロセス権限、setuid、setgid、およびスティッキー ビットを理解します。"
+    meta_keywords: "Linux ファイル権限，chmod, chown, umask, setuid, setgid, スティッキー ビット，ファイル所有権"
   ko:
-    title: '권한'
-    description: '권한 수준 및 권한 수정에 대해 배우세요.'
+    title: "권한"
+    description: "권한 수준 및 권한 수정에 대해 배우세요."
+    faqs:
+      - question: "어떤 권한 개념을 다루나요?"
+        answer: "이 과정에서는 읽기·쓰기·실행 권한, 소유권, chmod, umask, 프로세스 권한, setuid, setgid, 스티키 비트를 다룹니다."
+      - question: "8 진수 허용 표기법을 이해해야 하나요?"
+        answer: "기호 표기와 숫자 표기의 관계를 익혀 권한을 정확하게 읽고 변경할 수 있습니다."
+      - question: "권한을 변경하면 보안 위험이 발생할 수 있나요?"
+        answer: "네. 지나치게 광범위한 권한이나 특수 비트의 오용은 데이터나 권한을 노출시킬 수 있으므로 이 과정에서는 적용하기 전에 각 변경 사항을 이해하는 것을 강조합니다."
+    meta_title: "Linux 파일 권한 강좌"
+    meta_description: "집중 수업을 통해 Linux 파일 소유권 및 권한, chmod, umask, 프로세스 권한, setuid, setgid 및 Sticky Bit 를 이해합니다."
+    meta_keywords: "Linux 파일 권한, chmod, chown, umask, setuid, setgid, 스티키 비트, 파일 소유권"
   pt:
-    title: 'Permissões'
-    description: 'Aprenda sobre níveis de permissão e como modificá-las.'
+    title: "Permissões"
+    description: "Aprenda sobre níveis de permissão e como modificá-las."
+    faqs:
+      - question: "Quais conceitos de permissão são abordados?"
+        answer: "O curso explica permissões de leitura, escrita e execução, propriedade, chmod, umask, permissões de processo, setuid, setgid e o sticky bit."
+      - question: "Preciso entender a notação de permissão octal?"
+        answer: "As lições relacionam as notações simbólica e numérica para que você possa interpretar e modificar permissões com segurança."
+      - question: "A alteração de permissões pode criar riscos de segurança?"
+        answer: "Sim. Permissões excessivamente amplas ou uso indevido de bits especiais podem expor dados ou privilégios, por isso o curso enfatiza a compreensão de cada alteração antes de aplicá-la."
+    meta_title: "Curso de permissões de arquivos Linux"
+    meta_description: "Compreenda a propriedade e as permissões de arquivos do Linux, chmod, umask, permissões de processo, setuid, setgid e outros detalhes por meio de lições específicas."
+    meta_keywords: "Permissões de arquivo Linux, chmod, chown, umask, setuid, setgid, sticky bit, propriedade de arquivo"
   ru:
-    title: 'Разрешения'
-    description: 'Узнайте об уровнях разрешений и изменении разрешений.'
+    title: "Разрешения"
+    description: "Узнайте об уровнях разрешений и изменении разрешений."
+    faqs:
+      - question: "Какие концепции разрешений рассматриваются?"
+        answer: "Курс рассматривает права на чтение, запись и выполнение, владение, chmod, umask, права процессов, setuid, setgid и sticky-бит."
+      - question: "Нужно ли мне понимать восьмеричную запись разрешений?"
+        answer: "Уроки показывают связь между символьной и числовой записью, чтобы вы могли уверенно читать и изменять права."
+      - question: "Может ли изменение разрешений создать угрозу безопасности?"
+        answer: "Да. Чрезмерно широкие разрешения или неправильное использование специальных битов могут привести к раскрытию данных или привилегий, поэтому в курсе особое внимание уделяется пониманию каждого изменения перед его применением."
+    meta_title: "Курс по правам доступа к файлам в Linux"
+    meta_description: "Изучите владение файлами и права доступа в Linux, chmod, umask, права процессов, setuid, setgid и sticky-бит."
+    meta_keywords: "Права доступа к файлам Linux, chmod, chown, umask, setuid, setgid, sticky-бит, владение файлами"
   zh:
-    title: '权限'
-    description: '了解权限级别和修改权限。'
+    title: "权限"
+    description: "了解权限级别和修改权限。"
+    faqs:
+      - question: "涵盖了哪些权限概念？"
+        answer: "课程讲解读、写和执行权限，以及所有权、chmod、umask、进程权限、setuid、setgid 和粘滞位。"
+      - question: "我需要了解八进制权限表示法吗？"
+        answer: "课程会讲清符号表示法与数字表示法之间的对应关系，帮助您准确读取和修改权限。"
+      - question: "更改权限会带来安全风险吗？"
+        answer: "是的。过于广泛的权限或滥用特殊位可能会暴露数据或特权，因此本课程强调在应用每个更改之前了解它。"
+    meta_title: "Linux 文件权限课程"
+    meta_description: "通过重点课程了解 Linux 文件所有权和权限、chmod、umask、进程权限、setuid、setgid 和粘性位。"
+    meta_keywords: "Linux 文件权限，chmod, chown, umask, setuid, setgid, 粘性位，文件所有权"

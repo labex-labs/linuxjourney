@@ -1,43 +1,123 @@
 id: process-utilization
 category:
   id: journeyman
-image_url: /images/linuxjourney/courses/process-utilization.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/process-utilization.png
 order_index: 5
 translations:
   en:
-    title: 'Process Utilization'
-    description: 'Learn resource monitoring with top, load averages, iostat, and more!'
+    title: "Process Utilization"
+    description: "Learn resource monitoring with top, load averages, iostat, and more!"
     faqs:
-      - question: 'Which monitoring areas are covered?'
-        answer: 'You will study CPU, memory, I/O, processes, threads, open files, continuous monitoring, and scheduled work so you can assess system activity as a whole.'
-      - question: 'What tools will I learn to use?'
-        answer: 'The lessons introduce tools and concepts including top, load averages, iostat, lsof, fuser, process threads, and cron.'
-      - question: 'Is this course useful for diagnosing slow systems?'
-        answer: 'Yes. It helps you distinguish CPU, memory, I/O, and process-related pressure before deciding where deeper investigation is needed.'
-    meta_title: 'Linux Performance Monitoring Course'
-    meta_description: 'Monitor Linux CPU, memory, disk I/O, processes, threads, open files, scheduled jobs, and overall system activity with practical tools.'
-    meta_keywords: 'Linux performance monitoring, top command, CPU monitoring, memory monitoring, iostat, lsof, cron jobs, process threads'
+      - question: "Which monitoring areas are covered?"
+        answer: "You will study CPU, memory, I/O, processes, threads, open files, continuous monitoring, and scheduled work so you can assess system activity as a whole."
+      - question: "What tools will I learn to use?"
+        answer: "The lessons introduce tools and concepts including top, load averages, iostat, lsof, fuser, process threads, and cron."
+      - question: "Is this course useful for diagnosing slow systems?"
+        answer: "Yes. It helps you distinguish CPU, memory, I/O, and process-related pressure before deciding where deeper investigation is needed."
+    meta_title: "Linux Performance Monitoring Course"
+    meta_description: "Monitor Linux CPU, memory, disk I/O, processes, threads, open files, scheduled jobs, and overall system activity with practical tools."
+    meta_keywords: "Linux performance monitoring, top command, CPU monitoring, memory monitoring, iostat, lsof, cron jobs, process threads"
   de:
-    title: 'Prozessauslastung'
-    description: 'Lernen Sie die Ressourcenüberwachung mit top, Systemlast, iostat und weiteren Werkzeugen.'
+    title: "Prozessauslastung"
+    description: "Lernen Sie die Ressourcenüberwachung mit top, Systemlast, iostat und weiteren Werkzeugen."
+    faqs:
+      - question: "Welche Überwachungsbereiche werden abgedeckt?"
+        answer: "Sie studieren CPU, Speicher, E/A, Prozesse, Threads, offene Dateien, kontinuierliche Überwachung und geplante Arbeit, damit Sie die Systemaktivität als Ganzes beurteilen können."
+      - question: "Mit welchen Werkzeugen werde ich lernen?"
+        answer: "In den Lektionen werden Tools und Konzepte vorgestellt, darunter Top, Lastdurchschnitte, Iostat, LSOF, Fuser, Prozess-Threads und Cron."
+      - question: "Ist dieser Kurs für die Diagnose langsamer Systeme nützlich?"
+        answer: "Ja. Es hilft Ihnen, CPU-, Speicher-, E/A- und prozessbedingte Belastungen zu unterscheiden, bevor Sie entscheiden, wo eine tiefergehende Untersuchung erforderlich ist."
+    meta_title: "Kurs zur Linux-Leistungsüberwachung"
+    meta_description: "Überwachen Sie Linux-CPU, Speicher, Festplatten-E/A, Prozesse, Threads, geöffnete Dateien, geplante Jobs und die gesamte Systemaktivität mit praktischen Tools."
+    meta_keywords: "Linux-Leistungsüberwachung, Top-Befehl, CPU-Überwachung, Speicherüberwachung, iostat, lsof, Cron-Jobs, Prozess-Threads"
   es:
-    title: 'Utilización de Procesos'
-    description: 'Aprende a supervisar recursos con top, promedios de carga, iostat y otras herramientas.'
+    title: "Utilización de Procesos"
+    description: "Aprende a supervisar recursos con top, promedios de carga, iostat y otras herramientas."
+    faqs:
+      - question: "¿Qué áreas de seguimiento están cubiertas?"
+        answer: "Estudiarás CPU, memoria, E/S, procesos, subprocesos, archivos abiertos, monitoreo continuo y trabajo programado para que puedas evaluar la actividad del sistema en su conjunto."
+      - question: "¿Qué herramientas aprenderé a utilizar?"
+        answer: "Las lecciones presentan herramientas y conceptos como top, promedios de carga, iostat, lsof, fuser, hilos de procesos y cron."
+      - question: "¿Este curso es útil para diagnosticar sistemas lentos?"
+        answer: "Sí. Le ayuda a distinguir la CPU, la memoria, las E/S y la presión relacionada con los procesos antes de decidir dónde se necesita una investigación más profunda."
+    meta_title: "Curso de Monitoreo del Rendimiento de Linux"
+    meta_description: "Supervise la CPU, la memoria, la E/S de disco, los procesos, los subprocesos, los archivos abiertos, los trabajos programados y la actividad general del sistema de Linux con herramientas prácticas."
+    meta_keywords: "Monitoreo del rendimiento de Linux, comando top, monitoreo de CPU, monitoreo de memoria, iostat, lsof, trabajos cron, hilos de procesos"
   fr:
-    title: 'Utilisation des Processus'
-    description: 'Apprenez à surveiller les ressources avec top, la charge moyenne, iostat et d’autres outils.'
+    title: "Utilisation des Processus"
+    description: "Apprenez à surveiller les ressources avec top, la charge moyenne, iostat et d’autres outils."
+    faqs:
+      - question: "Quels domaines de surveillance sont couverts ?"
+        answer: "Vous étudierez le processeur, la mémoire, les E/S, les processus, les threads, les fichiers ouverts, la surveillance continue et le travail planifié afin de pouvoir évaluer l'activité du système dans son ensemble."
+      - question: "Quels outils vais-je apprendre à utiliser ?"
+        answer: "Les leçons présentent des outils et des concepts, notamment top, moyennes de charge, iostat, lsof, fuser, threads de processus et cron."
+      - question: "Ce cours est-il utile pour diagnostiquer les systèmes lents ?"
+        answer: "Oui. Il vous aide à distinguer la pression liée au processeur, à la mémoire, aux E/S et aux processus avant de décider où une enquête plus approfondie est nécessaire."
+    meta_title: "Cours de surveillance des performances Linux"
+    meta_description: "Surveillez le processeur Linux, la mémoire, les E/S de disque, les processus, les threads, les fichiers ouverts, les tâches planifiées et l'activité globale du système avec des outils pratiques."
+    meta_keywords: "Surveillance des performances Linux, commande top, surveillance du processeur, surveillance de la mémoire, iostat, lsof, tâches cron, threads de processus"
   ja:
-    title: 'プロセス利用率'
-    description: 'top、ロードアベレージ、iostat などを使ったリソース監視を学びましょう。'
+    title: "プロセス利用率"
+    description: "top、ロードアベレージ、iostat などを使ったリソース監視を学びましょう。"
+    faqs:
+      - question: "どの監視エリアがカバーされていますか？"
+        answer: "CPU、メモリ、I/O、プロセス、スレッド、開いているファイル、継続的な監視、およびスケジュールされた作業を学習して、システム アクティビティを全体として評価できるようにします。"
+      - question: "どのようなツールの使い方を学べますか？"
+        answer: "このレッスンでは、top、負荷平均、iostat、lsof、fuser、プロセス スレッド、cron などのツールと概念を紹介します。"
+      - question: "このコースは遅いシステムの診断に役立ちますか？"
+        answer: "はい。これは、より詳細な調査が必要な場所を決定する前に、CPU、メモリ、I/O、プロセス関連の負荷を区別するのに役立ちます。"
+    meta_title: "Linux パフォーマンス監視コース"
+    meta_description: "実用的なツールを使用して、Linux CPU、メモリ、ディスク I/O、プロセス、スレッド、開いているファイル、スケジュールされたジョブ、およびシステム全体のアクティビティを監視します。"
+    meta_keywords: "Linux パフォーマンス監視，top コマンド，CPU 監視，メモリ監視，iostat, lsof, cron ジョブ，プロセス スレッド"
   ko:
-    title: '프로세스 활용'
-    description: 'top, 로드 평균, iostat 등을 사용한 리소스 모니터링을 알아보세요.'
+    title: "프로세스 활용"
+    description: "top, 로드 평균, iostat 등을 사용한 리소스 모니터링을 알아보세요."
+    faqs:
+      - question: "어떤 모니터링 영역이 포함되나요?"
+        answer: "CPU, 메모리, I/O, 프로세스, 스레드, 열린 파일, 지속적인 모니터링 및 예약된 작업을 학습하여 시스템 활동을 전체적으로 평가할 수 있습니다."
+      - question: "어떤 도구를 사용하는 방법을 배우나요?"
+        answer: "이 강의에서는 top, 로드 평균, iostat, lsof, fuser, 프로세스 스레드, cron 등의 도구와 개념을 소개합니다."
+      - question: "이 과정이 느린 시스템을 진단하는 데 유용합니까?"
+        answer: "네. 심층 조사가 필요한 부분을 결정하기 전에 CPU, 메모리, I/O 및 프로세스 관련 압력을 구별하는 데 도움이 됩니다."
+    meta_title: "Linux 성능 모니터링 과정"
+    meta_description: "실용적인 도구를 사용하여 Linux CPU, 메모리, 디스크 I/O, 프로세스, 스레드, 열린 파일, 예약된 작업 및 전체 시스템 활동을 모니터링합니다."
+    meta_keywords: "Linux 성능 모니터링, top 명령, CPU 모니터링, 메모리 모니터링, iostat, lsof, cron 작업, 프로세스 스레드"
   pt:
-    title: 'Utilização de Processos'
-    description: 'Aprenda a monitorar recursos com top, médias de carga, iostat e outras ferramentas.'
+    title: "Utilização de Processos"
+    description: "Aprenda a monitorar recursos com top, médias de carga, iostat e outras ferramentas."
+    faqs:
+      - question: "Quais áreas de monitoramento são cobertas?"
+        answer: "Você estudará CPU, memória, E/S, processos, threads, arquivos abertos, monitoramento contínuo e trabalho agendado para poder avaliar a atividade do sistema como um todo."
+      - question: "Quais ferramentas aprenderei a usar?"
+        answer: "As lições apresentam ferramentas e conceitos, incluindo top, médias de carga, iostat, lsof, fuser, threads de processo e cron."
+      - question: "Este curso é útil para diagnosticar sistemas lentos?"
+        answer: "Sim. Ele ajuda a distinguir CPU, memória, E/S e pressão relacionada ao processo antes de decidir onde uma investigação mais profunda é necessária."
+    meta_title: "Curso de Monitoramento de Desempenho Linux"
+    meta_description: "Monitore a CPU do Linux, memória, E/S de disco, processos, threads, arquivos abertos, trabalhos agendados e atividade geral do sistema com ferramentas práticas."
+    meta_keywords: "Monitoramento de desempenho do Linux, comando top, monitoramento de CPU, monitoramento de memória, iostat, lsof, tarefas cron, threads de processo"
   ru:
-    title: 'Использование процессов'
-    description: 'Изучите мониторинг ресурсов с помощью top, средней нагрузки, iostat и других инструментов.'
+    title: "Использование процессов"
+    description: "Изучите мониторинг ресурсов с помощью top, средней нагрузки, iostat и других инструментов."
+    faqs:
+      - question: "Какие области мониторинга охвачены?"
+        answer: "Вы изучите процессор, память, ввод-вывод, процессы, потоки, открытые файлы, непрерывный мониторинг и запланированную работу, чтобы вы могли оценить активность системы в целом."
+      - question: "Какие инструменты я научусь использовать?"
+        answer: "На уроках представлены такие инструменты и концепции, как top, средние значения нагрузки, iostat, lsof, Fuser, потоки процессов и cron."
+      - question: "Полезен ли этот курс для диагностики медленных систем?"
+        answer: "Да. Это помогает вам определить нагрузку на процессор, память, ввод-вывод и процессы, прежде чем решить, где необходимо более глубокое исследование."
+    meta_title: "Курс по мониторингу производительности Linux"
+    meta_description: "Мониторинг процессора Linux, памяти, дискового ввода-вывода, процессов, потоков, открытых файлов, запланированных заданий и общей активности системы с помощью практических инструментов."
+    meta_keywords: "Мониторинг производительности Linux, команда top, мониторинг ЦП, мониторинг памяти, iostat, lsof, задания cron, потоки процессов"
   zh:
-    title: '进程利用率'
-    description: '学习使用 top、系统平均负载、iostat 等工具监控资源。'
+    title: "进程利用率"
+    description: "学习使用 top、系统平均负载、iostat 等工具监控资源。"
+    faqs:
+      - question: "覆盖哪些监控区域？"
+        answer: "您将研究 CPU、内存、I/O、进程、线程、打开文件、持续监控和计划工作，以便您可以从整体上评估系统活动。"
+      - question: "我将学习使用哪些工具？"
+        answer: "课程介绍了工具和概念，包括 top、平均负载、iostat、lsof、fuser、进程线程和 cron。"
+      - question: "本课程对于诊断缓慢的系统有用吗？"
+        answer: "是的。它可以帮助您区分 CPU、内存、I/O 和进程相关的压力，然后再决定哪些地方需要进行更深入的调查。"
+    meta_title: "Linux 性能监控课程"
+    meta_description: "使用实用工具监控 Linux CPU、内存、磁盘 I/O、进程、线程、打开文件、计划作业和整体系统活动。"
+    meta_keywords: "Linux 性能监控，top 命令，CPU 监控，内存监控，iostat, lsof, cron 作业，进程线程"

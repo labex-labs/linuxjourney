@@ -1,43 +1,123 @@
 id: packages
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/packages.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/packages.png
 order_index: 7
 translations:
   en:
-    title: 'Packages'
-    description: 'Learn all about the dpkg, apt-get, rpm, and yum package management tools.'
+    title: "Packages"
+    description: "Learn all about the dpkg, apt-get, rpm, and yum package management tools."
     faqs:
-      - question: 'Which package managers are covered?'
-        answer: 'The course explains dpkg and apt for Debian-based systems, rpm and yum for RPM-based systems, plus the shared ideas behind packages and repositories.'
-      - question: 'Will I learn to install software from source?'
-        answer: 'Yes. The lessons introduce compressed archives and the basic workflow for obtaining, compiling, and installing source code.'
-      - question: 'Why do Linux distributions use different package tools?'
-        answer: 'Distributions organize software around different package formats and repository ecosystems, but dependencies, updates, and trusted sources are common concerns.'
-    meta_title: 'Linux Package Management Course'
-    meta_description: 'Learn Linux software distribution, dependencies, repositories, archives, source builds, and package tools including apt, yum, dpkg, and rpm.'
-    meta_keywords: 'Linux package management, apt, yum, dpkg, rpm, package repositories, dependencies, tar gzip, compile source'
+      - question: "Which package managers are covered?"
+        answer: "The course explains dpkg and apt for Debian-based systems, rpm and yum for RPM-based systems, plus the shared ideas behind packages and repositories."
+      - question: "Will I learn to install software from source?"
+        answer: "Yes. The lessons introduce compressed archives and the basic workflow for obtaining, compiling, and installing source code."
+      - question: "Why do Linux distributions use different package tools?"
+        answer: "Distributions organize software around different package formats and repository ecosystems, but dependencies, updates, and trusted sources are common concerns."
+    meta_title: "Linux Package Management Course"
+    meta_description: "Learn Linux software distribution, dependencies, repositories, archives, source builds, and package tools including apt, yum, dpkg, and rpm."
+    meta_keywords: "Linux package management, apt, yum, dpkg, rpm, package repositories, dependencies, tar gzip, compile source"
   de:
-    title: 'Pakete'
-    description: 'Erfahren Sie alles über die Paketverwaltungstools dpkg, apt-get, rpm und yum.'
+    title: "Pakete"
+    description: "Erfahren Sie alles über die Paketverwaltungstools dpkg, apt-get, rpm und yum."
+    faqs:
+      - question: "Welche Paketmanager werden abgedeckt?"
+        answer: "Der Kurs erklärt dpkg und apt für Debian-basierte Systeme, rpm und yum für RPM-basierte Systeme sowie die gemeinsamen Ideen hinter Paketen und Repositorys."
+      - question: "Werde ich lernen, Software aus dem Quellcode zu installieren?"
+        answer: "Ja. In den Lektionen werden komprimierte Archive und der grundlegende Arbeitsablauf zum Erhalten, Kompilieren und Installieren von Quellcode vorgestellt."
+      - question: "Warum verwenden Linux-Distributionen unterschiedliche Pakettools?"
+        answer: "Distributionen organisieren Software nach verschiedenen Paketformaten und Repository-Ökosystemen, aber Abhängigkeiten, Updates und vertrauenswürdige Quellen sind häufige Probleme."
+    meta_title: "Linux-Paketverwaltungskurs"
+    meta_description: "Lernen Sie die Linux-Softwareverteilung, Abhängigkeiten, Repositorys, Archive, Quell-Builds und Pakettools kennen, einschließlich apt, yum, dpkg und rpm."
+    meta_keywords: "Linux-Paketverwaltung, apt, yum, dpkg, rpm, Paket-Repositorys, Abhängigkeiten, tar gzip, Kompilierungsquelle"
   es:
-    title: 'Paquetes'
-    description: 'Aprende a usar las herramientas de gestión de paquetes dpkg, apt-get, rpm y yum.'
+    title: "Paquetes"
+    description: "Aprende a usar las herramientas de gestión de paquetes dpkg, apt-get, rpm y yum."
+    faqs:
+      - question: "¿Qué administradores de paquetes están cubiertos?"
+        answer: "El curso explica dpkg y apt para sistemas basados ​​en Debian, rpm y yum para sistemas basados ​​en RPM, además de las ideas compartidas detrás de los paquetes y repositorios."
+      - question: "¿Aprenderé a instalar software desde la fuente?"
+        answer: "Sí. Las lecciones presentan archivos comprimidos y el flujo de trabajo básico para obtener, compilar e instalar código fuente."
+      - question: "¿Por qué las distribuciones de Linux utilizan diferentes herramientas de paquetes?"
+        answer: "Las distribuciones organizan el software en torno a diferentes formatos de paquetes y ecosistemas de repositorio, pero las dependencias, las actualizaciones y las fuentes confiables son preocupaciones comunes."
+    meta_title: "Curso de Gestión de Paquetes Linux"
+    meta_description: "Aprenda la distribución de software de Linux, las dependencias, los repositorios, los archivos, las compilaciones de fuentes y las herramientas de paquetes, incluidos apt, yum, dpkg y rpm."
+    meta_keywords: "Gestión de paquetes de Linux, apt, yum, dpkg, rpm, repositorios de paquetes, dependencias, tar gzip, código fuente de compilación"
   fr:
-    title: 'Packages'
-    description: 'Apprenez à utiliser les outils de gestion de paquets dpkg, apt-get, rpm et yum.'
+    title: "Packages"
+    description: "Apprenez à utiliser les outils de gestion de paquets dpkg, apt-get, rpm et yum."
+    faqs:
+      - question: "Quels gestionnaires de paquets sont couverts ?"
+        answer: "Le cours explique dpkg et apt pour les systèmes basés sur Debian, rpm et yum pour les systèmes basés sur RPM, ainsi que les idées partagées derrière les packages et les référentiels."
+      - question: "Vais-je apprendre à installer un logiciel à partir des sources ?"
+        answer: "Oui. Les leçons présentent les archives compressées et le flux de travail de base pour obtenir, compiler et installer le code source."
+      - question: "Pourquoi les distributions Linux utilisent-elles des outils de package différents ?"
+        answer: "Les distributions organisent les logiciels autour de différents formats de packages et écosystèmes de référentiels, mais les dépendances, les mises à jour et les sources fiables sont des préoccupations courantes."
+    meta_title: "Cours de gestion des packages Linux"
+    meta_description: "Découvrez la distribution de logiciels Linux, les dépendances, les référentiels, les archives, les versions sources et les outils de package, notamment apt, yum, dpkg et rpm."
+    meta_keywords: "Gestion des packages Linux, apt, yum, dpkg, rpm, référentiels de packages, dépendances, tar gzip, source de compilation"
   ja:
-    title: 'パッケージ'
-    description: 'dpkg、apt-get、rpm、yum などのパッケージ管理ツールについて学びましょう。'
+    title: "パッケージ"
+    description: "dpkg、apt-get、rpm、yum などのパッケージ管理ツールについて学びましょう。"
+    faqs:
+      - question: "どのパッケージ マネージャーが対象ですか？"
+        answer: "このコースでは、Debian ベースのシステムの dpkg と apt、RPM ベースのシステムの rpm と yum、さらにパッケージとリポジトリの背後にある共通のアイデアについて説明します。"
+      - question: "ソースからソフトウェアをインストールする方法を学ぶことになりますか？"
+        answer: "はい。このレッスンでは、圧縮アーカイブと、ソース コードを取得、コンパイル、インストールするための基本的なワークフローを紹介します。"
+      - question: "Linux ディストリビューションが異なるパッケージ ツールを使用するのはなぜですか？"
+        answer: "ディストリビューションは、さまざまなパッケージ形式とリポジトリ エコシステムを中心にソフトウェアを編成しますが、依存関係、更新、信頼できるソースが共通の懸念事項となります。"
+    meta_title: "Linux パッケージ管理コース"
+    meta_description: "Linux ソフトウェアの配布、依存関係、リポジトリ、アーカイブ、ソース ビルド、および apt、yum、dpkg、rpm などのパッケージ ツールについて学びます。"
+    meta_keywords: "Linux パッケージ管理，apt, yum, dpkg, rpm, パッケージ リポジトリ，依存関係，tar gzip, コンパイル ソース"
   ko:
-    title: '패키지'
-    description: 'dpkg, apt-get, rpm, yum 패키지 관리 도구를 알아보세요.'
+    title: "패키지"
+    description: "dpkg, apt-get, rpm, yum 패키지 관리 도구를 알아보세요."
+    faqs:
+      - question: "어떤 패키지 관리자가 포함되나요?"
+        answer: "이 과정에서는 Debian 기반 시스템의 경우 dpkg 및 apt, RPM 기반 시스템의 경우 rpm 및 yum, 그리고 패키지 및 저장소에 대한 공유 아이디어를 설명합니다."
+      - question: "소스에서 소프트웨어를 설치하는 방법을 배울 수 있나요?"
+        answer: "네. 이 강의에서는 압축된 아카이브와 소스 코드 획득, 컴파일, 설치를 위한 기본 작업 흐름을 소개합니다."
+      - question: "Linux 배포판이 다른 패키지 도구를 사용하는 이유는 무엇입니까?"
+        answer: "배포판은 다양한 패키지 형식과 저장소 생태계를 중심으로 소프트웨어를 구성하지만 종속성, 업데이트, 신뢰할 수 있는 소스가 일반적인 문제입니다."
+    meta_title: "Linux 패키지 관리 강좌"
+    meta_description: "Linux 소프트웨어 배포, 종속성, 리포지토리, 아카이브, 소스 빌드 및 apt, yum, dpkg 및 rpm 을 포함한 패키지 도구에 대해 알아보세요."
+    meta_keywords: "Linux 패키지 관리, apt, yum, dpkg, rpm, 패키지 저장소, 종속성, tar gzip, 컴파일 소스"
   pt:
-    title: 'Pacotes'
-    description: 'Aprenda tudo sobre as ferramentas de gerenciamento de pacotes dpkg, apt-get, rpm e yum.'
+    title: "Pacotes"
+    description: "Aprenda tudo sobre as ferramentas de gerenciamento de pacotes dpkg, apt-get, rpm e yum."
+    faqs:
+      - question: "Quais gerenciadores de pacotes são cobertos?"
+        answer: "O curso explica dpkg e apt para sistemas baseados em Debian, rpm e yum para sistemas baseados em RPM, além das ideias compartilhadas por trás de pacotes e repositórios."
+      - question: "Aprenderei a instalar software a partir da fonte?"
+        answer: "Sim. As lições apresentam arquivos compactados e o fluxo de trabalho básico para obter, compilar e instalar código-fonte."
+      - question: "Por que as distribuições Linux usam ferramentas de pacotes diferentes?"
+        answer: "As distribuições organizam o software em torno de diferentes formatos de pacotes e ecossistemas de repositórios, mas dependências, atualizações e fontes confiáveis ​​são preocupações comuns."
+    meta_title: "Curso de gerenciamento de pacotes Linux"
+    meta_description: "Aprenda distribuição de software Linux, dependências, repositórios, arquivos, compilações de código-fonte e ferramentas de pacote, incluindo apt, yum, dpkg e rpm."
+    meta_keywords: "Gerenciamento de pacotes Linux, apt, yum, dpkg, rpm, repositórios de pacotes, dependências, tar gzip, fonte de compilação"
   ru:
-    title: 'Пакеты'
-    description: 'Узнайте все о средствах управления пакетами dpkg, apt-get, rpm и yum.'
+    title: "Пакеты"
+    description: "Узнайте все о средствах управления пакетами dpkg, apt-get, rpm и yum."
+    faqs:
+      - question: "Какие менеджеры пакетов поддерживаются?"
+        answer: "В курсе объясняются dpkg и apt для систем на базе Debian, rpm и yum для систем на базе RPM, а также общие идеи, лежащие в основе пакетов и репозиториев."
+      - question: "Научусь ли я устанавливать программное обеспечение из исходного кода?"
+        answer: "Да. В уроках представлены сжатые архивы и базовый рабочий процесс получения, компиляции и установки исходного кода."
+      - question: "Почему в дистрибутивах Linux используются разные пакетные инструменты?"
+        answer: "Дистрибутивы организуют программное обеспечение на основе различных форматов пакетов и экосистем репозиториев, но зависимости, обновления и доверенные источники являются общей проблемой."
+    meta_title: "Курс управления пакетами Linux"
+    meta_description: "Изучите распространение программного обеспечения Linux, зависимости, репозитории, архивы, сборки исходного кода и инструменты пакетов, включая apt, yum, dpkg и rpm."
+    meta_keywords: "Управление пакетами Linux, apt, yum, dpkg, rpm, репозитории пакетов, зависимости, tar gzip, исходный код для компиляции"
   zh:
-    title: '软件包'
-    description: '了解 dpkg、apt-get、rpm 和 yum 包管理工具。'
+    title: "软件包"
+    description: "了解 dpkg、apt-get、rpm 和 yum 包管理工具。"
+    faqs:
+      - question: "涵盖哪些包管理器？"
+        answer: "本课程解释了基于 Debian 的系统的 dpkg 和 apt，基于 RPM 的系统的 rpm 和 yum，以及包和存储库背后的共享思想。"
+      - question: "我会学习从源代码安装软件吗？"
+        answer: "是的。这些课程介绍压缩档案以及获取、编译和安装源代码的基本工作流程。"
+      - question: "为什么 Linux 发行版使用不同的打包工具？"
+        answer: "发行版围绕不同的软件包格式和存储库生态系统组织软件，但依赖性、更新和可信来源是常见的问题。"
+    meta_title: "Linux 包管理课程"
+    meta_description: "学习 Linux 软件分发、依赖项、存储库、档案、源代码构建和打包工具，包括 apt、yum、dpkg 和 rpm。"
+    meta_keywords: "Linux 包管理，apt, yum, dpkg, rpm, 包存储库，依赖项，tar gzip, 编译源"

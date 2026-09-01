@@ -1,43 +1,123 @@
 id: dns
 category:
   id: networking-nomad
-image_url: /images/linuxjourney/courses/dns.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/dns.png
 order_index: 6
 translations:
   en:
-    title: 'DNS'
-    description: 'Everything and more that you wanted to know about DNS.'
+    title: "DNS"
+    description: "Everything and more that you wanted to know about DNS."
     faqs:
-      - question: 'How does a DNS lookup work?'
-        answer: 'The course follows a query through clients, resolvers, root and authoritative name servers, explaining how components cooperate to return an answer.'
-      - question: 'Which DNS tools will I learn?'
-        answer: 'You will learn practical lookup and diagnostic concepts using tools such as dig and nslookup, along with local resolver configuration and /etc/hosts.'
-      - question: 'Is DNS only used for website addresses?'
-        answer: 'No. DNS stores multiple record types used for services, mail, verification, reverse lookups, and other forms of name-based discovery.'
-    meta_title: 'DNS Fundamentals and Tools Course'
-    meta_description: 'Understand DNS components and query flow, local hosts files, resolver setup, record lookup tools, and practical DNS troubleshooting on Linux.'
-    meta_keywords: 'DNS fundamentals, DNS lookup, dig command, nslookup, resolvers, DNS records, hosts file, DNS troubleshooting'
+      - question: "How does a DNS lookup work?"
+        answer: "The course follows a query through clients, resolvers, root and authoritative name servers, explaining how components cooperate to return an answer."
+      - question: "Which DNS tools will I learn?"
+        answer: "You will learn practical lookup and diagnostic concepts using tools such as dig and nslookup, along with local resolver configuration and /etc/hosts."
+      - question: "Is DNS only used for website addresses?"
+        answer: "No. DNS stores multiple record types used for services, mail, verification, reverse lookups, and other forms of name-based discovery."
+    meta_title: "DNS Fundamentals and Tools Course"
+    meta_description: "Understand DNS components and query flow, local hosts files, resolver setup, record lookup tools, and practical DNS troubleshooting on Linux."
+    meta_keywords: "DNS fundamentals, DNS lookup, dig command, nslookup, resolvers, DNS records, hosts file, DNS troubleshooting"
   de:
-    title: 'DNS'
-    description: 'Alles und mehr, was Sie über DNS wissen wollten.'
+    title: "DNS"
+    description: "Alles und mehr, was Sie über DNS wissen wollten."
+    faqs:
+      - question: "Wie funktioniert eine DNS-Suche?"
+        answer: "Der Kurs folgt einer Abfrage über Clients, Resolver, Root- und autorisierende Nameserver und erklärt, wie Komponenten zusammenarbeiten, um eine Antwort zurückzugeben."
+      - question: "Welche DNS-Tools werde ich lernen?"
+        answer: "Sie lernen praktische Such- und Diagnosekonzepte mithilfe von Tools wie dig und nslookup sowie die lokale Resolver-Konfiguration und /etc/hosts kennen."
+      - question: "Wird DNS nur für Website-Adressen verwendet?"
+        answer: "Nein. DNS speichert mehrere Datensatztypen, die für Dienste, E-Mail, Überprüfung, Reverse-Lookups und andere Formen der namensbasierten Erkennung verwendet werden."
+    meta_title: "DNS-Grundlagen- und Tools-Kurs"
+    meta_description: "Verstehen Sie DNS-Komponenten und Abfragefluss, lokale Hostdateien, Resolver-Setup, Tools zur Datensatzsuche und praktische DNS-Fehlerbehebung unter Linux."
+    meta_keywords: "DNS-Grundlagen, DNS-Suche, Dig-Befehl, nslookup, Resolver, DNS-Einträge, Hosts-Datei, DNS-Fehlerbehebung"
   es:
-    title: 'DNS'
-    description: 'Todo y más que querías saber sobre DNS.'
+    title: "DNS"
+    description: "Todo y más que querías saber sobre DNS."
+    faqs:
+      - question: "¿Cómo funciona una búsqueda de DNS?"
+        answer: "El curso sigue una consulta a través de clientes, solucionadores, servidores raíz y de nombres autorizados, y explica cómo los componentes cooperan para devolver una respuesta."
+      - question: "¿Qué herramientas de DNS aprenderé?"
+        answer: "Aprenderá conceptos prácticos de búsqueda y diagnóstico utilizando herramientas como dig y nslookup, junto con la configuración del solucionador local y /etc/hosts."
+      - question: "¿Se utiliza DNS solo para direcciones de sitios web?"
+        answer: "No. DNS almacena múltiples tipos de registros utilizados para servicios, correo, verificación, búsquedas inversas y otras formas de descubrimiento basado en nombres."
+    meta_title: "Curso de Fundamentos y Herramientas de DNS"
+    meta_description: "Comprenda los componentes de DNS y el flujo de consultas, los archivos de hosts locales, la configuración del solucionador, las herramientas de búsqueda de registros y la solución práctica de problemas de DNS en Linux."
+    meta_keywords: "Fundamentos de DNS, búsqueda de DNS, comando dig, nslookup, solucionadores, registros DNS, archivo de hosts, solución de problemas de DNS"
   fr:
-    title: 'DNS'
-    description: 'Tout ce que vous vouliez savoir et plus encore sur le DNS.'
+    title: "DNS"
+    description: "Tout ce que vous vouliez savoir et plus encore sur le DNS."
+    faqs:
+      - question: "Comment fonctionne une recherche DNS ?"
+        answer: "Le cours suit une requête via des clients, des résolveurs, des serveurs de noms racine et faisant autorité, expliquant comment les composants coopèrent pour renvoyer une réponse."
+      - question: "Quels outils DNS vais-je apprendre ?"
+        answer: "Vous apprendrez les concepts pratiques de recherche et de diagnostic à l'aide d'outils tels que dig et nslookup, ainsi que la configuration du résolveur local et /etc/hosts."
+      - question: "Le DNS est-il utilisé uniquement pour les adresses de sites Web ?"
+        answer: "Non. DNS stocke plusieurs types d'enregistrements utilisés pour les services, le courrier, la vérification, les recherches inversées et d'autres formes de découverte basée sur le nom."
+    meta_title: "Cours sur les principes fondamentaux et les outils du DNS"
+    meta_description: "Comprendre les composants DNS et le flux de requêtes, les fichiers d'hôtes locaux, la configuration du résolveur, les outils de recherche d'enregistrement et le dépannage pratique du DNS sous Linux."
+    meta_keywords: "Principes fondamentaux du DNS, recherche DNS, commande dig, nslookup, résolveurs, enregistrements DNS, fichier hosts, dépannage DNS"
   ja:
-    title: 'DNS'
-    description: 'DNS について知りたかったことすべて、そしてそれ以上を学びましょう。'
+    title: "DNS"
+    description: "DNS について知りたかったことすべて、そしてそれ以上を学びましょう。"
+    faqs:
+      - question: "DNS ルックアップはどのように機能しますか？"
+        answer: "このコースでは、クライアント、リゾルバー、ルートおよび権威ネームサーバーを介したクエリに従い、コンポーネントがどのように連携して回答を返すかを説明します。"
+      - question: "どの DNS ツールを学ぶことになりますか？"
+        answer: "dig や nslookup などのツールを使用した実践的なルックアップと診断の概念、およびローカル リゾルバー設定や /etc/hosts を学びます。"
+      - question: "DNS は Web サイトのアドレスにのみ使用されますか？"
+        answer: "いいえ。DNS は、サービス、メール、検証、逆引き検索、およびその他の形式の名前ベースの検出に使用される複数のレコード タイプを保存します。"
+    meta_title: "DNS の基礎とツールのコース"
+    meta_description: "Linux での DNS コンポーネントとクエリ フロー、ローカル ホスト ファイル、リゾルバー セットアップ、レコード検索ツール、および実践的な DNS トラブルシューティングを理解します。"
+    meta_keywords: "DNS の基礎，DNS ルックアップ，dig コマンド，nslookup, リゾルバー, DNS レコード，hosts ファイル，DNS トラブルシューティング"
   ko:
-    title: 'DNS'
-    description: 'DNS 에 대해 알고 싶었던 모든 것과 그 이상.'
+    title: "DNS"
+    description: "DNS 에 대해 알고 싶었던 모든 것과 그 이상."
+    faqs:
+      - question: "DNS 조회는 어떻게 작동하나요?"
+        answer: "이 과정에서는 클라이언트, 확인자, 루트 및 권한 있는 이름 서버를 통한 쿼리를 따라가며 구성 요소가 어떻게 협력하여 응답을 반환하는지 설명합니다."
+      - question: "어떤 DNS 도구를 배우나요?"
+        answer: "로컬 확인자 구성 및 /etc/hosts와 함께 dig 및 nslookup 과 같은 도구를 사용하여 실용적인 조회 및 진단 개념을 배우게 됩니다."
+      - question: "DNS 는 웹사이트 주소에만 사용되나요?"
+        answer: "아니요. DNS 는 서비스, 메일, 확인, 역방향 조회 및 기타 이름 기반 검색에 사용되는 다양한 레코드 유형을 저장합니다."
+    meta_title: "DNS 기초 및 도구 과정"
+    meta_description: "DNS 구성 요소 및 쿼리 흐름, 로컬 호스트 파일, 확인자 설정, 레코드 조회 도구 및 Linux 의 실제 DNS 문제 해결을 이해합니다."
+    meta_keywords: "DNS 기본 사항, DNS 조회, dig 명령, nslookup, 확인자, DNS 레코드, 호스트 파일, DNS 문제 해결"
   pt:
-    title: 'DNS'
-    description: 'Tudo e mais que você queria saber sobre DNS.'
+    title: "DNS"
+    description: "Tudo e mais que você queria saber sobre DNS."
+    faqs:
+      - question: "Como funciona uma pesquisa de DNS?"
+        answer: "O curso segue uma consulta através de clientes, resolvedores, servidores de nomes raiz e autoritativos, explicando como os componentes cooperam para retornar uma resposta."
+      - question: "Quais ferramentas DNS vou aprender?"
+        answer: "Você aprenderá conceitos práticos de pesquisa e diagnóstico usando ferramentas como dig e nslookup, juntamente com a configuração do resolvedor local e /etc/hosts."
+      - question: "O DNS é usado apenas para endereços de sites?"
+        answer: "Não. O DNS armazena vários tipos de registros usados ​​para serviços, correio, verificação, pesquisas reversas e outras formas de descoberta baseada em nomes."
+    meta_title: "Curso de Fundamentos e Ferramentas de DNS"
+    meta_description: "Entenda os componentes do DNS e o fluxo de consulta, arquivos de hosts locais, configuração do resolvedor, ferramentas de pesquisa de registros e solução prática de problemas de DNS no Linux."
+    meta_keywords: "Fundamentos de DNS, pesquisa de DNS, comando dig, nslookup, resolvedores, registros DNS, arquivo de hosts, solução de problemas de DNS"
   ru:
-    title: 'DNS'
-    description: 'Все и даже больше, что вы хотели знать о DNS.'
+    title: "DNS"
+    description: "Все и даже больше, что вы хотели знать о DNS."
+    faqs:
+      - question: "Как работает поиск DNS?"
+        answer: "В курсе рассматривается запрос через клиенты, преобразователи, корневые и авторитетные серверы имен, объясняя, как компоненты взаимодействуют для возврата ответа."
+      - question: "Какие инструменты DNS я изучу?"
+        answer: "Вы изучите практические концепции поиска и диагностики с использованием таких инструментов, как dig и nslookup, а также настройки локального преобразователя и /etc/hosts."
+      - question: "Используется ли DNS только для адресов веб-сайтов?"
+        answer: "Нет. DNS хранит несколько типов записей, используемых для служб, почты, проверки, обратного поиска и других форм обнаружения на основе имени."
+    meta_title: "Курс по основам и инструментам DNS"
+    meta_description: "Понимание компонентов DNS и потока запросов, файлов локальных хостов, настройки преобразователя, инструментов поиска записей и практического устранения неполадок DNS в Linux."
+    meta_keywords: "Основы DNS, поиск DNS, команда dig, nslookup, преобразователи, записи DNS, файл хостов, устранение неполадок DNS"
   zh:
-    title: 'DNS'
-    description: '所有您想了解的关于 DNS 的一切及更多。'
+    title: "DNS"
+    description: "所有您想了解的关于 DNS 的一切及更多。"
+    faqs:
+      - question: "DNS 查找是如何工作的？"
+        answer: "本课程通过客户端、解析器、根和权威名称服务器进行查询，解释组件如何协作以返回答案。"
+      - question: "我将学习哪些 DNS 工具？"
+        answer: "您将使用 dig 和 nslookup 等工具学习实用的查找和诊断概念，以及本地解析器配置和 /etc/hosts。"
+      - question: "DNS 只用于网站地址吗？"
+        answer: "否。DNS 存储多种记录类型，用于服务、邮件、验证、反向查找和其他形式的基于名称的发现。"
+    meta_title: "DNS 基础知识和工具课程"
+    meta_description: "了解 Linux 上的 DNS 组件和查询流程、本地主机文件、解析器设置、记录查找工具以及实用的 DNS 故障排除。"
+    meta_keywords: "DNS 基础知识，DNS 查找，dig 命令，nslookup, 解析器，DNS 记录，hosts 文件，DNS 故障排除"

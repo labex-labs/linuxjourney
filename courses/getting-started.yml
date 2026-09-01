@@ -1,43 +1,123 @@
 id: getting-started
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/getting-started.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/getting-started.png
 order_index: 0
 translations:
   en:
-    title: 'Getting Started'
-    description: 'What is Linux? Get started with choosing a distribution and installation.'
+    title: "Getting Started"
+    description: "What is Linux? Get started with choosing a distribution and installation."
     faqs:
-      - question: 'What will I learn in this course?'
-        answer: 'You will learn what Linux is, how it developed, and how major distributions such as Ubuntu, Debian, Fedora, Arch Linux, and Linux Mint differ.'
-      - question: 'Is this course suitable for complete beginners?'
-        answer: 'Yes. The course assumes no previous Linux experience and provides the background you need before moving on to command-line and system topics.'
-      - question: 'Do I need to install Linux before starting?'
-        answer: 'No. You can study the distribution guides first and decide which Linux environment, virtual machine, or live system best fits your needs.'
-    meta_title: 'Getting Started with Linux'
-    meta_description: 'Start learning Linux by exploring its history, major distributions, installation choices, and how to select the right Linux system for your goals.'
-    meta_keywords: 'Linux basics, Linux distributions, choose a Linux distro, Ubuntu, Debian, Fedora, Arch Linux'
+      - question: "What will I learn in this course?"
+        answer: "You will learn what Linux is, how it developed, and how major distributions such as Ubuntu, Debian, Fedora, Arch Linux, and Linux Mint differ."
+      - question: "Is this course suitable for complete beginners?"
+        answer: "Yes. The course assumes no previous Linux experience and provides the background you need before moving on to command-line and system topics."
+      - question: "Do I need to install Linux before starting?"
+        answer: "No. You can study the distribution guides first and decide which Linux environment, virtual machine, or live system best fits your needs."
+    meta_title: "Getting Started with Linux"
+    meta_description: "Start learning Linux by exploring its history, major distributions, installation choices, and how to select the right Linux system for your goals."
+    meta_keywords: "Linux basics, Linux distributions, choose a Linux distro, Ubuntu, Debian, Fedora, Arch Linux"
   de:
-    title: 'Erste Schritte'
-    description: 'Was ist Linux? Beginnen Sie mit der Auswahl einer Distribution und der Installation.'
+    title: "Erste Schritte"
+    description: "Was ist Linux? Beginnen Sie mit der Auswahl einer Distribution und der Installation."
+    faqs:
+      - question: "Was werde ich in diesem Kurs lernen?"
+        answer: "Sie erfahren, was Linux ist, wie es sich entwickelt hat und wie sich große Distributionen wie Ubuntu, Debian, Fedora, Arch Linux und Linux Mint unterscheiden."
+      - question: "Ist dieser Kurs für absolute Anfänger geeignet?"
+        answer: "Ja. Der Kurs setzt keine Linux-Vorkenntnisse voraus und vermittelt den Hintergrund, den Sie benötigen, bevor Sie mit Befehlszeilen- und Systemthemen fortfahren."
+      - question: "Muss ich Linux installieren, bevor ich anfange?"
+        answer: "Nein. Sie können zunächst die Verteilungshandbücher lesen und entscheiden, welche Linux-Umgebung, virtuelle Maschine oder welches Live-System Ihren Anforderungen am besten entspricht."
+    meta_title: "Erste Schritte mit Linux"
+    meta_description: "Beginnen Sie mit dem Erlernen von Linux, indem Sie seine Geschichte, die wichtigsten Distributionen, Installationsoptionen und die Auswahl des richtigen Linux-Systems für Ihre Ziele erkunden."
+    meta_keywords: "Linux-Grundlagen, Linux-Distributionen, wählen Sie eine Linux-Distribution, Ubuntu, Debian, Fedora, Arch Linux"
   es:
-    title: 'Primeros Pasos'
-    description: '¿Qué es Linux? Comienza eligiendo una distribución e instalación.'
+    title: "Primeros Pasos"
+    description: "¿Qué es Linux? Comienza eligiendo una distribución e instalación."
+    faqs:
+      - question: "¿Qué aprenderé en este curso?"
+        answer: "Aprenderá qué es Linux, cómo se desarrolló y en qué se diferencian las principales distribuciones como Ubuntu, Debian, Fedora, Arch Linux y Linux Mint."
+      - question: "¿Este curso es adecuado para principiantes?"
+        answer: "Sí. El curso no asume ninguna experiencia previa en Linux y proporciona los conocimientos básicos que necesita antes de pasar a temas de sistema y línea de comandos."
+      - question: "¿Necesito instalar Linux antes de comenzar?"
+        answer: "No. Primero puede estudiar las guías de distribución y decidir qué entorno Linux, máquina virtual o sistema en vivo se adapta mejor a sus necesidades."
+    meta_title: "Introducción a Linux"
+    meta_description: "Comience a aprender Linux explorando su historia, sus principales distribuciones, opciones de instalación y cómo seleccionar el sistema Linux adecuado para sus objetivos."
+    meta_keywords: "Conceptos básicos de Linux, distribuciones de Linux, elija una distribución de Linux, Ubuntu, Debian, Fedora, Arch Linux"
   fr:
-    title: 'Démarrage'
-    description: 'Qu''est-ce que Linux ? Commencez par choisir une distribution et l''installation.'
+    title: "Démarrage"
+    description: "Qu'est-ce que Linux ? Commencez par choisir une distribution et l'installation."
+    faqs:
+      - question: "Que vais-je apprendre dans ce cours ?"
+        answer: "Vous apprendrez ce qu'est Linux, comment il s'est développé et en quoi les principales distributions telles que Ubuntu, Debian, Fedora, Arch Linux et Linux Mint diffèrent."
+      - question: "Ce cours est-il adapté aux débutants complets ?"
+        answer: "Oui. Le cours ne suppose aucune expérience préalable de Linux et fournit les connaissances dont vous avez besoin avant de passer aux sujets relatifs à la ligne de commande et au système."
+      - question: "Dois-je installer Linux avant de commencer ?"
+        answer: "Non. Vous pouvez d'abord étudier les guides de distribution et décider quel environnement Linux, machine virtuelle ou système live correspond le mieux à vos besoins."
+    meta_title: "Premiers pas avec Linux"
+    meta_description: "Commencez à apprendre Linux en explorant son historique, ses principales distributions, ses choix d'installation et comment sélectionner le système Linux adapté à vos objectifs."
+    meta_keywords: "Bases de Linux, distributions Linux, choisissez une distribution Linux, Ubuntu, Debian, Fedora, Arch Linux"
   ja:
-    title: 'はじめに'
-    description: 'Linux とは？ディストリビューションの選択とインストールから始めましょう。'
+    title: "はじめに"
+    description: "Linux とは？ディストリビューションの選択とインストールから始めましょう。"
+    faqs:
+      - question: "このコースでは何を学びますか？"
+        answer: "Linux とは何か、Linux がどのように開発されたか、Ubuntu、Debian、Fedora、Arch Linux、Linux Mint などの主要なディストリビューションがどのように異なるかを学びます。"
+      - question: "このコースは完全な初心者に適していますか？"
+        answer: "はい。このコースは Linux の経験がないことを前提としており、コマンドラインとシステムのトピックに進む前に必要な背景を提供します。"
+      - question: "開始する前に Linux をインストールする必要がありますか？"
+        answer: "いいえ。まず配布ガイドを調べて、どの Linux 環境、仮想マシン、またはライブ システムがニーズに最も適しているかを決定できます。"
+    meta_title: "Linux 入門"
+    meta_description: "Linux の歴史、主要なディストリビューション、インストールの選択肢、および目的に適した Linux システムの選択方法を調べて、Linux の学習を始めましょう。"
+    meta_keywords: "Linux の基本，Linux ディストリビューション，Linux ディストリビューションの選択，Ubuntu, Debian, Fedora, Arch Linux"
   ko:
-    title: '시작하기'
-    description: 'Linux 란 무엇인가요? 배포판 선택 및 설치부터 시작하세요.'
+    title: "시작하기"
+    description: "Linux 란 무엇인가요? 배포판 선택 및 설치부터 시작하세요."
+    faqs:
+      - question: "이 강좌에서는 무엇을 배우나요?"
+        answer: "Linux 가 무엇인지, 어떻게 개발되었는지, Ubuntu, Debian, Fedora, Arch Linux, Linux Mint 와 같은 주요 배포판이 어떻게 다른지 알아보세요."
+      - question: "이 강좌는 완전 초보자에게 적합한가요?"
+        answer: "네. 이 과정에서는 이전 Linux 경험이 없다고 가정하고 명령줄 및 시스템 주제로 넘어가기 전에 필요한 배경 지식을 제공합니다."
+      - question: "시작하기 전에 Linux 를 설치해야 합니까?"
+        answer: "아니요. 먼저 배포 가이드를 연구하고 귀하의 요구 사항에 가장 적합한 Linux 환경, 가상 머신 또는 라이브 시스템을 결정할 수 있습니다."
+    meta_title: "Linux 시작하기"
+    meta_description: "Linux 의 역사, 주요 배포판, 설치 선택 사항, 목표에 적합한 Linux 시스템을 선택하는 방법을 살펴보며 Linux 학습을 시작하세요."
+    meta_keywords: "Linux 기본, Linux 배포판, Linux 배포판 선택, Ubuntu, Debian, Fedora, Arch Linux"
   pt:
-    title: 'Primeiros Passos'
-    description: 'O que é Linux? Comece escolhendo uma distribuição e fazendo a instalação.'
+    title: "Primeiros Passos"
+    description: "O que é Linux? Comece escolhendo uma distribuição e fazendo a instalação."
+    faqs:
+      - question: "O que aprenderei neste curso?"
+        answer: "Você aprenderá o que é Linux, como ele foi desenvolvido e como as principais distribuições como Ubuntu, Debian, Fedora, Arch Linux e Linux Mint diferem."
+      - question: "Este curso é adequado para iniciantes?"
+        answer: "Sim. O curso não pressupõe nenhuma experiência anterior em Linux e fornece o conhecimento necessário antes de passar para tópicos de linha de comando e sistema."
+      - question: "Preciso instalar o Linux antes de começar?"
+        answer: "Não. Você pode estudar primeiro os guias de distribuição e decidir qual ambiente Linux, máquina virtual ou sistema live melhor atende às suas necessidades."
+    meta_title: "Introdução ao Linux"
+    meta_description: "Comece a aprender Linux explorando sua história, principais distribuições, opções de instalação e como selecionar o sistema Linux certo para seus objetivos."
+    meta_keywords: "Noções básicas de Linux, distribuições Linux, escolha uma distribuição Linux, Ubuntu, Debian, Fedora, Arch Linux"
   ru:
-    title: 'Начало работы'
-    description: 'Что такое Linux? Начните с выбора дистрибутива и установки.'
+    title: "Начало работы"
+    description: "Что такое Linux? Начните с выбора дистрибутива и установки."
+    faqs:
+      - question: "Чему я научусь на этом курсе?"
+        answer: "Вы узнаете, что такое Linux, как он развивался и чем отличаются основные дистрибутивы, такие как Ubuntu, Debian, Fedora, Arch Linux и Linux Mint."
+      - question: "Подходит ли этот курс для начинающих?"
+        answer: "Да. Курс предполагает отсутствие предыдущего опыта работы с Linux и предоставляет необходимую базовую информацию, прежде чем перейти к темам командной строки и системы."
+      - question: "Нужно ли мне устанавливать Linux перед запуском?"
+        answer: "Нет. Вы можете сначала изучить руководства по дистрибутиву и решить, какая среда Linux, виртуальная машина или работающая система лучше всего соответствует вашим потребностям."
+    meta_title: "Начало работы с Linux"
+    meta_description: "Начните изучение Linux с изучения его истории, основных дистрибутивов, вариантов установки и того, как выбрать подходящую систему Linux для ваших целей."
+    meta_keywords: "Основы Linux, дистрибутивы Linux, выбор дистрибутива Linux, Ubuntu, Debian, Fedora, Arch Linux"
   zh:
-    title: '入门'
-    description: '什么是 Linux？从选择发行版和安装开始。'
+    title: "入门"
+    description: "什么是 Linux？从选择发行版和安装开始。"
+    faqs:
+      - question: "我将在本课程中学到什么？"
+        answer: "您将了解 Linux 是什么、它是如何开发的，以及 Ubuntu、Debian、Fedora、Arch Linux 和 Linux Mint 等主要发行版有何不同。"
+      - question: "这个课程适合完全的初学者吗？"
+        answer: "是的。本课程假设您之前没有 Linux 经验，并提供您在继续命令行和系统主题之前所需的背景知识。"
+      - question: "开始之前需要安装 Linux 吗？"
+        answer: "不需要。您可以先研究发行指南，然后决定哪种 Linux 环境、虚拟机或实时系统最适合您的需求。"
+    meta_title: "Linux 入门"
+    meta_description: "通过探索 Linux 的历史、主要发行版、安装选择以及如何为您的目标选择正确的 Linux 系统来开始学习 Linux。"
+    meta_keywords: "Linux 基础知识，Linux 发行版，选择 Linux 发行版，Ubuntu, Debian, Fedora, Arch Linux"

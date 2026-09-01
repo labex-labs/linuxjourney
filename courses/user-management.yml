@@ -1,43 +1,123 @@
 id: user-management
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/user-management.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/user-management.png
 order_index: 4
 translations:
   en:
-    title: 'User Management'
-    description: 'Learn about user roles and management.'
+    title: "User Management"
+    description: "Learn about user roles and management."
     faqs:
-      - question: 'What account files does this course explain?'
-        answer: 'You will learn the roles of /etc/passwd, /etc/shadow, and /etc/group, including how Linux stores account, password, and group information.'
-      - question: 'Which user-management tasks are covered?'
-        answer: 'The lessons cover users and groups, root access, account files, and common tools for creating, modifying, inspecting, and removing accounts.'
-      - question: 'Do these lessons require administrator access?'
-        answer: 'Reading the explanations does not, but many account changes require root or sudo privileges. Practice only in a system where you are authorized to administer users.'
-    meta_title: 'Linux User Management Course'
-    meta_description: 'Learn Linux users and groups, account databases, root privileges, passwords, and practical commands for safely managing local user accounts.'
-    meta_keywords: 'Linux user management, users and groups, passwd file, shadow file, root user, useradd, group management'
+      - question: "What account files does this course explain?"
+        answer: "You will learn the roles of /etc/passwd, /etc/shadow, and /etc/group, including how Linux stores account, password, and group information."
+      - question: "Which user-management tasks are covered?"
+        answer: "The lessons cover users and groups, root access, account files, and common tools for creating, modifying, inspecting, and removing accounts."
+      - question: "Do these lessons require administrator access?"
+        answer: "Reading the explanations does not, but many account changes require root or sudo privileges. Practice only in a system where you are authorized to administer users."
+    meta_title: "Linux User Management Course"
+    meta_description: "Learn Linux users and groups, account databases, root privileges, passwords, and practical commands for safely managing local user accounts."
+    meta_keywords: "Linux user management, users and groups, passwd file, shadow file, root user, useradd, group management"
   de:
-    title: 'Benutzerverwaltung'
-    description: 'Lernen Sie Benutzerrollen und -verwaltung kennen.'
+    title: "Benutzerverwaltung"
+    description: "Lernen Sie Benutzerrollen und -verwaltung kennen."
+    faqs:
+      - question: "Welche Kontodateien werden in diesem Kurs erklärt?"
+        answer: "Sie lernen die Rollen von /etc/passwd, /etc/shadow und /etc/group kennen, einschließlich der Art und Weise, wie Linux Konto-, Passwort- und Gruppeninformationen speichert."
+      - question: "Welche Aufgaben der Benutzerverwaltung werden abgedeckt?"
+        answer: "Die Lektionen behandeln Benutzer und Gruppen, Root-Zugriff, Kontodateien und gängige Tools zum Erstellen, Ändern, Überprüfen und Entfernen von Konten."
+      - question: "Ist für diese Lektionen Administratorzugriff erforderlich?"
+        answer: "Das Lesen der Erklärungen reicht nicht aus, aber viele Kontoänderungen erfordern Root- oder Sudo-Rechte. Üben Sie nur in einem System, in dem Sie berechtigt sind, Benutzer zu verwalten."
+    meta_title: "Linux-Benutzerverwaltungskurs"
+    meta_description: "Lernen Sie Linux-Benutzer und -Gruppen, Kontodatenbanken, Root-Rechte, Passwörter und praktische Befehle für die sichere Verwaltung lokaler Benutzerkonten kennen."
+    meta_keywords: "Linux-Benutzerverwaltung, Benutzer und Gruppen, Passwd-Datei, Schattendatei, Root-Benutzer, Benutzer hinzufügen, Gruppenverwaltung"
   es:
-    title: 'Gestión de Usuarios'
-    description: 'Aprende sobre los roles y la gestión de usuarios.'
+    title: "Gestión de Usuarios"
+    description: "Aprende sobre los roles y la gestión de usuarios."
+    faqs:
+      - question: "¿Qué archivos de cuenta explica este curso?"
+        answer: "Aprenderá las funciones de /etc/passwd, /etc/shadow y /etc/group, incluido cómo Linux almacena la información de cuentas, contraseñas y grupos."
+      - question: "¿Qué tareas de gestión de usuarios están cubiertas?"
+        answer: "Las lecciones cubren usuarios y grupos, acceso raíz, archivos de cuentas y herramientas comunes para crear, modificar, inspeccionar y eliminar cuentas."
+      - question: "¿Estas lecciones requieren acceso de administrador?"
+        answer: "Leer las explicaciones no, pero muchos cambios de cuenta requieren privilegios de root o sudo. Practique sólo en un sistema donde esté autorizado a administrar usuarios."
+    meta_title: "Curso de Gestión de Usuarios de Linux"
+    meta_description: "Aprenda los usuarios y grupos de Linux, las bases de datos de cuentas, los privilegios de root, las contraseñas y los comandos prácticos para administrar de forma segura las cuentas de usuarios locales."
+    meta_keywords: "Gestión de usuarios de Linux, usuarios y grupos, archivo passwd, archivo sombra, usuario root, useradd, gestión de grupos"
   fr:
-    title: 'Gestion des Utilisateurs'
-    description: 'Apprenez-en davantage sur les rôles et la gestion des utilisateurs.'
+    title: "Gestion des Utilisateurs"
+    description: "Apprenez-en davantage sur les rôles et la gestion des utilisateurs."
+    faqs:
+      - question: "Quels fichiers de compte ce cours explique-t-il ?"
+        answer: "Vous apprendrez les rôles de /etc/passwd, /etc/shadow et /etc/group, y compris la manière dont Linux stocke les informations de compte, de mot de passe et de groupe."
+      - question: "Quelles tâches de gestion des utilisateurs sont couvertes ?"
+        answer: "Les leçons couvrent les utilisateurs et les groupes, l'accès root, les fichiers de compte et les outils courants pour créer, modifier, inspecter et supprimer des comptes."
+      - question: "Ces leçons nécessitent-elles un accès administrateur ?"
+        answer: "La lecture des explications ne l'est pas, mais de nombreuses modifications de compte nécessitent les privilèges root ou sudo. Entraînez-vous uniquement dans un système où vous êtes autorisé à administrer des utilisateurs."
+    meta_title: "Cours de gestion des utilisateurs Linux"
+    meta_description: "Découvrez les utilisateurs et groupes Linux, les bases de données de comptes, les privilèges root, les mots de passe et les commandes pratiques pour gérer en toute sécurité les comptes d'utilisateurs locaux."
+    meta_keywords: "Gestion des utilisateurs Linux, utilisateurs et groupes, fichier passwd, fichier shadow, utilisateur root, useradd, gestion de groupe"
   ja:
-    title: 'ユーザー管理'
-    description: 'ユーザーの役割と管理について学びましょう。'
+    title: "ユーザー管理"
+    description: "ユーザーの役割と管理について学びましょう。"
+    faqs:
+      - question: "このコースではどのようなアカウント ファイルについて説明しますか？"
+        answer: "Linux がアカウント、パスワード、グループ情報を保存する方法など、/etc/passwd、/etc/shadow、/etc/group の役割を学びます。"
+      - question: "どのユーザー管理タスクが対象になりますか？"
+        answer: "このレッスンでは、ユーザーとグループ、root アクセス、アカウント ファイル、およびアカウントを作成、変更、検査、削除するための一般的なツールについて説明します。"
+      - question: "これらのレッスンには管理者アクセスが必要ですか？"
+        answer: "説明を読んでもわかりませんが、多くのアカウント変更には root または sudo 権限が必要です。ユーザーを管理する権限を与えられたシステム内でのみ実践してください。"
+    meta_title: "Linux ユーザー管理コース"
+    meta_description: "Linux ユーザーとグループ、アカウント データベース、root 権限、パスワード、ローカル ユーザー アカウントを安全に管理するための実用的なコマンドについて学びます。"
+    meta_keywords: "Linux ユーザー管理，ユーザーとグループ，パスワード ファイル，シャドウ ファイル，root ユーザー, useradd, グループ管理"
   ko:
-    title: '사용자 관리'
-    description: '사용자 역할 및 관리에 대해 배우세요.'
+    title: "사용자 관리"
+    description: "사용자 역할 및 관리에 대해 배우세요."
+    faqs:
+      - question: "이 강좌에서는 어떤 계정 파일을 설명하나요?"
+        answer: "Linux 가 계정, 비밀번호 및 그룹 정보를 저장하는 방법을 포함하여 /etc/passwd, /etc/shadow 및 /etc/group의 역할을 학습합니다."
+      - question: "어떤 사용자 관리 작업이 다루나요?"
+        answer: "이 강의에서는 사용자 및 그룹, 루트 액세스, 계정 파일, 계정 생성, 수정, 검사 및 제거를 위한 일반 도구를 다룹니다."
+      - question: "이 수업에는 관리자 액세스 권한이 필요합니까?"
+        answer: "설명을 읽어보면 알 수 없지만, 많은 계정 변경에는 루트 또는 sudo 권한이 필요합니다. 사용자 관리 권한이 있는 시스템에서만 연습하십시오."
+    meta_title: "Linux 사용자 관리 과정"
+    meta_description: "Linux 사용자 및 그룹, 계정 데이터베이스, 루트 권한, 비밀번호, 로컬 사용자 계정을 안전하게 관리하기 위한 실용적인 명령을 알아보세요."
+    meta_keywords: "Linux 사용자 관리, 사용자 및 그룹, passwd 파일, 섀도우 파일, 루트 사용자, useradd, 그룹 관리"
   pt:
-    title: 'Gerenciamento de Usuários'
-    description: 'Aprenda sobre funções e gerenciamento de usuários.'
+    title: "Gerenciamento de Usuários"
+    description: "Aprenda sobre funções e gerenciamento de usuários."
+    faqs:
+      - question: "Quais arquivos de conta este curso explica?"
+        answer: "Você aprenderá as funções de /etc/passwd, /etc/shadow e /etc/group, incluindo como o Linux armazena informações de contas, senhas e grupos."
+      - question: "Quais tarefas de gerenciamento de usuários são abordadas?"
+        answer: "As lições abrangem usuários e grupos, acesso root, arquivos de contas e ferramentas comuns para criar, modificar, inspecionar e remover contas."
+      - question: "Essas lições exigem acesso de administrador?"
+        answer: "A leitura das explicações não, mas muitas alterações de conta exigem privilégios de root ou sudo. Pratique apenas em um sistema onde você esteja autorizado a administrar usuários."
+    meta_title: "Curso de gerenciamento de usuários Linux"
+    meta_description: "Aprenda usuários e grupos do Linux, bancos de dados de contas, privilégios de root, senhas e comandos práticos para gerenciar com segurança contas de usuários locais."
+    meta_keywords: "Gerenciamento de usuários Linux, usuários e grupos, arquivo passwd, arquivo shadow, usuário root, useradd, gerenciamento de grupo"
   ru:
-    title: 'Управление пользователями'
-    description: 'Узнайте о ролях пользователей и управлении.'
+    title: "Управление пользователями"
+    description: "Узнайте о ролях пользователей и управлении."
+    faqs:
+      - question: "Какие файлы учетных записей рассматриваются в этом курсе?"
+        answer: "Вы узнаете роли /etc/passwd, /etc/shadow и /etc/group, в том числе то, как Linux хранит информацию об учетной записи, пароле и группе."
+      - question: "Какие задачи управления пользователями рассматриваются?"
+        answer: "Уроки охватывают пользователей и группы, корневой доступ, файлы учетных записей и общие инструменты для создания, изменения, проверки и удаления учетных записей."
+      - question: "Требуются ли для этих уроков доступ администратора?"
+        answer: "Чтение объяснений не требует, но для многих изменений учетной записи требуются права root или sudo. Практикуйтесь только в системе, где вам разрешено администрировать пользователей."
+    meta_title: "Курс управления пользователями Linux"
+    meta_description: "Изучите пользователей и группы Linux, базы данных учетных записей, права root, пароли и практические команды для безопасного управления локальными учетными записями пользователей."
+    meta_keywords: "Управление пользователями Linux, пользователи и группы, файл паролей, теневой файл, пользователь root, добавление пользователя, управление группами"
   zh:
-    title: '用户管理'
-    description: '了解用户角色和管理。'
+    title: "用户管理"
+    description: "了解用户角色和管理。"
+    faqs:
+      - question: "本课程讲解哪些账户文件？"
+        answer: "您将了解/etc/passwd、/etc/shadow 和/etc/group 的作用，包括 Linux 如何存储帐户、密码和组信息。"
+      - question: "涵盖哪些用户管理任务？"
+        answer: "课程涵盖用户和组、root 访问权限、帐户文件以及用于创建、修改、检查和删除帐户的常用工具。"
+      - question: "这些课程需要管理员访问权限吗？"
+        answer: "阅读说明不会，但许多帐户更改需要 root 或 sudo 权限。仅在您有权管理用户的系统中练习。"
+    meta_title: "Linux 用户管理课程"
+    meta_description: "学习 Linux 用户和组、帐户数据库、root 权限、密码以及安全管理本地用户帐户的实用命令。"
+    meta_keywords: "Linux 用户管理，用户和组，passwd 文件，shadow 文件，root 用户，useradd, 组管理"

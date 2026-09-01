@@ -1,43 +1,123 @@
 id: subnetting
 category:
   id: networking-nomad
-image_url: /images/linuxjourney/courses/subnetting.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/subnetting.png
 order_index: 2
 translations:
   en:
-    title: 'Subnetting'
-    description: 'Learn about subnets and how to do subnet arithmetic!'
+    title: "Subnetting"
+    description: "Learn about subnets and how to do subnet arithmetic!"
     faqs:
-      - question: 'What calculations will I learn?'
-        answer: 'You will learn how addresses, prefix lengths, subnet masks, and host ranges relate, with subnet arithmetic and a practical reference lesson.'
-      - question: 'Does the course cover both IPv4 and IPv6?'
-        answer: 'Yes. Separate lessons introduce IPv4 and IPv6, while the subnet and CIDR concepts help you reason about address allocation.'
-      - question: 'Should I understand binary numbers first?'
-        answer: 'Basic binary familiarity is helpful, but the subnet math lessons are designed to build the connection between bits, prefixes, masks, and address ranges.'
-    meta_title: 'IP Addressing and Subnetting Course'
-    meta_description: 'Learn IPv4, IPv6, subnets, CIDR notation, subnet arithmetic, NAT, and practical techniques for understanding network address ranges.'
-    meta_keywords: 'subnetting, subnet math, CIDR, IPv4, IPv6, NAT, network addressing, subnet mask'
+      - question: "What calculations will I learn?"
+        answer: "You will learn how addresses, prefix lengths, subnet masks, and host ranges relate, with subnet arithmetic and a practical reference lesson."
+      - question: "Does the course cover both IPv4 and IPv6?"
+        answer: "Yes. Separate lessons introduce IPv4 and IPv6, while the subnet and CIDR concepts help you reason about address allocation."
+      - question: "Should I understand binary numbers first?"
+        answer: "Basic binary familiarity is helpful, but the subnet math lessons are designed to build the connection between bits, prefixes, masks, and address ranges."
+    meta_title: "IP Addressing and Subnetting Course"
+    meta_description: "Learn IPv4, IPv6, subnets, CIDR notation, subnet arithmetic, NAT, and practical techniques for understanding network address ranges."
+    meta_keywords: "subnetting, subnet math, CIDR, IPv4, IPv6, NAT, network addressing, subnet mask"
   de:
-    title: 'Subnetting'
-    description: 'Lernen Sie Subnetze und die Berechnung von Subnetzbereichen kennen.'
+    title: "Subnetting"
+    description: "Lernen Sie Subnetze und die Berechnung von Subnetzbereichen kennen."
+    faqs:
+      - question: "Welche Berechnungen werde ich lernen?"
+        answer: "Sie erfahren, wie Adressen, Präfixlängen, Subnetzmasken und Hostbereiche zusammenhängen, mit Subnetzarithmetik und einer praktischen Referenzlektion."
+      - question: "Deckt der Kurs sowohl IPv4 als auch IPv6 ab?"
+        answer: "Ja. In separaten Lektionen werden IPv4 und IPv6 vorgestellt, während die Subnetz- und CIDR-Konzepte Ihnen beim Nachdenken über die Adresszuweisung helfen."
+      - question: "Sollte ich zuerst Binärzahlen verstehen?"
+        answer: "Grundlegende Binärkenntnisse sind hilfreich, aber die Lektionen zur Subnetz-Mathematik sind darauf ausgelegt, die Verbindung zwischen Bits, Präfixen, Masken und Adressbereichen herzustellen."
+    meta_title: "IP-Adressierungs- und Subnetzkurs"
+    meta_description: "Lernen Sie IPv4, IPv6, Subnetze, CIDR-Notation, Subnetzarithmetik, NAT und praktische Techniken zum Verständnis von Netzwerkadressbereichen."
+    meta_keywords: "Subnetze, Subnetzberechnung, CIDR, IPv4, IPv6, NAT, Netzwerkadressierung, Subnetzmaske"
   es:
-    title: 'Subnetting'
-    description: 'Aprende sobre subredes y a calcular sus rangos de direcciones.'
+    title: "Subnetting"
+    description: "Aprende sobre subredes y a calcular sus rangos de direcciones."
+    faqs:
+      - question: "¿Qué cálculos aprenderé?"
+        answer: "Aprenderá cómo se relacionan las direcciones, longitudes de prefijos, máscaras de subred y rangos de hosts, con aritmética de subredes y una lección de referencia práctica."
+      - question: "¿El curso cubre tanto IPv4 como IPv6?"
+        answer: "Sí. Lecciones separadas presentan IPv4 e IPv6, mientras que los conceptos de subred y CIDR lo ayudan a razonar sobre la asignación de direcciones."
+      - question: "¿Debería entender primero los números binarios?"
+        answer: "La familiaridad binaria básica es útil, pero las lecciones de matemáticas de subred están diseñadas para establecer la conexión entre bits, prefijos, máscaras y rangos de direcciones."
+    meta_title: "Curso de Direccionamiento IP y Subredes"
+    meta_description: "Aprenda IPv4, IPv6, subredes, notación CIDR, aritmética de subredes, NAT y técnicas prácticas para comprender los rangos de direcciones de red."
+    meta_keywords: "creación de subredes, matemáticas de subred, CIDR, IPv4, IPv6, NAT, direccionamiento de red, máscara de subred"
   fr:
-    title: 'Subnetting'
-    description: 'Découvrez les sous-réseaux et apprenez à calculer leurs plages d’adresses.'
+    title: "Subnetting"
+    description: "Découvrez les sous-réseaux et apprenez à calculer leurs plages d’adresses."
+    faqs:
+      - question: "Quels calculs vais-je apprendre ?"
+        answer: "Vous apprendrez les relations entre les adresses, les longueurs de préfixe, les masques de sous-réseau et les plages d'hôtes, avec l'arithmétique des sous-réseaux et une leçon de référence pratique."
+      - question: "Le cours couvre-t-il à la fois IPv4 et IPv6 ?"
+        answer: "Oui. Des leçons séparées présentent IPv4 et IPv6, tandis que les concepts de sous-réseau et CIDR vous aident à raisonner sur l'allocation d'adresses."
+      - question: "Dois-je d'abord comprendre les nombres binaires ?"
+        answer: "Une connaissance binaire de base est utile, mais les leçons de mathématiques sur les sous-réseaux sont conçues pour établir la connexion entre les bits, les préfixes, les masques et les plages d'adresses."
+    meta_title: "Cours d'adressage IP et de sous-réseau"
+    meta_description: "Apprenez IPv4, IPv6, les sous-réseaux, la notation CIDR, l'arithmétique des sous-réseaux, le NAT et les techniques pratiques pour comprendre les plages d'adresses réseau."
+    meta_keywords: "sous-réseaux, mathématiques de sous-réseau, CIDR, IPv4, IPv6, NAT, adressage réseau, masque de sous-réseau"
   ja:
-    title: 'サブネット化'
-    description: 'サブネットとサブネット計算の方法を学びましょう！'
+    title: "サブネット化"
+    description: "サブネットとサブネット計算の方法を学びましょう！"
+    faqs:
+      - question: "どのような計算を学びますか？"
+        answer: "アドレス、プレフィックス長、サブネット マスク、ホスト範囲がどのように関係するかを、サブネットの算術演算と実践的なリファレンス レッスンで学びます。"
+      - question: "このコースは IPv4 と IPv6 の両方をカバーしますか？"
+        answer: "はい。別のレッスンでは IPv4 と IPv6 を紹介し、サブネットと CIDR の概念はアドレス割り当てについての推論に役立ちます。"
+      - question: "まず 2 進数を理解する必要がありますか？"
+        answer: "基本的なバイナリに精通していることは役に立ちますが、サブネットの数学のレッスンは、ビット、プレフィックス、マスク、およびアドレス範囲間の接続を構築するように設計されています。"
+    meta_title: "IP アドレス指定とサブネット化コース"
+    meta_description: "IPv4、IPv6、サブネット、CIDR 表記、サブネット演算、NAT、およびネットワーク アドレス範囲を理解するための実践的なテクニックを学びます。"
+    meta_keywords: "サブネット化，サブネット計算，CIDR, IPv4, IPv6, NAT, ネットワーク アドレス指定，サブネット マスク"
   ko:
-    title: '서브넷팅'
-    description: '서브넷과 주소 범위를 계산하는 방법을 알아보세요.'
+    title: "서브넷팅"
+    description: "서브넷과 주소 범위를 계산하는 방법을 알아보세요."
+    faqs:
+      - question: "어떤 계산을 배우나요?"
+        answer: "서브넷 산술 및 실제 참조 강의를 통해 주소, 접두사 길이, 서브넷 마스크 및 호스트 범위가 어떻게 관련되는지 알아봅니다."
+      - question: "이 강좌에서는 IPv4 와 IPv6 를 모두 다루나요?"
+        answer: "네. 별도의 강의에서는 IPv4 와 IPv6 를 소개하고, 서브넷과 CIDR 개념은 주소 할당에 대해 추론하는 데 도움이 됩니다."
+      - question: "먼저 이진수를 이해해야 할까요?"
+        answer: "기본적인 바이너리 지식이 도움이 되지만 서브넷 수학 수업은 비트, 접두사, 마스크 및 주소 범위 간의 연결을 구축하도록 설계되었습니다."
+    meta_title: "IP 주소 지정 및 서브넷 강좌"
+    meta_description: "IPv4, IPv6, 서브넷, CIDR 표기법, 서브넷 산술, NAT 및 네트워크 주소 범위를 이해하기 위한 실용적인 기술을 알아보세요."
+    meta_keywords: "서브넷, 서브넷 수학, CIDR, IPv4, IPv6, NAT, 네트워크 주소 지정, 서브넷 마스크"
   pt:
-    title: 'Subnetting'
-    description: 'Aprenda sobre sub-redes e a calcular seus intervalos de endereços.'
+    title: "Subnetting"
+    description: "Aprenda sobre sub-redes e a calcular seus intervalos de endereços."
+    faqs:
+      - question: "Que cálculos aprenderei?"
+        answer: "Você aprenderá como endereços, comprimentos de prefixos, máscaras de sub-rede e intervalos de hosts se relacionam, com aritmética de sub-rede e uma lição prática de referência."
+      - question: "O curso cobre IPv4 e IPv6?"
+        answer: "Sim. Lições separadas apresentam IPv4 e IPv6, enquanto os conceitos de sub-rede e CIDR ajudam você a raciocinar sobre a alocação de endereços."
+      - question: "Devo entender os números binários primeiro?"
+        answer: "Familiaridade básica com binário é útil, mas as lições de matemática de sub-rede são projetadas para construir a conexão entre bits, prefixos, máscaras e intervalos de endereços."
+    meta_title: "Curso de endereçamento IP e sub-redes"
+    meta_description: "Aprenda IPv4, IPv6, sub-redes, notação CIDR, aritmética de sub-redes, NAT e técnicas práticas para compreender os intervalos de endereços de rede."
+    meta_keywords: "sub-rede, matemática de sub-rede, CIDR, IPv4, IPv6, NAT, endereçamento de rede, máscara de sub-rede"
   ru:
-    title: 'Подсети'
-    description: 'Изучите подсети и научитесь рассчитывать диапазоны адресов.'
+    title: "Подсети"
+    description: "Изучите подсети и научитесь рассчитывать диапазоны адресов."
+    faqs:
+      - question: "Какие расчеты я научу?"
+        answer: "Вы узнаете, как связаны адреса, длины префиксов, маски подсети и диапазоны хостов, с помощью арифметики подсетей и практического справочного урока."
+      - question: "Охватывает ли курс как IPv4, так и IPv6?"
+        answer: "Да. Отдельные уроки посвящены IPv4 и IPv6, а концепции подсети и CIDR помогут вам рассуждать о распределении адресов."
+      - question: "Должен ли я сначала понять двоичные числа?"
+        answer: "Базовые знания двоичного кода полезны, но уроки математики подсетей предназначены для построения связей между битами, префиксами, масками и диапазонами адресов."
+    meta_title: "Курс по IP-адресации и созданию подсетей"
+    meta_description: "Изучите IPv4, IPv6, подсети, нотацию CIDR, арифметику подсетей, NAT и практические методы понимания диапазонов сетевых адресов."
+    meta_keywords: "подсети, математика подсетей, CIDR, IPv4, IPv6, NAT, сетевая адресация, маска подсети"
   zh:
-    title: '子网划分'
-    description: '了解子网以及如何进行子网计算！'
+    title: "子网划分"
+    description: "了解子网以及如何进行子网计算！"
+    faqs:
+      - question: "我将学习哪些计算？"
+        answer: "您将通过子网算术和实用参考课程了解地址、前缀长度、子网掩码和主机范围之间的关系。"
+      - question: "课程涵盖 IPv4 和 IPv6 吗？"
+        answer: "是的。单独的课程介绍 IPv4 和 IPv6，而子网和 CIDR 概念可帮助您推理地址分配。"
+      - question: "我应该先了解二进制数吗？"
+        answer: "熟悉基本的二进制是有帮助的，但子网数学课程旨在建立位、前缀、掩码和地址范围之间的联系。"
+    meta_title: "IP 寻址和子网划分课程"
+    meta_description: "学习 IPv4、IPv6、子网、CIDR 表示法、子网算术、NAT 以及了解网络地址范围的实用技术。"
+    meta_keywords: "子网划分，子网数学，CIDR, IPv4, IPv6, NAT, 网络寻址，子网掩码"

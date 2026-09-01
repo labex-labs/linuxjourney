@@ -1,43 +1,123 @@
 id: advanced-text-fu
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/advanced-text-fu.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/advanced-text-fu.png
 order_index: 3
 translations:
   en:
-    title: 'Advanced Text-Fu'
-    description: 'Navigate text like a Linux spider monkey with Vim and Emacs.'
+    title: "Advanced Text-Fu"
+    description: "Navigate text like a Linux spider monkey with Vim and Emacs."
     faqs:
-      - question: 'What editors are taught in this course?'
-        answer: 'The course introduces both Vim and Emacs, covering navigation, editing, file operations, help, search patterns, and safe ways to exit each editor.'
-      - question: 'Do I need to master both Vim and Emacs?'
-        answer: 'No. Learning the fundamentals of both helps you work on unfamiliar systems, but you can choose one editor for deeper daily use.'
-      - question: 'Are regular expressions included?'
-        answer: 'Yes. A dedicated lesson explains regular expressions so you can recognize patterns and perform more powerful searches in editors and command-line tools.'
-    meta_title: 'Vim, Emacs, and Regex Course'
-    meta_description: 'Develop advanced Linux text-editing skills with Vim and Emacs, including navigation, editing, search, file operations, and regular expressions.'
-    meta_keywords: 'Vim tutorial, Emacs tutorial, regular expressions, Linux text editor, Vim navigation, Vim search, Emacs editing'
+      - question: "What editors are taught in this course?"
+        answer: "The course introduces both Vim and Emacs, covering navigation, editing, file operations, help, search patterns, and safe ways to exit each editor."
+      - question: "Do I need to master both Vim and Emacs?"
+        answer: "No. Learning the fundamentals of both helps you work on unfamiliar systems, but you can choose one editor for deeper daily use."
+      - question: "Are regular expressions included?"
+        answer: "Yes. A dedicated lesson explains regular expressions so you can recognize patterns and perform more powerful searches in editors and command-line tools."
+    meta_title: "Vim, Emacs, and Regex Course"
+    meta_description: "Develop advanced Linux text-editing skills with Vim and Emacs, including navigation, editing, search, file operations, and regular expressions."
+    meta_keywords: "Vim tutorial, Emacs tutorial, regular expressions, Linux text editor, Vim navigation, Vim search, Emacs editing"
   de:
-    title: 'Fortgeschrittenes Text-Fu'
-    description: 'Navigieren Sie Text wie ein Linux-Spinnenaffe mit Vim und Emacs.'
+    title: "Fortgeschrittenes Text-Fu"
+    description: "Navigieren Sie Text wie ein Linux-Spinnenaffe mit Vim und Emacs."
+    faqs:
+      - question: "Welche Redakteure werden in diesem Kurs unterrichtet?"
+        answer: "Der Kurs stellt sowohl Vim als auch Emacs vor und behandelt Navigation, Bearbeitung, Dateioperationen, Hilfe, Suchmuster und sichere Möglichkeiten zum Beenden jedes Editors."
+      - question: "Muss ich sowohl Vim als auch Emacs beherrschen?"
+        answer: "Nein. Das Erlernen der Grundlagen beider Systeme hilft Ihnen bei der Arbeit mit unbekannten Systemen, aber Sie können einen Editor für den tieferen täglichen Gebrauch auswählen."
+      - question: "Sind reguläre Ausdrücke enthalten?"
+        answer: "Ja. In einer speziellen Lektion werden reguläre Ausdrücke erläutert, damit Sie Muster erkennen und leistungsfähigere Suchvorgänge in Editoren und Befehlszeilentools durchführen können."
+    meta_title: "Vim-, Emacs- und Regex-Kurs"
+    meta_description: "Entwickeln Sie fortgeschrittene Linux-Textbearbeitungsfähigkeiten mit Vim und Emacs, einschließlich Navigation, Bearbeitung, Suche, Dateioperationen und regulären Ausdrücken."
+    meta_keywords: "Vim-Tutorial, Emacs-Tutorial, reguläre Ausdrücke, Linux-Texteditor, Vim-Navigation, Vim-Suche, Emacs-Bearbeitung"
   es:
-    title: 'Text-Fu Avanzado'
-    description: 'Navega texto como un mono araña de Linux con Vim y Emacs.'
+    title: "Text-Fu Avanzado"
+    description: "Navega texto como un mono araña de Linux con Vim y Emacs."
+    faqs:
+      - question: "¿Qué editores se enseñan en este curso?"
+        answer: "El curso presenta Vim y Emacs, y cubre navegación, edición, operaciones de archivos, ayuda, patrones de búsqueda y formas seguras de salir de cada editor."
+      - question: "¿Necesito dominar Vim y Emacs?"
+        answer: "No. Aprender los fundamentos de ambos te ayuda a trabajar en sistemas desconocidos, pero puedes elegir un editor para un uso diario más profundo."
+      - question: "¿Se incluyen expresiones regulares?"
+        answer: "Sí. Una lección dedicada explica las expresiones regulares para que pueda reconocer patrones y realizar búsquedas más potentes en editores y herramientas de línea de comandos."
+    meta_title: "Curso de Vim, Emacs y Regex"
+    meta_description: "Desarrolle habilidades avanzadas de edición de textos en Linux con Vim y Emacs, incluidas navegación, edición, búsqueda, operaciones con archivos y expresiones regulares."
+    meta_keywords: "Tutorial de Vim, tutorial de Emacs, expresiones regulares, editor de texto de Linux, navegación de Vim, búsqueda de Vim, edición de Emacs"
   fr:
-    title: 'Text-Fu Avancé'
-    description: 'Naviguez dans le texte comme un singe araignée Linux avec Vim et Emacs.'
+    title: "Text-Fu Avancé"
+    description: "Naviguez dans le texte comme un singe araignée Linux avec Vim et Emacs."
+    faqs:
+      - question: "Quels éditeurs sont enseignés dans ce cours ?"
+        answer: "Le cours présente à la fois Vim et Emacs, couvrant la navigation, l'édition, les opérations sur les fichiers, l'aide, les modèles de recherche et les moyens sûrs de quitter chaque éditeur."
+      - question: "Dois-je maîtriser à la fois Vim et Emacs ?"
+        answer: "Non. Apprendre les principes fondamentaux des deux vous aide à travailler sur des systèmes inconnus, mais vous pouvez choisir un éditeur pour une utilisation quotidienne plus approfondie."
+      - question: "Les expressions régulières sont-elles incluses ?"
+        answer: "Oui. Une leçon dédiée explique les expressions régulières afin que vous puissiez reconnaître des modèles et effectuer des recherches plus puissantes dans les éditeurs et les outils de ligne de commande."
+    meta_title: "Cours Vim, Emacs et Regex"
+    meta_description: "Développez des compétences avancées en édition de texte Linux avec Vim et Emacs, y compris la navigation, l'édition, la recherche, les opérations sur les fichiers et les expressions régulières."
+    meta_keywords: "Tutoriel Vim, tutoriel Emacs, expressions régulières, éditeur de texte Linux, navigation Vim, recherche Vim, édition Emacs"
   ja:
-    title: '高度なテキスト操作'
-    description: 'Vim と Emacs を使って、Linux のクモザルのようにテキストを操作しましょう。'
+    title: "高度なテキスト操作"
+    description: "Vim と Emacs を使って、Linux のクモザルのようにテキストを操作しましょう。"
+    faqs:
+      - question: "このコースではどのような編集者が教えられますか？"
+        answer: "このコースでは Vim と Emacs の両方を紹介し、ナビゲーション、編集、ファイル操作、ヘルプ、検索パターン、各エディターを安全に終了する方法を取り上げます。"
+      - question: "Vim と Emacs の両方をマスターする必要がありますか？"
+        answer: "いいえ。両方の基本を学習すると、不慣れなシステムで作業するのに役立ちますが、日常的により深く使用するために 1 つのエディタを選択することもできます。"
+      - question: "正規表現は含まれていますか？"
+        answer: "はい。専用のレッスンでは正規表現について説明しているので、パターンを認識し、エディターやコマンドライン ツールでより強力な検索を実行できるようになります。"
+    meta_title: "Vim、Emacs、正規表現コース"
+    meta_description: "Vim と Emacs を使用して、ナビゲーション、編集、検索、ファイル操作、正規表現などの高度な Linux テキスト編集スキルを開発します。"
+    meta_keywords: "Vim チュートリアル，Emacs チュートリアル，正規表現，Linux テキスト エディター, Vim ナビゲーション，Vim 検索，Emacs 編集"
   ko:
-    title: '고급 Text-Fu'
-    description: 'Vim 과 Emacs 로 Linux 거미원숭이처럼 텍스트를 탐색하세요.'
+    title: "고급 Text-Fu"
+    description: "Vim 과 Emacs 로 Linux 거미원숭이처럼 텍스트를 탐색하세요."
+    faqs:
+      - question: "이 강좌에서는 어떤 편집자를 가르치나요?"
+        answer: "이 과정에서는 Vim 과 Emacs 를 모두 소개하며 탐색, 편집, 파일 작업, 도움말, 검색 패턴, 각 편집기를 안전하게 종료하는 방법을 다룹니다."
+      - question: "Vim 과 Emacs 를 모두 마스터해야 하나요?"
+        answer: "아니요. 두 가지의 기본 사항을 배우는 것은 익숙하지 않은 시스템에서 작업하는 데 도움이 되지만 일상적으로 더 깊이 있게 사용하려면 하나의 편집기를 선택할 수도 있습니다."
+      - question: "정규 표현식이 포함되어 있나요?"
+        answer: "네. 전용 강의에서는 패턴을 인식하고 편집기와 명령줄 도구에서 더욱 강력한 검색을 수행할 수 있도록 정규식을 설명합니다."
+    meta_title: "Vim, Emacs 및 Regex 과정"
+    meta_description: "Vim 및 Emacs 를 사용하여 탐색, 편집, 검색, 파일 작업 및 정규 표현식을 포함한 고급 Linux 텍스트 편집 기술을 개발합니다."
+    meta_keywords: "Vim 튜토리얼, Emacs 튜토리얼, 정규식, Linux 텍스트 편집기, Vim 탐색, Vim 검색, Emacs 편집"
   pt:
-    title: 'Text-Fu Avançado'
-    description: 'Navegue por texto como um macaco-aranha Linux com Vim e Emacs.'
+    title: "Text-Fu Avançado"
+    description: "Navegue por texto como um macaco-aranha Linux com Vim e Emacs."
+    faqs:
+      - question: "Quais editores são ensinados neste curso?"
+        answer: "O curso apresenta o Vim e o Emacs, abordando navegação, edição, operações de arquivo, ajuda, padrões de pesquisa e formas seguras de sair de cada editor."
+      - question: "Preciso dominar o Vim e o Emacs?"
+        answer: "Não. Aprender os fundamentos de ambos ajuda você a trabalhar em sistemas desconhecidos, mas você pode escolher um editor para um uso diário mais profundo."
+      - question: "As expressões regulares estão incluídas?"
+        answer: "Sim. Uma lição dedicada explica expressões regulares para que você possa reconhecer padrões e realizar pesquisas mais poderosas em editores e ferramentas de linha de comando."
+    meta_title: "Curso Vim, Emacs e Regex"
+    meta_description: "Desenvolva habilidades avançadas de edição de texto em Linux com Vim e Emacs, incluindo navegação, edição, pesquisa, operações de arquivo e expressões regulares."
+    meta_keywords: "Tutorial Vim, tutorial Emacs, expressões regulares, editor de texto Linux, navegação Vim, pesquisa Vim, edição Emacs"
   ru:
-    title: 'Продвинутый Text-Fu'
-    description: 'Навигируйте по тексту, как паукообразная обезьяна Linux, с помощью Vim и Emacs.'
+    title: "Продвинутый Text-Fu"
+    description: "Навигируйте по тексту, как паукообразная обезьяна Linux, с помощью Vim и Emacs."
+    faqs:
+      - question: "Каким редакторам обучают на этом курсе?"
+        answer: "Курс знакомит с Vim и Emacs, включая навигацию, редактирование, операции с файлами, справку, шаблоны поиска и безопасные способы выхода из каждого редактора."
+      - question: "Нужно ли мне владеть Vim и Emacs?"
+        answer: "Нет. Изучение основ обоих поможет вам работать с незнакомыми системами, но вы можете выбрать один редактор для более глубокого ежедневного использования."
+      - question: "Включены ли регулярные выражения?"
+        answer: "Да. Специальный урок объясняет регулярные выражения, чтобы вы могли распознавать шаблоны и выполнять более эффективный поиск в редакторах и инструментах командной строки."
+    meta_title: "Курс Vim, Emacs и Regex"
+    meta_description: "Развивайте расширенные навыки редактирования текста в Linux с помощью Vim и Emacs, включая навигацию, редактирование, поиск, операции с файлами и регулярные выражения."
+    meta_keywords: "Руководство по Vim, руководство по Emacs, регулярные выражения, текстовый редактор Linux, навигация по Vim, поиск по Vim, редактирование Emacs."
   zh:
-    title: '高级文本操作'
-    description: '使用 Vim 和 Emacs 像 Linux 蜘蛛猴一样导航文本。'
+    title: "高级文本操作"
+    description: "使用 Vim 和 Emacs 像 Linux 蜘蛛猴一样导航文本。"
+    faqs:
+      - question: "本课程教授哪些编辑？"
+        answer: "本课程介绍了 Vim 和 Emacs，涵盖导航、编辑、文件操作、帮助、搜索模式以及退出每个编辑器的安全方法。"
+      - question: "我需要同时掌握 Vim 和 Emacs 吗？"
+        answer: "不会。学习两者的基础知识可以帮助您在不熟悉的系统上工作，但您可以选择一种编辑器进行更深入的日常使用。"
+      - question: "包含正则表达式吗？"
+        answer: "是的。专门的课程解释了正则表达式，以便您可以识别模式并在编辑器和命令行工具中执行更强大的搜索。"
+    meta_title: "Vim、Emacs 和正则表达式课程"
+    meta_description: "使用 Vim 和 Emacs 培养高级 Linux 文本编辑技能，包括导航、编辑、搜索、文件操作和正则表达式。"
+    meta_keywords: "Vim 教程，Emacs 教程，正则表达式，Linux 文本编辑器，Vim 导航，Vim 搜索，Emacs 编辑"

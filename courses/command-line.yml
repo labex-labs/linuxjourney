@@ -1,43 +1,123 @@
 id: command-line
 category:
   id: grasshopper
-image_url: /images/linuxjourney/courses/command-line.png
+image_url: https://cdn.jsdelivr.net/gh/labex-labs/linuxjourney@new-lessons/images/courses/command-line.png
 order_index: 1
 translations:
   en:
-    title: 'Command Line'
-    description: 'Learn the fundamentals of the command line, navigating files, directories, and more.'
+    title: "Command Line"
+    description: "Learn the fundamentals of the command line, navigating files, directories, and more."
     faqs:
-      - question: 'What commands are covered in this course?'
-        answer: 'The course covers core commands including pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man, history, and aliases.'
-      - question: 'Is prior command-line experience required?'
-        answer: 'No. The lessons begin with the shell and basic navigation, then build toward everyday file operations, command discovery, and efficient terminal use.'
-      - question: 'Can I follow the lessons on macOS or Windows?'
-        answer: 'Many concepts also work in macOS terminals and Windows Linux environments, but a Linux shell provides the most consistent experience.'
-    meta_title: 'Linux Command Line Course'
-    meta_description: 'Learn essential Linux command-line skills for navigating directories, managing files, finding help, inspecting content, and working efficiently in a shell.'
-    meta_keywords: 'Linux command line, shell basics, ls command, cd command, file management, terminal tutorial, Linux commands'
+      - question: "What commands are covered in this course?"
+        answer: "The course covers core commands including pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man, history, and aliases."
+      - question: "Is prior command-line experience required?"
+        answer: "No. The lessons begin with the shell and basic navigation, then build toward everyday file operations, command discovery, and efficient terminal use."
+      - question: "Can I follow the lessons on macOS or Windows?"
+        answer: "Many concepts also work in macOS terminals and Windows Linux environments, but a Linux shell provides the most consistent experience."
+    meta_title: "Linux Command Line Course"
+    meta_description: "Learn essential Linux command-line skills for navigating directories, managing files, finding help, inspecting content, and working efficiently in a shell."
+    meta_keywords: "Linux command line, shell basics, ls command, cd command, file management, terminal tutorial, Linux commands"
   de:
-    title: 'Befehlszeile'
-    description: 'Lernen Sie die Grundlagen der Befehlszeile sowie die Navigation in Dateien und Verzeichnissen.'
+    title: "Befehlszeile"
+    description: "Lernen Sie die Grundlagen der Befehlszeile sowie die Navigation in Dateien und Verzeichnissen."
+    faqs:
+      - question: "Welche Befehle werden in diesem Kurs behandelt?"
+        answer: "Der Kurs behandelt grundlegende Befehle wie pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man und history sowie Aliase."
+      - question: "Sind Vorkenntnisse in der Befehlszeile erforderlich?"
+        answer: "Nein. Die Lektionen beginnen mit der Shell und der grundlegenden Navigation und bauen dann auf alltägliche Dateioperationen, Befehlserkennung und effiziente Terminalnutzung auf."
+      - question: "Kann ich den Lektionen auf macOS oder Windows folgen?"
+        answer: "Viele Konzepte funktionieren auch in macOS-Terminals und Windows-Linux-Umgebungen, aber eine Linux-Shell bietet das konsistenteste Erlebnis."
+    meta_title: "Linux-Befehlszeilenkurs"
+    meta_description: "Erlernen Sie grundlegende Linux-Befehlszeilenfähigkeiten zum Navigieren in Verzeichnissen, Verwalten von Dateien, Suchen von Hilfe, Überprüfen von Inhalten und effizientes Arbeiten in einer Shell."
+    meta_keywords: "Linux-Befehlszeile, Shell-Grundlagen, ls-Befehl, cd-Befehl, Dateiverwaltung, Terminal-Tutorial, Linux-Befehle"
   es:
-    title: 'Línea de Comandos'
-    description: 'Aprende los fundamentos de la línea de comandos y a navegar por archivos y directorios.'
+    title: "Línea de Comandos"
+    description: "Aprende los fundamentos de la línea de comandos y a navegar por archivos y directorios."
+    faqs:
+      - question: "¿Qué comandos se tratan en este curso?"
+        answer: "El curso cubre comandos básicos como pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man y history, además de los alias."
+      - question: "¿Se requiere experiencia previa en línea de comandos?"
+        answer: "No. Las lecciones comienzan con el shell y la navegación básica, luego avanzan hacia las operaciones diarias de archivos, el descubrimiento de comandos y el uso eficiente de la terminal."
+      - question: "¿Puedo seguir las lecciones en macOS o Windows?"
+        answer: "Muchos conceptos también funcionan en terminales macOS y entornos Windows Linux, pero un shell de Linux proporciona la experiencia más consistente."
+    meta_title: "Curso de línea de comandos de Linux"
+    meta_description: "Aprenda habilidades esenciales de línea de comandos de Linux para navegar por directorios, administrar archivos, buscar ayuda, inspeccionar contenido y trabajar de manera eficiente en un shell."
+    meta_keywords: "Línea de comando de Linux, conceptos básicos de shell, comando ls, comando cd, administración de archivos, tutorial de terminal, comandos de Linux"
   fr:
-    title: 'Ligne de Commande'
-    description: 'Apprenez les fondamentaux de la ligne de commande et la navigation dans les fichiers et répertoires.'
+    title: "Ligne de Commande"
+    description: "Apprenez les fondamentaux de la ligne de commande et la navigation dans les fichiers et répertoires."
+    faqs:
+      - question: "Quelles commandes sont abordées dans ce cours ?"
+        answer: "Le cours couvre les commandes essentielles pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man et history, ainsi que les alias."
+      - question: "Une expérience préalable en ligne de commande est-elle requise ?"
+        answer: "Non. Les leçons commencent par le shell et la navigation de base, puis évoluent vers les opérations quotidiennes sur les fichiers, la découverte de commandes et l'utilisation efficace du terminal."
+      - question: "Puis-je suivre les cours sur macOS ou Windows ?"
+        answer: "De nombreux concepts fonctionnent également dans les terminaux macOS et les environnements Windows Linux, mais un shell Linux offre l'expérience la plus cohérente."
+    meta_title: "Cours de ligne de commande Linux"
+    meta_description: "Apprenez les compétences essentielles en ligne de commande Linux pour naviguer dans les répertoires, gérer les fichiers, trouver de l'aide, inspecter le contenu et travailler efficacement dans un shell."
+    meta_keywords: "Ligne de commande Linux, bases du shell, commande ls, commande cd, gestion de fichiers, didacticiel du terminal, commandes Linux"
   ja:
-    title: 'コマンドライン'
-    description: 'コマンドラインの基本、ファイルやディレクトリの操作などを学びましょう。'
+    title: "コマンドライン"
+    description: "コマンドラインの基本、ファイルやディレクトリの操作などを学びましょう。"
+    faqs:
+      - question: "このコースではどのようなコマンドがカバーされますか？"
+        answer: "このコースでは、pwd、ls、cd、mkdir、touch、cp、mv、rm、cat、less、find、man、history、エイリアスなどのコア コマンドを取り上げます。"
+      - question: "コマンドラインの経験は必要ですか？"
+        answer: "いいえ。レッスンはシェルと基本的なナビゲーションから始まり、その後、日常的なファイル操作、コマンドの検出、ターミナルの効率的な使用に向けて構築されます。"
+      - question: "macOS または Windows でレッスンを受講できますか？"
+        answer: "多くの概念は macOS ターミナルや Windows Linux 環境でも機能しますが、最も一貫したエクスペリエンスを提供するのは Linux シェルです。"
+    meta_title: "Linux コマンドラインコース"
+    meta_description: "ディレクトリの移動、ファイルの管理、ヘルプの検索、コンテンツの検査、シェルでの効率的な作業のための重要な Linux コマンドライン スキルを学びます。"
+    meta_keywords: "Linux コマンド ライン，シェルの基本，ls コマンド，cd コマンド，ファイル管理，ターミナル チュートリアル，Linux コマンド"
   ko:
-    title: '명령줄'
-    description: '명령줄의 기본과 파일 및 디렉터리를 탐색하는 방법을 알아보세요.'
+    title: "명령줄"
+    description: "명령줄의 기본과 파일 및 디렉터리를 탐색하는 방법을 알아보세요."
+    faqs:
+      - question: "이 강좌에서는 어떤 명령어를 다루나요?"
+        answer: "이 과정에서는 pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man, history 와 별칭 등 기본 명령을 다룹니다."
+      - question: "사전 명령줄 경험이 필요합니까?"
+        answer: "아니요. 수업은 셸 및 기본 탐색으로 시작한 다음 일상적인 파일 작업, 명령 검색 및 효율적인 터미널 사용을 중심으로 진행됩니다."
+      - question: "macOS 나 Windows 에서 강의를 따라갈 수 있나요?"
+        answer: "많은 개념이 macOS 터미널 및 Windows Linux 환경에서도 작동하지만 Linux 셸은 가장 일관된 환경을 제공합니다."
+    meta_title: "Linux 명령줄 강좌"
+    meta_description: "디렉터리 탐색, 파일 관리, 도움말 찾기, 콘텐츠 검사 및 셸에서 효율적으로 작업하기 위한 필수 Linux 명령줄 기술을 알아보세요."
+    meta_keywords: "Linux 명령줄, 쉘 기본 사항, ls 명령, cd 명령, 파일 관리, 터미널 튜토리얼, Linux 명령"
   pt:
-    title: 'Linha de Comando'
-    description: 'Aprenda os fundamentos da linha de comando, navegando por arquivos, diretórios e muito mais.'
+    title: "Linha de Comando"
+    description: "Aprenda os fundamentos da linha de comando, navegando por arquivos, diretórios e muito mais."
+    faqs:
+      - question: "Quais comandos são abordados neste curso?"
+        answer: "O curso cobre comandos básicos, incluindo pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man, history e aliases."
+      - question: "É necessária experiência anterior em linha de comando?"
+        answer: "Não. As lições começam com o shell e a navegação básica, depois avançam para operações diárias de arquivos, descoberta de comandos e uso eficiente de terminais."
+      - question: "Posso acompanhar as lições no macOS ou no Windows?"
+        answer: "Muitos conceitos também funcionam em terminais macOS e ambientes Windows Linux, mas um shell Linux fornece a experiência mais consistente."
+    meta_title: "Curso de Linha de Comando Linux"
+    meta_description: "Aprenda habilidades essenciais de linha de comando do Linux para navegar em diretórios, gerenciar arquivos, encontrar ajuda, inspecionar conteúdo e trabalhar com eficiência em um shell."
+    meta_keywords: "Linha de comando do Linux, noções básicas de shell, comando ls, comando cd, gerenciamento de arquivos, tutorial de terminal, comandos do Linux"
   ru:
-    title: 'Командная строка'
-    description: 'Изучите основы командной строки и навигацию по файлам и каталогам.'
+    title: "Командная строка"
+    description: "Изучите основы командной строки и навигацию по файлам и каталогам."
+    faqs:
+      - question: "Какие команды рассматриваются в этом курсе?"
+        answer: "В курсе рассматриваются основные команды pwd, ls, cd, mkdir, touch, cp, mv, rm, cat, less, find, man и history, а также псевдонимы."
+      - question: "Требуется ли предварительный опыт работы в командной строке?"
+        answer: "Нет. Уроки начинаются с оболочки и базовой навигации, а затем переходят к повседневным операциям с файлами, обнаружению команд и эффективному использованию терминала."
+      - question: "Могу ли я следовать урокам на macOS или Windows?"
+        answer: "Многие концепции также работают в терминалах macOS и средах Windows Linux, но оболочка Linux обеспечивает наиболее единообразную работу."
+    meta_title: "Курс командной строки Linux"
+    meta_description: "Изучите основные навыки работы с командной строкой Linux для навигации по каталогам, управления файлами, поиска справки, проверки содержимого и эффективной работы в оболочке."
+    meta_keywords: "Командная строка Linux, основы оболочки, команда ls, команда cd, управление файлами, руководство по работе с терминалом, команды Linux"
   zh:
-    title: '命令行'
-    description: '学习命令行的基础知识，导航文件、目录等。'
+    title: "命令行"
+    description: "学习命令行的基础知识，导航文件、目录等。"
+    faqs:
+      - question: "本课程涵盖哪些命令？"
+        answer: "课程涵盖 pwd、ls、cd、mkdir、touch、cp、mv、rm、cat、less、find、man、history 等基本命令以及命令别名。"
+      - question: "是否需要有命令行经验？"
+        answer: "不。课程从 shell 和基本导航开始，然后逐步发展日常文件操作、命令发现和高效终端使用。"
+      - question: "我可以在 macOS 或 Windows 上学习课程吗？"
+        answer: "许多概念也适用于 macOS 终端和 Windows Linux 环境，但 Linux shell 提供了最一致的体验。"
+    meta_title: "Linux 命令行课程"
+    meta_description: "学习基本的 Linux 命令行技能，用于导航目录、管理文件、查找帮助、检查内容以及在 shell 中高效工作。"
+    meta_keywords: "Linux 命令行，shell 基础，ls 命令，cd 命令，文件管理，终端教程，Linux 命令"
